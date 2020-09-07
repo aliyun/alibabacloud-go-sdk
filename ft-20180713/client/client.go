@@ -3,6 +3,7 @@ package client
 
 import (
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
+	rpcutil "github.com/alibabacloud-go/tea-rpc-utils/service"
 	rpc "github.com/alibabacloud-go/tea-rpc/client"
 	util "github.com/alibabacloud-go/tea-utils/service"
 	"github.com/alibabacloud-go/tea/tea"
@@ -22,6 +23,23 @@ func (s TestFlowStrategy01Request) GoString() string {
 
 func (s *TestFlowStrategy01Request) SetNames(v map[string]interface{}) *TestFlowStrategy01Request {
 	s.Names = v
+	return s
+}
+
+type TestFlowStrategy01ShrinkRequest struct {
+	NamesShrink *string `json:"Names,omitempty" xml:"Names,omitempty"`
+}
+
+func (s TestFlowStrategy01ShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TestFlowStrategy01ShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TestFlowStrategy01ShrinkRequest) SetNamesShrink(v string) *TestFlowStrategy01ShrinkRequest {
+	s.NamesShrink = &v
 	return s
 }
 
@@ -85,6 +103,41 @@ func (s *TestHttpApiRequest) SetOtherParam(v map[string]interface{}) *TestHttpAp
 }
 
 func (s *TestHttpApiRequest) SetBooleanParam(v bool) *TestHttpApiRequest {
+	s.BooleanParam = &v
+	return s
+}
+
+type TestHttpApiShrinkRequest struct {
+	StringValueShrink  *string `json:"StringValue,omitempty" xml:"StringValue,omitempty"`
+	DefaultValueShrink *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	OtherParamShrink   *string `json:"OtherParam,omitempty" xml:"OtherParam,omitempty"`
+	BooleanParam       *bool   `json:"BooleanParam,omitempty" xml:"BooleanParam,omitempty"`
+}
+
+func (s TestHttpApiShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TestHttpApiShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TestHttpApiShrinkRequest) SetStringValueShrink(v string) *TestHttpApiShrinkRequest {
+	s.StringValueShrink = &v
+	return s
+}
+
+func (s *TestHttpApiShrinkRequest) SetDefaultValueShrink(v string) *TestHttpApiShrinkRequest {
+	s.DefaultValueShrink = &v
+	return s
+}
+
+func (s *TestHttpApiShrinkRequest) SetOtherParamShrink(v string) *TestHttpApiShrinkRequest {
+	s.OtherParamShrink = &v
+	return s
+}
+
+func (s *TestHttpApiShrinkRequest) SetBooleanParam(v bool) *TestHttpApiShrinkRequest {
 	s.BooleanParam = &v
 	return s
 }
@@ -658,11 +711,17 @@ func (client *Client) Init(config *rpc.Config) (_err error) {
 	return nil
 }
 
-func (client *Client) TestFlowStrategy01WithOptions(request *TestFlowStrategy01Request, runtime *util.RuntimeOptions) (_result *TestFlowStrategy01Response, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) TestFlowStrategy01WithOptions(tmp *TestFlowStrategy01Request, runtime *util.RuntimeOptions) (_result *TestFlowStrategy01Response, _err error) {
+	_err = util.ValidateModel(tmp)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &TestFlowStrategy01ShrinkRequest{}
+	rpcutil.Convert(tmp, request)
+	if !tea.BoolValue(util.IsUnset(tmp.Names)) {
+		request.NamesShrink = util.ToJSONString(tmp.Names)
+	}
+
 	_result = &TestFlowStrategy01Response{}
 	_body, _err := client.DoRequest(tea.String("TestFlowStrategy01"), tea.String("HTTPS"), tea.String("PUT"), tea.String("2018-07-13"), tea.String("AK"), nil, tea.ToMap(request), runtime)
 	if _err != nil {
@@ -683,11 +742,25 @@ func (client *Client) TestFlowStrategy01(request *TestFlowStrategy01Request) (_r
 	return _result, _err
 }
 
-func (client *Client) TestHttpApiWithOptions(request *TestHttpApiRequest, runtime *util.RuntimeOptions) (_result *TestHttpApiResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) TestHttpApiWithOptions(tmp *TestHttpApiRequest, runtime *util.RuntimeOptions) (_result *TestHttpApiResponse, _err error) {
+	_err = util.ValidateModel(tmp)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &TestHttpApiShrinkRequest{}
+	rpcutil.Convert(tmp, request)
+	if !tea.BoolValue(util.IsUnset(tmp.StringValue)) {
+		request.StringValueShrink = util.ToJSONString(tmp.StringValue)
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmp.DefaultValue)) {
+		request.DefaultValueShrink = util.ToJSONString(tmp.DefaultValue)
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmp.OtherParam)) {
+		request.OtherParamShrink = util.ToJSONString(tmp.OtherParam)
+	}
+
 	_result = &TestHttpApiResponse{}
 	_body, _err := client.DoRequest(tea.String("TestHttpApi"), tea.String("HTTPS"), tea.String("POST"), tea.String("2018-07-13"), tea.String("AK"), nil, tea.ToMap(request), runtime)
 	if _err != nil {
