@@ -9,6 +9,388 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type SendFileRequest struct {
+	RegionId    *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty" require:"true"`
+	Name        *string   `json:"Name,omitempty" xml:"Name,omitempty" require:"true"`
+	Description *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	Timeout     *int64    `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	TargetDir   *string   `json:"TargetDir,omitempty" xml:"TargetDir,omitempty" require:"true"`
+	InstanceId  []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" require:"true" type:"Repeated"`
+	ContentType *string   `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	Content     *string   `json:"Content,omitempty" xml:"Content,omitempty" require:"true"`
+	FileOwner   *string   `json:"FileOwner,omitempty" xml:"FileOwner,omitempty"`
+	FileGroup   *string   `json:"FileGroup,omitempty" xml:"FileGroup,omitempty"`
+	FileMode    *string   `json:"FileMode,omitempty" xml:"FileMode,omitempty"`
+	Overwrite   *bool     `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
+}
+
+func (s SendFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SendFileRequest) SetRegionId(v string) *SendFileRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *SendFileRequest) SetName(v string) *SendFileRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *SendFileRequest) SetDescription(v string) *SendFileRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *SendFileRequest) SetTimeout(v int64) *SendFileRequest {
+	s.Timeout = &v
+	return s
+}
+
+func (s *SendFileRequest) SetTargetDir(v string) *SendFileRequest {
+	s.TargetDir = &v
+	return s
+}
+
+func (s *SendFileRequest) SetInstanceId(v []*string) *SendFileRequest {
+	s.InstanceId = v
+	return s
+}
+
+func (s *SendFileRequest) SetContentType(v string) *SendFileRequest {
+	s.ContentType = &v
+	return s
+}
+
+func (s *SendFileRequest) SetContent(v string) *SendFileRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *SendFileRequest) SetFileOwner(v string) *SendFileRequest {
+	s.FileOwner = &v
+	return s
+}
+
+func (s *SendFileRequest) SetFileGroup(v string) *SendFileRequest {
+	s.FileGroup = &v
+	return s
+}
+
+func (s *SendFileRequest) SetFileMode(v string) *SendFileRequest {
+	s.FileMode = &v
+	return s
+}
+
+func (s *SendFileRequest) SetOverwrite(v bool) *SendFileRequest {
+	s.Overwrite = &v
+	return s
+}
+
+type SendFileResponse struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	InvokeId  *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty" require:"true"`
+}
+
+func (s SendFileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendFileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SendFileResponse) SetRequestId(v string) *SendFileResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SendFileResponse) SetInvokeId(v string) *SendFileResponse {
+	s.InvokeId = &v
+	return s
+}
+
+type DescribeSendFileResultsRequest struct {
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty" require:"true"`
+	InvokeId   *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeSendFileResultsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSendFileResultsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSendFileResultsRequest) SetRegionId(v string) *DescribeSendFileResultsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsRequest) SetInvokeId(v string) *DescribeSendFileResultsRequest {
+	s.InvokeId = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsRequest) SetName(v string) *DescribeSendFileResultsRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsRequest) SetInstanceId(v string) *DescribeSendFileResultsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsRequest) SetPageNumber(v int64) *DescribeSendFileResultsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsRequest) SetPageSize(v int64) *DescribeSendFileResultsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeSendFileResultsResponse struct {
+	RequestId   *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	TotalCount  *int64                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty" require:"true"`
+	PageNumber  *int64                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty" require:"true"`
+	PageSize    *int64                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty" require:"true"`
+	Invocations *DescribeSendFileResultsResponseInvocations `json:"Invocations,omitempty" xml:"Invocations,omitempty" require:"true" type:"Struct"`
+}
+
+func (s DescribeSendFileResultsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSendFileResultsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSendFileResultsResponse) SetRequestId(v string) *DescribeSendFileResultsResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponse) SetTotalCount(v int64) *DescribeSendFileResultsResponse {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponse) SetPageNumber(v int64) *DescribeSendFileResultsResponse {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponse) SetPageSize(v int64) *DescribeSendFileResultsResponse {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponse) SetInvocations(v *DescribeSendFileResultsResponseInvocations) *DescribeSendFileResultsResponse {
+	s.Invocations = v
+	return s
+}
+
+type DescribeSendFileResultsResponseInvocations struct {
+	Invocation []*DescribeSendFileResultsResponseInvocationsInvocation `json:"Invocation,omitempty" xml:"Invocation,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s DescribeSendFileResultsResponseInvocations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSendFileResultsResponseInvocations) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSendFileResultsResponseInvocations) SetInvocation(v []*DescribeSendFileResultsResponseInvocationsInvocation) *DescribeSendFileResultsResponseInvocations {
+	s.Invocation = v
+	return s
+}
+
+type DescribeSendFileResultsResponseInvocationsInvocation struct {
+	InvokeId         *string                                                              `json:"InvokeId,omitempty" xml:"InvokeId,omitempty" require:"true"`
+	Name             *string                                                              `json:"Name,omitempty" xml:"Name,omitempty" require:"true"`
+	Description      *string                                                              `json:"Description,omitempty" xml:"Description,omitempty" require:"true"`
+	TargetDir        *string                                                              `json:"TargetDir,omitempty" xml:"TargetDir,omitempty" require:"true"`
+	ContentType      *string                                                              `json:"ContentType,omitempty" xml:"ContentType,omitempty" require:"true"`
+	Content          *string                                                              `json:"Content,omitempty" xml:"Content,omitempty" require:"true"`
+	FileOwner        *string                                                              `json:"FileOwner,omitempty" xml:"FileOwner,omitempty" require:"true"`
+	FileGroup        *string                                                              `json:"FileGroup,omitempty" xml:"FileGroup,omitempty" require:"true"`
+	FileMode         *string                                                              `json:"FileMode,omitempty" xml:"FileMode,omitempty" require:"true"`
+	Overwrite        *string                                                              `json:"Overwrite,omitempty" xml:"Overwrite,omitempty" require:"true"`
+	VmCount          *int                                                                 `json:"VmCount,omitempty" xml:"VmCount,omitempty" require:"true"`
+	CreationTime     *string                                                              `json:"CreationTime,omitempty" xml:"CreationTime,omitempty" require:"true"`
+	InvocationStatus *string                                                              `json:"InvocationStatus,omitempty" xml:"InvocationStatus,omitempty" require:"true"`
+	InvokeInstances  *DescribeSendFileResultsResponseInvocationsInvocationInvokeInstances `json:"InvokeInstances,omitempty" xml:"InvokeInstances,omitempty" require:"true" type:"Struct"`
+}
+
+func (s DescribeSendFileResultsResponseInvocationsInvocation) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSendFileResultsResponseInvocationsInvocation) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSendFileResultsResponseInvocationsInvocation) SetInvokeId(v string) *DescribeSendFileResultsResponseInvocationsInvocation {
+	s.InvokeId = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponseInvocationsInvocation) SetName(v string) *DescribeSendFileResultsResponseInvocationsInvocation {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponseInvocationsInvocation) SetDescription(v string) *DescribeSendFileResultsResponseInvocationsInvocation {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponseInvocationsInvocation) SetTargetDir(v string) *DescribeSendFileResultsResponseInvocationsInvocation {
+	s.TargetDir = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponseInvocationsInvocation) SetContentType(v string) *DescribeSendFileResultsResponseInvocationsInvocation {
+	s.ContentType = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponseInvocationsInvocation) SetContent(v string) *DescribeSendFileResultsResponseInvocationsInvocation {
+	s.Content = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponseInvocationsInvocation) SetFileOwner(v string) *DescribeSendFileResultsResponseInvocationsInvocation {
+	s.FileOwner = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponseInvocationsInvocation) SetFileGroup(v string) *DescribeSendFileResultsResponseInvocationsInvocation {
+	s.FileGroup = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponseInvocationsInvocation) SetFileMode(v string) *DescribeSendFileResultsResponseInvocationsInvocation {
+	s.FileMode = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponseInvocationsInvocation) SetOverwrite(v string) *DescribeSendFileResultsResponseInvocationsInvocation {
+	s.Overwrite = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponseInvocationsInvocation) SetVmCount(v int) *DescribeSendFileResultsResponseInvocationsInvocation {
+	s.VmCount = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponseInvocationsInvocation) SetCreationTime(v string) *DescribeSendFileResultsResponseInvocationsInvocation {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponseInvocationsInvocation) SetInvocationStatus(v string) *DescribeSendFileResultsResponseInvocationsInvocation {
+	s.InvocationStatus = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponseInvocationsInvocation) SetInvokeInstances(v *DescribeSendFileResultsResponseInvocationsInvocationInvokeInstances) *DescribeSendFileResultsResponseInvocationsInvocation {
+	s.InvokeInstances = v
+	return s
+}
+
+type DescribeSendFileResultsResponseInvocationsInvocationInvokeInstances struct {
+	InvokeInstance []*DescribeSendFileResultsResponseInvocationsInvocationInvokeInstancesInvokeInstance `json:"InvokeInstance,omitempty" xml:"InvokeInstance,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s DescribeSendFileResultsResponseInvocationsInvocationInvokeInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSendFileResultsResponseInvocationsInvocationInvokeInstances) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSendFileResultsResponseInvocationsInvocationInvokeInstances) SetInvokeInstance(v []*DescribeSendFileResultsResponseInvocationsInvocationInvokeInstancesInvokeInstance) *DescribeSendFileResultsResponseInvocationsInvocationInvokeInstances {
+	s.InvokeInstance = v
+	return s
+}
+
+type DescribeSendFileResultsResponseInvocationsInvocationInvokeInstancesInvokeInstance struct {
+	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" require:"true"`
+	InvocationStatus *string `json:"InvocationStatus,omitempty" xml:"InvocationStatus,omitempty" require:"true"`
+	CreationTime     *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty" require:"true"`
+	StartTime        *string `json:"StartTime,omitempty" xml:"StartTime,omitempty" require:"true"`
+	FinishTime       *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty" require:"true"`
+	UpdateTime       *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty" require:"true"`
+	ErrorCode        *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty" require:"true"`
+	ErrorInfo        *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty" require:"true"`
+}
+
+func (s DescribeSendFileResultsResponseInvocationsInvocationInvokeInstancesInvokeInstance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSendFileResultsResponseInvocationsInvocationInvokeInstancesInvokeInstance) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSendFileResultsResponseInvocationsInvocationInvokeInstancesInvokeInstance) SetInstanceId(v string) *DescribeSendFileResultsResponseInvocationsInvocationInvokeInstancesInvokeInstance {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponseInvocationsInvocationInvokeInstancesInvokeInstance) SetInvocationStatus(v string) *DescribeSendFileResultsResponseInvocationsInvocationInvokeInstancesInvokeInstance {
+	s.InvocationStatus = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponseInvocationsInvocationInvokeInstancesInvokeInstance) SetCreationTime(v string) *DescribeSendFileResultsResponseInvocationsInvocationInvokeInstancesInvokeInstance {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponseInvocationsInvocationInvokeInstancesInvokeInstance) SetStartTime(v string) *DescribeSendFileResultsResponseInvocationsInvocationInvokeInstancesInvokeInstance {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponseInvocationsInvocationInvokeInstancesInvokeInstance) SetFinishTime(v string) *DescribeSendFileResultsResponseInvocationsInvocationInvokeInstancesInvokeInstance {
+	s.FinishTime = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponseInvocationsInvocationInvokeInstancesInvokeInstance) SetUpdateTime(v string) *DescribeSendFileResultsResponseInvocationsInvocationInvokeInstancesInvokeInstance {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponseInvocationsInvocationInvokeInstancesInvokeInstance) SetErrorCode(v string) *DescribeSendFileResultsResponseInvocationsInvocationInvokeInstancesInvokeInstance {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponseInvocationsInvocationInvokeInstancesInvokeInstance) SetErrorInfo(v string) *DescribeSendFileResultsResponseInvocationsInvocationInvokeInstancesInvokeInstance {
+	s.ErrorInfo = &v
+	return s
+}
+
 type ModifyDedicatedHostClusterAttributeRequest struct {
 	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty" require:"true"`
 	DedicatedHostClusterId   *string `json:"DedicatedHostClusterId,omitempty" xml:"DedicatedHostClusterId,omitempty" require:"true"`
@@ -38502,6 +38884,56 @@ func (client *Client) Init(config *rpc.Config) (_err error) {
 	}
 
 	return nil
+}
+
+func (client *Client) SendFileWithOptions(request *SendFileRequest, runtime *util.RuntimeOptions) (_result *SendFileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &SendFileResponse{}
+	_body, _err := client.DoRequest(tea.String("SendFile"), tea.String("HTTPS"), tea.String("POST"), tea.String("2014-05-26"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SendFile(request *SendFileRequest) (_result *SendFileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SendFileResponse{}
+	_body, _err := client.SendFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeSendFileResultsWithOptions(request *DescribeSendFileResultsRequest, runtime *util.RuntimeOptions) (_result *DescribeSendFileResultsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &DescribeSendFileResultsResponse{}
+	_body, _err := client.DoRequest(tea.String("DescribeSendFileResults"), tea.String("HTTPS"), tea.String("POST"), tea.String("2014-05-26"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeSendFileResults(request *DescribeSendFileResultsRequest) (_result *DescribeSendFileResultsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSendFileResultsResponse{}
+	_body, _err := client.DescribeSendFileResultsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
 }
 
 func (client *Client) ModifyDedicatedHostClusterAttributeWithOptions(request *ModifyDedicatedHostClusterAttributeRequest, runtime *util.RuntimeOptions) (_result *ModifyDedicatedHostClusterAttributeResponse, _err error) {
