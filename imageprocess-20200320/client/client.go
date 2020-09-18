@@ -812,6 +812,8 @@ func (s *CalcCACSResponseData) SetScore(v string) *CalcCACSResponseData {
 type DetectKneeXRayRequest struct {
 	Url        *string `json:"Url,omitempty" xml:"Url,omitempty" require:"true"`
 	DataFormat *string `json:"DataFormat,omitempty" xml:"DataFormat,omitempty" require:"true"`
+	OrgName    *string `json:"OrgName,omitempty" xml:"OrgName,omitempty" require:"true"`
+	OrgId      *string `json:"OrgId,omitempty" xml:"OrgId,omitempty" require:"true"`
 }
 
 func (s DetectKneeXRayRequest) String() string {
@@ -829,6 +831,16 @@ func (s *DetectKneeXRayRequest) SetUrl(v string) *DetectKneeXRayRequest {
 
 func (s *DetectKneeXRayRequest) SetDataFormat(v string) *DetectKneeXRayRequest {
 	s.DataFormat = &v
+	return s
+}
+
+func (s *DetectKneeXRayRequest) SetOrgName(v string) *DetectKneeXRayRequest {
+	s.OrgName = &v
+	return s
+}
+
+func (s *DetectKneeXRayRequest) SetOrgId(v string) *DetectKneeXRayRequest {
+	s.OrgId = &v
 	return s
 }
 
@@ -892,6 +904,8 @@ func (s *DetectKneeXRayResponseDataKLDetections) SetDetections(v []*float32) *De
 type DetectKneeXRayAdvanceRequest struct {
 	UrlObject  io.Reader `json:"UrlObject,omitempty" xml:"UrlObject,omitempty" require:"true"`
 	DataFormat *string   `json:"DataFormat,omitempty" xml:"DataFormat,omitempty" require:"true"`
+	OrgName    *string   `json:"OrgName,omitempty" xml:"OrgName,omitempty" require:"true"`
+	OrgId      *string   `json:"OrgId,omitempty" xml:"OrgId,omitempty" require:"true"`
 }
 
 func (s DetectKneeXRayAdvanceRequest) String() string {
@@ -912,8 +926,21 @@ func (s *DetectKneeXRayAdvanceRequest) SetDataFormat(v string) *DetectKneeXRayAd
 	return s
 }
 
+func (s *DetectKneeXRayAdvanceRequest) SetOrgName(v string) *DetectKneeXRayAdvanceRequest {
+	s.OrgName = &v
+	return s
+}
+
+func (s *DetectKneeXRayAdvanceRequest) SetOrgId(v string) *DetectKneeXRayAdvanceRequest {
+	s.OrgId = &v
+	return s
+}
+
 type DetectSpineMRIRequest struct {
-	URLList []*DetectSpineMRIRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" require:"true" type:"Repeated"`
+	URLList    []*DetectSpineMRIRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" require:"true" type:"Repeated"`
+	DataFormat *string                         `json:"DataFormat,omitempty" xml:"DataFormat,omitempty" require:"true"`
+	OrgName    *string                         `json:"OrgName,omitempty" xml:"OrgName,omitempty" require:"true"`
+	OrgId      *string                         `json:"OrgId,omitempty" xml:"OrgId,omitempty" require:"true"`
 }
 
 func (s DetectSpineMRIRequest) String() string {
@@ -926,6 +953,21 @@ func (s DetectSpineMRIRequest) GoString() string {
 
 func (s *DetectSpineMRIRequest) SetURLList(v []*DetectSpineMRIRequestURLList) *DetectSpineMRIRequest {
 	s.URLList = v
+	return s
+}
+
+func (s *DetectSpineMRIRequest) SetDataFormat(v string) *DetectSpineMRIRequest {
+	s.DataFormat = &v
+	return s
+}
+
+func (s *DetectSpineMRIRequest) SetOrgName(v string) *DetectSpineMRIRequest {
+	s.OrgName = &v
+	return s
+}
+
+func (s *DetectSpineMRIRequest) SetOrgId(v string) *DetectSpineMRIRequest {
+	s.OrgId = &v
 	return s
 }
 
@@ -1126,7 +1168,10 @@ func (s *TranslateMedResponseData) SetWords(v int64) *TranslateMedResponseData {
 }
 
 type DetectLungNoduleRequest struct {
-	URLList []*DetectLungNoduleRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" require:"true" type:"Repeated"`
+	URLList    []*DetectLungNoduleRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" require:"true" type:"Repeated"`
+	DataFormat *string                           `json:"DataFormat,omitempty" xml:"DataFormat,omitempty" require:"true"`
+	OrgName    *string                           `json:"OrgName,omitempty" xml:"OrgName,omitempty" require:"true"`
+	OrgId      *string                           `json:"OrgId,omitempty" xml:"OrgId,omitempty" require:"true"`
 }
 
 func (s DetectLungNoduleRequest) String() string {
@@ -1139,6 +1184,21 @@ func (s DetectLungNoduleRequest) GoString() string {
 
 func (s *DetectLungNoduleRequest) SetURLList(v []*DetectLungNoduleRequestURLList) *DetectLungNoduleRequest {
 	s.URLList = v
+	return s
+}
+
+func (s *DetectLungNoduleRequest) SetDataFormat(v string) *DetectLungNoduleRequest {
+	s.DataFormat = &v
+	return s
+}
+
+func (s *DetectLungNoduleRequest) SetOrgName(v string) *DetectLungNoduleRequest {
+	s.OrgName = &v
+	return s
+}
+
+func (s *DetectLungNoduleRequest) SetOrgId(v string) *DetectLungNoduleRequest {
+	s.OrgId = &v
 	return s
 }
 
@@ -1202,6 +1262,8 @@ func (s *DetectLungNoduleResponseData) SetSeries(v []*DetectLungNoduleResponseDa
 type DetectLungNoduleResponseDataSeries struct {
 	SeriesInstanceUid *string                                       `json:"SeriesInstanceUid,omitempty" xml:"SeriesInstanceUid,omitempty" require:"true"`
 	Elements          []*DetectLungNoduleResponseDataSeriesElements `json:"Elements,omitempty" xml:"Elements,omitempty" require:"true" type:"Repeated"`
+	Origin            []*float32                                    `json:"Origin,omitempty" xml:"Origin,omitempty" require:"true" type:"Repeated"`
+	Spacing           []*float32                                    `json:"Spacing,omitempty" xml:"Spacing,omitempty" require:"true" type:"Repeated"`
 }
 
 func (s DetectLungNoduleResponseDataSeries) String() string {
@@ -1222,6 +1284,16 @@ func (s *DetectLungNoduleResponseDataSeries) SetElements(v []*DetectLungNoduleRe
 	return s
 }
 
+func (s *DetectLungNoduleResponseDataSeries) SetOrigin(v []*float32) *DetectLungNoduleResponseDataSeries {
+	s.Origin = v
+	return s
+}
+
+func (s *DetectLungNoduleResponseDataSeries) SetSpacing(v []*float32) *DetectLungNoduleResponseDataSeries {
+	s.Spacing = v
+	return s
+}
+
 type DetectLungNoduleResponseDataSeriesElements struct {
 	Category   *string  `json:"Category,omitempty" xml:"Category,omitempty" require:"true"`
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty" require:"true"`
@@ -1231,6 +1303,9 @@ type DetectLungNoduleResponseDataSeriesElements struct {
 	X          *float32 `json:"X,omitempty" xml:"X,omitempty" require:"true"`
 	Z          *float32 `json:"Z,omitempty" xml:"Z,omitempty" require:"true"`
 	Y          *float32 `json:"Y,omitempty" xml:"Y,omitempty" require:"true"`
+	ImageX     *float32 `json:"ImageX,omitempty" xml:"ImageX,omitempty" require:"true"`
+	ImageY     *float32 `json:"ImageY,omitempty" xml:"ImageY,omitempty" require:"true"`
+	ImageZ     *float32 `json:"ImageZ,omitempty" xml:"ImageZ,omitempty" require:"true"`
 }
 
 func (s DetectLungNoduleResponseDataSeriesElements) String() string {
@@ -1281,8 +1356,26 @@ func (s *DetectLungNoduleResponseDataSeriesElements) SetY(v float32) *DetectLung
 	return s
 }
 
+func (s *DetectLungNoduleResponseDataSeriesElements) SetImageX(v float32) *DetectLungNoduleResponseDataSeriesElements {
+	s.ImageX = &v
+	return s
+}
+
+func (s *DetectLungNoduleResponseDataSeriesElements) SetImageY(v float32) *DetectLungNoduleResponseDataSeriesElements {
+	s.ImageY = &v
+	return s
+}
+
+func (s *DetectLungNoduleResponseDataSeriesElements) SetImageZ(v float32) *DetectLungNoduleResponseDataSeriesElements {
+	s.ImageZ = &v
+	return s
+}
+
 type DetectCovid19CadRequest struct {
-	URLList []*DetectCovid19CadRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" require:"true" type:"Repeated"`
+	URLList    []*DetectCovid19CadRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" require:"true" type:"Repeated"`
+	DataFormat *string                           `json:"DataFormat,omitempty" xml:"DataFormat,omitempty" require:"true"`
+	OrgName    *string                           `json:"OrgName,omitempty" xml:"OrgName,omitempty" require:"true"`
+	OrgId      *string                           `json:"OrgId,omitempty" xml:"OrgId,omitempty" require:"true"`
 }
 
 func (s DetectCovid19CadRequest) String() string {
@@ -1295,6 +1388,21 @@ func (s DetectCovid19CadRequest) GoString() string {
 
 func (s *DetectCovid19CadRequest) SetURLList(v []*DetectCovid19CadRequestURLList) *DetectCovid19CadRequest {
 	s.URLList = v
+	return s
+}
+
+func (s *DetectCovid19CadRequest) SetDataFormat(v string) *DetectCovid19CadRequest {
+	s.DataFormat = &v
+	return s
+}
+
+func (s *DetectCovid19CadRequest) SetOrgName(v string) *DetectCovid19CadRequest {
+	s.OrgName = &v
+	return s
+}
+
+func (s *DetectCovid19CadRequest) SetOrgId(v string) *DetectCovid19CadRequest {
+	s.OrgId = &v
 	return s
 }
 
