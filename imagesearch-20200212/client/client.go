@@ -21,6 +21,7 @@ type SearchImageByNameRequest struct {
 	PicName      *string `json:"PicName,omitempty" xml:"PicName,omitempty" require:"true"`
 	Num          *int    `json:"Num,omitempty" xml:"Num,omitempty"`
 	Start        *int    `json:"Start,omitempty" xml:"Start,omitempty"`
+	Filter       *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
 }
 
 func (s SearchImageByNameRequest) String() string {
@@ -58,6 +59,11 @@ func (s *SearchImageByNameRequest) SetNum(v int) *SearchImageByNameRequest {
 
 func (s *SearchImageByNameRequest) SetStart(v int) *SearchImageByNameRequest {
 	s.Start = &v
+	return s
+}
+
+func (s *SearchImageByNameRequest) SetFilter(v string) *SearchImageByNameRequest {
+	s.Filter = &v
 	return s
 }
 
@@ -256,6 +262,7 @@ type SearchImageByPicRequest struct {
 	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	Num          *int    `json:"Num,omitempty" xml:"Num,omitempty"`
 	Start        *int    `json:"Start,omitempty" xml:"Start,omitempty"`
+	Filter       *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
 }
 
 func (s SearchImageByPicRequest) String() string {
@@ -298,6 +305,11 @@ func (s *SearchImageByPicRequest) SetNum(v int) *SearchImageByPicRequest {
 
 func (s *SearchImageByPicRequest) SetStart(v int) *SearchImageByPicRequest {
 	s.Start = &v
+	return s
+}
+
+func (s *SearchImageByPicRequest) SetFilter(v string) *SearchImageByPicRequest {
+	s.Filter = &v
 	return s
 }
 
@@ -496,6 +508,7 @@ type SearchImageByPicAdvanceRequest struct {
 	Region           *string   `json:"Region,omitempty" xml:"Region,omitempty"`
 	Num              *int      `json:"Num,omitempty" xml:"Num,omitempty"`
 	Start            *int      `json:"Start,omitempty" xml:"Start,omitempty"`
+	Filter           *string   `json:"Filter,omitempty" xml:"Filter,omitempty"`
 }
 
 func (s SearchImageByPicAdvanceRequest) String() string {
@@ -538,6 +551,11 @@ func (s *SearchImageByPicAdvanceRequest) SetNum(v int) *SearchImageByPicAdvanceR
 
 func (s *SearchImageByPicAdvanceRequest) SetStart(v int) *SearchImageByPicAdvanceRequest {
 	s.Start = &v
+	return s
+}
+
+func (s *SearchImageByPicAdvanceRequest) SetFilter(v string) *SearchImageByPicAdvanceRequest {
+	s.Filter = &v
 	return s
 }
 
