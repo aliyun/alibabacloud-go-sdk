@@ -13,32 +13,32 @@ import (
 )
 
 type AttachInstancesRequest struct {
-	// 待添加的实例列表。
-	Instances []*string `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
-	// 容器运行时。
-	Runtime *AttachInstancesRequestRuntime `json:"runtime,omitempty" xml:"runtime,omitempty" type:"Struct"`
-	// 自定义镜像ID。
-	ImageId *string `json:"image_id,omitempty" xml:"image_id,omitempty"`
-	// 是否格式化数据盘。
-	FormatDisk *bool `json:"format_disk,omitempty" xml:"format_disk,omitempty"`
-	// 是否保留实例名称。
-	KeepInstanceName *bool `json:"keep_instance_name,omitempty" xml:"keep_instance_name,omitempty"`
 	// CPU策略。
 	CpuPolicy *string `json:"cpu_policy,omitempty" xml:"cpu_policy,omitempty"`
-	// key_pair名称，与login_password二选一
-	KeyPair *string `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
-	// password，与key_pair二选一。
-	Password *string `json:"password,omitempty" xml:"password,omitempty"`
+	// 是否格式化数据盘。
+	FormatDisk *bool `json:"format_disk,omitempty" xml:"format_disk,omitempty"`
+	// 自定义镜像ID。
+	ImageId *string `json:"image_id,omitempty" xml:"image_id,omitempty"`
+	// 待添加的实例列表。
+	Instances []*string `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
 	// 是否为边缘节点。
 	IsEdgeWorker *bool `json:"is_edge_worker,omitempty" xml:"is_edge_worker,omitempty"`
-	// 用户自定义数据。
-	UserData *string `json:"user_data,omitempty" xml:"user_data,omitempty"`
+	// 是否保留实例名称。
+	KeepInstanceName *bool `json:"keep_instance_name,omitempty" xml:"keep_instance_name,omitempty"`
+	// key_pair名称，与login_password二选一
+	KeyPair *string `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
 	// 节点池ID，欲将节点添加到哪个节点池中。。
 	NodepoolId *string `json:"nodepool_id,omitempty" xml:"nodepool_id,omitempty"`
+	// password，与key_pair二选一。
+	Password *string `json:"password,omitempty" xml:"password,omitempty"`
 	// RDS实例列表。
 	RdsInstances []*string `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
+	// 容器运行时。
+	Runtime *AttachInstancesRequestRuntime `json:"runtime,omitempty" xml:"runtime,omitempty" type:"Struct"`
 	// 节点标签。
 	Tags []*AttachInstancesRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// 用户自定义数据。
+	UserData *string `json:"user_data,omitempty" xml:"user_data,omitempty"`
 }
 
 func (s AttachInstancesRequest) String() string {
@@ -49,18 +49,8 @@ func (s AttachInstancesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *AttachInstancesRequest) SetInstances(v []*string) *AttachInstancesRequest {
-	s.Instances = v
-	return s
-}
-
-func (s *AttachInstancesRequest) SetRuntime(v *AttachInstancesRequestRuntime) *AttachInstancesRequest {
-	s.Runtime = v
-	return s
-}
-
-func (s *AttachInstancesRequest) SetImageId(v string) *AttachInstancesRequest {
-	s.ImageId = &v
+func (s *AttachInstancesRequest) SetCpuPolicy(v string) *AttachInstancesRequest {
+	s.CpuPolicy = &v
 	return s
 }
 
@@ -69,23 +59,13 @@ func (s *AttachInstancesRequest) SetFormatDisk(v bool) *AttachInstancesRequest {
 	return s
 }
 
-func (s *AttachInstancesRequest) SetKeepInstanceName(v bool) *AttachInstancesRequest {
-	s.KeepInstanceName = &v
+func (s *AttachInstancesRequest) SetImageId(v string) *AttachInstancesRequest {
+	s.ImageId = &v
 	return s
 }
 
-func (s *AttachInstancesRequest) SetCpuPolicy(v string) *AttachInstancesRequest {
-	s.CpuPolicy = &v
-	return s
-}
-
-func (s *AttachInstancesRequest) SetKeyPair(v string) *AttachInstancesRequest {
-	s.KeyPair = &v
-	return s
-}
-
-func (s *AttachInstancesRequest) SetPassword(v string) *AttachInstancesRequest {
-	s.Password = &v
+func (s *AttachInstancesRequest) SetInstances(v []*string) *AttachInstancesRequest {
+	s.Instances = v
 	return s
 }
 
@@ -94,8 +74,13 @@ func (s *AttachInstancesRequest) SetIsEdgeWorker(v bool) *AttachInstancesRequest
 	return s
 }
 
-func (s *AttachInstancesRequest) SetUserData(v string) *AttachInstancesRequest {
-	s.UserData = &v
+func (s *AttachInstancesRequest) SetKeepInstanceName(v bool) *AttachInstancesRequest {
+	s.KeepInstanceName = &v
+	return s
+}
+
+func (s *AttachInstancesRequest) SetKeyPair(v string) *AttachInstancesRequest {
+	s.KeyPair = &v
 	return s
 }
 
@@ -104,13 +89,28 @@ func (s *AttachInstancesRequest) SetNodepoolId(v string) *AttachInstancesRequest
 	return s
 }
 
+func (s *AttachInstancesRequest) SetPassword(v string) *AttachInstancesRequest {
+	s.Password = &v
+	return s
+}
+
 func (s *AttachInstancesRequest) SetRdsInstances(v []*string) *AttachInstancesRequest {
 	s.RdsInstances = v
 	return s
 }
 
+func (s *AttachInstancesRequest) SetRuntime(v *AttachInstancesRequestRuntime) *AttachInstancesRequest {
+	s.Runtime = v
+	return s
+}
+
 func (s *AttachInstancesRequest) SetTags(v []*AttachInstancesRequestTags) *AttachInstancesRequest {
 	s.Tags = v
+	return s
+}
+
+func (s *AttachInstancesRequest) SetUserData(v string) *AttachInstancesRequest {
+	s.UserData = &v
 	return s
 }
 
@@ -279,120 +279,120 @@ func (s *CancelComponentUpgradeResponse) SetHeaders(v map[string]*string) *Cance
 }
 
 type CreateClusterRequest struct {
-	// 集群名称。
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 组件信息。
+	Addons []*CreateClusterRequestAddons `json:"addons,omitempty" xml:"addons,omitempty" type:"Repeated"`
+	// 是否安装云监控插件。
+	CloudMonitorFlags *bool `json:"cloud_monitor_flags,omitempty" xml:"cloud_monitor_flags,omitempty"`
 	// 集群类型
 	ClusterType *string `json:"cluster_type,omitempty" xml:"cluster_type,omitempty"`
-	// 集群所属地域ID。
-	RegionId *string `json:"region_id,omitempty" xml:"region_id,omitempty"`
-	// 集群所属地域内的可用区ID。
-	ZoneId *string `json:"zone_id,omitempty" xml:"zone_id,omitempty"`
-	// 集群版本好。
-	KubernetesVersion *string `json:"kubernetes_version,omitempty" xml:"kubernetes_version,omitempty"`
-	// 集群是否开启删除保护。
-	DeletionProtection *string `json:"deletion_protection,omitempty" xml:"deletion_protection,omitempty"`
-	// 容器运行时。
-	Runtime *CreateClusterRequestRuntime `json:"runtime,omitempty" xml:"runtime,omitempty" type:"Struct"`
-	// 集群使用的VPC。
-	Vpcid *string `json:"vpcid,omitempty" xml:"vpcid,omitempty"`
-	// 集群使用的虚拟交换机。
-	WorkerVswitchIds []*string `json:"worker_vswitch_ids,omitempty" xml:"worker_vswitch_ids,omitempty" type:"Repeated"`
 	// POD网络地址段。
 	ContainerCidr *string `json:"container_cidr,omitempty" xml:"container_cidr,omitempty"`
-	// Service网络地址段。
-	ServiceCidr *string `json:"service_cidr,omitempty" xml:"service_cidr,omitempty"`
-	// 节点IP数量，这里通过CIDR来指定。
-	NodeCidrMask *string `json:"node_cidr_mask,omitempty" xml:"node_cidr_mask,omitempty"`
-	// 集群是否配置SNAT。
-	SnatEntry *bool `json:"snat_entry,omitempty" xml:"snat_entry,omitempty"`
+	// CPU管理策略。
+	CpuPolicy *string `json:"cpu_policy,omitempty" xml:"cpu_policy,omitempty"`
+	// 集群是否开启删除保护。
+	DeletionProtection *bool `json:"deletion_protection,omitempty" xml:"deletion_protection,omitempty"`
+	// 集群创建失败后是否回滚。
+	DisableRollback *bool `json:"disable_rollback,omitempty" xml:"disable_rollback,omitempty"`
 	// 集群是否运行公网访问。
 	EndpointPublicAccess *bool `json:"endpoint_public_access,omitempty" xml:"endpoint_public_access,omitempty"`
-	// 集群是否开启公网SSH登录。
-	SshFlags *bool `json:"ssh_flags,omitempty" xml:"ssh_flags,omitempty"`
-	// RDS列表，将该ECS加入到选择的RDS实例的白名单中。。
-	RdsInstances []*string `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
-	// 自定义安全组ID。
-	SecurityGroupId *string `json:"security_group_id,omitempty" xml:"security_group_id,omitempty"`
-	// 是否自动创建企业安全组，与security_group_id二选一。
-	IsEnterpriseSecurityGroup *bool `json:"is_enterprise_security_group,omitempty" xml:"is_enterprise_security_group,omitempty"`
-	// kube-proxy代理模式。
-	ProxyMode *string `json:"proxy_mode,omitempty" xml:"proxy_mode,omitempty"`
-	// 集群标签。
-	Tags []*CreateClusterRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// 自定义镜像ID。
 	ImagesId *string `json:"images_id,omitempty" xml:"images_id,omitempty"`
-	// Master节点付费类型。
-	MasterInstanceChargeType *string `json:"master_instance_charge_type,omitempty" xml:"master_instance_charge_type,omitempty"`
-	// Master节点包年包月时长，当master_instance_charge_type取值为PrePaid时才生效且为必选值。
-	MasterPeriod *int64 `json:"master_period,omitempty" xml:"master_period,omitempty"`
-	// Master节点包年包月周期。
-	MasterPeriodUnit *string `json:"master_period_unit,omitempty" xml:"master_period_unit,omitempty"`
+	// 是否自动创建企业安全组，与security_group_id二选一。
+	IsEnterpriseSecurityGroup *bool `json:"is_enterprise_security_group,omitempty" xml:"is_enterprise_security_group,omitempty"`
+	// key_pair名称，和login_password二选一。
+	KeyPair *string `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
+	// 集群版本好。
+	KubernetesVersion *string `json:"kubernetes_version,omitempty" xml:"kubernetes_version,omitempty"`
+	// SSH登录密码，与key_pair二选一。
+	LoginPassword *string `json:"login_password,omitempty" xml:"login_password,omitempty"`
 	// Master节点是否自动续费。
 	MasterAutoRenew *bool `json:"master_auto_renew,omitempty" xml:"master_auto_renew,omitempty"`
 	// Master节点自动续费周期。
 	MasterAutoRenewPeriod *int64 `json:"master_auto_renew_period,omitempty" xml:"master_auto_renew_period,omitempty"`
 	// Master节点数量。
 	MasterCount *int64 `json:"master_count,omitempty" xml:"master_count,omitempty"`
-	// Master节点交换机ID列表。
-	MasterVswitchIds []*string `json:"master_vswitch_ids,omitempty" xml:"master_vswitch_ids,omitempty" type:"Repeated"`
+	// Master节点付费类型。
+	MasterInstanceChargeType *string `json:"master_instance_charge_type,omitempty" xml:"master_instance_charge_type,omitempty"`
 	// Master节点ECS规格类型。
 	MasterInstanceTypes []*string `json:"master_instance_types,omitempty" xml:"master_instance_types,omitempty" type:"Repeated"`
+	// Master节点包年包月时长，当master_instance_charge_type取值为PrePaid时才生效且为必选值。
+	MasterPeriod *int64 `json:"master_period,omitempty" xml:"master_period,omitempty"`
+	// Master节点包年包月周期。
+	MasterPeriodUnit *string `json:"master_period_unit,omitempty" xml:"master_period_unit,omitempty"`
 	// Master节点系统盘类型。
 	MasterSystemDiskCategory *string `json:"master_system_disk_category,omitempty" xml:"master_system_disk_category,omitempty"`
 	// Master节点系统盘大小。
 	MasterSystemDiskSize *int64 `json:"master_system_disk_size,omitempty" xml:"master_system_disk_size,omitempty"`
-	// Worker节点付费类型。
-	WorkerInstanceChargeType *string `json:"worker_instance_charge_type,omitempty" xml:"worker_instance_charge_type,omitempty"`
-	// Worker节点包年包月时长。
-	WorkerPeriod *int64 `json:"worker_period,omitempty" xml:"worker_period,omitempty"`
-	// Worker节点包年包月周期。
-	WorkerPeriodUnit *string `json:"worker_period_unit,omitempty" xml:"worker_period_unit,omitempty"`
-	// Worker节点是否自动续费。
-	WorkerAutoRenew *bool `json:"worker_auto_renew,omitempty" xml:"worker_auto_renew,omitempty"`
-	// Worker节点自动续费周期。
-	WorkerAutoRenewPeriod *int64 `json:"worker_auto_renew_period,omitempty" xml:"worker_auto_renew_period,omitempty"`
-	// Worker节点数量。
-	NumOfNodes *int64 `json:"num_of_nodes,omitempty" xml:"num_of_nodes,omitempty"`
-	// Worker节点ECS实例类型。
-	WorkerInstanceTypes []*string `json:"worker_instance_types,omitempty" xml:"worker_instance_types,omitempty" type:"Repeated"`
-	// Worker节点系统盘类型。
-	WorkerSystemDiskCategory *string `json:"worker_system_disk_category,omitempty" xml:"worker_system_disk_category,omitempty"`
-	// Worker节点系统盘大小。
-	WorkerSystemDiskSize *int64 `json:"worker_system_disk_size,omitempty" xml:"worker_system_disk_size,omitempty"`
-	// Worker节点数据盘配置。
-	WorkerDataDisks []*CreateClusterRequestWorkerDataDisks `json:"worker_data_disks,omitempty" xml:"worker_data_disks,omitempty" type:"Repeated"`
-	// 操作系统。
-	OsType *string `json:"os_type,omitempty" xml:"os_type,omitempty"`
-	// key_pair名称，和login_password二选一。
-	KeyPair *string `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
-	// SSH登录密码，与key_pair二选一。
-	LoginPassword *string `json:"login_password,omitempty" xml:"login_password,omitempty"`
-	// 节点用户自定义数据。
-	UserData *string `json:"user_data,omitempty" xml:"user_data,omitempty"`
+	// Master节点交换机ID列表。
+	MasterVswitchIds []*string `json:"master_vswitch_ids,omitempty" xml:"master_vswitch_ids,omitempty" type:"Repeated"`
+	// 集群名称。
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 节点IP数量，这里通过CIDR来指定。
+	NodeCidrMask *string `json:"node_cidr_mask,omitempty" xml:"node_cidr_mask,omitempty"`
 	// 节点服务端口范围。
 	NodePortRange *string `json:"node_port_range,omitempty" xml:"node_port_range,omitempty"`
-	// CPU管理策略。
-	CpuPolicy *string `json:"cpu_policy,omitempty" xml:"cpu_policy,omitempty"`
-	// 污点信息。
-	Taints []*CreateClusterRequestTaints `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
-	// 是否安装云监控插件。
-	CloudMonitorFlags *bool `json:"cloud_monitor_flags,omitempty" xml:"cloud_monitor_flags,omitempty"`
-	// 组件信息。
-	Addons []*CreateClusterRequestAddons `json:"addons,omitempty" xml:"addons,omitempty" type:"Repeated"`
+	// Worker节点数量。
+	NumOfNodes *int64 `json:"num_of_nodes,omitempty" xml:"num_of_nodes,omitempty"`
+	// 操作系统。
+	OsType *string `json:"os_type,omitempty" xml:"os_type,omitempty"`
 	// 操作系统发行版。
 	Platform *string `json:"platform,omitempty" xml:"platform,omitempty"`
-	// 虚拟交换机列表。List长度范围为[1，3]。当集群类型为托管版或标准serverless集群时，该参数必填。
-	VswitchIds []*string `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
+	// Pod的虚拟交换机列表，在ENI多网卡模式下，需要传额外的VSwitch ID给addon。
+	PodVswitchIds []*string `json:"pod_vswitch_ids,omitempty" xml:"pod_vswitch_ids,omitempty" type:"Repeated"`
 	// 是否开启PrivateZone用于服务发现。
 	PrivateZone *bool `json:"private_zone,omitempty" xml:"private_zone,omitempty"`
 	// 边缘集群标识。
 	Profile *string `json:"profile,omitempty" xml:"profile,omitempty"`
-	// Pod的虚拟交换机列表，在ENI多网卡模式下，需要传额外的VSwitch ID给addon。
-	PodVswitchIds []*string `json:"pod_vswitch_ids,omitempty" xml:"pod_vswitch_ids,omitempty" type:"Repeated"`
-	// 集群创建失败后是否回滚。
-	DisableRollback *bool `json:"disable_rollback,omitempty" xml:"disable_rollback,omitempty"`
+	// kube-proxy代理模式。
+	ProxyMode *string `json:"proxy_mode,omitempty" xml:"proxy_mode,omitempty"`
+	// RDS列表，将该ECS加入到选择的RDS实例的白名单中。。
+	RdsInstances []*string `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
+	// 集群所属地域ID。
+	RegionId *string `json:"region_id,omitempty" xml:"region_id,omitempty"`
+	// 容器运行时。
+	Runtime *CreateClusterRequestRuntime `json:"runtime,omitempty" xml:"runtime,omitempty" type:"Struct"`
+	// 自定义安全组ID。
+	SecurityGroupId *string `json:"security_group_id,omitempty" xml:"security_group_id,omitempty"`
+	// Service网络地址段。
+	ServiceCidr *string `json:"service_cidr,omitempty" xml:"service_cidr,omitempty"`
+	// 集群是否配置SNAT。
+	SnatEntry *bool `json:"snat_entry,omitempty" xml:"snat_entry,omitempty"`
+	// 集群是否开启公网SSH登录。
+	SshFlags *bool `json:"ssh_flags,omitempty" xml:"ssh_flags,omitempty"`
+	// 集群标签。
+	Tags []*CreateClusterRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// 污点信息。
+	Taints []*CreateClusterRequestTaints `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
 	// 集群创建超时时间。
 	TimeoutMins *int64 `json:"timeout_mins,omitempty" xml:"timeout_mins,omitempty"`
+	// 节点用户自定义数据。
+	UserData *string `json:"user_data,omitempty" xml:"user_data,omitempty"`
+	// 集群使用的VPC。
+	Vpcid *string `json:"vpcid,omitempty" xml:"vpcid,omitempty"`
+	// 虚拟交换机列表。List长度范围为[1，3]。当集群类型为托管版或标准serverless集群时，该参数必填。
+	VswitchIds []*string `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
+	// Worker节点是否自动续费。
+	WorkerAutoRenew *bool `json:"worker_auto_renew,omitempty" xml:"worker_auto_renew,omitempty"`
+	// Worker节点自动续费周期。
+	WorkerAutoRenewPeriod *int64 `json:"worker_auto_renew_period,omitempty" xml:"worker_auto_renew_period,omitempty"`
+	// Worker节点数据盘配置。
+	WorkerDataDisks []*CreateClusterRequestWorkerDataDisks `json:"worker_data_disks,omitempty" xml:"worker_data_disks,omitempty" type:"Repeated"`
+	// Worker节点付费类型。
+	WorkerInstanceChargeType *string `json:"worker_instance_charge_type,omitempty" xml:"worker_instance_charge_type,omitempty"`
+	// Worker节点ECS实例类型。
+	WorkerInstanceTypes []*string `json:"worker_instance_types,omitempty" xml:"worker_instance_types,omitempty" type:"Repeated"`
+	// Worker节点包年包月时长。
+	WorkerPeriod *int64 `json:"worker_period,omitempty" xml:"worker_period,omitempty"`
+	// Worker节点包年包月周期。
+	WorkerPeriodUnit *string `json:"worker_period_unit,omitempty" xml:"worker_period_unit,omitempty"`
+	// Worker节点系统盘类型。
+	WorkerSystemDiskCategory *string `json:"worker_system_disk_category,omitempty" xml:"worker_system_disk_category,omitempty"`
+	// Worker节点系统盘大小。
+	WorkerSystemDiskSize *int64 `json:"worker_system_disk_size,omitempty" xml:"worker_system_disk_size,omitempty"`
+	// 集群使用的虚拟交换机。
+	WorkerVswitchIds []*string `json:"worker_vswitch_ids,omitempty" xml:"worker_vswitch_ids,omitempty" type:"Repeated"`
+	// 集群所属地域内的可用区ID。
+	ZoneId *string `json:"zone_id,omitempty" xml:"zone_id,omitempty"`
 }
 
 func (s CreateClusterRequest) String() string {
@@ -403,8 +403,13 @@ func (s CreateClusterRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateClusterRequest) SetName(v string) *CreateClusterRequest {
-	s.Name = &v
+func (s *CreateClusterRequest) SetAddons(v []*CreateClusterRequestAddons) *CreateClusterRequest {
+	s.Addons = v
+	return s
+}
+
+func (s *CreateClusterRequest) SetCloudMonitorFlags(v bool) *CreateClusterRequest {
+	s.CloudMonitorFlags = &v
 	return s
 }
 
@@ -413,58 +418,23 @@ func (s *CreateClusterRequest) SetClusterType(v string) *CreateClusterRequest {
 	return s
 }
 
-func (s *CreateClusterRequest) SetRegionId(v string) *CreateClusterRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetZoneId(v string) *CreateClusterRequest {
-	s.ZoneId = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetKubernetesVersion(v string) *CreateClusterRequest {
-	s.KubernetesVersion = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetDeletionProtection(v string) *CreateClusterRequest {
-	s.DeletionProtection = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetRuntime(v *CreateClusterRequestRuntime) *CreateClusterRequest {
-	s.Runtime = v
-	return s
-}
-
-func (s *CreateClusterRequest) SetVpcid(v string) *CreateClusterRequest {
-	s.Vpcid = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetWorkerVswitchIds(v []*string) *CreateClusterRequest {
-	s.WorkerVswitchIds = v
-	return s
-}
-
 func (s *CreateClusterRequest) SetContainerCidr(v string) *CreateClusterRequest {
 	s.ContainerCidr = &v
 	return s
 }
 
-func (s *CreateClusterRequest) SetServiceCidr(v string) *CreateClusterRequest {
-	s.ServiceCidr = &v
+func (s *CreateClusterRequest) SetCpuPolicy(v string) *CreateClusterRequest {
+	s.CpuPolicy = &v
 	return s
 }
 
-func (s *CreateClusterRequest) SetNodeCidrMask(v string) *CreateClusterRequest {
-	s.NodeCidrMask = &v
+func (s *CreateClusterRequest) SetDeletionProtection(v bool) *CreateClusterRequest {
+	s.DeletionProtection = &v
 	return s
 }
 
-func (s *CreateClusterRequest) SetSnatEntry(v bool) *CreateClusterRequest {
-	s.SnatEntry = &v
+func (s *CreateClusterRequest) SetDisableRollback(v bool) *CreateClusterRequest {
+	s.DisableRollback = &v
 	return s
 }
 
@@ -473,18 +443,8 @@ func (s *CreateClusterRequest) SetEndpointPublicAccess(v bool) *CreateClusterReq
 	return s
 }
 
-func (s *CreateClusterRequest) SetSshFlags(v bool) *CreateClusterRequest {
-	s.SshFlags = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetRdsInstances(v []*string) *CreateClusterRequest {
-	s.RdsInstances = v
-	return s
-}
-
-func (s *CreateClusterRequest) SetSecurityGroupId(v string) *CreateClusterRequest {
-	s.SecurityGroupId = &v
+func (s *CreateClusterRequest) SetImagesId(v string) *CreateClusterRequest {
+	s.ImagesId = &v
 	return s
 }
 
@@ -493,33 +453,18 @@ func (s *CreateClusterRequest) SetIsEnterpriseSecurityGroup(v bool) *CreateClust
 	return s
 }
 
-func (s *CreateClusterRequest) SetProxyMode(v string) *CreateClusterRequest {
-	s.ProxyMode = &v
+func (s *CreateClusterRequest) SetKeyPair(v string) *CreateClusterRequest {
+	s.KeyPair = &v
 	return s
 }
 
-func (s *CreateClusterRequest) SetTags(v []*CreateClusterRequestTags) *CreateClusterRequest {
-	s.Tags = v
+func (s *CreateClusterRequest) SetKubernetesVersion(v string) *CreateClusterRequest {
+	s.KubernetesVersion = &v
 	return s
 }
 
-func (s *CreateClusterRequest) SetImagesId(v string) *CreateClusterRequest {
-	s.ImagesId = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetMasterInstanceChargeType(v string) *CreateClusterRequest {
-	s.MasterInstanceChargeType = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetMasterPeriod(v int64) *CreateClusterRequest {
-	s.MasterPeriod = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetMasterPeriodUnit(v string) *CreateClusterRequest {
-	s.MasterPeriodUnit = &v
+func (s *CreateClusterRequest) SetLoginPassword(v string) *CreateClusterRequest {
+	s.LoginPassword = &v
 	return s
 }
 
@@ -538,13 +483,23 @@ func (s *CreateClusterRequest) SetMasterCount(v int64) *CreateClusterRequest {
 	return s
 }
 
-func (s *CreateClusterRequest) SetMasterVswitchIds(v []*string) *CreateClusterRequest {
-	s.MasterVswitchIds = v
+func (s *CreateClusterRequest) SetMasterInstanceChargeType(v string) *CreateClusterRequest {
+	s.MasterInstanceChargeType = &v
 	return s
 }
 
 func (s *CreateClusterRequest) SetMasterInstanceTypes(v []*string) *CreateClusterRequest {
 	s.MasterInstanceTypes = v
+	return s
+}
+
+func (s *CreateClusterRequest) SetMasterPeriod(v int64) *CreateClusterRequest {
+	s.MasterPeriod = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetMasterPeriodUnit(v string) *CreateClusterRequest {
+	s.MasterPeriodUnit = &v
 	return s
 }
 
@@ -558,73 +513,18 @@ func (s *CreateClusterRequest) SetMasterSystemDiskSize(v int64) *CreateClusterRe
 	return s
 }
 
-func (s *CreateClusterRequest) SetWorkerInstanceChargeType(v string) *CreateClusterRequest {
-	s.WorkerInstanceChargeType = &v
+func (s *CreateClusterRequest) SetMasterVswitchIds(v []*string) *CreateClusterRequest {
+	s.MasterVswitchIds = v
 	return s
 }
 
-func (s *CreateClusterRequest) SetWorkerPeriod(v int64) *CreateClusterRequest {
-	s.WorkerPeriod = &v
+func (s *CreateClusterRequest) SetName(v string) *CreateClusterRequest {
+	s.Name = &v
 	return s
 }
 
-func (s *CreateClusterRequest) SetWorkerPeriodUnit(v string) *CreateClusterRequest {
-	s.WorkerPeriodUnit = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetWorkerAutoRenew(v bool) *CreateClusterRequest {
-	s.WorkerAutoRenew = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetWorkerAutoRenewPeriod(v int64) *CreateClusterRequest {
-	s.WorkerAutoRenewPeriod = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetNumOfNodes(v int64) *CreateClusterRequest {
-	s.NumOfNodes = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetWorkerInstanceTypes(v []*string) *CreateClusterRequest {
-	s.WorkerInstanceTypes = v
-	return s
-}
-
-func (s *CreateClusterRequest) SetWorkerSystemDiskCategory(v string) *CreateClusterRequest {
-	s.WorkerSystemDiskCategory = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetWorkerSystemDiskSize(v int64) *CreateClusterRequest {
-	s.WorkerSystemDiskSize = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetWorkerDataDisks(v []*CreateClusterRequestWorkerDataDisks) *CreateClusterRequest {
-	s.WorkerDataDisks = v
-	return s
-}
-
-func (s *CreateClusterRequest) SetOsType(v string) *CreateClusterRequest {
-	s.OsType = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetKeyPair(v string) *CreateClusterRequest {
-	s.KeyPair = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetLoginPassword(v string) *CreateClusterRequest {
-	s.LoginPassword = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetUserData(v string) *CreateClusterRequest {
-	s.UserData = &v
+func (s *CreateClusterRequest) SetNodeCidrMask(v string) *CreateClusterRequest {
+	s.NodeCidrMask = &v
 	return s
 }
 
@@ -633,23 +533,13 @@ func (s *CreateClusterRequest) SetNodePortRange(v string) *CreateClusterRequest 
 	return s
 }
 
-func (s *CreateClusterRequest) SetCpuPolicy(v string) *CreateClusterRequest {
-	s.CpuPolicy = &v
+func (s *CreateClusterRequest) SetNumOfNodes(v int64) *CreateClusterRequest {
+	s.NumOfNodes = &v
 	return s
 }
 
-func (s *CreateClusterRequest) SetTaints(v []*CreateClusterRequestTaints) *CreateClusterRequest {
-	s.Taints = v
-	return s
-}
-
-func (s *CreateClusterRequest) SetCloudMonitorFlags(v bool) *CreateClusterRequest {
-	s.CloudMonitorFlags = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetAddons(v []*CreateClusterRequestAddons) *CreateClusterRequest {
-	s.Addons = v
+func (s *CreateClusterRequest) SetOsType(v string) *CreateClusterRequest {
+	s.OsType = &v
 	return s
 }
 
@@ -658,8 +548,8 @@ func (s *CreateClusterRequest) SetPlatform(v string) *CreateClusterRequest {
 	return s
 }
 
-func (s *CreateClusterRequest) SetVswitchIds(v []*string) *CreateClusterRequest {
-	s.VswitchIds = v
+func (s *CreateClusterRequest) SetPodVswitchIds(v []*string) *CreateClusterRequest {
+	s.PodVswitchIds = v
 	return s
 }
 
@@ -673,18 +563,153 @@ func (s *CreateClusterRequest) SetProfile(v string) *CreateClusterRequest {
 	return s
 }
 
-func (s *CreateClusterRequest) SetPodVswitchIds(v []*string) *CreateClusterRequest {
-	s.PodVswitchIds = v
+func (s *CreateClusterRequest) SetProxyMode(v string) *CreateClusterRequest {
+	s.ProxyMode = &v
 	return s
 }
 
-func (s *CreateClusterRequest) SetDisableRollback(v bool) *CreateClusterRequest {
-	s.DisableRollback = &v
+func (s *CreateClusterRequest) SetRdsInstances(v []*string) *CreateClusterRequest {
+	s.RdsInstances = v
+	return s
+}
+
+func (s *CreateClusterRequest) SetRegionId(v string) *CreateClusterRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetRuntime(v *CreateClusterRequestRuntime) *CreateClusterRequest {
+	s.Runtime = v
+	return s
+}
+
+func (s *CreateClusterRequest) SetSecurityGroupId(v string) *CreateClusterRequest {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetServiceCidr(v string) *CreateClusterRequest {
+	s.ServiceCidr = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetSnatEntry(v bool) *CreateClusterRequest {
+	s.SnatEntry = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetSshFlags(v bool) *CreateClusterRequest {
+	s.SshFlags = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetTags(v []*CreateClusterRequestTags) *CreateClusterRequest {
+	s.Tags = v
+	return s
+}
+
+func (s *CreateClusterRequest) SetTaints(v []*CreateClusterRequestTaints) *CreateClusterRequest {
+	s.Taints = v
 	return s
 }
 
 func (s *CreateClusterRequest) SetTimeoutMins(v int64) *CreateClusterRequest {
 	s.TimeoutMins = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetUserData(v string) *CreateClusterRequest {
+	s.UserData = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetVpcid(v string) *CreateClusterRequest {
+	s.Vpcid = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetVswitchIds(v []*string) *CreateClusterRequest {
+	s.VswitchIds = v
+	return s
+}
+
+func (s *CreateClusterRequest) SetWorkerAutoRenew(v bool) *CreateClusterRequest {
+	s.WorkerAutoRenew = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetWorkerAutoRenewPeriod(v int64) *CreateClusterRequest {
+	s.WorkerAutoRenewPeriod = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetWorkerDataDisks(v []*CreateClusterRequestWorkerDataDisks) *CreateClusterRequest {
+	s.WorkerDataDisks = v
+	return s
+}
+
+func (s *CreateClusterRequest) SetWorkerInstanceChargeType(v string) *CreateClusterRequest {
+	s.WorkerInstanceChargeType = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetWorkerInstanceTypes(v []*string) *CreateClusterRequest {
+	s.WorkerInstanceTypes = v
+	return s
+}
+
+func (s *CreateClusterRequest) SetWorkerPeriod(v int64) *CreateClusterRequest {
+	s.WorkerPeriod = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetWorkerPeriodUnit(v string) *CreateClusterRequest {
+	s.WorkerPeriodUnit = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetWorkerSystemDiskCategory(v string) *CreateClusterRequest {
+	s.WorkerSystemDiskCategory = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetWorkerSystemDiskSize(v int64) *CreateClusterRequest {
+	s.WorkerSystemDiskSize = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetWorkerVswitchIds(v []*string) *CreateClusterRequest {
+	s.WorkerVswitchIds = v
+	return s
+}
+
+func (s *CreateClusterRequest) SetZoneId(v string) *CreateClusterRequest {
+	s.ZoneId = &v
+	return s
+}
+
+type CreateClusterRequestAddons struct {
+	// 组件需要的配置。
+	Config *string `json:"config,omitempty" xml:"config,omitempty"`
+	// 组件名称。
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s CreateClusterRequestAddons) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClusterRequestAddons) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterRequestAddons) SetConfig(v string) *CreateClusterRequestAddons {
+	s.Config = &v
+	return s
+}
+
+func (s *CreateClusterRequestAddons) SetName(v string) *CreateClusterRequestAddons {
+	s.Name = &v
 	return s
 }
 
@@ -738,6 +763,38 @@ func (s *CreateClusterRequestTags) SetValue(v string) *CreateClusterRequestTags 
 	return s
 }
 
+type CreateClusterRequestTaints struct {
+	// 调度策略。
+	Effect *string `json:"effect,omitempty" xml:"effect,omitempty"`
+	// 污点key。
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// 污点值。
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s CreateClusterRequestTaints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClusterRequestTaints) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterRequestTaints) SetEffect(v string) *CreateClusterRequestTaints {
+	s.Effect = &v
+	return s
+}
+
+func (s *CreateClusterRequestTaints) SetKey(v string) *CreateClusterRequestTaints {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateClusterRequestTaints) SetValue(v string) *CreateClusterRequestTaints {
+	s.Value = &v
+	return s
+}
+
 type CreateClusterRequestWorkerDataDisks struct {
 	// 数据盘是否开启云盘备份。
 	AutoSnapshotPolicyId *string `json:"auto_snapshot_policy_id,omitempty" xml:"auto_snapshot_policy_id,omitempty"`
@@ -774,63 +831,6 @@ func (s *CreateClusterRequestWorkerDataDisks) SetEncrypted(v string) *CreateClus
 
 func (s *CreateClusterRequestWorkerDataDisks) SetSize(v string) *CreateClusterRequestWorkerDataDisks {
 	s.Size = &v
-	return s
-}
-
-type CreateClusterRequestTaints struct {
-	// 调度策略。
-	Effect *string `json:"effect,omitempty" xml:"effect,omitempty"`
-	// 污点key。
-	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// 污点值。
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
-}
-
-func (s CreateClusterRequestTaints) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateClusterRequestTaints) GoString() string {
-	return s.String()
-}
-
-func (s *CreateClusterRequestTaints) SetEffect(v string) *CreateClusterRequestTaints {
-	s.Effect = &v
-	return s
-}
-
-func (s *CreateClusterRequestTaints) SetKey(v string) *CreateClusterRequestTaints {
-	s.Key = &v
-	return s
-}
-
-func (s *CreateClusterRequestTaints) SetValue(v string) *CreateClusterRequestTaints {
-	s.Value = &v
-	return s
-}
-
-type CreateClusterRequestAddons struct {
-	// 组件需要的配置。
-	Config *string `json:"config,omitempty" xml:"config,omitempty"`
-	// 组件名称。
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-}
-
-func (s CreateClusterRequestAddons) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateClusterRequestAddons) GoString() string {
-	return s.String()
-}
-
-func (s *CreateClusterRequestAddons) SetConfig(v string) *CreateClusterRequestAddons {
-	s.Config = &v
-	return s
-}
-
-func (s *CreateClusterRequestAddons) SetName(v string) *CreateClusterRequestAddons {
-	s.Name = &v
 	return s
 }
 
@@ -889,13 +889,502 @@ func (s *CreateClusterResponse) SetBody(v *CreateClusterResponseBody) *CreateClu
 	return s
 }
 
+type CreateClusterNodePoolRequest struct {
+	// 自动伸缩配置。
+	AutoScaling *CreateClusterNodePoolRequestAutoScaling `json:"auto_scaling,omitempty" xml:"auto_scaling,omitempty" type:"Struct"`
+	// 集群配置
+	KubernetesConfig *CreateClusterNodePoolRequestKubernetesConfig `json:"kubernetes_config,omitempty" xml:"kubernetes_config,omitempty" type:"Struct"`
+	// 节点池配置
+	NodepoolInfo *CreateClusterNodePoolRequestNodepoolInfo `json:"nodepool_info,omitempty" xml:"nodepool_info,omitempty" type:"Struct"`
+	// 节点池扩容配置
+	ScalingGroup *CreateClusterNodePoolRequestScalingGroup `json:"scaling_group,omitempty" xml:"scaling_group,omitempty" type:"Struct"`
+	// 加密计算配置。
+	TeeConfig *CreateClusterNodePoolRequestTeeConfig `json:"tee_config,omitempty" xml:"tee_config,omitempty" type:"Struct"`
+}
+
+func (s CreateClusterNodePoolRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClusterNodePoolRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterNodePoolRequest) SetAutoScaling(v *CreateClusterNodePoolRequestAutoScaling) *CreateClusterNodePoolRequest {
+	s.AutoScaling = v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequest) SetKubernetesConfig(v *CreateClusterNodePoolRequestKubernetesConfig) *CreateClusterNodePoolRequest {
+	s.KubernetesConfig = v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequest) SetNodepoolInfo(v *CreateClusterNodePoolRequestNodepoolInfo) *CreateClusterNodePoolRequest {
+	s.NodepoolInfo = v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequest) SetScalingGroup(v *CreateClusterNodePoolRequestScalingGroup) *CreateClusterNodePoolRequest {
+	s.ScalingGroup = v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequest) SetTeeConfig(v *CreateClusterNodePoolRequestTeeConfig) *CreateClusterNodePoolRequest {
+	s.TeeConfig = v
+	return s
+}
+
+type CreateClusterNodePoolRequestAutoScaling struct {
+	// 是否开启自动伸缩。
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// 最大实例数。
+	MaxInstances *int64 `json:"max_instances,omitempty" xml:"max_instances,omitempty"`
+	// 最小实例数。
+	MinInstances *int64 `json:"min_instances,omitempty" xml:"min_instances,omitempty"`
+	// 扩容节点类型。
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s CreateClusterNodePoolRequestAutoScaling) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClusterNodePoolRequestAutoScaling) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterNodePoolRequestAutoScaling) SetEnable(v bool) *CreateClusterNodePoolRequestAutoScaling {
+	s.Enable = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestAutoScaling) SetMaxInstances(v int64) *CreateClusterNodePoolRequestAutoScaling {
+	s.MaxInstances = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestAutoScaling) SetMinInstances(v int64) *CreateClusterNodePoolRequestAutoScaling {
+	s.MinInstances = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestAutoScaling) SetType(v string) *CreateClusterNodePoolRequestAutoScaling {
+	s.Type = &v
+	return s
+}
+
+type CreateClusterNodePoolRequestKubernetesConfig struct {
+	// 是否开启云监控。
+	CmsEnabled *bool `json:"cms_enabled,omitempty" xml:"cms_enabled,omitempty"`
+	// CPU管理策略。
+	CpuPolicy *string `json:"cpu_policy,omitempty" xml:"cpu_policy,omitempty"`
+	// 节点标签。
+	Labels []*CreateClusterNodePoolRequestKubernetesConfigLabels `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
+	// 容器运行时。
+	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	// 容器运行时版本。
+	RuntimeVersion *string `json:"runtime_version,omitempty" xml:"runtime_version,omitempty"`
+	// 污点信息。
+	Taints []*CreateClusterNodePoolRequestKubernetesConfigTaints `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
+	// 节点自定义数据。
+	UserData *string `json:"user_data,omitempty" xml:"user_data,omitempty"`
+}
+
+func (s CreateClusterNodePoolRequestKubernetesConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClusterNodePoolRequestKubernetesConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterNodePoolRequestKubernetesConfig) SetCmsEnabled(v bool) *CreateClusterNodePoolRequestKubernetesConfig {
+	s.CmsEnabled = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestKubernetesConfig) SetCpuPolicy(v string) *CreateClusterNodePoolRequestKubernetesConfig {
+	s.CpuPolicy = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestKubernetesConfig) SetLabels(v []*CreateClusterNodePoolRequestKubernetesConfigLabels) *CreateClusterNodePoolRequestKubernetesConfig {
+	s.Labels = v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestKubernetesConfig) SetRuntime(v string) *CreateClusterNodePoolRequestKubernetesConfig {
+	s.Runtime = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestKubernetesConfig) SetRuntimeVersion(v string) *CreateClusterNodePoolRequestKubernetesConfig {
+	s.RuntimeVersion = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestKubernetesConfig) SetTaints(v []*CreateClusterNodePoolRequestKubernetesConfigTaints) *CreateClusterNodePoolRequestKubernetesConfig {
+	s.Taints = v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestKubernetesConfig) SetUserData(v string) *CreateClusterNodePoolRequestKubernetesConfig {
+	s.UserData = &v
+	return s
+}
+
+type CreateClusterNodePoolRequestKubernetesConfigLabels struct {
+	// key
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// value
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s CreateClusterNodePoolRequestKubernetesConfigLabels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClusterNodePoolRequestKubernetesConfigLabels) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterNodePoolRequestKubernetesConfigLabels) SetKey(v string) *CreateClusterNodePoolRequestKubernetesConfigLabels {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestKubernetesConfigLabels) SetValue(v string) *CreateClusterNodePoolRequestKubernetesConfigLabels {
+	s.Value = &v
+	return s
+}
+
+type CreateClusterNodePoolRequestKubernetesConfigTaints struct {
+	// 污点策略。
+	Effect *string `json:"effect,omitempty" xml:"effect,omitempty"`
+	// key
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// value
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s CreateClusterNodePoolRequestKubernetesConfigTaints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClusterNodePoolRequestKubernetesConfigTaints) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterNodePoolRequestKubernetesConfigTaints) SetEffect(v string) *CreateClusterNodePoolRequestKubernetesConfigTaints {
+	s.Effect = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestKubernetesConfigTaints) SetKey(v string) *CreateClusterNodePoolRequestKubernetesConfigTaints {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestKubernetesConfigTaints) SetValue(v string) *CreateClusterNodePoolRequestKubernetesConfigTaints {
+	s.Value = &v
+	return s
+}
+
+type CreateClusterNodePoolRequestNodepoolInfo struct {
+	// 节点池名称
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 资源组ID。
+	ResourceGroupId *string `json:"resource_group_id,omitempty" xml:"resource_group_id,omitempty"`
+}
+
+func (s CreateClusterNodePoolRequestNodepoolInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClusterNodePoolRequestNodepoolInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterNodePoolRequestNodepoolInfo) SetName(v string) *CreateClusterNodePoolRequestNodepoolInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestNodepoolInfo) SetResourceGroupId(v string) *CreateClusterNodePoolRequestNodepoolInfo {
+	s.ResourceGroupId = &v
+	return s
+}
+
+type CreateClusterNodePoolRequestScalingGroup struct {
+	// 节点是否开启自动续费
+	AutoRenew *bool `json:"auto_renew,omitempty" xml:"auto_renew,omitempty"`
+	// 节点自动续费周期
+	AutoRenewPeriod *int64 `json:"auto_renew_period,omitempty" xml:"auto_renew_period,omitempty"`
+	// 数据盘配置。
+	DataDisks []*CreateClusterNodePoolRequestScalingGroupDataDisks `json:"data_disks,omitempty" xml:"data_disks,omitempty" type:"Repeated"`
+	// 自定义镜像。
+	ImageId *string `json:"image_id,omitempty" xml:"image_id,omitempty"`
+	// 节点付费类型
+	InstanceChargeType *string `json:"instance_charge_type,omitempty" xml:"instance_charge_type,omitempty"`
+	// 实例规格。
+	InstanceTypes []*string `json:"instance_types,omitempty" xml:"instance_types,omitempty" type:"Repeated"`
+	// 密钥对名称，和login_password二选一。
+	KeyPair *string `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
+	// SSH登录密码。
+	LoginPassword *string `json:"login_password,omitempty" xml:"login_password,omitempty"`
+	// 节点包年包月时长。
+	Period *int64 `json:"period,omitempty" xml:"period,omitempty"`
+	// 节点包年包月周期。
+	PeriodUnit *string `json:"period_unit,omitempty" xml:"period_unit,omitempty"`
+	// 操作系统发行版
+	Platform *string `json:"platform,omitempty" xml:"platform,omitempty"`
+	// RDS实例列表。
+	RdsInstances []*string `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
+	// 自动伸缩。
+	ScalingPolicy *string `json:"scaling_policy,omitempty" xml:"scaling_policy,omitempty"`
+	// 安全组ID。
+	SecurityGroupId *string `json:"security_group_id,omitempty" xml:"security_group_id,omitempty"`
+	// 节点系统盘类型。
+	SystemDiskCategory *string `json:"system_disk_category,omitempty" xml:"system_disk_category,omitempty"`
+	// 节点系统盘大小。
+	SystemDiskSize *int64 `json:"system_disk_size,omitempty" xml:"system_disk_size,omitempty"`
+	// ECS标签
+	Tags []*CreateClusterNodePoolRequestScalingGroupTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// VPC网络ID
+	VpcId *string `json:"vpc_id,omitempty" xml:"vpc_id,omitempty"`
+	// 虚拟交换机ID。
+	VswitchIds []*string `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
+}
+
+func (s CreateClusterNodePoolRequestScalingGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClusterNodePoolRequestScalingGroup) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterNodePoolRequestScalingGroup) SetAutoRenew(v bool) *CreateClusterNodePoolRequestScalingGroup {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestScalingGroup) SetAutoRenewPeriod(v int64) *CreateClusterNodePoolRequestScalingGroup {
+	s.AutoRenewPeriod = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestScalingGroup) SetDataDisks(v []*CreateClusterNodePoolRequestScalingGroupDataDisks) *CreateClusterNodePoolRequestScalingGroup {
+	s.DataDisks = v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestScalingGroup) SetImageId(v string) *CreateClusterNodePoolRequestScalingGroup {
+	s.ImageId = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestScalingGroup) SetInstanceChargeType(v string) *CreateClusterNodePoolRequestScalingGroup {
+	s.InstanceChargeType = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestScalingGroup) SetInstanceTypes(v []*string) *CreateClusterNodePoolRequestScalingGroup {
+	s.InstanceTypes = v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestScalingGroup) SetKeyPair(v string) *CreateClusterNodePoolRequestScalingGroup {
+	s.KeyPair = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestScalingGroup) SetLoginPassword(v string) *CreateClusterNodePoolRequestScalingGroup {
+	s.LoginPassword = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestScalingGroup) SetPeriod(v int64) *CreateClusterNodePoolRequestScalingGroup {
+	s.Period = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestScalingGroup) SetPeriodUnit(v string) *CreateClusterNodePoolRequestScalingGroup {
+	s.PeriodUnit = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestScalingGroup) SetPlatform(v string) *CreateClusterNodePoolRequestScalingGroup {
+	s.Platform = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestScalingGroup) SetRdsInstances(v []*string) *CreateClusterNodePoolRequestScalingGroup {
+	s.RdsInstances = v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestScalingGroup) SetScalingPolicy(v string) *CreateClusterNodePoolRequestScalingGroup {
+	s.ScalingPolicy = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestScalingGroup) SetSecurityGroupId(v string) *CreateClusterNodePoolRequestScalingGroup {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestScalingGroup) SetSystemDiskCategory(v string) *CreateClusterNodePoolRequestScalingGroup {
+	s.SystemDiskCategory = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestScalingGroup) SetSystemDiskSize(v int64) *CreateClusterNodePoolRequestScalingGroup {
+	s.SystemDiskSize = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestScalingGroup) SetTags(v []*CreateClusterNodePoolRequestScalingGroupTags) *CreateClusterNodePoolRequestScalingGroup {
+	s.Tags = v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestScalingGroup) SetVpcId(v string) *CreateClusterNodePoolRequestScalingGroup {
+	s.VpcId = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestScalingGroup) SetVswitchIds(v []*string) *CreateClusterNodePoolRequestScalingGroup {
+	s.VswitchIds = v
+	return s
+}
+
+type CreateClusterNodePoolRequestScalingGroupDataDisks struct {
+	// 数据盘类型。
+	Category *string `json:"category,omitempty" xml:"category,omitempty"`
+	// 数据盘是否加密。
+	Encrypted *string `json:"encrypted,omitempty" xml:"encrypted,omitempty"`
+	// 数据盘大小。
+	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
+}
+
+func (s CreateClusterNodePoolRequestScalingGroupDataDisks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClusterNodePoolRequestScalingGroupDataDisks) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterNodePoolRequestScalingGroupDataDisks) SetCategory(v string) *CreateClusterNodePoolRequestScalingGroupDataDisks {
+	s.Category = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestScalingGroupDataDisks) SetEncrypted(v string) *CreateClusterNodePoolRequestScalingGroupDataDisks {
+	s.Encrypted = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestScalingGroupDataDisks) SetSize(v int64) *CreateClusterNodePoolRequestScalingGroupDataDisks {
+	s.Size = &v
+	return s
+}
+
+type CreateClusterNodePoolRequestScalingGroupTags struct {
+	// key
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// value
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s CreateClusterNodePoolRequestScalingGroupTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClusterNodePoolRequestScalingGroupTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterNodePoolRequestScalingGroupTags) SetKey(v string) *CreateClusterNodePoolRequestScalingGroupTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestScalingGroupTags) SetValue(v string) *CreateClusterNodePoolRequestScalingGroupTags {
+	s.Value = &v
+	return s
+}
+
+type CreateClusterNodePoolRequestTeeConfig struct {
+	// 是否为加密计算节点池。
+	TeeEnable *bool `json:"tee_enable,omitempty" xml:"tee_enable,omitempty"`
+}
+
+func (s CreateClusterNodePoolRequestTeeConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClusterNodePoolRequestTeeConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterNodePoolRequestTeeConfig) SetTeeEnable(v bool) *CreateClusterNodePoolRequestTeeConfig {
+	s.TeeEnable = &v
+	return s
+}
+
+type CreateClusterNodePoolResponseBody struct {
+	// 节点池ID
+	NodepoolId *string `json:"nodepool_id,omitempty" xml:"nodepool_id,omitempty"`
+}
+
+func (s CreateClusterNodePoolResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClusterNodePoolResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterNodePoolResponseBody) SetNodepoolId(v string) *CreateClusterNodePoolResponseBody {
+	s.NodepoolId = &v
+	return s
+}
+
+type CreateClusterNodePoolResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateClusterNodePoolResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateClusterNodePoolResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClusterNodePoolResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterNodePoolResponse) SetHeaders(v map[string]*string) *CreateClusterNodePoolResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateClusterNodePoolResponse) SetBody(v *CreateClusterNodePoolResponseBody) *CreateClusterNodePoolResponse {
+	s.Body = v
+	return s
+}
+
 type CreateKubernetesTriggerRequest struct {
-	// 地域ID。
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 触发器行为。
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
 	// 集群ID。
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// 项目名称。
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// 地域ID。
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 触发器类型。
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -908,8 +1397,8 @@ func (s CreateKubernetesTriggerRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateKubernetesTriggerRequest) SetRegionId(v string) *CreateKubernetesTriggerRequest {
-	s.RegionId = &v
+func (s *CreateKubernetesTriggerRequest) SetAction(v string) *CreateKubernetesTriggerRequest {
+	s.Action = &v
 	return s
 }
 
@@ -920,6 +1409,11 @@ func (s *CreateKubernetesTriggerRequest) SetClusterId(v string) *CreateKubernete
 
 func (s *CreateKubernetesTriggerRequest) SetProjectId(v string) *CreateKubernetesTriggerRequest {
 	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateKubernetesTriggerRequest) SetRegionId(v string) *CreateKubernetesTriggerRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -1025,6 +1519,23 @@ func (s *DeleteClusterResponse) SetHeaders(v map[string]*string) *DeleteClusterR
 	return s
 }
 
+type DeleteClusterNodepoolResponse struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+}
+
+func (s DeleteClusterNodepoolResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteClusterNodepoolResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteClusterNodepoolResponse) SetHeaders(v map[string]*string) *DeleteClusterNodepoolResponse {
+	s.Headers = v
+	return s
+}
+
 type DeleteKubernetesTriggerResponse struct {
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 }
@@ -1071,7 +1582,7 @@ type DescribeAddonsResponseBody struct {
 	// 组件分组信息，例如：存储类组件，网络组件等。
 	ComponentGroups []*DescribeAddonsResponseBodyComponentGroups `json:"ComponentGroups,omitempty" xml:"ComponentGroups,omitempty" type:"Repeated"`
 	// 标准组件信息，包含各个组件的描述信息。
-	StandardComponents *DescribeAddonsResponseBodyStandardComponents `json:"StandardComponents,omitempty" xml:"StandardComponents,omitempty" type:"Struct"`
+	StandardComponents map[string]map[string]interface{} `json:"StandardComponents,omitempty" xml:"StandardComponents,omitempty"`
 }
 
 func (s DescribeAddonsResponseBody) String() string {
@@ -1087,7 +1598,7 @@ func (s *DescribeAddonsResponseBody) SetComponentGroups(v []*DescribeAddonsRespo
 	return s
 }
 
-func (s *DescribeAddonsResponseBody) SetStandardComponents(v *DescribeAddonsResponseBodyStandardComponents) *DescribeAddonsResponseBody {
+func (s *DescribeAddonsResponseBody) SetStandardComponents(v map[string]map[string]interface{}) *DescribeAddonsResponseBody {
 	s.StandardComponents = v
 	return s
 }
@@ -1167,24 +1678,6 @@ func (s *DescribeAddonsResponseBodyComponentGroupsItems) SetRequired(v string) *
 
 func (s *DescribeAddonsResponseBodyComponentGroupsItems) SetVersion(v string) *DescribeAddonsResponseBodyComponentGroupsItems {
 	s.Version = &v
-	return s
-}
-
-type DescribeAddonsResponseBodyStandardComponents struct {
-	// 组件名称。
-	ComponentName map[string]map[string]interface{} `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
-}
-
-func (s DescribeAddonsResponseBodyStandardComponents) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAddonsResponseBodyStandardComponents) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAddonsResponseBodyStandardComponents) SetComponentName(v map[string]map[string]interface{}) *DescribeAddonsResponseBodyStandardComponents {
-	s.ComponentName = v
 	return s
 }
 
@@ -1347,27 +1840,9 @@ func (s *DescribeClusterAddonsUpgradeStatusResponse) SetHeaders(v map[string]*st
 	return s
 }
 
-type DescribeClusterAddonsVersionResponseBody struct {
-	// 组件名称。
-	AddonsName map[string]map[string]interface{} `json:"AddonsName,omitempty" xml:"AddonsName,omitempty"`
-}
-
-func (s DescribeClusterAddonsVersionResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeClusterAddonsVersionResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeClusterAddonsVersionResponseBody) SetAddonsName(v map[string]map[string]interface{}) *DescribeClusterAddonsVersionResponseBody {
-	s.AddonsName = v
-	return s
-}
-
 type DescribeClusterAddonsVersionResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeClusterAddonsVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeClusterAddonsVersionResponse) String() string {
@@ -1383,7 +1858,7 @@ func (s *DescribeClusterAddonsVersionResponse) SetHeaders(v map[string]*string) 
 	return s
 }
 
-func (s *DescribeClusterAddonsVersionResponse) SetBody(v *DescribeClusterAddonsVersionResponseBody) *DescribeClusterAddonsVersionResponse {
+func (s *DescribeClusterAddonsVersionResponse) SetBody(v map[string]interface{}) *DescribeClusterAddonsVersionResponse {
 	s.Body = v
 	return s
 }
@@ -1709,16 +2184,39 @@ func (s *DescribeClusterDetailResponse) SetBody(v *DescribeClusterDetailResponse
 	return s
 }
 
+type DescribeClusterLogsResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    []*DescribeClusterLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s DescribeClusterLogsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterLogsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterLogsResponse) SetHeaders(v map[string]*string) *DescribeClusterLogsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeClusterLogsResponse) SetBody(v []*DescribeClusterLogsResponseBody) *DescribeClusterLogsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeClusterLogsResponseBody struct {
 	// 日志ID。
-	ID *string `json:"ID,omitempty" xml:"ID,omitempty"`
+	ID *int64 `json:"ID,omitempty" xml:"ID,omitempty"`
 	// 集群ID。
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// 日志详情。
+	// 集群日志。
 	ClusterLog *string `json:"cluster_log,omitempty" xml:"cluster_log,omitempty"`
 	// 日志创建时间。
 	Created *string `json:"created,omitempty" xml:"created,omitempty"`
-	// 日志级别。
+	// 日志等级。
 	LogLevel *string `json:"log_level,omitempty" xml:"log_level,omitempty"`
 	// 日志更新时间。
 	Updated *string `json:"updated,omitempty" xml:"updated,omitempty"`
@@ -1732,7 +2230,7 @@ func (s DescribeClusterLogsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeClusterLogsResponseBody) SetID(v string) *DescribeClusterLogsResponseBody {
+func (s *DescribeClusterLogsResponseBody) SetID(v int64) *DescribeClusterLogsResponseBody {
 	s.ID = &v
 	return s
 }
@@ -1762,26 +2260,37 @@ func (s *DescribeClusterLogsResponseBody) SetUpdated(v string) *DescribeClusterL
 	return s
 }
 
-type DescribeClusterLogsResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeClusterLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+type DescribeClusterNodePoolDetailResponse struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 }
 
-func (s DescribeClusterLogsResponse) String() string {
+func (s DescribeClusterNodePoolDetailResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeClusterLogsResponse) GoString() string {
+func (s DescribeClusterNodePoolDetailResponse) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeClusterLogsResponse) SetHeaders(v map[string]*string) *DescribeClusterLogsResponse {
+func (s *DescribeClusterNodePoolDetailResponse) SetHeaders(v map[string]*string) *DescribeClusterNodePoolDetailResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *DescribeClusterLogsResponse) SetBody(v *DescribeClusterLogsResponseBody) *DescribeClusterLogsResponse {
-	s.Body = v
+type DescribeClusterNodePoolsResponse struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+}
+
+func (s DescribeClusterNodePoolsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterNodePoolsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterNodePoolsResponse) SetHeaders(v map[string]*string) *DescribeClusterNodePoolsResponse {
+	s.Headers = v
 	return s
 }
 
@@ -2942,6 +3451,79 @@ func (s *DescribeExternalAgentResponse) SetBody(v *DescribeExternalAgentResponse
 	return s
 }
 
+type DescribeKubernetesVersionMetadataRequest struct {
+	// 地域ID。
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// 集群类型。
+	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// 要查询的版本，如果为空则查所有版本。
+	KubernetesVersion *string `json:"KubernetesVersion,omitempty" xml:"KubernetesVersion,omitempty"`
+	// 边缘集群标识，用于区分边缘集群，取值：Default或Edge。
+	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+}
+
+func (s DescribeKubernetesVersionMetadataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeKubernetesVersionMetadataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeKubernetesVersionMetadataRequest) SetRegion(v string) *DescribeKubernetesVersionMetadataRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeKubernetesVersionMetadataRequest) SetClusterType(v string) *DescribeKubernetesVersionMetadataRequest {
+	s.ClusterType = &v
+	return s
+}
+
+func (s *DescribeKubernetesVersionMetadataRequest) SetKubernetesVersion(v string) *DescribeKubernetesVersionMetadataRequest {
+	s.KubernetesVersion = &v
+	return s
+}
+
+func (s *DescribeKubernetesVersionMetadataRequest) SetProfile(v string) *DescribeKubernetesVersionMetadataRequest {
+	s.Profile = &v
+	return s
+}
+
+type DescribeKubernetesVersionMetadataResponse struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+}
+
+func (s DescribeKubernetesVersionMetadataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeKubernetesVersionMetadataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeKubernetesVersionMetadataResponse) SetHeaders(v map[string]*string) *DescribeKubernetesVersionMetadataResponse {
+	s.Headers = v
+	return s
+}
+
+type DescribeTemplateAttributeResponse struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+}
+
+func (s DescribeTemplateAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTemplateAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTemplateAttributeResponse) SetHeaders(v map[string]*string) *DescribeTemplateAttributeResponse {
+	s.Headers = v
+	return s
+}
+
 type DescribeTemplatesRequest struct {
 	// 模板类型，部署模板类型，目前一共有2种类型，取值为：kubernetes或compose。
 	TemplateType *string `json:"template_type,omitempty" xml:"template_type,omitempty"`
@@ -3445,19 +4027,75 @@ func (s *InstallClusterAddonsResponse) SetHeaders(v map[string]*string) *Install
 	return s
 }
 
+type ListTagResourcesRequest struct {
+	// 下一个版本。
+	NextToken *string `json:"next_token,omitempty" xml:"next_token,omitempty"`
+	// 资源ID。
+	ResourceIds *string `json:"resource_ids,omitempty" xml:"resource_ids,omitempty"`
+	// 按标签查找。
+	Tags *string `json:"tags,omitempty" xml:"tags,omitempty"`
+	// 资源类型，例如：SLB。
+	ResourceType *string `json:"resource_type,omitempty" xml:"resource_type,omitempty"`
+}
+
+func (s ListTagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesRequest) SetNextToken(v string) *ListTagResourcesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceIds(v string) *ListTagResourcesRequest {
+	s.ResourceIds = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetTags(v string) *ListTagResourcesRequest {
+	s.Tags = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceType(v string) *ListTagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+type ListTagResourcesResponse struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+}
+
+func (s ListTagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponse) SetHeaders(v map[string]*string) *ListTagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
 type ModifyClusterRequest struct {
-	// 集群是否开启删除保护。
-	DeletionProtection *bool `json:"deletion_protection,omitempty" xml:"deletion_protection,omitempty"`
-	// 集群的Ingress SLB的ID。
-	IngressLoadbalancerId *string `json:"ingress_loadbalancer_id,omitempty" xml:"ingress_loadbalancer_id,omitempty"`
 	// 集群是否开启EIP。
 	ApiServerEip *bool `json:"api_server_eip,omitempty" xml:"api_server_eip,omitempty"`
 	// 集群的API Server的EIP ID。
 	ApiServerEipId *string `json:"api_server_eip_id,omitempty" xml:"api_server_eip_id,omitempty"`
-	// 集群资源组ID。
-	ResourceGroupId *string `json:"resource_group_id,omitempty" xml:"resource_group_id,omitempty"`
+	// 集群是否开启删除保护。
+	DeletionProtection *bool `json:"deletion_protection,omitempty" xml:"deletion_protection,omitempty"`
 	// 域名是否重新绑定到Ingress的SLB地址。
 	IngressDomainRebinding *string `json:"ingress_domain_rebinding,omitempty" xml:"ingress_domain_rebinding,omitempty"`
+	// 集群的Ingress SLB的ID。
+	IngressLoadbalancerId *string `json:"ingress_loadbalancer_id,omitempty" xml:"ingress_loadbalancer_id,omitempty"`
+	// 集群资源组ID。
+	ResourceGroupId *string `json:"resource_group_id,omitempty" xml:"resource_group_id,omitempty"`
 }
 
 func (s ModifyClusterRequest) String() string {
@@ -3466,16 +4104,6 @@ func (s ModifyClusterRequest) String() string {
 
 func (s ModifyClusterRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ModifyClusterRequest) SetDeletionProtection(v bool) *ModifyClusterRequest {
-	s.DeletionProtection = &v
-	return s
-}
-
-func (s *ModifyClusterRequest) SetIngressLoadbalancerId(v string) *ModifyClusterRequest {
-	s.IngressLoadbalancerId = &v
-	return s
 }
 
 func (s *ModifyClusterRequest) SetApiServerEip(v bool) *ModifyClusterRequest {
@@ -3488,13 +4116,23 @@ func (s *ModifyClusterRequest) SetApiServerEipId(v string) *ModifyClusterRequest
 	return s
 }
 
-func (s *ModifyClusterRequest) SetResourceGroupId(v string) *ModifyClusterRequest {
-	s.ResourceGroupId = &v
+func (s *ModifyClusterRequest) SetDeletionProtection(v bool) *ModifyClusterRequest {
+	s.DeletionProtection = &v
 	return s
 }
 
 func (s *ModifyClusterRequest) SetIngressDomainRebinding(v string) *ModifyClusterRequest {
 	s.IngressDomainRebinding = &v
+	return s
+}
+
+func (s *ModifyClusterRequest) SetIngressLoadbalancerId(v string) *ModifyClusterRequest {
+	s.IngressLoadbalancerId = &v
+	return s
+}
+
+func (s *ModifyClusterRequest) SetResourceGroupId(v string) *ModifyClusterRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -3554,8 +4192,10 @@ func (s *ModifyClusterResponse) SetBody(v *ModifyClusterResponseBody) *ModifyClu
 }
 
 type ModifyClusterConfigurationRequest struct {
-	// 自定配置。
-	CustomizeConfig *ModifyClusterConfigurationRequestCustomizeConfig `json:"customize_config,omitempty" xml:"customize_config,omitempty" type:"Struct"`
+	// 配置集合。
+	Configs *ModifyClusterConfigurationRequestConfigs `json:"configs,omitempty" xml:"configs,omitempty" type:"Struct"`
+	// 配置名称。
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
 func (s ModifyClusterConfigurationRequest) String() string {
@@ -3566,57 +4206,37 @@ func (s ModifyClusterConfigurationRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyClusterConfigurationRequest) SetCustomizeConfig(v *ModifyClusterConfigurationRequestCustomizeConfig) *ModifyClusterConfigurationRequest {
-	s.CustomizeConfig = v
-	return s
-}
-
-type ModifyClusterConfigurationRequestCustomizeConfig struct {
-	// 配置集合。
-	Configs *ModifyClusterConfigurationRequestCustomizeConfigConfigs `json:"configs,omitempty" xml:"configs,omitempty" type:"Struct"`
-	// 配置名称。
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-}
-
-func (s ModifyClusterConfigurationRequestCustomizeConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyClusterConfigurationRequestCustomizeConfig) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyClusterConfigurationRequestCustomizeConfig) SetConfigs(v *ModifyClusterConfigurationRequestCustomizeConfigConfigs) *ModifyClusterConfigurationRequestCustomizeConfig {
+func (s *ModifyClusterConfigurationRequest) SetConfigs(v *ModifyClusterConfigurationRequestConfigs) *ModifyClusterConfigurationRequest {
 	s.Configs = v
 	return s
 }
 
-func (s *ModifyClusterConfigurationRequestCustomizeConfig) SetName(v string) *ModifyClusterConfigurationRequestCustomizeConfig {
+func (s *ModifyClusterConfigurationRequest) SetName(v string) *ModifyClusterConfigurationRequest {
 	s.Name = &v
 	return s
 }
 
-type ModifyClusterConfigurationRequestCustomizeConfigConfigs struct {
+type ModifyClusterConfigurationRequestConfigs struct {
 	// key。
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
 	// value。
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
-func (s ModifyClusterConfigurationRequestCustomizeConfigConfigs) String() string {
+func (s ModifyClusterConfigurationRequestConfigs) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ModifyClusterConfigurationRequestCustomizeConfigConfigs) GoString() string {
+func (s ModifyClusterConfigurationRequestConfigs) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyClusterConfigurationRequestCustomizeConfigConfigs) SetKey(v string) *ModifyClusterConfigurationRequestCustomizeConfigConfigs {
+func (s *ModifyClusterConfigurationRequestConfigs) SetKey(v string) *ModifyClusterConfigurationRequestConfigs {
 	s.Key = &v
 	return s
 }
 
-func (s *ModifyClusterConfigurationRequestCustomizeConfigConfigs) SetValue(v string) *ModifyClusterConfigurationRequestCustomizeConfigConfigs {
+func (s *ModifyClusterConfigurationRequestConfigs) SetValue(v string) *ModifyClusterConfigurationRequestConfigs {
 	s.Value = &v
 	return s
 }
@@ -3634,6 +4254,448 @@ func (s ModifyClusterConfigurationResponse) GoString() string {
 }
 
 func (s *ModifyClusterConfigurationResponse) SetHeaders(v map[string]*string) *ModifyClusterConfigurationResponse {
+	s.Headers = v
+	return s
+}
+
+type ModifyClusterNodePoolRequest struct {
+	// 自动伸缩配置。
+	AutoScaling *ModifyClusterNodePoolRequestAutoScaling `json:"auto_scaling,omitempty" xml:"auto_scaling,omitempty" type:"Struct"`
+	// 集群配置。
+	KubernetesConfig *ModifyClusterNodePoolRequestKubernetesConfig `json:"kubernetes_config,omitempty" xml:"kubernetes_config,omitempty" type:"Struct"`
+	// 节点池配置。
+	NodepoolInfo *ModifyClusterNodePoolRequestNodepoolInfo `json:"nodepool_info,omitempty" xml:"nodepool_info,omitempty" type:"Struct"`
+	// 扩容组配置。
+	ScalingGroup *ModifyClusterNodePoolRequestScalingGroup `json:"scaling_group,omitempty" xml:"scaling_group,omitempty" type:"Struct"`
+	// 加密计算配置。
+	TeeConfig *ModifyClusterNodePoolRequestTeeConfig `json:"tee_config,omitempty" xml:"tee_config,omitempty" type:"Struct"`
+	// 是否同步更新节点标签及污点。
+	UpdateNodes *bool `json:"update_nodes,omitempty" xml:"update_nodes,omitempty"`
+}
+
+func (s ModifyClusterNodePoolRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyClusterNodePoolRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyClusterNodePoolRequest) SetAutoScaling(v *ModifyClusterNodePoolRequestAutoScaling) *ModifyClusterNodePoolRequest {
+	s.AutoScaling = v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequest) SetKubernetesConfig(v *ModifyClusterNodePoolRequestKubernetesConfig) *ModifyClusterNodePoolRequest {
+	s.KubernetesConfig = v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequest) SetNodepoolInfo(v *ModifyClusterNodePoolRequestNodepoolInfo) *ModifyClusterNodePoolRequest {
+	s.NodepoolInfo = v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequest) SetScalingGroup(v *ModifyClusterNodePoolRequestScalingGroup) *ModifyClusterNodePoolRequest {
+	s.ScalingGroup = v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequest) SetTeeConfig(v *ModifyClusterNodePoolRequestTeeConfig) *ModifyClusterNodePoolRequest {
+	s.TeeConfig = v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequest) SetUpdateNodes(v bool) *ModifyClusterNodePoolRequest {
+	s.UpdateNodes = &v
+	return s
+}
+
+type ModifyClusterNodePoolRequestAutoScaling struct {
+	// EIP带宽峰值。
+	EipBandwidth *int64 `json:"eip_bandwidth,omitempty" xml:"eip_bandwidth,omitempty"`
+	// EIP付费类型。
+	EipInternetChargeType *string `json:"eip_internet_charge_type,omitempty" xml:"eip_internet_charge_type,omitempty"`
+	// 是否开启自动伸缩。
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// 是否绑定EIP。
+	IsBondEip *bool `json:"is_bond_eip,omitempty" xml:"is_bond_eip,omitempty"`
+	// 最大实例数。
+	MaxInstances *int64 `json:"max_instances,omitempty" xml:"max_instances,omitempty"`
+	// 最小实例数。
+	MinInstances *int64 `json:"min_instances,omitempty" xml:"min_instances,omitempty"`
+	// 自动伸缩节点类型。
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ModifyClusterNodePoolRequestAutoScaling) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyClusterNodePoolRequestAutoScaling) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyClusterNodePoolRequestAutoScaling) SetEipBandwidth(v int64) *ModifyClusterNodePoolRequestAutoScaling {
+	s.EipBandwidth = &v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestAutoScaling) SetEipInternetChargeType(v string) *ModifyClusterNodePoolRequestAutoScaling {
+	s.EipInternetChargeType = &v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestAutoScaling) SetEnable(v bool) *ModifyClusterNodePoolRequestAutoScaling {
+	s.Enable = &v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestAutoScaling) SetIsBondEip(v bool) *ModifyClusterNodePoolRequestAutoScaling {
+	s.IsBondEip = &v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestAutoScaling) SetMaxInstances(v int64) *ModifyClusterNodePoolRequestAutoScaling {
+	s.MaxInstances = &v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestAutoScaling) SetMinInstances(v int64) *ModifyClusterNodePoolRequestAutoScaling {
+	s.MinInstances = &v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestAutoScaling) SetType(v string) *ModifyClusterNodePoolRequestAutoScaling {
+	s.Type = &v
+	return s
+}
+
+type ModifyClusterNodePoolRequestKubernetesConfig struct {
+	// 是否开启云监控。
+	CmsEnabled *bool `json:"cms_enabled,omitempty" xml:"cms_enabled,omitempty"`
+	// 自定义镜像。
+	ImageId *string `json:"image_id,omitempty" xml:"image_id,omitempty"`
+	// 节点标签。
+	Labels []*ModifyClusterNodePoolRequestKubernetesConfigLabels `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
+	// 容器运行时。
+	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	// 容器运行时版本。
+	RuntimeVersion *string `json:"runtime_version,omitempty" xml:"runtime_version,omitempty"`
+	// 污点配置。
+	Taints []*ModifyClusterNodePoolRequestKubernetesConfigTaints `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
+	// 实例自定义数据。
+	UserData *string `json:"user_data,omitempty" xml:"user_data,omitempty"`
+}
+
+func (s ModifyClusterNodePoolRequestKubernetesConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyClusterNodePoolRequestKubernetesConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyClusterNodePoolRequestKubernetesConfig) SetCmsEnabled(v bool) *ModifyClusterNodePoolRequestKubernetesConfig {
+	s.CmsEnabled = &v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestKubernetesConfig) SetImageId(v string) *ModifyClusterNodePoolRequestKubernetesConfig {
+	s.ImageId = &v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestKubernetesConfig) SetLabels(v []*ModifyClusterNodePoolRequestKubernetesConfigLabels) *ModifyClusterNodePoolRequestKubernetesConfig {
+	s.Labels = v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestKubernetesConfig) SetRuntime(v string) *ModifyClusterNodePoolRequestKubernetesConfig {
+	s.Runtime = &v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestKubernetesConfig) SetRuntimeVersion(v string) *ModifyClusterNodePoolRequestKubernetesConfig {
+	s.RuntimeVersion = &v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestKubernetesConfig) SetTaints(v []*ModifyClusterNodePoolRequestKubernetesConfigTaints) *ModifyClusterNodePoolRequestKubernetesConfig {
+	s.Taints = v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestKubernetesConfig) SetUserData(v string) *ModifyClusterNodePoolRequestKubernetesConfig {
+	s.UserData = &v
+	return s
+}
+
+type ModifyClusterNodePoolRequestKubernetesConfigLabels struct {
+	// key
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// value
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s ModifyClusterNodePoolRequestKubernetesConfigLabels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyClusterNodePoolRequestKubernetesConfigLabels) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyClusterNodePoolRequestKubernetesConfigLabels) SetKey(v string) *ModifyClusterNodePoolRequestKubernetesConfigLabels {
+	s.Key = &v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestKubernetesConfigLabels) SetValue(v string) *ModifyClusterNodePoolRequestKubernetesConfigLabels {
+	s.Value = &v
+	return s
+}
+
+type ModifyClusterNodePoolRequestKubernetesConfigTaints struct {
+	// 污点策略。
+	Effect *string `json:"effect,omitempty" xml:"effect,omitempty"`
+	// key
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// value
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s ModifyClusterNodePoolRequestKubernetesConfigTaints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyClusterNodePoolRequestKubernetesConfigTaints) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyClusterNodePoolRequestKubernetesConfigTaints) SetEffect(v string) *ModifyClusterNodePoolRequestKubernetesConfigTaints {
+	s.Effect = &v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestKubernetesConfigTaints) SetKey(v string) *ModifyClusterNodePoolRequestKubernetesConfigTaints {
+	s.Key = &v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestKubernetesConfigTaints) SetValue(v string) *ModifyClusterNodePoolRequestKubernetesConfigTaints {
+	s.Value = &v
+	return s
+}
+
+type ModifyClusterNodePoolRequestNodepoolInfo struct {
+	// 节点池名称。
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 资源组ID。
+	ResourceGroupId *string `json:"resource_group_id,omitempty" xml:"resource_group_id,omitempty"`
+}
+
+func (s ModifyClusterNodePoolRequestNodepoolInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyClusterNodePoolRequestNodepoolInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyClusterNodePoolRequestNodepoolInfo) SetName(v string) *ModifyClusterNodePoolRequestNodepoolInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestNodepoolInfo) SetResourceGroupId(v string) *ModifyClusterNodePoolRequestNodepoolInfo {
+	s.ResourceGroupId = &v
+	return s
+}
+
+type ModifyClusterNodePoolRequestScalingGroup struct {
+	// 数据盘配置。
+	DataDisks []*ModifyClusterNodePoolRequestScalingGroupDataDisks `json:"data_disks,omitempty" xml:"data_disks,omitempty" type:"Repeated"`
+	// 节点付费类型。
+	InstanceChargeType *string `json:"instance_charge_type,omitempty" xml:"instance_charge_type,omitempty"`
+	// 节点实例规格。
+	InstanceTypes []*string `json:"instance_types,omitempty" xml:"instance_types,omitempty" type:"Repeated"`
+	// 密钥对名称，和login_password二选一。
+	KeyPair *string `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
+	// SSH登录密码，和key_pari二选一。
+	LoginPassword *string `json:"login_password,omitempty" xml:"login_password,omitempty"`
+	// RDS实例列表。
+	RdsInstances []*string `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
+	// 扩容策略。
+	ScalingPolicy *string `json:"scaling_policy,omitempty" xml:"scaling_policy,omitempty"`
+	// 节点系统盘类型。
+	SystemDiskCategory *string `json:"system_disk_category,omitempty" xml:"system_disk_category,omitempty"`
+	// 节点系统盘大小。
+	SystemDiskSize *int64 `json:"system_disk_size,omitempty" xml:"system_disk_size,omitempty"`
+	// ECS标签。
+	Tags []*ModifyClusterNodePoolRequestScalingGroupTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// VPC网络ID。
+	VpcId *string `json:"vpc_id,omitempty" xml:"vpc_id,omitempty"`
+	// 节点使用的虚拟交换机ID。
+	VswitchIds []*string `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
+}
+
+func (s ModifyClusterNodePoolRequestScalingGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyClusterNodePoolRequestScalingGroup) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyClusterNodePoolRequestScalingGroup) SetDataDisks(v []*ModifyClusterNodePoolRequestScalingGroupDataDisks) *ModifyClusterNodePoolRequestScalingGroup {
+	s.DataDisks = v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestScalingGroup) SetInstanceChargeType(v string) *ModifyClusterNodePoolRequestScalingGroup {
+	s.InstanceChargeType = &v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestScalingGroup) SetInstanceTypes(v []*string) *ModifyClusterNodePoolRequestScalingGroup {
+	s.InstanceTypes = v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestScalingGroup) SetKeyPair(v string) *ModifyClusterNodePoolRequestScalingGroup {
+	s.KeyPair = &v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestScalingGroup) SetLoginPassword(v string) *ModifyClusterNodePoolRequestScalingGroup {
+	s.LoginPassword = &v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestScalingGroup) SetRdsInstances(v []*string) *ModifyClusterNodePoolRequestScalingGroup {
+	s.RdsInstances = v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestScalingGroup) SetScalingPolicy(v string) *ModifyClusterNodePoolRequestScalingGroup {
+	s.ScalingPolicy = &v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestScalingGroup) SetSystemDiskCategory(v string) *ModifyClusterNodePoolRequestScalingGroup {
+	s.SystemDiskCategory = &v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestScalingGroup) SetSystemDiskSize(v int64) *ModifyClusterNodePoolRequestScalingGroup {
+	s.SystemDiskSize = &v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestScalingGroup) SetTags(v []*ModifyClusterNodePoolRequestScalingGroupTags) *ModifyClusterNodePoolRequestScalingGroup {
+	s.Tags = v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestScalingGroup) SetVpcId(v string) *ModifyClusterNodePoolRequestScalingGroup {
+	s.VpcId = &v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestScalingGroup) SetVswitchIds(v []*string) *ModifyClusterNodePoolRequestScalingGroup {
+	s.VswitchIds = v
+	return s
+}
+
+type ModifyClusterNodePoolRequestScalingGroupDataDisks struct {
+	// 数据盘类型。
+	Category *string `json:"category,omitempty" xml:"category,omitempty"`
+	// 数据盘是否加密。
+	Encrypted *string `json:"encrypted,omitempty" xml:"encrypted,omitempty"`
+	// 数据盘大小。
+	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
+}
+
+func (s ModifyClusterNodePoolRequestScalingGroupDataDisks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyClusterNodePoolRequestScalingGroupDataDisks) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyClusterNodePoolRequestScalingGroupDataDisks) SetCategory(v string) *ModifyClusterNodePoolRequestScalingGroupDataDisks {
+	s.Category = &v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestScalingGroupDataDisks) SetEncrypted(v string) *ModifyClusterNodePoolRequestScalingGroupDataDisks {
+	s.Encrypted = &v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestScalingGroupDataDisks) SetSize(v int64) *ModifyClusterNodePoolRequestScalingGroupDataDisks {
+	s.Size = &v
+	return s
+}
+
+type ModifyClusterNodePoolRequestScalingGroupTags struct {
+	// key
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// value
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s ModifyClusterNodePoolRequestScalingGroupTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyClusterNodePoolRequestScalingGroupTags) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyClusterNodePoolRequestScalingGroupTags) SetKey(v string) *ModifyClusterNodePoolRequestScalingGroupTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestScalingGroupTags) SetValue(v string) *ModifyClusterNodePoolRequestScalingGroupTags {
+	s.Value = &v
+	return s
+}
+
+type ModifyClusterNodePoolRequestTeeConfig struct {
+	// 是否为加密计算节点池。
+	TeeEnable *bool `json:"tee_enable,omitempty" xml:"tee_enable,omitempty"`
+}
+
+func (s ModifyClusterNodePoolRequestTeeConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyClusterNodePoolRequestTeeConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyClusterNodePoolRequestTeeConfig) SetTeeEnable(v bool) *ModifyClusterNodePoolRequestTeeConfig {
+	s.TeeEnable = &v
+	return s
+}
+
+type ModifyClusterNodePoolResponse struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+}
+
+func (s ModifyClusterNodePoolResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyClusterNodePoolResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyClusterNodePoolResponse) SetHeaders(v map[string]*string) *ModifyClusterNodePoolResponse {
 	s.Headers = v
 	return s
 }
@@ -3698,6 +4760,23 @@ func (s *ModifyClusterTagsResponse) SetHeaders(v map[string]*string) *ModifyClus
 	return s
 }
 
+type PauseClusterUpgradeResponse struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+}
+
+func (s PauseClusterUpgradeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PauseClusterUpgradeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PauseClusterUpgradeResponse) SetHeaders(v map[string]*string) *PauseClusterUpgradeResponse {
+	s.Headers = v
+	return s
+}
+
 type PauseComponentUpgradeResponse struct {
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 }
@@ -3716,12 +4795,12 @@ func (s *PauseComponentUpgradeResponse) SetHeaders(v map[string]*string) *PauseC
 }
 
 type RemoveClusterNodesRequest struct {
-	// 是否同时释放ECS。
-	ReleaseNode *bool `json:"release_node,omitempty" xml:"release_node,omitempty"`
 	// 是否排空节点上的Pod。
 	DrainNode *bool `json:"drain_node,omitempty" xml:"drain_node,omitempty"`
 	// 要移除的Node列表。
 	Nodes []*string `json:"nodes,omitempty" xml:"nodes,omitempty" type:"Repeated"`
+	// 是否同时释放ECS。
+	ReleaseNode *bool `json:"release_node,omitempty" xml:"release_node,omitempty"`
 }
 
 func (s RemoveClusterNodesRequest) String() string {
@@ -3732,11 +4811,6 @@ func (s RemoveClusterNodesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *RemoveClusterNodesRequest) SetReleaseNode(v bool) *RemoveClusterNodesRequest {
-	s.ReleaseNode = &v
-	return s
-}
-
 func (s *RemoveClusterNodesRequest) SetDrainNode(v bool) *RemoveClusterNodesRequest {
 	s.DrainNode = &v
 	return s
@@ -3744,6 +4818,11 @@ func (s *RemoveClusterNodesRequest) SetDrainNode(v bool) *RemoveClusterNodesRequ
 
 func (s *RemoveClusterNodesRequest) SetNodes(v []*string) *RemoveClusterNodesRequest {
 	s.Nodes = v
+	return s
+}
+
+func (s *RemoveClusterNodesRequest) SetReleaseNode(v bool) *RemoveClusterNodesRequest {
+	s.ReleaseNode = &v
 	return s
 }
 
@@ -3781,45 +4860,62 @@ func (s *ResumeComponentUpgradeResponse) SetHeaders(v map[string]*string) *Resum
 	return s
 }
 
+type ResumeUpgradeClusterResponse struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+}
+
+func (s ResumeUpgradeClusterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResumeUpgradeClusterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ResumeUpgradeClusterResponse) SetHeaders(v map[string]*string) *ResumeUpgradeClusterResponse {
+	s.Headers = v
+	return s
+}
+
 type ScaleClusterRequest struct {
-	// 扩容节点数。
-	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
-	// keypair名称，和login_password二选一。
-	KeyPair *string `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
-	// SSH登录密码。和keypair二选一。
-	LoginPassword *string `json:"login_password,omitempty" xml:"login_password,omitempty"`
-	// 是否挂载数据盘。
-	WorkerDataDisk *bool `json:"worker_data_disk,omitempty" xml:"worker_data_disk,omitempty"`
-	// Worker节点ECS规格类型。
-	WorkerInstanceTypes []*string `json:"worker_instance_types,omitempty" xml:"worker_instance_types,omitempty" type:"Repeated"`
-	// 节点付费类型。
-	WorkerInstanceChargeType *string `json:"worker_instance_charge_type,omitempty" xml:"worker_instance_charge_type,omitempty"`
-	// 节点包年包月时长。
-	WorkerPeriod *int64 `json:"worker_period,omitempty" xml:"worker_period,omitempty"`
-	// 当指定为PrePaid的时候需要指定周期。
-	WorkerPeriodUnit *string `json:"worker_period_unit,omitempty" xml:"worker_period_unit,omitempty"`
-	// 节点是否开启Worker节点自动续费。
-	WorkerAutoRenew *bool `json:"worker_auto_renew,omitempty" xml:"worker_auto_renew,omitempty"`
-	// 自动续费周期。
-	WorkerAutoRenewPeriod *int64 `json:"worker_auto_renew_period,omitempty" xml:"worker_auto_renew_period,omitempty"`
-	// 节点系统盘类型。
-	WorkerSystemDiskCategory *string `json:"worker_system_disk_category,omitempty" xml:"worker_system_disk_category,omitempty"`
-	// 节点系统盘大小
-	WorkerSystemDiskSize *int64 `json:"worker_system_disk_size,omitempty" xml:"worker_system_disk_size,omitempty"`
 	// 节点是否安装云监控插件。
 	CloudMonitorFlags *bool `json:"cloud_monitor_flags,omitempty" xml:"cloud_monitor_flags,omitempty"`
+	// 扩容节点数。
+	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
 	// 节点CPU策略。
 	CpuPolicy *string `json:"cpu_policy,omitempty" xml:"cpu_policy,omitempty"`
 	// 失败是否回滚。
 	DisableRollback *bool `json:"disable_rollback,omitempty" xml:"disable_rollback,omitempty"`
-	// 节点交换机ID列表。
-	VswitchIds []*string `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
-	// Worker数据盘类型、大小等配置的组合。
-	WorkerDataDisks []*ScaleClusterRequestWorkerDataDisks `json:"worker_data_disks,omitempty" xml:"worker_data_disks,omitempty" type:"Repeated"`
+	// keypair名称，和login_password二选一。
+	KeyPair *string `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
+	// SSH登录密码。和keypair二选一。
+	LoginPassword *string `json:"login_password,omitempty" xml:"login_password,omitempty"`
 	// 集群标签。
 	Tags []*ScaleClusterRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// 节点污点标记。
 	Taints []*ScaleClusterRequestTaints `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
+	// 节点交换机ID列表。
+	VswitchIds []*string `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
+	// 节点是否开启Worker节点自动续费。
+	WorkerAutoRenew *bool `json:"worker_auto_renew,omitempty" xml:"worker_auto_renew,omitempty"`
+	// 自动续费周期。
+	WorkerAutoRenewPeriod *int64 `json:"worker_auto_renew_period,omitempty" xml:"worker_auto_renew_period,omitempty"`
+	// 是否挂载数据盘。
+	WorkerDataDisk *bool `json:"worker_data_disk,omitempty" xml:"worker_data_disk,omitempty"`
+	// Worker数据盘类型、大小等配置的组合。
+	WorkerDataDisks []*ScaleClusterRequestWorkerDataDisks `json:"worker_data_disks,omitempty" xml:"worker_data_disks,omitempty" type:"Repeated"`
+	// 节点付费类型。
+	WorkerInstanceChargeType *string `json:"worker_instance_charge_type,omitempty" xml:"worker_instance_charge_type,omitempty"`
+	// Worker节点ECS规格类型。
+	WorkerInstanceTypes []*string `json:"worker_instance_types,omitempty" xml:"worker_instance_types,omitempty" type:"Repeated"`
+	// 节点包年包月时长。
+	WorkerPeriod *int64 `json:"worker_period,omitempty" xml:"worker_period,omitempty"`
+	// 当指定为PrePaid的时候需要指定周期。
+	WorkerPeriodUnit *string `json:"worker_period_unit,omitempty" xml:"worker_period_unit,omitempty"`
+	// 节点系统盘类型。
+	WorkerSystemDiskCategory *string `json:"worker_system_disk_category,omitempty" xml:"worker_system_disk_category,omitempty"`
+	// 节点系统盘大小
+	WorkerSystemDiskSize *int64 `json:"worker_system_disk_size,omitempty" xml:"worker_system_disk_size,omitempty"`
 }
 
 func (s ScaleClusterRequest) String() string {
@@ -3830,68 +4926,13 @@ func (s ScaleClusterRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ScaleClusterRequest) SetCount(v int64) *ScaleClusterRequest {
-	s.Count = &v
-	return s
-}
-
-func (s *ScaleClusterRequest) SetKeyPair(v string) *ScaleClusterRequest {
-	s.KeyPair = &v
-	return s
-}
-
-func (s *ScaleClusterRequest) SetLoginPassword(v string) *ScaleClusterRequest {
-	s.LoginPassword = &v
-	return s
-}
-
-func (s *ScaleClusterRequest) SetWorkerDataDisk(v bool) *ScaleClusterRequest {
-	s.WorkerDataDisk = &v
-	return s
-}
-
-func (s *ScaleClusterRequest) SetWorkerInstanceTypes(v []*string) *ScaleClusterRequest {
-	s.WorkerInstanceTypes = v
-	return s
-}
-
-func (s *ScaleClusterRequest) SetWorkerInstanceChargeType(v string) *ScaleClusterRequest {
-	s.WorkerInstanceChargeType = &v
-	return s
-}
-
-func (s *ScaleClusterRequest) SetWorkerPeriod(v int64) *ScaleClusterRequest {
-	s.WorkerPeriod = &v
-	return s
-}
-
-func (s *ScaleClusterRequest) SetWorkerPeriodUnit(v string) *ScaleClusterRequest {
-	s.WorkerPeriodUnit = &v
-	return s
-}
-
-func (s *ScaleClusterRequest) SetWorkerAutoRenew(v bool) *ScaleClusterRequest {
-	s.WorkerAutoRenew = &v
-	return s
-}
-
-func (s *ScaleClusterRequest) SetWorkerAutoRenewPeriod(v int64) *ScaleClusterRequest {
-	s.WorkerAutoRenewPeriod = &v
-	return s
-}
-
-func (s *ScaleClusterRequest) SetWorkerSystemDiskCategory(v string) *ScaleClusterRequest {
-	s.WorkerSystemDiskCategory = &v
-	return s
-}
-
-func (s *ScaleClusterRequest) SetWorkerSystemDiskSize(v int64) *ScaleClusterRequest {
-	s.WorkerSystemDiskSize = &v
-	return s
-}
-
 func (s *ScaleClusterRequest) SetCloudMonitorFlags(v bool) *ScaleClusterRequest {
 	s.CloudMonitorFlags = &v
+	return s
+}
+
+func (s *ScaleClusterRequest) SetCount(v int64) *ScaleClusterRequest {
+	s.Count = &v
 	return s
 }
 
@@ -3905,13 +4946,13 @@ func (s *ScaleClusterRequest) SetDisableRollback(v bool) *ScaleClusterRequest {
 	return s
 }
 
-func (s *ScaleClusterRequest) SetVswitchIds(v []*string) *ScaleClusterRequest {
-	s.VswitchIds = v
+func (s *ScaleClusterRequest) SetKeyPair(v string) *ScaleClusterRequest {
+	s.KeyPair = &v
 	return s
 }
 
-func (s *ScaleClusterRequest) SetWorkerDataDisks(v []*ScaleClusterRequestWorkerDataDisks) *ScaleClusterRequest {
-	s.WorkerDataDisks = v
+func (s *ScaleClusterRequest) SetLoginPassword(v string) *ScaleClusterRequest {
+	s.LoginPassword = &v
 	return s
 }
 
@@ -3925,35 +4966,58 @@ func (s *ScaleClusterRequest) SetTaints(v []*ScaleClusterRequestTaints) *ScaleCl
 	return s
 }
 
-type ScaleClusterRequestWorkerDataDisks struct {
-	// 数据盘类型。
-	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// 是否对数据盘加密。
-	Encrypted *string `json:"encrypted,omitempty" xml:"encrypted,omitempty"`
-	// 数据盘大小。
-	Size *string `json:"size,omitempty" xml:"size,omitempty"`
-}
-
-func (s ScaleClusterRequestWorkerDataDisks) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ScaleClusterRequestWorkerDataDisks) GoString() string {
-	return s.String()
-}
-
-func (s *ScaleClusterRequestWorkerDataDisks) SetCategory(v string) *ScaleClusterRequestWorkerDataDisks {
-	s.Category = &v
+func (s *ScaleClusterRequest) SetVswitchIds(v []*string) *ScaleClusterRequest {
+	s.VswitchIds = v
 	return s
 }
 
-func (s *ScaleClusterRequestWorkerDataDisks) SetEncrypted(v string) *ScaleClusterRequestWorkerDataDisks {
-	s.Encrypted = &v
+func (s *ScaleClusterRequest) SetWorkerAutoRenew(v bool) *ScaleClusterRequest {
+	s.WorkerAutoRenew = &v
 	return s
 }
 
-func (s *ScaleClusterRequestWorkerDataDisks) SetSize(v string) *ScaleClusterRequestWorkerDataDisks {
-	s.Size = &v
+func (s *ScaleClusterRequest) SetWorkerAutoRenewPeriod(v int64) *ScaleClusterRequest {
+	s.WorkerAutoRenewPeriod = &v
+	return s
+}
+
+func (s *ScaleClusterRequest) SetWorkerDataDisk(v bool) *ScaleClusterRequest {
+	s.WorkerDataDisk = &v
+	return s
+}
+
+func (s *ScaleClusterRequest) SetWorkerDataDisks(v []*ScaleClusterRequestWorkerDataDisks) *ScaleClusterRequest {
+	s.WorkerDataDisks = v
+	return s
+}
+
+func (s *ScaleClusterRequest) SetWorkerInstanceChargeType(v string) *ScaleClusterRequest {
+	s.WorkerInstanceChargeType = &v
+	return s
+}
+
+func (s *ScaleClusterRequest) SetWorkerInstanceTypes(v []*string) *ScaleClusterRequest {
+	s.WorkerInstanceTypes = v
+	return s
+}
+
+func (s *ScaleClusterRequest) SetWorkerPeriod(v int64) *ScaleClusterRequest {
+	s.WorkerPeriod = &v
+	return s
+}
+
+func (s *ScaleClusterRequest) SetWorkerPeriodUnit(v string) *ScaleClusterRequest {
+	s.WorkerPeriodUnit = &v
+	return s
+}
+
+func (s *ScaleClusterRequest) SetWorkerSystemDiskCategory(v string) *ScaleClusterRequest {
+	s.WorkerSystemDiskCategory = &v
+	return s
+}
+
+func (s *ScaleClusterRequest) SetWorkerSystemDiskSize(v int64) *ScaleClusterRequest {
+	s.WorkerSystemDiskSize = &v
 	return s
 }
 
@@ -4007,151 +5071,7 @@ func (s *ScaleClusterRequestTaints) SetValue(v string) *ScaleClusterRequestTaint
 	return s
 }
 
-type ScaleClusterShrinkRequest struct {
-	// 扩容节点数。
-	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
-	// keypair名称，和login_password二选一。
-	KeyPair *string `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
-	// SSH登录密码。和keypair二选一。
-	LoginPassword *string `json:"login_password,omitempty" xml:"login_password,omitempty"`
-	// 是否挂载数据盘。
-	WorkerDataDisk *bool `json:"worker_data_disk,omitempty" xml:"worker_data_disk,omitempty"`
-	// Worker节点ECS规格类型。
-	WorkerInstanceTypes []*string `json:"worker_instance_types,omitempty" xml:"worker_instance_types,omitempty" type:"Repeated"`
-	// 节点付费类型。
-	WorkerInstanceChargeType *string `json:"worker_instance_charge_type,omitempty" xml:"worker_instance_charge_type,omitempty"`
-	// 节点包年包月时长。
-	WorkerPeriod *int64 `json:"worker_period,omitempty" xml:"worker_period,omitempty"`
-	// 当指定为PrePaid的时候需要指定周期。
-	WorkerPeriodUnit *string `json:"worker_period_unit,omitempty" xml:"worker_period_unit,omitempty"`
-	// 节点是否开启Worker节点自动续费。
-	WorkerAutoRenew *bool `json:"worker_auto_renew,omitempty" xml:"worker_auto_renew,omitempty"`
-	// 自动续费周期。
-	WorkerAutoRenewPeriod *int64 `json:"worker_auto_renew_period,omitempty" xml:"worker_auto_renew_period,omitempty"`
-	// 节点系统盘类型。
-	WorkerSystemDiskCategory *string `json:"worker_system_disk_category,omitempty" xml:"worker_system_disk_category,omitempty"`
-	// 节点系统盘大小
-	WorkerSystemDiskSize *int64 `json:"worker_system_disk_size,omitempty" xml:"worker_system_disk_size,omitempty"`
-	// 节点是否安装云监控插件。
-	CloudMonitorFlags *bool `json:"cloud_monitor_flags,omitempty" xml:"cloud_monitor_flags,omitempty"`
-	// 节点CPU策略。
-	CpuPolicy *string `json:"cpu_policy,omitempty" xml:"cpu_policy,omitempty"`
-	// 失败是否回滚。
-	DisableRollback *bool `json:"disable_rollback,omitempty" xml:"disable_rollback,omitempty"`
-	// 节点交换机ID列表。
-	VswitchIds []*string `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
-	// Worker数据盘类型、大小等配置的组合。
-	WorkerDataDisks []*ScaleClusterShrinkRequestWorkerDataDisks `json:"worker_data_disks,omitempty" xml:"worker_data_disks,omitempty" type:"Repeated"`
-	// 集群标签。
-	Tags []*ScaleClusterShrinkRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// 节点污点标记。
-	TaintsShrink *string `json:"taints,omitempty" xml:"taints,omitempty"`
-}
-
-func (s ScaleClusterShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ScaleClusterShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ScaleClusterShrinkRequest) SetCount(v int64) *ScaleClusterShrinkRequest {
-	s.Count = &v
-	return s
-}
-
-func (s *ScaleClusterShrinkRequest) SetKeyPair(v string) *ScaleClusterShrinkRequest {
-	s.KeyPair = &v
-	return s
-}
-
-func (s *ScaleClusterShrinkRequest) SetLoginPassword(v string) *ScaleClusterShrinkRequest {
-	s.LoginPassword = &v
-	return s
-}
-
-func (s *ScaleClusterShrinkRequest) SetWorkerDataDisk(v bool) *ScaleClusterShrinkRequest {
-	s.WorkerDataDisk = &v
-	return s
-}
-
-func (s *ScaleClusterShrinkRequest) SetWorkerInstanceTypes(v []*string) *ScaleClusterShrinkRequest {
-	s.WorkerInstanceTypes = v
-	return s
-}
-
-func (s *ScaleClusterShrinkRequest) SetWorkerInstanceChargeType(v string) *ScaleClusterShrinkRequest {
-	s.WorkerInstanceChargeType = &v
-	return s
-}
-
-func (s *ScaleClusterShrinkRequest) SetWorkerPeriod(v int64) *ScaleClusterShrinkRequest {
-	s.WorkerPeriod = &v
-	return s
-}
-
-func (s *ScaleClusterShrinkRequest) SetWorkerPeriodUnit(v string) *ScaleClusterShrinkRequest {
-	s.WorkerPeriodUnit = &v
-	return s
-}
-
-func (s *ScaleClusterShrinkRequest) SetWorkerAutoRenew(v bool) *ScaleClusterShrinkRequest {
-	s.WorkerAutoRenew = &v
-	return s
-}
-
-func (s *ScaleClusterShrinkRequest) SetWorkerAutoRenewPeriod(v int64) *ScaleClusterShrinkRequest {
-	s.WorkerAutoRenewPeriod = &v
-	return s
-}
-
-func (s *ScaleClusterShrinkRequest) SetWorkerSystemDiskCategory(v string) *ScaleClusterShrinkRequest {
-	s.WorkerSystemDiskCategory = &v
-	return s
-}
-
-func (s *ScaleClusterShrinkRequest) SetWorkerSystemDiskSize(v int64) *ScaleClusterShrinkRequest {
-	s.WorkerSystemDiskSize = &v
-	return s
-}
-
-func (s *ScaleClusterShrinkRequest) SetCloudMonitorFlags(v bool) *ScaleClusterShrinkRequest {
-	s.CloudMonitorFlags = &v
-	return s
-}
-
-func (s *ScaleClusterShrinkRequest) SetCpuPolicy(v string) *ScaleClusterShrinkRequest {
-	s.CpuPolicy = &v
-	return s
-}
-
-func (s *ScaleClusterShrinkRequest) SetDisableRollback(v bool) *ScaleClusterShrinkRequest {
-	s.DisableRollback = &v
-	return s
-}
-
-func (s *ScaleClusterShrinkRequest) SetVswitchIds(v []*string) *ScaleClusterShrinkRequest {
-	s.VswitchIds = v
-	return s
-}
-
-func (s *ScaleClusterShrinkRequest) SetWorkerDataDisks(v []*ScaleClusterShrinkRequestWorkerDataDisks) *ScaleClusterShrinkRequest {
-	s.WorkerDataDisks = v
-	return s
-}
-
-func (s *ScaleClusterShrinkRequest) SetTags(v []*ScaleClusterShrinkRequestTags) *ScaleClusterShrinkRequest {
-	s.Tags = v
-	return s
-}
-
-func (s *ScaleClusterShrinkRequest) SetTaintsShrink(v string) *ScaleClusterShrinkRequest {
-	s.TaintsShrink = &v
-	return s
-}
-
-type ScaleClusterShrinkRequestWorkerDataDisks struct {
+type ScaleClusterRequestWorkerDataDisks struct {
 	// 数据盘类型。
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
 	// 是否对数据盘加密。
@@ -4160,44 +5080,26 @@ type ScaleClusterShrinkRequestWorkerDataDisks struct {
 	Size *string `json:"size,omitempty" xml:"size,omitempty"`
 }
 
-func (s ScaleClusterShrinkRequestWorkerDataDisks) String() string {
+func (s ScaleClusterRequestWorkerDataDisks) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ScaleClusterShrinkRequestWorkerDataDisks) GoString() string {
+func (s ScaleClusterRequestWorkerDataDisks) GoString() string {
 	return s.String()
 }
 
-func (s *ScaleClusterShrinkRequestWorkerDataDisks) SetCategory(v string) *ScaleClusterShrinkRequestWorkerDataDisks {
+func (s *ScaleClusterRequestWorkerDataDisks) SetCategory(v string) *ScaleClusterRequestWorkerDataDisks {
 	s.Category = &v
 	return s
 }
 
-func (s *ScaleClusterShrinkRequestWorkerDataDisks) SetEncrypted(v string) *ScaleClusterShrinkRequestWorkerDataDisks {
+func (s *ScaleClusterRequestWorkerDataDisks) SetEncrypted(v string) *ScaleClusterRequestWorkerDataDisks {
 	s.Encrypted = &v
 	return s
 }
 
-func (s *ScaleClusterShrinkRequestWorkerDataDisks) SetSize(v string) *ScaleClusterShrinkRequestWorkerDataDisks {
+func (s *ScaleClusterRequestWorkerDataDisks) SetSize(v string) *ScaleClusterRequestWorkerDataDisks {
 	s.Size = &v
-	return s
-}
-
-type ScaleClusterShrinkRequestTags struct {
-	// 标签值。
-	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-}
-
-func (s ScaleClusterShrinkRequestTags) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ScaleClusterShrinkRequestTags) GoString() string {
-	return s.String()
-}
-
-func (s *ScaleClusterShrinkRequestTags) SetKey(v string) *ScaleClusterShrinkRequestTags {
-	s.Key = &v
 	return s
 }
 
@@ -4256,53 +5158,414 @@ func (s *ScaleClusterResponse) SetBody(v *ScaleClusterResponseBody) *ScaleCluste
 	return s
 }
 
-type ScaleOutClusterRequest struct {
-	// 扩容实例数量。
-	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
-	// Worker节点付费类型。
-	WorkerInstanceChargeType *string `json:"worker_instance_charge_type,omitempty" xml:"worker_instance_charge_type,omitempty"`
-	// Worker节点包年包月时长。
-	WorkerPeriod *int32 `json:"worker_period,omitempty" xml:"worker_period,omitempty"`
-	// Worker节点预付费周期。
-	WorkerPeriodUnit *string `json:"worker_period_unit,omitempty" xml:"worker_period_unit,omitempty"`
-	// Worker节点是否开启自动续费。
-	WorkerAutoRenew *bool `json:"worker_auto_renew,omitempty" xml:"worker_auto_renew,omitempty"`
-	// Worker节点自动续费周期。
-	WorkerAutoRenewPeriod *int32 `json:"worker_auto_renew_period,omitempty" xml:"worker_auto_renew_period,omitempty"`
-	// Worker节点系统盘类型。
-	WorkerSystemDiskCategory *string `json:"worker_system_disk_category,omitempty" xml:"worker_system_disk_category,omitempty"`
-	// Worker节点系统盘大小。
-	WorkerSystemDiskSize *int32 `json:"worker_system_disk_size,omitempty" xml:"worker_system_disk_size,omitempty"`
-	// Worker节点是否挂载数据盘。
-	WorkerDataDisk *bool `json:"worker_data_disk,omitempty" xml:"worker_data_disk,omitempty"`
-	// keypair名称，和login_password二选一。
+type ScaleClusterNodePoolRequest struct {
+	// 扩容节点数量
+	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
+	// 集群配置
+	KubernetesConfig *ScaleClusterNodePoolRequestKubernetesConfig `json:"kubernetes_config,omitempty" xml:"kubernetes_config,omitempty" type:"Struct"`
+	// 节点池信息
+	NodepoolInfo *ScaleClusterNodePoolRequestNodepoolInfo `json:"nodepool_info,omitempty" xml:"nodepool_info,omitempty" type:"Struct"`
+	// 扩容组配置
+	ScalingGroup *ScaleClusterNodePoolRequestScalingGroup `json:"scaling_group,omitempty" xml:"scaling_group,omitempty" type:"Struct"`
+	// 加密计算配置
+	TeeConfig *ScaleClusterNodePoolRequestTeeConfig `json:"tee_config,omitempty" xml:"tee_config,omitempty" type:"Struct"`
+	// 同步更新节点标签及污点
+	UpdateNodes *bool `json:"update_nodes,omitempty" xml:"update_nodes,omitempty"`
+}
+
+func (s ScaleClusterNodePoolRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScaleClusterNodePoolRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ScaleClusterNodePoolRequest) SetCount(v int64) *ScaleClusterNodePoolRequest {
+	s.Count = &v
+	return s
+}
+
+func (s *ScaleClusterNodePoolRequest) SetKubernetesConfig(v *ScaleClusterNodePoolRequestKubernetesConfig) *ScaleClusterNodePoolRequest {
+	s.KubernetesConfig = v
+	return s
+}
+
+func (s *ScaleClusterNodePoolRequest) SetNodepoolInfo(v *ScaleClusterNodePoolRequestNodepoolInfo) *ScaleClusterNodePoolRequest {
+	s.NodepoolInfo = v
+	return s
+}
+
+func (s *ScaleClusterNodePoolRequest) SetScalingGroup(v *ScaleClusterNodePoolRequestScalingGroup) *ScaleClusterNodePoolRequest {
+	s.ScalingGroup = v
+	return s
+}
+
+func (s *ScaleClusterNodePoolRequest) SetTeeConfig(v *ScaleClusterNodePoolRequestTeeConfig) *ScaleClusterNodePoolRequest {
+	s.TeeConfig = v
+	return s
+}
+
+func (s *ScaleClusterNodePoolRequest) SetUpdateNodes(v bool) *ScaleClusterNodePoolRequest {
+	s.UpdateNodes = &v
+	return s
+}
+
+type ScaleClusterNodePoolRequestKubernetesConfig struct {
+	// 节点是否开启云监控
+	CmsEnabled *bool `json:"cms_enabled,omitempty" xml:"cms_enabled,omitempty"`
+	// 节点标签。
+	Labels []*ScaleClusterNodePoolRequestKubernetesConfigLabels `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
+	// 容器运行时名称
+	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	// 容器运行时版本
+	RuntimeVersion *string `json:"runtime_version,omitempty" xml:"runtime_version,omitempty"`
+	// 污点信息
+	Taints []*ScaleClusterNodePoolRequestKubernetesConfigTaints `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
+	// 节点自定义数据
+	UserData *string `json:"user_data,omitempty" xml:"user_data,omitempty"`
+}
+
+func (s ScaleClusterNodePoolRequestKubernetesConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScaleClusterNodePoolRequestKubernetesConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ScaleClusterNodePoolRequestKubernetesConfig) SetCmsEnabled(v bool) *ScaleClusterNodePoolRequestKubernetesConfig {
+	s.CmsEnabled = &v
+	return s
+}
+
+func (s *ScaleClusterNodePoolRequestKubernetesConfig) SetLabels(v []*ScaleClusterNodePoolRequestKubernetesConfigLabels) *ScaleClusterNodePoolRequestKubernetesConfig {
+	s.Labels = v
+	return s
+}
+
+func (s *ScaleClusterNodePoolRequestKubernetesConfig) SetRuntime(v string) *ScaleClusterNodePoolRequestKubernetesConfig {
+	s.Runtime = &v
+	return s
+}
+
+func (s *ScaleClusterNodePoolRequestKubernetesConfig) SetRuntimeVersion(v string) *ScaleClusterNodePoolRequestKubernetesConfig {
+	s.RuntimeVersion = &v
+	return s
+}
+
+func (s *ScaleClusterNodePoolRequestKubernetesConfig) SetTaints(v []*ScaleClusterNodePoolRequestKubernetesConfigTaints) *ScaleClusterNodePoolRequestKubernetesConfig {
+	s.Taints = v
+	return s
+}
+
+func (s *ScaleClusterNodePoolRequestKubernetesConfig) SetUserData(v string) *ScaleClusterNodePoolRequestKubernetesConfig {
+	s.UserData = &v
+	return s
+}
+
+type ScaleClusterNodePoolRequestKubernetesConfigLabels struct {
+	// key
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// value
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s ScaleClusterNodePoolRequestKubernetesConfigLabels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScaleClusterNodePoolRequestKubernetesConfigLabels) GoString() string {
+	return s.String()
+}
+
+func (s *ScaleClusterNodePoolRequestKubernetesConfigLabels) SetKey(v string) *ScaleClusterNodePoolRequestKubernetesConfigLabels {
+	s.Key = &v
+	return s
+}
+
+func (s *ScaleClusterNodePoolRequestKubernetesConfigLabels) SetValue(v string) *ScaleClusterNodePoolRequestKubernetesConfigLabels {
+	s.Value = &v
+	return s
+}
+
+type ScaleClusterNodePoolRequestKubernetesConfigTaints struct {
+	// 污点策略
+	Effect *string `json:"effect,omitempty" xml:"effect,omitempty"`
+	// key
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// value
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s ScaleClusterNodePoolRequestKubernetesConfigTaints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScaleClusterNodePoolRequestKubernetesConfigTaints) GoString() string {
+	return s.String()
+}
+
+func (s *ScaleClusterNodePoolRequestKubernetesConfigTaints) SetEffect(v string) *ScaleClusterNodePoolRequestKubernetesConfigTaints {
+	s.Effect = &v
+	return s
+}
+
+func (s *ScaleClusterNodePoolRequestKubernetesConfigTaints) SetKey(v string) *ScaleClusterNodePoolRequestKubernetesConfigTaints {
+	s.Key = &v
+	return s
+}
+
+func (s *ScaleClusterNodePoolRequestKubernetesConfigTaints) SetValue(v string) *ScaleClusterNodePoolRequestKubernetesConfigTaints {
+	s.Value = &v
+	return s
+}
+
+type ScaleClusterNodePoolRequestNodepoolInfo struct {
+	// 资源组ID
+	ResourceGroupId *string `json:"resource_group_id,omitempty" xml:"resource_group_id,omitempty"`
+}
+
+func (s ScaleClusterNodePoolRequestNodepoolInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScaleClusterNodePoolRequestNodepoolInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ScaleClusterNodePoolRequestNodepoolInfo) SetResourceGroupId(v string) *ScaleClusterNodePoolRequestNodepoolInfo {
+	s.ResourceGroupId = &v
+	return s
+}
+
+type ScaleClusterNodePoolRequestScalingGroup struct {
+	// 数据盘配置
+	DataDisks []*ScaleClusterNodePoolRequestScalingGroupDataDisks `json:"data_disks,omitempty" xml:"data_disks,omitempty" type:"Repeated"`
+	// 节点付费类型
+	InstanceChargeType *string `json:"instance_charge_type,omitempty" xml:"instance_charge_type,omitempty"`
+	// 节点实例规格
+	InstanceTypes []*string `json:"instance_types,omitempty" xml:"instance_types,omitempty" type:"Repeated"`
+	// 密钥对名称，和login_password二选一
 	KeyPair *string `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
-	// SSH登录密码，和key_pair二选一。
+	// SSH登录密码，和key_pair二选一
 	LoginPassword *string `json:"login_password,omitempty" xml:"login_password,omitempty"`
+	// RDS实例列表
+	RdsInstances []*string `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
+	// 系统盘类型
+	SystemDiskCategory *string `json:"system_disk_category,omitempty" xml:"system_disk_category,omitempty"`
+	// 系统盘大小
+	SystemDiskSize *int64 `json:"system_disk_size,omitempty" xml:"system_disk_size,omitempty"`
+	// ECS标签
+	Tags []*ScaleClusterNodePoolRequestScalingGroupTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// VPC网络ID
+	VpcId *string `json:"vpc_id,omitempty" xml:"vpc_id,omitempty"`
+	// 虚拟交换机ID
+	VswitchIds []*string `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
+}
+
+func (s ScaleClusterNodePoolRequestScalingGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScaleClusterNodePoolRequestScalingGroup) GoString() string {
+	return s.String()
+}
+
+func (s *ScaleClusterNodePoolRequestScalingGroup) SetDataDisks(v []*ScaleClusterNodePoolRequestScalingGroupDataDisks) *ScaleClusterNodePoolRequestScalingGroup {
+	s.DataDisks = v
+	return s
+}
+
+func (s *ScaleClusterNodePoolRequestScalingGroup) SetInstanceChargeType(v string) *ScaleClusterNodePoolRequestScalingGroup {
+	s.InstanceChargeType = &v
+	return s
+}
+
+func (s *ScaleClusterNodePoolRequestScalingGroup) SetInstanceTypes(v []*string) *ScaleClusterNodePoolRequestScalingGroup {
+	s.InstanceTypes = v
+	return s
+}
+
+func (s *ScaleClusterNodePoolRequestScalingGroup) SetKeyPair(v string) *ScaleClusterNodePoolRequestScalingGroup {
+	s.KeyPair = &v
+	return s
+}
+
+func (s *ScaleClusterNodePoolRequestScalingGroup) SetLoginPassword(v string) *ScaleClusterNodePoolRequestScalingGroup {
+	s.LoginPassword = &v
+	return s
+}
+
+func (s *ScaleClusterNodePoolRequestScalingGroup) SetRdsInstances(v []*string) *ScaleClusterNodePoolRequestScalingGroup {
+	s.RdsInstances = v
+	return s
+}
+
+func (s *ScaleClusterNodePoolRequestScalingGroup) SetSystemDiskCategory(v string) *ScaleClusterNodePoolRequestScalingGroup {
+	s.SystemDiskCategory = &v
+	return s
+}
+
+func (s *ScaleClusterNodePoolRequestScalingGroup) SetSystemDiskSize(v int64) *ScaleClusterNodePoolRequestScalingGroup {
+	s.SystemDiskSize = &v
+	return s
+}
+
+func (s *ScaleClusterNodePoolRequestScalingGroup) SetTags(v []*ScaleClusterNodePoolRequestScalingGroupTags) *ScaleClusterNodePoolRequestScalingGroup {
+	s.Tags = v
+	return s
+}
+
+func (s *ScaleClusterNodePoolRequestScalingGroup) SetVpcId(v string) *ScaleClusterNodePoolRequestScalingGroup {
+	s.VpcId = &v
+	return s
+}
+
+func (s *ScaleClusterNodePoolRequestScalingGroup) SetVswitchIds(v []*string) *ScaleClusterNodePoolRequestScalingGroup {
+	s.VswitchIds = v
+	return s
+}
+
+type ScaleClusterNodePoolRequestScalingGroupDataDisks struct {
+	// 数据盘类型
+	Category *string `json:"category,omitempty" xml:"category,omitempty"`
+	// 数据盘是否加密
+	Encrypted *string `json:"encrypted,omitempty" xml:"encrypted,omitempty"`
+	// 数据盘大小
+	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
+}
+
+func (s ScaleClusterNodePoolRequestScalingGroupDataDisks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScaleClusterNodePoolRequestScalingGroupDataDisks) GoString() string {
+	return s.String()
+}
+
+func (s *ScaleClusterNodePoolRequestScalingGroupDataDisks) SetCategory(v string) *ScaleClusterNodePoolRequestScalingGroupDataDisks {
+	s.Category = &v
+	return s
+}
+
+func (s *ScaleClusterNodePoolRequestScalingGroupDataDisks) SetEncrypted(v string) *ScaleClusterNodePoolRequestScalingGroupDataDisks {
+	s.Encrypted = &v
+	return s
+}
+
+func (s *ScaleClusterNodePoolRequestScalingGroupDataDisks) SetSize(v int64) *ScaleClusterNodePoolRequestScalingGroupDataDisks {
+	s.Size = &v
+	return s
+}
+
+type ScaleClusterNodePoolRequestScalingGroupTags struct {
+	// key
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// value
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s ScaleClusterNodePoolRequestScalingGroupTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScaleClusterNodePoolRequestScalingGroupTags) GoString() string {
+	return s.String()
+}
+
+func (s *ScaleClusterNodePoolRequestScalingGroupTags) SetKey(v string) *ScaleClusterNodePoolRequestScalingGroupTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ScaleClusterNodePoolRequestScalingGroupTags) SetValue(v string) *ScaleClusterNodePoolRequestScalingGroupTags {
+	s.Value = &v
+	return s
+}
+
+type ScaleClusterNodePoolRequestTeeConfig struct {
+	// 是否为加密计算节点池
+	TeeEnable *bool `json:"tee_enable,omitempty" xml:"tee_enable,omitempty"`
+}
+
+func (s ScaleClusterNodePoolRequestTeeConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScaleClusterNodePoolRequestTeeConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ScaleClusterNodePoolRequestTeeConfig) SetTeeEnable(v bool) *ScaleClusterNodePoolRequestTeeConfig {
+	s.TeeEnable = &v
+	return s
+}
+
+type ScaleClusterNodePoolResponse struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+}
+
+func (s ScaleClusterNodePoolResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScaleClusterNodePoolResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ScaleClusterNodePoolResponse) SetHeaders(v map[string]*string) *ScaleClusterNodePoolResponse {
+	s.Headers = v
+	return s
+}
+
+type ScaleOutClusterRequest struct {
 	// 是否安装云监控插件。
 	CloudMonitorFlags *bool `json:"cloud_monitor_flags,omitempty" xml:"cloud_monitor_flags,omitempty"`
+	// 扩容实例数量。
+	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
 	// CPU策略，取值static或者none。
 	CpuPolicy *string `json:"cpu_policy,omitempty" xml:"cpu_policy,omitempty"`
 	// 失败是否回滚。
 	DisableRollback *bool `json:"disable_rollback,omitempty" xml:"disable_rollback,omitempty"`
 	// 自定义镜像ID。
 	ImageId *string `json:"image_id,omitempty" xml:"image_id,omitempty"`
-	// 用户自定义数据。
-	UserData *string `json:"user_data,omitempty" xml:"user_data,omitempty"`
-	// 容器引擎。
-	Runtime *ScaleOutClusterRequestRuntime `json:"runtime,omitempty" xml:"runtime,omitempty" type:"Struct"`
-	// 节点交换机ID列表，交换机个数取值范围为1~3。
-	VswitchIds []*string `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
-	// Worker节点ECS规格类型代码。
-	WorkerInstanceTypes []*string `json:"worker_instance_types,omitempty" xml:"worker_instance_types,omitempty" type:"Repeated"`
+	// keypair名称，和login_password二选一。
+	KeyPair *string `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
+	// SSH登录密码，和key_pair二选一。
+	LoginPassword *string `json:"login_password,omitempty" xml:"login_password,omitempty"`
 	// RDS白名单实例列表。
 	RdsInstances []*string `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
-	// Worker数据盘类型、大小等配置的组合。
-	WorkerDataDisks []*ScaleOutClusterRequestWorkerDataDisks `json:"worker_data_disks,omitempty" xml:"worker_data_disks,omitempty" type:"Repeated"`
+	// 容器引擎。
+	Runtime *ScaleOutClusterRequestRuntime `json:"runtime,omitempty" xml:"runtime,omitempty" type:"Struct"`
 	// 节点标签。
 	Tags []*ScaleOutClusterRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// 节点污点信息。
 	Taints []*ScaleOutClusterRequestTaints `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
+	// 用户自定义数据。
+	UserData *string `json:"user_data,omitempty" xml:"user_data,omitempty"`
+	// 节点交换机ID列表，交换机个数取值范围为1~3。
+	VswitchIds []*string `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
+	// Worker节点是否开启自动续费。
+	WorkerAutoRenew *bool `json:"worker_auto_renew,omitempty" xml:"worker_auto_renew,omitempty"`
+	// Worker节点自动续费周期。
+	WorkerAutoRenewPeriod *int32 `json:"worker_auto_renew_period,omitempty" xml:"worker_auto_renew_period,omitempty"`
+	// Worker节点是否挂载数据盘。
+	WorkerDataDisk *bool `json:"worker_data_disk,omitempty" xml:"worker_data_disk,omitempty"`
+	// Worker数据盘类型、大小等配置的组合。
+	WorkerDataDisks []*ScaleOutClusterRequestWorkerDataDisks `json:"worker_data_disks,omitempty" xml:"worker_data_disks,omitempty" type:"Repeated"`
+	// Worker节点付费类型。
+	WorkerInstanceChargeType *string `json:"worker_instance_charge_type,omitempty" xml:"worker_instance_charge_type,omitempty"`
+	// Worker节点ECS规格类型代码。
+	WorkerInstanceTypes []*string `json:"worker_instance_types,omitempty" xml:"worker_instance_types,omitempty" type:"Repeated"`
+	// Worker节点包年包月时长。
+	WorkerPeriod *int32 `json:"worker_period,omitempty" xml:"worker_period,omitempty"`
+	// Worker节点预付费周期。
+	WorkerPeriodUnit *string `json:"worker_period_unit,omitempty" xml:"worker_period_unit,omitempty"`
+	// Worker节点系统盘类型。
+	WorkerSystemDiskCategory *string `json:"worker_system_disk_category,omitempty" xml:"worker_system_disk_category,omitempty"`
+	// Worker节点系统盘大小。
+	WorkerSystemDiskSize *int32 `json:"worker_system_disk_size,omitempty" xml:"worker_system_disk_size,omitempty"`
 }
 
 func (s ScaleOutClusterRequest) String() string {
@@ -4313,63 +5576,13 @@ func (s ScaleOutClusterRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ScaleOutClusterRequest) SetCount(v int32) *ScaleOutClusterRequest {
-	s.Count = &v
-	return s
-}
-
-func (s *ScaleOutClusterRequest) SetWorkerInstanceChargeType(v string) *ScaleOutClusterRequest {
-	s.WorkerInstanceChargeType = &v
-	return s
-}
-
-func (s *ScaleOutClusterRequest) SetWorkerPeriod(v int32) *ScaleOutClusterRequest {
-	s.WorkerPeriod = &v
-	return s
-}
-
-func (s *ScaleOutClusterRequest) SetWorkerPeriodUnit(v string) *ScaleOutClusterRequest {
-	s.WorkerPeriodUnit = &v
-	return s
-}
-
-func (s *ScaleOutClusterRequest) SetWorkerAutoRenew(v bool) *ScaleOutClusterRequest {
-	s.WorkerAutoRenew = &v
-	return s
-}
-
-func (s *ScaleOutClusterRequest) SetWorkerAutoRenewPeriod(v int32) *ScaleOutClusterRequest {
-	s.WorkerAutoRenewPeriod = &v
-	return s
-}
-
-func (s *ScaleOutClusterRequest) SetWorkerSystemDiskCategory(v string) *ScaleOutClusterRequest {
-	s.WorkerSystemDiskCategory = &v
-	return s
-}
-
-func (s *ScaleOutClusterRequest) SetWorkerSystemDiskSize(v int32) *ScaleOutClusterRequest {
-	s.WorkerSystemDiskSize = &v
-	return s
-}
-
-func (s *ScaleOutClusterRequest) SetWorkerDataDisk(v bool) *ScaleOutClusterRequest {
-	s.WorkerDataDisk = &v
-	return s
-}
-
-func (s *ScaleOutClusterRequest) SetKeyPair(v string) *ScaleOutClusterRequest {
-	s.KeyPair = &v
-	return s
-}
-
-func (s *ScaleOutClusterRequest) SetLoginPassword(v string) *ScaleOutClusterRequest {
-	s.LoginPassword = &v
-	return s
-}
-
 func (s *ScaleOutClusterRequest) SetCloudMonitorFlags(v bool) *ScaleOutClusterRequest {
 	s.CloudMonitorFlags = &v
+	return s
+}
+
+func (s *ScaleOutClusterRequest) SetCount(v int32) *ScaleOutClusterRequest {
+	s.Count = &v
 	return s
 }
 
@@ -4388,23 +5601,13 @@ func (s *ScaleOutClusterRequest) SetImageId(v string) *ScaleOutClusterRequest {
 	return s
 }
 
-func (s *ScaleOutClusterRequest) SetUserData(v string) *ScaleOutClusterRequest {
-	s.UserData = &v
+func (s *ScaleOutClusterRequest) SetKeyPair(v string) *ScaleOutClusterRequest {
+	s.KeyPair = &v
 	return s
 }
 
-func (s *ScaleOutClusterRequest) SetRuntime(v *ScaleOutClusterRequestRuntime) *ScaleOutClusterRequest {
-	s.Runtime = v
-	return s
-}
-
-func (s *ScaleOutClusterRequest) SetVswitchIds(v []*string) *ScaleOutClusterRequest {
-	s.VswitchIds = v
-	return s
-}
-
-func (s *ScaleOutClusterRequest) SetWorkerInstanceTypes(v []*string) *ScaleOutClusterRequest {
-	s.WorkerInstanceTypes = v
+func (s *ScaleOutClusterRequest) SetLoginPassword(v string) *ScaleOutClusterRequest {
+	s.LoginPassword = &v
 	return s
 }
 
@@ -4413,8 +5616,8 @@ func (s *ScaleOutClusterRequest) SetRdsInstances(v []*string) *ScaleOutClusterRe
 	return s
 }
 
-func (s *ScaleOutClusterRequest) SetWorkerDataDisks(v []*ScaleOutClusterRequestWorkerDataDisks) *ScaleOutClusterRequest {
-	s.WorkerDataDisks = v
+func (s *ScaleOutClusterRequest) SetRuntime(v *ScaleOutClusterRequestRuntime) *ScaleOutClusterRequest {
+	s.Runtime = v
 	return s
 }
 
@@ -4425,6 +5628,66 @@ func (s *ScaleOutClusterRequest) SetTags(v []*ScaleOutClusterRequestTags) *Scale
 
 func (s *ScaleOutClusterRequest) SetTaints(v []*ScaleOutClusterRequestTaints) *ScaleOutClusterRequest {
 	s.Taints = v
+	return s
+}
+
+func (s *ScaleOutClusterRequest) SetUserData(v string) *ScaleOutClusterRequest {
+	s.UserData = &v
+	return s
+}
+
+func (s *ScaleOutClusterRequest) SetVswitchIds(v []*string) *ScaleOutClusterRequest {
+	s.VswitchIds = v
+	return s
+}
+
+func (s *ScaleOutClusterRequest) SetWorkerAutoRenew(v bool) *ScaleOutClusterRequest {
+	s.WorkerAutoRenew = &v
+	return s
+}
+
+func (s *ScaleOutClusterRequest) SetWorkerAutoRenewPeriod(v int32) *ScaleOutClusterRequest {
+	s.WorkerAutoRenewPeriod = &v
+	return s
+}
+
+func (s *ScaleOutClusterRequest) SetWorkerDataDisk(v bool) *ScaleOutClusterRequest {
+	s.WorkerDataDisk = &v
+	return s
+}
+
+func (s *ScaleOutClusterRequest) SetWorkerDataDisks(v []*ScaleOutClusterRequestWorkerDataDisks) *ScaleOutClusterRequest {
+	s.WorkerDataDisks = v
+	return s
+}
+
+func (s *ScaleOutClusterRequest) SetWorkerInstanceChargeType(v string) *ScaleOutClusterRequest {
+	s.WorkerInstanceChargeType = &v
+	return s
+}
+
+func (s *ScaleOutClusterRequest) SetWorkerInstanceTypes(v []*string) *ScaleOutClusterRequest {
+	s.WorkerInstanceTypes = v
+	return s
+}
+
+func (s *ScaleOutClusterRequest) SetWorkerPeriod(v int32) *ScaleOutClusterRequest {
+	s.WorkerPeriod = &v
+	return s
+}
+
+func (s *ScaleOutClusterRequest) SetWorkerPeriodUnit(v string) *ScaleOutClusterRequest {
+	s.WorkerPeriodUnit = &v
+	return s
+}
+
+func (s *ScaleOutClusterRequest) SetWorkerSystemDiskCategory(v string) *ScaleOutClusterRequest {
+	s.WorkerSystemDiskCategory = &v
+	return s
+}
+
+func (s *ScaleOutClusterRequest) SetWorkerSystemDiskSize(v int32) *ScaleOutClusterRequest {
+	s.WorkerSystemDiskSize = &v
 	return s
 }
 
@@ -4450,38 +5713,6 @@ func (s *ScaleOutClusterRequestRuntime) SetName(v string) *ScaleOutClusterReques
 
 func (s *ScaleOutClusterRequestRuntime) SetVersion(v string) *ScaleOutClusterRequestRuntime {
 	s.Version = &v
-	return s
-}
-
-type ScaleOutClusterRequestWorkerDataDisks struct {
-	// 数据盘类型。
-	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// 是否对数据盘加密。
-	Encrypted *string `json:"encrypted,omitempty" xml:"encrypted,omitempty"`
-	// 数据盘大小。
-	Size *string `json:"size,omitempty" xml:"size,omitempty"`
-}
-
-func (s ScaleOutClusterRequestWorkerDataDisks) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ScaleOutClusterRequestWorkerDataDisks) GoString() string {
-	return s.String()
-}
-
-func (s *ScaleOutClusterRequestWorkerDataDisks) SetCategory(v string) *ScaleOutClusterRequestWorkerDataDisks {
-	s.Category = &v
-	return s
-}
-
-func (s *ScaleOutClusterRequestWorkerDataDisks) SetEncrypted(v string) *ScaleOutClusterRequestWorkerDataDisks {
-	s.Encrypted = &v
-	return s
-}
-
-func (s *ScaleOutClusterRequestWorkerDataDisks) SetSize(v string) *ScaleOutClusterRequestWorkerDataDisks {
-	s.Size = &v
 	return s
 }
 
@@ -4539,6 +5770,38 @@ func (s *ScaleOutClusterRequestTaints) SetKey(v string) *ScaleOutClusterRequestT
 
 func (s *ScaleOutClusterRequestTaints) SetValue(v string) *ScaleOutClusterRequestTaints {
 	s.Value = &v
+	return s
+}
+
+type ScaleOutClusterRequestWorkerDataDisks struct {
+	// 数据盘类型。
+	Category *string `json:"category,omitempty" xml:"category,omitempty"`
+	// 是否对数据盘加密。
+	Encrypted *string `json:"encrypted,omitempty" xml:"encrypted,omitempty"`
+	// 数据盘大小。
+	Size *string `json:"size,omitempty" xml:"size,omitempty"`
+}
+
+func (s ScaleOutClusterRequestWorkerDataDisks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScaleOutClusterRequestWorkerDataDisks) GoString() string {
+	return s.String()
+}
+
+func (s *ScaleOutClusterRequestWorkerDataDisks) SetCategory(v string) *ScaleOutClusterRequestWorkerDataDisks {
+	s.Category = &v
+	return s
+}
+
+func (s *ScaleOutClusterRequestWorkerDataDisks) SetEncrypted(v string) *ScaleOutClusterRequestWorkerDataDisks {
+	s.Encrypted = &v
+	return s
+}
+
+func (s *ScaleOutClusterRequestWorkerDataDisks) SetSize(v string) *ScaleOutClusterRequestWorkerDataDisks {
+	s.Size = &v
 	return s
 }
 
@@ -4651,14 +5914,14 @@ func (s *UnInstallClusterAddonsResponse) SetHeaders(v map[string]*string) *UnIns
 }
 
 type UpdateTemplateRequest struct {
-	// 部署模板名称。
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 部署模板yaml。
-	Template *string `json:"template,omitempty" xml:"template,omitempty"`
-	// 部署模板标签
-	Tags *string `json:"tags,omitempty" xml:"tags,omitempty"`
 	// 部署模板描述信息。
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// 部署模板名称。
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 部署模板标签
+	Tags *string `json:"tags,omitempty" xml:"tags,omitempty"`
+	// 部署模板yaml。
+	Template *string `json:"template,omitempty" xml:"template,omitempty"`
 	// 部署模板类型。
 	TemplateType *string `json:"template_type,omitempty" xml:"template_type,omitempty"`
 }
@@ -4671,13 +5934,13 @@ func (s UpdateTemplateRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateTemplateRequest) SetName(v string) *UpdateTemplateRequest {
-	s.Name = &v
+func (s *UpdateTemplateRequest) SetDescription(v string) *UpdateTemplateRequest {
+	s.Description = &v
 	return s
 }
 
-func (s *UpdateTemplateRequest) SetTemplate(v string) *UpdateTemplateRequest {
-	s.Template = &v
+func (s *UpdateTemplateRequest) SetName(v string) *UpdateTemplateRequest {
+	s.Name = &v
 	return s
 }
 
@@ -4686,8 +5949,8 @@ func (s *UpdateTemplateRequest) SetTags(v string) *UpdateTemplateRequest {
 	return s
 }
 
-func (s *UpdateTemplateRequest) SetDescription(v string) *UpdateTemplateRequest {
-	s.Description = &v
+func (s *UpdateTemplateRequest) SetTemplate(v string) *UpdateTemplateRequest {
+	s.Template = &v
 	return s
 }
 
@@ -4716,10 +5979,10 @@ func (s *UpdateTemplateResponse) SetHeaders(v map[string]*string) *UpdateTemplat
 type UpgradeClusterRequest struct {
 	// 组件名称，集群升级时取值"k8s"。
 	ComponentName *string `json:"component_name,omitempty" xml:"component_name,omitempty"`
-	// 当前版本。
-	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 	// 目标版本。
 	NextVersion *string `json:"next_version,omitempty" xml:"next_version,omitempty"`
+	// 当前版本。
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s UpgradeClusterRequest) String() string {
@@ -4735,13 +5998,13 @@ func (s *UpgradeClusterRequest) SetComponentName(v string) *UpgradeClusterReques
 	return s
 }
 
-func (s *UpgradeClusterRequest) SetVersion(v string) *UpgradeClusterRequest {
-	s.Version = &v
+func (s *UpgradeClusterRequest) SetNextVersion(v string) *UpgradeClusterRequest {
+	s.NextVersion = &v
 	return s
 }
 
-func (s *UpgradeClusterRequest) SetNextVersion(v string) *UpgradeClusterRequest {
-	s.NextVersion = &v
+func (s *UpgradeClusterRequest) SetVersion(v string) *UpgradeClusterRequest {
+	s.Version = &v
 	return s
 }
 
@@ -4931,56 +6194,56 @@ func (client *Client) AttachInstancesWithOptions(ClusterId *string, request *Att
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Instances)) {
-		body["instances"] = request.Instances
-	}
-
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Runtime))) {
-		body["runtime"] = request.Runtime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
-		body["image_id"] = request.ImageId
+	if !tea.BoolValue(util.IsUnset(request.CpuPolicy)) {
+		body["cpu_policy"] = request.CpuPolicy
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.FormatDisk)) {
 		body["format_disk"] = request.FormatDisk
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.KeepInstanceName)) {
-		body["keep_instance_name"] = request.KeepInstanceName
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		body["image_id"] = request.ImageId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.CpuPolicy)) {
-		body["cpu_policy"] = request.CpuPolicy
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.KeyPair)) {
-		body["key_pair"] = request.KeyPair
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Password)) {
-		body["password"] = request.Password
+	if !tea.BoolValue(util.IsUnset(request.Instances)) {
+		body["instances"] = request.Instances
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IsEdgeWorker)) {
 		body["is_edge_worker"] = request.IsEdgeWorker
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.UserData)) {
-		body["user_data"] = request.UserData
+	if !tea.BoolValue(util.IsUnset(request.KeepInstanceName)) {
+		body["keep_instance_name"] = request.KeepInstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyPair)) {
+		body["key_pair"] = request.KeyPair
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NodepoolId)) {
 		body["nodepool_id"] = request.NodepoolId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		body["password"] = request.Password
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RdsInstances)) {
 		body["rds_instances"] = request.RdsInstances
 	}
 
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Runtime))) {
+		body["runtime"] = request.Runtime
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Tags)) {
 		body["tags"] = request.Tags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		body["user_data"] = request.UserData
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -4988,7 +6251,7 @@ func (client *Client) AttachInstancesWithOptions(ClusterId *string, request *Att
 		Body:    body,
 	}
 	_result = &AttachInstancesResponse{}
-	_body, _err := client.DoROARequestWithForm(tea.String("AttachInstances"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/attach"), tea.String("json"), req, runtime)
+	_body, _err := client.DoROARequest(tea.String("AttachInstances"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/attach"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5064,100 +6327,56 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, he
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Name)) {
-		body["name"] = request.Name
+	if !tea.BoolValue(util.IsUnset(request.Addons)) {
+		body["addons"] = request.Addons
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CloudMonitorFlags)) {
+		body["cloud_monitor_flags"] = request.CloudMonitorFlags
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ClusterType)) {
 		body["cluster_type"] = request.ClusterType
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		body["region_id"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.ContainerCidr)) {
+		body["container_cidr"] = request.ContainerCidr
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
-		body["zone_id"] = request.ZoneId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.KubernetesVersion)) {
-		body["kubernetes_version"] = request.KubernetesVersion
+	if !tea.BoolValue(util.IsUnset(request.CpuPolicy)) {
+		body["cpu_policy"] = request.CpuPolicy
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DeletionProtection)) {
 		body["deletion_protection"] = request.DeletionProtection
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Runtime))) {
-		body["runtime"] = request.Runtime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Vpcid)) {
-		body["vpcid"] = request.Vpcid
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkerVswitchIds)) {
-		body["worker_vswitch_ids"] = request.WorkerVswitchIds
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ContainerCidr)) {
-		body["container_cidr"] = request.ContainerCidr
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ServiceCidr)) {
-		body["service_cidr"] = request.ServiceCidr
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.NodeCidrMask)) {
-		body["node_cidr_mask"] = request.NodeCidrMask
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SnatEntry)) {
-		body["snat_entry"] = request.SnatEntry
+	if !tea.BoolValue(util.IsUnset(request.DisableRollback)) {
+		body["disable_rollback"] = request.DisableRollback
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EndpointPublicAccess)) {
 		body["endpoint_public_access"] = request.EndpointPublicAccess
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SshFlags)) {
-		body["ssh_flags"] = request.SshFlags
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RdsInstances)) {
-		body["rds_instances"] = request.RdsInstances
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
-		body["security_group_id"] = request.SecurityGroupId
+	if !tea.BoolValue(util.IsUnset(request.ImagesId)) {
+		body["images_id"] = request.ImagesId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IsEnterpriseSecurityGroup)) {
 		body["is_enterprise_security_group"] = request.IsEnterpriseSecurityGroup
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ProxyMode)) {
-		body["proxy_mode"] = request.ProxyMode
+	if !tea.BoolValue(util.IsUnset(request.KeyPair)) {
+		body["key_pair"] = request.KeyPair
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Tags)) {
-		body["tags"] = request.Tags
+	if !tea.BoolValue(util.IsUnset(request.KubernetesVersion)) {
+		body["kubernetes_version"] = request.KubernetesVersion
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ImagesId)) {
-		body["images_id"] = request.ImagesId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MasterInstanceChargeType)) {
-		body["master_instance_charge_type"] = request.MasterInstanceChargeType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MasterPeriod)) {
-		body["master_period"] = request.MasterPeriod
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MasterPeriodUnit)) {
-		body["master_period_unit"] = request.MasterPeriodUnit
+	if !tea.BoolValue(util.IsUnset(request.LoginPassword)) {
+		body["login_password"] = request.LoginPassword
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MasterAutoRenew)) {
@@ -5172,12 +6391,20 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, he
 		body["master_count"] = request.MasterCount
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MasterVswitchIds)) {
-		body["master_vswitch_ids"] = request.MasterVswitchIds
+	if !tea.BoolValue(util.IsUnset(request.MasterInstanceChargeType)) {
+		body["master_instance_charge_type"] = request.MasterInstanceChargeType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MasterInstanceTypes)) {
 		body["master_instance_types"] = request.MasterInstanceTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MasterPeriod)) {
+		body["master_period"] = request.MasterPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MasterPeriodUnit)) {
+		body["master_period_unit"] = request.MasterPeriodUnit
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MasterSystemDiskCategory)) {
@@ -5188,88 +6415,36 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, he
 		body["master_system_disk_size"] = request.MasterSystemDiskSize
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.WorkerInstanceChargeType)) {
-		body["worker_instance_charge_type"] = request.WorkerInstanceChargeType
+	if !tea.BoolValue(util.IsUnset(request.MasterVswitchIds)) {
+		body["master_vswitch_ids"] = request.MasterVswitchIds
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.WorkerPeriod)) {
-		body["worker_period"] = request.WorkerPeriod
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.WorkerPeriodUnit)) {
-		body["worker_period_unit"] = request.WorkerPeriodUnit
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkerAutoRenew)) {
-		body["worker_auto_renew"] = request.WorkerAutoRenew
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkerAutoRenewPeriod)) {
-		body["worker_auto_renew_period"] = request.WorkerAutoRenewPeriod
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.NumOfNodes)) {
-		body["num_of_nodes"] = request.NumOfNodes
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkerInstanceTypes)) {
-		body["worker_instance_types"] = request.WorkerInstanceTypes
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkerSystemDiskCategory)) {
-		body["worker_system_disk_category"] = request.WorkerSystemDiskCategory
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkerSystemDiskSize)) {
-		body["worker_system_disk_size"] = request.WorkerSystemDiskSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkerDataDisks)) {
-		body["worker_data_disks"] = request.WorkerDataDisks
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OsType)) {
-		body["os_type"] = request.OsType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.KeyPair)) {
-		body["key_pair"] = request.KeyPair
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.LoginPassword)) {
-		body["login_password"] = request.LoginPassword
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.UserData)) {
-		body["user_data"] = request.UserData
+	if !tea.BoolValue(util.IsUnset(request.NodeCidrMask)) {
+		body["node_cidr_mask"] = request.NodeCidrMask
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NodePortRange)) {
 		body["node_port_range"] = request.NodePortRange
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.CpuPolicy)) {
-		body["cpu_policy"] = request.CpuPolicy
+	if !tea.BoolValue(util.IsUnset(request.NumOfNodes)) {
+		body["num_of_nodes"] = request.NumOfNodes
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Taints)) {
-		body["taints"] = request.Taints
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CloudMonitorFlags)) {
-		body["cloud_monitor_flags"] = request.CloudMonitorFlags
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Addons)) {
-		body["addons"] = request.Addons
+	if !tea.BoolValue(util.IsUnset(request.OsType)) {
+		body["os_type"] = request.OsType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Platform)) {
 		body["platform"] = request.Platform
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.VswitchIds)) {
-		body["vswitch_ids"] = request.VswitchIds
+	if !tea.BoolValue(util.IsUnset(request.PodVswitchIds)) {
+		body["pod_vswitch_ids"] = request.PodVswitchIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PrivateZone)) {
@@ -5280,16 +6455,104 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, he
 		body["profile"] = request.Profile
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PodVswitchIds)) {
-		body["pod_vswitch_ids"] = request.PodVswitchIds
+	if !tea.BoolValue(util.IsUnset(request.ProxyMode)) {
+		body["proxy_mode"] = request.ProxyMode
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.DisableRollback)) {
-		body["disable_rollback"] = request.DisableRollback
+	if !tea.BoolValue(util.IsUnset(request.RdsInstances)) {
+		body["rds_instances"] = request.RdsInstances
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["region_id"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Runtime))) {
+		body["runtime"] = request.Runtime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
+		body["security_group_id"] = request.SecurityGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceCidr)) {
+		body["service_cidr"] = request.ServiceCidr
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SnatEntry)) {
+		body["snat_entry"] = request.SnatEntry
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SshFlags)) {
+		body["ssh_flags"] = request.SshFlags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		body["tags"] = request.Tags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Taints)) {
+		body["taints"] = request.Taints
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TimeoutMins)) {
 		body["timeout_mins"] = request.TimeoutMins
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		body["user_data"] = request.UserData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Vpcid)) {
+		body["vpcid"] = request.Vpcid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VswitchIds)) {
+		body["vswitch_ids"] = request.VswitchIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerAutoRenew)) {
+		body["worker_auto_renew"] = request.WorkerAutoRenew
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerAutoRenewPeriod)) {
+		body["worker_auto_renew_period"] = request.WorkerAutoRenewPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerDataDisks)) {
+		body["worker_data_disks"] = request.WorkerDataDisks
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerInstanceChargeType)) {
+		body["worker_instance_charge_type"] = request.WorkerInstanceChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerInstanceTypes)) {
+		body["worker_instance_types"] = request.WorkerInstanceTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerPeriod)) {
+		body["worker_period"] = request.WorkerPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerPeriodUnit)) {
+		body["worker_period_unit"] = request.WorkerPeriodUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerSystemDiskCategory)) {
+		body["worker_system_disk_category"] = request.WorkerSystemDiskCategory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerSystemDiskSize)) {
+		body["worker_system_disk_size"] = request.WorkerSystemDiskSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerVswitchIds)) {
+		body["worker_vswitch_ids"] = request.WorkerVswitchIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		body["zone_id"] = request.ZoneId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -5297,7 +6560,58 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, he
 		Body:    body,
 	}
 	_result = &CreateClusterResponse{}
-	_body, _err := client.DoROARequestWithForm(tea.String("CreateCluster"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters"), tea.String("json"), req, runtime)
+	_body, _err := client.DoROARequest(tea.String("CreateCluster"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateClusterNodePool(ClusterId *string, request *CreateClusterNodePoolRequest) (_result *CreateClusterNodePoolResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateClusterNodePoolResponse{}
+	_body, _err := client.CreateClusterNodePoolWithOptions(ClusterId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateClusterNodePoolWithOptions(ClusterId *string, request *CreateClusterNodePoolRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateClusterNodePoolResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.AutoScaling))) {
+		body["auto_scaling"] = request.AutoScaling
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.KubernetesConfig))) {
+		body["kubernetes_config"] = request.KubernetesConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.NodepoolInfo))) {
+		body["nodepool_info"] = request.NodepoolInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.ScalingGroup))) {
+		body["scaling_group"] = request.ScalingGroup
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.TeeConfig))) {
+		body["tee_config"] = request.TeeConfig
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    body,
+	}
+	_result = &CreateClusterNodePoolResponse{}
+	_body, _err := client.DoROARequest(tea.String("CreateClusterNodePool"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/nodepools"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5323,8 +6637,8 @@ func (client *Client) CreateKubernetesTriggerWithOptions(request *CreateKubernet
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		body["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.Action)) {
+		body["Action"] = request.Action
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
@@ -5333,6 +6647,10 @@ func (client *Client) CreateKubernetesTriggerWithOptions(request *CreateKubernet
 
 	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
 		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
@@ -5344,7 +6662,7 @@ func (client *Client) CreateKubernetesTriggerWithOptions(request *CreateKubernet
 		Body:    body,
 	}
 	_result = &CreateKubernetesTriggerResponse{}
-	_body, _err := client.DoROARequestWithForm(tea.String("CreateKubernetesTrigger"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/triggers"), tea.String("json"), req, runtime)
+	_body, _err := client.DoROARequest(tea.String("CreateKubernetesTrigger"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/triggers"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5380,6 +6698,31 @@ func (client *Client) DeleteClusterWithOptions(ClusterId *string, request *Delet
 	}
 	_result = &DeleteClusterResponse{}
 	_body, _err := client.DoROARequest(tea.String("DeleteCluster"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)), tea.String("none"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteClusterNodepool(ClusterId *string, NodepoolId *string) (_result *DeleteClusterNodepoolResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteClusterNodepoolResponse{}
+	_body, _err := client.DeleteClusterNodepoolWithOptions(ClusterId, NodepoolId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteClusterNodepoolWithOptions(ClusterId *string, NodepoolId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteClusterNodepoolResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &DeleteClusterNodepoolResponse{}
+	_body, _err := client.DoROARequest(tea.String("DeleteClusterNodepool"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/nodepools/{NodepoolId}"), tea.String("none"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5571,7 +6914,7 @@ func (client *Client) DescribeClusterAttachScriptsWithOptions(ClusterId *string,
 		Body:    body,
 	}
 	_result = &DescribeClusterAttachScriptsResponse{}
-	_body, _err := client.DoROARequestWithForm(tea.String("DescribeClusterAttachScripts"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/attachscript"), tea.String("string"), req, runtime)
+	_body, _err := client.DoROARequest(tea.String("DescribeClusterAttachScripts"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/attachscript"), tea.String("string"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5621,7 +6964,57 @@ func (client *Client) DescribeClusterLogsWithOptions(ClusterId *string, headers 
 		Headers: headers,
 	}
 	_result = &DescribeClusterLogsResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeClusterLogs"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/logs"), tea.String("json"), req, runtime)
+	_body, _err := client.DoROARequest(tea.String("DescribeClusterLogs"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/logs"), tea.String("array"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeClusterNodePoolDetail(ClusterId *string, NodepoolId *string) (_result *DescribeClusterNodePoolDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeClusterNodePoolDetailResponse{}
+	_body, _err := client.DescribeClusterNodePoolDetailWithOptions(ClusterId, NodepoolId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeClusterNodePoolDetailWithOptions(ClusterId *string, NodepoolId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeClusterNodePoolDetailResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &DescribeClusterNodePoolDetailResponse{}
+	_body, _err := client.DoROARequest(tea.String("DescribeClusterNodePoolDetail"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/nodepools/{NodepoolId}"), tea.String("none"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeClusterNodePools(ClusterId *string) (_result *DescribeClusterNodePoolsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeClusterNodePoolsResponse{}
+	_body, _err := client.DescribeClusterNodePoolsWithOptions(ClusterId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeClusterNodePoolsWithOptions(ClusterId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeClusterNodePoolsResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &DescribeClusterNodePoolsResponse{}
+	_body, _err := client.DoROARequest(tea.String("DescribeClusterNodePools"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/nodepools"), tea.String("none"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5882,6 +7275,78 @@ func (client *Client) DescribeExternalAgentWithOptions(ClusterId *string, header
 	return _result, _err
 }
 
+func (client *Client) DescribeKubernetesVersionMetadata(request *DescribeKubernetesVersionMetadataRequest) (_result *DescribeKubernetesVersionMetadataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeKubernetesVersionMetadataResponse{}
+	_body, _err := client.DescribeKubernetesVersionMetadataWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeKubernetesVersionMetadataWithOptions(request *DescribeKubernetesVersionMetadataRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeKubernetesVersionMetadataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterType)) {
+		query["ClusterType"] = request.ClusterType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KubernetesVersion)) {
+		query["KubernetesVersion"] = request.KubernetesVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Profile)) {
+		query["Profile"] = request.Profile
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	_result = &DescribeKubernetesVersionMetadataResponse{}
+	_body, _err := client.DoROARequest(tea.String("DescribeKubernetesVersionMetadata"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/metadata/versions"), tea.String("none"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeTemplateAttribute(TemplateId *string) (_result *DescribeTemplateAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeTemplateAttributeResponse{}
+	_body, _err := client.DescribeTemplateAttributeWithOptions(TemplateId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeTemplateAttributeWithOptions(TemplateId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeTemplateAttributeResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &DescribeTemplateAttributeResponse{}
+	_body, _err := client.DoROARequest(tea.String("DescribeTemplateAttribute"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/templates/"+tea.StringValue(TemplateId)), tea.String("none"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) DescribeTemplates(request *DescribeTemplatesRequest) (_result *DescribeTemplatesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6040,6 +7505,53 @@ func (client *Client) InstallClusterAddonsWithOptions(ClusterId *string, request
 	return _result, _err
 }
 
+func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.ListTagResourcesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["next_token"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceIds)) {
+		query["resource_ids"] = request.ResourceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["tags"] = request.Tags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["resource_type"] = request.ResourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.DoROARequest(tea.String("ListTagResources"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/tags"), tea.String("none"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) ModifyCluster(ClusterId *string, request *ModifyClusterRequest) (_result *ModifyClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6058,14 +7570,6 @@ func (client *Client) ModifyClusterWithOptions(ClusterId *string, request *Modif
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DeletionProtection)) {
-		body["deletion_protection"] = request.DeletionProtection
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.IngressLoadbalancerId)) {
-		body["ingress_loadbalancer_id"] = request.IngressLoadbalancerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ApiServerEip)) {
 		body["api_server_eip"] = request.ApiServerEip
 	}
@@ -6074,12 +7578,20 @@ func (client *Client) ModifyClusterWithOptions(ClusterId *string, request *Modif
 		body["api_server_eip_id"] = request.ApiServerEipId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
-		body["resource_group_id"] = request.ResourceGroupId
+	if !tea.BoolValue(util.IsUnset(request.DeletionProtection)) {
+		body["deletion_protection"] = request.DeletionProtection
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IngressDomainRebinding)) {
 		body["ingress_domain_rebinding"] = request.IngressDomainRebinding
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IngressLoadbalancerId)) {
+		body["ingress_loadbalancer_id"] = request.IngressLoadbalancerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		body["resource_group_id"] = request.ResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -6087,7 +7599,7 @@ func (client *Client) ModifyClusterWithOptions(ClusterId *string, request *Modif
 		Body:    body,
 	}
 	_result = &ModifyClusterResponse{}
-	_body, _err := client.DoROARequestWithForm(tea.String("ModifyCluster"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/api/v2/clusters/"+tea.StringValue(ClusterId)), tea.String("json"), req, runtime)
+	_body, _err := client.DoROARequest(tea.String("ModifyCluster"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/api/v2/clusters/"+tea.StringValue(ClusterId)), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6113,8 +7625,12 @@ func (client *Client) ModifyClusterConfigurationWithOptions(ClusterId *string, r
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.CustomizeConfig))) {
-		body["customize_config"] = request.CustomizeConfig
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Configs))) {
+		body["configs"] = request.Configs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -6122,7 +7638,62 @@ func (client *Client) ModifyClusterConfigurationWithOptions(ClusterId *string, r
 		Body:    body,
 	}
 	_result = &ModifyClusterConfigurationResponse{}
-	_body, _err := client.DoROARequestWithForm(tea.String("ModifyClusterConfiguration"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/configuration"), tea.String("none"), req, runtime)
+	_body, _err := client.DoROARequest(tea.String("ModifyClusterConfiguration"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/configuration"), tea.String("none"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyClusterNodePool(ClusterId *string, NodepoolId *string, request *ModifyClusterNodePoolRequest) (_result *ModifyClusterNodePoolResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModifyClusterNodePoolResponse{}
+	_body, _err := client.ModifyClusterNodePoolWithOptions(ClusterId, NodepoolId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyClusterNodePoolWithOptions(ClusterId *string, NodepoolId *string, request *ModifyClusterNodePoolRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ModifyClusterNodePoolResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.AutoScaling))) {
+		body["auto_scaling"] = request.AutoScaling
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.KubernetesConfig))) {
+		body["kubernetes_config"] = request.KubernetesConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.NodepoolInfo))) {
+		body["nodepool_info"] = request.NodepoolInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.ScalingGroup))) {
+		body["scaling_group"] = request.ScalingGroup
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.TeeConfig))) {
+		body["tee_config"] = request.TeeConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UpdateNodes)) {
+		body["update_nodes"] = request.UpdateNodes
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    body,
+	}
+	_result = &ModifyClusterNodePoolResponse{}
+	_body, _err := client.DoROARequest(tea.String("ModifyClusterNodePool"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/nodepools/{NodepoolId}"), tea.String("none"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6153,6 +7724,31 @@ func (client *Client) ModifyClusterTagsWithOptions(ClusterId *string, request *M
 	}
 	_result = &ModifyClusterTagsResponse{}
 	_body, _err := client.DoROARequest(tea.String("ModifyClusterTags"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/tags"), tea.String("none"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PauseClusterUpgrade(ClusterId *string) (_result *PauseClusterUpgradeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &PauseClusterUpgradeResponse{}
+	_body, _err := client.PauseClusterUpgradeWithOptions(ClusterId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PauseClusterUpgradeWithOptions(ClusterId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PauseClusterUpgradeResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &PauseClusterUpgradeResponse{}
+	_body, _err := client.DoROARequest(tea.String("PauseClusterUpgrade"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v2/clusters/"+tea.StringValue(ClusterId)+"/upgrade/pause"), tea.String("none"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6203,10 +7799,6 @@ func (client *Client) RemoveClusterNodesWithOptions(ClusterId *string, request *
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ReleaseNode)) {
-		body["release_node"] = request.ReleaseNode
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.DrainNode)) {
 		body["drain_node"] = request.DrainNode
 	}
@@ -6215,12 +7807,16 @@ func (client *Client) RemoveClusterNodesWithOptions(ClusterId *string, request *
 		body["nodes"] = request.Nodes
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ReleaseNode)) {
+		body["release_node"] = request.ReleaseNode
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    body,
 	}
 	_result = &RemoveClusterNodesResponse{}
-	_body, _err := client.DoROARequestWithForm(tea.String("RemoveClusterNodes"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v2/clusters/"+tea.StringValue(ClusterId)+"/nodes/remove"), tea.String("none"), req, runtime)
+	_body, _err := client.DoROARequest(tea.String("RemoveClusterNodes"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v2/clusters/"+tea.StringValue(ClusterId)+"/nodes/remove"), tea.String("none"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6253,6 +7849,31 @@ func (client *Client) ResumeComponentUpgradeWithOptions(clusterid *string, compo
 	return _result, _err
 }
 
+func (client *Client) ResumeUpgradeCluster(ClusterId *string) (_result *ResumeUpgradeClusterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ResumeUpgradeClusterResponse{}
+	_body, _err := client.ResumeUpgradeClusterWithOptions(ClusterId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ResumeUpgradeClusterWithOptions(ClusterId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ResumeUpgradeClusterResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &ResumeUpgradeClusterResponse{}
+	_body, _err := client.DoROARequest(tea.String("ResumeUpgradeCluster"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v2/clusters/"+tea.StringValue(ClusterId)+"/upgrade/resume"), tea.String("none"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) ScaleCluster(ClusterId *string, request *ScaleClusterRequest) (_result *ScaleClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6265,68 +7886,18 @@ func (client *Client) ScaleCluster(ClusterId *string, request *ScaleClusterReque
 	return _result, _err
 }
 
-func (client *Client) ScaleClusterWithOptions(ClusterId *string, tmpReq *ScaleClusterRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ScaleClusterResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
+func (client *Client) ScaleClusterWithOptions(ClusterId *string, request *ScaleClusterRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ScaleClusterResponse, _err error) {
+	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	request := &ScaleClusterShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.Taints)) {
-		request.TaintsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Taints, tea.String("taints"), tea.String("json"))
-	}
-
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Count)) {
-		body["count"] = request.Count
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.KeyPair)) {
-		body["key_pair"] = request.KeyPair
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.LoginPassword)) {
-		body["login_password"] = request.LoginPassword
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkerDataDisk)) {
-		body["worker_data_disk"] = request.WorkerDataDisk
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkerInstanceTypes)) {
-		body["worker_instance_types"] = request.WorkerInstanceTypes
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkerInstanceChargeType)) {
-		body["worker_instance_charge_type"] = request.WorkerInstanceChargeType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkerPeriod)) {
-		body["worker_period"] = request.WorkerPeriod
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkerPeriodUnit)) {
-		body["worker_period_unit"] = request.WorkerPeriodUnit
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkerAutoRenew)) {
-		body["worker_auto_renew"] = request.WorkerAutoRenew
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkerAutoRenewPeriod)) {
-		body["worker_auto_renew_period"] = request.WorkerAutoRenewPeriod
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkerSystemDiskCategory)) {
-		body["worker_system_disk_category"] = request.WorkerSystemDiskCategory
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkerSystemDiskSize)) {
-		body["worker_system_disk_size"] = request.WorkerSystemDiskSize
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.CloudMonitorFlags)) {
 		body["cloud_monitor_flags"] = request.CloudMonitorFlags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Count)) {
+		body["count"] = request.Count
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.CpuPolicy)) {
@@ -6337,20 +7908,64 @@ func (client *Client) ScaleClusterWithOptions(ClusterId *string, tmpReq *ScaleCl
 		body["disable_rollback"] = request.DisableRollback
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.VswitchIds)) {
-		body["vswitch_ids"] = request.VswitchIds
+	if !tea.BoolValue(util.IsUnset(request.KeyPair)) {
+		body["key_pair"] = request.KeyPair
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.WorkerDataDisks)) {
-		body["worker_data_disks"] = request.WorkerDataDisks
+	if !tea.BoolValue(util.IsUnset(request.LoginPassword)) {
+		body["login_password"] = request.LoginPassword
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Tags)) {
 		body["tags"] = request.Tags
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.TaintsShrink)) {
-		body["taints"] = request.TaintsShrink
+	if !tea.BoolValue(util.IsUnset(request.Taints)) {
+		body["taints"] = request.Taints
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VswitchIds)) {
+		body["vswitch_ids"] = request.VswitchIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerAutoRenew)) {
+		body["worker_auto_renew"] = request.WorkerAutoRenew
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerAutoRenewPeriod)) {
+		body["worker_auto_renew_period"] = request.WorkerAutoRenewPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerDataDisk)) {
+		body["worker_data_disk"] = request.WorkerDataDisk
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerDataDisks)) {
+		body["worker_data_disks"] = request.WorkerDataDisks
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerInstanceChargeType)) {
+		body["worker_instance_charge_type"] = request.WorkerInstanceChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerInstanceTypes)) {
+		body["worker_instance_types"] = request.WorkerInstanceTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerPeriod)) {
+		body["worker_period"] = request.WorkerPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerPeriodUnit)) {
+		body["worker_period_unit"] = request.WorkerPeriodUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerSystemDiskCategory)) {
+		body["worker_system_disk_category"] = request.WorkerSystemDiskCategory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerSystemDiskSize)) {
+		body["worker_system_disk_size"] = request.WorkerSystemDiskSize
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -6358,7 +7973,62 @@ func (client *Client) ScaleClusterWithOptions(ClusterId *string, tmpReq *ScaleCl
 		Body:    body,
 	}
 	_result = &ScaleClusterResponse{}
-	_body, _err := client.DoROARequestWithForm(tea.String("ScaleCluster"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)), tea.String("json"), req, runtime)
+	_body, _err := client.DoROARequest(tea.String("ScaleCluster"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ScaleClusterNodePool(ClusterId *string, NodepoolId *string, request *ScaleClusterNodePoolRequest) (_result *ScaleClusterNodePoolResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ScaleClusterNodePoolResponse{}
+	_body, _err := client.ScaleClusterNodePoolWithOptions(ClusterId, NodepoolId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ScaleClusterNodePoolWithOptions(ClusterId *string, NodepoolId *string, request *ScaleClusterNodePoolRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ScaleClusterNodePoolResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Count)) {
+		body["count"] = request.Count
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.KubernetesConfig))) {
+		body["kubernetes_config"] = request.KubernetesConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.NodepoolInfo))) {
+		body["nodepool_info"] = request.NodepoolInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.ScalingGroup))) {
+		body["scaling_group"] = request.ScalingGroup
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.TeeConfig))) {
+		body["tee_config"] = request.TeeConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UpdateNodes)) {
+		body["update_nodes"] = request.UpdateNodes
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    body,
+	}
+	_result = &ScaleClusterNodePoolResponse{}
+	_body, _err := client.DoROARequest(tea.String("ScaleClusterNodePool"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/nodepools/{NodepoolId}"), tea.String("none"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6384,52 +8054,12 @@ func (client *Client) ScaleOutClusterWithOptions(ClusterId *string, request *Sca
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Count)) {
-		body["count"] = request.Count
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkerInstanceChargeType)) {
-		body["worker_instance_charge_type"] = request.WorkerInstanceChargeType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkerPeriod)) {
-		body["worker_period"] = request.WorkerPeriod
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkerPeriodUnit)) {
-		body["worker_period_unit"] = request.WorkerPeriodUnit
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkerAutoRenew)) {
-		body["worker_auto_renew"] = request.WorkerAutoRenew
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkerAutoRenewPeriod)) {
-		body["worker_auto_renew_period"] = request.WorkerAutoRenewPeriod
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkerSystemDiskCategory)) {
-		body["worker_system_disk_category"] = request.WorkerSystemDiskCategory
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkerSystemDiskSize)) {
-		body["worker_system_disk_size"] = request.WorkerSystemDiskSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkerDataDisk)) {
-		body["worker_data_disk"] = request.WorkerDataDisk
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.KeyPair)) {
-		body["key_pair"] = request.KeyPair
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.LoginPassword)) {
-		body["login_password"] = request.LoginPassword
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.CloudMonitorFlags)) {
 		body["cloud_monitor_flags"] = request.CloudMonitorFlags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Count)) {
+		body["count"] = request.Count
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.CpuPolicy)) {
@@ -6444,28 +8074,20 @@ func (client *Client) ScaleOutClusterWithOptions(ClusterId *string, request *Sca
 		body["image_id"] = request.ImageId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.UserData)) {
-		body["user_data"] = request.UserData
+	if !tea.BoolValue(util.IsUnset(request.KeyPair)) {
+		body["key_pair"] = request.KeyPair
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Runtime))) {
-		body["runtime"] = request.Runtime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.VswitchIds)) {
-		body["vswitch_ids"] = request.VswitchIds
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkerInstanceTypes)) {
-		body["worker_instance_types"] = request.WorkerInstanceTypes
+	if !tea.BoolValue(util.IsUnset(request.LoginPassword)) {
+		body["login_password"] = request.LoginPassword
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RdsInstances)) {
 		body["rds_instances"] = request.RdsInstances
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.WorkerDataDisks)) {
-		body["worker_data_disks"] = request.WorkerDataDisks
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Runtime))) {
+		body["runtime"] = request.Runtime
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Tags)) {
@@ -6476,12 +8098,60 @@ func (client *Client) ScaleOutClusterWithOptions(ClusterId *string, request *Sca
 		body["taints"] = request.Taints
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		body["user_data"] = request.UserData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VswitchIds)) {
+		body["vswitch_ids"] = request.VswitchIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerAutoRenew)) {
+		body["worker_auto_renew"] = request.WorkerAutoRenew
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerAutoRenewPeriod)) {
+		body["worker_auto_renew_period"] = request.WorkerAutoRenewPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerDataDisk)) {
+		body["worker_data_disk"] = request.WorkerDataDisk
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerDataDisks)) {
+		body["worker_data_disks"] = request.WorkerDataDisks
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerInstanceChargeType)) {
+		body["worker_instance_charge_type"] = request.WorkerInstanceChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerInstanceTypes)) {
+		body["worker_instance_types"] = request.WorkerInstanceTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerPeriod)) {
+		body["worker_period"] = request.WorkerPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerPeriodUnit)) {
+		body["worker_period_unit"] = request.WorkerPeriodUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerSystemDiskCategory)) {
+		body["worker_system_disk_category"] = request.WorkerSystemDiskCategory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerSystemDiskSize)) {
+		body["worker_system_disk_size"] = request.WorkerSystemDiskSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    body,
 	}
 	_result = &ScaleOutClusterResponse{}
-	_body, _err := client.DoROARequestWithForm(tea.String("ScaleOutCluster"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v2/clusters/"+tea.StringValue(ClusterId)), tea.String("json"), req, runtime)
+	_body, _err := client.DoROARequest(tea.String("ScaleOutCluster"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v2/clusters/"+tea.StringValue(ClusterId)), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6506,17 +8176,12 @@ func (client *Client) UnInstallClusterAddonsWithOptions(ClusterId *string, reque
 	if _err != nil {
 		return _result, _err
 	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Addons)) {
-		body["addons"] = request.Addons
-	}
-
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Body:    body,
+		Body:    util.ToArray(request.Addons),
 	}
 	_result = &UnInstallClusterAddonsResponse{}
-	_body, _err := client.DoROARequestWithForm(tea.String("UnInstallClusterAddons"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/components/uninstall"), tea.String("none"), req, runtime)
+	_body, _err := client.DoROARequest(tea.String("UnInstallClusterAddons"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/components/uninstall"), tea.String("none"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6542,20 +8207,20 @@ func (client *Client) UpdateTemplateWithOptions(TemplateId *string, request *Upd
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Name)) {
-		body["name"] = request.Name
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Template)) {
-		body["template"] = request.Template
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Tags)) {
 		body["tags"] = request.Tags
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Description)) {
-		body["description"] = request.Description
+	if !tea.BoolValue(util.IsUnset(request.Template)) {
+		body["template"] = request.Template
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TemplateType)) {
@@ -6567,7 +8232,7 @@ func (client *Client) UpdateTemplateWithOptions(TemplateId *string, request *Upd
 		Body:    body,
 	}
 	_result = &UpdateTemplateResponse{}
-	_body, _err := client.DoROARequestWithForm(tea.String("UpdateTemplate"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/templates/"+tea.StringValue(TemplateId)), tea.String("none"), req, runtime)
+	_body, _err := client.DoROARequest(tea.String("UpdateTemplate"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/templates/"+tea.StringValue(TemplateId)), tea.String("none"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6597,12 +8262,12 @@ func (client *Client) UpgradeClusterWithOptions(ClusterId *string, request *Upgr
 		body["component_name"] = request.ComponentName
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Version)) {
-		body["version"] = request.Version
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.NextVersion)) {
 		body["next_version"] = request.NextVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		body["version"] = request.Version
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -6610,7 +8275,7 @@ func (client *Client) UpgradeClusterWithOptions(ClusterId *string, request *Upgr
 		Body:    body,
 	}
 	_result = &UpgradeClusterResponse{}
-	_body, _err := client.DoROARequestWithForm(tea.String("UpgradeCluster"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v2/clusters/"+tea.StringValue(ClusterId)+"/upgrade"), tea.String("none"), req, runtime)
+	_body, _err := client.DoROARequest(tea.String("UpgradeCluster"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v2/clusters/"+tea.StringValue(ClusterId)+"/upgrade"), tea.String("none"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
