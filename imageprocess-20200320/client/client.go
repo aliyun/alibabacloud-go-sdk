@@ -14,6 +14,179 @@ import (
 	"io"
 )
 
+type DetectSkinDiseaseRequest struct {
+	Url     *string `json:"Url,omitempty" xml:"Url,omitempty" require:"true"`
+	OrgId   *string `json:"OrgId,omitempty" xml:"OrgId,omitempty" require:"true"`
+	OrgName *string `json:"OrgName,omitempty" xml:"OrgName,omitempty" require:"true"`
+}
+
+func (s DetectSkinDiseaseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectSkinDiseaseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetectSkinDiseaseRequest) SetUrl(v string) *DetectSkinDiseaseRequest {
+	s.Url = &v
+	return s
+}
+
+func (s *DetectSkinDiseaseRequest) SetOrgId(v string) *DetectSkinDiseaseRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *DetectSkinDiseaseRequest) SetOrgName(v string) *DetectSkinDiseaseRequest {
+	s.OrgName = &v
+	return s
+}
+
+type DetectSkinDiseaseResponse struct {
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Data      *DetectSkinDiseaseResponseData `json:"Data,omitempty" xml:"Data,omitempty" require:"true" type:"Struct"`
+}
+
+func (s DetectSkinDiseaseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectSkinDiseaseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DetectSkinDiseaseResponse) SetRequestId(v string) *DetectSkinDiseaseResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DetectSkinDiseaseResponse) SetData(v *DetectSkinDiseaseResponseData) *DetectSkinDiseaseResponse {
+	s.Data = v
+	return s
+}
+
+type DetectSkinDiseaseResponseData struct {
+	Results map[string]interface{} `json:"Results,omitempty" xml:"Results,omitempty" require:"true"`
+}
+
+func (s DetectSkinDiseaseResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectSkinDiseaseResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *DetectSkinDiseaseResponseData) SetResults(v map[string]interface{}) *DetectSkinDiseaseResponseData {
+	s.Results = v
+	return s
+}
+
+type DetectSkinDiseaseAdvanceRequest struct {
+	UrlObject io.Reader `json:"UrlObject,omitempty" xml:"UrlObject,omitempty" require:"true"`
+	OrgId     *string   `json:"OrgId,omitempty" xml:"OrgId,omitempty" require:"true"`
+	OrgName   *string   `json:"OrgName,omitempty" xml:"OrgName,omitempty" require:"true"`
+}
+
+func (s DetectSkinDiseaseAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectSkinDiseaseAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetectSkinDiseaseAdvanceRequest) SetUrlObject(v io.Reader) *DetectSkinDiseaseAdvanceRequest {
+	s.UrlObject = v
+	return s
+}
+
+func (s *DetectSkinDiseaseAdvanceRequest) SetOrgId(v string) *DetectSkinDiseaseAdvanceRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *DetectSkinDiseaseAdvanceRequest) SetOrgName(v string) *DetectSkinDiseaseAdvanceRequest {
+	s.OrgName = &v
+	return s
+}
+
+type RunMedQARequest struct {
+	Question *string `json:"Question,omitempty" xml:"Question,omitempty" require:"true"`
+	OrgId    *string `json:"OrgId,omitempty" xml:"OrgId,omitempty" require:"true"`
+	OrgName  *string `json:"OrgName,omitempty" xml:"OrgName,omitempty" require:"true"`
+}
+
+func (s RunMedQARequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunMedQARequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunMedQARequest) SetQuestion(v string) *RunMedQARequest {
+	s.Question = &v
+	return s
+}
+
+func (s *RunMedQARequest) SetOrgId(v string) *RunMedQARequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *RunMedQARequest) SetOrgName(v string) *RunMedQARequest {
+	s.OrgName = &v
+	return s
+}
+
+type RunMedQAResponse struct {
+	RequestId *string               `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Data      *RunMedQAResponseData `json:"Data,omitempty" xml:"Data,omitempty" require:"true" type:"Struct"`
+}
+
+func (s RunMedQAResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunMedQAResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunMedQAResponse) SetRequestId(v string) *RunMedQAResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RunMedQAResponse) SetData(v *RunMedQAResponseData) *RunMedQAResponse {
+	s.Data = v
+	return s
+}
+
+type RunMedQAResponseData struct {
+	Answer          *string   `json:"Answer,omitempty" xml:"Answer,omitempty" require:"true"`
+	SimilarQuestion []*string `json:"SimilarQuestion,omitempty" xml:"SimilarQuestion,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s RunMedQAResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunMedQAResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *RunMedQAResponseData) SetAnswer(v string) *RunMedQAResponseData {
+	s.Answer = &v
+	return s
+}
+
+func (s *RunMedQAResponseData) SetSimilarQuestion(v []*string) *RunMedQAResponseData {
+	s.SimilarQuestion = v
+	return s
+}
+
 type DetectKneeKeypointXRayRequest struct {
 	ImageUrl   *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty" require:"true"`
 	DataFormat *string `json:"DataFormat,omitempty" xml:"DataFormat,omitempty" require:"true"`
@@ -793,7 +966,8 @@ func (s *CalcCACSResponse) SetData(v *CalcCACSResponseData) *CalcCACSResponse {
 }
 
 type CalcCACSResponseData struct {
-	Score *string `json:"Score,omitempty" xml:"Score,omitempty" require:"true"`
+	Score     *string `json:"Score,omitempty" xml:"Score,omitempty" require:"true"`
+	ResultUrl *string `json:"ResultUrl,omitempty" xml:"ResultUrl,omitempty" require:"true"`
 }
 
 func (s CalcCACSResponseData) String() string {
@@ -806,6 +980,11 @@ func (s CalcCACSResponseData) GoString() string {
 
 func (s *CalcCACSResponseData) SetScore(v string) *CalcCACSResponseData {
 	s.Score = &v
+	return s
+}
+
+func (s *CalcCACSResponseData) SetResultUrl(v string) *CalcCACSResponseData {
+	s.ResultUrl = &v
 	return s
 }
 
@@ -1594,6 +1773,121 @@ func (client *Client) Init(config *rpc.Config) (_err error) {
 	}
 
 	return nil
+}
+
+func (client *Client) DetectSkinDisease(request *DetectSkinDiseaseRequest, runtime *util.RuntimeOptions) (_result *DetectSkinDiseaseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &DetectSkinDiseaseResponse{}
+	_body, _err := client.DoRequest(tea.String("DetectSkinDisease"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-03-20"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DetectSkinDiseaseAdvance(request *DetectSkinDiseaseAdvanceRequest, runtime *util.RuntimeOptions) (_result *DetectSkinDiseaseResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("imageprocess"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	rpcutil.Convert(runtime, ossRuntime)
+	detectSkinDiseasereq := &DetectSkinDiseaseRequest{}
+	rpcutil.Convert(request, detectSkinDiseasereq)
+	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	ossConfig.AccessKeyId = authResponse.AccessKeyId
+	ossConfig.Endpoint = rpcutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+	ossClient, _err = oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	fileObj = &fileform.FileField{
+		Filename:    authResponse.ObjectKey,
+		Content:     request.UrlObject,
+		ContentType: tea.String(""),
+	}
+	ossHeader = &oss.PostObjectRequestHeader{
+		AccessKeyId:         authResponse.AccessKeyId,
+		Policy:              authResponse.EncodedPolicy,
+		Signature:           authResponse.Signature,
+		Key:                 authResponse.ObjectKey,
+		File:                fileObj,
+		SuccessActionStatus: tea.String("201"),
+	}
+	uploadRequest = &oss.PostObjectRequest{
+		BucketName: authResponse.Bucket,
+		Header:     ossHeader,
+	}
+	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+	if _err != nil {
+		return _result, _err
+	}
+	detectSkinDiseasereq.Url = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	detectSkinDiseaseResp, _err := client.DetectSkinDisease(detectSkinDiseasereq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = detectSkinDiseaseResp
+	return _result, _err
+}
+
+func (client *Client) RunMedQA(request *RunMedQARequest, runtime *util.RuntimeOptions) (_result *RunMedQAResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &RunMedQAResponse{}
+	_body, _err := client.DoRequest(tea.String("RunMedQA"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-03-20"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 func (client *Client) DetectKneeKeypointXRay(request *DetectKneeKeypointXRayRequest, runtime *util.RuntimeOptions) (_result *DetectKneeKeypointXRayResponse, _err error) {
