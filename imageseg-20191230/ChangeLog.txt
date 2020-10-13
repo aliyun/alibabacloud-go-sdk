@@ -1,6 +1,9 @@
 2020-10-13 Version: v1.1.7
 - Release SegmentSkin.
 
+2020-10-13 Version: v1.1.7
+- Release SegmentSkin.
+
 2020-09-09 Version: v1.1.6
 - Release ChangeSky.
 
