@@ -14,6 +14,492 @@ import (
 	"io"
 )
 
+type PedestrianDetectAttributeRequest struct {
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty" require:"true"`
+}
+
+func (s PedestrianDetectAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PedestrianDetectAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PedestrianDetectAttributeRequest) SetImageURL(v string) *PedestrianDetectAttributeRequest {
+	s.ImageURL = &v
+	return s
+}
+
+type PedestrianDetectAttributeResponse struct {
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Data      *PedestrianDetectAttributeResponseData `json:"Data,omitempty" xml:"Data,omitempty" require:"true" type:"Struct"`
+}
+
+func (s PedestrianDetectAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PedestrianDetectAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PedestrianDetectAttributeResponse) SetRequestId(v string) *PedestrianDetectAttributeResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *PedestrianDetectAttributeResponse) SetData(v *PedestrianDetectAttributeResponseData) *PedestrianDetectAttributeResponse {
+	s.Data = v
+	return s
+}
+
+type PedestrianDetectAttributeResponseData struct {
+	PersonNumber *int                                               `json:"PersonNumber,omitempty" xml:"PersonNumber,omitempty" require:"true"`
+	Attributes   []*PedestrianDetectAttributeResponseDataAttributes `json:"Attributes,omitempty" xml:"Attributes,omitempty" require:"true" type:"Repeated"`
+	Boxes        []*PedestrianDetectAttributeResponseDataBoxes      `json:"Boxes,omitempty" xml:"Boxes,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s PedestrianDetectAttributeResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PedestrianDetectAttributeResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *PedestrianDetectAttributeResponseData) SetPersonNumber(v int) *PedestrianDetectAttributeResponseData {
+	s.PersonNumber = &v
+	return s
+}
+
+func (s *PedestrianDetectAttributeResponseData) SetAttributes(v []*PedestrianDetectAttributeResponseDataAttributes) *PedestrianDetectAttributeResponseData {
+	s.Attributes = v
+	return s
+}
+
+func (s *PedestrianDetectAttributeResponseData) SetBoxes(v []*PedestrianDetectAttributeResponseDataBoxes) *PedestrianDetectAttributeResponseData {
+	s.Boxes = v
+	return s
+}
+
+type PedestrianDetectAttributeResponseDataAttributes struct {
+	Age         *PedestrianDetectAttributeResponseDataAttributesAge         `json:"Age,omitempty" xml:"Age,omitempty" require:"true" type:"Struct"`
+	Backpack    *PedestrianDetectAttributeResponseDataAttributesBackpack    `json:"Backpack,omitempty" xml:"Backpack,omitempty" require:"true" type:"Struct"`
+	Gender      *PedestrianDetectAttributeResponseDataAttributesGender      `json:"Gender,omitempty" xml:"Gender,omitempty" require:"true" type:"Struct"`
+	Glasses     *PedestrianDetectAttributeResponseDataAttributesGlasses     `json:"Glasses,omitempty" xml:"Glasses,omitempty" require:"true" type:"Struct"`
+	Handbag     *PedestrianDetectAttributeResponseDataAttributesHandbag     `json:"Handbag,omitempty" xml:"Handbag,omitempty" require:"true" type:"Struct"`
+	Hat         *PedestrianDetectAttributeResponseDataAttributesHat         `json:"Hat,omitempty" xml:"Hat,omitempty" require:"true" type:"Struct"`
+	LowerColor  *PedestrianDetectAttributeResponseDataAttributesLowerColor  `json:"LowerColor,omitempty" xml:"LowerColor,omitempty" require:"true" type:"Struct"`
+	LowerWear   *PedestrianDetectAttributeResponseDataAttributesLowerWear   `json:"LowerWear,omitempty" xml:"LowerWear,omitempty" require:"true" type:"Struct"`
+	Orient      *PedestrianDetectAttributeResponseDataAttributesOrient      `json:"Orient,omitempty" xml:"Orient,omitempty" require:"true" type:"Struct"`
+	ShoulderBag *PedestrianDetectAttributeResponseDataAttributesShoulderBag `json:"ShoulderBag,omitempty" xml:"ShoulderBag,omitempty" require:"true" type:"Struct"`
+	UpperColor  *PedestrianDetectAttributeResponseDataAttributesUpperColor  `json:"UpperColor,omitempty" xml:"UpperColor,omitempty" require:"true" type:"Struct"`
+	UpperWear   *PedestrianDetectAttributeResponseDataAttributesUpperWear   `json:"UpperWear,omitempty" xml:"UpperWear,omitempty" require:"true" type:"Struct"`
+}
+
+func (s PedestrianDetectAttributeResponseDataAttributes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PedestrianDetectAttributeResponseDataAttributes) GoString() string {
+	return s.String()
+}
+
+func (s *PedestrianDetectAttributeResponseDataAttributes) SetAge(v *PedestrianDetectAttributeResponseDataAttributesAge) *PedestrianDetectAttributeResponseDataAttributes {
+	s.Age = v
+	return s
+}
+
+func (s *PedestrianDetectAttributeResponseDataAttributes) SetBackpack(v *PedestrianDetectAttributeResponseDataAttributesBackpack) *PedestrianDetectAttributeResponseDataAttributes {
+	s.Backpack = v
+	return s
+}
+
+func (s *PedestrianDetectAttributeResponseDataAttributes) SetGender(v *PedestrianDetectAttributeResponseDataAttributesGender) *PedestrianDetectAttributeResponseDataAttributes {
+	s.Gender = v
+	return s
+}
+
+func (s *PedestrianDetectAttributeResponseDataAttributes) SetGlasses(v *PedestrianDetectAttributeResponseDataAttributesGlasses) *PedestrianDetectAttributeResponseDataAttributes {
+	s.Glasses = v
+	return s
+}
+
+func (s *PedestrianDetectAttributeResponseDataAttributes) SetHandbag(v *PedestrianDetectAttributeResponseDataAttributesHandbag) *PedestrianDetectAttributeResponseDataAttributes {
+	s.Handbag = v
+	return s
+}
+
+func (s *PedestrianDetectAttributeResponseDataAttributes) SetHat(v *PedestrianDetectAttributeResponseDataAttributesHat) *PedestrianDetectAttributeResponseDataAttributes {
+	s.Hat = v
+	return s
+}
+
+func (s *PedestrianDetectAttributeResponseDataAttributes) SetLowerColor(v *PedestrianDetectAttributeResponseDataAttributesLowerColor) *PedestrianDetectAttributeResponseDataAttributes {
+	s.LowerColor = v
+	return s
+}
+
+func (s *PedestrianDetectAttributeResponseDataAttributes) SetLowerWear(v *PedestrianDetectAttributeResponseDataAttributesLowerWear) *PedestrianDetectAttributeResponseDataAttributes {
+	s.LowerWear = v
+	return s
+}
+
+func (s *PedestrianDetectAttributeResponseDataAttributes) SetOrient(v *PedestrianDetectAttributeResponseDataAttributesOrient) *PedestrianDetectAttributeResponseDataAttributes {
+	s.Orient = v
+	return s
+}
+
+func (s *PedestrianDetectAttributeResponseDataAttributes) SetShoulderBag(v *PedestrianDetectAttributeResponseDataAttributesShoulderBag) *PedestrianDetectAttributeResponseDataAttributes {
+	s.ShoulderBag = v
+	return s
+}
+
+func (s *PedestrianDetectAttributeResponseDataAttributes) SetUpperColor(v *PedestrianDetectAttributeResponseDataAttributesUpperColor) *PedestrianDetectAttributeResponseDataAttributes {
+	s.UpperColor = v
+	return s
+}
+
+func (s *PedestrianDetectAttributeResponseDataAttributes) SetUpperWear(v *PedestrianDetectAttributeResponseDataAttributesUpperWear) *PedestrianDetectAttributeResponseDataAttributes {
+	s.UpperWear = v
+	return s
+}
+
+type PedestrianDetectAttributeResponseDataAttributesAge struct {
+	Name  *string  `json:"Name,omitempty" xml:"Name,omitempty" require:"true"`
+	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty" require:"true"`
+}
+
+func (s PedestrianDetectAttributeResponseDataAttributesAge) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PedestrianDetectAttributeResponseDataAttributesAge) GoString() string {
+	return s.String()
+}
+
+func (s *PedestrianDetectAttributeResponseDataAttributesAge) SetName(v string) *PedestrianDetectAttributeResponseDataAttributesAge {
+	s.Name = &v
+	return s
+}
+
+func (s *PedestrianDetectAttributeResponseDataAttributesAge) SetScore(v float32) *PedestrianDetectAttributeResponseDataAttributesAge {
+	s.Score = &v
+	return s
+}
+
+type PedestrianDetectAttributeResponseDataAttributesBackpack struct {
+	Name  *string  `json:"Name,omitempty" xml:"Name,omitempty" require:"true"`
+	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty" require:"true"`
+}
+
+func (s PedestrianDetectAttributeResponseDataAttributesBackpack) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PedestrianDetectAttributeResponseDataAttributesBackpack) GoString() string {
+	return s.String()
+}
+
+func (s *PedestrianDetectAttributeResponseDataAttributesBackpack) SetName(v string) *PedestrianDetectAttributeResponseDataAttributesBackpack {
+	s.Name = &v
+	return s
+}
+
+func (s *PedestrianDetectAttributeResponseDataAttributesBackpack) SetScore(v float32) *PedestrianDetectAttributeResponseDataAttributesBackpack {
+	s.Score = &v
+	return s
+}
+
+type PedestrianDetectAttributeResponseDataAttributesGender struct {
+	Name  *string  `json:"Name,omitempty" xml:"Name,omitempty" require:"true"`
+	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty" require:"true"`
+}
+
+func (s PedestrianDetectAttributeResponseDataAttributesGender) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PedestrianDetectAttributeResponseDataAttributesGender) GoString() string {
+	return s.String()
+}
+
+func (s *PedestrianDetectAttributeResponseDataAttributesGender) SetName(v string) *PedestrianDetectAttributeResponseDataAttributesGender {
+	s.Name = &v
+	return s
+}
+
+func (s *PedestrianDetectAttributeResponseDataAttributesGender) SetScore(v float32) *PedestrianDetectAttributeResponseDataAttributesGender {
+	s.Score = &v
+	return s
+}
+
+type PedestrianDetectAttributeResponseDataAttributesGlasses struct {
+	Name  *string  `json:"Name,omitempty" xml:"Name,omitempty" require:"true"`
+	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty" require:"true"`
+}
+
+func (s PedestrianDetectAttributeResponseDataAttributesGlasses) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PedestrianDetectAttributeResponseDataAttributesGlasses) GoString() string {
+	return s.String()
+}
+
+func (s *PedestrianDetectAttributeResponseDataAttributesGlasses) SetName(v string) *PedestrianDetectAttributeResponseDataAttributesGlasses {
+	s.Name = &v
+	return s
+}
+
+func (s *PedestrianDetectAttributeResponseDataAttributesGlasses) SetScore(v float32) *PedestrianDetectAttributeResponseDataAttributesGlasses {
+	s.Score = &v
+	return s
+}
+
+type PedestrianDetectAttributeResponseDataAttributesHandbag struct {
+	Name  *string  `json:"Name,omitempty" xml:"Name,omitempty" require:"true"`
+	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty" require:"true"`
+}
+
+func (s PedestrianDetectAttributeResponseDataAttributesHandbag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PedestrianDetectAttributeResponseDataAttributesHandbag) GoString() string {
+	return s.String()
+}
+
+func (s *PedestrianDetectAttributeResponseDataAttributesHandbag) SetName(v string) *PedestrianDetectAttributeResponseDataAttributesHandbag {
+	s.Name = &v
+	return s
+}
+
+func (s *PedestrianDetectAttributeResponseDataAttributesHandbag) SetScore(v float32) *PedestrianDetectAttributeResponseDataAttributesHandbag {
+	s.Score = &v
+	return s
+}
+
+type PedestrianDetectAttributeResponseDataAttributesHat struct {
+	Name  *string  `json:"Name,omitempty" xml:"Name,omitempty" require:"true"`
+	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty" require:"true"`
+}
+
+func (s PedestrianDetectAttributeResponseDataAttributesHat) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PedestrianDetectAttributeResponseDataAttributesHat) GoString() string {
+	return s.String()
+}
+
+func (s *PedestrianDetectAttributeResponseDataAttributesHat) SetName(v string) *PedestrianDetectAttributeResponseDataAttributesHat {
+	s.Name = &v
+	return s
+}
+
+func (s *PedestrianDetectAttributeResponseDataAttributesHat) SetScore(v float32) *PedestrianDetectAttributeResponseDataAttributesHat {
+	s.Score = &v
+	return s
+}
+
+type PedestrianDetectAttributeResponseDataAttributesLowerColor struct {
+	Name  *string  `json:"Name,omitempty" xml:"Name,omitempty" require:"true"`
+	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty" require:"true"`
+}
+
+func (s PedestrianDetectAttributeResponseDataAttributesLowerColor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PedestrianDetectAttributeResponseDataAttributesLowerColor) GoString() string {
+	return s.String()
+}
+
+func (s *PedestrianDetectAttributeResponseDataAttributesLowerColor) SetName(v string) *PedestrianDetectAttributeResponseDataAttributesLowerColor {
+	s.Name = &v
+	return s
+}
+
+func (s *PedestrianDetectAttributeResponseDataAttributesLowerColor) SetScore(v float32) *PedestrianDetectAttributeResponseDataAttributesLowerColor {
+	s.Score = &v
+	return s
+}
+
+type PedestrianDetectAttributeResponseDataAttributesLowerWear struct {
+	Name  *string  `json:"Name,omitempty" xml:"Name,omitempty" require:"true"`
+	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty" require:"true"`
+}
+
+func (s PedestrianDetectAttributeResponseDataAttributesLowerWear) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PedestrianDetectAttributeResponseDataAttributesLowerWear) GoString() string {
+	return s.String()
+}
+
+func (s *PedestrianDetectAttributeResponseDataAttributesLowerWear) SetName(v string) *PedestrianDetectAttributeResponseDataAttributesLowerWear {
+	s.Name = &v
+	return s
+}
+
+func (s *PedestrianDetectAttributeResponseDataAttributesLowerWear) SetScore(v float32) *PedestrianDetectAttributeResponseDataAttributesLowerWear {
+	s.Score = &v
+	return s
+}
+
+type PedestrianDetectAttributeResponseDataAttributesOrient struct {
+	Name  *string  `json:"Name,omitempty" xml:"Name,omitempty" require:"true"`
+	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty" require:"true"`
+}
+
+func (s PedestrianDetectAttributeResponseDataAttributesOrient) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PedestrianDetectAttributeResponseDataAttributesOrient) GoString() string {
+	return s.String()
+}
+
+func (s *PedestrianDetectAttributeResponseDataAttributesOrient) SetName(v string) *PedestrianDetectAttributeResponseDataAttributesOrient {
+	s.Name = &v
+	return s
+}
+
+func (s *PedestrianDetectAttributeResponseDataAttributesOrient) SetScore(v float32) *PedestrianDetectAttributeResponseDataAttributesOrient {
+	s.Score = &v
+	return s
+}
+
+type PedestrianDetectAttributeResponseDataAttributesShoulderBag struct {
+	Name  *string  `json:"Name,omitempty" xml:"Name,omitempty" require:"true"`
+	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty" require:"true"`
+}
+
+func (s PedestrianDetectAttributeResponseDataAttributesShoulderBag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PedestrianDetectAttributeResponseDataAttributesShoulderBag) GoString() string {
+	return s.String()
+}
+
+func (s *PedestrianDetectAttributeResponseDataAttributesShoulderBag) SetName(v string) *PedestrianDetectAttributeResponseDataAttributesShoulderBag {
+	s.Name = &v
+	return s
+}
+
+func (s *PedestrianDetectAttributeResponseDataAttributesShoulderBag) SetScore(v float32) *PedestrianDetectAttributeResponseDataAttributesShoulderBag {
+	s.Score = &v
+	return s
+}
+
+type PedestrianDetectAttributeResponseDataAttributesUpperColor struct {
+	Name  *string  `json:"Name,omitempty" xml:"Name,omitempty" require:"true"`
+	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty" require:"true"`
+}
+
+func (s PedestrianDetectAttributeResponseDataAttributesUpperColor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PedestrianDetectAttributeResponseDataAttributesUpperColor) GoString() string {
+	return s.String()
+}
+
+func (s *PedestrianDetectAttributeResponseDataAttributesUpperColor) SetName(v string) *PedestrianDetectAttributeResponseDataAttributesUpperColor {
+	s.Name = &v
+	return s
+}
+
+func (s *PedestrianDetectAttributeResponseDataAttributesUpperColor) SetScore(v float32) *PedestrianDetectAttributeResponseDataAttributesUpperColor {
+	s.Score = &v
+	return s
+}
+
+type PedestrianDetectAttributeResponseDataAttributesUpperWear struct {
+	Name  *string  `json:"Name,omitempty" xml:"Name,omitempty" require:"true"`
+	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty" require:"true"`
+}
+
+func (s PedestrianDetectAttributeResponseDataAttributesUpperWear) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PedestrianDetectAttributeResponseDataAttributesUpperWear) GoString() string {
+	return s.String()
+}
+
+func (s *PedestrianDetectAttributeResponseDataAttributesUpperWear) SetName(v string) *PedestrianDetectAttributeResponseDataAttributesUpperWear {
+	s.Name = &v
+	return s
+}
+
+func (s *PedestrianDetectAttributeResponseDataAttributesUpperWear) SetScore(v float32) *PedestrianDetectAttributeResponseDataAttributesUpperWear {
+	s.Score = &v
+	return s
+}
+
+type PedestrianDetectAttributeResponseDataBoxes struct {
+	Score        *float32 `json:"Score,omitempty" xml:"Score,omitempty" require:"true"`
+	TopLeftX     *float32 `json:"TopLeftX,omitempty" xml:"TopLeftX,omitempty" require:"true"`
+	TopLeftY     *float32 `json:"TopLeftY,omitempty" xml:"TopLeftY,omitempty" require:"true"`
+	BottomRightX *float32 `json:"BottomRightX,omitempty" xml:"BottomRightX,omitempty" require:"true"`
+	BottomRightY *float32 `json:"BottomRightY,omitempty" xml:"BottomRightY,omitempty" require:"true"`
+}
+
+func (s PedestrianDetectAttributeResponseDataBoxes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PedestrianDetectAttributeResponseDataBoxes) GoString() string {
+	return s.String()
+}
+
+func (s *PedestrianDetectAttributeResponseDataBoxes) SetScore(v float32) *PedestrianDetectAttributeResponseDataBoxes {
+	s.Score = &v
+	return s
+}
+
+func (s *PedestrianDetectAttributeResponseDataBoxes) SetTopLeftX(v float32) *PedestrianDetectAttributeResponseDataBoxes {
+	s.TopLeftX = &v
+	return s
+}
+
+func (s *PedestrianDetectAttributeResponseDataBoxes) SetTopLeftY(v float32) *PedestrianDetectAttributeResponseDataBoxes {
+	s.TopLeftY = &v
+	return s
+}
+
+func (s *PedestrianDetectAttributeResponseDataBoxes) SetBottomRightX(v float32) *PedestrianDetectAttributeResponseDataBoxes {
+	s.BottomRightX = &v
+	return s
+}
+
+func (s *PedestrianDetectAttributeResponseDataBoxes) SetBottomRightY(v float32) *PedestrianDetectAttributeResponseDataBoxes {
+	s.BottomRightY = &v
+	return s
+}
+
+type PedestrianDetectAttributeAdvanceRequest struct {
+	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+}
+
+func (s PedestrianDetectAttributeAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PedestrianDetectAttributeAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PedestrianDetectAttributeAdvanceRequest) SetImageURLObject(v io.Reader) *PedestrianDetectAttributeAdvanceRequest {
+	s.ImageURLObject = v
+	return s
+}
+
 type DetectChefCapRequest struct {
 	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty" require:"true"`
 }
@@ -507,6 +993,7 @@ func (s *BlurFaceAdvanceRequest) SetImageURLObject(v io.Reader) *BlurFaceAdvance
 }
 
 type ExtractPedestrianFeatureAttributeRequest struct {
+	Mode     *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty" require:"true"`
 }
 
@@ -516,6 +1003,11 @@ func (s ExtractPedestrianFeatureAttributeRequest) String() string {
 
 func (s ExtractPedestrianFeatureAttributeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ExtractPedestrianFeatureAttributeRequest) SetMode(v string) *ExtractPedestrianFeatureAttributeRequest {
+	s.Mode = &v
+	return s
 }
 
 func (s *ExtractPedestrianFeatureAttributeRequest) SetImageURL(v string) *ExtractPedestrianFeatureAttributeRequest {
@@ -662,23 +1154,6 @@ func (s *ExtractPedestrianFeatureAttributeResponseData) SetAge(v string) *Extrac
 
 func (s *ExtractPedestrianFeatureAttributeResponseData) SetAgeScore(v float32) *ExtractPedestrianFeatureAttributeResponseData {
 	s.AgeScore = &v
-	return s
-}
-
-type ExtractPedestrianFeatureAttributeAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
-}
-
-func (s ExtractPedestrianFeatureAttributeAdvanceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExtractPedestrianFeatureAttributeAdvanceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ExtractPedestrianFeatureAttributeAdvanceRequest) SetImageURLObject(v io.Reader) *ExtractPedestrianFeatureAttributeAdvanceRequest {
-	s.ImageURLObject = v
 	return s
 }
 
@@ -4177,6 +4652,107 @@ func (client *Client) Init(config *rpc.Config) (_err error) {
 	return nil
 }
 
+func (client *Client) PedestrianDetectAttribute(request *PedestrianDetectAttributeRequest, runtime *util.RuntimeOptions) (_result *PedestrianDetectAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &PedestrianDetectAttributeResponse{}
+	_body, _err := client.DoRequest(tea.String("PedestrianDetectAttribute"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-12-30"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PedestrianDetectAttributeAdvance(request *PedestrianDetectAttributeAdvanceRequest, runtime *util.RuntimeOptions) (_result *PedestrianDetectAttributeResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("facebody"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	rpcutil.Convert(runtime, ossRuntime)
+	pedestrianDetectAttributereq := &PedestrianDetectAttributeRequest{}
+	rpcutil.Convert(request, pedestrianDetectAttributereq)
+	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	ossConfig.AccessKeyId = authResponse.AccessKeyId
+	ossConfig.Endpoint = rpcutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+	ossClient, _err = oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	fileObj = &fileform.FileField{
+		Filename:    authResponse.ObjectKey,
+		Content:     request.ImageURLObject,
+		ContentType: tea.String(""),
+	}
+	ossHeader = &oss.PostObjectRequestHeader{
+		AccessKeyId:         authResponse.AccessKeyId,
+		Policy:              authResponse.EncodedPolicy,
+		Signature:           authResponse.Signature,
+		Key:                 authResponse.ObjectKey,
+		File:                fileObj,
+		SuccessActionStatus: tea.String("201"),
+	}
+	uploadRequest = &oss.PostObjectRequest{
+		BucketName: authResponse.Bucket,
+		Header:     ossHeader,
+	}
+	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+	if _err != nil {
+		return _result, _err
+	}
+	pedestrianDetectAttributereq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	pedestrianDetectAttributeResp, _err := client.PedestrianDetectAttribute(pedestrianDetectAttributereq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = pedestrianDetectAttributeResp
+	return _result, _err
+}
+
 func (client *Client) DetectChefCap(request *DetectChefCapRequest, runtime *util.RuntimeOptions) (_result *DetectChefCapResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4505,93 +5081,6 @@ func (client *Client) ExtractPedestrianFeatureAttribute(request *ExtractPedestri
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ExtractPedestrianFeatureAttributeAdvance(request *ExtractPedestrianFeatureAttributeAdvanceRequest, runtime *util.RuntimeOptions) (_result *ExtractPedestrianFeatureAttributeResponse, _err error) {
-	// Step 0: init client
-	accessKeyId, _err := client.Credential.GetAccessKeyId()
-	if _err != nil {
-		return _result, _err
-	}
-
-	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
-	if _err != nil {
-		return _result, _err
-	}
-
-	authConfig := &rpc.Config{
-		AccessKeyId:     accessKeyId,
-		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
-	}
-	authClient, _err := openplatform.NewClient(authConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	authRequest := &openplatform.AuthorizeFileUploadRequest{
-		Product:  tea.String("facebody"),
-		RegionId: client.RegionId,
-	}
-	authResponse := &openplatform.AuthorizeFileUploadResponse{}
-	ossConfig := &oss.Config{
-		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
-	}
-	var ossClient *oss.Client
-	fileObj := &fileform.FileField{}
-	ossHeader := &oss.PostObjectRequestHeader{}
-	uploadRequest := &oss.PostObjectRequest{}
-	ossRuntime := &ossutil.RuntimeOptions{}
-	rpcutil.Convert(runtime, ossRuntime)
-	extractPedestrianFeatureAttributereq := &ExtractPedestrianFeatureAttributeRequest{}
-	rpcutil.Convert(request, extractPedestrianFeatureAttributereq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = rpcutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	extractPedestrianFeatureAttributereq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
-	extractPedestrianFeatureAttributeResp, _err := client.ExtractPedestrianFeatureAttribute(extractPedestrianFeatureAttributereq, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-
-	_result = extractPedestrianFeatureAttributeResp
 	return _result, _err
 }
 
