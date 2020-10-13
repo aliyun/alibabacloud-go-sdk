@@ -14,6 +14,80 @@ import (
 	"io"
 )
 
+type SegmentSkinRequest struct {
+	URL *string `json:"URL,omitempty" xml:"URL,omitempty" require:"true"`
+}
+
+func (s SegmentSkinRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SegmentSkinRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SegmentSkinRequest) SetURL(v string) *SegmentSkinRequest {
+	s.URL = &v
+	return s
+}
+
+type SegmentSkinResponse struct {
+	RequestId *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Data      *SegmentSkinResponseData `json:"Data,omitempty" xml:"Data,omitempty" require:"true" type:"Struct"`
+}
+
+func (s SegmentSkinResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SegmentSkinResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SegmentSkinResponse) SetRequestId(v string) *SegmentSkinResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SegmentSkinResponse) SetData(v *SegmentSkinResponseData) *SegmentSkinResponse {
+	s.Data = v
+	return s
+}
+
+type SegmentSkinResponseData struct {
+	URL *string `json:"URL,omitempty" xml:"URL,omitempty" require:"true"`
+}
+
+func (s SegmentSkinResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SegmentSkinResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *SegmentSkinResponseData) SetURL(v string) *SegmentSkinResponseData {
+	s.URL = &v
+	return s
+}
+
+type SegmentSkinAdvanceRequest struct {
+	URLObject io.Reader `json:"URLObject,omitempty" xml:"URLObject,omitempty" require:"true"`
+}
+
+func (s SegmentSkinAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SegmentSkinAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SegmentSkinAdvanceRequest) SetURLObject(v io.Reader) *SegmentSkinAdvanceRequest {
+	s.URLObject = v
+	return s
+}
+
 type ChangeSkyRequest struct {
 	ImageURL        *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty" require:"true"`
 	ReplaceImageURL *string `json:"ReplaceImageURL,omitempty" xml:"ReplaceImageURL,omitempty" require:"true"`
@@ -1715,6 +1789,107 @@ func (client *Client) Init(config *rpc.Config) (_err error) {
 	}
 
 	return nil
+}
+
+func (client *Client) SegmentSkin(request *SegmentSkinRequest, runtime *util.RuntimeOptions) (_result *SegmentSkinResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &SegmentSkinResponse{}
+	_body, _err := client.DoRequest(tea.String("SegmentSkin"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-12-30"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SegmentSkinAdvance(request *SegmentSkinAdvanceRequest, runtime *util.RuntimeOptions) (_result *SegmentSkinResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("imageseg"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	rpcutil.Convert(runtime, ossRuntime)
+	segmentSkinreq := &SegmentSkinRequest{}
+	rpcutil.Convert(request, segmentSkinreq)
+	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	ossConfig.AccessKeyId = authResponse.AccessKeyId
+	ossConfig.Endpoint = rpcutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+	ossClient, _err = oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	fileObj = &fileform.FileField{
+		Filename:    authResponse.ObjectKey,
+		Content:     request.URLObject,
+		ContentType: tea.String(""),
+	}
+	ossHeader = &oss.PostObjectRequestHeader{
+		AccessKeyId:         authResponse.AccessKeyId,
+		Policy:              authResponse.EncodedPolicy,
+		Signature:           authResponse.Signature,
+		Key:                 authResponse.ObjectKey,
+		File:                fileObj,
+		SuccessActionStatus: tea.String("201"),
+	}
+	uploadRequest = &oss.PostObjectRequest{
+		BucketName: authResponse.Bucket,
+		Header:     ossHeader,
+	}
+	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+	if _err != nil {
+		return _result, _err
+	}
+	segmentSkinreq.URL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	segmentSkinResp, _err := client.SegmentSkin(segmentSkinreq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = segmentSkinResp
+	return _result, _err
 }
 
 func (client *Client) ChangeSky(request *ChangeSkyRequest, runtime *util.RuntimeOptions) (_result *ChangeSkyResponse, _err error) {
