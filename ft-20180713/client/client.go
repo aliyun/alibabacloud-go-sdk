@@ -550,8 +550,8 @@ func (s *FtParamListRequest) SetDisk(v []*FtParamListRequestDisk) *FtParamListRe
 }
 
 type FtParamListRequestDisk struct {
-	Size []*string `json:"Size,omitempty" xml:"Size,omitempty" require:"true" type:"Repeated"`
-	Type []*string `json:"Type,omitempty" xml:"Type,omitempty" require:"true" type:"Repeated"`
+	Size []*string `json:"Size,omitempty" xml:"Size,omitempty" type:"Repeated"`
+	Type []*string `json:"Type,omitempty" xml:"Type,omitempty" type:"Repeated"`
 }
 
 func (s FtParamListRequestDisk) String() string {

@@ -1,3 +1,6 @@
+2020-10-14 Version: v1.0.3
+- Generated golang 2018-07-13 for Ft.
+
 2020-09-07 Version: v1.0.2
 - Generated golang 2018-07-13 for Ft.
 
