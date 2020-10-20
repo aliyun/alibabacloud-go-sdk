@@ -1469,7 +1469,7 @@ type GetConsumerStatusResponse struct {
 	RealtimeMonitor    *bool   `json:"RealtimeMonitor,omitempty" xml:"RealtimeMonitor,omitempty" require:"true"`
 	LiveMonitor        *bool   `json:"LiveMonitor,omitempty" xml:"LiveMonitor,omitempty" require:"true"`
 	CdnUrlRedirectFlag *bool   `json:"CdnUrlRedirectFlag,omitempty" xml:"CdnUrlRedirectFlag,omitempty" require:"true"`
-	BusinessType       *bool   `json:"BusinessType,omitempty" xml:"BusinessType,omitempty" require:"true"`
+	BusinessType       *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty" require:"true"`
 	Audit              *int    `json:"Audit,omitempty" xml:"Audit,omitempty" require:"true"`
 	Comment            *string `json:"Comment,omitempty" xml:"Comment,omitempty" require:"true"`
 	CreatedAt          *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty" require:"true"`
@@ -1519,7 +1519,7 @@ func (s *GetConsumerStatusResponse) SetCdnUrlRedirectFlag(v bool) *GetConsumerSt
 	return s
 }
 
-func (s *GetConsumerStatusResponse) SetBusinessType(v bool) *GetConsumerStatusResponse {
+func (s *GetConsumerStatusResponse) SetBusinessType(v string) *GetConsumerStatusResponse {
 	s.BusinessType = &v
 	return s
 }
