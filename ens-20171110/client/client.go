@@ -740,6 +740,7 @@ type DescribeImageSharePermissionRequest struct {
 	ImageId    *string `json:"ImageId,omitempty" xml:"ImageId,omitempty" require:"true"`
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	AliyunId   *int64  `json:"AliyunId,omitempty" xml:"AliyunId,omitempty"`
 }
 
 func (s DescribeImageSharePermissionRequest) String() string {
@@ -762,6 +763,11 @@ func (s *DescribeImageSharePermissionRequest) SetPageNumber(v string) *DescribeI
 
 func (s *DescribeImageSharePermissionRequest) SetPageSize(v string) *DescribeImageSharePermissionRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeImageSharePermissionRequest) SetAliyunId(v int64) *DescribeImageSharePermissionRequest {
+	s.AliyunId = &v
 	return s
 }
 
