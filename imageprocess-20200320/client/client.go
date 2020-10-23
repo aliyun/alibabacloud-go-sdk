@@ -1474,17 +1474,18 @@ func (s *DetectLungNoduleResponseDataSeries) SetSpacing(v []*float32) *DetectLun
 }
 
 type DetectLungNoduleResponseDataSeriesElements struct {
-	Category   *string  `json:"Category,omitempty" xml:"Category,omitempty" require:"true"`
-	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty" require:"true"`
-	Diameter   *float32 `json:"Diameter,omitempty" xml:"Diameter,omitempty" require:"true"`
-	Lobe       *string  `json:"Lobe,omitempty" xml:"Lobe,omitempty" require:"true"`
-	Lung       *string  `json:"Lung,omitempty" xml:"Lung,omitempty" require:"true"`
-	X          *float32 `json:"X,omitempty" xml:"X,omitempty" require:"true"`
-	Z          *float32 `json:"Z,omitempty" xml:"Z,omitempty" require:"true"`
-	Y          *float32 `json:"Y,omitempty" xml:"Y,omitempty" require:"true"`
-	ImageX     *float32 `json:"ImageX,omitempty" xml:"ImageX,omitempty" require:"true"`
-	ImageY     *float32 `json:"ImageY,omitempty" xml:"ImageY,omitempty" require:"true"`
-	ImageZ     *float32 `json:"ImageZ,omitempty" xml:"ImageZ,omitempty" require:"true"`
+	Category       *string  `json:"Category,omitempty" xml:"Category,omitempty" require:"true"`
+	Confidence     *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty" require:"true"`
+	Diameter       *float32 `json:"Diameter,omitempty" xml:"Diameter,omitempty" require:"true"`
+	Lobe           *string  `json:"Lobe,omitempty" xml:"Lobe,omitempty" require:"true"`
+	Lung           *string  `json:"Lung,omitempty" xml:"Lung,omitempty" require:"true"`
+	X              *float32 `json:"X,omitempty" xml:"X,omitempty" require:"true"`
+	Z              *float32 `json:"Z,omitempty" xml:"Z,omitempty" require:"true"`
+	Y              *float32 `json:"Y,omitempty" xml:"Y,omitempty" require:"true"`
+	ImageX         *float32 `json:"ImageX,omitempty" xml:"ImageX,omitempty" require:"true"`
+	ImageY         *float32 `json:"ImageY,omitempty" xml:"ImageY,omitempty" require:"true"`
+	ImageZ         *float32 `json:"ImageZ,omitempty" xml:"ImageZ,omitempty" require:"true"`
+	SOPInstanceUID *string  `json:"SOPInstanceUID,omitempty" xml:"SOPInstanceUID,omitempty" require:"true"`
 }
 
 func (s DetectLungNoduleResponseDataSeriesElements) String() string {
@@ -1547,6 +1548,11 @@ func (s *DetectLungNoduleResponseDataSeriesElements) SetImageY(v float32) *Detec
 
 func (s *DetectLungNoduleResponseDataSeriesElements) SetImageZ(v float32) *DetectLungNoduleResponseDataSeriesElements {
 	s.ImageZ = &v
+	return s
+}
+
+func (s *DetectLungNoduleResponseDataSeriesElements) SetSOPInstanceUID(v string) *DetectLungNoduleResponseDataSeriesElements {
+	s.SOPInstanceUID = &v
 	return s
 }
 
