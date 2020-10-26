@@ -9,6 +9,513 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type UnsubscribeDeviceEventRequest struct {
+	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty" require:"true"`
+}
+
+func (s UnsubscribeDeviceEventRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnsubscribeDeviceEventRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UnsubscribeDeviceEventRequest) SetDeviceId(v string) *UnsubscribeDeviceEventRequest {
+	s.DeviceId = &v
+	return s
+}
+
+type UnsubscribeDeviceEventResponse struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty" require:"true"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty" require:"true"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+}
+
+func (s UnsubscribeDeviceEventResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnsubscribeDeviceEventResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UnsubscribeDeviceEventResponse) SetCode(v string) *UnsubscribeDeviceEventResponse {
+	s.Code = &v
+	return s
+}
+
+func (s *UnsubscribeDeviceEventResponse) SetMessage(v string) *UnsubscribeDeviceEventResponse {
+	s.Message = &v
+	return s
+}
+
+func (s *UnsubscribeDeviceEventResponse) SetRequestId(v string) *UnsubscribeDeviceEventResponse {
+	s.RequestId = &v
+	return s
+}
+
+type ListSubscribeDeviceRequest struct {
+	PageNum  *int `json:"PageNum,omitempty" xml:"PageNum,omitempty" require:"true"`
+	PageSize *int `json:"PageSize,omitempty" xml:"PageSize,omitempty" require:"true"`
+}
+
+func (s ListSubscribeDeviceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSubscribeDeviceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSubscribeDeviceRequest) SetPageNum(v int) *ListSubscribeDeviceRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListSubscribeDeviceRequest) SetPageSize(v int) *ListSubscribeDeviceRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListSubscribeDeviceResponse struct {
+	Code      *string                          `json:"Code,omitempty" xml:"Code,omitempty" require:"true"`
+	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty" require:"true"`
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Data      *ListSubscribeDeviceResponseData `json:"Data,omitempty" xml:"Data,omitempty" require:"true" type:"Struct"`
+}
+
+func (s ListSubscribeDeviceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSubscribeDeviceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSubscribeDeviceResponse) SetCode(v string) *ListSubscribeDeviceResponse {
+	s.Code = &v
+	return s
+}
+
+func (s *ListSubscribeDeviceResponse) SetMessage(v string) *ListSubscribeDeviceResponse {
+	s.Message = &v
+	return s
+}
+
+func (s *ListSubscribeDeviceResponse) SetRequestId(v string) *ListSubscribeDeviceResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSubscribeDeviceResponse) SetData(v *ListSubscribeDeviceResponseData) *ListSubscribeDeviceResponse {
+	s.Data = v
+	return s
+}
+
+type ListSubscribeDeviceResponseData struct {
+	TotalCount    *int                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty" require:"true"`
+	SubscribeList []*ListSubscribeDeviceResponseDataSubscribeList `json:"SubscribeList,omitempty" xml:"SubscribeList,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s ListSubscribeDeviceResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSubscribeDeviceResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *ListSubscribeDeviceResponseData) SetTotalCount(v int) *ListSubscribeDeviceResponseData {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListSubscribeDeviceResponseData) SetSubscribeList(v []*ListSubscribeDeviceResponseDataSubscribeList) *ListSubscribeDeviceResponseData {
+	s.SubscribeList = v
+	return s
+}
+
+type ListSubscribeDeviceResponseDataSubscribeList struct {
+	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty" require:"true"`
+	DeviceId   *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty" require:"true"`
+	PushConfig *string `json:"PushConfig,omitempty" xml:"PushConfig,omitempty" require:"true"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty" require:"true"`
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty" require:"true"`
+}
+
+func (s ListSubscribeDeviceResponseDataSubscribeList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSubscribeDeviceResponseDataSubscribeList) GoString() string {
+	return s.String()
+}
+
+func (s *ListSubscribeDeviceResponseDataSubscribeList) SetUserId(v string) *ListSubscribeDeviceResponseDataSubscribeList {
+	s.UserId = &v
+	return s
+}
+
+func (s *ListSubscribeDeviceResponseDataSubscribeList) SetDeviceId(v string) *ListSubscribeDeviceResponseDataSubscribeList {
+	s.DeviceId = &v
+	return s
+}
+
+func (s *ListSubscribeDeviceResponseDataSubscribeList) SetPushConfig(v string) *ListSubscribeDeviceResponseDataSubscribeList {
+	s.PushConfig = &v
+	return s
+}
+
+func (s *ListSubscribeDeviceResponseDataSubscribeList) SetCreateTime(v string) *ListSubscribeDeviceResponseDataSubscribeList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListSubscribeDeviceResponseDataSubscribeList) SetUpdateTime(v string) *ListSubscribeDeviceResponseDataSubscribeList {
+	s.UpdateTime = &v
+	return s
+}
+
+type SubscribeDeviceEventRequest struct {
+	DeviceId   *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty" require:"true"`
+	PushConfig *string `json:"PushConfig,omitempty" xml:"PushConfig,omitempty" require:"true"`
+}
+
+func (s SubscribeDeviceEventRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubscribeDeviceEventRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubscribeDeviceEventRequest) SetDeviceId(v string) *SubscribeDeviceEventRequest {
+	s.DeviceId = &v
+	return s
+}
+
+func (s *SubscribeDeviceEventRequest) SetPushConfig(v string) *SubscribeDeviceEventRequest {
+	s.PushConfig = &v
+	return s
+}
+
+type SubscribeDeviceEventResponse struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty" require:"true"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty" require:"true"`
+}
+
+func (s SubscribeDeviceEventResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubscribeDeviceEventResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubscribeDeviceEventResponse) SetRequestId(v string) *SubscribeDeviceEventResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubscribeDeviceEventResponse) SetCode(v string) *SubscribeDeviceEventResponse {
+	s.Code = &v
+	return s
+}
+
+func (s *SubscribeDeviceEventResponse) SetMessage(v string) *SubscribeDeviceEventResponse {
+	s.Message = &v
+	return s
+}
+
+type SubscribeSpaceEventRequest struct {
+	SpaceId    *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty" require:"true"`
+	PushConfig *string `json:"PushConfig,omitempty" xml:"PushConfig,omitempty" require:"true"`
+}
+
+func (s SubscribeSpaceEventRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubscribeSpaceEventRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubscribeSpaceEventRequest) SetSpaceId(v string) *SubscribeSpaceEventRequest {
+	s.SpaceId = &v
+	return s
+}
+
+func (s *SubscribeSpaceEventRequest) SetPushConfig(v string) *SubscribeSpaceEventRequest {
+	s.PushConfig = &v
+	return s
+}
+
+type SubscribeSpaceEventResponse struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty" require:"true"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty" require:"true"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+}
+
+func (s SubscribeSpaceEventResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubscribeSpaceEventResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubscribeSpaceEventResponse) SetCode(v string) *SubscribeSpaceEventResponse {
+	s.Code = &v
+	return s
+}
+
+func (s *SubscribeSpaceEventResponse) SetMessage(v string) *SubscribeSpaceEventResponse {
+	s.Message = &v
+	return s
+}
+
+func (s *SubscribeSpaceEventResponse) SetRequestId(v string) *SubscribeSpaceEventResponse {
+	s.RequestId = &v
+	return s
+}
+
+type UnsubscribeSpaceEventRequest struct {
+	SpaceId *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty" require:"true"`
+}
+
+func (s UnsubscribeSpaceEventRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnsubscribeSpaceEventRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UnsubscribeSpaceEventRequest) SetSpaceId(v string) *UnsubscribeSpaceEventRequest {
+	s.SpaceId = &v
+	return s
+}
+
+type UnsubscribeSpaceEventResponse struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty" require:"true"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty" require:"true"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+}
+
+func (s UnsubscribeSpaceEventResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnsubscribeSpaceEventResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UnsubscribeSpaceEventResponse) SetCode(v string) *UnsubscribeSpaceEventResponse {
+	s.Code = &v
+	return s
+}
+
+func (s *UnsubscribeSpaceEventResponse) SetMessage(v string) *UnsubscribeSpaceEventResponse {
+	s.Message = &v
+	return s
+}
+
+func (s *UnsubscribeSpaceEventResponse) SetRequestId(v string) *UnsubscribeSpaceEventResponse {
+	s.RequestId = &v
+	return s
+}
+
+type ListPersonTraceDetailsRequest struct {
+	CorpId       *string `json:"CorpId,omitempty" xml:"CorpId,omitempty"`
+	PageNumber   *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty" require:"true"`
+	PageSize     *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty" require:"true"`
+	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty" require:"true"`
+	PersonId     *string `json:"PersonId,omitempty" xml:"PersonId,omitempty"`
+	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty" require:"true"`
+	SubId        *string `json:"SubId,omitempty" xml:"SubId,omitempty"`
+	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+}
+
+func (s ListPersonTraceDetailsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPersonTraceDetailsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPersonTraceDetailsRequest) SetCorpId(v string) *ListPersonTraceDetailsRequest {
+	s.CorpId = &v
+	return s
+}
+
+func (s *ListPersonTraceDetailsRequest) SetPageNumber(v int64) *ListPersonTraceDetailsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListPersonTraceDetailsRequest) SetPageSize(v int64) *ListPersonTraceDetailsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListPersonTraceDetailsRequest) SetEndTime(v string) *ListPersonTraceDetailsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListPersonTraceDetailsRequest) SetPersonId(v string) *ListPersonTraceDetailsRequest {
+	s.PersonId = &v
+	return s
+}
+
+func (s *ListPersonTraceDetailsRequest) SetStartTime(v string) *ListPersonTraceDetailsRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListPersonTraceDetailsRequest) SetSubId(v string) *ListPersonTraceDetailsRequest {
+	s.SubId = &v
+	return s
+}
+
+func (s *ListPersonTraceDetailsRequest) SetDataSourceId(v string) *ListPersonTraceDetailsRequest {
+	s.DataSourceId = &v
+	return s
+}
+
+type ListPersonTraceDetailsResponse struct {
+	Code       *string                               `json:"Code,omitempty" xml:"Code,omitempty" require:"true"`
+	Message    *string                               `json:"Message,omitempty" xml:"Message,omitempty" require:"true"`
+	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	PageNumber *int64                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty" require:"true"`
+	PageSize   *int64                                `json:"PageSize,omitempty" xml:"PageSize,omitempty" require:"true"`
+	TotalCount *int64                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty" require:"true"`
+	Data       []*ListPersonTraceDetailsResponseData `json:"Data,omitempty" xml:"Data,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s ListPersonTraceDetailsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPersonTraceDetailsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListPersonTraceDetailsResponse) SetCode(v string) *ListPersonTraceDetailsResponse {
+	s.Code = &v
+	return s
+}
+
+func (s *ListPersonTraceDetailsResponse) SetMessage(v string) *ListPersonTraceDetailsResponse {
+	s.Message = &v
+	return s
+}
+
+func (s *ListPersonTraceDetailsResponse) SetRequestId(v string) *ListPersonTraceDetailsResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListPersonTraceDetailsResponse) SetPageNumber(v int64) *ListPersonTraceDetailsResponse {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListPersonTraceDetailsResponse) SetPageSize(v int64) *ListPersonTraceDetailsResponse {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListPersonTraceDetailsResponse) SetTotalCount(v int64) *ListPersonTraceDetailsResponse {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListPersonTraceDetailsResponse) SetData(v []*ListPersonTraceDetailsResponseData) *ListPersonTraceDetailsResponse {
+	s.Data = v
+	return s
+}
+
+type ListPersonTraceDetailsResponseData struct {
+	TargetPicUrlPath *string `json:"TargetPicUrlPath,omitempty" xml:"TargetPicUrlPath,omitempty" require:"true"`
+	DataSourceId     *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty" require:"true"`
+	PersonId         *string `json:"PersonId,omitempty" xml:"PersonId,omitempty" require:"true"`
+	PicUrlPath       *string `json:"PicUrlPath,omitempty" xml:"PicUrlPath,omitempty" require:"true"`
+	RightBottomY     *string `json:"RightBottomY,omitempty" xml:"RightBottomY,omitempty" require:"true"`
+	RightBottomX     *string `json:"RightBottomX,omitempty" xml:"RightBottomX,omitempty" require:"true"`
+	ShotTime         *string `json:"ShotTime,omitempty" xml:"ShotTime,omitempty" require:"true"`
+	CorpId           *string `json:"CorpId,omitempty" xml:"CorpId,omitempty" require:"true"`
+	SubId            *string `json:"SubId,omitempty" xml:"SubId,omitempty" require:"true"`
+	LeftTopY         *string `json:"LeftTopY,omitempty" xml:"LeftTopY,omitempty" require:"true"`
+	LeftTopX         *string `json:"LeftTopX,omitempty" xml:"LeftTopX,omitempty" require:"true"`
+}
+
+func (s ListPersonTraceDetailsResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPersonTraceDetailsResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *ListPersonTraceDetailsResponseData) SetTargetPicUrlPath(v string) *ListPersonTraceDetailsResponseData {
+	s.TargetPicUrlPath = &v
+	return s
+}
+
+func (s *ListPersonTraceDetailsResponseData) SetDataSourceId(v string) *ListPersonTraceDetailsResponseData {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *ListPersonTraceDetailsResponseData) SetPersonId(v string) *ListPersonTraceDetailsResponseData {
+	s.PersonId = &v
+	return s
+}
+
+func (s *ListPersonTraceDetailsResponseData) SetPicUrlPath(v string) *ListPersonTraceDetailsResponseData {
+	s.PicUrlPath = &v
+	return s
+}
+
+func (s *ListPersonTraceDetailsResponseData) SetRightBottomY(v string) *ListPersonTraceDetailsResponseData {
+	s.RightBottomY = &v
+	return s
+}
+
+func (s *ListPersonTraceDetailsResponseData) SetRightBottomX(v string) *ListPersonTraceDetailsResponseData {
+	s.RightBottomX = &v
+	return s
+}
+
+func (s *ListPersonTraceDetailsResponseData) SetShotTime(v string) *ListPersonTraceDetailsResponseData {
+	s.ShotTime = &v
+	return s
+}
+
+func (s *ListPersonTraceDetailsResponseData) SetCorpId(v string) *ListPersonTraceDetailsResponseData {
+	s.CorpId = &v
+	return s
+}
+
+func (s *ListPersonTraceDetailsResponseData) SetSubId(v string) *ListPersonTraceDetailsResponseData {
+	s.SubId = &v
+	return s
+}
+
+func (s *ListPersonTraceDetailsResponseData) SetLeftTopY(v string) *ListPersonTraceDetailsResponseData {
+	s.LeftTopY = &v
+	return s
+}
+
+func (s *ListPersonTraceDetailsResponseData) SetLeftTopX(v string) *ListPersonTraceDetailsResponseData {
+	s.LeftTopX = &v
+	return s
+}
+
 type GetMonitorListRequest struct {
 	CorpId   *string `json:"CorpId,omitempty" xml:"CorpId,omitempty" require:"true"`
 	PageNo   *int    `json:"PageNo,omitempty" xml:"PageNo,omitempty" require:"true"`
@@ -10231,15 +10738,17 @@ func (s *RecognizeImageResponseDataBodyList) SetRightBottomY(v string) *Recogniz
 }
 
 type RecognizeImageResponseDataFaceList struct {
-	Feature          *string `json:"Feature,omitempty" xml:"Feature,omitempty" require:"true"`
-	FileName         *string `json:"FileName,omitempty" xml:"FileName,omitempty" require:"true"`
-	ImageBaseSixFour *string `json:"ImageBaseSixFour,omitempty" xml:"ImageBaseSixFour,omitempty" require:"true"`
-	LeftTopX         *string `json:"LeftTopX,omitempty" xml:"LeftTopX,omitempty" require:"true"`
-	LeftTopY         *string `json:"LeftTopY,omitempty" xml:"LeftTopY,omitempty" require:"true"`
-	LocalFeature     *string `json:"LocalFeature,omitempty" xml:"LocalFeature,omitempty" require:"true"`
-	RespiratorColor  *string `json:"RespiratorColor,omitempty" xml:"RespiratorColor,omitempty" require:"true"`
-	RightBottomX     *string `json:"RightBottomX,omitempty" xml:"RightBottomX,omitempty" require:"true"`
-	RightBottomY     *string `json:"RightBottomY,omitempty" xml:"RightBottomY,omitempty" require:"true"`
+	Feature          *string  `json:"Feature,omitempty" xml:"Feature,omitempty" require:"true"`
+	FileName         *string  `json:"FileName,omitempty" xml:"FileName,omitempty" require:"true"`
+	ImageBaseSixFour *string  `json:"ImageBaseSixFour,omitempty" xml:"ImageBaseSixFour,omitempty" require:"true"`
+	LeftTopX         *string  `json:"LeftTopX,omitempty" xml:"LeftTopX,omitempty" require:"true"`
+	LeftTopY         *string  `json:"LeftTopY,omitempty" xml:"LeftTopY,omitempty" require:"true"`
+	LocalFeature     *string  `json:"LocalFeature,omitempty" xml:"LocalFeature,omitempty" require:"true"`
+	RespiratorColor  *string  `json:"RespiratorColor,omitempty" xml:"RespiratorColor,omitempty" require:"true"`
+	RightBottomX     *string  `json:"RightBottomX,omitempty" xml:"RightBottomX,omitempty" require:"true"`
+	RightBottomY     *string  `json:"RightBottomY,omitempty" xml:"RightBottomY,omitempty" require:"true"`
+	Quality          *float32 `json:"Quality,omitempty" xml:"Quality,omitempty" require:"true"`
+	KeyPointQuality  *float32 `json:"KeyPointQuality,omitempty" xml:"KeyPointQuality,omitempty" require:"true"`
 }
 
 func (s RecognizeImageResponseDataFaceList) String() string {
@@ -10292,6 +10801,16 @@ func (s *RecognizeImageResponseDataFaceList) SetRightBottomX(v string) *Recogniz
 
 func (s *RecognizeImageResponseDataFaceList) SetRightBottomY(v string) *RecognizeImageResponseDataFaceList {
 	s.RightBottomY = &v
+	return s
+}
+
+func (s *RecognizeImageResponseDataFaceList) SetQuality(v float32) *RecognizeImageResponseDataFaceList {
+	s.Quality = &v
+	return s
+}
+
+func (s *RecognizeImageResponseDataFaceList) SetKeyPointQuality(v float32) *RecognizeImageResponseDataFaceList {
+	s.KeyPointQuality = &v
 	return s
 }
 
@@ -11526,6 +12045,156 @@ func (client *Client) Init(config *rpc.Config) (_err error) {
 	}
 
 	return nil
+}
+
+func (client *Client) UnsubscribeDeviceEventWithOptions(request *UnsubscribeDeviceEventRequest, runtime *util.RuntimeOptions) (_result *UnsubscribeDeviceEventResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &UnsubscribeDeviceEventResponse{}
+	_body, _err := client.DoRequest(tea.String("UnsubscribeDeviceEvent"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-05-15"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UnsubscribeDeviceEvent(request *UnsubscribeDeviceEventRequest) (_result *UnsubscribeDeviceEventResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UnsubscribeDeviceEventResponse{}
+	_body, _err := client.UnsubscribeDeviceEventWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListSubscribeDeviceWithOptions(request *ListSubscribeDeviceRequest, runtime *util.RuntimeOptions) (_result *ListSubscribeDeviceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &ListSubscribeDeviceResponse{}
+	_body, _err := client.DoRequest(tea.String("ListSubscribeDevice"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-05-15"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListSubscribeDevice(request *ListSubscribeDeviceRequest) (_result *ListSubscribeDeviceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListSubscribeDeviceResponse{}
+	_body, _err := client.ListSubscribeDeviceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SubscribeDeviceEventWithOptions(request *SubscribeDeviceEventRequest, runtime *util.RuntimeOptions) (_result *SubscribeDeviceEventResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &SubscribeDeviceEventResponse{}
+	_body, _err := client.DoRequest(tea.String("SubscribeDeviceEvent"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-05-15"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubscribeDeviceEvent(request *SubscribeDeviceEventRequest) (_result *SubscribeDeviceEventResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubscribeDeviceEventResponse{}
+	_body, _err := client.SubscribeDeviceEventWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SubscribeSpaceEventWithOptions(request *SubscribeSpaceEventRequest, runtime *util.RuntimeOptions) (_result *SubscribeSpaceEventResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &SubscribeSpaceEventResponse{}
+	_body, _err := client.DoRequest(tea.String("SubscribeSpaceEvent"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-05-15"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubscribeSpaceEvent(request *SubscribeSpaceEventRequest) (_result *SubscribeSpaceEventResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubscribeSpaceEventResponse{}
+	_body, _err := client.SubscribeSpaceEventWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UnsubscribeSpaceEventWithOptions(request *UnsubscribeSpaceEventRequest, runtime *util.RuntimeOptions) (_result *UnsubscribeSpaceEventResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &UnsubscribeSpaceEventResponse{}
+	_body, _err := client.DoRequest(tea.String("UnsubscribeSpaceEvent"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-05-15"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UnsubscribeSpaceEvent(request *UnsubscribeSpaceEventRequest) (_result *UnsubscribeSpaceEventResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UnsubscribeSpaceEventResponse{}
+	_body, _err := client.UnsubscribeSpaceEventWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListPersonTraceDetailsWithOptions(request *ListPersonTraceDetailsRequest, runtime *util.RuntimeOptions) (_result *ListPersonTraceDetailsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &ListPersonTraceDetailsResponse{}
+	_body, _err := client.DoRequest(tea.String("ListPersonTraceDetails"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-05-15"), tea.String("AK,APP"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListPersonTraceDetails(request *ListPersonTraceDetailsRequest) (_result *ListPersonTraceDetailsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListPersonTraceDetailsResponse{}
+	_body, _err := client.ListPersonTraceDetailsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
 }
 
 func (client *Client) GetMonitorListWithOptions(request *GetMonitorListRequest, runtime *util.RuntimeOptions) (_result *GetMonitorListResponse, _err error) {

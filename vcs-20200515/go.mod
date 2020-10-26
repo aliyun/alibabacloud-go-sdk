@@ -7,5 +7,5 @@ require (
 	github.com/alibabacloud-go/tea v1.1.10
 	github.com/alibabacloud-go/tea-rpc v1.1.7
 	github.com/alibabacloud-go/tea-rpc-utils v1.1.1
-	github.com/alibabacloud-go/tea-utils v1.3.4
+	github.com/alibabacloud-go/tea-utils v1.3.5
 )
