@@ -11846,6 +11846,8 @@ type UpdateFileRequest struct {
 	FileId                  *int64  `json:"FileId,omitempty" xml:"FileId,omitempty" require:"true"`
 	OutputList              *string `json:"OutputList,omitempty" xml:"OutputList,omitempty"`
 	ResourceGroupIdentifier *string `json:"ResourceGroupIdentifier,omitempty" xml:"ResourceGroupIdentifier,omitempty"`
+	ConnectionName          *string `json:"ConnectionName,omitempty" xml:"ConnectionName,omitempty"`
+	Owner                   *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
 }
 
 func (s UpdateFileRequest) String() string {
@@ -11958,6 +11960,16 @@ func (s *UpdateFileRequest) SetOutputList(v string) *UpdateFileRequest {
 
 func (s *UpdateFileRequest) SetResourceGroupIdentifier(v string) *UpdateFileRequest {
 	s.ResourceGroupIdentifier = &v
+	return s
+}
+
+func (s *UpdateFileRequest) SetConnectionName(v string) *UpdateFileRequest {
+	s.ConnectionName = &v
+	return s
+}
+
+func (s *UpdateFileRequest) SetOwner(v string) *UpdateFileRequest {
+	s.Owner = &v
 	return s
 }
 
@@ -12862,6 +12874,8 @@ type CreateFileRequest struct {
 	InputList               *string `json:"InputList,omitempty" xml:"InputList,omitempty" require:"true"`
 	ProjectIdentifier       *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
 	ResourceGroupIdentifier *string `json:"ResourceGroupIdentifier,omitempty" xml:"ResourceGroupIdentifier,omitempty"`
+	ResourceGroupId         *int64  `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ConnectionName          *string `json:"ConnectionName,omitempty" xml:"ConnectionName,omitempty"`
 }
 
 func (s CreateFileRequest) String() string {
@@ -12974,6 +12988,16 @@ func (s *CreateFileRequest) SetProjectIdentifier(v string) *CreateFileRequest {
 
 func (s *CreateFileRequest) SetResourceGroupIdentifier(v string) *CreateFileRequest {
 	s.ResourceGroupIdentifier = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetResourceGroupId(v int64) *CreateFileRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetConnectionName(v string) *CreateFileRequest {
+	s.ConnectionName = &v
 	return s
 }
 
@@ -26269,7 +26293,7 @@ func (client *Client) GetQualityEntityWithOptions(request *GetQualityEntityReque
 		return _result, _err
 	}
 	_result = &GetQualityEntityResponse{}
-	_body, _err := client.DoRequest(tea.String("GetQualityEntity"), tea.String("HTTP"), tea.String("POST"), tea.String("2020-05-18"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	_body, _err := client.DoRequest(tea.String("GetQualityEntity"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-05-18"), tea.String("AK"), nil, tea.ToMap(request), runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26344,7 +26368,7 @@ func (client *Client) CreateQualityEntityWithOptions(request *CreateQualityEntit
 		return _result, _err
 	}
 	_result = &CreateQualityEntityResponse{}
-	_body, _err := client.DoRequest(tea.String("CreateQualityEntity"), tea.String("HTTP"), tea.String("POST"), tea.String("2020-05-18"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	_body, _err := client.DoRequest(tea.String("CreateQualityEntity"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-05-18"), tea.String("AK"), nil, tea.ToMap(request), runtime)
 	if _err != nil {
 		return _result, _err
 	}
