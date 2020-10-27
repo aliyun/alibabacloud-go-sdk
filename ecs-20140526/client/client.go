@@ -9,6 +9,1367 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type ReleaseCapacityReservationRequest struct {
+	RegionId           *string                                              `json:"RegionId,omitempty" xml:"RegionId,omitempty" require:"true"`
+	PrivatePoolOptions *ReleaseCapacityReservationRequestPrivatePoolOptions `json:"PrivatePoolOptions,omitempty" xml:"PrivatePoolOptions,omitempty" type:"Struct"`
+	DryRun             *bool                                                `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+}
+
+func (s ReleaseCapacityReservationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseCapacityReservationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseCapacityReservationRequest) SetRegionId(v string) *ReleaseCapacityReservationRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ReleaseCapacityReservationRequest) SetPrivatePoolOptions(v *ReleaseCapacityReservationRequestPrivatePoolOptions) *ReleaseCapacityReservationRequest {
+	s.PrivatePoolOptions = v
+	return s
+}
+
+func (s *ReleaseCapacityReservationRequest) SetDryRun(v bool) *ReleaseCapacityReservationRequest {
+	s.DryRun = &v
+	return s
+}
+
+type ReleaseCapacityReservationRequestPrivatePoolOptions struct {
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty" require:"true"`
+}
+
+func (s ReleaseCapacityReservationRequestPrivatePoolOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseCapacityReservationRequestPrivatePoolOptions) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseCapacityReservationRequestPrivatePoolOptions) SetId(v string) *ReleaseCapacityReservationRequestPrivatePoolOptions {
+	s.Id = &v
+	return s
+}
+
+type ReleaseCapacityReservationResponse struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+}
+
+func (s ReleaseCapacityReservationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseCapacityReservationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseCapacityReservationResponse) SetRequestId(v string) *ReleaseCapacityReservationResponse {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeCapacityReservationsRequest struct {
+	RegionId           *string                                                `json:"RegionId,omitempty" xml:"RegionId,omitempty" require:"true"`
+	MaxResults         *int                                                   `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken          *string                                                `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PrivatePoolOptions *DescribeCapacityReservationsRequestPrivatePoolOptions `json:"PrivatePoolOptions,omitempty" xml:"PrivatePoolOptions,omitempty" type:"Struct"`
+	Platform           *string                                                `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	InstanceType       *string                                                `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	ZoneId             *string                                                `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	InstanceChargeType *string                                                `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+}
+
+func (s DescribeCapacityReservationsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCapacityReservationsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCapacityReservationsRequest) SetRegionId(v string) *DescribeCapacityReservationsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeCapacityReservationsRequest) SetMaxResults(v int) *DescribeCapacityReservationsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeCapacityReservationsRequest) SetNextToken(v string) *DescribeCapacityReservationsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeCapacityReservationsRequest) SetPrivatePoolOptions(v *DescribeCapacityReservationsRequestPrivatePoolOptions) *DescribeCapacityReservationsRequest {
+	s.PrivatePoolOptions = v
+	return s
+}
+
+func (s *DescribeCapacityReservationsRequest) SetPlatform(v string) *DescribeCapacityReservationsRequest {
+	s.Platform = &v
+	return s
+}
+
+func (s *DescribeCapacityReservationsRequest) SetInstanceType(v string) *DescribeCapacityReservationsRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeCapacityReservationsRequest) SetZoneId(v string) *DescribeCapacityReservationsRequest {
+	s.ZoneId = &v
+	return s
+}
+
+func (s *DescribeCapacityReservationsRequest) SetInstanceChargeType(v string) *DescribeCapacityReservationsRequest {
+	s.InstanceChargeType = &v
+	return s
+}
+
+type DescribeCapacityReservationsRequestPrivatePoolOptions struct {
+	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+}
+
+func (s DescribeCapacityReservationsRequestPrivatePoolOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCapacityReservationsRequestPrivatePoolOptions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCapacityReservationsRequestPrivatePoolOptions) SetIds(v string) *DescribeCapacityReservationsRequestPrivatePoolOptions {
+	s.Ids = &v
+	return s
+}
+
+type DescribeCapacityReservationsResponse struct {
+	RequestId              *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	NextToken              *string                                                     `json:"NextToken,omitempty" xml:"NextToken,omitempty" require:"true"`
+	MaxResults             *int                                                        `json:"MaxResults,omitempty" xml:"MaxResults,omitempty" require:"true"`
+	TotalCount             *int                                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty" require:"true"`
+	CapacityReservationSet *DescribeCapacityReservationsResponseCapacityReservationSet `json:"CapacityReservationSet,omitempty" xml:"CapacityReservationSet,omitempty" require:"true" type:"Struct"`
+}
+
+func (s DescribeCapacityReservationsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCapacityReservationsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCapacityReservationsResponse) SetRequestId(v string) *DescribeCapacityReservationsResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeCapacityReservationsResponse) SetNextToken(v string) *DescribeCapacityReservationsResponse {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeCapacityReservationsResponse) SetMaxResults(v int) *DescribeCapacityReservationsResponse {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeCapacityReservationsResponse) SetTotalCount(v int) *DescribeCapacityReservationsResponse {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeCapacityReservationsResponse) SetCapacityReservationSet(v *DescribeCapacityReservationsResponseCapacityReservationSet) *DescribeCapacityReservationsResponse {
+	s.CapacityReservationSet = v
+	return s
+}
+
+type DescribeCapacityReservationsResponseCapacityReservationSet struct {
+	CapacityReservationItem []*DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItem `json:"CapacityReservationItem,omitempty" xml:"CapacityReservationItem,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s DescribeCapacityReservationsResponseCapacityReservationSet) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCapacityReservationsResponseCapacityReservationSet) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCapacityReservationsResponseCapacityReservationSet) SetCapacityReservationItem(v []*DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItem) *DescribeCapacityReservationsResponseCapacityReservationSet {
+	s.CapacityReservationItem = v
+	return s
+}
+
+type DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItem struct {
+	PrivatePoolOptionsId            *string                                                                                              `json:"PrivatePoolOptionsId,omitempty" xml:"PrivatePoolOptionsId,omitempty" require:"true"`
+	PrivatePoolOptionsName          *string                                                                                              `json:"PrivatePoolOptionsName,omitempty" xml:"PrivatePoolOptionsName,omitempty" require:"true"`
+	Description                     *string                                                                                              `json:"Description,omitempty" xml:"Description,omitempty" require:"true"`
+	RegionId                        *string                                                                                              `json:"RegionId,omitempty" xml:"RegionId,omitempty" require:"true"`
+	PrivatePoolOptionsMatchCriteria *string                                                                                              `json:"PrivatePoolOptionsMatchCriteria,omitempty" xml:"PrivatePoolOptionsMatchCriteria,omitempty" require:"true"`
+	Status                          *string                                                                                              `json:"Status,omitempty" xml:"Status,omitempty" require:"true"`
+	StartTime                       *string                                                                                              `json:"StartTime,omitempty" xml:"StartTime,omitempty" require:"true"`
+	EndTime                         *string                                                                                              `json:"EndTime,omitempty" xml:"EndTime,omitempty" require:"true"`
+	EndTimeType                     *string                                                                                              `json:"EndTimeType,omitempty" xml:"EndTimeType,omitempty" require:"true"`
+	InstanceChargeType              *string                                                                                              `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty" require:"true"`
+	Platform                        *string                                                                                              `json:"Platform,omitempty" xml:"Platform,omitempty" require:"true"`
+	AllocatedResources              *DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItemAllocatedResources `json:"AllocatedResources,omitempty" xml:"AllocatedResources,omitempty" require:"true" type:"Struct"`
+}
+
+func (s DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItem) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItem) SetPrivatePoolOptionsId(v string) *DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItem {
+	s.PrivatePoolOptionsId = &v
+	return s
+}
+
+func (s *DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItem) SetPrivatePoolOptionsName(v string) *DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItem {
+	s.PrivatePoolOptionsName = &v
+	return s
+}
+
+func (s *DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItem) SetDescription(v string) *DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItem {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItem) SetRegionId(v string) *DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItem {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItem) SetPrivatePoolOptionsMatchCriteria(v string) *DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItem {
+	s.PrivatePoolOptionsMatchCriteria = &v
+	return s
+}
+
+func (s *DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItem) SetStatus(v string) *DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItem {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItem) SetStartTime(v string) *DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItem {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItem) SetEndTime(v string) *DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItem {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItem) SetEndTimeType(v string) *DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItem {
+	s.EndTimeType = &v
+	return s
+}
+
+func (s *DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItem) SetInstanceChargeType(v string) *DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItem {
+	s.InstanceChargeType = &v
+	return s
+}
+
+func (s *DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItem) SetPlatform(v string) *DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItem {
+	s.Platform = &v
+	return s
+}
+
+func (s *DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItem) SetAllocatedResources(v *DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItemAllocatedResources) *DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItem {
+	s.AllocatedResources = v
+	return s
+}
+
+type DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItemAllocatedResources struct {
+	AllocatedResource []*DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItemAllocatedResourcesAllocatedResource `json:"AllocatedResource,omitempty" xml:"AllocatedResource,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItemAllocatedResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItemAllocatedResources) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItemAllocatedResources) SetAllocatedResource(v []*DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItemAllocatedResourcesAllocatedResource) *DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItemAllocatedResources {
+	s.AllocatedResource = v
+	return s
+}
+
+type DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItemAllocatedResourcesAllocatedResource struct {
+	ZoneId       *string `json:"zoneId,omitempty" xml:"zoneId,omitempty" require:"true"`
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty" require:"true"`
+	TotalAmount  *int    `json:"TotalAmount,omitempty" xml:"TotalAmount,omitempty" require:"true"`
+	UsedAmount   *int    `json:"UsedAmount,omitempty" xml:"UsedAmount,omitempty" require:"true"`
+}
+
+func (s DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItemAllocatedResourcesAllocatedResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItemAllocatedResourcesAllocatedResource) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItemAllocatedResourcesAllocatedResource) SetZoneId(v string) *DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItemAllocatedResourcesAllocatedResource {
+	s.ZoneId = &v
+	return s
+}
+
+func (s *DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItemAllocatedResourcesAllocatedResource) SetInstanceType(v string) *DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItemAllocatedResourcesAllocatedResource {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItemAllocatedResourcesAllocatedResource) SetTotalAmount(v int) *DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItemAllocatedResourcesAllocatedResource {
+	s.TotalAmount = &v
+	return s
+}
+
+func (s *DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItemAllocatedResourcesAllocatedResource) SetUsedAmount(v int) *DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItemAllocatedResourcesAllocatedResource {
+	s.UsedAmount = &v
+	return s
+}
+
+type DescribeCapacityReservationInstancesRequest struct {
+	RegionId           *string                                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty" require:"true"`
+	MaxResults         *int                                                           `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken          *string                                                        `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PrivatePoolOptions *DescribeCapacityReservationInstancesRequestPrivatePoolOptions `json:"PrivatePoolOptions,omitempty" xml:"PrivatePoolOptions,omitempty" type:"Struct"`
+}
+
+func (s DescribeCapacityReservationInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCapacityReservationInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCapacityReservationInstancesRequest) SetRegionId(v string) *DescribeCapacityReservationInstancesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeCapacityReservationInstancesRequest) SetMaxResults(v int) *DescribeCapacityReservationInstancesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeCapacityReservationInstancesRequest) SetNextToken(v string) *DescribeCapacityReservationInstancesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeCapacityReservationInstancesRequest) SetPrivatePoolOptions(v *DescribeCapacityReservationInstancesRequestPrivatePoolOptions) *DescribeCapacityReservationInstancesRequest {
+	s.PrivatePoolOptions = v
+	return s
+}
+
+type DescribeCapacityReservationInstancesRequestPrivatePoolOptions struct {
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty" require:"true"`
+}
+
+func (s DescribeCapacityReservationInstancesRequestPrivatePoolOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCapacityReservationInstancesRequestPrivatePoolOptions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCapacityReservationInstancesRequestPrivatePoolOptions) SetId(v string) *DescribeCapacityReservationInstancesRequestPrivatePoolOptions {
+	s.Id = &v
+	return s
+}
+
+type DescribeCapacityReservationInstancesResponse struct {
+	RequestId               *string                                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	NextToken               *string                                                              `json:"NextToken,omitempty" xml:"NextToken,omitempty" require:"true"`
+	MaxResults              *int                                                                 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty" require:"true"`
+	TotalCount              *int                                                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty" require:"true"`
+	CapacityReservationItem *DescribeCapacityReservationInstancesResponseCapacityReservationItem `json:"CapacityReservationItem,omitempty" xml:"CapacityReservationItem,omitempty" require:"true" type:"Struct"`
+}
+
+func (s DescribeCapacityReservationInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCapacityReservationInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCapacityReservationInstancesResponse) SetRequestId(v string) *DescribeCapacityReservationInstancesResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeCapacityReservationInstancesResponse) SetNextToken(v string) *DescribeCapacityReservationInstancesResponse {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeCapacityReservationInstancesResponse) SetMaxResults(v int) *DescribeCapacityReservationInstancesResponse {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeCapacityReservationInstancesResponse) SetTotalCount(v int) *DescribeCapacityReservationInstancesResponse {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeCapacityReservationInstancesResponse) SetCapacityReservationItem(v *DescribeCapacityReservationInstancesResponseCapacityReservationItem) *DescribeCapacityReservationInstancesResponse {
+	s.CapacityReservationItem = v
+	return s
+}
+
+type DescribeCapacityReservationInstancesResponseCapacityReservationItem struct {
+	InstanceIdSet []*DescribeCapacityReservationInstancesResponseCapacityReservationItemInstanceIdSet `json:"InstanceIdSet,omitempty" xml:"InstanceIdSet,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s DescribeCapacityReservationInstancesResponseCapacityReservationItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCapacityReservationInstancesResponseCapacityReservationItem) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCapacityReservationInstancesResponseCapacityReservationItem) SetInstanceIdSet(v []*DescribeCapacityReservationInstancesResponseCapacityReservationItemInstanceIdSet) *DescribeCapacityReservationInstancesResponseCapacityReservationItem {
+	s.InstanceIdSet = v
+	return s
+}
+
+type DescribeCapacityReservationInstancesResponseCapacityReservationItemInstanceIdSet struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" require:"true"`
+}
+
+func (s DescribeCapacityReservationInstancesResponseCapacityReservationItemInstanceIdSet) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCapacityReservationInstancesResponseCapacityReservationItemInstanceIdSet) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCapacityReservationInstancesResponseCapacityReservationItemInstanceIdSet) SetInstanceId(v string) *DescribeCapacityReservationInstancesResponseCapacityReservationItemInstanceIdSet {
+	s.InstanceId = &v
+	return s
+}
+
+type CreateCapacityReservationRequest struct {
+	RegionId           *string                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty" require:"true"`
+	ClientToken        *string                                             `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ZoneId             []*string                                           `json:"ZoneId,omitempty" xml:"ZoneId,omitempty" require:"true" type:"Repeated"`
+	PrivatePoolOptions *CreateCapacityReservationRequestPrivatePoolOptions `json:"PrivatePoolOptions,omitempty" xml:"PrivatePoolOptions,omitempty" type:"Struct"`
+	Description        *string                                             `json:"Description,omitempty" xml:"Description,omitempty"`
+	InstanceAmount     *int                                                `json:"InstanceAmount,omitempty" xml:"InstanceAmount,omitempty" require:"true"`
+	InstanceType       *string                                             `json:"InstanceType,omitempty" xml:"InstanceType,omitempty" require:"true"`
+	StartTime          *string                                             `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	EndTime            *string                                             `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTimeType        *string                                             `json:"EndTimeType,omitempty" xml:"EndTimeType,omitempty"`
+	Platform           *string                                             `json:"Platform,omitempty" xml:"Platform,omitempty"`
+}
+
+func (s CreateCapacityReservationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCapacityReservationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCapacityReservationRequest) SetRegionId(v string) *CreateCapacityReservationRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateCapacityReservationRequest) SetClientToken(v string) *CreateCapacityReservationRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateCapacityReservationRequest) SetZoneId(v []*string) *CreateCapacityReservationRequest {
+	s.ZoneId = v
+	return s
+}
+
+func (s *CreateCapacityReservationRequest) SetPrivatePoolOptions(v *CreateCapacityReservationRequestPrivatePoolOptions) *CreateCapacityReservationRequest {
+	s.PrivatePoolOptions = v
+	return s
+}
+
+func (s *CreateCapacityReservationRequest) SetDescription(v string) *CreateCapacityReservationRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateCapacityReservationRequest) SetInstanceAmount(v int) *CreateCapacityReservationRequest {
+	s.InstanceAmount = &v
+	return s
+}
+
+func (s *CreateCapacityReservationRequest) SetInstanceType(v string) *CreateCapacityReservationRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *CreateCapacityReservationRequest) SetStartTime(v string) *CreateCapacityReservationRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *CreateCapacityReservationRequest) SetEndTime(v string) *CreateCapacityReservationRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *CreateCapacityReservationRequest) SetEndTimeType(v string) *CreateCapacityReservationRequest {
+	s.EndTimeType = &v
+	return s
+}
+
+func (s *CreateCapacityReservationRequest) SetPlatform(v string) *CreateCapacityReservationRequest {
+	s.Platform = &v
+	return s
+}
+
+type CreateCapacityReservationRequestPrivatePoolOptions struct {
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	MatchCriteria *string `json:"MatchCriteria,omitempty" xml:"MatchCriteria,omitempty"`
+}
+
+func (s CreateCapacityReservationRequestPrivatePoolOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCapacityReservationRequestPrivatePoolOptions) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCapacityReservationRequestPrivatePoolOptions) SetName(v string) *CreateCapacityReservationRequestPrivatePoolOptions {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateCapacityReservationRequestPrivatePoolOptions) SetMatchCriteria(v string) *CreateCapacityReservationRequestPrivatePoolOptions {
+	s.MatchCriteria = &v
+	return s
+}
+
+type CreateCapacityReservationResponse struct {
+	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	PrivatePoolOptionsId *string `json:"PrivatePoolOptionsId,omitempty" xml:"PrivatePoolOptionsId,omitempty" require:"true"`
+}
+
+func (s CreateCapacityReservationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCapacityReservationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCapacityReservationResponse) SetRequestId(v string) *CreateCapacityReservationResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateCapacityReservationResponse) SetPrivatePoolOptionsId(v string) *CreateCapacityReservationResponse {
+	s.PrivatePoolOptionsId = &v
+	return s
+}
+
+type StartElasticityAssuranceRequest struct {
+	RegionId           *string                                            `json:"RegionId,omitempty" xml:"RegionId,omitempty" require:"true"`
+	PrivatePoolOptions *StartElasticityAssuranceRequestPrivatePoolOptions `json:"PrivatePoolOptions,omitempty" xml:"PrivatePoolOptions,omitempty" type:"Struct"`
+}
+
+func (s StartElasticityAssuranceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartElasticityAssuranceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartElasticityAssuranceRequest) SetRegionId(v string) *StartElasticityAssuranceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *StartElasticityAssuranceRequest) SetPrivatePoolOptions(v *StartElasticityAssuranceRequestPrivatePoolOptions) *StartElasticityAssuranceRequest {
+	s.PrivatePoolOptions = v
+	return s
+}
+
+type StartElasticityAssuranceRequestPrivatePoolOptions struct {
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty" require:"true"`
+}
+
+func (s StartElasticityAssuranceRequestPrivatePoolOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartElasticityAssuranceRequestPrivatePoolOptions) GoString() string {
+	return s.String()
+}
+
+func (s *StartElasticityAssuranceRequestPrivatePoolOptions) SetId(v string) *StartElasticityAssuranceRequestPrivatePoolOptions {
+	s.Id = &v
+	return s
+}
+
+type StartElasticityAssuranceResponse struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+}
+
+func (s StartElasticityAssuranceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartElasticityAssuranceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartElasticityAssuranceResponse) SetRequestId(v string) *StartElasticityAssuranceResponse {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyInstanceAttachmentAttributesRequest struct {
+	RegionId           *string                                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty" require:"true"`
+	InstanceId         *string                                                      `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" require:"true"`
+	PrivatePoolOptions *ModifyInstanceAttachmentAttributesRequestPrivatePoolOptions `json:"PrivatePoolOptions,omitempty" xml:"PrivatePoolOptions,omitempty" type:"Struct"`
+}
+
+func (s ModifyInstanceAttachmentAttributesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceAttachmentAttributesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceAttachmentAttributesRequest) SetRegionId(v string) *ModifyInstanceAttachmentAttributesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyInstanceAttachmentAttributesRequest) SetInstanceId(v string) *ModifyInstanceAttachmentAttributesRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyInstanceAttachmentAttributesRequest) SetPrivatePoolOptions(v *ModifyInstanceAttachmentAttributesRequestPrivatePoolOptions) *ModifyInstanceAttachmentAttributesRequest {
+	s.PrivatePoolOptions = v
+	return s
+}
+
+type ModifyInstanceAttachmentAttributesRequestPrivatePoolOptions struct {
+	MatchCriteria *string `json:"MatchCriteria,omitempty" xml:"MatchCriteria,omitempty" require:"true"`
+	Id            *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s ModifyInstanceAttachmentAttributesRequestPrivatePoolOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceAttachmentAttributesRequestPrivatePoolOptions) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceAttachmentAttributesRequestPrivatePoolOptions) SetMatchCriteria(v string) *ModifyInstanceAttachmentAttributesRequestPrivatePoolOptions {
+	s.MatchCriteria = &v
+	return s
+}
+
+func (s *ModifyInstanceAttachmentAttributesRequestPrivatePoolOptions) SetId(v string) *ModifyInstanceAttachmentAttributesRequestPrivatePoolOptions {
+	s.Id = &v
+	return s
+}
+
+type ModifyInstanceAttachmentAttributesResponse struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+}
+
+func (s ModifyInstanceAttachmentAttributesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceAttachmentAttributesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceAttachmentAttributesResponse) SetRequestId(v string) *ModifyInstanceAttachmentAttributesResponse {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeInstanceAttachmentAttributesRequest struct {
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty" require:"true"`
+	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" require:"true"`
+	PageNumber  *int    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeInstanceAttachmentAttributesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceAttachmentAttributesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceAttachmentAttributesRequest) SetRegionId(v string) *DescribeInstanceAttachmentAttributesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeInstanceAttachmentAttributesRequest) SetInstanceIds(v string) *DescribeInstanceAttachmentAttributesRequest {
+	s.InstanceIds = &v
+	return s
+}
+
+func (s *DescribeInstanceAttachmentAttributesRequest) SetPageNumber(v int) *DescribeInstanceAttachmentAttributesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeInstanceAttachmentAttributesRequest) SetPageSize(v int) *DescribeInstanceAttachmentAttributesRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeInstanceAttachmentAttributesResponse struct {
+	RequestId  *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	TotalCount *int                                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty" require:"true"`
+	PageNumber *int                                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty" require:"true"`
+	PageSize   *int                                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty" require:"true"`
+	Instances  *DescribeInstanceAttachmentAttributesResponseInstances `json:"Instances,omitempty" xml:"Instances,omitempty" require:"true" type:"Struct"`
+}
+
+func (s DescribeInstanceAttachmentAttributesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceAttachmentAttributesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceAttachmentAttributesResponse) SetRequestId(v string) *DescribeInstanceAttachmentAttributesResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeInstanceAttachmentAttributesResponse) SetTotalCount(v int) *DescribeInstanceAttachmentAttributesResponse {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeInstanceAttachmentAttributesResponse) SetPageNumber(v int) *DescribeInstanceAttachmentAttributesResponse {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeInstanceAttachmentAttributesResponse) SetPageSize(v int) *DescribeInstanceAttachmentAttributesResponse {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeInstanceAttachmentAttributesResponse) SetInstances(v *DescribeInstanceAttachmentAttributesResponseInstances) *DescribeInstanceAttachmentAttributesResponse {
+	s.Instances = v
+	return s
+}
+
+type DescribeInstanceAttachmentAttributesResponseInstances struct {
+	Instance []*DescribeInstanceAttachmentAttributesResponseInstancesInstance `json:"Instance,omitempty" xml:"Instance,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s DescribeInstanceAttachmentAttributesResponseInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceAttachmentAttributesResponseInstances) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceAttachmentAttributesResponseInstances) SetInstance(v []*DescribeInstanceAttachmentAttributesResponseInstancesInstance) *DescribeInstanceAttachmentAttributesResponseInstances {
+	s.Instance = v
+	return s
+}
+
+type DescribeInstanceAttachmentAttributesResponseInstancesInstance struct {
+	InstanceId                      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" require:"true"`
+	PrivatePoolOptionsId            *string `json:"PrivatePoolOptionsId,omitempty" xml:"PrivatePoolOptionsId,omitempty" require:"true"`
+	PrivatePoolOptionsMatchCriteria *string `json:"PrivatePoolOptionsMatchCriteria,omitempty" xml:"PrivatePoolOptionsMatchCriteria,omitempty" require:"true"`
+}
+
+func (s DescribeInstanceAttachmentAttributesResponseInstancesInstance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceAttachmentAttributesResponseInstancesInstance) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceAttachmentAttributesResponseInstancesInstance) SetInstanceId(v string) *DescribeInstanceAttachmentAttributesResponseInstancesInstance {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeInstanceAttachmentAttributesResponseInstancesInstance) SetPrivatePoolOptionsId(v string) *DescribeInstanceAttachmentAttributesResponseInstancesInstance {
+	s.PrivatePoolOptionsId = &v
+	return s
+}
+
+func (s *DescribeInstanceAttachmentAttributesResponseInstancesInstance) SetPrivatePoolOptionsMatchCriteria(v string) *DescribeInstanceAttachmentAttributesResponseInstancesInstance {
+	s.PrivatePoolOptionsMatchCriteria = &v
+	return s
+}
+
+type DescribeElasticityAssurancesRequest struct {
+	RegionId           *string                                                `json:"RegionId,omitempty" xml:"RegionId,omitempty" require:"true"`
+	MaxResults         *int                                                   `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken          *string                                                `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PrivatePoolOptions *DescribeElasticityAssurancesRequestPrivatePoolOptions `json:"PrivatePoolOptions,omitempty" xml:"PrivatePoolOptions,omitempty" type:"Struct"`
+	Platform           *string                                                `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	InstanceType       *string                                                `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	ZoneId             *string                                                `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	InstanceChargeType *string                                                `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+}
+
+func (s DescribeElasticityAssurancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeElasticityAssurancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeElasticityAssurancesRequest) SetRegionId(v string) *DescribeElasticityAssurancesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeElasticityAssurancesRequest) SetMaxResults(v int) *DescribeElasticityAssurancesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeElasticityAssurancesRequest) SetNextToken(v string) *DescribeElasticityAssurancesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeElasticityAssurancesRequest) SetPrivatePoolOptions(v *DescribeElasticityAssurancesRequestPrivatePoolOptions) *DescribeElasticityAssurancesRequest {
+	s.PrivatePoolOptions = v
+	return s
+}
+
+func (s *DescribeElasticityAssurancesRequest) SetPlatform(v string) *DescribeElasticityAssurancesRequest {
+	s.Platform = &v
+	return s
+}
+
+func (s *DescribeElasticityAssurancesRequest) SetInstanceType(v string) *DescribeElasticityAssurancesRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeElasticityAssurancesRequest) SetZoneId(v string) *DescribeElasticityAssurancesRequest {
+	s.ZoneId = &v
+	return s
+}
+
+func (s *DescribeElasticityAssurancesRequest) SetInstanceChargeType(v string) *DescribeElasticityAssurancesRequest {
+	s.InstanceChargeType = &v
+	return s
+}
+
+type DescribeElasticityAssurancesRequestPrivatePoolOptions struct {
+	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+}
+
+func (s DescribeElasticityAssurancesRequestPrivatePoolOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeElasticityAssurancesRequestPrivatePoolOptions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeElasticityAssurancesRequestPrivatePoolOptions) SetIds(v string) *DescribeElasticityAssurancesRequestPrivatePoolOptions {
+	s.Ids = &v
+	return s
+}
+
+type DescribeElasticityAssurancesResponse struct {
+	RequestId              *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	NextToken              *string                                                     `json:"NextToken,omitempty" xml:"NextToken,omitempty" require:"true"`
+	MaxResults             *int                                                        `json:"MaxResults,omitempty" xml:"MaxResults,omitempty" require:"true"`
+	TotalCount             *int                                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty" require:"true"`
+	ElasticityAssuranceSet *DescribeElasticityAssurancesResponseElasticityAssuranceSet `json:"ElasticityAssuranceSet,omitempty" xml:"ElasticityAssuranceSet,omitempty" require:"true" type:"Struct"`
+}
+
+func (s DescribeElasticityAssurancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeElasticityAssurancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeElasticityAssurancesResponse) SetRequestId(v string) *DescribeElasticityAssurancesResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeElasticityAssurancesResponse) SetNextToken(v string) *DescribeElasticityAssurancesResponse {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeElasticityAssurancesResponse) SetMaxResults(v int) *DescribeElasticityAssurancesResponse {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeElasticityAssurancesResponse) SetTotalCount(v int) *DescribeElasticityAssurancesResponse {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeElasticityAssurancesResponse) SetElasticityAssuranceSet(v *DescribeElasticityAssurancesResponseElasticityAssuranceSet) *DescribeElasticityAssurancesResponse {
+	s.ElasticityAssuranceSet = v
+	return s
+}
+
+type DescribeElasticityAssurancesResponseElasticityAssuranceSet struct {
+	ElasticityAssuranceItem []*DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItem `json:"ElasticityAssuranceItem,omitempty" xml:"ElasticityAssuranceItem,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s DescribeElasticityAssurancesResponseElasticityAssuranceSet) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeElasticityAssurancesResponseElasticityAssuranceSet) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeElasticityAssurancesResponseElasticityAssuranceSet) SetElasticityAssuranceItem(v []*DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItem) *DescribeElasticityAssurancesResponseElasticityAssuranceSet {
+	s.ElasticityAssuranceItem = v
+	return s
+}
+
+type DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItem struct {
+	PrivatePoolOptionsId            *string                                                                                              `json:"PrivatePoolOptionsId,omitempty" xml:"PrivatePoolOptionsId,omitempty" require:"true"`
+	PrivatePoolOptionsName          *string                                                                                              `json:"PrivatePoolOptionsName,omitempty" xml:"PrivatePoolOptionsName,omitempty" require:"true"`
+	Description                     *string                                                                                              `json:"Description,omitempty" xml:"Description,omitempty" require:"true"`
+	RegionId                        *string                                                                                              `json:"RegionId,omitempty" xml:"RegionId,omitempty" require:"true"`
+	PrivatePoolOptionsMatchCriteria *string                                                                                              `json:"PrivatePoolOptionsMatchCriteria,omitempty" xml:"PrivatePoolOptionsMatchCriteria,omitempty" require:"true"`
+	UsedAssuranceTimes              *int                                                                                                 `json:"UsedAssuranceTimes,omitempty" xml:"UsedAssuranceTimes,omitempty" require:"true"`
+	TotalAssuranceTimes             *string                                                                                              `json:"TotalAssuranceTimes,omitempty" xml:"TotalAssuranceTimes,omitempty" require:"true"`
+	Status                          *string                                                                                              `json:"Status,omitempty" xml:"Status,omitempty" require:"true"`
+	StartTime                       *string                                                                                              `json:"StartTime,omitempty" xml:"StartTime,omitempty" require:"true"`
+	EndTime                         *string                                                                                              `json:"EndTime,omitempty" xml:"EndTime,omitempty" require:"true"`
+	LatestStartTime                 *string                                                                                              `json:"LatestStartTime,omitempty" xml:"LatestStartTime,omitempty" require:"true"`
+	AllocatedResources              *DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItemAllocatedResources `json:"AllocatedResources,omitempty" xml:"AllocatedResources,omitempty" require:"true" type:"Struct"`
+}
+
+func (s DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItem) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItem) SetPrivatePoolOptionsId(v string) *DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItem {
+	s.PrivatePoolOptionsId = &v
+	return s
+}
+
+func (s *DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItem) SetPrivatePoolOptionsName(v string) *DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItem {
+	s.PrivatePoolOptionsName = &v
+	return s
+}
+
+func (s *DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItem) SetDescription(v string) *DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItem {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItem) SetRegionId(v string) *DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItem {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItem) SetPrivatePoolOptionsMatchCriteria(v string) *DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItem {
+	s.PrivatePoolOptionsMatchCriteria = &v
+	return s
+}
+
+func (s *DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItem) SetUsedAssuranceTimes(v int) *DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItem {
+	s.UsedAssuranceTimes = &v
+	return s
+}
+
+func (s *DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItem) SetTotalAssuranceTimes(v string) *DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItem {
+	s.TotalAssuranceTimes = &v
+	return s
+}
+
+func (s *DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItem) SetStatus(v string) *DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItem {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItem) SetStartTime(v string) *DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItem {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItem) SetEndTime(v string) *DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItem {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItem) SetLatestStartTime(v string) *DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItem {
+	s.LatestStartTime = &v
+	return s
+}
+
+func (s *DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItem) SetAllocatedResources(v *DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItemAllocatedResources) *DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItem {
+	s.AllocatedResources = v
+	return s
+}
+
+type DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItemAllocatedResources struct {
+	AllocatedResource []*DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItemAllocatedResourcesAllocatedResource `json:"AllocatedResource,omitempty" xml:"AllocatedResource,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItemAllocatedResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItemAllocatedResources) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItemAllocatedResources) SetAllocatedResource(v []*DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItemAllocatedResourcesAllocatedResource) *DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItemAllocatedResources {
+	s.AllocatedResource = v
+	return s
+}
+
+type DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItemAllocatedResourcesAllocatedResource struct {
+	ZoneId       *string `json:"zoneId,omitempty" xml:"zoneId,omitempty" require:"true"`
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty" require:"true"`
+	TotalAmount  *int    `json:"TotalAmount,omitempty" xml:"TotalAmount,omitempty" require:"true"`
+	UsedAmount   *int    `json:"UsedAmount,omitempty" xml:"UsedAmount,omitempty" require:"true"`
+}
+
+func (s DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItemAllocatedResourcesAllocatedResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItemAllocatedResourcesAllocatedResource) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItemAllocatedResourcesAllocatedResource) SetZoneId(v string) *DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItemAllocatedResourcesAllocatedResource {
+	s.ZoneId = &v
+	return s
+}
+
+func (s *DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItemAllocatedResourcesAllocatedResource) SetInstanceType(v string) *DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItemAllocatedResourcesAllocatedResource {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItemAllocatedResourcesAllocatedResource) SetTotalAmount(v int) *DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItemAllocatedResourcesAllocatedResource {
+	s.TotalAmount = &v
+	return s
+}
+
+func (s *DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItemAllocatedResourcesAllocatedResource) SetUsedAmount(v int) *DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItemAllocatedResourcesAllocatedResource {
+	s.UsedAmount = &v
+	return s
+}
+
+type DescribeElasticityAssuranceInstancesRequest struct {
+	RegionId           *string                                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty" require:"true"`
+	MaxResults         *int                                                           `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken          *string                                                        `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PrivatePoolOptions *DescribeElasticityAssuranceInstancesRequestPrivatePoolOptions `json:"PrivatePoolOptions,omitempty" xml:"PrivatePoolOptions,omitempty" type:"Struct"`
+}
+
+func (s DescribeElasticityAssuranceInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeElasticityAssuranceInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeElasticityAssuranceInstancesRequest) SetRegionId(v string) *DescribeElasticityAssuranceInstancesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeElasticityAssuranceInstancesRequest) SetMaxResults(v int) *DescribeElasticityAssuranceInstancesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeElasticityAssuranceInstancesRequest) SetNextToken(v string) *DescribeElasticityAssuranceInstancesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeElasticityAssuranceInstancesRequest) SetPrivatePoolOptions(v *DescribeElasticityAssuranceInstancesRequestPrivatePoolOptions) *DescribeElasticityAssuranceInstancesRequest {
+	s.PrivatePoolOptions = v
+	return s
+}
+
+type DescribeElasticityAssuranceInstancesRequestPrivatePoolOptions struct {
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty" require:"true"`
+}
+
+func (s DescribeElasticityAssuranceInstancesRequestPrivatePoolOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeElasticityAssuranceInstancesRequestPrivatePoolOptions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeElasticityAssuranceInstancesRequestPrivatePoolOptions) SetId(v string) *DescribeElasticityAssuranceInstancesRequestPrivatePoolOptions {
+	s.Id = &v
+	return s
+}
+
+type DescribeElasticityAssuranceInstancesResponse struct {
+	RequestId               *string                                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	NextToken               *string                                                              `json:"NextToken,omitempty" xml:"NextToken,omitempty" require:"true"`
+	MaxResults              *int                                                                 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty" require:"true"`
+	TotalCount              *int                                                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty" require:"true"`
+	ElasticityAssuranceItem *DescribeElasticityAssuranceInstancesResponseElasticityAssuranceItem `json:"ElasticityAssuranceItem,omitempty" xml:"ElasticityAssuranceItem,omitempty" require:"true" type:"Struct"`
+}
+
+func (s DescribeElasticityAssuranceInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeElasticityAssuranceInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeElasticityAssuranceInstancesResponse) SetRequestId(v string) *DescribeElasticityAssuranceInstancesResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeElasticityAssuranceInstancesResponse) SetNextToken(v string) *DescribeElasticityAssuranceInstancesResponse {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeElasticityAssuranceInstancesResponse) SetMaxResults(v int) *DescribeElasticityAssuranceInstancesResponse {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeElasticityAssuranceInstancesResponse) SetTotalCount(v int) *DescribeElasticityAssuranceInstancesResponse {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeElasticityAssuranceInstancesResponse) SetElasticityAssuranceItem(v *DescribeElasticityAssuranceInstancesResponseElasticityAssuranceItem) *DescribeElasticityAssuranceInstancesResponse {
+	s.ElasticityAssuranceItem = v
+	return s
+}
+
+type DescribeElasticityAssuranceInstancesResponseElasticityAssuranceItem struct {
+	InstanceIdSet []*DescribeElasticityAssuranceInstancesResponseElasticityAssuranceItemInstanceIdSet `json:"InstanceIdSet,omitempty" xml:"InstanceIdSet,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s DescribeElasticityAssuranceInstancesResponseElasticityAssuranceItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeElasticityAssuranceInstancesResponseElasticityAssuranceItem) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeElasticityAssuranceInstancesResponseElasticityAssuranceItem) SetInstanceIdSet(v []*DescribeElasticityAssuranceInstancesResponseElasticityAssuranceItemInstanceIdSet) *DescribeElasticityAssuranceInstancesResponseElasticityAssuranceItem {
+	s.InstanceIdSet = v
+	return s
+}
+
+type DescribeElasticityAssuranceInstancesResponseElasticityAssuranceItemInstanceIdSet struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" require:"true"`
+}
+
+func (s DescribeElasticityAssuranceInstancesResponseElasticityAssuranceItemInstanceIdSet) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeElasticityAssuranceInstancesResponseElasticityAssuranceItemInstanceIdSet) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeElasticityAssuranceInstancesResponseElasticityAssuranceItemInstanceIdSet) SetInstanceId(v string) *DescribeElasticityAssuranceInstancesResponseElasticityAssuranceItemInstanceIdSet {
+	s.InstanceId = &v
+	return s
+}
+
+type CreateElasticityAssuranceRequest struct {
+	RegionId             *string                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty" require:"true"`
+	Period               *int                                                `json:"Period,omitempty" xml:"Period,omitempty"`
+	PeriodUnit           *string                                             `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	ClientToken          *string                                             `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	PrivatePoolOptions   *CreateElasticityAssuranceRequestPrivatePoolOptions `json:"PrivatePoolOptions,omitempty" xml:"PrivatePoolOptions,omitempty" type:"Struct"`
+	Description          *string                                             `json:"Description,omitempty" xml:"Description,omitempty"`
+	AssuranceTimes       *string                                             `json:"AssuranceTimes,omitempty" xml:"AssuranceTimes,omitempty"`
+	ZoneId               []*string                                           `json:"ZoneId,omitempty" xml:"ZoneId,omitempty" require:"true" type:"Repeated"`
+	InstanceType         []*string                                           `json:"InstanceType,omitempty" xml:"InstanceType,omitempty" require:"true" type:"Repeated"`
+	InstanceAmount       *int                                                `json:"InstanceAmount,omitempty" xml:"InstanceAmount,omitempty"`
+	InstanceCpuCoreCount *int                                                `json:"InstanceCpuCoreCount,omitempty" xml:"InstanceCpuCoreCount,omitempty"`
+	StartTime            *string                                             `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s CreateElasticityAssuranceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateElasticityAssuranceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateElasticityAssuranceRequest) SetRegionId(v string) *CreateElasticityAssuranceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateElasticityAssuranceRequest) SetPeriod(v int) *CreateElasticityAssuranceRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *CreateElasticityAssuranceRequest) SetPeriodUnit(v string) *CreateElasticityAssuranceRequest {
+	s.PeriodUnit = &v
+	return s
+}
+
+func (s *CreateElasticityAssuranceRequest) SetClientToken(v string) *CreateElasticityAssuranceRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateElasticityAssuranceRequest) SetPrivatePoolOptions(v *CreateElasticityAssuranceRequestPrivatePoolOptions) *CreateElasticityAssuranceRequest {
+	s.PrivatePoolOptions = v
+	return s
+}
+
+func (s *CreateElasticityAssuranceRequest) SetDescription(v string) *CreateElasticityAssuranceRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateElasticityAssuranceRequest) SetAssuranceTimes(v string) *CreateElasticityAssuranceRequest {
+	s.AssuranceTimes = &v
+	return s
+}
+
+func (s *CreateElasticityAssuranceRequest) SetZoneId(v []*string) *CreateElasticityAssuranceRequest {
+	s.ZoneId = v
+	return s
+}
+
+func (s *CreateElasticityAssuranceRequest) SetInstanceType(v []*string) *CreateElasticityAssuranceRequest {
+	s.InstanceType = v
+	return s
+}
+
+func (s *CreateElasticityAssuranceRequest) SetInstanceAmount(v int) *CreateElasticityAssuranceRequest {
+	s.InstanceAmount = &v
+	return s
+}
+
+func (s *CreateElasticityAssuranceRequest) SetInstanceCpuCoreCount(v int) *CreateElasticityAssuranceRequest {
+	s.InstanceCpuCoreCount = &v
+	return s
+}
+
+func (s *CreateElasticityAssuranceRequest) SetStartTime(v string) *CreateElasticityAssuranceRequest {
+	s.StartTime = &v
+	return s
+}
+
+type CreateElasticityAssuranceRequestPrivatePoolOptions struct {
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	MatchCriteria *string `json:"MatchCriteria,omitempty" xml:"MatchCriteria,omitempty"`
+}
+
+func (s CreateElasticityAssuranceRequestPrivatePoolOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateElasticityAssuranceRequestPrivatePoolOptions) GoString() string {
+	return s.String()
+}
+
+func (s *CreateElasticityAssuranceRequestPrivatePoolOptions) SetName(v string) *CreateElasticityAssuranceRequestPrivatePoolOptions {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateElasticityAssuranceRequestPrivatePoolOptions) SetMatchCriteria(v string) *CreateElasticityAssuranceRequestPrivatePoolOptions {
+	s.MatchCriteria = &v
+	return s
+}
+
+type CreateElasticityAssuranceResponse struct {
+	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	PrivatePoolOptionsId *string `json:"PrivatePoolOptionsId,omitempty" xml:"PrivatePoolOptionsId,omitempty" require:"true"`
+	OrderId              *string `json:"OrderId,omitempty" xml:"OrderId,omitempty" require:"true"`
+}
+
+func (s CreateElasticityAssuranceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateElasticityAssuranceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateElasticityAssuranceResponse) SetRequestId(v string) *CreateElasticityAssuranceResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateElasticityAssuranceResponse) SetPrivatePoolOptionsId(v string) *CreateElasticityAssuranceResponse {
+	s.PrivatePoolOptionsId = &v
+	return s
+}
+
+func (s *CreateElasticityAssuranceResponse) SetOrderId(v string) *CreateElasticityAssuranceResponse {
+	s.OrderId = &v
+	return s
+}
+
 type SendFileRequest struct {
 	RegionId    *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty" require:"true"`
 	Name        *string   `json:"Name,omitempty" xml:"Name,omitempty" require:"true"`
@@ -13672,6 +15033,7 @@ type RunInstancesRequest struct {
 	HttpEndpoint                *string                                `json:"HttpEndpoint,omitempty" xml:"HttpEndpoint,omitempty"`
 	HttpTokens                  *string                                `json:"HttpTokens,omitempty" xml:"HttpTokens,omitempty"`
 	HttpPutResponseHopLimit     *int                                   `json:"HttpPutResponseHopLimit,omitempty" xml:"HttpPutResponseHopLimit,omitempty"`
+	PrivatePoolOptions          *RunInstancesRequestPrivatePoolOptions `json:"PrivatePoolOptions,omitempty" xml:"PrivatePoolOptions,omitempty" type:"Struct"`
 }
 
 func (s RunInstancesRequest) String() string {
@@ -13997,6 +15359,11 @@ func (s *RunInstancesRequest) SetHttpPutResponseHopLimit(v int) *RunInstancesReq
 	return s
 }
 
+func (s *RunInstancesRequest) SetPrivatePoolOptions(v *RunInstancesRequestPrivatePoolOptions) *RunInstancesRequest {
+	s.PrivatePoolOptions = v
+	return s
+}
+
 type RunInstancesRequestSystemDisk struct {
 	Size                 *string `json:"Size,omitempty" xml:"Size,omitempty"`
 	Category             *string `json:"Category,omitempty" xml:"Category,omitempty"`
@@ -14258,6 +15625,29 @@ func (s *RunInstancesRequestCpuOptions) SetThreadsPerCore(v int) *RunInstancesRe
 
 func (s *RunInstancesRequestCpuOptions) SetNuma(v string) *RunInstancesRequestCpuOptions {
 	s.Numa = &v
+	return s
+}
+
+type RunInstancesRequestPrivatePoolOptions struct {
+	MatchCriteria *string `json:"MatchCriteria,omitempty" xml:"MatchCriteria,omitempty"`
+	Id            *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s RunInstancesRequestPrivatePoolOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunInstancesRequestPrivatePoolOptions) GoString() string {
+	return s.String()
+}
+
+func (s *RunInstancesRequestPrivatePoolOptions) SetMatchCriteria(v string) *RunInstancesRequestPrivatePoolOptions {
+	s.MatchCriteria = &v
+	return s
+}
+
+func (s *RunInstancesRequestPrivatePoolOptions) SetId(v string) *RunInstancesRequestPrivatePoolOptions {
+	s.Id = &v
 	return s
 }
 
@@ -19384,6 +20774,9 @@ type DescribePriceRequest struct {
 	Scope                   *string                         `json:"Scope,omitempty" xml:"Scope,omitempty"`
 	Platform                *string                         `json:"Platform,omitempty" xml:"Platform,omitempty"`
 	Capacity                *int                            `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	AssuranceTimes          *string                         `json:"AssuranceTimes,omitempty" xml:"AssuranceTimes,omitempty"`
+	InstanceCpuCoreCount    *int                            `json:"InstanceCpuCoreCount,omitempty" xml:"InstanceCpuCoreCount,omitempty"`
+	InstanceTypeList        []*string                       `json:"InstanceTypeList,omitempty" xml:"InstanceTypeList,omitempty" type:"Repeated"`
 }
 
 func (s DescribePriceRequest) String() string {
@@ -19481,6 +20874,21 @@ func (s *DescribePriceRequest) SetPlatform(v string) *DescribePriceRequest {
 
 func (s *DescribePriceRequest) SetCapacity(v int) *DescribePriceRequest {
 	s.Capacity = &v
+	return s
+}
+
+func (s *DescribePriceRequest) SetAssuranceTimes(v string) *DescribePriceRequest {
+	s.AssuranceTimes = &v
+	return s
+}
+
+func (s *DescribePriceRequest) SetInstanceCpuCoreCount(v int) *DescribePriceRequest {
+	s.InstanceCpuCoreCount = &v
+	return s
+}
+
+func (s *DescribePriceRequest) SetInstanceTypeList(v []*string) *DescribePriceRequest {
+	s.InstanceTypeList = v
 	return s
 }
 
@@ -32346,7 +33754,8 @@ func (s *DescribeInstanceVncPasswdResponse) SetVncPasswd(v string) *DescribeInst
 }
 
 type DescribeInstanceTypesRequest struct {
-	InstanceTypeFamily *string `json:"InstanceTypeFamily,omitempty" xml:"InstanceTypeFamily,omitempty"`
+	InstanceTypeFamily *string   `json:"InstanceTypeFamily,omitempty" xml:"InstanceTypeFamily,omitempty"`
+	InstanceTypes      []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
 }
 
 func (s DescribeInstanceTypesRequest) String() string {
@@ -32359,6 +33768,11 @@ func (s DescribeInstanceTypesRequest) GoString() string {
 
 func (s *DescribeInstanceTypesRequest) SetInstanceTypeFamily(v string) *DescribeInstanceTypesRequest {
 	s.InstanceTypeFamily = &v
+	return s
+}
+
+func (s *DescribeInstanceTypesRequest) SetInstanceTypes(v []*string) *DescribeInstanceTypesRequest {
+	s.InstanceTypes = v
 	return s
 }
 
@@ -33055,6 +34469,7 @@ type DescribeInstancesResponseInstancesInstance struct {
 	GPUSpec                    *string                                                               `json:"GPUSpec,omitempty" xml:"GPUSpec,omitempty" require:"true"`
 	SpotStrategy               *string                                                               `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty" require:"true"`
 	SpotPriceLimit             *float32                                                              `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty" require:"true"`
+	SpotDuration               *int                                                                  `json:"SpotDuration,omitempty" xml:"SpotDuration,omitempty" require:"true"`
 	ResourceGroupId            *string                                                               `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty" require:"true"`
 	KeyPairName                *string                                                               `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty" require:"true"`
 	Recyclable                 *bool                                                                 `json:"Recyclable,omitempty" xml:"Recyclable,omitempty" require:"true"`
@@ -33273,6 +34688,11 @@ func (s *DescribeInstancesResponseInstancesInstance) SetSpotStrategy(v string) *
 
 func (s *DescribeInstancesResponseInstancesInstance) SetSpotPriceLimit(v float32) *DescribeInstancesResponseInstancesInstance {
 	s.SpotPriceLimit = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseInstancesInstance) SetSpotDuration(v int) *DescribeInstancesResponseInstancesInstance {
+	s.SpotDuration = &v
 	return s
 }
 
@@ -37046,6 +38466,7 @@ type CreateSecurityGroupRequest struct {
 	SecurityGroupName *string                          `json:"SecurityGroupName,omitempty" xml:"SecurityGroupName,omitempty"`
 	VpcId             *string                          `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	SecurityGroupType *string                          `json:"SecurityGroupType,omitempty" xml:"SecurityGroupType,omitempty"`
+	ServiceManaged    *bool                            `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
 	Tag               []*CreateSecurityGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	ResourceGroupId   *string                          `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
@@ -37085,6 +38506,11 @@ func (s *CreateSecurityGroupRequest) SetVpcId(v string) *CreateSecurityGroupRequ
 
 func (s *CreateSecurityGroupRequest) SetSecurityGroupType(v string) *CreateSecurityGroupRequest {
 	s.SecurityGroupType = &v
+	return s
+}
+
+func (s *CreateSecurityGroupRequest) SetServiceManaged(v bool) *CreateSecurityGroupRequest {
+	s.ServiceManaged = &v
 	return s
 }
 
@@ -37238,61 +38664,62 @@ func (s *CreateRouteEntryResponse) SetRequestId(v string) *CreateRouteEntryRespo
 }
 
 type CreateInstanceRequest struct {
-	RegionId                    *string                          `json:"RegionId,omitempty" xml:"RegionId,omitempty" require:"true"`
-	ImageId                     *string                          `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageFamily                 *string                          `json:"ImageFamily,omitempty" xml:"ImageFamily,omitempty"`
-	InstanceType                *string                          `json:"InstanceType,omitempty" xml:"InstanceType,omitempty" require:"true"`
-	SecurityGroupId             *string                          `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	InstanceName                *string                          `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InternetChargeType          *string                          `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	AutoRenew                   *bool                            `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	AutoRenewPeriod             *int                             `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
-	InternetMaxBandwidthIn      *int                             `json:"InternetMaxBandwidthIn,omitempty" xml:"InternetMaxBandwidthIn,omitempty"`
-	InternetMaxBandwidthOut     *int                             `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
-	HostName                    *string                          `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	Password                    *string                          `json:"Password,omitempty" xml:"Password,omitempty"`
-	PasswordInherit             *bool                            `json:"PasswordInherit,omitempty" xml:"PasswordInherit,omitempty"`
-	DeploymentSetId             *string                          `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
-	DeploymentSetGroupNo        *int                             `json:"DeploymentSetGroupNo,omitempty" xml:"DeploymentSetGroupNo,omitempty"`
-	ZoneId                      *string                          `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	ClusterId                   *string                          `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClientToken                 *string                          `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	VlanId                      *string                          `json:"VlanId,omitempty" xml:"VlanId,omitempty"`
-	InnerIpAddress              *string                          `json:"InnerIpAddress,omitempty" xml:"InnerIpAddress,omitempty"`
-	SystemDisk                  *CreateInstanceRequestSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
-	DataDisk                    []*CreateInstanceRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
-	Arn                         []*CreateInstanceRequestArn      `json:"Arn,omitempty" xml:"Arn,omitempty" type:"Repeated"`
-	NodeControllerId            *string                          `json:"NodeControllerId,omitempty" xml:"NodeControllerId,omitempty"`
-	Description                 *string                          `json:"Description,omitempty" xml:"Description,omitempty"`
-	VSwitchId                   *string                          `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	PrivateIpAddress            *string                          `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	IoOptimized                 *string                          `json:"IoOptimized,omitempty" xml:"IoOptimized,omitempty"`
-	UseAdditionalService        *bool                            `json:"UseAdditionalService,omitempty" xml:"UseAdditionalService,omitempty"`
-	InstanceChargeType          *string                          `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	Period                      *int                             `json:"Period,omitempty" xml:"Period,omitempty"`
-	PeriodUnit                  *string                          `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	Tag                         []*CreateInstanceRequestTag      `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	UserData                    *string                          `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	SpotStrategy                *string                          `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
-	KeyPairName                 *string                          `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	SpotPriceLimit              *float32                         `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty"`
-	SpotDuration                *int                             `json:"SpotDuration,omitempty" xml:"SpotDuration,omitempty"`
-	SpotInterruptionBehavior    *string                          `json:"SpotInterruptionBehavior,omitempty" xml:"SpotInterruptionBehavior,omitempty"`
-	RamRoleName                 *string                          `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
-	SecurityEnhancementStrategy *string                          `json:"SecurityEnhancementStrategy,omitempty" xml:"SecurityEnhancementStrategy,omitempty"`
-	ResourceGroupId             *string                          `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	HpcClusterId                *string                          `json:"HpcClusterId,omitempty" xml:"HpcClusterId,omitempty"`
-	DryRun                      *bool                            `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	DedicatedHostId             *string                          `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
-	CreditSpecification         *string                          `json:"CreditSpecification,omitempty" xml:"CreditSpecification,omitempty"`
-	DeletionProtection          *bool                            `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	Affinity                    *string                          `json:"Affinity,omitempty" xml:"Affinity,omitempty"`
-	Tenancy                     *string                          `json:"Tenancy,omitempty" xml:"Tenancy,omitempty"`
-	StorageSetId                *string                          `json:"StorageSetId,omitempty" xml:"StorageSetId,omitempty"`
-	StorageSetPartitionNumber   *int                             `json:"StorageSetPartitionNumber,omitempty" xml:"StorageSetPartitionNumber,omitempty"`
-	HttpEndpoint                *string                          `json:"HttpEndpoint,omitempty" xml:"HttpEndpoint,omitempty"`
-	HttpTokens                  *string                          `json:"HttpTokens,omitempty" xml:"HttpTokens,omitempty"`
-	HttpPutResponseHopLimit     *int                             `json:"HttpPutResponseHopLimit,omitempty" xml:"HttpPutResponseHopLimit,omitempty"`
+	RegionId                    *string                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty" require:"true"`
+	ImageId                     *string                                  `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageFamily                 *string                                  `json:"ImageFamily,omitempty" xml:"ImageFamily,omitempty"`
+	InstanceType                *string                                  `json:"InstanceType,omitempty" xml:"InstanceType,omitempty" require:"true"`
+	SecurityGroupId             *string                                  `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	InstanceName                *string                                  `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InternetChargeType          *string                                  `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	AutoRenew                   *bool                                    `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	AutoRenewPeriod             *int                                     `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
+	InternetMaxBandwidthIn      *int                                     `json:"InternetMaxBandwidthIn,omitempty" xml:"InternetMaxBandwidthIn,omitempty"`
+	InternetMaxBandwidthOut     *int                                     `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
+	HostName                    *string                                  `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	Password                    *string                                  `json:"Password,omitempty" xml:"Password,omitempty"`
+	PasswordInherit             *bool                                    `json:"PasswordInherit,omitempty" xml:"PasswordInherit,omitempty"`
+	DeploymentSetId             *string                                  `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
+	DeploymentSetGroupNo        *int                                     `json:"DeploymentSetGroupNo,omitempty" xml:"DeploymentSetGroupNo,omitempty"`
+	ZoneId                      *string                                  `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ClusterId                   *string                                  `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClientToken                 *string                                  `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	VlanId                      *string                                  `json:"VlanId,omitempty" xml:"VlanId,omitempty"`
+	InnerIpAddress              *string                                  `json:"InnerIpAddress,omitempty" xml:"InnerIpAddress,omitempty"`
+	SystemDisk                  *CreateInstanceRequestSystemDisk         `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
+	DataDisk                    []*CreateInstanceRequestDataDisk         `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
+	Arn                         []*CreateInstanceRequestArn              `json:"Arn,omitempty" xml:"Arn,omitempty" type:"Repeated"`
+	NodeControllerId            *string                                  `json:"NodeControllerId,omitempty" xml:"NodeControllerId,omitempty"`
+	Description                 *string                                  `json:"Description,omitempty" xml:"Description,omitempty"`
+	VSwitchId                   *string                                  `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	PrivateIpAddress            *string                                  `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	IoOptimized                 *string                                  `json:"IoOptimized,omitempty" xml:"IoOptimized,omitempty"`
+	UseAdditionalService        *bool                                    `json:"UseAdditionalService,omitempty" xml:"UseAdditionalService,omitempty"`
+	InstanceChargeType          *string                                  `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	Period                      *int                                     `json:"Period,omitempty" xml:"Period,omitempty"`
+	PeriodUnit                  *string                                  `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	Tag                         []*CreateInstanceRequestTag              `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	UserData                    *string                                  `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	SpotStrategy                *string                                  `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
+	KeyPairName                 *string                                  `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	SpotPriceLimit              *float32                                 `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty"`
+	SpotDuration                *int                                     `json:"SpotDuration,omitempty" xml:"SpotDuration,omitempty"`
+	SpotInterruptionBehavior    *string                                  `json:"SpotInterruptionBehavior,omitempty" xml:"SpotInterruptionBehavior,omitempty"`
+	RamRoleName                 *string                                  `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
+	SecurityEnhancementStrategy *string                                  `json:"SecurityEnhancementStrategy,omitempty" xml:"SecurityEnhancementStrategy,omitempty"`
+	ResourceGroupId             *string                                  `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	HpcClusterId                *string                                  `json:"HpcClusterId,omitempty" xml:"HpcClusterId,omitempty"`
+	DryRun                      *bool                                    `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	DedicatedHostId             *string                                  `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
+	CreditSpecification         *string                                  `json:"CreditSpecification,omitempty" xml:"CreditSpecification,omitempty"`
+	DeletionProtection          *bool                                    `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	Affinity                    *string                                  `json:"Affinity,omitempty" xml:"Affinity,omitempty"`
+	Tenancy                     *string                                  `json:"Tenancy,omitempty" xml:"Tenancy,omitempty"`
+	StorageSetId                *string                                  `json:"StorageSetId,omitempty" xml:"StorageSetId,omitempty"`
+	StorageSetPartitionNumber   *int                                     `json:"StorageSetPartitionNumber,omitempty" xml:"StorageSetPartitionNumber,omitempty"`
+	HttpEndpoint                *string                                  `json:"HttpEndpoint,omitempty" xml:"HttpEndpoint,omitempty"`
+	HttpTokens                  *string                                  `json:"HttpTokens,omitempty" xml:"HttpTokens,omitempty"`
+	HttpPutResponseHopLimit     *int                                     `json:"HttpPutResponseHopLimit,omitempty" xml:"HttpPutResponseHopLimit,omitempty"`
+	PrivatePoolOptions          *CreateInstanceRequestPrivatePoolOptions `json:"PrivatePoolOptions,omitempty" xml:"PrivatePoolOptions,omitempty" type:"Struct"`
 }
 
 func (s CreateInstanceRequest) String() string {
@@ -37578,6 +39005,11 @@ func (s *CreateInstanceRequest) SetHttpPutResponseHopLimit(v int) *CreateInstanc
 	return s
 }
 
+func (s *CreateInstanceRequest) SetPrivatePoolOptions(v *CreateInstanceRequestPrivatePoolOptions) *CreateInstanceRequest {
+	s.PrivatePoolOptions = v
+	return s
+}
+
 type CreateInstanceRequestSystemDisk struct {
 	Size             *int    `json:"Size,omitempty" xml:"Size,omitempty"`
 	Category         *string `json:"Category,omitempty" xml:"Category,omitempty"`
@@ -37745,6 +39177,29 @@ func (s *CreateInstanceRequestTag) SetValue(v string) *CreateInstanceRequestTag 
 
 func (s *CreateInstanceRequestTag) SetKey(v string) *CreateInstanceRequestTag {
 	s.Key = &v
+	return s
+}
+
+type CreateInstanceRequestPrivatePoolOptions struct {
+	MatchCriteria *string `json:"MatchCriteria,omitempty" xml:"MatchCriteria,omitempty"`
+	Id            *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s CreateInstanceRequestPrivatePoolOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceRequestPrivatePoolOptions) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceRequestPrivatePoolOptions) SetMatchCriteria(v string) *CreateInstanceRequestPrivatePoolOptions {
+	s.MatchCriteria = &v
+	return s
+}
+
+func (s *CreateInstanceRequestPrivatePoolOptions) SetId(v string) *CreateInstanceRequestPrivatePoolOptions {
+	s.Id = &v
 	return s
 }
 
@@ -38884,6 +40339,256 @@ func (client *Client) Init(config *rpc.Config) (_err error) {
 	}
 
 	return nil
+}
+
+func (client *Client) ReleaseCapacityReservationWithOptions(request *ReleaseCapacityReservationRequest, runtime *util.RuntimeOptions) (_result *ReleaseCapacityReservationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &ReleaseCapacityReservationResponse{}
+	_body, _err := client.DoRequest(tea.String("ReleaseCapacityReservation"), tea.String("HTTPS"), tea.String("POST"), tea.String("2014-05-26"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ReleaseCapacityReservation(request *ReleaseCapacityReservationRequest) (_result *ReleaseCapacityReservationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ReleaseCapacityReservationResponse{}
+	_body, _err := client.ReleaseCapacityReservationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeCapacityReservationsWithOptions(request *DescribeCapacityReservationsRequest, runtime *util.RuntimeOptions) (_result *DescribeCapacityReservationsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &DescribeCapacityReservationsResponse{}
+	_body, _err := client.DoRequest(tea.String("DescribeCapacityReservations"), tea.String("HTTPS"), tea.String("POST"), tea.String("2014-05-26"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeCapacityReservations(request *DescribeCapacityReservationsRequest) (_result *DescribeCapacityReservationsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCapacityReservationsResponse{}
+	_body, _err := client.DescribeCapacityReservationsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeCapacityReservationInstancesWithOptions(request *DescribeCapacityReservationInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeCapacityReservationInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &DescribeCapacityReservationInstancesResponse{}
+	_body, _err := client.DoRequest(tea.String("DescribeCapacityReservationInstances"), tea.String("HTTPS"), tea.String("POST"), tea.String("2014-05-26"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeCapacityReservationInstances(request *DescribeCapacityReservationInstancesRequest) (_result *DescribeCapacityReservationInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCapacityReservationInstancesResponse{}
+	_body, _err := client.DescribeCapacityReservationInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateCapacityReservationWithOptions(request *CreateCapacityReservationRequest, runtime *util.RuntimeOptions) (_result *CreateCapacityReservationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &CreateCapacityReservationResponse{}
+	_body, _err := client.DoRequest(tea.String("CreateCapacityReservation"), tea.String("HTTPS"), tea.String("POST"), tea.String("2014-05-26"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateCapacityReservation(request *CreateCapacityReservationRequest) (_result *CreateCapacityReservationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateCapacityReservationResponse{}
+	_body, _err := client.CreateCapacityReservationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StartElasticityAssuranceWithOptions(request *StartElasticityAssuranceRequest, runtime *util.RuntimeOptions) (_result *StartElasticityAssuranceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &StartElasticityAssuranceResponse{}
+	_body, _err := client.DoRequest(tea.String("StartElasticityAssurance"), tea.String("HTTPS"), tea.String("POST"), tea.String("2014-05-26"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StartElasticityAssurance(request *StartElasticityAssuranceRequest) (_result *StartElasticityAssuranceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartElasticityAssuranceResponse{}
+	_body, _err := client.StartElasticityAssuranceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyInstanceAttachmentAttributesWithOptions(request *ModifyInstanceAttachmentAttributesRequest, runtime *util.RuntimeOptions) (_result *ModifyInstanceAttachmentAttributesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &ModifyInstanceAttachmentAttributesResponse{}
+	_body, _err := client.DoRequest(tea.String("ModifyInstanceAttachmentAttributes"), tea.String("HTTPS"), tea.String("POST"), tea.String("2014-05-26"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyInstanceAttachmentAttributes(request *ModifyInstanceAttachmentAttributesRequest) (_result *ModifyInstanceAttachmentAttributesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyInstanceAttachmentAttributesResponse{}
+	_body, _err := client.ModifyInstanceAttachmentAttributesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeInstanceAttachmentAttributesWithOptions(request *DescribeInstanceAttachmentAttributesRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceAttachmentAttributesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &DescribeInstanceAttachmentAttributesResponse{}
+	_body, _err := client.DoRequest(tea.String("DescribeInstanceAttachmentAttributes"), tea.String("HTTPS"), tea.String("POST"), tea.String("2014-05-26"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeInstanceAttachmentAttributes(request *DescribeInstanceAttachmentAttributesRequest) (_result *DescribeInstanceAttachmentAttributesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeInstanceAttachmentAttributesResponse{}
+	_body, _err := client.DescribeInstanceAttachmentAttributesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeElasticityAssurancesWithOptions(request *DescribeElasticityAssurancesRequest, runtime *util.RuntimeOptions) (_result *DescribeElasticityAssurancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &DescribeElasticityAssurancesResponse{}
+	_body, _err := client.DoRequest(tea.String("DescribeElasticityAssurances"), tea.String("HTTPS"), tea.String("POST"), tea.String("2014-05-26"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeElasticityAssurances(request *DescribeElasticityAssurancesRequest) (_result *DescribeElasticityAssurancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeElasticityAssurancesResponse{}
+	_body, _err := client.DescribeElasticityAssurancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeElasticityAssuranceInstancesWithOptions(request *DescribeElasticityAssuranceInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeElasticityAssuranceInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &DescribeElasticityAssuranceInstancesResponse{}
+	_body, _err := client.DoRequest(tea.String("DescribeElasticityAssuranceInstances"), tea.String("HTTPS"), tea.String("POST"), tea.String("2014-05-26"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeElasticityAssuranceInstances(request *DescribeElasticityAssuranceInstancesRequest) (_result *DescribeElasticityAssuranceInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeElasticityAssuranceInstancesResponse{}
+	_body, _err := client.DescribeElasticityAssuranceInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateElasticityAssuranceWithOptions(request *CreateElasticityAssuranceRequest, runtime *util.RuntimeOptions) (_result *CreateElasticityAssuranceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &CreateElasticityAssuranceResponse{}
+	_body, _err := client.DoRequest(tea.String("CreateElasticityAssurance"), tea.String("HTTPS"), tea.String("POST"), tea.String("2014-05-26"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateElasticityAssurance(request *CreateElasticityAssuranceRequest) (_result *CreateElasticityAssuranceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateElasticityAssuranceResponse{}
+	_body, _err := client.CreateElasticityAssuranceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
 }
 
 func (client *Client) SendFileWithOptions(request *SendFileRequest, runtime *util.RuntimeOptions) (_result *SendFileResponse, _err error) {
