@@ -1,0 +1,3 @@
+2020-11-12 Version: v1.0.0
+- Generated golang 2020-07-06 for Actiontrail.
+
