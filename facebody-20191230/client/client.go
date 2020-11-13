@@ -14,6 +14,172 @@ import (
 	"io"
 )
 
+type CountCrowdRequest struct {
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty" require:"true"`
+	IsShow   *bool   `json:"IsShow,omitempty" xml:"IsShow,omitempty"`
+}
+
+func (s CountCrowdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CountCrowdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CountCrowdRequest) SetImageURL(v string) *CountCrowdRequest {
+	s.ImageURL = &v
+	return s
+}
+
+func (s *CountCrowdRequest) SetIsShow(v bool) *CountCrowdRequest {
+	s.IsShow = &v
+	return s
+}
+
+type CountCrowdResponse struct {
+	RequestId *string                 `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Data      *CountCrowdResponseData `json:"Data,omitempty" xml:"Data,omitempty" require:"true" type:"Struct"`
+}
+
+func (s CountCrowdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CountCrowdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CountCrowdResponse) SetRequestId(v string) *CountCrowdResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CountCrowdResponse) SetData(v *CountCrowdResponseData) *CountCrowdResponse {
+	s.Data = v
+	return s
+}
+
+type CountCrowdResponseData struct {
+	PeopleNumber *int    `json:"PeopleNumber,omitempty" xml:"PeopleNumber,omitempty" require:"true"`
+	HotMap       *string `json:"HotMap,omitempty" xml:"HotMap,omitempty" require:"true"`
+}
+
+func (s CountCrowdResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CountCrowdResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *CountCrowdResponseData) SetPeopleNumber(v int) *CountCrowdResponseData {
+	s.PeopleNumber = &v
+	return s
+}
+
+func (s *CountCrowdResponseData) SetHotMap(v string) *CountCrowdResponseData {
+	s.HotMap = &v
+	return s
+}
+
+type CountCrowdAdvanceRequest struct {
+	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	IsShow         *bool     `json:"IsShow,omitempty" xml:"IsShow,omitempty"`
+}
+
+func (s CountCrowdAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CountCrowdAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CountCrowdAdvanceRequest) SetImageURLObject(v io.Reader) *CountCrowdAdvanceRequest {
+	s.ImageURLObject = v
+	return s
+}
+
+func (s *CountCrowdAdvanceRequest) SetIsShow(v bool) *CountCrowdAdvanceRequest {
+	s.IsShow = &v
+	return s
+}
+
+type GenerateHumanAnimeStyleRequest struct {
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty" require:"true"`
+}
+
+func (s GenerateHumanAnimeStyleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateHumanAnimeStyleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateHumanAnimeStyleRequest) SetImageURL(v string) *GenerateHumanAnimeStyleRequest {
+	s.ImageURL = &v
+	return s
+}
+
+type GenerateHumanAnimeStyleResponse struct {
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Data      *GenerateHumanAnimeStyleResponseData `json:"Data,omitempty" xml:"Data,omitempty" require:"true" type:"Struct"`
+}
+
+func (s GenerateHumanAnimeStyleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateHumanAnimeStyleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateHumanAnimeStyleResponse) SetRequestId(v string) *GenerateHumanAnimeStyleResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GenerateHumanAnimeStyleResponse) SetData(v *GenerateHumanAnimeStyleResponseData) *GenerateHumanAnimeStyleResponse {
+	s.Data = v
+	return s
+}
+
+type GenerateHumanAnimeStyleResponseData struct {
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty" require:"true"`
+}
+
+func (s GenerateHumanAnimeStyleResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateHumanAnimeStyleResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateHumanAnimeStyleResponseData) SetImageURL(v string) *GenerateHumanAnimeStyleResponseData {
+	s.ImageURL = &v
+	return s
+}
+
+type GenerateHumanAnimeStyleAdvanceRequest struct {
+	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+}
+
+func (s GenerateHumanAnimeStyleAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateHumanAnimeStyleAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateHumanAnimeStyleAdvanceRequest) SetImageURLObject(v io.Reader) *GenerateHumanAnimeStyleAdvanceRequest {
+	s.ImageURLObject = v
+	return s
+}
+
 type PedestrianDetectAttributeRequest struct {
 	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty" require:"true"`
 }
@@ -993,8 +1159,9 @@ func (s *BlurFaceAdvanceRequest) SetImageURLObject(v io.Reader) *BlurFaceAdvance
 }
 
 type ExtractPedestrianFeatureAttributeRequest struct {
-	Mode     *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty" require:"true"`
+	Mode     *string                                            `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	ImageURL *string                                            `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	UrlList  []*ExtractPedestrianFeatureAttributeRequestUrlList `json:"UrlList,omitempty" xml:"UrlList,omitempty" type:"Repeated"`
 }
 
 func (s ExtractPedestrianFeatureAttributeRequest) String() string {
@@ -1012,6 +1179,28 @@ func (s *ExtractPedestrianFeatureAttributeRequest) SetMode(v string) *ExtractPed
 
 func (s *ExtractPedestrianFeatureAttributeRequest) SetImageURL(v string) *ExtractPedestrianFeatureAttributeRequest {
 	s.ImageURL = &v
+	return s
+}
+
+func (s *ExtractPedestrianFeatureAttributeRequest) SetUrlList(v []*ExtractPedestrianFeatureAttributeRequestUrlList) *ExtractPedestrianFeatureAttributeRequest {
+	s.UrlList = v
+	return s
+}
+
+type ExtractPedestrianFeatureAttributeRequestUrlList struct {
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s ExtractPedestrianFeatureAttributeRequestUrlList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExtractPedestrianFeatureAttributeRequestUrlList) GoString() string {
+	return s.String()
+}
+
+func (s *ExtractPedestrianFeatureAttributeRequestUrlList) SetUrl(v string) *ExtractPedestrianFeatureAttributeRequestUrlList {
+	s.Url = &v
 	return s
 }
 
@@ -1039,24 +1228,25 @@ func (s *ExtractPedestrianFeatureAttributeResponse) SetData(v *ExtractPedestrian
 }
 
 type ExtractPedestrianFeatureAttributeResponseData struct {
-	ObjType         *string  `json:"ObjType,omitempty" xml:"ObjType,omitempty" require:"true"`
-	ObjTypeScore    *float32 `json:"ObjTypeScore,omitempty" xml:"ObjTypeScore,omitempty" require:"true"`
-	Feature         *string  `json:"Feature,omitempty" xml:"Feature,omitempty" require:"true"`
-	QualityScore    *float32 `json:"QualityScore,omitempty" xml:"QualityScore,omitempty" require:"true"`
-	UpperColor      *string  `json:"UpperColor,omitempty" xml:"UpperColor,omitempty" require:"true"`
-	UpperColorScore *float32 `json:"UpperColorScore,omitempty" xml:"UpperColorScore,omitempty" require:"true"`
-	UpperType       *string  `json:"UpperType,omitempty" xml:"UpperType,omitempty" require:"true"`
-	UpperTypeScore  *float32 `json:"UpperTypeScore,omitempty" xml:"UpperTypeScore,omitempty" require:"true"`
-	LowerColor      *string  `json:"LowerColor,omitempty" xml:"LowerColor,omitempty" require:"true"`
-	LowerColorScore *float32 `json:"LowerColorScore,omitempty" xml:"LowerColorScore,omitempty" require:"true"`
-	LowerType       *string  `json:"LowerType,omitempty" xml:"LowerType,omitempty" require:"true"`
-	LowerTypeScore  *float32 `json:"LowerTypeScore,omitempty" xml:"LowerTypeScore,omitempty" require:"true"`
-	Gender          *string  `json:"Gender,omitempty" xml:"Gender,omitempty" require:"true"`
-	GenderScore     *float32 `json:"GenderScore,omitempty" xml:"GenderScore,omitempty" require:"true"`
-	Hair            *string  `json:"Hair,omitempty" xml:"Hair,omitempty" require:"true"`
-	HairScore       *float32 `json:"HairScore,omitempty" xml:"HairScore,omitempty" require:"true"`
-	Age             *string  `json:"Age,omitempty" xml:"Age,omitempty" require:"true"`
-	AgeScore        *float32 `json:"AgeScore,omitempty" xml:"AgeScore,omitempty" require:"true"`
+	ObjType         *string                                                  `json:"ObjType,omitempty" xml:"ObjType,omitempty" require:"true"`
+	ObjTypeScore    *float32                                                 `json:"ObjTypeScore,omitempty" xml:"ObjTypeScore,omitempty" require:"true"`
+	Feature         *string                                                  `json:"Feature,omitempty" xml:"Feature,omitempty" require:"true"`
+	QualityScore    *float32                                                 `json:"QualityScore,omitempty" xml:"QualityScore,omitempty" require:"true"`
+	UpperColor      *string                                                  `json:"UpperColor,omitempty" xml:"UpperColor,omitempty" require:"true"`
+	UpperColorScore *float32                                                 `json:"UpperColorScore,omitempty" xml:"UpperColorScore,omitempty" require:"true"`
+	UpperType       *string                                                  `json:"UpperType,omitempty" xml:"UpperType,omitempty" require:"true"`
+	UpperTypeScore  *float32                                                 `json:"UpperTypeScore,omitempty" xml:"UpperTypeScore,omitempty" require:"true"`
+	LowerColor      *string                                                  `json:"LowerColor,omitempty" xml:"LowerColor,omitempty" require:"true"`
+	LowerColorScore *float32                                                 `json:"LowerColorScore,omitempty" xml:"LowerColorScore,omitempty" require:"true"`
+	LowerType       *string                                                  `json:"LowerType,omitempty" xml:"LowerType,omitempty" require:"true"`
+	LowerTypeScore  *float32                                                 `json:"LowerTypeScore,omitempty" xml:"LowerTypeScore,omitempty" require:"true"`
+	Gender          *string                                                  `json:"Gender,omitempty" xml:"Gender,omitempty" require:"true"`
+	GenderScore     *float32                                                 `json:"GenderScore,omitempty" xml:"GenderScore,omitempty" require:"true"`
+	Hair            *string                                                  `json:"Hair,omitempty" xml:"Hair,omitempty" require:"true"`
+	HairScore       *float32                                                 `json:"HairScore,omitempty" xml:"HairScore,omitempty" require:"true"`
+	Age             *string                                                  `json:"Age,omitempty" xml:"Age,omitempty" require:"true"`
+	AgeScore        *float32                                                 `json:"AgeScore,omitempty" xml:"AgeScore,omitempty" require:"true"`
+	Elements        []*ExtractPedestrianFeatureAttributeResponseDataElements `json:"Elements,omitempty" xml:"Elements,omitempty" require:"true" type:"Repeated"`
 }
 
 func (s ExtractPedestrianFeatureAttributeResponseData) String() string {
@@ -1153,6 +1343,130 @@ func (s *ExtractPedestrianFeatureAttributeResponseData) SetAge(v string) *Extrac
 }
 
 func (s *ExtractPedestrianFeatureAttributeResponseData) SetAgeScore(v float32) *ExtractPedestrianFeatureAttributeResponseData {
+	s.AgeScore = &v
+	return s
+}
+
+func (s *ExtractPedestrianFeatureAttributeResponseData) SetElements(v []*ExtractPedestrianFeatureAttributeResponseDataElements) *ExtractPedestrianFeatureAttributeResponseData {
+	s.Elements = v
+	return s
+}
+
+type ExtractPedestrianFeatureAttributeResponseDataElements struct {
+	ObjType         *string  `json:"ObjType,omitempty" xml:"ObjType,omitempty" require:"true"`
+	ObjTypeScore    *float32 `json:"ObjTypeScore,omitempty" xml:"ObjTypeScore,omitempty" require:"true"`
+	Feature         *string  `json:"Feature,omitempty" xml:"Feature,omitempty" require:"true"`
+	QualityScore    *float32 `json:"QualityScore,omitempty" xml:"QualityScore,omitempty" require:"true"`
+	UpperColor      *string  `json:"UpperColor,omitempty" xml:"UpperColor,omitempty" require:"true"`
+	UpperColorScore *float32 `json:"UpperColorScore,omitempty" xml:"UpperColorScore,omitempty" require:"true"`
+	UpperType       *string  `json:"UpperType,omitempty" xml:"UpperType,omitempty" require:"true"`
+	UpperTypeScore  *float32 `json:"UpperTypeScore,omitempty" xml:"UpperTypeScore,omitempty" require:"true"`
+	LowerColor      *string  `json:"LowerColor,omitempty" xml:"LowerColor,omitempty" require:"true"`
+	LowerColorScore *float32 `json:"LowerColorScore,omitempty" xml:"LowerColorScore,omitempty" require:"true"`
+	LowerType       *string  `json:"LowerType,omitempty" xml:"LowerType,omitempty" require:"true"`
+	LowerTypeScore  *float32 `json:"LowerTypeScore,omitempty" xml:"LowerTypeScore,omitempty" require:"true"`
+	Gender          *string  `json:"Gender,omitempty" xml:"Gender,omitempty" require:"true"`
+	GenderScore     *float32 `json:"GenderScore,omitempty" xml:"GenderScore,omitempty" require:"true"`
+	Hair            *string  `json:"Hair,omitempty" xml:"Hair,omitempty" require:"true"`
+	HairScore       *float32 `json:"HairScore,omitempty" xml:"HairScore,omitempty" require:"true"`
+	Age             *string  `json:"Age,omitempty" xml:"Age,omitempty" require:"true"`
+	AgeScore        *float32 `json:"AgeScore,omitempty" xml:"AgeScore,omitempty" require:"true"`
+}
+
+func (s ExtractPedestrianFeatureAttributeResponseDataElements) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExtractPedestrianFeatureAttributeResponseDataElements) GoString() string {
+	return s.String()
+}
+
+func (s *ExtractPedestrianFeatureAttributeResponseDataElements) SetObjType(v string) *ExtractPedestrianFeatureAttributeResponseDataElements {
+	s.ObjType = &v
+	return s
+}
+
+func (s *ExtractPedestrianFeatureAttributeResponseDataElements) SetObjTypeScore(v float32) *ExtractPedestrianFeatureAttributeResponseDataElements {
+	s.ObjTypeScore = &v
+	return s
+}
+
+func (s *ExtractPedestrianFeatureAttributeResponseDataElements) SetFeature(v string) *ExtractPedestrianFeatureAttributeResponseDataElements {
+	s.Feature = &v
+	return s
+}
+
+func (s *ExtractPedestrianFeatureAttributeResponseDataElements) SetQualityScore(v float32) *ExtractPedestrianFeatureAttributeResponseDataElements {
+	s.QualityScore = &v
+	return s
+}
+
+func (s *ExtractPedestrianFeatureAttributeResponseDataElements) SetUpperColor(v string) *ExtractPedestrianFeatureAttributeResponseDataElements {
+	s.UpperColor = &v
+	return s
+}
+
+func (s *ExtractPedestrianFeatureAttributeResponseDataElements) SetUpperColorScore(v float32) *ExtractPedestrianFeatureAttributeResponseDataElements {
+	s.UpperColorScore = &v
+	return s
+}
+
+func (s *ExtractPedestrianFeatureAttributeResponseDataElements) SetUpperType(v string) *ExtractPedestrianFeatureAttributeResponseDataElements {
+	s.UpperType = &v
+	return s
+}
+
+func (s *ExtractPedestrianFeatureAttributeResponseDataElements) SetUpperTypeScore(v float32) *ExtractPedestrianFeatureAttributeResponseDataElements {
+	s.UpperTypeScore = &v
+	return s
+}
+
+func (s *ExtractPedestrianFeatureAttributeResponseDataElements) SetLowerColor(v string) *ExtractPedestrianFeatureAttributeResponseDataElements {
+	s.LowerColor = &v
+	return s
+}
+
+func (s *ExtractPedestrianFeatureAttributeResponseDataElements) SetLowerColorScore(v float32) *ExtractPedestrianFeatureAttributeResponseDataElements {
+	s.LowerColorScore = &v
+	return s
+}
+
+func (s *ExtractPedestrianFeatureAttributeResponseDataElements) SetLowerType(v string) *ExtractPedestrianFeatureAttributeResponseDataElements {
+	s.LowerType = &v
+	return s
+}
+
+func (s *ExtractPedestrianFeatureAttributeResponseDataElements) SetLowerTypeScore(v float32) *ExtractPedestrianFeatureAttributeResponseDataElements {
+	s.LowerTypeScore = &v
+	return s
+}
+
+func (s *ExtractPedestrianFeatureAttributeResponseDataElements) SetGender(v string) *ExtractPedestrianFeatureAttributeResponseDataElements {
+	s.Gender = &v
+	return s
+}
+
+func (s *ExtractPedestrianFeatureAttributeResponseDataElements) SetGenderScore(v float32) *ExtractPedestrianFeatureAttributeResponseDataElements {
+	s.GenderScore = &v
+	return s
+}
+
+func (s *ExtractPedestrianFeatureAttributeResponseDataElements) SetHair(v string) *ExtractPedestrianFeatureAttributeResponseDataElements {
+	s.Hair = &v
+	return s
+}
+
+func (s *ExtractPedestrianFeatureAttributeResponseDataElements) SetHairScore(v float32) *ExtractPedestrianFeatureAttributeResponseDataElements {
+	s.HairScore = &v
+	return s
+}
+
+func (s *ExtractPedestrianFeatureAttributeResponseDataElements) SetAge(v string) *ExtractPedestrianFeatureAttributeResponseDataElements {
+	s.Age = &v
+	return s
+}
+
+func (s *ExtractPedestrianFeatureAttributeResponseDataElements) SetAgeScore(v float32) *ExtractPedestrianFeatureAttributeResponseDataElements {
 	s.AgeScore = &v
 	return s
 }
@@ -4650,6 +4964,208 @@ func (client *Client) Init(config *rpc.Config) (_err error) {
 	}
 
 	return nil
+}
+
+func (client *Client) CountCrowd(request *CountCrowdRequest, runtime *util.RuntimeOptions) (_result *CountCrowdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &CountCrowdResponse{}
+	_body, _err := client.DoRequest(tea.String("CountCrowd"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-12-30"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CountCrowdAdvance(request *CountCrowdAdvanceRequest, runtime *util.RuntimeOptions) (_result *CountCrowdResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("facebody"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	rpcutil.Convert(runtime, ossRuntime)
+	countCrowdreq := &CountCrowdRequest{}
+	rpcutil.Convert(request, countCrowdreq)
+	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	ossConfig.AccessKeyId = authResponse.AccessKeyId
+	ossConfig.Endpoint = rpcutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+	ossClient, _err = oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	fileObj = &fileform.FileField{
+		Filename:    authResponse.ObjectKey,
+		Content:     request.ImageURLObject,
+		ContentType: tea.String(""),
+	}
+	ossHeader = &oss.PostObjectRequestHeader{
+		AccessKeyId:         authResponse.AccessKeyId,
+		Policy:              authResponse.EncodedPolicy,
+		Signature:           authResponse.Signature,
+		Key:                 authResponse.ObjectKey,
+		File:                fileObj,
+		SuccessActionStatus: tea.String("201"),
+	}
+	uploadRequest = &oss.PostObjectRequest{
+		BucketName: authResponse.Bucket,
+		Header:     ossHeader,
+	}
+	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+	if _err != nil {
+		return _result, _err
+	}
+	countCrowdreq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	countCrowdResp, _err := client.CountCrowd(countCrowdreq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = countCrowdResp
+	return _result, _err
+}
+
+func (client *Client) GenerateHumanAnimeStyle(request *GenerateHumanAnimeStyleRequest, runtime *util.RuntimeOptions) (_result *GenerateHumanAnimeStyleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &GenerateHumanAnimeStyleResponse{}
+	_body, _err := client.DoRequest(tea.String("GenerateHumanAnimeStyle"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-12-30"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GenerateHumanAnimeStyleAdvance(request *GenerateHumanAnimeStyleAdvanceRequest, runtime *util.RuntimeOptions) (_result *GenerateHumanAnimeStyleResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("facebody"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	rpcutil.Convert(runtime, ossRuntime)
+	generateHumanAnimeStylereq := &GenerateHumanAnimeStyleRequest{}
+	rpcutil.Convert(request, generateHumanAnimeStylereq)
+	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	ossConfig.AccessKeyId = authResponse.AccessKeyId
+	ossConfig.Endpoint = rpcutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+	ossClient, _err = oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	fileObj = &fileform.FileField{
+		Filename:    authResponse.ObjectKey,
+		Content:     request.ImageURLObject,
+		ContentType: tea.String(""),
+	}
+	ossHeader = &oss.PostObjectRequestHeader{
+		AccessKeyId:         authResponse.AccessKeyId,
+		Policy:              authResponse.EncodedPolicy,
+		Signature:           authResponse.Signature,
+		Key:                 authResponse.ObjectKey,
+		File:                fileObj,
+		SuccessActionStatus: tea.String("201"),
+	}
+	uploadRequest = &oss.PostObjectRequest{
+		BucketName: authResponse.Bucket,
+		Header:     ossHeader,
+	}
+	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+	if _err != nil {
+		return _result, _err
+	}
+	generateHumanAnimeStylereq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	generateHumanAnimeStyleResp, _err := client.GenerateHumanAnimeStyle(generateHumanAnimeStylereq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = generateHumanAnimeStyleResp
+	return _result, _err
 }
 
 func (client *Client) PedestrianDetectAttribute(request *PedestrianDetectAttributeRequest, runtime *util.RuntimeOptions) (_result *PedestrianDetectAttributeResponse, _err error) {
