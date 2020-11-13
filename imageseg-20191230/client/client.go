@@ -14,6 +14,154 @@ import (
 	"io"
 )
 
+type SegmentHDSkyRequest struct {
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty" require:"true"`
+}
+
+func (s SegmentHDSkyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SegmentHDSkyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SegmentHDSkyRequest) SetImageURL(v string) *SegmentHDSkyRequest {
+	s.ImageURL = &v
+	return s
+}
+
+type SegmentHDSkyResponse struct {
+	RequestId *string                   `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Data      *SegmentHDSkyResponseData `json:"Data,omitempty" xml:"Data,omitempty" require:"true" type:"Struct"`
+}
+
+func (s SegmentHDSkyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SegmentHDSkyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SegmentHDSkyResponse) SetRequestId(v string) *SegmentHDSkyResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SegmentHDSkyResponse) SetData(v *SegmentHDSkyResponseData) *SegmentHDSkyResponse {
+	s.Data = v
+	return s
+}
+
+type SegmentHDSkyResponseData struct {
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty" require:"true"`
+}
+
+func (s SegmentHDSkyResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SegmentHDSkyResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *SegmentHDSkyResponseData) SetImageURL(v string) *SegmentHDSkyResponseData {
+	s.ImageURL = &v
+	return s
+}
+
+type SegmentHDSkyAdvanceRequest struct {
+	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+}
+
+func (s SegmentHDSkyAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SegmentHDSkyAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SegmentHDSkyAdvanceRequest) SetImageURLObject(v io.Reader) *SegmentHDSkyAdvanceRequest {
+	s.ImageURLObject = v
+	return s
+}
+
+type SegmentHDCommonImageRequest struct {
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty" require:"true"`
+}
+
+func (s SegmentHDCommonImageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SegmentHDCommonImageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SegmentHDCommonImageRequest) SetImageUrl(v string) *SegmentHDCommonImageRequest {
+	s.ImageUrl = &v
+	return s
+}
+
+type SegmentHDCommonImageResponse struct {
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Data      *SegmentHDCommonImageResponseData `json:"Data,omitempty" xml:"Data,omitempty" require:"true" type:"Struct"`
+}
+
+func (s SegmentHDCommonImageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SegmentHDCommonImageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SegmentHDCommonImageResponse) SetRequestId(v string) *SegmentHDCommonImageResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SegmentHDCommonImageResponse) SetData(v *SegmentHDCommonImageResponseData) *SegmentHDCommonImageResponse {
+	s.Data = v
+	return s
+}
+
+type SegmentHDCommonImageResponseData struct {
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty" require:"true"`
+}
+
+func (s SegmentHDCommonImageResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SegmentHDCommonImageResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *SegmentHDCommonImageResponseData) SetImageUrl(v string) *SegmentHDCommonImageResponseData {
+	s.ImageUrl = &v
+	return s
+}
+
+type SegmentHDCommonImageAdvanceRequest struct {
+	ImageUrlObject io.Reader `json:"ImageUrlObject,omitempty" xml:"ImageUrlObject,omitempty" require:"true"`
+}
+
+func (s SegmentHDCommonImageAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SegmentHDCommonImageAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SegmentHDCommonImageAdvanceRequest) SetImageUrlObject(v io.Reader) *SegmentHDCommonImageAdvanceRequest {
+	s.ImageUrlObject = v
+	return s
+}
+
 type SegmentSkinRequest struct {
 	URL *string `json:"URL,omitempty" xml:"URL,omitempty" require:"true"`
 }
@@ -1789,6 +1937,208 @@ func (client *Client) Init(config *rpc.Config) (_err error) {
 	}
 
 	return nil
+}
+
+func (client *Client) SegmentHDSky(request *SegmentHDSkyRequest, runtime *util.RuntimeOptions) (_result *SegmentHDSkyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &SegmentHDSkyResponse{}
+	_body, _err := client.DoRequest(tea.String("SegmentHDSky"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-12-30"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SegmentHDSkyAdvance(request *SegmentHDSkyAdvanceRequest, runtime *util.RuntimeOptions) (_result *SegmentHDSkyResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("imageseg"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	rpcutil.Convert(runtime, ossRuntime)
+	segmentHDSkyreq := &SegmentHDSkyRequest{}
+	rpcutil.Convert(request, segmentHDSkyreq)
+	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	ossConfig.AccessKeyId = authResponse.AccessKeyId
+	ossConfig.Endpoint = rpcutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+	ossClient, _err = oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	fileObj = &fileform.FileField{
+		Filename:    authResponse.ObjectKey,
+		Content:     request.ImageURLObject,
+		ContentType: tea.String(""),
+	}
+	ossHeader = &oss.PostObjectRequestHeader{
+		AccessKeyId:         authResponse.AccessKeyId,
+		Policy:              authResponse.EncodedPolicy,
+		Signature:           authResponse.Signature,
+		Key:                 authResponse.ObjectKey,
+		File:                fileObj,
+		SuccessActionStatus: tea.String("201"),
+	}
+	uploadRequest = &oss.PostObjectRequest{
+		BucketName: authResponse.Bucket,
+		Header:     ossHeader,
+	}
+	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+	if _err != nil {
+		return _result, _err
+	}
+	segmentHDSkyreq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	segmentHDSkyResp, _err := client.SegmentHDSky(segmentHDSkyreq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = segmentHDSkyResp
+	return _result, _err
+}
+
+func (client *Client) SegmentHDCommonImage(request *SegmentHDCommonImageRequest, runtime *util.RuntimeOptions) (_result *SegmentHDCommonImageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &SegmentHDCommonImageResponse{}
+	_body, _err := client.DoRequest(tea.String("SegmentHDCommonImage"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-12-30"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SegmentHDCommonImageAdvance(request *SegmentHDCommonImageAdvanceRequest, runtime *util.RuntimeOptions) (_result *SegmentHDCommonImageResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("imageseg"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	rpcutil.Convert(runtime, ossRuntime)
+	segmentHDCommonImagereq := &SegmentHDCommonImageRequest{}
+	rpcutil.Convert(request, segmentHDCommonImagereq)
+	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	ossConfig.AccessKeyId = authResponse.AccessKeyId
+	ossConfig.Endpoint = rpcutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+	ossClient, _err = oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	fileObj = &fileform.FileField{
+		Filename:    authResponse.ObjectKey,
+		Content:     request.ImageUrlObject,
+		ContentType: tea.String(""),
+	}
+	ossHeader = &oss.PostObjectRequestHeader{
+		AccessKeyId:         authResponse.AccessKeyId,
+		Policy:              authResponse.EncodedPolicy,
+		Signature:           authResponse.Signature,
+		Key:                 authResponse.ObjectKey,
+		File:                fileObj,
+		SuccessActionStatus: tea.String("201"),
+	}
+	uploadRequest = &oss.PostObjectRequest{
+		BucketName: authResponse.Bucket,
+		Header:     ossHeader,
+	}
+	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+	if _err != nil {
+		return _result, _err
+	}
+	segmentHDCommonImagereq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	segmentHDCommonImageResp, _err := client.SegmentHDCommonImage(segmentHDCommonImagereq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = segmentHDCommonImageResp
+	return _result, _err
 }
 
 func (client *Client) SegmentSkin(request *SegmentSkinRequest, runtime *util.RuntimeOptions) (_result *SegmentSkinResponse, _err error) {
