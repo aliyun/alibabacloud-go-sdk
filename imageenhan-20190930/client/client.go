@@ -14,6 +14,92 @@ import (
 	"io"
 )
 
+type ErasePersonRequest struct {
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty" require:"true"`
+	UserMask *string `json:"UserMask,omitempty" xml:"UserMask,omitempty" require:"true"`
+}
+
+func (s ErasePersonRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ErasePersonRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ErasePersonRequest) SetImageURL(v string) *ErasePersonRequest {
+	s.ImageURL = &v
+	return s
+}
+
+func (s *ErasePersonRequest) SetUserMask(v string) *ErasePersonRequest {
+	s.UserMask = &v
+	return s
+}
+
+type ErasePersonResponse struct {
+	RequestId *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Data      *ErasePersonResponseData `json:"Data,omitempty" xml:"Data,omitempty" require:"true" type:"Struct"`
+}
+
+func (s ErasePersonResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ErasePersonResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ErasePersonResponse) SetRequestId(v string) *ErasePersonResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ErasePersonResponse) SetData(v *ErasePersonResponseData) *ErasePersonResponse {
+	s.Data = v
+	return s
+}
+
+type ErasePersonResponseData struct {
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty" require:"true"`
+}
+
+func (s ErasePersonResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ErasePersonResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *ErasePersonResponseData) SetImageUrl(v string) *ErasePersonResponseData {
+	s.ImageUrl = &v
+	return s
+}
+
+type ErasePersonAdvanceRequest struct {
+	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	UserMask       *string   `json:"UserMask,omitempty" xml:"UserMask,omitempty" require:"true"`
+}
+
+func (s ErasePersonAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ErasePersonAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ErasePersonAdvanceRequest) SetImageURLObject(v io.Reader) *ErasePersonAdvanceRequest {
+	s.ImageURLObject = v
+	return s
+}
+
+func (s *ErasePersonAdvanceRequest) SetUserMask(v string) *ErasePersonAdvanceRequest {
+	s.UserMask = &v
+	return s
+}
+
 type GenerateDynamicImageRequest struct {
 	Url       *string `json:"Url,omitempty" xml:"Url,omitempty" require:"true"`
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty" require:"true"`
@@ -1764,6 +1850,107 @@ func (client *Client) Init(config *rpc.Config) (_err error) {
 	}
 
 	return nil
+}
+
+func (client *Client) ErasePerson(request *ErasePersonRequest, runtime *util.RuntimeOptions) (_result *ErasePersonResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &ErasePersonResponse{}
+	_body, _err := client.DoRequest(tea.String("ErasePerson"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-09-30"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ErasePersonAdvance(request *ErasePersonAdvanceRequest, runtime *util.RuntimeOptions) (_result *ErasePersonResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("imageenhan"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	rpcutil.Convert(runtime, ossRuntime)
+	erasePersonreq := &ErasePersonRequest{}
+	rpcutil.Convert(request, erasePersonreq)
+	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	ossConfig.AccessKeyId = authResponse.AccessKeyId
+	ossConfig.Endpoint = rpcutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+	ossClient, _err = oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	fileObj = &fileform.FileField{
+		Filename:    authResponse.ObjectKey,
+		Content:     request.ImageURLObject,
+		ContentType: tea.String(""),
+	}
+	ossHeader = &oss.PostObjectRequestHeader{
+		AccessKeyId:         authResponse.AccessKeyId,
+		Policy:              authResponse.EncodedPolicy,
+		Signature:           authResponse.Signature,
+		Key:                 authResponse.ObjectKey,
+		File:                fileObj,
+		SuccessActionStatus: tea.String("201"),
+	}
+	uploadRequest = &oss.PostObjectRequest{
+		BucketName: authResponse.Bucket,
+		Header:     ossHeader,
+	}
+	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+	if _err != nil {
+		return _result, _err
+	}
+	erasePersonreq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	erasePersonResp, _err := client.ErasePerson(erasePersonreq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = erasePersonResp
+	return _result, _err
 }
 
 func (client *Client) GenerateDynamicImage(request *GenerateDynamicImageRequest, runtime *util.RuntimeOptions) (_result *GenerateDynamicImageResponse, _err error) {
