@@ -15034,6 +15034,7 @@ type RunInstancesRequest struct {
 	HttpTokens                  *string                                `json:"HttpTokens,omitempty" xml:"HttpTokens,omitempty"`
 	HttpPutResponseHopLimit     *int                                   `json:"HttpPutResponseHopLimit,omitempty" xml:"HttpPutResponseHopLimit,omitempty"`
 	PrivatePoolOptions          *RunInstancesRequestPrivatePoolOptions `json:"PrivatePoolOptions,omitempty" xml:"PrivatePoolOptions,omitempty" type:"Struct"`
+	Isp                         *string                                `json:"Isp,omitempty" xml:"Isp,omitempty"`
 }
 
 func (s RunInstancesRequest) String() string {
@@ -15361,6 +15362,11 @@ func (s *RunInstancesRequest) SetHttpPutResponseHopLimit(v int) *RunInstancesReq
 
 func (s *RunInstancesRequest) SetPrivatePoolOptions(v *RunInstancesRequestPrivatePoolOptions) *RunInstancesRequest {
 	s.PrivatePoolOptions = v
+	return s
+}
+
+func (s *RunInstancesRequest) SetIsp(v string) *RunInstancesRequest {
+	s.Isp = &v
 	return s
 }
 
@@ -20777,6 +20783,7 @@ type DescribePriceRequest struct {
 	AssuranceTimes          *string                         `json:"AssuranceTimes,omitempty" xml:"AssuranceTimes,omitempty"`
 	InstanceCpuCoreCount    *int                            `json:"InstanceCpuCoreCount,omitempty" xml:"InstanceCpuCoreCount,omitempty"`
 	InstanceTypeList        []*string                       `json:"InstanceTypeList,omitempty" xml:"InstanceTypeList,omitempty" type:"Repeated"`
+	Isp                     *string                         `json:"Isp,omitempty" xml:"Isp,omitempty"`
 }
 
 func (s DescribePriceRequest) String() string {
@@ -20889,6 +20896,11 @@ func (s *DescribePriceRequest) SetInstanceCpuCoreCount(v int) *DescribePriceRequ
 
 func (s *DescribePriceRequest) SetInstanceTypeList(v []*string) *DescribePriceRequest {
 	s.InstanceTypeList = v
+	return s
+}
+
+func (s *DescribePriceRequest) SetIsp(v string) *DescribePriceRequest {
+	s.Isp = &v
 	return s
 }
 
@@ -30600,6 +30612,7 @@ type ModifyInstanceNetworkSpecRequest struct {
 	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" require:"true"`
 	InternetMaxBandwidthOut *int    `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
 	InternetMaxBandwidthIn  *int    `json:"InternetMaxBandwidthIn,omitempty" xml:"InternetMaxBandwidthIn,omitempty"`
+	ISP                     *string `json:"ISP,omitempty" xml:"ISP,omitempty"`
 	NetworkChargeType       *string `json:"NetworkChargeType,omitempty" xml:"NetworkChargeType,omitempty"`
 	AllocatePublicIp        *bool   `json:"AllocatePublicIp,omitempty" xml:"AllocatePublicIp,omitempty"`
 	StartTime               *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
@@ -30628,6 +30641,11 @@ func (s *ModifyInstanceNetworkSpecRequest) SetInternetMaxBandwidthOut(v int) *Mo
 
 func (s *ModifyInstanceNetworkSpecRequest) SetInternetMaxBandwidthIn(v int) *ModifyInstanceNetworkSpecRequest {
 	s.InternetMaxBandwidthIn = &v
+	return s
+}
+
+func (s *ModifyInstanceNetworkSpecRequest) SetISP(v string) *ModifyInstanceNetworkSpecRequest {
+	s.ISP = &v
 	return s
 }
 
@@ -34477,6 +34495,7 @@ type DescribeInstancesResponseInstancesInstance struct {
 	StoppedMode                *string                                                               `json:"StoppedMode,omitempty" xml:"StoppedMode,omitempty" require:"true"`
 	CreditSpecification        *string                                                               `json:"CreditSpecification,omitempty" xml:"CreditSpecification,omitempty" require:"true"`
 	DeletionProtection         *bool                                                                 `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty" require:"true"`
+	ISP                        *string                                                               `json:"ISP,omitempty" xml:"ISP,omitempty" require:"true"`
 	NetworkInterfaces          *DescribeInstancesResponseInstancesInstanceNetworkInterfaces          `json:"NetworkInterfaces,omitempty" xml:"NetworkInterfaces,omitempty" require:"true" type:"Struct"`
 	OperationLocks             *DescribeInstancesResponseInstancesInstanceOperationLocks             `json:"OperationLocks,omitempty" xml:"OperationLocks,omitempty" require:"true" type:"Struct"`
 	Tags                       *DescribeInstancesResponseInstancesInstanceTags                       `json:"Tags,omitempty" xml:"Tags,omitempty" require:"true" type:"Struct"`
@@ -34728,6 +34747,11 @@ func (s *DescribeInstancesResponseInstancesInstance) SetCreditSpecification(v st
 
 func (s *DescribeInstancesResponseInstancesInstance) SetDeletionProtection(v bool) *DescribeInstancesResponseInstancesInstance {
 	s.DeletionProtection = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseInstancesInstance) SetISP(v string) *DescribeInstancesResponseInstancesInstance {
+	s.ISP = &v
 	return s
 }
 
