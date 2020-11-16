@@ -6509,6 +6509,8 @@ type FindGatewaysRequest struct {
 	PageNumber *string `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 	// pageSize
 	PageSize *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// namespace
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
 }
 
 func (s FindGatewaysRequest) String() string {
@@ -6551,6 +6553,11 @@ func (s *FindGatewaysRequest) SetPageNumber(v string) *FindGatewaysRequest {
 
 func (s *FindGatewaysRequest) SetPageSize(v string) *FindGatewaysRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *FindGatewaysRequest) SetNamespace(v string) *FindGatewaysRequest {
+	s.Namespace = &v
 	return s
 }
 
@@ -9078,9 +9085,6 @@ func (client *Client) FindApisByPagingWithOptions(gatewayId *string, request *Fi
 	return _result, _err
 }
 
-/**
- * findGateways
- */
 func (client *Client) FindGateways(request *FindGatewaysRequest) (_result *FindGatewaysResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9125,6 +9129,10 @@ func (client *Client) FindGatewaysWithOptions(request *FindGatewaysRequest, head
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["namespace"] = request.Namespace
 	}
 
 	req := &openapi.OpenApiRequest{
