@@ -8,6 +8,452 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type GetDagRequest struct {
+	DagId      *int64  `json:"DagId,omitempty" xml:"DagId,omitempty" require:"true"`
+	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty" require:"true"`
+}
+
+func (s GetDagRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDagRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDagRequest) SetDagId(v int64) *GetDagRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *GetDagRequest) SetProjectEnv(v string) *GetDagRequest {
+	s.ProjectEnv = &v
+	return s
+}
+
+type GetDagResponse struct {
+	Success        *bool               `json:"Success,omitempty" xml:"Success,omitempty" require:"true"`
+	HttpStatusCode *int                `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty" require:"true"`
+	ErrorCode      *string             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty" require:"true"`
+	ErrorMessage   *string             `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty" require:"true"`
+	RequestId      *string             `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Data           *GetDagResponseData `json:"Data,omitempty" xml:"Data,omitempty" require:"true" type:"Struct"`
+}
+
+func (s GetDagResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDagResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDagResponse) SetSuccess(v bool) *GetDagResponse {
+	s.Success = &v
+	return s
+}
+
+func (s *GetDagResponse) SetHttpStatusCode(v int) *GetDagResponse {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetDagResponse) SetErrorCode(v string) *GetDagResponse {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetDagResponse) SetErrorMessage(v string) *GetDagResponse {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetDagResponse) SetRequestId(v string) *GetDagResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDagResponse) SetData(v *GetDagResponseData) *GetDagResponse {
+	s.Data = v
+	return s
+}
+
+type GetDagResponseData struct {
+	ProjectId  *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty" require:"true"`
+	DagId      *int64  `json:"DagId,omitempty" xml:"DagId,omitempty" require:"true"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty" require:"true"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty" require:"true"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty" require:"true"`
+	Bizdate    *int64  `json:"Bizdate,omitempty" xml:"Bizdate,omitempty" require:"true"`
+	Gmtdate    *int64  `json:"Gmtdate,omitempty" xml:"Gmtdate,omitempty" require:"true"`
+	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty" require:"true"`
+	FinishTime *int64  `json:"FinishTime,omitempty" xml:"FinishTime,omitempty" require:"true"`
+	CreateTime *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty" require:"true"`
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty" require:"true"`
+	ModifyTime *int64  `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty" require:"true"`
+}
+
+func (s GetDagResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDagResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *GetDagResponseData) SetProjectId(v int64) *GetDagResponseData {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetDagResponseData) SetDagId(v int64) *GetDagResponseData {
+	s.DagId = &v
+	return s
+}
+
+func (s *GetDagResponseData) SetName(v string) *GetDagResponseData {
+	s.Name = &v
+	return s
+}
+
+func (s *GetDagResponseData) SetType(v string) *GetDagResponseData {
+	s.Type = &v
+	return s
+}
+
+func (s *GetDagResponseData) SetStatus(v string) *GetDagResponseData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetDagResponseData) SetBizdate(v int64) *GetDagResponseData {
+	s.Bizdate = &v
+	return s
+}
+
+func (s *GetDagResponseData) SetGmtdate(v int64) *GetDagResponseData {
+	s.Gmtdate = &v
+	return s
+}
+
+func (s *GetDagResponseData) SetStartTime(v int64) *GetDagResponseData {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetDagResponseData) SetFinishTime(v int64) *GetDagResponseData {
+	s.FinishTime = &v
+	return s
+}
+
+func (s *GetDagResponseData) SetCreateTime(v int64) *GetDagResponseData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetDagResponseData) SetCreateUser(v string) *GetDagResponseData {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *GetDagResponseData) SetModifyTime(v int64) *GetDagResponseData {
+	s.ModifyTime = &v
+	return s
+}
+
+type SearchNodesByOutputRequest struct {
+	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty" require:"true"`
+	Outputs    *string `json:"Outputs,omitempty" xml:"Outputs,omitempty" require:"true"`
+}
+
+func (s SearchNodesByOutputRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchNodesByOutputRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SearchNodesByOutputRequest) SetProjectEnv(v string) *SearchNodesByOutputRequest {
+	s.ProjectEnv = &v
+	return s
+}
+
+func (s *SearchNodesByOutputRequest) SetOutputs(v string) *SearchNodesByOutputRequest {
+	s.Outputs = &v
+	return s
+}
+
+type SearchNodesByOutputResponse struct {
+	Success        *bool                  `json:"Success,omitempty" xml:"Success,omitempty" require:"true"`
+	HttpStatusCode *int                   `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty" require:"true"`
+	ErrorCode      *string                `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty" require:"true"`
+	ErrorMessage   *string                `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty" require:"true"`
+	RequestId      *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Data           map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty" require:"true"`
+}
+
+func (s SearchNodesByOutputResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchNodesByOutputResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SearchNodesByOutputResponse) SetSuccess(v bool) *SearchNodesByOutputResponse {
+	s.Success = &v
+	return s
+}
+
+func (s *SearchNodesByOutputResponse) SetHttpStatusCode(v int) *SearchNodesByOutputResponse {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *SearchNodesByOutputResponse) SetErrorCode(v string) *SearchNodesByOutputResponse {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *SearchNodesByOutputResponse) SetErrorMessage(v string) *SearchNodesByOutputResponse {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *SearchNodesByOutputResponse) SetRequestId(v string) *SearchNodesByOutputResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SearchNodesByOutputResponse) SetData(v map[string]interface{}) *SearchNodesByOutputResponse {
+	s.Data = v
+	return s
+}
+
+type GetManualDagInstancesRequest struct {
+	ProjectEnv  *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty" require:"true"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty" require:"true"`
+	DagId       *string `json:"DagId,omitempty" xml:"DagId,omitempty" require:"true"`
+}
+
+func (s GetManualDagInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetManualDagInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetManualDagInstancesRequest) SetProjectEnv(v string) *GetManualDagInstancesRequest {
+	s.ProjectEnv = &v
+	return s
+}
+
+func (s *GetManualDagInstancesRequest) SetProjectName(v string) *GetManualDagInstancesRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *GetManualDagInstancesRequest) SetDagId(v string) *GetManualDagInstancesRequest {
+	s.DagId = &v
+	return s
+}
+
+type GetManualDagInstancesResponse struct {
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Instances []*GetManualDagInstancesResponseInstances `json:"Instances,omitempty" xml:"Instances,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s GetManualDagInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetManualDagInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetManualDagInstancesResponse) SetRequestId(v string) *GetManualDagInstancesResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetManualDagInstancesResponse) SetInstances(v []*GetManualDagInstancesResponseInstances) *GetManualDagInstancesResponse {
+	s.Instances = v
+	return s
+}
+
+type GetManualDagInstancesResponseInstances struct {
+	NodeId            *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty" require:"true"`
+	InstanceId        *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" require:"true"`
+	DagId             *int64  `json:"DagId,omitempty" xml:"DagId,omitempty" require:"true"`
+	DagType           *string `json:"DagType,omitempty" xml:"DagType,omitempty" require:"true"`
+	Status            *string `json:"Status,omitempty" xml:"Status,omitempty" require:"true"`
+	BizDate           *int64  `json:"BizDate,omitempty" xml:"BizDate,omitempty" require:"true"`
+	CycTime           *int64  `json:"CycTime,omitempty" xml:"CycTime,omitempty" require:"true"`
+	CreateTime        *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty" require:"true"`
+	ModifyTime        *int64  `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty" require:"true"`
+	NodeName          *string `json:"NodeName,omitempty" xml:"NodeName,omitempty" require:"true"`
+	BeginWaitTimeTime *int64  `json:"BeginWaitTimeTime,omitempty" xml:"BeginWaitTimeTime,omitempty" require:"true"`
+	BeginWaitResTime  *int64  `json:"BeginWaitResTime,omitempty" xml:"BeginWaitResTime,omitempty" require:"true"`
+	BeginRunningTime  *int64  `json:"BeginRunningTime,omitempty" xml:"BeginRunningTime,omitempty" require:"true"`
+	ParamValues       *string `json:"ParamValues,omitempty" xml:"ParamValues,omitempty" require:"true"`
+	FinishTime        *int64  `json:"FinishTime,omitempty" xml:"FinishTime,omitempty" require:"true"`
+}
+
+func (s GetManualDagInstancesResponseInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetManualDagInstancesResponseInstances) GoString() string {
+	return s.String()
+}
+
+func (s *GetManualDagInstancesResponseInstances) SetNodeId(v int64) *GetManualDagInstancesResponseInstances {
+	s.NodeId = &v
+	return s
+}
+
+func (s *GetManualDagInstancesResponseInstances) SetInstanceId(v int64) *GetManualDagInstancesResponseInstances {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetManualDagInstancesResponseInstances) SetDagId(v int64) *GetManualDagInstancesResponseInstances {
+	s.DagId = &v
+	return s
+}
+
+func (s *GetManualDagInstancesResponseInstances) SetDagType(v string) *GetManualDagInstancesResponseInstances {
+	s.DagType = &v
+	return s
+}
+
+func (s *GetManualDagInstancesResponseInstances) SetStatus(v string) *GetManualDagInstancesResponseInstances {
+	s.Status = &v
+	return s
+}
+
+func (s *GetManualDagInstancesResponseInstances) SetBizDate(v int64) *GetManualDagInstancesResponseInstances {
+	s.BizDate = &v
+	return s
+}
+
+func (s *GetManualDagInstancesResponseInstances) SetCycTime(v int64) *GetManualDagInstancesResponseInstances {
+	s.CycTime = &v
+	return s
+}
+
+func (s *GetManualDagInstancesResponseInstances) SetCreateTime(v int64) *GetManualDagInstancesResponseInstances {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetManualDagInstancesResponseInstances) SetModifyTime(v int64) *GetManualDagInstancesResponseInstances {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *GetManualDagInstancesResponseInstances) SetNodeName(v string) *GetManualDagInstancesResponseInstances {
+	s.NodeName = &v
+	return s
+}
+
+func (s *GetManualDagInstancesResponseInstances) SetBeginWaitTimeTime(v int64) *GetManualDagInstancesResponseInstances {
+	s.BeginWaitTimeTime = &v
+	return s
+}
+
+func (s *GetManualDagInstancesResponseInstances) SetBeginWaitResTime(v int64) *GetManualDagInstancesResponseInstances {
+	s.BeginWaitResTime = &v
+	return s
+}
+
+func (s *GetManualDagInstancesResponseInstances) SetBeginRunningTime(v int64) *GetManualDagInstancesResponseInstances {
+	s.BeginRunningTime = &v
+	return s
+}
+
+func (s *GetManualDagInstancesResponseInstances) SetParamValues(v string) *GetManualDagInstancesResponseInstances {
+	s.ParamValues = &v
+	return s
+}
+
+func (s *GetManualDagInstancesResponseInstances) SetFinishTime(v int64) *GetManualDagInstancesResponseInstances {
+	s.FinishTime = &v
+	return s
+}
+
+type CreateManualDagRequest struct {
+	ProjectEnv     *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty" require:"true"`
+	ProjectName    *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty" require:"true"`
+	FlowName       *string `json:"FlowName,omitempty" xml:"FlowName,omitempty" require:"true"`
+	BizDate        *string `json:"BizDate,omitempty" xml:"BizDate,omitempty" require:"true"`
+	NodeParameters *string `json:"NodeParameters,omitempty" xml:"NodeParameters,omitempty"`
+	DagParameters  *string `json:"DagParameters,omitempty" xml:"DagParameters,omitempty"`
+}
+
+func (s CreateManualDagRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateManualDagRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateManualDagRequest) SetProjectEnv(v string) *CreateManualDagRequest {
+	s.ProjectEnv = &v
+	return s
+}
+
+func (s *CreateManualDagRequest) SetProjectName(v string) *CreateManualDagRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateManualDagRequest) SetFlowName(v string) *CreateManualDagRequest {
+	s.FlowName = &v
+	return s
+}
+
+func (s *CreateManualDagRequest) SetBizDate(v string) *CreateManualDagRequest {
+	s.BizDate = &v
+	return s
+}
+
+func (s *CreateManualDagRequest) SetNodeParameters(v string) *CreateManualDagRequest {
+	s.NodeParameters = &v
+	return s
+}
+
+func (s *CreateManualDagRequest) SetDagParameters(v string) *CreateManualDagRequest {
+	s.DagParameters = &v
+	return s
+}
+
+type CreateManualDagResponse struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	DagId     *int64  `json:"DagId,omitempty" xml:"DagId,omitempty" require:"true"`
+}
+
+func (s CreateManualDagResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateManualDagResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateManualDagResponse) SetRequestId(v string) *CreateManualDagResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateManualDagResponse) SetDagId(v int64) *CreateManualDagResponse {
+	s.DagId = &v
+	return s
+}
+
 type ListQualityResultsByEntityRequest struct {
 	EntityId    *int    `json:"EntityId,omitempty" xml:"EntityId,omitempty" require:"true"`
 	StartDate   *string `json:"StartDate,omitempty" xml:"StartDate,omitempty" require:"true"`
@@ -1408,6 +1854,7 @@ type CreateTableRequest struct {
 	EnvType           *int                         `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	Themes            []*CreateTableRequestThemes  `json:"Themes,omitempty" xml:"Themes,omitempty" type:"Repeated"`
 	AppGuid           *string                      `json:"AppGuid,omitempty" xml:"AppGuid,omitempty"`
+	Comment           *string                      `json:"Comment,omitempty" xml:"Comment,omitempty"`
 }
 
 func (s CreateTableRequest) String() string {
@@ -1495,6 +1942,11 @@ func (s *CreateTableRequest) SetThemes(v []*CreateTableRequestThemes) *CreateTab
 
 func (s *CreateTableRequest) SetAppGuid(v string) *CreateTableRequest {
 	s.AppGuid = &v
+	return s
+}
+
+func (s *CreateTableRequest) SetComment(v string) *CreateTableRequest {
+	s.Comment = &v
 	return s
 }
 
@@ -9978,6 +10430,7 @@ func (s *ListNodeIOResponse) SetData(v []*ListNodeIOResponseData) *ListNodeIORes
 type ListNodeIOResponseData struct {
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty" require:"true"`
 	Data      *string `json:"Data,omitempty" xml:"Data,omitempty" require:"true"`
+	NodeId    *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty" require:"true"`
 }
 
 func (s ListNodeIOResponseData) String() string {
@@ -9995,6 +10448,11 @@ func (s *ListNodeIOResponseData) SetTableName(v string) *ListNodeIOResponseData 
 
 func (s *ListNodeIOResponseData) SetData(v string) *ListNodeIOResponseData {
 	s.Data = &v
+	return s
+}
+
+func (s *ListNodeIOResponseData) SetNodeId(v int64) *ListNodeIOResponseData {
+	s.NodeId = &v
 	return s
 }
 
@@ -10504,17 +10962,24 @@ func (s *GetNodeResponse) SetData(v *GetNodeResponseData) *GetNodeResponse {
 }
 
 type GetNodeResponseData struct {
-	NodeId        *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty" require:"true"`
-	OwnerId       *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty" require:"true"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty" require:"true"`
-	ResGroupName  *string `json:"ResGroupName,omitempty" xml:"ResGroupName,omitempty" require:"true"`
-	NodeName      *string `json:"NodeName,omitempty" xml:"NodeName,omitempty" require:"true"`
-	CronExpress   *string `json:"CronExpress,omitempty" xml:"CronExpress,omitempty" require:"true"`
-	Repeatability *string `json:"Repeatability,omitempty" xml:"Repeatability,omitempty" require:"true"`
-	ProgramType   *string `json:"ProgramType,omitempty" xml:"ProgramType,omitempty" require:"true"`
-	ProjectId     *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty" require:"true"`
-	SchedulerType *string `json:"SchedulerType,omitempty" xml:"SchedulerType,omitempty" require:"true"`
-	ParamValues   *string `json:"ParamValues,omitempty" xml:"ParamValues,omitempty" require:"true"`
+	NodeId         *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty" require:"true"`
+	OwnerId        *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty" require:"true"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty" require:"true"`
+	ResGroupName   *string `json:"ResGroupName,omitempty" xml:"ResGroupName,omitempty" require:"true"`
+	NodeName       *string `json:"NodeName,omitempty" xml:"NodeName,omitempty" require:"true"`
+	CronExpress    *string `json:"CronExpress,omitempty" xml:"CronExpress,omitempty" require:"true"`
+	Repeatability  *string `json:"Repeatability,omitempty" xml:"Repeatability,omitempty" require:"true"`
+	ProgramType    *string `json:"ProgramType,omitempty" xml:"ProgramType,omitempty" require:"true"`
+	ProjectId      *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty" require:"true"`
+	SchedulerType  *string `json:"SchedulerType,omitempty" xml:"SchedulerType,omitempty" require:"true"`
+	ParamValues    *string `json:"ParamValues,omitempty" xml:"ParamValues,omitempty" require:"true"`
+	Priority       *int    `json:"Priority,omitempty" xml:"Priority,omitempty" require:"true"`
+	BaselineId     *int64  `json:"BaselineId,omitempty" xml:"BaselineId,omitempty" require:"true"`
+	RepeatInterval *int64  `json:"RepeatInterval,omitempty" xml:"RepeatInterval,omitempty" require:"true"`
+	Connection     *string `json:"Connection,omitempty" xml:"Connection,omitempty" require:"true"`
+	DqcType        *int    `json:"DqcType,omitempty" xml:"DqcType,omitempty" require:"true"`
+	DqcDescription *string `json:"DqcDescription,omitempty" xml:"DqcDescription,omitempty" require:"true"`
+	RelatedFlowId  *int64  `json:"RelatedFlowId,omitempty" xml:"RelatedFlowId,omitempty" require:"true"`
 }
 
 func (s GetNodeResponseData) String() string {
@@ -10577,6 +11042,41 @@ func (s *GetNodeResponseData) SetSchedulerType(v string) *GetNodeResponseData {
 
 func (s *GetNodeResponseData) SetParamValues(v string) *GetNodeResponseData {
 	s.ParamValues = &v
+	return s
+}
+
+func (s *GetNodeResponseData) SetPriority(v int) *GetNodeResponseData {
+	s.Priority = &v
+	return s
+}
+
+func (s *GetNodeResponseData) SetBaselineId(v int64) *GetNodeResponseData {
+	s.BaselineId = &v
+	return s
+}
+
+func (s *GetNodeResponseData) SetRepeatInterval(v int64) *GetNodeResponseData {
+	s.RepeatInterval = &v
+	return s
+}
+
+func (s *GetNodeResponseData) SetConnection(v string) *GetNodeResponseData {
+	s.Connection = &v
+	return s
+}
+
+func (s *GetNodeResponseData) SetDqcType(v int) *GetNodeResponseData {
+	s.DqcType = &v
+	return s
+}
+
+func (s *GetNodeResponseData) SetDqcDescription(v string) *GetNodeResponseData {
+	s.DqcDescription = &v
+	return s
+}
+
+func (s *GetNodeResponseData) SetRelatedFlowId(v int64) *GetNodeResponseData {
+	s.RelatedFlowId = &v
 	return s
 }
 
@@ -10722,17 +11222,24 @@ func (s *ListNodesResponseData) SetNodes(v []*ListNodesResponseDataNodes) *ListN
 }
 
 type ListNodesResponseDataNodes struct {
-	NodeId        *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty" require:"true"`
-	NodeName      *string `json:"NodeName,omitempty" xml:"NodeName,omitempty" require:"true"`
-	CronExpress   *string `json:"CronExpress,omitempty" xml:"CronExpress,omitempty" require:"true"`
-	SchedulerType *string `json:"SchedulerType,omitempty" xml:"SchedulerType,omitempty" require:"true"`
-	ProgramType   *string `json:"ProgramType,omitempty" xml:"ProgramType,omitempty" require:"true"`
-	OwnerId       *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty" require:"true"`
-	ProjectId     *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty" require:"true"`
-	Repeatability *bool   `json:"Repeatability,omitempty" xml:"Repeatability,omitempty" require:"true"`
-	ParamValues   *string `json:"ParamValues,omitempty" xml:"ParamValues,omitempty" require:"true"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty" require:"true"`
-	ResGroupName  *string `json:"ResGroupName,omitempty" xml:"ResGroupName,omitempty" require:"true"`
+	NodeId         *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty" require:"true"`
+	NodeName       *string `json:"NodeName,omitempty" xml:"NodeName,omitempty" require:"true"`
+	CronExpress    *string `json:"CronExpress,omitempty" xml:"CronExpress,omitempty" require:"true"`
+	SchedulerType  *string `json:"SchedulerType,omitempty" xml:"SchedulerType,omitempty" require:"true"`
+	ProgramType    *string `json:"ProgramType,omitempty" xml:"ProgramType,omitempty" require:"true"`
+	OwnerId        *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty" require:"true"`
+	ProjectId      *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty" require:"true"`
+	Repeatability  *bool   `json:"Repeatability,omitempty" xml:"Repeatability,omitempty" require:"true"`
+	ParamValues    *string `json:"ParamValues,omitempty" xml:"ParamValues,omitempty" require:"true"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty" require:"true"`
+	ResGroupName   *string `json:"ResGroupName,omitempty" xml:"ResGroupName,omitempty" require:"true"`
+	Priority       *int    `json:"Priority,omitempty" xml:"Priority,omitempty" require:"true"`
+	BaselineId     *int64  `json:"BaselineId,omitempty" xml:"BaselineId,omitempty" require:"true"`
+	RepeatInterval *int64  `json:"RepeatInterval,omitempty" xml:"RepeatInterval,omitempty" require:"true"`
+	Connection     *string `json:"Connection,omitempty" xml:"Connection,omitempty" require:"true"`
+	DqcType        *int    `json:"DqcType,omitempty" xml:"DqcType,omitempty" require:"true"`
+	DqcDescription *string `json:"DqcDescription,omitempty" xml:"DqcDescription,omitempty" require:"true"`
+	RelatedFlowId  *int64  `json:"RelatedFlowId,omitempty" xml:"RelatedFlowId,omitempty" require:"true"`
 }
 
 func (s ListNodesResponseDataNodes) String() string {
@@ -10795,6 +11302,41 @@ func (s *ListNodesResponseDataNodes) SetDescription(v string) *ListNodesResponse
 
 func (s *ListNodesResponseDataNodes) SetResGroupName(v string) *ListNodesResponseDataNodes {
 	s.ResGroupName = &v
+	return s
+}
+
+func (s *ListNodesResponseDataNodes) SetPriority(v int) *ListNodesResponseDataNodes {
+	s.Priority = &v
+	return s
+}
+
+func (s *ListNodesResponseDataNodes) SetBaselineId(v int64) *ListNodesResponseDataNodes {
+	s.BaselineId = &v
+	return s
+}
+
+func (s *ListNodesResponseDataNodes) SetRepeatInterval(v int64) *ListNodesResponseDataNodes {
+	s.RepeatInterval = &v
+	return s
+}
+
+func (s *ListNodesResponseDataNodes) SetConnection(v string) *ListNodesResponseDataNodes {
+	s.Connection = &v
+	return s
+}
+
+func (s *ListNodesResponseDataNodes) SetDqcType(v int) *ListNodesResponseDataNodes {
+	s.DqcType = &v
+	return s
+}
+
+func (s *ListNodesResponseDataNodes) SetDqcDescription(v string) *ListNodesResponseDataNodes {
+	s.DqcDescription = &v
+	return s
+}
+
+func (s *ListNodesResponseDataNodes) SetRelatedFlowId(v int64) *ListNodesResponseDataNodes {
+	s.RelatedFlowId = &v
 	return s
 }
 
@@ -12544,6 +13086,7 @@ type ListInstancesRequest struct {
 	ProgramType *string `json:"ProgramType,omitempty" xml:"ProgramType,omitempty"`
 	PageNumber  *int    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize    *int    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	DagId       *int64  `json:"DagId,omitempty" xml:"DagId,omitempty"`
 }
 
 func (s ListInstancesRequest) String() string {
@@ -12596,6 +13139,11 @@ func (s *ListInstancesRequest) SetPageNumber(v int) *ListInstancesRequest {
 
 func (s *ListInstancesRequest) SetPageSize(v int) *ListInstancesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetDagId(v int64) *ListInstancesRequest {
+	s.DagId = &v
 	return s
 }
 
@@ -12697,6 +13245,15 @@ type ListInstancesResponseDataInstances struct {
 	BeginRunningTime  *int64  `json:"BeginRunningTime,omitempty" xml:"BeginRunningTime,omitempty" require:"true"`
 	ParamValues       *string `json:"ParamValues,omitempty" xml:"ParamValues,omitempty" require:"true"`
 	FinishTime        *int64  `json:"FinishTime,omitempty" xml:"FinishTime,omitempty" require:"true"`
+	Priority          *int    `json:"Priority,omitempty" xml:"Priority,omitempty" require:"true"`
+	BaselineId        *int64  `json:"BaselineId,omitempty" xml:"BaselineId,omitempty" require:"true"`
+	Repeatability     *bool   `json:"Repeatability,omitempty" xml:"Repeatability,omitempty" require:"true"`
+	RepeatInterval    *int64  `json:"RepeatInterval,omitempty" xml:"RepeatInterval,omitempty" require:"true"`
+	Connection        *string `json:"Connection,omitempty" xml:"Connection,omitempty" require:"true"`
+	DqcType           *int    `json:"DqcType,omitempty" xml:"DqcType,omitempty" require:"true"`
+	DqcDescription    *string `json:"DqcDescription,omitempty" xml:"DqcDescription,omitempty" require:"true"`
+	ErrorMessage      *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty" require:"true"`
+	RelatedFlowId     *int64  `json:"RelatedFlowId,omitempty" xml:"RelatedFlowId,omitempty" require:"true"`
 }
 
 func (s ListInstancesResponseDataInstances) String() string {
@@ -12779,6 +13336,51 @@ func (s *ListInstancesResponseDataInstances) SetParamValues(v string) *ListInsta
 
 func (s *ListInstancesResponseDataInstances) SetFinishTime(v int64) *ListInstancesResponseDataInstances {
 	s.FinishTime = &v
+	return s
+}
+
+func (s *ListInstancesResponseDataInstances) SetPriority(v int) *ListInstancesResponseDataInstances {
+	s.Priority = &v
+	return s
+}
+
+func (s *ListInstancesResponseDataInstances) SetBaselineId(v int64) *ListInstancesResponseDataInstances {
+	s.BaselineId = &v
+	return s
+}
+
+func (s *ListInstancesResponseDataInstances) SetRepeatability(v bool) *ListInstancesResponseDataInstances {
+	s.Repeatability = &v
+	return s
+}
+
+func (s *ListInstancesResponseDataInstances) SetRepeatInterval(v int64) *ListInstancesResponseDataInstances {
+	s.RepeatInterval = &v
+	return s
+}
+
+func (s *ListInstancesResponseDataInstances) SetConnection(v string) *ListInstancesResponseDataInstances {
+	s.Connection = &v
+	return s
+}
+
+func (s *ListInstancesResponseDataInstances) SetDqcType(v int) *ListInstancesResponseDataInstances {
+	s.DqcType = &v
+	return s
+}
+
+func (s *ListInstancesResponseDataInstances) SetDqcDescription(v string) *ListInstancesResponseDataInstances {
+	s.DqcDescription = &v
+	return s
+}
+
+func (s *ListInstancesResponseDataInstances) SetErrorMessage(v string) *ListInstancesResponseDataInstances {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListInstancesResponseDataInstances) SetRelatedFlowId(v int64) *ListInstancesResponseDataInstances {
+	s.RelatedFlowId = &v
 	return s
 }
 
@@ -14741,6 +15343,15 @@ type GetInstanceResponseData struct {
 	CreateTime        *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty" require:"true"`
 	ModifyTime        *int64  `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty" require:"true"`
 	NodeName          *string `json:"NodeName,omitempty" xml:"NodeName,omitempty" require:"true"`
+	Priority          *int    `json:"Priority,omitempty" xml:"Priority,omitempty" require:"true"`
+	BaselineId        *int64  `json:"BaselineId,omitempty" xml:"BaselineId,omitempty" require:"true"`
+	Repeatability     *bool   `json:"Repeatability,omitempty" xml:"Repeatability,omitempty" require:"true"`
+	RepeatInterval    *int64  `json:"RepeatInterval,omitempty" xml:"RepeatInterval,omitempty" require:"true"`
+	Connection        *string `json:"Connection,omitempty" xml:"Connection,omitempty" require:"true"`
+	DqcType           *int    `json:"DqcType,omitempty" xml:"DqcType,omitempty" require:"true"`
+	DqcDescription    *string `json:"DqcDescription,omitempty" xml:"DqcDescription,omitempty" require:"true"`
+	ErrorMessage      *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty" require:"true"`
+	RelatedFlowId     *int64  `json:"RelatedFlowId,omitempty" xml:"RelatedFlowId,omitempty" require:"true"`
 }
 
 func (s GetInstanceResponseData) String() string {
@@ -14823,6 +15434,51 @@ func (s *GetInstanceResponseData) SetModifyTime(v int64) *GetInstanceResponseDat
 
 func (s *GetInstanceResponseData) SetNodeName(v string) *GetInstanceResponseData {
 	s.NodeName = &v
+	return s
+}
+
+func (s *GetInstanceResponseData) SetPriority(v int) *GetInstanceResponseData {
+	s.Priority = &v
+	return s
+}
+
+func (s *GetInstanceResponseData) SetBaselineId(v int64) *GetInstanceResponseData {
+	s.BaselineId = &v
+	return s
+}
+
+func (s *GetInstanceResponseData) SetRepeatability(v bool) *GetInstanceResponseData {
+	s.Repeatability = &v
+	return s
+}
+
+func (s *GetInstanceResponseData) SetRepeatInterval(v int64) *GetInstanceResponseData {
+	s.RepeatInterval = &v
+	return s
+}
+
+func (s *GetInstanceResponseData) SetConnection(v string) *GetInstanceResponseData {
+	s.Connection = &v
+	return s
+}
+
+func (s *GetInstanceResponseData) SetDqcType(v int) *GetInstanceResponseData {
+	s.DqcType = &v
+	return s
+}
+
+func (s *GetInstanceResponseData) SetDqcDescription(v string) *GetInstanceResponseData {
+	s.DqcDescription = &v
+	return s
+}
+
+func (s *GetInstanceResponseData) SetErrorMessage(v string) *GetInstanceResponseData {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetInstanceResponseData) SetRelatedFlowId(v int64) *GetInstanceResponseData {
+	s.RelatedFlowId = &v
 	return s
 }
 
@@ -22835,6 +23491,106 @@ func (client *Client) Init(config *rpc.Config) (_err error) {
 	}
 
 	return nil
+}
+
+func (client *Client) GetDagWithOptions(request *GetDagRequest, runtime *util.RuntimeOptions) (_result *GetDagResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &GetDagResponse{}
+	_body, _err := client.DoRequest(tea.String("GetDag"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-05-18"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDag(request *GetDagRequest) (_result *GetDagResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDagResponse{}
+	_body, _err := client.GetDagWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SearchNodesByOutputWithOptions(request *SearchNodesByOutputRequest, runtime *util.RuntimeOptions) (_result *SearchNodesByOutputResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &SearchNodesByOutputResponse{}
+	_body, _err := client.DoRequest(tea.String("SearchNodesByOutput"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-05-18"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SearchNodesByOutput(request *SearchNodesByOutputRequest) (_result *SearchNodesByOutputResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SearchNodesByOutputResponse{}
+	_body, _err := client.SearchNodesByOutputWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetManualDagInstancesWithOptions(request *GetManualDagInstancesRequest, runtime *util.RuntimeOptions) (_result *GetManualDagInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &GetManualDagInstancesResponse{}
+	_body, _err := client.DoRequest(tea.String("GetManualDagInstances"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-05-18"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetManualDagInstances(request *GetManualDagInstancesRequest) (_result *GetManualDagInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetManualDagInstancesResponse{}
+	_body, _err := client.GetManualDagInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateManualDagWithOptions(request *CreateManualDagRequest, runtime *util.RuntimeOptions) (_result *CreateManualDagResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &CreateManualDagResponse{}
+	_body, _err := client.DoRequest(tea.String("CreateManualDag"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-05-18"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateManualDag(request *CreateManualDagRequest) (_result *CreateManualDagResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateManualDagResponse{}
+	_body, _err := client.CreateManualDagWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
 }
 
 func (client *Client) ListQualityResultsByEntityWithOptions(request *ListQualityResultsByEntityRequest, runtime *util.RuntimeOptions) (_result *ListQualityResultsByEntityResponse, _err error) {
