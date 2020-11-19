@@ -3009,8 +3009,8 @@ func (s *DetectPedestrianResponse) SetData(v *DetectPedestrianResponseData) *Det
 }
 
 type DetectPedestrianResponseData struct {
-	Width    *int                                    `json:"Width,omitempty" xml:"Width,omitempty" require:"true"`
 	Height   *int                                    `json:"Height,omitempty" xml:"Height,omitempty" require:"true"`
+	Width    *int                                    `json:"Width,omitempty" xml:"Width,omitempty" require:"true"`
 	Elements []*DetectPedestrianResponseDataElements `json:"Elements,omitempty" xml:"Elements,omitempty" require:"true" type:"Repeated"`
 }
 
@@ -3022,13 +3022,13 @@ func (s DetectPedestrianResponseData) GoString() string {
 	return s.String()
 }
 
-func (s *DetectPedestrianResponseData) SetWidth(v int) *DetectPedestrianResponseData {
-	s.Width = &v
+func (s *DetectPedestrianResponseData) SetHeight(v int) *DetectPedestrianResponseData {
+	s.Height = &v
 	return s
 }
 
-func (s *DetectPedestrianResponseData) SetHeight(v int) *DetectPedestrianResponseData {
-	s.Height = &v
+func (s *DetectPedestrianResponseData) SetWidth(v int) *DetectPedestrianResponseData {
+	s.Width = &v
 	return s
 }
 
