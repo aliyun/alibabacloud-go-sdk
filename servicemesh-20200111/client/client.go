@@ -139,8 +139,8 @@ func (s *GetVmAppMeshInfoResponse) SetData(v string) *GetVmAppMeshInfoResponse {
 type GetVmMetaRequest struct {
 	ServiceMeshId  *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty" require:"true"`
 	TrustDomain    *string `json:"TrustDomain,omitempty" xml:"TrustDomain,omitempty"`
-	Namespace      *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	ServiceAccount *string `json:"ServiceAccount,omitempty" xml:"ServiceAccount,omitempty"`
+	Namespace      *string `json:"Namespace,omitempty" xml:"Namespace,omitempty" require:"true"`
+	ServiceAccount *string `json:"ServiceAccount,omitempty" xml:"ServiceAccount,omitempty" require:"true"`
 }
 
 func (s GetVmMetaRequest) String() string {
@@ -205,6 +205,8 @@ type GetVmMetaResponseVmMetaInfo struct {
 	EnvoyEnvContent  *string `json:"EnvoyEnvContent,omitempty" xml:"EnvoyEnvContent,omitempty" require:"true"`
 	HostsPath        *string `json:"HostsPath,omitempty" xml:"HostsPath,omitempty" require:"true"`
 	HostsContent     *string `json:"HostsContent,omitempty" xml:"HostsContent,omitempty" require:"true"`
+	TokenPath        *string `json:"TokenPath,omitempty" xml:"TokenPath,omitempty" require:"true"`
+	TokenContent     *string `json:"TokenContent,omitempty" xml:"TokenContent,omitempty" require:"true"`
 }
 
 func (s GetVmMetaResponseVmMetaInfo) String() string {
@@ -262,6 +264,16 @@ func (s *GetVmMetaResponseVmMetaInfo) SetHostsPath(v string) *GetVmMetaResponseV
 
 func (s *GetVmMetaResponseVmMetaInfo) SetHostsContent(v string) *GetVmMetaResponseVmMetaInfo {
 	s.HostsContent = &v
+	return s
+}
+
+func (s *GetVmMetaResponseVmMetaInfo) SetTokenPath(v string) *GetVmMetaResponseVmMetaInfo {
+	s.TokenPath = &v
+	return s
+}
+
+func (s *GetVmMetaResponseVmMetaInfo) SetTokenContent(v string) *GetVmMetaResponseVmMetaInfo {
+	s.TokenContent = &v
 	return s
 }
 
@@ -527,6 +539,7 @@ func (s *GetDiagnosisRequest) SetServiceMeshId(v string) *GetDiagnosisRequest {
 type GetDiagnosisResponse struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
 	Result    *string `json:"Result,omitempty" xml:"Result,omitempty" require:"true"`
+	RunAt     *string `json:"RunAt,omitempty" xml:"RunAt,omitempty" require:"true"`
 }
 
 func (s GetDiagnosisResponse) String() string {
@@ -544,6 +557,11 @@ func (s *GetDiagnosisResponse) SetRequestId(v string) *GetDiagnosisResponse {
 
 func (s *GetDiagnosisResponse) SetResult(v string) *GetDiagnosisResponse {
 	s.Result = &v
+	return s
+}
+
+func (s *GetDiagnosisResponse) SetRunAt(v string) *GetDiagnosisResponse {
+	s.RunAt = &v
 	return s
 }
 
@@ -1280,27 +1298,34 @@ func (s *DescribeUpgradeVersionResponseVersion) SetKubernetesVersion(v string) *
 }
 
 type UpdateMeshFeatureRequest struct {
-	ServiceMeshId         *string  `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty" require:"true"`
-	Tracing               *bool    `json:"Tracing,omitempty" xml:"Tracing,omitempty"`
-	TraceSampling         *float32 `json:"TraceSampling,omitempty" xml:"TraceSampling,omitempty"`
-	LocalityLoadBalancing *bool    `json:"LocalityLoadBalancing,omitempty" xml:"LocalityLoadBalancing,omitempty"`
-	Telemetry             *bool    `json:"Telemetry,omitempty" xml:"Telemetry,omitempty"`
-	OpenAgentPolicy       *bool    `json:"OpenAgentPolicy,omitempty" xml:"OpenAgentPolicy,omitempty"`
-	OPALogLevel           *string  `json:"OPALogLevel,omitempty" xml:"OPALogLevel,omitempty"`
-	OPARequestCPU         *string  `json:"OPARequestCPU,omitempty" xml:"OPARequestCPU,omitempty"`
-	OPARequestMemory      *string  `json:"OPARequestMemory,omitempty" xml:"OPARequestMemory,omitempty"`
-	OPALimitCPU           *string  `json:"OPALimitCPU,omitempty" xml:"OPALimitCPU,omitempty"`
-	OPALimitMemory        *string  `json:"OPALimitMemory,omitempty" xml:"OPALimitMemory,omitempty"`
-	EnableAudit           *bool    `json:"EnableAudit,omitempty" xml:"EnableAudit,omitempty"`
-	AuditProject          *string  `json:"AuditProject,omitempty" xml:"AuditProject,omitempty"`
-	ClusterDomain         *string  `json:"ClusterDomain,omitempty" xml:"ClusterDomain,omitempty"`
-	CustomizedZipkin      *bool    `json:"CustomizedZipkin,omitempty" xml:"CustomizedZipkin,omitempty"`
-	OutboundTrafficPolicy *string  `json:"OutboundTrafficPolicy,omitempty" xml:"OutboundTrafficPolicy,omitempty"`
-	ProxyRequestCPU       *string  `json:"ProxyRequestCPU,omitempty" xml:"ProxyRequestCPU,omitempty"`
-	ProxyRequestMemory    *string  `json:"ProxyRequestMemory,omitempty" xml:"ProxyRequestMemory,omitempty"`
-	ProxyLimitCPU         *string  `json:"ProxyLimitCPU,omitempty" xml:"ProxyLimitCPU,omitempty"`
-	ProxyLimitMemory      *string  `json:"ProxyLimitMemory,omitempty" xml:"ProxyLimitMemory,omitempty"`
-	IncludeIPRanges       *string  `json:"IncludeIPRanges,omitempty" xml:"IncludeIPRanges,omitempty"`
+	ServiceMeshId                *string  `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty" require:"true"`
+	Tracing                      *bool    `json:"Tracing,omitempty" xml:"Tracing,omitempty"`
+	TraceSampling                *float32 `json:"TraceSampling,omitempty" xml:"TraceSampling,omitempty"`
+	LocalityLoadBalancing        *bool    `json:"LocalityLoadBalancing,omitempty" xml:"LocalityLoadBalancing,omitempty"`
+	Telemetry                    *bool    `json:"Telemetry,omitempty" xml:"Telemetry,omitempty"`
+	OpenAgentPolicy              *bool    `json:"OpenAgentPolicy,omitempty" xml:"OpenAgentPolicy,omitempty"`
+	OPALogLevel                  *string  `json:"OPALogLevel,omitempty" xml:"OPALogLevel,omitempty"`
+	OPARequestCPU                *string  `json:"OPARequestCPU,omitempty" xml:"OPARequestCPU,omitempty"`
+	OPARequestMemory             *string  `json:"OPARequestMemory,omitempty" xml:"OPARequestMemory,omitempty"`
+	OPALimitCPU                  *string  `json:"OPALimitCPU,omitempty" xml:"OPALimitCPU,omitempty"`
+	OPALimitMemory               *string  `json:"OPALimitMemory,omitempty" xml:"OPALimitMemory,omitempty"`
+	EnableAudit                  *bool    `json:"EnableAudit,omitempty" xml:"EnableAudit,omitempty"`
+	AuditProject                 *string  `json:"AuditProject,omitempty" xml:"AuditProject,omitempty"`
+	ClusterDomain                *string  `json:"ClusterDomain,omitempty" xml:"ClusterDomain,omitempty"`
+	CustomizedZipkin             *bool    `json:"CustomizedZipkin,omitempty" xml:"CustomizedZipkin,omitempty"`
+	OutboundTrafficPolicy        *string  `json:"OutboundTrafficPolicy,omitempty" xml:"OutboundTrafficPolicy,omitempty"`
+	ProxyRequestCPU              *string  `json:"ProxyRequestCPU,omitempty" xml:"ProxyRequestCPU,omitempty"`
+	ProxyRequestMemory           *string  `json:"ProxyRequestMemory,omitempty" xml:"ProxyRequestMemory,omitempty"`
+	ProxyLimitCPU                *string  `json:"ProxyLimitCPU,omitempty" xml:"ProxyLimitCPU,omitempty"`
+	ProxyLimitMemory             *string  `json:"ProxyLimitMemory,omitempty" xml:"ProxyLimitMemory,omitempty"`
+	IncludeIPRanges              *string  `json:"IncludeIPRanges,omitempty" xml:"IncludeIPRanges,omitempty"`
+	EnableNamespacesByDefault    *bool    `json:"EnableNamespacesByDefault,omitempty" xml:"EnableNamespacesByDefault,omitempty"`
+	AutoInjectionPolicyEnabled   *bool    `json:"AutoInjectionPolicyEnabled,omitempty" xml:"AutoInjectionPolicyEnabled,omitempty"`
+	SidecarInjectorRequestCPU    *string  `json:"SidecarInjectorRequestCPU,omitempty" xml:"SidecarInjectorRequestCPU,omitempty"`
+	SidecarInjectorRequestMemory *string  `json:"SidecarInjectorRequestMemory,omitempty" xml:"SidecarInjectorRequestMemory,omitempty"`
+	SidecarInjectorLimitCPU      *string  `json:"SidecarInjectorLimitCPU,omitempty" xml:"SidecarInjectorLimitCPU,omitempty"`
+	SidecarInjectorLimitMemory   *string  `json:"SidecarInjectorLimitMemory,omitempty" xml:"SidecarInjectorLimitMemory,omitempty"`
+	SidecarInjectorWebhookAsYaml *string  `json:"SidecarInjectorWebhookAsYaml,omitempty" xml:"SidecarInjectorWebhookAsYaml,omitempty"`
 }
 
 func (s UpdateMeshFeatureRequest) String() string {
@@ -1413,6 +1438,41 @@ func (s *UpdateMeshFeatureRequest) SetProxyLimitMemory(v string) *UpdateMeshFeat
 
 func (s *UpdateMeshFeatureRequest) SetIncludeIPRanges(v string) *UpdateMeshFeatureRequest {
 	s.IncludeIPRanges = &v
+	return s
+}
+
+func (s *UpdateMeshFeatureRequest) SetEnableNamespacesByDefault(v bool) *UpdateMeshFeatureRequest {
+	s.EnableNamespacesByDefault = &v
+	return s
+}
+
+func (s *UpdateMeshFeatureRequest) SetAutoInjectionPolicyEnabled(v bool) *UpdateMeshFeatureRequest {
+	s.AutoInjectionPolicyEnabled = &v
+	return s
+}
+
+func (s *UpdateMeshFeatureRequest) SetSidecarInjectorRequestCPU(v string) *UpdateMeshFeatureRequest {
+	s.SidecarInjectorRequestCPU = &v
+	return s
+}
+
+func (s *UpdateMeshFeatureRequest) SetSidecarInjectorRequestMemory(v string) *UpdateMeshFeatureRequest {
+	s.SidecarInjectorRequestMemory = &v
+	return s
+}
+
+func (s *UpdateMeshFeatureRequest) SetSidecarInjectorLimitCPU(v string) *UpdateMeshFeatureRequest {
+	s.SidecarInjectorLimitCPU = &v
+	return s
+}
+
+func (s *UpdateMeshFeatureRequest) SetSidecarInjectorLimitMemory(v string) *UpdateMeshFeatureRequest {
+	s.SidecarInjectorLimitMemory = &v
+	return s
+}
+
+func (s *UpdateMeshFeatureRequest) SetSidecarInjectorWebhookAsYaml(v string) *UpdateMeshFeatureRequest {
+	s.SidecarInjectorWebhookAsYaml = &v
 	return s
 }
 
@@ -2004,16 +2064,17 @@ func (s *DescribeServiceMeshDetailResponseServiceMeshSpecLoadBalancer) SetPilotP
 }
 
 type DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfig struct {
-	EnableLocalityLB      *bool                                                            `json:"EnableLocalityLB,omitempty" xml:"EnableLocalityLB,omitempty" require:"true"`
-	Telemetry             *bool                                                            `json:"Telemetry,omitempty" xml:"Telemetry,omitempty" require:"true"`
-	Tracing               *bool                                                            `json:"Tracing,omitempty" xml:"Tracing,omitempty" require:"true"`
-	CustomizedZipkin      *bool                                                            `json:"CustomizedZipkin,omitempty" xml:"CustomizedZipkin,omitempty" require:"true"`
-	OutboundTrafficPolicy *string                                                          `json:"OutboundTrafficPolicy,omitempty" xml:"OutboundTrafficPolicy,omitempty" require:"true"`
-	IncludeIPRanges       *string                                                          `json:"IncludeIPRanges,omitempty" xml:"IncludeIPRanges,omitempty" require:"true"`
-	Pilot                 *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigPilot `json:"Pilot,omitempty" xml:"Pilot,omitempty" require:"true" type:"Struct"`
-	OPA                   *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigOPA   `json:"OPA,omitempty" xml:"OPA,omitempty" require:"true" type:"Struct"`
-	Audit                 *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigAudit `json:"Audit,omitempty" xml:"Audit,omitempty" require:"true" type:"Struct"`
-	Proxy                 *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigProxy `json:"Proxy,omitempty" xml:"Proxy,omitempty" require:"true" type:"Struct"`
+	EnableLocalityLB      *bool                                                                      `json:"EnableLocalityLB,omitempty" xml:"EnableLocalityLB,omitempty" require:"true"`
+	Telemetry             *bool                                                                      `json:"Telemetry,omitempty" xml:"Telemetry,omitempty" require:"true"`
+	Tracing               *bool                                                                      `json:"Tracing,omitempty" xml:"Tracing,omitempty" require:"true"`
+	CustomizedZipkin      *bool                                                                      `json:"CustomizedZipkin,omitempty" xml:"CustomizedZipkin,omitempty" require:"true"`
+	OutboundTrafficPolicy *string                                                                    `json:"OutboundTrafficPolicy,omitempty" xml:"OutboundTrafficPolicy,omitempty" require:"true"`
+	IncludeIPRanges       *string                                                                    `json:"IncludeIPRanges,omitempty" xml:"IncludeIPRanges,omitempty" require:"true"`
+	Pilot                 *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigPilot           `json:"Pilot,omitempty" xml:"Pilot,omitempty" require:"true" type:"Struct"`
+	OPA                   *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigOPA             `json:"OPA,omitempty" xml:"OPA,omitempty" require:"true" type:"Struct"`
+	Audit                 *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigAudit           `json:"Audit,omitempty" xml:"Audit,omitempty" require:"true" type:"Struct"`
+	Proxy                 *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigProxy           `json:"Proxy,omitempty" xml:"Proxy,omitempty" require:"true" type:"Struct"`
+	SidecarInjector       *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigSidecarInjector `json:"SidecarInjector,omitempty" xml:"SidecarInjector,omitempty" require:"true" type:"Struct"`
 }
 
 func (s DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfig) String() string {
@@ -2071,6 +2132,11 @@ func (s *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfig) SetAudit(v 
 
 func (s *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfig) SetProxy(v *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigProxy) *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfig {
 	s.Proxy = v
+	return s
+}
+
+func (s *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfig) SetSidecarInjector(v *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigSidecarInjector) *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfig {
+	s.SidecarInjector = v
 	return s
 }
 
@@ -2199,6 +2265,59 @@ func (s *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigProxy) SetLim
 
 func (s *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigProxy) SetLimitMemory(v string) *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigProxy {
 	s.LimitMemory = &v
+	return s
+}
+
+type DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigSidecarInjector struct {
+	EnableNamespacesByDefault    *bool   `json:"EnableNamespacesByDefault,omitempty" xml:"EnableNamespacesByDefault,omitempty" require:"true"`
+	AutoInjectionPolicyEnabled   *bool   `json:"AutoInjectionPolicyEnabled,omitempty" xml:"AutoInjectionPolicyEnabled,omitempty" require:"true"`
+	RequestCPU                   *string `json:"RequestCPU,omitempty" xml:"RequestCPU,omitempty" require:"true"`
+	RequestMemory                *string `json:"RequestMemory,omitempty" xml:"RequestMemory,omitempty" require:"true"`
+	LimitCPU                     *string `json:"LimitCPU,omitempty" xml:"LimitCPU,omitempty" require:"true"`
+	LimitMemory                  *string `json:"LimitMemory,omitempty" xml:"LimitMemory,omitempty" require:"true"`
+	SidecarInjectorWebhookAsYaml *string `json:"SidecarInjectorWebhookAsYaml,omitempty" xml:"SidecarInjectorWebhookAsYaml,omitempty" require:"true"`
+}
+
+func (s DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigSidecarInjector) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigSidecarInjector) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigSidecarInjector) SetEnableNamespacesByDefault(v bool) *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigSidecarInjector {
+	s.EnableNamespacesByDefault = &v
+	return s
+}
+
+func (s *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigSidecarInjector) SetAutoInjectionPolicyEnabled(v bool) *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigSidecarInjector {
+	s.AutoInjectionPolicyEnabled = &v
+	return s
+}
+
+func (s *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigSidecarInjector) SetRequestCPU(v string) *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigSidecarInjector {
+	s.RequestCPU = &v
+	return s
+}
+
+func (s *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigSidecarInjector) SetRequestMemory(v string) *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigSidecarInjector {
+	s.RequestMemory = &v
+	return s
+}
+
+func (s *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigSidecarInjector) SetLimitCPU(v string) *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigSidecarInjector {
+	s.LimitCPU = &v
+	return s
+}
+
+func (s *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigSidecarInjector) SetLimitMemory(v string) *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigSidecarInjector {
+	s.LimitMemory = &v
+	return s
+}
+
+func (s *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigSidecarInjector) SetSidecarInjectorWebhookAsYaml(v string) *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigSidecarInjector {
+	s.SidecarInjectorWebhookAsYaml = &v
 	return s
 }
 

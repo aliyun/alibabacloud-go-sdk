@@ -1,3 +1,6 @@
+2020-11-20 Version: v1.0.9
+- Generated golang 2020-01-11 for servicemesh.
+
 2020-09-08 Version: v1.0.8
 - Support adding or removing vm app to mesh.
 
