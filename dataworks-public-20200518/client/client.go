@@ -8,6 +8,64 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type RunTriggerNodeRequest struct {
+	NodeId    *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty" require:"true"`
+	CycleTime *int64 `json:"CycleTime,omitempty" xml:"CycleTime,omitempty" require:"true"`
+	BizDate   *int64 `json:"BizDate,omitempty" xml:"BizDate,omitempty" require:"true"`
+	AppId     *int64 `json:"AppId,omitempty" xml:"AppId,omitempty" require:"true"`
+}
+
+func (s RunTriggerNodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunTriggerNodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunTriggerNodeRequest) SetNodeId(v int64) *RunTriggerNodeRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *RunTriggerNodeRequest) SetCycleTime(v int64) *RunTriggerNodeRequest {
+	s.CycleTime = &v
+	return s
+}
+
+func (s *RunTriggerNodeRequest) SetBizDate(v int64) *RunTriggerNodeRequest {
+	s.BizDate = &v
+	return s
+}
+
+func (s *RunTriggerNodeRequest) SetAppId(v int64) *RunTriggerNodeRequest {
+	s.AppId = &v
+	return s
+}
+
+type RunTriggerNodeResponse struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty" require:"true"`
+}
+
+func (s RunTriggerNodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunTriggerNodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunTriggerNodeResponse) SetRequestId(v string) *RunTriggerNodeResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RunTriggerNodeResponse) SetSuccess(v bool) *RunTriggerNodeResponse {
+	s.Success = &v
+	return s
+}
+
 type GetDagRequest struct {
 	DagId      *int64  `json:"DagId,omitempty" xml:"DagId,omitempty" require:"true"`
 	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty" require:"true"`
@@ -23491,6 +23549,31 @@ func (client *Client) Init(config *rpc.Config) (_err error) {
 	}
 
 	return nil
+}
+
+func (client *Client) RunTriggerNodeWithOptions(request *RunTriggerNodeRequest, runtime *util.RuntimeOptions) (_result *RunTriggerNodeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &RunTriggerNodeResponse{}
+	_body, _err := client.DoRequest(tea.String("RunTriggerNode"), tea.String("HTTPS"), tea.String("PUT"), tea.String("2020-05-18"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RunTriggerNode(request *RunTriggerNodeRequest) (_result *RunTriggerNodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RunTriggerNodeResponse{}
+	_body, _err := client.RunTriggerNodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
 }
 
 func (client *Client) GetDagWithOptions(request *GetDagRequest, runtime *util.RuntimeOptions) (_result *GetDagResponse, _err error) {
