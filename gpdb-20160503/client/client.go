@@ -8,6 +8,238 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type DescribeModifyParameterLogRequest struct {
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty" require:"true"`
+	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+}
+
+func (s DescribeModifyParameterLogRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeModifyParameterLogRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeModifyParameterLogRequest) SetDBInstanceId(v string) *DescribeModifyParameterLogRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeModifyParameterLogRequest) SetStartTime(v string) *DescribeModifyParameterLogRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeModifyParameterLogRequest) SetEndTime(v string) *DescribeModifyParameterLogRequest {
+	s.EndTime = &v
+	return s
+}
+
+type DescribeModifyParameterLogResponse struct {
+	RequestId  *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Changelogs []*DescribeModifyParameterLogResponseChangelogs `json:"Changelogs,omitempty" xml:"Changelogs,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s DescribeModifyParameterLogResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeModifyParameterLogResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeModifyParameterLogResponse) SetRequestId(v string) *DescribeModifyParameterLogResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeModifyParameterLogResponse) SetChangelogs(v []*DescribeModifyParameterLogResponseChangelogs) *DescribeModifyParameterLogResponse {
+	s.Changelogs = v
+	return s
+}
+
+type DescribeModifyParameterLogResponseChangelogs struct {
+	ParameterName        *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty" require:"true"`
+	ParameterValueBefore *string `json:"ParameterValueBefore,omitempty" xml:"ParameterValueBefore,omitempty" require:"true"`
+	ParameterValueAfter  *string `json:"ParameterValueAfter,omitempty" xml:"ParameterValueAfter,omitempty" require:"true"`
+	ParameterValid       *string `json:"ParameterValid,omitempty" xml:"ParameterValid,omitempty" require:"true"`
+	EffectTime           *string `json:"EffectTime,omitempty" xml:"EffectTime,omitempty" require:"true"`
+}
+
+func (s DescribeModifyParameterLogResponseChangelogs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeModifyParameterLogResponseChangelogs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeModifyParameterLogResponseChangelogs) SetParameterName(v string) *DescribeModifyParameterLogResponseChangelogs {
+	s.ParameterName = &v
+	return s
+}
+
+func (s *DescribeModifyParameterLogResponseChangelogs) SetParameterValueBefore(v string) *DescribeModifyParameterLogResponseChangelogs {
+	s.ParameterValueBefore = &v
+	return s
+}
+
+func (s *DescribeModifyParameterLogResponseChangelogs) SetParameterValueAfter(v string) *DescribeModifyParameterLogResponseChangelogs {
+	s.ParameterValueAfter = &v
+	return s
+}
+
+func (s *DescribeModifyParameterLogResponseChangelogs) SetParameterValid(v string) *DescribeModifyParameterLogResponseChangelogs {
+	s.ParameterValid = &v
+	return s
+}
+
+func (s *DescribeModifyParameterLogResponseChangelogs) SetEffectTime(v string) *DescribeModifyParameterLogResponseChangelogs {
+	s.EffectTime = &v
+	return s
+}
+
+type DescribeParametersRequest struct {
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty" require:"true"`
+}
+
+func (s DescribeParametersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeParametersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeParametersRequest) SetDBInstanceId(v string) *DescribeParametersRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+type DescribeParametersResponse struct {
+	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Parameters []*DescribeParametersResponseParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s DescribeParametersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeParametersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeParametersResponse) SetRequestId(v string) *DescribeParametersResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeParametersResponse) SetParameters(v []*DescribeParametersResponseParameters) *DescribeParametersResponse {
+	s.Parameters = v
+	return s
+}
+
+type DescribeParametersResponseParameters struct {
+	ParameterName        *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty" require:"true"`
+	ParameterValue       *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty" require:"true"`
+	CurrentValue         *string `json:"CurrentValue,omitempty" xml:"CurrentValue,omitempty" require:"true"`
+	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty" require:"true"`
+	ForceRestartInstance *string `json:"ForceRestartInstance,omitempty" xml:"ForceRestartInstance,omitempty" require:"true"`
+	IsChangeableConfig   *string `json:"IsChangeableConfig,omitempty" xml:"IsChangeableConfig,omitempty" require:"true"`
+	OptionalRange        *string `json:"OptionalRange,omitempty" xml:"OptionalRange,omitempty" require:"true"`
+}
+
+func (s DescribeParametersResponseParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeParametersResponseParameters) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeParametersResponseParameters) SetParameterName(v string) *DescribeParametersResponseParameters {
+	s.ParameterName = &v
+	return s
+}
+
+func (s *DescribeParametersResponseParameters) SetParameterValue(v string) *DescribeParametersResponseParameters {
+	s.ParameterValue = &v
+	return s
+}
+
+func (s *DescribeParametersResponseParameters) SetCurrentValue(v string) *DescribeParametersResponseParameters {
+	s.CurrentValue = &v
+	return s
+}
+
+func (s *DescribeParametersResponseParameters) SetParameterDescription(v string) *DescribeParametersResponseParameters {
+	s.ParameterDescription = &v
+	return s
+}
+
+func (s *DescribeParametersResponseParameters) SetForceRestartInstance(v string) *DescribeParametersResponseParameters {
+	s.ForceRestartInstance = &v
+	return s
+}
+
+func (s *DescribeParametersResponseParameters) SetIsChangeableConfig(v string) *DescribeParametersResponseParameters {
+	s.IsChangeableConfig = &v
+	return s
+}
+
+func (s *DescribeParametersResponseParameters) SetOptionalRange(v string) *DescribeParametersResponseParameters {
+	s.OptionalRange = &v
+	return s
+}
+
+type ModifyParametersRequest struct {
+	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty" require:"true"`
+	Parameters           *string `json:"Parameters,omitempty" xml:"Parameters,omitempty" require:"true"`
+	ForceRestartInstance *bool   `json:"ForceRestartInstance,omitempty" xml:"ForceRestartInstance,omitempty"`
+}
+
+func (s ModifyParametersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyParametersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyParametersRequest) SetDBInstanceId(v string) *ModifyParametersRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ModifyParametersRequest) SetParameters(v string) *ModifyParametersRequest {
+	s.Parameters = &v
+	return s
+}
+
+func (s *ModifyParametersRequest) SetForceRestartInstance(v bool) *ModifyParametersRequest {
+	s.ForceRestartInstance = &v
+	return s
+}
+
+type ModifyParametersResponse struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+}
+
+func (s ModifyParametersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyParametersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyParametersResponse) SetRequestId(v string) *ModifyParametersResponse {
+	s.RequestId = &v
+	return s
+}
+
 type CreateServiceLinkedRoleRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty" require:"true"`
 }
@@ -1332,7 +1564,7 @@ func (s *DescribeDBInstanceSSLResponse) SetSSLEnabled(v bool) *DescribeDBInstanc
 
 type ModifyDBInstanceSSLRequest struct {
 	DBInstanceId     *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty" require:"true"`
-	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty" require:"true"`
+	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	SSLEnabled       *int    `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty" require:"true"`
 }
 
@@ -5087,6 +5319,81 @@ func (client *Client) Init(config *rpc.Config) (_err error) {
 	}
 
 	return nil
+}
+
+func (client *Client) DescribeModifyParameterLogWithOptions(request *DescribeModifyParameterLogRequest, runtime *util.RuntimeOptions) (_result *DescribeModifyParameterLogResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &DescribeModifyParameterLogResponse{}
+	_body, _err := client.DoRequest(tea.String("DescribeModifyParameterLog"), tea.String("HTTPS"), tea.String("POST"), tea.String("2016-05-03"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeModifyParameterLog(request *DescribeModifyParameterLogRequest) (_result *DescribeModifyParameterLogResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeModifyParameterLogResponse{}
+	_body, _err := client.DescribeModifyParameterLogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeParametersWithOptions(request *DescribeParametersRequest, runtime *util.RuntimeOptions) (_result *DescribeParametersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &DescribeParametersResponse{}
+	_body, _err := client.DoRequest(tea.String("DescribeParameters"), tea.String("HTTPS"), tea.String("POST"), tea.String("2016-05-03"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeParameters(request *DescribeParametersRequest) (_result *DescribeParametersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeParametersResponse{}
+	_body, _err := client.DescribeParametersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyParametersWithOptions(request *ModifyParametersRequest, runtime *util.RuntimeOptions) (_result *ModifyParametersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &ModifyParametersResponse{}
+	_body, _err := client.DoRequest(tea.String("ModifyParameters"), tea.String("HTTPS"), tea.String("POST"), tea.String("2016-05-03"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyParameters(request *ModifyParametersRequest) (_result *ModifyParametersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyParametersResponse{}
+	_body, _err := client.ModifyParametersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
 }
 
 func (client *Client) CreateServiceLinkedRoleWithOptions(request *CreateServiceLinkedRoleRequest, runtime *util.RuntimeOptions) (_result *CreateServiceLinkedRoleResponse, _err error) {
