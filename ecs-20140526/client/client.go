@@ -218,6 +218,7 @@ type DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservati
 	EndTimeType                     *string                                                                                              `json:"EndTimeType,omitempty" xml:"EndTimeType,omitempty" require:"true"`
 	InstanceChargeType              *string                                                                                              `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty" require:"true"`
 	Platform                        *string                                                                                              `json:"Platform,omitempty" xml:"Platform,omitempty" require:"true"`
+	TimeSlot                        *string                                                                                              `json:"TimeSlot,omitempty" xml:"TimeSlot,omitempty" require:"true"`
 	AllocatedResources              *DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItemAllocatedResources `json:"AllocatedResources,omitempty" xml:"AllocatedResources,omitempty" require:"true" type:"Struct"`
 }
 
@@ -281,6 +282,11 @@ func (s *DescribeCapacityReservationsResponseCapacityReservationSetCapacityReser
 
 func (s *DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItem) SetPlatform(v string) *DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItem {
 	s.Platform = &v
+	return s
+}
+
+func (s *DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItem) SetTimeSlot(v string) *DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItem {
+	s.TimeSlot = &v
 	return s
 }
 
@@ -6260,10 +6266,13 @@ type CreateAutoProvisioningGroupRequest struct {
 	PayAsYouGoTargetCapacity         *string                                                   `json:"PayAsYouGoTargetCapacity,omitempty" xml:"PayAsYouGoTargetCapacity,omitempty"`
 	SpotTargetCapacity               *string                                                   `json:"SpotTargetCapacity,omitempty" xml:"SpotTargetCapacity,omitempty"`
 	DefaultTargetCapacityType        *string                                                   `json:"DefaultTargetCapacityType,omitempty" xml:"DefaultTargetCapacityType,omitempty"`
-	LaunchTemplateId                 *string                                                   `json:"LaunchTemplateId,omitempty" xml:"LaunchTemplateId,omitempty" require:"true"`
+	LaunchTemplateId                 *string                                                   `json:"LaunchTemplateId,omitempty" xml:"LaunchTemplateId,omitempty"`
 	LaunchTemplateVersion            *string                                                   `json:"LaunchTemplateVersion,omitempty" xml:"LaunchTemplateVersion,omitempty"`
 	LaunchTemplateConfig             []*CreateAutoProvisioningGroupRequestLaunchTemplateConfig `json:"LaunchTemplateConfig,omitempty" xml:"LaunchTemplateConfig,omitempty" type:"Repeated"`
 	Description                      *string                                                   `json:"Description,omitempty" xml:"Description,omitempty"`
+	LaunchConfiguration              *CreateAutoProvisioningGroupRequestLaunchConfiguration    `json:"LaunchConfiguration,omitempty" xml:"LaunchConfiguration,omitempty" type:"Struct"`
+	SystemDiskConfig                 []*CreateAutoProvisioningGroupRequestSystemDiskConfig     `json:"SystemDiskConfig,omitempty" xml:"SystemDiskConfig,omitempty" type:"Repeated"`
+	DataDiskConfig                   []*CreateAutoProvisioningGroupRequestDataDiskConfig       `json:"DataDiskConfig,omitempty" xml:"DataDiskConfig,omitempty" type:"Repeated"`
 }
 
 func (s CreateAutoProvisioningGroupRequest) String() string {
@@ -6384,6 +6393,21 @@ func (s *CreateAutoProvisioningGroupRequest) SetDescription(v string) *CreateAut
 	return s
 }
 
+func (s *CreateAutoProvisioningGroupRequest) SetLaunchConfiguration(v *CreateAutoProvisioningGroupRequestLaunchConfiguration) *CreateAutoProvisioningGroupRequest {
+	s.LaunchConfiguration = v
+	return s
+}
+
+func (s *CreateAutoProvisioningGroupRequest) SetSystemDiskConfig(v []*CreateAutoProvisioningGroupRequestSystemDiskConfig) *CreateAutoProvisioningGroupRequest {
+	s.SystemDiskConfig = v
+	return s
+}
+
+func (s *CreateAutoProvisioningGroupRequest) SetDataDiskConfig(v []*CreateAutoProvisioningGroupRequestDataDiskConfig) *CreateAutoProvisioningGroupRequest {
+	s.DataDiskConfig = v
+	return s
+}
+
 type CreateAutoProvisioningGroupRequestLaunchTemplateConfig struct {
 	InstanceType     *string  `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	MaxPrice         *float64 `json:"MaxPrice,omitempty" xml:"MaxPrice,omitempty"`
@@ -6422,6 +6446,189 @@ func (s *CreateAutoProvisioningGroupRequestLaunchTemplateConfig) SetWeightedCapa
 
 func (s *CreateAutoProvisioningGroupRequestLaunchTemplateConfig) SetPriority(v int) *CreateAutoProvisioningGroupRequestLaunchTemplateConfig {
 	s.Priority = &v
+	return s
+}
+
+type CreateAutoProvisioningGroupRequestLaunchConfiguration struct {
+	ImageId                     *string   `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	SecurityGroupId             *string   `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	IoOptimized                 *string   `json:"IoOptimized,omitempty" xml:"IoOptimized,omitempty"`
+	DataDisk                    []*string `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
+	InternetChargeType          *string   `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	InternetMaxBandwidthIn      *int      `json:"InternetMaxBandwidthIn,omitempty" xml:"InternetMaxBandwidthIn,omitempty"`
+	InternetMaxBandwidthOut     *int      `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
+	InstanceName                *string   `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	HostName                    *string   `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	InstanceDescription         *string   `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
+	KeyPairName                 *string   `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	RamRoleName                 *string   `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
+	SecurityEnhancementStrategy *string   `json:"SecurityEnhancementStrategy,omitempty" xml:"SecurityEnhancementStrategy,omitempty"`
+	Tag                         []*string `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	UserData                    *string   `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	SystemDiskCategory          *string   `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
+	SystemDiskSize              *int      `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+	SystemDiskName              *string   `json:"SystemDiskName,omitempty" xml:"SystemDiskName,omitempty"`
+	SystemDiskDescription       *string   `json:"SystemDiskDescription,omitempty" xml:"SystemDiskDescription,omitempty"`
+	SystemDiskPerformanceLevel  *string   `json:"SystemDiskPerformanceLevel,omitempty" xml:"SystemDiskPerformanceLevel,omitempty"`
+	PasswordInherit             *bool     `json:"PasswordInherit,omitempty" xml:"PasswordInherit,omitempty"`
+	ResourceGroupId             *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	CreditSpecification         *string   `json:"CreditSpecification,omitempty" xml:"CreditSpecification,omitempty"`
+}
+
+func (s CreateAutoProvisioningGroupRequestLaunchConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAutoProvisioningGroupRequestLaunchConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAutoProvisioningGroupRequestLaunchConfiguration) SetImageId(v string) *CreateAutoProvisioningGroupRequestLaunchConfiguration {
+	s.ImageId = &v
+	return s
+}
+
+func (s *CreateAutoProvisioningGroupRequestLaunchConfiguration) SetSecurityGroupId(v string) *CreateAutoProvisioningGroupRequestLaunchConfiguration {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *CreateAutoProvisioningGroupRequestLaunchConfiguration) SetIoOptimized(v string) *CreateAutoProvisioningGroupRequestLaunchConfiguration {
+	s.IoOptimized = &v
+	return s
+}
+
+func (s *CreateAutoProvisioningGroupRequestLaunchConfiguration) SetDataDisk(v []*string) *CreateAutoProvisioningGroupRequestLaunchConfiguration {
+	s.DataDisk = v
+	return s
+}
+
+func (s *CreateAutoProvisioningGroupRequestLaunchConfiguration) SetInternetChargeType(v string) *CreateAutoProvisioningGroupRequestLaunchConfiguration {
+	s.InternetChargeType = &v
+	return s
+}
+
+func (s *CreateAutoProvisioningGroupRequestLaunchConfiguration) SetInternetMaxBandwidthIn(v int) *CreateAutoProvisioningGroupRequestLaunchConfiguration {
+	s.InternetMaxBandwidthIn = &v
+	return s
+}
+
+func (s *CreateAutoProvisioningGroupRequestLaunchConfiguration) SetInternetMaxBandwidthOut(v int) *CreateAutoProvisioningGroupRequestLaunchConfiguration {
+	s.InternetMaxBandwidthOut = &v
+	return s
+}
+
+func (s *CreateAutoProvisioningGroupRequestLaunchConfiguration) SetInstanceName(v string) *CreateAutoProvisioningGroupRequestLaunchConfiguration {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *CreateAutoProvisioningGroupRequestLaunchConfiguration) SetHostName(v string) *CreateAutoProvisioningGroupRequestLaunchConfiguration {
+	s.HostName = &v
+	return s
+}
+
+func (s *CreateAutoProvisioningGroupRequestLaunchConfiguration) SetInstanceDescription(v string) *CreateAutoProvisioningGroupRequestLaunchConfiguration {
+	s.InstanceDescription = &v
+	return s
+}
+
+func (s *CreateAutoProvisioningGroupRequestLaunchConfiguration) SetKeyPairName(v string) *CreateAutoProvisioningGroupRequestLaunchConfiguration {
+	s.KeyPairName = &v
+	return s
+}
+
+func (s *CreateAutoProvisioningGroupRequestLaunchConfiguration) SetRamRoleName(v string) *CreateAutoProvisioningGroupRequestLaunchConfiguration {
+	s.RamRoleName = &v
+	return s
+}
+
+func (s *CreateAutoProvisioningGroupRequestLaunchConfiguration) SetSecurityEnhancementStrategy(v string) *CreateAutoProvisioningGroupRequestLaunchConfiguration {
+	s.SecurityEnhancementStrategy = &v
+	return s
+}
+
+func (s *CreateAutoProvisioningGroupRequestLaunchConfiguration) SetTag(v []*string) *CreateAutoProvisioningGroupRequestLaunchConfiguration {
+	s.Tag = v
+	return s
+}
+
+func (s *CreateAutoProvisioningGroupRequestLaunchConfiguration) SetUserData(v string) *CreateAutoProvisioningGroupRequestLaunchConfiguration {
+	s.UserData = &v
+	return s
+}
+
+func (s *CreateAutoProvisioningGroupRequestLaunchConfiguration) SetSystemDiskCategory(v string) *CreateAutoProvisioningGroupRequestLaunchConfiguration {
+	s.SystemDiskCategory = &v
+	return s
+}
+
+func (s *CreateAutoProvisioningGroupRequestLaunchConfiguration) SetSystemDiskSize(v int) *CreateAutoProvisioningGroupRequestLaunchConfiguration {
+	s.SystemDiskSize = &v
+	return s
+}
+
+func (s *CreateAutoProvisioningGroupRequestLaunchConfiguration) SetSystemDiskName(v string) *CreateAutoProvisioningGroupRequestLaunchConfiguration {
+	s.SystemDiskName = &v
+	return s
+}
+
+func (s *CreateAutoProvisioningGroupRequestLaunchConfiguration) SetSystemDiskDescription(v string) *CreateAutoProvisioningGroupRequestLaunchConfiguration {
+	s.SystemDiskDescription = &v
+	return s
+}
+
+func (s *CreateAutoProvisioningGroupRequestLaunchConfiguration) SetSystemDiskPerformanceLevel(v string) *CreateAutoProvisioningGroupRequestLaunchConfiguration {
+	s.SystemDiskPerformanceLevel = &v
+	return s
+}
+
+func (s *CreateAutoProvisioningGroupRequestLaunchConfiguration) SetPasswordInherit(v bool) *CreateAutoProvisioningGroupRequestLaunchConfiguration {
+	s.PasswordInherit = &v
+	return s
+}
+
+func (s *CreateAutoProvisioningGroupRequestLaunchConfiguration) SetResourceGroupId(v string) *CreateAutoProvisioningGroupRequestLaunchConfiguration {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateAutoProvisioningGroupRequestLaunchConfiguration) SetCreditSpecification(v string) *CreateAutoProvisioningGroupRequestLaunchConfiguration {
+	s.CreditSpecification = &v
+	return s
+}
+
+type CreateAutoProvisioningGroupRequestSystemDiskConfig struct {
+	DiskCategory *string `json:"DiskCategory,omitempty" xml:"DiskCategory,omitempty"`
+}
+
+func (s CreateAutoProvisioningGroupRequestSystemDiskConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAutoProvisioningGroupRequestSystemDiskConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAutoProvisioningGroupRequestSystemDiskConfig) SetDiskCategory(v string) *CreateAutoProvisioningGroupRequestSystemDiskConfig {
+	s.DiskCategory = &v
+	return s
+}
+
+type CreateAutoProvisioningGroupRequestDataDiskConfig struct {
+	DiskCategory *string `json:"DiskCategory,omitempty" xml:"DiskCategory,omitempty"`
+}
+
+func (s CreateAutoProvisioningGroupRequestDataDiskConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAutoProvisioningGroupRequestDataDiskConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAutoProvisioningGroupRequestDataDiskConfig) SetDiskCategory(v string) *CreateAutoProvisioningGroupRequestDataDiskConfig {
+	s.DiskCategory = &v
 	return s
 }
 
@@ -22607,6 +22814,7 @@ type DescribeSnapshotLinksResponseSnapshotLinksSnapshotLink struct {
 	SourceDiskSize *int    `json:"SourceDiskSize,omitempty" xml:"SourceDiskSize,omitempty" require:"true"`
 	SourceDiskType *string `json:"SourceDiskType,omitempty" xml:"SourceDiskType,omitempty" require:"true"`
 	Category       *string `json:"Category,omitempty" xml:"Category,omitempty" require:"true"`
+	InstantAccess  *bool   `json:"InstantAccess,omitempty" xml:"InstantAccess,omitempty" require:"true"`
 	TotalSize      *int64  `json:"TotalSize,omitempty" xml:"TotalSize,omitempty" require:"true"`
 	TotalCount     *int    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty" require:"true"`
 }
@@ -22661,6 +22869,11 @@ func (s *DescribeSnapshotLinksResponseSnapshotLinksSnapshotLink) SetSourceDiskTy
 
 func (s *DescribeSnapshotLinksResponseSnapshotLinksSnapshotLink) SetCategory(v string) *DescribeSnapshotLinksResponseSnapshotLinksSnapshotLink {
 	s.Category = &v
+	return s
+}
+
+func (s *DescribeSnapshotLinksResponseSnapshotLinksSnapshotLink) SetInstantAccess(v bool) *DescribeSnapshotLinksResponseSnapshotLinksSnapshotLink {
+	s.InstantAccess = &v
 	return s
 }
 
@@ -30279,9 +30492,10 @@ func (s *ModifyVpcAttributeResponse) SetRequestId(v string) *ModifyVpcAttributeR
 }
 
 type ModifySnapshotAttributeRequest struct {
-	SnapshotId   *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty" require:"true"`
-	SnapshotName *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	SnapshotId           *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty" require:"true"`
+	SnapshotName         *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
+	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DisableInstantAccess *bool   `json:"DisableInstantAccess,omitempty" xml:"DisableInstantAccess,omitempty"`
 }
 
 func (s ModifySnapshotAttributeRequest) String() string {
@@ -30304,6 +30518,11 @@ func (s *ModifySnapshotAttributeRequest) SetSnapshotName(v string) *ModifySnapsh
 
 func (s *ModifySnapshotAttributeRequest) SetDescription(v string) *ModifySnapshotAttributeRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *ModifySnapshotAttributeRequest) SetDisableInstantAccess(v bool) *ModifySnapshotAttributeRequest {
+	s.DisableInstantAccess = &v
 	return s
 }
 
@@ -30913,6 +31132,7 @@ type ModifyImageAttributeRequest struct {
 	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	ImageFamily *string `json:"ImageFamily,omitempty" xml:"ImageFamily,omitempty"`
 	BootMode    *string `json:"BootMode,omitempty" xml:"BootMode,omitempty"`
+	LicenseType *string `json:"LicenseType,omitempty" xml:"LicenseType,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 }
 
@@ -30951,6 +31171,11 @@ func (s *ModifyImageAttributeRequest) SetImageFamily(v string) *ModifyImageAttri
 
 func (s *ModifyImageAttributeRequest) SetBootMode(v string) *ModifyImageAttributeRequest {
 	s.BootMode = &v
+	return s
+}
+
+func (s *ModifyImageAttributeRequest) SetLicenseType(v string) *ModifyImageAttributeRequest {
+	s.LicenseType = &v
 	return s
 }
 
@@ -31169,8 +31394,10 @@ func (s *ModifyAutoSnapshotPolicyResponse) SetRequestId(v string) *ModifyAutoSna
 }
 
 type LeaveSecurityGroupRequest struct {
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty" require:"true"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" require:"true"`
+	SecurityGroupId    *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty" require:"true"`
+	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s LeaveSecurityGroupRequest) String() string {
@@ -31188,6 +31415,16 @@ func (s *LeaveSecurityGroupRequest) SetSecurityGroupId(v string) *LeaveSecurityG
 
 func (s *LeaveSecurityGroupRequest) SetInstanceId(v string) *LeaveSecurityGroupRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *LeaveSecurityGroupRequest) SetNetworkInterfaceId(v string) *LeaveSecurityGroupRequest {
+	s.NetworkInterfaceId = &v
+	return s
+}
+
+func (s *LeaveSecurityGroupRequest) SetRegionId(v string) *LeaveSecurityGroupRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -31209,8 +31446,10 @@ func (s *LeaveSecurityGroupResponse) SetRequestId(v string) *LeaveSecurityGroupR
 }
 
 type JoinSecurityGroupRequest struct {
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty" require:"true"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" require:"true"`
+	SecurityGroupId    *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty" require:"true"`
+	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s JoinSecurityGroupRequest) String() string {
@@ -31228,6 +31467,16 @@ func (s *JoinSecurityGroupRequest) SetSecurityGroupId(v string) *JoinSecurityGro
 
 func (s *JoinSecurityGroupRequest) SetInstanceId(v string) *JoinSecurityGroupRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *JoinSecurityGroupRequest) SetNetworkInterfaceId(v string) *JoinSecurityGroupRequest {
+	s.NetworkInterfaceId = &v
+	return s
+}
+
+func (s *JoinSecurityGroupRequest) SetRegionId(v string) *JoinSecurityGroupRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -32298,6 +32547,8 @@ type DescribeSnapshotsRequest struct {
 	SnapshotIds     *string                           `json:"SnapshotIds,omitempty" xml:"SnapshotIds,omitempty"`
 	PageNumber      *int                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize        *int                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	NextToken       *string                           `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	MaxResults      *int                              `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	SnapshotName    *string                           `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
 	Status          *string                           `json:"Status,omitempty" xml:"Status,omitempty"`
 	SnapshotType    *string                           `json:"SnapshotType,omitempty" xml:"SnapshotType,omitempty"`
@@ -32352,6 +32603,16 @@ func (s *DescribeSnapshotsRequest) SetPageNumber(v int) *DescribeSnapshotsReques
 
 func (s *DescribeSnapshotsRequest) SetPageSize(v int) *DescribeSnapshotsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeSnapshotsRequest) SetNextToken(v string) *DescribeSnapshotsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeSnapshotsRequest) SetMaxResults(v int) *DescribeSnapshotsRequest {
+	s.MaxResults = &v
 	return s
 }
 
@@ -32466,6 +32727,7 @@ type DescribeSnapshotsResponse struct {
 	TotalCount *int                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty" require:"true"`
 	PageNumber *int                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty" require:"true"`
 	PageSize   *int                                `json:"PageSize,omitempty" xml:"PageSize,omitempty" require:"true"`
+	NextToken  *string                             `json:"NextToken,omitempty" xml:"NextToken,omitempty" require:"true"`
 	Snapshots  *DescribeSnapshotsResponseSnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" require:"true" type:"Struct"`
 }
 
@@ -32497,6 +32759,11 @@ func (s *DescribeSnapshotsResponse) SetPageSize(v int) *DescribeSnapshotsRespons
 	return s
 }
 
+func (s *DescribeSnapshotsResponse) SetNextToken(v string) *DescribeSnapshotsResponse {
+	s.NextToken = &v
+	return s
+}
+
 func (s *DescribeSnapshotsResponse) SetSnapshots(v *DescribeSnapshotsResponseSnapshots) *DescribeSnapshotsResponse {
 	s.Snapshots = v
 	return s
@@ -32520,28 +32787,30 @@ func (s *DescribeSnapshotsResponseSnapshots) SetSnapshot(v []*DescribeSnapshotsR
 }
 
 type DescribeSnapshotsResponseSnapshotsSnapshot struct {
-	SnapshotId        *string                                         `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty" require:"true"`
-	SnapshotSN        *string                                         `json:"SnapshotSN,omitempty" xml:"SnapshotSN,omitempty" require:"true"`
-	SnapshotName      *string                                         `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty" require:"true"`
-	Progress          *string                                         `json:"Progress,omitempty" xml:"Progress,omitempty" require:"true"`
-	ProductCode       *string                                         `json:"ProductCode,omitempty" xml:"ProductCode,omitempty" require:"true"`
-	SourceDiskId      *string                                         `json:"SourceDiskId,omitempty" xml:"SourceDiskId,omitempty" require:"true"`
-	SourceDiskType    *string                                         `json:"SourceDiskType,omitempty" xml:"SourceDiskType,omitempty" require:"true"`
-	RetentionDays     *int                                            `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty" require:"true"`
-	Encrypted         *bool                                           `json:"Encrypted,omitempty" xml:"Encrypted,omitempty" require:"true"`
-	SourceDiskSize    *string                                         `json:"SourceDiskSize,omitempty" xml:"SourceDiskSize,omitempty" require:"true"`
-	Description       *string                                         `json:"Description,omitempty" xml:"Description,omitempty" require:"true"`
-	CreationTime      *string                                         `json:"CreationTime,omitempty" xml:"CreationTime,omitempty" require:"true"`
-	LastModifiedTime  *string                                         `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty" require:"true"`
-	Status            *string                                         `json:"Status,omitempty" xml:"Status,omitempty" require:"true"`
-	Usage             *string                                         `json:"Usage,omitempty" xml:"Usage,omitempty" require:"true"`
-	SourceStorageType *string                                         `json:"SourceStorageType,omitempty" xml:"SourceStorageType,omitempty" require:"true"`
-	RemainTime        *int                                            `json:"RemainTime,omitempty" xml:"RemainTime,omitempty" require:"true"`
-	ResourceGroupId   *string                                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty" require:"true"`
-	KMSKeyId          *string                                         `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty" require:"true"`
-	Category          *string                                         `json:"Category,omitempty" xml:"Category,omitempty" require:"true"`
-	SnapshotType      *string                                         `json:"SnapshotType,omitempty" xml:"SnapshotType,omitempty" require:"true"`
-	Tags              *DescribeSnapshotsResponseSnapshotsSnapshotTags `json:"Tags,omitempty" xml:"Tags,omitempty" require:"true" type:"Struct"`
+	SnapshotId                 *string                                         `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty" require:"true"`
+	SnapshotSN                 *string                                         `json:"SnapshotSN,omitempty" xml:"SnapshotSN,omitempty" require:"true"`
+	SnapshotName               *string                                         `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty" require:"true"`
+	Progress                   *string                                         `json:"Progress,omitempty" xml:"Progress,omitempty" require:"true"`
+	ProductCode                *string                                         `json:"ProductCode,omitempty" xml:"ProductCode,omitempty" require:"true"`
+	SourceDiskId               *string                                         `json:"SourceDiskId,omitempty" xml:"SourceDiskId,omitempty" require:"true"`
+	SourceDiskType             *string                                         `json:"SourceDiskType,omitempty" xml:"SourceDiskType,omitempty" require:"true"`
+	RetentionDays              *int                                            `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty" require:"true"`
+	Encrypted                  *bool                                           `json:"Encrypted,omitempty" xml:"Encrypted,omitempty" require:"true"`
+	SourceDiskSize             *string                                         `json:"SourceDiskSize,omitempty" xml:"SourceDiskSize,omitempty" require:"true"`
+	Description                *string                                         `json:"Description,omitempty" xml:"Description,omitempty" require:"true"`
+	CreationTime               *string                                         `json:"CreationTime,omitempty" xml:"CreationTime,omitempty" require:"true"`
+	LastModifiedTime           *string                                         `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty" require:"true"`
+	Status                     *string                                         `json:"Status,omitempty" xml:"Status,omitempty" require:"true"`
+	Usage                      *string                                         `json:"Usage,omitempty" xml:"Usage,omitempty" require:"true"`
+	SourceStorageType          *string                                         `json:"SourceStorageType,omitempty" xml:"SourceStorageType,omitempty" require:"true"`
+	RemainTime                 *int                                            `json:"RemainTime,omitempty" xml:"RemainTime,omitempty" require:"true"`
+	ResourceGroupId            *string                                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty" require:"true"`
+	KMSKeyId                   *string                                         `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty" require:"true"`
+	Category                   *string                                         `json:"Category,omitempty" xml:"Category,omitempty" require:"true"`
+	SnapshotType               *string                                         `json:"SnapshotType,omitempty" xml:"SnapshotType,omitempty" require:"true"`
+	InstantAccess              *bool                                           `json:"InstantAccess,omitempty" xml:"InstantAccess,omitempty" require:"true"`
+	InstantAccessRetentionDays *int                                            `json:"InstantAccessRetentionDays,omitempty" xml:"InstantAccessRetentionDays,omitempty" require:"true"`
+	Tags                       *DescribeSnapshotsResponseSnapshotsSnapshotTags `json:"Tags,omitempty" xml:"Tags,omitempty" require:"true" type:"Struct"`
 }
 
 func (s DescribeSnapshotsResponseSnapshotsSnapshot) String() string {
@@ -32654,6 +32923,16 @@ func (s *DescribeSnapshotsResponseSnapshotsSnapshot) SetCategory(v string) *Desc
 
 func (s *DescribeSnapshotsResponseSnapshotsSnapshot) SetSnapshotType(v string) *DescribeSnapshotsResponseSnapshotsSnapshot {
 	s.SnapshotType = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseSnapshotsSnapshot) SetInstantAccess(v bool) *DescribeSnapshotsResponseSnapshotsSnapshot {
+	s.InstantAccess = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseSnapshotsSnapshot) SetInstantAccessRetentionDays(v int) *DescribeSnapshotsResponseSnapshotsSnapshot {
+	s.InstantAccessRetentionDays = &v
 	return s
 }
 
@@ -34843,9 +35122,12 @@ func (s *DescribeInstancesResponseInstancesInstanceNetworkInterfaces) SetNetwork
 }
 
 type DescribeInstancesResponseInstancesInstanceNetworkInterfacesNetworkInterface struct {
-	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty" require:"true"`
-	MacAddress         *string `json:"MacAddress,omitempty" xml:"MacAddress,omitempty" require:"true"`
-	PrimaryIpAddress   *string `json:"PrimaryIpAddress,omitempty" xml:"PrimaryIpAddress,omitempty" require:"true"`
+	NetworkInterfaceId *string                                                                                   `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty" require:"true"`
+	MacAddress         *string                                                                                   `json:"MacAddress,omitempty" xml:"MacAddress,omitempty" require:"true"`
+	PrimaryIpAddress   *string                                                                                   `json:"PrimaryIpAddress,omitempty" xml:"PrimaryIpAddress,omitempty" require:"true"`
+	Type               *string                                                                                   `json:"Type,omitempty" xml:"Type,omitempty" require:"true"`
+	PrivateIpSets      *DescribeInstancesResponseInstancesInstanceNetworkInterfacesNetworkInterfacePrivateIpSets `json:"PrivateIpSets,omitempty" xml:"PrivateIpSets,omitempty" require:"true" type:"Struct"`
+	Ipv6Sets           *DescribeInstancesResponseInstancesInstanceNetworkInterfacesNetworkInterfaceIpv6Sets      `json:"Ipv6Sets,omitempty" xml:"Ipv6Sets,omitempty" require:"true" type:"Struct"`
 }
 
 func (s DescribeInstancesResponseInstancesInstanceNetworkInterfacesNetworkInterface) String() string {
@@ -34868,6 +35150,95 @@ func (s *DescribeInstancesResponseInstancesInstanceNetworkInterfacesNetworkInter
 
 func (s *DescribeInstancesResponseInstancesInstanceNetworkInterfacesNetworkInterface) SetPrimaryIpAddress(v string) *DescribeInstancesResponseInstancesInstanceNetworkInterfacesNetworkInterface {
 	s.PrimaryIpAddress = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseInstancesInstanceNetworkInterfacesNetworkInterface) SetType(v string) *DescribeInstancesResponseInstancesInstanceNetworkInterfacesNetworkInterface {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseInstancesInstanceNetworkInterfacesNetworkInterface) SetPrivateIpSets(v *DescribeInstancesResponseInstancesInstanceNetworkInterfacesNetworkInterfacePrivateIpSets) *DescribeInstancesResponseInstancesInstanceNetworkInterfacesNetworkInterface {
+	s.PrivateIpSets = v
+	return s
+}
+
+func (s *DescribeInstancesResponseInstancesInstanceNetworkInterfacesNetworkInterface) SetIpv6Sets(v *DescribeInstancesResponseInstancesInstanceNetworkInterfacesNetworkInterfaceIpv6Sets) *DescribeInstancesResponseInstancesInstanceNetworkInterfacesNetworkInterface {
+	s.Ipv6Sets = v
+	return s
+}
+
+type DescribeInstancesResponseInstancesInstanceNetworkInterfacesNetworkInterfacePrivateIpSets struct {
+	PrivateIpSet []*DescribeInstancesResponseInstancesInstanceNetworkInterfacesNetworkInterfacePrivateIpSetsPrivateIpSet `json:"PrivateIpSet,omitempty" xml:"PrivateIpSet,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s DescribeInstancesResponseInstancesInstanceNetworkInterfacesNetworkInterfacePrivateIpSets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancesResponseInstancesInstanceNetworkInterfacesNetworkInterfacePrivateIpSets) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancesResponseInstancesInstanceNetworkInterfacesNetworkInterfacePrivateIpSets) SetPrivateIpSet(v []*DescribeInstancesResponseInstancesInstanceNetworkInterfacesNetworkInterfacePrivateIpSetsPrivateIpSet) *DescribeInstancesResponseInstancesInstanceNetworkInterfacesNetworkInterfacePrivateIpSets {
+	s.PrivateIpSet = v
+	return s
+}
+
+type DescribeInstancesResponseInstancesInstanceNetworkInterfacesNetworkInterfacePrivateIpSetsPrivateIpSet struct {
+	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty" require:"true"`
+	Primary          *bool   `json:"Primary,omitempty" xml:"Primary,omitempty" require:"true"`
+}
+
+func (s DescribeInstancesResponseInstancesInstanceNetworkInterfacesNetworkInterfacePrivateIpSetsPrivateIpSet) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancesResponseInstancesInstanceNetworkInterfacesNetworkInterfacePrivateIpSetsPrivateIpSet) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancesResponseInstancesInstanceNetworkInterfacesNetworkInterfacePrivateIpSetsPrivateIpSet) SetPrivateIpAddress(v string) *DescribeInstancesResponseInstancesInstanceNetworkInterfacesNetworkInterfacePrivateIpSetsPrivateIpSet {
+	s.PrivateIpAddress = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseInstancesInstanceNetworkInterfacesNetworkInterfacePrivateIpSetsPrivateIpSet) SetPrimary(v bool) *DescribeInstancesResponseInstancesInstanceNetworkInterfacesNetworkInterfacePrivateIpSetsPrivateIpSet {
+	s.Primary = &v
+	return s
+}
+
+type DescribeInstancesResponseInstancesInstanceNetworkInterfacesNetworkInterfaceIpv6Sets struct {
+	Ipv6Set []*DescribeInstancesResponseInstancesInstanceNetworkInterfacesNetworkInterfaceIpv6SetsIpv6Set `json:"Ipv6Set,omitempty" xml:"Ipv6Set,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s DescribeInstancesResponseInstancesInstanceNetworkInterfacesNetworkInterfaceIpv6Sets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancesResponseInstancesInstanceNetworkInterfacesNetworkInterfaceIpv6Sets) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancesResponseInstancesInstanceNetworkInterfacesNetworkInterfaceIpv6Sets) SetIpv6Set(v []*DescribeInstancesResponseInstancesInstanceNetworkInterfacesNetworkInterfaceIpv6SetsIpv6Set) *DescribeInstancesResponseInstancesInstanceNetworkInterfacesNetworkInterfaceIpv6Sets {
+	s.Ipv6Set = v
+	return s
+}
+
+type DescribeInstancesResponseInstancesInstanceNetworkInterfacesNetworkInterfaceIpv6SetsIpv6Set struct {
+	Ipv6Address *string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty" require:"true"`
+}
+
+func (s DescribeInstancesResponseInstancesInstanceNetworkInterfacesNetworkInterfaceIpv6SetsIpv6Set) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancesResponseInstancesInstanceNetworkInterfacesNetworkInterfaceIpv6SetsIpv6Set) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancesResponseInstancesInstanceNetworkInterfacesNetworkInterfaceIpv6SetsIpv6Set) SetIpv6Address(v string) *DescribeInstancesResponseInstancesInstanceNetworkInterfacesNetworkInterfaceIpv6SetsIpv6Set {
+	s.Ipv6Address = &v
 	return s
 }
 
@@ -38379,14 +38750,16 @@ func (s *CreateVpcResponse) SetRouteTableId(v string) *CreateVpcResponse {
 }
 
 type CreateSnapshotRequest struct {
-	DiskId          *string                     `json:"DiskId,omitempty" xml:"DiskId,omitempty" require:"true"`
-	SnapshotName    *string                     `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
-	Description     *string                     `json:"Description,omitempty" xml:"Description,omitempty"`
-	RetentionDays   *int                        `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
-	Category        *string                     `json:"Category,omitempty" xml:"Category,omitempty"`
-	ClientToken     *string                     `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Tag             []*CreateSnapshotRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	ResourceGroupId *string                     `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	DiskId                     *string                     `json:"DiskId,omitempty" xml:"DiskId,omitempty" require:"true"`
+	SnapshotName               *string                     `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
+	Description                *string                     `json:"Description,omitempty" xml:"Description,omitempty"`
+	RetentionDays              *int                        `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
+	Category                   *string                     `json:"Category,omitempty" xml:"Category,omitempty"`
+	ClientToken                *string                     `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Tag                        []*CreateSnapshotRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceGroupId            *string                     `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	InstantAccess              *bool                       `json:"InstantAccess,omitempty" xml:"InstantAccess,omitempty"`
+	InstantAccessRetentionDays *int                        `json:"InstantAccessRetentionDays,omitempty" xml:"InstantAccessRetentionDays,omitempty"`
 }
 
 func (s CreateSnapshotRequest) String() string {
@@ -38434,6 +38807,16 @@ func (s *CreateSnapshotRequest) SetTag(v []*CreateSnapshotRequestTag) *CreateSna
 
 func (s *CreateSnapshotRequest) SetResourceGroupId(v string) *CreateSnapshotRequest {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateSnapshotRequest) SetInstantAccess(v bool) *CreateSnapshotRequest {
+	s.InstantAccess = &v
+	return s
+}
+
+func (s *CreateSnapshotRequest) SetInstantAccessRetentionDays(v int) *CreateSnapshotRequest {
+	s.InstantAccessRetentionDays = &v
 	return s
 }
 
