@@ -1563,7 +1563,8 @@ func (s *SegmentFaceAdvanceRequest) SetImageURLObject(v io.Reader) *SegmentFaceA
 }
 
 type SegmentHeadRequest struct {
-	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty" require:"true"`
+	ImageURL   *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty" require:"true"`
+	ReturnForm *string `json:"ReturnForm,omitempty" xml:"ReturnForm,omitempty"`
 }
 
 func (s SegmentHeadRequest) String() string {
@@ -1576,6 +1577,11 @@ func (s SegmentHeadRequest) GoString() string {
 
 func (s *SegmentHeadRequest) SetImageURL(v string) *SegmentHeadRequest {
 	s.ImageURL = &v
+	return s
+}
+
+func (s *SegmentHeadRequest) SetReturnForm(v string) *SegmentHeadRequest {
+	s.ReturnForm = &v
 	return s
 }
 
@@ -1620,11 +1626,11 @@ func (s *SegmentHeadResponseData) SetElements(v []*SegmentHeadResponseDataElemen
 }
 
 type SegmentHeadResponseDataElements struct {
-	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty" require:"true"`
 	X        *int    `json:"X,omitempty" xml:"X,omitempty" require:"true"`
 	Y        *int    `json:"Y,omitempty" xml:"Y,omitempty" require:"true"`
-	Width    *int    `json:"Width,omitempty" xml:"Width,omitempty" require:"true"`
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty" require:"true"`
 	Height   *int    `json:"Height,omitempty" xml:"Height,omitempty" require:"true"`
+	Width    *int    `json:"Width,omitempty" xml:"Width,omitempty" require:"true"`
 }
 
 func (s SegmentHeadResponseDataElements) String() string {
@@ -1633,11 +1639,6 @@ func (s SegmentHeadResponseDataElements) String() string {
 
 func (s SegmentHeadResponseDataElements) GoString() string {
 	return s.String()
-}
-
-func (s *SegmentHeadResponseDataElements) SetImageURL(v string) *SegmentHeadResponseDataElements {
-	s.ImageURL = &v
-	return s
 }
 
 func (s *SegmentHeadResponseDataElements) SetX(v int) *SegmentHeadResponseDataElements {
@@ -1650,8 +1651,8 @@ func (s *SegmentHeadResponseDataElements) SetY(v int) *SegmentHeadResponseDataEl
 	return s
 }
 
-func (s *SegmentHeadResponseDataElements) SetWidth(v int) *SegmentHeadResponseDataElements {
-	s.Width = &v
+func (s *SegmentHeadResponseDataElements) SetImageURL(v string) *SegmentHeadResponseDataElements {
+	s.ImageURL = &v
 	return s
 }
 
@@ -1660,8 +1661,14 @@ func (s *SegmentHeadResponseDataElements) SetHeight(v int) *SegmentHeadResponseD
 	return s
 }
 
+func (s *SegmentHeadResponseDataElements) SetWidth(v int) *SegmentHeadResponseDataElements {
+	s.Width = &v
+	return s
+}
+
 type SegmentHeadAdvanceRequest struct {
 	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ReturnForm     *string   `json:"ReturnForm,omitempty" xml:"ReturnForm,omitempty"`
 }
 
 func (s SegmentHeadAdvanceRequest) String() string {
@@ -1674,6 +1681,11 @@ func (s SegmentHeadAdvanceRequest) GoString() string {
 
 func (s *SegmentHeadAdvanceRequest) SetImageURLObject(v io.Reader) *SegmentHeadAdvanceRequest {
 	s.ImageURLObject = v
+	return s
+}
+
+func (s *SegmentHeadAdvanceRequest) SetReturnForm(v string) *SegmentHeadAdvanceRequest {
+	s.ReturnForm = &v
 	return s
 }
 
@@ -1752,8 +1764,9 @@ func (s *SegmentCommodityAdvanceRequest) SetImageURLObject(v io.Reader) *Segment
 }
 
 type SegmentBodyRequest struct {
-	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty" require:"true"`
-	Async    *bool   `json:"Async,omitempty" xml:"Async,omitempty"`
+	ImageURL   *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty" require:"true"`
+	Async      *bool   `json:"Async,omitempty" xml:"Async,omitempty"`
+	ReturnForm *string `json:"ReturnForm,omitempty" xml:"ReturnForm,omitempty"`
 }
 
 func (s SegmentBodyRequest) String() string {
@@ -1771,6 +1784,11 @@ func (s *SegmentBodyRequest) SetImageURL(v string) *SegmentBodyRequest {
 
 func (s *SegmentBodyRequest) SetAsync(v bool) *SegmentBodyRequest {
 	s.Async = &v
+	return s
+}
+
+func (s *SegmentBodyRequest) SetReturnForm(v string) *SegmentBodyRequest {
+	s.ReturnForm = &v
 	return s
 }
 
@@ -1817,6 +1835,7 @@ func (s *SegmentBodyResponseData) SetImageURL(v string) *SegmentBodyResponseData
 type SegmentBodyAdvanceRequest struct {
 	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
 	Async          *bool     `json:"Async,omitempty" xml:"Async,omitempty"`
+	ReturnForm     *string   `json:"ReturnForm,omitempty" xml:"ReturnForm,omitempty"`
 }
 
 func (s SegmentBodyAdvanceRequest) String() string {
@@ -1834,6 +1853,11 @@ func (s *SegmentBodyAdvanceRequest) SetImageURLObject(v io.Reader) *SegmentBodyA
 
 func (s *SegmentBodyAdvanceRequest) SetAsync(v bool) *SegmentBodyAdvanceRequest {
 	s.Async = &v
+	return s
+}
+
+func (s *SegmentBodyAdvanceRequest) SetReturnForm(v string) *SegmentBodyAdvanceRequest {
+	s.ReturnForm = &v
 	return s
 }
 
@@ -1953,6 +1977,17 @@ func (client *Client) SegmentHDSky(request *SegmentHDSkyRequest, runtime *util.R
 	return _result, _err
 }
 
+func (client *Client) SegmentHDSkySimply(request *SegmentHDSkyRequest) (_result *SegmentHDSkyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SegmentHDSkyResponse{}
+	_body, _err := client.SegmentHDSky(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SegmentHDSkyAdvance(request *SegmentHDSkyAdvanceRequest, runtime *util.RuntimeOptions) (_result *SegmentHDSkyResponse, _err error) {
 	// Step 0: init client
 	accessKeyId, _err := client.Credential.GetAccessKeyId()
@@ -1995,8 +2030,8 @@ func (client *Client) SegmentHDSkyAdvance(request *SegmentHDSkyAdvanceRequest, r
 	uploadRequest := &oss.PostObjectRequest{}
 	ossRuntime := &ossutil.RuntimeOptions{}
 	rpcutil.Convert(runtime, ossRuntime)
-	segmentHDSkyreq := &SegmentHDSkyRequest{}
-	rpcutil.Convert(request, segmentHDSkyreq)
+	segmentHDSkyReq := &SegmentHDSkyRequest{}
+	rpcutil.Convert(request, segmentHDSkyReq)
 	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2030,8 +2065,8 @@ func (client *Client) SegmentHDSkyAdvance(request *SegmentHDSkyAdvanceRequest, r
 	if _err != nil {
 		return _result, _err
 	}
-	segmentHDSkyreq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
-	segmentHDSkyResp, _err := client.SegmentHDSky(segmentHDSkyreq, runtime)
+	segmentHDSkyReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	segmentHDSkyResp, _err := client.SegmentHDSky(segmentHDSkyReq, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2051,6 +2086,17 @@ func (client *Client) SegmentHDCommonImage(request *SegmentHDCommonImageRequest,
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SegmentHDCommonImageSimply(request *SegmentHDCommonImageRequest) (_result *SegmentHDCommonImageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SegmentHDCommonImageResponse{}
+	_body, _err := client.SegmentHDCommonImage(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
 
@@ -2096,8 +2142,8 @@ func (client *Client) SegmentHDCommonImageAdvance(request *SegmentHDCommonImageA
 	uploadRequest := &oss.PostObjectRequest{}
 	ossRuntime := &ossutil.RuntimeOptions{}
 	rpcutil.Convert(runtime, ossRuntime)
-	segmentHDCommonImagereq := &SegmentHDCommonImageRequest{}
-	rpcutil.Convert(request, segmentHDCommonImagereq)
+	segmentHDCommonImageReq := &SegmentHDCommonImageRequest{}
+	rpcutil.Convert(request, segmentHDCommonImageReq)
 	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2131,8 +2177,8 @@ func (client *Client) SegmentHDCommonImageAdvance(request *SegmentHDCommonImageA
 	if _err != nil {
 		return _result, _err
 	}
-	segmentHDCommonImagereq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
-	segmentHDCommonImageResp, _err := client.SegmentHDCommonImage(segmentHDCommonImagereq, runtime)
+	segmentHDCommonImageReq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	segmentHDCommonImageResp, _err := client.SegmentHDCommonImage(segmentHDCommonImageReq, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2152,6 +2198,17 @@ func (client *Client) SegmentSkin(request *SegmentSkinRequest, runtime *util.Run
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SegmentSkinSimply(request *SegmentSkinRequest) (_result *SegmentSkinResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SegmentSkinResponse{}
+	_body, _err := client.SegmentSkin(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
 
@@ -2197,8 +2254,8 @@ func (client *Client) SegmentSkinAdvance(request *SegmentSkinAdvanceRequest, run
 	uploadRequest := &oss.PostObjectRequest{}
 	ossRuntime := &ossutil.RuntimeOptions{}
 	rpcutil.Convert(runtime, ossRuntime)
-	segmentSkinreq := &SegmentSkinRequest{}
-	rpcutil.Convert(request, segmentSkinreq)
+	segmentSkinReq := &SegmentSkinRequest{}
+	rpcutil.Convert(request, segmentSkinReq)
 	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2232,8 +2289,8 @@ func (client *Client) SegmentSkinAdvance(request *SegmentSkinAdvanceRequest, run
 	if _err != nil {
 		return _result, _err
 	}
-	segmentSkinreq.URL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
-	segmentSkinResp, _err := client.SegmentSkin(segmentSkinreq, runtime)
+	segmentSkinReq.URL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	segmentSkinResp, _err := client.SegmentSkin(segmentSkinReq, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2253,6 +2310,17 @@ func (client *Client) ChangeSky(request *ChangeSkyRequest, runtime *util.Runtime
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ChangeSkySimply(request *ChangeSkyRequest) (_result *ChangeSkyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ChangeSkyResponse{}
+	_body, _err := client.ChangeSky(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
 
@@ -2298,8 +2366,8 @@ func (client *Client) ChangeSkyAdvance(request *ChangeSkyAdvanceRequest, runtime
 	uploadRequest := &oss.PostObjectRequest{}
 	ossRuntime := &ossutil.RuntimeOptions{}
 	rpcutil.Convert(runtime, ossRuntime)
-	changeSkyreq := &ChangeSkyRequest{}
-	rpcutil.Convert(request, changeSkyreq)
+	changeSkyReq := &ChangeSkyRequest{}
+	rpcutil.Convert(request, changeSkyReq)
 	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2333,8 +2401,8 @@ func (client *Client) ChangeSkyAdvance(request *ChangeSkyAdvanceRequest, runtime
 	if _err != nil {
 		return _result, _err
 	}
-	changeSkyreq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
-	changeSkyResp, _err := client.ChangeSky(changeSkyreq, runtime)
+	changeSkyReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	changeSkyResp, _err := client.ChangeSky(changeSkyReq, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2354,6 +2422,17 @@ func (client *Client) SegmentLogo(request *SegmentLogoRequest, runtime *util.Run
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SegmentLogoSimply(request *SegmentLogoRequest) (_result *SegmentLogoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SegmentLogoResponse{}
+	_body, _err := client.SegmentLogo(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
 
@@ -2399,8 +2478,8 @@ func (client *Client) SegmentLogoAdvance(request *SegmentLogoAdvanceRequest, run
 	uploadRequest := &oss.PostObjectRequest{}
 	ossRuntime := &ossutil.RuntimeOptions{}
 	rpcutil.Convert(runtime, ossRuntime)
-	segmentLogoreq := &SegmentLogoRequest{}
-	rpcutil.Convert(request, segmentLogoreq)
+	segmentLogoReq := &SegmentLogoRequest{}
+	rpcutil.Convert(request, segmentLogoReq)
 	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2434,8 +2513,8 @@ func (client *Client) SegmentLogoAdvance(request *SegmentLogoAdvanceRequest, run
 	if _err != nil {
 		return _result, _err
 	}
-	segmentLogoreq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
-	segmentLogoResp, _err := client.SegmentLogo(segmentLogoreq, runtime)
+	segmentLogoReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	segmentLogoResp, _err := client.SegmentLogo(segmentLogoReq, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2455,6 +2534,17 @@ func (client *Client) SegmentScene(request *SegmentSceneRequest, runtime *util.R
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SegmentSceneSimply(request *SegmentSceneRequest) (_result *SegmentSceneResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SegmentSceneResponse{}
+	_body, _err := client.SegmentScene(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
 
@@ -2500,8 +2590,8 @@ func (client *Client) SegmentSceneAdvance(request *SegmentSceneAdvanceRequest, r
 	uploadRequest := &oss.PostObjectRequest{}
 	ossRuntime := &ossutil.RuntimeOptions{}
 	rpcutil.Convert(runtime, ossRuntime)
-	segmentScenereq := &SegmentSceneRequest{}
-	rpcutil.Convert(request, segmentScenereq)
+	segmentSceneReq := &SegmentSceneRequest{}
+	rpcutil.Convert(request, segmentSceneReq)
 	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2535,8 +2625,8 @@ func (client *Client) SegmentSceneAdvance(request *SegmentSceneAdvanceRequest, r
 	if _err != nil {
 		return _result, _err
 	}
-	segmentScenereq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
-	segmentSceneResp, _err := client.SegmentScene(segmentScenereq, runtime)
+	segmentSceneReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	segmentSceneResp, _err := client.SegmentScene(segmentSceneReq, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2556,6 +2646,17 @@ func (client *Client) SegmentFood(request *SegmentFoodRequest, runtime *util.Run
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SegmentFoodSimply(request *SegmentFoodRequest) (_result *SegmentFoodResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SegmentFoodResponse{}
+	_body, _err := client.SegmentFood(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
 
@@ -2601,8 +2702,8 @@ func (client *Client) SegmentFoodAdvance(request *SegmentFoodAdvanceRequest, run
 	uploadRequest := &oss.PostObjectRequest{}
 	ossRuntime := &ossutil.RuntimeOptions{}
 	rpcutil.Convert(runtime, ossRuntime)
-	segmentFoodreq := &SegmentFoodRequest{}
-	rpcutil.Convert(request, segmentFoodreq)
+	segmentFoodReq := &SegmentFoodRequest{}
+	rpcutil.Convert(request, segmentFoodReq)
 	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2636,8 +2737,8 @@ func (client *Client) SegmentFoodAdvance(request *SegmentFoodAdvanceRequest, run
 	if _err != nil {
 		return _result, _err
 	}
-	segmentFoodreq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
-	segmentFoodResp, _err := client.SegmentFood(segmentFoodreq, runtime)
+	segmentFoodReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	segmentFoodResp, _err := client.SegmentFood(segmentFoodReq, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2657,6 +2758,17 @@ func (client *Client) SegmentCloth(request *SegmentClothRequest, runtime *util.R
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SegmentClothSimply(request *SegmentClothRequest) (_result *SegmentClothResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SegmentClothResponse{}
+	_body, _err := client.SegmentCloth(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
 
@@ -2702,8 +2814,8 @@ func (client *Client) SegmentClothAdvance(request *SegmentClothAdvanceRequest, r
 	uploadRequest := &oss.PostObjectRequest{}
 	ossRuntime := &ossutil.RuntimeOptions{}
 	rpcutil.Convert(runtime, ossRuntime)
-	segmentClothreq := &SegmentClothRequest{}
-	rpcutil.Convert(request, segmentClothreq)
+	segmentClothReq := &SegmentClothRequest{}
+	rpcutil.Convert(request, segmentClothReq)
 	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2737,8 +2849,8 @@ func (client *Client) SegmentClothAdvance(request *SegmentClothAdvanceRequest, r
 	if _err != nil {
 		return _result, _err
 	}
-	segmentClothreq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
-	segmentClothResp, _err := client.SegmentCloth(segmentClothreq, runtime)
+	segmentClothReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	segmentClothResp, _err := client.SegmentCloth(segmentClothReq, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2758,6 +2870,17 @@ func (client *Client) SegmentAnimal(request *SegmentAnimalRequest, runtime *util
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SegmentAnimalSimply(request *SegmentAnimalRequest) (_result *SegmentAnimalResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SegmentAnimalResponse{}
+	_body, _err := client.SegmentAnimal(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
 
@@ -2803,8 +2926,8 @@ func (client *Client) SegmentAnimalAdvance(request *SegmentAnimalAdvanceRequest,
 	uploadRequest := &oss.PostObjectRequest{}
 	ossRuntime := &ossutil.RuntimeOptions{}
 	rpcutil.Convert(runtime, ossRuntime)
-	segmentAnimalreq := &SegmentAnimalRequest{}
-	rpcutil.Convert(request, segmentAnimalreq)
+	segmentAnimalReq := &SegmentAnimalRequest{}
+	rpcutil.Convert(request, segmentAnimalReq)
 	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2838,8 +2961,8 @@ func (client *Client) SegmentAnimalAdvance(request *SegmentAnimalAdvanceRequest,
 	if _err != nil {
 		return _result, _err
 	}
-	segmentAnimalreq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
-	segmentAnimalResp, _err := client.SegmentAnimal(segmentAnimalreq, runtime)
+	segmentAnimalReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	segmentAnimalResp, _err := client.SegmentAnimal(segmentAnimalReq, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2859,6 +2982,17 @@ func (client *Client) SegmentHDBody(request *SegmentHDBodyRequest, runtime *util
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SegmentHDBodySimply(request *SegmentHDBodyRequest) (_result *SegmentHDBodyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SegmentHDBodyResponse{}
+	_body, _err := client.SegmentHDBody(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
 
@@ -2904,8 +3038,8 @@ func (client *Client) SegmentHDBodyAdvance(request *SegmentHDBodyAdvanceRequest,
 	uploadRequest := &oss.PostObjectRequest{}
 	ossRuntime := &ossutil.RuntimeOptions{}
 	rpcutil.Convert(runtime, ossRuntime)
-	segmentHDBodyreq := &SegmentHDBodyRequest{}
-	rpcutil.Convert(request, segmentHDBodyreq)
+	segmentHDBodyReq := &SegmentHDBodyRequest{}
+	rpcutil.Convert(request, segmentHDBodyReq)
 	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2939,8 +3073,8 @@ func (client *Client) SegmentHDBodyAdvance(request *SegmentHDBodyAdvanceRequest,
 	if _err != nil {
 		return _result, _err
 	}
-	segmentHDBodyreq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
-	segmentHDBodyResp, _err := client.SegmentHDBody(segmentHDBodyreq, runtime)
+	segmentHDBodyReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	segmentHDBodyResp, _err := client.SegmentHDBody(segmentHDBodyReq, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2960,6 +3094,17 @@ func (client *Client) SegmentSky(request *SegmentSkyRequest, runtime *util.Runti
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SegmentSkySimply(request *SegmentSkyRequest) (_result *SegmentSkyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SegmentSkyResponse{}
+	_body, _err := client.SegmentSky(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
 
@@ -3005,8 +3150,8 @@ func (client *Client) SegmentSkyAdvance(request *SegmentSkyAdvanceRequest, runti
 	uploadRequest := &oss.PostObjectRequest{}
 	ossRuntime := &ossutil.RuntimeOptions{}
 	rpcutil.Convert(runtime, ossRuntime)
-	segmentSkyreq := &SegmentSkyRequest{}
-	rpcutil.Convert(request, segmentSkyreq)
+	segmentSkyReq := &SegmentSkyRequest{}
+	rpcutil.Convert(request, segmentSkyReq)
 	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3040,8 +3185,8 @@ func (client *Client) SegmentSkyAdvance(request *SegmentSkyAdvanceRequest, runti
 	if _err != nil {
 		return _result, _err
 	}
-	segmentSkyreq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
-	segmentSkyResp, _err := client.SegmentSky(segmentSkyreq, runtime)
+	segmentSkyReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	segmentSkyResp, _err := client.SegmentSky(segmentSkyReq, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3064,6 +3209,17 @@ func (client *Client) GetAsyncJobResult(request *GetAsyncJobResultRequest, runti
 	return _result, _err
 }
 
+func (client *Client) GetAsyncJobResultSimply(request *GetAsyncJobResultRequest) (_result *GetAsyncJobResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAsyncJobResultResponse{}
+	_body, _err := client.GetAsyncJobResult(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SegmentFurniture(request *SegmentFurnitureRequest, runtime *util.RuntimeOptions) (_result *SegmentFurnitureResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3075,6 +3231,17 @@ func (client *Client) SegmentFurniture(request *SegmentFurnitureRequest, runtime
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SegmentFurnitureSimply(request *SegmentFurnitureRequest) (_result *SegmentFurnitureResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SegmentFurnitureResponse{}
+	_body, _err := client.SegmentFurniture(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
 
@@ -3120,8 +3287,8 @@ func (client *Client) SegmentFurnitureAdvance(request *SegmentFurnitureAdvanceRe
 	uploadRequest := &oss.PostObjectRequest{}
 	ossRuntime := &ossutil.RuntimeOptions{}
 	rpcutil.Convert(runtime, ossRuntime)
-	segmentFurniturereq := &SegmentFurnitureRequest{}
-	rpcutil.Convert(request, segmentFurniturereq)
+	segmentFurnitureReq := &SegmentFurnitureRequest{}
+	rpcutil.Convert(request, segmentFurnitureReq)
 	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3155,8 +3322,8 @@ func (client *Client) SegmentFurnitureAdvance(request *SegmentFurnitureAdvanceRe
 	if _err != nil {
 		return _result, _err
 	}
-	segmentFurniturereq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
-	segmentFurnitureResp, _err := client.SegmentFurniture(segmentFurniturereq, runtime)
+	segmentFurnitureReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	segmentFurnitureResp, _err := client.SegmentFurniture(segmentFurnitureReq, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3176,6 +3343,17 @@ func (client *Client) RefineMask(request *RefineMaskRequest, runtime *util.Runti
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RefineMaskSimply(request *RefineMaskRequest) (_result *RefineMaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RefineMaskResponse{}
+	_body, _err := client.RefineMask(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
 
@@ -3221,8 +3399,8 @@ func (client *Client) RefineMaskAdvance(request *RefineMaskAdvanceRequest, runti
 	uploadRequest := &oss.PostObjectRequest{}
 	ossRuntime := &ossutil.RuntimeOptions{}
 	rpcutil.Convert(runtime, ossRuntime)
-	refineMaskreq := &RefineMaskRequest{}
-	rpcutil.Convert(request, refineMaskreq)
+	refineMaskReq := &RefineMaskRequest{}
+	rpcutil.Convert(request, refineMaskReq)
 	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3256,8 +3434,8 @@ func (client *Client) RefineMaskAdvance(request *RefineMaskAdvanceRequest, runti
 	if _err != nil {
 		return _result, _err
 	}
-	refineMaskreq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
-	refineMaskResp, _err := client.RefineMask(refineMaskreq, runtime)
+	refineMaskReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	refineMaskResp, _err := client.RefineMask(refineMaskReq, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3277,6 +3455,17 @@ func (client *Client) ParseFace(request *ParseFaceRequest, runtime *util.Runtime
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ParseFaceSimply(request *ParseFaceRequest) (_result *ParseFaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ParseFaceResponse{}
+	_body, _err := client.ParseFace(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
 
@@ -3322,8 +3511,8 @@ func (client *Client) ParseFaceAdvance(request *ParseFaceAdvanceRequest, runtime
 	uploadRequest := &oss.PostObjectRequest{}
 	ossRuntime := &ossutil.RuntimeOptions{}
 	rpcutil.Convert(runtime, ossRuntime)
-	parseFacereq := &ParseFaceRequest{}
-	rpcutil.Convert(request, parseFacereq)
+	parseFaceReq := &ParseFaceRequest{}
+	rpcutil.Convert(request, parseFaceReq)
 	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3357,8 +3546,8 @@ func (client *Client) ParseFaceAdvance(request *ParseFaceAdvanceRequest, runtime
 	if _err != nil {
 		return _result, _err
 	}
-	parseFacereq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
-	parseFaceResp, _err := client.ParseFace(parseFacereq, runtime)
+	parseFaceReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	parseFaceResp, _err := client.ParseFace(parseFaceReq, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3378,6 +3567,17 @@ func (client *Client) SegmentVehicle(request *SegmentVehicleRequest, runtime *ut
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SegmentVehicleSimply(request *SegmentVehicleRequest) (_result *SegmentVehicleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SegmentVehicleResponse{}
+	_body, _err := client.SegmentVehicle(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
 
@@ -3423,8 +3623,8 @@ func (client *Client) SegmentVehicleAdvance(request *SegmentVehicleAdvanceReques
 	uploadRequest := &oss.PostObjectRequest{}
 	ossRuntime := &ossutil.RuntimeOptions{}
 	rpcutil.Convert(runtime, ossRuntime)
-	segmentVehiclereq := &SegmentVehicleRequest{}
-	rpcutil.Convert(request, segmentVehiclereq)
+	segmentVehicleReq := &SegmentVehicleRequest{}
+	rpcutil.Convert(request, segmentVehicleReq)
 	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3458,8 +3658,8 @@ func (client *Client) SegmentVehicleAdvance(request *SegmentVehicleAdvanceReques
 	if _err != nil {
 		return _result, _err
 	}
-	segmentVehiclereq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
-	segmentVehicleResp, _err := client.SegmentVehicle(segmentVehiclereq, runtime)
+	segmentVehicleReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	segmentVehicleResp, _err := client.SegmentVehicle(segmentVehicleReq, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3479,6 +3679,17 @@ func (client *Client) SegmentHair(request *SegmentHairRequest, runtime *util.Run
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SegmentHairSimply(request *SegmentHairRequest) (_result *SegmentHairResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SegmentHairResponse{}
+	_body, _err := client.SegmentHair(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
 
@@ -3524,8 +3735,8 @@ func (client *Client) SegmentHairAdvance(request *SegmentHairAdvanceRequest, run
 	uploadRequest := &oss.PostObjectRequest{}
 	ossRuntime := &ossutil.RuntimeOptions{}
 	rpcutil.Convert(runtime, ossRuntime)
-	segmentHairreq := &SegmentHairRequest{}
-	rpcutil.Convert(request, segmentHairreq)
+	segmentHairReq := &SegmentHairRequest{}
+	rpcutil.Convert(request, segmentHairReq)
 	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3559,8 +3770,8 @@ func (client *Client) SegmentHairAdvance(request *SegmentHairAdvanceRequest, run
 	if _err != nil {
 		return _result, _err
 	}
-	segmentHairreq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
-	segmentHairResp, _err := client.SegmentHair(segmentHairreq, runtime)
+	segmentHairReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	segmentHairResp, _err := client.SegmentHair(segmentHairReq, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3580,6 +3791,17 @@ func (client *Client) SegmentFace(request *SegmentFaceRequest, runtime *util.Run
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SegmentFaceSimply(request *SegmentFaceRequest) (_result *SegmentFaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SegmentFaceResponse{}
+	_body, _err := client.SegmentFace(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
 
@@ -3625,8 +3847,8 @@ func (client *Client) SegmentFaceAdvance(request *SegmentFaceAdvanceRequest, run
 	uploadRequest := &oss.PostObjectRequest{}
 	ossRuntime := &ossutil.RuntimeOptions{}
 	rpcutil.Convert(runtime, ossRuntime)
-	segmentFacereq := &SegmentFaceRequest{}
-	rpcutil.Convert(request, segmentFacereq)
+	segmentFaceReq := &SegmentFaceRequest{}
+	rpcutil.Convert(request, segmentFaceReq)
 	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3660,8 +3882,8 @@ func (client *Client) SegmentFaceAdvance(request *SegmentFaceAdvanceRequest, run
 	if _err != nil {
 		return _result, _err
 	}
-	segmentFacereq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
-	segmentFaceResp, _err := client.SegmentFace(segmentFacereq, runtime)
+	segmentFaceReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	segmentFaceResp, _err := client.SegmentFace(segmentFaceReq, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3681,6 +3903,17 @@ func (client *Client) SegmentHead(request *SegmentHeadRequest, runtime *util.Run
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SegmentHeadSimply(request *SegmentHeadRequest) (_result *SegmentHeadResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SegmentHeadResponse{}
+	_body, _err := client.SegmentHead(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
 
@@ -3726,8 +3959,8 @@ func (client *Client) SegmentHeadAdvance(request *SegmentHeadAdvanceRequest, run
 	uploadRequest := &oss.PostObjectRequest{}
 	ossRuntime := &ossutil.RuntimeOptions{}
 	rpcutil.Convert(runtime, ossRuntime)
-	segmentHeadreq := &SegmentHeadRequest{}
-	rpcutil.Convert(request, segmentHeadreq)
+	segmentHeadReq := &SegmentHeadRequest{}
+	rpcutil.Convert(request, segmentHeadReq)
 	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3761,8 +3994,8 @@ func (client *Client) SegmentHeadAdvance(request *SegmentHeadAdvanceRequest, run
 	if _err != nil {
 		return _result, _err
 	}
-	segmentHeadreq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
-	segmentHeadResp, _err := client.SegmentHead(segmentHeadreq, runtime)
+	segmentHeadReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	segmentHeadResp, _err := client.SegmentHead(segmentHeadReq, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3782,6 +4015,17 @@ func (client *Client) SegmentCommodity(request *SegmentCommodityRequest, runtime
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SegmentCommoditySimply(request *SegmentCommodityRequest) (_result *SegmentCommodityResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SegmentCommodityResponse{}
+	_body, _err := client.SegmentCommodity(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
 
@@ -3827,8 +4071,8 @@ func (client *Client) SegmentCommodityAdvance(request *SegmentCommodityAdvanceRe
 	uploadRequest := &oss.PostObjectRequest{}
 	ossRuntime := &ossutil.RuntimeOptions{}
 	rpcutil.Convert(runtime, ossRuntime)
-	segmentCommodityreq := &SegmentCommodityRequest{}
-	rpcutil.Convert(request, segmentCommodityreq)
+	segmentCommodityReq := &SegmentCommodityRequest{}
+	rpcutil.Convert(request, segmentCommodityReq)
 	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3862,8 +4106,8 @@ func (client *Client) SegmentCommodityAdvance(request *SegmentCommodityAdvanceRe
 	if _err != nil {
 		return _result, _err
 	}
-	segmentCommodityreq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
-	segmentCommodityResp, _err := client.SegmentCommodity(segmentCommodityreq, runtime)
+	segmentCommodityReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	segmentCommodityResp, _err := client.SegmentCommodity(segmentCommodityReq, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3883,6 +4127,17 @@ func (client *Client) SegmentBody(request *SegmentBodyRequest, runtime *util.Run
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SegmentBodySimply(request *SegmentBodyRequest) (_result *SegmentBodyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SegmentBodyResponse{}
+	_body, _err := client.SegmentBody(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
 
@@ -3928,8 +4183,8 @@ func (client *Client) SegmentBodyAdvance(request *SegmentBodyAdvanceRequest, run
 	uploadRequest := &oss.PostObjectRequest{}
 	ossRuntime := &ossutil.RuntimeOptions{}
 	rpcutil.Convert(runtime, ossRuntime)
-	segmentBodyreq := &SegmentBodyRequest{}
-	rpcutil.Convert(request, segmentBodyreq)
+	segmentBodyReq := &SegmentBodyRequest{}
+	rpcutil.Convert(request, segmentBodyReq)
 	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3963,8 +4218,8 @@ func (client *Client) SegmentBodyAdvance(request *SegmentBodyAdvanceRequest, run
 	if _err != nil {
 		return _result, _err
 	}
-	segmentBodyreq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
-	segmentBodyResp, _err := client.SegmentBody(segmentBodyreq, runtime)
+	segmentBodyReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	segmentBodyResp, _err := client.SegmentBody(segmentBodyReq, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3984,6 +4239,17 @@ func (client *Client) SegmentCommonImage(request *SegmentCommonImageRequest, run
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SegmentCommonImageSimply(request *SegmentCommonImageRequest) (_result *SegmentCommonImageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SegmentCommonImageResponse{}
+	_body, _err := client.SegmentCommonImage(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
 
@@ -4029,8 +4295,8 @@ func (client *Client) SegmentCommonImageAdvance(request *SegmentCommonImageAdvan
 	uploadRequest := &oss.PostObjectRequest{}
 	ossRuntime := &ossutil.RuntimeOptions{}
 	rpcutil.Convert(runtime, ossRuntime)
-	segmentCommonImagereq := &SegmentCommonImageRequest{}
-	rpcutil.Convert(request, segmentCommonImagereq)
+	segmentCommonImageReq := &SegmentCommonImageRequest{}
+	rpcutil.Convert(request, segmentCommonImageReq)
 	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4064,8 +4330,8 @@ func (client *Client) SegmentCommonImageAdvance(request *SegmentCommonImageAdvan
 	if _err != nil {
 		return _result, _err
 	}
-	segmentCommonImagereq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
-	segmentCommonImageResp, _err := client.SegmentCommonImage(segmentCommonImagereq, runtime)
+	segmentCommonImageReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	segmentCommonImageResp, _err := client.SegmentCommonImage(segmentCommonImageReq, runtime)
 	if _err != nil {
 		return _result, _err
 	}
