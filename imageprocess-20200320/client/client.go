@@ -1440,6 +1440,7 @@ func (s *DetectLungNoduleResponseData) SetSeries(v []*DetectLungNoduleResponseDa
 
 type DetectLungNoduleResponseDataSeries struct {
 	SeriesInstanceUid *string                                       `json:"SeriesInstanceUid,omitempty" xml:"SeriesInstanceUid,omitempty" require:"true"`
+	Report            *string                                       `json:"Report,omitempty" xml:"Report,omitempty" require:"true"`
 	Elements          []*DetectLungNoduleResponseDataSeriesElements `json:"Elements,omitempty" xml:"Elements,omitempty" require:"true" type:"Repeated"`
 	Origin            []*float32                                    `json:"Origin,omitempty" xml:"Origin,omitempty" require:"true" type:"Repeated"`
 	Spacing           []*float32                                    `json:"Spacing,omitempty" xml:"Spacing,omitempty" require:"true" type:"Repeated"`
@@ -1455,6 +1456,11 @@ func (s DetectLungNoduleResponseDataSeries) GoString() string {
 
 func (s *DetectLungNoduleResponseDataSeries) SetSeriesInstanceUid(v string) *DetectLungNoduleResponseDataSeries {
 	s.SeriesInstanceUid = &v
+	return s
+}
+
+func (s *DetectLungNoduleResponseDataSeries) SetReport(v string) *DetectLungNoduleResponseDataSeries {
+	s.Report = &v
 	return s
 }
 
@@ -1486,6 +1492,8 @@ type DetectLungNoduleResponseDataSeriesElements struct {
 	ImageY         *float32 `json:"ImageY,omitempty" xml:"ImageY,omitempty" require:"true"`
 	ImageZ         *float32 `json:"ImageZ,omitempty" xml:"ImageZ,omitempty" require:"true"`
 	SOPInstanceUID *string  `json:"SOPInstanceUID,omitempty" xml:"SOPInstanceUID,omitempty" require:"true"`
+	Volume         *float32 `json:"Volume,omitempty" xml:"Volume,omitempty" require:"true"`
+	MeanValue      *float32 `json:"MeanValue,omitempty" xml:"MeanValue,omitempty" require:"true"`
 }
 
 func (s DetectLungNoduleResponseDataSeriesElements) String() string {
@@ -1553,6 +1561,16 @@ func (s *DetectLungNoduleResponseDataSeriesElements) SetImageZ(v float32) *Detec
 
 func (s *DetectLungNoduleResponseDataSeriesElements) SetSOPInstanceUID(v string) *DetectLungNoduleResponseDataSeriesElements {
 	s.SOPInstanceUID = &v
+	return s
+}
+
+func (s *DetectLungNoduleResponseDataSeriesElements) SetVolume(v float32) *DetectLungNoduleResponseDataSeriesElements {
+	s.Volume = &v
+	return s
+}
+
+func (s *DetectLungNoduleResponseDataSeriesElements) SetMeanValue(v float32) *DetectLungNoduleResponseDataSeriesElements {
+	s.MeanValue = &v
 	return s
 }
 
@@ -1795,6 +1813,17 @@ func (client *Client) DetectSkinDisease(request *DetectSkinDiseaseRequest, runti
 	return _result, _err
 }
 
+func (client *Client) DetectSkinDiseaseSimply(request *DetectSkinDiseaseRequest) (_result *DetectSkinDiseaseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DetectSkinDiseaseResponse{}
+	_body, _err := client.DetectSkinDisease(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DetectSkinDiseaseAdvance(request *DetectSkinDiseaseAdvanceRequest, runtime *util.RuntimeOptions) (_result *DetectSkinDiseaseResponse, _err error) {
 	// Step 0: init client
 	accessKeyId, _err := client.Credential.GetAccessKeyId()
@@ -1837,8 +1866,8 @@ func (client *Client) DetectSkinDiseaseAdvance(request *DetectSkinDiseaseAdvance
 	uploadRequest := &oss.PostObjectRequest{}
 	ossRuntime := &ossutil.RuntimeOptions{}
 	rpcutil.Convert(runtime, ossRuntime)
-	detectSkinDiseasereq := &DetectSkinDiseaseRequest{}
-	rpcutil.Convert(request, detectSkinDiseasereq)
+	detectSkinDiseaseReq := &DetectSkinDiseaseRequest{}
+	rpcutil.Convert(request, detectSkinDiseaseReq)
 	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1872,8 +1901,8 @@ func (client *Client) DetectSkinDiseaseAdvance(request *DetectSkinDiseaseAdvance
 	if _err != nil {
 		return _result, _err
 	}
-	detectSkinDiseasereq.Url = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
-	detectSkinDiseaseResp, _err := client.DetectSkinDisease(detectSkinDiseasereq, runtime)
+	detectSkinDiseaseReq.Url = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	detectSkinDiseaseResp, _err := client.DetectSkinDisease(detectSkinDiseaseReq, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1896,6 +1925,17 @@ func (client *Client) RunMedQA(request *RunMedQARequest, runtime *util.RuntimeOp
 	return _result, _err
 }
 
+func (client *Client) RunMedQASimply(request *RunMedQARequest) (_result *RunMedQAResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RunMedQAResponse{}
+	_body, _err := client.RunMedQA(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DetectKneeKeypointXRay(request *DetectKneeKeypointXRayRequest, runtime *util.RuntimeOptions) (_result *DetectKneeKeypointXRayResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1907,6 +1947,17 @@ func (client *Client) DetectKneeKeypointXRay(request *DetectKneeKeypointXRayRequ
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DetectKneeKeypointXRaySimply(request *DetectKneeKeypointXRayRequest) (_result *DetectKneeKeypointXRayResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DetectKneeKeypointXRayResponse{}
+	_body, _err := client.DetectKneeKeypointXRay(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
 
@@ -1952,8 +2003,8 @@ func (client *Client) DetectKneeKeypointXRayAdvance(request *DetectKneeKeypointX
 	uploadRequest := &oss.PostObjectRequest{}
 	ossRuntime := &ossutil.RuntimeOptions{}
 	rpcutil.Convert(runtime, ossRuntime)
-	detectKneeKeypointXRayreq := &DetectKneeKeypointXRayRequest{}
-	rpcutil.Convert(request, detectKneeKeypointXRayreq)
+	detectKneeKeypointXRayReq := &DetectKneeKeypointXRayRequest{}
+	rpcutil.Convert(request, detectKneeKeypointXRayReq)
 	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1987,8 +2038,8 @@ func (client *Client) DetectKneeKeypointXRayAdvance(request *DetectKneeKeypointX
 	if _err != nil {
 		return _result, _err
 	}
-	detectKneeKeypointXRayreq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
-	detectKneeKeypointXRayResp, _err := client.DetectKneeKeypointXRay(detectKneeKeypointXRayreq, runtime)
+	detectKneeKeypointXRayReq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	detectKneeKeypointXRayResp, _err := client.DetectKneeKeypointXRay(detectKneeKeypointXRayReq, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2008,6 +2059,17 @@ func (client *Client) ClassifyFNF(request *ClassifyFNFRequest, runtime *util.Run
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ClassifyFNFSimply(request *ClassifyFNFRequest) (_result *ClassifyFNFResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ClassifyFNFResponse{}
+	_body, _err := client.ClassifyFNF(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
 
@@ -2053,8 +2115,8 @@ func (client *Client) ClassifyFNFAdvance(request *ClassifyFNFAdvanceRequest, run
 	uploadRequest := &oss.PostObjectRequest{}
 	ossRuntime := &ossutil.RuntimeOptions{}
 	rpcutil.Convert(runtime, ossRuntime)
-	classifyFNFreq := &ClassifyFNFRequest{}
-	rpcutil.Convert(request, classifyFNFreq)
+	classifyFNFReq := &ClassifyFNFRequest{}
+	rpcutil.Convert(request, classifyFNFReq)
 	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2088,8 +2150,8 @@ func (client *Client) ClassifyFNFAdvance(request *ClassifyFNFAdvanceRequest, run
 	if _err != nil {
 		return _result, _err
 	}
-	classifyFNFreq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
-	classifyFNFResp, _err := client.ClassifyFNF(classifyFNFreq, runtime)
+	classifyFNFReq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	classifyFNFResp, _err := client.ClassifyFNF(classifyFNFReq, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2112,6 +2174,17 @@ func (client *Client) RunCTRegistration(request *RunCTRegistrationRequest, runti
 	return _result, _err
 }
 
+func (client *Client) RunCTRegistrationSimply(request *RunCTRegistrationRequest) (_result *RunCTRegistrationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RunCTRegistrationResponse{}
+	_body, _err := client.RunCTRegistration(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DetectHipKeypointXRay(request *DetectHipKeypointXRayRequest, runtime *util.RuntimeOptions) (_result *DetectHipKeypointXRayResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2123,6 +2196,17 @@ func (client *Client) DetectHipKeypointXRay(request *DetectHipKeypointXRayReques
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DetectHipKeypointXRaySimply(request *DetectHipKeypointXRayRequest) (_result *DetectHipKeypointXRayResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DetectHipKeypointXRayResponse{}
+	_body, _err := client.DetectHipKeypointXRay(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
 
@@ -2168,8 +2252,8 @@ func (client *Client) DetectHipKeypointXRayAdvance(request *DetectHipKeypointXRa
 	uploadRequest := &oss.PostObjectRequest{}
 	ossRuntime := &ossutil.RuntimeOptions{}
 	rpcutil.Convert(runtime, ossRuntime)
-	detectHipKeypointXRayreq := &DetectHipKeypointXRayRequest{}
-	rpcutil.Convert(request, detectHipKeypointXRayreq)
+	detectHipKeypointXRayReq := &DetectHipKeypointXRayRequest{}
+	rpcutil.Convert(request, detectHipKeypointXRayReq)
 	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2203,8 +2287,8 @@ func (client *Client) DetectHipKeypointXRayAdvance(request *DetectHipKeypointXRa
 	if _err != nil {
 		return _result, _err
 	}
-	detectHipKeypointXRayreq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
-	detectHipKeypointXRayResp, _err := client.DetectHipKeypointXRay(detectHipKeypointXRayreq, runtime)
+	detectHipKeypointXRayReq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	detectHipKeypointXRayResp, _err := client.DetectHipKeypointXRay(detectHipKeypointXRayReq, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2227,6 +2311,17 @@ func (client *Client) CalcCACS(request *CalcCACSRequest, runtime *util.RuntimeOp
 	return _result, _err
 }
 
+func (client *Client) CalcCACSSimply(request *CalcCACSRequest) (_result *CalcCACSResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CalcCACSResponse{}
+	_body, _err := client.CalcCACS(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DetectKneeXRay(request *DetectKneeXRayRequest, runtime *util.RuntimeOptions) (_result *DetectKneeXRayResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2238,6 +2333,17 @@ func (client *Client) DetectKneeXRay(request *DetectKneeXRayRequest, runtime *ut
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DetectKneeXRaySimply(request *DetectKneeXRayRequest) (_result *DetectKneeXRayResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DetectKneeXRayResponse{}
+	_body, _err := client.DetectKneeXRay(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
 
@@ -2283,8 +2389,8 @@ func (client *Client) DetectKneeXRayAdvance(request *DetectKneeXRayAdvanceReques
 	uploadRequest := &oss.PostObjectRequest{}
 	ossRuntime := &ossutil.RuntimeOptions{}
 	rpcutil.Convert(runtime, ossRuntime)
-	detectKneeXRayreq := &DetectKneeXRayRequest{}
-	rpcutil.Convert(request, detectKneeXRayreq)
+	detectKneeXRayReq := &DetectKneeXRayRequest{}
+	rpcutil.Convert(request, detectKneeXRayReq)
 	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2318,8 +2424,8 @@ func (client *Client) DetectKneeXRayAdvance(request *DetectKneeXRayAdvanceReques
 	if _err != nil {
 		return _result, _err
 	}
-	detectKneeXRayreq.Url = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
-	detectKneeXRayResp, _err := client.DetectKneeXRay(detectKneeXRayreq, runtime)
+	detectKneeXRayReq.Url = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	detectKneeXRayResp, _err := client.DetectKneeXRay(detectKneeXRayReq, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2342,6 +2448,17 @@ func (client *Client) DetectSpineMRI(request *DetectSpineMRIRequest, runtime *ut
 	return _result, _err
 }
 
+func (client *Client) DetectSpineMRISimply(request *DetectSpineMRIRequest) (_result *DetectSpineMRIResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DetectSpineMRIResponse{}
+	_body, _err := client.DetectSpineMRI(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) TranslateMed(request *TranslateMedRequest, runtime *util.RuntimeOptions) (_result *TranslateMedResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2353,6 +2470,17 @@ func (client *Client) TranslateMed(request *TranslateMedRequest, runtime *util.R
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) TranslateMedSimply(request *TranslateMedRequest) (_result *TranslateMedResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &TranslateMedResponse{}
+	_body, _err := client.TranslateMed(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
 
@@ -2370,6 +2498,17 @@ func (client *Client) DetectLungNodule(request *DetectLungNoduleRequest, runtime
 	return _result, _err
 }
 
+func (client *Client) DetectLungNoduleSimply(request *DetectLungNoduleRequest) (_result *DetectLungNoduleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DetectLungNoduleResponse{}
+	_body, _err := client.DetectLungNodule(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DetectCovid19Cad(request *DetectCovid19CadRequest, runtime *util.RuntimeOptions) (_result *DetectCovid19CadResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2384,6 +2523,17 @@ func (client *Client) DetectCovid19Cad(request *DetectCovid19CadRequest, runtime
 	return _result, _err
 }
 
+func (client *Client) DetectCovid19CadSimply(request *DetectCovid19CadRequest) (_result *DetectCovid19CadResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DetectCovid19CadResponse{}
+	_body, _err := client.DetectCovid19Cad(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetAsyncJobResult(request *GetAsyncJobResultRequest, runtime *util.RuntimeOptions) (_result *GetAsyncJobResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2395,6 +2545,17 @@ func (client *Client) GetAsyncJobResult(request *GetAsyncJobResultRequest, runti
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAsyncJobResultSimply(request *GetAsyncJobResultRequest) (_result *GetAsyncJobResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAsyncJobResultResponse{}
+	_body, _err := client.GetAsyncJobResult(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
 
