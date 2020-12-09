@@ -1690,7 +1690,8 @@ func (s *SegmentHeadAdvanceRequest) SetReturnForm(v string) *SegmentHeadAdvanceR
 }
 
 type SegmentCommodityRequest struct {
-	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty" require:"true"`
+	ImageURL   *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty" require:"true"`
+	ReturnForm *string `json:"ReturnForm,omitempty" xml:"ReturnForm,omitempty"`
 }
 
 func (s SegmentCommodityRequest) String() string {
@@ -1703,6 +1704,11 @@ func (s SegmentCommodityRequest) GoString() string {
 
 func (s *SegmentCommodityRequest) SetImageURL(v string) *SegmentCommodityRequest {
 	s.ImageURL = &v
+	return s
+}
+
+func (s *SegmentCommodityRequest) SetReturnForm(v string) *SegmentCommodityRequest {
+	s.ReturnForm = &v
 	return s
 }
 
@@ -1748,6 +1754,7 @@ func (s *SegmentCommodityResponseData) SetImageURL(v string) *SegmentCommodityRe
 
 type SegmentCommodityAdvanceRequest struct {
 	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ReturnForm     *string   `json:"ReturnForm,omitempty" xml:"ReturnForm,omitempty"`
 }
 
 func (s SegmentCommodityAdvanceRequest) String() string {
@@ -1760,6 +1767,11 @@ func (s SegmentCommodityAdvanceRequest) GoString() string {
 
 func (s *SegmentCommodityAdvanceRequest) SetImageURLObject(v io.Reader) *SegmentCommodityAdvanceRequest {
 	s.ImageURLObject = v
+	return s
+}
+
+func (s *SegmentCommodityAdvanceRequest) SetReturnForm(v string) *SegmentCommodityAdvanceRequest {
+	s.ReturnForm = &v
 	return s
 }
 
