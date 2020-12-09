@@ -16,6 +16,9 @@
 ## 问题
 [提交 Issue](https://github.com/aliyun/alibabacloud-sdk/issues/new)，不符合指南的问题可能会立即关闭。
 
+## 使用说明
+[使用文档](https://github.com/aliyun/alibabacloud-sdk/blob/master/docs/golang/Usage-CN.md#%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B)
+
 ## 发行说明
 每个版本的详细更改记录在[发行说明](./ChangeLog.txt)中。
 
