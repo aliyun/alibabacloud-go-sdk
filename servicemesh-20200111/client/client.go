@@ -139,8 +139,8 @@ func (s *GetVmAppMeshInfoResponse) SetData(v string) *GetVmAppMeshInfoResponse {
 type GetVmMetaRequest struct {
 	ServiceMeshId  *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty" require:"true"`
 	TrustDomain    *string `json:"TrustDomain,omitempty" xml:"TrustDomain,omitempty"`
-	Namespace      *string `json:"Namespace,omitempty" xml:"Namespace,omitempty" require:"true"`
-	ServiceAccount *string `json:"ServiceAccount,omitempty" xml:"ServiceAccount,omitempty" require:"true"`
+	Namespace      *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	ServiceAccount *string `json:"ServiceAccount,omitempty" xml:"ServiceAccount,omitempty"`
 }
 
 func (s GetVmMetaRequest) String() string {
@@ -917,8 +917,8 @@ func (s *DescribeClusterPrometheusResponse) SetPrometheus(v string) *DescribeClu
 }
 
 type DescribeClusterGrafanaRequest struct {
-	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
-	K8sClusterId  *string `json:"K8sClusterId,omitempty" xml:"K8sClusterId,omitempty"`
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty" require:"true"`
+	K8sClusterId  *string `json:"K8sClusterId,omitempty" xml:"K8sClusterId,omitempty" require:"true"`
 }
 
 func (s DescribeClusterGrafanaRequest) String() string {
@@ -985,46 +985,6 @@ func (s *DescribeClusterGrafanaResponseDashboards) SetTitle(v string) *DescribeC
 	return s
 }
 
-type DescribeRegionsRequest struct {
-	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-}
-
-func (s DescribeRegionsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRegionsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRegionsRequest) SetAcceptLanguage(v string) *DescribeRegionsRequest {
-	s.AcceptLanguage = &v
-	return s
-}
-
-type DescribeRegionsResponse struct {
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
-	BusinessLocations *string `json:"BusinessLocations,omitempty" xml:"BusinessLocations,omitempty" require:"true"`
-}
-
-func (s DescribeRegionsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRegionsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRegionsResponse) SetRequestId(v string) *DescribeRegionsResponse {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeRegionsResponse) SetBusinessLocations(v string) *DescribeRegionsResponse {
-	s.BusinessLocations = &v
-	return s
-}
-
 type DescribeCensRequest struct {
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
@@ -1066,7 +1026,7 @@ func (s *DescribeCensResponse) SetClusters(v []*string) *DescribeCensResponse {
 }
 
 type DescribeClustersInServiceMeshRequest struct {
-	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty" require:"true"`
 }
 
 func (s DescribeClustersInServiceMeshRequest) String() string {
@@ -1229,7 +1189,7 @@ func (s *DescribeIngressGatewaysResponse) SetIngressGateways(v []map[string]inte
 }
 
 type DescribeUpgradeVersionRequest struct {
-	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty" require:"true"`
 }
 
 func (s DescribeUpgradeVersionRequest) String() string {
@@ -1326,6 +1286,10 @@ type UpdateMeshFeatureRequest struct {
 	SidecarInjectorLimitCPU      *string  `json:"SidecarInjectorLimitCPU,omitempty" xml:"SidecarInjectorLimitCPU,omitempty"`
 	SidecarInjectorLimitMemory   *string  `json:"SidecarInjectorLimitMemory,omitempty" xml:"SidecarInjectorLimitMemory,omitempty"`
 	SidecarInjectorWebhookAsYaml *string  `json:"SidecarInjectorWebhookAsYaml,omitempty" xml:"SidecarInjectorWebhookAsYaml,omitempty"`
+	CniEnabled                   *bool    `json:"CniEnabled,omitempty" xml:"CniEnabled,omitempty"`
+	CniExcludeNamespaces         *string  `json:"CniExcludeNamespaces,omitempty" xml:"CniExcludeNamespaces,omitempty"`
+	OpaEnabled                   *bool    `json:"OpaEnabled,omitempty" xml:"OpaEnabled,omitempty"`
+	Http10Enabled                *bool    `json:"Http10Enabled,omitempty" xml:"Http10Enabled,omitempty"`
 }
 
 func (s UpdateMeshFeatureRequest) String() string {
@@ -1476,6 +1440,26 @@ func (s *UpdateMeshFeatureRequest) SetSidecarInjectorWebhookAsYaml(v string) *Up
 	return s
 }
 
+func (s *UpdateMeshFeatureRequest) SetCniEnabled(v bool) *UpdateMeshFeatureRequest {
+	s.CniEnabled = &v
+	return s
+}
+
+func (s *UpdateMeshFeatureRequest) SetCniExcludeNamespaces(v string) *UpdateMeshFeatureRequest {
+	s.CniExcludeNamespaces = &v
+	return s
+}
+
+func (s *UpdateMeshFeatureRequest) SetOpaEnabled(v bool) *UpdateMeshFeatureRequest {
+	s.OpaEnabled = &v
+	return s
+}
+
+func (s *UpdateMeshFeatureRequest) SetHttp10Enabled(v bool) *UpdateMeshFeatureRequest {
+	s.Http10Enabled = &v
+	return s
+}
+
 type UpdateMeshFeatureResponse struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
 }
@@ -1494,7 +1478,7 @@ func (s *UpdateMeshFeatureResponse) SetRequestId(v string) *UpdateMeshFeatureRes
 }
 
 type UpgradeMeshVersionRequest struct {
-	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty" require:"true"`
 }
 
 func (s UpgradeMeshVersionRequest) String() string {
@@ -1761,11 +1745,13 @@ func (s *DescribeServiceMeshesResponseServiceMeshesSpecLoadBalancer) SetPilotPub
 }
 
 type DescribeServiceMeshesResponseServiceMeshesSpecMeshConfig struct {
-	Mtls                  *bool   `json:"Mtls,omitempty" xml:"Mtls,omitempty" require:"true"`
-	OutboundTrafficPolicy *string `json:"OutboundTrafficPolicy,omitempty" xml:"OutboundTrafficPolicy,omitempty" require:"true"`
-	StrictMtls            *bool   `json:"StrictMtls,omitempty" xml:"StrictMtls,omitempty" require:"true"`
-	Tracing               *bool   `json:"Tracing,omitempty" xml:"Tracing,omitempty" require:"true"`
-	Telemetry             *bool   `json:"Telemetry,omitempty" xml:"Telemetry,omitempty" require:"true"`
+	Mtls                  *bool                                                                    `json:"Mtls,omitempty" xml:"Mtls,omitempty" require:"true"`
+	OutboundTrafficPolicy *string                                                                  `json:"OutboundTrafficPolicy,omitempty" xml:"OutboundTrafficPolicy,omitempty" require:"true"`
+	StrictMtls            *bool                                                                    `json:"StrictMtls,omitempty" xml:"StrictMtls,omitempty" require:"true"`
+	Tracing               *bool                                                                    `json:"Tracing,omitempty" xml:"Tracing,omitempty" require:"true"`
+	Telemetry             *bool                                                                    `json:"Telemetry,omitempty" xml:"Telemetry,omitempty" require:"true"`
+	Pilot                 *DescribeServiceMeshesResponseServiceMeshesSpecMeshConfigPilot           `json:"Pilot,omitempty" xml:"Pilot,omitempty" require:"true" type:"Struct"`
+	SidecarInjector       *DescribeServiceMeshesResponseServiceMeshesSpecMeshConfigSidecarInjector `json:"SidecarInjector,omitempty" xml:"SidecarInjector,omitempty" require:"true" type:"Struct"`
 }
 
 func (s DescribeServiceMeshesResponseServiceMeshesSpecMeshConfig) String() string {
@@ -1798,6 +1784,91 @@ func (s *DescribeServiceMeshesResponseServiceMeshesSpecMeshConfig) SetTracing(v 
 
 func (s *DescribeServiceMeshesResponseServiceMeshesSpecMeshConfig) SetTelemetry(v bool) *DescribeServiceMeshesResponseServiceMeshesSpecMeshConfig {
 	s.Telemetry = &v
+	return s
+}
+
+func (s *DescribeServiceMeshesResponseServiceMeshesSpecMeshConfig) SetPilot(v *DescribeServiceMeshesResponseServiceMeshesSpecMeshConfigPilot) *DescribeServiceMeshesResponseServiceMeshesSpecMeshConfig {
+	s.Pilot = v
+	return s
+}
+
+func (s *DescribeServiceMeshesResponseServiceMeshesSpecMeshConfig) SetSidecarInjector(v *DescribeServiceMeshesResponseServiceMeshesSpecMeshConfigSidecarInjector) *DescribeServiceMeshesResponseServiceMeshesSpecMeshConfig {
+	s.SidecarInjector = v
+	return s
+}
+
+type DescribeServiceMeshesResponseServiceMeshesSpecMeshConfigPilot struct {
+	TraceSampling *float32 `json:"TraceSampling,omitempty" xml:"TraceSampling,omitempty" require:"true"`
+	Http10Enabled *bool    `json:"Http10Enabled,omitempty" xml:"Http10Enabled,omitempty" require:"true"`
+}
+
+func (s DescribeServiceMeshesResponseServiceMeshesSpecMeshConfigPilot) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceMeshesResponseServiceMeshesSpecMeshConfigPilot) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceMeshesResponseServiceMeshesSpecMeshConfigPilot) SetTraceSampling(v float32) *DescribeServiceMeshesResponseServiceMeshesSpecMeshConfigPilot {
+	s.TraceSampling = &v
+	return s
+}
+
+func (s *DescribeServiceMeshesResponseServiceMeshesSpecMeshConfigPilot) SetHttp10Enabled(v bool) *DescribeServiceMeshesResponseServiceMeshesSpecMeshConfigPilot {
+	s.Http10Enabled = &v
+	return s
+}
+
+type DescribeServiceMeshesResponseServiceMeshesSpecMeshConfigSidecarInjector struct {
+	EnableNamespacesByDefault  *bool                                                                                        `json:"EnableNamespacesByDefault,omitempty" xml:"EnableNamespacesByDefault,omitempty" require:"true"`
+	AutoInjectionPolicyEnabled *bool                                                                                        `json:"AutoInjectionPolicyEnabled,omitempty" xml:"AutoInjectionPolicyEnabled,omitempty" require:"true"`
+	InitCNIConfiguration       *DescribeServiceMeshesResponseServiceMeshesSpecMeshConfigSidecarInjectorInitCNIConfiguration `json:"InitCNIConfiguration,omitempty" xml:"InitCNIConfiguration,omitempty" require:"true" type:"Struct"`
+}
+
+func (s DescribeServiceMeshesResponseServiceMeshesSpecMeshConfigSidecarInjector) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceMeshesResponseServiceMeshesSpecMeshConfigSidecarInjector) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceMeshesResponseServiceMeshesSpecMeshConfigSidecarInjector) SetEnableNamespacesByDefault(v bool) *DescribeServiceMeshesResponseServiceMeshesSpecMeshConfigSidecarInjector {
+	s.EnableNamespacesByDefault = &v
+	return s
+}
+
+func (s *DescribeServiceMeshesResponseServiceMeshesSpecMeshConfigSidecarInjector) SetAutoInjectionPolicyEnabled(v bool) *DescribeServiceMeshesResponseServiceMeshesSpecMeshConfigSidecarInjector {
+	s.AutoInjectionPolicyEnabled = &v
+	return s
+}
+
+func (s *DescribeServiceMeshesResponseServiceMeshesSpecMeshConfigSidecarInjector) SetInitCNIConfiguration(v *DescribeServiceMeshesResponseServiceMeshesSpecMeshConfigSidecarInjectorInitCNIConfiguration) *DescribeServiceMeshesResponseServiceMeshesSpecMeshConfigSidecarInjector {
+	s.InitCNIConfiguration = v
+	return s
+}
+
+type DescribeServiceMeshesResponseServiceMeshesSpecMeshConfigSidecarInjectorInitCNIConfiguration struct {
+	Enabled           *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty" require:"true"`
+	ExcludeNamespaces *string `json:"ExcludeNamespaces,omitempty" xml:"ExcludeNamespaces,omitempty" require:"true"`
+}
+
+func (s DescribeServiceMeshesResponseServiceMeshesSpecMeshConfigSidecarInjectorInitCNIConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceMeshesResponseServiceMeshesSpecMeshConfigSidecarInjectorInitCNIConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceMeshesResponseServiceMeshesSpecMeshConfigSidecarInjectorInitCNIConfiguration) SetEnabled(v bool) *DescribeServiceMeshesResponseServiceMeshesSpecMeshConfigSidecarInjectorInitCNIConfiguration {
+	s.Enabled = &v
+	return s
+}
+
+func (s *DescribeServiceMeshesResponseServiceMeshesSpecMeshConfigSidecarInjectorInitCNIConfiguration) SetExcludeNamespaces(v string) *DescribeServiceMeshesResponseServiceMeshesSpecMeshConfigSidecarInjectorInitCNIConfiguration {
+	s.ExcludeNamespaces = &v
 	return s
 }
 
@@ -2142,6 +2213,7 @@ func (s *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfig) SetSidecarI
 
 type DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigPilot struct {
 	TraceSampling *float32 `json:"TraceSampling,omitempty" xml:"TraceSampling,omitempty" require:"true"`
+	Http10Enabled *bool    `json:"Http10Enabled,omitempty" xml:"Http10Enabled,omitempty" require:"true"`
 }
 
 func (s DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigPilot) String() string {
@@ -2154,6 +2226,11 @@ func (s DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigPilot) GoStrin
 
 func (s *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigPilot) SetTraceSampling(v float32) *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigPilot {
 	s.TraceSampling = &v
+	return s
+}
+
+func (s *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigPilot) SetHttp10Enabled(v bool) *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigPilot {
+	s.Http10Enabled = &v
 	return s
 }
 
@@ -2269,13 +2346,14 @@ func (s *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigProxy) SetLim
 }
 
 type DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigSidecarInjector struct {
-	EnableNamespacesByDefault    *bool   `json:"EnableNamespacesByDefault,omitempty" xml:"EnableNamespacesByDefault,omitempty" require:"true"`
-	AutoInjectionPolicyEnabled   *bool   `json:"AutoInjectionPolicyEnabled,omitempty" xml:"AutoInjectionPolicyEnabled,omitempty" require:"true"`
-	RequestCPU                   *string `json:"RequestCPU,omitempty" xml:"RequestCPU,omitempty" require:"true"`
-	RequestMemory                *string `json:"RequestMemory,omitempty" xml:"RequestMemory,omitempty" require:"true"`
-	LimitCPU                     *string `json:"LimitCPU,omitempty" xml:"LimitCPU,omitempty" require:"true"`
-	LimitMemory                  *string `json:"LimitMemory,omitempty" xml:"LimitMemory,omitempty" require:"true"`
-	SidecarInjectorWebhookAsYaml *string `json:"SidecarInjectorWebhookAsYaml,omitempty" xml:"SidecarInjectorWebhookAsYaml,omitempty" require:"true"`
+	EnableNamespacesByDefault    *bool                                                                                          `json:"EnableNamespacesByDefault,omitempty" xml:"EnableNamespacesByDefault,omitempty" require:"true"`
+	AutoInjectionPolicyEnabled   *bool                                                                                          `json:"AutoInjectionPolicyEnabled,omitempty" xml:"AutoInjectionPolicyEnabled,omitempty" require:"true"`
+	RequestCPU                   *string                                                                                        `json:"RequestCPU,omitempty" xml:"RequestCPU,omitempty" require:"true"`
+	RequestMemory                *string                                                                                        `json:"RequestMemory,omitempty" xml:"RequestMemory,omitempty" require:"true"`
+	LimitCPU                     *string                                                                                        `json:"LimitCPU,omitempty" xml:"LimitCPU,omitempty" require:"true"`
+	LimitMemory                  *string                                                                                        `json:"LimitMemory,omitempty" xml:"LimitMemory,omitempty" require:"true"`
+	SidecarInjectorWebhookAsYaml *string                                                                                        `json:"SidecarInjectorWebhookAsYaml,omitempty" xml:"SidecarInjectorWebhookAsYaml,omitempty" require:"true"`
+	InitCNIConfiguration         *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigSidecarInjectorInitCNIConfiguration `json:"InitCNIConfiguration,omitempty" xml:"InitCNIConfiguration,omitempty" require:"true" type:"Struct"`
 }
 
 func (s DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigSidecarInjector) String() string {
@@ -2318,6 +2396,34 @@ func (s *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigSidecarInject
 
 func (s *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigSidecarInjector) SetSidecarInjectorWebhookAsYaml(v string) *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigSidecarInjector {
 	s.SidecarInjectorWebhookAsYaml = &v
+	return s
+}
+
+func (s *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigSidecarInjector) SetInitCNIConfiguration(v *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigSidecarInjectorInitCNIConfiguration) *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigSidecarInjector {
+	s.InitCNIConfiguration = v
+	return s
+}
+
+type DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigSidecarInjectorInitCNIConfiguration struct {
+	Enabled           *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty" require:"true"`
+	ExcludeNamespaces *string `json:"ExcludeNamespaces,omitempty" xml:"ExcludeNamespaces,omitempty" require:"true"`
+}
+
+func (s DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigSidecarInjectorInitCNIConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigSidecarInjectorInitCNIConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigSidecarInjectorInitCNIConfiguration) SetEnabled(v bool) *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigSidecarInjectorInitCNIConfiguration {
+	s.Enabled = &v
+	return s
+}
+
+func (s *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigSidecarInjectorInitCNIConfiguration) SetExcludeNamespaces(v string) *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigSidecarInjectorInitCNIConfiguration {
+	s.ExcludeNamespaces = &v
 	return s
 }
 
@@ -2404,7 +2510,7 @@ type CreateServiceMeshRequest struct {
 	PilotPublicEip        *bool    `json:"PilotPublicEip,omitempty" xml:"PilotPublicEip,omitempty"`
 	Tracing               *bool    `json:"Tracing,omitempty" xml:"Tracing,omitempty"`
 	Name                  *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	VSwitches             *string  `json:"VSwitches,omitempty" xml:"VSwitches,omitempty"`
+	VSwitches             *string  `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" require:"true"`
 	TraceSampling         *float32 `json:"TraceSampling,omitempty" xml:"TraceSampling,omitempty"`
 	LocalityLoadBalancing *bool    `json:"LocalityLoadBalancing,omitempty" xml:"LocalityLoadBalancing,omitempty"`
 	Telemetry             *bool    `json:"Telemetry,omitempty" xml:"Telemetry,omitempty"`
@@ -2424,6 +2530,7 @@ type CreateServiceMeshRequest struct {
 	ExcludeIPRanges       *string  `json:"ExcludeIPRanges,omitempty" xml:"ExcludeIPRanges,omitempty"`
 	ExcludeOutboundPorts  *string  `json:"ExcludeOutboundPorts,omitempty" xml:"ExcludeOutboundPorts,omitempty"`
 	ExcludeInboundPorts   *string  `json:"ExcludeInboundPorts,omitempty" xml:"ExcludeInboundPorts,omitempty"`
+	OpaEnabled            *bool    `json:"OpaEnabled,omitempty" xml:"OpaEnabled,omitempty"`
 }
 
 func (s CreateServiceMeshRequest) String() string {
@@ -2566,6 +2673,11 @@ func (s *CreateServiceMeshRequest) SetExcludeOutboundPorts(v string) *CreateServ
 
 func (s *CreateServiceMeshRequest) SetExcludeInboundPorts(v string) *CreateServiceMeshRequest {
 	s.ExcludeInboundPorts = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetOpaEnabled(v bool) *CreateServiceMeshRequest {
+	s.OpaEnabled = &v
 	return s
 }
 
@@ -3053,31 +3165,6 @@ func (client *Client) DescribeClusterGrafana(request *DescribeClusterGrafanaRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeClusterGrafanaResponse{}
 	_body, _err := client.DescribeClusterGrafanaWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = &DescribeRegionsResponse{}
-	_body, _err := client.DoRequest(tea.String("DescribeRegions"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-01-11"), tea.String("AK"), nil, tea.ToMap(request), runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result *DescribeRegionsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeRegionsResponse{}
-	_body, _err := client.DescribeRegionsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

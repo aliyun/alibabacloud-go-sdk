@@ -16,6 +16,9 @@ $ go get github.com/alibabacloud-go/servicemesh-20200111
 ## Issues
 [Opening an Issue](https://github.com/aliyun/alibabacloud-sdk/issues/new), Issues not conforming to the guidelines may be closed immediately.
 
+## Usage
+[Usage Document](https://github.com/aliyun/alibabacloud-sdk/blob/master/docs/golang/Usage-EN.md#demo)
+
 ## Changelog
 Detailed changes for each release are documented in the [release notes](./ChangeLog.txt).
 

@@ -1,3 +1,6 @@
+2020-12-17 Version: v1.0.10
+- Generated golang 2020-01-11 for servicemesh.
+
 2020-11-20 Version: v1.0.9
 - Generated golang 2020-01-11 for servicemesh.
 
