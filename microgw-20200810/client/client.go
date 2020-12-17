@@ -3118,6 +3118,7 @@ func (s *FindRegistryResponse) SetBody(v *FindRegistryResponseBody) *FindRegistr
 }
 
 type GetAuthTicketByIdHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// cookie
 	Cookie map[string]interface{} `json:"cookie,omitempty" xml:"cookie,omitempty"`
 }
@@ -3130,12 +3131,18 @@ func (s GetAuthTicketByIdHeaders) GoString() string {
 	return s.String()
 }
 
+func (s *GetAuthTicketByIdHeaders) SetCommonHeaders(v map[string]*string) *GetAuthTicketByIdHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
 func (s *GetAuthTicketByIdHeaders) SetCookie(v map[string]interface{}) *GetAuthTicketByIdHeaders {
 	s.Cookie = v
 	return s
 }
 
 type GetAuthTicketByIdShrinkHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// cookie
 	CookieShrink *string `json:"cookie,omitempty" xml:"cookie,omitempty"`
 }
@@ -3146,6 +3153,11 @@ func (s GetAuthTicketByIdShrinkHeaders) String() string {
 
 func (s GetAuthTicketByIdShrinkHeaders) GoString() string {
 	return s.String()
+}
+
+func (s *GetAuthTicketByIdShrinkHeaders) SetCommonHeaders(v map[string]*string) *GetAuthTicketByIdShrinkHeaders {
+	s.CommonHeaders = v
+	return s
 }
 
 func (s *GetAuthTicketByIdShrinkHeaders) SetCookieShrink(v string) *GetAuthTicketByIdShrinkHeaders {
@@ -6494,6 +6506,118 @@ func (s *FindApisByPagingResponse) SetBody(v *FindApisByPagingResponseBody) *Fin
 	return s
 }
 
+type UpdateServiceEndsRequest struct {
+	// id
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// serviceNodes
+	ServiceNodes []*UpdateServiceEndsRequestServiceNodes `json:"serviceNodes,omitempty" xml:"serviceNodes,omitempty" type:"Repeated"`
+}
+
+func (s UpdateServiceEndsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceEndsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceEndsRequest) SetId(v int64) *UpdateServiceEndsRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateServiceEndsRequest) SetServiceNodes(v []*UpdateServiceEndsRequestServiceNodes) *UpdateServiceEndsRequest {
+	s.ServiceNodes = v
+	return s
+}
+
+type UpdateServiceEndsRequestServiceNodes struct {
+	// port
+	Port *string `json:"port,omitempty" xml:"port,omitempty"`
+	// ipAddress
+	IpAddress *string `json:"ipAddress,omitempty" xml:"ipAddress,omitempty"`
+	// status
+	Status *int64 `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s UpdateServiceEndsRequestServiceNodes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceEndsRequestServiceNodes) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceEndsRequestServiceNodes) SetPort(v string) *UpdateServiceEndsRequestServiceNodes {
+	s.Port = &v
+	return s
+}
+
+func (s *UpdateServiceEndsRequestServiceNodes) SetIpAddress(v string) *UpdateServiceEndsRequestServiceNodes {
+	s.IpAddress = &v
+	return s
+}
+
+func (s *UpdateServiceEndsRequestServiceNodes) SetStatus(v int64) *UpdateServiceEndsRequestServiceNodes {
+	s.Status = &v
+	return s
+}
+
+type UpdateServiceEndsResponseBody struct {
+	// code
+	Code *int64 `json:"code,omitempty" xml:"code,omitempty"`
+	// data
+	Data map[string]interface{} `json:"data,omitempty" xml:"data,omitempty"`
+	// message
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+}
+
+func (s UpdateServiceEndsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceEndsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceEndsResponseBody) SetCode(v int64) *UpdateServiceEndsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateServiceEndsResponseBody) SetData(v map[string]interface{}) *UpdateServiceEndsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateServiceEndsResponseBody) SetMessage(v string) *UpdateServiceEndsResponseBody {
+	s.Message = &v
+	return s
+}
+
+type UpdateServiceEndsResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateServiceEndsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateServiceEndsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceEndsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceEndsResponse) SetHeaders(v map[string]*string) *UpdateServiceEndsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateServiceEndsResponse) SetBody(v *UpdateServiceEndsResponseBody) *UpdateServiceEndsResponse {
+	s.Body = v
+	return s
+}
+
 type FindGatewaysRequest struct {
 	// gatewayUniqueId
 	GatewayUniqueId *string `json:"gatewayUniqueId,omitempty" xml:"gatewayUniqueId,omitempty"`
@@ -8172,8 +8296,17 @@ func (client *Client) GetAuthTicketByIdWithOptions(ticketId *string, tmpHeader *
 		headers.CookieShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.Cookie, tea.String("cookie"), tea.String("json"))
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.CookieShrink)) {
+		realHeaders["cookie"] = headers.CookieShrink
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: util.StringifyMapValue(util.ToMap(headers)),
+		Headers: realHeaders,
 	}
 	_result = &GetAuthTicketByIdResponse{}
 	_body, _err := client.DoROARequest(tea.String("GetAuthTicketById"), tea.String("2020-08-10"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/v1/auth/"+tea.StringValue(ticketId)), tea.String("json"), req, runtime)
@@ -9078,6 +9211,45 @@ func (client *Client) FindApisByPagingWithOptions(gatewayId *string, request *Fi
 	}
 	_result = &FindApisByPagingResponse{}
 	_body, _err := client.DoROARequest(tea.String("FindApisByPaging"), tea.String("2020-08-10"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/v1/gateway/"+tea.StringValue(gatewayId)+"/api"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateServiceEnds(serviceId *string, request *UpdateServiceEndsRequest) (_result *UpdateServiceEndsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateServiceEndsResponse{}
+	_body, _err := client.UpdateServiceEndsWithOptions(serviceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateServiceEndsWithOptions(serviceId *string, request *UpdateServiceEndsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateServiceEndsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceNodes)) {
+		body["serviceNodes"] = request.ServiceNodes
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	_result = &UpdateServiceEndsResponse{}
+	_body, _err := client.DoROARequest(tea.String("UpdateServiceEnds"), tea.String("2020-08-10"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/v1/service/"+tea.StringValue(serviceId)+"/serviceends"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
