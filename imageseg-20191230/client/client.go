@@ -471,7 +471,8 @@ func (s *SegmentSceneAdvanceRequest) SetImageURLObject(v io.Reader) *SegmentScen
 }
 
 type SegmentFoodRequest struct {
-	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty" require:"true"`
+	ImageURL   *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty" require:"true"`
+	ReturnForm *string `json:"ReturnForm,omitempty" xml:"ReturnForm,omitempty"`
 }
 
 func (s SegmentFoodRequest) String() string {
@@ -484,6 +485,11 @@ func (s SegmentFoodRequest) GoString() string {
 
 func (s *SegmentFoodRequest) SetImageURL(v string) *SegmentFoodRequest {
 	s.ImageURL = &v
+	return s
+}
+
+func (s *SegmentFoodRequest) SetReturnForm(v string) *SegmentFoodRequest {
+	s.ReturnForm = &v
 	return s
 }
 
@@ -529,6 +535,7 @@ func (s *SegmentFoodResponseData) SetImageURL(v string) *SegmentFoodResponseData
 
 type SegmentFoodAdvanceRequest struct {
 	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ReturnForm     *string   `json:"ReturnForm,omitempty" xml:"ReturnForm,omitempty"`
 }
 
 func (s SegmentFoodAdvanceRequest) String() string {
@@ -541,6 +548,11 @@ func (s SegmentFoodAdvanceRequest) GoString() string {
 
 func (s *SegmentFoodAdvanceRequest) SetImageURLObject(v io.Reader) *SegmentFoodAdvanceRequest {
 	s.ImageURLObject = v
+	return s
+}
+
+func (s *SegmentFoodAdvanceRequest) SetReturnForm(v string) *SegmentFoodAdvanceRequest {
+	s.ReturnForm = &v
 	return s
 }
 
