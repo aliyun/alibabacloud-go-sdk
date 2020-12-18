@@ -8,6 +8,75 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type DescribeUserEncryptionKeyListRequest struct {
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty" require:"true"`
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeUserEncryptionKeyListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserEncryptionKeyListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserEncryptionKeyListRequest) SetRegionId(v string) *DescribeUserEncryptionKeyListRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeUserEncryptionKeyListRequest) SetPageNumber(v string) *DescribeUserEncryptionKeyListRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeUserEncryptionKeyListRequest) SetPageSize(v string) *DescribeUserEncryptionKeyListRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeUserEncryptionKeyListResponse struct {
+	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	KmsKeys   []*DescribeUserEncryptionKeyListResponseKmsKeys `json:"KmsKeys,omitempty" xml:"KmsKeys,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s DescribeUserEncryptionKeyListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserEncryptionKeyListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserEncryptionKeyListResponse) SetRequestId(v string) *DescribeUserEncryptionKeyListResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeUserEncryptionKeyListResponse) SetKmsKeys(v []*DescribeUserEncryptionKeyListResponseKmsKeys) *DescribeUserEncryptionKeyListResponse {
+	s.KmsKeys = v
+	return s
+}
+
+type DescribeUserEncryptionKeyListResponseKmsKeys struct {
+	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty" require:"true"`
+}
+
+func (s DescribeUserEncryptionKeyListResponseKmsKeys) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserEncryptionKeyListResponseKmsKeys) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserEncryptionKeyListResponseKmsKeys) SetKeyId(v string) *DescribeUserEncryptionKeyListResponseKmsKeys {
+	s.KeyId = &v
+	return s
+}
+
 type DescribeModifyParameterLogRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty" require:"true"`
 	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
@@ -715,6 +784,7 @@ func (s *DescribeSQLLogsResponseItems) SetSQLPlan(v string) *DescribeSQLLogsResp
 }
 
 type CreateECSDBInstanceRequest struct {
+	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty" require:"true"`
 	ZoneId                *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty" require:"true"`
 	EngineVersion         *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty" require:"true"`
@@ -733,6 +803,8 @@ type CreateECSDBInstanceRequest struct {
 	VPCId                 *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
 	VSwitchId             *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	PrivateIpAddress      *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	EncryptionKey         *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
+	EncryptionType        *string `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
 }
 
 func (s CreateECSDBInstanceRequest) String() string {
@@ -741,6 +813,11 @@ func (s CreateECSDBInstanceRequest) String() string {
 
 func (s CreateECSDBInstanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateECSDBInstanceRequest) SetOwnerId(v int64) *CreateECSDBInstanceRequest {
+	s.OwnerId = &v
+	return s
 }
 
 func (s *CreateECSDBInstanceRequest) SetRegionId(v string) *CreateECSDBInstanceRequest {
@@ -830,6 +907,16 @@ func (s *CreateECSDBInstanceRequest) SetVSwitchId(v string) *CreateECSDBInstance
 
 func (s *CreateECSDBInstanceRequest) SetPrivateIpAddress(v string) *CreateECSDBInstanceRequest {
 	s.PrivateIpAddress = &v
+	return s
+}
+
+func (s *CreateECSDBInstanceRequest) SetEncryptionKey(v string) *CreateECSDBInstanceRequest {
+	s.EncryptionKey = &v
+	return s
+}
+
+func (s *CreateECSDBInstanceRequest) SetEncryptionType(v string) *CreateECSDBInstanceRequest {
+	s.EncryptionType = &v
 	return s
 }
 
@@ -1026,6 +1113,7 @@ func (s *DescribeDBClusterPerformanceResponsePerformanceKeysSeriesValues) SetPoi
 }
 
 type DescribeDBInstanceOnECSAttributeRequest struct {
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty" require:"true"`
 }
 
@@ -1035,6 +1123,11 @@ func (s DescribeDBInstanceOnECSAttributeRequest) String() string {
 
 func (s DescribeDBInstanceOnECSAttributeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDBInstanceOnECSAttributeRequest) SetOwnerId(v int64) *DescribeDBInstanceOnECSAttributeRequest {
+	s.OwnerId = &v
+	return s
 }
 
 func (s *DescribeDBInstanceOnECSAttributeRequest) SetDBInstanceId(v string) *DescribeDBInstanceOnECSAttributeRequest {
@@ -1107,6 +1200,8 @@ type DescribeDBInstanceOnECSAttributeResponseItemsDBInstanceAttribute struct {
 	VSwitchId             *string                                                               `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty" require:"true"`
 	ConnectionString      *string                                                               `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty" require:"true"`
 	Port                  *string                                                               `json:"Port,omitempty" xml:"Port,omitempty" require:"true"`
+	EncryptionType        *string                                                               `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty" require:"true"`
+	EncryptionKey         *string                                                               `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty" require:"true"`
 	Tags                  *DescribeDBInstanceOnECSAttributeResponseItemsDBInstanceAttributeTags `json:"Tags,omitempty" xml:"Tags,omitempty" require:"true" type:"Struct"`
 }
 
@@ -1235,6 +1330,16 @@ func (s *DescribeDBInstanceOnECSAttributeResponseItemsDBInstanceAttribute) SetCo
 
 func (s *DescribeDBInstanceOnECSAttributeResponseItemsDBInstanceAttribute) SetPort(v string) *DescribeDBInstanceOnECSAttributeResponseItemsDBInstanceAttribute {
 	s.Port = &v
+	return s
+}
+
+func (s *DescribeDBInstanceOnECSAttributeResponseItemsDBInstanceAttribute) SetEncryptionType(v string) *DescribeDBInstanceOnECSAttributeResponseItemsDBInstanceAttribute {
+	s.EncryptionType = &v
+	return s
+}
+
+func (s *DescribeDBInstanceOnECSAttributeResponseItemsDBInstanceAttribute) SetEncryptionKey(v string) *DescribeDBInstanceOnECSAttributeResponseItemsDBInstanceAttribute {
+	s.EncryptionKey = &v
 	return s
 }
 
@@ -1609,8 +1714,12 @@ func (s *ModifyDBInstanceSSLResponse) SetRequestId(v string) *ModifyDBInstanceSS
 }
 
 type DescribeTagsRequest struct {
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty" require:"true"`
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty" require:"true"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty" require:"true"`
+	ResourceType         *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty" require:"true"`
 }
 
 func (s DescribeTagsRequest) String() string {
@@ -1619,6 +1728,26 @@ func (s DescribeTagsRequest) String() string {
 
 func (s DescribeTagsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeTagsRequest) SetOwnerId(v int64) *DescribeTagsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeTagsRequest) SetResourceOwnerAccount(v string) *DescribeTagsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeTagsRequest) SetResourceOwnerId(v int64) *DescribeTagsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeTagsRequest) SetOwnerAccount(v string) *DescribeTagsRequest {
+	s.OwnerAccount = &v
+	return s
 }
 
 func (s *DescribeTagsRequest) SetRegionId(v string) *DescribeTagsRequest {
@@ -1678,6 +1807,7 @@ func (s *DescribeTagsResponseTags) SetTagValue(v string) *DescribeTagsResponseTa
 }
 
 type DescribeSpecificationRequest struct {
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	StorageType  *string `json:"StorageType,omitempty" xml:"StorageType,omitempty" require:"true"`
 	CpuCores     *int    `json:"CpuCores,omitempty" xml:"CpuCores,omitempty" require:"true"`
@@ -1690,6 +1820,11 @@ func (s DescribeSpecificationRequest) String() string {
 
 func (s DescribeSpecificationRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeSpecificationRequest) SetOwnerId(v int64) *DescribeSpecificationRequest {
+	s.OwnerId = &v
+	return s
 }
 
 func (s *DescribeSpecificationRequest) SetDBInstanceId(v string) *DescribeSpecificationRequest {
@@ -1817,6 +1952,7 @@ func (s *DescribeSpecificationResponseStorageNotice) SetValue(v string) *Describ
 }
 
 type UpgradeDBVersionRequest struct {
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	DBInstanceId   *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty" require:"true"`
 	MinorVersion   *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
@@ -1831,6 +1967,11 @@ func (s UpgradeDBVersionRequest) String() string {
 
 func (s UpgradeDBVersionRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpgradeDBVersionRequest) SetOwnerId(v int64) *UpgradeDBVersionRequest {
+	s.OwnerId = &v
+	return s
 }
 
 func (s *UpgradeDBVersionRequest) SetRegionId(v string) *UpgradeDBVersionRequest {
@@ -1899,6 +2040,7 @@ func (s *UpgradeDBVersionResponse) SetTaskId(v string) *UpgradeDBVersionResponse
 }
 
 type UpgradeDBInstanceRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty" require:"true"`
 	DBInstanceClass      *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty" require:"true"`
 	DBInstanceGroupCount *string `json:"DBInstanceGroupCount,omitempty" xml:"DBInstanceGroupCount,omitempty" require:"true"`
@@ -1912,6 +2054,11 @@ func (s UpgradeDBInstanceRequest) String() string {
 
 func (s UpgradeDBInstanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpgradeDBInstanceRequest) SetOwnerId(v int64) *UpgradeDBInstanceRequest {
+	s.OwnerId = &v
+	return s
 }
 
 func (s *UpgradeDBInstanceRequest) SetRegionId(v string) *UpgradeDBInstanceRequest {
@@ -1969,11 +2116,15 @@ func (s *UpgradeDBInstanceResponse) SetOrderId(v string) *UpgradeDBInstanceRespo
 }
 
 type UntagResourcesRequest struct {
-	RegionId     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty" require:"true"`
-	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty" require:"true"`
-	ResourceId   []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" require:"true" type:"Repeated"`
-	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
-	All          *bool     `json:"All,omitempty" xml:"All,omitempty"`
+	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty" require:"true"`
+	ResourceType         *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty" require:"true"`
+	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" require:"true" type:"Repeated"`
+	TagKey               []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+	All                  *bool     `json:"All,omitempty" xml:"All,omitempty"`
 }
 
 func (s UntagResourcesRequest) String() string {
@@ -1982,6 +2133,26 @@ func (s UntagResourcesRequest) String() string {
 
 func (s UntagResourcesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UntagResourcesRequest) SetOwnerId(v int64) *UntagResourcesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetResourceOwnerAccount(v string) *UntagResourcesRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetResourceOwnerId(v int64) *UntagResourcesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetOwnerAccount(v string) *UntagResourcesRequest {
+	s.OwnerAccount = &v
+	return s
 }
 
 func (s *UntagResourcesRequest) SetRegionId(v string) *UntagResourcesRequest {
@@ -2027,10 +2198,14 @@ func (s *UntagResourcesResponse) SetRequestId(v string) *UntagResourcesResponse 
 }
 
 type TagResourcesRequest struct {
-	RegionId     *string                   `json:"RegionId,omitempty" xml:"RegionId,omitempty" require:"true"`
-	ResourceType *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty" require:"true"`
-	ResourceId   []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" require:"true" type:"Repeated"`
-	Tag          []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" require:"true" type:"Repeated"`
+	OwnerId              *int64                    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string                   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	OwnerAccount         *string                   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	RegionId             *string                   `json:"RegionId,omitempty" xml:"RegionId,omitempty" require:"true"`
+	ResourceType         *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty" require:"true"`
+	ResourceId           []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" require:"true" type:"Repeated"`
+	Tag                  []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" require:"true" type:"Repeated"`
 }
 
 func (s TagResourcesRequest) String() string {
@@ -2039,6 +2214,26 @@ func (s TagResourcesRequest) String() string {
 
 func (s TagResourcesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *TagResourcesRequest) SetOwnerId(v int64) *TagResourcesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *TagResourcesRequest) SetResourceOwnerAccount(v string) *TagResourcesRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *TagResourcesRequest) SetResourceOwnerId(v int64) *TagResourcesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *TagResourcesRequest) SetOwnerAccount(v string) *TagResourcesRequest {
+	s.OwnerAccount = &v
+	return s
 }
 
 func (s *TagResourcesRequest) SetRegionId(v string) *TagResourcesRequest {
@@ -2102,11 +2297,15 @@ func (s *TagResourcesResponse) SetRequestId(v string) *TagResourcesResponse {
 }
 
 type ListTagResourcesRequest struct {
-	RegionId     *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty" require:"true"`
-	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty" require:"true"`
-	ResourceId   []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	NextToken    *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerId              *int64                        `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string                       `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                        `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	OwnerAccount         *string                       `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	RegionId             *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty" require:"true"`
+	ResourceType         *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty" require:"true"`
+	ResourceId           []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	Tag                  []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	NextToken            *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -2115,6 +2314,26 @@ func (s ListTagResourcesRequest) String() string {
 
 func (s ListTagResourcesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListTagResourcesRequest) SetOwnerId(v int64) *ListTagResourcesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceOwnerAccount(v string) *ListTagResourcesRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceOwnerId(v int64) *ListTagResourcesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetOwnerAccount(v string) *ListTagResourcesRequest {
+	s.OwnerAccount = &v
+	return s
 }
 
 func (s *ListTagResourcesRequest) SetRegionId(v string) *ListTagResourcesRequest {
@@ -2247,9 +2466,13 @@ func (s *ListTagResourcesResponseTagResourcesTagResource) SetResourceId(v string
 }
 
 type DescribeRdsVSwitchsRequest struct {
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	VpcId         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId        *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneId               *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeRdsVSwitchsRequest) String() string {
@@ -2262,6 +2485,26 @@ func (s DescribeRdsVSwitchsRequest) GoString() string {
 
 func (s *DescribeRdsVSwitchsRequest) SetSecurityToken(v string) *DescribeRdsVSwitchsRequest {
 	s.SecurityToken = &v
+	return s
+}
+
+func (s *DescribeRdsVSwitchsRequest) SetOwnerId(v int64) *DescribeRdsVSwitchsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeRdsVSwitchsRequest) SetResourceOwnerAccount(v string) *DescribeRdsVSwitchsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeRdsVSwitchsRequest) SetResourceOwnerId(v int64) *DescribeRdsVSwitchsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeRdsVSwitchsRequest) SetOwnerAccount(v string) *DescribeRdsVSwitchsRequest {
+	s.OwnerAccount = &v
 	return s
 }
 
@@ -2393,8 +2636,12 @@ func (s *DescribeRdsVSwitchsResponseVSwitchesVSwitch) SetGmtModified(v string) *
 }
 
 type DescribeRdsVpcsRequest struct {
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	ZoneId        *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	ZoneId               *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeRdsVpcsRequest) String() string {
@@ -2407,6 +2654,26 @@ func (s DescribeRdsVpcsRequest) GoString() string {
 
 func (s *DescribeRdsVpcsRequest) SetSecurityToken(v string) *DescribeRdsVpcsRequest {
 	s.SecurityToken = &v
+	return s
+}
+
+func (s *DescribeRdsVpcsRequest) SetOwnerId(v int64) *DescribeRdsVpcsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeRdsVpcsRequest) SetResourceOwnerAccount(v string) *DescribeRdsVpcsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeRdsVpcsRequest) SetResourceOwnerId(v int64) *DescribeRdsVpcsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeRdsVpcsRequest) SetOwnerAccount(v string) *DescribeRdsVpcsRequest {
+	s.OwnerAccount = &v
 	return s
 }
 
@@ -2592,6 +2859,7 @@ func (s *DescribeRdsVpcsResponseVpcsVpcVSwitchs) SetGmtModified(v string) *Descr
 }
 
 type AddBuDBInstanceRelationRequest struct {
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty" require:"true"`
 	BusinessUnit *string `json:"BusinessUnit,omitempty" xml:"BusinessUnit,omitempty" require:"true"`
 }
@@ -2602,6 +2870,11 @@ func (s AddBuDBInstanceRelationRequest) String() string {
 
 func (s AddBuDBInstanceRelationRequest) GoString() string {
 	return s.String()
+}
+
+func (s *AddBuDBInstanceRelationRequest) SetOwnerId(v int64) *AddBuDBInstanceRelationRequest {
+	s.OwnerId = &v
+	return s
 }
 
 func (s *AddBuDBInstanceRelationRequest) SetDBInstanceId(v string) *AddBuDBInstanceRelationRequest {
@@ -3918,6 +4191,7 @@ func (s *DescribeRegionsResponseRegionsRegionZonesZone) SetVpcEnabled(v bool) *D
 }
 
 type DescribeDBInstancesRequest struct {
+	OwnerId               *int64                           `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId              *string                          `json:"RegionId,omitempty" xml:"RegionId,omitempty" require:"true"`
 	DBInstanceDescription *string                          `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
 	InstanceNetworkType   *string                          `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
@@ -3933,6 +4207,11 @@ func (s DescribeDBInstancesRequest) String() string {
 
 func (s DescribeDBInstancesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDBInstancesRequest) SetOwnerId(v int64) *DescribeDBInstancesRequest {
+	s.OwnerId = &v
+	return s
 }
 
 func (s *DescribeDBInstancesRequest) SetRegionId(v string) *DescribeDBInstancesRequest {
@@ -4501,6 +4780,7 @@ func (s *DescribeDBInstanceIPArrayListResponseItemsDBInstanceIPArray) SetSecurit
 }
 
 type DescribeDBInstanceAttributeRequest struct {
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty" require:"true"`
 }
 
@@ -4510,6 +4790,11 @@ func (s DescribeDBInstanceAttributeRequest) String() string {
 
 func (s DescribeDBInstanceAttributeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDBInstanceAttributeRequest) SetOwnerId(v int64) *DescribeDBInstanceAttributeRequest {
+	s.OwnerId = &v
+	return s
 }
 
 func (s *DescribeDBInstanceAttributeRequest) SetDBInstanceId(v string) *DescribeDBInstanceAttributeRequest {
@@ -4947,6 +5232,7 @@ func (s *DescribeAccountsResponseAccountsDBInstanceAccount) SetAccountDescriptio
 }
 
 type DeleteDBInstanceRequest struct {
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty" require:"true"`
 }
@@ -4957,6 +5243,11 @@ func (s DeleteDBInstanceRequest) String() string {
 
 func (s DeleteDBInstanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteDBInstanceRequest) SetOwnerId(v int64) *DeleteDBInstanceRequest {
+	s.OwnerId = &v
+	return s
 }
 
 func (s *DeleteDBInstanceRequest) SetClientToken(v string) *DeleteDBInstanceRequest {
@@ -5027,6 +5318,7 @@ func (s *DeleteDatabaseResponse) SetRequestId(v string) *DeleteDatabaseResponse 
 }
 
 type CreateDBInstanceRequest struct {
+	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty" require:"true"`
 	ZoneId                *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty" require:"true"`
 	EngineVersion         *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty" require:"true"`
@@ -5051,6 +5343,11 @@ func (s CreateDBInstanceRequest) String() string {
 
 func (s CreateDBInstanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateDBInstanceRequest) SetOwnerId(v int64) *CreateDBInstanceRequest {
+	s.OwnerId = &v
+	return s
 }
 
 func (s *CreateDBInstanceRequest) SetRegionId(v string) *CreateDBInstanceRequest {
@@ -5175,6 +5472,7 @@ func (s *CreateDBInstanceResponse) SetPort(v string) *CreateDBInstanceResponse {
 }
 
 type CreateAccountRequest struct {
+	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	DBInstanceId       *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty" require:"true"`
 	DatabaseName       *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	AccountName        *string `json:"AccountName,omitempty" xml:"AccountName,omitempty" require:"true"`
@@ -5188,6 +5486,11 @@ func (s CreateAccountRequest) String() string {
 
 func (s CreateAccountRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateAccountRequest) SetOwnerId(v int64) *CreateAccountRequest {
+	s.OwnerId = &v
+	return s
 }
 
 func (s *CreateAccountRequest) SetDBInstanceId(v string) *CreateAccountRequest {
@@ -5233,6 +5536,9 @@ func (s *CreateAccountResponse) SetRequestId(v string) *CreateAccountResponse {
 }
 
 type AllocateInstancePublicConnectionRequest struct {
+	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount   *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId        *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	DBInstanceId           *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty" require:"true"`
 	ConnectionStringPrefix *string `json:"ConnectionStringPrefix,omitempty" xml:"ConnectionStringPrefix,omitempty" require:"true"`
 	Port                   *string `json:"Port,omitempty" xml:"Port,omitempty" require:"true"`
@@ -5244,6 +5550,21 @@ func (s AllocateInstancePublicConnectionRequest) String() string {
 
 func (s AllocateInstancePublicConnectionRequest) GoString() string {
 	return s.String()
+}
+
+func (s *AllocateInstancePublicConnectionRequest) SetOwnerId(v int64) *AllocateInstancePublicConnectionRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *AllocateInstancePublicConnectionRequest) SetResourceOwnerAccount(v string) *AllocateInstancePublicConnectionRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *AllocateInstancePublicConnectionRequest) SetResourceOwnerId(v int64) *AllocateInstancePublicConnectionRequest {
+	s.ResourceOwnerId = &v
+	return s
 }
 
 func (s *AllocateInstancePublicConnectionRequest) SetDBInstanceId(v string) *AllocateInstancePublicConnectionRequest {
@@ -5319,6 +5640,31 @@ func (client *Client) Init(config *rpc.Config) (_err error) {
 	}
 
 	return nil
+}
+
+func (client *Client) DescribeUserEncryptionKeyListWithOptions(request *DescribeUserEncryptionKeyListRequest, runtime *util.RuntimeOptions) (_result *DescribeUserEncryptionKeyListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &DescribeUserEncryptionKeyListResponse{}
+	_body, _err := client.DoRequest(tea.String("DescribeUserEncryptionKeyList"), tea.String("HTTPS"), tea.String("POST"), tea.String("2016-05-03"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeUserEncryptionKeyList(request *DescribeUserEncryptionKeyListRequest) (_result *DescribeUserEncryptionKeyListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeUserEncryptionKeyListResponse{}
+	_body, _err := client.DescribeUserEncryptionKeyListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
 }
 
 func (client *Client) DescribeModifyParameterLogWithOptions(request *DescribeModifyParameterLogRequest, runtime *util.RuntimeOptions) (_result *DescribeModifyParameterLogResponse, _err error) {
