@@ -14,6 +14,312 @@ import (
 	"io"
 )
 
+type ConvertHdrVideoRequest struct {
+	VideoURL       *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty" require:"true"`
+	HDRFormat      *string `json:"HDRFormat,omitempty" xml:"HDRFormat,omitempty"`
+	MaxIlluminance *int    `json:"MaxIlluminance,omitempty" xml:"MaxIlluminance,omitempty"`
+	Bitrate        *int    `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+}
+
+func (s ConvertHdrVideoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConvertHdrVideoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ConvertHdrVideoRequest) SetVideoURL(v string) *ConvertHdrVideoRequest {
+	s.VideoURL = &v
+	return s
+}
+
+func (s *ConvertHdrVideoRequest) SetHDRFormat(v string) *ConvertHdrVideoRequest {
+	s.HDRFormat = &v
+	return s
+}
+
+func (s *ConvertHdrVideoRequest) SetMaxIlluminance(v int) *ConvertHdrVideoRequest {
+	s.MaxIlluminance = &v
+	return s
+}
+
+func (s *ConvertHdrVideoRequest) SetBitrate(v int) *ConvertHdrVideoRequest {
+	s.Bitrate = &v
+	return s
+}
+
+type ConvertHdrVideoResponse struct {
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Data      *ConvertHdrVideoResponseData `json:"Data,omitempty" xml:"Data,omitempty" require:"true" type:"Struct"`
+}
+
+func (s ConvertHdrVideoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConvertHdrVideoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ConvertHdrVideoResponse) SetRequestId(v string) *ConvertHdrVideoResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ConvertHdrVideoResponse) SetData(v *ConvertHdrVideoResponseData) *ConvertHdrVideoResponse {
+	s.Data = v
+	return s
+}
+
+type ConvertHdrVideoResponseData struct {
+	VideoURL *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty" require:"true"`
+}
+
+func (s ConvertHdrVideoResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConvertHdrVideoResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *ConvertHdrVideoResponseData) SetVideoURL(v string) *ConvertHdrVideoResponseData {
+	s.VideoURL = &v
+	return s
+}
+
+type ConvertHdrVideoAdvanceRequest struct {
+	VideoURLObject io.Reader `json:"VideoURLObject,omitempty" xml:"VideoURLObject,omitempty" require:"true"`
+	HDRFormat      *string   `json:"HDRFormat,omitempty" xml:"HDRFormat,omitempty"`
+	MaxIlluminance *int      `json:"MaxIlluminance,omitempty" xml:"MaxIlluminance,omitempty"`
+	Bitrate        *int      `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+}
+
+func (s ConvertHdrVideoAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConvertHdrVideoAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ConvertHdrVideoAdvanceRequest) SetVideoURLObject(v io.Reader) *ConvertHdrVideoAdvanceRequest {
+	s.VideoURLObject = v
+	return s
+}
+
+func (s *ConvertHdrVideoAdvanceRequest) SetHDRFormat(v string) *ConvertHdrVideoAdvanceRequest {
+	s.HDRFormat = &v
+	return s
+}
+
+func (s *ConvertHdrVideoAdvanceRequest) SetMaxIlluminance(v int) *ConvertHdrVideoAdvanceRequest {
+	s.MaxIlluminance = &v
+	return s
+}
+
+func (s *ConvertHdrVideoAdvanceRequest) SetBitrate(v int) *ConvertHdrVideoAdvanceRequest {
+	s.Bitrate = &v
+	return s
+}
+
+type InterpolateVideoFrameRequest struct {
+	VideoURL  *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty" require:"true"`
+	FrameRate *int    `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
+	Bitrate   *int    `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+}
+
+func (s InterpolateVideoFrameRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InterpolateVideoFrameRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InterpolateVideoFrameRequest) SetVideoURL(v string) *InterpolateVideoFrameRequest {
+	s.VideoURL = &v
+	return s
+}
+
+func (s *InterpolateVideoFrameRequest) SetFrameRate(v int) *InterpolateVideoFrameRequest {
+	s.FrameRate = &v
+	return s
+}
+
+func (s *InterpolateVideoFrameRequest) SetBitrate(v int) *InterpolateVideoFrameRequest {
+	s.Bitrate = &v
+	return s
+}
+
+type InterpolateVideoFrameResponse struct {
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Data      *InterpolateVideoFrameResponseData `json:"Data,omitempty" xml:"Data,omitempty" require:"true" type:"Struct"`
+}
+
+func (s InterpolateVideoFrameResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InterpolateVideoFrameResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InterpolateVideoFrameResponse) SetRequestId(v string) *InterpolateVideoFrameResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *InterpolateVideoFrameResponse) SetData(v *InterpolateVideoFrameResponseData) *InterpolateVideoFrameResponse {
+	s.Data = v
+	return s
+}
+
+type InterpolateVideoFrameResponseData struct {
+	VideoURL *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty" require:"true"`
+}
+
+func (s InterpolateVideoFrameResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InterpolateVideoFrameResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *InterpolateVideoFrameResponseData) SetVideoURL(v string) *InterpolateVideoFrameResponseData {
+	s.VideoURL = &v
+	return s
+}
+
+type InterpolateVideoFrameAdvanceRequest struct {
+	VideoURLObject io.Reader `json:"VideoURLObject,omitempty" xml:"VideoURLObject,omitempty" require:"true"`
+	FrameRate      *int      `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
+	Bitrate        *int      `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+}
+
+func (s InterpolateVideoFrameAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InterpolateVideoFrameAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InterpolateVideoFrameAdvanceRequest) SetVideoURLObject(v io.Reader) *InterpolateVideoFrameAdvanceRequest {
+	s.VideoURLObject = v
+	return s
+}
+
+func (s *InterpolateVideoFrameAdvanceRequest) SetFrameRate(v int) *InterpolateVideoFrameAdvanceRequest {
+	s.FrameRate = &v
+	return s
+}
+
+func (s *InterpolateVideoFrameAdvanceRequest) SetBitrate(v int) *InterpolateVideoFrameAdvanceRequest {
+	s.Bitrate = &v
+	return s
+}
+
+type ToneSdrVideoRequest struct {
+	VideoURL     *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty" require:"true"`
+	Bitrate      *int    `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	RecolorModel *string `json:"RecolorModel,omitempty" xml:"RecolorModel,omitempty"`
+}
+
+func (s ToneSdrVideoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ToneSdrVideoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ToneSdrVideoRequest) SetVideoURL(v string) *ToneSdrVideoRequest {
+	s.VideoURL = &v
+	return s
+}
+
+func (s *ToneSdrVideoRequest) SetBitrate(v int) *ToneSdrVideoRequest {
+	s.Bitrate = &v
+	return s
+}
+
+func (s *ToneSdrVideoRequest) SetRecolorModel(v string) *ToneSdrVideoRequest {
+	s.RecolorModel = &v
+	return s
+}
+
+type ToneSdrVideoResponse struct {
+	RequestId *string                   `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Data      *ToneSdrVideoResponseData `json:"Data,omitempty" xml:"Data,omitempty" require:"true" type:"Struct"`
+}
+
+func (s ToneSdrVideoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ToneSdrVideoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ToneSdrVideoResponse) SetRequestId(v string) *ToneSdrVideoResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ToneSdrVideoResponse) SetData(v *ToneSdrVideoResponseData) *ToneSdrVideoResponse {
+	s.Data = v
+	return s
+}
+
+type ToneSdrVideoResponseData struct {
+	VideoURL *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty" require:"true"`
+}
+
+func (s ToneSdrVideoResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ToneSdrVideoResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *ToneSdrVideoResponseData) SetVideoURL(v string) *ToneSdrVideoResponseData {
+	s.VideoURL = &v
+	return s
+}
+
+type ToneSdrVideoAdvanceRequest struct {
+	VideoURLObject io.Reader `json:"VideoURLObject,omitempty" xml:"VideoURLObject,omitempty" require:"true"`
+	Bitrate        *int      `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	RecolorModel   *string   `json:"RecolorModel,omitempty" xml:"RecolorModel,omitempty"`
+}
+
+func (s ToneSdrVideoAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ToneSdrVideoAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ToneSdrVideoAdvanceRequest) SetVideoURLObject(v io.Reader) *ToneSdrVideoAdvanceRequest {
+	s.VideoURLObject = v
+	return s
+}
+
+func (s *ToneSdrVideoAdvanceRequest) SetBitrate(v int) *ToneSdrVideoAdvanceRequest {
+	s.Bitrate = &v
+	return s
+}
+
+func (s *ToneSdrVideoAdvanceRequest) SetRecolorModel(v string) *ToneSdrVideoAdvanceRequest {
+	s.RecolorModel = &v
+	return s
+}
+
 type EnhanceVideoQualityRequest struct {
 	VideoURL       *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty" require:"true"`
 	OutPutWidth    *int    `json:"OutPutWidth,omitempty" xml:"OutPutWidth,omitempty"`
@@ -1381,6 +1687,342 @@ func (client *Client) Init(config *rpc.Config) (_err error) {
 	}
 
 	return nil
+}
+
+func (client *Client) ConvertHdrVideo(request *ConvertHdrVideoRequest, runtime *util.RuntimeOptions) (_result *ConvertHdrVideoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &ConvertHdrVideoResponse{}
+	_body, _err := client.DoRequest(tea.String("ConvertHdrVideo"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-03-20"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ConvertHdrVideoSimply(request *ConvertHdrVideoRequest) (_result *ConvertHdrVideoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ConvertHdrVideoResponse{}
+	_body, _err := client.ConvertHdrVideo(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ConvertHdrVideoAdvance(request *ConvertHdrVideoAdvanceRequest, runtime *util.RuntimeOptions) (_result *ConvertHdrVideoResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("videoenhan"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	rpcutil.Convert(runtime, ossRuntime)
+	convertHdrVideoReq := &ConvertHdrVideoRequest{}
+	rpcutil.Convert(request, convertHdrVideoReq)
+	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	ossConfig.AccessKeyId = authResponse.AccessKeyId
+	ossConfig.Endpoint = rpcutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+	ossClient, _err = oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	fileObj = &fileform.FileField{
+		Filename:    authResponse.ObjectKey,
+		Content:     request.VideoURLObject,
+		ContentType: tea.String(""),
+	}
+	ossHeader = &oss.PostObjectRequestHeader{
+		AccessKeyId:         authResponse.AccessKeyId,
+		Policy:              authResponse.EncodedPolicy,
+		Signature:           authResponse.Signature,
+		Key:                 authResponse.ObjectKey,
+		File:                fileObj,
+		SuccessActionStatus: tea.String("201"),
+	}
+	uploadRequest = &oss.PostObjectRequest{
+		BucketName: authResponse.Bucket,
+		Header:     ossHeader,
+	}
+	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+	if _err != nil {
+		return _result, _err
+	}
+	convertHdrVideoReq.VideoURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	convertHdrVideoResp, _err := client.ConvertHdrVideo(convertHdrVideoReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = convertHdrVideoResp
+	return _result, _err
+}
+
+func (client *Client) InterpolateVideoFrame(request *InterpolateVideoFrameRequest, runtime *util.RuntimeOptions) (_result *InterpolateVideoFrameResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &InterpolateVideoFrameResponse{}
+	_body, _err := client.DoRequest(tea.String("InterpolateVideoFrame"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-03-20"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) InterpolateVideoFrameSimply(request *InterpolateVideoFrameRequest) (_result *InterpolateVideoFrameResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &InterpolateVideoFrameResponse{}
+	_body, _err := client.InterpolateVideoFrame(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) InterpolateVideoFrameAdvance(request *InterpolateVideoFrameAdvanceRequest, runtime *util.RuntimeOptions) (_result *InterpolateVideoFrameResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("videoenhan"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	rpcutil.Convert(runtime, ossRuntime)
+	interpolateVideoFrameReq := &InterpolateVideoFrameRequest{}
+	rpcutil.Convert(request, interpolateVideoFrameReq)
+	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	ossConfig.AccessKeyId = authResponse.AccessKeyId
+	ossConfig.Endpoint = rpcutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+	ossClient, _err = oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	fileObj = &fileform.FileField{
+		Filename:    authResponse.ObjectKey,
+		Content:     request.VideoURLObject,
+		ContentType: tea.String(""),
+	}
+	ossHeader = &oss.PostObjectRequestHeader{
+		AccessKeyId:         authResponse.AccessKeyId,
+		Policy:              authResponse.EncodedPolicy,
+		Signature:           authResponse.Signature,
+		Key:                 authResponse.ObjectKey,
+		File:                fileObj,
+		SuccessActionStatus: tea.String("201"),
+	}
+	uploadRequest = &oss.PostObjectRequest{
+		BucketName: authResponse.Bucket,
+		Header:     ossHeader,
+	}
+	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+	if _err != nil {
+		return _result, _err
+	}
+	interpolateVideoFrameReq.VideoURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	interpolateVideoFrameResp, _err := client.InterpolateVideoFrame(interpolateVideoFrameReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = interpolateVideoFrameResp
+	return _result, _err
+}
+
+func (client *Client) ToneSdrVideo(request *ToneSdrVideoRequest, runtime *util.RuntimeOptions) (_result *ToneSdrVideoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &ToneSdrVideoResponse{}
+	_body, _err := client.DoRequest(tea.String("ToneSdrVideo"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-03-20"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ToneSdrVideoSimply(request *ToneSdrVideoRequest) (_result *ToneSdrVideoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ToneSdrVideoResponse{}
+	_body, _err := client.ToneSdrVideo(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ToneSdrVideoAdvance(request *ToneSdrVideoAdvanceRequest, runtime *util.RuntimeOptions) (_result *ToneSdrVideoResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("videoenhan"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	rpcutil.Convert(runtime, ossRuntime)
+	toneSdrVideoReq := &ToneSdrVideoRequest{}
+	rpcutil.Convert(request, toneSdrVideoReq)
+	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	ossConfig.AccessKeyId = authResponse.AccessKeyId
+	ossConfig.Endpoint = rpcutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+	ossClient, _err = oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	fileObj = &fileform.FileField{
+		Filename:    authResponse.ObjectKey,
+		Content:     request.VideoURLObject,
+		ContentType: tea.String(""),
+	}
+	ossHeader = &oss.PostObjectRequestHeader{
+		AccessKeyId:         authResponse.AccessKeyId,
+		Policy:              authResponse.EncodedPolicy,
+		Signature:           authResponse.Signature,
+		Key:                 authResponse.ObjectKey,
+		File:                fileObj,
+		SuccessActionStatus: tea.String("201"),
+	}
+	uploadRequest = &oss.PostObjectRequest{
+		BucketName: authResponse.Bucket,
+		Header:     ossHeader,
+	}
+	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+	if _err != nil {
+		return _result, _err
+	}
+	toneSdrVideoReq.VideoURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	toneSdrVideoResp, _err := client.ToneSdrVideo(toneSdrVideoReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = toneSdrVideoResp
+	return _result, _err
 }
 
 func (client *Client) EnhanceVideoQuality(request *EnhanceVideoQualityRequest, runtime *util.RuntimeOptions) (_result *EnhanceVideoQualityResponse, _err error) {
