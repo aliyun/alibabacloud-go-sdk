@@ -648,7 +648,8 @@ func (s *SegmentClothAdvanceRequest) SetImageURLObject(v io.Reader) *SegmentClot
 }
 
 type SegmentAnimalRequest struct {
-	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty" require:"true"`
+	ImageURL   *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty" require:"true"`
+	ReturnForm *string `json:"ReturnForm,omitempty" xml:"ReturnForm,omitempty"`
 }
 
 func (s SegmentAnimalRequest) String() string {
@@ -661,6 +662,11 @@ func (s SegmentAnimalRequest) GoString() string {
 
 func (s *SegmentAnimalRequest) SetImageURL(v string) *SegmentAnimalRequest {
 	s.ImageURL = &v
+	return s
+}
+
+func (s *SegmentAnimalRequest) SetReturnForm(v string) *SegmentAnimalRequest {
+	s.ReturnForm = &v
 	return s
 }
 
@@ -706,6 +712,7 @@ func (s *SegmentAnimalResponseData) SetImageURL(v string) *SegmentAnimalResponse
 
 type SegmentAnimalAdvanceRequest struct {
 	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ReturnForm     *string   `json:"ReturnForm,omitempty" xml:"ReturnForm,omitempty"`
 }
 
 func (s SegmentAnimalAdvanceRequest) String() string {
@@ -718,6 +725,11 @@ func (s SegmentAnimalAdvanceRequest) GoString() string {
 
 func (s *SegmentAnimalAdvanceRequest) SetImageURLObject(v io.Reader) *SegmentAnimalAdvanceRequest {
 	s.ImageURLObject = v
+	return s
+}
+
+func (s *SegmentAnimalAdvanceRequest) SetReturnForm(v string) *SegmentAnimalAdvanceRequest {
+	s.ReturnForm = &v
 	return s
 }
 
@@ -1886,7 +1898,8 @@ func (s *SegmentBodyAdvanceRequest) SetReturnForm(v string) *SegmentBodyAdvanceR
 }
 
 type SegmentCommonImageRequest struct {
-	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty" require:"true"`
+	ImageURL   *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty" require:"true"`
+	ReturnForm *string `json:"ReturnForm,omitempty" xml:"ReturnForm,omitempty"`
 }
 
 func (s SegmentCommonImageRequest) String() string {
@@ -1899,6 +1912,11 @@ func (s SegmentCommonImageRequest) GoString() string {
 
 func (s *SegmentCommonImageRequest) SetImageURL(v string) *SegmentCommonImageRequest {
 	s.ImageURL = &v
+	return s
+}
+
+func (s *SegmentCommonImageRequest) SetReturnForm(v string) *SegmentCommonImageRequest {
+	s.ReturnForm = &v
 	return s
 }
 
@@ -1944,6 +1962,7 @@ func (s *SegmentCommonImageResponseData) SetImageURL(v string) *SegmentCommonIma
 
 type SegmentCommonImageAdvanceRequest struct {
 	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ReturnForm     *string   `json:"ReturnForm,omitempty" xml:"ReturnForm,omitempty"`
 }
 
 func (s SegmentCommonImageAdvanceRequest) String() string {
@@ -1956,6 +1975,11 @@ func (s SegmentCommonImageAdvanceRequest) GoString() string {
 
 func (s *SegmentCommonImageAdvanceRequest) SetImageURLObject(v io.Reader) *SegmentCommonImageAdvanceRequest {
 	s.ImageURLObject = v
+	return s
+}
+
+func (s *SegmentCommonImageAdvanceRequest) SetReturnForm(v string) *SegmentCommonImageAdvanceRequest {
+	s.ReturnForm = &v
 	return s
 }
 
