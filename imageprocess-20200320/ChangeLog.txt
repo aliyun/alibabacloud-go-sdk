@@ -1,3 +1,6 @@
+2020-12-22 Version: v1.0.12
+- Release DetectRibFracture.
+
 2020-12-09 Version: v1.0.6
 - Update DetectLungNodule, DetectSpineMRI, DetectKneeXRay, DetectCovid19Cad.
 

@@ -14,6 +14,484 @@ import (
 	"io"
 )
 
+type DetectRibFractureRequest struct {
+	URLList    []*DetectRibFractureRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" require:"true" type:"Repeated"`
+	DataFormat *string                            `json:"DataFormat,omitempty" xml:"DataFormat,omitempty" require:"true"`
+	OrgName    *string                            `json:"OrgName,omitempty" xml:"OrgName,omitempty" require:"true"`
+	OrgId      *string                            `json:"OrgId,omitempty" xml:"OrgId,omitempty" require:"true"`
+	SourceType *string                            `json:"SourceType,omitempty" xml:"SourceType,omitempty" require:"true"`
+}
+
+func (s DetectRibFractureRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectRibFractureRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetectRibFractureRequest) SetURLList(v []*DetectRibFractureRequestURLList) *DetectRibFractureRequest {
+	s.URLList = v
+	return s
+}
+
+func (s *DetectRibFractureRequest) SetDataFormat(v string) *DetectRibFractureRequest {
+	s.DataFormat = &v
+	return s
+}
+
+func (s *DetectRibFractureRequest) SetOrgName(v string) *DetectRibFractureRequest {
+	s.OrgName = &v
+	return s
+}
+
+func (s *DetectRibFractureRequest) SetOrgId(v string) *DetectRibFractureRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *DetectRibFractureRequest) SetSourceType(v string) *DetectRibFractureRequest {
+	s.SourceType = &v
+	return s
+}
+
+type DetectRibFractureRequestURLList struct {
+	URL *string `json:"URL,omitempty" xml:"URL,omitempty" require:"true"`
+}
+
+func (s DetectRibFractureRequestURLList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectRibFractureRequestURLList) GoString() string {
+	return s.String()
+}
+
+func (s *DetectRibFractureRequestURLList) SetURL(v string) *DetectRibFractureRequestURLList {
+	s.URL = &v
+	return s
+}
+
+type DetectRibFractureResponse struct {
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Data      *DetectRibFractureResponseData `json:"Data,omitempty" xml:"Data,omitempty" require:"true" type:"Struct"`
+}
+
+func (s DetectRibFractureResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectRibFractureResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DetectRibFractureResponse) SetRequestId(v string) *DetectRibFractureResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DetectRibFractureResponse) SetData(v *DetectRibFractureResponseData) *DetectRibFractureResponse {
+	s.Data = v
+	return s
+}
+
+type DetectRibFractureResponseData struct {
+	ResultURL  *string                                    `json:"ResultURL,omitempty" xml:"ResultURL,omitempty" require:"true"`
+	Detections []*DetectRibFractureResponseDataDetections `json:"Detections,omitempty" xml:"Detections,omitempty" require:"true" type:"Repeated"`
+	Spacing    []*float32                                 `json:"Spacing,omitempty" xml:"Spacing,omitempty" require:"true" type:"Repeated"`
+	Origin     []*float32                                 `json:"Origin,omitempty" xml:"Origin,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s DetectRibFractureResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectRibFractureResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *DetectRibFractureResponseData) SetResultURL(v string) *DetectRibFractureResponseData {
+	s.ResultURL = &v
+	return s
+}
+
+func (s *DetectRibFractureResponseData) SetDetections(v []*DetectRibFractureResponseDataDetections) *DetectRibFractureResponseData {
+	s.Detections = v
+	return s
+}
+
+func (s *DetectRibFractureResponseData) SetSpacing(v []*float32) *DetectRibFractureResponseData {
+	s.Spacing = v
+	return s
+}
+
+func (s *DetectRibFractureResponseData) SetOrigin(v []*float32) *DetectRibFractureResponseData {
+	s.Origin = v
+	return s
+}
+
+type DetectRibFractureResponseDataDetections struct {
+	FractureId         *int     `json:"FractureId,omitempty" xml:"FractureId,omitempty" require:"true"`
+	FractureConfidence *float32 `json:"FractureConfidence,omitempty" xml:"FractureConfidence,omitempty" require:"true"`
+	FractureCategory   *string  `json:"FractureCategory,omitempty" xml:"FractureCategory,omitempty" require:"true"`
+	Coordinates        []*int   `json:"Coordinates,omitempty" xml:"Coordinates,omitempty" require:"true" type:"Repeated"`
+	CoordinateImage    []*int   `json:"CoordinateImage,omitempty" xml:"CoordinateImage,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s DetectRibFractureResponseDataDetections) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectRibFractureResponseDataDetections) GoString() string {
+	return s.String()
+}
+
+func (s *DetectRibFractureResponseDataDetections) SetFractureId(v int) *DetectRibFractureResponseDataDetections {
+	s.FractureId = &v
+	return s
+}
+
+func (s *DetectRibFractureResponseDataDetections) SetFractureConfidence(v float32) *DetectRibFractureResponseDataDetections {
+	s.FractureConfidence = &v
+	return s
+}
+
+func (s *DetectRibFractureResponseDataDetections) SetFractureCategory(v string) *DetectRibFractureResponseDataDetections {
+	s.FractureCategory = &v
+	return s
+}
+
+func (s *DetectRibFractureResponseDataDetections) SetCoordinates(v []*int) *DetectRibFractureResponseDataDetections {
+	s.Coordinates = v
+	return s
+}
+
+func (s *DetectRibFractureResponseDataDetections) SetCoordinateImage(v []*int) *DetectRibFractureResponseDataDetections {
+	s.CoordinateImage = v
+	return s
+}
+
+type ScreenChestCTRequest struct {
+	DataFormat *string                        `json:"DataFormat,omitempty" xml:"DataFormat,omitempty" require:"true"`
+	OrgName    *string                        `json:"OrgName,omitempty" xml:"OrgName,omitempty" require:"true"`
+	OrgId      *string                        `json:"OrgId,omitempty" xml:"OrgId,omitempty" require:"true"`
+	URLList    []*ScreenChestCTRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s ScreenChestCTRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenChestCTRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenChestCTRequest) SetDataFormat(v string) *ScreenChestCTRequest {
+	s.DataFormat = &v
+	return s
+}
+
+func (s *ScreenChestCTRequest) SetOrgName(v string) *ScreenChestCTRequest {
+	s.OrgName = &v
+	return s
+}
+
+func (s *ScreenChestCTRequest) SetOrgId(v string) *ScreenChestCTRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *ScreenChestCTRequest) SetURLList(v []*ScreenChestCTRequestURLList) *ScreenChestCTRequest {
+	s.URLList = v
+	return s
+}
+
+type ScreenChestCTRequestURLList struct {
+	URL *string `json:"URL,omitempty" xml:"URL,omitempty" require:"true"`
+}
+
+func (s ScreenChestCTRequestURLList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenChestCTRequestURLList) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenChestCTRequestURLList) SetURL(v string) *ScreenChestCTRequestURLList {
+	s.URL = &v
+	return s
+}
+
+type ScreenChestCTResponse struct {
+	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Data      *ScreenChestCTResponseData `json:"Data,omitempty" xml:"Data,omitempty" require:"true" type:"Struct"`
+}
+
+func (s ScreenChestCTResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenChestCTResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenChestCTResponse) SetRequestId(v string) *ScreenChestCTResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ScreenChestCTResponse) SetData(v *ScreenChestCTResponseData) *ScreenChestCTResponse {
+	s.Data = v
+	return s
+}
+
+type ScreenChestCTResponseData struct {
+	LungNodule *ScreenChestCTResponseDataLungNodule `json:"LungNodule,omitempty" xml:"LungNodule,omitempty" require:"true" type:"Struct"`
+	CACS       *ScreenChestCTResponseDataCACS       `json:"CACS,omitempty" xml:"CACS,omitempty" require:"true" type:"Struct"`
+	Covid      *ScreenChestCTResponseDataCovid      `json:"Covid,omitempty" xml:"Covid,omitempty" require:"true" type:"Struct"`
+}
+
+func (s ScreenChestCTResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenChestCTResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenChestCTResponseData) SetLungNodule(v *ScreenChestCTResponseDataLungNodule) *ScreenChestCTResponseData {
+	s.LungNodule = v
+	return s
+}
+
+func (s *ScreenChestCTResponseData) SetCACS(v *ScreenChestCTResponseDataCACS) *ScreenChestCTResponseData {
+	s.CACS = v
+	return s
+}
+
+func (s *ScreenChestCTResponseData) SetCovid(v *ScreenChestCTResponseDataCovid) *ScreenChestCTResponseData {
+	s.Covid = v
+	return s
+}
+
+type ScreenChestCTResponseDataLungNodule struct {
+	Series []*ScreenChestCTResponseDataLungNoduleSeries `json:"Series,omitempty" xml:"Series,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s ScreenChestCTResponseDataLungNodule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenChestCTResponseDataLungNodule) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenChestCTResponseDataLungNodule) SetSeries(v []*ScreenChestCTResponseDataLungNoduleSeries) *ScreenChestCTResponseDataLungNodule {
+	s.Series = v
+	return s
+}
+
+type ScreenChestCTResponseDataLungNoduleSeries struct {
+	SeriesInstanceUid *string                                              `json:"SeriesInstanceUid,omitempty" xml:"SeriesInstanceUid,omitempty" require:"true"`
+	Report            *string                                              `json:"Report,omitempty" xml:"Report,omitempty" require:"true"`
+	Elements          []*ScreenChestCTResponseDataLungNoduleSeriesElements `json:"Elements,omitempty" xml:"Elements,omitempty" require:"true" type:"Repeated"`
+	Origin            []*float32                                           `json:"Origin,omitempty" xml:"Origin,omitempty" require:"true" type:"Repeated"`
+	Spacing           []*float32                                           `json:"Spacing,omitempty" xml:"Spacing,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s ScreenChestCTResponseDataLungNoduleSeries) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenChestCTResponseDataLungNoduleSeries) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenChestCTResponseDataLungNoduleSeries) SetSeriesInstanceUid(v string) *ScreenChestCTResponseDataLungNoduleSeries {
+	s.SeriesInstanceUid = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseDataLungNoduleSeries) SetReport(v string) *ScreenChestCTResponseDataLungNoduleSeries {
+	s.Report = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseDataLungNoduleSeries) SetElements(v []*ScreenChestCTResponseDataLungNoduleSeriesElements) *ScreenChestCTResponseDataLungNoduleSeries {
+	s.Elements = v
+	return s
+}
+
+func (s *ScreenChestCTResponseDataLungNoduleSeries) SetOrigin(v []*float32) *ScreenChestCTResponseDataLungNoduleSeries {
+	s.Origin = v
+	return s
+}
+
+func (s *ScreenChestCTResponseDataLungNoduleSeries) SetSpacing(v []*float32) *ScreenChestCTResponseDataLungNoduleSeries {
+	s.Spacing = v
+	return s
+}
+
+type ScreenChestCTResponseDataLungNoduleSeriesElements struct {
+	Category       *string  `json:"Category,omitempty" xml:"Category,omitempty" require:"true"`
+	Confidence     *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty" require:"true"`
+	Diameter       *float32 `json:"Diameter,omitempty" xml:"Diameter,omitempty" require:"true"`
+	Lobe           *string  `json:"Lobe,omitempty" xml:"Lobe,omitempty" require:"true"`
+	Lung           *string  `json:"Lung,omitempty" xml:"Lung,omitempty" require:"true"`
+	X              *float32 `json:"X,omitempty" xml:"X,omitempty" require:"true"`
+	Z              *float32 `json:"Z,omitempty" xml:"Z,omitempty" require:"true"`
+	Y              *float32 `json:"Y,omitempty" xml:"Y,omitempty" require:"true"`
+	ImageX         *float32 `json:"ImageX,omitempty" xml:"ImageX,omitempty" require:"true"`
+	ImageY         *float32 `json:"ImageY,omitempty" xml:"ImageY,omitempty" require:"true"`
+	ImageZ         *float32 `json:"ImageZ,omitempty" xml:"ImageZ,omitempty" require:"true"`
+	SOPInstanceUID *string  `json:"SOPInstanceUID,omitempty" xml:"SOPInstanceUID,omitempty" require:"true"`
+	Volume         *float32 `json:"Volume,omitempty" xml:"Volume,omitempty" require:"true"`
+	MeanValue      *float32 `json:"MeanValue,omitempty" xml:"MeanValue,omitempty" require:"true"`
+}
+
+func (s ScreenChestCTResponseDataLungNoduleSeriesElements) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenChestCTResponseDataLungNoduleSeriesElements) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenChestCTResponseDataLungNoduleSeriesElements) SetCategory(v string) *ScreenChestCTResponseDataLungNoduleSeriesElements {
+	s.Category = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseDataLungNoduleSeriesElements) SetConfidence(v float32) *ScreenChestCTResponseDataLungNoduleSeriesElements {
+	s.Confidence = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseDataLungNoduleSeriesElements) SetDiameter(v float32) *ScreenChestCTResponseDataLungNoduleSeriesElements {
+	s.Diameter = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseDataLungNoduleSeriesElements) SetLobe(v string) *ScreenChestCTResponseDataLungNoduleSeriesElements {
+	s.Lobe = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseDataLungNoduleSeriesElements) SetLung(v string) *ScreenChestCTResponseDataLungNoduleSeriesElements {
+	s.Lung = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseDataLungNoduleSeriesElements) SetX(v float32) *ScreenChestCTResponseDataLungNoduleSeriesElements {
+	s.X = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseDataLungNoduleSeriesElements) SetZ(v float32) *ScreenChestCTResponseDataLungNoduleSeriesElements {
+	s.Z = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseDataLungNoduleSeriesElements) SetY(v float32) *ScreenChestCTResponseDataLungNoduleSeriesElements {
+	s.Y = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseDataLungNoduleSeriesElements) SetImageX(v float32) *ScreenChestCTResponseDataLungNoduleSeriesElements {
+	s.ImageX = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseDataLungNoduleSeriesElements) SetImageY(v float32) *ScreenChestCTResponseDataLungNoduleSeriesElements {
+	s.ImageY = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseDataLungNoduleSeriesElements) SetImageZ(v float32) *ScreenChestCTResponseDataLungNoduleSeriesElements {
+	s.ImageZ = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseDataLungNoduleSeriesElements) SetSOPInstanceUID(v string) *ScreenChestCTResponseDataLungNoduleSeriesElements {
+	s.SOPInstanceUID = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseDataLungNoduleSeriesElements) SetVolume(v float32) *ScreenChestCTResponseDataLungNoduleSeriesElements {
+	s.Volume = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseDataLungNoduleSeriesElements) SetMeanValue(v float32) *ScreenChestCTResponseDataLungNoduleSeriesElements {
+	s.MeanValue = &v
+	return s
+}
+
+type ScreenChestCTResponseDataCACS struct {
+	Score     *string `json:"Score,omitempty" xml:"Score,omitempty" require:"true"`
+	ResultUrl *string `json:"ResultUrl,omitempty" xml:"ResultUrl,omitempty" require:"true"`
+}
+
+func (s ScreenChestCTResponseDataCACS) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenChestCTResponseDataCACS) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenChestCTResponseDataCACS) SetScore(v string) *ScreenChestCTResponseDataCACS {
+	s.Score = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseDataCACS) SetResultUrl(v string) *ScreenChestCTResponseDataCACS {
+	s.ResultUrl = &v
+	return s
+}
+
+type ScreenChestCTResponseDataCovid struct {
+	NewProbability    *string `json:"NewProbability,omitempty" xml:"NewProbability,omitempty" require:"true"`
+	NormalProbability *string `json:"NormalProbability,omitempty" xml:"NormalProbability,omitempty" require:"true"`
+	OtherProbability  *string `json:"OtherProbability,omitempty" xml:"OtherProbability,omitempty" require:"true"`
+	LesionRatio       *string `json:"LesionRatio,omitempty" xml:"LesionRatio,omitempty" require:"true"`
+	Mask              *string `json:"Mask,omitempty" xml:"Mask,omitempty" require:"true"`
+}
+
+func (s ScreenChestCTResponseDataCovid) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenChestCTResponseDataCovid) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenChestCTResponseDataCovid) SetNewProbability(v string) *ScreenChestCTResponseDataCovid {
+	s.NewProbability = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseDataCovid) SetNormalProbability(v string) *ScreenChestCTResponseDataCovid {
+	s.NormalProbability = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseDataCovid) SetOtherProbability(v string) *ScreenChestCTResponseDataCovid {
+	s.OtherProbability = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseDataCovid) SetLesionRatio(v string) *ScreenChestCTResponseDataCovid {
+	s.LesionRatio = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseDataCovid) SetMask(v string) *ScreenChestCTResponseDataCovid {
+	s.Mask = &v
+	return s
+}
+
 type DetectSkinDiseaseRequest struct {
 	Url     *string `json:"Url,omitempty" xml:"Url,omitempty" require:"true"`
 	OrgId   *string `json:"OrgId,omitempty" xml:"OrgId,omitempty" require:"true"`
@@ -1797,6 +2275,56 @@ func (client *Client) Init(config *rpc.Config) (_err error) {
 	}
 
 	return nil
+}
+
+func (client *Client) DetectRibFracture(request *DetectRibFractureRequest, runtime *util.RuntimeOptions) (_result *DetectRibFractureResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &DetectRibFractureResponse{}
+	_body, _err := client.DoRequest(tea.String("DetectRibFracture"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-03-20"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DetectRibFractureSimply(request *DetectRibFractureRequest) (_result *DetectRibFractureResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DetectRibFractureResponse{}
+	_body, _err := client.DetectRibFracture(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ScreenChestCT(request *ScreenChestCTRequest, runtime *util.RuntimeOptions) (_result *ScreenChestCTResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &ScreenChestCTResponse{}
+	_body, _err := client.DoRequest(tea.String("ScreenChestCT"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-03-20"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ScreenChestCTSimply(request *ScreenChestCTRequest) (_result *ScreenChestCTResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ScreenChestCTResponse{}
+	_body, _err := client.ScreenChestCT(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
 }
 
 func (client *Client) DetectSkinDisease(request *DetectSkinDiseaseRequest, runtime *util.RuntimeOptions) (_result *DetectSkinDiseaseResponse, _err error) {
