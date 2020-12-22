@@ -12,6 +12,31 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type Runtime struct {
+	// 容器运行时名称
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 容器运行时版本
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+}
+
+func (s Runtime) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Runtime) GoString() string {
+	return s.String()
+}
+
+func (s *Runtime) SetName(v string) *Runtime {
+	s.Name = &v
+	return s
+}
+
+func (s *Runtime) SetVersion(v string) *Runtime {
+	s.Version = &v
+	return s
+}
+
 type Taint struct {
 	// key值。
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
@@ -83,60 +108,28 @@ func (s *DataDisk) SetAutoSnapshotPolicyId(v string) *DataDisk {
 	return s
 }
 
-type DataDisks struct {
-	// 数据盘类型。取值cloud,cloud-ssd等
-	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// 数据盘大小。最小值40，单位：GiB
-	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
-	// 是否对数据盘加密。默认值：false。
-	Encrypted *bool `json:"encrypted,omitempty" xml:"encrypted,omitempty"`
+type Tag struct {
+	// key值。
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// value值。
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
-func (s DataDisks) String() string {
+func (s Tag) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DataDisks) GoString() string {
+func (s Tag) GoString() string {
 	return s.String()
 }
 
-func (s *DataDisks) SetCategory(v string) *DataDisks {
-	s.Category = &v
+func (s *Tag) SetKey(v string) *Tag {
+	s.Key = &v
 	return s
 }
 
-func (s *DataDisks) SetSize(v int64) *DataDisks {
-	s.Size = &v
-	return s
-}
-
-func (s *DataDisks) SetEncrypted(v bool) *DataDisks {
-	s.Encrypted = &v
-	return s
-}
-
-type Runtimes struct {
-	// 容器运行时名称。
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 容器运行时版本。
-	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-}
-
-func (s Runtimes) String() string {
-	return tea.Prettify(s)
-}
-
-func (s Runtimes) GoString() string {
-	return s.String()
-}
-
-func (s *Runtimes) SetName(v string) *Runtimes {
-	s.Name = &v
-	return s
-}
-
-func (s *Runtimes) SetVersion(v string) *Runtimes {
-	s.Version = &v
+func (s *Tag) SetValue(v string) *Tag {
+	s.Value = &v
 	return s
 }
 
@@ -211,118 +204,11 @@ func (s *MaintenanceWindow) SetWeeklyPeriod(v string) *MaintenanceWindow {
 	return s
 }
 
-type Runtime struct {
-	// 容器运行时名称
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 容器运行时版本
-	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-}
-
-func (s Runtime) String() string {
-	return tea.Prettify(s)
-}
-
-func (s Runtime) GoString() string {
-	return s.String()
-}
-
-func (s *Runtime) SetName(v string) *Runtime {
-	s.Name = &v
-	return s
-}
-
-func (s *Runtime) SetVersion(v string) *Runtime {
-	s.Version = &v
-	return s
-}
-
-type Taints struct {
-	// 污点名。
-	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// 污点值。
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
-	// 污点生效策略。
-	Effect *string `json:"effect,omitempty" xml:"effect,omitempty"`
-}
-
-func (s Taints) String() string {
-	return tea.Prettify(s)
-}
-
-func (s Taints) GoString() string {
-	return s.String()
-}
-
-func (s *Taints) SetKey(v string) *Taints {
-	s.Key = &v
-	return s
-}
-
-func (s *Taints) SetValue(v string) *Taints {
-	s.Value = &v
-	return s
-}
-
-func (s *Taints) SetEffect(v string) *Taints {
-	s.Effect = &v
-	return s
-}
-
-type Tag struct {
-	// key值。
-	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// value值。
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
-}
-
-func (s Tag) String() string {
-	return tea.Prettify(s)
-}
-
-func (s Tag) GoString() string {
-	return s.String()
-}
-
-func (s *Tag) SetKey(v string) *Tag {
-	s.Key = &v
-	return s
-}
-
-func (s *Tag) SetValue(v string) *Tag {
-	s.Value = &v
-	return s
-}
-
-type Tags struct {
-	// 标签名。
-	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// 标签值。
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
-}
-
-func (s Tags) String() string {
-	return tea.Prettify(s)
-}
-
-func (s Tags) GoString() string {
-	return s.String()
-}
-
-func (s *Tags) SetKey(v string) *Tags {
-	s.Key = &v
-	return s
-}
-
-func (s *Tags) SetValue(v string) *Tags {
-	s.Value = &v
-	return s
-}
-
 type ListTagResourcesRequest struct {
 	// 集群ID列表。
 	ResourceIds []*string `json:"resource_ids,omitempty" xml:"resource_ids,omitempty" type:"Repeated"`
 	// 按标签查找。
-	Tags []*ListTagResourcesRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// 下一次查询Token。
 	NextToken *string `json:"next_token,omitempty" xml:"next_token,omitempty"`
 }
@@ -340,7 +226,7 @@ func (s *ListTagResourcesRequest) SetResourceIds(v []*string) *ListTagResourcesR
 	return s
 }
 
-func (s *ListTagResourcesRequest) SetTags(v []*ListTagResourcesRequestTags) *ListTagResourcesRequest {
+func (s *ListTagResourcesRequest) SetTags(v []*Tag) *ListTagResourcesRequest {
 	s.Tags = v
 	return s
 }
@@ -350,33 +236,8 @@ func (s *ListTagResourcesRequest) SetNextToken(v string) *ListTagResourcesReques
 	return s
 }
 
-type ListTagResourcesRequestTags struct {
-	// 标签key。
-	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// 标签值。
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
-}
-
-func (s ListTagResourcesRequestTags) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListTagResourcesRequestTags) GoString() string {
-	return s.String()
-}
-
-func (s *ListTagResourcesRequestTags) SetKey(v string) *ListTagResourcesRequestTags {
-	s.Key = &v
-	return s
-}
-
-func (s *ListTagResourcesRequestTags) SetValue(v string) *ListTagResourcesRequestTags {
-	s.Value = &v
-	return s
-}
-
 type ListTagResourcesResponseBody struct {
-	// 下一个查询token。
+	// 下一个查询开始Token，为空说明没有下一个
 	NextToken *string `json:"next_token,omitempty" xml:"next_token,omitempty"`
 	// 请求ID。
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
@@ -609,10 +470,18 @@ func (s *ModifyClusterResponse) SetBody(v *ModifyClusterResponseBody) *ModifyClu
 }
 
 type DescribeClusterAttachScriptsRequest struct {
-	// 节点CPU架构,支持amd64、arm、arm64。
+	// 节点池ID。将节点加入指定节点池。
+	NodepoolId *string `json:"nodepool_id,omitempty" xml:"nodepool_id,omitempty"`
+	// 数据盘挂载
+	FormatDisk *bool `json:"format_disk,omitempty" xml:"format_disk,omitempty"`
+	// 保留实例名称
+	KeepInstanceName *bool `json:"keep_instance_name,omitempty" xml:"keep_instance_name,omitempty"`
+	// RDS白名单
+	RdsInstances []*string `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
+	// 节点CPU架构,支持amd64、arm、arm64。边缘托管集群专有字段。
 	Arch *string `json:"arch,omitempty" xml:"arch,omitempty"`
 	// 边缘托管版集群节点的接入配置。
-	Options *DescribeClusterAttachScriptsRequestOptions `json:"options,omitempty" xml:"options,omitempty" type:"Struct"`
+	Options *string `json:"options,omitempty" xml:"options,omitempty"`
 }
 
 func (s DescribeClusterAttachScriptsRequest) String() string {
@@ -623,73 +492,33 @@ func (s DescribeClusterAttachScriptsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeClusterAttachScriptsRequest) SetNodepoolId(v string) *DescribeClusterAttachScriptsRequest {
+	s.NodepoolId = &v
+	return s
+}
+
+func (s *DescribeClusterAttachScriptsRequest) SetFormatDisk(v bool) *DescribeClusterAttachScriptsRequest {
+	s.FormatDisk = &v
+	return s
+}
+
+func (s *DescribeClusterAttachScriptsRequest) SetKeepInstanceName(v bool) *DescribeClusterAttachScriptsRequest {
+	s.KeepInstanceName = &v
+	return s
+}
+
+func (s *DescribeClusterAttachScriptsRequest) SetRdsInstances(v []*string) *DescribeClusterAttachScriptsRequest {
+	s.RdsInstances = v
+	return s
+}
+
 func (s *DescribeClusterAttachScriptsRequest) SetArch(v string) *DescribeClusterAttachScriptsRequest {
 	s.Arch = &v
 	return s
 }
 
-func (s *DescribeClusterAttachScriptsRequest) SetOptions(v *DescribeClusterAttachScriptsRequestOptions) *DescribeClusterAttachScriptsRequest {
-	s.Options = v
-	return s
-}
-
-type DescribeClusterAttachScriptsRequestOptions struct {
-	// 需要安装的组件列表，默认为空，不安装。
-	AllowedClusterAddons []*string `json:"allowedClusterAddons,omitempty" xml:"allowedClusterAddons,omitempty" type:"Repeated"`
-	// 是否开启iptables，默认值true。
-	EnableIptables *bool `json:"enableIptables,omitempty" xml:"enableIptables,omitempty"`
-	// flannel使用的网卡名。默认使用节点默认路由的网卡名。
-	FlannelIface *string `json:"flannelIface,omitempty" xml:"flannelIface,omitempty"`
-	// 表示要接入的节点是否为GPU节点，默认为空。当前支持的GPU版本是Nvidia_Tesla_T4、Nvidia_Tesla_P4、Nvidia_Tesla_P100。
-	GpuVersion *string `json:"gpuVersion,omitempty" xml:"gpuVersion,omitempty"`
-	// 是否由edgeadm安装并检测Runtime，默认false。
-	ManageRuntime *bool `json:"manageRuntime,omitempty" xml:"manageRuntime,omitempty"`
-	// 设置节点名。  - ""（默认值，表示使用主机名。） - "*"（表示随机生成6位的字符串。） - "*.XXX"（表示随机生成6位字符串+XXX后缀。）
-	NodeNameOverride *string `json:"nodeNameOverride,omitempty" xml:"nodeNameOverride,omitempty"`
-	// 是否使用静默模式安装。
-	Quiet *string `json:"quiet,omitempty" xml:"quiet,omitempty"`
-}
-
-func (s DescribeClusterAttachScriptsRequestOptions) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeClusterAttachScriptsRequestOptions) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeClusterAttachScriptsRequestOptions) SetAllowedClusterAddons(v []*string) *DescribeClusterAttachScriptsRequestOptions {
-	s.AllowedClusterAddons = v
-	return s
-}
-
-func (s *DescribeClusterAttachScriptsRequestOptions) SetEnableIptables(v bool) *DescribeClusterAttachScriptsRequestOptions {
-	s.EnableIptables = &v
-	return s
-}
-
-func (s *DescribeClusterAttachScriptsRequestOptions) SetFlannelIface(v string) *DescribeClusterAttachScriptsRequestOptions {
-	s.FlannelIface = &v
-	return s
-}
-
-func (s *DescribeClusterAttachScriptsRequestOptions) SetGpuVersion(v string) *DescribeClusterAttachScriptsRequestOptions {
-	s.GpuVersion = &v
-	return s
-}
-
-func (s *DescribeClusterAttachScriptsRequestOptions) SetManageRuntime(v bool) *DescribeClusterAttachScriptsRequestOptions {
-	s.ManageRuntime = &v
-	return s
-}
-
-func (s *DescribeClusterAttachScriptsRequestOptions) SetNodeNameOverride(v string) *DescribeClusterAttachScriptsRequestOptions {
-	s.NodeNameOverride = &v
-	return s
-}
-
-func (s *DescribeClusterAttachScriptsRequestOptions) SetQuiet(v string) *DescribeClusterAttachScriptsRequestOptions {
-	s.Quiet = &v
+func (s *DescribeClusterAttachScriptsRequest) SetOptions(v string) *DescribeClusterAttachScriptsRequest {
+	s.Options = &v
 	return s
 }
 
@@ -793,7 +622,7 @@ type DescribeKubernetesVersionMetadataResponseBody struct {
 	// Kubernetes版本元数据信息。
 	MetaData map[string]interface{} `json:"meta_data,omitempty" xml:"meta_data,omitempty"`
 	// 容器运行时详情。
-	Runtimes []*Runtimes `json:"runtimes,omitempty" xml:"runtimes,omitempty" type:"Repeated"`
+	Runtimes []*Runtime `json:"runtimes,omitempty" xml:"runtimes,omitempty" type:"Repeated"`
 	// Kubernetes版本。
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 	// 是否为多可用区。
@@ -823,7 +652,7 @@ func (s *DescribeKubernetesVersionMetadataResponseBody) SetMetaData(v map[string
 	return s
 }
 
-func (s *DescribeKubernetesVersionMetadataResponseBody) SetRuntimes(v []*Runtimes) *DescribeKubernetesVersionMetadataResponseBody {
+func (s *DescribeKubernetesVersionMetadataResponseBody) SetRuntimes(v []*Runtime) *DescribeKubernetesVersionMetadataResponseBody {
 	s.Runtimes = v
 	return s
 }
@@ -926,12 +755,12 @@ type DescribeClusterLogsResponseBody struct {
 	ID *int64 `json:"ID,omitempty" xml:"ID,omitempty"`
 	// 集群ID。
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// 集群日志。
+	// 日志内容。
 	ClusterLog *string `json:"cluster_log,omitempty" xml:"cluster_log,omitempty"`
-	// 日志创建时间。
-	Created *string `json:"created,omitempty" xml:"created,omitempty"`
 	// 日志等级。
 	LogLevel *string `json:"log_level,omitempty" xml:"log_level,omitempty"`
+	// 日志创建时间。
+	Created *string `json:"created,omitempty" xml:"created,omitempty"`
 	// 日志更新时间。
 	Updated *string `json:"updated,omitempty" xml:"updated,omitempty"`
 }
@@ -959,13 +788,13 @@ func (s *DescribeClusterLogsResponseBody) SetClusterLog(v string) *DescribeClust
 	return s
 }
 
-func (s *DescribeClusterLogsResponseBody) SetCreated(v string) *DescribeClusterLogsResponseBody {
-	s.Created = &v
+func (s *DescribeClusterLogsResponseBody) SetLogLevel(v string) *DescribeClusterLogsResponseBody {
+	s.LogLevel = &v
 	return s
 }
 
-func (s *DescribeClusterLogsResponseBody) SetLogLevel(v string) *DescribeClusterLogsResponseBody {
-	s.LogLevel = &v
+func (s *DescribeClusterLogsResponseBody) SetCreated(v string) *DescribeClusterLogsResponseBody {
+	s.Created = &v
 	return s
 }
 
@@ -975,16 +804,14 @@ func (s *DescribeClusterLogsResponseBody) SetUpdated(v string) *DescribeClusterL
 }
 
 type CreateKubernetesTriggerRequest struct {
-	// 触发器行为。
-	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
 	// 集群ID。
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
 	// 项目名称。
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// 地域ID。
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 触发器类型。
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	ProjectId *string `json:"project_id,omitempty" xml:"project_id,omitempty"`
+	// 触发器行为
+	Action *string `json:"action,omitempty" xml:"action,omitempty"`
+	// 触发器类型。默认deployment。
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s CreateKubernetesTriggerRequest) String() string {
@@ -993,11 +820,6 @@ func (s CreateKubernetesTriggerRequest) String() string {
 
 func (s CreateKubernetesTriggerRequest) GoString() string {
 	return s.String()
-}
-
-func (s *CreateKubernetesTriggerRequest) SetAction(v string) *CreateKubernetesTriggerRequest {
-	s.Action = &v
-	return s
 }
 
 func (s *CreateKubernetesTriggerRequest) SetClusterId(v string) *CreateKubernetesTriggerRequest {
@@ -1010,8 +832,8 @@ func (s *CreateKubernetesTriggerRequest) SetProjectId(v string) *CreateKubernete
 	return s
 }
 
-func (s *CreateKubernetesTriggerRequest) SetRegionId(v string) *CreateKubernetesTriggerRequest {
-	s.RegionId = &v
+func (s *CreateKubernetesTriggerRequest) SetAction(v string) *CreateKubernetesTriggerRequest {
+	s.Action = &v
 	return s
 }
 
@@ -1021,14 +843,16 @@ func (s *CreateKubernetesTriggerRequest) SetType(v string) *CreateKubernetesTrig
 }
 
 type CreateKubernetesTriggerResponseBody struct {
-	// 触发器行为。
-	Action *string `json:"action,omitempty" xml:"action,omitempty"`
-	// 集群ID。
-	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
 	// 触发器ID。
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// 项目名称。
+	// 集群ID。
+	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	// 触发器项目名称。
 	ProjectId *string `json:"project_id,omitempty" xml:"project_id,omitempty"`
+	// 触发器类型。默认值为 deployment 。
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// 触发器行为。
+	Action *string `json:"action,omitempty" xml:"action,omitempty"`
 }
 
 func (s CreateKubernetesTriggerResponseBody) String() string {
@@ -1039,8 +863,8 @@ func (s CreateKubernetesTriggerResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateKubernetesTriggerResponseBody) SetAction(v string) *CreateKubernetesTriggerResponseBody {
-	s.Action = &v
+func (s *CreateKubernetesTriggerResponseBody) SetId(v string) *CreateKubernetesTriggerResponseBody {
+	s.Id = &v
 	return s
 }
 
@@ -1049,13 +873,18 @@ func (s *CreateKubernetesTriggerResponseBody) SetClusterId(v string) *CreateKube
 	return s
 }
 
-func (s *CreateKubernetesTriggerResponseBody) SetId(v string) *CreateKubernetesTriggerResponseBody {
-	s.Id = &v
+func (s *CreateKubernetesTriggerResponseBody) SetProjectId(v string) *CreateKubernetesTriggerResponseBody {
+	s.ProjectId = &v
 	return s
 }
 
-func (s *CreateKubernetesTriggerResponseBody) SetProjectId(v string) *CreateKubernetesTriggerResponseBody {
-	s.ProjectId = &v
+func (s *CreateKubernetesTriggerResponseBody) SetType(v string) *CreateKubernetesTriggerResponseBody {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateKubernetesTriggerResponseBody) SetAction(v string) *CreateKubernetesTriggerResponseBody {
+	s.Action = &v
 	return s
 }
 
@@ -1118,7 +947,7 @@ type DescribeClusterDetailResponseBody struct {
 	// 集群运行状态。
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
 	// 集群标签。
-	Tags []*Tags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// 集群更新时间。
 	Updated *string `json:"updated,omitempty" xml:"updated,omitempty"`
 	// 集群使用的VPC ID。
@@ -1239,7 +1068,7 @@ func (s *DescribeClusterDetailResponseBody) SetState(v string) *DescribeClusterD
 	return s
 }
 
-func (s *DescribeClusterDetailResponseBody) SetTags(v []*Tags) *DescribeClusterDetailResponseBody {
+func (s *DescribeClusterDetailResponseBody) SetTags(v []*Tag) *DescribeClusterDetailResponseBody {
 	s.Tags = v
 	return s
 }
@@ -1794,13 +1623,13 @@ type ModifyClusterNodePoolRequestKubernetesConfig struct {
 	// CPU管理策略。
 	CpuPolicy *string `json:"cpu_policy,omitempty" xml:"cpu_policy,omitempty"`
 	// 节点标签。
-	Labels []*Tags `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
+	Labels []*Tag `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
 	// 容器运行时。
 	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
 	// 容器运行时版本。
 	RuntimeVersion *string `json:"runtime_version,omitempty" xml:"runtime_version,omitempty"`
 	// 污点配置。
-	Taints []*Taints `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
+	Taints []*Taint `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
 	// 实例自定义数据。
 	UserData *string `json:"user_data,omitempty" xml:"user_data,omitempty"`
 }
@@ -1823,7 +1652,7 @@ func (s *ModifyClusterNodePoolRequestKubernetesConfig) SetCpuPolicy(v string) *M
 	return s
 }
 
-func (s *ModifyClusterNodePoolRequestKubernetesConfig) SetLabels(v []*Tags) *ModifyClusterNodePoolRequestKubernetesConfig {
+func (s *ModifyClusterNodePoolRequestKubernetesConfig) SetLabels(v []*Tag) *ModifyClusterNodePoolRequestKubernetesConfig {
 	s.Labels = v
 	return s
 }
@@ -1838,7 +1667,7 @@ func (s *ModifyClusterNodePoolRequestKubernetesConfig) SetRuntimeVersion(v strin
 	return s
 }
 
-func (s *ModifyClusterNodePoolRequestKubernetesConfig) SetTaints(v []*Taints) *ModifyClusterNodePoolRequestKubernetesConfig {
+func (s *ModifyClusterNodePoolRequestKubernetesConfig) SetTaints(v []*Taint) *ModifyClusterNodePoolRequestKubernetesConfig {
 	s.Taints = v
 	return s
 }
@@ -1875,7 +1704,7 @@ func (s *ModifyClusterNodePoolRequestNodepoolInfo) SetResourceGroupId(v string) 
 
 type ModifyClusterNodePoolRequestScalingGroup struct {
 	// 数据盘配置。
-	DataDisks []*DataDisks `json:"data_disks,omitempty" xml:"data_disks,omitempty" type:"Repeated"`
+	DataDisks []*DataDisk `json:"data_disks,omitempty" xml:"data_disks,omitempty" type:"Repeated"`
 	// 节点付费类型。
 	InstanceChargeType *string `json:"instance_charge_type,omitempty" xml:"instance_charge_type,omitempty"`
 	// 包年包月时长
@@ -1909,9 +1738,21 @@ type ModifyClusterNodePoolRequestScalingGroup struct {
 	// 节点系统盘大小。
 	SystemDiskSize *int64 `json:"system_disk_size,omitempty" xml:"system_disk_size,omitempty"`
 	// ECS标签。
-	Tags []*Tags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// 节点使用的虚拟交换机ID。
 	VswitchIds []*string `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
+	// 多可用区伸缩组ECS实例扩缩容策略
+	MultiAzPolicy *string `json:"multi_az_policy,omitempty" xml:"multi_az_policy,omitempty"`
+	// 伸缩组所需要按量实例个数的最小值，取值范围：0~1000。当按量实例个数少于该值时，将优先创建按量实例。
+	OnDemandBaseCapacity *int64 `json:"on_demand_base_capacity,omitempty" xml:"on_demand_base_capacity,omitempty"`
+	// 伸缩组满足最小按量实例数（OnDemandBaseCapacity）要求后，超出的实例中按量实例应占的比例，取值范围：0～100。
+	OnDemandPercentageAboveBaseCapacity *int64 `json:"on_demand_percentage_above_base_capacity,omitempty" xml:"on_demand_percentage_above_base_capacity,omitempty"`
+	// 指定可用实例规格的个数，伸缩组将按成本最低的多个规格均衡创建抢占式实例。取值范围：1~10。
+	SpotInstancePools *int64 `json:"spot_instance_pools,omitempty" xml:"spot_instance_pools,omitempty"`
+	// 是否开启补齐抢占式实例。开启后，当收到抢占式实例将被回收的系统消息时，伸缩组将尝试创建新的实例，替换掉将被回收的抢占式实例。
+	SpotInstanceRemedy *bool `json:"spot_instance_remedy,omitempty" xml:"spot_instance_remedy,omitempty"`
+	// 当MultiAZPolicy取值为COST_OPTIMIZED时，如果因价格、库存等原因无法创建足够的抢占式实例，是否允许自动尝试创建按量实例满足ECS实例数量要求。取值范围：true：允许。false：不允许。默认值：true
+	CompensateWithOnDemand *bool `json:"compensate_with_on_demand,omitempty" xml:"compensate_with_on_demand,omitempty"`
 }
 
 func (s ModifyClusterNodePoolRequestScalingGroup) String() string {
@@ -1922,7 +1763,7 @@ func (s ModifyClusterNodePoolRequestScalingGroup) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyClusterNodePoolRequestScalingGroup) SetDataDisks(v []*DataDisks) *ModifyClusterNodePoolRequestScalingGroup {
+func (s *ModifyClusterNodePoolRequestScalingGroup) SetDataDisks(v []*DataDisk) *ModifyClusterNodePoolRequestScalingGroup {
 	s.DataDisks = v
 	return s
 }
@@ -2007,13 +1848,43 @@ func (s *ModifyClusterNodePoolRequestScalingGroup) SetSystemDiskSize(v int64) *M
 	return s
 }
 
-func (s *ModifyClusterNodePoolRequestScalingGroup) SetTags(v []*Tags) *ModifyClusterNodePoolRequestScalingGroup {
+func (s *ModifyClusterNodePoolRequestScalingGroup) SetTags(v []*Tag) *ModifyClusterNodePoolRequestScalingGroup {
 	s.Tags = v
 	return s
 }
 
 func (s *ModifyClusterNodePoolRequestScalingGroup) SetVswitchIds(v []*string) *ModifyClusterNodePoolRequestScalingGroup {
 	s.VswitchIds = v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestScalingGroup) SetMultiAzPolicy(v string) *ModifyClusterNodePoolRequestScalingGroup {
+	s.MultiAzPolicy = &v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestScalingGroup) SetOnDemandBaseCapacity(v int64) *ModifyClusterNodePoolRequestScalingGroup {
+	s.OnDemandBaseCapacity = &v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestScalingGroup) SetOnDemandPercentageAboveBaseCapacity(v int64) *ModifyClusterNodePoolRequestScalingGroup {
+	s.OnDemandPercentageAboveBaseCapacity = &v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestScalingGroup) SetSpotInstancePools(v int64) *ModifyClusterNodePoolRequestScalingGroup {
+	s.SpotInstancePools = &v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestScalingGroup) SetSpotInstanceRemedy(v bool) *ModifyClusterNodePoolRequestScalingGroup {
+	s.SpotInstanceRemedy = &v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestScalingGroup) SetCompensateWithOnDemand(v bool) *ModifyClusterNodePoolRequestScalingGroup {
+	s.CompensateWithOnDemand = &v
 	return s
 }
 
@@ -2381,13 +2252,13 @@ type DescribeClusterNodePoolDetailResponseBodyKubernetesConfig struct {
 	// CPU管理策略
 	CpuPolicy *string `json:"cpu_policy,omitempty" xml:"cpu_policy,omitempty"`
 	// 节点标签。
-	Labels []*Tags `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
+	Labels []*Tag `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
 	// 容器运行时
 	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
 	// 容器运行时版本。
 	RuntimeVersion *string `json:"runtime_version,omitempty" xml:"runtime_version,omitempty"`
 	// 污点配置。
-	Taints []*Taints `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
+	Taints []*Taint `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
 	// 节点自定义数据
 	UserData *string `json:"user_data,omitempty" xml:"user_data,omitempty"`
 }
@@ -2410,7 +2281,7 @@ func (s *DescribeClusterNodePoolDetailResponseBodyKubernetesConfig) SetCpuPolicy
 	return s
 }
 
-func (s *DescribeClusterNodePoolDetailResponseBodyKubernetesConfig) SetLabels(v []*Tags) *DescribeClusterNodePoolDetailResponseBodyKubernetesConfig {
+func (s *DescribeClusterNodePoolDetailResponseBodyKubernetesConfig) SetLabels(v []*Tag) *DescribeClusterNodePoolDetailResponseBodyKubernetesConfig {
 	s.Labels = v
 	return s
 }
@@ -2425,7 +2296,7 @@ func (s *DescribeClusterNodePoolDetailResponseBodyKubernetesConfig) SetRuntimeVe
 	return s
 }
 
-func (s *DescribeClusterNodePoolDetailResponseBodyKubernetesConfig) SetTaints(v []*Taints) *DescribeClusterNodePoolDetailResponseBodyKubernetesConfig {
+func (s *DescribeClusterNodePoolDetailResponseBodyKubernetesConfig) SetTaints(v []*Taint) *DescribeClusterNodePoolDetailResponseBodyKubernetesConfig {
 	s.Taints = v
 	return s
 }
@@ -2508,15 +2379,25 @@ type DescribeClusterNodePoolDetailResponseBodyScalingGroup struct {
 	// 节点自动续费周期。
 	AutoRenewPeriod *int64 `json:"auto_renew_period,omitempty" xml:"auto_renew_period,omitempty"`
 	// 数据盘配置。
-	DataDisks []*DataDisks `json:"data_disks,omitempty" xml:"data_disks,omitempty" type:"Repeated"`
+	DataDisks []*DataDisk `json:"data_disks,omitempty" xml:"data_disks,omitempty" type:"Repeated"`
 	// 自定义镜像ID。
 	ImageId *string `json:"image_id,omitempty" xml:"image_id,omitempty"`
 	// 节点付费类型。
 	InstanceChargeType *string `json:"instance_charge_type,omitempty" xml:"instance_charge_type,omitempty"`
 	// 节点ECS规格类型。
 	InstanceTypes []*string `json:"instance_types,omitempty" xml:"instance_types,omitempty" type:"Repeated"`
-	// 多可用区策略。
+	// 多可用区伸缩组ECS实例扩缩容策略
 	MultiAzPolicy *string `json:"multi_az_policy,omitempty" xml:"multi_az_policy,omitempty"`
+	// 伸缩组所需要按量实例个数的最小值，取值范围：0~1000。当按量实例个数少于该值时，将优先创建按量实例。
+	OnDemandBaseCapacity *int64 `json:"on_demand_base_capacity,omitempty" xml:"on_demand_base_capacity,omitempty"`
+	// 伸缩组满足最小按量实例数（OnDemandBaseCapacity）要求后，超出的实例中按量实例应占的比例，取值范围：0～100。
+	OnDemandPercentageAboveBaseCapacity *int64 `json:"on_demand_percentage_above_base_capacity,omitempty" xml:"on_demand_percentage_above_base_capacity,omitempty"`
+	// 指定可用实例规格的个数，伸缩组将按成本最低的多个规格均衡创建抢占式实例。取值范围：1~10。
+	SpotInstancePools *int64 `json:"spot_instance_pools,omitempty" xml:"spot_instance_pools,omitempty"`
+	// 是否开启补齐抢占式实例。开启后，当收到抢占式实例将被回收的系统消息时，伸缩组将尝试创建新的实例，替换掉将被回收的抢占式实例。
+	SpotInstanceRemedy *bool `json:"spot_instance_remedy,omitempty" xml:"spot_instance_remedy,omitempty"`
+	// 当MultiAZPolicy取值为COST_OPTIMIZED时，如果因价格、库存等原因无法创建足够的抢占式实例，是否允许自动尝试创建按量实例满足ECS实例数量要求。取值范围：true：允许。false：不允许。默认值：true
+	CompensateWithOnDemand *bool `json:"compensate_with_on_demand,omitempty" xml:"compensate_with_on_demand,omitempty"`
 	// 节点包年包月时长。
 	Period *int64 `json:"period,omitempty" xml:"period,omitempty"`
 	// 节点付费周期。
@@ -2542,7 +2423,7 @@ type DescribeClusterNodePoolDetailResponseBodyScalingGroup struct {
 	// 系统盘大小
 	SystemDiskSize *int64 `json:"system_disk_size,omitempty" xml:"system_disk_size,omitempty"`
 	// ECS标签
-	Tags []*Tags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// 虚拟交换机ID。
 	VswitchIds []*string `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
 	// 登录密码
@@ -2569,7 +2450,7 @@ func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetAutoRenewPeri
 	return s
 }
 
-func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetDataDisks(v []*DataDisks) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
+func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetDataDisks(v []*DataDisk) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
 	s.DataDisks = v
 	return s
 }
@@ -2591,6 +2472,31 @@ func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetInstanceTypes
 
 func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetMultiAzPolicy(v string) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
 	s.MultiAzPolicy = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetOnDemandBaseCapacity(v int64) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
+	s.OnDemandBaseCapacity = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetOnDemandPercentageAboveBaseCapacity(v int64) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
+	s.OnDemandPercentageAboveBaseCapacity = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetSpotInstancePools(v int64) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
+	s.SpotInstancePools = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetSpotInstanceRemedy(v bool) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
+	s.SpotInstanceRemedy = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetCompensateWithOnDemand(v bool) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
+	s.CompensateWithOnDemand = &v
 	return s
 }
 
@@ -2654,7 +2560,7 @@ func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetSystemDiskSiz
 	return s
 }
 
-func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetTags(v []*Tags) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
+func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetTags(v []*Tag) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
 	s.Tags = v
 	return s
 }
@@ -3004,13 +2910,13 @@ type CreateClusterNodePoolRequestKubernetesConfig struct {
 	// CPU管理策略。
 	CpuPolicy *string `json:"cpu_policy,omitempty" xml:"cpu_policy,omitempty"`
 	// 节点标签。
-	Labels []*Tags `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
+	Labels []*Tag `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
 	// 容器运行时。
 	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
 	// 容器运行时版本。
 	RuntimeVersion *string `json:"runtime_version,omitempty" xml:"runtime_version,omitempty"`
 	// 污点信息。
-	Taints []*Taints `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
+	Taints []*Taint `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
 	// 节点自定义数据。
 	UserData *string `json:"user_data,omitempty" xml:"user_data,omitempty"`
 }
@@ -3033,7 +2939,7 @@ func (s *CreateClusterNodePoolRequestKubernetesConfig) SetCpuPolicy(v string) *C
 	return s
 }
 
-func (s *CreateClusterNodePoolRequestKubernetesConfig) SetLabels(v []*Tags) *CreateClusterNodePoolRequestKubernetesConfig {
+func (s *CreateClusterNodePoolRequestKubernetesConfig) SetLabels(v []*Tag) *CreateClusterNodePoolRequestKubernetesConfig {
 	s.Labels = v
 	return s
 }
@@ -3048,7 +2954,7 @@ func (s *CreateClusterNodePoolRequestKubernetesConfig) SetRuntimeVersion(v strin
 	return s
 }
 
-func (s *CreateClusterNodePoolRequestKubernetesConfig) SetTaints(v []*Taints) *CreateClusterNodePoolRequestKubernetesConfig {
+func (s *CreateClusterNodePoolRequestKubernetesConfig) SetTaints(v []*Taint) *CreateClusterNodePoolRequestKubernetesConfig {
 	s.Taints = v
 	return s
 }
@@ -3089,7 +2995,7 @@ type CreateClusterNodePoolRequestScalingGroup struct {
 	// 节点自动续费周期
 	AutoRenewPeriod *int64 `json:"auto_renew_period,omitempty" xml:"auto_renew_period,omitempty"`
 	// 数据盘配置。
-	DataDisks []*DataDisks `json:"data_disks,omitempty" xml:"data_disks,omitempty" type:"Repeated"`
+	DataDisks []*DataDisk `json:"data_disks,omitempty" xml:"data_disks,omitempty" type:"Repeated"`
 	// 自定义镜像。
 	ImageId *string `json:"image_id,omitempty" xml:"image_id,omitempty"`
 	// 节点付费类型
@@ -3124,6 +3030,18 @@ type CreateClusterNodePoolRequestScalingGroup struct {
 	Tags []*CreateClusterNodePoolRequestScalingGroupTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// 虚拟交换机ID。
 	VswitchIds []*string `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
+	// 多可用区伸缩组ECS实例扩缩容策略
+	MultiAzPolicy *string `json:"multi_az_policy,omitempty" xml:"multi_az_policy,omitempty"`
+	// 伸缩组所需要按量实例个数的最小值，取值范围：0~1000。当按量实例个数少于该值时，将优先创建按量实例。
+	OnDemandBaseCapacity *int64 `json:"on_demand_base_capacity,omitempty" xml:"on_demand_base_capacity,omitempty"`
+	// 伸缩组满足最小按量实例数（OnDemandBaseCapacity）要求后，超出的实例中按量实例应占的比例，取值范围：0～100。
+	OnDemandPercentageAboveBaseCapacity *int64 `json:"on_demand_percentage_above_base_capacity,omitempty" xml:"on_demand_percentage_above_base_capacity,omitempty"`
+	// 指定可用实例规格的个数，伸缩组将按成本最低的多个规格均衡创建抢占式实例。取值范围：1~10。
+	SpotInstancePools *int64 `json:"spot_instance_pools,omitempty" xml:"spot_instance_pools,omitempty"`
+	// 是否开启补齐抢占式实例。开启后，当收到抢占式实例将被回收的系统消息时，伸缩组将尝试创建新的实例，替换掉将被回收的抢占式实例。
+	SpotInstanceRemedy *bool `json:"spot_instance_remedy,omitempty" xml:"spot_instance_remedy,omitempty"`
+	// 当MultiAZPolicy取值为COST_OPTIMIZED时，如果因价格、库存等原因无法创建足够的抢占式实例，是否允许自动尝试创建按量实例满足ECS实例数量要求。取值范围：true：允许。false：不允许。默认值：true
+	CompensateWithOnDemand *bool `json:"compensate_with_on_demand,omitempty" xml:"compensate_with_on_demand,omitempty"`
 }
 
 func (s CreateClusterNodePoolRequestScalingGroup) String() string {
@@ -3144,7 +3062,7 @@ func (s *CreateClusterNodePoolRequestScalingGroup) SetAutoRenewPeriod(v int64) *
 	return s
 }
 
-func (s *CreateClusterNodePoolRequestScalingGroup) SetDataDisks(v []*DataDisks) *CreateClusterNodePoolRequestScalingGroup {
+func (s *CreateClusterNodePoolRequestScalingGroup) SetDataDisks(v []*DataDisk) *CreateClusterNodePoolRequestScalingGroup {
 	s.DataDisks = v
 	return s
 }
@@ -3231,6 +3149,36 @@ func (s *CreateClusterNodePoolRequestScalingGroup) SetTags(v []*CreateClusterNod
 
 func (s *CreateClusterNodePoolRequestScalingGroup) SetVswitchIds(v []*string) *CreateClusterNodePoolRequestScalingGroup {
 	s.VswitchIds = v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestScalingGroup) SetMultiAzPolicy(v string) *CreateClusterNodePoolRequestScalingGroup {
+	s.MultiAzPolicy = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestScalingGroup) SetOnDemandBaseCapacity(v int64) *CreateClusterNodePoolRequestScalingGroup {
+	s.OnDemandBaseCapacity = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestScalingGroup) SetOnDemandPercentageAboveBaseCapacity(v int64) *CreateClusterNodePoolRequestScalingGroup {
+	s.OnDemandPercentageAboveBaseCapacity = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestScalingGroup) SetSpotInstancePools(v int64) *CreateClusterNodePoolRequestScalingGroup {
+	s.SpotInstancePools = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestScalingGroup) SetSpotInstanceRemedy(v bool) *CreateClusterNodePoolRequestScalingGroup {
+	s.SpotInstanceRemedy = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestScalingGroup) SetCompensateWithOnDemand(v bool) *CreateClusterNodePoolRequestScalingGroup {
+	s.CompensateWithOnDemand = &v
 	return s
 }
 
@@ -3754,87 +3702,9 @@ func (s *ScaleClusterResponse) SetBody(v *ScaleClusterResponseBody) *ScaleCluste
 	return s
 }
 
-type DescribeClusterAddonUpgradeStatusResponseBody struct {
-	// 组件信息。
-	AddonInfo *DescribeClusterAddonUpgradeStatusResponseBodyAddonInfo `json:"addon_info,omitempty" xml:"addon_info,omitempty" type:"Struct"`
-	// 是否能够升级。
-	CanUpgrade *bool `json:"can_upgrade,omitempty" xml:"can_upgrade,omitempty"`
-	// 模板信息，采用base64加密。
-	Template *string `json:"template,omitempty" xml:"template,omitempty"`
-}
-
-func (s DescribeClusterAddonUpgradeStatusResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeClusterAddonUpgradeStatusResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeClusterAddonUpgradeStatusResponseBody) SetAddonInfo(v *DescribeClusterAddonUpgradeStatusResponseBodyAddonInfo) *DescribeClusterAddonUpgradeStatusResponseBody {
-	s.AddonInfo = v
-	return s
-}
-
-func (s *DescribeClusterAddonUpgradeStatusResponseBody) SetCanUpgrade(v bool) *DescribeClusterAddonUpgradeStatusResponseBody {
-	s.CanUpgrade = &v
-	return s
-}
-
-func (s *DescribeClusterAddonUpgradeStatusResponseBody) SetTemplate(v string) *DescribeClusterAddonUpgradeStatusResponseBody {
-	s.Template = &v
-	return s
-}
-
-type DescribeClusterAddonUpgradeStatusResponseBodyAddonInfo struct {
-	// Addon类别。
-	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// 组件名称。
-	ComponentName *string `json:"component_name,omitempty" xml:"component_name,omitempty"`
-	// 升级说明信息。
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 组件版本。
-	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// 组件配置文件。
-	Yaml *string `json:"yaml,omitempty" xml:"yaml,omitempty"`
-}
-
-func (s DescribeClusterAddonUpgradeStatusResponseBodyAddonInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeClusterAddonUpgradeStatusResponseBodyAddonInfo) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeClusterAddonUpgradeStatusResponseBodyAddonInfo) SetCategory(v string) *DescribeClusterAddonUpgradeStatusResponseBodyAddonInfo {
-	s.Category = &v
-	return s
-}
-
-func (s *DescribeClusterAddonUpgradeStatusResponseBodyAddonInfo) SetComponentName(v string) *DescribeClusterAddonUpgradeStatusResponseBodyAddonInfo {
-	s.ComponentName = &v
-	return s
-}
-
-func (s *DescribeClusterAddonUpgradeStatusResponseBodyAddonInfo) SetMessage(v string) *DescribeClusterAddonUpgradeStatusResponseBodyAddonInfo {
-	s.Message = &v
-	return s
-}
-
-func (s *DescribeClusterAddonUpgradeStatusResponseBodyAddonInfo) SetVersion(v string) *DescribeClusterAddonUpgradeStatusResponseBodyAddonInfo {
-	s.Version = &v
-	return s
-}
-
-func (s *DescribeClusterAddonUpgradeStatusResponseBodyAddonInfo) SetYaml(v string) *DescribeClusterAddonUpgradeStatusResponseBodyAddonInfo {
-	s.Yaml = &v
-	return s
-}
-
 type DescribeClusterAddonUpgradeStatusResponse struct {
-	Headers map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeClusterAddonUpgradeStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeClusterAddonUpgradeStatusResponse) String() string {
@@ -3850,15 +3720,15 @@ func (s *DescribeClusterAddonUpgradeStatusResponse) SetHeaders(v map[string]*str
 	return s
 }
 
-func (s *DescribeClusterAddonUpgradeStatusResponse) SetBody(v *DescribeClusterAddonUpgradeStatusResponseBody) *DescribeClusterAddonUpgradeStatusResponse {
+func (s *DescribeClusterAddonUpgradeStatusResponse) SetBody(v map[string]interface{}) *DescribeClusterAddonUpgradeStatusResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeAddonsRequest struct {
-	// Region ID。
+	// 地域ID。
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// 集群类型，默认为kubernetes。
+	// 集群类型。  - Kubernetes: 专有版集群。 - ManagedKubernetes：托管版集群。 - Ask：Serverless 集群。 - ExternalKubernetes：注册到ACK的外部集群。
 	ClusterType *string `json:"cluster_type,omitempty" xml:"cluster_type,omitempty"`
 }
 
@@ -3906,11 +3776,9 @@ func (s *DescribeAddonsResponseBody) SetStandardComponents(v map[string]*Standar
 }
 
 type DescribeAddonsResponseBodyComponentGroups struct {
-	// 默认组件组。
-	Default []*string `json:"default,omitempty" xml:"default,omitempty" type:"Repeated"`
 	// 组件组名称。
 	GroupName *string `json:"group_name,omitempty" xml:"group_name,omitempty"`
-	// 组件清单。
+	// 组件列表
 	Items []*DescribeAddonsResponseBodyComponentGroupsItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 }
 
@@ -3920,11 +3788,6 @@ func (s DescribeAddonsResponseBodyComponentGroups) String() string {
 
 func (s DescribeAddonsResponseBodyComponentGroups) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeAddonsResponseBodyComponentGroups) SetDefault(v []*string) *DescribeAddonsResponseBodyComponentGroups {
-	s.Default = v
-	return s
 }
 
 func (s *DescribeAddonsResponseBodyComponentGroups) SetGroupName(v string) *DescribeAddonsResponseBodyComponentGroups {
@@ -3938,16 +3801,8 @@ func (s *DescribeAddonsResponseBodyComponentGroups) SetItems(v []*DescribeAddons
 }
 
 type DescribeAddonsResponseBodyComponentGroupsItems struct {
-	// 组件描述信息。
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 是否禁止默认安装。
-	Disabled *bool `json:"disabled,omitempty" xml:"disabled,omitempty"`
 	// 组件名称。
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 是否为必需组件。
-	Required *string `json:"required,omitempty" xml:"required,omitempty"`
-	// 组件版本。
-	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s DescribeAddonsResponseBodyComponentGroupsItems) String() string {
@@ -3958,28 +3813,8 @@ func (s DescribeAddonsResponseBodyComponentGroupsItems) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeAddonsResponseBodyComponentGroupsItems) SetDescription(v string) *DescribeAddonsResponseBodyComponentGroupsItems {
-	s.Description = &v
-	return s
-}
-
-func (s *DescribeAddonsResponseBodyComponentGroupsItems) SetDisabled(v bool) *DescribeAddonsResponseBodyComponentGroupsItems {
-	s.Disabled = &v
-	return s
-}
-
 func (s *DescribeAddonsResponseBodyComponentGroupsItems) SetName(v string) *DescribeAddonsResponseBodyComponentGroupsItems {
 	s.Name = &v
-	return s
-}
-
-func (s *DescribeAddonsResponseBodyComponentGroupsItems) SetRequired(v string) *DescribeAddonsResponseBodyComponentGroupsItems {
-	s.Required = &v
-	return s
-}
-
-func (s *DescribeAddonsResponseBodyComponentGroupsItems) SetVersion(v string) *DescribeAddonsResponseBodyComponentGroupsItems {
-	s.Version = &v
 	return s
 }
 
@@ -4007,126 +3842,147 @@ func (s *DescribeAddonsResponse) SetBody(v *DescribeAddonsResponseBody) *Describ
 }
 
 type CreateClusterRequest struct {
-	// 组件信息。
-	Addons []*CreateClusterRequestAddons `json:"addons,omitempty" xml:"addons,omitempty" type:"Repeated"`
-	// 是否安装云监控插件。
-	CloudMonitorFlags *bool `json:"cloud_monitor_flags,omitempty" xml:"cloud_monitor_flags,omitempty"`
-	// 集群类型
-	ClusterType *string `json:"cluster_type,omitempty" xml:"cluster_type,omitempty"`
-	// POD网络地址段。
-	ContainerCidr *string `json:"container_cidr,omitempty" xml:"container_cidr,omitempty"`
-	// CPU管理策略。
-	CpuPolicy *string `json:"cpu_policy,omitempty" xml:"cpu_policy,omitempty"`
-	// 集群是否开启删除保护。
-	DeletionProtection *bool `json:"deletion_protection,omitempty" xml:"deletion_protection,omitempty"`
-	// 集群创建失败后是否回滚。
-	DisableRollback *bool `json:"disable_rollback,omitempty" xml:"disable_rollback,omitempty"`
-	// 集群是否运行公网访问。
-	EndpointPublicAccess *bool `json:"endpoint_public_access,omitempty" xml:"endpoint_public_access,omitempty"`
-	// 是否进行数据盘挂载
-	FormatDisk *bool `json:"format_disk,omitempty" xml:"format_disk,omitempty"`
-	// 自定义镜像ID。
-	ImageId *string `json:"image_id,omitempty" xml:"image_id,omitempty"`
-	// 已有实例列表。
-	Instances []*string `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
-	// 是否自动创建企业安全组，与security_group_id二选一。
-	IsEnterpriseSecurityGroup *bool `json:"is_enterprise_security_group,omitempty" xml:"is_enterprise_security_group,omitempty"`
-	// 是否保留实例名称。
-	KeepInstanceName *bool `json:"keep_instance_name,omitempty" xml:"keep_instance_name,omitempty"`
-	// key_pair名称，和login_password二选一。
-	KeyPair *string `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
-	// 集群版本好。
-	KubernetesVersion *string `json:"kubernetes_version,omitempty" xml:"kubernetes_version,omitempty"`
-	// SSH登录密码，与key_pair二选一。
-	LoginPassword *string `json:"login_password,omitempty" xml:"login_password,omitempty"`
-	// Master节点是否自动续费。
-	MasterAutoRenew *bool `json:"master_auto_renew,omitempty" xml:"master_auto_renew,omitempty"`
-	// Master节点自动续费周期。
-	MasterAutoRenewPeriod *int64 `json:"master_auto_renew_period,omitempty" xml:"master_auto_renew_period,omitempty"`
-	// Master节点数量。
-	MasterCount *int64 `json:"master_count,omitempty" xml:"master_count,omitempty"`
-	// Master节点付费类型。
-	MasterInstanceChargeType *string `json:"master_instance_charge_type,omitempty" xml:"master_instance_charge_type,omitempty"`
-	// Master节点ECS规格类型。
-	MasterInstanceTypes []*string `json:"master_instance_types,omitempty" xml:"master_instance_types,omitempty" type:"Repeated"`
-	// Master节点包年包月时长，当master_instance_charge_type取值为PrePaid时才生效且为必选值。
-	MasterPeriod *int64 `json:"master_period,omitempty" xml:"master_period,omitempty"`
-	// Master节点包年包月周期。
-	MasterPeriodUnit *string `json:"master_period_unit,omitempty" xml:"master_period_unit,omitempty"`
-	// Master节点系统盘类型。
-	MasterSystemDiskCategory *string `json:"master_system_disk_category,omitempty" xml:"master_system_disk_category,omitempty"`
-	// Master节点系统盘大小。
-	MasterSystemDiskSize *int64 `json:"master_system_disk_size,omitempty" xml:"master_system_disk_size,omitempty"`
-	// Master节点交换机ID列表。
-	MasterVswitchIds []*string `json:"master_vswitch_ids,omitempty" xml:"master_vswitch_ids,omitempty" type:"Repeated"`
 	// 集群名称。
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 节点IP数量，这里通过CIDR来指定。
-	NodeCidrMask *string `json:"node_cidr_mask,omitempty" xml:"node_cidr_mask,omitempty"`
-	// 节点服务端口范围。
-	NodePortRange *string `json:"node_port_range,omitempty" xml:"node_port_range,omitempty"`
-	// Worker节点数量。
-	NumOfNodes *int64 `json:"num_of_nodes,omitempty" xml:"num_of_nodes,omitempty"`
-	// 操作系统。
-	OsType *string `json:"os_type,omitempty" xml:"os_type,omitempty"`
-	// 操作系统发行版。
-	Platform *string `json:"platform,omitempty" xml:"platform,omitempty"`
-	// Pod的虚拟交换机列表，在ENI多网卡模式下，需要传额外的VSwitch ID给addon。
-	PodVswitchIds []*string `json:"pod_vswitch_ids,omitempty" xml:"pod_vswitch_ids,omitempty" type:"Repeated"`
-	// 是否开启PrivateZone用于服务发现。
-	PrivateZone *bool `json:"private_zone,omitempty" xml:"private_zone,omitempty"`
-	// 边缘集群标识。
-	Profile *string `json:"profile,omitempty" xml:"profile,omitempty"`
-	// kube-proxy代理模式。
-	ProxyMode *string `json:"proxy_mode,omitempty" xml:"proxy_mode,omitempty"`
-	// RDS列表，将该ECS加入到选择的RDS实例的白名单中。。
-	RdsInstances []*string `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
-	// 集群所属地域ID。
+	// 地域ID
 	RegionId *string `json:"region_id,omitempty" xml:"region_id,omitempty"`
-	// 容器运行时。
-	Runtime *CreateClusterRequestRuntime `json:"runtime,omitempty" xml:"runtime,omitempty" type:"Struct"`
-	// 自定义安全组ID。
-	SecurityGroupId *string `json:"security_group_id,omitempty" xml:"security_group_id,omitempty"`
-	// Service网络地址段。
-	ServiceCidr *string `json:"service_cidr,omitempty" xml:"service_cidr,omitempty"`
-	// 集群是否配置SNAT。
-	SnatEntry *bool `json:"snat_entry,omitempty" xml:"snat_entry,omitempty"`
-	// 集群是否开启公网SSH登录。
-	SshFlags *bool `json:"ssh_flags,omitempty" xml:"ssh_flags,omitempty"`
-	// 集群标签。
-	Tags []*CreateClusterRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// 污点信息。
-	Taints []*CreateClusterRequestTaints `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
-	// 集群创建超时时间。
-	TimeoutMins *int64 `json:"timeout_mins,omitempty" xml:"timeout_mins,omitempty"`
-	// 节点用户自定义数据。
-	UserData *string `json:"user_data,omitempty" xml:"user_data,omitempty"`
-	// 集群使用的VPC。
+	// 集群类型
+	ClusterType *string `json:"cluster_type,omitempty" xml:"cluster_type,omitempty"`
+	// 托管版集群类型
+	ClusterSpec *string `json:"cluster_spec,omitempty" xml:"cluster_spec,omitempty"`
+	// 集群版本
+	KubernetesVersion *string  `json:"kubernetes_version,omitempty" xml:"kubernetes_version,omitempty"`
+	Runtime           *Runtime `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	// 集群专有网络ID。
 	Vpcid *string `json:"vpcid,omitempty" xml:"vpcid,omitempty"`
-	// 虚拟交换机列表。List长度范围为[1，3]。当集群类型为托管版或标准serverless集群时，该参数必填。
-	VswitchIds []*string `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
-	// Worker节点是否自动续费。
-	WorkerAutoRenew *bool `json:"worker_auto_renew,omitempty" xml:"worker_auto_renew,omitempty"`
-	// Worker节点自动续费周期。
-	WorkerAutoRenewPeriod *int64 `json:"worker_auto_renew_period,omitempty" xml:"worker_auto_renew_period,omitempty"`
-	// Worker节点数据盘配置。
-	WorkerDataDisks []*CreateClusterRequestWorkerDataDisks `json:"worker_data_disks,omitempty" xml:"worker_data_disks,omitempty" type:"Repeated"`
-	// Worker节点付费类型。
-	WorkerInstanceChargeType *string `json:"worker_instance_charge_type,omitempty" xml:"worker_instance_charge_type,omitempty"`
-	// Worker节点ECS实例类型。
-	WorkerInstanceTypes []*string `json:"worker_instance_types,omitempty" xml:"worker_instance_types,omitempty" type:"Repeated"`
-	// Worker节点包年包月时长。
-	WorkerPeriod *int64 `json:"worker_period,omitempty" xml:"worker_period,omitempty"`
-	// Worker节点包年包月周期。
-	WorkerPeriodUnit *string `json:"worker_period_unit,omitempty" xml:"worker_period_unit,omitempty"`
-	// Worker节点系统盘类型。
-	WorkerSystemDiskCategory *string `json:"worker_system_disk_category,omitempty" xml:"worker_system_disk_category,omitempty"`
-	// Worker节点系统盘大小。
-	WorkerSystemDiskSize *int64 `json:"worker_system_disk_size,omitempty" xml:"worker_system_disk_size,omitempty"`
-	// 集群使用的虚拟交换机。
+	// 创建Terway网络类型的集群时，需要为pod指定单独的虚拟交换机
+	PodVswitchIds []*string `json:"pod_vswitch_ids,omitempty" xml:"pod_vswitch_ids,omitempty" type:"Repeated"`
+	// POD网络网段
+	ContainerCidr *string `json:"container_cidr,omitempty" xml:"container_cidr,omitempty"`
+	// 服务网络网段
+	ServiceCidr *string `json:"service_cidr,omitempty" xml:"service_cidr,omitempty"`
+	// 安全组ID，和is_enterprise_security_group二选一
+	SecurityGroupId *string `json:"security_group_id,omitempty" xml:"security_group_id,omitempty"`
+	// 自动创建企业安全组
+	IsEnterpriseSecurityGroup *bool `json:"is_enterprise_security_group,omitempty" xml:"is_enterprise_security_group,omitempty"`
+	// 若您集群内的节点、应用等需要访问公网，勾选该项后我们将为您创建 NAT 网关并自动配置 SNAT 规则
+	SnatEntry *bool `json:"snat_entry,omitempty" xml:"snat_entry,omitempty"`
+	// 使用EIP暴露apiServer
+	EndpointPublicAccess *bool `json:"endpoint_public_access,omitempty" xml:"endpoint_public_access,omitempty"`
+	// 允许公网ssh登录
+	SshFlags *bool `json:"ssh_flags,omitempty" xml:"ssh_flags,omitempty"`
+	// 时区
+	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
+	// 节点IP数量
+	NodeCidrMask *string `json:"node_cidr_mask,omitempty" xml:"node_cidr_mask,omitempty"`
+	// 自定义集群CA
+	UserCa *string `json:"user_ca,omitempty" xml:"user_ca,omitempty"`
+	// 节点自定义数据
+	UserData *string `json:"user_data,omitempty" xml:"user_data,omitempty"`
+	// 集群本地域名
+	ClusterDomain *string `json:"cluster_domain,omitempty" xml:"cluster_domain,omitempty"`
+	// 自定义节点名称
+	NodeNameMode *string `json:"node_name_mode,omitempty" xml:"node_name_mode,omitempty"`
+	// 自定义证书SAN
+	CustomSan *string `json:"custom_san,omitempty" xml:"custom_san,omitempty"`
+	// Secret落盘加密
+	EncryptionProviderKey *string `json:"encryption_provider_key,omitempty" xml:"encryption_provider_key,omitempty"`
+	// serviceaccount token中的签发身份，即token payload中的iss字段。
+	ServiceAccountIssuer *string `json:"service_account_issuer,omitempty" xml:"service_account_issuer,omitempty"`
+	// 合法的请求token身份，用于apiserver服务端认证请求token是否合法。
+	ApiAudiences *string `json:"api_audiences,omitempty" xml:"api_audiences,omitempty"`
+	// 自定义镜像
+	ImageId *string `json:"image_id,omitempty" xml:"image_id,omitempty"`
+	// RDS白名单
+	RdsInstances []*string `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
+	// 集群标签
+	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// 集群组件配置
+	Addons []*Addon `json:"addons,omitempty" xml:"addons,omitempty" type:"Repeated"`
+	// 节点污点信息
+	Taints []*Taint `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
+	// 为ECS安装云监控
+	CloudMonitorFlags *bool `json:"cloud_monitor_flags,omitempty" xml:"cloud_monitor_flags,omitempty"`
+	// 操作系统发行版
+	Platform *string `json:"platform,omitempty" xml:"platform,omitempty"`
+	// 操作系统平台类型
+	OsType *string `json:"os_type,omitempty" xml:"os_type,omitempty"`
+	// CPU策略
+	CpuPolicy *string `json:"cpu_policy,omitempty" xml:"cpu_policy,omitempty"`
+	// Proxy代理模式，ipvs|iptables
+	ProxyMode *string `json:"proxy_mode,omitempty" xml:"proxy_mode,omitempty"`
+	// 节点服务端口范围
+	NodePortRange *string `json:"node_port_range,omitempty" xml:"node_port_range,omitempty"`
+	// 密钥对名称，和login_password二选一。
+	KeyPair *string `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
+	// SSH登录密码。密码规则为8~30 个字符，且至少同时包含三项（大小写字母、数字和特殊符号），和key_pair二选一。
+	LoginPassword *string `json:"login_password,omitempty" xml:"login_password,omitempty"`
+	// 集群Master节点数量
+	MasterCount *int64 `json:"master_count,omitempty" xml:"master_count,omitempty"`
+	// 集群Master节点使用的虚拟交换机
+	MasterVswitchIds []*string `json:"master_vswitch_ids,omitempty" xml:"master_vswitch_ids,omitempty" type:"Repeated"`
+	// 集群Master节点类型
+	MasterInstanceTypes []*string `json:"master_instance_types,omitempty" xml:"master_instance_types,omitempty" type:"Repeated"`
+	// 集群Master节点系统盘类型
+	MasterSystemDiskCategory *string `json:"master_system_disk_category,omitempty" xml:"master_system_disk_category,omitempty"`
+	// 集群Master节点系统盘大小，至少40
+	MasterSystemDiskSize *int64 `json:"master_system_disk_size,omitempty" xml:"master_system_disk_size,omitempty"`
+	// 集群Master节点自动快照备份策略
+	MasterSystemDiskSnapshotPolicyId *string `json:"master_system_disk_snapshot_policy_id,omitempty" xml:"master_system_disk_snapshot_policy_id,omitempty"`
+	// 集群Master节点付费类型
+	MasterInstanceChargeType *string `json:"master_instance_charge_type,omitempty" xml:"master_instance_charge_type,omitempty"`
+	// 集群Master节点包年包月周期
+	MasterPeriodUnit *string `json:"master_period_unit,omitempty" xml:"master_period_unit,omitempty"`
+	// 集群Master节点包年包月时长
+	MasterPeriod *int64 `json:"master_period,omitempty" xml:"master_period,omitempty"`
+	// 集群Master节点是否自动续费
+	MasterAutoRenew *bool `json:"master_auto_renew,omitempty" xml:"master_auto_renew,omitempty"`
+	// 集群Master节点自动续费时长
+	MasterAutoRenewPeriod *int64 `json:"master_auto_renew_period,omitempty" xml:"master_auto_renew_period,omitempty"`
+	// 集群Worker节点数量
+	NumOfNodes *int64 `json:"num_of_nodes,omitempty" xml:"num_of_nodes,omitempty"`
+	// 集群Worker节点所在虚拟交换机
 	WorkerVswitchIds []*string `json:"worker_vswitch_ids,omitempty" xml:"worker_vswitch_ids,omitempty" type:"Repeated"`
-	// 集群所属地域内的可用区ID。
+	// 集群Worker节点类型
+	WorkerInstanceTypes []*string `json:"worker_instance_types,omitempty" xml:"worker_instance_types,omitempty" type:"Repeated"`
+	// 集群Worker节点系统盘类型
+	WorkerSystemDiskCategory *string `json:"worker_system_disk_category,omitempty" xml:"worker_system_disk_category,omitempty"`
+	// 集群Worker节点系统盘大小
+	WorkerSystemDiskSize *int64 `json:"worker_system_disk_size,omitempty" xml:"worker_system_disk_size,omitempty"`
+	// 集群Worker节点系统盘快照备份策略
+	WorkerSystemDiskSnapshotPolicyId *string `json:"worker_system_disk_snapshot_policy_id,omitempty" xml:"worker_system_disk_snapshot_policy_id,omitempty"`
+	// 集群Worker节点数据盘配置
+	WorkerDataDisks []*DataDisk `json:"worker_data_disks,omitempty" xml:"worker_data_disks,omitempty" type:"Repeated"`
+	// 集群Worker节点付费类型
+	WorkerInstanceChargeType *string `json:"worker_instance_charge_type,omitempty" xml:"worker_instance_charge_type,omitempty"`
+	// 集群Worker节点包年包月周期
+	WorkerPeriodUnit *string `json:"worker_period_unit,omitempty" xml:"worker_period_unit,omitempty"`
+	// 集群Worker节点包年包月时长
+	WorkerPeriod *int64 `json:"worker_period,omitempty" xml:"worker_period,omitempty"`
+	// 集群Worker节点到期是否自动续费
+	WorkerAutoRenew *bool `json:"worker_auto_renew,omitempty" xml:"worker_auto_renew,omitempty"`
+	// 集群Worker节点自动续费时长
+	WorkerAutoRenewPeriod *int64 `json:"worker_auto_renew_period,omitempty" xml:"worker_auto_renew_period,omitempty"`
+	// 使用已有节点创建集群时，已有实例列表
+	Instances []*string `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
+	// 使用已有节点创建集群时，是否格式化已有实例的磁盘
+	FormatDisk *bool `json:"format_disk,omitempty" xml:"format_disk,omitempty"`
+	// 使用已有节点创建集群时，是否保留实例名称。
+	KeepInstanceName *bool `json:"keep_instance_name,omitempty" xml:"keep_instance_name,omitempty"`
+	// 创建ASK集群时，服务发现类型
+	ServiceDiscoveryTypes []*string `json:"service_discovery_types,omitempty" xml:"service_discovery_types,omitempty" type:"Repeated"`
+	// 使用自动创建专有网络创建ASK集群时，是否在vpc中创建Nat网关并配置SNAT规则。
+	NatGateway *bool `json:"nat_gateway,omitempty" xml:"nat_gateway,omitempty"`
+	// 使用自动创建专有网络创建ASK集群时，需要指定专有网络的可用区
 	ZoneId *string `json:"zone_id,omitempty" xml:"zone_id,omitempty"`
+	// 面向场景时的集群类型。  Default：非边缘场景集群。 Edge：边缘场景集群。
+	Profile *string `json:"profile,omitempty" xml:"profile,omitempty"`
+	// 集群删除保护
+	DeletionProtection *bool `json:"deletion_protection,omitempty" xml:"deletion_protection,omitempty"`
+	// 失败回滚
+	DisableRollback *bool `json:"disable_rollback,omitempty" xml:"disable_rollback,omitempty"`
+	// 集群创建超时时间
+	TimeoutMins *int64 `json:"timeout_mins,omitempty" xml:"timeout_mins,omitempty"`
 }
 
 func (s CreateClusterRequest) String() string {
@@ -4137,13 +3993,13 @@ func (s CreateClusterRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateClusterRequest) SetAddons(v []*CreateClusterRequestAddons) *CreateClusterRequest {
-	s.Addons = v
+func (s *CreateClusterRequest) SetName(v string) *CreateClusterRequest {
+	s.Name = &v
 	return s
 }
 
-func (s *CreateClusterRequest) SetCloudMonitorFlags(v bool) *CreateClusterRequest {
-	s.CloudMonitorFlags = &v
+func (s *CreateClusterRequest) SetRegionId(v string) *CreateClusterRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -4152,58 +4008,8 @@ func (s *CreateClusterRequest) SetClusterType(v string) *CreateClusterRequest {
 	return s
 }
 
-func (s *CreateClusterRequest) SetContainerCidr(v string) *CreateClusterRequest {
-	s.ContainerCidr = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetCpuPolicy(v string) *CreateClusterRequest {
-	s.CpuPolicy = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetDeletionProtection(v bool) *CreateClusterRequest {
-	s.DeletionProtection = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetDisableRollback(v bool) *CreateClusterRequest {
-	s.DisableRollback = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetEndpointPublicAccess(v bool) *CreateClusterRequest {
-	s.EndpointPublicAccess = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetFormatDisk(v bool) *CreateClusterRequest {
-	s.FormatDisk = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetImageId(v string) *CreateClusterRequest {
-	s.ImageId = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetInstances(v []*string) *CreateClusterRequest {
-	s.Instances = v
-	return s
-}
-
-func (s *CreateClusterRequest) SetIsEnterpriseSecurityGroup(v bool) *CreateClusterRequest {
-	s.IsEnterpriseSecurityGroup = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetKeepInstanceName(v bool) *CreateClusterRequest {
-	s.KeepInstanceName = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetKeyPair(v string) *CreateClusterRequest {
-	s.KeyPair = &v
+func (s *CreateClusterRequest) SetClusterSpec(v string) *CreateClusterRequest {
+	s.ClusterSpec = &v
 	return s
 }
 
@@ -4212,18 +4018,168 @@ func (s *CreateClusterRequest) SetKubernetesVersion(v string) *CreateClusterRequ
 	return s
 }
 
+func (s *CreateClusterRequest) SetRuntime(v *Runtime) *CreateClusterRequest {
+	s.Runtime = v
+	return s
+}
+
+func (s *CreateClusterRequest) SetVpcid(v string) *CreateClusterRequest {
+	s.Vpcid = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetPodVswitchIds(v []*string) *CreateClusterRequest {
+	s.PodVswitchIds = v
+	return s
+}
+
+func (s *CreateClusterRequest) SetContainerCidr(v string) *CreateClusterRequest {
+	s.ContainerCidr = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetServiceCidr(v string) *CreateClusterRequest {
+	s.ServiceCidr = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetSecurityGroupId(v string) *CreateClusterRequest {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetIsEnterpriseSecurityGroup(v bool) *CreateClusterRequest {
+	s.IsEnterpriseSecurityGroup = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetSnatEntry(v bool) *CreateClusterRequest {
+	s.SnatEntry = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetEndpointPublicAccess(v bool) *CreateClusterRequest {
+	s.EndpointPublicAccess = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetSshFlags(v bool) *CreateClusterRequest {
+	s.SshFlags = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetTimezone(v string) *CreateClusterRequest {
+	s.Timezone = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetNodeCidrMask(v string) *CreateClusterRequest {
+	s.NodeCidrMask = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetUserCa(v string) *CreateClusterRequest {
+	s.UserCa = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetUserData(v string) *CreateClusterRequest {
+	s.UserData = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetClusterDomain(v string) *CreateClusterRequest {
+	s.ClusterDomain = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetNodeNameMode(v string) *CreateClusterRequest {
+	s.NodeNameMode = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetCustomSan(v string) *CreateClusterRequest {
+	s.CustomSan = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetEncryptionProviderKey(v string) *CreateClusterRequest {
+	s.EncryptionProviderKey = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetServiceAccountIssuer(v string) *CreateClusterRequest {
+	s.ServiceAccountIssuer = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetApiAudiences(v string) *CreateClusterRequest {
+	s.ApiAudiences = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetImageId(v string) *CreateClusterRequest {
+	s.ImageId = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetRdsInstances(v []*string) *CreateClusterRequest {
+	s.RdsInstances = v
+	return s
+}
+
+func (s *CreateClusterRequest) SetTags(v []*Tag) *CreateClusterRequest {
+	s.Tags = v
+	return s
+}
+
+func (s *CreateClusterRequest) SetAddons(v []*Addon) *CreateClusterRequest {
+	s.Addons = v
+	return s
+}
+
+func (s *CreateClusterRequest) SetTaints(v []*Taint) *CreateClusterRequest {
+	s.Taints = v
+	return s
+}
+
+func (s *CreateClusterRequest) SetCloudMonitorFlags(v bool) *CreateClusterRequest {
+	s.CloudMonitorFlags = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetPlatform(v string) *CreateClusterRequest {
+	s.Platform = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetOsType(v string) *CreateClusterRequest {
+	s.OsType = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetCpuPolicy(v string) *CreateClusterRequest {
+	s.CpuPolicy = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetProxyMode(v string) *CreateClusterRequest {
+	s.ProxyMode = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetNodePortRange(v string) *CreateClusterRequest {
+	s.NodePortRange = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetKeyPair(v string) *CreateClusterRequest {
+	s.KeyPair = &v
+	return s
+}
+
 func (s *CreateClusterRequest) SetLoginPassword(v string) *CreateClusterRequest {
 	s.LoginPassword = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetMasterAutoRenew(v bool) *CreateClusterRequest {
-	s.MasterAutoRenew = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetMasterAutoRenewPeriod(v int64) *CreateClusterRequest {
-	s.MasterAutoRenewPeriod = &v
 	return s
 }
 
@@ -4232,23 +4188,13 @@ func (s *CreateClusterRequest) SetMasterCount(v int64) *CreateClusterRequest {
 	return s
 }
 
-func (s *CreateClusterRequest) SetMasterInstanceChargeType(v string) *CreateClusterRequest {
-	s.MasterInstanceChargeType = &v
+func (s *CreateClusterRequest) SetMasterVswitchIds(v []*string) *CreateClusterRequest {
+	s.MasterVswitchIds = v
 	return s
 }
 
 func (s *CreateClusterRequest) SetMasterInstanceTypes(v []*string) *CreateClusterRequest {
 	s.MasterInstanceTypes = v
-	return s
-}
-
-func (s *CreateClusterRequest) SetMasterPeriod(v int64) *CreateClusterRequest {
-	s.MasterPeriod = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetMasterPeriodUnit(v string) *CreateClusterRequest {
-	s.MasterPeriodUnit = &v
 	return s
 }
 
@@ -4262,23 +4208,33 @@ func (s *CreateClusterRequest) SetMasterSystemDiskSize(v int64) *CreateClusterRe
 	return s
 }
 
-func (s *CreateClusterRequest) SetMasterVswitchIds(v []*string) *CreateClusterRequest {
-	s.MasterVswitchIds = v
+func (s *CreateClusterRequest) SetMasterSystemDiskSnapshotPolicyId(v string) *CreateClusterRequest {
+	s.MasterSystemDiskSnapshotPolicyId = &v
 	return s
 }
 
-func (s *CreateClusterRequest) SetName(v string) *CreateClusterRequest {
-	s.Name = &v
+func (s *CreateClusterRequest) SetMasterInstanceChargeType(v string) *CreateClusterRequest {
+	s.MasterInstanceChargeType = &v
 	return s
 }
 
-func (s *CreateClusterRequest) SetNodeCidrMask(v string) *CreateClusterRequest {
-	s.NodeCidrMask = &v
+func (s *CreateClusterRequest) SetMasterPeriodUnit(v string) *CreateClusterRequest {
+	s.MasterPeriodUnit = &v
 	return s
 }
 
-func (s *CreateClusterRequest) SetNodePortRange(v string) *CreateClusterRequest {
-	s.NodePortRange = &v
+func (s *CreateClusterRequest) SetMasterPeriod(v int64) *CreateClusterRequest {
+	s.MasterPeriod = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetMasterAutoRenew(v bool) *CreateClusterRequest {
+	s.MasterAutoRenew = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetMasterAutoRenewPeriod(v int64) *CreateClusterRequest {
+	s.MasterAutoRenewPeriod = &v
 	return s
 }
 
@@ -4287,133 +4243,13 @@ func (s *CreateClusterRequest) SetNumOfNodes(v int64) *CreateClusterRequest {
 	return s
 }
 
-func (s *CreateClusterRequest) SetOsType(v string) *CreateClusterRequest {
-	s.OsType = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetPlatform(v string) *CreateClusterRequest {
-	s.Platform = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetPodVswitchIds(v []*string) *CreateClusterRequest {
-	s.PodVswitchIds = v
-	return s
-}
-
-func (s *CreateClusterRequest) SetPrivateZone(v bool) *CreateClusterRequest {
-	s.PrivateZone = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetProfile(v string) *CreateClusterRequest {
-	s.Profile = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetProxyMode(v string) *CreateClusterRequest {
-	s.ProxyMode = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetRdsInstances(v []*string) *CreateClusterRequest {
-	s.RdsInstances = v
-	return s
-}
-
-func (s *CreateClusterRequest) SetRegionId(v string) *CreateClusterRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetRuntime(v *CreateClusterRequestRuntime) *CreateClusterRequest {
-	s.Runtime = v
-	return s
-}
-
-func (s *CreateClusterRequest) SetSecurityGroupId(v string) *CreateClusterRequest {
-	s.SecurityGroupId = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetServiceCidr(v string) *CreateClusterRequest {
-	s.ServiceCidr = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetSnatEntry(v bool) *CreateClusterRequest {
-	s.SnatEntry = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetSshFlags(v bool) *CreateClusterRequest {
-	s.SshFlags = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetTags(v []*CreateClusterRequestTags) *CreateClusterRequest {
-	s.Tags = v
-	return s
-}
-
-func (s *CreateClusterRequest) SetTaints(v []*CreateClusterRequestTaints) *CreateClusterRequest {
-	s.Taints = v
-	return s
-}
-
-func (s *CreateClusterRequest) SetTimeoutMins(v int64) *CreateClusterRequest {
-	s.TimeoutMins = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetUserData(v string) *CreateClusterRequest {
-	s.UserData = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetVpcid(v string) *CreateClusterRequest {
-	s.Vpcid = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetVswitchIds(v []*string) *CreateClusterRequest {
-	s.VswitchIds = v
-	return s
-}
-
-func (s *CreateClusterRequest) SetWorkerAutoRenew(v bool) *CreateClusterRequest {
-	s.WorkerAutoRenew = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetWorkerAutoRenewPeriod(v int64) *CreateClusterRequest {
-	s.WorkerAutoRenewPeriod = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetWorkerDataDisks(v []*CreateClusterRequestWorkerDataDisks) *CreateClusterRequest {
-	s.WorkerDataDisks = v
-	return s
-}
-
-func (s *CreateClusterRequest) SetWorkerInstanceChargeType(v string) *CreateClusterRequest {
-	s.WorkerInstanceChargeType = &v
+func (s *CreateClusterRequest) SetWorkerVswitchIds(v []*string) *CreateClusterRequest {
+	s.WorkerVswitchIds = v
 	return s
 }
 
 func (s *CreateClusterRequest) SetWorkerInstanceTypes(v []*string) *CreateClusterRequest {
 	s.WorkerInstanceTypes = v
-	return s
-}
-
-func (s *CreateClusterRequest) SetWorkerPeriod(v int64) *CreateClusterRequest {
-	s.WorkerPeriod = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetWorkerPeriodUnit(v string) *CreateClusterRequest {
-	s.WorkerPeriodUnit = &v
 	return s
 }
 
@@ -4427,8 +4263,63 @@ func (s *CreateClusterRequest) SetWorkerSystemDiskSize(v int64) *CreateClusterRe
 	return s
 }
 
-func (s *CreateClusterRequest) SetWorkerVswitchIds(v []*string) *CreateClusterRequest {
-	s.WorkerVswitchIds = v
+func (s *CreateClusterRequest) SetWorkerSystemDiskSnapshotPolicyId(v string) *CreateClusterRequest {
+	s.WorkerSystemDiskSnapshotPolicyId = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetWorkerDataDisks(v []*DataDisk) *CreateClusterRequest {
+	s.WorkerDataDisks = v
+	return s
+}
+
+func (s *CreateClusterRequest) SetWorkerInstanceChargeType(v string) *CreateClusterRequest {
+	s.WorkerInstanceChargeType = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetWorkerPeriodUnit(v string) *CreateClusterRequest {
+	s.WorkerPeriodUnit = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetWorkerPeriod(v int64) *CreateClusterRequest {
+	s.WorkerPeriod = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetWorkerAutoRenew(v bool) *CreateClusterRequest {
+	s.WorkerAutoRenew = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetWorkerAutoRenewPeriod(v int64) *CreateClusterRequest {
+	s.WorkerAutoRenewPeriod = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetInstances(v []*string) *CreateClusterRequest {
+	s.Instances = v
+	return s
+}
+
+func (s *CreateClusterRequest) SetFormatDisk(v bool) *CreateClusterRequest {
+	s.FormatDisk = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetKeepInstanceName(v bool) *CreateClusterRequest {
+	s.KeepInstanceName = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetServiceDiscoveryTypes(v []*string) *CreateClusterRequest {
+	s.ServiceDiscoveryTypes = v
+	return s
+}
+
+func (s *CreateClusterRequest) SetNatGateway(v bool) *CreateClusterRequest {
+	s.NatGateway = &v
 	return s
 }
 
@@ -4437,149 +4328,23 @@ func (s *CreateClusterRequest) SetZoneId(v string) *CreateClusterRequest {
 	return s
 }
 
-type CreateClusterRequestAddons struct {
-	// 组件需要的配置。
-	Config *string `json:"config,omitempty" xml:"config,omitempty"`
-	// 组件名称。
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-}
-
-func (s CreateClusterRequestAddons) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateClusterRequestAddons) GoString() string {
-	return s.String()
-}
-
-func (s *CreateClusterRequestAddons) SetConfig(v string) *CreateClusterRequestAddons {
-	s.Config = &v
+func (s *CreateClusterRequest) SetProfile(v string) *CreateClusterRequest {
+	s.Profile = &v
 	return s
 }
 
-func (s *CreateClusterRequestAddons) SetName(v string) *CreateClusterRequestAddons {
-	s.Name = &v
+func (s *CreateClusterRequest) SetDeletionProtection(v bool) *CreateClusterRequest {
+	s.DeletionProtection = &v
 	return s
 }
 
-type CreateClusterRequestRuntime struct {
-	// 容器运行时名称。
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 容器运行时版本。
-	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-}
-
-func (s CreateClusterRequestRuntime) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateClusterRequestRuntime) GoString() string {
-	return s.String()
-}
-
-func (s *CreateClusterRequestRuntime) SetName(v string) *CreateClusterRequestRuntime {
-	s.Name = &v
+func (s *CreateClusterRequest) SetDisableRollback(v bool) *CreateClusterRequest {
+	s.DisableRollback = &v
 	return s
 }
 
-func (s *CreateClusterRequestRuntime) SetVersion(v string) *CreateClusterRequestRuntime {
-	s.Version = &v
-	return s
-}
-
-type CreateClusterRequestTags struct {
-	// 标签key。
-	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// 标签值。
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
-}
-
-func (s CreateClusterRequestTags) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateClusterRequestTags) GoString() string {
-	return s.String()
-}
-
-func (s *CreateClusterRequestTags) SetKey(v string) *CreateClusterRequestTags {
-	s.Key = &v
-	return s
-}
-
-func (s *CreateClusterRequestTags) SetValue(v string) *CreateClusterRequestTags {
-	s.Value = &v
-	return s
-}
-
-type CreateClusterRequestTaints struct {
-	// 调度策略。
-	Effect *string `json:"effect,omitempty" xml:"effect,omitempty"`
-	// 污点key。
-	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// 污点值。
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
-}
-
-func (s CreateClusterRequestTaints) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateClusterRequestTaints) GoString() string {
-	return s.String()
-}
-
-func (s *CreateClusterRequestTaints) SetEffect(v string) *CreateClusterRequestTaints {
-	s.Effect = &v
-	return s
-}
-
-func (s *CreateClusterRequestTaints) SetKey(v string) *CreateClusterRequestTaints {
-	s.Key = &v
-	return s
-}
-
-func (s *CreateClusterRequestTaints) SetValue(v string) *CreateClusterRequestTaints {
-	s.Value = &v
-	return s
-}
-
-type CreateClusterRequestWorkerDataDisks struct {
-	// 数据盘是否开启云盘备份。
-	AutoSnapshotPolicyId *string `json:"auto_snapshot_policy_id,omitempty" xml:"auto_snapshot_policy_id,omitempty"`
-	// 数据盘类型。
-	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// 数据盘是否加密。
-	Encrypted *string `json:"encrypted,omitempty" xml:"encrypted,omitempty"`
-	// 数据盘大小。
-	Size *string `json:"size,omitempty" xml:"size,omitempty"`
-}
-
-func (s CreateClusterRequestWorkerDataDisks) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateClusterRequestWorkerDataDisks) GoString() string {
-	return s.String()
-}
-
-func (s *CreateClusterRequestWorkerDataDisks) SetAutoSnapshotPolicyId(v string) *CreateClusterRequestWorkerDataDisks {
-	s.AutoSnapshotPolicyId = &v
-	return s
-}
-
-func (s *CreateClusterRequestWorkerDataDisks) SetCategory(v string) *CreateClusterRequestWorkerDataDisks {
-	s.Category = &v
-	return s
-}
-
-func (s *CreateClusterRequestWorkerDataDisks) SetEncrypted(v string) *CreateClusterRequestWorkerDataDisks {
-	s.Encrypted = &v
-	return s
-}
-
-func (s *CreateClusterRequestWorkerDataDisks) SetSize(v string) *CreateClusterRequestWorkerDataDisks {
-	s.Size = &v
+func (s *CreateClusterRequest) SetTimeoutMins(v int64) *CreateClusterRequest {
+	s.TimeoutMins = &v
 	return s
 }
 
@@ -4688,32 +4453,31 @@ func (s *UpgradeClusterResponse) SetHeaders(v map[string]*string) *UpgradeCluste
 }
 
 type AttachInstancesRequest struct {
-	// CPU策略。
-	CpuPolicy *string `json:"cpu_policy,omitempty" xml:"cpu_policy,omitempty"`
-	// 是否格式化数据盘。
-	FormatDisk *bool `json:"format_disk,omitempty" xml:"format_disk,omitempty"`
-	// 自定义镜像ID。
-	ImageId *string `json:"image_id,omitempty" xml:"image_id,omitempty"`
-	// 待添加的实例列表。
+	// 实例列表。
 	Instances []*string `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
-	// 是否为边缘节点。
-	IsEdgeWorker *bool `json:"is_edge_worker,omitempty" xml:"is_edge_worker,omitempty"`
-	// 是否保留实例名称。
-	KeepInstanceName *bool `json:"keep_instance_name,omitempty" xml:"keep_instance_name,omitempty"`
 	// key_pair名称，与login_password二选一
 	KeyPair *string `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
-	// 节点池ID，欲将节点添加到哪个节点池中。。
-	NodepoolId *string `json:"nodepool_id,omitempty" xml:"nodepool_id,omitempty"`
 	// password，与key_pair二选一。
 	Password *string `json:"password,omitempty" xml:"password,omitempty"`
+	// 是否格式化数据盘。
+	FormatDisk *bool `json:"format_disk,omitempty" xml:"format_disk,omitempty"`
+	// 是否保留实例名称。
+	KeepInstanceName *bool `json:"keep_instance_name,omitempty" xml:"keep_instance_name,omitempty"`
+	// 是否为边缘节点。
+	IsEdgeWorker *bool `json:"is_edge_worker,omitempty" xml:"is_edge_worker,omitempty"`
+	// 节点池ID，欲将节点添加到哪个节点池中。。
+	NodepoolId *string `json:"nodepool_id,omitempty" xml:"nodepool_id,omitempty"`
+	// 自定义镜像ID。
+	ImageId *string `json:"image_id,omitempty" xml:"image_id,omitempty"`
+	// CPU亲和策略。
+	CpuPolicy *string `json:"cpu_policy,omitempty" xml:"cpu_policy,omitempty"`
+	// 节点自定义数据。
+	UserData *string `json:"user_data,omitempty" xml:"user_data,omitempty"`
 	// RDS实例列表。
 	RdsInstances []*string `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
-	// 容器运行时。
-	Runtime *AttachInstancesRequestRuntime `json:"runtime,omitempty" xml:"runtime,omitempty" type:"Struct"`
+	Runtime      *Runtime  `json:"runtime,omitempty" xml:"runtime,omitempty"`
 	// 节点标签。
-	Tags []*AttachInstancesRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// 用户自定义数据。
-	UserData *string `json:"user_data,omitempty" xml:"user_data,omitempty"`
+	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
 
 func (s AttachInstancesRequest) String() string {
@@ -4724,33 +4488,8 @@ func (s AttachInstancesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *AttachInstancesRequest) SetCpuPolicy(v string) *AttachInstancesRequest {
-	s.CpuPolicy = &v
-	return s
-}
-
-func (s *AttachInstancesRequest) SetFormatDisk(v bool) *AttachInstancesRequest {
-	s.FormatDisk = &v
-	return s
-}
-
-func (s *AttachInstancesRequest) SetImageId(v string) *AttachInstancesRequest {
-	s.ImageId = &v
-	return s
-}
-
 func (s *AttachInstancesRequest) SetInstances(v []*string) *AttachInstancesRequest {
 	s.Instances = v
-	return s
-}
-
-func (s *AttachInstancesRequest) SetIsEdgeWorker(v bool) *AttachInstancesRequest {
-	s.IsEdgeWorker = &v
-	return s
-}
-
-func (s *AttachInstancesRequest) SetKeepInstanceName(v bool) *AttachInstancesRequest {
-	s.KeepInstanceName = &v
 	return s
 }
 
@@ -4759,28 +4498,38 @@ func (s *AttachInstancesRequest) SetKeyPair(v string) *AttachInstancesRequest {
 	return s
 }
 
-func (s *AttachInstancesRequest) SetNodepoolId(v string) *AttachInstancesRequest {
-	s.NodepoolId = &v
-	return s
-}
-
 func (s *AttachInstancesRequest) SetPassword(v string) *AttachInstancesRequest {
 	s.Password = &v
 	return s
 }
 
-func (s *AttachInstancesRequest) SetRdsInstances(v []*string) *AttachInstancesRequest {
-	s.RdsInstances = v
+func (s *AttachInstancesRequest) SetFormatDisk(v bool) *AttachInstancesRequest {
+	s.FormatDisk = &v
 	return s
 }
 
-func (s *AttachInstancesRequest) SetRuntime(v *AttachInstancesRequestRuntime) *AttachInstancesRequest {
-	s.Runtime = v
+func (s *AttachInstancesRequest) SetKeepInstanceName(v bool) *AttachInstancesRequest {
+	s.KeepInstanceName = &v
 	return s
 }
 
-func (s *AttachInstancesRequest) SetTags(v []*AttachInstancesRequestTags) *AttachInstancesRequest {
-	s.Tags = v
+func (s *AttachInstancesRequest) SetIsEdgeWorker(v bool) *AttachInstancesRequest {
+	s.IsEdgeWorker = &v
+	return s
+}
+
+func (s *AttachInstancesRequest) SetNodepoolId(v string) *AttachInstancesRequest {
+	s.NodepoolId = &v
+	return s
+}
+
+func (s *AttachInstancesRequest) SetImageId(v string) *AttachInstancesRequest {
+	s.ImageId = &v
+	return s
+}
+
+func (s *AttachInstancesRequest) SetCpuPolicy(v string) *AttachInstancesRequest {
+	s.CpuPolicy = &v
 	return s
 }
 
@@ -4789,53 +4538,18 @@ func (s *AttachInstancesRequest) SetUserData(v string) *AttachInstancesRequest {
 	return s
 }
 
-type AttachInstancesRequestRuntime struct {
-	// 容器运行时名称。
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 容器运行时版本。
-	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-}
-
-func (s AttachInstancesRequestRuntime) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AttachInstancesRequestRuntime) GoString() string {
-	return s.String()
-}
-
-func (s *AttachInstancesRequestRuntime) SetName(v string) *AttachInstancesRequestRuntime {
-	s.Name = &v
+func (s *AttachInstancesRequest) SetRdsInstances(v []*string) *AttachInstancesRequest {
+	s.RdsInstances = v
 	return s
 }
 
-func (s *AttachInstancesRequestRuntime) SetVersion(v string) *AttachInstancesRequestRuntime {
-	s.Version = &v
+func (s *AttachInstancesRequest) SetRuntime(v *Runtime) *AttachInstancesRequest {
+	s.Runtime = v
 	return s
 }
 
-type AttachInstancesRequestTags struct {
-	// 标签名。
-	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// 标签值。
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
-}
-
-func (s AttachInstancesRequestTags) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AttachInstancesRequestTags) GoString() string {
-	return s.String()
-}
-
-func (s *AttachInstancesRequestTags) SetKey(v string) *AttachInstancesRequestTags {
-	s.Key = &v
-	return s
-}
-
-func (s *AttachInstancesRequestTags) SetValue(v string) *AttachInstancesRequestTags {
-	s.Value = &v
+func (s *AttachInstancesRequest) SetTags(v []*Tag) *AttachInstancesRequest {
+	s.Tags = v
 	return s
 }
 
@@ -4922,6 +4636,10 @@ func (s *AttachInstancesResponse) SetBody(v *AttachInstancesResponseBody) *Attac
 type DescribeTemplatesRequest struct {
 	// 模板类型，部署模板类型，目前一共有2种类型，取值为：kubernetes或compose。
 	TemplateType *string `json:"template_type,omitempty" xml:"template_type,omitempty"`
+	// 对查询结果进行分页处理，指定返回第几页的数据。  默认值为 1
+	PageNum *int64 `json:"page_num,omitempty" xml:"page_num,omitempty"`
+	// 对查询结果进行分页处理，指定每页包含的数据条数。  默认值为 10
+	PageSize *int64 `json:"page_size,omitempty" xml:"page_size,omitempty"`
 }
 
 func (s DescribeTemplatesRequest) String() string {
@@ -4937,11 +4655,21 @@ func (s *DescribeTemplatesRequest) SetTemplateType(v string) *DescribeTemplatesR
 	return s
 }
 
+func (s *DescribeTemplatesRequest) SetPageNum(v int64) *DescribeTemplatesRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *DescribeTemplatesRequest) SetPageSize(v int64) *DescribeTemplatesRequest {
+	s.PageSize = &v
+	return s
+}
+
 type DescribeTemplatesResponseBody struct {
-	// 分页信息。
-	PageInfo *DescribeTemplatesResponseBodyPageInfo `json:"page_info,omitempty" xml:"page_info,omitempty" type:"Struct"`
 	// 模板列表。
 	Templates []*DescribeTemplatesResponseBodyTemplates `json:"templates,omitempty" xml:"templates,omitempty" type:"Repeated"`
+	// 分页信息。
+	PageInfo *DescribeTemplatesResponseBodyPageInfo `json:"page_info,omitempty" xml:"page_info,omitempty" type:"Struct"`
 }
 
 func (s DescribeTemplatesResponseBody) String() string {
@@ -4952,20 +4680,101 @@ func (s DescribeTemplatesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeTemplatesResponseBody) SetPageInfo(v *DescribeTemplatesResponseBodyPageInfo) *DescribeTemplatesResponseBody {
-	s.PageInfo = v
-	return s
-}
-
 func (s *DescribeTemplatesResponseBody) SetTemplates(v []*DescribeTemplatesResponseBodyTemplates) *DescribeTemplatesResponseBody {
 	s.Templates = v
 	return s
 }
 
+func (s *DescribeTemplatesResponseBody) SetPageInfo(v *DescribeTemplatesResponseBodyPageInfo) *DescribeTemplatesResponseBody {
+	s.PageInfo = v
+	return s
+}
+
+type DescribeTemplatesResponseBodyTemplates struct {
+	// 模板访问权限，取值为：private、pubilc或shared。。
+	Acl *string `json:"acl,omitempty" xml:"acl,omitempty"`
+	// 模板ID。会模板随着更新而变化。
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// 模板名称。
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 模板描述信息。
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// 模板标签，如果不显式指定了，默认为模板名称。
+	Tags *string `json:"tags,omitempty" xml:"tags,omitempty"`
+	// 模板详情。
+	Template *string `json:"template,omitempty" xml:"template,omitempty"`
+	// 部署模板类型。
+	TemplateType *string `json:"template_type,omitempty" xml:"template_type,omitempty"`
+	// 模板创建时间。
+	Created *string `json:"created,omitempty" xml:"created,omitempty"`
+	// 模板修改时间。
+	Updated *string `json:"updated,omitempty" xml:"updated,omitempty"`
+	// 模板唯一ID。
+	TemplateWithHistId *string `json:"template_with_hist_id,omitempty" xml:"template_with_hist_id,omitempty"`
+}
+
+func (s DescribeTemplatesResponseBodyTemplates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTemplatesResponseBodyTemplates) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTemplatesResponseBodyTemplates) SetAcl(v string) *DescribeTemplatesResponseBodyTemplates {
+	s.Acl = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyTemplates) SetId(v string) *DescribeTemplatesResponseBodyTemplates {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyTemplates) SetName(v string) *DescribeTemplatesResponseBodyTemplates {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyTemplates) SetDescription(v string) *DescribeTemplatesResponseBodyTemplates {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyTemplates) SetTags(v string) *DescribeTemplatesResponseBodyTemplates {
+	s.Tags = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyTemplates) SetTemplate(v string) *DescribeTemplatesResponseBodyTemplates {
+	s.Template = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyTemplates) SetTemplateType(v string) *DescribeTemplatesResponseBodyTemplates {
+	s.TemplateType = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyTemplates) SetCreated(v string) *DescribeTemplatesResponseBodyTemplates {
+	s.Created = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyTemplates) SetUpdated(v string) *DescribeTemplatesResponseBodyTemplates {
+	s.Updated = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyTemplates) SetTemplateWithHistId(v string) *DescribeTemplatesResponseBodyTemplates {
+	s.TemplateWithHistId = &v
+	return s
+}
+
 type DescribeTemplatesResponseBodyPageInfo struct {
-	// 分页数。
+	// 当前页数。
 	PageNumber *int64 `json:"page_number,omitempty" xml:"page_number,omitempty"`
-	// 单页大小。
+	// 单页最大数据条数。
 	PageSize *int64 `json:"page_size,omitempty" xml:"page_size,omitempty"`
 	// 结果总数。
 	TotalCount *int64 `json:"total_count,omitempty" xml:"total_count,omitempty"`
@@ -4991,80 +4800,6 @@ func (s *DescribeTemplatesResponseBodyPageInfo) SetPageSize(v int64) *DescribeTe
 
 func (s *DescribeTemplatesResponseBodyPageInfo) SetTotalCount(v int64) *DescribeTemplatesResponseBodyPageInfo {
 	s.TotalCount = &v
-	return s
-}
-
-type DescribeTemplatesResponseBodyTemplates struct {
-	// 模板访问权限，取值为：private、pubilc或shared。。
-	Acl *string `json:"acl,omitempty" xml:"acl,omitempty"`
-	// 模板创建时间。
-	Created *string `json:"created,omitempty" xml:"created,omitempty"`
-	// 模板描述信息。
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 模板ID。
-	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// 模板名称。
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 模板标签，如果不显式指定了，默认为模板名称。
-	Tags *string `json:"tags,omitempty" xml:"tags,omitempty"`
-	// 模板详情。
-	Template *string `json:"template,omitempty" xml:"template,omitempty"`
-	// 部署模板类型，目前只有kubernetes一种生效。
-	TemplateType *string `json:"template_type,omitempty" xml:"template_type,omitempty"`
-	// 模板修改时间。
-	Updated *string `json:"updated,omitempty" xml:"updated,omitempty"`
-}
-
-func (s DescribeTemplatesResponseBodyTemplates) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeTemplatesResponseBodyTemplates) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeTemplatesResponseBodyTemplates) SetAcl(v string) *DescribeTemplatesResponseBodyTemplates {
-	s.Acl = &v
-	return s
-}
-
-func (s *DescribeTemplatesResponseBodyTemplates) SetCreated(v string) *DescribeTemplatesResponseBodyTemplates {
-	s.Created = &v
-	return s
-}
-
-func (s *DescribeTemplatesResponseBodyTemplates) SetDescription(v string) *DescribeTemplatesResponseBodyTemplates {
-	s.Description = &v
-	return s
-}
-
-func (s *DescribeTemplatesResponseBodyTemplates) SetId(v string) *DescribeTemplatesResponseBodyTemplates {
-	s.Id = &v
-	return s
-}
-
-func (s *DescribeTemplatesResponseBodyTemplates) SetName(v string) *DescribeTemplatesResponseBodyTemplates {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeTemplatesResponseBodyTemplates) SetTags(v string) *DescribeTemplatesResponseBodyTemplates {
-	s.Tags = &v
-	return s
-}
-
-func (s *DescribeTemplatesResponseBodyTemplates) SetTemplate(v string) *DescribeTemplatesResponseBodyTemplates {
-	s.Template = &v
-	return s
-}
-
-func (s *DescribeTemplatesResponseBodyTemplates) SetTemplateType(v string) *DescribeTemplatesResponseBodyTemplates {
-	s.TemplateType = &v
-	return s
-}
-
-func (s *DescribeTemplatesResponseBodyTemplates) SetUpdated(v string) *DescribeTemplatesResponseBodyTemplates {
-	s.Updated = &v
 	return s
 }
 
@@ -5108,6 +4843,41 @@ func (s *PauseClusterUpgradeResponse) SetHeaders(v map[string]*string) *PauseClu
 	return s
 }
 
+type DeleteTemplateResponse struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+}
+
+func (s DeleteTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTemplateResponse) SetHeaders(v map[string]*string) *DeleteTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+type DescribeTemplateAttributeRequest struct {
+	// 模板类型，值为创建部署模板时指定的模板类型。
+	TemplateType *string `json:"template_type,omitempty" xml:"template_type,omitempty"`
+}
+
+func (s DescribeTemplateAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTemplateAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTemplateAttributeRequest) SetTemplateType(v string) *DescribeTemplateAttributeRequest {
+	s.TemplateType = &v
+	return s
+}
+
 type DescribeTemplateAttributeResponse struct {
 	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	Body    []*DescribeTemplateAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
@@ -5132,24 +4902,24 @@ func (s *DescribeTemplateAttributeResponse) SetBody(v []*DescribeTemplateAttribu
 }
 
 type DescribeTemplateAttributeResponseBody struct {
-	// 编排模板权限。取值：private，public，shared。
-	Acl *string `json:"acl,omitempty" xml:"acl,omitempty"`
-	// 编排模板创建时间。
-	Created *string `json:"created,omitempty" xml:"created,omitempty"`
-	// 编排模板描述。
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// 编排模板ID，模板每次修改，这个ID都会改变。
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// 编排模板权限。取值：private，public，shared。
+	Acl *string `json:"acl,omitempty" xml:"acl,omitempty"`
 	// 编排模板名称。
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// 编排模板内容。
 	Template *string `json:"template,omitempty" xml:"template,omitempty"`
-	// 编排模板ID，该ID主要用于应用中心。
-	TemplateHashCodeVersion *string `json:"template_hash_code_version,omitempty" xml:"template_hash_code_version,omitempty"`
-	// 编排模板类型，取值：kubernetes。
+	// 编排模板类型
 	TemplateType *string `json:"template_type,omitempty" xml:"template_type,omitempty"`
+	// 编排模板描述。
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// 部署模板的标签。
+	Tags *string `json:"tags,omitempty" xml:"tags,omitempty"`
 	// 编排模板ID，该ID唯一不随更新而改变。
 	TemplateWithHistId *string `json:"template_with_hist_id,omitempty" xml:"template_with_hist_id,omitempty"`
+	// 编排模板创建时间。
+	Created *string `json:"created,omitempty" xml:"created,omitempty"`
 	// 编排模板修改时间。
 	Updated *string `json:"updated,omitempty" xml:"updated,omitempty"`
 }
@@ -5162,23 +4932,13 @@ func (s DescribeTemplateAttributeResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeTemplateAttributeResponseBody) SetAcl(v string) *DescribeTemplateAttributeResponseBody {
-	s.Acl = &v
-	return s
-}
-
-func (s *DescribeTemplateAttributeResponseBody) SetCreated(v string) *DescribeTemplateAttributeResponseBody {
-	s.Created = &v
-	return s
-}
-
-func (s *DescribeTemplateAttributeResponseBody) SetDescription(v string) *DescribeTemplateAttributeResponseBody {
-	s.Description = &v
-	return s
-}
-
 func (s *DescribeTemplateAttributeResponseBody) SetId(v string) *DescribeTemplateAttributeResponseBody {
 	s.Id = &v
+	return s
+}
+
+func (s *DescribeTemplateAttributeResponseBody) SetAcl(v string) *DescribeTemplateAttributeResponseBody {
+	s.Acl = &v
 	return s
 }
 
@@ -5192,18 +4952,28 @@ func (s *DescribeTemplateAttributeResponseBody) SetTemplate(v string) *DescribeT
 	return s
 }
 
-func (s *DescribeTemplateAttributeResponseBody) SetTemplateHashCodeVersion(v string) *DescribeTemplateAttributeResponseBody {
-	s.TemplateHashCodeVersion = &v
-	return s
-}
-
 func (s *DescribeTemplateAttributeResponseBody) SetTemplateType(v string) *DescribeTemplateAttributeResponseBody {
 	s.TemplateType = &v
 	return s
 }
 
+func (s *DescribeTemplateAttributeResponseBody) SetDescription(v string) *DescribeTemplateAttributeResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeTemplateAttributeResponseBody) SetTags(v string) *DescribeTemplateAttributeResponseBody {
+	s.Tags = &v
+	return s
+}
+
 func (s *DescribeTemplateAttributeResponseBody) SetTemplateWithHistId(v string) *DescribeTemplateAttributeResponseBody {
 	s.TemplateWithHistId = &v
+	return s
+}
+
+func (s *DescribeTemplateAttributeResponseBody) SetCreated(v string) *DescribeTemplateAttributeResponseBody {
+	s.Created = &v
 	return s
 }
 
@@ -5213,9 +4983,15 @@ func (s *DescribeTemplateAttributeResponseBody) SetUpdated(v string) *DescribeTe
 }
 
 type CreateTemplateRequest struct {
-	Name         *string `json:"name,omitempty" xml:"name,omitempty"`
-	Template     *string `json:"template,omitempty" xml:"template,omitempty"`
-	Tags         *string `json:"tags,omitempty" xml:"tags,omitempty"`
+	// 模板名称。
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// YAML格式的模板内容。
+	Template *string `json:"template,omitempty" xml:"template,omitempty"`
+	// 模板标签。
+	Tags *string `json:"tags,omitempty" xml:"tags,omitempty"`
+	// 模板描述。
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// 模板类型。默认值：kubernetes
 	TemplateType *string `json:"template_type,omitempty" xml:"template_type,omitempty"`
 }
 
@@ -5242,12 +5018,18 @@ func (s *CreateTemplateRequest) SetTags(v string) *CreateTemplateRequest {
 	return s
 }
 
+func (s *CreateTemplateRequest) SetDescription(v string) *CreateTemplateRequest {
+	s.Description = &v
+	return s
+}
+
 func (s *CreateTemplateRequest) SetTemplateType(v string) *CreateTemplateRequest {
 	s.TemplateType = &v
 	return s
 }
 
 type CreateTemplateResponseBody struct {
+	// 模板ID。
 	TemplateId *string `json:"template_id,omitempty" xml:"template_id,omitempty"`
 }
 
@@ -5288,14 +5070,16 @@ func (s *CreateTemplateResponse) SetBody(v *CreateTemplateResponseBody) *CreateT
 }
 
 type DescribeClusterNodesRequest struct {
-	// 每页展示结果数。
-	PageSize *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 结果只展示几页。
-	PageNumber *string `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// 节点实例ID，按照实例ID进行过滤。  节点池ID不为空时会忽略此字段。
+	InstanceIds []*string `json:"instanceIds,omitempty" xml:"instanceIds,omitempty" type:"Repeated"`
 	// 节点池ID。
 	NodepoolId *string `json:"nodepool_id,omitempty" xml:"nodepool_id,omitempty"`
-	// 节点状态信息。
+	// 节点状态。默认值：all。
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
+	// 每页大小。
+	PageSize *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// 分页数量
+	PageNumber *string `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 }
 
 func (s DescribeClusterNodesRequest) String() string {
@@ -5306,13 +5090,8 @@ func (s DescribeClusterNodesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeClusterNodesRequest) SetPageSize(v string) *DescribeClusterNodesRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeClusterNodesRequest) SetPageNumber(v string) *DescribeClusterNodesRequest {
-	s.PageNumber = &v
+func (s *DescribeClusterNodesRequest) SetInstanceIds(v []*string) *DescribeClusterNodesRequest {
+	s.InstanceIds = v
 	return s
 }
 
@@ -5323,6 +5102,16 @@ func (s *DescribeClusterNodesRequest) SetNodepoolId(v string) *DescribeClusterNo
 
 func (s *DescribeClusterNodesRequest) SetState(v string) *DescribeClusterNodesRequest {
 	s.State = &v
+	return s
+}
+
+func (s *DescribeClusterNodesRequest) SetPageSize(v string) *DescribeClusterNodesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeClusterNodesRequest) SetPageNumber(v string) *DescribeClusterNodesRequest {
+	s.PageNumber = &v
 	return s
 }
 
@@ -5366,7 +5155,7 @@ type DescribeClusterNodesResponseBodyNodes struct {
 	InstanceChargeType *string `json:"instance_charge_type,omitempty" xml:"instance_charge_type,omitempty"`
 	// 节点实例ID。
 	InstanceId *string `json:"instance_id,omitempty" xml:"instance_id,omitempty"`
-	// 节点实例名称。
+	// 节点名称。
 	InstanceName *string `json:"instance_name,omitempty" xml:"instance_name,omitempty"`
 	// 节点实例角色类型，Master或Worker。
 	InstanceRole *string `json:"instance_role,omitempty" xml:"instance_role,omitempty"`
@@ -5384,12 +5173,14 @@ type DescribeClusterNodesResponseBodyNodes struct {
 	NodeName *string `json:"node_name,omitempty" xml:"node_name,omitempty"`
 	// 节点状态，是否Ready。
 	NodeStatus *string `json:"node_status,omitempty" xml:"node_status,omitempty"`
-	// 节点所属的节点池ID。
+	// 节点池ID。
 	NodepoolId *string `json:"nodepool_id,omitempty" xml:"nodepool_id,omitempty"`
 	// 节点通过什么方式创建出来的，例如：ROS。
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// ECS运行状态，例如：running。
+	// ECS运行状态，例如：Running。
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
+	// 抢占时实例类型
+	SpotStrategy *string `json:"spot_strategy,omitempty" xml:"spot_strategy,omitempty"`
 }
 
 func (s DescribeClusterNodesResponseBodyNodes) String() string {
@@ -5492,6 +5283,11 @@ func (s *DescribeClusterNodesResponseBodyNodes) SetSource(v string) *DescribeClu
 
 func (s *DescribeClusterNodesResponseBodyNodes) SetState(v string) *DescribeClusterNodesResponseBodyNodes {
 	s.State = &v
+	return s
+}
+
+func (s *DescribeClusterNodesResponseBodyNodes) SetSpotStrategy(v string) *DescribeClusterNodesResponseBodyNodes {
+	s.SpotStrategy = &v
 	return s
 }
 
@@ -5616,27 +5412,9 @@ func (s *CancelComponentUpgradeResponse) SetHeaders(v map[string]*string) *Cance
 	return s
 }
 
-type DescribeClusterAddonsVersionResponseBody struct {
-	// 组件信息详情。
-	AddonsVersion map[string]*AddonsVersionValue `json:"AddonsVersion,omitempty" xml:"AddonsVersion,omitempty"`
-}
-
-func (s DescribeClusterAddonsVersionResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeClusterAddonsVersionResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeClusterAddonsVersionResponseBody) SetAddonsVersion(v map[string]*AddonsVersionValue) *DescribeClusterAddonsVersionResponseBody {
-	s.AddonsVersion = v
-	return s
-}
-
 type DescribeClusterAddonsVersionResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeClusterAddonsVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeClusterAddonsVersionResponse) String() string {
@@ -5652,7 +5430,7 @@ func (s *DescribeClusterAddonsVersionResponse) SetHeaders(v map[string]*string) 
 	return s
 }
 
-func (s *DescribeClusterAddonsVersionResponse) SetBody(v *DescribeClusterAddonsVersionResponseBody) *DescribeClusterAddonsVersionResponse {
+func (s *DescribeClusterAddonsVersionResponse) SetBody(v map[string]interface{}) *DescribeClusterAddonsVersionResponse {
 	s.Body = v
 	return s
 }
@@ -5894,7 +5672,7 @@ type DescribeClustersV1ResponseBodyClusters struct {
 	// POD网段地址。
 	SubnetCidr *string `json:"subnet_cidr,omitempty" xml:"subnet_cidr,omitempty"`
 	// 集群标签。
-	Tags []*Tags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// 集群更新时间。
 	Updated *string `json:"updated,omitempty" xml:"updated,omitempty"`
 	// 集群所在的VPC ID。
@@ -6023,7 +5801,7 @@ func (s *DescribeClustersV1ResponseBodyClusters) SetSubnetCidr(v string) *Descri
 	return s
 }
 
-func (s *DescribeClustersV1ResponseBodyClusters) SetTags(v []*Tags) *DescribeClustersV1ResponseBodyClusters {
+func (s *DescribeClustersV1ResponseBodyClusters) SetTags(v []*Tag) *DescribeClustersV1ResponseBodyClusters {
 	s.Tags = v
 	return s
 }
@@ -6119,10 +5897,8 @@ func (s *DescribeClustersV1Response) SetBody(v *DescribeClustersV1ResponseBody) 
 }
 
 type ModifyClusterConfigurationRequest struct {
-	// 配置集合。
-	Configs *ModifyClusterConfigurationRequestConfigs `json:"configs,omitempty" xml:"configs,omitempty" type:"Struct"`
-	// 配置名称。
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 自定义配置。
+	CustomizeConfig []*ModifyClusterConfigurationRequestCustomizeConfig `json:"customize_config,omitempty" xml:"customize_config,omitempty" type:"Repeated"`
 }
 
 func (s ModifyClusterConfigurationRequest) String() string {
@@ -6133,37 +5909,57 @@ func (s ModifyClusterConfigurationRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyClusterConfigurationRequest) SetConfigs(v *ModifyClusterConfigurationRequestConfigs) *ModifyClusterConfigurationRequest {
-	s.Configs = v
+func (s *ModifyClusterConfigurationRequest) SetCustomizeConfig(v []*ModifyClusterConfigurationRequestCustomizeConfig) *ModifyClusterConfigurationRequest {
+	s.CustomizeConfig = v
 	return s
 }
 
-func (s *ModifyClusterConfigurationRequest) SetName(v string) *ModifyClusterConfigurationRequest {
+type ModifyClusterConfigurationRequestCustomizeConfig struct {
+	// 组件名称。
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 组件配置。
+	Configs []*ModifyClusterConfigurationRequestCustomizeConfigConfigs `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
+}
+
+func (s ModifyClusterConfigurationRequestCustomizeConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyClusterConfigurationRequestCustomizeConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyClusterConfigurationRequestCustomizeConfig) SetName(v string) *ModifyClusterConfigurationRequestCustomizeConfig {
 	s.Name = &v
 	return s
 }
 
-type ModifyClusterConfigurationRequestConfigs struct {
-	// key。
+func (s *ModifyClusterConfigurationRequestCustomizeConfig) SetConfigs(v []*ModifyClusterConfigurationRequestCustomizeConfigConfigs) *ModifyClusterConfigurationRequestCustomizeConfig {
+	s.Configs = v
+	return s
+}
+
+type ModifyClusterConfigurationRequestCustomizeConfigConfigs struct {
+	// key值。
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// value。
+	// value值。
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
-func (s ModifyClusterConfigurationRequestConfigs) String() string {
+func (s ModifyClusterConfigurationRequestCustomizeConfigConfigs) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ModifyClusterConfigurationRequestConfigs) GoString() string {
+func (s ModifyClusterConfigurationRequestCustomizeConfigConfigs) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyClusterConfigurationRequestConfigs) SetKey(v string) *ModifyClusterConfigurationRequestConfigs {
+func (s *ModifyClusterConfigurationRequestCustomizeConfigConfigs) SetKey(v string) *ModifyClusterConfigurationRequestCustomizeConfigConfigs {
 	s.Key = &v
 	return s
 }
 
-func (s *ModifyClusterConfigurationRequestConfigs) SetValue(v string) *ModifyClusterConfigurationRequestConfigs {
+func (s *ModifyClusterConfigurationRequestCustomizeConfigConfigs) SetValue(v string) *ModifyClusterConfigurationRequestCustomizeConfigConfigs {
 	s.Value = &v
 	return s
 }
@@ -6544,7 +6340,7 @@ func (s *DeleteClusterNodepoolResponse) SetHeaders(v map[string]*string) *Delete
 }
 
 type DescribeClusterAddonsUpgradeStatusRequest struct {
-	// 组件列表。
+	// 组件名称列表。
 	ComponentIds []*string `json:"componentIds,omitempty" xml:"componentIds,omitempty" type:"Repeated"`
 }
 
@@ -6562,7 +6358,8 @@ func (s *DescribeClusterAddonsUpgradeStatusRequest) SetComponentIds(v []*string)
 }
 
 type DescribeClusterAddonsUpgradeStatusResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeClusterAddonsUpgradeStatusResponse) String() string {
@@ -6575,6 +6372,11 @@ func (s DescribeClusterAddonsUpgradeStatusResponse) GoString() string {
 
 func (s *DescribeClusterAddonsUpgradeStatusResponse) SetHeaders(v map[string]*string) *DescribeClusterAddonsUpgradeStatusResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeClusterAddonsUpgradeStatusResponse) SetBody(v map[string]interface{}) *DescribeClusterAddonsUpgradeStatusResponse {
+	s.Body = v
 	return s
 }
 
@@ -6597,16 +6399,12 @@ func (s *InstallClusterAddonsRequest) SetBody(v []*InstallClusterAddonsRequestBo
 }
 
 type InstallClusterAddonsRequestBody struct {
-	// Addon配置信息。
-	Config *string `json:"config,omitempty" xml:"config,omitempty"`
-	// 是否禁止默认安装。
-	Disabled *bool `json:"disabled,omitempty" xml:"disabled,omitempty"`
-	// Addon名称。
+	// 组件名称。
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 是否默认安装。
-	Required *string `json:"required,omitempty" xml:"required,omitempty"`
-	// Addon版本号。
+	// 组件版本号。
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	// 组件配置信息。
+	Config *string `json:"config,omitempty" xml:"config,omitempty"`
 }
 
 func (s InstallClusterAddonsRequestBody) String() string {
@@ -6617,28 +6415,18 @@ func (s InstallClusterAddonsRequestBody) GoString() string {
 	return s.String()
 }
 
-func (s *InstallClusterAddonsRequestBody) SetConfig(v string) *InstallClusterAddonsRequestBody {
-	s.Config = &v
-	return s
-}
-
-func (s *InstallClusterAddonsRequestBody) SetDisabled(v bool) *InstallClusterAddonsRequestBody {
-	s.Disabled = &v
-	return s
-}
-
 func (s *InstallClusterAddonsRequestBody) SetName(v string) *InstallClusterAddonsRequestBody {
 	s.Name = &v
 	return s
 }
 
-func (s *InstallClusterAddonsRequestBody) SetRequired(v string) *InstallClusterAddonsRequestBody {
-	s.Required = &v
+func (s *InstallClusterAddonsRequestBody) SetVersion(v string) *InstallClusterAddonsRequestBody {
+	s.Version = &v
 	return s
 }
 
-func (s *InstallClusterAddonsRequestBody) SetVersion(v string) *InstallClusterAddonsRequestBody {
-	s.Version = &v
+func (s *InstallClusterAddonsRequestBody) SetConfig(v string) *InstallClusterAddonsRequestBody {
+	s.Config = &v
 	return s
 }
 
@@ -6803,13 +6591,13 @@ type DescribeClusterNodePoolsResponseBodyNodepoolsKubernetesConfig struct {
 	// CPU管理策略
 	CpuPolicy *string `json:"cpu_policy,omitempty" xml:"cpu_policy,omitempty"`
 	// ECS标签。
-	Labels []*Tags `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
+	Labels []*Tag `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
 	// 容器运行时
 	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
 	// 容器运行时版本
 	RuntimeVersion *string `json:"runtime_version,omitempty" xml:"runtime_version,omitempty"`
 	// 污点配置
-	Taints []*Taints `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
+	Taints []*Taint `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
 	// 节点自定义数据
 	UserData *string `json:"user_data,omitempty" xml:"user_data,omitempty"`
 }
@@ -6832,7 +6620,7 @@ func (s *DescribeClusterNodePoolsResponseBodyNodepoolsKubernetesConfig) SetCpuPo
 	return s
 }
 
-func (s *DescribeClusterNodePoolsResponseBodyNodepoolsKubernetesConfig) SetLabels(v []*Tags) *DescribeClusterNodePoolsResponseBodyNodepoolsKubernetesConfig {
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsKubernetesConfig) SetLabels(v []*Tag) *DescribeClusterNodePoolsResponseBodyNodepoolsKubernetesConfig {
 	s.Labels = v
 	return s
 }
@@ -6847,7 +6635,7 @@ func (s *DescribeClusterNodePoolsResponseBodyNodepoolsKubernetesConfig) SetRunti
 	return s
 }
 
-func (s *DescribeClusterNodePoolsResponseBodyNodepoolsKubernetesConfig) SetTaints(v []*Taints) *DescribeClusterNodePoolsResponseBodyNodepoolsKubernetesConfig {
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsKubernetesConfig) SetTaints(v []*Taint) *DescribeClusterNodePoolsResponseBodyNodepoolsKubernetesConfig {
 	s.Taints = v
 	return s
 }
@@ -6930,15 +6718,25 @@ type DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup struct {
 	// 自动付费时长
 	AutoRenewPeriod *int64 `json:"auto_renew_period,omitempty" xml:"auto_renew_period,omitempty"`
 	// 数据盘配置
-	DataDisks []*DataDisks `json:"data_disks,omitempty" xml:"data_disks,omitempty" type:"Repeated"`
+	DataDisks []*DataDisk `json:"data_disks,omitempty" xml:"data_disks,omitempty" type:"Repeated"`
 	// 镜像ID
 	ImageId *string `json:"image_id,omitempty" xml:"image_id,omitempty"`
 	// 节点付费类型
 	InstanceChargeType *string `json:"instance_charge_type,omitempty" xml:"instance_charge_type,omitempty"`
 	// 节点类型
 	InstanceTypes []*string `json:"instance_types,omitempty" xml:"instance_types,omitempty" type:"Repeated"`
-	// 多可用去策略
+	// 多可用区伸缩组ECS实例扩缩容策略
 	MultiAzPolicy *string `json:"multi_az_policy,omitempty" xml:"multi_az_policy,omitempty"`
+	// 伸缩组所需要按量实例个数的最小值，取值范围：0~1000。当按量实例个数少于该值时，将优先创建按量实例。
+	OnDemandBaseCapacity *int64 `json:"on_demand_base_capacity,omitempty" xml:"on_demand_base_capacity,omitempty"`
+	// 伸缩组满足最小按量实例数（OnDemandBaseCapacity）要求后，超出的实例中按量实例应占的比例，取值范围：0～100。
+	OnDemandPercentageAboveBaseCapacity *int64 `json:"on_demand_percentage_above_base_capacity,omitempty" xml:"on_demand_percentage_above_base_capacity,omitempty"`
+	// 指定可用实例规格的个数，伸缩组将按成本最低的多个规格均衡创建抢占式实例。取值范围：1~10。
+	SpotInstancePools *int64 `json:"spot_instance_pools,omitempty" xml:"spot_instance_pools,omitempty"`
+	// 是否开启补齐抢占式实例。开启后，当收到抢占式实例将被回收的系统消息时，伸缩组将尝试创建新的实例，替换掉将被回收的抢占式实例。
+	SpotInstanceRemedy *bool `json:"spot_instance_remedy,omitempty" xml:"spot_instance_remedy,omitempty"`
+	// 当MultiAZPolicy取值为COST_OPTIMIZED时，如果因价格、库存等原因无法创建足够的抢占式实例，是否允许自动尝试创建按量实例满足ECS实例数量要求。取值范围：true：允许。false：不允许。默认值：true
+	CompensateWithOnDemand *bool `json:"compensate_with_on_demand,omitempty" xml:"compensate_with_on_demand,omitempty"`
 	// 包年包月时长
 	Period *int64 `json:"period,omitempty" xml:"period,omitempty"`
 	// 自动付费周期
@@ -6964,7 +6762,7 @@ type DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup struct {
 	// 系统盘大小
 	SystemDiskSize *int64 `json:"system_disk_size,omitempty" xml:"system_disk_size,omitempty"`
 	// 节点标签
-	Tags []*Tags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// 虚拟交换机ID。
 	VswitchIds []*string `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
 	// 登录密码，返回结果是加密的。
@@ -6991,7 +6789,7 @@ func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetAutoRenew
 	return s
 }
 
-func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetDataDisks(v []*DataDisks) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup {
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetDataDisks(v []*DataDisk) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup {
 	s.DataDisks = v
 	return s
 }
@@ -7013,6 +6811,31 @@ func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetInstanceT
 
 func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetMultiAzPolicy(v string) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup {
 	s.MultiAzPolicy = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetOnDemandBaseCapacity(v int64) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup {
+	s.OnDemandBaseCapacity = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetOnDemandPercentageAboveBaseCapacity(v int64) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup {
+	s.OnDemandPercentageAboveBaseCapacity = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetSpotInstancePools(v int64) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup {
+	s.SpotInstancePools = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetSpotInstanceRemedy(v bool) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup {
+	s.SpotInstanceRemedy = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetCompensateWithOnDemand(v bool) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup {
+	s.CompensateWithOnDemand = &v
 	return s
 }
 
@@ -7076,7 +6899,7 @@ func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetSystemDis
 	return s
 }
 
-func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetTags(v []*Tags) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup {
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetTags(v []*Tag) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup {
 	s.Tags = v
 	return s
 }
@@ -7360,52 +7183,47 @@ func (s *DescribeClusterV2UserKubeconfigResponse) SetBody(v *DescribeClusterV2Us
 }
 
 type ScaleOutClusterRequest struct {
-	// 是否安装云监控插件。
-	CloudMonitorFlags *bool `json:"cloud_monitor_flags,omitempty" xml:"cloud_monitor_flags,omitempty"`
-	// 扩容实例数量。
-	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
-	// CPU策略，取值static或者none。
-	CpuPolicy *string `json:"cpu_policy,omitempty" xml:"cpu_policy,omitempty"`
-	// 失败是否回滚。
-	DisableRollback *bool `json:"disable_rollback,omitempty" xml:"disable_rollback,omitempty"`
-	// 自定义镜像ID。
-	ImageId *string `json:"image_id,omitempty" xml:"image_id,omitempty"`
+	// 扩容节点数
+	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
 	// keypair名称，和login_password二选一。
 	KeyPair *string `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
 	// SSH登录密码，和key_pair二选一。
 	LoginPassword *string `json:"login_password,omitempty" xml:"login_password,omitempty"`
-	// RDS白名单实例列表。
-	RdsInstances []*string `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
-	// 容器引擎。
-	Runtime *ScaleOutClusterRequestRuntime `json:"runtime,omitempty" xml:"runtime,omitempty" type:"Struct"`
-	// 节点标签。
-	Tags []*ScaleOutClusterRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// 节点污点信息。
-	Taints []*ScaleOutClusterRequestTaints `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
-	// 用户自定义数据。
-	UserData *string `json:"user_data,omitempty" xml:"user_data,omitempty"`
-	// 节点交换机ID列表，交换机个数取值范围为1~3。
+	// 虚拟交换机
 	VswitchIds []*string `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
-	// Worker节点是否开启自动续费。
-	WorkerAutoRenew *bool `json:"worker_auto_renew,omitempty" xml:"worker_auto_renew,omitempty"`
-	// Worker节点自动续费周期。
-	WorkerAutoRenewPeriod *int32 `json:"worker_auto_renew_period,omitempty" xml:"worker_auto_renew_period,omitempty"`
-	// Worker节点是否挂载数据盘。
-	WorkerDataDisk *bool `json:"worker_data_disk,omitempty" xml:"worker_data_disk,omitempty"`
-	// Worker数据盘类型、大小等配置的组合。
-	WorkerDataDisks []*ScaleOutClusterRequestWorkerDataDisks `json:"worker_data_disks,omitempty" xml:"worker_data_disks,omitempty" type:"Repeated"`
-	// Worker节点付费类型。
+	// Worker节点付费类型
 	WorkerInstanceChargeType *string `json:"worker_instance_charge_type,omitempty" xml:"worker_instance_charge_type,omitempty"`
-	// Worker节点ECS规格类型代码。
-	WorkerInstanceTypes []*string `json:"worker_instance_types,omitempty" xml:"worker_instance_types,omitempty" type:"Repeated"`
-	// Worker节点包年包月时长。
-	WorkerPeriod *int32 `json:"worker_period,omitempty" xml:"worker_period,omitempty"`
-	// Worker节点预付费周期。
+	// Worker节点包年包月时长
+	WorkerPeriod *int64 `json:"worker_period,omitempty" xml:"worker_period,omitempty"`
+	// Worker节点包年包月周期
 	WorkerPeriodUnit *string `json:"worker_period_unit,omitempty" xml:"worker_period_unit,omitempty"`
-	// Worker节点系统盘类型。
+	// Worker节点到期是否自动续费
+	WorkerAutoRenew *bool `json:"worker_auto_renew,omitempty" xml:"worker_auto_renew,omitempty"`
+	// Worker节点自动续费时长
+	WorkerAutoRenewPeriod *int64 `json:"worker_auto_renew_period,omitempty" xml:"worker_auto_renew_period,omitempty"`
+	// Worker节点实例规格
+	WorkerInstanceTypes []*string `json:"worker_instance_types,omitempty" xml:"worker_instance_types,omitempty" type:"Repeated"`
+	// Worker节点系统盘类型
 	WorkerSystemDiskCategory *string `json:"worker_system_disk_category,omitempty" xml:"worker_system_disk_category,omitempty"`
-	// Worker节点系统盘大小。
-	WorkerSystemDiskSize *int32 `json:"worker_system_disk_size,omitempty" xml:"worker_system_disk_size,omitempty"`
+	// Worker节点系统盘大小
+	WorkerSystemDiskSize *int64 `json:"worker_system_disk_size,omitempty" xml:"worker_system_disk_size,omitempty"`
+	// Worker节点数据盘配置
+	WorkerDataDisks []*DataDisk `json:"worker_data_disks,omitempty" xml:"worker_data_disks,omitempty" type:"Repeated"`
+	// 在节点上安装云监控
+	CloudMonitorFlags *bool `json:"cloud_monitor_flags,omitempty" xml:"cloud_monitor_flags,omitempty"`
+	// CPU亲和性策略
+	CpuPolicy *string `json:"cpu_policy,omitempty" xml:"cpu_policy,omitempty"`
+	// 自定义镜像
+	ImageId *string `json:"image_id,omitempty" xml:"image_id,omitempty"`
+	// 节点自定义数据
+	UserData *string `json:"user_data,omitempty" xml:"user_data,omitempty"`
+	// RDS白名单
+	RdsInstances []*string `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
+	// 节点标签
+	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// 节点污点信息
+	Taints  []*Taint `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
+	Runtime *Runtime `json:"runtime,omitempty" xml:"runtime,omitempty"`
 }
 
 func (s ScaleOutClusterRequest) String() string {
@@ -7416,28 +7234,8 @@ func (s ScaleOutClusterRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ScaleOutClusterRequest) SetCloudMonitorFlags(v bool) *ScaleOutClusterRequest {
-	s.CloudMonitorFlags = &v
-	return s
-}
-
-func (s *ScaleOutClusterRequest) SetCount(v int32) *ScaleOutClusterRequest {
+func (s *ScaleOutClusterRequest) SetCount(v int64) *ScaleOutClusterRequest {
 	s.Count = &v
-	return s
-}
-
-func (s *ScaleOutClusterRequest) SetCpuPolicy(v string) *ScaleOutClusterRequest {
-	s.CpuPolicy = &v
-	return s
-}
-
-func (s *ScaleOutClusterRequest) SetDisableRollback(v bool) *ScaleOutClusterRequest {
-	s.DisableRollback = &v
-	return s
-}
-
-func (s *ScaleOutClusterRequest) SetImageId(v string) *ScaleOutClusterRequest {
-	s.ImageId = &v
 	return s
 }
 
@@ -7451,53 +7249,8 @@ func (s *ScaleOutClusterRequest) SetLoginPassword(v string) *ScaleOutClusterRequ
 	return s
 }
 
-func (s *ScaleOutClusterRequest) SetRdsInstances(v []*string) *ScaleOutClusterRequest {
-	s.RdsInstances = v
-	return s
-}
-
-func (s *ScaleOutClusterRequest) SetRuntime(v *ScaleOutClusterRequestRuntime) *ScaleOutClusterRequest {
-	s.Runtime = v
-	return s
-}
-
-func (s *ScaleOutClusterRequest) SetTags(v []*ScaleOutClusterRequestTags) *ScaleOutClusterRequest {
-	s.Tags = v
-	return s
-}
-
-func (s *ScaleOutClusterRequest) SetTaints(v []*ScaleOutClusterRequestTaints) *ScaleOutClusterRequest {
-	s.Taints = v
-	return s
-}
-
-func (s *ScaleOutClusterRequest) SetUserData(v string) *ScaleOutClusterRequest {
-	s.UserData = &v
-	return s
-}
-
 func (s *ScaleOutClusterRequest) SetVswitchIds(v []*string) *ScaleOutClusterRequest {
 	s.VswitchIds = v
-	return s
-}
-
-func (s *ScaleOutClusterRequest) SetWorkerAutoRenew(v bool) *ScaleOutClusterRequest {
-	s.WorkerAutoRenew = &v
-	return s
-}
-
-func (s *ScaleOutClusterRequest) SetWorkerAutoRenewPeriod(v int32) *ScaleOutClusterRequest {
-	s.WorkerAutoRenewPeriod = &v
-	return s
-}
-
-func (s *ScaleOutClusterRequest) SetWorkerDataDisk(v bool) *ScaleOutClusterRequest {
-	s.WorkerDataDisk = &v
-	return s
-}
-
-func (s *ScaleOutClusterRequest) SetWorkerDataDisks(v []*ScaleOutClusterRequestWorkerDataDisks) *ScaleOutClusterRequest {
-	s.WorkerDataDisks = v
 	return s
 }
 
@@ -7506,12 +7259,7 @@ func (s *ScaleOutClusterRequest) SetWorkerInstanceChargeType(v string) *ScaleOut
 	return s
 }
 
-func (s *ScaleOutClusterRequest) SetWorkerInstanceTypes(v []*string) *ScaleOutClusterRequest {
-	s.WorkerInstanceTypes = v
-	return s
-}
-
-func (s *ScaleOutClusterRequest) SetWorkerPeriod(v int32) *ScaleOutClusterRequest {
+func (s *ScaleOutClusterRequest) SetWorkerPeriod(v int64) *ScaleOutClusterRequest {
 	s.WorkerPeriod = &v
 	return s
 }
@@ -7521,127 +7269,73 @@ func (s *ScaleOutClusterRequest) SetWorkerPeriodUnit(v string) *ScaleOutClusterR
 	return s
 }
 
+func (s *ScaleOutClusterRequest) SetWorkerAutoRenew(v bool) *ScaleOutClusterRequest {
+	s.WorkerAutoRenew = &v
+	return s
+}
+
+func (s *ScaleOutClusterRequest) SetWorkerAutoRenewPeriod(v int64) *ScaleOutClusterRequest {
+	s.WorkerAutoRenewPeriod = &v
+	return s
+}
+
+func (s *ScaleOutClusterRequest) SetWorkerInstanceTypes(v []*string) *ScaleOutClusterRequest {
+	s.WorkerInstanceTypes = v
+	return s
+}
+
 func (s *ScaleOutClusterRequest) SetWorkerSystemDiskCategory(v string) *ScaleOutClusterRequest {
 	s.WorkerSystemDiskCategory = &v
 	return s
 }
 
-func (s *ScaleOutClusterRequest) SetWorkerSystemDiskSize(v int32) *ScaleOutClusterRequest {
+func (s *ScaleOutClusterRequest) SetWorkerSystemDiskSize(v int64) *ScaleOutClusterRequest {
 	s.WorkerSystemDiskSize = &v
 	return s
 }
 
-type ScaleOutClusterRequestRuntime struct {
-	// 容器引擎名称。
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 容器引擎版本。
-	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-}
-
-func (s ScaleOutClusterRequestRuntime) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ScaleOutClusterRequestRuntime) GoString() string {
-	return s.String()
-}
-
-func (s *ScaleOutClusterRequestRuntime) SetName(v string) *ScaleOutClusterRequestRuntime {
-	s.Name = &v
+func (s *ScaleOutClusterRequest) SetWorkerDataDisks(v []*DataDisk) *ScaleOutClusterRequest {
+	s.WorkerDataDisks = v
 	return s
 }
 
-func (s *ScaleOutClusterRequestRuntime) SetVersion(v string) *ScaleOutClusterRequestRuntime {
-	s.Version = &v
+func (s *ScaleOutClusterRequest) SetCloudMonitorFlags(v bool) *ScaleOutClusterRequest {
+	s.CloudMonitorFlags = &v
 	return s
 }
 
-type ScaleOutClusterRequestTags struct {
-	// 标签名。
-	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// 标签值。
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
-}
-
-func (s ScaleOutClusterRequestTags) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ScaleOutClusterRequestTags) GoString() string {
-	return s.String()
-}
-
-func (s *ScaleOutClusterRequestTags) SetKey(v string) *ScaleOutClusterRequestTags {
-	s.Key = &v
+func (s *ScaleOutClusterRequest) SetCpuPolicy(v string) *ScaleOutClusterRequest {
+	s.CpuPolicy = &v
 	return s
 }
 
-func (s *ScaleOutClusterRequestTags) SetValue(v string) *ScaleOutClusterRequestTags {
-	s.Value = &v
+func (s *ScaleOutClusterRequest) SetImageId(v string) *ScaleOutClusterRequest {
+	s.ImageId = &v
 	return s
 }
 
-type ScaleOutClusterRequestTaints struct {
-	// 污点生效策略。
-	Effect *string `json:"effect,omitempty" xml:"effect,omitempty"`
-	// 污点名。
-	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// 污点值。
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
-}
-
-func (s ScaleOutClusterRequestTaints) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ScaleOutClusterRequestTaints) GoString() string {
-	return s.String()
-}
-
-func (s *ScaleOutClusterRequestTaints) SetEffect(v string) *ScaleOutClusterRequestTaints {
-	s.Effect = &v
+func (s *ScaleOutClusterRequest) SetUserData(v string) *ScaleOutClusterRequest {
+	s.UserData = &v
 	return s
 }
 
-func (s *ScaleOutClusterRequestTaints) SetKey(v string) *ScaleOutClusterRequestTaints {
-	s.Key = &v
+func (s *ScaleOutClusterRequest) SetRdsInstances(v []*string) *ScaleOutClusterRequest {
+	s.RdsInstances = v
 	return s
 }
 
-func (s *ScaleOutClusterRequestTaints) SetValue(v string) *ScaleOutClusterRequestTaints {
-	s.Value = &v
+func (s *ScaleOutClusterRequest) SetTags(v []*Tag) *ScaleOutClusterRequest {
+	s.Tags = v
 	return s
 }
 
-type ScaleOutClusterRequestWorkerDataDisks struct {
-	// 数据盘类型。
-	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// 是否对数据盘加密。
-	Encrypted *string `json:"encrypted,omitempty" xml:"encrypted,omitempty"`
-	// 数据盘大小。
-	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
-}
-
-func (s ScaleOutClusterRequestWorkerDataDisks) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ScaleOutClusterRequestWorkerDataDisks) GoString() string {
-	return s.String()
-}
-
-func (s *ScaleOutClusterRequestWorkerDataDisks) SetCategory(v string) *ScaleOutClusterRequestWorkerDataDisks {
-	s.Category = &v
+func (s *ScaleOutClusterRequest) SetTaints(v []*Taint) *ScaleOutClusterRequest {
+	s.Taints = v
 	return s
 }
 
-func (s *ScaleOutClusterRequestWorkerDataDisks) SetEncrypted(v string) *ScaleOutClusterRequestWorkerDataDisks {
-	s.Encrypted = &v
-	return s
-}
-
-func (s *ScaleOutClusterRequestWorkerDataDisks) SetSize(v int64) *ScaleOutClusterRequestWorkerDataDisks {
-	s.Size = &v
+func (s *ScaleOutClusterRequest) SetRuntime(v *Runtime) *ScaleOutClusterRequest {
+	s.Runtime = v
 	return s
 }
 
@@ -7701,8 +7395,8 @@ func (s *ScaleOutClusterResponse) SetBody(v *ScaleOutClusterResponseBody) *Scale
 }
 
 type ModifyClusterTagsRequest struct {
-	// 标签列表。
-	Body []*ModifyClusterTagsRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
+	// 集群标签列表。
+	Body []*Tag `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
 }
 
 func (s ModifyClusterTagsRequest) String() string {
@@ -7713,33 +7407,8 @@ func (s ModifyClusterTagsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyClusterTagsRequest) SetBody(v []*ModifyClusterTagsRequestBody) *ModifyClusterTagsRequest {
+func (s *ModifyClusterTagsRequest) SetBody(v []*Tag) *ModifyClusterTagsRequest {
 	s.Body = v
-	return s
-}
-
-type ModifyClusterTagsRequestBody struct {
-	// 标签名。
-	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// 标签值
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
-}
-
-func (s ModifyClusterTagsRequestBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyClusterTagsRequestBody) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyClusterTagsRequestBody) SetKey(v string) *ModifyClusterTagsRequestBody {
-	s.Key = &v
-	return s
-}
-
-func (s *ModifyClusterTagsRequestBody) SetValue(v string) *ModifyClusterTagsRequestBody {
-	s.Value = &v
 	return s
 }
 
@@ -7767,6 +7436,8 @@ type GetKubernetesTriggerRequest struct {
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// 应用名称。
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 触发器行为。
+	Action *string `json:"action,omitempty" xml:"action,omitempty"`
 }
 
 func (s GetKubernetesTriggerRequest) String() string {
@@ -7792,73 +7463,14 @@ func (s *GetKubernetesTriggerRequest) SetName(v string) *GetKubernetesTriggerReq
 	return s
 }
 
-type GetKubernetesTriggerResponseBody struct {
-	// 触发器详情。
-	Triggers []*GetKubernetesTriggerResponseBodyTriggers `json:"triggers,omitempty" xml:"triggers,omitempty" type:"Repeated"`
-}
-
-func (s GetKubernetesTriggerResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetKubernetesTriggerResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetKubernetesTriggerResponseBody) SetTriggers(v []*GetKubernetesTriggerResponseBodyTriggers) *GetKubernetesTriggerResponseBody {
-	s.Triggers = v
-	return s
-}
-
-type GetKubernetesTriggerResponseBodyTriggers struct {
-	// 触发器行为。
-	Action *string `json:"action,omitempty" xml:"action,omitempty"`
-	// 集群ID。
-	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// 触发器ID。
-	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// 项目ID，格式为：${namepsce}/${应用名}，
-	ProjectId *string `json:"project_id,omitempty" xml:"project_id,omitempty"`
-	// 触发器Token。
-	Token *string `json:"token,omitempty" xml:"token,omitempty"`
-}
-
-func (s GetKubernetesTriggerResponseBodyTriggers) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetKubernetesTriggerResponseBodyTriggers) GoString() string {
-	return s.String()
-}
-
-func (s *GetKubernetesTriggerResponseBodyTriggers) SetAction(v string) *GetKubernetesTriggerResponseBodyTriggers {
+func (s *GetKubernetesTriggerRequest) SetAction(v string) *GetKubernetesTriggerRequest {
 	s.Action = &v
 	return s
 }
 
-func (s *GetKubernetesTriggerResponseBodyTriggers) SetClusterId(v string) *GetKubernetesTriggerResponseBodyTriggers {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *GetKubernetesTriggerResponseBodyTriggers) SetId(v string) *GetKubernetesTriggerResponseBodyTriggers {
-	s.Id = &v
-	return s
-}
-
-func (s *GetKubernetesTriggerResponseBodyTriggers) SetProjectId(v string) *GetKubernetesTriggerResponseBodyTriggers {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *GetKubernetesTriggerResponseBodyTriggers) SetToken(v string) *GetKubernetesTriggerResponseBodyTriggers {
-	s.Token = &v
-	return s
-}
-
 type GetKubernetesTriggerResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetKubernetesTriggerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    []*GetKubernetesTriggerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
 }
 
 func (s GetKubernetesTriggerResponse) String() string {
@@ -7874,8 +7486,61 @@ func (s *GetKubernetesTriggerResponse) SetHeaders(v map[string]*string) *GetKube
 	return s
 }
 
-func (s *GetKubernetesTriggerResponse) SetBody(v *GetKubernetesTriggerResponseBody) *GetKubernetesTriggerResponse {
+func (s *GetKubernetesTriggerResponse) SetBody(v []*GetKubernetesTriggerResponseBody) *GetKubernetesTriggerResponse {
 	s.Body = v
+	return s
+}
+
+type GetKubernetesTriggerResponseBody struct {
+	// 触发器ID。
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// 触发器名称。
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 集群ID
+	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	// 触发器项目名称
+	ProjectId *string `json:"project_id,omitempty" xml:"project_id,omitempty"`
+	// 触发器类型。
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// 触发器行为
+	Action *string `json:"action,omitempty" xml:"action,omitempty"`
+}
+
+func (s GetKubernetesTriggerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetKubernetesTriggerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetKubernetesTriggerResponseBody) SetId(v string) *GetKubernetesTriggerResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *GetKubernetesTriggerResponseBody) SetName(v string) *GetKubernetesTriggerResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *GetKubernetesTriggerResponseBody) SetClusterId(v string) *GetKubernetesTriggerResponseBody {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *GetKubernetesTriggerResponseBody) SetProjectId(v string) *GetKubernetesTriggerResponseBody {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetKubernetesTriggerResponseBody) SetType(v string) *GetKubernetesTriggerResponseBody {
+	s.Type = &v
+	return s
+}
+
+func (s *GetKubernetesTriggerResponseBody) SetAction(v string) *GetKubernetesTriggerResponseBody {
+	s.Action = &v
 	return s
 }
 
@@ -8123,16 +7788,16 @@ func (s *DeleteClusterNodesResponse) SetBody(v *DeleteClusterNodesResponseBody) 
 }
 
 type StandardComponentsValue struct {
-	// 标准组件信息，包含各个组件的描述信息。
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 是否禁止默认安装。
-	Disabled *bool `json:"disabled,omitempty" xml:"disabled,omitempty"`
 	// 组件名称。
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 是否为必需组件。
-	Required *string `json:"required,omitempty" xml:"required,omitempty"`
 	// 组件版本。
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	// 组件描述信息。
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// 是否为必需组件。
+	Required *string `json:"required,omitempty" xml:"required,omitempty"`
+	// 是否禁止默认安装。
+	Disabled *bool `json:"disabled,omitempty" xml:"disabled,omitempty"`
 }
 
 func (s StandardComponentsValue) String() string {
@@ -8143,23 +7808,8 @@ func (s StandardComponentsValue) GoString() string {
 	return s.String()
 }
 
-func (s *StandardComponentsValue) SetDescription(v string) *StandardComponentsValue {
-	s.Description = &v
-	return s
-}
-
-func (s *StandardComponentsValue) SetDisabled(v bool) *StandardComponentsValue {
-	s.Disabled = &v
-	return s
-}
-
 func (s *StandardComponentsValue) SetName(v string) *StandardComponentsValue {
 	s.Name = &v
-	return s
-}
-
-func (s *StandardComponentsValue) SetRequired(v string) *StandardComponentsValue {
-	s.Required = &v
 	return s
 }
 
@@ -8168,77 +7818,18 @@ func (s *StandardComponentsValue) SetVersion(v string) *StandardComponentsValue 
 	return s
 }
 
-type AddonsVersionValue struct {
-	// 组件是否可升级
-	CanUpgrade *bool `json:"can_upgrade,omitempty" xml:"can_upgrade,omitempty"`
-	// 组件是否升级过。
-	Changed *string `json:"changed,omitempty" xml:"changed,omitempty"`
-	// 组件名称。
-	ComponentName *string `json:"component_name,omitempty" xml:"component_name,omitempty"`
-	// 组件说明信息。
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 是否可升级的额外说明信息。
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 组件下一个可升级版本。
-	NextVersion *string `json:"next_version,omitempty" xml:"next_version,omitempty"`
-	// 组件是否为必需组件
-	Required *bool `json:"required,omitempty" xml:"required,omitempty"`
-	// 组件最新模板内容。
-	Template *string `json:"template,omitempty" xml:"template,omitempty"`
-	// 组件当前版本。
-	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-}
-
-func (s AddonsVersionValue) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddonsVersionValue) GoString() string {
-	return s.String()
-}
-
-func (s *AddonsVersionValue) SetCanUpgrade(v bool) *AddonsVersionValue {
-	s.CanUpgrade = &v
-	return s
-}
-
-func (s *AddonsVersionValue) SetChanged(v string) *AddonsVersionValue {
-	s.Changed = &v
-	return s
-}
-
-func (s *AddonsVersionValue) SetComponentName(v string) *AddonsVersionValue {
-	s.ComponentName = &v
-	return s
-}
-
-func (s *AddonsVersionValue) SetDescription(v string) *AddonsVersionValue {
+func (s *StandardComponentsValue) SetDescription(v string) *StandardComponentsValue {
 	s.Description = &v
 	return s
 }
 
-func (s *AddonsVersionValue) SetMessage(v string) *AddonsVersionValue {
-	s.Message = &v
-	return s
-}
-
-func (s *AddonsVersionValue) SetNextVersion(v string) *AddonsVersionValue {
-	s.NextVersion = &v
-	return s
-}
-
-func (s *AddonsVersionValue) SetRequired(v bool) *AddonsVersionValue {
+func (s *StandardComponentsValue) SetRequired(v string) *StandardComponentsValue {
 	s.Required = &v
 	return s
 }
 
-func (s *AddonsVersionValue) SetTemplate(v string) *AddonsVersionValue {
-	s.Template = &v
-	return s
-}
-
-func (s *AddonsVersionValue) SetVersion(v string) *AddonsVersionValue {
-	s.Version = &v
+func (s *StandardComponentsValue) SetDisabled(v bool) *StandardComponentsValue {
+	s.Disabled = &v
 	return s
 }
 
@@ -8450,11 +8041,27 @@ func (client *Client) DescribeClusterAttachScriptsWithOptions(ClusterId *string,
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NodepoolId)) {
+		body["nodepool_id"] = request.NodepoolId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FormatDisk)) {
+		body["format_disk"] = request.FormatDisk
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeepInstanceName)) {
+		body["keep_instance_name"] = request.KeepInstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RdsInstances)) {
+		body["rds_instances"] = request.RdsInstances
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Arch)) {
 		body["arch"] = request.Arch
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Options))) {
+	if !tea.BoolValue(util.IsUnset(request.Options)) {
 		body["options"] = request.Options
 	}
 
@@ -8565,24 +8172,20 @@ func (client *Client) CreateKubernetesTriggerWithOptions(request *CreateKubernet
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Action)) {
-		body["Action"] = request.Action
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
-		body["ClusterId"] = request.ClusterId
+		body["cluster_id"] = request.ClusterId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
-		body["ProjectId"] = request.ProjectId
+		body["project_id"] = request.ProjectId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		body["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.Action)) {
+		body["action"] = request.Action
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
-		body["Type"] = request.Type
+		body["type"] = request.Type
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -9114,96 +8717,168 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, he
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Addons)) {
-		body["addons"] = request.Addons
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.CloudMonitorFlags)) {
-		body["cloud_monitor_flags"] = request.CloudMonitorFlags
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["region_id"] = request.RegionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ClusterType)) {
 		body["cluster_type"] = request.ClusterType
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ContainerCidr)) {
-		body["container_cidr"] = request.ContainerCidr
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CpuPolicy)) {
-		body["cpu_policy"] = request.CpuPolicy
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DeletionProtection)) {
-		body["deletion_protection"] = request.DeletionProtection
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DisableRollback)) {
-		body["disable_rollback"] = request.DisableRollback
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EndpointPublicAccess)) {
-		body["endpoint_public_access"] = request.EndpointPublicAccess
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.FormatDisk)) {
-		body["format_disk"] = request.FormatDisk
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
-		body["image_id"] = request.ImageId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Instances)) {
-		body["instances"] = request.Instances
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.IsEnterpriseSecurityGroup)) {
-		body["is_enterprise_security_group"] = request.IsEnterpriseSecurityGroup
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.KeepInstanceName)) {
-		body["keep_instance_name"] = request.KeepInstanceName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.KeyPair)) {
-		body["key_pair"] = request.KeyPair
+	if !tea.BoolValue(util.IsUnset(request.ClusterSpec)) {
+		body["cluster_spec"] = request.ClusterSpec
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.KubernetesVersion)) {
 		body["kubernetes_version"] = request.KubernetesVersion
 	}
 
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Runtime))) {
+		body["runtime"] = request.Runtime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Vpcid)) {
+		body["vpcid"] = request.Vpcid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PodVswitchIds)) {
+		body["pod_vswitch_ids"] = request.PodVswitchIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContainerCidr)) {
+		body["container_cidr"] = request.ContainerCidr
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceCidr)) {
+		body["service_cidr"] = request.ServiceCidr
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
+		body["security_group_id"] = request.SecurityGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsEnterpriseSecurityGroup)) {
+		body["is_enterprise_security_group"] = request.IsEnterpriseSecurityGroup
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SnatEntry)) {
+		body["snat_entry"] = request.SnatEntry
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointPublicAccess)) {
+		body["endpoint_public_access"] = request.EndpointPublicAccess
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SshFlags)) {
+		body["ssh_flags"] = request.SshFlags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Timezone)) {
+		body["timezone"] = request.Timezone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeCidrMask)) {
+		body["node_cidr_mask"] = request.NodeCidrMask
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserCa)) {
+		body["user_ca"] = request.UserCa
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		body["user_data"] = request.UserData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterDomain)) {
+		body["cluster_domain"] = request.ClusterDomain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeNameMode)) {
+		body["node_name_mode"] = request.NodeNameMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomSan)) {
+		body["custom_san"] = request.CustomSan
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EncryptionProviderKey)) {
+		body["encryption_provider_key"] = request.EncryptionProviderKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceAccountIssuer)) {
+		body["service_account_issuer"] = request.ServiceAccountIssuer
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApiAudiences)) {
+		body["api_audiences"] = request.ApiAudiences
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		body["image_id"] = request.ImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RdsInstances)) {
+		body["rds_instances"] = request.RdsInstances
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		body["tags"] = request.Tags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Addons)) {
+		body["addons"] = request.Addons
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Taints)) {
+		body["taints"] = request.Taints
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CloudMonitorFlags)) {
+		body["cloud_monitor_flags"] = request.CloudMonitorFlags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Platform)) {
+		body["platform"] = request.Platform
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OsType)) {
+		body["os_type"] = request.OsType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CpuPolicy)) {
+		body["cpu_policy"] = request.CpuPolicy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProxyMode)) {
+		body["proxy_mode"] = request.ProxyMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodePortRange)) {
+		body["node_port_range"] = request.NodePortRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyPair)) {
+		body["key_pair"] = request.KeyPair
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.LoginPassword)) {
 		body["login_password"] = request.LoginPassword
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MasterAutoRenew)) {
-		body["master_auto_renew"] = request.MasterAutoRenew
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MasterAutoRenewPeriod)) {
-		body["master_auto_renew_period"] = request.MasterAutoRenewPeriod
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MasterCount)) {
 		body["master_count"] = request.MasterCount
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MasterInstanceChargeType)) {
-		body["master_instance_charge_type"] = request.MasterInstanceChargeType
+	if !tea.BoolValue(util.IsUnset(request.MasterVswitchIds)) {
+		body["master_vswitch_ids"] = request.MasterVswitchIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MasterInstanceTypes)) {
 		body["master_instance_types"] = request.MasterInstanceTypes
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MasterPeriod)) {
-		body["master_period"] = request.MasterPeriod
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MasterPeriodUnit)) {
-		body["master_period_unit"] = request.MasterPeriodUnit
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MasterSystemDiskCategory)) {
@@ -9214,128 +8889,40 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, he
 		body["master_system_disk_size"] = request.MasterSystemDiskSize
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MasterVswitchIds)) {
-		body["master_vswitch_ids"] = request.MasterVswitchIds
+	if !tea.BoolValue(util.IsUnset(request.MasterSystemDiskSnapshotPolicyId)) {
+		body["master_system_disk_snapshot_policy_id"] = request.MasterSystemDiskSnapshotPolicyId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Name)) {
-		body["name"] = request.Name
+	if !tea.BoolValue(util.IsUnset(request.MasterInstanceChargeType)) {
+		body["master_instance_charge_type"] = request.MasterInstanceChargeType
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.NodeCidrMask)) {
-		body["node_cidr_mask"] = request.NodeCidrMask
+	if !tea.BoolValue(util.IsUnset(request.MasterPeriodUnit)) {
+		body["master_period_unit"] = request.MasterPeriodUnit
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.NodePortRange)) {
-		body["node_port_range"] = request.NodePortRange
+	if !tea.BoolValue(util.IsUnset(request.MasterPeriod)) {
+		body["master_period"] = request.MasterPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MasterAutoRenew)) {
+		body["master_auto_renew"] = request.MasterAutoRenew
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MasterAutoRenewPeriod)) {
+		body["master_auto_renew_period"] = request.MasterAutoRenewPeriod
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NumOfNodes)) {
 		body["num_of_nodes"] = request.NumOfNodes
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OsType)) {
-		body["os_type"] = request.OsType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Platform)) {
-		body["platform"] = request.Platform
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PodVswitchIds)) {
-		body["pod_vswitch_ids"] = request.PodVswitchIds
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PrivateZone)) {
-		body["private_zone"] = request.PrivateZone
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Profile)) {
-		body["profile"] = request.Profile
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProxyMode)) {
-		body["proxy_mode"] = request.ProxyMode
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RdsInstances)) {
-		body["rds_instances"] = request.RdsInstances
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		body["region_id"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Runtime))) {
-		body["runtime"] = request.Runtime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
-		body["security_group_id"] = request.SecurityGroupId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ServiceCidr)) {
-		body["service_cidr"] = request.ServiceCidr
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SnatEntry)) {
-		body["snat_entry"] = request.SnatEntry
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SshFlags)) {
-		body["ssh_flags"] = request.SshFlags
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Tags)) {
-		body["tags"] = request.Tags
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Taints)) {
-		body["taints"] = request.Taints
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TimeoutMins)) {
-		body["timeout_mins"] = request.TimeoutMins
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.UserData)) {
-		body["user_data"] = request.UserData
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Vpcid)) {
-		body["vpcid"] = request.Vpcid
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.VswitchIds)) {
-		body["vswitch_ids"] = request.VswitchIds
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkerAutoRenew)) {
-		body["worker_auto_renew"] = request.WorkerAutoRenew
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkerAutoRenewPeriod)) {
-		body["worker_auto_renew_period"] = request.WorkerAutoRenewPeriod
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkerDataDisks)) {
-		body["worker_data_disks"] = request.WorkerDataDisks
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkerInstanceChargeType)) {
-		body["worker_instance_charge_type"] = request.WorkerInstanceChargeType
+	if !tea.BoolValue(util.IsUnset(request.WorkerVswitchIds)) {
+		body["worker_vswitch_ids"] = request.WorkerVswitchIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.WorkerInstanceTypes)) {
 		body["worker_instance_types"] = request.WorkerInstanceTypes
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkerPeriod)) {
-		body["worker_period"] = request.WorkerPeriod
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkerPeriodUnit)) {
-		body["worker_period_unit"] = request.WorkerPeriodUnit
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.WorkerSystemDiskCategory)) {
@@ -9346,12 +8933,72 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, he
 		body["worker_system_disk_size"] = request.WorkerSystemDiskSize
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.WorkerVswitchIds)) {
-		body["worker_vswitch_ids"] = request.WorkerVswitchIds
+	if !tea.BoolValue(util.IsUnset(request.WorkerSystemDiskSnapshotPolicyId)) {
+		body["worker_system_disk_snapshot_policy_id"] = request.WorkerSystemDiskSnapshotPolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerDataDisks)) {
+		body["worker_data_disks"] = request.WorkerDataDisks
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerInstanceChargeType)) {
+		body["worker_instance_charge_type"] = request.WorkerInstanceChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerPeriodUnit)) {
+		body["worker_period_unit"] = request.WorkerPeriodUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerPeriod)) {
+		body["worker_period"] = request.WorkerPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerAutoRenew)) {
+		body["worker_auto_renew"] = request.WorkerAutoRenew
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerAutoRenewPeriod)) {
+		body["worker_auto_renew_period"] = request.WorkerAutoRenewPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Instances)) {
+		body["instances"] = request.Instances
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FormatDisk)) {
+		body["format_disk"] = request.FormatDisk
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeepInstanceName)) {
+		body["keep_instance_name"] = request.KeepInstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceDiscoveryTypes)) {
+		body["service_discovery_types"] = request.ServiceDiscoveryTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NatGateway)) {
+		body["nat_gateway"] = request.NatGateway
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
 		body["zone_id"] = request.ZoneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Profile)) {
+		body["profile"] = request.Profile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeletionProtection)) {
+		body["deletion_protection"] = request.DeletionProtection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisableRollback)) {
+		body["disable_rollback"] = request.DisableRollback
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeoutMins)) {
+		body["timeout_mins"] = request.TimeoutMins
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -9428,40 +9075,44 @@ func (client *Client) AttachInstancesWithOptions(ClusterId *string, request *Att
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.CpuPolicy)) {
-		body["cpu_policy"] = request.CpuPolicy
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.FormatDisk)) {
-		body["format_disk"] = request.FormatDisk
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
-		body["image_id"] = request.ImageId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Instances)) {
 		body["instances"] = request.Instances
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.IsEdgeWorker)) {
-		body["is_edge_worker"] = request.IsEdgeWorker
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.KeepInstanceName)) {
-		body["keep_instance_name"] = request.KeepInstanceName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.KeyPair)) {
 		body["key_pair"] = request.KeyPair
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		body["password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FormatDisk)) {
+		body["format_disk"] = request.FormatDisk
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeepInstanceName)) {
+		body["keep_instance_name"] = request.KeepInstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsEdgeWorker)) {
+		body["is_edge_worker"] = request.IsEdgeWorker
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.NodepoolId)) {
 		body["nodepool_id"] = request.NodepoolId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Password)) {
-		body["password"] = request.Password
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		body["image_id"] = request.ImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CpuPolicy)) {
+		body["cpu_policy"] = request.CpuPolicy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		body["user_data"] = request.UserData
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RdsInstances)) {
@@ -9474,10 +9125,6 @@ func (client *Client) AttachInstancesWithOptions(ClusterId *string, request *Att
 
 	if !tea.BoolValue(util.IsUnset(request.Tags)) {
 		body["tags"] = request.Tags
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.UserData)) {
-		body["user_data"] = request.UserData
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -9513,6 +9160,14 @@ func (client *Client) DescribeTemplatesWithOptions(request *DescribeTemplatesReq
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.TemplateType)) {
 		query["template_type"] = request.TemplateType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["page_num"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["page_size"] = request.PageSize
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -9553,11 +9208,11 @@ func (client *Client) PauseClusterUpgradeWithOptions(ClusterId *string, headers 
 	return _result, _err
 }
 
-func (client *Client) DescribeTemplateAttribute(TemplateId *string) (_result *DescribeTemplateAttributeResponse, _err error) {
+func (client *Client) DeleteTemplate(TemplateId *string) (_result *DeleteTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeTemplateAttributeResponse{}
-	_body, _err := client.DescribeTemplateAttributeWithOptions(TemplateId, headers, runtime)
+	_result = &DeleteTemplateResponse{}
+	_body, _err := client.DeleteTemplateWithOptions(TemplateId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9565,9 +9220,44 @@ func (client *Client) DescribeTemplateAttribute(TemplateId *string) (_result *De
 	return _result, _err
 }
 
-func (client *Client) DescribeTemplateAttributeWithOptions(TemplateId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeTemplateAttributeResponse, _err error) {
+func (client *Client) DeleteTemplateWithOptions(TemplateId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteTemplateResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+	}
+	_result = &DeleteTemplateResponse{}
+	_body, _err := client.DoROARequest(tea.String("DeleteTemplate"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/templates/"+tea.StringValue(TemplateId)), tea.String("none"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeTemplateAttribute(TemplateId *string, request *DescribeTemplateAttributeRequest) (_result *DescribeTemplateAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeTemplateAttributeResponse{}
+	_body, _err := client.DescribeTemplateAttributeWithOptions(TemplateId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeTemplateAttributeWithOptions(TemplateId *string, request *DescribeTemplateAttributeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeTemplateAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TemplateType)) {
+		query["template_type"] = request.TemplateType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	_result = &DescribeTemplateAttributeResponse{}
 	_body, _err := client.DoROARequest(tea.String("DescribeTemplateAttribute"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/templates/"+tea.StringValue(TemplateId)), tea.String("array"), req, runtime)
@@ -9608,6 +9298,10 @@ func (client *Client) CreateTemplateWithOptions(request *CreateTemplateRequest, 
 		body["tags"] = request.Tags
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TemplateType)) {
 		body["template_type"] = request.TemplateType
 	}
@@ -9617,7 +9311,7 @@ func (client *Client) CreateTemplateWithOptions(request *CreateTemplateRequest, 
 		Body:    openapiutil.ParseToMap(body),
 	}
 	_result = &CreateTemplateResponse{}
-	_body, _err := client.DoROARequestWithForm(tea.String("CreateTemplate"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/templates"), tea.String("json"), req, runtime)
+	_body, _err := client.DoROARequest(tea.String("CreateTemplate"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/templates"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9643,12 +9337,8 @@ func (client *Client) DescribeClusterNodesWithOptions(ClusterId *string, request
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["pageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
-		query["pageNumber"] = request.PageNumber
+	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+		query["instanceIds"] = request.InstanceIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NodepoolId)) {
@@ -9657,6 +9347,14 @@ func (client *Client) DescribeClusterNodesWithOptions(ClusterId *string, request
 
 	if !tea.BoolValue(util.IsUnset(request.State)) {
 		query["state"] = request.State
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["pageNumber"] = request.PageNumber
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -9717,11 +9415,11 @@ func (client *Client) DeleteClusterWithOptions(ClusterId *string, request *Delet
 	return _result, _err
 }
 
-func (client *Client) CancelComponentUpgrade(clusterid *string, componentid *string) (_result *CancelComponentUpgradeResponse, _err error) {
+func (client *Client) CancelComponentUpgrade(clusterId *string, componentId *string) (_result *CancelComponentUpgradeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &CancelComponentUpgradeResponse{}
-	_body, _err := client.CancelComponentUpgradeWithOptions(clusterid, componentid, headers, runtime)
+	_body, _err := client.CancelComponentUpgradeWithOptions(clusterId, componentId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9729,12 +9427,12 @@ func (client *Client) CancelComponentUpgrade(clusterid *string, componentid *str
 	return _result, _err
 }
 
-func (client *Client) CancelComponentUpgradeWithOptions(clusterid *string, componentid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CancelComponentUpgradeResponse, _err error) {
+func (client *Client) CancelComponentUpgradeWithOptions(clusterId *string, componentId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CancelComponentUpgradeResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
 	_result = &CancelComponentUpgradeResponse{}
-	_body, _err := client.DoROARequest(tea.String("CancelComponentUpgrade"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(clusterid)+"/components/{componentid}/cancel"), tea.String("none"), req, runtime)
+	_body, _err := client.DoROARequest(tea.String("CancelComponentUpgrade"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(clusterId)+"/components/{componentId}/cancel"), tea.String("none"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9922,12 +9620,8 @@ func (client *Client) ModifyClusterConfigurationWithOptions(ClusterId *string, r
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Configs))) {
-		body["configs"] = request.Configs
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Name)) {
-		body["name"] = request.Name
+	if !tea.BoolValue(util.IsUnset(request.CustomizeConfig)) {
+		body["customize_config"] = request.CustomizeConfig
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -10149,10 +9843,6 @@ func (client *Client) DeleteClusterNodepoolWithOptions(ClusterId *string, Nodepo
 	return _result, _err
 }
 
-/**
- * 批量查询集群Addon升级状态
-
- */
 func (client *Client) DescribeClusterAddonsUpgradeStatus(ClusterId *string, request *DescribeClusterAddonsUpgradeStatusRequest) (_result *DescribeClusterAddonsUpgradeStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10180,7 +9870,7 @@ func (client *Client) DescribeClusterAddonsUpgradeStatusWithOptions(ClusterId *s
 		Query:   openapiutil.Query(query),
 	}
 	_result = &DescribeClusterAddonsUpgradeStatusResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeClusterAddonsUpgradeStatus"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/clusters/[ClusterId]/components/upgradestatus"), tea.String("none"), req, runtime)
+	_body, _err := client.DoROARequest(tea.String("DescribeClusterAddonsUpgradeStatus"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/clusters/[ClusterId]/components/upgradestatus"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10296,24 +9986,8 @@ func (client *Client) ScaleOutClusterWithOptions(ClusterId *string, request *Sca
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.CloudMonitorFlags)) {
-		body["cloud_monitor_flags"] = request.CloudMonitorFlags
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Count)) {
 		body["count"] = request.Count
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CpuPolicy)) {
-		body["cpu_policy"] = request.CpuPolicy
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DisableRollback)) {
-		body["disable_rollback"] = request.DisableRollback
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
-		body["image_id"] = request.ImageId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.KeyPair)) {
@@ -10324,52 +9998,12 @@ func (client *Client) ScaleOutClusterWithOptions(ClusterId *string, request *Sca
 		body["login_password"] = request.LoginPassword
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RdsInstances)) {
-		body["rds_instances"] = request.RdsInstances
-	}
-
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Runtime))) {
-		body["runtime"] = request.Runtime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Tags)) {
-		body["tags"] = request.Tags
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Taints)) {
-		body["taints"] = request.Taints
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.UserData)) {
-		body["user_data"] = request.UserData
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.VswitchIds)) {
 		body["vswitch_ids"] = request.VswitchIds
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.WorkerAutoRenew)) {
-		body["worker_auto_renew"] = request.WorkerAutoRenew
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkerAutoRenewPeriod)) {
-		body["worker_auto_renew_period"] = request.WorkerAutoRenewPeriod
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkerDataDisk)) {
-		body["worker_data_disk"] = request.WorkerDataDisk
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkerDataDisks)) {
-		body["worker_data_disks"] = request.WorkerDataDisks
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.WorkerInstanceChargeType)) {
 		body["worker_instance_charge_type"] = request.WorkerInstanceChargeType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkerInstanceTypes)) {
-		body["worker_instance_types"] = request.WorkerInstanceTypes
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.WorkerPeriod)) {
@@ -10380,12 +10014,60 @@ func (client *Client) ScaleOutClusterWithOptions(ClusterId *string, request *Sca
 		body["worker_period_unit"] = request.WorkerPeriodUnit
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.WorkerAutoRenew)) {
+		body["worker_auto_renew"] = request.WorkerAutoRenew
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerAutoRenewPeriod)) {
+		body["worker_auto_renew_period"] = request.WorkerAutoRenewPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerInstanceTypes)) {
+		body["worker_instance_types"] = request.WorkerInstanceTypes
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.WorkerSystemDiskCategory)) {
 		body["worker_system_disk_category"] = request.WorkerSystemDiskCategory
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.WorkerSystemDiskSize)) {
 		body["worker_system_disk_size"] = request.WorkerSystemDiskSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerDataDisks)) {
+		body["worker_data_disks"] = request.WorkerDataDisks
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CloudMonitorFlags)) {
+		body["cloud_monitor_flags"] = request.CloudMonitorFlags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CpuPolicy)) {
+		body["cpu_policy"] = request.CpuPolicy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		body["image_id"] = request.ImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		body["user_data"] = request.UserData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RdsInstances)) {
+		body["rds_instances"] = request.RdsInstances
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		body["tags"] = request.Tags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Taints)) {
+		body["taints"] = request.Taints
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Runtime))) {
+		body["runtime"] = request.Runtime
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -10461,12 +10143,16 @@ func (client *Client) GetKubernetesTriggerWithOptions(ClusterId *string, request
 		query["Name"] = request.Name
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Action)) {
+		query["action"] = request.Action
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
 	_result = &GetKubernetesTriggerResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetKubernetesTrigger"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/triggers/"+tea.StringValue(ClusterId)), tea.String("json"), req, runtime)
+	_body, _err := client.DoROARequest(tea.String("GetKubernetesTrigger"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/triggers/"+tea.StringValue(ClusterId)), tea.String("array"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
