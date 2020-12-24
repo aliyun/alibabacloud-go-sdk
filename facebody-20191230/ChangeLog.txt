@@ -1,3 +1,6 @@
+2020-12-24 Version: v2.0.1
+- Release DetectPedestrianIntrusion.
+
 2020-12-23 Version: v2.0.0
 - Release DetectPedestrianIntrusion.
 
