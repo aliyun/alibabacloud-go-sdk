@@ -14,6 +14,248 @@ import (
 	"io"
 )
 
+type ContrastSmartVerifyRequest struct {
+	SceneId       *int64  `json:"SceneId,omitempty" xml:"SceneId,omitempty" require:"true"`
+	OuterOrderNo  *string `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty" require:"true"`
+	Mode          *string `json:"Mode,omitempty" xml:"Mode,omitempty" require:"true"`
+	CertType      *string `json:"CertType,omitempty" xml:"CertType,omitempty" require:"true"`
+	Mobile        *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	Ip            *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	UserId        *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	CertName      *string `json:"CertName,omitempty" xml:"CertName,omitempty" require:"true"`
+	CertNo        *string `json:"CertNo,omitempty" xml:"CertNo,omitempty" require:"true"`
+	FacePicFile   *string `json:"FacePicFile,omitempty" xml:"FacePicFile,omitempty"`
+	FacePicUrl    *string `json:"FacePicUrl,omitempty" xml:"FacePicUrl,omitempty"`
+	FacePicString *string `json:"FacePicString,omitempty" xml:"FacePicString,omitempty"`
+}
+
+func (s ContrastSmartVerifyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ContrastSmartVerifyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ContrastSmartVerifyRequest) SetSceneId(v int64) *ContrastSmartVerifyRequest {
+	s.SceneId = &v
+	return s
+}
+
+func (s *ContrastSmartVerifyRequest) SetOuterOrderNo(v string) *ContrastSmartVerifyRequest {
+	s.OuterOrderNo = &v
+	return s
+}
+
+func (s *ContrastSmartVerifyRequest) SetMode(v string) *ContrastSmartVerifyRequest {
+	s.Mode = &v
+	return s
+}
+
+func (s *ContrastSmartVerifyRequest) SetCertType(v string) *ContrastSmartVerifyRequest {
+	s.CertType = &v
+	return s
+}
+
+func (s *ContrastSmartVerifyRequest) SetMobile(v string) *ContrastSmartVerifyRequest {
+	s.Mobile = &v
+	return s
+}
+
+func (s *ContrastSmartVerifyRequest) SetIp(v string) *ContrastSmartVerifyRequest {
+	s.Ip = &v
+	return s
+}
+
+func (s *ContrastSmartVerifyRequest) SetUserId(v string) *ContrastSmartVerifyRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *ContrastSmartVerifyRequest) SetCertName(v string) *ContrastSmartVerifyRequest {
+	s.CertName = &v
+	return s
+}
+
+func (s *ContrastSmartVerifyRequest) SetCertNo(v string) *ContrastSmartVerifyRequest {
+	s.CertNo = &v
+	return s
+}
+
+func (s *ContrastSmartVerifyRequest) SetFacePicFile(v string) *ContrastSmartVerifyRequest {
+	s.FacePicFile = &v
+	return s
+}
+
+func (s *ContrastSmartVerifyRequest) SetFacePicUrl(v string) *ContrastSmartVerifyRequest {
+	s.FacePicUrl = &v
+	return s
+}
+
+func (s *ContrastSmartVerifyRequest) SetFacePicString(v string) *ContrastSmartVerifyRequest {
+	s.FacePicString = &v
+	return s
+}
+
+type ContrastSmartVerifyResponse struct {
+	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Message      *string                                  `json:"Message,omitempty" xml:"Message,omitempty" require:"true"`
+	Code         *string                                  `json:"Code,omitempty" xml:"Code,omitempty" require:"true"`
+	ResultObject *ContrastSmartVerifyResponseResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" require:"true" type:"Struct"`
+}
+
+func (s ContrastSmartVerifyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ContrastSmartVerifyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ContrastSmartVerifyResponse) SetRequestId(v string) *ContrastSmartVerifyResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ContrastSmartVerifyResponse) SetMessage(v string) *ContrastSmartVerifyResponse {
+	s.Message = &v
+	return s
+}
+
+func (s *ContrastSmartVerifyResponse) SetCode(v string) *ContrastSmartVerifyResponse {
+	s.Code = &v
+	return s
+}
+
+func (s *ContrastSmartVerifyResponse) SetResultObject(v *ContrastSmartVerifyResponseResultObject) *ContrastSmartVerifyResponse {
+	s.ResultObject = v
+	return s
+}
+
+type ContrastSmartVerifyResponseResultObject struct {
+	CertifyId  *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty" require:"true"`
+	Passed     *string `json:"Passed,omitempty" xml:"Passed,omitempty" require:"true"`
+	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty" require:"true"`
+	VerifyInfo *string `json:"VerifyInfo,omitempty" xml:"VerifyInfo,omitempty" require:"true"`
+	RiskInfo   *string `json:"RiskInfo,omitempty" xml:"RiskInfo,omitempty" require:"true"`
+}
+
+func (s ContrastSmartVerifyResponseResultObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ContrastSmartVerifyResponseResultObject) GoString() string {
+	return s.String()
+}
+
+func (s *ContrastSmartVerifyResponseResultObject) SetCertifyId(v string) *ContrastSmartVerifyResponseResultObject {
+	s.CertifyId = &v
+	return s
+}
+
+func (s *ContrastSmartVerifyResponseResultObject) SetPassed(v string) *ContrastSmartVerifyResponseResultObject {
+	s.Passed = &v
+	return s
+}
+
+func (s *ContrastSmartVerifyResponseResultObject) SetSubCode(v string) *ContrastSmartVerifyResponseResultObject {
+	s.SubCode = &v
+	return s
+}
+
+func (s *ContrastSmartVerifyResponseResultObject) SetVerifyInfo(v string) *ContrastSmartVerifyResponseResultObject {
+	s.VerifyInfo = &v
+	return s
+}
+
+func (s *ContrastSmartVerifyResponseResultObject) SetRiskInfo(v string) *ContrastSmartVerifyResponseResultObject {
+	s.RiskInfo = &v
+	return s
+}
+
+type ContrastSmartVerifyAdvanceRequest struct {
+	FacePicFileObject io.Reader `json:"FacePicFileObject,omitempty" xml:"FacePicFileObject,omitempty" require:"true"`
+	SceneId           *int64    `json:"SceneId,omitempty" xml:"SceneId,omitempty" require:"true"`
+	OuterOrderNo      *string   `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty" require:"true"`
+	Mode              *string   `json:"Mode,omitempty" xml:"Mode,omitempty" require:"true"`
+	CertType          *string   `json:"CertType,omitempty" xml:"CertType,omitempty" require:"true"`
+	Mobile            *string   `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	Ip                *string   `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	UserId            *string   `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	CertName          *string   `json:"CertName,omitempty" xml:"CertName,omitempty" require:"true"`
+	CertNo            *string   `json:"CertNo,omitempty" xml:"CertNo,omitempty" require:"true"`
+	FacePicUrl        *string   `json:"FacePicUrl,omitempty" xml:"FacePicUrl,omitempty"`
+	FacePicString     *string   `json:"FacePicString,omitempty" xml:"FacePicString,omitempty"`
+}
+
+func (s ContrastSmartVerifyAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ContrastSmartVerifyAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ContrastSmartVerifyAdvanceRequest) SetFacePicFileObject(v io.Reader) *ContrastSmartVerifyAdvanceRequest {
+	s.FacePicFileObject = v
+	return s
+}
+
+func (s *ContrastSmartVerifyAdvanceRequest) SetSceneId(v int64) *ContrastSmartVerifyAdvanceRequest {
+	s.SceneId = &v
+	return s
+}
+
+func (s *ContrastSmartVerifyAdvanceRequest) SetOuterOrderNo(v string) *ContrastSmartVerifyAdvanceRequest {
+	s.OuterOrderNo = &v
+	return s
+}
+
+func (s *ContrastSmartVerifyAdvanceRequest) SetMode(v string) *ContrastSmartVerifyAdvanceRequest {
+	s.Mode = &v
+	return s
+}
+
+func (s *ContrastSmartVerifyAdvanceRequest) SetCertType(v string) *ContrastSmartVerifyAdvanceRequest {
+	s.CertType = &v
+	return s
+}
+
+func (s *ContrastSmartVerifyAdvanceRequest) SetMobile(v string) *ContrastSmartVerifyAdvanceRequest {
+	s.Mobile = &v
+	return s
+}
+
+func (s *ContrastSmartVerifyAdvanceRequest) SetIp(v string) *ContrastSmartVerifyAdvanceRequest {
+	s.Ip = &v
+	return s
+}
+
+func (s *ContrastSmartVerifyAdvanceRequest) SetUserId(v string) *ContrastSmartVerifyAdvanceRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *ContrastSmartVerifyAdvanceRequest) SetCertName(v string) *ContrastSmartVerifyAdvanceRequest {
+	s.CertName = &v
+	return s
+}
+
+func (s *ContrastSmartVerifyAdvanceRequest) SetCertNo(v string) *ContrastSmartVerifyAdvanceRequest {
+	s.CertNo = &v
+	return s
+}
+
+func (s *ContrastSmartVerifyAdvanceRequest) SetFacePicUrl(v string) *ContrastSmartVerifyAdvanceRequest {
+	s.FacePicUrl = &v
+	return s
+}
+
+func (s *ContrastSmartVerifyAdvanceRequest) SetFacePicString(v string) *ContrastSmartVerifyAdvanceRequest {
+	s.FacePicString = &v
+	return s
+}
+
 type ElementSmartVerifyRequest struct {
 	SceneId      *int64  `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 	OuterOrderNo *string `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
@@ -488,6 +730,118 @@ func (client *Client) Init(config *rpc.Config) (_err error) {
 	return nil
 }
 
+func (client *Client) ContrastSmartVerify(request *ContrastSmartVerifyRequest, runtime *util.RuntimeOptions) (_result *ContrastSmartVerifyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &ContrastSmartVerifyResponse{}
+	_body, _err := client.DoRequest(tea.String("ContrastSmartVerify"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-06-18"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ContrastSmartVerifySimply(request *ContrastSmartVerifyRequest) (_result *ContrastSmartVerifyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ContrastSmartVerifyResponse{}
+	_body, _err := client.ContrastSmartVerify(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ContrastSmartVerifyAdvance(request *ContrastSmartVerifyAdvanceRequest, runtime *util.RuntimeOptions) (_result *ContrastSmartVerifyResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("Cloudauth"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	rpcutil.Convert(runtime, ossRuntime)
+	contrastSmartVerifyReq := &ContrastSmartVerifyRequest{}
+	rpcutil.Convert(request, contrastSmartVerifyReq)
+	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	ossConfig.AccessKeyId = authResponse.AccessKeyId
+	ossConfig.Endpoint = rpcutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+	ossClient, _err = oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	fileObj = &fileform.FileField{
+		Filename:    authResponse.ObjectKey,
+		Content:     request.FacePicFileObject,
+		ContentType: tea.String(""),
+	}
+	ossHeader = &oss.PostObjectRequestHeader{
+		AccessKeyId:         authResponse.AccessKeyId,
+		Policy:              authResponse.EncodedPolicy,
+		Signature:           authResponse.Signature,
+		Key:                 authResponse.ObjectKey,
+		File:                fileObj,
+		SuccessActionStatus: tea.String("201"),
+	}
+	uploadRequest = &oss.PostObjectRequest{
+		BucketName: authResponse.Bucket,
+		Header:     ossHeader,
+	}
+	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+	if _err != nil {
+		return _result, _err
+	}
+	contrastSmartVerifyReq.FacePicFile = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	contrastSmartVerifyResp, _err := client.ContrastSmartVerify(contrastSmartVerifyReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = contrastSmartVerifyResp
+	return _result, _err
+}
+
 func (client *Client) ElementSmartVerify(request *ElementSmartVerifyRequest, runtime *util.RuntimeOptions) (_result *ElementSmartVerifyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -499,6 +853,17 @@ func (client *Client) ElementSmartVerify(request *ElementSmartVerifyRequest, run
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ElementSmartVerifySimply(request *ElementSmartVerifyRequest) (_result *ElementSmartVerifyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ElementSmartVerifyResponse{}
+	_body, _err := client.ElementSmartVerify(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
 
@@ -544,8 +909,8 @@ func (client *Client) ElementSmartVerifyAdvance(request *ElementSmartVerifyAdvan
 	uploadRequest := &oss.PostObjectRequest{}
 	ossRuntime := &ossutil.RuntimeOptions{}
 	rpcutil.Convert(runtime, ossRuntime)
-	elementSmartVerifyreq := &ElementSmartVerifyRequest{}
-	rpcutil.Convert(request, elementSmartVerifyreq)
+	elementSmartVerifyReq := &ElementSmartVerifyRequest{}
+	rpcutil.Convert(request, elementSmartVerifyReq)
 	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
 	if _err != nil {
 		return _result, _err
@@ -579,8 +944,8 @@ func (client *Client) ElementSmartVerifyAdvance(request *ElementSmartVerifyAdvan
 	if _err != nil {
 		return _result, _err
 	}
-	elementSmartVerifyreq.CertFile = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
-	elementSmartVerifyResp, _err := client.ElementSmartVerify(elementSmartVerifyreq, runtime)
+	elementSmartVerifyReq.CertFile = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	elementSmartVerifyResp, _err := client.ElementSmartVerify(elementSmartVerifyReq, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -603,6 +968,17 @@ func (client *Client) InitSmartVerify(request *InitSmartVerifyRequest, runtime *
 	return _result, _err
 }
 
+func (client *Client) InitSmartVerifySimply(request *InitSmartVerifyRequest) (_result *InitSmartVerifyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &InitSmartVerifyResponse{}
+	_body, _err := client.InitSmartVerify(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeSmartVerify(request *DescribeSmartVerifyRequest, runtime *util.RuntimeOptions) (_result *DescribeSmartVerifyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -614,6 +990,17 @@ func (client *Client) DescribeSmartVerify(request *DescribeSmartVerifyRequest, r
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeSmartVerifySimply(request *DescribeSmartVerifyRequest) (_result *DescribeSmartVerifyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSmartVerifyResponse{}
+	_body, _err := client.DescribeSmartVerify(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
 
