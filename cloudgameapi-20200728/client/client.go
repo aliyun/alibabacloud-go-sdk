@@ -8,6 +8,201 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type QueryOutAccountBindStatusRequest struct {
+	AccountId     *string `json:"AccountId,omitempty" xml:"AccountId,omitempty" require:"true"`
+	GameId        *string `json:"GameId,omitempty" xml:"GameId,omitempty" require:"true"`
+	AccountDomain *string `json:"AccountDomain,omitempty" xml:"AccountDomain,omitempty"`
+}
+
+func (s QueryOutAccountBindStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOutAccountBindStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOutAccountBindStatusRequest) SetAccountId(v string) *QueryOutAccountBindStatusRequest {
+	s.AccountId = &v
+	return s
+}
+
+func (s *QueryOutAccountBindStatusRequest) SetGameId(v string) *QueryOutAccountBindStatusRequest {
+	s.GameId = &v
+	return s
+}
+
+func (s *QueryOutAccountBindStatusRequest) SetAccountDomain(v string) *QueryOutAccountBindStatusRequest {
+	s.AccountDomain = &v
+	return s
+}
+
+type QueryOutAccountBindStatusResponse struct {
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Data      *QueryOutAccountBindStatusResponseData `json:"Data,omitempty" xml:"Data,omitempty" require:"true" type:"Struct"`
+}
+
+func (s QueryOutAccountBindStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOutAccountBindStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOutAccountBindStatusResponse) SetRequestId(v string) *QueryOutAccountBindStatusResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryOutAccountBindStatusResponse) SetData(v *QueryOutAccountBindStatusResponseData) *QueryOutAccountBindStatusResponse {
+	s.Data = v
+	return s
+}
+
+type QueryOutAccountBindStatusResponseData struct {
+	BindStatus *int `json:"BindStatus,omitempty" xml:"BindStatus,omitempty" require:"true"`
+}
+
+func (s QueryOutAccountBindStatusResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOutAccountBindStatusResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOutAccountBindStatusResponseData) SetBindStatus(v int) *QueryOutAccountBindStatusResponseData {
+	s.BindStatus = &v
+	return s
+}
+
+type CreateTokenRequest struct {
+	Session      *string `json:"Session,omitempty" xml:"Session,omitempty" require:"true"`
+	CurrentToken *string `json:"CurrentToken,omitempty" xml:"CurrentToken,omitempty"`
+	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+}
+
+func (s CreateTokenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTokenRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTokenRequest) SetSession(v string) *CreateTokenRequest {
+	s.Session = &v
+	return s
+}
+
+func (s *CreateTokenRequest) SetCurrentToken(v string) *CreateTokenRequest {
+	s.CurrentToken = &v
+	return s
+}
+
+func (s *CreateTokenRequest) SetClientToken(v string) *CreateTokenRequest {
+	s.ClientToken = &v
+	return s
+}
+
+type CreateTokenResponse struct {
+	RequestId *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Data      *CreateTokenResponseData `json:"Data,omitempty" xml:"Data,omitempty" require:"true" type:"Struct"`
+}
+
+func (s CreateTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTokenResponse) SetRequestId(v string) *CreateTokenResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateTokenResponse) SetData(v *CreateTokenResponseData) *CreateTokenResponse {
+	s.Data = v
+	return s
+}
+
+type CreateTokenResponseData struct {
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty" require:"true"`
+}
+
+func (s CreateTokenResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTokenResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTokenResponseData) SetToken(v string) *CreateTokenResponseData {
+	s.Token = &v
+	return s
+}
+
+type GetSessionRequest struct {
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty" require:"true"`
+}
+
+func (s GetSessionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSessionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSessionRequest) SetToken(v string) *GetSessionRequest {
+	s.Token = &v
+	return s
+}
+
+type GetSessionResponse struct {
+	RequestId *string                 `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Data      *GetSessionResponseData `json:"Data,omitempty" xml:"Data,omitempty" require:"true" type:"Struct"`
+}
+
+func (s GetSessionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSessionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSessionResponse) SetRequestId(v string) *GetSessionResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSessionResponse) SetData(v *GetSessionResponseData) *GetSessionResponse {
+	s.Data = v
+	return s
+}
+
+type GetSessionResponseData struct {
+	Session *string `json:"Session,omitempty" xml:"Session,omitempty" require:"true"`
+}
+
+func (s GetSessionResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSessionResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *GetSessionResponseData) SetSession(v string) *GetSessionResponseData {
+	s.Session = &v
+	return s
+}
+
 type SkipTrialPolicyRequest struct {
 	GameSessionId *string `json:"GameSessionId,omitempty" xml:"GameSessionId,omitempty" require:"true"`
 }
@@ -1849,6 +2044,8 @@ type DispatchGameSlotRequest struct {
 	GameStartParam *string `json:"GameStartParam,omitempty" xml:"GameStartParam,omitempty"`
 	GameCommand    *string `json:"GameCommand,omitempty" xml:"GameCommand,omitempty"`
 	SystemInfo     *string `json:"SystemInfo,omitempty" xml:"SystemInfo,omitempty"`
+	ClientIp       *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	Reconnect      *bool   `json:"Reconnect,omitempty" xml:"Reconnect,omitempty"`
 }
 
 func (s DispatchGameSlotRequest) String() string {
@@ -1906,6 +2103,16 @@ func (s *DispatchGameSlotRequest) SetGameCommand(v string) *DispatchGameSlotRequ
 
 func (s *DispatchGameSlotRequest) SetSystemInfo(v string) *DispatchGameSlotRequest {
 	s.SystemInfo = &v
+	return s
+}
+
+func (s *DispatchGameSlotRequest) SetClientIp(v string) *DispatchGameSlotRequest {
+	s.ClientIp = &v
+	return s
+}
+
+func (s *DispatchGameSlotRequest) SetReconnect(v bool) *DispatchGameSlotRequest {
+	s.Reconnect = &v
 	return s
 }
 
@@ -2075,6 +2282,81 @@ func (client *Client) Init(config *rpc.Config) (_err error) {
 	}
 
 	return nil
+}
+
+func (client *Client) QueryOutAccountBindStatusWithOptions(request *QueryOutAccountBindStatusRequest, runtime *util.RuntimeOptions) (_result *QueryOutAccountBindStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &QueryOutAccountBindStatusResponse{}
+	_body, _err := client.DoRequest(tea.String("QueryOutAccountBindStatus"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-07-28"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryOutAccountBindStatus(request *QueryOutAccountBindStatusRequest) (_result *QueryOutAccountBindStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryOutAccountBindStatusResponse{}
+	_body, _err := client.QueryOutAccountBindStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateTokenWithOptions(request *CreateTokenRequest, runtime *util.RuntimeOptions) (_result *CreateTokenResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &CreateTokenResponse{}
+	_body, _err := client.DoRequest(tea.String("CreateToken"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-07-28"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateToken(request *CreateTokenRequest) (_result *CreateTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateTokenResponse{}
+	_body, _err := client.CreateTokenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetSessionWithOptions(request *GetSessionRequest, runtime *util.RuntimeOptions) (_result *GetSessionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &GetSessionResponse{}
+	_body, _err := client.DoRequest(tea.String("GetSession"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-07-28"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetSession(request *GetSessionRequest) (_result *GetSessionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSessionResponse{}
+	_body, _err := client.GetSessionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
 }
 
 func (client *Client) SkipTrialPolicyWithOptions(request *SkipTrialPolicyRequest, runtime *util.RuntimeOptions) (_result *SkipTrialPolicyResponse, _err error) {
