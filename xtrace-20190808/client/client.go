@@ -1,62 +1,129 @@
 // This file is auto-generated, don't edit it. Thanks.
+/**
+ *
+ */
 package client
 
 import (
+	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
-	rpc "github.com/alibabacloud-go/tea-rpc/client"
 	util "github.com/alibabacloud-go/tea-utils/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
-type UpdateSamplingRequest struct {
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ProxyUserId *string `json:"ProxyUserId,omitempty" xml:"ProxyUserId,omitempty"`
-	Sampling    *string `json:"Sampling,omitempty" xml:"Sampling,omitempty" require:"true"`
+type CheckServiceLinkedRoleForDeletingRequest struct {
+	RoleArn        *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	ServiceName    *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	SPIRegionId    *string `json:"SPIRegionId,omitempty" xml:"SPIRegionId,omitempty"`
+	DeletionTaskId *string `json:"DeletionTaskId,omitempty" xml:"DeletionTaskId,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
-func (s UpdateSamplingRequest) String() string {
+func (s CheckServiceLinkedRoleForDeletingRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s UpdateSamplingRequest) GoString() string {
+func (s CheckServiceLinkedRoleForDeletingRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateSamplingRequest) SetRegionId(v string) *UpdateSamplingRequest {
+func (s *CheckServiceLinkedRoleForDeletingRequest) SetRoleArn(v string) *CheckServiceLinkedRoleForDeletingRequest {
+	s.RoleArn = &v
+	return s
+}
+
+func (s *CheckServiceLinkedRoleForDeletingRequest) SetServiceName(v string) *CheckServiceLinkedRoleForDeletingRequest {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *CheckServiceLinkedRoleForDeletingRequest) SetSPIRegionId(v string) *CheckServiceLinkedRoleForDeletingRequest {
+	s.SPIRegionId = &v
+	return s
+}
+
+func (s *CheckServiceLinkedRoleForDeletingRequest) SetDeletionTaskId(v string) *CheckServiceLinkedRoleForDeletingRequest {
+	s.DeletionTaskId = &v
+	return s
+}
+
+func (s *CheckServiceLinkedRoleForDeletingRequest) SetRegionId(v string) *CheckServiceLinkedRoleForDeletingRequest {
 	s.RegionId = &v
 	return s
 }
 
-func (s *UpdateSamplingRequest) SetProxyUserId(v string) *UpdateSamplingRequest {
-	s.ProxyUserId = &v
-	return s
+type CheckServiceLinkedRoleForDeletingResponseBody struct {
+	RequestId  *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Deletable  *bool                                                      `json:"Deletable,omitempty" xml:"Deletable,omitempty"`
+	RoleUsages []*CheckServiceLinkedRoleForDeletingResponseBodyRoleUsages `json:"RoleUsages,omitempty" xml:"RoleUsages,omitempty" type:"Repeated"`
 }
 
-func (s *UpdateSamplingRequest) SetSampling(v string) *UpdateSamplingRequest {
-	s.Sampling = &v
-	return s
-}
-
-type UpdateSamplingResponse struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty" require:"true"`
-}
-
-func (s UpdateSamplingResponse) String() string {
+func (s CheckServiceLinkedRoleForDeletingResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s UpdateSamplingResponse) GoString() string {
+func (s CheckServiceLinkedRoleForDeletingResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateSamplingResponse) SetRequestId(v string) *UpdateSamplingResponse {
+func (s *CheckServiceLinkedRoleForDeletingResponseBody) SetRequestId(v string) *CheckServiceLinkedRoleForDeletingResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *UpdateSamplingResponse) SetData(v string) *UpdateSamplingResponse {
-	s.Data = &v
+func (s *CheckServiceLinkedRoleForDeletingResponseBody) SetDeletable(v bool) *CheckServiceLinkedRoleForDeletingResponseBody {
+	s.Deletable = &v
+	return s
+}
+
+func (s *CheckServiceLinkedRoleForDeletingResponseBody) SetRoleUsages(v []*CheckServiceLinkedRoleForDeletingResponseBodyRoleUsages) *CheckServiceLinkedRoleForDeletingResponseBody {
+	s.RoleUsages = v
+	return s
+}
+
+type CheckServiceLinkedRoleForDeletingResponseBodyRoleUsages struct {
+	Region    *string   `json:"Region,omitempty" xml:"Region,omitempty"`
+	Resources []*string `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+}
+
+func (s CheckServiceLinkedRoleForDeletingResponseBodyRoleUsages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckServiceLinkedRoleForDeletingResponseBodyRoleUsages) GoString() string {
+	return s.String()
+}
+
+func (s *CheckServiceLinkedRoleForDeletingResponseBodyRoleUsages) SetRegion(v string) *CheckServiceLinkedRoleForDeletingResponseBodyRoleUsages {
+	s.Region = &v
+	return s
+}
+
+func (s *CheckServiceLinkedRoleForDeletingResponseBodyRoleUsages) SetResources(v []*string) *CheckServiceLinkedRoleForDeletingResponseBodyRoleUsages {
+	s.Resources = v
+	return s
+}
+
+type CheckServiceLinkedRoleForDeletingResponse struct {
+	Headers map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CheckServiceLinkedRoleForDeletingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CheckServiceLinkedRoleForDeletingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckServiceLinkedRoleForDeletingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CheckServiceLinkedRoleForDeletingResponse) SetHeaders(v map[string]*string) *CheckServiceLinkedRoleForDeletingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CheckServiceLinkedRoleForDeletingResponse) SetBody(v *CheckServiceLinkedRoleForDeletingResponseBody) *CheckServiceLinkedRoleForDeletingResponse {
+	s.Body = v
 	return s
 }
 
@@ -83,9 +150,32 @@ func (s *GetSamplingRequest) SetProxyUserId(v string) *GetSamplingRequest {
 	return s
 }
 
+type GetSamplingResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+}
+
+func (s GetSamplingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSamplingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSamplingResponseBody) SetRequestId(v string) *GetSamplingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSamplingResponseBody) SetData(v string) *GetSamplingResponseBody {
+	s.Data = &v
+	return s
+}
+
 type GetSamplingResponse struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty" require:"true"`
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetSamplingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetSamplingResponse) String() string {
@@ -96,28 +186,926 @@ func (s GetSamplingResponse) GoString() string {
 	return s.String()
 }
 
-func (s *GetSamplingResponse) SetRequestId(v string) *GetSamplingResponse {
+func (s *GetSamplingResponse) SetHeaders(v map[string]*string) *GetSamplingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSamplingResponse) SetBody(v *GetSamplingResponseBody) *GetSamplingResponse {
+	s.Body = v
+	return s
+}
+
+type GetTagKeyRequest struct {
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	SpanName    *string `json:"SpanName,omitempty" xml:"SpanName,omitempty"`
+	StartTime   *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	EndTime     *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+}
+
+func (s GetTagKeyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTagKeyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTagKeyRequest) SetRegionId(v string) *GetTagKeyRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetTagKeyRequest) SetServiceName(v string) *GetTagKeyRequest {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *GetTagKeyRequest) SetSpanName(v string) *GetTagKeyRequest {
+	s.SpanName = &v
+	return s
+}
+
+func (s *GetTagKeyRequest) SetStartTime(v int64) *GetTagKeyRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetTagKeyRequest) SetEndTime(v int64) *GetTagKeyRequest {
+	s.EndTime = &v
+	return s
+}
+
+type GetTagKeyResponseBody struct {
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TagKeys   []*string `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Repeated"`
+}
+
+func (s GetTagKeyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTagKeyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTagKeyResponseBody) SetRequestId(v string) *GetTagKeyResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *GetSamplingResponse) SetData(v string) *GetSamplingResponse {
+func (s *GetTagKeyResponseBody) SetTagKeys(v []*string) *GetTagKeyResponseBody {
+	s.TagKeys = v
+	return s
+}
+
+type GetTagKeyResponse struct {
+	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetTagKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetTagKeyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTagKeyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTagKeyResponse) SetHeaders(v map[string]*string) *GetTagKeyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTagKeyResponse) SetBody(v *GetTagKeyResponseBody) *GetTagKeyResponse {
+	s.Body = v
+	return s
+}
+
+type GetTagValRequest struct {
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	SpanName    *string `json:"SpanName,omitempty" xml:"SpanName,omitempty"`
+	TagKey      *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	StartTime   *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	EndTime     *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+}
+
+func (s GetTagValRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTagValRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTagValRequest) SetRegionId(v string) *GetTagValRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetTagValRequest) SetServiceName(v string) *GetTagValRequest {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *GetTagValRequest) SetSpanName(v string) *GetTagValRequest {
+	s.SpanName = &v
+	return s
+}
+
+func (s *GetTagValRequest) SetTagKey(v string) *GetTagValRequest {
+	s.TagKey = &v
+	return s
+}
+
+func (s *GetTagValRequest) SetStartTime(v int64) *GetTagValRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetTagValRequest) SetEndTime(v int64) *GetTagValRequest {
+	s.EndTime = &v
+	return s
+}
+
+type GetTagValResponseBody struct {
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TagValues []*string `json:"TagValues,omitempty" xml:"TagValues,omitempty" type:"Repeated"`
+}
+
+func (s GetTagValResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTagValResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTagValResponseBody) SetRequestId(v string) *GetTagValResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTagValResponseBody) SetTagValues(v []*string) *GetTagValResponseBody {
+	s.TagValues = v
+	return s
+}
+
+type GetTagValResponse struct {
+	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetTagValResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetTagValResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTagValResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTagValResponse) SetHeaders(v map[string]*string) *GetTagValResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTagValResponse) SetBody(v *GetTagValResponseBody) *GetTagValResponse {
+	s.Body = v
+	return s
+}
+
+type GetTokenRequest struct {
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AppType     *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	ProxyUserId *string `json:"ProxyUserId,omitempty" xml:"ProxyUserId,omitempty"`
+}
+
+func (s GetTokenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTokenRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTokenRequest) SetRegionId(v string) *GetTokenRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetTokenRequest) SetAppType(v string) *GetTokenRequest {
+	s.AppType = &v
+	return s
+}
+
+func (s *GetTokenRequest) SetProxyUserId(v string) *GetTokenRequest {
+	s.ProxyUserId = &v
+	return s
+}
+
+type GetTokenResponseBody struct {
+	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Token     *GetTokenResponseBodyToken `json:"Token,omitempty" xml:"Token,omitempty" type:"Struct"`
+}
+
+func (s GetTokenResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTokenResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTokenResponseBody) SetRequestId(v string) *GetTokenResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTokenResponseBody) SetToken(v *GetTokenResponseBodyToken) *GetTokenResponseBody {
+	s.Token = v
+	return s
+}
+
+type GetTokenResponseBodyToken struct {
+	Domain         *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	LicenseKey     *string `json:"LicenseKey,omitempty" xml:"LicenseKey,omitempty"`
+	InternalDomain *string `json:"InternalDomain,omitempty" xml:"InternalDomain,omitempty"`
+	Pid            *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+}
+
+func (s GetTokenResponseBodyToken) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTokenResponseBodyToken) GoString() string {
+	return s.String()
+}
+
+func (s *GetTokenResponseBodyToken) SetDomain(v string) *GetTokenResponseBodyToken {
+	s.Domain = &v
+	return s
+}
+
+func (s *GetTokenResponseBodyToken) SetLicenseKey(v string) *GetTokenResponseBodyToken {
+	s.LicenseKey = &v
+	return s
+}
+
+func (s *GetTokenResponseBodyToken) SetInternalDomain(v string) *GetTokenResponseBodyToken {
+	s.InternalDomain = &v
+	return s
+}
+
+func (s *GetTokenResponseBodyToken) SetPid(v string) *GetTokenResponseBodyToken {
+	s.Pid = &v
+	return s
+}
+
+type GetTokenResponse struct {
+	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTokenResponse) SetHeaders(v map[string]*string) *GetTokenResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTokenResponse) SetBody(v *GetTokenResponseBody) *GetTokenResponse {
+	s.Body = v
+	return s
+}
+
+type GetTraceRequest struct {
+	TraceID  *string `json:"TraceID,omitempty" xml:"TraceID,omitempty"`
+	AppType  *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetTraceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTraceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTraceRequest) SetTraceID(v string) *GetTraceRequest {
+	s.TraceID = &v
+	return s
+}
+
+func (s *GetTraceRequest) SetAppType(v string) *GetTraceRequest {
+	s.AppType = &v
+	return s
+}
+
+func (s *GetTraceRequest) SetRegionId(v string) *GetTraceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetTraceResponseBody struct {
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Spans     []*GetTraceResponseBodySpans `json:"Spans,omitempty" xml:"Spans,omitempty" type:"Repeated"`
+}
+
+func (s GetTraceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTraceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTraceResponseBody) SetRequestId(v string) *GetTraceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTraceResponseBody) SetSpans(v []*GetTraceResponseBodySpans) *GetTraceResponseBody {
+	s.Spans = v
+	return s
+}
+
+type GetTraceResponseBodySpans struct {
+	TagEntryList  []*GetTraceResponseBodySpansTagEntryList `json:"TagEntryList,omitempty" xml:"TagEntryList,omitempty" type:"Repeated"`
+	LogEventList  []*GetTraceResponseBodySpansLogEventList `json:"LogEventList,omitempty" xml:"LogEventList,omitempty" type:"Repeated"`
+	HaveStack     *bool                                    `json:"HaveStack,omitempty" xml:"HaveStack,omitempty"`
+	ServiceIp     *string                                  `json:"ServiceIp,omitempty" xml:"ServiceIp,omitempty"`
+	OperationName *string                                  `json:"OperationName,omitempty" xml:"OperationName,omitempty"`
+	ResultCode    *string                                  `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	Duration      *int64                                   `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	RpcId         *string                                  `json:"RpcId,omitempty" xml:"RpcId,omitempty"`
+	Timestamp     *int64                                   `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	ServiceName   *string                                  `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	TraceID       *string                                  `json:"TraceID,omitempty" xml:"TraceID,omitempty"`
+}
+
+func (s GetTraceResponseBodySpans) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTraceResponseBodySpans) GoString() string {
+	return s.String()
+}
+
+func (s *GetTraceResponseBodySpans) SetTagEntryList(v []*GetTraceResponseBodySpansTagEntryList) *GetTraceResponseBodySpans {
+	s.TagEntryList = v
+	return s
+}
+
+func (s *GetTraceResponseBodySpans) SetLogEventList(v []*GetTraceResponseBodySpansLogEventList) *GetTraceResponseBodySpans {
+	s.LogEventList = v
+	return s
+}
+
+func (s *GetTraceResponseBodySpans) SetHaveStack(v bool) *GetTraceResponseBodySpans {
+	s.HaveStack = &v
+	return s
+}
+
+func (s *GetTraceResponseBodySpans) SetServiceIp(v string) *GetTraceResponseBodySpans {
+	s.ServiceIp = &v
+	return s
+}
+
+func (s *GetTraceResponseBodySpans) SetOperationName(v string) *GetTraceResponseBodySpans {
+	s.OperationName = &v
+	return s
+}
+
+func (s *GetTraceResponseBodySpans) SetResultCode(v string) *GetTraceResponseBodySpans {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *GetTraceResponseBodySpans) SetDuration(v int64) *GetTraceResponseBodySpans {
+	s.Duration = &v
+	return s
+}
+
+func (s *GetTraceResponseBodySpans) SetRpcId(v string) *GetTraceResponseBodySpans {
+	s.RpcId = &v
+	return s
+}
+
+func (s *GetTraceResponseBodySpans) SetTimestamp(v int64) *GetTraceResponseBodySpans {
+	s.Timestamp = &v
+	return s
+}
+
+func (s *GetTraceResponseBodySpans) SetServiceName(v string) *GetTraceResponseBodySpans {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *GetTraceResponseBodySpans) SetTraceID(v string) *GetTraceResponseBodySpans {
+	s.TraceID = &v
+	return s
+}
+
+type GetTraceResponseBodySpansTagEntryList struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetTraceResponseBodySpansTagEntryList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTraceResponseBodySpansTagEntryList) GoString() string {
+	return s.String()
+}
+
+func (s *GetTraceResponseBodySpansTagEntryList) SetKey(v string) *GetTraceResponseBodySpansTagEntryList {
+	s.Key = &v
+	return s
+}
+
+func (s *GetTraceResponseBodySpansTagEntryList) SetValue(v string) *GetTraceResponseBodySpansTagEntryList {
+	s.Value = &v
+	return s
+}
+
+type GetTraceResponseBodySpansLogEventList struct {
+	TagEntryList []*GetTraceResponseBodySpansLogEventListTagEntryList `json:"TagEntryList,omitempty" xml:"TagEntryList,omitempty" type:"Repeated"`
+	Timestamp    *int64                                               `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+}
+
+func (s GetTraceResponseBodySpansLogEventList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTraceResponseBodySpansLogEventList) GoString() string {
+	return s.String()
+}
+
+func (s *GetTraceResponseBodySpansLogEventList) SetTagEntryList(v []*GetTraceResponseBodySpansLogEventListTagEntryList) *GetTraceResponseBodySpansLogEventList {
+	s.TagEntryList = v
+	return s
+}
+
+func (s *GetTraceResponseBodySpansLogEventList) SetTimestamp(v int64) *GetTraceResponseBodySpansLogEventList {
+	s.Timestamp = &v
+	return s
+}
+
+type GetTraceResponseBodySpansLogEventListTagEntryList struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetTraceResponseBodySpansLogEventListTagEntryList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTraceResponseBodySpansLogEventListTagEntryList) GoString() string {
+	return s.String()
+}
+
+func (s *GetTraceResponseBodySpansLogEventListTagEntryList) SetKey(v string) *GetTraceResponseBodySpansLogEventListTagEntryList {
+	s.Key = &v
+	return s
+}
+
+func (s *GetTraceResponseBodySpansLogEventListTagEntryList) SetValue(v string) *GetTraceResponseBodySpansLogEventListTagEntryList {
+	s.Value = &v
+	return s
+}
+
+type GetTraceResponse struct {
+	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetTraceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetTraceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTraceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTraceResponse) SetHeaders(v map[string]*string) *GetTraceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTraceResponse) SetBody(v *GetTraceResponseBody) *GetTraceResponse {
+	s.Body = v
+	return s
+}
+
+type GetTraceAnalysisRequest struct {
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Api         *string `json:"Api,omitempty" xml:"Api,omitempty"`
+	Query       *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	ProxyUserId *string `json:"ProxyUserId,omitempty" xml:"ProxyUserId,omitempty"`
+}
+
+func (s GetTraceAnalysisRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTraceAnalysisRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTraceAnalysisRequest) SetRegionId(v string) *GetTraceAnalysisRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetTraceAnalysisRequest) SetApi(v string) *GetTraceAnalysisRequest {
+	s.Api = &v
+	return s
+}
+
+func (s *GetTraceAnalysisRequest) SetQuery(v string) *GetTraceAnalysisRequest {
+	s.Query = &v
+	return s
+}
+
+func (s *GetTraceAnalysisRequest) SetProxyUserId(v string) *GetTraceAnalysisRequest {
+	s.ProxyUserId = &v
+	return s
+}
+
+type GetTraceAnalysisResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+}
+
+func (s GetTraceAnalysisResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTraceAnalysisResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTraceAnalysisResponseBody) SetRequestId(v string) *GetTraceAnalysisResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTraceAnalysisResponseBody) SetData(v string) *GetTraceAnalysisResponseBody {
 	s.Data = &v
 	return s
 }
 
+type GetTraceAnalysisResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetTraceAnalysisResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetTraceAnalysisResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTraceAnalysisResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTraceAnalysisResponse) SetHeaders(v map[string]*string) *GetTraceAnalysisResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTraceAnalysisResponse) SetBody(v *GetTraceAnalysisResponseBody) *GetTraceAnalysisResponse {
+	s.Body = v
+	return s
+}
+
+type ListIpOrHostsRequest struct {
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	StartTime   *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	EndTime     *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+}
+
+func (s ListIpOrHostsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIpOrHostsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListIpOrHostsRequest) SetRegionId(v string) *ListIpOrHostsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListIpOrHostsRequest) SetServiceName(v string) *ListIpOrHostsRequest {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *ListIpOrHostsRequest) SetStartTime(v int64) *ListIpOrHostsRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListIpOrHostsRequest) SetEndTime(v int64) *ListIpOrHostsRequest {
+	s.EndTime = &v
+	return s
+}
+
+type ListIpOrHostsResponseBody struct {
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	IpNames   []*string `json:"IpNames,omitempty" xml:"IpNames,omitempty" type:"Repeated"`
+}
+
+func (s ListIpOrHostsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIpOrHostsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListIpOrHostsResponseBody) SetRequestId(v string) *ListIpOrHostsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListIpOrHostsResponseBody) SetIpNames(v []*string) *ListIpOrHostsResponseBody {
+	s.IpNames = v
+	return s
+}
+
+type ListIpOrHostsResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListIpOrHostsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListIpOrHostsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIpOrHostsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListIpOrHostsResponse) SetHeaders(v map[string]*string) *ListIpOrHostsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListIpOrHostsResponse) SetBody(v *ListIpOrHostsResponseBody) *ListIpOrHostsResponse {
+	s.Body = v
+	return s
+}
+
+type ListServicesRequest struct {
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AppType  *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+}
+
+func (s ListServicesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServicesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListServicesRequest) SetRegionId(v string) *ListServicesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListServicesRequest) SetAppType(v string) *ListServicesRequest {
+	s.AppType = &v
+	return s
+}
+
+type ListServicesResponseBody struct {
+	Services  []*ListServicesResponseBodyServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListServicesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServicesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListServicesResponseBody) SetServices(v []*ListServicesResponseBodyServices) *ListServicesResponseBody {
+	s.Services = v
+	return s
+}
+
+func (s *ListServicesResponseBody) SetRequestId(v string) *ListServicesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListServicesResponseBodyServices struct {
+	Pid         *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListServicesResponseBodyServices) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServicesResponseBodyServices) GoString() string {
+	return s.String()
+}
+
+func (s *ListServicesResponseBodyServices) SetPid(v string) *ListServicesResponseBodyServices {
+	s.Pid = &v
+	return s
+}
+
+func (s *ListServicesResponseBodyServices) SetServiceName(v string) *ListServicesResponseBodyServices {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *ListServicesResponseBodyServices) SetRegionId(v string) *ListServicesResponseBodyServices {
+	s.RegionId = &v
+	return s
+}
+
+type ListServicesResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListServicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListServicesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServicesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListServicesResponse) SetHeaders(v map[string]*string) *ListServicesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListServicesResponse) SetBody(v *ListServicesResponseBody) *ListServicesResponse {
+	s.Body = v
+	return s
+}
+
+type ListSpanNamesRequest struct {
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	StartTime   *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	EndTime     *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+}
+
+func (s ListSpanNamesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSpanNamesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSpanNamesRequest) SetRegionId(v string) *ListSpanNamesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListSpanNamesRequest) SetServiceName(v string) *ListSpanNamesRequest {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *ListSpanNamesRequest) SetStartTime(v int64) *ListSpanNamesRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListSpanNamesRequest) SetEndTime(v int64) *ListSpanNamesRequest {
+	s.EndTime = &v
+	return s
+}
+
+type ListSpanNamesResponseBody struct {
+	SpanNames []*string `json:"SpanNames,omitempty" xml:"SpanNames,omitempty" type:"Repeated"`
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListSpanNamesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSpanNamesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSpanNamesResponseBody) SetSpanNames(v []*string) *ListSpanNamesResponseBody {
+	s.SpanNames = v
+	return s
+}
+
+func (s *ListSpanNamesResponseBody) SetRequestId(v string) *ListSpanNamesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListSpanNamesResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListSpanNamesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListSpanNamesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSpanNamesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSpanNamesResponse) SetHeaders(v map[string]*string) *ListSpanNamesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSpanNamesResponse) SetBody(v *ListSpanNamesResponseBody) *ListSpanNamesResponse {
+	s.Body = v
+	return s
+}
+
+type OpenXtraceServiceResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+}
+
+func (s OpenXtraceServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenXtraceServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *OpenXtraceServiceResponseBody) SetRequestId(v string) *OpenXtraceServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *OpenXtraceServiceResponseBody) SetOrderId(v string) *OpenXtraceServiceResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+type OpenXtraceServiceResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *OpenXtraceServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s OpenXtraceServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenXtraceServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *OpenXtraceServiceResponse) SetHeaders(v map[string]*string) *OpenXtraceServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *OpenXtraceServiceResponse) SetBody(v *OpenXtraceServiceResponseBody) *OpenXtraceServiceResponse {
+	s.Body = v
+	return s
+}
+
 type QueryMetricRequest struct {
-	IntervalInSec *int                         `json:"IntervalInSec,omitempty" xml:"IntervalInSec,omitempty"`
-	StartTime     *int64                       `json:"StartTime,omitempty" xml:"StartTime,omitempty" require:"true"`
-	EndTime       *int64                       `json:"EndTime,omitempty" xml:"EndTime,omitempty" require:"true"`
+	IntervalInSec *int32                       `json:"IntervalInSec,omitempty" xml:"IntervalInSec,omitempty"`
+	StartTime     *int64                       `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	EndTime       *int64                       `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OrderBy       *string                      `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	Limit         *int                         `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	Filters       []*QueryMetricRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
-	Dimensions    []*string                    `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
-	Metric        *string                      `json:"Metric,omitempty" xml:"Metric,omitempty" require:"true"`
-	Measures      []*string                    `json:"Measures,omitempty" xml:"Measures,omitempty" type:"Repeated"`
+	Limit         *int32                       `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	Metric        *string                      `json:"Metric,omitempty" xml:"Metric,omitempty"`
 	Order         *string                      `json:"Order,omitempty" xml:"Order,omitempty"`
 	ProxyUserId   *string                      `json:"ProxyUserId,omitempty" xml:"ProxyUserId,omitempty"`
+	Filters       []*QueryMetricRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	Dimensions    []*string                    `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
+	Measures      []*string                    `json:"Measures,omitempty" xml:"Measures,omitempty" type:"Repeated"`
 }
 
 func (s QueryMetricRequest) String() string {
@@ -128,7 +1116,7 @@ func (s QueryMetricRequest) GoString() string {
 	return s.String()
 }
 
-func (s *QueryMetricRequest) SetIntervalInSec(v int) *QueryMetricRequest {
+func (s *QueryMetricRequest) SetIntervalInSec(v int32) *QueryMetricRequest {
 	s.IntervalInSec = &v
 	return s
 }
@@ -148,8 +1136,23 @@ func (s *QueryMetricRequest) SetOrderBy(v string) *QueryMetricRequest {
 	return s
 }
 
-func (s *QueryMetricRequest) SetLimit(v int) *QueryMetricRequest {
+func (s *QueryMetricRequest) SetLimit(v int32) *QueryMetricRequest {
 	s.Limit = &v
+	return s
+}
+
+func (s *QueryMetricRequest) SetMetric(v string) *QueryMetricRequest {
+	s.Metric = &v
+	return s
+}
+
+func (s *QueryMetricRequest) SetOrder(v string) *QueryMetricRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *QueryMetricRequest) SetProxyUserId(v string) *QueryMetricRequest {
+	s.ProxyUserId = &v
 	return s
 }
 
@@ -163,23 +1166,8 @@ func (s *QueryMetricRequest) SetDimensions(v []*string) *QueryMetricRequest {
 	return s
 }
 
-func (s *QueryMetricRequest) SetMetric(v string) *QueryMetricRequest {
-	s.Metric = &v
-	return s
-}
-
 func (s *QueryMetricRequest) SetMeasures(v []*string) *QueryMetricRequest {
 	s.Measures = v
-	return s
-}
-
-func (s *QueryMetricRequest) SetOrder(v string) *QueryMetricRequest {
-	s.Order = &v
-	return s
-}
-
-func (s *QueryMetricRequest) SetProxyUserId(v string) *QueryMetricRequest {
-	s.ProxyUserId = &v
 	return s
 }
 
@@ -206,9 +1194,32 @@ func (s *QueryMetricRequestFilters) SetValue(v string) *QueryMetricRequestFilter
 	return s
 }
 
+type QueryMetricResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+}
+
+func (s QueryMetricResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMetricResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMetricResponseBody) SetRequestId(v string) *QueryMetricResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryMetricResponseBody) SetData(v string) *QueryMetricResponseBody {
+	s.Data = &v
+	return s
+}
+
 type QueryMetricResponse struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty" require:"true"`
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QueryMetricResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s QueryMetricResponse) String() string {
@@ -219,295 +1230,29 @@ func (s QueryMetricResponse) GoString() string {
 	return s.String()
 }
 
-func (s *QueryMetricResponse) SetRequestId(v string) *QueryMetricResponse {
-	s.RequestId = &v
+func (s *QueryMetricResponse) SetHeaders(v map[string]*string) *QueryMetricResponse {
+	s.Headers = v
 	return s
 }
 
-func (s *QueryMetricResponse) SetData(v string) *QueryMetricResponse {
-	s.Data = &v
-	return s
-}
-
-type GetTraceRequest struct {
-	TraceID  *string `json:"TraceID,omitempty" xml:"TraceID,omitempty" require:"true"`
-	AppType  *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty" require:"true"`
-}
-
-func (s GetTraceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTraceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetTraceRequest) SetTraceID(v string) *GetTraceRequest {
-	s.TraceID = &v
-	return s
-}
-
-func (s *GetTraceRequest) SetAppType(v string) *GetTraceRequest {
-	s.AppType = &v
-	return s
-}
-
-func (s *GetTraceRequest) SetRegionId(v string) *GetTraceRequest {
-	s.RegionId = &v
-	return s
-}
-
-type GetTraceResponse struct {
-	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
-	Spans     *GetTraceResponseSpans `json:"Spans,omitempty" xml:"Spans,omitempty" require:"true" type:"Struct"`
-}
-
-func (s GetTraceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTraceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetTraceResponse) SetRequestId(v string) *GetTraceResponse {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetTraceResponse) SetSpans(v *GetTraceResponseSpans) *GetTraceResponse {
-	s.Spans = v
-	return s
-}
-
-type GetTraceResponseSpans struct {
-	Span []*GetTraceResponseSpansSpan `json:"Span,omitempty" xml:"Span,omitempty" require:"true" type:"Repeated"`
-}
-
-func (s GetTraceResponseSpans) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTraceResponseSpans) GoString() string {
-	return s.String()
-}
-
-func (s *GetTraceResponseSpans) SetSpan(v []*GetTraceResponseSpansSpan) *GetTraceResponseSpans {
-	s.Span = v
-	return s
-}
-
-type GetTraceResponseSpansSpan struct {
-	TraceID       *string                                `json:"TraceID,omitempty" xml:"TraceID,omitempty" require:"true"`
-	OperationName *string                                `json:"OperationName,omitempty" xml:"OperationName,omitempty" require:"true"`
-	Duration      *int64                                 `json:"Duration,omitempty" xml:"Duration,omitempty" require:"true"`
-	ServiceName   *string                                `json:"ServiceName,omitempty" xml:"ServiceName,omitempty" require:"true"`
-	ServiceIp     *string                                `json:"ServiceIp,omitempty" xml:"ServiceIp,omitempty" require:"true"`
-	Timestamp     *int64                                 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty" require:"true"`
-	RpcId         *string                                `json:"RpcId,omitempty" xml:"RpcId,omitempty" require:"true"`
-	ResultCode    *string                                `json:"ResultCode,omitempty" xml:"ResultCode,omitempty" require:"true"`
-	HaveStack     *bool                                  `json:"HaveStack,omitempty" xml:"HaveStack,omitempty" require:"true"`
-	TagEntryList  *GetTraceResponseSpansSpanTagEntryList `json:"TagEntryList,omitempty" xml:"TagEntryList,omitempty" require:"true" type:"Struct"`
-	LogEventList  *GetTraceResponseSpansSpanLogEventList `json:"LogEventList,omitempty" xml:"LogEventList,omitempty" require:"true" type:"Struct"`
-}
-
-func (s GetTraceResponseSpansSpan) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTraceResponseSpansSpan) GoString() string {
-	return s.String()
-}
-
-func (s *GetTraceResponseSpansSpan) SetTraceID(v string) *GetTraceResponseSpansSpan {
-	s.TraceID = &v
-	return s
-}
-
-func (s *GetTraceResponseSpansSpan) SetOperationName(v string) *GetTraceResponseSpansSpan {
-	s.OperationName = &v
-	return s
-}
-
-func (s *GetTraceResponseSpansSpan) SetDuration(v int64) *GetTraceResponseSpansSpan {
-	s.Duration = &v
-	return s
-}
-
-func (s *GetTraceResponseSpansSpan) SetServiceName(v string) *GetTraceResponseSpansSpan {
-	s.ServiceName = &v
-	return s
-}
-
-func (s *GetTraceResponseSpansSpan) SetServiceIp(v string) *GetTraceResponseSpansSpan {
-	s.ServiceIp = &v
-	return s
-}
-
-func (s *GetTraceResponseSpansSpan) SetTimestamp(v int64) *GetTraceResponseSpansSpan {
-	s.Timestamp = &v
-	return s
-}
-
-func (s *GetTraceResponseSpansSpan) SetRpcId(v string) *GetTraceResponseSpansSpan {
-	s.RpcId = &v
-	return s
-}
-
-func (s *GetTraceResponseSpansSpan) SetResultCode(v string) *GetTraceResponseSpansSpan {
-	s.ResultCode = &v
-	return s
-}
-
-func (s *GetTraceResponseSpansSpan) SetHaveStack(v bool) *GetTraceResponseSpansSpan {
-	s.HaveStack = &v
-	return s
-}
-
-func (s *GetTraceResponseSpansSpan) SetTagEntryList(v *GetTraceResponseSpansSpanTagEntryList) *GetTraceResponseSpansSpan {
-	s.TagEntryList = v
-	return s
-}
-
-func (s *GetTraceResponseSpansSpan) SetLogEventList(v *GetTraceResponseSpansSpanLogEventList) *GetTraceResponseSpansSpan {
-	s.LogEventList = v
-	return s
-}
-
-type GetTraceResponseSpansSpanTagEntryList struct {
-	TagEntry []*GetTraceResponseSpansSpanTagEntryListTagEntry `json:"TagEntry,omitempty" xml:"TagEntry,omitempty" require:"true" type:"Repeated"`
-}
-
-func (s GetTraceResponseSpansSpanTagEntryList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTraceResponseSpansSpanTagEntryList) GoString() string {
-	return s.String()
-}
-
-func (s *GetTraceResponseSpansSpanTagEntryList) SetTagEntry(v []*GetTraceResponseSpansSpanTagEntryListTagEntry) *GetTraceResponseSpansSpanTagEntryList {
-	s.TagEntry = v
-	return s
-}
-
-type GetTraceResponseSpansSpanTagEntryListTagEntry struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty" require:"true"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty" require:"true"`
-}
-
-func (s GetTraceResponseSpansSpanTagEntryListTagEntry) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTraceResponseSpansSpanTagEntryListTagEntry) GoString() string {
-	return s.String()
-}
-
-func (s *GetTraceResponseSpansSpanTagEntryListTagEntry) SetKey(v string) *GetTraceResponseSpansSpanTagEntryListTagEntry {
-	s.Key = &v
-	return s
-}
-
-func (s *GetTraceResponseSpansSpanTagEntryListTagEntry) SetValue(v string) *GetTraceResponseSpansSpanTagEntryListTagEntry {
-	s.Value = &v
-	return s
-}
-
-type GetTraceResponseSpansSpanLogEventList struct {
-	LogEvent []*GetTraceResponseSpansSpanLogEventListLogEvent `json:"LogEvent,omitempty" xml:"LogEvent,omitempty" require:"true" type:"Repeated"`
-}
-
-func (s GetTraceResponseSpansSpanLogEventList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTraceResponseSpansSpanLogEventList) GoString() string {
-	return s.String()
-}
-
-func (s *GetTraceResponseSpansSpanLogEventList) SetLogEvent(v []*GetTraceResponseSpansSpanLogEventListLogEvent) *GetTraceResponseSpansSpanLogEventList {
-	s.LogEvent = v
-	return s
-}
-
-type GetTraceResponseSpansSpanLogEventListLogEvent struct {
-	Timestamp    *int64                                                     `json:"Timestamp,omitempty" xml:"Timestamp,omitempty" require:"true"`
-	TagEntryList *GetTraceResponseSpansSpanLogEventListLogEventTagEntryList `json:"TagEntryList,omitempty" xml:"TagEntryList,omitempty" require:"true" type:"Struct"`
-}
-
-func (s GetTraceResponseSpansSpanLogEventListLogEvent) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTraceResponseSpansSpanLogEventListLogEvent) GoString() string {
-	return s.String()
-}
-
-func (s *GetTraceResponseSpansSpanLogEventListLogEvent) SetTimestamp(v int64) *GetTraceResponseSpansSpanLogEventListLogEvent {
-	s.Timestamp = &v
-	return s
-}
-
-func (s *GetTraceResponseSpansSpanLogEventListLogEvent) SetTagEntryList(v *GetTraceResponseSpansSpanLogEventListLogEventTagEntryList) *GetTraceResponseSpansSpanLogEventListLogEvent {
-	s.TagEntryList = v
-	return s
-}
-
-type GetTraceResponseSpansSpanLogEventListLogEventTagEntryList struct {
-	TagEntry []*GetTraceResponseSpansSpanLogEventListLogEventTagEntryListTagEntry `json:"TagEntry,omitempty" xml:"TagEntry,omitempty" require:"true" type:"Repeated"`
-}
-
-func (s GetTraceResponseSpansSpanLogEventListLogEventTagEntryList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTraceResponseSpansSpanLogEventListLogEventTagEntryList) GoString() string {
-	return s.String()
-}
-
-func (s *GetTraceResponseSpansSpanLogEventListLogEventTagEntryList) SetTagEntry(v []*GetTraceResponseSpansSpanLogEventListLogEventTagEntryListTagEntry) *GetTraceResponseSpansSpanLogEventListLogEventTagEntryList {
-	s.TagEntry = v
-	return s
-}
-
-type GetTraceResponseSpansSpanLogEventListLogEventTagEntryListTagEntry struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty" require:"true"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty" require:"true"`
-}
-
-func (s GetTraceResponseSpansSpanLogEventListLogEventTagEntryListTagEntry) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTraceResponseSpansSpanLogEventListLogEventTagEntryListTagEntry) GoString() string {
-	return s.String()
-}
-
-func (s *GetTraceResponseSpansSpanLogEventListLogEventTagEntryListTagEntry) SetKey(v string) *GetTraceResponseSpansSpanLogEventListLogEventTagEntryListTagEntry {
-	s.Key = &v
-	return s
-}
-
-func (s *GetTraceResponseSpansSpanLogEventListLogEventTagEntryListTagEntry) SetValue(v string) *GetTraceResponseSpansSpanLogEventListLogEventTagEntryListTagEntry {
-	s.Value = &v
+func (s *QueryMetricResponse) SetBody(v *QueryMetricResponseBody) *QueryMetricResponse {
+	s.Body = v
 	return s
 }
 
 type SearchTracesRequest struct {
-	StartTime     *int64                    `json:"StartTime,omitempty" xml:"StartTime,omitempty" require:"true"`
-	EndTime       *int64                    `json:"EndTime,omitempty" xml:"EndTime,omitempty" require:"true"`
-	RegionId      *string                   `json:"RegionId,omitempty" xml:"RegionId,omitempty" require:"true"`
+	StartTime     *int64                    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	EndTime       *int64                    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	RegionId      *string                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ServiceName   *string                   `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	OperationName *string                   `json:"OperationName,omitempty" xml:"OperationName,omitempty"`
 	MinDuration   *int64                    `json:"MinDuration,omitempty" xml:"MinDuration,omitempty"`
 	AppType       *string                   `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	Tag           []*SearchTracesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	PageNumber    *int                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber    *int32                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Reverse       *bool                     `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
 	ServiceIp     *string                   `json:"ServiceIp,omitempty" xml:"ServiceIp,omitempty"`
+	Tag           []*SearchTracesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s SearchTracesRequest) String() string {
@@ -553,17 +1298,12 @@ func (s *SearchTracesRequest) SetAppType(v string) *SearchTracesRequest {
 	return s
 }
 
-func (s *SearchTracesRequest) SetTag(v []*SearchTracesRequestTag) *SearchTracesRequest {
-	s.Tag = v
-	return s
-}
-
-func (s *SearchTracesRequest) SetPageNumber(v int) *SearchTracesRequest {
+func (s *SearchTracesRequest) SetPageNumber(v int32) *SearchTracesRequest {
 	s.PageNumber = &v
 	return s
 }
 
-func (s *SearchTracesRequest) SetPageSize(v int) *SearchTracesRequest {
+func (s *SearchTracesRequest) SetPageSize(v int32) *SearchTracesRequest {
 	s.PageSize = &v
 	return s
 }
@@ -575,6 +1315,11 @@ func (s *SearchTracesRequest) SetReverse(v bool) *SearchTracesRequest {
 
 func (s *SearchTracesRequest) SetServiceIp(v string) *SearchTracesRequest {
 	s.ServiceIp = &v
+	return s
+}
+
+func (s *SearchTracesRequest) SetTag(v []*SearchTracesRequestTag) *SearchTracesRequest {
+	s.Tag = v
 	return s
 }
 
@@ -601,9 +1346,114 @@ func (s *SearchTracesRequestTag) SetValue(v string) *SearchTracesRequestTag {
 	return s
 }
 
+type SearchTracesResponseBody struct {
+	PageBean  *SearchTracesResponseBodyPageBean `json:"PageBean,omitempty" xml:"PageBean,omitempty" type:"Struct"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SearchTracesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchTracesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SearchTracesResponseBody) SetPageBean(v *SearchTracesResponseBodyPageBean) *SearchTracesResponseBody {
+	s.PageBean = v
+	return s
+}
+
+func (s *SearchTracesResponseBody) SetRequestId(v string) *SearchTracesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SearchTracesResponseBodyPageBean struct {
+	TraceInfos []*SearchTracesResponseBodyPageBeanTraceInfos `json:"TraceInfos,omitempty" xml:"TraceInfos,omitempty" type:"Repeated"`
+	PageSize   *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalCount *int64                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s SearchTracesResponseBodyPageBean) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchTracesResponseBodyPageBean) GoString() string {
+	return s.String()
+}
+
+func (s *SearchTracesResponseBodyPageBean) SetTraceInfos(v []*SearchTracesResponseBodyPageBeanTraceInfos) *SearchTracesResponseBodyPageBean {
+	s.TraceInfos = v
+	return s
+}
+
+func (s *SearchTracesResponseBodyPageBean) SetPageSize(v int32) *SearchTracesResponseBodyPageBean {
+	s.PageSize = &v
+	return s
+}
+
+func (s *SearchTracesResponseBodyPageBean) SetPageNumber(v int32) *SearchTracesResponseBodyPageBean {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *SearchTracesResponseBodyPageBean) SetTotalCount(v int64) *SearchTracesResponseBodyPageBean {
+	s.TotalCount = &v
+	return s
+}
+
+type SearchTracesResponseBodyPageBeanTraceInfos struct {
+	OperationName *string `json:"OperationName,omitempty" xml:"OperationName,omitempty"`
+	ServiceIp     *string `json:"ServiceIp,omitempty" xml:"ServiceIp,omitempty"`
+	Duration      *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Timestamp     *int64  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	ServiceName   *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	TraceID       *string `json:"TraceID,omitempty" xml:"TraceID,omitempty"`
+}
+
+func (s SearchTracesResponseBodyPageBeanTraceInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchTracesResponseBodyPageBeanTraceInfos) GoString() string {
+	return s.String()
+}
+
+func (s *SearchTracesResponseBodyPageBeanTraceInfos) SetOperationName(v string) *SearchTracesResponseBodyPageBeanTraceInfos {
+	s.OperationName = &v
+	return s
+}
+
+func (s *SearchTracesResponseBodyPageBeanTraceInfos) SetServiceIp(v string) *SearchTracesResponseBodyPageBeanTraceInfos {
+	s.ServiceIp = &v
+	return s
+}
+
+func (s *SearchTracesResponseBodyPageBeanTraceInfos) SetDuration(v int64) *SearchTracesResponseBodyPageBeanTraceInfos {
+	s.Duration = &v
+	return s
+}
+
+func (s *SearchTracesResponseBodyPageBeanTraceInfos) SetTimestamp(v int64) *SearchTracesResponseBodyPageBeanTraceInfos {
+	s.Timestamp = &v
+	return s
+}
+
+func (s *SearchTracesResponseBodyPageBeanTraceInfos) SetServiceName(v string) *SearchTracesResponseBodyPageBeanTraceInfos {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *SearchTracesResponseBodyPageBeanTraceInfos) SetTraceID(v string) *SearchTracesResponseBodyPageBeanTraceInfos {
+	s.TraceID = &v
+	return s
+}
+
 type SearchTracesResponse struct {
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
-	PageBean  *SearchTracesResponsePageBean `json:"PageBean,omitempty" xml:"PageBean,omitempty" require:"true" type:"Struct"`
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SearchTracesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SearchTracesResponse) String() string {
@@ -614,623 +1464,102 @@ func (s SearchTracesResponse) GoString() string {
 	return s.String()
 }
 
-func (s *SearchTracesResponse) SetRequestId(v string) *SearchTracesResponse {
-	s.RequestId = &v
+func (s *SearchTracesResponse) SetHeaders(v map[string]*string) *SearchTracesResponse {
+	s.Headers = v
 	return s
 }
 
-func (s *SearchTracesResponse) SetPageBean(v *SearchTracesResponsePageBean) *SearchTracesResponse {
-	s.PageBean = v
+func (s *SearchTracesResponse) SetBody(v *SearchTracesResponseBody) *SearchTracesResponse {
+	s.Body = v
 	return s
 }
 
-type SearchTracesResponsePageBean struct {
-	TotalCount *int64                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty" require:"true"`
-	PageSize   *int                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty" require:"true"`
-	PageNumber *int                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty" require:"true"`
-	TraceInfos *SearchTracesResponsePageBeanTraceInfos `json:"TraceInfos,omitempty" xml:"TraceInfos,omitempty" require:"true" type:"Struct"`
-}
-
-func (s SearchTracesResponsePageBean) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SearchTracesResponsePageBean) GoString() string {
-	return s.String()
-}
-
-func (s *SearchTracesResponsePageBean) SetTotalCount(v int64) *SearchTracesResponsePageBean {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *SearchTracesResponsePageBean) SetPageSize(v int) *SearchTracesResponsePageBean {
-	s.PageSize = &v
-	return s
-}
-
-func (s *SearchTracesResponsePageBean) SetPageNumber(v int) *SearchTracesResponsePageBean {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *SearchTracesResponsePageBean) SetTraceInfos(v *SearchTracesResponsePageBeanTraceInfos) *SearchTracesResponsePageBean {
-	s.TraceInfos = v
-	return s
-}
-
-type SearchTracesResponsePageBeanTraceInfos struct {
-	TraceInfo []*SearchTracesResponsePageBeanTraceInfosTraceInfo `json:"TraceInfo,omitempty" xml:"TraceInfo,omitempty" require:"true" type:"Repeated"`
-}
-
-func (s SearchTracesResponsePageBeanTraceInfos) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SearchTracesResponsePageBeanTraceInfos) GoString() string {
-	return s.String()
-}
-
-func (s *SearchTracesResponsePageBeanTraceInfos) SetTraceInfo(v []*SearchTracesResponsePageBeanTraceInfosTraceInfo) *SearchTracesResponsePageBeanTraceInfos {
-	s.TraceInfo = v
-	return s
-}
-
-type SearchTracesResponsePageBeanTraceInfosTraceInfo struct {
-	TraceID       *string `json:"TraceID,omitempty" xml:"TraceID,omitempty" require:"true"`
-	OperationName *string `json:"OperationName,omitempty" xml:"OperationName,omitempty" require:"true"`
-	ServiceName   *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty" require:"true"`
-	ServiceIp     *string `json:"ServiceIp,omitempty" xml:"ServiceIp,omitempty" require:"true"`
-	Duration      *int64  `json:"Duration,omitempty" xml:"Duration,omitempty" require:"true"`
-	Timestamp     *int64  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty" require:"true"`
-}
-
-func (s SearchTracesResponsePageBeanTraceInfosTraceInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SearchTracesResponsePageBeanTraceInfosTraceInfo) GoString() string {
-	return s.String()
-}
-
-func (s *SearchTracesResponsePageBeanTraceInfosTraceInfo) SetTraceID(v string) *SearchTracesResponsePageBeanTraceInfosTraceInfo {
-	s.TraceID = &v
-	return s
-}
-
-func (s *SearchTracesResponsePageBeanTraceInfosTraceInfo) SetOperationName(v string) *SearchTracesResponsePageBeanTraceInfosTraceInfo {
-	s.OperationName = &v
-	return s
-}
-
-func (s *SearchTracesResponsePageBeanTraceInfosTraceInfo) SetServiceName(v string) *SearchTracesResponsePageBeanTraceInfosTraceInfo {
-	s.ServiceName = &v
-	return s
-}
-
-func (s *SearchTracesResponsePageBeanTraceInfosTraceInfo) SetServiceIp(v string) *SearchTracesResponsePageBeanTraceInfosTraceInfo {
-	s.ServiceIp = &v
-	return s
-}
-
-func (s *SearchTracesResponsePageBeanTraceInfosTraceInfo) SetDuration(v int64) *SearchTracesResponsePageBeanTraceInfosTraceInfo {
-	s.Duration = &v
-	return s
-}
-
-func (s *SearchTracesResponsePageBeanTraceInfosTraceInfo) SetTimestamp(v int64) *SearchTracesResponsePageBeanTraceInfosTraceInfo {
-	s.Timestamp = &v
-	return s
-}
-
-type GetTagValRequest struct {
+type UpdateSamplingRequest struct {
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	SpanName    *string `json:"SpanName,omitempty" xml:"SpanName,omitempty"`
-	TagKey      *string `json:"TagKey,omitempty" xml:"TagKey,omitempty" require:"true"`
-	StartTime   *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	EndTime     *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-}
-
-func (s GetTagValRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTagValRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetTagValRequest) SetRegionId(v string) *GetTagValRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *GetTagValRequest) SetServiceName(v string) *GetTagValRequest {
-	s.ServiceName = &v
-	return s
-}
-
-func (s *GetTagValRequest) SetSpanName(v string) *GetTagValRequest {
-	s.SpanName = &v
-	return s
-}
-
-func (s *GetTagValRequest) SetTagKey(v string) *GetTagValRequest {
-	s.TagKey = &v
-	return s
-}
-
-func (s *GetTagValRequest) SetStartTime(v int64) *GetTagValRequest {
-	s.StartTime = &v
-	return s
-}
-
-func (s *GetTagValRequest) SetEndTime(v int64) *GetTagValRequest {
-	s.EndTime = &v
-	return s
-}
-
-type GetTagValResponse struct {
-	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
-	TagValues *GetTagValResponseTagValues `json:"TagValues,omitempty" xml:"TagValues,omitempty" require:"true" type:"Struct"`
-}
-
-func (s GetTagValResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTagValResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetTagValResponse) SetRequestId(v string) *GetTagValResponse {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetTagValResponse) SetTagValues(v *GetTagValResponseTagValues) *GetTagValResponse {
-	s.TagValues = v
-	return s
-}
-
-type GetTagValResponseTagValues struct {
-	TagValue []*string `json:"TagValue,omitempty" xml:"TagValue,omitempty" require:"true" type:"Repeated"`
-}
-
-func (s GetTagValResponseTagValues) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTagValResponseTagValues) GoString() string {
-	return s.String()
-}
-
-func (s *GetTagValResponseTagValues) SetTagValue(v []*string) *GetTagValResponseTagValues {
-	s.TagValue = v
-	return s
-}
-
-type GetTagKeyRequest struct {
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty" require:"true"`
-	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	SpanName    *string `json:"SpanName,omitempty" xml:"SpanName,omitempty"`
-	StartTime   *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	EndTime     *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-}
-
-func (s GetTagKeyRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTagKeyRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetTagKeyRequest) SetRegionId(v string) *GetTagKeyRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *GetTagKeyRequest) SetServiceName(v string) *GetTagKeyRequest {
-	s.ServiceName = &v
-	return s
-}
-
-func (s *GetTagKeyRequest) SetSpanName(v string) *GetTagKeyRequest {
-	s.SpanName = &v
-	return s
-}
-
-func (s *GetTagKeyRequest) SetStartTime(v int64) *GetTagKeyRequest {
-	s.StartTime = &v
-	return s
-}
-
-func (s *GetTagKeyRequest) SetEndTime(v int64) *GetTagKeyRequest {
-	s.EndTime = &v
-	return s
-}
-
-type GetTagKeyResponse struct {
-	RequestId *string                   `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
-	TagKeys   *GetTagKeyResponseTagKeys `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" require:"true" type:"Struct"`
-}
-
-func (s GetTagKeyResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTagKeyResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetTagKeyResponse) SetRequestId(v string) *GetTagKeyResponse {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetTagKeyResponse) SetTagKeys(v *GetTagKeyResponseTagKeys) *GetTagKeyResponse {
-	s.TagKeys = v
-	return s
-}
-
-type GetTagKeyResponseTagKeys struct {
-	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" require:"true" type:"Repeated"`
-}
-
-func (s GetTagKeyResponseTagKeys) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTagKeyResponseTagKeys) GoString() string {
-	return s.String()
-}
-
-func (s *GetTagKeyResponseTagKeys) SetTagKey(v []*string) *GetTagKeyResponseTagKeys {
-	s.TagKey = v
-	return s
-}
-
-type ListIpOrHostsRequest struct {
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty" require:"true"`
-	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	StartTime   *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	EndTime     *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-}
-
-func (s ListIpOrHostsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListIpOrHostsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListIpOrHostsRequest) SetRegionId(v string) *ListIpOrHostsRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *ListIpOrHostsRequest) SetServiceName(v string) *ListIpOrHostsRequest {
-	s.ServiceName = &v
-	return s
-}
-
-func (s *ListIpOrHostsRequest) SetStartTime(v int64) *ListIpOrHostsRequest {
-	s.StartTime = &v
-	return s
-}
-
-func (s *ListIpOrHostsRequest) SetEndTime(v int64) *ListIpOrHostsRequest {
-	s.EndTime = &v
-	return s
-}
-
-type ListIpOrHostsResponse struct {
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
-	IpNames   *ListIpOrHostsResponseIpNames `json:"IpNames,omitempty" xml:"IpNames,omitempty" require:"true" type:"Struct"`
-}
-
-func (s ListIpOrHostsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListIpOrHostsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListIpOrHostsResponse) SetRequestId(v string) *ListIpOrHostsResponse {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListIpOrHostsResponse) SetIpNames(v *ListIpOrHostsResponseIpNames) *ListIpOrHostsResponse {
-	s.IpNames = v
-	return s
-}
-
-type ListIpOrHostsResponseIpNames struct {
-	IpName []*string `json:"IpName,omitempty" xml:"IpName,omitempty" require:"true" type:"Repeated"`
-}
-
-func (s ListIpOrHostsResponseIpNames) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListIpOrHostsResponseIpNames) GoString() string {
-	return s.String()
-}
-
-func (s *ListIpOrHostsResponseIpNames) SetIpName(v []*string) *ListIpOrHostsResponseIpNames {
-	s.IpName = v
-	return s
-}
-
-type ListServicesRequest struct {
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty" require:"true"`
-	AppType  *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-}
-
-func (s ListServicesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListServicesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListServicesRequest) SetRegionId(v string) *ListServicesRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *ListServicesRequest) SetAppType(v string) *ListServicesRequest {
-	s.AppType = &v
-	return s
-}
-
-type ListServicesResponse struct {
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
-	Services  *ListServicesResponseServices `json:"Services,omitempty" xml:"Services,omitempty" require:"true" type:"Struct"`
-}
-
-func (s ListServicesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListServicesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListServicesResponse) SetRequestId(v string) *ListServicesResponse {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListServicesResponse) SetServices(v *ListServicesResponseServices) *ListServicesResponse {
-	s.Services = v
-	return s
-}
-
-type ListServicesResponseServices struct {
-	Service []*ListServicesResponseServicesService `json:"Service,omitempty" xml:"Service,omitempty" require:"true" type:"Repeated"`
-}
-
-func (s ListServicesResponseServices) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListServicesResponseServices) GoString() string {
-	return s.String()
-}
-
-func (s *ListServicesResponseServices) SetService(v []*ListServicesResponseServicesService) *ListServicesResponseServices {
-	s.Service = v
-	return s
-}
-
-type ListServicesResponseServicesService struct {
-	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty" require:"true"`
-	Pid         *string `json:"Pid,omitempty" xml:"Pid,omitempty" require:"true"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty" require:"true"`
-}
-
-func (s ListServicesResponseServicesService) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListServicesResponseServicesService) GoString() string {
-	return s.String()
-}
-
-func (s *ListServicesResponseServicesService) SetServiceName(v string) *ListServicesResponseServicesService {
-	s.ServiceName = &v
-	return s
-}
-
-func (s *ListServicesResponseServicesService) SetPid(v string) *ListServicesResponseServicesService {
-	s.Pid = &v
-	return s
-}
-
-func (s *ListServicesResponseServicesService) SetRegionId(v string) *ListServicesResponseServicesService {
-	s.RegionId = &v
-	return s
-}
-
-type ListSpanNamesRequest struct {
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty" require:"true"`
-	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	StartTime   *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	EndTime     *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-}
-
-func (s ListSpanNamesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListSpanNamesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListSpanNamesRequest) SetRegionId(v string) *ListSpanNamesRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *ListSpanNamesRequest) SetServiceName(v string) *ListSpanNamesRequest {
-	s.ServiceName = &v
-	return s
-}
-
-func (s *ListSpanNamesRequest) SetStartTime(v int64) *ListSpanNamesRequest {
-	s.StartTime = &v
-	return s
-}
-
-func (s *ListSpanNamesRequest) SetEndTime(v int64) *ListSpanNamesRequest {
-	s.EndTime = &v
-	return s
-}
-
-type ListSpanNamesResponse struct {
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
-	SpanNames *ListSpanNamesResponseSpanNames `json:"SpanNames,omitempty" xml:"SpanNames,omitempty" require:"true" type:"Struct"`
-}
-
-func (s ListSpanNamesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListSpanNamesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListSpanNamesResponse) SetRequestId(v string) *ListSpanNamesResponse {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListSpanNamesResponse) SetSpanNames(v *ListSpanNamesResponseSpanNames) *ListSpanNamesResponse {
-	s.SpanNames = v
-	return s
-}
-
-type ListSpanNamesResponseSpanNames struct {
-	SpanName []*string `json:"SpanName,omitempty" xml:"SpanName,omitempty" require:"true" type:"Repeated"`
-}
-
-func (s ListSpanNamesResponseSpanNames) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListSpanNamesResponseSpanNames) GoString() string {
-	return s.String()
-}
-
-func (s *ListSpanNamesResponseSpanNames) SetSpanName(v []*string) *ListSpanNamesResponseSpanNames {
-	s.SpanName = v
-	return s
-}
-
-type GetTokenRequest struct {
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty" require:"true"`
-	AppType     *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
 	ProxyUserId *string `json:"ProxyUserId,omitempty" xml:"ProxyUserId,omitempty"`
+	Sampling    *string `json:"Sampling,omitempty" xml:"Sampling,omitempty"`
 }
 
-func (s GetTokenRequest) String() string {
+func (s UpdateSamplingRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetTokenRequest) GoString() string {
+func (s UpdateSamplingRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetTokenRequest) SetRegionId(v string) *GetTokenRequest {
+func (s *UpdateSamplingRequest) SetRegionId(v string) *UpdateSamplingRequest {
 	s.RegionId = &v
 	return s
 }
 
-func (s *GetTokenRequest) SetAppType(v string) *GetTokenRequest {
-	s.AppType = &v
-	return s
-}
-
-func (s *GetTokenRequest) SetProxyUserId(v string) *GetTokenRequest {
+func (s *UpdateSamplingRequest) SetProxyUserId(v string) *UpdateSamplingRequest {
 	s.ProxyUserId = &v
 	return s
 }
 
-type GetTokenResponse struct {
-	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
-	Token     *GetTokenResponseToken `json:"Token,omitempty" xml:"Token,omitempty" require:"true" type:"Struct"`
+func (s *UpdateSamplingRequest) SetSampling(v string) *UpdateSamplingRequest {
+	s.Sampling = &v
+	return s
 }
 
-func (s GetTokenResponse) String() string {
+type UpdateSamplingResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+}
+
+func (s UpdateSamplingResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetTokenResponse) GoString() string {
+func (s UpdateSamplingResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetTokenResponse) SetRequestId(v string) *GetTokenResponse {
+func (s *UpdateSamplingResponseBody) SetRequestId(v string) *UpdateSamplingResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *GetTokenResponse) SetToken(v *GetTokenResponseToken) *GetTokenResponse {
-	s.Token = v
+func (s *UpdateSamplingResponseBody) SetData(v string) *UpdateSamplingResponseBody {
+	s.Data = &v
 	return s
 }
 
-type GetTokenResponseToken struct {
-	Domain         *string `json:"Domain,omitempty" xml:"Domain,omitempty" require:"true"`
-	LicenseKey     *string `json:"LicenseKey,omitempty" xml:"LicenseKey,omitempty" require:"true"`
-	Pid            *string `json:"Pid,omitempty" xml:"Pid,omitempty" require:"true"`
-	InternalDomain *string `json:"InternalDomain,omitempty" xml:"InternalDomain,omitempty" require:"true"`
+type UpdateSamplingResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateSamplingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s GetTokenResponseToken) String() string {
+func (s UpdateSamplingResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetTokenResponseToken) GoString() string {
+func (s UpdateSamplingResponse) GoString() string {
 	return s.String()
 }
 
-func (s *GetTokenResponseToken) SetDomain(v string) *GetTokenResponseToken {
-	s.Domain = &v
+func (s *UpdateSamplingResponse) SetHeaders(v map[string]*string) *UpdateSamplingResponse {
+	s.Headers = v
 	return s
 }
 
-func (s *GetTokenResponseToken) SetLicenseKey(v string) *GetTokenResponseToken {
-	s.LicenseKey = &v
-	return s
-}
-
-func (s *GetTokenResponseToken) SetPid(v string) *GetTokenResponseToken {
-	s.Pid = &v
-	return s
-}
-
-func (s *GetTokenResponseToken) SetInternalDomain(v string) *GetTokenResponseToken {
-	s.InternalDomain = &v
+func (s *UpdateSamplingResponse) SetBody(v *UpdateSamplingResponseBody) *UpdateSamplingResponse {
+	s.Body = v
 	return s
 }
 
 type Client struct {
-	rpc.Client
+	openapi.Client
 }
 
-func NewClient(config *rpc.Config) (*Client, error) {
+func NewClient(config *openapi.Config) (*Client, error) {
 	client := new(Client)
 	err := client.Init(config)
 	return client, err
 }
 
-func (client *Client) Init(config *rpc.Config) (_err error) {
+func (client *Client) Init(config *openapi.Config) (_err error) {
 	_err = client.Client.Init(config)
 	if _err != nil {
 		return _err
@@ -1248,13 +1577,35 @@ func (client *Client) Init(config *rpc.Config) (_err error) {
 	return nil
 }
 
-func (client *Client) UpdateSamplingWithOptions(request *UpdateSamplingRequest, runtime *util.RuntimeOptions) (_result *UpdateSamplingResponse, _err error) {
+func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
+	if !tea.BoolValue(util.Empty(endpoint)) {
+		_result = endpoint
+		return _result, _err
+	}
+
+	if !tea.BoolValue(util.IsUnset(endpointMap)) && !tea.BoolValue(util.Empty(endpointMap[tea.StringValue(regionId)])) {
+		_result = endpointMap[tea.StringValue(regionId)]
+		return _result, _err
+	}
+
+	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CheckServiceLinkedRoleForDeletingWithOptions(request *CheckServiceLinkedRoleForDeletingRequest, runtime *util.RuntimeOptions) (_result *CheckServiceLinkedRoleForDeletingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	_result = &UpdateSamplingResponse{}
-	_body, _err := client.DoRequest(tea.String("UpdateSampling"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-08-08"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CheckServiceLinkedRoleForDeletingResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CheckServiceLinkedRoleForDeleting"), tea.String("2019-08-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1262,10 +1613,10 @@ func (client *Client) UpdateSamplingWithOptions(request *UpdateSamplingRequest, 
 	return _result, _err
 }
 
-func (client *Client) UpdateSampling(request *UpdateSamplingRequest) (_result *UpdateSamplingResponse, _err error) {
+func (client *Client) CheckServiceLinkedRoleForDeleting(request *CheckServiceLinkedRoleForDeletingRequest) (_result *CheckServiceLinkedRoleForDeletingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &UpdateSamplingResponse{}
-	_body, _err := client.UpdateSamplingWithOptions(request, runtime)
+	_result = &CheckServiceLinkedRoleForDeletingResponse{}
+	_body, _err := client.CheckServiceLinkedRoleForDeletingWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1278,8 +1629,11 @@ func (client *Client) GetSamplingWithOptions(request *GetSamplingRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
 	_result = &GetSamplingResponse{}
-	_body, _err := client.DoRequest(tea.String("GetSampling"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-08-08"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	_body, _err := client.DoRPCRequest(tea.String("GetSampling"), tea.String("2019-08-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1298,113 +1652,16 @@ func (client *Client) GetSampling(request *GetSamplingRequest) (_result *GetSamp
 	return _result, _err
 }
 
-func (client *Client) QueryMetricWithOptions(request *QueryMetricRequest, runtime *util.RuntimeOptions) (_result *QueryMetricResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = &QueryMetricResponse{}
-	_body, _err := client.DoRequest(tea.String("QueryMetric"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-08-08"), tea.String("AK"), nil, tea.ToMap(request), runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) QueryMetric(request *QueryMetricRequest) (_result *QueryMetricResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &QueryMetricResponse{}
-	_body, _err := client.QueryMetricWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetTraceWithOptions(request *GetTraceRequest, runtime *util.RuntimeOptions) (_result *GetTraceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = &GetTraceResponse{}
-	_body, _err := client.DoRequest(tea.String("GetTrace"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-08-08"), tea.String("AK"), nil, tea.ToMap(request), runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetTrace(request *GetTraceRequest) (_result *GetTraceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetTraceResponse{}
-	_body, _err := client.GetTraceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) SearchTracesWithOptions(request *SearchTracesRequest, runtime *util.RuntimeOptions) (_result *SearchTracesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = &SearchTracesResponse{}
-	_body, _err := client.DoRequest(tea.String("SearchTraces"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-08-08"), tea.String("AK"), nil, tea.ToMap(request), runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SearchTraces(request *SearchTracesRequest) (_result *SearchTracesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SearchTracesResponse{}
-	_body, _err := client.SearchTracesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetTagValWithOptions(request *GetTagValRequest, runtime *util.RuntimeOptions) (_result *GetTagValResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = &GetTagValResponse{}
-	_body, _err := client.DoRequest(tea.String("GetTagVal"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-08-08"), tea.String("AK"), nil, tea.ToMap(request), runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetTagVal(request *GetTagValRequest) (_result *GetTagValResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetTagValResponse{}
-	_body, _err := client.GetTagValWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetTagKeyWithOptions(request *GetTagKeyRequest, runtime *util.RuntimeOptions) (_result *GetTagKeyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
 	_result = &GetTagKeyResponse{}
-	_body, _err := client.DoRequest(tea.String("GetTagKey"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-08-08"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	_body, _err := client.DoRPCRequest(tea.String("GetTagKey"), tea.String("2019-08-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1423,13 +1680,128 @@ func (client *Client) GetTagKey(request *GetTagKeyRequest) (_result *GetTagKeyRe
 	return _result, _err
 }
 
+func (client *Client) GetTagValWithOptions(request *GetTagValRequest, runtime *util.RuntimeOptions) (_result *GetTagValResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetTagValResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetTagVal"), tea.String("2019-08-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetTagVal(request *GetTagValRequest) (_result *GetTagValResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTagValResponse{}
+	_body, _err := client.GetTagValWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetTokenWithOptions(request *GetTokenRequest, runtime *util.RuntimeOptions) (_result *GetTokenResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetTokenResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetToken"), tea.String("2019-08-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetToken(request *GetTokenRequest) (_result *GetTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTokenResponse{}
+	_body, _err := client.GetTokenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetTraceWithOptions(request *GetTraceRequest, runtime *util.RuntimeOptions) (_result *GetTraceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetTraceResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetTrace"), tea.String("2019-08-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetTrace(request *GetTraceRequest) (_result *GetTraceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTraceResponse{}
+	_body, _err := client.GetTraceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetTraceAnalysisWithOptions(request *GetTraceAnalysisRequest, runtime *util.RuntimeOptions) (_result *GetTraceAnalysisResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetTraceAnalysisResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetTraceAnalysis"), tea.String("2019-08-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetTraceAnalysis(request *GetTraceAnalysisRequest) (_result *GetTraceAnalysisResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTraceAnalysisResponse{}
+	_body, _err := client.GetTraceAnalysisWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListIpOrHostsWithOptions(request *ListIpOrHostsRequest, runtime *util.RuntimeOptions) (_result *ListIpOrHostsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
 	_result = &ListIpOrHostsResponse{}
-	_body, _err := client.DoRequest(tea.String("ListIpOrHosts"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-08-08"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	_body, _err := client.DoRPCRequest(tea.String("ListIpOrHosts"), tea.String("2019-08-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1453,8 +1825,11 @@ func (client *Client) ListServicesWithOptions(request *ListServicesRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
 	_result = &ListServicesResponse{}
-	_body, _err := client.DoRequest(tea.String("ListServices"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-08-08"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	_body, _err := client.DoRPCRequest(tea.String("ListServices"), tea.String("2019-08-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1478,8 +1853,11 @@ func (client *Client) ListSpanNamesWithOptions(request *ListSpanNamesRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
 	_result = &ListSpanNamesResponse{}
-	_body, _err := client.DoRequest(tea.String("ListSpanNames"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-08-08"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	_body, _err := client.DoRPCRequest(tea.String("ListSpanNames"), tea.String("2019-08-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1498,13 +1876,10 @@ func (client *Client) ListSpanNames(request *ListSpanNamesRequest) (_result *Lis
 	return _result, _err
 }
 
-func (client *Client) GetTokenWithOptions(request *GetTokenRequest, runtime *util.RuntimeOptions) (_result *GetTokenResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = &GetTokenResponse{}
-	_body, _err := client.DoRequest(tea.String("GetToken"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-08-08"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+func (client *Client) OpenXtraceServiceWithOptions(runtime *util.RuntimeOptions) (_result *OpenXtraceServiceResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	_result = &OpenXtraceServiceResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("OpenXtraceService"), tea.String("2019-08-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1512,10 +1887,10 @@ func (client *Client) GetTokenWithOptions(request *GetTokenRequest, runtime *uti
 	return _result, _err
 }
 
-func (client *Client) GetToken(request *GetTokenRequest) (_result *GetTokenResponse, _err error) {
+func (client *Client) OpenXtraceService() (_result *OpenXtraceServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &GetTokenResponse{}
-	_body, _err := client.GetTokenWithOptions(request, runtime)
+	_result = &OpenXtraceServiceResponse{}
+	_body, _err := client.OpenXtraceServiceWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1523,18 +1898,83 @@ func (client *Client) GetToken(request *GetTokenRequest) (_result *GetTokenRespo
 	return _result, _err
 }
 
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !tea.BoolValue(util.Empty(endpoint)) {
-		_result = endpoint
+func (client *Client) QueryMetricWithOptions(request *QueryMetricRequest, runtime *util.RuntimeOptions) (_result *QueryMetricResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
 		return _result, _err
 	}
-
-	if !tea.BoolValue(util.IsUnset(endpointMap)) && !tea.BoolValue(util.Empty(endpointMap[tea.StringValue(regionId)])) {
-		_result = endpointMap[tea.StringValue(regionId)]
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &QueryMetricResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("QueryMetric"), tea.String("2019-08-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
 
-	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+func (client *Client) QueryMetric(request *QueryMetricRequest) (_result *QueryMetricResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryMetricResponse{}
+	_body, _err := client.QueryMetricWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SearchTracesWithOptions(request *SearchTracesRequest, runtime *util.RuntimeOptions) (_result *SearchTracesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SearchTracesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SearchTraces"), tea.String("2019-08-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SearchTraces(request *SearchTracesRequest) (_result *SearchTracesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SearchTracesResponse{}
+	_body, _err := client.SearchTracesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateSamplingWithOptions(request *UpdateSamplingRequest, runtime *util.RuntimeOptions) (_result *UpdateSamplingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &UpdateSamplingResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UpdateSampling"), tea.String("2019-08-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateSampling(request *UpdateSamplingRequest) (_result *UpdateSamplingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateSamplingResponse{}
+	_body, _err := client.UpdateSamplingWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
