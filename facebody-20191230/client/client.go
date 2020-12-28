@@ -2420,6 +2420,116 @@ func (s *DetectMaskResponse) SetBody(v *DetectMaskResponseBody) *DetectMaskRespo
 	return s
 }
 
+type GenRealPersonVerificationTokenRequest struct {
+	CertificateName   *string `json:"CertificateName,omitempty" xml:"CertificateName,omitempty"`
+	CertificateNumber *string `json:"CertificateNumber,omitempty" xml:"CertificateNumber,omitempty"`
+	MetaInfo          *string `json:"MetaInfo,omitempty" xml:"MetaInfo,omitempty"`
+}
+
+func (s GenRealPersonVerificationTokenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenRealPersonVerificationTokenRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenRealPersonVerificationTokenRequest) SetCertificateName(v string) *GenRealPersonVerificationTokenRequest {
+	s.CertificateName = &v
+	return s
+}
+
+func (s *GenRealPersonVerificationTokenRequest) SetCertificateNumber(v string) *GenRealPersonVerificationTokenRequest {
+	s.CertificateNumber = &v
+	return s
+}
+
+func (s *GenRealPersonVerificationTokenRequest) SetMetaInfo(v string) *GenRealPersonVerificationTokenRequest {
+	s.MetaInfo = &v
+	return s
+}
+
+type GenRealPersonVerificationTokenResponseBody struct {
+	RequestId    *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data         *GenRealPersonVerificationTokenResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage *string                                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Code         *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Success      *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GenRealPersonVerificationTokenResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenRealPersonVerificationTokenResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GenRealPersonVerificationTokenResponseBody) SetRequestId(v string) *GenRealPersonVerificationTokenResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GenRealPersonVerificationTokenResponseBody) SetData(v *GenRealPersonVerificationTokenResponseBodyData) *GenRealPersonVerificationTokenResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GenRealPersonVerificationTokenResponseBody) SetErrorMessage(v string) *GenRealPersonVerificationTokenResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GenRealPersonVerificationTokenResponseBody) SetCode(v string) *GenRealPersonVerificationTokenResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GenRealPersonVerificationTokenResponseBody) SetSuccess(v bool) *GenRealPersonVerificationTokenResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GenRealPersonVerificationTokenResponseBodyData struct {
+	VerificationToken *string `json:"VerificationToken,omitempty" xml:"VerificationToken,omitempty"`
+}
+
+func (s GenRealPersonVerificationTokenResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenRealPersonVerificationTokenResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GenRealPersonVerificationTokenResponseBodyData) SetVerificationToken(v string) *GenRealPersonVerificationTokenResponseBodyData {
+	s.VerificationToken = &v
+	return s
+}
+
+type GenRealPersonVerificationTokenResponse struct {
+	Headers map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GenRealPersonVerificationTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GenRealPersonVerificationTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenRealPersonVerificationTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GenRealPersonVerificationTokenResponse) SetHeaders(v map[string]*string) *GenRealPersonVerificationTokenResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GenRealPersonVerificationTokenResponse) SetBody(v *GenRealPersonVerificationTokenResponseBody) *GenRealPersonVerificationTokenResponse {
+	s.Body = v
+	return s
+}
+
 type ListFaceDbsResponseBody struct {
 	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *ListFaceDbsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
@@ -3103,6 +3213,122 @@ func (s *DetectCelebrityResponse) SetBody(v *DetectCelebrityResponseBody) *Detec
 	return s
 }
 
+type GetRealPersonVerificationResultRequest struct {
+	VerificationToken *string `json:"VerificationToken,omitempty" xml:"VerificationToken,omitempty"`
+	MaterialHash      *string `json:"MaterialHash,omitempty" xml:"MaterialHash,omitempty"`
+}
+
+func (s GetRealPersonVerificationResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRealPersonVerificationResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetRealPersonVerificationResultRequest) SetVerificationToken(v string) *GetRealPersonVerificationResultRequest {
+	s.VerificationToken = &v
+	return s
+}
+
+func (s *GetRealPersonVerificationResultRequest) SetMaterialHash(v string) *GetRealPersonVerificationResultRequest {
+	s.MaterialHash = &v
+	return s
+}
+
+type GetRealPersonVerificationResultResponseBody struct {
+	RequestId    *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data         *GetRealPersonVerificationResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage *string                                          `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Code         *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Success      *bool                                            `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetRealPersonVerificationResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRealPersonVerificationResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetRealPersonVerificationResultResponseBody) SetRequestId(v string) *GetRealPersonVerificationResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetRealPersonVerificationResultResponseBody) SetData(v *GetRealPersonVerificationResultResponseBodyData) *GetRealPersonVerificationResultResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetRealPersonVerificationResultResponseBody) SetErrorMessage(v string) *GetRealPersonVerificationResultResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetRealPersonVerificationResultResponseBody) SetCode(v string) *GetRealPersonVerificationResultResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetRealPersonVerificationResultResponseBody) SetSuccess(v bool) *GetRealPersonVerificationResultResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetRealPersonVerificationResultResponseBodyData struct {
+	Pass          *bool   `json:"Pass,omitempty" xml:"Pass,omitempty"`
+	IdentityInfo  *string `json:"IdentityInfo,omitempty" xml:"IdentityInfo,omitempty"`
+	MaterialMatch *string `json:"MaterialMatch,omitempty" xml:"MaterialMatch,omitempty"`
+}
+
+func (s GetRealPersonVerificationResultResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRealPersonVerificationResultResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetRealPersonVerificationResultResponseBodyData) SetPass(v bool) *GetRealPersonVerificationResultResponseBodyData {
+	s.Pass = &v
+	return s
+}
+
+func (s *GetRealPersonVerificationResultResponseBodyData) SetIdentityInfo(v string) *GetRealPersonVerificationResultResponseBodyData {
+	s.IdentityInfo = &v
+	return s
+}
+
+func (s *GetRealPersonVerificationResultResponseBodyData) SetMaterialMatch(v string) *GetRealPersonVerificationResultResponseBodyData {
+	s.MaterialMatch = &v
+	return s
+}
+
+type GetRealPersonVerificationResultResponse struct {
+	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetRealPersonVerificationResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetRealPersonVerificationResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRealPersonVerificationResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetRealPersonVerificationResultResponse) SetHeaders(v map[string]*string) *GetRealPersonVerificationResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetRealPersonVerificationResultResponse) SetBody(v *GetRealPersonVerificationResultResponseBody) *GetRealPersonVerificationResultResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteFaceRequest struct {
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	FaceId *string `json:"FaceId,omitempty" xml:"FaceId,omitempty"`
@@ -3162,84 +3388,6 @@ func (s *DeleteFaceResponse) SetHeaders(v map[string]*string) *DeleteFaceRespons
 }
 
 func (s *DeleteFaceResponse) SetBody(v *DeleteFaceResponseBody) *DeleteFaceResponse {
-	s.Body = v
-	return s
-}
-
-type CreateBodyInstanceResponseBody struct {
-	// RequestId
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 实例id
-	Data    *CreateBodyInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Code    *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-}
-
-func (s CreateBodyInstanceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateBodyInstanceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateBodyInstanceResponseBody) SetRequestId(v string) *CreateBodyInstanceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateBodyInstanceResponseBody) SetData(v *CreateBodyInstanceResponseBodyData) *CreateBodyInstanceResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *CreateBodyInstanceResponseBody) SetCode(v string) *CreateBodyInstanceResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *CreateBodyInstanceResponseBody) SetMessage(v string) *CreateBodyInstanceResponseBody {
-	s.Message = &v
-	return s
-}
-
-type CreateBodyInstanceResponseBodyData struct {
-	// 实例ID
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s CreateBodyInstanceResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateBodyInstanceResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *CreateBodyInstanceResponseBodyData) SetId(v int64) *CreateBodyInstanceResponseBodyData {
-	s.Id = &v
-	return s
-}
-
-type CreateBodyInstanceResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateBodyInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateBodyInstanceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateBodyInstanceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateBodyInstanceResponse) SetHeaders(v map[string]*string) *CreateBodyInstanceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateBodyInstanceResponse) SetBody(v *CreateBodyInstanceResponseBody) *CreateBodyInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -3769,8 +3917,6 @@ func (s *DeleteBodyPersonRequest) SetPersonId(v int64) *DeleteBodyPersonRequest 
 type DeleteBodyPersonResponseBody struct {
 	// RequestId
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
 func (s DeleteBodyPersonResponseBody) String() string {
@@ -3783,16 +3929,6 @@ func (s DeleteBodyPersonResponseBody) GoString() string {
 
 func (s *DeleteBodyPersonResponseBody) SetRequestId(v string) *DeleteBodyPersonResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteBodyPersonResponseBody) SetCode(v string) *DeleteBodyPersonResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DeleteBodyPersonResponseBody) SetMessage(v string) *DeleteBodyPersonResponseBody {
-	s.Message = &v
 	return s
 }
 
@@ -4638,8 +4774,6 @@ type CreateBodyPersonResponseBody struct {
 	// RequestId
 	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *CreateBodyPersonResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Code      *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
 func (s CreateBodyPersonResponseBody) String() string {
@@ -4657,16 +4791,6 @@ func (s *CreateBodyPersonResponseBody) SetRequestId(v string) *CreateBodyPersonR
 
 func (s *CreateBodyPersonResponseBody) SetData(v *CreateBodyPersonResponseBodyData) *CreateBodyPersonResponseBody {
 	s.Data = v
-	return s
-}
-
-func (s *CreateBodyPersonResponseBody) SetCode(v string) *CreateBodyPersonResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *CreateBodyPersonResponseBody) SetMessage(v string) *CreateBodyPersonResponseBody {
-	s.Message = &v
 	return s
 }
 
@@ -4865,8 +4989,6 @@ func (s *DeleteBodyDbRequest) SetId(v int64) *DeleteBodyDbRequest {
 type DeleteBodyDbResponseBody struct {
 	// RequestId
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
 func (s DeleteBodyDbResponseBody) String() string {
@@ -4879,16 +5001,6 @@ func (s DeleteBodyDbResponseBody) GoString() string {
 
 func (s *DeleteBodyDbResponseBody) SetRequestId(v string) *DeleteBodyDbResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteBodyDbResponseBody) SetCode(v string) *DeleteBodyDbResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DeleteBodyDbResponseBody) SetMessage(v string) *DeleteBodyDbResponseBody {
-	s.Message = &v
 	return s
 }
 
@@ -5740,8 +5852,6 @@ type GetBodyPersonResponseBody struct {
 	// RequestId
 	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *GetBodyPersonResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Code      *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
 func (s GetBodyPersonResponseBody) String() string {
@@ -5759,16 +5869,6 @@ func (s *GetBodyPersonResponseBody) SetRequestId(v string) *GetBodyPersonRespons
 
 func (s *GetBodyPersonResponseBody) SetData(v *GetBodyPersonResponseBodyData) *GetBodyPersonResponseBody {
 	s.Data = v
-	return s
-}
-
-func (s *GetBodyPersonResponseBody) SetCode(v string) *GetBodyPersonResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetBodyPersonResponseBody) SetMessage(v string) *GetBodyPersonResponseBody {
-	s.Message = &v
 	return s
 }
 
@@ -5930,6 +6030,155 @@ func (s *DeleteFaceDbResponse) SetBody(v *DeleteFaceDbResponseBody) *DeleteFaceD
 	return s
 }
 
+type ListBodyPersonRequest struct {
+	// 数据库ID
+	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// 起始位置(不含)
+	Offset *int64 `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	// 分页数量
+	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+}
+
+func (s ListBodyPersonRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBodyPersonRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListBodyPersonRequest) SetDbId(v int64) *ListBodyPersonRequest {
+	s.DbId = &v
+	return s
+}
+
+func (s *ListBodyPersonRequest) SetOffset(v int64) *ListBodyPersonRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *ListBodyPersonRequest) SetLimit(v int64) *ListBodyPersonRequest {
+	s.Limit = &v
+	return s
+}
+
+type ListBodyPersonResponseBody struct {
+	// RequestId
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *ListBodyPersonResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s ListBodyPersonResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBodyPersonResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListBodyPersonResponseBody) SetRequestId(v string) *ListBodyPersonResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListBodyPersonResponseBody) SetData(v *ListBodyPersonResponseBodyData) *ListBodyPersonResponseBody {
+	s.Data = v
+	return s
+}
+
+type ListBodyPersonResponseBodyData struct {
+	// 数据总量
+	Total      *int64                                      `json:"Total,omitempty" xml:"Total,omitempty"`
+	PersonList []*ListBodyPersonResponseBodyDataPersonList `json:"PersonList,omitempty" xml:"PersonList,omitempty" type:"Repeated"`
+}
+
+func (s ListBodyPersonResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBodyPersonResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListBodyPersonResponseBodyData) SetTotal(v int64) *ListBodyPersonResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+func (s *ListBodyPersonResponseBodyData) SetPersonList(v []*ListBodyPersonResponseBodyDataPersonList) *ListBodyPersonResponseBodyData {
+	s.PersonList = v
+	return s
+}
+
+type ListBodyPersonResponseBodyDataPersonList struct {
+	// 搜索引擎实例Id
+	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 数据库ID
+	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// 人员名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Trace数量
+	TraceCount *int64 `json:"TraceCount,omitempty" xml:"TraceCount,omitempty"`
+	// 人员ID
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s ListBodyPersonResponseBodyDataPersonList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBodyPersonResponseBodyDataPersonList) GoString() string {
+	return s.String()
+}
+
+func (s *ListBodyPersonResponseBodyDataPersonList) SetInstanceId(v int64) *ListBodyPersonResponseBodyDataPersonList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListBodyPersonResponseBodyDataPersonList) SetDbId(v int64) *ListBodyPersonResponseBodyDataPersonList {
+	s.DbId = &v
+	return s
+}
+
+func (s *ListBodyPersonResponseBodyDataPersonList) SetName(v string) *ListBodyPersonResponseBodyDataPersonList {
+	s.Name = &v
+	return s
+}
+
+func (s *ListBodyPersonResponseBodyDataPersonList) SetTraceCount(v int64) *ListBodyPersonResponseBodyDataPersonList {
+	s.TraceCount = &v
+	return s
+}
+
+func (s *ListBodyPersonResponseBodyDataPersonList) SetId(v int64) *ListBodyPersonResponseBodyDataPersonList {
+	s.Id = &v
+	return s
+}
+
+type ListBodyPersonResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListBodyPersonResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListBodyPersonResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBodyPersonResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListBodyPersonResponse) SetHeaders(v map[string]*string) *ListBodyPersonResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListBodyPersonResponse) SetBody(v *ListBodyPersonResponseBody) *ListBodyPersonResponse {
+	s.Body = v
+	return s
+}
+
 type ListBodyDbsRequest struct {
 	// 起始位置(不含)
 	Offset *int64 `json:"Offset,omitempty" xml:"Offset,omitempty"`
@@ -5959,8 +6208,6 @@ type ListBodyDbsResponseBody struct {
 	// RequestId
 	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *ListBodyDbsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Code      *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
 func (s ListBodyDbsResponseBody) String() string {
@@ -5978,16 +6225,6 @@ func (s *ListBodyDbsResponseBody) SetRequestId(v string) *ListBodyDbsResponseBod
 
 func (s *ListBodyDbsResponseBody) SetData(v *ListBodyDbsResponseBodyData) *ListBodyDbsResponseBody {
 	s.Data = v
-	return s
-}
-
-func (s *ListBodyDbsResponseBody) SetCode(v string) *ListBodyDbsResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ListBodyDbsResponseBody) SetMessage(v string) *ListBodyDbsResponseBody {
-	s.Message = &v
 	return s
 }
 
@@ -6799,8 +7036,6 @@ type SearchBodyTraceResponseBody struct {
 	// RequestId
 	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *SearchBodyTraceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Code      *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
 func (s SearchBodyTraceResponseBody) String() string {
@@ -6818,16 +7053,6 @@ func (s *SearchBodyTraceResponseBody) SetRequestId(v string) *SearchBodyTraceRes
 
 func (s *SearchBodyTraceResponseBody) SetData(v *SearchBodyTraceResponseBodyData) *SearchBodyTraceResponseBody {
 	s.Data = v
-	return s
-}
-
-func (s *SearchBodyTraceResponseBody) SetCode(v string) *SearchBodyTraceResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *SearchBodyTraceResponseBody) SetMessage(v string) *SearchBodyTraceResponseBody {
-	s.Message = &v
 	return s
 }
 
@@ -7520,8 +7745,6 @@ type CreateBodyDbResponseBody struct {
 	// RequestId
 	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *CreateBodyDbResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Code      *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
 func (s CreateBodyDbResponseBody) String() string {
@@ -7539,16 +7762,6 @@ func (s *CreateBodyDbResponseBody) SetRequestId(v string) *CreateBodyDbResponseB
 
 func (s *CreateBodyDbResponseBody) SetData(v *CreateBodyDbResponseBodyData) *CreateBodyDbResponseBody {
 	s.Data = v
-	return s
-}
-
-func (s *CreateBodyDbResponseBody) SetCode(v string) *CreateBodyDbResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *CreateBodyDbResponseBody) SetMessage(v string) *CreateBodyDbResponseBody {
-	s.Message = &v
 	return s
 }
 
@@ -8989,6 +9202,34 @@ func (client *Client) DetectMaskAdvance(request *DetectMaskAdvanceRequest, runti
 	return _result, _err
 }
 
+func (client *Client) GenRealPersonVerificationTokenWithOptions(request *GenRealPersonVerificationTokenRequest, runtime *util.RuntimeOptions) (_result *GenRealPersonVerificationTokenResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GenRealPersonVerificationTokenResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GenRealPersonVerificationToken"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GenRealPersonVerificationToken(request *GenRealPersonVerificationTokenRequest) (_result *GenRealPersonVerificationTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GenRealPersonVerificationTokenResponse{}
+	_body, _err := client.GenRealPersonVerificationTokenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListFaceDbsWithOptions(runtime *util.RuntimeOptions) (_result *ListFaceDbsResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	_result = &ListFaceDbsResponse{}
@@ -9297,6 +9538,34 @@ func (client *Client) DetectCelebrityAdvance(request *DetectCelebrityAdvanceRequ
 	return _result, _err
 }
 
+func (client *Client) GetRealPersonVerificationResultWithOptions(request *GetRealPersonVerificationResultRequest, runtime *util.RuntimeOptions) (_result *GetRealPersonVerificationResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetRealPersonVerificationResultResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetRealPersonVerificationResult"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetRealPersonVerificationResult(request *GetRealPersonVerificationResultRequest) (_result *GetRealPersonVerificationResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetRealPersonVerificationResultResponse{}
+	_body, _err := client.GetRealPersonVerificationResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteFaceWithOptions(request *DeleteFaceRequest, runtime *util.RuntimeOptions) (_result *DeleteFaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9318,28 +9587,6 @@ func (client *Client) DeleteFace(request *DeleteFaceRequest) (_result *DeleteFac
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteFaceResponse{}
 	_body, _err := client.DeleteFaceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateBodyInstanceWithOptions(runtime *util.RuntimeOptions) (_result *CreateBodyInstanceResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
-	_result = &CreateBodyInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateBodyInstance"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateBodyInstance() (_result *CreateBodyInstanceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateBodyInstanceResponse{}
-	_body, _err := client.CreateBodyInstanceWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10693,6 +10940,35 @@ func (client *Client) DeleteFaceDb(request *DeleteFaceDbRequest) (_result *Delet
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteFaceDbResponse{}
 	_body, _err := client.DeleteFaceDbWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListBodyPersonWithOptions(request *ListBodyPersonRequest, runtime *util.RuntimeOptions) (_result *ListBodyPersonResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &ListBodyPersonResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListBodyPerson"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListBodyPerson(request *ListBodyPersonRequest) (_result *ListBodyPersonResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListBodyPersonResponse{}
+	_body, _err := client.ListBodyPersonWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
