@@ -15,15 +15,15 @@ import (
 )
 
 type ContrastSmartVerifyRequest struct {
-	SceneId       *int64  `json:"SceneId,omitempty" xml:"SceneId,omitempty" require:"true"`
-	OuterOrderNo  *string `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty" require:"true"`
-	Mode          *string `json:"Mode,omitempty" xml:"Mode,omitempty" require:"true"`
-	CertType      *string `json:"CertType,omitempty" xml:"CertType,omitempty" require:"true"`
+	SceneId       *int64  `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	OuterOrderNo  *string `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
+	Mode          *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	CertType      *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
 	Mobile        *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
 	Ip            *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	UserId        *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	CertName      *string `json:"CertName,omitempty" xml:"CertName,omitempty" require:"true"`
-	CertNo        *string `json:"CertNo,omitempty" xml:"CertNo,omitempty" require:"true"`
+	CertName      *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	CertNo        *string `json:"CertNo,omitempty" xml:"CertNo,omitempty"`
 	FacePicFile   *string `json:"FacePicFile,omitempty" xml:"FacePicFile,omitempty"`
 	FacePicUrl    *string `json:"FacePicUrl,omitempty" xml:"FacePicUrl,omitempty"`
 	FacePicString *string `json:"FacePicString,omitempty" xml:"FacePicString,omitempty"`
@@ -175,15 +175,15 @@ func (s *ContrastSmartVerifyResponseResultObject) SetRiskInfo(v string) *Contras
 
 type ContrastSmartVerifyAdvanceRequest struct {
 	FacePicFileObject io.Reader `json:"FacePicFileObject,omitempty" xml:"FacePicFileObject,omitempty" require:"true"`
-	SceneId           *int64    `json:"SceneId,omitempty" xml:"SceneId,omitempty" require:"true"`
-	OuterOrderNo      *string   `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty" require:"true"`
-	Mode              *string   `json:"Mode,omitempty" xml:"Mode,omitempty" require:"true"`
-	CertType          *string   `json:"CertType,omitempty" xml:"CertType,omitempty" require:"true"`
+	SceneId           *int64    `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	OuterOrderNo      *string   `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
+	Mode              *string   `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	CertType          *string   `json:"CertType,omitempty" xml:"CertType,omitempty"`
 	Mobile            *string   `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
 	Ip                *string   `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	UserId            *string   `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	CertName          *string   `json:"CertName,omitempty" xml:"CertName,omitempty" require:"true"`
-	CertNo            *string   `json:"CertNo,omitempty" xml:"CertNo,omitempty" require:"true"`
+	CertName          *string   `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	CertNo            *string   `json:"CertNo,omitempty" xml:"CertNo,omitempty"`
 	FacePicUrl        *string   `json:"FacePicUrl,omitempty" xml:"FacePicUrl,omitempty"`
 	FacePicString     *string   `json:"FacePicString,omitempty" xml:"FacePicString,omitempty"`
 }
