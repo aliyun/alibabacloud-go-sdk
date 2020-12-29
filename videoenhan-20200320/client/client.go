@@ -18,112 +18,135 @@ import (
 	"io"
 )
 
-type GetAsyncJobResultRequest struct {
-	Async *bool   `json:"Async,omitempty" xml:"Async,omitempty"`
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+type ToneSdrVideoRequest struct {
+	VideoURL     *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
+	Async        *bool   `json:"Async,omitempty" xml:"Async,omitempty"`
+	Bitrate      *int32  `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	RecolorModel *string `json:"RecolorModel,omitempty" xml:"RecolorModel,omitempty"`
 }
 
-func (s GetAsyncJobResultRequest) String() string {
+func (s ToneSdrVideoRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetAsyncJobResultRequest) GoString() string {
+func (s ToneSdrVideoRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetAsyncJobResultRequest) SetAsync(v bool) *GetAsyncJobResultRequest {
+func (s *ToneSdrVideoRequest) SetVideoURL(v string) *ToneSdrVideoRequest {
+	s.VideoURL = &v
+	return s
+}
+
+func (s *ToneSdrVideoRequest) SetAsync(v bool) *ToneSdrVideoRequest {
 	s.Async = &v
 	return s
 }
 
-func (s *GetAsyncJobResultRequest) SetJobId(v string) *GetAsyncJobResultRequest {
-	s.JobId = &v
+func (s *ToneSdrVideoRequest) SetBitrate(v int32) *ToneSdrVideoRequest {
+	s.Bitrate = &v
 	return s
 }
 
-type GetAsyncJobResultResponseBody struct {
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *GetAsyncJobResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+func (s *ToneSdrVideoRequest) SetRecolorModel(v string) *ToneSdrVideoRequest {
+	s.RecolorModel = &v
+	return s
 }
 
-func (s GetAsyncJobResultResponseBody) String() string {
+type ToneSdrVideoAdvanceRequest struct {
+	VideoURLObject io.Reader `json:"VideoURLObject,omitempty" xml:"VideoURLObject,omitempty" require:"true"`
+	Async          *bool     `json:"Async,omitempty" xml:"Async,omitempty"`
+	Bitrate        *int32    `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	RecolorModel   *string   `json:"RecolorModel,omitempty" xml:"RecolorModel,omitempty"`
+}
+
+func (s ToneSdrVideoAdvanceRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetAsyncJobResultResponseBody) GoString() string {
+func (s ToneSdrVideoAdvanceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetAsyncJobResultResponseBody) SetRequestId(v string) *GetAsyncJobResultResponseBody {
+func (s *ToneSdrVideoAdvanceRequest) SetVideoURLObject(v io.Reader) *ToneSdrVideoAdvanceRequest {
+	s.VideoURLObject = v
+	return s
+}
+
+func (s *ToneSdrVideoAdvanceRequest) SetAsync(v bool) *ToneSdrVideoAdvanceRequest {
+	s.Async = &v
+	return s
+}
+
+func (s *ToneSdrVideoAdvanceRequest) SetBitrate(v int32) *ToneSdrVideoAdvanceRequest {
+	s.Bitrate = &v
+	return s
+}
+
+func (s *ToneSdrVideoAdvanceRequest) SetRecolorModel(v string) *ToneSdrVideoAdvanceRequest {
+	s.RecolorModel = &v
+	return s
+}
+
+type ToneSdrVideoResponseBody struct {
+	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *ToneSdrVideoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s ToneSdrVideoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ToneSdrVideoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ToneSdrVideoResponseBody) SetRequestId(v string) *ToneSdrVideoResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *GetAsyncJobResultResponseBody) SetData(v *GetAsyncJobResultResponseBodyData) *GetAsyncJobResultResponseBody {
+func (s *ToneSdrVideoResponseBody) SetData(v *ToneSdrVideoResponseBodyData) *ToneSdrVideoResponseBody {
 	s.Data = v
 	return s
 }
 
-type GetAsyncJobResultResponseBodyData struct {
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Result       *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	JobId        *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+type ToneSdrVideoResponseBodyData struct {
+	VideoURL *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
 }
 
-func (s GetAsyncJobResultResponseBodyData) String() string {
+func (s ToneSdrVideoResponseBodyData) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetAsyncJobResultResponseBodyData) GoString() string {
+func (s ToneSdrVideoResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *GetAsyncJobResultResponseBodyData) SetStatus(v string) *GetAsyncJobResultResponseBodyData {
-	s.Status = &v
+func (s *ToneSdrVideoResponseBodyData) SetVideoURL(v string) *ToneSdrVideoResponseBodyData {
+	s.VideoURL = &v
 	return s
 }
 
-func (s *GetAsyncJobResultResponseBodyData) SetErrorMessage(v string) *GetAsyncJobResultResponseBodyData {
-	s.ErrorMessage = &v
-	return s
+type ToneSdrVideoResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ToneSdrVideoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s *GetAsyncJobResultResponseBodyData) SetResult(v string) *GetAsyncJobResultResponseBodyData {
-	s.Result = &v
-	return s
-}
-
-func (s *GetAsyncJobResultResponseBodyData) SetErrorCode(v string) *GetAsyncJobResultResponseBodyData {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetAsyncJobResultResponseBodyData) SetJobId(v string) *GetAsyncJobResultResponseBodyData {
-	s.JobId = &v
-	return s
-}
-
-type GetAsyncJobResultResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetAsyncJobResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetAsyncJobResultResponse) String() string {
+func (s ToneSdrVideoResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetAsyncJobResultResponse) GoString() string {
+func (s ToneSdrVideoResponse) GoString() string {
 	return s.String()
 }
 
-func (s *GetAsyncJobResultResponse) SetHeaders(v map[string]*string) *GetAsyncJobResultResponse {
+func (s *ToneSdrVideoResponse) SetHeaders(v map[string]*string) *ToneSdrVideoResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *GetAsyncJobResultResponse) SetBody(v *GetAsyncJobResultResponseBody) *GetAsyncJobResultResponse {
+func (s *ToneSdrVideoResponse) SetBody(v *ToneSdrVideoResponseBody) *ToneSdrVideoResponse {
 	s.Body = v
 	return s
 }
@@ -309,183 +332,135 @@ func (s *EnhanceVideoQualityResponse) SetBody(v *EnhanceVideoQualityResponseBody
 	return s
 }
 
-type GenerateVideoRequest struct {
-	Async            *bool                           `json:"Async,omitempty" xml:"Async,omitempty"`
-	Scene            *string                         `json:"Scene,omitempty" xml:"Scene,omitempty"`
-	Width            *int32                          `json:"Width,omitempty" xml:"Width,omitempty"`
-	Height           *int32                          `json:"Height,omitempty" xml:"Height,omitempty"`
-	Style            *string                         `json:"Style,omitempty" xml:"Style,omitempty"`
-	Duration         *float32                        `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	DurationAdaption *bool                           `json:"DurationAdaption,omitempty" xml:"DurationAdaption,omitempty"`
-	TransitionStyle  *string                         `json:"TransitionStyle,omitempty" xml:"TransitionStyle,omitempty"`
-	SmartEffect      *bool                           `json:"SmartEffect,omitempty" xml:"SmartEffect,omitempty"`
-	PuzzleEffect     *bool                           `json:"PuzzleEffect,omitempty" xml:"PuzzleEffect,omitempty"`
-	Mute             *bool                           `json:"Mute,omitempty" xml:"Mute,omitempty"`
-	FileList         []*GenerateVideoRequestFileList `json:"FileList,omitempty" xml:"FileList,omitempty" type:"Repeated"`
+type InterpolateVideoFrameRequest struct {
+	VideoURL  *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
+	Async     *bool   `json:"Async,omitempty" xml:"Async,omitempty"`
+	FrameRate *int32  `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
+	Bitrate   *int32  `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
 }
 
-func (s GenerateVideoRequest) String() string {
+func (s InterpolateVideoFrameRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GenerateVideoRequest) GoString() string {
+func (s InterpolateVideoFrameRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GenerateVideoRequest) SetAsync(v bool) *GenerateVideoRequest {
+func (s *InterpolateVideoFrameRequest) SetVideoURL(v string) *InterpolateVideoFrameRequest {
+	s.VideoURL = &v
+	return s
+}
+
+func (s *InterpolateVideoFrameRequest) SetAsync(v bool) *InterpolateVideoFrameRequest {
 	s.Async = &v
 	return s
 }
 
-func (s *GenerateVideoRequest) SetScene(v string) *GenerateVideoRequest {
-	s.Scene = &v
+func (s *InterpolateVideoFrameRequest) SetFrameRate(v int32) *InterpolateVideoFrameRequest {
+	s.FrameRate = &v
 	return s
 }
 
-func (s *GenerateVideoRequest) SetWidth(v int32) *GenerateVideoRequest {
-	s.Width = &v
+func (s *InterpolateVideoFrameRequest) SetBitrate(v int32) *InterpolateVideoFrameRequest {
+	s.Bitrate = &v
 	return s
 }
 
-func (s *GenerateVideoRequest) SetHeight(v int32) *GenerateVideoRequest {
-	s.Height = &v
-	return s
+type InterpolateVideoFrameAdvanceRequest struct {
+	VideoURLObject io.Reader `json:"VideoURLObject,omitempty" xml:"VideoURLObject,omitempty" require:"true"`
+	Async          *bool     `json:"Async,omitempty" xml:"Async,omitempty"`
+	FrameRate      *int32    `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
+	Bitrate        *int32    `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
 }
 
-func (s *GenerateVideoRequest) SetStyle(v string) *GenerateVideoRequest {
-	s.Style = &v
-	return s
-}
-
-func (s *GenerateVideoRequest) SetDuration(v float32) *GenerateVideoRequest {
-	s.Duration = &v
-	return s
-}
-
-func (s *GenerateVideoRequest) SetDurationAdaption(v bool) *GenerateVideoRequest {
-	s.DurationAdaption = &v
-	return s
-}
-
-func (s *GenerateVideoRequest) SetTransitionStyle(v string) *GenerateVideoRequest {
-	s.TransitionStyle = &v
-	return s
-}
-
-func (s *GenerateVideoRequest) SetSmartEffect(v bool) *GenerateVideoRequest {
-	s.SmartEffect = &v
-	return s
-}
-
-func (s *GenerateVideoRequest) SetPuzzleEffect(v bool) *GenerateVideoRequest {
-	s.PuzzleEffect = &v
-	return s
-}
-
-func (s *GenerateVideoRequest) SetMute(v bool) *GenerateVideoRequest {
-	s.Mute = &v
-	return s
-}
-
-func (s *GenerateVideoRequest) SetFileList(v []*GenerateVideoRequestFileList) *GenerateVideoRequest {
-	s.FileList = v
-	return s
-}
-
-type GenerateVideoRequestFileList struct {
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	FileUrl  *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-}
-
-func (s GenerateVideoRequestFileList) String() string {
+func (s InterpolateVideoFrameAdvanceRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GenerateVideoRequestFileList) GoString() string {
+func (s InterpolateVideoFrameAdvanceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GenerateVideoRequestFileList) SetType(v string) *GenerateVideoRequestFileList {
-	s.Type = &v
+func (s *InterpolateVideoFrameAdvanceRequest) SetVideoURLObject(v io.Reader) *InterpolateVideoFrameAdvanceRequest {
+	s.VideoURLObject = v
 	return s
 }
 
-func (s *GenerateVideoRequestFileList) SetFileUrl(v string) *GenerateVideoRequestFileList {
-	s.FileUrl = &v
+func (s *InterpolateVideoFrameAdvanceRequest) SetAsync(v bool) *InterpolateVideoFrameAdvanceRequest {
+	s.Async = &v
 	return s
 }
 
-func (s *GenerateVideoRequestFileList) SetFileName(v string) *GenerateVideoRequestFileList {
-	s.FileName = &v
+func (s *InterpolateVideoFrameAdvanceRequest) SetFrameRate(v int32) *InterpolateVideoFrameAdvanceRequest {
+	s.FrameRate = &v
 	return s
 }
 
-type GenerateVideoResponseBody struct {
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *GenerateVideoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+func (s *InterpolateVideoFrameAdvanceRequest) SetBitrate(v int32) *InterpolateVideoFrameAdvanceRequest {
+	s.Bitrate = &v
+	return s
 }
 
-func (s GenerateVideoResponseBody) String() string {
+type InterpolateVideoFrameResponseBody struct {
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *InterpolateVideoFrameResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s InterpolateVideoFrameResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GenerateVideoResponseBody) GoString() string {
+func (s InterpolateVideoFrameResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GenerateVideoResponseBody) SetRequestId(v string) *GenerateVideoResponseBody {
+func (s *InterpolateVideoFrameResponseBody) SetRequestId(v string) *InterpolateVideoFrameResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *GenerateVideoResponseBody) SetData(v *GenerateVideoResponseBodyData) *GenerateVideoResponseBody {
+func (s *InterpolateVideoFrameResponseBody) SetData(v *InterpolateVideoFrameResponseBodyData) *InterpolateVideoFrameResponseBody {
 	s.Data = v
 	return s
 }
 
-type GenerateVideoResponseBodyData struct {
-	VideoCoverUrl *string `json:"VideoCoverUrl,omitempty" xml:"VideoCoverUrl,omitempty"`
-	VideoUrl      *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+type InterpolateVideoFrameResponseBodyData struct {
+	VideoURL *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
 }
 
-func (s GenerateVideoResponseBodyData) String() string {
+func (s InterpolateVideoFrameResponseBodyData) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GenerateVideoResponseBodyData) GoString() string {
+func (s InterpolateVideoFrameResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *GenerateVideoResponseBodyData) SetVideoCoverUrl(v string) *GenerateVideoResponseBodyData {
-	s.VideoCoverUrl = &v
+func (s *InterpolateVideoFrameResponseBodyData) SetVideoURL(v string) *InterpolateVideoFrameResponseBodyData {
+	s.VideoURL = &v
 	return s
 }
 
-func (s *GenerateVideoResponseBodyData) SetVideoUrl(v string) *GenerateVideoResponseBodyData {
-	s.VideoUrl = &v
-	return s
+type InterpolateVideoFrameResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *InterpolateVideoFrameResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-type GenerateVideoResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GenerateVideoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GenerateVideoResponse) String() string {
+func (s InterpolateVideoFrameResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GenerateVideoResponse) GoString() string {
+func (s InterpolateVideoFrameResponse) GoString() string {
 	return s.String()
 }
 
-func (s *GenerateVideoResponse) SetHeaders(v map[string]*string) *GenerateVideoResponse {
+func (s *InterpolateVideoFrameResponse) SetHeaders(v map[string]*string) *InterpolateVideoFrameResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *GenerateVideoResponse) SetBody(v *GenerateVideoResponseBody) *GenerateVideoResponse {
+func (s *InterpolateVideoFrameResponse) SetBody(v *InterpolateVideoFrameResponseBody) *InterpolateVideoFrameResponse {
 	s.Body = v
 	return s
 }
@@ -677,6 +652,931 @@ func (s *EraseVideoLogoResponse) SetHeaders(v map[string]*string) *EraseVideoLog
 }
 
 func (s *EraseVideoLogoResponse) SetBody(v *EraseVideoLogoResponseBody) *EraseVideoLogoResponse {
+	s.Body = v
+	return s
+}
+
+type ConvertHdrVideoRequest struct {
+	VideoURL       *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
+	Async          *bool   `json:"Async,omitempty" xml:"Async,omitempty"`
+	HDRFormat      *string `json:"HDRFormat,omitempty" xml:"HDRFormat,omitempty"`
+	MaxIlluminance *int32  `json:"MaxIlluminance,omitempty" xml:"MaxIlluminance,omitempty"`
+	Bitrate        *int32  `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+}
+
+func (s ConvertHdrVideoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConvertHdrVideoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ConvertHdrVideoRequest) SetVideoURL(v string) *ConvertHdrVideoRequest {
+	s.VideoURL = &v
+	return s
+}
+
+func (s *ConvertHdrVideoRequest) SetAsync(v bool) *ConvertHdrVideoRequest {
+	s.Async = &v
+	return s
+}
+
+func (s *ConvertHdrVideoRequest) SetHDRFormat(v string) *ConvertHdrVideoRequest {
+	s.HDRFormat = &v
+	return s
+}
+
+func (s *ConvertHdrVideoRequest) SetMaxIlluminance(v int32) *ConvertHdrVideoRequest {
+	s.MaxIlluminance = &v
+	return s
+}
+
+func (s *ConvertHdrVideoRequest) SetBitrate(v int32) *ConvertHdrVideoRequest {
+	s.Bitrate = &v
+	return s
+}
+
+type ConvertHdrVideoAdvanceRequest struct {
+	VideoURLObject io.Reader `json:"VideoURLObject,omitempty" xml:"VideoURLObject,omitempty" require:"true"`
+	Async          *bool     `json:"Async,omitempty" xml:"Async,omitempty"`
+	HDRFormat      *string   `json:"HDRFormat,omitempty" xml:"HDRFormat,omitempty"`
+	MaxIlluminance *int32    `json:"MaxIlluminance,omitempty" xml:"MaxIlluminance,omitempty"`
+	Bitrate        *int32    `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+}
+
+func (s ConvertHdrVideoAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConvertHdrVideoAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ConvertHdrVideoAdvanceRequest) SetVideoURLObject(v io.Reader) *ConvertHdrVideoAdvanceRequest {
+	s.VideoURLObject = v
+	return s
+}
+
+func (s *ConvertHdrVideoAdvanceRequest) SetAsync(v bool) *ConvertHdrVideoAdvanceRequest {
+	s.Async = &v
+	return s
+}
+
+func (s *ConvertHdrVideoAdvanceRequest) SetHDRFormat(v string) *ConvertHdrVideoAdvanceRequest {
+	s.HDRFormat = &v
+	return s
+}
+
+func (s *ConvertHdrVideoAdvanceRequest) SetMaxIlluminance(v int32) *ConvertHdrVideoAdvanceRequest {
+	s.MaxIlluminance = &v
+	return s
+}
+
+func (s *ConvertHdrVideoAdvanceRequest) SetBitrate(v int32) *ConvertHdrVideoAdvanceRequest {
+	s.Bitrate = &v
+	return s
+}
+
+type ConvertHdrVideoResponseBody struct {
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *ConvertHdrVideoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s ConvertHdrVideoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConvertHdrVideoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ConvertHdrVideoResponseBody) SetRequestId(v string) *ConvertHdrVideoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ConvertHdrVideoResponseBody) SetData(v *ConvertHdrVideoResponseBodyData) *ConvertHdrVideoResponseBody {
+	s.Data = v
+	return s
+}
+
+type ConvertHdrVideoResponseBodyData struct {
+	VideoURL *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
+}
+
+func (s ConvertHdrVideoResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConvertHdrVideoResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ConvertHdrVideoResponseBodyData) SetVideoURL(v string) *ConvertHdrVideoResponseBodyData {
+	s.VideoURL = &v
+	return s
+}
+
+type ConvertHdrVideoResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ConvertHdrVideoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ConvertHdrVideoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConvertHdrVideoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ConvertHdrVideoResponse) SetHeaders(v map[string]*string) *ConvertHdrVideoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ConvertHdrVideoResponse) SetBody(v *ConvertHdrVideoResponseBody) *ConvertHdrVideoResponse {
+	s.Body = v
+	return s
+}
+
+type AdjustVideoColorRequest struct {
+	VideoUrl     *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+	Async        *bool   `json:"Async,omitempty" xml:"Async,omitempty"`
+	VideoBitrate *string `json:"VideoBitrate,omitempty" xml:"VideoBitrate,omitempty"`
+	VideoCodec   *string `json:"VideoCodec,omitempty" xml:"VideoCodec,omitempty"`
+	VideoFormat  *string `json:"VideoFormat,omitempty" xml:"VideoFormat,omitempty"`
+	Mode         *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+}
+
+func (s AdjustVideoColorRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AdjustVideoColorRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AdjustVideoColorRequest) SetVideoUrl(v string) *AdjustVideoColorRequest {
+	s.VideoUrl = &v
+	return s
+}
+
+func (s *AdjustVideoColorRequest) SetAsync(v bool) *AdjustVideoColorRequest {
+	s.Async = &v
+	return s
+}
+
+func (s *AdjustVideoColorRequest) SetVideoBitrate(v string) *AdjustVideoColorRequest {
+	s.VideoBitrate = &v
+	return s
+}
+
+func (s *AdjustVideoColorRequest) SetVideoCodec(v string) *AdjustVideoColorRequest {
+	s.VideoCodec = &v
+	return s
+}
+
+func (s *AdjustVideoColorRequest) SetVideoFormat(v string) *AdjustVideoColorRequest {
+	s.VideoFormat = &v
+	return s
+}
+
+func (s *AdjustVideoColorRequest) SetMode(v string) *AdjustVideoColorRequest {
+	s.Mode = &v
+	return s
+}
+
+type AdjustVideoColorAdvanceRequest struct {
+	VideoUrlObject io.Reader `json:"VideoUrlObject,omitempty" xml:"VideoUrlObject,omitempty" require:"true"`
+	Async          *bool     `json:"Async,omitempty" xml:"Async,omitempty"`
+	VideoBitrate   *string   `json:"VideoBitrate,omitempty" xml:"VideoBitrate,omitempty"`
+	VideoCodec     *string   `json:"VideoCodec,omitempty" xml:"VideoCodec,omitempty"`
+	VideoFormat    *string   `json:"VideoFormat,omitempty" xml:"VideoFormat,omitempty"`
+	Mode           *string   `json:"Mode,omitempty" xml:"Mode,omitempty"`
+}
+
+func (s AdjustVideoColorAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AdjustVideoColorAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AdjustVideoColorAdvanceRequest) SetVideoUrlObject(v io.Reader) *AdjustVideoColorAdvanceRequest {
+	s.VideoUrlObject = v
+	return s
+}
+
+func (s *AdjustVideoColorAdvanceRequest) SetAsync(v bool) *AdjustVideoColorAdvanceRequest {
+	s.Async = &v
+	return s
+}
+
+func (s *AdjustVideoColorAdvanceRequest) SetVideoBitrate(v string) *AdjustVideoColorAdvanceRequest {
+	s.VideoBitrate = &v
+	return s
+}
+
+func (s *AdjustVideoColorAdvanceRequest) SetVideoCodec(v string) *AdjustVideoColorAdvanceRequest {
+	s.VideoCodec = &v
+	return s
+}
+
+func (s *AdjustVideoColorAdvanceRequest) SetVideoFormat(v string) *AdjustVideoColorAdvanceRequest {
+	s.VideoFormat = &v
+	return s
+}
+
+func (s *AdjustVideoColorAdvanceRequest) SetMode(v string) *AdjustVideoColorAdvanceRequest {
+	s.Mode = &v
+	return s
+}
+
+type AdjustVideoColorResponseBody struct {
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *AdjustVideoColorResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s AdjustVideoColorResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AdjustVideoColorResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AdjustVideoColorResponseBody) SetRequestId(v string) *AdjustVideoColorResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AdjustVideoColorResponseBody) SetData(v *AdjustVideoColorResponseBodyData) *AdjustVideoColorResponseBody {
+	s.Data = v
+	return s
+}
+
+type AdjustVideoColorResponseBodyData struct {
+	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+}
+
+func (s AdjustVideoColorResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AdjustVideoColorResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *AdjustVideoColorResponseBodyData) SetVideoUrl(v string) *AdjustVideoColorResponseBodyData {
+	s.VideoUrl = &v
+	return s
+}
+
+type AdjustVideoColorResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *AdjustVideoColorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AdjustVideoColorResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AdjustVideoColorResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AdjustVideoColorResponse) SetHeaders(v map[string]*string) *AdjustVideoColorResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AdjustVideoColorResponse) SetBody(v *AdjustVideoColorResponseBody) *AdjustVideoColorResponse {
+	s.Body = v
+	return s
+}
+
+type ChangeVideoSizeRequest struct {
+	VideoUrl  *string  `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+	Async     *bool    `json:"Async,omitempty" xml:"Async,omitempty"`
+	Width     *int32   `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height    *int32   `json:"Height,omitempty" xml:"Height,omitempty"`
+	CropType  *string  `json:"CropType,omitempty" xml:"CropType,omitempty"`
+	FillType  *string  `json:"FillType,omitempty" xml:"FillType,omitempty"`
+	Tightness *float32 `json:"Tightness,omitempty" xml:"Tightness,omitempty"`
+	R         *int32   `json:"R,omitempty" xml:"R,omitempty"`
+	G         *int32   `json:"G,omitempty" xml:"G,omitempty"`
+	B         *int32   `json:"B,omitempty" xml:"B,omitempty"`
+}
+
+func (s ChangeVideoSizeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeVideoSizeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeVideoSizeRequest) SetVideoUrl(v string) *ChangeVideoSizeRequest {
+	s.VideoUrl = &v
+	return s
+}
+
+func (s *ChangeVideoSizeRequest) SetAsync(v bool) *ChangeVideoSizeRequest {
+	s.Async = &v
+	return s
+}
+
+func (s *ChangeVideoSizeRequest) SetWidth(v int32) *ChangeVideoSizeRequest {
+	s.Width = &v
+	return s
+}
+
+func (s *ChangeVideoSizeRequest) SetHeight(v int32) *ChangeVideoSizeRequest {
+	s.Height = &v
+	return s
+}
+
+func (s *ChangeVideoSizeRequest) SetCropType(v string) *ChangeVideoSizeRequest {
+	s.CropType = &v
+	return s
+}
+
+func (s *ChangeVideoSizeRequest) SetFillType(v string) *ChangeVideoSizeRequest {
+	s.FillType = &v
+	return s
+}
+
+func (s *ChangeVideoSizeRequest) SetTightness(v float32) *ChangeVideoSizeRequest {
+	s.Tightness = &v
+	return s
+}
+
+func (s *ChangeVideoSizeRequest) SetR(v int32) *ChangeVideoSizeRequest {
+	s.R = &v
+	return s
+}
+
+func (s *ChangeVideoSizeRequest) SetG(v int32) *ChangeVideoSizeRequest {
+	s.G = &v
+	return s
+}
+
+func (s *ChangeVideoSizeRequest) SetB(v int32) *ChangeVideoSizeRequest {
+	s.B = &v
+	return s
+}
+
+type ChangeVideoSizeAdvanceRequest struct {
+	VideoUrlObject io.Reader `json:"VideoUrlObject,omitempty" xml:"VideoUrlObject,omitempty" require:"true"`
+	Async          *bool     `json:"Async,omitempty" xml:"Async,omitempty"`
+	Width          *int32    `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height         *int32    `json:"Height,omitempty" xml:"Height,omitempty"`
+	CropType       *string   `json:"CropType,omitempty" xml:"CropType,omitempty"`
+	FillType       *string   `json:"FillType,omitempty" xml:"FillType,omitempty"`
+	Tightness      *float32  `json:"Tightness,omitempty" xml:"Tightness,omitempty"`
+	R              *int32    `json:"R,omitempty" xml:"R,omitempty"`
+	G              *int32    `json:"G,omitempty" xml:"G,omitempty"`
+	B              *int32    `json:"B,omitempty" xml:"B,omitempty"`
+}
+
+func (s ChangeVideoSizeAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeVideoSizeAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeVideoSizeAdvanceRequest) SetVideoUrlObject(v io.Reader) *ChangeVideoSizeAdvanceRequest {
+	s.VideoUrlObject = v
+	return s
+}
+
+func (s *ChangeVideoSizeAdvanceRequest) SetAsync(v bool) *ChangeVideoSizeAdvanceRequest {
+	s.Async = &v
+	return s
+}
+
+func (s *ChangeVideoSizeAdvanceRequest) SetWidth(v int32) *ChangeVideoSizeAdvanceRequest {
+	s.Width = &v
+	return s
+}
+
+func (s *ChangeVideoSizeAdvanceRequest) SetHeight(v int32) *ChangeVideoSizeAdvanceRequest {
+	s.Height = &v
+	return s
+}
+
+func (s *ChangeVideoSizeAdvanceRequest) SetCropType(v string) *ChangeVideoSizeAdvanceRequest {
+	s.CropType = &v
+	return s
+}
+
+func (s *ChangeVideoSizeAdvanceRequest) SetFillType(v string) *ChangeVideoSizeAdvanceRequest {
+	s.FillType = &v
+	return s
+}
+
+func (s *ChangeVideoSizeAdvanceRequest) SetTightness(v float32) *ChangeVideoSizeAdvanceRequest {
+	s.Tightness = &v
+	return s
+}
+
+func (s *ChangeVideoSizeAdvanceRequest) SetR(v int32) *ChangeVideoSizeAdvanceRequest {
+	s.R = &v
+	return s
+}
+
+func (s *ChangeVideoSizeAdvanceRequest) SetG(v int32) *ChangeVideoSizeAdvanceRequest {
+	s.G = &v
+	return s
+}
+
+func (s *ChangeVideoSizeAdvanceRequest) SetB(v int32) *ChangeVideoSizeAdvanceRequest {
+	s.B = &v
+	return s
+}
+
+type ChangeVideoSizeResponseBody struct {
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *ChangeVideoSizeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s ChangeVideoSizeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeVideoSizeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeVideoSizeResponseBody) SetRequestId(v string) *ChangeVideoSizeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ChangeVideoSizeResponseBody) SetData(v *ChangeVideoSizeResponseBodyData) *ChangeVideoSizeResponseBody {
+	s.Data = v
+	return s
+}
+
+type ChangeVideoSizeResponseBodyData struct {
+	VideoCoverUrl *string `json:"VideoCoverUrl,omitempty" xml:"VideoCoverUrl,omitempty"`
+	VideoUrl      *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+}
+
+func (s ChangeVideoSizeResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeVideoSizeResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeVideoSizeResponseBodyData) SetVideoCoverUrl(v string) *ChangeVideoSizeResponseBodyData {
+	s.VideoCoverUrl = &v
+	return s
+}
+
+func (s *ChangeVideoSizeResponseBodyData) SetVideoUrl(v string) *ChangeVideoSizeResponseBodyData {
+	s.VideoUrl = &v
+	return s
+}
+
+type ChangeVideoSizeResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ChangeVideoSizeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ChangeVideoSizeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeVideoSizeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeVideoSizeResponse) SetHeaders(v map[string]*string) *ChangeVideoSizeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ChangeVideoSizeResponse) SetBody(v *ChangeVideoSizeResponseBody) *ChangeVideoSizeResponse {
+	s.Body = v
+	return s
+}
+
+type SuperResolveVideoRequest struct {
+	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+	Async    *bool   `json:"Async,omitempty" xml:"Async,omitempty"`
+	BitRate  *int32  `json:"BitRate,omitempty" xml:"BitRate,omitempty"`
+}
+
+func (s SuperResolveVideoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SuperResolveVideoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SuperResolveVideoRequest) SetVideoUrl(v string) *SuperResolveVideoRequest {
+	s.VideoUrl = &v
+	return s
+}
+
+func (s *SuperResolveVideoRequest) SetAsync(v bool) *SuperResolveVideoRequest {
+	s.Async = &v
+	return s
+}
+
+func (s *SuperResolveVideoRequest) SetBitRate(v int32) *SuperResolveVideoRequest {
+	s.BitRate = &v
+	return s
+}
+
+type SuperResolveVideoAdvanceRequest struct {
+	VideoUrlObject io.Reader `json:"VideoUrlObject,omitempty" xml:"VideoUrlObject,omitempty" require:"true"`
+	Async          *bool     `json:"Async,omitempty" xml:"Async,omitempty"`
+	BitRate        *int32    `json:"BitRate,omitempty" xml:"BitRate,omitempty"`
+}
+
+func (s SuperResolveVideoAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SuperResolveVideoAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SuperResolveVideoAdvanceRequest) SetVideoUrlObject(v io.Reader) *SuperResolveVideoAdvanceRequest {
+	s.VideoUrlObject = v
+	return s
+}
+
+func (s *SuperResolveVideoAdvanceRequest) SetAsync(v bool) *SuperResolveVideoAdvanceRequest {
+	s.Async = &v
+	return s
+}
+
+func (s *SuperResolveVideoAdvanceRequest) SetBitRate(v int32) *SuperResolveVideoAdvanceRequest {
+	s.BitRate = &v
+	return s
+}
+
+type SuperResolveVideoResponseBody struct {
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *SuperResolveVideoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s SuperResolveVideoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SuperResolveVideoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SuperResolveVideoResponseBody) SetRequestId(v string) *SuperResolveVideoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SuperResolveVideoResponseBody) SetData(v *SuperResolveVideoResponseBodyData) *SuperResolveVideoResponseBody {
+	s.Data = v
+	return s
+}
+
+type SuperResolveVideoResponseBodyData struct {
+	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+}
+
+func (s SuperResolveVideoResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SuperResolveVideoResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SuperResolveVideoResponseBodyData) SetVideoUrl(v string) *SuperResolveVideoResponseBodyData {
+	s.VideoUrl = &v
+	return s
+}
+
+type SuperResolveVideoResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SuperResolveVideoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SuperResolveVideoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SuperResolveVideoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SuperResolveVideoResponse) SetHeaders(v map[string]*string) *SuperResolveVideoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SuperResolveVideoResponse) SetBody(v *SuperResolveVideoResponseBody) *SuperResolveVideoResponse {
+	s.Body = v
+	return s
+}
+
+type GetAsyncJobResultRequest struct {
+	Async *bool   `json:"Async,omitempty" xml:"Async,omitempty"`
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s GetAsyncJobResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAsyncJobResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAsyncJobResultRequest) SetAsync(v bool) *GetAsyncJobResultRequest {
+	s.Async = &v
+	return s
+}
+
+func (s *GetAsyncJobResultRequest) SetJobId(v string) *GetAsyncJobResultRequest {
+	s.JobId = &v
+	return s
+}
+
+type GetAsyncJobResultResponseBody struct {
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *GetAsyncJobResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s GetAsyncJobResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAsyncJobResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAsyncJobResultResponseBody) SetRequestId(v string) *GetAsyncJobResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAsyncJobResultResponseBody) SetData(v *GetAsyncJobResultResponseBodyData) *GetAsyncJobResultResponseBody {
+	s.Data = v
+	return s
+}
+
+type GetAsyncJobResultResponseBodyData struct {
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Result       *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	JobId        *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s GetAsyncJobResultResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAsyncJobResultResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetAsyncJobResultResponseBodyData) SetStatus(v string) *GetAsyncJobResultResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetAsyncJobResultResponseBodyData) SetErrorMessage(v string) *GetAsyncJobResultResponseBodyData {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetAsyncJobResultResponseBodyData) SetResult(v string) *GetAsyncJobResultResponseBodyData {
+	s.Result = &v
+	return s
+}
+
+func (s *GetAsyncJobResultResponseBodyData) SetErrorCode(v string) *GetAsyncJobResultResponseBodyData {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetAsyncJobResultResponseBodyData) SetJobId(v string) *GetAsyncJobResultResponseBodyData {
+	s.JobId = &v
+	return s
+}
+
+type GetAsyncJobResultResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetAsyncJobResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAsyncJobResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAsyncJobResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAsyncJobResultResponse) SetHeaders(v map[string]*string) *GetAsyncJobResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAsyncJobResultResponse) SetBody(v *GetAsyncJobResultResponseBody) *GetAsyncJobResultResponse {
+	s.Body = v
+	return s
+}
+
+type GenerateVideoRequest struct {
+	Async            *bool                           `json:"Async,omitempty" xml:"Async,omitempty"`
+	Scene            *string                         `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	Width            *int32                          `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height           *int32                          `json:"Height,omitempty" xml:"Height,omitempty"`
+	Style            *string                         `json:"Style,omitempty" xml:"Style,omitempty"`
+	Duration         *float32                        `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	DurationAdaption *bool                           `json:"DurationAdaption,omitempty" xml:"DurationAdaption,omitempty"`
+	TransitionStyle  *string                         `json:"TransitionStyle,omitempty" xml:"TransitionStyle,omitempty"`
+	SmartEffect      *bool                           `json:"SmartEffect,omitempty" xml:"SmartEffect,omitempty"`
+	PuzzleEffect     *bool                           `json:"PuzzleEffect,omitempty" xml:"PuzzleEffect,omitempty"`
+	Mute             *bool                           `json:"Mute,omitempty" xml:"Mute,omitempty"`
+	FileList         []*GenerateVideoRequestFileList `json:"FileList,omitempty" xml:"FileList,omitempty" type:"Repeated"`
+}
+
+func (s GenerateVideoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateVideoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateVideoRequest) SetAsync(v bool) *GenerateVideoRequest {
+	s.Async = &v
+	return s
+}
+
+func (s *GenerateVideoRequest) SetScene(v string) *GenerateVideoRequest {
+	s.Scene = &v
+	return s
+}
+
+func (s *GenerateVideoRequest) SetWidth(v int32) *GenerateVideoRequest {
+	s.Width = &v
+	return s
+}
+
+func (s *GenerateVideoRequest) SetHeight(v int32) *GenerateVideoRequest {
+	s.Height = &v
+	return s
+}
+
+func (s *GenerateVideoRequest) SetStyle(v string) *GenerateVideoRequest {
+	s.Style = &v
+	return s
+}
+
+func (s *GenerateVideoRequest) SetDuration(v float32) *GenerateVideoRequest {
+	s.Duration = &v
+	return s
+}
+
+func (s *GenerateVideoRequest) SetDurationAdaption(v bool) *GenerateVideoRequest {
+	s.DurationAdaption = &v
+	return s
+}
+
+func (s *GenerateVideoRequest) SetTransitionStyle(v string) *GenerateVideoRequest {
+	s.TransitionStyle = &v
+	return s
+}
+
+func (s *GenerateVideoRequest) SetSmartEffect(v bool) *GenerateVideoRequest {
+	s.SmartEffect = &v
+	return s
+}
+
+func (s *GenerateVideoRequest) SetPuzzleEffect(v bool) *GenerateVideoRequest {
+	s.PuzzleEffect = &v
+	return s
+}
+
+func (s *GenerateVideoRequest) SetMute(v bool) *GenerateVideoRequest {
+	s.Mute = &v
+	return s
+}
+
+func (s *GenerateVideoRequest) SetFileList(v []*GenerateVideoRequestFileList) *GenerateVideoRequest {
+	s.FileList = v
+	return s
+}
+
+type GenerateVideoRequestFileList struct {
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	FileUrl  *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+}
+
+func (s GenerateVideoRequestFileList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateVideoRequestFileList) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateVideoRequestFileList) SetType(v string) *GenerateVideoRequestFileList {
+	s.Type = &v
+	return s
+}
+
+func (s *GenerateVideoRequestFileList) SetFileUrl(v string) *GenerateVideoRequestFileList {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *GenerateVideoRequestFileList) SetFileName(v string) *GenerateVideoRequestFileList {
+	s.FileName = &v
+	return s
+}
+
+type GenerateVideoResponseBody struct {
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *GenerateVideoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s GenerateVideoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateVideoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateVideoResponseBody) SetRequestId(v string) *GenerateVideoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GenerateVideoResponseBody) SetData(v *GenerateVideoResponseBodyData) *GenerateVideoResponseBody {
+	s.Data = v
+	return s
+}
+
+type GenerateVideoResponseBodyData struct {
+	VideoCoverUrl *string `json:"VideoCoverUrl,omitempty" xml:"VideoCoverUrl,omitempty"`
+	VideoUrl      *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+}
+
+func (s GenerateVideoResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateVideoResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateVideoResponseBodyData) SetVideoCoverUrl(v string) *GenerateVideoResponseBodyData {
+	s.VideoCoverUrl = &v
+	return s
+}
+
+func (s *GenerateVideoResponseBodyData) SetVideoUrl(v string) *GenerateVideoResponseBodyData {
+	s.VideoUrl = &v
+	return s
+}
+
+type GenerateVideoResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GenerateVideoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GenerateVideoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateVideoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateVideoResponse) SetHeaders(v map[string]*string) *GenerateVideoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GenerateVideoResponse) SetBody(v *GenerateVideoResponseBody) *GenerateVideoResponse {
 	s.Body = v
 	return s
 }
@@ -953,163 +1853,6 @@ func (s *AbstractFilmVideoResponse) SetBody(v *AbstractFilmVideoResponseBody) *A
 	return s
 }
 
-type AdjustVideoColorRequest struct {
-	VideoUrl     *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
-	Async        *bool   `json:"Async,omitempty" xml:"Async,omitempty"`
-	VideoBitrate *string `json:"VideoBitrate,omitempty" xml:"VideoBitrate,omitempty"`
-	VideoCodec   *string `json:"VideoCodec,omitempty" xml:"VideoCodec,omitempty"`
-	VideoFormat  *string `json:"VideoFormat,omitempty" xml:"VideoFormat,omitempty"`
-	Mode         *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-}
-
-func (s AdjustVideoColorRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AdjustVideoColorRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AdjustVideoColorRequest) SetVideoUrl(v string) *AdjustVideoColorRequest {
-	s.VideoUrl = &v
-	return s
-}
-
-func (s *AdjustVideoColorRequest) SetAsync(v bool) *AdjustVideoColorRequest {
-	s.Async = &v
-	return s
-}
-
-func (s *AdjustVideoColorRequest) SetVideoBitrate(v string) *AdjustVideoColorRequest {
-	s.VideoBitrate = &v
-	return s
-}
-
-func (s *AdjustVideoColorRequest) SetVideoCodec(v string) *AdjustVideoColorRequest {
-	s.VideoCodec = &v
-	return s
-}
-
-func (s *AdjustVideoColorRequest) SetVideoFormat(v string) *AdjustVideoColorRequest {
-	s.VideoFormat = &v
-	return s
-}
-
-func (s *AdjustVideoColorRequest) SetMode(v string) *AdjustVideoColorRequest {
-	s.Mode = &v
-	return s
-}
-
-type AdjustVideoColorAdvanceRequest struct {
-	VideoUrlObject io.Reader `json:"VideoUrlObject,omitempty" xml:"VideoUrlObject,omitempty" require:"true"`
-	Async          *bool     `json:"Async,omitempty" xml:"Async,omitempty"`
-	VideoBitrate   *string   `json:"VideoBitrate,omitempty" xml:"VideoBitrate,omitempty"`
-	VideoCodec     *string   `json:"VideoCodec,omitempty" xml:"VideoCodec,omitempty"`
-	VideoFormat    *string   `json:"VideoFormat,omitempty" xml:"VideoFormat,omitempty"`
-	Mode           *string   `json:"Mode,omitempty" xml:"Mode,omitempty"`
-}
-
-func (s AdjustVideoColorAdvanceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AdjustVideoColorAdvanceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AdjustVideoColorAdvanceRequest) SetVideoUrlObject(v io.Reader) *AdjustVideoColorAdvanceRequest {
-	s.VideoUrlObject = v
-	return s
-}
-
-func (s *AdjustVideoColorAdvanceRequest) SetAsync(v bool) *AdjustVideoColorAdvanceRequest {
-	s.Async = &v
-	return s
-}
-
-func (s *AdjustVideoColorAdvanceRequest) SetVideoBitrate(v string) *AdjustVideoColorAdvanceRequest {
-	s.VideoBitrate = &v
-	return s
-}
-
-func (s *AdjustVideoColorAdvanceRequest) SetVideoCodec(v string) *AdjustVideoColorAdvanceRequest {
-	s.VideoCodec = &v
-	return s
-}
-
-func (s *AdjustVideoColorAdvanceRequest) SetVideoFormat(v string) *AdjustVideoColorAdvanceRequest {
-	s.VideoFormat = &v
-	return s
-}
-
-func (s *AdjustVideoColorAdvanceRequest) SetMode(v string) *AdjustVideoColorAdvanceRequest {
-	s.Mode = &v
-	return s
-}
-
-type AdjustVideoColorResponseBody struct {
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *AdjustVideoColorResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-}
-
-func (s AdjustVideoColorResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AdjustVideoColorResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *AdjustVideoColorResponseBody) SetRequestId(v string) *AdjustVideoColorResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *AdjustVideoColorResponseBody) SetData(v *AdjustVideoColorResponseBodyData) *AdjustVideoColorResponseBody {
-	s.Data = v
-	return s
-}
-
-type AdjustVideoColorResponseBodyData struct {
-	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
-}
-
-func (s AdjustVideoColorResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AdjustVideoColorResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *AdjustVideoColorResponseBodyData) SetVideoUrl(v string) *AdjustVideoColorResponseBodyData {
-	s.VideoUrl = &v
-	return s
-}
-
-type AdjustVideoColorResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AdjustVideoColorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s AdjustVideoColorResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AdjustVideoColorResponse) GoString() string {
-	return s.String()
-}
-
-func (s *AdjustVideoColorResponse) SetHeaders(v map[string]*string) *AdjustVideoColorResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *AdjustVideoColorResponse) SetBody(v *AdjustVideoColorResponseBody) *AdjustVideoColorResponse {
-	s.Body = v
-	return s
-}
-
 type EraseVideoSubtitlesRequest struct {
 	VideoUrl *string  `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 	Async    *bool    `json:"Async,omitempty" xml:"Async,omitempty"`
@@ -1267,217 +2010,6 @@ func (s *EraseVideoSubtitlesResponse) SetBody(v *EraseVideoSubtitlesResponseBody
 	return s
 }
 
-type ChangeVideoSizeRequest struct {
-	VideoUrl  *string  `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
-	Async     *bool    `json:"Async,omitempty" xml:"Async,omitempty"`
-	Width     *int32   `json:"Width,omitempty" xml:"Width,omitempty"`
-	Height    *int32   `json:"Height,omitempty" xml:"Height,omitempty"`
-	CropType  *string  `json:"CropType,omitempty" xml:"CropType,omitempty"`
-	FillType  *string  `json:"FillType,omitempty" xml:"FillType,omitempty"`
-	Tightness *float32 `json:"Tightness,omitempty" xml:"Tightness,omitempty"`
-	R         *int32   `json:"R,omitempty" xml:"R,omitempty"`
-	G         *int32   `json:"G,omitempty" xml:"G,omitempty"`
-	B         *int32   `json:"B,omitempty" xml:"B,omitempty"`
-}
-
-func (s ChangeVideoSizeRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ChangeVideoSizeRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ChangeVideoSizeRequest) SetVideoUrl(v string) *ChangeVideoSizeRequest {
-	s.VideoUrl = &v
-	return s
-}
-
-func (s *ChangeVideoSizeRequest) SetAsync(v bool) *ChangeVideoSizeRequest {
-	s.Async = &v
-	return s
-}
-
-func (s *ChangeVideoSizeRequest) SetWidth(v int32) *ChangeVideoSizeRequest {
-	s.Width = &v
-	return s
-}
-
-func (s *ChangeVideoSizeRequest) SetHeight(v int32) *ChangeVideoSizeRequest {
-	s.Height = &v
-	return s
-}
-
-func (s *ChangeVideoSizeRequest) SetCropType(v string) *ChangeVideoSizeRequest {
-	s.CropType = &v
-	return s
-}
-
-func (s *ChangeVideoSizeRequest) SetFillType(v string) *ChangeVideoSizeRequest {
-	s.FillType = &v
-	return s
-}
-
-func (s *ChangeVideoSizeRequest) SetTightness(v float32) *ChangeVideoSizeRequest {
-	s.Tightness = &v
-	return s
-}
-
-func (s *ChangeVideoSizeRequest) SetR(v int32) *ChangeVideoSizeRequest {
-	s.R = &v
-	return s
-}
-
-func (s *ChangeVideoSizeRequest) SetG(v int32) *ChangeVideoSizeRequest {
-	s.G = &v
-	return s
-}
-
-func (s *ChangeVideoSizeRequest) SetB(v int32) *ChangeVideoSizeRequest {
-	s.B = &v
-	return s
-}
-
-type ChangeVideoSizeAdvanceRequest struct {
-	VideoUrlObject io.Reader `json:"VideoUrlObject,omitempty" xml:"VideoUrlObject,omitempty" require:"true"`
-	Async          *bool     `json:"Async,omitempty" xml:"Async,omitempty"`
-	Width          *int32    `json:"Width,omitempty" xml:"Width,omitempty"`
-	Height         *int32    `json:"Height,omitempty" xml:"Height,omitempty"`
-	CropType       *string   `json:"CropType,omitempty" xml:"CropType,omitempty"`
-	FillType       *string   `json:"FillType,omitempty" xml:"FillType,omitempty"`
-	Tightness      *float32  `json:"Tightness,omitempty" xml:"Tightness,omitempty"`
-	R              *int32    `json:"R,omitempty" xml:"R,omitempty"`
-	G              *int32    `json:"G,omitempty" xml:"G,omitempty"`
-	B              *int32    `json:"B,omitempty" xml:"B,omitempty"`
-}
-
-func (s ChangeVideoSizeAdvanceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ChangeVideoSizeAdvanceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ChangeVideoSizeAdvanceRequest) SetVideoUrlObject(v io.Reader) *ChangeVideoSizeAdvanceRequest {
-	s.VideoUrlObject = v
-	return s
-}
-
-func (s *ChangeVideoSizeAdvanceRequest) SetAsync(v bool) *ChangeVideoSizeAdvanceRequest {
-	s.Async = &v
-	return s
-}
-
-func (s *ChangeVideoSizeAdvanceRequest) SetWidth(v int32) *ChangeVideoSizeAdvanceRequest {
-	s.Width = &v
-	return s
-}
-
-func (s *ChangeVideoSizeAdvanceRequest) SetHeight(v int32) *ChangeVideoSizeAdvanceRequest {
-	s.Height = &v
-	return s
-}
-
-func (s *ChangeVideoSizeAdvanceRequest) SetCropType(v string) *ChangeVideoSizeAdvanceRequest {
-	s.CropType = &v
-	return s
-}
-
-func (s *ChangeVideoSizeAdvanceRequest) SetFillType(v string) *ChangeVideoSizeAdvanceRequest {
-	s.FillType = &v
-	return s
-}
-
-func (s *ChangeVideoSizeAdvanceRequest) SetTightness(v float32) *ChangeVideoSizeAdvanceRequest {
-	s.Tightness = &v
-	return s
-}
-
-func (s *ChangeVideoSizeAdvanceRequest) SetR(v int32) *ChangeVideoSizeAdvanceRequest {
-	s.R = &v
-	return s
-}
-
-func (s *ChangeVideoSizeAdvanceRequest) SetG(v int32) *ChangeVideoSizeAdvanceRequest {
-	s.G = &v
-	return s
-}
-
-func (s *ChangeVideoSizeAdvanceRequest) SetB(v int32) *ChangeVideoSizeAdvanceRequest {
-	s.B = &v
-	return s
-}
-
-type ChangeVideoSizeResponseBody struct {
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *ChangeVideoSizeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-}
-
-func (s ChangeVideoSizeResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ChangeVideoSizeResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ChangeVideoSizeResponseBody) SetRequestId(v string) *ChangeVideoSizeResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ChangeVideoSizeResponseBody) SetData(v *ChangeVideoSizeResponseBodyData) *ChangeVideoSizeResponseBody {
-	s.Data = v
-	return s
-}
-
-type ChangeVideoSizeResponseBodyData struct {
-	VideoCoverUrl *string `json:"VideoCoverUrl,omitempty" xml:"VideoCoverUrl,omitempty"`
-	VideoUrl      *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
-}
-
-func (s ChangeVideoSizeResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ChangeVideoSizeResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ChangeVideoSizeResponseBodyData) SetVideoCoverUrl(v string) *ChangeVideoSizeResponseBodyData {
-	s.VideoCoverUrl = &v
-	return s
-}
-
-func (s *ChangeVideoSizeResponseBodyData) SetVideoUrl(v string) *ChangeVideoSizeResponseBodyData {
-	s.VideoUrl = &v
-	return s
-}
-
-type ChangeVideoSizeResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ChangeVideoSizeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ChangeVideoSizeResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ChangeVideoSizeResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ChangeVideoSizeResponse) SetHeaders(v map[string]*string) *ChangeVideoSizeResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ChangeVideoSizeResponse) SetBody(v *ChangeVideoSizeResponseBody) *ChangeVideoSizeResponse {
-	s.Body = v
-	return s
-}
-
 type MergeVideoFaceRequest struct {
 	VideoURL     *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
 	Async        *bool   `json:"Async,omitempty" xml:"Async,omitempty"`
@@ -1611,127 +2143,6 @@ func (s *MergeVideoFaceResponse) SetBody(v *MergeVideoFaceResponseBody) *MergeVi
 	return s
 }
 
-type SuperResolveVideoRequest struct {
-	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
-	Async    *bool   `json:"Async,omitempty" xml:"Async,omitempty"`
-	BitRate  *int32  `json:"BitRate,omitempty" xml:"BitRate,omitempty"`
-}
-
-func (s SuperResolveVideoRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SuperResolveVideoRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SuperResolveVideoRequest) SetVideoUrl(v string) *SuperResolveVideoRequest {
-	s.VideoUrl = &v
-	return s
-}
-
-func (s *SuperResolveVideoRequest) SetAsync(v bool) *SuperResolveVideoRequest {
-	s.Async = &v
-	return s
-}
-
-func (s *SuperResolveVideoRequest) SetBitRate(v int32) *SuperResolveVideoRequest {
-	s.BitRate = &v
-	return s
-}
-
-type SuperResolveVideoAdvanceRequest struct {
-	VideoUrlObject io.Reader `json:"VideoUrlObject,omitempty" xml:"VideoUrlObject,omitempty" require:"true"`
-	Async          *bool     `json:"Async,omitempty" xml:"Async,omitempty"`
-	BitRate        *int32    `json:"BitRate,omitempty" xml:"BitRate,omitempty"`
-}
-
-func (s SuperResolveVideoAdvanceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SuperResolveVideoAdvanceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SuperResolveVideoAdvanceRequest) SetVideoUrlObject(v io.Reader) *SuperResolveVideoAdvanceRequest {
-	s.VideoUrlObject = v
-	return s
-}
-
-func (s *SuperResolveVideoAdvanceRequest) SetAsync(v bool) *SuperResolveVideoAdvanceRequest {
-	s.Async = &v
-	return s
-}
-
-func (s *SuperResolveVideoAdvanceRequest) SetBitRate(v int32) *SuperResolveVideoAdvanceRequest {
-	s.BitRate = &v
-	return s
-}
-
-type SuperResolveVideoResponseBody struct {
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *SuperResolveVideoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-}
-
-func (s SuperResolveVideoResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SuperResolveVideoResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SuperResolveVideoResponseBody) SetRequestId(v string) *SuperResolveVideoResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *SuperResolveVideoResponseBody) SetData(v *SuperResolveVideoResponseBodyData) *SuperResolveVideoResponseBody {
-	s.Data = v
-	return s
-}
-
-type SuperResolveVideoResponseBodyData struct {
-	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
-}
-
-func (s SuperResolveVideoResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SuperResolveVideoResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *SuperResolveVideoResponseBodyData) SetVideoUrl(v string) *SuperResolveVideoResponseBodyData {
-	s.VideoUrl = &v
-	return s
-}
-
-type SuperResolveVideoResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SuperResolveVideoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SuperResolveVideoResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SuperResolveVideoResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SuperResolveVideoResponse) SetHeaders(v map[string]*string) *SuperResolveVideoResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SuperResolveVideoResponse) SetBody(v *SuperResolveVideoResponseBody) *SuperResolveVideoResponse {
-	s.Body = v
-	return s
-}
-
 type Client struct {
 	openapi.Client
 }
@@ -1779,7 +2190,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-func (client *Client) GetAsyncJobResultWithOptions(request *GetAsyncJobResultRequest, runtime *util.RuntimeOptions) (_result *GetAsyncJobResultResponse, _err error) {
+func (client *Client) ToneSdrVideoWithOptions(request *ToneSdrVideoRequest, runtime *util.RuntimeOptions) (_result *ToneSdrVideoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -1787,8 +2198,8 @@ func (client *Client) GetAsyncJobResultWithOptions(request *GetAsyncJobResultReq
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
-	_result = &GetAsyncJobResultResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAsyncJobResult"), tea.String("2020-03-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_result = &ToneSdrVideoResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ToneSdrVideo"), tea.String("2020-03-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1796,14 +2207,101 @@ func (client *Client) GetAsyncJobResultWithOptions(request *GetAsyncJobResultReq
 	return _result, _err
 }
 
-func (client *Client) GetAsyncJobResult(request *GetAsyncJobResultRequest) (_result *GetAsyncJobResultResponse, _err error) {
+func (client *Client) ToneSdrVideo(request *ToneSdrVideoRequest) (_result *ToneSdrVideoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &GetAsyncJobResultResponse{}
-	_body, _err := client.GetAsyncJobResultWithOptions(request, runtime)
+	_result = &ToneSdrVideoResponse{}
+	_body, _err := client.ToneSdrVideoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ToneSdrVideoAdvance(request *ToneSdrVideoAdvanceRequest, runtime *util.RuntimeOptions) (_result *ToneSdrVideoResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("videoenhan"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	toneSdrVideoReq := &ToneSdrVideoRequest{}
+	openapiutil.Convert(request, toneSdrVideoReq)
+	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	ossConfig.AccessKeyId = authResponse.AccessKeyId
+	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+	ossClient, _err = oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	fileObj = &fileform.FileField{
+		Filename:    authResponse.ObjectKey,
+		Content:     request.VideoURLObject,
+		ContentType: tea.String(""),
+	}
+	ossHeader = &oss.PostObjectRequestHeader{
+		AccessKeyId:         authResponse.AccessKeyId,
+		Policy:              authResponse.EncodedPolicy,
+		Signature:           authResponse.Signature,
+		Key:                 authResponse.ObjectKey,
+		File:                fileObj,
+		SuccessActionStatus: tea.String("201"),
+	}
+	uploadRequest = &oss.PostObjectRequest{
+		BucketName: authResponse.Bucket,
+		Header:     ossHeader,
+	}
+	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+	if _err != nil {
+		return _result, _err
+	}
+	toneSdrVideoReq.VideoURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	toneSdrVideoResp, _err := client.ToneSdrVideoWithOptions(toneSdrVideoReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = toneSdrVideoResp
 	return _result, _err
 }
 
@@ -1922,7 +2420,7 @@ func (client *Client) EnhanceVideoQualityAdvance(request *EnhanceVideoQualityAdv
 	return _result, _err
 }
 
-func (client *Client) GenerateVideoWithOptions(request *GenerateVideoRequest, runtime *util.RuntimeOptions) (_result *GenerateVideoResponse, _err error) {
+func (client *Client) InterpolateVideoFrameWithOptions(request *InterpolateVideoFrameRequest, runtime *util.RuntimeOptions) (_result *InterpolateVideoFrameResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -1930,8 +2428,8 @@ func (client *Client) GenerateVideoWithOptions(request *GenerateVideoRequest, ru
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
-	_result = &GenerateVideoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GenerateVideo"), tea.String("2020-03-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_result = &InterpolateVideoFrameResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("InterpolateVideoFrame"), tea.String("2020-03-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1939,14 +2437,101 @@ func (client *Client) GenerateVideoWithOptions(request *GenerateVideoRequest, ru
 	return _result, _err
 }
 
-func (client *Client) GenerateVideo(request *GenerateVideoRequest) (_result *GenerateVideoResponse, _err error) {
+func (client *Client) InterpolateVideoFrame(request *InterpolateVideoFrameRequest) (_result *InterpolateVideoFrameResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &GenerateVideoResponse{}
-	_body, _err := client.GenerateVideoWithOptions(request, runtime)
+	_result = &InterpolateVideoFrameResponse{}
+	_body, _err := client.InterpolateVideoFrameWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+func (client *Client) InterpolateVideoFrameAdvance(request *InterpolateVideoFrameAdvanceRequest, runtime *util.RuntimeOptions) (_result *InterpolateVideoFrameResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("videoenhan"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	interpolateVideoFrameReq := &InterpolateVideoFrameRequest{}
+	openapiutil.Convert(request, interpolateVideoFrameReq)
+	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	ossConfig.AccessKeyId = authResponse.AccessKeyId
+	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+	ossClient, _err = oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	fileObj = &fileform.FileField{
+		Filename:    authResponse.ObjectKey,
+		Content:     request.VideoURLObject,
+		ContentType: tea.String(""),
+	}
+	ossHeader = &oss.PostObjectRequestHeader{
+		AccessKeyId:         authResponse.AccessKeyId,
+		Policy:              authResponse.EncodedPolicy,
+		Signature:           authResponse.Signature,
+		Key:                 authResponse.ObjectKey,
+		File:                fileObj,
+		SuccessActionStatus: tea.String("201"),
+	}
+	uploadRequest = &oss.PostObjectRequest{
+		BucketName: authResponse.Bucket,
+		Header:     ossHeader,
+	}
+	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+	if _err != nil {
+		return _result, _err
+	}
+	interpolateVideoFrameReq.VideoURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	interpolateVideoFrameResp, _err := client.InterpolateVideoFrameWithOptions(interpolateVideoFrameReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = interpolateVideoFrameResp
 	return _result, _err
 }
 
@@ -2062,6 +2647,522 @@ func (client *Client) EraseVideoLogoAdvance(request *EraseVideoLogoAdvanceReques
 	}
 
 	_result = eraseVideoLogoResp
+	return _result, _err
+}
+
+func (client *Client) ConvertHdrVideoWithOptions(request *ConvertHdrVideoRequest, runtime *util.RuntimeOptions) (_result *ConvertHdrVideoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ConvertHdrVideoResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ConvertHdrVideo"), tea.String("2020-03-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ConvertHdrVideo(request *ConvertHdrVideoRequest) (_result *ConvertHdrVideoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ConvertHdrVideoResponse{}
+	_body, _err := client.ConvertHdrVideoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ConvertHdrVideoAdvance(request *ConvertHdrVideoAdvanceRequest, runtime *util.RuntimeOptions) (_result *ConvertHdrVideoResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("videoenhan"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	convertHdrVideoReq := &ConvertHdrVideoRequest{}
+	openapiutil.Convert(request, convertHdrVideoReq)
+	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	ossConfig.AccessKeyId = authResponse.AccessKeyId
+	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+	ossClient, _err = oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	fileObj = &fileform.FileField{
+		Filename:    authResponse.ObjectKey,
+		Content:     request.VideoURLObject,
+		ContentType: tea.String(""),
+	}
+	ossHeader = &oss.PostObjectRequestHeader{
+		AccessKeyId:         authResponse.AccessKeyId,
+		Policy:              authResponse.EncodedPolicy,
+		Signature:           authResponse.Signature,
+		Key:                 authResponse.ObjectKey,
+		File:                fileObj,
+		SuccessActionStatus: tea.String("201"),
+	}
+	uploadRequest = &oss.PostObjectRequest{
+		BucketName: authResponse.Bucket,
+		Header:     ossHeader,
+	}
+	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+	if _err != nil {
+		return _result, _err
+	}
+	convertHdrVideoReq.VideoURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	convertHdrVideoResp, _err := client.ConvertHdrVideoWithOptions(convertHdrVideoReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = convertHdrVideoResp
+	return _result, _err
+}
+
+func (client *Client) AdjustVideoColorWithOptions(request *AdjustVideoColorRequest, runtime *util.RuntimeOptions) (_result *AdjustVideoColorResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &AdjustVideoColorResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("AdjustVideoColor"), tea.String("2020-03-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AdjustVideoColor(request *AdjustVideoColorRequest) (_result *AdjustVideoColorResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AdjustVideoColorResponse{}
+	_body, _err := client.AdjustVideoColorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AdjustVideoColorAdvance(request *AdjustVideoColorAdvanceRequest, runtime *util.RuntimeOptions) (_result *AdjustVideoColorResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("videoenhan"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	adjustVideoColorReq := &AdjustVideoColorRequest{}
+	openapiutil.Convert(request, adjustVideoColorReq)
+	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	ossConfig.AccessKeyId = authResponse.AccessKeyId
+	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+	ossClient, _err = oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	fileObj = &fileform.FileField{
+		Filename:    authResponse.ObjectKey,
+		Content:     request.VideoUrlObject,
+		ContentType: tea.String(""),
+	}
+	ossHeader = &oss.PostObjectRequestHeader{
+		AccessKeyId:         authResponse.AccessKeyId,
+		Policy:              authResponse.EncodedPolicy,
+		Signature:           authResponse.Signature,
+		Key:                 authResponse.ObjectKey,
+		File:                fileObj,
+		SuccessActionStatus: tea.String("201"),
+	}
+	uploadRequest = &oss.PostObjectRequest{
+		BucketName: authResponse.Bucket,
+		Header:     ossHeader,
+	}
+	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+	if _err != nil {
+		return _result, _err
+	}
+	adjustVideoColorReq.VideoUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	adjustVideoColorResp, _err := client.AdjustVideoColorWithOptions(adjustVideoColorReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = adjustVideoColorResp
+	return _result, _err
+}
+
+func (client *Client) ChangeVideoSizeWithOptions(request *ChangeVideoSizeRequest, runtime *util.RuntimeOptions) (_result *ChangeVideoSizeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ChangeVideoSizeResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ChangeVideoSize"), tea.String("2020-03-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ChangeVideoSize(request *ChangeVideoSizeRequest) (_result *ChangeVideoSizeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ChangeVideoSizeResponse{}
+	_body, _err := client.ChangeVideoSizeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ChangeVideoSizeAdvance(request *ChangeVideoSizeAdvanceRequest, runtime *util.RuntimeOptions) (_result *ChangeVideoSizeResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("videoenhan"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	changeVideoSizeReq := &ChangeVideoSizeRequest{}
+	openapiutil.Convert(request, changeVideoSizeReq)
+	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	ossConfig.AccessKeyId = authResponse.AccessKeyId
+	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+	ossClient, _err = oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	fileObj = &fileform.FileField{
+		Filename:    authResponse.ObjectKey,
+		Content:     request.VideoUrlObject,
+		ContentType: tea.String(""),
+	}
+	ossHeader = &oss.PostObjectRequestHeader{
+		AccessKeyId:         authResponse.AccessKeyId,
+		Policy:              authResponse.EncodedPolicy,
+		Signature:           authResponse.Signature,
+		Key:                 authResponse.ObjectKey,
+		File:                fileObj,
+		SuccessActionStatus: tea.String("201"),
+	}
+	uploadRequest = &oss.PostObjectRequest{
+		BucketName: authResponse.Bucket,
+		Header:     ossHeader,
+	}
+	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+	if _err != nil {
+		return _result, _err
+	}
+	changeVideoSizeReq.VideoUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	changeVideoSizeResp, _err := client.ChangeVideoSizeWithOptions(changeVideoSizeReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = changeVideoSizeResp
+	return _result, _err
+}
+
+func (client *Client) SuperResolveVideoWithOptions(request *SuperResolveVideoRequest, runtime *util.RuntimeOptions) (_result *SuperResolveVideoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SuperResolveVideoResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SuperResolveVideo"), tea.String("2020-03-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SuperResolveVideo(request *SuperResolveVideoRequest) (_result *SuperResolveVideoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SuperResolveVideoResponse{}
+	_body, _err := client.SuperResolveVideoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SuperResolveVideoAdvance(request *SuperResolveVideoAdvanceRequest, runtime *util.RuntimeOptions) (_result *SuperResolveVideoResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("videoenhan"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	superResolveVideoReq := &SuperResolveVideoRequest{}
+	openapiutil.Convert(request, superResolveVideoReq)
+	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	ossConfig.AccessKeyId = authResponse.AccessKeyId
+	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+	ossClient, _err = oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	fileObj = &fileform.FileField{
+		Filename:    authResponse.ObjectKey,
+		Content:     request.VideoUrlObject,
+		ContentType: tea.String(""),
+	}
+	ossHeader = &oss.PostObjectRequestHeader{
+		AccessKeyId:         authResponse.AccessKeyId,
+		Policy:              authResponse.EncodedPolicy,
+		Signature:           authResponse.Signature,
+		Key:                 authResponse.ObjectKey,
+		File:                fileObj,
+		SuccessActionStatus: tea.String("201"),
+	}
+	uploadRequest = &oss.PostObjectRequest{
+		BucketName: authResponse.Bucket,
+		Header:     ossHeader,
+	}
+	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+	if _err != nil {
+		return _result, _err
+	}
+	superResolveVideoReq.VideoUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	superResolveVideoResp, _err := client.SuperResolveVideoWithOptions(superResolveVideoReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = superResolveVideoResp
+	return _result, _err
+}
+
+func (client *Client) GetAsyncJobResultWithOptions(request *GetAsyncJobResultRequest, runtime *util.RuntimeOptions) (_result *GetAsyncJobResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetAsyncJobResultResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetAsyncJobResult"), tea.String("2020-03-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAsyncJobResult(request *GetAsyncJobResultRequest) (_result *GetAsyncJobResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAsyncJobResultResponse{}
+	_body, _err := client.GetAsyncJobResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GenerateVideoWithOptions(request *GenerateVideoRequest, runtime *util.RuntimeOptions) (_result *GenerateVideoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GenerateVideoResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GenerateVideo"), tea.String("2020-03-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GenerateVideo(request *GenerateVideoRequest) (_result *GenerateVideoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GenerateVideoResponse{}
+	_body, _err := client.GenerateVideoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
 
@@ -2295,121 +3396,6 @@ func (client *Client) AbstractFilmVideoAdvance(request *AbstractFilmVideoAdvance
 	return _result, _err
 }
 
-func (client *Client) AdjustVideoColorWithOptions(request *AdjustVideoColorRequest, runtime *util.RuntimeOptions) (_result *AdjustVideoColorResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &AdjustVideoColorResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AdjustVideoColor"), tea.String("2020-03-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) AdjustVideoColor(request *AdjustVideoColorRequest) (_result *AdjustVideoColorResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &AdjustVideoColorResponse{}
-	_body, _err := client.AdjustVideoColorWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) AdjustVideoColorAdvance(request *AdjustVideoColorAdvanceRequest, runtime *util.RuntimeOptions) (_result *AdjustVideoColorResponse, _err error) {
-	// Step 0: init client
-	accessKeyId, _err := client.Credential.GetAccessKeyId()
-	if _err != nil {
-		return _result, _err
-	}
-
-	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
-	if _err != nil {
-		return _result, _err
-	}
-
-	authConfig := &rpc.Config{
-		AccessKeyId:     accessKeyId,
-		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
-	}
-	authClient, _err := openplatform.NewClient(authConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	authRequest := &openplatform.AuthorizeFileUploadRequest{
-		Product:  tea.String("videoenhan"),
-		RegionId: client.RegionId,
-	}
-	authResponse := &openplatform.AuthorizeFileUploadResponse{}
-	ossConfig := &oss.Config{
-		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
-	}
-	var ossClient *oss.Client
-	fileObj := &fileform.FileField{}
-	ossHeader := &oss.PostObjectRequestHeader{}
-	uploadRequest := &oss.PostObjectRequest{}
-	ossRuntime := &ossutil.RuntimeOptions{}
-	openapiutil.Convert(runtime, ossRuntime)
-	adjustVideoColorReq := &AdjustVideoColorRequest{}
-	openapiutil.Convert(request, adjustVideoColorReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.VideoUrlObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	adjustVideoColorReq.VideoUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
-	adjustVideoColorResp, _err := client.AdjustVideoColorWithOptions(adjustVideoColorReq, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-
-	_result = adjustVideoColorResp
-	return _result, _err
-}
-
 func (client *Client) EraseVideoSubtitlesWithOptions(request *EraseVideoSubtitlesRequest, runtime *util.RuntimeOptions) (_result *EraseVideoSubtitlesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2525,121 +3511,6 @@ func (client *Client) EraseVideoSubtitlesAdvance(request *EraseVideoSubtitlesAdv
 	return _result, _err
 }
 
-func (client *Client) ChangeVideoSizeWithOptions(request *ChangeVideoSizeRequest, runtime *util.RuntimeOptions) (_result *ChangeVideoSizeResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ChangeVideoSizeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ChangeVideoSize"), tea.String("2020-03-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ChangeVideoSize(request *ChangeVideoSizeRequest) (_result *ChangeVideoSizeResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ChangeVideoSizeResponse{}
-	_body, _err := client.ChangeVideoSizeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ChangeVideoSizeAdvance(request *ChangeVideoSizeAdvanceRequest, runtime *util.RuntimeOptions) (_result *ChangeVideoSizeResponse, _err error) {
-	// Step 0: init client
-	accessKeyId, _err := client.Credential.GetAccessKeyId()
-	if _err != nil {
-		return _result, _err
-	}
-
-	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
-	if _err != nil {
-		return _result, _err
-	}
-
-	authConfig := &rpc.Config{
-		AccessKeyId:     accessKeyId,
-		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
-	}
-	authClient, _err := openplatform.NewClient(authConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	authRequest := &openplatform.AuthorizeFileUploadRequest{
-		Product:  tea.String("videoenhan"),
-		RegionId: client.RegionId,
-	}
-	authResponse := &openplatform.AuthorizeFileUploadResponse{}
-	ossConfig := &oss.Config{
-		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
-	}
-	var ossClient *oss.Client
-	fileObj := &fileform.FileField{}
-	ossHeader := &oss.PostObjectRequestHeader{}
-	uploadRequest := &oss.PostObjectRequest{}
-	ossRuntime := &ossutil.RuntimeOptions{}
-	openapiutil.Convert(runtime, ossRuntime)
-	changeVideoSizeReq := &ChangeVideoSizeRequest{}
-	openapiutil.Convert(request, changeVideoSizeReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.VideoUrlObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	changeVideoSizeReq.VideoUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
-	changeVideoSizeResp, _err := client.ChangeVideoSizeWithOptions(changeVideoSizeReq, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-
-	_result = changeVideoSizeResp
-	return _result, _err
-}
-
 func (client *Client) MergeVideoFaceWithOptions(request *MergeVideoFaceRequest, runtime *util.RuntimeOptions) (_result *MergeVideoFaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2752,120 +3623,5 @@ func (client *Client) MergeVideoFaceAdvance(request *MergeVideoFaceAdvanceReques
 	}
 
 	_result = mergeVideoFaceResp
-	return _result, _err
-}
-
-func (client *Client) SuperResolveVideoWithOptions(request *SuperResolveVideoRequest, runtime *util.RuntimeOptions) (_result *SuperResolveVideoResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &SuperResolveVideoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SuperResolveVideo"), tea.String("2020-03-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SuperResolveVideo(request *SuperResolveVideoRequest) (_result *SuperResolveVideoResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SuperResolveVideoResponse{}
-	_body, _err := client.SuperResolveVideoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) SuperResolveVideoAdvance(request *SuperResolveVideoAdvanceRequest, runtime *util.RuntimeOptions) (_result *SuperResolveVideoResponse, _err error) {
-	// Step 0: init client
-	accessKeyId, _err := client.Credential.GetAccessKeyId()
-	if _err != nil {
-		return _result, _err
-	}
-
-	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
-	if _err != nil {
-		return _result, _err
-	}
-
-	authConfig := &rpc.Config{
-		AccessKeyId:     accessKeyId,
-		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
-	}
-	authClient, _err := openplatform.NewClient(authConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	authRequest := &openplatform.AuthorizeFileUploadRequest{
-		Product:  tea.String("videoenhan"),
-		RegionId: client.RegionId,
-	}
-	authResponse := &openplatform.AuthorizeFileUploadResponse{}
-	ossConfig := &oss.Config{
-		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
-	}
-	var ossClient *oss.Client
-	fileObj := &fileform.FileField{}
-	ossHeader := &oss.PostObjectRequestHeader{}
-	uploadRequest := &oss.PostObjectRequest{}
-	ossRuntime := &ossutil.RuntimeOptions{}
-	openapiutil.Convert(runtime, ossRuntime)
-	superResolveVideoReq := &SuperResolveVideoRequest{}
-	openapiutil.Convert(request, superResolveVideoReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.VideoUrlObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	superResolveVideoReq.VideoUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
-	superResolveVideoResp, _err := client.SuperResolveVideoWithOptions(superResolveVideoReq, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-
-	_result = superResolveVideoResp
 	return _result, _err
 }
