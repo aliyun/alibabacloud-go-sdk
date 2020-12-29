@@ -550,8 +550,6 @@ type DescribeKubernetesVersionMetadataRequest struct {
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// 集群类型。
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// 是否查询多可用区。
-	MultiAZ *bool `json:"MultiAZ,omitempty" xml:"MultiAZ,omitempty"`
 	// 要查询的版本，如果为空则查所有版本。
 	KubernetesVersion *string `json:"KubernetesVersion,omitempty" xml:"KubernetesVersion,omitempty"`
 	// 边缘集群标识，用于区分边缘集群，取值：Default或Edge。
@@ -573,11 +571,6 @@ func (s *DescribeKubernetesVersionMetadataRequest) SetRegion(v string) *Describe
 
 func (s *DescribeKubernetesVersionMetadataRequest) SetClusterType(v string) *DescribeKubernetesVersionMetadataRequest {
 	s.ClusterType = &v
-	return s
-}
-
-func (s *DescribeKubernetesVersionMetadataRequest) SetMultiAZ(v bool) *DescribeKubernetesVersionMetadataRequest {
-	s.MultiAZ = &v
 	return s
 }
 
@@ -969,10 +962,6 @@ type DescribeClusterDetailResponseBody struct {
 	// Worker节点RAM角色名称。
 	WorkerRamRoleName *string            `json:"worker_ram_role_name,omitempty" xml:"worker_ram_role_name,omitempty"`
 	MaintenanceWindow *MaintenanceWindow `json:"maintenance_window,omitempty" xml:"maintenance_window,omitempty"`
-	// 创建集群参数。
-	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
-	// 集群创建的资源列表。
-	Outputs []*DescribeClusterDetailResponseBodyOutputs `json:"outputs,omitempty" xml:"outputs,omitempty" type:"Repeated"`
 }
 
 func (s DescribeClusterDetailResponseBody) String() string {
@@ -1125,48 +1114,6 @@ func (s *DescribeClusterDetailResponseBody) SetWorkerRamRoleName(v string) *Desc
 
 func (s *DescribeClusterDetailResponseBody) SetMaintenanceWindow(v *MaintenanceWindow) *DescribeClusterDetailResponseBody {
 	s.MaintenanceWindow = v
-	return s
-}
-
-func (s *DescribeClusterDetailResponseBody) SetParameters(v map[string]interface{}) *DescribeClusterDetailResponseBody {
-	s.Parameters = v
-	return s
-}
-
-func (s *DescribeClusterDetailResponseBody) SetOutputs(v []*DescribeClusterDetailResponseBodyOutputs) *DescribeClusterDetailResponseBody {
-	s.Outputs = v
-	return s
-}
-
-type DescribeClusterDetailResponseBodyOutputs struct {
-	// 资源ID。
-	OutputKey *string `json:"OutputKey,omitempty" xml:"OutputKey,omitempty"`
-	// 资源名称。
-	OutputValue *string `json:"OutputValue,omitempty" xml:"OutputValue,omitempty"`
-	// 资源描述。
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-}
-
-func (s DescribeClusterDetailResponseBodyOutputs) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeClusterDetailResponseBodyOutputs) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeClusterDetailResponseBodyOutputs) SetOutputKey(v string) *DescribeClusterDetailResponseBodyOutputs {
-	s.OutputKey = &v
-	return s
-}
-
-func (s *DescribeClusterDetailResponseBodyOutputs) SetOutputValue(v string) *DescribeClusterDetailResponseBodyOutputs {
-	s.OutputValue = &v
-	return s
-}
-
-func (s *DescribeClusterDetailResponseBodyOutputs) SetDescription(v string) *DescribeClusterDetailResponseBodyOutputs {
-	s.Description = &v
 	return s
 }
 
@@ -7746,27 +7693,8 @@ func (s *DeleteClusterNodesRequest) SetNodes(v []*string) *DeleteClusterNodesReq
 	return s
 }
 
-type DeleteClusterNodesResponseBody struct {
-	// 请求ID。
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-}
-
-func (s DeleteClusterNodesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteClusterNodesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteClusterNodesResponseBody) SetRequestId(v string) *DeleteClusterNodesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 type DeleteClusterNodesResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteClusterNodesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 }
 
 func (s DeleteClusterNodesResponse) String() string {
@@ -7779,11 +7707,6 @@ func (s DeleteClusterNodesResponse) GoString() string {
 
 func (s *DeleteClusterNodesResponse) SetHeaders(v map[string]*string) *DeleteClusterNodesResponse {
 	s.Headers = v
-	return s
-}
-
-func (s *DeleteClusterNodesResponse) SetBody(v *DeleteClusterNodesResponseBody) *DeleteClusterNodesResponse {
-	s.Body = v
 	return s
 }
 
@@ -8102,10 +8025,6 @@ func (client *Client) DescribeKubernetesVersionMetadataWithOptions(request *Desc
 
 	if !tea.BoolValue(util.IsUnset(request.ClusterType)) {
 		query["ClusterType"] = request.ClusterType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MultiAZ)) {
-		query["MultiAZ"] = request.MultiAZ
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.KubernetesVersion)) {
@@ -10245,7 +10164,7 @@ func (client *Client) DeleteClusterNodesWithOptions(ClusterId *string, request *
 		Body:    openapiutil.ParseToMap(body),
 	}
 	_result = &DeleteClusterNodesResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteClusterNodes"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/nodes"), tea.String("json"), req, runtime)
+	_body, _err := client.DoROARequest(tea.String("DeleteClusterNodes"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/nodes"), tea.String("none"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
