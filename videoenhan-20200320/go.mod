@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/videoenhan-20200320/v2
+module github.com/alibabacloud-go/videoenhan-20200320/v3
 
 go 1.15
 
@@ -12,5 +12,5 @@ require (
 	github.com/alibabacloud-go/tea-oss-sdk v1.1.3
 	github.com/alibabacloud-go/tea-oss-utils v1.1.0
 	github.com/alibabacloud-go/tea-rpc v1.1.8
-	github.com/alibabacloud-go/tea-utils v1.3.6
+	github.com/alibabacloud-go/tea-utils v1.3.8
 )
