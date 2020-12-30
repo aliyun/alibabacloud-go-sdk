@@ -1,0 +1,1360 @@
+// This file is auto-generated, don't edit it. Thanks.
+/**
+ *
+ */
+package client
+
+import (
+	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
+	util "github.com/alibabacloud-go/tea-utils/service"
+	"github.com/alibabacloud-go/tea/tea"
+)
+
+type CreateHiTSDBInstanceRequest struct {
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AppKey               *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	ZoneId               *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	InstanceName         *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceAlias        *string `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
+	InstanceClass        *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
+	InstanceStorage      *string `json:"InstanceStorage,omitempty" xml:"InstanceStorage,omitempty"`
+	PayType              *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	VPCId                *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	VSwitchId            *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	MaxTimelineLimit     *string `json:"MaxTimelineLimit,omitempty" xml:"MaxTimelineLimit,omitempty"`
+	InstanceTps          *string `json:"InstanceTps,omitempty" xml:"InstanceTps,omitempty"`
+	EngineType           *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	MaxSeriesPerDatabase *string `json:"MaxSeriesPerDatabase,omitempty" xml:"MaxSeriesPerDatabase,omitempty"`
+	MaxDatabaseLimit     *string `json:"MaxDatabaseLimit,omitempty" xml:"MaxDatabaseLimit,omitempty"`
+	PricingCycle         *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	Duration             *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	TSDBVersion          *string `json:"TSDBVersion,omitempty" xml:"TSDBVersion,omitempty"`
+	DiskCategory         *string `json:"DiskCategory,omitempty" xml:"DiskCategory,omitempty"`
+	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+}
+
+func (s CreateHiTSDBInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHiTSDBInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHiTSDBInstanceRequest) SetSecurityToken(v string) *CreateHiTSDBInstanceRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *CreateHiTSDBInstanceRequest) SetOwnerId(v int64) *CreateHiTSDBInstanceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateHiTSDBInstanceRequest) SetResourceOwnerAccount(v string) *CreateHiTSDBInstanceRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateHiTSDBInstanceRequest) SetResourceOwnerId(v int64) *CreateHiTSDBInstanceRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateHiTSDBInstanceRequest) SetOwnerAccount(v string) *CreateHiTSDBInstanceRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CreateHiTSDBInstanceRequest) SetRegionId(v string) *CreateHiTSDBInstanceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateHiTSDBInstanceRequest) SetAppKey(v string) *CreateHiTSDBInstanceRequest {
+	s.AppKey = &v
+	return s
+}
+
+func (s *CreateHiTSDBInstanceRequest) SetZoneId(v string) *CreateHiTSDBInstanceRequest {
+	s.ZoneId = &v
+	return s
+}
+
+func (s *CreateHiTSDBInstanceRequest) SetInstanceName(v string) *CreateHiTSDBInstanceRequest {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *CreateHiTSDBInstanceRequest) SetInstanceAlias(v string) *CreateHiTSDBInstanceRequest {
+	s.InstanceAlias = &v
+	return s
+}
+
+func (s *CreateHiTSDBInstanceRequest) SetInstanceClass(v string) *CreateHiTSDBInstanceRequest {
+	s.InstanceClass = &v
+	return s
+}
+
+func (s *CreateHiTSDBInstanceRequest) SetInstanceStorage(v string) *CreateHiTSDBInstanceRequest {
+	s.InstanceStorage = &v
+	return s
+}
+
+func (s *CreateHiTSDBInstanceRequest) SetPayType(v string) *CreateHiTSDBInstanceRequest {
+	s.PayType = &v
+	return s
+}
+
+func (s *CreateHiTSDBInstanceRequest) SetVPCId(v string) *CreateHiTSDBInstanceRequest {
+	s.VPCId = &v
+	return s
+}
+
+func (s *CreateHiTSDBInstanceRequest) SetVSwitchId(v string) *CreateHiTSDBInstanceRequest {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *CreateHiTSDBInstanceRequest) SetMaxTimelineLimit(v string) *CreateHiTSDBInstanceRequest {
+	s.MaxTimelineLimit = &v
+	return s
+}
+
+func (s *CreateHiTSDBInstanceRequest) SetInstanceTps(v string) *CreateHiTSDBInstanceRequest {
+	s.InstanceTps = &v
+	return s
+}
+
+func (s *CreateHiTSDBInstanceRequest) SetEngineType(v string) *CreateHiTSDBInstanceRequest {
+	s.EngineType = &v
+	return s
+}
+
+func (s *CreateHiTSDBInstanceRequest) SetMaxSeriesPerDatabase(v string) *CreateHiTSDBInstanceRequest {
+	s.MaxSeriesPerDatabase = &v
+	return s
+}
+
+func (s *CreateHiTSDBInstanceRequest) SetMaxDatabaseLimit(v string) *CreateHiTSDBInstanceRequest {
+	s.MaxDatabaseLimit = &v
+	return s
+}
+
+func (s *CreateHiTSDBInstanceRequest) SetPricingCycle(v string) *CreateHiTSDBInstanceRequest {
+	s.PricingCycle = &v
+	return s
+}
+
+func (s *CreateHiTSDBInstanceRequest) SetDuration(v string) *CreateHiTSDBInstanceRequest {
+	s.Duration = &v
+	return s
+}
+
+func (s *CreateHiTSDBInstanceRequest) SetTSDBVersion(v string) *CreateHiTSDBInstanceRequest {
+	s.TSDBVersion = &v
+	return s
+}
+
+func (s *CreateHiTSDBInstanceRequest) SetDiskCategory(v string) *CreateHiTSDBInstanceRequest {
+	s.DiskCategory = &v
+	return s
+}
+
+func (s *CreateHiTSDBInstanceRequest) SetClientToken(v string) *CreateHiTSDBInstanceRequest {
+	s.ClientToken = &v
+	return s
+}
+
+type CreateHiTSDBInstanceResponseBody struct {
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OrderId    *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+}
+
+func (s CreateHiTSDBInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHiTSDBInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHiTSDBInstanceResponseBody) SetRequestId(v string) *CreateHiTSDBInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateHiTSDBInstanceResponseBody) SetInstanceId(v string) *CreateHiTSDBInstanceResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateHiTSDBInstanceResponseBody) SetOrderId(v int64) *CreateHiTSDBInstanceResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+type CreateHiTSDBInstanceResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateHiTSDBInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateHiTSDBInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHiTSDBInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHiTSDBInstanceResponse) SetHeaders(v map[string]*string) *CreateHiTSDBInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateHiTSDBInstanceResponse) SetBody(v *CreateHiTSDBInstanceResponseBody) *CreateHiTSDBInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteHiTSDBInstanceRequest struct {
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	AppKey               *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DeleteHiTSDBInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHiTSDBInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHiTSDBInstanceRequest) SetSecurityToken(v string) *DeleteHiTSDBInstanceRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *DeleteHiTSDBInstanceRequest) SetOwnerId(v int64) *DeleteHiTSDBInstanceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteHiTSDBInstanceRequest) SetResourceOwnerAccount(v string) *DeleteHiTSDBInstanceRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteHiTSDBInstanceRequest) SetResourceOwnerId(v int64) *DeleteHiTSDBInstanceRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DeleteHiTSDBInstanceRequest) SetOwnerAccount(v string) *DeleteHiTSDBInstanceRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DeleteHiTSDBInstanceRequest) SetAppKey(v string) *DeleteHiTSDBInstanceRequest {
+	s.AppKey = &v
+	return s
+}
+
+func (s *DeleteHiTSDBInstanceRequest) SetInstanceId(v string) *DeleteHiTSDBInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type DeleteHiTSDBInstanceResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteHiTSDBInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHiTSDBInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHiTSDBInstanceResponseBody) SetRequestId(v string) *DeleteHiTSDBInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteHiTSDBInstanceResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteHiTSDBInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteHiTSDBInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHiTSDBInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHiTSDBInstanceResponse) SetHeaders(v map[string]*string) *DeleteHiTSDBInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteHiTSDBInstanceResponse) SetBody(v *DeleteHiTSDBInstanceResponseBody) *DeleteHiTSDBInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeHiTSDBInstanceRequest struct {
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	AppKey               *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DescribeHiTSDBInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHiTSDBInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHiTSDBInstanceRequest) SetSecurityToken(v string) *DescribeHiTSDBInstanceRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceRequest) SetOwnerId(v int64) *DescribeHiTSDBInstanceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceRequest) SetResourceOwnerAccount(v string) *DescribeHiTSDBInstanceRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceRequest) SetResourceOwnerId(v int64) *DescribeHiTSDBInstanceRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceRequest) SetOwnerAccount(v string) *DescribeHiTSDBInstanceRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceRequest) SetAppKey(v string) *DescribeHiTSDBInstanceRequest {
+	s.AppKey = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceRequest) SetInstanceId(v string) *DescribeHiTSDBInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type DescribeHiTSDBInstanceResponseBody struct {
+	AutoRenew              *bool                                               `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	GmtCreated             *string                                             `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	CpuNumber              *string                                             `json:"CpuNumber,omitempty" xml:"CpuNumber,omitempty"`
+	MemSize                *string                                             `json:"MemSize,omitempty" xml:"MemSize,omitempty"`
+	NetworkType            *string                                             `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	GmtExpire              *string                                             `json:"GmtExpire,omitempty" xml:"GmtExpire,omitempty"`
+	InstanceAlias          *string                                             `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
+	InstanceStatus         *string                                             `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	ExpiredTime            *int64                                              `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	PaymentType            *string                                             `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	MaxTimelineLimit       *string                                             `json:"MaxTimelineLimit,omitempty" xml:"MaxTimelineLimit,omitempty"`
+	PublicConnectionString *string                                             `json:"PublicConnectionString,omitempty" xml:"PublicConnectionString,omitempty"`
+	EngineType             *string                                             `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	InstanceTps            *string                                             `json:"InstanceTps,omitempty" xml:"InstanceTps,omitempty"`
+	Status                 *string                                             `json:"Status,omitempty" xml:"Status,omitempty"`
+	InstanceStorage        *string                                             `json:"InstanceStorage,omitempty" xml:"InstanceStorage,omitempty"`
+	RequestId              *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ZoneId                 *string                                             `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	InstanceId             *string                                             `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	CreateTime             *int64                                              `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DiskCategory           *string                                             `json:"DiskCategory,omitempty" xml:"DiskCategory,omitempty"`
+	InstanceClass          *string                                             `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
+	VswitchId              *string                                             `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	Series                 *int32                                              `json:"Series,omitempty" xml:"Series,omitempty"`
+	VpcId                  *string                                             `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ChargeType             *string                                             `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	SecurityIpList         []*DescribeHiTSDBInstanceResponseBodySecurityIpList `json:"SecurityIpList,omitempty" xml:"SecurityIpList,omitempty" type:"Repeated"`
+	InstanceDescription    *string                                             `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
+	RegionId               *string                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ConnectionString       *string                                             `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+}
+
+func (s DescribeHiTSDBInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHiTSDBInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHiTSDBInstanceResponseBody) SetAutoRenew(v bool) *DescribeHiTSDBInstanceResponseBody {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceResponseBody) SetGmtCreated(v string) *DescribeHiTSDBInstanceResponseBody {
+	s.GmtCreated = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceResponseBody) SetCpuNumber(v string) *DescribeHiTSDBInstanceResponseBody {
+	s.CpuNumber = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceResponseBody) SetMemSize(v string) *DescribeHiTSDBInstanceResponseBody {
+	s.MemSize = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceResponseBody) SetNetworkType(v string) *DescribeHiTSDBInstanceResponseBody {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceResponseBody) SetGmtExpire(v string) *DescribeHiTSDBInstanceResponseBody {
+	s.GmtExpire = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceResponseBody) SetInstanceAlias(v string) *DescribeHiTSDBInstanceResponseBody {
+	s.InstanceAlias = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceResponseBody) SetInstanceStatus(v string) *DescribeHiTSDBInstanceResponseBody {
+	s.InstanceStatus = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceResponseBody) SetExpiredTime(v int64) *DescribeHiTSDBInstanceResponseBody {
+	s.ExpiredTime = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceResponseBody) SetPaymentType(v string) *DescribeHiTSDBInstanceResponseBody {
+	s.PaymentType = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceResponseBody) SetMaxTimelineLimit(v string) *DescribeHiTSDBInstanceResponseBody {
+	s.MaxTimelineLimit = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceResponseBody) SetPublicConnectionString(v string) *DescribeHiTSDBInstanceResponseBody {
+	s.PublicConnectionString = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceResponseBody) SetEngineType(v string) *DescribeHiTSDBInstanceResponseBody {
+	s.EngineType = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceResponseBody) SetInstanceTps(v string) *DescribeHiTSDBInstanceResponseBody {
+	s.InstanceTps = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceResponseBody) SetStatus(v string) *DescribeHiTSDBInstanceResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceResponseBody) SetInstanceStorage(v string) *DescribeHiTSDBInstanceResponseBody {
+	s.InstanceStorage = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceResponseBody) SetRequestId(v string) *DescribeHiTSDBInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceResponseBody) SetZoneId(v string) *DescribeHiTSDBInstanceResponseBody {
+	s.ZoneId = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceResponseBody) SetInstanceId(v string) *DescribeHiTSDBInstanceResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceResponseBody) SetCreateTime(v int64) *DescribeHiTSDBInstanceResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceResponseBody) SetDiskCategory(v string) *DescribeHiTSDBInstanceResponseBody {
+	s.DiskCategory = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceResponseBody) SetInstanceClass(v string) *DescribeHiTSDBInstanceResponseBody {
+	s.InstanceClass = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceResponseBody) SetVswitchId(v string) *DescribeHiTSDBInstanceResponseBody {
+	s.VswitchId = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceResponseBody) SetSeries(v int32) *DescribeHiTSDBInstanceResponseBody {
+	s.Series = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceResponseBody) SetVpcId(v string) *DescribeHiTSDBInstanceResponseBody {
+	s.VpcId = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceResponseBody) SetChargeType(v string) *DescribeHiTSDBInstanceResponseBody {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceResponseBody) SetSecurityIpList(v []*DescribeHiTSDBInstanceResponseBodySecurityIpList) *DescribeHiTSDBInstanceResponseBody {
+	s.SecurityIpList = v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceResponseBody) SetInstanceDescription(v string) *DescribeHiTSDBInstanceResponseBody {
+	s.InstanceDescription = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceResponseBody) SetRegionId(v string) *DescribeHiTSDBInstanceResponseBody {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceResponseBody) SetConnectionString(v string) *DescribeHiTSDBInstanceResponseBody {
+	s.ConnectionString = &v
+	return s
+}
+
+type DescribeHiTSDBInstanceResponseBodySecurityIpList struct {
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+}
+
+func (s DescribeHiTSDBInstanceResponseBodySecurityIpList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHiTSDBInstanceResponseBodySecurityIpList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHiTSDBInstanceResponseBodySecurityIpList) SetIp(v string) *DescribeHiTSDBInstanceResponseBodySecurityIpList {
+	s.Ip = &v
+	return s
+}
+
+type DescribeHiTSDBInstanceResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeHiTSDBInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeHiTSDBInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHiTSDBInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHiTSDBInstanceResponse) SetHeaders(v map[string]*string) *DescribeHiTSDBInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceResponse) SetBody(v *DescribeHiTSDBInstanceResponseBody) *DescribeHiTSDBInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeHiTSDBInstanceListRequest struct {
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	AppKey               *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	QueryStr             *string `json:"QueryStr,omitempty" xml:"QueryStr,omitempty"`
+	StatusList           *string `json:"StatusList,omitempty" xml:"StatusList,omitempty"`
+	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	EngineType           *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+}
+
+func (s DescribeHiTSDBInstanceListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHiTSDBInstanceListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHiTSDBInstanceListRequest) SetSecurityToken(v string) *DescribeHiTSDBInstanceListRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceListRequest) SetOwnerId(v int64) *DescribeHiTSDBInstanceListRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceListRequest) SetResourceOwnerAccount(v string) *DescribeHiTSDBInstanceListRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceListRequest) SetResourceOwnerId(v int64) *DescribeHiTSDBInstanceListRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceListRequest) SetOwnerAccount(v string) *DescribeHiTSDBInstanceListRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceListRequest) SetAppKey(v string) *DescribeHiTSDBInstanceListRequest {
+	s.AppKey = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceListRequest) SetQueryStr(v string) *DescribeHiTSDBInstanceListRequest {
+	s.QueryStr = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceListRequest) SetStatusList(v string) *DescribeHiTSDBInstanceListRequest {
+	s.StatusList = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceListRequest) SetPageNumber(v int32) *DescribeHiTSDBInstanceListRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceListRequest) SetPageSize(v int32) *DescribeHiTSDBInstanceListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceListRequest) SetEngineType(v string) *DescribeHiTSDBInstanceListRequest {
+	s.EngineType = &v
+	return s
+}
+
+type DescribeHiTSDBInstanceListResponseBody struct {
+	RequestId    *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageSize     *int32                                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber   *int32                                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	Total        *int32                                                `json:"Total,omitempty" xml:"Total,omitempty"`
+	InstanceList []*DescribeHiTSDBInstanceListResponseBodyInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
+}
+
+func (s DescribeHiTSDBInstanceListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHiTSDBInstanceListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHiTSDBInstanceListResponseBody) SetRequestId(v string) *DescribeHiTSDBInstanceListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceListResponseBody) SetPageSize(v int32) *DescribeHiTSDBInstanceListResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceListResponseBody) SetPageNumber(v int32) *DescribeHiTSDBInstanceListResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceListResponseBody) SetTotal(v int32) *DescribeHiTSDBInstanceListResponseBody {
+	s.Total = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceListResponseBody) SetInstanceList(v []*DescribeHiTSDBInstanceListResponseBodyInstanceList) *DescribeHiTSDBInstanceListResponseBody {
+	s.InstanceList = v
+	return s
+}
+
+type DescribeHiTSDBInstanceListResponseBodyInstanceList struct {
+	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	MaxSeriesPerDatabase *string `json:"MaxSeriesPerDatabase,omitempty" xml:"MaxSeriesPerDatabase,omitempty"`
+	PaymentType          *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	EngineType           *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	VswitchId            *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	InstanceClass        *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
+	CreateTime           *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	UserId               *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	ChargeType           *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	InstanceStorage      *string `json:"InstanceStorage,omitempty" xml:"InstanceStorage,omitempty"`
+	NetworkType          *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	LockMode             *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	InstanceDescription  *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	GmtCreated           *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	InstanceAlias        *string `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
+	InstanceTps          *string `json:"InstanceTps,omitempty" xml:"InstanceTps,omitempty"`
+	ExpiredTime          *int64  `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	ZoneId               *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	InstanceStatus       *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	GmtExpire            *string `json:"GmtExpire,omitempty" xml:"GmtExpire,omitempty"`
+}
+
+func (s DescribeHiTSDBInstanceListResponseBodyInstanceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHiTSDBInstanceListResponseBodyInstanceList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHiTSDBInstanceListResponseBodyInstanceList) SetVpcId(v string) *DescribeHiTSDBInstanceListResponseBodyInstanceList {
+	s.VpcId = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceListResponseBodyInstanceList) SetStatus(v string) *DescribeHiTSDBInstanceListResponseBodyInstanceList {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceListResponseBodyInstanceList) SetMaxSeriesPerDatabase(v string) *DescribeHiTSDBInstanceListResponseBodyInstanceList {
+	s.MaxSeriesPerDatabase = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceListResponseBodyInstanceList) SetPaymentType(v string) *DescribeHiTSDBInstanceListResponseBodyInstanceList {
+	s.PaymentType = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceListResponseBodyInstanceList) SetEngineType(v string) *DescribeHiTSDBInstanceListResponseBodyInstanceList {
+	s.EngineType = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceListResponseBodyInstanceList) SetVswitchId(v string) *DescribeHiTSDBInstanceListResponseBodyInstanceList {
+	s.VswitchId = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceListResponseBodyInstanceList) SetInstanceClass(v string) *DescribeHiTSDBInstanceListResponseBodyInstanceList {
+	s.InstanceClass = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceListResponseBodyInstanceList) SetCreateTime(v int64) *DescribeHiTSDBInstanceListResponseBodyInstanceList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceListResponseBodyInstanceList) SetUserId(v string) *DescribeHiTSDBInstanceListResponseBodyInstanceList {
+	s.UserId = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceListResponseBodyInstanceList) SetChargeType(v string) *DescribeHiTSDBInstanceListResponseBodyInstanceList {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceListResponseBodyInstanceList) SetInstanceStorage(v string) *DescribeHiTSDBInstanceListResponseBodyInstanceList {
+	s.InstanceStorage = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceListResponseBodyInstanceList) SetNetworkType(v string) *DescribeHiTSDBInstanceListResponseBodyInstanceList {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceListResponseBodyInstanceList) SetInstanceId(v string) *DescribeHiTSDBInstanceListResponseBodyInstanceList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceListResponseBodyInstanceList) SetLockMode(v string) *DescribeHiTSDBInstanceListResponseBodyInstanceList {
+	s.LockMode = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceListResponseBodyInstanceList) SetInstanceDescription(v string) *DescribeHiTSDBInstanceListResponseBodyInstanceList {
+	s.InstanceDescription = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceListResponseBodyInstanceList) SetRegionId(v string) *DescribeHiTSDBInstanceListResponseBodyInstanceList {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceListResponseBodyInstanceList) SetGmtCreated(v string) *DescribeHiTSDBInstanceListResponseBodyInstanceList {
+	s.GmtCreated = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceListResponseBodyInstanceList) SetInstanceAlias(v string) *DescribeHiTSDBInstanceListResponseBodyInstanceList {
+	s.InstanceAlias = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceListResponseBodyInstanceList) SetInstanceTps(v string) *DescribeHiTSDBInstanceListResponseBodyInstanceList {
+	s.InstanceTps = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceListResponseBodyInstanceList) SetExpiredTime(v int64) *DescribeHiTSDBInstanceListResponseBodyInstanceList {
+	s.ExpiredTime = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceListResponseBodyInstanceList) SetZoneId(v string) *DescribeHiTSDBInstanceListResponseBodyInstanceList {
+	s.ZoneId = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceListResponseBodyInstanceList) SetInstanceStatus(v string) *DescribeHiTSDBInstanceListResponseBodyInstanceList {
+	s.InstanceStatus = &v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceListResponseBodyInstanceList) SetGmtExpire(v string) *DescribeHiTSDBInstanceListResponseBodyInstanceList {
+	s.GmtExpire = &v
+	return s
+}
+
+type DescribeHiTSDBInstanceListResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeHiTSDBInstanceListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeHiTSDBInstanceListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHiTSDBInstanceListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHiTSDBInstanceListResponse) SetHeaders(v map[string]*string) *DescribeHiTSDBInstanceListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeHiTSDBInstanceListResponse) SetBody(v *DescribeHiTSDBInstanceListResponseBody) *DescribeHiTSDBInstanceListResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyHiTSDBInstanceClassRequest struct {
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	AppKey               *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceClass        *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
+	InstanceStorage      *string `json:"InstanceStorage,omitempty" xml:"InstanceStorage,omitempty"`
+}
+
+func (s ModifyHiTSDBInstanceClassRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyHiTSDBInstanceClassRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyHiTSDBInstanceClassRequest) SetSecurityToken(v string) *ModifyHiTSDBInstanceClassRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *ModifyHiTSDBInstanceClassRequest) SetOwnerId(v int64) *ModifyHiTSDBInstanceClassRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyHiTSDBInstanceClassRequest) SetResourceOwnerAccount(v string) *ModifyHiTSDBInstanceClassRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyHiTSDBInstanceClassRequest) SetResourceOwnerId(v int64) *ModifyHiTSDBInstanceClassRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyHiTSDBInstanceClassRequest) SetOwnerAccount(v string) *ModifyHiTSDBInstanceClassRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ModifyHiTSDBInstanceClassRequest) SetAppKey(v string) *ModifyHiTSDBInstanceClassRequest {
+	s.AppKey = &v
+	return s
+}
+
+func (s *ModifyHiTSDBInstanceClassRequest) SetInstanceId(v string) *ModifyHiTSDBInstanceClassRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyHiTSDBInstanceClassRequest) SetInstanceClass(v string) *ModifyHiTSDBInstanceClassRequest {
+	s.InstanceClass = &v
+	return s
+}
+
+func (s *ModifyHiTSDBInstanceClassRequest) SetInstanceStorage(v string) *ModifyHiTSDBInstanceClassRequest {
+	s.InstanceStorage = &v
+	return s
+}
+
+type ModifyHiTSDBInstanceClassResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyHiTSDBInstanceClassResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyHiTSDBInstanceClassResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyHiTSDBInstanceClassResponseBody) SetRequestId(v string) *ModifyHiTSDBInstanceClassResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyHiTSDBInstanceClassResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ModifyHiTSDBInstanceClassResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyHiTSDBInstanceClassResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyHiTSDBInstanceClassResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyHiTSDBInstanceClassResponse) SetHeaders(v map[string]*string) *ModifyHiTSDBInstanceClassResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyHiTSDBInstanceClassResponse) SetBody(v *ModifyHiTSDBInstanceClassResponseBody) *ModifyHiTSDBInstanceClassResponse {
+	s.Body = v
+	return s
+}
+
+type RenameHiTSDBInstanceAliasRequest struct {
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	AppKey               *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceAlias        *string `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
+}
+
+func (s RenameHiTSDBInstanceAliasRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenameHiTSDBInstanceAliasRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RenameHiTSDBInstanceAliasRequest) SetSecurityToken(v string) *RenameHiTSDBInstanceAliasRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *RenameHiTSDBInstanceAliasRequest) SetOwnerId(v int64) *RenameHiTSDBInstanceAliasRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *RenameHiTSDBInstanceAliasRequest) SetResourceOwnerAccount(v string) *RenameHiTSDBInstanceAliasRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *RenameHiTSDBInstanceAliasRequest) SetResourceOwnerId(v int64) *RenameHiTSDBInstanceAliasRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *RenameHiTSDBInstanceAliasRequest) SetOwnerAccount(v string) *RenameHiTSDBInstanceAliasRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *RenameHiTSDBInstanceAliasRequest) SetAppKey(v string) *RenameHiTSDBInstanceAliasRequest {
+	s.AppKey = &v
+	return s
+}
+
+func (s *RenameHiTSDBInstanceAliasRequest) SetInstanceId(v string) *RenameHiTSDBInstanceAliasRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *RenameHiTSDBInstanceAliasRequest) SetInstanceAlias(v string) *RenameHiTSDBInstanceAliasRequest {
+	s.InstanceAlias = &v
+	return s
+}
+
+type RenameHiTSDBInstanceAliasResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RenameHiTSDBInstanceAliasResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenameHiTSDBInstanceAliasResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RenameHiTSDBInstanceAliasResponseBody) SetRequestId(v string) *RenameHiTSDBInstanceAliasResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RenameHiTSDBInstanceAliasResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RenameHiTSDBInstanceAliasResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RenameHiTSDBInstanceAliasResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenameHiTSDBInstanceAliasResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RenameHiTSDBInstanceAliasResponse) SetHeaders(v map[string]*string) *RenameHiTSDBInstanceAliasResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RenameHiTSDBInstanceAliasResponse) SetBody(v *RenameHiTSDBInstanceAliasResponseBody) *RenameHiTSDBInstanceAliasResponse {
+	s.Body = v
+	return s
+}
+
+type Client struct {
+	openapi.Client
+}
+
+func NewClient(config *openapi.Config) (*Client, error) {
+	client := new(Client)
+	err := client.Init(config)
+	return client, err
+}
+
+func (client *Client) Init(config *openapi.Config) (_err error) {
+	_err = client.Client.Init(config)
+	if _err != nil {
+		return _err
+	}
+	client.EndpointRule = tea.String("regional")
+	client.EndpointMap = map[string]*string{
+		"cn-qingdao":                  tea.String("hitsdb.aliyuncs.com"),
+		"cn-beijing":                  tea.String("hitsdb.aliyuncs.com"),
+		"cn-hangzhou":                 tea.String("hitsdb.aliyuncs.com"),
+		"cn-shanghai":                 tea.String("hitsdb.aliyuncs.com"),
+		"cn-shenzhen":                 tea.String("hitsdb.aliyuncs.com"),
+		"cn-hongkong":                 tea.String("hitsdb.aliyuncs.com"),
+		"ap-southeast-1":              tea.String("hitsdb.aliyuncs.com"),
+		"us-west-1":                   tea.String("hitsdb.aliyuncs.com"),
+		"us-east-1":                   tea.String("hitsdb.aliyuncs.com"),
+		"cn-shanghai-finance-1":       tea.String("hitsdb.aliyuncs.com"),
+		"cn-shenzhen-finance-1":       tea.String("hitsdb.aliyuncs.com"),
+		"ap-northeast-2-pop":          tea.String("hitsdb.aliyuncs.com"),
+		"cn-beijing-finance-1":        tea.String("hitsdb.aliyuncs.com"),
+		"cn-beijing-finance-pop":      tea.String("hitsdb.aliyuncs.com"),
+		"cn-beijing-gov-1":            tea.String("hitsdb.aliyuncs.com"),
+		"cn-beijing-nu16-b01":         tea.String("hitsdb.aliyuncs.com"),
+		"cn-chengdu":                  tea.String("hitsdb.aliyuncs.com"),
+		"cn-edge-1":                   tea.String("hitsdb.aliyuncs.com"),
+		"cn-fujian":                   tea.String("hitsdb.aliyuncs.com"),
+		"cn-haidian-cm12-c01":         tea.String("hitsdb.aliyuncs.com"),
+		"cn-hangzhou-bj-b01":          tea.String("hitsdb.aliyuncs.com"),
+		"cn-hangzhou-finance":         tea.String("hitsdb.aliyuncs.com"),
+		"cn-hangzhou-internal-prod-1": tea.String("hitsdb.aliyuncs.com"),
+		"cn-hangzhou-internal-test-1": tea.String("hitsdb.aliyuncs.com"),
+		"cn-hangzhou-internal-test-2": tea.String("hitsdb.aliyuncs.com"),
+		"cn-hangzhou-internal-test-3": tea.String("hitsdb.aliyuncs.com"),
+		"cn-hangzhou-test-306":        tea.String("hitsdb.aliyuncs.com"),
+		"cn-hongkong-finance-pop":     tea.String("hitsdb.aliyuncs.com"),
+		"cn-huhehaote-nebula-1":       tea.String("hitsdb.aliyuncs.com"),
+		"cn-qingdao-nebula":           tea.String("hitsdb.aliyuncs.com"),
+		"cn-shanghai-et15-b01":        tea.String("hitsdb.aliyuncs.com"),
+		"cn-shanghai-et2-b01":         tea.String("hitsdb.aliyuncs.com"),
+		"cn-shanghai-inner":           tea.String("hitsdb.aliyuncs.com"),
+		"cn-shanghai-internal-test-1": tea.String("hitsdb.aliyuncs.com"),
+		"cn-shenzhen-inner":           tea.String("hitsdb.aliyuncs.com"),
+		"cn-shenzhen-st4-d01":         tea.String("hitsdb.aliyuncs.com"),
+		"cn-shenzhen-su18-b01":        tea.String("hitsdb.aliyuncs.com"),
+		"cn-wuhan":                    tea.String("hitsdb.aliyuncs.com"),
+		"cn-wulanchabu":               tea.String("hitsdb.aliyuncs.com"),
+		"cn-yushanfang":               tea.String("hitsdb.aliyuncs.com"),
+		"cn-zhangbei":                 tea.String("hitsdb.aliyuncs.com"),
+		"cn-zhangbei-na61-b01":        tea.String("hitsdb.aliyuncs.com"),
+		"cn-zhangjiakou-na62-a01":     tea.String("hitsdb.aliyuncs.com"),
+		"cn-zhengzhou-nebula-1":       tea.String("hitsdb.aliyuncs.com"),
+		"eu-west-1-oxs":               tea.String("hitsdb.aliyuncs.com"),
+		"me-east-1":                   tea.String("hitsdb.aliyuncs.com"),
+		"rus-west-1-pop":              tea.String("hitsdb.aliyuncs.com"),
+	}
+	_err = client.CheckConfig(config)
+	if _err != nil {
+		return _err
+	}
+	client.Endpoint, _err = client.GetEndpoint(tea.String("hitsdb"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
+	if _err != nil {
+		return _err
+	}
+
+	return nil
+}
+
+func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
+	if !tea.BoolValue(util.Empty(endpoint)) {
+		_result = endpoint
+		return _result, _err
+	}
+
+	if !tea.BoolValue(util.IsUnset(endpointMap)) && !tea.BoolValue(util.Empty(endpointMap[tea.StringValue(regionId)])) {
+		_result = endpointMap[tea.StringValue(regionId)]
+		return _result, _err
+	}
+
+	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateHiTSDBInstanceWithOptions(request *CreateHiTSDBInstanceRequest, runtime *util.RuntimeOptions) (_result *CreateHiTSDBInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateHiTSDBInstanceResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateHiTSDBInstance"), tea.String("2017-06-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateHiTSDBInstance(request *CreateHiTSDBInstanceRequest) (_result *CreateHiTSDBInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateHiTSDBInstanceResponse{}
+	_body, _err := client.CreateHiTSDBInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteHiTSDBInstanceWithOptions(request *DeleteHiTSDBInstanceRequest, runtime *util.RuntimeOptions) (_result *DeleteHiTSDBInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DeleteHiTSDBInstanceResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteHiTSDBInstance"), tea.String("2017-06-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteHiTSDBInstance(request *DeleteHiTSDBInstanceRequest) (_result *DeleteHiTSDBInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteHiTSDBInstanceResponse{}
+	_body, _err := client.DeleteHiTSDBInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeHiTSDBInstanceWithOptions(request *DescribeHiTSDBInstanceRequest, runtime *util.RuntimeOptions) (_result *DescribeHiTSDBInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeHiTSDBInstanceResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeHiTSDBInstance"), tea.String("2017-06-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeHiTSDBInstance(request *DescribeHiTSDBInstanceRequest) (_result *DescribeHiTSDBInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeHiTSDBInstanceResponse{}
+	_body, _err := client.DescribeHiTSDBInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeHiTSDBInstanceListWithOptions(request *DescribeHiTSDBInstanceListRequest, runtime *util.RuntimeOptions) (_result *DescribeHiTSDBInstanceListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeHiTSDBInstanceListResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeHiTSDBInstanceList"), tea.String("2017-06-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeHiTSDBInstanceList(request *DescribeHiTSDBInstanceListRequest) (_result *DescribeHiTSDBInstanceListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeHiTSDBInstanceListResponse{}
+	_body, _err := client.DescribeHiTSDBInstanceListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyHiTSDBInstanceClassWithOptions(request *ModifyHiTSDBInstanceClassRequest, runtime *util.RuntimeOptions) (_result *ModifyHiTSDBInstanceClassResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ModifyHiTSDBInstanceClassResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ModifyHiTSDBInstanceClass"), tea.String("2017-06-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyHiTSDBInstanceClass(request *ModifyHiTSDBInstanceClassRequest) (_result *ModifyHiTSDBInstanceClassResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyHiTSDBInstanceClassResponse{}
+	_body, _err := client.ModifyHiTSDBInstanceClassWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RenameHiTSDBInstanceAliasWithOptions(request *RenameHiTSDBInstanceAliasRequest, runtime *util.RuntimeOptions) (_result *RenameHiTSDBInstanceAliasResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &RenameHiTSDBInstanceAliasResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("RenameHiTSDBInstanceAlias"), tea.String("2017-06-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RenameHiTSDBInstanceAlias(request *RenameHiTSDBInstanceAliasRequest) (_result *RenameHiTSDBInstanceAliasResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RenameHiTSDBInstanceAliasResponse{}
+	_body, _err := client.RenameHiTSDBInstanceAliasWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
