@@ -182,9 +182,9 @@ func (s *AddBackendServersRequest) SetTags(v string) *AddBackendServersRequest {
 }
 
 type AddBackendServersResponseBody struct {
-	RequestId      *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	LoadBalancerId *string                                        `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	BackendServers []*AddBackendServersResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Repeated"`
+	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	LoadBalancerId *string                                      `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	BackendServers *AddBackendServersResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
 }
 
 func (s AddBackendServersResponseBody) String() string {
@@ -205,16 +205,13 @@ func (s *AddBackendServersResponseBody) SetLoadBalancerId(v string) *AddBackendS
 	return s
 }
 
-func (s *AddBackendServersResponseBody) SetBackendServers(v []*AddBackendServersResponseBodyBackendServers) *AddBackendServersResponseBody {
+func (s *AddBackendServersResponseBody) SetBackendServers(v *AddBackendServersResponseBodyBackendServers) *AddBackendServersResponseBody {
 	s.BackendServers = v
 	return s
 }
 
 type AddBackendServersResponseBodyBackendServers struct {
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Weight      *string `json:"Weight,omitempty" xml:"Weight,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ServerId    *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	BackendServer []*AddBackendServersResponseBodyBackendServersBackendServer `json:"BackendServer,omitempty" xml:"BackendServer,omitempty" type:"Repeated"`
 }
 
 func (s AddBackendServersResponseBodyBackendServers) String() string {
@@ -225,22 +222,42 @@ func (s AddBackendServersResponseBodyBackendServers) GoString() string {
 	return s.String()
 }
 
-func (s *AddBackendServersResponseBodyBackendServers) SetType(v string) *AddBackendServersResponseBodyBackendServers {
+func (s *AddBackendServersResponseBodyBackendServers) SetBackendServer(v []*AddBackendServersResponseBodyBackendServersBackendServer) *AddBackendServersResponseBodyBackendServers {
+	s.BackendServer = v
+	return s
+}
+
+type AddBackendServersResponseBodyBackendServersBackendServer struct {
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Weight      *string `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ServerId    *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+}
+
+func (s AddBackendServersResponseBodyBackendServersBackendServer) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddBackendServersResponseBodyBackendServersBackendServer) GoString() string {
+	return s.String()
+}
+
+func (s *AddBackendServersResponseBodyBackendServersBackendServer) SetType(v string) *AddBackendServersResponseBodyBackendServersBackendServer {
 	s.Type = &v
 	return s
 }
 
-func (s *AddBackendServersResponseBodyBackendServers) SetWeight(v string) *AddBackendServersResponseBodyBackendServers {
+func (s *AddBackendServersResponseBodyBackendServersBackendServer) SetWeight(v string) *AddBackendServersResponseBodyBackendServersBackendServer {
 	s.Weight = &v
 	return s
 }
 
-func (s *AddBackendServersResponseBodyBackendServers) SetDescription(v string) *AddBackendServersResponseBodyBackendServers {
+func (s *AddBackendServersResponseBodyBackendServersBackendServer) SetDescription(v string) *AddBackendServersResponseBodyBackendServersBackendServer {
 	s.Description = &v
 	return s
 }
 
-func (s *AddBackendServersResponseBodyBackendServers) SetServerId(v string) *AddBackendServersResponseBodyBackendServers {
+func (s *AddBackendServersResponseBodyBackendServersBackendServer) SetServerId(v string) *AddBackendServersResponseBodyBackendServersBackendServer {
 	s.ServerId = &v
 	return s
 }
@@ -550,9 +567,9 @@ func (s *AddVServerGroupBackendServersRequest) SetBackendServers(v string) *AddV
 }
 
 type AddVServerGroupBackendServersResponseBody struct {
-	VServerGroupId *string                                                    `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
-	RequestId      *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	BackendServers []*AddVServerGroupBackendServersResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Repeated"`
+	VServerGroupId *string                                                  `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
+	RequestId      *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	BackendServers *AddVServerGroupBackendServersResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
 }
 
 func (s AddVServerGroupBackendServersResponseBody) String() string {
@@ -573,17 +590,13 @@ func (s *AddVServerGroupBackendServersResponseBody) SetRequestId(v string) *AddV
 	return s
 }
 
-func (s *AddVServerGroupBackendServersResponseBody) SetBackendServers(v []*AddVServerGroupBackendServersResponseBodyBackendServers) *AddVServerGroupBackendServersResponseBody {
+func (s *AddVServerGroupBackendServersResponseBody) SetBackendServers(v *AddVServerGroupBackendServersResponseBodyBackendServers) *AddVServerGroupBackendServersResponseBody {
 	s.BackendServers = v
 	return s
 }
 
 type AddVServerGroupBackendServersResponseBodyBackendServers struct {
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Weight      *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Port        *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	ServerId    *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	BackendServer []*AddVServerGroupBackendServersResponseBodyBackendServersBackendServer `json:"BackendServer,omitempty" xml:"BackendServer,omitempty" type:"Repeated"`
 }
 
 func (s AddVServerGroupBackendServersResponseBodyBackendServers) String() string {
@@ -594,27 +607,48 @@ func (s AddVServerGroupBackendServersResponseBodyBackendServers) GoString() stri
 	return s.String()
 }
 
-func (s *AddVServerGroupBackendServersResponseBodyBackendServers) SetType(v string) *AddVServerGroupBackendServersResponseBodyBackendServers {
+func (s *AddVServerGroupBackendServersResponseBodyBackendServers) SetBackendServer(v []*AddVServerGroupBackendServersResponseBodyBackendServersBackendServer) *AddVServerGroupBackendServersResponseBodyBackendServers {
+	s.BackendServer = v
+	return s
+}
+
+type AddVServerGroupBackendServersResponseBodyBackendServersBackendServer struct {
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Weight      *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Port        *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	ServerId    *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+}
+
+func (s AddVServerGroupBackendServersResponseBodyBackendServersBackendServer) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddVServerGroupBackendServersResponseBodyBackendServersBackendServer) GoString() string {
+	return s.String()
+}
+
+func (s *AddVServerGroupBackendServersResponseBodyBackendServersBackendServer) SetType(v string) *AddVServerGroupBackendServersResponseBodyBackendServersBackendServer {
 	s.Type = &v
 	return s
 }
 
-func (s *AddVServerGroupBackendServersResponseBodyBackendServers) SetWeight(v int32) *AddVServerGroupBackendServersResponseBodyBackendServers {
+func (s *AddVServerGroupBackendServersResponseBodyBackendServersBackendServer) SetWeight(v int32) *AddVServerGroupBackendServersResponseBodyBackendServersBackendServer {
 	s.Weight = &v
 	return s
 }
 
-func (s *AddVServerGroupBackendServersResponseBodyBackendServers) SetDescription(v string) *AddVServerGroupBackendServersResponseBodyBackendServers {
+func (s *AddVServerGroupBackendServersResponseBodyBackendServersBackendServer) SetDescription(v string) *AddVServerGroupBackendServersResponseBodyBackendServersBackendServer {
 	s.Description = &v
 	return s
 }
 
-func (s *AddVServerGroupBackendServersResponseBodyBackendServers) SetPort(v int32) *AddVServerGroupBackendServersResponseBodyBackendServers {
+func (s *AddVServerGroupBackendServersResponseBodyBackendServersBackendServer) SetPort(v int32) *AddVServerGroupBackendServersResponseBodyBackendServersBackendServer {
 	s.Port = &v
 	return s
 }
 
-func (s *AddVServerGroupBackendServersResponseBodyBackendServers) SetServerId(v string) *AddVServerGroupBackendServersResponseBodyBackendServers {
+func (s *AddVServerGroupBackendServersResponseBodyBackendServersBackendServer) SetServerId(v string) *AddVServerGroupBackendServersResponseBodyBackendServersBackendServer {
 	s.ServerId = &v
 	return s
 }
@@ -2537,9 +2571,9 @@ func (s *CreateMasterSlaveServerGroupRequest) SetMasterSlaveBackendServers(v str
 }
 
 type CreateMasterSlaveServerGroupResponseBody struct {
-	RequestId                 *string                                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	MasterSlaveServerGroupId  *string                                                              `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
-	MasterSlaveBackendServers []*CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServers `json:"MasterSlaveBackendServers,omitempty" xml:"MasterSlaveBackendServers,omitempty" type:"Repeated"`
+	RequestId                 *string                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	MasterSlaveServerGroupId  *string                                                            `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
+	MasterSlaveBackendServers *CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServers `json:"MasterSlaveBackendServers,omitempty" xml:"MasterSlaveBackendServers,omitempty" type:"Struct"`
 }
 
 func (s CreateMasterSlaveServerGroupResponseBody) String() string {
@@ -2560,18 +2594,13 @@ func (s *CreateMasterSlaveServerGroupResponseBody) SetMasterSlaveServerGroupId(v
 	return s
 }
 
-func (s *CreateMasterSlaveServerGroupResponseBody) SetMasterSlaveBackendServers(v []*CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServers) *CreateMasterSlaveServerGroupResponseBody {
+func (s *CreateMasterSlaveServerGroupResponseBody) SetMasterSlaveBackendServers(v *CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServers) *CreateMasterSlaveServerGroupResponseBody {
 	s.MasterSlaveBackendServers = v
 	return s
 }
 
 type CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServers struct {
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Weight      *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Port        *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	ServerId    *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	ServerType  *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
+	MasterSlaveBackendServer []*CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServersMasterSlaveBackendServer `json:"MasterSlaveBackendServer,omitempty" xml:"MasterSlaveBackendServer,omitempty" type:"Repeated"`
 }
 
 func (s CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServers) String() string {
@@ -2582,32 +2611,54 @@ func (s CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServers) GoStr
 	return s.String()
 }
 
-func (s *CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServers) SetType(v string) *CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServers {
+func (s *CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServers) SetMasterSlaveBackendServer(v []*CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServersMasterSlaveBackendServer) *CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServers {
+	s.MasterSlaveBackendServer = v
+	return s
+}
+
+type CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServersMasterSlaveBackendServer struct {
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Weight      *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Port        *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	ServerId    *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	ServerType  *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
+}
+
+func (s CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServersMasterSlaveBackendServer) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServersMasterSlaveBackendServer) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServersMasterSlaveBackendServer) SetType(v string) *CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServersMasterSlaveBackendServer {
 	s.Type = &v
 	return s
 }
 
-func (s *CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServers) SetWeight(v int32) *CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServers {
+func (s *CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServersMasterSlaveBackendServer) SetWeight(v int32) *CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServersMasterSlaveBackendServer {
 	s.Weight = &v
 	return s
 }
 
-func (s *CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServers) SetDescription(v string) *CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServers {
+func (s *CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServersMasterSlaveBackendServer) SetDescription(v string) *CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServersMasterSlaveBackendServer {
 	s.Description = &v
 	return s
 }
 
-func (s *CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServers) SetPort(v int32) *CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServers {
+func (s *CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServersMasterSlaveBackendServer) SetPort(v int32) *CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServersMasterSlaveBackendServer {
 	s.Port = &v
 	return s
 }
 
-func (s *CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServers) SetServerId(v string) *CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServers {
+func (s *CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServersMasterSlaveBackendServer) SetServerId(v string) *CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServersMasterSlaveBackendServer {
 	s.ServerId = &v
 	return s
 }
 
-func (s *CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServers) SetServerType(v string) *CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServers {
+func (s *CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServersMasterSlaveBackendServer) SetServerType(v string) *CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServersMasterSlaveBackendServer {
 	s.ServerType = &v
 	return s
 }
@@ -2713,8 +2764,8 @@ func (s *CreateRulesRequest) SetRuleList(v string) *CreateRulesRequest {
 }
 
 type CreateRulesResponseBody struct {
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Rules     []*CreateRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rules     *CreateRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
 }
 
 func (s CreateRulesResponseBody) String() string {
@@ -2730,14 +2781,13 @@ func (s *CreateRulesResponseBody) SetRequestId(v string) *CreateRulesResponseBod
 	return s
 }
 
-func (s *CreateRulesResponseBody) SetRules(v []*CreateRulesResponseBodyRules) *CreateRulesResponseBody {
+func (s *CreateRulesResponseBody) SetRules(v *CreateRulesResponseBodyRules) *CreateRulesResponseBody {
 	s.Rules = v
 	return s
 }
 
 type CreateRulesResponseBodyRules struct {
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	RuleId   *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	Rule []*CreateRulesResponseBodyRulesRule `json:"Rule,omitempty" xml:"Rule,omitempty" type:"Repeated"`
 }
 
 func (s CreateRulesResponseBodyRules) String() string {
@@ -2748,12 +2798,30 @@ func (s CreateRulesResponseBodyRules) GoString() string {
 	return s.String()
 }
 
-func (s *CreateRulesResponseBodyRules) SetRuleName(v string) *CreateRulesResponseBodyRules {
+func (s *CreateRulesResponseBodyRules) SetRule(v []*CreateRulesResponseBodyRulesRule) *CreateRulesResponseBodyRules {
+	s.Rule = v
+	return s
+}
+
+type CreateRulesResponseBodyRulesRule struct {
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	RuleId   *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s CreateRulesResponseBodyRulesRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRulesResponseBodyRulesRule) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRulesResponseBodyRulesRule) SetRuleName(v string) *CreateRulesResponseBodyRulesRule {
 	s.RuleName = &v
 	return s
 }
 
-func (s *CreateRulesResponseBodyRules) SetRuleId(v string) *CreateRulesResponseBodyRules {
+func (s *CreateRulesResponseBodyRulesRule) SetRuleId(v string) *CreateRulesResponseBodyRulesRule {
 	s.RuleId = &v
 	return s
 }
@@ -2964,9 +3032,9 @@ func (s *CreateVServerGroupRequest) SetBackendServers(v string) *CreateVServerGr
 }
 
 type CreateVServerGroupResponseBody struct {
-	VServerGroupId *string                                         `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
-	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	BackendServers []*CreateVServerGroupResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Repeated"`
+	VServerGroupId *string                                       `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
+	RequestId      *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	BackendServers *CreateVServerGroupResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
 }
 
 func (s CreateVServerGroupResponseBody) String() string {
@@ -2987,17 +3055,13 @@ func (s *CreateVServerGroupResponseBody) SetRequestId(v string) *CreateVServerGr
 	return s
 }
 
-func (s *CreateVServerGroupResponseBody) SetBackendServers(v []*CreateVServerGroupResponseBodyBackendServers) *CreateVServerGroupResponseBody {
+func (s *CreateVServerGroupResponseBody) SetBackendServers(v *CreateVServerGroupResponseBodyBackendServers) *CreateVServerGroupResponseBody {
 	s.BackendServers = v
 	return s
 }
 
 type CreateVServerGroupResponseBodyBackendServers struct {
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Weight      *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Port        *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	ServerId    *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	BackendServer []*CreateVServerGroupResponseBodyBackendServersBackendServer `json:"BackendServer,omitempty" xml:"BackendServer,omitempty" type:"Repeated"`
 }
 
 func (s CreateVServerGroupResponseBodyBackendServers) String() string {
@@ -3008,27 +3072,48 @@ func (s CreateVServerGroupResponseBodyBackendServers) GoString() string {
 	return s.String()
 }
 
-func (s *CreateVServerGroupResponseBodyBackendServers) SetType(v string) *CreateVServerGroupResponseBodyBackendServers {
+func (s *CreateVServerGroupResponseBodyBackendServers) SetBackendServer(v []*CreateVServerGroupResponseBodyBackendServersBackendServer) *CreateVServerGroupResponseBodyBackendServers {
+	s.BackendServer = v
+	return s
+}
+
+type CreateVServerGroupResponseBodyBackendServersBackendServer struct {
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Weight      *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Port        *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	ServerId    *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+}
+
+func (s CreateVServerGroupResponseBodyBackendServersBackendServer) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVServerGroupResponseBodyBackendServersBackendServer) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVServerGroupResponseBodyBackendServersBackendServer) SetType(v string) *CreateVServerGroupResponseBodyBackendServersBackendServer {
 	s.Type = &v
 	return s
 }
 
-func (s *CreateVServerGroupResponseBodyBackendServers) SetWeight(v int32) *CreateVServerGroupResponseBodyBackendServers {
+func (s *CreateVServerGroupResponseBodyBackendServersBackendServer) SetWeight(v int32) *CreateVServerGroupResponseBodyBackendServersBackendServer {
 	s.Weight = &v
 	return s
 }
 
-func (s *CreateVServerGroupResponseBodyBackendServers) SetDescription(v string) *CreateVServerGroupResponseBodyBackendServers {
+func (s *CreateVServerGroupResponseBodyBackendServersBackendServer) SetDescription(v string) *CreateVServerGroupResponseBodyBackendServersBackendServer {
 	s.Description = &v
 	return s
 }
 
-func (s *CreateVServerGroupResponseBodyBackendServers) SetPort(v int32) *CreateVServerGroupResponseBodyBackendServers {
+func (s *CreateVServerGroupResponseBodyBackendServersBackendServer) SetPort(v int32) *CreateVServerGroupResponseBodyBackendServersBackendServer {
 	s.Port = &v
 	return s
 }
 
-func (s *CreateVServerGroupResponseBodyBackendServers) SetServerId(v string) *CreateVServerGroupResponseBodyBackendServers {
+func (s *CreateVServerGroupResponseBodyBackendServersBackendServer) SetServerId(v string) *CreateVServerGroupResponseBodyBackendServersBackendServer {
 	s.ServerId = &v
 	return s
 }
@@ -4112,13 +4197,13 @@ func (s *DescribeAccessControlListAttributeRequest) SetAclEntryComment(v string)
 }
 
 type DescribeAccessControlListAttributeResponseBody struct {
-	AclEntrys        []*DescribeAccessControlListAttributeResponseBodyAclEntrys        `json:"AclEntrys,omitempty" xml:"AclEntrys,omitempty" type:"Repeated"`
-	RequestId        *string                                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceGroupId  *string                                                           `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	AclId            *string                                                           `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	AddressIPVersion *string                                                           `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
-	RelatedListeners []*DescribeAccessControlListAttributeResponseBodyRelatedListeners `json:"RelatedListeners,omitempty" xml:"RelatedListeners,omitempty" type:"Repeated"`
-	AclName          *string                                                           `json:"AclName,omitempty" xml:"AclName,omitempty"`
+	AclEntrys        *DescribeAccessControlListAttributeResponseBodyAclEntrys        `json:"AclEntrys,omitempty" xml:"AclEntrys,omitempty" type:"Struct"`
+	RequestId        *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId  *string                                                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	AclId            *string                                                         `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AddressIPVersion *string                                                         `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
+	RelatedListeners *DescribeAccessControlListAttributeResponseBodyRelatedListeners `json:"RelatedListeners,omitempty" xml:"RelatedListeners,omitempty" type:"Struct"`
+	AclName          *string                                                         `json:"AclName,omitempty" xml:"AclName,omitempty"`
 }
 
 func (s DescribeAccessControlListAttributeResponseBody) String() string {
@@ -4129,7 +4214,7 @@ func (s DescribeAccessControlListAttributeResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeAccessControlListAttributeResponseBody) SetAclEntrys(v []*DescribeAccessControlListAttributeResponseBodyAclEntrys) *DescribeAccessControlListAttributeResponseBody {
+func (s *DescribeAccessControlListAttributeResponseBody) SetAclEntrys(v *DescribeAccessControlListAttributeResponseBodyAclEntrys) *DescribeAccessControlListAttributeResponseBody {
 	s.AclEntrys = v
 	return s
 }
@@ -4154,7 +4239,7 @@ func (s *DescribeAccessControlListAttributeResponseBody) SetAddressIPVersion(v s
 	return s
 }
 
-func (s *DescribeAccessControlListAttributeResponseBody) SetRelatedListeners(v []*DescribeAccessControlListAttributeResponseBodyRelatedListeners) *DescribeAccessControlListAttributeResponseBody {
+func (s *DescribeAccessControlListAttributeResponseBody) SetRelatedListeners(v *DescribeAccessControlListAttributeResponseBodyRelatedListeners) *DescribeAccessControlListAttributeResponseBody {
 	s.RelatedListeners = v
 	return s
 }
@@ -4165,8 +4250,7 @@ func (s *DescribeAccessControlListAttributeResponseBody) SetAclName(v string) *D
 }
 
 type DescribeAccessControlListAttributeResponseBodyAclEntrys struct {
-	AclEntryComment *string `json:"AclEntryComment,omitempty" xml:"AclEntryComment,omitempty"`
-	AclEntryIP      *string `json:"AclEntryIP,omitempty" xml:"AclEntryIP,omitempty"`
+	AclEntry []*DescribeAccessControlListAttributeResponseBodyAclEntrysAclEntry `json:"AclEntry,omitempty" xml:"AclEntry,omitempty" type:"Repeated"`
 }
 
 func (s DescribeAccessControlListAttributeResponseBodyAclEntrys) String() string {
@@ -4177,21 +4261,36 @@ func (s DescribeAccessControlListAttributeResponseBodyAclEntrys) GoString() stri
 	return s.String()
 }
 
-func (s *DescribeAccessControlListAttributeResponseBodyAclEntrys) SetAclEntryComment(v string) *DescribeAccessControlListAttributeResponseBodyAclEntrys {
+func (s *DescribeAccessControlListAttributeResponseBodyAclEntrys) SetAclEntry(v []*DescribeAccessControlListAttributeResponseBodyAclEntrysAclEntry) *DescribeAccessControlListAttributeResponseBodyAclEntrys {
+	s.AclEntry = v
+	return s
+}
+
+type DescribeAccessControlListAttributeResponseBodyAclEntrysAclEntry struct {
+	AclEntryComment *string `json:"AclEntryComment,omitempty" xml:"AclEntryComment,omitempty"`
+	AclEntryIP      *string `json:"AclEntryIP,omitempty" xml:"AclEntryIP,omitempty"`
+}
+
+func (s DescribeAccessControlListAttributeResponseBodyAclEntrysAclEntry) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAccessControlListAttributeResponseBodyAclEntrysAclEntry) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccessControlListAttributeResponseBodyAclEntrysAclEntry) SetAclEntryComment(v string) *DescribeAccessControlListAttributeResponseBodyAclEntrysAclEntry {
 	s.AclEntryComment = &v
 	return s
 }
 
-func (s *DescribeAccessControlListAttributeResponseBodyAclEntrys) SetAclEntryIP(v string) *DescribeAccessControlListAttributeResponseBodyAclEntrys {
+func (s *DescribeAccessControlListAttributeResponseBodyAclEntrysAclEntry) SetAclEntryIP(v string) *DescribeAccessControlListAttributeResponseBodyAclEntrysAclEntry {
 	s.AclEntryIP = &v
 	return s
 }
 
 type DescribeAccessControlListAttributeResponseBodyRelatedListeners struct {
-	AclType        *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
-	Protocol       *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	ListenerPort   *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	RelatedListener []*DescribeAccessControlListAttributeResponseBodyRelatedListenersRelatedListener `json:"RelatedListener,omitempty" xml:"RelatedListener,omitempty" type:"Repeated"`
 }
 
 func (s DescribeAccessControlListAttributeResponseBodyRelatedListeners) String() string {
@@ -4202,22 +4301,42 @@ func (s DescribeAccessControlListAttributeResponseBodyRelatedListeners) GoString
 	return s.String()
 }
 
-func (s *DescribeAccessControlListAttributeResponseBodyRelatedListeners) SetAclType(v string) *DescribeAccessControlListAttributeResponseBodyRelatedListeners {
+func (s *DescribeAccessControlListAttributeResponseBodyRelatedListeners) SetRelatedListener(v []*DescribeAccessControlListAttributeResponseBodyRelatedListenersRelatedListener) *DescribeAccessControlListAttributeResponseBodyRelatedListeners {
+	s.RelatedListener = v
+	return s
+}
+
+type DescribeAccessControlListAttributeResponseBodyRelatedListenersRelatedListener struct {
+	AclType        *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	Protocol       *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	ListenerPort   *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+}
+
+func (s DescribeAccessControlListAttributeResponseBodyRelatedListenersRelatedListener) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAccessControlListAttributeResponseBodyRelatedListenersRelatedListener) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccessControlListAttributeResponseBodyRelatedListenersRelatedListener) SetAclType(v string) *DescribeAccessControlListAttributeResponseBodyRelatedListenersRelatedListener {
 	s.AclType = &v
 	return s
 }
 
-func (s *DescribeAccessControlListAttributeResponseBodyRelatedListeners) SetProtocol(v string) *DescribeAccessControlListAttributeResponseBodyRelatedListeners {
+func (s *DescribeAccessControlListAttributeResponseBodyRelatedListenersRelatedListener) SetProtocol(v string) *DescribeAccessControlListAttributeResponseBodyRelatedListenersRelatedListener {
 	s.Protocol = &v
 	return s
 }
 
-func (s *DescribeAccessControlListAttributeResponseBodyRelatedListeners) SetLoadBalancerId(v string) *DescribeAccessControlListAttributeResponseBodyRelatedListeners {
+func (s *DescribeAccessControlListAttributeResponseBodyRelatedListenersRelatedListener) SetLoadBalancerId(v string) *DescribeAccessControlListAttributeResponseBodyRelatedListenersRelatedListener {
 	s.LoadBalancerId = &v
 	return s
 }
 
-func (s *DescribeAccessControlListAttributeResponseBodyRelatedListeners) SetListenerPort(v int32) *DescribeAccessControlListAttributeResponseBodyRelatedListeners {
+func (s *DescribeAccessControlListAttributeResponseBodyRelatedListenersRelatedListener) SetListenerPort(v int32) *DescribeAccessControlListAttributeResponseBodyRelatedListenersRelatedListener {
 	s.ListenerPort = &v
 	return s
 }
@@ -4346,12 +4465,12 @@ func (s DescribeAccessControlListsRequestTag) GoString() string {
 }
 
 type DescribeAccessControlListsResponseBody struct {
-	TotalCount *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	PageSize   *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNumber *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	Acls       []*DescribeAccessControlListsResponseBodyAcls `json:"Acls,omitempty" xml:"Acls,omitempty" type:"Repeated"`
-	Count      *int32                                        `json:"Count,omitempty" xml:"Count,omitempty"`
+	TotalCount *int32                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageSize   *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageNumber *int32                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	Acls       *DescribeAccessControlListsResponseBodyAcls `json:"Acls,omitempty" xml:"Acls,omitempty" type:"Struct"`
+	Count      *int32                                      `json:"Count,omitempty" xml:"Count,omitempty"`
 }
 
 func (s DescribeAccessControlListsResponseBody) String() string {
@@ -4382,7 +4501,7 @@ func (s *DescribeAccessControlListsResponseBody) SetPageNumber(v int32) *Describ
 	return s
 }
 
-func (s *DescribeAccessControlListsResponseBody) SetAcls(v []*DescribeAccessControlListsResponseBodyAcls) *DescribeAccessControlListsResponseBody {
+func (s *DescribeAccessControlListsResponseBody) SetAcls(v *DescribeAccessControlListsResponseBodyAcls) *DescribeAccessControlListsResponseBody {
 	s.Acls = v
 	return s
 }
@@ -4393,10 +4512,7 @@ func (s *DescribeAccessControlListsResponseBody) SetCount(v int32) *DescribeAcce
 }
 
 type DescribeAccessControlListsResponseBodyAcls struct {
-	AclId            *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
-	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	AclName          *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
+	Acl []*DescribeAccessControlListsResponseBodyAclsAcl `json:"Acl,omitempty" xml:"Acl,omitempty" type:"Repeated"`
 }
 
 func (s DescribeAccessControlListsResponseBodyAcls) String() string {
@@ -4407,22 +4523,42 @@ func (s DescribeAccessControlListsResponseBodyAcls) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeAccessControlListsResponseBodyAcls) SetAclId(v string) *DescribeAccessControlListsResponseBodyAcls {
+func (s *DescribeAccessControlListsResponseBodyAcls) SetAcl(v []*DescribeAccessControlListsResponseBodyAclsAcl) *DescribeAccessControlListsResponseBodyAcls {
+	s.Acl = v
+	return s
+}
+
+type DescribeAccessControlListsResponseBodyAclsAcl struct {
+	AclId            *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
+	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	AclName          *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
+}
+
+func (s DescribeAccessControlListsResponseBodyAclsAcl) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAccessControlListsResponseBodyAclsAcl) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccessControlListsResponseBodyAclsAcl) SetAclId(v string) *DescribeAccessControlListsResponseBodyAclsAcl {
 	s.AclId = &v
 	return s
 }
 
-func (s *DescribeAccessControlListsResponseBodyAcls) SetAddressIPVersion(v string) *DescribeAccessControlListsResponseBodyAcls {
+func (s *DescribeAccessControlListsResponseBodyAclsAcl) SetAddressIPVersion(v string) *DescribeAccessControlListsResponseBodyAclsAcl {
 	s.AddressIPVersion = &v
 	return s
 }
 
-func (s *DescribeAccessControlListsResponseBodyAcls) SetResourceGroupId(v string) *DescribeAccessControlListsResponseBodyAcls {
+func (s *DescribeAccessControlListsResponseBodyAclsAcl) SetResourceGroupId(v string) *DescribeAccessControlListsResponseBodyAclsAcl {
 	s.ResourceGroupId = &v
 	return s
 }
 
-func (s *DescribeAccessControlListsResponseBodyAcls) SetAclName(v string) *DescribeAccessControlListsResponseBodyAcls {
+func (s *DescribeAccessControlListsResponseBodyAclsAcl) SetAclName(v string) *DescribeAccessControlListsResponseBodyAclsAcl {
 	s.AclName = &v
 	return s
 }
@@ -4510,8 +4646,8 @@ func (s *DescribeAvailableResourceRequest) SetAddressIPVersion(v string) *Descri
 }
 
 type DescribeAvailableResourceResponseBody struct {
-	RequestId          *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	AvailableResources []*DescribeAvailableResourceResponseBodyAvailableResources `json:"AvailableResources,omitempty" xml:"AvailableResources,omitempty" type:"Repeated"`
+	RequestId          *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	AvailableResources *DescribeAvailableResourceResponseBodyAvailableResources `json:"AvailableResources,omitempty" xml:"AvailableResources,omitempty" type:"Struct"`
 }
 
 func (s DescribeAvailableResourceResponseBody) String() string {
@@ -4527,15 +4663,13 @@ func (s *DescribeAvailableResourceResponseBody) SetRequestId(v string) *Describe
 	return s
 }
 
-func (s *DescribeAvailableResourceResponseBody) SetAvailableResources(v []*DescribeAvailableResourceResponseBodyAvailableResources) *DescribeAvailableResourceResponseBody {
+func (s *DescribeAvailableResourceResponseBody) SetAvailableResources(v *DescribeAvailableResourceResponseBodyAvailableResources) *DescribeAvailableResourceResponseBody {
 	s.AvailableResources = v
 	return s
 }
 
 type DescribeAvailableResourceResponseBodyAvailableResources struct {
-	SlaveZoneId      *string                                                                    `json:"SlaveZoneId,omitempty" xml:"SlaveZoneId,omitempty"`
-	SupportResources []*DescribeAvailableResourceResponseBodyAvailableResourcesSupportResources `json:"SupportResources,omitempty" xml:"SupportResources,omitempty" type:"Repeated"`
-	MasterZoneId     *string                                                                    `json:"MasterZoneId,omitempty" xml:"MasterZoneId,omitempty"`
+	AvailableResource []*DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResource `json:"AvailableResource,omitempty" xml:"AvailableResource,omitempty" type:"Repeated"`
 }
 
 func (s DescribeAvailableResourceResponseBodyAvailableResources) String() string {
@@ -4546,40 +4680,76 @@ func (s DescribeAvailableResourceResponseBodyAvailableResources) GoString() stri
 	return s.String()
 }
 
-func (s *DescribeAvailableResourceResponseBodyAvailableResources) SetSlaveZoneId(v string) *DescribeAvailableResourceResponseBodyAvailableResources {
+func (s *DescribeAvailableResourceResponseBodyAvailableResources) SetAvailableResource(v []*DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResource) *DescribeAvailableResourceResponseBodyAvailableResources {
+	s.AvailableResource = v
+	return s
+}
+
+type DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResource struct {
+	SlaveZoneId      *string                                                                                   `json:"SlaveZoneId,omitempty" xml:"SlaveZoneId,omitempty"`
+	SupportResources *DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourceSupportResources `json:"SupportResources,omitempty" xml:"SupportResources,omitempty" type:"Struct"`
+	MasterZoneId     *string                                                                                   `json:"MasterZoneId,omitempty" xml:"MasterZoneId,omitempty"`
+}
+
+func (s DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResource) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResource) SetSlaveZoneId(v string) *DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResource {
 	s.SlaveZoneId = &v
 	return s
 }
 
-func (s *DescribeAvailableResourceResponseBodyAvailableResources) SetSupportResources(v []*DescribeAvailableResourceResponseBodyAvailableResourcesSupportResources) *DescribeAvailableResourceResponseBodyAvailableResources {
+func (s *DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResource) SetSupportResources(v *DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourceSupportResources) *DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResource {
 	s.SupportResources = v
 	return s
 }
 
-func (s *DescribeAvailableResourceResponseBodyAvailableResources) SetMasterZoneId(v string) *DescribeAvailableResourceResponseBodyAvailableResources {
+func (s *DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResource) SetMasterZoneId(v string) *DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResource {
 	s.MasterZoneId = &v
 	return s
 }
 
-type DescribeAvailableResourceResponseBodyAvailableResourcesSupportResources struct {
+type DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourceSupportResources struct {
+	SupportResource []*DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourceSupportResourcesSupportResource `json:"SupportResource,omitempty" xml:"SupportResource,omitempty" type:"Repeated"`
+}
+
+func (s DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourceSupportResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourceSupportResources) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourceSupportResources) SetSupportResource(v []*DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourceSupportResourcesSupportResource) *DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourceSupportResources {
+	s.SupportResource = v
+	return s
+}
+
+type DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourceSupportResourcesSupportResource struct {
 	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
 	AddressType      *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
 }
 
-func (s DescribeAvailableResourceResponseBodyAvailableResourcesSupportResources) String() string {
+func (s DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourceSupportResourcesSupportResource) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeAvailableResourceResponseBodyAvailableResourcesSupportResources) GoString() string {
+func (s DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourceSupportResourcesSupportResource) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeAvailableResourceResponseBodyAvailableResourcesSupportResources) SetAddressIPVersion(v string) *DescribeAvailableResourceResponseBodyAvailableResourcesSupportResources {
+func (s *DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourceSupportResourcesSupportResource) SetAddressIPVersion(v string) *DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourceSupportResourcesSupportResource {
 	s.AddressIPVersion = &v
 	return s
 }
 
-func (s *DescribeAvailableResourceResponseBodyAvailableResourcesSupportResources) SetAddressType(v string) *DescribeAvailableResourceResponseBodyAvailableResourcesSupportResources {
+func (s *DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourceSupportResourcesSupportResource) SetAddressType(v string) *DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourceSupportResourcesSupportResource {
 	s.AddressType = &v
 	return s
 }
@@ -4684,8 +4854,8 @@ func (s DescribeCACertificatesRequestTag) GoString() string {
 }
 
 type DescribeCACertificatesResponseBody struct {
-	RequestId      *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	CACertificates []*DescribeCACertificatesResponseBodyCACertificates `json:"CACertificates,omitempty" xml:"CACertificates,omitempty" type:"Repeated"`
+	RequestId      *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	CACertificates *DescribeCACertificatesResponseBodyCACertificates `json:"CACertificates,omitempty" xml:"CACertificates,omitempty" type:"Struct"`
 }
 
 func (s DescribeCACertificatesResponseBody) String() string {
@@ -4701,12 +4871,29 @@ func (s *DescribeCACertificatesResponseBody) SetRequestId(v string) *DescribeCAC
 	return s
 }
 
-func (s *DescribeCACertificatesResponseBody) SetCACertificates(v []*DescribeCACertificatesResponseBodyCACertificates) *DescribeCACertificatesResponseBody {
+func (s *DescribeCACertificatesResponseBody) SetCACertificates(v *DescribeCACertificatesResponseBodyCACertificates) *DescribeCACertificatesResponseBody {
 	s.CACertificates = v
 	return s
 }
 
 type DescribeCACertificatesResponseBodyCACertificates struct {
+	CACertificate []*DescribeCACertificatesResponseBodyCACertificatesCACertificate `json:"CACertificate,omitempty" xml:"CACertificate,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCACertificatesResponseBodyCACertificates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCACertificatesResponseBodyCACertificates) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCACertificatesResponseBodyCACertificates) SetCACertificate(v []*DescribeCACertificatesResponseBodyCACertificatesCACertificate) *DescribeCACertificatesResponseBodyCACertificates {
+	s.CACertificate = v
+	return s
+}
+
+type DescribeCACertificatesResponseBodyCACertificatesCACertificate struct {
 	CreateTimeStamp   *int64  `json:"CreateTimeStamp,omitempty" xml:"CreateTimeStamp,omitempty"`
 	ExpireTime        *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	CreateTime        *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
@@ -4719,60 +4906,60 @@ type DescribeCACertificatesResponseBodyCACertificates struct {
 	CACertificateName *string `json:"CACertificateName,omitempty" xml:"CACertificateName,omitempty"`
 }
 
-func (s DescribeCACertificatesResponseBodyCACertificates) String() string {
+func (s DescribeCACertificatesResponseBodyCACertificatesCACertificate) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeCACertificatesResponseBodyCACertificates) GoString() string {
+func (s DescribeCACertificatesResponseBodyCACertificatesCACertificate) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeCACertificatesResponseBodyCACertificates) SetCreateTimeStamp(v int64) *DescribeCACertificatesResponseBodyCACertificates {
+func (s *DescribeCACertificatesResponseBodyCACertificatesCACertificate) SetCreateTimeStamp(v int64) *DescribeCACertificatesResponseBodyCACertificatesCACertificate {
 	s.CreateTimeStamp = &v
 	return s
 }
 
-func (s *DescribeCACertificatesResponseBodyCACertificates) SetExpireTime(v string) *DescribeCACertificatesResponseBodyCACertificates {
+func (s *DescribeCACertificatesResponseBodyCACertificatesCACertificate) SetExpireTime(v string) *DescribeCACertificatesResponseBodyCACertificatesCACertificate {
 	s.ExpireTime = &v
 	return s
 }
 
-func (s *DescribeCACertificatesResponseBodyCACertificates) SetCreateTime(v string) *DescribeCACertificatesResponseBodyCACertificates {
+func (s *DescribeCACertificatesResponseBodyCACertificatesCACertificate) SetCreateTime(v string) *DescribeCACertificatesResponseBodyCACertificatesCACertificate {
 	s.CreateTime = &v
 	return s
 }
 
-func (s *DescribeCACertificatesResponseBodyCACertificates) SetExpireTimeStamp(v int64) *DescribeCACertificatesResponseBodyCACertificates {
+func (s *DescribeCACertificatesResponseBodyCACertificatesCACertificate) SetExpireTimeStamp(v int64) *DescribeCACertificatesResponseBodyCACertificatesCACertificate {
 	s.ExpireTimeStamp = &v
 	return s
 }
 
-func (s *DescribeCACertificatesResponseBodyCACertificates) SetCACertificateId(v string) *DescribeCACertificatesResponseBodyCACertificates {
+func (s *DescribeCACertificatesResponseBodyCACertificatesCACertificate) SetCACertificateId(v string) *DescribeCACertificatesResponseBodyCACertificatesCACertificate {
 	s.CACertificateId = &v
 	return s
 }
 
-func (s *DescribeCACertificatesResponseBodyCACertificates) SetRegionId(v string) *DescribeCACertificatesResponseBodyCACertificates {
+func (s *DescribeCACertificatesResponseBodyCACertificatesCACertificate) SetRegionId(v string) *DescribeCACertificatesResponseBodyCACertificatesCACertificate {
 	s.RegionId = &v
 	return s
 }
 
-func (s *DescribeCACertificatesResponseBodyCACertificates) SetFingerprint(v string) *DescribeCACertificatesResponseBodyCACertificates {
+func (s *DescribeCACertificatesResponseBodyCACertificatesCACertificate) SetFingerprint(v string) *DescribeCACertificatesResponseBodyCACertificatesCACertificate {
 	s.Fingerprint = &v
 	return s
 }
 
-func (s *DescribeCACertificatesResponseBodyCACertificates) SetResourceGroupId(v string) *DescribeCACertificatesResponseBodyCACertificates {
+func (s *DescribeCACertificatesResponseBodyCACertificatesCACertificate) SetResourceGroupId(v string) *DescribeCACertificatesResponseBodyCACertificatesCACertificate {
 	s.ResourceGroupId = &v
 	return s
 }
 
-func (s *DescribeCACertificatesResponseBodyCACertificates) SetCommonName(v string) *DescribeCACertificatesResponseBodyCACertificates {
+func (s *DescribeCACertificatesResponseBodyCACertificatesCACertificate) SetCommonName(v string) *DescribeCACertificatesResponseBodyCACertificatesCACertificate {
 	s.CommonName = &v
 	return s
 }
 
-func (s *DescribeCACertificatesResponseBodyCACertificates) SetCACertificateName(v string) *DescribeCACertificatesResponseBodyCACertificates {
+func (s *DescribeCACertificatesResponseBodyCACertificatesCACertificate) SetCACertificateName(v string) *DescribeCACertificatesResponseBodyCACertificatesCACertificate {
 	s.CACertificateName = &v
 	return s
 }
@@ -5001,8 +5188,8 @@ func (s *DescribeDomainExtensionsRequest) SetDomainExtensionId(v string) *Descri
 }
 
 type DescribeDomainExtensionsResponseBody struct {
-	RequestId        *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	DomainExtensions []*DescribeDomainExtensionsResponseBodyDomainExtensions `json:"DomainExtensions,omitempty" xml:"DomainExtensions,omitempty" type:"Repeated"`
+	RequestId        *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	DomainExtensions *DescribeDomainExtensionsResponseBodyDomainExtensions `json:"DomainExtensions,omitempty" xml:"DomainExtensions,omitempty" type:"Struct"`
 }
 
 func (s DescribeDomainExtensionsResponseBody) String() string {
@@ -5018,15 +5205,13 @@ func (s *DescribeDomainExtensionsResponseBody) SetRequestId(v string) *DescribeD
 	return s
 }
 
-func (s *DescribeDomainExtensionsResponseBody) SetDomainExtensions(v []*DescribeDomainExtensionsResponseBodyDomainExtensions) *DescribeDomainExtensionsResponseBody {
+func (s *DescribeDomainExtensionsResponseBody) SetDomainExtensions(v *DescribeDomainExtensionsResponseBodyDomainExtensions) *DescribeDomainExtensionsResponseBody {
 	s.DomainExtensions = v
 	return s
 }
 
 type DescribeDomainExtensionsResponseBodyDomainExtensions struct {
-	Domain              *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	ServerCertificateId *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
-	DomainExtensionId   *string `json:"DomainExtensionId,omitempty" xml:"DomainExtensionId,omitempty"`
+	DomainExtension []*DescribeDomainExtensionsResponseBodyDomainExtensionsDomainExtension `json:"DomainExtension,omitempty" xml:"DomainExtension,omitempty" type:"Repeated"`
 }
 
 func (s DescribeDomainExtensionsResponseBodyDomainExtensions) String() string {
@@ -5037,17 +5222,36 @@ func (s DescribeDomainExtensionsResponseBodyDomainExtensions) GoString() string 
 	return s.String()
 }
 
-func (s *DescribeDomainExtensionsResponseBodyDomainExtensions) SetDomain(v string) *DescribeDomainExtensionsResponseBodyDomainExtensions {
+func (s *DescribeDomainExtensionsResponseBodyDomainExtensions) SetDomainExtension(v []*DescribeDomainExtensionsResponseBodyDomainExtensionsDomainExtension) *DescribeDomainExtensionsResponseBodyDomainExtensions {
+	s.DomainExtension = v
+	return s
+}
+
+type DescribeDomainExtensionsResponseBodyDomainExtensionsDomainExtension struct {
+	Domain              *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	ServerCertificateId *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
+	DomainExtensionId   *string `json:"DomainExtensionId,omitempty" xml:"DomainExtensionId,omitempty"`
+}
+
+func (s DescribeDomainExtensionsResponseBodyDomainExtensionsDomainExtension) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainExtensionsResponseBodyDomainExtensionsDomainExtension) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainExtensionsResponseBodyDomainExtensionsDomainExtension) SetDomain(v string) *DescribeDomainExtensionsResponseBodyDomainExtensionsDomainExtension {
 	s.Domain = &v
 	return s
 }
 
-func (s *DescribeDomainExtensionsResponseBodyDomainExtensions) SetServerCertificateId(v string) *DescribeDomainExtensionsResponseBodyDomainExtensions {
+func (s *DescribeDomainExtensionsResponseBodyDomainExtensionsDomainExtension) SetServerCertificateId(v string) *DescribeDomainExtensionsResponseBodyDomainExtensionsDomainExtension {
 	s.ServerCertificateId = &v
 	return s
 }
 
-func (s *DescribeDomainExtensionsResponseBodyDomainExtensions) SetDomainExtensionId(v string) *DescribeDomainExtensionsResponseBodyDomainExtensions {
+func (s *DescribeDomainExtensionsResponseBodyDomainExtensionsDomainExtension) SetDomainExtensionId(v string) *DescribeDomainExtensionsResponseBodyDomainExtensionsDomainExtension {
 	s.DomainExtensionId = &v
 	return s
 }
@@ -5147,8 +5351,8 @@ func (s *DescribeHealthStatusRequest) SetRegionId(v string) *DescribeHealthStatu
 }
 
 type DescribeHealthStatusResponseBody struct {
-	RequestId      *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	BackendServers []*DescribeHealthStatusResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Repeated"`
+	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	BackendServers *DescribeHealthStatusResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
 }
 
 func (s DescribeHealthStatusResponseBody) String() string {
@@ -5164,20 +5368,13 @@ func (s *DescribeHealthStatusResponseBody) SetRequestId(v string) *DescribeHealt
 	return s
 }
 
-func (s *DescribeHealthStatusResponseBody) SetBackendServers(v []*DescribeHealthStatusResponseBodyBackendServers) *DescribeHealthStatusResponseBody {
+func (s *DescribeHealthStatusResponseBody) SetBackendServers(v *DescribeHealthStatusResponseBodyBackendServers) *DescribeHealthStatusResponseBody {
 	s.BackendServers = v
 	return s
 }
 
 type DescribeHealthStatusResponseBodyBackendServers struct {
-	Type               *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	EniHost            *string `json:"EniHost,omitempty" xml:"EniHost,omitempty"`
-	Protocol           *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	ServerHealthStatus *string `json:"ServerHealthStatus,omitempty" xml:"ServerHealthStatus,omitempty"`
-	ListenerPort       *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	ServerIp           *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
-	Port               *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	ServerId           *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	BackendServer []*DescribeHealthStatusResponseBodyBackendServersBackendServer `json:"BackendServer,omitempty" xml:"BackendServer,omitempty" type:"Repeated"`
 }
 
 func (s DescribeHealthStatusResponseBodyBackendServers) String() string {
@@ -5188,42 +5385,66 @@ func (s DescribeHealthStatusResponseBodyBackendServers) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeHealthStatusResponseBodyBackendServers) SetType(v string) *DescribeHealthStatusResponseBodyBackendServers {
+func (s *DescribeHealthStatusResponseBodyBackendServers) SetBackendServer(v []*DescribeHealthStatusResponseBodyBackendServersBackendServer) *DescribeHealthStatusResponseBodyBackendServers {
+	s.BackendServer = v
+	return s
+}
+
+type DescribeHealthStatusResponseBodyBackendServersBackendServer struct {
+	Type               *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	EniHost            *string `json:"EniHost,omitempty" xml:"EniHost,omitempty"`
+	Protocol           *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	ServerHealthStatus *string `json:"ServerHealthStatus,omitempty" xml:"ServerHealthStatus,omitempty"`
+	ListenerPort       *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	ServerIp           *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
+	Port               *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	ServerId           *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+}
+
+func (s DescribeHealthStatusResponseBodyBackendServersBackendServer) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHealthStatusResponseBodyBackendServersBackendServer) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHealthStatusResponseBodyBackendServersBackendServer) SetType(v string) *DescribeHealthStatusResponseBodyBackendServersBackendServer {
 	s.Type = &v
 	return s
 }
 
-func (s *DescribeHealthStatusResponseBodyBackendServers) SetEniHost(v string) *DescribeHealthStatusResponseBodyBackendServers {
+func (s *DescribeHealthStatusResponseBodyBackendServersBackendServer) SetEniHost(v string) *DescribeHealthStatusResponseBodyBackendServersBackendServer {
 	s.EniHost = &v
 	return s
 }
 
-func (s *DescribeHealthStatusResponseBodyBackendServers) SetProtocol(v string) *DescribeHealthStatusResponseBodyBackendServers {
+func (s *DescribeHealthStatusResponseBodyBackendServersBackendServer) SetProtocol(v string) *DescribeHealthStatusResponseBodyBackendServersBackendServer {
 	s.Protocol = &v
 	return s
 }
 
-func (s *DescribeHealthStatusResponseBodyBackendServers) SetServerHealthStatus(v string) *DescribeHealthStatusResponseBodyBackendServers {
+func (s *DescribeHealthStatusResponseBodyBackendServersBackendServer) SetServerHealthStatus(v string) *DescribeHealthStatusResponseBodyBackendServersBackendServer {
 	s.ServerHealthStatus = &v
 	return s
 }
 
-func (s *DescribeHealthStatusResponseBodyBackendServers) SetListenerPort(v int32) *DescribeHealthStatusResponseBodyBackendServers {
+func (s *DescribeHealthStatusResponseBodyBackendServersBackendServer) SetListenerPort(v int32) *DescribeHealthStatusResponseBodyBackendServersBackendServer {
 	s.ListenerPort = &v
 	return s
 }
 
-func (s *DescribeHealthStatusResponseBodyBackendServers) SetServerIp(v string) *DescribeHealthStatusResponseBodyBackendServers {
+func (s *DescribeHealthStatusResponseBodyBackendServersBackendServer) SetServerIp(v string) *DescribeHealthStatusResponseBodyBackendServersBackendServer {
 	s.ServerIp = &v
 	return s
 }
 
-func (s *DescribeHealthStatusResponseBodyBackendServers) SetPort(v int32) *DescribeHealthStatusResponseBodyBackendServers {
+func (s *DescribeHealthStatusResponseBodyBackendServersBackendServer) SetPort(v int32) *DescribeHealthStatusResponseBodyBackendServersBackendServer {
 	s.Port = &v
 	return s
 }
 
-func (s *DescribeHealthStatusResponseBodyBackendServers) SetServerId(v string) *DescribeHealthStatusResponseBodyBackendServers {
+func (s *DescribeHealthStatusResponseBodyBackendServersBackendServer) SetServerId(v string) *DescribeHealthStatusResponseBodyBackendServersBackendServer {
 	s.ServerId = &v
 	return s
 }
@@ -5440,40 +5661,40 @@ func (s *DescribeLoadBalancerAttributeRequest) SetIncludeReservedData(v bool) *D
 }
 
 type DescribeLoadBalancerAttributeResponseBody struct {
-	Address                      *string                                                              `json:"Address,omitempty" xml:"Address,omitempty"`
-	ResourceGroupId              *string                                                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ListenerPortsAndProtocal     []*DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocal `json:"ListenerPortsAndProtocal,omitempty" xml:"ListenerPortsAndProtocal,omitempty" type:"Repeated"`
-	BackendServers               []*DescribeLoadBalancerAttributeResponseBodyBackendServers           `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Repeated"`
-	LoadBalancerSpec             *string                                                              `json:"LoadBalancerSpec,omitempty" xml:"LoadBalancerSpec,omitempty"`
-	ModificationProtectionReason *string                                                              `json:"ModificationProtectionReason,omitempty" xml:"ModificationProtectionReason,omitempty"`
-	ListenerPorts                []*int32                                                             `json:"ListenerPorts,omitempty" xml:"ListenerPorts,omitempty" type:"Repeated"`
-	RequestId                    *string                                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	VSwitchId                    *string                                                              `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	RenewalStatus                *string                                                              `json:"RenewalStatus,omitempty" xml:"RenewalStatus,omitempty"`
-	PayType                      *string                                                              `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	InternetChargeType           *string                                                              `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	VpcId                        *string                                                              `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	DeleteProtection             *string                                                              `json:"DeleteProtection,omitempty" xml:"DeleteProtection,omitempty"`
-	EndTimeStamp                 *int64                                                               `json:"EndTimeStamp,omitempty" xml:"EndTimeStamp,omitempty"`
-	LoadBalancerStatus           *string                                                              `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
-	AutoReleaseTime              *int64                                                               `json:"AutoReleaseTime,omitempty" xml:"AutoReleaseTime,omitempty"`
-	RenewalDuration              *int32                                                               `json:"RenewalDuration,omitempty" xml:"RenewalDuration,omitempty"`
-	EndTime                      *string                                                              `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	AddressIPVersion             *string                                                              `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
-	LoadBalancerId               *string                                                              `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	ListenerPortsAndProtocol     []*DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocol `json:"ListenerPortsAndProtocol,omitempty" xml:"ListenerPortsAndProtocol,omitempty" type:"Repeated"`
-	ModificationProtectionStatus *string                                                              `json:"ModificationProtectionStatus,omitempty" xml:"ModificationProtectionStatus,omitempty"`
-	NetworkType                  *string                                                              `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	Bandwidth                    *int32                                                               `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	MasterZoneId                 *string                                                              `json:"MasterZoneId,omitempty" xml:"MasterZoneId,omitempty"`
-	CreateTime                   *string                                                              `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	RenewalCycUnit               *string                                                              `json:"RenewalCycUnit,omitempty" xml:"RenewalCycUnit,omitempty"`
-	SlaveZoneId                  *string                                                              `json:"SlaveZoneId,omitempty" xml:"SlaveZoneId,omitempty"`
-	RegionIdAlias                *string                                                              `json:"RegionIdAlias,omitempty" xml:"RegionIdAlias,omitempty"`
-	LoadBalancerName             *string                                                              `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
-	RegionId                     *string                                                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	AddressType                  *string                                                              `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	CreateTimeStamp              *int64                                                               `json:"CreateTimeStamp,omitempty" xml:"CreateTimeStamp,omitempty"`
+	Address                      *string                                                            `json:"Address,omitempty" xml:"Address,omitempty"`
+	ResourceGroupId              *string                                                            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ListenerPortsAndProtocal     *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocal `json:"ListenerPortsAndProtocal,omitempty" xml:"ListenerPortsAndProtocal,omitempty" type:"Struct"`
+	BackendServers               *DescribeLoadBalancerAttributeResponseBodyBackendServers           `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
+	LoadBalancerSpec             *string                                                            `json:"LoadBalancerSpec,omitempty" xml:"LoadBalancerSpec,omitempty"`
+	ModificationProtectionReason *string                                                            `json:"ModificationProtectionReason,omitempty" xml:"ModificationProtectionReason,omitempty"`
+	ListenerPorts                *DescribeLoadBalancerAttributeResponseBodyListenerPorts            `json:"ListenerPorts,omitempty" xml:"ListenerPorts,omitempty" type:"Struct"`
+	RequestId                    *string                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	VSwitchId                    *string                                                            `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	RenewalStatus                *string                                                            `json:"RenewalStatus,omitempty" xml:"RenewalStatus,omitempty"`
+	PayType                      *string                                                            `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	InternetChargeType           *string                                                            `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	VpcId                        *string                                                            `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	DeleteProtection             *string                                                            `json:"DeleteProtection,omitempty" xml:"DeleteProtection,omitempty"`
+	EndTimeStamp                 *int64                                                             `json:"EndTimeStamp,omitempty" xml:"EndTimeStamp,omitempty"`
+	LoadBalancerStatus           *string                                                            `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
+	AutoReleaseTime              *int64                                                             `json:"AutoReleaseTime,omitempty" xml:"AutoReleaseTime,omitempty"`
+	RenewalDuration              *int32                                                             `json:"RenewalDuration,omitempty" xml:"RenewalDuration,omitempty"`
+	EndTime                      *string                                                            `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	AddressIPVersion             *string                                                            `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
+	LoadBalancerId               *string                                                            `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	ListenerPortsAndProtocol     *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocol `json:"ListenerPortsAndProtocol,omitempty" xml:"ListenerPortsAndProtocol,omitempty" type:"Struct"`
+	ModificationProtectionStatus *string                                                            `json:"ModificationProtectionStatus,omitempty" xml:"ModificationProtectionStatus,omitempty"`
+	NetworkType                  *string                                                            `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	Bandwidth                    *int32                                                             `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	MasterZoneId                 *string                                                            `json:"MasterZoneId,omitempty" xml:"MasterZoneId,omitempty"`
+	CreateTime                   *string                                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	RenewalCycUnit               *string                                                            `json:"RenewalCycUnit,omitempty" xml:"RenewalCycUnit,omitempty"`
+	SlaveZoneId                  *string                                                            `json:"SlaveZoneId,omitempty" xml:"SlaveZoneId,omitempty"`
+	RegionIdAlias                *string                                                            `json:"RegionIdAlias,omitempty" xml:"RegionIdAlias,omitempty"`
+	LoadBalancerName             *string                                                            `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
+	RegionId                     *string                                                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AddressType                  *string                                                            `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	CreateTimeStamp              *int64                                                             `json:"CreateTimeStamp,omitempty" xml:"CreateTimeStamp,omitempty"`
 }
 
 func (s DescribeLoadBalancerAttributeResponseBody) String() string {
@@ -5494,12 +5715,12 @@ func (s *DescribeLoadBalancerAttributeResponseBody) SetResourceGroupId(v string)
 	return s
 }
 
-func (s *DescribeLoadBalancerAttributeResponseBody) SetListenerPortsAndProtocal(v []*DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocal) *DescribeLoadBalancerAttributeResponseBody {
+func (s *DescribeLoadBalancerAttributeResponseBody) SetListenerPortsAndProtocal(v *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocal) *DescribeLoadBalancerAttributeResponseBody {
 	s.ListenerPortsAndProtocal = v
 	return s
 }
 
-func (s *DescribeLoadBalancerAttributeResponseBody) SetBackendServers(v []*DescribeLoadBalancerAttributeResponseBodyBackendServers) *DescribeLoadBalancerAttributeResponseBody {
+func (s *DescribeLoadBalancerAttributeResponseBody) SetBackendServers(v *DescribeLoadBalancerAttributeResponseBodyBackendServers) *DescribeLoadBalancerAttributeResponseBody {
 	s.BackendServers = v
 	return s
 }
@@ -5514,7 +5735,7 @@ func (s *DescribeLoadBalancerAttributeResponseBody) SetModificationProtectionRea
 	return s
 }
 
-func (s *DescribeLoadBalancerAttributeResponseBody) SetListenerPorts(v []*int32) *DescribeLoadBalancerAttributeResponseBody {
+func (s *DescribeLoadBalancerAttributeResponseBody) SetListenerPorts(v *DescribeLoadBalancerAttributeResponseBodyListenerPorts) *DescribeLoadBalancerAttributeResponseBody {
 	s.ListenerPorts = v
 	return s
 }
@@ -5589,7 +5810,7 @@ func (s *DescribeLoadBalancerAttributeResponseBody) SetLoadBalancerId(v string) 
 	return s
 }
 
-func (s *DescribeLoadBalancerAttributeResponseBody) SetListenerPortsAndProtocol(v []*DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocol) *DescribeLoadBalancerAttributeResponseBody {
+func (s *DescribeLoadBalancerAttributeResponseBody) SetListenerPortsAndProtocol(v *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocol) *DescribeLoadBalancerAttributeResponseBody {
 	s.ListenerPortsAndProtocol = v
 	return s
 }
@@ -5655,8 +5876,7 @@ func (s *DescribeLoadBalancerAttributeResponseBody) SetCreateTimeStamp(v int64) 
 }
 
 type DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocal struct {
-	ListenerProtocal *string `json:"ListenerProtocal,omitempty" xml:"ListenerProtocal,omitempty"`
-	ListenerPort     *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	ListenerPortAndProtocal []*DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocalListenerPortAndProtocal `json:"ListenerPortAndProtocal,omitempty" xml:"ListenerPortAndProtocal,omitempty" type:"Repeated"`
 }
 
 func (s DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocal) String() string {
@@ -5667,21 +5887,36 @@ func (s DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocal) GoStr
 	return s.String()
 }
 
-func (s *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocal) SetListenerProtocal(v string) *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocal {
+func (s *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocal) SetListenerPortAndProtocal(v []*DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocalListenerPortAndProtocal) *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocal {
+	s.ListenerPortAndProtocal = v
+	return s
+}
+
+type DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocalListenerPortAndProtocal struct {
+	ListenerProtocal *string `json:"ListenerProtocal,omitempty" xml:"ListenerProtocal,omitempty"`
+	ListenerPort     *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+}
+
+func (s DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocalListenerPortAndProtocal) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocalListenerPortAndProtocal) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocalListenerPortAndProtocal) SetListenerProtocal(v string) *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocalListenerPortAndProtocal {
 	s.ListenerProtocal = &v
 	return s
 }
 
-func (s *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocal) SetListenerPort(v int32) *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocal {
+func (s *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocalListenerPortAndProtocal) SetListenerPort(v int32) *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocalListenerPortAndProtocal {
 	s.ListenerPort = &v
 	return s
 }
 
 type DescribeLoadBalancerAttributeResponseBodyBackendServers struct {
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Weight      *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ServerId    *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	BackendServer []*DescribeLoadBalancerAttributeResponseBodyBackendServersBackendServer `json:"BackendServer,omitempty" xml:"BackendServer,omitempty" type:"Repeated"`
 }
 
 func (s DescribeLoadBalancerAttributeResponseBodyBackendServers) String() string {
@@ -5692,32 +5927,65 @@ func (s DescribeLoadBalancerAttributeResponseBodyBackendServers) GoString() stri
 	return s.String()
 }
 
-func (s *DescribeLoadBalancerAttributeResponseBodyBackendServers) SetType(v string) *DescribeLoadBalancerAttributeResponseBodyBackendServers {
+func (s *DescribeLoadBalancerAttributeResponseBodyBackendServers) SetBackendServer(v []*DescribeLoadBalancerAttributeResponseBodyBackendServersBackendServer) *DescribeLoadBalancerAttributeResponseBodyBackendServers {
+	s.BackendServer = v
+	return s
+}
+
+type DescribeLoadBalancerAttributeResponseBodyBackendServersBackendServer struct {
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Weight      *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ServerId    *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+}
+
+func (s DescribeLoadBalancerAttributeResponseBodyBackendServersBackendServer) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerAttributeResponseBodyBackendServersBackendServer) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBodyBackendServersBackendServer) SetType(v string) *DescribeLoadBalancerAttributeResponseBodyBackendServersBackendServer {
 	s.Type = &v
 	return s
 }
 
-func (s *DescribeLoadBalancerAttributeResponseBodyBackendServers) SetWeight(v int32) *DescribeLoadBalancerAttributeResponseBodyBackendServers {
+func (s *DescribeLoadBalancerAttributeResponseBodyBackendServersBackendServer) SetWeight(v int32) *DescribeLoadBalancerAttributeResponseBodyBackendServersBackendServer {
 	s.Weight = &v
 	return s
 }
 
-func (s *DescribeLoadBalancerAttributeResponseBodyBackendServers) SetDescription(v string) *DescribeLoadBalancerAttributeResponseBodyBackendServers {
+func (s *DescribeLoadBalancerAttributeResponseBodyBackendServersBackendServer) SetDescription(v string) *DescribeLoadBalancerAttributeResponseBodyBackendServersBackendServer {
 	s.Description = &v
 	return s
 }
 
-func (s *DescribeLoadBalancerAttributeResponseBodyBackendServers) SetServerId(v string) *DescribeLoadBalancerAttributeResponseBodyBackendServers {
+func (s *DescribeLoadBalancerAttributeResponseBodyBackendServersBackendServer) SetServerId(v string) *DescribeLoadBalancerAttributeResponseBodyBackendServersBackendServer {
 	s.ServerId = &v
 	return s
 }
 
+type DescribeLoadBalancerAttributeResponseBodyListenerPorts struct {
+	ListenerPort []*int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty" type:"Repeated"`
+}
+
+func (s DescribeLoadBalancerAttributeResponseBodyListenerPorts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerAttributeResponseBodyListenerPorts) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBodyListenerPorts) SetListenerPort(v []*int32) *DescribeLoadBalancerAttributeResponseBodyListenerPorts {
+	s.ListenerPort = v
+	return s
+}
+
 type DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocol struct {
-	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
-	ListenerForward  *string `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ListenerPort     *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	ForwardPort      *int32  `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
+	ListenerPortAndProtocol []*DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol `json:"ListenerPortAndProtocol,omitempty" xml:"ListenerPortAndProtocol,omitempty" type:"Repeated"`
 }
 
 func (s DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocol) String() string {
@@ -5728,27 +5996,48 @@ func (s DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocol) GoStr
 	return s.String()
 }
 
-func (s *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocol) SetListenerProtocol(v string) *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocol {
+func (s *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocol) SetListenerPortAndProtocol(v []*DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol) *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocol {
+	s.ListenerPortAndProtocol = v
+	return s
+}
+
+type DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol struct {
+	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
+	ListenerForward  *string `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ListenerPort     *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	ForwardPort      *int32  `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
+}
+
+func (s DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol) SetListenerProtocol(v string) *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol {
 	s.ListenerProtocol = &v
 	return s
 }
 
-func (s *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocol) SetListenerForward(v string) *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocol {
+func (s *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol) SetListenerForward(v string) *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol {
 	s.ListenerForward = &v
 	return s
 }
 
-func (s *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocol) SetDescription(v string) *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocol {
+func (s *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol) SetDescription(v string) *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol {
 	s.Description = &v
 	return s
 }
 
-func (s *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocol) SetListenerPort(v int32) *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocol {
+func (s *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol) SetListenerPort(v int32) *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol {
 	s.ListenerPort = &v
 	return s
 }
 
-func (s *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocol) SetForwardPort(v int32) *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocol {
+func (s *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol) SetForwardPort(v int32) *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol {
 	s.ForwardPort = &v
 	return s
 }
@@ -5842,41 +6131,41 @@ func (s *DescribeLoadBalancerHTTPListenerAttributeRequest) SetTags(v string) *De
 }
 
 type DescribeLoadBalancerHTTPListenerAttributeResponseBody struct {
-	CookieTimeout          *int32                                                        `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
-	VServerGroupId         *string                                                       `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
-	Description            *string                                                       `json:"Description,omitempty" xml:"Description,omitempty"`
-	UnhealthyThreshold     *int32                                                        `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
-	HealthCheckURI         *string                                                       `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
-	Scheduler              *string                                                       `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	HealthCheck            *string                                                       `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
-	IdleTimeout            *int32                                                        `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	BackendServerPort      *int32                                                        `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
-	XForwardedFor_SLBID    *string                                                       `json:"XForwardedFor_SLBID,omitempty" xml:"XForwardedFor_SLBID,omitempty"`
-	HealthCheckConnectPort *int32                                                        `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	Bandwidth              *int32                                                        `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	SecurityStatus         *string                                                       `json:"SecurityStatus,omitempty" xml:"SecurityStatus,omitempty"`
-	Gzip                   *string                                                       `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
-	StickySessionType      *string                                                       `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
-	XForwardedFor_SLBIP    *string                                                       `json:"XForwardedFor_SLBIP,omitempty" xml:"XForwardedFor_SLBIP,omitempty"`
-	HealthCheckHttpCode    *string                                                       `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
-	Status                 *string                                                       `json:"Status,omitempty" xml:"Status,omitempty"`
-	Cookie                 *string                                                       `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
-	RequestTimeout         *int32                                                        `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
-	ListenerPort           *int32                                                        `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	HealthCheckInterval    *int32                                                        `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	RequestId              *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	AclId                  *string                                                       `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	HealthCheckTimeout     *int32                                                        `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
-	Rules                  []*DescribeLoadBalancerHTTPListenerAttributeResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	ListenerForward        *string                                                       `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
-	StickySession          *string                                                       `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
-	AclStatus              *string                                                       `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
-	ForwardPort            *int32                                                        `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
-	HealthyThreshold       *int32                                                        `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	XForwardedFor          *string                                                       `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
-	HealthCheckDomain      *string                                                       `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	AclType                *string                                                       `json:"AclType,omitempty" xml:"AclType,omitempty"`
-	XForwardedFor_proto    *string                                                       `json:"XForwardedFor_proto,omitempty" xml:"XForwardedFor_proto,omitempty"`
+	CookieTimeout          *int32                                                      `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
+	VServerGroupId         *string                                                     `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
+	Description            *string                                                     `json:"Description,omitempty" xml:"Description,omitempty"`
+	UnhealthyThreshold     *int32                                                      `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	HealthCheckURI         *string                                                     `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	Scheduler              *string                                                     `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	HealthCheck            *string                                                     `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	IdleTimeout            *int32                                                      `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	BackendServerPort      *int32                                                      `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
+	XForwardedFor_SLBID    *string                                                     `json:"XForwardedFor_SLBID,omitempty" xml:"XForwardedFor_SLBID,omitempty"`
+	HealthCheckConnectPort *int32                                                      `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	Bandwidth              *int32                                                      `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	SecurityStatus         *string                                                     `json:"SecurityStatus,omitempty" xml:"SecurityStatus,omitempty"`
+	Gzip                   *string                                                     `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
+	StickySessionType      *string                                                     `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
+	XForwardedFor_SLBIP    *string                                                     `json:"XForwardedFor_SLBIP,omitempty" xml:"XForwardedFor_SLBIP,omitempty"`
+	HealthCheckHttpCode    *string                                                     `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	Status                 *string                                                     `json:"Status,omitempty" xml:"Status,omitempty"`
+	Cookie                 *string                                                     `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
+	RequestTimeout         *int32                                                      `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	ListenerPort           *int32                                                      `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	HealthCheckInterval    *int32                                                      `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	RequestId              *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	AclId                  *string                                                     `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	HealthCheckTimeout     *int32                                                      `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	Rules                  *DescribeLoadBalancerHTTPListenerAttributeResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
+	ListenerForward        *string                                                     `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
+	StickySession          *string                                                     `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
+	AclStatus              *string                                                     `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
+	ForwardPort            *int32                                                      `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
+	HealthyThreshold       *int32                                                      `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	XForwardedFor          *string                                                     `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
+	HealthCheckDomain      *string                                                     `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	AclType                *string                                                     `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	XForwardedFor_proto    *string                                                     `json:"XForwardedFor_proto,omitempty" xml:"XForwardedFor_proto,omitempty"`
 }
 
 func (s DescribeLoadBalancerHTTPListenerAttributeResponseBody) String() string {
@@ -6012,7 +6301,7 @@ func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetHealthCheckTi
 	return s
 }
 
-func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetRules(v []*DescribeLoadBalancerHTTPListenerAttributeResponseBodyRules) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetRules(v *DescribeLoadBalancerHTTPListenerAttributeResponseBodyRules) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
 	s.Rules = v
 	return s
 }
@@ -6063,11 +6352,7 @@ func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetXForwardedFor
 }
 
 type DescribeLoadBalancerHTTPListenerAttributeResponseBodyRules struct {
-	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
-	Domain         *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	Url            *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	RuleName       *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	RuleId         *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	Rule []*DescribeLoadBalancerHTTPListenerAttributeResponseBodyRulesRule `json:"Rule,omitempty" xml:"Rule,omitempty" type:"Repeated"`
 }
 
 func (s DescribeLoadBalancerHTTPListenerAttributeResponseBodyRules) String() string {
@@ -6078,27 +6363,48 @@ func (s DescribeLoadBalancerHTTPListenerAttributeResponseBodyRules) GoString() s
 	return s.String()
 }
 
-func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBodyRules) SetVServerGroupId(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBodyRules {
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBodyRules) SetRule(v []*DescribeLoadBalancerHTTPListenerAttributeResponseBodyRulesRule) *DescribeLoadBalancerHTTPListenerAttributeResponseBodyRules {
+	s.Rule = v
+	return s
+}
+
+type DescribeLoadBalancerHTTPListenerAttributeResponseBodyRulesRule struct {
+	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
+	Domain         *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Url            *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	RuleName       *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	RuleId         *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s DescribeLoadBalancerHTTPListenerAttributeResponseBodyRulesRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerHTTPListenerAttributeResponseBodyRulesRule) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBodyRulesRule) SetVServerGroupId(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBodyRulesRule {
 	s.VServerGroupId = &v
 	return s
 }
 
-func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBodyRules) SetDomain(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBodyRules {
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBodyRulesRule) SetDomain(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBodyRulesRule {
 	s.Domain = &v
 	return s
 }
 
-func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBodyRules) SetUrl(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBodyRules {
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBodyRulesRule) SetUrl(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBodyRulesRule {
 	s.Url = &v
 	return s
 }
 
-func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBodyRules) SetRuleName(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBodyRules {
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBodyRulesRule) SetRuleName(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBodyRulesRule {
 	s.RuleName = &v
 	return s
 }
 
-func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBodyRules) SetRuleId(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBodyRules {
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBodyRulesRule) SetRuleId(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBodyRulesRule {
 	s.RuleId = &v
 	return s
 }
@@ -6192,50 +6498,50 @@ func (s *DescribeLoadBalancerHTTPSListenerAttributeRequest) SetTags(v string) *D
 }
 
 type DescribeLoadBalancerHTTPSListenerAttributeResponseBody struct {
-	UnhealthyThreshold                   *int32                                                                    `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
-	HealthCheckURI                       *string                                                                   `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
-	HealthCheck                          *string                                                                   `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
-	DomainExtensions                     []*DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensions `json:"DomainExtensions,omitempty" xml:"DomainExtensions,omitempty" type:"Repeated"`
-	BackendServerPort                    *int32                                                                    `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
-	XForwardedFor_SLBPORT                *string                                                                   `json:"XForwardedFor_SLBPORT,omitempty" xml:"XForwardedFor_SLBPORT,omitempty"`
-	StickySessionType                    *string                                                                   `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
-	Status                               *string                                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
-	Cookie                               *string                                                                   `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
-	RequestTimeout                       *int32                                                                    `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
-	TLSCipherPolicy                      *string                                                                   `json:"TLSCipherPolicy,omitempty" xml:"TLSCipherPolicy,omitempty"`
-	HealthCheckInterval                  *int32                                                                    `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	RequestId                            *string                                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	CACertificateId                      *string                                                                   `json:"CACertificateId,omitempty" xml:"CACertificateId,omitempty"`
-	HealthCheckTimeout                   *int32                                                                    `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
-	AclStatus                            *string                                                                   `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
-	HealthyThreshold                     *int32                                                                    `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	HealthCheckDomain                    *string                                                                   `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	AclType                              *string                                                                   `json:"AclType,omitempty" xml:"AclType,omitempty"`
-	XForwardedFor_proto                  *string                                                                   `json:"XForwardedFor_proto,omitempty" xml:"XForwardedFor_proto,omitempty"`
-	EnableHttp2                          *string                                                                   `json:"EnableHttp2,omitempty" xml:"EnableHttp2,omitempty"`
-	CookieTimeout                        *int32                                                                    `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
-	VServerGroupId                       *string                                                                   `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
-	Description                          *string                                                                   `json:"Description,omitempty" xml:"Description,omitempty"`
-	Scheduler                            *string                                                                   `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	IdleTimeout                          *int32                                                                    `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	XForwardedFor_SLBID                  *string                                                                   `json:"XForwardedFor_SLBID,omitempty" xml:"XForwardedFor_SLBID,omitempty"`
-	HealthCheckConnectPort               *int32                                                                    `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	Bandwidth                            *int32                                                                    `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	SecurityStatus                       *string                                                                   `json:"SecurityStatus,omitempty" xml:"SecurityStatus,omitempty"`
-	Gzip                                 *string                                                                   `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
-	ServerCertificateId                  *string                                                                   `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
-	XForwardedFor_SLBIP                  *string                                                                   `json:"XForwardedFor_SLBIP,omitempty" xml:"XForwardedFor_SLBIP,omitempty"`
-	HealthCheckHttpCode                  *string                                                                   `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
-	ListenerPort                         *int32                                                                    `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	XForwardedFor_ClientCertSubjectDN    *string                                                                   `json:"XForwardedFor_ClientCertSubjectDN,omitempty" xml:"XForwardedFor_ClientCertSubjectDN,omitempty"`
-	AclId                                *string                                                                   `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	Rules                                []*DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRules            `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	XForwardedFor_ClientCertIssuerDN     *string                                                                   `json:"XForwardedFor_ClientCertIssuerDN,omitempty" xml:"XForwardedFor_ClientCertIssuerDN,omitempty"`
-	StickySession                        *string                                                                   `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
-	XForwardedFor                        *string                                                                   `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
-	XForwardedFor_ClientSrcPort          *string                                                                   `json:"XForwardedFor_ClientSrcPort,omitempty" xml:"XForwardedFor_ClientSrcPort,omitempty"`
-	XForwardedFor_ClientCertClientVerify *string                                                                   `json:"XForwardedFor_ClientCertClientVerify,omitempty" xml:"XForwardedFor_ClientCertClientVerify,omitempty"`
-	XForwardedFor_ClientCertFingerprint  *string                                                                   `json:"XForwardedFor_ClientCertFingerprint,omitempty" xml:"XForwardedFor_ClientCertFingerprint,omitempty"`
+	UnhealthyThreshold                   *int32                                                                  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	HealthCheckURI                       *string                                                                 `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	HealthCheck                          *string                                                                 `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	DomainExtensions                     *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensions `json:"DomainExtensions,omitempty" xml:"DomainExtensions,omitempty" type:"Struct"`
+	BackendServerPort                    *int32                                                                  `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
+	XForwardedFor_SLBPORT                *string                                                                 `json:"XForwardedFor_SLBPORT,omitempty" xml:"XForwardedFor_SLBPORT,omitempty"`
+	StickySessionType                    *string                                                                 `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
+	Status                               *string                                                                 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Cookie                               *string                                                                 `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
+	RequestTimeout                       *int32                                                                  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	TLSCipherPolicy                      *string                                                                 `json:"TLSCipherPolicy,omitempty" xml:"TLSCipherPolicy,omitempty"`
+	HealthCheckInterval                  *int32                                                                  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	RequestId                            *string                                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	CACertificateId                      *string                                                                 `json:"CACertificateId,omitempty" xml:"CACertificateId,omitempty"`
+	HealthCheckTimeout                   *int32                                                                  `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	AclStatus                            *string                                                                 `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
+	HealthyThreshold                     *int32                                                                  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	HealthCheckDomain                    *string                                                                 `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	AclType                              *string                                                                 `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	XForwardedFor_proto                  *string                                                                 `json:"XForwardedFor_proto,omitempty" xml:"XForwardedFor_proto,omitempty"`
+	EnableHttp2                          *string                                                                 `json:"EnableHttp2,omitempty" xml:"EnableHttp2,omitempty"`
+	CookieTimeout                        *int32                                                                  `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
+	VServerGroupId                       *string                                                                 `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
+	Description                          *string                                                                 `json:"Description,omitempty" xml:"Description,omitempty"`
+	Scheduler                            *string                                                                 `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	IdleTimeout                          *int32                                                                  `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	XForwardedFor_SLBID                  *string                                                                 `json:"XForwardedFor_SLBID,omitempty" xml:"XForwardedFor_SLBID,omitempty"`
+	HealthCheckConnectPort               *int32                                                                  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	Bandwidth                            *int32                                                                  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	SecurityStatus                       *string                                                                 `json:"SecurityStatus,omitempty" xml:"SecurityStatus,omitempty"`
+	Gzip                                 *string                                                                 `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
+	ServerCertificateId                  *string                                                                 `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
+	XForwardedFor_SLBIP                  *string                                                                 `json:"XForwardedFor_SLBIP,omitempty" xml:"XForwardedFor_SLBIP,omitempty"`
+	HealthCheckHttpCode                  *string                                                                 `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	ListenerPort                         *int32                                                                  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	XForwardedFor_ClientCertSubjectDN    *string                                                                 `json:"XForwardedFor_ClientCertSubjectDN,omitempty" xml:"XForwardedFor_ClientCertSubjectDN,omitempty"`
+	AclId                                *string                                                                 `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	Rules                                *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRules            `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
+	XForwardedFor_ClientCertIssuerDN     *string                                                                 `json:"XForwardedFor_ClientCertIssuerDN,omitempty" xml:"XForwardedFor_ClientCertIssuerDN,omitempty"`
+	StickySession                        *string                                                                 `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
+	XForwardedFor                        *string                                                                 `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
+	XForwardedFor_ClientSrcPort          *string                                                                 `json:"XForwardedFor_ClientSrcPort,omitempty" xml:"XForwardedFor_ClientSrcPort,omitempty"`
+	XForwardedFor_ClientCertClientVerify *string                                                                 `json:"XForwardedFor_ClientCertClientVerify,omitempty" xml:"XForwardedFor_ClientCertClientVerify,omitempty"`
+	XForwardedFor_ClientCertFingerprint  *string                                                                 `json:"XForwardedFor_ClientCertFingerprint,omitempty" xml:"XForwardedFor_ClientCertFingerprint,omitempty"`
 }
 
 func (s DescribeLoadBalancerHTTPSListenerAttributeResponseBody) String() string {
@@ -6261,7 +6567,7 @@ func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetHealthCheck(
 	return s
 }
 
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetDomainExtensions(v []*DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensions) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetDomainExtensions(v *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensions) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
 	s.DomainExtensions = v
 	return s
 }
@@ -6431,7 +6737,7 @@ func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetAclId(v stri
 	return s
 }
 
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetRules(v []*DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRules) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetRules(v *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRules) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
 	s.Rules = v
 	return s
 }
@@ -6467,9 +6773,7 @@ func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetXForwardedFo
 }
 
 type DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensions struct {
-	Domain              *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	ServerCertificateId *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
-	DomainExtensionId   *string `json:"DomainExtensionId,omitempty" xml:"DomainExtensionId,omitempty"`
+	DomainExtension []*DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensionsDomainExtension `json:"DomainExtension,omitempty" xml:"DomainExtension,omitempty" type:"Repeated"`
 }
 
 func (s DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensions) String() string {
@@ -6480,27 +6784,42 @@ func (s DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensions) 
 	return s.String()
 }
 
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensions) SetDomain(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensions {
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensions) SetDomainExtension(v []*DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensionsDomainExtension) *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensions {
+	s.DomainExtension = v
+	return s
+}
+
+type DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensionsDomainExtension struct {
+	Domain              *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	ServerCertificateId *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
+	DomainExtensionId   *string `json:"DomainExtensionId,omitempty" xml:"DomainExtensionId,omitempty"`
+}
+
+func (s DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensionsDomainExtension) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensionsDomainExtension) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensionsDomainExtension) SetDomain(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensionsDomainExtension {
 	s.Domain = &v
 	return s
 }
 
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensions) SetServerCertificateId(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensions {
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensionsDomainExtension) SetServerCertificateId(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensionsDomainExtension {
 	s.ServerCertificateId = &v
 	return s
 }
 
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensions) SetDomainExtensionId(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensions {
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensionsDomainExtension) SetDomainExtensionId(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensionsDomainExtension {
 	s.DomainExtensionId = &v
 	return s
 }
 
 type DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRules struct {
-	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
-	Domain         *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	Url            *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	RuleName       *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	RuleId         *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	Rule []*DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRulesRule `json:"Rule,omitempty" xml:"Rule,omitempty" type:"Repeated"`
 }
 
 func (s DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRules) String() string {
@@ -6511,27 +6830,48 @@ func (s DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRules) GoString() 
 	return s.String()
 }
 
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRules) SetVServerGroupId(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRules {
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRules) SetRule(v []*DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRulesRule) *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRules {
+	s.Rule = v
+	return s
+}
+
+type DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRulesRule struct {
+	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
+	Domain         *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Url            *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	RuleName       *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	RuleId         *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRulesRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRulesRule) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRulesRule) SetVServerGroupId(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRulesRule {
 	s.VServerGroupId = &v
 	return s
 }
 
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRules) SetDomain(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRules {
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRulesRule) SetDomain(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRulesRule {
 	s.Domain = &v
 	return s
 }
 
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRules) SetUrl(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRules {
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRulesRule) SetUrl(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRulesRule {
 	s.Url = &v
 	return s
 }
 
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRules) SetRuleName(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRules {
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRulesRule) SetRuleName(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRulesRule {
 	s.RuleName = &v
 	return s
 }
 
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRules) SetRuleId(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRules {
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRulesRule) SetRuleId(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRulesRule {
 	s.RuleId = &v
 	return s
 }
@@ -6756,11 +7096,11 @@ func (s DescribeLoadBalancersRequestTag) GoString() string {
 }
 
 type DescribeLoadBalancersResponseBody struct {
-	TotalCount    *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	RequestId     *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize      *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber    *int32                                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	LoadBalancers []*DescribeLoadBalancersResponseBodyLoadBalancers `json:"LoadBalancers,omitempty" xml:"LoadBalancers,omitempty" type:"Repeated"`
+	TotalCount    *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId     *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageSize      *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber    *int32                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	LoadBalancers *DescribeLoadBalancersResponseBodyLoadBalancers `json:"LoadBalancers,omitempty" xml:"LoadBalancers,omitempty" type:"Struct"`
 }
 
 func (s DescribeLoadBalancersResponseBody) String() string {
@@ -6791,12 +7131,29 @@ func (s *DescribeLoadBalancersResponseBody) SetPageNumber(v int32) *DescribeLoad
 	return s
 }
 
-func (s *DescribeLoadBalancersResponseBody) SetLoadBalancers(v []*DescribeLoadBalancersResponseBodyLoadBalancers) *DescribeLoadBalancersResponseBody {
+func (s *DescribeLoadBalancersResponseBody) SetLoadBalancers(v *DescribeLoadBalancersResponseBodyLoadBalancers) *DescribeLoadBalancersResponseBody {
 	s.LoadBalancers = v
 	return s
 }
 
 type DescribeLoadBalancersResponseBodyLoadBalancers struct {
+	LoadBalancer []*DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer `json:"LoadBalancer,omitempty" xml:"LoadBalancer,omitempty" type:"Repeated"`
+}
+
+func (s DescribeLoadBalancersResponseBodyLoadBalancers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancersResponseBodyLoadBalancers) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancersResponseBodyLoadBalancers) SetLoadBalancer(v []*DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) *DescribeLoadBalancersResponseBodyLoadBalancers {
+	s.LoadBalancer = v
+	return s
+}
+
+type DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer struct {
 	VpcId                        *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	CreateTimeStamp              *int64  `json:"CreateTimeStamp,omitempty" xml:"CreateTimeStamp,omitempty"`
 	LoadBalancerId               *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
@@ -6819,110 +7176,110 @@ type DescribeLoadBalancersResponseBodyLoadBalancers struct {
 	MasterZoneId                 *string `json:"MasterZoneId,omitempty" xml:"MasterZoneId,omitempty"`
 }
 
-func (s DescribeLoadBalancersResponseBodyLoadBalancers) String() string {
+func (s DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeLoadBalancersResponseBodyLoadBalancers) GoString() string {
+func (s DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeLoadBalancersResponseBodyLoadBalancers) SetVpcId(v string) *DescribeLoadBalancersResponseBodyLoadBalancers {
+func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetVpcId(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
 	s.VpcId = &v
 	return s
 }
 
-func (s *DescribeLoadBalancersResponseBodyLoadBalancers) SetCreateTimeStamp(v int64) *DescribeLoadBalancersResponseBodyLoadBalancers {
+func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetCreateTimeStamp(v int64) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
 	s.CreateTimeStamp = &v
 	return s
 }
 
-func (s *DescribeLoadBalancersResponseBodyLoadBalancers) SetLoadBalancerId(v string) *DescribeLoadBalancersResponseBodyLoadBalancers {
+func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetLoadBalancerId(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
 	s.LoadBalancerId = &v
 	return s
 }
 
-func (s *DescribeLoadBalancersResponseBodyLoadBalancers) SetCreateTime(v string) *DescribeLoadBalancersResponseBodyLoadBalancers {
+func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetCreateTime(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
 	s.CreateTime = &v
 	return s
 }
 
-func (s *DescribeLoadBalancersResponseBodyLoadBalancers) SetPayType(v string) *DescribeLoadBalancersResponseBodyLoadBalancers {
+func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetPayType(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
 	s.PayType = &v
 	return s
 }
 
-func (s *DescribeLoadBalancersResponseBodyLoadBalancers) SetAddressType(v string) *DescribeLoadBalancersResponseBodyLoadBalancers {
+func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetAddressType(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
 	s.AddressType = &v
 	return s
 }
 
-func (s *DescribeLoadBalancersResponseBodyLoadBalancers) SetNetworkType(v string) *DescribeLoadBalancersResponseBodyLoadBalancers {
+func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetNetworkType(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
 	s.NetworkType = &v
 	return s
 }
 
-func (s *DescribeLoadBalancersResponseBodyLoadBalancers) SetRegionId(v string) *DescribeLoadBalancersResponseBodyLoadBalancers {
+func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetRegionId(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
 	s.RegionId = &v
 	return s
 }
 
-func (s *DescribeLoadBalancersResponseBodyLoadBalancers) SetModificationProtectionReason(v string) *DescribeLoadBalancersResponseBodyLoadBalancers {
+func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetModificationProtectionReason(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
 	s.ModificationProtectionReason = &v
 	return s
 }
 
-func (s *DescribeLoadBalancersResponseBodyLoadBalancers) SetModificationProtectionStatus(v string) *DescribeLoadBalancersResponseBodyLoadBalancers {
+func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetModificationProtectionStatus(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
 	s.ModificationProtectionStatus = &v
 	return s
 }
 
-func (s *DescribeLoadBalancersResponseBodyLoadBalancers) SetAddressIPVersion(v string) *DescribeLoadBalancersResponseBodyLoadBalancers {
+func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetAddressIPVersion(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
 	s.AddressIPVersion = &v
 	return s
 }
 
-func (s *DescribeLoadBalancersResponseBodyLoadBalancers) SetVSwitchId(v string) *DescribeLoadBalancersResponseBodyLoadBalancers {
+func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetVSwitchId(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
 	s.VSwitchId = &v
 	return s
 }
 
-func (s *DescribeLoadBalancersResponseBodyLoadBalancers) SetLoadBalancerStatus(v string) *DescribeLoadBalancersResponseBodyLoadBalancers {
+func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetLoadBalancerStatus(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
 	s.LoadBalancerStatus = &v
 	return s
 }
 
-func (s *DescribeLoadBalancersResponseBodyLoadBalancers) SetLoadBalancerName(v string) *DescribeLoadBalancersResponseBodyLoadBalancers {
+func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetLoadBalancerName(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
 	s.LoadBalancerName = &v
 	return s
 }
 
-func (s *DescribeLoadBalancersResponseBodyLoadBalancers) SetResourceGroupId(v string) *DescribeLoadBalancersResponseBodyLoadBalancers {
+func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetResourceGroupId(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
 	s.ResourceGroupId = &v
 	return s
 }
 
-func (s *DescribeLoadBalancersResponseBodyLoadBalancers) SetInternetChargeType(v string) *DescribeLoadBalancersResponseBodyLoadBalancers {
+func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetInternetChargeType(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
 	s.InternetChargeType = &v
 	return s
 }
 
-func (s *DescribeLoadBalancersResponseBodyLoadBalancers) SetAddress(v string) *DescribeLoadBalancersResponseBodyLoadBalancers {
+func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetAddress(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
 	s.Address = &v
 	return s
 }
 
-func (s *DescribeLoadBalancersResponseBodyLoadBalancers) SetSlaveZoneId(v string) *DescribeLoadBalancersResponseBodyLoadBalancers {
+func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetSlaveZoneId(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
 	s.SlaveZoneId = &v
 	return s
 }
 
-func (s *DescribeLoadBalancersResponseBodyLoadBalancers) SetRegionIdAlias(v string) *DescribeLoadBalancersResponseBodyLoadBalancers {
+func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetRegionIdAlias(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
 	s.RegionIdAlias = &v
 	return s
 }
 
-func (s *DescribeLoadBalancersResponseBodyLoadBalancers) SetMasterZoneId(v string) *DescribeLoadBalancersResponseBodyLoadBalancers {
+func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetMasterZoneId(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
 	s.MasterZoneId = &v
 	return s
 }
@@ -7484,11 +7841,11 @@ func (s *DescribeMasterSlaveServerGroupAttributeRequest) SetMasterSlaveServerGro
 }
 
 type DescribeMasterSlaveServerGroupAttributeResponseBody struct {
-	RequestId                  *string                                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	MasterSlaveServerGroupId   *string                                                                         `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
-	LoadBalancerId             *string                                                                         `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	MasterSlaveServerGroupName *string                                                                         `json:"MasterSlaveServerGroupName,omitempty" xml:"MasterSlaveServerGroupName,omitempty"`
-	MasterSlaveBackendServers  []*DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServers `json:"MasterSlaveBackendServers,omitempty" xml:"MasterSlaveBackendServers,omitempty" type:"Repeated"`
+	RequestId                  *string                                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	MasterSlaveServerGroupId   *string                                                                       `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
+	LoadBalancerId             *string                                                                       `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	MasterSlaveServerGroupName *string                                                                       `json:"MasterSlaveServerGroupName,omitempty" xml:"MasterSlaveServerGroupName,omitempty"`
+	MasterSlaveBackendServers  *DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServers `json:"MasterSlaveBackendServers,omitempty" xml:"MasterSlaveBackendServers,omitempty" type:"Struct"`
 }
 
 func (s DescribeMasterSlaveServerGroupAttributeResponseBody) String() string {
@@ -7519,18 +7876,13 @@ func (s *DescribeMasterSlaveServerGroupAttributeResponseBody) SetMasterSlaveServ
 	return s
 }
 
-func (s *DescribeMasterSlaveServerGroupAttributeResponseBody) SetMasterSlaveBackendServers(v []*DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServers) *DescribeMasterSlaveServerGroupAttributeResponseBody {
+func (s *DescribeMasterSlaveServerGroupAttributeResponseBody) SetMasterSlaveBackendServers(v *DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServers) *DescribeMasterSlaveServerGroupAttributeResponseBody {
 	s.MasterSlaveBackendServers = v
 	return s
 }
 
 type DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServers struct {
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Weight      *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Port        *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	ServerId    *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	ServerType  *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
+	MasterSlaveBackendServer []*DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServersMasterSlaveBackendServer `json:"MasterSlaveBackendServer,omitempty" xml:"MasterSlaveBackendServer,omitempty" type:"Repeated"`
 }
 
 func (s DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServers) String() string {
@@ -7541,32 +7893,54 @@ func (s DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendSer
 	return s.String()
 }
 
-func (s *DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServers) SetType(v string) *DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServers {
+func (s *DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServers) SetMasterSlaveBackendServer(v []*DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServersMasterSlaveBackendServer) *DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServers {
+	s.MasterSlaveBackendServer = v
+	return s
+}
+
+type DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServersMasterSlaveBackendServer struct {
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Weight      *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Port        *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	ServerId    *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	ServerType  *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
+}
+
+func (s DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServersMasterSlaveBackendServer) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServersMasterSlaveBackendServer) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServersMasterSlaveBackendServer) SetType(v string) *DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServersMasterSlaveBackendServer {
 	s.Type = &v
 	return s
 }
 
-func (s *DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServers) SetWeight(v int32) *DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServers {
+func (s *DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServersMasterSlaveBackendServer) SetWeight(v int32) *DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServersMasterSlaveBackendServer {
 	s.Weight = &v
 	return s
 }
 
-func (s *DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServers) SetDescription(v string) *DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServers {
+func (s *DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServersMasterSlaveBackendServer) SetDescription(v string) *DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServersMasterSlaveBackendServer {
 	s.Description = &v
 	return s
 }
 
-func (s *DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServers) SetPort(v int32) *DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServers {
+func (s *DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServersMasterSlaveBackendServer) SetPort(v int32) *DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServersMasterSlaveBackendServer {
 	s.Port = &v
 	return s
 }
 
-func (s *DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServers) SetServerId(v string) *DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServers {
+func (s *DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServersMasterSlaveBackendServer) SetServerId(v string) *DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServersMasterSlaveBackendServer {
 	s.ServerId = &v
 	return s
 }
 
-func (s *DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServers) SetServerType(v string) *DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServers {
+func (s *DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServersMasterSlaveBackendServer) SetServerType(v string) *DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServersMasterSlaveBackendServer {
 	s.ServerType = &v
 	return s
 }
@@ -7660,8 +8034,8 @@ func (s *DescribeMasterSlaveServerGroupsRequest) SetIncludeListener(v bool) *Des
 }
 
 type DescribeMasterSlaveServerGroupsResponseBody struct {
-	RequestId               *string                                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	MasterSlaveServerGroups []*DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroups `json:"MasterSlaveServerGroups,omitempty" xml:"MasterSlaveServerGroups,omitempty" type:"Repeated"`
+	RequestId               *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	MasterSlaveServerGroups *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroups `json:"MasterSlaveServerGroups,omitempty" xml:"MasterSlaveServerGroups,omitempty" type:"Struct"`
 }
 
 func (s DescribeMasterSlaveServerGroupsResponseBody) String() string {
@@ -7677,15 +8051,13 @@ func (s *DescribeMasterSlaveServerGroupsResponseBody) SetRequestId(v string) *De
 	return s
 }
 
-func (s *DescribeMasterSlaveServerGroupsResponseBody) SetMasterSlaveServerGroups(v []*DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroups) *DescribeMasterSlaveServerGroupsResponseBody {
+func (s *DescribeMasterSlaveServerGroupsResponseBody) SetMasterSlaveServerGroups(v *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroups) *DescribeMasterSlaveServerGroupsResponseBody {
 	s.MasterSlaveServerGroups = v
 	return s
 }
 
 type DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroups struct {
-	MasterSlaveServerGroupId   *string                                                                              `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
-	AssociatedObjects          *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsAssociatedObjects `json:"AssociatedObjects,omitempty" xml:"AssociatedObjects,omitempty" type:"Struct"`
-	MasterSlaveServerGroupName *string                                                                              `json:"MasterSlaveServerGroupName,omitempty" xml:"MasterSlaveServerGroupName,omitempty"`
+	MasterSlaveServerGroup []*DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroup `json:"MasterSlaveServerGroup,omitempty" xml:"MasterSlaveServerGroup,omitempty" type:"Repeated"`
 }
 
 func (s DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroups) String() string {
@@ -7696,57 +8068,93 @@ func (s DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroups) GoSt
 	return s.String()
 }
 
-func (s *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroups) SetMasterSlaveServerGroupId(v string) *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroups {
+func (s *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroups) SetMasterSlaveServerGroup(v []*DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroup) *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroups {
+	s.MasterSlaveServerGroup = v
+	return s
+}
+
+type DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroup struct {
+	MasterSlaveServerGroupId   *string                                                                                                    `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
+	AssociatedObjects          *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjects `json:"AssociatedObjects,omitempty" xml:"AssociatedObjects,omitempty" type:"Struct"`
+	MasterSlaveServerGroupName *string                                                                                                    `json:"MasterSlaveServerGroupName,omitempty" xml:"MasterSlaveServerGroupName,omitempty"`
+}
+
+func (s DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroup) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroup) SetMasterSlaveServerGroupId(v string) *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroup {
 	s.MasterSlaveServerGroupId = &v
 	return s
 }
 
-func (s *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroups) SetAssociatedObjects(v *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsAssociatedObjects) *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroups {
+func (s *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroup) SetAssociatedObjects(v *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjects) *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroup {
 	s.AssociatedObjects = v
 	return s
 }
 
-func (s *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroups) SetMasterSlaveServerGroupName(v string) *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroups {
+func (s *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroup) SetMasterSlaveServerGroupName(v string) *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroup {
 	s.MasterSlaveServerGroupName = &v
 	return s
 }
 
-type DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsAssociatedObjects struct {
-	Listeners []*DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsAssociatedObjectsListeners `json:"Listeners,omitempty" xml:"Listeners,omitempty" type:"Repeated"`
+type DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjects struct {
+	Listeners *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjectsListeners `json:"Listeners,omitempty" xml:"Listeners,omitempty" type:"Struct"`
 }
 
-func (s DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsAssociatedObjects) String() string {
+func (s DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjects) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsAssociatedObjects) GoString() string {
+func (s DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjects) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsAssociatedObjects) SetListeners(v []*DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsAssociatedObjectsListeners) *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsAssociatedObjects {
+func (s *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjects) SetListeners(v *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjectsListeners) *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjects {
 	s.Listeners = v
 	return s
 }
 
-type DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsAssociatedObjectsListeners struct {
+type DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjectsListeners struct {
+	Listener []*DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjectsListenersListener `json:"Listener,omitempty" xml:"Listener,omitempty" type:"Repeated"`
+}
+
+func (s DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjectsListeners) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjectsListeners) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjectsListeners) SetListener(v []*DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjectsListenersListener) *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjectsListeners {
+	s.Listener = v
+	return s
+}
+
+type DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjectsListenersListener struct {
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
 }
 
-func (s DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsAssociatedObjectsListeners) String() string {
+func (s DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjectsListenersListener) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsAssociatedObjectsListeners) GoString() string {
+func (s DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjectsListenersListener) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsAssociatedObjectsListeners) SetProtocol(v string) *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsAssociatedObjectsListeners {
+func (s *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjectsListenersListener) SetProtocol(v string) *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjectsListenersListener {
 	s.Protocol = &v
 	return s
 }
 
-func (s *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsAssociatedObjectsListeners) SetPort(v int32) *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsAssociatedObjectsListeners {
+func (s *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjectsListenersListener) SetPort(v int32) *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjectsListenersListener {
 	s.Port = &v
 	return s
 }
@@ -7834,8 +8242,8 @@ func (s *DescribeRegionsRequest) SetTags(v string) *DescribeRegionsRequest {
 }
 
 type DescribeRegionsResponseBody struct {
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Regions   []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Regions   *DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
 }
 
 func (s DescribeRegionsResponseBody) String() string {
@@ -7851,15 +8259,13 @@ func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsRes
 	return s
 }
 
-func (s *DescribeRegionsResponseBody) SetRegions(v []*DescribeRegionsResponseBodyRegions) *DescribeRegionsResponseBody {
+func (s *DescribeRegionsResponseBody) SetRegions(v *DescribeRegionsResponseBodyRegions) *DescribeRegionsResponseBody {
 	s.Regions = v
 	return s
 }
 
 type DescribeRegionsResponseBodyRegions struct {
-	LocalName      *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Region []*DescribeRegionsResponseBodyRegionsRegion `json:"Region,omitempty" xml:"Region,omitempty" type:"Repeated"`
 }
 
 func (s DescribeRegionsResponseBodyRegions) String() string {
@@ -7870,17 +8276,36 @@ func (s DescribeRegionsResponseBodyRegions) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRegionsResponseBodyRegions) SetLocalName(v string) *DescribeRegionsResponseBodyRegions {
+func (s *DescribeRegionsResponseBodyRegions) SetRegion(v []*DescribeRegionsResponseBodyRegionsRegion) *DescribeRegionsResponseBodyRegions {
+	s.Region = v
+	return s
+}
+
+type DescribeRegionsResponseBodyRegionsRegion struct {
+	LocalName      *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeRegionsResponseBodyRegionsRegion) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionsResponseBodyRegionsRegion) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionsResponseBodyRegionsRegion) SetLocalName(v string) *DescribeRegionsResponseBodyRegionsRegion {
 	s.LocalName = &v
 	return s
 }
 
-func (s *DescribeRegionsResponseBodyRegions) SetRegionEndpoint(v string) *DescribeRegionsResponseBodyRegions {
+func (s *DescribeRegionsResponseBodyRegionsRegion) SetRegionEndpoint(v string) *DescribeRegionsResponseBodyRegionsRegion {
 	s.RegionEndpoint = &v
 	return s
 }
 
-func (s *DescribeRegionsResponseBodyRegions) SetRegionId(v string) *DescribeRegionsResponseBodyRegions {
+func (s *DescribeRegionsResponseBodyRegionsRegion) SetRegionId(v string) *DescribeRegionsResponseBodyRegionsRegion {
 	s.RegionId = &v
 	return s
 }
@@ -8211,8 +8636,8 @@ func (s *DescribeRulesRequest) SetListenerPort(v int32) *DescribeRulesRequest {
 }
 
 type DescribeRulesResponseBody struct {
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Rules     []*DescribeRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rules     *DescribeRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
 }
 
 func (s DescribeRulesResponseBody) String() string {
@@ -8228,12 +8653,29 @@ func (s *DescribeRulesResponseBody) SetRequestId(v string) *DescribeRulesRespons
 	return s
 }
 
-func (s *DescribeRulesResponseBody) SetRules(v []*DescribeRulesResponseBodyRules) *DescribeRulesResponseBody {
+func (s *DescribeRulesResponseBody) SetRules(v *DescribeRulesResponseBodyRules) *DescribeRulesResponseBody {
 	s.Rules = v
 	return s
 }
 
 type DescribeRulesResponseBodyRules struct {
+	Rule []*DescribeRulesResponseBodyRulesRule `json:"Rule,omitempty" xml:"Rule,omitempty" type:"Repeated"`
+}
+
+func (s DescribeRulesResponseBodyRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRulesResponseBodyRules) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRulesResponseBodyRules) SetRule(v []*DescribeRulesResponseBodyRulesRule) *DescribeRulesResponseBodyRules {
+	s.Rule = v
+	return s
+}
+
+type DescribeRulesResponseBodyRulesRule struct {
 	VServerGroupId         *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
 	HealthCheckHttpCode    *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
 	Domain                 *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
@@ -8256,110 +8698,110 @@ type DescribeRulesResponseBodyRules struct {
 	HealthCheck            *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
 }
 
-func (s DescribeRulesResponseBodyRules) String() string {
+func (s DescribeRulesResponseBodyRulesRule) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeRulesResponseBodyRules) GoString() string {
+func (s DescribeRulesResponseBodyRulesRule) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRulesResponseBodyRules) SetVServerGroupId(v string) *DescribeRulesResponseBodyRules {
+func (s *DescribeRulesResponseBodyRulesRule) SetVServerGroupId(v string) *DescribeRulesResponseBodyRulesRule {
 	s.VServerGroupId = &v
 	return s
 }
 
-func (s *DescribeRulesResponseBodyRules) SetHealthCheckHttpCode(v string) *DescribeRulesResponseBodyRules {
+func (s *DescribeRulesResponseBodyRulesRule) SetHealthCheckHttpCode(v string) *DescribeRulesResponseBodyRulesRule {
 	s.HealthCheckHttpCode = &v
 	return s
 }
 
-func (s *DescribeRulesResponseBodyRules) SetDomain(v string) *DescribeRulesResponseBodyRules {
+func (s *DescribeRulesResponseBodyRulesRule) SetDomain(v string) *DescribeRulesResponseBodyRulesRule {
 	s.Domain = &v
 	return s
 }
 
-func (s *DescribeRulesResponseBodyRules) SetCookie(v string) *DescribeRulesResponseBodyRules {
+func (s *DescribeRulesResponseBodyRulesRule) SetCookie(v string) *DescribeRulesResponseBodyRulesRule {
 	s.Cookie = &v
 	return s
 }
 
-func (s *DescribeRulesResponseBodyRules) SetUrl(v string) *DescribeRulesResponseBodyRules {
+func (s *DescribeRulesResponseBodyRulesRule) SetUrl(v string) *DescribeRulesResponseBodyRulesRule {
 	s.Url = &v
 	return s
 }
 
-func (s *DescribeRulesResponseBodyRules) SetHealthCheckInterval(v int32) *DescribeRulesResponseBodyRules {
+func (s *DescribeRulesResponseBodyRulesRule) SetHealthCheckInterval(v int32) *DescribeRulesResponseBodyRulesRule {
 	s.HealthCheckInterval = &v
 	return s
 }
 
-func (s *DescribeRulesResponseBodyRules) SetHealthCheckURI(v string) *DescribeRulesResponseBodyRules {
+func (s *DescribeRulesResponseBodyRulesRule) SetHealthCheckURI(v string) *DescribeRulesResponseBodyRulesRule {
 	s.HealthCheckURI = &v
 	return s
 }
 
-func (s *DescribeRulesResponseBodyRules) SetRuleId(v string) *DescribeRulesResponseBodyRules {
+func (s *DescribeRulesResponseBodyRulesRule) SetRuleId(v string) *DescribeRulesResponseBodyRulesRule {
 	s.RuleId = &v
 	return s
 }
 
-func (s *DescribeRulesResponseBodyRules) SetRuleName(v string) *DescribeRulesResponseBodyRules {
+func (s *DescribeRulesResponseBodyRulesRule) SetRuleName(v string) *DescribeRulesResponseBodyRulesRule {
 	s.RuleName = &v
 	return s
 }
 
-func (s *DescribeRulesResponseBodyRules) SetStickySessionType(v string) *DescribeRulesResponseBodyRules {
+func (s *DescribeRulesResponseBodyRulesRule) SetStickySessionType(v string) *DescribeRulesResponseBodyRulesRule {
 	s.StickySessionType = &v
 	return s
 }
 
-func (s *DescribeRulesResponseBodyRules) SetScheduler(v string) *DescribeRulesResponseBodyRules {
+func (s *DescribeRulesResponseBodyRulesRule) SetScheduler(v string) *DescribeRulesResponseBodyRulesRule {
 	s.Scheduler = &v
 	return s
 }
 
-func (s *DescribeRulesResponseBodyRules) SetHealthCheckConnectPort(v int32) *DescribeRulesResponseBodyRules {
+func (s *DescribeRulesResponseBodyRulesRule) SetHealthCheckConnectPort(v int32) *DescribeRulesResponseBodyRulesRule {
 	s.HealthCheckConnectPort = &v
 	return s
 }
 
-func (s *DescribeRulesResponseBodyRules) SetHealthCheckTimeout(v int32) *DescribeRulesResponseBodyRules {
+func (s *DescribeRulesResponseBodyRulesRule) SetHealthCheckTimeout(v int32) *DescribeRulesResponseBodyRulesRule {
 	s.HealthCheckTimeout = &v
 	return s
 }
 
-func (s *DescribeRulesResponseBodyRules) SetListenerSync(v string) *DescribeRulesResponseBodyRules {
+func (s *DescribeRulesResponseBodyRulesRule) SetListenerSync(v string) *DescribeRulesResponseBodyRulesRule {
 	s.ListenerSync = &v
 	return s
 }
 
-func (s *DescribeRulesResponseBodyRules) SetHealthyThreshold(v int32) *DescribeRulesResponseBodyRules {
+func (s *DescribeRulesResponseBodyRulesRule) SetHealthyThreshold(v int32) *DescribeRulesResponseBodyRulesRule {
 	s.HealthyThreshold = &v
 	return s
 }
 
-func (s *DescribeRulesResponseBodyRules) SetCookieTimeout(v int32) *DescribeRulesResponseBodyRules {
+func (s *DescribeRulesResponseBodyRulesRule) SetCookieTimeout(v int32) *DescribeRulesResponseBodyRulesRule {
 	s.CookieTimeout = &v
 	return s
 }
 
-func (s *DescribeRulesResponseBodyRules) SetHealthCheckDomain(v string) *DescribeRulesResponseBodyRules {
+func (s *DescribeRulesResponseBodyRulesRule) SetHealthCheckDomain(v string) *DescribeRulesResponseBodyRulesRule {
 	s.HealthCheckDomain = &v
 	return s
 }
 
-func (s *DescribeRulesResponseBodyRules) SetUnhealthyThreshold(v int32) *DescribeRulesResponseBodyRules {
+func (s *DescribeRulesResponseBodyRulesRule) SetUnhealthyThreshold(v int32) *DescribeRulesResponseBodyRulesRule {
 	s.UnhealthyThreshold = &v
 	return s
 }
 
-func (s *DescribeRulesResponseBodyRules) SetStickySession(v string) *DescribeRulesResponseBodyRules {
+func (s *DescribeRulesResponseBodyRulesRule) SetStickySession(v string) *DescribeRulesResponseBodyRulesRule {
 	s.StickySession = &v
 	return s
 }
 
-func (s *DescribeRulesResponseBodyRules) SetHealthCheck(v string) *DescribeRulesResponseBodyRules {
+func (s *DescribeRulesResponseBodyRulesRule) SetHealthCheck(v string) *DescribeRulesResponseBodyRulesRule {
 	s.HealthCheck = &v
 	return s
 }
@@ -8470,8 +8912,8 @@ func (s DescribeServerCertificatesRequestTag) GoString() string {
 }
 
 type DescribeServerCertificatesResponseBody struct {
-	RequestId          *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ServerCertificates []*DescribeServerCertificatesResponseBodyServerCertificates `json:"ServerCertificates,omitempty" xml:"ServerCertificates,omitempty" type:"Repeated"`
+	RequestId          *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ServerCertificates *DescribeServerCertificatesResponseBodyServerCertificates `json:"ServerCertificates,omitempty" xml:"ServerCertificates,omitempty" type:"Struct"`
 }
 
 func (s DescribeServerCertificatesResponseBody) String() string {
@@ -8487,26 +8929,13 @@ func (s *DescribeServerCertificatesResponseBody) SetRequestId(v string) *Describ
 	return s
 }
 
-func (s *DescribeServerCertificatesResponseBody) SetServerCertificates(v []*DescribeServerCertificatesResponseBodyServerCertificates) *DescribeServerCertificatesResponseBody {
+func (s *DescribeServerCertificatesResponseBody) SetServerCertificates(v *DescribeServerCertificatesResponseBodyServerCertificates) *DescribeServerCertificatesResponseBody {
 	s.ServerCertificates = v
 	return s
 }
 
 type DescribeServerCertificatesResponseBodyServerCertificates struct {
-	AliCloudCertificateName *string   `json:"AliCloudCertificateName,omitempty" xml:"AliCloudCertificateName,omitempty"`
-	CreateTimeStamp         *int64    `json:"CreateTimeStamp,omitempty" xml:"CreateTimeStamp,omitempty"`
-	ExpireTime              *string   `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	CreateTime              *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ServerCertificateId     *string   `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
-	ExpireTimeStamp         *int64    `json:"ExpireTimeStamp,omitempty" xml:"ExpireTimeStamp,omitempty"`
-	RegionId                *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ServerCertificateName   *string   `json:"ServerCertificateName,omitempty" xml:"ServerCertificateName,omitempty"`
-	Fingerprint             *string   `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
-	SubjectAlternativeNames []*string `json:"SubjectAlternativeNames,omitempty" xml:"SubjectAlternativeNames,omitempty" type:"Repeated"`
-	CommonName              *string   `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	ResourceGroupId         *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	IsAliCloudCertificate   *int32    `json:"IsAliCloudCertificate,omitempty" xml:"IsAliCloudCertificate,omitempty"`
-	AliCloudCertificateId   *string   `json:"AliCloudCertificateId,omitempty" xml:"AliCloudCertificateId,omitempty"`
+	ServerCertificate []*DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate `json:"ServerCertificate,omitempty" xml:"ServerCertificate,omitempty" type:"Repeated"`
 }
 
 func (s DescribeServerCertificatesResponseBodyServerCertificates) String() string {
@@ -8517,73 +8946,120 @@ func (s DescribeServerCertificatesResponseBodyServerCertificates) GoString() str
 	return s.String()
 }
 
-func (s *DescribeServerCertificatesResponseBodyServerCertificates) SetAliCloudCertificateName(v string) *DescribeServerCertificatesResponseBodyServerCertificates {
+func (s *DescribeServerCertificatesResponseBodyServerCertificates) SetServerCertificate(v []*DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate) *DescribeServerCertificatesResponseBodyServerCertificates {
+	s.ServerCertificate = v
+	return s
+}
+
+type DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate struct {
+	AliCloudCertificateName *string                                                                                           `json:"AliCloudCertificateName,omitempty" xml:"AliCloudCertificateName,omitempty"`
+	CreateTimeStamp         *int64                                                                                            `json:"CreateTimeStamp,omitempty" xml:"CreateTimeStamp,omitempty"`
+	ExpireTime              *string                                                                                           `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	CreateTime              *string                                                                                           `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ServerCertificateId     *string                                                                                           `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
+	ExpireTimeStamp         *int64                                                                                            `json:"ExpireTimeStamp,omitempty" xml:"ExpireTimeStamp,omitempty"`
+	RegionId                *string                                                                                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ServerCertificateName   *string                                                                                           `json:"ServerCertificateName,omitempty" xml:"ServerCertificateName,omitempty"`
+	Fingerprint             *string                                                                                           `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
+	SubjectAlternativeNames *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificateSubjectAlternativeNames `json:"SubjectAlternativeNames,omitempty" xml:"SubjectAlternativeNames,omitempty" type:"Struct"`
+	CommonName              *string                                                                                           `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	ResourceGroupId         *string                                                                                           `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	IsAliCloudCertificate   *int32                                                                                            `json:"IsAliCloudCertificate,omitempty" xml:"IsAliCloudCertificate,omitempty"`
+	AliCloudCertificateId   *string                                                                                           `json:"AliCloudCertificateId,omitempty" xml:"AliCloudCertificateId,omitempty"`
+}
+
+func (s DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate) SetAliCloudCertificateName(v string) *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate {
 	s.AliCloudCertificateName = &v
 	return s
 }
 
-func (s *DescribeServerCertificatesResponseBodyServerCertificates) SetCreateTimeStamp(v int64) *DescribeServerCertificatesResponseBodyServerCertificates {
+func (s *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate) SetCreateTimeStamp(v int64) *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate {
 	s.CreateTimeStamp = &v
 	return s
 }
 
-func (s *DescribeServerCertificatesResponseBodyServerCertificates) SetExpireTime(v string) *DescribeServerCertificatesResponseBodyServerCertificates {
+func (s *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate) SetExpireTime(v string) *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate {
 	s.ExpireTime = &v
 	return s
 }
 
-func (s *DescribeServerCertificatesResponseBodyServerCertificates) SetCreateTime(v string) *DescribeServerCertificatesResponseBodyServerCertificates {
+func (s *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate) SetCreateTime(v string) *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate {
 	s.CreateTime = &v
 	return s
 }
 
-func (s *DescribeServerCertificatesResponseBodyServerCertificates) SetServerCertificateId(v string) *DescribeServerCertificatesResponseBodyServerCertificates {
+func (s *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate) SetServerCertificateId(v string) *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate {
 	s.ServerCertificateId = &v
 	return s
 }
 
-func (s *DescribeServerCertificatesResponseBodyServerCertificates) SetExpireTimeStamp(v int64) *DescribeServerCertificatesResponseBodyServerCertificates {
+func (s *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate) SetExpireTimeStamp(v int64) *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate {
 	s.ExpireTimeStamp = &v
 	return s
 }
 
-func (s *DescribeServerCertificatesResponseBodyServerCertificates) SetRegionId(v string) *DescribeServerCertificatesResponseBodyServerCertificates {
+func (s *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate) SetRegionId(v string) *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate {
 	s.RegionId = &v
 	return s
 }
 
-func (s *DescribeServerCertificatesResponseBodyServerCertificates) SetServerCertificateName(v string) *DescribeServerCertificatesResponseBodyServerCertificates {
+func (s *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate) SetServerCertificateName(v string) *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate {
 	s.ServerCertificateName = &v
 	return s
 }
 
-func (s *DescribeServerCertificatesResponseBodyServerCertificates) SetFingerprint(v string) *DescribeServerCertificatesResponseBodyServerCertificates {
+func (s *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate) SetFingerprint(v string) *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate {
 	s.Fingerprint = &v
 	return s
 }
 
-func (s *DescribeServerCertificatesResponseBodyServerCertificates) SetSubjectAlternativeNames(v []*string) *DescribeServerCertificatesResponseBodyServerCertificates {
+func (s *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate) SetSubjectAlternativeNames(v *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificateSubjectAlternativeNames) *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate {
 	s.SubjectAlternativeNames = v
 	return s
 }
 
-func (s *DescribeServerCertificatesResponseBodyServerCertificates) SetCommonName(v string) *DescribeServerCertificatesResponseBodyServerCertificates {
+func (s *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate) SetCommonName(v string) *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate {
 	s.CommonName = &v
 	return s
 }
 
-func (s *DescribeServerCertificatesResponseBodyServerCertificates) SetResourceGroupId(v string) *DescribeServerCertificatesResponseBodyServerCertificates {
+func (s *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate) SetResourceGroupId(v string) *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate {
 	s.ResourceGroupId = &v
 	return s
 }
 
-func (s *DescribeServerCertificatesResponseBodyServerCertificates) SetIsAliCloudCertificate(v int32) *DescribeServerCertificatesResponseBodyServerCertificates {
+func (s *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate) SetIsAliCloudCertificate(v int32) *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate {
 	s.IsAliCloudCertificate = &v
 	return s
 }
 
-func (s *DescribeServerCertificatesResponseBodyServerCertificates) SetAliCloudCertificateId(v string) *DescribeServerCertificatesResponseBodyServerCertificates {
+func (s *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate) SetAliCloudCertificateId(v string) *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate {
 	s.AliCloudCertificateId = &v
+	return s
+}
+
+type DescribeServerCertificatesResponseBodyServerCertificatesServerCertificateSubjectAlternativeNames struct {
+	SubjectAlternativeName []*string `json:"SubjectAlternativeName,omitempty" xml:"SubjectAlternativeName,omitempty" type:"Repeated"`
+}
+
+func (s DescribeServerCertificatesResponseBodyServerCertificatesServerCertificateSubjectAlternativeNames) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServerCertificatesResponseBodyServerCertificatesServerCertificateSubjectAlternativeNames) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificateSubjectAlternativeNames) SetSubjectAlternativeName(v []*string) *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificateSubjectAlternativeNames {
+	s.SubjectAlternativeName = v
 	return s
 }
 
@@ -8688,11 +9164,11 @@ func (s *DescribeTagsRequest) SetPageNumber(v int32) *DescribeTagsRequest {
 }
 
 type DescribeTagsResponseBody struct {
-	TotalCount *int32                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	RequestId  *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize   *int32                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber *int32                             `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	TagSets    []*DescribeTagsResponseBodyTagSets `json:"TagSets,omitempty" xml:"TagSets,omitempty" type:"Repeated"`
+	TotalCount *int32                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId  *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageSize   *int32                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber *int32                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TagSets    *DescribeTagsResponseBodyTagSets `json:"TagSets,omitempty" xml:"TagSets,omitempty" type:"Struct"`
 }
 
 func (s DescribeTagsResponseBody) String() string {
@@ -8723,15 +9199,13 @@ func (s *DescribeTagsResponseBody) SetPageNumber(v int32) *DescribeTagsResponseB
 	return s
 }
 
-func (s *DescribeTagsResponseBody) SetTagSets(v []*DescribeTagsResponseBodyTagSets) *DescribeTagsResponseBody {
+func (s *DescribeTagsResponseBody) SetTagSets(v *DescribeTagsResponseBodyTagSets) *DescribeTagsResponseBody {
 	s.TagSets = v
 	return s
 }
 
 type DescribeTagsResponseBodyTagSets struct {
-	InstanceCount *int32  `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	TagValue      *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
-	TagKey        *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagSet []*DescribeTagsResponseBodyTagSetsTagSet `json:"TagSet,omitempty" xml:"TagSet,omitempty" type:"Repeated"`
 }
 
 func (s DescribeTagsResponseBodyTagSets) String() string {
@@ -8742,17 +9216,36 @@ func (s DescribeTagsResponseBodyTagSets) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeTagsResponseBodyTagSets) SetInstanceCount(v int32) *DescribeTagsResponseBodyTagSets {
+func (s *DescribeTagsResponseBodyTagSets) SetTagSet(v []*DescribeTagsResponseBodyTagSetsTagSet) *DescribeTagsResponseBodyTagSets {
+	s.TagSet = v
+	return s
+}
+
+type DescribeTagsResponseBodyTagSetsTagSet struct {
+	InstanceCount *int32  `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	TagValue      *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	TagKey        *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+}
+
+func (s DescribeTagsResponseBodyTagSetsTagSet) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTagsResponseBodyTagSetsTagSet) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTagsResponseBodyTagSetsTagSet) SetInstanceCount(v int32) *DescribeTagsResponseBodyTagSetsTagSet {
 	s.InstanceCount = &v
 	return s
 }
 
-func (s *DescribeTagsResponseBodyTagSets) SetTagValue(v string) *DescribeTagsResponseBodyTagSets {
+func (s *DescribeTagsResponseBodyTagSetsTagSet) SetTagValue(v string) *DescribeTagsResponseBodyTagSetsTagSet {
 	s.TagValue = &v
 	return s
 }
 
-func (s *DescribeTagsResponseBodyTagSets) SetTagKey(v string) *DescribeTagsResponseBodyTagSets {
+func (s *DescribeTagsResponseBodyTagSetsTagSet) SetTagKey(v string) *DescribeTagsResponseBodyTagSetsTagSet {
 	s.TagKey = &v
 	return s
 }
@@ -8840,11 +9333,11 @@ func (s *DescribeVServerGroupAttributeRequest) SetVServerGroupId(v string) *Desc
 }
 
 type DescribeVServerGroupAttributeResponseBody struct {
-	VServerGroupId   *string                                                    `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
-	RequestId        *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	VServerGroupName *string                                                    `json:"VServerGroupName,omitempty" xml:"VServerGroupName,omitempty"`
-	LoadBalancerId   *string                                                    `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	BackendServers   []*DescribeVServerGroupAttributeResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Repeated"`
+	VServerGroupId   *string                                                  `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
+	RequestId        *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	VServerGroupName *string                                                  `json:"VServerGroupName,omitempty" xml:"VServerGroupName,omitempty"`
+	LoadBalancerId   *string                                                  `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	BackendServers   *DescribeVServerGroupAttributeResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
 }
 
 func (s DescribeVServerGroupAttributeResponseBody) String() string {
@@ -8875,17 +9368,13 @@ func (s *DescribeVServerGroupAttributeResponseBody) SetLoadBalancerId(v string) 
 	return s
 }
 
-func (s *DescribeVServerGroupAttributeResponseBody) SetBackendServers(v []*DescribeVServerGroupAttributeResponseBodyBackendServers) *DescribeVServerGroupAttributeResponseBody {
+func (s *DescribeVServerGroupAttributeResponseBody) SetBackendServers(v *DescribeVServerGroupAttributeResponseBodyBackendServers) *DescribeVServerGroupAttributeResponseBody {
 	s.BackendServers = v
 	return s
 }
 
 type DescribeVServerGroupAttributeResponseBodyBackendServers struct {
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Weight      *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Port        *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	ServerId    *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	BackendServer []*DescribeVServerGroupAttributeResponseBodyBackendServersBackendServer `json:"BackendServer,omitempty" xml:"BackendServer,omitempty" type:"Repeated"`
 }
 
 func (s DescribeVServerGroupAttributeResponseBodyBackendServers) String() string {
@@ -8896,27 +9385,48 @@ func (s DescribeVServerGroupAttributeResponseBodyBackendServers) GoString() stri
 	return s.String()
 }
 
-func (s *DescribeVServerGroupAttributeResponseBodyBackendServers) SetType(v string) *DescribeVServerGroupAttributeResponseBodyBackendServers {
+func (s *DescribeVServerGroupAttributeResponseBodyBackendServers) SetBackendServer(v []*DescribeVServerGroupAttributeResponseBodyBackendServersBackendServer) *DescribeVServerGroupAttributeResponseBodyBackendServers {
+	s.BackendServer = v
+	return s
+}
+
+type DescribeVServerGroupAttributeResponseBodyBackendServersBackendServer struct {
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Weight      *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Port        *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	ServerId    *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+}
+
+func (s DescribeVServerGroupAttributeResponseBodyBackendServersBackendServer) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVServerGroupAttributeResponseBodyBackendServersBackendServer) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVServerGroupAttributeResponseBodyBackendServersBackendServer) SetType(v string) *DescribeVServerGroupAttributeResponseBodyBackendServersBackendServer {
 	s.Type = &v
 	return s
 }
 
-func (s *DescribeVServerGroupAttributeResponseBodyBackendServers) SetWeight(v int32) *DescribeVServerGroupAttributeResponseBodyBackendServers {
+func (s *DescribeVServerGroupAttributeResponseBodyBackendServersBackendServer) SetWeight(v int32) *DescribeVServerGroupAttributeResponseBodyBackendServersBackendServer {
 	s.Weight = &v
 	return s
 }
 
-func (s *DescribeVServerGroupAttributeResponseBodyBackendServers) SetDescription(v string) *DescribeVServerGroupAttributeResponseBodyBackendServers {
+func (s *DescribeVServerGroupAttributeResponseBodyBackendServersBackendServer) SetDescription(v string) *DescribeVServerGroupAttributeResponseBodyBackendServersBackendServer {
 	s.Description = &v
 	return s
 }
 
-func (s *DescribeVServerGroupAttributeResponseBodyBackendServers) SetPort(v int32) *DescribeVServerGroupAttributeResponseBodyBackendServers {
+func (s *DescribeVServerGroupAttributeResponseBodyBackendServersBackendServer) SetPort(v int32) *DescribeVServerGroupAttributeResponseBodyBackendServersBackendServer {
 	s.Port = &v
 	return s
 }
 
-func (s *DescribeVServerGroupAttributeResponseBodyBackendServers) SetServerId(v string) *DescribeVServerGroupAttributeResponseBodyBackendServers {
+func (s *DescribeVServerGroupAttributeResponseBodyBackendServersBackendServer) SetServerId(v string) *DescribeVServerGroupAttributeResponseBodyBackendServersBackendServer {
 	s.ServerId = &v
 	return s
 }
@@ -9016,8 +9526,8 @@ func (s *DescribeVServerGroupsRequest) SetIncludeListener(v bool) *DescribeVServ
 }
 
 type DescribeVServerGroupsResponseBody struct {
-	RequestId     *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	VServerGroups []*DescribeVServerGroupsResponseBodyVServerGroups `json:"VServerGroups,omitempty" xml:"VServerGroups,omitempty" type:"Repeated"`
+	RequestId     *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	VServerGroups *DescribeVServerGroupsResponseBodyVServerGroups `json:"VServerGroups,omitempty" xml:"VServerGroups,omitempty" type:"Struct"`
 }
 
 func (s DescribeVServerGroupsResponseBody) String() string {
@@ -9033,15 +9543,13 @@ func (s *DescribeVServerGroupsResponseBody) SetRequestId(v string) *DescribeVSer
 	return s
 }
 
-func (s *DescribeVServerGroupsResponseBody) SetVServerGroups(v []*DescribeVServerGroupsResponseBodyVServerGroups) *DescribeVServerGroupsResponseBody {
+func (s *DescribeVServerGroupsResponseBody) SetVServerGroups(v *DescribeVServerGroupsResponseBodyVServerGroups) *DescribeVServerGroupsResponseBody {
 	s.VServerGroups = v
 	return s
 }
 
 type DescribeVServerGroupsResponseBodyVServerGroups struct {
-	VServerGroupId    *string                                                          `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
-	VServerGroupName  *string                                                          `json:"VServerGroupName,omitempty" xml:"VServerGroupName,omitempty"`
-	AssociatedObjects *DescribeVServerGroupsResponseBodyVServerGroupsAssociatedObjects `json:"AssociatedObjects,omitempty" xml:"AssociatedObjects,omitempty" type:"Struct"`
+	VServerGroup []*DescribeVServerGroupsResponseBodyVServerGroupsVServerGroup `json:"VServerGroup,omitempty" xml:"VServerGroup,omitempty" type:"Repeated"`
 }
 
 func (s DescribeVServerGroupsResponseBodyVServerGroups) String() string {
@@ -9052,98 +9560,151 @@ func (s DescribeVServerGroupsResponseBodyVServerGroups) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeVServerGroupsResponseBodyVServerGroups) SetVServerGroupId(v string) *DescribeVServerGroupsResponseBodyVServerGroups {
+func (s *DescribeVServerGroupsResponseBodyVServerGroups) SetVServerGroup(v []*DescribeVServerGroupsResponseBodyVServerGroupsVServerGroup) *DescribeVServerGroupsResponseBodyVServerGroups {
+	s.VServerGroup = v
+	return s
+}
+
+type DescribeVServerGroupsResponseBodyVServerGroupsVServerGroup struct {
+	VServerGroupId    *string                                                                      `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
+	VServerGroupName  *string                                                                      `json:"VServerGroupName,omitempty" xml:"VServerGroupName,omitempty"`
+	AssociatedObjects *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjects `json:"AssociatedObjects,omitempty" xml:"AssociatedObjects,omitempty" type:"Struct"`
+}
+
+func (s DescribeVServerGroupsResponseBodyVServerGroupsVServerGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVServerGroupsResponseBodyVServerGroupsVServerGroup) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroup) SetVServerGroupId(v string) *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroup {
 	s.VServerGroupId = &v
 	return s
 }
 
-func (s *DescribeVServerGroupsResponseBodyVServerGroups) SetVServerGroupName(v string) *DescribeVServerGroupsResponseBodyVServerGroups {
+func (s *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroup) SetVServerGroupName(v string) *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroup {
 	s.VServerGroupName = &v
 	return s
 }
 
-func (s *DescribeVServerGroupsResponseBodyVServerGroups) SetAssociatedObjects(v *DescribeVServerGroupsResponseBodyVServerGroupsAssociatedObjects) *DescribeVServerGroupsResponseBodyVServerGroups {
+func (s *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroup) SetAssociatedObjects(v *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjects) *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroup {
 	s.AssociatedObjects = v
 	return s
 }
 
-type DescribeVServerGroupsResponseBodyVServerGroupsAssociatedObjects struct {
-	Listeners []*DescribeVServerGroupsResponseBodyVServerGroupsAssociatedObjectsListeners `json:"Listeners,omitempty" xml:"Listeners,omitempty" type:"Repeated"`
-	Rules     []*DescribeVServerGroupsResponseBodyVServerGroupsAssociatedObjectsRules     `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+type DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjects struct {
+	Listeners *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsListeners `json:"Listeners,omitempty" xml:"Listeners,omitempty" type:"Struct"`
+	Rules     *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsRules     `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
 }
 
-func (s DescribeVServerGroupsResponseBodyVServerGroupsAssociatedObjects) String() string {
+func (s DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjects) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeVServerGroupsResponseBodyVServerGroupsAssociatedObjects) GoString() string {
+func (s DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjects) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeVServerGroupsResponseBodyVServerGroupsAssociatedObjects) SetListeners(v []*DescribeVServerGroupsResponseBodyVServerGroupsAssociatedObjectsListeners) *DescribeVServerGroupsResponseBodyVServerGroupsAssociatedObjects {
+func (s *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjects) SetListeners(v *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsListeners) *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjects {
 	s.Listeners = v
 	return s
 }
 
-func (s *DescribeVServerGroupsResponseBodyVServerGroupsAssociatedObjects) SetRules(v []*DescribeVServerGroupsResponseBodyVServerGroupsAssociatedObjectsRules) *DescribeVServerGroupsResponseBodyVServerGroupsAssociatedObjects {
+func (s *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjects) SetRules(v *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsRules) *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjects {
 	s.Rules = v
 	return s
 }
 
-type DescribeVServerGroupsResponseBodyVServerGroupsAssociatedObjectsListeners struct {
+type DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsListeners struct {
+	Listener []*DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsListenersListener `json:"Listener,omitempty" xml:"Listener,omitempty" type:"Repeated"`
+}
+
+func (s DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsListeners) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsListeners) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsListeners) SetListener(v []*DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsListenersListener) *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsListeners {
+	s.Listener = v
+	return s
+}
+
+type DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsListenersListener struct {
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
 }
 
-func (s DescribeVServerGroupsResponseBodyVServerGroupsAssociatedObjectsListeners) String() string {
+func (s DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsListenersListener) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeVServerGroupsResponseBodyVServerGroupsAssociatedObjectsListeners) GoString() string {
+func (s DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsListenersListener) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeVServerGroupsResponseBodyVServerGroupsAssociatedObjectsListeners) SetProtocol(v string) *DescribeVServerGroupsResponseBodyVServerGroupsAssociatedObjectsListeners {
+func (s *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsListenersListener) SetProtocol(v string) *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsListenersListener {
 	s.Protocol = &v
 	return s
 }
 
-func (s *DescribeVServerGroupsResponseBodyVServerGroupsAssociatedObjectsListeners) SetPort(v int32) *DescribeVServerGroupsResponseBodyVServerGroupsAssociatedObjectsListeners {
+func (s *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsListenersListener) SetPort(v int32) *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsListenersListener {
 	s.Port = &v
 	return s
 }
 
-type DescribeVServerGroupsResponseBodyVServerGroupsAssociatedObjectsRules struct {
+type DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsRules struct {
+	Rule []*DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsRulesRule `json:"Rule,omitempty" xml:"Rule,omitempty" type:"Repeated"`
+}
+
+func (s DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsRules) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsRules) SetRule(v []*DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsRulesRule) *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsRules {
+	s.Rule = v
+	return s
+}
+
+type DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsRulesRule struct {
 	Domain   *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	Url      *string `json:"Url,omitempty" xml:"Url,omitempty"`
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	RuleId   *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
-func (s DescribeVServerGroupsResponseBodyVServerGroupsAssociatedObjectsRules) String() string {
+func (s DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsRulesRule) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeVServerGroupsResponseBodyVServerGroupsAssociatedObjectsRules) GoString() string {
+func (s DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsRulesRule) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeVServerGroupsResponseBodyVServerGroupsAssociatedObjectsRules) SetDomain(v string) *DescribeVServerGroupsResponseBodyVServerGroupsAssociatedObjectsRules {
+func (s *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsRulesRule) SetDomain(v string) *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsRulesRule {
 	s.Domain = &v
 	return s
 }
 
-func (s *DescribeVServerGroupsResponseBodyVServerGroupsAssociatedObjectsRules) SetUrl(v string) *DescribeVServerGroupsResponseBodyVServerGroupsAssociatedObjectsRules {
+func (s *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsRulesRule) SetUrl(v string) *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsRulesRule {
 	s.Url = &v
 	return s
 }
 
-func (s *DescribeVServerGroupsResponseBodyVServerGroupsAssociatedObjectsRules) SetRuleName(v string) *DescribeVServerGroupsResponseBodyVServerGroupsAssociatedObjectsRules {
+func (s *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsRulesRule) SetRuleName(v string) *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsRulesRule {
 	s.RuleName = &v
 	return s
 }
 
-func (s *DescribeVServerGroupsResponseBodyVServerGroupsAssociatedObjectsRules) SetRuleId(v string) *DescribeVServerGroupsResponseBodyVServerGroupsAssociatedObjectsRules {
+func (s *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsRulesRule) SetRuleId(v string) *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsRulesRule {
 	s.RuleId = &v
 	return s
 }
@@ -9225,8 +9786,8 @@ func (s *DescribeZonesRequest) SetRegionId(v string) *DescribeZonesRequest {
 }
 
 type DescribeZonesResponseBody struct {
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Zones     []*DescribeZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Zones     *DescribeZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
 }
 
 func (s DescribeZonesResponseBody) String() string {
@@ -9242,15 +9803,13 @@ func (s *DescribeZonesResponseBody) SetRequestId(v string) *DescribeZonesRespons
 	return s
 }
 
-func (s *DescribeZonesResponseBody) SetZones(v []*DescribeZonesResponseBodyZones) *DescribeZonesResponseBody {
+func (s *DescribeZonesResponseBody) SetZones(v *DescribeZonesResponseBodyZones) *DescribeZonesResponseBody {
 	s.Zones = v
 	return s
 }
 
 type DescribeZonesResponseBodyZones struct {
-	LocalName  *string                                     `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	ZoneId     *string                                     `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	SlaveZones []*DescribeZonesResponseBodyZonesSlaveZones `json:"SlaveZones,omitempty" xml:"SlaveZones,omitempty" type:"Repeated"`
+	Zone []*DescribeZonesResponseBodyZonesZone `json:"Zone,omitempty" xml:"Zone,omitempty" type:"Repeated"`
 }
 
 func (s DescribeZonesResponseBodyZones) String() string {
@@ -9261,40 +9820,76 @@ func (s DescribeZonesResponseBodyZones) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeZonesResponseBodyZones) SetLocalName(v string) *DescribeZonesResponseBodyZones {
+func (s *DescribeZonesResponseBodyZones) SetZone(v []*DescribeZonesResponseBodyZonesZone) *DescribeZonesResponseBodyZones {
+	s.Zone = v
+	return s
+}
+
+type DescribeZonesResponseBodyZonesZone struct {
+	LocalName  *string                                       `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	ZoneId     *string                                       `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	SlaveZones *DescribeZonesResponseBodyZonesZoneSlaveZones `json:"SlaveZones,omitempty" xml:"SlaveZones,omitempty" type:"Struct"`
+}
+
+func (s DescribeZonesResponseBodyZonesZone) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeZonesResponseBodyZonesZone) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeZonesResponseBodyZonesZone) SetLocalName(v string) *DescribeZonesResponseBodyZonesZone {
 	s.LocalName = &v
 	return s
 }
 
-func (s *DescribeZonesResponseBodyZones) SetZoneId(v string) *DescribeZonesResponseBodyZones {
+func (s *DescribeZonesResponseBodyZonesZone) SetZoneId(v string) *DescribeZonesResponseBodyZonesZone {
 	s.ZoneId = &v
 	return s
 }
 
-func (s *DescribeZonesResponseBodyZones) SetSlaveZones(v []*DescribeZonesResponseBodyZonesSlaveZones) *DescribeZonesResponseBodyZones {
+func (s *DescribeZonesResponseBodyZonesZone) SetSlaveZones(v *DescribeZonesResponseBodyZonesZoneSlaveZones) *DescribeZonesResponseBodyZonesZone {
 	s.SlaveZones = v
 	return s
 }
 
-type DescribeZonesResponseBodyZonesSlaveZones struct {
+type DescribeZonesResponseBodyZonesZoneSlaveZones struct {
+	SlaveZone []*DescribeZonesResponseBodyZonesZoneSlaveZonesSlaveZone `json:"SlaveZone,omitempty" xml:"SlaveZone,omitempty" type:"Repeated"`
+}
+
+func (s DescribeZonesResponseBodyZonesZoneSlaveZones) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeZonesResponseBodyZonesZoneSlaveZones) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeZonesResponseBodyZonesZoneSlaveZones) SetSlaveZone(v []*DescribeZonesResponseBodyZonesZoneSlaveZonesSlaveZone) *DescribeZonesResponseBodyZonesZoneSlaveZones {
+	s.SlaveZone = v
+	return s
+}
+
+type DescribeZonesResponseBodyZonesZoneSlaveZonesSlaveZone struct {
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
-func (s DescribeZonesResponseBodyZonesSlaveZones) String() string {
+func (s DescribeZonesResponseBodyZonesZoneSlaveZonesSlaveZone) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeZonesResponseBodyZonesSlaveZones) GoString() string {
+func (s DescribeZonesResponseBodyZonesZoneSlaveZonesSlaveZone) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeZonesResponseBodyZonesSlaveZones) SetLocalName(v string) *DescribeZonesResponseBodyZonesSlaveZones {
+func (s *DescribeZonesResponseBodyZonesZoneSlaveZonesSlaveZone) SetLocalName(v string) *DescribeZonesResponseBodyZonesZoneSlaveZonesSlaveZone {
 	s.LocalName = &v
 	return s
 }
 
-func (s *DescribeZonesResponseBodyZonesSlaveZones) SetZoneId(v string) *DescribeZonesResponseBodyZonesSlaveZones {
+func (s *DescribeZonesResponseBodyZonesZoneSlaveZonesSlaveZone) SetZoneId(v string) *DescribeZonesResponseBodyZonesZoneSlaveZonesSlaveZone {
 	s.ZoneId = &v
 	return s
 }
@@ -9417,9 +10012,9 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 }
 
 type ListTagResourcesResponseBody struct {
-	NextToken    *string                                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
+	NextToken    *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TagResources *ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
 }
 
 func (s ListTagResourcesResponseBody) String() string {
@@ -9440,16 +10035,13 @@ func (s *ListTagResourcesResponseBody) SetRequestId(v string) *ListTagResourcesR
 	return s
 }
 
-func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResponseBodyTagResources) *ListTagResourcesResponseBody {
+func (s *ListTagResourcesResponseBody) SetTagResources(v *ListTagResourcesResponseBodyTagResources) *ListTagResourcesResponseBody {
 	s.TagResources = v
 	return s
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagResource []*ListTagResourcesResponseBodyTagResourcesTagResource `json:"TagResource,omitempty" xml:"TagResource,omitempty" type:"Repeated"`
 }
 
 func (s ListTagResourcesResponseBodyTagResources) String() string {
@@ -9460,22 +10052,42 @@ func (s ListTagResourcesResponseBodyTagResources) GoString() string {
 	return s.String()
 }
 
-func (s *ListTagResourcesResponseBodyTagResources) SetResourceType(v string) *ListTagResourcesResponseBodyTagResources {
+func (s *ListTagResourcesResponseBodyTagResources) SetTagResource(v []*ListTagResourcesResponseBodyTagResourcesTagResource) *ListTagResourcesResponseBodyTagResources {
+	s.TagResource = v
+	return s
+}
+
+type ListTagResourcesResponseBodyTagResourcesTagResource struct {
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+}
+
+func (s ListTagResourcesResponseBodyTagResourcesTagResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBodyTagResourcesTagResource) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetResourceType(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
 	s.ResourceType = &v
 	return s
 }
 
-func (s *ListTagResourcesResponseBodyTagResources) SetTagValue(v string) *ListTagResourcesResponseBodyTagResources {
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagValue(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
 	s.TagValue = &v
 	return s
 }
 
-func (s *ListTagResourcesResponseBodyTagResources) SetResourceId(v string) *ListTagResourcesResponseBodyTagResources {
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetResourceId(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
 	s.ResourceId = &v
 	return s
 }
 
-func (s *ListTagResourcesResponseBodyTagResources) SetTagKey(v string) *ListTagResourcesResponseBodyTagResources {
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagKey(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
 	s.TagKey = &v
 	return s
 }
@@ -10173,9 +10785,9 @@ func (s *ModifyVServerGroupBackendServersRequest) SetNewBackendServers(v string)
 }
 
 type ModifyVServerGroupBackendServersResponseBody struct {
-	VServerGroupId *string                                                       `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
-	RequestId      *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	BackendServers []*ModifyVServerGroupBackendServersResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Repeated"`
+	VServerGroupId *string                                                     `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
+	RequestId      *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	BackendServers *ModifyVServerGroupBackendServersResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
 }
 
 func (s ModifyVServerGroupBackendServersResponseBody) String() string {
@@ -10196,17 +10808,13 @@ func (s *ModifyVServerGroupBackendServersResponseBody) SetRequestId(v string) *M
 	return s
 }
 
-func (s *ModifyVServerGroupBackendServersResponseBody) SetBackendServers(v []*ModifyVServerGroupBackendServersResponseBodyBackendServers) *ModifyVServerGroupBackendServersResponseBody {
+func (s *ModifyVServerGroupBackendServersResponseBody) SetBackendServers(v *ModifyVServerGroupBackendServersResponseBodyBackendServers) *ModifyVServerGroupBackendServersResponseBody {
 	s.BackendServers = v
 	return s
 }
 
 type ModifyVServerGroupBackendServersResponseBodyBackendServers struct {
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Weight      *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Port        *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	ServerId    *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	BackendServer []*ModifyVServerGroupBackendServersResponseBodyBackendServersBackendServer `json:"BackendServer,omitempty" xml:"BackendServer,omitempty" type:"Repeated"`
 }
 
 func (s ModifyVServerGroupBackendServersResponseBodyBackendServers) String() string {
@@ -10217,27 +10825,48 @@ func (s ModifyVServerGroupBackendServersResponseBodyBackendServers) GoString() s
 	return s.String()
 }
 
-func (s *ModifyVServerGroupBackendServersResponseBodyBackendServers) SetType(v string) *ModifyVServerGroupBackendServersResponseBodyBackendServers {
+func (s *ModifyVServerGroupBackendServersResponseBodyBackendServers) SetBackendServer(v []*ModifyVServerGroupBackendServersResponseBodyBackendServersBackendServer) *ModifyVServerGroupBackendServersResponseBodyBackendServers {
+	s.BackendServer = v
+	return s
+}
+
+type ModifyVServerGroupBackendServersResponseBodyBackendServersBackendServer struct {
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Weight      *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Port        *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	ServerId    *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+}
+
+func (s ModifyVServerGroupBackendServersResponseBodyBackendServersBackendServer) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyVServerGroupBackendServersResponseBodyBackendServersBackendServer) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyVServerGroupBackendServersResponseBodyBackendServersBackendServer) SetType(v string) *ModifyVServerGroupBackendServersResponseBodyBackendServersBackendServer {
 	s.Type = &v
 	return s
 }
 
-func (s *ModifyVServerGroupBackendServersResponseBodyBackendServers) SetWeight(v int32) *ModifyVServerGroupBackendServersResponseBodyBackendServers {
+func (s *ModifyVServerGroupBackendServersResponseBodyBackendServersBackendServer) SetWeight(v int32) *ModifyVServerGroupBackendServersResponseBodyBackendServersBackendServer {
 	s.Weight = &v
 	return s
 }
 
-func (s *ModifyVServerGroupBackendServersResponseBodyBackendServers) SetDescription(v string) *ModifyVServerGroupBackendServersResponseBodyBackendServers {
+func (s *ModifyVServerGroupBackendServersResponseBodyBackendServersBackendServer) SetDescription(v string) *ModifyVServerGroupBackendServersResponseBodyBackendServersBackendServer {
 	s.Description = &v
 	return s
 }
 
-func (s *ModifyVServerGroupBackendServersResponseBodyBackendServers) SetPort(v int32) *ModifyVServerGroupBackendServersResponseBodyBackendServers {
+func (s *ModifyVServerGroupBackendServersResponseBodyBackendServersBackendServer) SetPort(v int32) *ModifyVServerGroupBackendServersResponseBodyBackendServersBackendServer {
 	s.Port = &v
 	return s
 }
 
-func (s *ModifyVServerGroupBackendServersResponseBodyBackendServers) SetServerId(v string) *ModifyVServerGroupBackendServersResponseBodyBackendServers {
+func (s *ModifyVServerGroupBackendServersResponseBodyBackendServersBackendServer) SetServerId(v string) *ModifyVServerGroupBackendServersResponseBodyBackendServersBackendServer {
 	s.ServerId = &v
 	return s
 }
@@ -10436,9 +11065,9 @@ func (s *RemoveBackendServersRequest) SetTags(v string) *RemoveBackendServersReq
 }
 
 type RemoveBackendServersResponseBody struct {
-	RequestId      *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	LoadBalancerId *string                                           `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	BackendServers []*RemoveBackendServersResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Repeated"`
+	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	LoadBalancerId *string                                         `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	BackendServers *RemoveBackendServersResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
 }
 
 func (s RemoveBackendServersResponseBody) String() string {
@@ -10459,16 +11088,13 @@ func (s *RemoveBackendServersResponseBody) SetLoadBalancerId(v string) *RemoveBa
 	return s
 }
 
-func (s *RemoveBackendServersResponseBody) SetBackendServers(v []*RemoveBackendServersResponseBodyBackendServers) *RemoveBackendServersResponseBody {
+func (s *RemoveBackendServersResponseBody) SetBackendServers(v *RemoveBackendServersResponseBodyBackendServers) *RemoveBackendServersResponseBody {
 	s.BackendServers = v
 	return s
 }
 
 type RemoveBackendServersResponseBodyBackendServers struct {
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Weight      *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ServerId    *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	BackendServer []*RemoveBackendServersResponseBodyBackendServersBackendServer `json:"BackendServer,omitempty" xml:"BackendServer,omitempty" type:"Repeated"`
 }
 
 func (s RemoveBackendServersResponseBodyBackendServers) String() string {
@@ -10479,22 +11105,42 @@ func (s RemoveBackendServersResponseBodyBackendServers) GoString() string {
 	return s.String()
 }
 
-func (s *RemoveBackendServersResponseBodyBackendServers) SetType(v string) *RemoveBackendServersResponseBodyBackendServers {
+func (s *RemoveBackendServersResponseBodyBackendServers) SetBackendServer(v []*RemoveBackendServersResponseBodyBackendServersBackendServer) *RemoveBackendServersResponseBodyBackendServers {
+	s.BackendServer = v
+	return s
+}
+
+type RemoveBackendServersResponseBodyBackendServersBackendServer struct {
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Weight      *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ServerId    *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+}
+
+func (s RemoveBackendServersResponseBodyBackendServersBackendServer) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveBackendServersResponseBodyBackendServersBackendServer) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveBackendServersResponseBodyBackendServersBackendServer) SetType(v string) *RemoveBackendServersResponseBodyBackendServersBackendServer {
 	s.Type = &v
 	return s
 }
 
-func (s *RemoveBackendServersResponseBodyBackendServers) SetWeight(v int32) *RemoveBackendServersResponseBodyBackendServers {
+func (s *RemoveBackendServersResponseBodyBackendServersBackendServer) SetWeight(v int32) *RemoveBackendServersResponseBodyBackendServersBackendServer {
 	s.Weight = &v
 	return s
 }
 
-func (s *RemoveBackendServersResponseBodyBackendServers) SetDescription(v string) *RemoveBackendServersResponseBodyBackendServers {
+func (s *RemoveBackendServersResponseBodyBackendServersBackendServer) SetDescription(v string) *RemoveBackendServersResponseBodyBackendServersBackendServer {
 	s.Description = &v
 	return s
 }
 
-func (s *RemoveBackendServersResponseBodyBackendServers) SetServerId(v string) *RemoveBackendServersResponseBodyBackendServers {
+func (s *RemoveBackendServersResponseBodyBackendServersBackendServer) SetServerId(v string) *RemoveBackendServersResponseBodyBackendServersBackendServer {
 	s.ServerId = &v
 	return s
 }
@@ -10804,9 +11450,9 @@ func (s *RemoveVServerGroupBackendServersRequest) SetBackendServers(v string) *R
 }
 
 type RemoveVServerGroupBackendServersResponseBody struct {
-	VServerGroupId *string                                                       `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
-	RequestId      *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	BackendServers []*RemoveVServerGroupBackendServersResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Repeated"`
+	VServerGroupId *string                                                     `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
+	RequestId      *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	BackendServers *RemoveVServerGroupBackendServersResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
 }
 
 func (s RemoveVServerGroupBackendServersResponseBody) String() string {
@@ -10827,17 +11473,13 @@ func (s *RemoveVServerGroupBackendServersResponseBody) SetRequestId(v string) *R
 	return s
 }
 
-func (s *RemoveVServerGroupBackendServersResponseBody) SetBackendServers(v []*RemoveVServerGroupBackendServersResponseBodyBackendServers) *RemoveVServerGroupBackendServersResponseBody {
+func (s *RemoveVServerGroupBackendServersResponseBody) SetBackendServers(v *RemoveVServerGroupBackendServersResponseBodyBackendServers) *RemoveVServerGroupBackendServersResponseBody {
 	s.BackendServers = v
 	return s
 }
 
 type RemoveVServerGroupBackendServersResponseBodyBackendServers struct {
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Weight      *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Port        *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	ServerId    *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	BackendServer []*RemoveVServerGroupBackendServersResponseBodyBackendServersBackendServer `json:"BackendServer,omitempty" xml:"BackendServer,omitempty" type:"Repeated"`
 }
 
 func (s RemoveVServerGroupBackendServersResponseBodyBackendServers) String() string {
@@ -10848,27 +11490,48 @@ func (s RemoveVServerGroupBackendServersResponseBodyBackendServers) GoString() s
 	return s.String()
 }
 
-func (s *RemoveVServerGroupBackendServersResponseBodyBackendServers) SetType(v string) *RemoveVServerGroupBackendServersResponseBodyBackendServers {
+func (s *RemoveVServerGroupBackendServersResponseBodyBackendServers) SetBackendServer(v []*RemoveVServerGroupBackendServersResponseBodyBackendServersBackendServer) *RemoveVServerGroupBackendServersResponseBodyBackendServers {
+	s.BackendServer = v
+	return s
+}
+
+type RemoveVServerGroupBackendServersResponseBodyBackendServersBackendServer struct {
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Weight      *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Port        *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	ServerId    *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+}
+
+func (s RemoveVServerGroupBackendServersResponseBodyBackendServersBackendServer) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveVServerGroupBackendServersResponseBodyBackendServersBackendServer) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveVServerGroupBackendServersResponseBodyBackendServersBackendServer) SetType(v string) *RemoveVServerGroupBackendServersResponseBodyBackendServersBackendServer {
 	s.Type = &v
 	return s
 }
 
-func (s *RemoveVServerGroupBackendServersResponseBodyBackendServers) SetWeight(v int32) *RemoveVServerGroupBackendServersResponseBodyBackendServers {
+func (s *RemoveVServerGroupBackendServersResponseBodyBackendServersBackendServer) SetWeight(v int32) *RemoveVServerGroupBackendServersResponseBodyBackendServersBackendServer {
 	s.Weight = &v
 	return s
 }
 
-func (s *RemoveVServerGroupBackendServersResponseBodyBackendServers) SetDescription(v string) *RemoveVServerGroupBackendServersResponseBodyBackendServers {
+func (s *RemoveVServerGroupBackendServersResponseBodyBackendServersBackendServer) SetDescription(v string) *RemoveVServerGroupBackendServersResponseBodyBackendServersBackendServer {
 	s.Description = &v
 	return s
 }
 
-func (s *RemoveVServerGroupBackendServersResponseBodyBackendServers) SetPort(v int32) *RemoveVServerGroupBackendServersResponseBodyBackendServers {
+func (s *RemoveVServerGroupBackendServersResponseBodyBackendServersBackendServer) SetPort(v int32) *RemoveVServerGroupBackendServersResponseBodyBackendServersBackendServer {
 	s.Port = &v
 	return s
 }
 
-func (s *RemoveVServerGroupBackendServersResponseBodyBackendServers) SetServerId(v string) *RemoveVServerGroupBackendServersResponseBodyBackendServers {
+func (s *RemoveVServerGroupBackendServersResponseBodyBackendServersBackendServer) SetServerId(v string) *RemoveVServerGroupBackendServersResponseBodyBackendServersBackendServer {
 	s.ServerId = &v
 	return s
 }
@@ -11073,9 +11736,9 @@ func (s *SetBackendServersRequest) SetTags(v string) *SetBackendServersRequest {
 }
 
 type SetBackendServersResponseBody struct {
-	RequestId      *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	LoadBalancerId *string                                        `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	BackendServers []*SetBackendServersResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Repeated"`
+	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	LoadBalancerId *string                                      `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	BackendServers *SetBackendServersResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
 }
 
 func (s SetBackendServersResponseBody) String() string {
@@ -11096,16 +11759,13 @@ func (s *SetBackendServersResponseBody) SetLoadBalancerId(v string) *SetBackendS
 	return s
 }
 
-func (s *SetBackendServersResponseBody) SetBackendServers(v []*SetBackendServersResponseBodyBackendServers) *SetBackendServersResponseBody {
+func (s *SetBackendServersResponseBody) SetBackendServers(v *SetBackendServersResponseBodyBackendServers) *SetBackendServersResponseBody {
 	s.BackendServers = v
 	return s
 }
 
 type SetBackendServersResponseBodyBackendServers struct {
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Weight      *string `json:"Weight,omitempty" xml:"Weight,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ServerId    *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	BackendServer []*SetBackendServersResponseBodyBackendServersBackendServer `json:"BackendServer,omitempty" xml:"BackendServer,omitempty" type:"Repeated"`
 }
 
 func (s SetBackendServersResponseBodyBackendServers) String() string {
@@ -11116,22 +11776,42 @@ func (s SetBackendServersResponseBodyBackendServers) GoString() string {
 	return s.String()
 }
 
-func (s *SetBackendServersResponseBodyBackendServers) SetType(v string) *SetBackendServersResponseBodyBackendServers {
+func (s *SetBackendServersResponseBodyBackendServers) SetBackendServer(v []*SetBackendServersResponseBodyBackendServersBackendServer) *SetBackendServersResponseBodyBackendServers {
+	s.BackendServer = v
+	return s
+}
+
+type SetBackendServersResponseBodyBackendServersBackendServer struct {
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Weight      *string `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ServerId    *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+}
+
+func (s SetBackendServersResponseBodyBackendServersBackendServer) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetBackendServersResponseBodyBackendServersBackendServer) GoString() string {
+	return s.String()
+}
+
+func (s *SetBackendServersResponseBodyBackendServersBackendServer) SetType(v string) *SetBackendServersResponseBodyBackendServersBackendServer {
 	s.Type = &v
 	return s
 }
 
-func (s *SetBackendServersResponseBodyBackendServers) SetWeight(v string) *SetBackendServersResponseBodyBackendServers {
+func (s *SetBackendServersResponseBodyBackendServersBackendServer) SetWeight(v string) *SetBackendServersResponseBodyBackendServersBackendServer {
 	s.Weight = &v
 	return s
 }
 
-func (s *SetBackendServersResponseBodyBackendServers) SetDescription(v string) *SetBackendServersResponseBodyBackendServers {
+func (s *SetBackendServersResponseBodyBackendServersBackendServer) SetDescription(v string) *SetBackendServersResponseBodyBackendServersBackendServer {
 	s.Description = &v
 	return s
 }
 
-func (s *SetBackendServersResponseBodyBackendServers) SetServerId(v string) *SetBackendServersResponseBodyBackendServers {
+func (s *SetBackendServersResponseBodyBackendServersBackendServer) SetServerId(v string) *SetBackendServersResponseBodyBackendServersBackendServer {
 	s.ServerId = &v
 	return s
 }
@@ -13669,10 +14349,10 @@ func (s *SetVServerGroupAttributeRequest) SetBackendServers(v string) *SetVServe
 }
 
 type SetVServerGroupAttributeResponseBody struct {
-	VServerGroupId   *string                                               `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
-	RequestId        *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	VServerGroupName *string                                               `json:"VServerGroupName,omitempty" xml:"VServerGroupName,omitempty"`
-	BackendServers   []*SetVServerGroupAttributeResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Repeated"`
+	VServerGroupId   *string                                             `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
+	RequestId        *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	VServerGroupName *string                                             `json:"VServerGroupName,omitempty" xml:"VServerGroupName,omitempty"`
+	BackendServers   *SetVServerGroupAttributeResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
 }
 
 func (s SetVServerGroupAttributeResponseBody) String() string {
@@ -13698,17 +14378,13 @@ func (s *SetVServerGroupAttributeResponseBody) SetVServerGroupName(v string) *Se
 	return s
 }
 
-func (s *SetVServerGroupAttributeResponseBody) SetBackendServers(v []*SetVServerGroupAttributeResponseBodyBackendServers) *SetVServerGroupAttributeResponseBody {
+func (s *SetVServerGroupAttributeResponseBody) SetBackendServers(v *SetVServerGroupAttributeResponseBodyBackendServers) *SetVServerGroupAttributeResponseBody {
 	s.BackendServers = v
 	return s
 }
 
 type SetVServerGroupAttributeResponseBodyBackendServers struct {
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Weight      *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Port        *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	ServerId    *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	BackendServer []*SetVServerGroupAttributeResponseBodyBackendServersBackendServer `json:"BackendServer,omitempty" xml:"BackendServer,omitempty" type:"Repeated"`
 }
 
 func (s SetVServerGroupAttributeResponseBodyBackendServers) String() string {
@@ -13719,27 +14395,48 @@ func (s SetVServerGroupAttributeResponseBodyBackendServers) GoString() string {
 	return s.String()
 }
 
-func (s *SetVServerGroupAttributeResponseBodyBackendServers) SetType(v string) *SetVServerGroupAttributeResponseBodyBackendServers {
+func (s *SetVServerGroupAttributeResponseBodyBackendServers) SetBackendServer(v []*SetVServerGroupAttributeResponseBodyBackendServersBackendServer) *SetVServerGroupAttributeResponseBodyBackendServers {
+	s.BackendServer = v
+	return s
+}
+
+type SetVServerGroupAttributeResponseBodyBackendServersBackendServer struct {
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Weight      *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Port        *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	ServerId    *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+}
+
+func (s SetVServerGroupAttributeResponseBodyBackendServersBackendServer) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetVServerGroupAttributeResponseBodyBackendServersBackendServer) GoString() string {
+	return s.String()
+}
+
+func (s *SetVServerGroupAttributeResponseBodyBackendServersBackendServer) SetType(v string) *SetVServerGroupAttributeResponseBodyBackendServersBackendServer {
 	s.Type = &v
 	return s
 }
 
-func (s *SetVServerGroupAttributeResponseBodyBackendServers) SetWeight(v int32) *SetVServerGroupAttributeResponseBodyBackendServers {
+func (s *SetVServerGroupAttributeResponseBodyBackendServersBackendServer) SetWeight(v int32) *SetVServerGroupAttributeResponseBodyBackendServersBackendServer {
 	s.Weight = &v
 	return s
 }
 
-func (s *SetVServerGroupAttributeResponseBodyBackendServers) SetDescription(v string) *SetVServerGroupAttributeResponseBodyBackendServers {
+func (s *SetVServerGroupAttributeResponseBodyBackendServersBackendServer) SetDescription(v string) *SetVServerGroupAttributeResponseBodyBackendServersBackendServer {
 	s.Description = &v
 	return s
 }
 
-func (s *SetVServerGroupAttributeResponseBodyBackendServers) SetPort(v int32) *SetVServerGroupAttributeResponseBodyBackendServers {
+func (s *SetVServerGroupAttributeResponseBodyBackendServersBackendServer) SetPort(v int32) *SetVServerGroupAttributeResponseBodyBackendServersBackendServer {
 	s.Port = &v
 	return s
 }
 
-func (s *SetVServerGroupAttributeResponseBodyBackendServers) SetServerId(v string) *SetVServerGroupAttributeResponseBodyBackendServers {
+func (s *SetVServerGroupAttributeResponseBodyBackendServersBackendServer) SetServerId(v string) *SetVServerGroupAttributeResponseBodyBackendServersBackendServer {
 	s.ServerId = &v
 	return s
 }
@@ -14495,21 +15192,21 @@ func (s *UploadServerCertificateRequest) SetStandardType(v string) *UploadServer
 }
 
 type UploadServerCertificateResponseBody struct {
-	Fingerprint             *string   `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
-	ExpireTimeStamp         *int64    `json:"ExpireTimeStamp,omitempty" xml:"ExpireTimeStamp,omitempty"`
-	RequestId               *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceGroupId         *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	CreateTime              *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	SubjectAlternativeNames []*string `json:"SubjectAlternativeNames,omitempty" xml:"SubjectAlternativeNames,omitempty" type:"Repeated"`
-	AliCloudCertificateId   *string   `json:"AliCloudCertificateId,omitempty" xml:"AliCloudCertificateId,omitempty"`
-	AliCloudCertificateName *string   `json:"AliCloudCertificateName,omitempty" xml:"AliCloudCertificateName,omitempty"`
-	IsAliCloudCertificate   *int32    `json:"IsAliCloudCertificate,omitempty" xml:"IsAliCloudCertificate,omitempty"`
-	ServerCertificateId     *string   `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
-	ServerCertificateName   *string   `json:"ServerCertificateName,omitempty" xml:"ServerCertificateName,omitempty"`
-	RegionId                *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ExpireTime              *string   `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	CreateTimeStamp         *int64    `json:"CreateTimeStamp,omitempty" xml:"CreateTimeStamp,omitempty"`
-	CommonName              *string   `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	Fingerprint             *string                                                     `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
+	ExpireTimeStamp         *int64                                                      `json:"ExpireTimeStamp,omitempty" xml:"ExpireTimeStamp,omitempty"`
+	RequestId               *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId         *string                                                     `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	CreateTime              *string                                                     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	SubjectAlternativeNames *UploadServerCertificateResponseBodySubjectAlternativeNames `json:"SubjectAlternativeNames,omitempty" xml:"SubjectAlternativeNames,omitempty" type:"Struct"`
+	AliCloudCertificateId   *string                                                     `json:"AliCloudCertificateId,omitempty" xml:"AliCloudCertificateId,omitempty"`
+	AliCloudCertificateName *string                                                     `json:"AliCloudCertificateName,omitempty" xml:"AliCloudCertificateName,omitempty"`
+	IsAliCloudCertificate   *int32                                                      `json:"IsAliCloudCertificate,omitempty" xml:"IsAliCloudCertificate,omitempty"`
+	ServerCertificateId     *string                                                     `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
+	ServerCertificateName   *string                                                     `json:"ServerCertificateName,omitempty" xml:"ServerCertificateName,omitempty"`
+	RegionId                *string                                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ExpireTime              *string                                                     `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	CreateTimeStamp         *int64                                                      `json:"CreateTimeStamp,omitempty" xml:"CreateTimeStamp,omitempty"`
+	CommonName              *string                                                     `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
 }
 
 func (s UploadServerCertificateResponseBody) String() string {
@@ -14545,7 +15242,7 @@ func (s *UploadServerCertificateResponseBody) SetCreateTime(v string) *UploadSer
 	return s
 }
 
-func (s *UploadServerCertificateResponseBody) SetSubjectAlternativeNames(v []*string) *UploadServerCertificateResponseBody {
+func (s *UploadServerCertificateResponseBody) SetSubjectAlternativeNames(v *UploadServerCertificateResponseBodySubjectAlternativeNames) *UploadServerCertificateResponseBody {
 	s.SubjectAlternativeNames = v
 	return s
 }
@@ -14592,6 +15289,23 @@ func (s *UploadServerCertificateResponseBody) SetCreateTimeStamp(v int64) *Uploa
 
 func (s *UploadServerCertificateResponseBody) SetCommonName(v string) *UploadServerCertificateResponseBody {
 	s.CommonName = &v
+	return s
+}
+
+type UploadServerCertificateResponseBodySubjectAlternativeNames struct {
+	SubjectAlternativeName []*string `json:"SubjectAlternativeName,omitempty" xml:"SubjectAlternativeName,omitempty" type:"Repeated"`
+}
+
+func (s UploadServerCertificateResponseBodySubjectAlternativeNames) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadServerCertificateResponseBodySubjectAlternativeNames) GoString() string {
+	return s.String()
+}
+
+func (s *UploadServerCertificateResponseBodySubjectAlternativeNames) SetSubjectAlternativeName(v []*string) *UploadServerCertificateResponseBodySubjectAlternativeNames {
+	s.SubjectAlternativeName = v
 	return s
 }
 
