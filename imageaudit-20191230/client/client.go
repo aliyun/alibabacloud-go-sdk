@@ -1,211 +1,19 @@
 // This file is auto-generated, don't edit it. Thanks.
+/**
+ *
+ */
 package client
 
 import (
+	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
-	rpc "github.com/alibabacloud-go/tea-rpc/client"
 	util "github.com/alibabacloud-go/tea-utils/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
-type ScanTextRequest struct {
-	Tasks  []*ScanTextRequestTasks  `json:"Tasks,omitempty" xml:"Tasks,omitempty" require:"true" type:"Repeated"`
-	Labels []*ScanTextRequestLabels `json:"Labels,omitempty" xml:"Labels,omitempty" require:"true" type:"Repeated"`
-}
-
-func (s ScanTextRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ScanTextRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ScanTextRequest) SetTasks(v []*ScanTextRequestTasks) *ScanTextRequest {
-	s.Tasks = v
-	return s
-}
-
-func (s *ScanTextRequest) SetLabels(v []*ScanTextRequestLabels) *ScanTextRequest {
-	s.Labels = v
-	return s
-}
-
-type ScanTextRequestTasks struct {
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty" require:"true"`
-}
-
-func (s ScanTextRequestTasks) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ScanTextRequestTasks) GoString() string {
-	return s.String()
-}
-
-func (s *ScanTextRequestTasks) SetContent(v string) *ScanTextRequestTasks {
-	s.Content = &v
-	return s
-}
-
-type ScanTextRequestLabels struct {
-	Label *string `json:"Label,omitempty" xml:"Label,omitempty" require:"true"`
-}
-
-func (s ScanTextRequestLabels) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ScanTextRequestLabels) GoString() string {
-	return s.String()
-}
-
-func (s *ScanTextRequestLabels) SetLabel(v string) *ScanTextRequestLabels {
-	s.Label = &v
-	return s
-}
-
-type ScanTextResponse struct {
-	RequestId *string               `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
-	Data      *ScanTextResponseData `json:"Data,omitempty" xml:"Data,omitempty" require:"true" type:"Struct"`
-}
-
-func (s ScanTextResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ScanTextResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ScanTextResponse) SetRequestId(v string) *ScanTextResponse {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ScanTextResponse) SetData(v *ScanTextResponseData) *ScanTextResponse {
-	s.Data = v
-	return s
-}
-
-type ScanTextResponseData struct {
-	Elements []*ScanTextResponseDataElements `json:"Elements,omitempty" xml:"Elements,omitempty" require:"true" type:"Repeated"`
-}
-
-func (s ScanTextResponseData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ScanTextResponseData) GoString() string {
-	return s.String()
-}
-
-func (s *ScanTextResponseData) SetElements(v []*ScanTextResponseDataElements) *ScanTextResponseData {
-	s.Elements = v
-	return s
-}
-
-type ScanTextResponseDataElements struct {
-	TaskId  *string                                `json:"TaskId,omitempty" xml:"TaskId,omitempty" require:"true"`
-	Results []*ScanTextResponseDataElementsResults `json:"Results,omitempty" xml:"Results,omitempty" require:"true" type:"Repeated"`
-}
-
-func (s ScanTextResponseDataElements) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ScanTextResponseDataElements) GoString() string {
-	return s.String()
-}
-
-func (s *ScanTextResponseDataElements) SetTaskId(v string) *ScanTextResponseDataElements {
-	s.TaskId = &v
-	return s
-}
-
-func (s *ScanTextResponseDataElements) SetResults(v []*ScanTextResponseDataElementsResults) *ScanTextResponseDataElements {
-	s.Results = v
-	return s
-}
-
-type ScanTextResponseDataElementsResults struct {
-	Label      *string                                       `json:"Label,omitempty" xml:"Label,omitempty" require:"true"`
-	Suggestion *string                                       `json:"Suggestion,omitempty" xml:"Suggestion,omitempty" require:"true"`
-	Rate       *float32                                      `json:"Rate,omitempty" xml:"Rate,omitempty" require:"true"`
-	Details    []*ScanTextResponseDataElementsResultsDetails `json:"Details,omitempty" xml:"Details,omitempty" require:"true" type:"Repeated"`
-}
-
-func (s ScanTextResponseDataElementsResults) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ScanTextResponseDataElementsResults) GoString() string {
-	return s.String()
-}
-
-func (s *ScanTextResponseDataElementsResults) SetLabel(v string) *ScanTextResponseDataElementsResults {
-	s.Label = &v
-	return s
-}
-
-func (s *ScanTextResponseDataElementsResults) SetSuggestion(v string) *ScanTextResponseDataElementsResults {
-	s.Suggestion = &v
-	return s
-}
-
-func (s *ScanTextResponseDataElementsResults) SetRate(v float32) *ScanTextResponseDataElementsResults {
-	s.Rate = &v
-	return s
-}
-
-func (s *ScanTextResponseDataElementsResults) SetDetails(v []*ScanTextResponseDataElementsResultsDetails) *ScanTextResponseDataElementsResults {
-	s.Details = v
-	return s
-}
-
-type ScanTextResponseDataElementsResultsDetails struct {
-	Label    *string                                               `json:"Label,omitempty" xml:"Label,omitempty" require:"true"`
-	Contexts []*ScanTextResponseDataElementsResultsDetailsContexts `json:"Contexts,omitempty" xml:"Contexts,omitempty" require:"true" type:"Repeated"`
-}
-
-func (s ScanTextResponseDataElementsResultsDetails) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ScanTextResponseDataElementsResultsDetails) GoString() string {
-	return s.String()
-}
-
-func (s *ScanTextResponseDataElementsResultsDetails) SetLabel(v string) *ScanTextResponseDataElementsResultsDetails {
-	s.Label = &v
-	return s
-}
-
-func (s *ScanTextResponseDataElementsResultsDetails) SetContexts(v []*ScanTextResponseDataElementsResultsDetailsContexts) *ScanTextResponseDataElementsResultsDetails {
-	s.Contexts = v
-	return s
-}
-
-type ScanTextResponseDataElementsResultsDetailsContexts struct {
-	Context *string `json:"Context,omitempty" xml:"Context,omitempty" require:"true"`
-}
-
-func (s ScanTextResponseDataElementsResultsDetailsContexts) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ScanTextResponseDataElementsResultsDetailsContexts) GoString() string {
-	return s.String()
-}
-
-func (s *ScanTextResponseDataElementsResultsDetailsContexts) SetContext(v string) *ScanTextResponseDataElementsResultsDetailsContexts {
-	s.Context = &v
-	return s
-}
-
 type ScanImageRequest struct {
-	Task  []*ScanImageRequestTask `json:"Task,omitempty" xml:"Task,omitempty" require:"true" type:"Repeated"`
-	Scene []*string               `json:"Scene,omitempty" xml:"Scene,omitempty" require:"true" type:"Repeated"`
+	Task  []*ScanImageRequestTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Repeated"`
+	Scene []*string               `json:"Scene,omitempty" xml:"Scene,omitempty" type:"Repeated"`
 }
 
 func (s ScanImageRequest) String() string {
@@ -227,11 +35,11 @@ func (s *ScanImageRequest) SetScene(v []*string) *ScanImageRequest {
 }
 
 type ScanImageRequestTask struct {
-	DataId               *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	ImageURL             *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty" require:"true"`
 	ImageTimeMillisecond *int64  `json:"ImageTimeMillisecond,omitempty" xml:"ImageTimeMillisecond,omitempty"`
-	Interval             *int    `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	MaxFrames            *int    `json:"MaxFrames,omitempty" xml:"MaxFrames,omitempty"`
+	Interval             *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	ImageURL             *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	MaxFrames            *int32  `json:"MaxFrames,omitempty" xml:"MaxFrames,omitempty"`
+	DataId               *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
 }
 
 func (s ScanImageRequestTask) String() string {
@@ -242,8 +50,13 @@ func (s ScanImageRequestTask) GoString() string {
 	return s.String()
 }
 
-func (s *ScanImageRequestTask) SetDataId(v string) *ScanImageRequestTask {
-	s.DataId = &v
+func (s *ScanImageRequestTask) SetImageTimeMillisecond(v int64) *ScanImageRequestTask {
+	s.ImageTimeMillisecond = &v
+	return s
+}
+
+func (s *ScanImageRequestTask) SetInterval(v int32) *ScanImageRequestTask {
+	s.Interval = &v
 	return s
 }
 
@@ -252,24 +65,357 @@ func (s *ScanImageRequestTask) SetImageURL(v string) *ScanImageRequestTask {
 	return s
 }
 
-func (s *ScanImageRequestTask) SetImageTimeMillisecond(v int64) *ScanImageRequestTask {
-	s.ImageTimeMillisecond = &v
-	return s
-}
-
-func (s *ScanImageRequestTask) SetInterval(v int) *ScanImageRequestTask {
-	s.Interval = &v
-	return s
-}
-
-func (s *ScanImageRequestTask) SetMaxFrames(v int) *ScanImageRequestTask {
+func (s *ScanImageRequestTask) SetMaxFrames(v int32) *ScanImageRequestTask {
 	s.MaxFrames = &v
 	return s
 }
 
+func (s *ScanImageRequestTask) SetDataId(v string) *ScanImageRequestTask {
+	s.DataId = &v
+	return s
+}
+
+type ScanImageResponseBody struct {
+	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *ScanImageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s ScanImageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScanImageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ScanImageResponseBody) SetRequestId(v string) *ScanImageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ScanImageResponseBody) SetData(v *ScanImageResponseBodyData) *ScanImageResponseBody {
+	s.Data = v
+	return s
+}
+
+type ScanImageResponseBodyData struct {
+	Results []*ScanImageResponseBodyDataResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+}
+
+func (s ScanImageResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScanImageResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ScanImageResponseBodyData) SetResults(v []*ScanImageResponseBodyDataResults) *ScanImageResponseBodyData {
+	s.Results = v
+	return s
+}
+
+type ScanImageResponseBodyDataResults struct {
+	ImageURL   *string                                       `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	DataId     *string                                       `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	SubResults []*ScanImageResponseBodyDataResultsSubResults `json:"SubResults,omitempty" xml:"SubResults,omitempty" type:"Repeated"`
+	TaskId     *string                                       `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s ScanImageResponseBodyDataResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScanImageResponseBodyDataResults) GoString() string {
+	return s.String()
+}
+
+func (s *ScanImageResponseBodyDataResults) SetImageURL(v string) *ScanImageResponseBodyDataResults {
+	s.ImageURL = &v
+	return s
+}
+
+func (s *ScanImageResponseBodyDataResults) SetDataId(v string) *ScanImageResponseBodyDataResults {
+	s.DataId = &v
+	return s
+}
+
+func (s *ScanImageResponseBodyDataResults) SetSubResults(v []*ScanImageResponseBodyDataResultsSubResults) *ScanImageResponseBodyDataResults {
+	s.SubResults = v
+	return s
+}
+
+func (s *ScanImageResponseBodyDataResults) SetTaskId(v string) *ScanImageResponseBodyDataResults {
+	s.TaskId = &v
+	return s
+}
+
+type ScanImageResponseBodyDataResultsSubResults struct {
+	SfaceDataList       []*ScanImageResponseBodyDataResultsSubResultsSfaceDataList       `json:"SfaceDataList,omitempty" xml:"SfaceDataList,omitempty" type:"Repeated"`
+	HintWordsInfoList   []*ScanImageResponseBodyDataResultsSubResultsHintWordsInfoList   `json:"HintWordsInfoList,omitempty" xml:"HintWordsInfoList,omitempty" type:"Repeated"`
+	Suggestion          *string                                                          `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+	ProgramCodeDataList []*ScanImageResponseBodyDataResultsSubResultsProgramCodeDataList `json:"ProgramCodeDataList,omitempty" xml:"ProgramCodeDataList,omitempty" type:"Repeated"`
+	OCRDataList         []*string                                                        `json:"OCRDataList,omitempty" xml:"OCRDataList,omitempty" type:"Repeated"`
+	Frames              []*ScanImageResponseBodyDataResultsSubResultsFrames              `json:"Frames,omitempty" xml:"Frames,omitempty" type:"Repeated"`
+	LogoDataList        []*ScanImageResponseBodyDataResultsSubResultsLogoDataList        `json:"LogoDataList,omitempty" xml:"LogoDataList,omitempty" type:"Repeated"`
+	Label               *string                                                          `json:"Label,omitempty" xml:"Label,omitempty"`
+	Scene               *string                                                          `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	Rate                *float32                                                         `json:"Rate,omitempty" xml:"Rate,omitempty"`
+}
+
+func (s ScanImageResponseBodyDataResultsSubResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScanImageResponseBodyDataResultsSubResults) GoString() string {
+	return s.String()
+}
+
+func (s *ScanImageResponseBodyDataResultsSubResults) SetSfaceDataList(v []*ScanImageResponseBodyDataResultsSubResultsSfaceDataList) *ScanImageResponseBodyDataResultsSubResults {
+	s.SfaceDataList = v
+	return s
+}
+
+func (s *ScanImageResponseBodyDataResultsSubResults) SetHintWordsInfoList(v []*ScanImageResponseBodyDataResultsSubResultsHintWordsInfoList) *ScanImageResponseBodyDataResultsSubResults {
+	s.HintWordsInfoList = v
+	return s
+}
+
+func (s *ScanImageResponseBodyDataResultsSubResults) SetSuggestion(v string) *ScanImageResponseBodyDataResultsSubResults {
+	s.Suggestion = &v
+	return s
+}
+
+func (s *ScanImageResponseBodyDataResultsSubResults) SetProgramCodeDataList(v []*ScanImageResponseBodyDataResultsSubResultsProgramCodeDataList) *ScanImageResponseBodyDataResultsSubResults {
+	s.ProgramCodeDataList = v
+	return s
+}
+
+func (s *ScanImageResponseBodyDataResultsSubResults) SetOCRDataList(v []*string) *ScanImageResponseBodyDataResultsSubResults {
+	s.OCRDataList = v
+	return s
+}
+
+func (s *ScanImageResponseBodyDataResultsSubResults) SetFrames(v []*ScanImageResponseBodyDataResultsSubResultsFrames) *ScanImageResponseBodyDataResultsSubResults {
+	s.Frames = v
+	return s
+}
+
+func (s *ScanImageResponseBodyDataResultsSubResults) SetLogoDataList(v []*ScanImageResponseBodyDataResultsSubResultsLogoDataList) *ScanImageResponseBodyDataResultsSubResults {
+	s.LogoDataList = v
+	return s
+}
+
+func (s *ScanImageResponseBodyDataResultsSubResults) SetLabel(v string) *ScanImageResponseBodyDataResultsSubResults {
+	s.Label = &v
+	return s
+}
+
+func (s *ScanImageResponseBodyDataResultsSubResults) SetScene(v string) *ScanImageResponseBodyDataResultsSubResults {
+	s.Scene = &v
+	return s
+}
+
+func (s *ScanImageResponseBodyDataResultsSubResults) SetRate(v float32) *ScanImageResponseBodyDataResultsSubResults {
+	s.Rate = &v
+	return s
+}
+
+type ScanImageResponseBodyDataResultsSubResultsSfaceDataList struct {
+	Width  *float32                                                        `json:"Width,omitempty" xml:"Width,omitempty"`
+	Faces  []*ScanImageResponseBodyDataResultsSubResultsSfaceDataListFaces `json:"Faces,omitempty" xml:"Faces,omitempty" type:"Repeated"`
+	Height *float32                                                        `json:"Height,omitempty" xml:"Height,omitempty"`
+	Y      *float32                                                        `json:"Y,omitempty" xml:"Y,omitempty"`
+	X      *float32                                                        `json:"X,omitempty" xml:"X,omitempty"`
+}
+
+func (s ScanImageResponseBodyDataResultsSubResultsSfaceDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScanImageResponseBodyDataResultsSubResultsSfaceDataList) GoString() string {
+	return s.String()
+}
+
+func (s *ScanImageResponseBodyDataResultsSubResultsSfaceDataList) SetWidth(v float32) *ScanImageResponseBodyDataResultsSubResultsSfaceDataList {
+	s.Width = &v
+	return s
+}
+
+func (s *ScanImageResponseBodyDataResultsSubResultsSfaceDataList) SetFaces(v []*ScanImageResponseBodyDataResultsSubResultsSfaceDataListFaces) *ScanImageResponseBodyDataResultsSubResultsSfaceDataList {
+	s.Faces = v
+	return s
+}
+
+func (s *ScanImageResponseBodyDataResultsSubResultsSfaceDataList) SetHeight(v float32) *ScanImageResponseBodyDataResultsSubResultsSfaceDataList {
+	s.Height = &v
+	return s
+}
+
+func (s *ScanImageResponseBodyDataResultsSubResultsSfaceDataList) SetY(v float32) *ScanImageResponseBodyDataResultsSubResultsSfaceDataList {
+	s.Y = &v
+	return s
+}
+
+func (s *ScanImageResponseBodyDataResultsSubResultsSfaceDataList) SetX(v float32) *ScanImageResponseBodyDataResultsSubResultsSfaceDataList {
+	s.X = &v
+	return s
+}
+
+type ScanImageResponseBodyDataResultsSubResultsSfaceDataListFaces struct {
+	Name *string  `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id   *string  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Rate *float32 `json:"Rate,omitempty" xml:"Rate,omitempty"`
+}
+
+func (s ScanImageResponseBodyDataResultsSubResultsSfaceDataListFaces) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScanImageResponseBodyDataResultsSubResultsSfaceDataListFaces) GoString() string {
+	return s.String()
+}
+
+func (s *ScanImageResponseBodyDataResultsSubResultsSfaceDataListFaces) SetName(v string) *ScanImageResponseBodyDataResultsSubResultsSfaceDataListFaces {
+	s.Name = &v
+	return s
+}
+
+func (s *ScanImageResponseBodyDataResultsSubResultsSfaceDataListFaces) SetId(v string) *ScanImageResponseBodyDataResultsSubResultsSfaceDataListFaces {
+	s.Id = &v
+	return s
+}
+
+func (s *ScanImageResponseBodyDataResultsSubResultsSfaceDataListFaces) SetRate(v float32) *ScanImageResponseBodyDataResultsSubResultsSfaceDataListFaces {
+	s.Rate = &v
+	return s
+}
+
+type ScanImageResponseBodyDataResultsSubResultsHintWordsInfoList struct {
+	Context *string `json:"Context,omitempty" xml:"Context,omitempty"`
+}
+
+func (s ScanImageResponseBodyDataResultsSubResultsHintWordsInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScanImageResponseBodyDataResultsSubResultsHintWordsInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *ScanImageResponseBodyDataResultsSubResultsHintWordsInfoList) SetContext(v string) *ScanImageResponseBodyDataResultsSubResultsHintWordsInfoList {
+	s.Context = &v
+	return s
+}
+
+type ScanImageResponseBodyDataResultsSubResultsProgramCodeDataList struct {
+	Width  *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	Y      *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	X      *float32 `json:"X,omitempty" xml:"X,omitempty"`
+}
+
+func (s ScanImageResponseBodyDataResultsSubResultsProgramCodeDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScanImageResponseBodyDataResultsSubResultsProgramCodeDataList) GoString() string {
+	return s.String()
+}
+
+func (s *ScanImageResponseBodyDataResultsSubResultsProgramCodeDataList) SetWidth(v float32) *ScanImageResponseBodyDataResultsSubResultsProgramCodeDataList {
+	s.Width = &v
+	return s
+}
+
+func (s *ScanImageResponseBodyDataResultsSubResultsProgramCodeDataList) SetHeight(v float32) *ScanImageResponseBodyDataResultsSubResultsProgramCodeDataList {
+	s.Height = &v
+	return s
+}
+
+func (s *ScanImageResponseBodyDataResultsSubResultsProgramCodeDataList) SetY(v float32) *ScanImageResponseBodyDataResultsSubResultsProgramCodeDataList {
+	s.Y = &v
+	return s
+}
+
+func (s *ScanImageResponseBodyDataResultsSubResultsProgramCodeDataList) SetX(v float32) *ScanImageResponseBodyDataResultsSubResultsProgramCodeDataList {
+	s.X = &v
+	return s
+}
+
+type ScanImageResponseBodyDataResultsSubResultsFrames struct {
+	URL  *string  `json:"URL,omitempty" xml:"URL,omitempty"`
+	Rate *float32 `json:"Rate,omitempty" xml:"Rate,omitempty"`
+}
+
+func (s ScanImageResponseBodyDataResultsSubResultsFrames) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScanImageResponseBodyDataResultsSubResultsFrames) GoString() string {
+	return s.String()
+}
+
+func (s *ScanImageResponseBodyDataResultsSubResultsFrames) SetURL(v string) *ScanImageResponseBodyDataResultsSubResultsFrames {
+	s.URL = &v
+	return s
+}
+
+func (s *ScanImageResponseBodyDataResultsSubResultsFrames) SetRate(v float32) *ScanImageResponseBodyDataResultsSubResultsFrames {
+	s.Rate = &v
+	return s
+}
+
+type ScanImageResponseBodyDataResultsSubResultsLogoDataList struct {
+	Type   *string  `json:"Type,omitempty" xml:"Type,omitempty"`
+	Width  *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	Y      *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	Name   *string  `json:"Name,omitempty" xml:"Name,omitempty"`
+	X      *float32 `json:"X,omitempty" xml:"X,omitempty"`
+}
+
+func (s ScanImageResponseBodyDataResultsSubResultsLogoDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScanImageResponseBodyDataResultsSubResultsLogoDataList) GoString() string {
+	return s.String()
+}
+
+func (s *ScanImageResponseBodyDataResultsSubResultsLogoDataList) SetType(v string) *ScanImageResponseBodyDataResultsSubResultsLogoDataList {
+	s.Type = &v
+	return s
+}
+
+func (s *ScanImageResponseBodyDataResultsSubResultsLogoDataList) SetWidth(v float32) *ScanImageResponseBodyDataResultsSubResultsLogoDataList {
+	s.Width = &v
+	return s
+}
+
+func (s *ScanImageResponseBodyDataResultsSubResultsLogoDataList) SetHeight(v float32) *ScanImageResponseBodyDataResultsSubResultsLogoDataList {
+	s.Height = &v
+	return s
+}
+
+func (s *ScanImageResponseBodyDataResultsSubResultsLogoDataList) SetY(v float32) *ScanImageResponseBodyDataResultsSubResultsLogoDataList {
+	s.Y = &v
+	return s
+}
+
+func (s *ScanImageResponseBodyDataResultsSubResultsLogoDataList) SetName(v string) *ScanImageResponseBodyDataResultsSubResultsLogoDataList {
+	s.Name = &v
+	return s
+}
+
+func (s *ScanImageResponseBodyDataResultsSubResultsLogoDataList) SetX(v float32) *ScanImageResponseBodyDataResultsSubResultsLogoDataList {
+	s.X = &v
+	return s
+}
+
 type ScanImageResponse struct {
-	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
-	Data      *ScanImageResponseData `json:"Data,omitempty" xml:"Data,omitempty" require:"true" type:"Struct"`
+	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ScanImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ScanImageResponse) String() string {
@@ -280,342 +426,245 @@ func (s ScanImageResponse) GoString() string {
 	return s.String()
 }
 
-func (s *ScanImageResponse) SetRequestId(v string) *ScanImageResponse {
-	s.RequestId = &v
+func (s *ScanImageResponse) SetHeaders(v map[string]*string) *ScanImageResponse {
+	s.Headers = v
 	return s
 }
 
-func (s *ScanImageResponse) SetData(v *ScanImageResponseData) *ScanImageResponse {
-	s.Data = v
+func (s *ScanImageResponse) SetBody(v *ScanImageResponseBody) *ScanImageResponse {
+	s.Body = v
 	return s
 }
 
-type ScanImageResponseData struct {
-	Results []*ScanImageResponseDataResults `json:"Results,omitempty" xml:"Results,omitempty" require:"true" type:"Repeated"`
+type ScanTextRequest struct {
+	Tasks  []*ScanTextRequestTasks  `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	Labels []*ScanTextRequestLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 }
 
-func (s ScanImageResponseData) String() string {
+func (s ScanTextRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ScanImageResponseData) GoString() string {
+func (s ScanTextRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ScanImageResponseData) SetResults(v []*ScanImageResponseDataResults) *ScanImageResponseData {
-	s.Results = v
+func (s *ScanTextRequest) SetTasks(v []*ScanTextRequestTasks) *ScanTextRequest {
+	s.Tasks = v
 	return s
 }
 
-type ScanImageResponseDataResults struct {
-	DataId     *string                                   `json:"DataId,omitempty" xml:"DataId,omitempty" require:"true"`
-	TaskId     *string                                   `json:"TaskId,omitempty" xml:"TaskId,omitempty" require:"true"`
-	ImageURL   *string                                   `json:"ImageURL,omitempty" xml:"ImageURL,omitempty" require:"true"`
-	SubResults []*ScanImageResponseDataResultsSubResults `json:"SubResults,omitempty" xml:"SubResults,omitempty" require:"true" type:"Repeated"`
+func (s *ScanTextRequest) SetLabels(v []*ScanTextRequestLabels) *ScanTextRequest {
+	s.Labels = v
+	return s
 }
 
-func (s ScanImageResponseDataResults) String() string {
+type ScanTextRequestTasks struct {
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+}
+
+func (s ScanTextRequestTasks) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ScanImageResponseDataResults) GoString() string {
+func (s ScanTextRequestTasks) GoString() string {
 	return s.String()
 }
 
-func (s *ScanImageResponseDataResults) SetDataId(v string) *ScanImageResponseDataResults {
-	s.DataId = &v
+func (s *ScanTextRequestTasks) SetContent(v string) *ScanTextRequestTasks {
+	s.Content = &v
 	return s
 }
 
-func (s *ScanImageResponseDataResults) SetTaskId(v string) *ScanImageResponseDataResults {
-	s.TaskId = &v
-	return s
+type ScanTextRequestLabels struct {
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 }
 
-func (s *ScanImageResponseDataResults) SetImageURL(v string) *ScanImageResponseDataResults {
-	s.ImageURL = &v
-	return s
-}
-
-func (s *ScanImageResponseDataResults) SetSubResults(v []*ScanImageResponseDataResultsSubResults) *ScanImageResponseDataResults {
-	s.SubResults = v
-	return s
-}
-
-type ScanImageResponseDataResultsSubResults struct {
-	Label               *string                                                      `json:"Label,omitempty" xml:"Label,omitempty" require:"true"`
-	Suggestion          *string                                                      `json:"Suggestion,omitempty" xml:"Suggestion,omitempty" require:"true"`
-	Rate                *float32                                                     `json:"Rate,omitempty" xml:"Rate,omitempty" require:"true"`
-	Scene               *string                                                      `json:"Scene,omitempty" xml:"Scene,omitempty" require:"true"`
-	Frames              []*ScanImageResponseDataResultsSubResultsFrames              `json:"Frames,omitempty" xml:"Frames,omitempty" require:"true" type:"Repeated"`
-	HintWordsInfoList   []*ScanImageResponseDataResultsSubResultsHintWordsInfoList   `json:"HintWordsInfoList,omitempty" xml:"HintWordsInfoList,omitempty" require:"true" type:"Repeated"`
-	ProgramCodeDataList []*ScanImageResponseDataResultsSubResultsProgramCodeDataList `json:"ProgramCodeDataList,omitempty" xml:"ProgramCodeDataList,omitempty" require:"true" type:"Repeated"`
-	LogoDataList        []*ScanImageResponseDataResultsSubResultsLogoDataList        `json:"LogoDataList,omitempty" xml:"LogoDataList,omitempty" require:"true" type:"Repeated"`
-	SfaceDataList       []*ScanImageResponseDataResultsSubResultsSfaceDataList       `json:"SfaceDataList,omitempty" xml:"SfaceDataList,omitempty" require:"true" type:"Repeated"`
-	OCRDataList         []*string                                                    `json:"OCRDataList,omitempty" xml:"OCRDataList,omitempty" require:"true" type:"Repeated"`
-}
-
-func (s ScanImageResponseDataResultsSubResults) String() string {
+func (s ScanTextRequestLabels) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ScanImageResponseDataResultsSubResults) GoString() string {
+func (s ScanTextRequestLabels) GoString() string {
 	return s.String()
 }
 
-func (s *ScanImageResponseDataResultsSubResults) SetLabel(v string) *ScanImageResponseDataResultsSubResults {
+func (s *ScanTextRequestLabels) SetLabel(v string) *ScanTextRequestLabels {
 	s.Label = &v
 	return s
 }
 
-func (s *ScanImageResponseDataResultsSubResults) SetSuggestion(v string) *ScanImageResponseDataResultsSubResults {
+type ScanTextResponseBody struct {
+	RequestId *string                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *ScanTextResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s ScanTextResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScanTextResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ScanTextResponseBody) SetRequestId(v string) *ScanTextResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ScanTextResponseBody) SetData(v *ScanTextResponseBodyData) *ScanTextResponseBody {
+	s.Data = v
+	return s
+}
+
+type ScanTextResponseBodyData struct {
+	Elements []*ScanTextResponseBodyDataElements `json:"Elements,omitempty" xml:"Elements,omitempty" type:"Repeated"`
+}
+
+func (s ScanTextResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScanTextResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ScanTextResponseBodyData) SetElements(v []*ScanTextResponseBodyDataElements) *ScanTextResponseBodyData {
+	s.Elements = v
+	return s
+}
+
+type ScanTextResponseBodyDataElements struct {
+	TaskId  *string                                    `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	Results []*ScanTextResponseBodyDataElementsResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+}
+
+func (s ScanTextResponseBodyDataElements) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScanTextResponseBodyDataElements) GoString() string {
+	return s.String()
+}
+
+func (s *ScanTextResponseBodyDataElements) SetTaskId(v string) *ScanTextResponseBodyDataElements {
+	s.TaskId = &v
+	return s
+}
+
+func (s *ScanTextResponseBodyDataElements) SetResults(v []*ScanTextResponseBodyDataElementsResults) *ScanTextResponseBodyDataElements {
+	s.Results = v
+	return s
+}
+
+type ScanTextResponseBodyDataElementsResults struct {
+	Suggestion *string                                           `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+	Label      *string                                           `json:"Label,omitempty" xml:"Label,omitempty"`
+	Rate       *float32                                          `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	Details    []*ScanTextResponseBodyDataElementsResultsDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
+}
+
+func (s ScanTextResponseBodyDataElementsResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScanTextResponseBodyDataElementsResults) GoString() string {
+	return s.String()
+}
+
+func (s *ScanTextResponseBodyDataElementsResults) SetSuggestion(v string) *ScanTextResponseBodyDataElementsResults {
 	s.Suggestion = &v
 	return s
 }
 
-func (s *ScanImageResponseDataResultsSubResults) SetRate(v float32) *ScanImageResponseDataResultsSubResults {
+func (s *ScanTextResponseBodyDataElementsResults) SetLabel(v string) *ScanTextResponseBodyDataElementsResults {
+	s.Label = &v
+	return s
+}
+
+func (s *ScanTextResponseBodyDataElementsResults) SetRate(v float32) *ScanTextResponseBodyDataElementsResults {
 	s.Rate = &v
 	return s
 }
 
-func (s *ScanImageResponseDataResultsSubResults) SetScene(v string) *ScanImageResponseDataResultsSubResults {
-	s.Scene = &v
+func (s *ScanTextResponseBodyDataElementsResults) SetDetails(v []*ScanTextResponseBodyDataElementsResultsDetails) *ScanTextResponseBodyDataElementsResults {
+	s.Details = v
 	return s
 }
 
-func (s *ScanImageResponseDataResultsSubResults) SetFrames(v []*ScanImageResponseDataResultsSubResultsFrames) *ScanImageResponseDataResultsSubResults {
-	s.Frames = v
-	return s
+type ScanTextResponseBodyDataElementsResultsDetails struct {
+	Label    *string                                                   `json:"Label,omitempty" xml:"Label,omitempty"`
+	Contexts []*ScanTextResponseBodyDataElementsResultsDetailsContexts `json:"Contexts,omitempty" xml:"Contexts,omitempty" type:"Repeated"`
 }
 
-func (s *ScanImageResponseDataResultsSubResults) SetHintWordsInfoList(v []*ScanImageResponseDataResultsSubResultsHintWordsInfoList) *ScanImageResponseDataResultsSubResults {
-	s.HintWordsInfoList = v
-	return s
-}
-
-func (s *ScanImageResponseDataResultsSubResults) SetProgramCodeDataList(v []*ScanImageResponseDataResultsSubResultsProgramCodeDataList) *ScanImageResponseDataResultsSubResults {
-	s.ProgramCodeDataList = v
-	return s
-}
-
-func (s *ScanImageResponseDataResultsSubResults) SetLogoDataList(v []*ScanImageResponseDataResultsSubResultsLogoDataList) *ScanImageResponseDataResultsSubResults {
-	s.LogoDataList = v
-	return s
-}
-
-func (s *ScanImageResponseDataResultsSubResults) SetSfaceDataList(v []*ScanImageResponseDataResultsSubResultsSfaceDataList) *ScanImageResponseDataResultsSubResults {
-	s.SfaceDataList = v
-	return s
-}
-
-func (s *ScanImageResponseDataResultsSubResults) SetOCRDataList(v []*string) *ScanImageResponseDataResultsSubResults {
-	s.OCRDataList = v
-	return s
-}
-
-type ScanImageResponseDataResultsSubResultsFrames struct {
-	Rate *float32 `json:"Rate,omitempty" xml:"Rate,omitempty" require:"true"`
-	URL  *string  `json:"URL,omitempty" xml:"URL,omitempty" require:"true"`
-}
-
-func (s ScanImageResponseDataResultsSubResultsFrames) String() string {
+func (s ScanTextResponseBodyDataElementsResultsDetails) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ScanImageResponseDataResultsSubResultsFrames) GoString() string {
+func (s ScanTextResponseBodyDataElementsResultsDetails) GoString() string {
 	return s.String()
 }
 
-func (s *ScanImageResponseDataResultsSubResultsFrames) SetRate(v float32) *ScanImageResponseDataResultsSubResultsFrames {
-	s.Rate = &v
+func (s *ScanTextResponseBodyDataElementsResultsDetails) SetLabel(v string) *ScanTextResponseBodyDataElementsResultsDetails {
+	s.Label = &v
 	return s
 }
 
-func (s *ScanImageResponseDataResultsSubResultsFrames) SetURL(v string) *ScanImageResponseDataResultsSubResultsFrames {
-	s.URL = &v
+func (s *ScanTextResponseBodyDataElementsResultsDetails) SetContexts(v []*ScanTextResponseBodyDataElementsResultsDetailsContexts) *ScanTextResponseBodyDataElementsResultsDetails {
+	s.Contexts = v
 	return s
 }
 
-type ScanImageResponseDataResultsSubResultsHintWordsInfoList struct {
-	Context *string `json:"Context,omitempty" xml:"Context,omitempty" require:"true"`
+type ScanTextResponseBodyDataElementsResultsDetailsContexts struct {
+	Context *string `json:"Context,omitempty" xml:"Context,omitempty"`
 }
 
-func (s ScanImageResponseDataResultsSubResultsHintWordsInfoList) String() string {
+func (s ScanTextResponseBodyDataElementsResultsDetailsContexts) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ScanImageResponseDataResultsSubResultsHintWordsInfoList) GoString() string {
+func (s ScanTextResponseBodyDataElementsResultsDetailsContexts) GoString() string {
 	return s.String()
 }
 
-func (s *ScanImageResponseDataResultsSubResultsHintWordsInfoList) SetContext(v string) *ScanImageResponseDataResultsSubResultsHintWordsInfoList {
+func (s *ScanTextResponseBodyDataElementsResultsDetailsContexts) SetContext(v string) *ScanTextResponseBodyDataElementsResultsDetailsContexts {
 	s.Context = &v
 	return s
 }
 
-type ScanImageResponseDataResultsSubResultsProgramCodeDataList struct {
-	X      *float32 `json:"X,omitempty" xml:"X,omitempty" require:"true"`
-	Y      *float32 `json:"Y,omitempty" xml:"Y,omitempty" require:"true"`
-	Width  *float32 `json:"Width,omitempty" xml:"Width,omitempty" require:"true"`
-	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty" require:"true"`
+type ScanTextResponse struct {
+	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ScanTextResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s ScanImageResponseDataResultsSubResultsProgramCodeDataList) String() string {
+func (s ScanTextResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ScanImageResponseDataResultsSubResultsProgramCodeDataList) GoString() string {
+func (s ScanTextResponse) GoString() string {
 	return s.String()
 }
 
-func (s *ScanImageResponseDataResultsSubResultsProgramCodeDataList) SetX(v float32) *ScanImageResponseDataResultsSubResultsProgramCodeDataList {
-	s.X = &v
+func (s *ScanTextResponse) SetHeaders(v map[string]*string) *ScanTextResponse {
+	s.Headers = v
 	return s
 }
 
-func (s *ScanImageResponseDataResultsSubResultsProgramCodeDataList) SetY(v float32) *ScanImageResponseDataResultsSubResultsProgramCodeDataList {
-	s.Y = &v
-	return s
-}
-
-func (s *ScanImageResponseDataResultsSubResultsProgramCodeDataList) SetWidth(v float32) *ScanImageResponseDataResultsSubResultsProgramCodeDataList {
-	s.Width = &v
-	return s
-}
-
-func (s *ScanImageResponseDataResultsSubResultsProgramCodeDataList) SetHeight(v float32) *ScanImageResponseDataResultsSubResultsProgramCodeDataList {
-	s.Height = &v
-	return s
-}
-
-type ScanImageResponseDataResultsSubResultsLogoDataList struct {
-	Type   *string  `json:"Type,omitempty" xml:"Type,omitempty" require:"true"`
-	Name   *string  `json:"Name,omitempty" xml:"Name,omitempty" require:"true"`
-	X      *float32 `json:"X,omitempty" xml:"X,omitempty" require:"true"`
-	Y      *float32 `json:"Y,omitempty" xml:"Y,omitempty" require:"true"`
-	Width  *float32 `json:"Width,omitempty" xml:"Width,omitempty" require:"true"`
-	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty" require:"true"`
-}
-
-func (s ScanImageResponseDataResultsSubResultsLogoDataList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ScanImageResponseDataResultsSubResultsLogoDataList) GoString() string {
-	return s.String()
-}
-
-func (s *ScanImageResponseDataResultsSubResultsLogoDataList) SetType(v string) *ScanImageResponseDataResultsSubResultsLogoDataList {
-	s.Type = &v
-	return s
-}
-
-func (s *ScanImageResponseDataResultsSubResultsLogoDataList) SetName(v string) *ScanImageResponseDataResultsSubResultsLogoDataList {
-	s.Name = &v
-	return s
-}
-
-func (s *ScanImageResponseDataResultsSubResultsLogoDataList) SetX(v float32) *ScanImageResponseDataResultsSubResultsLogoDataList {
-	s.X = &v
-	return s
-}
-
-func (s *ScanImageResponseDataResultsSubResultsLogoDataList) SetY(v float32) *ScanImageResponseDataResultsSubResultsLogoDataList {
-	s.Y = &v
-	return s
-}
-
-func (s *ScanImageResponseDataResultsSubResultsLogoDataList) SetWidth(v float32) *ScanImageResponseDataResultsSubResultsLogoDataList {
-	s.Width = &v
-	return s
-}
-
-func (s *ScanImageResponseDataResultsSubResultsLogoDataList) SetHeight(v float32) *ScanImageResponseDataResultsSubResultsLogoDataList {
-	s.Height = &v
-	return s
-}
-
-type ScanImageResponseDataResultsSubResultsSfaceDataList struct {
-	X      *float32                                                    `json:"X,omitempty" xml:"X,omitempty" require:"true"`
-	Y      *float32                                                    `json:"Y,omitempty" xml:"Y,omitempty" require:"true"`
-	Width  *float32                                                    `json:"Width,omitempty" xml:"Width,omitempty" require:"true"`
-	Height *float32                                                    `json:"Height,omitempty" xml:"Height,omitempty" require:"true"`
-	Faces  []*ScanImageResponseDataResultsSubResultsSfaceDataListFaces `json:"Faces,omitempty" xml:"Faces,omitempty" require:"true" type:"Repeated"`
-}
-
-func (s ScanImageResponseDataResultsSubResultsSfaceDataList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ScanImageResponseDataResultsSubResultsSfaceDataList) GoString() string {
-	return s.String()
-}
-
-func (s *ScanImageResponseDataResultsSubResultsSfaceDataList) SetX(v float32) *ScanImageResponseDataResultsSubResultsSfaceDataList {
-	s.X = &v
-	return s
-}
-
-func (s *ScanImageResponseDataResultsSubResultsSfaceDataList) SetY(v float32) *ScanImageResponseDataResultsSubResultsSfaceDataList {
-	s.Y = &v
-	return s
-}
-
-func (s *ScanImageResponseDataResultsSubResultsSfaceDataList) SetWidth(v float32) *ScanImageResponseDataResultsSubResultsSfaceDataList {
-	s.Width = &v
-	return s
-}
-
-func (s *ScanImageResponseDataResultsSubResultsSfaceDataList) SetHeight(v float32) *ScanImageResponseDataResultsSubResultsSfaceDataList {
-	s.Height = &v
-	return s
-}
-
-func (s *ScanImageResponseDataResultsSubResultsSfaceDataList) SetFaces(v []*ScanImageResponseDataResultsSubResultsSfaceDataListFaces) *ScanImageResponseDataResultsSubResultsSfaceDataList {
-	s.Faces = v
-	return s
-}
-
-type ScanImageResponseDataResultsSubResultsSfaceDataListFaces struct {
-	Name *string  `json:"Name,omitempty" xml:"Name,omitempty" require:"true"`
-	Rate *float32 `json:"Rate,omitempty" xml:"Rate,omitempty" require:"true"`
-	Id   *string  `json:"Id,omitempty" xml:"Id,omitempty" require:"true"`
-}
-
-func (s ScanImageResponseDataResultsSubResultsSfaceDataListFaces) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ScanImageResponseDataResultsSubResultsSfaceDataListFaces) GoString() string {
-	return s.String()
-}
-
-func (s *ScanImageResponseDataResultsSubResultsSfaceDataListFaces) SetName(v string) *ScanImageResponseDataResultsSubResultsSfaceDataListFaces {
-	s.Name = &v
-	return s
-}
-
-func (s *ScanImageResponseDataResultsSubResultsSfaceDataListFaces) SetRate(v float32) *ScanImageResponseDataResultsSubResultsSfaceDataListFaces {
-	s.Rate = &v
-	return s
-}
-
-func (s *ScanImageResponseDataResultsSubResultsSfaceDataListFaces) SetId(v string) *ScanImageResponseDataResultsSubResultsSfaceDataListFaces {
-	s.Id = &v
+func (s *ScanTextResponse) SetBody(v *ScanTextResponseBody) *ScanTextResponse {
+	s.Body = v
 	return s
 }
 
 type Client struct {
-	rpc.Client
+	openapi.Client
 }
 
-func NewClient(config *rpc.Config) (*Client, error) {
+func NewClient(config *openapi.Config) (*Client, error) {
 	client := new(Client)
 	err := client.Init(config)
 	return client, err
 }
 
-func (client *Client) Init(config *rpc.Config) (_err error) {
+func (client *Client) Init(config *openapi.Config) (_err error) {
 	_err = client.Client.Init(config)
 	if _err != nil {
 		return _err
@@ -633,24 +682,18 @@ func (client *Client) Init(config *rpc.Config) (_err error) {
 	return nil
 }
 
-func (client *Client) ScanTextWithOptions(request *ScanTextRequest, runtime *util.RuntimeOptions) (_result *ScanTextResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
+func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
+	if !tea.BoolValue(util.Empty(endpoint)) {
+		_result = endpoint
 		return _result, _err
 	}
-	_result = &ScanTextResponse{}
-	_body, _err := client.DoRequest(tea.String("ScanText"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-12-30"), tea.String("AK"), nil, tea.ToMap(request), runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
 
-func (client *Client) ScanText(request *ScanTextRequest) (_result *ScanTextResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ScanTextResponse{}
-	_body, _err := client.ScanTextWithOptions(request, runtime)
+	if !tea.BoolValue(util.IsUnset(endpointMap)) && !tea.BoolValue(util.Empty(endpointMap[tea.StringValue(regionId)])) {
+		_result = endpointMap[tea.StringValue(regionId)]
+		return _result, _err
+	}
+
+	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
 	if _err != nil {
 		return _result, _err
 	}
@@ -663,8 +706,11 @@ func (client *Client) ScanImageWithOptions(request *ScanImageRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
 	_result = &ScanImageResponse{}
-	_body, _err := client.DoRequest(tea.String("ScanImage"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-12-30"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	_body, _err := client.DoRPCRequest(tea.String("ScanImage"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -683,18 +729,27 @@ func (client *Client) ScanImage(request *ScanImageRequest) (_result *ScanImageRe
 	return _result, _err
 }
 
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !tea.BoolValue(util.Empty(endpoint)) {
-		_result = endpoint
+func (client *Client) ScanTextWithOptions(request *ScanTextRequest, runtime *util.RuntimeOptions) (_result *ScanTextResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
 		return _result, _err
 	}
-
-	if !tea.BoolValue(util.IsUnset(endpointMap)) && !tea.BoolValue(util.Empty(endpointMap[tea.StringValue(regionId)])) {
-		_result = endpointMap[tea.StringValue(regionId)]
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ScanTextResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ScanText"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
 
-	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+func (client *Client) ScanText(request *ScanTextRequest) (_result *ScanTextResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ScanTextResponse{}
+	_body, _err := client.ScanTextWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
