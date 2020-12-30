@@ -4718,9 +4718,8 @@ func (s *DeleteRegistryResponse) SetBody(v *DeleteRegistryResponseBody) *DeleteR
 
 type GetPolicyOwnedByApiResponseBody struct {
 	// code
-	Code *int64 `json:"code,omitempty" xml:"code,omitempty"`
-	// data
-	Data map[string]*DataValue `json:"data,omitempty" xml:"data,omitempty"`
+	Code *int64                                 `json:"code,omitempty" xml:"code,omitempty"`
+	Data []*GetPolicyOwnedByApiResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// message
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 }
@@ -4738,13 +4737,30 @@ func (s *GetPolicyOwnedByApiResponseBody) SetCode(v int64) *GetPolicyOwnedByApiR
 	return s
 }
 
-func (s *GetPolicyOwnedByApiResponseBody) SetData(v map[string]*DataValue) *GetPolicyOwnedByApiResponseBody {
+func (s *GetPolicyOwnedByApiResponseBody) SetData(v []*GetPolicyOwnedByApiResponseBodyData) *GetPolicyOwnedByApiResponseBody {
 	s.Data = v
 	return s
 }
 
 func (s *GetPolicyOwnedByApiResponseBody) SetMessage(v string) *GetPolicyOwnedByApiResponseBody {
 	s.Message = &v
+	return s
+}
+
+type GetPolicyOwnedByApiResponseBodyData struct {
+	Scopes map[string][]*DataScopesValue `json:"scopes,omitempty" xml:"scopes,omitempty"`
+}
+
+func (s GetPolicyOwnedByApiResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPolicyOwnedByApiResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetPolicyOwnedByApiResponseBodyData) SetScopes(v map[string][]*DataScopesValue) *GetPolicyOwnedByApiResponseBodyData {
+	s.Scopes = v
 	return s
 }
 
@@ -7234,7 +7250,7 @@ func (s *PullServiceInfoFromRegistryResponse) SetBody(v *PullServiceInfoFromRegi
 	return s
 }
 
-type DataValue struct {
+type DataScopesValue struct {
 	// apiId
 	ApiId *int64 `json:"apiId,omitempty" xml:"apiId,omitempty"`
 	// apiName
@@ -7267,85 +7283,85 @@ type DataValue struct {
 	UpdateDateTime *string `json:"updateDateTime,omitempty" xml:"updateDateTime,omitempty"`
 }
 
-func (s DataValue) String() string {
+func (s DataScopesValue) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DataValue) GoString() string {
+func (s DataScopesValue) GoString() string {
 	return s.String()
 }
 
-func (s *DataValue) SetApiId(v int64) *DataValue {
+func (s *DataScopesValue) SetApiId(v int64) *DataScopesValue {
 	s.ApiId = &v
 	return s
 }
 
-func (s *DataValue) SetApiName(v string) *DataValue {
+func (s *DataScopesValue) SetApiName(v string) *DataScopesValue {
 	s.ApiName = &v
 	return s
 }
 
-func (s *DataValue) SetCreationDateTime(v string) *DataValue {
+func (s *DataScopesValue) SetCreationDateTime(v string) *DataScopesValue {
 	s.CreationDateTime = &v
 	return s
 }
 
-func (s *DataValue) SetDirection(v string) *DataValue {
+func (s *DataScopesValue) SetDirection(v string) *DataScopesValue {
 	s.Direction = &v
 	return s
 }
 
-func (s *DataValue) SetId(v int64) *DataValue {
+func (s *DataScopesValue) SetId(v int64) *DataScopesValue {
 	s.Id = &v
 	return s
 }
 
-func (s *DataValue) SetPolicyAliasName(v string) *DataValue {
+func (s *DataScopesValue) SetPolicyAliasName(v string) *DataScopesValue {
 	s.PolicyAliasName = &v
 	return s
 }
 
-func (s *DataValue) SetPolicyContent(v string) *DataValue {
+func (s *DataScopesValue) SetPolicyContent(v string) *DataScopesValue {
 	s.PolicyContent = &v
 	return s
 }
 
-func (s *DataValue) SetPolicyGroup(v string) *DataValue {
+func (s *DataScopesValue) SetPolicyGroup(v string) *DataScopesValue {
 	s.PolicyGroup = &v
 	return s
 }
 
-func (s *DataValue) SetPolicyId(v string) *DataValue {
+func (s *DataScopesValue) SetPolicyId(v string) *DataScopesValue {
 	s.PolicyId = &v
 	return s
 }
 
-func (s *DataValue) SetPolicyName(v string) *DataValue {
+func (s *DataScopesValue) SetPolicyName(v string) *DataScopesValue {
 	s.PolicyName = &v
 	return s
 }
 
-func (s *DataValue) SetPriority(v int64) *DataValue {
+func (s *DataScopesValue) SetPriority(v int64) *DataScopesValue {
 	s.Priority = &v
 	return s
 }
 
-func (s *DataValue) SetScope(v string) *DataValue {
+func (s *DataScopesValue) SetScope(v string) *DataScopesValue {
 	s.Scope = &v
 	return s
 }
 
-func (s *DataValue) SetStatus(v bool) *DataValue {
+func (s *DataScopesValue) SetStatus(v bool) *DataScopesValue {
 	s.Status = &v
 	return s
 }
 
-func (s *DataValue) SetType(v int64) *DataValue {
+func (s *DataScopesValue) SetType(v int64) *DataScopesValue {
 	s.Type = &v
 	return s
 }
 
-func (s *DataValue) SetUpdateDateTime(v string) *DataValue {
+func (s *DataScopesValue) SetUpdateDateTime(v string) *DataScopesValue {
 	s.UpdateDateTime = &v
 	return s
 }
@@ -8831,9 +8847,6 @@ func (client *Client) DeleteRegistryWithOptions(registryId *string, headers map[
 	return _result, _err
 }
 
-/**
- * getPolicyOwnedByApi
- */
 func (client *Client) GetPolicyOwnedByApi(apiId *string) (_result *GetPolicyOwnedByApiResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
