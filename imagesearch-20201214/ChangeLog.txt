@@ -1,0 +1,4 @@
+2020-12-31 Version: v3.1.1
+- Support multi region.
+- Add Score parameter.
+
