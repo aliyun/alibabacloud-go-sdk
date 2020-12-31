@@ -3458,8 +3458,9 @@ type CreateAuthTicketRequest struct {
 	// name
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// ticketType
-	TicketType    *string `json:"ticketType,omitempty" xml:"ticketType,omitempty"`
-	ValidDuration *int64  `json:"validDuration,omitempty" xml:"validDuration,omitempty"`
+	TicketType           *string `json:"ticketType,omitempty" xml:"ticketType,omitempty"`
+	Duration             *int64  `json:"duration,omitempty" xml:"duration,omitempty"`
+	JwtSignatureTypeEnum *string `json:"jwtSignatureTypeEnum,omitempty" xml:"jwtSignatureTypeEnum,omitempty"`
 }
 
 func (s CreateAuthTicketRequest) String() string {
@@ -3490,8 +3491,13 @@ func (s *CreateAuthTicketRequest) SetTicketType(v string) *CreateAuthTicketReque
 	return s
 }
 
-func (s *CreateAuthTicketRequest) SetValidDuration(v int64) *CreateAuthTicketRequest {
-	s.ValidDuration = &v
+func (s *CreateAuthTicketRequest) SetDuration(v int64) *CreateAuthTicketRequest {
+	s.Duration = &v
+	return s
+}
+
+func (s *CreateAuthTicketRequest) SetJwtSignatureTypeEnum(v string) *CreateAuthTicketRequest {
+	s.JwtSignatureTypeEnum = &v
 	return s
 }
 
@@ -8419,9 +8425,6 @@ func (client *Client) RecycleApiWithOptions(apiId *string, headers map[string]*s
 	return _result, _err
 }
 
-/**
- * createAuthTicket
- */
 func (client *Client) CreateAuthTicket(request *CreateAuthTicketRequest) (_result *CreateAuthTicketResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8456,8 +8459,12 @@ func (client *Client) CreateAuthTicketWithOptions(request *CreateAuthTicketReque
 		body["ticketType"] = request.TicketType
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ValidDuration)) {
-		body["validDuration"] = request.ValidDuration
+	if !tea.BoolValue(util.IsUnset(request.Duration)) {
+		body["duration"] = request.Duration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JwtSignatureTypeEnum)) {
+		body["jwtSignatureTypeEnum"] = request.JwtSignatureTypeEnum
 	}
 
 	req := &openapi.OpenApiRequest{
