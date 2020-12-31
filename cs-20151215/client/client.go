@@ -1140,23 +1140,6 @@ func (s *DescribeClusterDetailResponse) SetBody(v *DescribeClusterDetailResponse
 	return s
 }
 
-type PauseComponentUpgradeResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-}
-
-func (s PauseComponentUpgradeResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PauseComponentUpgradeResponse) GoString() string {
-	return s.String()
-}
-
-func (s *PauseComponentUpgradeResponse) SetHeaders(v map[string]*string) *PauseComponentUpgradeResponse {
-	s.Headers = v
-	return s
-}
-
 type DescribeClustersRequest struct {
 	// 集群名称。
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
@@ -3888,6 +3871,8 @@ type CreateClusterRequest struct {
 	MasterAutoRenewPeriod *int64 `json:"master_auto_renew_period,omitempty" xml:"master_auto_renew_period,omitempty"`
 	// 集群Worker节点数量
 	NumOfNodes *int64 `json:"num_of_nodes,omitempty" xml:"num_of_nodes,omitempty"`
+	// 集群节点所在虚拟交换机。
+	VswitchIds []*string `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
 	// 集群Worker节点所在虚拟交换机
 	WorkerVswitchIds []*string `json:"worker_vswitch_ids,omitempty" xml:"worker_vswitch_ids,omitempty" type:"Repeated"`
 	// 集群Worker节点类型
@@ -4187,6 +4172,11 @@ func (s *CreateClusterRequest) SetMasterAutoRenewPeriod(v int64) *CreateClusterR
 
 func (s *CreateClusterRequest) SetNumOfNodes(v int64) *CreateClusterRequest {
 	s.NumOfNodes = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetVswitchIds(v []*string) *CreateClusterRequest {
+	s.VswitchIds = v
 	return s
 }
 
@@ -5342,23 +5332,6 @@ func (s *DeleteClusterResponse) SetHeaders(v map[string]*string) *DeleteClusterR
 	return s
 }
 
-type CancelComponentUpgradeResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-}
-
-func (s CancelComponentUpgradeResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CancelComponentUpgradeResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CancelComponentUpgradeResponse) SetHeaders(v map[string]*string) *CancelComponentUpgradeResponse {
-	s.Headers = v
-	return s
-}
-
 type DescribeClusterAddonsVersionResponse struct {
 	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	Body    map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -5490,23 +5463,6 @@ func (s UnInstallClusterAddonsResponse) GoString() string {
 }
 
 func (s *UnInstallClusterAddonsResponse) SetHeaders(v map[string]*string) *UnInstallClusterAddonsResponse {
-	s.Headers = v
-	return s
-}
-
-type ResumeComponentUpgradeResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-}
-
-func (s ResumeComponentUpgradeResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ResumeComponentUpgradeResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ResumeComponentUpgradeResponse) SetHeaders(v map[string]*string) *ResumeComponentUpgradeResponse {
 	s.Headers = v
 	return s
 }
@@ -8145,31 +8101,6 @@ func (client *Client) DescribeClusterDetailWithOptions(ClusterId *string, header
 	return _result, _err
 }
 
-func (client *Client) PauseComponentUpgrade(clusterid *string, componentid *string) (_result *PauseComponentUpgradeResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &PauseComponentUpgradeResponse{}
-	_body, _err := client.PauseComponentUpgradeWithOptions(clusterid, componentid, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) PauseComponentUpgradeWithOptions(clusterid *string, componentid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PauseComponentUpgradeResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	_result = &PauseComponentUpgradeResponse{}
-	_body, _err := client.DoROARequest(tea.String("PauseComponentUpgrade"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(clusterid)+"/components/{componentid}/pause"), tea.String("none"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
 func (client *Client) DescribeClusters(request *DescribeClustersRequest) (_result *DescribeClustersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8836,6 +8767,10 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, he
 		body["num_of_nodes"] = request.NumOfNodes
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.VswitchIds)) {
+		body["vswitch_ids"] = request.VswitchIds
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.WorkerVswitchIds)) {
 		body["worker_vswitch_ids"] = request.WorkerVswitchIds
 	}
@@ -9334,31 +9269,6 @@ func (client *Client) DeleteClusterWithOptions(ClusterId *string, request *Delet
 	return _result, _err
 }
 
-func (client *Client) CancelComponentUpgrade(clusterId *string, componentId *string) (_result *CancelComponentUpgradeResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CancelComponentUpgradeResponse{}
-	_body, _err := client.CancelComponentUpgradeWithOptions(clusterId, componentId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CancelComponentUpgradeWithOptions(clusterId *string, componentId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CancelComponentUpgradeResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	_result = &CancelComponentUpgradeResponse{}
-	_body, _err := client.DoROARequest(tea.String("CancelComponentUpgrade"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(clusterId)+"/components/{componentId}/cancel"), tea.String("none"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
 func (client *Client) DescribeClusterAddonsVersion(ClusterId *string) (_result *DescribeClusterAddonsVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9442,31 +9352,6 @@ func (client *Client) UnInstallClusterAddonsWithOptions(ClusterId *string, reque
 	}
 	_result = &UnInstallClusterAddonsResponse{}
 	_body, _err := client.DoROARequest(tea.String("UnInstallClusterAddons"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/components/uninstall"), tea.String("none"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ResumeComponentUpgrade(clusterid *string, componentid *string) (_result *ResumeComponentUpgradeResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ResumeComponentUpgradeResponse{}
-	_body, _err := client.ResumeComponentUpgradeWithOptions(clusterid, componentid, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ResumeComponentUpgradeWithOptions(clusterid *string, componentid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ResumeComponentUpgradeResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	_result = &ResumeComponentUpgradeResponse{}
-	_body, _err := client.DoROARequest(tea.String("ResumeComponentUpgrade"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(clusterid)+"/components/{componentid}/resume"), tea.String("none"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}

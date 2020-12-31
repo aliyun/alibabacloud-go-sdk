@@ -7,5 +7,5 @@ require (
 	github.com/alibabacloud-go/endpoint-util v1.1.0
 	github.com/alibabacloud-go/openapi-util v0.0.4
 	github.com/alibabacloud-go/tea v1.1.10
-	github.com/alibabacloud-go/tea-utils v1.3.6
+	github.com/alibabacloud-go/tea-utils v1.3.8
 )
