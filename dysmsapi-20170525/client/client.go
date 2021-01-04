@@ -1114,11 +1114,11 @@ func (s *QuerySendDetailsRequest) SetCurrentPage(v int64) *QuerySendDetailsReque
 }
 
 type QuerySendDetailsResponseBody struct {
-	TotalCount        *string                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	Message           *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId         *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code              *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	SmsSendDetailDTOs []*QuerySendDetailsResponseBodySmsSendDetailDTOs `json:"SmsSendDetailDTOs,omitempty" xml:"SmsSendDetailDTOs,omitempty" type:"Repeated"`
+	TotalCount        *string                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Message           *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId         *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code              *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	SmsSendDetailDTOs *QuerySendDetailsResponseBodySmsSendDetailDTOs `json:"SmsSendDetailDTOs,omitempty" xml:"SmsSendDetailDTOs,omitempty" type:"Struct"`
 }
 
 func (s QuerySendDetailsResponseBody) String() string {
@@ -1149,20 +1149,13 @@ func (s *QuerySendDetailsResponseBody) SetCode(v string) *QuerySendDetailsRespon
 	return s
 }
 
-func (s *QuerySendDetailsResponseBody) SetSmsSendDetailDTOs(v []*QuerySendDetailsResponseBodySmsSendDetailDTOs) *QuerySendDetailsResponseBody {
+func (s *QuerySendDetailsResponseBody) SetSmsSendDetailDTOs(v *QuerySendDetailsResponseBodySmsSendDetailDTOs) *QuerySendDetailsResponseBody {
 	s.SmsSendDetailDTOs = v
 	return s
 }
 
 type QuerySendDetailsResponseBodySmsSendDetailDTOs struct {
-	ErrCode      *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
-	OutId        *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
-	ReceiveDate  *string `json:"ReceiveDate,omitempty" xml:"ReceiveDate,omitempty"`
-	SendDate     *string `json:"SendDate,omitempty" xml:"SendDate,omitempty"`
-	PhoneNum     *string `json:"PhoneNum,omitempty" xml:"PhoneNum,omitempty"`
-	Content      *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	SendStatus   *int64  `json:"SendStatus,omitempty" xml:"SendStatus,omitempty"`
+	SmsSendDetailDTO []*QuerySendDetailsResponseBodySmsSendDetailDTOsSmsSendDetailDTO `json:"SmsSendDetailDTO,omitempty" xml:"SmsSendDetailDTO,omitempty" type:"Repeated"`
 }
 
 func (s QuerySendDetailsResponseBodySmsSendDetailDTOs) String() string {
@@ -1173,42 +1166,66 @@ func (s QuerySendDetailsResponseBodySmsSendDetailDTOs) GoString() string {
 	return s.String()
 }
 
-func (s *QuerySendDetailsResponseBodySmsSendDetailDTOs) SetErrCode(v string) *QuerySendDetailsResponseBodySmsSendDetailDTOs {
+func (s *QuerySendDetailsResponseBodySmsSendDetailDTOs) SetSmsSendDetailDTO(v []*QuerySendDetailsResponseBodySmsSendDetailDTOsSmsSendDetailDTO) *QuerySendDetailsResponseBodySmsSendDetailDTOs {
+	s.SmsSendDetailDTO = v
+	return s
+}
+
+type QuerySendDetailsResponseBodySmsSendDetailDTOsSmsSendDetailDTO struct {
+	ErrCode      *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	OutId        *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	ReceiveDate  *string `json:"ReceiveDate,omitempty" xml:"ReceiveDate,omitempty"`
+	SendDate     *string `json:"SendDate,omitempty" xml:"SendDate,omitempty"`
+	PhoneNum     *string `json:"PhoneNum,omitempty" xml:"PhoneNum,omitempty"`
+	Content      *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	SendStatus   *int64  `json:"SendStatus,omitempty" xml:"SendStatus,omitempty"`
+}
+
+func (s QuerySendDetailsResponseBodySmsSendDetailDTOsSmsSendDetailDTO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySendDetailsResponseBodySmsSendDetailDTOsSmsSendDetailDTO) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySendDetailsResponseBodySmsSendDetailDTOsSmsSendDetailDTO) SetErrCode(v string) *QuerySendDetailsResponseBodySmsSendDetailDTOsSmsSendDetailDTO {
 	s.ErrCode = &v
 	return s
 }
 
-func (s *QuerySendDetailsResponseBodySmsSendDetailDTOs) SetTemplateCode(v string) *QuerySendDetailsResponseBodySmsSendDetailDTOs {
+func (s *QuerySendDetailsResponseBodySmsSendDetailDTOsSmsSendDetailDTO) SetTemplateCode(v string) *QuerySendDetailsResponseBodySmsSendDetailDTOsSmsSendDetailDTO {
 	s.TemplateCode = &v
 	return s
 }
 
-func (s *QuerySendDetailsResponseBodySmsSendDetailDTOs) SetOutId(v string) *QuerySendDetailsResponseBodySmsSendDetailDTOs {
+func (s *QuerySendDetailsResponseBodySmsSendDetailDTOsSmsSendDetailDTO) SetOutId(v string) *QuerySendDetailsResponseBodySmsSendDetailDTOsSmsSendDetailDTO {
 	s.OutId = &v
 	return s
 }
 
-func (s *QuerySendDetailsResponseBodySmsSendDetailDTOs) SetReceiveDate(v string) *QuerySendDetailsResponseBodySmsSendDetailDTOs {
+func (s *QuerySendDetailsResponseBodySmsSendDetailDTOsSmsSendDetailDTO) SetReceiveDate(v string) *QuerySendDetailsResponseBodySmsSendDetailDTOsSmsSendDetailDTO {
 	s.ReceiveDate = &v
 	return s
 }
 
-func (s *QuerySendDetailsResponseBodySmsSendDetailDTOs) SetSendDate(v string) *QuerySendDetailsResponseBodySmsSendDetailDTOs {
+func (s *QuerySendDetailsResponseBodySmsSendDetailDTOsSmsSendDetailDTO) SetSendDate(v string) *QuerySendDetailsResponseBodySmsSendDetailDTOsSmsSendDetailDTO {
 	s.SendDate = &v
 	return s
 }
 
-func (s *QuerySendDetailsResponseBodySmsSendDetailDTOs) SetPhoneNum(v string) *QuerySendDetailsResponseBodySmsSendDetailDTOs {
+func (s *QuerySendDetailsResponseBodySmsSendDetailDTOsSmsSendDetailDTO) SetPhoneNum(v string) *QuerySendDetailsResponseBodySmsSendDetailDTOsSmsSendDetailDTO {
 	s.PhoneNum = &v
 	return s
 }
 
-func (s *QuerySendDetailsResponseBodySmsSendDetailDTOs) SetContent(v string) *QuerySendDetailsResponseBodySmsSendDetailDTOs {
+func (s *QuerySendDetailsResponseBodySmsSendDetailDTOsSmsSendDetailDTO) SetContent(v string) *QuerySendDetailsResponseBodySmsSendDetailDTOsSmsSendDetailDTO {
 	s.Content = &v
 	return s
 }
 
-func (s *QuerySendDetailsResponseBodySmsSendDetailDTOs) SetSendStatus(v int64) *QuerySendDetailsResponseBodySmsSendDetailDTOs {
+func (s *QuerySendDetailsResponseBodySmsSendDetailDTOsSmsSendDetailDTO) SetSendStatus(v int64) *QuerySendDetailsResponseBodySmsSendDetailDTOsSmsSendDetailDTO {
 	s.SendStatus = &v
 	return s
 }
