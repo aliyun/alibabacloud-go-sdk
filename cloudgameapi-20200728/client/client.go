@@ -1354,7 +1354,6 @@ type CreateOrderRequest struct {
 	OriginPrice     *int64  `json:"OriginPrice,omitempty" xml:"OriginPrice,omitempty" require:"true"`
 	SettlementPrice *int64  `json:"SettlementPrice,omitempty" xml:"SettlementPrice,omitempty" require:"true"`
 	Amount          *int64  `json:"Amount,omitempty" xml:"Amount,omitempty" require:"true"`
-	GameIdList      *string `json:"GameIdList,omitempty" xml:"GameIdList,omitempty" require:"true"`
 	IdempotentCode  *string `json:"IdempotentCode,omitempty" xml:"IdempotentCode,omitempty" require:"true"`
 	AccountDomain   *string `json:"AccountDomain,omitempty" xml:"AccountDomain,omitempty"`
 }
@@ -1394,11 +1393,6 @@ func (s *CreateOrderRequest) SetSettlementPrice(v int64) *CreateOrderRequest {
 
 func (s *CreateOrderRequest) SetAmount(v int64) *CreateOrderRequest {
 	s.Amount = &v
-	return s
-}
-
-func (s *CreateOrderRequest) SetGameIdList(v string) *CreateOrderRequest {
-	s.GameIdList = &v
 	return s
 }
 
