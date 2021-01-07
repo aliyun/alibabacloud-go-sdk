@@ -3289,8 +3289,8 @@ func (s *ListAccessKeysRequest) SetUserName(v string) *ListAccessKeysRequest {
 }
 
 type ListAccessKeysResponseBody struct {
-	AccessKeys []*ListAccessKeysResponseBodyAccessKeys `json:"AccessKeys,omitempty" xml:"AccessKeys,omitempty" type:"Repeated"`
-	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	AccessKeys *ListAccessKeysResponseBodyAccessKeys `json:"AccessKeys,omitempty" xml:"AccessKeys,omitempty" type:"Struct"`
+	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListAccessKeysResponseBody) String() string {
@@ -3301,7 +3301,7 @@ func (s ListAccessKeysResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListAccessKeysResponseBody) SetAccessKeys(v []*ListAccessKeysResponseBodyAccessKeys) *ListAccessKeysResponseBody {
+func (s *ListAccessKeysResponseBody) SetAccessKeys(v *ListAccessKeysResponseBodyAccessKeys) *ListAccessKeysResponseBody {
 	s.AccessKeys = v
 	return s
 }
@@ -3312,9 +3312,7 @@ func (s *ListAccessKeysResponseBody) SetRequestId(v string) *ListAccessKeysRespo
 }
 
 type ListAccessKeysResponseBodyAccessKeys struct {
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
-	CreateDate  *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	AccessKey []*ListAccessKeysResponseBodyAccessKeysAccessKey `json:"AccessKey,omitempty" xml:"AccessKey,omitempty" type:"Repeated"`
 }
 
 func (s ListAccessKeysResponseBodyAccessKeys) String() string {
@@ -3325,17 +3323,36 @@ func (s ListAccessKeysResponseBodyAccessKeys) GoString() string {
 	return s.String()
 }
 
-func (s *ListAccessKeysResponseBodyAccessKeys) SetStatus(v string) *ListAccessKeysResponseBodyAccessKeys {
+func (s *ListAccessKeysResponseBodyAccessKeys) SetAccessKey(v []*ListAccessKeysResponseBodyAccessKeysAccessKey) *ListAccessKeysResponseBodyAccessKeys {
+	s.AccessKey = v
+	return s
+}
+
+type ListAccessKeysResponseBodyAccessKeysAccessKey struct {
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	CreateDate  *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+}
+
+func (s ListAccessKeysResponseBodyAccessKeysAccessKey) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAccessKeysResponseBodyAccessKeysAccessKey) GoString() string {
+	return s.String()
+}
+
+func (s *ListAccessKeysResponseBodyAccessKeysAccessKey) SetStatus(v string) *ListAccessKeysResponseBodyAccessKeysAccessKey {
 	s.Status = &v
 	return s
 }
 
-func (s *ListAccessKeysResponseBodyAccessKeys) SetAccessKeyId(v string) *ListAccessKeysResponseBodyAccessKeys {
+func (s *ListAccessKeysResponseBodyAccessKeysAccessKey) SetAccessKeyId(v string) *ListAccessKeysResponseBodyAccessKeysAccessKey {
 	s.AccessKeyId = &v
 	return s
 }
 
-func (s *ListAccessKeysResponseBodyAccessKeys) SetCreateDate(v string) *ListAccessKeysResponseBodyAccessKeys {
+func (s *ListAccessKeysResponseBodyAccessKeysAccessKey) SetCreateDate(v string) *ListAccessKeysResponseBodyAccessKeysAccessKey {
 	s.CreateDate = &v
 	return s
 }
@@ -3387,10 +3404,10 @@ func (s *ListEntitiesForPolicyRequest) SetPolicyName(v string) *ListEntitiesForP
 }
 
 type ListEntitiesForPolicyResponseBody struct {
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Groups    []*ListEntitiesForPolicyResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
-	Roles     []*ListEntitiesForPolicyResponseBodyRoles  `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
-	Users     []*ListEntitiesForPolicyResponseBodyUsers  `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Groups    *ListEntitiesForPolicyResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Struct"`
+	Roles     *ListEntitiesForPolicyResponseBodyRoles  `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Struct"`
+	Users     *ListEntitiesForPolicyResponseBodyUsers  `json:"Users,omitempty" xml:"Users,omitempty" type:"Struct"`
 }
 
 func (s ListEntitiesForPolicyResponseBody) String() string {
@@ -3406,25 +3423,23 @@ func (s *ListEntitiesForPolicyResponseBody) SetRequestId(v string) *ListEntities
 	return s
 }
 
-func (s *ListEntitiesForPolicyResponseBody) SetGroups(v []*ListEntitiesForPolicyResponseBodyGroups) *ListEntitiesForPolicyResponseBody {
+func (s *ListEntitiesForPolicyResponseBody) SetGroups(v *ListEntitiesForPolicyResponseBodyGroups) *ListEntitiesForPolicyResponseBody {
 	s.Groups = v
 	return s
 }
 
-func (s *ListEntitiesForPolicyResponseBody) SetRoles(v []*ListEntitiesForPolicyResponseBodyRoles) *ListEntitiesForPolicyResponseBody {
+func (s *ListEntitiesForPolicyResponseBody) SetRoles(v *ListEntitiesForPolicyResponseBodyRoles) *ListEntitiesForPolicyResponseBody {
 	s.Roles = v
 	return s
 }
 
-func (s *ListEntitiesForPolicyResponseBody) SetUsers(v []*ListEntitiesForPolicyResponseBodyUsers) *ListEntitiesForPolicyResponseBody {
+func (s *ListEntitiesForPolicyResponseBody) SetUsers(v *ListEntitiesForPolicyResponseBodyUsers) *ListEntitiesForPolicyResponseBody {
 	s.Users = v
 	return s
 }
 
 type ListEntitiesForPolicyResponseBodyGroups struct {
-	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	Comments   *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	AttachDate *string `json:"AttachDate,omitempty" xml:"AttachDate,omitempty"`
+	Group []*ListEntitiesForPolicyResponseBodyGroupsGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Repeated"`
 }
 
 func (s ListEntitiesForPolicyResponseBodyGroups) String() string {
@@ -3435,27 +3450,42 @@ func (s ListEntitiesForPolicyResponseBodyGroups) GoString() string {
 	return s.String()
 }
 
-func (s *ListEntitiesForPolicyResponseBodyGroups) SetGroupName(v string) *ListEntitiesForPolicyResponseBodyGroups {
+func (s *ListEntitiesForPolicyResponseBodyGroups) SetGroup(v []*ListEntitiesForPolicyResponseBodyGroupsGroup) *ListEntitiesForPolicyResponseBodyGroups {
+	s.Group = v
+	return s
+}
+
+type ListEntitiesForPolicyResponseBodyGroupsGroup struct {
+	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	Comments   *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	AttachDate *string `json:"AttachDate,omitempty" xml:"AttachDate,omitempty"`
+}
+
+func (s ListEntitiesForPolicyResponseBodyGroupsGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEntitiesForPolicyResponseBodyGroupsGroup) GoString() string {
+	return s.String()
+}
+
+func (s *ListEntitiesForPolicyResponseBodyGroupsGroup) SetGroupName(v string) *ListEntitiesForPolicyResponseBodyGroupsGroup {
 	s.GroupName = &v
 	return s
 }
 
-func (s *ListEntitiesForPolicyResponseBodyGroups) SetComments(v string) *ListEntitiesForPolicyResponseBodyGroups {
+func (s *ListEntitiesForPolicyResponseBodyGroupsGroup) SetComments(v string) *ListEntitiesForPolicyResponseBodyGroupsGroup {
 	s.Comments = &v
 	return s
 }
 
-func (s *ListEntitiesForPolicyResponseBodyGroups) SetAttachDate(v string) *ListEntitiesForPolicyResponseBodyGroups {
+func (s *ListEntitiesForPolicyResponseBodyGroupsGroup) SetAttachDate(v string) *ListEntitiesForPolicyResponseBodyGroupsGroup {
 	s.AttachDate = &v
 	return s
 }
 
 type ListEntitiesForPolicyResponseBodyRoles struct {
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	RoleName    *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	AttachDate  *string `json:"AttachDate,omitempty" xml:"AttachDate,omitempty"`
-	Arn         *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	RoleId      *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	Role []*ListEntitiesForPolicyResponseBodyRolesRole `json:"Role,omitempty" xml:"Role,omitempty" type:"Repeated"`
 }
 
 func (s ListEntitiesForPolicyResponseBodyRoles) String() string {
@@ -3466,36 +3496,54 @@ func (s ListEntitiesForPolicyResponseBodyRoles) GoString() string {
 	return s.String()
 }
 
-func (s *ListEntitiesForPolicyResponseBodyRoles) SetDescription(v string) *ListEntitiesForPolicyResponseBodyRoles {
+func (s *ListEntitiesForPolicyResponseBodyRoles) SetRole(v []*ListEntitiesForPolicyResponseBodyRolesRole) *ListEntitiesForPolicyResponseBodyRoles {
+	s.Role = v
+	return s
+}
+
+type ListEntitiesForPolicyResponseBodyRolesRole struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	RoleName    *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	AttachDate  *string `json:"AttachDate,omitempty" xml:"AttachDate,omitempty"`
+	Arn         *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	RoleId      *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+}
+
+func (s ListEntitiesForPolicyResponseBodyRolesRole) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEntitiesForPolicyResponseBodyRolesRole) GoString() string {
+	return s.String()
+}
+
+func (s *ListEntitiesForPolicyResponseBodyRolesRole) SetDescription(v string) *ListEntitiesForPolicyResponseBodyRolesRole {
 	s.Description = &v
 	return s
 }
 
-func (s *ListEntitiesForPolicyResponseBodyRoles) SetRoleName(v string) *ListEntitiesForPolicyResponseBodyRoles {
+func (s *ListEntitiesForPolicyResponseBodyRolesRole) SetRoleName(v string) *ListEntitiesForPolicyResponseBodyRolesRole {
 	s.RoleName = &v
 	return s
 }
 
-func (s *ListEntitiesForPolicyResponseBodyRoles) SetAttachDate(v string) *ListEntitiesForPolicyResponseBodyRoles {
+func (s *ListEntitiesForPolicyResponseBodyRolesRole) SetAttachDate(v string) *ListEntitiesForPolicyResponseBodyRolesRole {
 	s.AttachDate = &v
 	return s
 }
 
-func (s *ListEntitiesForPolicyResponseBodyRoles) SetArn(v string) *ListEntitiesForPolicyResponseBodyRoles {
+func (s *ListEntitiesForPolicyResponseBodyRolesRole) SetArn(v string) *ListEntitiesForPolicyResponseBodyRolesRole {
 	s.Arn = &v
 	return s
 }
 
-func (s *ListEntitiesForPolicyResponseBodyRoles) SetRoleId(v string) *ListEntitiesForPolicyResponseBodyRoles {
+func (s *ListEntitiesForPolicyResponseBodyRolesRole) SetRoleId(v string) *ListEntitiesForPolicyResponseBodyRolesRole {
 	s.RoleId = &v
 	return s
 }
 
 type ListEntitiesForPolicyResponseBodyUsers struct {
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserName    *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	AttachDate  *string `json:"AttachDate,omitempty" xml:"AttachDate,omitempty"`
+	User []*ListEntitiesForPolicyResponseBodyUsersUser `json:"User,omitempty" xml:"User,omitempty" type:"Repeated"`
 }
 
 func (s ListEntitiesForPolicyResponseBodyUsers) String() string {
@@ -3506,22 +3554,42 @@ func (s ListEntitiesForPolicyResponseBodyUsers) GoString() string {
 	return s.String()
 }
 
-func (s *ListEntitiesForPolicyResponseBodyUsers) SetDisplayName(v string) *ListEntitiesForPolicyResponseBodyUsers {
+func (s *ListEntitiesForPolicyResponseBodyUsers) SetUser(v []*ListEntitiesForPolicyResponseBodyUsersUser) *ListEntitiesForPolicyResponseBodyUsers {
+	s.User = v
+	return s
+}
+
+type ListEntitiesForPolicyResponseBodyUsersUser struct {
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserName    *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	AttachDate  *string `json:"AttachDate,omitempty" xml:"AttachDate,omitempty"`
+}
+
+func (s ListEntitiesForPolicyResponseBodyUsersUser) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEntitiesForPolicyResponseBodyUsersUser) GoString() string {
+	return s.String()
+}
+
+func (s *ListEntitiesForPolicyResponseBodyUsersUser) SetDisplayName(v string) *ListEntitiesForPolicyResponseBodyUsersUser {
 	s.DisplayName = &v
 	return s
 }
 
-func (s *ListEntitiesForPolicyResponseBodyUsers) SetUserId(v string) *ListEntitiesForPolicyResponseBodyUsers {
+func (s *ListEntitiesForPolicyResponseBodyUsersUser) SetUserId(v string) *ListEntitiesForPolicyResponseBodyUsersUser {
 	s.UserId = &v
 	return s
 }
 
-func (s *ListEntitiesForPolicyResponseBodyUsers) SetUserName(v string) *ListEntitiesForPolicyResponseBodyUsers {
+func (s *ListEntitiesForPolicyResponseBodyUsersUser) SetUserName(v string) *ListEntitiesForPolicyResponseBodyUsersUser {
 	s.UserName = &v
 	return s
 }
 
-func (s *ListEntitiesForPolicyResponseBodyUsers) SetAttachDate(v string) *ListEntitiesForPolicyResponseBodyUsers {
+func (s *ListEntitiesForPolicyResponseBodyUsersUser) SetAttachDate(v string) *ListEntitiesForPolicyResponseBodyUsersUser {
 	s.AttachDate = &v
 	return s
 }
@@ -3573,10 +3641,10 @@ func (s *ListGroupsRequest) SetMaxItems(v int32) *ListGroupsRequest {
 }
 
 type ListGroupsResponseBody struct {
-	RequestId   *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Groups      []*ListGroupsResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
-	IsTruncated *bool                           `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	Marker      *string                         `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	RequestId   *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Groups      *ListGroupsResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Struct"`
+	IsTruncated *bool                         `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	Marker      *string                       `json:"Marker,omitempty" xml:"Marker,omitempty"`
 }
 
 func (s ListGroupsResponseBody) String() string {
@@ -3592,7 +3660,7 @@ func (s *ListGroupsResponseBody) SetRequestId(v string) *ListGroupsResponseBody 
 	return s
 }
 
-func (s *ListGroupsResponseBody) SetGroups(v []*ListGroupsResponseBodyGroups) *ListGroupsResponseBody {
+func (s *ListGroupsResponseBody) SetGroups(v *ListGroupsResponseBodyGroups) *ListGroupsResponseBody {
 	s.Groups = v
 	return s
 }
@@ -3608,11 +3676,7 @@ func (s *ListGroupsResponseBody) SetMarker(v string) *ListGroupsResponseBody {
 }
 
 type ListGroupsResponseBodyGroups struct {
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
-	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	Comments   *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	Group []*ListGroupsResponseBodyGroupsGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Repeated"`
 }
 
 func (s ListGroupsResponseBodyGroups) String() string {
@@ -3623,27 +3687,48 @@ func (s ListGroupsResponseBodyGroups) GoString() string {
 	return s.String()
 }
 
-func (s *ListGroupsResponseBodyGroups) SetGroupId(v string) *ListGroupsResponseBodyGroups {
+func (s *ListGroupsResponseBodyGroups) SetGroup(v []*ListGroupsResponseBodyGroupsGroup) *ListGroupsResponseBodyGroups {
+	s.Group = v
+	return s
+}
+
+type ListGroupsResponseBodyGroupsGroup struct {
+	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	Comments   *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+}
+
+func (s ListGroupsResponseBodyGroupsGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupsResponseBodyGroupsGroup) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupsResponseBodyGroupsGroup) SetGroupId(v string) *ListGroupsResponseBodyGroupsGroup {
 	s.GroupId = &v
 	return s
 }
 
-func (s *ListGroupsResponseBodyGroups) SetUpdateDate(v string) *ListGroupsResponseBodyGroups {
+func (s *ListGroupsResponseBodyGroupsGroup) SetUpdateDate(v string) *ListGroupsResponseBodyGroupsGroup {
 	s.UpdateDate = &v
 	return s
 }
 
-func (s *ListGroupsResponseBodyGroups) SetGroupName(v string) *ListGroupsResponseBodyGroups {
+func (s *ListGroupsResponseBodyGroupsGroup) SetGroupName(v string) *ListGroupsResponseBodyGroupsGroup {
 	s.GroupName = &v
 	return s
 }
 
-func (s *ListGroupsResponseBodyGroups) SetComments(v string) *ListGroupsResponseBodyGroups {
+func (s *ListGroupsResponseBodyGroupsGroup) SetComments(v string) *ListGroupsResponseBodyGroupsGroup {
 	s.Comments = &v
 	return s
 }
 
-func (s *ListGroupsResponseBodyGroups) SetCreateDate(v string) *ListGroupsResponseBodyGroups {
+func (s *ListGroupsResponseBodyGroupsGroup) SetCreateDate(v string) *ListGroupsResponseBodyGroupsGroup {
 	s.CreateDate = &v
 	return s
 }
@@ -3689,8 +3774,8 @@ func (s *ListGroupsForUserRequest) SetUserName(v string) *ListGroupsForUserReque
 }
 
 type ListGroupsForUserResponseBody struct {
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Groups    []*ListGroupsForUserResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Groups    *ListGroupsForUserResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Struct"`
 }
 
 func (s ListGroupsForUserResponseBody) String() string {
@@ -3706,16 +3791,13 @@ func (s *ListGroupsForUserResponseBody) SetRequestId(v string) *ListGroupsForUse
 	return s
 }
 
-func (s *ListGroupsForUserResponseBody) SetGroups(v []*ListGroupsForUserResponseBodyGroups) *ListGroupsForUserResponseBody {
+func (s *ListGroupsForUserResponseBody) SetGroups(v *ListGroupsForUserResponseBodyGroups) *ListGroupsForUserResponseBody {
 	s.Groups = v
 	return s
 }
 
 type ListGroupsForUserResponseBodyGroups struct {
-	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	Comments  *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	JoinDate  *string `json:"JoinDate,omitempty" xml:"JoinDate,omitempty"`
+	Group []*ListGroupsForUserResponseBodyGroupsGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Repeated"`
 }
 
 func (s ListGroupsForUserResponseBodyGroups) String() string {
@@ -3726,22 +3808,42 @@ func (s ListGroupsForUserResponseBodyGroups) GoString() string {
 	return s.String()
 }
 
-func (s *ListGroupsForUserResponseBodyGroups) SetGroupId(v string) *ListGroupsForUserResponseBodyGroups {
+func (s *ListGroupsForUserResponseBodyGroups) SetGroup(v []*ListGroupsForUserResponseBodyGroupsGroup) *ListGroupsForUserResponseBodyGroups {
+	s.Group = v
+	return s
+}
+
+type ListGroupsForUserResponseBodyGroupsGroup struct {
+	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	Comments  *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	JoinDate  *string `json:"JoinDate,omitempty" xml:"JoinDate,omitempty"`
+}
+
+func (s ListGroupsForUserResponseBodyGroupsGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupsForUserResponseBodyGroupsGroup) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupsForUserResponseBodyGroupsGroup) SetGroupId(v string) *ListGroupsForUserResponseBodyGroupsGroup {
 	s.GroupId = &v
 	return s
 }
 
-func (s *ListGroupsForUserResponseBodyGroups) SetGroupName(v string) *ListGroupsForUserResponseBodyGroups {
+func (s *ListGroupsForUserResponseBodyGroupsGroup) SetGroupName(v string) *ListGroupsForUserResponseBodyGroupsGroup {
 	s.GroupName = &v
 	return s
 }
 
-func (s *ListGroupsForUserResponseBodyGroups) SetComments(v string) *ListGroupsForUserResponseBodyGroups {
+func (s *ListGroupsForUserResponseBodyGroupsGroup) SetComments(v string) *ListGroupsForUserResponseBodyGroupsGroup {
 	s.Comments = &v
 	return s
 }
 
-func (s *ListGroupsForUserResponseBodyGroups) SetJoinDate(v string) *ListGroupsForUserResponseBodyGroups {
+func (s *ListGroupsForUserResponseBodyGroupsGroup) SetJoinDate(v string) *ListGroupsForUserResponseBodyGroupsGroup {
 	s.JoinDate = &v
 	return s
 }
@@ -3799,10 +3901,10 @@ func (s *ListPoliciesRequest) SetMaxItems(v int32) *ListPoliciesRequest {
 }
 
 type ListPoliciesResponseBody struct {
-	Policies    []*ListPoliciesResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
-	RequestId   *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	IsTruncated *bool                               `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	Marker      *string                             `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	Policies    *ListPoliciesResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Struct"`
+	RequestId   *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	IsTruncated *bool                             `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	Marker      *string                           `json:"Marker,omitempty" xml:"Marker,omitempty"`
 }
 
 func (s ListPoliciesResponseBody) String() string {
@@ -3813,7 +3915,7 @@ func (s ListPoliciesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListPoliciesResponseBody) SetPolicies(v []*ListPoliciesResponseBodyPolicies) *ListPoliciesResponseBody {
+func (s *ListPoliciesResponseBody) SetPolicies(v *ListPoliciesResponseBodyPolicies) *ListPoliciesResponseBody {
 	s.Policies = v
 	return s
 }
@@ -3834,13 +3936,7 @@ func (s *ListPoliciesResponseBody) SetMarker(v string) *ListPoliciesResponseBody
 }
 
 type ListPoliciesResponseBodyPolicies struct {
-	DefaultVersion  *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	UpdateDate      *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
-	AttachmentCount *int32  `json:"AttachmentCount,omitempty" xml:"AttachmentCount,omitempty"`
-	PolicyName      *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	CreateDate      *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	PolicyType      *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	Policy []*ListPoliciesResponseBodyPoliciesPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Repeated"`
 }
 
 func (s ListPoliciesResponseBodyPolicies) String() string {
@@ -3851,37 +3947,60 @@ func (s ListPoliciesResponseBodyPolicies) GoString() string {
 	return s.String()
 }
 
-func (s *ListPoliciesResponseBodyPolicies) SetDefaultVersion(v string) *ListPoliciesResponseBodyPolicies {
+func (s *ListPoliciesResponseBodyPolicies) SetPolicy(v []*ListPoliciesResponseBodyPoliciesPolicy) *ListPoliciesResponseBodyPolicies {
+	s.Policy = v
+	return s
+}
+
+type ListPoliciesResponseBodyPoliciesPolicy struct {
+	DefaultVersion  *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	UpdateDate      *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	AttachmentCount *int32  `json:"AttachmentCount,omitempty" xml:"AttachmentCount,omitempty"`
+	PolicyName      *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	CreateDate      *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	PolicyType      *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+}
+
+func (s ListPoliciesResponseBodyPoliciesPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPoliciesResponseBodyPoliciesPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *ListPoliciesResponseBodyPoliciesPolicy) SetDefaultVersion(v string) *ListPoliciesResponseBodyPoliciesPolicy {
 	s.DefaultVersion = &v
 	return s
 }
 
-func (s *ListPoliciesResponseBodyPolicies) SetDescription(v string) *ListPoliciesResponseBodyPolicies {
+func (s *ListPoliciesResponseBodyPoliciesPolicy) SetDescription(v string) *ListPoliciesResponseBodyPoliciesPolicy {
 	s.Description = &v
 	return s
 }
 
-func (s *ListPoliciesResponseBodyPolicies) SetUpdateDate(v string) *ListPoliciesResponseBodyPolicies {
+func (s *ListPoliciesResponseBodyPoliciesPolicy) SetUpdateDate(v string) *ListPoliciesResponseBodyPoliciesPolicy {
 	s.UpdateDate = &v
 	return s
 }
 
-func (s *ListPoliciesResponseBodyPolicies) SetAttachmentCount(v int32) *ListPoliciesResponseBodyPolicies {
+func (s *ListPoliciesResponseBodyPoliciesPolicy) SetAttachmentCount(v int32) *ListPoliciesResponseBodyPoliciesPolicy {
 	s.AttachmentCount = &v
 	return s
 }
 
-func (s *ListPoliciesResponseBodyPolicies) SetPolicyName(v string) *ListPoliciesResponseBodyPolicies {
+func (s *ListPoliciesResponseBodyPoliciesPolicy) SetPolicyName(v string) *ListPoliciesResponseBodyPoliciesPolicy {
 	s.PolicyName = &v
 	return s
 }
 
-func (s *ListPoliciesResponseBodyPolicies) SetCreateDate(v string) *ListPoliciesResponseBodyPolicies {
+func (s *ListPoliciesResponseBodyPoliciesPolicy) SetCreateDate(v string) *ListPoliciesResponseBodyPoliciesPolicy {
 	s.CreateDate = &v
 	return s
 }
 
-func (s *ListPoliciesResponseBodyPolicies) SetPolicyType(v string) *ListPoliciesResponseBodyPolicies {
+func (s *ListPoliciesResponseBodyPoliciesPolicy) SetPolicyType(v string) *ListPoliciesResponseBodyPoliciesPolicy {
 	s.PolicyType = &v
 	return s
 }
@@ -3927,8 +4046,8 @@ func (s *ListPoliciesForGroupRequest) SetGroupName(v string) *ListPoliciesForGro
 }
 
 type ListPoliciesForGroupResponseBody struct {
-	Policies  []*ListPoliciesForGroupResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Policies  *ListPoliciesForGroupResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Struct"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListPoliciesForGroupResponseBody) String() string {
@@ -3939,7 +4058,7 @@ func (s ListPoliciesForGroupResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListPoliciesForGroupResponseBody) SetPolicies(v []*ListPoliciesForGroupResponseBodyPolicies) *ListPoliciesForGroupResponseBody {
+func (s *ListPoliciesForGroupResponseBody) SetPolicies(v *ListPoliciesForGroupResponseBodyPolicies) *ListPoliciesForGroupResponseBody {
 	s.Policies = v
 	return s
 }
@@ -3950,11 +4069,7 @@ func (s *ListPoliciesForGroupResponseBody) SetRequestId(v string) *ListPoliciesF
 }
 
 type ListPoliciesForGroupResponseBodyPolicies struct {
-	DefaultVersion *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	PolicyName     *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	AttachDate     *string `json:"AttachDate,omitempty" xml:"AttachDate,omitempty"`
-	PolicyType     *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	Policy []*ListPoliciesForGroupResponseBodyPoliciesPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Repeated"`
 }
 
 func (s ListPoliciesForGroupResponseBodyPolicies) String() string {
@@ -3965,27 +4080,48 @@ func (s ListPoliciesForGroupResponseBodyPolicies) GoString() string {
 	return s.String()
 }
 
-func (s *ListPoliciesForGroupResponseBodyPolicies) SetDefaultVersion(v string) *ListPoliciesForGroupResponseBodyPolicies {
+func (s *ListPoliciesForGroupResponseBodyPolicies) SetPolicy(v []*ListPoliciesForGroupResponseBodyPoliciesPolicy) *ListPoliciesForGroupResponseBodyPolicies {
+	s.Policy = v
+	return s
+}
+
+type ListPoliciesForGroupResponseBodyPoliciesPolicy struct {
+	DefaultVersion *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	PolicyName     *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	AttachDate     *string `json:"AttachDate,omitempty" xml:"AttachDate,omitempty"`
+	PolicyType     *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+}
+
+func (s ListPoliciesForGroupResponseBodyPoliciesPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPoliciesForGroupResponseBodyPoliciesPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *ListPoliciesForGroupResponseBodyPoliciesPolicy) SetDefaultVersion(v string) *ListPoliciesForGroupResponseBodyPoliciesPolicy {
 	s.DefaultVersion = &v
 	return s
 }
 
-func (s *ListPoliciesForGroupResponseBodyPolicies) SetDescription(v string) *ListPoliciesForGroupResponseBodyPolicies {
+func (s *ListPoliciesForGroupResponseBodyPoliciesPolicy) SetDescription(v string) *ListPoliciesForGroupResponseBodyPoliciesPolicy {
 	s.Description = &v
 	return s
 }
 
-func (s *ListPoliciesForGroupResponseBodyPolicies) SetPolicyName(v string) *ListPoliciesForGroupResponseBodyPolicies {
+func (s *ListPoliciesForGroupResponseBodyPoliciesPolicy) SetPolicyName(v string) *ListPoliciesForGroupResponseBodyPoliciesPolicy {
 	s.PolicyName = &v
 	return s
 }
 
-func (s *ListPoliciesForGroupResponseBodyPolicies) SetAttachDate(v string) *ListPoliciesForGroupResponseBodyPolicies {
+func (s *ListPoliciesForGroupResponseBodyPoliciesPolicy) SetAttachDate(v string) *ListPoliciesForGroupResponseBodyPoliciesPolicy {
 	s.AttachDate = &v
 	return s
 }
 
-func (s *ListPoliciesForGroupResponseBodyPolicies) SetPolicyType(v string) *ListPoliciesForGroupResponseBodyPolicies {
+func (s *ListPoliciesForGroupResponseBodyPoliciesPolicy) SetPolicyType(v string) *ListPoliciesForGroupResponseBodyPoliciesPolicy {
 	s.PolicyType = &v
 	return s
 }
@@ -4031,8 +4167,8 @@ func (s *ListPoliciesForRoleRequest) SetRoleName(v string) *ListPoliciesForRoleR
 }
 
 type ListPoliciesForRoleResponseBody struct {
-	Policies  []*ListPoliciesForRoleResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Policies  *ListPoliciesForRoleResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Struct"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListPoliciesForRoleResponseBody) String() string {
@@ -4043,7 +4179,7 @@ func (s ListPoliciesForRoleResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListPoliciesForRoleResponseBody) SetPolicies(v []*ListPoliciesForRoleResponseBodyPolicies) *ListPoliciesForRoleResponseBody {
+func (s *ListPoliciesForRoleResponseBody) SetPolicies(v *ListPoliciesForRoleResponseBodyPolicies) *ListPoliciesForRoleResponseBody {
 	s.Policies = v
 	return s
 }
@@ -4054,11 +4190,7 @@ func (s *ListPoliciesForRoleResponseBody) SetRequestId(v string) *ListPoliciesFo
 }
 
 type ListPoliciesForRoleResponseBodyPolicies struct {
-	DefaultVersion *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	PolicyName     *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	AttachDate     *string `json:"AttachDate,omitempty" xml:"AttachDate,omitempty"`
-	PolicyType     *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	Policy []*ListPoliciesForRoleResponseBodyPoliciesPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Repeated"`
 }
 
 func (s ListPoliciesForRoleResponseBodyPolicies) String() string {
@@ -4069,27 +4201,48 @@ func (s ListPoliciesForRoleResponseBodyPolicies) GoString() string {
 	return s.String()
 }
 
-func (s *ListPoliciesForRoleResponseBodyPolicies) SetDefaultVersion(v string) *ListPoliciesForRoleResponseBodyPolicies {
+func (s *ListPoliciesForRoleResponseBodyPolicies) SetPolicy(v []*ListPoliciesForRoleResponseBodyPoliciesPolicy) *ListPoliciesForRoleResponseBodyPolicies {
+	s.Policy = v
+	return s
+}
+
+type ListPoliciesForRoleResponseBodyPoliciesPolicy struct {
+	DefaultVersion *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	PolicyName     *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	AttachDate     *string `json:"AttachDate,omitempty" xml:"AttachDate,omitempty"`
+	PolicyType     *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+}
+
+func (s ListPoliciesForRoleResponseBodyPoliciesPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPoliciesForRoleResponseBodyPoliciesPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *ListPoliciesForRoleResponseBodyPoliciesPolicy) SetDefaultVersion(v string) *ListPoliciesForRoleResponseBodyPoliciesPolicy {
 	s.DefaultVersion = &v
 	return s
 }
 
-func (s *ListPoliciesForRoleResponseBodyPolicies) SetDescription(v string) *ListPoliciesForRoleResponseBodyPolicies {
+func (s *ListPoliciesForRoleResponseBodyPoliciesPolicy) SetDescription(v string) *ListPoliciesForRoleResponseBodyPoliciesPolicy {
 	s.Description = &v
 	return s
 }
 
-func (s *ListPoliciesForRoleResponseBodyPolicies) SetPolicyName(v string) *ListPoliciesForRoleResponseBodyPolicies {
+func (s *ListPoliciesForRoleResponseBodyPoliciesPolicy) SetPolicyName(v string) *ListPoliciesForRoleResponseBodyPoliciesPolicy {
 	s.PolicyName = &v
 	return s
 }
 
-func (s *ListPoliciesForRoleResponseBodyPolicies) SetAttachDate(v string) *ListPoliciesForRoleResponseBodyPolicies {
+func (s *ListPoliciesForRoleResponseBodyPoliciesPolicy) SetAttachDate(v string) *ListPoliciesForRoleResponseBodyPoliciesPolicy {
 	s.AttachDate = &v
 	return s
 }
 
-func (s *ListPoliciesForRoleResponseBodyPolicies) SetPolicyType(v string) *ListPoliciesForRoleResponseBodyPolicies {
+func (s *ListPoliciesForRoleResponseBodyPoliciesPolicy) SetPolicyType(v string) *ListPoliciesForRoleResponseBodyPoliciesPolicy {
 	s.PolicyType = &v
 	return s
 }
@@ -4135,8 +4288,8 @@ func (s *ListPoliciesForUserRequest) SetUserName(v string) *ListPoliciesForUserR
 }
 
 type ListPoliciesForUserResponseBody struct {
-	Policies  []*ListPoliciesForUserResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Policies  *ListPoliciesForUserResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Struct"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListPoliciesForUserResponseBody) String() string {
@@ -4147,7 +4300,7 @@ func (s ListPoliciesForUserResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListPoliciesForUserResponseBody) SetPolicies(v []*ListPoliciesForUserResponseBodyPolicies) *ListPoliciesForUserResponseBody {
+func (s *ListPoliciesForUserResponseBody) SetPolicies(v *ListPoliciesForUserResponseBodyPolicies) *ListPoliciesForUserResponseBody {
 	s.Policies = v
 	return s
 }
@@ -4158,11 +4311,7 @@ func (s *ListPoliciesForUserResponseBody) SetRequestId(v string) *ListPoliciesFo
 }
 
 type ListPoliciesForUserResponseBodyPolicies struct {
-	DefaultVersion *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	PolicyName     *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	AttachDate     *string `json:"AttachDate,omitempty" xml:"AttachDate,omitempty"`
-	PolicyType     *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	Policy []*ListPoliciesForUserResponseBodyPoliciesPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Repeated"`
 }
 
 func (s ListPoliciesForUserResponseBodyPolicies) String() string {
@@ -4173,27 +4322,48 @@ func (s ListPoliciesForUserResponseBodyPolicies) GoString() string {
 	return s.String()
 }
 
-func (s *ListPoliciesForUserResponseBodyPolicies) SetDefaultVersion(v string) *ListPoliciesForUserResponseBodyPolicies {
+func (s *ListPoliciesForUserResponseBodyPolicies) SetPolicy(v []*ListPoliciesForUserResponseBodyPoliciesPolicy) *ListPoliciesForUserResponseBodyPolicies {
+	s.Policy = v
+	return s
+}
+
+type ListPoliciesForUserResponseBodyPoliciesPolicy struct {
+	DefaultVersion *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	PolicyName     *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	AttachDate     *string `json:"AttachDate,omitempty" xml:"AttachDate,omitempty"`
+	PolicyType     *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+}
+
+func (s ListPoliciesForUserResponseBodyPoliciesPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPoliciesForUserResponseBodyPoliciesPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *ListPoliciesForUserResponseBodyPoliciesPolicy) SetDefaultVersion(v string) *ListPoliciesForUserResponseBodyPoliciesPolicy {
 	s.DefaultVersion = &v
 	return s
 }
 
-func (s *ListPoliciesForUserResponseBodyPolicies) SetDescription(v string) *ListPoliciesForUserResponseBodyPolicies {
+func (s *ListPoliciesForUserResponseBodyPoliciesPolicy) SetDescription(v string) *ListPoliciesForUserResponseBodyPoliciesPolicy {
 	s.Description = &v
 	return s
 }
 
-func (s *ListPoliciesForUserResponseBodyPolicies) SetPolicyName(v string) *ListPoliciesForUserResponseBodyPolicies {
+func (s *ListPoliciesForUserResponseBodyPoliciesPolicy) SetPolicyName(v string) *ListPoliciesForUserResponseBodyPoliciesPolicy {
 	s.PolicyName = &v
 	return s
 }
 
-func (s *ListPoliciesForUserResponseBodyPolicies) SetAttachDate(v string) *ListPoliciesForUserResponseBodyPolicies {
+func (s *ListPoliciesForUserResponseBodyPoliciesPolicy) SetAttachDate(v string) *ListPoliciesForUserResponseBodyPoliciesPolicy {
 	s.AttachDate = &v
 	return s
 }
 
-func (s *ListPoliciesForUserResponseBodyPolicies) SetPolicyType(v string) *ListPoliciesForUserResponseBodyPolicies {
+func (s *ListPoliciesForUserResponseBodyPoliciesPolicy) SetPolicyType(v string) *ListPoliciesForUserResponseBodyPoliciesPolicy {
 	s.PolicyType = &v
 	return s
 }
@@ -4245,8 +4415,8 @@ func (s *ListPolicyVersionsRequest) SetPolicyName(v string) *ListPolicyVersionsR
 }
 
 type ListPolicyVersionsResponseBody struct {
-	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PolicyVersions []*ListPolicyVersionsResponseBodyPolicyVersions `json:"PolicyVersions,omitempty" xml:"PolicyVersions,omitempty" type:"Repeated"`
+	RequestId      *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PolicyVersions *ListPolicyVersionsResponseBodyPolicyVersions `json:"PolicyVersions,omitempty" xml:"PolicyVersions,omitempty" type:"Struct"`
 }
 
 func (s ListPolicyVersionsResponseBody) String() string {
@@ -4262,16 +4432,13 @@ func (s *ListPolicyVersionsResponseBody) SetRequestId(v string) *ListPolicyVersi
 	return s
 }
 
-func (s *ListPolicyVersionsResponseBody) SetPolicyVersions(v []*ListPolicyVersionsResponseBodyPolicyVersions) *ListPolicyVersionsResponseBody {
+func (s *ListPolicyVersionsResponseBody) SetPolicyVersions(v *ListPolicyVersionsResponseBodyPolicyVersions) *ListPolicyVersionsResponseBody {
 	s.PolicyVersions = v
 	return s
 }
 
 type ListPolicyVersionsResponseBodyPolicyVersions struct {
-	IsDefaultVersion *bool   `json:"IsDefaultVersion,omitempty" xml:"IsDefaultVersion,omitempty"`
-	PolicyDocument   *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
-	VersionId        *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
-	CreateDate       *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	PolicyVersion []*ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty" type:"Repeated"`
 }
 
 func (s ListPolicyVersionsResponseBodyPolicyVersions) String() string {
@@ -4282,22 +4449,42 @@ func (s ListPolicyVersionsResponseBodyPolicyVersions) GoString() string {
 	return s.String()
 }
 
-func (s *ListPolicyVersionsResponseBodyPolicyVersions) SetIsDefaultVersion(v bool) *ListPolicyVersionsResponseBodyPolicyVersions {
+func (s *ListPolicyVersionsResponseBodyPolicyVersions) SetPolicyVersion(v []*ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion) *ListPolicyVersionsResponseBodyPolicyVersions {
+	s.PolicyVersion = v
+	return s
+}
+
+type ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion struct {
+	IsDefaultVersion *bool   `json:"IsDefaultVersion,omitempty" xml:"IsDefaultVersion,omitempty"`
+	PolicyDocument   *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
+	VersionId        *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	CreateDate       *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+}
+
+func (s ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion) GoString() string {
+	return s.String()
+}
+
+func (s *ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion) SetIsDefaultVersion(v bool) *ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion {
 	s.IsDefaultVersion = &v
 	return s
 }
 
-func (s *ListPolicyVersionsResponseBodyPolicyVersions) SetPolicyDocument(v string) *ListPolicyVersionsResponseBodyPolicyVersions {
+func (s *ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion) SetPolicyDocument(v string) *ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion {
 	s.PolicyDocument = &v
 	return s
 }
 
-func (s *ListPolicyVersionsResponseBodyPolicyVersions) SetVersionId(v string) *ListPolicyVersionsResponseBodyPolicyVersions {
+func (s *ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion) SetVersionId(v string) *ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion {
 	s.VersionId = &v
 	return s
 }
 
-func (s *ListPolicyVersionsResponseBodyPolicyVersions) SetCreateDate(v string) *ListPolicyVersionsResponseBodyPolicyVersions {
+func (s *ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion) SetCreateDate(v string) *ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion {
 	s.CreateDate = &v
 	return s
 }
@@ -4349,10 +4536,10 @@ func (s *ListRolesRequest) SetMaxItems(v int32) *ListRolesRequest {
 }
 
 type ListRolesResponseBody struct {
-	RequestId   *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	IsTruncated *bool                         `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	Roles       []*ListRolesResponseBodyRoles `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
-	Marker      *string                       `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	RequestId   *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	IsTruncated *bool                       `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	Roles       *ListRolesResponseBodyRoles `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Struct"`
+	Marker      *string                     `json:"Marker,omitempty" xml:"Marker,omitempty"`
 }
 
 func (s ListRolesResponseBody) String() string {
@@ -4373,7 +4560,7 @@ func (s *ListRolesResponseBody) SetIsTruncated(v bool) *ListRolesResponseBody {
 	return s
 }
 
-func (s *ListRolesResponseBody) SetRoles(v []*ListRolesResponseBodyRoles) *ListRolesResponseBody {
+func (s *ListRolesResponseBody) SetRoles(v *ListRolesResponseBodyRoles) *ListRolesResponseBody {
 	s.Roles = v
 	return s
 }
@@ -4384,13 +4571,7 @@ func (s *ListRolesResponseBody) SetMarker(v string) *ListRolesResponseBody {
 }
 
 type ListRolesResponseBodyRoles struct {
-	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	UpdateDate         *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
-	MaxSessionDuration *int64  `json:"MaxSessionDuration,omitempty" xml:"MaxSessionDuration,omitempty"`
-	RoleName           *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	CreateDate         *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	RoleId             *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	Arn                *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	Role []*ListRolesResponseBodyRolesRole `json:"Role,omitempty" xml:"Role,omitempty" type:"Repeated"`
 }
 
 func (s ListRolesResponseBodyRoles) String() string {
@@ -4401,37 +4582,60 @@ func (s ListRolesResponseBodyRoles) GoString() string {
 	return s.String()
 }
 
-func (s *ListRolesResponseBodyRoles) SetDescription(v string) *ListRolesResponseBodyRoles {
+func (s *ListRolesResponseBodyRoles) SetRole(v []*ListRolesResponseBodyRolesRole) *ListRolesResponseBodyRoles {
+	s.Role = v
+	return s
+}
+
+type ListRolesResponseBodyRolesRole struct {
+	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	UpdateDate         *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	MaxSessionDuration *int64  `json:"MaxSessionDuration,omitempty" xml:"MaxSessionDuration,omitempty"`
+	RoleName           *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	CreateDate         *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	RoleId             *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	Arn                *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+}
+
+func (s ListRolesResponseBodyRolesRole) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRolesResponseBodyRolesRole) GoString() string {
+	return s.String()
+}
+
+func (s *ListRolesResponseBodyRolesRole) SetDescription(v string) *ListRolesResponseBodyRolesRole {
 	s.Description = &v
 	return s
 }
 
-func (s *ListRolesResponseBodyRoles) SetUpdateDate(v string) *ListRolesResponseBodyRoles {
+func (s *ListRolesResponseBodyRolesRole) SetUpdateDate(v string) *ListRolesResponseBodyRolesRole {
 	s.UpdateDate = &v
 	return s
 }
 
-func (s *ListRolesResponseBodyRoles) SetMaxSessionDuration(v int64) *ListRolesResponseBodyRoles {
+func (s *ListRolesResponseBodyRolesRole) SetMaxSessionDuration(v int64) *ListRolesResponseBodyRolesRole {
 	s.MaxSessionDuration = &v
 	return s
 }
 
-func (s *ListRolesResponseBodyRoles) SetRoleName(v string) *ListRolesResponseBodyRoles {
+func (s *ListRolesResponseBodyRolesRole) SetRoleName(v string) *ListRolesResponseBodyRolesRole {
 	s.RoleName = &v
 	return s
 }
 
-func (s *ListRolesResponseBodyRoles) SetCreateDate(v string) *ListRolesResponseBodyRoles {
+func (s *ListRolesResponseBodyRolesRole) SetCreateDate(v string) *ListRolesResponseBodyRolesRole {
 	s.CreateDate = &v
 	return s
 }
 
-func (s *ListRolesResponseBodyRoles) SetRoleId(v string) *ListRolesResponseBodyRoles {
+func (s *ListRolesResponseBodyRolesRole) SetRoleId(v string) *ListRolesResponseBodyRolesRole {
 	s.RoleId = &v
 	return s
 }
 
-func (s *ListRolesResponseBodyRoles) SetArn(v string) *ListRolesResponseBodyRoles {
+func (s *ListRolesResponseBodyRolesRole) SetArn(v string) *ListRolesResponseBodyRolesRole {
 	s.Arn = &v
 	return s
 }
@@ -4483,10 +4687,10 @@ func (s *ListUsersRequest) SetMaxItems(v int32) *ListUsersRequest {
 }
 
 type ListUsersResponseBody struct {
-	RequestId   *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	IsTruncated *bool                         `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	Marker      *string                       `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	Users       []*ListUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+	RequestId   *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	IsTruncated *bool                       `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	Marker      *string                     `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	Users       *ListUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Struct"`
 }
 
 func (s ListUsersResponseBody) String() string {
@@ -4512,20 +4716,13 @@ func (s *ListUsersResponseBody) SetMarker(v string) *ListUsersResponseBody {
 	return s
 }
 
-func (s *ListUsersResponseBody) SetUsers(v []*ListUsersResponseBodyUsers) *ListUsersResponseBody {
+func (s *ListUsersResponseBody) SetUsers(v *ListUsersResponseBodyUsers) *ListUsersResponseBody {
 	s.Users = v
 	return s
 }
 
 type ListUsersResponseBodyUsers struct {
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Email       *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	UpdateDate  *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
-	MobilePhone *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	Comments    *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	CreateDate  *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	UserName    *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	User []*ListUsersResponseBodyUsersUser `json:"User,omitempty" xml:"User,omitempty" type:"Repeated"`
 }
 
 func (s ListUsersResponseBodyUsers) String() string {
@@ -4536,42 +4733,66 @@ func (s ListUsersResponseBodyUsers) GoString() string {
 	return s.String()
 }
 
-func (s *ListUsersResponseBodyUsers) SetDisplayName(v string) *ListUsersResponseBodyUsers {
+func (s *ListUsersResponseBodyUsers) SetUser(v []*ListUsersResponseBodyUsersUser) *ListUsersResponseBodyUsers {
+	s.User = v
+	return s
+}
+
+type ListUsersResponseBodyUsersUser struct {
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	Email       *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	UpdateDate  *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	MobilePhone *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
+	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Comments    *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	CreateDate  *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	UserName    *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s ListUsersResponseBodyUsersUser) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUsersResponseBodyUsersUser) GoString() string {
+	return s.String()
+}
+
+func (s *ListUsersResponseBodyUsersUser) SetDisplayName(v string) *ListUsersResponseBodyUsersUser {
 	s.DisplayName = &v
 	return s
 }
 
-func (s *ListUsersResponseBodyUsers) SetEmail(v string) *ListUsersResponseBodyUsers {
+func (s *ListUsersResponseBodyUsersUser) SetEmail(v string) *ListUsersResponseBodyUsersUser {
 	s.Email = &v
 	return s
 }
 
-func (s *ListUsersResponseBodyUsers) SetUpdateDate(v string) *ListUsersResponseBodyUsers {
+func (s *ListUsersResponseBodyUsersUser) SetUpdateDate(v string) *ListUsersResponseBodyUsersUser {
 	s.UpdateDate = &v
 	return s
 }
 
-func (s *ListUsersResponseBodyUsers) SetMobilePhone(v string) *ListUsersResponseBodyUsers {
+func (s *ListUsersResponseBodyUsersUser) SetMobilePhone(v string) *ListUsersResponseBodyUsersUser {
 	s.MobilePhone = &v
 	return s
 }
 
-func (s *ListUsersResponseBodyUsers) SetUserId(v string) *ListUsersResponseBodyUsers {
+func (s *ListUsersResponseBodyUsersUser) SetUserId(v string) *ListUsersResponseBodyUsersUser {
 	s.UserId = &v
 	return s
 }
 
-func (s *ListUsersResponseBodyUsers) SetComments(v string) *ListUsersResponseBodyUsers {
+func (s *ListUsersResponseBodyUsersUser) SetComments(v string) *ListUsersResponseBodyUsersUser {
 	s.Comments = &v
 	return s
 }
 
-func (s *ListUsersResponseBodyUsers) SetCreateDate(v string) *ListUsersResponseBodyUsers {
+func (s *ListUsersResponseBodyUsersUser) SetCreateDate(v string) *ListUsersResponseBodyUsersUser {
 	s.CreateDate = &v
 	return s
 }
 
-func (s *ListUsersResponseBodyUsers) SetUserName(v string) *ListUsersResponseBodyUsers {
+func (s *ListUsersResponseBodyUsersUser) SetUserName(v string) *ListUsersResponseBodyUsersUser {
 	s.UserName = &v
 	return s
 }
@@ -4629,10 +4850,10 @@ func (s *ListUsersForGroupRequest) SetMaxItems(v int32) *ListUsersForGroupReques
 }
 
 type ListUsersForGroupResponseBody struct {
-	RequestId   *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	IsTruncated *bool                                 `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	Marker      *string                               `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	Users       []*ListUsersForGroupResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+	RequestId   *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	IsTruncated *bool                               `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	Marker      *string                             `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	Users       *ListUsersForGroupResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Struct"`
 }
 
 func (s ListUsersForGroupResponseBody) String() string {
@@ -4658,15 +4879,13 @@ func (s *ListUsersForGroupResponseBody) SetMarker(v string) *ListUsersForGroupRe
 	return s
 }
 
-func (s *ListUsersForGroupResponseBody) SetUsers(v []*ListUsersForGroupResponseBodyUsers) *ListUsersForGroupResponseBody {
+func (s *ListUsersForGroupResponseBody) SetUsers(v *ListUsersForGroupResponseBodyUsers) *ListUsersForGroupResponseBody {
 	s.Users = v
 	return s
 }
 
 type ListUsersForGroupResponseBodyUsers struct {
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	JoinDate    *string `json:"JoinDate,omitempty" xml:"JoinDate,omitempty"`
-	UserName    *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	User []*ListUsersForGroupResponseBodyUsersUser `json:"User,omitempty" xml:"User,omitempty" type:"Repeated"`
 }
 
 func (s ListUsersForGroupResponseBodyUsers) String() string {
@@ -4677,17 +4896,36 @@ func (s ListUsersForGroupResponseBodyUsers) GoString() string {
 	return s.String()
 }
 
-func (s *ListUsersForGroupResponseBodyUsers) SetDisplayName(v string) *ListUsersForGroupResponseBodyUsers {
+func (s *ListUsersForGroupResponseBodyUsers) SetUser(v []*ListUsersForGroupResponseBodyUsersUser) *ListUsersForGroupResponseBodyUsers {
+	s.User = v
+	return s
+}
+
+type ListUsersForGroupResponseBodyUsersUser struct {
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	JoinDate    *string `json:"JoinDate,omitempty" xml:"JoinDate,omitempty"`
+	UserName    *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s ListUsersForGroupResponseBodyUsersUser) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUsersForGroupResponseBodyUsersUser) GoString() string {
+	return s.String()
+}
+
+func (s *ListUsersForGroupResponseBodyUsersUser) SetDisplayName(v string) *ListUsersForGroupResponseBodyUsersUser {
 	s.DisplayName = &v
 	return s
 }
 
-func (s *ListUsersForGroupResponseBodyUsers) SetJoinDate(v string) *ListUsersForGroupResponseBodyUsers {
+func (s *ListUsersForGroupResponseBodyUsersUser) SetJoinDate(v string) *ListUsersForGroupResponseBodyUsersUser {
 	s.JoinDate = &v
 	return s
 }
 
-func (s *ListUsersForGroupResponseBodyUsers) SetUserName(v string) *ListUsersForGroupResponseBodyUsers {
+func (s *ListUsersForGroupResponseBodyUsersUser) SetUserName(v string) *ListUsersForGroupResponseBodyUsersUser {
 	s.UserName = &v
 	return s
 }
@@ -4716,8 +4954,8 @@ func (s *ListUsersForGroupResponse) SetBody(v *ListUsersForGroupResponseBody) *L
 }
 
 type ListVirtualMFADevicesResponseBody struct {
-	VirtualMFADevices []*ListVirtualMFADevicesResponseBodyVirtualMFADevices `json:"VirtualMFADevices,omitempty" xml:"VirtualMFADevices,omitempty" type:"Repeated"`
-	RequestId         *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	VirtualMFADevices *ListVirtualMFADevicesResponseBodyVirtualMFADevices `json:"VirtualMFADevices,omitempty" xml:"VirtualMFADevices,omitempty" type:"Struct"`
+	RequestId         *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListVirtualMFADevicesResponseBody) String() string {
@@ -4728,7 +4966,7 @@ func (s ListVirtualMFADevicesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListVirtualMFADevicesResponseBody) SetVirtualMFADevices(v []*ListVirtualMFADevicesResponseBodyVirtualMFADevices) *ListVirtualMFADevicesResponseBody {
+func (s *ListVirtualMFADevicesResponseBody) SetVirtualMFADevices(v *ListVirtualMFADevicesResponseBodyVirtualMFADevices) *ListVirtualMFADevicesResponseBody {
 	s.VirtualMFADevices = v
 	return s
 }
@@ -4739,9 +4977,7 @@ func (s *ListVirtualMFADevicesResponseBody) SetRequestId(v string) *ListVirtualM
 }
 
 type ListVirtualMFADevicesResponseBodyVirtualMFADevices struct {
-	SerialNumber *string                                                 `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
-	User         *ListVirtualMFADevicesResponseBodyVirtualMFADevicesUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
-	ActivateDate *string                                                 `json:"ActivateDate,omitempty" xml:"ActivateDate,omitempty"`
+	VirtualMFADevice []*ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADevice `json:"VirtualMFADevice,omitempty" xml:"VirtualMFADevice,omitempty" type:"Repeated"`
 }
 
 func (s ListVirtualMFADevicesResponseBodyVirtualMFADevices) String() string {
@@ -4752,46 +4988,65 @@ func (s ListVirtualMFADevicesResponseBodyVirtualMFADevices) GoString() string {
 	return s.String()
 }
 
-func (s *ListVirtualMFADevicesResponseBodyVirtualMFADevices) SetSerialNumber(v string) *ListVirtualMFADevicesResponseBodyVirtualMFADevices {
+func (s *ListVirtualMFADevicesResponseBodyVirtualMFADevices) SetVirtualMFADevice(v []*ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADevice) *ListVirtualMFADevicesResponseBodyVirtualMFADevices {
+	s.VirtualMFADevice = v
+	return s
+}
+
+type ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADevice struct {
+	SerialNumber *string                                                                 `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	User         *ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADeviceUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
+	ActivateDate *string                                                                 `json:"ActivateDate,omitempty" xml:"ActivateDate,omitempty"`
+}
+
+func (s ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADevice) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADevice) GoString() string {
+	return s.String()
+}
+
+func (s *ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADevice) SetSerialNumber(v string) *ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADevice {
 	s.SerialNumber = &v
 	return s
 }
 
-func (s *ListVirtualMFADevicesResponseBodyVirtualMFADevices) SetUser(v *ListVirtualMFADevicesResponseBodyVirtualMFADevicesUser) *ListVirtualMFADevicesResponseBodyVirtualMFADevices {
+func (s *ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADevice) SetUser(v *ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADeviceUser) *ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADevice {
 	s.User = v
 	return s
 }
 
-func (s *ListVirtualMFADevicesResponseBodyVirtualMFADevices) SetActivateDate(v string) *ListVirtualMFADevicesResponseBodyVirtualMFADevices {
+func (s *ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADevice) SetActivateDate(v string) *ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADevice {
 	s.ActivateDate = &v
 	return s
 }
 
-type ListVirtualMFADevicesResponseBodyVirtualMFADevicesUser struct {
+type ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADeviceUser struct {
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	UserName    *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
-func (s ListVirtualMFADevicesResponseBodyVirtualMFADevicesUser) String() string {
+func (s ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADeviceUser) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListVirtualMFADevicesResponseBodyVirtualMFADevicesUser) GoString() string {
+func (s ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADeviceUser) GoString() string {
 	return s.String()
 }
 
-func (s *ListVirtualMFADevicesResponseBodyVirtualMFADevicesUser) SetDisplayName(v string) *ListVirtualMFADevicesResponseBodyVirtualMFADevicesUser {
+func (s *ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADeviceUser) SetDisplayName(v string) *ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADeviceUser {
 	s.DisplayName = &v
 	return s
 }
 
-func (s *ListVirtualMFADevicesResponseBodyVirtualMFADevicesUser) SetUserId(v string) *ListVirtualMFADevicesResponseBodyVirtualMFADevicesUser {
+func (s *ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADeviceUser) SetUserId(v string) *ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADeviceUser {
 	s.UserId = &v
 	return s
 }
 
-func (s *ListVirtualMFADevicesResponseBodyVirtualMFADevicesUser) SetUserName(v string) *ListVirtualMFADevicesResponseBodyVirtualMFADevicesUser {
+func (s *ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADeviceUser) SetUserName(v string) *ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADeviceUser {
 	s.UserName = &v
 	return s
 }
