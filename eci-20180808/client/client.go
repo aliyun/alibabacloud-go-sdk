@@ -55,6 +55,10 @@ type CreateContainerGroupRequest struct {
 	HostName                      *string                                               `json:"HostName,omitempty" xml:"HostName,omitempty"`
 	IngressBandwidth              *int64                                                `json:"IngressBandwidth,omitempty" xml:"IngressBandwidth,omitempty"`
 	EgressBandwidth               *int64                                                `json:"EgressBandwidth,omitempty" xml:"EgressBandwidth,omitempty"`
+	CpuOptionsCore                *int32                                                `json:"CpuOptionsCore,omitempty" xml:"CpuOptionsCore,omitempty"`
+	CpuOptionsThreadsPerCore      *int32                                                `json:"CpuOptionsThreadsPerCore,omitempty" xml:"CpuOptionsThreadsPerCore,omitempty"`
+	CpuOptionsNuma                *string                                               `json:"CpuOptionsNuma,omitempty" xml:"CpuOptionsNuma,omitempty"`
+	EphemeralStorage              *int32                                                `json:"EphemeralStorage,omitempty" xml:"EphemeralStorage,omitempty"`
 	Tag                           []*CreateContainerGroupRequestTag                     `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	ImageRegistryCredential       []*CreateContainerGroupRequestImageRegistryCredential `json:"ImageRegistryCredential,omitempty" xml:"ImageRegistryCredential,omitempty" type:"Repeated"`
 	Container                     []*CreateContainerGroupRequestContainer               `json:"Container,omitempty" xml:"Container,omitempty" type:"Repeated"`
@@ -286,6 +290,26 @@ func (s *CreateContainerGroupRequest) SetIngressBandwidth(v int64) *CreateContai
 
 func (s *CreateContainerGroupRequest) SetEgressBandwidth(v int64) *CreateContainerGroupRequest {
 	s.EgressBandwidth = &v
+	return s
+}
+
+func (s *CreateContainerGroupRequest) SetCpuOptionsCore(v int32) *CreateContainerGroupRequest {
+	s.CpuOptionsCore = &v
+	return s
+}
+
+func (s *CreateContainerGroupRequest) SetCpuOptionsThreadsPerCore(v int32) *CreateContainerGroupRequest {
+	s.CpuOptionsThreadsPerCore = &v
+	return s
+}
+
+func (s *CreateContainerGroupRequest) SetCpuOptionsNuma(v string) *CreateContainerGroupRequest {
+	s.CpuOptionsNuma = &v
+	return s
+}
+
+func (s *CreateContainerGroupRequest) SetEphemeralStorage(v int32) *CreateContainerGroupRequest {
+	s.EphemeralStorage = &v
 	return s
 }
 
@@ -3157,6 +3181,7 @@ type DescribeContainerGroupsResponseBodyContainerGroups struct {
 	Events                []*DescribeContainerGroupsResponseBodyContainerGroupsEvents           `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
 	SucceededTime         *string                                                               `json:"SucceededTime,omitempty" xml:"SucceededTime,omitempty"`
 	SpotStrategy          *string                                                               `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
+	EphemeralStorage      *int32                                                                `json:"EphemeralStorage,omitempty" xml:"EphemeralStorage,omitempty"`
 	TenantEniInstanceId   *string                                                               `json:"TenantEniInstanceId,omitempty" xml:"TenantEniInstanceId,omitempty"`
 	Discount              *int32                                                                `json:"Discount,omitempty" xml:"Discount,omitempty"`
 	RestartPolicy         *string                                                               `json:"RestartPolicy,omitempty" xml:"RestartPolicy,omitempty"`
@@ -3243,6 +3268,11 @@ func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetSucceededTime(v 
 
 func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetSpotStrategy(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
 	s.SpotStrategy = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetEphemeralStorage(v int32) *DescribeContainerGroupsResponseBodyContainerGroups {
+	s.EphemeralStorage = &v
 	return s
 }
 
@@ -5245,8 +5275,9 @@ func (s *DescribeMultiContainerGroupMetricResponseBody) SetMonitorDatas(v []*Des
 }
 
 type DescribeMultiContainerGroupMetricResponseBodyMonitorDatas struct {
-	Records        []*DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecords        `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
-	ContainerInfos []*DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfos `json:"ContainerInfos,omitempty" xml:"ContainerInfos,omitempty" type:"Repeated"`
+	Records          []*DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecords        `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	ContainerInfos   []*DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfos `json:"ContainerInfos,omitempty" xml:"ContainerInfos,omitempty" type:"Repeated"`
+	ContainerGroupId *string                                                                    `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
 }
 
 func (s DescribeMultiContainerGroupMetricResponseBodyMonitorDatas) String() string {
@@ -5264,6 +5295,11 @@ func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatas) SetRecords(v
 
 func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatas) SetContainerInfos(v []*DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfos) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatas {
 	s.ContainerInfos = v
+	return s
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatas) SetContainerGroupId(v string) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatas {
+	s.ContainerGroupId = &v
 	return s
 }
 
@@ -5551,6 +5587,10 @@ type DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfos str
 	Aliases        []*string                                                                                `json:"Aliases,omitempty" xml:"Aliases,omitempty" type:"Repeated"`
 	ContainerSpec  *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerSpec    `json:"ContainerSpec,omitempty" xml:"ContainerSpec,omitempty" type:"Struct"`
 	ContainerStats []*DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStats `json:"ContainerStats,omitempty" xml:"ContainerStats,omitempty" type:"Repeated"`
+	Labels         *string                                                                                  `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	Namespace      *string                                                                                  `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	Name           *string                                                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id             *string                                                                                  `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
 func (s DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfos) String() string {
@@ -5573,6 +5613,26 @@ func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfos
 
 func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfos) SetContainerStats(v []*DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStats) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfos {
 	s.ContainerStats = v
+	return s
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfos) SetLabels(v string) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfos {
+	s.Labels = &v
+	return s
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfos) SetNamespace(v string) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfos {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfos) SetName(v string) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfos {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfos) SetId(v string) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfos {
+	s.Id = &v
 	return s
 }
 
@@ -6305,11 +6365,14 @@ func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfos
 
 type DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsAcceleratorStats struct {
 	Model       *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	Minor       *int64  `json:"Minor,omitempty" xml:"Minor,omitempty"`
+	Temperature *int64  `json:"Temperature,omitempty" xml:"Temperature,omitempty"`
+	PowerUsage  *int64  `json:"PowerUsage,omitempty" xml:"PowerUsage,omitempty"`
 	MemoryTotal *int64  `json:"MemoryTotal,omitempty" xml:"MemoryTotal,omitempty"`
 	Make        *string `json:"Make,omitempty" xml:"Make,omitempty"`
 	DutyCycle   *int64  `json:"DutyCycle,omitempty" xml:"DutyCycle,omitempty"`
-	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	MemoryUsed  *int64  `json:"MemoryUsed,omitempty" xml:"MemoryUsed,omitempty"`
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
 func (s DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsAcceleratorStats) String() string {
@@ -6322,6 +6385,21 @@ func (s DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosC
 
 func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsAcceleratorStats) SetModel(v string) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsAcceleratorStats {
 	s.Model = &v
+	return s
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsAcceleratorStats) SetMinor(v int64) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsAcceleratorStats {
+	s.Minor = &v
+	return s
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsAcceleratorStats) SetTemperature(v int64) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsAcceleratorStats {
+	s.Temperature = &v
+	return s
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsAcceleratorStats) SetPowerUsage(v int64) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsAcceleratorStats {
+	s.PowerUsage = &v
 	return s
 }
 
@@ -6340,13 +6418,13 @@ func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfos
 	return s
 }
 
-func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsAcceleratorStats) SetId(v string) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsAcceleratorStats {
-	s.Id = &v
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsAcceleratorStats) SetMemoryUsed(v int64) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsAcceleratorStats {
+	s.MemoryUsed = &v
 	return s
 }
 
-func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsAcceleratorStats) SetMemoryUsed(v int64) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsAcceleratorStats {
-	s.MemoryUsed = &v
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsAcceleratorStats) SetId(v string) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsAcceleratorStats {
+	s.Id = &v
 	return s
 }
 
@@ -6596,8 +6674,14 @@ func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfos
 }
 
 type DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStats struct {
-	IoServiced    []*DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoServiced    `json:"IoServiced,omitempty" xml:"IoServiced,omitempty" type:"Repeated"`
-	IoServiceTime []*DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoServiceTime `json:"IoServiceTime,omitempty" xml:"IoServiceTime,omitempty" type:"Repeated"`
+	IoServiced     []*DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoServiced     `json:"IoServiced,omitempty" xml:"IoServiced,omitempty" type:"Repeated"`
+	IoServiceTime  []*DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoServiceTime  `json:"IoServiceTime,omitempty" xml:"IoServiceTime,omitempty" type:"Repeated"`
+	IoServiceBytes []*DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoServiceBytes `json:"IoServiceBytes,omitempty" xml:"IoServiceBytes,omitempty" type:"Repeated"`
+	IoMerged       []*DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoMerged       `json:"IoMerged,omitempty" xml:"IoMerged,omitempty" type:"Repeated"`
+	Sectors        []*DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsSectors        `json:"Sectors,omitempty" xml:"Sectors,omitempty" type:"Repeated"`
+	IoQueued       []*DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoQueued       `json:"IoQueued,omitempty" xml:"IoQueued,omitempty" type:"Repeated"`
+	IoTime         []*DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoTime         `json:"IoTime,omitempty" xml:"IoTime,omitempty" type:"Repeated"`
+	IoWaitTime     []*DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoWaitTime     `json:"IoWaitTime,omitempty" xml:"IoWaitTime,omitempty" type:"Repeated"`
 }
 
 func (s DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStats) String() string {
@@ -6615,6 +6699,36 @@ func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfos
 
 func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStats) SetIoServiceTime(v []*DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoServiceTime) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStats {
 	s.IoServiceTime = v
+	return s
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStats) SetIoServiceBytes(v []*DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoServiceBytes) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStats {
+	s.IoServiceBytes = v
+	return s
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStats) SetIoMerged(v []*DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoMerged) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStats {
+	s.IoMerged = v
+	return s
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStats) SetSectors(v []*DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsSectors) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStats {
+	s.Sectors = v
+	return s
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStats) SetIoQueued(v []*DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoQueued) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStats {
+	s.IoQueued = v
+	return s
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStats) SetIoTime(v []*DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoTime) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStats {
+	s.IoTime = v
+	return s
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStats) SetIoWaitTime(v []*DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoWaitTime) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStats {
+	s.IoWaitTime = v
 	return s
 }
 
@@ -6684,6 +6798,216 @@ func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfos
 }
 
 func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoServiceTime) SetDevice(v string) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoServiceTime {
+	s.Device = &v
+	return s
+}
+
+type DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoServiceBytes struct {
+	Stats  *string `json:"Stats,omitempty" xml:"Stats,omitempty"`
+	Minor  *int64  `json:"Minor,omitempty" xml:"Minor,omitempty"`
+	Major  *int64  `json:"Major,omitempty" xml:"Major,omitempty"`
+	Device *string `json:"Device,omitempty" xml:"Device,omitempty"`
+}
+
+func (s DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoServiceBytes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoServiceBytes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoServiceBytes) SetStats(v string) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoServiceBytes {
+	s.Stats = &v
+	return s
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoServiceBytes) SetMinor(v int64) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoServiceBytes {
+	s.Minor = &v
+	return s
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoServiceBytes) SetMajor(v int64) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoServiceBytes {
+	s.Major = &v
+	return s
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoServiceBytes) SetDevice(v string) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoServiceBytes {
+	s.Device = &v
+	return s
+}
+
+type DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoMerged struct {
+	Stats  *string `json:"Stats,omitempty" xml:"Stats,omitempty"`
+	Minor  *int64  `json:"Minor,omitempty" xml:"Minor,omitempty"`
+	Major  *int64  `json:"Major,omitempty" xml:"Major,omitempty"`
+	Device *string `json:"Device,omitempty" xml:"Device,omitempty"`
+}
+
+func (s DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoMerged) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoMerged) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoMerged) SetStats(v string) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoMerged {
+	s.Stats = &v
+	return s
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoMerged) SetMinor(v int64) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoMerged {
+	s.Minor = &v
+	return s
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoMerged) SetMajor(v int64) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoMerged {
+	s.Major = &v
+	return s
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoMerged) SetDevice(v string) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoMerged {
+	s.Device = &v
+	return s
+}
+
+type DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsSectors struct {
+	Stats  *string `json:"Stats,omitempty" xml:"Stats,omitempty"`
+	Minor  *int64  `json:"Minor,omitempty" xml:"Minor,omitempty"`
+	Major  *int64  `json:"Major,omitempty" xml:"Major,omitempty"`
+	Device *string `json:"Device,omitempty" xml:"Device,omitempty"`
+}
+
+func (s DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsSectors) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsSectors) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsSectors) SetStats(v string) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsSectors {
+	s.Stats = &v
+	return s
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsSectors) SetMinor(v int64) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsSectors {
+	s.Minor = &v
+	return s
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsSectors) SetMajor(v int64) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsSectors {
+	s.Major = &v
+	return s
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsSectors) SetDevice(v string) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsSectors {
+	s.Device = &v
+	return s
+}
+
+type DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoQueued struct {
+	Stats  *string `json:"Stats,omitempty" xml:"Stats,omitempty"`
+	Minor  *int64  `json:"Minor,omitempty" xml:"Minor,omitempty"`
+	Major  *int64  `json:"Major,omitempty" xml:"Major,omitempty"`
+	Device *string `json:"Device,omitempty" xml:"Device,omitempty"`
+}
+
+func (s DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoQueued) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoQueued) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoQueued) SetStats(v string) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoQueued {
+	s.Stats = &v
+	return s
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoQueued) SetMinor(v int64) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoQueued {
+	s.Minor = &v
+	return s
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoQueued) SetMajor(v int64) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoQueued {
+	s.Major = &v
+	return s
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoQueued) SetDevice(v string) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoQueued {
+	s.Device = &v
+	return s
+}
+
+type DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoTime struct {
+	Stats  *string `json:"Stats,omitempty" xml:"Stats,omitempty"`
+	Minor  *int64  `json:"Minor,omitempty" xml:"Minor,omitempty"`
+	Major  *int64  `json:"Major,omitempty" xml:"Major,omitempty"`
+	Device *string `json:"Device,omitempty" xml:"Device,omitempty"`
+}
+
+func (s DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoTime) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoTime) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoTime) SetStats(v string) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoTime {
+	s.Stats = &v
+	return s
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoTime) SetMinor(v int64) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoTime {
+	s.Minor = &v
+	return s
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoTime) SetMajor(v int64) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoTime {
+	s.Major = &v
+	return s
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoTime) SetDevice(v string) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoTime {
+	s.Device = &v
+	return s
+}
+
+type DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoWaitTime struct {
+	Stats  *string `json:"Stats,omitempty" xml:"Stats,omitempty"`
+	Minor  *int64  `json:"Minor,omitempty" xml:"Minor,omitempty"`
+	Major  *int64  `json:"Major,omitempty" xml:"Major,omitempty"`
+	Device *string `json:"Device,omitempty" xml:"Device,omitempty"`
+}
+
+func (s DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoWaitTime) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoWaitTime) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoWaitTime) SetStats(v string) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoWaitTime {
+	s.Stats = &v
+	return s
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoWaitTime) SetMinor(v int64) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoWaitTime {
+	s.Minor = &v
+	return s
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoWaitTime) SetMajor(v int64) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoWaitTime {
+	s.Major = &v
+	return s
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoWaitTime) SetDevice(v string) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoWaitTime {
 	s.Device = &v
 	return s
 }
@@ -7148,6 +7472,7 @@ type UpdateContainerGroupRequest struct {
 	ClientToken             *string                                               `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Cpu                     *float32                                              `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	Memory                  *float32                                              `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	ResourceGroupId         *string                                               `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Tag                     []*UpdateContainerGroupRequestTag                     `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	Volume                  []*UpdateContainerGroupRequestVolume                  `json:"Volume,omitempty" xml:"Volume,omitempty" type:"Repeated"`
 	Container               []*UpdateContainerGroupRequestContainer               `json:"Container,omitempty" xml:"Container,omitempty" type:"Repeated"`
@@ -7215,6 +7540,11 @@ func (s *UpdateContainerGroupRequest) SetCpu(v float32) *UpdateContainerGroupReq
 
 func (s *UpdateContainerGroupRequest) SetMemory(v float32) *UpdateContainerGroupRequest {
 	s.Memory = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequest) SetResourceGroupId(v string) *UpdateContainerGroupRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
