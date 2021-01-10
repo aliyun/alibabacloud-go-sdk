@@ -1,3 +1,6 @@
+2021-01-10 Version: v1.0.1
+- AMP Version Change.
+
 2021-01-10 Version: v1.0.0
 - Generated golang 2018-01-20 for Iot.
 
