@@ -361,7 +361,7 @@ type ListBatchTaskResponseDataList struct {
 	BucketName     *string `json:"BucketName,omitempty" xml:"BucketName,omitempty" require:"true"`
 	DataPath       *string `json:"DataPath,omitempty" xml:"DataPath,omitempty" require:"true"`
 	MetaFile       *string `json:"MetaFile,omitempty" xml:"MetaFile,omitempty" require:"true"`
-	ModifiedTime   *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty" require:"true"`
+	ModifiedTime   *int64  `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty" require:"true"`
 	ProcessMessage *string `json:"ProcessMessage,omitempty" xml:"ProcessMessage,omitempty" require:"true"`
 }
 
@@ -408,7 +408,7 @@ func (s *ListBatchTaskResponseDataList) SetMetaFile(v string) *ListBatchTaskResp
 	return s
 }
 
-func (s *ListBatchTaskResponseDataList) SetModifiedTime(v string) *ListBatchTaskResponseDataList {
+func (s *ListBatchTaskResponseDataList) SetModifiedTime(v int64) *ListBatchTaskResponseDataList {
 	s.ModifiedTime = &v
 	return s
 }
