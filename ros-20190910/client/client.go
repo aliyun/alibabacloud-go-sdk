@@ -524,6 +524,7 @@ type CreateStackRequest struct {
 	TemplateVersion    *string                         `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 	Parameters         []*CreateStackRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 	NotificationURLs   []*string                       `json:"NotificationURLs,omitempty" xml:"NotificationURLs,omitempty" type:"Repeated"`
+	Tags               []*CreateStackRequestTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s CreateStackRequest) String() string {
@@ -629,6 +630,11 @@ func (s *CreateStackRequest) SetNotificationURLs(v []*string) *CreateStackReques
 	return s
 }
 
+func (s *CreateStackRequest) SetTags(v []*CreateStackRequestTags) *CreateStackRequest {
+	s.Tags = v
+	return s
+}
+
 type CreateStackRequestParameters struct {
 	ParameterKey   *string `json:"ParameterKey,omitempty" xml:"ParameterKey,omitempty"`
 	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
@@ -649,6 +655,29 @@ func (s *CreateStackRequestParameters) SetParameterKey(v string) *CreateStackReq
 
 func (s *CreateStackRequestParameters) SetParameterValue(v string) *CreateStackRequestParameters {
 	s.ParameterValue = &v
+	return s
+}
+
+type CreateStackRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateStackRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStackRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStackRequestTags) SetKey(v string) *CreateStackRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateStackRequestTags) SetValue(v string) *CreateStackRequestTags {
+	s.Value = &v
 	return s
 }
 
@@ -2624,6 +2653,7 @@ type GetStackResponseBody struct {
 	NotificationURLs    []*string                         `json:"NotificationURLs,omitempty" xml:"NotificationURLs,omitempty" type:"Repeated"`
 	DisableRollback     *bool                             `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
 	StackName           *string                           `json:"StackName,omitempty" xml:"StackName,omitempty"`
+	Tags                []*GetStackResponseBodyTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	TimeoutInMinutes    *int32                            `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
 	StackId             *string                           `json:"StackId,omitempty" xml:"StackId,omitempty"`
 }
@@ -2736,6 +2766,11 @@ func (s *GetStackResponseBody) SetStackName(v string) *GetStackResponseBody {
 	return s
 }
 
+func (s *GetStackResponseBody) SetTags(v []*GetStackResponseBodyTags) *GetStackResponseBody {
+	s.Tags = v
+	return s
+}
+
 func (s *GetStackResponseBody) SetTimeoutInMinutes(v int32) *GetStackResponseBody {
 	s.TimeoutInMinutes = &v
 	return s
@@ -2766,6 +2801,29 @@ func (s *GetStackResponseBodyParameters) SetParameterKey(v string) *GetStackResp
 
 func (s *GetStackResponseBodyParameters) SetParameterValue(v string) *GetStackResponseBodyParameters {
 	s.ParameterValue = &v
+	return s
+}
+
+type GetStackResponseBodyTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetStackResponseBodyTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStackResponseBodyTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetStackResponseBodyTags) SetKey(v string) *GetStackResponseBodyTags {
+	s.Key = &v
+	return s
+}
+
+func (s *GetStackResponseBodyTags) SetValue(v string) *GetStackResponseBodyTags {
+	s.Value = &v
 	return s
 }
 
@@ -5971,19 +6029,20 @@ func (s *ListStacksResponseBody) SetStacks(v []*ListStacksResponseBodyStacks) *L
 }
 
 type ListStacksResponseBodyStacks struct {
-	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UpdateTime         *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	DriftDetectionTime *string `json:"DriftDetectionTime,omitempty" xml:"DriftDetectionTime,omitempty"`
-	StatusReason       *string `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
-	CreateTime         *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DisableRollback    *bool   `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
-	StackName          *string `json:"StackName,omitempty" xml:"StackName,omitempty"`
-	TimeoutInMinutes   *int32  `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ParentStackId      *string `json:"ParentStackId,omitempty" xml:"ParentStackId,omitempty"`
-	StackId            *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
-	StackDriftStatus   *string `json:"StackDriftStatus,omitempty" xml:"StackDriftStatus,omitempty"`
-	StackType          *string `json:"StackType,omitempty" xml:"StackType,omitempty"`
+	Status             *string                             `json:"Status,omitempty" xml:"Status,omitempty"`
+	UpdateTime         *string                             `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	DriftDetectionTime *string                             `json:"DriftDetectionTime,omitempty" xml:"DriftDetectionTime,omitempty"`
+	StatusReason       *string                             `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
+	CreateTime         *string                             `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DisableRollback    *bool                               `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
+	Tags               []*ListStacksResponseBodyStacksTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	StackName          *string                             `json:"StackName,omitempty" xml:"StackName,omitempty"`
+	TimeoutInMinutes   *int32                              `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
+	RegionId           *string                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ParentStackId      *string                             `json:"ParentStackId,omitempty" xml:"ParentStackId,omitempty"`
+	StackId            *string                             `json:"StackId,omitempty" xml:"StackId,omitempty"`
+	StackDriftStatus   *string                             `json:"StackDriftStatus,omitempty" xml:"StackDriftStatus,omitempty"`
+	StackType          *string                             `json:"StackType,omitempty" xml:"StackType,omitempty"`
 }
 
 func (s ListStacksResponseBodyStacks) String() string {
@@ -6024,6 +6083,11 @@ func (s *ListStacksResponseBodyStacks) SetDisableRollback(v bool) *ListStacksRes
 	return s
 }
 
+func (s *ListStacksResponseBodyStacks) SetTags(v []*ListStacksResponseBodyStacksTags) *ListStacksResponseBodyStacks {
+	s.Tags = v
+	return s
+}
+
 func (s *ListStacksResponseBodyStacks) SetStackName(v string) *ListStacksResponseBodyStacks {
 	s.StackName = &v
 	return s
@@ -6056,6 +6120,29 @@ func (s *ListStacksResponseBodyStacks) SetStackDriftStatus(v string) *ListStacks
 
 func (s *ListStacksResponseBodyStacks) SetStackType(v string) *ListStacksResponseBodyStacks {
 	s.StackType = &v
+	return s
+}
+
+type ListStacksResponseBodyStacksTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListStacksResponseBodyStacksTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListStacksResponseBodyStacksTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListStacksResponseBodyStacksTags) SetKey(v string) *ListStacksResponseBodyStacksTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListStacksResponseBodyStacksTags) SetValue(v string) *ListStacksResponseBodyStacksTags {
+	s.Value = &v
 	return s
 }
 
@@ -7589,6 +7676,7 @@ type UpdateStackRequest struct {
 	TemplateId                  *string                         `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	TemplateVersion             *string                         `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 	Parameters                  []*UpdateStackRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	Tags                        []*UpdateStackRequestTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s UpdateStackRequest) String() string {
@@ -7694,6 +7782,11 @@ func (s *UpdateStackRequest) SetParameters(v []*UpdateStackRequestParameters) *U
 	return s
 }
 
+func (s *UpdateStackRequest) SetTags(v []*UpdateStackRequestTags) *UpdateStackRequest {
+	s.Tags = v
+	return s
+}
+
 type UpdateStackRequestParameters struct {
 	ParameterKey   *string `json:"ParameterKey,omitempty" xml:"ParameterKey,omitempty"`
 	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
@@ -7714,6 +7807,29 @@ func (s *UpdateStackRequestParameters) SetParameterKey(v string) *UpdateStackReq
 
 func (s *UpdateStackRequestParameters) SetParameterValue(v string) *UpdateStackRequestParameters {
 	s.ParameterValue = &v
+	return s
+}
+
+type UpdateStackRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateStackRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStackRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStackRequestTags) SetKey(v string) *UpdateStackRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *UpdateStackRequestTags) SetValue(v string) *UpdateStackRequestTags {
+	s.Value = &v
 	return s
 }
 
