@@ -3,10 +3,126 @@ package client
 
 import (
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
+	rpcutil "github.com/alibabacloud-go/tea-rpc-utils/service"
 	rpc "github.com/alibabacloud-go/tea-rpc/client"
 	util "github.com/alibabacloud-go/tea-utils/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
+
+type GetServiceRegistrySourceRequest struct {
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty" require:"true"`
+}
+
+func (s GetServiceRegistrySourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceRegistrySourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceRegistrySourceRequest) SetServiceMeshId(v string) *GetServiceRegistrySourceRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+type GetServiceRegistrySourceResponse struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Result    *string `json:"Result,omitempty" xml:"Result,omitempty" require:"true"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty" require:"true"`
+}
+
+func (s GetServiceRegistrySourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceRegistrySourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceRegistrySourceResponse) SetRequestId(v string) *GetServiceRegistrySourceResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetServiceRegistrySourceResponse) SetResult(v string) *GetServiceRegistrySourceResponse {
+	s.Result = &v
+	return s
+}
+
+func (s *GetServiceRegistrySourceResponse) SetStatus(v string) *GetServiceRegistrySourceResponse {
+	s.Status = &v
+	return s
+}
+
+type SetServiceRegistrySourceRequest struct {
+	ServiceMeshId *string                `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty" require:"true"`
+	Config        map[string]interface{} `json:"Config,omitempty" xml:"Config,omitempty" require:"true"`
+}
+
+func (s SetServiceRegistrySourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetServiceRegistrySourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetServiceRegistrySourceRequest) SetServiceMeshId(v string) *SetServiceRegistrySourceRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+func (s *SetServiceRegistrySourceRequest) SetConfig(v map[string]interface{}) *SetServiceRegistrySourceRequest {
+	s.Config = v
+	return s
+}
+
+type SetServiceRegistrySourceShrinkRequest struct {
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty" require:"true"`
+	ConfigShrink  *string `json:"Config,omitempty" xml:"Config,omitempty" require:"true"`
+}
+
+func (s SetServiceRegistrySourceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetServiceRegistrySourceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetServiceRegistrySourceShrinkRequest) SetServiceMeshId(v string) *SetServiceRegistrySourceShrinkRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+func (s *SetServiceRegistrySourceShrinkRequest) SetConfigShrink(v string) *SetServiceRegistrySourceShrinkRequest {
+	s.ConfigShrink = &v
+	return s
+}
+
+type SetServiceRegistrySourceResponse struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Result    *string `json:"Result,omitempty" xml:"Result,omitempty" require:"true"`
+}
+
+func (s SetServiceRegistrySourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetServiceRegistrySourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetServiceRegistrySourceResponse) SetRequestId(v string) *SetServiceRegistrySourceResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SetServiceRegistrySourceResponse) SetResult(v string) *SetServiceRegistrySourceResponse {
+	s.Result = &v
+	return s
+}
 
 type GetAutoInjectionLabelSyncStatusRequest struct {
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty" require:"true"`
@@ -580,6 +696,7 @@ type GetDiagnosisResponse struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
 	Result    *string `json:"Result,omitempty" xml:"Result,omitempty" require:"true"`
 	RunAt     *string `json:"RunAt,omitempty" xml:"RunAt,omitempty" require:"true"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty" require:"true"`
 }
 
 func (s GetDiagnosisResponse) String() string {
@@ -602,6 +719,11 @@ func (s *GetDiagnosisResponse) SetResult(v string) *GetDiagnosisResponse {
 
 func (s *GetDiagnosisResponse) SetRunAt(v string) *GetDiagnosisResponse {
 	s.RunAt = &v
+	return s
+}
+
+func (s *GetDiagnosisResponse) SetStatus(v string) *GetDiagnosisResponse {
+	s.Status = &v
 	return s
 }
 
@@ -2545,7 +2667,8 @@ func (s *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigSidecarInject
 }
 
 type DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigKiali struct {
-	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty" require:"true"`
+	Enabled *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty" require:"true"`
+	Url     *string `json:"Url,omitempty" xml:"Url,omitempty" require:"true"`
 }
 
 func (s DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigKiali) String() string {
@@ -2558,6 +2681,11 @@ func (s DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigKiali) GoStrin
 
 func (s *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigKiali) SetEnabled(v bool) *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigKiali {
 	s.Enabled = &v
+	return s
+}
+
+func (s *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigKiali) SetUrl(v string) *DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigKiali {
+	s.Url = &v
 	return s
 }
 
@@ -2968,6 +3096,62 @@ func (client *Client) Init(config *rpc.Config) (_err error) {
 	}
 
 	return nil
+}
+
+func (client *Client) GetServiceRegistrySourceWithOptions(request *GetServiceRegistrySourceRequest, runtime *util.RuntimeOptions) (_result *GetServiceRegistrySourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &GetServiceRegistrySourceResponse{}
+	_body, _err := client.DoRequest(tea.String("GetServiceRegistrySource"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-01-11"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetServiceRegistrySource(request *GetServiceRegistrySourceRequest) (_result *GetServiceRegistrySourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetServiceRegistrySourceResponse{}
+	_body, _err := client.GetServiceRegistrySourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SetServiceRegistrySourceWithOptions(tmp *SetServiceRegistrySourceRequest, runtime *util.RuntimeOptions) (_result *SetServiceRegistrySourceResponse, _err error) {
+	_err = util.ValidateModel(tmp)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SetServiceRegistrySourceShrinkRequest{}
+	rpcutil.Convert(tmp, request)
+	if !tea.BoolValue(util.IsUnset(tmp.Config)) {
+		request.ConfigShrink = util.ToJSONString(tmp.Config)
+	}
+
+	_result = &SetServiceRegistrySourceResponse{}
+	_body, _err := client.DoRequest(tea.String("SetServiceRegistrySource"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-01-11"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetServiceRegistrySource(request *SetServiceRegistrySourceRequest) (_result *SetServiceRegistrySourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetServiceRegistrySourceResponse{}
+	_body, _err := client.SetServiceRegistrySourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
 }
 
 func (client *Client) GetAutoInjectionLabelSyncStatusWithOptions(request *GetAutoInjectionLabelSyncStatusRequest, runtime *util.RuntimeOptions) (_result *GetAutoInjectionLabelSyncStatusResponse, _err error) {
