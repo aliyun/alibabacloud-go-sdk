@@ -348,6 +348,62 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 	return s
 }
 
+type UntagResourcesRequest struct {
+	// 资源所属的地域ID
+	RegionId *string `json:"region_id,omitempty" xml:"region_id,omitempty"`
+	// 资源ID。数组长度取值范围为：1~50
+	ResourceIds []*string `json:"resource_ids,omitempty" xml:"resource_ids,omitempty" type:"Repeated"`
+	// 资源类型定义。取值范围： 只支持CLUSTER这一种资源类型
+	ResourceType *string `json:"resource_type,omitempty" xml:"resource_type,omitempty"`
+	// 资源的标签键。N的取值范围：1~20
+	TagKeys []*string `json:"tag_keys,omitempty" xml:"tag_keys,omitempty" type:"Repeated"`
+}
+
+func (s UntagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesRequest) SetRegionId(v string) *UntagResourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetResourceIds(v []*string) *UntagResourcesRequest {
+	s.ResourceIds = v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetResourceType(v string) *UntagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetTagKeys(v []*string) *UntagResourcesRequest {
+	s.TagKeys = v
+	return s
+}
+
+type UntagResourcesResponse struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+}
+
+func (s UntagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesResponse) SetHeaders(v map[string]*string) *UntagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
 type ModifyClusterRequest struct {
 	// 集群是否绑定EIP，用于公网访问API Server。 true | false
 	ApiServerEip *bool `json:"api_server_eip,omitempty" xml:"api_server_eip,omitempty"`
@@ -1140,293 +1196,6 @@ func (s *DescribeClusterDetailResponse) SetBody(v *DescribeClusterDetailResponse
 	return s
 }
 
-type DescribeClustersRequest struct {
-	// 集群名称。
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 集群类型。
-	ClusterType *string `json:"clusterType,omitempty" xml:"clusterType,omitempty"`
-}
-
-func (s DescribeClustersRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeClustersRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeClustersRequest) SetName(v string) *DescribeClustersRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeClustersRequest) SetClusterType(v string) *DescribeClustersRequest {
-	s.ClusterType = &v
-	return s
-}
-
-type DescribeClustersResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    []*DescribeClustersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
-}
-
-func (s DescribeClustersResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeClustersResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeClustersResponse) SetHeaders(v map[string]*string) *DescribeClustersResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeClustersResponse) SetBody(v []*DescribeClustersResponseBody) *DescribeClustersResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeClustersResponseBody struct {
-	// 集群ID。
-	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// 集群类型。
-	ClusterType *string `json:"cluster_type,omitempty" xml:"cluster_type,omitempty"`
-	// 集群创建时间。
-	Created *string `json:"created,omitempty" xml:"created,omitempty"`
-	// 集群当前版本。
-	CurrentVersion *string `json:"current_version,omitempty" xml:"current_version,omitempty"`
-	// 节点系统盘类型。
-	DataDiskCategory *string `json:"data_disk_category,omitempty" xml:"data_disk_category,omitempty"`
-	// 节点系统盘大小。
-	DataDiskSize *int64 `json:"data_disk_size,omitempty" xml:"data_disk_size,omitempty"`
-	// 集群是否开启删除保护。
-	DeletionProtection *bool `json:"deletion_protection,omitempty" xml:"deletion_protection,omitempty"`
-	// 容器运行时版本。
-	DockerVersion *string `json:"docker_version,omitempty" xml:"docker_version,omitempty"`
-	// 集群Ingerss SLB实例的ID。
-	ExternalLoadbalancerId *string `json:"external_loadbalancer_id,omitempty" xml:"external_loadbalancer_id,omitempty"`
-	// 集群创建时版本。
-	InitVersion *string `json:"init_version,omitempty" xml:"init_version,omitempty"`
-	// 集群的endpoint地址。
-	MasterUrl *string `json:"master_url,omitempty" xml:"master_url,omitempty"`
-	// 集群元数据。
-	MetaData *string `json:"meta_data,omitempty" xml:"meta_data,omitempty"`
-	// 集群名称。
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 集群使用的网络类型。
-	NetworkMode *string `json:"network_mode,omitempty" xml:"network_mode,omitempty"`
-	// 集群是否开启Private Zone，默认false。
-	PrivateZone *bool `json:"private_zone,omitempty" xml:"private_zone,omitempty"`
-	// 集群标识，区分是否为边缘托管版。
-	Profile *string `json:"profile,omitempty" xml:"profile,omitempty"`
-	// 集群所在地域ID。
-	RegionId *string `json:"region_id,omitempty" xml:"region_id,omitempty"`
-	// 集群资源组ID。
-	ResourceGroupId *string `json:"resource_group_id,omitempty" xml:"resource_group_id,omitempty"`
-	// 集群安全组ID。
-	SecurityGroupId *string `json:"security_group_id,omitempty" xml:"security_group_id,omitempty"`
-	// 集群内实例数量。
-	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
-	// 集群运行状态。
-	State *string `json:"state,omitempty" xml:"state,omitempty"`
-	// POD网络。
-	SubnetCidr *string `json:"subnet_cidr,omitempty" xml:"subnet_cidr,omitempty"`
-	// 集群标签。
-	Tags []*DescribeClustersResponseBodyTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// 集群更新时间。
-	Updated *string `json:"updated,omitempty" xml:"updated,omitempty"`
-	// 集群使用的VPC ID。
-	VpcId *string `json:"vpc_id,omitempty" xml:"vpc_id,omitempty"`
-	// 虚拟交换机网络ID。
-	VswitchCidr *string `json:"vswitch_cidr,omitempty" xml:"vswitch_cidr,omitempty"`
-	// 节点使用的Vswitch ID。
-	VswitchId *string `json:"vswitch_id,omitempty" xml:"vswitch_id,omitempty"`
-	// 集群Worker节点RAM角色名称。
-	WorkerRamRoleName *string `json:"worker_ram_role_name,omitempty" xml:"worker_ram_role_name,omitempty"`
-	// 集群所在Region内的区域ID。
-	ZoneId *string `json:"zone_id,omitempty" xml:"zone_id,omitempty"`
-}
-
-func (s DescribeClustersResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeClustersResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeClustersResponseBody) SetClusterId(v string) *DescribeClustersResponseBody {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *DescribeClustersResponseBody) SetClusterType(v string) *DescribeClustersResponseBody {
-	s.ClusterType = &v
-	return s
-}
-
-func (s *DescribeClustersResponseBody) SetCreated(v string) *DescribeClustersResponseBody {
-	s.Created = &v
-	return s
-}
-
-func (s *DescribeClustersResponseBody) SetCurrentVersion(v string) *DescribeClustersResponseBody {
-	s.CurrentVersion = &v
-	return s
-}
-
-func (s *DescribeClustersResponseBody) SetDataDiskCategory(v string) *DescribeClustersResponseBody {
-	s.DataDiskCategory = &v
-	return s
-}
-
-func (s *DescribeClustersResponseBody) SetDataDiskSize(v int64) *DescribeClustersResponseBody {
-	s.DataDiskSize = &v
-	return s
-}
-
-func (s *DescribeClustersResponseBody) SetDeletionProtection(v bool) *DescribeClustersResponseBody {
-	s.DeletionProtection = &v
-	return s
-}
-
-func (s *DescribeClustersResponseBody) SetDockerVersion(v string) *DescribeClustersResponseBody {
-	s.DockerVersion = &v
-	return s
-}
-
-func (s *DescribeClustersResponseBody) SetExternalLoadbalancerId(v string) *DescribeClustersResponseBody {
-	s.ExternalLoadbalancerId = &v
-	return s
-}
-
-func (s *DescribeClustersResponseBody) SetInitVersion(v string) *DescribeClustersResponseBody {
-	s.InitVersion = &v
-	return s
-}
-
-func (s *DescribeClustersResponseBody) SetMasterUrl(v string) *DescribeClustersResponseBody {
-	s.MasterUrl = &v
-	return s
-}
-
-func (s *DescribeClustersResponseBody) SetMetaData(v string) *DescribeClustersResponseBody {
-	s.MetaData = &v
-	return s
-}
-
-func (s *DescribeClustersResponseBody) SetName(v string) *DescribeClustersResponseBody {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeClustersResponseBody) SetNetworkMode(v string) *DescribeClustersResponseBody {
-	s.NetworkMode = &v
-	return s
-}
-
-func (s *DescribeClustersResponseBody) SetPrivateZone(v bool) *DescribeClustersResponseBody {
-	s.PrivateZone = &v
-	return s
-}
-
-func (s *DescribeClustersResponseBody) SetProfile(v string) *DescribeClustersResponseBody {
-	s.Profile = &v
-	return s
-}
-
-func (s *DescribeClustersResponseBody) SetRegionId(v string) *DescribeClustersResponseBody {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeClustersResponseBody) SetResourceGroupId(v string) *DescribeClustersResponseBody {
-	s.ResourceGroupId = &v
-	return s
-}
-
-func (s *DescribeClustersResponseBody) SetSecurityGroupId(v string) *DescribeClustersResponseBody {
-	s.SecurityGroupId = &v
-	return s
-}
-
-func (s *DescribeClustersResponseBody) SetSize(v int64) *DescribeClustersResponseBody {
-	s.Size = &v
-	return s
-}
-
-func (s *DescribeClustersResponseBody) SetState(v string) *DescribeClustersResponseBody {
-	s.State = &v
-	return s
-}
-
-func (s *DescribeClustersResponseBody) SetSubnetCidr(v string) *DescribeClustersResponseBody {
-	s.SubnetCidr = &v
-	return s
-}
-
-func (s *DescribeClustersResponseBody) SetTags(v []*DescribeClustersResponseBodyTags) *DescribeClustersResponseBody {
-	s.Tags = v
-	return s
-}
-
-func (s *DescribeClustersResponseBody) SetUpdated(v string) *DescribeClustersResponseBody {
-	s.Updated = &v
-	return s
-}
-
-func (s *DescribeClustersResponseBody) SetVpcId(v string) *DescribeClustersResponseBody {
-	s.VpcId = &v
-	return s
-}
-
-func (s *DescribeClustersResponseBody) SetVswitchCidr(v string) *DescribeClustersResponseBody {
-	s.VswitchCidr = &v
-	return s
-}
-
-func (s *DescribeClustersResponseBody) SetVswitchId(v string) *DescribeClustersResponseBody {
-	s.VswitchId = &v
-	return s
-}
-
-func (s *DescribeClustersResponseBody) SetWorkerRamRoleName(v string) *DescribeClustersResponseBody {
-	s.WorkerRamRoleName = &v
-	return s
-}
-
-func (s *DescribeClustersResponseBody) SetZoneId(v string) *DescribeClustersResponseBody {
-	s.ZoneId = &v
-	return s
-}
-
-type DescribeClustersResponseBodyTags struct {
-	// 标签名。
-	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// 标签值。
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
-}
-
-func (s DescribeClustersResponseBodyTags) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeClustersResponseBodyTags) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeClustersResponseBodyTags) SetKey(v string) *DescribeClustersResponseBodyTags {
-	s.Key = &v
-	return s
-}
-
-func (s *DescribeClustersResponseBodyTags) SetValue(v string) *DescribeClustersResponseBodyTags {
-	s.Value = &v
-	return s
-}
-
 type ModifyClusterNodePoolRequest struct {
 	// 自动伸缩节点池配置。
 	AutoScaling *ModifyClusterNodePoolRequestAutoScaling `json:"auto_scaling,omitempty" xml:"auto_scaling,omitempty" type:"Struct"`
@@ -1994,6 +1763,72 @@ func (s ResumeUpgradeClusterResponse) GoString() string {
 
 func (s *ResumeUpgradeClusterResponse) SetHeaders(v map[string]*string) *ResumeUpgradeClusterResponse {
 	s.Headers = v
+	return s
+}
+
+type OpenAckServiceRequest struct {
+	// 要开通的服务类型
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s OpenAckServiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenAckServiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *OpenAckServiceRequest) SetType(v string) *OpenAckServiceRequest {
+	s.Type = &v
+	return s
+}
+
+type OpenAckServiceResponseBody struct {
+	// 请求ID
+	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	// 开通服务的订单号。
+	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+}
+
+func (s OpenAckServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenAckServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *OpenAckServiceResponseBody) SetRequestId(v string) *OpenAckServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *OpenAckServiceResponseBody) SetOrderId(v string) *OpenAckServiceResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+type OpenAckServiceResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *OpenAckServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s OpenAckServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenAckServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *OpenAckServiceResponse) SetHeaders(v map[string]*string) *OpenAckServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *OpenAckServiceResponse) SetBody(v *OpenAckServiceResponseBody) *OpenAckServiceResponse {
+	s.Body = v
 	return s
 }
 
@@ -3351,310 +3186,6 @@ func (s *DescribeClusterUserKubeconfigResponse) SetBody(v *DescribeClusterUserKu
 	return s
 }
 
-type ScaleClusterRequest struct {
-	// 节点是否安装云监控插件。
-	CloudMonitorFlags *bool `json:"cloud_monitor_flags,omitempty" xml:"cloud_monitor_flags,omitempty"`
-	// 扩容节点数。
-	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
-	// 节点CPU策略。
-	CpuPolicy *string `json:"cpu_policy,omitempty" xml:"cpu_policy,omitempty"`
-	// 失败是否回滚。
-	DisableRollback *bool `json:"disable_rollback,omitempty" xml:"disable_rollback,omitempty"`
-	// keypair名称，和login_password二选一。
-	KeyPair *string `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
-	// SSH登录密码。和keypair二选一。
-	LoginPassword *string `json:"login_password,omitempty" xml:"login_password,omitempty"`
-	// 集群标签。
-	Tags []*ScaleClusterRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// 节点污点标记。
-	Taints []*ScaleClusterRequestTaints `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
-	// 节点交换机ID列表。
-	VswitchIds []*string `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
-	// 节点是否开启Worker节点自动续费。
-	WorkerAutoRenew *bool `json:"worker_auto_renew,omitempty" xml:"worker_auto_renew,omitempty"`
-	// 自动续费周期。
-	WorkerAutoRenewPeriod *int64 `json:"worker_auto_renew_period,omitempty" xml:"worker_auto_renew_period,omitempty"`
-	// 是否挂载数据盘。
-	WorkerDataDisk *bool `json:"worker_data_disk,omitempty" xml:"worker_data_disk,omitempty"`
-	// Worker数据盘类型、大小等配置的组合。
-	WorkerDataDisks []*ScaleClusterRequestWorkerDataDisks `json:"worker_data_disks,omitempty" xml:"worker_data_disks,omitempty" type:"Repeated"`
-	// 节点付费类型。
-	WorkerInstanceChargeType *string `json:"worker_instance_charge_type,omitempty" xml:"worker_instance_charge_type,omitempty"`
-	// Worker节点ECS规格类型。
-	WorkerInstanceTypes []*string `json:"worker_instance_types,omitempty" xml:"worker_instance_types,omitempty" type:"Repeated"`
-	// 节点包年包月时长。
-	WorkerPeriod *int64 `json:"worker_period,omitempty" xml:"worker_period,omitempty"`
-	// 当指定为PrePaid的时候需要指定周期。
-	WorkerPeriodUnit *string `json:"worker_period_unit,omitempty" xml:"worker_period_unit,omitempty"`
-	// 节点系统盘类型。
-	WorkerSystemDiskCategory *string `json:"worker_system_disk_category,omitempty" xml:"worker_system_disk_category,omitempty"`
-	// 节点系统盘大小
-	WorkerSystemDiskSize *int64 `json:"worker_system_disk_size,omitempty" xml:"worker_system_disk_size,omitempty"`
-}
-
-func (s ScaleClusterRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ScaleClusterRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ScaleClusterRequest) SetCloudMonitorFlags(v bool) *ScaleClusterRequest {
-	s.CloudMonitorFlags = &v
-	return s
-}
-
-func (s *ScaleClusterRequest) SetCount(v int64) *ScaleClusterRequest {
-	s.Count = &v
-	return s
-}
-
-func (s *ScaleClusterRequest) SetCpuPolicy(v string) *ScaleClusterRequest {
-	s.CpuPolicy = &v
-	return s
-}
-
-func (s *ScaleClusterRequest) SetDisableRollback(v bool) *ScaleClusterRequest {
-	s.DisableRollback = &v
-	return s
-}
-
-func (s *ScaleClusterRequest) SetKeyPair(v string) *ScaleClusterRequest {
-	s.KeyPair = &v
-	return s
-}
-
-func (s *ScaleClusterRequest) SetLoginPassword(v string) *ScaleClusterRequest {
-	s.LoginPassword = &v
-	return s
-}
-
-func (s *ScaleClusterRequest) SetTags(v []*ScaleClusterRequestTags) *ScaleClusterRequest {
-	s.Tags = v
-	return s
-}
-
-func (s *ScaleClusterRequest) SetTaints(v []*ScaleClusterRequestTaints) *ScaleClusterRequest {
-	s.Taints = v
-	return s
-}
-
-func (s *ScaleClusterRequest) SetVswitchIds(v []*string) *ScaleClusterRequest {
-	s.VswitchIds = v
-	return s
-}
-
-func (s *ScaleClusterRequest) SetWorkerAutoRenew(v bool) *ScaleClusterRequest {
-	s.WorkerAutoRenew = &v
-	return s
-}
-
-func (s *ScaleClusterRequest) SetWorkerAutoRenewPeriod(v int64) *ScaleClusterRequest {
-	s.WorkerAutoRenewPeriod = &v
-	return s
-}
-
-func (s *ScaleClusterRequest) SetWorkerDataDisk(v bool) *ScaleClusterRequest {
-	s.WorkerDataDisk = &v
-	return s
-}
-
-func (s *ScaleClusterRequest) SetWorkerDataDisks(v []*ScaleClusterRequestWorkerDataDisks) *ScaleClusterRequest {
-	s.WorkerDataDisks = v
-	return s
-}
-
-func (s *ScaleClusterRequest) SetWorkerInstanceChargeType(v string) *ScaleClusterRequest {
-	s.WorkerInstanceChargeType = &v
-	return s
-}
-
-func (s *ScaleClusterRequest) SetWorkerInstanceTypes(v []*string) *ScaleClusterRequest {
-	s.WorkerInstanceTypes = v
-	return s
-}
-
-func (s *ScaleClusterRequest) SetWorkerPeriod(v int64) *ScaleClusterRequest {
-	s.WorkerPeriod = &v
-	return s
-}
-
-func (s *ScaleClusterRequest) SetWorkerPeriodUnit(v string) *ScaleClusterRequest {
-	s.WorkerPeriodUnit = &v
-	return s
-}
-
-func (s *ScaleClusterRequest) SetWorkerSystemDiskCategory(v string) *ScaleClusterRequest {
-	s.WorkerSystemDiskCategory = &v
-	return s
-}
-
-func (s *ScaleClusterRequest) SetWorkerSystemDiskSize(v int64) *ScaleClusterRequest {
-	s.WorkerSystemDiskSize = &v
-	return s
-}
-
-type ScaleClusterRequestTags struct {
-	// 标签值。
-	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-}
-
-func (s ScaleClusterRequestTags) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ScaleClusterRequestTags) GoString() string {
-	return s.String()
-}
-
-func (s *ScaleClusterRequestTags) SetKey(v string) *ScaleClusterRequestTags {
-	s.Key = &v
-	return s
-}
-
-type ScaleClusterRequestTaints struct {
-	// 污点生效策略。
-	Effect *string `json:"effect,omitempty" xml:"effect,omitempty"`
-	// 污点键。
-	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// 污点值。
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
-}
-
-func (s ScaleClusterRequestTaints) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ScaleClusterRequestTaints) GoString() string {
-	return s.String()
-}
-
-func (s *ScaleClusterRequestTaints) SetEffect(v string) *ScaleClusterRequestTaints {
-	s.Effect = &v
-	return s
-}
-
-func (s *ScaleClusterRequestTaints) SetKey(v string) *ScaleClusterRequestTaints {
-	s.Key = &v
-	return s
-}
-
-func (s *ScaleClusterRequestTaints) SetValue(v string) *ScaleClusterRequestTaints {
-	s.Value = &v
-	return s
-}
-
-type ScaleClusterRequestWorkerDataDisks struct {
-	// 数据盘类型。
-	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// 是否对数据盘加密。
-	Encrypted *string `json:"encrypted,omitempty" xml:"encrypted,omitempty"`
-	// 数据盘大小。
-	Size *string `json:"size,omitempty" xml:"size,omitempty"`
-}
-
-func (s ScaleClusterRequestWorkerDataDisks) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ScaleClusterRequestWorkerDataDisks) GoString() string {
-	return s.String()
-}
-
-func (s *ScaleClusterRequestWorkerDataDisks) SetCategory(v string) *ScaleClusterRequestWorkerDataDisks {
-	s.Category = &v
-	return s
-}
-
-func (s *ScaleClusterRequestWorkerDataDisks) SetEncrypted(v string) *ScaleClusterRequestWorkerDataDisks {
-	s.Encrypted = &v
-	return s
-}
-
-func (s *ScaleClusterRequestWorkerDataDisks) SetSize(v string) *ScaleClusterRequestWorkerDataDisks {
-	s.Size = &v
-	return s
-}
-
-type ScaleClusterResponseBody struct {
-	// 集群ID。
-	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
-	// 任务ID。
-	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
-}
-
-func (s ScaleClusterResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ScaleClusterResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ScaleClusterResponseBody) SetClusterId(v string) *ScaleClusterResponseBody {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *ScaleClusterResponseBody) SetRequestId(v string) *ScaleClusterResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ScaleClusterResponseBody) SetTaskId(v string) *ScaleClusterResponseBody {
-	s.TaskId = &v
-	return s
-}
-
-type ScaleClusterResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ScaleClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ScaleClusterResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ScaleClusterResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ScaleClusterResponse) SetHeaders(v map[string]*string) *ScaleClusterResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ScaleClusterResponse) SetBody(v *ScaleClusterResponseBody) *ScaleClusterResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeClusterAddonUpgradeStatusResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeClusterAddonUpgradeStatusResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeClusterAddonUpgradeStatusResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeClusterAddonUpgradeStatusResponse) SetHeaders(v map[string]*string) *DescribeClusterAddonUpgradeStatusResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeClusterAddonUpgradeStatusResponse) SetBody(v map[string]interface{}) *DescribeClusterAddonUpgradeStatusResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeAddonsRequest struct {
 	// 地域ID。
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
@@ -4604,7 +4135,7 @@ func (s *DescribeTemplatesRequest) SetPageSize(v int64) *DescribeTemplatesReques
 
 type DescribeTemplatesResponseBody struct {
 	// 模板列表。
-	Templates []*DescribeTemplatesResponseBodyTemplates `json:"templates,omitempty" xml:"templates,omitempty" type:"Repeated"`
+	Templates *DescribeTemplatesResponseBodyTemplates `json:"templates,omitempty" xml:"templates,omitempty" type:"Struct"`
 	// 分页信息。
 	PageInfo *DescribeTemplatesResponseBodyPageInfo `json:"page_info,omitempty" xml:"page_info,omitempty" type:"Struct"`
 }
@@ -4617,7 +4148,7 @@ func (s DescribeTemplatesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeTemplatesResponseBody) SetTemplates(v []*DescribeTemplatesResponseBodyTemplates) *DescribeTemplatesResponseBody {
+func (s *DescribeTemplatesResponseBody) SetTemplates(v *DescribeTemplatesResponseBodyTemplates) *DescribeTemplatesResponseBody {
 	s.Templates = v
 	return s
 }
@@ -4628,6 +4159,23 @@ func (s *DescribeTemplatesResponseBody) SetPageInfo(v *DescribeTemplatesResponse
 }
 
 type DescribeTemplatesResponseBodyTemplates struct {
+	Template []*DescribeTemplatesResponseBodyTemplatesTemplate `json:"template,omitempty" xml:"template,omitempty" type:"Repeated"`
+}
+
+func (s DescribeTemplatesResponseBodyTemplates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTemplatesResponseBodyTemplates) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTemplatesResponseBodyTemplates) SetTemplate(v []*DescribeTemplatesResponseBodyTemplatesTemplate) *DescribeTemplatesResponseBodyTemplates {
+	s.Template = v
+	return s
+}
+
+type DescribeTemplatesResponseBodyTemplatesTemplate struct {
 	// 模板访问权限，取值为：private、pubilc或shared。。
 	Acl *string `json:"acl,omitempty" xml:"acl,omitempty"`
 	// 模板ID。会模板随着更新而变化。
@@ -4650,60 +4198,60 @@ type DescribeTemplatesResponseBodyTemplates struct {
 	TemplateWithHistId *string `json:"template_with_hist_id,omitempty" xml:"template_with_hist_id,omitempty"`
 }
 
-func (s DescribeTemplatesResponseBodyTemplates) String() string {
+func (s DescribeTemplatesResponseBodyTemplatesTemplate) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeTemplatesResponseBodyTemplates) GoString() string {
+func (s DescribeTemplatesResponseBodyTemplatesTemplate) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeTemplatesResponseBodyTemplates) SetAcl(v string) *DescribeTemplatesResponseBodyTemplates {
+func (s *DescribeTemplatesResponseBodyTemplatesTemplate) SetAcl(v string) *DescribeTemplatesResponseBodyTemplatesTemplate {
 	s.Acl = &v
 	return s
 }
 
-func (s *DescribeTemplatesResponseBodyTemplates) SetId(v string) *DescribeTemplatesResponseBodyTemplates {
+func (s *DescribeTemplatesResponseBodyTemplatesTemplate) SetId(v string) *DescribeTemplatesResponseBodyTemplatesTemplate {
 	s.Id = &v
 	return s
 }
 
-func (s *DescribeTemplatesResponseBodyTemplates) SetName(v string) *DescribeTemplatesResponseBodyTemplates {
+func (s *DescribeTemplatesResponseBodyTemplatesTemplate) SetName(v string) *DescribeTemplatesResponseBodyTemplatesTemplate {
 	s.Name = &v
 	return s
 }
 
-func (s *DescribeTemplatesResponseBodyTemplates) SetDescription(v string) *DescribeTemplatesResponseBodyTemplates {
+func (s *DescribeTemplatesResponseBodyTemplatesTemplate) SetDescription(v string) *DescribeTemplatesResponseBodyTemplatesTemplate {
 	s.Description = &v
 	return s
 }
 
-func (s *DescribeTemplatesResponseBodyTemplates) SetTags(v string) *DescribeTemplatesResponseBodyTemplates {
+func (s *DescribeTemplatesResponseBodyTemplatesTemplate) SetTags(v string) *DescribeTemplatesResponseBodyTemplatesTemplate {
 	s.Tags = &v
 	return s
 }
 
-func (s *DescribeTemplatesResponseBodyTemplates) SetTemplate(v string) *DescribeTemplatesResponseBodyTemplates {
+func (s *DescribeTemplatesResponseBodyTemplatesTemplate) SetTemplate(v string) *DescribeTemplatesResponseBodyTemplatesTemplate {
 	s.Template = &v
 	return s
 }
 
-func (s *DescribeTemplatesResponseBodyTemplates) SetTemplateType(v string) *DescribeTemplatesResponseBodyTemplates {
+func (s *DescribeTemplatesResponseBodyTemplatesTemplate) SetTemplateType(v string) *DescribeTemplatesResponseBodyTemplatesTemplate {
 	s.TemplateType = &v
 	return s
 }
 
-func (s *DescribeTemplatesResponseBodyTemplates) SetCreated(v string) *DescribeTemplatesResponseBodyTemplates {
+func (s *DescribeTemplatesResponseBodyTemplatesTemplate) SetCreated(v string) *DescribeTemplatesResponseBodyTemplatesTemplate {
 	s.Created = &v
 	return s
 }
 
-func (s *DescribeTemplatesResponseBodyTemplates) SetUpdated(v string) *DescribeTemplatesResponseBodyTemplates {
+func (s *DescribeTemplatesResponseBodyTemplatesTemplate) SetUpdated(v string) *DescribeTemplatesResponseBodyTemplatesTemplate {
 	s.Updated = &v
 	return s
 }
 
-func (s *DescribeTemplatesResponseBodyTemplates) SetTemplateWithHistId(v string) *DescribeTemplatesResponseBodyTemplates {
+func (s *DescribeTemplatesResponseBodyTemplatesTemplate) SetTemplateWithHistId(v string) *DescribeTemplatesResponseBodyTemplatesTemplate {
 	s.TemplateWithHistId = &v
 	return s
 }
@@ -4816,8 +4364,8 @@ func (s *DescribeTemplateAttributeRequest) SetTemplateType(v string) *DescribeTe
 }
 
 type DescribeTemplateAttributeResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    []*DescribeTemplateAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeTemplateAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Struct"`
 }
 
 func (s DescribeTemplateAttributeResponse) String() string {
@@ -4833,12 +4381,29 @@ func (s *DescribeTemplateAttributeResponse) SetHeaders(v map[string]*string) *De
 	return s
 }
 
-func (s *DescribeTemplateAttributeResponse) SetBody(v []*DescribeTemplateAttributeResponseBody) *DescribeTemplateAttributeResponse {
+func (s *DescribeTemplateAttributeResponse) SetBody(v *DescribeTemplateAttributeResponseBody) *DescribeTemplateAttributeResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeTemplateAttributeResponseBody struct {
+	TemplateInfo []*DescribeTemplateAttributeResponseBodyTemplateInfo `json:"template_info,omitempty" xml:"template_info,omitempty" type:"Repeated"`
+}
+
+func (s DescribeTemplateAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTemplateAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTemplateAttributeResponseBody) SetTemplateInfo(v []*DescribeTemplateAttributeResponseBodyTemplateInfo) *DescribeTemplateAttributeResponseBody {
+	s.TemplateInfo = v
+	return s
+}
+
+type DescribeTemplateAttributeResponseBodyTemplateInfo struct {
 	// 编排模板ID，模板每次修改，这个ID都会改变。
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
 	// 编排模板权限。取值：private，public，shared。
@@ -4861,60 +4426,60 @@ type DescribeTemplateAttributeResponseBody struct {
 	Updated *string `json:"updated,omitempty" xml:"updated,omitempty"`
 }
 
-func (s DescribeTemplateAttributeResponseBody) String() string {
+func (s DescribeTemplateAttributeResponseBodyTemplateInfo) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeTemplateAttributeResponseBody) GoString() string {
+func (s DescribeTemplateAttributeResponseBodyTemplateInfo) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeTemplateAttributeResponseBody) SetId(v string) *DescribeTemplateAttributeResponseBody {
+func (s *DescribeTemplateAttributeResponseBodyTemplateInfo) SetId(v string) *DescribeTemplateAttributeResponseBodyTemplateInfo {
 	s.Id = &v
 	return s
 }
 
-func (s *DescribeTemplateAttributeResponseBody) SetAcl(v string) *DescribeTemplateAttributeResponseBody {
+func (s *DescribeTemplateAttributeResponseBodyTemplateInfo) SetAcl(v string) *DescribeTemplateAttributeResponseBodyTemplateInfo {
 	s.Acl = &v
 	return s
 }
 
-func (s *DescribeTemplateAttributeResponseBody) SetName(v string) *DescribeTemplateAttributeResponseBody {
+func (s *DescribeTemplateAttributeResponseBodyTemplateInfo) SetName(v string) *DescribeTemplateAttributeResponseBodyTemplateInfo {
 	s.Name = &v
 	return s
 }
 
-func (s *DescribeTemplateAttributeResponseBody) SetTemplate(v string) *DescribeTemplateAttributeResponseBody {
+func (s *DescribeTemplateAttributeResponseBodyTemplateInfo) SetTemplate(v string) *DescribeTemplateAttributeResponseBodyTemplateInfo {
 	s.Template = &v
 	return s
 }
 
-func (s *DescribeTemplateAttributeResponseBody) SetTemplateType(v string) *DescribeTemplateAttributeResponseBody {
+func (s *DescribeTemplateAttributeResponseBodyTemplateInfo) SetTemplateType(v string) *DescribeTemplateAttributeResponseBodyTemplateInfo {
 	s.TemplateType = &v
 	return s
 }
 
-func (s *DescribeTemplateAttributeResponseBody) SetDescription(v string) *DescribeTemplateAttributeResponseBody {
+func (s *DescribeTemplateAttributeResponseBodyTemplateInfo) SetDescription(v string) *DescribeTemplateAttributeResponseBodyTemplateInfo {
 	s.Description = &v
 	return s
 }
 
-func (s *DescribeTemplateAttributeResponseBody) SetTags(v string) *DescribeTemplateAttributeResponseBody {
+func (s *DescribeTemplateAttributeResponseBodyTemplateInfo) SetTags(v string) *DescribeTemplateAttributeResponseBodyTemplateInfo {
 	s.Tags = &v
 	return s
 }
 
-func (s *DescribeTemplateAttributeResponseBody) SetTemplateWithHistId(v string) *DescribeTemplateAttributeResponseBody {
+func (s *DescribeTemplateAttributeResponseBodyTemplateInfo) SetTemplateWithHistId(v string) *DescribeTemplateAttributeResponseBodyTemplateInfo {
 	s.TemplateWithHistId = &v
 	return s
 }
 
-func (s *DescribeTemplateAttributeResponseBody) SetCreated(v string) *DescribeTemplateAttributeResponseBody {
+func (s *DescribeTemplateAttributeResponseBodyTemplateInfo) SetCreated(v string) *DescribeTemplateAttributeResponseBodyTemplateInfo {
 	s.Created = &v
 	return s
 }
 
-func (s *DescribeTemplateAttributeResponseBody) SetUpdated(v string) *DescribeTemplateAttributeResponseBody {
+func (s *DescribeTemplateAttributeResponseBodyTemplateInfo) SetUpdated(v string) *DescribeTemplateAttributeResponseBodyTemplateInfo {
 	s.Updated = &v
 	return s
 }
@@ -5898,7 +5463,7 @@ type DescribeTaskInfoResponseBody struct {
 	// 当前任务类型。
 	TaskType *string `json:"task_type,omitempty" xml:"task_type,omitempty"`
 	// 任务执行详情。
-	TaskResult []*DescribeTaskInfoResponseBodyTaskResult `json:"task_result,omitempty" xml:"task_result,omitempty" type:"Repeated"`
+	TaskResult *DescribeTaskInfoResponseBodyTaskResult `json:"task_result,omitempty" xml:"task_result,omitempty" type:"Struct"`
 }
 
 func (s DescribeTaskInfoResponseBody) String() string {
@@ -5939,16 +5504,13 @@ func (s *DescribeTaskInfoResponseBody) SetTaskType(v string) *DescribeTaskInfoRe
 	return s
 }
 
-func (s *DescribeTaskInfoResponseBody) SetTaskResult(v []*DescribeTaskInfoResponseBodyTaskResult) *DescribeTaskInfoResponseBody {
+func (s *DescribeTaskInfoResponseBody) SetTaskResult(v *DescribeTaskInfoResponseBodyTaskResult) *DescribeTaskInfoResponseBody {
 	s.TaskResult = v
 	return s
 }
 
 type DescribeTaskInfoResponseBodyTaskResult struct {
-	// 操作的资源，例如：实例ID。
-	Data *string `json:"data,omitempty" xml:"data,omitempty"`
-	// 资源的状态。
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	Task []*DescribeTaskInfoResponseBodyTaskResultTask `json:"task,omitempty" xml:"task,omitempty" type:"Repeated"`
 }
 
 func (s DescribeTaskInfoResponseBodyTaskResult) String() string {
@@ -5959,12 +5521,32 @@ func (s DescribeTaskInfoResponseBodyTaskResult) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeTaskInfoResponseBodyTaskResult) SetData(v string) *DescribeTaskInfoResponseBodyTaskResult {
+func (s *DescribeTaskInfoResponseBodyTaskResult) SetTask(v []*DescribeTaskInfoResponseBodyTaskResultTask) *DescribeTaskInfoResponseBodyTaskResult {
+	s.Task = v
+	return s
+}
+
+type DescribeTaskInfoResponseBodyTaskResultTask struct {
+	// 操作的资源，例如：实例ID。
+	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// 资源的状态。
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s DescribeTaskInfoResponseBodyTaskResultTask) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTaskInfoResponseBodyTaskResultTask) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTaskInfoResponseBodyTaskResultTask) SetData(v string) *DescribeTaskInfoResponseBodyTaskResultTask {
 	s.Data = &v
 	return s
 }
 
-func (s *DescribeTaskInfoResponseBodyTaskResult) SetStatus(v string) *DescribeTaskInfoResponseBodyTaskResult {
+func (s *DescribeTaskInfoResponseBodyTaskResultTask) SetStatus(v string) *DescribeTaskInfoResponseBodyTaskResultTask {
 	s.Status = &v
 	return s
 }
@@ -7026,65 +6608,6 @@ func (s *DescribeClusterNodePoolsResponse) SetBody(v *DescribeClusterNodePoolsRe
 	return s
 }
 
-type DescribeClusterV2UserKubeconfigRequest struct {
-	// 是否为内网访问。
-	PrivateIpAddress *bool `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-}
-
-func (s DescribeClusterV2UserKubeconfigRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeClusterV2UserKubeconfigRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeClusterV2UserKubeconfigRequest) SetPrivateIpAddress(v bool) *DescribeClusterV2UserKubeconfigRequest {
-	s.PrivateIpAddress = &v
-	return s
-}
-
-type DescribeClusterV2UserKubeconfigResponseBody struct {
-	// kubeconfig内容。
-	Config *string `json:"config,omitempty" xml:"config,omitempty"`
-}
-
-func (s DescribeClusterV2UserKubeconfigResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeClusterV2UserKubeconfigResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeClusterV2UserKubeconfigResponseBody) SetConfig(v string) *DescribeClusterV2UserKubeconfigResponseBody {
-	s.Config = &v
-	return s
-}
-
-type DescribeClusterV2UserKubeconfigResponse struct {
-	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeClusterV2UserKubeconfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeClusterV2UserKubeconfigResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeClusterV2UserKubeconfigResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeClusterV2UserKubeconfigResponse) SetHeaders(v map[string]*string) *DescribeClusterV2UserKubeconfigResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeClusterV2UserKubeconfigResponse) SetBody(v *DescribeClusterV2UserKubeconfigResponseBody) *DescribeClusterV2UserKubeconfigResponse {
-	s.Body = v
-	return s
-}
-
 type ScaleOutClusterRequest struct {
 	// 扩容节点数
 	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
@@ -7294,6 +6817,62 @@ func (s *ScaleOutClusterResponse) SetHeaders(v map[string]*string) *ScaleOutClus
 
 func (s *ScaleOutClusterResponse) SetBody(v *ScaleOutClusterResponseBody) *ScaleOutClusterResponse {
 	s.Body = v
+	return s
+}
+
+type TagResourcesRequest struct {
+	// 资源ID列表
+	ResourceIds []*string `json:"resource_ids,omitempty" xml:"resource_ids,omitempty" type:"Repeated"`
+	// 资源类型定义。取值范围：  只支持CLUSTER这一种资源类型
+	ResourceType *string `json:"resource_type,omitempty" xml:"resource_type,omitempty"`
+	// 资源所属的地域ID
+	RegionId *string `json:"region_id,omitempty" xml:"region_id,omitempty"`
+	// 资源的标签键值对。数组长度范围：1~20。一旦传值，则不允许为空字符串。最多支持128个字符，不能以aliyun和acs:开头，不能包含http://或者https://。
+	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+}
+
+func (s TagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesRequest) SetResourceIds(v []*string) *TagResourcesRequest {
+	s.ResourceIds = v
+	return s
+}
+
+func (s *TagResourcesRequest) SetResourceType(v string) *TagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *TagResourcesRequest) SetRegionId(v string) *TagResourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *TagResourcesRequest) SetTags(v []*Tag) *TagResourcesRequest {
+	s.Tags = v
+	return s
+}
+
+type TagResourcesResponse struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+}
+
+func (s TagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesResponse) SetHeaders(v map[string]*string) *TagResourcesResponse {
+	s.Headers = v
 	return s
 }
 
@@ -7738,7 +7317,7 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 		"cn-fujian":                   tea.String("cs.aliyuncs.com"),
 		"cn-haidian-cm12-c01":         tea.String("cs.aliyuncs.com"),
 		"cn-hangzhou-bj-b01":          tea.String("cs.aliyuncs.com"),
-		"cn-hangzhou-finance":         tea.String("cs.aliyuncs.com"),
+		"cn-hangzhou-finance":         tea.String("cs-vpc.cn-hangzhou-finance.aliyuncs.com"),
 		"cn-hangzhou-internal-prod-1": tea.String("cs.aliyuncs.com"),
 		"cn-hangzhou-internal-test-1": tea.String("cs.aliyuncs.com"),
 		"cn-hangzhou-internal-test-2": tea.String("cs.aliyuncs.com"),
@@ -7749,16 +7328,16 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 		"cn-qingdao-nebula":           tea.String("cs.aliyuncs.com"),
 		"cn-shanghai-et15-b01":        tea.String("cs.aliyuncs.com"),
 		"cn-shanghai-et2-b01":         tea.String("cs.aliyuncs.com"),
-		"cn-shanghai-finance-1":       tea.String("cs.aliyuncs.com"),
+		"cn-shanghai-finance-1":       tea.String("cs-vpc.cn-shanghai-finance-1.aliyuncs.com"),
 		"cn-shanghai-inner":           tea.String("cs.aliyuncs.com"),
 		"cn-shanghai-internal-test-1": tea.String("cs.aliyuncs.com"),
-		"cn-shenzhen-finance-1":       tea.String("cs.aliyuncs.com"),
+		"cn-shenzhen-finance-1":       tea.String("cs-vpc.cn-shenzhen-finance-1.aliyuncs.com"),
 		"cn-shenzhen-inner":           tea.String("cs.aliyuncs.com"),
 		"cn-shenzhen-st4-d01":         tea.String("cs.aliyuncs.com"),
 		"cn-shenzhen-su18-b01":        tea.String("cs.aliyuncs.com"),
 		"cn-wuhan":                    tea.String("cs.aliyuncs.com"),
-		"cn-wulanchabu":               tea.String("cs.aliyuncs.com"),
 		"cn-yushanfang":               tea.String("cs.aliyuncs.com"),
+		"cn-zhangbei":                 tea.String("cs.aliyuncs.com"),
 		"cn-zhangbei-na61-b01":        tea.String("cs.aliyuncs.com"),
 		"cn-zhangjiakou-na62-a01":     tea.String("cs.aliyuncs.com"),
 		"cn-zhengzhou-nebula-1":       tea.String("cs.aliyuncs.com"),
@@ -7832,6 +7411,53 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 	}
 	_result = &ListTagResourcesResponse{}
 	_body, _err := client.DoROARequest(tea.String("ListTagResources"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/tags"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.UntagResourcesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["region_id"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceIds)) {
+		query["resource_ids"] = request.ResourceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["resource_type"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKeys)) {
+		query["tag_keys"] = request.TagKeys
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.DoROARequest(tea.String("UntagResources"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/tags"), tea.String("none"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8101,45 +7727,6 @@ func (client *Client) DescribeClusterDetailWithOptions(ClusterId *string, header
 	return _result, _err
 }
 
-func (client *Client) DescribeClusters(request *DescribeClustersRequest) (_result *DescribeClustersResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DescribeClustersResponse{}
-	_body, _err := client.DescribeClustersWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeClustersWithOptions(request *DescribeClustersRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeClustersResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Name)) {
-		query["name"] = request.Name
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ClusterType)) {
-		query["clusterType"] = request.ClusterType
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	_result = &DescribeClustersResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeClusters"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/clusters"), tea.String("array"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
 func (client *Client) ModifyClusterNodePool(ClusterId *string, NodepoolId *string, request *ModifyClusterNodePoolRequest) (_result *ModifyClusterNodePoolResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8191,7 +7778,7 @@ func (client *Client) ModifyClusterNodePoolWithOptions(ClusterId *string, Nodepo
 		Body:    openapiutil.ParseToMap(body),
 	}
 	_result = &ModifyClusterNodePoolResponse{}
-	_body, _err := client.DoROARequest(tea.String("ModifyClusterNodePool"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/nodepools/{NodepoolId}"), tea.String("json"), req, runtime)
+	_body, _err := client.DoROARequest(tea.String("ModifyClusterNodePool"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/nodepools/"+tea.StringValue(NodepoolId)), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8217,6 +7804,41 @@ func (client *Client) ResumeUpgradeClusterWithOptions(ClusterId *string, headers
 	}
 	_result = &ResumeUpgradeClusterResponse{}
 	_body, _err := client.DoROARequest(tea.String("ResumeUpgradeCluster"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v2/clusters/"+tea.StringValue(ClusterId)+"/upgrade/resume"), tea.String("none"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) OpenAckService(request *OpenAckServiceRequest) (_result *OpenAckServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &OpenAckServiceResponse{}
+	_body, _err := client.OpenAckServiceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) OpenAckServiceWithOptions(request *OpenAckServiceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *OpenAckServiceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	_result = &OpenAckServiceResponse{}
+	_body, _err := client.DoROARequest(tea.String("OpenAckService"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/service/open"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8251,7 +7873,7 @@ func (client *Client) ScaleClusterNodePoolWithOptions(ClusterId *string, Nodepoo
 		Body:    openapiutil.ParseToMap(body),
 	}
 	_result = &ScaleClusterNodePoolResponse{}
-	_body, _err := client.DoROARequest(tea.String("ScaleClusterNodePool"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/nodepools/{NodepoolId}"), tea.String("json"), req, runtime)
+	_body, _err := client.DoROARequest(tea.String("ScaleClusterNodePool"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/nodepools/"+tea.StringValue(NodepoolId)), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8276,7 +7898,7 @@ func (client *Client) DescribeClusterNodePoolDetailWithOptions(ClusterId *string
 		Headers: headers,
 	}
 	_result = &DescribeClusterNodePoolDetailResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeClusterNodePoolDetail"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/nodepools/{NodepoolId}"), tea.String("json"), req, runtime)
+	_body, _err := client.DoROARequest(tea.String("DescribeClusterNodePoolDetail"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/nodepools/"+tea.StringValue(NodepoolId)), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8371,138 +7993,6 @@ func (client *Client) DescribeClusterUserKubeconfigWithOptions(ClusterId *string
 	}
 	_result = &DescribeClusterUserKubeconfigResponse{}
 	_body, _err := client.DoROARequest(tea.String("DescribeClusterUserKubeconfig"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/k8s/"+tea.StringValue(ClusterId)+"/user_config"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ScaleCluster(ClusterId *string, request *ScaleClusterRequest) (_result *ScaleClusterResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ScaleClusterResponse{}
-	_body, _err := client.ScaleClusterWithOptions(ClusterId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ScaleClusterWithOptions(ClusterId *string, request *ScaleClusterRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ScaleClusterResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.CloudMonitorFlags)) {
-		body["cloud_monitor_flags"] = request.CloudMonitorFlags
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Count)) {
-		body["count"] = request.Count
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CpuPolicy)) {
-		body["cpu_policy"] = request.CpuPolicy
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DisableRollback)) {
-		body["disable_rollback"] = request.DisableRollback
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.KeyPair)) {
-		body["key_pair"] = request.KeyPair
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.LoginPassword)) {
-		body["login_password"] = request.LoginPassword
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Tags)) {
-		body["tags"] = request.Tags
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Taints)) {
-		body["taints"] = request.Taints
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.VswitchIds)) {
-		body["vswitch_ids"] = request.VswitchIds
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkerAutoRenew)) {
-		body["worker_auto_renew"] = request.WorkerAutoRenew
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkerAutoRenewPeriod)) {
-		body["worker_auto_renew_period"] = request.WorkerAutoRenewPeriod
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkerDataDisk)) {
-		body["worker_data_disk"] = request.WorkerDataDisk
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkerDataDisks)) {
-		body["worker_data_disks"] = request.WorkerDataDisks
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkerInstanceChargeType)) {
-		body["worker_instance_charge_type"] = request.WorkerInstanceChargeType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkerInstanceTypes)) {
-		body["worker_instance_types"] = request.WorkerInstanceTypes
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkerPeriod)) {
-		body["worker_period"] = request.WorkerPeriod
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkerPeriodUnit)) {
-		body["worker_period_unit"] = request.WorkerPeriodUnit
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkerSystemDiskCategory)) {
-		body["worker_system_disk_category"] = request.WorkerSystemDiskCategory
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkerSystemDiskSize)) {
-		body["worker_system_disk_size"] = request.WorkerSystemDiskSize
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	_result = &ScaleClusterResponse{}
-	_body, _err := client.DoROARequest(tea.String("ScaleCluster"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeClusterAddonUpgradeStatus(ClusterId *string, ComponentId *string) (_result *DescribeClusterAddonUpgradeStatusResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DescribeClusterAddonUpgradeStatusResponse{}
-	_body, _err := client.DescribeClusterAddonUpgradeStatusWithOptions(ClusterId, ComponentId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeClusterAddonUpgradeStatusWithOptions(ClusterId *string, ComponentId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeClusterAddonUpgradeStatusResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	_result = &DescribeClusterAddonUpgradeStatusResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeClusterAddonUpgradeStatus"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/components/{ComponentId}/upgradestatus"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9639,7 +9129,7 @@ func (client *Client) DeleteClusterNodepoolWithOptions(ClusterId *string, Nodepo
 		Headers: headers,
 	}
 	_result = &DeleteClusterNodepoolResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteClusterNodepool"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/nodepools/{NodepoolId}"), tea.String("none"), req, runtime)
+	_body, _err := client.DoROARequest(tea.String("DeleteClusterNodepool"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/nodepools/"+tea.StringValue(NodepoolId)), tea.String("none"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9730,41 +9220,6 @@ func (client *Client) DescribeClusterNodePoolsWithOptions(ClusterId *string, hea
 	}
 	_result = &DescribeClusterNodePoolsResponse{}
 	_body, _err := client.DoROARequest(tea.String("DescribeClusterNodePools"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/nodepools"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeClusterV2UserKubeconfig(ClusterId *string, request *DescribeClusterV2UserKubeconfigRequest) (_result *DescribeClusterV2UserKubeconfigResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DescribeClusterV2UserKubeconfigResponse{}
-	_body, _err := client.DescribeClusterV2UserKubeconfigWithOptions(ClusterId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeClusterV2UserKubeconfigWithOptions(ClusterId *string, request *DescribeClusterV2UserKubeconfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeClusterV2UserKubeconfigResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.PrivateIpAddress)) {
-		query["PrivateIpAddress"] = request.PrivateIpAddress
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	_result = &DescribeClusterV2UserKubeconfigResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeClusterV2UserKubeconfig"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v2/k8s/"+tea.StringValue(ClusterId)+"/user_config"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9880,6 +9335,53 @@ func (client *Client) ScaleOutClusterWithOptions(ClusterId *string, request *Sca
 	}
 	_result = &ScaleOutClusterResponse{}
 	_body, _err := client.DoROARequest(tea.String("ScaleOutCluster"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v2/clusters/"+tea.StringValue(ClusterId)), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &TagResourcesResponse{}
+	_body, _err := client.TagResourcesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceIds)) {
+		body["resource_ids"] = request.ResourceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		body["resource_type"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["region_id"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		body["tags"] = request.Tags
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	_result = &TagResourcesResponse{}
+	_body, _err := client.DoROARequest(tea.String("TagResources"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/tags"), tea.String("none"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
