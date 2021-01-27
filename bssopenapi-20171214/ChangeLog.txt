@@ -1,3 +1,6 @@
+2021-01-27 Version: v1.0.0
+- Generated golang 2017-12-14 for BssOpenApi.
+
 2020-09-24 Version: v0.1.2
 - Supported query account transactions.
 
