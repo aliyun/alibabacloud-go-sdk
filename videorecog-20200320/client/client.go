@@ -18,6 +18,116 @@ import (
 	"io"
 )
 
+type GetAsyncJobResultRequest struct {
+	Async *bool   `json:"Async,omitempty" xml:"Async,omitempty"`
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s GetAsyncJobResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAsyncJobResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAsyncJobResultRequest) SetAsync(v bool) *GetAsyncJobResultRequest {
+	s.Async = &v
+	return s
+}
+
+func (s *GetAsyncJobResultRequest) SetJobId(v string) *GetAsyncJobResultRequest {
+	s.JobId = &v
+	return s
+}
+
+type GetAsyncJobResultResponseBody struct {
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *GetAsyncJobResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s GetAsyncJobResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAsyncJobResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAsyncJobResultResponseBody) SetRequestId(v string) *GetAsyncJobResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAsyncJobResultResponseBody) SetData(v *GetAsyncJobResultResponseBodyData) *GetAsyncJobResultResponseBody {
+	s.Data = v
+	return s
+}
+
+type GetAsyncJobResultResponseBodyData struct {
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Result       *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	JobId        *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s GetAsyncJobResultResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAsyncJobResultResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetAsyncJobResultResponseBodyData) SetStatus(v string) *GetAsyncJobResultResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetAsyncJobResultResponseBodyData) SetErrorMessage(v string) *GetAsyncJobResultResponseBodyData {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetAsyncJobResultResponseBodyData) SetResult(v string) *GetAsyncJobResultResponseBodyData {
+	s.Result = &v
+	return s
+}
+
+func (s *GetAsyncJobResultResponseBodyData) SetErrorCode(v string) *GetAsyncJobResultResponseBodyData {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetAsyncJobResultResponseBodyData) SetJobId(v string) *GetAsyncJobResultResponseBodyData {
+	s.JobId = &v
+	return s
+}
+
+type GetAsyncJobResultResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetAsyncJobResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAsyncJobResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAsyncJobResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAsyncJobResultResponse) SetHeaders(v map[string]*string) *GetAsyncJobResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAsyncJobResultResponse) SetBody(v *GetAsyncJobResultResponseBody) *GetAsyncJobResultResponse {
+	s.Body = v
+	return s
+}
+
 type DetectVideoShotRequest struct {
 	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 	Async    *bool   `json:"Async,omitempty" xml:"Async,omitempty"`
@@ -271,112 +381,154 @@ func (s *GenerateVideoCoverResponse) SetBody(v *GenerateVideoCoverResponseBody) 
 	return s
 }
 
-type GetAsyncJobResultRequest struct {
-	Async *bool   `json:"Async,omitempty" xml:"Async,omitempty"`
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+type UnderstandVideoContentRequest struct {
+	// A short description of struct
+	VideoURL *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
+	Async    *bool   `json:"Async,omitempty" xml:"Async,omitempty"`
 }
 
-func (s GetAsyncJobResultRequest) String() string {
+func (s UnderstandVideoContentRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetAsyncJobResultRequest) GoString() string {
+func (s UnderstandVideoContentRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetAsyncJobResultRequest) SetAsync(v bool) *GetAsyncJobResultRequest {
+func (s *UnderstandVideoContentRequest) SetVideoURL(v string) *UnderstandVideoContentRequest {
+	s.VideoURL = &v
+	return s
+}
+
+func (s *UnderstandVideoContentRequest) SetAsync(v bool) *UnderstandVideoContentRequest {
 	s.Async = &v
 	return s
 }
 
-func (s *GetAsyncJobResultRequest) SetJobId(v string) *GetAsyncJobResultRequest {
-	s.JobId = &v
-	return s
+type UnderstandVideoContentAdvanceRequest struct {
+	VideoURLObject io.Reader `json:"VideoURLObject,omitempty" xml:"VideoURLObject,omitempty" require:"true"`
+	Async          *bool     `json:"Async,omitempty" xml:"Async,omitempty"`
 }
 
-type GetAsyncJobResultResponseBody struct {
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *GetAsyncJobResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-}
-
-func (s GetAsyncJobResultResponseBody) String() string {
+func (s UnderstandVideoContentAdvanceRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetAsyncJobResultResponseBody) GoString() string {
+func (s UnderstandVideoContentAdvanceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetAsyncJobResultResponseBody) SetRequestId(v string) *GetAsyncJobResultResponseBody {
+func (s *UnderstandVideoContentAdvanceRequest) SetVideoURLObject(v io.Reader) *UnderstandVideoContentAdvanceRequest {
+	s.VideoURLObject = v
+	return s
+}
+
+func (s *UnderstandVideoContentAdvanceRequest) SetAsync(v bool) *UnderstandVideoContentAdvanceRequest {
+	s.Async = &v
+	return s
+}
+
+type UnderstandVideoContentResponseBody struct {
+	// Id of the request
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *UnderstandVideoContentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s UnderstandVideoContentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnderstandVideoContentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UnderstandVideoContentResponseBody) SetRequestId(v string) *UnderstandVideoContentResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *GetAsyncJobResultResponseBody) SetData(v *GetAsyncJobResultResponseBodyData) *GetAsyncJobResultResponseBody {
+func (s *UnderstandVideoContentResponseBody) SetData(v *UnderstandVideoContentResponseBodyData) *UnderstandVideoContentResponseBody {
 	s.Data = v
 	return s
 }
 
-type GetAsyncJobResultResponseBodyData struct {
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Result       *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	JobId        *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+type UnderstandVideoContentResponseBodyData struct {
+	TagInfo   map[string]interface{}                           `json:"TagInfo,omitempty" xml:"TagInfo,omitempty"`
+	VideoInfo *UnderstandVideoContentResponseBodyDataVideoInfo `json:"VideoInfo,omitempty" xml:"VideoInfo,omitempty" type:"Struct"`
 }
 
-func (s GetAsyncJobResultResponseBodyData) String() string {
+func (s UnderstandVideoContentResponseBodyData) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetAsyncJobResultResponseBodyData) GoString() string {
+func (s UnderstandVideoContentResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *GetAsyncJobResultResponseBodyData) SetStatus(v string) *GetAsyncJobResultResponseBodyData {
-	s.Status = &v
+func (s *UnderstandVideoContentResponseBodyData) SetTagInfo(v map[string]interface{}) *UnderstandVideoContentResponseBodyData {
+	s.TagInfo = v
 	return s
 }
 
-func (s *GetAsyncJobResultResponseBodyData) SetErrorMessage(v string) *GetAsyncJobResultResponseBodyData {
-	s.ErrorMessage = &v
+func (s *UnderstandVideoContentResponseBodyData) SetVideoInfo(v *UnderstandVideoContentResponseBodyDataVideoInfo) *UnderstandVideoContentResponseBodyData {
+	s.VideoInfo = v
 	return s
 }
 
-func (s *GetAsyncJobResultResponseBodyData) SetResult(v string) *GetAsyncJobResultResponseBodyData {
-	s.Result = &v
-	return s
+type UnderstandVideoContentResponseBodyDataVideoInfo struct {
+	Width    *int64   `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height   *int64   `json:"Height,omitempty" xml:"Height,omitempty"`
+	Duration *int64   `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Fps      *float32 `json:"Fps,omitempty" xml:"Fps,omitempty"`
 }
 
-func (s *GetAsyncJobResultResponseBodyData) SetErrorCode(v string) *GetAsyncJobResultResponseBodyData {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetAsyncJobResultResponseBodyData) SetJobId(v string) *GetAsyncJobResultResponseBodyData {
-	s.JobId = &v
-	return s
-}
-
-type GetAsyncJobResultResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetAsyncJobResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetAsyncJobResultResponse) String() string {
+func (s UnderstandVideoContentResponseBodyDataVideoInfo) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetAsyncJobResultResponse) GoString() string {
+func (s UnderstandVideoContentResponseBodyDataVideoInfo) GoString() string {
 	return s.String()
 }
 
-func (s *GetAsyncJobResultResponse) SetHeaders(v map[string]*string) *GetAsyncJobResultResponse {
+func (s *UnderstandVideoContentResponseBodyDataVideoInfo) SetWidth(v int64) *UnderstandVideoContentResponseBodyDataVideoInfo {
+	s.Width = &v
+	return s
+}
+
+func (s *UnderstandVideoContentResponseBodyDataVideoInfo) SetHeight(v int64) *UnderstandVideoContentResponseBodyDataVideoInfo {
+	s.Height = &v
+	return s
+}
+
+func (s *UnderstandVideoContentResponseBodyDataVideoInfo) SetDuration(v int64) *UnderstandVideoContentResponseBodyDataVideoInfo {
+	s.Duration = &v
+	return s
+}
+
+func (s *UnderstandVideoContentResponseBodyDataVideoInfo) SetFps(v float32) *UnderstandVideoContentResponseBodyDataVideoInfo {
+	s.Fps = &v
+	return s
+}
+
+type UnderstandVideoContentResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UnderstandVideoContentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UnderstandVideoContentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnderstandVideoContentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UnderstandVideoContentResponse) SetHeaders(v map[string]*string) *UnderstandVideoContentResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *GetAsyncJobResultResponse) SetBody(v *GetAsyncJobResultResponseBody) *GetAsyncJobResultResponse {
+func (s *UnderstandVideoContentResponse) SetBody(v *UnderstandVideoContentResponseBody) *UnderstandVideoContentResponse {
 	s.Body = v
 	return s
 }
@@ -421,6 +573,34 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetAsyncJobResultWithOptions(request *GetAsyncJobResultRequest, runtime *util.RuntimeOptions) (_result *GetAsyncJobResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetAsyncJobResultResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetAsyncJobResult"), tea.String("2020-03-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAsyncJobResult(request *GetAsyncJobResultRequest) (_result *GetAsyncJobResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAsyncJobResultResponse{}
+	_body, _err := client.GetAsyncJobResultWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -658,7 +838,7 @@ func (client *Client) GenerateVideoCoverAdvance(request *GenerateVideoCoverAdvan
 	return _result, _err
 }
 
-func (client *Client) GetAsyncJobResultWithOptions(request *GetAsyncJobResultRequest, runtime *util.RuntimeOptions) (_result *GetAsyncJobResultResponse, _err error) {
+func (client *Client) UnderstandVideoContentWithOptions(request *UnderstandVideoContentRequest, runtime *util.RuntimeOptions) (_result *UnderstandVideoContentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -666,8 +846,8 @@ func (client *Client) GetAsyncJobResultWithOptions(request *GetAsyncJobResultReq
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
-	_result = &GetAsyncJobResultResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAsyncJobResult"), tea.String("2020-03-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_result = &UnderstandVideoContentResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UnderstandVideoContent"), tea.String("2020-03-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -675,13 +855,100 @@ func (client *Client) GetAsyncJobResultWithOptions(request *GetAsyncJobResultReq
 	return _result, _err
 }
 
-func (client *Client) GetAsyncJobResult(request *GetAsyncJobResultRequest) (_result *GetAsyncJobResultResponse, _err error) {
+func (client *Client) UnderstandVideoContent(request *UnderstandVideoContentRequest) (_result *UnderstandVideoContentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &GetAsyncJobResultResponse{}
-	_body, _err := client.GetAsyncJobResultWithOptions(request, runtime)
+	_result = &UnderstandVideoContentResponse{}
+	_body, _err := client.UnderstandVideoContentWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UnderstandVideoContentAdvance(request *UnderstandVideoContentAdvanceRequest, runtime *util.RuntimeOptions) (_result *UnderstandVideoContentResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("videorecog"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	understandVideoContentReq := &UnderstandVideoContentRequest{}
+	openapiutil.Convert(request, understandVideoContentReq)
+	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	ossConfig.AccessKeyId = authResponse.AccessKeyId
+	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+	ossClient, _err = oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	fileObj = &fileform.FileField{
+		Filename:    authResponse.ObjectKey,
+		Content:     request.VideoURLObject,
+		ContentType: tea.String(""),
+	}
+	ossHeader = &oss.PostObjectRequestHeader{
+		AccessKeyId:         authResponse.AccessKeyId,
+		Policy:              authResponse.EncodedPolicy,
+		Signature:           authResponse.Signature,
+		Key:                 authResponse.ObjectKey,
+		File:                fileObj,
+		SuccessActionStatus: tea.String("201"),
+	}
+	uploadRequest = &oss.PostObjectRequest{
+		BucketName: authResponse.Bucket,
+		Header:     ossHeader,
+	}
+	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+	if _err != nil {
+		return _result, _err
+	}
+	understandVideoContentReq.VideoURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	understandVideoContentResp, _err := client.UnderstandVideoContentWithOptions(understandVideoContentReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = understandVideoContentResp
 	return _result, _err
 }
