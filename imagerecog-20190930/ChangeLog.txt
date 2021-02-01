@@ -1,3 +1,6 @@
+2021-02-01 Version: v2.0.0
+- Release RecognizeFood.
+
 2020-12-18 Version: v1.1.5
 - Release EvaluateCertificateQuality.
 
