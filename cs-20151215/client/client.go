@@ -960,6 +960,94 @@ func (s *CreateKubernetesTriggerResponse) SetBody(v *CreateKubernetesTriggerResp
 	return s
 }
 
+type GrantPermissionsRequest struct {
+	// 请求体参数
+	Body []*GrantPermissionsRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
+}
+
+func (s GrantPermissionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GrantPermissionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GrantPermissionsRequest) SetBody(v []*GrantPermissionsRequestBody) *GrantPermissionsRequest {
+	s.Body = v
+	return s
+}
+
+type GrantPermissionsRequestBody struct {
+	// 授权目标集群id
+	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
+	// 该授权是否是自定义授权
+	IsCustom *bool `json:"is_custom,omitempty" xml:"is_custom,omitempty"`
+	// 预置的角色名称
+	RoleName *string `json:"role_name,omitempty" xml:"role_name,omitempty"`
+	// 授权类型
+	RoleType *string `json:"role_type,omitempty" xml:"role_type,omitempty"`
+	// 命名空间名称
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// 是否是 RAM 角色授权
+	IsRamRole *bool `json:"is_ram_role,omitempty" xml:"is_ram_role,omitempty"`
+}
+
+func (s GrantPermissionsRequestBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GrantPermissionsRequestBody) GoString() string {
+	return s.String()
+}
+
+func (s *GrantPermissionsRequestBody) SetCluster(v string) *GrantPermissionsRequestBody {
+	s.Cluster = &v
+	return s
+}
+
+func (s *GrantPermissionsRequestBody) SetIsCustom(v bool) *GrantPermissionsRequestBody {
+	s.IsCustom = &v
+	return s
+}
+
+func (s *GrantPermissionsRequestBody) SetRoleName(v string) *GrantPermissionsRequestBody {
+	s.RoleName = &v
+	return s
+}
+
+func (s *GrantPermissionsRequestBody) SetRoleType(v string) *GrantPermissionsRequestBody {
+	s.RoleType = &v
+	return s
+}
+
+func (s *GrantPermissionsRequestBody) SetNamespace(v string) *GrantPermissionsRequestBody {
+	s.Namespace = &v
+	return s
+}
+
+func (s *GrantPermissionsRequestBody) SetIsRamRole(v bool) *GrantPermissionsRequestBody {
+	s.IsRamRole = &v
+	return s
+}
+
+type GrantPermissionsResponse struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+}
+
+func (s GrantPermissionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GrantPermissionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GrantPermissionsResponse) SetHeaders(v map[string]*string) *GrantPermissionsResponse {
+	s.Headers = v
+	return s
+}
+
 type DescribeClusterDetailResponseBody struct {
 	// 集群ID。
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
@@ -1193,6 +1281,82 @@ func (s *DescribeClusterDetailResponse) SetHeaders(v map[string]*string) *Descri
 
 func (s *DescribeClusterDetailResponse) SetBody(v *DescribeClusterDetailResponseBody) *DescribeClusterDetailResponse {
 	s.Body = v
+	return s
+}
+
+type DescribeUserPermissionResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    []*DescribeUserPermissionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s DescribeUserPermissionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserPermissionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserPermissionResponse) SetHeaders(v map[string]*string) *DescribeUserPermissionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeUserPermissionResponse) SetBody(v []*DescribeUserPermissionResponseBody) *DescribeUserPermissionResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeUserPermissionResponseBody struct {
+	// 集群访问配置
+	ResourceId *string `json:"resource_id,omitempty" xml:"resource_id,omitempty"`
+	// 授权类型
+	ResourceType *string `json:"resource_type,omitempty" xml:"resource_type,omitempty"`
+	// 自定义角色名称
+	RoleName *string `json:"role_name,omitempty" xml:"role_name,omitempty"`
+	// 预置的角色类型
+	RoleType *string `json:"role_type,omitempty" xml:"role_type,omitempty"`
+	// 是否为集群 owner 的授权
+	IsOwner *int64 `json:"is_owner,omitempty" xml:"is_owner,omitempty"`
+	// 是否为ram 角色授权
+	IsRamRole *int64 `json:"is_ram_role,omitempty" xml:"is_ram_role,omitempty"`
+}
+
+func (s DescribeUserPermissionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserPermissionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserPermissionResponseBody) SetResourceId(v string) *DescribeUserPermissionResponseBody {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *DescribeUserPermissionResponseBody) SetResourceType(v string) *DescribeUserPermissionResponseBody {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *DescribeUserPermissionResponseBody) SetRoleName(v string) *DescribeUserPermissionResponseBody {
+	s.RoleName = &v
+	return s
+}
+
+func (s *DescribeUserPermissionResponseBody) SetRoleType(v string) *DescribeUserPermissionResponseBody {
+	s.RoleType = &v
+	return s
+}
+
+func (s *DescribeUserPermissionResponseBody) SetIsOwner(v int64) *DescribeUserPermissionResponseBody {
+	s.IsOwner = &v
+	return s
+}
+
+func (s *DescribeUserPermissionResponseBody) SetIsRamRole(v int64) *DescribeUserPermissionResponseBody {
+	s.IsRamRole = &v
 	return s
 }
 
@@ -7702,6 +7866,36 @@ func (client *Client) CreateKubernetesTriggerWithOptions(request *CreateKubernet
 	return _result, _err
 }
 
+func (client *Client) GrantPermissions(uid *string, request *GrantPermissionsRequest) (_result *GrantPermissionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GrantPermissionsResponse{}
+	_body, _err := client.GrantPermissionsWithOptions(uid, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GrantPermissionsWithOptions(uid *string, request *GrantPermissionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GrantPermissionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    util.ToArray(request.Body),
+	}
+	_result = &GrantPermissionsResponse{}
+	_body, _err := client.DoROARequest(tea.String("GrantPermissions"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/permissions/users/"+tea.StringValue(uid)), tea.String("none"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) DescribeClusterDetail(ClusterId *string) (_result *DescribeClusterDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7720,6 +7914,31 @@ func (client *Client) DescribeClusterDetailWithOptions(ClusterId *string, header
 	}
 	_result = &DescribeClusterDetailResponse{}
 	_body, _err := client.DoROARequest(tea.String("DescribeClusterDetail"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeUserPermission(uid *string) (_result *DescribeUserPermissionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeUserPermissionResponse{}
+	_body, _err := client.DescribeUserPermissionWithOptions(uid, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeUserPermissionWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeUserPermissionResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &DescribeUserPermissionResponse{}
+	_body, _err := client.DoROARequest(tea.String("DescribeUserPermission"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/permissions/users/"+tea.StringValue(uid)), tea.String("array"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
