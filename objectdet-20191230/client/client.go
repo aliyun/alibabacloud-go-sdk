@@ -633,6 +633,8 @@ func (s *DetectIPCObjectResponseBody) SetData(v *DetectIPCObjectResponseBodyData
 
 type DetectIPCObjectResponseBodyData struct {
 	Elements []*DetectIPCObjectResponseBodyDataElements `json:"Elements,omitempty" xml:"Elements,omitempty" type:"Repeated"`
+	Width    *int64                                     `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height   *int64                                     `json:"Height,omitempty" xml:"Height,omitempty"`
 }
 
 func (s DetectIPCObjectResponseBodyData) String() string {
@@ -645,6 +647,16 @@ func (s DetectIPCObjectResponseBodyData) GoString() string {
 
 func (s *DetectIPCObjectResponseBodyData) SetElements(v []*DetectIPCObjectResponseBodyDataElements) *DetectIPCObjectResponseBodyData {
 	s.Elements = v
+	return s
+}
+
+func (s *DetectIPCObjectResponseBodyData) SetWidth(v int64) *DetectIPCObjectResponseBodyData {
+	s.Width = &v
+	return s
+}
+
+func (s *DetectIPCObjectResponseBodyData) SetHeight(v int64) *DetectIPCObjectResponseBodyData {
+	s.Height = &v
 	return s
 }
 
