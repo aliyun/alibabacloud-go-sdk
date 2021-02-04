@@ -18,6 +18,116 @@ import (
 	"io"
 )
 
+type GetAsyncJobResultRequest struct {
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Async *string `json:"Async,omitempty" xml:"Async,omitempty"`
+}
+
+func (s GetAsyncJobResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAsyncJobResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAsyncJobResultRequest) SetJobId(v string) *GetAsyncJobResultRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *GetAsyncJobResultRequest) SetAsync(v string) *GetAsyncJobResultRequest {
+	s.Async = &v
+	return s
+}
+
+type GetAsyncJobResultResponseBody struct {
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *GetAsyncJobResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s GetAsyncJobResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAsyncJobResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAsyncJobResultResponseBody) SetRequestId(v string) *GetAsyncJobResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAsyncJobResultResponseBody) SetData(v *GetAsyncJobResultResponseBodyData) *GetAsyncJobResultResponseBody {
+	s.Data = v
+	return s
+}
+
+type GetAsyncJobResultResponseBodyData struct {
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Result       *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	JobId        *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s GetAsyncJobResultResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAsyncJobResultResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetAsyncJobResultResponseBodyData) SetStatus(v string) *GetAsyncJobResultResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetAsyncJobResultResponseBodyData) SetErrorMessage(v string) *GetAsyncJobResultResponseBodyData {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetAsyncJobResultResponseBodyData) SetResult(v string) *GetAsyncJobResultResponseBodyData {
+	s.Result = &v
+	return s
+}
+
+func (s *GetAsyncJobResultResponseBodyData) SetErrorCode(v string) *GetAsyncJobResultResponseBodyData {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetAsyncJobResultResponseBodyData) SetJobId(v string) *GetAsyncJobResultResponseBodyData {
+	s.JobId = &v
+	return s
+}
+
+type GetAsyncJobResultResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetAsyncJobResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAsyncJobResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAsyncJobResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAsyncJobResultResponse) SetHeaders(v map[string]*string) *GetAsyncJobResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAsyncJobResultResponse) SetBody(v *GetAsyncJobResultResponseBody) *GetAsyncJobResultResponse {
+	s.Body = v
+	return s
+}
+
 type DetectImageElementsRequest struct {
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
@@ -1258,6 +1368,7 @@ func (s *RecognizeLogoResponse) SetBody(v *RecognizeLogoResponseBody) *Recognize
 type TaggingImageRequest struct {
 	ImageType *int32  `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
 	ImageURL  *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	Async     *bool   `json:"Async,omitempty" xml:"Async,omitempty"`
 }
 
 func (s TaggingImageRequest) String() string {
@@ -1278,9 +1389,15 @@ func (s *TaggingImageRequest) SetImageURL(v string) *TaggingImageRequest {
 	return s
 }
 
+func (s *TaggingImageRequest) SetAsync(v bool) *TaggingImageRequest {
+	s.Async = &v
+	return s
+}
+
 type TaggingImageAdvanceRequest struct {
 	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
 	ImageType      *int32    `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	Async          *bool     `json:"Async,omitempty" xml:"Async,omitempty"`
 }
 
 func (s TaggingImageAdvanceRequest) String() string {
@@ -1298,6 +1415,11 @@ func (s *TaggingImageAdvanceRequest) SetImageURLObject(v io.Reader) *TaggingImag
 
 func (s *TaggingImageAdvanceRequest) SetImageType(v int32) *TaggingImageAdvanceRequest {
 	s.ImageType = &v
+	return s
+}
+
+func (s *TaggingImageAdvanceRequest) SetAsync(v bool) *TaggingImageAdvanceRequest {
+	s.Async = &v
 	return s
 }
 
@@ -1565,6 +1687,35 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetAsyncJobResultWithOptions(request *GetAsyncJobResultRequest, runtime *util.RuntimeOptions) (_result *GetAsyncJobResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &GetAsyncJobResultResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetAsyncJobResult"), tea.String("2019-09-30"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAsyncJobResult(request *GetAsyncJobResultRequest) (_result *GetAsyncJobResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAsyncJobResultResponse{}
+	_body, _err := client.GetAsyncJobResultWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
