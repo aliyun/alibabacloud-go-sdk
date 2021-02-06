@@ -1284,6 +1284,293 @@ func (s *DescribeClusterDetailResponse) SetBody(v *DescribeClusterDetailResponse
 	return s
 }
 
+type DescribeClustersRequest struct {
+	// 集群名称。
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 集群类型。
+	ClusterType *string `json:"clusterType,omitempty" xml:"clusterType,omitempty"`
+}
+
+func (s DescribeClustersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClustersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClustersRequest) SetName(v string) *DescribeClustersRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeClustersRequest) SetClusterType(v string) *DescribeClustersRequest {
+	s.ClusterType = &v
+	return s
+}
+
+type DescribeClustersResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    []*DescribeClustersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s DescribeClustersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClustersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClustersResponse) SetHeaders(v map[string]*string) *DescribeClustersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeClustersResponse) SetBody(v []*DescribeClustersResponseBody) *DescribeClustersResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeClustersResponseBody struct {
+	// 集群ID。
+	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	// 集群类型。
+	ClusterType *string `json:"cluster_type,omitempty" xml:"cluster_type,omitempty"`
+	// 集群创建时间。
+	Created *string `json:"created,omitempty" xml:"created,omitempty"`
+	// 集群当前版本。
+	CurrentVersion *string `json:"current_version,omitempty" xml:"current_version,omitempty"`
+	// 节点系统盘类型。
+	DataDiskCategory *string `json:"data_disk_category,omitempty" xml:"data_disk_category,omitempty"`
+	// 节点系统盘大小。
+	DataDiskSize *int64 `json:"data_disk_size,omitempty" xml:"data_disk_size,omitempty"`
+	// 集群是否开启删除保护。
+	DeletionProtection *bool `json:"deletion_protection,omitempty" xml:"deletion_protection,omitempty"`
+	// 容器运行时版本。
+	DockerVersion *string `json:"docker_version,omitempty" xml:"docker_version,omitempty"`
+	// 集群Ingerss SLB实例的ID。
+	ExternalLoadbalancerId *string `json:"external_loadbalancer_id,omitempty" xml:"external_loadbalancer_id,omitempty"`
+	// 集群创建时版本。
+	InitVersion *string `json:"init_version,omitempty" xml:"init_version,omitempty"`
+	// 集群的endpoint地址。
+	MasterUrl *string `json:"master_url,omitempty" xml:"master_url,omitempty"`
+	// 集群元数据。
+	MetaData *string `json:"meta_data,omitempty" xml:"meta_data,omitempty"`
+	// 集群名称。
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 集群使用的网络类型。
+	NetworkMode *string `json:"network_mode,omitempty" xml:"network_mode,omitempty"`
+	// 集群是否开启Private Zone，默认false。
+	PrivateZone *bool `json:"private_zone,omitempty" xml:"private_zone,omitempty"`
+	// 集群标识，区分是否为边缘托管版。
+	Profile *string `json:"profile,omitempty" xml:"profile,omitempty"`
+	// 集群所在地域ID。
+	RegionId *string `json:"region_id,omitempty" xml:"region_id,omitempty"`
+	// 集群资源组ID。
+	ResourceGroupId *string `json:"resource_group_id,omitempty" xml:"resource_group_id,omitempty"`
+	// 集群安全组ID。
+	SecurityGroupId *string `json:"security_group_id,omitempty" xml:"security_group_id,omitempty"`
+	// 集群内实例数量。
+	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
+	// 集群运行状态。
+	State *string `json:"state,omitempty" xml:"state,omitempty"`
+	// POD网络。
+	SubnetCidr *string `json:"subnet_cidr,omitempty" xml:"subnet_cidr,omitempty"`
+	// 集群标签。
+	Tags []*DescribeClustersResponseBodyTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// 集群更新时间。
+	Updated *string `json:"updated,omitempty" xml:"updated,omitempty"`
+	// 集群使用的VPC ID。
+	VpcId *string `json:"vpc_id,omitempty" xml:"vpc_id,omitempty"`
+	// 虚拟交换机网络ID。
+	VswitchCidr *string `json:"vswitch_cidr,omitempty" xml:"vswitch_cidr,omitempty"`
+	// 节点使用的Vswitch ID。
+	VswitchId *string `json:"vswitch_id,omitempty" xml:"vswitch_id,omitempty"`
+	// 集群Worker节点RAM角色名称。
+	WorkerRamRoleName *string `json:"worker_ram_role_name,omitempty" xml:"worker_ram_role_name,omitempty"`
+	// 集群所在Region内的区域ID。
+	ZoneId *string `json:"zone_id,omitempty" xml:"zone_id,omitempty"`
+}
+
+func (s DescribeClustersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClustersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClustersResponseBody) SetClusterId(v string) *DescribeClustersResponseBody {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeClustersResponseBody) SetClusterType(v string) *DescribeClustersResponseBody {
+	s.ClusterType = &v
+	return s
+}
+
+func (s *DescribeClustersResponseBody) SetCreated(v string) *DescribeClustersResponseBody {
+	s.Created = &v
+	return s
+}
+
+func (s *DescribeClustersResponseBody) SetCurrentVersion(v string) *DescribeClustersResponseBody {
+	s.CurrentVersion = &v
+	return s
+}
+
+func (s *DescribeClustersResponseBody) SetDataDiskCategory(v string) *DescribeClustersResponseBody {
+	s.DataDiskCategory = &v
+	return s
+}
+
+func (s *DescribeClustersResponseBody) SetDataDiskSize(v int64) *DescribeClustersResponseBody {
+	s.DataDiskSize = &v
+	return s
+}
+
+func (s *DescribeClustersResponseBody) SetDeletionProtection(v bool) *DescribeClustersResponseBody {
+	s.DeletionProtection = &v
+	return s
+}
+
+func (s *DescribeClustersResponseBody) SetDockerVersion(v string) *DescribeClustersResponseBody {
+	s.DockerVersion = &v
+	return s
+}
+
+func (s *DescribeClustersResponseBody) SetExternalLoadbalancerId(v string) *DescribeClustersResponseBody {
+	s.ExternalLoadbalancerId = &v
+	return s
+}
+
+func (s *DescribeClustersResponseBody) SetInitVersion(v string) *DescribeClustersResponseBody {
+	s.InitVersion = &v
+	return s
+}
+
+func (s *DescribeClustersResponseBody) SetMasterUrl(v string) *DescribeClustersResponseBody {
+	s.MasterUrl = &v
+	return s
+}
+
+func (s *DescribeClustersResponseBody) SetMetaData(v string) *DescribeClustersResponseBody {
+	s.MetaData = &v
+	return s
+}
+
+func (s *DescribeClustersResponseBody) SetName(v string) *DescribeClustersResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeClustersResponseBody) SetNetworkMode(v string) *DescribeClustersResponseBody {
+	s.NetworkMode = &v
+	return s
+}
+
+func (s *DescribeClustersResponseBody) SetPrivateZone(v bool) *DescribeClustersResponseBody {
+	s.PrivateZone = &v
+	return s
+}
+
+func (s *DescribeClustersResponseBody) SetProfile(v string) *DescribeClustersResponseBody {
+	s.Profile = &v
+	return s
+}
+
+func (s *DescribeClustersResponseBody) SetRegionId(v string) *DescribeClustersResponseBody {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeClustersResponseBody) SetResourceGroupId(v string) *DescribeClustersResponseBody {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeClustersResponseBody) SetSecurityGroupId(v string) *DescribeClustersResponseBody {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *DescribeClustersResponseBody) SetSize(v int64) *DescribeClustersResponseBody {
+	s.Size = &v
+	return s
+}
+
+func (s *DescribeClustersResponseBody) SetState(v string) *DescribeClustersResponseBody {
+	s.State = &v
+	return s
+}
+
+func (s *DescribeClustersResponseBody) SetSubnetCidr(v string) *DescribeClustersResponseBody {
+	s.SubnetCidr = &v
+	return s
+}
+
+func (s *DescribeClustersResponseBody) SetTags(v []*DescribeClustersResponseBodyTags) *DescribeClustersResponseBody {
+	s.Tags = v
+	return s
+}
+
+func (s *DescribeClustersResponseBody) SetUpdated(v string) *DescribeClustersResponseBody {
+	s.Updated = &v
+	return s
+}
+
+func (s *DescribeClustersResponseBody) SetVpcId(v string) *DescribeClustersResponseBody {
+	s.VpcId = &v
+	return s
+}
+
+func (s *DescribeClustersResponseBody) SetVswitchCidr(v string) *DescribeClustersResponseBody {
+	s.VswitchCidr = &v
+	return s
+}
+
+func (s *DescribeClustersResponseBody) SetVswitchId(v string) *DescribeClustersResponseBody {
+	s.VswitchId = &v
+	return s
+}
+
+func (s *DescribeClustersResponseBody) SetWorkerRamRoleName(v string) *DescribeClustersResponseBody {
+	s.WorkerRamRoleName = &v
+	return s
+}
+
+func (s *DescribeClustersResponseBody) SetZoneId(v string) *DescribeClustersResponseBody {
+	s.ZoneId = &v
+	return s
+}
+
+type DescribeClustersResponseBodyTags struct {
+	// 标签名。
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// 标签值。
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s DescribeClustersResponseBodyTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClustersResponseBodyTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClustersResponseBodyTags) SetKey(v string) *DescribeClustersResponseBodyTags {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeClustersResponseBodyTags) SetValue(v string) *DescribeClustersResponseBodyTags {
+	s.Value = &v
+	return s
+}
+
 type DescribeUserPermissionResponse struct {
 	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	Body    []*DescribeUserPermissionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
@@ -7914,6 +8201,45 @@ func (client *Client) DescribeClusterDetailWithOptions(ClusterId *string, header
 	}
 	_result = &DescribeClusterDetailResponse{}
 	_body, _err := client.DoROARequest(tea.String("DescribeClusterDetail"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeClusters(request *DescribeClustersRequest) (_result *DescribeClustersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeClustersResponse{}
+	_body, _err := client.DescribeClustersWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeClustersWithOptions(request *DescribeClustersRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeClustersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterType)) {
+		query["clusterType"] = request.ClusterType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	_result = &DescribeClustersResponse{}
+	_body, _err := client.DoROARequest(tea.String("DescribeClusters"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/clusters"), tea.String("array"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
