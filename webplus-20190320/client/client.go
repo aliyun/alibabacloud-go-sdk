@@ -14,6 +14,7 @@ import (
 
 type AbortChangeRequest struct {
 	ChangeId *string `json:"ChangeId,omitempty" xml:"ChangeId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s AbortChangeRequest) String() string {
@@ -26,6 +27,11 @@ func (s AbortChangeRequest) GoString() string {
 
 func (s *AbortChangeRequest) SetChangeId(v string) *AbortChangeRequest {
 	s.ChangeId = &v
+	return s
+}
+
+func (s *AbortChangeRequest) SetRegionId(v string) *AbortChangeRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -128,6 +134,7 @@ type CreateAppEnvRequest struct {
 	TemplateId      *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	DryRun          *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	ExtraProperties *string `json:"ExtraProperties,omitempty" xml:"ExtraProperties,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CreateAppEnvRequest) String() string {
@@ -190,6 +197,11 @@ func (s *CreateAppEnvRequest) SetDryRun(v bool) *CreateAppEnvRequest {
 
 func (s *CreateAppEnvRequest) SetExtraProperties(v string) *CreateAppEnvRequest {
 	s.ExtraProperties = &v
+	return s
+}
+
+func (s *CreateAppEnvRequest) SetRegionId(v string) *CreateAppEnvRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -331,6 +343,7 @@ type CreateApplicationRequest struct {
 	AppDescription     *string `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
 	CategoryName       *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
 	UsingSharedStorage *bool   `json:"UsingSharedStorage,omitempty" xml:"UsingSharedStorage,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CreateApplicationRequest) String() string {
@@ -358,6 +371,11 @@ func (s *CreateApplicationRequest) SetCategoryName(v string) *CreateApplicationR
 
 func (s *CreateApplicationRequest) SetUsingSharedStorage(v bool) *CreateApplicationRequest {
 	s.UsingSharedStorage = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetRegionId(v string) *CreateApplicationRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -494,6 +512,7 @@ type CreateConfigTemplateRequest struct {
 	ProfileName         *string `json:"ProfileName,omitempty" xml:"ProfileName,omitempty"`
 	PkgVersionId        *string `json:"PkgVersionId,omitempty" xml:"PkgVersionId,omitempty"`
 	OptionSettings      *string `json:"OptionSettings,omitempty" xml:"OptionSettings,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CreateConfigTemplateRequest) String() string {
@@ -546,6 +565,11 @@ func (s *CreateConfigTemplateRequest) SetPkgVersionId(v string) *CreateConfigTem
 
 func (s *CreateConfigTemplateRequest) SetOptionSettings(v string) *CreateConfigTemplateRequest {
 	s.OptionSettings = &v
+	return s
+}
+
+func (s *CreateConfigTemplateRequest) SetRegionId(v string) *CreateConfigTemplateRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -692,6 +716,7 @@ func (s *CreateConfigTemplateResponse) SetBody(v *CreateConfigTemplateResponseBo
 
 type CreateOrderRequest struct {
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CreateOrderRequest) String() string {
@@ -704,6 +729,11 @@ func (s CreateOrderRequest) GoString() string {
 
 func (s *CreateOrderRequest) SetProductName(v string) *CreateOrderRequest {
 	s.ProductName = &v
+	return s
+}
+
+func (s *CreateOrderRequest) SetRegionId(v string) *CreateOrderRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -811,6 +841,7 @@ type CreatePkgVersionRequest struct {
 	PkgVersionDescription *string `json:"PkgVersionDescription,omitempty" xml:"PkgVersionDescription,omitempty"`
 	AppId                 *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	PackageSource         *string `json:"PackageSource,omitempty" xml:"PackageSource,omitempty"`
+	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CreatePkgVersionRequest) String() string {
@@ -838,6 +869,11 @@ func (s *CreatePkgVersionRequest) SetAppId(v string) *CreatePkgVersionRequest {
 
 func (s *CreatePkgVersionRequest) SetPackageSource(v string) *CreatePkgVersionRequest {
 	s.PackageSource = &v
+	return s
+}
+
+func (s *CreatePkgVersionRequest) SetRegionId(v string) *CreatePkgVersionRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -958,6 +994,23 @@ func (s *CreatePkgVersionResponse) SetBody(v *CreatePkgVersionResponseBody) *Cre
 	return s
 }
 
+type CreateStorageRequest struct {
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CreateStorageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStorageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStorageRequest) SetRegionId(v string) *CreateStorageRequest {
+	s.RegionId = &v
+	return s
+}
+
 type CreateStorageResponseBody struct {
 	Storage   *CreateStorageResponseBodyStorage `json:"Storage,omitempty" xml:"Storage,omitempty" type:"Struct"`
 	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
@@ -1046,7 +1099,8 @@ func (s *CreateStorageResponse) SetBody(v *CreateStorageResponseBody) *CreateSto
 }
 
 type DeleteAppEnvRequest struct {
-	EnvId *string `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
+	EnvId    *string `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteAppEnvRequest) String() string {
@@ -1059,6 +1113,11 @@ func (s DeleteAppEnvRequest) GoString() string {
 
 func (s *DeleteAppEnvRequest) SetEnvId(v string) *DeleteAppEnvRequest {
 	s.EnvId = &v
+	return s
+}
+
+func (s *DeleteAppEnvRequest) SetRegionId(v string) *DeleteAppEnvRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -1115,7 +1174,8 @@ func (s *DeleteAppEnvResponse) SetBody(v *DeleteAppEnvResponseBody) *DeleteAppEn
 }
 
 type DeleteApplicationRequest struct {
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteApplicationRequest) String() string {
@@ -1128,6 +1188,11 @@ func (s DeleteApplicationRequest) GoString() string {
 
 func (s *DeleteApplicationRequest) SetAppId(v string) *DeleteApplicationRequest {
 	s.AppId = &v
+	return s
+}
+
+func (s *DeleteApplicationRequest) SetRegionId(v string) *DeleteApplicationRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -1185,6 +1250,7 @@ func (s *DeleteApplicationResponse) SetBody(v *DeleteApplicationResponseBody) *D
 
 type DeleteChangeRequest struct {
 	ChangeId *string `json:"ChangeId,omitempty" xml:"ChangeId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteChangeRequest) String() string {
@@ -1197,6 +1263,11 @@ func (s DeleteChangeRequest) GoString() string {
 
 func (s *DeleteChangeRequest) SetChangeId(v string) *DeleteChangeRequest {
 	s.ChangeId = &v
+	return s
+}
+
+func (s *DeleteChangeRequest) SetRegionId(v string) *DeleteChangeRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -1254,6 +1325,7 @@ func (s *DeleteChangeResponse) SetBody(v *DeleteChangeResponseBody) *DeleteChang
 
 type DeleteConfigTemplateRequest struct {
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteConfigTemplateRequest) String() string {
@@ -1266,6 +1338,11 @@ func (s DeleteConfigTemplateRequest) GoString() string {
 
 func (s *DeleteConfigTemplateRequest) SetTemplateId(v string) *DeleteConfigTemplateRequest {
 	s.TemplateId = &v
+	return s
+}
+
+func (s *DeleteConfigTemplateRequest) SetRegionId(v string) *DeleteConfigTemplateRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -1323,6 +1400,7 @@ func (s *DeleteConfigTemplateResponse) SetBody(v *DeleteConfigTemplateResponseBo
 
 type DeletePkgVersionRequest struct {
 	PkgVersionId *string `json:"PkgVersionId,omitempty" xml:"PkgVersionId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeletePkgVersionRequest) String() string {
@@ -1335,6 +1413,11 @@ func (s DeletePkgVersionRequest) GoString() string {
 
 func (s *DeletePkgVersionRequest) SetPkgVersionId(v string) *DeletePkgVersionRequest {
 	s.PkgVersionId = &v
+	return s
+}
+
+func (s *DeletePkgVersionRequest) SetRegionId(v string) *DeletePkgVersionRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -1397,6 +1480,7 @@ type DeployAppEnvRequest struct {
 	BatchInterval       *int32  `json:"BatchInterval,omitempty" xml:"BatchInterval,omitempty"`
 	PauseBetweenBatches *bool   `json:"PauseBetweenBatches,omitempty" xml:"PauseBetweenBatches,omitempty"`
 	PkgVersionId        *string `json:"PkgVersionId,omitempty" xml:"PkgVersionId,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeployAppEnvRequest) String() string {
@@ -1434,6 +1518,11 @@ func (s *DeployAppEnvRequest) SetPauseBetweenBatches(v bool) *DeployAppEnvReques
 
 func (s *DeployAppEnvRequest) SetPkgVersionId(v string) *DeployAppEnvRequest {
 	s.PkgVersionId = &v
+	return s
+}
+
+func (s *DeployAppEnvRequest) SetRegionId(v string) *DeployAppEnvRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -1525,7 +1614,8 @@ func (s *DeployAppEnvResponse) SetBody(v *DeployAppEnvResponseBody) *DeployAppEn
 }
 
 type DescribeAppEnvInstanceHealthRequest struct {
-	EnvId *string `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
+	EnvId    *string `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeAppEnvInstanceHealthRequest) String() string {
@@ -1538,6 +1628,11 @@ func (s DescribeAppEnvInstanceHealthRequest) GoString() string {
 
 func (s *DescribeAppEnvInstanceHealthRequest) SetEnvId(v string) *DescribeAppEnvInstanceHealthRequest {
 	s.EnvId = &v
+	return s
+}
+
+func (s *DescribeAppEnvInstanceHealthRequest) SetRegionId(v string) *DescribeAppEnvInstanceHealthRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -1696,6 +1791,7 @@ type DescribeAppEnvsRequest struct {
 	EnvSearch         *string `json:"EnvSearch,omitempty" xml:"EnvSearch,omitempty"`
 	RecentUpdated     *bool   `json:"RecentUpdated,omitempty" xml:"RecentUpdated,omitempty"`
 	StackSearch       *string `json:"StackSearch,omitempty" xml:"StackSearch,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeAppEnvsRequest) String() string {
@@ -1748,6 +1844,11 @@ func (s *DescribeAppEnvsRequest) SetRecentUpdated(v bool) *DescribeAppEnvsReques
 
 func (s *DescribeAppEnvsRequest) SetStackSearch(v string) *DescribeAppEnvsRequest {
 	s.StackSearch = &v
+	return s
+}
+
+func (s *DescribeAppEnvsRequest) SetRegionId(v string) *DescribeAppEnvsRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -2018,7 +2119,8 @@ func (s *DescribeAppEnvsResponse) SetBody(v *DescribeAppEnvsResponseBody) *Descr
 }
 
 type DescribeAppEnvStatusRequest struct {
-	EnvId *string `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
+	EnvId    *string `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeAppEnvStatusRequest) String() string {
@@ -2031,6 +2133,11 @@ func (s DescribeAppEnvStatusRequest) GoString() string {
 
 func (s *DescribeAppEnvStatusRequest) SetEnvId(v string) *DescribeAppEnvStatusRequest {
 	s.EnvId = &v
+	return s
+}
+
+func (s *DescribeAppEnvStatusRequest) SetRegionId(v string) *DescribeAppEnvStatusRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -2230,6 +2337,7 @@ type DescribeApplicationsRequest struct {
 	EnvSearch      *string `json:"EnvSearch,omitempty" xml:"EnvSearch,omitempty"`
 	StackSearch    *string `json:"StackSearch,omitempty" xml:"StackSearch,omitempty"`
 	CategorySearch *string `json:"CategorySearch,omitempty" xml:"CategorySearch,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeApplicationsRequest) String() string {
@@ -2277,6 +2385,11 @@ func (s *DescribeApplicationsRequest) SetStackSearch(v string) *DescribeApplicat
 
 func (s *DescribeApplicationsRequest) SetCategorySearch(v string) *DescribeApplicationsRequest {
 	s.CategorySearch = &v
+	return s
+}
+
+func (s *DescribeApplicationsRequest) SetRegionId(v string) *DescribeApplicationsRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -2453,6 +2566,23 @@ func (s *DescribeApplicationsResponse) SetHeaders(v map[string]*string) *Describ
 
 func (s *DescribeApplicationsResponse) SetBody(v *DescribeApplicationsResponseBody) *DescribeApplicationsResponse {
 	s.Body = v
+	return s
+}
+
+type DescribeCategoriesRequest struct {
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeCategoriesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCategoriesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCategoriesRequest) SetRegionId(v string) *DescribeCategoriesRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -2639,6 +2769,7 @@ func (s *DescribeCategoriesResponse) SetBody(v *DescribeCategoriesResponseBody) 
 type DescribeChangeRequest struct {
 	EnvId    *string `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
 	ChangeId *string `json:"ChangeId,omitempty" xml:"ChangeId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeChangeRequest) String() string {
@@ -2656,6 +2787,11 @@ func (s *DescribeChangeRequest) SetEnvId(v string) *DescribeChangeRequest {
 
 func (s *DescribeChangeRequest) SetChangeId(v string) *DescribeChangeRequest {
 	s.ChangeId = &v
+	return s
+}
+
+func (s *DescribeChangeRequest) SetRegionId(v string) *DescribeChangeRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -2823,6 +2959,7 @@ type DescribeChangesRequest struct {
 	ActionName *string `json:"ActionName,omitempty" xml:"ActionName,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeChangesRequest) String() string {
@@ -2850,6 +2987,11 @@ func (s *DescribeChangesRequest) SetPageSize(v int32) *DescribeChangesRequest {
 
 func (s *DescribeChangesRequest) SetPageNumber(v int32) *DescribeChangesRequest {
 	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeChangesRequest) SetRegionId(v string) *DescribeChangesRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -3052,6 +3194,7 @@ type DescribeConfigIndexRequest struct {
 	EnvId       *string `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
 	ProfileName *string `json:"ProfileName,omitempty" xml:"ProfileName,omitempty"`
 	TemplateId  *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeConfigIndexRequest) String() string {
@@ -3079,6 +3222,11 @@ func (s *DescribeConfigIndexRequest) SetProfileName(v string) *DescribeConfigInd
 
 func (s *DescribeConfigIndexRequest) SetTemplateId(v string) *DescribeConfigIndexRequest {
 	s.TemplateId = &v
+	return s
+}
+
+func (s *DescribeConfigIndexRequest) SetRegionId(v string) *DescribeConfigIndexRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -3384,6 +3532,7 @@ type DescribeConfigOptionsRequest struct {
 	StackId     *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
 	EnvId       *string `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
 	ProfileName *string `json:"ProfileName,omitempty" xml:"ProfileName,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeConfigOptionsRequest) String() string {
@@ -3406,6 +3555,11 @@ func (s *DescribeConfigOptionsRequest) SetEnvId(v string) *DescribeConfigOptions
 
 func (s *DescribeConfigOptionsRequest) SetProfileName(v string) *DescribeConfigOptionsRequest {
 	s.ProfileName = &v
+	return s
+}
+
+func (s *DescribeConfigOptionsRequest) SetRegionId(v string) *DescribeConfigOptionsRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -3631,6 +3785,7 @@ type DescribeConfigSettingsRequest struct {
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	PathName   *string `json:"PathName,omitempty" xml:"PathName,omitempty"`
 	OptionName *string `json:"OptionName,omitempty" xml:"OptionName,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeConfigSettingsRequest) String() string {
@@ -3658,6 +3813,11 @@ func (s *DescribeConfigSettingsRequest) SetPathName(v string) *DescribeConfigSet
 
 func (s *DescribeConfigSettingsRequest) SetOptionName(v string) *DescribeConfigSettingsRequest {
 	s.OptionName = &v
+	return s
+}
+
+func (s *DescribeConfigSettingsRequest) SetRegionId(v string) *DescribeConfigSettingsRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -3771,6 +3931,7 @@ type DescribeConfigTemplatesRequest struct {
 	TemplateSearch *string `json:"TemplateSearch,omitempty" xml:"TemplateSearch,omitempty"`
 	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeConfigTemplatesRequest) String() string {
@@ -3803,6 +3964,11 @@ func (s *DescribeConfigTemplatesRequest) SetPageSize(v int32) *DescribeConfigTem
 
 func (s *DescribeConfigTemplatesRequest) SetPageNumber(v int32) *DescribeConfigTemplatesRequest {
 	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeConfigTemplatesRequest) SetRegionId(v string) *DescribeConfigTemplatesRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -3977,7 +4143,8 @@ func (s *DescribeConfigTemplatesResponse) SetBody(v *DescribeConfigTemplatesResp
 }
 
 type DescribeEnvResourceRequest struct {
-	EnvId *string `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
+	EnvId    *string `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeEnvResourceRequest) String() string {
@@ -3990,6 +4157,11 @@ func (s DescribeEnvResourceRequest) GoString() string {
 
 func (s *DescribeEnvResourceRequest) SetEnvId(v string) *DescribeEnvResourceRequest {
 	s.EnvId = &v
+	return s
+}
+
+func (s *DescribeEnvResourceRequest) SetRegionId(v string) *DescribeEnvResourceRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -4522,6 +4694,7 @@ type DescribeEventsRequest struct {
 	ChangeId           *string `json:"ChangeId,omitempty" xml:"ChangeId,omitempty"`
 	LastChangeEvents   *bool   `json:"LastChangeEvents,omitempty" xml:"LastChangeEvents,omitempty"`
 	ReverseByTimestamp *bool   `json:"ReverseByTimestamp,omitempty" xml:"ReverseByTimestamp,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeEventsRequest) String() string {
@@ -4569,6 +4742,11 @@ func (s *DescribeEventsRequest) SetLastChangeEvents(v bool) *DescribeEventsReque
 
 func (s *DescribeEventsRequest) SetReverseByTimestamp(v bool) *DescribeEventsRequest {
 	s.ReverseByTimestamp = &v
+	return s
+}
+
+func (s *DescribeEventsRequest) SetRegionId(v string) *DescribeEventsRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -4843,6 +5021,7 @@ func (s *DescribeEventsResponse) SetBody(v *DescribeEventsResponseBody) *Describ
 
 type DescribeGatherLogResultRequest struct {
 	ChangeId *string `json:"ChangeId,omitempty" xml:"ChangeId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeGatherLogResultRequest) String() string {
@@ -4855,6 +5034,11 @@ func (s DescribeGatherLogResultRequest) GoString() string {
 
 func (s *DescribeGatherLogResultRequest) SetChangeId(v string) *DescribeGatherLogResultRequest {
 	s.ChangeId = &v
+	return s
+}
+
+func (s *DescribeGatherLogResultRequest) SetRegionId(v string) *DescribeGatherLogResultRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -5100,6 +5284,7 @@ func (s *DescribeGatherLogResultResponse) SetBody(v *DescribeGatherLogResultResp
 
 type DescribeGatherStatsResultRequest struct {
 	ChangeId *string `json:"ChangeId,omitempty" xml:"ChangeId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeGatherStatsResultRequest) String() string {
@@ -5112,6 +5297,11 @@ func (s DescribeGatherStatsResultRequest) GoString() string {
 
 func (s *DescribeGatherStatsResultRequest) SetChangeId(v string) *DescribeGatherStatsResultRequest {
 	s.ChangeId = &v
+	return s
+}
+
+func (s *DescribeGatherStatsResultRequest) SetRegionId(v string) *DescribeGatherStatsResultRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -5351,6 +5541,7 @@ func (s *DescribeGatherStatsResultResponse) SetBody(v *DescribeGatherStatsResult
 
 type DescribeInstanceHealthRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeInstanceHealthRequest) String() string {
@@ -5363,6 +5554,11 @@ func (s DescribeInstanceHealthRequest) GoString() string {
 
 func (s *DescribeInstanceHealthRequest) SetInstanceId(v string) *DescribeInstanceHealthRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeInstanceHealthRequest) SetRegionId(v string) *DescribeInstanceHealthRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -5465,6 +5661,7 @@ type DescribePkgVersionsRequest struct {
 	PageNumber       *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PkgVersionLabel  *string `json:"PkgVersionLabel,omitempty" xml:"PkgVersionLabel,omitempty"`
 	PkgVersionSearch *string `json:"PkgVersionSearch,omitempty" xml:"PkgVersionSearch,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribePkgVersionsRequest) String() string {
@@ -5497,6 +5694,11 @@ func (s *DescribePkgVersionsRequest) SetPkgVersionLabel(v string) *DescribePkgVe
 
 func (s *DescribePkgVersionsRequest) SetPkgVersionSearch(v string) *DescribePkgVersionsRequest {
 	s.PkgVersionSearch = &v
+	return s
+}
+
+func (s *DescribePkgVersionsRequest) SetRegionId(v string) *DescribePkgVersionsRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -5668,6 +5870,7 @@ type DescribePublicConfigTemplatesRequest struct {
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
 	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribePublicConfigTemplatesRequest) String() string {
@@ -5690,6 +5893,11 @@ func (s *DescribePublicConfigTemplatesRequest) SetPageSize(v int32) *DescribePub
 
 func (s *DescribePublicConfigTemplatesRequest) SetPageNumber(v int32) *DescribePublicConfigTemplatesRequest {
 	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribePublicConfigTemplatesRequest) SetRegionId(v string) *DescribePublicConfigTemplatesRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -5862,6 +6070,7 @@ type DescribeStacksRequest struct {
 	CategoryName    *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
 	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeStacksRequest) String() string {
@@ -5889,6 +6098,11 @@ func (s *DescribeStacksRequest) SetPageSize(v int32) *DescribeStacksRequest {
 
 func (s *DescribeStacksRequest) SetPageNumber(v int32) *DescribeStacksRequest {
 	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeStacksRequest) SetRegionId(v string) *DescribeStacksRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -6045,7 +6259,8 @@ func (s *DescribeStacksResponse) SetBody(v *DescribeStacksResponseBody) *Describ
 }
 
 type DescribeStorageRequest struct {
-	UsingSharedStorage *bool `json:"UsingSharedStorage,omitempty" xml:"UsingSharedStorage,omitempty"`
+	UsingSharedStorage *bool   `json:"UsingSharedStorage,omitempty" xml:"UsingSharedStorage,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeStorageRequest) String() string {
@@ -6058,6 +6273,11 @@ func (s DescribeStorageRequest) GoString() string {
 
 func (s *DescribeStorageRequest) SetUsingSharedStorage(v bool) *DescribeStorageRequest {
 	s.UsingSharedStorage = &v
+	return s
+}
+
+func (s *DescribeStorageRequest) SetRegionId(v string) *DescribeStorageRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -6164,6 +6384,7 @@ type GatherAppEnvLogRequest struct {
 	EnvId           *string `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
 	TargetInstances *string `json:"TargetInstances,omitempty" xml:"TargetInstances,omitempty"`
 	LogPath         *string `json:"LogPath,omitempty" xml:"LogPath,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GatherAppEnvLogRequest) String() string {
@@ -6186,6 +6407,11 @@ func (s *GatherAppEnvLogRequest) SetTargetInstances(v string) *GatherAppEnvLogRe
 
 func (s *GatherAppEnvLogRequest) SetLogPath(v string) *GatherAppEnvLogRequest {
 	s.LogPath = &v
+	return s
+}
+
+func (s *GatherAppEnvLogRequest) SetRegionId(v string) *GatherAppEnvLogRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -6279,6 +6505,7 @@ func (s *GatherAppEnvLogResponse) SetBody(v *GatherAppEnvLogResponseBody) *Gathe
 type GatherAppEnvStatsRequest struct {
 	EnvId           *string `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
 	TargetInstances *string `json:"TargetInstances,omitempty" xml:"TargetInstances,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GatherAppEnvStatsRequest) String() string {
@@ -6296,6 +6523,11 @@ func (s *GatherAppEnvStatsRequest) SetEnvId(v string) *GatherAppEnvStatsRequest 
 
 func (s *GatherAppEnvStatsRequest) SetTargetInstances(v string) *GatherAppEnvStatsRequest {
 	s.TargetInstances = &v
+	return s
+}
+
+func (s *GatherAppEnvStatsRequest) SetRegionId(v string) *GatherAppEnvStatsRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -6388,6 +6620,7 @@ func (s *GatherAppEnvStatsResponse) SetBody(v *GatherAppEnvStatsResponseBody) *G
 
 type PauseChangeRequest struct {
 	ChangeId *string `json:"ChangeId,omitempty" xml:"ChangeId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s PauseChangeRequest) String() string {
@@ -6400,6 +6633,11 @@ func (s PauseChangeRequest) GoString() string {
 
 func (s *PauseChangeRequest) SetChangeId(v string) *PauseChangeRequest {
 	s.ChangeId = &v
+	return s
+}
+
+func (s *PauseChangeRequest) SetRegionId(v string) *PauseChangeRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -6491,8 +6729,9 @@ func (s *PauseChangeResponse) SetBody(v *PauseChangeResponseBody) *PauseChangeRe
 }
 
 type RebuildAppEnvRequest struct {
-	EnvId  *string `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
-	DryRun *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	EnvId    *string `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
+	DryRun   *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s RebuildAppEnvRequest) String() string {
@@ -6510,6 +6749,11 @@ func (s *RebuildAppEnvRequest) SetEnvId(v string) *RebuildAppEnvRequest {
 
 func (s *RebuildAppEnvRequest) SetDryRun(v bool) *RebuildAppEnvRequest {
 	s.DryRun = &v
+	return s
+}
+
+func (s *RebuildAppEnvRequest) SetRegionId(v string) *RebuildAppEnvRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -6652,6 +6896,7 @@ type RestartAppEnvRequest struct {
 	BatchPercent        *int32  `json:"BatchPercent,omitempty" xml:"BatchPercent,omitempty"`
 	BatchInterval       *int32  `json:"BatchInterval,omitempty" xml:"BatchInterval,omitempty"`
 	PauseBetweenBatches *bool   `json:"PauseBetweenBatches,omitempty" xml:"PauseBetweenBatches,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s RestartAppEnvRequest) String() string {
@@ -6684,6 +6929,11 @@ func (s *RestartAppEnvRequest) SetBatchInterval(v int32) *RestartAppEnvRequest {
 
 func (s *RestartAppEnvRequest) SetPauseBetweenBatches(v bool) *RestartAppEnvRequest {
 	s.PauseBetweenBatches = &v
+	return s
+}
+
+func (s *RestartAppEnvRequest) SetRegionId(v string) *RestartAppEnvRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -6776,6 +7026,7 @@ func (s *RestartAppEnvResponse) SetBody(v *RestartAppEnvResponseBody) *RestartAp
 
 type ResumeChangeRequest struct {
 	ChangeId *string `json:"ChangeId,omitempty" xml:"ChangeId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ResumeChangeRequest) String() string {
@@ -6788,6 +7039,11 @@ func (s ResumeChangeRequest) GoString() string {
 
 func (s *ResumeChangeRequest) SetChangeId(v string) *ResumeChangeRequest {
 	s.ChangeId = &v
+	return s
+}
+
+func (s *ResumeChangeRequest) SetRegionId(v string) *ResumeChangeRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -6879,7 +7135,8 @@ func (s *ResumeChangeResponse) SetBody(v *ResumeChangeResponseBody) *ResumeChang
 }
 
 type StartAppEnvRequest struct {
-	EnvId *string `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
+	EnvId    *string `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s StartAppEnvRequest) String() string {
@@ -6892,6 +7149,11 @@ func (s StartAppEnvRequest) GoString() string {
 
 func (s *StartAppEnvRequest) SetEnvId(v string) *StartAppEnvRequest {
 	s.EnvId = &v
+	return s
+}
+
+func (s *StartAppEnvRequest) SetRegionId(v string) *StartAppEnvRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -6983,7 +7245,8 @@ func (s *StartAppEnvResponse) SetBody(v *StartAppEnvResponseBody) *StartAppEnvRe
 }
 
 type StopAppEnvRequest struct {
-	EnvId *string `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
+	EnvId    *string `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s StopAppEnvRequest) String() string {
@@ -6996,6 +7259,11 @@ func (s StopAppEnvRequest) GoString() string {
 
 func (s *StopAppEnvRequest) SetEnvId(v string) *StopAppEnvRequest {
 	s.EnvId = &v
+	return s
+}
+
+func (s *StopAppEnvRequest) SetRegionId(v string) *StopAppEnvRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -7087,8 +7355,9 @@ func (s *StopAppEnvResponse) SetBody(v *StopAppEnvResponseBody) *StopAppEnvRespo
 }
 
 type TerminateAppEnvRequest struct {
-	EnvId  *string `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
-	DryRun *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	EnvId    *string `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
+	DryRun   *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s TerminateAppEnvRequest) String() string {
@@ -7106,6 +7375,11 @@ func (s *TerminateAppEnvRequest) SetEnvId(v string) *TerminateAppEnvRequest {
 
 func (s *TerminateAppEnvRequest) SetDryRun(v string) *TerminateAppEnvRequest {
 	s.DryRun = &v
+	return s
+}
+
+func (s *TerminateAppEnvRequest) SetRegionId(v string) *TerminateAppEnvRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -7254,6 +7528,7 @@ type UpdateAppEnvRequest struct {
 	BatchPercent        *string `json:"BatchPercent,omitempty" xml:"BatchPercent,omitempty"`
 	BatchInterval       *string `json:"BatchInterval,omitempty" xml:"BatchInterval,omitempty"`
 	PauseBetweenBatches *bool   `json:"PauseBetweenBatches,omitempty" xml:"PauseBetweenBatches,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpdateAppEnvRequest) String() string {
@@ -7316,6 +7591,11 @@ func (s *UpdateAppEnvRequest) SetBatchInterval(v string) *UpdateAppEnvRequest {
 
 func (s *UpdateAppEnvRequest) SetPauseBetweenBatches(v bool) *UpdateAppEnvRequest {
 	s.PauseBetweenBatches = &v
+	return s
+}
+
+func (s *UpdateAppEnvRequest) SetRegionId(v string) *UpdateAppEnvRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -7455,6 +7735,7 @@ func (s *UpdateAppEnvResponse) SetBody(v *UpdateAppEnvResponseBody) *UpdateAppEn
 type UpdateApplicationRequest struct {
 	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	AppDescription *string `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpdateApplicationRequest) String() string {
@@ -7472,6 +7753,11 @@ func (s *UpdateApplicationRequest) SetAppId(v string) *UpdateApplicationRequest 
 
 func (s *UpdateApplicationRequest) SetAppDescription(v string) *UpdateApplicationRequest {
 	s.AppDescription = &v
+	return s
+}
+
+func (s *UpdateApplicationRequest) SetRegionId(v string) *UpdateApplicationRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -7596,6 +7882,7 @@ type UpdateConfigTemplateRequest struct {
 	TemplateDescription *string `json:"TemplateDescription,omitempty" xml:"TemplateDescription,omitempty"`
 	TemplateId          *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	OptionSettings      *string `json:"OptionSettings,omitempty" xml:"OptionSettings,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpdateConfigTemplateRequest) String() string {
@@ -7618,6 +7905,11 @@ func (s *UpdateConfigTemplateRequest) SetTemplateId(v string) *UpdateConfigTempl
 
 func (s *UpdateConfigTemplateRequest) SetOptionSettings(v string) *UpdateConfigTemplateRequest {
 	s.OptionSettings = &v
+	return s
+}
+
+func (s *UpdateConfigTemplateRequest) SetRegionId(v string) *UpdateConfigTemplateRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -7743,6 +8035,7 @@ type ValidateConfigSettingRequest struct {
 	TemplateId     *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	StackId        *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
 	OptionSettings *string `json:"OptionSettings,omitempty" xml:"OptionSettings,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ValidateConfigSettingRequest) String() string {
@@ -7770,6 +8063,11 @@ func (s *ValidateConfigSettingRequest) SetStackId(v string) *ValidateConfigSetti
 
 func (s *ValidateConfigSettingRequest) SetOptionSettings(v string) *ValidateConfigSettingRequest {
 	s.OptionSettings = &v
+	return s
+}
+
+func (s *ValidateConfigSettingRequest) SetRegionId(v string) *ValidateConfigSettingRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -8091,6 +8389,11 @@ func (client *Client) AbortChangeWithOptions(request *AbortChangeRequest, header
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ChangeId)) {
 		body["ChangeId"] = request.ChangeId
@@ -8098,6 +8401,7 @@ func (client *Client) AbortChangeWithOptions(request *AbortChangeRequest, header
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	_result = &AbortChangeResponse{}
@@ -8126,6 +8430,11 @@ func (client *Client) CreateAppEnvWithOptions(request *CreateAppEnvRequest, head
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EnvName)) {
 		body["EnvName"] = request.EnvName
@@ -8173,6 +8482,7 @@ func (client *Client) CreateAppEnvWithOptions(request *CreateAppEnvRequest, head
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	_result = &CreateAppEnvResponse{}
@@ -8201,6 +8511,11 @@ func (client *Client) CreateApplicationWithOptions(request *CreateApplicationReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AppName)) {
 		body["AppName"] = request.AppName
@@ -8220,6 +8535,7 @@ func (client *Client) CreateApplicationWithOptions(request *CreateApplicationReq
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	_result = &CreateApplicationResponse{}
@@ -8248,6 +8564,11 @@ func (client *Client) CreateConfigTemplateWithOptions(request *CreateConfigTempl
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
 		body["TemplateName"] = request.TemplateName
@@ -8287,6 +8608,7 @@ func (client *Client) CreateConfigTemplateWithOptions(request *CreateConfigTempl
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	_result = &CreateConfigTemplateResponse{}
@@ -8315,6 +8637,11 @@ func (client *Client) CreateOrderWithOptions(request *CreateOrderRequest, header
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ProductName)) {
 		body["ProductName"] = request.ProductName
@@ -8322,6 +8649,7 @@ func (client *Client) CreateOrderWithOptions(request *CreateOrderRequest, header
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	_result = &CreateOrderResponse{}
@@ -8350,6 +8678,11 @@ func (client *Client) CreatePkgVersionWithOptions(request *CreatePkgVersionReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.PkgVersionLabel)) {
 		body["PkgVersionLabel"] = request.PkgVersionLabel
@@ -8369,6 +8702,7 @@ func (client *Client) CreatePkgVersionWithOptions(request *CreatePkgVersionReque
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	_result = &CreatePkgVersionResponse{}
@@ -8380,11 +8714,11 @@ func (client *Client) CreatePkgVersionWithOptions(request *CreatePkgVersionReque
 	return _result, _err
 }
 
-func (client *Client) CreateStorage() (_result *CreateStorageResponse, _err error) {
+func (client *Client) CreateStorage(request *CreateStorageRequest) (_result *CreateStorageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &CreateStorageResponse{}
-	_body, _err := client.CreateStorageWithOptions(headers, runtime)
+	_body, _err := client.CreateStorageWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8392,9 +8726,19 @@ func (client *Client) CreateStorage() (_result *CreateStorageResponse, _err erro
 	return _result, _err
 }
 
-func (client *Client) CreateStorageWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateStorageResponse, _err error) {
+func (client *Client) CreateStorageWithOptions(request *CreateStorageRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateStorageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	_result = &CreateStorageResponse{}
 	_body, _err := client.DoROARequest(tea.String("CreateStorage"), tea.String("2019-03-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/pop/v1/wam/storage"), tea.String("json"), req, runtime)
@@ -8425,6 +8769,10 @@ func (client *Client) DeleteAppEnvWithOptions(request *DeleteAppEnvRequest, head
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EnvId)) {
 		query["EnvId"] = request.EnvId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -8462,6 +8810,10 @@ func (client *Client) DeleteApplicationWithOptions(request *DeleteApplicationReq
 		query["AppId"] = request.AppId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -8495,6 +8847,10 @@ func (client *Client) DeleteChangeWithOptions(request *DeleteChangeRequest, head
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ChangeId)) {
 		query["ChangeId"] = request.ChangeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -8532,6 +8888,10 @@ func (client *Client) DeleteConfigTemplateWithOptions(request *DeleteConfigTempl
 		query["TemplateId"] = request.TemplateId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -8567,6 +8927,10 @@ func (client *Client) DeletePkgVersionWithOptions(request *DeletePkgVersionReque
 		query["PkgVersionId"] = request.PkgVersionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -8597,6 +8961,11 @@ func (client *Client) DeployAppEnvWithOptions(request *DeployAppEnvRequest, head
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EnvId)) {
 		body["EnvId"] = request.EnvId
@@ -8624,6 +8993,7 @@ func (client *Client) DeployAppEnvWithOptions(request *DeployAppEnvRequest, head
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	_result = &DeployAppEnvResponse{}
@@ -8655,6 +9025,10 @@ func (client *Client) DescribeAppEnvInstanceHealthWithOptions(request *DescribeA
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EnvId)) {
 		query["EnvId"] = request.EnvId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -8724,6 +9098,10 @@ func (client *Client) DescribeAppEnvsWithOptions(request *DescribeAppEnvsRequest
 		query["StackSearch"] = request.StackSearch
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -8757,6 +9135,10 @@ func (client *Client) DescribeAppEnvStatusWithOptions(request *DescribeAppEnvSta
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EnvId)) {
 		query["EnvId"] = request.EnvId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -8822,6 +9204,10 @@ func (client *Client) DescribeApplicationsWithOptions(request *DescribeApplicati
 		query["CategorySearch"] = request.CategorySearch
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -8835,11 +9221,11 @@ func (client *Client) DescribeApplicationsWithOptions(request *DescribeApplicati
 	return _result, _err
 }
 
-func (client *Client) DescribeCategories() (_result *DescribeCategoriesResponse, _err error) {
+func (client *Client) DescribeCategories(request *DescribeCategoriesRequest) (_result *DescribeCategoriesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DescribeCategoriesResponse{}
-	_body, _err := client.DescribeCategoriesWithOptions(headers, runtime)
+	_body, _err := client.DescribeCategoriesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8847,9 +9233,19 @@ func (client *Client) DescribeCategories() (_result *DescribeCategoriesResponse,
 	return _result, _err
 }
 
-func (client *Client) DescribeCategoriesWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeCategoriesResponse, _err error) {
+func (client *Client) DescribeCategoriesWithOptions(request *DescribeCategoriesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeCategoriesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	_result = &DescribeCategoriesResponse{}
 	_body, _err := client.DoROARequest(tea.String("DescribeCategories"), tea.String("2019-03-20"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/pop/v1/wam/category"), tea.String("json"), req, runtime)
@@ -8884,6 +9280,10 @@ func (client *Client) DescribeChangeWithOptions(request *DescribeChangeRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.ChangeId)) {
 		query["ChangeId"] = request.ChangeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -8933,6 +9333,10 @@ func (client *Client) DescribeChangesWithOptions(request *DescribeChangesRequest
 		query["PageNumber"] = request.PageNumber
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -8980,6 +9384,10 @@ func (client *Client) DescribeConfigIndexWithOptions(request *DescribeConfigInde
 		query["TemplateId"] = request.TemplateId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -9021,6 +9429,10 @@ func (client *Client) DescribeConfigOptionsWithOptions(request *DescribeConfigOp
 
 	if !tea.BoolValue(util.IsUnset(request.ProfileName)) {
 		query["ProfileName"] = request.ProfileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -9068,6 +9480,10 @@ func (client *Client) DescribeConfigSettingsWithOptions(request *DescribeConfigS
 
 	if !tea.BoolValue(util.IsUnset(request.OptionName)) {
 		query["OptionName"] = request.OptionName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -9121,6 +9537,10 @@ func (client *Client) DescribeConfigTemplatesWithOptions(request *DescribeConfig
 		query["PageNumber"] = request.PageNumber
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -9154,6 +9574,10 @@ func (client *Client) DescribeEnvResourceWithOptions(request *DescribeEnvResourc
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EnvId)) {
 		query["EnvId"] = request.EnvId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -9219,6 +9643,10 @@ func (client *Client) DescribeEventsWithOptions(request *DescribeEventsRequest, 
 		query["ReverseByTimestamp"] = request.ReverseByTimestamp
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -9252,6 +9680,10 @@ func (client *Client) DescribeGatherLogResultWithOptions(request *DescribeGather
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ChangeId)) {
 		query["ChangeId"] = request.ChangeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -9289,6 +9721,10 @@ func (client *Client) DescribeGatherStatsResultWithOptions(request *DescribeGath
 		query["ChangeId"] = request.ChangeId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -9322,6 +9758,10 @@ func (client *Client) DescribeInstanceHealthWithOptions(request *DescribeInstanc
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -9375,6 +9815,10 @@ func (client *Client) DescribePkgVersionsWithOptions(request *DescribePkgVersion
 		query["PkgVersionSearch"] = request.PkgVersionSearch
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -9416,6 +9860,10 @@ func (client *Client) DescribePublicConfigTemplatesWithOptions(request *Describe
 
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -9465,6 +9913,10 @@ func (client *Client) DescribeStacksWithOptions(request *DescribeStacksRequest, 
 		query["PageNumber"] = request.PageNumber
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -9500,6 +9952,10 @@ func (client *Client) DescribeStorageWithOptions(request *DescribeStorageRequest
 		query["UsingSharedStorage"] = request.UsingSharedStorage
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -9530,6 +9986,11 @@ func (client *Client) GatherAppEnvLogWithOptions(request *GatherAppEnvLogRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EnvId)) {
 		body["EnvId"] = request.EnvId
@@ -9545,6 +10006,7 @@ func (client *Client) GatherAppEnvLogWithOptions(request *GatherAppEnvLogRequest
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	_result = &GatherAppEnvLogResponse{}
@@ -9573,6 +10035,11 @@ func (client *Client) GatherAppEnvStatsWithOptions(request *GatherAppEnvStatsReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EnvId)) {
 		body["EnvId"] = request.EnvId
@@ -9584,6 +10051,7 @@ func (client *Client) GatherAppEnvStatsWithOptions(request *GatherAppEnvStatsReq
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	_result = &GatherAppEnvStatsResponse{}
@@ -9612,6 +10080,11 @@ func (client *Client) PauseChangeWithOptions(request *PauseChangeRequest, header
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ChangeId)) {
 		body["ChangeId"] = request.ChangeId
@@ -9619,6 +10092,7 @@ func (client *Client) PauseChangeWithOptions(request *PauseChangeRequest, header
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	_result = &PauseChangeResponse{}
@@ -9647,6 +10121,11 @@ func (client *Client) RebuildAppEnvWithOptions(request *RebuildAppEnvRequest, he
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EnvId)) {
 		body["EnvId"] = request.EnvId
@@ -9658,6 +10137,7 @@ func (client *Client) RebuildAppEnvWithOptions(request *RebuildAppEnvRequest, he
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	_result = &RebuildAppEnvResponse{}
@@ -9686,6 +10166,11 @@ func (client *Client) RestartAppEnvWithOptions(request *RestartAppEnvRequest, he
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EnvId)) {
 		body["EnvId"] = request.EnvId
@@ -9709,6 +10194,7 @@ func (client *Client) RestartAppEnvWithOptions(request *RestartAppEnvRequest, he
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	_result = &RestartAppEnvResponse{}
@@ -9737,6 +10223,11 @@ func (client *Client) ResumeChangeWithOptions(request *ResumeChangeRequest, head
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ChangeId)) {
 		body["ChangeId"] = request.ChangeId
@@ -9744,6 +10235,7 @@ func (client *Client) ResumeChangeWithOptions(request *ResumeChangeRequest, head
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	_result = &ResumeChangeResponse{}
@@ -9772,6 +10264,11 @@ func (client *Client) StartAppEnvWithOptions(request *StartAppEnvRequest, header
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EnvId)) {
 		body["EnvId"] = request.EnvId
@@ -9779,6 +10276,7 @@ func (client *Client) StartAppEnvWithOptions(request *StartAppEnvRequest, header
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	_result = &StartAppEnvResponse{}
@@ -9807,6 +10305,11 @@ func (client *Client) StopAppEnvWithOptions(request *StopAppEnvRequest, headers 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EnvId)) {
 		body["EnvId"] = request.EnvId
@@ -9814,6 +10317,7 @@ func (client *Client) StopAppEnvWithOptions(request *StopAppEnvRequest, headers 
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	_result = &StopAppEnvResponse{}
@@ -9842,6 +10346,11 @@ func (client *Client) TerminateAppEnvWithOptions(request *TerminateAppEnvRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EnvId)) {
 		body["EnvId"] = request.EnvId
@@ -9853,6 +10362,7 @@ func (client *Client) TerminateAppEnvWithOptions(request *TerminateAppEnvRequest
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	_result = &TerminateAppEnvResponse{}
@@ -9881,6 +10391,11 @@ func (client *Client) UpdateAppEnvWithOptions(request *UpdateAppEnvRequest, head
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EnvDescription)) {
 		body["EnvDescription"] = request.EnvDescription
@@ -9928,6 +10443,7 @@ func (client *Client) UpdateAppEnvWithOptions(request *UpdateAppEnvRequest, head
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	_result = &UpdateAppEnvResponse{}
@@ -9956,6 +10472,11 @@ func (client *Client) UpdateApplicationWithOptions(request *UpdateApplicationReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AppId)) {
 		body["AppId"] = request.AppId
@@ -9967,6 +10488,7 @@ func (client *Client) UpdateApplicationWithOptions(request *UpdateApplicationReq
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	_result = &UpdateApplicationResponse{}
@@ -9995,6 +10517,11 @@ func (client *Client) UpdateConfigTemplateWithOptions(request *UpdateConfigTempl
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.TemplateDescription)) {
 		body["TemplateDescription"] = request.TemplateDescription
@@ -10010,6 +10537,7 @@ func (client *Client) UpdateConfigTemplateWithOptions(request *UpdateConfigTempl
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	_result = &UpdateConfigTemplateResponse{}
@@ -10038,6 +10566,11 @@ func (client *Client) ValidateConfigSettingWithOptions(request *ValidateConfigSe
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EnvId)) {
 		body["EnvId"] = request.EnvId
@@ -10057,6 +10590,7 @@ func (client *Client) ValidateConfigSettingWithOptions(request *ValidateConfigSe
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	_result = &ValidateConfigSettingResponse{}
