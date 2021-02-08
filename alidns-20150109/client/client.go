@@ -127,6 +127,140 @@ func (s *AddCustomLineResponse) SetBody(v *AddCustomLineResponseBody) *AddCustom
 	return s
 }
 
+type AddDnsCacheDomainRequest struct {
+	Lang            *string                                    `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	UserClientIp    *string                                    `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	DomainName      *string                                    `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	InstanceId      *string                                    `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	CacheTtlMin     *int32                                     `json:"CacheTtlMin,omitempty" xml:"CacheTtlMin,omitempty"`
+	CacheTtlMax     *int32                                     `json:"CacheTtlMax,omitempty" xml:"CacheTtlMax,omitempty"`
+	SourceProtocol  *string                                    `json:"SourceProtocol,omitempty" xml:"SourceProtocol,omitempty"`
+	SourceEdns      *string                                    `json:"SourceEdns,omitempty" xml:"SourceEdns,omitempty"`
+	Remark          *string                                    `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	SourceDnsServer []*AddDnsCacheDomainRequestSourceDnsServer `json:"SourceDnsServer,omitempty" xml:"SourceDnsServer,omitempty" type:"Repeated"`
+}
+
+func (s AddDnsCacheDomainRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDnsCacheDomainRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddDnsCacheDomainRequest) SetLang(v string) *AddDnsCacheDomainRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *AddDnsCacheDomainRequest) SetUserClientIp(v string) *AddDnsCacheDomainRequest {
+	s.UserClientIp = &v
+	return s
+}
+
+func (s *AddDnsCacheDomainRequest) SetDomainName(v string) *AddDnsCacheDomainRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *AddDnsCacheDomainRequest) SetInstanceId(v string) *AddDnsCacheDomainRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *AddDnsCacheDomainRequest) SetCacheTtlMin(v int32) *AddDnsCacheDomainRequest {
+	s.CacheTtlMin = &v
+	return s
+}
+
+func (s *AddDnsCacheDomainRequest) SetCacheTtlMax(v int32) *AddDnsCacheDomainRequest {
+	s.CacheTtlMax = &v
+	return s
+}
+
+func (s *AddDnsCacheDomainRequest) SetSourceProtocol(v string) *AddDnsCacheDomainRequest {
+	s.SourceProtocol = &v
+	return s
+}
+
+func (s *AddDnsCacheDomainRequest) SetSourceEdns(v string) *AddDnsCacheDomainRequest {
+	s.SourceEdns = &v
+	return s
+}
+
+func (s *AddDnsCacheDomainRequest) SetRemark(v string) *AddDnsCacheDomainRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *AddDnsCacheDomainRequest) SetSourceDnsServer(v []*AddDnsCacheDomainRequestSourceDnsServer) *AddDnsCacheDomainRequest {
+	s.SourceDnsServer = v
+	return s
+}
+
+type AddDnsCacheDomainRequestSourceDnsServer struct {
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+}
+
+func (s AddDnsCacheDomainRequestSourceDnsServer) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDnsCacheDomainRequestSourceDnsServer) GoString() string {
+	return s.String()
+}
+
+func (s *AddDnsCacheDomainRequestSourceDnsServer) SetHost(v string) *AddDnsCacheDomainRequestSourceDnsServer {
+	s.Host = &v
+	return s
+}
+
+func (s *AddDnsCacheDomainRequestSourceDnsServer) SetPort(v string) *AddDnsCacheDomainRequestSourceDnsServer {
+	s.Port = &v
+	return s
+}
+
+type AddDnsCacheDomainResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AddDnsCacheDomainResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDnsCacheDomainResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddDnsCacheDomainResponseBody) SetRequestId(v string) *AddDnsCacheDomainResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AddDnsCacheDomainResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *AddDnsCacheDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddDnsCacheDomainResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDnsCacheDomainResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddDnsCacheDomainResponse) SetHeaders(v map[string]*string) *AddDnsCacheDomainResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddDnsCacheDomainResponse) SetBody(v *AddDnsCacheDomainResponseBody) *AddDnsCacheDomainResponse {
+	s.Body = v
+	return s
+}
+
 type AddDnsGtmAccessStrategyRequest struct {
 	Lang                        *string                                           `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	UserClientIp                *string                                           `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
@@ -2026,6 +2160,75 @@ func (s *DeleteCustomLinesResponse) SetBody(v *DeleteCustomLinesResponseBody) *D
 	return s
 }
 
+type DeleteDnsCacheDomainRequest struct {
+	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+}
+
+func (s DeleteDnsCacheDomainRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDnsCacheDomainRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDnsCacheDomainRequest) SetLang(v string) *DeleteDnsCacheDomainRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DeleteDnsCacheDomainRequest) SetUserClientIp(v string) *DeleteDnsCacheDomainRequest {
+	s.UserClientIp = &v
+	return s
+}
+
+func (s *DeleteDnsCacheDomainRequest) SetDomainName(v string) *DeleteDnsCacheDomainRequest {
+	s.DomainName = &v
+	return s
+}
+
+type DeleteDnsCacheDomainResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteDnsCacheDomainResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDnsCacheDomainResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDnsCacheDomainResponseBody) SetRequestId(v string) *DeleteDnsCacheDomainResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteDnsCacheDomainResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteDnsCacheDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteDnsCacheDomainResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDnsCacheDomainResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDnsCacheDomainResponse) SetHeaders(v map[string]*string) *DeleteDnsCacheDomainResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDnsCacheDomainResponse) SetBody(v *DeleteDnsCacheDomainResponseBody) *DeleteDnsCacheDomainResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteDnsGtmAccessStrategyRequest struct {
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
@@ -3309,6 +3512,241 @@ func (s *DescribeCustomLinesResponse) SetBody(v *DescribeCustomLinesResponseBody
 	return s
 }
 
+type DescribeDnsCacheDomainsRequest struct {
+	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	Keyword      *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	PageNumber   *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeDnsCacheDomainsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDnsCacheDomainsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDnsCacheDomainsRequest) SetLang(v string) *DescribeDnsCacheDomainsRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeDnsCacheDomainsRequest) SetUserClientIp(v string) *DescribeDnsCacheDomainsRequest {
+	s.UserClientIp = &v
+	return s
+}
+
+func (s *DescribeDnsCacheDomainsRequest) SetKeyword(v string) *DescribeDnsCacheDomainsRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *DescribeDnsCacheDomainsRequest) SetPageNumber(v int64) *DescribeDnsCacheDomainsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDnsCacheDomainsRequest) SetPageSize(v int64) *DescribeDnsCacheDomainsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeDnsCacheDomainsResponseBody struct {
+	Domains    []*DescribeDnsCacheDomainsResponseBodyDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
+	TotalCount *int64                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageSize   *int64                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageNumber *int64                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+}
+
+func (s DescribeDnsCacheDomainsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDnsCacheDomainsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDnsCacheDomainsResponseBody) SetDomains(v []*DescribeDnsCacheDomainsResponseBodyDomains) *DescribeDnsCacheDomainsResponseBody {
+	s.Domains = v
+	return s
+}
+
+func (s *DescribeDnsCacheDomainsResponseBody) SetTotalCount(v int64) *DescribeDnsCacheDomainsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeDnsCacheDomainsResponseBody) SetPageSize(v int64) *DescribeDnsCacheDomainsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDnsCacheDomainsResponseBody) SetRequestId(v string) *DescribeDnsCacheDomainsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDnsCacheDomainsResponseBody) SetPageNumber(v int64) *DescribeDnsCacheDomainsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+type DescribeDnsCacheDomainsResponseBodyDomains struct {
+	SourceProtocol   *string                                                       `json:"SourceProtocol,omitempty" xml:"SourceProtocol,omitempty"`
+	UpdateTime       *string                                                       `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	Remark           *string                                                       `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ExpireTime       *string                                                       `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	CreateTime       *string                                                       `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	InstanceId       *string                                                       `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	SourceEdns       *string                                                       `json:"SourceEdns,omitempty" xml:"SourceEdns,omitempty"`
+	DomainName       *string                                                       `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	DomainId         *string                                                       `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	UpdateTimestamp  *int64                                                        `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	ExpireTimestamp  *int64                                                        `json:"ExpireTimestamp,omitempty" xml:"ExpireTimestamp,omitempty"`
+	CacheTtlMax      *int32                                                        `json:"CacheTtlMax,omitempty" xml:"CacheTtlMax,omitempty"`
+	CacheTtlMin      *int32                                                        `json:"CacheTtlMin,omitempty" xml:"CacheTtlMin,omitempty"`
+	VersionCode      *string                                                       `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
+	SourceDnsServers []*DescribeDnsCacheDomainsResponseBodyDomainsSourceDnsServers `json:"SourceDnsServers,omitempty" xml:"SourceDnsServers,omitempty" type:"Repeated"`
+	CreateTimestamp  *int64                                                        `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+}
+
+func (s DescribeDnsCacheDomainsResponseBodyDomains) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDnsCacheDomainsResponseBodyDomains) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDnsCacheDomainsResponseBodyDomains) SetSourceProtocol(v string) *DescribeDnsCacheDomainsResponseBodyDomains {
+	s.SourceProtocol = &v
+	return s
+}
+
+func (s *DescribeDnsCacheDomainsResponseBodyDomains) SetUpdateTime(v string) *DescribeDnsCacheDomainsResponseBodyDomains {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *DescribeDnsCacheDomainsResponseBodyDomains) SetRemark(v string) *DescribeDnsCacheDomainsResponseBodyDomains {
+	s.Remark = &v
+	return s
+}
+
+func (s *DescribeDnsCacheDomainsResponseBodyDomains) SetExpireTime(v string) *DescribeDnsCacheDomainsResponseBodyDomains {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *DescribeDnsCacheDomainsResponseBodyDomains) SetCreateTime(v string) *DescribeDnsCacheDomainsResponseBodyDomains {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeDnsCacheDomainsResponseBodyDomains) SetInstanceId(v string) *DescribeDnsCacheDomainsResponseBodyDomains {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeDnsCacheDomainsResponseBodyDomains) SetSourceEdns(v string) *DescribeDnsCacheDomainsResponseBodyDomains {
+	s.SourceEdns = &v
+	return s
+}
+
+func (s *DescribeDnsCacheDomainsResponseBodyDomains) SetDomainName(v string) *DescribeDnsCacheDomainsResponseBodyDomains {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeDnsCacheDomainsResponseBodyDomains) SetDomainId(v string) *DescribeDnsCacheDomainsResponseBodyDomains {
+	s.DomainId = &v
+	return s
+}
+
+func (s *DescribeDnsCacheDomainsResponseBodyDomains) SetUpdateTimestamp(v int64) *DescribeDnsCacheDomainsResponseBodyDomains {
+	s.UpdateTimestamp = &v
+	return s
+}
+
+func (s *DescribeDnsCacheDomainsResponseBodyDomains) SetExpireTimestamp(v int64) *DescribeDnsCacheDomainsResponseBodyDomains {
+	s.ExpireTimestamp = &v
+	return s
+}
+
+func (s *DescribeDnsCacheDomainsResponseBodyDomains) SetCacheTtlMax(v int32) *DescribeDnsCacheDomainsResponseBodyDomains {
+	s.CacheTtlMax = &v
+	return s
+}
+
+func (s *DescribeDnsCacheDomainsResponseBodyDomains) SetCacheTtlMin(v int32) *DescribeDnsCacheDomainsResponseBodyDomains {
+	s.CacheTtlMin = &v
+	return s
+}
+
+func (s *DescribeDnsCacheDomainsResponseBodyDomains) SetVersionCode(v string) *DescribeDnsCacheDomainsResponseBodyDomains {
+	s.VersionCode = &v
+	return s
+}
+
+func (s *DescribeDnsCacheDomainsResponseBodyDomains) SetSourceDnsServers(v []*DescribeDnsCacheDomainsResponseBodyDomainsSourceDnsServers) *DescribeDnsCacheDomainsResponseBodyDomains {
+	s.SourceDnsServers = v
+	return s
+}
+
+func (s *DescribeDnsCacheDomainsResponseBodyDomains) SetCreateTimestamp(v int64) *DescribeDnsCacheDomainsResponseBodyDomains {
+	s.CreateTimestamp = &v
+	return s
+}
+
+type DescribeDnsCacheDomainsResponseBodyDomainsSourceDnsServers struct {
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+}
+
+func (s DescribeDnsCacheDomainsResponseBodyDomainsSourceDnsServers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDnsCacheDomainsResponseBodyDomainsSourceDnsServers) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDnsCacheDomainsResponseBodyDomainsSourceDnsServers) SetHost(v string) *DescribeDnsCacheDomainsResponseBodyDomainsSourceDnsServers {
+	s.Host = &v
+	return s
+}
+
+func (s *DescribeDnsCacheDomainsResponseBodyDomainsSourceDnsServers) SetPort(v string) *DescribeDnsCacheDomainsResponseBodyDomainsSourceDnsServers {
+	s.Port = &v
+	return s
+}
+
+type DescribeDnsCacheDomainsResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeDnsCacheDomainsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDnsCacheDomainsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDnsCacheDomainsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDnsCacheDomainsResponse) SetHeaders(v map[string]*string) *DescribeDnsCacheDomainsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDnsCacheDomainsResponse) SetBody(v *DescribeDnsCacheDomainsResponseBody) *DescribeDnsCacheDomainsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDnsGtmAccessStrategiesRequest struct {
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
@@ -4023,12 +4461,15 @@ func (s *DescribeDnsGtmAccessStrategyAvailableConfigRequest) SetStrategyMode(v s
 }
 
 type DescribeDnsGtmAccessStrategyAvailableConfigResponseBody struct {
-	DomainAddrPools       *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyDomainAddrPools `json:"DomainAddrPools,omitempty" xml:"DomainAddrPools,omitempty" type:"Struct"`
-	Ipv4AddrPools         *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv4AddrPools   `json:"Ipv4AddrPools,omitempty" xml:"Ipv4AddrPools,omitempty" type:"Struct"`
-	RequestId             *string                                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Ipv6AddrPools         *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv6AddrPools   `json:"Ipv6AddrPools,omitempty" xml:"Ipv6AddrPools,omitempty" type:"Struct"`
-	SuggestSetDefaultLine *bool                                                                   `json:"SuggestSetDefaultLine,omitempty" xml:"SuggestSetDefaultLine,omitempty"`
-	Lines                 *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyLines           `json:"Lines,omitempty" xml:"Lines,omitempty" type:"Struct"`
+	SelectedDomainLines   *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodySelectedDomainLines `json:"SelectedDomainLines,omitempty" xml:"SelectedDomainLines,omitempty" type:"Struct"`
+	DomainAddrPools       *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyDomainAddrPools     `json:"DomainAddrPools,omitempty" xml:"DomainAddrPools,omitempty" type:"Struct"`
+	Ipv4AddrPools         *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv4AddrPools       `json:"Ipv4AddrPools,omitempty" xml:"Ipv4AddrPools,omitempty" type:"Struct"`
+	RequestId             *string                                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SelectedIpv4Lines     *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodySelectedIpv4Lines   `json:"SelectedIpv4Lines,omitempty" xml:"SelectedIpv4Lines,omitempty" type:"Struct"`
+	Ipv6AddrPools         *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv6AddrPools       `json:"Ipv6AddrPools,omitempty" xml:"Ipv6AddrPools,omitempty" type:"Struct"`
+	SuggestSetDefaultLine *bool                                                                       `json:"SuggestSetDefaultLine,omitempty" xml:"SuggestSetDefaultLine,omitempty"`
+	SelectedIpv6Lines     *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodySelectedIpv6Lines   `json:"SelectedIpv6Lines,omitempty" xml:"SelectedIpv6Lines,omitempty" type:"Struct"`
+	Lines                 *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyLines               `json:"Lines,omitempty" xml:"Lines,omitempty" type:"Struct"`
 }
 
 func (s DescribeDnsGtmAccessStrategyAvailableConfigResponseBody) String() string {
@@ -4037,6 +4478,11 @@ func (s DescribeDnsGtmAccessStrategyAvailableConfigResponseBody) String() string
 
 func (s DescribeDnsGtmAccessStrategyAvailableConfigResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDnsGtmAccessStrategyAvailableConfigResponseBody) SetSelectedDomainLines(v *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodySelectedDomainLines) *DescribeDnsGtmAccessStrategyAvailableConfigResponseBody {
+	s.SelectedDomainLines = v
+	return s
 }
 
 func (s *DescribeDnsGtmAccessStrategyAvailableConfigResponseBody) SetDomainAddrPools(v *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyDomainAddrPools) *DescribeDnsGtmAccessStrategyAvailableConfigResponseBody {
@@ -4054,6 +4500,11 @@ func (s *DescribeDnsGtmAccessStrategyAvailableConfigResponseBody) SetRequestId(v
 	return s
 }
 
+func (s *DescribeDnsGtmAccessStrategyAvailableConfigResponseBody) SetSelectedIpv4Lines(v *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodySelectedIpv4Lines) *DescribeDnsGtmAccessStrategyAvailableConfigResponseBody {
+	s.SelectedIpv4Lines = v
+	return s
+}
+
 func (s *DescribeDnsGtmAccessStrategyAvailableConfigResponseBody) SetIpv6AddrPools(v *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv6AddrPools) *DescribeDnsGtmAccessStrategyAvailableConfigResponseBody {
 	s.Ipv6AddrPools = v
 	return s
@@ -4064,8 +4515,30 @@ func (s *DescribeDnsGtmAccessStrategyAvailableConfigResponseBody) SetSuggestSetD
 	return s
 }
 
+func (s *DescribeDnsGtmAccessStrategyAvailableConfigResponseBody) SetSelectedIpv6Lines(v *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodySelectedIpv6Lines) *DescribeDnsGtmAccessStrategyAvailableConfigResponseBody {
+	s.SelectedIpv6Lines = v
+	return s
+}
+
 func (s *DescribeDnsGtmAccessStrategyAvailableConfigResponseBody) SetLines(v *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyLines) *DescribeDnsGtmAccessStrategyAvailableConfigResponseBody {
 	s.Lines = v
+	return s
+}
+
+type DescribeDnsGtmAccessStrategyAvailableConfigResponseBodySelectedDomainLines struct {
+	SelectedDomainLine []*string `json:"SelectedDomainLine,omitempty" xml:"SelectedDomainLine,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDnsGtmAccessStrategyAvailableConfigResponseBodySelectedDomainLines) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDnsGtmAccessStrategyAvailableConfigResponseBodySelectedDomainLines) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodySelectedDomainLines) SetSelectedDomainLine(v []*string) *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodySelectedDomainLines {
+	s.SelectedDomainLine = v
 	return s
 }
 
@@ -4161,6 +4634,23 @@ func (s *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv4AddrPoolsIpv
 	return s
 }
 
+type DescribeDnsGtmAccessStrategyAvailableConfigResponseBodySelectedIpv4Lines struct {
+	SelectedIpv4Line []*string `json:"SelectedIpv4Line,omitempty" xml:"SelectedIpv4Line,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDnsGtmAccessStrategyAvailableConfigResponseBodySelectedIpv4Lines) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDnsGtmAccessStrategyAvailableConfigResponseBodySelectedIpv4Lines) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodySelectedIpv4Lines) SetSelectedIpv4Line(v []*string) *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodySelectedIpv4Lines {
+	s.SelectedIpv4Line = v
+	return s
+}
+
 type DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv6AddrPools struct {
 	Ipv6AddrPool []*DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv6AddrPoolsIpv6AddrPool `json:"Ipv6AddrPool,omitempty" xml:"Ipv6AddrPool,omitempty" type:"Repeated"`
 }
@@ -4204,6 +4694,23 @@ func (s *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv6AddrPoolsIpv
 
 func (s *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv6AddrPoolsIpv6AddrPool) SetId(v string) *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv6AddrPoolsIpv6AddrPool {
 	s.Id = &v
+	return s
+}
+
+type DescribeDnsGtmAccessStrategyAvailableConfigResponseBodySelectedIpv6Lines struct {
+	SelectedIpv6Line []*string `json:"SelectedIpv6Line,omitempty" xml:"SelectedIpv6Line,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDnsGtmAccessStrategyAvailableConfigResponseBodySelectedIpv6Lines) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDnsGtmAccessStrategyAvailableConfigResponseBodySelectedIpv6Lines) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodySelectedIpv6Lines) SetSelectedIpv6Line(v []*string) *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodySelectedIpv6Lines {
+	s.SelectedIpv6Line = v
 	return s
 }
 
@@ -7268,6 +7775,7 @@ type DescribeDNSSLBSubDomainsRequest struct {
 	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	PageNumber   *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize     *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Rr           *string `json:"Rr,omitempty" xml:"Rr,omitempty"`
 }
 
 func (s DescribeDNSSLBSubDomainsRequest) String() string {
@@ -7300,6 +7808,11 @@ func (s *DescribeDNSSLBSubDomainsRequest) SetPageNumber(v int64) *DescribeDNSSLB
 
 func (s *DescribeDNSSLBSubDomainsRequest) SetPageSize(v int64) *DescribeDNSSLBSubDomainsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDNSSLBSubDomainsRequest) SetRr(v string) *DescribeDNSSLBSubDomainsRequest {
+	s.Rr = &v
 	return s
 }
 
@@ -7362,10 +7875,11 @@ func (s *DescribeDNSSLBSubDomainsResponseBodySlbSubDomains) SetSlbSubDomain(v []
 }
 
 type DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomain struct {
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	RecordCount *int64  `json:"RecordCount,omitempty" xml:"RecordCount,omitempty"`
-	Open        *bool   `json:"Open,omitempty" xml:"Open,omitempty"`
-	SubDomain   *string `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
+	Type           *string                                                                      `json:"Type,omitempty" xml:"Type,omitempty"`
+	RecordCount    *int64                                                                       `json:"RecordCount,omitempty" xml:"RecordCount,omitempty"`
+	Open           *bool                                                                        `json:"Open,omitempty" xml:"Open,omitempty"`
+	SubDomain      *string                                                                      `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
+	LineAlgorithms *DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomainLineAlgorithms `json:"LineAlgorithms,omitempty" xml:"LineAlgorithms,omitempty" type:"Struct"`
 }
 
 func (s DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomain) String() string {
@@ -7393,6 +7907,51 @@ func (s *DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomain) SetOpen(
 
 func (s *DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomain) SetSubDomain(v string) *DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomain {
 	s.SubDomain = &v
+	return s
+}
+
+func (s *DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomain) SetLineAlgorithms(v *DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomainLineAlgorithms) *DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomain {
+	s.LineAlgorithms = v
+	return s
+}
+
+type DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomainLineAlgorithms struct {
+	LineAlgorithm []*DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomainLineAlgorithmsLineAlgorithm `json:"LineAlgorithm,omitempty" xml:"LineAlgorithm,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomainLineAlgorithms) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomainLineAlgorithms) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomainLineAlgorithms) SetLineAlgorithm(v []*DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomainLineAlgorithmsLineAlgorithm) *DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomainLineAlgorithms {
+	s.LineAlgorithm = v
+	return s
+}
+
+type DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomainLineAlgorithmsLineAlgorithm struct {
+	Line *string `json:"Line,omitempty" xml:"Line,omitempty"`
+	Open *bool   `json:"Open,omitempty" xml:"Open,omitempty"`
+}
+
+func (s DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomainLineAlgorithmsLineAlgorithm) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomainLineAlgorithmsLineAlgorithm) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomainLineAlgorithmsLineAlgorithm) SetLine(v string) *DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomainLineAlgorithmsLineAlgorithm {
+	s.Line = &v
+	return s
+}
+
+func (s *DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomainLineAlgorithmsLineAlgorithm) SetOpen(v bool) *DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomainLineAlgorithmsLineAlgorithm {
+	s.Open = &v
 	return s
 }
 
@@ -15909,6 +16468,7 @@ type SetDNSSLBStatusRequest struct {
 	Open         *bool   `json:"Open,omitempty" xml:"Open,omitempty"`
 	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Line         *string `json:"Line,omitempty" xml:"Line,omitempty"`
 }
 
 func (s SetDNSSLBStatusRequest) String() string {
@@ -15946,6 +16506,11 @@ func (s *SetDNSSLBStatusRequest) SetDomainName(v string) *SetDNSSLBStatusRequest
 
 func (s *SetDNSSLBStatusRequest) SetType(v string) *SetDNSSLBStatusRequest {
 	s.Type = &v
+	return s
+}
+
+func (s *SetDNSSLBStatusRequest) SetLine(v string) *SetDNSSLBStatusRequest {
+	s.Line = &v
 	return s
 }
 
@@ -16859,6 +17424,209 @@ func (s *UpdateCustomLineResponse) SetHeaders(v map[string]*string) *UpdateCusto
 }
 
 func (s *UpdateCustomLineResponse) SetBody(v *UpdateCustomLineResponseBody) *UpdateCustomLineResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateDnsCacheDomainRequest struct {
+	Lang            *string                                       `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	UserClientIp    *string                                       `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	DomainName      *string                                       `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	InstanceId      *string                                       `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	CacheTtlMin     *int32                                        `json:"CacheTtlMin,omitempty" xml:"CacheTtlMin,omitempty"`
+	CacheTtlMax     *int32                                        `json:"CacheTtlMax,omitempty" xml:"CacheTtlMax,omitempty"`
+	SourceProtocol  *string                                       `json:"SourceProtocol,omitempty" xml:"SourceProtocol,omitempty"`
+	SourceEdns      *string                                       `json:"SourceEdns,omitempty" xml:"SourceEdns,omitempty"`
+	SourceDnsServer []*UpdateDnsCacheDomainRequestSourceDnsServer `json:"SourceDnsServer,omitempty" xml:"SourceDnsServer,omitempty" type:"Repeated"`
+}
+
+func (s UpdateDnsCacheDomainRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDnsCacheDomainRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDnsCacheDomainRequest) SetLang(v string) *UpdateDnsCacheDomainRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *UpdateDnsCacheDomainRequest) SetUserClientIp(v string) *UpdateDnsCacheDomainRequest {
+	s.UserClientIp = &v
+	return s
+}
+
+func (s *UpdateDnsCacheDomainRequest) SetDomainName(v string) *UpdateDnsCacheDomainRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *UpdateDnsCacheDomainRequest) SetInstanceId(v string) *UpdateDnsCacheDomainRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateDnsCacheDomainRequest) SetCacheTtlMin(v int32) *UpdateDnsCacheDomainRequest {
+	s.CacheTtlMin = &v
+	return s
+}
+
+func (s *UpdateDnsCacheDomainRequest) SetCacheTtlMax(v int32) *UpdateDnsCacheDomainRequest {
+	s.CacheTtlMax = &v
+	return s
+}
+
+func (s *UpdateDnsCacheDomainRequest) SetSourceProtocol(v string) *UpdateDnsCacheDomainRequest {
+	s.SourceProtocol = &v
+	return s
+}
+
+func (s *UpdateDnsCacheDomainRequest) SetSourceEdns(v string) *UpdateDnsCacheDomainRequest {
+	s.SourceEdns = &v
+	return s
+}
+
+func (s *UpdateDnsCacheDomainRequest) SetSourceDnsServer(v []*UpdateDnsCacheDomainRequestSourceDnsServer) *UpdateDnsCacheDomainRequest {
+	s.SourceDnsServer = v
+	return s
+}
+
+type UpdateDnsCacheDomainRequestSourceDnsServer struct {
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+}
+
+func (s UpdateDnsCacheDomainRequestSourceDnsServer) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDnsCacheDomainRequestSourceDnsServer) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDnsCacheDomainRequestSourceDnsServer) SetHost(v string) *UpdateDnsCacheDomainRequestSourceDnsServer {
+	s.Host = &v
+	return s
+}
+
+func (s *UpdateDnsCacheDomainRequestSourceDnsServer) SetPort(v string) *UpdateDnsCacheDomainRequestSourceDnsServer {
+	s.Port = &v
+	return s
+}
+
+type UpdateDnsCacheDomainResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateDnsCacheDomainResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDnsCacheDomainResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDnsCacheDomainResponseBody) SetRequestId(v string) *UpdateDnsCacheDomainResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateDnsCacheDomainResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateDnsCacheDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateDnsCacheDomainResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDnsCacheDomainResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDnsCacheDomainResponse) SetHeaders(v map[string]*string) *UpdateDnsCacheDomainResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateDnsCacheDomainResponse) SetBody(v *UpdateDnsCacheDomainResponseBody) *UpdateDnsCacheDomainResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateDnsCacheDomainRemarkRequest struct {
+	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	Remark       *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+}
+
+func (s UpdateDnsCacheDomainRemarkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDnsCacheDomainRemarkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDnsCacheDomainRemarkRequest) SetLang(v string) *UpdateDnsCacheDomainRemarkRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *UpdateDnsCacheDomainRemarkRequest) SetUserClientIp(v string) *UpdateDnsCacheDomainRemarkRequest {
+	s.UserClientIp = &v
+	return s
+}
+
+func (s *UpdateDnsCacheDomainRemarkRequest) SetDomainName(v string) *UpdateDnsCacheDomainRemarkRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *UpdateDnsCacheDomainRemarkRequest) SetRemark(v string) *UpdateDnsCacheDomainRemarkRequest {
+	s.Remark = &v
+	return s
+}
+
+type UpdateDnsCacheDomainRemarkResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateDnsCacheDomainRemarkResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDnsCacheDomainRemarkResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDnsCacheDomainRemarkResponseBody) SetRequestId(v string) *UpdateDnsCacheDomainRemarkResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateDnsCacheDomainRemarkResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateDnsCacheDomainRemarkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateDnsCacheDomainRemarkResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDnsCacheDomainRemarkResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDnsCacheDomainRemarkResponse) SetHeaders(v map[string]*string) *UpdateDnsCacheDomainRemarkResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateDnsCacheDomainRemarkResponse) SetBody(v *UpdateDnsCacheDomainRemarkResponseBody) *UpdateDnsCacheDomainRemarkResponse {
 	s.Body = v
 	return s
 }
@@ -18649,6 +19417,34 @@ func (client *Client) AddCustomLine(request *AddCustomLineRequest) (_result *Add
 	return _result, _err
 }
 
+func (client *Client) AddDnsCacheDomainWithOptions(request *AddDnsCacheDomainRequest, runtime *util.RuntimeOptions) (_result *AddDnsCacheDomainResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &AddDnsCacheDomainResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("AddDnsCacheDomain"), tea.String("2015-01-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddDnsCacheDomain(request *AddDnsCacheDomainRequest) (_result *AddDnsCacheDomainResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddDnsCacheDomainResponse{}
+	_body, _err := client.AddDnsCacheDomainWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) AddDnsGtmAccessStrategyWithOptions(request *AddDnsGtmAccessStrategyRequest, runtime *util.RuntimeOptions) (_result *AddDnsGtmAccessStrategyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19097,6 +19893,34 @@ func (client *Client) DeleteCustomLines(request *DeleteCustomLinesRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) DeleteDnsCacheDomainWithOptions(request *DeleteDnsCacheDomainRequest, runtime *util.RuntimeOptions) (_result *DeleteDnsCacheDomainResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DeleteDnsCacheDomainResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteDnsCacheDomain"), tea.String("2015-01-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDnsCacheDomain(request *DeleteDnsCacheDomainRequest) (_result *DeleteDnsCacheDomainResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDnsCacheDomainResponse{}
+	_body, _err := client.DeleteDnsCacheDomainWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteDnsGtmAccessStrategyWithOptions(request *DeleteDnsGtmAccessStrategyRequest, runtime *util.RuntimeOptions) (_result *DeleteDnsGtmAccessStrategyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19454,6 +20278,34 @@ func (client *Client) DescribeCustomLines(request *DescribeCustomLinesRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCustomLinesResponse{}
 	_body, _err := client.DescribeCustomLinesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDnsCacheDomainsWithOptions(request *DescribeDnsCacheDomainsRequest, runtime *util.RuntimeOptions) (_result *DescribeDnsCacheDomainsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeDnsCacheDomainsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeDnsCacheDomains"), tea.String("2015-01-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDnsCacheDomains(request *DescribeDnsCacheDomainsRequest) (_result *DescribeDnsCacheDomainsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDnsCacheDomainsResponse{}
+	_body, _err := client.DescribeDnsCacheDomainsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21750,6 +22602,62 @@ func (client *Client) UpdateCustomLine(request *UpdateCustomLineRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateCustomLineResponse{}
 	_body, _err := client.UpdateCustomLineWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateDnsCacheDomainWithOptions(request *UpdateDnsCacheDomainRequest, runtime *util.RuntimeOptions) (_result *UpdateDnsCacheDomainResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &UpdateDnsCacheDomainResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UpdateDnsCacheDomain"), tea.String("2015-01-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateDnsCacheDomain(request *UpdateDnsCacheDomainRequest) (_result *UpdateDnsCacheDomainResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateDnsCacheDomainResponse{}
+	_body, _err := client.UpdateDnsCacheDomainWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateDnsCacheDomainRemarkWithOptions(request *UpdateDnsCacheDomainRemarkRequest, runtime *util.RuntimeOptions) (_result *UpdateDnsCacheDomainRemarkResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &UpdateDnsCacheDomainRemarkResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UpdateDnsCacheDomainRemark"), tea.String("2015-01-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateDnsCacheDomainRemark(request *UpdateDnsCacheDomainRemarkRequest) (_result *UpdateDnsCacheDomainRemarkResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateDnsCacheDomainRemarkResponse{}
+	_body, _err := client.UpdateDnsCacheDomainRemarkWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/alidns-20150109
+module github.com/alibabacloud-go/alidns-20150109/v2
 
 go 1.15
 
