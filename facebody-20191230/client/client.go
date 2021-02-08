@@ -1308,6 +1308,8 @@ type PedestrianDetectAttributeResponseBodyData struct {
 	Attributes   []*PedestrianDetectAttributeResponseBodyDataAttributes `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
 	Boxes        []*PedestrianDetectAttributeResponseBodyDataBoxes      `json:"Boxes,omitempty" xml:"Boxes,omitempty" type:"Repeated"`
 	PersonNumber *int32                                                 `json:"PersonNumber,omitempty" xml:"PersonNumber,omitempty"`
+	Width        *int64                                                 `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height       *int64                                                 `json:"Height,omitempty" xml:"Height,omitempty"`
 }
 
 func (s PedestrianDetectAttributeResponseBodyData) String() string {
@@ -1330,6 +1332,16 @@ func (s *PedestrianDetectAttributeResponseBodyData) SetBoxes(v []*PedestrianDete
 
 func (s *PedestrianDetectAttributeResponseBodyData) SetPersonNumber(v int32) *PedestrianDetectAttributeResponseBodyData {
 	s.PersonNumber = &v
+	return s
+}
+
+func (s *PedestrianDetectAttributeResponseBodyData) SetWidth(v int64) *PedestrianDetectAttributeResponseBodyData {
+	s.Width = &v
+	return s
+}
+
+func (s *PedestrianDetectAttributeResponseBodyData) SetHeight(v int64) *PedestrianDetectAttributeResponseBodyData {
+	s.Height = &v
 	return s
 }
 
