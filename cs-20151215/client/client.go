@@ -1333,6 +1333,23 @@ func (s *DescribeClusterDetailResponse) SetBody(v *DescribeClusterDetailResponse
 	return s
 }
 
+type PauseComponentUpgradeResponse struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+}
+
+func (s PauseComponentUpgradeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PauseComponentUpgradeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PauseComponentUpgradeResponse) SetHeaders(v map[string]*string) *PauseComponentUpgradeResponse {
+	s.Headers = v
+	return s
+}
+
 type DescribeClustersRequest struct {
 	// 集群名称。
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
@@ -4724,6 +4741,41 @@ func (s *UpgradeClusterResponse) SetHeaders(v map[string]*string) *UpgradeCluste
 	return s
 }
 
+type CancelWorkflowRequest struct {
+	// 执行的操作，目前只支持cancel。
+	Action *string `json:"action,omitempty" xml:"action,omitempty"`
+}
+
+func (s CancelWorkflowRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelWorkflowRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CancelWorkflowRequest) SetAction(v string) *CancelWorkflowRequest {
+	s.Action = &v
+	return s
+}
+
+type CancelWorkflowResponse struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+}
+
+func (s CancelWorkflowResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelWorkflowResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelWorkflowResponse) SetHeaders(v map[string]*string) *CancelWorkflowResponse {
+	s.Headers = v
+	return s
+}
+
 type AttachInstancesRequest struct {
 	// 实例列表。
 	Instances []*string `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
@@ -5701,6 +5753,23 @@ func (s *DeleteClusterResponse) SetHeaders(v map[string]*string) *DeleteClusterR
 	return s
 }
 
+type CancelComponentUpgradeResponse struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+}
+
+func (s CancelComponentUpgradeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelComponentUpgradeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelComponentUpgradeResponse) SetHeaders(v map[string]*string) *CancelComponentUpgradeResponse {
+	s.Headers = v
+	return s
+}
+
 type MigrateClusterResponse struct {
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 }
@@ -5849,6 +5918,23 @@ func (s UnInstallClusterAddonsResponse) GoString() string {
 }
 
 func (s *UnInstallClusterAddonsResponse) SetHeaders(v map[string]*string) *UnInstallClusterAddonsResponse {
+	s.Headers = v
+	return s
+}
+
+type ResumeComponentUpgradeResponse struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+}
+
+func (s ResumeComponentUpgradeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResumeComponentUpgradeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ResumeComponentUpgradeResponse) SetHeaders(v map[string]*string) *ResumeComponentUpgradeResponse {
 	s.Headers = v
 	return s
 }
@@ -6395,6 +6481,117 @@ func (s *DescribeTaskInfoResponse) SetBody(v *DescribeTaskInfoResponseBody) *Des
 	return s
 }
 
+type DescirbeWorkflowResponseBody struct {
+	// 工作流创建时间。
+	CreateTime *string `json:"create_time,omitempty" xml:"create_time,omitempty"`
+	// 工作流经过时长。
+	Duration *string `json:"duration,omitempty" xml:"duration,omitempty"`
+	// 任务结束时间。
+	FinishTime *string `json:"finish_time,omitempty" xml:"finish_time,omitempty"`
+	// 输入数据大小。
+	InputDataSize *string `json:"input_data_size,omitempty" xml:"input_data_size,omitempty"`
+	// 工作流名称。
+	JobName *string `json:"job_name,omitempty" xml:"job_name,omitempty"`
+	// 工作流所在命名空间。
+	JobNamespace *string `json:"job_namespace,omitempty" xml:"job_namespace,omitempty"`
+	// 输出数据大小。
+	OutputDataSize *string `json:"output_data_size,omitempty" xml:"output_data_size,omitempty"`
+	// 工作流当前状态。
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// 碱基对个数。
+	TotalBases *string `json:"total_bases,omitempty" xml:"total_bases,omitempty"`
+	// Reads个数。
+	TotalReads *string `json:"total_reads,omitempty" xml:"total_reads,omitempty"`
+	// 用户输入参数。
+	UserInputData *string `json:"user_input_data,omitempty" xml:"user_input_data,omitempty"`
+}
+
+func (s DescirbeWorkflowResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescirbeWorkflowResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescirbeWorkflowResponseBody) SetCreateTime(v string) *DescirbeWorkflowResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescirbeWorkflowResponseBody) SetDuration(v string) *DescirbeWorkflowResponseBody {
+	s.Duration = &v
+	return s
+}
+
+func (s *DescirbeWorkflowResponseBody) SetFinishTime(v string) *DescirbeWorkflowResponseBody {
+	s.FinishTime = &v
+	return s
+}
+
+func (s *DescirbeWorkflowResponseBody) SetInputDataSize(v string) *DescirbeWorkflowResponseBody {
+	s.InputDataSize = &v
+	return s
+}
+
+func (s *DescirbeWorkflowResponseBody) SetJobName(v string) *DescirbeWorkflowResponseBody {
+	s.JobName = &v
+	return s
+}
+
+func (s *DescirbeWorkflowResponseBody) SetJobNamespace(v string) *DescirbeWorkflowResponseBody {
+	s.JobNamespace = &v
+	return s
+}
+
+func (s *DescirbeWorkflowResponseBody) SetOutputDataSize(v string) *DescirbeWorkflowResponseBody {
+	s.OutputDataSize = &v
+	return s
+}
+
+func (s *DescirbeWorkflowResponseBody) SetStatus(v string) *DescirbeWorkflowResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *DescirbeWorkflowResponseBody) SetTotalBases(v string) *DescirbeWorkflowResponseBody {
+	s.TotalBases = &v
+	return s
+}
+
+func (s *DescirbeWorkflowResponseBody) SetTotalReads(v string) *DescirbeWorkflowResponseBody {
+	s.TotalReads = &v
+	return s
+}
+
+func (s *DescirbeWorkflowResponseBody) SetUserInputData(v string) *DescirbeWorkflowResponseBody {
+	s.UserInputData = &v
+	return s
+}
+
+type DescirbeWorkflowResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescirbeWorkflowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescirbeWorkflowResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescirbeWorkflowResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescirbeWorkflowResponse) SetHeaders(v map[string]*string) *DescirbeWorkflowResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescirbeWorkflowResponse) SetBody(v *DescirbeWorkflowResponseBody) *DescirbeWorkflowResponse {
+	s.Body = v
+	return s
+}
+
 type CancelClusterUpgradeResponse struct {
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 }
@@ -6408,6 +6605,23 @@ func (s CancelClusterUpgradeResponse) GoString() string {
 }
 
 func (s *CancelClusterUpgradeResponse) SetHeaders(v map[string]*string) *CancelClusterUpgradeResponse {
+	s.Headers = v
+	return s
+}
+
+type RemoveWorkflowResponse struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+}
+
+func (s RemoveWorkflowResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveWorkflowResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveWorkflowResponse) SetHeaders(v map[string]*string) *RemoveWorkflowResponse {
 	s.Headers = v
 	return s
 }
@@ -6699,6 +6913,79 @@ func (s *DescribeClusterAddonsUpgradeStatusResponse) SetHeaders(v map[string]*st
 }
 
 func (s *DescribeClusterAddonsUpgradeStatusResponse) SetBody(v map[string]interface{}) *DescribeClusterAddonsUpgradeStatusResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeWorkflowsResponseBody struct {
+	// job信息
+	Jobs []*DescribeWorkflowsResponseBodyJobs `json:"jobs,omitempty" xml:"jobs,omitempty" type:"Repeated"`
+}
+
+func (s DescribeWorkflowsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWorkflowsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWorkflowsResponseBody) SetJobs(v []*DescribeWorkflowsResponseBodyJobs) *DescribeWorkflowsResponseBody {
+	s.Jobs = v
+	return s
+}
+
+type DescribeWorkflowsResponseBodyJobs struct {
+	// 集群ID。
+	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	// 工作流名称。
+	JobName *string `json:"job_name,omitempty" xml:"job_name,omitempty"`
+	// 工作流创建时间。
+	CreateTime *string `json:"create_time,omitempty" xml:"create_time,omitempty"`
+}
+
+func (s DescribeWorkflowsResponseBodyJobs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWorkflowsResponseBodyJobs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWorkflowsResponseBodyJobs) SetClusterId(v string) *DescribeWorkflowsResponseBodyJobs {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeWorkflowsResponseBodyJobs) SetJobName(v string) *DescribeWorkflowsResponseBodyJobs {
+	s.JobName = &v
+	return s
+}
+
+func (s *DescribeWorkflowsResponseBodyJobs) SetCreateTime(v string) *DescribeWorkflowsResponseBodyJobs {
+	s.CreateTime = &v
+	return s
+}
+
+type DescribeWorkflowsResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeWorkflowsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeWorkflowsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWorkflowsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWorkflowsResponse) SetHeaders(v map[string]*string) *DescribeWorkflowsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeWorkflowsResponse) SetBody(v *DescribeWorkflowsResponseBody) *DescribeWorkflowsResponse {
 	s.Body = v
 	return s
 }
@@ -7501,6 +7788,191 @@ func (s *DescribeClusterV2UserKubeconfigResponse) SetHeaders(v map[string]*strin
 }
 
 func (s *DescribeClusterV2UserKubeconfigResponse) SetBody(v *DescribeClusterV2UserKubeconfigResponseBody) *DescribeClusterV2UserKubeconfigResponse {
+	s.Body = v
+	return s
+}
+
+type StartWorkflowRequest struct {
+	// 工作流类型，可选值：wgs或mapping。
+	WorkflowType *string `json:"workflow_type,omitempty" xml:"workflow_type,omitempty"`
+	// SLA类型，可选值：s、g、p。 白银级（s）：超过90 Gbp的部分，按1.5 Gbp/min计算增加的时间。 黄金级（g）：超过90 Gbp的部分，按2 Gbp/min计算增加的时间。 铂金级（p）：超过90 Gbp的部分，按3 Gbp/min计算增加的时间。
+	Service *string `json:"service,omitempty" xml:"service,omitempty"`
+	// mapping oss数据的存放region。
+	MappingOssRegion *string `json:"mapping_oss_region,omitempty" xml:"mapping_oss_region,omitempty"`
+	// mapping的第一个fastq文件名。
+	MappingFastqFirstFilename *string `json:"mapping_fastq_first_filename,omitempty" xml:"mapping_fastq_first_filename,omitempty"`
+	// mapping的第二个fastq文件名。
+	MappingFastqSecondFilename *string `json:"mapping_fastq_second_filename,omitempty" xml:"mapping_fastq_second_filename,omitempty"`
+	// 存放mapping的bucket名称。
+	MappingBucketName *string `json:"mapping_bucket_name,omitempty" xml:"mapping_bucket_name,omitempty"`
+	// mapping的fastq文件路径。
+	MappingFastqPath *string `json:"mapping_fastq_path,omitempty" xml:"mapping_fastq_path,omitempty"`
+	// mapping的reference文件位置。
+	MappingReferencePath *string `json:"mapping_reference_path,omitempty" xml:"mapping_reference_path,omitempty"`
+	// 是否进行dup。
+	MappingIsMarkDup *string `json:"mapping_is_mark_dup,omitempty" xml:"mapping_is_mark_dup,omitempty"`
+	// bam文件输出路径。
+	MappingBamOutPath *string `json:"mapping_bam_out_path,omitempty" xml:"mapping_bam_out_path,omitempty"`
+	// bam文件输出名称。
+	MappingBamOutFilename *string `json:"mapping_bam_out_filename,omitempty" xml:"mapping_bam_out_filename,omitempty"`
+	// wgs oss数据的存放region。
+	WgsOssRegion *string `json:"wgs_oss_region,omitempty" xml:"wgs_oss_region,omitempty"`
+	// wgs的第一个fastq文件名。
+	WgsFastqFirstFilename *string `json:"wgs_fastq_first_filename,omitempty" xml:"wgs_fastq_first_filename,omitempty"`
+	// wgs的第二个fastq文件名。
+	WgsFastqSecondFilename *string `json:"wgs_fastq_second_filename,omitempty" xml:"wgs_fastq_second_filename,omitempty"`
+	// 存放wgs的bucket名称。
+	WgsBucketName *string `json:"wgs_bucket_name,omitempty" xml:"wgs_bucket_name,omitempty"`
+	// wgs的fastq文件路径。
+	WgsFastqPath *string `json:"wgs_fastq_path,omitempty" xml:"wgs_fastq_path,omitempty"`
+	// wgs的reference文件路径。
+	WgsReferencePath *string `json:"wgs_reference_path,omitempty" xml:"wgs_reference_path,omitempty"`
+	// wgs的vcf输出路径。
+	WgsVcfOutPath *string `json:"wgs_vcf_out_path,omitempty" xml:"wgs_vcf_out_path,omitempty"`
+	// wgs的vcf输出文件名称。
+	WgsVcfOutFilename *string `json:"wgs_vcf_out_filename,omitempty" xml:"wgs_vcf_out_filename,omitempty"`
+}
+
+func (s StartWorkflowRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartWorkflowRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartWorkflowRequest) SetWorkflowType(v string) *StartWorkflowRequest {
+	s.WorkflowType = &v
+	return s
+}
+
+func (s *StartWorkflowRequest) SetService(v string) *StartWorkflowRequest {
+	s.Service = &v
+	return s
+}
+
+func (s *StartWorkflowRequest) SetMappingOssRegion(v string) *StartWorkflowRequest {
+	s.MappingOssRegion = &v
+	return s
+}
+
+func (s *StartWorkflowRequest) SetMappingFastqFirstFilename(v string) *StartWorkflowRequest {
+	s.MappingFastqFirstFilename = &v
+	return s
+}
+
+func (s *StartWorkflowRequest) SetMappingFastqSecondFilename(v string) *StartWorkflowRequest {
+	s.MappingFastqSecondFilename = &v
+	return s
+}
+
+func (s *StartWorkflowRequest) SetMappingBucketName(v string) *StartWorkflowRequest {
+	s.MappingBucketName = &v
+	return s
+}
+
+func (s *StartWorkflowRequest) SetMappingFastqPath(v string) *StartWorkflowRequest {
+	s.MappingFastqPath = &v
+	return s
+}
+
+func (s *StartWorkflowRequest) SetMappingReferencePath(v string) *StartWorkflowRequest {
+	s.MappingReferencePath = &v
+	return s
+}
+
+func (s *StartWorkflowRequest) SetMappingIsMarkDup(v string) *StartWorkflowRequest {
+	s.MappingIsMarkDup = &v
+	return s
+}
+
+func (s *StartWorkflowRequest) SetMappingBamOutPath(v string) *StartWorkflowRequest {
+	s.MappingBamOutPath = &v
+	return s
+}
+
+func (s *StartWorkflowRequest) SetMappingBamOutFilename(v string) *StartWorkflowRequest {
+	s.MappingBamOutFilename = &v
+	return s
+}
+
+func (s *StartWorkflowRequest) SetWgsOssRegion(v string) *StartWorkflowRequest {
+	s.WgsOssRegion = &v
+	return s
+}
+
+func (s *StartWorkflowRequest) SetWgsFastqFirstFilename(v string) *StartWorkflowRequest {
+	s.WgsFastqFirstFilename = &v
+	return s
+}
+
+func (s *StartWorkflowRequest) SetWgsFastqSecondFilename(v string) *StartWorkflowRequest {
+	s.WgsFastqSecondFilename = &v
+	return s
+}
+
+func (s *StartWorkflowRequest) SetWgsBucketName(v string) *StartWorkflowRequest {
+	s.WgsBucketName = &v
+	return s
+}
+
+func (s *StartWorkflowRequest) SetWgsFastqPath(v string) *StartWorkflowRequest {
+	s.WgsFastqPath = &v
+	return s
+}
+
+func (s *StartWorkflowRequest) SetWgsReferencePath(v string) *StartWorkflowRequest {
+	s.WgsReferencePath = &v
+	return s
+}
+
+func (s *StartWorkflowRequest) SetWgsVcfOutPath(v string) *StartWorkflowRequest {
+	s.WgsVcfOutPath = &v
+	return s
+}
+
+func (s *StartWorkflowRequest) SetWgsVcfOutFilename(v string) *StartWorkflowRequest {
+	s.WgsVcfOutFilename = &v
+	return s
+}
+
+type StartWorkflowResponseBody struct {
+	// 工作流名称
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+}
+
+func (s StartWorkflowResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartWorkflowResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartWorkflowResponseBody) SetJobName(v string) *StartWorkflowResponseBody {
+	s.JobName = &v
+	return s
+}
+
+type StartWorkflowResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *StartWorkflowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StartWorkflowResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartWorkflowResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartWorkflowResponse) SetHeaders(v map[string]*string) *StartWorkflowResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartWorkflowResponse) SetBody(v *StartWorkflowResponseBody) *StartWorkflowResponse {
 	s.Body = v
 	return s
 }
@@ -8714,6 +9186,31 @@ func (client *Client) DescribeClusterDetailWithOptions(ClusterId *string, header
 	return _result, _err
 }
 
+func (client *Client) PauseComponentUpgrade(clusterid *string, componentid *string) (_result *PauseComponentUpgradeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &PauseComponentUpgradeResponse{}
+	_body, _err := client.PauseComponentUpgradeWithOptions(clusterid, componentid, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PauseComponentUpgradeWithOptions(clusterid *string, componentid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PauseComponentUpgradeResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &PauseComponentUpgradeResponse{}
+	_body, _err := client.DoROARequest(tea.String("PauseComponentUpgrade"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(clusterid)+"/components/"+tea.StringValue(componentid)+"/pause"), tea.String("none"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) DescribeClusters(request *DescribeClustersRequest) (_result *DescribeClustersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9584,6 +10081,41 @@ func (client *Client) UpgradeClusterWithOptions(ClusterId *string, request *Upgr
 	return _result, _err
 }
 
+func (client *Client) CancelWorkflow(workflowName *string, request *CancelWorkflowRequest) (_result *CancelWorkflowResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CancelWorkflowResponse{}
+	_body, _err := client.CancelWorkflowWithOptions(workflowName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CancelWorkflowWithOptions(workflowName *string, request *CancelWorkflowRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CancelWorkflowResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Action)) {
+		body["action"] = request.Action
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	_result = &CancelWorkflowResponse{}
+	_body, _err := client.DoROARequest(tea.String("CancelWorkflow"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/gs/workflow/"+tea.StringValue(workflowName)), tea.String("none"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) AttachInstances(ClusterId *string, request *AttachInstancesRequest) (_result *AttachInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9942,6 +10474,31 @@ func (client *Client) DeleteClusterWithOptions(ClusterId *string, request *Delet
 	return _result, _err
 }
 
+func (client *Client) CancelComponentUpgrade(clusterId *string, componentId *string) (_result *CancelComponentUpgradeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CancelComponentUpgradeResponse{}
+	_body, _err := client.CancelComponentUpgradeWithOptions(clusterId, componentId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CancelComponentUpgradeWithOptions(clusterId *string, componentId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CancelComponentUpgradeResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &CancelComponentUpgradeResponse{}
+	_body, _err := client.DoROARequest(tea.String("CancelComponentUpgrade"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(clusterId)+"/components/"+tea.StringValue(componentId)+"/cancel"), tea.String("none"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) MigrateCluster(clusterId *string) (_result *MigrateClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10057,6 +10614,31 @@ func (client *Client) UnInstallClusterAddonsWithOptions(ClusterId *string, reque
 	return _result, _err
 }
 
+func (client *Client) ResumeComponentUpgrade(clusterid *string, componentid *string) (_result *ResumeComponentUpgradeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ResumeComponentUpgradeResponse{}
+	_body, _err := client.ResumeComponentUpgradeWithOptions(clusterid, componentid, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ResumeComponentUpgradeWithOptions(clusterid *string, componentid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ResumeComponentUpgradeResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &ResumeComponentUpgradeResponse{}
+	_body, _err := client.DoROARequest(tea.String("ResumeComponentUpgrade"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(clusterid)+"/components/"+tea.StringValue(componentid)+"/resume"), tea.String("none"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) DescribeClustersV1(request *DescribeClustersV1Request) (_result *DescribeClustersV1Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10164,6 +10746,31 @@ func (client *Client) DescribeTaskInfoWithOptions(taskId *string, headers map[st
 	return _result, _err
 }
 
+func (client *Client) DescirbeWorkflow(workflowName *string) (_result *DescirbeWorkflowResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescirbeWorkflowResponse{}
+	_body, _err := client.DescirbeWorkflowWithOptions(workflowName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescirbeWorkflowWithOptions(workflowName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescirbeWorkflowResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &DescirbeWorkflowResponse{}
+	_body, _err := client.DoROARequest(tea.String("DescirbeWorkflow"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/gs/workflow/"+tea.StringValue(workflowName)), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) CancelClusterUpgrade(ClusterId *string) (_result *CancelClusterUpgradeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10182,6 +10789,31 @@ func (client *Client) CancelClusterUpgradeWithOptions(ClusterId *string, headers
 	}
 	_result = &CancelClusterUpgradeResponse{}
 	_body, _err := client.DoROARequest(tea.String("CancelClusterUpgrade"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v2/clusters/"+tea.StringValue(ClusterId)+"/upgrade/cancel"), tea.String("none"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RemoveWorkflow(workflowName *string) (_result *RemoveWorkflowResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RemoveWorkflowResponse{}
+	_body, _err := client.RemoveWorkflowWithOptions(workflowName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RemoveWorkflowWithOptions(workflowName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveWorkflowResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &RemoveWorkflowResponse{}
+	_body, _err := client.DoROARequest(tea.String("RemoveWorkflow"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/gs/workflow/"+tea.StringValue(workflowName)), tea.String("none"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10405,6 +11037,31 @@ func (client *Client) DescribeClusterAddonsUpgradeStatusWithOptions(ClusterId *s
 	return _result, _err
 }
 
+func (client *Client) DescribeWorkflows() (_result *DescribeWorkflowsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeWorkflowsResponse{}
+	_body, _err := client.DescribeWorkflowsWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeWorkflowsWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeWorkflowsResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &DescribeWorkflowsResponse{}
+	_body, _err := client.DoROARequest(tea.String("DescribeWorkflows"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/gs/workflows"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) InstallClusterAddons(ClusterId *string, request *InstallClusterAddonsRequest) (_result *InstallClusterAddonsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10488,6 +11145,113 @@ func (client *Client) DescribeClusterV2UserKubeconfigWithOptions(ClusterId *stri
 	}
 	_result = &DescribeClusterV2UserKubeconfigResponse{}
 	_body, _err := client.DoROARequest(tea.String("DescribeClusterV2UserKubeconfig"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v2/k8s/"+tea.StringValue(ClusterId)+"/user_config"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StartWorkflow(request *StartWorkflowRequest) (_result *StartWorkflowResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StartWorkflowResponse{}
+	_body, _err := client.StartWorkflowWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StartWorkflowWithOptions(request *StartWorkflowRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartWorkflowResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.WorkflowType)) {
+		body["workflow_type"] = request.WorkflowType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Service)) {
+		body["service"] = request.Service
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MappingOssRegion)) {
+		body["mapping_oss_region"] = request.MappingOssRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MappingFastqFirstFilename)) {
+		body["mapping_fastq_first_filename"] = request.MappingFastqFirstFilename
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MappingFastqSecondFilename)) {
+		body["mapping_fastq_second_filename"] = request.MappingFastqSecondFilename
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MappingBucketName)) {
+		body["mapping_bucket_name"] = request.MappingBucketName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MappingFastqPath)) {
+		body["mapping_fastq_path"] = request.MappingFastqPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MappingReferencePath)) {
+		body["mapping_reference_path"] = request.MappingReferencePath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MappingIsMarkDup)) {
+		body["mapping_is_mark_dup"] = request.MappingIsMarkDup
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MappingBamOutPath)) {
+		body["mapping_bam_out_path"] = request.MappingBamOutPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MappingBamOutFilename)) {
+		body["mapping_bam_out_filename"] = request.MappingBamOutFilename
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WgsOssRegion)) {
+		body["wgs_oss_region"] = request.WgsOssRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WgsFastqFirstFilename)) {
+		body["wgs_fastq_first_filename"] = request.WgsFastqFirstFilename
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WgsFastqSecondFilename)) {
+		body["wgs_fastq_second_filename"] = request.WgsFastqSecondFilename
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WgsBucketName)) {
+		body["wgs_bucket_name"] = request.WgsBucketName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WgsFastqPath)) {
+		body["wgs_fastq_path"] = request.WgsFastqPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WgsReferencePath)) {
+		body["wgs_reference_path"] = request.WgsReferencePath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WgsVcfOutPath)) {
+		body["wgs_vcf_out_path"] = request.WgsVcfOutPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WgsVcfOutFilename)) {
+		body["wgs_vcf_out_filename"] = request.WgsVcfOutFilename
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	_result = &StartWorkflowResponse{}
+	_body, _err := client.DoROARequest(tea.String("StartWorkflow"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/gs/workflow"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
