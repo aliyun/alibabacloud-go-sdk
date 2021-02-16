@@ -2296,7 +2296,7 @@ func (s *CreateMonitorGroupByResourceGroupIdResponse) SetBody(v *CreateMonitorGr
 }
 
 type CreateMonitorGroupInstancesRequest struct {
-	GroupId   *int64                                         `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupId   *string                                        `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	Instances []*CreateMonitorGroupInstancesRequestInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
 }
 
@@ -2308,7 +2308,7 @@ func (s CreateMonitorGroupInstancesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateMonitorGroupInstancesRequest) SetGroupId(v int64) *CreateMonitorGroupInstancesRequest {
+func (s *CreateMonitorGroupInstancesRequest) SetGroupId(v string) *CreateMonitorGroupInstancesRequest {
 	s.GroupId = &v
 	return s
 }
@@ -5506,223 +5506,6 @@ func (s *DescribeAlertHistoryListResponse) SetHeaders(v map[string]*string) *Des
 }
 
 func (s *DescribeAlertHistoryListResponse) SetBody(v *DescribeAlertHistoryListResponseBody) *DescribeAlertHistoryListResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeAlertingMetricRuleResourcesRequest struct {
-	RuleId   *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	GroupId  *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	Page     *int32  `json:"Page,omitempty" xml:"Page,omitempty"`
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-}
-
-func (s DescribeAlertingMetricRuleResourcesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAlertingMetricRuleResourcesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAlertingMetricRuleResourcesRequest) SetRuleId(v string) *DescribeAlertingMetricRuleResourcesRequest {
-	s.RuleId = &v
-	return s
-}
-
-func (s *DescribeAlertingMetricRuleResourcesRequest) SetGroupId(v string) *DescribeAlertingMetricRuleResourcesRequest {
-	s.GroupId = &v
-	return s
-}
-
-func (s *DescribeAlertingMetricRuleResourcesRequest) SetPage(v int32) *DescribeAlertingMetricRuleResourcesRequest {
-	s.Page = &v
-	return s
-}
-
-func (s *DescribeAlertingMetricRuleResourcesRequest) SetPageSize(v int32) *DescribeAlertingMetricRuleResourcesRequest {
-	s.PageSize = &v
-	return s
-}
-
-type DescribeAlertingMetricRuleResourcesResponseBody struct {
-	Message   *string                                                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total     *int32                                                    `json:"Total,omitempty" xml:"Total,omitempty"`
-	Resources *DescribeAlertingMetricRuleResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
-	Code      *int32                                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success   *bool                                                     `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DescribeAlertingMetricRuleResourcesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAlertingMetricRuleResourcesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAlertingMetricRuleResourcesResponseBody) SetMessage(v string) *DescribeAlertingMetricRuleResourcesResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DescribeAlertingMetricRuleResourcesResponseBody) SetRequestId(v string) *DescribeAlertingMetricRuleResourcesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeAlertingMetricRuleResourcesResponseBody) SetTotal(v int32) *DescribeAlertingMetricRuleResourcesResponseBody {
-	s.Total = &v
-	return s
-}
-
-func (s *DescribeAlertingMetricRuleResourcesResponseBody) SetResources(v *DescribeAlertingMetricRuleResourcesResponseBodyResources) *DescribeAlertingMetricRuleResourcesResponseBody {
-	s.Resources = v
-	return s
-}
-
-func (s *DescribeAlertingMetricRuleResourcesResponseBody) SetCode(v int32) *DescribeAlertingMetricRuleResourcesResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DescribeAlertingMetricRuleResourcesResponseBody) SetSuccess(v bool) *DescribeAlertingMetricRuleResourcesResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DescribeAlertingMetricRuleResourcesResponseBodyResources struct {
-	Resource []*DescribeAlertingMetricRuleResourcesResponseBodyResourcesResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Repeated"`
-}
-
-func (s DescribeAlertingMetricRuleResourcesResponseBodyResources) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAlertingMetricRuleResourcesResponseBodyResources) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAlertingMetricRuleResourcesResponseBodyResources) SetResource(v []*DescribeAlertingMetricRuleResourcesResponseBodyResourcesResource) *DescribeAlertingMetricRuleResourcesResponseBodyResources {
-	s.Resource = v
-	return s
-}
-
-type DescribeAlertingMetricRuleResourcesResponseBodyResourcesResource struct {
-	MetricName     *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	RetryTimes     *string `json:"RetryTimes,omitempty" xml:"RetryTimes,omitempty"`
-	MetricValues   *string `json:"MetricValues,omitempty" xml:"MetricValues,omitempty"`
-	Namespace      *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	RuleName       *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	RuleId         *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Resource       *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	LastModifyTime *string `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
-	GroupId        *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	LastAlertTime  *string `json:"LastAlertTime,omitempty" xml:"LastAlertTime,omitempty"`
-	Threshold      *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	Statistics     *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	Enable         *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-}
-
-func (s DescribeAlertingMetricRuleResourcesResponseBodyResourcesResource) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAlertingMetricRuleResourcesResponseBodyResourcesResource) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAlertingMetricRuleResourcesResponseBodyResourcesResource) SetMetricName(v string) *DescribeAlertingMetricRuleResourcesResponseBodyResourcesResource {
-	s.MetricName = &v
-	return s
-}
-
-func (s *DescribeAlertingMetricRuleResourcesResponseBodyResourcesResource) SetRetryTimes(v string) *DescribeAlertingMetricRuleResourcesResponseBodyResourcesResource {
-	s.RetryTimes = &v
-	return s
-}
-
-func (s *DescribeAlertingMetricRuleResourcesResponseBodyResourcesResource) SetMetricValues(v string) *DescribeAlertingMetricRuleResourcesResponseBodyResourcesResource {
-	s.MetricValues = &v
-	return s
-}
-
-func (s *DescribeAlertingMetricRuleResourcesResponseBodyResourcesResource) SetNamespace(v string) *DescribeAlertingMetricRuleResourcesResponseBodyResourcesResource {
-	s.Namespace = &v
-	return s
-}
-
-func (s *DescribeAlertingMetricRuleResourcesResponseBodyResourcesResource) SetRuleName(v string) *DescribeAlertingMetricRuleResourcesResponseBodyResourcesResource {
-	s.RuleName = &v
-	return s
-}
-
-func (s *DescribeAlertingMetricRuleResourcesResponseBodyResourcesResource) SetRuleId(v string) *DescribeAlertingMetricRuleResourcesResponseBodyResourcesResource {
-	s.RuleId = &v
-	return s
-}
-
-func (s *DescribeAlertingMetricRuleResourcesResponseBodyResourcesResource) SetStartTime(v string) *DescribeAlertingMetricRuleResourcesResponseBodyResourcesResource {
-	s.StartTime = &v
-	return s
-}
-
-func (s *DescribeAlertingMetricRuleResourcesResponseBodyResourcesResource) SetResource(v string) *DescribeAlertingMetricRuleResourcesResponseBodyResourcesResource {
-	s.Resource = &v
-	return s
-}
-
-func (s *DescribeAlertingMetricRuleResourcesResponseBodyResourcesResource) SetLastModifyTime(v string) *DescribeAlertingMetricRuleResourcesResponseBodyResourcesResource {
-	s.LastModifyTime = &v
-	return s
-}
-
-func (s *DescribeAlertingMetricRuleResourcesResponseBodyResourcesResource) SetGroupId(v string) *DescribeAlertingMetricRuleResourcesResponseBodyResourcesResource {
-	s.GroupId = &v
-	return s
-}
-
-func (s *DescribeAlertingMetricRuleResourcesResponseBodyResourcesResource) SetLastAlertTime(v string) *DescribeAlertingMetricRuleResourcesResponseBodyResourcesResource {
-	s.LastAlertTime = &v
-	return s
-}
-
-func (s *DescribeAlertingMetricRuleResourcesResponseBodyResourcesResource) SetThreshold(v string) *DescribeAlertingMetricRuleResourcesResponseBodyResourcesResource {
-	s.Threshold = &v
-	return s
-}
-
-func (s *DescribeAlertingMetricRuleResourcesResponseBodyResourcesResource) SetStatistics(v string) *DescribeAlertingMetricRuleResourcesResponseBodyResourcesResource {
-	s.Statistics = &v
-	return s
-}
-
-func (s *DescribeAlertingMetricRuleResourcesResponseBodyResourcesResource) SetEnable(v string) *DescribeAlertingMetricRuleResourcesResponseBodyResourcesResource {
-	s.Enable = &v
-	return s
-}
-
-type DescribeAlertingMetricRuleResourcesResponse struct {
-	Headers map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeAlertingMetricRuleResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeAlertingMetricRuleResourcesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAlertingMetricRuleResourcesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAlertingMetricRuleResourcesResponse) SetHeaders(v map[string]*string) *DescribeAlertingMetricRuleResourcesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeAlertingMetricRuleResourcesResponse) SetBody(v *DescribeAlertingMetricRuleResourcesResponseBody) *DescribeAlertingMetricRuleResourcesResponse {
 	s.Body = v
 	return s
 }
@@ -24148,35 +23931,6 @@ func (client *Client) DescribeAlertHistoryList(request *DescribeAlertHistoryList
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAlertHistoryListResponse{}
 	_body, _err := client.DescribeAlertHistoryListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeAlertingMetricRuleResourcesWithOptions(request *DescribeAlertingMetricRuleResourcesRequest, runtime *util.RuntimeOptions) (_result *DescribeAlertingMetricRuleResourcesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: query,
-	}
-	_result = &DescribeAlertingMetricRuleResourcesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeAlertingMetricRuleResources"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeAlertingMetricRuleResources(request *DescribeAlertingMetricRuleResourcesRequest) (_result *DescribeAlertingMetricRuleResourcesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeAlertingMetricRuleResourcesResponse{}
-	_body, _err := client.DescribeAlertingMetricRuleResourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
