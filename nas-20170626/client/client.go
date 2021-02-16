@@ -2602,6 +2602,7 @@ type DescribeFileSystemsRequest struct {
 	FileSystemIds  *string                          `json:"FileSystemIds,omitempty" xml:"FileSystemIds,omitempty"`
 	OrderByField   *string                          `json:"OrderByField,omitempty" xml:"OrderByField,omitempty"`
 	SortOrder      *string                          `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+	ChargeType     *string                          `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	Tag            []*DescribeFileSystemsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -2670,6 +2671,11 @@ func (s *DescribeFileSystemsRequest) SetOrderByField(v string) *DescribeFileSyst
 
 func (s *DescribeFileSystemsRequest) SetSortOrder(v string) *DescribeFileSystemsRequest {
 	s.SortOrder = &v
+	return s
+}
+
+func (s *DescribeFileSystemsRequest) SetChargeType(v string) *DescribeFileSystemsRequest {
+	s.ChargeType = &v
 	return s
 }
 
@@ -3267,6 +3273,7 @@ func (s *DescribeFileSystemStatisticsRequest) SetPageNumber(v int32) *DescribeFi
 }
 
 type DescribeFileSystemStatisticsResponseBody struct {
+	FileSystems          *DescribeFileSystemStatisticsResponseBodyFileSystems          `json:"FileSystems,omitempty" xml:"FileSystems,omitempty" type:"Struct"`
 	TotalCount           *int32                                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId            *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageSize             *int32                                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -3280,6 +3287,11 @@ func (s DescribeFileSystemStatisticsResponseBody) String() string {
 
 func (s DescribeFileSystemStatisticsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeFileSystemStatisticsResponseBody) SetFileSystems(v *DescribeFileSystemStatisticsResponseBodyFileSystems) *DescribeFileSystemStatisticsResponseBody {
+	s.FileSystems = v
+	return s
 }
 
 func (s *DescribeFileSystemStatisticsResponseBody) SetTotalCount(v int32) *DescribeFileSystemStatisticsResponseBody {
@@ -3304,6 +3316,176 @@ func (s *DescribeFileSystemStatisticsResponseBody) SetPageNumber(v int32) *Descr
 
 func (s *DescribeFileSystemStatisticsResponseBody) SetFileSystemStatistics(v *DescribeFileSystemStatisticsResponseBodyFileSystemStatistics) *DescribeFileSystemStatisticsResponseBody {
 	s.FileSystemStatistics = v
+	return s
+}
+
+type DescribeFileSystemStatisticsResponseBodyFileSystems struct {
+	FileSystem []*DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem `json:"FileSystem,omitempty" xml:"FileSystem,omitempty" type:"Repeated"`
+}
+
+func (s DescribeFileSystemStatisticsResponseBodyFileSystems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFileSystemStatisticsResponseBodyFileSystems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFileSystemStatisticsResponseBodyFileSystems) SetFileSystem(v []*DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem) *DescribeFileSystemStatisticsResponseBodyFileSystems {
+	s.FileSystem = v
+	return s
+}
+
+type DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem struct {
+	Status         *string                                                                `json:"Status,omitempty" xml:"Status,omitempty"`
+	Capacity       *int64                                                                 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	MeteredIASize  *int64                                                                 `json:"MeteredIASize,omitempty" xml:"MeteredIASize,omitempty"`
+	CreateTime     *string                                                                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ChargeType     *string                                                                `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	StorageType    *string                                                                `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	RegionId       *string                                                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	FileSystemType *string                                                                `json:"FileSystemType,omitempty" xml:"FileSystemType,omitempty"`
+	FileSystemId   *string                                                                `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	MeteredSize    *int64                                                                 `json:"MeteredSize,omitempty" xml:"MeteredSize,omitempty"`
+	Description    *string                                                                `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExpiredTime    *string                                                                `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	ZoneId         *string                                                                `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	Packages       *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystemPackages `json:"Packages,omitempty" xml:"Packages,omitempty" type:"Struct"`
+	ProtocolType   *string                                                                `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+}
+
+func (s DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem) SetStatus(v string) *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem) SetCapacity(v int64) *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem {
+	s.Capacity = &v
+	return s
+}
+
+func (s *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem) SetMeteredIASize(v int64) *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem {
+	s.MeteredIASize = &v
+	return s
+}
+
+func (s *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem) SetCreateTime(v string) *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem) SetChargeType(v string) *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem) SetStorageType(v string) *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem {
+	s.StorageType = &v
+	return s
+}
+
+func (s *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem) SetRegionId(v string) *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem) SetFileSystemType(v string) *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem {
+	s.FileSystemType = &v
+	return s
+}
+
+func (s *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem) SetFileSystemId(v string) *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem {
+	s.FileSystemId = &v
+	return s
+}
+
+func (s *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem) SetMeteredSize(v int64) *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem {
+	s.MeteredSize = &v
+	return s
+}
+
+func (s *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem) SetDescription(v string) *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem) SetExpiredTime(v string) *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem {
+	s.ExpiredTime = &v
+	return s
+}
+
+func (s *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem) SetZoneId(v string) *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem {
+	s.ZoneId = &v
+	return s
+}
+
+func (s *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem) SetPackages(v *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystemPackages) *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem {
+	s.Packages = v
+	return s
+}
+
+func (s *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem) SetProtocolType(v string) *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem {
+	s.ProtocolType = &v
+	return s
+}
+
+type DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystemPackages struct {
+	Package []*DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystemPackagesPackage `json:"Package,omitempty" xml:"Package,omitempty" type:"Repeated"`
+}
+
+func (s DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystemPackages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystemPackages) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystemPackages) SetPackage(v []*DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystemPackagesPackage) *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystemPackages {
+	s.Package = v
+	return s
+}
+
+type DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystemPackagesPackage struct {
+	StartTime   *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	Size        *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
+	PackageId   *string `json:"PackageId,omitempty" xml:"PackageId,omitempty"`
+}
+
+func (s DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystemPackagesPackage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystemPackagesPackage) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystemPackagesPackage) SetStartTime(v string) *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystemPackagesPackage {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystemPackagesPackage) SetExpiredTime(v string) *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystemPackagesPackage {
+	s.ExpiredTime = &v
+	return s
+}
+
+func (s *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystemPackagesPackage) SetSize(v int64) *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystemPackagesPackage {
+	s.Size = &v
+	return s
+}
+
+func (s *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystemPackagesPackage) SetPackageId(v string) *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystemPackagesPackage {
+	s.PackageId = &v
 	return s
 }
 
