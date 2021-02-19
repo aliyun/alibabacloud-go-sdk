@@ -1485,6 +1485,12 @@ type UpdateMeshFeatureRequest struct {
 	CustomizedPrometheus         *bool    `json:"CustomizedPrometheus,omitempty" xml:"CustomizedPrometheus,omitempty"`
 	PrometheusUrl                *string  `json:"PrometheusUrl,omitempty" xml:"PrometheusUrl,omitempty"`
 	AccessLogEnabled             *bool    `json:"AccessLogEnabled,omitempty" xml:"AccessLogEnabled,omitempty"`
+	MSEEnabled                   *bool    `json:"MSEEnabled,omitempty" xml:"MSEEnabled,omitempty"`
+	RedisFilterEnabled           *bool    `json:"RedisFilterEnabled,omitempty" xml:"RedisFilterEnabled,omitempty"`
+	MysqlFilterEnabled           *bool    `json:"MysqlFilterEnabled,omitempty" xml:"MysqlFilterEnabled,omitempty"`
+	ThriftFilterEnabled          *bool    `json:"ThriftFilterEnabled,omitempty" xml:"ThriftFilterEnabled,omitempty"`
+	WebAssemblyFilterEnabled     *bool    `json:"WebAssemblyFilterEnabled,omitempty" xml:"WebAssemblyFilterEnabled,omitempty"`
+	DNSProxyingEnabled           *bool    `json:"DNSProxyingEnabled,omitempty" xml:"DNSProxyingEnabled,omitempty"`
 }
 
 func (s UpdateMeshFeatureRequest) String() string {
@@ -1672,6 +1678,36 @@ func (s *UpdateMeshFeatureRequest) SetPrometheusUrl(v string) *UpdateMeshFeature
 
 func (s *UpdateMeshFeatureRequest) SetAccessLogEnabled(v bool) *UpdateMeshFeatureRequest {
 	s.AccessLogEnabled = &v
+	return s
+}
+
+func (s *UpdateMeshFeatureRequest) SetMSEEnabled(v bool) *UpdateMeshFeatureRequest {
+	s.MSEEnabled = &v
+	return s
+}
+
+func (s *UpdateMeshFeatureRequest) SetRedisFilterEnabled(v bool) *UpdateMeshFeatureRequest {
+	s.RedisFilterEnabled = &v
+	return s
+}
+
+func (s *UpdateMeshFeatureRequest) SetMysqlFilterEnabled(v bool) *UpdateMeshFeatureRequest {
+	s.MysqlFilterEnabled = &v
+	return s
+}
+
+func (s *UpdateMeshFeatureRequest) SetThriftFilterEnabled(v bool) *UpdateMeshFeatureRequest {
+	s.ThriftFilterEnabled = &v
+	return s
+}
+
+func (s *UpdateMeshFeatureRequest) SetWebAssemblyFilterEnabled(v bool) *UpdateMeshFeatureRequest {
+	s.WebAssemblyFilterEnabled = &v
+	return s
+}
+
+func (s *UpdateMeshFeatureRequest) SetDNSProxyingEnabled(v bool) *UpdateMeshFeatureRequest {
+	s.DNSProxyingEnabled = &v
 	return s
 }
 
@@ -2805,38 +2841,44 @@ func (s *DescribeServiceMeshKubeconfigResponse) SetRequestId(v string) *Describe
 }
 
 type CreateServiceMeshRequest struct {
-	RegionId              *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty" require:"true"`
-	IstioVersion          *string  `json:"IstioVersion,omitempty" xml:"IstioVersion,omitempty"`
-	VpcId                 *string  `json:"VpcId,omitempty" xml:"VpcId,omitempty" require:"true"`
-	ApiServerPublicEip    *bool    `json:"ApiServerPublicEip,omitempty" xml:"ApiServerPublicEip,omitempty"`
-	PilotPublicEip        *bool    `json:"PilotPublicEip,omitempty" xml:"PilotPublicEip,omitempty"`
-	Tracing               *bool    `json:"Tracing,omitempty" xml:"Tracing,omitempty"`
-	Name                  *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	VSwitches             *string  `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" require:"true"`
-	TraceSampling         *float32 `json:"TraceSampling,omitempty" xml:"TraceSampling,omitempty"`
-	LocalityLoadBalancing *bool    `json:"LocalityLoadBalancing,omitempty" xml:"LocalityLoadBalancing,omitempty"`
-	Telemetry             *bool    `json:"Telemetry,omitempty" xml:"Telemetry,omitempty"`
-	OpenAgentPolicy       *bool    `json:"OpenAgentPolicy,omitempty" xml:"OpenAgentPolicy,omitempty"`
-	OPALogLevel           *string  `json:"OPALogLevel,omitempty" xml:"OPALogLevel,omitempty"`
-	OPARequestCPU         *string  `json:"OPARequestCPU,omitempty" xml:"OPARequestCPU,omitempty"`
-	OPARequestMemory      *string  `json:"OPARequestMemory,omitempty" xml:"OPARequestMemory,omitempty"`
-	OPALimitCPU           *string  `json:"OPALimitCPU,omitempty" xml:"OPALimitCPU,omitempty"`
-	OPALimitMemory        *string  `json:"OPALimitMemory,omitempty" xml:"OPALimitMemory,omitempty"`
-	EnableAudit           *bool    `json:"EnableAudit,omitempty" xml:"EnableAudit,omitempty"`
-	AuditProject          *string  `json:"AuditProject,omitempty" xml:"AuditProject,omitempty"`
-	ProxyRequestCPU       *string  `json:"ProxyRequestCPU,omitempty" xml:"ProxyRequestCPU,omitempty"`
-	ProxyRequestMemory    *string  `json:"ProxyRequestMemory,omitempty" xml:"ProxyRequestMemory,omitempty"`
-	ProxyLimitCPU         *string  `json:"ProxyLimitCPU,omitempty" xml:"ProxyLimitCPU,omitempty"`
-	ProxyLimitMemory      *string  `json:"ProxyLimitMemory,omitempty" xml:"ProxyLimitMemory,omitempty"`
-	IncludeIPRanges       *string  `json:"IncludeIPRanges,omitempty" xml:"IncludeIPRanges,omitempty"`
-	ExcludeIPRanges       *string  `json:"ExcludeIPRanges,omitempty" xml:"ExcludeIPRanges,omitempty"`
-	ExcludeOutboundPorts  *string  `json:"ExcludeOutboundPorts,omitempty" xml:"ExcludeOutboundPorts,omitempty"`
-	ExcludeInboundPorts   *string  `json:"ExcludeInboundPorts,omitempty" xml:"ExcludeInboundPorts,omitempty"`
-	OpaEnabled            *bool    `json:"OpaEnabled,omitempty" xml:"OpaEnabled,omitempty"`
-	KialiEnabled          *bool    `json:"KialiEnabled,omitempty" xml:"KialiEnabled,omitempty"`
-	AccessLogEnabled      *bool    `json:"AccessLogEnabled,omitempty" xml:"AccessLogEnabled,omitempty"`
-	CustomizedPrometheus  *bool    `json:"CustomizedPrometheus,omitempty" xml:"CustomizedPrometheus,omitempty"`
-	PrometheusUrl         *string  `json:"PrometheusUrl,omitempty" xml:"PrometheusUrl,omitempty"`
+	RegionId                 *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty" require:"true"`
+	IstioVersion             *string  `json:"IstioVersion,omitempty" xml:"IstioVersion,omitempty"`
+	VpcId                    *string  `json:"VpcId,omitempty" xml:"VpcId,omitempty" require:"true"`
+	ApiServerPublicEip       *bool    `json:"ApiServerPublicEip,omitempty" xml:"ApiServerPublicEip,omitempty"`
+	PilotPublicEip           *bool    `json:"PilotPublicEip,omitempty" xml:"PilotPublicEip,omitempty"`
+	Tracing                  *bool    `json:"Tracing,omitempty" xml:"Tracing,omitempty"`
+	Name                     *string  `json:"Name,omitempty" xml:"Name,omitempty"`
+	VSwitches                *string  `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" require:"true"`
+	TraceSampling            *float32 `json:"TraceSampling,omitempty" xml:"TraceSampling,omitempty"`
+	LocalityLoadBalancing    *bool    `json:"LocalityLoadBalancing,omitempty" xml:"LocalityLoadBalancing,omitempty"`
+	Telemetry                *bool    `json:"Telemetry,omitempty" xml:"Telemetry,omitempty"`
+	OpenAgentPolicy          *bool    `json:"OpenAgentPolicy,omitempty" xml:"OpenAgentPolicy,omitempty"`
+	OPALogLevel              *string  `json:"OPALogLevel,omitempty" xml:"OPALogLevel,omitempty"`
+	OPARequestCPU            *string  `json:"OPARequestCPU,omitempty" xml:"OPARequestCPU,omitempty"`
+	OPARequestMemory         *string  `json:"OPARequestMemory,omitempty" xml:"OPARequestMemory,omitempty"`
+	OPALimitCPU              *string  `json:"OPALimitCPU,omitempty" xml:"OPALimitCPU,omitempty"`
+	OPALimitMemory           *string  `json:"OPALimitMemory,omitempty" xml:"OPALimitMemory,omitempty"`
+	EnableAudit              *bool    `json:"EnableAudit,omitempty" xml:"EnableAudit,omitempty"`
+	AuditProject             *string  `json:"AuditProject,omitempty" xml:"AuditProject,omitempty"`
+	ProxyRequestCPU          *string  `json:"ProxyRequestCPU,omitempty" xml:"ProxyRequestCPU,omitempty"`
+	ProxyRequestMemory       *string  `json:"ProxyRequestMemory,omitempty" xml:"ProxyRequestMemory,omitempty"`
+	ProxyLimitCPU            *string  `json:"ProxyLimitCPU,omitempty" xml:"ProxyLimitCPU,omitempty"`
+	ProxyLimitMemory         *string  `json:"ProxyLimitMemory,omitempty" xml:"ProxyLimitMemory,omitempty"`
+	IncludeIPRanges          *string  `json:"IncludeIPRanges,omitempty" xml:"IncludeIPRanges,omitempty"`
+	ExcludeIPRanges          *string  `json:"ExcludeIPRanges,omitempty" xml:"ExcludeIPRanges,omitempty"`
+	ExcludeOutboundPorts     *string  `json:"ExcludeOutboundPorts,omitempty" xml:"ExcludeOutboundPorts,omitempty"`
+	ExcludeInboundPorts      *string  `json:"ExcludeInboundPorts,omitempty" xml:"ExcludeInboundPorts,omitempty"`
+	OpaEnabled               *bool    `json:"OpaEnabled,omitempty" xml:"OpaEnabled,omitempty"`
+	KialiEnabled             *bool    `json:"KialiEnabled,omitempty" xml:"KialiEnabled,omitempty"`
+	AccessLogEnabled         *bool    `json:"AccessLogEnabled,omitempty" xml:"AccessLogEnabled,omitempty"`
+	CustomizedPrometheus     *bool    `json:"CustomizedPrometheus,omitempty" xml:"CustomizedPrometheus,omitempty"`
+	PrometheusUrl            *string  `json:"PrometheusUrl,omitempty" xml:"PrometheusUrl,omitempty"`
+	RedisFilterEnabled       *bool    `json:"RedisFilterEnabled,omitempty" xml:"RedisFilterEnabled,omitempty"`
+	MysqlFilterEnabled       *bool    `json:"MysqlFilterEnabled,omitempty" xml:"MysqlFilterEnabled,omitempty"`
+	ThriftFilterEnabled      *bool    `json:"ThriftFilterEnabled,omitempty" xml:"ThriftFilterEnabled,omitempty"`
+	WebAssemblyFilterEnabled *bool    `json:"WebAssemblyFilterEnabled,omitempty" xml:"WebAssemblyFilterEnabled,omitempty"`
+	MSEEnabled               *bool    `json:"MSEEnabled,omitempty" xml:"MSEEnabled,omitempty"`
+	DNSProxyingEnabled       *bool    `json:"DNSProxyingEnabled,omitempty" xml:"DNSProxyingEnabled,omitempty"`
 }
 
 func (s CreateServiceMeshRequest) String() string {
@@ -3004,6 +3046,36 @@ func (s *CreateServiceMeshRequest) SetCustomizedPrometheus(v bool) *CreateServic
 
 func (s *CreateServiceMeshRequest) SetPrometheusUrl(v string) *CreateServiceMeshRequest {
 	s.PrometheusUrl = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetRedisFilterEnabled(v bool) *CreateServiceMeshRequest {
+	s.RedisFilterEnabled = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetMysqlFilterEnabled(v bool) *CreateServiceMeshRequest {
+	s.MysqlFilterEnabled = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetThriftFilterEnabled(v bool) *CreateServiceMeshRequest {
+	s.ThriftFilterEnabled = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetWebAssemblyFilterEnabled(v bool) *CreateServiceMeshRequest {
+	s.WebAssemblyFilterEnabled = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetMSEEnabled(v bool) *CreateServiceMeshRequest {
+	s.MSEEnabled = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetDNSProxyingEnabled(v bool) *CreateServiceMeshRequest {
+	s.DNSProxyingEnabled = &v
 	return s
 }
 
