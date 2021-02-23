@@ -2404,6 +2404,7 @@ type DescribeAvailableResourceRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ZoneId               *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 	InstanceChargeType   *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
 	OrderType            *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
@@ -2444,6 +2445,11 @@ func (s *DescribeAvailableResourceRequest) SetResourceOwnerId(v int64) *Describe
 
 func (s *DescribeAvailableResourceRequest) SetOwnerAccount(v string) *DescribeAvailableResourceRequest {
 	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeAvailableResourceRequest) SetRegionId(v string) *DescribeAvailableResourceRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -10778,6 +10784,129 @@ func (s *ModifyActiveOperationTaskResponse) SetBody(v *ModifyActiveOperationTask
 	return s
 }
 
+type ModifyAuditLogConfigRequest struct {
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	AuditLogSwitchSource *string `json:"AuditLogSwitchSource,omitempty" xml:"AuditLogSwitchSource,omitempty"`
+	ServiceType          *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	Retention            *int32  `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	ProxyAudit           *string `json:"ProxyAudit,omitempty" xml:"ProxyAudit,omitempty"`
+	DbAudit              *bool   `json:"DbAudit,omitempty" xml:"DbAudit,omitempty"`
+	AuditCommand         *string `json:"AuditCommand,omitempty" xml:"AuditCommand,omitempty"`
+}
+
+func (s ModifyAuditLogConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAuditLogConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAuditLogConfigRequest) SetSecurityToken(v string) *ModifyAuditLogConfigRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *ModifyAuditLogConfigRequest) SetOwnerId(v int64) *ModifyAuditLogConfigRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyAuditLogConfigRequest) SetResourceOwnerAccount(v string) *ModifyAuditLogConfigRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyAuditLogConfigRequest) SetResourceOwnerId(v int64) *ModifyAuditLogConfigRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyAuditLogConfigRequest) SetOwnerAccount(v string) *ModifyAuditLogConfigRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ModifyAuditLogConfigRequest) SetInstanceId(v string) *ModifyAuditLogConfigRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyAuditLogConfigRequest) SetAuditLogSwitchSource(v string) *ModifyAuditLogConfigRequest {
+	s.AuditLogSwitchSource = &v
+	return s
+}
+
+func (s *ModifyAuditLogConfigRequest) SetServiceType(v string) *ModifyAuditLogConfigRequest {
+	s.ServiceType = &v
+	return s
+}
+
+func (s *ModifyAuditLogConfigRequest) SetRetention(v int32) *ModifyAuditLogConfigRequest {
+	s.Retention = &v
+	return s
+}
+
+func (s *ModifyAuditLogConfigRequest) SetProxyAudit(v string) *ModifyAuditLogConfigRequest {
+	s.ProxyAudit = &v
+	return s
+}
+
+func (s *ModifyAuditLogConfigRequest) SetDbAudit(v bool) *ModifyAuditLogConfigRequest {
+	s.DbAudit = &v
+	return s
+}
+
+func (s *ModifyAuditLogConfigRequest) SetAuditCommand(v string) *ModifyAuditLogConfigRequest {
+	s.AuditCommand = &v
+	return s
+}
+
+type ModifyAuditLogConfigResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyAuditLogConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAuditLogConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAuditLogConfigResponseBody) SetRequestId(v string) *ModifyAuditLogConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyAuditLogConfigResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ModifyAuditLogConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyAuditLogConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAuditLogConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAuditLogConfigResponse) SetHeaders(v map[string]*string) *ModifyAuditLogConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyAuditLogConfigResponse) SetBody(v *ModifyAuditLogConfigResponseBody) *ModifyAuditLogConfigResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyBackupPolicyRequest struct {
 	SecurityToken         *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -15957,6 +16086,34 @@ func (client *Client) ModifyActiveOperationTask(request *ModifyActiveOperationTa
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyActiveOperationTaskResponse{}
 	_body, _err := client.ModifyActiveOperationTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyAuditLogConfigWithOptions(request *ModifyAuditLogConfigRequest, runtime *util.RuntimeOptions) (_result *ModifyAuditLogConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ModifyAuditLogConfigResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ModifyAuditLogConfig"), tea.String("2015-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyAuditLogConfig(request *ModifyAuditLogConfigRequest) (_result *ModifyAuditLogConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyAuditLogConfigResponse{}
+	_body, _err := client.ModifyAuditLogConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
