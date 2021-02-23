@@ -4991,7 +4991,7 @@ func (s *DescribeTemplatesRequest) SetPageSize(v int64) *DescribeTemplatesReques
 
 type DescribeTemplatesResponseBody struct {
 	// 模板列表。
-	Templates *DescribeTemplatesResponseBodyTemplates `json:"templates,omitempty" xml:"templates,omitempty" type:"Struct"`
+	Templates []*DescribeTemplatesResponseBodyTemplates `json:"templates,omitempty" xml:"templates,omitempty" type:"Repeated"`
 	// 分页信息。
 	PageInfo *DescribeTemplatesResponseBodyPageInfo `json:"page_info,omitempty" xml:"page_info,omitempty" type:"Struct"`
 }
@@ -5004,7 +5004,7 @@ func (s DescribeTemplatesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeTemplatesResponseBody) SetTemplates(v *DescribeTemplatesResponseBodyTemplates) *DescribeTemplatesResponseBody {
+func (s *DescribeTemplatesResponseBody) SetTemplates(v []*DescribeTemplatesResponseBodyTemplates) *DescribeTemplatesResponseBody {
 	s.Templates = v
 	return s
 }
@@ -5015,23 +5015,6 @@ func (s *DescribeTemplatesResponseBody) SetPageInfo(v *DescribeTemplatesResponse
 }
 
 type DescribeTemplatesResponseBodyTemplates struct {
-	Template []*DescribeTemplatesResponseBodyTemplatesTemplate `json:"template,omitempty" xml:"template,omitempty" type:"Repeated"`
-}
-
-func (s DescribeTemplatesResponseBodyTemplates) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeTemplatesResponseBodyTemplates) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeTemplatesResponseBodyTemplates) SetTemplate(v []*DescribeTemplatesResponseBodyTemplatesTemplate) *DescribeTemplatesResponseBodyTemplates {
-	s.Template = v
-	return s
-}
-
-type DescribeTemplatesResponseBodyTemplatesTemplate struct {
 	// 模板访问权限，取值为：private、pubilc或shared。。
 	Acl *string `json:"acl,omitempty" xml:"acl,omitempty"`
 	// 模板ID。会模板随着更新而变化。
@@ -5054,60 +5037,60 @@ type DescribeTemplatesResponseBodyTemplatesTemplate struct {
 	TemplateWithHistId *string `json:"template_with_hist_id,omitempty" xml:"template_with_hist_id,omitempty"`
 }
 
-func (s DescribeTemplatesResponseBodyTemplatesTemplate) String() string {
+func (s DescribeTemplatesResponseBodyTemplates) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeTemplatesResponseBodyTemplatesTemplate) GoString() string {
+func (s DescribeTemplatesResponseBodyTemplates) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeTemplatesResponseBodyTemplatesTemplate) SetAcl(v string) *DescribeTemplatesResponseBodyTemplatesTemplate {
+func (s *DescribeTemplatesResponseBodyTemplates) SetAcl(v string) *DescribeTemplatesResponseBodyTemplates {
 	s.Acl = &v
 	return s
 }
 
-func (s *DescribeTemplatesResponseBodyTemplatesTemplate) SetId(v string) *DescribeTemplatesResponseBodyTemplatesTemplate {
+func (s *DescribeTemplatesResponseBodyTemplates) SetId(v string) *DescribeTemplatesResponseBodyTemplates {
 	s.Id = &v
 	return s
 }
 
-func (s *DescribeTemplatesResponseBodyTemplatesTemplate) SetName(v string) *DescribeTemplatesResponseBodyTemplatesTemplate {
+func (s *DescribeTemplatesResponseBodyTemplates) SetName(v string) *DescribeTemplatesResponseBodyTemplates {
 	s.Name = &v
 	return s
 }
 
-func (s *DescribeTemplatesResponseBodyTemplatesTemplate) SetDescription(v string) *DescribeTemplatesResponseBodyTemplatesTemplate {
+func (s *DescribeTemplatesResponseBodyTemplates) SetDescription(v string) *DescribeTemplatesResponseBodyTemplates {
 	s.Description = &v
 	return s
 }
 
-func (s *DescribeTemplatesResponseBodyTemplatesTemplate) SetTags(v string) *DescribeTemplatesResponseBodyTemplatesTemplate {
+func (s *DescribeTemplatesResponseBodyTemplates) SetTags(v string) *DescribeTemplatesResponseBodyTemplates {
 	s.Tags = &v
 	return s
 }
 
-func (s *DescribeTemplatesResponseBodyTemplatesTemplate) SetTemplate(v string) *DescribeTemplatesResponseBodyTemplatesTemplate {
+func (s *DescribeTemplatesResponseBodyTemplates) SetTemplate(v string) *DescribeTemplatesResponseBodyTemplates {
 	s.Template = &v
 	return s
 }
 
-func (s *DescribeTemplatesResponseBodyTemplatesTemplate) SetTemplateType(v string) *DescribeTemplatesResponseBodyTemplatesTemplate {
+func (s *DescribeTemplatesResponseBodyTemplates) SetTemplateType(v string) *DescribeTemplatesResponseBodyTemplates {
 	s.TemplateType = &v
 	return s
 }
 
-func (s *DescribeTemplatesResponseBodyTemplatesTemplate) SetCreated(v string) *DescribeTemplatesResponseBodyTemplatesTemplate {
+func (s *DescribeTemplatesResponseBodyTemplates) SetCreated(v string) *DescribeTemplatesResponseBodyTemplates {
 	s.Created = &v
 	return s
 }
 
-func (s *DescribeTemplatesResponseBodyTemplatesTemplate) SetUpdated(v string) *DescribeTemplatesResponseBodyTemplatesTemplate {
+func (s *DescribeTemplatesResponseBodyTemplates) SetUpdated(v string) *DescribeTemplatesResponseBodyTemplates {
 	s.Updated = &v
 	return s
 }
 
-func (s *DescribeTemplatesResponseBodyTemplatesTemplate) SetTemplateWithHistId(v string) *DescribeTemplatesResponseBodyTemplatesTemplate {
+func (s *DescribeTemplatesResponseBodyTemplates) SetTemplateWithHistId(v string) *DescribeTemplatesResponseBodyTemplates {
 	s.TemplateWithHistId = &v
 	return s
 }
@@ -5220,8 +5203,8 @@ func (s *DescribeTemplateAttributeRequest) SetTemplateType(v string) *DescribeTe
 }
 
 type DescribeTemplateAttributeResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeTemplateAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Struct"`
+	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    []*DescribeTemplateAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
 }
 
 func (s DescribeTemplateAttributeResponse) String() string {
@@ -5237,29 +5220,12 @@ func (s *DescribeTemplateAttributeResponse) SetHeaders(v map[string]*string) *De
 	return s
 }
 
-func (s *DescribeTemplateAttributeResponse) SetBody(v *DescribeTemplateAttributeResponseBody) *DescribeTemplateAttributeResponse {
+func (s *DescribeTemplateAttributeResponse) SetBody(v []*DescribeTemplateAttributeResponseBody) *DescribeTemplateAttributeResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeTemplateAttributeResponseBody struct {
-	TemplateInfo []*DescribeTemplateAttributeResponseBodyTemplateInfo `json:"template_info,omitempty" xml:"template_info,omitempty" type:"Repeated"`
-}
-
-func (s DescribeTemplateAttributeResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeTemplateAttributeResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeTemplateAttributeResponseBody) SetTemplateInfo(v []*DescribeTemplateAttributeResponseBodyTemplateInfo) *DescribeTemplateAttributeResponseBody {
-	s.TemplateInfo = v
-	return s
-}
-
-type DescribeTemplateAttributeResponseBodyTemplateInfo struct {
 	// 编排模板ID，模板每次修改，这个ID都会改变。
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
 	// 编排模板权限。取值：private，public，shared。
@@ -5282,60 +5248,60 @@ type DescribeTemplateAttributeResponseBodyTemplateInfo struct {
 	Updated *string `json:"updated,omitempty" xml:"updated,omitempty"`
 }
 
-func (s DescribeTemplateAttributeResponseBodyTemplateInfo) String() string {
+func (s DescribeTemplateAttributeResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeTemplateAttributeResponseBodyTemplateInfo) GoString() string {
+func (s DescribeTemplateAttributeResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeTemplateAttributeResponseBodyTemplateInfo) SetId(v string) *DescribeTemplateAttributeResponseBodyTemplateInfo {
+func (s *DescribeTemplateAttributeResponseBody) SetId(v string) *DescribeTemplateAttributeResponseBody {
 	s.Id = &v
 	return s
 }
 
-func (s *DescribeTemplateAttributeResponseBodyTemplateInfo) SetAcl(v string) *DescribeTemplateAttributeResponseBodyTemplateInfo {
+func (s *DescribeTemplateAttributeResponseBody) SetAcl(v string) *DescribeTemplateAttributeResponseBody {
 	s.Acl = &v
 	return s
 }
 
-func (s *DescribeTemplateAttributeResponseBodyTemplateInfo) SetName(v string) *DescribeTemplateAttributeResponseBodyTemplateInfo {
+func (s *DescribeTemplateAttributeResponseBody) SetName(v string) *DescribeTemplateAttributeResponseBody {
 	s.Name = &v
 	return s
 }
 
-func (s *DescribeTemplateAttributeResponseBodyTemplateInfo) SetTemplate(v string) *DescribeTemplateAttributeResponseBodyTemplateInfo {
+func (s *DescribeTemplateAttributeResponseBody) SetTemplate(v string) *DescribeTemplateAttributeResponseBody {
 	s.Template = &v
 	return s
 }
 
-func (s *DescribeTemplateAttributeResponseBodyTemplateInfo) SetTemplateType(v string) *DescribeTemplateAttributeResponseBodyTemplateInfo {
+func (s *DescribeTemplateAttributeResponseBody) SetTemplateType(v string) *DescribeTemplateAttributeResponseBody {
 	s.TemplateType = &v
 	return s
 }
 
-func (s *DescribeTemplateAttributeResponseBodyTemplateInfo) SetDescription(v string) *DescribeTemplateAttributeResponseBodyTemplateInfo {
+func (s *DescribeTemplateAttributeResponseBody) SetDescription(v string) *DescribeTemplateAttributeResponseBody {
 	s.Description = &v
 	return s
 }
 
-func (s *DescribeTemplateAttributeResponseBodyTemplateInfo) SetTags(v string) *DescribeTemplateAttributeResponseBodyTemplateInfo {
+func (s *DescribeTemplateAttributeResponseBody) SetTags(v string) *DescribeTemplateAttributeResponseBody {
 	s.Tags = &v
 	return s
 }
 
-func (s *DescribeTemplateAttributeResponseBodyTemplateInfo) SetTemplateWithHistId(v string) *DescribeTemplateAttributeResponseBodyTemplateInfo {
+func (s *DescribeTemplateAttributeResponseBody) SetTemplateWithHistId(v string) *DescribeTemplateAttributeResponseBody {
 	s.TemplateWithHistId = &v
 	return s
 }
 
-func (s *DescribeTemplateAttributeResponseBodyTemplateInfo) SetCreated(v string) *DescribeTemplateAttributeResponseBodyTemplateInfo {
+func (s *DescribeTemplateAttributeResponseBody) SetCreated(v string) *DescribeTemplateAttributeResponseBody {
 	s.Created = &v
 	return s
 }
 
-func (s *DescribeTemplateAttributeResponseBodyTemplateInfo) SetUpdated(v string) *DescribeTemplateAttributeResponseBodyTemplateInfo {
+func (s *DescribeTemplateAttributeResponseBody) SetUpdated(v string) *DescribeTemplateAttributeResponseBody {
 	s.Updated = &v
 	return s
 }
@@ -6370,7 +6336,7 @@ type DescribeTaskInfoResponseBody struct {
 	// 当前任务类型。
 	TaskType *string `json:"task_type,omitempty" xml:"task_type,omitempty"`
 	// 任务执行详情。
-	TaskResult *DescribeTaskInfoResponseBodyTaskResult `json:"task_result,omitempty" xml:"task_result,omitempty" type:"Struct"`
+	TaskResult []*DescribeTaskInfoResponseBodyTaskResult `json:"task_result,omitempty" xml:"task_result,omitempty" type:"Repeated"`
 }
 
 func (s DescribeTaskInfoResponseBody) String() string {
@@ -6411,13 +6377,16 @@ func (s *DescribeTaskInfoResponseBody) SetTaskType(v string) *DescribeTaskInfoRe
 	return s
 }
 
-func (s *DescribeTaskInfoResponseBody) SetTaskResult(v *DescribeTaskInfoResponseBodyTaskResult) *DescribeTaskInfoResponseBody {
+func (s *DescribeTaskInfoResponseBody) SetTaskResult(v []*DescribeTaskInfoResponseBodyTaskResult) *DescribeTaskInfoResponseBody {
 	s.TaskResult = v
 	return s
 }
 
 type DescribeTaskInfoResponseBodyTaskResult struct {
-	Task []*DescribeTaskInfoResponseBodyTaskResultTask `json:"task,omitempty" xml:"task,omitempty" type:"Repeated"`
+	// 操作的资源，例如：实例ID。
+	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// 资源的状态。
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s DescribeTaskInfoResponseBodyTaskResult) String() string {
@@ -6428,32 +6397,12 @@ func (s DescribeTaskInfoResponseBodyTaskResult) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeTaskInfoResponseBodyTaskResult) SetTask(v []*DescribeTaskInfoResponseBodyTaskResultTask) *DescribeTaskInfoResponseBodyTaskResult {
-	s.Task = v
-	return s
-}
-
-type DescribeTaskInfoResponseBodyTaskResultTask struct {
-	// 操作的资源，例如：实例ID。
-	Data *string `json:"data,omitempty" xml:"data,omitempty"`
-	// 资源的状态。
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-}
-
-func (s DescribeTaskInfoResponseBodyTaskResultTask) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeTaskInfoResponseBodyTaskResultTask) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeTaskInfoResponseBodyTaskResultTask) SetData(v string) *DescribeTaskInfoResponseBodyTaskResultTask {
+func (s *DescribeTaskInfoResponseBodyTaskResult) SetData(v string) *DescribeTaskInfoResponseBodyTaskResult {
 	s.Data = &v
 	return s
 }
 
-func (s *DescribeTaskInfoResponseBodyTaskResultTask) SetStatus(v string) *DescribeTaskInfoResponseBodyTaskResultTask {
+func (s *DescribeTaskInfoResponseBodyTaskResult) SetStatus(v string) *DescribeTaskInfoResponseBodyTaskResult {
 	s.Status = &v
 	return s
 }
@@ -8372,6 +8321,8 @@ type GetKubernetesTriggerResponseBody struct {
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 	// 触发器行为
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
+	// Token
+	Token *string `json:"token,omitempty" xml:"token,omitempty"`
 }
 
 func (s GetKubernetesTriggerResponseBody) String() string {
@@ -8409,6 +8360,11 @@ func (s *GetKubernetesTriggerResponseBody) SetType(v string) *GetKubernetesTrigg
 
 func (s *GetKubernetesTriggerResponseBody) SetAction(v string) *GetKubernetesTriggerResponseBody {
 	s.Action = &v
+	return s
+}
+
+func (s *GetKubernetesTriggerResponseBody) SetToken(v string) *GetKubernetesTriggerResponseBody {
+	s.Token = &v
 	return s
 }
 
