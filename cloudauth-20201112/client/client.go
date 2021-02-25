@@ -1,13 +1,17 @@
 // This file is auto-generated, don't edit it. Thanks.
+/**
+ *
+ */
 package client
 
 import (
+	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
+	openapiutil "github.com/alibabacloud-go/openapi-util/service"
 	openplatform "github.com/alibabacloud-go/openplatform-20191219/client"
 	fileform "github.com/alibabacloud-go/tea-fileform/service"
 	oss "github.com/alibabacloud-go/tea-oss-sdk/client"
 	ossutil "github.com/alibabacloud-go/tea-oss-utils/service"
-	rpcutil "github.com/alibabacloud-go/tea-rpc-utils/service"
 	rpc "github.com/alibabacloud-go/tea-rpc/client"
 	util "github.com/alibabacloud-go/tea-utils/service"
 	"github.com/alibabacloud-go/tea/tea"
@@ -55,70 +59,6 @@ func (s *LivenessDetectRequest) SetMediaFile(v string) *LivenessDetectRequest {
 	return s
 }
 
-type LivenessDetectResponse struct {
-	RequestId    *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
-	Code         *string                             `json:"Code,omitempty" xml:"Code,omitempty" require:"true"`
-	Message      *string                             `json:"Message,omitempty" xml:"Message,omitempty" require:"true"`
-	ResultObject *LivenessDetectResponseResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" require:"true" type:"Struct"`
-}
-
-func (s LivenessDetectResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s LivenessDetectResponse) GoString() string {
-	return s.String()
-}
-
-func (s *LivenessDetectResponse) SetRequestId(v string) *LivenessDetectResponse {
-	s.RequestId = &v
-	return s
-}
-
-func (s *LivenessDetectResponse) SetCode(v string) *LivenessDetectResponse {
-	s.Code = &v
-	return s
-}
-
-func (s *LivenessDetectResponse) SetMessage(v string) *LivenessDetectResponse {
-	s.Message = &v
-	return s
-}
-
-func (s *LivenessDetectResponse) SetResultObject(v *LivenessDetectResponseResultObject) *LivenessDetectResponse {
-	s.ResultObject = v
-	return s
-}
-
-type LivenessDetectResponseResultObject struct {
-	Passed   *string  `json:"Passed,omitempty" xml:"Passed,omitempty" require:"true"`
-	Score    *float32 `json:"Score,omitempty" xml:"Score,omitempty" require:"true"`
-	FrameUrl *string  `json:"FrameUrl,omitempty" xml:"FrameUrl,omitempty" require:"true"`
-}
-
-func (s LivenessDetectResponseResultObject) String() string {
-	return tea.Prettify(s)
-}
-
-func (s LivenessDetectResponseResultObject) GoString() string {
-	return s.String()
-}
-
-func (s *LivenessDetectResponseResultObject) SetPassed(v string) *LivenessDetectResponseResultObject {
-	s.Passed = &v
-	return s
-}
-
-func (s *LivenessDetectResponseResultObject) SetScore(v float32) *LivenessDetectResponseResultObject {
-	s.Score = &v
-	return s
-}
-
-func (s *LivenessDetectResponseResultObject) SetFrameUrl(v string) *LivenessDetectResponseResultObject {
-	s.FrameUrl = &v
-	return s
-}
-
 type LivenessDetectAdvanceRequest struct {
 	MediaFileObject io.Reader `json:"MediaFileObject,omitempty" xml:"MediaFileObject,omitempty" require:"true"`
 	BizType         *string   `json:"BizType,omitempty" xml:"BizType,omitempty"`
@@ -160,17 +100,104 @@ func (s *LivenessDetectAdvanceRequest) SetMediaUrl(v string) *LivenessDetectAdva
 	return s
 }
 
-type Client struct {
-	rpc.Client
+type LivenessDetectResponseBody struct {
+	ResultObject *LivenessDetectResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
+	Message      *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId    *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code         *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
-func NewClient(config *rpc.Config) (*Client, error) {
+func (s LivenessDetectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LivenessDetectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *LivenessDetectResponseBody) SetResultObject(v *LivenessDetectResponseBodyResultObject) *LivenessDetectResponseBody {
+	s.ResultObject = v
+	return s
+}
+
+func (s *LivenessDetectResponseBody) SetMessage(v string) *LivenessDetectResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *LivenessDetectResponseBody) SetRequestId(v string) *LivenessDetectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *LivenessDetectResponseBody) SetCode(v string) *LivenessDetectResponseBody {
+	s.Code = &v
+	return s
+}
+
+type LivenessDetectResponseBodyResultObject struct {
+	Score    *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	FrameUrl *string  `json:"FrameUrl,omitempty" xml:"FrameUrl,omitempty"`
+	Passed   *string  `json:"Passed,omitempty" xml:"Passed,omitempty"`
+}
+
+func (s LivenessDetectResponseBodyResultObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LivenessDetectResponseBodyResultObject) GoString() string {
+	return s.String()
+}
+
+func (s *LivenessDetectResponseBodyResultObject) SetScore(v float32) *LivenessDetectResponseBodyResultObject {
+	s.Score = &v
+	return s
+}
+
+func (s *LivenessDetectResponseBodyResultObject) SetFrameUrl(v string) *LivenessDetectResponseBodyResultObject {
+	s.FrameUrl = &v
+	return s
+}
+
+func (s *LivenessDetectResponseBodyResultObject) SetPassed(v string) *LivenessDetectResponseBodyResultObject {
+	s.Passed = &v
+	return s
+}
+
+type LivenessDetectResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *LivenessDetectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s LivenessDetectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LivenessDetectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *LivenessDetectResponse) SetHeaders(v map[string]*string) *LivenessDetectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *LivenessDetectResponse) SetBody(v *LivenessDetectResponseBody) *LivenessDetectResponse {
+	s.Body = v
+	return s
+}
+
+type Client struct {
+	openapi.Client
+}
+
+func NewClient(config *openapi.Config) (*Client, error) {
 	client := new(Client)
 	err := client.Init(config)
 	return client, err
 }
 
-func (client *Client) Init(config *rpc.Config) (_err error) {
+func (client *Client) Init(config *openapi.Config) (_err error) {
 	_err = client.Client.Init(config)
 	if _err != nil {
 		return _err
@@ -188,17 +215,50 @@ func (client *Client) Init(config *rpc.Config) (_err error) {
 	return nil
 }
 
-func (client *Client) LivenessDetect(request *LivenessDetectRequest, runtime *util.RuntimeOptions) (_result *LivenessDetectResponse, _err error) {
+func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
+	if !tea.BoolValue(util.Empty(endpoint)) {
+		_result = endpoint
+		return _result, _err
+	}
+
+	if !tea.BoolValue(util.IsUnset(endpointMap)) && !tea.BoolValue(util.Empty(endpointMap[tea.StringValue(regionId)])) {
+		_result = endpointMap[tea.StringValue(regionId)]
+		return _result, _err
+	}
+
+	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) LivenessDetectWithOptions(request *LivenessDetectRequest, runtime *util.RuntimeOptions) (_result *LivenessDetectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
 	_result = &LivenessDetectResponse{}
-	_body, _err := client.DoRequest(tea.String("LivenessDetect"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-11-12"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	_body, _err := client.DoRPCRequest(tea.String("LivenessDetect"), tea.String("2020-11-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) LivenessDetect(request *LivenessDetectRequest) (_result *LivenessDetectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &LivenessDetectResponse{}
+	_body, _err := client.LivenessDetectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
 
@@ -243,16 +303,16 @@ func (client *Client) LivenessDetectAdvance(request *LivenessDetectAdvanceReques
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
 	ossRuntime := &ossutil.RuntimeOptions{}
-	rpcutil.Convert(runtime, ossRuntime)
-	livenessDetectreq := &LivenessDetectRequest{}
-	rpcutil.Convert(request, livenessDetectreq)
+	openapiutil.Convert(runtime, ossRuntime)
+	livenessDetectReq := &LivenessDetectRequest{}
+	openapiutil.Convert(request, livenessDetectReq)
 	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 
 	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = rpcutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
 	ossClient, _err = oss.NewClient(ossConfig)
 	if _err != nil {
 		return _result, _err
@@ -279,31 +339,12 @@ func (client *Client) LivenessDetectAdvance(request *LivenessDetectAdvanceReques
 	if _err != nil {
 		return _result, _err
 	}
-	livenessDetectreq.MediaFile = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
-	livenessDetectResp, _err := client.LivenessDetect(livenessDetectreq, runtime)
+	livenessDetectReq.MediaFile = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	livenessDetectResp, _err := client.LivenessDetectWithOptions(livenessDetectReq, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 
 	_result = livenessDetectResp
-	return _result, _err
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !tea.BoolValue(util.Empty(endpoint)) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !tea.BoolValue(util.IsUnset(endpointMap)) && !tea.BoolValue(util.Empty(endpointMap[tea.StringValue(regionId)])) {
-		_result = endpointMap[tea.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
