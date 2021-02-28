@@ -9,6 +9,111 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type FtDynamicAddressHttpVpcRequest struct {
+	StringValue  map[string]interface{} `json:"StringValue,omitempty" xml:"StringValue,omitempty"`
+	DefaultValue map[string]interface{} `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	OtherParam   map[string]interface{} `json:"OtherParam,omitempty" xml:"OtherParam,omitempty"`
+	BooleanParam *bool                  `json:"BooleanParam,omitempty" xml:"BooleanParam,omitempty"`
+	P1           *string                `json:"P1,omitempty" xml:"P1,omitempty"`
+}
+
+func (s FtDynamicAddressHttpVpcRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FtDynamicAddressHttpVpcRequest) GoString() string {
+	return s.String()
+}
+
+func (s *FtDynamicAddressHttpVpcRequest) SetStringValue(v map[string]interface{}) *FtDynamicAddressHttpVpcRequest {
+	s.StringValue = v
+	return s
+}
+
+func (s *FtDynamicAddressHttpVpcRequest) SetDefaultValue(v map[string]interface{}) *FtDynamicAddressHttpVpcRequest {
+	s.DefaultValue = v
+	return s
+}
+
+func (s *FtDynamicAddressHttpVpcRequest) SetOtherParam(v map[string]interface{}) *FtDynamicAddressHttpVpcRequest {
+	s.OtherParam = v
+	return s
+}
+
+func (s *FtDynamicAddressHttpVpcRequest) SetBooleanParam(v bool) *FtDynamicAddressHttpVpcRequest {
+	s.BooleanParam = &v
+	return s
+}
+
+func (s *FtDynamicAddressHttpVpcRequest) SetP1(v string) *FtDynamicAddressHttpVpcRequest {
+	s.P1 = &v
+	return s
+}
+
+type FtDynamicAddressHttpVpcShrinkRequest struct {
+	StringValueShrink  *string `json:"StringValue,omitempty" xml:"StringValue,omitempty"`
+	DefaultValueShrink *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	OtherParamShrink   *string `json:"OtherParam,omitempty" xml:"OtherParam,omitempty"`
+	BooleanParam       *bool   `json:"BooleanParam,omitempty" xml:"BooleanParam,omitempty"`
+	P1                 *string `json:"P1,omitempty" xml:"P1,omitempty"`
+}
+
+func (s FtDynamicAddressHttpVpcShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FtDynamicAddressHttpVpcShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *FtDynamicAddressHttpVpcShrinkRequest) SetStringValueShrink(v string) *FtDynamicAddressHttpVpcShrinkRequest {
+	s.StringValueShrink = &v
+	return s
+}
+
+func (s *FtDynamicAddressHttpVpcShrinkRequest) SetDefaultValueShrink(v string) *FtDynamicAddressHttpVpcShrinkRequest {
+	s.DefaultValueShrink = &v
+	return s
+}
+
+func (s *FtDynamicAddressHttpVpcShrinkRequest) SetOtherParamShrink(v string) *FtDynamicAddressHttpVpcShrinkRequest {
+	s.OtherParamShrink = &v
+	return s
+}
+
+func (s *FtDynamicAddressHttpVpcShrinkRequest) SetBooleanParam(v bool) *FtDynamicAddressHttpVpcShrinkRequest {
+	s.BooleanParam = &v
+	return s
+}
+
+func (s *FtDynamicAddressHttpVpcShrinkRequest) SetP1(v string) *FtDynamicAddressHttpVpcShrinkRequest {
+	s.P1 = &v
+	return s
+}
+
+type FtDynamicAddressHttpVpcResponse struct {
+	Params         *string `json:"Params,omitempty" xml:"Params,omitempty" require:"true"`
+	ServiceRpcSign *string `json:"ServiceRpcSign,omitempty" xml:"ServiceRpcSign,omitempty" require:"true"`
+}
+
+func (s FtDynamicAddressHttpVpcResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FtDynamicAddressHttpVpcResponse) GoString() string {
+	return s.String()
+}
+
+func (s *FtDynamicAddressHttpVpcResponse) SetParams(v string) *FtDynamicAddressHttpVpcResponse {
+	s.Params = &v
+	return s
+}
+
+func (s *FtDynamicAddressHttpVpcResponse) SetServiceRpcSign(v string) *FtDynamicAddressHttpVpcResponse {
+	s.ServiceRpcSign = &v
+	return s
+}
+
 type TestFlowStrategy01Request struct {
 	Names map[string]interface{} `json:"Names,omitempty" xml:"Names,omitempty"`
 }
@@ -712,6 +817,45 @@ func (client *Client) Init(config *rpc.Config) (_err error) {
 	}
 
 	return nil
+}
+
+func (client *Client) FtDynamicAddressHttpVpcWithOptions(tmp *FtDynamicAddressHttpVpcRequest, runtime *util.RuntimeOptions) (_result *FtDynamicAddressHttpVpcResponse, _err error) {
+	_err = util.ValidateModel(tmp)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &FtDynamicAddressHttpVpcShrinkRequest{}
+	rpcutil.Convert(tmp, request)
+	if !tea.BoolValue(util.IsUnset(tmp.StringValue)) {
+		request.StringValueShrink = util.ToJSONString(tmp.StringValue)
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmp.DefaultValue)) {
+		request.DefaultValueShrink = util.ToJSONString(tmp.DefaultValue)
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmp.OtherParam)) {
+		request.OtherParamShrink = util.ToJSONString(tmp.OtherParam)
+	}
+
+	_result = &FtDynamicAddressHttpVpcResponse{}
+	_body, _err := client.DoRequest(tea.String("FtDynamicAddressHttpVpc"), tea.String("HTTPS"), tea.String("POST"), tea.String("2018-07-13"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) FtDynamicAddressHttpVpc(request *FtDynamicAddressHttpVpcRequest) (_result *FtDynamicAddressHttpVpcResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &FtDynamicAddressHttpVpcResponse{}
+	_body, _err := client.FtDynamicAddressHttpVpcWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
 }
 
 func (client *Client) TestFlowStrategy01WithOptions(tmp *TestFlowStrategy01Request, runtime *util.RuntimeOptions) (_result *TestFlowStrategy01Response, _err error) {
