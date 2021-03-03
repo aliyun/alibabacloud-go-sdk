@@ -2257,9 +2257,10 @@ func (s *ScreenChestCTResponseBody) SetData(v *ScreenChestCTResponseBodyData) *S
 }
 
 type ScreenChestCTResponseBodyData struct {
-	LungNodule *ScreenChestCTResponseBodyDataLungNodule `json:"LungNodule,omitempty" xml:"LungNodule,omitempty" type:"Struct"`
-	CACS       *ScreenChestCTResponseBodyDataCACS       `json:"CACS,omitempty" xml:"CACS,omitempty" type:"Struct"`
-	Covid      *ScreenChestCTResponseBodyDataCovid      `json:"Covid,omitempty" xml:"Covid,omitempty" type:"Struct"`
+	LungNodule        *ScreenChestCTResponseBodyDataLungNodule        `json:"LungNodule,omitempty" xml:"LungNodule,omitempty" type:"Struct"`
+	CACS              *ScreenChestCTResponseBodyDataCACS              `json:"CACS,omitempty" xml:"CACS,omitempty" type:"Struct"`
+	Covid             *ScreenChestCTResponseBodyDataCovid             `json:"Covid,omitempty" xml:"Covid,omitempty" type:"Struct"`
+	DetectRibFracture *ScreenChestCTResponseBodyDataDetectRibFracture `json:"DetectRibFracture,omitempty" xml:"DetectRibFracture,omitempty" type:"Struct"`
 }
 
 func (s ScreenChestCTResponseBodyData) String() string {
@@ -2282,6 +2283,11 @@ func (s *ScreenChestCTResponseBodyData) SetCACS(v *ScreenChestCTResponseBodyData
 
 func (s *ScreenChestCTResponseBodyData) SetCovid(v *ScreenChestCTResponseBodyDataCovid) *ScreenChestCTResponseBodyData {
 	s.Covid = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyData) SetDetectRibFracture(v *ScreenChestCTResponseBodyDataDetectRibFracture) *ScreenChestCTResponseBodyData {
+	s.DetectRibFracture = v
 	return s
 }
 
@@ -2344,20 +2350,20 @@ func (s *ScreenChestCTResponseBodyDataLungNoduleSeries) SetSpacing(v []*float32)
 }
 
 type ScreenChestCTResponseBodyDataLungNoduleSeriesElements struct {
-	Z              *float32 `json:"Z,omitempty" xml:"Z,omitempty"`
 	Lobe           *string  `json:"Lobe,omitempty" xml:"Lobe,omitempty"`
 	MeanValue      *float32 `json:"MeanValue,omitempty" xml:"MeanValue,omitempty"`
-	ImageZ         *float32 `json:"ImageZ,omitempty" xml:"ImageZ,omitempty"`
 	Lung           *string  `json:"Lung,omitempty" xml:"Lung,omitempty"`
 	Confidence     *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
 	SOPInstanceUID *string  `json:"SOPInstanceUID,omitempty" xml:"SOPInstanceUID,omitempty"`
-	ImageX         *float32 `json:"ImageX,omitempty" xml:"ImageX,omitempty"`
-	Y              *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
 	Category       *string  `json:"Category,omitempty" xml:"Category,omitempty"`
 	Volume         *float32 `json:"Volume,omitempty" xml:"Volume,omitempty"`
-	ImageY         *float32 `json:"ImageY,omitempty" xml:"ImageY,omitempty"`
 	Diameter       *float32 `json:"Diameter,omitempty" xml:"Diameter,omitempty"`
 	X              *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y              *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	Z              *float32 `json:"Z,omitempty" xml:"Z,omitempty"`
+	ImageX         *float32 `json:"ImageX,omitempty" xml:"ImageX,omitempty"`
+	ImageY         *float32 `json:"ImageY,omitempty" xml:"ImageY,omitempty"`
+	ImageZ         *float32 `json:"ImageZ,omitempty" xml:"ImageZ,omitempty"`
 }
 
 func (s ScreenChestCTResponseBodyDataLungNoduleSeriesElements) String() string {
@@ -2368,11 +2374,6 @@ func (s ScreenChestCTResponseBodyDataLungNoduleSeriesElements) GoString() string
 	return s.String()
 }
 
-func (s *ScreenChestCTResponseBodyDataLungNoduleSeriesElements) SetZ(v float32) *ScreenChestCTResponseBodyDataLungNoduleSeriesElements {
-	s.Z = &v
-	return s
-}
-
 func (s *ScreenChestCTResponseBodyDataLungNoduleSeriesElements) SetLobe(v string) *ScreenChestCTResponseBodyDataLungNoduleSeriesElements {
 	s.Lobe = &v
 	return s
@@ -2380,11 +2381,6 @@ func (s *ScreenChestCTResponseBodyDataLungNoduleSeriesElements) SetLobe(v string
 
 func (s *ScreenChestCTResponseBodyDataLungNoduleSeriesElements) SetMeanValue(v float32) *ScreenChestCTResponseBodyDataLungNoduleSeriesElements {
 	s.MeanValue = &v
-	return s
-}
-
-func (s *ScreenChestCTResponseBodyDataLungNoduleSeriesElements) SetImageZ(v float32) *ScreenChestCTResponseBodyDataLungNoduleSeriesElements {
-	s.ImageZ = &v
 	return s
 }
 
@@ -2403,16 +2399,6 @@ func (s *ScreenChestCTResponseBodyDataLungNoduleSeriesElements) SetSOPInstanceUI
 	return s
 }
 
-func (s *ScreenChestCTResponseBodyDataLungNoduleSeriesElements) SetImageX(v float32) *ScreenChestCTResponseBodyDataLungNoduleSeriesElements {
-	s.ImageX = &v
-	return s
-}
-
-func (s *ScreenChestCTResponseBodyDataLungNoduleSeriesElements) SetY(v float32) *ScreenChestCTResponseBodyDataLungNoduleSeriesElements {
-	s.Y = &v
-	return s
-}
-
 func (s *ScreenChestCTResponseBodyDataLungNoduleSeriesElements) SetCategory(v string) *ScreenChestCTResponseBodyDataLungNoduleSeriesElements {
 	s.Category = &v
 	return s
@@ -2423,11 +2409,6 @@ func (s *ScreenChestCTResponseBodyDataLungNoduleSeriesElements) SetVolume(v floa
 	return s
 }
 
-func (s *ScreenChestCTResponseBodyDataLungNoduleSeriesElements) SetImageY(v float32) *ScreenChestCTResponseBodyDataLungNoduleSeriesElements {
-	s.ImageY = &v
-	return s
-}
-
 func (s *ScreenChestCTResponseBodyDataLungNoduleSeriesElements) SetDiameter(v float32) *ScreenChestCTResponseBodyDataLungNoduleSeriesElements {
 	s.Diameter = &v
 	return s
@@ -2435,6 +2416,31 @@ func (s *ScreenChestCTResponseBodyDataLungNoduleSeriesElements) SetDiameter(v fl
 
 func (s *ScreenChestCTResponseBodyDataLungNoduleSeriesElements) SetX(v float32) *ScreenChestCTResponseBodyDataLungNoduleSeriesElements {
 	s.X = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataLungNoduleSeriesElements) SetY(v float32) *ScreenChestCTResponseBodyDataLungNoduleSeriesElements {
+	s.Y = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataLungNoduleSeriesElements) SetZ(v float32) *ScreenChestCTResponseBodyDataLungNoduleSeriesElements {
+	s.Z = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataLungNoduleSeriesElements) SetImageX(v float32) *ScreenChestCTResponseBodyDataLungNoduleSeriesElements {
+	s.ImageX = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataLungNoduleSeriesElements) SetImageY(v float32) *ScreenChestCTResponseBodyDataLungNoduleSeriesElements {
+	s.ImageY = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataLungNoduleSeriesElements) SetImageZ(v float32) *ScreenChestCTResponseBodyDataLungNoduleSeriesElements {
+	s.ImageZ = &v
 	return s
 }
 
@@ -2499,6 +2505,82 @@ func (s *ScreenChestCTResponseBodyDataCovid) SetOtherProbability(v string) *Scre
 
 func (s *ScreenChestCTResponseBodyDataCovid) SetMask(v string) *ScreenChestCTResponseBodyDataCovid {
 	s.Mask = &v
+	return s
+}
+
+type ScreenChestCTResponseBodyDataDetectRibFracture struct {
+	ResultURL  *string                                                     `json:"ResultURL,omitempty" xml:"ResultURL,omitempty"`
+	Spacing    []*float32                                                  `json:"Spacing,omitempty" xml:"Spacing,omitempty" type:"Repeated"`
+	Origin     []*float32                                                  `json:"Origin,omitempty" xml:"Origin,omitempty" type:"Repeated"`
+	Detections []*ScreenChestCTResponseBodyDataDetectRibFractureDetections `json:"Detections,omitempty" xml:"Detections,omitempty" type:"Repeated"`
+}
+
+func (s ScreenChestCTResponseBodyDataDetectRibFracture) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenChestCTResponseBodyDataDetectRibFracture) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectRibFracture) SetResultURL(v string) *ScreenChestCTResponseBodyDataDetectRibFracture {
+	s.ResultURL = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectRibFracture) SetSpacing(v []*float32) *ScreenChestCTResponseBodyDataDetectRibFracture {
+	s.Spacing = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectRibFracture) SetOrigin(v []*float32) *ScreenChestCTResponseBodyDataDetectRibFracture {
+	s.Origin = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectRibFracture) SetDetections(v []*ScreenChestCTResponseBodyDataDetectRibFractureDetections) *ScreenChestCTResponseBodyDataDetectRibFracture {
+	s.Detections = v
+	return s
+}
+
+type ScreenChestCTResponseBodyDataDetectRibFractureDetections struct {
+	FractureId         *int64   `json:"FractureId,omitempty" xml:"FractureId,omitempty"`
+	FractureConfidence *float32 `json:"FractureConfidence,omitempty" xml:"FractureConfidence,omitempty"`
+	FractureCategory   *int64   `json:"FractureCategory,omitempty" xml:"FractureCategory,omitempty"`
+	Coordinates        []*int64 `json:"Coordinates,omitempty" xml:"Coordinates,omitempty" type:"Repeated"`
+	CoordinateImage    []*int64 `json:"CoordinateImage,omitempty" xml:"CoordinateImage,omitempty" type:"Repeated"`
+}
+
+func (s ScreenChestCTResponseBodyDataDetectRibFractureDetections) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenChestCTResponseBodyDataDetectRibFractureDetections) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectRibFractureDetections) SetFractureId(v int64) *ScreenChestCTResponseBodyDataDetectRibFractureDetections {
+	s.FractureId = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectRibFractureDetections) SetFractureConfidence(v float32) *ScreenChestCTResponseBodyDataDetectRibFractureDetections {
+	s.FractureConfidence = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectRibFractureDetections) SetFractureCategory(v int64) *ScreenChestCTResponseBodyDataDetectRibFractureDetections {
+	s.FractureCategory = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectRibFractureDetections) SetCoordinates(v []*int64) *ScreenChestCTResponseBodyDataDetectRibFractureDetections {
+	s.Coordinates = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectRibFractureDetections) SetCoordinateImage(v []*int64) *ScreenChestCTResponseBodyDataDetectRibFractureDetections {
+	s.CoordinateImage = v
 	return s
 }
 
