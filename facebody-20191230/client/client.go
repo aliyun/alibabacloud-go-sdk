@@ -1138,9 +1138,11 @@ func (s *GetFaceEntityResponse) SetBody(v *GetFaceEntityResponseBody) *GetFaceEn
 }
 
 type CompareFaceRequest struct {
-	ImageType *int32  `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	ImageURLA *string `json:"ImageURLA,omitempty" xml:"ImageURLA,omitempty"`
-	ImageURLB *string `json:"ImageURLB,omitempty" xml:"ImageURLB,omitempty"`
+	// 质量分阈值，取值范围 [0.0, 100.0],   0.0或空  表示不做质量分判断逻辑。
+	QualityScoreThreshold *float32 `json:"QualityScoreThreshold,omitempty" xml:"QualityScoreThreshold,omitempty"`
+	ImageURLA             *string  `json:"ImageURLA,omitempty" xml:"ImageURLA,omitempty"`
+	ImageURLB             *string  `json:"ImageURLB,omitempty" xml:"ImageURLB,omitempty"`
+	ImageType             *int32   `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
 }
 
 func (s CompareFaceRequest) String() string {
@@ -1151,8 +1153,8 @@ func (s CompareFaceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CompareFaceRequest) SetImageType(v int32) *CompareFaceRequest {
-	s.ImageType = &v
+func (s *CompareFaceRequest) SetQualityScoreThreshold(v float32) *CompareFaceRequest {
+	s.QualityScoreThreshold = &v
 	return s
 }
 
@@ -1166,9 +1168,15 @@ func (s *CompareFaceRequest) SetImageURLB(v string) *CompareFaceRequest {
 	return s
 }
 
+func (s *CompareFaceRequest) SetImageType(v int32) *CompareFaceRequest {
+	s.ImageType = &v
+	return s
+}
+
 type CompareFaceResponseBody struct {
 	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *CompareFaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Code      *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s CompareFaceResponseBody) String() string {
@@ -1189,11 +1197,22 @@ func (s *CompareFaceResponseBody) SetData(v *CompareFaceResponseBodyData) *Compa
 	return s
 }
 
+func (s *CompareFaceResponseBody) SetCode(v string) *CompareFaceResponseBody {
+	s.Code = &v
+	return s
+}
+
 type CompareFaceResponseBodyData struct {
 	Thresholds []*float32 `json:"Thresholds,omitempty" xml:"Thresholds,omitempty" type:"Repeated"`
 	RectBList  []*int32   `json:"RectBList,omitempty" xml:"RectBList,omitempty" type:"Repeated"`
 	Confidence *float32   `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
 	RectAList  []*int32   `json:"RectAList,omitempty" xml:"RectAList,omitempty" type:"Repeated"`
+	// 输入图像A的质量分
+	QualityScoreA *float32 `json:"QualityScoreA,omitempty" xml:"QualityScoreA,omitempty"`
+	// 输入图像A的质量分
+	QualityScoreB *float32 `json:"QualityScoreB,omitempty" xml:"QualityScoreB,omitempty"`
+	// 信息提示信息，纯文字描述，目前支持质量分的提示信息
+	MessageTips *string `json:"MessageTips,omitempty" xml:"MessageTips,omitempty"`
 }
 
 func (s CompareFaceResponseBodyData) String() string {
@@ -1221,6 +1240,21 @@ func (s *CompareFaceResponseBodyData) SetConfidence(v float32) *CompareFaceRespo
 
 func (s *CompareFaceResponseBodyData) SetRectAList(v []*int32) *CompareFaceResponseBodyData {
 	s.RectAList = v
+	return s
+}
+
+func (s *CompareFaceResponseBodyData) SetQualityScoreA(v float32) *CompareFaceResponseBodyData {
+	s.QualityScoreA = &v
+	return s
+}
+
+func (s *CompareFaceResponseBodyData) SetQualityScoreB(v float32) *CompareFaceResponseBodyData {
+	s.QualityScoreB = &v
+	return s
+}
+
+func (s *CompareFaceResponseBodyData) SetMessageTips(v string) *CompareFaceResponseBodyData {
+	s.MessageTips = &v
 	return s
 }
 
