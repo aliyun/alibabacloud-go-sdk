@@ -1104,6 +1104,7 @@ func (s *DescribeDomainResponseBodyDomain) SetHttpsPort(v []*string) *DescribeDo
 
 type DescribeDomainResponseBodyDomainCloudNativeInstances struct {
 	ProtocolPortConfigs    []*DescribeDomainResponseBodyDomainCloudNativeInstancesProtocolPortConfigs `json:"ProtocolPortConfigs,omitempty" xml:"ProtocolPortConfigs,omitempty" type:"Repeated"`
+	RedirectionTypeName    *string                                                                    `json:"RedirectionTypeName,omitempty" xml:"RedirectionTypeName,omitempty"`
 	CloudNativeProductName *string                                                                    `json:"CloudNativeProductName,omitempty" xml:"CloudNativeProductName,omitempty"`
 	InstanceId             *string                                                                    `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	IPAddressList          *string                                                                    `json:"IPAddressList,omitempty" xml:"IPAddressList,omitempty"`
@@ -1119,6 +1120,11 @@ func (s DescribeDomainResponseBodyDomainCloudNativeInstances) GoString() string 
 
 func (s *DescribeDomainResponseBodyDomainCloudNativeInstances) SetProtocolPortConfigs(v []*DescribeDomainResponseBodyDomainCloudNativeInstancesProtocolPortConfigs) *DescribeDomainResponseBodyDomainCloudNativeInstances {
 	s.ProtocolPortConfigs = v
+	return s
+}
+
+func (s *DescribeDomainResponseBodyDomainCloudNativeInstances) SetRedirectionTypeName(v string) *DescribeDomainResponseBodyDomainCloudNativeInstances {
+	s.RedirectionTypeName = &v
 	return s
 }
 
@@ -1583,6 +1589,117 @@ func (s *DescribeDomainBasicConfigsResponse) SetHeaders(v map[string]*string) *D
 }
 
 func (s *DescribeDomainBasicConfigsResponse) SetBody(v *DescribeDomainBasicConfigsResponseBody) *DescribeDomainBasicConfigsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDomainListRequest struct {
+	SourceIp        *string   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	ResourceGroupId *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	InstanceId      *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	DomainName      *string   `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	PageNumber      *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	IsSub           *int32    `json:"IsSub,omitempty" xml:"IsSub,omitempty"`
+	DomainNames     []*string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDomainListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainListRequest) SetSourceIp(v string) *DescribeDomainListRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *DescribeDomainListRequest) SetResourceGroupId(v string) *DescribeDomainListRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeDomainListRequest) SetInstanceId(v string) *DescribeDomainListRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeDomainListRequest) SetDomainName(v string) *DescribeDomainListRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeDomainListRequest) SetPageNumber(v int32) *DescribeDomainListRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDomainListRequest) SetPageSize(v int32) *DescribeDomainListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDomainListRequest) SetIsSub(v int32) *DescribeDomainListRequest {
+	s.IsSub = &v
+	return s
+}
+
+func (s *DescribeDomainListRequest) SetDomainNames(v []*string) *DescribeDomainListRequest {
+	s.DomainNames = v
+	return s
+}
+
+type DescribeDomainListResponseBody struct {
+	TotalCount  *int32    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	DomainNames []*string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDomainListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainListResponseBody) SetTotalCount(v int32) *DescribeDomainListResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeDomainListResponseBody) SetRequestId(v string) *DescribeDomainListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDomainListResponseBody) SetDomainNames(v []*string) *DescribeDomainListResponseBody {
+	s.DomainNames = v
+	return s
+}
+
+type DescribeDomainListResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeDomainListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDomainListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainListResponse) SetHeaders(v map[string]*string) *DescribeDomainListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDomainListResponse) SetBody(v *DescribeDomainListResponseBody) *DescribeDomainListResponse {
 	s.Body = v
 	return s
 }
@@ -2187,6 +2304,227 @@ func (s *DescribeInstanceSpecInfoResponse) SetBody(v *DescribeInstanceSpecInfoRe
 	return s
 }
 
+type DescribeLogServiceStatusRequest struct {
+	SourceIp        *string   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	InstanceId      *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Region          *string   `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceGroupId *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	PageNumber      *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	DomainNames     []*string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty" type:"Repeated"`
+}
+
+func (s DescribeLogServiceStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLogServiceStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLogServiceStatusRequest) SetSourceIp(v string) *DescribeLogServiceStatusRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *DescribeLogServiceStatusRequest) SetInstanceId(v string) *DescribeLogServiceStatusRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeLogServiceStatusRequest) SetRegion(v string) *DescribeLogServiceStatusRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeLogServiceStatusRequest) SetResourceGroupId(v string) *DescribeLogServiceStatusRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeLogServiceStatusRequest) SetPageNumber(v int32) *DescribeLogServiceStatusRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeLogServiceStatusRequest) SetPageSize(v int32) *DescribeLogServiceStatusRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeLogServiceStatusRequest) SetDomainNames(v []*string) *DescribeLogServiceStatusRequest {
+	s.DomainNames = v
+	return s
+}
+
+type DescribeLogServiceStatusResponseBody struct {
+	TotalCount   *int32                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId    *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	DomainStatus []*DescribeLogServiceStatusResponseBodyDomainStatus `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty" type:"Repeated"`
+}
+
+func (s DescribeLogServiceStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLogServiceStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLogServiceStatusResponseBody) SetTotalCount(v int32) *DescribeLogServiceStatusResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeLogServiceStatusResponseBody) SetRequestId(v string) *DescribeLogServiceStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeLogServiceStatusResponseBody) SetDomainStatus(v []*DescribeLogServiceStatusResponseBodyDomainStatus) *DescribeLogServiceStatusResponseBody {
+	s.DomainStatus = v
+	return s
+}
+
+type DescribeLogServiceStatusResponseBodyDomainStatus struct {
+	Domain       *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	SlsLogActive *int32  `json:"SlsLogActive,omitempty" xml:"SlsLogActive,omitempty"`
+}
+
+func (s DescribeLogServiceStatusResponseBodyDomainStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLogServiceStatusResponseBodyDomainStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLogServiceStatusResponseBodyDomainStatus) SetDomain(v string) *DescribeLogServiceStatusResponseBodyDomainStatus {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribeLogServiceStatusResponseBodyDomainStatus) SetSlsLogActive(v int32) *DescribeLogServiceStatusResponseBodyDomainStatus {
+	s.SlsLogActive = &v
+	return s
+}
+
+type DescribeLogServiceStatusResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeLogServiceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeLogServiceStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLogServiceStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLogServiceStatusResponse) SetHeaders(v map[string]*string) *DescribeLogServiceStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeLogServiceStatusResponse) SetBody(v *DescribeLogServiceStatusResponseBody) *DescribeLogServiceStatusResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeProtectionModuleCodeConfigRequest struct {
+	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	CodeType        *int32  `json:"CodeType,omitempty" xml:"CodeType,omitempty"`
+	CodeValue       *int32  `json:"CodeValue,omitempty" xml:"CodeValue,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+}
+
+func (s DescribeProtectionModuleCodeConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProtectionModuleCodeConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProtectionModuleCodeConfigRequest) SetSourceIp(v string) *DescribeProtectionModuleCodeConfigRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *DescribeProtectionModuleCodeConfigRequest) SetLang(v string) *DescribeProtectionModuleCodeConfigRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeProtectionModuleCodeConfigRequest) SetCodeType(v int32) *DescribeProtectionModuleCodeConfigRequest {
+	s.CodeType = &v
+	return s
+}
+
+func (s *DescribeProtectionModuleCodeConfigRequest) SetCodeValue(v int32) *DescribeProtectionModuleCodeConfigRequest {
+	s.CodeValue = &v
+	return s
+}
+
+func (s *DescribeProtectionModuleCodeConfigRequest) SetInstanceId(v string) *DescribeProtectionModuleCodeConfigRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeProtectionModuleCodeConfigRequest) SetResourceGroupId(v string) *DescribeProtectionModuleCodeConfigRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+type DescribeProtectionModuleCodeConfigResponseBody struct {
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	CodeConfigs *string `json:"CodeConfigs,omitempty" xml:"CodeConfigs,omitempty"`
+}
+
+func (s DescribeProtectionModuleCodeConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProtectionModuleCodeConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProtectionModuleCodeConfigResponseBody) SetRequestId(v string) *DescribeProtectionModuleCodeConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeProtectionModuleCodeConfigResponseBody) SetCodeConfigs(v string) *DescribeProtectionModuleCodeConfigResponseBody {
+	s.CodeConfigs = &v
+	return s
+}
+
+type DescribeProtectionModuleCodeConfigResponse struct {
+	Headers map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeProtectionModuleCodeConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeProtectionModuleCodeConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProtectionModuleCodeConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProtectionModuleCodeConfigResponse) SetHeaders(v map[string]*string) *DescribeProtectionModuleCodeConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeProtectionModuleCodeConfigResponse) SetBody(v *DescribeProtectionModuleCodeConfigResponseBody) *DescribeProtectionModuleCodeConfigResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeProtectionModuleModeRequest struct {
 	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
@@ -2381,11 +2719,11 @@ func (s *DescribeProtectionModuleRulesResponseBody) SetRules(v []*DescribeProtec
 }
 
 type DescribeProtectionModuleRulesResponseBodyRules struct {
-	Status  *int64  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Time    *int64  `json:"Time,omitempty" xml:"Time,omitempty"`
-	Version *int64  `json:"Version,omitempty" xml:"Version,omitempty"`
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	RuleId  *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	Status  *int64                 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Time    *int64                 `json:"Time,omitempty" xml:"Time,omitempty"`
+	Version *int64                 `json:"Version,omitempty" xml:"Version,omitempty"`
+	Content map[string]interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
+	RuleId  *int64                 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s DescribeProtectionModuleRulesResponseBodyRules) String() string {
@@ -2411,8 +2749,8 @@ func (s *DescribeProtectionModuleRulesResponseBodyRules) SetVersion(v int64) *De
 	return s
 }
 
-func (s *DescribeProtectionModuleRulesResponseBodyRules) SetContent(v string) *DescribeProtectionModuleRulesResponseBodyRules {
-	s.Content = &v
+func (s *DescribeProtectionModuleRulesResponseBodyRules) SetContent(v map[string]interface{}) *DescribeProtectionModuleRulesResponseBodyRules {
+	s.Content = v
 	return s
 }
 
@@ -2535,7 +2873,6 @@ type DescribeWafSourceIpSegmentRequest struct {
 	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -2559,11 +2896,6 @@ func (s *DescribeWafSourceIpSegmentRequest) SetLang(v string) *DescribeWafSource
 
 func (s *DescribeWafSourceIpSegmentRequest) SetInstanceId(v string) *DescribeWafSourceIpSegmentRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *DescribeWafSourceIpSegmentRequest) SetRegion(v string) *DescribeWafSourceIpSegmentRequest {
-	s.Region = &v
 	return s
 }
 
@@ -2624,77 +2956,191 @@ func (s *DescribeWafSourceIpSegmentResponse) SetBody(v *DescribeWafSourceIpSegme
 	return s
 }
 
-type ModifyDomainClusterTypeRequest struct {
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	ClusterType *int32  `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+type ModifyDomainRequest struct {
+	SourceIp             *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	Lang                 *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Domain               *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	SourceIps            *string `json:"SourceIps,omitempty" xml:"SourceIps,omitempty"`
+	LoadBalancing        *int32  `json:"LoadBalancing,omitempty" xml:"LoadBalancing,omitempty"`
+	HttpPort             *string `json:"HttpPort,omitempty" xml:"HttpPort,omitempty"`
+	HttpsPort            *string `json:"HttpsPort,omitempty" xml:"HttpsPort,omitempty"`
+	Http2Port            *string `json:"Http2Port,omitempty" xml:"Http2Port,omitempty"`
+	HttpsRedirect        *int32  `json:"HttpsRedirect,omitempty" xml:"HttpsRedirect,omitempty"`
+	HttpToUserIp         *int32  `json:"HttpToUserIp,omitempty" xml:"HttpToUserIp,omitempty"`
+	IsAccessProduct      *int32  `json:"IsAccessProduct,omitempty" xml:"IsAccessProduct,omitempty"`
+	XffHeaderMode        *int32  `json:"XffHeaderMode,omitempty" xml:"XffHeaderMode,omitempty"`
+	XffHeaders           *string `json:"XffHeaders,omitempty" xml:"XffHeaders,omitempty"`
+	LogHeaders           *string `json:"LogHeaders,omitempty" xml:"LogHeaders,omitempty"`
+	BindingIpv6          *int32  `json:"BindingIpv6,omitempty" xml:"BindingIpv6,omitempty"`
+	ClusterType          *int32  `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	ConnectionTime       *int32  `json:"ConnectionTime,omitempty" xml:"ConnectionTime,omitempty"`
+	ReadTime             *int32  `json:"ReadTime,omitempty" xml:"ReadTime,omitempty"`
+	WriteTime            *int32  `json:"WriteTime,omitempty" xml:"WriteTime,omitempty"`
+	AccessType           *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
+	CloudNativeInstances *string `json:"CloudNativeInstances,omitempty" xml:"CloudNativeInstances,omitempty"`
+	IpFollowStatus       *int32  `json:"IpFollowStatus,omitempty" xml:"IpFollowStatus,omitempty"`
 }
 
-func (s ModifyDomainClusterTypeRequest) String() string {
+func (s ModifyDomainRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ModifyDomainClusterTypeRequest) GoString() string {
+func (s ModifyDomainRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyDomainClusterTypeRequest) SetSourceIp(v string) *ModifyDomainClusterTypeRequest {
+func (s *ModifyDomainRequest) SetSourceIp(v string) *ModifyDomainRequest {
 	s.SourceIp = &v
 	return s
 }
 
-func (s *ModifyDomainClusterTypeRequest) SetInstanceId(v string) *ModifyDomainClusterTypeRequest {
+func (s *ModifyDomainRequest) SetLang(v string) *ModifyDomainRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *ModifyDomainRequest) SetInstanceId(v string) *ModifyDomainRequest {
 	s.InstanceId = &v
 	return s
 }
 
-func (s *ModifyDomainClusterTypeRequest) SetDomain(v string) *ModifyDomainClusterTypeRequest {
+func (s *ModifyDomainRequest) SetDomain(v string) *ModifyDomainRequest {
 	s.Domain = &v
 	return s
 }
 
-func (s *ModifyDomainClusterTypeRequest) SetClusterType(v int32) *ModifyDomainClusterTypeRequest {
+func (s *ModifyDomainRequest) SetSourceIps(v string) *ModifyDomainRequest {
+	s.SourceIps = &v
+	return s
+}
+
+func (s *ModifyDomainRequest) SetLoadBalancing(v int32) *ModifyDomainRequest {
+	s.LoadBalancing = &v
+	return s
+}
+
+func (s *ModifyDomainRequest) SetHttpPort(v string) *ModifyDomainRequest {
+	s.HttpPort = &v
+	return s
+}
+
+func (s *ModifyDomainRequest) SetHttpsPort(v string) *ModifyDomainRequest {
+	s.HttpsPort = &v
+	return s
+}
+
+func (s *ModifyDomainRequest) SetHttp2Port(v string) *ModifyDomainRequest {
+	s.Http2Port = &v
+	return s
+}
+
+func (s *ModifyDomainRequest) SetHttpsRedirect(v int32) *ModifyDomainRequest {
+	s.HttpsRedirect = &v
+	return s
+}
+
+func (s *ModifyDomainRequest) SetHttpToUserIp(v int32) *ModifyDomainRequest {
+	s.HttpToUserIp = &v
+	return s
+}
+
+func (s *ModifyDomainRequest) SetIsAccessProduct(v int32) *ModifyDomainRequest {
+	s.IsAccessProduct = &v
+	return s
+}
+
+func (s *ModifyDomainRequest) SetXffHeaderMode(v int32) *ModifyDomainRequest {
+	s.XffHeaderMode = &v
+	return s
+}
+
+func (s *ModifyDomainRequest) SetXffHeaders(v string) *ModifyDomainRequest {
+	s.XffHeaders = &v
+	return s
+}
+
+func (s *ModifyDomainRequest) SetLogHeaders(v string) *ModifyDomainRequest {
+	s.LogHeaders = &v
+	return s
+}
+
+func (s *ModifyDomainRequest) SetBindingIpv6(v int32) *ModifyDomainRequest {
+	s.BindingIpv6 = &v
+	return s
+}
+
+func (s *ModifyDomainRequest) SetClusterType(v int32) *ModifyDomainRequest {
 	s.ClusterType = &v
 	return s
 }
 
-type ModifyDomainClusterTypeResponseBody struct {
+func (s *ModifyDomainRequest) SetConnectionTime(v int32) *ModifyDomainRequest {
+	s.ConnectionTime = &v
+	return s
+}
+
+func (s *ModifyDomainRequest) SetReadTime(v int32) *ModifyDomainRequest {
+	s.ReadTime = &v
+	return s
+}
+
+func (s *ModifyDomainRequest) SetWriteTime(v int32) *ModifyDomainRequest {
+	s.WriteTime = &v
+	return s
+}
+
+func (s *ModifyDomainRequest) SetAccessType(v string) *ModifyDomainRequest {
+	s.AccessType = &v
+	return s
+}
+
+func (s *ModifyDomainRequest) SetCloudNativeInstances(v string) *ModifyDomainRequest {
+	s.CloudNativeInstances = &v
+	return s
+}
+
+func (s *ModifyDomainRequest) SetIpFollowStatus(v int32) *ModifyDomainRequest {
+	s.IpFollowStatus = &v
+	return s
+}
+
+type ModifyDomainResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
-func (s ModifyDomainClusterTypeResponseBody) String() string {
+func (s ModifyDomainResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ModifyDomainClusterTypeResponseBody) GoString() string {
+func (s ModifyDomainResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyDomainClusterTypeResponseBody) SetRequestId(v string) *ModifyDomainClusterTypeResponseBody {
+func (s *ModifyDomainResponseBody) SetRequestId(v string) *ModifyDomainResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-type ModifyDomainClusterTypeResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyDomainClusterTypeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+type ModifyDomainResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ModifyDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s ModifyDomainClusterTypeResponse) String() string {
+func (s ModifyDomainResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ModifyDomainClusterTypeResponse) GoString() string {
+func (s ModifyDomainResponse) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyDomainClusterTypeResponse) SetHeaders(v map[string]*string) *ModifyDomainClusterTypeResponse {
+func (s *ModifyDomainResponse) SetHeaders(v map[string]*string) *ModifyDomainResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *ModifyDomainClusterTypeResponse) SetBody(v *ModifyDomainClusterTypeResponseBody) *ModifyDomainClusterTypeResponse {
+func (s *ModifyDomainResponse) SetBody(v *ModifyDomainResponseBody) *ModifyDomainResponse {
 	s.Body = v
 	return s
 }
@@ -3909,6 +4355,34 @@ func (client *Client) DescribeDomainBasicConfigs(request *DescribeDomainBasicCon
 	return _result, _err
 }
 
+func (client *Client) DescribeDomainListWithOptions(request *DescribeDomainListRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeDomainListResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeDomainList"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDomainList(request *DescribeDomainListRequest) (_result *DescribeDomainListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDomainListResponse{}
+	_body, _err := client.DescribeDomainListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeDomainNamesWithOptions(request *DescribeDomainNamesRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainNamesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4049,6 +4523,62 @@ func (client *Client) DescribeInstanceSpecInfo(request *DescribeInstanceSpecInfo
 	return _result, _err
 }
 
+func (client *Client) DescribeLogServiceStatusWithOptions(request *DescribeLogServiceStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeLogServiceStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeLogServiceStatusResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeLogServiceStatus"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeLogServiceStatus(request *DescribeLogServiceStatusRequest) (_result *DescribeLogServiceStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeLogServiceStatusResponse{}
+	_body, _err := client.DescribeLogServiceStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeProtectionModuleCodeConfigWithOptions(request *DescribeProtectionModuleCodeConfigRequest, runtime *util.RuntimeOptions) (_result *DescribeProtectionModuleCodeConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeProtectionModuleCodeConfigResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeProtectionModuleCodeConfig"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeProtectionModuleCodeConfig(request *DescribeProtectionModuleCodeConfigRequest) (_result *DescribeProtectionModuleCodeConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeProtectionModuleCodeConfigResponse{}
+	_body, _err := client.DescribeProtectionModuleCodeConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeProtectionModuleModeWithOptions(request *DescribeProtectionModuleModeRequest, runtime *util.RuntimeOptions) (_result *DescribeProtectionModuleModeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4161,7 +4691,7 @@ func (client *Client) DescribeWafSourceIpSegment(request *DescribeWafSourceIpSeg
 	return _result, _err
 }
 
-func (client *Client) ModifyDomainClusterTypeWithOptions(request *ModifyDomainClusterTypeRequest, runtime *util.RuntimeOptions) (_result *ModifyDomainClusterTypeResponse, _err error) {
+func (client *Client) ModifyDomainWithOptions(request *ModifyDomainRequest, runtime *util.RuntimeOptions) (_result *ModifyDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -4169,8 +4699,8 @@ func (client *Client) ModifyDomainClusterTypeWithOptions(request *ModifyDomainCl
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
-	_result = &ModifyDomainClusterTypeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyDomainClusterType"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_result = &ModifyDomainResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ModifyDomain"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4178,10 +4708,10 @@ func (client *Client) ModifyDomainClusterTypeWithOptions(request *ModifyDomainCl
 	return _result, _err
 }
 
-func (client *Client) ModifyDomainClusterType(request *ModifyDomainClusterTypeRequest) (_result *ModifyDomainClusterTypeResponse, _err error) {
+func (client *Client) ModifyDomain(request *ModifyDomainRequest) (_result *ModifyDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &ModifyDomainClusterTypeResponse{}
-	_body, _err := client.ModifyDomainClusterTypeWithOptions(request, runtime)
+	_result = &ModifyDomainResponse{}
+	_body, _err := client.ModifyDomainWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
