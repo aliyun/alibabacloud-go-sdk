@@ -6377,6 +6377,160 @@ func (s *GetBodyPersonResponse) SetBody(v *GetBodyPersonResponseBody) *GetBodyPe
 	return s
 }
 
+type RecognizeHandGestureRequest struct {
+	// A short description of struct
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ImageURL    *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	GestureType *string `json:"GestureType,omitempty" xml:"GestureType,omitempty"`
+}
+
+func (s RecognizeHandGestureRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeHandGestureRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeHandGestureRequest) SetAppId(v string) *RecognizeHandGestureRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *RecognizeHandGestureRequest) SetImageURL(v string) *RecognizeHandGestureRequest {
+	s.ImageURL = &v
+	return s
+}
+
+func (s *RecognizeHandGestureRequest) SetGestureType(v string) *RecognizeHandGestureRequest {
+	s.GestureType = &v
+	return s
+}
+
+type RecognizeHandGestureAdvanceRequest struct {
+	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	// A short description of struct
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	GestureType *string `json:"GestureType,omitempty" xml:"GestureType,omitempty"`
+}
+
+func (s RecognizeHandGestureAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeHandGestureAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeHandGestureAdvanceRequest) SetImageURLObject(v io.Reader) *RecognizeHandGestureAdvanceRequest {
+	s.ImageURLObject = v
+	return s
+}
+
+func (s *RecognizeHandGestureAdvanceRequest) SetAppId(v string) *RecognizeHandGestureAdvanceRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *RecognizeHandGestureAdvanceRequest) SetGestureType(v string) *RecognizeHandGestureAdvanceRequest {
+	s.GestureType = &v
+	return s
+}
+
+type RecognizeHandGestureResponseBody struct {
+	// Id of the request
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *RecognizeHandGestureResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s RecognizeHandGestureResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeHandGestureResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeHandGestureResponseBody) SetRequestId(v string) *RecognizeHandGestureResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RecognizeHandGestureResponseBody) SetData(v *RecognizeHandGestureResponseBodyData) *RecognizeHandGestureResponseBody {
+	s.Data = v
+	return s
+}
+
+type RecognizeHandGestureResponseBodyData struct {
+	Type   *string  `json:"Type,omitempty" xml:"Type,omitempty"`
+	X      *int64   `json:"X,omitempty" xml:"X,omitempty"`
+	Y      *int64   `json:"Y,omitempty" xml:"Y,omitempty"`
+	Width  *int64   `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height *int64   `json:"Height,omitempty" xml:"Height,omitempty"`
+	Score  *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
+}
+
+func (s RecognizeHandGestureResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeHandGestureResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeHandGestureResponseBodyData) SetType(v string) *RecognizeHandGestureResponseBodyData {
+	s.Type = &v
+	return s
+}
+
+func (s *RecognizeHandGestureResponseBodyData) SetX(v int64) *RecognizeHandGestureResponseBodyData {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeHandGestureResponseBodyData) SetY(v int64) *RecognizeHandGestureResponseBodyData {
+	s.Y = &v
+	return s
+}
+
+func (s *RecognizeHandGestureResponseBodyData) SetWidth(v int64) *RecognizeHandGestureResponseBodyData {
+	s.Width = &v
+	return s
+}
+
+func (s *RecognizeHandGestureResponseBodyData) SetHeight(v int64) *RecognizeHandGestureResponseBodyData {
+	s.Height = &v
+	return s
+}
+
+func (s *RecognizeHandGestureResponseBodyData) SetScore(v float32) *RecognizeHandGestureResponseBodyData {
+	s.Score = &v
+	return s
+}
+
+type RecognizeHandGestureResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RecognizeHandGestureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RecognizeHandGestureResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeHandGestureResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeHandGestureResponse) SetHeaders(v map[string]*string) *RecognizeHandGestureResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RecognizeHandGestureResponse) SetBody(v *RecognizeHandGestureResponseBody) *RecognizeHandGestureResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteFaceDbRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
@@ -11737,6 +11891,121 @@ func (client *Client) GetBodyPerson(request *GetBodyPersonRequest) (_result *Get
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RecognizeHandGestureWithOptions(request *RecognizeHandGestureRequest, runtime *util.RuntimeOptions) (_result *RecognizeHandGestureResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &RecognizeHandGestureResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("RecognizeHandGesture"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RecognizeHandGesture(request *RecognizeHandGestureRequest) (_result *RecognizeHandGestureResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RecognizeHandGestureResponse{}
+	_body, _err := client.RecognizeHandGestureWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RecognizeHandGestureAdvance(request *RecognizeHandGestureAdvanceRequest, runtime *util.RuntimeOptions) (_result *RecognizeHandGestureResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("facebody"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	recognizeHandGestureReq := &RecognizeHandGestureRequest{}
+	openapiutil.Convert(request, recognizeHandGestureReq)
+	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	ossConfig.AccessKeyId = authResponse.AccessKeyId
+	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+	ossClient, _err = oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	fileObj = &fileform.FileField{
+		Filename:    authResponse.ObjectKey,
+		Content:     request.ImageURLObject,
+		ContentType: tea.String(""),
+	}
+	ossHeader = &oss.PostObjectRequestHeader{
+		AccessKeyId:         authResponse.AccessKeyId,
+		Policy:              authResponse.EncodedPolicy,
+		Signature:           authResponse.Signature,
+		Key:                 authResponse.ObjectKey,
+		File:                fileObj,
+		SuccessActionStatus: tea.String("201"),
+	}
+	uploadRequest = &oss.PostObjectRequest{
+		BucketName: authResponse.Bucket,
+		Header:     ossHeader,
+	}
+	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+	if _err != nil {
+		return _result, _err
+	}
+	recognizeHandGestureReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	recognizeHandGestureResp, _err := client.RecognizeHandGestureWithOptions(recognizeHandGestureReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = recognizeHandGestureResp
 	return _result, _err
 }
 
