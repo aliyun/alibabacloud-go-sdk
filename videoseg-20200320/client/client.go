@@ -128,6 +128,117 @@ func (s *GetAsyncJobResultResponse) SetBody(v *GetAsyncJobResultResponseBody) *G
 	return s
 }
 
+type SegmentGreenScreenVideoRequest struct {
+	// A short description of struct
+	VideoURL *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
+	Async    *bool   `json:"Async,omitempty" xml:"Async,omitempty"`
+}
+
+func (s SegmentGreenScreenVideoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SegmentGreenScreenVideoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SegmentGreenScreenVideoRequest) SetVideoURL(v string) *SegmentGreenScreenVideoRequest {
+	s.VideoURL = &v
+	return s
+}
+
+func (s *SegmentGreenScreenVideoRequest) SetAsync(v bool) *SegmentGreenScreenVideoRequest {
+	s.Async = &v
+	return s
+}
+
+type SegmentGreenScreenVideoAdvanceRequest struct {
+	VideoURLObject io.Reader `json:"VideoURLObject,omitempty" xml:"VideoURLObject,omitempty" require:"true"`
+	Async          *bool     `json:"Async,omitempty" xml:"Async,omitempty"`
+}
+
+func (s SegmentGreenScreenVideoAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SegmentGreenScreenVideoAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SegmentGreenScreenVideoAdvanceRequest) SetVideoURLObject(v io.Reader) *SegmentGreenScreenVideoAdvanceRequest {
+	s.VideoURLObject = v
+	return s
+}
+
+func (s *SegmentGreenScreenVideoAdvanceRequest) SetAsync(v bool) *SegmentGreenScreenVideoAdvanceRequest {
+	s.Async = &v
+	return s
+}
+
+type SegmentGreenScreenVideoResponseBody struct {
+	// Id of the request
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *SegmentGreenScreenVideoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s SegmentGreenScreenVideoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SegmentGreenScreenVideoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SegmentGreenScreenVideoResponseBody) SetRequestId(v string) *SegmentGreenScreenVideoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SegmentGreenScreenVideoResponseBody) SetData(v *SegmentGreenScreenVideoResponseBodyData) *SegmentGreenScreenVideoResponseBody {
+	s.Data = v
+	return s
+}
+
+type SegmentGreenScreenVideoResponseBodyData struct {
+	VideoURL *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
+}
+
+func (s SegmentGreenScreenVideoResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SegmentGreenScreenVideoResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SegmentGreenScreenVideoResponseBodyData) SetVideoURL(v string) *SegmentGreenScreenVideoResponseBodyData {
+	s.VideoURL = &v
+	return s
+}
+
+type SegmentGreenScreenVideoResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SegmentGreenScreenVideoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SegmentGreenScreenVideoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SegmentGreenScreenVideoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SegmentGreenScreenVideoResponse) SetHeaders(v map[string]*string) *SegmentGreenScreenVideoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SegmentGreenScreenVideoResponse) SetBody(v *SegmentGreenScreenVideoResponseBody) *SegmentGreenScreenVideoResponse {
+	s.Body = v
+	return s
+}
+
 type SegmentHalfBodyRequest struct {
 	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 	Async    *bool   `json:"Async,omitempty" xml:"Async,omitempty"`
@@ -346,117 +457,6 @@ func (s *SegmentVideoBodyResponse) SetBody(v *SegmentVideoBodyResponseBody) *Seg
 	return s
 }
 
-type SegmentGreenScreenVideoRequest struct {
-	// A short description of struct
-	VideoURL *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
-	Async    *bool   `json:"Async,omitempty" xml:"Async,omitempty"`
-}
-
-func (s SegmentGreenScreenVideoRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SegmentGreenScreenVideoRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SegmentGreenScreenVideoRequest) SetVideoURL(v string) *SegmentGreenScreenVideoRequest {
-	s.VideoURL = &v
-	return s
-}
-
-func (s *SegmentGreenScreenVideoRequest) SetAsync(v bool) *SegmentGreenScreenVideoRequest {
-	s.Async = &v
-	return s
-}
-
-type SegmentGreenScreenVideoAdvanceRequest struct {
-	VideoURLObject io.Reader `json:"VideoURLObject,omitempty" xml:"VideoURLObject,omitempty" require:"true"`
-	Async          *bool     `json:"Async,omitempty" xml:"Async,omitempty"`
-}
-
-func (s SegmentGreenScreenVideoAdvanceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SegmentGreenScreenVideoAdvanceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SegmentGreenScreenVideoAdvanceRequest) SetVideoURLObject(v io.Reader) *SegmentGreenScreenVideoAdvanceRequest {
-	s.VideoURLObject = v
-	return s
-}
-
-func (s *SegmentGreenScreenVideoAdvanceRequest) SetAsync(v bool) *SegmentGreenScreenVideoAdvanceRequest {
-	s.Async = &v
-	return s
-}
-
-type SegmentGreenScreenVideoResponseBody struct {
-	// Id of the request
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *SegmentGreenScreenVideoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-}
-
-func (s SegmentGreenScreenVideoResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SegmentGreenScreenVideoResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SegmentGreenScreenVideoResponseBody) SetRequestId(v string) *SegmentGreenScreenVideoResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *SegmentGreenScreenVideoResponseBody) SetData(v *SegmentGreenScreenVideoResponseBodyData) *SegmentGreenScreenVideoResponseBody {
-	s.Data = v
-	return s
-}
-
-type SegmentGreenScreenVideoResponseBodyData struct {
-	VideoURL *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
-}
-
-func (s SegmentGreenScreenVideoResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SegmentGreenScreenVideoResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *SegmentGreenScreenVideoResponseBodyData) SetVideoURL(v string) *SegmentGreenScreenVideoResponseBodyData {
-	s.VideoURL = &v
-	return s
-}
-
-type SegmentGreenScreenVideoResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SegmentGreenScreenVideoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SegmentGreenScreenVideoResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SegmentGreenScreenVideoResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SegmentGreenScreenVideoResponse) SetHeaders(v map[string]*string) *SegmentGreenScreenVideoResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SegmentGreenScreenVideoResponse) SetBody(v *SegmentGreenScreenVideoResponseBody) *SegmentGreenScreenVideoResponse {
-	s.Body = v
-	return s
-}
-
 type Client struct {
 	openapi.Client
 }
@@ -529,6 +529,121 @@ func (client *Client) GetAsyncJobResult(request *GetAsyncJobResultRequest) (_res
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SegmentGreenScreenVideoWithOptions(request *SegmentGreenScreenVideoRequest, runtime *util.RuntimeOptions) (_result *SegmentGreenScreenVideoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SegmentGreenScreenVideoResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SegmentGreenScreenVideo"), tea.String("2020-03-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SegmentGreenScreenVideo(request *SegmentGreenScreenVideoRequest) (_result *SegmentGreenScreenVideoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SegmentGreenScreenVideoResponse{}
+	_body, _err := client.SegmentGreenScreenVideoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SegmentGreenScreenVideoAdvance(request *SegmentGreenScreenVideoAdvanceRequest, runtime *util.RuntimeOptions) (_result *SegmentGreenScreenVideoResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("videoseg"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	segmentGreenScreenVideoReq := &SegmentGreenScreenVideoRequest{}
+	openapiutil.Convert(request, segmentGreenScreenVideoReq)
+	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	ossConfig.AccessKeyId = authResponse.AccessKeyId
+	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+	ossClient, _err = oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	fileObj = &fileform.FileField{
+		Filename:    authResponse.ObjectKey,
+		Content:     request.VideoURLObject,
+		ContentType: tea.String(""),
+	}
+	ossHeader = &oss.PostObjectRequestHeader{
+		AccessKeyId:         authResponse.AccessKeyId,
+		Policy:              authResponse.EncodedPolicy,
+		Signature:           authResponse.Signature,
+		Key:                 authResponse.ObjectKey,
+		File:                fileObj,
+		SuccessActionStatus: tea.String("201"),
+	}
+	uploadRequest = &oss.PostObjectRequest{
+		BucketName: authResponse.Bucket,
+		Header:     ossHeader,
+	}
+	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+	if _err != nil {
+		return _result, _err
+	}
+	segmentGreenScreenVideoReq.VideoURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	segmentGreenScreenVideoResp, _err := client.SegmentGreenScreenVideoWithOptions(segmentGreenScreenVideoReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = segmentGreenScreenVideoResp
 	return _result, _err
 }
 
@@ -759,120 +874,5 @@ func (client *Client) SegmentVideoBodyAdvance(request *SegmentVideoBodyAdvanceRe
 	}
 
 	_result = segmentVideoBodyResp
-	return _result, _err
-}
-
-func (client *Client) SegmentGreenScreenVideoWithOptions(request *SegmentGreenScreenVideoRequest, runtime *util.RuntimeOptions) (_result *SegmentGreenScreenVideoResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &SegmentGreenScreenVideoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SegmentGreenScreenVideo"), tea.String("2020-03-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SegmentGreenScreenVideo(request *SegmentGreenScreenVideoRequest) (_result *SegmentGreenScreenVideoResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SegmentGreenScreenVideoResponse{}
-	_body, _err := client.SegmentGreenScreenVideoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) SegmentGreenScreenVideoAdvance(request *SegmentGreenScreenVideoAdvanceRequest, runtime *util.RuntimeOptions) (_result *SegmentGreenScreenVideoResponse, _err error) {
-	// Step 0: init client
-	accessKeyId, _err := client.Credential.GetAccessKeyId()
-	if _err != nil {
-		return _result, _err
-	}
-
-	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
-	if _err != nil {
-		return _result, _err
-	}
-
-	authConfig := &rpc.Config{
-		AccessKeyId:     accessKeyId,
-		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
-	}
-	authClient, _err := openplatform.NewClient(authConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	authRequest := &openplatform.AuthorizeFileUploadRequest{
-		Product:  tea.String("videoseg"),
-		RegionId: client.RegionId,
-	}
-	authResponse := &openplatform.AuthorizeFileUploadResponse{}
-	ossConfig := &oss.Config{
-		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
-	}
-	var ossClient *oss.Client
-	fileObj := &fileform.FileField{}
-	ossHeader := &oss.PostObjectRequestHeader{}
-	uploadRequest := &oss.PostObjectRequest{}
-	ossRuntime := &ossutil.RuntimeOptions{}
-	openapiutil.Convert(runtime, ossRuntime)
-	segmentGreenScreenVideoReq := &SegmentGreenScreenVideoRequest{}
-	openapiutil.Convert(request, segmentGreenScreenVideoReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.VideoURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	segmentGreenScreenVideoReq.VideoURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
-	segmentGreenScreenVideoResp, _err := client.SegmentGreenScreenVideoWithOptions(segmentGreenScreenVideoReq, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-
-	_result = segmentGreenScreenVideoResp
 	return _result, _err
 }
