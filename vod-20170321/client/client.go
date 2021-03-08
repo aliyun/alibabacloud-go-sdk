@@ -203,15 +203,17 @@ func (s *AddCategoryResponse) SetBody(v *AddCategoryResponseBody) *AddCategoryRe
 }
 
 type AddEditingProjectRequest struct {
-	OwnerId              *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerId      *string `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	Title                *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Timeline             *string `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
-	CoverURL             *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	Division             *string `json:"Division,omitempty" xml:"Division,omitempty"`
+	OwnerId              *string  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerId      *string  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ResourceOwnerAccount *string  `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	OwnerAccount         *string  `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	Title                *string  `json:"Title,omitempty" xml:"Title,omitempty"`
+	Description          *string  `json:"Description,omitempty" xml:"Description,omitempty"`
+	Timeline             *string  `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
+	CoverURL             *string  `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	Division             *string  `json:"Division,omitempty" xml:"Division,omitempty"`
+	FEExtend             *string  `json:"FEExtend,omitempty" xml:"FEExtend,omitempty"`
+	Duration             *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 }
 
 func (s AddEditingProjectRequest) String() string {
@@ -264,6 +266,16 @@ func (s *AddEditingProjectRequest) SetCoverURL(v string) *AddEditingProjectReque
 
 func (s *AddEditingProjectRequest) SetDivision(v string) *AddEditingProjectRequest {
 	s.Division = &v
+	return s
+}
+
+func (s *AddEditingProjectRequest) SetFEExtend(v string) *AddEditingProjectRequest {
+	s.FEExtend = &v
+	return s
+}
+
+func (s *AddEditingProjectRequest) SetDuration(v float32) *AddEditingProjectRequest {
+	s.Duration = &v
 	return s
 }
 
@@ -6560,6 +6572,134 @@ func (s *DetachAppPolicyFromIdentityResponse) SetBody(v *DetachAppPolicyFromIden
 	return s
 }
 
+type GetAICaptionExtractionJobsRequest struct {
+	JobIds *string `json:"JobIds,omitempty" xml:"JobIds,omitempty"`
+}
+
+func (s GetAICaptionExtractionJobsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAICaptionExtractionJobsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAICaptionExtractionJobsRequest) SetJobIds(v string) *GetAICaptionExtractionJobsRequest {
+	s.JobIds = &v
+	return s
+}
+
+type GetAICaptionExtractionJobsResponseBody struct {
+	RequestId                  *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	AICaptionExtractionJobList []*GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList `json:"AICaptionExtractionJobList,omitempty" xml:"AICaptionExtractionJobList,omitempty" type:"Repeated"`
+}
+
+func (s GetAICaptionExtractionJobsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAICaptionExtractionJobsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAICaptionExtractionJobsResponseBody) SetRequestId(v string) *GetAICaptionExtractionJobsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAICaptionExtractionJobsResponseBody) SetAICaptionExtractionJobList(v []*GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList) *GetAICaptionExtractionJobsResponseBody {
+	s.AICaptionExtractionJobList = v
+	return s
+}
+
+type GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList struct {
+	Status                    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	CreationTime              *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	VideoId                   *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
+	JobId                     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	UserData                  *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	Code                      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	AICaptionExtractionResult *string `json:"AICaptionExtractionResult,omitempty" xml:"AICaptionExtractionResult,omitempty"`
+	Message                   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	TemplateConfig            *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
+}
+
+func (s GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList) GoString() string {
+	return s.String()
+}
+
+func (s *GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList) SetStatus(v string) *GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList {
+	s.Status = &v
+	return s
+}
+
+func (s *GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList) SetCreationTime(v string) *GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList) SetVideoId(v string) *GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList {
+	s.VideoId = &v
+	return s
+}
+
+func (s *GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList) SetJobId(v string) *GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList {
+	s.JobId = &v
+	return s
+}
+
+func (s *GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList) SetUserData(v string) *GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList {
+	s.UserData = &v
+	return s
+}
+
+func (s *GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList) SetCode(v string) *GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList {
+	s.Code = &v
+	return s
+}
+
+func (s *GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList) SetAICaptionExtractionResult(v string) *GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList {
+	s.AICaptionExtractionResult = &v
+	return s
+}
+
+func (s *GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList) SetMessage(v string) *GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList {
+	s.Message = &v
+	return s
+}
+
+func (s *GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList) SetTemplateConfig(v string) *GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList {
+	s.TemplateConfig = &v
+	return s
+}
+
+type GetAICaptionExtractionJobsResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetAICaptionExtractionJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAICaptionExtractionJobsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAICaptionExtractionJobsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAICaptionExtractionJobsResponse) SetHeaders(v map[string]*string) *GetAICaptionExtractionJobsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAICaptionExtractionJobsResponse) SetBody(v *GetAICaptionExtractionJobsResponseBody) *GetAICaptionExtractionJobsResponse {
+	s.Body = v
+	return s
+}
+
 type GetAIImageJobsRequest struct {
 	OwnerId              *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerId      *string `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -6719,10 +6859,7 @@ func (s *GetAIImageJobsResponse) SetBody(v *GetAIImageJobsResponseBody) *GetAIIm
 }
 
 type GetAIMediaAuditJobRequest struct {
-	OwnerId              *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	JobId                *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
 func (s GetAIMediaAuditJobRequest) String() string {
@@ -6731,21 +6868,6 @@ func (s GetAIMediaAuditJobRequest) String() string {
 
 func (s GetAIMediaAuditJobRequest) GoString() string {
 	return s.String()
-}
-
-func (s *GetAIMediaAuditJobRequest) SetOwnerId(v string) *GetAIMediaAuditJobRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *GetAIMediaAuditJobRequest) SetResourceOwnerAccount(v string) *GetAIMediaAuditJobRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *GetAIMediaAuditJobRequest) SetResourceOwnerId(v int64) *GetAIMediaAuditJobRequest {
-	s.ResourceOwnerId = &v
-	return s
 }
 
 func (s *GetAIMediaAuditJobRequest) SetJobId(v string) *GetAIMediaAuditJobRequest {
@@ -6844,6 +6966,7 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJob) SetMediaId(v string) *GetA
 type GetAIMediaAuditJobResponseBodyMediaAuditJobData struct {
 	Suggestion      *string                                                       `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
 	ImageResult     []*GetAIMediaAuditJobResponseBodyMediaAuditJobDataImageResult `json:"ImageResult,omitempty" xml:"ImageResult,omitempty" type:"Repeated"`
+	AudioResult     []*GetAIMediaAuditJobResponseBodyMediaAuditJobDataAudioResult `json:"AudioResult,omitempty" xml:"AudioResult,omitempty" type:"Repeated"`
 	VideoResult     *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResult   `json:"VideoResult,omitempty" xml:"VideoResult,omitempty" type:"Struct"`
 	AbnormalModules *string                                                       `json:"AbnormalModules,omitempty" xml:"AbnormalModules,omitempty"`
 	Label           *string                                                       `json:"Label,omitempty" xml:"Label,omitempty"`
@@ -6865,6 +6988,11 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobData) SetSuggestion(v string
 
 func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobData) SetImageResult(v []*GetAIMediaAuditJobResponseBodyMediaAuditJobDataImageResult) *GetAIMediaAuditJobResponseBodyMediaAuditJobData {
 	s.ImageResult = v
+	return s
+}
+
+func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobData) SetAudioResult(v []*GetAIMediaAuditJobResponseBodyMediaAuditJobDataAudioResult) *GetAIMediaAuditJobResponseBodyMediaAuditJobData {
+	s.AudioResult = v
 	return s
 }
 
@@ -6960,6 +7088,41 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataImageResultResult) SetLa
 }
 
 func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataImageResultResult) SetScene(v string) *GetAIMediaAuditJobResponseBodyMediaAuditJobDataImageResultResult {
+	s.Scene = &v
+	return s
+}
+
+type GetAIMediaAuditJobResponseBodyMediaAuditJobDataAudioResult struct {
+	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+	Score      *string `json:"Score,omitempty" xml:"Score,omitempty"`
+	Label      *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	Scene      *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+}
+
+func (s GetAIMediaAuditJobResponseBodyMediaAuditJobDataAudioResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAIMediaAuditJobResponseBodyMediaAuditJobDataAudioResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataAudioResult) SetSuggestion(v string) *GetAIMediaAuditJobResponseBodyMediaAuditJobDataAudioResult {
+	s.Suggestion = &v
+	return s
+}
+
+func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataAudioResult) SetScore(v string) *GetAIMediaAuditJobResponseBodyMediaAuditJobDataAudioResult {
+	s.Score = &v
+	return s
+}
+
+func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataAudioResult) SetLabel(v string) *GetAIMediaAuditJobResponseBodyMediaAuditJobDataAudioResult {
+	s.Label = &v
+	return s
+}
+
+func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataAudioResult) SetScene(v string) *GetAIMediaAuditJobResponseBodyMediaAuditJobDataAudioResult {
 	s.Scene = &v
 	return s
 }
@@ -8776,6 +8939,7 @@ type GetEditingProjectRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	ProjectId            *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	FEExtendFlag         *int32  `json:"FEExtendFlag,omitempty" xml:"FEExtendFlag,omitempty"`
 }
 
 func (s GetEditingProjectRequest) String() string {
@@ -8808,6 +8972,11 @@ func (s *GetEditingProjectRequest) SetOwnerAccount(v string) *GetEditingProjectR
 
 func (s *GetEditingProjectRequest) SetProjectId(v string) *GetEditingProjectRequest {
 	s.ProjectId = &v
+	return s
+}
+
+func (s *GetEditingProjectRequest) SetFEExtendFlag(v int32) *GetEditingProjectRequest {
+	s.FEExtendFlag = &v
 	return s
 }
 
@@ -9027,6 +9196,7 @@ type GetEditingProjectMaterialsResponseBodyMaterialListMaterial struct {
 	Sprites      *GetEditingProjectMaterialsResponseBodyMaterialListMaterialSprites   `json:"Sprites,omitempty" xml:"Sprites,omitempty" type:"Struct"`
 	CateId       *int32                                                               `json:"CateId,omitempty" xml:"CateId,omitempty"`
 	Tags         *string                                                              `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	MaterialType *string                                                              `json:"MaterialType,omitempty" xml:"MaterialType,omitempty"`
 	SpriteConfig *string                                                              `json:"SpriteConfig,omitempty" xml:"SpriteConfig,omitempty"`
 	Source       *string                                                              `json:"Source,omitempty" xml:"Source,omitempty"`
 	Snapshots    *GetEditingProjectMaterialsResponseBodyMaterialListMaterialSnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Struct"`
@@ -9070,6 +9240,11 @@ func (s *GetEditingProjectMaterialsResponseBodyMaterialListMaterial) SetCateId(v
 
 func (s *GetEditingProjectMaterialsResponseBodyMaterialListMaterial) SetTags(v string) *GetEditingProjectMaterialsResponseBodyMaterialListMaterial {
 	s.Tags = &v
+	return s
+}
+
+func (s *GetEditingProjectMaterialsResponseBodyMaterialListMaterial) SetMaterialType(v string) *GetEditingProjectMaterialsResponseBodyMaterialListMaterial {
+	s.MaterialType = &v
 	return s
 }
 
@@ -9548,11 +9723,7 @@ func (s *GetMediaAuditAudioResultDetailResponse) SetBody(v *GetMediaAuditAudioRe
 }
 
 type GetMediaAuditResultRequest struct {
-	OwnerId              *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	MediaId              *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	ResourceRealOwnerId  *int64  `json:"ResourceRealOwnerId,omitempty" xml:"ResourceRealOwnerId,omitempty"`
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 }
 
 func (s GetMediaAuditResultRequest) String() string {
@@ -9563,28 +9734,8 @@ func (s GetMediaAuditResultRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetMediaAuditResultRequest) SetOwnerId(v string) *GetMediaAuditResultRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *GetMediaAuditResultRequest) SetResourceOwnerAccount(v string) *GetMediaAuditResultRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *GetMediaAuditResultRequest) SetResourceOwnerId(v int64) *GetMediaAuditResultRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
 func (s *GetMediaAuditResultRequest) SetMediaId(v string) *GetMediaAuditResultRequest {
 	s.MediaId = &v
-	return s
-}
-
-func (s *GetMediaAuditResultRequest) SetResourceRealOwnerId(v int64) *GetMediaAuditResultRequest {
-	s.ResourceRealOwnerId = &v
 	return s
 }
 
@@ -10424,11 +10575,8 @@ func (s *GetMediaAuditResultResponse) SetBody(v *GetMediaAuditResultResponseBody
 }
 
 type GetMediaAuditResultDetailRequest struct {
-	OwnerId              *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	MediaId              *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	PageNo               *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	PageNo  *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 }
 
 func (s GetMediaAuditResultDetailRequest) String() string {
@@ -10437,21 +10585,6 @@ func (s GetMediaAuditResultDetailRequest) String() string {
 
 func (s GetMediaAuditResultDetailRequest) GoString() string {
 	return s.String()
-}
-
-func (s *GetMediaAuditResultDetailRequest) SetOwnerId(v string) *GetMediaAuditResultDetailRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *GetMediaAuditResultDetailRequest) SetResourceOwnerAccount(v string) *GetMediaAuditResultDetailRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *GetMediaAuditResultDetailRequest) SetResourceOwnerId(v int64) *GetMediaAuditResultDetailRequest {
-	s.ResourceOwnerId = &v
-	return s
 }
 
 func (s *GetMediaAuditResultDetailRequest) SetMediaId(v string) *GetMediaAuditResultDetailRequest {
@@ -10617,10 +10750,7 @@ func (s *GetMediaAuditResultDetailResponse) SetBody(v *GetMediaAuditResultDetail
 }
 
 type GetMediaAuditResultTimelineRequest struct {
-	OwnerId              *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	MediaId              *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 }
 
 func (s GetMediaAuditResultTimelineRequest) String() string {
@@ -10629,21 +10759,6 @@ func (s GetMediaAuditResultTimelineRequest) String() string {
 
 func (s GetMediaAuditResultTimelineRequest) GoString() string {
 	return s.String()
-}
-
-func (s *GetMediaAuditResultTimelineRequest) SetOwnerId(v string) *GetMediaAuditResultTimelineRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *GetMediaAuditResultTimelineRequest) SetResourceOwnerAccount(v string) *GetMediaAuditResultTimelineRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *GetMediaAuditResultTimelineRequest) SetResourceOwnerId(v int64) *GetMediaAuditResultTimelineRequest {
-	s.ResourceOwnerId = &v
-	return s
 }
 
 func (s *GetMediaAuditResultTimelineRequest) SetMediaId(v string) *GetMediaAuditResultTimelineRequest {
@@ -11994,10 +12109,7 @@ func (s *GetPlayInfoResponse) SetBody(v *GetPlayInfoResponseBody) *GetPlayInfoRe
 }
 
 type GetTranscodeSummaryRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	VideoIds             *string `json:"VideoIds,omitempty" xml:"VideoIds,omitempty"`
+	VideoIds *string `json:"VideoIds,omitempty" xml:"VideoIds,omitempty"`
 }
 
 func (s GetTranscodeSummaryRequest) String() string {
@@ -12006,21 +12118,6 @@ func (s GetTranscodeSummaryRequest) String() string {
 
 func (s GetTranscodeSummaryRequest) GoString() string {
 	return s.String()
-}
-
-func (s *GetTranscodeSummaryRequest) SetOwnerId(v int64) *GetTranscodeSummaryRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *GetTranscodeSummaryRequest) SetResourceOwnerAccount(v string) *GetTranscodeSummaryRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *GetTranscodeSummaryRequest) SetResourceOwnerId(v int64) *GetTranscodeSummaryRequest {
-	s.ResourceOwnerId = &v
-	return s
 }
 
 func (s *GetTranscodeSummaryRequest) SetVideoIds(v string) *GetTranscodeSummaryRequest {
@@ -12229,10 +12326,7 @@ func (s *GetTranscodeSummaryResponse) SetBody(v *GetTranscodeSummaryResponseBody
 }
 
 type GetTranscodeTaskRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TranscodeTaskId      *string `json:"TranscodeTaskId,omitempty" xml:"TranscodeTaskId,omitempty"`
+	TranscodeTaskId *string `json:"TranscodeTaskId,omitempty" xml:"TranscodeTaskId,omitempty"`
 }
 
 func (s GetTranscodeTaskRequest) String() string {
@@ -12241,21 +12335,6 @@ func (s GetTranscodeTaskRequest) String() string {
 
 func (s GetTranscodeTaskRequest) GoString() string {
 	return s.String()
-}
-
-func (s *GetTranscodeTaskRequest) SetOwnerId(v int64) *GetTranscodeTaskRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *GetTranscodeTaskRequest) SetResourceOwnerAccount(v string) *GetTranscodeTaskRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *GetTranscodeTaskRequest) SetResourceOwnerId(v int64) *GetTranscodeTaskRequest {
-	s.ResourceOwnerId = &v
-	return s
 }
 
 func (s *GetTranscodeTaskRequest) SetTranscodeTaskId(v string) *GetTranscodeTaskRequest {
@@ -18201,6 +18280,87 @@ func (s *SetVodDomainCertificateResponse) SetBody(v *SetVodDomainCertificateResp
 	return s
 }
 
+type SubmitAICaptionExtractionJobRequest struct {
+	VideoId      *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
+	JobConfig    *string `json:"JobConfig,omitempty" xml:"JobConfig,omitempty"`
+	AIPipelineId *string `json:"AIPipelineId,omitempty" xml:"AIPipelineId,omitempty"`
+	UserData     *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s SubmitAICaptionExtractionJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAICaptionExtractionJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAICaptionExtractionJobRequest) SetVideoId(v string) *SubmitAICaptionExtractionJobRequest {
+	s.VideoId = &v
+	return s
+}
+
+func (s *SubmitAICaptionExtractionJobRequest) SetJobConfig(v string) *SubmitAICaptionExtractionJobRequest {
+	s.JobConfig = &v
+	return s
+}
+
+func (s *SubmitAICaptionExtractionJobRequest) SetAIPipelineId(v string) *SubmitAICaptionExtractionJobRequest {
+	s.AIPipelineId = &v
+	return s
+}
+
+func (s *SubmitAICaptionExtractionJobRequest) SetUserData(v string) *SubmitAICaptionExtractionJobRequest {
+	s.UserData = &v
+	return s
+}
+
+type SubmitAICaptionExtractionJobResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s SubmitAICaptionExtractionJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAICaptionExtractionJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAICaptionExtractionJobResponseBody) SetRequestId(v string) *SubmitAICaptionExtractionJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitAICaptionExtractionJobResponseBody) SetJobId(v string) *SubmitAICaptionExtractionJobResponseBody {
+	s.JobId = &v
+	return s
+}
+
+type SubmitAICaptionExtractionJobResponse struct {
+	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SubmitAICaptionExtractionJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SubmitAICaptionExtractionJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAICaptionExtractionJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAICaptionExtractionJobResponse) SetHeaders(v map[string]*string) *SubmitAICaptionExtractionJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitAICaptionExtractionJobResponse) SetBody(v *SubmitAICaptionExtractionJobResponseBody) *SubmitAICaptionExtractionJobResponse {
+	s.Body = v
+	return s
+}
+
 type SubmitAIImageAuditJobRequest struct {
 	OwnerId                 *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerId         *string `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -19765,15 +19925,17 @@ func (s *UpdateCategoryResponse) SetBody(v *UpdateCategoryResponseBody) *UpdateC
 }
 
 type UpdateEditingProjectRequest struct {
-	OwnerId              *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerId      *string `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	ProjectId            *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	Title                *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	Timeline             *string `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
-	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	CoverURL             *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	OwnerId              *string  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerId      *string  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ResourceOwnerAccount *string  `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	OwnerAccount         *string  `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	ProjectId            *string  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	Title                *string  `json:"Title,omitempty" xml:"Title,omitempty"`
+	Timeline             *string  `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
+	Description          *string  `json:"Description,omitempty" xml:"Description,omitempty"`
+	CoverURL             *string  `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	FEExtend             *string  `json:"FEExtend,omitempty" xml:"FEExtend,omitempty"`
+	Duration             *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 }
 
 func (s UpdateEditingProjectRequest) String() string {
@@ -19826,6 +19988,16 @@ func (s *UpdateEditingProjectRequest) SetDescription(v string) *UpdateEditingPro
 
 func (s *UpdateEditingProjectRequest) SetCoverURL(v string) *UpdateEditingProjectRequest {
 	s.CoverURL = &v
+	return s
+}
+
+func (s *UpdateEditingProjectRequest) SetFEExtend(v string) *UpdateEditingProjectRequest {
+	s.FEExtend = &v
+	return s
+}
+
+func (s *UpdateEditingProjectRequest) SetDuration(v float32) *UpdateEditingProjectRequest {
+	s.Duration = &v
 	return s
 }
 
@@ -22363,6 +22535,34 @@ func (client *Client) DetachAppPolicyFromIdentity(request *DetachAppPolicyFromId
 	return _result, _err
 }
 
+func (client *Client) GetAICaptionExtractionJobsWithOptions(request *GetAICaptionExtractionJobsRequest, runtime *util.RuntimeOptions) (_result *GetAICaptionExtractionJobsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetAICaptionExtractionJobsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetAICaptionExtractionJobs"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAICaptionExtractionJobs(request *GetAICaptionExtractionJobsRequest) (_result *GetAICaptionExtractionJobsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAICaptionExtractionJobsResponse{}
+	_body, _err := client.GetAICaptionExtractionJobsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetAIImageJobsWithOptions(request *GetAIImageJobsRequest, runtime *util.RuntimeOptions) (_result *GetAIImageJobsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24036,6 +24236,34 @@ func (client *Client) SetVodDomainCertificate(request *SetVodDomainCertificateRe
 	runtime := &util.RuntimeOptions{}
 	_result = &SetVodDomainCertificateResponse{}
 	_body, _err := client.SetVodDomainCertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SubmitAICaptionExtractionJobWithOptions(request *SubmitAICaptionExtractionJobRequest, runtime *util.RuntimeOptions) (_result *SubmitAICaptionExtractionJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SubmitAICaptionExtractionJobResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SubmitAICaptionExtractionJob"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubmitAICaptionExtractionJob(request *SubmitAICaptionExtractionJobRequest) (_result *SubmitAICaptionExtractionJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitAICaptionExtractionJobResponse{}
+	_body, _err := client.SubmitAICaptionExtractionJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
