@@ -310,6 +310,122 @@ func (s *DeleteGroupIdResponse) SetBody(v *DeleteGroupIdResponseBody) *DeleteGro
 	return s
 }
 
+type GetDeviceCredentialRequest struct {
+	ClientId   *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s GetDeviceCredentialRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeviceCredentialRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeviceCredentialRequest) SetClientId(v string) *GetDeviceCredentialRequest {
+	s.ClientId = &v
+	return s
+}
+
+func (s *GetDeviceCredentialRequest) SetInstanceId(v string) *GetDeviceCredentialRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type GetDeviceCredentialResponseBody struct {
+	RequestId        *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	DeviceCredential *GetDeviceCredentialResponseBodyDeviceCredential `json:"DeviceCredential,omitempty" xml:"DeviceCredential,omitempty" type:"Struct"`
+}
+
+func (s GetDeviceCredentialResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeviceCredentialResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeviceCredentialResponseBody) SetRequestId(v string) *GetDeviceCredentialResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDeviceCredentialResponseBody) SetDeviceCredential(v *GetDeviceCredentialResponseBodyDeviceCredential) *GetDeviceCredentialResponseBody {
+	s.DeviceCredential = v
+	return s
+}
+
+type GetDeviceCredentialResponseBodyDeviceCredential struct {
+	UpdateTime            *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	DeviceAccessKeyId     *string `json:"DeviceAccessKeyId,omitempty" xml:"DeviceAccessKeyId,omitempty"`
+	CreateTime            *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	DeviceAccessKeySecret *string `json:"DeviceAccessKeySecret,omitempty" xml:"DeviceAccessKeySecret,omitempty"`
+	ClientId              *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+}
+
+func (s GetDeviceCredentialResponseBodyDeviceCredential) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeviceCredentialResponseBodyDeviceCredential) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeviceCredentialResponseBodyDeviceCredential) SetUpdateTime(v int64) *GetDeviceCredentialResponseBodyDeviceCredential {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *GetDeviceCredentialResponseBodyDeviceCredential) SetDeviceAccessKeyId(v string) *GetDeviceCredentialResponseBodyDeviceCredential {
+	s.DeviceAccessKeyId = &v
+	return s
+}
+
+func (s *GetDeviceCredentialResponseBodyDeviceCredential) SetCreateTime(v int64) *GetDeviceCredentialResponseBodyDeviceCredential {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetDeviceCredentialResponseBodyDeviceCredential) SetInstanceId(v string) *GetDeviceCredentialResponseBodyDeviceCredential {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetDeviceCredentialResponseBodyDeviceCredential) SetDeviceAccessKeySecret(v string) *GetDeviceCredentialResponseBodyDeviceCredential {
+	s.DeviceAccessKeySecret = &v
+	return s
+}
+
+func (s *GetDeviceCredentialResponseBodyDeviceCredential) SetClientId(v string) *GetDeviceCredentialResponseBodyDeviceCredential {
+	s.ClientId = &v
+	return s
+}
+
+type GetDeviceCredentialResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetDeviceCredentialResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDeviceCredentialResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeviceCredentialResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeviceCredentialResponse) SetHeaders(v map[string]*string) *GetDeviceCredentialResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDeviceCredentialResponse) SetBody(v *GetDeviceCredentialResponseBody) *GetDeviceCredentialResponse {
+	s.Body = v
+	return s
+}
+
 type ListGroupIdRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
@@ -552,6 +668,238 @@ func (s *QueryTokenResponse) SetBody(v *QueryTokenResponseBody) *QueryTokenRespo
 	return s
 }
 
+type RefreshDeviceCredentialRequest struct {
+	ClientId   *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s RefreshDeviceCredentialRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshDeviceCredentialRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshDeviceCredentialRequest) SetClientId(v string) *RefreshDeviceCredentialRequest {
+	s.ClientId = &v
+	return s
+}
+
+func (s *RefreshDeviceCredentialRequest) SetInstanceId(v string) *RefreshDeviceCredentialRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type RefreshDeviceCredentialResponseBody struct {
+	RequestId        *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	DeviceCredential *RefreshDeviceCredentialResponseBodyDeviceCredential `json:"DeviceCredential,omitempty" xml:"DeviceCredential,omitempty" type:"Struct"`
+}
+
+func (s RefreshDeviceCredentialResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshDeviceCredentialResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshDeviceCredentialResponseBody) SetRequestId(v string) *RefreshDeviceCredentialResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RefreshDeviceCredentialResponseBody) SetDeviceCredential(v *RefreshDeviceCredentialResponseBodyDeviceCredential) *RefreshDeviceCredentialResponseBody {
+	s.DeviceCredential = v
+	return s
+}
+
+type RefreshDeviceCredentialResponseBodyDeviceCredential struct {
+	UpdateTime            *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	DeviceAccessKeyId     *string `json:"DeviceAccessKeyId,omitempty" xml:"DeviceAccessKeyId,omitempty"`
+	CreateTime            *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	DeviceAccessKeySecret *string `json:"DeviceAccessKeySecret,omitempty" xml:"DeviceAccessKeySecret,omitempty"`
+	ClientId              *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+}
+
+func (s RefreshDeviceCredentialResponseBodyDeviceCredential) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshDeviceCredentialResponseBodyDeviceCredential) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshDeviceCredentialResponseBodyDeviceCredential) SetUpdateTime(v int64) *RefreshDeviceCredentialResponseBodyDeviceCredential {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *RefreshDeviceCredentialResponseBodyDeviceCredential) SetDeviceAccessKeyId(v string) *RefreshDeviceCredentialResponseBodyDeviceCredential {
+	s.DeviceAccessKeyId = &v
+	return s
+}
+
+func (s *RefreshDeviceCredentialResponseBodyDeviceCredential) SetCreateTime(v int64) *RefreshDeviceCredentialResponseBodyDeviceCredential {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *RefreshDeviceCredentialResponseBodyDeviceCredential) SetInstanceId(v string) *RefreshDeviceCredentialResponseBodyDeviceCredential {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *RefreshDeviceCredentialResponseBodyDeviceCredential) SetDeviceAccessKeySecret(v string) *RefreshDeviceCredentialResponseBodyDeviceCredential {
+	s.DeviceAccessKeySecret = &v
+	return s
+}
+
+func (s *RefreshDeviceCredentialResponseBodyDeviceCredential) SetClientId(v string) *RefreshDeviceCredentialResponseBodyDeviceCredential {
+	s.ClientId = &v
+	return s
+}
+
+type RefreshDeviceCredentialResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RefreshDeviceCredentialResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RefreshDeviceCredentialResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshDeviceCredentialResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshDeviceCredentialResponse) SetHeaders(v map[string]*string) *RefreshDeviceCredentialResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RefreshDeviceCredentialResponse) SetBody(v *RefreshDeviceCredentialResponseBody) *RefreshDeviceCredentialResponse {
+	s.Body = v
+	return s
+}
+
+type RegisterDeviceCredentialRequest struct {
+	ClientId   *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s RegisterDeviceCredentialRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterDeviceCredentialRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterDeviceCredentialRequest) SetClientId(v string) *RegisterDeviceCredentialRequest {
+	s.ClientId = &v
+	return s
+}
+
+func (s *RegisterDeviceCredentialRequest) SetInstanceId(v string) *RegisterDeviceCredentialRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type RegisterDeviceCredentialResponseBody struct {
+	RequestId        *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	DeviceCredential *RegisterDeviceCredentialResponseBodyDeviceCredential `json:"DeviceCredential,omitempty" xml:"DeviceCredential,omitempty" type:"Struct"`
+}
+
+func (s RegisterDeviceCredentialResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterDeviceCredentialResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterDeviceCredentialResponseBody) SetRequestId(v string) *RegisterDeviceCredentialResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RegisterDeviceCredentialResponseBody) SetDeviceCredential(v *RegisterDeviceCredentialResponseBodyDeviceCredential) *RegisterDeviceCredentialResponseBody {
+	s.DeviceCredential = v
+	return s
+}
+
+type RegisterDeviceCredentialResponseBodyDeviceCredential struct {
+	UpdateTime            *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	DeviceAccessKeyId     *string `json:"DeviceAccessKeyId,omitempty" xml:"DeviceAccessKeyId,omitempty"`
+	CreateTime            *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	DeviceAccessKeySecret *string `json:"DeviceAccessKeySecret,omitempty" xml:"DeviceAccessKeySecret,omitempty"`
+	ClientId              *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+}
+
+func (s RegisterDeviceCredentialResponseBodyDeviceCredential) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterDeviceCredentialResponseBodyDeviceCredential) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterDeviceCredentialResponseBodyDeviceCredential) SetUpdateTime(v int64) *RegisterDeviceCredentialResponseBodyDeviceCredential {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *RegisterDeviceCredentialResponseBodyDeviceCredential) SetDeviceAccessKeyId(v string) *RegisterDeviceCredentialResponseBodyDeviceCredential {
+	s.DeviceAccessKeyId = &v
+	return s
+}
+
+func (s *RegisterDeviceCredentialResponseBodyDeviceCredential) SetCreateTime(v int64) *RegisterDeviceCredentialResponseBodyDeviceCredential {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *RegisterDeviceCredentialResponseBodyDeviceCredential) SetInstanceId(v string) *RegisterDeviceCredentialResponseBodyDeviceCredential {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *RegisterDeviceCredentialResponseBodyDeviceCredential) SetDeviceAccessKeySecret(v string) *RegisterDeviceCredentialResponseBodyDeviceCredential {
+	s.DeviceAccessKeySecret = &v
+	return s
+}
+
+func (s *RegisterDeviceCredentialResponseBodyDeviceCredential) SetClientId(v string) *RegisterDeviceCredentialResponseBodyDeviceCredential {
+	s.ClientId = &v
+	return s
+}
+
+type RegisterDeviceCredentialResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RegisterDeviceCredentialResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RegisterDeviceCredentialResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterDeviceCredentialResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterDeviceCredentialResponse) SetHeaders(v map[string]*string) *RegisterDeviceCredentialResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RegisterDeviceCredentialResponse) SetBody(v *RegisterDeviceCredentialResponseBody) *RegisterDeviceCredentialResponse {
+	s.Body = v
+	return s
+}
+
 type RevokeTokenRequest struct {
 	Token      *string `json:"Token,omitempty" xml:"Token,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -686,6 +1034,69 @@ func (s *SendMessageResponse) SetHeaders(v map[string]*string) *SendMessageRespo
 }
 
 func (s *SendMessageResponse) SetBody(v *SendMessageResponseBody) *SendMessageResponse {
+	s.Body = v
+	return s
+}
+
+type UnRegisterDeviceCredentialRequest struct {
+	ClientId   *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s UnRegisterDeviceCredentialRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnRegisterDeviceCredentialRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UnRegisterDeviceCredentialRequest) SetClientId(v string) *UnRegisterDeviceCredentialRequest {
+	s.ClientId = &v
+	return s
+}
+
+func (s *UnRegisterDeviceCredentialRequest) SetInstanceId(v string) *UnRegisterDeviceCredentialRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type UnRegisterDeviceCredentialResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UnRegisterDeviceCredentialResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnRegisterDeviceCredentialResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UnRegisterDeviceCredentialResponseBody) SetRequestId(v string) *UnRegisterDeviceCredentialResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UnRegisterDeviceCredentialResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UnRegisterDeviceCredentialResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UnRegisterDeviceCredentialResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnRegisterDeviceCredentialResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UnRegisterDeviceCredentialResponse) SetHeaders(v map[string]*string) *UnRegisterDeviceCredentialResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UnRegisterDeviceCredentialResponse) SetBody(v *UnRegisterDeviceCredentialResponseBody) *UnRegisterDeviceCredentialResponse {
 	s.Body = v
 	return s
 }
@@ -849,6 +1260,34 @@ func (client *Client) DeleteGroupId(request *DeleteGroupIdRequest) (_result *Del
 	return _result, _err
 }
 
+func (client *Client) GetDeviceCredentialWithOptions(request *GetDeviceCredentialRequest, runtime *util.RuntimeOptions) (_result *GetDeviceCredentialResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetDeviceCredentialResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetDeviceCredential"), tea.String("2020-04-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDeviceCredential(request *GetDeviceCredentialRequest) (_result *GetDeviceCredentialResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDeviceCredentialResponse{}
+	_body, _err := client.GetDeviceCredentialWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListGroupIdWithOptions(request *ListGroupIdRequest, runtime *util.RuntimeOptions) (_result *ListGroupIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -933,6 +1372,62 @@ func (client *Client) QueryToken(request *QueryTokenRequest) (_result *QueryToke
 	return _result, _err
 }
 
+func (client *Client) RefreshDeviceCredentialWithOptions(request *RefreshDeviceCredentialRequest, runtime *util.RuntimeOptions) (_result *RefreshDeviceCredentialResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &RefreshDeviceCredentialResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("RefreshDeviceCredential"), tea.String("2020-04-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RefreshDeviceCredential(request *RefreshDeviceCredentialRequest) (_result *RefreshDeviceCredentialResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RefreshDeviceCredentialResponse{}
+	_body, _err := client.RefreshDeviceCredentialWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RegisterDeviceCredentialWithOptions(request *RegisterDeviceCredentialRequest, runtime *util.RuntimeOptions) (_result *RegisterDeviceCredentialResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &RegisterDeviceCredentialResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("RegisterDeviceCredential"), tea.String("2020-04-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RegisterDeviceCredential(request *RegisterDeviceCredentialRequest) (_result *RegisterDeviceCredentialResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RegisterDeviceCredentialResponse{}
+	_body, _err := client.RegisterDeviceCredentialWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) RevokeTokenWithOptions(request *RevokeTokenRequest, runtime *util.RuntimeOptions) (_result *RevokeTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -982,6 +1477,34 @@ func (client *Client) SendMessage(request *SendMessageRequest) (_result *SendMes
 	runtime := &util.RuntimeOptions{}
 	_result = &SendMessageResponse{}
 	_body, _err := client.SendMessageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UnRegisterDeviceCredentialWithOptions(request *UnRegisterDeviceCredentialRequest, runtime *util.RuntimeOptions) (_result *UnRegisterDeviceCredentialResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &UnRegisterDeviceCredentialResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UnRegisterDeviceCredential"), tea.String("2020-04-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UnRegisterDeviceCredential(request *UnRegisterDeviceCredentialRequest) (_result *UnRegisterDeviceCredentialResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UnRegisterDeviceCredentialResponse{}
+	_body, _err := client.UnRegisterDeviceCredentialWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
