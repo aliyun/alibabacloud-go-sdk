@@ -17,9 +17,9 @@ type BatchAddDeviceGroupRelationsRequest struct {
 	ApiRevision       *string                                      `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
 	IotInstanceId     *string                                      `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 	GroupId           *string                                      `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Device            []*BatchAddDeviceGroupRelationsRequestDevice `json:"Device,omitempty" xml:"Device,omitempty" type:"Repeated"`
 	RealTenantId      *string                                      `json:"RealTenantId,omitempty" xml:"RealTenantId,omitempty"`
 	RealTripartiteKey *string                                      `json:"RealTripartiteKey,omitempty" xml:"RealTripartiteKey,omitempty"`
-	Device            []*BatchAddDeviceGroupRelationsRequestDevice `json:"Device,omitempty" xml:"Device,omitempty" type:"Repeated"`
 }
 
 func (s BatchAddDeviceGroupRelationsRequest) String() string {
@@ -50,6 +50,11 @@ func (s *BatchAddDeviceGroupRelationsRequest) SetGroupId(v string) *BatchAddDevi
 	return s
 }
 
+func (s *BatchAddDeviceGroupRelationsRequest) SetDevice(v []*BatchAddDeviceGroupRelationsRequestDevice) *BatchAddDeviceGroupRelationsRequest {
+	s.Device = v
+	return s
+}
+
 func (s *BatchAddDeviceGroupRelationsRequest) SetRealTenantId(v string) *BatchAddDeviceGroupRelationsRequest {
 	s.RealTenantId = &v
 	return s
@@ -57,11 +62,6 @@ func (s *BatchAddDeviceGroupRelationsRequest) SetRealTenantId(v string) *BatchAd
 
 func (s *BatchAddDeviceGroupRelationsRequest) SetRealTripartiteKey(v string) *BatchAddDeviceGroupRelationsRequest {
 	s.RealTripartiteKey = &v
-	return s
-}
-
-func (s *BatchAddDeviceGroupRelationsRequest) SetDevice(v []*BatchAddDeviceGroupRelationsRequestDevice) *BatchAddDeviceGroupRelationsRequest {
-	s.Device = v
 	return s
 }
 
@@ -89,14 +89,14 @@ func (s *BatchAddDeviceGroupRelationsRequestDevice) SetDeviceName(v string) *Bat
 }
 
 type BatchAddDeviceGroupRelationsResponseBody struct {
-	ValidDeviceCount               *int32  `json:"ValidDeviceCount,omitempty" xml:"ValidDeviceCount,omitempty"`
-	SuccessAddedDeviceCount        *int32  `json:"SuccessAddedDeviceCount,omitempty" xml:"SuccessAddedDeviceCount,omitempty"`
 	RequestId                      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ExceedTenGroupDeviceCount      *int32  `json:"ExceedTenGroupDeviceCount,omitempty" xml:"ExceedTenGroupDeviceCount,omitempty"`
-	ErrorMessage                   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	AlreadyRelatedGroupDeviceCount *int32  `json:"AlreadyRelatedGroupDeviceCount,omitempty" xml:"AlreadyRelatedGroupDeviceCount,omitempty"`
-	Code                           *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success                        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code                           *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ValidDeviceCount               *int32  `json:"ValidDeviceCount,omitempty" xml:"ValidDeviceCount,omitempty"`
+	ExceedTenGroupDeviceCount      *int32  `json:"ExceedTenGroupDeviceCount,omitempty" xml:"ExceedTenGroupDeviceCount,omitempty"`
+	AlreadyRelatedGroupDeviceCount *int32  `json:"AlreadyRelatedGroupDeviceCount,omitempty" xml:"AlreadyRelatedGroupDeviceCount,omitempty"`
+	SuccessAddedDeviceCount        *int32  `json:"SuccessAddedDeviceCount,omitempty" xml:"SuccessAddedDeviceCount,omitempty"`
+	ErrorMessage                   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s BatchAddDeviceGroupRelationsResponseBody) String() string {
@@ -107,33 +107,13 @@ func (s BatchAddDeviceGroupRelationsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *BatchAddDeviceGroupRelationsResponseBody) SetValidDeviceCount(v int32) *BatchAddDeviceGroupRelationsResponseBody {
-	s.ValidDeviceCount = &v
-	return s
-}
-
-func (s *BatchAddDeviceGroupRelationsResponseBody) SetSuccessAddedDeviceCount(v int32) *BatchAddDeviceGroupRelationsResponseBody {
-	s.SuccessAddedDeviceCount = &v
-	return s
-}
-
 func (s *BatchAddDeviceGroupRelationsResponseBody) SetRequestId(v string) *BatchAddDeviceGroupRelationsResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *BatchAddDeviceGroupRelationsResponseBody) SetExceedTenGroupDeviceCount(v int32) *BatchAddDeviceGroupRelationsResponseBody {
-	s.ExceedTenGroupDeviceCount = &v
-	return s
-}
-
-func (s *BatchAddDeviceGroupRelationsResponseBody) SetErrorMessage(v string) *BatchAddDeviceGroupRelationsResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *BatchAddDeviceGroupRelationsResponseBody) SetAlreadyRelatedGroupDeviceCount(v int32) *BatchAddDeviceGroupRelationsResponseBody {
-	s.AlreadyRelatedGroupDeviceCount = &v
+func (s *BatchAddDeviceGroupRelationsResponseBody) SetSuccess(v bool) *BatchAddDeviceGroupRelationsResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -142,8 +122,28 @@ func (s *BatchAddDeviceGroupRelationsResponseBody) SetCode(v string) *BatchAddDe
 	return s
 }
 
-func (s *BatchAddDeviceGroupRelationsResponseBody) SetSuccess(v bool) *BatchAddDeviceGroupRelationsResponseBody {
-	s.Success = &v
+func (s *BatchAddDeviceGroupRelationsResponseBody) SetValidDeviceCount(v int32) *BatchAddDeviceGroupRelationsResponseBody {
+	s.ValidDeviceCount = &v
+	return s
+}
+
+func (s *BatchAddDeviceGroupRelationsResponseBody) SetExceedTenGroupDeviceCount(v int32) *BatchAddDeviceGroupRelationsResponseBody {
+	s.ExceedTenGroupDeviceCount = &v
+	return s
+}
+
+func (s *BatchAddDeviceGroupRelationsResponseBody) SetAlreadyRelatedGroupDeviceCount(v int32) *BatchAddDeviceGroupRelationsResponseBody {
+	s.AlreadyRelatedGroupDeviceCount = &v
+	return s
+}
+
+func (s *BatchAddDeviceGroupRelationsResponseBody) SetSuccessAddedDeviceCount(v int32) *BatchAddDeviceGroupRelationsResponseBody {
+	s.SuccessAddedDeviceCount = &v
+	return s
+}
+
+func (s *BatchAddDeviceGroupRelationsResponseBody) SetErrorMessage(v string) *BatchAddDeviceGroupRelationsResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -174,10 +174,10 @@ type BatchAddThingTopoRequest struct {
 	ApiProduct    *string                                `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
 	ApiRevision   *string                                `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
 	IotInstanceId *string                                `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	GwProductKey  *string                                `json:"GwProductKey,omitempty" xml:"GwProductKey,omitempty"`
-	Ext           map[string]interface{}                 `json:"Ext,omitempty" xml:"Ext,omitempty"`
-	GwDeviceName  *string                                `json:"GwDeviceName,omitempty" xml:"GwDeviceName,omitempty"`
 	TopoAddItem   []*BatchAddThingTopoRequestTopoAddItem `json:"TopoAddItem,omitempty" xml:"TopoAddItem,omitempty" type:"Repeated"`
+	GwProductKey  *string                                `json:"GwProductKey,omitempty" xml:"GwProductKey,omitempty"`
+	Ext           *string                                `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	GwDeviceName  *string                                `json:"GwDeviceName,omitempty" xml:"GwDeviceName,omitempty"`
 }
 
 func (s BatchAddThingTopoRequest) String() string {
@@ -203,13 +203,18 @@ func (s *BatchAddThingTopoRequest) SetIotInstanceId(v string) *BatchAddThingTopo
 	return s
 }
 
+func (s *BatchAddThingTopoRequest) SetTopoAddItem(v []*BatchAddThingTopoRequestTopoAddItem) *BatchAddThingTopoRequest {
+	s.TopoAddItem = v
+	return s
+}
+
 func (s *BatchAddThingTopoRequest) SetGwProductKey(v string) *BatchAddThingTopoRequest {
 	s.GwProductKey = &v
 	return s
 }
 
-func (s *BatchAddThingTopoRequest) SetExt(v map[string]interface{}) *BatchAddThingTopoRequest {
-	s.Ext = v
+func (s *BatchAddThingTopoRequest) SetExt(v string) *BatchAddThingTopoRequest {
+	s.Ext = &v
 	return s
 }
 
@@ -218,17 +223,12 @@ func (s *BatchAddThingTopoRequest) SetGwDeviceName(v string) *BatchAddThingTopoR
 	return s
 }
 
-func (s *BatchAddThingTopoRequest) SetTopoAddItem(v []*BatchAddThingTopoRequestTopoAddItem) *BatchAddThingTopoRequest {
-	s.TopoAddItem = v
-	return s
-}
-
 type BatchAddThingTopoRequestTopoAddItem struct {
 	ProductKey *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
 	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
 	Sign       *string `json:"Sign,omitempty" xml:"Sign,omitempty"`
-	Timestamp  *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 	SignMethod *string `json:"SignMethod,omitempty" xml:"SignMethod,omitempty"`
+	Timestamp  *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 	ClientId   *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
 }
 
@@ -255,13 +255,13 @@ func (s *BatchAddThingTopoRequestTopoAddItem) SetSign(v string) *BatchAddThingTo
 	return s
 }
 
-func (s *BatchAddThingTopoRequestTopoAddItem) SetTimestamp(v string) *BatchAddThingTopoRequestTopoAddItem {
-	s.Timestamp = &v
+func (s *BatchAddThingTopoRequestTopoAddItem) SetSignMethod(v string) *BatchAddThingTopoRequestTopoAddItem {
+	s.SignMethod = &v
 	return s
 }
 
-func (s *BatchAddThingTopoRequestTopoAddItem) SetSignMethod(v string) *BatchAddThingTopoRequestTopoAddItem {
-	s.SignMethod = &v
+func (s *BatchAddThingTopoRequestTopoAddItem) SetTimestamp(v string) *BatchAddThingTopoRequestTopoAddItem {
+	s.Timestamp = &v
 	return s
 }
 
@@ -270,111 +270,11 @@ func (s *BatchAddThingTopoRequestTopoAddItem) SetClientId(v string) *BatchAddThi
 	return s
 }
 
-type BatchAddThingTopoShrinkRequest struct {
-	ApiProduct    *string                                      `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
-	ApiRevision   *string                                      `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
-	IotInstanceId *string                                      `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	GwProductKey  *string                                      `json:"GwProductKey,omitempty" xml:"GwProductKey,omitempty"`
-	ExtShrink     *string                                      `json:"Ext,omitempty" xml:"Ext,omitempty"`
-	GwDeviceName  *string                                      `json:"GwDeviceName,omitempty" xml:"GwDeviceName,omitempty"`
-	TopoAddItem   []*BatchAddThingTopoShrinkRequestTopoAddItem `json:"TopoAddItem,omitempty" xml:"TopoAddItem,omitempty" type:"Repeated"`
-}
-
-func (s BatchAddThingTopoShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchAddThingTopoShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *BatchAddThingTopoShrinkRequest) SetApiProduct(v string) *BatchAddThingTopoShrinkRequest {
-	s.ApiProduct = &v
-	return s
-}
-
-func (s *BatchAddThingTopoShrinkRequest) SetApiRevision(v string) *BatchAddThingTopoShrinkRequest {
-	s.ApiRevision = &v
-	return s
-}
-
-func (s *BatchAddThingTopoShrinkRequest) SetIotInstanceId(v string) *BatchAddThingTopoShrinkRequest {
-	s.IotInstanceId = &v
-	return s
-}
-
-func (s *BatchAddThingTopoShrinkRequest) SetGwProductKey(v string) *BatchAddThingTopoShrinkRequest {
-	s.GwProductKey = &v
-	return s
-}
-
-func (s *BatchAddThingTopoShrinkRequest) SetExtShrink(v string) *BatchAddThingTopoShrinkRequest {
-	s.ExtShrink = &v
-	return s
-}
-
-func (s *BatchAddThingTopoShrinkRequest) SetGwDeviceName(v string) *BatchAddThingTopoShrinkRequest {
-	s.GwDeviceName = &v
-	return s
-}
-
-func (s *BatchAddThingTopoShrinkRequest) SetTopoAddItem(v []*BatchAddThingTopoShrinkRequestTopoAddItem) *BatchAddThingTopoShrinkRequest {
-	s.TopoAddItem = v
-	return s
-}
-
-type BatchAddThingTopoShrinkRequestTopoAddItem struct {
-	ProductKey *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
-	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
-	Sign       *string `json:"Sign,omitempty" xml:"Sign,omitempty"`
-	Timestamp  *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	SignMethod *string `json:"SignMethod,omitempty" xml:"SignMethod,omitempty"`
-	ClientId   *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-}
-
-func (s BatchAddThingTopoShrinkRequestTopoAddItem) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchAddThingTopoShrinkRequestTopoAddItem) GoString() string {
-	return s.String()
-}
-
-func (s *BatchAddThingTopoShrinkRequestTopoAddItem) SetProductKey(v string) *BatchAddThingTopoShrinkRequestTopoAddItem {
-	s.ProductKey = &v
-	return s
-}
-
-func (s *BatchAddThingTopoShrinkRequestTopoAddItem) SetDeviceName(v string) *BatchAddThingTopoShrinkRequestTopoAddItem {
-	s.DeviceName = &v
-	return s
-}
-
-func (s *BatchAddThingTopoShrinkRequestTopoAddItem) SetSign(v string) *BatchAddThingTopoShrinkRequestTopoAddItem {
-	s.Sign = &v
-	return s
-}
-
-func (s *BatchAddThingTopoShrinkRequestTopoAddItem) SetTimestamp(v string) *BatchAddThingTopoShrinkRequestTopoAddItem {
-	s.Timestamp = &v
-	return s
-}
-
-func (s *BatchAddThingTopoShrinkRequestTopoAddItem) SetSignMethod(v string) *BatchAddThingTopoShrinkRequestTopoAddItem {
-	s.SignMethod = &v
-	return s
-}
-
-func (s *BatchAddThingTopoShrinkRequestTopoAddItem) SetClientId(v string) *BatchAddThingTopoShrinkRequestTopoAddItem {
-	s.ClientId = &v
-	return s
-}
-
 type BatchAddThingTopoResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s BatchAddThingTopoResponseBody) String() string {
@@ -390,8 +290,8 @@ func (s *BatchAddThingTopoResponseBody) SetRequestId(v string) *BatchAddThingTop
 	return s
 }
 
-func (s *BatchAddThingTopoResponseBody) SetErrorMessage(v string) *BatchAddThingTopoResponseBody {
-	s.ErrorMessage = &v
+func (s *BatchAddThingTopoResponseBody) SetSuccess(v bool) *BatchAddThingTopoResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -400,8 +300,8 @@ func (s *BatchAddThingTopoResponseBody) SetCode(v string) *BatchAddThingTopoResp
 	return s
 }
 
-func (s *BatchAddThingTopoResponseBody) SetSuccess(v bool) *BatchAddThingTopoResponseBody {
-	s.Success = &v
+func (s *BatchAddThingTopoResponseBody) SetErrorMessage(v string) *BatchAddThingTopoResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -477,9 +377,9 @@ func (s *BatchBindDeviceToEdgeInstanceWithDriverRequest) SetIotIds(v []*string) 
 
 type BatchBindDeviceToEdgeInstanceWithDriverResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s BatchBindDeviceToEdgeInstanceWithDriverResponseBody) String() string {
@@ -495,8 +395,8 @@ func (s *BatchBindDeviceToEdgeInstanceWithDriverResponseBody) SetRequestId(v str
 	return s
 }
 
-func (s *BatchBindDeviceToEdgeInstanceWithDriverResponseBody) SetErrorMessage(v string) *BatchBindDeviceToEdgeInstanceWithDriverResponseBody {
-	s.ErrorMessage = &v
+func (s *BatchBindDeviceToEdgeInstanceWithDriverResponseBody) SetSuccess(v bool) *BatchBindDeviceToEdgeInstanceWithDriverResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -505,8 +405,8 @@ func (s *BatchBindDeviceToEdgeInstanceWithDriverResponseBody) SetCode(v string) 
 	return s
 }
 
-func (s *BatchBindDeviceToEdgeInstanceWithDriverResponseBody) SetSuccess(v bool) *BatchBindDeviceToEdgeInstanceWithDriverResponseBody {
-	s.Success = &v
+func (s *BatchBindDeviceToEdgeInstanceWithDriverResponseBody) SetErrorMessage(v string) *BatchBindDeviceToEdgeInstanceWithDriverResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -534,12 +434,14 @@ func (s *BatchBindDeviceToEdgeInstanceWithDriverResponse) SetBody(v *BatchBindDe
 }
 
 type BatchCheckDeviceNamesRequest struct {
-	ApiProduct     *string                                       `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
-	ApiRevision    *string                                       `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
-	IotInstanceId  *string                                       `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	ProductKey     *string                                       `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
-	DeviceName     []*string                                     `json:"DeviceName,omitempty" xml:"DeviceName,omitempty" type:"Repeated"`
-	DeviceNameList []*BatchCheckDeviceNamesRequestDeviceNameList `json:"DeviceNameList,omitempty" xml:"DeviceNameList,omitempty" type:"Repeated"`
+	ApiProduct        *string                                       `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
+	ApiRevision       *string                                       `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
+	IotInstanceId     *string                                       `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ProductKey        *string                                       `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	DeviceName        []*string                                     `json:"DeviceName,omitempty" xml:"DeviceName,omitempty" type:"Repeated"`
+	DeviceNameList    []*BatchCheckDeviceNamesRequestDeviceNameList `json:"DeviceNameList,omitempty" xml:"DeviceNameList,omitempty" type:"Repeated"`
+	RealTenantId      *string                                       `json:"RealTenantId,omitempty" xml:"RealTenantId,omitempty"`
+	RealTripartiteKey *string                                       `json:"RealTripartiteKey,omitempty" xml:"RealTripartiteKey,omitempty"`
 }
 
 func (s BatchCheckDeviceNamesRequest) String() string {
@@ -580,9 +482,19 @@ func (s *BatchCheckDeviceNamesRequest) SetDeviceNameList(v []*BatchCheckDeviceNa
 	return s
 }
 
+func (s *BatchCheckDeviceNamesRequest) SetRealTenantId(v string) *BatchCheckDeviceNamesRequest {
+	s.RealTenantId = &v
+	return s
+}
+
+func (s *BatchCheckDeviceNamesRequest) SetRealTripartiteKey(v string) *BatchCheckDeviceNamesRequest {
+	s.RealTripartiteKey = &v
+	return s
+}
+
 type BatchCheckDeviceNamesRequestDeviceNameList struct {
-	DeviceNickname *string `json:"DeviceNickname,omitempty" xml:"DeviceNickname,omitempty"`
 	DeviceName     *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	DeviceNickname *string `json:"DeviceNickname,omitempty" xml:"DeviceNickname,omitempty"`
 }
 
 func (s BatchCheckDeviceNamesRequestDeviceNameList) String() string {
@@ -593,22 +505,22 @@ func (s BatchCheckDeviceNamesRequestDeviceNameList) GoString() string {
 	return s.String()
 }
 
-func (s *BatchCheckDeviceNamesRequestDeviceNameList) SetDeviceNickname(v string) *BatchCheckDeviceNamesRequestDeviceNameList {
-	s.DeviceNickname = &v
-	return s
-}
-
 func (s *BatchCheckDeviceNamesRequestDeviceNameList) SetDeviceName(v string) *BatchCheckDeviceNamesRequestDeviceNameList {
 	s.DeviceName = &v
 	return s
 }
 
+func (s *BatchCheckDeviceNamesRequestDeviceNameList) SetDeviceNickname(v string) *BatchCheckDeviceNamesRequestDeviceNameList {
+	s.DeviceNickname = &v
+	return s
+}
+
 type BatchCheckDeviceNamesResponseBody struct {
 	RequestId    *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data         *BatchCheckDeviceNamesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                                `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string                                `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Data         *BatchCheckDeviceNamesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s BatchCheckDeviceNamesResponseBody) String() string {
@@ -624,13 +536,8 @@ func (s *BatchCheckDeviceNamesResponseBody) SetRequestId(v string) *BatchCheckDe
 	return s
 }
 
-func (s *BatchCheckDeviceNamesResponseBody) SetData(v *BatchCheckDeviceNamesResponseBodyData) *BatchCheckDeviceNamesResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *BatchCheckDeviceNamesResponseBody) SetErrorMessage(v string) *BatchCheckDeviceNamesResponseBody {
-	s.ErrorMessage = &v
+func (s *BatchCheckDeviceNamesResponseBody) SetSuccess(v bool) *BatchCheckDeviceNamesResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -639,8 +546,13 @@ func (s *BatchCheckDeviceNamesResponseBody) SetCode(v string) *BatchCheckDeviceN
 	return s
 }
 
-func (s *BatchCheckDeviceNamesResponseBody) SetSuccess(v bool) *BatchCheckDeviceNamesResponseBody {
-	s.Success = &v
+func (s *BatchCheckDeviceNamesResponseBody) SetErrorMessage(v string) *BatchCheckDeviceNamesResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *BatchCheckDeviceNamesResponseBody) SetData(v *BatchCheckDeviceNamesResponseBodyData) *BatchCheckDeviceNamesResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -773,9 +685,9 @@ func (s *BatchClearEdgeInstanceDeviceConfigRequest) SetIotIds(v []*string) *Batc
 
 type BatchClearEdgeInstanceDeviceConfigResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s BatchClearEdgeInstanceDeviceConfigResponseBody) String() string {
@@ -791,8 +703,8 @@ func (s *BatchClearEdgeInstanceDeviceConfigResponseBody) SetRequestId(v string) 
 	return s
 }
 
-func (s *BatchClearEdgeInstanceDeviceConfigResponseBody) SetErrorMessage(v string) *BatchClearEdgeInstanceDeviceConfigResponseBody {
-	s.ErrorMessage = &v
+func (s *BatchClearEdgeInstanceDeviceConfigResponseBody) SetSuccess(v bool) *BatchClearEdgeInstanceDeviceConfigResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -801,8 +713,8 @@ func (s *BatchClearEdgeInstanceDeviceConfigResponseBody) SetCode(v string) *Batc
 	return s
 }
 
-func (s *BatchClearEdgeInstanceDeviceConfigResponseBody) SetSuccess(v bool) *BatchClearEdgeInstanceDeviceConfigResponseBody {
-	s.Success = &v
+func (s *BatchClearEdgeInstanceDeviceConfigResponseBody) SetErrorMessage(v string) *BatchClearEdgeInstanceDeviceConfigResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -834,9 +746,9 @@ type BatchDeleteDeviceGroupRelationsRequest struct {
 	ApiRevision       *string                                         `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
 	IotInstanceId     *string                                         `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 	GroupId           *string                                         `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Device            []*BatchDeleteDeviceGroupRelationsRequestDevice `json:"Device,omitempty" xml:"Device,omitempty" type:"Repeated"`
 	RealTenantId      *string                                         `json:"RealTenantId,omitempty" xml:"RealTenantId,omitempty"`
 	RealTripartiteKey *string                                         `json:"RealTripartiteKey,omitempty" xml:"RealTripartiteKey,omitempty"`
-	Device            []*BatchDeleteDeviceGroupRelationsRequestDevice `json:"Device,omitempty" xml:"Device,omitempty" type:"Repeated"`
 }
 
 func (s BatchDeleteDeviceGroupRelationsRequest) String() string {
@@ -867,6 +779,11 @@ func (s *BatchDeleteDeviceGroupRelationsRequest) SetGroupId(v string) *BatchDele
 	return s
 }
 
+func (s *BatchDeleteDeviceGroupRelationsRequest) SetDevice(v []*BatchDeleteDeviceGroupRelationsRequestDevice) *BatchDeleteDeviceGroupRelationsRequest {
+	s.Device = v
+	return s
+}
+
 func (s *BatchDeleteDeviceGroupRelationsRequest) SetRealTenantId(v string) *BatchDeleteDeviceGroupRelationsRequest {
 	s.RealTenantId = &v
 	return s
@@ -874,11 +791,6 @@ func (s *BatchDeleteDeviceGroupRelationsRequest) SetRealTenantId(v string) *Batc
 
 func (s *BatchDeleteDeviceGroupRelationsRequest) SetRealTripartiteKey(v string) *BatchDeleteDeviceGroupRelationsRequest {
 	s.RealTripartiteKey = &v
-	return s
-}
-
-func (s *BatchDeleteDeviceGroupRelationsRequest) SetDevice(v []*BatchDeleteDeviceGroupRelationsRequestDevice) *BatchDeleteDeviceGroupRelationsRequest {
-	s.Device = v
 	return s
 }
 
@@ -906,13 +818,13 @@ func (s *BatchDeleteDeviceGroupRelationsRequestDevice) SetDeviceName(v string) *
 }
 
 type BatchDeleteDeviceGroupRelationsResponseBody struct {
-	ValidDeviceCount               *int32  `json:"ValidDeviceCount,omitempty" xml:"ValidDeviceCount,omitempty"`
 	RequestId                      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SuccessDeviceCount             *int32  `json:"SuccessDeviceCount,omitempty" xml:"SuccessDeviceCount,omitempty"`
-	ErrorMessage                   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	AlreadyRelatedGroupDeviceCount *int32  `json:"AlreadyRelatedGroupDeviceCount,omitempty" xml:"AlreadyRelatedGroupDeviceCount,omitempty"`
-	Code                           *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success                        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code                           *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage                   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ValidDeviceCount               *int32  `json:"ValidDeviceCount,omitempty" xml:"ValidDeviceCount,omitempty"`
+	AlreadyRelatedGroupDeviceCount *int32  `json:"AlreadyRelatedGroupDeviceCount,omitempty" xml:"AlreadyRelatedGroupDeviceCount,omitempty"`
+	SuccessDeviceCount             *int32  `json:"SuccessDeviceCount,omitempty" xml:"SuccessDeviceCount,omitempty"`
 }
 
 func (s BatchDeleteDeviceGroupRelationsResponseBody) String() string {
@@ -923,28 +835,13 @@ func (s BatchDeleteDeviceGroupRelationsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *BatchDeleteDeviceGroupRelationsResponseBody) SetValidDeviceCount(v int32) *BatchDeleteDeviceGroupRelationsResponseBody {
-	s.ValidDeviceCount = &v
-	return s
-}
-
 func (s *BatchDeleteDeviceGroupRelationsResponseBody) SetRequestId(v string) *BatchDeleteDeviceGroupRelationsResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *BatchDeleteDeviceGroupRelationsResponseBody) SetSuccessDeviceCount(v int32) *BatchDeleteDeviceGroupRelationsResponseBody {
-	s.SuccessDeviceCount = &v
-	return s
-}
-
-func (s *BatchDeleteDeviceGroupRelationsResponseBody) SetErrorMessage(v string) *BatchDeleteDeviceGroupRelationsResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *BatchDeleteDeviceGroupRelationsResponseBody) SetAlreadyRelatedGroupDeviceCount(v int32) *BatchDeleteDeviceGroupRelationsResponseBody {
-	s.AlreadyRelatedGroupDeviceCount = &v
+func (s *BatchDeleteDeviceGroupRelationsResponseBody) SetSuccess(v bool) *BatchDeleteDeviceGroupRelationsResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -953,8 +850,23 @@ func (s *BatchDeleteDeviceGroupRelationsResponseBody) SetCode(v string) *BatchDe
 	return s
 }
 
-func (s *BatchDeleteDeviceGroupRelationsResponseBody) SetSuccess(v bool) *BatchDeleteDeviceGroupRelationsResponseBody {
-	s.Success = &v
+func (s *BatchDeleteDeviceGroupRelationsResponseBody) SetErrorMessage(v string) *BatchDeleteDeviceGroupRelationsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *BatchDeleteDeviceGroupRelationsResponseBody) SetValidDeviceCount(v int32) *BatchDeleteDeviceGroupRelationsResponseBody {
+	s.ValidDeviceCount = &v
+	return s
+}
+
+func (s *BatchDeleteDeviceGroupRelationsResponseBody) SetAlreadyRelatedGroupDeviceCount(v int32) *BatchDeleteDeviceGroupRelationsResponseBody {
+	s.AlreadyRelatedGroupDeviceCount = &v
+	return s
+}
+
+func (s *BatchDeleteDeviceGroupRelationsResponseBody) SetSuccessDeviceCount(v int32) *BatchDeleteDeviceGroupRelationsResponseBody {
+	s.SuccessDeviceCount = &v
 	return s
 }
 
@@ -1030,9 +942,9 @@ func (s *BatchDeleteEdgeInstanceChannelRequest) SetChannelIds(v []*string) *Batc
 
 type BatchDeleteEdgeInstanceChannelResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s BatchDeleteEdgeInstanceChannelResponseBody) String() string {
@@ -1048,8 +960,8 @@ func (s *BatchDeleteEdgeInstanceChannelResponseBody) SetRequestId(v string) *Bat
 	return s
 }
 
-func (s *BatchDeleteEdgeInstanceChannelResponseBody) SetErrorMessage(v string) *BatchDeleteEdgeInstanceChannelResponseBody {
-	s.ErrorMessage = &v
+func (s *BatchDeleteEdgeInstanceChannelResponseBody) SetSuccess(v bool) *BatchDeleteEdgeInstanceChannelResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -1058,8 +970,8 @@ func (s *BatchDeleteEdgeInstanceChannelResponseBody) SetCode(v string) *BatchDel
 	return s
 }
 
-func (s *BatchDeleteEdgeInstanceChannelResponseBody) SetSuccess(v bool) *BatchDeleteEdgeInstanceChannelResponseBody {
-	s.Success = &v
+func (s *BatchDeleteEdgeInstanceChannelResponseBody) SetErrorMessage(v string) *BatchDeleteEdgeInstanceChannelResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -1123,10 +1035,10 @@ func (s *BatchGetDeviceBindStatusRequest) SetIotIds(v []*string) *BatchGetDevice
 
 type BatchGetDeviceBindStatusResponseBody struct {
 	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data         []*BatchGetDeviceBindStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	ErrorMessage *string                                     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string                                     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Data         []*BatchGetDeviceBindStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 }
 
 func (s BatchGetDeviceBindStatusResponseBody) String() string {
@@ -1142,13 +1054,8 @@ func (s *BatchGetDeviceBindStatusResponseBody) SetRequestId(v string) *BatchGetD
 	return s
 }
 
-func (s *BatchGetDeviceBindStatusResponseBody) SetData(v []*BatchGetDeviceBindStatusResponseBodyData) *BatchGetDeviceBindStatusResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *BatchGetDeviceBindStatusResponseBody) SetErrorMessage(v string) *BatchGetDeviceBindStatusResponseBody {
-	s.ErrorMessage = &v
+func (s *BatchGetDeviceBindStatusResponseBody) SetSuccess(v bool) *BatchGetDeviceBindStatusResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -1157,14 +1064,19 @@ func (s *BatchGetDeviceBindStatusResponseBody) SetCode(v string) *BatchGetDevice
 	return s
 }
 
-func (s *BatchGetDeviceBindStatusResponseBody) SetSuccess(v bool) *BatchGetDeviceBindStatusResponseBody {
-	s.Success = &v
+func (s *BatchGetDeviceBindStatusResponseBody) SetErrorMessage(v string) *BatchGetDeviceBindStatusResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *BatchGetDeviceBindStatusResponseBody) SetData(v []*BatchGetDeviceBindStatusResponseBodyData) *BatchGetDeviceBindStatusResponseBody {
+	s.Data = v
 	return s
 }
 
 type BatchGetDeviceBindStatusResponseBodyData struct {
-	BindStatus *int32  `json:"BindStatus,omitempty" xml:"BindStatus,omitempty"`
 	IotId      *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	BindStatus *int32  `json:"BindStatus,omitempty" xml:"BindStatus,omitempty"`
 }
 
 func (s BatchGetDeviceBindStatusResponseBodyData) String() string {
@@ -1175,13 +1087,13 @@ func (s BatchGetDeviceBindStatusResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *BatchGetDeviceBindStatusResponseBodyData) SetBindStatus(v int32) *BatchGetDeviceBindStatusResponseBodyData {
-	s.BindStatus = &v
+func (s *BatchGetDeviceBindStatusResponseBodyData) SetIotId(v string) *BatchGetDeviceBindStatusResponseBodyData {
+	s.IotId = &v
 	return s
 }
 
-func (s *BatchGetDeviceBindStatusResponseBodyData) SetIotId(v string) *BatchGetDeviceBindStatusResponseBodyData {
-	s.IotId = &v
+func (s *BatchGetDeviceBindStatusResponseBodyData) SetBindStatus(v int32) *BatchGetDeviceBindStatusResponseBodyData {
+	s.BindStatus = &v
 	return s
 }
 
@@ -1211,9 +1123,9 @@ func (s *BatchGetDeviceBindStatusResponse) SetBody(v *BatchGetDeviceBindStatusRe
 type BatchGetDeviceStateRequest struct {
 	ApiProduct    *string   `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
 	ApiRevision   *string   `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
+	DeviceName    []*string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty" type:"Repeated"`
 	IotInstanceId *string   `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 	ProductKey    *string   `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
-	DeviceName    []*string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty" type:"Repeated"`
 	IotId         []*string `json:"IotId,omitempty" xml:"IotId,omitempty" type:"Repeated"`
 }
 
@@ -1235,6 +1147,11 @@ func (s *BatchGetDeviceStateRequest) SetApiRevision(v string) *BatchGetDeviceSta
 	return s
 }
 
+func (s *BatchGetDeviceStateRequest) SetDeviceName(v []*string) *BatchGetDeviceStateRequest {
+	s.DeviceName = v
+	return s
+}
+
 func (s *BatchGetDeviceStateRequest) SetIotInstanceId(v string) *BatchGetDeviceStateRequest {
 	s.IotInstanceId = &v
 	return s
@@ -1245,11 +1162,6 @@ func (s *BatchGetDeviceStateRequest) SetProductKey(v string) *BatchGetDeviceStat
 	return s
 }
 
-func (s *BatchGetDeviceStateRequest) SetDeviceName(v []*string) *BatchGetDeviceStateRequest {
-	s.DeviceName = v
-	return s
-}
-
 func (s *BatchGetDeviceStateRequest) SetIotId(v []*string) *BatchGetDeviceStateRequest {
 	s.IotId = v
 	return s
@@ -1257,10 +1169,10 @@ func (s *BatchGetDeviceStateRequest) SetIotId(v []*string) *BatchGetDeviceStateR
 
 type BatchGetDeviceStateResponseBody struct {
 	RequestId        *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	DeviceStatusList *BatchGetDeviceStateResponseBodyDeviceStatusList `json:"DeviceStatusList,omitempty" xml:"DeviceStatusList,omitempty" type:"Struct"`
-	ErrorMessage     *string                                          `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code             *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success          *bool                                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code             *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage     *string                                          `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	DeviceStatusList *BatchGetDeviceStateResponseBodyDeviceStatusList `json:"DeviceStatusList,omitempty" xml:"DeviceStatusList,omitempty" type:"Struct"`
 }
 
 func (s BatchGetDeviceStateResponseBody) String() string {
@@ -1276,13 +1188,8 @@ func (s *BatchGetDeviceStateResponseBody) SetRequestId(v string) *BatchGetDevice
 	return s
 }
 
-func (s *BatchGetDeviceStateResponseBody) SetDeviceStatusList(v *BatchGetDeviceStateResponseBodyDeviceStatusList) *BatchGetDeviceStateResponseBody {
-	s.DeviceStatusList = v
-	return s
-}
-
-func (s *BatchGetDeviceStateResponseBody) SetErrorMessage(v string) *BatchGetDeviceStateResponseBody {
-	s.ErrorMessage = &v
+func (s *BatchGetDeviceStateResponseBody) SetSuccess(v bool) *BatchGetDeviceStateResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -1291,8 +1198,13 @@ func (s *BatchGetDeviceStateResponseBody) SetCode(v string) *BatchGetDeviceState
 	return s
 }
 
-func (s *BatchGetDeviceStateResponseBody) SetSuccess(v bool) *BatchGetDeviceStateResponseBody {
-	s.Success = &v
+func (s *BatchGetDeviceStateResponseBody) SetErrorMessage(v string) *BatchGetDeviceStateResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *BatchGetDeviceStateResponseBody) SetDeviceStatusList(v *BatchGetDeviceStateResponseBodyDeviceStatusList) *BatchGetDeviceStateResponseBody {
+	s.DeviceStatusList = v
 	return s
 }
 
@@ -1314,11 +1226,11 @@ func (s *BatchGetDeviceStateResponseBodyDeviceStatusList) SetDeviceStatus(v []*B
 }
 
 type BatchGetDeviceStateResponseBodyDeviceStatusListDeviceStatus struct {
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	LastOnlineTime *string `json:"LastOnlineTime,omitempty" xml:"LastOnlineTime,omitempty"`
-	DeviceName     *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
 	DeviceId       *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	DeviceName     *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	AsAddress      *string `json:"AsAddress,omitempty" xml:"AsAddress,omitempty"`
+	LastOnlineTime *string `json:"LastOnlineTime,omitempty" xml:"LastOnlineTime,omitempty"`
 	IotId          *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
 }
 
@@ -1330,13 +1242,8 @@ func (s BatchGetDeviceStateResponseBodyDeviceStatusListDeviceStatus) GoString() 
 	return s.String()
 }
 
-func (s *BatchGetDeviceStateResponseBodyDeviceStatusListDeviceStatus) SetStatus(v string) *BatchGetDeviceStateResponseBodyDeviceStatusListDeviceStatus {
-	s.Status = &v
-	return s
-}
-
-func (s *BatchGetDeviceStateResponseBodyDeviceStatusListDeviceStatus) SetLastOnlineTime(v string) *BatchGetDeviceStateResponseBodyDeviceStatusListDeviceStatus {
-	s.LastOnlineTime = &v
+func (s *BatchGetDeviceStateResponseBodyDeviceStatusListDeviceStatus) SetDeviceId(v string) *BatchGetDeviceStateResponseBodyDeviceStatusListDeviceStatus {
+	s.DeviceId = &v
 	return s
 }
 
@@ -1345,13 +1252,18 @@ func (s *BatchGetDeviceStateResponseBodyDeviceStatusListDeviceStatus) SetDeviceN
 	return s
 }
 
-func (s *BatchGetDeviceStateResponseBodyDeviceStatusListDeviceStatus) SetDeviceId(v string) *BatchGetDeviceStateResponseBodyDeviceStatusListDeviceStatus {
-	s.DeviceId = &v
+func (s *BatchGetDeviceStateResponseBodyDeviceStatusListDeviceStatus) SetStatus(v string) *BatchGetDeviceStateResponseBodyDeviceStatusListDeviceStatus {
+	s.Status = &v
 	return s
 }
 
 func (s *BatchGetDeviceStateResponseBodyDeviceStatusListDeviceStatus) SetAsAddress(v string) *BatchGetDeviceStateResponseBodyDeviceStatusListDeviceStatus {
 	s.AsAddress = &v
+	return s
+}
+
+func (s *BatchGetDeviceStateResponseBodyDeviceStatusListDeviceStatus) SetLastOnlineTime(v string) *BatchGetDeviceStateResponseBodyDeviceStatusListDeviceStatus {
+	s.LastOnlineTime = &v
 	return s
 }
 
@@ -1420,10 +1332,10 @@ func (s *BatchGetEdgeDriverRequest) SetDriverIds(v []*string) *BatchGetEdgeDrive
 
 type BatchGetEdgeDriverResponseBody struct {
 	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
 	ErrorMessage *string                                     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	DriverList   []*BatchGetEdgeDriverResponseBodyDriverList `json:"DriverList,omitempty" xml:"DriverList,omitempty" type:"Repeated"`
-	Code         *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success      *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s BatchGetEdgeDriverResponseBody) String() string {
@@ -1439,6 +1351,16 @@ func (s *BatchGetEdgeDriverResponseBody) SetRequestId(v string) *BatchGetEdgeDri
 	return s
 }
 
+func (s *BatchGetEdgeDriverResponseBody) SetSuccess(v bool) *BatchGetEdgeDriverResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *BatchGetEdgeDriverResponseBody) SetCode(v string) *BatchGetEdgeDriverResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *BatchGetEdgeDriverResponseBody) SetErrorMessage(v string) *BatchGetEdgeDriverResponseBody {
 	s.ErrorMessage = &v
 	return s
@@ -1449,26 +1371,16 @@ func (s *BatchGetEdgeDriverResponseBody) SetDriverList(v []*BatchGetEdgeDriverRe
 	return s
 }
 
-func (s *BatchGetEdgeDriverResponseBody) SetCode(v string) *BatchGetEdgeDriverResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *BatchGetEdgeDriverResponseBody) SetSuccess(v bool) *BatchGetEdgeDriverResponseBody {
-	s.Success = &v
-	return s
-}
-
 type BatchGetEdgeDriverResponseBodyDriverList struct {
-	GmtCreateTimestamp   *int64  `json:"GmtCreateTimestamp,omitempty" xml:"GmtCreateTimestamp,omitempty"`
-	Type                 *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
-	CpuArch              *string `json:"CpuArch,omitempty" xml:"CpuArch,omitempty"`
 	DriverId             *string `json:"DriverId,omitempty" xml:"DriverId,omitempty"`
-	IsBuiltIn            *bool   `json:"IsBuiltIn,omitempty" xml:"IsBuiltIn,omitempty"`
-	GmtModifiedTimestamp *int64  `json:"GmtModifiedTimestamp,omitempty" xml:"GmtModifiedTimestamp,omitempty"`
-	Runtime              *string `json:"Runtime,omitempty" xml:"Runtime,omitempty"`
 	DriverName           *string `json:"DriverName,omitempty" xml:"DriverName,omitempty"`
 	DriverProtocol       *string `json:"DriverProtocol,omitempty" xml:"DriverProtocol,omitempty"`
+	Runtime              *string `json:"Runtime,omitempty" xml:"Runtime,omitempty"`
+	CpuArch              *string `json:"CpuArch,omitempty" xml:"CpuArch,omitempty"`
+	Type                 *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	IsBuiltIn            *bool   `json:"IsBuiltIn,omitempty" xml:"IsBuiltIn,omitempty"`
+	GmtCreateTimestamp   *int64  `json:"GmtCreateTimestamp,omitempty" xml:"GmtCreateTimestamp,omitempty"`
+	GmtModifiedTimestamp *int64  `json:"GmtModifiedTimestamp,omitempty" xml:"GmtModifiedTimestamp,omitempty"`
 }
 
 func (s BatchGetEdgeDriverResponseBodyDriverList) String() string {
@@ -1479,38 +1391,8 @@ func (s BatchGetEdgeDriverResponseBodyDriverList) GoString() string {
 	return s.String()
 }
 
-func (s *BatchGetEdgeDriverResponseBodyDriverList) SetGmtCreateTimestamp(v int64) *BatchGetEdgeDriverResponseBodyDriverList {
-	s.GmtCreateTimestamp = &v
-	return s
-}
-
-func (s *BatchGetEdgeDriverResponseBodyDriverList) SetType(v int32) *BatchGetEdgeDriverResponseBodyDriverList {
-	s.Type = &v
-	return s
-}
-
-func (s *BatchGetEdgeDriverResponseBodyDriverList) SetCpuArch(v string) *BatchGetEdgeDriverResponseBodyDriverList {
-	s.CpuArch = &v
-	return s
-}
-
 func (s *BatchGetEdgeDriverResponseBodyDriverList) SetDriverId(v string) *BatchGetEdgeDriverResponseBodyDriverList {
 	s.DriverId = &v
-	return s
-}
-
-func (s *BatchGetEdgeDriverResponseBodyDriverList) SetIsBuiltIn(v bool) *BatchGetEdgeDriverResponseBodyDriverList {
-	s.IsBuiltIn = &v
-	return s
-}
-
-func (s *BatchGetEdgeDriverResponseBodyDriverList) SetGmtModifiedTimestamp(v int64) *BatchGetEdgeDriverResponseBodyDriverList {
-	s.GmtModifiedTimestamp = &v
-	return s
-}
-
-func (s *BatchGetEdgeDriverResponseBodyDriverList) SetRuntime(v string) *BatchGetEdgeDriverResponseBodyDriverList {
-	s.Runtime = &v
 	return s
 }
 
@@ -1521,6 +1403,36 @@ func (s *BatchGetEdgeDriverResponseBodyDriverList) SetDriverName(v string) *Batc
 
 func (s *BatchGetEdgeDriverResponseBodyDriverList) SetDriverProtocol(v string) *BatchGetEdgeDriverResponseBodyDriverList {
 	s.DriverProtocol = &v
+	return s
+}
+
+func (s *BatchGetEdgeDriverResponseBodyDriverList) SetRuntime(v string) *BatchGetEdgeDriverResponseBodyDriverList {
+	s.Runtime = &v
+	return s
+}
+
+func (s *BatchGetEdgeDriverResponseBodyDriverList) SetCpuArch(v string) *BatchGetEdgeDriverResponseBodyDriverList {
+	s.CpuArch = &v
+	return s
+}
+
+func (s *BatchGetEdgeDriverResponseBodyDriverList) SetType(v int32) *BatchGetEdgeDriverResponseBodyDriverList {
+	s.Type = &v
+	return s
+}
+
+func (s *BatchGetEdgeDriverResponseBodyDriverList) SetIsBuiltIn(v bool) *BatchGetEdgeDriverResponseBodyDriverList {
+	s.IsBuiltIn = &v
+	return s
+}
+
+func (s *BatchGetEdgeDriverResponseBodyDriverList) SetGmtCreateTimestamp(v int64) *BatchGetEdgeDriverResponseBodyDriverList {
+	s.GmtCreateTimestamp = &v
+	return s
+}
+
+func (s *BatchGetEdgeDriverResponseBodyDriverList) SetGmtModifiedTimestamp(v int64) *BatchGetEdgeDriverResponseBodyDriverList {
+	s.GmtModifiedTimestamp = &v
 	return s
 }
 
@@ -1596,10 +1508,10 @@ func (s *BatchGetEdgeInstanceChannelRequest) SetChannelIds(v []*string) *BatchGe
 
 type BatchGetEdgeInstanceChannelResponseBody struct {
 	RequestId    *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data         *BatchGetEdgeInstanceChannelResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                                      `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string                                      `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Data         *BatchGetEdgeInstanceChannelResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s BatchGetEdgeInstanceChannelResponseBody) String() string {
@@ -1615,13 +1527,8 @@ func (s *BatchGetEdgeInstanceChannelResponseBody) SetRequestId(v string) *BatchG
 	return s
 }
 
-func (s *BatchGetEdgeInstanceChannelResponseBody) SetData(v *BatchGetEdgeInstanceChannelResponseBodyData) *BatchGetEdgeInstanceChannelResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *BatchGetEdgeInstanceChannelResponseBody) SetErrorMessage(v string) *BatchGetEdgeInstanceChannelResponseBody {
-	s.ErrorMessage = &v
+func (s *BatchGetEdgeInstanceChannelResponseBody) SetSuccess(v bool) *BatchGetEdgeInstanceChannelResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -1630,8 +1537,13 @@ func (s *BatchGetEdgeInstanceChannelResponseBody) SetCode(v string) *BatchGetEdg
 	return s
 }
 
-func (s *BatchGetEdgeInstanceChannelResponseBody) SetSuccess(v bool) *BatchGetEdgeInstanceChannelResponseBody {
-	s.Success = &v
+func (s *BatchGetEdgeInstanceChannelResponseBody) SetErrorMessage(v string) *BatchGetEdgeInstanceChannelResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *BatchGetEdgeInstanceChannelResponseBody) SetData(v *BatchGetEdgeInstanceChannelResponseBodyData) *BatchGetEdgeInstanceChannelResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -1653,8 +1565,8 @@ func (s *BatchGetEdgeInstanceChannelResponseBodyData) SetChannel(v []*BatchGetEd
 }
 
 type BatchGetEdgeInstanceChannelResponseBodyDataChannel struct {
-	ChannelName *string                                                       `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
 	ChannelId   *string                                                       `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	ChannelName *string                                                       `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
 	ConfigList  *BatchGetEdgeInstanceChannelResponseBodyDataChannelConfigList `json:"ConfigList,omitempty" xml:"ConfigList,omitempty" type:"Struct"`
 }
 
@@ -1666,13 +1578,13 @@ func (s BatchGetEdgeInstanceChannelResponseBodyDataChannel) GoString() string {
 	return s.String()
 }
 
-func (s *BatchGetEdgeInstanceChannelResponseBodyDataChannel) SetChannelName(v string) *BatchGetEdgeInstanceChannelResponseBodyDataChannel {
-	s.ChannelName = &v
+func (s *BatchGetEdgeInstanceChannelResponseBodyDataChannel) SetChannelId(v string) *BatchGetEdgeInstanceChannelResponseBodyDataChannel {
+	s.ChannelId = &v
 	return s
 }
 
-func (s *BatchGetEdgeInstanceChannelResponseBodyDataChannel) SetChannelId(v string) *BatchGetEdgeInstanceChannelResponseBodyDataChannel {
-	s.ChannelId = &v
+func (s *BatchGetEdgeInstanceChannelResponseBodyDataChannel) SetChannelName(v string) *BatchGetEdgeInstanceChannelResponseBodyDataChannel {
+	s.ChannelName = &v
 	return s
 }
 
@@ -1699,10 +1611,10 @@ func (s *BatchGetEdgeInstanceChannelResponseBodyDataChannelConfigList) SetConfig
 }
 
 type BatchGetEdgeInstanceChannelResponseBodyDataChannelConfigListConfig struct {
-	Key      *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
 	Format   *string `json:"Format,omitempty" xml:"Format,omitempty"`
 	Content  *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Key      *string `json:"Key,omitempty" xml:"Key,omitempty"`
 }
 
 func (s BatchGetEdgeInstanceChannelResponseBodyDataChannelConfigListConfig) String() string {
@@ -1711,11 +1623,6 @@ func (s BatchGetEdgeInstanceChannelResponseBodyDataChannelConfigListConfig) Stri
 
 func (s BatchGetEdgeInstanceChannelResponseBodyDataChannelConfigListConfig) GoString() string {
 	return s.String()
-}
-
-func (s *BatchGetEdgeInstanceChannelResponseBodyDataChannelConfigListConfig) SetKey(v string) *BatchGetEdgeInstanceChannelResponseBodyDataChannelConfigListConfig {
-	s.Key = &v
-	return s
 }
 
 func (s *BatchGetEdgeInstanceChannelResponseBodyDataChannelConfigListConfig) SetConfigId(v string) *BatchGetEdgeInstanceChannelResponseBodyDataChannelConfigListConfig {
@@ -1730,6 +1637,11 @@ func (s *BatchGetEdgeInstanceChannelResponseBodyDataChannelConfigListConfig) Set
 
 func (s *BatchGetEdgeInstanceChannelResponseBodyDataChannelConfigListConfig) SetContent(v string) *BatchGetEdgeInstanceChannelResponseBodyDataChannelConfigListConfig {
 	s.Content = &v
+	return s
+}
+
+func (s *BatchGetEdgeInstanceChannelResponseBodyDataChannelConfigListConfig) SetKey(v string) *BatchGetEdgeInstanceChannelResponseBodyDataChannelConfigListConfig {
+	s.Key = &v
 	return s
 }
 
@@ -1805,9 +1717,9 @@ func (s *BatchGetEdgeInstanceDeviceChannelRequest) SetIotIds(v []*string) *Batch
 
 type BatchGetEdgeInstanceDeviceChannelResponseBody struct {
 	RequestId         *string                                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage      *string                                                           `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code              *string                                                           `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success           *bool                                                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code              *string                                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage      *string                                                           `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	DeviceChannelList []*BatchGetEdgeInstanceDeviceChannelResponseBodyDeviceChannelList `json:"DeviceChannelList,omitempty" xml:"DeviceChannelList,omitempty" type:"Repeated"`
 }
 
@@ -1824,8 +1736,8 @@ func (s *BatchGetEdgeInstanceDeviceChannelResponseBody) SetRequestId(v string) *
 	return s
 }
 
-func (s *BatchGetEdgeInstanceDeviceChannelResponseBody) SetErrorMessage(v string) *BatchGetEdgeInstanceDeviceChannelResponseBody {
-	s.ErrorMessage = &v
+func (s *BatchGetEdgeInstanceDeviceChannelResponseBody) SetSuccess(v bool) *BatchGetEdgeInstanceDeviceChannelResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -1834,8 +1746,8 @@ func (s *BatchGetEdgeInstanceDeviceChannelResponseBody) SetCode(v string) *Batch
 	return s
 }
 
-func (s *BatchGetEdgeInstanceDeviceChannelResponseBody) SetSuccess(v bool) *BatchGetEdgeInstanceDeviceChannelResponseBody {
-	s.Success = &v
+func (s *BatchGetEdgeInstanceDeviceChannelResponseBody) SetErrorMessage(v string) *BatchGetEdgeInstanceDeviceChannelResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -1845,8 +1757,8 @@ func (s *BatchGetEdgeInstanceDeviceChannelResponseBody) SetDeviceChannelList(v [
 }
 
 type BatchGetEdgeInstanceDeviceChannelResponseBodyDeviceChannelList struct {
-	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
 	ChannelId   *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
 	IotId       *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
 }
 
@@ -1858,13 +1770,13 @@ func (s BatchGetEdgeInstanceDeviceChannelResponseBodyDeviceChannelList) GoString
 	return s.String()
 }
 
-func (s *BatchGetEdgeInstanceDeviceChannelResponseBodyDeviceChannelList) SetChannelName(v string) *BatchGetEdgeInstanceDeviceChannelResponseBodyDeviceChannelList {
-	s.ChannelName = &v
+func (s *BatchGetEdgeInstanceDeviceChannelResponseBodyDeviceChannelList) SetChannelId(v string) *BatchGetEdgeInstanceDeviceChannelResponseBodyDeviceChannelList {
+	s.ChannelId = &v
 	return s
 }
 
-func (s *BatchGetEdgeInstanceDeviceChannelResponseBodyDeviceChannelList) SetChannelId(v string) *BatchGetEdgeInstanceDeviceChannelResponseBodyDeviceChannelList {
-	s.ChannelId = &v
+func (s *BatchGetEdgeInstanceDeviceChannelResponseBodyDeviceChannelList) SetChannelName(v string) *BatchGetEdgeInstanceDeviceChannelResponseBodyDeviceChannelList {
+	s.ChannelName = &v
 	return s
 }
 
@@ -1938,11 +1850,11 @@ func (s *BatchGetEdgeInstanceDeviceConfigRequest) SetIotIds(v []*string) *BatchG
 }
 
 type BatchGetEdgeInstanceDeviceConfigResponseBody struct {
-	DeviceConfigList []*BatchGetEdgeInstanceDeviceConfigResponseBodyDeviceConfigList `json:"DeviceConfigList,omitempty" xml:"DeviceConfigList,omitempty" type:"Repeated"`
 	RequestId        *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage     *string                                                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code             *string                                                         `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success          *bool                                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code             *string                                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage     *string                                                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	DeviceConfigList []*BatchGetEdgeInstanceDeviceConfigResponseBodyDeviceConfigList `json:"DeviceConfigList,omitempty" xml:"DeviceConfigList,omitempty" type:"Repeated"`
 }
 
 func (s BatchGetEdgeInstanceDeviceConfigResponseBody) String() string {
@@ -1953,23 +1865,8 @@ func (s BatchGetEdgeInstanceDeviceConfigResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *BatchGetEdgeInstanceDeviceConfigResponseBody) SetDeviceConfigList(v []*BatchGetEdgeInstanceDeviceConfigResponseBodyDeviceConfigList) *BatchGetEdgeInstanceDeviceConfigResponseBody {
-	s.DeviceConfigList = v
-	return s
-}
-
 func (s *BatchGetEdgeInstanceDeviceConfigResponseBody) SetRequestId(v string) *BatchGetEdgeInstanceDeviceConfigResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *BatchGetEdgeInstanceDeviceConfigResponseBody) SetErrorMessage(v string) *BatchGetEdgeInstanceDeviceConfigResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *BatchGetEdgeInstanceDeviceConfigResponseBody) SetCode(v string) *BatchGetEdgeInstanceDeviceConfigResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -1978,9 +1875,24 @@ func (s *BatchGetEdgeInstanceDeviceConfigResponseBody) SetSuccess(v bool) *Batch
 	return s
 }
 
+func (s *BatchGetEdgeInstanceDeviceConfigResponseBody) SetCode(v string) *BatchGetEdgeInstanceDeviceConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *BatchGetEdgeInstanceDeviceConfigResponseBody) SetErrorMessage(v string) *BatchGetEdgeInstanceDeviceConfigResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *BatchGetEdgeInstanceDeviceConfigResponseBody) SetDeviceConfigList(v []*BatchGetEdgeInstanceDeviceConfigResponseBodyDeviceConfigList) *BatchGetEdgeInstanceDeviceConfigResponseBody {
+	s.DeviceConfigList = v
+	return s
+}
+
 type BatchGetEdgeInstanceDeviceConfigResponseBodyDeviceConfigList struct {
-	Config *BatchGetEdgeInstanceDeviceConfigResponseBodyDeviceConfigListConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
 	IotId  *string                                                             `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	Config *BatchGetEdgeInstanceDeviceConfigResponseBodyDeviceConfigListConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
 }
 
 func (s BatchGetEdgeInstanceDeviceConfigResponseBodyDeviceConfigList) String() string {
@@ -1991,19 +1903,19 @@ func (s BatchGetEdgeInstanceDeviceConfigResponseBodyDeviceConfigList) GoString()
 	return s.String()
 }
 
-func (s *BatchGetEdgeInstanceDeviceConfigResponseBodyDeviceConfigList) SetConfig(v *BatchGetEdgeInstanceDeviceConfigResponseBodyDeviceConfigListConfig) *BatchGetEdgeInstanceDeviceConfigResponseBodyDeviceConfigList {
-	s.Config = v
-	return s
-}
-
 func (s *BatchGetEdgeInstanceDeviceConfigResponseBodyDeviceConfigList) SetIotId(v string) *BatchGetEdgeInstanceDeviceConfigResponseBodyDeviceConfigList {
 	s.IotId = &v
 	return s
 }
 
+func (s *BatchGetEdgeInstanceDeviceConfigResponseBodyDeviceConfigList) SetConfig(v *BatchGetEdgeInstanceDeviceConfigResponseBodyDeviceConfigListConfig) *BatchGetEdgeInstanceDeviceConfigResponseBodyDeviceConfigList {
+	s.Config = v
+	return s
+}
+
 type BatchGetEdgeInstanceDeviceConfigResponseBodyDeviceConfigListConfig struct {
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	Format  *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 }
 
 func (s BatchGetEdgeInstanceDeviceConfigResponseBodyDeviceConfigListConfig) String() string {
@@ -2014,13 +1926,13 @@ func (s BatchGetEdgeInstanceDeviceConfigResponseBodyDeviceConfigListConfig) GoSt
 	return s.String()
 }
 
-func (s *BatchGetEdgeInstanceDeviceConfigResponseBodyDeviceConfigListConfig) SetContent(v string) *BatchGetEdgeInstanceDeviceConfigResponseBodyDeviceConfigListConfig {
-	s.Content = &v
+func (s *BatchGetEdgeInstanceDeviceConfigResponseBodyDeviceConfigListConfig) SetFormat(v string) *BatchGetEdgeInstanceDeviceConfigResponseBodyDeviceConfigListConfig {
+	s.Format = &v
 	return s
 }
 
-func (s *BatchGetEdgeInstanceDeviceConfigResponseBodyDeviceConfigListConfig) SetFormat(v string) *BatchGetEdgeInstanceDeviceConfigResponseBodyDeviceConfigListConfig {
-	s.Format = &v
+func (s *BatchGetEdgeInstanceDeviceConfigResponseBodyDeviceConfigListConfig) SetContent(v string) *BatchGetEdgeInstanceDeviceConfigResponseBodyDeviceConfigListConfig {
+	s.Content = &v
 	return s
 }
 
@@ -2090,10 +2002,10 @@ func (s *BatchGetEdgeInstanceDeviceDriverRequest) SetIotIds(v []*string) *BatchG
 
 type BatchGetEdgeInstanceDeviceDriverResponseBody struct {
 	RequestId        *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success          *bool                                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code             *string                                                         `json:"Code,omitempty" xml:"Code,omitempty"`
 	ErrorMessage     *string                                                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	DeviceDriverList []*BatchGetEdgeInstanceDeviceDriverResponseBodyDeviceDriverList `json:"DeviceDriverList,omitempty" xml:"DeviceDriverList,omitempty" type:"Repeated"`
-	Code             *string                                                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success          *bool                                                           `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s BatchGetEdgeInstanceDeviceDriverResponseBody) String() string {
@@ -2109,13 +2021,8 @@ func (s *BatchGetEdgeInstanceDeviceDriverResponseBody) SetRequestId(v string) *B
 	return s
 }
 
-func (s *BatchGetEdgeInstanceDeviceDriverResponseBody) SetErrorMessage(v string) *BatchGetEdgeInstanceDeviceDriverResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *BatchGetEdgeInstanceDeviceDriverResponseBody) SetDeviceDriverList(v []*BatchGetEdgeInstanceDeviceDriverResponseBodyDeviceDriverList) *BatchGetEdgeInstanceDeviceDriverResponseBody {
-	s.DeviceDriverList = v
+func (s *BatchGetEdgeInstanceDeviceDriverResponseBody) SetSuccess(v bool) *BatchGetEdgeInstanceDeviceDriverResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -2124,8 +2031,13 @@ func (s *BatchGetEdgeInstanceDeviceDriverResponseBody) SetCode(v string) *BatchG
 	return s
 }
 
-func (s *BatchGetEdgeInstanceDeviceDriverResponseBody) SetSuccess(v bool) *BatchGetEdgeInstanceDeviceDriverResponseBody {
-	s.Success = &v
+func (s *BatchGetEdgeInstanceDeviceDriverResponseBody) SetErrorMessage(v string) *BatchGetEdgeInstanceDeviceDriverResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *BatchGetEdgeInstanceDeviceDriverResponseBody) SetDeviceDriverList(v []*BatchGetEdgeInstanceDeviceDriverResponseBodyDeviceDriverList) *BatchGetEdgeInstanceDeviceDriverResponseBody {
+	s.DeviceDriverList = v
 	return s
 }
 
@@ -2218,10 +2130,10 @@ func (s *BatchGetEdgeInstanceDriverConfigsRequest) SetDriverIds(v []*string) *Ba
 
 type BatchGetEdgeInstanceDriverConfigsResponseBody struct {
 	RequestId        *string                                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	DriverConfigList []*BatchGetEdgeInstanceDriverConfigsResponseBodyDriverConfigList `json:"DriverConfigList,omitempty" xml:"DriverConfigList,omitempty" type:"Repeated"`
-	ErrorMessage     *string                                                          `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code             *string                                                          `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success          *bool                                                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code             *string                                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage     *string                                                          `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	DriverConfigList []*BatchGetEdgeInstanceDriverConfigsResponseBodyDriverConfigList `json:"DriverConfigList,omitempty" xml:"DriverConfigList,omitempty" type:"Repeated"`
 }
 
 func (s BatchGetEdgeInstanceDriverConfigsResponseBody) String() string {
@@ -2237,13 +2149,8 @@ func (s *BatchGetEdgeInstanceDriverConfigsResponseBody) SetRequestId(v string) *
 	return s
 }
 
-func (s *BatchGetEdgeInstanceDriverConfigsResponseBody) SetDriverConfigList(v []*BatchGetEdgeInstanceDriverConfigsResponseBodyDriverConfigList) *BatchGetEdgeInstanceDriverConfigsResponseBody {
-	s.DriverConfigList = v
-	return s
-}
-
-func (s *BatchGetEdgeInstanceDriverConfigsResponseBody) SetErrorMessage(v string) *BatchGetEdgeInstanceDriverConfigsResponseBody {
-	s.ErrorMessage = &v
+func (s *BatchGetEdgeInstanceDriverConfigsResponseBody) SetSuccess(v bool) *BatchGetEdgeInstanceDriverConfigsResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -2252,8 +2159,13 @@ func (s *BatchGetEdgeInstanceDriverConfigsResponseBody) SetCode(v string) *Batch
 	return s
 }
 
-func (s *BatchGetEdgeInstanceDriverConfigsResponseBody) SetSuccess(v bool) *BatchGetEdgeInstanceDriverConfigsResponseBody {
-	s.Success = &v
+func (s *BatchGetEdgeInstanceDriverConfigsResponseBody) SetErrorMessage(v string) *BatchGetEdgeInstanceDriverConfigsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *BatchGetEdgeInstanceDriverConfigsResponseBody) SetDriverConfigList(v []*BatchGetEdgeInstanceDriverConfigsResponseBodyDriverConfigList) *BatchGetEdgeInstanceDriverConfigsResponseBody {
+	s.DriverConfigList = v
 	return s
 }
 
@@ -2281,10 +2193,10 @@ func (s *BatchGetEdgeInstanceDriverConfigsResponseBodyDriverConfigList) SetConfi
 }
 
 type BatchGetEdgeInstanceDriverConfigsResponseBodyDriverConfigListConfigList struct {
-	Key      *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
 	Format   *string `json:"Format,omitempty" xml:"Format,omitempty"`
 	Content  *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Key      *string `json:"Key,omitempty" xml:"Key,omitempty"`
 }
 
 func (s BatchGetEdgeInstanceDriverConfigsResponseBodyDriverConfigListConfigList) String() string {
@@ -2293,11 +2205,6 @@ func (s BatchGetEdgeInstanceDriverConfigsResponseBodyDriverConfigListConfigList)
 
 func (s BatchGetEdgeInstanceDriverConfigsResponseBodyDriverConfigListConfigList) GoString() string {
 	return s.String()
-}
-
-func (s *BatchGetEdgeInstanceDriverConfigsResponseBodyDriverConfigListConfigList) SetKey(v string) *BatchGetEdgeInstanceDriverConfigsResponseBodyDriverConfigListConfigList {
-	s.Key = &v
-	return s
 }
 
 func (s *BatchGetEdgeInstanceDriverConfigsResponseBodyDriverConfigListConfigList) SetConfigId(v string) *BatchGetEdgeInstanceDriverConfigsResponseBodyDriverConfigListConfigList {
@@ -2312,6 +2219,11 @@ func (s *BatchGetEdgeInstanceDriverConfigsResponseBodyDriverConfigListConfigList
 
 func (s *BatchGetEdgeInstanceDriverConfigsResponseBodyDriverConfigListConfigList) SetContent(v string) *BatchGetEdgeInstanceDriverConfigsResponseBodyDriverConfigListConfigList {
 	s.Content = &v
+	return s
+}
+
+func (s *BatchGetEdgeInstanceDriverConfigsResponseBodyDriverConfigListConfigList) SetKey(v string) *BatchGetEdgeInstanceDriverConfigsResponseBodyDriverConfigListConfigList {
+	s.Key = &v
 	return s
 }
 
@@ -2342,11 +2254,11 @@ type BatchPubRequest struct {
 	ApiProduct     *string   `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
 	ApiRevision    *string   `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
 	IotInstanceId  *string   `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	DeviceName     []*string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty" type:"Repeated"`
 	ProductKey     *string   `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
 	Qos            *int32    `json:"Qos,omitempty" xml:"Qos,omitempty"`
 	TopicShortName *string   `json:"TopicShortName,omitempty" xml:"TopicShortName,omitempty"`
 	MessageContent *string   `json:"MessageContent,omitempty" xml:"MessageContent,omitempty"`
-	DeviceName     []*string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty" type:"Repeated"`
 }
 
 func (s BatchPubRequest) String() string {
@@ -2372,6 +2284,11 @@ func (s *BatchPubRequest) SetIotInstanceId(v string) *BatchPubRequest {
 	return s
 }
 
+func (s *BatchPubRequest) SetDeviceName(v []*string) *BatchPubRequest {
+	s.DeviceName = v
+	return s
+}
+
 func (s *BatchPubRequest) SetProductKey(v string) *BatchPubRequest {
 	s.ProductKey = &v
 	return s
@@ -2392,16 +2309,11 @@ func (s *BatchPubRequest) SetMessageContent(v string) *BatchPubRequest {
 	return s
 }
 
-func (s *BatchPubRequest) SetDeviceName(v []*string) *BatchPubRequest {
-	s.DeviceName = v
-	return s
-}
-
 type BatchPubResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s BatchPubResponseBody) String() string {
@@ -2417,8 +2329,8 @@ func (s *BatchPubResponseBody) SetRequestId(v string) *BatchPubResponseBody {
 	return s
 }
 
-func (s *BatchPubResponseBody) SetErrorMessage(v string) *BatchPubResponseBody {
-	s.ErrorMessage = &v
+func (s *BatchPubResponseBody) SetSuccess(v bool) *BatchPubResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -2427,8 +2339,8 @@ func (s *BatchPubResponseBody) SetCode(v string) *BatchPubResponseBody {
 	return s
 }
 
-func (s *BatchPubResponseBody) SetSuccess(v bool) *BatchPubResponseBody {
-	s.Success = &v
+func (s *BatchPubResponseBody) SetErrorMessage(v string) *BatchPubResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -2458,11 +2370,11 @@ func (s *BatchPubResponse) SetBody(v *BatchPubResponseBody) *BatchPubResponse {
 type BatchQueryDeviceDetailRequest struct {
 	ApiProduct        *string   `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
 	ApiRevision       *string   `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
+	DeviceName        []*string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty" type:"Repeated"`
 	ProductKey        *string   `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
 	IotInstanceId     *string   `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 	RealTenantId      *string   `json:"RealTenantId,omitempty" xml:"RealTenantId,omitempty"`
 	RealTripartiteKey *string   `json:"RealTripartiteKey,omitempty" xml:"RealTripartiteKey,omitempty"`
-	DeviceName        []*string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty" type:"Repeated"`
 }
 
 func (s BatchQueryDeviceDetailRequest) String() string {
@@ -2480,6 +2392,11 @@ func (s *BatchQueryDeviceDetailRequest) SetApiProduct(v string) *BatchQueryDevic
 
 func (s *BatchQueryDeviceDetailRequest) SetApiRevision(v string) *BatchQueryDeviceDetailRequest {
 	s.ApiRevision = &v
+	return s
+}
+
+func (s *BatchQueryDeviceDetailRequest) SetDeviceName(v []*string) *BatchQueryDeviceDetailRequest {
+	s.DeviceName = v
 	return s
 }
 
@@ -2503,17 +2420,12 @@ func (s *BatchQueryDeviceDetailRequest) SetRealTripartiteKey(v string) *BatchQue
 	return s
 }
 
-func (s *BatchQueryDeviceDetailRequest) SetDeviceName(v []*string) *BatchQueryDeviceDetailRequest {
-	s.DeviceName = v
-	return s
-}
-
 type BatchQueryDeviceDetailResponseBody struct {
 	RequestId    *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data         *BatchQueryDeviceDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                                 `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string                                 `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Data         *BatchQueryDeviceDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s BatchQueryDeviceDetailResponseBody) String() string {
@@ -2529,13 +2441,8 @@ func (s *BatchQueryDeviceDetailResponseBody) SetRequestId(v string) *BatchQueryD
 	return s
 }
 
-func (s *BatchQueryDeviceDetailResponseBody) SetData(v *BatchQueryDeviceDetailResponseBodyData) *BatchQueryDeviceDetailResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *BatchQueryDeviceDetailResponseBody) SetErrorMessage(v string) *BatchQueryDeviceDetailResponseBody {
-	s.ErrorMessage = &v
+func (s *BatchQueryDeviceDetailResponseBody) SetSuccess(v bool) *BatchQueryDeviceDetailResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -2544,8 +2451,13 @@ func (s *BatchQueryDeviceDetailResponseBody) SetCode(v string) *BatchQueryDevice
 	return s
 }
 
-func (s *BatchQueryDeviceDetailResponseBody) SetSuccess(v bool) *BatchQueryDeviceDetailResponseBody {
-	s.Success = &v
+func (s *BatchQueryDeviceDetailResponseBody) SetErrorMessage(v string) *BatchQueryDeviceDetailResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *BatchQueryDeviceDetailResponseBody) SetData(v *BatchQueryDeviceDetailResponseBodyData) *BatchQueryDeviceDetailResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -2567,20 +2479,20 @@ func (s *BatchQueryDeviceDetailResponseBodyData) SetData(v []*BatchQueryDeviceDe
 }
 
 type BatchQueryDeviceDetailResponseBodyDataData struct {
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UtcActive       *string `json:"UtcActive,omitempty" xml:"UtcActive,omitempty"`
+	ProductKey      *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
 	ProductName     *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
 	DeviceName      *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
-	FirmwareVersion *string `json:"FirmwareVersion,omitempty" xml:"FirmwareVersion,omitempty"`
+	Nickname        *string `json:"Nickname,omitempty" xml:"Nickname,omitempty"`
+	DeviceSecret    *string `json:"DeviceSecret,omitempty" xml:"DeviceSecret,omitempty"`
+	IotId           *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
 	UtcCreate       *string `json:"UtcCreate,omitempty" xml:"UtcCreate,omitempty"`
-	ProductKey      *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	GmtCreate       *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	UtcActive       *string `json:"UtcActive,omitempty" xml:"UtcActive,omitempty"`
+	GmtActive       *string `json:"GmtActive,omitempty" xml:"GmtActive,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	FirmwareVersion *string `json:"FirmwareVersion,omitempty" xml:"FirmwareVersion,omitempty"`
 	NodeType        *int32  `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	DeviceSecret    *string `json:"DeviceSecret,omitempty" xml:"DeviceSecret,omitempty"`
-	GmtActive       *string `json:"GmtActive,omitempty" xml:"GmtActive,omitempty"`
-	GmtCreate       *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Nickname        *string `json:"Nickname,omitempty" xml:"Nickname,omitempty"`
-	IotId           *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
 }
 
 func (s BatchQueryDeviceDetailResponseBodyDataData) String() string {
@@ -2591,13 +2503,8 @@ func (s BatchQueryDeviceDetailResponseBodyDataData) GoString() string {
 	return s.String()
 }
 
-func (s *BatchQueryDeviceDetailResponseBodyDataData) SetStatus(v string) *BatchQueryDeviceDetailResponseBodyDataData {
-	s.Status = &v
-	return s
-}
-
-func (s *BatchQueryDeviceDetailResponseBodyDataData) SetUtcActive(v string) *BatchQueryDeviceDetailResponseBodyDataData {
-	s.UtcActive = &v
+func (s *BatchQueryDeviceDetailResponseBodyDataData) SetProductKey(v string) *BatchQueryDeviceDetailResponseBodyDataData {
+	s.ProductKey = &v
 	return s
 }
 
@@ -2611,8 +2518,18 @@ func (s *BatchQueryDeviceDetailResponseBodyDataData) SetDeviceName(v string) *Ba
 	return s
 }
 
-func (s *BatchQueryDeviceDetailResponseBodyDataData) SetFirmwareVersion(v string) *BatchQueryDeviceDetailResponseBodyDataData {
-	s.FirmwareVersion = &v
+func (s *BatchQueryDeviceDetailResponseBodyDataData) SetNickname(v string) *BatchQueryDeviceDetailResponseBodyDataData {
+	s.Nickname = &v
+	return s
+}
+
+func (s *BatchQueryDeviceDetailResponseBodyDataData) SetDeviceSecret(v string) *BatchQueryDeviceDetailResponseBodyDataData {
+	s.DeviceSecret = &v
+	return s
+}
+
+func (s *BatchQueryDeviceDetailResponseBodyDataData) SetIotId(v string) *BatchQueryDeviceDetailResponseBodyDataData {
+	s.IotId = &v
 	return s
 }
 
@@ -2621,8 +2538,28 @@ func (s *BatchQueryDeviceDetailResponseBodyDataData) SetUtcCreate(v string) *Bat
 	return s
 }
 
-func (s *BatchQueryDeviceDetailResponseBodyDataData) SetProductKey(v string) *BatchQueryDeviceDetailResponseBodyDataData {
-	s.ProductKey = &v
+func (s *BatchQueryDeviceDetailResponseBodyDataData) SetGmtCreate(v string) *BatchQueryDeviceDetailResponseBodyDataData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *BatchQueryDeviceDetailResponseBodyDataData) SetUtcActive(v string) *BatchQueryDeviceDetailResponseBodyDataData {
+	s.UtcActive = &v
+	return s
+}
+
+func (s *BatchQueryDeviceDetailResponseBodyDataData) SetGmtActive(v string) *BatchQueryDeviceDetailResponseBodyDataData {
+	s.GmtActive = &v
+	return s
+}
+
+func (s *BatchQueryDeviceDetailResponseBodyDataData) SetStatus(v string) *BatchQueryDeviceDetailResponseBodyDataData {
+	s.Status = &v
+	return s
+}
+
+func (s *BatchQueryDeviceDetailResponseBodyDataData) SetFirmwareVersion(v string) *BatchQueryDeviceDetailResponseBodyDataData {
+	s.FirmwareVersion = &v
 	return s
 }
 
@@ -2633,31 +2570,6 @@ func (s *BatchQueryDeviceDetailResponseBodyDataData) SetNodeType(v int32) *Batch
 
 func (s *BatchQueryDeviceDetailResponseBodyDataData) SetRegion(v string) *BatchQueryDeviceDetailResponseBodyDataData {
 	s.Region = &v
-	return s
-}
-
-func (s *BatchQueryDeviceDetailResponseBodyDataData) SetDeviceSecret(v string) *BatchQueryDeviceDetailResponseBodyDataData {
-	s.DeviceSecret = &v
-	return s
-}
-
-func (s *BatchQueryDeviceDetailResponseBodyDataData) SetGmtActive(v string) *BatchQueryDeviceDetailResponseBodyDataData {
-	s.GmtActive = &v
-	return s
-}
-
-func (s *BatchQueryDeviceDetailResponseBodyDataData) SetGmtCreate(v string) *BatchQueryDeviceDetailResponseBodyDataData {
-	s.GmtCreate = &v
-	return s
-}
-
-func (s *BatchQueryDeviceDetailResponseBodyDataData) SetNickname(v string) *BatchQueryDeviceDetailResponseBodyDataData {
-	s.Nickname = &v
-	return s
-}
-
-func (s *BatchQueryDeviceDetailResponseBodyDataData) SetIotId(v string) *BatchQueryDeviceDetailResponseBodyDataData {
-	s.IotId = &v
 	return s
 }
 
@@ -2685,11 +2597,13 @@ func (s *BatchQueryDeviceDetailResponse) SetBody(v *BatchQueryDeviceDetailRespon
 }
 
 type BatchRegisterDeviceRequest struct {
-	ApiProduct    *string `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
-	ApiRevision   *string `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
-	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
-	Count         *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	ApiProduct        *string `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
+	ApiRevision       *string `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
+	IotInstanceId     *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ProductKey        *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	Count             *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	RealTenantId      *string `json:"RealTenantId,omitempty" xml:"RealTenantId,omitempty"`
+	RealTripartiteKey *string `json:"RealTripartiteKey,omitempty" xml:"RealTripartiteKey,omitempty"`
 }
 
 func (s BatchRegisterDeviceRequest) String() string {
@@ -2725,12 +2639,22 @@ func (s *BatchRegisterDeviceRequest) SetCount(v int32) *BatchRegisterDeviceReque
 	return s
 }
 
+func (s *BatchRegisterDeviceRequest) SetRealTenantId(v string) *BatchRegisterDeviceRequest {
+	s.RealTenantId = &v
+	return s
+}
+
+func (s *BatchRegisterDeviceRequest) SetRealTripartiteKey(v string) *BatchRegisterDeviceRequest {
+	s.RealTripartiteKey = &v
+	return s
+}
+
 type BatchRegisterDeviceResponseBody struct {
 	RequestId    *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data         *BatchRegisterDeviceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                              `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string                              `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Data         *BatchRegisterDeviceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s BatchRegisterDeviceResponseBody) String() string {
@@ -2746,13 +2670,8 @@ func (s *BatchRegisterDeviceResponseBody) SetRequestId(v string) *BatchRegisterD
 	return s
 }
 
-func (s *BatchRegisterDeviceResponseBody) SetData(v *BatchRegisterDeviceResponseBodyData) *BatchRegisterDeviceResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *BatchRegisterDeviceResponseBody) SetErrorMessage(v string) *BatchRegisterDeviceResponseBody {
-	s.ErrorMessage = &v
+func (s *BatchRegisterDeviceResponseBody) SetSuccess(v bool) *BatchRegisterDeviceResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -2761,8 +2680,13 @@ func (s *BatchRegisterDeviceResponseBody) SetCode(v string) *BatchRegisterDevice
 	return s
 }
 
-func (s *BatchRegisterDeviceResponseBody) SetSuccess(v bool) *BatchRegisterDeviceResponseBody {
-	s.Success = &v
+func (s *BatchRegisterDeviceResponseBody) SetErrorMessage(v string) *BatchRegisterDeviceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *BatchRegisterDeviceResponseBody) SetData(v *BatchRegisterDeviceResponseBodyData) *BatchRegisterDeviceResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -2807,11 +2731,13 @@ func (s *BatchRegisterDeviceResponse) SetBody(v *BatchRegisterDeviceResponseBody
 }
 
 type BatchRegisterDeviceWithApplyIdRequest struct {
-	ApiProduct    *string `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
-	ApiRevision   *string `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
-	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
-	ApplyId       *int64  `json:"ApplyId,omitempty" xml:"ApplyId,omitempty"`
+	ApiProduct        *string `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
+	ApiRevision       *string `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
+	IotInstanceId     *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ProductKey        *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	ApplyId           *int64  `json:"ApplyId,omitempty" xml:"ApplyId,omitempty"`
+	RealTenantId      *string `json:"RealTenantId,omitempty" xml:"RealTenantId,omitempty"`
+	RealTripartiteKey *string `json:"RealTripartiteKey,omitempty" xml:"RealTripartiteKey,omitempty"`
 }
 
 func (s BatchRegisterDeviceWithApplyIdRequest) String() string {
@@ -2847,12 +2773,22 @@ func (s *BatchRegisterDeviceWithApplyIdRequest) SetApplyId(v int64) *BatchRegist
 	return s
 }
 
+func (s *BatchRegisterDeviceWithApplyIdRequest) SetRealTenantId(v string) *BatchRegisterDeviceWithApplyIdRequest {
+	s.RealTenantId = &v
+	return s
+}
+
+func (s *BatchRegisterDeviceWithApplyIdRequest) SetRealTripartiteKey(v string) *BatchRegisterDeviceWithApplyIdRequest {
+	s.RealTripartiteKey = &v
+	return s
+}
+
 type BatchRegisterDeviceWithApplyIdResponseBody struct {
 	RequestId    *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data         *BatchRegisterDeviceWithApplyIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string                                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Data         *BatchRegisterDeviceWithApplyIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s BatchRegisterDeviceWithApplyIdResponseBody) String() string {
@@ -2868,13 +2804,8 @@ func (s *BatchRegisterDeviceWithApplyIdResponseBody) SetRequestId(v string) *Bat
 	return s
 }
 
-func (s *BatchRegisterDeviceWithApplyIdResponseBody) SetData(v *BatchRegisterDeviceWithApplyIdResponseBodyData) *BatchRegisterDeviceWithApplyIdResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *BatchRegisterDeviceWithApplyIdResponseBody) SetErrorMessage(v string) *BatchRegisterDeviceWithApplyIdResponseBody {
-	s.ErrorMessage = &v
+func (s *BatchRegisterDeviceWithApplyIdResponseBody) SetSuccess(v bool) *BatchRegisterDeviceWithApplyIdResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -2883,8 +2814,13 @@ func (s *BatchRegisterDeviceWithApplyIdResponseBody) SetCode(v string) *BatchReg
 	return s
 }
 
-func (s *BatchRegisterDeviceWithApplyIdResponseBody) SetSuccess(v bool) *BatchRegisterDeviceWithApplyIdResponseBody {
-	s.Success = &v
+func (s *BatchRegisterDeviceWithApplyIdResponseBody) SetErrorMessage(v string) *BatchRegisterDeviceWithApplyIdResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *BatchRegisterDeviceWithApplyIdResponseBody) SetData(v *BatchRegisterDeviceWithApplyIdResponseBodyData) *BatchRegisterDeviceWithApplyIdResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -2983,9 +2919,9 @@ func (s *BatchSetEdgeInstanceDeviceChannelRequest) SetIotIds(v []*string) *Batch
 
 type BatchSetEdgeInstanceDeviceChannelResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s BatchSetEdgeInstanceDeviceChannelResponseBody) String() string {
@@ -3001,8 +2937,8 @@ func (s *BatchSetEdgeInstanceDeviceChannelResponseBody) SetRequestId(v string) *
 	return s
 }
 
-func (s *BatchSetEdgeInstanceDeviceChannelResponseBody) SetErrorMessage(v string) *BatchSetEdgeInstanceDeviceChannelResponseBody {
-	s.ErrorMessage = &v
+func (s *BatchSetEdgeInstanceDeviceChannelResponseBody) SetSuccess(v bool) *BatchSetEdgeInstanceDeviceChannelResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -3011,8 +2947,8 @@ func (s *BatchSetEdgeInstanceDeviceChannelResponseBody) SetCode(v string) *Batch
 	return s
 }
 
-func (s *BatchSetEdgeInstanceDeviceChannelResponseBody) SetSuccess(v bool) *BatchSetEdgeInstanceDeviceChannelResponseBody {
-	s.Success = &v
+func (s *BatchSetEdgeInstanceDeviceChannelResponseBody) SetErrorMessage(v string) *BatchSetEdgeInstanceDeviceChannelResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -3081,8 +3017,8 @@ func (s *BatchSetEdgeInstanceDeviceConfigRequest) SetDeviceConfigs(v []*BatchSet
 }
 
 type BatchSetEdgeInstanceDeviceConfigRequestDeviceConfigs struct {
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	IotId   *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 }
 
 func (s BatchSetEdgeInstanceDeviceConfigRequestDeviceConfigs) String() string {
@@ -3093,21 +3029,21 @@ func (s BatchSetEdgeInstanceDeviceConfigRequestDeviceConfigs) GoString() string 
 	return s.String()
 }
 
-func (s *BatchSetEdgeInstanceDeviceConfigRequestDeviceConfigs) SetContent(v string) *BatchSetEdgeInstanceDeviceConfigRequestDeviceConfigs {
-	s.Content = &v
-	return s
-}
-
 func (s *BatchSetEdgeInstanceDeviceConfigRequestDeviceConfigs) SetIotId(v string) *BatchSetEdgeInstanceDeviceConfigRequestDeviceConfigs {
 	s.IotId = &v
 	return s
 }
 
+func (s *BatchSetEdgeInstanceDeviceConfigRequestDeviceConfigs) SetContent(v string) *BatchSetEdgeInstanceDeviceConfigRequestDeviceConfigs {
+	s.Content = &v
+	return s
+}
+
 type BatchSetEdgeInstanceDeviceConfigResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s BatchSetEdgeInstanceDeviceConfigResponseBody) String() string {
@@ -3123,8 +3059,8 @@ func (s *BatchSetEdgeInstanceDeviceConfigResponseBody) SetRequestId(v string) *B
 	return s
 }
 
-func (s *BatchSetEdgeInstanceDeviceConfigResponseBody) SetErrorMessage(v string) *BatchSetEdgeInstanceDeviceConfigResponseBody {
-	s.ErrorMessage = &v
+func (s *BatchSetEdgeInstanceDeviceConfigResponseBody) SetSuccess(v bool) *BatchSetEdgeInstanceDeviceConfigResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -3133,8 +3069,8 @@ func (s *BatchSetEdgeInstanceDeviceConfigResponseBody) SetCode(v string) *BatchS
 	return s
 }
 
-func (s *BatchSetEdgeInstanceDeviceConfigResponseBody) SetSuccess(v bool) *BatchSetEdgeInstanceDeviceConfigResponseBody {
-	s.Success = &v
+func (s *BatchSetEdgeInstanceDeviceConfigResponseBody) SetErrorMessage(v string) *BatchSetEdgeInstanceDeviceConfigResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -3204,9 +3140,9 @@ func (s *BatchUnbindDeviceFromEdgeInstanceRequest) SetIotIds(v []*string) *Batch
 
 type BatchUnbindDeviceFromEdgeInstanceResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s BatchUnbindDeviceFromEdgeInstanceResponseBody) String() string {
@@ -3222,8 +3158,8 @@ func (s *BatchUnbindDeviceFromEdgeInstanceResponseBody) SetRequestId(v string) *
 	return s
 }
 
-func (s *BatchUnbindDeviceFromEdgeInstanceResponseBody) SetErrorMessage(v string) *BatchUnbindDeviceFromEdgeInstanceResponseBody {
-	s.ErrorMessage = &v
+func (s *BatchUnbindDeviceFromEdgeInstanceResponseBody) SetSuccess(v bool) *BatchUnbindDeviceFromEdgeInstanceResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -3232,8 +3168,8 @@ func (s *BatchUnbindDeviceFromEdgeInstanceResponseBody) SetCode(v string) *Batch
 	return s
 }
 
-func (s *BatchUnbindDeviceFromEdgeInstanceResponseBody) SetSuccess(v bool) *BatchUnbindDeviceFromEdgeInstanceResponseBody {
-	s.Success = &v
+func (s *BatchUnbindDeviceFromEdgeInstanceResponseBody) SetErrorMessage(v string) *BatchUnbindDeviceFromEdgeInstanceResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -3264,9 +3200,9 @@ type BatchUpdateDeviceNicknameRequest struct {
 	ApiProduct         *string                                               `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
 	ApiRevision        *string                                               `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
 	IotInstanceId      *string                                               `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	DeviceNicknameInfo []*BatchUpdateDeviceNicknameRequestDeviceNicknameInfo `json:"DeviceNicknameInfo,omitempty" xml:"DeviceNicknameInfo,omitempty" type:"Repeated"`
 	RealTenantId       *string                                               `json:"RealTenantId,omitempty" xml:"RealTenantId,omitempty"`
 	RealTripartiteKey  *string                                               `json:"RealTripartiteKey,omitempty" xml:"RealTripartiteKey,omitempty"`
-	DeviceNicknameInfo []*BatchUpdateDeviceNicknameRequestDeviceNicknameInfo `json:"DeviceNicknameInfo,omitempty" xml:"DeviceNicknameInfo,omitempty" type:"Repeated"`
 }
 
 func (s BatchUpdateDeviceNicknameRequest) String() string {
@@ -3292,6 +3228,11 @@ func (s *BatchUpdateDeviceNicknameRequest) SetIotInstanceId(v string) *BatchUpda
 	return s
 }
 
+func (s *BatchUpdateDeviceNicknameRequest) SetDeviceNicknameInfo(v []*BatchUpdateDeviceNicknameRequestDeviceNicknameInfo) *BatchUpdateDeviceNicknameRequest {
+	s.DeviceNicknameInfo = v
+	return s
+}
+
 func (s *BatchUpdateDeviceNicknameRequest) SetRealTenantId(v string) *BatchUpdateDeviceNicknameRequest {
 	s.RealTenantId = &v
 	return s
@@ -3299,11 +3240,6 @@ func (s *BatchUpdateDeviceNicknameRequest) SetRealTenantId(v string) *BatchUpdat
 
 func (s *BatchUpdateDeviceNicknameRequest) SetRealTripartiteKey(v string) *BatchUpdateDeviceNicknameRequest {
 	s.RealTripartiteKey = &v
-	return s
-}
-
-func (s *BatchUpdateDeviceNicknameRequest) SetDeviceNicknameInfo(v []*BatchUpdateDeviceNicknameRequestDeviceNicknameInfo) *BatchUpdateDeviceNicknameRequest {
-	s.DeviceNicknameInfo = v
 	return s
 }
 
@@ -3344,9 +3280,9 @@ func (s *BatchUpdateDeviceNicknameRequestDeviceNicknameInfo) SetIotId(v string) 
 
 type BatchUpdateDeviceNicknameResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s BatchUpdateDeviceNicknameResponseBody) String() string {
@@ -3362,8 +3298,8 @@ func (s *BatchUpdateDeviceNicknameResponseBody) SetRequestId(v string) *BatchUpd
 	return s
 }
 
-func (s *BatchUpdateDeviceNicknameResponseBody) SetErrorMessage(v string) *BatchUpdateDeviceNicknameResponseBody {
-	s.ErrorMessage = &v
+func (s *BatchUpdateDeviceNicknameResponseBody) SetSuccess(v bool) *BatchUpdateDeviceNicknameResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -3372,8 +3308,8 @@ func (s *BatchUpdateDeviceNicknameResponseBody) SetCode(v string) *BatchUpdateDe
 	return s
 }
 
-func (s *BatchUpdateDeviceNicknameResponseBody) SetSuccess(v bool) *BatchUpdateDeviceNicknameResponseBody {
-	s.Success = &v
+func (s *BatchUpdateDeviceNicknameResponseBody) SetErrorMessage(v string) *BatchUpdateDeviceNicknameResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -3449,9 +3385,9 @@ func (s *BindApplicationToEdgeInstanceRequest) SetApplicationVersion(v string) *
 
 type BindApplicationToEdgeInstanceResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s BindApplicationToEdgeInstanceResponseBody) String() string {
@@ -3467,8 +3403,8 @@ func (s *BindApplicationToEdgeInstanceResponseBody) SetRequestId(v string) *Bind
 	return s
 }
 
-func (s *BindApplicationToEdgeInstanceResponseBody) SetErrorMessage(v string) *BindApplicationToEdgeInstanceResponseBody {
-	s.ErrorMessage = &v
+func (s *BindApplicationToEdgeInstanceResponseBody) SetSuccess(v bool) *BindApplicationToEdgeInstanceResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -3477,8 +3413,8 @@ func (s *BindApplicationToEdgeInstanceResponseBody) SetCode(v string) *BindAppli
 	return s
 }
 
-func (s *BindApplicationToEdgeInstanceResponseBody) SetSuccess(v bool) *BindApplicationToEdgeInstanceResponseBody {
-	s.Success = &v
+func (s *BindApplicationToEdgeInstanceResponseBody) SetErrorMessage(v string) *BindApplicationToEdgeInstanceResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -3560,9 +3496,9 @@ func (s *BindDriverToEdgeInstanceRequest) SetOrderId(v string) *BindDriverToEdge
 
 type BindDriverToEdgeInstanceResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s BindDriverToEdgeInstanceResponseBody) String() string {
@@ -3578,8 +3514,8 @@ func (s *BindDriverToEdgeInstanceResponseBody) SetRequestId(v string) *BindDrive
 	return s
 }
 
-func (s *BindDriverToEdgeInstanceResponseBody) SetErrorMessage(v string) *BindDriverToEdgeInstanceResponseBody {
-	s.ErrorMessage = &v
+func (s *BindDriverToEdgeInstanceResponseBody) SetSuccess(v bool) *BindDriverToEdgeInstanceResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -3588,8 +3524,8 @@ func (s *BindDriverToEdgeInstanceResponseBody) SetCode(v string) *BindDriverToEd
 	return s
 }
 
-func (s *BindDriverToEdgeInstanceResponseBody) SetSuccess(v bool) *BindDriverToEdgeInstanceResponseBody {
-	s.Success = &v
+func (s *BindDriverToEdgeInstanceResponseBody) SetErrorMessage(v string) *BindDriverToEdgeInstanceResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -3671,9 +3607,9 @@ func (s *BindGatewayToEdgeInstanceRequest) SetIotId(v string) *BindGatewayToEdge
 
 type BindGatewayToEdgeInstanceResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s BindGatewayToEdgeInstanceResponseBody) String() string {
@@ -3689,8 +3625,8 @@ func (s *BindGatewayToEdgeInstanceResponseBody) SetRequestId(v string) *BindGate
 	return s
 }
 
-func (s *BindGatewayToEdgeInstanceResponseBody) SetErrorMessage(v string) *BindGatewayToEdgeInstanceResponseBody {
-	s.ErrorMessage = &v
+func (s *BindGatewayToEdgeInstanceResponseBody) SetSuccess(v bool) *BindGatewayToEdgeInstanceResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -3699,8 +3635,8 @@ func (s *BindGatewayToEdgeInstanceResponseBody) SetCode(v string) *BindGatewayTo
 	return s
 }
 
-func (s *BindGatewayToEdgeInstanceResponseBody) SetSuccess(v bool) *BindGatewayToEdgeInstanceResponseBody {
-	s.Success = &v
+func (s *BindGatewayToEdgeInstanceResponseBody) SetErrorMessage(v string) *BindGatewayToEdgeInstanceResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -3776,9 +3712,9 @@ func (s *BindRoleToEdgeInstanceRequest) SetRoleName(v string) *BindRoleToEdgeIns
 
 type BindRoleToEdgeInstanceResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s BindRoleToEdgeInstanceResponseBody) String() string {
@@ -3794,8 +3730,8 @@ func (s *BindRoleToEdgeInstanceResponseBody) SetRequestId(v string) *BindRoleToE
 	return s
 }
 
-func (s *BindRoleToEdgeInstanceResponseBody) SetErrorMessage(v string) *BindRoleToEdgeInstanceResponseBody {
-	s.ErrorMessage = &v
+func (s *BindRoleToEdgeInstanceResponseBody) SetSuccess(v bool) *BindRoleToEdgeInstanceResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -3804,8 +3740,8 @@ func (s *BindRoleToEdgeInstanceResponseBody) SetCode(v string) *BindRoleToEdgeIn
 	return s
 }
 
-func (s *BindRoleToEdgeInstanceResponseBody) SetSuccess(v bool) *BindRoleToEdgeInstanceResponseBody {
-	s.Success = &v
+func (s *BindRoleToEdgeInstanceResponseBody) SetErrorMessage(v string) *BindRoleToEdgeInstanceResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -3875,9 +3811,9 @@ func (s *BindSceneRuleToEdgeInstanceRequest) SetRuleId(v string) *BindSceneRuleT
 
 type BindSceneRuleToEdgeInstanceResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s BindSceneRuleToEdgeInstanceResponseBody) String() string {
@@ -3893,6 +3829,11 @@ func (s *BindSceneRuleToEdgeInstanceResponseBody) SetRequestId(v string) *BindSc
 	return s
 }
 
+func (s *BindSceneRuleToEdgeInstanceResponseBody) SetSuccess(v bool) *BindSceneRuleToEdgeInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
 func (s *BindSceneRuleToEdgeInstanceResponseBody) SetErrorMessage(v string) *BindSceneRuleToEdgeInstanceResponseBody {
 	s.ErrorMessage = &v
 	return s
@@ -3900,11 +3841,6 @@ func (s *BindSceneRuleToEdgeInstanceResponseBody) SetErrorMessage(v string) *Bin
 
 func (s *BindSceneRuleToEdgeInstanceResponseBody) SetCode(v string) *BindSceneRuleToEdgeInstanceResponseBody {
 	s.Code = &v
-	return s
-}
-
-func (s *BindSceneRuleToEdgeInstanceResponseBody) SetSuccess(v bool) *BindSceneRuleToEdgeInstanceResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -3968,9 +3904,9 @@ func (s *CancelJobRequest) SetJobId(v string) *CancelJobRequest {
 
 type CancelJobResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s CancelJobResponseBody) String() string {
@@ -3986,8 +3922,8 @@ func (s *CancelJobResponseBody) SetRequestId(v string) *CancelJobResponseBody {
 	return s
 }
 
-func (s *CancelJobResponseBody) SetErrorMessage(v string) *CancelJobResponseBody {
-	s.ErrorMessage = &v
+func (s *CancelJobResponseBody) SetSuccess(v bool) *CancelJobResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -3996,8 +3932,8 @@ func (s *CancelJobResponseBody) SetCode(v string) *CancelJobResponseBody {
 	return s
 }
 
-func (s *CancelJobResponseBody) SetSuccess(v bool) *CancelJobResponseBody {
-	s.Success = &v
+func (s *CancelJobResponseBody) SetErrorMessage(v string) *CancelJobResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -4061,9 +3997,9 @@ func (s *CancelOTAStrategyByJobRequest) SetJobId(v string) *CancelOTAStrategyByJ
 
 type CancelOTAStrategyByJobResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s CancelOTAStrategyByJobResponseBody) String() string {
@@ -4079,8 +4015,8 @@ func (s *CancelOTAStrategyByJobResponseBody) SetRequestId(v string) *CancelOTASt
 	return s
 }
 
-func (s *CancelOTAStrategyByJobResponseBody) SetErrorMessage(v string) *CancelOTAStrategyByJobResponseBody {
-	s.ErrorMessage = &v
+func (s *CancelOTAStrategyByJobResponseBody) SetSuccess(v bool) *CancelOTAStrategyByJobResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -4089,8 +4025,8 @@ func (s *CancelOTAStrategyByJobResponseBody) SetCode(v string) *CancelOTAStrateg
 	return s
 }
 
-func (s *CancelOTAStrategyByJobResponseBody) SetSuccess(v bool) *CancelOTAStrategyByJobResponseBody {
-	s.Success = &v
+func (s *CancelOTAStrategyByJobResponseBody) SetErrorMessage(v string) *CancelOTAStrategyByJobResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -4123,8 +4059,8 @@ type CancelOTATaskByDeviceRequest struct {
 	IotInstanceId *string   `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 	FirmwareId    *string   `json:"FirmwareId,omitempty" xml:"FirmwareId,omitempty"`
 	ProductKey    *string   `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
-	JobId         *string   `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	DeviceName    []*string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty" type:"Repeated"`
+	JobId         *string   `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
 func (s CancelOTATaskByDeviceRequest) String() string {
@@ -4160,21 +4096,21 @@ func (s *CancelOTATaskByDeviceRequest) SetProductKey(v string) *CancelOTATaskByD
 	return s
 }
 
-func (s *CancelOTATaskByDeviceRequest) SetJobId(v string) *CancelOTATaskByDeviceRequest {
-	s.JobId = &v
-	return s
-}
-
 func (s *CancelOTATaskByDeviceRequest) SetDeviceName(v []*string) *CancelOTATaskByDeviceRequest {
 	s.DeviceName = v
 	return s
 }
 
+func (s *CancelOTATaskByDeviceRequest) SetJobId(v string) *CancelOTATaskByDeviceRequest {
+	s.JobId = &v
+	return s
+}
+
 type CancelOTATaskByDeviceResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s CancelOTATaskByDeviceResponseBody) String() string {
@@ -4190,8 +4126,8 @@ func (s *CancelOTATaskByDeviceResponseBody) SetRequestId(v string) *CancelOTATas
 	return s
 }
 
-func (s *CancelOTATaskByDeviceResponseBody) SetErrorMessage(v string) *CancelOTATaskByDeviceResponseBody {
-	s.ErrorMessage = &v
+func (s *CancelOTATaskByDeviceResponseBody) SetSuccess(v bool) *CancelOTATaskByDeviceResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -4200,8 +4136,8 @@ func (s *CancelOTATaskByDeviceResponseBody) SetCode(v string) *CancelOTATaskByDe
 	return s
 }
 
-func (s *CancelOTATaskByDeviceResponseBody) SetSuccess(v bool) *CancelOTATaskByDeviceResponseBody {
-	s.Success = &v
+func (s *CancelOTATaskByDeviceResponseBody) SetErrorMessage(v string) *CancelOTATaskByDeviceResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -4289,9 +4225,9 @@ func (s *CancelOTATaskByJobRequest) SetCancelNotifiedTask(v bool) *CancelOTATask
 
 type CancelOTATaskByJobResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s CancelOTATaskByJobResponseBody) String() string {
@@ -4307,8 +4243,8 @@ func (s *CancelOTATaskByJobResponseBody) SetRequestId(v string) *CancelOTATaskBy
 	return s
 }
 
-func (s *CancelOTATaskByJobResponseBody) SetErrorMessage(v string) *CancelOTATaskByJobResponseBody {
-	s.ErrorMessage = &v
+func (s *CancelOTATaskByJobResponseBody) SetSuccess(v bool) *CancelOTATaskByJobResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -4317,8 +4253,8 @@ func (s *CancelOTATaskByJobResponseBody) SetCode(v string) *CancelOTATaskByJobRe
 	return s
 }
 
-func (s *CancelOTATaskByJobResponseBody) SetSuccess(v bool) *CancelOTATaskByJobResponseBody {
-	s.Success = &v
+func (s *CancelOTATaskByJobResponseBody) SetErrorMessage(v string) *CancelOTATaskByJobResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -4388,9 +4324,9 @@ func (s *ClearEdgeInstanceDriverConfigsRequest) SetDriverId(v string) *ClearEdge
 
 type ClearEdgeInstanceDriverConfigsResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s ClearEdgeInstanceDriverConfigsResponseBody) String() string {
@@ -4406,8 +4342,8 @@ func (s *ClearEdgeInstanceDriverConfigsResponseBody) SetRequestId(v string) *Cle
 	return s
 }
 
-func (s *ClearEdgeInstanceDriverConfigsResponseBody) SetErrorMessage(v string) *ClearEdgeInstanceDriverConfigsResponseBody {
-	s.ErrorMessage = &v
+func (s *ClearEdgeInstanceDriverConfigsResponseBody) SetSuccess(v bool) *ClearEdgeInstanceDriverConfigsResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -4416,8 +4352,8 @@ func (s *ClearEdgeInstanceDriverConfigsResponseBody) SetCode(v string) *ClearEdg
 	return s
 }
 
-func (s *ClearEdgeInstanceDriverConfigsResponseBody) SetSuccess(v bool) *ClearEdgeInstanceDriverConfigsResponseBody {
-	s.Success = &v
+func (s *ClearEdgeInstanceDriverConfigsResponseBody) SetErrorMessage(v string) *ClearEdgeInstanceDriverConfigsResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -4481,9 +4417,9 @@ func (s *CloseEdgeInstanceDeploymentRequest) SetInstanceId(v string) *CloseEdgeI
 
 type CloseEdgeInstanceDeploymentResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s CloseEdgeInstanceDeploymentResponseBody) String() string {
@@ -4499,8 +4435,8 @@ func (s *CloseEdgeInstanceDeploymentResponseBody) SetRequestId(v string) *CloseE
 	return s
 }
 
-func (s *CloseEdgeInstanceDeploymentResponseBody) SetErrorMessage(v string) *CloseEdgeInstanceDeploymentResponseBody {
-	s.ErrorMessage = &v
+func (s *CloseEdgeInstanceDeploymentResponseBody) SetSuccess(v bool) *CloseEdgeInstanceDeploymentResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -4509,8 +4445,8 @@ func (s *CloseEdgeInstanceDeploymentResponseBody) SetCode(v string) *CloseEdgeIn
 	return s
 }
 
-func (s *CloseEdgeInstanceDeploymentResponseBody) SetSuccess(v bool) *CloseEdgeInstanceDeploymentResponseBody {
-	s.Success = &v
+func (s *CloseEdgeInstanceDeploymentResponseBody) SetErrorMessage(v string) *CloseEdgeInstanceDeploymentResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -4604,9 +4540,9 @@ func (s *CopyThingModelRequest) SetRealTripartiteKey(v string) *CopyThingModelRe
 
 type CopyThingModelResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s CopyThingModelResponseBody) String() string {
@@ -4622,8 +4558,8 @@ func (s *CopyThingModelResponseBody) SetRequestId(v string) *CopyThingModelRespo
 	return s
 }
 
-func (s *CopyThingModelResponseBody) SetErrorMessage(v string) *CopyThingModelResponseBody {
-	s.ErrorMessage = &v
+func (s *CopyThingModelResponseBody) SetSuccess(v bool) *CopyThingModelResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -4632,8 +4568,8 @@ func (s *CopyThingModelResponseBody) SetCode(v string) *CopyThingModelResponseBo
 	return s
 }
 
-func (s *CopyThingModelResponseBody) SetSuccess(v bool) *CopyThingModelResponseBody {
-	s.Success = &v
+func (s *CopyThingModelResponseBody) SetErrorMessage(v string) *CopyThingModelResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -4697,10 +4633,10 @@ func (s *CreateConsumerGroupRequest) SetGroupName(v string) *CreateConsumerGroup
 
 type CreateConsumerGroupResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	GroupId      *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s CreateConsumerGroupResponseBody) String() string {
@@ -4716,23 +4652,23 @@ func (s *CreateConsumerGroupResponseBody) SetRequestId(v string) *CreateConsumer
 	return s
 }
 
-func (s *CreateConsumerGroupResponseBody) SetErrorMessage(v string) *CreateConsumerGroupResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *CreateConsumerGroupResponseBody) SetCode(v string) *CreateConsumerGroupResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *CreateConsumerGroupResponseBody) SetSuccess(v bool) *CreateConsumerGroupResponseBody {
 	s.Success = &v
 	return s
 }
 
+func (s *CreateConsumerGroupResponseBody) SetErrorMessage(v string) *CreateConsumerGroupResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
 func (s *CreateConsumerGroupResponseBody) SetGroupId(v string) *CreateConsumerGroupResponseBody {
 	s.GroupId = &v
+	return s
+}
+
+func (s *CreateConsumerGroupResponseBody) SetCode(v string) *CreateConsumerGroupResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -4802,9 +4738,9 @@ func (s *CreateConsumerGroupSubscribeRelationRequest) SetProductKey(v string) *C
 
 type CreateConsumerGroupSubscribeRelationResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s CreateConsumerGroupSubscribeRelationResponseBody) String() string {
@@ -4820,8 +4756,8 @@ func (s *CreateConsumerGroupSubscribeRelationResponseBody) SetRequestId(v string
 	return s
 }
 
-func (s *CreateConsumerGroupSubscribeRelationResponseBody) SetErrorMessage(v string) *CreateConsumerGroupSubscribeRelationResponseBody {
-	s.ErrorMessage = &v
+func (s *CreateConsumerGroupSubscribeRelationResponseBody) SetSuccess(v bool) *CreateConsumerGroupSubscribeRelationResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -4830,8 +4766,8 @@ func (s *CreateConsumerGroupSubscribeRelationResponseBody) SetCode(v string) *Cr
 	return s
 }
 
-func (s *CreateConsumerGroupSubscribeRelationResponseBody) SetSuccess(v bool) *CreateConsumerGroupSubscribeRelationResponseBody {
-	s.Success = &v
+func (s *CreateConsumerGroupSubscribeRelationResponseBody) SetErrorMessage(v string) *CreateConsumerGroupSubscribeRelationResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -4863,12 +4799,12 @@ type CreateDataAPIServiceRequest struct {
 	ApiRevision   *string                                     `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
 	DisplayName   *string                                     `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	OriginSql     *string                                     `json:"OriginSql,omitempty" xml:"OriginSql,omitempty"`
+	RequestParam  []*CreateDataAPIServiceRequestRequestParam  `json:"RequestParam,omitempty" xml:"RequestParam,omitempty" type:"Repeated"`
 	Desc          *string                                     `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	ResponseParam []*CreateDataAPIServiceRequestResponseParam `json:"ResponseParam,omitempty" xml:"ResponseParam,omitempty" type:"Repeated"`
 	TemplateSql   *string                                     `json:"TemplateSql,omitempty" xml:"TemplateSql,omitempty"`
 	ApiPath       *string                                     `json:"ApiPath,omitempty" xml:"ApiPath,omitempty"`
 	IotInstanceId *string                                     `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	RequestParam  []*CreateDataAPIServiceRequestRequestParam  `json:"RequestParam,omitempty" xml:"RequestParam,omitempty" type:"Repeated"`
-	ResponseParam []*CreateDataAPIServiceRequestResponseParam `json:"ResponseParam,omitempty" xml:"ResponseParam,omitempty" type:"Repeated"`
 }
 
 func (s CreateDataAPIServiceRequest) String() string {
@@ -4899,8 +4835,18 @@ func (s *CreateDataAPIServiceRequest) SetOriginSql(v string) *CreateDataAPIServi
 	return s
 }
 
+func (s *CreateDataAPIServiceRequest) SetRequestParam(v []*CreateDataAPIServiceRequestRequestParam) *CreateDataAPIServiceRequest {
+	s.RequestParam = v
+	return s
+}
+
 func (s *CreateDataAPIServiceRequest) SetDesc(v string) *CreateDataAPIServiceRequest {
 	s.Desc = &v
+	return s
+}
+
+func (s *CreateDataAPIServiceRequest) SetResponseParam(v []*CreateDataAPIServiceRequestResponseParam) *CreateDataAPIServiceRequest {
+	s.ResponseParam = v
 	return s
 }
 
@@ -4919,22 +4865,12 @@ func (s *CreateDataAPIServiceRequest) SetIotInstanceId(v string) *CreateDataAPIS
 	return s
 }
 
-func (s *CreateDataAPIServiceRequest) SetRequestParam(v []*CreateDataAPIServiceRequestRequestParam) *CreateDataAPIServiceRequest {
-	s.RequestParam = v
-	return s
-}
-
-func (s *CreateDataAPIServiceRequest) SetResponseParam(v []*CreateDataAPIServiceRequestResponseParam) *CreateDataAPIServiceRequest {
-	s.ResponseParam = v
-	return s
-}
-
 type CreateDataAPIServiceRequestRequestParam struct {
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Required *bool   `json:"Required,omitempty" xml:"Required,omitempty"`
-	Example  *string `json:"Example,omitempty" xml:"Example,omitempty"`
 	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	Desc     *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	Example  *string `json:"Example,omitempty" xml:"Example,omitempty"`
+	Required *bool   `json:"Required,omitempty" xml:"Required,omitempty"`
 }
 
 func (s CreateDataAPIServiceRequestRequestParam) String() string {
@@ -4945,23 +4881,13 @@ func (s CreateDataAPIServiceRequestRequestParam) GoString() string {
 	return s.String()
 }
 
-func (s *CreateDataAPIServiceRequestRequestParam) SetType(v string) *CreateDataAPIServiceRequestRequestParam {
-	s.Type = &v
-	return s
-}
-
-func (s *CreateDataAPIServiceRequestRequestParam) SetRequired(v bool) *CreateDataAPIServiceRequestRequestParam {
-	s.Required = &v
-	return s
-}
-
-func (s *CreateDataAPIServiceRequestRequestParam) SetExample(v string) *CreateDataAPIServiceRequestRequestParam {
-	s.Example = &v
-	return s
-}
-
 func (s *CreateDataAPIServiceRequestRequestParam) SetName(v string) *CreateDataAPIServiceRequestRequestParam {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateDataAPIServiceRequestRequestParam) SetType(v string) *CreateDataAPIServiceRequestRequestParam {
+	s.Type = &v
 	return s
 }
 
@@ -4970,12 +4896,22 @@ func (s *CreateDataAPIServiceRequestRequestParam) SetDesc(v string) *CreateDataA
 	return s
 }
 
+func (s *CreateDataAPIServiceRequestRequestParam) SetExample(v string) *CreateDataAPIServiceRequestRequestParam {
+	s.Example = &v
+	return s
+}
+
+func (s *CreateDataAPIServiceRequestRequestParam) SetRequired(v bool) *CreateDataAPIServiceRequestRequestParam {
+	s.Required = &v
+	return s
+}
+
 type CreateDataAPIServiceRequestResponseParam struct {
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Required *bool   `json:"Required,omitempty" xml:"Required,omitempty"`
-	Example  *string `json:"Example,omitempty" xml:"Example,omitempty"`
 	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	Desc     *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	Example  *string `json:"Example,omitempty" xml:"Example,omitempty"`
+	Required *bool   `json:"Required,omitempty" xml:"Required,omitempty"`
 }
 
 func (s CreateDataAPIServiceRequestResponseParam) String() string {
@@ -4986,23 +4922,13 @@ func (s CreateDataAPIServiceRequestResponseParam) GoString() string {
 	return s.String()
 }
 
-func (s *CreateDataAPIServiceRequestResponseParam) SetType(v string) *CreateDataAPIServiceRequestResponseParam {
-	s.Type = &v
-	return s
-}
-
-func (s *CreateDataAPIServiceRequestResponseParam) SetRequired(v bool) *CreateDataAPIServiceRequestResponseParam {
-	s.Required = &v
-	return s
-}
-
-func (s *CreateDataAPIServiceRequestResponseParam) SetExample(v string) *CreateDataAPIServiceRequestResponseParam {
-	s.Example = &v
-	return s
-}
-
 func (s *CreateDataAPIServiceRequestResponseParam) SetName(v string) *CreateDataAPIServiceRequestResponseParam {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateDataAPIServiceRequestResponseParam) SetType(v string) *CreateDataAPIServiceRequestResponseParam {
+	s.Type = &v
 	return s
 }
 
@@ -5011,12 +4937,22 @@ func (s *CreateDataAPIServiceRequestResponseParam) SetDesc(v string) *CreateData
 	return s
 }
 
+func (s *CreateDataAPIServiceRequestResponseParam) SetExample(v string) *CreateDataAPIServiceRequestResponseParam {
+	s.Example = &v
+	return s
+}
+
+func (s *CreateDataAPIServiceRequestResponseParam) SetRequired(v bool) *CreateDataAPIServiceRequestResponseParam {
+	s.Required = &v
+	return s
+}
+
 type CreateDataAPIServiceResponseBody struct {
 	RequestId    *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data         *CreateDataAPIServiceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                               `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string                               `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Data         *CreateDataAPIServiceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s CreateDataAPIServiceResponseBody) String() string {
@@ -5032,13 +4968,8 @@ func (s *CreateDataAPIServiceResponseBody) SetRequestId(v string) *CreateDataAPI
 	return s
 }
 
-func (s *CreateDataAPIServiceResponseBody) SetData(v *CreateDataAPIServiceResponseBodyData) *CreateDataAPIServiceResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *CreateDataAPIServiceResponseBody) SetErrorMessage(v string) *CreateDataAPIServiceResponseBody {
-	s.ErrorMessage = &v
+func (s *CreateDataAPIServiceResponseBody) SetSuccess(v bool) *CreateDataAPIServiceResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -5047,8 +4978,13 @@ func (s *CreateDataAPIServiceResponseBody) SetCode(v string) *CreateDataAPIServi
 	return s
 }
 
-func (s *CreateDataAPIServiceResponseBody) SetSuccess(v bool) *CreateDataAPIServiceResponseBody {
-	s.Success = &v
+func (s *CreateDataAPIServiceResponseBody) SetErrorMessage(v string) *CreateDataAPIServiceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateDataAPIServiceResponseBody) SetData(v *CreateDataAPIServiceResponseBodyData) *CreateDataAPIServiceResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -5100,6 +5036,158 @@ func (s *CreateDataAPIServiceResponse) SetHeaders(v map[string]*string) *CreateD
 }
 
 func (s *CreateDataAPIServiceResponse) SetBody(v *CreateDataAPIServiceResponseBody) *CreateDataAPIServiceResponse {
+	s.Body = v
+	return s
+}
+
+type CreateDeviceDistributeJobRequest struct {
+	ApiProduct           *string                                                 `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
+	ApiRevision          *string                                                 `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
+	DeviceName           []*string                                               `json:"DeviceName,omitempty" xml:"DeviceName,omitempty" type:"Repeated"`
+	SourceInstanceId     *string                                                 `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
+	ProductKey           *string                                                 `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	TargetUid            *string                                                 `json:"TargetUid,omitempty" xml:"TargetUid,omitempty"`
+	TargetAliyunId       *string                                                 `json:"TargetAliyunId,omitempty" xml:"TargetAliyunId,omitempty"`
+	Captcha              *string                                                 `json:"Captcha,omitempty" xml:"Captcha,omitempty"`
+	TargetInstanceConfig []*CreateDeviceDistributeJobRequestTargetInstanceConfig `json:"TargetInstanceConfig,omitempty" xml:"TargetInstanceConfig,omitempty" type:"Repeated"`
+	Strategy             *int32                                                  `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
+}
+
+func (s CreateDeviceDistributeJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeviceDistributeJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeviceDistributeJobRequest) SetApiProduct(v string) *CreateDeviceDistributeJobRequest {
+	s.ApiProduct = &v
+	return s
+}
+
+func (s *CreateDeviceDistributeJobRequest) SetApiRevision(v string) *CreateDeviceDistributeJobRequest {
+	s.ApiRevision = &v
+	return s
+}
+
+func (s *CreateDeviceDistributeJobRequest) SetDeviceName(v []*string) *CreateDeviceDistributeJobRequest {
+	s.DeviceName = v
+	return s
+}
+
+func (s *CreateDeviceDistributeJobRequest) SetSourceInstanceId(v string) *CreateDeviceDistributeJobRequest {
+	s.SourceInstanceId = &v
+	return s
+}
+
+func (s *CreateDeviceDistributeJobRequest) SetProductKey(v string) *CreateDeviceDistributeJobRequest {
+	s.ProductKey = &v
+	return s
+}
+
+func (s *CreateDeviceDistributeJobRequest) SetTargetUid(v string) *CreateDeviceDistributeJobRequest {
+	s.TargetUid = &v
+	return s
+}
+
+func (s *CreateDeviceDistributeJobRequest) SetTargetAliyunId(v string) *CreateDeviceDistributeJobRequest {
+	s.TargetAliyunId = &v
+	return s
+}
+
+func (s *CreateDeviceDistributeJobRequest) SetCaptcha(v string) *CreateDeviceDistributeJobRequest {
+	s.Captcha = &v
+	return s
+}
+
+func (s *CreateDeviceDistributeJobRequest) SetTargetInstanceConfig(v []*CreateDeviceDistributeJobRequestTargetInstanceConfig) *CreateDeviceDistributeJobRequest {
+	s.TargetInstanceConfig = v
+	return s
+}
+
+func (s *CreateDeviceDistributeJobRequest) SetStrategy(v int32) *CreateDeviceDistributeJobRequest {
+	s.Strategy = &v
+	return s
+}
+
+type CreateDeviceDistributeJobRequestTargetInstanceConfig struct {
+	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
+}
+
+func (s CreateDeviceDistributeJobRequestTargetInstanceConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeviceDistributeJobRequestTargetInstanceConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeviceDistributeJobRequestTargetInstanceConfig) SetTargetInstanceId(v string) *CreateDeviceDistributeJobRequestTargetInstanceConfig {
+	s.TargetInstanceId = &v
+	return s
+}
+
+type CreateDeviceDistributeJobResponseBody struct {
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	JobId        *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s CreateDeviceDistributeJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeviceDistributeJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeviceDistributeJobResponseBody) SetRequestId(v string) *CreateDeviceDistributeJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDeviceDistributeJobResponseBody) SetSuccess(v bool) *CreateDeviceDistributeJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateDeviceDistributeJobResponseBody) SetCode(v string) *CreateDeviceDistributeJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateDeviceDistributeJobResponseBody) SetErrorMessage(v string) *CreateDeviceDistributeJobResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateDeviceDistributeJobResponseBody) SetJobId(v string) *CreateDeviceDistributeJobResponseBody {
+	s.JobId = &v
+	return s
+}
+
+type CreateDeviceDistributeJobResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateDeviceDistributeJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDeviceDistributeJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeviceDistributeJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeviceDistributeJobResponse) SetHeaders(v map[string]*string) *CreateDeviceDistributeJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDeviceDistributeJobResponse) SetBody(v *CreateDeviceDistributeJobResponseBody) *CreateDeviceDistributeJobResponse {
 	s.Body = v
 	return s
 }
@@ -5165,10 +5253,10 @@ func (s *CreateDeviceGroupRequest) SetRealTripartiteKey(v string) *CreateDeviceG
 
 type CreateDeviceGroupResponseBody struct {
 	RequestId    *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data         *CreateDeviceGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                            `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string                            `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Data         *CreateDeviceGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s CreateDeviceGroupResponseBody) String() string {
@@ -5184,13 +5272,8 @@ func (s *CreateDeviceGroupResponseBody) SetRequestId(v string) *CreateDeviceGrou
 	return s
 }
 
-func (s *CreateDeviceGroupResponseBody) SetData(v *CreateDeviceGroupResponseBodyData) *CreateDeviceGroupResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *CreateDeviceGroupResponseBody) SetErrorMessage(v string) *CreateDeviceGroupResponseBody {
-	s.ErrorMessage = &v
+func (s *CreateDeviceGroupResponseBody) SetSuccess(v bool) *CreateDeviceGroupResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -5199,15 +5282,20 @@ func (s *CreateDeviceGroupResponseBody) SetCode(v string) *CreateDeviceGroupResp
 	return s
 }
 
-func (s *CreateDeviceGroupResponseBody) SetSuccess(v bool) *CreateDeviceGroupResponseBody {
-	s.Success = &v
+func (s *CreateDeviceGroupResponseBody) SetErrorMessage(v string) *CreateDeviceGroupResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateDeviceGroupResponseBody) SetData(v *CreateDeviceGroupResponseBodyData) *CreateDeviceGroupResponseBody {
+	s.Data = v
 	return s
 }
 
 type CreateDeviceGroupResponseBodyData struct {
 	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	UtcCreate *string `json:"UtcCreate,omitempty" xml:"UtcCreate,omitempty"`
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	GroupDesc *string `json:"GroupDesc,omitempty" xml:"GroupDesc,omitempty"`
 }
 
@@ -5224,13 +5312,13 @@ func (s *CreateDeviceGroupResponseBodyData) SetGroupId(v string) *CreateDeviceGr
 	return s
 }
 
-func (s *CreateDeviceGroupResponseBodyData) SetGroupName(v string) *CreateDeviceGroupResponseBodyData {
-	s.GroupName = &v
+func (s *CreateDeviceGroupResponseBodyData) SetUtcCreate(v string) *CreateDeviceGroupResponseBodyData {
+	s.UtcCreate = &v
 	return s
 }
 
-func (s *CreateDeviceGroupResponseBodyData) SetUtcCreate(v string) *CreateDeviceGroupResponseBodyData {
-	s.UtcCreate = &v
+func (s *CreateDeviceGroupResponseBodyData) SetGroupName(v string) *CreateDeviceGroupResponseBodyData {
+	s.GroupName = &v
 	return s
 }
 
@@ -5322,11 +5410,11 @@ func (s *CreateEdgeDriverRequest) SetIsBuiltIn(v bool) *CreateEdgeDriverRequest 
 }
 
 type CreateEdgeDriverResponseBody struct {
-	DriverId     *string `json:"DriverId,omitempty" xml:"DriverId,omitempty"`
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	DriverId     *string `json:"DriverId,omitempty" xml:"DriverId,omitempty"`
 }
 
 func (s CreateEdgeDriverResponseBody) String() string {
@@ -5337,18 +5425,13 @@ func (s CreateEdgeDriverResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateEdgeDriverResponseBody) SetDriverId(v string) *CreateEdgeDriverResponseBody {
-	s.DriverId = &v
-	return s
-}
-
 func (s *CreateEdgeDriverResponseBody) SetRequestId(v string) *CreateEdgeDriverResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *CreateEdgeDriverResponseBody) SetErrorMessage(v string) *CreateEdgeDriverResponseBody {
-	s.ErrorMessage = &v
+func (s *CreateEdgeDriverResponseBody) SetSuccess(v bool) *CreateEdgeDriverResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -5357,8 +5440,13 @@ func (s *CreateEdgeDriverResponseBody) SetCode(v string) *CreateEdgeDriverRespon
 	return s
 }
 
-func (s *CreateEdgeDriverResponseBody) SetSuccess(v bool) *CreateEdgeDriverResponseBody {
-	s.Success = &v
+func (s *CreateEdgeDriverResponseBody) SetErrorMessage(v string) *CreateEdgeDriverResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateEdgeDriverResponseBody) SetDriverId(v string) *CreateEdgeDriverResponseBody {
+	s.DriverId = &v
 	return s
 }
 
@@ -5470,9 +5558,9 @@ func (s *CreateEdgeDriverVersionRequest) SetArgument(v string) *CreateEdgeDriver
 
 type CreateEdgeDriverVersionResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s CreateEdgeDriverVersionResponseBody) String() string {
@@ -5488,8 +5576,8 @@ func (s *CreateEdgeDriverVersionResponseBody) SetRequestId(v string) *CreateEdge
 	return s
 }
 
-func (s *CreateEdgeDriverVersionResponseBody) SetErrorMessage(v string) *CreateEdgeDriverVersionResponseBody {
-	s.ErrorMessage = &v
+func (s *CreateEdgeDriverVersionResponseBody) SetSuccess(v bool) *CreateEdgeDriverVersionResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -5498,8 +5586,8 @@ func (s *CreateEdgeDriverVersionResponseBody) SetCode(v string) *CreateEdgeDrive
 	return s
 }
 
-func (s *CreateEdgeDriverVersionResponseBody) SetSuccess(v bool) *CreateEdgeDriverVersionResponseBody {
-	s.Success = &v
+func (s *CreateEdgeDriverVersionResponseBody) SetErrorMessage(v string) *CreateEdgeDriverVersionResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -5575,10 +5663,10 @@ func (s *CreateEdgeInstanceRequest) SetSpec(v int32) *CreateEdgeInstanceRequest 
 
 type CreateEdgeInstanceResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s CreateEdgeInstanceResponseBody) String() string {
@@ -5594,8 +5682,8 @@ func (s *CreateEdgeInstanceResponseBody) SetRequestId(v string) *CreateEdgeInsta
 	return s
 }
 
-func (s *CreateEdgeInstanceResponseBody) SetInstanceId(v string) *CreateEdgeInstanceResponseBody {
-	s.InstanceId = &v
+func (s *CreateEdgeInstanceResponseBody) SetSuccess(v bool) *CreateEdgeInstanceResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -5609,8 +5697,8 @@ func (s *CreateEdgeInstanceResponseBody) SetCode(v string) *CreateEdgeInstanceRe
 	return s
 }
 
-func (s *CreateEdgeInstanceResponseBody) SetSuccess(v bool) *CreateEdgeInstanceResponseBody {
-	s.Success = &v
+func (s *CreateEdgeInstanceResponseBody) SetInstanceId(v string) *CreateEdgeInstanceResponseBody {
+	s.InstanceId = &v
 	return s
 }
 
@@ -5691,9 +5779,9 @@ func (s *CreateEdgeInstanceChannelRequest) SetConfigs(v []*CreateEdgeInstanceCha
 }
 
 type CreateEdgeInstanceChannelRequestConfigs struct {
-	Key     *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	Format  *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Key     *string `json:"Key,omitempty" xml:"Key,omitempty"`
 }
 
 func (s CreateEdgeInstanceChannelRequestConfigs) String() string {
@@ -5704,8 +5792,8 @@ func (s CreateEdgeInstanceChannelRequestConfigs) GoString() string {
 	return s.String()
 }
 
-func (s *CreateEdgeInstanceChannelRequestConfigs) SetKey(v string) *CreateEdgeInstanceChannelRequestConfigs {
-	s.Key = &v
+func (s *CreateEdgeInstanceChannelRequestConfigs) SetFormat(v string) *CreateEdgeInstanceChannelRequestConfigs {
+	s.Format = &v
 	return s
 }
 
@@ -5714,17 +5802,17 @@ func (s *CreateEdgeInstanceChannelRequestConfigs) SetContent(v string) *CreateEd
 	return s
 }
 
-func (s *CreateEdgeInstanceChannelRequestConfigs) SetFormat(v string) *CreateEdgeInstanceChannelRequestConfigs {
-	s.Format = &v
+func (s *CreateEdgeInstanceChannelRequestConfigs) SetKey(v string) *CreateEdgeInstanceChannelRequestConfigs {
+	s.Key = &v
 	return s
 }
 
 type CreateEdgeInstanceChannelResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data         *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Data         *string `json:"Data,omitempty" xml:"Data,omitempty"`
 }
 
 func (s CreateEdgeInstanceChannelResponseBody) String() string {
@@ -5740,13 +5828,8 @@ func (s *CreateEdgeInstanceChannelResponseBody) SetRequestId(v string) *CreateEd
 	return s
 }
 
-func (s *CreateEdgeInstanceChannelResponseBody) SetData(v string) *CreateEdgeInstanceChannelResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *CreateEdgeInstanceChannelResponseBody) SetErrorMessage(v string) *CreateEdgeInstanceChannelResponseBody {
-	s.ErrorMessage = &v
+func (s *CreateEdgeInstanceChannelResponseBody) SetSuccess(v bool) *CreateEdgeInstanceChannelResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -5755,8 +5838,13 @@ func (s *CreateEdgeInstanceChannelResponseBody) SetCode(v string) *CreateEdgeIns
 	return s
 }
 
-func (s *CreateEdgeInstanceChannelResponseBody) SetSuccess(v bool) *CreateEdgeInstanceChannelResponseBody {
-	s.Success = &v
+func (s *CreateEdgeInstanceChannelResponseBody) SetErrorMessage(v string) *CreateEdgeInstanceChannelResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateEdgeInstanceChannelResponseBody) SetData(v string) *CreateEdgeInstanceChannelResponseBody {
+	s.Data = &v
 	return s
 }
 
@@ -5825,11 +5913,11 @@ func (s *CreateEdgeInstanceDeploymentRequest) SetType(v string) *CreateEdgeInsta
 }
 
 type CreateEdgeInstanceDeploymentResponseBody struct {
-	DeploymentId *string `json:"DeploymentId,omitempty" xml:"DeploymentId,omitempty"`
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	DeploymentId *string `json:"DeploymentId,omitempty" xml:"DeploymentId,omitempty"`
 }
 
 func (s CreateEdgeInstanceDeploymentResponseBody) String() string {
@@ -5840,18 +5928,13 @@ func (s CreateEdgeInstanceDeploymentResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateEdgeInstanceDeploymentResponseBody) SetDeploymentId(v string) *CreateEdgeInstanceDeploymentResponseBody {
-	s.DeploymentId = &v
-	return s
-}
-
 func (s *CreateEdgeInstanceDeploymentResponseBody) SetRequestId(v string) *CreateEdgeInstanceDeploymentResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *CreateEdgeInstanceDeploymentResponseBody) SetErrorMessage(v string) *CreateEdgeInstanceDeploymentResponseBody {
-	s.ErrorMessage = &v
+func (s *CreateEdgeInstanceDeploymentResponseBody) SetSuccess(v bool) *CreateEdgeInstanceDeploymentResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -5860,8 +5943,13 @@ func (s *CreateEdgeInstanceDeploymentResponseBody) SetCode(v string) *CreateEdge
 	return s
 }
 
-func (s *CreateEdgeInstanceDeploymentResponseBody) SetSuccess(v bool) *CreateEdgeInstanceDeploymentResponseBody {
-	s.Success = &v
+func (s *CreateEdgeInstanceDeploymentResponseBody) SetErrorMessage(v string) *CreateEdgeInstanceDeploymentResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateEdgeInstanceDeploymentResponseBody) SetDeploymentId(v string) *CreateEdgeInstanceDeploymentResponseBody {
+	s.DeploymentId = &v
 	return s
 }
 
@@ -5949,10 +6037,10 @@ func (s *CreateEdgeOssPreSignedAddressRequest) SetResourceVersion(v string) *Cre
 
 type CreateEdgeOssPreSignedAddressResponseBody struct {
 	RequestId    *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data         *CreateEdgeOssPreSignedAddressResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                                        `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string                                        `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Data         *CreateEdgeOssPreSignedAddressResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s CreateEdgeOssPreSignedAddressResponseBody) String() string {
@@ -5968,13 +6056,8 @@ func (s *CreateEdgeOssPreSignedAddressResponseBody) SetRequestId(v string) *Crea
 	return s
 }
 
-func (s *CreateEdgeOssPreSignedAddressResponseBody) SetData(v *CreateEdgeOssPreSignedAddressResponseBodyData) *CreateEdgeOssPreSignedAddressResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *CreateEdgeOssPreSignedAddressResponseBody) SetErrorMessage(v string) *CreateEdgeOssPreSignedAddressResponseBody {
-	s.ErrorMessage = &v
+func (s *CreateEdgeOssPreSignedAddressResponseBody) SetSuccess(v bool) *CreateEdgeOssPreSignedAddressResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -5983,14 +6066,19 @@ func (s *CreateEdgeOssPreSignedAddressResponseBody) SetCode(v string) *CreateEdg
 	return s
 }
 
-func (s *CreateEdgeOssPreSignedAddressResponseBody) SetSuccess(v bool) *CreateEdgeOssPreSignedAddressResponseBody {
-	s.Success = &v
+func (s *CreateEdgeOssPreSignedAddressResponseBody) SetErrorMessage(v string) *CreateEdgeOssPreSignedAddressResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateEdgeOssPreSignedAddressResponseBody) SetData(v *CreateEdgeOssPreSignedAddressResponseBodyData) *CreateEdgeOssPreSignedAddressResponseBody {
+	s.Data = v
 	return s
 }
 
 type CreateEdgeOssPreSignedAddressResponseBodyData struct {
-	OssAddress          *string `json:"OssAddress,omitempty" xml:"OssAddress,omitempty"`
 	OssPreSignedAddress *string `json:"OssPreSignedAddress,omitempty" xml:"OssPreSignedAddress,omitempty"`
+	OssAddress          *string `json:"OssAddress,omitempty" xml:"OssAddress,omitempty"`
 }
 
 func (s CreateEdgeOssPreSignedAddressResponseBodyData) String() string {
@@ -6001,13 +6089,13 @@ func (s CreateEdgeOssPreSignedAddressResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *CreateEdgeOssPreSignedAddressResponseBodyData) SetOssAddress(v string) *CreateEdgeOssPreSignedAddressResponseBodyData {
-	s.OssAddress = &v
+func (s *CreateEdgeOssPreSignedAddressResponseBodyData) SetOssPreSignedAddress(v string) *CreateEdgeOssPreSignedAddressResponseBodyData {
+	s.OssPreSignedAddress = &v
 	return s
 }
 
-func (s *CreateEdgeOssPreSignedAddressResponseBodyData) SetOssPreSignedAddress(v string) *CreateEdgeOssPreSignedAddressResponseBodyData {
-	s.OssPreSignedAddress = &v
+func (s *CreateEdgeOssPreSignedAddressResponseBodyData) SetOssAddress(v string) *CreateEdgeOssPreSignedAddressResponseBodyData {
+	s.OssAddress = &v
 	return s
 }
 
@@ -6035,17 +6123,17 @@ func (s *CreateEdgeOssPreSignedAddressResponse) SetBody(v *CreateEdgeOssPreSigne
 }
 
 type CreateJobRequest struct {
-	ApiProduct    *string                `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
-	ApiRevision   *string                `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
-	IotInstanceId *string                `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	Description   *string                `json:"Description,omitempty" xml:"Description,omitempty"`
-	JobDocument   *string                `json:"JobDocument,omitempty" xml:"JobDocument,omitempty"`
-	Type          *string                `json:"Type,omitempty" xml:"Type,omitempty"`
-	JobFile       map[string]interface{} `json:"JobFile,omitempty" xml:"JobFile,omitempty"`
-	JobName       *string                `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	TimeoutConfig map[string]interface{} `json:"TimeoutConfig,omitempty" xml:"TimeoutConfig,omitempty"`
-	RolloutConfig map[string]interface{} `json:"RolloutConfig,omitempty" xml:"RolloutConfig,omitempty"`
-	TargetConfig  map[string]interface{} `json:"TargetConfig,omitempty" xml:"TargetConfig,omitempty"`
+	ApiProduct    *string `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
+	ApiRevision   *string `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	JobDocument   *string `json:"JobDocument,omitempty" xml:"JobDocument,omitempty"`
+	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	JobFile       *string `json:"JobFile,omitempty" xml:"JobFile,omitempty"`
+	JobName       *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	TimeoutConfig *string `json:"TimeoutConfig,omitempty" xml:"TimeoutConfig,omitempty"`
+	RolloutConfig *string `json:"RolloutConfig,omitempty" xml:"RolloutConfig,omitempty"`
+	TargetConfig  *string `json:"TargetConfig,omitempty" xml:"TargetConfig,omitempty"`
 }
 
 func (s CreateJobRequest) String() string {
@@ -6086,8 +6174,8 @@ func (s *CreateJobRequest) SetType(v string) *CreateJobRequest {
 	return s
 }
 
-func (s *CreateJobRequest) SetJobFile(v map[string]interface{}) *CreateJobRequest {
-	s.JobFile = v
+func (s *CreateJobRequest) SetJobFile(v string) *CreateJobRequest {
+	s.JobFile = &v
 	return s
 }
 
@@ -6096,103 +6184,26 @@ func (s *CreateJobRequest) SetJobName(v string) *CreateJobRequest {
 	return s
 }
 
-func (s *CreateJobRequest) SetTimeoutConfig(v map[string]interface{}) *CreateJobRequest {
-	s.TimeoutConfig = v
+func (s *CreateJobRequest) SetTimeoutConfig(v string) *CreateJobRequest {
+	s.TimeoutConfig = &v
 	return s
 }
 
-func (s *CreateJobRequest) SetRolloutConfig(v map[string]interface{}) *CreateJobRequest {
-	s.RolloutConfig = v
+func (s *CreateJobRequest) SetRolloutConfig(v string) *CreateJobRequest {
+	s.RolloutConfig = &v
 	return s
 }
 
-func (s *CreateJobRequest) SetTargetConfig(v map[string]interface{}) *CreateJobRequest {
-	s.TargetConfig = v
-	return s
-}
-
-type CreateJobShrinkRequest struct {
-	ApiProduct          *string `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
-	ApiRevision         *string `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
-	IotInstanceId       *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	JobDocument         *string `json:"JobDocument,omitempty" xml:"JobDocument,omitempty"`
-	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	JobFileShrink       *string `json:"JobFile,omitempty" xml:"JobFile,omitempty"`
-	JobName             *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	TimeoutConfigShrink *string `json:"TimeoutConfig,omitempty" xml:"TimeoutConfig,omitempty"`
-	RolloutConfigShrink *string `json:"RolloutConfig,omitempty" xml:"RolloutConfig,omitempty"`
-	TargetConfigShrink  *string `json:"TargetConfig,omitempty" xml:"TargetConfig,omitempty"`
-}
-
-func (s CreateJobShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateJobShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateJobShrinkRequest) SetApiProduct(v string) *CreateJobShrinkRequest {
-	s.ApiProduct = &v
-	return s
-}
-
-func (s *CreateJobShrinkRequest) SetApiRevision(v string) *CreateJobShrinkRequest {
-	s.ApiRevision = &v
-	return s
-}
-
-func (s *CreateJobShrinkRequest) SetIotInstanceId(v string) *CreateJobShrinkRequest {
-	s.IotInstanceId = &v
-	return s
-}
-
-func (s *CreateJobShrinkRequest) SetDescription(v string) *CreateJobShrinkRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *CreateJobShrinkRequest) SetJobDocument(v string) *CreateJobShrinkRequest {
-	s.JobDocument = &v
-	return s
-}
-
-func (s *CreateJobShrinkRequest) SetType(v string) *CreateJobShrinkRequest {
-	s.Type = &v
-	return s
-}
-
-func (s *CreateJobShrinkRequest) SetJobFileShrink(v string) *CreateJobShrinkRequest {
-	s.JobFileShrink = &v
-	return s
-}
-
-func (s *CreateJobShrinkRequest) SetJobName(v string) *CreateJobShrinkRequest {
-	s.JobName = &v
-	return s
-}
-
-func (s *CreateJobShrinkRequest) SetTimeoutConfigShrink(v string) *CreateJobShrinkRequest {
-	s.TimeoutConfigShrink = &v
-	return s
-}
-
-func (s *CreateJobShrinkRequest) SetRolloutConfigShrink(v string) *CreateJobShrinkRequest {
-	s.RolloutConfigShrink = &v
-	return s
-}
-
-func (s *CreateJobShrinkRequest) SetTargetConfigShrink(v string) *CreateJobShrinkRequest {
-	s.TargetConfigShrink = &v
+func (s *CreateJobRequest) SetTargetConfig(v string) *CreateJobRequest {
+	s.TargetConfig = &v
 	return s
 }
 
 type CreateJobResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	JobId        *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
@@ -6209,8 +6220,8 @@ func (s *CreateJobResponseBody) SetRequestId(v string) *CreateJobResponseBody {
 	return s
 }
 
-func (s *CreateJobResponseBody) SetErrorMessage(v string) *CreateJobResponseBody {
-	s.ErrorMessage = &v
+func (s *CreateJobResponseBody) SetSuccess(v bool) *CreateJobResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -6219,8 +6230,8 @@ func (s *CreateJobResponseBody) SetCode(v string) *CreateJobResponseBody {
 	return s
 }
 
-func (s *CreateJobResponseBody) SetSuccess(v bool) *CreateJobResponseBody {
-	s.Success = &v
+func (s *CreateJobResponseBody) SetErrorMessage(v string) *CreateJobResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -6317,11 +6328,11 @@ func (s *CreateLoRaNodesTaskRequestDeviceInfo) SetPinCode(v string) *CreateLoRaN
 }
 
 type CreateLoRaNodesTaskResponseBody struct {
-	TaskId       *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	TaskId       *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CreateLoRaNodesTaskResponseBody) String() string {
@@ -6332,18 +6343,13 @@ func (s CreateLoRaNodesTaskResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateLoRaNodesTaskResponseBody) SetTaskId(v string) *CreateLoRaNodesTaskResponseBody {
-	s.TaskId = &v
-	return s
-}
-
 func (s *CreateLoRaNodesTaskResponseBody) SetRequestId(v string) *CreateLoRaNodesTaskResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *CreateLoRaNodesTaskResponseBody) SetErrorMessage(v string) *CreateLoRaNodesTaskResponseBody {
-	s.ErrorMessage = &v
+func (s *CreateLoRaNodesTaskResponseBody) SetSuccess(v bool) *CreateLoRaNodesTaskResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -6352,8 +6358,13 @@ func (s *CreateLoRaNodesTaskResponseBody) SetCode(v string) *CreateLoRaNodesTask
 	return s
 }
 
-func (s *CreateLoRaNodesTaskResponseBody) SetSuccess(v bool) *CreateLoRaNodesTaskResponseBody {
-	s.Success = &v
+func (s *CreateLoRaNodesTaskResponseBody) SetErrorMessage(v string) *CreateLoRaNodesTaskResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateLoRaNodesTaskResponseBody) SetTaskId(v string) *CreateLoRaNodesTaskResponseBody {
+	s.TaskId = &v
 	return s
 }
 
@@ -6386,13 +6397,13 @@ type CreateOTADynamicUpgradeJobRequest struct {
 	IotInstanceId    *string                                 `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 	FirmwareId       *string                                 `json:"FirmwareId,omitempty" xml:"FirmwareId,omitempty"`
 	ProductKey       *string                                 `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	SrcVersion       []*string                               `json:"SrcVersion,omitempty" xml:"SrcVersion,omitempty" type:"Repeated"`
 	RetryInterval    *int32                                  `json:"RetryInterval,omitempty" xml:"RetryInterval,omitempty"`
 	RetryCount       *int32                                  `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
 	TimeoutInMinutes *int32                                  `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
 	MaximumPerMinute *int32                                  `json:"MaximumPerMinute,omitempty" xml:"MaximumPerMinute,omitempty"`
 	OverwriteMode    *int32                                  `json:"OverwriteMode,omitempty" xml:"OverwriteMode,omitempty"`
 	DynamicMode      *int32                                  `json:"DynamicMode,omitempty" xml:"DynamicMode,omitempty"`
-	SrcVersion       []*string                               `json:"SrcVersion,omitempty" xml:"SrcVersion,omitempty" type:"Repeated"`
 	Tag              []*CreateOTADynamicUpgradeJobRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -6429,6 +6440,11 @@ func (s *CreateOTADynamicUpgradeJobRequest) SetProductKey(v string) *CreateOTADy
 	return s
 }
 
+func (s *CreateOTADynamicUpgradeJobRequest) SetSrcVersion(v []*string) *CreateOTADynamicUpgradeJobRequest {
+	s.SrcVersion = v
+	return s
+}
+
 func (s *CreateOTADynamicUpgradeJobRequest) SetRetryInterval(v int32) *CreateOTADynamicUpgradeJobRequest {
 	s.RetryInterval = &v
 	return s
@@ -6456,11 +6472,6 @@ func (s *CreateOTADynamicUpgradeJobRequest) SetOverwriteMode(v int32) *CreateOTA
 
 func (s *CreateOTADynamicUpgradeJobRequest) SetDynamicMode(v int32) *CreateOTADynamicUpgradeJobRequest {
 	s.DynamicMode = &v
-	return s
-}
-
-func (s *CreateOTADynamicUpgradeJobRequest) SetSrcVersion(v []*string) *CreateOTADynamicUpgradeJobRequest {
-	s.SrcVersion = v
 	return s
 }
 
@@ -6494,10 +6505,10 @@ func (s *CreateOTADynamicUpgradeJobRequestTag) SetValue(v string) *CreateOTADyna
 
 type CreateOTADynamicUpgradeJobResponseBody struct {
 	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data         *CreateOTADynamicUpgradeJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                                     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string                                     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Data         *CreateOTADynamicUpgradeJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s CreateOTADynamicUpgradeJobResponseBody) String() string {
@@ -6513,13 +6524,8 @@ func (s *CreateOTADynamicUpgradeJobResponseBody) SetRequestId(v string) *CreateO
 	return s
 }
 
-func (s *CreateOTADynamicUpgradeJobResponseBody) SetData(v *CreateOTADynamicUpgradeJobResponseBodyData) *CreateOTADynamicUpgradeJobResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *CreateOTADynamicUpgradeJobResponseBody) SetErrorMessage(v string) *CreateOTADynamicUpgradeJobResponseBody {
-	s.ErrorMessage = &v
+func (s *CreateOTADynamicUpgradeJobResponseBody) SetSuccess(v bool) *CreateOTADynamicUpgradeJobResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -6528,8 +6534,13 @@ func (s *CreateOTADynamicUpgradeJobResponseBody) SetCode(v string) *CreateOTADyn
 	return s
 }
 
-func (s *CreateOTADynamicUpgradeJobResponseBody) SetSuccess(v bool) *CreateOTADynamicUpgradeJobResponseBody {
-	s.Success = &v
+func (s *CreateOTADynamicUpgradeJobResponseBody) SetErrorMessage(v string) *CreateOTADynamicUpgradeJobResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateOTADynamicUpgradeJobResponseBody) SetData(v *CreateOTADynamicUpgradeJobResponseBodyData) *CreateOTADynamicUpgradeJobResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -6682,10 +6693,10 @@ func (s *CreateOTAFirmwareRequest) SetNeedToVerify(v bool) *CreateOTAFirmwareReq
 
 type CreateOTAFirmwareResponseBody struct {
 	RequestId    *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data         *CreateOTAFirmwareResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                            `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string                            `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Data         *CreateOTAFirmwareResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s CreateOTAFirmwareResponseBody) String() string {
@@ -6701,13 +6712,8 @@ func (s *CreateOTAFirmwareResponseBody) SetRequestId(v string) *CreateOTAFirmwar
 	return s
 }
 
-func (s *CreateOTAFirmwareResponseBody) SetData(v *CreateOTAFirmwareResponseBodyData) *CreateOTAFirmwareResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *CreateOTAFirmwareResponseBody) SetErrorMessage(v string) *CreateOTAFirmwareResponseBody {
-	s.ErrorMessage = &v
+func (s *CreateOTAFirmwareResponseBody) SetSuccess(v bool) *CreateOTAFirmwareResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -6716,14 +6722,19 @@ func (s *CreateOTAFirmwareResponseBody) SetCode(v string) *CreateOTAFirmwareResp
 	return s
 }
 
-func (s *CreateOTAFirmwareResponseBody) SetSuccess(v bool) *CreateOTAFirmwareResponseBody {
-	s.Success = &v
+func (s *CreateOTAFirmwareResponseBody) SetErrorMessage(v string) *CreateOTAFirmwareResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateOTAFirmwareResponseBody) SetData(v *CreateOTAFirmwareResponseBodyData) *CreateOTAFirmwareResponseBody {
+	s.Data = v
 	return s
 }
 
 type CreateOTAFirmwareResponseBodyData struct {
-	UtcCreate  *string `json:"UtcCreate,omitempty" xml:"UtcCreate,omitempty"`
 	FirmwareId *string `json:"FirmwareId,omitempty" xml:"FirmwareId,omitempty"`
+	UtcCreate  *string `json:"UtcCreate,omitempty" xml:"UtcCreate,omitempty"`
 }
 
 func (s CreateOTAFirmwareResponseBodyData) String() string {
@@ -6734,13 +6745,13 @@ func (s CreateOTAFirmwareResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *CreateOTAFirmwareResponseBodyData) SetUtcCreate(v string) *CreateOTAFirmwareResponseBodyData {
-	s.UtcCreate = &v
+func (s *CreateOTAFirmwareResponseBodyData) SetFirmwareId(v string) *CreateOTAFirmwareResponseBodyData {
+	s.FirmwareId = &v
 	return s
 }
 
-func (s *CreateOTAFirmwareResponseBodyData) SetFirmwareId(v string) *CreateOTAFirmwareResponseBodyData {
-	s.FirmwareId = &v
+func (s *CreateOTAFirmwareResponseBodyData) SetUtcCreate(v string) *CreateOTAFirmwareResponseBodyData {
+	s.UtcCreate = &v
 	return s
 }
 
@@ -6822,9 +6833,9 @@ func (s *CreateOTAModuleRequest) SetProductKey(v string) *CreateOTAModuleRequest
 
 type CreateOTAModuleResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s CreateOTAModuleResponseBody) String() string {
@@ -6840,8 +6851,8 @@ func (s *CreateOTAModuleResponseBody) SetRequestId(v string) *CreateOTAModuleRes
 	return s
 }
 
-func (s *CreateOTAModuleResponseBody) SetErrorMessage(v string) *CreateOTAModuleResponseBody {
-	s.ErrorMessage = &v
+func (s *CreateOTAModuleResponseBody) SetSuccess(v bool) *CreateOTAModuleResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -6850,8 +6861,8 @@ func (s *CreateOTAModuleResponseBody) SetCode(v string) *CreateOTAModuleResponse
 	return s
 }
 
-func (s *CreateOTAModuleResponseBody) SetSuccess(v bool) *CreateOTAModuleResponseBody {
-	s.Success = &v
+func (s *CreateOTAModuleResponseBody) SetErrorMessage(v string) *CreateOTAModuleResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -6885,18 +6896,18 @@ type CreateOTAStaticUpgradeJobRequest struct {
 	FirmwareId         *string                                `json:"FirmwareId,omitempty" xml:"FirmwareId,omitempty"`
 	ProductKey         *string                                `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
 	TargetSelection    *string                                `json:"TargetSelection,omitempty" xml:"TargetSelection,omitempty"`
+	SrcVersion         []*string                              `json:"SrcVersion,omitempty" xml:"SrcVersion,omitempty" type:"Repeated"`
 	ScheduleTime       *int64                                 `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
 	RetryInterval      *int32                                 `json:"RetryInterval,omitempty" xml:"RetryInterval,omitempty"`
 	RetryCount         *int32                                 `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
 	TimeoutInMinutes   *int32                                 `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
 	MaximumPerMinute   *int32                                 `json:"MaximumPerMinute,omitempty" xml:"MaximumPerMinute,omitempty"`
 	GrayPercent        *string                                `json:"GrayPercent,omitempty" xml:"GrayPercent,omitempty"`
+	TargetDeviceName   []*string                              `json:"TargetDeviceName,omitempty" xml:"TargetDeviceName,omitempty" type:"Repeated"`
 	ScheduleFinishTime *int64                                 `json:"ScheduleFinishTime,omitempty" xml:"ScheduleFinishTime,omitempty"`
 	OverwriteMode      *int32                                 `json:"OverwriteMode,omitempty" xml:"OverwriteMode,omitempty"`
-	DnListFileUrl      *string                                `json:"DnListFileUrl,omitempty" xml:"DnListFileUrl,omitempty"`
-	SrcVersion         []*string                              `json:"SrcVersion,omitempty" xml:"SrcVersion,omitempty" type:"Repeated"`
-	TargetDeviceName   []*string                              `json:"TargetDeviceName,omitempty" xml:"TargetDeviceName,omitempty" type:"Repeated"`
 	Tag                []*CreateOTAStaticUpgradeJobRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	DnListFileUrl      *string                                `json:"DnListFileUrl,omitempty" xml:"DnListFileUrl,omitempty"`
 }
 
 func (s CreateOTAStaticUpgradeJobRequest) String() string {
@@ -6937,6 +6948,11 @@ func (s *CreateOTAStaticUpgradeJobRequest) SetTargetSelection(v string) *CreateO
 	return s
 }
 
+func (s *CreateOTAStaticUpgradeJobRequest) SetSrcVersion(v []*string) *CreateOTAStaticUpgradeJobRequest {
+	s.SrcVersion = v
+	return s
+}
+
 func (s *CreateOTAStaticUpgradeJobRequest) SetScheduleTime(v int64) *CreateOTAStaticUpgradeJobRequest {
 	s.ScheduleTime = &v
 	return s
@@ -6967,6 +6983,11 @@ func (s *CreateOTAStaticUpgradeJobRequest) SetGrayPercent(v string) *CreateOTASt
 	return s
 }
 
+func (s *CreateOTAStaticUpgradeJobRequest) SetTargetDeviceName(v []*string) *CreateOTAStaticUpgradeJobRequest {
+	s.TargetDeviceName = v
+	return s
+}
+
 func (s *CreateOTAStaticUpgradeJobRequest) SetScheduleFinishTime(v int64) *CreateOTAStaticUpgradeJobRequest {
 	s.ScheduleFinishTime = &v
 	return s
@@ -6977,23 +6998,13 @@ func (s *CreateOTAStaticUpgradeJobRequest) SetOverwriteMode(v int32) *CreateOTAS
 	return s
 }
 
-func (s *CreateOTAStaticUpgradeJobRequest) SetDnListFileUrl(v string) *CreateOTAStaticUpgradeJobRequest {
-	s.DnListFileUrl = &v
-	return s
-}
-
-func (s *CreateOTAStaticUpgradeJobRequest) SetSrcVersion(v []*string) *CreateOTAStaticUpgradeJobRequest {
-	s.SrcVersion = v
-	return s
-}
-
-func (s *CreateOTAStaticUpgradeJobRequest) SetTargetDeviceName(v []*string) *CreateOTAStaticUpgradeJobRequest {
-	s.TargetDeviceName = v
-	return s
-}
-
 func (s *CreateOTAStaticUpgradeJobRequest) SetTag(v []*CreateOTAStaticUpgradeJobRequestTag) *CreateOTAStaticUpgradeJobRequest {
 	s.Tag = v
+	return s
+}
+
+func (s *CreateOTAStaticUpgradeJobRequest) SetDnListFileUrl(v string) *CreateOTAStaticUpgradeJobRequest {
+	s.DnListFileUrl = &v
 	return s
 }
 
@@ -7022,10 +7033,10 @@ func (s *CreateOTAStaticUpgradeJobRequestTag) SetValue(v string) *CreateOTAStati
 
 type CreateOTAStaticUpgradeJobResponseBody struct {
 	RequestId    *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data         *CreateOTAStaticUpgradeJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                                    `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string                                    `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Data         *CreateOTAStaticUpgradeJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s CreateOTAStaticUpgradeJobResponseBody) String() string {
@@ -7041,13 +7052,8 @@ func (s *CreateOTAStaticUpgradeJobResponseBody) SetRequestId(v string) *CreateOT
 	return s
 }
 
-func (s *CreateOTAStaticUpgradeJobResponseBody) SetData(v *CreateOTAStaticUpgradeJobResponseBodyData) *CreateOTAStaticUpgradeJobResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *CreateOTAStaticUpgradeJobResponseBody) SetErrorMessage(v string) *CreateOTAStaticUpgradeJobResponseBody {
-	s.ErrorMessage = &v
+func (s *CreateOTAStaticUpgradeJobResponseBody) SetSuccess(v bool) *CreateOTAStaticUpgradeJobResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -7056,8 +7062,13 @@ func (s *CreateOTAStaticUpgradeJobResponseBody) SetCode(v string) *CreateOTAStat
 	return s
 }
 
-func (s *CreateOTAStaticUpgradeJobResponseBody) SetSuccess(v bool) *CreateOTAStaticUpgradeJobResponseBody {
-	s.Success = &v
+func (s *CreateOTAStaticUpgradeJobResponseBody) SetErrorMessage(v string) *CreateOTAStaticUpgradeJobResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateOTAStaticUpgradeJobResponseBody) SetData(v *CreateOTAStaticUpgradeJobResponseBodyData) *CreateOTAStaticUpgradeJobResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -7162,10 +7173,10 @@ func (s *CreateOTAVerifyJobRequest) SetTargetDeviceName(v []*string) *CreateOTAV
 
 type CreateOTAVerifyJobResponseBody struct {
 	RequestId    *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data         *CreateOTAVerifyJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                             `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string                             `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Data         *CreateOTAVerifyJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s CreateOTAVerifyJobResponseBody) String() string {
@@ -7181,13 +7192,8 @@ func (s *CreateOTAVerifyJobResponseBody) SetRequestId(v string) *CreateOTAVerify
 	return s
 }
 
-func (s *CreateOTAVerifyJobResponseBody) SetData(v *CreateOTAVerifyJobResponseBodyData) *CreateOTAVerifyJobResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *CreateOTAVerifyJobResponseBody) SetErrorMessage(v string) *CreateOTAVerifyJobResponseBody {
-	s.ErrorMessage = &v
+func (s *CreateOTAVerifyJobResponseBody) SetSuccess(v bool) *CreateOTAVerifyJobResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -7196,8 +7202,13 @@ func (s *CreateOTAVerifyJobResponseBody) SetCode(v string) *CreateOTAVerifyJobRe
 	return s
 }
 
-func (s *CreateOTAVerifyJobResponseBody) SetSuccess(v bool) *CreateOTAVerifyJobResponseBody {
-	s.Success = &v
+func (s *CreateOTAVerifyJobResponseBody) SetErrorMessage(v string) *CreateOTAVerifyJobResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateOTAVerifyJobResponseBody) SetData(v *CreateOTAVerifyJobResponseBodyData) *CreateOTAVerifyJobResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -7380,11 +7391,11 @@ func (s *CreateProductRequest) SetRealTripartiteKey(v string) *CreateProductRequ
 
 type CreateProductResponseBody struct {
 	RequestId    *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data         *CreateProductResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                        `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	ProductKey   *string                        `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
 	Success      *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string                        `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ProductKey   *string                        `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	Data         *CreateProductResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s CreateProductResponseBody) String() string {
@@ -7400,13 +7411,8 @@ func (s *CreateProductResponseBody) SetRequestId(v string) *CreateProductRespons
 	return s
 }
 
-func (s *CreateProductResponseBody) SetData(v *CreateProductResponseBodyData) *CreateProductResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *CreateProductResponseBody) SetErrorMessage(v string) *CreateProductResponseBody {
-	s.ErrorMessage = &v
+func (s *CreateProductResponseBody) SetSuccess(v bool) *CreateProductResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -7415,27 +7421,32 @@ func (s *CreateProductResponseBody) SetCode(v string) *CreateProductResponseBody
 	return s
 }
 
+func (s *CreateProductResponseBody) SetErrorMessage(v string) *CreateProductResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
 func (s *CreateProductResponseBody) SetProductKey(v string) *CreateProductResponseBody {
 	s.ProductKey = &v
 	return s
 }
 
-func (s *CreateProductResponseBody) SetSuccess(v bool) *CreateProductResponseBody {
-	s.Success = &v
+func (s *CreateProductResponseBody) SetData(v *CreateProductResponseBodyData) *CreateProductResponseBody {
+	s.Data = v
 	return s
 }
 
 type CreateProductResponseBodyData struct {
-	AuthType            *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	DataFormat          *int32  `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
+	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	NodeType            *int32  `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 	ProductKey          *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
 	ProductName         *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	NodeType            *int32  `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Id2                 *bool   `json:"Id2,omitempty" xml:"Id2,omitempty"`
-	ProductSecret       *string `json:"ProductSecret,omitempty" xml:"ProductSecret,omitempty"`
-	ProtocolType        *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	DataFormat          *int32  `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
 	AliyunCommodityCode *string `json:"AliyunCommodityCode,omitempty" xml:"AliyunCommodityCode,omitempty"`
+	Id2                 *bool   `json:"Id2,omitempty" xml:"Id2,omitempty"`
+	ProtocolType        *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	AuthType            *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	ProductSecret       *string `json:"ProductSecret,omitempty" xml:"ProductSecret,omitempty"`
 }
 
 func (s CreateProductResponseBodyData) String() string {
@@ -7446,8 +7457,18 @@ func (s CreateProductResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *CreateProductResponseBodyData) SetAuthType(v string) *CreateProductResponseBodyData {
-	s.AuthType = &v
+func (s *CreateProductResponseBodyData) SetDataFormat(v int32) *CreateProductResponseBodyData {
+	s.DataFormat = &v
+	return s
+}
+
+func (s *CreateProductResponseBodyData) SetDescription(v string) *CreateProductResponseBodyData {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateProductResponseBodyData) SetNodeType(v int32) *CreateProductResponseBodyData {
+	s.NodeType = &v
 	return s
 }
 
@@ -7461,13 +7482,8 @@ func (s *CreateProductResponseBodyData) SetProductName(v string) *CreateProductR
 	return s
 }
 
-func (s *CreateProductResponseBodyData) SetNodeType(v int32) *CreateProductResponseBodyData {
-	s.NodeType = &v
-	return s
-}
-
-func (s *CreateProductResponseBodyData) SetDescription(v string) *CreateProductResponseBodyData {
-	s.Description = &v
+func (s *CreateProductResponseBodyData) SetAliyunCommodityCode(v string) *CreateProductResponseBodyData {
+	s.AliyunCommodityCode = &v
 	return s
 }
 
@@ -7476,23 +7492,18 @@ func (s *CreateProductResponseBodyData) SetId2(v bool) *CreateProductResponseBod
 	return s
 }
 
-func (s *CreateProductResponseBodyData) SetProductSecret(v string) *CreateProductResponseBodyData {
-	s.ProductSecret = &v
-	return s
-}
-
 func (s *CreateProductResponseBodyData) SetProtocolType(v string) *CreateProductResponseBodyData {
 	s.ProtocolType = &v
 	return s
 }
 
-func (s *CreateProductResponseBodyData) SetDataFormat(v int32) *CreateProductResponseBodyData {
-	s.DataFormat = &v
+func (s *CreateProductResponseBodyData) SetAuthType(v string) *CreateProductResponseBodyData {
+	s.AuthType = &v
 	return s
 }
 
-func (s *CreateProductResponseBodyData) SetAliyunCommodityCode(v string) *CreateProductResponseBodyData {
-	s.AliyunCommodityCode = &v
+func (s *CreateProductResponseBodyData) SetProductSecret(v string) *CreateProductResponseBodyData {
+	s.ProductSecret = &v
 	return s
 }
 
@@ -7519,14 +7530,137 @@ func (s *CreateProductResponse) SetBody(v *CreateProductResponseBody) *CreatePro
 	return s
 }
 
+type CreateProductDistributeJobRequest struct {
+	ApiProduct       *string `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
+	ApiRevision      *string `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
+	SourceInstanceId *string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
+	ProductKey       *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
+	TargetUid        *string `json:"TargetUid,omitempty" xml:"TargetUid,omitempty"`
+	Captcha          *string `json:"Captcha,omitempty" xml:"Captcha,omitempty"`
+	TargetAliyunId   *string `json:"TargetAliyunId,omitempty" xml:"TargetAliyunId,omitempty"`
+}
+
+func (s CreateProductDistributeJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProductDistributeJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProductDistributeJobRequest) SetApiProduct(v string) *CreateProductDistributeJobRequest {
+	s.ApiProduct = &v
+	return s
+}
+
+func (s *CreateProductDistributeJobRequest) SetApiRevision(v string) *CreateProductDistributeJobRequest {
+	s.ApiRevision = &v
+	return s
+}
+
+func (s *CreateProductDistributeJobRequest) SetSourceInstanceId(v string) *CreateProductDistributeJobRequest {
+	s.SourceInstanceId = &v
+	return s
+}
+
+func (s *CreateProductDistributeJobRequest) SetProductKey(v string) *CreateProductDistributeJobRequest {
+	s.ProductKey = &v
+	return s
+}
+
+func (s *CreateProductDistributeJobRequest) SetTargetInstanceId(v string) *CreateProductDistributeJobRequest {
+	s.TargetInstanceId = &v
+	return s
+}
+
+func (s *CreateProductDistributeJobRequest) SetTargetUid(v string) *CreateProductDistributeJobRequest {
+	s.TargetUid = &v
+	return s
+}
+
+func (s *CreateProductDistributeJobRequest) SetCaptcha(v string) *CreateProductDistributeJobRequest {
+	s.Captcha = &v
+	return s
+}
+
+func (s *CreateProductDistributeJobRequest) SetTargetAliyunId(v string) *CreateProductDistributeJobRequest {
+	s.TargetAliyunId = &v
+	return s
+}
+
+type CreateProductDistributeJobResponseBody struct {
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	JobId        *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s CreateProductDistributeJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProductDistributeJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProductDistributeJobResponseBody) SetRequestId(v string) *CreateProductDistributeJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateProductDistributeJobResponseBody) SetSuccess(v bool) *CreateProductDistributeJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateProductDistributeJobResponseBody) SetCode(v string) *CreateProductDistributeJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateProductDistributeJobResponseBody) SetErrorMessage(v string) *CreateProductDistributeJobResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateProductDistributeJobResponseBody) SetJobId(v string) *CreateProductDistributeJobResponseBody {
+	s.JobId = &v
+	return s
+}
+
+type CreateProductDistributeJobResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateProductDistributeJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateProductDistributeJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProductDistributeJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProductDistributeJobResponse) SetHeaders(v map[string]*string) *CreateProductDistributeJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateProductDistributeJobResponse) SetBody(v *CreateProductDistributeJobResponseBody) *CreateProductDistributeJobResponse {
+	s.Body = v
+	return s
+}
+
 type CreateProductTagsRequest struct {
 	ApiProduct        *string                               `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
 	ApiRevision       *string                               `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
 	IotInstanceId     *string                               `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 	ProductKey        *string                               `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	ProductTag        []*CreateProductTagsRequestProductTag `json:"ProductTag,omitempty" xml:"ProductTag,omitempty" type:"Repeated"`
 	RealTenantId      *string                               `json:"RealTenantId,omitempty" xml:"RealTenantId,omitempty"`
 	RealTripartiteKey *string                               `json:"RealTripartiteKey,omitempty" xml:"RealTripartiteKey,omitempty"`
-	ProductTag        []*CreateProductTagsRequestProductTag `json:"ProductTag,omitempty" xml:"ProductTag,omitempty" type:"Repeated"`
 }
 
 func (s CreateProductTagsRequest) String() string {
@@ -7557,6 +7691,11 @@ func (s *CreateProductTagsRequest) SetProductKey(v string) *CreateProductTagsReq
 	return s
 }
 
+func (s *CreateProductTagsRequest) SetProductTag(v []*CreateProductTagsRequestProductTag) *CreateProductTagsRequest {
+	s.ProductTag = v
+	return s
+}
+
 func (s *CreateProductTagsRequest) SetRealTenantId(v string) *CreateProductTagsRequest {
 	s.RealTenantId = &v
 	return s
@@ -7567,14 +7706,9 @@ func (s *CreateProductTagsRequest) SetRealTripartiteKey(v string) *CreateProduct
 	return s
 }
 
-func (s *CreateProductTagsRequest) SetProductTag(v []*CreateProductTagsRequestProductTag) *CreateProductTagsRequest {
-	s.ProductTag = v
-	return s
-}
-
 type CreateProductTagsRequestProductTag struct {
-	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s CreateProductTagsRequestProductTag) String() string {
@@ -7585,22 +7719,22 @@ func (s CreateProductTagsRequestProductTag) GoString() string {
 	return s.String()
 }
 
-func (s *CreateProductTagsRequestProductTag) SetTagValue(v string) *CreateProductTagsRequestProductTag {
-	s.TagValue = &v
-	return s
-}
-
 func (s *CreateProductTagsRequestProductTag) SetTagKey(v string) *CreateProductTagsRequestProductTag {
 	s.TagKey = &v
 	return s
 }
 
+func (s *CreateProductTagsRequestProductTag) SetTagValue(v string) *CreateProductTagsRequestProductTag {
+	s.TagValue = &v
+	return s
+}
+
 type CreateProductTagsResponseBody struct {
 	RequestId          *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	InvalidProductTags *CreateProductTagsResponseBodyInvalidProductTags `json:"InvalidProductTags,omitempty" xml:"InvalidProductTags,omitempty" type:"Struct"`
+	Success            *bool                                            `json:"Success,omitempty" xml:"Success,omitempty"`
 	ErrorMessage       *string                                          `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Code               *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success            *bool                                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	InvalidProductTags *CreateProductTagsResponseBodyInvalidProductTags `json:"InvalidProductTags,omitempty" xml:"InvalidProductTags,omitempty" type:"Struct"`
 }
 
 func (s CreateProductTagsResponseBody) String() string {
@@ -7616,8 +7750,8 @@ func (s *CreateProductTagsResponseBody) SetRequestId(v string) *CreateProductTag
 	return s
 }
 
-func (s *CreateProductTagsResponseBody) SetInvalidProductTags(v *CreateProductTagsResponseBodyInvalidProductTags) *CreateProductTagsResponseBody {
-	s.InvalidProductTags = v
+func (s *CreateProductTagsResponseBody) SetSuccess(v bool) *CreateProductTagsResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -7631,8 +7765,8 @@ func (s *CreateProductTagsResponseBody) SetCode(v string) *CreateProductTagsResp
 	return s
 }
 
-func (s *CreateProductTagsResponseBody) SetSuccess(v bool) *CreateProductTagsResponseBody {
-	s.Success = &v
+func (s *CreateProductTagsResponseBody) SetInvalidProductTags(v *CreateProductTagsResponseBodyInvalidProductTags) *CreateProductTagsResponseBody {
+	s.InvalidProductTags = v
 	return s
 }
 
@@ -7654,8 +7788,8 @@ func (s *CreateProductTagsResponseBodyInvalidProductTags) SetProductTag(v []*Cre
 }
 
 type CreateProductTagsResponseBodyInvalidProductTagsProductTag struct {
-	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s CreateProductTagsResponseBodyInvalidProductTagsProductTag) String() string {
@@ -7666,13 +7800,13 @@ func (s CreateProductTagsResponseBodyInvalidProductTagsProductTag) GoString() st
 	return s.String()
 }
 
-func (s *CreateProductTagsResponseBodyInvalidProductTagsProductTag) SetTagValue(v string) *CreateProductTagsResponseBodyInvalidProductTagsProductTag {
-	s.TagValue = &v
+func (s *CreateProductTagsResponseBodyInvalidProductTagsProductTag) SetTagKey(v string) *CreateProductTagsResponseBodyInvalidProductTagsProductTag {
+	s.TagKey = &v
 	return s
 }
 
-func (s *CreateProductTagsResponseBodyInvalidProductTagsProductTag) SetTagKey(v string) *CreateProductTagsResponseBodyInvalidProductTagsProductTag {
-	s.TagKey = &v
+func (s *CreateProductTagsResponseBodyInvalidProductTagsProductTag) SetTagValue(v string) *CreateProductTagsResponseBodyInvalidProductTagsProductTag {
+	s.TagValue = &v
 	return s
 }
 
@@ -7754,10 +7888,10 @@ func (s *CreateProductTopicRequest) SetDesc(v string) *CreateProductTopicRequest
 
 type CreateProductTopicResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TopicId      *int64  `json:"TopicId,omitempty" xml:"TopicId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	TopicId      *int64  `json:"TopicId,omitempty" xml:"TopicId,omitempty"`
 }
 
 func (s CreateProductTopicResponseBody) String() string {
@@ -7773,13 +7907,8 @@ func (s *CreateProductTopicResponseBody) SetRequestId(v string) *CreateProductTo
 	return s
 }
 
-func (s *CreateProductTopicResponseBody) SetTopicId(v int64) *CreateProductTopicResponseBody {
-	s.TopicId = &v
-	return s
-}
-
-func (s *CreateProductTopicResponseBody) SetErrorMessage(v string) *CreateProductTopicResponseBody {
-	s.ErrorMessage = &v
+func (s *CreateProductTopicResponseBody) SetSuccess(v bool) *CreateProductTopicResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -7788,8 +7917,13 @@ func (s *CreateProductTopicResponseBody) SetCode(v string) *CreateProductTopicRe
 	return s
 }
 
-func (s *CreateProductTopicResponseBody) SetSuccess(v bool) *CreateProductTopicResponseBody {
-	s.Success = &v
+func (s *CreateProductTopicResponseBody) SetErrorMessage(v string) *CreateProductTopicResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateProductTopicResponseBody) SetTopicId(v int64) *CreateProductTopicResponseBody {
+	s.TopicId = &v
 	return s
 }
 
@@ -7907,10 +8041,10 @@ func (s *CreateRuleRequest) SetTopic(v string) *CreateRuleRequest {
 
 type CreateRuleResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RuleId       *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RuleId       *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s CreateRuleResponseBody) String() string {
@@ -7926,13 +8060,8 @@ func (s *CreateRuleResponseBody) SetRequestId(v string) *CreateRuleResponseBody 
 	return s
 }
 
-func (s *CreateRuleResponseBody) SetRuleId(v int64) *CreateRuleResponseBody {
-	s.RuleId = &v
-	return s
-}
-
-func (s *CreateRuleResponseBody) SetErrorMessage(v string) *CreateRuleResponseBody {
-	s.ErrorMessage = &v
+func (s *CreateRuleResponseBody) SetSuccess(v bool) *CreateRuleResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -7941,8 +8070,13 @@ func (s *CreateRuleResponseBody) SetCode(v string) *CreateRuleResponseBody {
 	return s
 }
 
-func (s *CreateRuleResponseBody) SetSuccess(v bool) *CreateRuleResponseBody {
-	s.Success = &v
+func (s *CreateRuleResponseBody) SetErrorMessage(v string) *CreateRuleResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateRuleResponseBody) SetRuleId(v int64) *CreateRuleResponseBody {
+	s.RuleId = &v
 	return s
 }
 
@@ -8023,11 +8157,11 @@ func (s *CreateRuleActionRequest) SetErrorActionFlag(v bool) *CreateRuleActionRe
 }
 
 type CreateRuleActionResponseBody struct {
-	ActionId     *int64  `json:"ActionId,omitempty" xml:"ActionId,omitempty"`
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ActionId     *int64  `json:"ActionId,omitempty" xml:"ActionId,omitempty"`
 }
 
 func (s CreateRuleActionResponseBody) String() string {
@@ -8038,18 +8172,8 @@ func (s CreateRuleActionResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateRuleActionResponseBody) SetActionId(v int64) *CreateRuleActionResponseBody {
-	s.ActionId = &v
-	return s
-}
-
 func (s *CreateRuleActionResponseBody) SetRequestId(v string) *CreateRuleActionResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *CreateRuleActionResponseBody) SetErrorMessage(v string) *CreateRuleActionResponseBody {
-	s.ErrorMessage = &v
 	return s
 }
 
@@ -8060,6 +8184,16 @@ func (s *CreateRuleActionResponseBody) SetCode(v string) *CreateRuleActionRespon
 
 func (s *CreateRuleActionResponseBody) SetSuccess(v bool) *CreateRuleActionResponseBody {
 	s.Success = &v
+	return s
+}
+
+func (s *CreateRuleActionResponseBody) SetErrorMessage(v string) *CreateRuleActionResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateRuleActionResponseBody) SetActionId(v int64) *CreateRuleActionResponseBody {
+	s.ActionId = &v
 	return s
 }
 
@@ -8082,6 +8216,105 @@ func (s *CreateRuleActionResponse) SetHeaders(v map[string]*string) *CreateRuleA
 }
 
 func (s *CreateRuleActionResponse) SetBody(v *CreateRuleActionResponseBody) *CreateRuleActionResponse {
+	s.Body = v
+	return s
+}
+
+type CreateRulengDistributeJobRequest struct {
+	ApiProduct       *string `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
+	ApiRevision      *string `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
+	ProductKey       *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	SourceInstanceId *string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
+	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
+}
+
+func (s CreateRulengDistributeJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRulengDistributeJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRulengDistributeJobRequest) SetApiProduct(v string) *CreateRulengDistributeJobRequest {
+	s.ApiProduct = &v
+	return s
+}
+
+func (s *CreateRulengDistributeJobRequest) SetApiRevision(v string) *CreateRulengDistributeJobRequest {
+	s.ApiRevision = &v
+	return s
+}
+
+func (s *CreateRulengDistributeJobRequest) SetProductKey(v string) *CreateRulengDistributeJobRequest {
+	s.ProductKey = &v
+	return s
+}
+
+func (s *CreateRulengDistributeJobRequest) SetSourceInstanceId(v string) *CreateRulengDistributeJobRequest {
+	s.SourceInstanceId = &v
+	return s
+}
+
+func (s *CreateRulengDistributeJobRequest) SetTargetInstanceId(v string) *CreateRulengDistributeJobRequest {
+	s.TargetInstanceId = &v
+	return s
+}
+
+type CreateRulengDistributeJobResponseBody struct {
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+}
+
+func (s CreateRulengDistributeJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRulengDistributeJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRulengDistributeJobResponseBody) SetRequestId(v string) *CreateRulengDistributeJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateRulengDistributeJobResponseBody) SetSuccess(v bool) *CreateRulengDistributeJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateRulengDistributeJobResponseBody) SetCode(v string) *CreateRulengDistributeJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateRulengDistributeJobResponseBody) SetErrorMessage(v string) *CreateRulengDistributeJobResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+type CreateRulengDistributeJobResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateRulengDistributeJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateRulengDistributeJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRulengDistributeJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRulengDistributeJobResponse) SetHeaders(v map[string]*string) *CreateRulengDistributeJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateRulengDistributeJobResponse) SetBody(v *CreateRulengDistributeJobResponseBody) *CreateRulengDistributeJobResponse {
 	s.Body = v
 	return s
 }
@@ -8135,10 +8368,10 @@ func (s *CreateSceneRuleRequest) SetRuleDescription(v string) *CreateSceneRuleRe
 
 type CreateSceneRuleResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RuleId       *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RuleId       *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s CreateSceneRuleResponseBody) String() string {
@@ -8154,13 +8387,8 @@ func (s *CreateSceneRuleResponseBody) SetRequestId(v string) *CreateSceneRuleRes
 	return s
 }
 
-func (s *CreateSceneRuleResponseBody) SetRuleId(v string) *CreateSceneRuleResponseBody {
-	s.RuleId = &v
-	return s
-}
-
-func (s *CreateSceneRuleResponseBody) SetErrorMessage(v string) *CreateSceneRuleResponseBody {
-	s.ErrorMessage = &v
+func (s *CreateSceneRuleResponseBody) SetSuccess(v bool) *CreateSceneRuleResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -8169,8 +8397,13 @@ func (s *CreateSceneRuleResponseBody) SetCode(v string) *CreateSceneRuleResponse
 	return s
 }
 
-func (s *CreateSceneRuleResponseBody) SetSuccess(v bool) *CreateSceneRuleResponseBody {
-	s.Success = &v
+func (s *CreateSceneRuleResponseBody) SetErrorMessage(v string) *CreateSceneRuleResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateSceneRuleResponseBody) SetRuleId(v string) *CreateSceneRuleResponseBody {
+	s.RuleId = &v
 	return s
 }
 
@@ -8209,12 +8442,12 @@ type CreateSubscribeRelationRequest struct {
 	FoundDeviceListFlag     *bool     `json:"FoundDeviceListFlag,omitempty" xml:"FoundDeviceListFlag,omitempty"`
 	MnsConfiguration        *string   `json:"MnsConfiguration,omitempty" xml:"MnsConfiguration,omitempty"`
 	Type                    *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	ConsumerGroupIds        []*string `json:"ConsumerGroupIds,omitempty" xml:"ConsumerGroupIds,omitempty" type:"Repeated"`
 	OtaEventFlag            *bool     `json:"OtaEventFlag,omitempty" xml:"OtaEventFlag,omitempty"`
 	ThingHistoryFlag        *bool     `json:"ThingHistoryFlag,omitempty" xml:"ThingHistoryFlag,omitempty"`
 	DeviceTagFlag           *bool     `json:"DeviceTagFlag,omitempty" xml:"DeviceTagFlag,omitempty"`
 	OtaVersionFlag          *bool     `json:"OtaVersionFlag,omitempty" xml:"OtaVersionFlag,omitempty"`
 	OtaJobFlag              *bool     `json:"OtaJobFlag,omitempty" xml:"OtaJobFlag,omitempty"`
-	ConsumerGroupIds        []*string `json:"ConsumerGroupIds,omitempty" xml:"ConsumerGroupIds,omitempty" type:"Repeated"`
 }
 
 func (s CreateSubscribeRelationRequest) String() string {
@@ -8280,6 +8513,11 @@ func (s *CreateSubscribeRelationRequest) SetType(v string) *CreateSubscribeRelat
 	return s
 }
 
+func (s *CreateSubscribeRelationRequest) SetConsumerGroupIds(v []*string) *CreateSubscribeRelationRequest {
+	s.ConsumerGroupIds = v
+	return s
+}
+
 func (s *CreateSubscribeRelationRequest) SetOtaEventFlag(v bool) *CreateSubscribeRelationRequest {
 	s.OtaEventFlag = &v
 	return s
@@ -8305,16 +8543,11 @@ func (s *CreateSubscribeRelationRequest) SetOtaJobFlag(v bool) *CreateSubscribeR
 	return s
 }
 
-func (s *CreateSubscribeRelationRequest) SetConsumerGroupIds(v []*string) *CreateSubscribeRelationRequest {
-	s.ConsumerGroupIds = v
-	return s
-}
-
 type CreateSubscribeRelationResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s CreateSubscribeRelationResponseBody) String() string {
@@ -8330,8 +8563,8 @@ func (s *CreateSubscribeRelationResponseBody) SetRequestId(v string) *CreateSubs
 	return s
 }
 
-func (s *CreateSubscribeRelationResponseBody) SetErrorMessage(v string) *CreateSubscribeRelationResponseBody {
-	s.ErrorMessage = &v
+func (s *CreateSubscribeRelationResponseBody) SetSuccess(v bool) *CreateSubscribeRelationResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -8340,8 +8573,8 @@ func (s *CreateSubscribeRelationResponseBody) SetCode(v string) *CreateSubscribe
 	return s
 }
 
-func (s *CreateSubscribeRelationResponseBody) SetSuccess(v bool) *CreateSubscribeRelationResponseBody {
-	s.Success = &v
+func (s *CreateSubscribeRelationResponseBody) SetErrorMessage(v string) *CreateSubscribeRelationResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -8435,9 +8668,9 @@ func (s *CreateThingModelRequest) SetRealTripartiteKey(v string) *CreateThingMod
 
 type CreateThingModelResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s CreateThingModelResponseBody) String() string {
@@ -8453,8 +8686,8 @@ func (s *CreateThingModelResponseBody) SetRequestId(v string) *CreateThingModelR
 	return s
 }
 
-func (s *CreateThingModelResponseBody) SetErrorMessage(v string) *CreateThingModelResponseBody {
-	s.ErrorMessage = &v
+func (s *CreateThingModelResponseBody) SetSuccess(v bool) *CreateThingModelResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -8463,8 +8696,8 @@ func (s *CreateThingModelResponseBody) SetCode(v string) *CreateThingModelRespon
 	return s
 }
 
-func (s *CreateThingModelResponseBody) SetSuccess(v bool) *CreateThingModelResponseBody {
-	s.Success = &v
+func (s *CreateThingModelResponseBody) SetErrorMessage(v string) *CreateThingModelResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -8540,9 +8773,9 @@ func (s *CreateThingScriptRequest) SetScriptType(v string) *CreateThingScriptReq
 
 type CreateThingScriptResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s CreateThingScriptResponseBody) String() string {
@@ -8558,8 +8791,8 @@ func (s *CreateThingScriptResponseBody) SetRequestId(v string) *CreateThingScrip
 	return s
 }
 
-func (s *CreateThingScriptResponseBody) SetErrorMessage(v string) *CreateThingScriptResponseBody {
-	s.ErrorMessage = &v
+func (s *CreateThingScriptResponseBody) SetSuccess(v bool) *CreateThingScriptResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -8568,8 +8801,8 @@ func (s *CreateThingScriptResponseBody) SetCode(v string) *CreateThingScriptResp
 	return s
 }
 
-func (s *CreateThingScriptResponseBody) SetSuccess(v bool) *CreateThingScriptResponseBody {
-	s.Success = &v
+func (s *CreateThingScriptResponseBody) SetErrorMessage(v string) *CreateThingScriptResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -8600,8 +8833,8 @@ type CreateTopicRouteTableRequest struct {
 	ApiProduct    *string   `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
 	ApiRevision   *string   `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
 	IotInstanceId *string   `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	SrcTopic      *string   `json:"SrcTopic,omitempty" xml:"SrcTopic,omitempty"`
 	DstTopic      []*string `json:"DstTopic,omitempty" xml:"DstTopic,omitempty" type:"Repeated"`
+	SrcTopic      *string   `json:"SrcTopic,omitempty" xml:"SrcTopic,omitempty"`
 }
 
 func (s CreateTopicRouteTableRequest) String() string {
@@ -8627,23 +8860,23 @@ func (s *CreateTopicRouteTableRequest) SetIotInstanceId(v string) *CreateTopicRo
 	return s
 }
 
-func (s *CreateTopicRouteTableRequest) SetSrcTopic(v string) *CreateTopicRouteTableRequest {
-	s.SrcTopic = &v
-	return s
-}
-
 func (s *CreateTopicRouteTableRequest) SetDstTopic(v []*string) *CreateTopicRouteTableRequest {
 	s.DstTopic = v
 	return s
 }
 
+func (s *CreateTopicRouteTableRequest) SetSrcTopic(v string) *CreateTopicRouteTableRequest {
+	s.SrcTopic = &v
+	return s
+}
+
 type CreateTopicRouteTableResponseBody struct {
 	RequestId     *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	FailureTopics *CreateTopicRouteTableResponseBodyFailureTopics `json:"FailureTopics,omitempty" xml:"FailureTopics,omitempty" type:"Struct"`
-	ErrorMessage  *string                                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Success       *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
 	Code          *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
 	IsAllSucceed  *bool                                           `json:"IsAllSucceed,omitempty" xml:"IsAllSucceed,omitempty"`
-	Success       *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorMessage  *string                                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	FailureTopics *CreateTopicRouteTableResponseBodyFailureTopics `json:"FailureTopics,omitempty" xml:"FailureTopics,omitempty" type:"Struct"`
 }
 
 func (s CreateTopicRouteTableResponseBody) String() string {
@@ -8659,13 +8892,8 @@ func (s *CreateTopicRouteTableResponseBody) SetRequestId(v string) *CreateTopicR
 	return s
 }
 
-func (s *CreateTopicRouteTableResponseBody) SetFailureTopics(v *CreateTopicRouteTableResponseBodyFailureTopics) *CreateTopicRouteTableResponseBody {
-	s.FailureTopics = v
-	return s
-}
-
-func (s *CreateTopicRouteTableResponseBody) SetErrorMessage(v string) *CreateTopicRouteTableResponseBody {
-	s.ErrorMessage = &v
+func (s *CreateTopicRouteTableResponseBody) SetSuccess(v bool) *CreateTopicRouteTableResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -8679,13 +8907,18 @@ func (s *CreateTopicRouteTableResponseBody) SetIsAllSucceed(v bool) *CreateTopic
 	return s
 }
 
-func (s *CreateTopicRouteTableResponseBody) SetSuccess(v bool) *CreateTopicRouteTableResponseBody {
-	s.Success = &v
+func (s *CreateTopicRouteTableResponseBody) SetErrorMessage(v string) *CreateTopicRouteTableResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateTopicRouteTableResponseBody) SetFailureTopics(v *CreateTopicRouteTableResponseBodyFailureTopics) *CreateTopicRouteTableResponseBody {
+	s.FailureTopics = v
 	return s
 }
 
 type CreateTopicRouteTableResponseBodyFailureTopics struct {
-	Topic []map[string]interface{} `json:"Topic,omitempty" xml:"Topic,omitempty" type:"Repeated"`
+	Topic []map[string]*string `json:"Topic,omitempty" xml:"Topic,omitempty" type:"Repeated"`
 }
 
 func (s CreateTopicRouteTableResponseBodyFailureTopics) String() string {
@@ -8696,7 +8929,7 @@ func (s CreateTopicRouteTableResponseBodyFailureTopics) GoString() string {
 	return s.String()
 }
 
-func (s *CreateTopicRouteTableResponseBodyFailureTopics) SetTopic(v []map[string]interface{}) *CreateTopicRouteTableResponseBodyFailureTopics {
+func (s *CreateTopicRouteTableResponseBodyFailureTopics) SetTopic(v []map[string]*string) *CreateTopicRouteTableResponseBodyFailureTopics {
 	s.Topic = v
 	return s
 }
@@ -8720,105 +8953,6 @@ func (s *CreateTopicRouteTableResponse) SetHeaders(v map[string]*string) *Create
 }
 
 func (s *CreateTopicRouteTableResponse) SetBody(v *CreateTopicRouteTableResponseBody) *CreateTopicRouteTableResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteClientIdsRequest struct {
-	ApiProduct    *string `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
-	ApiRevision   *string `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
-	IotId         *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
-	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	AuthConfig    *string `json:"AuthConfig,omitempty" xml:"AuthConfig,omitempty"`
-}
-
-func (s DeleteClientIdsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteClientIdsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteClientIdsRequest) SetApiProduct(v string) *DeleteClientIdsRequest {
-	s.ApiProduct = &v
-	return s
-}
-
-func (s *DeleteClientIdsRequest) SetApiRevision(v string) *DeleteClientIdsRequest {
-	s.ApiRevision = &v
-	return s
-}
-
-func (s *DeleteClientIdsRequest) SetIotId(v string) *DeleteClientIdsRequest {
-	s.IotId = &v
-	return s
-}
-
-func (s *DeleteClientIdsRequest) SetIotInstanceId(v string) *DeleteClientIdsRequest {
-	s.IotInstanceId = &v
-	return s
-}
-
-func (s *DeleteClientIdsRequest) SetAuthConfig(v string) *DeleteClientIdsRequest {
-	s.AuthConfig = &v
-	return s
-}
-
-type DeleteClientIdsResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DeleteClientIdsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteClientIdsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteClientIdsResponseBody) SetRequestId(v string) *DeleteClientIdsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteClientIdsResponseBody) SetErrorMessage(v string) *DeleteClientIdsResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *DeleteClientIdsResponseBody) SetCode(v string) *DeleteClientIdsResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DeleteClientIdsResponseBody) SetSuccess(v bool) *DeleteClientIdsResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DeleteClientIdsResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteClientIdsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteClientIdsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteClientIdsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteClientIdsResponse) SetHeaders(v map[string]*string) *DeleteClientIdsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteClientIdsResponse) SetBody(v *DeleteClientIdsResponseBody) *DeleteClientIdsResponse {
 	s.Body = v
 	return s
 }
@@ -8860,9 +8994,9 @@ func (s *DeleteConsumerGroupRequest) SetGroupId(v string) *DeleteConsumerGroupRe
 
 type DeleteConsumerGroupResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteConsumerGroupResponseBody) String() string {
@@ -8878,6 +9012,11 @@ func (s *DeleteConsumerGroupResponseBody) SetRequestId(v string) *DeleteConsumer
 	return s
 }
 
+func (s *DeleteConsumerGroupResponseBody) SetSuccess(v bool) *DeleteConsumerGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
 func (s *DeleteConsumerGroupResponseBody) SetErrorMessage(v string) *DeleteConsumerGroupResponseBody {
 	s.ErrorMessage = &v
 	return s
@@ -8885,11 +9024,6 @@ func (s *DeleteConsumerGroupResponseBody) SetErrorMessage(v string) *DeleteConsu
 
 func (s *DeleteConsumerGroupResponseBody) SetCode(v string) *DeleteConsumerGroupResponseBody {
 	s.Code = &v
-	return s
-}
-
-func (s *DeleteConsumerGroupResponseBody) SetSuccess(v bool) *DeleteConsumerGroupResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -8959,9 +9093,9 @@ func (s *DeleteConsumerGroupSubscribeRelationRequest) SetProductKey(v string) *D
 
 type DeleteConsumerGroupSubscribeRelationResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s DeleteConsumerGroupSubscribeRelationResponseBody) String() string {
@@ -8977,8 +9111,8 @@ func (s *DeleteConsumerGroupSubscribeRelationResponseBody) SetRequestId(v string
 	return s
 }
 
-func (s *DeleteConsumerGroupSubscribeRelationResponseBody) SetErrorMessage(v string) *DeleteConsumerGroupSubscribeRelationResponseBody {
-	s.ErrorMessage = &v
+func (s *DeleteConsumerGroupSubscribeRelationResponseBody) SetSuccess(v bool) *DeleteConsumerGroupSubscribeRelationResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -8987,8 +9121,8 @@ func (s *DeleteConsumerGroupSubscribeRelationResponseBody) SetCode(v string) *De
 	return s
 }
 
-func (s *DeleteConsumerGroupSubscribeRelationResponseBody) SetSuccess(v bool) *DeleteConsumerGroupSubscribeRelationResponseBody {
-	s.Success = &v
+func (s *DeleteConsumerGroupSubscribeRelationResponseBody) SetErrorMessage(v string) *DeleteConsumerGroupSubscribeRelationResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -9076,9 +9210,9 @@ func (s *DeleteDeviceRequest) SetRealTripartiteKey(v string) *DeleteDeviceReques
 
 type DeleteDeviceResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s DeleteDeviceResponseBody) String() string {
@@ -9094,8 +9228,8 @@ func (s *DeleteDeviceResponseBody) SetRequestId(v string) *DeleteDeviceResponseB
 	return s
 }
 
-func (s *DeleteDeviceResponseBody) SetErrorMessage(v string) *DeleteDeviceResponseBody {
-	s.ErrorMessage = &v
+func (s *DeleteDeviceResponseBody) SetSuccess(v bool) *DeleteDeviceResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -9104,8 +9238,8 @@ func (s *DeleteDeviceResponseBody) SetCode(v string) *DeleteDeviceResponseBody {
 	return s
 }
 
-func (s *DeleteDeviceResponseBody) SetSuccess(v bool) *DeleteDeviceResponseBody {
-	s.Success = &v
+func (s *DeleteDeviceResponseBody) SetErrorMessage(v string) *DeleteDeviceResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -9128,6 +9262,93 @@ func (s *DeleteDeviceResponse) SetHeaders(v map[string]*string) *DeleteDeviceRes
 }
 
 func (s *DeleteDeviceResponse) SetBody(v *DeleteDeviceResponseBody) *DeleteDeviceResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDeviceDistributeJobRequest struct {
+	ApiProduct  *string `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
+	ApiRevision *string `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
+	JobId       *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s DeleteDeviceDistributeJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDeviceDistributeJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDeviceDistributeJobRequest) SetApiProduct(v string) *DeleteDeviceDistributeJobRequest {
+	s.ApiProduct = &v
+	return s
+}
+
+func (s *DeleteDeviceDistributeJobRequest) SetApiRevision(v string) *DeleteDeviceDistributeJobRequest {
+	s.ApiRevision = &v
+	return s
+}
+
+func (s *DeleteDeviceDistributeJobRequest) SetJobId(v string) *DeleteDeviceDistributeJobRequest {
+	s.JobId = &v
+	return s
+}
+
+type DeleteDeviceDistributeJobResponseBody struct {
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+}
+
+func (s DeleteDeviceDistributeJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDeviceDistributeJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDeviceDistributeJobResponseBody) SetRequestId(v string) *DeleteDeviceDistributeJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteDeviceDistributeJobResponseBody) SetSuccess(v bool) *DeleteDeviceDistributeJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DeleteDeviceDistributeJobResponseBody) SetCode(v string) *DeleteDeviceDistributeJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteDeviceDistributeJobResponseBody) SetErrorMessage(v string) *DeleteDeviceDistributeJobResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+type DeleteDeviceDistributeJobResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteDeviceDistributeJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteDeviceDistributeJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDeviceDistributeJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDeviceDistributeJobResponse) SetHeaders(v map[string]*string) *DeleteDeviceDistributeJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDeviceDistributeJobResponse) SetBody(v *DeleteDeviceDistributeJobResponseBody) *DeleteDeviceDistributeJobResponse {
 	s.Body = v
 	return s
 }
@@ -9187,9 +9408,9 @@ func (s *DeleteDeviceFileRequest) SetFileId(v string) *DeleteDeviceFileRequest {
 
 type DeleteDeviceFileResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s DeleteDeviceFileResponseBody) String() string {
@@ -9205,8 +9426,8 @@ func (s *DeleteDeviceFileResponseBody) SetRequestId(v string) *DeleteDeviceFileR
 	return s
 }
 
-func (s *DeleteDeviceFileResponseBody) SetErrorMessage(v string) *DeleteDeviceFileResponseBody {
-	s.ErrorMessage = &v
+func (s *DeleteDeviceFileResponseBody) SetSuccess(v bool) *DeleteDeviceFileResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -9215,8 +9436,8 @@ func (s *DeleteDeviceFileResponseBody) SetCode(v string) *DeleteDeviceFileRespon
 	return s
 }
 
-func (s *DeleteDeviceFileResponseBody) SetSuccess(v bool) *DeleteDeviceFileResponseBody {
-	s.Success = &v
+func (s *DeleteDeviceFileResponseBody) SetErrorMessage(v string) *DeleteDeviceFileResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -9292,9 +9513,9 @@ func (s *DeleteDeviceGroupRequest) SetRealTripartiteKey(v string) *DeleteDeviceG
 
 type DeleteDeviceGroupResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s DeleteDeviceGroupResponseBody) String() string {
@@ -9310,8 +9531,8 @@ func (s *DeleteDeviceGroupResponseBody) SetRequestId(v string) *DeleteDeviceGrou
 	return s
 }
 
-func (s *DeleteDeviceGroupResponseBody) SetErrorMessage(v string) *DeleteDeviceGroupResponseBody {
-	s.ErrorMessage = &v
+func (s *DeleteDeviceGroupResponseBody) SetSuccess(v bool) *DeleteDeviceGroupResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -9320,8 +9541,8 @@ func (s *DeleteDeviceGroupResponseBody) SetCode(v string) *DeleteDeviceGroupResp
 	return s
 }
 
-func (s *DeleteDeviceGroupResponseBody) SetSuccess(v bool) *DeleteDeviceGroupResponseBody {
-	s.Success = &v
+func (s *DeleteDeviceGroupResponseBody) SetErrorMessage(v string) *DeleteDeviceGroupResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -9403,9 +9624,9 @@ func (s *DeleteDevicePropRequest) SetIotId(v string) *DeleteDevicePropRequest {
 
 type DeleteDevicePropResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s DeleteDevicePropResponseBody) String() string {
@@ -9421,8 +9642,8 @@ func (s *DeleteDevicePropResponseBody) SetRequestId(v string) *DeleteDevicePropR
 	return s
 }
 
-func (s *DeleteDevicePropResponseBody) SetErrorMessage(v string) *DeleteDevicePropResponseBody {
-	s.ErrorMessage = &v
+func (s *DeleteDevicePropResponseBody) SetSuccess(v bool) *DeleteDevicePropResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -9431,8 +9652,8 @@ func (s *DeleteDevicePropResponseBody) SetCode(v string) *DeleteDevicePropRespon
 	return s
 }
 
-func (s *DeleteDevicePropResponseBody) SetSuccess(v bool) *DeleteDevicePropResponseBody {
-	s.Success = &v
+func (s *DeleteDevicePropResponseBody) SetErrorMessage(v string) *DeleteDevicePropResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -9496,9 +9717,9 @@ func (s *DeleteEdgeDriverRequest) SetDriverId(v string) *DeleteEdgeDriverRequest
 
 type DeleteEdgeDriverResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s DeleteEdgeDriverResponseBody) String() string {
@@ -9514,8 +9735,8 @@ func (s *DeleteEdgeDriverResponseBody) SetRequestId(v string) *DeleteEdgeDriverR
 	return s
 }
 
-func (s *DeleteEdgeDriverResponseBody) SetErrorMessage(v string) *DeleteEdgeDriverResponseBody {
-	s.ErrorMessage = &v
+func (s *DeleteEdgeDriverResponseBody) SetSuccess(v bool) *DeleteEdgeDriverResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -9524,8 +9745,8 @@ func (s *DeleteEdgeDriverResponseBody) SetCode(v string) *DeleteEdgeDriverRespon
 	return s
 }
 
-func (s *DeleteEdgeDriverResponseBody) SetSuccess(v bool) *DeleteEdgeDriverResponseBody {
-	s.Success = &v
+func (s *DeleteEdgeDriverResponseBody) SetErrorMessage(v string) *DeleteEdgeDriverResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -9595,9 +9816,9 @@ func (s *DeleteEdgeDriverVersionRequest) SetDriverVersion(v string) *DeleteEdgeD
 
 type DeleteEdgeDriverVersionResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s DeleteEdgeDriverVersionResponseBody) String() string {
@@ -9613,8 +9834,8 @@ func (s *DeleteEdgeDriverVersionResponseBody) SetRequestId(v string) *DeleteEdge
 	return s
 }
 
-func (s *DeleteEdgeDriverVersionResponseBody) SetErrorMessage(v string) *DeleteEdgeDriverVersionResponseBody {
-	s.ErrorMessage = &v
+func (s *DeleteEdgeDriverVersionResponseBody) SetSuccess(v bool) *DeleteEdgeDriverVersionResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -9623,8 +9844,8 @@ func (s *DeleteEdgeDriverVersionResponseBody) SetCode(v string) *DeleteEdgeDrive
 	return s
 }
 
-func (s *DeleteEdgeDriverVersionResponseBody) SetSuccess(v bool) *DeleteEdgeDriverVersionResponseBody {
-	s.Success = &v
+func (s *DeleteEdgeDriverVersionResponseBody) SetErrorMessage(v string) *DeleteEdgeDriverVersionResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -9688,9 +9909,9 @@ func (s *DeleteEdgeInstanceRequest) SetInstanceId(v string) *DeleteEdgeInstanceR
 
 type DeleteEdgeInstanceResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s DeleteEdgeInstanceResponseBody) String() string {
@@ -9706,8 +9927,8 @@ func (s *DeleteEdgeInstanceResponseBody) SetRequestId(v string) *DeleteEdgeInsta
 	return s
 }
 
-func (s *DeleteEdgeInstanceResponseBody) SetErrorMessage(v string) *DeleteEdgeInstanceResponseBody {
-	s.ErrorMessage = &v
+func (s *DeleteEdgeInstanceResponseBody) SetSuccess(v bool) *DeleteEdgeInstanceResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -9716,8 +9937,8 @@ func (s *DeleteEdgeInstanceResponseBody) SetCode(v string) *DeleteEdgeInstanceRe
 	return s
 }
 
-func (s *DeleteEdgeInstanceResponseBody) SetSuccess(v bool) *DeleteEdgeInstanceResponseBody {
-	s.Success = &v
+func (s *DeleteEdgeInstanceResponseBody) SetErrorMessage(v string) *DeleteEdgeInstanceResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -9781,9 +10002,9 @@ func (s *DeleteJobRequest) SetJobId(v string) *DeleteJobRequest {
 
 type DeleteJobResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s DeleteJobResponseBody) String() string {
@@ -9799,8 +10020,8 @@ func (s *DeleteJobResponseBody) SetRequestId(v string) *DeleteJobResponseBody {
 	return s
 }
 
-func (s *DeleteJobResponseBody) SetErrorMessage(v string) *DeleteJobResponseBody {
-	s.ErrorMessage = &v
+func (s *DeleteJobResponseBody) SetSuccess(v bool) *DeleteJobResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -9809,8 +10030,8 @@ func (s *DeleteJobResponseBody) SetCode(v string) *DeleteJobResponseBody {
 	return s
 }
 
-func (s *DeleteJobResponseBody) SetSuccess(v bool) *DeleteJobResponseBody {
-	s.Success = &v
+func (s *DeleteJobResponseBody) SetErrorMessage(v string) *DeleteJobResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -9874,9 +10095,9 @@ func (s *DeleteOTAFirmwareRequest) SetFirmwareId(v string) *DeleteOTAFirmwareReq
 
 type DeleteOTAFirmwareResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s DeleteOTAFirmwareResponseBody) String() string {
@@ -9892,8 +10113,8 @@ func (s *DeleteOTAFirmwareResponseBody) SetRequestId(v string) *DeleteOTAFirmwar
 	return s
 }
 
-func (s *DeleteOTAFirmwareResponseBody) SetErrorMessage(v string) *DeleteOTAFirmwareResponseBody {
-	s.ErrorMessage = &v
+func (s *DeleteOTAFirmwareResponseBody) SetSuccess(v bool) *DeleteOTAFirmwareResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -9902,8 +10123,8 @@ func (s *DeleteOTAFirmwareResponseBody) SetCode(v string) *DeleteOTAFirmwareResp
 	return s
 }
 
-func (s *DeleteOTAFirmwareResponseBody) SetSuccess(v bool) *DeleteOTAFirmwareResponseBody {
-	s.Success = &v
+func (s *DeleteOTAFirmwareResponseBody) SetErrorMessage(v string) *DeleteOTAFirmwareResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -9979,9 +10200,9 @@ func (s *DeleteOTAModuleRequest) SetAuthConfig(v string) *DeleteOTAModuleRequest
 
 type DeleteOTAModuleResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s DeleteOTAModuleResponseBody) String() string {
@@ -9997,8 +10218,8 @@ func (s *DeleteOTAModuleResponseBody) SetRequestId(v string) *DeleteOTAModuleRes
 	return s
 }
 
-func (s *DeleteOTAModuleResponseBody) SetErrorMessage(v string) *DeleteOTAModuleResponseBody {
-	s.ErrorMessage = &v
+func (s *DeleteOTAModuleResponseBody) SetSuccess(v bool) *DeleteOTAModuleResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -10007,8 +10228,8 @@ func (s *DeleteOTAModuleResponseBody) SetCode(v string) *DeleteOTAModuleResponse
 	return s
 }
 
-func (s *DeleteOTAModuleResponseBody) SetSuccess(v bool) *DeleteOTAModuleResponseBody {
-	s.Success = &v
+func (s *DeleteOTAModuleResponseBody) SetErrorMessage(v string) *DeleteOTAModuleResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -10084,9 +10305,9 @@ func (s *DeleteProductRequest) SetRealTripartiteKey(v string) *DeleteProductRequ
 
 type DeleteProductResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s DeleteProductResponseBody) String() string {
@@ -10102,8 +10323,8 @@ func (s *DeleteProductResponseBody) SetRequestId(v string) *DeleteProductRespons
 	return s
 }
 
-func (s *DeleteProductResponseBody) SetErrorMessage(v string) *DeleteProductResponseBody {
-	s.ErrorMessage = &v
+func (s *DeleteProductResponseBody) SetSuccess(v bool) *DeleteProductResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -10112,8 +10333,8 @@ func (s *DeleteProductResponseBody) SetCode(v string) *DeleteProductResponseBody
 	return s
 }
 
-func (s *DeleteProductResponseBody) SetSuccess(v bool) *DeleteProductResponseBody {
-	s.Success = &v
+func (s *DeleteProductResponseBody) SetErrorMessage(v string) *DeleteProductResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -10144,10 +10365,10 @@ type DeleteProductTagsRequest struct {
 	ApiProduct        *string   `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
 	ApiRevision       *string   `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
 	IotInstanceId     *string   `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ProductTagKey     []*string `json:"ProductTagKey,omitempty" xml:"ProductTagKey,omitempty" type:"Repeated"`
 	ProductKey        *string   `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
 	RealTenantId      *string   `json:"RealTenantId,omitempty" xml:"RealTenantId,omitempty"`
 	RealTripartiteKey *string   `json:"RealTripartiteKey,omitempty" xml:"RealTripartiteKey,omitempty"`
-	ProductTagKey     []*string `json:"ProductTagKey,omitempty" xml:"ProductTagKey,omitempty" type:"Repeated"`
 }
 
 func (s DeleteProductTagsRequest) String() string {
@@ -10173,6 +10394,11 @@ func (s *DeleteProductTagsRequest) SetIotInstanceId(v string) *DeleteProductTags
 	return s
 }
 
+func (s *DeleteProductTagsRequest) SetProductTagKey(v []*string) *DeleteProductTagsRequest {
+	s.ProductTagKey = v
+	return s
+}
+
 func (s *DeleteProductTagsRequest) SetProductKey(v string) *DeleteProductTagsRequest {
 	s.ProductKey = &v
 	return s
@@ -10188,16 +10414,11 @@ func (s *DeleteProductTagsRequest) SetRealTripartiteKey(v string) *DeleteProduct
 	return s
 }
 
-func (s *DeleteProductTagsRequest) SetProductTagKey(v []*string) *DeleteProductTagsRequest {
-	s.ProductTagKey = v
-	return s
-}
-
 type DeleteProductTagsResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteProductTagsResponseBody) String() string {
@@ -10213,6 +10434,11 @@ func (s *DeleteProductTagsResponseBody) SetRequestId(v string) *DeleteProductTag
 	return s
 }
 
+func (s *DeleteProductTagsResponseBody) SetSuccess(v bool) *DeleteProductTagsResponseBody {
+	s.Success = &v
+	return s
+}
+
 func (s *DeleteProductTagsResponseBody) SetErrorMessage(v string) *DeleteProductTagsResponseBody {
 	s.ErrorMessage = &v
 	return s
@@ -10220,11 +10446,6 @@ func (s *DeleteProductTagsResponseBody) SetErrorMessage(v string) *DeleteProduct
 
 func (s *DeleteProductTagsResponseBody) SetCode(v string) *DeleteProductTagsResponseBody {
 	s.Code = &v
-	return s
-}
-
-func (s *DeleteProductTagsResponseBody) SetSuccess(v bool) *DeleteProductTagsResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -10288,9 +10509,9 @@ func (s *DeleteProductTopicRequest) SetTopicId(v string) *DeleteProductTopicRequ
 
 type DeleteProductTopicResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s DeleteProductTopicResponseBody) String() string {
@@ -10306,8 +10527,8 @@ func (s *DeleteProductTopicResponseBody) SetRequestId(v string) *DeleteProductTo
 	return s
 }
 
-func (s *DeleteProductTopicResponseBody) SetErrorMessage(v string) *DeleteProductTopicResponseBody {
-	s.ErrorMessage = &v
+func (s *DeleteProductTopicResponseBody) SetSuccess(v bool) *DeleteProductTopicResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -10316,8 +10537,8 @@ func (s *DeleteProductTopicResponseBody) SetCode(v string) *DeleteProductTopicRe
 	return s
 }
 
-func (s *DeleteProductTopicResponseBody) SetSuccess(v bool) *DeleteProductTopicResponseBody {
-	s.Success = &v
+func (s *DeleteProductTopicResponseBody) SetErrorMessage(v string) *DeleteProductTopicResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -10381,9 +10602,9 @@ func (s *DeleteRuleRequest) SetRuleId(v int64) *DeleteRuleRequest {
 
 type DeleteRuleResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s DeleteRuleResponseBody) String() string {
@@ -10399,8 +10620,8 @@ func (s *DeleteRuleResponseBody) SetRequestId(v string) *DeleteRuleResponseBody 
 	return s
 }
 
-func (s *DeleteRuleResponseBody) SetErrorMessage(v string) *DeleteRuleResponseBody {
-	s.ErrorMessage = &v
+func (s *DeleteRuleResponseBody) SetSuccess(v bool) *DeleteRuleResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -10409,8 +10630,8 @@ func (s *DeleteRuleResponseBody) SetCode(v string) *DeleteRuleResponseBody {
 	return s
 }
 
-func (s *DeleteRuleResponseBody) SetSuccess(v bool) *DeleteRuleResponseBody {
-	s.Success = &v
+func (s *DeleteRuleResponseBody) SetErrorMessage(v string) *DeleteRuleResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -10474,9 +10695,9 @@ func (s *DeleteRuleActionRequest) SetActionId(v int64) *DeleteRuleActionRequest 
 
 type DeleteRuleActionResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s DeleteRuleActionResponseBody) String() string {
@@ -10492,8 +10713,8 @@ func (s *DeleteRuleActionResponseBody) SetRequestId(v string) *DeleteRuleActionR
 	return s
 }
 
-func (s *DeleteRuleActionResponseBody) SetErrorMessage(v string) *DeleteRuleActionResponseBody {
-	s.ErrorMessage = &v
+func (s *DeleteRuleActionResponseBody) SetSuccess(v bool) *DeleteRuleActionResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -10502,8 +10723,8 @@ func (s *DeleteRuleActionResponseBody) SetCode(v string) *DeleteRuleActionRespon
 	return s
 }
 
-func (s *DeleteRuleActionResponseBody) SetSuccess(v bool) *DeleteRuleActionResponseBody {
-	s.Success = &v
+func (s *DeleteRuleActionResponseBody) SetErrorMessage(v string) *DeleteRuleActionResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -10567,9 +10788,9 @@ func (s *DeleteSceneRuleRequest) SetRuleId(v string) *DeleteSceneRuleRequest {
 
 type DeleteSceneRuleResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteSceneRuleResponseBody) String() string {
@@ -10585,6 +10806,11 @@ func (s *DeleteSceneRuleResponseBody) SetRequestId(v string) *DeleteSceneRuleRes
 	return s
 }
 
+func (s *DeleteSceneRuleResponseBody) SetSuccess(v bool) *DeleteSceneRuleResponseBody {
+	s.Success = &v
+	return s
+}
+
 func (s *DeleteSceneRuleResponseBody) SetErrorMessage(v string) *DeleteSceneRuleResponseBody {
 	s.ErrorMessage = &v
 	return s
@@ -10592,11 +10818,6 @@ func (s *DeleteSceneRuleResponseBody) SetErrorMessage(v string) *DeleteSceneRule
 
 func (s *DeleteSceneRuleResponseBody) SetCode(v string) *DeleteSceneRuleResponseBody {
 	s.Code = &v
-	return s
-}
-
-func (s *DeleteSceneRuleResponseBody) SetSuccess(v bool) *DeleteSceneRuleResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -10666,9 +10887,9 @@ func (s *DeleteSubscribeRelationRequest) SetType(v string) *DeleteSubscribeRelat
 
 type DeleteSubscribeRelationResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s DeleteSubscribeRelationResponseBody) String() string {
@@ -10684,8 +10905,8 @@ func (s *DeleteSubscribeRelationResponseBody) SetRequestId(v string) *DeleteSubs
 	return s
 }
 
-func (s *DeleteSubscribeRelationResponseBody) SetErrorMessage(v string) *DeleteSubscribeRelationResponseBody {
-	s.ErrorMessage = &v
+func (s *DeleteSubscribeRelationResponseBody) SetSuccess(v bool) *DeleteSubscribeRelationResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -10694,8 +10915,8 @@ func (s *DeleteSubscribeRelationResponseBody) SetCode(v string) *DeleteSubscribe
 	return s
 }
 
-func (s *DeleteSubscribeRelationResponseBody) SetSuccess(v bool) *DeleteSubscribeRelationResponseBody {
-	s.Success = &v
+func (s *DeleteSubscribeRelationResponseBody) SetErrorMessage(v string) *DeleteSubscribeRelationResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -10728,13 +10949,13 @@ type DeleteThingModelRequest struct {
 	IotInstanceId      *string   `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 	ResourceGroupId    *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ProductKey         *string   `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	PropertyIdentifier []*string `json:"PropertyIdentifier,omitempty" xml:"PropertyIdentifier,omitempty" type:"Repeated"`
+	ServiceIdentifier  []*string `json:"ServiceIdentifier,omitempty" xml:"ServiceIdentifier,omitempty" type:"Repeated"`
+	EventIdentifier    []*string `json:"EventIdentifier,omitempty" xml:"EventIdentifier,omitempty" type:"Repeated"`
 	FunctionBlockId    *string   `json:"FunctionBlockId,omitempty" xml:"FunctionBlockId,omitempty"`
 	IsClearAllFunction *bool     `json:"IsClearAllFunction,omitempty" xml:"IsClearAllFunction,omitempty"`
 	RealTenantId       *string   `json:"RealTenantId,omitempty" xml:"RealTenantId,omitempty"`
 	RealTripartiteKey  *string   `json:"RealTripartiteKey,omitempty" xml:"RealTripartiteKey,omitempty"`
-	PropertyIdentifier []*string `json:"PropertyIdentifier,omitempty" xml:"PropertyIdentifier,omitempty" type:"Repeated"`
-	ServiceIdentifier  []*string `json:"ServiceIdentifier,omitempty" xml:"ServiceIdentifier,omitempty" type:"Repeated"`
-	EventIdentifier    []*string `json:"EventIdentifier,omitempty" xml:"EventIdentifier,omitempty" type:"Repeated"`
 }
 
 func (s DeleteThingModelRequest) String() string {
@@ -10770,6 +10991,21 @@ func (s *DeleteThingModelRequest) SetProductKey(v string) *DeleteThingModelReque
 	return s
 }
 
+func (s *DeleteThingModelRequest) SetPropertyIdentifier(v []*string) *DeleteThingModelRequest {
+	s.PropertyIdentifier = v
+	return s
+}
+
+func (s *DeleteThingModelRequest) SetServiceIdentifier(v []*string) *DeleteThingModelRequest {
+	s.ServiceIdentifier = v
+	return s
+}
+
+func (s *DeleteThingModelRequest) SetEventIdentifier(v []*string) *DeleteThingModelRequest {
+	s.EventIdentifier = v
+	return s
+}
+
 func (s *DeleteThingModelRequest) SetFunctionBlockId(v string) *DeleteThingModelRequest {
 	s.FunctionBlockId = &v
 	return s
@@ -10790,26 +11026,11 @@ func (s *DeleteThingModelRequest) SetRealTripartiteKey(v string) *DeleteThingMod
 	return s
 }
 
-func (s *DeleteThingModelRequest) SetPropertyIdentifier(v []*string) *DeleteThingModelRequest {
-	s.PropertyIdentifier = v
-	return s
-}
-
-func (s *DeleteThingModelRequest) SetServiceIdentifier(v []*string) *DeleteThingModelRequest {
-	s.ServiceIdentifier = v
-	return s
-}
-
-func (s *DeleteThingModelRequest) SetEventIdentifier(v []*string) *DeleteThingModelRequest {
-	s.EventIdentifier = v
-	return s
-}
-
 type DeleteThingModelResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s DeleteThingModelResponseBody) String() string {
@@ -10825,8 +11046,8 @@ func (s *DeleteThingModelResponseBody) SetRequestId(v string) *DeleteThingModelR
 	return s
 }
 
-func (s *DeleteThingModelResponseBody) SetErrorMessage(v string) *DeleteThingModelResponseBody {
-	s.ErrorMessage = &v
+func (s *DeleteThingModelResponseBody) SetSuccess(v bool) *DeleteThingModelResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -10835,8 +11056,8 @@ func (s *DeleteThingModelResponseBody) SetCode(v string) *DeleteThingModelRespon
 	return s
 }
 
-func (s *DeleteThingModelResponseBody) SetSuccess(v bool) *DeleteThingModelResponseBody {
-	s.Success = &v
+func (s *DeleteThingModelResponseBody) SetErrorMessage(v string) *DeleteThingModelResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -10867,8 +11088,8 @@ type DeleteTopicRouteTableRequest struct {
 	ApiProduct    *string   `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
 	ApiRevision   *string   `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
 	IotInstanceId *string   `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	SrcTopic      *string   `json:"SrcTopic,omitempty" xml:"SrcTopic,omitempty"`
 	DstTopic      []*string `json:"DstTopic,omitempty" xml:"DstTopic,omitempty" type:"Repeated"`
+	SrcTopic      *string   `json:"SrcTopic,omitempty" xml:"SrcTopic,omitempty"`
 }
 
 func (s DeleteTopicRouteTableRequest) String() string {
@@ -10894,23 +11115,23 @@ func (s *DeleteTopicRouteTableRequest) SetIotInstanceId(v string) *DeleteTopicRo
 	return s
 }
 
-func (s *DeleteTopicRouteTableRequest) SetSrcTopic(v string) *DeleteTopicRouteTableRequest {
-	s.SrcTopic = &v
-	return s
-}
-
 func (s *DeleteTopicRouteTableRequest) SetDstTopic(v []*string) *DeleteTopicRouteTableRequest {
 	s.DstTopic = v
 	return s
 }
 
+func (s *DeleteTopicRouteTableRequest) SetSrcTopic(v string) *DeleteTopicRouteTableRequest {
+	s.SrcTopic = &v
+	return s
+}
+
 type DeleteTopicRouteTableResponseBody struct {
 	RequestId     *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	FailureTopics *DeleteTopicRouteTableResponseBodyFailureTopics `json:"FailureTopics,omitempty" xml:"FailureTopics,omitempty" type:"Struct"`
-	ErrorMessage  *string                                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Success       *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
 	Code          *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
 	IsAllSucceed  *bool                                           `json:"IsAllSucceed,omitempty" xml:"IsAllSucceed,omitempty"`
-	Success       *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorMessage  *string                                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	FailureTopics *DeleteTopicRouteTableResponseBodyFailureTopics `json:"FailureTopics,omitempty" xml:"FailureTopics,omitempty" type:"Struct"`
 }
 
 func (s DeleteTopicRouteTableResponseBody) String() string {
@@ -10926,13 +11147,8 @@ func (s *DeleteTopicRouteTableResponseBody) SetRequestId(v string) *DeleteTopicR
 	return s
 }
 
-func (s *DeleteTopicRouteTableResponseBody) SetFailureTopics(v *DeleteTopicRouteTableResponseBodyFailureTopics) *DeleteTopicRouteTableResponseBody {
-	s.FailureTopics = v
-	return s
-}
-
-func (s *DeleteTopicRouteTableResponseBody) SetErrorMessage(v string) *DeleteTopicRouteTableResponseBody {
-	s.ErrorMessage = &v
+func (s *DeleteTopicRouteTableResponseBody) SetSuccess(v bool) *DeleteTopicRouteTableResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -10946,13 +11162,18 @@ func (s *DeleteTopicRouteTableResponseBody) SetIsAllSucceed(v bool) *DeleteTopic
 	return s
 }
 
-func (s *DeleteTopicRouteTableResponseBody) SetSuccess(v bool) *DeleteTopicRouteTableResponseBody {
-	s.Success = &v
+func (s *DeleteTopicRouteTableResponseBody) SetErrorMessage(v string) *DeleteTopicRouteTableResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteTopicRouteTableResponseBody) SetFailureTopics(v *DeleteTopicRouteTableResponseBodyFailureTopics) *DeleteTopicRouteTableResponseBody {
+	s.FailureTopics = v
 	return s
 }
 
 type DeleteTopicRouteTableResponseBodyFailureTopics struct {
-	Topic []map[string]interface{} `json:"Topic,omitempty" xml:"Topic,omitempty" type:"Repeated"`
+	Topic []map[string]*string `json:"Topic,omitempty" xml:"Topic,omitempty" type:"Repeated"`
 }
 
 func (s DeleteTopicRouteTableResponseBodyFailureTopics) String() string {
@@ -10963,7 +11184,7 @@ func (s DeleteTopicRouteTableResponseBodyFailureTopics) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteTopicRouteTableResponseBodyFailureTopics) SetTopic(v []map[string]interface{}) *DeleteTopicRouteTableResponseBodyFailureTopics {
+func (s *DeleteTopicRouteTableResponseBodyFailureTopics) SetTopic(v []map[string]*string) *DeleteTopicRouteTableResponseBodyFailureTopics {
 	s.Topic = v
 	return s
 }
@@ -11028,9 +11249,9 @@ func (s *DisableSceneRuleRequest) SetRuleId(v string) *DisableSceneRuleRequest {
 
 type DisableSceneRuleResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DisableSceneRuleResponseBody) String() string {
@@ -11046,6 +11267,11 @@ func (s *DisableSceneRuleResponseBody) SetRequestId(v string) *DisableSceneRuleR
 	return s
 }
 
+func (s *DisableSceneRuleResponseBody) SetSuccess(v bool) *DisableSceneRuleResponseBody {
+	s.Success = &v
+	return s
+}
+
 func (s *DisableSceneRuleResponseBody) SetErrorMessage(v string) *DisableSceneRuleResponseBody {
 	s.ErrorMessage = &v
 	return s
@@ -11053,11 +11279,6 @@ func (s *DisableSceneRuleResponseBody) SetErrorMessage(v string) *DisableSceneRu
 
 func (s *DisableSceneRuleResponseBody) SetCode(v string) *DisableSceneRuleResponseBody {
 	s.Code = &v
-	return s
-}
-
-func (s *DisableSceneRuleResponseBody) SetSuccess(v bool) *DisableSceneRuleResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -11085,12 +11306,14 @@ func (s *DisableSceneRuleResponse) SetBody(v *DisableSceneRuleResponseBody) *Dis
 }
 
 type DisableThingRequest struct {
-	ApiProduct    *string `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
-	ApiRevision   *string `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
-	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
-	DeviceName    *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
-	IotId         *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	ApiProduct        *string `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
+	ApiRevision       *string `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
+	IotInstanceId     *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ProductKey        *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	DeviceName        *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	IotId             *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	RealTenantId      *string `json:"RealTenantId,omitempty" xml:"RealTenantId,omitempty"`
+	RealTripartiteKey *string `json:"RealTripartiteKey,omitempty" xml:"RealTripartiteKey,omitempty"`
 }
 
 func (s DisableThingRequest) String() string {
@@ -11131,11 +11354,21 @@ func (s *DisableThingRequest) SetIotId(v string) *DisableThingRequest {
 	return s
 }
 
+func (s *DisableThingRequest) SetRealTenantId(v string) *DisableThingRequest {
+	s.RealTenantId = &v
+	return s
+}
+
+func (s *DisableThingRequest) SetRealTripartiteKey(v string) *DisableThingRequest {
+	s.RealTripartiteKey = &v
+	return s
+}
+
 type DisableThingResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s DisableThingResponseBody) String() string {
@@ -11151,8 +11384,8 @@ func (s *DisableThingResponseBody) SetRequestId(v string) *DisableThingResponseB
 	return s
 }
 
-func (s *DisableThingResponseBody) SetErrorMessage(v string) *DisableThingResponseBody {
-	s.ErrorMessage = &v
+func (s *DisableThingResponseBody) SetSuccess(v bool) *DisableThingResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -11161,8 +11394,8 @@ func (s *DisableThingResponseBody) SetCode(v string) *DisableThingResponseBody {
 	return s
 }
 
-func (s *DisableThingResponseBody) SetSuccess(v bool) *DisableThingResponseBody {
-	s.Success = &v
+func (s *DisableThingResponseBody) SetErrorMessage(v string) *DisableThingResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -11226,9 +11459,9 @@ func (s *EnableSceneRuleRequest) SetRuleId(v string) *EnableSceneRuleRequest {
 
 type EnableSceneRuleResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s EnableSceneRuleResponseBody) String() string {
@@ -11244,6 +11477,11 @@ func (s *EnableSceneRuleResponseBody) SetRequestId(v string) *EnableSceneRuleRes
 	return s
 }
 
+func (s *EnableSceneRuleResponseBody) SetSuccess(v bool) *EnableSceneRuleResponseBody {
+	s.Success = &v
+	return s
+}
+
 func (s *EnableSceneRuleResponseBody) SetErrorMessage(v string) *EnableSceneRuleResponseBody {
 	s.ErrorMessage = &v
 	return s
@@ -11251,11 +11489,6 @@ func (s *EnableSceneRuleResponseBody) SetErrorMessage(v string) *EnableSceneRule
 
 func (s *EnableSceneRuleResponseBody) SetCode(v string) *EnableSceneRuleResponseBody {
 	s.Code = &v
-	return s
-}
-
-func (s *EnableSceneRuleResponseBody) SetSuccess(v bool) *EnableSceneRuleResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -11283,12 +11516,14 @@ func (s *EnableSceneRuleResponse) SetBody(v *EnableSceneRuleResponseBody) *Enabl
 }
 
 type EnableThingRequest struct {
-	ApiProduct    *string `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
-	ApiRevision   *string `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
-	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
-	DeviceName    *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
-	IotId         *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	ApiProduct        *string `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
+	ApiRevision       *string `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
+	IotInstanceId     *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ProductKey        *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	DeviceName        *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	IotId             *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	RealTenantId      *string `json:"RealTenantId,omitempty" xml:"RealTenantId,omitempty"`
+	RealTripartiteKey *string `json:"RealTripartiteKey,omitempty" xml:"RealTripartiteKey,omitempty"`
 }
 
 func (s EnableThingRequest) String() string {
@@ -11329,11 +11564,21 @@ func (s *EnableThingRequest) SetIotId(v string) *EnableThingRequest {
 	return s
 }
 
+func (s *EnableThingRequest) SetRealTenantId(v string) *EnableThingRequest {
+	s.RealTenantId = &v
+	return s
+}
+
+func (s *EnableThingRequest) SetRealTripartiteKey(v string) *EnableThingRequest {
+	s.RealTripartiteKey = &v
+	return s
+}
+
 type EnableThingResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s EnableThingResponseBody) String() string {
@@ -11349,8 +11594,8 @@ func (s *EnableThingResponseBody) SetRequestId(v string) *EnableThingResponseBod
 	return s
 }
 
-func (s *EnableThingResponseBody) SetErrorMessage(v string) *EnableThingResponseBody {
-	s.ErrorMessage = &v
+func (s *EnableThingResponseBody) SetSuccess(v bool) *EnableThingResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -11359,8 +11604,8 @@ func (s *EnableThingResponseBody) SetCode(v string) *EnableThingResponseBody {
 	return s
 }
 
-func (s *EnableThingResponseBody) SetSuccess(v bool) *EnableThingResponseBody {
-	s.Success = &v
+func (s *EnableThingResponseBody) SetErrorMessage(v string) *EnableThingResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -11418,10 +11663,10 @@ func (s *GenerateDeviceNameListURLRequest) SetIotInstanceId(v string) *GenerateD
 
 type GenerateDeviceNameListURLResponseBody struct {
 	RequestId    *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data         *GenerateDeviceNameListURLResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                                    `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string                                    `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Data         *GenerateDeviceNameListURLResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s GenerateDeviceNameListURLResponseBody) String() string {
@@ -11437,13 +11682,8 @@ func (s *GenerateDeviceNameListURLResponseBody) SetRequestId(v string) *Generate
 	return s
 }
 
-func (s *GenerateDeviceNameListURLResponseBody) SetData(v *GenerateDeviceNameListURLResponseBodyData) *GenerateDeviceNameListURLResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GenerateDeviceNameListURLResponseBody) SetErrorMessage(v string) *GenerateDeviceNameListURLResponseBody {
-	s.ErrorMessage = &v
+func (s *GenerateDeviceNameListURLResponseBody) SetSuccess(v bool) *GenerateDeviceNameListURLResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -11452,20 +11692,25 @@ func (s *GenerateDeviceNameListURLResponseBody) SetCode(v string) *GenerateDevic
 	return s
 }
 
-func (s *GenerateDeviceNameListURLResponseBody) SetSuccess(v bool) *GenerateDeviceNameListURLResponseBody {
-	s.Success = &v
+func (s *GenerateDeviceNameListURLResponseBody) SetErrorMessage(v string) *GenerateDeviceNameListURLResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GenerateDeviceNameListURLResponseBody) SetData(v *GenerateDeviceNameListURLResponseBodyData) *GenerateDeviceNameListURLResponseBody {
+	s.Data = v
 	return s
 }
 
 type GenerateDeviceNameListURLResponseBodyData struct {
 	Key           *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Signature     *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
 	Host          *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	FileUrl       *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	Policy        *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	ObjectStorage *string `json:"ObjectStorage,omitempty" xml:"ObjectStorage,omitempty"`
-	UtcCreate     *string `json:"UtcCreate,omitempty" xml:"UtcCreate,omitempty"`
 	AccessKeyId   *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	Signature     *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
+	FileUrl       *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	UtcCreate     *string `json:"UtcCreate,omitempty" xml:"UtcCreate,omitempty"`
+	ObjectStorage *string `json:"ObjectStorage,omitempty" xml:"ObjectStorage,omitempty"`
 }
 
 func (s GenerateDeviceNameListURLResponseBodyData) String() string {
@@ -11481,18 +11726,8 @@ func (s *GenerateDeviceNameListURLResponseBodyData) SetKey(v string) *GenerateDe
 	return s
 }
 
-func (s *GenerateDeviceNameListURLResponseBodyData) SetSignature(v string) *GenerateDeviceNameListURLResponseBodyData {
-	s.Signature = &v
-	return s
-}
-
 func (s *GenerateDeviceNameListURLResponseBodyData) SetHost(v string) *GenerateDeviceNameListURLResponseBodyData {
 	s.Host = &v
-	return s
-}
-
-func (s *GenerateDeviceNameListURLResponseBodyData) SetFileUrl(v string) *GenerateDeviceNameListURLResponseBodyData {
-	s.FileUrl = &v
 	return s
 }
 
@@ -11501,8 +11736,18 @@ func (s *GenerateDeviceNameListURLResponseBodyData) SetPolicy(v string) *Generat
 	return s
 }
 
-func (s *GenerateDeviceNameListURLResponseBodyData) SetObjectStorage(v string) *GenerateDeviceNameListURLResponseBodyData {
-	s.ObjectStorage = &v
+func (s *GenerateDeviceNameListURLResponseBodyData) SetAccessKeyId(v string) *GenerateDeviceNameListURLResponseBodyData {
+	s.AccessKeyId = &v
+	return s
+}
+
+func (s *GenerateDeviceNameListURLResponseBodyData) SetSignature(v string) *GenerateDeviceNameListURLResponseBodyData {
+	s.Signature = &v
+	return s
+}
+
+func (s *GenerateDeviceNameListURLResponseBodyData) SetFileUrl(v string) *GenerateDeviceNameListURLResponseBodyData {
+	s.FileUrl = &v
 	return s
 }
 
@@ -11511,8 +11756,8 @@ func (s *GenerateDeviceNameListURLResponseBodyData) SetUtcCreate(v string) *Gene
 	return s
 }
 
-func (s *GenerateDeviceNameListURLResponseBodyData) SetAccessKeyId(v string) *GenerateDeviceNameListURLResponseBodyData {
-	s.AccessKeyId = &v
+func (s *GenerateDeviceNameListURLResponseBodyData) SetObjectStorage(v string) *GenerateDeviceNameListURLResponseBodyData {
+	s.ObjectStorage = &v
 	return s
 }
 
@@ -11582,10 +11827,10 @@ func (s *GenerateFileUploadURLRequest) SetBizCode(v string) *GenerateFileUploadU
 
 type GenerateFileUploadURLResponseBody struct {
 	RequestId    *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data         *GenerateFileUploadURLResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                                `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string                                `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Data         *GenerateFileUploadURLResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s GenerateFileUploadURLResponseBody) String() string {
@@ -11601,13 +11846,8 @@ func (s *GenerateFileUploadURLResponseBody) SetRequestId(v string) *GenerateFile
 	return s
 }
 
-func (s *GenerateFileUploadURLResponseBody) SetData(v *GenerateFileUploadURLResponseBodyData) *GenerateFileUploadURLResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GenerateFileUploadURLResponseBody) SetErrorMessage(v string) *GenerateFileUploadURLResponseBody {
-	s.ErrorMessage = &v
+func (s *GenerateFileUploadURLResponseBody) SetSuccess(v bool) *GenerateFileUploadURLResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -11616,17 +11856,22 @@ func (s *GenerateFileUploadURLResponseBody) SetCode(v string) *GenerateFileUploa
 	return s
 }
 
-func (s *GenerateFileUploadURLResponseBody) SetSuccess(v bool) *GenerateFileUploadURLResponseBody {
-	s.Success = &v
+func (s *GenerateFileUploadURLResponseBody) SetErrorMessage(v string) *GenerateFileUploadURLResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GenerateFileUploadURLResponseBody) SetData(v *GenerateFileUploadURLResponseBodyData) *GenerateFileUploadURLResponseBody {
+	s.Data = v
 	return s
 }
 
 type GenerateFileUploadURLResponseBodyData struct {
 	Key            *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	OssAccessKeyId *string `json:"OssAccessKeyId,omitempty" xml:"OssAccessKeyId,omitempty"`
-	Signature      *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
 	Host           *string `json:"Host,omitempty" xml:"Host,omitempty"`
 	Policy         *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	OssAccessKeyId *string `json:"OssAccessKeyId,omitempty" xml:"OssAccessKeyId,omitempty"`
+	Signature      *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
 	ObjectStorage  *string `json:"ObjectStorage,omitempty" xml:"ObjectStorage,omitempty"`
 }
 
@@ -11643,16 +11888,6 @@ func (s *GenerateFileUploadURLResponseBodyData) SetKey(v string) *GenerateFileUp
 	return s
 }
 
-func (s *GenerateFileUploadURLResponseBodyData) SetOssAccessKeyId(v string) *GenerateFileUploadURLResponseBodyData {
-	s.OssAccessKeyId = &v
-	return s
-}
-
-func (s *GenerateFileUploadURLResponseBodyData) SetSignature(v string) *GenerateFileUploadURLResponseBodyData {
-	s.Signature = &v
-	return s
-}
-
 func (s *GenerateFileUploadURLResponseBodyData) SetHost(v string) *GenerateFileUploadURLResponseBodyData {
 	s.Host = &v
 	return s
@@ -11660,6 +11895,16 @@ func (s *GenerateFileUploadURLResponseBodyData) SetHost(v string) *GenerateFileU
 
 func (s *GenerateFileUploadURLResponseBodyData) SetPolicy(v string) *GenerateFileUploadURLResponseBodyData {
 	s.Policy = &v
+	return s
+}
+
+func (s *GenerateFileUploadURLResponseBodyData) SetOssAccessKeyId(v string) *GenerateFileUploadURLResponseBodyData {
+	s.OssAccessKeyId = &v
+	return s
+}
+
+func (s *GenerateFileUploadURLResponseBodyData) SetSignature(v string) *GenerateFileUploadURLResponseBodyData {
+	s.Signature = &v
 	return s
 }
 
@@ -11728,10 +11973,10 @@ func (s *GenerateOTAUploadURLRequest) SetFileSuffix(v string) *GenerateOTAUpload
 
 type GenerateOTAUploadURLResponseBody struct {
 	RequestId    *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data         *GenerateOTAUploadURLResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                               `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string                               `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Data         *GenerateOTAUploadURLResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s GenerateOTAUploadURLResponseBody) String() string {
@@ -11747,13 +11992,8 @@ func (s *GenerateOTAUploadURLResponseBody) SetRequestId(v string) *GenerateOTAUp
 	return s
 }
 
-func (s *GenerateOTAUploadURLResponseBody) SetData(v *GenerateOTAUploadURLResponseBodyData) *GenerateOTAUploadURLResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GenerateOTAUploadURLResponseBody) SetErrorMessage(v string) *GenerateOTAUploadURLResponseBody {
-	s.ErrorMessage = &v
+func (s *GenerateOTAUploadURLResponseBody) SetSuccess(v bool) *GenerateOTAUploadURLResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -11762,20 +12002,25 @@ func (s *GenerateOTAUploadURLResponseBody) SetCode(v string) *GenerateOTAUploadU
 	return s
 }
 
-func (s *GenerateOTAUploadURLResponseBody) SetSuccess(v bool) *GenerateOTAUploadURLResponseBody {
-	s.Success = &v
+func (s *GenerateOTAUploadURLResponseBody) SetErrorMessage(v string) *GenerateOTAUploadURLResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GenerateOTAUploadURLResponseBody) SetData(v *GenerateOTAUploadURLResponseBodyData) *GenerateOTAUploadURLResponseBody {
+	s.Data = v
 	return s
 }
 
 type GenerateOTAUploadURLResponseBodyData struct {
 	Key            *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	OSSAccessKeyId *string `json:"OSSAccessKeyId,omitempty" xml:"OSSAccessKeyId,omitempty"`
-	Signature      *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
 	Host           *string `json:"Host,omitempty" xml:"Host,omitempty"`
 	Policy         *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	ObjectStorage  *string `json:"ObjectStorage,omitempty" xml:"ObjectStorage,omitempty"`
+	OSSAccessKeyId *string `json:"OSSAccessKeyId,omitempty" xml:"OSSAccessKeyId,omitempty"`
+	Signature      *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
 	FirmwareUrl    *string `json:"FirmwareUrl,omitempty" xml:"FirmwareUrl,omitempty"`
 	UtcCreate      *string `json:"UtcCreate,omitempty" xml:"UtcCreate,omitempty"`
+	ObjectStorage  *string `json:"ObjectStorage,omitempty" xml:"ObjectStorage,omitempty"`
 }
 
 func (s GenerateOTAUploadURLResponseBodyData) String() string {
@@ -11791,16 +12036,6 @@ func (s *GenerateOTAUploadURLResponseBodyData) SetKey(v string) *GenerateOTAUplo
 	return s
 }
 
-func (s *GenerateOTAUploadURLResponseBodyData) SetOSSAccessKeyId(v string) *GenerateOTAUploadURLResponseBodyData {
-	s.OSSAccessKeyId = &v
-	return s
-}
-
-func (s *GenerateOTAUploadURLResponseBodyData) SetSignature(v string) *GenerateOTAUploadURLResponseBodyData {
-	s.Signature = &v
-	return s
-}
-
 func (s *GenerateOTAUploadURLResponseBodyData) SetHost(v string) *GenerateOTAUploadURLResponseBodyData {
 	s.Host = &v
 	return s
@@ -11811,8 +12046,13 @@ func (s *GenerateOTAUploadURLResponseBodyData) SetPolicy(v string) *GenerateOTAU
 	return s
 }
 
-func (s *GenerateOTAUploadURLResponseBodyData) SetObjectStorage(v string) *GenerateOTAUploadURLResponseBodyData {
-	s.ObjectStorage = &v
+func (s *GenerateOTAUploadURLResponseBodyData) SetOSSAccessKeyId(v string) *GenerateOTAUploadURLResponseBodyData {
+	s.OSSAccessKeyId = &v
+	return s
+}
+
+func (s *GenerateOTAUploadURLResponseBodyData) SetSignature(v string) *GenerateOTAUploadURLResponseBodyData {
+	s.Signature = &v
 	return s
 }
 
@@ -11823,6 +12063,11 @@ func (s *GenerateOTAUploadURLResponseBodyData) SetFirmwareUrl(v string) *Generat
 
 func (s *GenerateOTAUploadURLResponseBodyData) SetUtcCreate(v string) *GenerateOTAUploadURLResponseBodyData {
 	s.UtcCreate = &v
+	return s
+}
+
+func (s *GenerateOTAUploadURLResponseBodyData) SetObjectStorage(v string) *GenerateOTAUploadURLResponseBodyData {
+	s.ObjectStorage = &v
 	return s
 }
 
@@ -11886,10 +12131,10 @@ func (s *GetDataAPIServiceDetailRequest) SetIotInstanceId(v string) *GetDataAPIS
 
 type GetDataAPIServiceDetailResponseBody struct {
 	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data         *GetDataAPIServiceDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string                                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Data         *GetDataAPIServiceDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s GetDataAPIServiceDetailResponseBody) String() string {
@@ -11905,13 +12150,8 @@ func (s *GetDataAPIServiceDetailResponseBody) SetRequestId(v string) *GetDataAPI
 	return s
 }
 
-func (s *GetDataAPIServiceDetailResponseBody) SetData(v *GetDataAPIServiceDetailResponseBodyData) *GetDataAPIServiceDetailResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetDataAPIServiceDetailResponseBody) SetErrorMessage(v string) *GetDataAPIServiceDetailResponseBody {
-	s.ErrorMessage = &v
+func (s *GetDataAPIServiceDetailResponseBody) SetSuccess(v bool) *GetDataAPIServiceDetailResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -11920,23 +12160,28 @@ func (s *GetDataAPIServiceDetailResponseBody) SetCode(v string) *GetDataAPIServi
 	return s
 }
 
-func (s *GetDataAPIServiceDetailResponseBody) SetSuccess(v bool) *GetDataAPIServiceDetailResponseBody {
-	s.Success = &v
+func (s *GetDataAPIServiceDetailResponseBody) SetErrorMessage(v string) *GetDataAPIServiceDetailResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetDataAPIServiceDetailResponseBody) SetData(v *GetDataAPIServiceDetailResponseBodyData) *GetDataAPIServiceDetailResponseBody {
+	s.Data = v
 	return s
 }
 
 type GetDataAPIServiceDetailResponseBodyData struct {
-	DisplayName     *string                                                `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Status          *int32                                                 `json:"Status,omitempty" xml:"Status,omitempty"`
 	ApiSrn          *string                                                `json:"ApiSrn,omitempty" xml:"ApiSrn,omitempty"`
-	SqlTemplateDTO  *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTO `json:"SqlTemplateDTO,omitempty" xml:"SqlTemplateDTO,omitempty" type:"Struct"`
-	Description     *string                                                `json:"Description,omitempty" xml:"Description,omitempty"`
+	Status          *int32                                                 `json:"Status,omitempty" xml:"Status,omitempty"`
+	DisplayName     *string                                                `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	ApiPath         *string                                                `json:"ApiPath,omitempty" xml:"ApiPath,omitempty"`
 	CreateTime      *int64                                                 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	LastUpdateTime  *int64                                                 `json:"LastUpdateTime,omitempty" xml:"LastUpdateTime,omitempty"`
-	RequestMethod   *string                                                `json:"RequestMethod,omitempty" xml:"RequestMethod,omitempty"`
 	DateFormat      *string                                                `json:"DateFormat,omitempty" xml:"DateFormat,omitempty"`
+	RequestMethod   *string                                                `json:"RequestMethod,omitempty" xml:"RequestMethod,omitempty"`
 	RequestProtocol *string                                                `json:"RequestProtocol,omitempty" xml:"RequestProtocol,omitempty"`
-	ApiPath         *string                                                `json:"ApiPath,omitempty" xml:"ApiPath,omitempty"`
+	Description     *string                                                `json:"Description,omitempty" xml:"Description,omitempty"`
+	SqlTemplateDTO  *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTO `json:"SqlTemplateDTO,omitempty" xml:"SqlTemplateDTO,omitempty" type:"Struct"`
 }
 
 func (s GetDataAPIServiceDetailResponseBodyData) String() string {
@@ -11947,8 +12192,8 @@ func (s GetDataAPIServiceDetailResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *GetDataAPIServiceDetailResponseBodyData) SetDisplayName(v string) *GetDataAPIServiceDetailResponseBodyData {
-	s.DisplayName = &v
+func (s *GetDataAPIServiceDetailResponseBodyData) SetApiSrn(v string) *GetDataAPIServiceDetailResponseBodyData {
+	s.ApiSrn = &v
 	return s
 }
 
@@ -11957,18 +12202,13 @@ func (s *GetDataAPIServiceDetailResponseBodyData) SetStatus(v int32) *GetDataAPI
 	return s
 }
 
-func (s *GetDataAPIServiceDetailResponseBodyData) SetApiSrn(v string) *GetDataAPIServiceDetailResponseBodyData {
-	s.ApiSrn = &v
+func (s *GetDataAPIServiceDetailResponseBodyData) SetDisplayName(v string) *GetDataAPIServiceDetailResponseBodyData {
+	s.DisplayName = &v
 	return s
 }
 
-func (s *GetDataAPIServiceDetailResponseBodyData) SetSqlTemplateDTO(v *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTO) *GetDataAPIServiceDetailResponseBodyData {
-	s.SqlTemplateDTO = v
-	return s
-}
-
-func (s *GetDataAPIServiceDetailResponseBodyData) SetDescription(v string) *GetDataAPIServiceDetailResponseBodyData {
-	s.Description = &v
+func (s *GetDataAPIServiceDetailResponseBodyData) SetApiPath(v string) *GetDataAPIServiceDetailResponseBodyData {
+	s.ApiPath = &v
 	return s
 }
 
@@ -11982,13 +12222,13 @@ func (s *GetDataAPIServiceDetailResponseBodyData) SetLastUpdateTime(v int64) *Ge
 	return s
 }
 
-func (s *GetDataAPIServiceDetailResponseBodyData) SetRequestMethod(v string) *GetDataAPIServiceDetailResponseBodyData {
-	s.RequestMethod = &v
+func (s *GetDataAPIServiceDetailResponseBodyData) SetDateFormat(v string) *GetDataAPIServiceDetailResponseBodyData {
+	s.DateFormat = &v
 	return s
 }
 
-func (s *GetDataAPIServiceDetailResponseBodyData) SetDateFormat(v string) *GetDataAPIServiceDetailResponseBodyData {
-	s.DateFormat = &v
+func (s *GetDataAPIServiceDetailResponseBodyData) SetRequestMethod(v string) *GetDataAPIServiceDetailResponseBodyData {
+	s.RequestMethod = &v
 	return s
 }
 
@@ -11997,16 +12237,21 @@ func (s *GetDataAPIServiceDetailResponseBodyData) SetRequestProtocol(v string) *
 	return s
 }
 
-func (s *GetDataAPIServiceDetailResponseBodyData) SetApiPath(v string) *GetDataAPIServiceDetailResponseBodyData {
-	s.ApiPath = &v
+func (s *GetDataAPIServiceDetailResponseBodyData) SetDescription(v string) *GetDataAPIServiceDetailResponseBodyData {
+	s.Description = &v
+	return s
+}
+
+func (s *GetDataAPIServiceDetailResponseBodyData) SetSqlTemplateDTO(v *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTO) *GetDataAPIServiceDetailResponseBodyData {
+	s.SqlTemplateDTO = v
 	return s
 }
 
 type GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTO struct {
-	RequestParams  *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTORequestParams  `json:"RequestParams,omitempty" xml:"RequestParams,omitempty" type:"Struct"`
 	OriginSql      *string                                                              `json:"OriginSql,omitempty" xml:"OriginSql,omitempty"`
-	ResponseParams *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTOResponseParams `json:"ResponseParams,omitempty" xml:"ResponseParams,omitempty" type:"Struct"`
 	TemplateSql    *string                                                              `json:"TemplateSql,omitempty" xml:"TemplateSql,omitempty"`
+	RequestParams  *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTORequestParams  `json:"RequestParams,omitempty" xml:"RequestParams,omitempty" type:"Struct"`
+	ResponseParams *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTOResponseParams `json:"ResponseParams,omitempty" xml:"ResponseParams,omitempty" type:"Struct"`
 }
 
 func (s GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTO) String() string {
@@ -12017,23 +12262,23 @@ func (s GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTO) GoString() string
 	return s.String()
 }
 
-func (s *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTO) SetRequestParams(v *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTORequestParams) *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTO {
-	s.RequestParams = v
-	return s
-}
-
 func (s *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTO) SetOriginSql(v string) *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTO {
 	s.OriginSql = &v
 	return s
 }
 
-func (s *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTO) SetResponseParams(v *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTOResponseParams) *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTO {
-	s.ResponseParams = v
+func (s *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTO) SetTemplateSql(v string) *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTO {
+	s.TemplateSql = &v
 	return s
 }
 
-func (s *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTO) SetTemplateSql(v string) *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTO {
-	s.TemplateSql = &v
+func (s *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTO) SetRequestParams(v *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTORequestParams) *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTO {
+	s.RequestParams = v
+	return s
+}
+
+func (s *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTO) SetResponseParams(v *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTOResponseParams) *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTO {
+	s.ResponseParams = v
 	return s
 }
 
@@ -12055,11 +12300,11 @@ func (s *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTORequestParams) Set
 }
 
 type GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTORequestParamsRequestParams struct {
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Required *bool   `json:"Required,omitempty" xml:"Required,omitempty"`
-	Example  *string `json:"Example,omitempty" xml:"Example,omitempty"`
 	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	Desc     *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	Example  *string `json:"Example,omitempty" xml:"Example,omitempty"`
+	Required *bool   `json:"Required,omitempty" xml:"Required,omitempty"`
 }
 
 func (s GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTORequestParamsRequestParams) String() string {
@@ -12070,13 +12315,18 @@ func (s GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTORequestParamsReques
 	return s.String()
 }
 
+func (s *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTORequestParamsRequestParams) SetName(v string) *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTORequestParamsRequestParams {
+	s.Name = &v
+	return s
+}
+
 func (s *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTORequestParamsRequestParams) SetType(v string) *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTORequestParamsRequestParams {
 	s.Type = &v
 	return s
 }
 
-func (s *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTORequestParamsRequestParams) SetRequired(v bool) *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTORequestParamsRequestParams {
-	s.Required = &v
+func (s *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTORequestParamsRequestParams) SetDesc(v string) *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTORequestParamsRequestParams {
+	s.Desc = &v
 	return s
 }
 
@@ -12085,13 +12335,8 @@ func (s *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTORequestParamsReque
 	return s
 }
 
-func (s *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTORequestParamsRequestParams) SetName(v string) *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTORequestParamsRequestParams {
-	s.Name = &v
-	return s
-}
-
-func (s *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTORequestParamsRequestParams) SetDesc(v string) *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTORequestParamsRequestParams {
-	s.Desc = &v
+func (s *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTORequestParamsRequestParams) SetRequired(v bool) *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTORequestParamsRequestParams {
+	s.Required = &v
 	return s
 }
 
@@ -12113,11 +12358,11 @@ func (s *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTOResponseParams) Se
 }
 
 type GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTOResponseParamsResponseParams struct {
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Required *bool   `json:"Required,omitempty" xml:"Required,omitempty"`
-	Example  *string `json:"Example,omitempty" xml:"Example,omitempty"`
 	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	Desc     *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	Example  *string `json:"Example,omitempty" xml:"Example,omitempty"`
+	Required *bool   `json:"Required,omitempty" xml:"Required,omitempty"`
 }
 
 func (s GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTOResponseParamsResponseParams) String() string {
@@ -12128,13 +12373,18 @@ func (s GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTOResponseParamsRespo
 	return s.String()
 }
 
+func (s *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTOResponseParamsResponseParams) SetName(v string) *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTOResponseParamsResponseParams {
+	s.Name = &v
+	return s
+}
+
 func (s *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTOResponseParamsResponseParams) SetType(v string) *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTOResponseParamsResponseParams {
 	s.Type = &v
 	return s
 }
 
-func (s *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTOResponseParamsResponseParams) SetRequired(v bool) *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTOResponseParamsResponseParams {
-	s.Required = &v
+func (s *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTOResponseParamsResponseParams) SetDesc(v string) *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTOResponseParamsResponseParams {
+	s.Desc = &v
 	return s
 }
 
@@ -12143,13 +12393,8 @@ func (s *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTOResponseParamsResp
 	return s
 }
 
-func (s *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTOResponseParamsResponseParams) SetName(v string) *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTOResponseParamsResponseParams {
-	s.Name = &v
-	return s
-}
-
-func (s *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTOResponseParamsResponseParams) SetDesc(v string) *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTOResponseParamsResponseParams {
-	s.Desc = &v
+func (s *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTOResponseParamsResponseParams) SetRequired(v bool) *GetDataAPIServiceDetailResponseBodyDataSqlTemplateDTOResponseParamsResponseParams {
+	s.Required = &v
 	return s
 }
 
@@ -12219,10 +12464,10 @@ func (s *GetDeviceShadowRequest) SetDeviceName(v string) *GetDeviceShadowRequest
 
 type GetDeviceShadowResponseBody struct {
 	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage  *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code          *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	ShadowMessage *string `json:"ShadowMessage,omitempty" xml:"ShadowMessage,omitempty"`
 	Success       *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code          *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage  *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ShadowMessage *string `json:"ShadowMessage,omitempty" xml:"ShadowMessage,omitempty"`
 }
 
 func (s GetDeviceShadowResponseBody) String() string {
@@ -12238,8 +12483,8 @@ func (s *GetDeviceShadowResponseBody) SetRequestId(v string) *GetDeviceShadowRes
 	return s
 }
 
-func (s *GetDeviceShadowResponseBody) SetErrorMessage(v string) *GetDeviceShadowResponseBody {
-	s.ErrorMessage = &v
+func (s *GetDeviceShadowResponseBody) SetSuccess(v bool) *GetDeviceShadowResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -12248,13 +12493,13 @@ func (s *GetDeviceShadowResponseBody) SetCode(v string) *GetDeviceShadowResponse
 	return s
 }
 
-func (s *GetDeviceShadowResponseBody) SetShadowMessage(v string) *GetDeviceShadowResponseBody {
-	s.ShadowMessage = &v
+func (s *GetDeviceShadowResponseBody) SetErrorMessage(v string) *GetDeviceShadowResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
-func (s *GetDeviceShadowResponseBody) SetSuccess(v bool) *GetDeviceShadowResponseBody {
-	s.Success = &v
+func (s *GetDeviceShadowResponseBody) SetShadowMessage(v string) *GetDeviceShadowResponseBody {
+	s.ShadowMessage = &v
 	return s
 }
 
@@ -12330,10 +12575,10 @@ func (s *GetDeviceStatusRequest) SetIotId(v string) *GetDeviceStatusRequest {
 
 type GetDeviceStatusResponseBody struct {
 	RequestId    *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data         *GetDeviceStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                          `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string                          `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Data         *GetDeviceStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s GetDeviceStatusResponseBody) String() string {
@@ -12349,13 +12594,8 @@ func (s *GetDeviceStatusResponseBody) SetRequestId(v string) *GetDeviceStatusRes
 	return s
 }
 
-func (s *GetDeviceStatusResponseBody) SetData(v *GetDeviceStatusResponseBodyData) *GetDeviceStatusResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetDeviceStatusResponseBody) SetErrorMessage(v string) *GetDeviceStatusResponseBody {
-	s.ErrorMessage = &v
+func (s *GetDeviceStatusResponseBody) SetSuccess(v bool) *GetDeviceStatusResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -12364,8 +12604,13 @@ func (s *GetDeviceStatusResponseBody) SetCode(v string) *GetDeviceStatusResponse
 	return s
 }
 
-func (s *GetDeviceStatusResponseBody) SetSuccess(v bool) *GetDeviceStatusResponseBody {
-	s.Success = &v
+func (s *GetDeviceStatusResponseBody) SetErrorMessage(v string) *GetDeviceStatusResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetDeviceStatusResponseBody) SetData(v *GetDeviceStatusResponseBodyData) *GetDeviceStatusResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -12452,10 +12697,10 @@ func (s *GetEdgeDriverVersionRequest) SetDriverVersion(v string) *GetEdgeDriverV
 
 type GetEdgeDriverVersionResponseBody struct {
 	RequestId    *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data         *GetEdgeDriverVersionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                               `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string                               `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Data         *GetEdgeDriverVersionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s GetEdgeDriverVersionResponseBody) String() string {
@@ -12471,13 +12716,8 @@ func (s *GetEdgeDriverVersionResponseBody) SetRequestId(v string) *GetEdgeDriver
 	return s
 }
 
-func (s *GetEdgeDriverVersionResponseBody) SetData(v *GetEdgeDriverVersionResponseBodyData) *GetEdgeDriverVersionResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetEdgeDriverVersionResponseBody) SetErrorMessage(v string) *GetEdgeDriverVersionResponseBody {
-	s.ErrorMessage = &v
+func (s *GetEdgeDriverVersionResponseBody) SetSuccess(v bool) *GetEdgeDriverVersionResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -12486,24 +12726,29 @@ func (s *GetEdgeDriverVersionResponseBody) SetCode(v string) *GetEdgeDriverVersi
 	return s
 }
 
-func (s *GetEdgeDriverVersionResponseBody) SetSuccess(v bool) *GetEdgeDriverVersionResponseBody {
-	s.Success = &v
+func (s *GetEdgeDriverVersionResponseBody) SetErrorMessage(v string) *GetEdgeDriverVersionResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetEdgeDriverVersionResponseBody) SetData(v *GetEdgeDriverVersionResponseBodyData) *GetEdgeDriverVersionResponseBody {
+	s.Data = v
 	return s
 }
 
 type GetEdgeDriverVersionResponseBodyData struct {
-	GmtCreateTimestamp   *int64  `json:"GmtCreateTimestamp,omitempty" xml:"GmtCreateTimestamp,omitempty"`
-	ConfigCheckRule      *string `json:"ConfigCheckRule,omitempty" xml:"ConfigCheckRule,omitempty"`
-	EdgeVersion          *string `json:"EdgeVersion,omitempty" xml:"EdgeVersion,omitempty"`
 	DriverId             *string `json:"DriverId,omitempty" xml:"DriverId,omitempty"`
-	GmtModifiedTimestamp *int64  `json:"GmtModifiedTimestamp,omitempty" xml:"GmtModifiedTimestamp,omitempty"`
-	VersionState         *string `json:"VersionState,omitempty" xml:"VersionState,omitempty"`
-	ContainerConfig      *string `json:"ContainerConfig,omitempty" xml:"ContainerConfig,omitempty"`
-	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DriverConfig         *string `json:"DriverConfig,omitempty" xml:"DriverConfig,omitempty"`
-	Argument             *string `json:"Argument,omitempty" xml:"Argument,omitempty"`
 	DriverVersion        *string `json:"DriverVersion,omitempty" xml:"DriverVersion,omitempty"`
+	VersionState         *string `json:"VersionState,omitempty" xml:"VersionState,omitempty"`
+	EdgeVersion          *string `json:"EdgeVersion,omitempty" xml:"EdgeVersion,omitempty"`
+	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	SourceConfig         *string `json:"SourceConfig,omitempty" xml:"SourceConfig,omitempty"`
+	DriverConfig         *string `json:"DriverConfig,omitempty" xml:"DriverConfig,omitempty"`
+	ContainerConfig      *string `json:"ContainerConfig,omitempty" xml:"ContainerConfig,omitempty"`
+	ConfigCheckRule      *string `json:"ConfigCheckRule,omitempty" xml:"ConfigCheckRule,omitempty"`
+	GmtCreateTimestamp   *int64  `json:"GmtCreateTimestamp,omitempty" xml:"GmtCreateTimestamp,omitempty"`
+	GmtModifiedTimestamp *int64  `json:"GmtModifiedTimestamp,omitempty" xml:"GmtModifiedTimestamp,omitempty"`
+	Argument             *string `json:"Argument,omitempty" xml:"Argument,omitempty"`
 }
 
 func (s GetEdgeDriverVersionResponseBodyData) String() string {
@@ -12514,53 +12759,8 @@ func (s GetEdgeDriverVersionResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *GetEdgeDriverVersionResponseBodyData) SetGmtCreateTimestamp(v int64) *GetEdgeDriverVersionResponseBodyData {
-	s.GmtCreateTimestamp = &v
-	return s
-}
-
-func (s *GetEdgeDriverVersionResponseBodyData) SetConfigCheckRule(v string) *GetEdgeDriverVersionResponseBodyData {
-	s.ConfigCheckRule = &v
-	return s
-}
-
-func (s *GetEdgeDriverVersionResponseBodyData) SetEdgeVersion(v string) *GetEdgeDriverVersionResponseBodyData {
-	s.EdgeVersion = &v
-	return s
-}
-
 func (s *GetEdgeDriverVersionResponseBodyData) SetDriverId(v string) *GetEdgeDriverVersionResponseBodyData {
 	s.DriverId = &v
-	return s
-}
-
-func (s *GetEdgeDriverVersionResponseBodyData) SetGmtModifiedTimestamp(v int64) *GetEdgeDriverVersionResponseBodyData {
-	s.GmtModifiedTimestamp = &v
-	return s
-}
-
-func (s *GetEdgeDriverVersionResponseBodyData) SetVersionState(v string) *GetEdgeDriverVersionResponseBodyData {
-	s.VersionState = &v
-	return s
-}
-
-func (s *GetEdgeDriverVersionResponseBodyData) SetContainerConfig(v string) *GetEdgeDriverVersionResponseBodyData {
-	s.ContainerConfig = &v
-	return s
-}
-
-func (s *GetEdgeDriverVersionResponseBodyData) SetDescription(v string) *GetEdgeDriverVersionResponseBodyData {
-	s.Description = &v
-	return s
-}
-
-func (s *GetEdgeDriverVersionResponseBodyData) SetDriverConfig(v string) *GetEdgeDriverVersionResponseBodyData {
-	s.DriverConfig = &v
-	return s
-}
-
-func (s *GetEdgeDriverVersionResponseBodyData) SetArgument(v string) *GetEdgeDriverVersionResponseBodyData {
-	s.Argument = &v
 	return s
 }
 
@@ -12569,8 +12769,53 @@ func (s *GetEdgeDriverVersionResponseBodyData) SetDriverVersion(v string) *GetEd
 	return s
 }
 
+func (s *GetEdgeDriverVersionResponseBodyData) SetVersionState(v string) *GetEdgeDriverVersionResponseBodyData {
+	s.VersionState = &v
+	return s
+}
+
+func (s *GetEdgeDriverVersionResponseBodyData) SetEdgeVersion(v string) *GetEdgeDriverVersionResponseBodyData {
+	s.EdgeVersion = &v
+	return s
+}
+
+func (s *GetEdgeDriverVersionResponseBodyData) SetDescription(v string) *GetEdgeDriverVersionResponseBodyData {
+	s.Description = &v
+	return s
+}
+
 func (s *GetEdgeDriverVersionResponseBodyData) SetSourceConfig(v string) *GetEdgeDriverVersionResponseBodyData {
 	s.SourceConfig = &v
+	return s
+}
+
+func (s *GetEdgeDriverVersionResponseBodyData) SetDriverConfig(v string) *GetEdgeDriverVersionResponseBodyData {
+	s.DriverConfig = &v
+	return s
+}
+
+func (s *GetEdgeDriverVersionResponseBodyData) SetContainerConfig(v string) *GetEdgeDriverVersionResponseBodyData {
+	s.ContainerConfig = &v
+	return s
+}
+
+func (s *GetEdgeDriverVersionResponseBodyData) SetConfigCheckRule(v string) *GetEdgeDriverVersionResponseBodyData {
+	s.ConfigCheckRule = &v
+	return s
+}
+
+func (s *GetEdgeDriverVersionResponseBodyData) SetGmtCreateTimestamp(v int64) *GetEdgeDriverVersionResponseBodyData {
+	s.GmtCreateTimestamp = &v
+	return s
+}
+
+func (s *GetEdgeDriverVersionResponseBodyData) SetGmtModifiedTimestamp(v int64) *GetEdgeDriverVersionResponseBodyData {
+	s.GmtModifiedTimestamp = &v
+	return s
+}
+
+func (s *GetEdgeDriverVersionResponseBodyData) SetArgument(v string) *GetEdgeDriverVersionResponseBodyData {
+	s.Argument = &v
 	return s
 }
 
@@ -12634,10 +12879,10 @@ func (s *GetEdgeInstanceRequest) SetInstanceId(v string) *GetEdgeInstanceRequest
 
 type GetEdgeInstanceResponseBody struct {
 	RequestId    *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data         *GetEdgeInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                          `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string                          `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Data         *GetEdgeInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s GetEdgeInstanceResponseBody) String() string {
@@ -12653,13 +12898,8 @@ func (s *GetEdgeInstanceResponseBody) SetRequestId(v string) *GetEdgeInstanceRes
 	return s
 }
 
-func (s *GetEdgeInstanceResponseBody) SetData(v *GetEdgeInstanceResponseBodyData) *GetEdgeInstanceResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetEdgeInstanceResponseBody) SetErrorMessage(v string) *GetEdgeInstanceResponseBody {
-	s.ErrorMessage = &v
+func (s *GetEdgeInstanceResponseBody) SetSuccess(v bool) *GetEdgeInstanceResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -12668,28 +12908,33 @@ func (s *GetEdgeInstanceResponseBody) SetCode(v string) *GetEdgeInstanceResponse
 	return s
 }
 
-func (s *GetEdgeInstanceResponseBody) SetSuccess(v bool) *GetEdgeInstanceResponseBody {
-	s.Success = &v
+func (s *GetEdgeInstanceResponseBody) SetErrorMessage(v string) *GetEdgeInstanceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetEdgeInstanceResponseBody) SetData(v *GetEdgeInstanceResponseBodyData) *GetEdgeInstanceResponseBody {
+	s.Data = v
 	return s
 }
 
 type GetEdgeInstanceResponseBodyData struct {
-	Type                   *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	GmtCreateTimestamp     *int64  `json:"GmtCreateTimestamp,omitempty" xml:"GmtCreateTimestamp,omitempty"`
-	RoleArn                *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	RoleAttachTime         *string `json:"RoleAttachTime,omitempty" xml:"RoleAttachTime,omitempty"`
-	Spec                   *int32  `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	GmtModifiedTimestamp   *int64  `json:"GmtModifiedTimestamp,omitempty" xml:"GmtModifiedTimestamp,omitempty"`
-	Tags                   *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	RoleName               *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 	InstanceId             *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	GmtModified            *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	RoleAttachTimestamp    *int64  `json:"RoleAttachTimestamp,omitempty" xml:"RoleAttachTimestamp,omitempty"`
-	LatestDeploymentType   *string `json:"LatestDeploymentType,omitempty" xml:"LatestDeploymentType,omitempty"`
-	LatestDeploymentStatus *int32  `json:"LatestDeploymentStatus,omitempty" xml:"LatestDeploymentStatus,omitempty"`
+	Name                   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Tags                   *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Type                   *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Spec                   *int32  `json:"Spec,omitempty" xml:"Spec,omitempty"`
 	BizEnable              *bool   `json:"BizEnable,omitempty" xml:"BizEnable,omitempty"`
 	GmtCreate              *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Name                   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	GmtModified            *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	RoleArn                *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	RoleName               *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	RoleAttachTime         *string `json:"RoleAttachTime,omitempty" xml:"RoleAttachTime,omitempty"`
+	LatestDeploymentStatus *int32  `json:"LatestDeploymentStatus,omitempty" xml:"LatestDeploymentStatus,omitempty"`
+	LatestDeploymentType   *string `json:"LatestDeploymentType,omitempty" xml:"LatestDeploymentType,omitempty"`
+	GmtCreateTimestamp     *int64  `json:"GmtCreateTimestamp,omitempty" xml:"GmtCreateTimestamp,omitempty"`
+	GmtModifiedTimestamp   *int64  `json:"GmtModifiedTimestamp,omitempty" xml:"GmtModifiedTimestamp,omitempty"`
+	RoleAttachTimestamp    *int64  `json:"RoleAttachTimestamp,omitempty" xml:"RoleAttachTimestamp,omitempty"`
 }
 
 func (s GetEdgeInstanceResponseBodyData) String() string {
@@ -12700,33 +12945,13 @@ func (s GetEdgeInstanceResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *GetEdgeInstanceResponseBodyData) SetType(v string) *GetEdgeInstanceResponseBodyData {
-	s.Type = &v
+func (s *GetEdgeInstanceResponseBodyData) SetInstanceId(v string) *GetEdgeInstanceResponseBodyData {
+	s.InstanceId = &v
 	return s
 }
 
-func (s *GetEdgeInstanceResponseBodyData) SetGmtCreateTimestamp(v int64) *GetEdgeInstanceResponseBodyData {
-	s.GmtCreateTimestamp = &v
-	return s
-}
-
-func (s *GetEdgeInstanceResponseBodyData) SetRoleArn(v string) *GetEdgeInstanceResponseBodyData {
-	s.RoleArn = &v
-	return s
-}
-
-func (s *GetEdgeInstanceResponseBodyData) SetRoleAttachTime(v string) *GetEdgeInstanceResponseBodyData {
-	s.RoleAttachTime = &v
-	return s
-}
-
-func (s *GetEdgeInstanceResponseBodyData) SetSpec(v int32) *GetEdgeInstanceResponseBodyData {
-	s.Spec = &v
-	return s
-}
-
-func (s *GetEdgeInstanceResponseBodyData) SetGmtModifiedTimestamp(v int64) *GetEdgeInstanceResponseBodyData {
-	s.GmtModifiedTimestamp = &v
+func (s *GetEdgeInstanceResponseBodyData) SetName(v string) *GetEdgeInstanceResponseBodyData {
+	s.Name = &v
 	return s
 }
 
@@ -12735,33 +12960,13 @@ func (s *GetEdgeInstanceResponseBodyData) SetTags(v string) *GetEdgeInstanceResp
 	return s
 }
 
-func (s *GetEdgeInstanceResponseBodyData) SetRoleName(v string) *GetEdgeInstanceResponseBodyData {
-	s.RoleName = &v
+func (s *GetEdgeInstanceResponseBodyData) SetType(v string) *GetEdgeInstanceResponseBodyData {
+	s.Type = &v
 	return s
 }
 
-func (s *GetEdgeInstanceResponseBodyData) SetInstanceId(v string) *GetEdgeInstanceResponseBodyData {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *GetEdgeInstanceResponseBodyData) SetGmtModified(v string) *GetEdgeInstanceResponseBodyData {
-	s.GmtModified = &v
-	return s
-}
-
-func (s *GetEdgeInstanceResponseBodyData) SetRoleAttachTimestamp(v int64) *GetEdgeInstanceResponseBodyData {
-	s.RoleAttachTimestamp = &v
-	return s
-}
-
-func (s *GetEdgeInstanceResponseBodyData) SetLatestDeploymentType(v string) *GetEdgeInstanceResponseBodyData {
-	s.LatestDeploymentType = &v
-	return s
-}
-
-func (s *GetEdgeInstanceResponseBodyData) SetLatestDeploymentStatus(v int32) *GetEdgeInstanceResponseBodyData {
-	s.LatestDeploymentStatus = &v
+func (s *GetEdgeInstanceResponseBodyData) SetSpec(v int32) *GetEdgeInstanceResponseBodyData {
+	s.Spec = &v
 	return s
 }
 
@@ -12775,8 +12980,48 @@ func (s *GetEdgeInstanceResponseBodyData) SetGmtCreate(v string) *GetEdgeInstanc
 	return s
 }
 
-func (s *GetEdgeInstanceResponseBodyData) SetName(v string) *GetEdgeInstanceResponseBodyData {
-	s.Name = &v
+func (s *GetEdgeInstanceResponseBodyData) SetGmtModified(v string) *GetEdgeInstanceResponseBodyData {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *GetEdgeInstanceResponseBodyData) SetRoleArn(v string) *GetEdgeInstanceResponseBodyData {
+	s.RoleArn = &v
+	return s
+}
+
+func (s *GetEdgeInstanceResponseBodyData) SetRoleName(v string) *GetEdgeInstanceResponseBodyData {
+	s.RoleName = &v
+	return s
+}
+
+func (s *GetEdgeInstanceResponseBodyData) SetRoleAttachTime(v string) *GetEdgeInstanceResponseBodyData {
+	s.RoleAttachTime = &v
+	return s
+}
+
+func (s *GetEdgeInstanceResponseBodyData) SetLatestDeploymentStatus(v int32) *GetEdgeInstanceResponseBodyData {
+	s.LatestDeploymentStatus = &v
+	return s
+}
+
+func (s *GetEdgeInstanceResponseBodyData) SetLatestDeploymentType(v string) *GetEdgeInstanceResponseBodyData {
+	s.LatestDeploymentType = &v
+	return s
+}
+
+func (s *GetEdgeInstanceResponseBodyData) SetGmtCreateTimestamp(v int64) *GetEdgeInstanceResponseBodyData {
+	s.GmtCreateTimestamp = &v
+	return s
+}
+
+func (s *GetEdgeInstanceResponseBodyData) SetGmtModifiedTimestamp(v int64) *GetEdgeInstanceResponseBodyData {
+	s.GmtModifiedTimestamp = &v
+	return s
+}
+
+func (s *GetEdgeInstanceResponseBodyData) SetRoleAttachTimestamp(v int64) *GetEdgeInstanceResponseBodyData {
+	s.RoleAttachTimestamp = &v
 	return s
 }
 
@@ -12846,10 +13091,10 @@ func (s *GetEdgeInstanceDeploymentRequest) SetDeploymentId(v string) *GetEdgeIns
 
 type GetEdgeInstanceDeploymentResponseBody struct {
 	RequestId    *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data         *GetEdgeInstanceDeploymentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                                    `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string                                    `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Data         *GetEdgeInstanceDeploymentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s GetEdgeInstanceDeploymentResponseBody) String() string {
@@ -12865,13 +13110,8 @@ func (s *GetEdgeInstanceDeploymentResponseBody) SetRequestId(v string) *GetEdgeI
 	return s
 }
 
-func (s *GetEdgeInstanceDeploymentResponseBody) SetData(v *GetEdgeInstanceDeploymentResponseBodyData) *GetEdgeInstanceDeploymentResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetEdgeInstanceDeploymentResponseBody) SetErrorMessage(v string) *GetEdgeInstanceDeploymentResponseBody {
-	s.ErrorMessage = &v
+func (s *GetEdgeInstanceDeploymentResponseBody) SetSuccess(v bool) *GetEdgeInstanceDeploymentResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -12880,23 +13120,28 @@ func (s *GetEdgeInstanceDeploymentResponseBody) SetCode(v string) *GetEdgeInstan
 	return s
 }
 
-func (s *GetEdgeInstanceDeploymentResponseBody) SetSuccess(v bool) *GetEdgeInstanceDeploymentResponseBody {
-	s.Success = &v
+func (s *GetEdgeInstanceDeploymentResponseBody) SetErrorMessage(v string) *GetEdgeInstanceDeploymentResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetEdgeInstanceDeploymentResponseBody) SetData(v *GetEdgeInstanceDeploymentResponseBodyData) *GetEdgeInstanceDeploymentResponseBody {
+	s.Data = v
 	return s
 }
 
 type GetEdgeInstanceDeploymentResponseBodyData struct {
-	GmtCreateTimestamp    *int64                                               `json:"GmtCreateTimestamp,omitempty" xml:"GmtCreateTimestamp,omitempty"`
-	Type                  *string                                              `json:"Type,omitempty" xml:"Type,omitempty"`
-	Status                *int32                                               `json:"Status,omitempty" xml:"Status,omitempty"`
+	GmtCreate             *string                                              `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified           *string                                              `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	GmtCompleted          *string                                              `json:"GmtCompleted,omitempty" xml:"GmtCompleted,omitempty"`
 	DeploymentId          *string                                              `json:"DeploymentId,omitempty" xml:"DeploymentId,omitempty"`
 	Description           *string                                              `json:"Description,omitempty" xml:"Description,omitempty"`
+	Status                *int32                                               `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type                  *string                                              `json:"Type,omitempty" xml:"Type,omitempty"`
+	GmtCreateTimestamp    *int64                                               `json:"GmtCreateTimestamp,omitempty" xml:"GmtCreateTimestamp,omitempty"`
 	GmtModifiedTimestamp  *int64                                               `json:"GmtModifiedTimestamp,omitempty" xml:"GmtModifiedTimestamp,omitempty"`
-	TaskList              []*GetEdgeInstanceDeploymentResponseBodyDataTaskList `json:"TaskList,omitempty" xml:"TaskList,omitempty" type:"Repeated"`
-	GmtCompleted          *string                                              `json:"GmtCompleted,omitempty" xml:"GmtCompleted,omitempty"`
-	GmtCreate             *string                                              `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	GmtCompletedTimestamp *int64                                               `json:"GmtCompletedTimestamp,omitempty" xml:"GmtCompletedTimestamp,omitempty"`
-	GmtModified           *string                                              `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	TaskList              []*GetEdgeInstanceDeploymentResponseBodyDataTaskList `json:"TaskList,omitempty" xml:"TaskList,omitempty" type:"Repeated"`
 }
 
 func (s GetEdgeInstanceDeploymentResponseBodyData) String() string {
@@ -12907,18 +13152,18 @@ func (s GetEdgeInstanceDeploymentResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *GetEdgeInstanceDeploymentResponseBodyData) SetGmtCreateTimestamp(v int64) *GetEdgeInstanceDeploymentResponseBodyData {
-	s.GmtCreateTimestamp = &v
+func (s *GetEdgeInstanceDeploymentResponseBodyData) SetGmtCreate(v string) *GetEdgeInstanceDeploymentResponseBodyData {
+	s.GmtCreate = &v
 	return s
 }
 
-func (s *GetEdgeInstanceDeploymentResponseBodyData) SetType(v string) *GetEdgeInstanceDeploymentResponseBodyData {
-	s.Type = &v
+func (s *GetEdgeInstanceDeploymentResponseBodyData) SetGmtModified(v string) *GetEdgeInstanceDeploymentResponseBodyData {
+	s.GmtModified = &v
 	return s
 }
 
-func (s *GetEdgeInstanceDeploymentResponseBodyData) SetStatus(v int32) *GetEdgeInstanceDeploymentResponseBodyData {
-	s.Status = &v
+func (s *GetEdgeInstanceDeploymentResponseBodyData) SetGmtCompleted(v string) *GetEdgeInstanceDeploymentResponseBodyData {
+	s.GmtCompleted = &v
 	return s
 }
 
@@ -12932,23 +13177,23 @@ func (s *GetEdgeInstanceDeploymentResponseBodyData) SetDescription(v string) *Ge
 	return s
 }
 
+func (s *GetEdgeInstanceDeploymentResponseBodyData) SetStatus(v int32) *GetEdgeInstanceDeploymentResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetEdgeInstanceDeploymentResponseBodyData) SetType(v string) *GetEdgeInstanceDeploymentResponseBodyData {
+	s.Type = &v
+	return s
+}
+
+func (s *GetEdgeInstanceDeploymentResponseBodyData) SetGmtCreateTimestamp(v int64) *GetEdgeInstanceDeploymentResponseBodyData {
+	s.GmtCreateTimestamp = &v
+	return s
+}
+
 func (s *GetEdgeInstanceDeploymentResponseBodyData) SetGmtModifiedTimestamp(v int64) *GetEdgeInstanceDeploymentResponseBodyData {
 	s.GmtModifiedTimestamp = &v
-	return s
-}
-
-func (s *GetEdgeInstanceDeploymentResponseBodyData) SetTaskList(v []*GetEdgeInstanceDeploymentResponseBodyDataTaskList) *GetEdgeInstanceDeploymentResponseBodyData {
-	s.TaskList = v
-	return s
-}
-
-func (s *GetEdgeInstanceDeploymentResponseBodyData) SetGmtCompleted(v string) *GetEdgeInstanceDeploymentResponseBodyData {
-	s.GmtCompleted = &v
-	return s
-}
-
-func (s *GetEdgeInstanceDeploymentResponseBodyData) SetGmtCreate(v string) *GetEdgeInstanceDeploymentResponseBodyData {
-	s.GmtCreate = &v
 	return s
 }
 
@@ -12957,23 +13202,23 @@ func (s *GetEdgeInstanceDeploymentResponseBodyData) SetGmtCompletedTimestamp(v i
 	return s
 }
 
-func (s *GetEdgeInstanceDeploymentResponseBodyData) SetGmtModified(v string) *GetEdgeInstanceDeploymentResponseBodyData {
-	s.GmtModified = &v
+func (s *GetEdgeInstanceDeploymentResponseBodyData) SetTaskList(v []*GetEdgeInstanceDeploymentResponseBodyDataTaskList) *GetEdgeInstanceDeploymentResponseBodyData {
+	s.TaskList = v
 	return s
 }
 
 type GetEdgeInstanceDeploymentResponseBodyDataTaskList struct {
-	GmtCreateTimestamp    *int64                                                                   `json:"GmtCreateTimestamp,omitempty" xml:"GmtCreateTimestamp,omitempty"`
-	Status                *int32                                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
-	ResourceSnapshotList  []*GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList `json:"ResourceSnapshotList,omitempty" xml:"ResourceSnapshotList,omitempty" type:"Repeated"`
-	Stage                 *int32                                                                   `json:"Stage,omitempty" xml:"Stage,omitempty"`
-	GatewayId             *string                                                                  `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
-	GmtModifiedTimestamp  *int64                                                                   `json:"GmtModifiedTimestamp,omitempty" xml:"GmtModifiedTimestamp,omitempty"`
-	GmtCompleted          *string                                                                  `json:"GmtCompleted,omitempty" xml:"GmtCompleted,omitempty"`
 	GmtCreate             *string                                                                  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtCompletedTimestamp *int64                                                                   `json:"GmtCompletedTimestamp,omitempty" xml:"GmtCompletedTimestamp,omitempty"`
 	GmtModified           *string                                                                  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	GmtCompleted          *string                                                                  `json:"GmtCompleted,omitempty" xml:"GmtCompleted,omitempty"`
+	GatewayId             *string                                                                  `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
 	TaskId                *string                                                                  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	Stage                 *int32                                                                   `json:"Stage,omitempty" xml:"Stage,omitempty"`
+	Status                *int32                                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
+	GmtCreateTimestamp    *int64                                                                   `json:"GmtCreateTimestamp,omitempty" xml:"GmtCreateTimestamp,omitempty"`
+	GmtModifiedTimestamp  *int64                                                                   `json:"GmtModifiedTimestamp,omitempty" xml:"GmtModifiedTimestamp,omitempty"`
+	GmtCompletedTimestamp *int64                                                                   `json:"GmtCompletedTimestamp,omitempty" xml:"GmtCompletedTimestamp,omitempty"`
+	ResourceSnapshotList  []*GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList `json:"ResourceSnapshotList,omitempty" xml:"ResourceSnapshotList,omitempty" type:"Repeated"`
 }
 
 func (s GetEdgeInstanceDeploymentResponseBodyDataTaskList) String() string {
@@ -12984,48 +13229,8 @@ func (s GetEdgeInstanceDeploymentResponseBodyDataTaskList) GoString() string {
 	return s.String()
 }
 
-func (s *GetEdgeInstanceDeploymentResponseBodyDataTaskList) SetGmtCreateTimestamp(v int64) *GetEdgeInstanceDeploymentResponseBodyDataTaskList {
-	s.GmtCreateTimestamp = &v
-	return s
-}
-
-func (s *GetEdgeInstanceDeploymentResponseBodyDataTaskList) SetStatus(v int32) *GetEdgeInstanceDeploymentResponseBodyDataTaskList {
-	s.Status = &v
-	return s
-}
-
-func (s *GetEdgeInstanceDeploymentResponseBodyDataTaskList) SetResourceSnapshotList(v []*GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList) *GetEdgeInstanceDeploymentResponseBodyDataTaskList {
-	s.ResourceSnapshotList = v
-	return s
-}
-
-func (s *GetEdgeInstanceDeploymentResponseBodyDataTaskList) SetStage(v int32) *GetEdgeInstanceDeploymentResponseBodyDataTaskList {
-	s.Stage = &v
-	return s
-}
-
-func (s *GetEdgeInstanceDeploymentResponseBodyDataTaskList) SetGatewayId(v string) *GetEdgeInstanceDeploymentResponseBodyDataTaskList {
-	s.GatewayId = &v
-	return s
-}
-
-func (s *GetEdgeInstanceDeploymentResponseBodyDataTaskList) SetGmtModifiedTimestamp(v int64) *GetEdgeInstanceDeploymentResponseBodyDataTaskList {
-	s.GmtModifiedTimestamp = &v
-	return s
-}
-
-func (s *GetEdgeInstanceDeploymentResponseBodyDataTaskList) SetGmtCompleted(v string) *GetEdgeInstanceDeploymentResponseBodyDataTaskList {
-	s.GmtCompleted = &v
-	return s
-}
-
 func (s *GetEdgeInstanceDeploymentResponseBodyDataTaskList) SetGmtCreate(v string) *GetEdgeInstanceDeploymentResponseBodyDataTaskList {
 	s.GmtCreate = &v
-	return s
-}
-
-func (s *GetEdgeInstanceDeploymentResponseBodyDataTaskList) SetGmtCompletedTimestamp(v int64) *GetEdgeInstanceDeploymentResponseBodyDataTaskList {
-	s.GmtCompletedTimestamp = &v
 	return s
 }
 
@@ -13034,26 +13239,66 @@ func (s *GetEdgeInstanceDeploymentResponseBodyDataTaskList) SetGmtModified(v str
 	return s
 }
 
+func (s *GetEdgeInstanceDeploymentResponseBodyDataTaskList) SetGmtCompleted(v string) *GetEdgeInstanceDeploymentResponseBodyDataTaskList {
+	s.GmtCompleted = &v
+	return s
+}
+
+func (s *GetEdgeInstanceDeploymentResponseBodyDataTaskList) SetGatewayId(v string) *GetEdgeInstanceDeploymentResponseBodyDataTaskList {
+	s.GatewayId = &v
+	return s
+}
+
 func (s *GetEdgeInstanceDeploymentResponseBodyDataTaskList) SetTaskId(v string) *GetEdgeInstanceDeploymentResponseBodyDataTaskList {
 	s.TaskId = &v
 	return s
 }
 
+func (s *GetEdgeInstanceDeploymentResponseBodyDataTaskList) SetStage(v int32) *GetEdgeInstanceDeploymentResponseBodyDataTaskList {
+	s.Stage = &v
+	return s
+}
+
+func (s *GetEdgeInstanceDeploymentResponseBodyDataTaskList) SetStatus(v int32) *GetEdgeInstanceDeploymentResponseBodyDataTaskList {
+	s.Status = &v
+	return s
+}
+
+func (s *GetEdgeInstanceDeploymentResponseBodyDataTaskList) SetGmtCreateTimestamp(v int64) *GetEdgeInstanceDeploymentResponseBodyDataTaskList {
+	s.GmtCreateTimestamp = &v
+	return s
+}
+
+func (s *GetEdgeInstanceDeploymentResponseBodyDataTaskList) SetGmtModifiedTimestamp(v int64) *GetEdgeInstanceDeploymentResponseBodyDataTaskList {
+	s.GmtModifiedTimestamp = &v
+	return s
+}
+
+func (s *GetEdgeInstanceDeploymentResponseBodyDataTaskList) SetGmtCompletedTimestamp(v int64) *GetEdgeInstanceDeploymentResponseBodyDataTaskList {
+	s.GmtCompletedTimestamp = &v
+	return s
+}
+
+func (s *GetEdgeInstanceDeploymentResponseBodyDataTaskList) SetResourceSnapshotList(v []*GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList) *GetEdgeInstanceDeploymentResponseBodyDataTaskList {
+	s.ResourceSnapshotList = v
+	return s
+}
+
 type GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList struct {
-	GmtCreateTimestamp    *int64  `json:"GmtCreateTimestamp,omitempty" xml:"GmtCreateTimestamp,omitempty"`
-	Status                *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Stage                 *int32  `json:"Stage,omitempty" xml:"Stage,omitempty"`
-	GmtModifiedTimestamp  *int64  `json:"GmtModifiedTimestamp,omitempty" xml:"GmtModifiedTimestamp,omitempty"`
-	Log                   *string `json:"Log,omitempty" xml:"Log,omitempty"`
-	GmtModified           *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	OperateType           *int32  `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
-	ResourceType          *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	SnapshotId            *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	GmtCompleted          *string `json:"GmtCompleted,omitempty" xml:"GmtCompleted,omitempty"`
 	GmtCreate             *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtCompletedTimestamp *int64  `json:"GmtCompletedTimestamp,omitempty" xml:"GmtCompletedTimestamp,omitempty"`
+	GmtModified           *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	GmtCompleted          *string `json:"GmtCompleted,omitempty" xml:"GmtCompleted,omitempty"`
+	SnapshotId            *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	ResourceType          *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	ResourceId            *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceName          *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	OperateType           *int32  `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
+	Stage                 *int32  `json:"Stage,omitempty" xml:"Stage,omitempty"`
+	Status                *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Log                   *string `json:"Log,omitempty" xml:"Log,omitempty"`
+	GmtCreateTimestamp    *int64  `json:"GmtCreateTimestamp,omitempty" xml:"GmtCreateTimestamp,omitempty"`
+	GmtModifiedTimestamp  *int64  `json:"GmtModifiedTimestamp,omitempty" xml:"GmtModifiedTimestamp,omitempty"`
+	GmtCompletedTimestamp *int64  `json:"GmtCompletedTimestamp,omitempty" xml:"GmtCompletedTimestamp,omitempty"`
 }
 
 func (s GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList) String() string {
@@ -13064,28 +13309,8 @@ func (s GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList) G
 	return s.String()
 }
 
-func (s *GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList) SetGmtCreateTimestamp(v int64) *GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList {
-	s.GmtCreateTimestamp = &v
-	return s
-}
-
-func (s *GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList) SetStatus(v int32) *GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList {
-	s.Status = &v
-	return s
-}
-
-func (s *GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList) SetStage(v int32) *GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList {
-	s.Stage = &v
-	return s
-}
-
-func (s *GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList) SetGmtModifiedTimestamp(v int64) *GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList {
-	s.GmtModifiedTimestamp = &v
-	return s
-}
-
-func (s *GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList) SetLog(v string) *GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList {
-	s.Log = &v
+func (s *GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList) SetGmtCreate(v string) *GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList {
+	s.GmtCreate = &v
 	return s
 }
 
@@ -13094,13 +13319,8 @@ func (s *GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList) 
 	return s
 }
 
-func (s *GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList) SetOperateType(v int32) *GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList {
-	s.OperateType = &v
-	return s
-}
-
-func (s *GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList) SetResourceType(v string) *GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList {
-	s.ResourceType = &v
+func (s *GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList) SetGmtCompleted(v string) *GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList {
+	s.GmtCompleted = &v
 	return s
 }
 
@@ -13109,18 +13329,8 @@ func (s *GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList) 
 	return s
 }
 
-func (s *GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList) SetGmtCompleted(v string) *GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList {
-	s.GmtCompleted = &v
-	return s
-}
-
-func (s *GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList) SetGmtCreate(v string) *GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList {
-	s.GmtCreate = &v
-	return s
-}
-
-func (s *GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList) SetGmtCompletedTimestamp(v int64) *GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList {
-	s.GmtCompletedTimestamp = &v
+func (s *GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList) SetResourceType(v string) *GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList {
+	s.ResourceType = &v
 	return s
 }
 
@@ -13131,6 +13341,41 @@ func (s *GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList) 
 
 func (s *GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList) SetResourceName(v string) *GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList {
 	s.ResourceName = &v
+	return s
+}
+
+func (s *GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList) SetOperateType(v int32) *GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList {
+	s.OperateType = &v
+	return s
+}
+
+func (s *GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList) SetStage(v int32) *GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList {
+	s.Stage = &v
+	return s
+}
+
+func (s *GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList) SetStatus(v int32) *GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList {
+	s.Status = &v
+	return s
+}
+
+func (s *GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList) SetLog(v string) *GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList {
+	s.Log = &v
+	return s
+}
+
+func (s *GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList) SetGmtCreateTimestamp(v int64) *GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList {
+	s.GmtCreateTimestamp = &v
+	return s
+}
+
+func (s *GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList) SetGmtModifiedTimestamp(v int64) *GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList {
+	s.GmtModifiedTimestamp = &v
+	return s
+}
+
+func (s *GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList) SetGmtCompletedTimestamp(v int64) *GetEdgeInstanceDeploymentResponseBodyDataTaskListResourceSnapshotList {
+	s.GmtCompletedTimestamp = &v
 	return s
 }
 
@@ -13206,10 +13451,10 @@ func (s *GetGatewayBySubDeviceRequest) SetIotId(v string) *GetGatewayBySubDevice
 
 type GetGatewayBySubDeviceResponseBody struct {
 	RequestId    *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data         *GetGatewayBySubDeviceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                                `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string                                `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Data         *GetGatewayBySubDeviceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s GetGatewayBySubDeviceResponseBody) String() string {
@@ -13225,13 +13470,8 @@ func (s *GetGatewayBySubDeviceResponseBody) SetRequestId(v string) *GetGatewayBy
 	return s
 }
 
-func (s *GetGatewayBySubDeviceResponseBody) SetData(v *GetGatewayBySubDeviceResponseBodyData) *GetGatewayBySubDeviceResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetGatewayBySubDeviceResponseBody) SetErrorMessage(v string) *GetGatewayBySubDeviceResponseBody {
-	s.ErrorMessage = &v
+func (s *GetGatewayBySubDeviceResponseBody) SetSuccess(v bool) *GetGatewayBySubDeviceResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -13240,28 +13480,33 @@ func (s *GetGatewayBySubDeviceResponseBody) SetCode(v string) *GetGatewayBySubDe
 	return s
 }
 
-func (s *GetGatewayBySubDeviceResponseBody) SetSuccess(v bool) *GetGatewayBySubDeviceResponseBody {
-	s.Success = &v
+func (s *GetGatewayBySubDeviceResponseBody) SetErrorMessage(v string) *GetGatewayBySubDeviceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetGatewayBySubDeviceResponseBody) SetData(v *GetGatewayBySubDeviceResponseBodyData) *GetGatewayBySubDeviceResponseBody {
+	s.Data = v
 	return s
 }
 
 type GetGatewayBySubDeviceResponseBodyData struct {
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UtcActive       *string `json:"UtcActive,omitempty" xml:"UtcActive,omitempty"`
-	ProductName     *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	DeviceName      *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
-	UtcCreate       *string `json:"UtcCreate,omitempty" xml:"UtcCreate,omitempty"`
-	FirmwareVersion *string `json:"FirmwareVersion,omitempty" xml:"FirmwareVersion,omitempty"`
-	GmtOnline       *string `json:"GmtOnline,omitempty" xml:"GmtOnline,omitempty"`
-	Region          *string `json:"region,omitempty" xml:"region,omitempty"`
-	IotId           *string `json:"iotId,omitempty" xml:"iotId,omitempty"`
-	UtcOnline       *string `json:"UtcOnline,omitempty" xml:"UtcOnline,omitempty"`
 	ProductKey      *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	ProductName     *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	DeviceSecret    *string `json:"DeviceSecret,omitempty" xml:"DeviceSecret,omitempty"`
+	DeviceName      *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	FirmwareVersion *string `json:"FirmwareVersion,omitempty" xml:"FirmwareVersion,omitempty"`
+	GmtCreate       *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	UtcCreate       *string `json:"UtcCreate,omitempty" xml:"UtcCreate,omitempty"`
+	GmtActive       *string `json:"GmtActive,omitempty" xml:"GmtActive,omitempty"`
+	UtcActive       *string `json:"UtcActive,omitempty" xml:"UtcActive,omitempty"`
+	GmtOnline       *string `json:"GmtOnline,omitempty" xml:"GmtOnline,omitempty"`
+	UtcOnline       *string `json:"UtcOnline,omitempty" xml:"UtcOnline,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	IpAddress       *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
 	NodeType        *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	DeviceSecret    *string `json:"DeviceSecret,omitempty" xml:"DeviceSecret,omitempty"`
-	GmtCreate       *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtActive       *string `json:"GmtActive,omitempty" xml:"GmtActive,omitempty"`
+	Region          *string `json:"region,omitempty" xml:"region,omitempty"`
+	IotId           *string `json:"iotId,omitempty" xml:"iotId,omitempty"`
 }
 
 func (s GetGatewayBySubDeviceResponseBodyData) String() string {
@@ -13272,13 +13517,8 @@ func (s GetGatewayBySubDeviceResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *GetGatewayBySubDeviceResponseBodyData) SetStatus(v string) *GetGatewayBySubDeviceResponseBodyData {
-	s.Status = &v
-	return s
-}
-
-func (s *GetGatewayBySubDeviceResponseBodyData) SetUtcActive(v string) *GetGatewayBySubDeviceResponseBodyData {
-	s.UtcActive = &v
+func (s *GetGatewayBySubDeviceResponseBodyData) SetProductKey(v string) *GetGatewayBySubDeviceResponseBodyData {
+	s.ProductKey = &v
 	return s
 }
 
@@ -13287,13 +13527,13 @@ func (s *GetGatewayBySubDeviceResponseBodyData) SetProductName(v string) *GetGat
 	return s
 }
 
-func (s *GetGatewayBySubDeviceResponseBodyData) SetDeviceName(v string) *GetGatewayBySubDeviceResponseBodyData {
-	s.DeviceName = &v
+func (s *GetGatewayBySubDeviceResponseBodyData) SetDeviceSecret(v string) *GetGatewayBySubDeviceResponseBodyData {
+	s.DeviceSecret = &v
 	return s
 }
 
-func (s *GetGatewayBySubDeviceResponseBodyData) SetUtcCreate(v string) *GetGatewayBySubDeviceResponseBodyData {
-	s.UtcCreate = &v
+func (s *GetGatewayBySubDeviceResponseBodyData) SetDeviceName(v string) *GetGatewayBySubDeviceResponseBodyData {
+	s.DeviceName = &v
 	return s
 }
 
@@ -13302,18 +13542,28 @@ func (s *GetGatewayBySubDeviceResponseBodyData) SetFirmwareVersion(v string) *Ge
 	return s
 }
 
+func (s *GetGatewayBySubDeviceResponseBodyData) SetGmtCreate(v string) *GetGatewayBySubDeviceResponseBodyData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *GetGatewayBySubDeviceResponseBodyData) SetUtcCreate(v string) *GetGatewayBySubDeviceResponseBodyData {
+	s.UtcCreate = &v
+	return s
+}
+
+func (s *GetGatewayBySubDeviceResponseBodyData) SetGmtActive(v string) *GetGatewayBySubDeviceResponseBodyData {
+	s.GmtActive = &v
+	return s
+}
+
+func (s *GetGatewayBySubDeviceResponseBodyData) SetUtcActive(v string) *GetGatewayBySubDeviceResponseBodyData {
+	s.UtcActive = &v
+	return s
+}
+
 func (s *GetGatewayBySubDeviceResponseBodyData) SetGmtOnline(v string) *GetGatewayBySubDeviceResponseBodyData {
 	s.GmtOnline = &v
-	return s
-}
-
-func (s *GetGatewayBySubDeviceResponseBodyData) SetRegion(v string) *GetGatewayBySubDeviceResponseBodyData {
-	s.Region = &v
-	return s
-}
-
-func (s *GetGatewayBySubDeviceResponseBodyData) SetIotId(v string) *GetGatewayBySubDeviceResponseBodyData {
-	s.IotId = &v
 	return s
 }
 
@@ -13322,8 +13572,8 @@ func (s *GetGatewayBySubDeviceResponseBodyData) SetUtcOnline(v string) *GetGatew
 	return s
 }
 
-func (s *GetGatewayBySubDeviceResponseBodyData) SetProductKey(v string) *GetGatewayBySubDeviceResponseBodyData {
-	s.ProductKey = &v
+func (s *GetGatewayBySubDeviceResponseBodyData) SetStatus(v string) *GetGatewayBySubDeviceResponseBodyData {
+	s.Status = &v
 	return s
 }
 
@@ -13337,18 +13587,13 @@ func (s *GetGatewayBySubDeviceResponseBodyData) SetNodeType(v string) *GetGatewa
 	return s
 }
 
-func (s *GetGatewayBySubDeviceResponseBodyData) SetDeviceSecret(v string) *GetGatewayBySubDeviceResponseBodyData {
-	s.DeviceSecret = &v
+func (s *GetGatewayBySubDeviceResponseBodyData) SetRegion(v string) *GetGatewayBySubDeviceResponseBodyData {
+	s.Region = &v
 	return s
 }
 
-func (s *GetGatewayBySubDeviceResponseBodyData) SetGmtCreate(v string) *GetGatewayBySubDeviceResponseBodyData {
-	s.GmtCreate = &v
-	return s
-}
-
-func (s *GetGatewayBySubDeviceResponseBodyData) SetGmtActive(v string) *GetGatewayBySubDeviceResponseBodyData {
-	s.GmtActive = &v
+func (s *GetGatewayBySubDeviceResponseBodyData) SetIotId(v string) *GetGatewayBySubDeviceResponseBodyData {
+	s.IotId = &v
 	return s
 }
 
@@ -13411,15 +13656,15 @@ func (s *GetLoraNodesTaskRequest) SetTaskId(v string) *GetLoraNodesTaskRequest {
 }
 
 type GetLoraNodesTaskResponseBody struct {
-	TotalCount     *int64                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	SuccessDevEuis *GetLoraNodesTaskResponseBodySuccessDevEuis `json:"SuccessDevEuis,omitempty" xml:"SuccessDevEuis,omitempty" type:"Struct"`
-	TaskId         *string                                     `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	RequestId      *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage   *string                                     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	SuccessCount   *int64                                      `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
-	TaskState      *string                                     `json:"TaskState,omitempty" xml:"TaskState,omitempty"`
-	Code           *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success        *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code           *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage   *string                                     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	TaskId         *string                                     `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskState      *string                                     `json:"TaskState,omitempty" xml:"TaskState,omitempty"`
+	TotalCount     *int64                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	SuccessCount   *int64                                      `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+	SuccessDevEuis *GetLoraNodesTaskResponseBodySuccessDevEuis `json:"SuccessDevEuis,omitempty" xml:"SuccessDevEuis,omitempty" type:"Struct"`
 }
 
 func (s GetLoraNodesTaskResponseBody) String() string {
@@ -13430,38 +13675,13 @@ func (s GetLoraNodesTaskResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetLoraNodesTaskResponseBody) SetTotalCount(v int64) *GetLoraNodesTaskResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *GetLoraNodesTaskResponseBody) SetSuccessDevEuis(v *GetLoraNodesTaskResponseBodySuccessDevEuis) *GetLoraNodesTaskResponseBody {
-	s.SuccessDevEuis = v
-	return s
-}
-
-func (s *GetLoraNodesTaskResponseBody) SetTaskId(v string) *GetLoraNodesTaskResponseBody {
-	s.TaskId = &v
-	return s
-}
-
 func (s *GetLoraNodesTaskResponseBody) SetRequestId(v string) *GetLoraNodesTaskResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *GetLoraNodesTaskResponseBody) SetErrorMessage(v string) *GetLoraNodesTaskResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *GetLoraNodesTaskResponseBody) SetSuccessCount(v int64) *GetLoraNodesTaskResponseBody {
-	s.SuccessCount = &v
-	return s
-}
-
-func (s *GetLoraNodesTaskResponseBody) SetTaskState(v string) *GetLoraNodesTaskResponseBody {
-	s.TaskState = &v
+func (s *GetLoraNodesTaskResponseBody) SetSuccess(v bool) *GetLoraNodesTaskResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -13470,8 +13690,33 @@ func (s *GetLoraNodesTaskResponseBody) SetCode(v string) *GetLoraNodesTaskRespon
 	return s
 }
 
-func (s *GetLoraNodesTaskResponseBody) SetSuccess(v bool) *GetLoraNodesTaskResponseBody {
-	s.Success = &v
+func (s *GetLoraNodesTaskResponseBody) SetErrorMessage(v string) *GetLoraNodesTaskResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetLoraNodesTaskResponseBody) SetTaskId(v string) *GetLoraNodesTaskResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetLoraNodesTaskResponseBody) SetTaskState(v string) *GetLoraNodesTaskResponseBody {
+	s.TaskState = &v
+	return s
+}
+
+func (s *GetLoraNodesTaskResponseBody) SetTotalCount(v int64) *GetLoraNodesTaskResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *GetLoraNodesTaskResponseBody) SetSuccessCount(v int64) *GetLoraNodesTaskResponseBody {
+	s.SuccessCount = &v
+	return s
+}
+
+func (s *GetLoraNodesTaskResponseBody) SetSuccessDevEuis(v *GetLoraNodesTaskResponseBodySuccessDevEuis) *GetLoraNodesTaskResponseBody {
+	s.SuccessDevEuis = v
 	return s
 }
 
@@ -13551,15 +13796,15 @@ func (s *GetNodesAddingTaskRequest) SetTaskId(v string) *GetNodesAddingTaskReque
 }
 
 type GetNodesAddingTaskResponseBody struct {
-	TotalCount     *int64                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	SuccessDevEuis *GetNodesAddingTaskResponseBodySuccessDevEuis `json:"SuccessDevEuis,omitempty" xml:"SuccessDevEuis,omitempty" type:"Struct"`
-	TaskId         *string                                       `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	RequestId      *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage   *string                                       `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	SuccessCount   *int64                                        `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
-	TaskState      *string                                       `json:"TaskState,omitempty" xml:"TaskState,omitempty"`
-	Code           *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success        *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code           *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage   *string                                       `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	TaskId         *string                                       `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskState      *string                                       `json:"TaskState,omitempty" xml:"TaskState,omitempty"`
+	TotalCount     *int64                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	SuccessCount   *int64                                        `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+	SuccessDevEuis *GetNodesAddingTaskResponseBodySuccessDevEuis `json:"SuccessDevEuis,omitempty" xml:"SuccessDevEuis,omitempty" type:"Struct"`
 }
 
 func (s GetNodesAddingTaskResponseBody) String() string {
@@ -13570,38 +13815,13 @@ func (s GetNodesAddingTaskResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetNodesAddingTaskResponseBody) SetTotalCount(v int64) *GetNodesAddingTaskResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *GetNodesAddingTaskResponseBody) SetSuccessDevEuis(v *GetNodesAddingTaskResponseBodySuccessDevEuis) *GetNodesAddingTaskResponseBody {
-	s.SuccessDevEuis = v
-	return s
-}
-
-func (s *GetNodesAddingTaskResponseBody) SetTaskId(v string) *GetNodesAddingTaskResponseBody {
-	s.TaskId = &v
-	return s
-}
-
 func (s *GetNodesAddingTaskResponseBody) SetRequestId(v string) *GetNodesAddingTaskResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *GetNodesAddingTaskResponseBody) SetErrorMessage(v string) *GetNodesAddingTaskResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *GetNodesAddingTaskResponseBody) SetSuccessCount(v int64) *GetNodesAddingTaskResponseBody {
-	s.SuccessCount = &v
-	return s
-}
-
-func (s *GetNodesAddingTaskResponseBody) SetTaskState(v string) *GetNodesAddingTaskResponseBody {
-	s.TaskState = &v
+func (s *GetNodesAddingTaskResponseBody) SetSuccess(v bool) *GetNodesAddingTaskResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -13610,8 +13830,33 @@ func (s *GetNodesAddingTaskResponseBody) SetCode(v string) *GetNodesAddingTaskRe
 	return s
 }
 
-func (s *GetNodesAddingTaskResponseBody) SetSuccess(v bool) *GetNodesAddingTaskResponseBody {
-	s.Success = &v
+func (s *GetNodesAddingTaskResponseBody) SetErrorMessage(v string) *GetNodesAddingTaskResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetNodesAddingTaskResponseBody) SetTaskId(v string) *GetNodesAddingTaskResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetNodesAddingTaskResponseBody) SetTaskState(v string) *GetNodesAddingTaskResponseBody {
+	s.TaskState = &v
+	return s
+}
+
+func (s *GetNodesAddingTaskResponseBody) SetTotalCount(v int64) *GetNodesAddingTaskResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *GetNodesAddingTaskResponseBody) SetSuccessCount(v int64) *GetNodesAddingTaskResponseBody {
+	s.SuccessCount = &v
+	return s
+}
+
+func (s *GetNodesAddingTaskResponseBody) SetSuccessDevEuis(v *GetNodesAddingTaskResponseBodySuccessDevEuis) *GetNodesAddingTaskResponseBody {
+	s.SuccessDevEuis = v
 	return s
 }
 
@@ -13692,10 +13937,10 @@ func (s *GetRuleRequest) SetRuleId(v int64) *GetRuleRequest {
 
 type GetRuleResponseBody struct {
 	RequestId    *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
 	ErrorMessage *string                      `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	RuleInfo     *GetRuleResponseBodyRuleInfo `json:"RuleInfo,omitempty" xml:"RuleInfo,omitempty" type:"Struct"`
-	Code         *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success      *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetRuleResponseBody) String() string {
@@ -13711,6 +13956,16 @@ func (s *GetRuleResponseBody) SetRequestId(v string) *GetRuleResponseBody {
 	return s
 }
 
+func (s *GetRuleResponseBody) SetSuccess(v bool) *GetRuleResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetRuleResponseBody) SetCode(v string) *GetRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *GetRuleResponseBody) SetErrorMessage(v string) *GetRuleResponseBody {
 	s.ErrorMessage = &v
 	return s
@@ -13721,33 +13976,23 @@ func (s *GetRuleResponseBody) SetRuleInfo(v *GetRuleResponseBodyRuleInfo) *GetRu
 	return s
 }
 
-func (s *GetRuleResponseBody) SetCode(v string) *GetRuleResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetRuleResponseBody) SetSuccess(v bool) *GetRuleResponseBody {
-	s.Success = &v
-	return s
-}
-
 type GetRuleResponseBodyRuleInfo struct {
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Modified     *string `json:"Modified,omitempty" xml:"Modified,omitempty"`
-	DataType     *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	Select       *string `json:"Select,omitempty" xml:"Select,omitempty"`
-	UtcCreated   *string `json:"UtcCreated,omitempty" xml:"UtcCreated,omitempty"`
-	CreateUserId *int64  `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
-	TopicType    *int32  `json:"TopicType,omitempty" xml:"TopicType,omitempty"`
-	Where        *string `json:"Where,omitempty" xml:"Where,omitempty"`
-	ProductKey   *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
-	UtcModified  *string `json:"UtcModified,omitempty" xml:"UtcModified,omitempty"`
 	Topic        *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 	ShortTopic   *string `json:"ShortTopic,omitempty" xml:"ShortTopic,omitempty"`
-	RuleDesc     *string `json:"RuleDesc,omitempty" xml:"RuleDesc,omitempty"`
+	Where        *string `json:"Where,omitempty" xml:"Where,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	CreateUserId *int64  `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	ProductKey   *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RuleDesc     *string `json:"RuleDesc,omitempty" xml:"RuleDesc,omitempty"`
+	DataType     *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
 	Created      *string `json:"Created,omitempty" xml:"Created,omitempty"`
-	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	UtcCreated   *string `json:"UtcCreated,omitempty" xml:"UtcCreated,omitempty"`
+	Modified     *string `json:"Modified,omitempty" xml:"Modified,omitempty"`
+	UtcModified  *string `json:"UtcModified,omitempty" xml:"UtcModified,omitempty"`
+	TopicType    *int32  `json:"TopicType,omitempty" xml:"TopicType,omitempty"`
 }
 
 func (s GetRuleResponseBodyRuleInfo) String() string {
@@ -13758,53 +14003,13 @@ func (s GetRuleResponseBodyRuleInfo) GoString() string {
 	return s.String()
 }
 
-func (s *GetRuleResponseBodyRuleInfo) SetStatus(v string) *GetRuleResponseBodyRuleInfo {
-	s.Status = &v
-	return s
-}
-
-func (s *GetRuleResponseBodyRuleInfo) SetModified(v string) *GetRuleResponseBodyRuleInfo {
-	s.Modified = &v
-	return s
-}
-
-func (s *GetRuleResponseBodyRuleInfo) SetDataType(v string) *GetRuleResponseBodyRuleInfo {
-	s.DataType = &v
+func (s *GetRuleResponseBodyRuleInfo) SetId(v int64) *GetRuleResponseBodyRuleInfo {
+	s.Id = &v
 	return s
 }
 
 func (s *GetRuleResponseBodyRuleInfo) SetSelect(v string) *GetRuleResponseBodyRuleInfo {
 	s.Select = &v
-	return s
-}
-
-func (s *GetRuleResponseBodyRuleInfo) SetUtcCreated(v string) *GetRuleResponseBodyRuleInfo {
-	s.UtcCreated = &v
-	return s
-}
-
-func (s *GetRuleResponseBodyRuleInfo) SetCreateUserId(v int64) *GetRuleResponseBodyRuleInfo {
-	s.CreateUserId = &v
-	return s
-}
-
-func (s *GetRuleResponseBodyRuleInfo) SetTopicType(v int32) *GetRuleResponseBodyRuleInfo {
-	s.TopicType = &v
-	return s
-}
-
-func (s *GetRuleResponseBodyRuleInfo) SetWhere(v string) *GetRuleResponseBodyRuleInfo {
-	s.Where = &v
-	return s
-}
-
-func (s *GetRuleResponseBodyRuleInfo) SetProductKey(v string) *GetRuleResponseBodyRuleInfo {
-	s.ProductKey = &v
-	return s
-}
-
-func (s *GetRuleResponseBodyRuleInfo) SetUtcModified(v string) *GetRuleResponseBodyRuleInfo {
-	s.UtcModified = &v
 	return s
 }
 
@@ -13818,8 +14023,23 @@ func (s *GetRuleResponseBodyRuleInfo) SetShortTopic(v string) *GetRuleResponseBo
 	return s
 }
 
-func (s *GetRuleResponseBodyRuleInfo) SetRuleDesc(v string) *GetRuleResponseBodyRuleInfo {
-	s.RuleDesc = &v
+func (s *GetRuleResponseBodyRuleInfo) SetWhere(v string) *GetRuleResponseBodyRuleInfo {
+	s.Where = &v
+	return s
+}
+
+func (s *GetRuleResponseBodyRuleInfo) SetStatus(v string) *GetRuleResponseBodyRuleInfo {
+	s.Status = &v
+	return s
+}
+
+func (s *GetRuleResponseBodyRuleInfo) SetCreateUserId(v int64) *GetRuleResponseBodyRuleInfo {
+	s.CreateUserId = &v
+	return s
+}
+
+func (s *GetRuleResponseBodyRuleInfo) SetProductKey(v string) *GetRuleResponseBodyRuleInfo {
+	s.ProductKey = &v
 	return s
 }
 
@@ -13828,13 +14048,38 @@ func (s *GetRuleResponseBodyRuleInfo) SetName(v string) *GetRuleResponseBodyRule
 	return s
 }
 
+func (s *GetRuleResponseBodyRuleInfo) SetRuleDesc(v string) *GetRuleResponseBodyRuleInfo {
+	s.RuleDesc = &v
+	return s
+}
+
+func (s *GetRuleResponseBodyRuleInfo) SetDataType(v string) *GetRuleResponseBodyRuleInfo {
+	s.DataType = &v
+	return s
+}
+
 func (s *GetRuleResponseBodyRuleInfo) SetCreated(v string) *GetRuleResponseBodyRuleInfo {
 	s.Created = &v
 	return s
 }
 
-func (s *GetRuleResponseBodyRuleInfo) SetId(v int64) *GetRuleResponseBodyRuleInfo {
-	s.Id = &v
+func (s *GetRuleResponseBodyRuleInfo) SetUtcCreated(v string) *GetRuleResponseBodyRuleInfo {
+	s.UtcCreated = &v
+	return s
+}
+
+func (s *GetRuleResponseBodyRuleInfo) SetModified(v string) *GetRuleResponseBodyRuleInfo {
+	s.Modified = &v
+	return s
+}
+
+func (s *GetRuleResponseBodyRuleInfo) SetUtcModified(v string) *GetRuleResponseBodyRuleInfo {
+	s.UtcModified = &v
+	return s
+}
+
+func (s *GetRuleResponseBodyRuleInfo) SetTopicType(v int32) *GetRuleResponseBodyRuleInfo {
+	s.TopicType = &v
 	return s
 }
 
@@ -13898,10 +14143,10 @@ func (s *GetRuleActionRequest) SetActionId(v int64) *GetRuleActionRequest {
 
 type GetRuleActionResponseBody struct {
 	RequestId      *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RuleActionInfo *GetRuleActionResponseBodyRuleActionInfo `json:"RuleActionInfo,omitempty" xml:"RuleActionInfo,omitempty" type:"Struct"`
-	ErrorMessage   *string                                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code           *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success        *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code           *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage   *string                                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RuleActionInfo *GetRuleActionResponseBodyRuleActionInfo `json:"RuleActionInfo,omitempty" xml:"RuleActionInfo,omitempty" type:"Struct"`
 }
 
 func (s GetRuleActionResponseBody) String() string {
@@ -13917,13 +14162,8 @@ func (s *GetRuleActionResponseBody) SetRequestId(v string) *GetRuleActionRespons
 	return s
 }
 
-func (s *GetRuleActionResponseBody) SetRuleActionInfo(v *GetRuleActionResponseBodyRuleActionInfo) *GetRuleActionResponseBody {
-	s.RuleActionInfo = v
-	return s
-}
-
-func (s *GetRuleActionResponseBody) SetErrorMessage(v string) *GetRuleActionResponseBody {
-	s.ErrorMessage = &v
+func (s *GetRuleActionResponseBody) SetSuccess(v bool) *GetRuleActionResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -13932,17 +14172,22 @@ func (s *GetRuleActionResponseBody) SetCode(v string) *GetRuleActionResponseBody
 	return s
 }
 
-func (s *GetRuleActionResponseBody) SetSuccess(v bool) *GetRuleActionResponseBody {
-	s.Success = &v
+func (s *GetRuleActionResponseBody) SetErrorMessage(v string) *GetRuleActionResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetRuleActionResponseBody) SetRuleActionInfo(v *GetRuleActionResponseBodyRuleActionInfo) *GetRuleActionResponseBody {
+	s.RuleActionInfo = v
 	return s
 }
 
 type GetRuleActionResponseBodyRuleActionInfo struct {
+	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	RuleId          *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	Configuration   *string `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
 	ErrorActionFlag *bool   `json:"ErrorActionFlag,omitempty" xml:"ErrorActionFlag,omitempty"`
-	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	RuleId          *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s GetRuleActionResponseBodyRuleActionInfo) String() string {
@@ -13951,6 +14196,16 @@ func (s GetRuleActionResponseBodyRuleActionInfo) String() string {
 
 func (s GetRuleActionResponseBodyRuleActionInfo) GoString() string {
 	return s.String()
+}
+
+func (s *GetRuleActionResponseBodyRuleActionInfo) SetId(v int64) *GetRuleActionResponseBodyRuleActionInfo {
+	s.Id = &v
+	return s
+}
+
+func (s *GetRuleActionResponseBodyRuleActionInfo) SetRuleId(v int64) *GetRuleActionResponseBodyRuleActionInfo {
+	s.RuleId = &v
+	return s
 }
 
 func (s *GetRuleActionResponseBodyRuleActionInfo) SetType(v string) *GetRuleActionResponseBodyRuleActionInfo {
@@ -13965,16 +14220,6 @@ func (s *GetRuleActionResponseBodyRuleActionInfo) SetConfiguration(v string) *Ge
 
 func (s *GetRuleActionResponseBodyRuleActionInfo) SetErrorActionFlag(v bool) *GetRuleActionResponseBodyRuleActionInfo {
 	s.ErrorActionFlag = &v
-	return s
-}
-
-func (s *GetRuleActionResponseBodyRuleActionInfo) SetId(v int64) *GetRuleActionResponseBodyRuleActionInfo {
-	s.Id = &v
-	return s
-}
-
-func (s *GetRuleActionResponseBodyRuleActionInfo) SetRuleId(v int64) *GetRuleActionResponseBodyRuleActionInfo {
-	s.RuleId = &v
 	return s
 }
 
@@ -14038,10 +14283,10 @@ func (s *GetSceneRuleRequest) SetRuleId(v string) *GetSceneRuleRequest {
 
 type GetSceneRuleResponseBody struct {
 	RequestId    *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data         *GetSceneRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Success      *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
 	ErrorMessage *string                       `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Code         *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success      *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data         *GetSceneRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s GetSceneRuleResponseBody) String() string {
@@ -14057,8 +14302,8 @@ func (s *GetSceneRuleResponseBody) SetRequestId(v string) *GetSceneRuleResponseB
 	return s
 }
 
-func (s *GetSceneRuleResponseBody) SetData(v *GetSceneRuleResponseBodyData) *GetSceneRuleResponseBody {
-	s.Data = v
+func (s *GetSceneRuleResponseBody) SetSuccess(v bool) *GetSceneRuleResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -14072,18 +14317,18 @@ func (s *GetSceneRuleResponseBody) SetCode(v string) *GetSceneRuleResponseBody {
 	return s
 }
 
-func (s *GetSceneRuleResponseBody) SetSuccess(v bool) *GetSceneRuleResponseBody {
-	s.Success = &v
+func (s *GetSceneRuleResponseBody) SetData(v *GetSceneRuleResponseBodyData) *GetSceneRuleResponseBody {
+	s.Data = v
 	return s
 }
 
 type GetSceneRuleResponseBodyData struct {
-	RuleStatus      *int32  `json:"RuleStatus,omitempty" xml:"RuleStatus,omitempty"`
-	RuleContent     *string `json:"RuleContent,omitempty" xml:"RuleContent,omitempty"`
 	GmtCreate       *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	GmtModified     *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	RuleDescription *string `json:"RuleDescription,omitempty" xml:"RuleDescription,omitempty"`
 	RuleName        *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	RuleContent     *string `json:"RuleContent,omitempty" xml:"RuleContent,omitempty"`
+	RuleDescription *string `json:"RuleDescription,omitempty" xml:"RuleDescription,omitempty"`
+	RuleStatus      *int32  `json:"RuleStatus,omitempty" xml:"RuleStatus,omitempty"`
 }
 
 func (s GetSceneRuleResponseBodyData) String() string {
@@ -14092,16 +14337,6 @@ func (s GetSceneRuleResponseBodyData) String() string {
 
 func (s GetSceneRuleResponseBodyData) GoString() string {
 	return s.String()
-}
-
-func (s *GetSceneRuleResponseBodyData) SetRuleStatus(v int32) *GetSceneRuleResponseBodyData {
-	s.RuleStatus = &v
-	return s
-}
-
-func (s *GetSceneRuleResponseBodyData) SetRuleContent(v string) *GetSceneRuleResponseBodyData {
-	s.RuleContent = &v
-	return s
 }
 
 func (s *GetSceneRuleResponseBodyData) SetGmtCreate(v int64) *GetSceneRuleResponseBodyData {
@@ -14114,13 +14349,23 @@ func (s *GetSceneRuleResponseBodyData) SetGmtModified(v int64) *GetSceneRuleResp
 	return s
 }
 
+func (s *GetSceneRuleResponseBodyData) SetRuleName(v string) *GetSceneRuleResponseBodyData {
+	s.RuleName = &v
+	return s
+}
+
+func (s *GetSceneRuleResponseBodyData) SetRuleContent(v string) *GetSceneRuleResponseBodyData {
+	s.RuleContent = &v
+	return s
+}
+
 func (s *GetSceneRuleResponseBodyData) SetRuleDescription(v string) *GetSceneRuleResponseBodyData {
 	s.RuleDescription = &v
 	return s
 }
 
-func (s *GetSceneRuleResponseBodyData) SetRuleName(v string) *GetSceneRuleResponseBodyData {
-	s.RuleName = &v
+func (s *GetSceneRuleResponseBodyData) SetRuleStatus(v int32) *GetSceneRuleResponseBodyData {
+	s.RuleStatus = &v
 	return s
 }
 
@@ -14220,10 +14465,10 @@ func (s *GetThingModelTslRequest) SetRealTripartiteKey(v string) *GetThingModelT
 
 type GetThingModelTslResponseBody struct {
 	RequestId    *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data         *GetThingModelTslResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                           `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string                           `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Data         *GetThingModelTslResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s GetThingModelTslResponseBody) String() string {
@@ -14239,13 +14484,8 @@ func (s *GetThingModelTslResponseBody) SetRequestId(v string) *GetThingModelTslR
 	return s
 }
 
-func (s *GetThingModelTslResponseBody) SetData(v *GetThingModelTslResponseBodyData) *GetThingModelTslResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetThingModelTslResponseBody) SetErrorMessage(v string) *GetThingModelTslResponseBody {
-	s.ErrorMessage = &v
+func (s *GetThingModelTslResponseBody) SetSuccess(v bool) *GetThingModelTslResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -14254,8 +14494,13 @@ func (s *GetThingModelTslResponseBody) SetCode(v string) *GetThingModelTslRespon
 	return s
 }
 
-func (s *GetThingModelTslResponseBody) SetSuccess(v bool) *GetThingModelTslResponseBody {
-	s.Success = &v
+func (s *GetThingModelTslResponseBody) SetErrorMessage(v string) *GetThingModelTslResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetThingModelTslResponseBody) SetData(v *GetThingModelTslResponseBodyData) *GetThingModelTslResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -14378,10 +14623,10 @@ func (s *GetThingModelTslPublishedRequest) SetRealTripartiteKey(v string) *GetTh
 
 type GetThingModelTslPublishedResponseBody struct {
 	RequestId    *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data         *GetThingModelTslPublishedResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                                    `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string                                    `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Data         *GetThingModelTslPublishedResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s GetThingModelTslPublishedResponseBody) String() string {
@@ -14397,13 +14642,8 @@ func (s *GetThingModelTslPublishedResponseBody) SetRequestId(v string) *GetThing
 	return s
 }
 
-func (s *GetThingModelTslPublishedResponseBody) SetData(v *GetThingModelTslPublishedResponseBodyData) *GetThingModelTslPublishedResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetThingModelTslPublishedResponseBody) SetErrorMessage(v string) *GetThingModelTslPublishedResponseBody {
-	s.ErrorMessage = &v
+func (s *GetThingModelTslPublishedResponseBody) SetSuccess(v bool) *GetThingModelTslPublishedResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -14412,8 +14652,13 @@ func (s *GetThingModelTslPublishedResponseBody) SetCode(v string) *GetThingModel
 	return s
 }
 
-func (s *GetThingModelTslPublishedResponseBody) SetSuccess(v bool) *GetThingModelTslPublishedResponseBody {
-	s.Success = &v
+func (s *GetThingModelTslPublishedResponseBody) SetErrorMessage(v string) *GetThingModelTslPublishedResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetThingModelTslPublishedResponseBody) SetData(v *GetThingModelTslPublishedResponseBodyData) *GetThingModelTslPublishedResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -14500,10 +14745,10 @@ func (s *GetThingScriptRequest) SetProductKey(v string) *GetThingScriptRequest {
 
 type GetThingScriptResponseBody struct {
 	RequestId    *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data         *GetThingScriptResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Data         *GetThingScriptResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s GetThingScriptResponseBody) String() string {
@@ -14519,13 +14764,8 @@ func (s *GetThingScriptResponseBody) SetRequestId(v string) *GetThingScriptRespo
 	return s
 }
 
-func (s *GetThingScriptResponseBody) SetData(v *GetThingScriptResponseBodyData) *GetThingScriptResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetThingScriptResponseBody) SetErrorMessage(v string) *GetThingScriptResponseBody {
-	s.ErrorMessage = &v
+func (s *GetThingScriptResponseBody) SetSuccess(v bool) *GetThingScriptResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -14534,8 +14774,13 @@ func (s *GetThingScriptResponseBody) SetCode(v string) *GetThingScriptResponseBo
 	return s
 }
 
-func (s *GetThingScriptResponseBody) SetSuccess(v bool) *GetThingScriptResponseBody {
-	s.Success = &v
+func (s *GetThingScriptResponseBody) SetErrorMessage(v string) *GetThingScriptResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetThingScriptResponseBody) SetData(v *GetThingScriptResponseBodyData) *GetThingScriptResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -14628,10 +14873,10 @@ func (s *GetThingTemplateRequest) SetCategoryKey(v string) *GetThingTemplateRequ
 
 type GetThingTemplateResponseBody struct {
 	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ThingModelJSON *string `json:"ThingModelJSON,omitempty" xml:"ThingModelJSON,omitempty"`
-	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ThingModelJSON *string `json:"ThingModelJSON,omitempty" xml:"ThingModelJSON,omitempty"`
 }
 
 func (s GetThingTemplateResponseBody) String() string {
@@ -14647,13 +14892,8 @@ func (s *GetThingTemplateResponseBody) SetRequestId(v string) *GetThingTemplateR
 	return s
 }
 
-func (s *GetThingTemplateResponseBody) SetThingModelJSON(v string) *GetThingTemplateResponseBody {
-	s.ThingModelJSON = &v
-	return s
-}
-
-func (s *GetThingTemplateResponseBody) SetErrorMessage(v string) *GetThingTemplateResponseBody {
-	s.ErrorMessage = &v
+func (s *GetThingTemplateResponseBody) SetSuccess(v bool) *GetThingTemplateResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -14662,8 +14902,13 @@ func (s *GetThingTemplateResponseBody) SetCode(v string) *GetThingTemplateRespon
 	return s
 }
 
-func (s *GetThingTemplateResponseBody) SetSuccess(v bool) *GetThingTemplateResponseBody {
-	s.Success = &v
+func (s *GetThingTemplateResponseBody) SetErrorMessage(v string) *GetThingTemplateResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetThingTemplateResponseBody) SetThingModelJSON(v string) *GetThingTemplateResponseBody {
+	s.ThingModelJSON = &v
 	return s
 }
 
@@ -14751,10 +14996,10 @@ func (s *GetThingTopoRequest) SetIotId(v string) *GetThingTopoRequest {
 
 type GetThingTopoResponseBody struct {
 	RequestId    *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data         *GetThingTopoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                       `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string                       `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Data         *GetThingTopoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s GetThingTopoResponseBody) String() string {
@@ -14770,13 +15015,8 @@ func (s *GetThingTopoResponseBody) SetRequestId(v string) *GetThingTopoResponseB
 	return s
 }
 
-func (s *GetThingTopoResponseBody) SetData(v *GetThingTopoResponseBodyData) *GetThingTopoResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetThingTopoResponseBody) SetErrorMessage(v string) *GetThingTopoResponseBody {
-	s.ErrorMessage = &v
+func (s *GetThingTopoResponseBody) SetSuccess(v bool) *GetThingTopoResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -14785,17 +15025,22 @@ func (s *GetThingTopoResponseBody) SetCode(v string) *GetThingTopoResponseBody {
 	return s
 }
 
-func (s *GetThingTopoResponseBody) SetSuccess(v bool) *GetThingTopoResponseBody {
-	s.Success = &v
+func (s *GetThingTopoResponseBody) SetErrorMessage(v string) *GetThingTopoResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetThingTopoResponseBody) SetData(v *GetThingTopoResponseBodyData) *GetThingTopoResponseBody {
+	s.Data = v
 	return s
 }
 
 type GetThingTopoResponseBodyData struct {
+	Total       *int64                            `json:"Total,omitempty" xml:"Total,omitempty"`
 	CurrentPage *int32                            `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	List        *GetThingTopoResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Struct"`
 	PageSize    *int32                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PageCount   *int64                            `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
-	Total       *int64                            `json:"Total,omitempty" xml:"Total,omitempty"`
+	List        *GetThingTopoResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Struct"`
 }
 
 func (s GetThingTopoResponseBodyData) String() string {
@@ -14806,13 +15051,13 @@ func (s GetThingTopoResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *GetThingTopoResponseBodyData) SetCurrentPage(v int32) *GetThingTopoResponseBodyData {
-	s.CurrentPage = &v
+func (s *GetThingTopoResponseBodyData) SetTotal(v int64) *GetThingTopoResponseBodyData {
+	s.Total = &v
 	return s
 }
 
-func (s *GetThingTopoResponseBodyData) SetList(v *GetThingTopoResponseBodyDataList) *GetThingTopoResponseBodyData {
-	s.List = v
+func (s *GetThingTopoResponseBodyData) SetCurrentPage(v int32) *GetThingTopoResponseBodyData {
+	s.CurrentPage = &v
 	return s
 }
 
@@ -14826,8 +15071,8 @@ func (s *GetThingTopoResponseBodyData) SetPageCount(v int64) *GetThingTopoRespon
 	return s
 }
 
-func (s *GetThingTopoResponseBodyData) SetTotal(v int64) *GetThingTopoResponseBodyData {
-	s.Total = &v
+func (s *GetThingTopoResponseBodyData) SetList(v *GetThingTopoResponseBodyDataList) *GetThingTopoResponseBodyData {
+	s.List = v
 	return s
 }
 
@@ -14849,9 +15094,9 @@ func (s *GetThingTopoResponseBodyDataList) SetDeviceInfo(v []*GetThingTopoRespon
 }
 
 type GetThingTopoResponseBodyDataListDeviceInfo struct {
+	IotId      *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
 	ProductKey *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
 	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
-	IotId      *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
 }
 
 func (s GetThingTopoResponseBodyDataListDeviceInfo) String() string {
@@ -14862,6 +15107,11 @@ func (s GetThingTopoResponseBodyDataListDeviceInfo) GoString() string {
 	return s.String()
 }
 
+func (s *GetThingTopoResponseBodyDataListDeviceInfo) SetIotId(v string) *GetThingTopoResponseBodyDataListDeviceInfo {
+	s.IotId = &v
+	return s
+}
+
 func (s *GetThingTopoResponseBodyDataListDeviceInfo) SetProductKey(v string) *GetThingTopoResponseBodyDataListDeviceInfo {
 	s.ProductKey = &v
 	return s
@@ -14869,11 +15119,6 @@ func (s *GetThingTopoResponseBodyDataListDeviceInfo) SetProductKey(v string) *Ge
 
 func (s *GetThingTopoResponseBodyDataListDeviceInfo) SetDeviceName(v string) *GetThingTopoResponseBodyDataListDeviceInfo {
 	s.DeviceName = &v
-	return s
-}
-
-func (s *GetThingTopoResponseBodyDataListDeviceInfo) SetIotId(v string) *GetThingTopoResponseBodyDataListDeviceInfo {
-	s.IotId = &v
 	return s
 }
 
@@ -14979,9 +15224,9 @@ func (s *ImportThingModelTslRequest) SetRealTripartiteKey(v string) *ImportThing
 
 type ImportThingModelTslResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s ImportThingModelTslResponseBody) String() string {
@@ -14997,8 +15242,8 @@ func (s *ImportThingModelTslResponseBody) SetRequestId(v string) *ImportThingMod
 	return s
 }
 
-func (s *ImportThingModelTslResponseBody) SetErrorMessage(v string) *ImportThingModelTslResponseBody {
-	s.ErrorMessage = &v
+func (s *ImportThingModelTslResponseBody) SetSuccess(v bool) *ImportThingModelTslResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -15007,8 +15252,8 @@ func (s *ImportThingModelTslResponseBody) SetCode(v string) *ImportThingModelTsl
 	return s
 }
 
-func (s *ImportThingModelTslResponseBody) SetSuccess(v bool) *ImportThingModelTslResponseBody {
-	s.Success = &v
+func (s *ImportThingModelTslResponseBody) SetErrorMessage(v string) *ImportThingModelTslResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -15039,8 +15284,8 @@ type InvokeDataAPIServiceRequest struct {
 	ApiProduct    *string                             `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
 	ApiRevision   *string                             `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
 	ApiSrn        *string                             `json:"ApiSrn,omitempty" xml:"ApiSrn,omitempty"`
-	IotInstanceId *string                             `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 	Param         []*InvokeDataAPIServiceRequestParam `json:"Param,omitempty" xml:"Param,omitempty" type:"Repeated"`
+	IotInstanceId *string                             `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 }
 
 func (s InvokeDataAPIServiceRequest) String() string {
@@ -15066,22 +15311,22 @@ func (s *InvokeDataAPIServiceRequest) SetApiSrn(v string) *InvokeDataAPIServiceR
 	return s
 }
 
-func (s *InvokeDataAPIServiceRequest) SetIotInstanceId(v string) *InvokeDataAPIServiceRequest {
-	s.IotInstanceId = &v
-	return s
-}
-
 func (s *InvokeDataAPIServiceRequest) SetParam(v []*InvokeDataAPIServiceRequestParam) *InvokeDataAPIServiceRequest {
 	s.Param = v
 	return s
 }
 
+func (s *InvokeDataAPIServiceRequest) SetIotInstanceId(v string) *InvokeDataAPIServiceRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
 type InvokeDataAPIServiceRequestParam struct {
-	ParamName      *string   `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
 	ParamType      *string   `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
-	ParamValue     *string   `json:"ParamValue,omitempty" xml:"ParamValue,omitempty"`
-	ListParamType  *string   `json:"ListParamType,omitempty" xml:"ListParamType,omitempty"`
 	ListParamValue []*string `json:"ListParamValue,omitempty" xml:"ListParamValue,omitempty" type:"Repeated"`
+	ListParamType  *string   `json:"ListParamType,omitempty" xml:"ListParamType,omitempty"`
+	ParamName      *string   `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
+	ParamValue     *string   `json:"ParamValue,omitempty" xml:"ParamValue,omitempty"`
 }
 
 func (s InvokeDataAPIServiceRequestParam) String() string {
@@ -15092,23 +15337,8 @@ func (s InvokeDataAPIServiceRequestParam) GoString() string {
 	return s.String()
 }
 
-func (s *InvokeDataAPIServiceRequestParam) SetParamName(v string) *InvokeDataAPIServiceRequestParam {
-	s.ParamName = &v
-	return s
-}
-
 func (s *InvokeDataAPIServiceRequestParam) SetParamType(v string) *InvokeDataAPIServiceRequestParam {
 	s.ParamType = &v
-	return s
-}
-
-func (s *InvokeDataAPIServiceRequestParam) SetParamValue(v string) *InvokeDataAPIServiceRequestParam {
-	s.ParamValue = &v
-	return s
-}
-
-func (s *InvokeDataAPIServiceRequestParam) SetListParamType(v string) *InvokeDataAPIServiceRequestParam {
-	s.ListParamType = &v
 	return s
 }
 
@@ -15117,12 +15347,27 @@ func (s *InvokeDataAPIServiceRequestParam) SetListParamValue(v []*string) *Invok
 	return s
 }
 
+func (s *InvokeDataAPIServiceRequestParam) SetListParamType(v string) *InvokeDataAPIServiceRequestParam {
+	s.ListParamType = &v
+	return s
+}
+
+func (s *InvokeDataAPIServiceRequestParam) SetParamName(v string) *InvokeDataAPIServiceRequestParam {
+	s.ParamName = &v
+	return s
+}
+
+func (s *InvokeDataAPIServiceRequestParam) SetParamValue(v string) *InvokeDataAPIServiceRequestParam {
+	s.ParamValue = &v
+	return s
+}
+
 type InvokeDataAPIServiceResponseBody struct {
 	RequestId    *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data         *InvokeDataAPIServiceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                               `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string                               `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Data         *InvokeDataAPIServiceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s InvokeDataAPIServiceResponseBody) String() string {
@@ -15138,13 +15383,8 @@ func (s *InvokeDataAPIServiceResponseBody) SetRequestId(v string) *InvokeDataAPI
 	return s
 }
 
-func (s *InvokeDataAPIServiceResponseBody) SetData(v *InvokeDataAPIServiceResponseBodyData) *InvokeDataAPIServiceResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *InvokeDataAPIServiceResponseBody) SetErrorMessage(v string) *InvokeDataAPIServiceResponseBody {
-	s.ErrorMessage = &v
+func (s *InvokeDataAPIServiceResponseBody) SetSuccess(v bool) *InvokeDataAPIServiceResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -15153,17 +15393,22 @@ func (s *InvokeDataAPIServiceResponseBody) SetCode(v string) *InvokeDataAPIServi
 	return s
 }
 
-func (s *InvokeDataAPIServiceResponseBody) SetSuccess(v bool) *InvokeDataAPIServiceResponseBody {
-	s.Success = &v
+func (s *InvokeDataAPIServiceResponseBody) SetErrorMessage(v string) *InvokeDataAPIServiceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *InvokeDataAPIServiceResponseBody) SetData(v *InvokeDataAPIServiceResponseBodyData) *InvokeDataAPIServiceResponseBody {
+	s.Data = v
 	return s
 }
 
 type InvokeDataAPIServiceResponseBodyData struct {
-	ResultList    *InvokeDataAPIServiceResponseBodyDataResultList    `json:"ResultList,omitempty" xml:"ResultList,omitempty" type:"Struct"`
-	ApiSrn        *string                                            `json:"ApiSrn,omitempty" xml:"ApiSrn,omitempty"`
-	FieldNameList *InvokeDataAPIServiceResponseBodyDataFieldNameList `json:"FieldNameList,omitempty" xml:"FieldNameList,omitempty" type:"Struct"`
 	PageNo        *int32                                             `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize      *int32                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ApiSrn        *string                                            `json:"ApiSrn,omitempty" xml:"ApiSrn,omitempty"`
+	FieldNameList *InvokeDataAPIServiceResponseBodyDataFieldNameList `json:"FieldNameList,omitempty" xml:"FieldNameList,omitempty" type:"Struct"`
+	ResultList    *InvokeDataAPIServiceResponseBodyDataResultList    `json:"ResultList,omitempty" xml:"ResultList,omitempty" type:"Struct"`
 }
 
 func (s InvokeDataAPIServiceResponseBodyData) String() string {
@@ -15174,8 +15419,13 @@ func (s InvokeDataAPIServiceResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *InvokeDataAPIServiceResponseBodyData) SetResultList(v *InvokeDataAPIServiceResponseBodyDataResultList) *InvokeDataAPIServiceResponseBodyData {
-	s.ResultList = v
+func (s *InvokeDataAPIServiceResponseBodyData) SetPageNo(v int32) *InvokeDataAPIServiceResponseBodyData {
+	s.PageNo = &v
+	return s
+}
+
+func (s *InvokeDataAPIServiceResponseBodyData) SetPageSize(v int32) *InvokeDataAPIServiceResponseBodyData {
+	s.PageSize = &v
 	return s
 }
 
@@ -15189,29 +15439,7 @@ func (s *InvokeDataAPIServiceResponseBodyData) SetFieldNameList(v *InvokeDataAPI
 	return s
 }
 
-func (s *InvokeDataAPIServiceResponseBodyData) SetPageNo(v int32) *InvokeDataAPIServiceResponseBodyData {
-	s.PageNo = &v
-	return s
-}
-
-func (s *InvokeDataAPIServiceResponseBodyData) SetPageSize(v int32) *InvokeDataAPIServiceResponseBodyData {
-	s.PageSize = &v
-	return s
-}
-
-type InvokeDataAPIServiceResponseBodyDataResultList struct {
-	ResultList []map[string]interface{} `json:"ResultList,omitempty" xml:"ResultList,omitempty" type:"Repeated"`
-}
-
-func (s InvokeDataAPIServiceResponseBodyDataResultList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InvokeDataAPIServiceResponseBodyDataResultList) GoString() string {
-	return s.String()
-}
-
-func (s *InvokeDataAPIServiceResponseBodyDataResultList) SetResultList(v []map[string]interface{}) *InvokeDataAPIServiceResponseBodyDataResultList {
+func (s *InvokeDataAPIServiceResponseBodyData) SetResultList(v *InvokeDataAPIServiceResponseBodyDataResultList) *InvokeDataAPIServiceResponseBodyData {
 	s.ResultList = v
 	return s
 }
@@ -15230,6 +15458,23 @@ func (s InvokeDataAPIServiceResponseBodyDataFieldNameList) GoString() string {
 
 func (s *InvokeDataAPIServiceResponseBodyDataFieldNameList) SetFieldNameList(v []*string) *InvokeDataAPIServiceResponseBodyDataFieldNameList {
 	s.FieldNameList = v
+	return s
+}
+
+type InvokeDataAPIServiceResponseBodyDataResultList struct {
+	ResultList []map[string]*string `json:"ResultList,omitempty" xml:"ResultList,omitempty" type:"Repeated"`
+}
+
+func (s InvokeDataAPIServiceResponseBodyDataResultList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvokeDataAPIServiceResponseBodyDataResultList) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeDataAPIServiceResponseBodyDataResultList) SetResultList(v []map[string]*string) *InvokeDataAPIServiceResponseBodyDataResultList {
+	s.ResultList = v
 	return s
 }
 
@@ -15257,14 +15502,16 @@ func (s *InvokeDataAPIServiceResponse) SetBody(v *InvokeDataAPIServiceResponseBo
 }
 
 type InvokeThingServiceRequest struct {
-	ApiProduct    *string `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
-	ApiRevision   *string `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
-	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
-	DeviceName    *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
-	Identifier    *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	Args          *string `json:"Args,omitempty" xml:"Args,omitempty"`
-	IotId         *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	ApiProduct        *string `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
+	ApiRevision       *string `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
+	IotInstanceId     *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ProductKey        *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	DeviceName        *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	Identifier        *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	Args              *string `json:"Args,omitempty" xml:"Args,omitempty"`
+	IotId             *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	RealTenantId      *string `json:"RealTenantId,omitempty" xml:"RealTenantId,omitempty"`
+	RealTripartiteKey *string `json:"RealTripartiteKey,omitempty" xml:"RealTripartiteKey,omitempty"`
 }
 
 func (s InvokeThingServiceRequest) String() string {
@@ -15315,12 +15562,22 @@ func (s *InvokeThingServiceRequest) SetIotId(v string) *InvokeThingServiceReques
 	return s
 }
 
+func (s *InvokeThingServiceRequest) SetRealTenantId(v string) *InvokeThingServiceRequest {
+	s.RealTenantId = &v
+	return s
+}
+
+func (s *InvokeThingServiceRequest) SetRealTripartiteKey(v string) *InvokeThingServiceRequest {
+	s.RealTripartiteKey = &v
+	return s
+}
+
 type InvokeThingServiceResponseBody struct {
 	RequestId    *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data         *InvokeThingServiceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Success      *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
 	ErrorMessage *string                             `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Code         *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success      *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data         *InvokeThingServiceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s InvokeThingServiceResponseBody) String() string {
@@ -15336,8 +15593,8 @@ func (s *InvokeThingServiceResponseBody) SetRequestId(v string) *InvokeThingServ
 	return s
 }
 
-func (s *InvokeThingServiceResponseBody) SetData(v *InvokeThingServiceResponseBodyData) *InvokeThingServiceResponseBody {
-	s.Data = v
+func (s *InvokeThingServiceResponseBody) SetSuccess(v bool) *InvokeThingServiceResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -15351,14 +15608,14 @@ func (s *InvokeThingServiceResponseBody) SetCode(v string) *InvokeThingServiceRe
 	return s
 }
 
-func (s *InvokeThingServiceResponseBody) SetSuccess(v bool) *InvokeThingServiceResponseBody {
-	s.Success = &v
+func (s *InvokeThingServiceResponseBody) SetData(v *InvokeThingServiceResponseBodyData) *InvokeThingServiceResponseBody {
+	s.Data = v
 	return s
 }
 
 type InvokeThingServiceResponseBodyData struct {
-	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
 	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
 }
 
 func (s InvokeThingServiceResponseBodyData) String() string {
@@ -15369,13 +15626,13 @@ func (s InvokeThingServiceResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *InvokeThingServiceResponseBodyData) SetMessageId(v string) *InvokeThingServiceResponseBodyData {
-	s.MessageId = &v
+func (s *InvokeThingServiceResponseBodyData) SetResult(v string) *InvokeThingServiceResponseBodyData {
+	s.Result = &v
 	return s
 }
 
-func (s *InvokeThingServiceResponseBodyData) SetResult(v string) *InvokeThingServiceResponseBodyData {
-	s.Result = &v
+func (s *InvokeThingServiceResponseBodyData) SetMessageId(v string) *InvokeThingServiceResponseBodyData {
+	s.MessageId = &v
 	return s
 }
 
@@ -15405,11 +15662,11 @@ func (s *InvokeThingServiceResponse) SetBody(v *InvokeThingServiceResponseBody) 
 type InvokeThingsServiceRequest struct {
 	ApiProduct    *string   `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
 	ApiRevision   *string   `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
+	DeviceName    []*string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty" type:"Repeated"`
 	IotInstanceId *string   `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 	ProductKey    *string   `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
 	Identifier    *string   `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
 	Args          *string   `json:"Args,omitempty" xml:"Args,omitempty"`
-	DeviceName    []*string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty" type:"Repeated"`
 }
 
 func (s InvokeThingsServiceRequest) String() string {
@@ -15427,6 +15684,11 @@ func (s *InvokeThingsServiceRequest) SetApiProduct(v string) *InvokeThingsServic
 
 func (s *InvokeThingsServiceRequest) SetApiRevision(v string) *InvokeThingsServiceRequest {
 	s.ApiRevision = &v
+	return s
+}
+
+func (s *InvokeThingsServiceRequest) SetDeviceName(v []*string) *InvokeThingsServiceRequest {
+	s.DeviceName = v
 	return s
 }
 
@@ -15450,16 +15712,11 @@ func (s *InvokeThingsServiceRequest) SetArgs(v string) *InvokeThingsServiceReque
 	return s
 }
 
-func (s *InvokeThingsServiceRequest) SetDeviceName(v []*string) *InvokeThingsServiceRequest {
-	s.DeviceName = v
-	return s
-}
-
 type InvokeThingsServiceResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s InvokeThingsServiceResponseBody) String() string {
@@ -15475,6 +15732,11 @@ func (s *InvokeThingsServiceResponseBody) SetRequestId(v string) *InvokeThingsSe
 	return s
 }
 
+func (s *InvokeThingsServiceResponseBody) SetSuccess(v bool) *InvokeThingsServiceResponseBody {
+	s.Success = &v
+	return s
+}
+
 func (s *InvokeThingsServiceResponseBody) SetErrorMessage(v string) *InvokeThingsServiceResponseBody {
 	s.ErrorMessage = &v
 	return s
@@ -15482,11 +15744,6 @@ func (s *InvokeThingsServiceResponseBody) SetErrorMessage(v string) *InvokeThing
 
 func (s *InvokeThingsServiceResponseBody) SetCode(v string) *InvokeThingsServiceResponseBody {
 	s.Code = &v
-	return s
-}
-
-func (s *InvokeThingsServiceResponseBody) SetSuccess(v bool) *InvokeThingsServiceResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -15509,6 +15766,760 @@ func (s *InvokeThingsServiceResponse) SetHeaders(v map[string]*string) *InvokeTh
 }
 
 func (s *InvokeThingsServiceResponse) SetBody(v *InvokeThingsServiceResponseBody) *InvokeThingsServiceResponse {
+	s.Body = v
+	return s
+}
+
+type ListDeviceDistributeJobRequest struct {
+	ApiProduct  *string `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
+	ApiRevision *string `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
+	TargetUid   *string `json:"TargetUid,omitempty" xml:"TargetUid,omitempty"`
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Status      *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListDeviceDistributeJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeviceDistributeJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeviceDistributeJobRequest) SetApiProduct(v string) *ListDeviceDistributeJobRequest {
+	s.ApiProduct = &v
+	return s
+}
+
+func (s *ListDeviceDistributeJobRequest) SetApiRevision(v string) *ListDeviceDistributeJobRequest {
+	s.ApiRevision = &v
+	return s
+}
+
+func (s *ListDeviceDistributeJobRequest) SetTargetUid(v string) *ListDeviceDistributeJobRequest {
+	s.TargetUid = &v
+	return s
+}
+
+func (s *ListDeviceDistributeJobRequest) SetCurrentPage(v int32) *ListDeviceDistributeJobRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListDeviceDistributeJobRequest) SetPageSize(v int32) *ListDeviceDistributeJobRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDeviceDistributeJobRequest) SetStatus(v int32) *ListDeviceDistributeJobRequest {
+	s.Status = &v
+	return s
+}
+
+type ListDeviceDistributeJobResponseBody struct {
+	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string                                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Data         *ListDeviceDistributeJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s ListDeviceDistributeJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeviceDistributeJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeviceDistributeJobResponseBody) SetRequestId(v string) *ListDeviceDistributeJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDeviceDistributeJobResponseBody) SetSuccess(v bool) *ListDeviceDistributeJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListDeviceDistributeJobResponseBody) SetCode(v string) *ListDeviceDistributeJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListDeviceDistributeJobResponseBody) SetErrorMessage(v string) *ListDeviceDistributeJobResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListDeviceDistributeJobResponseBody) SetData(v *ListDeviceDistributeJobResponseBodyData) *ListDeviceDistributeJobResponseBody {
+	s.Data = v
+	return s
+}
+
+type ListDeviceDistributeJobResponseBodyData struct {
+	Total   *int32                                          `json:"Total,omitempty" xml:"Total,omitempty"`
+	JobInfo *ListDeviceDistributeJobResponseBodyDataJobInfo `json:"JobInfo,omitempty" xml:"JobInfo,omitempty" type:"Struct"`
+}
+
+func (s ListDeviceDistributeJobResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeviceDistributeJobResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeviceDistributeJobResponseBodyData) SetTotal(v int32) *ListDeviceDistributeJobResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+func (s *ListDeviceDistributeJobResponseBodyData) SetJobInfo(v *ListDeviceDistributeJobResponseBodyDataJobInfo) *ListDeviceDistributeJobResponseBodyData {
+	s.JobInfo = v
+	return s
+}
+
+type ListDeviceDistributeJobResponseBodyDataJobInfo struct {
+	Items []*ListDeviceDistributeJobResponseBodyDataJobInfoItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+}
+
+func (s ListDeviceDistributeJobResponseBodyDataJobInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeviceDistributeJobResponseBodyDataJobInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeviceDistributeJobResponseBodyDataJobInfo) SetItems(v []*ListDeviceDistributeJobResponseBodyDataJobInfoItems) *ListDeviceDistributeJobResponseBodyDataJobInfo {
+	s.Items = v
+	return s
+}
+
+type ListDeviceDistributeJobResponseBodyDataJobInfoItems struct {
+	GmtCreate             *int64                                                                    `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	SourceUid             *string                                                                   `json:"SourceUid,omitempty" xml:"SourceUid,omitempty"`
+	TargetUid             *string                                                                   `json:"TargetUid,omitempty" xml:"TargetUid,omitempty"`
+	JobId                 *string                                                                   `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	SourceInstanceId      *string                                                                   `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
+	ProductKey            *string                                                                   `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	Total                 *int32                                                                    `json:"Total,omitempty" xml:"Total,omitempty"`
+	Status                *int32                                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
+	Strategy              *int32                                                                    `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
+	TargetInstanceConfigs *ListDeviceDistributeJobResponseBodyDataJobInfoItemsTargetInstanceConfigs `json:"TargetInstanceConfigs,omitempty" xml:"TargetInstanceConfigs,omitempty" type:"Struct"`
+}
+
+func (s ListDeviceDistributeJobResponseBodyDataJobInfoItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeviceDistributeJobResponseBodyDataJobInfoItems) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeviceDistributeJobResponseBodyDataJobInfoItems) SetGmtCreate(v int64) *ListDeviceDistributeJobResponseBodyDataJobInfoItems {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListDeviceDistributeJobResponseBodyDataJobInfoItems) SetSourceUid(v string) *ListDeviceDistributeJobResponseBodyDataJobInfoItems {
+	s.SourceUid = &v
+	return s
+}
+
+func (s *ListDeviceDistributeJobResponseBodyDataJobInfoItems) SetTargetUid(v string) *ListDeviceDistributeJobResponseBodyDataJobInfoItems {
+	s.TargetUid = &v
+	return s
+}
+
+func (s *ListDeviceDistributeJobResponseBodyDataJobInfoItems) SetJobId(v string) *ListDeviceDistributeJobResponseBodyDataJobInfoItems {
+	s.JobId = &v
+	return s
+}
+
+func (s *ListDeviceDistributeJobResponseBodyDataJobInfoItems) SetSourceInstanceId(v string) *ListDeviceDistributeJobResponseBodyDataJobInfoItems {
+	s.SourceInstanceId = &v
+	return s
+}
+
+func (s *ListDeviceDistributeJobResponseBodyDataJobInfoItems) SetProductKey(v string) *ListDeviceDistributeJobResponseBodyDataJobInfoItems {
+	s.ProductKey = &v
+	return s
+}
+
+func (s *ListDeviceDistributeJobResponseBodyDataJobInfoItems) SetTotal(v int32) *ListDeviceDistributeJobResponseBodyDataJobInfoItems {
+	s.Total = &v
+	return s
+}
+
+func (s *ListDeviceDistributeJobResponseBodyDataJobInfoItems) SetStatus(v int32) *ListDeviceDistributeJobResponseBodyDataJobInfoItems {
+	s.Status = &v
+	return s
+}
+
+func (s *ListDeviceDistributeJobResponseBodyDataJobInfoItems) SetStrategy(v int32) *ListDeviceDistributeJobResponseBodyDataJobInfoItems {
+	s.Strategy = &v
+	return s
+}
+
+func (s *ListDeviceDistributeJobResponseBodyDataJobInfoItems) SetTargetInstanceConfigs(v *ListDeviceDistributeJobResponseBodyDataJobInfoItemsTargetInstanceConfigs) *ListDeviceDistributeJobResponseBodyDataJobInfoItems {
+	s.TargetInstanceConfigs = v
+	return s
+}
+
+type ListDeviceDistributeJobResponseBodyDataJobInfoItemsTargetInstanceConfigs struct {
+	TargetInstanceConfigs []*ListDeviceDistributeJobResponseBodyDataJobInfoItemsTargetInstanceConfigsTargetInstanceConfigs `json:"targetInstanceConfigs,omitempty" xml:"targetInstanceConfigs,omitempty" type:"Repeated"`
+}
+
+func (s ListDeviceDistributeJobResponseBodyDataJobInfoItemsTargetInstanceConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeviceDistributeJobResponseBodyDataJobInfoItemsTargetInstanceConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeviceDistributeJobResponseBodyDataJobInfoItemsTargetInstanceConfigs) SetTargetInstanceConfigs(v []*ListDeviceDistributeJobResponseBodyDataJobInfoItemsTargetInstanceConfigsTargetInstanceConfigs) *ListDeviceDistributeJobResponseBodyDataJobInfoItemsTargetInstanceConfigs {
+	s.TargetInstanceConfigs = v
+	return s
+}
+
+type ListDeviceDistributeJobResponseBodyDataJobInfoItemsTargetInstanceConfigsTargetInstanceConfigs struct {
+	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
+}
+
+func (s ListDeviceDistributeJobResponseBodyDataJobInfoItemsTargetInstanceConfigsTargetInstanceConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeviceDistributeJobResponseBodyDataJobInfoItemsTargetInstanceConfigsTargetInstanceConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeviceDistributeJobResponseBodyDataJobInfoItemsTargetInstanceConfigsTargetInstanceConfigs) SetTargetInstanceId(v string) *ListDeviceDistributeJobResponseBodyDataJobInfoItemsTargetInstanceConfigsTargetInstanceConfigs {
+	s.TargetInstanceId = &v
+	return s
+}
+
+type ListDeviceDistributeJobResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListDeviceDistributeJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDeviceDistributeJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeviceDistributeJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeviceDistributeJobResponse) SetHeaders(v map[string]*string) *ListDeviceDistributeJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDeviceDistributeJobResponse) SetBody(v *ListDeviceDistributeJobResponseBody) *ListDeviceDistributeJobResponse {
+	s.Body = v
+	return s
+}
+
+type ListDistributedDeviceRequest struct {
+	ApiProduct       *string `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
+	ApiRevision      *string `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
+	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProductKey       *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	DeviceName       *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	CurrentPage      *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	TargetUid        *string `json:"TargetUid,omitempty" xml:"TargetUid,omitempty"`
+	SourceInstanceId *string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
+	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
+}
+
+func (s ListDistributedDeviceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDistributedDeviceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDistributedDeviceRequest) SetApiProduct(v string) *ListDistributedDeviceRequest {
+	s.ApiProduct = &v
+	return s
+}
+
+func (s *ListDistributedDeviceRequest) SetApiRevision(v string) *ListDistributedDeviceRequest {
+	s.ApiRevision = &v
+	return s
+}
+
+func (s *ListDistributedDeviceRequest) SetPageSize(v int32) *ListDistributedDeviceRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDistributedDeviceRequest) SetProductKey(v string) *ListDistributedDeviceRequest {
+	s.ProductKey = &v
+	return s
+}
+
+func (s *ListDistributedDeviceRequest) SetDeviceName(v string) *ListDistributedDeviceRequest {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *ListDistributedDeviceRequest) SetCurrentPage(v int32) *ListDistributedDeviceRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListDistributedDeviceRequest) SetTargetUid(v string) *ListDistributedDeviceRequest {
+	s.TargetUid = &v
+	return s
+}
+
+func (s *ListDistributedDeviceRequest) SetSourceInstanceId(v string) *ListDistributedDeviceRequest {
+	s.SourceInstanceId = &v
+	return s
+}
+
+func (s *ListDistributedDeviceRequest) SetTargetInstanceId(v string) *ListDistributedDeviceRequest {
+	s.TargetInstanceId = &v
+	return s
+}
+
+type ListDistributedDeviceResponseBody struct {
+	RequestId    *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string                                `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Data         *ListDistributedDeviceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s ListDistributedDeviceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDistributedDeviceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDistributedDeviceResponseBody) SetRequestId(v string) *ListDistributedDeviceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDistributedDeviceResponseBody) SetSuccess(v bool) *ListDistributedDeviceResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListDistributedDeviceResponseBody) SetCode(v string) *ListDistributedDeviceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListDistributedDeviceResponseBody) SetErrorMessage(v string) *ListDistributedDeviceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListDistributedDeviceResponseBody) SetData(v *ListDistributedDeviceResponseBodyData) *ListDistributedDeviceResponseBody {
+	s.Data = v
+	return s
+}
+
+type ListDistributedDeviceResponseBodyData struct {
+	Total *int32                                     `json:"Total,omitempty" xml:"Total,omitempty"`
+	Info  *ListDistributedDeviceResponseBodyDataInfo `json:"Info,omitempty" xml:"Info,omitempty" type:"Struct"`
+}
+
+func (s ListDistributedDeviceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDistributedDeviceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListDistributedDeviceResponseBodyData) SetTotal(v int32) *ListDistributedDeviceResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+func (s *ListDistributedDeviceResponseBodyData) SetInfo(v *ListDistributedDeviceResponseBodyDataInfo) *ListDistributedDeviceResponseBodyData {
+	s.Info = v
+	return s
+}
+
+type ListDistributedDeviceResponseBodyDataInfo struct {
+	Items []*ListDistributedDeviceResponseBodyDataInfoItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+}
+
+func (s ListDistributedDeviceResponseBodyDataInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDistributedDeviceResponseBodyDataInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListDistributedDeviceResponseBodyDataInfo) SetItems(v []*ListDistributedDeviceResponseBodyDataInfoItems) *ListDistributedDeviceResponseBodyDataInfo {
+	s.Items = v
+	return s
+}
+
+type ListDistributedDeviceResponseBodyDataInfoItems struct {
+	SourceUid          *string `json:"SourceUid,omitempty" xml:"SourceUid,omitempty"`
+	TargetUid          *string `json:"TargetUid,omitempty" xml:"TargetUid,omitempty"`
+	ProductKey         *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	DeviceName         *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	SourceInstanceId   *string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
+	TargetInstanceId   *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
+	GmtCreate          *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	TargetAliyunId     *string `json:"TargetAliyunId,omitempty" xml:"TargetAliyunId,omitempty"`
+	SourceRegion       *string `json:"SourceRegion,omitempty" xml:"SourceRegion,omitempty"`
+	TargetRegion       *string `json:"TargetRegion,omitempty" xml:"TargetRegion,omitempty"`
+	SourceInstanceName *string `json:"SourceInstanceName,omitempty" xml:"SourceInstanceName,omitempty"`
+	TargetInstanceName *string `json:"TargetInstanceName,omitempty" xml:"TargetInstanceName,omitempty"`
+	GmtModified        *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+}
+
+func (s ListDistributedDeviceResponseBodyDataInfoItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDistributedDeviceResponseBodyDataInfoItems) GoString() string {
+	return s.String()
+}
+
+func (s *ListDistributedDeviceResponseBodyDataInfoItems) SetSourceUid(v string) *ListDistributedDeviceResponseBodyDataInfoItems {
+	s.SourceUid = &v
+	return s
+}
+
+func (s *ListDistributedDeviceResponseBodyDataInfoItems) SetTargetUid(v string) *ListDistributedDeviceResponseBodyDataInfoItems {
+	s.TargetUid = &v
+	return s
+}
+
+func (s *ListDistributedDeviceResponseBodyDataInfoItems) SetProductKey(v string) *ListDistributedDeviceResponseBodyDataInfoItems {
+	s.ProductKey = &v
+	return s
+}
+
+func (s *ListDistributedDeviceResponseBodyDataInfoItems) SetDeviceName(v string) *ListDistributedDeviceResponseBodyDataInfoItems {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *ListDistributedDeviceResponseBodyDataInfoItems) SetSourceInstanceId(v string) *ListDistributedDeviceResponseBodyDataInfoItems {
+	s.SourceInstanceId = &v
+	return s
+}
+
+func (s *ListDistributedDeviceResponseBodyDataInfoItems) SetTargetInstanceId(v string) *ListDistributedDeviceResponseBodyDataInfoItems {
+	s.TargetInstanceId = &v
+	return s
+}
+
+func (s *ListDistributedDeviceResponseBodyDataInfoItems) SetGmtCreate(v int64) *ListDistributedDeviceResponseBodyDataInfoItems {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListDistributedDeviceResponseBodyDataInfoItems) SetTargetAliyunId(v string) *ListDistributedDeviceResponseBodyDataInfoItems {
+	s.TargetAliyunId = &v
+	return s
+}
+
+func (s *ListDistributedDeviceResponseBodyDataInfoItems) SetSourceRegion(v string) *ListDistributedDeviceResponseBodyDataInfoItems {
+	s.SourceRegion = &v
+	return s
+}
+
+func (s *ListDistributedDeviceResponseBodyDataInfoItems) SetTargetRegion(v string) *ListDistributedDeviceResponseBodyDataInfoItems {
+	s.TargetRegion = &v
+	return s
+}
+
+func (s *ListDistributedDeviceResponseBodyDataInfoItems) SetSourceInstanceName(v string) *ListDistributedDeviceResponseBodyDataInfoItems {
+	s.SourceInstanceName = &v
+	return s
+}
+
+func (s *ListDistributedDeviceResponseBodyDataInfoItems) SetTargetInstanceName(v string) *ListDistributedDeviceResponseBodyDataInfoItems {
+	s.TargetInstanceName = &v
+	return s
+}
+
+func (s *ListDistributedDeviceResponseBodyDataInfoItems) SetGmtModified(v int64) *ListDistributedDeviceResponseBodyDataInfoItems {
+	s.GmtModified = &v
+	return s
+}
+
+type ListDistributedDeviceResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListDistributedDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDistributedDeviceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDistributedDeviceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDistributedDeviceResponse) SetHeaders(v map[string]*string) *ListDistributedDeviceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDistributedDeviceResponse) SetBody(v *ListDistributedDeviceResponseBody) *ListDistributedDeviceResponse {
+	s.Body = v
+	return s
+}
+
+type ListDistributedProductRequest struct {
+	ApiProduct       *string `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
+	ApiRevision      *string `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
+	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SourceInstanceId *string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
+	ProductKey       *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
+	TargetUid        *string `json:"TargetUid,omitempty" xml:"TargetUid,omitempty"`
+	CurrentPage      *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+}
+
+func (s ListDistributedProductRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDistributedProductRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDistributedProductRequest) SetApiProduct(v string) *ListDistributedProductRequest {
+	s.ApiProduct = &v
+	return s
+}
+
+func (s *ListDistributedProductRequest) SetApiRevision(v string) *ListDistributedProductRequest {
+	s.ApiRevision = &v
+	return s
+}
+
+func (s *ListDistributedProductRequest) SetPageSize(v int32) *ListDistributedProductRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDistributedProductRequest) SetSourceInstanceId(v string) *ListDistributedProductRequest {
+	s.SourceInstanceId = &v
+	return s
+}
+
+func (s *ListDistributedProductRequest) SetProductKey(v string) *ListDistributedProductRequest {
+	s.ProductKey = &v
+	return s
+}
+
+func (s *ListDistributedProductRequest) SetTargetInstanceId(v string) *ListDistributedProductRequest {
+	s.TargetInstanceId = &v
+	return s
+}
+
+func (s *ListDistributedProductRequest) SetTargetUid(v string) *ListDistributedProductRequest {
+	s.TargetUid = &v
+	return s
+}
+
+func (s *ListDistributedProductRequest) SetCurrentPage(v int32) *ListDistributedProductRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+type ListDistributedProductResponseBody struct {
+	RequestId    *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string                                 `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Data         *ListDistributedProductResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s ListDistributedProductResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDistributedProductResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDistributedProductResponseBody) SetRequestId(v string) *ListDistributedProductResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDistributedProductResponseBody) SetSuccess(v bool) *ListDistributedProductResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListDistributedProductResponseBody) SetCode(v string) *ListDistributedProductResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListDistributedProductResponseBody) SetErrorMessage(v string) *ListDistributedProductResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListDistributedProductResponseBody) SetData(v *ListDistributedProductResponseBodyData) *ListDistributedProductResponseBody {
+	s.Data = v
+	return s
+}
+
+type ListDistributedProductResponseBodyData struct {
+	Total *int32                                      `json:"Total,omitempty" xml:"Total,omitempty"`
+	Info  *ListDistributedProductResponseBodyDataInfo `json:"Info,omitempty" xml:"Info,omitempty" type:"Struct"`
+}
+
+func (s ListDistributedProductResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDistributedProductResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListDistributedProductResponseBodyData) SetTotal(v int32) *ListDistributedProductResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+func (s *ListDistributedProductResponseBodyData) SetInfo(v *ListDistributedProductResponseBodyDataInfo) *ListDistributedProductResponseBodyData {
+	s.Info = v
+	return s
+}
+
+type ListDistributedProductResponseBodyDataInfo struct {
+	Items []*ListDistributedProductResponseBodyDataInfoItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+}
+
+func (s ListDistributedProductResponseBodyDataInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDistributedProductResponseBodyDataInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListDistributedProductResponseBodyDataInfo) SetItems(v []*ListDistributedProductResponseBodyDataInfoItems) *ListDistributedProductResponseBodyDataInfo {
+	s.Items = v
+	return s
+}
+
+type ListDistributedProductResponseBodyDataInfoItems struct {
+	SourceUid          *string `json:"SourceUid,omitempty" xml:"SourceUid,omitempty"`
+	TargetUid          *string `json:"TargetUid,omitempty" xml:"TargetUid,omitempty"`
+	ProductKey         *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	SourceInstanceId   *string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
+	TargetInstanceId   *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
+	GmtCreate          *int32  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	TargetAliyunId     *string `json:"TargetAliyunId,omitempty" xml:"TargetAliyunId,omitempty"`
+	SourceRegion       *string `json:"SourceRegion,omitempty" xml:"SourceRegion,omitempty"`
+	TargetRegion       *string `json:"TargetRegion,omitempty" xml:"TargetRegion,omitempty"`
+	SourceInstanceName *string `json:"SourceInstanceName,omitempty" xml:"SourceInstanceName,omitempty"`
+	TargetInstanceName *string `json:"TargetInstanceName,omitempty" xml:"TargetInstanceName,omitempty"`
+}
+
+func (s ListDistributedProductResponseBodyDataInfoItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDistributedProductResponseBodyDataInfoItems) GoString() string {
+	return s.String()
+}
+
+func (s *ListDistributedProductResponseBodyDataInfoItems) SetSourceUid(v string) *ListDistributedProductResponseBodyDataInfoItems {
+	s.SourceUid = &v
+	return s
+}
+
+func (s *ListDistributedProductResponseBodyDataInfoItems) SetTargetUid(v string) *ListDistributedProductResponseBodyDataInfoItems {
+	s.TargetUid = &v
+	return s
+}
+
+func (s *ListDistributedProductResponseBodyDataInfoItems) SetProductKey(v string) *ListDistributedProductResponseBodyDataInfoItems {
+	s.ProductKey = &v
+	return s
+}
+
+func (s *ListDistributedProductResponseBodyDataInfoItems) SetSourceInstanceId(v string) *ListDistributedProductResponseBodyDataInfoItems {
+	s.SourceInstanceId = &v
+	return s
+}
+
+func (s *ListDistributedProductResponseBodyDataInfoItems) SetTargetInstanceId(v string) *ListDistributedProductResponseBodyDataInfoItems {
+	s.TargetInstanceId = &v
+	return s
+}
+
+func (s *ListDistributedProductResponseBodyDataInfoItems) SetGmtCreate(v int32) *ListDistributedProductResponseBodyDataInfoItems {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListDistributedProductResponseBodyDataInfoItems) SetTargetAliyunId(v string) *ListDistributedProductResponseBodyDataInfoItems {
+	s.TargetAliyunId = &v
+	return s
+}
+
+func (s *ListDistributedProductResponseBodyDataInfoItems) SetSourceRegion(v string) *ListDistributedProductResponseBodyDataInfoItems {
+	s.SourceRegion = &v
+	return s
+}
+
+func (s *ListDistributedProductResponseBodyDataInfoItems) SetTargetRegion(v string) *ListDistributedProductResponseBodyDataInfoItems {
+	s.TargetRegion = &v
+	return s
+}
+
+func (s *ListDistributedProductResponseBodyDataInfoItems) SetSourceInstanceName(v string) *ListDistributedProductResponseBodyDataInfoItems {
+	s.SourceInstanceName = &v
+	return s
+}
+
+func (s *ListDistributedProductResponseBodyDataInfoItems) SetTargetInstanceName(v string) *ListDistributedProductResponseBodyDataInfoItems {
+	s.TargetInstanceName = &v
+	return s
+}
+
+type ListDistributedProductResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListDistributedProductResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDistributedProductResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDistributedProductResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDistributedProductResponse) SetHeaders(v map[string]*string) *ListDistributedProductResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDistributedProductResponse) SetBody(v *ListDistributedProductResponseBody) *ListDistributedProductResponse {
 	s.Body = v
 	return s
 }
@@ -18791,6 +19802,69 @@ func (s *NotifyAddThingTopoResponse) SetBody(v *NotifyAddThingTopoResponseBody) 
 	return s
 }
 
+type OpenIotServiceRequest struct {
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+}
+
+func (s OpenIotServiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenIotServiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *OpenIotServiceRequest) SetOwnerId(v int64) *OpenIotServiceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+type OpenIotServiceResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+}
+
+func (s OpenIotServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenIotServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *OpenIotServiceResponseBody) SetRequestId(v string) *OpenIotServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *OpenIotServiceResponseBody) SetOrderId(v string) *OpenIotServiceResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+type OpenIotServiceResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *OpenIotServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s OpenIotServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenIotServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *OpenIotServiceResponse) SetHeaders(v map[string]*string) *OpenIotServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *OpenIotServiceResponse) SetBody(v *OpenIotServiceResponseBody) *OpenIotServiceResponse {
+	s.Body = v
+	return s
+}
+
 type PubRequest struct {
 	ApiProduct      *string               `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
 	ApiRevision     *string               `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
@@ -19460,11 +20534,13 @@ func (s *QueryAppDeviceListResponse) SetBody(v *QueryAppDeviceListResponseBody) 
 }
 
 type QueryBatchRegisterDeviceStatusRequest struct {
-	ApiProduct    *string `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
-	ApiRevision   *string `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
-	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
-	ApplyId       *int64  `json:"ApplyId,omitempty" xml:"ApplyId,omitempty"`
+	ApiProduct        *string `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
+	ApiRevision       *string `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
+	IotInstanceId     *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ProductKey        *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	ApplyId           *int64  `json:"ApplyId,omitempty" xml:"ApplyId,omitempty"`
+	RealTenantId      *string `json:"RealTenantId,omitempty" xml:"RealTenantId,omitempty"`
+	RealTripartiteKey *string `json:"RealTripartiteKey,omitempty" xml:"RealTripartiteKey,omitempty"`
 }
 
 func (s QueryBatchRegisterDeviceStatusRequest) String() string {
@@ -19497,6 +20573,16 @@ func (s *QueryBatchRegisterDeviceStatusRequest) SetProductKey(v string) *QueryBa
 
 func (s *QueryBatchRegisterDeviceStatusRequest) SetApplyId(v int64) *QueryBatchRegisterDeviceStatusRequest {
 	s.ApplyId = &v
+	return s
+}
+
+func (s *QueryBatchRegisterDeviceStatusRequest) SetRealTenantId(v string) *QueryBatchRegisterDeviceStatusRequest {
+	s.RealTenantId = &v
+	return s
+}
+
+func (s *QueryBatchRegisterDeviceStatusRequest) SetRealTripartiteKey(v string) *QueryBatchRegisterDeviceStatusRequest {
+	s.RealTripartiteKey = &v
 	return s
 }
 
@@ -19722,157 +20808,6 @@ func (s *QueryCertUrlByApplyIdResponse) SetHeaders(v map[string]*string) *QueryC
 }
 
 func (s *QueryCertUrlByApplyIdResponse) SetBody(v *QueryCertUrlByApplyIdResponseBody) *QueryCertUrlByApplyIdResponse {
-	s.Body = v
-	return s
-}
-
-type QueryClientIdsRequest struct {
-	ApiProduct    *string `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
-	ApiRevision   *string `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
-	IotId         *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
-	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	AuthConfig    *string `json:"AuthConfig,omitempty" xml:"AuthConfig,omitempty"`
-}
-
-func (s QueryClientIdsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryClientIdsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *QueryClientIdsRequest) SetApiProduct(v string) *QueryClientIdsRequest {
-	s.ApiProduct = &v
-	return s
-}
-
-func (s *QueryClientIdsRequest) SetApiRevision(v string) *QueryClientIdsRequest {
-	s.ApiRevision = &v
-	return s
-}
-
-func (s *QueryClientIdsRequest) SetIotId(v string) *QueryClientIdsRequest {
-	s.IotId = &v
-	return s
-}
-
-func (s *QueryClientIdsRequest) SetIotInstanceId(v string) *QueryClientIdsRequest {
-	s.IotInstanceId = &v
-	return s
-}
-
-func (s *QueryClientIdsRequest) SetAuthConfig(v string) *QueryClientIdsRequest {
-	s.AuthConfig = &v
-	return s
-}
-
-type QueryClientIdsResponseBody struct {
-	RequestId    *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
-	Code         *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	ErrorMessage *string                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Data         *QueryClientIdsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-}
-
-func (s QueryClientIdsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryClientIdsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *QueryClientIdsResponseBody) SetRequestId(v string) *QueryClientIdsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *QueryClientIdsResponseBody) SetSuccess(v bool) *QueryClientIdsResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *QueryClientIdsResponseBody) SetCode(v string) *QueryClientIdsResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *QueryClientIdsResponseBody) SetErrorMessage(v string) *QueryClientIdsResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *QueryClientIdsResponseBody) SetData(v *QueryClientIdsResponseBodyData) *QueryClientIdsResponseBody {
-	s.Data = v
-	return s
-}
-
-type QueryClientIdsResponseBodyData struct {
-	IotId               *string                                              `json:"IotId,omitempty" xml:"IotId,omitempty"`
-	DynamicRegClientIds []*QueryClientIdsResponseBodyDataDynamicRegClientIds `json:"DynamicRegClientIds,omitempty" xml:"DynamicRegClientIds,omitempty" type:"Repeated"`
-}
-
-func (s QueryClientIdsResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryClientIdsResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *QueryClientIdsResponseBodyData) SetIotId(v string) *QueryClientIdsResponseBodyData {
-	s.IotId = &v
-	return s
-}
-
-func (s *QueryClientIdsResponseBodyData) SetDynamicRegClientIds(v []*QueryClientIdsResponseBodyDataDynamicRegClientIds) *QueryClientIdsResponseBodyData {
-	s.DynamicRegClientIds = v
-	return s
-}
-
-type QueryClientIdsResponseBodyDataDynamicRegClientIds struct {
-	ClientId   *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	CreateTime *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-}
-
-func (s QueryClientIdsResponseBodyDataDynamicRegClientIds) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryClientIdsResponseBodyDataDynamicRegClientIds) GoString() string {
-	return s.String()
-}
-
-func (s *QueryClientIdsResponseBodyDataDynamicRegClientIds) SetClientId(v string) *QueryClientIdsResponseBodyDataDynamicRegClientIds {
-	s.ClientId = &v
-	return s
-}
-
-func (s *QueryClientIdsResponseBodyDataDynamicRegClientIds) SetCreateTime(v int64) *QueryClientIdsResponseBodyDataDynamicRegClientIds {
-	s.CreateTime = &v
-	return s
-}
-
-type QueryClientIdsResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *QueryClientIdsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s QueryClientIdsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryClientIdsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *QueryClientIdsResponse) SetHeaders(v map[string]*string) *QueryClientIdsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *QueryClientIdsResponse) SetBody(v *QueryClientIdsResponseBody) *QueryClientIdsResponse {
 	s.Body = v
 	return s
 }
@@ -20549,12 +21484,14 @@ func (s *QueryDetailSceneRuleLogResponse) SetBody(v *QueryDetailSceneRuleLogResp
 }
 
 type QueryDeviceRequest struct {
-	ApiProduct    *string `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
-	ApiRevision   *string `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
-	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
-	CurrentPage   *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	ApiProduct        *string `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
+	ApiRevision       *string `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
+	IotInstanceId     *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProductKey        *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	CurrentPage       *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	RealTenantId      *string `json:"RealTenantId,omitempty" xml:"RealTenantId,omitempty"`
+	RealTripartiteKey *string `json:"RealTripartiteKey,omitempty" xml:"RealTripartiteKey,omitempty"`
 }
 
 func (s QueryDeviceRequest) String() string {
@@ -20592,6 +21529,16 @@ func (s *QueryDeviceRequest) SetProductKey(v string) *QueryDeviceRequest {
 
 func (s *QueryDeviceRequest) SetCurrentPage(v int32) *QueryDeviceRequest {
 	s.CurrentPage = &v
+	return s
+}
+
+func (s *QueryDeviceRequest) SetRealTenantId(v string) *QueryDeviceRequest {
+	s.RealTenantId = &v
+	return s
+}
+
+func (s *QueryDeviceRequest) SetRealTripartiteKey(v string) *QueryDeviceRequest {
+	s.RealTripartiteKey = &v
 	return s
 }
 
@@ -22095,6 +23042,297 @@ func (s *QueryDeviceDetailResponse) SetBody(v *QueryDeviceDetailResponseBody) *Q
 	return s
 }
 
+type QueryDeviceDistributeDetailRequest struct {
+	ApiProduct  *string `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
+	ApiRevision *string `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
+	JobId       *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s QueryDeviceDistributeDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDeviceDistributeDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDeviceDistributeDetailRequest) SetApiProduct(v string) *QueryDeviceDistributeDetailRequest {
+	s.ApiProduct = &v
+	return s
+}
+
+func (s *QueryDeviceDistributeDetailRequest) SetApiRevision(v string) *QueryDeviceDistributeDetailRequest {
+	s.ApiRevision = &v
+	return s
+}
+
+func (s *QueryDeviceDistributeDetailRequest) SetJobId(v string) *QueryDeviceDistributeDetailRequest {
+	s.JobId = &v
+	return s
+}
+
+type QueryDeviceDistributeDetailResponseBody struct {
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	File         *string `json:"File,omitempty" xml:"File,omitempty"`
+}
+
+func (s QueryDeviceDistributeDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDeviceDistributeDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDeviceDistributeDetailResponseBody) SetRequestId(v string) *QueryDeviceDistributeDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryDeviceDistributeDetailResponseBody) SetSuccess(v bool) *QueryDeviceDistributeDetailResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *QueryDeviceDistributeDetailResponseBody) SetCode(v string) *QueryDeviceDistributeDetailResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryDeviceDistributeDetailResponseBody) SetErrorMessage(v string) *QueryDeviceDistributeDetailResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *QueryDeviceDistributeDetailResponseBody) SetFile(v string) *QueryDeviceDistributeDetailResponseBody {
+	s.File = &v
+	return s
+}
+
+type QueryDeviceDistributeDetailResponse struct {
+	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QueryDeviceDistributeDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryDeviceDistributeDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDeviceDistributeDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDeviceDistributeDetailResponse) SetHeaders(v map[string]*string) *QueryDeviceDistributeDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryDeviceDistributeDetailResponse) SetBody(v *QueryDeviceDistributeDetailResponseBody) *QueryDeviceDistributeDetailResponse {
+	s.Body = v
+	return s
+}
+
+type QueryDeviceDistributeJobRequest struct {
+	ApiProduct  *string `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
+	ApiRevision *string `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
+	JobId       *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s QueryDeviceDistributeJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDeviceDistributeJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDeviceDistributeJobRequest) SetApiProduct(v string) *QueryDeviceDistributeJobRequest {
+	s.ApiProduct = &v
+	return s
+}
+
+func (s *QueryDeviceDistributeJobRequest) SetApiRevision(v string) *QueryDeviceDistributeJobRequest {
+	s.ApiRevision = &v
+	return s
+}
+
+func (s *QueryDeviceDistributeJobRequest) SetJobId(v string) *QueryDeviceDistributeJobRequest {
+	s.JobId = &v
+	return s
+}
+
+type QueryDeviceDistributeJobResponseBody struct {
+	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string                                   `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Data         *QueryDeviceDistributeJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s QueryDeviceDistributeJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDeviceDistributeJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDeviceDistributeJobResponseBody) SetRequestId(v string) *QueryDeviceDistributeJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryDeviceDistributeJobResponseBody) SetSuccess(v bool) *QueryDeviceDistributeJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *QueryDeviceDistributeJobResponseBody) SetCode(v string) *QueryDeviceDistributeJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryDeviceDistributeJobResponseBody) SetErrorMessage(v string) *QueryDeviceDistributeJobResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *QueryDeviceDistributeJobResponseBody) SetData(v *QueryDeviceDistributeJobResponseBodyData) *QueryDeviceDistributeJobResponseBody {
+	s.Data = v
+	return s
+}
+
+type QueryDeviceDistributeJobResponseBodyData struct {
+	SourceUid             *string                                                        `json:"SourceUid,omitempty" xml:"SourceUid,omitempty"`
+	TargetUid             *string                                                        `json:"TargetUid,omitempty" xml:"TargetUid,omitempty"`
+	SourceInstanceId      *string                                                        `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
+	JobId                 *string                                                        `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	ProductKey            *string                                                        `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	Total                 *int32                                                         `json:"Total,omitempty" xml:"Total,omitempty"`
+	Status                *int32                                                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	GmtCreate             *int64                                                         `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	Strategy              *int32                                                         `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
+	TargetInstanceConfigs *QueryDeviceDistributeJobResponseBodyDataTargetInstanceConfigs `json:"TargetInstanceConfigs,omitempty" xml:"TargetInstanceConfigs,omitempty" type:"Struct"`
+}
+
+func (s QueryDeviceDistributeJobResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDeviceDistributeJobResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDeviceDistributeJobResponseBodyData) SetSourceUid(v string) *QueryDeviceDistributeJobResponseBodyData {
+	s.SourceUid = &v
+	return s
+}
+
+func (s *QueryDeviceDistributeJobResponseBodyData) SetTargetUid(v string) *QueryDeviceDistributeJobResponseBodyData {
+	s.TargetUid = &v
+	return s
+}
+
+func (s *QueryDeviceDistributeJobResponseBodyData) SetSourceInstanceId(v string) *QueryDeviceDistributeJobResponseBodyData {
+	s.SourceInstanceId = &v
+	return s
+}
+
+func (s *QueryDeviceDistributeJobResponseBodyData) SetJobId(v string) *QueryDeviceDistributeJobResponseBodyData {
+	s.JobId = &v
+	return s
+}
+
+func (s *QueryDeviceDistributeJobResponseBodyData) SetProductKey(v string) *QueryDeviceDistributeJobResponseBodyData {
+	s.ProductKey = &v
+	return s
+}
+
+func (s *QueryDeviceDistributeJobResponseBodyData) SetTotal(v int32) *QueryDeviceDistributeJobResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+func (s *QueryDeviceDistributeJobResponseBodyData) SetStatus(v int32) *QueryDeviceDistributeJobResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *QueryDeviceDistributeJobResponseBodyData) SetGmtCreate(v int64) *QueryDeviceDistributeJobResponseBodyData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *QueryDeviceDistributeJobResponseBodyData) SetStrategy(v int32) *QueryDeviceDistributeJobResponseBodyData {
+	s.Strategy = &v
+	return s
+}
+
+func (s *QueryDeviceDistributeJobResponseBodyData) SetTargetInstanceConfigs(v *QueryDeviceDistributeJobResponseBodyDataTargetInstanceConfigs) *QueryDeviceDistributeJobResponseBodyData {
+	s.TargetInstanceConfigs = v
+	return s
+}
+
+type QueryDeviceDistributeJobResponseBodyDataTargetInstanceConfigs struct {
+	TargetInstanceConfigs []*QueryDeviceDistributeJobResponseBodyDataTargetInstanceConfigsTargetInstanceConfigs `json:"targetInstanceConfigs,omitempty" xml:"targetInstanceConfigs,omitempty" type:"Repeated"`
+}
+
+func (s QueryDeviceDistributeJobResponseBodyDataTargetInstanceConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDeviceDistributeJobResponseBodyDataTargetInstanceConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDeviceDistributeJobResponseBodyDataTargetInstanceConfigs) SetTargetInstanceConfigs(v []*QueryDeviceDistributeJobResponseBodyDataTargetInstanceConfigsTargetInstanceConfigs) *QueryDeviceDistributeJobResponseBodyDataTargetInstanceConfigs {
+	s.TargetInstanceConfigs = v
+	return s
+}
+
+type QueryDeviceDistributeJobResponseBodyDataTargetInstanceConfigsTargetInstanceConfigs struct {
+	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
+}
+
+func (s QueryDeviceDistributeJobResponseBodyDataTargetInstanceConfigsTargetInstanceConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDeviceDistributeJobResponseBodyDataTargetInstanceConfigsTargetInstanceConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDeviceDistributeJobResponseBodyDataTargetInstanceConfigsTargetInstanceConfigs) SetTargetInstanceId(v string) *QueryDeviceDistributeJobResponseBodyDataTargetInstanceConfigsTargetInstanceConfigs {
+	s.TargetInstanceId = &v
+	return s
+}
+
+type QueryDeviceDistributeJobResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QueryDeviceDistributeJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryDeviceDistributeJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDeviceDistributeJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDeviceDistributeJobResponse) SetHeaders(v map[string]*string) *QueryDeviceDistributeJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryDeviceDistributeJobResponse) SetBody(v *QueryDeviceDistributeJobResponseBody) *QueryDeviceDistributeJobResponse {
+	s.Body = v
+	return s
+}
+
 type QueryDeviceEventDataRequest struct {
 	ApiProduct        *string `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
 	ApiRevision       *string `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
@@ -22699,11 +23937,13 @@ func (s *QueryDeviceFileListResponse) SetBody(v *QueryDeviceFileListResponseBody
 }
 
 type QueryDeviceGroupByDeviceRequest struct {
-	ApiProduct    *string `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
-	ApiRevision   *string `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
-	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
-	DeviceName    *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	ApiProduct        *string `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
+	ApiRevision       *string `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
+	IotInstanceId     *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ProductKey        *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	DeviceName        *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	RealTenantId      *string `json:"RealTenantId,omitempty" xml:"RealTenantId,omitempty"`
+	RealTripartiteKey *string `json:"RealTripartiteKey,omitempty" xml:"RealTripartiteKey,omitempty"`
 }
 
 func (s QueryDeviceGroupByDeviceRequest) String() string {
@@ -22736,6 +23976,16 @@ func (s *QueryDeviceGroupByDeviceRequest) SetProductKey(v string) *QueryDeviceGr
 
 func (s *QueryDeviceGroupByDeviceRequest) SetDeviceName(v string) *QueryDeviceGroupByDeviceRequest {
 	s.DeviceName = &v
+	return s
+}
+
+func (s *QueryDeviceGroupByDeviceRequest) SetRealTenantId(v string) *QueryDeviceGroupByDeviceRequest {
+	s.RealTenantId = &v
+	return s
+}
+
+func (s *QueryDeviceGroupByDeviceRequest) SetRealTripartiteKey(v string) *QueryDeviceGroupByDeviceRequest {
+	s.RealTripartiteKey = &v
 	return s
 }
 
@@ -29071,12 +30321,14 @@ func (s *QueryOTAJobResponse) SetBody(v *QueryOTAJobResponseBody) *QueryOTAJobRe
 }
 
 type QueryPageByApplyIdRequest struct {
-	ApiProduct    *string `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
-	ApiRevision   *string `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
-	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ApplyId       *int64  `json:"ApplyId,omitempty" xml:"ApplyId,omitempty"`
-	CurrentPage   *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	ApiProduct        *string `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
+	ApiRevision       *string `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
+	IotInstanceId     *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ApplyId           *int64  `json:"ApplyId,omitempty" xml:"ApplyId,omitempty"`
+	CurrentPage       *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	RealTenantId      *string `json:"RealTenantId,omitempty" xml:"RealTenantId,omitempty"`
+	RealTripartiteKey *string `json:"RealTripartiteKey,omitempty" xml:"RealTripartiteKey,omitempty"`
 }
 
 func (s QueryPageByApplyIdRequest) String() string {
@@ -29114,6 +30366,16 @@ func (s *QueryPageByApplyIdRequest) SetApplyId(v int64) *QueryPageByApplyIdReque
 
 func (s *QueryPageByApplyIdRequest) SetCurrentPage(v int32) *QueryPageByApplyIdRequest {
 	s.CurrentPage = &v
+	return s
+}
+
+func (s *QueryPageByApplyIdRequest) SetRealTenantId(v string) *QueryPageByApplyIdRequest {
+	s.RealTenantId = &v
+	return s
+}
+
+func (s *QueryPageByApplyIdRequest) SetRealTripartiteKey(v string) *QueryPageByApplyIdRequest {
+	s.RealTripartiteKey = &v
 	return s
 }
 
@@ -29611,6 +30873,8 @@ type QueryProductListRequest struct {
 	ResourceGroupId     *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	AliyunCommodityCode *string `json:"AliyunCommodityCode,omitempty" xml:"AliyunCommodityCode,omitempty"`
 	CurrentPage         *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	RealTenantId        *string `json:"RealTenantId,omitempty" xml:"RealTenantId,omitempty"`
+	RealTripartiteKey   *string `json:"RealTripartiteKey,omitempty" xml:"RealTripartiteKey,omitempty"`
 }
 
 func (s QueryProductListRequest) String() string {
@@ -29653,6 +30917,16 @@ func (s *QueryProductListRequest) SetAliyunCommodityCode(v string) *QueryProduct
 
 func (s *QueryProductListRequest) SetCurrentPage(v int32) *QueryProductListRequest {
 	s.CurrentPage = &v
+	return s
+}
+
+func (s *QueryProductListRequest) SetRealTenantId(v string) *QueryProductListRequest {
+	s.RealTenantId = &v
+	return s
+}
+
+func (s *QueryProductListRequest) SetRealTripartiteKey(v string) *QueryProductListRequest {
+	s.RealTripartiteKey = &v
 	return s
 }
 
@@ -30802,23 +32076,6 @@ func (s *QueryTaskResponseBody) SetData(v *QueryTaskResponseBodyData) *QueryTask
 }
 
 type QueryTaskResponseBodyData struct {
-	Data []*QueryTaskResponseBodyDataData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-}
-
-func (s QueryTaskResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryTaskResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *QueryTaskResponseBodyData) SetData(v []*QueryTaskResponseBodyDataData) *QueryTaskResponseBodyData {
-	s.Data = v
-	return s
-}
-
-type QueryTaskResponseBodyDataData struct {
 	JobId        *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	JobName      *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
 	TaskId       *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
@@ -30833,70 +32090,70 @@ type QueryTaskResponseBodyDataData struct {
 	Message      *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
-func (s QueryTaskResponseBodyDataData) String() string {
+func (s QueryTaskResponseBodyData) String() string {
 	return tea.Prettify(s)
 }
 
-func (s QueryTaskResponseBodyDataData) GoString() string {
+func (s QueryTaskResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *QueryTaskResponseBodyDataData) SetJobId(v string) *QueryTaskResponseBodyDataData {
+func (s *QueryTaskResponseBodyData) SetJobId(v string) *QueryTaskResponseBodyData {
 	s.JobId = &v
 	return s
 }
 
-func (s *QueryTaskResponseBodyDataData) SetJobName(v string) *QueryTaskResponseBodyDataData {
+func (s *QueryTaskResponseBodyData) SetJobName(v string) *QueryTaskResponseBodyData {
 	s.JobName = &v
 	return s
 }
 
-func (s *QueryTaskResponseBodyDataData) SetTaskId(v string) *QueryTaskResponseBodyDataData {
+func (s *QueryTaskResponseBodyData) SetTaskId(v string) *QueryTaskResponseBodyData {
 	s.TaskId = &v
 	return s
 }
 
-func (s *QueryTaskResponseBodyDataData) SetProductKey(v string) *QueryTaskResponseBodyDataData {
+func (s *QueryTaskResponseBodyData) SetProductKey(v string) *QueryTaskResponseBodyData {
 	s.ProductKey = &v
 	return s
 }
 
-func (s *QueryTaskResponseBodyDataData) SetDeviceName(v string) *QueryTaskResponseBodyDataData {
+func (s *QueryTaskResponseBodyData) SetDeviceName(v string) *QueryTaskResponseBodyData {
 	s.DeviceName = &v
 	return s
 }
 
-func (s *QueryTaskResponseBodyDataData) SetIotId(v string) *QueryTaskResponseBodyDataData {
+func (s *QueryTaskResponseBodyData) SetIotId(v string) *QueryTaskResponseBodyData {
 	s.IotId = &v
 	return s
 }
 
-func (s *QueryTaskResponseBodyDataData) SetProgress(v string) *QueryTaskResponseBodyDataData {
+func (s *QueryTaskResponseBodyData) SetProgress(v string) *QueryTaskResponseBodyData {
 	s.Progress = &v
 	return s
 }
 
-func (s *QueryTaskResponseBodyDataData) SetUtcQueueTime(v string) *QueryTaskResponseBodyDataData {
+func (s *QueryTaskResponseBodyData) SetUtcQueueTime(v string) *QueryTaskResponseBodyData {
 	s.UtcQueueTime = &v
 	return s
 }
 
-func (s *QueryTaskResponseBodyDataData) SetUtcModified(v string) *QueryTaskResponseBodyDataData {
+func (s *QueryTaskResponseBodyData) SetUtcModified(v string) *QueryTaskResponseBodyData {
 	s.UtcModified = &v
 	return s
 }
 
-func (s *QueryTaskResponseBodyDataData) SetStatusDetail(v string) *QueryTaskResponseBodyDataData {
+func (s *QueryTaskResponseBodyData) SetStatusDetail(v string) *QueryTaskResponseBodyData {
 	s.StatusDetail = &v
 	return s
 }
 
-func (s *QueryTaskResponseBodyDataData) SetStatus(v string) *QueryTaskResponseBodyDataData {
+func (s *QueryTaskResponseBodyData) SetStatus(v string) *QueryTaskResponseBodyData {
 	s.Status = &v
 	return s
 }
 
-func (s *QueryTaskResponseBodyDataData) SetMessage(v string) *QueryTaskResponseBodyDataData {
+func (s *QueryTaskResponseBodyData) SetMessage(v string) *QueryTaskResponseBodyData {
 	s.Message = &v
 	return s
 }
@@ -33453,6 +34710,7 @@ type SpeechByCombinationRequest struct {
 	IotId           *string   `json:"IotId,omitempty" xml:"IotId,omitempty"`
 	ProductKey      *string   `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
 	DeviceName      *string   `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	IotInstanceId   *string   `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 }
 
 func (s SpeechByCombinationRequest) String() string {
@@ -33490,6 +34748,11 @@ func (s *SpeechByCombinationRequest) SetProductKey(v string) *SpeechByCombinatio
 
 func (s *SpeechByCombinationRequest) SetDeviceName(v string) *SpeechByCombinationRequest {
 	s.DeviceName = &v
+	return s
+}
+
+func (s *SpeechByCombinationRequest) SetIotInstanceId(v string) *SpeechByCombinationRequest {
+	s.IotInstanceId = &v
 	return s
 }
 
@@ -33873,111 +35136,6 @@ func (s *StopRuleResponse) SetHeaders(v map[string]*string) *StopRuleResponse {
 }
 
 func (s *StopRuleResponse) SetBody(v *StopRuleResponseBody) *StopRuleResponse {
-	s.Body = v
-	return s
-}
-
-type TransformClientIdRequest struct {
-	ApiProduct    *string `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
-	ApiRevision   *string `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
-	IotId         *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
-	ClientId      *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	AuthConfig    *string `json:"AuthConfig,omitempty" xml:"AuthConfig,omitempty"`
-}
-
-func (s TransformClientIdRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TransformClientIdRequest) GoString() string {
-	return s.String()
-}
-
-func (s *TransformClientIdRequest) SetApiProduct(v string) *TransformClientIdRequest {
-	s.ApiProduct = &v
-	return s
-}
-
-func (s *TransformClientIdRequest) SetApiRevision(v string) *TransformClientIdRequest {
-	s.ApiRevision = &v
-	return s
-}
-
-func (s *TransformClientIdRequest) SetIotId(v string) *TransformClientIdRequest {
-	s.IotId = &v
-	return s
-}
-
-func (s *TransformClientIdRequest) SetClientId(v string) *TransformClientIdRequest {
-	s.ClientId = &v
-	return s
-}
-
-func (s *TransformClientIdRequest) SetIotInstanceId(v string) *TransformClientIdRequest {
-	s.IotInstanceId = &v
-	return s
-}
-
-func (s *TransformClientIdRequest) SetAuthConfig(v string) *TransformClientIdRequest {
-	s.AuthConfig = &v
-	return s
-}
-
-type TransformClientIdResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-}
-
-func (s TransformClientIdResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TransformClientIdResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *TransformClientIdResponseBody) SetRequestId(v string) *TransformClientIdResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *TransformClientIdResponseBody) SetSuccess(v bool) *TransformClientIdResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *TransformClientIdResponseBody) SetCode(v string) *TransformClientIdResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *TransformClientIdResponseBody) SetErrorMessage(v string) *TransformClientIdResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-type TransformClientIdResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *TransformClientIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s TransformClientIdResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TransformClientIdResponse) GoString() string {
-	return s.String()
-}
-
-func (s *TransformClientIdResponse) SetHeaders(v map[string]*string) *TransformClientIdResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *TransformClientIdResponse) SetBody(v *TransformClientIdResponseBody) *TransformClientIdResponse {
 	s.Body = v
 	return s
 }
@@ -35407,12 +36565,14 @@ func (s *UpdateOTAModuleResponse) SetBody(v *UpdateOTAModuleResponseBody) *Updat
 }
 
 type UpdateProductRequest struct {
-	ApiProduct    *string `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
-	ApiRevision   *string `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
-	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
-	ProductName   *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	ApiProduct        *string `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
+	ApiRevision       *string `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
+	IotInstanceId     *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ProductKey        *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	ProductName       *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	RealTenantId      *string `json:"RealTenantId,omitempty" xml:"RealTenantId,omitempty"`
+	RealTripartiteKey *string `json:"RealTripartiteKey,omitempty" xml:"RealTripartiteKey,omitempty"`
 }
 
 func (s UpdateProductRequest) String() string {
@@ -35450,6 +36610,16 @@ func (s *UpdateProductRequest) SetProductKey(v string) *UpdateProductRequest {
 
 func (s *UpdateProductRequest) SetProductName(v string) *UpdateProductRequest {
 	s.ProductName = &v
+	return s
+}
+
+func (s *UpdateProductRequest) SetRealTenantId(v string) *UpdateProductRequest {
+	s.RealTenantId = &v
+	return s
+}
+
+func (s *UpdateProductRequest) SetRealTripartiteKey(v string) *UpdateProductRequest {
+	s.RealTripartiteKey = &v
 	return s
 }
 
@@ -36880,17 +38050,11 @@ func (client *Client) BatchAddDeviceGroupRelations(request *BatchAddDeviceGroupR
 	return _result, _err
 }
 
-func (client *Client) BatchAddThingTopoWithOptions(tmpReq *BatchAddThingTopoRequest, runtime *util.RuntimeOptions) (_result *BatchAddThingTopoResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
+func (client *Client) BatchAddThingTopoWithOptions(request *BatchAddThingTopoRequest, runtime *util.RuntimeOptions) (_result *BatchAddThingTopoResponse, _err error) {
+	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	request := &BatchAddThingTopoShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.Ext)) {
-		request.ExtShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Ext, tea.String("Ext"), tea.String("json"))
-	}
-
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
@@ -37922,6 +39086,34 @@ func (client *Client) CreateDataAPIService(request *CreateDataAPIServiceRequest)
 	return _result, _err
 }
 
+func (client *Client) CreateDeviceDistributeJobWithOptions(request *CreateDeviceDistributeJobRequest, runtime *util.RuntimeOptions) (_result *CreateDeviceDistributeJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateDeviceDistributeJobResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateDeviceDistributeJob"), tea.String("2018-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDeviceDistributeJob(request *CreateDeviceDistributeJobRequest) (_result *CreateDeviceDistributeJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDeviceDistributeJobResponse{}
+	_body, _err := client.CreateDeviceDistributeJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateDeviceGroupWithOptions(request *CreateDeviceGroupRequest, runtime *util.RuntimeOptions) (_result *CreateDeviceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -38118,29 +39310,11 @@ func (client *Client) CreateEdgeOssPreSignedAddress(request *CreateEdgeOssPreSig
 	return _result, _err
 }
 
-func (client *Client) CreateJobWithOptions(tmpReq *CreateJobRequest, runtime *util.RuntimeOptions) (_result *CreateJobResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
+func (client *Client) CreateJobWithOptions(request *CreateJobRequest, runtime *util.RuntimeOptions) (_result *CreateJobResponse, _err error) {
+	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	request := &CreateJobShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.JobFile)) {
-		request.JobFileShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.JobFile, tea.String("JobFile"), tea.String("json"))
-	}
-
-	if !tea.BoolValue(util.IsUnset(tmpReq.TimeoutConfig)) {
-		request.TimeoutConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TimeoutConfig, tea.String("TimeoutConfig"), tea.String("json"))
-	}
-
-	if !tea.BoolValue(util.IsUnset(tmpReq.RolloutConfig)) {
-		request.RolloutConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RolloutConfig, tea.String("RolloutConfig"), tea.String("json"))
-	}
-
-	if !tea.BoolValue(util.IsUnset(tmpReq.TargetConfig)) {
-		request.TargetConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TargetConfig, tea.String("TargetConfig"), tea.String("json"))
-	}
-
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
@@ -38360,6 +39534,34 @@ func (client *Client) CreateProduct(request *CreateProductRequest) (_result *Cre
 	return _result, _err
 }
 
+func (client *Client) CreateProductDistributeJobWithOptions(request *CreateProductDistributeJobRequest, runtime *util.RuntimeOptions) (_result *CreateProductDistributeJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateProductDistributeJobResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateProductDistributeJob"), tea.String("2018-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateProductDistributeJob(request *CreateProductDistributeJobRequest) (_result *CreateProductDistributeJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateProductDistributeJobResponse{}
+	_body, _err := client.CreateProductDistributeJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateProductTagsWithOptions(request *CreateProductTagsRequest, runtime *util.RuntimeOptions) (_result *CreateProductTagsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -38465,6 +39667,34 @@ func (client *Client) CreateRuleAction(request *CreateRuleActionRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateRuleActionResponse{}
 	_body, _err := client.CreateRuleActionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateRulengDistributeJobWithOptions(request *CreateRulengDistributeJobRequest, runtime *util.RuntimeOptions) (_result *CreateRulengDistributeJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateRulengDistributeJobResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateRulengDistributeJob"), tea.String("2018-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateRulengDistributeJob(request *CreateRulengDistributeJobRequest) (_result *CreateRulengDistributeJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateRulengDistributeJobResponse{}
+	_body, _err := client.CreateRulengDistributeJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38612,34 +39842,6 @@ func (client *Client) CreateTopicRouteTable(request *CreateTopicRouteTableReques
 	return _result, _err
 }
 
-func (client *Client) DeleteClientIdsWithOptions(request *DeleteClientIdsRequest, runtime *util.RuntimeOptions) (_result *DeleteClientIdsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DeleteClientIdsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteClientIds"), tea.String("2018-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteClientIds(request *DeleteClientIdsRequest) (_result *DeleteClientIdsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteClientIdsResponse{}
-	_body, _err := client.DeleteClientIdsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DeleteConsumerGroupWithOptions(request *DeleteConsumerGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteConsumerGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -38717,6 +39919,34 @@ func (client *Client) DeleteDevice(request *DeleteDeviceRequest) (_result *Delet
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDeviceResponse{}
 	_body, _err := client.DeleteDeviceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteDeviceDistributeJobWithOptions(request *DeleteDeviceDistributeJobRequest, runtime *util.RuntimeOptions) (_result *DeleteDeviceDistributeJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DeleteDeviceDistributeJobResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteDeviceDistributeJob"), tea.String("2018-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDeviceDistributeJob(request *DeleteDeviceDistributeJobRequest) (_result *DeleteDeviceDistributeJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDeviceDistributeJobResponse{}
+	_body, _err := client.DeleteDeviceDistributeJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -40012,6 +41242,90 @@ func (client *Client) InvokeThingsService(request *InvokeThingsServiceRequest) (
 	return _result, _err
 }
 
+func (client *Client) ListDeviceDistributeJobWithOptions(request *ListDeviceDistributeJobRequest, runtime *util.RuntimeOptions) (_result *ListDeviceDistributeJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListDeviceDistributeJobResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListDeviceDistributeJob"), tea.String("2018-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDeviceDistributeJob(request *ListDeviceDistributeJobRequest) (_result *ListDeviceDistributeJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDeviceDistributeJobResponse{}
+	_body, _err := client.ListDeviceDistributeJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDistributedDeviceWithOptions(request *ListDistributedDeviceRequest, runtime *util.RuntimeOptions) (_result *ListDistributedDeviceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListDistributedDeviceResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListDistributedDevice"), tea.String("2018-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDistributedDevice(request *ListDistributedDeviceRequest) (_result *ListDistributedDeviceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDistributedDeviceResponse{}
+	_body, _err := client.ListDistributedDeviceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDistributedProductWithOptions(request *ListDistributedProductRequest, runtime *util.RuntimeOptions) (_result *ListDistributedProductResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListDistributedProductResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListDistributedProduct"), tea.String("2018-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDistributedProduct(request *ListDistributedProductRequest) (_result *ListDistributedProductResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDistributedProductResponse{}
+	_body, _err := client.ListDistributedProductWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListJobWithOptions(request *ListJobRequest, runtime *util.RuntimeOptions) (_result *ListJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -40461,6 +41775,34 @@ func (client *Client) NotifyAddThingTopo(request *NotifyAddThingTopoRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) OpenIotServiceWithOptions(request *OpenIotServiceRequest, runtime *util.RuntimeOptions) (_result *OpenIotServiceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &OpenIotServiceResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("OpenIotService"), tea.String("2018-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) OpenIotService(request *OpenIotServiceRequest) (_result *OpenIotServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &OpenIotServiceResponse{}
+	_body, _err := client.OpenIotServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) PubWithOptions(request *PubRequest, runtime *util.RuntimeOptions) (_result *PubResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -40622,34 +41964,6 @@ func (client *Client) QueryCertUrlByApplyId(request *QueryCertUrlByApplyIdReques
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryCertUrlByApplyIdResponse{}
 	_body, _err := client.QueryCertUrlByApplyIdWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) QueryClientIdsWithOptions(request *QueryClientIdsRequest, runtime *util.RuntimeOptions) (_result *QueryClientIdsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &QueryClientIdsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryClientIds"), tea.String("2018-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) QueryClientIds(request *QueryClientIdsRequest) (_result *QueryClientIdsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &QueryClientIdsResponse{}
-	_body, _err := client.QueryClientIdsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -40958,6 +42272,62 @@ func (client *Client) QueryDeviceDetail(request *QueryDeviceDetailRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryDeviceDetailResponse{}
 	_body, _err := client.QueryDeviceDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryDeviceDistributeDetailWithOptions(request *QueryDeviceDistributeDetailRequest, runtime *util.RuntimeOptions) (_result *QueryDeviceDistributeDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &QueryDeviceDistributeDetailResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("QueryDeviceDistributeDetail"), tea.String("2018-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryDeviceDistributeDetail(request *QueryDeviceDistributeDetailRequest) (_result *QueryDeviceDistributeDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryDeviceDistributeDetailResponse{}
+	_body, _err := client.QueryDeviceDistributeDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryDeviceDistributeJobWithOptions(request *QueryDeviceDistributeJobRequest, runtime *util.RuntimeOptions) (_result *QueryDeviceDistributeJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &QueryDeviceDistributeJobResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("QueryDeviceDistributeJob"), tea.String("2018-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryDeviceDistributeJob(request *QueryDeviceDistributeJobRequest) (_result *QueryDeviceDistributeJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryDeviceDistributeJobResponse{}
+	_body, _err := client.QueryDeviceDistributeJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -42863,34 +44233,6 @@ func (client *Client) StopRule(request *StopRuleRequest) (_result *StopRuleRespo
 	runtime := &util.RuntimeOptions{}
 	_result = &StopRuleResponse{}
 	_body, _err := client.StopRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) TransformClientIdWithOptions(request *TransformClientIdRequest, runtime *util.RuntimeOptions) (_result *TransformClientIdResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &TransformClientIdResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("TransformClientId"), tea.String("2018-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) TransformClientId(request *TransformClientIdRequest) (_result *TransformClientIdResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &TransformClientIdResponse{}
-	_body, _err := client.TransformClientIdWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
