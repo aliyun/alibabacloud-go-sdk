@@ -14,6 +14,7 @@ import (
 
 type SubmitStructSyncOrderApprovalRequest struct {
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s SubmitStructSyncOrderApprovalRequest) String() string {
@@ -26,6 +27,11 @@ func (s SubmitStructSyncOrderApprovalRequest) GoString() string {
 
 func (s *SubmitStructSyncOrderApprovalRequest) SetOrderId(v int64) *SubmitStructSyncOrderApprovalRequest {
 	s.OrderId = &v
+	return s
+}
+
+func (s *SubmitStructSyncOrderApprovalRequest) SetTid(v int64) *SubmitStructSyncOrderApprovalRequest {
+	s.Tid = &v
 	return s
 }
 
@@ -1272,6 +1278,7 @@ func (s *GetMetaTableDetailInfoResponse) SetBody(v *GetMetaTableDetailInfoRespon
 type GetDataCorrectSQLFileRequest struct {
 	OrderId         *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	OrderActionName *string `json:"OrderActionName,omitempty" xml:"OrderActionName,omitempty"`
+	Tid             *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetDataCorrectSQLFileRequest) String() string {
@@ -1289,6 +1296,11 @@ func (s *GetDataCorrectSQLFileRequest) SetOrderId(v int64) *GetDataCorrectSQLFil
 
 func (s *GetDataCorrectSQLFileRequest) SetOrderActionName(v string) *GetDataCorrectSQLFileRequest {
 	s.OrderActionName = &v
+	return s
+}
+
+func (s *GetDataCorrectSQLFileRequest) SetTid(v int64) *GetDataCorrectSQLFileRequest {
+	s.Tid = &v
 	return s
 }
 
@@ -1357,12 +1369,242 @@ func (s *GetDataCorrectSQLFileResponse) SetBody(v *GetDataCorrectSQLFileResponse
 	return s
 }
 
+type CreateFreeLockCorrectOrderRequest struct {
+	Comment         *string                                 `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	RelatedUserList []*int64                                `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty" type:"Repeated"`
+	Param           *CreateFreeLockCorrectOrderRequestParam `json:"Param,omitempty" xml:"Param,omitempty" type:"Struct"`
+	AttachmentKey   *string                                 `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
+	Tid             *int64                                  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s CreateFreeLockCorrectOrderRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFreeLockCorrectOrderRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFreeLockCorrectOrderRequest) SetComment(v string) *CreateFreeLockCorrectOrderRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *CreateFreeLockCorrectOrderRequest) SetRelatedUserList(v []*int64) *CreateFreeLockCorrectOrderRequest {
+	s.RelatedUserList = v
+	return s
+}
+
+func (s *CreateFreeLockCorrectOrderRequest) SetParam(v *CreateFreeLockCorrectOrderRequestParam) *CreateFreeLockCorrectOrderRequest {
+	s.Param = v
+	return s
+}
+
+func (s *CreateFreeLockCorrectOrderRequest) SetAttachmentKey(v string) *CreateFreeLockCorrectOrderRequest {
+	s.AttachmentKey = &v
+	return s
+}
+
+func (s *CreateFreeLockCorrectOrderRequest) SetTid(v int64) *CreateFreeLockCorrectOrderRequest {
+	s.Tid = &v
+	return s
+}
+
+type CreateFreeLockCorrectOrderRequestParam struct {
+	Classify               *string                                             `json:"Classify,omitempty" xml:"Classify,omitempty"`
+	ExecSQL                *string                                             `json:"ExecSQL,omitempty" xml:"ExecSQL,omitempty"`
+	SqlType                *string                                             `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
+	AttachmentName         *string                                             `json:"AttachmentName,omitempty" xml:"AttachmentName,omitempty"`
+	RollbackSQL            *string                                             `json:"RollbackSQL,omitempty" xml:"RollbackSQL,omitempty"`
+	RollbackAttachmentName *string                                             `json:"RollbackAttachmentName,omitempty" xml:"RollbackAttachmentName,omitempty"`
+	RollbackSqlType        *string                                             `json:"RollbackSqlType,omitempty" xml:"RollbackSqlType,omitempty"`
+	DbItemList             []*CreateFreeLockCorrectOrderRequestParamDbItemList `json:"DbItemList,omitempty" xml:"DbItemList,omitempty" type:"Repeated"`
+}
+
+func (s CreateFreeLockCorrectOrderRequestParam) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFreeLockCorrectOrderRequestParam) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFreeLockCorrectOrderRequestParam) SetClassify(v string) *CreateFreeLockCorrectOrderRequestParam {
+	s.Classify = &v
+	return s
+}
+
+func (s *CreateFreeLockCorrectOrderRequestParam) SetExecSQL(v string) *CreateFreeLockCorrectOrderRequestParam {
+	s.ExecSQL = &v
+	return s
+}
+
+func (s *CreateFreeLockCorrectOrderRequestParam) SetSqlType(v string) *CreateFreeLockCorrectOrderRequestParam {
+	s.SqlType = &v
+	return s
+}
+
+func (s *CreateFreeLockCorrectOrderRequestParam) SetAttachmentName(v string) *CreateFreeLockCorrectOrderRequestParam {
+	s.AttachmentName = &v
+	return s
+}
+
+func (s *CreateFreeLockCorrectOrderRequestParam) SetRollbackSQL(v string) *CreateFreeLockCorrectOrderRequestParam {
+	s.RollbackSQL = &v
+	return s
+}
+
+func (s *CreateFreeLockCorrectOrderRequestParam) SetRollbackAttachmentName(v string) *CreateFreeLockCorrectOrderRequestParam {
+	s.RollbackAttachmentName = &v
+	return s
+}
+
+func (s *CreateFreeLockCorrectOrderRequestParam) SetRollbackSqlType(v string) *CreateFreeLockCorrectOrderRequestParam {
+	s.RollbackSqlType = &v
+	return s
+}
+
+func (s *CreateFreeLockCorrectOrderRequestParam) SetDbItemList(v []*CreateFreeLockCorrectOrderRequestParamDbItemList) *CreateFreeLockCorrectOrderRequestParam {
+	s.DbItemList = v
+	return s
+}
+
+type CreateFreeLockCorrectOrderRequestParamDbItemList struct {
+	DbId  *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	Logic *bool  `json:"Logic,omitempty" xml:"Logic,omitempty"`
+}
+
+func (s CreateFreeLockCorrectOrderRequestParamDbItemList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFreeLockCorrectOrderRequestParamDbItemList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFreeLockCorrectOrderRequestParamDbItemList) SetDbId(v int64) *CreateFreeLockCorrectOrderRequestParamDbItemList {
+	s.DbId = &v
+	return s
+}
+
+func (s *CreateFreeLockCorrectOrderRequestParamDbItemList) SetLogic(v bool) *CreateFreeLockCorrectOrderRequestParamDbItemList {
+	s.Logic = &v
+	return s
+}
+
+type CreateFreeLockCorrectOrderShrinkRequest struct {
+	Comment               *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	RelatedUserListShrink *string `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty"`
+	ParamShrink           *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	AttachmentKey         *string `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
+	Tid                   *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s CreateFreeLockCorrectOrderShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFreeLockCorrectOrderShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFreeLockCorrectOrderShrinkRequest) SetComment(v string) *CreateFreeLockCorrectOrderShrinkRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *CreateFreeLockCorrectOrderShrinkRequest) SetRelatedUserListShrink(v string) *CreateFreeLockCorrectOrderShrinkRequest {
+	s.RelatedUserListShrink = &v
+	return s
+}
+
+func (s *CreateFreeLockCorrectOrderShrinkRequest) SetParamShrink(v string) *CreateFreeLockCorrectOrderShrinkRequest {
+	s.ParamShrink = &v
+	return s
+}
+
+func (s *CreateFreeLockCorrectOrderShrinkRequest) SetAttachmentKey(v string) *CreateFreeLockCorrectOrderShrinkRequest {
+	s.AttachmentKey = &v
+	return s
+}
+
+func (s *CreateFreeLockCorrectOrderShrinkRequest) SetTid(v int64) *CreateFreeLockCorrectOrderShrinkRequest {
+	s.Tid = &v
+	return s
+}
+
+type CreateFreeLockCorrectOrderResponseBody struct {
+	// Id of the request
+	RequestId         *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success           *bool    `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorMessage      *string  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorCode         *string  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	CreateOrderResult []*int64 `json:"CreateOrderResult,omitempty" xml:"CreateOrderResult,omitempty" type:"Repeated"`
+}
+
+func (s CreateFreeLockCorrectOrderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFreeLockCorrectOrderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFreeLockCorrectOrderResponseBody) SetRequestId(v string) *CreateFreeLockCorrectOrderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateFreeLockCorrectOrderResponseBody) SetSuccess(v bool) *CreateFreeLockCorrectOrderResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateFreeLockCorrectOrderResponseBody) SetErrorMessage(v string) *CreateFreeLockCorrectOrderResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateFreeLockCorrectOrderResponseBody) SetErrorCode(v string) *CreateFreeLockCorrectOrderResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateFreeLockCorrectOrderResponseBody) SetCreateOrderResult(v []*int64) *CreateFreeLockCorrectOrderResponseBody {
+	s.CreateOrderResult = v
+	return s
+}
+
+type CreateFreeLockCorrectOrderResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateFreeLockCorrectOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateFreeLockCorrectOrderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFreeLockCorrectOrderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFreeLockCorrectOrderResponse) SetHeaders(v map[string]*string) *CreateFreeLockCorrectOrderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateFreeLockCorrectOrderResponse) SetBody(v *CreateFreeLockCorrectOrderResponseBody) *CreateFreeLockCorrectOrderResponse {
+	s.Body = v
+	return s
+}
+
 type CreateOrderRequest struct {
 	Tid             *int64                 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 	Comment         *string                `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	PluginParam     map[string]interface{} `json:"PluginParam,omitempty" xml:"PluginParam,omitempty"`
 	RelatedUserList *string                `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty"`
 	PluginType      *string                `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
+	AttachmentKey   *string                `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
 }
 
 func (s CreateOrderRequest) String() string {
@@ -1398,12 +1640,18 @@ func (s *CreateOrderRequest) SetPluginType(v string) *CreateOrderRequest {
 	return s
 }
 
+func (s *CreateOrderRequest) SetAttachmentKey(v string) *CreateOrderRequest {
+	s.AttachmentKey = &v
+	return s
+}
+
 type CreateOrderShrinkRequest struct {
 	Tid               *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 	Comment           *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	PluginParamShrink *string `json:"PluginParam,omitempty" xml:"PluginParam,omitempty"`
 	RelatedUserList   *string `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty"`
 	PluginType        *string `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
+	AttachmentKey     *string `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
 }
 
 func (s CreateOrderShrinkRequest) String() string {
@@ -1436,6 +1684,11 @@ func (s *CreateOrderShrinkRequest) SetRelatedUserList(v string) *CreateOrderShri
 
 func (s *CreateOrderShrinkRequest) SetPluginType(v string) *CreateOrderShrinkRequest {
 	s.PluginType = &v
+	return s
+}
+
+func (s *CreateOrderShrinkRequest) SetAttachmentKey(v string) *CreateOrderShrinkRequest {
+	s.AttachmentKey = &v
 	return s
 }
 
@@ -2868,6 +3121,7 @@ func (s *ListInstancesResponse) SetBody(v *ListInstancesResponseBody) *ListInsta
 
 type GetUserUploadFileJobRequest struct {
 	JobKey *string `json:"JobKey,omitempty" xml:"JobKey,omitempty"`
+	Tid    *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetUserUploadFileJobRequest) String() string {
@@ -2880,6 +3134,11 @@ func (s GetUserUploadFileJobRequest) GoString() string {
 
 func (s *GetUserUploadFileJobRequest) SetJobKey(v string) *GetUserUploadFileJobRequest {
 	s.JobKey = &v
+	return s
+}
+
+func (s *GetUserUploadFileJobRequest) SetTid(v int64) *GetUserUploadFileJobRequest {
+	s.Tid = &v
 	return s
 }
 
@@ -3056,6 +3315,7 @@ func (s *GetUserUploadFileJobResponse) SetBody(v *GetUserUploadFileJobResponseBo
 
 type GetStructSyncJobDetailRequest struct {
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetStructSyncJobDetailRequest) String() string {
@@ -3068,6 +3328,11 @@ func (s GetStructSyncJobDetailRequest) GoString() string {
 
 func (s *GetStructSyncJobDetailRequest) SetOrderId(v int64) *GetStructSyncJobDetailRequest {
 	s.OrderId = &v
+	return s
+}
+
+func (s *GetStructSyncJobDetailRequest) SetTid(v int64) *GetStructSyncJobDetailRequest {
+	s.Tid = &v
 	return s
 }
 
@@ -3121,6 +3386,7 @@ type GetStructSyncJobDetailResponseBodyStructSyncJobDetail struct {
 	SqlCount      *int64  `json:"SqlCount,omitempty" xml:"SqlCount,omitempty"`
 	ExecuteCount  *int64  `json:"ExecuteCount,omitempty" xml:"ExecuteCount,omitempty"`
 	SecurityRule  *string `json:"SecurityRule,omitempty" xml:"SecurityRule,omitempty"`
+	DBTaskGroupId *int64  `json:"DBTaskGroupId,omitempty" xml:"DBTaskGroupId,omitempty"`
 }
 
 func (s GetStructSyncJobDetailResponseBodyStructSyncJobDetail) String() string {
@@ -3166,6 +3432,11 @@ func (s *GetStructSyncJobDetailResponseBodyStructSyncJobDetail) SetSecurityRule(
 	return s
 }
 
+func (s *GetStructSyncJobDetailResponseBodyStructSyncJobDetail) SetDBTaskGroupId(v int64) *GetStructSyncJobDetailResponseBodyStructSyncJobDetail {
+	s.DBTaskGroupId = &v
+	return s
+}
+
 type GetStructSyncJobDetailResponse struct {
 	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	Body    *GetStructSyncJobDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -3194,6 +3465,7 @@ type CreateUploadOSSFileJobRequest struct {
 	FileName     *string                                    `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	UploadType   *string                                    `json:"UploadType,omitempty" xml:"UploadType,omitempty"`
 	UploadTarget *CreateUploadOSSFileJobRequestUploadTarget `json:"UploadTarget,omitempty" xml:"UploadTarget,omitempty" type:"Struct"`
+	Tid          *int64                                     `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s CreateUploadOSSFileJobRequest) String() string {
@@ -3221,6 +3493,11 @@ func (s *CreateUploadOSSFileJobRequest) SetUploadType(v string) *CreateUploadOSS
 
 func (s *CreateUploadOSSFileJobRequest) SetUploadTarget(v *CreateUploadOSSFileJobRequestUploadTarget) *CreateUploadOSSFileJobRequest {
 	s.UploadTarget = v
+	return s
+}
+
+func (s *CreateUploadOSSFileJobRequest) SetTid(v int64) *CreateUploadOSSFileJobRequest {
+	s.Tid = &v
 	return s
 }
 
@@ -3258,6 +3535,7 @@ type CreateUploadOSSFileJobShrinkRequest struct {
 	FileName           *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	UploadType         *string `json:"UploadType,omitempty" xml:"UploadType,omitempty"`
 	UploadTargetShrink *string `json:"UploadTarget,omitempty" xml:"UploadTarget,omitempty"`
+	Tid                *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s CreateUploadOSSFileJobShrinkRequest) String() string {
@@ -3285,6 +3563,11 @@ func (s *CreateUploadOSSFileJobShrinkRequest) SetUploadType(v string) *CreateUpl
 
 func (s *CreateUploadOSSFileJobShrinkRequest) SetUploadTargetShrink(v string) *CreateUploadOSSFileJobShrinkRequest {
 	s.UploadTargetShrink = &v
+	return s
+}
+
+func (s *CreateUploadOSSFileJobShrinkRequest) SetTid(v int64) *CreateUploadOSSFileJobShrinkRequest {
+	s.Tid = &v
 	return s
 }
 
@@ -3939,6 +4222,7 @@ func (s *GetUserResponse) SetBody(v *GetUserResponseBody) *GetUserResponse {
 
 type ExecuteStructSyncRequest struct {
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s ExecuteStructSyncRequest) String() string {
@@ -3951,6 +4235,11 @@ func (s ExecuteStructSyncRequest) GoString() string {
 
 func (s *ExecuteStructSyncRequest) SetOrderId(v int64) *ExecuteStructSyncRequest {
 	s.OrderId = &v
+	return s
+}
+
+func (s *ExecuteStructSyncRequest) SetTid(v int64) *ExecuteStructSyncRequest {
+	s.Tid = &v
 	return s
 }
 
@@ -4081,6 +4370,7 @@ type GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetail struct {
 	PreCheckDetail *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailPreCheckDetail `json:"PreCheckDetail,omitempty" xml:"PreCheckDetail,omitempty" type:"Struct"`
 	OrderDetail    *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailOrderDetail    `json:"OrderDetail,omitempty" xml:"OrderDetail,omitempty" type:"Struct"`
 	DatabaseList   *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailDatabaseList   `json:"DatabaseList,omitempty" xml:"DatabaseList,omitempty" type:"Struct"`
+	Status         *string                                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetail) String() string {
@@ -4103,6 +4393,11 @@ func (s *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetail) SetOrderDe
 
 func (s *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetail) SetDatabaseList(v *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailDatabaseList) *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetail {
 	s.DatabaseList = v
+	return s
+}
+
+func (s *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetail) SetStatus(v string) *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetail {
+	s.Status = &v
 	return s
 }
 
@@ -5228,6 +5523,7 @@ type ListDBTaskSQLJobDetailRequest struct {
 	JobId      *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Tid        *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s ListDBTaskSQLJobDetailRequest) String() string {
@@ -5250,6 +5546,11 @@ func (s *ListDBTaskSQLJobDetailRequest) SetPageNumber(v int64) *ListDBTaskSQLJob
 
 func (s *ListDBTaskSQLJobDetailRequest) SetPageSize(v int64) *ListDBTaskSQLJobDetailRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListDBTaskSQLJobDetailRequest) SetTid(v int64) *ListDBTaskSQLJobDetailRequest {
+	s.Tid = &v
 	return s
 }
 
@@ -5760,6 +6061,23 @@ func (s *GetApprovalDetailResponse) SetBody(v *GetApprovalDetailResponseBody) *G
 	return s
 }
 
+type GetUserActiveTenantRequest struct {
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetUserActiveTenantRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserActiveTenantRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserActiveTenantRequest) SetTid(v int64) *GetUserActiveTenantRequest {
+	s.Tid = &v
+	return s
+}
+
 type GetUserActiveTenantResponseBody struct {
 	Tenant       *GetUserActiveTenantResponseBodyTenant `json:"Tenant,omitempty" xml:"Tenant,omitempty" type:"Struct"`
 	RequestId    *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -6242,6 +6560,7 @@ func (s *GetInstanceResponse) SetBody(v *GetInstanceResponseBody) *GetInstanceRe
 
 type GetPermApplyOrderDetailRequest struct {
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetPermApplyOrderDetailRequest) String() string {
@@ -6254,6 +6573,11 @@ func (s GetPermApplyOrderDetailRequest) GoString() string {
 
 func (s *GetPermApplyOrderDetailRequest) SetOrderId(v int64) *GetPermApplyOrderDetailRequest {
 	s.OrderId = &v
+	return s
+}
+
+func (s *GetPermApplyOrderDetailRequest) SetTid(v int64) *GetPermApplyOrderDetailRequest {
+	s.Tid = &v
 	return s
 }
 
@@ -6946,6 +7270,206 @@ func (s *ListLogicTablesResponse) SetBody(v *ListLogicTablesResponseBody) *ListL
 	return s
 }
 
+type GetTableTopologyRequest struct {
+	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	Tid       *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetTableTopologyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableTopologyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableTopologyRequest) SetTableGuid(v string) *GetTableTopologyRequest {
+	s.TableGuid = &v
+	return s
+}
+
+func (s *GetTableTopologyRequest) SetTid(v int64) *GetTableTopologyRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetTableTopologyResponseBody struct {
+	// Id of the request
+	RequestId     *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success       *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorMessage  *string                                    `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorCode     *string                                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	TableTopology *GetTableTopologyResponseBodyTableTopology `json:"TableTopology,omitempty" xml:"TableTopology,omitempty" type:"Struct"`
+}
+
+func (s GetTableTopologyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableTopologyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableTopologyResponseBody) SetRequestId(v string) *GetTableTopologyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTableTopologyResponseBody) SetSuccess(v bool) *GetTableTopologyResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetTableTopologyResponseBody) SetErrorMessage(v string) *GetTableTopologyResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetTableTopologyResponseBody) SetErrorCode(v string) *GetTableTopologyResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetTableTopologyResponseBody) SetTableTopology(v *GetTableTopologyResponseBodyTableTopology) *GetTableTopologyResponseBody {
+	s.TableTopology = v
+	return s
+}
+
+type GetTableTopologyResponseBodyTableTopology struct {
+	TableGuid             *string                                                           `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	TableName             *string                                                           `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	TableTopologyInfoList []*GetTableTopologyResponseBodyTableTopologyTableTopologyInfoList `json:"TableTopologyInfoList,omitempty" xml:"TableTopologyInfoList,omitempty" type:"Repeated"`
+	Logic                 *bool                                                             `json:"Logic,omitempty" xml:"Logic,omitempty"`
+}
+
+func (s GetTableTopologyResponseBodyTableTopology) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableTopologyResponseBodyTableTopology) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableTopologyResponseBodyTableTopology) SetTableGuid(v string) *GetTableTopologyResponseBodyTableTopology {
+	s.TableGuid = &v
+	return s
+}
+
+func (s *GetTableTopologyResponseBodyTableTopology) SetTableName(v string) *GetTableTopologyResponseBodyTableTopology {
+	s.TableName = &v
+	return s
+}
+
+func (s *GetTableTopologyResponseBodyTableTopology) SetTableTopologyInfoList(v []*GetTableTopologyResponseBodyTableTopologyTableTopologyInfoList) *GetTableTopologyResponseBodyTableTopology {
+	s.TableTopologyInfoList = v
+	return s
+}
+
+func (s *GetTableTopologyResponseBodyTableTopology) SetLogic(v bool) *GetTableTopologyResponseBodyTableTopology {
+	s.Logic = &v
+	return s
+}
+
+type GetTableTopologyResponseBodyTableTopologyTableTopologyInfoList struct {
+	TableNameList      *string `json:"TableNameList,omitempty" xml:"TableNameList,omitempty"`
+	TableNameExpr      *string `json:"TableNameExpr,omitempty" xml:"TableNameExpr,omitempty"`
+	TableCount         *int64  `json:"TableCount,omitempty" xml:"TableCount,omitempty"`
+	DbId               *int64  `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	DbSearchName       *string `json:"DbSearchName,omitempty" xml:"DbSearchName,omitempty"`
+	InstanceId         *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	InstanceResourceId *string `json:"InstanceResourceId,omitempty" xml:"InstanceResourceId,omitempty"`
+	InstanceSource     *string `json:"InstanceSource,omitempty" xml:"InstanceSource,omitempty"`
+	DbName             *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	DbType             *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+}
+
+func (s GetTableTopologyResponseBodyTableTopologyTableTopologyInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableTopologyResponseBodyTableTopologyTableTopologyInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableTopologyResponseBodyTableTopologyTableTopologyInfoList) SetTableNameList(v string) *GetTableTopologyResponseBodyTableTopologyTableTopologyInfoList {
+	s.TableNameList = &v
+	return s
+}
+
+func (s *GetTableTopologyResponseBodyTableTopologyTableTopologyInfoList) SetTableNameExpr(v string) *GetTableTopologyResponseBodyTableTopologyTableTopologyInfoList {
+	s.TableNameExpr = &v
+	return s
+}
+
+func (s *GetTableTopologyResponseBodyTableTopologyTableTopologyInfoList) SetTableCount(v int64) *GetTableTopologyResponseBodyTableTopologyTableTopologyInfoList {
+	s.TableCount = &v
+	return s
+}
+
+func (s *GetTableTopologyResponseBodyTableTopologyTableTopologyInfoList) SetDbId(v int64) *GetTableTopologyResponseBodyTableTopologyTableTopologyInfoList {
+	s.DbId = &v
+	return s
+}
+
+func (s *GetTableTopologyResponseBodyTableTopologyTableTopologyInfoList) SetDbSearchName(v string) *GetTableTopologyResponseBodyTableTopologyTableTopologyInfoList {
+	s.DbSearchName = &v
+	return s
+}
+
+func (s *GetTableTopologyResponseBodyTableTopologyTableTopologyInfoList) SetInstanceId(v int64) *GetTableTopologyResponseBodyTableTopologyTableTopologyInfoList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetTableTopologyResponseBodyTableTopologyTableTopologyInfoList) SetRegionId(v string) *GetTableTopologyResponseBodyTableTopologyTableTopologyInfoList {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetTableTopologyResponseBodyTableTopologyTableTopologyInfoList) SetInstanceResourceId(v string) *GetTableTopologyResponseBodyTableTopologyTableTopologyInfoList {
+	s.InstanceResourceId = &v
+	return s
+}
+
+func (s *GetTableTopologyResponseBodyTableTopologyTableTopologyInfoList) SetInstanceSource(v string) *GetTableTopologyResponseBodyTableTopologyTableTopologyInfoList {
+	s.InstanceSource = &v
+	return s
+}
+
+func (s *GetTableTopologyResponseBodyTableTopologyTableTopologyInfoList) SetDbName(v string) *GetTableTopologyResponseBodyTableTopologyTableTopologyInfoList {
+	s.DbName = &v
+	return s
+}
+
+func (s *GetTableTopologyResponseBodyTableTopologyTableTopologyInfoList) SetDbType(v string) *GetTableTopologyResponseBodyTableTopologyTableTopologyInfoList {
+	s.DbType = &v
+	return s
+}
+
+type GetTableTopologyResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetTableTopologyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetTableTopologyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableTopologyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableTopologyResponse) SetHeaders(v map[string]*string) *GetTableTopologyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTableTopologyResponse) SetBody(v *GetTableTopologyResponseBody) *GetTableTopologyResponse {
+	s.Body = v
+	return s
+}
+
 type GetDataExportDownloadURLRequest struct {
 	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 	OrderId    *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
@@ -7064,6 +7588,264 @@ func (s *GetDataExportDownloadURLResponse) SetHeaders(v map[string]*string) *Get
 }
 
 func (s *GetDataExportDownloadURLResponse) SetBody(v *GetDataExportDownloadURLResponseBody) *GetDataExportDownloadURLResponse {
+	s.Body = v
+	return s
+}
+
+type CreateDataCronClearOrderRequest struct {
+	Comment         *string                               `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	RelatedUserList []*int64                              `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty" type:"Repeated"`
+	Param           *CreateDataCronClearOrderRequestParam `json:"Param,omitempty" xml:"Param,omitempty" type:"Struct"`
+	AttachmentKey   *string                               `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
+	Tid             *int64                                `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s CreateDataCronClearOrderRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataCronClearOrderRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataCronClearOrderRequest) SetComment(v string) *CreateDataCronClearOrderRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *CreateDataCronClearOrderRequest) SetRelatedUserList(v []*int64) *CreateDataCronClearOrderRequest {
+	s.RelatedUserList = v
+	return s
+}
+
+func (s *CreateDataCronClearOrderRequest) SetParam(v *CreateDataCronClearOrderRequestParam) *CreateDataCronClearOrderRequest {
+	s.Param = v
+	return s
+}
+
+func (s *CreateDataCronClearOrderRequest) SetAttachmentKey(v string) *CreateDataCronClearOrderRequest {
+	s.AttachmentKey = &v
+	return s
+}
+
+func (s *CreateDataCronClearOrderRequest) SetTid(v int64) *CreateDataCronClearOrderRequest {
+	s.Tid = &v
+	return s
+}
+
+type CreateDataCronClearOrderRequestParam struct {
+	Classify          *string                                                  `json:"Classify,omitempty" xml:"Classify,omitempty"`
+	DbItemList        []*CreateDataCronClearOrderRequestParamDbItemList        `json:"DbItemList,omitempty" xml:"DbItemList,omitempty" type:"Repeated"`
+	CronFormat        *string                                                  `json:"CronFormat,omitempty" xml:"CronFormat,omitempty"`
+	CronClearItemList []*CreateDataCronClearOrderRequestParamCronClearItemList `json:"CronClearItemList,omitempty" xml:"CronClearItemList,omitempty" type:"Repeated"`
+	SpecifyDuration   *bool                                                    `json:"specifyDuration,omitempty" xml:"specifyDuration,omitempty"`
+	DurationHour      *int64                                                   `json:"DurationHour,omitempty" xml:"DurationHour,omitempty"`
+}
+
+func (s CreateDataCronClearOrderRequestParam) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataCronClearOrderRequestParam) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataCronClearOrderRequestParam) SetClassify(v string) *CreateDataCronClearOrderRequestParam {
+	s.Classify = &v
+	return s
+}
+
+func (s *CreateDataCronClearOrderRequestParam) SetDbItemList(v []*CreateDataCronClearOrderRequestParamDbItemList) *CreateDataCronClearOrderRequestParam {
+	s.DbItemList = v
+	return s
+}
+
+func (s *CreateDataCronClearOrderRequestParam) SetCronFormat(v string) *CreateDataCronClearOrderRequestParam {
+	s.CronFormat = &v
+	return s
+}
+
+func (s *CreateDataCronClearOrderRequestParam) SetCronClearItemList(v []*CreateDataCronClearOrderRequestParamCronClearItemList) *CreateDataCronClearOrderRequestParam {
+	s.CronClearItemList = v
+	return s
+}
+
+func (s *CreateDataCronClearOrderRequestParam) SetSpecifyDuration(v bool) *CreateDataCronClearOrderRequestParam {
+	s.SpecifyDuration = &v
+	return s
+}
+
+func (s *CreateDataCronClearOrderRequestParam) SetDurationHour(v int64) *CreateDataCronClearOrderRequestParam {
+	s.DurationHour = &v
+	return s
+}
+
+type CreateDataCronClearOrderRequestParamDbItemList struct {
+	DbId  *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	Logic *bool  `json:"Logic,omitempty" xml:"Logic,omitempty"`
+}
+
+func (s CreateDataCronClearOrderRequestParamDbItemList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataCronClearOrderRequestParamDbItemList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataCronClearOrderRequestParamDbItemList) SetDbId(v int64) *CreateDataCronClearOrderRequestParamDbItemList {
+	s.DbId = &v
+	return s
+}
+
+func (s *CreateDataCronClearOrderRequestParamDbItemList) SetLogic(v bool) *CreateDataCronClearOrderRequestParamDbItemList {
+	s.Logic = &v
+	return s
+}
+
+type CreateDataCronClearOrderRequestParamCronClearItemList struct {
+	TableName  *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	RemainDays *int64  `json:"RemainDays,omitempty" xml:"RemainDays,omitempty"`
+	TimeUnit   *string `json:"TimeUnit,omitempty" xml:"TimeUnit,omitempty"`
+	FilterSQL  *string `json:"FilterSQL,omitempty" xml:"FilterSQL,omitempty"`
+}
+
+func (s CreateDataCronClearOrderRequestParamCronClearItemList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataCronClearOrderRequestParamCronClearItemList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataCronClearOrderRequestParamCronClearItemList) SetTableName(v string) *CreateDataCronClearOrderRequestParamCronClearItemList {
+	s.TableName = &v
+	return s
+}
+
+func (s *CreateDataCronClearOrderRequestParamCronClearItemList) SetColumnName(v string) *CreateDataCronClearOrderRequestParamCronClearItemList {
+	s.ColumnName = &v
+	return s
+}
+
+func (s *CreateDataCronClearOrderRequestParamCronClearItemList) SetRemainDays(v int64) *CreateDataCronClearOrderRequestParamCronClearItemList {
+	s.RemainDays = &v
+	return s
+}
+
+func (s *CreateDataCronClearOrderRequestParamCronClearItemList) SetTimeUnit(v string) *CreateDataCronClearOrderRequestParamCronClearItemList {
+	s.TimeUnit = &v
+	return s
+}
+
+func (s *CreateDataCronClearOrderRequestParamCronClearItemList) SetFilterSQL(v string) *CreateDataCronClearOrderRequestParamCronClearItemList {
+	s.FilterSQL = &v
+	return s
+}
+
+type CreateDataCronClearOrderShrinkRequest struct {
+	Comment               *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	RelatedUserListShrink *string `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty"`
+	ParamShrink           *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	AttachmentKey         *string `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
+	Tid                   *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s CreateDataCronClearOrderShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataCronClearOrderShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataCronClearOrderShrinkRequest) SetComment(v string) *CreateDataCronClearOrderShrinkRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *CreateDataCronClearOrderShrinkRequest) SetRelatedUserListShrink(v string) *CreateDataCronClearOrderShrinkRequest {
+	s.RelatedUserListShrink = &v
+	return s
+}
+
+func (s *CreateDataCronClearOrderShrinkRequest) SetParamShrink(v string) *CreateDataCronClearOrderShrinkRequest {
+	s.ParamShrink = &v
+	return s
+}
+
+func (s *CreateDataCronClearOrderShrinkRequest) SetAttachmentKey(v string) *CreateDataCronClearOrderShrinkRequest {
+	s.AttachmentKey = &v
+	return s
+}
+
+func (s *CreateDataCronClearOrderShrinkRequest) SetTid(v int64) *CreateDataCronClearOrderShrinkRequest {
+	s.Tid = &v
+	return s
+}
+
+type CreateDataCronClearOrderResponseBody struct {
+	// Id of the request
+	RequestId         *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success           *bool    `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorMessage      *string  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorCode         *string  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	CreateOrderResult []*int64 `json:"CreateOrderResult,omitempty" xml:"CreateOrderResult,omitempty" type:"Repeated"`
+}
+
+func (s CreateDataCronClearOrderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataCronClearOrderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataCronClearOrderResponseBody) SetRequestId(v string) *CreateDataCronClearOrderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDataCronClearOrderResponseBody) SetSuccess(v bool) *CreateDataCronClearOrderResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateDataCronClearOrderResponseBody) SetErrorMessage(v string) *CreateDataCronClearOrderResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateDataCronClearOrderResponseBody) SetErrorCode(v string) *CreateDataCronClearOrderResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateDataCronClearOrderResponseBody) SetCreateOrderResult(v []*int64) *CreateDataCronClearOrderResponseBody {
+	s.CreateOrderResult = v
+	return s
+}
+
+type CreateDataCronClearOrderResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateDataCronClearOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDataCronClearOrderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataCronClearOrderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataCronClearOrderResponse) SetHeaders(v map[string]*string) *CreateDataCronClearOrderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDataCronClearOrderResponse) SetBody(v *CreateDataCronClearOrderResponseBody) *CreateDataCronClearOrderResponse {
 	s.Body = v
 	return s
 }
@@ -7427,6 +8209,7 @@ func (s *GetDatabaseResponse) SetBody(v *GetDatabaseResponseBody) *GetDatabaseRe
 
 type GetOwnerApplyOrderDetailRequest struct {
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetOwnerApplyOrderDetailRequest) String() string {
@@ -7439,6 +8222,11 @@ func (s GetOwnerApplyOrderDetailRequest) GoString() string {
 
 func (s *GetOwnerApplyOrderDetailRequest) SetOrderId(v int64) *GetOwnerApplyOrderDetailRequest {
 	s.OrderId = &v
+	return s
+}
+
+func (s *GetOwnerApplyOrderDetailRequest) SetTid(v int64) *GetOwnerApplyOrderDetailRequest {
+	s.Tid = &v
 	return s
 }
 
@@ -8084,6 +8872,7 @@ type ListDBTaskSQLJobRequest struct {
 	DBTaskGroupId *int64 `json:"DBTaskGroupId,omitempty" xml:"DBTaskGroupId,omitempty"`
 	PageNumber    *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize      *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Tid           *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s ListDBTaskSQLJobRequest) String() string {
@@ -8106,6 +8895,11 @@ func (s *ListDBTaskSQLJobRequest) SetPageNumber(v int64) *ListDBTaskSQLJobReques
 
 func (s *ListDBTaskSQLJobRequest) SetPageSize(v int64) *ListDBTaskSQLJobRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListDBTaskSQLJobRequest) SetTid(v int64) *ListDBTaskSQLJobRequest {
+	s.Tid = &v
 	return s
 }
 
@@ -8338,11 +9132,153 @@ func (s *DeleteUserResponse) SetBody(v *DeleteUserResponseBody) *DeleteUserRespo
 	return s
 }
 
+type GetDataCronClearTaskDetailListRequest struct {
+	OrderId    *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Tid        *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetDataCronClearTaskDetailListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataCronClearTaskDetailListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataCronClearTaskDetailListRequest) SetOrderId(v int64) *GetDataCronClearTaskDetailListRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *GetDataCronClearTaskDetailListRequest) SetPageNumber(v int64) *GetDataCronClearTaskDetailListRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetDataCronClearTaskDetailListRequest) SetPageSize(v int64) *GetDataCronClearTaskDetailListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetDataCronClearTaskDetailListRequest) SetTid(v int64) *GetDataCronClearTaskDetailListRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetDataCronClearTaskDetailListResponseBody struct {
+	// Id of the request
+	RequestId                   *string                                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success                     *bool                                                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorMessage                *string                                                                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorCode                   *string                                                                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	DataCronClearTaskDetailList []*GetDataCronClearTaskDetailListResponseBodyDataCronClearTaskDetailList `json:"DataCronClearTaskDetailList,omitempty" xml:"DataCronClearTaskDetailList,omitempty" type:"Repeated"`
+	TotalCount                  *int64                                                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s GetDataCronClearTaskDetailListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataCronClearTaskDetailListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataCronClearTaskDetailListResponseBody) SetRequestId(v string) *GetDataCronClearTaskDetailListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDataCronClearTaskDetailListResponseBody) SetSuccess(v bool) *GetDataCronClearTaskDetailListResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetDataCronClearTaskDetailListResponseBody) SetErrorMessage(v string) *GetDataCronClearTaskDetailListResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetDataCronClearTaskDetailListResponseBody) SetErrorCode(v string) *GetDataCronClearTaskDetailListResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetDataCronClearTaskDetailListResponseBody) SetDataCronClearTaskDetailList(v []*GetDataCronClearTaskDetailListResponseBodyDataCronClearTaskDetailList) *GetDataCronClearTaskDetailListResponseBody {
+	s.DataCronClearTaskDetailList = v
+	return s
+}
+
+func (s *GetDataCronClearTaskDetailListResponseBody) SetTotalCount(v int64) *GetDataCronClearTaskDetailListResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type GetDataCronClearTaskDetailListResponseBodyDataCronClearTaskDetailList struct {
+	DBTaskGroupId    *int64  `json:"DBTaskGroupId,omitempty" xml:"DBTaskGroupId,omitempty"`
+	JobStatus        *string `json:"jobStatus,omitempty" xml:"jobStatus,omitempty"`
+	ActualAffectRows *int64  `json:"ActualAffectRows,omitempty" xml:"ActualAffectRows,omitempty"`
+	CreateTime       *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+}
+
+func (s GetDataCronClearTaskDetailListResponseBodyDataCronClearTaskDetailList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataCronClearTaskDetailListResponseBodyDataCronClearTaskDetailList) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataCronClearTaskDetailListResponseBodyDataCronClearTaskDetailList) SetDBTaskGroupId(v int64) *GetDataCronClearTaskDetailListResponseBodyDataCronClearTaskDetailList {
+	s.DBTaskGroupId = &v
+	return s
+}
+
+func (s *GetDataCronClearTaskDetailListResponseBodyDataCronClearTaskDetailList) SetJobStatus(v string) *GetDataCronClearTaskDetailListResponseBodyDataCronClearTaskDetailList {
+	s.JobStatus = &v
+	return s
+}
+
+func (s *GetDataCronClearTaskDetailListResponseBodyDataCronClearTaskDetailList) SetActualAffectRows(v int64) *GetDataCronClearTaskDetailListResponseBodyDataCronClearTaskDetailList {
+	s.ActualAffectRows = &v
+	return s
+}
+
+func (s *GetDataCronClearTaskDetailListResponseBodyDataCronClearTaskDetailList) SetCreateTime(v string) *GetDataCronClearTaskDetailListResponseBodyDataCronClearTaskDetailList {
+	s.CreateTime = &v
+	return s
+}
+
+type GetDataCronClearTaskDetailListResponse struct {
+	Headers map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetDataCronClearTaskDetailListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDataCronClearTaskDetailListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataCronClearTaskDetailListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataCronClearTaskDetailListResponse) SetHeaders(v map[string]*string) *GetDataCronClearTaskDetailListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDataCronClearTaskDetailListResponse) SetBody(v *GetDataCronClearTaskDetailListResponseBody) *GetDataCronClearTaskDetailListResponse {
+	s.Body = v
+	return s
+}
+
 type GetStructSyncJobAnalyzeResultRequest struct {
 	OrderId     *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	CompareType *string `json:"CompareType,omitempty" xml:"CompareType,omitempty"`
 	PageNumber  *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize    *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Tid         *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetStructSyncJobAnalyzeResultRequest) String() string {
@@ -8370,6 +9306,11 @@ func (s *GetStructSyncJobAnalyzeResultRequest) SetPageNumber(v int64) *GetStruct
 
 func (s *GetStructSyncJobAnalyzeResultRequest) SetPageSize(v int64) *GetStructSyncJobAnalyzeResultRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *GetStructSyncJobAnalyzeResultRequest) SetTid(v int64) *GetStructSyncJobAnalyzeResultRequest {
+	s.Tid = &v
 	return s
 }
 
@@ -8606,11 +9547,135 @@ func (s *ApproveOrderResponse) SetBody(v *ApproveOrderResponseBody) *ApproveOrde
 	return s
 }
 
+type GetDataCorrectTaskDetailRequest struct {
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetDataCorrectTaskDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataCorrectTaskDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataCorrectTaskDetailRequest) SetOrderId(v int64) *GetDataCorrectTaskDetailRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *GetDataCorrectTaskDetailRequest) SetTid(v int64) *GetDataCorrectTaskDetailRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetDataCorrectTaskDetailResponseBody struct {
+	// Id of the request
+	RequestId             *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success               *bool                                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorMessage          *string                                                    `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorCode             *string                                                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	DataCorrectTaskDetail *GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail `json:"DataCorrectTaskDetail,omitempty" xml:"DataCorrectTaskDetail,omitempty" type:"Struct"`
+}
+
+func (s GetDataCorrectTaskDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataCorrectTaskDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataCorrectTaskDetailResponseBody) SetRequestId(v string) *GetDataCorrectTaskDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDataCorrectTaskDetailResponseBody) SetSuccess(v bool) *GetDataCorrectTaskDetailResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetDataCorrectTaskDetailResponseBody) SetErrorMessage(v string) *GetDataCorrectTaskDetailResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetDataCorrectTaskDetailResponseBody) SetErrorCode(v string) *GetDataCorrectTaskDetailResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetDataCorrectTaskDetailResponseBody) SetDataCorrectTaskDetail(v *GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail) *GetDataCorrectTaskDetailResponseBody {
+	s.DataCorrectTaskDetail = v
+	return s
+}
+
+type GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail struct {
+	DBTaskGroupId    *int64  `json:"DBTaskGroupId,omitempty" xml:"DBTaskGroupId,omitempty"`
+	JobStatus        *string `json:"jobStatus,omitempty" xml:"jobStatus,omitempty"`
+	ActualAffectRows *int64  `json:"ActualAffectRows,omitempty" xml:"ActualAffectRows,omitempty"`
+	CreateTime       *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+}
+
+func (s GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail) SetDBTaskGroupId(v int64) *GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail {
+	s.DBTaskGroupId = &v
+	return s
+}
+
+func (s *GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail) SetJobStatus(v string) *GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail {
+	s.JobStatus = &v
+	return s
+}
+
+func (s *GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail) SetActualAffectRows(v int64) *GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail {
+	s.ActualAffectRows = &v
+	return s
+}
+
+func (s *GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail) SetCreateTime(v string) *GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail {
+	s.CreateTime = &v
+	return s
+}
+
+type GetDataCorrectTaskDetailResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetDataCorrectTaskDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDataCorrectTaskDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataCorrectTaskDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataCorrectTaskDetailResponse) SetHeaders(v map[string]*string) *GetDataCorrectTaskDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDataCorrectTaskDetailResponse) SetBody(v *GetDataCorrectTaskDetailResponseBody) *GetDataCorrectTaskDetailResponse {
+	s.Body = v
+	return s
+}
+
 type CreateUploadFileJobRequest struct {
 	FileSource *string `json:"FileSource,omitempty" xml:"FileSource,omitempty"`
 	FileName   *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	UploadType *string `json:"UploadType,omitempty" xml:"UploadType,omitempty"`
 	UploadURL  *string `json:"UploadURL,omitempty" xml:"UploadURL,omitempty"`
+	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s CreateUploadFileJobRequest) String() string {
@@ -8638,6 +9703,11 @@ func (s *CreateUploadFileJobRequest) SetUploadType(v string) *CreateUploadFileJo
 
 func (s *CreateUploadFileJobRequest) SetUploadURL(v string) *CreateUploadFileJobRequest {
 	s.UploadURL = &v
+	return s
+}
+
+func (s *CreateUploadFileJobRequest) SetTid(v int64) *CreateUploadFileJobRequest {
+	s.Tid = &v
 	return s
 }
 
@@ -8911,6 +9981,265 @@ func (s *ListLogicDatabasesResponse) SetHeaders(v map[string]*string) *ListLogic
 }
 
 func (s *ListLogicDatabasesResponse) SetBody(v *ListLogicDatabasesResponseBody) *ListLogicDatabasesResponse {
+	s.Body = v
+	return s
+}
+
+type CreateDataImportOrderRequest struct {
+	Comment         *string                            `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	RelatedUserList []*int64                           `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty" type:"Repeated"`
+	Param           *CreateDataImportOrderRequestParam `json:"Param,omitempty" xml:"Param,omitempty" type:"Struct"`
+	AttachmentKey   *string                            `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
+	Tid             *int64                             `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s CreateDataImportOrderRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataImportOrderRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataImportOrderRequest) SetComment(v string) *CreateDataImportOrderRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *CreateDataImportOrderRequest) SetRelatedUserList(v []*int64) *CreateDataImportOrderRequest {
+	s.RelatedUserList = v
+	return s
+}
+
+func (s *CreateDataImportOrderRequest) SetParam(v *CreateDataImportOrderRequestParam) *CreateDataImportOrderRequest {
+	s.Param = v
+	return s
+}
+
+func (s *CreateDataImportOrderRequest) SetAttachmentKey(v string) *CreateDataImportOrderRequest {
+	s.AttachmentKey = &v
+	return s
+}
+
+func (s *CreateDataImportOrderRequest) SetTid(v int64) *CreateDataImportOrderRequest {
+	s.Tid = &v
+	return s
+}
+
+type CreateDataImportOrderRequestParam struct {
+	Classify               *string                                        `json:"Classify,omitempty" xml:"Classify,omitempty"`
+	AttachmentName         *string                                        `json:"AttachmentName,omitempty" xml:"AttachmentName,omitempty"`
+	DbItemList             []*CreateDataImportOrderRequestParamDbItemList `json:"DbItemList,omitempty" xml:"DbItemList,omitempty" type:"Repeated"`
+	FileType               *string                                        `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	FileEncoding           *string                                        `json:"FileEncoding,omitempty" xml:"FileEncoding,omitempty"`
+	TableName              *string                                        `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	InsertType             *string                                        `json:"InsertType,omitempty" xml:"InsertType,omitempty"`
+	CsvFirstRowIsColumnDef *bool                                          `json:"CsvFirstRowIsColumnDef,omitempty" xml:"CsvFirstRowIsColumnDef,omitempty"`
+	IgnoreError            *bool                                          `json:"IgnoreError,omitempty" xml:"IgnoreError,omitempty"`
+	ImportMode             *string                                        `json:"ImportMode,omitempty" xml:"ImportMode,omitempty"`
+	RollbackSQL            *string                                        `json:"RollbackSQL,omitempty" xml:"RollbackSQL,omitempty"`
+	RollbackAttachmentName *string                                        `json:"RollbackAttachmentName,omitempty" xml:"RollbackAttachmentName,omitempty"`
+	RollbackSqlType        *string                                        `json:"RollbackSqlType,omitempty" xml:"RollbackSqlType,omitempty"`
+}
+
+func (s CreateDataImportOrderRequestParam) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataImportOrderRequestParam) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataImportOrderRequestParam) SetClassify(v string) *CreateDataImportOrderRequestParam {
+	s.Classify = &v
+	return s
+}
+
+func (s *CreateDataImportOrderRequestParam) SetAttachmentName(v string) *CreateDataImportOrderRequestParam {
+	s.AttachmentName = &v
+	return s
+}
+
+func (s *CreateDataImportOrderRequestParam) SetDbItemList(v []*CreateDataImportOrderRequestParamDbItemList) *CreateDataImportOrderRequestParam {
+	s.DbItemList = v
+	return s
+}
+
+func (s *CreateDataImportOrderRequestParam) SetFileType(v string) *CreateDataImportOrderRequestParam {
+	s.FileType = &v
+	return s
+}
+
+func (s *CreateDataImportOrderRequestParam) SetFileEncoding(v string) *CreateDataImportOrderRequestParam {
+	s.FileEncoding = &v
+	return s
+}
+
+func (s *CreateDataImportOrderRequestParam) SetTableName(v string) *CreateDataImportOrderRequestParam {
+	s.TableName = &v
+	return s
+}
+
+func (s *CreateDataImportOrderRequestParam) SetInsertType(v string) *CreateDataImportOrderRequestParam {
+	s.InsertType = &v
+	return s
+}
+
+func (s *CreateDataImportOrderRequestParam) SetCsvFirstRowIsColumnDef(v bool) *CreateDataImportOrderRequestParam {
+	s.CsvFirstRowIsColumnDef = &v
+	return s
+}
+
+func (s *CreateDataImportOrderRequestParam) SetIgnoreError(v bool) *CreateDataImportOrderRequestParam {
+	s.IgnoreError = &v
+	return s
+}
+
+func (s *CreateDataImportOrderRequestParam) SetImportMode(v string) *CreateDataImportOrderRequestParam {
+	s.ImportMode = &v
+	return s
+}
+
+func (s *CreateDataImportOrderRequestParam) SetRollbackSQL(v string) *CreateDataImportOrderRequestParam {
+	s.RollbackSQL = &v
+	return s
+}
+
+func (s *CreateDataImportOrderRequestParam) SetRollbackAttachmentName(v string) *CreateDataImportOrderRequestParam {
+	s.RollbackAttachmentName = &v
+	return s
+}
+
+func (s *CreateDataImportOrderRequestParam) SetRollbackSqlType(v string) *CreateDataImportOrderRequestParam {
+	s.RollbackSqlType = &v
+	return s
+}
+
+type CreateDataImportOrderRequestParamDbItemList struct {
+	DbId  *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	Logic *bool  `json:"Logic,omitempty" xml:"Logic,omitempty"`
+}
+
+func (s CreateDataImportOrderRequestParamDbItemList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataImportOrderRequestParamDbItemList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataImportOrderRequestParamDbItemList) SetDbId(v int64) *CreateDataImportOrderRequestParamDbItemList {
+	s.DbId = &v
+	return s
+}
+
+func (s *CreateDataImportOrderRequestParamDbItemList) SetLogic(v bool) *CreateDataImportOrderRequestParamDbItemList {
+	s.Logic = &v
+	return s
+}
+
+type CreateDataImportOrderShrinkRequest struct {
+	Comment               *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	RelatedUserListShrink *string `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty"`
+	ParamShrink           *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	AttachmentKey         *string `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
+	Tid                   *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s CreateDataImportOrderShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataImportOrderShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataImportOrderShrinkRequest) SetComment(v string) *CreateDataImportOrderShrinkRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *CreateDataImportOrderShrinkRequest) SetRelatedUserListShrink(v string) *CreateDataImportOrderShrinkRequest {
+	s.RelatedUserListShrink = &v
+	return s
+}
+
+func (s *CreateDataImportOrderShrinkRequest) SetParamShrink(v string) *CreateDataImportOrderShrinkRequest {
+	s.ParamShrink = &v
+	return s
+}
+
+func (s *CreateDataImportOrderShrinkRequest) SetAttachmentKey(v string) *CreateDataImportOrderShrinkRequest {
+	s.AttachmentKey = &v
+	return s
+}
+
+func (s *CreateDataImportOrderShrinkRequest) SetTid(v int64) *CreateDataImportOrderShrinkRequest {
+	s.Tid = &v
+	return s
+}
+
+type CreateDataImportOrderResponseBody struct {
+	// Id of the request
+	RequestId         *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success           *bool    `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorMessage      *string  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorCode         *string  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	CreateOrderResult []*int64 `json:"CreateOrderResult,omitempty" xml:"CreateOrderResult,omitempty" type:"Repeated"`
+}
+
+func (s CreateDataImportOrderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataImportOrderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataImportOrderResponseBody) SetRequestId(v string) *CreateDataImportOrderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDataImportOrderResponseBody) SetSuccess(v bool) *CreateDataImportOrderResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateDataImportOrderResponseBody) SetErrorMessage(v string) *CreateDataImportOrderResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateDataImportOrderResponseBody) SetErrorCode(v string) *CreateDataImportOrderResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateDataImportOrderResponseBody) SetCreateOrderResult(v []*int64) *CreateDataImportOrderResponseBody {
+	s.CreateOrderResult = v
+	return s
+}
+
+type CreateDataImportOrderResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateDataImportOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDataImportOrderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataImportOrderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataImportOrderResponse) SetHeaders(v map[string]*string) *CreateDataImportOrderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDataImportOrderResponse) SetBody(v *CreateDataImportOrderResponseBody) *CreateDataImportOrderResponse {
 	s.Body = v
 	return s
 }
@@ -9522,6 +10851,23 @@ func (s *GetOrderBaseInfoResponse) SetBody(v *GetOrderBaseInfoResponseBody) *Get
 	return s
 }
 
+type ListUserTenantsRequest struct {
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ListUserTenantsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserTenantsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserTenantsRequest) SetTid(v int64) *ListUserTenantsRequest {
+	s.Tid = &v
+	return s
+}
+
 type ListUserTenantsResponseBody struct {
 	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TenantList   []*ListUserTenantsResponseBodyTenantList `json:"TenantList,omitempty" xml:"TenantList,omitempty" type:"Repeated"`
@@ -9704,6 +11050,241 @@ func (s *SetOwnersResponse) SetHeaders(v map[string]*string) *SetOwnersResponse 
 }
 
 func (s *SetOwnersResponse) SetBody(v *SetOwnersResponseBody) *SetOwnersResponse {
+	s.Body = v
+	return s
+}
+
+type CreateDataCorrectOrderRequest struct {
+	Comment         *string                             `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	RelatedUserList []*int64                            `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty" type:"Repeated"`
+	Param           *CreateDataCorrectOrderRequestParam `json:"Param,omitempty" xml:"Param,omitempty" type:"Struct"`
+	AttachmentKey   *string                             `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
+	Tid             *int64                              `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s CreateDataCorrectOrderRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataCorrectOrderRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataCorrectOrderRequest) SetComment(v string) *CreateDataCorrectOrderRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *CreateDataCorrectOrderRequest) SetRelatedUserList(v []*int64) *CreateDataCorrectOrderRequest {
+	s.RelatedUserList = v
+	return s
+}
+
+func (s *CreateDataCorrectOrderRequest) SetParam(v *CreateDataCorrectOrderRequestParam) *CreateDataCorrectOrderRequest {
+	s.Param = v
+	return s
+}
+
+func (s *CreateDataCorrectOrderRequest) SetAttachmentKey(v string) *CreateDataCorrectOrderRequest {
+	s.AttachmentKey = &v
+	return s
+}
+
+func (s *CreateDataCorrectOrderRequest) SetTid(v int64) *CreateDataCorrectOrderRequest {
+	s.Tid = &v
+	return s
+}
+
+type CreateDataCorrectOrderRequestParam struct {
+	Classify               *string                                         `json:"Classify,omitempty" xml:"Classify,omitempty"`
+	EstimateAffectRows     *int64                                          `json:"EstimateAffectRows,omitempty" xml:"EstimateAffectRows,omitempty"`
+	ExecSQL                *string                                         `json:"ExecSQL,omitempty" xml:"ExecSQL,omitempty"`
+	SqlType                *string                                         `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
+	AttachmentName         *string                                         `json:"AttachmentName,omitempty" xml:"AttachmentName,omitempty"`
+	RollbackSQL            *string                                         `json:"RollbackSQL,omitempty" xml:"RollbackSQL,omitempty"`
+	RollbackAttachmentName *string                                         `json:"RollbackAttachmentName,omitempty" xml:"RollbackAttachmentName,omitempty"`
+	RollbackSqlType        *string                                         `json:"RollbackSqlType,omitempty" xml:"RollbackSqlType,omitempty"`
+	DbItemList             []*CreateDataCorrectOrderRequestParamDbItemList `json:"DbItemList,omitempty" xml:"DbItemList,omitempty" type:"Repeated"`
+}
+
+func (s CreateDataCorrectOrderRequestParam) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataCorrectOrderRequestParam) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataCorrectOrderRequestParam) SetClassify(v string) *CreateDataCorrectOrderRequestParam {
+	s.Classify = &v
+	return s
+}
+
+func (s *CreateDataCorrectOrderRequestParam) SetEstimateAffectRows(v int64) *CreateDataCorrectOrderRequestParam {
+	s.EstimateAffectRows = &v
+	return s
+}
+
+func (s *CreateDataCorrectOrderRequestParam) SetExecSQL(v string) *CreateDataCorrectOrderRequestParam {
+	s.ExecSQL = &v
+	return s
+}
+
+func (s *CreateDataCorrectOrderRequestParam) SetSqlType(v string) *CreateDataCorrectOrderRequestParam {
+	s.SqlType = &v
+	return s
+}
+
+func (s *CreateDataCorrectOrderRequestParam) SetAttachmentName(v string) *CreateDataCorrectOrderRequestParam {
+	s.AttachmentName = &v
+	return s
+}
+
+func (s *CreateDataCorrectOrderRequestParam) SetRollbackSQL(v string) *CreateDataCorrectOrderRequestParam {
+	s.RollbackSQL = &v
+	return s
+}
+
+func (s *CreateDataCorrectOrderRequestParam) SetRollbackAttachmentName(v string) *CreateDataCorrectOrderRequestParam {
+	s.RollbackAttachmentName = &v
+	return s
+}
+
+func (s *CreateDataCorrectOrderRequestParam) SetRollbackSqlType(v string) *CreateDataCorrectOrderRequestParam {
+	s.RollbackSqlType = &v
+	return s
+}
+
+func (s *CreateDataCorrectOrderRequestParam) SetDbItemList(v []*CreateDataCorrectOrderRequestParamDbItemList) *CreateDataCorrectOrderRequestParam {
+	s.DbItemList = v
+	return s
+}
+
+type CreateDataCorrectOrderRequestParamDbItemList struct {
+	DbId  *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	Logic *bool  `json:"Logic,omitempty" xml:"Logic,omitempty"`
+}
+
+func (s CreateDataCorrectOrderRequestParamDbItemList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataCorrectOrderRequestParamDbItemList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataCorrectOrderRequestParamDbItemList) SetDbId(v int64) *CreateDataCorrectOrderRequestParamDbItemList {
+	s.DbId = &v
+	return s
+}
+
+func (s *CreateDataCorrectOrderRequestParamDbItemList) SetLogic(v bool) *CreateDataCorrectOrderRequestParamDbItemList {
+	s.Logic = &v
+	return s
+}
+
+type CreateDataCorrectOrderShrinkRequest struct {
+	Comment               *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	RelatedUserListShrink *string `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty"`
+	ParamShrink           *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	AttachmentKey         *string `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
+	Tid                   *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s CreateDataCorrectOrderShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataCorrectOrderShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataCorrectOrderShrinkRequest) SetComment(v string) *CreateDataCorrectOrderShrinkRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *CreateDataCorrectOrderShrinkRequest) SetRelatedUserListShrink(v string) *CreateDataCorrectOrderShrinkRequest {
+	s.RelatedUserListShrink = &v
+	return s
+}
+
+func (s *CreateDataCorrectOrderShrinkRequest) SetParamShrink(v string) *CreateDataCorrectOrderShrinkRequest {
+	s.ParamShrink = &v
+	return s
+}
+
+func (s *CreateDataCorrectOrderShrinkRequest) SetAttachmentKey(v string) *CreateDataCorrectOrderShrinkRequest {
+	s.AttachmentKey = &v
+	return s
+}
+
+func (s *CreateDataCorrectOrderShrinkRequest) SetTid(v int64) *CreateDataCorrectOrderShrinkRequest {
+	s.Tid = &v
+	return s
+}
+
+type CreateDataCorrectOrderResponseBody struct {
+	// Id of the request
+	RequestId         *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success           *bool    `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorMessage      *string  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorCode         *string  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	CreateOrderResult []*int64 `json:"CreateOrderResult,omitempty" xml:"CreateOrderResult,omitempty" type:"Repeated"`
+}
+
+func (s CreateDataCorrectOrderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataCorrectOrderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataCorrectOrderResponseBody) SetRequestId(v string) *CreateDataCorrectOrderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDataCorrectOrderResponseBody) SetSuccess(v bool) *CreateDataCorrectOrderResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateDataCorrectOrderResponseBody) SetErrorMessage(v string) *CreateDataCorrectOrderResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateDataCorrectOrderResponseBody) SetErrorCode(v string) *CreateDataCorrectOrderResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateDataCorrectOrderResponseBody) SetCreateOrderResult(v []*int64) *CreateDataCorrectOrderResponseBody {
+	s.CreateOrderResult = v
+	return s
+}
+
+type CreateDataCorrectOrderResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateDataCorrectOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDataCorrectOrderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataCorrectOrderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataCorrectOrderResponse) SetHeaders(v map[string]*string) *CreateDataCorrectOrderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDataCorrectOrderResponse) SetBody(v *CreateDataCorrectOrderResponseBody) *CreateDataCorrectOrderResponse {
 	s.Body = v
 	return s
 }
@@ -10244,6 +11825,8 @@ type CreateStructSyncOrderRequest struct {
 	Comment         *string                            `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	RelatedUserList []*int64                           `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty" type:"Repeated"`
 	Param           *CreateStructSyncOrderRequestParam `json:"Param,omitempty" xml:"Param,omitempty" type:"Struct"`
+	AttachmentKey   *string                            `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
+	Tid             *int64                             `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s CreateStructSyncOrderRequest) String() string {
@@ -10266,6 +11849,16 @@ func (s *CreateStructSyncOrderRequest) SetRelatedUserList(v []*int64) *CreateStr
 
 func (s *CreateStructSyncOrderRequest) SetParam(v *CreateStructSyncOrderRequestParam) *CreateStructSyncOrderRequest {
 	s.Param = v
+	return s
+}
+
+func (s *CreateStructSyncOrderRequest) SetAttachmentKey(v string) *CreateStructSyncOrderRequest {
+	s.AttachmentKey = &v
+	return s
+}
+
+func (s *CreateStructSyncOrderRequest) SetTid(v int64) *CreateStructSyncOrderRequest {
+	s.Tid = &v
 	return s
 }
 
@@ -10401,6 +11994,8 @@ type CreateStructSyncOrderShrinkRequest struct {
 	Comment               *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	RelatedUserListShrink *string `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty"`
 	ParamShrink           *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	AttachmentKey         *string `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
+	Tid                   *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s CreateStructSyncOrderShrinkRequest) String() string {
@@ -10423,6 +12018,16 @@ func (s *CreateStructSyncOrderShrinkRequest) SetRelatedUserListShrink(v string) 
 
 func (s *CreateStructSyncOrderShrinkRequest) SetParamShrink(v string) *CreateStructSyncOrderShrinkRequest {
 	s.ParamShrink = &v
+	return s
+}
+
+func (s *CreateStructSyncOrderShrinkRequest) SetAttachmentKey(v string) *CreateStructSyncOrderShrinkRequest {
+	s.AttachmentKey = &v
+	return s
+}
+
+func (s *CreateStructSyncOrderShrinkRequest) SetTid(v int64) *CreateStructSyncOrderShrinkRequest {
+	s.Tid = &v
 	return s
 }
 
@@ -11209,6 +12814,7 @@ func (s *ListWorkFlowNodesResponse) SetBody(v *ListWorkFlowNodesResponseBody) *L
 
 type GetStructSyncOrderDetailRequest struct {
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetStructSyncOrderDetailRequest) String() string {
@@ -11221,6 +12827,11 @@ func (s GetStructSyncOrderDetailRequest) GoString() string {
 
 func (s *GetStructSyncOrderDetailRequest) SetOrderId(v int64) *GetStructSyncOrderDetailRequest {
 	s.OrderId = &v
+	return s
+}
+
+func (s *GetStructSyncOrderDetailRequest) SetTid(v int64) *GetStructSyncOrderDetailRequest {
+	s.Tid = &v
 	return s
 }
 
@@ -11789,6 +13400,7 @@ type GetStructSyncExecSqlDetailRequest struct {
 	OrderId    *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Tid        *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetStructSyncExecSqlDetailRequest) String() string {
@@ -11811,6 +13423,11 @@ func (s *GetStructSyncExecSqlDetailRequest) SetPageNumber(v int64) *GetStructSyn
 
 func (s *GetStructSyncExecSqlDetailRequest) SetPageSize(v int64) *GetStructSyncExecSqlDetailRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *GetStructSyncExecSqlDetailRequest) SetTid(v int64) *GetStructSyncExecSqlDetailRequest {
+	s.Tid = &v
 	return s
 }
 
@@ -12493,6 +14110,44 @@ func (client *Client) GetDataCorrectSQLFile(request *GetDataCorrectSQLFileReques
 	return _result, _err
 }
 
+func (client *Client) CreateFreeLockCorrectOrderWithOptions(tmpReq *CreateFreeLockCorrectOrderRequest, runtime *util.RuntimeOptions) (_result *CreateFreeLockCorrectOrderResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateFreeLockCorrectOrderShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.RelatedUserList)) {
+		request.RelatedUserListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RelatedUserList, tea.String("RelatedUserList"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Param))) {
+		request.ParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Param), tea.String("Param"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateFreeLockCorrectOrderResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateFreeLockCorrectOrder"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateFreeLockCorrectOrder(request *CreateFreeLockCorrectOrderRequest) (_result *CreateFreeLockCorrectOrderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateFreeLockCorrectOrderResponse{}
+	_body, _err := client.CreateFreeLockCorrectOrderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateOrderWithOptions(tmpReq *CreateOrderRequest, runtime *util.RuntimeOptions) (_result *CreateOrderResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -13149,8 +14804,14 @@ func (client *Client) GetApprovalDetail(request *GetApprovalDetailRequest) (_res
 	return _result, _err
 }
 
-func (client *Client) GetUserActiveTenantWithOptions(runtime *util.RuntimeOptions) (_result *GetUserActiveTenantResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
+func (client *Client) GetUserActiveTenantWithOptions(request *GetUserActiveTenantRequest, runtime *util.RuntimeOptions) (_result *GetUserActiveTenantResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
 	_result = &GetUserActiveTenantResponse{}
 	_body, _err := client.DoRPCRequest(tea.String("GetUserActiveTenant"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
@@ -13160,10 +14821,10 @@ func (client *Client) GetUserActiveTenantWithOptions(runtime *util.RuntimeOption
 	return _result, _err
 }
 
-func (client *Client) GetUserActiveTenant() (_result *GetUserActiveTenantResponse, _err error) {
+func (client *Client) GetUserActiveTenant(request *GetUserActiveTenantRequest) (_result *GetUserActiveTenantResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetUserActiveTenantResponse{}
-	_body, _err := client.GetUserActiveTenantWithOptions(runtime)
+	_body, _err := client.GetUserActiveTenantWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13311,6 +14972,34 @@ func (client *Client) ListLogicTables(request *ListLogicTablesRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) GetTableTopologyWithOptions(request *GetTableTopologyRequest, runtime *util.RuntimeOptions) (_result *GetTableTopologyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetTableTopologyResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetTableTopology"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetTableTopology(request *GetTableTopologyRequest) (_result *GetTableTopologyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTableTopologyResponse{}
+	_body, _err := client.GetTableTopologyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetDataExportDownloadURLWithOptions(request *GetDataExportDownloadURLRequest, runtime *util.RuntimeOptions) (_result *GetDataExportDownloadURLResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13332,6 +15021,44 @@ func (client *Client) GetDataExportDownloadURL(request *GetDataExportDownloadURL
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDataExportDownloadURLResponse{}
 	_body, _err := client.GetDataExportDownloadURLWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateDataCronClearOrderWithOptions(tmpReq *CreateDataCronClearOrderRequest, runtime *util.RuntimeOptions) (_result *CreateDataCronClearOrderResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateDataCronClearOrderShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.RelatedUserList)) {
+		request.RelatedUserListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RelatedUserList, tea.String("RelatedUserList"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Param))) {
+		request.ParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Param), tea.String("Param"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateDataCronClearOrderResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateDataCronClearOrder"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDataCronClearOrder(request *CreateDataCronClearOrderRequest) (_result *CreateDataCronClearOrderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDataCronClearOrderResponse{}
+	_body, _err := client.CreateDataCronClearOrderWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13535,6 +15262,34 @@ func (client *Client) DeleteUser(request *DeleteUserRequest) (_result *DeleteUse
 	return _result, _err
 }
 
+func (client *Client) GetDataCronClearTaskDetailListWithOptions(request *GetDataCronClearTaskDetailListRequest, runtime *util.RuntimeOptions) (_result *GetDataCronClearTaskDetailListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetDataCronClearTaskDetailListResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetDataCronClearTaskDetailList"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDataCronClearTaskDetailList(request *GetDataCronClearTaskDetailListRequest) (_result *GetDataCronClearTaskDetailListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDataCronClearTaskDetailListResponse{}
+	_body, _err := client.GetDataCronClearTaskDetailListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetStructSyncJobAnalyzeResultWithOptions(request *GetStructSyncJobAnalyzeResultRequest, runtime *util.RuntimeOptions) (_result *GetStructSyncJobAnalyzeResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13591,6 +15346,34 @@ func (client *Client) ApproveOrder(request *ApproveOrderRequest) (_result *Appro
 	return _result, _err
 }
 
+func (client *Client) GetDataCorrectTaskDetailWithOptions(request *GetDataCorrectTaskDetailRequest, runtime *util.RuntimeOptions) (_result *GetDataCorrectTaskDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetDataCorrectTaskDetailResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetDataCorrectTaskDetail"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDataCorrectTaskDetail(request *GetDataCorrectTaskDetailRequest) (_result *GetDataCorrectTaskDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDataCorrectTaskDetailResponse{}
+	_body, _err := client.GetDataCorrectTaskDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateUploadFileJobWithOptions(request *CreateUploadFileJobRequest, runtime *util.RuntimeOptions) (_result *CreateUploadFileJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13640,6 +15423,44 @@ func (client *Client) ListLogicDatabases(request *ListLogicDatabasesRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &ListLogicDatabasesResponse{}
 	_body, _err := client.ListLogicDatabasesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateDataImportOrderWithOptions(tmpReq *CreateDataImportOrderRequest, runtime *util.RuntimeOptions) (_result *CreateDataImportOrderResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateDataImportOrderShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.RelatedUserList)) {
+		request.RelatedUserListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RelatedUserList, tea.String("RelatedUserList"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Param))) {
+		request.ParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Param), tea.String("Param"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateDataImportOrderResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateDataImportOrder"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDataImportOrder(request *CreateDataImportOrderRequest) (_result *CreateDataImportOrderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDataImportOrderResponse{}
+	_body, _err := client.CreateDataImportOrderWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13759,8 +15580,14 @@ func (client *Client) GetOrderBaseInfo(request *GetOrderBaseInfoRequest) (_resul
 	return _result, _err
 }
 
-func (client *Client) ListUserTenantsWithOptions(runtime *util.RuntimeOptions) (_result *ListUserTenantsResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
+func (client *Client) ListUserTenantsWithOptions(request *ListUserTenantsRequest, runtime *util.RuntimeOptions) (_result *ListUserTenantsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
 	_result = &ListUserTenantsResponse{}
 	_body, _err := client.DoRPCRequest(tea.String("ListUserTenants"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
@@ -13770,10 +15597,10 @@ func (client *Client) ListUserTenantsWithOptions(runtime *util.RuntimeOptions) (
 	return _result, _err
 }
 
-func (client *Client) ListUserTenants() (_result *ListUserTenantsResponse, _err error) {
+func (client *Client) ListUserTenants(request *ListUserTenantsRequest) (_result *ListUserTenantsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUserTenantsResponse{}
-	_body, _err := client.ListUserTenantsWithOptions(runtime)
+	_body, _err := client.ListUserTenantsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13802,6 +15629,44 @@ func (client *Client) SetOwners(request *SetOwnersRequest) (_result *SetOwnersRe
 	runtime := &util.RuntimeOptions{}
 	_result = &SetOwnersResponse{}
 	_body, _err := client.SetOwnersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateDataCorrectOrderWithOptions(tmpReq *CreateDataCorrectOrderRequest, runtime *util.RuntimeOptions) (_result *CreateDataCorrectOrderResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateDataCorrectOrderShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.RelatedUserList)) {
+		request.RelatedUserListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RelatedUserList, tea.String("RelatedUserList"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Param))) {
+		request.ParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Param), tea.String("Param"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateDataCorrectOrderResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateDataCorrectOrder"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDataCorrectOrder(request *CreateDataCorrectOrderRequest) (_result *CreateDataCorrectOrderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDataCorrectOrderResponse{}
+	_body, _err := client.CreateDataCorrectOrderWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
