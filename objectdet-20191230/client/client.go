@@ -18,6 +18,531 @@ import (
 	"io"
 )
 
+type ClassifyVehicleInsuranceRequest struct {
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+}
+
+func (s ClassifyVehicleInsuranceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClassifyVehicleInsuranceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ClassifyVehicleInsuranceRequest) SetImageURL(v string) *ClassifyVehicleInsuranceRequest {
+	s.ImageURL = &v
+	return s
+}
+
+type ClassifyVehicleInsuranceAdvanceRequest struct {
+	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+}
+
+func (s ClassifyVehicleInsuranceAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClassifyVehicleInsuranceAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ClassifyVehicleInsuranceAdvanceRequest) SetImageURLObject(v io.Reader) *ClassifyVehicleInsuranceAdvanceRequest {
+	s.ImageURLObject = v
+	return s
+}
+
+type ClassifyVehicleInsuranceResponseBody struct {
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *ClassifyVehicleInsuranceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s ClassifyVehicleInsuranceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClassifyVehicleInsuranceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ClassifyVehicleInsuranceResponseBody) SetRequestId(v string) *ClassifyVehicleInsuranceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ClassifyVehicleInsuranceResponseBody) SetData(v *ClassifyVehicleInsuranceResponseBodyData) *ClassifyVehicleInsuranceResponseBody {
+	s.Data = v
+	return s
+}
+
+type ClassifyVehicleInsuranceResponseBodyData struct {
+	Labels    []*ClassifyVehicleInsuranceResponseBodyDataLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	Threshold *float32                                          `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+}
+
+func (s ClassifyVehicleInsuranceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClassifyVehicleInsuranceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ClassifyVehicleInsuranceResponseBodyData) SetLabels(v []*ClassifyVehicleInsuranceResponseBodyDataLabels) *ClassifyVehicleInsuranceResponseBodyData {
+	s.Labels = v
+	return s
+}
+
+func (s *ClassifyVehicleInsuranceResponseBodyData) SetThreshold(v float32) *ClassifyVehicleInsuranceResponseBodyData {
+	s.Threshold = &v
+	return s
+}
+
+type ClassifyVehicleInsuranceResponseBodyDataLabels struct {
+	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	Name  *string  `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ClassifyVehicleInsuranceResponseBodyDataLabels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClassifyVehicleInsuranceResponseBodyDataLabels) GoString() string {
+	return s.String()
+}
+
+func (s *ClassifyVehicleInsuranceResponseBodyDataLabels) SetScore(v float32) *ClassifyVehicleInsuranceResponseBodyDataLabels {
+	s.Score = &v
+	return s
+}
+
+func (s *ClassifyVehicleInsuranceResponseBodyDataLabels) SetName(v string) *ClassifyVehicleInsuranceResponseBodyDataLabels {
+	s.Name = &v
+	return s
+}
+
+type ClassifyVehicleInsuranceResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ClassifyVehicleInsuranceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ClassifyVehicleInsuranceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClassifyVehicleInsuranceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ClassifyVehicleInsuranceResponse) SetHeaders(v map[string]*string) *ClassifyVehicleInsuranceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ClassifyVehicleInsuranceResponse) SetBody(v *ClassifyVehicleInsuranceResponseBody) *ClassifyVehicleInsuranceResponse {
+	s.Body = v
+	return s
+}
+
+type DetectIPCObjectRequest struct {
+	// 图片URL地址
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+}
+
+func (s DetectIPCObjectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectIPCObjectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetectIPCObjectRequest) SetImageURL(v string) *DetectIPCObjectRequest {
+	s.ImageURL = &v
+	return s
+}
+
+type DetectIPCObjectResponseBody struct {
+	// Id of the request
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *DetectIPCObjectResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s DetectIPCObjectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectIPCObjectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DetectIPCObjectResponseBody) SetRequestId(v string) *DetectIPCObjectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DetectIPCObjectResponseBody) SetData(v *DetectIPCObjectResponseBodyData) *DetectIPCObjectResponseBody {
+	s.Data = v
+	return s
+}
+
+type DetectIPCObjectResponseBodyData struct {
+	Elements []*DetectIPCObjectResponseBodyDataElements `json:"Elements,omitempty" xml:"Elements,omitempty" type:"Repeated"`
+	Width    *int64                                     `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height   *int64                                     `json:"Height,omitempty" xml:"Height,omitempty"`
+}
+
+func (s DetectIPCObjectResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectIPCObjectResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DetectIPCObjectResponseBodyData) SetElements(v []*DetectIPCObjectResponseBodyDataElements) *DetectIPCObjectResponseBodyData {
+	s.Elements = v
+	return s
+}
+
+func (s *DetectIPCObjectResponseBodyData) SetWidth(v int64) *DetectIPCObjectResponseBodyData {
+	s.Width = &v
+	return s
+}
+
+func (s *DetectIPCObjectResponseBodyData) SetHeight(v int64) *DetectIPCObjectResponseBodyData {
+	s.Height = &v
+	return s
+}
+
+type DetectIPCObjectResponseBodyDataElements struct {
+	Type       *string  `json:"Type,omitempty" xml:"Type,omitempty"`
+	Score      *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	Box        []*int64 `json:"Box,omitempty" xml:"Box,omitempty" type:"Repeated"`
+	TargetRate *float32 `json:"TargetRate,omitempty" xml:"TargetRate,omitempty"`
+}
+
+func (s DetectIPCObjectResponseBodyDataElements) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectIPCObjectResponseBodyDataElements) GoString() string {
+	return s.String()
+}
+
+func (s *DetectIPCObjectResponseBodyDataElements) SetType(v string) *DetectIPCObjectResponseBodyDataElements {
+	s.Type = &v
+	return s
+}
+
+func (s *DetectIPCObjectResponseBodyDataElements) SetScore(v float32) *DetectIPCObjectResponseBodyDataElements {
+	s.Score = &v
+	return s
+}
+
+func (s *DetectIPCObjectResponseBodyDataElements) SetBox(v []*int64) *DetectIPCObjectResponseBodyDataElements {
+	s.Box = v
+	return s
+}
+
+func (s *DetectIPCObjectResponseBodyDataElements) SetTargetRate(v float32) *DetectIPCObjectResponseBodyDataElements {
+	s.TargetRate = &v
+	return s
+}
+
+type DetectIPCObjectResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DetectIPCObjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DetectIPCObjectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectIPCObjectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DetectIPCObjectResponse) SetHeaders(v map[string]*string) *DetectIPCObjectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DetectIPCObjectResponse) SetBody(v *DetectIPCObjectResponseBody) *DetectIPCObjectResponse {
+	s.Body = v
+	return s
+}
+
+type DetectMainBodyRequest struct {
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+}
+
+func (s DetectMainBodyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectMainBodyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetectMainBodyRequest) SetImageURL(v string) *DetectMainBodyRequest {
+	s.ImageURL = &v
+	return s
+}
+
+type DetectMainBodyAdvanceRequest struct {
+	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+}
+
+func (s DetectMainBodyAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectMainBodyAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetectMainBodyAdvanceRequest) SetImageURLObject(v io.Reader) *DetectMainBodyAdvanceRequest {
+	s.ImageURLObject = v
+	return s
+}
+
+type DetectMainBodyResponseBody struct {
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *DetectMainBodyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s DetectMainBodyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectMainBodyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DetectMainBodyResponseBody) SetRequestId(v string) *DetectMainBodyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DetectMainBodyResponseBody) SetData(v *DetectMainBodyResponseBodyData) *DetectMainBodyResponseBody {
+	s.Data = v
+	return s
+}
+
+type DetectMainBodyResponseBodyData struct {
+	Location *DetectMainBodyResponseBodyDataLocation `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
+}
+
+func (s DetectMainBodyResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectMainBodyResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DetectMainBodyResponseBodyData) SetLocation(v *DetectMainBodyResponseBodyDataLocation) *DetectMainBodyResponseBodyData {
+	s.Location = v
+	return s
+}
+
+type DetectMainBodyResponseBodyDataLocation struct {
+	Width  *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	Y      *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	X      *int32 `json:"X,omitempty" xml:"X,omitempty"`
+}
+
+func (s DetectMainBodyResponseBodyDataLocation) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectMainBodyResponseBodyDataLocation) GoString() string {
+	return s.String()
+}
+
+func (s *DetectMainBodyResponseBodyDataLocation) SetWidth(v int32) *DetectMainBodyResponseBodyDataLocation {
+	s.Width = &v
+	return s
+}
+
+func (s *DetectMainBodyResponseBodyDataLocation) SetHeight(v int32) *DetectMainBodyResponseBodyDataLocation {
+	s.Height = &v
+	return s
+}
+
+func (s *DetectMainBodyResponseBodyDataLocation) SetY(v int32) *DetectMainBodyResponseBodyDataLocation {
+	s.Y = &v
+	return s
+}
+
+func (s *DetectMainBodyResponseBodyDataLocation) SetX(v int32) *DetectMainBodyResponseBodyDataLocation {
+	s.X = &v
+	return s
+}
+
+type DetectMainBodyResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DetectMainBodyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DetectMainBodyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectMainBodyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DetectMainBodyResponse) SetHeaders(v map[string]*string) *DetectMainBodyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DetectMainBodyResponse) SetBody(v *DetectMainBodyResponseBody) *DetectMainBodyResponse {
+	s.Body = v
+	return s
+}
+
+type DetectObjectRequest struct {
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+}
+
+func (s DetectObjectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectObjectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetectObjectRequest) SetImageURL(v string) *DetectObjectRequest {
+	s.ImageURL = &v
+	return s
+}
+
+type DetectObjectAdvanceRequest struct {
+	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+}
+
+func (s DetectObjectAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectObjectAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetectObjectAdvanceRequest) SetImageURLObject(v io.Reader) *DetectObjectAdvanceRequest {
+	s.ImageURLObject = v
+	return s
+}
+
+type DetectObjectResponseBody struct {
+	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *DetectObjectResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s DetectObjectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectObjectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DetectObjectResponseBody) SetRequestId(v string) *DetectObjectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DetectObjectResponseBody) SetData(v *DetectObjectResponseBodyData) *DetectObjectResponseBody {
+	s.Data = v
+	return s
+}
+
+type DetectObjectResponseBodyData struct {
+	Elements []*DetectObjectResponseBodyDataElements `json:"Elements,omitempty" xml:"Elements,omitempty" type:"Repeated"`
+	Width    *int32                                  `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height   *int32                                  `json:"Height,omitempty" xml:"Height,omitempty"`
+}
+
+func (s DetectObjectResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectObjectResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DetectObjectResponseBodyData) SetElements(v []*DetectObjectResponseBodyDataElements) *DetectObjectResponseBodyData {
+	s.Elements = v
+	return s
+}
+
+func (s *DetectObjectResponseBodyData) SetWidth(v int32) *DetectObjectResponseBodyData {
+	s.Width = &v
+	return s
+}
+
+func (s *DetectObjectResponseBodyData) SetHeight(v int32) *DetectObjectResponseBodyData {
+	s.Height = &v
+	return s
+}
+
+type DetectObjectResponseBodyDataElements struct {
+	Type  *string  `json:"Type,omitempty" xml:"Type,omitempty"`
+	Boxes []*int32 `json:"Boxes,omitempty" xml:"Boxes,omitempty" type:"Repeated"`
+	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
+}
+
+func (s DetectObjectResponseBodyDataElements) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectObjectResponseBodyDataElements) GoString() string {
+	return s.String()
+}
+
+func (s *DetectObjectResponseBodyDataElements) SetType(v string) *DetectObjectResponseBodyDataElements {
+	s.Type = &v
+	return s
+}
+
+func (s *DetectObjectResponseBodyDataElements) SetBoxes(v []*int32) *DetectObjectResponseBodyDataElements {
+	s.Boxes = v
+	return s
+}
+
+func (s *DetectObjectResponseBodyDataElements) SetScore(v float32) *DetectObjectResponseBodyDataElements {
+	s.Score = &v
+	return s
+}
+
+type DetectObjectResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DetectObjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DetectObjectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectObjectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DetectObjectResponse) SetHeaders(v map[string]*string) *DetectObjectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DetectObjectResponse) SetBody(v *DetectObjectResponseBody) *DetectObjectResponse {
+	s.Body = v
+	return s
+}
+
 type DetectTransparentImageRequest struct {
 	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
@@ -128,6 +653,162 @@ func (s *DetectTransparentImageResponse) SetHeaders(v map[string]*string) *Detec
 }
 
 func (s *DetectTransparentImageResponse) SetBody(v *DetectTransparentImageResponseBody) *DetectTransparentImageResponse {
+	s.Body = v
+	return s
+}
+
+type DetectVehicleRequest struct {
+	ImageType *int32  `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	ImageURL  *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+}
+
+func (s DetectVehicleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectVehicleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetectVehicleRequest) SetImageType(v int32) *DetectVehicleRequest {
+	s.ImageType = &v
+	return s
+}
+
+func (s *DetectVehicleRequest) SetImageURL(v string) *DetectVehicleRequest {
+	s.ImageURL = &v
+	return s
+}
+
+type DetectVehicleAdvanceRequest struct {
+	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageType      *int32    `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+}
+
+func (s DetectVehicleAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectVehicleAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetectVehicleAdvanceRequest) SetImageURLObject(v io.Reader) *DetectVehicleAdvanceRequest {
+	s.ImageURLObject = v
+	return s
+}
+
+func (s *DetectVehicleAdvanceRequest) SetImageType(v int32) *DetectVehicleAdvanceRequest {
+	s.ImageType = &v
+	return s
+}
+
+type DetectVehicleResponseBody struct {
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *DetectVehicleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s DetectVehicleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectVehicleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DetectVehicleResponseBody) SetRequestId(v string) *DetectVehicleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DetectVehicleResponseBody) SetData(v *DetectVehicleResponseBodyData) *DetectVehicleResponseBody {
+	s.Data = v
+	return s
+}
+
+type DetectVehicleResponseBodyData struct {
+	DetectObjectInfoList []*DetectVehicleResponseBodyDataDetectObjectInfoList `json:"DetectObjectInfoList,omitempty" xml:"DetectObjectInfoList,omitempty" type:"Repeated"`
+	Width                *int32                                               `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height               *int32                                               `json:"Height,omitempty" xml:"Height,omitempty"`
+}
+
+func (s DetectVehicleResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectVehicleResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DetectVehicleResponseBodyData) SetDetectObjectInfoList(v []*DetectVehicleResponseBodyDataDetectObjectInfoList) *DetectVehicleResponseBodyData {
+	s.DetectObjectInfoList = v
+	return s
+}
+
+func (s *DetectVehicleResponseBodyData) SetWidth(v int32) *DetectVehicleResponseBodyData {
+	s.Width = &v
+	return s
+}
+
+func (s *DetectVehicleResponseBodyData) SetHeight(v int32) *DetectVehicleResponseBodyData {
+	s.Height = &v
+	return s
+}
+
+type DetectVehicleResponseBodyDataDetectObjectInfoList struct {
+	Type  *string  `json:"Type,omitempty" xml:"Type,omitempty"`
+	Boxes []*int32 `json:"Boxes,omitempty" xml:"Boxes,omitempty" type:"Repeated"`
+	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	Id    *int32   `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s DetectVehicleResponseBodyDataDetectObjectInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectVehicleResponseBodyDataDetectObjectInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *DetectVehicleResponseBodyDataDetectObjectInfoList) SetType(v string) *DetectVehicleResponseBodyDataDetectObjectInfoList {
+	s.Type = &v
+	return s
+}
+
+func (s *DetectVehicleResponseBodyDataDetectObjectInfoList) SetBoxes(v []*int32) *DetectVehicleResponseBodyDataDetectObjectInfoList {
+	s.Boxes = v
+	return s
+}
+
+func (s *DetectVehicleResponseBodyDataDetectObjectInfoList) SetScore(v float32) *DetectVehicleResponseBodyDataDetectObjectInfoList {
+	s.Score = &v
+	return s
+}
+
+func (s *DetectVehicleResponseBodyDataDetectObjectInfoList) SetId(v int32) *DetectVehicleResponseBodyDataDetectObjectInfoList {
+	s.Id = &v
+	return s
+}
+
+type DetectVehicleResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DetectVehicleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DetectVehicleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectVehicleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DetectVehicleResponse) SetHeaders(v map[string]*string) *DetectVehicleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DetectVehicleResponse) SetBody(v *DetectVehicleResponseBody) *DetectVehicleResponse {
 	s.Body = v
 	return s
 }
@@ -463,856 +1144,6 @@ func (s *DetectVehicleICongestionResponse) SetBody(v *DetectVehicleICongestionRe
 	return s
 }
 
-type ClassifyVehicleInsuranceRequest struct {
-	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-}
-
-func (s ClassifyVehicleInsuranceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ClassifyVehicleInsuranceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ClassifyVehicleInsuranceRequest) SetImageURL(v string) *ClassifyVehicleInsuranceRequest {
-	s.ImageURL = &v
-	return s
-}
-
-type ClassifyVehicleInsuranceAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
-}
-
-func (s ClassifyVehicleInsuranceAdvanceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ClassifyVehicleInsuranceAdvanceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ClassifyVehicleInsuranceAdvanceRequest) SetImageURLObject(v io.Reader) *ClassifyVehicleInsuranceAdvanceRequest {
-	s.ImageURLObject = v
-	return s
-}
-
-type ClassifyVehicleInsuranceResponseBody struct {
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *ClassifyVehicleInsuranceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-}
-
-func (s ClassifyVehicleInsuranceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ClassifyVehicleInsuranceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ClassifyVehicleInsuranceResponseBody) SetRequestId(v string) *ClassifyVehicleInsuranceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ClassifyVehicleInsuranceResponseBody) SetData(v *ClassifyVehicleInsuranceResponseBodyData) *ClassifyVehicleInsuranceResponseBody {
-	s.Data = v
-	return s
-}
-
-type ClassifyVehicleInsuranceResponseBodyData struct {
-	Labels    []*ClassifyVehicleInsuranceResponseBodyDataLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	Threshold *float32                                          `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-}
-
-func (s ClassifyVehicleInsuranceResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ClassifyVehicleInsuranceResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ClassifyVehicleInsuranceResponseBodyData) SetLabels(v []*ClassifyVehicleInsuranceResponseBodyDataLabels) *ClassifyVehicleInsuranceResponseBodyData {
-	s.Labels = v
-	return s
-}
-
-func (s *ClassifyVehicleInsuranceResponseBodyData) SetThreshold(v float32) *ClassifyVehicleInsuranceResponseBodyData {
-	s.Threshold = &v
-	return s
-}
-
-type ClassifyVehicleInsuranceResponseBodyDataLabels struct {
-	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
-	Name  *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-}
-
-func (s ClassifyVehicleInsuranceResponseBodyDataLabels) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ClassifyVehicleInsuranceResponseBodyDataLabels) GoString() string {
-	return s.String()
-}
-
-func (s *ClassifyVehicleInsuranceResponseBodyDataLabels) SetScore(v float32) *ClassifyVehicleInsuranceResponseBodyDataLabels {
-	s.Score = &v
-	return s
-}
-
-func (s *ClassifyVehicleInsuranceResponseBodyDataLabels) SetName(v string) *ClassifyVehicleInsuranceResponseBodyDataLabels {
-	s.Name = &v
-	return s
-}
-
-type ClassifyVehicleInsuranceResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ClassifyVehicleInsuranceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ClassifyVehicleInsuranceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ClassifyVehicleInsuranceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ClassifyVehicleInsuranceResponse) SetHeaders(v map[string]*string) *ClassifyVehicleInsuranceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ClassifyVehicleInsuranceResponse) SetBody(v *ClassifyVehicleInsuranceResponseBody) *ClassifyVehicleInsuranceResponse {
-	s.Body = v
-	return s
-}
-
-type DetectIPCObjectRequest struct {
-	// 图片URL地址
-	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-}
-
-func (s DetectIPCObjectRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectIPCObjectRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DetectIPCObjectRequest) SetImageURL(v string) *DetectIPCObjectRequest {
-	s.ImageURL = &v
-	return s
-}
-
-type DetectIPCObjectResponseBody struct {
-	// Id of the request
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *DetectIPCObjectResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-}
-
-func (s DetectIPCObjectResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectIPCObjectResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DetectIPCObjectResponseBody) SetRequestId(v string) *DetectIPCObjectResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DetectIPCObjectResponseBody) SetData(v *DetectIPCObjectResponseBodyData) *DetectIPCObjectResponseBody {
-	s.Data = v
-	return s
-}
-
-type DetectIPCObjectResponseBodyData struct {
-	Elements []*DetectIPCObjectResponseBodyDataElements `json:"Elements,omitempty" xml:"Elements,omitempty" type:"Repeated"`
-	Width    *int64                                     `json:"Width,omitempty" xml:"Width,omitempty"`
-	Height   *int64                                     `json:"Height,omitempty" xml:"Height,omitempty"`
-}
-
-func (s DetectIPCObjectResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectIPCObjectResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *DetectIPCObjectResponseBodyData) SetElements(v []*DetectIPCObjectResponseBodyDataElements) *DetectIPCObjectResponseBodyData {
-	s.Elements = v
-	return s
-}
-
-func (s *DetectIPCObjectResponseBodyData) SetWidth(v int64) *DetectIPCObjectResponseBodyData {
-	s.Width = &v
-	return s
-}
-
-func (s *DetectIPCObjectResponseBodyData) SetHeight(v int64) *DetectIPCObjectResponseBodyData {
-	s.Height = &v
-	return s
-}
-
-type DetectIPCObjectResponseBodyDataElements struct {
-	Type  *string  `json:"Type,omitempty" xml:"Type,omitempty"`
-	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
-	Box   []*int64 `json:"Box,omitempty" xml:"Box,omitempty" type:"Repeated"`
-}
-
-func (s DetectIPCObjectResponseBodyDataElements) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectIPCObjectResponseBodyDataElements) GoString() string {
-	return s.String()
-}
-
-func (s *DetectIPCObjectResponseBodyDataElements) SetType(v string) *DetectIPCObjectResponseBodyDataElements {
-	s.Type = &v
-	return s
-}
-
-func (s *DetectIPCObjectResponseBodyDataElements) SetScore(v float32) *DetectIPCObjectResponseBodyDataElements {
-	s.Score = &v
-	return s
-}
-
-func (s *DetectIPCObjectResponseBodyDataElements) SetBox(v []*int64) *DetectIPCObjectResponseBodyDataElements {
-	s.Box = v
-	return s
-}
-
-type DetectIPCObjectResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetectIPCObjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DetectIPCObjectResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectIPCObjectResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DetectIPCObjectResponse) SetHeaders(v map[string]*string) *DetectIPCObjectResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DetectIPCObjectResponse) SetBody(v *DetectIPCObjectResponseBody) *DetectIPCObjectResponse {
-	s.Body = v
-	return s
-}
-
-type GetVehicleRepairPlanRequest struct {
-	TaskId         *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	CarNumberImage *string `json:"CarNumberImage,omitempty" xml:"CarNumberImage,omitempty"`
-	VinCodeImage   *string `json:"VinCodeImage,omitempty" xml:"VinCodeImage,omitempty"`
-}
-
-func (s GetVehicleRepairPlanRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetVehicleRepairPlanRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetVehicleRepairPlanRequest) SetTaskId(v string) *GetVehicleRepairPlanRequest {
-	s.TaskId = &v
-	return s
-}
-
-func (s *GetVehicleRepairPlanRequest) SetCarNumberImage(v string) *GetVehicleRepairPlanRequest {
-	s.CarNumberImage = &v
-	return s
-}
-
-func (s *GetVehicleRepairPlanRequest) SetVinCodeImage(v string) *GetVehicleRepairPlanRequest {
-	s.VinCodeImage = &v
-	return s
-}
-
-type GetVehicleRepairPlanResponseBody struct {
-	HttpCode     *int32                                `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	RequestId    *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data         *GetVehicleRepairPlanResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                               `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success      *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetVehicleRepairPlanResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetVehicleRepairPlanResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetVehicleRepairPlanResponseBody) SetHttpCode(v int32) *GetVehicleRepairPlanResponseBody {
-	s.HttpCode = &v
-	return s
-}
-
-func (s *GetVehicleRepairPlanResponseBody) SetRequestId(v string) *GetVehicleRepairPlanResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetVehicleRepairPlanResponseBody) SetData(v *GetVehicleRepairPlanResponseBodyData) *GetVehicleRepairPlanResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetVehicleRepairPlanResponseBody) SetErrorMessage(v string) *GetVehicleRepairPlanResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *GetVehicleRepairPlanResponseBody) SetCode(v string) *GetVehicleRepairPlanResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetVehicleRepairPlanResponseBody) SetSuccess(v bool) *GetVehicleRepairPlanResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetVehicleRepairPlanResponseBodyData struct {
-	RepairParts []*GetVehicleRepairPlanResponseBodyDataRepairParts `json:"RepairParts,omitempty" xml:"RepairParts,omitempty" type:"Repeated"`
-	FrameNo     *string                                            `json:"FrameNo,omitempty" xml:"FrameNo,omitempty"`
-}
-
-func (s GetVehicleRepairPlanResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetVehicleRepairPlanResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetVehicleRepairPlanResponseBodyData) SetRepairParts(v []*GetVehicleRepairPlanResponseBodyDataRepairParts) *GetVehicleRepairPlanResponseBodyData {
-	s.RepairParts = v
-	return s
-}
-
-func (s *GetVehicleRepairPlanResponseBodyData) SetFrameNo(v string) *GetVehicleRepairPlanResponseBodyData {
-	s.FrameNo = &v
-	return s
-}
-
-type GetVehicleRepairPlanResponseBodyDataRepairParts struct {
-	RelationType         *string `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
-	PartsStdCode         *string `json:"PartsStdCode,omitempty" xml:"PartsStdCode,omitempty"`
-	PartNameMatch        *bool   `json:"PartNameMatch,omitempty" xml:"PartNameMatch,omitempty"`
-	RepairFee            *string `json:"RepairFee,omitempty" xml:"RepairFee,omitempty"`
-	OutStandardPartsName *string `json:"OutStandardPartsName,omitempty" xml:"OutStandardPartsName,omitempty"`
-	PartsStdName         *string `json:"PartsStdName,omitempty" xml:"PartsStdName,omitempty"`
-	RepairTypeName       *string `json:"RepairTypeName,omitempty" xml:"RepairTypeName,omitempty"`
-	RepairType           *string `json:"RepairType,omitempty" xml:"RepairType,omitempty"`
-	OeMatch              *bool   `json:"OeMatch,omitempty" xml:"OeMatch,omitempty"`
-	OutStandardPartsId   *string `json:"OutStandardPartsId,omitempty" xml:"OutStandardPartsId,omitempty"`
-	GarageType           *string `json:"GarageType,omitempty" xml:"GarageType,omitempty"`
-}
-
-func (s GetVehicleRepairPlanResponseBodyDataRepairParts) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetVehicleRepairPlanResponseBodyDataRepairParts) GoString() string {
-	return s.String()
-}
-
-func (s *GetVehicleRepairPlanResponseBodyDataRepairParts) SetRelationType(v string) *GetVehicleRepairPlanResponseBodyDataRepairParts {
-	s.RelationType = &v
-	return s
-}
-
-func (s *GetVehicleRepairPlanResponseBodyDataRepairParts) SetPartsStdCode(v string) *GetVehicleRepairPlanResponseBodyDataRepairParts {
-	s.PartsStdCode = &v
-	return s
-}
-
-func (s *GetVehicleRepairPlanResponseBodyDataRepairParts) SetPartNameMatch(v bool) *GetVehicleRepairPlanResponseBodyDataRepairParts {
-	s.PartNameMatch = &v
-	return s
-}
-
-func (s *GetVehicleRepairPlanResponseBodyDataRepairParts) SetRepairFee(v string) *GetVehicleRepairPlanResponseBodyDataRepairParts {
-	s.RepairFee = &v
-	return s
-}
-
-func (s *GetVehicleRepairPlanResponseBodyDataRepairParts) SetOutStandardPartsName(v string) *GetVehicleRepairPlanResponseBodyDataRepairParts {
-	s.OutStandardPartsName = &v
-	return s
-}
-
-func (s *GetVehicleRepairPlanResponseBodyDataRepairParts) SetPartsStdName(v string) *GetVehicleRepairPlanResponseBodyDataRepairParts {
-	s.PartsStdName = &v
-	return s
-}
-
-func (s *GetVehicleRepairPlanResponseBodyDataRepairParts) SetRepairTypeName(v string) *GetVehicleRepairPlanResponseBodyDataRepairParts {
-	s.RepairTypeName = &v
-	return s
-}
-
-func (s *GetVehicleRepairPlanResponseBodyDataRepairParts) SetRepairType(v string) *GetVehicleRepairPlanResponseBodyDataRepairParts {
-	s.RepairType = &v
-	return s
-}
-
-func (s *GetVehicleRepairPlanResponseBodyDataRepairParts) SetOeMatch(v bool) *GetVehicleRepairPlanResponseBodyDataRepairParts {
-	s.OeMatch = &v
-	return s
-}
-
-func (s *GetVehicleRepairPlanResponseBodyDataRepairParts) SetOutStandardPartsId(v string) *GetVehicleRepairPlanResponseBodyDataRepairParts {
-	s.OutStandardPartsId = &v
-	return s
-}
-
-func (s *GetVehicleRepairPlanResponseBodyDataRepairParts) SetGarageType(v string) *GetVehicleRepairPlanResponseBodyDataRepairParts {
-	s.GarageType = &v
-	return s
-}
-
-type GetVehicleRepairPlanResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetVehicleRepairPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetVehicleRepairPlanResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetVehicleRepairPlanResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetVehicleRepairPlanResponse) SetHeaders(v map[string]*string) *GetVehicleRepairPlanResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetVehicleRepairPlanResponse) SetBody(v *GetVehicleRepairPlanResponseBody) *GetVehicleRepairPlanResponse {
-	s.Body = v
-	return s
-}
-
-type DetectWhiteBaseImageRequest struct {
-	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-}
-
-func (s DetectWhiteBaseImageRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectWhiteBaseImageRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DetectWhiteBaseImageRequest) SetImageURL(v string) *DetectWhiteBaseImageRequest {
-	s.ImageURL = &v
-	return s
-}
-
-type DetectWhiteBaseImageAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
-}
-
-func (s DetectWhiteBaseImageAdvanceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectWhiteBaseImageAdvanceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DetectWhiteBaseImageAdvanceRequest) SetImageURLObject(v io.Reader) *DetectWhiteBaseImageAdvanceRequest {
-	s.ImageURLObject = v
-	return s
-}
-
-type DetectWhiteBaseImageResponseBody struct {
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *DetectWhiteBaseImageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-}
-
-func (s DetectWhiteBaseImageResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectWhiteBaseImageResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DetectWhiteBaseImageResponseBody) SetRequestId(v string) *DetectWhiteBaseImageResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DetectWhiteBaseImageResponseBody) SetData(v *DetectWhiteBaseImageResponseBodyData) *DetectWhiteBaseImageResponseBody {
-	s.Data = v
-	return s
-}
-
-type DetectWhiteBaseImageResponseBodyData struct {
-	Elements []*DetectWhiteBaseImageResponseBodyDataElements `json:"Elements,omitempty" xml:"Elements,omitempty" type:"Repeated"`
-}
-
-func (s DetectWhiteBaseImageResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectWhiteBaseImageResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *DetectWhiteBaseImageResponseBodyData) SetElements(v []*DetectWhiteBaseImageResponseBodyDataElements) *DetectWhiteBaseImageResponseBodyData {
-	s.Elements = v
-	return s
-}
-
-type DetectWhiteBaseImageResponseBodyDataElements struct {
-	WhiteBase *int32 `json:"WhiteBase,omitempty" xml:"WhiteBase,omitempty"`
-}
-
-func (s DetectWhiteBaseImageResponseBodyDataElements) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectWhiteBaseImageResponseBodyDataElements) GoString() string {
-	return s.String()
-}
-
-func (s *DetectWhiteBaseImageResponseBodyDataElements) SetWhiteBase(v int32) *DetectWhiteBaseImageResponseBodyDataElements {
-	s.WhiteBase = &v
-	return s
-}
-
-type DetectWhiteBaseImageResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetectWhiteBaseImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DetectWhiteBaseImageResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectWhiteBaseImageResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DetectWhiteBaseImageResponse) SetHeaders(v map[string]*string) *DetectWhiteBaseImageResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DetectWhiteBaseImageResponse) SetBody(v *DetectWhiteBaseImageResponseBody) *DetectWhiteBaseImageResponse {
-	s.Body = v
-	return s
-}
-
-type DetectMainBodyRequest struct {
-	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-}
-
-func (s DetectMainBodyRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectMainBodyRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DetectMainBodyRequest) SetImageURL(v string) *DetectMainBodyRequest {
-	s.ImageURL = &v
-	return s
-}
-
-type DetectMainBodyAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
-}
-
-func (s DetectMainBodyAdvanceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectMainBodyAdvanceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DetectMainBodyAdvanceRequest) SetImageURLObject(v io.Reader) *DetectMainBodyAdvanceRequest {
-	s.ImageURLObject = v
-	return s
-}
-
-type DetectMainBodyResponseBody struct {
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *DetectMainBodyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-}
-
-func (s DetectMainBodyResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectMainBodyResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DetectMainBodyResponseBody) SetRequestId(v string) *DetectMainBodyResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DetectMainBodyResponseBody) SetData(v *DetectMainBodyResponseBodyData) *DetectMainBodyResponseBody {
-	s.Data = v
-	return s
-}
-
-type DetectMainBodyResponseBodyData struct {
-	Location *DetectMainBodyResponseBodyDataLocation `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
-}
-
-func (s DetectMainBodyResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectMainBodyResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *DetectMainBodyResponseBodyData) SetLocation(v *DetectMainBodyResponseBodyDataLocation) *DetectMainBodyResponseBodyData {
-	s.Location = v
-	return s
-}
-
-type DetectMainBodyResponseBodyDataLocation struct {
-	Width  *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
-	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Y      *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
-	X      *int32 `json:"X,omitempty" xml:"X,omitempty"`
-}
-
-func (s DetectMainBodyResponseBodyDataLocation) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectMainBodyResponseBodyDataLocation) GoString() string {
-	return s.String()
-}
-
-func (s *DetectMainBodyResponseBodyDataLocation) SetWidth(v int32) *DetectMainBodyResponseBodyDataLocation {
-	s.Width = &v
-	return s
-}
-
-func (s *DetectMainBodyResponseBodyDataLocation) SetHeight(v int32) *DetectMainBodyResponseBodyDataLocation {
-	s.Height = &v
-	return s
-}
-
-func (s *DetectMainBodyResponseBodyDataLocation) SetY(v int32) *DetectMainBodyResponseBodyDataLocation {
-	s.Y = &v
-	return s
-}
-
-func (s *DetectMainBodyResponseBodyDataLocation) SetX(v int32) *DetectMainBodyResponseBodyDataLocation {
-	s.X = &v
-	return s
-}
-
-type DetectMainBodyResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetectMainBodyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DetectMainBodyResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectMainBodyResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DetectMainBodyResponse) SetHeaders(v map[string]*string) *DetectMainBodyResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DetectMainBodyResponse) SetBody(v *DetectMainBodyResponseBody) *DetectMainBodyResponse {
-	s.Body = v
-	return s
-}
-
-type DetectVehicleRequest struct {
-	ImageType *int32  `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	ImageURL  *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-}
-
-func (s DetectVehicleRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectVehicleRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DetectVehicleRequest) SetImageType(v int32) *DetectVehicleRequest {
-	s.ImageType = &v
-	return s
-}
-
-func (s *DetectVehicleRequest) SetImageURL(v string) *DetectVehicleRequest {
-	s.ImageURL = &v
-	return s
-}
-
-type DetectVehicleAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
-	ImageType      *int32    `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-}
-
-func (s DetectVehicleAdvanceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectVehicleAdvanceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DetectVehicleAdvanceRequest) SetImageURLObject(v io.Reader) *DetectVehicleAdvanceRequest {
-	s.ImageURLObject = v
-	return s
-}
-
-func (s *DetectVehicleAdvanceRequest) SetImageType(v int32) *DetectVehicleAdvanceRequest {
-	s.ImageType = &v
-	return s
-}
-
-type DetectVehicleResponseBody struct {
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *DetectVehicleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-}
-
-func (s DetectVehicleResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectVehicleResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DetectVehicleResponseBody) SetRequestId(v string) *DetectVehicleResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DetectVehicleResponseBody) SetData(v *DetectVehicleResponseBodyData) *DetectVehicleResponseBody {
-	s.Data = v
-	return s
-}
-
-type DetectVehicleResponseBodyData struct {
-	DetectObjectInfoList []*DetectVehicleResponseBodyDataDetectObjectInfoList `json:"DetectObjectInfoList,omitempty" xml:"DetectObjectInfoList,omitempty" type:"Repeated"`
-	Width                *int32                                               `json:"Width,omitempty" xml:"Width,omitempty"`
-	Height               *int32                                               `json:"Height,omitempty" xml:"Height,omitempty"`
-}
-
-func (s DetectVehicleResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectVehicleResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *DetectVehicleResponseBodyData) SetDetectObjectInfoList(v []*DetectVehicleResponseBodyDataDetectObjectInfoList) *DetectVehicleResponseBodyData {
-	s.DetectObjectInfoList = v
-	return s
-}
-
-func (s *DetectVehicleResponseBodyData) SetWidth(v int32) *DetectVehicleResponseBodyData {
-	s.Width = &v
-	return s
-}
-
-func (s *DetectVehicleResponseBodyData) SetHeight(v int32) *DetectVehicleResponseBodyData {
-	s.Height = &v
-	return s
-}
-
-type DetectVehicleResponseBodyDataDetectObjectInfoList struct {
-	Type  *string  `json:"Type,omitempty" xml:"Type,omitempty"`
-	Boxes []*int32 `json:"Boxes,omitempty" xml:"Boxes,omitempty" type:"Repeated"`
-	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
-	Id    *int32   `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s DetectVehicleResponseBodyDataDetectObjectInfoList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectVehicleResponseBodyDataDetectObjectInfoList) GoString() string {
-	return s.String()
-}
-
-func (s *DetectVehicleResponseBodyDataDetectObjectInfoList) SetType(v string) *DetectVehicleResponseBodyDataDetectObjectInfoList {
-	s.Type = &v
-	return s
-}
-
-func (s *DetectVehicleResponseBodyDataDetectObjectInfoList) SetBoxes(v []*int32) *DetectVehicleResponseBodyDataDetectObjectInfoList {
-	s.Boxes = v
-	return s
-}
-
-func (s *DetectVehicleResponseBodyDataDetectObjectInfoList) SetScore(v float32) *DetectVehicleResponseBodyDataDetectObjectInfoList {
-	s.Score = &v
-	return s
-}
-
-func (s *DetectVehicleResponseBodyDataDetectObjectInfoList) SetId(v int32) *DetectVehicleResponseBodyDataDetectObjectInfoList {
-	s.Id = &v
-	return s
-}
-
-type DetectVehicleResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetectVehicleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DetectVehicleResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectVehicleResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DetectVehicleResponse) SetHeaders(v map[string]*string) *DetectVehicleResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DetectVehicleResponse) SetBody(v *DetectVehicleResponseBody) *DetectVehicleResponse {
-	s.Body = v
-	return s
-}
-
 type DetectVehicleIllegalParkingRequest struct {
 	// A short description of struct
 	ImageURL    *string                                          `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
@@ -1565,6 +1396,446 @@ func (s *DetectVehicleIllegalParkingResponse) SetHeaders(v map[string]*string) *
 }
 
 func (s *DetectVehicleIllegalParkingResponse) SetBody(v *DetectVehicleIllegalParkingResponseBody) *DetectVehicleIllegalParkingResponse {
+	s.Body = v
+	return s
+}
+
+type DetectWhiteBaseImageRequest struct {
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+}
+
+func (s DetectWhiteBaseImageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectWhiteBaseImageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetectWhiteBaseImageRequest) SetImageURL(v string) *DetectWhiteBaseImageRequest {
+	s.ImageURL = &v
+	return s
+}
+
+type DetectWhiteBaseImageAdvanceRequest struct {
+	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+}
+
+func (s DetectWhiteBaseImageAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectWhiteBaseImageAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetectWhiteBaseImageAdvanceRequest) SetImageURLObject(v io.Reader) *DetectWhiteBaseImageAdvanceRequest {
+	s.ImageURLObject = v
+	return s
+}
+
+type DetectWhiteBaseImageResponseBody struct {
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *DetectWhiteBaseImageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s DetectWhiteBaseImageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectWhiteBaseImageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DetectWhiteBaseImageResponseBody) SetRequestId(v string) *DetectWhiteBaseImageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DetectWhiteBaseImageResponseBody) SetData(v *DetectWhiteBaseImageResponseBodyData) *DetectWhiteBaseImageResponseBody {
+	s.Data = v
+	return s
+}
+
+type DetectWhiteBaseImageResponseBodyData struct {
+	Elements []*DetectWhiteBaseImageResponseBodyDataElements `json:"Elements,omitempty" xml:"Elements,omitempty" type:"Repeated"`
+}
+
+func (s DetectWhiteBaseImageResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectWhiteBaseImageResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DetectWhiteBaseImageResponseBodyData) SetElements(v []*DetectWhiteBaseImageResponseBodyDataElements) *DetectWhiteBaseImageResponseBodyData {
+	s.Elements = v
+	return s
+}
+
+type DetectWhiteBaseImageResponseBodyDataElements struct {
+	WhiteBase *int32 `json:"WhiteBase,omitempty" xml:"WhiteBase,omitempty"`
+}
+
+func (s DetectWhiteBaseImageResponseBodyDataElements) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectWhiteBaseImageResponseBodyDataElements) GoString() string {
+	return s.String()
+}
+
+func (s *DetectWhiteBaseImageResponseBodyDataElements) SetWhiteBase(v int32) *DetectWhiteBaseImageResponseBodyDataElements {
+	s.WhiteBase = &v
+	return s
+}
+
+type DetectWhiteBaseImageResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DetectWhiteBaseImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DetectWhiteBaseImageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectWhiteBaseImageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DetectWhiteBaseImageResponse) SetHeaders(v map[string]*string) *DetectWhiteBaseImageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DetectWhiteBaseImageResponse) SetBody(v *DetectWhiteBaseImageResponseBody) *DetectWhiteBaseImageResponse {
+	s.Body = v
+	return s
+}
+
+type GenerateVehicleRepairPlanRequest struct {
+	DamageImageList []*GenerateVehicleRepairPlanRequestDamageImageList `json:"DamageImageList,omitempty" xml:"DamageImageList,omitempty" type:"Repeated"`
+}
+
+func (s GenerateVehicleRepairPlanRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateVehicleRepairPlanRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateVehicleRepairPlanRequest) SetDamageImageList(v []*GenerateVehicleRepairPlanRequestDamageImageList) *GenerateVehicleRepairPlanRequest {
+	s.DamageImageList = v
+	return s
+}
+
+type GenerateVehicleRepairPlanRequestDamageImageList struct {
+	CreateTimeStamp *string `json:"CreateTimeStamp,omitempty" xml:"CreateTimeStamp,omitempty"`
+	ImageUrl        *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+}
+
+func (s GenerateVehicleRepairPlanRequestDamageImageList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateVehicleRepairPlanRequestDamageImageList) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateVehicleRepairPlanRequestDamageImageList) SetCreateTimeStamp(v string) *GenerateVehicleRepairPlanRequestDamageImageList {
+	s.CreateTimeStamp = &v
+	return s
+}
+
+func (s *GenerateVehicleRepairPlanRequestDamageImageList) SetImageUrl(v string) *GenerateVehicleRepairPlanRequestDamageImageList {
+	s.ImageUrl = &v
+	return s
+}
+
+type GenerateVehicleRepairPlanResponseBody struct {
+	HttpCode     *int32                                     `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	RequestId    *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data         *GenerateVehicleRepairPlanResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage *string                                    `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Code         *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Success      *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GenerateVehicleRepairPlanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateVehicleRepairPlanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateVehicleRepairPlanResponseBody) SetHttpCode(v int32) *GenerateVehicleRepairPlanResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *GenerateVehicleRepairPlanResponseBody) SetRequestId(v string) *GenerateVehicleRepairPlanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GenerateVehicleRepairPlanResponseBody) SetData(v *GenerateVehicleRepairPlanResponseBodyData) *GenerateVehicleRepairPlanResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GenerateVehicleRepairPlanResponseBody) SetErrorMessage(v string) *GenerateVehicleRepairPlanResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GenerateVehicleRepairPlanResponseBody) SetCode(v string) *GenerateVehicleRepairPlanResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GenerateVehicleRepairPlanResponseBody) SetSuccess(v bool) *GenerateVehicleRepairPlanResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GenerateVehicleRepairPlanResponseBodyData struct {
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s GenerateVehicleRepairPlanResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateVehicleRepairPlanResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateVehicleRepairPlanResponseBodyData) SetTaskId(v string) *GenerateVehicleRepairPlanResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type GenerateVehicleRepairPlanResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GenerateVehicleRepairPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GenerateVehicleRepairPlanResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateVehicleRepairPlanResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateVehicleRepairPlanResponse) SetHeaders(v map[string]*string) *GenerateVehicleRepairPlanResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GenerateVehicleRepairPlanResponse) SetBody(v *GenerateVehicleRepairPlanResponseBody) *GenerateVehicleRepairPlanResponse {
+	s.Body = v
+	return s
+}
+
+type GetVehicleRepairPlanRequest struct {
+	TaskId         *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	CarNumberImage *string `json:"CarNumberImage,omitempty" xml:"CarNumberImage,omitempty"`
+	VinCodeImage   *string `json:"VinCodeImage,omitempty" xml:"VinCodeImage,omitempty"`
+}
+
+func (s GetVehicleRepairPlanRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVehicleRepairPlanRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetVehicleRepairPlanRequest) SetTaskId(v string) *GetVehicleRepairPlanRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetVehicleRepairPlanRequest) SetCarNumberImage(v string) *GetVehicleRepairPlanRequest {
+	s.CarNumberImage = &v
+	return s
+}
+
+func (s *GetVehicleRepairPlanRequest) SetVinCodeImage(v string) *GetVehicleRepairPlanRequest {
+	s.VinCodeImage = &v
+	return s
+}
+
+type GetVehicleRepairPlanResponseBody struct {
+	HttpCode     *int32                                `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	RequestId    *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data         *GetVehicleRepairPlanResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage *string                               `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Code         *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Success      *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetVehicleRepairPlanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVehicleRepairPlanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetVehicleRepairPlanResponseBody) SetHttpCode(v int32) *GetVehicleRepairPlanResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *GetVehicleRepairPlanResponseBody) SetRequestId(v string) *GetVehicleRepairPlanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetVehicleRepairPlanResponseBody) SetData(v *GetVehicleRepairPlanResponseBodyData) *GetVehicleRepairPlanResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetVehicleRepairPlanResponseBody) SetErrorMessage(v string) *GetVehicleRepairPlanResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetVehicleRepairPlanResponseBody) SetCode(v string) *GetVehicleRepairPlanResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetVehicleRepairPlanResponseBody) SetSuccess(v bool) *GetVehicleRepairPlanResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetVehicleRepairPlanResponseBodyData struct {
+	RepairParts []*GetVehicleRepairPlanResponseBodyDataRepairParts `json:"RepairParts,omitempty" xml:"RepairParts,omitempty" type:"Repeated"`
+	FrameNo     *string                                            `json:"FrameNo,omitempty" xml:"FrameNo,omitempty"`
+}
+
+func (s GetVehicleRepairPlanResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVehicleRepairPlanResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetVehicleRepairPlanResponseBodyData) SetRepairParts(v []*GetVehicleRepairPlanResponseBodyDataRepairParts) *GetVehicleRepairPlanResponseBodyData {
+	s.RepairParts = v
+	return s
+}
+
+func (s *GetVehicleRepairPlanResponseBodyData) SetFrameNo(v string) *GetVehicleRepairPlanResponseBodyData {
+	s.FrameNo = &v
+	return s
+}
+
+type GetVehicleRepairPlanResponseBodyDataRepairParts struct {
+	RelationType         *string `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
+	PartsStdCode         *string `json:"PartsStdCode,omitempty" xml:"PartsStdCode,omitempty"`
+	PartNameMatch        *bool   `json:"PartNameMatch,omitempty" xml:"PartNameMatch,omitempty"`
+	RepairFee            *string `json:"RepairFee,omitempty" xml:"RepairFee,omitempty"`
+	OutStandardPartsName *string `json:"OutStandardPartsName,omitempty" xml:"OutStandardPartsName,omitempty"`
+	PartsStdName         *string `json:"PartsStdName,omitempty" xml:"PartsStdName,omitempty"`
+	RepairTypeName       *string `json:"RepairTypeName,omitempty" xml:"RepairTypeName,omitempty"`
+	RepairType           *string `json:"RepairType,omitempty" xml:"RepairType,omitempty"`
+	OeMatch              *bool   `json:"OeMatch,omitempty" xml:"OeMatch,omitempty"`
+	OutStandardPartsId   *string `json:"OutStandardPartsId,omitempty" xml:"OutStandardPartsId,omitempty"`
+	GarageType           *string `json:"GarageType,omitempty" xml:"GarageType,omitempty"`
+}
+
+func (s GetVehicleRepairPlanResponseBodyDataRepairParts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVehicleRepairPlanResponseBodyDataRepairParts) GoString() string {
+	return s.String()
+}
+
+func (s *GetVehicleRepairPlanResponseBodyDataRepairParts) SetRelationType(v string) *GetVehicleRepairPlanResponseBodyDataRepairParts {
+	s.RelationType = &v
+	return s
+}
+
+func (s *GetVehicleRepairPlanResponseBodyDataRepairParts) SetPartsStdCode(v string) *GetVehicleRepairPlanResponseBodyDataRepairParts {
+	s.PartsStdCode = &v
+	return s
+}
+
+func (s *GetVehicleRepairPlanResponseBodyDataRepairParts) SetPartNameMatch(v bool) *GetVehicleRepairPlanResponseBodyDataRepairParts {
+	s.PartNameMatch = &v
+	return s
+}
+
+func (s *GetVehicleRepairPlanResponseBodyDataRepairParts) SetRepairFee(v string) *GetVehicleRepairPlanResponseBodyDataRepairParts {
+	s.RepairFee = &v
+	return s
+}
+
+func (s *GetVehicleRepairPlanResponseBodyDataRepairParts) SetOutStandardPartsName(v string) *GetVehicleRepairPlanResponseBodyDataRepairParts {
+	s.OutStandardPartsName = &v
+	return s
+}
+
+func (s *GetVehicleRepairPlanResponseBodyDataRepairParts) SetPartsStdName(v string) *GetVehicleRepairPlanResponseBodyDataRepairParts {
+	s.PartsStdName = &v
+	return s
+}
+
+func (s *GetVehicleRepairPlanResponseBodyDataRepairParts) SetRepairTypeName(v string) *GetVehicleRepairPlanResponseBodyDataRepairParts {
+	s.RepairTypeName = &v
+	return s
+}
+
+func (s *GetVehicleRepairPlanResponseBodyDataRepairParts) SetRepairType(v string) *GetVehicleRepairPlanResponseBodyDataRepairParts {
+	s.RepairType = &v
+	return s
+}
+
+func (s *GetVehicleRepairPlanResponseBodyDataRepairParts) SetOeMatch(v bool) *GetVehicleRepairPlanResponseBodyDataRepairParts {
+	s.OeMatch = &v
+	return s
+}
+
+func (s *GetVehicleRepairPlanResponseBodyDataRepairParts) SetOutStandardPartsId(v string) *GetVehicleRepairPlanResponseBodyDataRepairParts {
+	s.OutStandardPartsId = &v
+	return s
+}
+
+func (s *GetVehicleRepairPlanResponseBodyDataRepairParts) SetGarageType(v string) *GetVehicleRepairPlanResponseBodyDataRepairParts {
+	s.GarageType = &v
+	return s
+}
+
+type GetVehicleRepairPlanResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetVehicleRepairPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetVehicleRepairPlanResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVehicleRepairPlanResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetVehicleRepairPlanResponse) SetHeaders(v map[string]*string) *GetVehicleRepairPlanResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetVehicleRepairPlanResponse) SetBody(v *GetVehicleRepairPlanResponseBody) *GetVehicleRepairPlanResponse {
 	s.Body = v
 	return s
 }
@@ -1965,271 +2236,6 @@ func (s *RecognizeVehiclePartsResponse) SetBody(v *RecognizeVehiclePartsResponse
 	return s
 }
 
-type GenerateVehicleRepairPlanRequest struct {
-	DamageImageList []*GenerateVehicleRepairPlanRequestDamageImageList `json:"DamageImageList,omitempty" xml:"DamageImageList,omitempty" type:"Repeated"`
-}
-
-func (s GenerateVehicleRepairPlanRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GenerateVehicleRepairPlanRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GenerateVehicleRepairPlanRequest) SetDamageImageList(v []*GenerateVehicleRepairPlanRequestDamageImageList) *GenerateVehicleRepairPlanRequest {
-	s.DamageImageList = v
-	return s
-}
-
-type GenerateVehicleRepairPlanRequestDamageImageList struct {
-	CreateTimeStamp *string `json:"CreateTimeStamp,omitempty" xml:"CreateTimeStamp,omitempty"`
-	ImageUrl        *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-}
-
-func (s GenerateVehicleRepairPlanRequestDamageImageList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GenerateVehicleRepairPlanRequestDamageImageList) GoString() string {
-	return s.String()
-}
-
-func (s *GenerateVehicleRepairPlanRequestDamageImageList) SetCreateTimeStamp(v string) *GenerateVehicleRepairPlanRequestDamageImageList {
-	s.CreateTimeStamp = &v
-	return s
-}
-
-func (s *GenerateVehicleRepairPlanRequestDamageImageList) SetImageUrl(v string) *GenerateVehicleRepairPlanRequestDamageImageList {
-	s.ImageUrl = &v
-	return s
-}
-
-type GenerateVehicleRepairPlanResponseBody struct {
-	HttpCode     *int32                                     `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	RequestId    *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data         *GenerateVehicleRepairPlanResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                                    `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success      *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GenerateVehicleRepairPlanResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GenerateVehicleRepairPlanResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GenerateVehicleRepairPlanResponseBody) SetHttpCode(v int32) *GenerateVehicleRepairPlanResponseBody {
-	s.HttpCode = &v
-	return s
-}
-
-func (s *GenerateVehicleRepairPlanResponseBody) SetRequestId(v string) *GenerateVehicleRepairPlanResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GenerateVehicleRepairPlanResponseBody) SetData(v *GenerateVehicleRepairPlanResponseBodyData) *GenerateVehicleRepairPlanResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GenerateVehicleRepairPlanResponseBody) SetErrorMessage(v string) *GenerateVehicleRepairPlanResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *GenerateVehicleRepairPlanResponseBody) SetCode(v string) *GenerateVehicleRepairPlanResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GenerateVehicleRepairPlanResponseBody) SetSuccess(v bool) *GenerateVehicleRepairPlanResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GenerateVehicleRepairPlanResponseBodyData struct {
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-}
-
-func (s GenerateVehicleRepairPlanResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GenerateVehicleRepairPlanResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GenerateVehicleRepairPlanResponseBodyData) SetTaskId(v string) *GenerateVehicleRepairPlanResponseBodyData {
-	s.TaskId = &v
-	return s
-}
-
-type GenerateVehicleRepairPlanResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GenerateVehicleRepairPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GenerateVehicleRepairPlanResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GenerateVehicleRepairPlanResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GenerateVehicleRepairPlanResponse) SetHeaders(v map[string]*string) *GenerateVehicleRepairPlanResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GenerateVehicleRepairPlanResponse) SetBody(v *GenerateVehicleRepairPlanResponseBody) *GenerateVehicleRepairPlanResponse {
-	s.Body = v
-	return s
-}
-
-type DetectObjectRequest struct {
-	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-}
-
-func (s DetectObjectRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectObjectRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DetectObjectRequest) SetImageURL(v string) *DetectObjectRequest {
-	s.ImageURL = &v
-	return s
-}
-
-type DetectObjectAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
-}
-
-func (s DetectObjectAdvanceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectObjectAdvanceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DetectObjectAdvanceRequest) SetImageURLObject(v io.Reader) *DetectObjectAdvanceRequest {
-	s.ImageURLObject = v
-	return s
-}
-
-type DetectObjectResponseBody struct {
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *DetectObjectResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-}
-
-func (s DetectObjectResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectObjectResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DetectObjectResponseBody) SetRequestId(v string) *DetectObjectResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DetectObjectResponseBody) SetData(v *DetectObjectResponseBodyData) *DetectObjectResponseBody {
-	s.Data = v
-	return s
-}
-
-type DetectObjectResponseBodyData struct {
-	Elements []*DetectObjectResponseBodyDataElements `json:"Elements,omitempty" xml:"Elements,omitempty" type:"Repeated"`
-	Width    *int32                                  `json:"Width,omitempty" xml:"Width,omitempty"`
-	Height   *int32                                  `json:"Height,omitempty" xml:"Height,omitempty"`
-}
-
-func (s DetectObjectResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectObjectResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *DetectObjectResponseBodyData) SetElements(v []*DetectObjectResponseBodyDataElements) *DetectObjectResponseBodyData {
-	s.Elements = v
-	return s
-}
-
-func (s *DetectObjectResponseBodyData) SetWidth(v int32) *DetectObjectResponseBodyData {
-	s.Width = &v
-	return s
-}
-
-func (s *DetectObjectResponseBodyData) SetHeight(v int32) *DetectObjectResponseBodyData {
-	s.Height = &v
-	return s
-}
-
-type DetectObjectResponseBodyDataElements struct {
-	Type  *string  `json:"Type,omitempty" xml:"Type,omitempty"`
-	Boxes []*int32 `json:"Boxes,omitempty" xml:"Boxes,omitempty" type:"Repeated"`
-	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
-}
-
-func (s DetectObjectResponseBodyDataElements) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectObjectResponseBodyDataElements) GoString() string {
-	return s.String()
-}
-
-func (s *DetectObjectResponseBodyDataElements) SetType(v string) *DetectObjectResponseBodyDataElements {
-	s.Type = &v
-	return s
-}
-
-func (s *DetectObjectResponseBodyDataElements) SetBoxes(v []*int32) *DetectObjectResponseBodyDataElements {
-	s.Boxes = v
-	return s
-}
-
-func (s *DetectObjectResponseBodyDataElements) SetScore(v float32) *DetectObjectResponseBodyDataElements {
-	s.Score = &v
-	return s
-}
-
-type DetectObjectResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetectObjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DetectObjectResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectObjectResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DetectObjectResponse) SetHeaders(v map[string]*string) *DetectObjectResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DetectObjectResponse) SetBody(v *DetectObjectResponseBody) *DetectObjectResponse {
-	s.Body = v
-	return s
-}
-
 type Client struct {
 	openapi.Client
 }
@@ -2270,159 +2276,6 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DetectTransparentImageWithOptions(request *DetectTransparentImageRequest, runtime *util.RuntimeOptions) (_result *DetectTransparentImageResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DetectTransparentImageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DetectTransparentImage"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DetectTransparentImage(request *DetectTransparentImageRequest) (_result *DetectTransparentImageResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DetectTransparentImageResponse{}
-	_body, _err := client.DetectTransparentImageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DetectTransparentImageAdvance(request *DetectTransparentImageAdvanceRequest, runtime *util.RuntimeOptions) (_result *DetectTransparentImageResponse, _err error) {
-	// Step 0: init client
-	accessKeyId, _err := client.Credential.GetAccessKeyId()
-	if _err != nil {
-		return _result, _err
-	}
-
-	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
-	if _err != nil {
-		return _result, _err
-	}
-
-	authConfig := &rpc.Config{
-		AccessKeyId:     accessKeyId,
-		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
-	}
-	authClient, _err := openplatform.NewClient(authConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	authRequest := &openplatform.AuthorizeFileUploadRequest{
-		Product:  tea.String("objectdet"),
-		RegionId: client.RegionId,
-	}
-	authResponse := &openplatform.AuthorizeFileUploadResponse{}
-	ossConfig := &oss.Config{
-		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
-	}
-	var ossClient *oss.Client
-	fileObj := &fileform.FileField{}
-	ossHeader := &oss.PostObjectRequestHeader{}
-	uploadRequest := &oss.PostObjectRequest{}
-	ossRuntime := &ossutil.RuntimeOptions{}
-	openapiutil.Convert(runtime, ossRuntime)
-	detectTransparentImageReq := &DetectTransparentImageRequest{}
-	openapiutil.Convert(request, detectTransparentImageReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	detectTransparentImageReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
-	detectTransparentImageResp, _err := client.DetectTransparentImageWithOptions(detectTransparentImageReq, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-
-	_result = detectTransparentImageResp
-	return _result, _err
-}
-
-func (client *Client) DetectVehicleICongestionWithOptions(tmpReq *DetectVehicleICongestionRequest, runtime *util.RuntimeOptions) (_result *DetectVehicleICongestionResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &DetectVehicleICongestionShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.RoadRegions)) {
-		request.RoadRegionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RoadRegions, tea.String("RoadRegions"), tea.String("json"))
-	}
-
-	if !tea.BoolValue(util.IsUnset(tmpReq.PreRegionIntersectFeatures)) {
-		request.PreRegionIntersectFeaturesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PreRegionIntersectFeatures, tea.String("PreRegionIntersectFeatures"), tea.String("json"))
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DetectVehicleICongestionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DetectVehicleICongestion"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DetectVehicleICongestion(request *DetectVehicleICongestionRequest) (_result *DetectVehicleICongestionResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DetectVehicleICongestionResponse{}
-	_body, _err := client.DetectVehicleICongestionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2573,7 +2426,7 @@ func (client *Client) DetectIPCObject(request *DetectIPCObjectRequest) (_result 
 	return _result, _err
 }
 
-func (client *Client) GetVehicleRepairPlanWithOptions(request *GetVehicleRepairPlanRequest, runtime *util.RuntimeOptions) (_result *GetVehicleRepairPlanResponse, _err error) {
+func (client *Client) DetectMainBodyWithOptions(request *DetectMainBodyRequest, runtime *util.RuntimeOptions) (_result *DetectMainBodyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -2581,8 +2434,8 @@ func (client *Client) GetVehicleRepairPlanWithOptions(request *GetVehicleRepairP
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
-	_result = &GetVehicleRepairPlanResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetVehicleRepairPlan"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_result = &DetectMainBodyResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DetectMainBody"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2590,10 +2443,514 @@ func (client *Client) GetVehicleRepairPlanWithOptions(request *GetVehicleRepairP
 	return _result, _err
 }
 
-func (client *Client) GetVehicleRepairPlan(request *GetVehicleRepairPlanRequest) (_result *GetVehicleRepairPlanResponse, _err error) {
+func (client *Client) DetectMainBody(request *DetectMainBodyRequest) (_result *DetectMainBodyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &GetVehicleRepairPlanResponse{}
-	_body, _err := client.GetVehicleRepairPlanWithOptions(request, runtime)
+	_result = &DetectMainBodyResponse{}
+	_body, _err := client.DetectMainBodyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DetectMainBodyAdvance(request *DetectMainBodyAdvanceRequest, runtime *util.RuntimeOptions) (_result *DetectMainBodyResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("objectdet"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	detectMainBodyReq := &DetectMainBodyRequest{}
+	openapiutil.Convert(request, detectMainBodyReq)
+	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	ossConfig.AccessKeyId = authResponse.AccessKeyId
+	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+	ossClient, _err = oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	fileObj = &fileform.FileField{
+		Filename:    authResponse.ObjectKey,
+		Content:     request.ImageURLObject,
+		ContentType: tea.String(""),
+	}
+	ossHeader = &oss.PostObjectRequestHeader{
+		AccessKeyId:         authResponse.AccessKeyId,
+		Policy:              authResponse.EncodedPolicy,
+		Signature:           authResponse.Signature,
+		Key:                 authResponse.ObjectKey,
+		File:                fileObj,
+		SuccessActionStatus: tea.String("201"),
+	}
+	uploadRequest = &oss.PostObjectRequest{
+		BucketName: authResponse.Bucket,
+		Header:     ossHeader,
+	}
+	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+	if _err != nil {
+		return _result, _err
+	}
+	detectMainBodyReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	detectMainBodyResp, _err := client.DetectMainBodyWithOptions(detectMainBodyReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = detectMainBodyResp
+	return _result, _err
+}
+
+func (client *Client) DetectObjectWithOptions(request *DetectObjectRequest, runtime *util.RuntimeOptions) (_result *DetectObjectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DetectObjectResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DetectObject"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DetectObject(request *DetectObjectRequest) (_result *DetectObjectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DetectObjectResponse{}
+	_body, _err := client.DetectObjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DetectObjectAdvance(request *DetectObjectAdvanceRequest, runtime *util.RuntimeOptions) (_result *DetectObjectResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("objectdet"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	detectObjectReq := &DetectObjectRequest{}
+	openapiutil.Convert(request, detectObjectReq)
+	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	ossConfig.AccessKeyId = authResponse.AccessKeyId
+	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+	ossClient, _err = oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	fileObj = &fileform.FileField{
+		Filename:    authResponse.ObjectKey,
+		Content:     request.ImageURLObject,
+		ContentType: tea.String(""),
+	}
+	ossHeader = &oss.PostObjectRequestHeader{
+		AccessKeyId:         authResponse.AccessKeyId,
+		Policy:              authResponse.EncodedPolicy,
+		Signature:           authResponse.Signature,
+		Key:                 authResponse.ObjectKey,
+		File:                fileObj,
+		SuccessActionStatus: tea.String("201"),
+	}
+	uploadRequest = &oss.PostObjectRequest{
+		BucketName: authResponse.Bucket,
+		Header:     ossHeader,
+	}
+	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+	if _err != nil {
+		return _result, _err
+	}
+	detectObjectReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	detectObjectResp, _err := client.DetectObjectWithOptions(detectObjectReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = detectObjectResp
+	return _result, _err
+}
+
+func (client *Client) DetectTransparentImageWithOptions(request *DetectTransparentImageRequest, runtime *util.RuntimeOptions) (_result *DetectTransparentImageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DetectTransparentImageResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DetectTransparentImage"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DetectTransparentImage(request *DetectTransparentImageRequest) (_result *DetectTransparentImageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DetectTransparentImageResponse{}
+	_body, _err := client.DetectTransparentImageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DetectTransparentImageAdvance(request *DetectTransparentImageAdvanceRequest, runtime *util.RuntimeOptions) (_result *DetectTransparentImageResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("objectdet"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	detectTransparentImageReq := &DetectTransparentImageRequest{}
+	openapiutil.Convert(request, detectTransparentImageReq)
+	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	ossConfig.AccessKeyId = authResponse.AccessKeyId
+	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+	ossClient, _err = oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	fileObj = &fileform.FileField{
+		Filename:    authResponse.ObjectKey,
+		Content:     request.ImageURLObject,
+		ContentType: tea.String(""),
+	}
+	ossHeader = &oss.PostObjectRequestHeader{
+		AccessKeyId:         authResponse.AccessKeyId,
+		Policy:              authResponse.EncodedPolicy,
+		Signature:           authResponse.Signature,
+		Key:                 authResponse.ObjectKey,
+		File:                fileObj,
+		SuccessActionStatus: tea.String("201"),
+	}
+	uploadRequest = &oss.PostObjectRequest{
+		BucketName: authResponse.Bucket,
+		Header:     ossHeader,
+	}
+	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+	if _err != nil {
+		return _result, _err
+	}
+	detectTransparentImageReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	detectTransparentImageResp, _err := client.DetectTransparentImageWithOptions(detectTransparentImageReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = detectTransparentImageResp
+	return _result, _err
+}
+
+func (client *Client) DetectVehicleWithOptions(request *DetectVehicleRequest, runtime *util.RuntimeOptions) (_result *DetectVehicleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DetectVehicleResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DetectVehicle"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DetectVehicle(request *DetectVehicleRequest) (_result *DetectVehicleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DetectVehicleResponse{}
+	_body, _err := client.DetectVehicleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DetectVehicleAdvance(request *DetectVehicleAdvanceRequest, runtime *util.RuntimeOptions) (_result *DetectVehicleResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("objectdet"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	detectVehicleReq := &DetectVehicleRequest{}
+	openapiutil.Convert(request, detectVehicleReq)
+	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	ossConfig.AccessKeyId = authResponse.AccessKeyId
+	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+	ossClient, _err = oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	fileObj = &fileform.FileField{
+		Filename:    authResponse.ObjectKey,
+		Content:     request.ImageURLObject,
+		ContentType: tea.String(""),
+	}
+	ossHeader = &oss.PostObjectRequestHeader{
+		AccessKeyId:         authResponse.AccessKeyId,
+		Policy:              authResponse.EncodedPolicy,
+		Signature:           authResponse.Signature,
+		Key:                 authResponse.ObjectKey,
+		File:                fileObj,
+		SuccessActionStatus: tea.String("201"),
+	}
+	uploadRequest = &oss.PostObjectRequest{
+		BucketName: authResponse.Bucket,
+		Header:     ossHeader,
+	}
+	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+	if _err != nil {
+		return _result, _err
+	}
+	detectVehicleReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	detectVehicleResp, _err := client.DetectVehicleWithOptions(detectVehicleReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = detectVehicleResp
+	return _result, _err
+}
+
+func (client *Client) DetectVehicleICongestionWithOptions(tmpReq *DetectVehicleICongestionRequest, runtime *util.RuntimeOptions) (_result *DetectVehicleICongestionResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DetectVehicleICongestionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.RoadRegions)) {
+		request.RoadRegionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RoadRegions, tea.String("RoadRegions"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.PreRegionIntersectFeatures)) {
+		request.PreRegionIntersectFeaturesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PreRegionIntersectFeatures, tea.String("PreRegionIntersectFeatures"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DetectVehicleICongestionResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DetectVehicleICongestion"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DetectVehicleICongestion(request *DetectVehicleICongestionRequest) (_result *DetectVehicleICongestionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DetectVehicleICongestionResponse{}
+	_body, _err := client.DetectVehicleICongestionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DetectVehicleIllegalParkingWithOptions(tmpReq *DetectVehicleIllegalParkingRequest, runtime *util.RuntimeOptions) (_result *DetectVehicleIllegalParkingResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DetectVehicleIllegalParkingShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.RoadRegions)) {
+		request.RoadRegionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RoadRegions, tea.String("RoadRegions"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DetectVehicleIllegalParkingResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DetectVehicleIllegalParking"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DetectVehicleIllegalParking(request *DetectVehicleIllegalParkingRequest) (_result *DetectVehicleIllegalParkingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DetectVehicleIllegalParkingResponse{}
+	_body, _err := client.DetectVehicleIllegalParkingWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2716,7 +3073,7 @@ func (client *Client) DetectWhiteBaseImageAdvance(request *DetectWhiteBaseImageA
 	return _result, _err
 }
 
-func (client *Client) DetectMainBodyWithOptions(request *DetectMainBodyRequest, runtime *util.RuntimeOptions) (_result *DetectMainBodyResponse, _err error) {
+func (client *Client) GenerateVehicleRepairPlanWithOptions(request *GenerateVehicleRepairPlanRequest, runtime *util.RuntimeOptions) (_result *GenerateVehicleRepairPlanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -2724,8 +3081,8 @@ func (client *Client) DetectMainBodyWithOptions(request *DetectMainBodyRequest, 
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
-	_result = &DetectMainBodyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DetectMainBody"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_result = &GenerateVehicleRepairPlanResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GenerateVehicleRepairPlan"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2733,10 +3090,10 @@ func (client *Client) DetectMainBodyWithOptions(request *DetectMainBodyRequest, 
 	return _result, _err
 }
 
-func (client *Client) DetectMainBody(request *DetectMainBodyRequest) (_result *DetectMainBodyResponse, _err error) {
+func (client *Client) GenerateVehicleRepairPlan(request *GenerateVehicleRepairPlanRequest) (_result *GenerateVehicleRepairPlanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &DetectMainBodyResponse{}
-	_body, _err := client.DetectMainBodyWithOptions(request, runtime)
+	_result = &GenerateVehicleRepairPlanResponse{}
+	_body, _err := client.GenerateVehicleRepairPlanWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2744,94 +3101,7 @@ func (client *Client) DetectMainBody(request *DetectMainBodyRequest) (_result *D
 	return _result, _err
 }
 
-func (client *Client) DetectMainBodyAdvance(request *DetectMainBodyAdvanceRequest, runtime *util.RuntimeOptions) (_result *DetectMainBodyResponse, _err error) {
-	// Step 0: init client
-	accessKeyId, _err := client.Credential.GetAccessKeyId()
-	if _err != nil {
-		return _result, _err
-	}
-
-	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
-	if _err != nil {
-		return _result, _err
-	}
-
-	authConfig := &rpc.Config{
-		AccessKeyId:     accessKeyId,
-		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
-	}
-	authClient, _err := openplatform.NewClient(authConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	authRequest := &openplatform.AuthorizeFileUploadRequest{
-		Product:  tea.String("objectdet"),
-		RegionId: client.RegionId,
-	}
-	authResponse := &openplatform.AuthorizeFileUploadResponse{}
-	ossConfig := &oss.Config{
-		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
-	}
-	var ossClient *oss.Client
-	fileObj := &fileform.FileField{}
-	ossHeader := &oss.PostObjectRequestHeader{}
-	uploadRequest := &oss.PostObjectRequest{}
-	ossRuntime := &ossutil.RuntimeOptions{}
-	openapiutil.Convert(runtime, ossRuntime)
-	detectMainBodyReq := &DetectMainBodyRequest{}
-	openapiutil.Convert(request, detectMainBodyReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	detectMainBodyReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
-	detectMainBodyResp, _err := client.DetectMainBodyWithOptions(detectMainBodyReq, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-
-	_result = detectMainBodyResp
-	return _result, _err
-}
-
-func (client *Client) DetectVehicleWithOptions(request *DetectVehicleRequest, runtime *util.RuntimeOptions) (_result *DetectVehicleResponse, _err error) {
+func (client *Client) GetVehicleRepairPlanWithOptions(request *GetVehicleRepairPlanRequest, runtime *util.RuntimeOptions) (_result *GetVehicleRepairPlanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -2839,8 +3109,8 @@ func (client *Client) DetectVehicleWithOptions(request *DetectVehicleRequest, ru
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
-	_result = &DetectVehicleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DetectVehicle"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_result = &GetVehicleRepairPlanResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetVehicleRepairPlan"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2848,131 +3118,10 @@ func (client *Client) DetectVehicleWithOptions(request *DetectVehicleRequest, ru
 	return _result, _err
 }
 
-func (client *Client) DetectVehicle(request *DetectVehicleRequest) (_result *DetectVehicleResponse, _err error) {
+func (client *Client) GetVehicleRepairPlan(request *GetVehicleRepairPlanRequest) (_result *GetVehicleRepairPlanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &DetectVehicleResponse{}
-	_body, _err := client.DetectVehicleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DetectVehicleAdvance(request *DetectVehicleAdvanceRequest, runtime *util.RuntimeOptions) (_result *DetectVehicleResponse, _err error) {
-	// Step 0: init client
-	accessKeyId, _err := client.Credential.GetAccessKeyId()
-	if _err != nil {
-		return _result, _err
-	}
-
-	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
-	if _err != nil {
-		return _result, _err
-	}
-
-	authConfig := &rpc.Config{
-		AccessKeyId:     accessKeyId,
-		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
-	}
-	authClient, _err := openplatform.NewClient(authConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	authRequest := &openplatform.AuthorizeFileUploadRequest{
-		Product:  tea.String("objectdet"),
-		RegionId: client.RegionId,
-	}
-	authResponse := &openplatform.AuthorizeFileUploadResponse{}
-	ossConfig := &oss.Config{
-		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
-	}
-	var ossClient *oss.Client
-	fileObj := &fileform.FileField{}
-	ossHeader := &oss.PostObjectRequestHeader{}
-	uploadRequest := &oss.PostObjectRequest{}
-	ossRuntime := &ossutil.RuntimeOptions{}
-	openapiutil.Convert(runtime, ossRuntime)
-	detectVehicleReq := &DetectVehicleRequest{}
-	openapiutil.Convert(request, detectVehicleReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	detectVehicleReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
-	detectVehicleResp, _err := client.DetectVehicleWithOptions(detectVehicleReq, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-
-	_result = detectVehicleResp
-	return _result, _err
-}
-
-func (client *Client) DetectVehicleIllegalParkingWithOptions(tmpReq *DetectVehicleIllegalParkingRequest, runtime *util.RuntimeOptions) (_result *DetectVehicleIllegalParkingResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &DetectVehicleIllegalParkingShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.RoadRegions)) {
-		request.RoadRegionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RoadRegions, tea.String("RoadRegions"), tea.String("json"))
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DetectVehicleIllegalParkingResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DetectVehicleIllegalParking"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DetectVehicleIllegalParking(request *DetectVehicleIllegalParkingRequest) (_result *DetectVehicleIllegalParkingResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DetectVehicleIllegalParkingResponse{}
-	_body, _err := client.DetectVehicleIllegalParkingWithOptions(request, runtime)
+	_result = &GetVehicleRepairPlanResponse{}
+	_body, _err := client.GetVehicleRepairPlanWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3322,148 +3471,5 @@ func (client *Client) RecognizeVehiclePartsAdvance(request *RecognizeVehiclePart
 	}
 
 	_result = recognizeVehiclePartsResp
-	return _result, _err
-}
-
-func (client *Client) GenerateVehicleRepairPlanWithOptions(request *GenerateVehicleRepairPlanRequest, runtime *util.RuntimeOptions) (_result *GenerateVehicleRepairPlanResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GenerateVehicleRepairPlanResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GenerateVehicleRepairPlan"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GenerateVehicleRepairPlan(request *GenerateVehicleRepairPlanRequest) (_result *GenerateVehicleRepairPlanResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GenerateVehicleRepairPlanResponse{}
-	_body, _err := client.GenerateVehicleRepairPlanWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DetectObjectWithOptions(request *DetectObjectRequest, runtime *util.RuntimeOptions) (_result *DetectObjectResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DetectObjectResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DetectObject"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DetectObject(request *DetectObjectRequest) (_result *DetectObjectResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DetectObjectResponse{}
-	_body, _err := client.DetectObjectWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DetectObjectAdvance(request *DetectObjectAdvanceRequest, runtime *util.RuntimeOptions) (_result *DetectObjectResponse, _err error) {
-	// Step 0: init client
-	accessKeyId, _err := client.Credential.GetAccessKeyId()
-	if _err != nil {
-		return _result, _err
-	}
-
-	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
-	if _err != nil {
-		return _result, _err
-	}
-
-	authConfig := &rpc.Config{
-		AccessKeyId:     accessKeyId,
-		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
-	}
-	authClient, _err := openplatform.NewClient(authConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	authRequest := &openplatform.AuthorizeFileUploadRequest{
-		Product:  tea.String("objectdet"),
-		RegionId: client.RegionId,
-	}
-	authResponse := &openplatform.AuthorizeFileUploadResponse{}
-	ossConfig := &oss.Config{
-		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
-	}
-	var ossClient *oss.Client
-	fileObj := &fileform.FileField{}
-	ossHeader := &oss.PostObjectRequestHeader{}
-	uploadRequest := &oss.PostObjectRequest{}
-	ossRuntime := &ossutil.RuntimeOptions{}
-	openapiutil.Convert(runtime, ossRuntime)
-	detectObjectReq := &DetectObjectRequest{}
-	openapiutil.Convert(request, detectObjectReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	detectObjectReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
-	detectObjectResp, _err := client.DetectObjectWithOptions(detectObjectReq, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-
-	_result = detectObjectResp
 	return _result, _err
 }
