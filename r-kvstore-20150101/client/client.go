@@ -782,6 +782,7 @@ type CreateInstanceRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Token                *string `json:"Token,omitempty" xml:"Token,omitempty"`
 	InstanceName         *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	Password             *string `json:"Password,omitempty" xml:"Password,omitempty"`
@@ -811,6 +812,7 @@ type CreateInstanceRequest struct {
 	ShardCount           *int32  `json:"ShardCount,omitempty" xml:"ShardCount,omitempty"`
 	GlobalInstanceId     *string `json:"GlobalInstanceId,omitempty" xml:"GlobalInstanceId,omitempty"`
 	GlobalInstance       *bool   `json:"GlobalInstance,omitempty" xml:"GlobalInstance,omitempty"`
+	SecondaryZoneId      *string `json:"SecondaryZoneId,omitempty" xml:"SecondaryZoneId,omitempty"`
 }
 
 func (s CreateInstanceRequest) String() string {
@@ -843,6 +845,11 @@ func (s *CreateInstanceRequest) SetResourceOwnerId(v int64) *CreateInstanceReque
 
 func (s *CreateInstanceRequest) SetOwnerAccount(v string) *CreateInstanceRequest {
 	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetRegionId(v string) *CreateInstanceRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -988,6 +995,11 @@ func (s *CreateInstanceRequest) SetGlobalInstanceId(v string) *CreateInstanceReq
 
 func (s *CreateInstanceRequest) SetGlobalInstance(v bool) *CreateInstanceRequest {
 	s.GlobalInstance = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetSecondaryZoneId(v string) *CreateInstanceRequest {
+	s.SecondaryZoneId = &v
 	return s
 }
 
@@ -1147,6 +1159,321 @@ func (s *CreateInstanceResponse) SetHeaders(v map[string]*string) *CreateInstanc
 }
 
 func (s *CreateInstanceResponse) SetBody(v *CreateInstanceResponseBody) *CreateInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type CreateTairInstanceRequest struct {
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	InstanceName         *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	Password             *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	InstanceClass        *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
+	ZoneId               *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ChargeType           *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VSwitchId            *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	Period               *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
+	BusinessInfo         *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
+	CouponNo             *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	SrcDBInstanceId      *string `json:"SrcDBInstanceId,omitempty" xml:"SrcDBInstanceId,omitempty"`
+	BackupId             *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	PrivateIpAddress     *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	AutoUseCoupon        *string `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
+	AutoRenew            *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	AutoRenewPeriod      *string `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
+	ResourceGroupId      *int32  `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	AutoPay              *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	StorageType          *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	Storage              *int32  `json:"Storage,omitempty" xml:"Storage,omitempty"`
+	ShardType            *string `json:"ShardType,omitempty" xml:"ShardType,omitempty"`
+	ShardCount           *int32  `json:"ShardCount,omitempty" xml:"ShardCount,omitempty"`
+	EngineVersion        *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	InstanceType         *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+}
+
+func (s CreateTairInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTairInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTairInstanceRequest) SetSecurityToken(v string) *CreateTairInstanceRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *CreateTairInstanceRequest) SetOwnerId(v int64) *CreateTairInstanceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateTairInstanceRequest) SetResourceOwnerAccount(v string) *CreateTairInstanceRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateTairInstanceRequest) SetResourceOwnerId(v int64) *CreateTairInstanceRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateTairInstanceRequest) SetOwnerAccount(v string) *CreateTairInstanceRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CreateTairInstanceRequest) SetRegionId(v string) *CreateTairInstanceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateTairInstanceRequest) SetInstanceName(v string) *CreateTairInstanceRequest {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *CreateTairInstanceRequest) SetPassword(v string) *CreateTairInstanceRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *CreateTairInstanceRequest) SetInstanceClass(v string) *CreateTairInstanceRequest {
+	s.InstanceClass = &v
+	return s
+}
+
+func (s *CreateTairInstanceRequest) SetZoneId(v string) *CreateTairInstanceRequest {
+	s.ZoneId = &v
+	return s
+}
+
+func (s *CreateTairInstanceRequest) SetChargeType(v string) *CreateTairInstanceRequest {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *CreateTairInstanceRequest) SetVpcId(v string) *CreateTairInstanceRequest {
+	s.VpcId = &v
+	return s
+}
+
+func (s *CreateTairInstanceRequest) SetVSwitchId(v string) *CreateTairInstanceRequest {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *CreateTairInstanceRequest) SetPeriod(v int32) *CreateTairInstanceRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *CreateTairInstanceRequest) SetBusinessInfo(v string) *CreateTairInstanceRequest {
+	s.BusinessInfo = &v
+	return s
+}
+
+func (s *CreateTairInstanceRequest) SetCouponNo(v string) *CreateTairInstanceRequest {
+	s.CouponNo = &v
+	return s
+}
+
+func (s *CreateTairInstanceRequest) SetSrcDBInstanceId(v string) *CreateTairInstanceRequest {
+	s.SrcDBInstanceId = &v
+	return s
+}
+
+func (s *CreateTairInstanceRequest) SetBackupId(v string) *CreateTairInstanceRequest {
+	s.BackupId = &v
+	return s
+}
+
+func (s *CreateTairInstanceRequest) SetPrivateIpAddress(v string) *CreateTairInstanceRequest {
+	s.PrivateIpAddress = &v
+	return s
+}
+
+func (s *CreateTairInstanceRequest) SetAutoUseCoupon(v string) *CreateTairInstanceRequest {
+	s.AutoUseCoupon = &v
+	return s
+}
+
+func (s *CreateTairInstanceRequest) SetAutoRenew(v string) *CreateTairInstanceRequest {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *CreateTairInstanceRequest) SetAutoRenewPeriod(v string) *CreateTairInstanceRequest {
+	s.AutoRenewPeriod = &v
+	return s
+}
+
+func (s *CreateTairInstanceRequest) SetResourceGroupId(v int32) *CreateTairInstanceRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateTairInstanceRequest) SetAutoPay(v bool) *CreateTairInstanceRequest {
+	s.AutoPay = &v
+	return s
+}
+
+func (s *CreateTairInstanceRequest) SetClientToken(v string) *CreateTairInstanceRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateTairInstanceRequest) SetStorageType(v string) *CreateTairInstanceRequest {
+	s.StorageType = &v
+	return s
+}
+
+func (s *CreateTairInstanceRequest) SetStorage(v int32) *CreateTairInstanceRequest {
+	s.Storage = &v
+	return s
+}
+
+func (s *CreateTairInstanceRequest) SetShardType(v string) *CreateTairInstanceRequest {
+	s.ShardType = &v
+	return s
+}
+
+func (s *CreateTairInstanceRequest) SetShardCount(v int32) *CreateTairInstanceRequest {
+	s.ShardCount = &v
+	return s
+}
+
+func (s *CreateTairInstanceRequest) SetEngineVersion(v string) *CreateTairInstanceRequest {
+	s.EngineVersion = &v
+	return s
+}
+
+func (s *CreateTairInstanceRequest) SetInstanceType(v string) *CreateTairInstanceRequest {
+	s.InstanceType = &v
+	return s
+}
+
+type CreateTairInstanceResponseBody struct {
+	Connections      *int64  `json:"Connections,omitempty" xml:"Connections,omitempty"`
+	TaskId           *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ZoneId           *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Config           *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	Port             *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	ConnectionDomain *string `json:"ConnectionDomain,omitempty" xml:"ConnectionDomain,omitempty"`
+	InstanceName     *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	QPS              *int64  `json:"QPS,omitempty" xml:"QPS,omitempty"`
+	ChargeType       *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	InstanceStatus   *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	Bandwidth        *int64  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CreateTairInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTairInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTairInstanceResponseBody) SetConnections(v int64) *CreateTairInstanceResponseBody {
+	s.Connections = &v
+	return s
+}
+
+func (s *CreateTairInstanceResponseBody) SetTaskId(v string) *CreateTairInstanceResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+func (s *CreateTairInstanceResponseBody) SetRequestId(v string) *CreateTairInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateTairInstanceResponseBody) SetZoneId(v string) *CreateTairInstanceResponseBody {
+	s.ZoneId = &v
+	return s
+}
+
+func (s *CreateTairInstanceResponseBody) SetInstanceId(v string) *CreateTairInstanceResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateTairInstanceResponseBody) SetConfig(v string) *CreateTairInstanceResponseBody {
+	s.Config = &v
+	return s
+}
+
+func (s *CreateTairInstanceResponseBody) SetPort(v int32) *CreateTairInstanceResponseBody {
+	s.Port = &v
+	return s
+}
+
+func (s *CreateTairInstanceResponseBody) SetConnectionDomain(v string) *CreateTairInstanceResponseBody {
+	s.ConnectionDomain = &v
+	return s
+}
+
+func (s *CreateTairInstanceResponseBody) SetInstanceName(v string) *CreateTairInstanceResponseBody {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *CreateTairInstanceResponseBody) SetQPS(v int64) *CreateTairInstanceResponseBody {
+	s.QPS = &v
+	return s
+}
+
+func (s *CreateTairInstanceResponseBody) SetChargeType(v string) *CreateTairInstanceResponseBody {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *CreateTairInstanceResponseBody) SetInstanceStatus(v string) *CreateTairInstanceResponseBody {
+	s.InstanceStatus = &v
+	return s
+}
+
+func (s *CreateTairInstanceResponseBody) SetBandwidth(v int64) *CreateTairInstanceResponseBody {
+	s.Bandwidth = &v
+	return s
+}
+
+func (s *CreateTairInstanceResponseBody) SetRegionId(v string) *CreateTairInstanceResponseBody {
+	s.RegionId = &v
+	return s
+}
+
+type CreateTairInstanceResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateTairInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateTairInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTairInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTairInstanceResponse) SetHeaders(v map[string]*string) *CreateTairInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateTairInstanceResponse) SetBody(v *CreateTairInstanceResponseBody) *CreateTairInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -2398,519 +2725,6 @@ func (s *DescribeAuditRecordsResponse) SetBody(v *DescribeAuditRecordsResponseBo
 	return s
 }
 
-type DescribeAvailableResourceRequest struct {
-	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ZoneId               *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	InstanceChargeType   *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	OrderType            *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	Level                *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	Engine               *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	AcceptLanguage       *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-}
-
-func (s DescribeAvailableResourceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAvailableResourceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAvailableResourceRequest) SetSecurityToken(v string) *DescribeAvailableResourceRequest {
-	s.SecurityToken = &v
-	return s
-}
-
-func (s *DescribeAvailableResourceRequest) SetOwnerId(v int64) *DescribeAvailableResourceRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeAvailableResourceRequest) SetResourceOwnerAccount(v string) *DescribeAvailableResourceRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *DescribeAvailableResourceRequest) SetResourceOwnerId(v int64) *DescribeAvailableResourceRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *DescribeAvailableResourceRequest) SetOwnerAccount(v string) *DescribeAvailableResourceRequest {
-	s.OwnerAccount = &v
-	return s
-}
-
-func (s *DescribeAvailableResourceRequest) SetRegionId(v string) *DescribeAvailableResourceRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeAvailableResourceRequest) SetZoneId(v string) *DescribeAvailableResourceRequest {
-	s.ZoneId = &v
-	return s
-}
-
-func (s *DescribeAvailableResourceRequest) SetInstanceChargeType(v string) *DescribeAvailableResourceRequest {
-	s.InstanceChargeType = &v
-	return s
-}
-
-func (s *DescribeAvailableResourceRequest) SetOrderType(v string) *DescribeAvailableResourceRequest {
-	s.OrderType = &v
-	return s
-}
-
-func (s *DescribeAvailableResourceRequest) SetLevel(v string) *DescribeAvailableResourceRequest {
-	s.Level = &v
-	return s
-}
-
-func (s *DescribeAvailableResourceRequest) SetEngine(v string) *DescribeAvailableResourceRequest {
-	s.Engine = &v
-	return s
-}
-
-func (s *DescribeAvailableResourceRequest) SetResourceGroupId(v string) *DescribeAvailableResourceRequest {
-	s.ResourceGroupId = &v
-	return s
-}
-
-func (s *DescribeAvailableResourceRequest) SetInstanceId(v string) *DescribeAvailableResourceRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DescribeAvailableResourceRequest) SetAcceptLanguage(v string) *DescribeAvailableResourceRequest {
-	s.AcceptLanguage = &v
-	return s
-}
-
-type DescribeAvailableResourceResponseBody struct {
-	RequestId      *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	AvailableZones *DescribeAvailableResourceResponseBodyAvailableZones `json:"AvailableZones,omitempty" xml:"AvailableZones,omitempty" type:"Struct"`
-}
-
-func (s DescribeAvailableResourceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAvailableResourceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAvailableResourceResponseBody) SetRequestId(v string) *DescribeAvailableResourceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeAvailableResourceResponseBody) SetAvailableZones(v *DescribeAvailableResourceResponseBodyAvailableZones) *DescribeAvailableResourceResponseBody {
-	s.AvailableZones = v
-	return s
-}
-
-type DescribeAvailableResourceResponseBodyAvailableZones struct {
-	AvailableZone []*DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone `json:"AvailableZone,omitempty" xml:"AvailableZone,omitempty" type:"Repeated"`
-}
-
-func (s DescribeAvailableResourceResponseBodyAvailableZones) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAvailableResourceResponseBodyAvailableZones) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAvailableResourceResponseBodyAvailableZones) SetAvailableZone(v []*DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone) *DescribeAvailableResourceResponseBodyAvailableZones {
-	s.AvailableZone = v
-	return s
-}
-
-type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone struct {
-	SupportedEngines *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEngines `json:"SupportedEngines,omitempty" xml:"SupportedEngines,omitempty" type:"Struct"`
-	ZoneId           *string                                                                           `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	ZoneName         *string                                                                           `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
-	RegionId         *string                                                                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone) SetSupportedEngines(v *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEngines) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone {
-	s.SupportedEngines = v
-	return s
-}
-
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone) SetZoneId(v string) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone {
-	s.ZoneId = &v
-	return s
-}
-
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone) SetZoneName(v string) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone {
-	s.ZoneName = &v
-	return s
-}
-
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone) SetRegionId(v string) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone {
-	s.RegionId = &v
-	return s
-}
-
-type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEngines struct {
-	SupportedEngine []*DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngine `json:"SupportedEngine,omitempty" xml:"SupportedEngine,omitempty" type:"Repeated"`
-}
-
-func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEngines) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEngines) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEngines) SetSupportedEngine(v []*DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngine) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEngines {
-	s.SupportedEngine = v
-	return s
-}
-
-type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngine struct {
-	Engine                *string                                                                                                               `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	SupportedEditionTypes *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypes `json:"SupportedEditionTypes,omitempty" xml:"SupportedEditionTypes,omitempty" type:"Struct"`
-}
-
-func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngine) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngine) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngine) SetEngine(v string) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngine {
-	s.Engine = &v
-	return s
-}
-
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngine) SetSupportedEditionTypes(v *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypes) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngine {
-	s.SupportedEditionTypes = v
-	return s
-}
-
-type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypes struct {
-	SupportedEditionType []*DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionType `json:"SupportedEditionType,omitempty" xml:"SupportedEditionType,omitempty" type:"Repeated"`
-}
-
-func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypes) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypes) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypes) SetSupportedEditionType(v []*DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionType) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypes {
-	s.SupportedEditionType = v
-	return s
-}
-
-type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionType struct {
-	SupportedSeriesTypes *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypes `json:"SupportedSeriesTypes,omitempty" xml:"SupportedSeriesTypes,omitempty" type:"Struct"`
-	EditionType          *string                                                                                                                                                       `json:"EditionType,omitempty" xml:"EditionType,omitempty"`
-}
-
-func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionType) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionType) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionType) SetSupportedSeriesTypes(v *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypes) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionType {
-	s.SupportedSeriesTypes = v
-	return s
-}
-
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionType) SetEditionType(v string) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionType {
-	s.EditionType = &v
-	return s
-}
-
-type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypes struct {
-	SupportedSeriesType []*DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesType `json:"SupportedSeriesType,omitempty" xml:"SupportedSeriesType,omitempty" type:"Repeated"`
-}
-
-func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypes) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypes) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypes) SetSupportedSeriesType(v []*DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesType) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypes {
-	s.SupportedSeriesType = v
-	return s
-}
-
-type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesType struct {
-	SupportedEngineVersions *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersions `json:"SupportedEngineVersions,omitempty" xml:"SupportedEngineVersions,omitempty" type:"Struct"`
-	SeriesType              *string                                                                                                                                                                                                 `json:"SeriesType,omitempty" xml:"SeriesType,omitempty"`
-}
-
-func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesType) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesType) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesType) SetSupportedEngineVersions(v *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersions) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesType {
-	s.SupportedEngineVersions = v
-	return s
-}
-
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesType) SetSeriesType(v string) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesType {
-	s.SeriesType = &v
-	return s
-}
-
-type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersions struct {
-	SupportedEngineVersion []*DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersion `json:"SupportedEngineVersion,omitempty" xml:"SupportedEngineVersion,omitempty" type:"Repeated"`
-}
-
-func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersions) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersions) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersions) SetSupportedEngineVersion(v []*DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersion) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersions {
-	s.SupportedEngineVersion = v
-	return s
-}
-
-type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersion struct {
-	SupportedArchitectureTypes *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypes `json:"SupportedArchitectureTypes,omitempty" xml:"SupportedArchitectureTypes,omitempty" type:"Struct"`
-	Version                    *string                                                                                                                                                                                                                                                 `json:"Version,omitempty" xml:"Version,omitempty"`
-}
-
-func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersion) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersion) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersion) SetSupportedArchitectureTypes(v *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypes) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersion {
-	s.SupportedArchitectureTypes = v
-	return s
-}
-
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersion) SetVersion(v string) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersion {
-	s.Version = &v
-	return s
-}
-
-type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypes struct {
-	SupportedArchitectureType []*DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureType `json:"SupportedArchitectureType,omitempty" xml:"SupportedArchitectureType,omitempty" type:"Repeated"`
-}
-
-func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypes) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypes) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypes) SetSupportedArchitectureType(v []*DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureType) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypes {
-	s.SupportedArchitectureType = v
-	return s
-}
-
-type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureType struct {
-	SupportedShardNumbers *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbers `json:"SupportedShardNumbers,omitempty" xml:"SupportedShardNumbers,omitempty" type:"Struct"`
-	Architecture          *string                                                                                                                                                                                                                                                                                               `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
-}
-
-func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureType) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureType) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureType) SetSupportedShardNumbers(v *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbers) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureType {
-	s.SupportedShardNumbers = v
-	return s
-}
-
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureType) SetArchitecture(v string) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureType {
-	s.Architecture = &v
-	return s
-}
-
-type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbers struct {
-	SupportedShardNumber []*DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumber `json:"SupportedShardNumber,omitempty" xml:"SupportedShardNumber,omitempty" type:"Repeated"`
-}
-
-func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbers) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbers) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbers) SetSupportedShardNumber(v []*DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumber) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbers {
-	s.SupportedShardNumber = v
-	return s
-}
-
-type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumber struct {
-	SupportedNodeTypes *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumberSupportedNodeTypes `json:"SupportedNodeTypes,omitempty" xml:"SupportedNodeTypes,omitempty" type:"Struct"`
-	ShardNumber        *string                                                                                                                                                                                                                                                                                                                                     `json:"ShardNumber,omitempty" xml:"ShardNumber,omitempty"`
-}
-
-func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumber) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumber) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumber) SetSupportedNodeTypes(v *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumberSupportedNodeTypes) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumber {
-	s.SupportedNodeTypes = v
-	return s
-}
-
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumber) SetShardNumber(v string) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumber {
-	s.ShardNumber = &v
-	return s
-}
-
-type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumberSupportedNodeTypes struct {
-	SupportedNodeType []*DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumberSupportedNodeTypesSupportedNodeType `json:"SupportedNodeType,omitempty" xml:"SupportedNodeType,omitempty" type:"Repeated"`
-}
-
-func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumberSupportedNodeTypes) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumberSupportedNodeTypes) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumberSupportedNodeTypes) SetSupportedNodeType(v []*DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumberSupportedNodeTypesSupportedNodeType) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumberSupportedNodeTypes {
-	s.SupportedNodeType = v
-	return s
-}
-
-type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumberSupportedNodeTypesSupportedNodeType struct {
-	SupportedNodeType  *string                                                                                                                                                                                                                                                                                                                                                                        `json:"SupportedNodeType,omitempty" xml:"SupportedNodeType,omitempty"`
-	AvailableResources *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumberSupportedNodeTypesSupportedNodeTypeAvailableResources `json:"AvailableResources,omitempty" xml:"AvailableResources,omitempty" type:"Struct"`
-}
-
-func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumberSupportedNodeTypesSupportedNodeType) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumberSupportedNodeTypesSupportedNodeType) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumberSupportedNodeTypesSupportedNodeType) SetSupportedNodeType(v string) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumberSupportedNodeTypesSupportedNodeType {
-	s.SupportedNodeType = &v
-	return s
-}
-
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumberSupportedNodeTypesSupportedNodeType) SetAvailableResources(v *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumberSupportedNodeTypesSupportedNodeTypeAvailableResources) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumberSupportedNodeTypesSupportedNodeType {
-	s.AvailableResources = v
-	return s
-}
-
-type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumberSupportedNodeTypesSupportedNodeTypeAvailableResources struct {
-	AvailableResource []*DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumberSupportedNodeTypesSupportedNodeTypeAvailableResourcesAvailableResource `json:"AvailableResource,omitempty" xml:"AvailableResource,omitempty" type:"Repeated"`
-}
-
-func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumberSupportedNodeTypesSupportedNodeTypeAvailableResources) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumberSupportedNodeTypesSupportedNodeTypeAvailableResources) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumberSupportedNodeTypesSupportedNodeTypeAvailableResources) SetAvailableResource(v []*DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumberSupportedNodeTypesSupportedNodeTypeAvailableResourcesAvailableResource) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumberSupportedNodeTypesSupportedNodeTypeAvailableResources {
-	s.AvailableResource = v
-	return s
-}
-
-type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumberSupportedNodeTypesSupportedNodeTypeAvailableResourcesAvailableResource struct {
-	InstanceClassRemark *string `json:"InstanceClassRemark,omitempty" xml:"InstanceClassRemark,omitempty"`
-	InstanceClass       *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-}
-
-func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumberSupportedNodeTypesSupportedNodeTypeAvailableResourcesAvailableResource) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumberSupportedNodeTypesSupportedNodeTypeAvailableResourcesAvailableResource) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumberSupportedNodeTypesSupportedNodeTypeAvailableResourcesAvailableResource) SetInstanceClassRemark(v string) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumberSupportedNodeTypesSupportedNodeTypeAvailableResourcesAvailableResource {
-	s.InstanceClassRemark = &v
-	return s
-}
-
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumberSupportedNodeTypesSupportedNodeTypeAvailableResourcesAvailableResource) SetInstanceClass(v string) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEditionTypesSupportedEditionTypeSupportedSeriesTypesSupportedSeriesTypeSupportedEngineVersionsSupportedEngineVersionSupportedArchitectureTypesSupportedArchitectureTypeSupportedShardNumbersSupportedShardNumberSupportedNodeTypesSupportedNodeTypeAvailableResourcesAvailableResource {
-	s.InstanceClass = &v
-	return s
-}
-
-type DescribeAvailableResourceResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeAvailableResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeAvailableResourceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAvailableResourceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAvailableResourceResponse) SetHeaders(v map[string]*string) *DescribeAvailableResourceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeAvailableResourceResponse) SetBody(v *DescribeAvailableResourceResponseBody) *DescribeAvailableResourceResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeBackupPolicyRequest struct {
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -3912,6 +3726,7 @@ type DescribeClusterMemberInfoResponseBodyClusterChildren struct {
 	UserId              *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	DiskSizeMB          *int32  `json:"DiskSizeMB,omitempty" xml:"DiskSizeMB,omitempty"`
 	BandWidth           *int64  `json:"BandWidth,omitempty" xml:"BandWidth,omitempty"`
+	CurrentBandWidth    *int64  `json:"CurrentBandWidth,omitempty" xml:"CurrentBandWidth,omitempty"`
 	ClassCode           *string `json:"ClassCode,omitempty" xml:"ClassCode,omitempty"`
 	BizType             *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	Service             *string `json:"Service,omitempty" xml:"Service,omitempty"`
@@ -3949,6 +3764,11 @@ func (s *DescribeClusterMemberInfoResponseBodyClusterChildren) SetDiskSizeMB(v i
 
 func (s *DescribeClusterMemberInfoResponseBodyClusterChildren) SetBandWidth(v int64) *DescribeClusterMemberInfoResponseBodyClusterChildren {
 	s.BandWidth = &v
+	return s
+}
+
+func (s *DescribeClusterMemberInfoResponseBodyClusterChildren) SetCurrentBandWidth(v int64) *DescribeClusterMemberInfoResponseBodyClusterChildren {
+	s.CurrentBandWidth = &v
 	return s
 }
 
@@ -4372,6 +4192,8 @@ type DescribeDedicatedClusterInstanceListResponseBodyInstances struct {
 	StorageType       *string                                                                      `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	InstanceNodeList  []*DescribeDedicatedClusterInstanceListResponseBodyInstancesInstanceNodeList `json:"InstanceNodeList,omitempty" xml:"InstanceNodeList,omitempty" type:"Repeated"`
 	InstanceId        *string                                                                      `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	BandWidth         *int64                                                                       `json:"BandWidth,omitempty" xml:"BandWidth,omitempty"`
+	CurrentBandWidth  *int64                                                                       `json:"CurrentBandWidth,omitempty" xml:"CurrentBandWidth,omitempty"`
 	EngineVersion     *string                                                                      `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	RegionId          *string                                                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	InstanceName      *string                                                                      `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
@@ -4444,6 +4266,16 @@ func (s *DescribeDedicatedClusterInstanceListResponseBodyInstances) SetInstanceN
 
 func (s *DescribeDedicatedClusterInstanceListResponseBodyInstances) SetInstanceId(v string) *DescribeDedicatedClusterInstanceListResponseBodyInstances {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeDedicatedClusterInstanceListResponseBodyInstances) SetBandWidth(v int64) *DescribeDedicatedClusterInstanceListResponseBodyInstances {
+	s.BandWidth = &v
+	return s
+}
+
+func (s *DescribeDedicatedClusterInstanceListResponseBodyInstances) SetCurrentBandWidth(v int64) *DescribeDedicatedClusterInstanceListResponseBodyInstances {
+	s.CurrentBandWidth = &v
 	return s
 }
 
@@ -5759,6 +5591,7 @@ type DescribeInstancesRequest struct {
 	ResourceOwnerAccount *string                        `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64                         `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	OwnerAccount         *string                        `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	RegionId             *string                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	InstanceIds          *string                        `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 	InstanceStatus       *string                        `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
 	ChargeType           *string                        `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
@@ -5811,6 +5644,11 @@ func (s *DescribeInstancesRequest) SetResourceOwnerId(v int64) *DescribeInstance
 
 func (s *DescribeInstancesRequest) SetOwnerAccount(v string) *DescribeInstancesRequest {
 	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeInstancesRequest) SetRegionId(v string) *DescribeInstancesRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -6444,9 +6282,10 @@ func (s *DescribeIntranetAttributeRequest) SetResourceGroupId(v string) *Describ
 }
 
 type DescribeIntranetAttributeResponseBody struct {
-	IntranetBandwidth *int32  `json:"IntranetBandwidth,omitempty" xml:"IntranetBandwidth,omitempty"`
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ExpireTime        *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	IntranetBandwidth   *int32  `json:"IntranetBandwidth,omitempty" xml:"IntranetBandwidth,omitempty"`
+	BandwidthExpireTime *string `json:"BandwidthExpireTime,omitempty" xml:"BandwidthExpireTime,omitempty"`
+	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ExpireTime          *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 }
 
 func (s DescribeIntranetAttributeResponseBody) String() string {
@@ -6459,6 +6298,11 @@ func (s DescribeIntranetAttributeResponseBody) GoString() string {
 
 func (s *DescribeIntranetAttributeResponseBody) SetIntranetBandwidth(v int32) *DescribeIntranetAttributeResponseBody {
 	s.IntranetBandwidth = &v
+	return s
+}
+
+func (s *DescribeIntranetAttributeResponseBody) SetBandwidthExpireTime(v string) *DescribeIntranetAttributeResponseBody {
+	s.BandwidthExpireTime = &v
 	return s
 }
 
@@ -7287,6 +7131,7 @@ type DescribePriceRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Capacity             *int64  `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
 	InstanceClass        *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
 	OrderType            *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
@@ -7333,6 +7178,11 @@ func (s *DescribePriceRequest) SetResourceOwnerId(v int64) *DescribePriceRequest
 
 func (s *DescribePriceRequest) SetOwnerAccount(v string) *DescribePriceRequest {
 	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribePriceRequest) SetRegionId(v string) *DescribePriceRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -7887,6 +7737,7 @@ type DescribeRoleZoneInfoRequest struct {
 	QueryType            *int32  `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
 	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Role                 *string `json:"Role,omitempty" xml:"Role,omitempty"`
 }
 
 func (s DescribeRoleZoneInfoRequest) String() string {
@@ -7952,6 +7803,11 @@ func (s *DescribeRoleZoneInfoRequest) SetPageSize(v int32) *DescribeRoleZoneInfo
 	return s
 }
 
+func (s *DescribeRoleZoneInfoRequest) SetRole(v string) *DescribeRoleZoneInfoRequest {
+	s.Role = &v
+	return s
+}
+
 type DescribeRoleZoneInfoResponseBody struct {
 	TotalCount *int32                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -8011,15 +7867,18 @@ func (s *DescribeRoleZoneInfoResponseBodyNode) SetNodeInfo(v []*DescribeRoleZone
 }
 
 type DescribeRoleZoneInfoResponseBodyNodeNodeInfo struct {
-	CurrentMinorVersion *string `json:"CurrentMinorVersion,omitempty" xml:"CurrentMinorVersion,omitempty"`
-	InsType             *int32  `json:"InsType,omitempty" xml:"InsType,omitempty"`
-	IsLatestVersion     *int32  `json:"IsLatestVersion,omitempty" xml:"IsLatestVersion,omitempty"`
-	InsName             *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
-	NodeType            *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	ZoneId              *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	Role                *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	CustinsId           *string `json:"CustinsId,omitempty" xml:"CustinsId,omitempty"`
-	NodeId              *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	DefaultBandWidth       *int64  `json:"DefaultBandWidth,omitempty" xml:"DefaultBandWidth,omitempty"`
+	CurrentMinorVersion    *string `json:"CurrentMinorVersion,omitempty" xml:"CurrentMinorVersion,omitempty"`
+	CurrentBandWidth       *int64  `json:"CurrentBandWidth,omitempty" xml:"CurrentBandWidth,omitempty"`
+	InsType                *int32  `json:"InsType,omitempty" xml:"InsType,omitempty"`
+	IsLatestVersion        *int32  `json:"IsLatestVersion,omitempty" xml:"IsLatestVersion,omitempty"`
+	NodeType               *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	InsName                *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
+	ZoneId                 *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	IsOpenBandWidthService *bool   `json:"IsOpenBandWidthService,omitempty" xml:"IsOpenBandWidthService,omitempty"`
+	CustinsId              *string `json:"CustinsId,omitempty" xml:"CustinsId,omitempty"`
+	Role                   *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	NodeId                 *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 }
 
 func (s DescribeRoleZoneInfoResponseBodyNodeNodeInfo) String() string {
@@ -8030,8 +7889,18 @@ func (s DescribeRoleZoneInfoResponseBodyNodeNodeInfo) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeRoleZoneInfoResponseBodyNodeNodeInfo) SetDefaultBandWidth(v int64) *DescribeRoleZoneInfoResponseBodyNodeNodeInfo {
+	s.DefaultBandWidth = &v
+	return s
+}
+
 func (s *DescribeRoleZoneInfoResponseBodyNodeNodeInfo) SetCurrentMinorVersion(v string) *DescribeRoleZoneInfoResponseBodyNodeNodeInfo {
 	s.CurrentMinorVersion = &v
+	return s
+}
+
+func (s *DescribeRoleZoneInfoResponseBodyNodeNodeInfo) SetCurrentBandWidth(v int64) *DescribeRoleZoneInfoResponseBodyNodeNodeInfo {
+	s.CurrentBandWidth = &v
 	return s
 }
 
@@ -8045,13 +7914,13 @@ func (s *DescribeRoleZoneInfoResponseBodyNodeNodeInfo) SetIsLatestVersion(v int3
 	return s
 }
 
-func (s *DescribeRoleZoneInfoResponseBodyNodeNodeInfo) SetInsName(v string) *DescribeRoleZoneInfoResponseBodyNodeNodeInfo {
-	s.InsName = &v
+func (s *DescribeRoleZoneInfoResponseBodyNodeNodeInfo) SetNodeType(v string) *DescribeRoleZoneInfoResponseBodyNodeNodeInfo {
+	s.NodeType = &v
 	return s
 }
 
-func (s *DescribeRoleZoneInfoResponseBodyNodeNodeInfo) SetNodeType(v string) *DescribeRoleZoneInfoResponseBodyNodeNodeInfo {
-	s.NodeType = &v
+func (s *DescribeRoleZoneInfoResponseBodyNodeNodeInfo) SetInsName(v string) *DescribeRoleZoneInfoResponseBodyNodeNodeInfo {
+	s.InsName = &v
 	return s
 }
 
@@ -8060,13 +7929,18 @@ func (s *DescribeRoleZoneInfoResponseBodyNodeNodeInfo) SetZoneId(v string) *Desc
 	return s
 }
 
-func (s *DescribeRoleZoneInfoResponseBodyNodeNodeInfo) SetRole(v string) *DescribeRoleZoneInfoResponseBodyNodeNodeInfo {
-	s.Role = &v
+func (s *DescribeRoleZoneInfoResponseBodyNodeNodeInfo) SetIsOpenBandWidthService(v bool) *DescribeRoleZoneInfoResponseBodyNodeNodeInfo {
+	s.IsOpenBandWidthService = &v
 	return s
 }
 
 func (s *DescribeRoleZoneInfoResponseBodyNodeNodeInfo) SetCustinsId(v string) *DescribeRoleZoneInfoResponseBodyNodeNodeInfo {
 	s.CustinsId = &v
+	return s
+}
+
+func (s *DescribeRoleZoneInfoResponseBodyNodeNodeInfo) SetRole(v string) *DescribeRoleZoneInfoResponseBodyNodeNodeInfo {
+	s.Role = &v
 	return s
 }
 
@@ -9796,6 +9670,129 @@ func (s *DescribeZonesResponse) SetHeaders(v map[string]*string) *DescribeZonesR
 }
 
 func (s *DescribeZonesResponse) SetBody(v *DescribeZonesResponseBody) *DescribeZonesResponse {
+	s.Body = v
+	return s
+}
+
+type EnableAdditionalBandwidthRequest struct {
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	CouponNo             *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	AutoPay              *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	NodeId               *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	Bandwidth            *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	OrderTimeLength      *string `json:"OrderTimeLength,omitempty" xml:"OrderTimeLength,omitempty"`
+}
+
+func (s EnableAdditionalBandwidthRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableAdditionalBandwidthRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EnableAdditionalBandwidthRequest) SetSecurityToken(v string) *EnableAdditionalBandwidthRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *EnableAdditionalBandwidthRequest) SetOwnerId(v int64) *EnableAdditionalBandwidthRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *EnableAdditionalBandwidthRequest) SetResourceOwnerAccount(v string) *EnableAdditionalBandwidthRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *EnableAdditionalBandwidthRequest) SetResourceOwnerId(v int64) *EnableAdditionalBandwidthRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *EnableAdditionalBandwidthRequest) SetOwnerAccount(v string) *EnableAdditionalBandwidthRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *EnableAdditionalBandwidthRequest) SetInstanceId(v string) *EnableAdditionalBandwidthRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *EnableAdditionalBandwidthRequest) SetCouponNo(v string) *EnableAdditionalBandwidthRequest {
+	s.CouponNo = &v
+	return s
+}
+
+func (s *EnableAdditionalBandwidthRequest) SetAutoPay(v bool) *EnableAdditionalBandwidthRequest {
+	s.AutoPay = &v
+	return s
+}
+
+func (s *EnableAdditionalBandwidthRequest) SetNodeId(v string) *EnableAdditionalBandwidthRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *EnableAdditionalBandwidthRequest) SetBandwidth(v string) *EnableAdditionalBandwidthRequest {
+	s.Bandwidth = &v
+	return s
+}
+
+func (s *EnableAdditionalBandwidthRequest) SetOrderTimeLength(v string) *EnableAdditionalBandwidthRequest {
+	s.OrderTimeLength = &v
+	return s
+}
+
+type EnableAdditionalBandwidthResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+}
+
+func (s EnableAdditionalBandwidthResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableAdditionalBandwidthResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EnableAdditionalBandwidthResponseBody) SetRequestId(v string) *EnableAdditionalBandwidthResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *EnableAdditionalBandwidthResponseBody) SetOrderId(v string) *EnableAdditionalBandwidthResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+type EnableAdditionalBandwidthResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *EnableAdditionalBandwidthResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s EnableAdditionalBandwidthResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableAdditionalBandwidthResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EnableAdditionalBandwidthResponse) SetHeaders(v map[string]*string) *EnableAdditionalBandwidthResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EnableAdditionalBandwidthResponse) SetBody(v *EnableAdditionalBandwidthResponseBody) *EnableAdditionalBandwidthResponse {
 	s.Body = v
 	return s
 }
@@ -12274,6 +12271,8 @@ type ModifyIntranetAttributeRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	BandWidth            *int64  `json:"BandWidth,omitempty" xml:"BandWidth,omitempty"`
+	NodeId               *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 }
 
 func (s ModifyIntranetAttributeRequest) String() string {
@@ -12311,6 +12310,16 @@ func (s *ModifyIntranetAttributeRequest) SetOwnerAccount(v string) *ModifyIntran
 
 func (s *ModifyIntranetAttributeRequest) SetInstanceId(v string) *ModifyIntranetAttributeRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyIntranetAttributeRequest) SetBandWidth(v int64) *ModifyIntranetAttributeRequest {
+	s.BandWidth = &v
+	return s
+}
+
+func (s *ModifyIntranetAttributeRequest) SetNodeId(v string) *ModifyIntranetAttributeRequest {
+	s.NodeId = &v
 	return s
 }
 
@@ -14693,6 +14702,34 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 	return _result, _err
 }
 
+func (client *Client) CreateTairInstanceWithOptions(request *CreateTairInstanceRequest, runtime *util.RuntimeOptions) (_result *CreateTairInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateTairInstanceResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateTairInstance"), tea.String("2015-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateTairInstance(request *CreateTairInstanceRequest) (_result *CreateTairInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateTairInstanceResponse{}
+	_body, _err := client.CreateTairInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateUserClusterHostWithOptions(request *CreateUserClusterHostRequest, runtime *util.RuntimeOptions) (_result *CreateUserClusterHostResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14910,34 +14947,6 @@ func (client *Client) DescribeAuditRecords(request *DescribeAuditRecordsRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAuditRecordsResponse{}
 	_body, _err := client.DescribeAuditRecordsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeAvailableResourceWithOptions(request *DescribeAvailableResourceRequest, runtime *util.RuntimeOptions) (_result *DescribeAvailableResourceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeAvailableResourceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeAvailableResource"), tea.String("2015-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeAvailableResource(request *DescribeAvailableResourceRequest) (_result *DescribeAvailableResourceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeAvailableResourceResponse{}
-	_body, _err := client.DescribeAvailableResourceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15834,6 +15843,34 @@ func (client *Client) DescribeZones(request *DescribeZonesRequest) (_result *Des
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeZonesResponse{}
 	_body, _err := client.DescribeZonesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) EnableAdditionalBandwidthWithOptions(request *EnableAdditionalBandwidthRequest, runtime *util.RuntimeOptions) (_result *EnableAdditionalBandwidthResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &EnableAdditionalBandwidthResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("EnableAdditionalBandwidth"), tea.String("2015-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) EnableAdditionalBandwidth(request *EnableAdditionalBandwidthRequest) (_result *EnableAdditionalBandwidthResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EnableAdditionalBandwidthResponse{}
+	_body, _err := client.EnableAdditionalBandwidthWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
