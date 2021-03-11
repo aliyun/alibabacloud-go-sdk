@@ -3910,14 +3910,16 @@ func (s *GetResultResponseBodyData) SetResultInfo(v []*GetResultResponseBodyData
 
 type GetResultResponseBodyDataResultInfo struct {
 	Status         *int32                                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	AssignmentTime *string                                       `json:"AssignmentTime,omitempty" xml:"AssignmentTime,omitempty"`
+	LastDataId     *string                                       `json:"LastDataId,omitempty" xml:"LastDataId,omitempty"`
 	ErrorMessage   *string                                       `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Reviewer       *string                                       `json:"Reviewer,omitempty" xml:"Reviewer,omitempty"`
-	CreateTime     *string                                       `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	ReviewStatus   *int32                                        `json:"ReviewStatus,omitempty" xml:"ReviewStatus,omitempty"`
+	CreateTime     *string                                       `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Reviewer       *string                                       `json:"Reviewer,omitempty" xml:"Reviewer,omitempty"`
 	TaskName       *string                                       `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	ReviewTimeLong *string                                       `json:"ReviewTimeLong,omitempty" xml:"ReviewTimeLong,omitempty"`
-	ReviewResult   *int32                                        `json:"ReviewResult,omitempty" xml:"ReviewResult,omitempty"`
 	Score          *int32                                        `json:"Score,omitempty" xml:"Score,omitempty"`
+	ReviewResult   *int32                                        `json:"ReviewResult,omitempty" xml:"ReviewResult,omitempty"`
 	Agent          *GetResultResponseBodyDataResultInfoAgent     `json:"Agent,omitempty" xml:"Agent,omitempty" type:"Struct"`
 	CreateTimeLong *string                                       `json:"CreateTimeLong,omitempty" xml:"CreateTimeLong,omitempty"`
 	AsrResult      *GetResultResponseBodyDataResultInfoAsrResult `json:"AsrResult,omitempty" xml:"AsrResult,omitempty" type:"Struct"`
@@ -3927,6 +3929,7 @@ type GetResultResponseBodyDataResultInfo struct {
 	HitResult      *GetResultResponseBodyDataResultInfoHitResult `json:"HitResult,omitempty" xml:"HitResult,omitempty" type:"Struct"`
 	Recording      *GetResultResponseBodyDataResultInfoRecording `json:"Recording,omitempty" xml:"Recording,omitempty" type:"Struct"`
 	TaskId         *string                                       `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	ReviewType     *int32                                        `json:"ReviewType,omitempty" xml:"ReviewType,omitempty"`
 	Resolver       *string                                       `json:"Resolver,omitempty" xml:"Resolver,omitempty"`
 }
 
@@ -3943,13 +3946,23 @@ func (s *GetResultResponseBodyDataResultInfo) SetStatus(v int32) *GetResultRespo
 	return s
 }
 
+func (s *GetResultResponseBodyDataResultInfo) SetAssignmentTime(v string) *GetResultResponseBodyDataResultInfo {
+	s.AssignmentTime = &v
+	return s
+}
+
+func (s *GetResultResponseBodyDataResultInfo) SetLastDataId(v string) *GetResultResponseBodyDataResultInfo {
+	s.LastDataId = &v
+	return s
+}
+
 func (s *GetResultResponseBodyDataResultInfo) SetErrorMessage(v string) *GetResultResponseBodyDataResultInfo {
 	s.ErrorMessage = &v
 	return s
 }
 
-func (s *GetResultResponseBodyDataResultInfo) SetReviewer(v string) *GetResultResponseBodyDataResultInfo {
-	s.Reviewer = &v
+func (s *GetResultResponseBodyDataResultInfo) SetReviewStatus(v int32) *GetResultResponseBodyDataResultInfo {
+	s.ReviewStatus = &v
 	return s
 }
 
@@ -3958,8 +3971,8 @@ func (s *GetResultResponseBodyDataResultInfo) SetCreateTime(v string) *GetResult
 	return s
 }
 
-func (s *GetResultResponseBodyDataResultInfo) SetReviewStatus(v int32) *GetResultResponseBodyDataResultInfo {
-	s.ReviewStatus = &v
+func (s *GetResultResponseBodyDataResultInfo) SetReviewer(v string) *GetResultResponseBodyDataResultInfo {
+	s.Reviewer = &v
 	return s
 }
 
@@ -3973,13 +3986,13 @@ func (s *GetResultResponseBodyDataResultInfo) SetReviewTimeLong(v string) *GetRe
 	return s
 }
 
-func (s *GetResultResponseBodyDataResultInfo) SetReviewResult(v int32) *GetResultResponseBodyDataResultInfo {
-	s.ReviewResult = &v
+func (s *GetResultResponseBodyDataResultInfo) SetScore(v int32) *GetResultResponseBodyDataResultInfo {
+	s.Score = &v
 	return s
 }
 
-func (s *GetResultResponseBodyDataResultInfo) SetScore(v int32) *GetResultResponseBodyDataResultInfo {
-	s.Score = &v
+func (s *GetResultResponseBodyDataResultInfo) SetReviewResult(v int32) *GetResultResponseBodyDataResultInfo {
+	s.ReviewResult = &v
 	return s
 }
 
@@ -4025,6 +4038,11 @@ func (s *GetResultResponseBodyDataResultInfo) SetRecording(v *GetResultResponseB
 
 func (s *GetResultResponseBodyDataResultInfo) SetTaskId(v string) *GetResultResponseBodyDataResultInfo {
 	s.TaskId = &v
+	return s
+}
+
+func (s *GetResultResponseBodyDataResultInfo) SetReviewType(v int32) *GetResultResponseBodyDataResultInfo {
+	s.ReviewType = &v
 	return s
 }
 
@@ -4600,10 +4618,10 @@ func (s *GetResultCallbackRequest) SetJsonStr(v string) *GetResultCallbackReques
 }
 
 type GetResultCallbackResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetResultCallbackResponseBody) String() string {
@@ -4614,13 +4632,13 @@ func (s GetResultCallbackResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetResultCallbackResponseBody) SetRequestId(v string) *GetResultCallbackResponseBody {
-	s.RequestId = &v
+func (s *GetResultCallbackResponseBody) SetMessage(v string) *GetResultCallbackResponseBody {
+	s.Message = &v
 	return s
 }
 
-func (s *GetResultCallbackResponseBody) SetSuccess(v bool) *GetResultCallbackResponseBody {
-	s.Success = &v
+func (s *GetResultCallbackResponseBody) SetRequestId(v string) *GetResultCallbackResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -4629,8 +4647,8 @@ func (s *GetResultCallbackResponseBody) SetCode(v string) *GetResultCallbackResp
 	return s
 }
 
-func (s *GetResultCallbackResponseBody) SetMessage(v string) *GetResultCallbackResponseBody {
-	s.Message = &v
+func (s *GetResultCallbackResponseBody) SetSuccess(v bool) *GetResultCallbackResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -10979,26 +10997,28 @@ func (s *ListSkillGroupConfigResponseBodyData) SetSkillGroupConfig(v []*ListSkil
 }
 
 type ListSkillGroupConfigResponseBodyDataSkillGroupConfig struct {
-	Status                 *int32                                                           `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type                   *int32                                                           `json:"Type,omitempty" xml:"Type,omitempty"`
-	AllRuleList            *ListSkillGroupConfigResponseBodyDataSkillGroupConfigAllRuleList `json:"AllRuleList,omitempty" xml:"AllRuleList,omitempty" type:"Struct"`
-	UpdateTime             *string                                                          `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	AllContentQualityCheck *int32                                                           `json:"AllContentQualityCheck,omitempty" xml:"AllContentQualityCheck,omitempty"`
-	CreateTime             *string                                                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	SkillGroupId           *string                                                          `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
-	InstanceId             *string                                                          `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	VocabId                *int64                                                           `json:"VocabId,omitempty" xml:"VocabId,omitempty"`
-	SkillGroupFrom         *int32                                                           `json:"SkillGroupFrom,omitempty" xml:"SkillGroupFrom,omitempty"`
-	Rid                    *string                                                          `json:"Rid,omitempty" xml:"Rid,omitempty"`
-	SkillGroupName         *string                                                          `json:"SkillGroupName,omitempty" xml:"SkillGroupName,omitempty"`
-	RuleList               *ListSkillGroupConfigResponseBodyDataSkillGroupConfigRuleList    `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Struct"`
-	ModelName              *string                                                          `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	AllRids                *string                                                          `json:"AllRids,omitempty" xml:"AllRids,omitempty"`
-	Name                   *string                                                          `json:"Name,omitempty" xml:"Name,omitempty"`
-	ModelId                *int64                                                           `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
-	Id                     *int64                                                           `json:"Id,omitempty" xml:"Id,omitempty"`
-	QualityCheckType       *int32                                                           `json:"QualityCheckType,omitempty" xml:"QualityCheckType,omitempty"`
-	VocabName              *string                                                          `json:"VocabName,omitempty" xml:"VocabName,omitempty"`
+	Status                 *int32                                                                 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type                   *int32                                                                 `json:"Type,omitempty" xml:"Type,omitempty"`
+	AllRuleList            *ListSkillGroupConfigResponseBodyDataSkillGroupConfigAllRuleList       `json:"AllRuleList,omitempty" xml:"AllRuleList,omitempty" type:"Struct"`
+	UpdateTime             *string                                                                `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	AllContentQualityCheck *int32                                                                 `json:"AllContentQualityCheck,omitempty" xml:"AllContentQualityCheck,omitempty"`
+	CreateTime             *string                                                                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	SkillGroupId           *string                                                                `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	ScreenSwitch           *bool                                                                  `json:"ScreenSwitch,omitempty" xml:"ScreenSwitch,omitempty"`
+	InstanceId             *string                                                                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	VocabId                *int64                                                                 `json:"VocabId,omitempty" xml:"VocabId,omitempty"`
+	SkillGroupFrom         *int32                                                                 `json:"SkillGroupFrom,omitempty" xml:"SkillGroupFrom,omitempty"`
+	Rid                    *string                                                                `json:"Rid,omitempty" xml:"Rid,omitempty"`
+	SkillGroupName         *string                                                                `json:"SkillGroupName,omitempty" xml:"SkillGroupName,omitempty"`
+	RuleList               *ListSkillGroupConfigResponseBodyDataSkillGroupConfigRuleList          `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Struct"`
+	ModelName              *string                                                                `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	AllRids                *string                                                                `json:"AllRids,omitempty" xml:"AllRids,omitempty"`
+	Name                   *string                                                                `json:"Name,omitempty" xml:"Name,omitempty"`
+	ModelId                *int64                                                                 `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	Id                     *int64                                                                 `json:"Id,omitempty" xml:"Id,omitempty"`
+	SkillGroupScreens      *ListSkillGroupConfigResponseBodyDataSkillGroupConfigSkillGroupScreens `json:"SkillGroupScreens,omitempty" xml:"SkillGroupScreens,omitempty" type:"Struct"`
+	QualityCheckType       *int32                                                                 `json:"QualityCheckType,omitempty" xml:"QualityCheckType,omitempty"`
+	VocabName              *string                                                                `json:"VocabName,omitempty" xml:"VocabName,omitempty"`
 }
 
 func (s ListSkillGroupConfigResponseBodyDataSkillGroupConfig) String() string {
@@ -11041,6 +11061,11 @@ func (s *ListSkillGroupConfigResponseBodyDataSkillGroupConfig) SetCreateTime(v s
 
 func (s *ListSkillGroupConfigResponseBodyDataSkillGroupConfig) SetSkillGroupId(v string) *ListSkillGroupConfigResponseBodyDataSkillGroupConfig {
 	s.SkillGroupId = &v
+	return s
+}
+
+func (s *ListSkillGroupConfigResponseBodyDataSkillGroupConfig) SetScreenSwitch(v bool) *ListSkillGroupConfigResponseBodyDataSkillGroupConfig {
+	s.ScreenSwitch = &v
 	return s
 }
 
@@ -11096,6 +11121,11 @@ func (s *ListSkillGroupConfigResponseBodyDataSkillGroupConfig) SetModelId(v int6
 
 func (s *ListSkillGroupConfigResponseBodyDataSkillGroupConfig) SetId(v int64) *ListSkillGroupConfigResponseBodyDataSkillGroupConfig {
 	s.Id = &v
+	return s
+}
+
+func (s *ListSkillGroupConfigResponseBodyDataSkillGroupConfig) SetSkillGroupScreens(v *ListSkillGroupConfigResponseBodyDataSkillGroupConfigSkillGroupScreens) *ListSkillGroupConfigResponseBodyDataSkillGroupConfig {
+	s.SkillGroupScreens = v
 	return s
 }
 
@@ -11186,6 +11216,58 @@ func (s *ListSkillGroupConfigResponseBodyDataSkillGroupConfigRuleListRuleNameInf
 
 func (s *ListSkillGroupConfigResponseBodyDataSkillGroupConfigRuleListRuleNameInfo) SetRid(v int64) *ListSkillGroupConfigResponseBodyDataSkillGroupConfigRuleListRuleNameInfo {
 	s.Rid = &v
+	return s
+}
+
+type ListSkillGroupConfigResponseBodyDataSkillGroupConfigSkillGroupScreens struct {
+	SkillGroupScreen []*ListSkillGroupConfigResponseBodyDataSkillGroupConfigSkillGroupScreensSkillGroupScreen `json:"SkillGroupScreen,omitempty" xml:"SkillGroupScreen,omitempty" type:"Repeated"`
+}
+
+func (s ListSkillGroupConfigResponseBodyDataSkillGroupConfigSkillGroupScreens) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSkillGroupConfigResponseBodyDataSkillGroupConfigSkillGroupScreens) GoString() string {
+	return s.String()
+}
+
+func (s *ListSkillGroupConfigResponseBodyDataSkillGroupConfigSkillGroupScreens) SetSkillGroupScreen(v []*ListSkillGroupConfigResponseBodyDataSkillGroupConfigSkillGroupScreensSkillGroupScreen) *ListSkillGroupConfigResponseBodyDataSkillGroupConfigSkillGroupScreens {
+	s.SkillGroupScreen = v
+	return s
+}
+
+type ListSkillGroupConfigResponseBodyDataSkillGroupConfigSkillGroupScreensSkillGroupScreen struct {
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	DataType *int32  `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	Symbol   *int32  `json:"Symbol,omitempty" xml:"Symbol,omitempty"`
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ListSkillGroupConfigResponseBodyDataSkillGroupConfigSkillGroupScreensSkillGroupScreen) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSkillGroupConfigResponseBodyDataSkillGroupConfigSkillGroupScreensSkillGroupScreen) GoString() string {
+	return s.String()
+}
+
+func (s *ListSkillGroupConfigResponseBodyDataSkillGroupConfigSkillGroupScreensSkillGroupScreen) SetValue(v string) *ListSkillGroupConfigResponseBodyDataSkillGroupConfigSkillGroupScreensSkillGroupScreen {
+	s.Value = &v
+	return s
+}
+
+func (s *ListSkillGroupConfigResponseBodyDataSkillGroupConfigSkillGroupScreensSkillGroupScreen) SetDataType(v int32) *ListSkillGroupConfigResponseBodyDataSkillGroupConfigSkillGroupScreensSkillGroupScreen {
+	s.DataType = &v
+	return s
+}
+
+func (s *ListSkillGroupConfigResponseBodyDataSkillGroupConfigSkillGroupScreensSkillGroupScreen) SetSymbol(v int32) *ListSkillGroupConfigResponseBodyDataSkillGroupConfigSkillGroupScreensSkillGroupScreen {
+	s.Symbol = &v
+	return s
+}
+
+func (s *ListSkillGroupConfigResponseBodyDataSkillGroupConfigSkillGroupScreensSkillGroupScreen) SetName(v string) *ListSkillGroupConfigResponseBodyDataSkillGroupConfigSkillGroupScreensSkillGroupScreen {
+	s.Name = &v
 	return s
 }
 
@@ -14372,110 +14454,6 @@ func (s *UpdateRuleResponse) SetBody(v *UpdateRuleResponseBody) *UpdateRuleRespo
 	return s
 }
 
-type UpdateRuleForAntRequest struct {
-	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	JsonStr         *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
-}
-
-func (s UpdateRuleForAntRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateRuleForAntRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateRuleForAntRequest) SetResourceOwnerId(v int64) *UpdateRuleForAntRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *UpdateRuleForAntRequest) SetJsonStr(v string) *UpdateRuleForAntRequest {
-	s.JsonStr = &v
-	return s
-}
-
-type UpdateRuleForAntResponseBody struct {
-	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *UpdateRuleForAntResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Code      *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success   *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s UpdateRuleForAntResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateRuleForAntResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateRuleForAntResponseBody) SetMessage(v string) *UpdateRuleForAntResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *UpdateRuleForAntResponseBody) SetRequestId(v string) *UpdateRuleForAntResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *UpdateRuleForAntResponseBody) SetData(v *UpdateRuleForAntResponseBodyData) *UpdateRuleForAntResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *UpdateRuleForAntResponseBody) SetCode(v string) *UpdateRuleForAntResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *UpdateRuleForAntResponseBody) SetSuccess(v bool) *UpdateRuleForAntResponseBody {
-	s.Success = &v
-	return s
-}
-
-type UpdateRuleForAntResponseBodyData struct {
-	RidInfo []*string `json:"RidInfo,omitempty" xml:"RidInfo,omitempty" type:"Repeated"`
-}
-
-func (s UpdateRuleForAntResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateRuleForAntResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateRuleForAntResponseBodyData) SetRidInfo(v []*string) *UpdateRuleForAntResponseBodyData {
-	s.RidInfo = v
-	return s
-}
-
-type UpdateRuleForAntResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateRuleForAntResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateRuleForAntResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateRuleForAntResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateRuleForAntResponse) SetHeaders(v map[string]*string) *UpdateRuleForAntResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateRuleForAntResponse) SetBody(v *UpdateRuleForAntResponseBody) *UpdateRuleForAntResponse {
-	s.Body = v
-	return s
-}
-
 type UpdateScoreForApiRequest struct {
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	JsonStr         *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
@@ -16168,62 +16146,7 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = tea.String("regional")
-	client.EndpointMap = map[string]*string{
-		"ap-northeast-1":              tea.String("qualitycheck.aliyuncs.com"),
-		"ap-northeast-2-pop":          tea.String("qualitycheck.aliyuncs.com"),
-		"ap-south-1":                  tea.String("qualitycheck.aliyuncs.com"),
-		"ap-southeast-1":              tea.String("qualitycheck.aliyuncs.com"),
-		"ap-southeast-2":              tea.String("qualitycheck.aliyuncs.com"),
-		"ap-southeast-3":              tea.String("qualitycheck.aliyuncs.com"),
-		"ap-southeast-5":              tea.String("qualitycheck.aliyuncs.com"),
-		"cn-beijing":                  tea.String("qualitycheck.aliyuncs.com"),
-		"cn-beijing-finance-1":        tea.String("qualitycheck.aliyuncs.com"),
-		"cn-beijing-finance-pop":      tea.String("qualitycheck.aliyuncs.com"),
-		"cn-beijing-gov-1":            tea.String("qualitycheck.aliyuncs.com"),
-		"cn-beijing-nu16-b01":         tea.String("qualitycheck.aliyuncs.com"),
-		"cn-chengdu":                  tea.String("qualitycheck.aliyuncs.com"),
-		"cn-edge-1":                   tea.String("qualitycheck.aliyuncs.com"),
-		"cn-fujian":                   tea.String("qualitycheck.aliyuncs.com"),
-		"cn-haidian-cm12-c01":         tea.String("qualitycheck.aliyuncs.com"),
-		"cn-hangzhou-bj-b01":          tea.String("qualitycheck.aliyuncs.com"),
-		"cn-hangzhou-finance":         tea.String("qualitycheck.aliyuncs.com"),
-		"cn-hangzhou-internal-prod-1": tea.String("qualitycheck.aliyuncs.com"),
-		"cn-hangzhou-internal-test-1": tea.String("qualitycheck.aliyuncs.com"),
-		"cn-hangzhou-internal-test-2": tea.String("qualitycheck.aliyuncs.com"),
-		"cn-hangzhou-internal-test-3": tea.String("qualitycheck.aliyuncs.com"),
-		"cn-hangzhou-test-306":        tea.String("qualitycheck.aliyuncs.com"),
-		"cn-hongkong":                 tea.String("qualitycheck.aliyuncs.com"),
-		"cn-hongkong-finance-pop":     tea.String("qualitycheck.aliyuncs.com"),
-		"cn-huhehaote":                tea.String("qualitycheck.aliyuncs.com"),
-		"cn-north-2-gov-1":            tea.String("qualitycheck.aliyuncs.com"),
-		"cn-qingdao":                  tea.String("qualitycheck.aliyuncs.com"),
-		"cn-qingdao-nebula":           tea.String("qualitycheck.aliyuncs.com"),
-		"cn-shanghai":                 tea.String("qualitycheck.aliyuncs.com"),
-		"cn-shanghai-et15-b01":        tea.String("qualitycheck.aliyuncs.com"),
-		"cn-shanghai-et2-b01":         tea.String("qualitycheck.aliyuncs.com"),
-		"cn-shanghai-finance-1":       tea.String("qualitycheck.aliyuncs.com"),
-		"cn-shanghai-inner":           tea.String("qualitycheck.aliyuncs.com"),
-		"cn-shanghai-internal-test-1": tea.String("qualitycheck.aliyuncs.com"),
-		"cn-shenzhen":                 tea.String("qualitycheck.aliyuncs.com"),
-		"cn-shenzhen-finance-1":       tea.String("qualitycheck.aliyuncs.com"),
-		"cn-shenzhen-inner":           tea.String("qualitycheck.aliyuncs.com"),
-		"cn-shenzhen-st4-d01":         tea.String("qualitycheck.aliyuncs.com"),
-		"cn-shenzhen-su18-b01":        tea.String("qualitycheck.aliyuncs.com"),
-		"cn-wuhan":                    tea.String("qualitycheck.aliyuncs.com"),
-		"cn-yushanfang":               tea.String("qualitycheck.aliyuncs.com"),
-		"cn-zhangbei-na61-b01":        tea.String("qualitycheck.aliyuncs.com"),
-		"cn-zhangjiakou":              tea.String("qualitycheck.aliyuncs.com"),
-		"cn-zhangjiakou-na62-a01":     tea.String("qualitycheck.aliyuncs.com"),
-		"cn-zhengzhou-nebula-1":       tea.String("qualitycheck.aliyuncs.com"),
-		"eu-central-1":                tea.String("qualitycheck.aliyuncs.com"),
-		"eu-west-1":                   tea.String("qualitycheck.aliyuncs.com"),
-		"eu-west-1-oxs":               tea.String("qualitycheck.aliyuncs.com"),
-		"me-east-1":                   tea.String("qualitycheck.aliyuncs.com"),
-		"rus-west-1-pop":              tea.String("qualitycheck.aliyuncs.com"),
-		"us-east-1":                   tea.String("qualitycheck.aliyuncs.com"),
-		"us-west-1":                   tea.String("qualitycheck.aliyuncs.com"),
-	}
+	client.EndpointRule = tea.String("")
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -18320,34 +18243,6 @@ func (client *Client) UpdateRule(request *UpdateRuleRequest) (_result *UpdateRul
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateRuleResponse{}
 	_body, _err := client.UpdateRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpdateRuleForAntWithOptions(request *UpdateRuleForAntRequest, runtime *util.RuntimeOptions) (_result *UpdateRuleForAntResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &UpdateRuleForAntResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateRuleForAnt"), tea.String("2019-01-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateRuleForAnt(request *UpdateRuleForAntRequest) (_result *UpdateRuleForAntResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateRuleForAntResponse{}
-	_body, _err := client.UpdateRuleForAntWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
