@@ -8,6 +8,99 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type GetOutAccountBindDetailRequest struct {
+	OutAccountType *string `json:"OutAccountType,omitempty" xml:"OutAccountType,omitempty" require:"true"`
+	AccountId      *string `json:"AccountId,omitempty" xml:"AccountId,omitempty" require:"true"`
+	AccountDomain  *string `json:"AccountDomain,omitempty" xml:"AccountDomain,omitempty"`
+}
+
+func (s GetOutAccountBindDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOutAccountBindDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetOutAccountBindDetailRequest) SetOutAccountType(v string) *GetOutAccountBindDetailRequest {
+	s.OutAccountType = &v
+	return s
+}
+
+func (s *GetOutAccountBindDetailRequest) SetAccountId(v string) *GetOutAccountBindDetailRequest {
+	s.AccountId = &v
+	return s
+}
+
+func (s *GetOutAccountBindDetailRequest) SetAccountDomain(v string) *GetOutAccountBindDetailRequest {
+	s.AccountDomain = &v
+	return s
+}
+
+type GetOutAccountBindDetailResponse struct {
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Data      *GetOutAccountBindDetailResponseData `json:"Data,omitempty" xml:"Data,omitempty" require:"true" type:"Struct"`
+}
+
+func (s GetOutAccountBindDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOutAccountBindDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetOutAccountBindDetailResponse) SetRequestId(v string) *GetOutAccountBindDetailResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetOutAccountBindDetailResponse) SetData(v *GetOutAccountBindDetailResponseData) *GetOutAccountBindDetailResponse {
+	s.Data = v
+	return s
+}
+
+type GetOutAccountBindDetailResponseData struct {
+	BindStatus      *int    `json:"BindStatus,omitempty" xml:"BindStatus,omitempty" require:"true"`
+	OutAccountType  *string `json:"OutAccountType,omitempty" xml:"OutAccountType,omitempty" require:"true"`
+	OutAccountId    *string `json:"OutAccountId,omitempty" xml:"OutAccountId,omitempty" require:"true"`
+	Token           *string `json:"Token,omitempty" xml:"Token,omitempty" require:"true"`
+	TokenExpireTime *int64  `json:"TokenExpireTime,omitempty" xml:"TokenExpireTime,omitempty" require:"true"`
+}
+
+func (s GetOutAccountBindDetailResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOutAccountBindDetailResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *GetOutAccountBindDetailResponseData) SetBindStatus(v int) *GetOutAccountBindDetailResponseData {
+	s.BindStatus = &v
+	return s
+}
+
+func (s *GetOutAccountBindDetailResponseData) SetOutAccountType(v string) *GetOutAccountBindDetailResponseData {
+	s.OutAccountType = &v
+	return s
+}
+
+func (s *GetOutAccountBindDetailResponseData) SetOutAccountId(v string) *GetOutAccountBindDetailResponseData {
+	s.OutAccountId = &v
+	return s
+}
+
+func (s *GetOutAccountBindDetailResponseData) SetToken(v string) *GetOutAccountBindDetailResponseData {
+	s.Token = &v
+	return s
+}
+
+func (s *GetOutAccountBindDetailResponseData) SetTokenExpireTime(v int64) *GetOutAccountBindDetailResponseData {
+	s.TokenExpireTime = &v
+	return s
+}
+
 type QueryOutAccountBindStatusRequest struct {
 	AccountId     *string `json:"AccountId,omitempty" xml:"AccountId,omitempty" require:"true"`
 	GameId        *string `json:"GameId,omitempty" xml:"GameId,omitempty" require:"true"`
@@ -2276,6 +2369,31 @@ func (client *Client) Init(config *rpc.Config) (_err error) {
 	}
 
 	return nil
+}
+
+func (client *Client) GetOutAccountBindDetailWithOptions(request *GetOutAccountBindDetailRequest, runtime *util.RuntimeOptions) (_result *GetOutAccountBindDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &GetOutAccountBindDetailResponse{}
+	_body, _err := client.DoRequest(tea.String("GetOutAccountBindDetail"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-07-28"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetOutAccountBindDetail(request *GetOutAccountBindDetailRequest) (_result *GetOutAccountBindDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetOutAccountBindDetailResponse{}
+	_body, _err := client.GetOutAccountBindDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
 }
 
 func (client *Client) QueryOutAccountBindStatusWithOptions(request *QueryOutAccountBindStatusRequest, runtime *util.RuntimeOptions) (_result *QueryOutAccountBindStatusResponse, _err error) {
