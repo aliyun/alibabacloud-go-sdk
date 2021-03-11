@@ -723,8 +723,10 @@ func (s *RecognizeFaceResponse) SetBody(v *RecognizeFaceResponseBody) *Recognize
 }
 
 type VerifyFaceMaskRequest struct {
-	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-	RefUrl   *string `json:"RefUrl,omitempty" xml:"RefUrl,omitempty"`
+	ImageURL  *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	RefUrl    *string `json:"RefUrl,omitempty" xml:"RefUrl,omitempty"`
+	ImageData []byte  `json:"ImageData,omitempty" xml:"ImageData,omitempty"`
+	RefData   []byte  `json:"RefData,omitempty" xml:"RefData,omitempty"`
 }
 
 func (s VerifyFaceMaskRequest) String() string {
@@ -745,26 +747,13 @@ func (s *VerifyFaceMaskRequest) SetRefUrl(v string) *VerifyFaceMaskRequest {
 	return s
 }
 
-type VerifyFaceMaskAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
-	RefUrl         *string   `json:"RefUrl,omitempty" xml:"RefUrl,omitempty"`
-}
-
-func (s VerifyFaceMaskAdvanceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s VerifyFaceMaskAdvanceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *VerifyFaceMaskAdvanceRequest) SetImageURLObject(v io.Reader) *VerifyFaceMaskAdvanceRequest {
-	s.ImageURLObject = v
+func (s *VerifyFaceMaskRequest) SetImageData(v []byte) *VerifyFaceMaskRequest {
+	s.ImageData = v
 	return s
 }
 
-func (s *VerifyFaceMaskAdvanceRequest) SetRefUrl(v string) *VerifyFaceMaskAdvanceRequest {
-	s.RefUrl = &v
+func (s *VerifyFaceMaskRequest) SetRefData(v []byte) *VerifyFaceMaskRequest {
+	s.RefData = v
 	return s
 }
 
@@ -862,11 +851,12 @@ func (s *VerifyFaceMaskResponse) SetBody(v *VerifyFaceMaskResponseBody) *VerifyF
 }
 
 type DetectIPCPedestrianRequest struct {
-	ContinueOnError *bool                                `json:"ContinueOnError,omitempty" xml:"ContinueOnError,omitempty"`
-	ImageData       *string                              `json:"ImageData,omitempty" xml:"ImageData,omitempty"`
-	Width           *int32                               `json:"Width,omitempty" xml:"Width,omitempty"`
-	Height          *int32                               `json:"Height,omitempty" xml:"Height,omitempty"`
-	URLList         []*DetectIPCPedestrianRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" type:"Repeated"`
+	ContinueOnError *bool   `json:"ContinueOnError,omitempty" xml:"ContinueOnError,omitempty"`
+	ImageData       *string `json:"ImageData,omitempty" xml:"ImageData,omitempty"`
+	Width           *int32  `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height          *int32  `json:"Height,omitempty" xml:"Height,omitempty"`
+	ImageURL        *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	DataId          *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
 }
 
 func (s DetectIPCPedestrianRequest) String() string {
@@ -897,20 +887,61 @@ func (s *DetectIPCPedestrianRequest) SetHeight(v int32) *DetectIPCPedestrianRequ
 	return s
 }
 
-func (s *DetectIPCPedestrianRequest) SetURLList(v []*DetectIPCPedestrianRequestURLList) *DetectIPCPedestrianRequest {
-	s.URLList = v
+func (s *DetectIPCPedestrianRequest) SetImageURL(v string) *DetectIPCPedestrianRequest {
+	s.ImageURL = &v
 	return s
 }
 
-type DetectIPCPedestrianRequestURLList struct {
+func (s *DetectIPCPedestrianRequest) SetDataId(v string) *DetectIPCPedestrianRequest {
+	s.DataId = &v
+	return s
 }
 
-func (s DetectIPCPedestrianRequestURLList) String() string {
+type DetectIPCPedestrianAdvanceRequest struct {
+	ImageURLObject  io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ContinueOnError *bool     `json:"ContinueOnError,omitempty" xml:"ContinueOnError,omitempty"`
+	ImageData       *string   `json:"ImageData,omitempty" xml:"ImageData,omitempty"`
+	Width           *int32    `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height          *int32    `json:"Height,omitempty" xml:"Height,omitempty"`
+	DataId          *string   `json:"DataId,omitempty" xml:"DataId,omitempty"`
+}
+
+func (s DetectIPCPedestrianAdvanceRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DetectIPCPedestrianRequestURLList) GoString() string {
+func (s DetectIPCPedestrianAdvanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DetectIPCPedestrianAdvanceRequest) SetImageURLObject(v io.Reader) *DetectIPCPedestrianAdvanceRequest {
+	s.ImageURLObject = v
+	return s
+}
+
+func (s *DetectIPCPedestrianAdvanceRequest) SetContinueOnError(v bool) *DetectIPCPedestrianAdvanceRequest {
+	s.ContinueOnError = &v
+	return s
+}
+
+func (s *DetectIPCPedestrianAdvanceRequest) SetImageData(v string) *DetectIPCPedestrianAdvanceRequest {
+	s.ImageData = &v
+	return s
+}
+
+func (s *DetectIPCPedestrianAdvanceRequest) SetWidth(v int32) *DetectIPCPedestrianAdvanceRequest {
+	s.Width = &v
+	return s
+}
+
+func (s *DetectIPCPedestrianAdvanceRequest) SetHeight(v int32) *DetectIPCPedestrianAdvanceRequest {
+	s.Height = &v
+	return s
+}
+
+func (s *DetectIPCPedestrianAdvanceRequest) SetDataId(v string) *DetectIPCPedestrianAdvanceRequest {
+	s.DataId = &v
+	return s
 }
 
 type DetectIPCPedestrianResponseBody struct {
@@ -1140,9 +1171,11 @@ func (s *GetFaceEntityResponse) SetBody(v *GetFaceEntityResponseBody) *GetFaceEn
 type CompareFaceRequest struct {
 	// 质量分阈值，取值范围 [0.0, 100.0],   0.0或空  表示不做质量分判断逻辑。
 	QualityScoreThreshold *float32 `json:"QualityScoreThreshold,omitempty" xml:"QualityScoreThreshold,omitempty"`
+	ImageType             *int32   `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
 	ImageURLA             *string  `json:"ImageURLA,omitempty" xml:"ImageURLA,omitempty"`
 	ImageURLB             *string  `json:"ImageURLB,omitempty" xml:"ImageURLB,omitempty"`
-	ImageType             *int32   `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	ImageDataA            []byte   `json:"ImageDataA,omitempty" xml:"ImageDataA,omitempty"`
+	ImageDataB            []byte   `json:"ImageDataB,omitempty" xml:"ImageDataB,omitempty"`
 }
 
 func (s CompareFaceRequest) String() string {
@@ -1158,6 +1191,11 @@ func (s *CompareFaceRequest) SetQualityScoreThreshold(v float32) *CompareFaceReq
 	return s
 }
 
+func (s *CompareFaceRequest) SetImageType(v int32) *CompareFaceRequest {
+	s.ImageType = &v
+	return s
+}
+
 func (s *CompareFaceRequest) SetImageURLA(v string) *CompareFaceRequest {
 	s.ImageURLA = &v
 	return s
@@ -1168,8 +1206,13 @@ func (s *CompareFaceRequest) SetImageURLB(v string) *CompareFaceRequest {
 	return s
 }
 
-func (s *CompareFaceRequest) SetImageType(v int32) *CompareFaceRequest {
-	s.ImageType = &v
+func (s *CompareFaceRequest) SetImageDataA(v []byte) *CompareFaceRequest {
+	s.ImageDataA = v
+	return s
+}
+
+func (s *CompareFaceRequest) SetImageDataB(v []byte) *CompareFaceRequest {
+	s.ImageDataB = v
 	return s
 }
 
@@ -2798,9 +2841,10 @@ func (s *ListFaceDbsResponse) SetBody(v *ListFaceDbsResponseBody) *ListFaceDbsRe
 }
 
 type RecognizeActionRequest struct {
-	Type     *int32                           `json:"Type,omitempty" xml:"Type,omitempty"`
-	VideoUrl *string                          `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
-	URLList  []*RecognizeActionRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" type:"Repeated"`
+	Type      *int32                           `json:"Type,omitempty" xml:"Type,omitempty"`
+	VideoUrl  *string                          `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+	URLList   []*RecognizeActionRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" type:"Repeated"`
+	VideoData []byte                           `json:"VideoData,omitempty" xml:"VideoData,omitempty"`
 }
 
 func (s RecognizeActionRequest) String() string {
@@ -2826,8 +2870,14 @@ func (s *RecognizeActionRequest) SetURLList(v []*RecognizeActionRequestURLList) 
 	return s
 }
 
+func (s *RecognizeActionRequest) SetVideoData(v []byte) *RecognizeActionRequest {
+	s.VideoData = v
+	return s
+}
+
 type RecognizeActionRequestURLList struct {
-	URL *string `json:"URL,omitempty" xml:"URL,omitempty"`
+	URL       *string `json:"URL,omitempty" xml:"URL,omitempty"`
+	ImageData []byte  `json:"imageData,omitempty" xml:"imageData,omitempty"`
 }
 
 func (s RecognizeActionRequestURLList) String() string {
@@ -2840,6 +2890,11 @@ func (s RecognizeActionRequestURLList) GoString() string {
 
 func (s *RecognizeActionRequestURLList) SetURL(v string) *RecognizeActionRequestURLList {
 	s.URL = &v
+	return s
+}
+
+func (s *RecognizeActionRequestURLList) SetImageData(v []byte) *RecognizeActionRequestURLList {
+	s.ImageData = v
 	return s
 }
 
@@ -4405,9 +4460,11 @@ func (s *DetectPedestrianResponse) SetBody(v *DetectPedestrianResponseBody) *Det
 }
 
 type SwapFacialFeaturesRequest struct {
-	SourceImageURL *string `json:"SourceImageURL,omitempty" xml:"SourceImageURL,omitempty"`
-	EditPart       *string `json:"EditPart,omitempty" xml:"EditPart,omitempty"`
-	TargetImageURL *string `json:"TargetImageURL,omitempty" xml:"TargetImageURL,omitempty"`
+	EditPart        *string `json:"EditPart,omitempty" xml:"EditPart,omitempty"`
+	SourceImageURL  *string `json:"SourceImageURL,omitempty" xml:"SourceImageURL,omitempty"`
+	TargetImageURL  *string `json:"TargetImageURL,omitempty" xml:"TargetImageURL,omitempty"`
+	SourceImageData []byte  `json:"SourceImageData,omitempty" xml:"SourceImageData,omitempty"`
+	TargetImageData []byte  `json:"TargetImageData,omitempty" xml:"TargetImageData,omitempty"`
 }
 
 func (s SwapFacialFeaturesRequest) String() string {
@@ -4418,13 +4475,13 @@ func (s SwapFacialFeaturesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *SwapFacialFeaturesRequest) SetSourceImageURL(v string) *SwapFacialFeaturesRequest {
-	s.SourceImageURL = &v
+func (s *SwapFacialFeaturesRequest) SetEditPart(v string) *SwapFacialFeaturesRequest {
+	s.EditPart = &v
 	return s
 }
 
-func (s *SwapFacialFeaturesRequest) SetEditPart(v string) *SwapFacialFeaturesRequest {
-	s.EditPart = &v
+func (s *SwapFacialFeaturesRequest) SetSourceImageURL(v string) *SwapFacialFeaturesRequest {
+	s.SourceImageURL = &v
 	return s
 }
 
@@ -4433,32 +4490,13 @@ func (s *SwapFacialFeaturesRequest) SetTargetImageURL(v string) *SwapFacialFeatu
 	return s
 }
 
-type SwapFacialFeaturesAdvanceRequest struct {
-	SourceImageURLObject io.Reader `json:"SourceImageURLObject,omitempty" xml:"SourceImageURLObject,omitempty" require:"true"`
-	EditPart             *string   `json:"EditPart,omitempty" xml:"EditPart,omitempty"`
-	TargetImageURL       *string   `json:"TargetImageURL,omitempty" xml:"TargetImageURL,omitempty"`
-}
-
-func (s SwapFacialFeaturesAdvanceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SwapFacialFeaturesAdvanceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SwapFacialFeaturesAdvanceRequest) SetSourceImageURLObject(v io.Reader) *SwapFacialFeaturesAdvanceRequest {
-	s.SourceImageURLObject = v
+func (s *SwapFacialFeaturesRequest) SetSourceImageData(v []byte) *SwapFacialFeaturesRequest {
+	s.SourceImageData = v
 	return s
 }
 
-func (s *SwapFacialFeaturesAdvanceRequest) SetEditPart(v string) *SwapFacialFeaturesAdvanceRequest {
-	s.EditPart = &v
-	return s
-}
-
-func (s *SwapFacialFeaturesAdvanceRequest) SetTargetImageURL(v string) *SwapFacialFeaturesAdvanceRequest {
-	s.TargetImageURL = &v
+func (s *SwapFacialFeaturesRequest) SetTargetImageData(v []byte) *SwapFacialFeaturesRequest {
+	s.TargetImageData = v
 	return s
 }
 
@@ -9057,7 +9095,35 @@ func (client *Client) VerifyFaceMask(request *VerifyFaceMaskRequest) (_result *V
 	return _result, _err
 }
 
-func (client *Client) VerifyFaceMaskAdvance(request *VerifyFaceMaskAdvanceRequest, runtime *util.RuntimeOptions) (_result *VerifyFaceMaskResponse, _err error) {
+func (client *Client) DetectIPCPedestrianWithOptions(request *DetectIPCPedestrianRequest, runtime *util.RuntimeOptions) (_result *DetectIPCPedestrianResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DetectIPCPedestrianResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DetectIPCPedestrian"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DetectIPCPedestrian(request *DetectIPCPedestrianRequest) (_result *DetectIPCPedestrianResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DetectIPCPedestrianResponse{}
+	_body, _err := client.DetectIPCPedestrianWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DetectIPCPedestrianAdvance(request *DetectIPCPedestrianAdvanceRequest, runtime *util.RuntimeOptions) (_result *DetectIPCPedestrianResponse, _err error) {
 	// Step 0: init client
 	accessKeyId, _err := client.Credential.GetAccessKeyId()
 	if _err != nil {
@@ -9099,8 +9165,8 @@ func (client *Client) VerifyFaceMaskAdvance(request *VerifyFaceMaskAdvanceReques
 	uploadRequest := &oss.PostObjectRequest{}
 	ossRuntime := &ossutil.RuntimeOptions{}
 	openapiutil.Convert(runtime, ossRuntime)
-	verifyFaceMaskReq := &VerifyFaceMaskRequest{}
-	openapiutil.Convert(request, verifyFaceMaskReq)
+	detectIPCPedestrianReq := &DetectIPCPedestrianRequest{}
+	openapiutil.Convert(request, detectIPCPedestrianReq)
 	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
 	if _err != nil {
 		return _result, _err
@@ -9134,41 +9200,13 @@ func (client *Client) VerifyFaceMaskAdvance(request *VerifyFaceMaskAdvanceReques
 	if _err != nil {
 		return _result, _err
 	}
-	verifyFaceMaskReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
-	verifyFaceMaskResp, _err := client.VerifyFaceMaskWithOptions(verifyFaceMaskReq, runtime)
+	detectIPCPedestrianReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	detectIPCPedestrianResp, _err := client.DetectIPCPedestrianWithOptions(detectIPCPedestrianReq, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 
-	_result = verifyFaceMaskResp
-	return _result, _err
-}
-
-func (client *Client) DetectIPCPedestrianWithOptions(request *DetectIPCPedestrianRequest, runtime *util.RuntimeOptions) (_result *DetectIPCPedestrianResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DetectIPCPedestrianResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DetectIPCPedestrian"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DetectIPCPedestrian(request *DetectIPCPedestrianRequest) (_result *DetectIPCPedestrianResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DetectIPCPedestrianResponse{}
-	_body, _err := client.DetectIPCPedestrianWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
+	_result = detectIPCPedestrianResp
 	return _result, _err
 }
 
@@ -10765,93 +10803,6 @@ func (client *Client) SwapFacialFeatures(request *SwapFacialFeaturesRequest) (_r
 		return _result, _err
 	}
 	_result = _body
-	return _result, _err
-}
-
-func (client *Client) SwapFacialFeaturesAdvance(request *SwapFacialFeaturesAdvanceRequest, runtime *util.RuntimeOptions) (_result *SwapFacialFeaturesResponse, _err error) {
-	// Step 0: init client
-	accessKeyId, _err := client.Credential.GetAccessKeyId()
-	if _err != nil {
-		return _result, _err
-	}
-
-	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
-	if _err != nil {
-		return _result, _err
-	}
-
-	authConfig := &rpc.Config{
-		AccessKeyId:     accessKeyId,
-		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
-	}
-	authClient, _err := openplatform.NewClient(authConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	authRequest := &openplatform.AuthorizeFileUploadRequest{
-		Product:  tea.String("facebody"),
-		RegionId: client.RegionId,
-	}
-	authResponse := &openplatform.AuthorizeFileUploadResponse{}
-	ossConfig := &oss.Config{
-		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
-	}
-	var ossClient *oss.Client
-	fileObj := &fileform.FileField{}
-	ossHeader := &oss.PostObjectRequestHeader{}
-	uploadRequest := &oss.PostObjectRequest{}
-	ossRuntime := &ossutil.RuntimeOptions{}
-	openapiutil.Convert(runtime, ossRuntime)
-	swapFacialFeaturesReq := &SwapFacialFeaturesRequest{}
-	openapiutil.Convert(request, swapFacialFeaturesReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.SourceImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	swapFacialFeaturesReq.SourceImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
-	swapFacialFeaturesResp, _err := client.SwapFacialFeaturesWithOptions(swapFacialFeaturesReq, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-
-	_result = swapFacialFeaturesResp
 	return _result, _err
 }
 
