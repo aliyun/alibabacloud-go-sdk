@@ -207,6 +207,10 @@ func (s *MaintenanceWindow) SetWeeklyPeriod(v string) *MaintenanceWindow {
 type ListTagResourcesRequest struct {
 	// 集群ID列表。
 	ResourceIds []*string `json:"resource_ids,omitempty" xml:"resource_ids,omitempty" type:"Repeated"`
+	// 资源类型，只支持Cluster
+	ResourceType *string `json:"resource_type,omitempty" xml:"resource_type,omitempty"`
+	// 地域ID
+	RegionId *string `json:"region_id,omitempty" xml:"region_id,omitempty"`
 	// 按标签查找。
 	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// 下一次查询Token。
@@ -226,12 +230,68 @@ func (s *ListTagResourcesRequest) SetResourceIds(v []*string) *ListTagResourcesR
 	return s
 }
 
+func (s *ListTagResourcesRequest) SetResourceType(v string) *ListTagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetRegionId(v string) *ListTagResourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *ListTagResourcesRequest) SetTags(v []*Tag) *ListTagResourcesRequest {
 	s.Tags = v
 	return s
 }
 
 func (s *ListTagResourcesRequest) SetNextToken(v string) *ListTagResourcesRequest {
+	s.NextToken = &v
+	return s
+}
+
+type ListTagResourcesShrinkRequest struct {
+	// 集群ID列表。
+	ResourceIdsShrink *string `json:"resource_ids,omitempty" xml:"resource_ids,omitempty"`
+	// 资源类型，只支持Cluster
+	ResourceType *string `json:"resource_type,omitempty" xml:"resource_type,omitempty"`
+	// 地域ID
+	RegionId *string `json:"region_id,omitempty" xml:"region_id,omitempty"`
+	// 按标签查找。
+	TagsShrink *string `json:"tags,omitempty" xml:"tags,omitempty"`
+	// 下一次查询Token。
+	NextToken *string `json:"next_token,omitempty" xml:"next_token,omitempty"`
+}
+
+func (s ListTagResourcesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesShrinkRequest) SetResourceIdsShrink(v string) *ListTagResourcesShrinkRequest {
+	s.ResourceIdsShrink = &v
+	return s
+}
+
+func (s *ListTagResourcesShrinkRequest) SetResourceType(v string) *ListTagResourcesShrinkRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesShrinkRequest) SetRegionId(v string) *ListTagResourcesShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListTagResourcesShrinkRequest) SetTagsShrink(v string) *ListTagResourcesShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+func (s *ListTagResourcesShrinkRequest) SetNextToken(v string) *ListTagResourcesShrinkRequest {
 	s.NextToken = &v
 	return s
 }
@@ -5394,8 +5454,8 @@ func (s *CreateTemplateResponse) SetBody(v *CreateTemplateResponseBody) *CreateT
 }
 
 type DescribeClusterNodesRequest struct {
-	// 节点实例ID，按照实例ID进行过滤。  节点池ID不为空时会忽略此字段。
-	InstanceIds []*string `json:"instanceIds,omitempty" xml:"instanceIds,omitempty" type:"Repeated"`
+	// 节点实例ID，按照实例ID进行过滤。  节点池ID不为空时会忽略此字段。多节点用逗号分割
+	InstanceIds *string `json:"instanceIds,omitempty" xml:"instanceIds,omitempty"`
 	// 节点池ID。
 	NodepoolId *string `json:"nodepool_id,omitempty" xml:"nodepool_id,omitempty"`
 	// 节点状态。默认值：all。
@@ -5414,8 +5474,8 @@ func (s DescribeClusterNodesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeClusterNodesRequest) SetInstanceIds(v []*string) *DescribeClusterNodesRequest {
-	s.InstanceIds = v
+func (s *DescribeClusterNodesRequest) SetInstanceIds(v string) *DescribeClusterNodesRequest {
+	s.InstanceIds = &v
 	return s
 }
 
@@ -5699,6 +5759,38 @@ func (s *DeleteClusterRequest) SetKeepSlb(v bool) *DeleteClusterRequest {
 
 func (s *DeleteClusterRequest) SetRetainResources(v []*string) *DeleteClusterRequest {
 	s.RetainResources = v
+	return s
+}
+
+type DeleteClusterShrinkRequest struct {
+	// 是否保留所有资源,如果设置了该值，将会忽略retain_resources。  true：保留 false：不保留 默认值：fase。
+	RetainAllResources *bool `json:"retain_all_resources,omitempty" xml:"retain_all_resources,omitempty"`
+	// 是否保留SLB。  true：保留 false：不保留 默认值：false。
+	KeepSlb *bool `json:"keep_slb,omitempty" xml:"keep_slb,omitempty"`
+	// 要保留的资源列表。
+	RetainResourcesShrink *string `json:"retain_resources,omitempty" xml:"retain_resources,omitempty"`
+}
+
+func (s DeleteClusterShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteClusterShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteClusterShrinkRequest) SetRetainAllResources(v bool) *DeleteClusterShrinkRequest {
+	s.RetainAllResources = &v
+	return s
+}
+
+func (s *DeleteClusterShrinkRequest) SetKeepSlb(v bool) *DeleteClusterShrinkRequest {
+	s.KeepSlb = &v
+	return s
+}
+
+func (s *DeleteClusterShrinkRequest) SetRetainResourcesShrink(v string) *DeleteClusterShrinkRequest {
+	s.RetainResourcesShrink = &v
 	return s
 }
 
@@ -6840,6 +6932,24 @@ func (s DescribeClusterAddonsUpgradeStatusRequest) GoString() string {
 
 func (s *DescribeClusterAddonsUpgradeStatusRequest) SetComponentIds(v []*string) *DescribeClusterAddonsUpgradeStatusRequest {
 	s.ComponentIds = v
+	return s
+}
+
+type DescribeClusterAddonsUpgradeStatusShrinkRequest struct {
+	// 组件名称列表。
+	ComponentIdsShrink *string `json:"componentIds,omitempty" xml:"componentIds,omitempty"`
+}
+
+func (s DescribeClusterAddonsUpgradeStatusShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterAddonsUpgradeStatusShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterAddonsUpgradeStatusShrinkRequest) SetComponentIdsShrink(v string) *DescribeClusterAddonsUpgradeStatusShrinkRequest {
+	s.ComponentIdsShrink = &v
 	return s
 }
 
@@ -8138,6 +8248,215 @@ func (s *ScaleOutClusterResponse) SetBody(v *ScaleOutClusterResponseBody) *Scale
 	return s
 }
 
+type DescribeEventsRequest struct {
+	// 集群ID
+	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	// 事件类型
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// 页数
+	PageSize *int64 `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	// 没页记录数量
+	PageNumber *int64 `json:"page_number,omitempty" xml:"page_number,omitempty"`
+}
+
+func (s DescribeEventsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEventsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEventsRequest) SetClusterId(v string) *DescribeEventsRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeEventsRequest) SetType(v string) *DescribeEventsRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeEventsRequest) SetPageSize(v int64) *DescribeEventsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeEventsRequest) SetPageNumber(v int64) *DescribeEventsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+type DescribeEventsResponseBody struct {
+	Events   []*DescribeEventsResponseBodyEvents `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
+	PageInfo *DescribeEventsResponseBodyPageInfo `json:"page_info,omitempty" xml:"page_info,omitempty" type:"Struct"`
+}
+
+func (s DescribeEventsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEventsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEventsResponseBody) SetEvents(v []*DescribeEventsResponseBodyEvents) *DescribeEventsResponseBody {
+	s.Events = v
+	return s
+}
+
+func (s *DescribeEventsResponseBody) SetPageInfo(v *DescribeEventsResponseBodyPageInfo) *DescribeEventsResponseBody {
+	s.PageInfo = v
+	return s
+}
+
+type DescribeEventsResponseBodyEvents struct {
+	// 事件ID
+	EventId *string `json:"event_id,omitempty" xml:"event_id,omitempty"`
+	// 事件类型
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// 事件源
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// 事件
+	Subject *string `json:"subject,omitempty" xml:"subject,omitempty"`
+	// 事件开始事件
+	Time *string `json:"time,omitempty" xml:"time,omitempty"`
+	// 集群ID
+	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	// 事件描述
+	Data *DescribeEventsResponseBodyEventsData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+}
+
+func (s DescribeEventsResponseBodyEvents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEventsResponseBodyEvents) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEventsResponseBodyEvents) SetEventId(v string) *DescribeEventsResponseBodyEvents {
+	s.EventId = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBodyEvents) SetType(v string) *DescribeEventsResponseBodyEvents {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBodyEvents) SetSource(v string) *DescribeEventsResponseBodyEvents {
+	s.Source = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBodyEvents) SetSubject(v string) *DescribeEventsResponseBodyEvents {
+	s.Subject = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBodyEvents) SetTime(v string) *DescribeEventsResponseBodyEvents {
+	s.Time = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBodyEvents) SetClusterId(v string) *DescribeEventsResponseBodyEvents {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBodyEvents) SetData(v *DescribeEventsResponseBodyEventsData) *DescribeEventsResponseBodyEvents {
+	s.Data = v
+	return s
+}
+
+type DescribeEventsResponseBodyEventsData struct {
+	// 事件级别
+	Level *string `json:"level,omitempty" xml:"level,omitempty"`
+	// 事件状态
+	Reason *string `json:"reason,omitempty" xml:"reason,omitempty"`
+	// 事件详情
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+}
+
+func (s DescribeEventsResponseBodyEventsData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEventsResponseBodyEventsData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEventsResponseBodyEventsData) SetLevel(v string) *DescribeEventsResponseBodyEventsData {
+	s.Level = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBodyEventsData) SetReason(v string) *DescribeEventsResponseBodyEventsData {
+	s.Reason = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBodyEventsData) SetMessage(v string) *DescribeEventsResponseBodyEventsData {
+	s.Message = &v
+	return s
+}
+
+type DescribeEventsResponseBodyPageInfo struct {
+	// 页数
+	PageSize *int64 `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	// 每页记录数量
+	PageNumber *int64 `json:"page_number,omitempty" xml:"page_number,omitempty"`
+	// 结果总数
+	TotalCount *int64 `json:"total_count,omitempty" xml:"total_count,omitempty"`
+}
+
+func (s DescribeEventsResponseBodyPageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEventsResponseBodyPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEventsResponseBodyPageInfo) SetPageSize(v int64) *DescribeEventsResponseBodyPageInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBodyPageInfo) SetPageNumber(v int64) *DescribeEventsResponseBodyPageInfo {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBodyPageInfo) SetTotalCount(v int64) *DescribeEventsResponseBodyPageInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeEventsResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeEventsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeEventsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEventsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEventsResponse) SetHeaders(v map[string]*string) *DescribeEventsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeEventsResponse) SetBody(v *DescribeEventsResponseBody) *DescribeEventsResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateK8sClusterUserConfigExpireResponse struct {
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 }
@@ -8729,18 +9048,36 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
-func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListTagResourcesWithOptions(tmpReq *ListTagResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ResourceIds)) {
-		query["resource_ids"] = request.ResourceIds
+	request := &ListTagResourcesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ResourceIds)) {
+		request.ResourceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceIds, tea.String("resource_ids"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Tags)) {
-		query["tags"] = request.Tags
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("tags"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceIdsShrink)) {
+		query["resource_ids"] = request.ResourceIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["resource_type"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["region_id"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		query["tags"] = request.TagsShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
@@ -10397,32 +10734,36 @@ func (client *Client) DeleteCluster(ClusterId *string, request *DeleteClusterReq
 	return _result, _err
 }
 
-func (client *Client) DeleteClusterWithOptions(ClusterId *string, request *DeleteClusterRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteClusterResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) DeleteClusterWithOptions(ClusterId *string, tmpReq *DeleteClusterRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteClusterResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RetainResources)) {
-		query["retain_resources"] = request.RetainResources
+	request := &DeleteClusterShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.RetainResources)) {
+		request.RetainResourcesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RetainResources, tea.String("retain_resources"), tea.String("json"))
 	}
 
-	body := map[string]interface{}{}
+	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.RetainAllResources)) {
-		body["retain_all_resources"] = request.RetainAllResources
+		query["retain_all_resources"] = request.RetainAllResources
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.KeepSlb)) {
-		body["keep_slb"] = request.KeepSlb
+		query["keep_slb"] = request.KeepSlb
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RetainResourcesShrink)) {
+		query["retain_resources"] = request.RetainResourcesShrink
 	}
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
-		Body:    openapiutil.ParseToMap(body),
 	}
 	_result = &DeleteClusterResponse{}
-	_body, _err := client.DoROARequestWithForm(tea.String("DeleteCluster"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)), tea.String("none"), req, runtime)
+	_body, _err := client.DoROARequest(tea.String("DeleteCluster"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)), tea.String("none"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10970,14 +11311,20 @@ func (client *Client) DescribeClusterAddonsUpgradeStatus(ClusterId *string, requ
 	return _result, _err
 }
 
-func (client *Client) DescribeClusterAddonsUpgradeStatusWithOptions(ClusterId *string, request *DescribeClusterAddonsUpgradeStatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeClusterAddonsUpgradeStatusResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) DescribeClusterAddonsUpgradeStatusWithOptions(ClusterId *string, tmpReq *DescribeClusterAddonsUpgradeStatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeClusterAddonsUpgradeStatusResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &DescribeClusterAddonsUpgradeStatusShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ComponentIds)) {
+		request.ComponentIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ComponentIds, tea.String("componentIds"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ComponentIds)) {
-		query["componentIds"] = request.ComponentIds
+	if !tea.BoolValue(util.IsUnset(request.ComponentIdsShrink)) {
+		query["componentIds"] = request.ComponentIdsShrink
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -10985,7 +11332,7 @@ func (client *Client) DescribeClusterAddonsUpgradeStatusWithOptions(ClusterId *s
 		Query:   openapiutil.Query(query),
 	}
 	_result = &DescribeClusterAddonsUpgradeStatusResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeClusterAddonsUpgradeStatus"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/clusters/[ClusterId]/components/upgradestatus"), tea.String("json"), req, runtime)
+	_body, _err := client.DoROARequest(tea.String("DescribeClusterAddonsUpgradeStatus"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/components/upgradestatus"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11323,6 +11670,53 @@ func (client *Client) ScaleOutClusterWithOptions(ClusterId *string, request *Sca
 	}
 	_result = &ScaleOutClusterResponse{}
 	_body, _err := client.DoROARequest(tea.String("ScaleOutCluster"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v2/clusters/"+tea.StringValue(ClusterId)), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeEvents(request *DescribeEventsRequest) (_result *DescribeEventsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeEventsResponse{}
+	_body, _err := client.DescribeEventsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeEventsWithOptions(request *DescribeEventsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeEventsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["cluster_id"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["page_size"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["page_number"] = request.PageNumber
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	_result = &DescribeEventsResponse{}
+	_body, _err := client.DoROARequest(tea.String("DescribeEvents"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/events"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
