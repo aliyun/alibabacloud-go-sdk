@@ -1,3 +1,7 @@
+2021-03-12 Version: v1.1.0
+- New build from amp.
+
+
 2021-02-19 Version: v1.0.13
 - Generated golang 2020-01-11 for servicemesh.
 
