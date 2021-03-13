@@ -12,65 +12,647 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
-type RunDiagnosisRequest struct {
+type AddClusterIntoServiceMeshRequest struct {
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	ClusterId     *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
-func (s RunDiagnosisRequest) String() string {
+func (s AddClusterIntoServiceMeshRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s RunDiagnosisRequest) GoString() string {
+func (s AddClusterIntoServiceMeshRequest) GoString() string {
 	return s.String()
 }
 
-func (s *RunDiagnosisRequest) SetServiceMeshId(v string) *RunDiagnosisRequest {
+func (s *AddClusterIntoServiceMeshRequest) SetServiceMeshId(v string) *AddClusterIntoServiceMeshRequest {
 	s.ServiceMeshId = &v
 	return s
 }
 
-type RunDiagnosisResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+func (s *AddClusterIntoServiceMeshRequest) SetClusterId(v string) *AddClusterIntoServiceMeshRequest {
+	s.ClusterId = &v
+	return s
 }
 
-func (s RunDiagnosisResponseBody) String() string {
+type AddClusterIntoServiceMeshResponseBody struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+}
+
+func (s AddClusterIntoServiceMeshResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s RunDiagnosisResponseBody) GoString() string {
+func (s AddClusterIntoServiceMeshResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *RunDiagnosisResponseBody) SetRequestId(v string) *RunDiagnosisResponseBody {
+func (s *AddClusterIntoServiceMeshResponseBody) SetMessage(v string) *AddClusterIntoServiceMeshResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AddClusterIntoServiceMeshResponseBody) SetRequestId(v string) *AddClusterIntoServiceMeshResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *RunDiagnosisResponseBody) SetResult(v string) *RunDiagnosisResponseBody {
-	s.Result = &v
+func (s *AddClusterIntoServiceMeshResponseBody) SetCode(v string) *AddClusterIntoServiceMeshResponseBody {
+	s.Code = &v
 	return s
 }
 
-type RunDiagnosisResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RunDiagnosisResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+type AddClusterIntoServiceMeshResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *AddClusterIntoServiceMeshResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s RunDiagnosisResponse) String() string {
+func (s AddClusterIntoServiceMeshResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s RunDiagnosisResponse) GoString() string {
+func (s AddClusterIntoServiceMeshResponse) GoString() string {
 	return s.String()
 }
 
-func (s *RunDiagnosisResponse) SetHeaders(v map[string]*string) *RunDiagnosisResponse {
+func (s *AddClusterIntoServiceMeshResponse) SetHeaders(v map[string]*string) *AddClusterIntoServiceMeshResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *RunDiagnosisResponse) SetBody(v *RunDiagnosisResponseBody) *RunDiagnosisResponse {
+func (s *AddClusterIntoServiceMeshResponse) SetBody(v *AddClusterIntoServiceMeshResponseBody) *AddClusterIntoServiceMeshResponse {
+	s.Body = v
+	return s
+}
+
+type AddVmAppToMeshRequest struct {
+	ServiceMeshId  *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	Namespace      *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	ServiceName    *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	Ips            *string `json:"Ips,omitempty" xml:"Ips,omitempty"`
+	Ports          *string `json:"Ports,omitempty" xml:"Ports,omitempty"`
+	Labels         *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	Annotations    *string `json:"Annotations,omitempty" xml:"Annotations,omitempty"`
+	ServiceAccount *string `json:"ServiceAccount,omitempty" xml:"ServiceAccount,omitempty"`
+	UseWorkload    *bool   `json:"UseWorkload,omitempty" xml:"UseWorkload,omitempty"`
+	Force          *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
+}
+
+func (s AddVmAppToMeshRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddVmAppToMeshRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddVmAppToMeshRequest) SetServiceMeshId(v string) *AddVmAppToMeshRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+func (s *AddVmAppToMeshRequest) SetNamespace(v string) *AddVmAppToMeshRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *AddVmAppToMeshRequest) SetServiceName(v string) *AddVmAppToMeshRequest {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *AddVmAppToMeshRequest) SetIps(v string) *AddVmAppToMeshRequest {
+	s.Ips = &v
+	return s
+}
+
+func (s *AddVmAppToMeshRequest) SetPorts(v string) *AddVmAppToMeshRequest {
+	s.Ports = &v
+	return s
+}
+
+func (s *AddVmAppToMeshRequest) SetLabels(v string) *AddVmAppToMeshRequest {
+	s.Labels = &v
+	return s
+}
+
+func (s *AddVmAppToMeshRequest) SetAnnotations(v string) *AddVmAppToMeshRequest {
+	s.Annotations = &v
+	return s
+}
+
+func (s *AddVmAppToMeshRequest) SetServiceAccount(v string) *AddVmAppToMeshRequest {
+	s.ServiceAccount = &v
+	return s
+}
+
+func (s *AddVmAppToMeshRequest) SetUseWorkload(v bool) *AddVmAppToMeshRequest {
+	s.UseWorkload = &v
+	return s
+}
+
+func (s *AddVmAppToMeshRequest) SetForce(v bool) *AddVmAppToMeshRequest {
+	s.Force = &v
+	return s
+}
+
+type AddVmAppToMeshResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+}
+
+func (s AddVmAppToMeshResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddVmAppToMeshResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddVmAppToMeshResponseBody) SetRequestId(v string) *AddVmAppToMeshResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddVmAppToMeshResponseBody) SetData(v string) *AddVmAppToMeshResponseBody {
+	s.Data = &v
+	return s
+}
+
+type AddVmAppToMeshResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *AddVmAppToMeshResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddVmAppToMeshResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddVmAppToMeshResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddVmAppToMeshResponse) SetHeaders(v map[string]*string) *AddVmAppToMeshResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddVmAppToMeshResponse) SetBody(v *AddVmAppToMeshResponseBody) *AddVmAppToMeshResponse {
+	s.Body = v
+	return s
+}
+
+type CreateServiceMeshRequest struct {
+	RegionId                      *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	IstioVersion                  *string  `json:"IstioVersion,omitempty" xml:"IstioVersion,omitempty"`
+	VpcId                         *string  `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ApiServerPublicEip            *bool    `json:"ApiServerPublicEip,omitempty" xml:"ApiServerPublicEip,omitempty"`
+	PilotPublicEip                *bool    `json:"PilotPublicEip,omitempty" xml:"PilotPublicEip,omitempty"`
+	StrictMTLS                    *bool    `json:"StrictMTLS,omitempty" xml:"StrictMTLS,omitempty"`
+	OutboundTrafficPolicy         *string  `json:"OutboundTrafficPolicy,omitempty" xml:"OutboundTrafficPolicy,omitempty"`
+	Tracing                       *bool    `json:"Tracing,omitempty" xml:"Tracing,omitempty"`
+	Name                          *string  `json:"Name,omitempty" xml:"Name,omitempty"`
+	VSwitches                     *string  `json:"VSwitches,omitempty" xml:"VSwitches,omitempty"`
+	TraceSampling                 *float32 `json:"TraceSampling,omitempty" xml:"TraceSampling,omitempty"`
+	LocalityLoadBalancing         *bool    `json:"LocalityLoadBalancing,omitempty" xml:"LocalityLoadBalancing,omitempty"`
+	Telemetry                     *bool    `json:"Telemetry,omitempty" xml:"Telemetry,omitempty"`
+	OpenAgentPolicy               *bool    `json:"OpenAgentPolicy,omitempty" xml:"OpenAgentPolicy,omitempty"`
+	OPALogLevel                   *string  `json:"OPALogLevel,omitempty" xml:"OPALogLevel,omitempty"`
+	OPARequestCPU                 *string  `json:"OPARequestCPU,omitempty" xml:"OPARequestCPU,omitempty"`
+	OPARequestMemory              *string  `json:"OPARequestMemory,omitempty" xml:"OPARequestMemory,omitempty"`
+	OPALimitCPU                   *string  `json:"OPALimitCPU,omitempty" xml:"OPALimitCPU,omitempty"`
+	OPALimitMemory                *string  `json:"OPALimitMemory,omitempty" xml:"OPALimitMemory,omitempty"`
+	EnableAudit                   *bool    `json:"EnableAudit,omitempty" xml:"EnableAudit,omitempty"`
+	AuditProject                  *string  `json:"AuditProject,omitempty" xml:"AuditProject,omitempty"`
+	CADisableSecretAutoGeneration *bool    `json:"CADisableSecretAutoGeneration,omitempty" xml:"CADisableSecretAutoGeneration,omitempty"`
+	CAListenedNamespaces          *string  `json:"CAListenedNamespaces,omitempty" xml:"CAListenedNamespaces,omitempty"`
+	AppNamespaces                 *string  `json:"AppNamespaces,omitempty" xml:"AppNamespaces,omitempty"`
+	ClusterDomain                 *string  `json:"ClusterDomain,omitempty" xml:"ClusterDomain,omitempty"`
+	ProxyRequestCPU               *string  `json:"ProxyRequestCPU,omitempty" xml:"ProxyRequestCPU,omitempty"`
+	ProxyRequestMemory            *string  `json:"ProxyRequestMemory,omitempty" xml:"ProxyRequestMemory,omitempty"`
+	ProxyLimitCPU                 *string  `json:"ProxyLimitCPU,omitempty" xml:"ProxyLimitCPU,omitempty"`
+	ProxyLimitMemory              *string  `json:"ProxyLimitMemory,omitempty" xml:"ProxyLimitMemory,omitempty"`
+	IncludeIPRanges               *string  `json:"IncludeIPRanges,omitempty" xml:"IncludeIPRanges,omitempty"`
+	ExcludeIPRanges               *string  `json:"ExcludeIPRanges,omitempty" xml:"ExcludeIPRanges,omitempty"`
+	ExcludeOutboundPorts          *string  `json:"ExcludeOutboundPorts,omitempty" xml:"ExcludeOutboundPorts,omitempty"`
+	ExcludeInboundPorts           *string  `json:"ExcludeInboundPorts,omitempty" xml:"ExcludeInboundPorts,omitempty"`
+	OpaEnabled                    *bool    `json:"OpaEnabled,omitempty" xml:"OpaEnabled,omitempty"`
+	KialiEnabled                  *bool    `json:"KialiEnabled,omitempty" xml:"KialiEnabled,omitempty"`
+	AccessLogEnabled              *bool    `json:"AccessLogEnabled,omitempty" xml:"AccessLogEnabled,omitempty"`
+	CustomizedPrometheus          *bool    `json:"CustomizedPrometheus,omitempty" xml:"CustomizedPrometheus,omitempty"`
+	PrometheusUrl                 *string  `json:"PrometheusUrl,omitempty" xml:"PrometheusUrl,omitempty"`
+	RedisFilterEnabled            *bool    `json:"RedisFilterEnabled,omitempty" xml:"RedisFilterEnabled,omitempty"`
+	MysqlFilterEnabled            *bool    `json:"MysqlFilterEnabled,omitempty" xml:"MysqlFilterEnabled,omitempty"`
+	ThriftFilterEnabled           *bool    `json:"ThriftFilterEnabled,omitempty" xml:"ThriftFilterEnabled,omitempty"`
+	WebAssemblyFilterEnabled      *bool    `json:"WebAssemblyFilterEnabled,omitempty" xml:"WebAssemblyFilterEnabled,omitempty"`
+	MSEEnabled                    *bool    `json:"MSEEnabled,omitempty" xml:"MSEEnabled,omitempty"`
+	DNSProxyingEnabled            *bool    `json:"DNSProxyingEnabled,omitempty" xml:"DNSProxyingEnabled,omitempty"`
+	Edition                       *string  `json:"Edition,omitempty" xml:"Edition,omitempty"`
+}
+
+func (s CreateServiceMeshRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceMeshRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceMeshRequest) SetRegionId(v string) *CreateServiceMeshRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetIstioVersion(v string) *CreateServiceMeshRequest {
+	s.IstioVersion = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetVpcId(v string) *CreateServiceMeshRequest {
+	s.VpcId = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetApiServerPublicEip(v bool) *CreateServiceMeshRequest {
+	s.ApiServerPublicEip = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetPilotPublicEip(v bool) *CreateServiceMeshRequest {
+	s.PilotPublicEip = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetStrictMTLS(v bool) *CreateServiceMeshRequest {
+	s.StrictMTLS = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetOutboundTrafficPolicy(v string) *CreateServiceMeshRequest {
+	s.OutboundTrafficPolicy = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetTracing(v bool) *CreateServiceMeshRequest {
+	s.Tracing = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetName(v string) *CreateServiceMeshRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetVSwitches(v string) *CreateServiceMeshRequest {
+	s.VSwitches = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetTraceSampling(v float32) *CreateServiceMeshRequest {
+	s.TraceSampling = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetLocalityLoadBalancing(v bool) *CreateServiceMeshRequest {
+	s.LocalityLoadBalancing = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetTelemetry(v bool) *CreateServiceMeshRequest {
+	s.Telemetry = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetOpenAgentPolicy(v bool) *CreateServiceMeshRequest {
+	s.OpenAgentPolicy = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetOPALogLevel(v string) *CreateServiceMeshRequest {
+	s.OPALogLevel = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetOPARequestCPU(v string) *CreateServiceMeshRequest {
+	s.OPARequestCPU = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetOPARequestMemory(v string) *CreateServiceMeshRequest {
+	s.OPARequestMemory = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetOPALimitCPU(v string) *CreateServiceMeshRequest {
+	s.OPALimitCPU = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetOPALimitMemory(v string) *CreateServiceMeshRequest {
+	s.OPALimitMemory = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetEnableAudit(v bool) *CreateServiceMeshRequest {
+	s.EnableAudit = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetAuditProject(v string) *CreateServiceMeshRequest {
+	s.AuditProject = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetCADisableSecretAutoGeneration(v bool) *CreateServiceMeshRequest {
+	s.CADisableSecretAutoGeneration = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetCAListenedNamespaces(v string) *CreateServiceMeshRequest {
+	s.CAListenedNamespaces = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetAppNamespaces(v string) *CreateServiceMeshRequest {
+	s.AppNamespaces = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetClusterDomain(v string) *CreateServiceMeshRequest {
+	s.ClusterDomain = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetProxyRequestCPU(v string) *CreateServiceMeshRequest {
+	s.ProxyRequestCPU = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetProxyRequestMemory(v string) *CreateServiceMeshRequest {
+	s.ProxyRequestMemory = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetProxyLimitCPU(v string) *CreateServiceMeshRequest {
+	s.ProxyLimitCPU = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetProxyLimitMemory(v string) *CreateServiceMeshRequest {
+	s.ProxyLimitMemory = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetIncludeIPRanges(v string) *CreateServiceMeshRequest {
+	s.IncludeIPRanges = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetExcludeIPRanges(v string) *CreateServiceMeshRequest {
+	s.ExcludeIPRanges = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetExcludeOutboundPorts(v string) *CreateServiceMeshRequest {
+	s.ExcludeOutboundPorts = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetExcludeInboundPorts(v string) *CreateServiceMeshRequest {
+	s.ExcludeInboundPorts = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetOpaEnabled(v bool) *CreateServiceMeshRequest {
+	s.OpaEnabled = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetKialiEnabled(v bool) *CreateServiceMeshRequest {
+	s.KialiEnabled = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetAccessLogEnabled(v bool) *CreateServiceMeshRequest {
+	s.AccessLogEnabled = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetCustomizedPrometheus(v bool) *CreateServiceMeshRequest {
+	s.CustomizedPrometheus = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetPrometheusUrl(v string) *CreateServiceMeshRequest {
+	s.PrometheusUrl = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetRedisFilterEnabled(v bool) *CreateServiceMeshRequest {
+	s.RedisFilterEnabled = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetMysqlFilterEnabled(v bool) *CreateServiceMeshRequest {
+	s.MysqlFilterEnabled = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetThriftFilterEnabled(v bool) *CreateServiceMeshRequest {
+	s.ThriftFilterEnabled = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetWebAssemblyFilterEnabled(v bool) *CreateServiceMeshRequest {
+	s.WebAssemblyFilterEnabled = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetMSEEnabled(v bool) *CreateServiceMeshRequest {
+	s.MSEEnabled = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetDNSProxyingEnabled(v bool) *CreateServiceMeshRequest {
+	s.DNSProxyingEnabled = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetEdition(v string) *CreateServiceMeshRequest {
+	s.Edition = &v
+	return s
+}
+
+type CreateServiceMeshResponseBody struct {
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+}
+
+func (s CreateServiceMeshResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceMeshResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceMeshResponseBody) SetRequestId(v string) *CreateServiceMeshResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateServiceMeshResponseBody) SetServiceMeshId(v string) *CreateServiceMeshResponseBody {
+	s.ServiceMeshId = &v
+	return s
+}
+
+type CreateServiceMeshResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateServiceMeshResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateServiceMeshResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceMeshResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceMeshResponse) SetHeaders(v map[string]*string) *CreateServiceMeshResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateServiceMeshResponse) SetBody(v *CreateServiceMeshResponseBody) *CreateServiceMeshResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteServiceMeshRequest struct {
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	Force         *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
+}
+
+func (s DeleteServiceMeshRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteServiceMeshRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteServiceMeshRequest) SetServiceMeshId(v string) *DeleteServiceMeshRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+func (s *DeleteServiceMeshRequest) SetForce(v bool) *DeleteServiceMeshRequest {
+	s.Force = &v
+	return s
+}
+
+type DeleteServiceMeshResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteServiceMeshResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteServiceMeshResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteServiceMeshResponseBody) SetRequestId(v string) *DeleteServiceMeshResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteServiceMeshResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteServiceMeshResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteServiceMeshResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteServiceMeshResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteServiceMeshResponse) SetHeaders(v map[string]*string) *DeleteServiceMeshResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteServiceMeshResponse) SetBody(v *DeleteServiceMeshResponseBody) *DeleteServiceMeshResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeCensRequest struct {
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+}
+
+func (s DescribeCensRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCensRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCensRequest) SetServiceMeshId(v string) *DescribeCensRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+type DescribeCensResponseBody struct {
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Clusters  []*string `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCensResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCensResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCensResponseBody) SetRequestId(v string) *DescribeCensResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeCensResponseBody) SetClusters(v []*string) *DescribeCensResponseBody {
+	s.Clusters = v
+	return s
+}
+
+type DescribeCensResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeCensResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeCensResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCensResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCensResponse) SetHeaders(v map[string]*string) *DescribeCensResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCensResponse) SetBody(v *DescribeCensResponseBody) *DescribeCensResponse {
 	s.Body = v
 	return s
 }
@@ -167,6 +749,256 @@ func (s *DescribeClusterGrafanaResponse) SetBody(v *DescribeClusterGrafanaRespon
 	return s
 }
 
+type DescribeClusterPrometheusRequest struct {
+	ServiceMeshId      *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	K8sClusterId       *string `json:"K8sClusterId,omitempty" xml:"K8sClusterId,omitempty"`
+	K8sClusterRegionId *string `json:"K8sClusterRegionId,omitempty" xml:"K8sClusterRegionId,omitempty"`
+}
+
+func (s DescribeClusterPrometheusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterPrometheusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterPrometheusRequest) SetServiceMeshId(v string) *DescribeClusterPrometheusRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+func (s *DescribeClusterPrometheusRequest) SetK8sClusterId(v string) *DescribeClusterPrometheusRequest {
+	s.K8sClusterId = &v
+	return s
+}
+
+func (s *DescribeClusterPrometheusRequest) SetK8sClusterRegionId(v string) *DescribeClusterPrometheusRequest {
+	s.K8sClusterRegionId = &v
+	return s
+}
+
+type DescribeClusterPrometheusResponseBody struct {
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Prometheus *string `json:"Prometheus,omitempty" xml:"Prometheus,omitempty"`
+}
+
+func (s DescribeClusterPrometheusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterPrometheusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterPrometheusResponseBody) SetRequestId(v string) *DescribeClusterPrometheusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeClusterPrometheusResponseBody) SetPrometheus(v string) *DescribeClusterPrometheusResponseBody {
+	s.Prometheus = &v
+	return s
+}
+
+type DescribeClusterPrometheusResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeClusterPrometheusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeClusterPrometheusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterPrometheusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterPrometheusResponse) SetHeaders(v map[string]*string) *DescribeClusterPrometheusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeClusterPrometheusResponse) SetBody(v *DescribeClusterPrometheusResponseBody) *DescribeClusterPrometheusResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeClustersInServiceMeshRequest struct {
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+}
+
+func (s DescribeClustersInServiceMeshRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClustersInServiceMeshRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClustersInServiceMeshRequest) SetServiceMeshId(v string) *DescribeClustersInServiceMeshRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+type DescribeClustersInServiceMeshResponseBody struct {
+	RequestId *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Clusters  []*DescribeClustersInServiceMeshResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
+}
+
+func (s DescribeClustersInServiceMeshResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClustersInServiceMeshResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClustersInServiceMeshResponseBody) SetRequestId(v string) *DescribeClustersInServiceMeshResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeClustersInServiceMeshResponseBody) SetClusters(v []*DescribeClustersInServiceMeshResponseBodyClusters) *DescribeClustersInServiceMeshResponseBody {
+	s.Clusters = v
+	return s
+}
+
+type DescribeClustersInServiceMeshResponseBodyClusters struct {
+	SgId                *string                                                                 `json:"SgId,omitempty" xml:"SgId,omitempty"`
+	VpcId               *string                                                                 `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	CreationTime        *string                                                                 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	UpdateTime          *string                                                                 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	ErrorMessage        *string                                                                 `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	State               *string                                                                 `json:"State,omitempty" xml:"State,omitempty"`
+	AccessLogDashboards []*DescribeClustersInServiceMeshResponseBodyClustersAccessLogDashboards `json:"AccessLogDashboards,omitempty" xml:"AccessLogDashboards,omitempty" type:"Repeated"`
+	RegionId            *string                                                                 `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ClusterDomain       *string                                                                 `json:"ClusterDomain,omitempty" xml:"ClusterDomain,omitempty"`
+	Version             *string                                                                 `json:"Version,omitempty" xml:"Version,omitempty"`
+	ClusterType         *string                                                                 `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	Name                *string                                                                 `json:"Name,omitempty" xml:"Name,omitempty"`
+	ClusterId           *string                                                                 `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+}
+
+func (s DescribeClustersInServiceMeshResponseBodyClusters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClustersInServiceMeshResponseBodyClusters) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClustersInServiceMeshResponseBodyClusters) SetSgId(v string) *DescribeClustersInServiceMeshResponseBodyClusters {
+	s.SgId = &v
+	return s
+}
+
+func (s *DescribeClustersInServiceMeshResponseBodyClusters) SetVpcId(v string) *DescribeClustersInServiceMeshResponseBodyClusters {
+	s.VpcId = &v
+	return s
+}
+
+func (s *DescribeClustersInServiceMeshResponseBodyClusters) SetCreationTime(v string) *DescribeClustersInServiceMeshResponseBodyClusters {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeClustersInServiceMeshResponseBodyClusters) SetUpdateTime(v string) *DescribeClustersInServiceMeshResponseBodyClusters {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *DescribeClustersInServiceMeshResponseBodyClusters) SetErrorMessage(v string) *DescribeClustersInServiceMeshResponseBodyClusters {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeClustersInServiceMeshResponseBodyClusters) SetState(v string) *DescribeClustersInServiceMeshResponseBodyClusters {
+	s.State = &v
+	return s
+}
+
+func (s *DescribeClustersInServiceMeshResponseBodyClusters) SetAccessLogDashboards(v []*DescribeClustersInServiceMeshResponseBodyClustersAccessLogDashboards) *DescribeClustersInServiceMeshResponseBodyClusters {
+	s.AccessLogDashboards = v
+	return s
+}
+
+func (s *DescribeClustersInServiceMeshResponseBodyClusters) SetRegionId(v string) *DescribeClustersInServiceMeshResponseBodyClusters {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeClustersInServiceMeshResponseBodyClusters) SetClusterDomain(v string) *DescribeClustersInServiceMeshResponseBodyClusters {
+	s.ClusterDomain = &v
+	return s
+}
+
+func (s *DescribeClustersInServiceMeshResponseBodyClusters) SetVersion(v string) *DescribeClustersInServiceMeshResponseBodyClusters {
+	s.Version = &v
+	return s
+}
+
+func (s *DescribeClustersInServiceMeshResponseBodyClusters) SetClusterType(v string) *DescribeClustersInServiceMeshResponseBodyClusters {
+	s.ClusterType = &v
+	return s
+}
+
+func (s *DescribeClustersInServiceMeshResponseBodyClusters) SetName(v string) *DescribeClustersInServiceMeshResponseBodyClusters {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeClustersInServiceMeshResponseBodyClusters) SetClusterId(v string) *DescribeClustersInServiceMeshResponseBodyClusters {
+	s.ClusterId = &v
+	return s
+}
+
+type DescribeClustersInServiceMeshResponseBodyClustersAccessLogDashboards struct {
+	Url   *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s DescribeClustersInServiceMeshResponseBodyClustersAccessLogDashboards) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClustersInServiceMeshResponseBodyClustersAccessLogDashboards) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClustersInServiceMeshResponseBodyClustersAccessLogDashboards) SetUrl(v string) *DescribeClustersInServiceMeshResponseBodyClustersAccessLogDashboards {
+	s.Url = &v
+	return s
+}
+
+func (s *DescribeClustersInServiceMeshResponseBodyClustersAccessLogDashboards) SetTitle(v string) *DescribeClustersInServiceMeshResponseBodyClustersAccessLogDashboards {
+	s.Title = &v
+	return s
+}
+
+type DescribeClustersInServiceMeshResponse struct {
+	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeClustersInServiceMeshResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeClustersInServiceMeshResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClustersInServiceMeshResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClustersInServiceMeshResponse) SetHeaders(v map[string]*string) *DescribeClustersInServiceMeshResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeClustersInServiceMeshResponse) SetBody(v *DescribeClustersInServiceMeshResponseBody) *DescribeClustersInServiceMeshResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeGuestClusterAccessLogDashboardsRequest struct {
 	K8sClusterId *string `json:"K8sClusterId,omitempty" xml:"K8sClusterId,omitempty"`
 }
@@ -255,558 +1087,6 @@ func (s *DescribeGuestClusterAccessLogDashboardsResponse) SetHeaders(v map[strin
 }
 
 func (s *DescribeGuestClusterAccessLogDashboardsResponse) SetBody(v *DescribeGuestClusterAccessLogDashboardsResponseBody) *DescribeGuestClusterAccessLogDashboardsResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeServiceMeshesResponseBody struct {
-	RequestId     *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ServiceMeshes []*DescribeServiceMeshesResponseBodyServiceMeshes `json:"ServiceMeshes,omitempty" xml:"ServiceMeshes,omitempty" type:"Repeated"`
-}
-
-func (s DescribeServiceMeshesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeServiceMeshesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeServiceMeshesResponseBody) SetRequestId(v string) *DescribeServiceMeshesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeServiceMeshesResponseBody) SetServiceMeshes(v []*DescribeServiceMeshesResponseBodyServiceMeshes) *DescribeServiceMeshesResponseBody {
-	s.ServiceMeshes = v
-	return s
-}
-
-type DescribeServiceMeshesResponseBodyServiceMeshes struct {
-	Endpoints       *DescribeServiceMeshesResponseBodyServiceMeshesEndpoints       `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Struct"`
-	ServiceMeshInfo *DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo `json:"ServiceMeshInfo,omitempty" xml:"ServiceMeshInfo,omitempty" type:"Struct"`
-	Spec            *DescribeServiceMeshesResponseBodyServiceMeshesSpec            `json:"Spec,omitempty" xml:"Spec,omitempty" type:"Struct"`
-	Clusters        []*string                                                      `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
-}
-
-func (s DescribeServiceMeshesResponseBodyServiceMeshes) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeServiceMeshesResponseBodyServiceMeshes) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeServiceMeshesResponseBodyServiceMeshes) SetEndpoints(v *DescribeServiceMeshesResponseBodyServiceMeshesEndpoints) *DescribeServiceMeshesResponseBodyServiceMeshes {
-	s.Endpoints = v
-	return s
-}
-
-func (s *DescribeServiceMeshesResponseBodyServiceMeshes) SetServiceMeshInfo(v *DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo) *DescribeServiceMeshesResponseBodyServiceMeshes {
-	s.ServiceMeshInfo = v
-	return s
-}
-
-func (s *DescribeServiceMeshesResponseBodyServiceMeshes) SetSpec(v *DescribeServiceMeshesResponseBodyServiceMeshesSpec) *DescribeServiceMeshesResponseBodyServiceMeshes {
-	s.Spec = v
-	return s
-}
-
-func (s *DescribeServiceMeshesResponseBodyServiceMeshes) SetClusters(v []*string) *DescribeServiceMeshesResponseBodyServiceMeshes {
-	s.Clusters = v
-	return s
-}
-
-type DescribeServiceMeshesResponseBodyServiceMeshesEndpoints struct {
-	IntranetPilotEndpoint     *string `json:"IntranetPilotEndpoint,omitempty" xml:"IntranetPilotEndpoint,omitempty"`
-	ReverseTunnelEndpoint     *string `json:"ReverseTunnelEndpoint,omitempty" xml:"ReverseTunnelEndpoint,omitempty"`
-	PublicPilotEndpoint       *string `json:"PublicPilotEndpoint,omitempty" xml:"PublicPilotEndpoint,omitempty"`
-	IntranetApiServerEndpoint *string `json:"IntranetApiServerEndpoint,omitempty" xml:"IntranetApiServerEndpoint,omitempty"`
-	PublicApiServerEndpoint   *string `json:"PublicApiServerEndpoint,omitempty" xml:"PublicApiServerEndpoint,omitempty"`
-}
-
-func (s DescribeServiceMeshesResponseBodyServiceMeshesEndpoints) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeServiceMeshesResponseBodyServiceMeshesEndpoints) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeServiceMeshesResponseBodyServiceMeshesEndpoints) SetIntranetPilotEndpoint(v string) *DescribeServiceMeshesResponseBodyServiceMeshesEndpoints {
-	s.IntranetPilotEndpoint = &v
-	return s
-}
-
-func (s *DescribeServiceMeshesResponseBodyServiceMeshesEndpoints) SetReverseTunnelEndpoint(v string) *DescribeServiceMeshesResponseBodyServiceMeshesEndpoints {
-	s.ReverseTunnelEndpoint = &v
-	return s
-}
-
-func (s *DescribeServiceMeshesResponseBodyServiceMeshesEndpoints) SetPublicPilotEndpoint(v string) *DescribeServiceMeshesResponseBodyServiceMeshesEndpoints {
-	s.PublicPilotEndpoint = &v
-	return s
-}
-
-func (s *DescribeServiceMeshesResponseBodyServiceMeshesEndpoints) SetIntranetApiServerEndpoint(v string) *DescribeServiceMeshesResponseBodyServiceMeshesEndpoints {
-	s.IntranetApiServerEndpoint = &v
-	return s
-}
-
-func (s *DescribeServiceMeshesResponseBodyServiceMeshesEndpoints) SetPublicApiServerEndpoint(v string) *DescribeServiceMeshesResponseBodyServiceMeshesEndpoints {
-	s.PublicApiServerEndpoint = &v
-	return s
-}
-
-type DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo struct {
-	Profile       *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	CreationTime  *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	UpdateTime    *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	ErrorMessage  *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Version       *string `json:"Version,omitempty" xml:"Version,omitempty"`
-	State         *string `json:"State,omitempty" xml:"State,omitempty"`
-	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo) SetProfile(v string) *DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo {
-	s.Profile = &v
-	return s
-}
-
-func (s *DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo) SetCreationTime(v string) *DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo {
-	s.CreationTime = &v
-	return s
-}
-
-func (s *DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo) SetUpdateTime(v string) *DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo {
-	s.UpdateTime = &v
-	return s
-}
-
-func (s *DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo) SetErrorMessage(v string) *DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo) SetVersion(v string) *DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo {
-	s.Version = &v
-	return s
-}
-
-func (s *DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo) SetState(v string) *DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo {
-	s.State = &v
-	return s
-}
-
-func (s *DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo) SetServiceMeshId(v string) *DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo {
-	s.ServiceMeshId = &v
-	return s
-}
-
-func (s *DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo) SetName(v string) *DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo) SetRegionId(v string) *DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo {
-	s.RegionId = &v
-	return s
-}
-
-type DescribeServiceMeshesResponseBodyServiceMeshesSpec struct {
-	Network      *DescribeServiceMeshesResponseBodyServiceMeshesSpecNetwork      `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
-	LoadBalancer *DescribeServiceMeshesResponseBodyServiceMeshesSpecLoadBalancer `json:"LoadBalancer,omitempty" xml:"LoadBalancer,omitempty" type:"Struct"`
-	MeshConfig   *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfig   `json:"MeshConfig,omitempty" xml:"MeshConfig,omitempty" type:"Struct"`
-}
-
-func (s DescribeServiceMeshesResponseBodyServiceMeshesSpec) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeServiceMeshesResponseBodyServiceMeshesSpec) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpec) SetNetwork(v *DescribeServiceMeshesResponseBodyServiceMeshesSpecNetwork) *DescribeServiceMeshesResponseBodyServiceMeshesSpec {
-	s.Network = v
-	return s
-}
-
-func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpec) SetLoadBalancer(v *DescribeServiceMeshesResponseBodyServiceMeshesSpecLoadBalancer) *DescribeServiceMeshesResponseBodyServiceMeshesSpec {
-	s.LoadBalancer = v
-	return s
-}
-
-func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpec) SetMeshConfig(v *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfig) *DescribeServiceMeshesResponseBodyServiceMeshesSpec {
-	s.MeshConfig = v
-	return s
-}
-
-type DescribeServiceMeshesResponseBodyServiceMeshesSpecNetwork struct {
-	VpcId           *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	SecurityGroupId *string   `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	VSwitches       []*string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
-}
-
-func (s DescribeServiceMeshesResponseBodyServiceMeshesSpecNetwork) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeServiceMeshesResponseBodyServiceMeshesSpecNetwork) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecNetwork) SetVpcId(v string) *DescribeServiceMeshesResponseBodyServiceMeshesSpecNetwork {
-	s.VpcId = &v
-	return s
-}
-
-func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecNetwork) SetSecurityGroupId(v string) *DescribeServiceMeshesResponseBodyServiceMeshesSpecNetwork {
-	s.SecurityGroupId = &v
-	return s
-}
-
-func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecNetwork) SetVSwitches(v []*string) *DescribeServiceMeshesResponseBodyServiceMeshesSpecNetwork {
-	s.VSwitches = v
-	return s
-}
-
-type DescribeServiceMeshesResponseBodyServiceMeshesSpecLoadBalancer struct {
-	PilotPublicEip            *bool   `json:"PilotPublicEip,omitempty" xml:"PilotPublicEip,omitempty"`
-	PilotPublicLoadbalancerId *string `json:"PilotPublicLoadbalancerId,omitempty" xml:"PilotPublicLoadbalancerId,omitempty"`
-	ApiServerLoadbalancerId   *string `json:"ApiServerLoadbalancerId,omitempty" xml:"ApiServerLoadbalancerId,omitempty"`
-	ApiServerPublicEip        *bool   `json:"ApiServerPublicEip,omitempty" xml:"ApiServerPublicEip,omitempty"`
-}
-
-func (s DescribeServiceMeshesResponseBodyServiceMeshesSpecLoadBalancer) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeServiceMeshesResponseBodyServiceMeshesSpecLoadBalancer) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecLoadBalancer) SetPilotPublicEip(v bool) *DescribeServiceMeshesResponseBodyServiceMeshesSpecLoadBalancer {
-	s.PilotPublicEip = &v
-	return s
-}
-
-func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecLoadBalancer) SetPilotPublicLoadbalancerId(v string) *DescribeServiceMeshesResponseBodyServiceMeshesSpecLoadBalancer {
-	s.PilotPublicLoadbalancerId = &v
-	return s
-}
-
-func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecLoadBalancer) SetApiServerLoadbalancerId(v string) *DescribeServiceMeshesResponseBodyServiceMeshesSpecLoadBalancer {
-	s.ApiServerLoadbalancerId = &v
-	return s
-}
-
-func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecLoadBalancer) SetApiServerPublicEip(v bool) *DescribeServiceMeshesResponseBodyServiceMeshesSpecLoadBalancer {
-	s.ApiServerPublicEip = &v
-	return s
-}
-
-type DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfig struct {
-	Telemetry             *bool                                                                        `json:"Telemetry,omitempty" xml:"Telemetry,omitempty"`
-	OutboundTrafficPolicy *string                                                                      `json:"OutboundTrafficPolicy,omitempty" xml:"OutboundTrafficPolicy,omitempty"`
-	Tracing               *bool                                                                        `json:"Tracing,omitempty" xml:"Tracing,omitempty"`
-	StrictMtls            *bool                                                                        `json:"StrictMtls,omitempty" xml:"StrictMtls,omitempty"`
-	Pilot                 *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigPilot           `json:"Pilot,omitempty" xml:"Pilot,omitempty" type:"Struct"`
-	Mtls                  *bool                                                                        `json:"Mtls,omitempty" xml:"Mtls,omitempty"`
-	SidecarInjector       *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigSidecarInjector `json:"SidecarInjector,omitempty" xml:"SidecarInjector,omitempty" type:"Struct"`
-}
-
-func (s DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfig) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfig) SetTelemetry(v bool) *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfig {
-	s.Telemetry = &v
-	return s
-}
-
-func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfig) SetOutboundTrafficPolicy(v string) *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfig {
-	s.OutboundTrafficPolicy = &v
-	return s
-}
-
-func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfig) SetTracing(v bool) *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfig {
-	s.Tracing = &v
-	return s
-}
-
-func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfig) SetStrictMtls(v bool) *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfig {
-	s.StrictMtls = &v
-	return s
-}
-
-func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfig) SetPilot(v *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigPilot) *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfig {
-	s.Pilot = v
-	return s
-}
-
-func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfig) SetMtls(v bool) *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfig {
-	s.Mtls = &v
-	return s
-}
-
-func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfig) SetSidecarInjector(v *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigSidecarInjector) *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfig {
-	s.SidecarInjector = v
-	return s
-}
-
-type DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigPilot struct {
-	Http10Enabled *bool    `json:"Http10Enabled,omitempty" xml:"Http10Enabled,omitempty"`
-	TraceSampling *float32 `json:"TraceSampling,omitempty" xml:"TraceSampling,omitempty"`
-}
-
-func (s DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigPilot) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigPilot) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigPilot) SetHttp10Enabled(v bool) *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigPilot {
-	s.Http10Enabled = &v
-	return s
-}
-
-func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigPilot) SetTraceSampling(v float32) *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigPilot {
-	s.TraceSampling = &v
-	return s
-}
-
-type DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigSidecarInjector struct {
-	EnableNamespacesByDefault  *bool                                                                                            `json:"EnableNamespacesByDefault,omitempty" xml:"EnableNamespacesByDefault,omitempty"`
-	AutoInjectionPolicyEnabled *bool                                                                                            `json:"AutoInjectionPolicyEnabled,omitempty" xml:"AutoInjectionPolicyEnabled,omitempty"`
-	InitCNIConfiguration       *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigSidecarInjectorInitCNIConfiguration `json:"InitCNIConfiguration,omitempty" xml:"InitCNIConfiguration,omitempty" type:"Struct"`
-}
-
-func (s DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigSidecarInjector) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigSidecarInjector) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigSidecarInjector) SetEnableNamespacesByDefault(v bool) *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigSidecarInjector {
-	s.EnableNamespacesByDefault = &v
-	return s
-}
-
-func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigSidecarInjector) SetAutoInjectionPolicyEnabled(v bool) *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigSidecarInjector {
-	s.AutoInjectionPolicyEnabled = &v
-	return s
-}
-
-func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigSidecarInjector) SetInitCNIConfiguration(v *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigSidecarInjectorInitCNIConfiguration) *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigSidecarInjector {
-	s.InitCNIConfiguration = v
-	return s
-}
-
-type DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigSidecarInjectorInitCNIConfiguration struct {
-	ExcludeNamespaces *string `json:"ExcludeNamespaces,omitempty" xml:"ExcludeNamespaces,omitempty"`
-	Enabled           *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-}
-
-func (s DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigSidecarInjectorInitCNIConfiguration) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigSidecarInjectorInitCNIConfiguration) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigSidecarInjectorInitCNIConfiguration) SetExcludeNamespaces(v string) *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigSidecarInjectorInitCNIConfiguration {
-	s.ExcludeNamespaces = &v
-	return s
-}
-
-func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigSidecarInjectorInitCNIConfiguration) SetEnabled(v bool) *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigSidecarInjectorInitCNIConfiguration {
-	s.Enabled = &v
-	return s
-}
-
-type DescribeServiceMeshesResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeServiceMeshesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeServiceMeshesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeServiceMeshesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeServiceMeshesResponse) SetHeaders(v map[string]*string) *DescribeServiceMeshesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeServiceMeshesResponse) SetBody(v *DescribeServiceMeshesResponseBody) *DescribeServiceMeshesResponse {
-	s.Body = v
-	return s
-}
-
-type GetDiagnosisRequest struct {
-	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
-}
-
-func (s GetDiagnosisRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDiagnosisRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetDiagnosisRequest) SetServiceMeshId(v string) *GetDiagnosisRequest {
-	s.ServiceMeshId = &v
-	return s
-}
-
-type GetDiagnosisResponseBody struct {
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RunAt     *string `json:"RunAt,omitempty" xml:"RunAt,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
-}
-
-func (s GetDiagnosisResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDiagnosisResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetDiagnosisResponseBody) SetStatus(v string) *GetDiagnosisResponseBody {
-	s.Status = &v
-	return s
-}
-
-func (s *GetDiagnosisResponseBody) SetRequestId(v string) *GetDiagnosisResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetDiagnosisResponseBody) SetRunAt(v string) *GetDiagnosisResponseBody {
-	s.RunAt = &v
-	return s
-}
-
-func (s *GetDiagnosisResponseBody) SetResult(v string) *GetDiagnosisResponseBody {
-	s.Result = &v
-	return s
-}
-
-type GetDiagnosisResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetDiagnosisResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetDiagnosisResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDiagnosisResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetDiagnosisResponse) SetHeaders(v map[string]*string) *GetDiagnosisResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetDiagnosisResponse) SetBody(v *GetDiagnosisResponseBody) *GetDiagnosisResponse {
-	s.Body = v
-	return s
-}
-
-type GetRegisteredServicesRequest struct {
-	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
-	Namespace     *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-}
-
-func (s GetRegisteredServicesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRegisteredServicesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetRegisteredServicesRequest) SetServiceMeshId(v string) *GetRegisteredServicesRequest {
-	s.ServiceMeshId = &v
-	return s
-}
-
-func (s *GetRegisteredServicesRequest) SetNamespace(v string) *GetRegisteredServicesRequest {
-	s.Namespace = &v
-	return s
-}
-
-type GetRegisteredServicesResponseBody struct {
-	Services  []*string `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s GetRegisteredServicesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRegisteredServicesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetRegisteredServicesResponseBody) SetServices(v []*string) *GetRegisteredServicesResponseBody {
-	s.Services = v
-	return s
-}
-
-func (s *GetRegisteredServicesResponseBody) SetRequestId(v string) *GetRegisteredServicesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type GetRegisteredServicesResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetRegisteredServicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetRegisteredServicesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRegisteredServicesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetRegisteredServicesResponse) SetHeaders(v map[string]*string) *GetRegisteredServicesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetRegisteredServicesResponse) SetBody(v *GetRegisteredServicesResponseBody) *GetRegisteredServicesResponse {
 	s.Body = v
 	return s
 }
@@ -1632,185 +1912,410 @@ func (s *DescribeServiceMeshDetailResponse) SetBody(v *DescribeServiceMeshDetail
 	return s
 }
 
-type DescribeCensRequest struct {
-	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+type DescribeServiceMeshesResponseBody struct {
+	RequestId     *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ServiceMeshes []*DescribeServiceMeshesResponseBodyServiceMeshes `json:"ServiceMeshes,omitempty" xml:"ServiceMeshes,omitempty" type:"Repeated"`
 }
 
-func (s DescribeCensRequest) String() string {
+func (s DescribeServiceMeshesResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeCensRequest) GoString() string {
+func (s DescribeServiceMeshesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeCensRequest) SetServiceMeshId(v string) *DescribeCensRequest {
-	s.ServiceMeshId = &v
-	return s
-}
-
-type DescribeCensResponseBody struct {
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Clusters  []*string `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
-}
-
-func (s DescribeCensResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeCensResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeCensResponseBody) SetRequestId(v string) *DescribeCensResponseBody {
+func (s *DescribeServiceMeshesResponseBody) SetRequestId(v string) *DescribeServiceMeshesResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *DescribeCensResponseBody) SetClusters(v []*string) *DescribeCensResponseBody {
+func (s *DescribeServiceMeshesResponseBody) SetServiceMeshes(v []*DescribeServiceMeshesResponseBodyServiceMeshes) *DescribeServiceMeshesResponseBody {
+	s.ServiceMeshes = v
+	return s
+}
+
+type DescribeServiceMeshesResponseBodyServiceMeshes struct {
+	Endpoints       *DescribeServiceMeshesResponseBodyServiceMeshesEndpoints       `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Struct"`
+	ServiceMeshInfo *DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo `json:"ServiceMeshInfo,omitempty" xml:"ServiceMeshInfo,omitempty" type:"Struct"`
+	Spec            *DescribeServiceMeshesResponseBodyServiceMeshesSpec            `json:"Spec,omitempty" xml:"Spec,omitempty" type:"Struct"`
+	Clusters        []*string                                                      `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
+}
+
+func (s DescribeServiceMeshesResponseBodyServiceMeshes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceMeshesResponseBodyServiceMeshes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceMeshesResponseBodyServiceMeshes) SetEndpoints(v *DescribeServiceMeshesResponseBodyServiceMeshesEndpoints) *DescribeServiceMeshesResponseBodyServiceMeshes {
+	s.Endpoints = v
+	return s
+}
+
+func (s *DescribeServiceMeshesResponseBodyServiceMeshes) SetServiceMeshInfo(v *DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo) *DescribeServiceMeshesResponseBodyServiceMeshes {
+	s.ServiceMeshInfo = v
+	return s
+}
+
+func (s *DescribeServiceMeshesResponseBodyServiceMeshes) SetSpec(v *DescribeServiceMeshesResponseBodyServiceMeshesSpec) *DescribeServiceMeshesResponseBodyServiceMeshes {
+	s.Spec = v
+	return s
+}
+
+func (s *DescribeServiceMeshesResponseBodyServiceMeshes) SetClusters(v []*string) *DescribeServiceMeshesResponseBodyServiceMeshes {
 	s.Clusters = v
 	return s
 }
 
-type DescribeCensResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeCensResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+type DescribeServiceMeshesResponseBodyServiceMeshesEndpoints struct {
+	IntranetPilotEndpoint     *string `json:"IntranetPilotEndpoint,omitempty" xml:"IntranetPilotEndpoint,omitempty"`
+	ReverseTunnelEndpoint     *string `json:"ReverseTunnelEndpoint,omitempty" xml:"ReverseTunnelEndpoint,omitempty"`
+	PublicPilotEndpoint       *string `json:"PublicPilotEndpoint,omitempty" xml:"PublicPilotEndpoint,omitempty"`
+	IntranetApiServerEndpoint *string `json:"IntranetApiServerEndpoint,omitempty" xml:"IntranetApiServerEndpoint,omitempty"`
+	PublicApiServerEndpoint   *string `json:"PublicApiServerEndpoint,omitempty" xml:"PublicApiServerEndpoint,omitempty"`
 }
 
-func (s DescribeCensResponse) String() string {
+func (s DescribeServiceMeshesResponseBodyServiceMeshesEndpoints) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeCensResponse) GoString() string {
+func (s DescribeServiceMeshesResponseBodyServiceMeshesEndpoints) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeCensResponse) SetHeaders(v map[string]*string) *DescribeCensResponse {
-	s.Headers = v
+func (s *DescribeServiceMeshesResponseBodyServiceMeshesEndpoints) SetIntranetPilotEndpoint(v string) *DescribeServiceMeshesResponseBodyServiceMeshesEndpoints {
+	s.IntranetPilotEndpoint = &v
 	return s
 }
 
-func (s *DescribeCensResponse) SetBody(v *DescribeCensResponseBody) *DescribeCensResponse {
-	s.Body = v
+func (s *DescribeServiceMeshesResponseBodyServiceMeshesEndpoints) SetReverseTunnelEndpoint(v string) *DescribeServiceMeshesResponseBodyServiceMeshesEndpoints {
+	s.ReverseTunnelEndpoint = &v
 	return s
 }
 
-type DeleteServiceMeshRequest struct {
+func (s *DescribeServiceMeshesResponseBodyServiceMeshesEndpoints) SetPublicPilotEndpoint(v string) *DescribeServiceMeshesResponseBodyServiceMeshesEndpoints {
+	s.PublicPilotEndpoint = &v
+	return s
+}
+
+func (s *DescribeServiceMeshesResponseBodyServiceMeshesEndpoints) SetIntranetApiServerEndpoint(v string) *DescribeServiceMeshesResponseBodyServiceMeshesEndpoints {
+	s.IntranetApiServerEndpoint = &v
+	return s
+}
+
+func (s *DescribeServiceMeshesResponseBodyServiceMeshesEndpoints) SetPublicApiServerEndpoint(v string) *DescribeServiceMeshesResponseBodyServiceMeshesEndpoints {
+	s.PublicApiServerEndpoint = &v
+	return s
+}
+
+type DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo struct {
+	Profile       *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	CreationTime  *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	UpdateTime    *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	ErrorMessage  *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Version       *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	State         *string `json:"State,omitempty" xml:"State,omitempty"`
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
-	Force         *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
-func (s DeleteServiceMeshRequest) String() string {
+func (s DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DeleteServiceMeshRequest) GoString() string {
+func (s DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteServiceMeshRequest) SetServiceMeshId(v string) *DeleteServiceMeshRequest {
+func (s *DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo) SetProfile(v string) *DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo {
+	s.Profile = &v
+	return s
+}
+
+func (s *DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo) SetCreationTime(v string) *DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo) SetUpdateTime(v string) *DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo) SetErrorMessage(v string) *DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo) SetVersion(v string) *DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo {
+	s.Version = &v
+	return s
+}
+
+func (s *DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo) SetState(v string) *DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo {
+	s.State = &v
+	return s
+}
+
+func (s *DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo) SetServiceMeshId(v string) *DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo {
 	s.ServiceMeshId = &v
 	return s
 }
 
-func (s *DeleteServiceMeshRequest) SetForce(v bool) *DeleteServiceMeshRequest {
-	s.Force = &v
+func (s *DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo) SetName(v string) *DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo {
+	s.Name = &v
 	return s
 }
 
-type DeleteServiceMeshResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DeleteServiceMeshResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteServiceMeshResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteServiceMeshResponseBody) SetRequestId(v string) *DeleteServiceMeshResponseBody {
-	s.RequestId = &v
+func (s *DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo) SetRegionId(v string) *DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo {
+	s.RegionId = &v
 	return s
 }
 
-type DeleteServiceMeshResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteServiceMeshResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+type DescribeServiceMeshesResponseBodyServiceMeshesSpec struct {
+	Network      *DescribeServiceMeshesResponseBodyServiceMeshesSpecNetwork      `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
+	LoadBalancer *DescribeServiceMeshesResponseBodyServiceMeshesSpecLoadBalancer `json:"LoadBalancer,omitempty" xml:"LoadBalancer,omitempty" type:"Struct"`
+	MeshConfig   *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfig   `json:"MeshConfig,omitempty" xml:"MeshConfig,omitempty" type:"Struct"`
 }
 
-func (s DeleteServiceMeshResponse) String() string {
+func (s DescribeServiceMeshesResponseBodyServiceMeshesSpec) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DeleteServiceMeshResponse) GoString() string {
+func (s DescribeServiceMeshesResponseBodyServiceMeshesSpec) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteServiceMeshResponse) SetHeaders(v map[string]*string) *DeleteServiceMeshResponse {
+func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpec) SetNetwork(v *DescribeServiceMeshesResponseBodyServiceMeshesSpecNetwork) *DescribeServiceMeshesResponseBodyServiceMeshesSpec {
+	s.Network = v
+	return s
+}
+
+func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpec) SetLoadBalancer(v *DescribeServiceMeshesResponseBodyServiceMeshesSpecLoadBalancer) *DescribeServiceMeshesResponseBodyServiceMeshesSpec {
+	s.LoadBalancer = v
+	return s
+}
+
+func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpec) SetMeshConfig(v *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfig) *DescribeServiceMeshesResponseBodyServiceMeshesSpec {
+	s.MeshConfig = v
+	return s
+}
+
+type DescribeServiceMeshesResponseBodyServiceMeshesSpecNetwork struct {
+	VpcId           *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	SecurityGroupId *string   `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	VSwitches       []*string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
+}
+
+func (s DescribeServiceMeshesResponseBodyServiceMeshesSpecNetwork) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceMeshesResponseBodyServiceMeshesSpecNetwork) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecNetwork) SetVpcId(v string) *DescribeServiceMeshesResponseBodyServiceMeshesSpecNetwork {
+	s.VpcId = &v
+	return s
+}
+
+func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecNetwork) SetSecurityGroupId(v string) *DescribeServiceMeshesResponseBodyServiceMeshesSpecNetwork {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecNetwork) SetVSwitches(v []*string) *DescribeServiceMeshesResponseBodyServiceMeshesSpecNetwork {
+	s.VSwitches = v
+	return s
+}
+
+type DescribeServiceMeshesResponseBodyServiceMeshesSpecLoadBalancer struct {
+	PilotPublicEip            *bool   `json:"PilotPublicEip,omitempty" xml:"PilotPublicEip,omitempty"`
+	PilotPublicLoadbalancerId *string `json:"PilotPublicLoadbalancerId,omitempty" xml:"PilotPublicLoadbalancerId,omitempty"`
+	ApiServerLoadbalancerId   *string `json:"ApiServerLoadbalancerId,omitempty" xml:"ApiServerLoadbalancerId,omitempty"`
+	ApiServerPublicEip        *bool   `json:"ApiServerPublicEip,omitempty" xml:"ApiServerPublicEip,omitempty"`
+}
+
+func (s DescribeServiceMeshesResponseBodyServiceMeshesSpecLoadBalancer) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceMeshesResponseBodyServiceMeshesSpecLoadBalancer) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecLoadBalancer) SetPilotPublicEip(v bool) *DescribeServiceMeshesResponseBodyServiceMeshesSpecLoadBalancer {
+	s.PilotPublicEip = &v
+	return s
+}
+
+func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecLoadBalancer) SetPilotPublicLoadbalancerId(v string) *DescribeServiceMeshesResponseBodyServiceMeshesSpecLoadBalancer {
+	s.PilotPublicLoadbalancerId = &v
+	return s
+}
+
+func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecLoadBalancer) SetApiServerLoadbalancerId(v string) *DescribeServiceMeshesResponseBodyServiceMeshesSpecLoadBalancer {
+	s.ApiServerLoadbalancerId = &v
+	return s
+}
+
+func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecLoadBalancer) SetApiServerPublicEip(v bool) *DescribeServiceMeshesResponseBodyServiceMeshesSpecLoadBalancer {
+	s.ApiServerPublicEip = &v
+	return s
+}
+
+type DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfig struct {
+	Telemetry             *bool                                                                        `json:"Telemetry,omitempty" xml:"Telemetry,omitempty"`
+	OutboundTrafficPolicy *string                                                                      `json:"OutboundTrafficPolicy,omitempty" xml:"OutboundTrafficPolicy,omitempty"`
+	Tracing               *bool                                                                        `json:"Tracing,omitempty" xml:"Tracing,omitempty"`
+	StrictMtls            *bool                                                                        `json:"StrictMtls,omitempty" xml:"StrictMtls,omitempty"`
+	Pilot                 *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigPilot           `json:"Pilot,omitempty" xml:"Pilot,omitempty" type:"Struct"`
+	Mtls                  *bool                                                                        `json:"Mtls,omitempty" xml:"Mtls,omitempty"`
+	SidecarInjector       *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigSidecarInjector `json:"SidecarInjector,omitempty" xml:"SidecarInjector,omitempty" type:"Struct"`
+}
+
+func (s DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfig) SetTelemetry(v bool) *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfig {
+	s.Telemetry = &v
+	return s
+}
+
+func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfig) SetOutboundTrafficPolicy(v string) *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfig {
+	s.OutboundTrafficPolicy = &v
+	return s
+}
+
+func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfig) SetTracing(v bool) *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfig {
+	s.Tracing = &v
+	return s
+}
+
+func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfig) SetStrictMtls(v bool) *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfig {
+	s.StrictMtls = &v
+	return s
+}
+
+func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfig) SetPilot(v *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigPilot) *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfig {
+	s.Pilot = v
+	return s
+}
+
+func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfig) SetMtls(v bool) *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfig {
+	s.Mtls = &v
+	return s
+}
+
+func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfig) SetSidecarInjector(v *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigSidecarInjector) *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfig {
+	s.SidecarInjector = v
+	return s
+}
+
+type DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigPilot struct {
+	Http10Enabled *bool    `json:"Http10Enabled,omitempty" xml:"Http10Enabled,omitempty"`
+	TraceSampling *float32 `json:"TraceSampling,omitempty" xml:"TraceSampling,omitempty"`
+}
+
+func (s DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigPilot) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigPilot) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigPilot) SetHttp10Enabled(v bool) *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigPilot {
+	s.Http10Enabled = &v
+	return s
+}
+
+func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigPilot) SetTraceSampling(v float32) *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigPilot {
+	s.TraceSampling = &v
+	return s
+}
+
+type DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigSidecarInjector struct {
+	EnableNamespacesByDefault  *bool                                                                                            `json:"EnableNamespacesByDefault,omitempty" xml:"EnableNamespacesByDefault,omitempty"`
+	AutoInjectionPolicyEnabled *bool                                                                                            `json:"AutoInjectionPolicyEnabled,omitempty" xml:"AutoInjectionPolicyEnabled,omitempty"`
+	InitCNIConfiguration       *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigSidecarInjectorInitCNIConfiguration `json:"InitCNIConfiguration,omitempty" xml:"InitCNIConfiguration,omitempty" type:"Struct"`
+}
+
+func (s DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigSidecarInjector) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigSidecarInjector) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigSidecarInjector) SetEnableNamespacesByDefault(v bool) *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigSidecarInjector {
+	s.EnableNamespacesByDefault = &v
+	return s
+}
+
+func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigSidecarInjector) SetAutoInjectionPolicyEnabled(v bool) *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigSidecarInjector {
+	s.AutoInjectionPolicyEnabled = &v
+	return s
+}
+
+func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigSidecarInjector) SetInitCNIConfiguration(v *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigSidecarInjectorInitCNIConfiguration) *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigSidecarInjector {
+	s.InitCNIConfiguration = v
+	return s
+}
+
+type DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigSidecarInjectorInitCNIConfiguration struct {
+	ExcludeNamespaces *string `json:"ExcludeNamespaces,omitempty" xml:"ExcludeNamespaces,omitempty"`
+	Enabled           *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+}
+
+func (s DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigSidecarInjectorInitCNIConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigSidecarInjectorInitCNIConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigSidecarInjectorInitCNIConfiguration) SetExcludeNamespaces(v string) *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigSidecarInjectorInitCNIConfiguration {
+	s.ExcludeNamespaces = &v
+	return s
+}
+
+func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigSidecarInjectorInitCNIConfiguration) SetEnabled(v bool) *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigSidecarInjectorInitCNIConfiguration {
+	s.Enabled = &v
+	return s
+}
+
+type DescribeServiceMeshesResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeServiceMeshesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeServiceMeshesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceMeshesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceMeshesResponse) SetHeaders(v map[string]*string) *DescribeServiceMeshesResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *DeleteServiceMeshResponse) SetBody(v *DeleteServiceMeshResponseBody) *DeleteServiceMeshResponse {
-	s.Body = v
-	return s
-}
-
-type UpgradeMeshVersionRequest struct {
-	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
-}
-
-func (s UpgradeMeshVersionRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpgradeMeshVersionRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpgradeMeshVersionRequest) SetServiceMeshId(v string) *UpgradeMeshVersionRequest {
-	s.ServiceMeshId = &v
-	return s
-}
-
-type UpgradeMeshVersionResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s UpgradeMeshVersionResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpgradeMeshVersionResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpgradeMeshVersionResponseBody) SetRequestId(v string) *UpgradeMeshVersionResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type UpgradeMeshVersionResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpgradeMeshVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpgradeMeshVersionResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpgradeMeshVersionResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpgradeMeshVersionResponse) SetHeaders(v map[string]*string) *UpgradeMeshVersionResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpgradeMeshVersionResponse) SetBody(v *UpgradeMeshVersionResponseBody) *UpgradeMeshVersionResponse {
+func (s *DescribeServiceMeshesResponse) SetBody(v *DescribeServiceMeshesResponseBody) *DescribeServiceMeshesResponse {
 	s.Body = v
 	return s
 }
@@ -1884,399 +2389,232 @@ func (s *DescribeServiceMeshKubeconfigResponse) SetBody(v *DescribeServiceMeshKu
 	return s
 }
 
-type GetVmAppMeshInfoRequest struct {
+type DescribeUpgradeVersionRequest struct {
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
-func (s GetVmAppMeshInfoRequest) String() string {
+func (s DescribeUpgradeVersionRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetVmAppMeshInfoRequest) GoString() string {
+func (s DescribeUpgradeVersionRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetVmAppMeshInfoRequest) SetServiceMeshId(v string) *GetVmAppMeshInfoRequest {
+func (s *DescribeUpgradeVersionRequest) SetServiceMeshId(v string) *DescribeUpgradeVersionRequest {
 	s.ServiceMeshId = &v
 	return s
 }
 
-type GetVmAppMeshInfoResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+type DescribeUpgradeVersionResponseBody struct {
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Version   *DescribeUpgradeVersionResponseBodyVersion `json:"Version,omitempty" xml:"Version,omitempty" type:"Struct"`
 }
 
-func (s GetVmAppMeshInfoResponseBody) String() string {
+func (s DescribeUpgradeVersionResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetVmAppMeshInfoResponseBody) GoString() string {
+func (s DescribeUpgradeVersionResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetVmAppMeshInfoResponseBody) SetRequestId(v string) *GetVmAppMeshInfoResponseBody {
+func (s *DescribeUpgradeVersionResponseBody) SetRequestId(v string) *DescribeUpgradeVersionResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *GetVmAppMeshInfoResponseBody) SetData(v string) *GetVmAppMeshInfoResponseBody {
-	s.Data = &v
+func (s *DescribeUpgradeVersionResponseBody) SetVersion(v *DescribeUpgradeVersionResponseBodyVersion) *DescribeUpgradeVersionResponseBody {
+	s.Version = v
 	return s
 }
 
-type GetVmAppMeshInfoResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetVmAppMeshInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+type DescribeUpgradeVersionResponseBodyVersion struct {
+	KubernetesVersion    *string `json:"KubernetesVersion,omitempty" xml:"KubernetesVersion,omitempty"`
+	IstioOperatorVersion *string `json:"IstioOperatorVersion,omitempty" xml:"IstioOperatorVersion,omitempty"`
+	IstioVersion         *string `json:"IstioVersion,omitempty" xml:"IstioVersion,omitempty"`
 }
 
-func (s GetVmAppMeshInfoResponse) String() string {
+func (s DescribeUpgradeVersionResponseBodyVersion) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetVmAppMeshInfoResponse) GoString() string {
+func (s DescribeUpgradeVersionResponseBodyVersion) GoString() string {
 	return s.String()
 }
 
-func (s *GetVmAppMeshInfoResponse) SetHeaders(v map[string]*string) *GetVmAppMeshInfoResponse {
+func (s *DescribeUpgradeVersionResponseBodyVersion) SetKubernetesVersion(v string) *DescribeUpgradeVersionResponseBodyVersion {
+	s.KubernetesVersion = &v
+	return s
+}
+
+func (s *DescribeUpgradeVersionResponseBodyVersion) SetIstioOperatorVersion(v string) *DescribeUpgradeVersionResponseBodyVersion {
+	s.IstioOperatorVersion = &v
+	return s
+}
+
+func (s *DescribeUpgradeVersionResponseBodyVersion) SetIstioVersion(v string) *DescribeUpgradeVersionResponseBodyVersion {
+	s.IstioVersion = &v
+	return s
+}
+
+type DescribeUpgradeVersionResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeUpgradeVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeUpgradeVersionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUpgradeVersionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUpgradeVersionResponse) SetHeaders(v map[string]*string) *DescribeUpgradeVersionResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *GetVmAppMeshInfoResponse) SetBody(v *GetVmAppMeshInfoResponseBody) *GetVmAppMeshInfoResponse {
+func (s *DescribeUpgradeVersionResponse) SetBody(v *DescribeUpgradeVersionResponseBody) *DescribeUpgradeVersionResponse {
 	s.Body = v
 	return s
 }
 
-type RemoveClusterFromServiceMeshRequest struct {
+type GetAutoInjectionLabelSyncStatusRequest struct {
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
-	ClusterId     *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
-func (s RemoveClusterFromServiceMeshRequest) String() string {
+func (s GetAutoInjectionLabelSyncStatusRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s RemoveClusterFromServiceMeshRequest) GoString() string {
+func (s GetAutoInjectionLabelSyncStatusRequest) GoString() string {
 	return s.String()
 }
 
-func (s *RemoveClusterFromServiceMeshRequest) SetServiceMeshId(v string) *RemoveClusterFromServiceMeshRequest {
+func (s *GetAutoInjectionLabelSyncStatusRequest) SetServiceMeshId(v string) *GetAutoInjectionLabelSyncStatusRequest {
 	s.ServiceMeshId = &v
 	return s
 }
 
-func (s *RemoveClusterFromServiceMeshRequest) SetClusterId(v string) *RemoveClusterFromServiceMeshRequest {
-	s.ClusterId = &v
-	return s
-}
-
-type RemoveClusterFromServiceMeshResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+type GetAutoInjectionLabelSyncStatusResponseBody struct {
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
-func (s RemoveClusterFromServiceMeshResponseBody) String() string {
+func (s GetAutoInjectionLabelSyncStatusResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s RemoveClusterFromServiceMeshResponseBody) GoString() string {
+func (s GetAutoInjectionLabelSyncStatusResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *RemoveClusterFromServiceMeshResponseBody) SetMessage(v string) *RemoveClusterFromServiceMeshResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *RemoveClusterFromServiceMeshResponseBody) SetRequestId(v string) *RemoveClusterFromServiceMeshResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *RemoveClusterFromServiceMeshResponseBody) SetCode(v string) *RemoveClusterFromServiceMeshResponseBody {
-	s.Code = &v
-	return s
-}
-
-type RemoveClusterFromServiceMeshResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RemoveClusterFromServiceMeshResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s RemoveClusterFromServiceMeshResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RemoveClusterFromServiceMeshResponse) GoString() string {
-	return s.String()
-}
-
-func (s *RemoveClusterFromServiceMeshResponse) SetHeaders(v map[string]*string) *RemoveClusterFromServiceMeshResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *RemoveClusterFromServiceMeshResponse) SetBody(v *RemoveClusterFromServiceMeshResponseBody) *RemoveClusterFromServiceMeshResponse {
-	s.Body = v
-	return s
-}
-
-type SetServiceRegistrySourceRequest struct {
-	ServiceMeshId *string                `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
-	Config        map[string]interface{} `json:"Config,omitempty" xml:"Config,omitempty"`
-}
-
-func (s SetServiceRegistrySourceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetServiceRegistrySourceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SetServiceRegistrySourceRequest) SetServiceMeshId(v string) *SetServiceRegistrySourceRequest {
-	s.ServiceMeshId = &v
-	return s
-}
-
-func (s *SetServiceRegistrySourceRequest) SetConfig(v map[string]interface{}) *SetServiceRegistrySourceRequest {
-	s.Config = v
-	return s
-}
-
-type SetServiceRegistrySourceShrinkRequest struct {
-	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
-	ConfigShrink  *string `json:"Config,omitempty" xml:"Config,omitempty"`
-}
-
-func (s SetServiceRegistrySourceShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetServiceRegistrySourceShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SetServiceRegistrySourceShrinkRequest) SetServiceMeshId(v string) *SetServiceRegistrySourceShrinkRequest {
-	s.ServiceMeshId = &v
-	return s
-}
-
-func (s *SetServiceRegistrySourceShrinkRequest) SetConfigShrink(v string) *SetServiceRegistrySourceShrinkRequest {
-	s.ConfigShrink = &v
-	return s
-}
-
-type SetServiceRegistrySourceResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
-}
-
-func (s SetServiceRegistrySourceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetServiceRegistrySourceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SetServiceRegistrySourceResponseBody) SetRequestId(v string) *SetServiceRegistrySourceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *SetServiceRegistrySourceResponseBody) SetResult(v string) *SetServiceRegistrySourceResponseBody {
-	s.Result = &v
-	return s
-}
-
-type SetServiceRegistrySourceResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SetServiceRegistrySourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SetServiceRegistrySourceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetServiceRegistrySourceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SetServiceRegistrySourceResponse) SetHeaders(v map[string]*string) *SetServiceRegistrySourceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SetServiceRegistrySourceResponse) SetBody(v *SetServiceRegistrySourceResponseBody) *SetServiceRegistrySourceResponse {
-	s.Body = v
-	return s
-}
-
-type AddClusterIntoServiceMeshRequest struct {
-	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
-	ClusterId     *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-}
-
-func (s AddClusterIntoServiceMeshRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddClusterIntoServiceMeshRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AddClusterIntoServiceMeshRequest) SetServiceMeshId(v string) *AddClusterIntoServiceMeshRequest {
-	s.ServiceMeshId = &v
-	return s
-}
-
-func (s *AddClusterIntoServiceMeshRequest) SetClusterId(v string) *AddClusterIntoServiceMeshRequest {
-	s.ClusterId = &v
-	return s
-}
-
-type AddClusterIntoServiceMeshResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-}
-
-func (s AddClusterIntoServiceMeshResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddClusterIntoServiceMeshResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *AddClusterIntoServiceMeshResponseBody) SetMessage(v string) *AddClusterIntoServiceMeshResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *AddClusterIntoServiceMeshResponseBody) SetRequestId(v string) *AddClusterIntoServiceMeshResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *AddClusterIntoServiceMeshResponseBody) SetCode(v string) *AddClusterIntoServiceMeshResponseBody {
-	s.Code = &v
-	return s
-}
-
-type AddClusterIntoServiceMeshResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddClusterIntoServiceMeshResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s AddClusterIntoServiceMeshResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddClusterIntoServiceMeshResponse) GoString() string {
-	return s.String()
-}
-
-func (s *AddClusterIntoServiceMeshResponse) SetHeaders(v map[string]*string) *AddClusterIntoServiceMeshResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *AddClusterIntoServiceMeshResponse) SetBody(v *AddClusterIntoServiceMeshResponseBody) *AddClusterIntoServiceMeshResponse {
-	s.Body = v
-	return s
-}
-
-type GetServiceMeshSlbRequest struct {
-	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
-}
-
-func (s GetServiceMeshSlbRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetServiceMeshSlbRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetServiceMeshSlbRequest) SetServiceMeshId(v string) *GetServiceMeshSlbRequest {
-	s.ServiceMeshId = &v
-	return s
-}
-
-type GetServiceMeshSlbResponseBody struct {
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      []*GetServiceMeshSlbResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-}
-
-func (s GetServiceMeshSlbResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetServiceMeshSlbResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetServiceMeshSlbResponseBody) SetRequestId(v string) *GetServiceMeshSlbResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetServiceMeshSlbResponseBody) SetData(v []*GetServiceMeshSlbResponseBodyData) *GetServiceMeshSlbResponseBody {
-	s.Data = v
-	return s
-}
-
-type GetServiceMeshSlbResponseBodyData struct {
-	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	ServerHealthStatus *string `json:"ServerHealthStatus,omitempty" xml:"ServerHealthStatus,omitempty"`
-	LoadBalancerId     *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-}
-
-func (s GetServiceMeshSlbResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetServiceMeshSlbResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetServiceMeshSlbResponseBodyData) SetStatus(v string) *GetServiceMeshSlbResponseBodyData {
+func (s *GetAutoInjectionLabelSyncStatusResponseBody) SetStatus(v string) *GetAutoInjectionLabelSyncStatusResponseBody {
 	s.Status = &v
 	return s
 }
 
-func (s *GetServiceMeshSlbResponseBodyData) SetServerHealthStatus(v string) *GetServiceMeshSlbResponseBodyData {
-	s.ServerHealthStatus = &v
+func (s *GetAutoInjectionLabelSyncStatusResponseBody) SetRequestId(v string) *GetAutoInjectionLabelSyncStatusResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *GetServiceMeshSlbResponseBodyData) SetLoadBalancerId(v string) *GetServiceMeshSlbResponseBodyData {
-	s.LoadBalancerId = &v
-	return s
+type GetAutoInjectionLabelSyncStatusResponse struct {
+	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetAutoInjectionLabelSyncStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-type GetServiceMeshSlbResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetServiceMeshSlbResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetServiceMeshSlbResponse) String() string {
+func (s GetAutoInjectionLabelSyncStatusResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetServiceMeshSlbResponse) GoString() string {
+func (s GetAutoInjectionLabelSyncStatusResponse) GoString() string {
 	return s.String()
 }
 
-func (s *GetServiceMeshSlbResponse) SetHeaders(v map[string]*string) *GetServiceMeshSlbResponse {
+func (s *GetAutoInjectionLabelSyncStatusResponse) SetHeaders(v map[string]*string) *GetAutoInjectionLabelSyncStatusResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *GetServiceMeshSlbResponse) SetBody(v *GetServiceMeshSlbResponseBody) *GetServiceMeshSlbResponse {
+func (s *GetAutoInjectionLabelSyncStatusResponse) SetBody(v *GetAutoInjectionLabelSyncStatusResponseBody) *GetAutoInjectionLabelSyncStatusResponse {
+	s.Body = v
+	return s
+}
+
+type GetDiagnosisRequest struct {
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+}
+
+func (s GetDiagnosisRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDiagnosisRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDiagnosisRequest) SetServiceMeshId(v string) *GetDiagnosisRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+type GetDiagnosisResponseBody struct {
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RunAt     *string `json:"RunAt,omitempty" xml:"RunAt,omitempty"`
+	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s GetDiagnosisResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDiagnosisResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDiagnosisResponseBody) SetStatus(v string) *GetDiagnosisResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *GetDiagnosisResponseBody) SetRequestId(v string) *GetDiagnosisResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDiagnosisResponseBody) SetRunAt(v string) *GetDiagnosisResponseBody {
+	s.RunAt = &v
+	return s
+}
+
+func (s *GetDiagnosisResponseBody) SetResult(v string) *GetDiagnosisResponseBody {
+	s.Result = &v
+	return s
+}
+
+type GetDiagnosisResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetDiagnosisResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDiagnosisResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDiagnosisResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDiagnosisResponse) SetHeaders(v map[string]*string) *GetDiagnosisResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDiagnosisResponse) SetBody(v *GetDiagnosisResponseBody) *GetDiagnosisResponse {
 	s.Body = v
 	return s
 }
@@ -2375,6 +2713,940 @@ func (s *GetRegisteredServiceEndpointsResponse) SetHeaders(v map[string]*string)
 }
 
 func (s *GetRegisteredServiceEndpointsResponse) SetBody(v *GetRegisteredServiceEndpointsResponseBody) *GetRegisteredServiceEndpointsResponse {
+	s.Body = v
+	return s
+}
+
+type GetRegisteredServiceNamespacesRequest struct {
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+}
+
+func (s GetRegisteredServiceNamespacesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRegisteredServiceNamespacesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetRegisteredServiceNamespacesRequest) SetServiceMeshId(v string) *GetRegisteredServiceNamespacesRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+type GetRegisteredServiceNamespacesResponseBody struct {
+	Namespaces []*string `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
+	RequestId  *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetRegisteredServiceNamespacesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRegisteredServiceNamespacesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetRegisteredServiceNamespacesResponseBody) SetNamespaces(v []*string) *GetRegisteredServiceNamespacesResponseBody {
+	s.Namespaces = v
+	return s
+}
+
+func (s *GetRegisteredServiceNamespacesResponseBody) SetRequestId(v string) *GetRegisteredServiceNamespacesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetRegisteredServiceNamespacesResponse struct {
+	Headers map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetRegisteredServiceNamespacesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetRegisteredServiceNamespacesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRegisteredServiceNamespacesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetRegisteredServiceNamespacesResponse) SetHeaders(v map[string]*string) *GetRegisteredServiceNamespacesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetRegisteredServiceNamespacesResponse) SetBody(v *GetRegisteredServiceNamespacesResponseBody) *GetRegisteredServiceNamespacesResponse {
+	s.Body = v
+	return s
+}
+
+type GetRegisteredServicesRequest struct {
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	Namespace     *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+}
+
+func (s GetRegisteredServicesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRegisteredServicesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetRegisteredServicesRequest) SetServiceMeshId(v string) *GetRegisteredServicesRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+func (s *GetRegisteredServicesRequest) SetNamespace(v string) *GetRegisteredServicesRequest {
+	s.Namespace = &v
+	return s
+}
+
+type GetRegisteredServicesResponseBody struct {
+	Services  []*string `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetRegisteredServicesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRegisteredServicesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetRegisteredServicesResponseBody) SetServices(v []*string) *GetRegisteredServicesResponseBody {
+	s.Services = v
+	return s
+}
+
+func (s *GetRegisteredServicesResponseBody) SetRequestId(v string) *GetRegisteredServicesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetRegisteredServicesResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetRegisteredServicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetRegisteredServicesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRegisteredServicesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetRegisteredServicesResponse) SetHeaders(v map[string]*string) *GetRegisteredServicesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetRegisteredServicesResponse) SetBody(v *GetRegisteredServicesResponseBody) *GetRegisteredServicesResponse {
+	s.Body = v
+	return s
+}
+
+type GetServiceMeshSlbRequest struct {
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+}
+
+func (s GetServiceMeshSlbRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceMeshSlbRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceMeshSlbRequest) SetServiceMeshId(v string) *GetServiceMeshSlbRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+type GetServiceMeshSlbResponseBody struct {
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      []*GetServiceMeshSlbResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+}
+
+func (s GetServiceMeshSlbResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceMeshSlbResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceMeshSlbResponseBody) SetRequestId(v string) *GetServiceMeshSlbResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetServiceMeshSlbResponseBody) SetData(v []*GetServiceMeshSlbResponseBodyData) *GetServiceMeshSlbResponseBody {
+	s.Data = v
+	return s
+}
+
+type GetServiceMeshSlbResponseBodyData struct {
+	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	ServerHealthStatus *string `json:"ServerHealthStatus,omitempty" xml:"ServerHealthStatus,omitempty"`
+	LoadBalancerId     *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+}
+
+func (s GetServiceMeshSlbResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceMeshSlbResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceMeshSlbResponseBodyData) SetStatus(v string) *GetServiceMeshSlbResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetServiceMeshSlbResponseBodyData) SetServerHealthStatus(v string) *GetServiceMeshSlbResponseBodyData {
+	s.ServerHealthStatus = &v
+	return s
+}
+
+func (s *GetServiceMeshSlbResponseBodyData) SetLoadBalancerId(v string) *GetServiceMeshSlbResponseBodyData {
+	s.LoadBalancerId = &v
+	return s
+}
+
+type GetServiceMeshSlbResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetServiceMeshSlbResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetServiceMeshSlbResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceMeshSlbResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceMeshSlbResponse) SetHeaders(v map[string]*string) *GetServiceMeshSlbResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetServiceMeshSlbResponse) SetBody(v *GetServiceMeshSlbResponseBody) *GetServiceMeshSlbResponse {
+	s.Body = v
+	return s
+}
+
+type GetServiceRegistrySourceRequest struct {
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+}
+
+func (s GetServiceRegistrySourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceRegistrySourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceRegistrySourceRequest) SetServiceMeshId(v string) *GetServiceRegistrySourceRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+type GetServiceRegistrySourceResponseBody struct {
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s GetServiceRegistrySourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceRegistrySourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceRegistrySourceResponseBody) SetStatus(v string) *GetServiceRegistrySourceResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *GetServiceRegistrySourceResponseBody) SetRequestId(v string) *GetServiceRegistrySourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetServiceRegistrySourceResponseBody) SetResult(v string) *GetServiceRegistrySourceResponseBody {
+	s.Result = &v
+	return s
+}
+
+type GetServiceRegistrySourceResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetServiceRegistrySourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetServiceRegistrySourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceRegistrySourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceRegistrySourceResponse) SetHeaders(v map[string]*string) *GetServiceRegistrySourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetServiceRegistrySourceResponse) SetBody(v *GetServiceRegistrySourceResponseBody) *GetServiceRegistrySourceResponse {
+	s.Body = v
+	return s
+}
+
+type GetVmAppMeshInfoRequest struct {
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+}
+
+func (s GetVmAppMeshInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVmAppMeshInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetVmAppMeshInfoRequest) SetServiceMeshId(v string) *GetVmAppMeshInfoRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+type GetVmAppMeshInfoResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+}
+
+func (s GetVmAppMeshInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVmAppMeshInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetVmAppMeshInfoResponseBody) SetRequestId(v string) *GetVmAppMeshInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetVmAppMeshInfoResponseBody) SetData(v string) *GetVmAppMeshInfoResponseBody {
+	s.Data = &v
+	return s
+}
+
+type GetVmAppMeshInfoResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetVmAppMeshInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetVmAppMeshInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVmAppMeshInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetVmAppMeshInfoResponse) SetHeaders(v map[string]*string) *GetVmAppMeshInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetVmAppMeshInfoResponse) SetBody(v *GetVmAppMeshInfoResponseBody) *GetVmAppMeshInfoResponse {
+	s.Body = v
+	return s
+}
+
+type GetVmMetaRequest struct {
+	ServiceMeshId  *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	TrustDomain    *string `json:"TrustDomain,omitempty" xml:"TrustDomain,omitempty"`
+	Namespace      *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	ServiceAccount *string `json:"ServiceAccount,omitempty" xml:"ServiceAccount,omitempty"`
+}
+
+func (s GetVmMetaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVmMetaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetVmMetaRequest) SetServiceMeshId(v string) *GetVmMetaRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+func (s *GetVmMetaRequest) SetTrustDomain(v string) *GetVmMetaRequest {
+	s.TrustDomain = &v
+	return s
+}
+
+func (s *GetVmMetaRequest) SetNamespace(v string) *GetVmMetaRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *GetVmMetaRequest) SetServiceAccount(v string) *GetVmMetaRequest {
+	s.ServiceAccount = &v
+	return s
+}
+
+type GetVmMetaResponseBody struct {
+	VmMetaInfo *GetVmMetaResponseBodyVmMetaInfo `json:"VmMetaInfo,omitempty" xml:"VmMetaInfo,omitempty" type:"Struct"`
+	RequestId  *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetVmMetaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVmMetaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetVmMetaResponseBody) SetVmMetaInfo(v *GetVmMetaResponseBodyVmMetaInfo) *GetVmMetaResponseBody {
+	s.VmMetaInfo = v
+	return s
+}
+
+func (s *GetVmMetaResponseBody) SetRequestId(v string) *GetVmMetaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetVmMetaResponseBodyVmMetaInfo struct {
+	TokenPath        *string `json:"TokenPath,omitempty" xml:"TokenPath,omitempty"`
+	HostsContent     *string `json:"HostsContent,omitempty" xml:"HostsContent,omitempty"`
+	EnvoyEnvPath     *string `json:"EnvoyEnvPath,omitempty" xml:"EnvoyEnvPath,omitempty"`
+	TokenContent     *string `json:"TokenContent,omitempty" xml:"TokenContent,omitempty"`
+	CertChainPath    *string `json:"CertChainPath,omitempty" xml:"CertChainPath,omitempty"`
+	RootCertContent  *string `json:"RootCertContent,omitempty" xml:"RootCertContent,omitempty"`
+	KeyContent       *string `json:"KeyContent,omitempty" xml:"KeyContent,omitempty"`
+	RootCertPath     *string `json:"RootCertPath,omitempty" xml:"RootCertPath,omitempty"`
+	CertChainContent *string `json:"CertChainContent,omitempty" xml:"CertChainContent,omitempty"`
+	HostsPath        *string `json:"HostsPath,omitempty" xml:"HostsPath,omitempty"`
+	KeyPath          *string `json:"KeyPath,omitempty" xml:"KeyPath,omitempty"`
+	EnvoyEnvContent  *string `json:"EnvoyEnvContent,omitempty" xml:"EnvoyEnvContent,omitempty"`
+}
+
+func (s GetVmMetaResponseBodyVmMetaInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVmMetaResponseBodyVmMetaInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetVmMetaResponseBodyVmMetaInfo) SetTokenPath(v string) *GetVmMetaResponseBodyVmMetaInfo {
+	s.TokenPath = &v
+	return s
+}
+
+func (s *GetVmMetaResponseBodyVmMetaInfo) SetHostsContent(v string) *GetVmMetaResponseBodyVmMetaInfo {
+	s.HostsContent = &v
+	return s
+}
+
+func (s *GetVmMetaResponseBodyVmMetaInfo) SetEnvoyEnvPath(v string) *GetVmMetaResponseBodyVmMetaInfo {
+	s.EnvoyEnvPath = &v
+	return s
+}
+
+func (s *GetVmMetaResponseBodyVmMetaInfo) SetTokenContent(v string) *GetVmMetaResponseBodyVmMetaInfo {
+	s.TokenContent = &v
+	return s
+}
+
+func (s *GetVmMetaResponseBodyVmMetaInfo) SetCertChainPath(v string) *GetVmMetaResponseBodyVmMetaInfo {
+	s.CertChainPath = &v
+	return s
+}
+
+func (s *GetVmMetaResponseBodyVmMetaInfo) SetRootCertContent(v string) *GetVmMetaResponseBodyVmMetaInfo {
+	s.RootCertContent = &v
+	return s
+}
+
+func (s *GetVmMetaResponseBodyVmMetaInfo) SetKeyContent(v string) *GetVmMetaResponseBodyVmMetaInfo {
+	s.KeyContent = &v
+	return s
+}
+
+func (s *GetVmMetaResponseBodyVmMetaInfo) SetRootCertPath(v string) *GetVmMetaResponseBodyVmMetaInfo {
+	s.RootCertPath = &v
+	return s
+}
+
+func (s *GetVmMetaResponseBodyVmMetaInfo) SetCertChainContent(v string) *GetVmMetaResponseBodyVmMetaInfo {
+	s.CertChainContent = &v
+	return s
+}
+
+func (s *GetVmMetaResponseBodyVmMetaInfo) SetHostsPath(v string) *GetVmMetaResponseBodyVmMetaInfo {
+	s.HostsPath = &v
+	return s
+}
+
+func (s *GetVmMetaResponseBodyVmMetaInfo) SetKeyPath(v string) *GetVmMetaResponseBodyVmMetaInfo {
+	s.KeyPath = &v
+	return s
+}
+
+func (s *GetVmMetaResponseBodyVmMetaInfo) SetEnvoyEnvContent(v string) *GetVmMetaResponseBodyVmMetaInfo {
+	s.EnvoyEnvContent = &v
+	return s
+}
+
+type GetVmMetaResponse struct {
+	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetVmMetaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetVmMetaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVmMetaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetVmMetaResponse) SetHeaders(v map[string]*string) *GetVmMetaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetVmMetaResponse) SetBody(v *GetVmMetaResponseBody) *GetVmMetaResponse {
+	s.Body = v
+	return s
+}
+
+type InitializeASMRoleResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s InitializeASMRoleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitializeASMRoleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InitializeASMRoleResponseBody) SetRequestId(v string) *InitializeASMRoleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type InitializeASMRoleResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *InitializeASMRoleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s InitializeASMRoleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitializeASMRoleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InitializeASMRoleResponse) SetHeaders(v map[string]*string) *InitializeASMRoleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InitializeASMRoleResponse) SetBody(v *InitializeASMRoleResponseBody) *InitializeASMRoleResponse {
+	s.Body = v
+	return s
+}
+
+type RemoveClusterFromServiceMeshRequest struct {
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	ClusterId     *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+}
+
+func (s RemoveClusterFromServiceMeshRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveClusterFromServiceMeshRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveClusterFromServiceMeshRequest) SetServiceMeshId(v string) *RemoveClusterFromServiceMeshRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+func (s *RemoveClusterFromServiceMeshRequest) SetClusterId(v string) *RemoveClusterFromServiceMeshRequest {
+	s.ClusterId = &v
+	return s
+}
+
+type RemoveClusterFromServiceMeshResponseBody struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+}
+
+func (s RemoveClusterFromServiceMeshResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveClusterFromServiceMeshResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveClusterFromServiceMeshResponseBody) SetMessage(v string) *RemoveClusterFromServiceMeshResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RemoveClusterFromServiceMeshResponseBody) SetRequestId(v string) *RemoveClusterFromServiceMeshResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RemoveClusterFromServiceMeshResponseBody) SetCode(v string) *RemoveClusterFromServiceMeshResponseBody {
+	s.Code = &v
+	return s
+}
+
+type RemoveClusterFromServiceMeshResponse struct {
+	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RemoveClusterFromServiceMeshResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RemoveClusterFromServiceMeshResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveClusterFromServiceMeshResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveClusterFromServiceMeshResponse) SetHeaders(v map[string]*string) *RemoveClusterFromServiceMeshResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RemoveClusterFromServiceMeshResponse) SetBody(v *RemoveClusterFromServiceMeshResponseBody) *RemoveClusterFromServiceMeshResponse {
+	s.Body = v
+	return s
+}
+
+type RemoveVmAppFromMeshRequest struct {
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	Namespace     *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	ServiceName   *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+}
+
+func (s RemoveVmAppFromMeshRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveVmAppFromMeshRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveVmAppFromMeshRequest) SetServiceMeshId(v string) *RemoveVmAppFromMeshRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+func (s *RemoveVmAppFromMeshRequest) SetNamespace(v string) *RemoveVmAppFromMeshRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *RemoveVmAppFromMeshRequest) SetServiceName(v string) *RemoveVmAppFromMeshRequest {
+	s.ServiceName = &v
+	return s
+}
+
+type RemoveVmAppFromMeshResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+}
+
+func (s RemoveVmAppFromMeshResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveVmAppFromMeshResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveVmAppFromMeshResponseBody) SetRequestId(v string) *RemoveVmAppFromMeshResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RemoveVmAppFromMeshResponseBody) SetData(v string) *RemoveVmAppFromMeshResponseBody {
+	s.Data = &v
+	return s
+}
+
+type RemoveVmAppFromMeshResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RemoveVmAppFromMeshResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RemoveVmAppFromMeshResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveVmAppFromMeshResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveVmAppFromMeshResponse) SetHeaders(v map[string]*string) *RemoveVmAppFromMeshResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RemoveVmAppFromMeshResponse) SetBody(v *RemoveVmAppFromMeshResponseBody) *RemoveVmAppFromMeshResponse {
+	s.Body = v
+	return s
+}
+
+type RunDiagnosisRequest struct {
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+}
+
+func (s RunDiagnosisRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDiagnosisRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunDiagnosisRequest) SetServiceMeshId(v string) *RunDiagnosisRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+type RunDiagnosisResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s RunDiagnosisResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDiagnosisResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunDiagnosisResponseBody) SetRequestId(v string) *RunDiagnosisResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RunDiagnosisResponseBody) SetResult(v string) *RunDiagnosisResponseBody {
+	s.Result = &v
+	return s
+}
+
+type RunDiagnosisResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RunDiagnosisResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RunDiagnosisResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDiagnosisResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunDiagnosisResponse) SetHeaders(v map[string]*string) *RunDiagnosisResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunDiagnosisResponse) SetBody(v *RunDiagnosisResponseBody) *RunDiagnosisResponse {
+	s.Body = v
+	return s
+}
+
+type SetServiceRegistrySourceRequest struct {
+	ServiceMeshId *string                `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	Config        map[string]interface{} `json:"Config,omitempty" xml:"Config,omitempty"`
+}
+
+func (s SetServiceRegistrySourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetServiceRegistrySourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetServiceRegistrySourceRequest) SetServiceMeshId(v string) *SetServiceRegistrySourceRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+func (s *SetServiceRegistrySourceRequest) SetConfig(v map[string]interface{}) *SetServiceRegistrySourceRequest {
+	s.Config = v
+	return s
+}
+
+type SetServiceRegistrySourceShrinkRequest struct {
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	ConfigShrink  *string `json:"Config,omitempty" xml:"Config,omitempty"`
+}
+
+func (s SetServiceRegistrySourceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetServiceRegistrySourceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetServiceRegistrySourceShrinkRequest) SetServiceMeshId(v string) *SetServiceRegistrySourceShrinkRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+func (s *SetServiceRegistrySourceShrinkRequest) SetConfigShrink(v string) *SetServiceRegistrySourceShrinkRequest {
+	s.ConfigShrink = &v
+	return s
+}
+
+type SetServiceRegistrySourceResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s SetServiceRegistrySourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetServiceRegistrySourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetServiceRegistrySourceResponseBody) SetRequestId(v string) *SetServiceRegistrySourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SetServiceRegistrySourceResponseBody) SetResult(v string) *SetServiceRegistrySourceResponseBody {
+	s.Result = &v
+	return s
+}
+
+type SetServiceRegistrySourceResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SetServiceRegistrySourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SetServiceRegistrySourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetServiceRegistrySourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetServiceRegistrySourceResponse) SetHeaders(v map[string]*string) *SetServiceRegistrySourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetServiceRegistrySourceResponse) SetBody(v *SetServiceRegistrySourceResponseBody) *SetServiceRegistrySourceResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateIstioInjectionConfigRequest struct {
+	ServiceMeshId        *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	Namespace            *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	EnableIstioInjection *bool   `json:"EnableIstioInjection,omitempty" xml:"EnableIstioInjection,omitempty"`
+}
+
+func (s UpdateIstioInjectionConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIstioInjectionConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIstioInjectionConfigRequest) SetServiceMeshId(v string) *UpdateIstioInjectionConfigRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+func (s *UpdateIstioInjectionConfigRequest) SetNamespace(v string) *UpdateIstioInjectionConfigRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *UpdateIstioInjectionConfigRequest) SetEnableIstioInjection(v bool) *UpdateIstioInjectionConfigRequest {
+	s.EnableIstioInjection = &v
+	return s
+}
+
+type UpdateIstioInjectionConfigResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateIstioInjectionConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIstioInjectionConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIstioInjectionConfigResponseBody) SetRequestId(v string) *UpdateIstioInjectionConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateIstioInjectionConfigResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateIstioInjectionConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateIstioInjectionConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIstioInjectionConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIstioInjectionConfigResponse) SetHeaders(v map[string]*string) *UpdateIstioInjectionConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateIstioInjectionConfigResponse) SetBody(v *UpdateIstioInjectionConfigResponseBody) *UpdateIstioInjectionConfigResponse {
 	s.Body = v
 	return s
 }
@@ -2706,1331 +3978,59 @@ func (s *UpdateMeshFeatureResponse) SetBody(v *UpdateMeshFeatureResponseBody) *U
 	return s
 }
 
-type AddVmAppToMeshRequest struct {
-	ServiceMeshId  *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
-	Namespace      *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	ServiceName    *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	Ips            *string `json:"Ips,omitempty" xml:"Ips,omitempty"`
-	Ports          *string `json:"Ports,omitempty" xml:"Ports,omitempty"`
-	Labels         *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	Annotations    *string `json:"Annotations,omitempty" xml:"Annotations,omitempty"`
-	ServiceAccount *string `json:"ServiceAccount,omitempty" xml:"ServiceAccount,omitempty"`
-	UseWorkload    *bool   `json:"UseWorkload,omitempty" xml:"UseWorkload,omitempty"`
-	Force          *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
-}
-
-func (s AddVmAppToMeshRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddVmAppToMeshRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AddVmAppToMeshRequest) SetServiceMeshId(v string) *AddVmAppToMeshRequest {
-	s.ServiceMeshId = &v
-	return s
-}
-
-func (s *AddVmAppToMeshRequest) SetNamespace(v string) *AddVmAppToMeshRequest {
-	s.Namespace = &v
-	return s
-}
-
-func (s *AddVmAppToMeshRequest) SetServiceName(v string) *AddVmAppToMeshRequest {
-	s.ServiceName = &v
-	return s
-}
-
-func (s *AddVmAppToMeshRequest) SetIps(v string) *AddVmAppToMeshRequest {
-	s.Ips = &v
-	return s
-}
-
-func (s *AddVmAppToMeshRequest) SetPorts(v string) *AddVmAppToMeshRequest {
-	s.Ports = &v
-	return s
-}
-
-func (s *AddVmAppToMeshRequest) SetLabels(v string) *AddVmAppToMeshRequest {
-	s.Labels = &v
-	return s
-}
-
-func (s *AddVmAppToMeshRequest) SetAnnotations(v string) *AddVmAppToMeshRequest {
-	s.Annotations = &v
-	return s
-}
-
-func (s *AddVmAppToMeshRequest) SetServiceAccount(v string) *AddVmAppToMeshRequest {
-	s.ServiceAccount = &v
-	return s
-}
-
-func (s *AddVmAppToMeshRequest) SetUseWorkload(v bool) *AddVmAppToMeshRequest {
-	s.UseWorkload = &v
-	return s
-}
-
-func (s *AddVmAppToMeshRequest) SetForce(v bool) *AddVmAppToMeshRequest {
-	s.Force = &v
-	return s
-}
-
-type AddVmAppToMeshResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-}
-
-func (s AddVmAppToMeshResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddVmAppToMeshResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *AddVmAppToMeshResponseBody) SetRequestId(v string) *AddVmAppToMeshResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *AddVmAppToMeshResponseBody) SetData(v string) *AddVmAppToMeshResponseBody {
-	s.Data = &v
-	return s
-}
-
-type AddVmAppToMeshResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddVmAppToMeshResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s AddVmAppToMeshResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddVmAppToMeshResponse) GoString() string {
-	return s.String()
-}
-
-func (s *AddVmAppToMeshResponse) SetHeaders(v map[string]*string) *AddVmAppToMeshResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *AddVmAppToMeshResponse) SetBody(v *AddVmAppToMeshResponseBody) *AddVmAppToMeshResponse {
-	s.Body = v
-	return s
-}
-
-type CreateServiceMeshRequest struct {
-	RegionId                      *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	IstioVersion                  *string  `json:"IstioVersion,omitempty" xml:"IstioVersion,omitempty"`
-	VpcId                         *string  `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ApiServerPublicEip            *bool    `json:"ApiServerPublicEip,omitempty" xml:"ApiServerPublicEip,omitempty"`
-	PilotPublicEip                *bool    `json:"PilotPublicEip,omitempty" xml:"PilotPublicEip,omitempty"`
-	StrictMTLS                    *bool    `json:"StrictMTLS,omitempty" xml:"StrictMTLS,omitempty"`
-	OutboundTrafficPolicy         *string  `json:"OutboundTrafficPolicy,omitempty" xml:"OutboundTrafficPolicy,omitempty"`
-	Tracing                       *bool    `json:"Tracing,omitempty" xml:"Tracing,omitempty"`
-	Name                          *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	VSwitches                     *string  `json:"VSwitches,omitempty" xml:"VSwitches,omitempty"`
-	TraceSampling                 *float32 `json:"TraceSampling,omitempty" xml:"TraceSampling,omitempty"`
-	LocalityLoadBalancing         *bool    `json:"LocalityLoadBalancing,omitempty" xml:"LocalityLoadBalancing,omitempty"`
-	Telemetry                     *bool    `json:"Telemetry,omitempty" xml:"Telemetry,omitempty"`
-	OpenAgentPolicy               *bool    `json:"OpenAgentPolicy,omitempty" xml:"OpenAgentPolicy,omitempty"`
-	OPALogLevel                   *string  `json:"OPALogLevel,omitempty" xml:"OPALogLevel,omitempty"`
-	OPARequestCPU                 *string  `json:"OPARequestCPU,omitempty" xml:"OPARequestCPU,omitempty"`
-	OPARequestMemory              *string  `json:"OPARequestMemory,omitempty" xml:"OPARequestMemory,omitempty"`
-	OPALimitCPU                   *string  `json:"OPALimitCPU,omitempty" xml:"OPALimitCPU,omitempty"`
-	OPALimitMemory                *string  `json:"OPALimitMemory,omitempty" xml:"OPALimitMemory,omitempty"`
-	EnableAudit                   *bool    `json:"EnableAudit,omitempty" xml:"EnableAudit,omitempty"`
-	AuditProject                  *string  `json:"AuditProject,omitempty" xml:"AuditProject,omitempty"`
-	CADisableSecretAutoGeneration *bool    `json:"CADisableSecretAutoGeneration,omitempty" xml:"CADisableSecretAutoGeneration,omitempty"`
-	CAListenedNamespaces          *string  `json:"CAListenedNamespaces,omitempty" xml:"CAListenedNamespaces,omitempty"`
-	AppNamespaces                 *string  `json:"AppNamespaces,omitempty" xml:"AppNamespaces,omitempty"`
-	ClusterDomain                 *string  `json:"ClusterDomain,omitempty" xml:"ClusterDomain,omitempty"`
-	ProxyRequestCPU               *string  `json:"ProxyRequestCPU,omitempty" xml:"ProxyRequestCPU,omitempty"`
-	ProxyRequestMemory            *string  `json:"ProxyRequestMemory,omitempty" xml:"ProxyRequestMemory,omitempty"`
-	ProxyLimitCPU                 *string  `json:"ProxyLimitCPU,omitempty" xml:"ProxyLimitCPU,omitempty"`
-	ProxyLimitMemory              *string  `json:"ProxyLimitMemory,omitempty" xml:"ProxyLimitMemory,omitempty"`
-	IncludeIPRanges               *string  `json:"IncludeIPRanges,omitempty" xml:"IncludeIPRanges,omitempty"`
-	ExcludeIPRanges               *string  `json:"ExcludeIPRanges,omitempty" xml:"ExcludeIPRanges,omitempty"`
-	ExcludeOutboundPorts          *string  `json:"ExcludeOutboundPorts,omitempty" xml:"ExcludeOutboundPorts,omitempty"`
-	ExcludeInboundPorts           *string  `json:"ExcludeInboundPorts,omitempty" xml:"ExcludeInboundPorts,omitempty"`
-	OpaEnabled                    *bool    `json:"OpaEnabled,omitempty" xml:"OpaEnabled,omitempty"`
-	KialiEnabled                  *bool    `json:"KialiEnabled,omitempty" xml:"KialiEnabled,omitempty"`
-	AccessLogEnabled              *bool    `json:"AccessLogEnabled,omitempty" xml:"AccessLogEnabled,omitempty"`
-	CustomizedPrometheus          *bool    `json:"CustomizedPrometheus,omitempty" xml:"CustomizedPrometheus,omitempty"`
-	PrometheusUrl                 *string  `json:"PrometheusUrl,omitempty" xml:"PrometheusUrl,omitempty"`
-	RedisFilterEnabled            *bool    `json:"RedisFilterEnabled,omitempty" xml:"RedisFilterEnabled,omitempty"`
-	MysqlFilterEnabled            *bool    `json:"MysqlFilterEnabled,omitempty" xml:"MysqlFilterEnabled,omitempty"`
-	ThriftFilterEnabled           *bool    `json:"ThriftFilterEnabled,omitempty" xml:"ThriftFilterEnabled,omitempty"`
-	WebAssemblyFilterEnabled      *bool    `json:"WebAssemblyFilterEnabled,omitempty" xml:"WebAssemblyFilterEnabled,omitempty"`
-	MSEEnabled                    *bool    `json:"MSEEnabled,omitempty" xml:"MSEEnabled,omitempty"`
-	DNSProxyingEnabled            *bool    `json:"DNSProxyingEnabled,omitempty" xml:"DNSProxyingEnabled,omitempty"`
-	Edition                       *string  `json:"Edition,omitempty" xml:"Edition,omitempty"`
-}
-
-func (s CreateServiceMeshRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateServiceMeshRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateServiceMeshRequest) SetRegionId(v string) *CreateServiceMeshRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *CreateServiceMeshRequest) SetIstioVersion(v string) *CreateServiceMeshRequest {
-	s.IstioVersion = &v
-	return s
-}
-
-func (s *CreateServiceMeshRequest) SetVpcId(v string) *CreateServiceMeshRequest {
-	s.VpcId = &v
-	return s
-}
-
-func (s *CreateServiceMeshRequest) SetApiServerPublicEip(v bool) *CreateServiceMeshRequest {
-	s.ApiServerPublicEip = &v
-	return s
-}
-
-func (s *CreateServiceMeshRequest) SetPilotPublicEip(v bool) *CreateServiceMeshRequest {
-	s.PilotPublicEip = &v
-	return s
-}
-
-func (s *CreateServiceMeshRequest) SetStrictMTLS(v bool) *CreateServiceMeshRequest {
-	s.StrictMTLS = &v
-	return s
-}
-
-func (s *CreateServiceMeshRequest) SetOutboundTrafficPolicy(v string) *CreateServiceMeshRequest {
-	s.OutboundTrafficPolicy = &v
-	return s
-}
-
-func (s *CreateServiceMeshRequest) SetTracing(v bool) *CreateServiceMeshRequest {
-	s.Tracing = &v
-	return s
-}
-
-func (s *CreateServiceMeshRequest) SetName(v string) *CreateServiceMeshRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *CreateServiceMeshRequest) SetVSwitches(v string) *CreateServiceMeshRequest {
-	s.VSwitches = &v
-	return s
-}
-
-func (s *CreateServiceMeshRequest) SetTraceSampling(v float32) *CreateServiceMeshRequest {
-	s.TraceSampling = &v
-	return s
-}
-
-func (s *CreateServiceMeshRequest) SetLocalityLoadBalancing(v bool) *CreateServiceMeshRequest {
-	s.LocalityLoadBalancing = &v
-	return s
-}
-
-func (s *CreateServiceMeshRequest) SetTelemetry(v bool) *CreateServiceMeshRequest {
-	s.Telemetry = &v
-	return s
-}
-
-func (s *CreateServiceMeshRequest) SetOpenAgentPolicy(v bool) *CreateServiceMeshRequest {
-	s.OpenAgentPolicy = &v
-	return s
-}
-
-func (s *CreateServiceMeshRequest) SetOPALogLevel(v string) *CreateServiceMeshRequest {
-	s.OPALogLevel = &v
-	return s
-}
-
-func (s *CreateServiceMeshRequest) SetOPARequestCPU(v string) *CreateServiceMeshRequest {
-	s.OPARequestCPU = &v
-	return s
-}
-
-func (s *CreateServiceMeshRequest) SetOPARequestMemory(v string) *CreateServiceMeshRequest {
-	s.OPARequestMemory = &v
-	return s
-}
-
-func (s *CreateServiceMeshRequest) SetOPALimitCPU(v string) *CreateServiceMeshRequest {
-	s.OPALimitCPU = &v
-	return s
-}
-
-func (s *CreateServiceMeshRequest) SetOPALimitMemory(v string) *CreateServiceMeshRequest {
-	s.OPALimitMemory = &v
-	return s
-}
-
-func (s *CreateServiceMeshRequest) SetEnableAudit(v bool) *CreateServiceMeshRequest {
-	s.EnableAudit = &v
-	return s
-}
-
-func (s *CreateServiceMeshRequest) SetAuditProject(v string) *CreateServiceMeshRequest {
-	s.AuditProject = &v
-	return s
-}
-
-func (s *CreateServiceMeshRequest) SetCADisableSecretAutoGeneration(v bool) *CreateServiceMeshRequest {
-	s.CADisableSecretAutoGeneration = &v
-	return s
-}
-
-func (s *CreateServiceMeshRequest) SetCAListenedNamespaces(v string) *CreateServiceMeshRequest {
-	s.CAListenedNamespaces = &v
-	return s
-}
-
-func (s *CreateServiceMeshRequest) SetAppNamespaces(v string) *CreateServiceMeshRequest {
-	s.AppNamespaces = &v
-	return s
-}
-
-func (s *CreateServiceMeshRequest) SetClusterDomain(v string) *CreateServiceMeshRequest {
-	s.ClusterDomain = &v
-	return s
-}
-
-func (s *CreateServiceMeshRequest) SetProxyRequestCPU(v string) *CreateServiceMeshRequest {
-	s.ProxyRequestCPU = &v
-	return s
-}
-
-func (s *CreateServiceMeshRequest) SetProxyRequestMemory(v string) *CreateServiceMeshRequest {
-	s.ProxyRequestMemory = &v
-	return s
-}
-
-func (s *CreateServiceMeshRequest) SetProxyLimitCPU(v string) *CreateServiceMeshRequest {
-	s.ProxyLimitCPU = &v
-	return s
-}
-
-func (s *CreateServiceMeshRequest) SetProxyLimitMemory(v string) *CreateServiceMeshRequest {
-	s.ProxyLimitMemory = &v
-	return s
-}
-
-func (s *CreateServiceMeshRequest) SetIncludeIPRanges(v string) *CreateServiceMeshRequest {
-	s.IncludeIPRanges = &v
-	return s
-}
-
-func (s *CreateServiceMeshRequest) SetExcludeIPRanges(v string) *CreateServiceMeshRequest {
-	s.ExcludeIPRanges = &v
-	return s
-}
-
-func (s *CreateServiceMeshRequest) SetExcludeOutboundPorts(v string) *CreateServiceMeshRequest {
-	s.ExcludeOutboundPorts = &v
-	return s
-}
-
-func (s *CreateServiceMeshRequest) SetExcludeInboundPorts(v string) *CreateServiceMeshRequest {
-	s.ExcludeInboundPorts = &v
-	return s
-}
-
-func (s *CreateServiceMeshRequest) SetOpaEnabled(v bool) *CreateServiceMeshRequest {
-	s.OpaEnabled = &v
-	return s
-}
-
-func (s *CreateServiceMeshRequest) SetKialiEnabled(v bool) *CreateServiceMeshRequest {
-	s.KialiEnabled = &v
-	return s
-}
-
-func (s *CreateServiceMeshRequest) SetAccessLogEnabled(v bool) *CreateServiceMeshRequest {
-	s.AccessLogEnabled = &v
-	return s
-}
-
-func (s *CreateServiceMeshRequest) SetCustomizedPrometheus(v bool) *CreateServiceMeshRequest {
-	s.CustomizedPrometheus = &v
-	return s
-}
-
-func (s *CreateServiceMeshRequest) SetPrometheusUrl(v string) *CreateServiceMeshRequest {
-	s.PrometheusUrl = &v
-	return s
-}
-
-func (s *CreateServiceMeshRequest) SetRedisFilterEnabled(v bool) *CreateServiceMeshRequest {
-	s.RedisFilterEnabled = &v
-	return s
-}
-
-func (s *CreateServiceMeshRequest) SetMysqlFilterEnabled(v bool) *CreateServiceMeshRequest {
-	s.MysqlFilterEnabled = &v
-	return s
-}
-
-func (s *CreateServiceMeshRequest) SetThriftFilterEnabled(v bool) *CreateServiceMeshRequest {
-	s.ThriftFilterEnabled = &v
-	return s
-}
-
-func (s *CreateServiceMeshRequest) SetWebAssemblyFilterEnabled(v bool) *CreateServiceMeshRequest {
-	s.WebAssemblyFilterEnabled = &v
-	return s
-}
-
-func (s *CreateServiceMeshRequest) SetMSEEnabled(v bool) *CreateServiceMeshRequest {
-	s.MSEEnabled = &v
-	return s
-}
-
-func (s *CreateServiceMeshRequest) SetDNSProxyingEnabled(v bool) *CreateServiceMeshRequest {
-	s.DNSProxyingEnabled = &v
-	return s
-}
-
-func (s *CreateServiceMeshRequest) SetEdition(v string) *CreateServiceMeshRequest {
-	s.Edition = &v
-	return s
-}
-
-type CreateServiceMeshResponseBody struct {
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+type UpgradeMeshVersionRequest struct {
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
-func (s CreateServiceMeshResponseBody) String() string {
+func (s UpgradeMeshVersionRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s CreateServiceMeshResponseBody) GoString() string {
+func (s UpgradeMeshVersionRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateServiceMeshResponseBody) SetRequestId(v string) *CreateServiceMeshResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateServiceMeshResponseBody) SetServiceMeshId(v string) *CreateServiceMeshResponseBody {
+func (s *UpgradeMeshVersionRequest) SetServiceMeshId(v string) *UpgradeMeshVersionRequest {
 	s.ServiceMeshId = &v
 	return s
 }
 
-type CreateServiceMeshResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateServiceMeshResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateServiceMeshResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateServiceMeshResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateServiceMeshResponse) SetHeaders(v map[string]*string) *CreateServiceMeshResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateServiceMeshResponse) SetBody(v *CreateServiceMeshResponseBody) *CreateServiceMeshResponse {
-	s.Body = v
-	return s
-}
-
-type GetAutoInjectionLabelSyncStatusRequest struct {
-	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
-}
-
-func (s GetAutoInjectionLabelSyncStatusRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAutoInjectionLabelSyncStatusRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetAutoInjectionLabelSyncStatusRequest) SetServiceMeshId(v string) *GetAutoInjectionLabelSyncStatusRequest {
-	s.ServiceMeshId = &v
-	return s
-}
-
-type GetAutoInjectionLabelSyncStatusResponseBody struct {
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+type UpgradeMeshVersionResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
-func (s GetAutoInjectionLabelSyncStatusResponseBody) String() string {
+func (s UpgradeMeshVersionResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetAutoInjectionLabelSyncStatusResponseBody) GoString() string {
+func (s UpgradeMeshVersionResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetAutoInjectionLabelSyncStatusResponseBody) SetStatus(v string) *GetAutoInjectionLabelSyncStatusResponseBody {
-	s.Status = &v
-	return s
-}
-
-func (s *GetAutoInjectionLabelSyncStatusResponseBody) SetRequestId(v string) *GetAutoInjectionLabelSyncStatusResponseBody {
+func (s *UpgradeMeshVersionResponseBody) SetRequestId(v string) *UpgradeMeshVersionResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-type GetAutoInjectionLabelSyncStatusResponse struct {
-	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetAutoInjectionLabelSyncStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+type UpgradeMeshVersionResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpgradeMeshVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s GetAutoInjectionLabelSyncStatusResponse) String() string {
+func (s UpgradeMeshVersionResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetAutoInjectionLabelSyncStatusResponse) GoString() string {
+func (s UpgradeMeshVersionResponse) GoString() string {
 	return s.String()
 }
 
-func (s *GetAutoInjectionLabelSyncStatusResponse) SetHeaders(v map[string]*string) *GetAutoInjectionLabelSyncStatusResponse {
+func (s *UpgradeMeshVersionResponse) SetHeaders(v map[string]*string) *UpgradeMeshVersionResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *GetAutoInjectionLabelSyncStatusResponse) SetBody(v *GetAutoInjectionLabelSyncStatusResponseBody) *GetAutoInjectionLabelSyncStatusResponse {
-	s.Body = v
-	return s
-}
-
-type GetServiceRegistrySourceRequest struct {
-	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
-}
-
-func (s GetServiceRegistrySourceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetServiceRegistrySourceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetServiceRegistrySourceRequest) SetServiceMeshId(v string) *GetServiceRegistrySourceRequest {
-	s.ServiceMeshId = &v
-	return s
-}
-
-type GetServiceRegistrySourceResponseBody struct {
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
-}
-
-func (s GetServiceRegistrySourceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetServiceRegistrySourceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetServiceRegistrySourceResponseBody) SetStatus(v string) *GetServiceRegistrySourceResponseBody {
-	s.Status = &v
-	return s
-}
-
-func (s *GetServiceRegistrySourceResponseBody) SetRequestId(v string) *GetServiceRegistrySourceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetServiceRegistrySourceResponseBody) SetResult(v string) *GetServiceRegistrySourceResponseBody {
-	s.Result = &v
-	return s
-}
-
-type GetServiceRegistrySourceResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetServiceRegistrySourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetServiceRegistrySourceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetServiceRegistrySourceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetServiceRegistrySourceResponse) SetHeaders(v map[string]*string) *GetServiceRegistrySourceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetServiceRegistrySourceResponse) SetBody(v *GetServiceRegistrySourceResponseBody) *GetServiceRegistrySourceResponse {
-	s.Body = v
-	return s
-}
-
-type GetRegisteredServiceNamespacesRequest struct {
-	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
-}
-
-func (s GetRegisteredServiceNamespacesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRegisteredServiceNamespacesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetRegisteredServiceNamespacesRequest) SetServiceMeshId(v string) *GetRegisteredServiceNamespacesRequest {
-	s.ServiceMeshId = &v
-	return s
-}
-
-type GetRegisteredServiceNamespacesResponseBody struct {
-	Namespaces []*string `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
-	RequestId  *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s GetRegisteredServiceNamespacesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRegisteredServiceNamespacesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetRegisteredServiceNamespacesResponseBody) SetNamespaces(v []*string) *GetRegisteredServiceNamespacesResponseBody {
-	s.Namespaces = v
-	return s
-}
-
-func (s *GetRegisteredServiceNamespacesResponseBody) SetRequestId(v string) *GetRegisteredServiceNamespacesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type GetRegisteredServiceNamespacesResponse struct {
-	Headers map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetRegisteredServiceNamespacesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetRegisteredServiceNamespacesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRegisteredServiceNamespacesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetRegisteredServiceNamespacesResponse) SetHeaders(v map[string]*string) *GetRegisteredServiceNamespacesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetRegisteredServiceNamespacesResponse) SetBody(v *GetRegisteredServiceNamespacesResponseBody) *GetRegisteredServiceNamespacesResponse {
-	s.Body = v
-	return s
-}
-
-type InitializeASMRoleResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s InitializeASMRoleResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InitializeASMRoleResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *InitializeASMRoleResponseBody) SetRequestId(v string) *InitializeASMRoleResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type InitializeASMRoleResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *InitializeASMRoleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s InitializeASMRoleResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InitializeASMRoleResponse) GoString() string {
-	return s.String()
-}
-
-func (s *InitializeASMRoleResponse) SetHeaders(v map[string]*string) *InitializeASMRoleResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *InitializeASMRoleResponse) SetBody(v *InitializeASMRoleResponseBody) *InitializeASMRoleResponse {
-	s.Body = v
-	return s
-}
-
-type RemoveVmAppFromMeshRequest struct {
-	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
-	Namespace     *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	ServiceName   *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-}
-
-func (s RemoveVmAppFromMeshRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RemoveVmAppFromMeshRequest) GoString() string {
-	return s.String()
-}
-
-func (s *RemoveVmAppFromMeshRequest) SetServiceMeshId(v string) *RemoveVmAppFromMeshRequest {
-	s.ServiceMeshId = &v
-	return s
-}
-
-func (s *RemoveVmAppFromMeshRequest) SetNamespace(v string) *RemoveVmAppFromMeshRequest {
-	s.Namespace = &v
-	return s
-}
-
-func (s *RemoveVmAppFromMeshRequest) SetServiceName(v string) *RemoveVmAppFromMeshRequest {
-	s.ServiceName = &v
-	return s
-}
-
-type RemoveVmAppFromMeshResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-}
-
-func (s RemoveVmAppFromMeshResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RemoveVmAppFromMeshResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *RemoveVmAppFromMeshResponseBody) SetRequestId(v string) *RemoveVmAppFromMeshResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *RemoveVmAppFromMeshResponseBody) SetData(v string) *RemoveVmAppFromMeshResponseBody {
-	s.Data = &v
-	return s
-}
-
-type RemoveVmAppFromMeshResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RemoveVmAppFromMeshResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s RemoveVmAppFromMeshResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RemoveVmAppFromMeshResponse) GoString() string {
-	return s.String()
-}
-
-func (s *RemoveVmAppFromMeshResponse) SetHeaders(v map[string]*string) *RemoveVmAppFromMeshResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *RemoveVmAppFromMeshResponse) SetBody(v *RemoveVmAppFromMeshResponseBody) *RemoveVmAppFromMeshResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeClusterPrometheusRequest struct {
-	ServiceMeshId      *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
-	K8sClusterId       *string `json:"K8sClusterId,omitempty" xml:"K8sClusterId,omitempty"`
-	K8sClusterRegionId *string `json:"K8sClusterRegionId,omitempty" xml:"K8sClusterRegionId,omitempty"`
-}
-
-func (s DescribeClusterPrometheusRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeClusterPrometheusRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeClusterPrometheusRequest) SetServiceMeshId(v string) *DescribeClusterPrometheusRequest {
-	s.ServiceMeshId = &v
-	return s
-}
-
-func (s *DescribeClusterPrometheusRequest) SetK8sClusterId(v string) *DescribeClusterPrometheusRequest {
-	s.K8sClusterId = &v
-	return s
-}
-
-func (s *DescribeClusterPrometheusRequest) SetK8sClusterRegionId(v string) *DescribeClusterPrometheusRequest {
-	s.K8sClusterRegionId = &v
-	return s
-}
-
-type DescribeClusterPrometheusResponseBody struct {
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Prometheus *string `json:"Prometheus,omitempty" xml:"Prometheus,omitempty"`
-}
-
-func (s DescribeClusterPrometheusResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeClusterPrometheusResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeClusterPrometheusResponseBody) SetRequestId(v string) *DescribeClusterPrometheusResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeClusterPrometheusResponseBody) SetPrometheus(v string) *DescribeClusterPrometheusResponseBody {
-	s.Prometheus = &v
-	return s
-}
-
-type DescribeClusterPrometheusResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeClusterPrometheusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeClusterPrometheusResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeClusterPrometheusResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeClusterPrometheusResponse) SetHeaders(v map[string]*string) *DescribeClusterPrometheusResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeClusterPrometheusResponse) SetBody(v *DescribeClusterPrometheusResponseBody) *DescribeClusterPrometheusResponse {
-	s.Body = v
-	return s
-}
-
-type UpdateIstioInjectionConfigRequest struct {
-	ServiceMeshId        *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
-	Namespace            *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	EnableIstioInjection *bool   `json:"EnableIstioInjection,omitempty" xml:"EnableIstioInjection,omitempty"`
-}
-
-func (s UpdateIstioInjectionConfigRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateIstioInjectionConfigRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateIstioInjectionConfigRequest) SetServiceMeshId(v string) *UpdateIstioInjectionConfigRequest {
-	s.ServiceMeshId = &v
-	return s
-}
-
-func (s *UpdateIstioInjectionConfigRequest) SetNamespace(v string) *UpdateIstioInjectionConfigRequest {
-	s.Namespace = &v
-	return s
-}
-
-func (s *UpdateIstioInjectionConfigRequest) SetEnableIstioInjection(v bool) *UpdateIstioInjectionConfigRequest {
-	s.EnableIstioInjection = &v
-	return s
-}
-
-type UpdateIstioInjectionConfigResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s UpdateIstioInjectionConfigResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateIstioInjectionConfigResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateIstioInjectionConfigResponseBody) SetRequestId(v string) *UpdateIstioInjectionConfigResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type UpdateIstioInjectionConfigResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateIstioInjectionConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateIstioInjectionConfigResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateIstioInjectionConfigResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateIstioInjectionConfigResponse) SetHeaders(v map[string]*string) *UpdateIstioInjectionConfigResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateIstioInjectionConfigResponse) SetBody(v *UpdateIstioInjectionConfigResponseBody) *UpdateIstioInjectionConfigResponse {
-	s.Body = v
-	return s
-}
-
-type GetVmMetaRequest struct {
-	ServiceMeshId  *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
-	TrustDomain    *string `json:"TrustDomain,omitempty" xml:"TrustDomain,omitempty"`
-	Namespace      *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	ServiceAccount *string `json:"ServiceAccount,omitempty" xml:"ServiceAccount,omitempty"`
-}
-
-func (s GetVmMetaRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetVmMetaRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetVmMetaRequest) SetServiceMeshId(v string) *GetVmMetaRequest {
-	s.ServiceMeshId = &v
-	return s
-}
-
-func (s *GetVmMetaRequest) SetTrustDomain(v string) *GetVmMetaRequest {
-	s.TrustDomain = &v
-	return s
-}
-
-func (s *GetVmMetaRequest) SetNamespace(v string) *GetVmMetaRequest {
-	s.Namespace = &v
-	return s
-}
-
-func (s *GetVmMetaRequest) SetServiceAccount(v string) *GetVmMetaRequest {
-	s.ServiceAccount = &v
-	return s
-}
-
-type GetVmMetaResponseBody struct {
-	VmMetaInfo *GetVmMetaResponseBodyVmMetaInfo `json:"VmMetaInfo,omitempty" xml:"VmMetaInfo,omitempty" type:"Struct"`
-	RequestId  *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s GetVmMetaResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetVmMetaResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetVmMetaResponseBody) SetVmMetaInfo(v *GetVmMetaResponseBodyVmMetaInfo) *GetVmMetaResponseBody {
-	s.VmMetaInfo = v
-	return s
-}
-
-func (s *GetVmMetaResponseBody) SetRequestId(v string) *GetVmMetaResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type GetVmMetaResponseBodyVmMetaInfo struct {
-	TokenPath        *string `json:"TokenPath,omitempty" xml:"TokenPath,omitempty"`
-	HostsContent     *string `json:"HostsContent,omitempty" xml:"HostsContent,omitempty"`
-	EnvoyEnvPath     *string `json:"EnvoyEnvPath,omitempty" xml:"EnvoyEnvPath,omitempty"`
-	TokenContent     *string `json:"TokenContent,omitempty" xml:"TokenContent,omitempty"`
-	CertChainPath    *string `json:"CertChainPath,omitempty" xml:"CertChainPath,omitempty"`
-	RootCertContent  *string `json:"RootCertContent,omitempty" xml:"RootCertContent,omitempty"`
-	KeyContent       *string `json:"KeyContent,omitempty" xml:"KeyContent,omitempty"`
-	RootCertPath     *string `json:"RootCertPath,omitempty" xml:"RootCertPath,omitempty"`
-	CertChainContent *string `json:"CertChainContent,omitempty" xml:"CertChainContent,omitempty"`
-	HostsPath        *string `json:"HostsPath,omitempty" xml:"HostsPath,omitempty"`
-	KeyPath          *string `json:"KeyPath,omitempty" xml:"KeyPath,omitempty"`
-	EnvoyEnvContent  *string `json:"EnvoyEnvContent,omitempty" xml:"EnvoyEnvContent,omitempty"`
-}
-
-func (s GetVmMetaResponseBodyVmMetaInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetVmMetaResponseBodyVmMetaInfo) GoString() string {
-	return s.String()
-}
-
-func (s *GetVmMetaResponseBodyVmMetaInfo) SetTokenPath(v string) *GetVmMetaResponseBodyVmMetaInfo {
-	s.TokenPath = &v
-	return s
-}
-
-func (s *GetVmMetaResponseBodyVmMetaInfo) SetHostsContent(v string) *GetVmMetaResponseBodyVmMetaInfo {
-	s.HostsContent = &v
-	return s
-}
-
-func (s *GetVmMetaResponseBodyVmMetaInfo) SetEnvoyEnvPath(v string) *GetVmMetaResponseBodyVmMetaInfo {
-	s.EnvoyEnvPath = &v
-	return s
-}
-
-func (s *GetVmMetaResponseBodyVmMetaInfo) SetTokenContent(v string) *GetVmMetaResponseBodyVmMetaInfo {
-	s.TokenContent = &v
-	return s
-}
-
-func (s *GetVmMetaResponseBodyVmMetaInfo) SetCertChainPath(v string) *GetVmMetaResponseBodyVmMetaInfo {
-	s.CertChainPath = &v
-	return s
-}
-
-func (s *GetVmMetaResponseBodyVmMetaInfo) SetRootCertContent(v string) *GetVmMetaResponseBodyVmMetaInfo {
-	s.RootCertContent = &v
-	return s
-}
-
-func (s *GetVmMetaResponseBodyVmMetaInfo) SetKeyContent(v string) *GetVmMetaResponseBodyVmMetaInfo {
-	s.KeyContent = &v
-	return s
-}
-
-func (s *GetVmMetaResponseBodyVmMetaInfo) SetRootCertPath(v string) *GetVmMetaResponseBodyVmMetaInfo {
-	s.RootCertPath = &v
-	return s
-}
-
-func (s *GetVmMetaResponseBodyVmMetaInfo) SetCertChainContent(v string) *GetVmMetaResponseBodyVmMetaInfo {
-	s.CertChainContent = &v
-	return s
-}
-
-func (s *GetVmMetaResponseBodyVmMetaInfo) SetHostsPath(v string) *GetVmMetaResponseBodyVmMetaInfo {
-	s.HostsPath = &v
-	return s
-}
-
-func (s *GetVmMetaResponseBodyVmMetaInfo) SetKeyPath(v string) *GetVmMetaResponseBodyVmMetaInfo {
-	s.KeyPath = &v
-	return s
-}
-
-func (s *GetVmMetaResponseBodyVmMetaInfo) SetEnvoyEnvContent(v string) *GetVmMetaResponseBodyVmMetaInfo {
-	s.EnvoyEnvContent = &v
-	return s
-}
-
-type GetVmMetaResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetVmMetaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetVmMetaResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetVmMetaResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetVmMetaResponse) SetHeaders(v map[string]*string) *GetVmMetaResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetVmMetaResponse) SetBody(v *GetVmMetaResponseBody) *GetVmMetaResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeUpgradeVersionRequest struct {
-	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
-}
-
-func (s DescribeUpgradeVersionRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUpgradeVersionRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUpgradeVersionRequest) SetServiceMeshId(v string) *DescribeUpgradeVersionRequest {
-	s.ServiceMeshId = &v
-	return s
-}
-
-type DescribeUpgradeVersionResponseBody struct {
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Version   *DescribeUpgradeVersionResponseBodyVersion `json:"Version,omitempty" xml:"Version,omitempty" type:"Struct"`
-}
-
-func (s DescribeUpgradeVersionResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUpgradeVersionResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUpgradeVersionResponseBody) SetRequestId(v string) *DescribeUpgradeVersionResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeUpgradeVersionResponseBody) SetVersion(v *DescribeUpgradeVersionResponseBodyVersion) *DescribeUpgradeVersionResponseBody {
-	s.Version = v
-	return s
-}
-
-type DescribeUpgradeVersionResponseBodyVersion struct {
-	KubernetesVersion    *string `json:"KubernetesVersion,omitempty" xml:"KubernetesVersion,omitempty"`
-	IstioOperatorVersion *string `json:"IstioOperatorVersion,omitempty" xml:"IstioOperatorVersion,omitempty"`
-	IstioVersion         *string `json:"IstioVersion,omitempty" xml:"IstioVersion,omitempty"`
-}
-
-func (s DescribeUpgradeVersionResponseBodyVersion) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUpgradeVersionResponseBodyVersion) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUpgradeVersionResponseBodyVersion) SetKubernetesVersion(v string) *DescribeUpgradeVersionResponseBodyVersion {
-	s.KubernetesVersion = &v
-	return s
-}
-
-func (s *DescribeUpgradeVersionResponseBodyVersion) SetIstioOperatorVersion(v string) *DescribeUpgradeVersionResponseBodyVersion {
-	s.IstioOperatorVersion = &v
-	return s
-}
-
-func (s *DescribeUpgradeVersionResponseBodyVersion) SetIstioVersion(v string) *DescribeUpgradeVersionResponseBodyVersion {
-	s.IstioVersion = &v
-	return s
-}
-
-type DescribeUpgradeVersionResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeUpgradeVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeUpgradeVersionResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUpgradeVersionResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUpgradeVersionResponse) SetHeaders(v map[string]*string) *DescribeUpgradeVersionResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeUpgradeVersionResponse) SetBody(v *DescribeUpgradeVersionResponseBody) *DescribeUpgradeVersionResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeClustersInServiceMeshRequest struct {
-	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
-}
-
-func (s DescribeClustersInServiceMeshRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeClustersInServiceMeshRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeClustersInServiceMeshRequest) SetServiceMeshId(v string) *DescribeClustersInServiceMeshRequest {
-	s.ServiceMeshId = &v
-	return s
-}
-
-type DescribeClustersInServiceMeshResponseBody struct {
-	RequestId *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Clusters  []*DescribeClustersInServiceMeshResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
-}
-
-func (s DescribeClustersInServiceMeshResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeClustersInServiceMeshResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeClustersInServiceMeshResponseBody) SetRequestId(v string) *DescribeClustersInServiceMeshResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeClustersInServiceMeshResponseBody) SetClusters(v []*DescribeClustersInServiceMeshResponseBodyClusters) *DescribeClustersInServiceMeshResponseBody {
-	s.Clusters = v
-	return s
-}
-
-type DescribeClustersInServiceMeshResponseBodyClusters struct {
-	SgId                *string                                                                 `json:"SgId,omitempty" xml:"SgId,omitempty"`
-	VpcId               *string                                                                 `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	CreationTime        *string                                                                 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	UpdateTime          *string                                                                 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	ErrorMessage        *string                                                                 `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	State               *string                                                                 `json:"State,omitempty" xml:"State,omitempty"`
-	AccessLogDashboards []*DescribeClustersInServiceMeshResponseBodyClustersAccessLogDashboards `json:"AccessLogDashboards,omitempty" xml:"AccessLogDashboards,omitempty" type:"Repeated"`
-	RegionId            *string                                                                 `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ClusterDomain       *string                                                                 `json:"ClusterDomain,omitempty" xml:"ClusterDomain,omitempty"`
-	Version             *string                                                                 `json:"Version,omitempty" xml:"Version,omitempty"`
-	ClusterType         *string                                                                 `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	Name                *string                                                                 `json:"Name,omitempty" xml:"Name,omitempty"`
-	ClusterId           *string                                                                 `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-}
-
-func (s DescribeClustersInServiceMeshResponseBodyClusters) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeClustersInServiceMeshResponseBodyClusters) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeClustersInServiceMeshResponseBodyClusters) SetSgId(v string) *DescribeClustersInServiceMeshResponseBodyClusters {
-	s.SgId = &v
-	return s
-}
-
-func (s *DescribeClustersInServiceMeshResponseBodyClusters) SetVpcId(v string) *DescribeClustersInServiceMeshResponseBodyClusters {
-	s.VpcId = &v
-	return s
-}
-
-func (s *DescribeClustersInServiceMeshResponseBodyClusters) SetCreationTime(v string) *DescribeClustersInServiceMeshResponseBodyClusters {
-	s.CreationTime = &v
-	return s
-}
-
-func (s *DescribeClustersInServiceMeshResponseBodyClusters) SetUpdateTime(v string) *DescribeClustersInServiceMeshResponseBodyClusters {
-	s.UpdateTime = &v
-	return s
-}
-
-func (s *DescribeClustersInServiceMeshResponseBodyClusters) SetErrorMessage(v string) *DescribeClustersInServiceMeshResponseBodyClusters {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *DescribeClustersInServiceMeshResponseBodyClusters) SetState(v string) *DescribeClustersInServiceMeshResponseBodyClusters {
-	s.State = &v
-	return s
-}
-
-func (s *DescribeClustersInServiceMeshResponseBodyClusters) SetAccessLogDashboards(v []*DescribeClustersInServiceMeshResponseBodyClustersAccessLogDashboards) *DescribeClustersInServiceMeshResponseBodyClusters {
-	s.AccessLogDashboards = v
-	return s
-}
-
-func (s *DescribeClustersInServiceMeshResponseBodyClusters) SetRegionId(v string) *DescribeClustersInServiceMeshResponseBodyClusters {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeClustersInServiceMeshResponseBodyClusters) SetClusterDomain(v string) *DescribeClustersInServiceMeshResponseBodyClusters {
-	s.ClusterDomain = &v
-	return s
-}
-
-func (s *DescribeClustersInServiceMeshResponseBodyClusters) SetVersion(v string) *DescribeClustersInServiceMeshResponseBodyClusters {
-	s.Version = &v
-	return s
-}
-
-func (s *DescribeClustersInServiceMeshResponseBodyClusters) SetClusterType(v string) *DescribeClustersInServiceMeshResponseBodyClusters {
-	s.ClusterType = &v
-	return s
-}
-
-func (s *DescribeClustersInServiceMeshResponseBodyClusters) SetName(v string) *DescribeClustersInServiceMeshResponseBodyClusters {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeClustersInServiceMeshResponseBodyClusters) SetClusterId(v string) *DescribeClustersInServiceMeshResponseBodyClusters {
-	s.ClusterId = &v
-	return s
-}
-
-type DescribeClustersInServiceMeshResponseBodyClustersAccessLogDashboards struct {
-	Url   *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-}
-
-func (s DescribeClustersInServiceMeshResponseBodyClustersAccessLogDashboards) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeClustersInServiceMeshResponseBodyClustersAccessLogDashboards) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeClustersInServiceMeshResponseBodyClustersAccessLogDashboards) SetUrl(v string) *DescribeClustersInServiceMeshResponseBodyClustersAccessLogDashboards {
-	s.Url = &v
-	return s
-}
-
-func (s *DescribeClustersInServiceMeshResponseBodyClustersAccessLogDashboards) SetTitle(v string) *DescribeClustersInServiceMeshResponseBodyClustersAccessLogDashboards {
-	s.Title = &v
-	return s
-}
-
-type DescribeClustersInServiceMeshResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeClustersInServiceMeshResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeClustersInServiceMeshResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeClustersInServiceMeshResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeClustersInServiceMeshResponse) SetHeaders(v map[string]*string) *DescribeClustersInServiceMeshResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeClustersInServiceMeshResponse) SetBody(v *DescribeClustersInServiceMeshResponseBody) *DescribeClustersInServiceMeshResponse {
+func (s *UpgradeMeshVersionResponse) SetBody(v *UpgradeMeshVersionResponseBody) *UpgradeMeshVersionResponse {
 	s.Body = v
 	return s
 }
@@ -4082,7 +4082,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-func (client *Client) RunDiagnosisWithOptions(request *RunDiagnosisRequest, runtime *util.RuntimeOptions) (_result *RunDiagnosisResponse, _err error) {
+func (client *Client) AddClusterIntoServiceMeshWithOptions(request *AddClusterIntoServiceMeshRequest, runtime *util.RuntimeOptions) (_result *AddClusterIntoServiceMeshResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -4090,8 +4090,8 @@ func (client *Client) RunDiagnosisWithOptions(request *RunDiagnosisRequest, runt
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
-	_result = &RunDiagnosisResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RunDiagnosis"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_result = &AddClusterIntoServiceMeshResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("AddClusterIntoServiceMesh"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4099,10 +4099,122 @@ func (client *Client) RunDiagnosisWithOptions(request *RunDiagnosisRequest, runt
 	return _result, _err
 }
 
-func (client *Client) RunDiagnosis(request *RunDiagnosisRequest) (_result *RunDiagnosisResponse, _err error) {
+func (client *Client) AddClusterIntoServiceMesh(request *AddClusterIntoServiceMeshRequest) (_result *AddClusterIntoServiceMeshResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &RunDiagnosisResponse{}
-	_body, _err := client.RunDiagnosisWithOptions(request, runtime)
+	_result = &AddClusterIntoServiceMeshResponse{}
+	_body, _err := client.AddClusterIntoServiceMeshWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddVmAppToMeshWithOptions(request *AddVmAppToMeshRequest, runtime *util.RuntimeOptions) (_result *AddVmAppToMeshResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &AddVmAppToMeshResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("AddVmAppToMesh"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddVmAppToMesh(request *AddVmAppToMeshRequest) (_result *AddVmAppToMeshResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddVmAppToMeshResponse{}
+	_body, _err := client.AddVmAppToMeshWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateServiceMeshWithOptions(request *CreateServiceMeshRequest, runtime *util.RuntimeOptions) (_result *CreateServiceMeshResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateServiceMeshResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateServiceMesh"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateServiceMesh(request *CreateServiceMeshRequest) (_result *CreateServiceMeshResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateServiceMeshResponse{}
+	_body, _err := client.CreateServiceMeshWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteServiceMeshWithOptions(request *DeleteServiceMeshRequest, runtime *util.RuntimeOptions) (_result *DeleteServiceMeshResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DeleteServiceMeshResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteServiceMesh"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteServiceMesh(request *DeleteServiceMeshRequest) (_result *DeleteServiceMeshResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteServiceMeshResponse{}
+	_body, _err := client.DeleteServiceMeshWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeCensWithOptions(request *DescribeCensRequest, runtime *util.RuntimeOptions) (_result *DescribeCensResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeCensResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeCens"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeCens(request *DescribeCensRequest) (_result *DescribeCensResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCensResponse{}
+	_body, _err := client.DescribeCensWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4138,6 +4250,62 @@ func (client *Client) DescribeClusterGrafana(request *DescribeClusterGrafanaRequ
 	return _result, _err
 }
 
+func (client *Client) DescribeClusterPrometheusWithOptions(request *DescribeClusterPrometheusRequest, runtime *util.RuntimeOptions) (_result *DescribeClusterPrometheusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeClusterPrometheusResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeClusterPrometheus"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeClusterPrometheus(request *DescribeClusterPrometheusRequest) (_result *DescribeClusterPrometheusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeClusterPrometheusResponse{}
+	_body, _err := client.DescribeClusterPrometheusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeClustersInServiceMeshWithOptions(request *DescribeClustersInServiceMeshRequest, runtime *util.RuntimeOptions) (_result *DescribeClustersInServiceMeshResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeClustersInServiceMeshResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeClustersInServiceMesh"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeClustersInServiceMesh(request *DescribeClustersInServiceMeshRequest) (_result *DescribeClustersInServiceMeshResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeClustersInServiceMeshResponse{}
+	_body, _err := client.DescribeClustersInServiceMeshWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeGuestClusterAccessLogDashboardsWithOptions(request *DescribeGuestClusterAccessLogDashboardsRequest, runtime *util.RuntimeOptions) (_result *DescribeGuestClusterAccessLogDashboardsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4159,84 +4327,6 @@ func (client *Client) DescribeGuestClusterAccessLogDashboards(request *DescribeG
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeGuestClusterAccessLogDashboardsResponse{}
 	_body, _err := client.DescribeGuestClusterAccessLogDashboardsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeServiceMeshesWithOptions(runtime *util.RuntimeOptions) (_result *DescribeServiceMeshesResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
-	_result = &DescribeServiceMeshesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeServiceMeshes"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeServiceMeshes() (_result *DescribeServiceMeshesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeServiceMeshesResponse{}
-	_body, _err := client.DescribeServiceMeshesWithOptions(runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetDiagnosisWithOptions(request *GetDiagnosisRequest, runtime *util.RuntimeOptions) (_result *GetDiagnosisResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetDiagnosisResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetDiagnosis"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetDiagnosis(request *GetDiagnosisRequest) (_result *GetDiagnosisResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetDiagnosisResponse{}
-	_body, _err := client.GetDiagnosisWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetRegisteredServicesWithOptions(request *GetRegisteredServicesRequest, runtime *util.RuntimeOptions) (_result *GetRegisteredServicesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetRegisteredServicesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetRegisteredServices"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetRegisteredServices(request *GetRegisteredServicesRequest) (_result *GetRegisteredServicesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetRegisteredServicesResponse{}
-	_body, _err := client.GetRegisteredServicesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4301,16 +4391,10 @@ func (client *Client) DescribeServiceMeshDetail(request *DescribeServiceMeshDeta
 	return _result, _err
 }
 
-func (client *Client) DescribeCensWithOptions(request *DescribeCensRequest, runtime *util.RuntimeOptions) (_result *DescribeCensResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeCensResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeCens"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+func (client *Client) DescribeServiceMeshesWithOptions(runtime *util.RuntimeOptions) (_result *DescribeServiceMeshesResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	_result = &DescribeServiceMeshesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeServiceMeshes"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4318,66 +4402,10 @@ func (client *Client) DescribeCensWithOptions(request *DescribeCensRequest, runt
 	return _result, _err
 }
 
-func (client *Client) DescribeCens(request *DescribeCensRequest) (_result *DescribeCensResponse, _err error) {
+func (client *Client) DescribeServiceMeshes() (_result *DescribeServiceMeshesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &DescribeCensResponse{}
-	_body, _err := client.DescribeCensWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteServiceMeshWithOptions(request *DeleteServiceMeshRequest, runtime *util.RuntimeOptions) (_result *DeleteServiceMeshResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DeleteServiceMeshResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteServiceMesh"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteServiceMesh(request *DeleteServiceMeshRequest) (_result *DeleteServiceMeshResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteServiceMeshResponse{}
-	_body, _err := client.DeleteServiceMeshWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpgradeMeshVersionWithOptions(request *UpgradeMeshVersionRequest, runtime *util.RuntimeOptions) (_result *UpgradeMeshVersionResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &UpgradeMeshVersionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpgradeMeshVersion"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpgradeMeshVersion(request *UpgradeMeshVersionRequest) (_result *UpgradeMeshVersionResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpgradeMeshVersionResponse{}
-	_body, _err := client.UpgradeMeshVersionWithOptions(request, runtime)
+	_result = &DescribeServiceMeshesResponse{}
+	_body, _err := client.DescribeServiceMeshesWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4406,6 +4434,230 @@ func (client *Client) DescribeServiceMeshKubeconfig(request *DescribeServiceMesh
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeServiceMeshKubeconfigResponse{}
 	_body, _err := client.DescribeServiceMeshKubeconfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeUpgradeVersionWithOptions(request *DescribeUpgradeVersionRequest, runtime *util.RuntimeOptions) (_result *DescribeUpgradeVersionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeUpgradeVersionResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeUpgradeVersion"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeUpgradeVersion(request *DescribeUpgradeVersionRequest) (_result *DescribeUpgradeVersionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeUpgradeVersionResponse{}
+	_body, _err := client.DescribeUpgradeVersionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetAutoInjectionLabelSyncStatusWithOptions(request *GetAutoInjectionLabelSyncStatusRequest, runtime *util.RuntimeOptions) (_result *GetAutoInjectionLabelSyncStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetAutoInjectionLabelSyncStatusResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetAutoInjectionLabelSyncStatus"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAutoInjectionLabelSyncStatus(request *GetAutoInjectionLabelSyncStatusRequest) (_result *GetAutoInjectionLabelSyncStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAutoInjectionLabelSyncStatusResponse{}
+	_body, _err := client.GetAutoInjectionLabelSyncStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDiagnosisWithOptions(request *GetDiagnosisRequest, runtime *util.RuntimeOptions) (_result *GetDiagnosisResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetDiagnosisResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetDiagnosis"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDiagnosis(request *GetDiagnosisRequest) (_result *GetDiagnosisResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDiagnosisResponse{}
+	_body, _err := client.GetDiagnosisWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetRegisteredServiceEndpointsWithOptions(request *GetRegisteredServiceEndpointsRequest, runtime *util.RuntimeOptions) (_result *GetRegisteredServiceEndpointsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetRegisteredServiceEndpointsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetRegisteredServiceEndpoints"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetRegisteredServiceEndpoints(request *GetRegisteredServiceEndpointsRequest) (_result *GetRegisteredServiceEndpointsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetRegisteredServiceEndpointsResponse{}
+	_body, _err := client.GetRegisteredServiceEndpointsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetRegisteredServiceNamespacesWithOptions(request *GetRegisteredServiceNamespacesRequest, runtime *util.RuntimeOptions) (_result *GetRegisteredServiceNamespacesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetRegisteredServiceNamespacesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetRegisteredServiceNamespaces"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetRegisteredServiceNamespaces(request *GetRegisteredServiceNamespacesRequest) (_result *GetRegisteredServiceNamespacesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetRegisteredServiceNamespacesResponse{}
+	_body, _err := client.GetRegisteredServiceNamespacesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetRegisteredServicesWithOptions(request *GetRegisteredServicesRequest, runtime *util.RuntimeOptions) (_result *GetRegisteredServicesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetRegisteredServicesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetRegisteredServices"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetRegisteredServices(request *GetRegisteredServicesRequest) (_result *GetRegisteredServicesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetRegisteredServicesResponse{}
+	_body, _err := client.GetRegisteredServicesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetServiceMeshSlbWithOptions(request *GetServiceMeshSlbRequest, runtime *util.RuntimeOptions) (_result *GetServiceMeshSlbResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetServiceMeshSlbResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetServiceMeshSlb"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetServiceMeshSlb(request *GetServiceMeshSlbRequest) (_result *GetServiceMeshSlbResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetServiceMeshSlbResponse{}
+	_body, _err := client.GetServiceMeshSlbWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetServiceRegistrySourceWithOptions(request *GetServiceRegistrySourceRequest, runtime *util.RuntimeOptions) (_result *GetServiceRegistrySourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetServiceRegistrySourceResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetServiceRegistrySource"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetServiceRegistrySource(request *GetServiceRegistrySourceRequest) (_result *GetServiceRegistrySourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetServiceRegistrySourceResponse{}
+	_body, _err := client.GetServiceRegistrySourceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4442,6 +4694,57 @@ func (client *Client) GetVmAppMeshInfo(request *GetVmAppMeshInfoRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) GetVmMetaWithOptions(request *GetVmMetaRequest, runtime *util.RuntimeOptions) (_result *GetVmMetaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &GetVmMetaResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetVmMeta"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetVmMeta(request *GetVmMetaRequest) (_result *GetVmMetaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetVmMetaResponse{}
+	_body, _err := client.GetVmMetaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) InitializeASMRoleWithOptions(runtime *util.RuntimeOptions) (_result *InitializeASMRoleResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	_result = &InitializeASMRoleResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("InitializeASMRole"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) InitializeASMRole() (_result *InitializeASMRoleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &InitializeASMRoleResponse{}
+	_body, _err := client.InitializeASMRoleWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) RemoveClusterFromServiceMeshWithOptions(request *RemoveClusterFromServiceMeshRequest, runtime *util.RuntimeOptions) (_result *RemoveClusterFromServiceMeshResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4463,6 +4766,62 @@ func (client *Client) RemoveClusterFromServiceMesh(request *RemoveClusterFromSer
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveClusterFromServiceMeshResponse{}
 	_body, _err := client.RemoveClusterFromServiceMeshWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RemoveVmAppFromMeshWithOptions(request *RemoveVmAppFromMeshRequest, runtime *util.RuntimeOptions) (_result *RemoveVmAppFromMeshResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &RemoveVmAppFromMeshResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("RemoveVmAppFromMesh"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RemoveVmAppFromMesh(request *RemoveVmAppFromMeshRequest) (_result *RemoveVmAppFromMeshResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RemoveVmAppFromMeshResponse{}
+	_body, _err := client.RemoveVmAppFromMeshWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RunDiagnosisWithOptions(request *RunDiagnosisRequest, runtime *util.RuntimeOptions) (_result *RunDiagnosisResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &RunDiagnosisResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("RunDiagnosis"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RunDiagnosis(request *RunDiagnosisRequest) (_result *RunDiagnosisResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RunDiagnosisResponse{}
+	_body, _err := client.RunDiagnosisWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4504,7 +4863,7 @@ func (client *Client) SetServiceRegistrySource(request *SetServiceRegistrySource
 	return _result, _err
 }
 
-func (client *Client) AddClusterIntoServiceMeshWithOptions(request *AddClusterIntoServiceMeshRequest, runtime *util.RuntimeOptions) (_result *AddClusterIntoServiceMeshResponse, _err error) {
+func (client *Client) UpdateIstioInjectionConfigWithOptions(request *UpdateIstioInjectionConfigRequest, runtime *util.RuntimeOptions) (_result *UpdateIstioInjectionConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -4512,8 +4871,8 @@ func (client *Client) AddClusterIntoServiceMeshWithOptions(request *AddClusterIn
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
-	_result = &AddClusterIntoServiceMeshResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AddClusterIntoServiceMesh"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_result = &UpdateIstioInjectionConfigResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UpdateIstioInjectionConfig"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4521,66 +4880,10 @@ func (client *Client) AddClusterIntoServiceMeshWithOptions(request *AddClusterIn
 	return _result, _err
 }
 
-func (client *Client) AddClusterIntoServiceMesh(request *AddClusterIntoServiceMeshRequest) (_result *AddClusterIntoServiceMeshResponse, _err error) {
+func (client *Client) UpdateIstioInjectionConfig(request *UpdateIstioInjectionConfigRequest) (_result *UpdateIstioInjectionConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &AddClusterIntoServiceMeshResponse{}
-	_body, _err := client.AddClusterIntoServiceMeshWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetServiceMeshSlbWithOptions(request *GetServiceMeshSlbRequest, runtime *util.RuntimeOptions) (_result *GetServiceMeshSlbResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetServiceMeshSlbResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetServiceMeshSlb"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetServiceMeshSlb(request *GetServiceMeshSlbRequest) (_result *GetServiceMeshSlbResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetServiceMeshSlbResponse{}
-	_body, _err := client.GetServiceMeshSlbWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetRegisteredServiceEndpointsWithOptions(request *GetRegisteredServiceEndpointsRequest, runtime *util.RuntimeOptions) (_result *GetRegisteredServiceEndpointsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetRegisteredServiceEndpointsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetRegisteredServiceEndpoints"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetRegisteredServiceEndpoints(request *GetRegisteredServiceEndpointsRequest) (_result *GetRegisteredServiceEndpointsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetRegisteredServiceEndpointsResponse{}
-	_body, _err := client.GetRegisteredServiceEndpointsWithOptions(request, runtime)
+	_result = &UpdateIstioInjectionConfigResponse{}
+	_body, _err := client.UpdateIstioInjectionConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4616,7 +4919,7 @@ func (client *Client) UpdateMeshFeature(request *UpdateMeshFeatureRequest) (_res
 	return _result, _err
 }
 
-func (client *Client) AddVmAppToMeshWithOptions(request *AddVmAppToMeshRequest, runtime *util.RuntimeOptions) (_result *AddVmAppToMeshResponse, _err error) {
+func (client *Client) UpgradeMeshVersionWithOptions(request *UpgradeMeshVersionRequest, runtime *util.RuntimeOptions) (_result *UpgradeMeshVersionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -4624,8 +4927,8 @@ func (client *Client) AddVmAppToMeshWithOptions(request *AddVmAppToMeshRequest, 
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
-	_result = &AddVmAppToMeshResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AddVmAppToMesh"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_result = &UpgradeMeshVersionResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UpgradeMeshVersion"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4633,313 +4936,10 @@ func (client *Client) AddVmAppToMeshWithOptions(request *AddVmAppToMeshRequest, 
 	return _result, _err
 }
 
-func (client *Client) AddVmAppToMesh(request *AddVmAppToMeshRequest) (_result *AddVmAppToMeshResponse, _err error) {
+func (client *Client) UpgradeMeshVersion(request *UpgradeMeshVersionRequest) (_result *UpgradeMeshVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &AddVmAppToMeshResponse{}
-	_body, _err := client.AddVmAppToMeshWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateServiceMeshWithOptions(request *CreateServiceMeshRequest, runtime *util.RuntimeOptions) (_result *CreateServiceMeshResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreateServiceMeshResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateServiceMesh"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateServiceMesh(request *CreateServiceMeshRequest) (_result *CreateServiceMeshResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateServiceMeshResponse{}
-	_body, _err := client.CreateServiceMeshWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetAutoInjectionLabelSyncStatusWithOptions(request *GetAutoInjectionLabelSyncStatusRequest, runtime *util.RuntimeOptions) (_result *GetAutoInjectionLabelSyncStatusResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetAutoInjectionLabelSyncStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAutoInjectionLabelSyncStatus"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetAutoInjectionLabelSyncStatus(request *GetAutoInjectionLabelSyncStatusRequest) (_result *GetAutoInjectionLabelSyncStatusResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetAutoInjectionLabelSyncStatusResponse{}
-	_body, _err := client.GetAutoInjectionLabelSyncStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetServiceRegistrySourceWithOptions(request *GetServiceRegistrySourceRequest, runtime *util.RuntimeOptions) (_result *GetServiceRegistrySourceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetServiceRegistrySourceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetServiceRegistrySource"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetServiceRegistrySource(request *GetServiceRegistrySourceRequest) (_result *GetServiceRegistrySourceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetServiceRegistrySourceResponse{}
-	_body, _err := client.GetServiceRegistrySourceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetRegisteredServiceNamespacesWithOptions(request *GetRegisteredServiceNamespacesRequest, runtime *util.RuntimeOptions) (_result *GetRegisteredServiceNamespacesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetRegisteredServiceNamespacesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetRegisteredServiceNamespaces"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetRegisteredServiceNamespaces(request *GetRegisteredServiceNamespacesRequest) (_result *GetRegisteredServiceNamespacesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetRegisteredServiceNamespacesResponse{}
-	_body, _err := client.GetRegisteredServiceNamespacesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) InitializeASMRoleWithOptions(runtime *util.RuntimeOptions) (_result *InitializeASMRoleResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
-	_result = &InitializeASMRoleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("InitializeASMRole"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) InitializeASMRole() (_result *InitializeASMRoleResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &InitializeASMRoleResponse{}
-	_body, _err := client.InitializeASMRoleWithOptions(runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) RemoveVmAppFromMeshWithOptions(request *RemoveVmAppFromMeshRequest, runtime *util.RuntimeOptions) (_result *RemoveVmAppFromMeshResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &RemoveVmAppFromMeshResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RemoveVmAppFromMesh"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) RemoveVmAppFromMesh(request *RemoveVmAppFromMeshRequest) (_result *RemoveVmAppFromMeshResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &RemoveVmAppFromMeshResponse{}
-	_body, _err := client.RemoveVmAppFromMeshWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeClusterPrometheusWithOptions(request *DescribeClusterPrometheusRequest, runtime *util.RuntimeOptions) (_result *DescribeClusterPrometheusResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeClusterPrometheusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeClusterPrometheus"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeClusterPrometheus(request *DescribeClusterPrometheusRequest) (_result *DescribeClusterPrometheusResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeClusterPrometheusResponse{}
-	_body, _err := client.DescribeClusterPrometheusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpdateIstioInjectionConfigWithOptions(request *UpdateIstioInjectionConfigRequest, runtime *util.RuntimeOptions) (_result *UpdateIstioInjectionConfigResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &UpdateIstioInjectionConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateIstioInjectionConfig"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateIstioInjectionConfig(request *UpdateIstioInjectionConfigRequest) (_result *UpdateIstioInjectionConfigResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateIstioInjectionConfigResponse{}
-	_body, _err := client.UpdateIstioInjectionConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetVmMetaWithOptions(request *GetVmMetaRequest, runtime *util.RuntimeOptions) (_result *GetVmMetaResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: query,
-	}
-	_result = &GetVmMetaResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetVmMeta"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetVmMeta(request *GetVmMetaRequest) (_result *GetVmMetaResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetVmMetaResponse{}
-	_body, _err := client.GetVmMetaWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeUpgradeVersionWithOptions(request *DescribeUpgradeVersionRequest, runtime *util.RuntimeOptions) (_result *DescribeUpgradeVersionResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeUpgradeVersionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeUpgradeVersion"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeUpgradeVersion(request *DescribeUpgradeVersionRequest) (_result *DescribeUpgradeVersionResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeUpgradeVersionResponse{}
-	_body, _err := client.DescribeUpgradeVersionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeClustersInServiceMeshWithOptions(request *DescribeClustersInServiceMeshRequest, runtime *util.RuntimeOptions) (_result *DescribeClustersInServiceMeshResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeClustersInServiceMeshResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeClustersInServiceMesh"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeClustersInServiceMesh(request *DescribeClustersInServiceMeshRequest) (_result *DescribeClustersInServiceMeshResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeClustersInServiceMeshResponse{}
-	_body, _err := client.DescribeClustersInServiceMeshWithOptions(request, runtime)
+	_result = &UpgradeMeshVersionResponse{}
+	_body, _err := client.UpgradeMeshVersionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
