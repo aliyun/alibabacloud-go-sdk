@@ -17,7 +17,7 @@ type GetSnapshotBlockRequest struct {
 	// 幂等参数
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// 待读取的数据块索引，从零开始。从 ListChangedBlocks 或者 ListSnapshotBlocks 返回
-	BlockIndex *string `json:"BlockIndex,omitempty" xml:"BlockIndex,omitempty"`
+	BlockIndex *int64 `json:"BlockIndex,omitempty" xml:"BlockIndex,omitempty"`
 	// 待读取的数据块Token，从零开始。从 ListChangedBlocks 或者 ListSnapshotBlocks 返回
 	BlockToken *string `json:"BlockToken,omitempty" xml:"BlockToken,omitempty"`
 	// 待读取数据的快照名称
@@ -37,7 +37,7 @@ func (s *GetSnapshotBlockRequest) SetClientToken(v string) *GetSnapshotBlockRequ
 	return s
 }
 
-func (s *GetSnapshotBlockRequest) SetBlockIndex(v string) *GetSnapshotBlockRequest {
+func (s *GetSnapshotBlockRequest) SetBlockIndex(v int64) *GetSnapshotBlockRequest {
 	s.BlockIndex = &v
 	return s
 }
@@ -75,13 +75,134 @@ func (s *GetSnapshotBlockResponse) SetBody(v io.Reader) *GetSnapshotBlockRespons
 	return s
 }
 
+type GetSnapshotInfoRequest struct {
+	// 幂等参数
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// 待读取数据的快照名称
+	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	// 是否返回详细信息，详细信息需要更多查询时间
+	ShowDetail *bool `json:"ShowDetail,omitempty" xml:"ShowDetail,omitempty"`
+}
+
+func (s GetSnapshotInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSnapshotInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSnapshotInfoRequest) SetClientToken(v string) *GetSnapshotInfoRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *GetSnapshotInfoRequest) SetSnapshotId(v string) *GetSnapshotInfoRequest {
+	s.SnapshotId = &v
+	return s
+}
+
+func (s *GetSnapshotInfoRequest) SetShowDetail(v bool) *GetSnapshotInfoRequest {
+	s.ShowDetail = &v
+	return s
+}
+
+type GetSnapshotInfoResponseBody struct {
+	// 快照大小，单位 GB，最小 1GB
+	VolumeSize *int64 `json:"VolumeSize,omitempty" xml:"VolumeSize,omitempty"`
+	// 快照数据快大小，单位 Bytes
+	BlockSize *int64 `json:"BlockSize,omitempty" xml:"BlockSize,omitempty"`
+	// 快照数据块总数量，包含空数据块
+	BlockCount *int64 `json:"BlockCount,omitempty" xml:"BlockCount,omitempty"`
+	// 快照中非空数据块总数量，仅在 ShowDetail 为 True 时返回
+	ValidBlockCount *int64 `json:"ValidBlockCount,omitempty" xml:"ValidBlockCount,omitempty"`
+	// 快照状态
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 快照创建UTC时间，单位微妙
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 快照是否为加密快照
+	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
+}
+
+func (s GetSnapshotInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSnapshotInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSnapshotInfoResponseBody) SetVolumeSize(v int64) *GetSnapshotInfoResponseBody {
+	s.VolumeSize = &v
+	return s
+}
+
+func (s *GetSnapshotInfoResponseBody) SetBlockSize(v int64) *GetSnapshotInfoResponseBody {
+	s.BlockSize = &v
+	return s
+}
+
+func (s *GetSnapshotInfoResponseBody) SetBlockCount(v int64) *GetSnapshotInfoResponseBody {
+	s.BlockCount = &v
+	return s
+}
+
+func (s *GetSnapshotInfoResponseBody) SetValidBlockCount(v int64) *GetSnapshotInfoResponseBody {
+	s.ValidBlockCount = &v
+	return s
+}
+
+func (s *GetSnapshotInfoResponseBody) SetStatus(v string) *GetSnapshotInfoResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *GetSnapshotInfoResponseBody) SetCreateTime(v int64) *GetSnapshotInfoResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetSnapshotInfoResponseBody) SetEncrypted(v bool) *GetSnapshotInfoResponseBody {
+	s.Encrypted = &v
+	return s
+}
+
+type GetSnapshotInfoResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetSnapshotInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetSnapshotInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSnapshotInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSnapshotInfoResponse) SetHeaders(v map[string]*string) *GetSnapshotInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSnapshotInfoResponse) SetBody(v *GetSnapshotInfoResponseBody) *GetSnapshotInfoResponse {
+	s.Body = v
+	return s
+}
+
 type ListChangedBlocksRequest struct {
-	NextToken          *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	MaxResults         *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	ClientToken        *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	FirstSnapshotId    *string `json:"FirstSnapshotId,omitempty" xml:"FirstSnapshotId,omitempty"`
-	SecondSnapshotId   *string `json:"SecondSnapshotId,omitempty" xml:"SecondSnapshotId,omitempty"`
-	StartingBlockIndex *int64  `json:"StartingBlockIndex,omitempty" xml:"StartingBlockIndex,omitempty"`
+	// 标记当前开始读取的位置，置空表示从头开始
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// 本次读取的最大数据记录数量，最小 100，最大 10000
+	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// 幂等参数
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// 待比较的第一个快照名称，最大 64 字节
+	FirstSnapshotId *string `json:"FirstSnapshotId,omitempty" xml:"FirstSnapshotId,omitempty"`
+	// 待比较的第二个快照名称，最大 64 字节
+	SecondSnapshotId *string `json:"SecondSnapshotId,omitempty" xml:"SecondSnapshotId,omitempty"`
+	// 两个快照比较的起始数据块 index，从零开始
+	StartingBlockIndex *int64 `json:"StartingBlockIndex,omitempty" xml:"StartingBlockIndex,omitempty"`
 }
 
 func (s ListChangedBlocksRequest) String() string {
@@ -97,7 +218,7 @@ func (s *ListChangedBlocksRequest) SetNextToken(v string) *ListChangedBlocksRequ
 	return s
 }
 
-func (s *ListChangedBlocksRequest) SetMaxResults(v int32) *ListChangedBlocksRequest {
+func (s *ListChangedBlocksRequest) SetMaxResults(v int64) *ListChangedBlocksRequest {
 	s.MaxResults = &v
 	return s
 }
@@ -123,11 +244,20 @@ func (s *ListChangedBlocksRequest) SetStartingBlockIndex(v int64) *ListChangedBl
 }
 
 type ListChangedBlocksResponseBody struct {
-	NextToken     *string                                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	ExpiryTime    *int64                                        `json:"ExpiryTime,omitempty" xml:"ExpiryTime,omitempty"`
-	BlockSize     *int32                                        `json:"BlockSize,omitempty" xml:"BlockSize,omitempty"`
-	VolumeSize    *int32                                        `json:"VolumeSize,omitempty" xml:"VolumeSize,omitempty"`
+	// 下一页结果的 token，为空时代表无新增页，最大长度 256 字节
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// 两个快照差异的数据块列表
 	ChangedBlocks []*ListChangedBlocksResponseBodyChangedBlocks `json:"ChangedBlocks,omitempty" xml:"ChangedBlocks,omitempty" type:"Repeated"`
+	// 差异数据块 token 过期时间戳
+	ExpiryTime *int64 `json:"ExpiryTime,omitempty" xml:"ExpiryTime,omitempty"`
+	// 第二个快照大小，单位 GB，最小 1GB
+	VolumeSize *int64 `json:"VolumeSize,omitempty" xml:"VolumeSize,omitempty"`
+	// 数据块大小，单位 Byte
+	BlockSize *int64 `json:"BlockSize,omitempty" xml:"BlockSize,omitempty"`
+	// 本次查询中变化数据块数量
+	BlockCount *int64 `json:"BlockCount,omitempty" xml:"BlockCount,omitempty"`
+	// 两个快照差异数据块总数量
+	TotalBlockCount *int64 `json:"TotalBlockCount,omitempty" xml:"TotalBlockCount,omitempty"`
 }
 
 func (s ListChangedBlocksResponseBody) String() string {
@@ -143,29 +273,42 @@ func (s *ListChangedBlocksResponseBody) SetNextToken(v string) *ListChangedBlock
 	return s
 }
 
-func (s *ListChangedBlocksResponseBody) SetExpiryTime(v int64) *ListChangedBlocksResponseBody {
-	s.ExpiryTime = &v
-	return s
-}
-
-func (s *ListChangedBlocksResponseBody) SetBlockSize(v int32) *ListChangedBlocksResponseBody {
-	s.BlockSize = &v
-	return s
-}
-
-func (s *ListChangedBlocksResponseBody) SetVolumeSize(v int32) *ListChangedBlocksResponseBody {
-	s.VolumeSize = &v
-	return s
-}
-
 func (s *ListChangedBlocksResponseBody) SetChangedBlocks(v []*ListChangedBlocksResponseBodyChangedBlocks) *ListChangedBlocksResponseBody {
 	s.ChangedBlocks = v
 	return s
 }
 
+func (s *ListChangedBlocksResponseBody) SetExpiryTime(v int64) *ListChangedBlocksResponseBody {
+	s.ExpiryTime = &v
+	return s
+}
+
+func (s *ListChangedBlocksResponseBody) SetVolumeSize(v int64) *ListChangedBlocksResponseBody {
+	s.VolumeSize = &v
+	return s
+}
+
+func (s *ListChangedBlocksResponseBody) SetBlockSize(v int64) *ListChangedBlocksResponseBody {
+	s.BlockSize = &v
+	return s
+}
+
+func (s *ListChangedBlocksResponseBody) SetBlockCount(v int64) *ListChangedBlocksResponseBody {
+	s.BlockCount = &v
+	return s
+}
+
+func (s *ListChangedBlocksResponseBody) SetTotalBlockCount(v int64) *ListChangedBlocksResponseBody {
+	s.TotalBlockCount = &v
+	return s
+}
+
 type ListChangedBlocksResponseBodyChangedBlocks struct {
-	FirstBlockToken  *string `json:"FirstBlockToken,omitempty" xml:"FirstBlockToken,omitempty"`
-	BlockIndex       *int64  `json:"BlockIndex,omitempty" xml:"BlockIndex,omitempty"`
+	// 数据块的索引值，从零开始
+	BlockIndex *int64 `json:"BlockIndex,omitempty" xml:"BlockIndex,omitempty"`
+	// FirstSnapshotId 中数据块的 Token，用于后续的数据读取，第一个快照未变化时可省略。最大长度 256 字节
+	FirstBlockToken *string `json:"FirstBlockToken,omitempty" xml:"FirstBlockToken,omitempty"`
+	// SecondBlockToken指定的快照中相对于 FirstBlockIndex 变化的数据块 Token，用于后续读取数据。最大长度 256 字节
 	SecondBlockToken *string `json:"SecondBlockToken,omitempty" xml:"SecondBlockToken,omitempty"`
 }
 
@@ -177,13 +320,13 @@ func (s ListChangedBlocksResponseBodyChangedBlocks) GoString() string {
 	return s.String()
 }
 
-func (s *ListChangedBlocksResponseBodyChangedBlocks) SetFirstBlockToken(v string) *ListChangedBlocksResponseBodyChangedBlocks {
-	s.FirstBlockToken = &v
+func (s *ListChangedBlocksResponseBodyChangedBlocks) SetBlockIndex(v int64) *ListChangedBlocksResponseBodyChangedBlocks {
+	s.BlockIndex = &v
 	return s
 }
 
-func (s *ListChangedBlocksResponseBodyChangedBlocks) SetBlockIndex(v int64) *ListChangedBlocksResponseBodyChangedBlocks {
-	s.BlockIndex = &v
+func (s *ListChangedBlocksResponseBodyChangedBlocks) SetFirstBlockToken(v string) *ListChangedBlocksResponseBodyChangedBlocks {
+	s.FirstBlockToken = &v
 	return s
 }
 
@@ -216,11 +359,16 @@ func (s *ListChangedBlocksResponse) SetBody(v *ListChangedBlocksResponseBody) *L
 }
 
 type ListSnapshotBlocksRequest struct {
-	NextToken          *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	MaxResults         *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	ClientToken        *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	SnapshotId         *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	StartingBlockIndex *int64  `json:"StartingBlockIndex,omitempty" xml:"StartingBlockIndex,omitempty"`
+	// 标记当前开始读取的位置，置空表示从头开始
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// 本次读取的最大数据记录数量，最小 100， 最大 10000
+	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// 幂等参数
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// 待列出数据块的快照名称
+	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	// 列出快照中数据块起始索引值，从零开始
+	StartingBlockIndex *int64 `json:"StartingBlockIndex,omitempty" xml:"StartingBlockIndex,omitempty"`
 }
 
 func (s ListSnapshotBlocksRequest) String() string {
@@ -236,7 +384,7 @@ func (s *ListSnapshotBlocksRequest) SetNextToken(v string) *ListSnapshotBlocksRe
 	return s
 }
 
-func (s *ListSnapshotBlocksRequest) SetMaxResults(v int32) *ListSnapshotBlocksRequest {
+func (s *ListSnapshotBlocksRequest) SetMaxResults(v int64) *ListSnapshotBlocksRequest {
 	s.MaxResults = &v
 	return s
 }
@@ -257,11 +405,20 @@ func (s *ListSnapshotBlocksRequest) SetStartingBlockIndex(v int64) *ListSnapshot
 }
 
 type ListSnapshotBlocksResponseBody struct {
-	NextToken  *string                                 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	ExpiryTime *int64                                  `json:"ExpiryTime,omitempty" xml:"ExpiryTime,omitempty"`
-	BlockSize  *int32                                  `json:"BlockSize,omitempty" xml:"BlockSize,omitempty"`
-	VolumeSize *int32                                  `json:"VolumeSize,omitempty" xml:"VolumeSize,omitempty"`
-	Blocks     []*ListSnapshotBlocksResponseBodyBlocks `json:"Blocks,omitempty" xml:"Blocks,omitempty" type:"Repeated"`
+	// 下一页结果的 token，为空时代表无新增页，最大  256 字节
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// 快照有效数据块信息列表，不包含空数据块
+	Blocks []*ListSnapshotBlocksResponseBodyBlocks `json:"Blocks,omitempty" xml:"Blocks,omitempty" type:"Repeated"`
+	// BlockToken 过期时间戳
+	ExpiryTime *int64 `json:"ExpiryTime,omitempty" xml:"ExpiryTime,omitempty"`
+	// 快照大小，单位 GB，最小 1GB
+	VolumeSize *int64 `json:"VolumeSize,omitempty" xml:"VolumeSize,omitempty"`
+	// 数据块大小，单位 Byte
+	BlockSize *int64 `json:"BlockSize,omitempty" xml:"BlockSize,omitempty"`
+	// 本次查询中快照有效数据块数量
+	BlockCount *int64 `json:"BlockCount,omitempty" xml:"BlockCount,omitempty"`
+	// 快照有效数据块总数量
+	TotalBlockCount *int64 `json:"TotalBlockCount,omitempty" xml:"TotalBlockCount,omitempty"`
 }
 
 func (s ListSnapshotBlocksResponseBody) String() string {
@@ -277,28 +434,40 @@ func (s *ListSnapshotBlocksResponseBody) SetNextToken(v string) *ListSnapshotBlo
 	return s
 }
 
-func (s *ListSnapshotBlocksResponseBody) SetExpiryTime(v int64) *ListSnapshotBlocksResponseBody {
-	s.ExpiryTime = &v
-	return s
-}
-
-func (s *ListSnapshotBlocksResponseBody) SetBlockSize(v int32) *ListSnapshotBlocksResponseBody {
-	s.BlockSize = &v
-	return s
-}
-
-func (s *ListSnapshotBlocksResponseBody) SetVolumeSize(v int32) *ListSnapshotBlocksResponseBody {
-	s.VolumeSize = &v
-	return s
-}
-
 func (s *ListSnapshotBlocksResponseBody) SetBlocks(v []*ListSnapshotBlocksResponseBodyBlocks) *ListSnapshotBlocksResponseBody {
 	s.Blocks = v
 	return s
 }
 
+func (s *ListSnapshotBlocksResponseBody) SetExpiryTime(v int64) *ListSnapshotBlocksResponseBody {
+	s.ExpiryTime = &v
+	return s
+}
+
+func (s *ListSnapshotBlocksResponseBody) SetVolumeSize(v int64) *ListSnapshotBlocksResponseBody {
+	s.VolumeSize = &v
+	return s
+}
+
+func (s *ListSnapshotBlocksResponseBody) SetBlockSize(v int64) *ListSnapshotBlocksResponseBody {
+	s.BlockSize = &v
+	return s
+}
+
+func (s *ListSnapshotBlocksResponseBody) SetBlockCount(v int64) *ListSnapshotBlocksResponseBody {
+	s.BlockCount = &v
+	return s
+}
+
+func (s *ListSnapshotBlocksResponseBody) SetTotalBlockCount(v int64) *ListSnapshotBlocksResponseBody {
+	s.TotalBlockCount = &v
+	return s
+}
+
 type ListSnapshotBlocksResponseBodyBlocks struct {
-	BlockIndex *int64  `json:"BlockIndex,omitempty" xml:"BlockIndex,omitempty"`
+	// 数据块的索引值，从零开始
+	BlockIndex *int64 `json:"BlockIndex,omitempty" xml:"BlockIndex,omitempty"`
+	// 数据块的 Token，用于后续的数据读取。最大长度 256 字节
 	BlockToken *string `json:"BlockToken,omitempty" xml:"BlockToken,omitempty"`
 }
 
@@ -429,11 +598,12 @@ func (client *Client) GetSnapshotBlockWithOptions(request *GetSnapshotBlockReque
 		Query:   openapiutil.Query(query),
 	}
 	res := &GetSnapshotBlockResponse{}
-	tmp, _err := client.DoROARequest(tea.String("GetSnapshotBlock"), tea.String("2020-11-18"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/snapshots/block"), tea.String("binary"), req, runtime)
-	if _err != nil {
-		return _result, _err
+	doROARequestTmp, err := client.DoROARequest(tea.String("GetSnapshotBlock"), tea.String("2020-11-18"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/snapshots/block"), tea.String("binary"), req, runtime)
+	if err != nil {
+		_err = err
+		return
 	}
-
+	tmp := util.AssertAsMap(doROARequestTmp)
 	if !tea.BoolValue(util.IsUnset(tmp["body"])) {
 		respBody := util.AssertAsReadable(tmp["body"])
 		res.Body = respBody
@@ -445,6 +615,49 @@ func (client *Client) GetSnapshotBlockWithOptions(request *GetSnapshotBlockReque
 	}
 
 	_result = res
+	return _result, _err
+}
+
+func (client *Client) GetSnapshotInfo(request *GetSnapshotInfoRequest) (_result *GetSnapshotInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetSnapshotInfoResponse{}
+	_body, _err := client.GetSnapshotInfoWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetSnapshotInfoWithOptions(request *GetSnapshotInfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetSnapshotInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SnapshotId)) {
+		query["SnapshotId"] = request.SnapshotId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShowDetail)) {
+		query["ShowDetail"] = request.ShowDetail
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	_result = &GetSnapshotInfoResponse{}
+	_body, _err := client.DoROARequest(tea.String("GetSnapshotInfo"), tea.String("2020-11-18"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/snapshots/info"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
 	return _result, _err
 }
 
