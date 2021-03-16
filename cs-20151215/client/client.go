@@ -6799,6 +6799,7 @@ func (s *UpgradeClusterAddonsResponse) SetHeaders(v map[string]*string) *Upgrade
 
 type DescribeClusterNamespacesResponse struct {
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    []*string          `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
 }
 
 func (s DescribeClusterNamespacesResponse) String() string {
@@ -6811,6 +6812,11 @@ func (s DescribeClusterNamespacesResponse) GoString() string {
 
 func (s *DescribeClusterNamespacesResponse) SetHeaders(v map[string]*string) *DescribeClusterNamespacesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeClusterNamespacesResponse) SetBody(v []*string) *DescribeClusterNamespacesResponse {
+	s.Body = v
 	return s
 }
 
@@ -11216,7 +11222,7 @@ func (client *Client) DescribeClusterNamespacesWithOptions(ClusterId *string, he
 		Headers: headers,
 	}
 	_result = &DescribeClusterNamespacesResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeClusterNamespaces"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/k8s/"+tea.StringValue(ClusterId)+"/namespaces"), tea.String("none"), req, runtime)
+	_body, _err := client.DoROARequest(tea.String("DescribeClusterNamespaces"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/k8s/"+tea.StringValue(ClusterId)+"/namespaces"), tea.String("array"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
