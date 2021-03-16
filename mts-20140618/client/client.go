@@ -216,11 +216,11 @@ func (s *AddAsrPipelineResponseBody) SetPipeline(v *AddAsrPipelineResponseBodyPi
 }
 
 type AddAsrPipelineResponseBodyPipeline struct {
-	Id           *string                                         `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name         *string                                         `json:"Name,omitempty" xml:"Name,omitempty"`
-	Priority     *int32                                          `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	State        *string                                         `json:"State,omitempty" xml:"State,omitempty"`
 	NotifyConfig *AddAsrPipelineResponseBodyPipelineNotifyConfig `json:"NotifyConfig,omitempty" xml:"NotifyConfig,omitempty" type:"Struct"`
+	Priority     *int32                                          `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Name         *string                                         `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id           *string                                         `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
 func (s AddAsrPipelineResponseBodyPipeline) String() string {
@@ -231,13 +231,13 @@ func (s AddAsrPipelineResponseBodyPipeline) GoString() string {
 	return s.String()
 }
 
-func (s *AddAsrPipelineResponseBodyPipeline) SetId(v string) *AddAsrPipelineResponseBodyPipeline {
-	s.Id = &v
+func (s *AddAsrPipelineResponseBodyPipeline) SetState(v string) *AddAsrPipelineResponseBodyPipeline {
+	s.State = &v
 	return s
 }
 
-func (s *AddAsrPipelineResponseBodyPipeline) SetName(v string) *AddAsrPipelineResponseBodyPipeline {
-	s.Name = &v
+func (s *AddAsrPipelineResponseBodyPipeline) SetNotifyConfig(v *AddAsrPipelineResponseBodyPipelineNotifyConfig) *AddAsrPipelineResponseBodyPipeline {
+	s.NotifyConfig = v
 	return s
 }
 
@@ -246,13 +246,13 @@ func (s *AddAsrPipelineResponseBodyPipeline) SetPriority(v int32) *AddAsrPipelin
 	return s
 }
 
-func (s *AddAsrPipelineResponseBodyPipeline) SetState(v string) *AddAsrPipelineResponseBodyPipeline {
-	s.State = &v
+func (s *AddAsrPipelineResponseBodyPipeline) SetName(v string) *AddAsrPipelineResponseBodyPipeline {
+	s.Name = &v
 	return s
 }
 
-func (s *AddAsrPipelineResponseBodyPipeline) SetNotifyConfig(v *AddAsrPipelineResponseBodyPipelineNotifyConfig) *AddAsrPipelineResponseBodyPipeline {
-	s.NotifyConfig = v
+func (s *AddAsrPipelineResponseBodyPipeline) SetId(v string) *AddAsrPipelineResponseBodyPipeline {
+	s.Id = &v
 	return s
 }
 
@@ -507,11 +507,11 @@ func (s *AddCensorPipelineResponseBody) SetPipeline(v *AddCensorPipelineResponse
 }
 
 type AddCensorPipelineResponseBodyPipeline struct {
-	Id           *string                                            `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name         *string                                            `json:"Name,omitempty" xml:"Name,omitempty"`
-	Priority     *int32                                             `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	State        *string                                            `json:"State,omitempty" xml:"State,omitempty"`
 	NotifyConfig *AddCensorPipelineResponseBodyPipelineNotifyConfig `json:"NotifyConfig,omitempty" xml:"NotifyConfig,omitempty" type:"Struct"`
+	Priority     *int32                                             `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Name         *string                                            `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id           *string                                            `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
 func (s AddCensorPipelineResponseBodyPipeline) String() string {
@@ -522,13 +522,13 @@ func (s AddCensorPipelineResponseBodyPipeline) GoString() string {
 	return s.String()
 }
 
-func (s *AddCensorPipelineResponseBodyPipeline) SetId(v string) *AddCensorPipelineResponseBodyPipeline {
-	s.Id = &v
+func (s *AddCensorPipelineResponseBodyPipeline) SetState(v string) *AddCensorPipelineResponseBodyPipeline {
+	s.State = &v
 	return s
 }
 
-func (s *AddCensorPipelineResponseBodyPipeline) SetName(v string) *AddCensorPipelineResponseBodyPipeline {
-	s.Name = &v
+func (s *AddCensorPipelineResponseBodyPipeline) SetNotifyConfig(v *AddCensorPipelineResponseBodyPipelineNotifyConfig) *AddCensorPipelineResponseBodyPipeline {
+	s.NotifyConfig = v
 	return s
 }
 
@@ -537,13 +537,13 @@ func (s *AddCensorPipelineResponseBodyPipeline) SetPriority(v int32) *AddCensorP
 	return s
 }
 
-func (s *AddCensorPipelineResponseBodyPipeline) SetState(v string) *AddCensorPipelineResponseBodyPipeline {
-	s.State = &v
+func (s *AddCensorPipelineResponseBodyPipeline) SetName(v string) *AddCensorPipelineResponseBodyPipeline {
+	s.Name = &v
 	return s
 }
 
-func (s *AddCensorPipelineResponseBodyPipeline) SetNotifyConfig(v *AddCensorPipelineResponseBodyPipelineNotifyConfig) *AddCensorPipelineResponseBodyPipeline {
-	s.NotifyConfig = v
+func (s *AddCensorPipelineResponseBodyPipeline) SetId(v string) *AddCensorPipelineResponseBodyPipeline {
+	s.Id = &v
 	return s
 }
 
@@ -676,12 +676,12 @@ func (s *AddCoverPipelineResponseBody) SetPipeline(v *AddCoverPipelineResponseBo
 }
 
 type AddCoverPipelineResponseBodyPipeline struct {
-	Id           *string                                           `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name         *string                                           `json:"Name,omitempty" xml:"Name,omitempty"`
-	Priority     *string                                           `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	State        *string                                           `json:"State,omitempty" xml:"State,omitempty"`
-	Role         *string                                           `json:"Role,omitempty" xml:"Role,omitempty"`
 	NotifyConfig *AddCoverPipelineResponseBodyPipelineNotifyConfig `json:"NotifyConfig,omitempty" xml:"NotifyConfig,omitempty" type:"Struct"`
+	Priority     *string                                           `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Role         *string                                           `json:"Role,omitempty" xml:"Role,omitempty"`
+	Name         *string                                           `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id           *string                                           `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
 func (s AddCoverPipelineResponseBodyPipeline) String() string {
@@ -692,13 +692,13 @@ func (s AddCoverPipelineResponseBodyPipeline) GoString() string {
 	return s.String()
 }
 
-func (s *AddCoverPipelineResponseBodyPipeline) SetId(v string) *AddCoverPipelineResponseBodyPipeline {
-	s.Id = &v
+func (s *AddCoverPipelineResponseBodyPipeline) SetState(v string) *AddCoverPipelineResponseBodyPipeline {
+	s.State = &v
 	return s
 }
 
-func (s *AddCoverPipelineResponseBodyPipeline) SetName(v string) *AddCoverPipelineResponseBodyPipeline {
-	s.Name = &v
+func (s *AddCoverPipelineResponseBodyPipeline) SetNotifyConfig(v *AddCoverPipelineResponseBodyPipelineNotifyConfig) *AddCoverPipelineResponseBodyPipeline {
+	s.NotifyConfig = v
 	return s
 }
 
@@ -707,18 +707,18 @@ func (s *AddCoverPipelineResponseBodyPipeline) SetPriority(v string) *AddCoverPi
 	return s
 }
 
-func (s *AddCoverPipelineResponseBodyPipeline) SetState(v string) *AddCoverPipelineResponseBodyPipeline {
-	s.State = &v
-	return s
-}
-
 func (s *AddCoverPipelineResponseBodyPipeline) SetRole(v string) *AddCoverPipelineResponseBodyPipeline {
 	s.Role = &v
 	return s
 }
 
-func (s *AddCoverPipelineResponseBodyPipeline) SetNotifyConfig(v *AddCoverPipelineResponseBodyPipelineNotifyConfig) *AddCoverPipelineResponseBodyPipeline {
-	s.NotifyConfig = v
+func (s *AddCoverPipelineResponseBodyPipeline) SetName(v string) *AddCoverPipelineResponseBodyPipeline {
+	s.Name = &v
+	return s
+}
+
+func (s *AddCoverPipelineResponseBodyPipeline) SetId(v string) *AddCoverPipelineResponseBodyPipeline {
+	s.Id = &v
 	return s
 }
 
@@ -893,18 +893,18 @@ func (s *AddMCTemplateResponseBody) SetTemplate(v *AddMCTemplateResponseBodyTemp
 }
 
 type AddMCTemplateResponseBodyTemplate struct {
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Porn       *string `json:"Porn,omitempty" xml:"Porn,omitempty"`
-	Terrorism  *string `json:"Terrorism,omitempty" xml:"Terrorism,omitempty"`
-	Politics   *string `json:"Politics,omitempty" xml:"Politics,omitempty"`
-	Ad         *string `json:"Ad,omitempty" xml:"Ad,omitempty"`
-	Qrcode     *string `json:"Qrcode,omitempty" xml:"Qrcode,omitempty"`
-	Live       *string `json:"Live,omitempty" xml:"Live,omitempty"`
 	Logo       *string `json:"Logo,omitempty" xml:"Logo,omitempty"`
 	Abuse      *string `json:"Abuse,omitempty" xml:"Abuse,omitempty"`
-	Contraband *string `json:"Contraband,omitempty" xml:"Contraband,omitempty"`
+	Terrorism  *string `json:"Terrorism,omitempty" xml:"Terrorism,omitempty"`
+	Politics   *string `json:"Politics,omitempty" xml:"Politics,omitempty"`
+	Qrcode     *string `json:"Qrcode,omitempty" xml:"Qrcode,omitempty"`
 	Spam       *string `json:"Spam,omitempty" xml:"Spam,omitempty"`
+	Live       *string `json:"Live,omitempty" xml:"Live,omitempty"`
+	Contraband *string `json:"Contraband,omitempty" xml:"Contraband,omitempty"`
+	Ad         *string `json:"Ad,omitempty" xml:"Ad,omitempty"`
+	Porn       *string `json:"Porn,omitempty" xml:"Porn,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s AddMCTemplateResponseBodyTemplate) String() string {
@@ -915,18 +915,13 @@ func (s AddMCTemplateResponseBodyTemplate) GoString() string {
 	return s.String()
 }
 
-func (s *AddMCTemplateResponseBodyTemplate) SetTemplateId(v string) *AddMCTemplateResponseBodyTemplate {
-	s.TemplateId = &v
+func (s *AddMCTemplateResponseBodyTemplate) SetLogo(v string) *AddMCTemplateResponseBodyTemplate {
+	s.Logo = &v
 	return s
 }
 
-func (s *AddMCTemplateResponseBodyTemplate) SetName(v string) *AddMCTemplateResponseBodyTemplate {
-	s.Name = &v
-	return s
-}
-
-func (s *AddMCTemplateResponseBodyTemplate) SetPorn(v string) *AddMCTemplateResponseBodyTemplate {
-	s.Porn = &v
+func (s *AddMCTemplateResponseBodyTemplate) SetAbuse(v string) *AddMCTemplateResponseBodyTemplate {
+	s.Abuse = &v
 	return s
 }
 
@@ -940,13 +935,13 @@ func (s *AddMCTemplateResponseBodyTemplate) SetPolitics(v string) *AddMCTemplate
 	return s
 }
 
-func (s *AddMCTemplateResponseBodyTemplate) SetAd(v string) *AddMCTemplateResponseBodyTemplate {
-	s.Ad = &v
+func (s *AddMCTemplateResponseBodyTemplate) SetQrcode(v string) *AddMCTemplateResponseBodyTemplate {
+	s.Qrcode = &v
 	return s
 }
 
-func (s *AddMCTemplateResponseBodyTemplate) SetQrcode(v string) *AddMCTemplateResponseBodyTemplate {
-	s.Qrcode = &v
+func (s *AddMCTemplateResponseBodyTemplate) SetSpam(v string) *AddMCTemplateResponseBodyTemplate {
+	s.Spam = &v
 	return s
 }
 
@@ -955,23 +950,28 @@ func (s *AddMCTemplateResponseBodyTemplate) SetLive(v string) *AddMCTemplateResp
 	return s
 }
 
-func (s *AddMCTemplateResponseBodyTemplate) SetLogo(v string) *AddMCTemplateResponseBodyTemplate {
-	s.Logo = &v
-	return s
-}
-
-func (s *AddMCTemplateResponseBodyTemplate) SetAbuse(v string) *AddMCTemplateResponseBodyTemplate {
-	s.Abuse = &v
-	return s
-}
-
 func (s *AddMCTemplateResponseBodyTemplate) SetContraband(v string) *AddMCTemplateResponseBodyTemplate {
 	s.Contraband = &v
 	return s
 }
 
-func (s *AddMCTemplateResponseBodyTemplate) SetSpam(v string) *AddMCTemplateResponseBodyTemplate {
-	s.Spam = &v
+func (s *AddMCTemplateResponseBodyTemplate) SetAd(v string) *AddMCTemplateResponseBodyTemplate {
+	s.Ad = &v
+	return s
+}
+
+func (s *AddMCTemplateResponseBodyTemplate) SetPorn(v string) *AddMCTemplateResponseBodyTemplate {
+	s.Porn = &v
+	return s
+}
+
+func (s *AddMCTemplateResponseBodyTemplate) SetName(v string) *AddMCTemplateResponseBodyTemplate {
+	s.Name = &v
+	return s
+}
+
+func (s *AddMCTemplateResponseBodyTemplate) SetTemplateId(v string) *AddMCTemplateResponseBodyTemplate {
+	s.TemplateId = &v
 	return s
 }
 
@@ -1637,14 +1637,14 @@ func (s *AddPipelineResponseBody) SetPipeline(v *AddPipelineResponseBodyPipeline
 }
 
 type AddPipelineResponseBodyPipeline struct {
-	Id            *string                                      `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name          *string                                      `json:"Name,omitempty" xml:"Name,omitempty"`
-	State         *string                                      `json:"State,omitempty" xml:"State,omitempty"`
 	Speed         *string                                      `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	State         *string                                      `json:"State,omitempty" xml:"State,omitempty"`
 	SpeedLevel    *int64                                       `json:"SpeedLevel,omitempty" xml:"SpeedLevel,omitempty"`
-	QuotaAllocate *int64                                       `json:"QuotaAllocate,omitempty" xml:"QuotaAllocate,omitempty"`
-	Role          *string                                      `json:"Role,omitempty" xml:"Role,omitempty"`
 	NotifyConfig  *AddPipelineResponseBodyPipelineNotifyConfig `json:"NotifyConfig,omitempty" xml:"NotifyConfig,omitempty" type:"Struct"`
+	Role          *string                                      `json:"Role,omitempty" xml:"Role,omitempty"`
+	Name          *string                                      `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id            *string                                      `json:"Id,omitempty" xml:"Id,omitempty"`
+	QuotaAllocate *int64                                       `json:"QuotaAllocate,omitempty" xml:"QuotaAllocate,omitempty"`
 }
 
 func (s AddPipelineResponseBodyPipeline) String() string {
@@ -1655,13 +1655,8 @@ func (s AddPipelineResponseBodyPipeline) GoString() string {
 	return s.String()
 }
 
-func (s *AddPipelineResponseBodyPipeline) SetId(v string) *AddPipelineResponseBodyPipeline {
-	s.Id = &v
-	return s
-}
-
-func (s *AddPipelineResponseBodyPipeline) SetName(v string) *AddPipelineResponseBodyPipeline {
-	s.Name = &v
+func (s *AddPipelineResponseBodyPipeline) SetSpeed(v string) *AddPipelineResponseBodyPipeline {
+	s.Speed = &v
 	return s
 }
 
@@ -1670,23 +1665,8 @@ func (s *AddPipelineResponseBodyPipeline) SetState(v string) *AddPipelineRespons
 	return s
 }
 
-func (s *AddPipelineResponseBodyPipeline) SetSpeed(v string) *AddPipelineResponseBodyPipeline {
-	s.Speed = &v
-	return s
-}
-
 func (s *AddPipelineResponseBodyPipeline) SetSpeedLevel(v int64) *AddPipelineResponseBodyPipeline {
 	s.SpeedLevel = &v
-	return s
-}
-
-func (s *AddPipelineResponseBodyPipeline) SetQuotaAllocate(v int64) *AddPipelineResponseBodyPipeline {
-	s.QuotaAllocate = &v
-	return s
-}
-
-func (s *AddPipelineResponseBodyPipeline) SetRole(v string) *AddPipelineResponseBodyPipeline {
-	s.Role = &v
 	return s
 }
 
@@ -1695,11 +1675,31 @@ func (s *AddPipelineResponseBodyPipeline) SetNotifyConfig(v *AddPipelineResponse
 	return s
 }
 
+func (s *AddPipelineResponseBodyPipeline) SetRole(v string) *AddPipelineResponseBodyPipeline {
+	s.Role = &v
+	return s
+}
+
+func (s *AddPipelineResponseBodyPipeline) SetName(v string) *AddPipelineResponseBodyPipeline {
+	s.Name = &v
+	return s
+}
+
+func (s *AddPipelineResponseBodyPipeline) SetId(v string) *AddPipelineResponseBodyPipeline {
+	s.Id = &v
+	return s
+}
+
+func (s *AddPipelineResponseBodyPipeline) SetQuotaAllocate(v int64) *AddPipelineResponseBodyPipeline {
+	s.QuotaAllocate = &v
+	return s
+}
+
 type AddPipelineResponseBodyPipelineNotifyConfig struct {
-	Topic     *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
 	MqTopic   *string `json:"MqTopic,omitempty" xml:"MqTopic,omitempty"`
+	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
 	MqTag     *string `json:"MqTag,omitempty" xml:"MqTag,omitempty"`
+	Topic     *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s AddPipelineResponseBodyPipelineNotifyConfig) String() string {
@@ -1710,8 +1710,8 @@ func (s AddPipelineResponseBodyPipelineNotifyConfig) GoString() string {
 	return s.String()
 }
 
-func (s *AddPipelineResponseBodyPipelineNotifyConfig) SetTopic(v string) *AddPipelineResponseBodyPipelineNotifyConfig {
-	s.Topic = &v
+func (s *AddPipelineResponseBodyPipelineNotifyConfig) SetMqTopic(v string) *AddPipelineResponseBodyPipelineNotifyConfig {
+	s.MqTopic = &v
 	return s
 }
 
@@ -1720,13 +1720,13 @@ func (s *AddPipelineResponseBodyPipelineNotifyConfig) SetQueueName(v string) *Ad
 	return s
 }
 
-func (s *AddPipelineResponseBodyPipelineNotifyConfig) SetMqTopic(v string) *AddPipelineResponseBodyPipelineNotifyConfig {
-	s.MqTopic = &v
+func (s *AddPipelineResponseBodyPipelineNotifyConfig) SetMqTag(v string) *AddPipelineResponseBodyPipelineNotifyConfig {
+	s.MqTag = &v
 	return s
 }
 
-func (s *AddPipelineResponseBodyPipelineNotifyConfig) SetMqTag(v string) *AddPipelineResponseBodyPipelineNotifyConfig {
-	s.MqTag = &v
+func (s *AddPipelineResponseBodyPipelineNotifyConfig) SetTopic(v string) *AddPipelineResponseBodyPipelineNotifyConfig {
+	s.Topic = &v
 	return s
 }
 
@@ -1830,11 +1830,11 @@ func (s *AddPornPipelineResponseBody) SetPipeline(v *AddPornPipelineResponseBody
 }
 
 type AddPornPipelineResponseBodyPipeline struct {
-	Id           *string                                          `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name         *string                                          `json:"Name,omitempty" xml:"Name,omitempty"`
-	Priority     *int32                                           `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	State        *string                                          `json:"State,omitempty" xml:"State,omitempty"`
 	NotifyConfig *AddPornPipelineResponseBodyPipelineNotifyConfig `json:"NotifyConfig,omitempty" xml:"NotifyConfig,omitempty" type:"Struct"`
+	Priority     *int32                                           `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Name         *string                                          `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id           *string                                          `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
 func (s AddPornPipelineResponseBodyPipeline) String() string {
@@ -1845,13 +1845,13 @@ func (s AddPornPipelineResponseBodyPipeline) GoString() string {
 	return s.String()
 }
 
-func (s *AddPornPipelineResponseBodyPipeline) SetId(v string) *AddPornPipelineResponseBodyPipeline {
-	s.Id = &v
+func (s *AddPornPipelineResponseBodyPipeline) SetState(v string) *AddPornPipelineResponseBodyPipeline {
+	s.State = &v
 	return s
 }
 
-func (s *AddPornPipelineResponseBodyPipeline) SetName(v string) *AddPornPipelineResponseBodyPipeline {
-	s.Name = &v
+func (s *AddPornPipelineResponseBodyPipeline) SetNotifyConfig(v *AddPornPipelineResponseBodyPipelineNotifyConfig) *AddPornPipelineResponseBodyPipeline {
+	s.NotifyConfig = v
 	return s
 }
 
@@ -1860,13 +1860,13 @@ func (s *AddPornPipelineResponseBodyPipeline) SetPriority(v int32) *AddPornPipel
 	return s
 }
 
-func (s *AddPornPipelineResponseBodyPipeline) SetState(v string) *AddPornPipelineResponseBodyPipeline {
-	s.State = &v
+func (s *AddPornPipelineResponseBodyPipeline) SetName(v string) *AddPornPipelineResponseBodyPipeline {
+	s.Name = &v
 	return s
 }
 
-func (s *AddPornPipelineResponseBodyPipeline) SetNotifyConfig(v *AddPornPipelineResponseBodyPipelineNotifyConfig) *AddPornPipelineResponseBodyPipeline {
-	s.NotifyConfig = v
+func (s *AddPornPipelineResponseBodyPipeline) SetId(v string) *AddPornPipelineResponseBodyPipeline {
+	s.Id = &v
 	return s
 }
 
@@ -2708,11 +2708,11 @@ func (s *AddTerrorismPipelineResponseBody) SetPipeline(v *AddTerrorismPipelineRe
 }
 
 type AddTerrorismPipelineResponseBodyPipeline struct {
-	Id           *string                                               `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name         *string                                               `json:"Name,omitempty" xml:"Name,omitempty"`
-	Priority     *int32                                                `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	State        *string                                               `json:"State,omitempty" xml:"State,omitempty"`
 	NotifyConfig *AddTerrorismPipelineResponseBodyPipelineNotifyConfig `json:"NotifyConfig,omitempty" xml:"NotifyConfig,omitempty" type:"Struct"`
+	Priority     *int32                                                `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Name         *string                                               `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id           *string                                               `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
 func (s AddTerrorismPipelineResponseBodyPipeline) String() string {
@@ -2723,13 +2723,13 @@ func (s AddTerrorismPipelineResponseBodyPipeline) GoString() string {
 	return s.String()
 }
 
-func (s *AddTerrorismPipelineResponseBodyPipeline) SetId(v string) *AddTerrorismPipelineResponseBodyPipeline {
-	s.Id = &v
+func (s *AddTerrorismPipelineResponseBodyPipeline) SetState(v string) *AddTerrorismPipelineResponseBodyPipeline {
+	s.State = &v
 	return s
 }
 
-func (s *AddTerrorismPipelineResponseBodyPipeline) SetName(v string) *AddTerrorismPipelineResponseBodyPipeline {
-	s.Name = &v
+func (s *AddTerrorismPipelineResponseBodyPipeline) SetNotifyConfig(v *AddTerrorismPipelineResponseBodyPipelineNotifyConfig) *AddTerrorismPipelineResponseBodyPipeline {
+	s.NotifyConfig = v
 	return s
 }
 
@@ -2738,13 +2738,13 @@ func (s *AddTerrorismPipelineResponseBodyPipeline) SetPriority(v int32) *AddTerr
 	return s
 }
 
-func (s *AddTerrorismPipelineResponseBodyPipeline) SetState(v string) *AddTerrorismPipelineResponseBodyPipeline {
-	s.State = &v
+func (s *AddTerrorismPipelineResponseBodyPipeline) SetName(v string) *AddTerrorismPipelineResponseBodyPipeline {
+	s.Name = &v
 	return s
 }
 
-func (s *AddTerrorismPipelineResponseBodyPipeline) SetNotifyConfig(v *AddTerrorismPipelineResponseBodyPipelineNotifyConfig) *AddTerrorismPipelineResponseBodyPipeline {
-	s.NotifyConfig = v
+func (s *AddTerrorismPipelineResponseBodyPipeline) SetId(v string) *AddTerrorismPipelineResponseBodyPipeline {
+	s.Id = &v
 	return s
 }
 
@@ -3460,20 +3460,20 @@ func (s *CheckResourceRequest) SetPrompt(v string) *CheckResourceRequest {
 }
 
 type CheckResourceResponseBody struct {
+	GmtWakeup      *string `json:"GmtWakeup,omitempty" xml:"GmtWakeup,omitempty"`
+	Hid            *int64  `json:"Hid,omitempty" xml:"Hid,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	TaskIdentifier *string `json:"TaskIdentifier,omitempty" xml:"TaskIdentifier,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Url            *string `json:"Url,omitempty" xml:"Url,omitempty"`
 	Interrupt      *bool   `json:"Interrupt,omitempty" xml:"Interrupt,omitempty"`
 	Invoker        *string `json:"Invoker,omitempty" xml:"Invoker,omitempty"`
+	TaskExtraData  *string `json:"TaskExtraData,omitempty" xml:"TaskExtraData,omitempty"`
+	Country        *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	Prompt         *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	Level          *int64  `json:"Level,omitempty" xml:"Level,omitempty"`
 	Pk             *string `json:"Pk,omitempty" xml:"Pk,omitempty"`
 	Bid            *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
-	Hid            *int64  `json:"Hid,omitempty" xml:"Hid,omitempty"`
-	Country        *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	TaskIdentifier *string `json:"TaskIdentifier,omitempty" xml:"TaskIdentifier,omitempty"`
-	TaskExtraData  *string `json:"TaskExtraData,omitempty" xml:"TaskExtraData,omitempty"`
-	GmtWakeup      *string `json:"GmtWakeup,omitempty" xml:"GmtWakeup,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Level          *int64  `json:"Level,omitempty" xml:"Level,omitempty"`
-	Url            *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	Prompt         *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
 }
 
 func (s CheckResourceResponseBody) String() string {
@@ -3482,6 +3482,36 @@ func (s CheckResourceResponseBody) String() string {
 
 func (s CheckResourceResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CheckResourceResponseBody) SetGmtWakeup(v string) *CheckResourceResponseBody {
+	s.GmtWakeup = &v
+	return s
+}
+
+func (s *CheckResourceResponseBody) SetHid(v int64) *CheckResourceResponseBody {
+	s.Hid = &v
+	return s
+}
+
+func (s *CheckResourceResponseBody) SetMessage(v string) *CheckResourceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CheckResourceResponseBody) SetTaskIdentifier(v string) *CheckResourceResponseBody {
+	s.TaskIdentifier = &v
+	return s
+}
+
+func (s *CheckResourceResponseBody) SetSuccess(v bool) *CheckResourceResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CheckResourceResponseBody) SetUrl(v string) *CheckResourceResponseBody {
+	s.Url = &v
+	return s
 }
 
 func (s *CheckResourceResponseBody) SetInterrupt(v bool) *CheckResourceResponseBody {
@@ -3494,18 +3524,8 @@ func (s *CheckResourceResponseBody) SetInvoker(v string) *CheckResourceResponseB
 	return s
 }
 
-func (s *CheckResourceResponseBody) SetPk(v string) *CheckResourceResponseBody {
-	s.Pk = &v
-	return s
-}
-
-func (s *CheckResourceResponseBody) SetBid(v string) *CheckResourceResponseBody {
-	s.Bid = &v
-	return s
-}
-
-func (s *CheckResourceResponseBody) SetHid(v int64) *CheckResourceResponseBody {
-	s.Hid = &v
+func (s *CheckResourceResponseBody) SetTaskExtraData(v string) *CheckResourceResponseBody {
+	s.TaskExtraData = &v
 	return s
 }
 
@@ -3514,28 +3534,8 @@ func (s *CheckResourceResponseBody) SetCountry(v string) *CheckResourceResponseB
 	return s
 }
 
-func (s *CheckResourceResponseBody) SetTaskIdentifier(v string) *CheckResourceResponseBody {
-	s.TaskIdentifier = &v
-	return s
-}
-
-func (s *CheckResourceResponseBody) SetTaskExtraData(v string) *CheckResourceResponseBody {
-	s.TaskExtraData = &v
-	return s
-}
-
-func (s *CheckResourceResponseBody) SetGmtWakeup(v string) *CheckResourceResponseBody {
-	s.GmtWakeup = &v
-	return s
-}
-
-func (s *CheckResourceResponseBody) SetSuccess(v bool) *CheckResourceResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *CheckResourceResponseBody) SetMessage(v string) *CheckResourceResponseBody {
-	s.Message = &v
+func (s *CheckResourceResponseBody) SetPrompt(v string) *CheckResourceResponseBody {
+	s.Prompt = &v
 	return s
 }
 
@@ -3544,13 +3544,13 @@ func (s *CheckResourceResponseBody) SetLevel(v int64) *CheckResourceResponseBody
 	return s
 }
 
-func (s *CheckResourceResponseBody) SetUrl(v string) *CheckResourceResponseBody {
-	s.Url = &v
+func (s *CheckResourceResponseBody) SetPk(v string) *CheckResourceResponseBody {
+	s.Pk = &v
 	return s
 }
 
-func (s *CheckResourceResponseBody) SetPrompt(v string) *CheckResourceResponseBody {
-	s.Prompt = &v
+func (s *CheckResourceResponseBody) SetBid(v string) *CheckResourceResponseBody {
+	s.Bid = &v
 	return s
 }
 
@@ -4097,9 +4097,9 @@ func (s *DecryptKeyRequest) SetRand(v string) *DecryptKeyRequest {
 }
 
 type DecryptKeyResponseBody struct {
+	Rand      *string `json:"Rand,omitempty" xml:"Rand,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Plaintext *string `json:"Plaintext,omitempty" xml:"Plaintext,omitempty"`
-	Rand      *string `json:"Rand,omitempty" xml:"Rand,omitempty"`
 }
 
 func (s DecryptKeyResponseBody) String() string {
@@ -4110,6 +4110,11 @@ func (s DecryptKeyResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DecryptKeyResponseBody) SetRand(v string) *DecryptKeyResponseBody {
+	s.Rand = &v
+	return s
+}
+
 func (s *DecryptKeyResponseBody) SetRequestId(v string) *DecryptKeyResponseBody {
 	s.RequestId = &v
 	return s
@@ -4117,11 +4122,6 @@ func (s *DecryptKeyResponseBody) SetRequestId(v string) *DecryptKeyResponseBody 
 
 func (s *DecryptKeyResponseBody) SetPlaintext(v string) *DecryptKeyResponseBody {
 	s.Plaintext = &v
-	return s
-}
-
-func (s *DecryptKeyResponseBody) SetRand(v string) *DecryptKeyResponseBody {
-	s.Rand = &v
 	return s
 }
 
@@ -5238,12 +5238,12 @@ func (s *DescribeMtsUserResourcePackageResponseBodyResourcePackageInfos) SetReso
 }
 
 type DescribeMtsUserResourcePackageResponseBodyResourcePackageInfosResourcePackageInfo struct {
+	DisplayName   *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	CurrCapacity  *string `json:"CurrCapacity,omitempty" xml:"CurrCapacity,omitempty"`
 	InitCapacity  *string `json:"InitCapacity,omitempty" xml:"InitCapacity,omitempty"`
-	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	DisplayName   *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeMtsUserResourcePackageResponseBodyResourcePackageInfosResourcePackageInfo) String() string {
@@ -5252,6 +5252,21 @@ func (s DescribeMtsUserResourcePackageResponseBodyResourcePackageInfosResourcePa
 
 func (s DescribeMtsUserResourcePackageResponseBodyResourcePackageInfosResourcePackageInfo) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeMtsUserResourcePackageResponseBodyResourcePackageInfosResourcePackageInfo) SetDisplayName(v string) *DescribeMtsUserResourcePackageResponseBodyResourcePackageInfosResourcePackageInfo {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *DescribeMtsUserResourcePackageResponseBodyResourcePackageInfosResourcePackageInfo) SetStatus(v string) *DescribeMtsUserResourcePackageResponseBodyResourcePackageInfosResourcePackageInfo {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeMtsUserResourcePackageResponseBodyResourcePackageInfosResourcePackageInfo) SetCommodityCode(v string) *DescribeMtsUserResourcePackageResponseBodyResourcePackageInfosResourcePackageInfo {
+	s.CommodityCode = &v
+	return s
 }
 
 func (s *DescribeMtsUserResourcePackageResponseBodyResourcePackageInfosResourcePackageInfo) SetCurrCapacity(v string) *DescribeMtsUserResourcePackageResponseBodyResourcePackageInfosResourcePackageInfo {
@@ -5264,23 +5279,8 @@ func (s *DescribeMtsUserResourcePackageResponseBodyResourcePackageInfosResourceP
 	return s
 }
 
-func (s *DescribeMtsUserResourcePackageResponseBodyResourcePackageInfosResourcePackageInfo) SetCommodityCode(v string) *DescribeMtsUserResourcePackageResponseBodyResourcePackageInfosResourcePackageInfo {
-	s.CommodityCode = &v
-	return s
-}
-
-func (s *DescribeMtsUserResourcePackageResponseBodyResourcePackageInfosResourcePackageInfo) SetDisplayName(v string) *DescribeMtsUserResourcePackageResponseBodyResourcePackageInfosResourcePackageInfo {
-	s.DisplayName = &v
-	return s
-}
-
 func (s *DescribeMtsUserResourcePackageResponseBodyResourcePackageInfosResourcePackageInfo) SetInstanceId(v string) *DescribeMtsUserResourcePackageResponseBodyResourcePackageInfosResourcePackageInfo {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *DescribeMtsUserResourcePackageResponseBodyResourcePackageInfosResourcePackageInfo) SetStatus(v string) *DescribeMtsUserResourcePackageResponseBodyResourcePackageInfosResourcePackageInfo {
-	s.Status = &v
 	return s
 }
 
@@ -5831,10 +5831,10 @@ func (s *ListAsrPipelineRequest) SetOwnerAccount(v string) *ListAsrPipelineReque
 }
 
 type ListAsrPipelineResponseBody struct {
-	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TotalCount   *int64                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	PageNumber   *int64                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize     *int64                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageNumber   *int64                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PipelineList *ListAsrPipelineResponseBodyPipelineList `json:"PipelineList,omitempty" xml:"PipelineList,omitempty" type:"Struct"`
 }
 
@@ -5846,23 +5846,23 @@ func (s ListAsrPipelineResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListAsrPipelineResponseBody) SetRequestId(v string) *ListAsrPipelineResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *ListAsrPipelineResponseBody) SetTotalCount(v int64) *ListAsrPipelineResponseBody {
 	s.TotalCount = &v
 	return s
 }
 
-func (s *ListAsrPipelineResponseBody) SetPageNumber(v int64) *ListAsrPipelineResponseBody {
-	s.PageNumber = &v
+func (s *ListAsrPipelineResponseBody) SetPageSize(v int64) *ListAsrPipelineResponseBody {
+	s.PageSize = &v
 	return s
 }
 
-func (s *ListAsrPipelineResponseBody) SetPageSize(v int64) *ListAsrPipelineResponseBody {
-	s.PageSize = &v
+func (s *ListAsrPipelineResponseBody) SetRequestId(v string) *ListAsrPipelineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAsrPipelineResponseBody) SetPageNumber(v int64) *ListAsrPipelineResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -5889,11 +5889,11 @@ func (s *ListAsrPipelineResponseBodyPipelineList) SetPipeline(v []*ListAsrPipeli
 }
 
 type ListAsrPipelineResponseBodyPipelineListPipeline struct {
-	Id           *string                                                      `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name         *string                                                      `json:"Name,omitempty" xml:"Name,omitempty"`
 	State        *string                                                      `json:"State,omitempty" xml:"State,omitempty"`
-	Priority     *string                                                      `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	NotifyConfig *ListAsrPipelineResponseBodyPipelineListPipelineNotifyConfig `json:"NotifyConfig,omitempty" xml:"NotifyConfig,omitempty" type:"Struct"`
+	Priority     *string                                                      `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Name         *string                                                      `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id           *string                                                      `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
 func (s ListAsrPipelineResponseBodyPipelineListPipeline) String() string {
@@ -5904,23 +5904,8 @@ func (s ListAsrPipelineResponseBodyPipelineListPipeline) GoString() string {
 	return s.String()
 }
 
-func (s *ListAsrPipelineResponseBodyPipelineListPipeline) SetId(v string) *ListAsrPipelineResponseBodyPipelineListPipeline {
-	s.Id = &v
-	return s
-}
-
-func (s *ListAsrPipelineResponseBodyPipelineListPipeline) SetName(v string) *ListAsrPipelineResponseBodyPipelineListPipeline {
-	s.Name = &v
-	return s
-}
-
 func (s *ListAsrPipelineResponseBodyPipelineListPipeline) SetState(v string) *ListAsrPipelineResponseBodyPipelineListPipeline {
 	s.State = &v
-	return s
-}
-
-func (s *ListAsrPipelineResponseBodyPipelineListPipeline) SetPriority(v string) *ListAsrPipelineResponseBodyPipelineListPipeline {
-	s.Priority = &v
 	return s
 }
 
@@ -5929,9 +5914,24 @@ func (s *ListAsrPipelineResponseBodyPipelineListPipeline) SetNotifyConfig(v *Lis
 	return s
 }
 
+func (s *ListAsrPipelineResponseBodyPipelineListPipeline) SetPriority(v string) *ListAsrPipelineResponseBodyPipelineListPipeline {
+	s.Priority = &v
+	return s
+}
+
+func (s *ListAsrPipelineResponseBodyPipelineListPipeline) SetName(v string) *ListAsrPipelineResponseBodyPipelineListPipeline {
+	s.Name = &v
+	return s
+}
+
+func (s *ListAsrPipelineResponseBodyPipelineListPipeline) SetId(v string) *ListAsrPipelineResponseBodyPipelineListPipeline {
+	s.Id = &v
+	return s
+}
+
 type ListAsrPipelineResponseBodyPipelineListPipelineNotifyConfig struct {
-	Topic     *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	Topic     *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s ListAsrPipelineResponseBodyPipelineListPipelineNotifyConfig) String() string {
@@ -5942,13 +5942,13 @@ func (s ListAsrPipelineResponseBodyPipelineListPipelineNotifyConfig) GoString() 
 	return s.String()
 }
 
-func (s *ListAsrPipelineResponseBodyPipelineListPipelineNotifyConfig) SetTopic(v string) *ListAsrPipelineResponseBodyPipelineListPipelineNotifyConfig {
-	s.Topic = &v
+func (s *ListAsrPipelineResponseBodyPipelineListPipelineNotifyConfig) SetQueueName(v string) *ListAsrPipelineResponseBodyPipelineListPipelineNotifyConfig {
+	s.QueueName = &v
 	return s
 }
 
-func (s *ListAsrPipelineResponseBodyPipelineListPipelineNotifyConfig) SetQueueName(v string) *ListAsrPipelineResponseBodyPipelineListPipelineNotifyConfig {
-	s.QueueName = &v
+func (s *ListAsrPipelineResponseBodyPipelineListPipelineNotifyConfig) SetTopic(v string) *ListAsrPipelineResponseBodyPipelineListPipelineNotifyConfig {
+	s.Topic = &v
 	return s
 }
 
@@ -6029,10 +6029,10 @@ func (s *ListCensorPipelineRequest) SetOwnerAccount(v string) *ListCensorPipelin
 }
 
 type ListCensorPipelineResponseBody struct {
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TotalCount   *int64                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	PageNumber   *int64                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize     *int64                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageNumber   *int64                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PipelineList *ListCensorPipelineResponseBodyPipelineList `json:"PipelineList,omitempty" xml:"PipelineList,omitempty" type:"Struct"`
 }
 
@@ -6044,23 +6044,23 @@ func (s ListCensorPipelineResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListCensorPipelineResponseBody) SetRequestId(v string) *ListCensorPipelineResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *ListCensorPipelineResponseBody) SetTotalCount(v int64) *ListCensorPipelineResponseBody {
 	s.TotalCount = &v
 	return s
 }
 
-func (s *ListCensorPipelineResponseBody) SetPageNumber(v int64) *ListCensorPipelineResponseBody {
-	s.PageNumber = &v
+func (s *ListCensorPipelineResponseBody) SetPageSize(v int64) *ListCensorPipelineResponseBody {
+	s.PageSize = &v
 	return s
 }
 
-func (s *ListCensorPipelineResponseBody) SetPageSize(v int64) *ListCensorPipelineResponseBody {
-	s.PageSize = &v
+func (s *ListCensorPipelineResponseBody) SetRequestId(v string) *ListCensorPipelineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCensorPipelineResponseBody) SetPageNumber(v int64) *ListCensorPipelineResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -6087,11 +6087,11 @@ func (s *ListCensorPipelineResponseBodyPipelineList) SetPipeline(v []*ListCensor
 }
 
 type ListCensorPipelineResponseBodyPipelineListPipeline struct {
-	Id           *string                                                         `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name         *string                                                         `json:"Name,omitempty" xml:"Name,omitempty"`
 	State        *string                                                         `json:"State,omitempty" xml:"State,omitempty"`
-	Priority     *string                                                         `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	NotifyConfig *ListCensorPipelineResponseBodyPipelineListPipelineNotifyConfig `json:"NotifyConfig,omitempty" xml:"NotifyConfig,omitempty" type:"Struct"`
+	Priority     *string                                                         `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Name         *string                                                         `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id           *string                                                         `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
 func (s ListCensorPipelineResponseBodyPipelineListPipeline) String() string {
@@ -6102,18 +6102,13 @@ func (s ListCensorPipelineResponseBodyPipelineListPipeline) GoString() string {
 	return s.String()
 }
 
-func (s *ListCensorPipelineResponseBodyPipelineListPipeline) SetId(v string) *ListCensorPipelineResponseBodyPipelineListPipeline {
-	s.Id = &v
-	return s
-}
-
-func (s *ListCensorPipelineResponseBodyPipelineListPipeline) SetName(v string) *ListCensorPipelineResponseBodyPipelineListPipeline {
-	s.Name = &v
-	return s
-}
-
 func (s *ListCensorPipelineResponseBodyPipelineListPipeline) SetState(v string) *ListCensorPipelineResponseBodyPipelineListPipeline {
 	s.State = &v
+	return s
+}
+
+func (s *ListCensorPipelineResponseBodyPipelineListPipeline) SetNotifyConfig(v *ListCensorPipelineResponseBodyPipelineListPipelineNotifyConfig) *ListCensorPipelineResponseBodyPipelineListPipeline {
+	s.NotifyConfig = v
 	return s
 }
 
@@ -6122,8 +6117,13 @@ func (s *ListCensorPipelineResponseBodyPipelineListPipeline) SetPriority(v strin
 	return s
 }
 
-func (s *ListCensorPipelineResponseBodyPipelineListPipeline) SetNotifyConfig(v *ListCensorPipelineResponseBodyPipelineListPipelineNotifyConfig) *ListCensorPipelineResponseBodyPipelineListPipeline {
-	s.NotifyConfig = v
+func (s *ListCensorPipelineResponseBodyPipelineListPipeline) SetName(v string) *ListCensorPipelineResponseBodyPipelineListPipeline {
+	s.Name = &v
+	return s
+}
+
+func (s *ListCensorPipelineResponseBodyPipelineListPipeline) SetId(v string) *ListCensorPipelineResponseBodyPipelineListPipeline {
+	s.Id = &v
 	return s
 }
 
@@ -6227,10 +6227,10 @@ func (s *ListCoverPipelineRequest) SetOwnerAccount(v string) *ListCoverPipelineR
 }
 
 type ListCoverPipelineResponseBody struct {
-	RequestId    *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TotalCount   *int64                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	PageNumber   *int64                                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize     *int64                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId    *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageNumber   *int64                                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PipelineList *ListCoverPipelineResponseBodyPipelineList `json:"PipelineList,omitempty" xml:"PipelineList,omitempty" type:"Struct"`
 }
 
@@ -6242,23 +6242,23 @@ func (s ListCoverPipelineResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListCoverPipelineResponseBody) SetRequestId(v string) *ListCoverPipelineResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *ListCoverPipelineResponseBody) SetTotalCount(v int64) *ListCoverPipelineResponseBody {
 	s.TotalCount = &v
 	return s
 }
 
-func (s *ListCoverPipelineResponseBody) SetPageNumber(v int64) *ListCoverPipelineResponseBody {
-	s.PageNumber = &v
+func (s *ListCoverPipelineResponseBody) SetPageSize(v int64) *ListCoverPipelineResponseBody {
+	s.PageSize = &v
 	return s
 }
 
-func (s *ListCoverPipelineResponseBody) SetPageSize(v int64) *ListCoverPipelineResponseBody {
-	s.PageSize = &v
+func (s *ListCoverPipelineResponseBody) SetRequestId(v string) *ListCoverPipelineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCoverPipelineResponseBody) SetPageNumber(v int64) *ListCoverPipelineResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -6285,16 +6285,16 @@ func (s *ListCoverPipelineResponseBodyPipelineList) SetPipeline(v []*ListCoverPi
 }
 
 type ListCoverPipelineResponseBodyPipelineListPipeline struct {
-	UserId       *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	PipelineId   *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	State        *string `json:"State,omitempty" xml:"State,omitempty"`
-	Priority     *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	QuotaNum     *int32  `json:"quotaNum,omitempty" xml:"quotaNum,omitempty"`
-	QuotaUsed    *int32  `json:"quotaUsed,omitempty" xml:"quotaUsed,omitempty"`
+	UserId       *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	NotifyConfig *string `json:"NotifyConfig,omitempty" xml:"NotifyConfig,omitempty"`
-	Role         *string `json:"Role,omitempty" xml:"Role,omitempty"`
 	ExtendConfig *string `json:"ExtendConfig,omitempty" xml:"ExtendConfig,omitempty"`
+	Priority     *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Role         *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PipelineId   *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	QuotaUsed    *int32  `json:"quotaUsed,omitempty" xml:"quotaUsed,omitempty"`
 }
 
 func (s ListCoverPipelineResponseBodyPipelineListPipeline) String() string {
@@ -6305,28 +6305,8 @@ func (s ListCoverPipelineResponseBodyPipelineListPipeline) GoString() string {
 	return s.String()
 }
 
-func (s *ListCoverPipelineResponseBodyPipelineListPipeline) SetUserId(v int64) *ListCoverPipelineResponseBodyPipelineListPipeline {
-	s.UserId = &v
-	return s
-}
-
-func (s *ListCoverPipelineResponseBodyPipelineListPipeline) SetPipelineId(v string) *ListCoverPipelineResponseBodyPipelineListPipeline {
-	s.PipelineId = &v
-	return s
-}
-
-func (s *ListCoverPipelineResponseBodyPipelineListPipeline) SetName(v string) *ListCoverPipelineResponseBodyPipelineListPipeline {
-	s.Name = &v
-	return s
-}
-
 func (s *ListCoverPipelineResponseBodyPipelineListPipeline) SetState(v string) *ListCoverPipelineResponseBodyPipelineListPipeline {
 	s.State = &v
-	return s
-}
-
-func (s *ListCoverPipelineResponseBodyPipelineListPipeline) SetPriority(v string) *ListCoverPipelineResponseBodyPipelineListPipeline {
-	s.Priority = &v
 	return s
 }
 
@@ -6335,8 +6315,8 @@ func (s *ListCoverPipelineResponseBodyPipelineListPipeline) SetQuotaNum(v int32)
 	return s
 }
 
-func (s *ListCoverPipelineResponseBodyPipelineListPipeline) SetQuotaUsed(v int32) *ListCoverPipelineResponseBodyPipelineListPipeline {
-	s.QuotaUsed = &v
+func (s *ListCoverPipelineResponseBodyPipelineListPipeline) SetUserId(v int64) *ListCoverPipelineResponseBodyPipelineListPipeline {
+	s.UserId = &v
 	return s
 }
 
@@ -6345,13 +6325,33 @@ func (s *ListCoverPipelineResponseBodyPipelineListPipeline) SetNotifyConfig(v st
 	return s
 }
 
+func (s *ListCoverPipelineResponseBodyPipelineListPipeline) SetExtendConfig(v string) *ListCoverPipelineResponseBodyPipelineListPipeline {
+	s.ExtendConfig = &v
+	return s
+}
+
+func (s *ListCoverPipelineResponseBodyPipelineListPipeline) SetPriority(v string) *ListCoverPipelineResponseBodyPipelineListPipeline {
+	s.Priority = &v
+	return s
+}
+
 func (s *ListCoverPipelineResponseBodyPipelineListPipeline) SetRole(v string) *ListCoverPipelineResponseBodyPipelineListPipeline {
 	s.Role = &v
 	return s
 }
 
-func (s *ListCoverPipelineResponseBodyPipelineListPipeline) SetExtendConfig(v string) *ListCoverPipelineResponseBodyPipelineListPipeline {
-	s.ExtendConfig = &v
+func (s *ListCoverPipelineResponseBodyPipelineListPipeline) SetName(v string) *ListCoverPipelineResponseBodyPipelineListPipeline {
+	s.Name = &v
+	return s
+}
+
+func (s *ListCoverPipelineResponseBodyPipelineListPipeline) SetPipelineId(v string) *ListCoverPipelineResponseBodyPipelineListPipeline {
+	s.PipelineId = &v
+	return s
+}
+
+func (s *ListCoverPipelineResponseBodyPipelineListPipeline) SetQuotaUsed(v int32) *ListCoverPipelineResponseBodyPipelineListPipeline {
+	s.QuotaUsed = &v
 	return s
 }
 
@@ -6783,6 +6783,186 @@ func (s *ListFpShotDBResponse) SetBody(v *ListFpShotDBResponseBody) *ListFpShotD
 	return s
 }
 
+type ListFpShotFilesRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	NextPageToken        *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	FpDBId               *string `json:"FpDBId,omitempty" xml:"FpDBId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+}
+
+func (s ListFpShotFilesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFpShotFilesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListFpShotFilesRequest) SetOwnerId(v int64) *ListFpShotFilesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListFpShotFilesRequest) SetResourceOwnerAccount(v string) *ListFpShotFilesRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListFpShotFilesRequest) SetResourceOwnerId(v int64) *ListFpShotFilesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListFpShotFilesRequest) SetNextPageToken(v string) *ListFpShotFilesRequest {
+	s.NextPageToken = &v
+	return s
+}
+
+func (s *ListFpShotFilesRequest) SetPageSize(v int64) *ListFpShotFilesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListFpShotFilesRequest) SetFpDBId(v string) *ListFpShotFilesRequest {
+	s.FpDBId = &v
+	return s
+}
+
+func (s *ListFpShotFilesRequest) SetOwnerAccount(v string) *ListFpShotFilesRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+type ListFpShotFilesResponseBody struct {
+	RequestId      *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	NextPageToken  *string                                    `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	FpShotFileList *ListFpShotFilesResponseBodyFpShotFileList `json:"FpShotFileList,omitempty" xml:"FpShotFileList,omitempty" type:"Struct"`
+}
+
+func (s ListFpShotFilesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFpShotFilesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListFpShotFilesResponseBody) SetRequestId(v string) *ListFpShotFilesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListFpShotFilesResponseBody) SetNextPageToken(v string) *ListFpShotFilesResponseBody {
+	s.NextPageToken = &v
+	return s
+}
+
+func (s *ListFpShotFilesResponseBody) SetFpShotFileList(v *ListFpShotFilesResponseBodyFpShotFileList) *ListFpShotFilesResponseBody {
+	s.FpShotFileList = v
+	return s
+}
+
+type ListFpShotFilesResponseBodyFpShotFileList struct {
+	FpShotFile []*ListFpShotFilesResponseBodyFpShotFileListFpShotFile `json:"FpShotFile,omitempty" xml:"FpShotFile,omitempty" type:"Repeated"`
+}
+
+func (s ListFpShotFilesResponseBodyFpShotFileList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFpShotFilesResponseBodyFpShotFileList) GoString() string {
+	return s.String()
+}
+
+func (s *ListFpShotFilesResponseBodyFpShotFileList) SetFpShotFile(v []*ListFpShotFilesResponseBodyFpShotFileListFpShotFile) *ListFpShotFilesResponseBodyFpShotFileList {
+	s.FpShotFile = v
+	return s
+}
+
+type ListFpShotFilesResponseBodyFpShotFileListFpShotFile struct {
+	PrimaryKey *string                                                       `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
+	InputFile  *ListFpShotFilesResponseBodyFpShotFileListFpShotFileInputFile `json:"InputFile,omitempty" xml:"InputFile,omitempty" type:"Struct"`
+	FileId     *string                                                       `json:"FileId,omitempty" xml:"FileId,omitempty"`
+}
+
+func (s ListFpShotFilesResponseBodyFpShotFileListFpShotFile) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFpShotFilesResponseBodyFpShotFileListFpShotFile) GoString() string {
+	return s.String()
+}
+
+func (s *ListFpShotFilesResponseBodyFpShotFileListFpShotFile) SetPrimaryKey(v string) *ListFpShotFilesResponseBodyFpShotFileListFpShotFile {
+	s.PrimaryKey = &v
+	return s
+}
+
+func (s *ListFpShotFilesResponseBodyFpShotFileListFpShotFile) SetInputFile(v *ListFpShotFilesResponseBodyFpShotFileListFpShotFileInputFile) *ListFpShotFilesResponseBodyFpShotFileListFpShotFile {
+	s.InputFile = v
+	return s
+}
+
+func (s *ListFpShotFilesResponseBodyFpShotFileListFpShotFile) SetFileId(v string) *ListFpShotFilesResponseBodyFpShotFileListFpShotFile {
+	s.FileId = &v
+	return s
+}
+
+type ListFpShotFilesResponseBodyFpShotFileListFpShotFileInputFile struct {
+	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+}
+
+func (s ListFpShotFilesResponseBodyFpShotFileListFpShotFileInputFile) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFpShotFilesResponseBodyFpShotFileListFpShotFileInputFile) GoString() string {
+	return s.String()
+}
+
+func (s *ListFpShotFilesResponseBodyFpShotFileListFpShotFileInputFile) SetObject(v string) *ListFpShotFilesResponseBodyFpShotFileListFpShotFileInputFile {
+	s.Object = &v
+	return s
+}
+
+func (s *ListFpShotFilesResponseBodyFpShotFileListFpShotFileInputFile) SetLocation(v string) *ListFpShotFilesResponseBodyFpShotFileListFpShotFileInputFile {
+	s.Location = &v
+	return s
+}
+
+func (s *ListFpShotFilesResponseBodyFpShotFileListFpShotFileInputFile) SetBucket(v string) *ListFpShotFilesResponseBodyFpShotFileListFpShotFileInputFile {
+	s.Bucket = &v
+	return s
+}
+
+type ListFpShotFilesResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListFpShotFilesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListFpShotFilesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFpShotFilesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListFpShotFilesResponse) SetHeaders(v map[string]*string) *ListFpShotFilesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListFpShotFilesResponse) SetBody(v *ListFpShotFilesResponseBody) *ListFpShotFilesResponse {
+	s.Body = v
+	return s
+}
+
 type ListFpShotNotaryRequest struct {
 	OwnerId                 *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount    *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -6850,8 +7030,8 @@ func (s *ListFpShotNotaryRequest) SetOwnerAccount(v string) *ListFpShotNotaryReq
 
 type ListFpShotNotaryResponseBody struct {
 	RequestId        *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	NextPageToken    *string                                       `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
 	FpShotNotaryList *ListFpShotNotaryResponseBodyFpShotNotaryList `json:"FpShotNotaryList,omitempty" xml:"FpShotNotaryList,omitempty" type:"Struct"`
+	NextPageToken    *string                                       `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
 }
 
 func (s ListFpShotNotaryResponseBody) String() string {
@@ -6867,13 +7047,13 @@ func (s *ListFpShotNotaryResponseBody) SetRequestId(v string) *ListFpShotNotaryR
 	return s
 }
 
-func (s *ListFpShotNotaryResponseBody) SetNextPageToken(v string) *ListFpShotNotaryResponseBody {
-	s.NextPageToken = &v
+func (s *ListFpShotNotaryResponseBody) SetFpShotNotaryList(v *ListFpShotNotaryResponseBodyFpShotNotaryList) *ListFpShotNotaryResponseBody {
+	s.FpShotNotaryList = v
 	return s
 }
 
-func (s *ListFpShotNotaryResponseBody) SetFpShotNotaryList(v *ListFpShotNotaryResponseBodyFpShotNotaryList) *ListFpShotNotaryResponseBody {
-	s.FpShotNotaryList = v
+func (s *ListFpShotNotaryResponseBody) SetNextPageToken(v string) *ListFpShotNotaryResponseBody {
+	s.NextPageToken = &v
 	return s
 }
 
@@ -6895,13 +7075,13 @@ func (s *ListFpShotNotaryResponseBodyFpShotNotaryList) SetFpShotNotary(v []*List
 }
 
 type ListFpShotNotaryResponseBodyFpShotNotaryListFpShotNotary struct {
-	TransactionId *string `json:"TransactionId,omitempty" xml:"TransactionId,omitempty"`
-	TxHash        *string `json:"TxHash,omitempty" xml:"TxHash,omitempty"`
-	FpDBId        *string `json:"FpDBId,omitempty" xml:"FpDBId,omitempty"`
-	JobId         *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Detail        *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
 	CreationTime  *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	FinishTime    *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	JobId         *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	TxHash        *string `json:"TxHash,omitempty" xml:"TxHash,omitempty"`
+	TransactionId *string `json:"TransactionId,omitempty" xml:"TransactionId,omitempty"`
+	FpDBId        *string `json:"FpDBId,omitempty" xml:"FpDBId,omitempty"`
+	Detail        *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
 }
 
 func (s ListFpShotNotaryResponseBodyFpShotNotaryListFpShotNotary) String() string {
@@ -6912,18 +7092,13 @@ func (s ListFpShotNotaryResponseBodyFpShotNotaryListFpShotNotary) GoString() str
 	return s.String()
 }
 
-func (s *ListFpShotNotaryResponseBodyFpShotNotaryListFpShotNotary) SetTransactionId(v string) *ListFpShotNotaryResponseBodyFpShotNotaryListFpShotNotary {
-	s.TransactionId = &v
+func (s *ListFpShotNotaryResponseBodyFpShotNotaryListFpShotNotary) SetCreationTime(v string) *ListFpShotNotaryResponseBodyFpShotNotaryListFpShotNotary {
+	s.CreationTime = &v
 	return s
 }
 
-func (s *ListFpShotNotaryResponseBodyFpShotNotaryListFpShotNotary) SetTxHash(v string) *ListFpShotNotaryResponseBodyFpShotNotaryListFpShotNotary {
-	s.TxHash = &v
-	return s
-}
-
-func (s *ListFpShotNotaryResponseBodyFpShotNotaryListFpShotNotary) SetFpDBId(v string) *ListFpShotNotaryResponseBodyFpShotNotaryListFpShotNotary {
-	s.FpDBId = &v
+func (s *ListFpShotNotaryResponseBodyFpShotNotaryListFpShotNotary) SetFinishTime(v string) *ListFpShotNotaryResponseBodyFpShotNotaryListFpShotNotary {
+	s.FinishTime = &v
 	return s
 }
 
@@ -6932,18 +7107,23 @@ func (s *ListFpShotNotaryResponseBodyFpShotNotaryListFpShotNotary) SetJobId(v st
 	return s
 }
 
+func (s *ListFpShotNotaryResponseBodyFpShotNotaryListFpShotNotary) SetTxHash(v string) *ListFpShotNotaryResponseBodyFpShotNotaryListFpShotNotary {
+	s.TxHash = &v
+	return s
+}
+
+func (s *ListFpShotNotaryResponseBodyFpShotNotaryListFpShotNotary) SetTransactionId(v string) *ListFpShotNotaryResponseBodyFpShotNotaryListFpShotNotary {
+	s.TransactionId = &v
+	return s
+}
+
+func (s *ListFpShotNotaryResponseBodyFpShotNotaryListFpShotNotary) SetFpDBId(v string) *ListFpShotNotaryResponseBodyFpShotNotaryListFpShotNotary {
+	s.FpDBId = &v
+	return s
+}
+
 func (s *ListFpShotNotaryResponseBodyFpShotNotaryListFpShotNotary) SetDetail(v string) *ListFpShotNotaryResponseBodyFpShotNotaryListFpShotNotary {
 	s.Detail = &v
-	return s
-}
-
-func (s *ListFpShotNotaryResponseBodyFpShotNotaryListFpShotNotary) SetCreationTime(v string) *ListFpShotNotaryResponseBodyFpShotNotaryListFpShotNotary {
-	s.CreationTime = &v
-	return s
-}
-
-func (s *ListFpShotNotaryResponseBodyFpShotNotaryListFpShotNotary) SetFinishTime(v string) *ListFpShotNotaryResponseBodyFpShotNotaryListFpShotNotary {
-	s.FinishTime = &v
 	return s
 }
 
@@ -9719,10 +9899,10 @@ func (s *ListPornPipelineRequest) SetOwnerAccount(v string) *ListPornPipelineReq
 }
 
 type ListPornPipelineResponseBody struct {
-	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TotalCount   *int64                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	PageNumber   *int64                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize     *int64                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageNumber   *int64                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PipelineList *ListPornPipelineResponseBodyPipelineList `json:"PipelineList,omitempty" xml:"PipelineList,omitempty" type:"Struct"`
 }
 
@@ -9734,23 +9914,23 @@ func (s ListPornPipelineResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListPornPipelineResponseBody) SetRequestId(v string) *ListPornPipelineResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *ListPornPipelineResponseBody) SetTotalCount(v int64) *ListPornPipelineResponseBody {
 	s.TotalCount = &v
 	return s
 }
 
-func (s *ListPornPipelineResponseBody) SetPageNumber(v int64) *ListPornPipelineResponseBody {
-	s.PageNumber = &v
+func (s *ListPornPipelineResponseBody) SetPageSize(v int64) *ListPornPipelineResponseBody {
+	s.PageSize = &v
 	return s
 }
 
-func (s *ListPornPipelineResponseBody) SetPageSize(v int64) *ListPornPipelineResponseBody {
-	s.PageSize = &v
+func (s *ListPornPipelineResponseBody) SetRequestId(v string) *ListPornPipelineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListPornPipelineResponseBody) SetPageNumber(v int64) *ListPornPipelineResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -9777,11 +9957,11 @@ func (s *ListPornPipelineResponseBodyPipelineList) SetPipeline(v []*ListPornPipe
 }
 
 type ListPornPipelineResponseBodyPipelineListPipeline struct {
-	Id           *string                                                       `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name         *string                                                       `json:"Name,omitempty" xml:"Name,omitempty"`
 	State        *string                                                       `json:"State,omitempty" xml:"State,omitempty"`
-	Priority     *string                                                       `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	NotifyConfig *ListPornPipelineResponseBodyPipelineListPipelineNotifyConfig `json:"NotifyConfig,omitempty" xml:"NotifyConfig,omitempty" type:"Struct"`
+	Priority     *string                                                       `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Name         *string                                                       `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id           *string                                                       `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
 func (s ListPornPipelineResponseBodyPipelineListPipeline) String() string {
@@ -9792,18 +9972,13 @@ func (s ListPornPipelineResponseBodyPipelineListPipeline) GoString() string {
 	return s.String()
 }
 
-func (s *ListPornPipelineResponseBodyPipelineListPipeline) SetId(v string) *ListPornPipelineResponseBodyPipelineListPipeline {
-	s.Id = &v
-	return s
-}
-
-func (s *ListPornPipelineResponseBodyPipelineListPipeline) SetName(v string) *ListPornPipelineResponseBodyPipelineListPipeline {
-	s.Name = &v
-	return s
-}
-
 func (s *ListPornPipelineResponseBodyPipelineListPipeline) SetState(v string) *ListPornPipelineResponseBodyPipelineListPipeline {
 	s.State = &v
+	return s
+}
+
+func (s *ListPornPipelineResponseBodyPipelineListPipeline) SetNotifyConfig(v *ListPornPipelineResponseBodyPipelineListPipelineNotifyConfig) *ListPornPipelineResponseBodyPipelineListPipeline {
+	s.NotifyConfig = v
 	return s
 }
 
@@ -9812,8 +9987,13 @@ func (s *ListPornPipelineResponseBodyPipelineListPipeline) SetPriority(v string)
 	return s
 }
 
-func (s *ListPornPipelineResponseBodyPipelineListPipeline) SetNotifyConfig(v *ListPornPipelineResponseBodyPipelineListPipelineNotifyConfig) *ListPornPipelineResponseBodyPipelineListPipeline {
-	s.NotifyConfig = v
+func (s *ListPornPipelineResponseBodyPipelineListPipeline) SetName(v string) *ListPornPipelineResponseBodyPipelineListPipeline {
+	s.Name = &v
+	return s
+}
+
+func (s *ListPornPipelineResponseBodyPipelineListPipeline) SetId(v string) *ListPornPipelineResponseBodyPipelineListPipeline {
+	s.Id = &v
 	return s
 }
 
@@ -9917,10 +10097,10 @@ func (s *ListTerrorismPipelineRequest) SetOwnerAccount(v string) *ListTerrorismP
 }
 
 type ListTerrorismPipelineResponseBody struct {
-	RequestId    *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TotalCount   *int64                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	PageNumber   *int64                                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize     *int64                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId    *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageNumber   *int64                                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PipelineList *ListTerrorismPipelineResponseBodyPipelineList `json:"PipelineList,omitempty" xml:"PipelineList,omitempty" type:"Struct"`
 }
 
@@ -9932,23 +10112,23 @@ func (s ListTerrorismPipelineResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListTerrorismPipelineResponseBody) SetRequestId(v string) *ListTerrorismPipelineResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *ListTerrorismPipelineResponseBody) SetTotalCount(v int64) *ListTerrorismPipelineResponseBody {
 	s.TotalCount = &v
 	return s
 }
 
-func (s *ListTerrorismPipelineResponseBody) SetPageNumber(v int64) *ListTerrorismPipelineResponseBody {
-	s.PageNumber = &v
+func (s *ListTerrorismPipelineResponseBody) SetPageSize(v int64) *ListTerrorismPipelineResponseBody {
+	s.PageSize = &v
 	return s
 }
 
-func (s *ListTerrorismPipelineResponseBody) SetPageSize(v int64) *ListTerrorismPipelineResponseBody {
-	s.PageSize = &v
+func (s *ListTerrorismPipelineResponseBody) SetRequestId(v string) *ListTerrorismPipelineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTerrorismPipelineResponseBody) SetPageNumber(v int64) *ListTerrorismPipelineResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -9975,11 +10155,11 @@ func (s *ListTerrorismPipelineResponseBodyPipelineList) SetPipeline(v []*ListTer
 }
 
 type ListTerrorismPipelineResponseBodyPipelineListPipeline struct {
-	Id           *string                                                            `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name         *string                                                            `json:"Name,omitempty" xml:"Name,omitempty"`
 	State        *string                                                            `json:"State,omitempty" xml:"State,omitempty"`
-	Priority     *string                                                            `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	NotifyConfig *ListTerrorismPipelineResponseBodyPipelineListPipelineNotifyConfig `json:"NotifyConfig,omitempty" xml:"NotifyConfig,omitempty" type:"Struct"`
+	Priority     *string                                                            `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Name         *string                                                            `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id           *string                                                            `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
 func (s ListTerrorismPipelineResponseBodyPipelineListPipeline) String() string {
@@ -9990,18 +10170,13 @@ func (s ListTerrorismPipelineResponseBodyPipelineListPipeline) GoString() string
 	return s.String()
 }
 
-func (s *ListTerrorismPipelineResponseBodyPipelineListPipeline) SetId(v string) *ListTerrorismPipelineResponseBodyPipelineListPipeline {
-	s.Id = &v
-	return s
-}
-
-func (s *ListTerrorismPipelineResponseBodyPipelineListPipeline) SetName(v string) *ListTerrorismPipelineResponseBodyPipelineListPipeline {
-	s.Name = &v
-	return s
-}
-
 func (s *ListTerrorismPipelineResponseBodyPipelineListPipeline) SetState(v string) *ListTerrorismPipelineResponseBodyPipelineListPipeline {
 	s.State = &v
+	return s
+}
+
+func (s *ListTerrorismPipelineResponseBodyPipelineListPipeline) SetNotifyConfig(v *ListTerrorismPipelineResponseBodyPipelineListPipelineNotifyConfig) *ListTerrorismPipelineResponseBodyPipelineListPipeline {
+	s.NotifyConfig = v
 	return s
 }
 
@@ -10010,8 +10185,13 @@ func (s *ListTerrorismPipelineResponseBodyPipelineListPipeline) SetPriority(v st
 	return s
 }
 
-func (s *ListTerrorismPipelineResponseBodyPipelineListPipeline) SetNotifyConfig(v *ListTerrorismPipelineResponseBodyPipelineListPipelineNotifyConfig) *ListTerrorismPipelineResponseBodyPipelineListPipeline {
-	s.NotifyConfig = v
+func (s *ListTerrorismPipelineResponseBodyPipelineListPipeline) SetName(v string) *ListTerrorismPipelineResponseBodyPipelineListPipeline {
+	s.Name = &v
+	return s
+}
+
+func (s *ListTerrorismPipelineResponseBodyPipelineListPipeline) SetId(v string) *ListTerrorismPipelineResponseBodyPipelineListPipeline {
+	s.Id = &v
 	return s
 }
 
@@ -10139,17 +10319,17 @@ func (s *LogicalDeleteResourceRequest) SetMessage(v string) *LogicalDeleteResour
 }
 
 type LogicalDeleteResourceResponseBody struct {
-	Interrupt      *bool   `json:"Interrupt,omitempty" xml:"Interrupt,omitempty"`
-	Invoker        *string `json:"Invoker,omitempty" xml:"Invoker,omitempty"`
-	Pk             *string `json:"Pk,omitempty" xml:"Pk,omitempty"`
-	Bid            *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
+	GmtWakeup      *string `json:"GmtWakeup,omitempty" xml:"GmtWakeup,omitempty"`
 	Hid            *int64  `json:"Hid,omitempty" xml:"Hid,omitempty"`
-	Country        *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	Invoker        *string `json:"Invoker,omitempty" xml:"Invoker,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	TaskIdentifier *string `json:"TaskIdentifier,omitempty" xml:"TaskIdentifier,omitempty"`
 	TaskExtraData  *string `json:"TaskExtraData,omitempty" xml:"TaskExtraData,omitempty"`
-	GmtWakeup      *string `json:"GmtWakeup,omitempty" xml:"GmtWakeup,omitempty"`
+	Country        *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	Pk             *string `json:"Pk,omitempty" xml:"Pk,omitempty"`
+	Bid            *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
 	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Interrupt      *bool   `json:"Interrupt,omitempty" xml:"Interrupt,omitempty"`
 }
 
 func (s LogicalDeleteResourceResponseBody) String() string {
@@ -10160,23 +10340,8 @@ func (s LogicalDeleteResourceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *LogicalDeleteResourceResponseBody) SetInterrupt(v bool) *LogicalDeleteResourceResponseBody {
-	s.Interrupt = &v
-	return s
-}
-
-func (s *LogicalDeleteResourceResponseBody) SetInvoker(v string) *LogicalDeleteResourceResponseBody {
-	s.Invoker = &v
-	return s
-}
-
-func (s *LogicalDeleteResourceResponseBody) SetPk(v string) *LogicalDeleteResourceResponseBody {
-	s.Pk = &v
-	return s
-}
-
-func (s *LogicalDeleteResourceResponseBody) SetBid(v string) *LogicalDeleteResourceResponseBody {
-	s.Bid = &v
+func (s *LogicalDeleteResourceResponseBody) SetGmtWakeup(v string) *LogicalDeleteResourceResponseBody {
+	s.GmtWakeup = &v
 	return s
 }
 
@@ -10185,8 +10350,13 @@ func (s *LogicalDeleteResourceResponseBody) SetHid(v int64) *LogicalDeleteResour
 	return s
 }
 
-func (s *LogicalDeleteResourceResponseBody) SetCountry(v string) *LogicalDeleteResourceResponseBody {
-	s.Country = &v
+func (s *LogicalDeleteResourceResponseBody) SetInvoker(v string) *LogicalDeleteResourceResponseBody {
+	s.Invoker = &v
+	return s
+}
+
+func (s *LogicalDeleteResourceResponseBody) SetMessage(v string) *LogicalDeleteResourceResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -10200,8 +10370,18 @@ func (s *LogicalDeleteResourceResponseBody) SetTaskExtraData(v string) *LogicalD
 	return s
 }
 
-func (s *LogicalDeleteResourceResponseBody) SetGmtWakeup(v string) *LogicalDeleteResourceResponseBody {
-	s.GmtWakeup = &v
+func (s *LogicalDeleteResourceResponseBody) SetCountry(v string) *LogicalDeleteResourceResponseBody {
+	s.Country = &v
+	return s
+}
+
+func (s *LogicalDeleteResourceResponseBody) SetPk(v string) *LogicalDeleteResourceResponseBody {
+	s.Pk = &v
+	return s
+}
+
+func (s *LogicalDeleteResourceResponseBody) SetBid(v string) *LogicalDeleteResourceResponseBody {
+	s.Bid = &v
 	return s
 }
 
@@ -10210,8 +10390,8 @@ func (s *LogicalDeleteResourceResponseBody) SetSuccess(v bool) *LogicalDeleteRes
 	return s
 }
 
-func (s *LogicalDeleteResourceResponseBody) SetMessage(v string) *LogicalDeleteResourceResponseBody {
-	s.Message = &v
+func (s *LogicalDeleteResourceResponseBody) SetInterrupt(v bool) *LogicalDeleteResourceResponseBody {
+	s.Interrupt = &v
 	return s
 }
 
@@ -10316,17 +10496,17 @@ func (s *PhysicalDeleteResourceRequest) SetMessage(v string) *PhysicalDeleteReso
 }
 
 type PhysicalDeleteResourceResponseBody struct {
-	Interrupt      *bool   `json:"Interrupt,omitempty" xml:"Interrupt,omitempty"`
-	Invoker        *string `json:"Invoker,omitempty" xml:"Invoker,omitempty"`
-	Pk             *string `json:"Pk,omitempty" xml:"Pk,omitempty"`
-	Bid            *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
+	GmtWakeup      *string `json:"GmtWakeup,omitempty" xml:"GmtWakeup,omitempty"`
 	Hid            *int64  `json:"Hid,omitempty" xml:"Hid,omitempty"`
-	Country        *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	Invoker        *string `json:"Invoker,omitempty" xml:"Invoker,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	TaskIdentifier *string `json:"TaskIdentifier,omitempty" xml:"TaskIdentifier,omitempty"`
 	TaskExtraData  *string `json:"TaskExtraData,omitempty" xml:"TaskExtraData,omitempty"`
-	GmtWakeup      *string `json:"GmtWakeup,omitempty" xml:"GmtWakeup,omitempty"`
+	Country        *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	Pk             *string `json:"Pk,omitempty" xml:"Pk,omitempty"`
+	Bid            *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
 	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Interrupt      *bool   `json:"Interrupt,omitempty" xml:"Interrupt,omitempty"`
 }
 
 func (s PhysicalDeleteResourceResponseBody) String() string {
@@ -10337,23 +10517,8 @@ func (s PhysicalDeleteResourceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *PhysicalDeleteResourceResponseBody) SetInterrupt(v bool) *PhysicalDeleteResourceResponseBody {
-	s.Interrupt = &v
-	return s
-}
-
-func (s *PhysicalDeleteResourceResponseBody) SetInvoker(v string) *PhysicalDeleteResourceResponseBody {
-	s.Invoker = &v
-	return s
-}
-
-func (s *PhysicalDeleteResourceResponseBody) SetPk(v string) *PhysicalDeleteResourceResponseBody {
-	s.Pk = &v
-	return s
-}
-
-func (s *PhysicalDeleteResourceResponseBody) SetBid(v string) *PhysicalDeleteResourceResponseBody {
-	s.Bid = &v
+func (s *PhysicalDeleteResourceResponseBody) SetGmtWakeup(v string) *PhysicalDeleteResourceResponseBody {
+	s.GmtWakeup = &v
 	return s
 }
 
@@ -10362,8 +10527,13 @@ func (s *PhysicalDeleteResourceResponseBody) SetHid(v int64) *PhysicalDeleteReso
 	return s
 }
 
-func (s *PhysicalDeleteResourceResponseBody) SetCountry(v string) *PhysicalDeleteResourceResponseBody {
-	s.Country = &v
+func (s *PhysicalDeleteResourceResponseBody) SetInvoker(v string) *PhysicalDeleteResourceResponseBody {
+	s.Invoker = &v
+	return s
+}
+
+func (s *PhysicalDeleteResourceResponseBody) SetMessage(v string) *PhysicalDeleteResourceResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -10377,8 +10547,18 @@ func (s *PhysicalDeleteResourceResponseBody) SetTaskExtraData(v string) *Physica
 	return s
 }
 
-func (s *PhysicalDeleteResourceResponseBody) SetGmtWakeup(v string) *PhysicalDeleteResourceResponseBody {
-	s.GmtWakeup = &v
+func (s *PhysicalDeleteResourceResponseBody) SetCountry(v string) *PhysicalDeleteResourceResponseBody {
+	s.Country = &v
+	return s
+}
+
+func (s *PhysicalDeleteResourceResponseBody) SetPk(v string) *PhysicalDeleteResourceResponseBody {
+	s.Pk = &v
+	return s
+}
+
+func (s *PhysicalDeleteResourceResponseBody) SetBid(v string) *PhysicalDeleteResourceResponseBody {
+	s.Bid = &v
 	return s
 }
 
@@ -10387,8 +10567,8 @@ func (s *PhysicalDeleteResourceResponseBody) SetSuccess(v bool) *PhysicalDeleteR
 	return s
 }
 
-func (s *PhysicalDeleteResourceResponseBody) SetMessage(v string) *PhysicalDeleteResourceResponseBody {
-	s.Message = &v
+func (s *PhysicalDeleteResourceResponseBody) SetInterrupt(v bool) *PhysicalDeleteResourceResponseBody {
+	s.Interrupt = &v
 	return s
 }
 
@@ -10497,10 +10677,10 @@ func (s *PlayerAuthResponseBodySwitchList) SetSwitch(v []*PlayerAuthResponseBody
 }
 
 type PlayerAuthResponseBodySwitchListSwitch struct {
-	State        *string `json:"State,omitempty" xml:"State,omitempty"`
 	FunctionId   *string `json:"FunctionId,omitempty" xml:"FunctionId,omitempty"`
-	SwitchId     *string `json:"SwitchId,omitempty" xml:"SwitchId,omitempty"`
 	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
+	State        *string `json:"State,omitempty" xml:"State,omitempty"`
+	SwitchId     *string `json:"SwitchId,omitempty" xml:"SwitchId,omitempty"`
 }
 
 func (s PlayerAuthResponseBodySwitchListSwitch) String() string {
@@ -10511,23 +10691,23 @@ func (s PlayerAuthResponseBodySwitchListSwitch) GoString() string {
 	return s.String()
 }
 
-func (s *PlayerAuthResponseBodySwitchListSwitch) SetState(v string) *PlayerAuthResponseBodySwitchListSwitch {
-	s.State = &v
-	return s
-}
-
 func (s *PlayerAuthResponseBodySwitchListSwitch) SetFunctionId(v string) *PlayerAuthResponseBodySwitchListSwitch {
 	s.FunctionId = &v
 	return s
 }
 
-func (s *PlayerAuthResponseBodySwitchListSwitch) SetSwitchId(v string) *PlayerAuthResponseBodySwitchListSwitch {
-	s.SwitchId = &v
+func (s *PlayerAuthResponseBodySwitchListSwitch) SetFunctionName(v string) *PlayerAuthResponseBodySwitchListSwitch {
+	s.FunctionName = &v
 	return s
 }
 
-func (s *PlayerAuthResponseBodySwitchListSwitch) SetFunctionName(v string) *PlayerAuthResponseBodySwitchListSwitch {
-	s.FunctionName = &v
+func (s *PlayerAuthResponseBodySwitchListSwitch) SetState(v string) *PlayerAuthResponseBodySwitchListSwitch {
+	s.State = &v
+	return s
+}
+
+func (s *PlayerAuthResponseBodySwitchListSwitch) SetSwitchId(v string) *PlayerAuthResponseBodySwitchListSwitch {
+	s.SwitchId = &v
 	return s
 }
 
@@ -12400,9 +12580,9 @@ func (s *QueryAuthConfigRequest) SetOwnerAccount(v string) *QueryAuthConfigReque
 }
 
 type QueryAuthConfigResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Key1      *string `json:"Key1,omitempty" xml:"Key1,omitempty"`
 	Key2      *string `json:"Key2,omitempty" xml:"Key2,omitempty"`
+	Key1      *string `json:"Key1,omitempty" xml:"Key1,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryAuthConfigResponseBody) String() string {
@@ -12413,8 +12593,8 @@ func (s QueryAuthConfigResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *QueryAuthConfigResponseBody) SetRequestId(v string) *QueryAuthConfigResponseBody {
-	s.RequestId = &v
+func (s *QueryAuthConfigResponseBody) SetKey2(v string) *QueryAuthConfigResponseBody {
+	s.Key2 = &v
 	return s
 }
 
@@ -12423,8 +12603,8 @@ func (s *QueryAuthConfigResponseBody) SetKey1(v string) *QueryAuthConfigResponse
 	return s
 }
 
-func (s *QueryAuthConfigResponseBody) SetKey2(v string) *QueryAuthConfigResponseBody {
-	s.Key2 = &v
+func (s *QueryAuthConfigResponseBody) SetRequestId(v string) *QueryAuthConfigResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -19560,6 +19740,402 @@ func (s *QueryFpCompareJobListResponse) SetBody(v *QueryFpCompareJobListResponse
 	return s
 }
 
+type QueryFpDBDeleteJobListRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	JobIds               *string `json:"JobIds,omitempty" xml:"JobIds,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+}
+
+func (s QueryFpDBDeleteJobListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryFpDBDeleteJobListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryFpDBDeleteJobListRequest) SetOwnerId(v int64) *QueryFpDBDeleteJobListRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *QueryFpDBDeleteJobListRequest) SetResourceOwnerAccount(v string) *QueryFpDBDeleteJobListRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *QueryFpDBDeleteJobListRequest) SetResourceOwnerId(v int64) *QueryFpDBDeleteJobListRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *QueryFpDBDeleteJobListRequest) SetJobIds(v string) *QueryFpDBDeleteJobListRequest {
+	s.JobIds = &v
+	return s
+}
+
+func (s *QueryFpDBDeleteJobListRequest) SetOwnerAccount(v string) *QueryFpDBDeleteJobListRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+type QueryFpDBDeleteJobListResponseBody struct {
+	RequestId         *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	FpDBDeleteJobList *QueryFpDBDeleteJobListResponseBodyFpDBDeleteJobList `json:"FpDBDeleteJobList,omitempty" xml:"FpDBDeleteJobList,omitempty" type:"Struct"`
+	NonExistIds       *QueryFpDBDeleteJobListResponseBodyNonExistIds       `json:"NonExistIds,omitempty" xml:"NonExistIds,omitempty" type:"Struct"`
+}
+
+func (s QueryFpDBDeleteJobListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryFpDBDeleteJobListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryFpDBDeleteJobListResponseBody) SetRequestId(v string) *QueryFpDBDeleteJobListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryFpDBDeleteJobListResponseBody) SetFpDBDeleteJobList(v *QueryFpDBDeleteJobListResponseBodyFpDBDeleteJobList) *QueryFpDBDeleteJobListResponseBody {
+	s.FpDBDeleteJobList = v
+	return s
+}
+
+func (s *QueryFpDBDeleteJobListResponseBody) SetNonExistIds(v *QueryFpDBDeleteJobListResponseBodyNonExistIds) *QueryFpDBDeleteJobListResponseBody {
+	s.NonExistIds = v
+	return s
+}
+
+type QueryFpDBDeleteJobListResponseBodyFpDBDeleteJobList struct {
+	FpDBDeleteJob []*QueryFpDBDeleteJobListResponseBodyFpDBDeleteJobListFpDBDeleteJob `json:"FpDBDeleteJob,omitempty" xml:"FpDBDeleteJob,omitempty" type:"Repeated"`
+}
+
+func (s QueryFpDBDeleteJobListResponseBodyFpDBDeleteJobList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryFpDBDeleteJobListResponseBodyFpDBDeleteJobList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryFpDBDeleteJobListResponseBodyFpDBDeleteJobList) SetFpDBDeleteJob(v []*QueryFpDBDeleteJobListResponseBodyFpDBDeleteJobListFpDBDeleteJob) *QueryFpDBDeleteJobListResponseBodyFpDBDeleteJobList {
+	s.FpDBDeleteJob = v
+	return s
+}
+
+type QueryFpDBDeleteJobListResponseBodyFpDBDeleteJobListFpDBDeleteJob struct {
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	FinishTime   *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	DelType      *string `json:"DelType,omitempty" xml:"DelType,omitempty"`
+	UserData     *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message      *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	PipelineId   *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	FpDBId       *string `json:"FpDBId,omitempty" xml:"FpDBId,omitempty"`
+	Id           *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s QueryFpDBDeleteJobListResponseBodyFpDBDeleteJobListFpDBDeleteJob) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryFpDBDeleteJobListResponseBodyFpDBDeleteJobListFpDBDeleteJob) GoString() string {
+	return s.String()
+}
+
+func (s *QueryFpDBDeleteJobListResponseBodyFpDBDeleteJobListFpDBDeleteJob) SetCreationTime(v string) *QueryFpDBDeleteJobListResponseBodyFpDBDeleteJobListFpDBDeleteJob {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *QueryFpDBDeleteJobListResponseBodyFpDBDeleteJobListFpDBDeleteJob) SetStatus(v string) *QueryFpDBDeleteJobListResponseBodyFpDBDeleteJobListFpDBDeleteJob {
+	s.Status = &v
+	return s
+}
+
+func (s *QueryFpDBDeleteJobListResponseBodyFpDBDeleteJobListFpDBDeleteJob) SetFinishTime(v string) *QueryFpDBDeleteJobListResponseBodyFpDBDeleteJobListFpDBDeleteJob {
+	s.FinishTime = &v
+	return s
+}
+
+func (s *QueryFpDBDeleteJobListResponseBodyFpDBDeleteJobListFpDBDeleteJob) SetDelType(v string) *QueryFpDBDeleteJobListResponseBodyFpDBDeleteJobListFpDBDeleteJob {
+	s.DelType = &v
+	return s
+}
+
+func (s *QueryFpDBDeleteJobListResponseBodyFpDBDeleteJobListFpDBDeleteJob) SetUserData(v string) *QueryFpDBDeleteJobListResponseBodyFpDBDeleteJobListFpDBDeleteJob {
+	s.UserData = &v
+	return s
+}
+
+func (s *QueryFpDBDeleteJobListResponseBodyFpDBDeleteJobListFpDBDeleteJob) SetCode(v string) *QueryFpDBDeleteJobListResponseBodyFpDBDeleteJobListFpDBDeleteJob {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryFpDBDeleteJobListResponseBodyFpDBDeleteJobListFpDBDeleteJob) SetMessage(v string) *QueryFpDBDeleteJobListResponseBodyFpDBDeleteJobListFpDBDeleteJob {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryFpDBDeleteJobListResponseBodyFpDBDeleteJobListFpDBDeleteJob) SetPipelineId(v string) *QueryFpDBDeleteJobListResponseBodyFpDBDeleteJobListFpDBDeleteJob {
+	s.PipelineId = &v
+	return s
+}
+
+func (s *QueryFpDBDeleteJobListResponseBodyFpDBDeleteJobListFpDBDeleteJob) SetFpDBId(v string) *QueryFpDBDeleteJobListResponseBodyFpDBDeleteJobListFpDBDeleteJob {
+	s.FpDBId = &v
+	return s
+}
+
+func (s *QueryFpDBDeleteJobListResponseBodyFpDBDeleteJobListFpDBDeleteJob) SetId(v string) *QueryFpDBDeleteJobListResponseBodyFpDBDeleteJobListFpDBDeleteJob {
+	s.Id = &v
+	return s
+}
+
+type QueryFpDBDeleteJobListResponseBodyNonExistIds struct {
+	String_ []*string `json:"String,omitempty" xml:"String,omitempty" type:"Repeated"`
+}
+
+func (s QueryFpDBDeleteJobListResponseBodyNonExistIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryFpDBDeleteJobListResponseBodyNonExistIds) GoString() string {
+	return s.String()
+}
+
+func (s *QueryFpDBDeleteJobListResponseBodyNonExistIds) SetString_(v []*string) *QueryFpDBDeleteJobListResponseBodyNonExistIds {
+	s.String_ = v
+	return s
+}
+
+type QueryFpDBDeleteJobListResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QueryFpDBDeleteJobListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryFpDBDeleteJobListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryFpDBDeleteJobListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryFpDBDeleteJobListResponse) SetHeaders(v map[string]*string) *QueryFpDBDeleteJobListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryFpDBDeleteJobListResponse) SetBody(v *QueryFpDBDeleteJobListResponseBody) *QueryFpDBDeleteJobListResponse {
+	s.Body = v
+	return s
+}
+
+type QueryFpFileDeleteJobListRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	JobIds               *string `json:"JobIds,omitempty" xml:"JobIds,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+}
+
+func (s QueryFpFileDeleteJobListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryFpFileDeleteJobListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryFpFileDeleteJobListRequest) SetOwnerId(v int64) *QueryFpFileDeleteJobListRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *QueryFpFileDeleteJobListRequest) SetResourceOwnerAccount(v string) *QueryFpFileDeleteJobListRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *QueryFpFileDeleteJobListRequest) SetResourceOwnerId(v int64) *QueryFpFileDeleteJobListRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *QueryFpFileDeleteJobListRequest) SetJobIds(v string) *QueryFpFileDeleteJobListRequest {
+	s.JobIds = &v
+	return s
+}
+
+func (s *QueryFpFileDeleteJobListRequest) SetOwnerAccount(v string) *QueryFpFileDeleteJobListRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+type QueryFpFileDeleteJobListResponseBody struct {
+	RequestId           *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	FpFileDeleteJobList *QueryFpFileDeleteJobListResponseBodyFpFileDeleteJobList `json:"FpFileDeleteJobList,omitempty" xml:"FpFileDeleteJobList,omitempty" type:"Struct"`
+	NonExistIds         *QueryFpFileDeleteJobListResponseBodyNonExistIds         `json:"NonExistIds,omitempty" xml:"NonExistIds,omitempty" type:"Struct"`
+}
+
+func (s QueryFpFileDeleteJobListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryFpFileDeleteJobListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryFpFileDeleteJobListResponseBody) SetRequestId(v string) *QueryFpFileDeleteJobListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryFpFileDeleteJobListResponseBody) SetFpFileDeleteJobList(v *QueryFpFileDeleteJobListResponseBodyFpFileDeleteJobList) *QueryFpFileDeleteJobListResponseBody {
+	s.FpFileDeleteJobList = v
+	return s
+}
+
+func (s *QueryFpFileDeleteJobListResponseBody) SetNonExistIds(v *QueryFpFileDeleteJobListResponseBodyNonExistIds) *QueryFpFileDeleteJobListResponseBody {
+	s.NonExistIds = v
+	return s
+}
+
+type QueryFpFileDeleteJobListResponseBodyFpFileDeleteJobList struct {
+	FpFileDeleteJob []*QueryFpFileDeleteJobListResponseBodyFpFileDeleteJobListFpFileDeleteJob `json:"FpFileDeleteJob,omitempty" xml:"FpFileDeleteJob,omitempty" type:"Repeated"`
+}
+
+func (s QueryFpFileDeleteJobListResponseBodyFpFileDeleteJobList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryFpFileDeleteJobListResponseBodyFpFileDeleteJobList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryFpFileDeleteJobListResponseBodyFpFileDeleteJobList) SetFpFileDeleteJob(v []*QueryFpFileDeleteJobListResponseBodyFpFileDeleteJobListFpFileDeleteJob) *QueryFpFileDeleteJobListResponseBodyFpFileDeleteJobList {
+	s.FpFileDeleteJob = v
+	return s
+}
+
+type QueryFpFileDeleteJobListResponseBodyFpFileDeleteJobListFpFileDeleteJob struct {
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	FinishTime   *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	UserData     *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message      *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	PipelineId   *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	FpDBId       *string `json:"FpDBId,omitempty" xml:"FpDBId,omitempty"`
+	Id           *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	FileIds      *string `json:"FileIds,omitempty" xml:"FileIds,omitempty"`
+}
+
+func (s QueryFpFileDeleteJobListResponseBodyFpFileDeleteJobListFpFileDeleteJob) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryFpFileDeleteJobListResponseBodyFpFileDeleteJobListFpFileDeleteJob) GoString() string {
+	return s.String()
+}
+
+func (s *QueryFpFileDeleteJobListResponseBodyFpFileDeleteJobListFpFileDeleteJob) SetCreationTime(v string) *QueryFpFileDeleteJobListResponseBodyFpFileDeleteJobListFpFileDeleteJob {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *QueryFpFileDeleteJobListResponseBodyFpFileDeleteJobListFpFileDeleteJob) SetStatus(v string) *QueryFpFileDeleteJobListResponseBodyFpFileDeleteJobListFpFileDeleteJob {
+	s.Status = &v
+	return s
+}
+
+func (s *QueryFpFileDeleteJobListResponseBodyFpFileDeleteJobListFpFileDeleteJob) SetFinishTime(v string) *QueryFpFileDeleteJobListResponseBodyFpFileDeleteJobListFpFileDeleteJob {
+	s.FinishTime = &v
+	return s
+}
+
+func (s *QueryFpFileDeleteJobListResponseBodyFpFileDeleteJobListFpFileDeleteJob) SetUserData(v string) *QueryFpFileDeleteJobListResponseBodyFpFileDeleteJobListFpFileDeleteJob {
+	s.UserData = &v
+	return s
+}
+
+func (s *QueryFpFileDeleteJobListResponseBodyFpFileDeleteJobListFpFileDeleteJob) SetCode(v string) *QueryFpFileDeleteJobListResponseBodyFpFileDeleteJobListFpFileDeleteJob {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryFpFileDeleteJobListResponseBodyFpFileDeleteJobListFpFileDeleteJob) SetMessage(v string) *QueryFpFileDeleteJobListResponseBodyFpFileDeleteJobListFpFileDeleteJob {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryFpFileDeleteJobListResponseBodyFpFileDeleteJobListFpFileDeleteJob) SetPipelineId(v string) *QueryFpFileDeleteJobListResponseBodyFpFileDeleteJobListFpFileDeleteJob {
+	s.PipelineId = &v
+	return s
+}
+
+func (s *QueryFpFileDeleteJobListResponseBodyFpFileDeleteJobListFpFileDeleteJob) SetFpDBId(v string) *QueryFpFileDeleteJobListResponseBodyFpFileDeleteJobListFpFileDeleteJob {
+	s.FpDBId = &v
+	return s
+}
+
+func (s *QueryFpFileDeleteJobListResponseBodyFpFileDeleteJobListFpFileDeleteJob) SetId(v string) *QueryFpFileDeleteJobListResponseBodyFpFileDeleteJobListFpFileDeleteJob {
+	s.Id = &v
+	return s
+}
+
+func (s *QueryFpFileDeleteJobListResponseBodyFpFileDeleteJobListFpFileDeleteJob) SetFileIds(v string) *QueryFpFileDeleteJobListResponseBodyFpFileDeleteJobListFpFileDeleteJob {
+	s.FileIds = &v
+	return s
+}
+
+type QueryFpFileDeleteJobListResponseBodyNonExistIds struct {
+	String_ []*string `json:"String,omitempty" xml:"String,omitempty" type:"Repeated"`
+}
+
+func (s QueryFpFileDeleteJobListResponseBodyNonExistIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryFpFileDeleteJobListResponseBodyNonExistIds) GoString() string {
+	return s.String()
+}
+
+func (s *QueryFpFileDeleteJobListResponseBodyNonExistIds) SetString_(v []*string) *QueryFpFileDeleteJobListResponseBodyNonExistIds {
+	s.String_ = v
+	return s
+}
+
+type QueryFpFileDeleteJobListResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QueryFpFileDeleteJobListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryFpFileDeleteJobListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryFpFileDeleteJobListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryFpFileDeleteJobListResponse) SetHeaders(v map[string]*string) *QueryFpFileDeleteJobListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryFpFileDeleteJobListResponse) SetBody(v *QueryFpFileDeleteJobListResponseBody) *QueryFpFileDeleteJobListResponse {
+	s.Body = v
+	return s
+}
+
 type QueryFpImportResultRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -20747,6 +21323,180 @@ func (s *QueryImageSearchJobListResponse) SetHeaders(v map[string]*string) *Quer
 }
 
 func (s *QueryImageSearchJobListResponse) SetBody(v *QueryImageSearchJobListResponseBody) *QueryImageSearchJobListResponse {
+	s.Body = v
+	return s
+}
+
+type QueryInnerJobRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	JobId                *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s QueryInnerJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryInnerJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryInnerJobRequest) SetOwnerId(v int64) *QueryInnerJobRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *QueryInnerJobRequest) SetResourceOwnerAccount(v string) *QueryInnerJobRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *QueryInnerJobRequest) SetResourceOwnerId(v int64) *QueryInnerJobRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *QueryInnerJobRequest) SetJobId(v string) *QueryInnerJobRequest {
+	s.JobId = &v
+	return s
+}
+
+type QueryInnerJobResponseBody struct {
+	Status     *string                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	Suggestion *string                         `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+	RequestId  *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Video      *QueryInnerJobResponseBodyVideo `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
+	Image      *QueryInnerJobResponseBodyImage `json:"Image,omitempty" xml:"Image,omitempty" type:"Struct"`
+}
+
+func (s QueryInnerJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryInnerJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryInnerJobResponseBody) SetStatus(v string) *QueryInnerJobResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *QueryInnerJobResponseBody) SetSuggestion(v string) *QueryInnerJobResponseBody {
+	s.Suggestion = &v
+	return s
+}
+
+func (s *QueryInnerJobResponseBody) SetRequestId(v string) *QueryInnerJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryInnerJobResponseBody) SetVideo(v *QueryInnerJobResponseBodyVideo) *QueryInnerJobResponseBody {
+	s.Video = v
+	return s
+}
+
+func (s *QueryInnerJobResponseBody) SetImage(v *QueryInnerJobResponseBodyImage) *QueryInnerJobResponseBody {
+	s.Image = v
+	return s
+}
+
+type QueryInnerJobResponseBodyVideo struct {
+	Index  *int32  `json:"Index,omitempty" xml:"Index,omitempty"`
+	Result *int32  `json:"Result,omitempty" xml:"Result,omitempty"`
+	Code   *string `json:"Code,omitempty" xml:"Code,omitempty"`
+}
+
+func (s QueryInnerJobResponseBodyVideo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryInnerJobResponseBodyVideo) GoString() string {
+	return s.String()
+}
+
+func (s *QueryInnerJobResponseBodyVideo) SetIndex(v int32) *QueryInnerJobResponseBodyVideo {
+	s.Index = &v
+	return s
+}
+
+func (s *QueryInnerJobResponseBodyVideo) SetResult(v int32) *QueryInnerJobResponseBodyVideo {
+	s.Result = &v
+	return s
+}
+
+func (s *QueryInnerJobResponseBodyVideo) SetCode(v string) *QueryInnerJobResponseBodyVideo {
+	s.Code = &v
+	return s
+}
+
+type QueryInnerJobResponseBodyImage struct {
+	Result []*QueryInnerJobResponseBodyImageResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+}
+
+func (s QueryInnerJobResponseBodyImage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryInnerJobResponseBodyImage) GoString() string {
+	return s.String()
+}
+
+func (s *QueryInnerJobResponseBodyImage) SetResult(v []*QueryInnerJobResponseBodyImageResult) *QueryInnerJobResponseBodyImage {
+	s.Result = v
+	return s
+}
+
+type QueryInnerJobResponseBodyImageResult struct {
+	Index  *int32  `json:"Index,omitempty" xml:"Index,omitempty"`
+	Result *int32  `json:"Result,omitempty" xml:"Result,omitempty"`
+	Code   *string `json:"Code,omitempty" xml:"Code,omitempty"`
+}
+
+func (s QueryInnerJobResponseBodyImageResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryInnerJobResponseBodyImageResult) GoString() string {
+	return s.String()
+}
+
+func (s *QueryInnerJobResponseBodyImageResult) SetIndex(v int32) *QueryInnerJobResponseBodyImageResult {
+	s.Index = &v
+	return s
+}
+
+func (s *QueryInnerJobResponseBodyImageResult) SetResult(v int32) *QueryInnerJobResponseBodyImageResult {
+	s.Result = &v
+	return s
+}
+
+func (s *QueryInnerJobResponseBodyImageResult) SetCode(v string) *QueryInnerJobResponseBodyImageResult {
+	s.Code = &v
+	return s
+}
+
+type QueryInnerJobResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QueryInnerJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryInnerJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryInnerJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryInnerJobResponse) SetHeaders(v map[string]*string) *QueryInnerJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryInnerJobResponse) SetBody(v *QueryInnerJobResponseBody) *QueryInnerJobResponse {
 	s.Body = v
 	return s
 }
@@ -26591,8 +27341,8 @@ func (s *QueryMcuTemplateResponseBodyTemplates) SetJob(v []*QueryMcuTemplateResp
 }
 
 type QueryMcuTemplateResponseBodyTemplatesJob struct {
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	Template   *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s QueryMcuTemplateResponseBodyTemplatesJob) String() string {
@@ -26603,13 +27353,13 @@ func (s QueryMcuTemplateResponseBodyTemplatesJob) GoString() string {
 	return s.String()
 }
 
-func (s *QueryMcuTemplateResponseBodyTemplatesJob) SetTemplateId(v string) *QueryMcuTemplateResponseBodyTemplatesJob {
-	s.TemplateId = &v
+func (s *QueryMcuTemplateResponseBodyTemplatesJob) SetTemplate(v string) *QueryMcuTemplateResponseBodyTemplatesJob {
+	s.Template = &v
 	return s
 }
 
-func (s *QueryMcuTemplateResponseBodyTemplatesJob) SetTemplate(v string) *QueryMcuTemplateResponseBodyTemplatesJob {
-	s.Template = &v
+func (s *QueryMcuTemplateResponseBodyTemplatesJob) SetTemplateId(v string) *QueryMcuTemplateResponseBodyTemplatesJob {
+	s.TemplateId = &v
 	return s
 }
 
@@ -37186,6 +37936,134 @@ func (s *QueryVideoPoseJobListResponse) SetBody(v *QueryVideoPoseJobListResponse
 	return s
 }
 
+type QueryVideoQualityJobRequest struct {
+	UserId *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	JobId  *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s QueryVideoQualityJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryVideoQualityJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryVideoQualityJobRequest) SetUserId(v int64) *QueryVideoQualityJobRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *QueryVideoQualityJobRequest) SetJobId(v string) *QueryVideoQualityJobRequest {
+	s.JobId = &v
+	return s
+}
+
+type QueryVideoQualityJobResponseBody struct {
+	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Job       *QueryVideoQualityJobResponseBodyJob `json:"Job,omitempty" xml:"Job,omitempty" type:"Struct"`
+	Code      *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+}
+
+func (s QueryVideoQualityJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryVideoQualityJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryVideoQualityJobResponseBody) SetMessage(v string) *QueryVideoQualityJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryVideoQualityJobResponseBody) SetRequestId(v string) *QueryVideoQualityJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryVideoQualityJobResponseBody) SetJob(v *QueryVideoQualityJobResponseBodyJob) *QueryVideoQualityJobResponseBody {
+	s.Job = v
+	return s
+}
+
+func (s *QueryVideoQualityJobResponseBody) SetCode(v string) *QueryVideoQualityJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+type QueryVideoQualityJobResponseBodyJob struct {
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	JobId               *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	UserId              *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	VideoQualityResults *string `json:"VideoQualityResults,omitempty" xml:"VideoQualityResults,omitempty"`
+	Message             *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Output              *string `json:"Output,omitempty" xml:"Output,omitempty"`
+}
+
+func (s QueryVideoQualityJobResponseBodyJob) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryVideoQualityJobResponseBodyJob) GoString() string {
+	return s.String()
+}
+
+func (s *QueryVideoQualityJobResponseBodyJob) SetStatus(v string) *QueryVideoQualityJobResponseBodyJob {
+	s.Status = &v
+	return s
+}
+
+func (s *QueryVideoQualityJobResponseBodyJob) SetJobId(v string) *QueryVideoQualityJobResponseBodyJob {
+	s.JobId = &v
+	return s
+}
+
+func (s *QueryVideoQualityJobResponseBodyJob) SetUserId(v int64) *QueryVideoQualityJobResponseBodyJob {
+	s.UserId = &v
+	return s
+}
+
+func (s *QueryVideoQualityJobResponseBodyJob) SetVideoQualityResults(v string) *QueryVideoQualityJobResponseBodyJob {
+	s.VideoQualityResults = &v
+	return s
+}
+
+func (s *QueryVideoQualityJobResponseBodyJob) SetMessage(v string) *QueryVideoQualityJobResponseBodyJob {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryVideoQualityJobResponseBodyJob) SetOutput(v string) *QueryVideoQualityJobResponseBodyJob {
+	s.Output = &v
+	return s
+}
+
+type QueryVideoQualityJobResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QueryVideoQualityJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryVideoQualityJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryVideoQualityJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryVideoQualityJobResponse) SetHeaders(v map[string]*string) *QueryVideoQualityJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryVideoQualityJobResponse) SetBody(v *QueryVideoQualityJobResponseBody) *QueryVideoQualityJobResponse {
+	s.Body = v
+	return s
+}
+
 type QueryVideoSplitJobListRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -38377,13 +39255,13 @@ func (s *RegisterMediaDetailPersonResponseBodyRegisteredPersonages) SetRegistere
 }
 
 type RegisterMediaDetailPersonResponseBodyRegisteredPersonagesRegisteredPersonage struct {
+	Quality    *string                                                                                `json:"Quality,omitempty" xml:"Quality,omitempty"`
+	ImageFile  *RegisterMediaDetailPersonResponseBodyRegisteredPersonagesRegisteredPersonageImageFile `json:"ImageFile,omitempty" xml:"ImageFile,omitempty" type:"Struct"`
 	PersonName *string                                                                                `json:"PersonName,omitempty" xml:"PersonName,omitempty"`
+	Gender     *string                                                                                `json:"Gender,omitempty" xml:"Gender,omitempty"`
 	FaceId     *string                                                                                `json:"FaceId,omitempty" xml:"FaceId,omitempty"`
 	Target     *string                                                                                `json:"Target,omitempty" xml:"Target,omitempty"`
-	Quality    *string                                                                                `json:"Quality,omitempty" xml:"Quality,omitempty"`
-	Gender     *string                                                                                `json:"Gender,omitempty" xml:"Gender,omitempty"`
 	ImageId    *string                                                                                `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageFile  *RegisterMediaDetailPersonResponseBodyRegisteredPersonagesRegisteredPersonageImageFile `json:"ImageFile,omitempty" xml:"ImageFile,omitempty" type:"Struct"`
 }
 
 func (s RegisterMediaDetailPersonResponseBodyRegisteredPersonagesRegisteredPersonage) String() string {
@@ -38394,8 +39272,23 @@ func (s RegisterMediaDetailPersonResponseBodyRegisteredPersonagesRegisteredPerso
 	return s.String()
 }
 
+func (s *RegisterMediaDetailPersonResponseBodyRegisteredPersonagesRegisteredPersonage) SetQuality(v string) *RegisterMediaDetailPersonResponseBodyRegisteredPersonagesRegisteredPersonage {
+	s.Quality = &v
+	return s
+}
+
+func (s *RegisterMediaDetailPersonResponseBodyRegisteredPersonagesRegisteredPersonage) SetImageFile(v *RegisterMediaDetailPersonResponseBodyRegisteredPersonagesRegisteredPersonageImageFile) *RegisterMediaDetailPersonResponseBodyRegisteredPersonagesRegisteredPersonage {
+	s.ImageFile = v
+	return s
+}
+
 func (s *RegisterMediaDetailPersonResponseBodyRegisteredPersonagesRegisteredPersonage) SetPersonName(v string) *RegisterMediaDetailPersonResponseBodyRegisteredPersonagesRegisteredPersonage {
 	s.PersonName = &v
+	return s
+}
+
+func (s *RegisterMediaDetailPersonResponseBodyRegisteredPersonagesRegisteredPersonage) SetGender(v string) *RegisterMediaDetailPersonResponseBodyRegisteredPersonagesRegisteredPersonage {
+	s.Gender = &v
 	return s
 }
 
@@ -38409,30 +39302,15 @@ func (s *RegisterMediaDetailPersonResponseBodyRegisteredPersonagesRegisteredPers
 	return s
 }
 
-func (s *RegisterMediaDetailPersonResponseBodyRegisteredPersonagesRegisteredPersonage) SetQuality(v string) *RegisterMediaDetailPersonResponseBodyRegisteredPersonagesRegisteredPersonage {
-	s.Quality = &v
-	return s
-}
-
-func (s *RegisterMediaDetailPersonResponseBodyRegisteredPersonagesRegisteredPersonage) SetGender(v string) *RegisterMediaDetailPersonResponseBodyRegisteredPersonagesRegisteredPersonage {
-	s.Gender = &v
-	return s
-}
-
 func (s *RegisterMediaDetailPersonResponseBodyRegisteredPersonagesRegisteredPersonage) SetImageId(v string) *RegisterMediaDetailPersonResponseBodyRegisteredPersonagesRegisteredPersonage {
 	s.ImageId = &v
 	return s
 }
 
-func (s *RegisterMediaDetailPersonResponseBodyRegisteredPersonagesRegisteredPersonage) SetImageFile(v *RegisterMediaDetailPersonResponseBodyRegisteredPersonagesRegisteredPersonageImageFile) *RegisterMediaDetailPersonResponseBodyRegisteredPersonagesRegisteredPersonage {
-	s.ImageFile = v
-	return s
-}
-
 type RegisterMediaDetailPersonResponseBodyRegisteredPersonagesRegisteredPersonageImageFile struct {
-	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
 	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
 }
 
 func (s RegisterMediaDetailPersonResponseBodyRegisteredPersonagesRegisteredPersonageImageFile) String() string {
@@ -38443,8 +39321,8 @@ func (s RegisterMediaDetailPersonResponseBodyRegisteredPersonagesRegisteredPerso
 	return s.String()
 }
 
-func (s *RegisterMediaDetailPersonResponseBodyRegisteredPersonagesRegisteredPersonageImageFile) SetBucket(v string) *RegisterMediaDetailPersonResponseBodyRegisteredPersonagesRegisteredPersonageImageFile {
-	s.Bucket = &v
+func (s *RegisterMediaDetailPersonResponseBodyRegisteredPersonagesRegisteredPersonageImageFile) SetObject(v string) *RegisterMediaDetailPersonResponseBodyRegisteredPersonagesRegisteredPersonageImageFile {
+	s.Object = &v
 	return s
 }
 
@@ -38453,8 +39331,8 @@ func (s *RegisterMediaDetailPersonResponseBodyRegisteredPersonagesRegisteredPers
 	return s
 }
 
-func (s *RegisterMediaDetailPersonResponseBodyRegisteredPersonagesRegisteredPersonageImageFile) SetObject(v string) *RegisterMediaDetailPersonResponseBodyRegisteredPersonagesRegisteredPersonageImageFile {
-	s.Object = &v
+func (s *RegisterMediaDetailPersonResponseBodyRegisteredPersonagesRegisteredPersonageImageFile) SetBucket(v string) *RegisterMediaDetailPersonResponseBodyRegisteredPersonagesRegisteredPersonageImageFile {
+	s.Bucket = &v
 	return s
 }
 
@@ -38476,9 +39354,9 @@ func (s *RegisterMediaDetailPersonResponseBodyFailedImages) SetFailedImage(v []*
 }
 
 type RegisterMediaDetailPersonResponseBodyFailedImagesFailedImage struct {
-	Code      *string                                                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success   *string                                                                `json:"Success,omitempty" xml:"Success,omitempty"`
 	ImageFile *RegisterMediaDetailPersonResponseBodyFailedImagesFailedImageImageFile `json:"ImageFile,omitempty" xml:"ImageFile,omitempty" type:"Struct"`
+	Success   *string                                                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *string                                                                `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s RegisterMediaDetailPersonResponseBodyFailedImagesFailedImage) String() string {
@@ -38489,8 +39367,8 @@ func (s RegisterMediaDetailPersonResponseBodyFailedImagesFailedImage) GoString()
 	return s.String()
 }
 
-func (s *RegisterMediaDetailPersonResponseBodyFailedImagesFailedImage) SetCode(v string) *RegisterMediaDetailPersonResponseBodyFailedImagesFailedImage {
-	s.Code = &v
+func (s *RegisterMediaDetailPersonResponseBodyFailedImagesFailedImage) SetImageFile(v *RegisterMediaDetailPersonResponseBodyFailedImagesFailedImageImageFile) *RegisterMediaDetailPersonResponseBodyFailedImagesFailedImage {
+	s.ImageFile = v
 	return s
 }
 
@@ -38499,15 +39377,15 @@ func (s *RegisterMediaDetailPersonResponseBodyFailedImagesFailedImage) SetSucces
 	return s
 }
 
-func (s *RegisterMediaDetailPersonResponseBodyFailedImagesFailedImage) SetImageFile(v *RegisterMediaDetailPersonResponseBodyFailedImagesFailedImageImageFile) *RegisterMediaDetailPersonResponseBodyFailedImagesFailedImage {
-	s.ImageFile = v
+func (s *RegisterMediaDetailPersonResponseBodyFailedImagesFailedImage) SetCode(v string) *RegisterMediaDetailPersonResponseBodyFailedImagesFailedImage {
+	s.Code = &v
 	return s
 }
 
 type RegisterMediaDetailPersonResponseBodyFailedImagesFailedImageImageFile struct {
-	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
 	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
 }
 
 func (s RegisterMediaDetailPersonResponseBodyFailedImagesFailedImageImageFile) String() string {
@@ -38518,8 +39396,8 @@ func (s RegisterMediaDetailPersonResponseBodyFailedImagesFailedImageImageFile) G
 	return s.String()
 }
 
-func (s *RegisterMediaDetailPersonResponseBodyFailedImagesFailedImageImageFile) SetBucket(v string) *RegisterMediaDetailPersonResponseBodyFailedImagesFailedImageImageFile {
-	s.Bucket = &v
+func (s *RegisterMediaDetailPersonResponseBodyFailedImagesFailedImageImageFile) SetObject(v string) *RegisterMediaDetailPersonResponseBodyFailedImagesFailedImageImageFile {
+	s.Object = &v
 	return s
 }
 
@@ -38528,8 +39406,8 @@ func (s *RegisterMediaDetailPersonResponseBodyFailedImagesFailedImageImageFile) 
 	return s
 }
 
-func (s *RegisterMediaDetailPersonResponseBodyFailedImagesFailedImageImageFile) SetObject(v string) *RegisterMediaDetailPersonResponseBodyFailedImagesFailedImageImageFile {
-	s.Object = &v
+func (s *RegisterMediaDetailPersonResponseBodyFailedImagesFailedImageImageFile) SetBucket(v string) *RegisterMediaDetailPersonResponseBodyFailedImagesFailedImageImageFile {
+	s.Bucket = &v
 	return s
 }
 
@@ -38610,8 +39488,8 @@ func (s *RegisterMediaDetailScenarioRequest) SetOwnerAccount(v string) *Register
 }
 
 type RegisterMediaDetailScenarioResponseBody struct {
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ScenarioId *string `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RegisterMediaDetailScenarioResponseBody) String() string {
@@ -38622,13 +39500,13 @@ func (s RegisterMediaDetailScenarioResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *RegisterMediaDetailScenarioResponseBody) SetRequestId(v string) *RegisterMediaDetailScenarioResponseBody {
-	s.RequestId = &v
+func (s *RegisterMediaDetailScenarioResponseBody) SetScenarioId(v string) *RegisterMediaDetailScenarioResponseBody {
+	s.ScenarioId = &v
 	return s
 }
 
-func (s *RegisterMediaDetailScenarioResponseBody) SetScenarioId(v string) *RegisterMediaDetailScenarioResponseBody {
-	s.ScenarioId = &v
+func (s *RegisterMediaDetailScenarioResponseBody) SetRequestId(v string) *RegisterMediaDetailScenarioResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -41268,9 +42146,9 @@ func (s *SetAuthConfigRequest) SetKey2(v string) *SetAuthConfigRequest {
 }
 
 type SetAuthConfigResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Key1      *string `json:"Key1,omitempty" xml:"Key1,omitempty"`
 	Key2      *string `json:"Key2,omitempty" xml:"Key2,omitempty"`
+	Key1      *string `json:"Key1,omitempty" xml:"Key1,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SetAuthConfigResponseBody) String() string {
@@ -41281,8 +42159,8 @@ func (s SetAuthConfigResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SetAuthConfigResponseBody) SetRequestId(v string) *SetAuthConfigResponseBody {
-	s.RequestId = &v
+func (s *SetAuthConfigResponseBody) SetKey2(v string) *SetAuthConfigResponseBody {
+	s.Key2 = &v
 	return s
 }
 
@@ -41291,8 +42169,8 @@ func (s *SetAuthConfigResponseBody) SetKey1(v string) *SetAuthConfigResponseBody
 	return s
 }
 
-func (s *SetAuthConfigResponseBody) SetKey2(v string) *SetAuthConfigResponseBody {
-	s.Key2 = &v
+func (s *SetAuthConfigResponseBody) SetRequestId(v string) *SetAuthConfigResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -42434,16 +43312,16 @@ func (s *SubmitBeautifyJobsResponseBodyJobList) SetJob(v []*SubmitBeautifyJobsRe
 }
 
 type SubmitBeautifyJobsResponseBodyJobListJob struct {
-	Id               *string                                                   `json:"Id,omitempty" xml:"Id,omitempty"`
-	UserData         *string                                                   `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	PipelineId       *string                                                   `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	CreationTime     *string                                                   `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	BeautifyConfig   *SubmitBeautifyJobsResponseBodyJobListJobBeautifyConfig   `json:"BeautifyConfig,omitempty" xml:"BeautifyConfig,omitempty" type:"Struct"`
 	State            *string                                                   `json:"State,omitempty" xml:"State,omitempty"`
+	UserData         *string                                                   `json:"UserData,omitempty" xml:"UserData,omitempty"`
 	Code             *string                                                   `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message          *string                                                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	CreationTime     *string                                                   `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	PipelineId       *string                                                   `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
 	Input            *SubmitBeautifyJobsResponseBodyJobListJobInput            `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
-	BeautifyConfig   *SubmitBeautifyJobsResponseBodyJobListJobBeautifyConfig   `json:"BeautifyConfig,omitempty" xml:"BeautifyConfig,omitempty" type:"Struct"`
 	MNSMessageResult *SubmitBeautifyJobsResponseBodyJobListJobMNSMessageResult `json:"MNSMessageResult,omitempty" xml:"MNSMessageResult,omitempty" type:"Struct"`
+	Id               *string                                                   `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
 func (s SubmitBeautifyJobsResponseBodyJobListJob) String() string {
@@ -42454,23 +43332,23 @@ func (s SubmitBeautifyJobsResponseBodyJobListJob) GoString() string {
 	return s.String()
 }
 
-func (s *SubmitBeautifyJobsResponseBodyJobListJob) SetId(v string) *SubmitBeautifyJobsResponseBodyJobListJob {
-	s.Id = &v
+func (s *SubmitBeautifyJobsResponseBodyJobListJob) SetCreationTime(v string) *SubmitBeautifyJobsResponseBodyJobListJob {
+	s.CreationTime = &v
 	return s
 }
 
-func (s *SubmitBeautifyJobsResponseBodyJobListJob) SetUserData(v string) *SubmitBeautifyJobsResponseBodyJobListJob {
-	s.UserData = &v
-	return s
-}
-
-func (s *SubmitBeautifyJobsResponseBodyJobListJob) SetPipelineId(v string) *SubmitBeautifyJobsResponseBodyJobListJob {
-	s.PipelineId = &v
+func (s *SubmitBeautifyJobsResponseBodyJobListJob) SetBeautifyConfig(v *SubmitBeautifyJobsResponseBodyJobListJobBeautifyConfig) *SubmitBeautifyJobsResponseBodyJobListJob {
+	s.BeautifyConfig = v
 	return s
 }
 
 func (s *SubmitBeautifyJobsResponseBodyJobListJob) SetState(v string) *SubmitBeautifyJobsResponseBodyJobListJob {
 	s.State = &v
+	return s
+}
+
+func (s *SubmitBeautifyJobsResponseBodyJobListJob) SetUserData(v string) *SubmitBeautifyJobsResponseBodyJobListJob {
+	s.UserData = &v
 	return s
 }
 
@@ -42484,8 +43362,8 @@ func (s *SubmitBeautifyJobsResponseBodyJobListJob) SetMessage(v string) *SubmitB
 	return s
 }
 
-func (s *SubmitBeautifyJobsResponseBodyJobListJob) SetCreationTime(v string) *SubmitBeautifyJobsResponseBodyJobListJob {
-	s.CreationTime = &v
+func (s *SubmitBeautifyJobsResponseBodyJobListJob) SetPipelineId(v string) *SubmitBeautifyJobsResponseBodyJobListJob {
+	s.PipelineId = &v
 	return s
 }
 
@@ -42494,48 +43372,13 @@ func (s *SubmitBeautifyJobsResponseBodyJobListJob) SetInput(v *SubmitBeautifyJob
 	return s
 }
 
-func (s *SubmitBeautifyJobsResponseBodyJobListJob) SetBeautifyConfig(v *SubmitBeautifyJobsResponseBodyJobListJobBeautifyConfig) *SubmitBeautifyJobsResponseBodyJobListJob {
-	s.BeautifyConfig = v
-	return s
-}
-
 func (s *SubmitBeautifyJobsResponseBodyJobListJob) SetMNSMessageResult(v *SubmitBeautifyJobsResponseBodyJobListJobMNSMessageResult) *SubmitBeautifyJobsResponseBodyJobListJob {
 	s.MNSMessageResult = v
 	return s
 }
 
-type SubmitBeautifyJobsResponseBodyJobListJobInput struct {
-	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
-	RoleArn  *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-}
-
-func (s SubmitBeautifyJobsResponseBodyJobListJobInput) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitBeautifyJobsResponseBodyJobListJobInput) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitBeautifyJobsResponseBodyJobListJobInput) SetBucket(v string) *SubmitBeautifyJobsResponseBodyJobListJobInput {
-	s.Bucket = &v
-	return s
-}
-
-func (s *SubmitBeautifyJobsResponseBodyJobListJobInput) SetLocation(v string) *SubmitBeautifyJobsResponseBodyJobListJobInput {
-	s.Location = &v
-	return s
-}
-
-func (s *SubmitBeautifyJobsResponseBodyJobListJobInput) SetObject(v string) *SubmitBeautifyJobsResponseBodyJobListJobInput {
-	s.Object = &v
-	return s
-}
-
-func (s *SubmitBeautifyJobsResponseBodyJobListJobInput) SetRoleArn(v string) *SubmitBeautifyJobsResponseBodyJobListJobInput {
-	s.RoleArn = &v
+func (s *SubmitBeautifyJobsResponseBodyJobListJob) SetId(v string) *SubmitBeautifyJobsResponseBodyJobListJob {
+	s.Id = &v
 	return s
 }
 
@@ -42557,10 +43400,10 @@ func (s *SubmitBeautifyJobsResponseBodyJobListJobBeautifyConfig) SetOutputFile(v
 }
 
 type SubmitBeautifyJobsResponseBodyJobListJobBeautifyConfigOutputFile struct {
-	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
 	RoleArn  *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
 }
 
 func (s SubmitBeautifyJobsResponseBodyJobListJobBeautifyConfigOutputFile) String() string {
@@ -42571,13 +43414,8 @@ func (s SubmitBeautifyJobsResponseBodyJobListJobBeautifyConfigOutputFile) GoStri
 	return s.String()
 }
 
-func (s *SubmitBeautifyJobsResponseBodyJobListJobBeautifyConfigOutputFile) SetBucket(v string) *SubmitBeautifyJobsResponseBodyJobListJobBeautifyConfigOutputFile {
-	s.Bucket = &v
-	return s
-}
-
-func (s *SubmitBeautifyJobsResponseBodyJobListJobBeautifyConfigOutputFile) SetLocation(v string) *SubmitBeautifyJobsResponseBodyJobListJobBeautifyConfigOutputFile {
-	s.Location = &v
+func (s *SubmitBeautifyJobsResponseBodyJobListJobBeautifyConfigOutputFile) SetRoleArn(v string) *SubmitBeautifyJobsResponseBodyJobListJobBeautifyConfigOutputFile {
+	s.RoleArn = &v
 	return s
 }
 
@@ -42586,8 +43424,48 @@ func (s *SubmitBeautifyJobsResponseBodyJobListJobBeautifyConfigOutputFile) SetOb
 	return s
 }
 
-func (s *SubmitBeautifyJobsResponseBodyJobListJobBeautifyConfigOutputFile) SetRoleArn(v string) *SubmitBeautifyJobsResponseBodyJobListJobBeautifyConfigOutputFile {
+func (s *SubmitBeautifyJobsResponseBodyJobListJobBeautifyConfigOutputFile) SetLocation(v string) *SubmitBeautifyJobsResponseBodyJobListJobBeautifyConfigOutputFile {
+	s.Location = &v
+	return s
+}
+
+func (s *SubmitBeautifyJobsResponseBodyJobListJobBeautifyConfigOutputFile) SetBucket(v string) *SubmitBeautifyJobsResponseBodyJobListJobBeautifyConfigOutputFile {
+	s.Bucket = &v
+	return s
+}
+
+type SubmitBeautifyJobsResponseBodyJobListJobInput struct {
+	RoleArn  *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+}
+
+func (s SubmitBeautifyJobsResponseBodyJobListJobInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitBeautifyJobsResponseBodyJobListJobInput) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitBeautifyJobsResponseBodyJobListJobInput) SetRoleArn(v string) *SubmitBeautifyJobsResponseBodyJobListJobInput {
 	s.RoleArn = &v
+	return s
+}
+
+func (s *SubmitBeautifyJobsResponseBodyJobListJobInput) SetObject(v string) *SubmitBeautifyJobsResponseBodyJobListJobInput {
+	s.Object = &v
+	return s
+}
+
+func (s *SubmitBeautifyJobsResponseBodyJobListJobInput) SetLocation(v string) *SubmitBeautifyJobsResponseBodyJobListJobInput {
+	s.Location = &v
+	return s
+}
+
+func (s *SubmitBeautifyJobsResponseBodyJobListJobInput) SetBucket(v string) *SubmitBeautifyJobsResponseBodyJobListJobInput {
+	s.Bucket = &v
 	return s
 }
 
@@ -42744,18 +43622,18 @@ func (s *SubmitComplexJobResponseBody) SetComplexJob(v *SubmitComplexJobResponse
 }
 
 type SubmitComplexJobResponseBodyComplexJob struct {
-	JobId                 *string                                                      `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	State                 *string                                                      `json:"State,omitempty" xml:"State,omitempty"`
-	Code                  *string                                                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message               *string                                                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	Percent               *int64                                                       `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	PipelineId            *string                                                      `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
 	CreationTime          *string                                                      `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Percent               *int64                                                       `json:"Percent,omitempty" xml:"Percent,omitempty"`
 	FinishTime            *string                                                      `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	Inputs                *SubmitComplexJobResponseBodyComplexJobInputs                `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Struct"`
-	ComplexEditingConfigs *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigs `json:"ComplexEditingConfigs,omitempty" xml:"ComplexEditingConfigs,omitempty" type:"Struct"`
+	State                 *string                                                      `json:"State,omitempty" xml:"State,omitempty"`
 	TranscodeOutput       *SubmitComplexJobResponseBodyComplexJobTranscodeOutput       `json:"transcodeOutput,omitempty" xml:"transcodeOutput,omitempty" type:"Struct"`
+	Message               *string                                                      `json:"Message,omitempty" xml:"Message,omitempty"`
 	MNSMessageResult      *SubmitComplexJobResponseBodyComplexJobMNSMessageResult      `json:"MNSMessageResult,omitempty" xml:"MNSMessageResult,omitempty" type:"Struct"`
+	ComplexEditingConfigs *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigs `json:"ComplexEditingConfigs,omitempty" xml:"ComplexEditingConfigs,omitempty" type:"Struct"`
+	Inputs                *SubmitComplexJobResponseBodyComplexJobInputs                `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Struct"`
+	JobId                 *string                                                      `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Code                  *string                                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	PipelineId            *string                                                      `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
 }
 
 func (s SubmitComplexJobResponseBodyComplexJob) String() string {
@@ -42766,23 +43644,8 @@ func (s SubmitComplexJobResponseBodyComplexJob) GoString() string {
 	return s.String()
 }
 
-func (s *SubmitComplexJobResponseBodyComplexJob) SetJobId(v string) *SubmitComplexJobResponseBodyComplexJob {
-	s.JobId = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJob) SetState(v string) *SubmitComplexJobResponseBodyComplexJob {
-	s.State = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJob) SetCode(v string) *SubmitComplexJobResponseBodyComplexJob {
-	s.Code = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJob) SetMessage(v string) *SubmitComplexJobResponseBodyComplexJob {
-	s.Message = &v
+func (s *SubmitComplexJobResponseBodyComplexJob) SetCreationTime(v string) *SubmitComplexJobResponseBodyComplexJob {
+	s.CreationTime = &v
 	return s
 }
 
@@ -42791,28 +43654,13 @@ func (s *SubmitComplexJobResponseBodyComplexJob) SetPercent(v int64) *SubmitComp
 	return s
 }
 
-func (s *SubmitComplexJobResponseBodyComplexJob) SetPipelineId(v string) *SubmitComplexJobResponseBodyComplexJob {
-	s.PipelineId = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJob) SetCreationTime(v string) *SubmitComplexJobResponseBodyComplexJob {
-	s.CreationTime = &v
-	return s
-}
-
 func (s *SubmitComplexJobResponseBodyComplexJob) SetFinishTime(v string) *SubmitComplexJobResponseBodyComplexJob {
 	s.FinishTime = &v
 	return s
 }
 
-func (s *SubmitComplexJobResponseBodyComplexJob) SetInputs(v *SubmitComplexJobResponseBodyComplexJobInputs) *SubmitComplexJobResponseBodyComplexJob {
-	s.Inputs = v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJob) SetComplexEditingConfigs(v *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigs) *SubmitComplexJobResponseBodyComplexJob {
-	s.ComplexEditingConfigs = v
+func (s *SubmitComplexJobResponseBodyComplexJob) SetState(v string) *SubmitComplexJobResponseBodyComplexJob {
+	s.State = &v
 	return s
 }
 
@@ -42821,8 +43669,2092 @@ func (s *SubmitComplexJobResponseBodyComplexJob) SetTranscodeOutput(v *SubmitCom
 	return s
 }
 
+func (s *SubmitComplexJobResponseBodyComplexJob) SetMessage(v string) *SubmitComplexJobResponseBodyComplexJob {
+	s.Message = &v
+	return s
+}
+
 func (s *SubmitComplexJobResponseBodyComplexJob) SetMNSMessageResult(v *SubmitComplexJobResponseBodyComplexJobMNSMessageResult) *SubmitComplexJobResponseBodyComplexJob {
 	s.MNSMessageResult = v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJob) SetComplexEditingConfigs(v *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigs) *SubmitComplexJobResponseBodyComplexJob {
+	s.ComplexEditingConfigs = v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJob) SetInputs(v *SubmitComplexJobResponseBodyComplexJobInputs) *SubmitComplexJobResponseBodyComplexJob {
+	s.Inputs = v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJob) SetJobId(v string) *SubmitComplexJobResponseBodyComplexJob {
+	s.JobId = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJob) SetCode(v string) *SubmitComplexJobResponseBodyComplexJob {
+	s.Code = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJob) SetPipelineId(v string) *SubmitComplexJobResponseBodyComplexJob {
+	s.PipelineId = &v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobTranscodeOutput struct {
+	Video                  *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo                  `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
+	TransConfig            *SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig            `json:"TransConfig,omitempty" xml:"TransConfig,omitempty" type:"Struct"`
+	Encryption             *SubmitComplexJobResponseBodyComplexJobTranscodeOutputEncryption             `json:"Encryption,omitempty" xml:"Encryption,omitempty" type:"Struct"`
+	WaterMarkList          *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkList          `json:"WaterMarkList,omitempty" xml:"WaterMarkList,omitempty" type:"Struct"`
+	DeWatermark            *string                                                                      `json:"DeWatermark,omitempty" xml:"DeWatermark,omitempty"`
+	WaterMarkConfigUrl     *string                                                                      `json:"WaterMarkConfigUrl,omitempty" xml:"WaterMarkConfigUrl,omitempty"`
+	M3U8NonStandardSupport *SubmitComplexJobResponseBodyComplexJobTranscodeOutputM3U8NonStandardSupport `json:"M3U8NonStandardSupport,omitempty" xml:"M3U8NonStandardSupport,omitempty" type:"Struct"`
+	Priority               *string                                                                      `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Audio                  *SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudio                  `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
+	AudioStreamMap         *string                                                                      `json:"AudioStreamMap,omitempty" xml:"AudioStreamMap,omitempty"`
+	MergeList              *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMergeList              `json:"MergeList,omitempty" xml:"MergeList,omitempty" type:"Struct"`
+	SuperReso              *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSuperReso              `json:"SuperReso,omitempty" xml:"SuperReso,omitempty" type:"Struct"`
+	UserData               *string                                                                      `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	DigiWaterMark          *SubmitComplexJobResponseBodyComplexJobTranscodeOutputDigiWaterMark          `json:"DigiWaterMark,omitempty" xml:"DigiWaterMark,omitempty" type:"Struct"`
+	VideoStreamMap         *string                                                                      `json:"VideoStreamMap,omitempty" xml:"VideoStreamMap,omitempty"`
+	OutputFile             *SubmitComplexJobResponseBodyComplexJobTranscodeOutputOutputFile             `json:"OutputFile,omitempty" xml:"OutputFile,omitempty" type:"Struct"`
+	Rotate                 *string                                                                      `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
+	Container              *SubmitComplexJobResponseBodyComplexJobTranscodeOutputContainer              `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
+	Clip                   *SubmitComplexJobResponseBodyComplexJobTranscodeOutputClip                   `json:"Clip,omitempty" xml:"Clip,omitempty" type:"Struct"`
+	MergeConfigUrl         *string                                                                      `json:"MergeConfigUrl,omitempty" xml:"MergeConfigUrl,omitempty"`
+	MuxConfig              *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfig              `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty" type:"Struct"`
+	TemplateId             *string                                                                      `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	SubtitleConfig         *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfig         `json:"SubtitleConfig,omitempty" xml:"SubtitleConfig,omitempty" type:"Struct"`
+	Properties             *SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties             `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutput) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetVideo(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
+	s.Video = v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetTransConfig(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
+	s.TransConfig = v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetEncryption(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputEncryption) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
+	s.Encryption = v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetWaterMarkList(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkList) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
+	s.WaterMarkList = v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetDeWatermark(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
+	s.DeWatermark = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetWaterMarkConfigUrl(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
+	s.WaterMarkConfigUrl = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetM3U8NonStandardSupport(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputM3U8NonStandardSupport) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
+	s.M3U8NonStandardSupport = v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetPriority(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
+	s.Priority = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetAudio(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudio) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
+	s.Audio = v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetAudioStreamMap(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
+	s.AudioStreamMap = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetMergeList(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMergeList) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
+	s.MergeList = v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetSuperReso(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSuperReso) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
+	s.SuperReso = v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetUserData(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
+	s.UserData = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetDigiWaterMark(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputDigiWaterMark) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
+	s.DigiWaterMark = v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetVideoStreamMap(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
+	s.VideoStreamMap = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetOutputFile(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputOutputFile) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
+	s.OutputFile = v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetRotate(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
+	s.Rotate = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetContainer(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputContainer) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
+	s.Container = v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetClip(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputClip) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
+	s.Clip = v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetMergeConfigUrl(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
+	s.MergeConfigUrl = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetMuxConfig(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfig) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
+	s.MuxConfig = v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetTemplateId(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetSubtitleConfig(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfig) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
+	s.SubtitleConfig = v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetProperties(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
+	s.Properties = v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo struct {
+	Bufsize    *string                                                               `json:"Bufsize,omitempty" xml:"Bufsize,omitempty"`
+	Degrain    *string                                                               `json:"Degrain,omitempty" xml:"Degrain,omitempty"`
+	BitrateBnd *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideoBitrateBnd `json:"BitrateBnd,omitempty" xml:"BitrateBnd,omitempty" type:"Struct"`
+	PixFmt     *string                                                               `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
+	Pad        *string                                                               `json:"Pad,omitempty" xml:"Pad,omitempty"`
+	Codec      *string                                                               `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	Height     *string                                                               `json:"Height,omitempty" xml:"Height,omitempty"`
+	Qscale     *string                                                               `json:"Qscale,omitempty" xml:"Qscale,omitempty"`
+	Crop       *string                                                               `json:"Crop,omitempty" xml:"Crop,omitempty"`
+	Bitrate    *string                                                               `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	Maxrate    *string                                                               `json:"Maxrate,omitempty" xml:"Maxrate,omitempty"`
+	MaxFps     *string                                                               `json:"MaxFps,omitempty" xml:"MaxFps,omitempty"`
+	Profile    *string                                                               `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	Crf        *string                                                               `json:"Crf,omitempty" xml:"Crf,omitempty"`
+	Gop        *string                                                               `json:"Gop,omitempty" xml:"Gop,omitempty"`
+	Width      *string                                                               `json:"Width,omitempty" xml:"Width,omitempty"`
+	Fps        *string                                                               `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	Preset     *string                                                               `json:"Preset,omitempty" xml:"Preset,omitempty"`
+	ScanMode   *string                                                               `json:"ScanMode,omitempty" xml:"ScanMode,omitempty"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo) SetBufsize(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo {
+	s.Bufsize = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo) SetDegrain(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo {
+	s.Degrain = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo) SetBitrateBnd(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideoBitrateBnd) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo {
+	s.BitrateBnd = v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo) SetPixFmt(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo {
+	s.PixFmt = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo) SetPad(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo {
+	s.Pad = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo) SetCodec(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo {
+	s.Codec = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo) SetHeight(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo {
+	s.Height = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo) SetQscale(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo {
+	s.Qscale = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo) SetCrop(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo {
+	s.Crop = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo) SetBitrate(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo {
+	s.Bitrate = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo) SetMaxrate(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo {
+	s.Maxrate = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo) SetMaxFps(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo {
+	s.MaxFps = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo) SetProfile(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo {
+	s.Profile = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo) SetCrf(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo {
+	s.Crf = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo) SetGop(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo {
+	s.Gop = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo) SetWidth(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo {
+	s.Width = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo) SetFps(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo {
+	s.Fps = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo) SetPreset(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo {
+	s.Preset = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo) SetScanMode(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo {
+	s.ScanMode = &v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideoBitrateBnd struct {
+	Max *string `json:"Max,omitempty" xml:"Max,omitempty"`
+	Min *string `json:"Min,omitempty" xml:"Min,omitempty"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideoBitrateBnd) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideoBitrateBnd) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideoBitrateBnd) SetMax(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideoBitrateBnd {
+	s.Max = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideoBitrateBnd) SetMin(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideoBitrateBnd {
+	s.Min = &v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig struct {
+	IsCheckAudioBitrate     *string `json:"IsCheckAudioBitrate,omitempty" xml:"IsCheckAudioBitrate,omitempty"`
+	IsCheckReso             *string `json:"IsCheckReso,omitempty" xml:"IsCheckReso,omitempty"`
+	TransMode               *string `json:"TransMode,omitempty" xml:"TransMode,omitempty"`
+	IsCheckVideoBitrateFail *string `json:"IsCheckVideoBitrateFail,omitempty" xml:"IsCheckVideoBitrateFail,omitempty"`
+	AdjDarMethod            *string `json:"AdjDarMethod,omitempty" xml:"AdjDarMethod,omitempty"`
+	Duration                *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	IsCheckVideoBitrate     *string `json:"IsCheckVideoBitrate,omitempty" xml:"IsCheckVideoBitrate,omitempty"`
+	IsCheckResoFail         *string `json:"IsCheckResoFail,omitempty" xml:"IsCheckResoFail,omitempty"`
+	IsCheckAudioBitrateFail *string `json:"IsCheckAudioBitrateFail,omitempty" xml:"IsCheckAudioBitrateFail,omitempty"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig) SetIsCheckAudioBitrate(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig {
+	s.IsCheckAudioBitrate = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig) SetIsCheckReso(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig {
+	s.IsCheckReso = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig) SetTransMode(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig {
+	s.TransMode = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig) SetIsCheckVideoBitrateFail(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig {
+	s.IsCheckVideoBitrateFail = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig) SetAdjDarMethod(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig {
+	s.AdjDarMethod = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig) SetDuration(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig {
+	s.Duration = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig) SetIsCheckVideoBitrate(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig {
+	s.IsCheckVideoBitrate = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig) SetIsCheckResoFail(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig {
+	s.IsCheckResoFail = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig) SetIsCheckAudioBitrateFail(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig {
+	s.IsCheckAudioBitrateFail = &v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobTranscodeOutputEncryption struct {
+	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Key     *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	KeyType *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
+	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	KeyUri  *string `json:"KeyUri,omitempty" xml:"KeyUri,omitempty"`
+	SkipCnt *string `json:"SkipCnt,omitempty" xml:"SkipCnt,omitempty"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputEncryption) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputEncryption) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputEncryption) SetType(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputEncryption {
+	s.Type = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputEncryption) SetKey(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputEncryption {
+	s.Key = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputEncryption) SetKeyType(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputEncryption {
+	s.KeyType = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputEncryption) SetId(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputEncryption {
+	s.Id = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputEncryption) SetKeyUri(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputEncryption {
+	s.KeyUri = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputEncryption) SetSkipCnt(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputEncryption {
+	s.SkipCnt = &v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkList struct {
+	WaterMark []*SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMark `json:"WaterMark,omitempty" xml:"WaterMark,omitempty" type:"Repeated"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkList) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkList) SetWaterMark(v []*SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMark) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkList {
+	s.WaterMark = v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMark struct {
+	Type                *string                                                                               `json:"Type,omitempty" xml:"Type,omitempty"`
+	ReferPos            *string                                                                               `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
+	Dx                  *string                                                                               `json:"Dx,omitempty" xml:"Dx,omitempty"`
+	Width               *string                                                                               `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height              *string                                                                               `json:"Height,omitempty" xml:"Height,omitempty"`
+	InputFile           *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMarkInputFile `json:"InputFile,omitempty" xml:"InputFile,omitempty" type:"Struct"`
+	WaterMarkTemplateId *string                                                                               `json:"WaterMarkTemplateId,omitempty" xml:"WaterMarkTemplateId,omitempty"`
+	Dy                  *string                                                                               `json:"Dy,omitempty" xml:"Dy,omitempty"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMark) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMark) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMark) SetType(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMark {
+	s.Type = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMark) SetReferPos(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMark {
+	s.ReferPos = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMark) SetDx(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMark {
+	s.Dx = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMark) SetWidth(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMark {
+	s.Width = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMark) SetHeight(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMark {
+	s.Height = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMark) SetInputFile(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMarkInputFile) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMark {
+	s.InputFile = v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMark) SetWaterMarkTemplateId(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMark {
+	s.WaterMarkTemplateId = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMark) SetDy(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMark {
+	s.Dy = &v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMarkInputFile struct {
+	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMarkInputFile) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMarkInputFile) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMarkInputFile) SetObject(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMarkInputFile {
+	s.Object = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMarkInputFile) SetLocation(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMarkInputFile {
+	s.Location = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMarkInputFile) SetBucket(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMarkInputFile {
+	s.Bucket = &v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobTranscodeOutputM3U8NonStandardSupport struct {
+	TS *SubmitComplexJobResponseBodyComplexJobTranscodeOutputM3U8NonStandardSupportTS `json:"TS,omitempty" xml:"TS,omitempty" type:"Struct"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputM3U8NonStandardSupport) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputM3U8NonStandardSupport) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputM3U8NonStandardSupport) SetTS(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputM3U8NonStandardSupportTS) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputM3U8NonStandardSupport {
+	s.TS = v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobTranscodeOutputM3U8NonStandardSupportTS struct {
+	SizeSupport *bool `json:"SizeSupport,omitempty" xml:"SizeSupport,omitempty"`
+	Md5Support  *bool `json:"Md5Support,omitempty" xml:"Md5Support,omitempty"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputM3U8NonStandardSupportTS) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputM3U8NonStandardSupportTS) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputM3U8NonStandardSupportTS) SetSizeSupport(v bool) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputM3U8NonStandardSupportTS {
+	s.SizeSupport = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputM3U8NonStandardSupportTS) SetMd5Support(v bool) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputM3U8NonStandardSupportTS {
+	s.Md5Support = &v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudio struct {
+	Profile    *string                                                           `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	Codec      *string                                                           `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	Samplerate *string                                                           `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
+	Qscale     *string                                                           `json:"Qscale,omitempty" xml:"Qscale,omitempty"`
+	Channels   *string                                                           `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	Volume     *SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudioVolume `json:"Volume,omitempty" xml:"Volume,omitempty" type:"Struct"`
+	Bitrate    *string                                                           `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudio) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudio) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudio) SetProfile(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudio {
+	s.Profile = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudio) SetCodec(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudio {
+	s.Codec = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudio) SetSamplerate(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudio {
+	s.Samplerate = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudio) SetQscale(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudio {
+	s.Qscale = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudio) SetChannels(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudio {
+	s.Channels = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudio) SetVolume(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudioVolume) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudio {
+	s.Volume = v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudio) SetBitrate(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudio {
+	s.Bitrate = &v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudioVolume struct {
+	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	Level  *string `json:"Level,omitempty" xml:"Level,omitempty"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudioVolume) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudioVolume) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudioVolume) SetMethod(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudioVolume {
+	s.Method = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudioVolume) SetLevel(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudioVolume {
+	s.Level = &v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobTranscodeOutputMergeList struct {
+	Merge []*SubmitComplexJobResponseBodyComplexJobTranscodeOutputMergeListMerge `json:"Merge,omitempty" xml:"Merge,omitempty" type:"Repeated"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputMergeList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputMergeList) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMergeList) SetMerge(v []*SubmitComplexJobResponseBodyComplexJobTranscodeOutputMergeListMerge) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMergeList {
+	s.Merge = v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobTranscodeOutputMergeListMerge struct {
+	Start    *string `json:"Start,omitempty" xml:"Start,omitempty"`
+	RoleArn  *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	MergeURL *string `json:"MergeURL,omitempty" xml:"MergeURL,omitempty"`
+	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputMergeListMerge) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputMergeListMerge) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMergeListMerge) SetStart(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMergeListMerge {
+	s.Start = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMergeListMerge) SetRoleArn(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMergeListMerge {
+	s.RoleArn = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMergeListMerge) SetMergeURL(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMergeListMerge {
+	s.MergeURL = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMergeListMerge) SetDuration(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMergeListMerge {
+	s.Duration = &v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobTranscodeOutputSuperReso struct {
+	IsHalfSample *string `json:"IsHalfSample,omitempty" xml:"IsHalfSample,omitempty"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputSuperReso) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputSuperReso) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSuperReso) SetIsHalfSample(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSuperReso {
+	s.IsHalfSample = &v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobTranscodeOutputDigiWaterMark struct {
+	Type      *string                                                                      `json:"Type,omitempty" xml:"Type,omitempty"`
+	Alpha     *string                                                                      `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	InputFile *SubmitComplexJobResponseBodyComplexJobTranscodeOutputDigiWaterMarkInputFile `json:"InputFile,omitempty" xml:"InputFile,omitempty" type:"Struct"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputDigiWaterMark) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputDigiWaterMark) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputDigiWaterMark) SetType(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputDigiWaterMark {
+	s.Type = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputDigiWaterMark) SetAlpha(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputDigiWaterMark {
+	s.Alpha = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputDigiWaterMark) SetInputFile(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputDigiWaterMarkInputFile) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputDigiWaterMark {
+	s.InputFile = v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobTranscodeOutputDigiWaterMarkInputFile struct {
+	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputDigiWaterMarkInputFile) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputDigiWaterMarkInputFile) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputDigiWaterMarkInputFile) SetObject(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputDigiWaterMarkInputFile {
+	s.Object = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputDigiWaterMarkInputFile) SetLocation(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputDigiWaterMarkInputFile {
+	s.Location = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputDigiWaterMarkInputFile) SetBucket(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputDigiWaterMarkInputFile {
+	s.Bucket = &v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobTranscodeOutputOutputFile struct {
+	RoleArn  *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputOutputFile) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputOutputFile) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputOutputFile) SetRoleArn(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputOutputFile {
+	s.RoleArn = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputOutputFile) SetObject(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputOutputFile {
+	s.Object = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputOutputFile) SetLocation(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputOutputFile {
+	s.Location = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputOutputFile) SetBucket(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputOutputFile {
+	s.Bucket = &v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobTranscodeOutputContainer struct {
+	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputContainer) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputContainer) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputContainer) SetFormat(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputContainer {
+	s.Format = &v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobTranscodeOutputClip struct {
+	TimeSpan *SubmitComplexJobResponseBodyComplexJobTranscodeOutputClipTimeSpan `json:"TimeSpan,omitempty" xml:"TimeSpan,omitempty" type:"Struct"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputClip) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputClip) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputClip) SetTimeSpan(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputClipTimeSpan) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputClip {
+	s.TimeSpan = v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobTranscodeOutputClipTimeSpan struct {
+	Seek     *string `json:"Seek,omitempty" xml:"Seek,omitempty"`
+	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputClipTimeSpan) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputClipTimeSpan) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputClipTimeSpan) SetSeek(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputClipTimeSpan {
+	s.Seek = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputClipTimeSpan) SetDuration(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputClipTimeSpan {
+	s.Duration = &v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfig struct {
+	Gif     *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfigGif     `json:"Gif,omitempty" xml:"Gif,omitempty" type:"Struct"`
+	Segment *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfigSegment `json:"Segment,omitempty" xml:"Segment,omitempty" type:"Struct"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfig) SetGif(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfigGif) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfig {
+	s.Gif = v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfig) SetSegment(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfigSegment) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfig {
+	s.Segment = v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfigGif struct {
+	FinalDelay      *string `json:"FinalDelay,omitempty" xml:"FinalDelay,omitempty"`
+	DitherMode      *string `json:"DitherMode,omitempty" xml:"DitherMode,omitempty"`
+	Loop            *string `json:"Loop,omitempty" xml:"Loop,omitempty"`
+	IsCustomPalette *string `json:"IsCustomPalette,omitempty" xml:"IsCustomPalette,omitempty"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfigGif) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfigGif) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfigGif) SetFinalDelay(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfigGif {
+	s.FinalDelay = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfigGif) SetDitherMode(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfigGif {
+	s.DitherMode = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfigGif) SetLoop(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfigGif {
+	s.Loop = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfigGif) SetIsCustomPalette(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfigGif {
+	s.IsCustomPalette = &v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfigSegment struct {
+	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfigSegment) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfigSegment) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfigSegment) SetDuration(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfigSegment {
+	s.Duration = &v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfig struct {
+	ExtSubtitleList *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleList `json:"ExtSubtitleList,omitempty" xml:"ExtSubtitleList,omitempty" type:"Struct"`
+	SubtitleList    *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigSubtitleList    `json:"SubtitleList,omitempty" xml:"SubtitleList,omitempty" type:"Struct"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfig) SetExtSubtitleList(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleList) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfig {
+	s.ExtSubtitleList = v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfig) SetSubtitleList(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigSubtitleList) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfig {
+	s.SubtitleList = v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleList struct {
+	ExtSubtitle []*SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleListExtSubtitle `json:"ExtSubtitle,omitempty" xml:"ExtSubtitle,omitempty" type:"Repeated"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleList) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleList) SetExtSubtitle(v []*SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleListExtSubtitle) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleList {
+	s.ExtSubtitle = v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleListExtSubtitle struct {
+	CharEnc  *string                                                                                             `json:"CharEnc,omitempty" xml:"CharEnc,omitempty"`
+	FontName *string                                                                                             `json:"FontName,omitempty" xml:"FontName,omitempty"`
+	Input    *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleListExtSubtitleInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleListExtSubtitle) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleListExtSubtitle) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleListExtSubtitle) SetCharEnc(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleListExtSubtitle {
+	s.CharEnc = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleListExtSubtitle) SetFontName(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleListExtSubtitle {
+	s.FontName = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleListExtSubtitle) SetInput(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleListExtSubtitleInput) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleListExtSubtitle {
+	s.Input = v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleListExtSubtitleInput struct {
+	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleListExtSubtitleInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleListExtSubtitleInput) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleListExtSubtitleInput) SetObject(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleListExtSubtitleInput {
+	s.Object = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleListExtSubtitleInput) SetLocation(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleListExtSubtitleInput {
+	s.Location = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleListExtSubtitleInput) SetBucket(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleListExtSubtitleInput {
+	s.Bucket = &v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigSubtitleList struct {
+	Subtitle []*SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigSubtitleListSubtitle `json:"Subtitle,omitempty" xml:"Subtitle,omitempty" type:"Repeated"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigSubtitleList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigSubtitleList) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigSubtitleList) SetSubtitle(v []*SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigSubtitleListSubtitle) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigSubtitleList {
+	s.Subtitle = v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigSubtitleListSubtitle struct {
+	Map *string `json:"Map,omitempty" xml:"Map,omitempty"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigSubtitleListSubtitle) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigSubtitleListSubtitle) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigSubtitleListSubtitle) SetMap(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigSubtitleListSubtitle {
+	s.Map = &v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties struct {
+	Width      *string                                                                 `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height     *string                                                                 `json:"Height,omitempty" xml:"Height,omitempty"`
+	Duration   *string                                                                 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Fps        *string                                                                 `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	Bitrate    *string                                                                 `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	FileFormat *string                                                                 `json:"FileFormat,omitempty" xml:"FileFormat,omitempty"`
+	Streams    *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreams `json:"Streams,omitempty" xml:"Streams,omitempty" type:"Struct"`
+	Format     *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesFormat  `json:"Format,omitempty" xml:"Format,omitempty" type:"Struct"`
+	FileSize   *string                                                                 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties) SetWidth(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties {
+	s.Width = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties) SetHeight(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties {
+	s.Height = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties) SetDuration(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties {
+	s.Duration = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties) SetFps(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties {
+	s.Fps = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties) SetBitrate(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties {
+	s.Bitrate = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties) SetFileFormat(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties {
+	s.FileFormat = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties) SetStreams(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreams) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties {
+	s.Streams = v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties) SetFormat(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesFormat) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties {
+	s.Format = v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties) SetFileSize(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties {
+	s.FileSize = &v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreams struct {
+	VideoStreamList    *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamList    `json:"VideoStreamList,omitempty" xml:"VideoStreamList,omitempty" type:"Struct"`
+	AudioStreamList    *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamList    `json:"AudioStreamList,omitempty" xml:"AudioStreamList,omitempty" type:"Struct"`
+	SubtitleStreamList *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsSubtitleStreamList `json:"SubtitleStreamList,omitempty" xml:"SubtitleStreamList,omitempty" type:"Struct"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreams) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreams) SetVideoStreamList(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamList) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreams {
+	s.VideoStreamList = v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreams) SetAudioStreamList(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamList) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreams {
+	s.AudioStreamList = v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreams) SetSubtitleStreamList(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsSubtitleStreamList) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreams {
+	s.SubtitleStreamList = v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamList struct {
+	VideoStream []*SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream `json:"VideoStream,omitempty" xml:"VideoStream,omitempty" type:"Repeated"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamList) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamList) SetVideoStream(v []*SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamList {
+	s.VideoStream = v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream struct {
+	Index          *string                                                                                                      `json:"Index,omitempty" xml:"Index,omitempty"`
+	Timebase       *string                                                                                                      `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
+	AvgFPS         *string                                                                                                      `json:"AvgFPS,omitempty" xml:"AvgFPS,omitempty"`
+	PixFmt         *string                                                                                                      `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
+	Sar            *string                                                                                                      `json:"Sar,omitempty" xml:"Sar,omitempty"`
+	Lang           *string                                                                                                      `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	CodecLongName  *string                                                                                                      `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	Height         *string                                                                                                      `json:"Height,omitempty" xml:"Height,omitempty"`
+	NumFrames      *string                                                                                                      `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
+	Bitrate        *string                                                                                                      `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	CodecTagString *string                                                                                                      `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
+	HasBFrames     *string                                                                                                      `json:"HasBFrames,omitempty" xml:"HasBFrames,omitempty"`
+	Profile        *string                                                                                                      `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	StartTime      *string                                                                                                      `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	NetworkCost    *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStreamNetworkCost `json:"NetworkCost,omitempty" xml:"NetworkCost,omitempty" type:"Struct"`
+	Dar            *string                                                                                                      `json:"Dar,omitempty" xml:"Dar,omitempty"`
+	CodecName      *string                                                                                                      `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	Width          *string                                                                                                      `json:"Width,omitempty" xml:"Width,omitempty"`
+	Duration       *string                                                                                                      `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Fps            *string                                                                                                      `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	CodecTag       *string                                                                                                      `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
+	CodecTimeBase  *string                                                                                                      `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	Level          *string                                                                                                      `json:"Level,omitempty" xml:"Level,omitempty"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) SetIndex(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream {
+	s.Index = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) SetTimebase(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream {
+	s.Timebase = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) SetAvgFPS(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream {
+	s.AvgFPS = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) SetPixFmt(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream {
+	s.PixFmt = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) SetSar(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream {
+	s.Sar = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) SetLang(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream {
+	s.Lang = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) SetCodecLongName(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream {
+	s.CodecLongName = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) SetHeight(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream {
+	s.Height = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) SetNumFrames(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream {
+	s.NumFrames = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) SetBitrate(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream {
+	s.Bitrate = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) SetCodecTagString(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream {
+	s.CodecTagString = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) SetHasBFrames(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream {
+	s.HasBFrames = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) SetProfile(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream {
+	s.Profile = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) SetStartTime(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream {
+	s.StartTime = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) SetNetworkCost(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStreamNetworkCost) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream {
+	s.NetworkCost = v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) SetDar(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream {
+	s.Dar = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) SetCodecName(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream {
+	s.CodecName = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) SetWidth(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream {
+	s.Width = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) SetDuration(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream {
+	s.Duration = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) SetFps(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream {
+	s.Fps = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) SetCodecTag(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream {
+	s.CodecTag = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) SetCodecTimeBase(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream {
+	s.CodecTimeBase = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) SetLevel(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream {
+	s.Level = &v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStreamNetworkCost struct {
+	PreloadTime   *string `json:"PreloadTime,omitempty" xml:"PreloadTime,omitempty"`
+	AvgBitrate    *string `json:"AvgBitrate,omitempty" xml:"AvgBitrate,omitempty"`
+	CostBandwidth *string `json:"CostBandwidth,omitempty" xml:"CostBandwidth,omitempty"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStreamNetworkCost) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStreamNetworkCost) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStreamNetworkCost) SetPreloadTime(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStreamNetworkCost {
+	s.PreloadTime = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStreamNetworkCost) SetAvgBitrate(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStreamNetworkCost {
+	s.AvgBitrate = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStreamNetworkCost) SetCostBandwidth(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStreamNetworkCost {
+	s.CostBandwidth = &v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamList struct {
+	AudioStream []*SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream `json:"AudioStream,omitempty" xml:"AudioStream,omitempty" type:"Repeated"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamList) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamList) SetAudioStream(v []*SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamList {
+	s.AudioStream = v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream struct {
+	Timebase       *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
+	Index          *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	SampleFmt      *string `json:"SampleFmt,omitempty" xml:"SampleFmt,omitempty"`
+	ChannelLayout  *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
+	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Samplerate     *string `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
+	CodecLongName  *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	Channels       *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	NumFrames      *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
+	Bitrate        *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	CodecName      *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	CodecTag       *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
+	CodecTimeBase  *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream) SetTimebase(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream {
+	s.Timebase = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream) SetIndex(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream {
+	s.Index = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream) SetSampleFmt(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream {
+	s.SampleFmt = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream) SetChannelLayout(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream {
+	s.ChannelLayout = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream) SetLang(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream {
+	s.Lang = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream) SetSamplerate(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream {
+	s.Samplerate = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream) SetCodecLongName(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream {
+	s.CodecLongName = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream) SetChannels(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream {
+	s.Channels = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream) SetNumFrames(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream {
+	s.NumFrames = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream) SetBitrate(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream {
+	s.Bitrate = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream) SetCodecTagString(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream {
+	s.CodecTagString = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream) SetStartTime(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream {
+	s.StartTime = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream) SetCodecName(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream {
+	s.CodecName = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream) SetDuration(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream {
+	s.Duration = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream) SetCodecTag(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream {
+	s.CodecTag = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream) SetCodecTimeBase(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream {
+	s.CodecTimeBase = &v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsSubtitleStreamList struct {
+	SubtitleStream []*SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsSubtitleStreamListSubtitleStream `json:"SubtitleStream,omitempty" xml:"SubtitleStream,omitempty" type:"Repeated"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsSubtitleStreamList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsSubtitleStreamList) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsSubtitleStreamList) SetSubtitleStream(v []*SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsSubtitleStreamListSubtitleStream) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsSubtitleStreamList {
+	s.SubtitleStream = v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsSubtitleStreamListSubtitleStream struct {
+	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	Lang  *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsSubtitleStreamListSubtitleStream) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsSubtitleStreamListSubtitleStream) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsSubtitleStreamListSubtitleStream) SetIndex(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsSubtitleStreamListSubtitleStream {
+	s.Index = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsSubtitleStreamListSubtitleStream) SetLang(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsSubtitleStreamListSubtitleStream {
+	s.Lang = &v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesFormat struct {
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	NumPrograms    *string `json:"NumPrograms,omitempty" xml:"NumPrograms,omitempty"`
+	Size           *string `json:"Size,omitempty" xml:"Size,omitempty"`
+	NumStreams     *string `json:"NumStreams,omitempty" xml:"NumStreams,omitempty"`
+	FormatLongName *string `json:"FormatLongName,omitempty" xml:"FormatLongName,omitempty"`
+	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Bitrate        *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	FormatName     *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesFormat) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesFormat) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesFormat) SetStartTime(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesFormat {
+	s.StartTime = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesFormat) SetNumPrograms(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesFormat {
+	s.NumPrograms = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesFormat) SetSize(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesFormat {
+	s.Size = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesFormat) SetNumStreams(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesFormat {
+	s.NumStreams = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesFormat) SetFormatLongName(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesFormat {
+	s.FormatLongName = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesFormat) SetDuration(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesFormat {
+	s.Duration = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesFormat) SetBitrate(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesFormat {
+	s.Bitrate = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesFormat) SetFormatName(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesFormat {
+	s.FormatName = &v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobMNSMessageResult struct {
+	MessageId    *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobMNSMessageResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobMNSMessageResult) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobMNSMessageResult) SetMessageId(v string) *SubmitComplexJobResponseBodyComplexJobMNSMessageResult {
+	s.MessageId = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobMNSMessageResult) SetErrorMessage(v string) *SubmitComplexJobResponseBodyComplexJobMNSMessageResult {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobMNSMessageResult) SetErrorCode(v string) *SubmitComplexJobResponseBodyComplexJobMNSMessageResult {
+	s.ErrorCode = &v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobComplexEditingConfigs struct {
+	ComplexEditingConfigs []*SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigs `json:"ComplexEditingConfigs,omitempty" xml:"ComplexEditingConfigs,omitempty" type:"Repeated"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigs) SetComplexEditingConfigs(v []*SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigs) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigs {
+	s.ComplexEditingConfigs = v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigs struct {
+	Editing *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditing `json:"Editing,omitempty" xml:"Editing,omitempty" type:"Struct"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigs) SetEditing(v *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditing) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigs {
+	s.Editing = v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditing struct {
+	Timeline *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimeline `json:"Timeline,omitempty" xml:"Timeline,omitempty" type:"Struct"`
+	ClipList *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipList `json:"ClipList,omitempty" xml:"ClipList,omitempty" type:"Struct"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditing) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditing) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditing) SetTimeline(v *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimeline) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditing {
+	s.Timeline = v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditing) SetClipList(v *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipList) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditing {
+	s.ClipList = v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimeline struct {
+	TrackList      *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackList      `json:"TrackList,omitempty" xml:"TrackList,omitempty" type:"Struct"`
+	TimelineConfig *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfig `json:"TimelineConfig,omitempty" xml:"TimelineConfig,omitempty" type:"Struct"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimeline) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimeline) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimeline) SetTrackList(v *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackList) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimeline {
+	s.TrackList = v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimeline) SetTimelineConfig(v *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfig) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimeline {
+	s.TimelineConfig = v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackList struct {
+	Track []*SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrack `json:"Track,omitempty" xml:"Track,omitempty" type:"Repeated"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackList) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackList) SetTrack(v []*SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrack) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackList {
+	s.Track = v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrack struct {
+	Type  *string                                                                                                             `json:"Type,omitempty" xml:"Type,omitempty"`
+	Order *string                                                                                                             `json:"Order,omitempty" xml:"Order,omitempty"`
+	Id    *string                                                                                                             `json:"Id,omitempty" xml:"Id,omitempty"`
+	Clips *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClips `json:"Clips,omitempty" xml:"Clips,omitempty" type:"Struct"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrack) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrack) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrack) SetType(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrack {
+	s.Type = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrack) SetOrder(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrack {
+	s.Order = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrack) SetId(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrack {
+	s.Id = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrack) SetClips(v *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClips) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrack {
+	s.Clips = v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClips struct {
+	Clip []*SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClip `json:"Clip,omitempty" xml:"Clip,omitempty" type:"Repeated"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClips) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClips) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClips) SetClip(v []*SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClip) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClips {
+	s.Clip = v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClip struct {
+	ClipsConfig *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClipClipsConfig `json:"ClipsConfig,omitempty" xml:"ClipsConfig,omitempty" type:"Struct"`
+	Out         *string                                                                                                                            `json:"Out,omitempty" xml:"Out,omitempty"`
+	In          *string                                                                                                                            `json:"In,omitempty" xml:"In,omitempty"`
+	ClipID      *string                                                                                                                            `json:"clipID,omitempty" xml:"clipID,omitempty"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClip) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClip) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClip) SetClipsConfig(v *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClipClipsConfig) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClip {
+	s.ClipsConfig = v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClip) SetOut(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClip {
+	s.Out = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClip) SetIn(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClip {
+	s.In = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClip) SetClipID(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClip {
+	s.ClipID = &v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClipClipsConfig struct {
+	ClipsConfigVideo *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClipClipsConfigClipsConfigVideo `json:"ClipsConfigVideo,omitempty" xml:"ClipsConfigVideo,omitempty" type:"Struct"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClipClipsConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClipClipsConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClipClipsConfig) SetClipsConfigVideo(v *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClipClipsConfigClipsConfigVideo) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClipClipsConfig {
+	s.ClipsConfigVideo = v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClipClipsConfigClipsConfigVideo struct {
+	T *string `json:"T,omitempty" xml:"T,omitempty"`
+	L *string `json:"L,omitempty" xml:"L,omitempty"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClipClipsConfigClipsConfigVideo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClipClipsConfigClipsConfigVideo) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClipClipsConfigClipsConfigVideo) SetT(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClipClipsConfigClipsConfigVideo {
+	s.T = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClipClipsConfigClipsConfigVideo) SetL(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClipClipsConfigClipsConfigVideo {
+	s.L = &v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfig struct {
+	TimelineConfigAudio *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigAudio `json:"TimelineConfigAudio,omitempty" xml:"TimelineConfigAudio,omitempty" type:"Struct"`
+	TimelineConfigVideo *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigVideo `json:"TimelineConfigVideo,omitempty" xml:"TimelineConfigVideo,omitempty" type:"Struct"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfig) SetTimelineConfigAudio(v *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigAudio) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfig {
+	s.TimelineConfigAudio = v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfig) SetTimelineConfigVideo(v *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigVideo) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfig {
+	s.TimelineConfigVideo = v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigAudio struct {
+	ChannelLayout *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
+	Samplerate    *string `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
+	Channels      *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigAudio) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigAudio) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigAudio) SetChannelLayout(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigAudio {
+	s.ChannelLayout = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigAudio) SetSamplerate(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigAudio {
+	s.Samplerate = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigAudio) SetChannels(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigAudio {
+	s.Channels = &v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigVideo struct {
+	BgColor        *string `json:"BgColor,omitempty" xml:"BgColor,omitempty"`
+	Width          *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	RenderRatio    *string `json:"RenderRatio,omitempty" xml:"RenderRatio,omitempty"`
+	IsGpuData      *string `json:"IsGpuData,omitempty" xml:"IsGpuData,omitempty"`
+	Height         *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	IsOneTrackData *string `json:"IsOneTrackData,omitempty" xml:"IsOneTrackData,omitempty"`
+	Fps            *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	ReclosePrec    *string `json:"ReclosePrec,omitempty" xml:"ReclosePrec,omitempty"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigVideo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigVideo) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigVideo) SetBgColor(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigVideo {
+	s.BgColor = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigVideo) SetWidth(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigVideo {
+	s.Width = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigVideo) SetRenderRatio(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigVideo {
+	s.RenderRatio = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigVideo) SetIsGpuData(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigVideo {
+	s.IsGpuData = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigVideo) SetHeight(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigVideo {
+	s.Height = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigVideo) SetIsOneTrackData(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigVideo {
+	s.IsOneTrackData = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigVideo) SetFps(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigVideo {
+	s.Fps = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigVideo) SetReclosePrec(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigVideo {
+	s.ReclosePrec = &v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipList struct {
+	Clip []*SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClip `json:"Clip,omitempty" xml:"Clip,omitempty" type:"Repeated"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipList) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipList) SetClip(v []*SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClip) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipList {
+	s.Clip = v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClip struct {
+	Type          *string                                                                                                     `json:"Type,omitempty" xml:"Type,omitempty"`
+	SourceID      *string                                                                                                     `json:"SourceID,omitempty" xml:"SourceID,omitempty"`
+	Effects       *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClipEffects `json:"Effects,omitempty" xml:"Effects,omitempty" type:"Struct"`
+	SourceType    *string                                                                                                     `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	SourceStrmMap *string                                                                                                     `json:"SourceStrmMap,omitempty" xml:"SourceStrmMap,omitempty"`
+	Out           *string                                                                                                     `json:"Out,omitempty" xml:"Out,omitempty"`
+	In            *string                                                                                                     `json:"In,omitempty" xml:"In,omitempty"`
+	Id            *string                                                                                                     `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClip) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClip) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClip) SetType(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClip {
+	s.Type = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClip) SetSourceID(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClip {
+	s.SourceID = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClip) SetEffects(v *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClipEffects) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClip {
+	s.Effects = v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClip) SetSourceType(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClip {
+	s.SourceType = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClip) SetSourceStrmMap(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClip {
+	s.SourceStrmMap = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClip) SetOut(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClip {
+	s.Out = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClip) SetIn(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClip {
+	s.In = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClip) SetId(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClip {
+	s.Id = &v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClipEffects struct {
+	Effect []*SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClipEffectsEffect `json:"Effect,omitempty" xml:"Effect,omitempty" type:"Repeated"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClipEffects) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClipEffects) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClipEffects) SetEffect(v []*SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClipEffectsEffect) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClipEffects {
+	s.Effect = v
+	return s
+}
+
+type SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClipEffectsEffect struct {
+	Effect       *string `json:"Effect,omitempty" xml:"Effect,omitempty"`
+	EffectConfig *string `json:"EffectConfig,omitempty" xml:"EffectConfig,omitempty"`
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClipEffectsEffect) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClipEffectsEffect) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClipEffectsEffect) SetEffect(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClipEffectsEffect {
+	s.Effect = &v
+	return s
+}
+
+func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClipEffectsEffect) SetEffectConfig(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClipEffectsEffect {
+	s.EffectConfig = &v
 	return s
 }
 
@@ -42878,9 +45810,9 @@ func (s *SubmitComplexJobResponseBodyComplexJobInputsInputsEditingInputs) SetEdi
 }
 
 type SubmitComplexJobResponseBodyComplexJobInputsInputsEditingInputsEditingInput struct {
-	Id          *string                                                                                 `json:"Id,omitempty" xml:"Id,omitempty"`
 	InputFile   *SubmitComplexJobResponseBodyComplexJobInputsInputsEditingInputsEditingInputInputFile   `json:"InputFile,omitempty" xml:"InputFile,omitempty" type:"Struct"`
 	InputConfig *SubmitComplexJobResponseBodyComplexJobInputsInputsEditingInputsEditingInputInputConfig `json:"InputConfig,omitempty" xml:"InputConfig,omitempty" type:"Struct"`
+	Id          *string                                                                                 `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
 func (s SubmitComplexJobResponseBodyComplexJobInputsInputsEditingInputsEditingInput) String() string {
@@ -42889,11 +45821,6 @@ func (s SubmitComplexJobResponseBodyComplexJobInputsInputsEditingInputsEditingIn
 
 func (s SubmitComplexJobResponseBodyComplexJobInputsInputsEditingInputsEditingInput) GoString() string {
 	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobInputsInputsEditingInputsEditingInput) SetId(v string) *SubmitComplexJobResponseBodyComplexJobInputsInputsEditingInputsEditingInput {
-	s.Id = &v
-	return s
 }
 
 func (s *SubmitComplexJobResponseBodyComplexJobInputsInputsEditingInputsEditingInput) SetInputFile(v *SubmitComplexJobResponseBodyComplexJobInputsInputsEditingInputsEditingInputInputFile) *SubmitComplexJobResponseBodyComplexJobInputsInputsEditingInputsEditingInput {
@@ -42906,10 +45833,15 @@ func (s *SubmitComplexJobResponseBodyComplexJobInputsInputsEditingInputsEditingI
 	return s
 }
 
+func (s *SubmitComplexJobResponseBodyComplexJobInputsInputsEditingInputsEditingInput) SetId(v string) *SubmitComplexJobResponseBodyComplexJobInputsInputsEditingInputsEditingInput {
+	s.Id = &v
+	return s
+}
+
 type SubmitComplexJobResponseBodyComplexJobInputsInputsEditingInputsEditingInputInputFile struct {
-	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
 	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
 }
 
 func (s SubmitComplexJobResponseBodyComplexJobInputsInputsEditingInputsEditingInputInputFile) String() string {
@@ -42920,8 +45852,8 @@ func (s SubmitComplexJobResponseBodyComplexJobInputsInputsEditingInputsEditingIn
 	return s.String()
 }
 
-func (s *SubmitComplexJobResponseBodyComplexJobInputsInputsEditingInputsEditingInputInputFile) SetBucket(v string) *SubmitComplexJobResponseBodyComplexJobInputsInputsEditingInputsEditingInputInputFile {
-	s.Bucket = &v
+func (s *SubmitComplexJobResponseBodyComplexJobInputsInputsEditingInputsEditingInputInputFile) SetObject(v string) *SubmitComplexJobResponseBodyComplexJobInputsInputsEditingInputsEditingInputInputFile {
+	s.Object = &v
 	return s
 }
 
@@ -42930,14 +45862,14 @@ func (s *SubmitComplexJobResponseBodyComplexJobInputsInputsEditingInputsEditingI
 	return s
 }
 
-func (s *SubmitComplexJobResponseBodyComplexJobInputsInputsEditingInputsEditingInputInputFile) SetObject(v string) *SubmitComplexJobResponseBodyComplexJobInputsInputsEditingInputsEditingInputInputFile {
-	s.Object = &v
+func (s *SubmitComplexJobResponseBodyComplexJobInputsInputsEditingInputsEditingInputInputFile) SetBucket(v string) *SubmitComplexJobResponseBodyComplexJobInputsInputsEditingInputsEditingInputInputFile {
+	s.Bucket = &v
 	return s
 }
 
 type SubmitComplexJobResponseBodyComplexJobInputsInputsEditingInputsEditingInputInputConfig struct {
-	DeinterlaceMethod *string `json:"DeinterlaceMethod,omitempty" xml:"DeinterlaceMethod,omitempty"`
 	IsNormalSar       *string `json:"IsNormalSar,omitempty" xml:"IsNormalSar,omitempty"`
+	DeinterlaceMethod *string `json:"DeinterlaceMethod,omitempty" xml:"DeinterlaceMethod,omitempty"`
 }
 
 func (s SubmitComplexJobResponseBodyComplexJobInputsInputsEditingInputsEditingInputInputConfig) String() string {
@@ -42948,2067 +45880,13 @@ func (s SubmitComplexJobResponseBodyComplexJobInputsInputsEditingInputsEditingIn
 	return s.String()
 }
 
-func (s *SubmitComplexJobResponseBodyComplexJobInputsInputsEditingInputsEditingInputInputConfig) SetDeinterlaceMethod(v string) *SubmitComplexJobResponseBodyComplexJobInputsInputsEditingInputsEditingInputInputConfig {
-	s.DeinterlaceMethod = &v
-	return s
-}
-
 func (s *SubmitComplexJobResponseBodyComplexJobInputsInputsEditingInputsEditingInputInputConfig) SetIsNormalSar(v string) *SubmitComplexJobResponseBodyComplexJobInputsInputsEditingInputsEditingInputInputConfig {
 	s.IsNormalSar = &v
 	return s
 }
 
-type SubmitComplexJobResponseBodyComplexJobComplexEditingConfigs struct {
-	ComplexEditingConfigs []*SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigs `json:"ComplexEditingConfigs,omitempty" xml:"ComplexEditingConfigs,omitempty" type:"Repeated"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigs) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigs) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigs) SetComplexEditingConfigs(v []*SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigs) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigs {
-	s.ComplexEditingConfigs = v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigs struct {
-	Editing *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditing `json:"Editing,omitempty" xml:"Editing,omitempty" type:"Struct"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigs) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigs) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigs) SetEditing(v *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditing) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigs {
-	s.Editing = v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditing struct {
-	ClipList *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipList `json:"ClipList,omitempty" xml:"ClipList,omitempty" type:"Struct"`
-	Timeline *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimeline `json:"Timeline,omitempty" xml:"Timeline,omitempty" type:"Struct"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditing) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditing) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditing) SetClipList(v *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipList) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditing {
-	s.ClipList = v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditing) SetTimeline(v *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimeline) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditing {
-	s.Timeline = v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipList struct {
-	Clip []*SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClip `json:"Clip,omitempty" xml:"Clip,omitempty" type:"Repeated"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipList) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipList) SetClip(v []*SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClip) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipList {
-	s.Clip = v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClip struct {
-	Id            *string                                                                                                     `json:"Id,omitempty" xml:"Id,omitempty"`
-	Type          *string                                                                                                     `json:"Type,omitempty" xml:"Type,omitempty"`
-	SourceType    *string                                                                                                     `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	SourceID      *string                                                                                                     `json:"SourceID,omitempty" xml:"SourceID,omitempty"`
-	SourceStrmMap *string                                                                                                     `json:"SourceStrmMap,omitempty" xml:"SourceStrmMap,omitempty"`
-	In            *string                                                                                                     `json:"In,omitempty" xml:"In,omitempty"`
-	Out           *string                                                                                                     `json:"Out,omitempty" xml:"Out,omitempty"`
-	Effects       *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClipEffects `json:"Effects,omitempty" xml:"Effects,omitempty" type:"Struct"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClip) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClip) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClip) SetId(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClip {
-	s.Id = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClip) SetType(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClip {
-	s.Type = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClip) SetSourceType(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClip {
-	s.SourceType = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClip) SetSourceID(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClip {
-	s.SourceID = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClip) SetSourceStrmMap(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClip {
-	s.SourceStrmMap = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClip) SetIn(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClip {
-	s.In = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClip) SetOut(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClip {
-	s.Out = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClip) SetEffects(v *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClipEffects) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClip {
-	s.Effects = v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClipEffects struct {
-	Effect []*SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClipEffectsEffect `json:"Effect,omitempty" xml:"Effect,omitempty" type:"Repeated"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClipEffects) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClipEffects) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClipEffects) SetEffect(v []*SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClipEffectsEffect) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClipEffects {
-	s.Effect = v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClipEffectsEffect struct {
-	Effect       *string `json:"Effect,omitempty" xml:"Effect,omitempty"`
-	EffectConfig *string `json:"EffectConfig,omitempty" xml:"EffectConfig,omitempty"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClipEffectsEffect) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClipEffectsEffect) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClipEffectsEffect) SetEffect(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClipEffectsEffect {
-	s.Effect = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClipEffectsEffect) SetEffectConfig(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingClipListClipEffectsEffect {
-	s.EffectConfig = &v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimeline struct {
-	TrackList      *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackList      `json:"TrackList,omitempty" xml:"TrackList,omitempty" type:"Struct"`
-	TimelineConfig *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfig `json:"TimelineConfig,omitempty" xml:"TimelineConfig,omitempty" type:"Struct"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimeline) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimeline) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimeline) SetTrackList(v *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackList) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimeline {
-	s.TrackList = v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimeline) SetTimelineConfig(v *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfig) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimeline {
-	s.TimelineConfig = v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackList struct {
-	Track []*SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrack `json:"Track,omitempty" xml:"Track,omitempty" type:"Repeated"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackList) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackList) SetTrack(v []*SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrack) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackList {
-	s.Track = v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrack struct {
-	Id    *string                                                                                                             `json:"Id,omitempty" xml:"Id,omitempty"`
-	Type  *string                                                                                                             `json:"Type,omitempty" xml:"Type,omitempty"`
-	Order *string                                                                                                             `json:"Order,omitempty" xml:"Order,omitempty"`
-	Clips *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClips `json:"Clips,omitempty" xml:"Clips,omitempty" type:"Struct"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrack) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrack) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrack) SetId(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrack {
-	s.Id = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrack) SetType(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrack {
-	s.Type = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrack) SetOrder(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrack {
-	s.Order = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrack) SetClips(v *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClips) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrack {
-	s.Clips = v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClips struct {
-	Clip []*SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClip `json:"Clip,omitempty" xml:"Clip,omitempty" type:"Repeated"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClips) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClips) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClips) SetClip(v []*SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClip) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClips {
-	s.Clip = v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClip struct {
-	ClipID      *string                                                                                                                            `json:"clipID,omitempty" xml:"clipID,omitempty"`
-	In          *string                                                                                                                            `json:"In,omitempty" xml:"In,omitempty"`
-	Out         *string                                                                                                                            `json:"Out,omitempty" xml:"Out,omitempty"`
-	ClipsConfig *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClipClipsConfig `json:"ClipsConfig,omitempty" xml:"ClipsConfig,omitempty" type:"Struct"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClip) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClip) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClip) SetClipID(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClip {
-	s.ClipID = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClip) SetIn(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClip {
-	s.In = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClip) SetOut(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClip {
-	s.Out = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClip) SetClipsConfig(v *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClipClipsConfig) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClip {
-	s.ClipsConfig = v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClipClipsConfig struct {
-	ClipsConfigVideo *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClipClipsConfigClipsConfigVideo `json:"ClipsConfigVideo,omitempty" xml:"ClipsConfigVideo,omitempty" type:"Struct"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClipClipsConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClipClipsConfig) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClipClipsConfig) SetClipsConfigVideo(v *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClipClipsConfigClipsConfigVideo) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClipClipsConfig {
-	s.ClipsConfigVideo = v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClipClipsConfigClipsConfigVideo struct {
-	L *string `json:"L,omitempty" xml:"L,omitempty"`
-	T *string `json:"T,omitempty" xml:"T,omitempty"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClipClipsConfigClipsConfigVideo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClipClipsConfigClipsConfigVideo) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClipClipsConfigClipsConfigVideo) SetL(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClipClipsConfigClipsConfigVideo {
-	s.L = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClipClipsConfigClipsConfigVideo) SetT(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTrackListTrackClipsClipClipsConfigClipsConfigVideo {
-	s.T = &v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfig struct {
-	TimelineConfigVideo *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigVideo `json:"TimelineConfigVideo,omitempty" xml:"TimelineConfigVideo,omitempty" type:"Struct"`
-	TimelineConfigAudio *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigAudio `json:"TimelineConfigAudio,omitempty" xml:"TimelineConfigAudio,omitempty" type:"Struct"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfig) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfig) SetTimelineConfigVideo(v *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigVideo) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfig {
-	s.TimelineConfigVideo = v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfig) SetTimelineConfigAudio(v *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigAudio) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfig {
-	s.TimelineConfigAudio = v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigVideo struct {
-	Width          *string `json:"Width,omitempty" xml:"Width,omitempty"`
-	Height         *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	BgColor        *string `json:"BgColor,omitempty" xml:"BgColor,omitempty"`
-	Fps            *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	RenderRatio    *string `json:"RenderRatio,omitempty" xml:"RenderRatio,omitempty"`
-	ReclosePrec    *string `json:"ReclosePrec,omitempty" xml:"ReclosePrec,omitempty"`
-	IsGpuData      *string `json:"IsGpuData,omitempty" xml:"IsGpuData,omitempty"`
-	IsOneTrackData *string `json:"IsOneTrackData,omitempty" xml:"IsOneTrackData,omitempty"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigVideo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigVideo) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigVideo) SetWidth(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigVideo {
-	s.Width = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigVideo) SetHeight(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigVideo {
-	s.Height = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigVideo) SetBgColor(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigVideo {
-	s.BgColor = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigVideo) SetFps(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigVideo {
-	s.Fps = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigVideo) SetRenderRatio(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigVideo {
-	s.RenderRatio = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigVideo) SetReclosePrec(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigVideo {
-	s.ReclosePrec = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigVideo) SetIsGpuData(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigVideo {
-	s.IsGpuData = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigVideo) SetIsOneTrackData(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigVideo {
-	s.IsOneTrackData = &v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigAudio struct {
-	Samplerate    *string `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
-	ChannelLayout *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
-	Channels      *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigAudio) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigAudio) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigAudio) SetSamplerate(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigAudio {
-	s.Samplerate = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigAudio) SetChannelLayout(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigAudio {
-	s.ChannelLayout = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigAudio) SetChannels(v string) *SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingConfigsEditingTimelineTimelineConfigTimelineConfigAudio {
-	s.Channels = &v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobTranscodeOutput struct {
-	TemplateId             *string                                                                      `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	UserData               *string                                                                      `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	Rotate                 *string                                                                      `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
-	VideoStreamMap         *string                                                                      `json:"VideoStreamMap,omitempty" xml:"VideoStreamMap,omitempty"`
-	AudioStreamMap         *string                                                                      `json:"AudioStreamMap,omitempty" xml:"AudioStreamMap,omitempty"`
-	DeWatermark            *string                                                                      `json:"DeWatermark,omitempty" xml:"DeWatermark,omitempty"`
-	Priority               *string                                                                      `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	WaterMarkConfigUrl     *string                                                                      `json:"WaterMarkConfigUrl,omitempty" xml:"WaterMarkConfigUrl,omitempty"`
-	MergeConfigUrl         *string                                                                      `json:"MergeConfigUrl,omitempty" xml:"MergeConfigUrl,omitempty"`
-	WaterMarkList          *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkList          `json:"WaterMarkList,omitempty" xml:"WaterMarkList,omitempty" type:"Struct"`
-	MergeList              *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMergeList              `json:"MergeList,omitempty" xml:"MergeList,omitempty" type:"Struct"`
-	DigiWaterMark          *SubmitComplexJobResponseBodyComplexJobTranscodeOutputDigiWaterMark          `json:"DigiWaterMark,omitempty" xml:"DigiWaterMark,omitempty" type:"Struct"`
-	OutputFile             *SubmitComplexJobResponseBodyComplexJobTranscodeOutputOutputFile             `json:"OutputFile,omitempty" xml:"OutputFile,omitempty" type:"Struct"`
-	M3U8NonStandardSupport *SubmitComplexJobResponseBodyComplexJobTranscodeOutputM3U8NonStandardSupport `json:"M3U8NonStandardSupport,omitempty" xml:"M3U8NonStandardSupport,omitempty" type:"Struct"`
-	Properties             *SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties             `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
-	Clip                   *SubmitComplexJobResponseBodyComplexJobTranscodeOutputClip                   `json:"Clip,omitempty" xml:"Clip,omitempty" type:"Struct"`
-	SuperReso              *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSuperReso              `json:"SuperReso,omitempty" xml:"SuperReso,omitempty" type:"Struct"`
-	SubtitleConfig         *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfig         `json:"SubtitleConfig,omitempty" xml:"SubtitleConfig,omitempty" type:"Struct"`
-	TransConfig            *SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig            `json:"TransConfig,omitempty" xml:"TransConfig,omitempty" type:"Struct"`
-	MuxConfig              *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfig              `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty" type:"Struct"`
-	Audio                  *SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudio                  `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
-	Video                  *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo                  `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
-	Container              *SubmitComplexJobResponseBodyComplexJobTranscodeOutputContainer              `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
-	Encryption             *SubmitComplexJobResponseBodyComplexJobTranscodeOutputEncryption             `json:"Encryption,omitempty" xml:"Encryption,omitempty" type:"Struct"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutput) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutput) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetTemplateId(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
-	s.TemplateId = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetUserData(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
-	s.UserData = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetRotate(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
-	s.Rotate = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetVideoStreamMap(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
-	s.VideoStreamMap = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetAudioStreamMap(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
-	s.AudioStreamMap = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetDeWatermark(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
-	s.DeWatermark = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetPriority(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
-	s.Priority = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetWaterMarkConfigUrl(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
-	s.WaterMarkConfigUrl = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetMergeConfigUrl(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
-	s.MergeConfigUrl = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetWaterMarkList(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkList) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
-	s.WaterMarkList = v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetMergeList(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMergeList) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
-	s.MergeList = v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetDigiWaterMark(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputDigiWaterMark) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
-	s.DigiWaterMark = v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetOutputFile(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputOutputFile) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
-	s.OutputFile = v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetM3U8NonStandardSupport(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputM3U8NonStandardSupport) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
-	s.M3U8NonStandardSupport = v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetProperties(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
-	s.Properties = v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetClip(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputClip) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
-	s.Clip = v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetSuperReso(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSuperReso) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
-	s.SuperReso = v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetSubtitleConfig(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfig) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
-	s.SubtitleConfig = v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetTransConfig(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
-	s.TransConfig = v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetMuxConfig(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfig) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
-	s.MuxConfig = v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetAudio(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudio) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
-	s.Audio = v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetVideo(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
-	s.Video = v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetContainer(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputContainer) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
-	s.Container = v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutput) SetEncryption(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputEncryption) *SubmitComplexJobResponseBodyComplexJobTranscodeOutput {
-	s.Encryption = v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkList struct {
-	WaterMark []*SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMark `json:"WaterMark,omitempty" xml:"WaterMark,omitempty" type:"Repeated"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkList) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkList) SetWaterMark(v []*SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMark) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkList {
-	s.WaterMark = v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMark struct {
-	WaterMarkTemplateId *string                                                                               `json:"WaterMarkTemplateId,omitempty" xml:"WaterMarkTemplateId,omitempty"`
-	Width               *string                                                                               `json:"Width,omitempty" xml:"Width,omitempty"`
-	Height              *string                                                                               `json:"Height,omitempty" xml:"Height,omitempty"`
-	Dx                  *string                                                                               `json:"Dx,omitempty" xml:"Dx,omitempty"`
-	Dy                  *string                                                                               `json:"Dy,omitempty" xml:"Dy,omitempty"`
-	ReferPos            *string                                                                               `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
-	Type                *string                                                                               `json:"Type,omitempty" xml:"Type,omitempty"`
-	InputFile           *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMarkInputFile `json:"InputFile,omitempty" xml:"InputFile,omitempty" type:"Struct"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMark) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMark) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMark) SetWaterMarkTemplateId(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMark {
-	s.WaterMarkTemplateId = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMark) SetWidth(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMark {
-	s.Width = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMark) SetHeight(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMark {
-	s.Height = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMark) SetDx(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMark {
-	s.Dx = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMark) SetDy(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMark {
-	s.Dy = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMark) SetReferPos(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMark {
-	s.ReferPos = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMark) SetType(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMark {
-	s.Type = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMark) SetInputFile(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMarkInputFile) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMark {
-	s.InputFile = v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMarkInputFile struct {
-	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMarkInputFile) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMarkInputFile) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMarkInputFile) SetBucket(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMarkInputFile {
-	s.Bucket = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMarkInputFile) SetLocation(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMarkInputFile {
-	s.Location = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMarkInputFile) SetObject(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMarkInputFile {
-	s.Object = &v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobTranscodeOutputMergeList struct {
-	Merge []*SubmitComplexJobResponseBodyComplexJobTranscodeOutputMergeListMerge `json:"Merge,omitempty" xml:"Merge,omitempty" type:"Repeated"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputMergeList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputMergeList) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMergeList) SetMerge(v []*SubmitComplexJobResponseBodyComplexJobTranscodeOutputMergeListMerge) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMergeList {
-	s.Merge = v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobTranscodeOutputMergeListMerge struct {
-	MergeURL *string `json:"MergeURL,omitempty" xml:"MergeURL,omitempty"`
-	Start    *string `json:"Start,omitempty" xml:"Start,omitempty"`
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	RoleArn  *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputMergeListMerge) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputMergeListMerge) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMergeListMerge) SetMergeURL(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMergeListMerge {
-	s.MergeURL = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMergeListMerge) SetStart(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMergeListMerge {
-	s.Start = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMergeListMerge) SetDuration(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMergeListMerge {
-	s.Duration = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMergeListMerge) SetRoleArn(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMergeListMerge {
-	s.RoleArn = &v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobTranscodeOutputDigiWaterMark struct {
-	Type      *string                                                                      `json:"Type,omitempty" xml:"Type,omitempty"`
-	Alpha     *string                                                                      `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
-	InputFile *SubmitComplexJobResponseBodyComplexJobTranscodeOutputDigiWaterMarkInputFile `json:"InputFile,omitempty" xml:"InputFile,omitempty" type:"Struct"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputDigiWaterMark) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputDigiWaterMark) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputDigiWaterMark) SetType(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputDigiWaterMark {
-	s.Type = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputDigiWaterMark) SetAlpha(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputDigiWaterMark {
-	s.Alpha = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputDigiWaterMark) SetInputFile(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputDigiWaterMarkInputFile) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputDigiWaterMark {
-	s.InputFile = v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobTranscodeOutputDigiWaterMarkInputFile struct {
-	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputDigiWaterMarkInputFile) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputDigiWaterMarkInputFile) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputDigiWaterMarkInputFile) SetBucket(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputDigiWaterMarkInputFile {
-	s.Bucket = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputDigiWaterMarkInputFile) SetLocation(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputDigiWaterMarkInputFile {
-	s.Location = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputDigiWaterMarkInputFile) SetObject(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputDigiWaterMarkInputFile {
-	s.Object = &v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobTranscodeOutputOutputFile struct {
-	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
-	RoleArn  *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputOutputFile) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputOutputFile) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputOutputFile) SetBucket(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputOutputFile {
-	s.Bucket = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputOutputFile) SetLocation(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputOutputFile {
-	s.Location = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputOutputFile) SetObject(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputOutputFile {
-	s.Object = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputOutputFile) SetRoleArn(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputOutputFile {
-	s.RoleArn = &v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobTranscodeOutputM3U8NonStandardSupport struct {
-	TS *SubmitComplexJobResponseBodyComplexJobTranscodeOutputM3U8NonStandardSupportTS `json:"TS,omitempty" xml:"TS,omitempty" type:"Struct"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputM3U8NonStandardSupport) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputM3U8NonStandardSupport) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputM3U8NonStandardSupport) SetTS(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputM3U8NonStandardSupportTS) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputM3U8NonStandardSupport {
-	s.TS = v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobTranscodeOutputM3U8NonStandardSupportTS struct {
-	Md5Support  *bool `json:"Md5Support,omitempty" xml:"Md5Support,omitempty"`
-	SizeSupport *bool `json:"SizeSupport,omitempty" xml:"SizeSupport,omitempty"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputM3U8NonStandardSupportTS) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputM3U8NonStandardSupportTS) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputM3U8NonStandardSupportTS) SetMd5Support(v bool) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputM3U8NonStandardSupportTS {
-	s.Md5Support = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputM3U8NonStandardSupportTS) SetSizeSupport(v bool) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputM3U8NonStandardSupportTS {
-	s.SizeSupport = &v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties struct {
-	Width      *string                                                                 `json:"Width,omitempty" xml:"Width,omitempty"`
-	Height     *string                                                                 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Bitrate    *string                                                                 `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	Duration   *string                                                                 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Fps        *string                                                                 `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	FileSize   *string                                                                 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	FileFormat *string                                                                 `json:"FileFormat,omitempty" xml:"FileFormat,omitempty"`
-	Streams    *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreams `json:"Streams,omitempty" xml:"Streams,omitempty" type:"Struct"`
-	Format     *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesFormat  `json:"Format,omitempty" xml:"Format,omitempty" type:"Struct"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties) SetWidth(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties {
-	s.Width = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties) SetHeight(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties {
-	s.Height = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties) SetBitrate(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties {
-	s.Bitrate = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties) SetDuration(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties {
-	s.Duration = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties) SetFps(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties {
-	s.Fps = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties) SetFileSize(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties {
-	s.FileSize = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties) SetFileFormat(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties {
-	s.FileFormat = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties) SetStreams(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreams) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties {
-	s.Streams = v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties) SetFormat(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesFormat) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties {
-	s.Format = v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreams struct {
-	VideoStreamList    *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamList    `json:"VideoStreamList,omitempty" xml:"VideoStreamList,omitempty" type:"Struct"`
-	AudioStreamList    *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamList    `json:"AudioStreamList,omitempty" xml:"AudioStreamList,omitempty" type:"Struct"`
-	SubtitleStreamList *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsSubtitleStreamList `json:"SubtitleStreamList,omitempty" xml:"SubtitleStreamList,omitempty" type:"Struct"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreams) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreams) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreams) SetVideoStreamList(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamList) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreams {
-	s.VideoStreamList = v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreams) SetAudioStreamList(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamList) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreams {
-	s.AudioStreamList = v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreams) SetSubtitleStreamList(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsSubtitleStreamList) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreams {
-	s.SubtitleStreamList = v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamList struct {
-	VideoStream []*SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream `json:"VideoStream,omitempty" xml:"VideoStream,omitempty" type:"Repeated"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamList) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamList) SetVideoStream(v []*SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamList {
-	s.VideoStream = v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream struct {
-	Index          *string                                                                                                      `json:"Index,omitempty" xml:"Index,omitempty"`
-	CodecName      *string                                                                                                      `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
-	CodecLongName  *string                                                                                                      `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
-	Profile        *string                                                                                                      `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	CodecTimeBase  *string                                                                                                      `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
-	CodecTagString *string                                                                                                      `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
-	CodecTag       *string                                                                                                      `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
-	Width          *string                                                                                                      `json:"Width,omitempty" xml:"Width,omitempty"`
-	Height         *string                                                                                                      `json:"Height,omitempty" xml:"Height,omitempty"`
-	HasBFrames     *string                                                                                                      `json:"HasBFrames,omitempty" xml:"HasBFrames,omitempty"`
-	Sar            *string                                                                                                      `json:"Sar,omitempty" xml:"Sar,omitempty"`
-	Dar            *string                                                                                                      `json:"Dar,omitempty" xml:"Dar,omitempty"`
-	PixFmt         *string                                                                                                      `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
-	Level          *string                                                                                                      `json:"Level,omitempty" xml:"Level,omitempty"`
-	Fps            *string                                                                                                      `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	AvgFPS         *string                                                                                                      `json:"AvgFPS,omitempty" xml:"AvgFPS,omitempty"`
-	Timebase       *string                                                                                                      `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
-	StartTime      *string                                                                                                      `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Duration       *string                                                                                                      `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Bitrate        *string                                                                                                      `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	NumFrames      *string                                                                                                      `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
-	Lang           *string                                                                                                      `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	NetworkCost    *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStreamNetworkCost `json:"NetworkCost,omitempty" xml:"NetworkCost,omitempty" type:"Struct"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) SetIndex(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream {
-	s.Index = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) SetCodecName(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream {
-	s.CodecName = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) SetCodecLongName(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream {
-	s.CodecLongName = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) SetProfile(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream {
-	s.Profile = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) SetCodecTimeBase(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream {
-	s.CodecTimeBase = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) SetCodecTagString(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream {
-	s.CodecTagString = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) SetCodecTag(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream {
-	s.CodecTag = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) SetWidth(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream {
-	s.Width = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) SetHeight(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream {
-	s.Height = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) SetHasBFrames(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream {
-	s.HasBFrames = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) SetSar(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream {
-	s.Sar = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) SetDar(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream {
-	s.Dar = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) SetPixFmt(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream {
-	s.PixFmt = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) SetLevel(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream {
-	s.Level = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) SetFps(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream {
-	s.Fps = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) SetAvgFPS(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream {
-	s.AvgFPS = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) SetTimebase(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream {
-	s.Timebase = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) SetStartTime(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream {
-	s.StartTime = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) SetDuration(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream {
-	s.Duration = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) SetBitrate(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream {
-	s.Bitrate = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) SetNumFrames(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream {
-	s.NumFrames = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) SetLang(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream {
-	s.Lang = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream) SetNetworkCost(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStreamNetworkCost) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStream {
-	s.NetworkCost = v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStreamNetworkCost struct {
-	PreloadTime   *string `json:"PreloadTime,omitempty" xml:"PreloadTime,omitempty"`
-	CostBandwidth *string `json:"CostBandwidth,omitempty" xml:"CostBandwidth,omitempty"`
-	AvgBitrate    *string `json:"AvgBitrate,omitempty" xml:"AvgBitrate,omitempty"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStreamNetworkCost) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStreamNetworkCost) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStreamNetworkCost) SetPreloadTime(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStreamNetworkCost {
-	s.PreloadTime = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStreamNetworkCost) SetCostBandwidth(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStreamNetworkCost {
-	s.CostBandwidth = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStreamNetworkCost) SetAvgBitrate(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVideoStreamListVideoStreamNetworkCost {
-	s.AvgBitrate = &v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamList struct {
-	AudioStream []*SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream `json:"AudioStream,omitempty" xml:"AudioStream,omitempty" type:"Repeated"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamList) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamList) SetAudioStream(v []*SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamList {
-	s.AudioStream = v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream struct {
-	Index          *string `json:"Index,omitempty" xml:"Index,omitempty"`
-	CodecName      *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
-	CodecTimeBase  *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
-	CodecLongName  *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
-	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
-	CodecTag       *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
-	SampleFmt      *string `json:"SampleFmt,omitempty" xml:"SampleFmt,omitempty"`
-	Samplerate     *string `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
-	Channels       *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
-	ChannelLayout  *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
-	Timebase       *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
-	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Bitrate        *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	NumFrames      *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
-	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream) SetIndex(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream {
-	s.Index = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream) SetCodecName(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream {
-	s.CodecName = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream) SetCodecTimeBase(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream {
-	s.CodecTimeBase = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream) SetCodecLongName(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream {
-	s.CodecLongName = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream) SetCodecTagString(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream {
-	s.CodecTagString = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream) SetCodecTag(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream {
-	s.CodecTag = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream) SetSampleFmt(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream {
-	s.SampleFmt = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream) SetSamplerate(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream {
-	s.Samplerate = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream) SetChannels(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream {
-	s.Channels = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream) SetChannelLayout(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream {
-	s.ChannelLayout = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream) SetTimebase(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream {
-	s.Timebase = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream) SetStartTime(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream {
-	s.StartTime = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream) SetDuration(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream {
-	s.Duration = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream) SetBitrate(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream {
-	s.Bitrate = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream) SetNumFrames(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream {
-	s.NumFrames = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream) SetLang(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudioStreamListAudioStream {
-	s.Lang = &v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsSubtitleStreamList struct {
-	SubtitleStream []*SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsSubtitleStreamListSubtitleStream `json:"SubtitleStream,omitempty" xml:"SubtitleStream,omitempty" type:"Repeated"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsSubtitleStreamList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsSubtitleStreamList) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsSubtitleStreamList) SetSubtitleStream(v []*SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsSubtitleStreamListSubtitleStream) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsSubtitleStreamList {
-	s.SubtitleStream = v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsSubtitleStreamListSubtitleStream struct {
-	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
-	Lang  *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsSubtitleStreamListSubtitleStream) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsSubtitleStreamListSubtitleStream) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsSubtitleStreamListSubtitleStream) SetIndex(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsSubtitleStreamListSubtitleStream {
-	s.Index = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsSubtitleStreamListSubtitleStream) SetLang(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsSubtitleStreamListSubtitleStream {
-	s.Lang = &v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesFormat struct {
-	NumStreams     *string `json:"NumStreams,omitempty" xml:"NumStreams,omitempty"`
-	NumPrograms    *string `json:"NumPrograms,omitempty" xml:"NumPrograms,omitempty"`
-	FormatName     *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
-	FormatLongName *string `json:"FormatLongName,omitempty" xml:"FormatLongName,omitempty"`
-	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Size           *string `json:"Size,omitempty" xml:"Size,omitempty"`
-	Bitrate        *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesFormat) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesFormat) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesFormat) SetNumStreams(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesFormat {
-	s.NumStreams = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesFormat) SetNumPrograms(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesFormat {
-	s.NumPrograms = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesFormat) SetFormatName(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesFormat {
-	s.FormatName = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesFormat) SetFormatLongName(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesFormat {
-	s.FormatLongName = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesFormat) SetStartTime(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesFormat {
-	s.StartTime = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesFormat) SetDuration(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesFormat {
-	s.Duration = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesFormat) SetSize(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesFormat {
-	s.Size = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesFormat) SetBitrate(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesFormat {
-	s.Bitrate = &v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobTranscodeOutputClip struct {
-	TimeSpan *SubmitComplexJobResponseBodyComplexJobTranscodeOutputClipTimeSpan `json:"TimeSpan,omitempty" xml:"TimeSpan,omitempty" type:"Struct"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputClip) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputClip) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputClip) SetTimeSpan(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputClipTimeSpan) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputClip {
-	s.TimeSpan = v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobTranscodeOutputClipTimeSpan struct {
-	Seek     *string `json:"Seek,omitempty" xml:"Seek,omitempty"`
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputClipTimeSpan) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputClipTimeSpan) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputClipTimeSpan) SetSeek(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputClipTimeSpan {
-	s.Seek = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputClipTimeSpan) SetDuration(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputClipTimeSpan {
-	s.Duration = &v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobTranscodeOutputSuperReso struct {
-	IsHalfSample *string `json:"IsHalfSample,omitempty" xml:"IsHalfSample,omitempty"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputSuperReso) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputSuperReso) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSuperReso) SetIsHalfSample(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSuperReso {
-	s.IsHalfSample = &v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfig struct {
-	SubtitleList    *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigSubtitleList    `json:"SubtitleList,omitempty" xml:"SubtitleList,omitempty" type:"Struct"`
-	ExtSubtitleList *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleList `json:"ExtSubtitleList,omitempty" xml:"ExtSubtitleList,omitempty" type:"Struct"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfig) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfig) SetSubtitleList(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigSubtitleList) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfig {
-	s.SubtitleList = v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfig) SetExtSubtitleList(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleList) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfig {
-	s.ExtSubtitleList = v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigSubtitleList struct {
-	Subtitle []*SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigSubtitleListSubtitle `json:"Subtitle,omitempty" xml:"Subtitle,omitempty" type:"Repeated"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigSubtitleList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigSubtitleList) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigSubtitleList) SetSubtitle(v []*SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigSubtitleListSubtitle) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigSubtitleList {
-	s.Subtitle = v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigSubtitleListSubtitle struct {
-	Map *string `json:"Map,omitempty" xml:"Map,omitempty"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigSubtitleListSubtitle) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigSubtitleListSubtitle) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigSubtitleListSubtitle) SetMap(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigSubtitleListSubtitle {
-	s.Map = &v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleList struct {
-	ExtSubtitle []*SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleListExtSubtitle `json:"ExtSubtitle,omitempty" xml:"ExtSubtitle,omitempty" type:"Repeated"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleList) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleList) SetExtSubtitle(v []*SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleListExtSubtitle) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleList {
-	s.ExtSubtitle = v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleListExtSubtitle struct {
-	FontName *string                                                                                             `json:"FontName,omitempty" xml:"FontName,omitempty"`
-	CharEnc  *string                                                                                             `json:"CharEnc,omitempty" xml:"CharEnc,omitempty"`
-	Input    *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleListExtSubtitleInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleListExtSubtitle) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleListExtSubtitle) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleListExtSubtitle) SetFontName(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleListExtSubtitle {
-	s.FontName = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleListExtSubtitle) SetCharEnc(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleListExtSubtitle {
-	s.CharEnc = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleListExtSubtitle) SetInput(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleListExtSubtitleInput) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleListExtSubtitle {
-	s.Input = v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleListExtSubtitleInput struct {
-	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleListExtSubtitleInput) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleListExtSubtitleInput) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleListExtSubtitleInput) SetBucket(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleListExtSubtitleInput {
-	s.Bucket = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleListExtSubtitleInput) SetLocation(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleListExtSubtitleInput {
-	s.Location = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleListExtSubtitleInput) SetObject(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubtitleListExtSubtitleInput {
-	s.Object = &v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig struct {
-	TransMode               *string `json:"TransMode,omitempty" xml:"TransMode,omitempty"`
-	IsCheckReso             *string `json:"IsCheckReso,omitempty" xml:"IsCheckReso,omitempty"`
-	IsCheckResoFail         *string `json:"IsCheckResoFail,omitempty" xml:"IsCheckResoFail,omitempty"`
-	IsCheckVideoBitrate     *string `json:"IsCheckVideoBitrate,omitempty" xml:"IsCheckVideoBitrate,omitempty"`
-	IsCheckAudioBitrate     *string `json:"IsCheckAudioBitrate,omitempty" xml:"IsCheckAudioBitrate,omitempty"`
-	AdjDarMethod            *string `json:"AdjDarMethod,omitempty" xml:"AdjDarMethod,omitempty"`
-	IsCheckVideoBitrateFail *string `json:"IsCheckVideoBitrateFail,omitempty" xml:"IsCheckVideoBitrateFail,omitempty"`
-	IsCheckAudioBitrateFail *string `json:"IsCheckAudioBitrateFail,omitempty" xml:"IsCheckAudioBitrateFail,omitempty"`
-	Duration                *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig) SetTransMode(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig {
-	s.TransMode = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig) SetIsCheckReso(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig {
-	s.IsCheckReso = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig) SetIsCheckResoFail(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig {
-	s.IsCheckResoFail = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig) SetIsCheckVideoBitrate(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig {
-	s.IsCheckVideoBitrate = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig) SetIsCheckAudioBitrate(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig {
-	s.IsCheckAudioBitrate = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig) SetAdjDarMethod(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig {
-	s.AdjDarMethod = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig) SetIsCheckVideoBitrateFail(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig {
-	s.IsCheckVideoBitrateFail = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig) SetIsCheckAudioBitrateFail(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig {
-	s.IsCheckAudioBitrateFail = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig) SetDuration(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig {
-	s.Duration = &v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfig struct {
-	Segment *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfigSegment `json:"Segment,omitempty" xml:"Segment,omitempty" type:"Struct"`
-	Gif     *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfigGif     `json:"Gif,omitempty" xml:"Gif,omitempty" type:"Struct"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfig) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfig) SetSegment(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfigSegment) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfig {
-	s.Segment = v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfig) SetGif(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfigGif) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfig {
-	s.Gif = v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfigSegment struct {
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfigSegment) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfigSegment) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfigSegment) SetDuration(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfigSegment {
-	s.Duration = &v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfigGif struct {
-	Loop            *string `json:"Loop,omitempty" xml:"Loop,omitempty"`
-	FinalDelay      *string `json:"FinalDelay,omitempty" xml:"FinalDelay,omitempty"`
-	IsCustomPalette *string `json:"IsCustomPalette,omitempty" xml:"IsCustomPalette,omitempty"`
-	DitherMode      *string `json:"DitherMode,omitempty" xml:"DitherMode,omitempty"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfigGif) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfigGif) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfigGif) SetLoop(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfigGif {
-	s.Loop = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfigGif) SetFinalDelay(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfigGif {
-	s.FinalDelay = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfigGif) SetIsCustomPalette(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfigGif {
-	s.IsCustomPalette = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfigGif) SetDitherMode(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfigGif {
-	s.DitherMode = &v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudio struct {
-	Codec      *string                                                           `json:"Codec,omitempty" xml:"Codec,omitempty"`
-	Profile    *string                                                           `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	Samplerate *string                                                           `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
-	Bitrate    *string                                                           `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	Channels   *string                                                           `json:"Channels,omitempty" xml:"Channels,omitempty"`
-	Qscale     *string                                                           `json:"Qscale,omitempty" xml:"Qscale,omitempty"`
-	Volume     *SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudioVolume `json:"Volume,omitempty" xml:"Volume,omitempty" type:"Struct"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudio) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudio) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudio) SetCodec(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudio {
-	s.Codec = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudio) SetProfile(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudio {
-	s.Profile = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudio) SetSamplerate(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudio {
-	s.Samplerate = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudio) SetBitrate(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudio {
-	s.Bitrate = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudio) SetChannels(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudio {
-	s.Channels = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudio) SetQscale(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudio {
-	s.Qscale = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudio) SetVolume(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudioVolume) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudio {
-	s.Volume = v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudioVolume struct {
-	Level  *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudioVolume) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudioVolume) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudioVolume) SetLevel(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudioVolume {
-	s.Level = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudioVolume) SetMethod(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudioVolume {
-	s.Method = &v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo struct {
-	Codec      *string                                                               `json:"Codec,omitempty" xml:"Codec,omitempty"`
-	Profile    *string                                                               `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	Bitrate    *string                                                               `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	Crf        *string                                                               `json:"Crf,omitempty" xml:"Crf,omitempty"`
-	Width      *string                                                               `json:"Width,omitempty" xml:"Width,omitempty"`
-	Height     *string                                                               `json:"Height,omitempty" xml:"Height,omitempty"`
-	Fps        *string                                                               `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	Gop        *string                                                               `json:"Gop,omitempty" xml:"Gop,omitempty"`
-	Preset     *string                                                               `json:"Preset,omitempty" xml:"Preset,omitempty"`
-	ScanMode   *string                                                               `json:"ScanMode,omitempty" xml:"ScanMode,omitempty"`
-	Bufsize    *string                                                               `json:"Bufsize,omitempty" xml:"Bufsize,omitempty"`
-	Maxrate    *string                                                               `json:"Maxrate,omitempty" xml:"Maxrate,omitempty"`
-	PixFmt     *string                                                               `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
-	Degrain    *string                                                               `json:"Degrain,omitempty" xml:"Degrain,omitempty"`
-	Qscale     *string                                                               `json:"Qscale,omitempty" xml:"Qscale,omitempty"`
-	Crop       *string                                                               `json:"Crop,omitempty" xml:"Crop,omitempty"`
-	Pad        *string                                                               `json:"Pad,omitempty" xml:"Pad,omitempty"`
-	MaxFps     *string                                                               `json:"MaxFps,omitempty" xml:"MaxFps,omitempty"`
-	BitrateBnd *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideoBitrateBnd `json:"BitrateBnd,omitempty" xml:"BitrateBnd,omitempty" type:"Struct"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo) SetCodec(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo {
-	s.Codec = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo) SetProfile(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo {
-	s.Profile = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo) SetBitrate(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo {
-	s.Bitrate = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo) SetCrf(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo {
-	s.Crf = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo) SetWidth(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo {
-	s.Width = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo) SetHeight(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo {
-	s.Height = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo) SetFps(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo {
-	s.Fps = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo) SetGop(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo {
-	s.Gop = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo) SetPreset(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo {
-	s.Preset = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo) SetScanMode(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo {
-	s.ScanMode = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo) SetBufsize(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo {
-	s.Bufsize = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo) SetMaxrate(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo {
-	s.Maxrate = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo) SetPixFmt(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo {
-	s.PixFmt = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo) SetDegrain(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo {
-	s.Degrain = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo) SetQscale(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo {
-	s.Qscale = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo) SetCrop(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo {
-	s.Crop = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo) SetPad(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo {
-	s.Pad = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo) SetMaxFps(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo {
-	s.MaxFps = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo) SetBitrateBnd(v *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideoBitrateBnd) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo {
-	s.BitrateBnd = v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideoBitrateBnd struct {
-	Max *string `json:"Max,omitempty" xml:"Max,omitempty"`
-	Min *string `json:"Min,omitempty" xml:"Min,omitempty"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideoBitrateBnd) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideoBitrateBnd) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideoBitrateBnd) SetMax(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideoBitrateBnd {
-	s.Max = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideoBitrateBnd) SetMin(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideoBitrateBnd {
-	s.Min = &v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobTranscodeOutputContainer struct {
-	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputContainer) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputContainer) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputContainer) SetFormat(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputContainer {
-	s.Format = &v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobTranscodeOutputEncryption struct {
-	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Key     *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	KeyUri  *string `json:"KeyUri,omitempty" xml:"KeyUri,omitempty"`
-	KeyType *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
-	SkipCnt *string `json:"SkipCnt,omitempty" xml:"SkipCnt,omitempty"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputEncryption) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobTranscodeOutputEncryption) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputEncryption) SetType(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputEncryption {
-	s.Type = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputEncryption) SetId(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputEncryption {
-	s.Id = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputEncryption) SetKey(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputEncryption {
-	s.Key = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputEncryption) SetKeyUri(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputEncryption {
-	s.KeyUri = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputEncryption) SetKeyType(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputEncryption {
-	s.KeyType = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobTranscodeOutputEncryption) SetSkipCnt(v string) *SubmitComplexJobResponseBodyComplexJobTranscodeOutputEncryption {
-	s.SkipCnt = &v
-	return s
-}
-
-type SubmitComplexJobResponseBodyComplexJobMNSMessageResult struct {
-	MessageId    *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobMNSMessageResult) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitComplexJobResponseBodyComplexJobMNSMessageResult) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobMNSMessageResult) SetMessageId(v string) *SubmitComplexJobResponseBodyComplexJobMNSMessageResult {
-	s.MessageId = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobMNSMessageResult) SetErrorMessage(v string) *SubmitComplexJobResponseBodyComplexJobMNSMessageResult {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *SubmitComplexJobResponseBodyComplexJobMNSMessageResult) SetErrorCode(v string) *SubmitComplexJobResponseBodyComplexJobMNSMessageResult {
-	s.ErrorCode = &v
+func (s *SubmitComplexJobResponseBodyComplexJobInputsInputsEditingInputsEditingInputInputConfig) SetDeinterlaceMethod(v string) *SubmitComplexJobResponseBodyComplexJobInputsInputsEditingInputsEditingInputInputConfig {
+	s.DeinterlaceMethod = &v
 	return s
 }
 
@@ -45206,8 +46084,8 @@ func (s *SubmitEditingJobsRequest) SetOwnerAccount(v string) *SubmitEditingJobsR
 }
 
 type SubmitEditingJobsResponseBody struct {
-	RequestId     *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	JobResultList *SubmitEditingJobsResponseBodyJobResultList `json:"JobResultList,omitempty" xml:"JobResultList,omitempty" type:"Struct"`
+	RequestId     *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SubmitEditingJobsResponseBody) String() string {
@@ -45218,13 +46096,13 @@ func (s SubmitEditingJobsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SubmitEditingJobsResponseBody) SetRequestId(v string) *SubmitEditingJobsResponseBody {
-	s.RequestId = &v
+func (s *SubmitEditingJobsResponseBody) SetJobResultList(v *SubmitEditingJobsResponseBodyJobResultList) *SubmitEditingJobsResponseBody {
+	s.JobResultList = v
 	return s
 }
 
-func (s *SubmitEditingJobsResponseBody) SetJobResultList(v *SubmitEditingJobsResponseBodyJobResultList) *SubmitEditingJobsResponseBody {
-	s.JobResultList = v
+func (s *SubmitEditingJobsResponseBody) SetRequestId(v string) *SubmitEditingJobsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -45246,10 +46124,10 @@ func (s *SubmitEditingJobsResponseBodyJobResultList) SetJobResult(v []*SubmitEdi
 }
 
 type SubmitEditingJobsResponseBodyJobResultListJobResult struct {
+	Job     *SubmitEditingJobsResponseBodyJobResultListJobResultJob `json:"Job,omitempty" xml:"Job,omitempty" type:"Struct"`
 	Success *bool                                                   `json:"Success,omitempty" xml:"Success,omitempty"`
 	Code    *string                                                 `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message *string                                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	Job     *SubmitEditingJobsResponseBodyJobResultListJobResultJob `json:"Job,omitempty" xml:"Job,omitempty" type:"Struct"`
 }
 
 func (s SubmitEditingJobsResponseBodyJobResultListJobResult) String() string {
@@ -45258,6 +46136,11 @@ func (s SubmitEditingJobsResponseBodyJobResultListJobResult) String() string {
 
 func (s SubmitEditingJobsResponseBodyJobResultListJobResult) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResult) SetJob(v *SubmitEditingJobsResponseBodyJobResultListJobResultJob) *SubmitEditingJobsResponseBodyJobResultListJobResult {
+	s.Job = v
+	return s
 }
 
 func (s *SubmitEditingJobsResponseBodyJobResultListJobResult) SetSuccess(v bool) *SubmitEditingJobsResponseBodyJobResultListJobResult {
@@ -45275,21 +46158,16 @@ func (s *SubmitEditingJobsResponseBodyJobResultListJobResult) SetMessage(v strin
 	return s
 }
 
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResult) SetJob(v *SubmitEditingJobsResponseBodyJobResultListJobResultJob) *SubmitEditingJobsResponseBodyJobResultListJobResult {
-	s.Job = v
-	return s
-}
-
 type SubmitEditingJobsResponseBodyJobResultListJobResultJob struct {
-	JobId            *string                                                                 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	CreationTime     *string                                                                 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Percent          *int64                                                                  `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	FinishTime       *string                                                                 `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
 	State            *string                                                                 `json:"State,omitempty" xml:"State,omitempty"`
+	JobId            *string                                                                 `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	Code             *string                                                                 `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message          *string                                                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	Percent          *int64                                                                  `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	PipelineId       *string                                                                 `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	CreationTime     *string                                                                 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	FinishTime       *string                                                                 `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
 	EditingInputs    *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputs    `json:"EditingInputs,omitempty" xml:"EditingInputs,omitempty" type:"Struct"`
+	PipelineId       *string                                                                 `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
 	EditingConfig    *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig    `json:"EditingConfig,omitempty" xml:"EditingConfig,omitempty" type:"Struct"`
 	MNSMessageResult *SubmitEditingJobsResponseBodyJobResultListJobResultJobMNSMessageResult `json:"MNSMessageResult,omitempty" xml:"MNSMessageResult,omitempty" type:"Struct"`
 }
@@ -45302,13 +46180,28 @@ func (s SubmitEditingJobsResponseBodyJobResultListJobResultJob) GoString() strin
 	return s.String()
 }
 
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJob) SetJobId(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJob {
-	s.JobId = &v
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJob) SetCreationTime(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJob {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJob) SetPercent(v int64) *SubmitEditingJobsResponseBodyJobResultListJobResultJob {
+	s.Percent = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJob) SetFinishTime(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJob {
+	s.FinishTime = &v
 	return s
 }
 
 func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJob) SetState(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJob {
 	s.State = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJob) SetJobId(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJob {
+	s.JobId = &v
 	return s
 }
 
@@ -45322,28 +46215,13 @@ func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJob) SetMessage(v st
 	return s
 }
 
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJob) SetPercent(v int64) *SubmitEditingJobsResponseBodyJobResultListJobResultJob {
-	s.Percent = &v
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJob) SetEditingInputs(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputs) *SubmitEditingJobsResponseBodyJobResultListJobResultJob {
+	s.EditingInputs = v
 	return s
 }
 
 func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJob) SetPipelineId(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJob {
 	s.PipelineId = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJob) SetCreationTime(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJob {
-	s.CreationTime = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJob) SetFinishTime(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJob {
-	s.FinishTime = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJob) SetEditingInputs(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputs) *SubmitEditingJobsResponseBodyJobResultListJobResultJob {
-	s.EditingInputs = v
 	return s
 }
 
@@ -45375,9 +46253,9 @@ func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputs) Se
 }
 
 type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEditingInput struct {
-	Id          *string                                                                                     `json:"Id,omitempty" xml:"Id,omitempty"`
 	InputFile   *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEditingInputInputFile   `json:"InputFile,omitempty" xml:"InputFile,omitempty" type:"Struct"`
 	InputConfig *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEditingInputInputConfig `json:"InputConfig,omitempty" xml:"InputConfig,omitempty" type:"Struct"`
+	Id          *string                                                                                     `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
 func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEditingInput) String() string {
@@ -45386,11 +46264,6 @@ func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEditi
 
 func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEditingInput) GoString() string {
 	return s.String()
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEditingInput) SetId(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEditingInput {
-	s.Id = &v
-	return s
 }
 
 func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEditingInput) SetInputFile(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEditingInputInputFile) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEditingInput {
@@ -45403,10 +46276,15 @@ func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEdit
 	return s
 }
 
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEditingInput) SetId(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEditingInput {
+	s.Id = &v
+	return s
+}
+
 type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEditingInputInputFile struct {
-	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
 	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
 }
 
 func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEditingInputInputFile) String() string {
@@ -45417,8 +46295,8 @@ func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEditi
 	return s.String()
 }
 
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEditingInputInputFile) SetBucket(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEditingInputInputFile {
-	s.Bucket = &v
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEditingInputInputFile) SetObject(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEditingInputInputFile {
+	s.Object = &v
 	return s
 }
 
@@ -45427,14 +46305,14 @@ func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEdit
 	return s
 }
 
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEditingInputInputFile) SetObject(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEditingInputInputFile {
-	s.Object = &v
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEditingInputInputFile) SetBucket(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEditingInputInputFile {
+	s.Bucket = &v
 	return s
 }
 
 type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEditingInputInputConfig struct {
-	DeinterlaceMethod *string `json:"DeinterlaceMethod,omitempty" xml:"DeinterlaceMethod,omitempty"`
 	IsNormalSar       *string `json:"IsNormalSar,omitempty" xml:"IsNormalSar,omitempty"`
+	DeinterlaceMethod *string `json:"DeinterlaceMethod,omitempty" xml:"DeinterlaceMethod,omitempty"`
 }
 
 func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEditingInputInputConfig) String() string {
@@ -45445,42 +46323,42 @@ func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEditi
 	return s.String()
 }
 
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEditingInputInputConfig) SetDeinterlaceMethod(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEditingInputInputConfig {
-	s.DeinterlaceMethod = &v
-	return s
-}
-
 func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEditingInputInputConfig) SetIsNormalSar(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEditingInputInputConfig {
 	s.IsNormalSar = &v
 	return s
 }
 
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEditingInputInputConfig) SetDeinterlaceMethod(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEditingInputInputConfig {
+	s.DeinterlaceMethod = &v
+	return s
+}
+
 type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig struct {
-	TemplateId             *string                                                                                    `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	UserData               *string                                                                                    `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	Rotate                 *string                                                                                    `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
-	VideoStreamMap         *string                                                                                    `json:"VideoStreamMap,omitempty" xml:"VideoStreamMap,omitempty"`
-	AudioStreamMap         *string                                                                                    `json:"AudioStreamMap,omitempty" xml:"AudioStreamMap,omitempty"`
-	DeWatermark            *string                                                                                    `json:"DeWatermark,omitempty" xml:"DeWatermark,omitempty"`
-	Priority               *string                                                                                    `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	WaterMarkConfigUrl     *string                                                                                    `json:"WaterMarkConfigUrl,omitempty" xml:"WaterMarkConfigUrl,omitempty"`
-	MergeConfigUrl         *string                                                                                    `json:"MergeConfigUrl,omitempty" xml:"MergeConfigUrl,omitempty"`
-	WaterMarkList          *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkList          `json:"WaterMarkList,omitempty" xml:"WaterMarkList,omitempty" type:"Struct"`
-	MergeList              *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMergeList              `json:"MergeList,omitempty" xml:"MergeList,omitempty" type:"Struct"`
-	DigiWaterMark          *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigDigiWaterMark          `json:"DigiWaterMark,omitempty" xml:"DigiWaterMark,omitempty" type:"Struct"`
-	OutputFile             *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigOutputFile             `json:"OutputFile,omitempty" xml:"OutputFile,omitempty" type:"Struct"`
-	M3U8NonStandardSupport *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigM3U8NonStandardSupport `json:"M3U8NonStandardSupport,omitempty" xml:"M3U8NonStandardSupport,omitempty" type:"Struct"`
-	Properties             *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigProperties             `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
-	Clip                   *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigClip                   `json:"Clip,omitempty" xml:"Clip,omitempty" type:"Struct"`
-	SuperReso              *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSuperReso              `json:"SuperReso,omitempty" xml:"SuperReso,omitempty" type:"Struct"`
-	SubtitleConfig         *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfig         `json:"SubtitleConfig,omitempty" xml:"SubtitleConfig,omitempty" type:"Struct"`
-	TransConfig            *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig            `json:"TransConfig,omitempty" xml:"TransConfig,omitempty" type:"Struct"`
-	MuxConfig              *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfig              `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty" type:"Struct"`
-	Audio                  *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudio                  `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
 	Video                  *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo                  `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
-	Container              *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigContainer              `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
+	TransConfig            *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig            `json:"TransConfig,omitempty" xml:"TransConfig,omitempty" type:"Struct"`
 	Encryption             *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEncryption             `json:"Encryption,omitempty" xml:"Encryption,omitempty" type:"Struct"`
+	WaterMarkList          *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkList          `json:"WaterMarkList,omitempty" xml:"WaterMarkList,omitempty" type:"Struct"`
+	DeWatermark            *string                                                                                    `json:"DeWatermark,omitempty" xml:"DeWatermark,omitempty"`
+	WaterMarkConfigUrl     *string                                                                                    `json:"WaterMarkConfigUrl,omitempty" xml:"WaterMarkConfigUrl,omitempty"`
+	M3U8NonStandardSupport *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigM3U8NonStandardSupport `json:"M3U8NonStandardSupport,omitempty" xml:"M3U8NonStandardSupport,omitempty" type:"Struct"`
+	Priority               *string                                                                                    `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Audio                  *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudio                  `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
+	AudioStreamMap         *string                                                                                    `json:"AudioStreamMap,omitempty" xml:"AudioStreamMap,omitempty"`
+	MergeList              *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMergeList              `json:"MergeList,omitempty" xml:"MergeList,omitempty" type:"Struct"`
+	SuperReso              *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSuperReso              `json:"SuperReso,omitempty" xml:"SuperReso,omitempty" type:"Struct"`
+	UserData               *string                                                                                    `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	DigiWaterMark          *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigDigiWaterMark          `json:"DigiWaterMark,omitempty" xml:"DigiWaterMark,omitempty" type:"Struct"`
+	VideoStreamMap         *string                                                                                    `json:"VideoStreamMap,omitempty" xml:"VideoStreamMap,omitempty"`
+	OutputFile             *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigOutputFile             `json:"OutputFile,omitempty" xml:"OutputFile,omitempty" type:"Struct"`
+	Rotate                 *string                                                                                    `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
 	Editing                *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditing                `json:"Editing,omitempty" xml:"Editing,omitempty" type:"Struct"`
+	Container              *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigContainer              `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
+	Clip                   *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigClip                   `json:"Clip,omitempty" xml:"Clip,omitempty" type:"Struct"`
+	MergeConfigUrl         *string                                                                                    `json:"MergeConfigUrl,omitempty" xml:"MergeConfigUrl,omitempty"`
+	MuxConfig              *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfig              `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty" type:"Struct"`
+	TemplateId             *string                                                                                    `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	SubtitleConfig         *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfig         `json:"SubtitleConfig,omitempty" xml:"SubtitleConfig,omitempty" type:"Struct"`
+	Properties             *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigProperties             `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
 }
 
 func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) String() string {
@@ -45491,93 +46369,8 @@ func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) GoS
 	return s.String()
 }
 
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) SetTemplateId(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig {
-	s.TemplateId = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) SetUserData(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig {
-	s.UserData = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) SetRotate(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig {
-	s.Rotate = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) SetVideoStreamMap(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig {
-	s.VideoStreamMap = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) SetAudioStreamMap(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig {
-	s.AudioStreamMap = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) SetDeWatermark(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig {
-	s.DeWatermark = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) SetPriority(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig {
-	s.Priority = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) SetWaterMarkConfigUrl(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig {
-	s.WaterMarkConfigUrl = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) SetMergeConfigUrl(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig {
-	s.MergeConfigUrl = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) SetWaterMarkList(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkList) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig {
-	s.WaterMarkList = v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) SetMergeList(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMergeList) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig {
-	s.MergeList = v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) SetDigiWaterMark(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigDigiWaterMark) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig {
-	s.DigiWaterMark = v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) SetOutputFile(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigOutputFile) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig {
-	s.OutputFile = v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) SetM3U8NonStandardSupport(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigM3U8NonStandardSupport) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig {
-	s.M3U8NonStandardSupport = v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) SetProperties(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigProperties) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig {
-	s.Properties = v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) SetClip(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigClip) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig {
-	s.Clip = v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) SetSuperReso(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSuperReso) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig {
-	s.SuperReso = v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) SetSubtitleConfig(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfig) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig {
-	s.SubtitleConfig = v
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) SetVideo(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig {
+	s.Video = v
 	return s
 }
 
@@ -45586,8 +46379,33 @@ func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) Se
 	return s
 }
 
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) SetMuxConfig(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfig) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig {
-	s.MuxConfig = v
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) SetEncryption(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEncryption) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig {
+	s.Encryption = v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) SetWaterMarkList(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkList) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig {
+	s.WaterMarkList = v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) SetDeWatermark(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig {
+	s.DeWatermark = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) SetWaterMarkConfigUrl(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig {
+	s.WaterMarkConfigUrl = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) SetM3U8NonStandardSupport(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigM3U8NonStandardSupport) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig {
+	s.M3U8NonStandardSupport = v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) SetPriority(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig {
+	s.Priority = &v
 	return s
 }
 
@@ -45596,8 +46414,48 @@ func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) Se
 	return s
 }
 
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) SetVideo(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig {
-	s.Video = v
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) SetAudioStreamMap(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig {
+	s.AudioStreamMap = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) SetMergeList(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMergeList) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig {
+	s.MergeList = v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) SetSuperReso(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSuperReso) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig {
+	s.SuperReso = v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) SetUserData(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig {
+	s.UserData = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) SetDigiWaterMark(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigDigiWaterMark) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig {
+	s.DigiWaterMark = v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) SetVideoStreamMap(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig {
+	s.VideoStreamMap = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) SetOutputFile(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigOutputFile) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig {
+	s.OutputFile = v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) SetRotate(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig {
+	s.Rotate = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) SetEditing(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditing) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig {
+	s.Editing = v
 	return s
 }
 
@@ -45606,13 +46464,293 @@ func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) Se
 	return s
 }
 
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) SetEncryption(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEncryption) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig {
-	s.Encryption = v
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) SetClip(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigClip) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig {
+	s.Clip = v
 	return s
 }
 
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) SetEditing(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditing) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig {
-	s.Editing = v
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) SetMergeConfigUrl(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig {
+	s.MergeConfigUrl = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) SetMuxConfig(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfig) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig {
+	s.MuxConfig = v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) SetTemplateId(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) SetSubtitleConfig(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfig) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig {
+	s.SubtitleConfig = v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig) SetProperties(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigProperties) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig {
+	s.Properties = v
+	return s
+}
+
+type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo struct {
+	Bufsize    *string                                                                             `json:"Bufsize,omitempty" xml:"Bufsize,omitempty"`
+	Degrain    *string                                                                             `json:"Degrain,omitempty" xml:"Degrain,omitempty"`
+	BitrateBnd *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideoBitrateBnd `json:"BitrateBnd,omitempty" xml:"BitrateBnd,omitempty" type:"Struct"`
+	PixFmt     *string                                                                             `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
+	Pad        *string                                                                             `json:"Pad,omitempty" xml:"Pad,omitempty"`
+	Codec      *string                                                                             `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	Height     *string                                                                             `json:"Height,omitempty" xml:"Height,omitempty"`
+	Qscale     *string                                                                             `json:"Qscale,omitempty" xml:"Qscale,omitempty"`
+	Crop       *string                                                                             `json:"Crop,omitempty" xml:"Crop,omitempty"`
+	Bitrate    *string                                                                             `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	Maxrate    *string                                                                             `json:"Maxrate,omitempty" xml:"Maxrate,omitempty"`
+	MaxFps     *string                                                                             `json:"MaxFps,omitempty" xml:"MaxFps,omitempty"`
+	Profile    *string                                                                             `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	Crf        *string                                                                             `json:"Crf,omitempty" xml:"Crf,omitempty"`
+	Gop        *string                                                                             `json:"Gop,omitempty" xml:"Gop,omitempty"`
+	Width      *string                                                                             `json:"Width,omitempty" xml:"Width,omitempty"`
+	Fps        *string                                                                             `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	Preset     *string                                                                             `json:"Preset,omitempty" xml:"Preset,omitempty"`
+	ScanMode   *string                                                                             `json:"ScanMode,omitempty" xml:"ScanMode,omitempty"`
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo) SetBufsize(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo {
+	s.Bufsize = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo) SetDegrain(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo {
+	s.Degrain = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo) SetBitrateBnd(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideoBitrateBnd) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo {
+	s.BitrateBnd = v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo) SetPixFmt(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo {
+	s.PixFmt = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo) SetPad(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo {
+	s.Pad = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo) SetCodec(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo {
+	s.Codec = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo) SetHeight(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo {
+	s.Height = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo) SetQscale(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo {
+	s.Qscale = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo) SetCrop(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo {
+	s.Crop = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo) SetBitrate(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo {
+	s.Bitrate = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo) SetMaxrate(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo {
+	s.Maxrate = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo) SetMaxFps(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo {
+	s.MaxFps = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo) SetProfile(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo {
+	s.Profile = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo) SetCrf(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo {
+	s.Crf = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo) SetGop(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo {
+	s.Gop = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo) SetWidth(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo {
+	s.Width = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo) SetFps(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo {
+	s.Fps = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo) SetPreset(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo {
+	s.Preset = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo) SetScanMode(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo {
+	s.ScanMode = &v
+	return s
+}
+
+type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideoBitrateBnd struct {
+	Max *string `json:"Max,omitempty" xml:"Max,omitempty"`
+	Min *string `json:"Min,omitempty" xml:"Min,omitempty"`
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideoBitrateBnd) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideoBitrateBnd) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideoBitrateBnd) SetMax(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideoBitrateBnd {
+	s.Max = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideoBitrateBnd) SetMin(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideoBitrateBnd {
+	s.Min = &v
+	return s
+}
+
+type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig struct {
+	IsCheckAudioBitrate     *string `json:"IsCheckAudioBitrate,omitempty" xml:"IsCheckAudioBitrate,omitempty"`
+	IsCheckReso             *string `json:"IsCheckReso,omitempty" xml:"IsCheckReso,omitempty"`
+	TransMode               *string `json:"TransMode,omitempty" xml:"TransMode,omitempty"`
+	IsCheckVideoBitrateFail *string `json:"IsCheckVideoBitrateFail,omitempty" xml:"IsCheckVideoBitrateFail,omitempty"`
+	AdjDarMethod            *string `json:"AdjDarMethod,omitempty" xml:"AdjDarMethod,omitempty"`
+	Duration                *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	IsCheckVideoBitrate     *string `json:"IsCheckVideoBitrate,omitempty" xml:"IsCheckVideoBitrate,omitempty"`
+	IsCheckResoFail         *string `json:"IsCheckResoFail,omitempty" xml:"IsCheckResoFail,omitempty"`
+	IsCheckAudioBitrateFail *string `json:"IsCheckAudioBitrateFail,omitempty" xml:"IsCheckAudioBitrateFail,omitempty"`
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig) SetIsCheckAudioBitrate(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig {
+	s.IsCheckAudioBitrate = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig) SetIsCheckReso(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig {
+	s.IsCheckReso = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig) SetTransMode(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig {
+	s.TransMode = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig) SetIsCheckVideoBitrateFail(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig {
+	s.IsCheckVideoBitrateFail = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig) SetAdjDarMethod(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig {
+	s.AdjDarMethod = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig) SetDuration(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig {
+	s.Duration = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig) SetIsCheckVideoBitrate(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig {
+	s.IsCheckVideoBitrate = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig) SetIsCheckResoFail(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig {
+	s.IsCheckResoFail = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig) SetIsCheckAudioBitrateFail(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig {
+	s.IsCheckAudioBitrateFail = &v
+	return s
+}
+
+type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEncryption struct {
+	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Key     *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	KeyType *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
+	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	KeyUri  *string `json:"KeyUri,omitempty" xml:"KeyUri,omitempty"`
+	SkipCnt *string `json:"SkipCnt,omitempty" xml:"SkipCnt,omitempty"`
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEncryption) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEncryption) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEncryption) SetType(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEncryption {
+	s.Type = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEncryption) SetKey(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEncryption {
+	s.Key = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEncryption) SetKeyType(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEncryption {
+	s.KeyType = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEncryption) SetId(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEncryption {
+	s.Id = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEncryption) SetKeyUri(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEncryption {
+	s.KeyUri = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEncryption) SetSkipCnt(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEncryption {
+	s.SkipCnt = &v
 	return s
 }
 
@@ -45634,14 +46772,14 @@ func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWate
 }
 
 type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkListWaterMark struct {
-	WaterMarkTemplateId *string                                                                                             `json:"WaterMarkTemplateId,omitempty" xml:"WaterMarkTemplateId,omitempty"`
+	Type                *string                                                                                             `json:"Type,omitempty" xml:"Type,omitempty"`
+	ReferPos            *string                                                                                             `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
+	Dx                  *string                                                                                             `json:"Dx,omitempty" xml:"Dx,omitempty"`
 	Width               *string                                                                                             `json:"Width,omitempty" xml:"Width,omitempty"`
 	Height              *string                                                                                             `json:"Height,omitempty" xml:"Height,omitempty"`
-	Dx                  *string                                                                                             `json:"Dx,omitempty" xml:"Dx,omitempty"`
-	Dy                  *string                                                                                             `json:"Dy,omitempty" xml:"Dy,omitempty"`
-	ReferPos            *string                                                                                             `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
-	Type                *string                                                                                             `json:"Type,omitempty" xml:"Type,omitempty"`
 	InputFile           *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkListWaterMarkInputFile `json:"InputFile,omitempty" xml:"InputFile,omitempty" type:"Struct"`
+	WaterMarkTemplateId *string                                                                                             `json:"WaterMarkTemplateId,omitempty" xml:"WaterMarkTemplateId,omitempty"`
+	Dy                  *string                                                                                             `json:"Dy,omitempty" xml:"Dy,omitempty"`
 }
 
 func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkListWaterMark) String() string {
@@ -45652,8 +46790,18 @@ func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWater
 	return s.String()
 }
 
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkListWaterMark) SetWaterMarkTemplateId(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkListWaterMark {
-	s.WaterMarkTemplateId = &v
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkListWaterMark) SetType(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkListWaterMark {
+	s.Type = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkListWaterMark) SetReferPos(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkListWaterMark {
+	s.ReferPos = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkListWaterMark) SetDx(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkListWaterMark {
+	s.Dx = &v
 	return s
 }
 
@@ -45667,8 +46815,13 @@ func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWate
 	return s
 }
 
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkListWaterMark) SetDx(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkListWaterMark {
-	s.Dx = &v
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkListWaterMark) SetInputFile(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkListWaterMarkInputFile) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkListWaterMark {
+	s.InputFile = v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkListWaterMark) SetWaterMarkTemplateId(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkListWaterMark {
+	s.WaterMarkTemplateId = &v
 	return s
 }
 
@@ -45677,25 +46830,10 @@ func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWate
 	return s
 }
 
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkListWaterMark) SetReferPos(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkListWaterMark {
-	s.ReferPos = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkListWaterMark) SetType(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkListWaterMark {
-	s.Type = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkListWaterMark) SetInputFile(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkListWaterMarkInputFile) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkListWaterMark {
-	s.InputFile = v
-	return s
-}
-
 type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkListWaterMarkInputFile struct {
-	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
 	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
 }
 
 func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkListWaterMarkInputFile) String() string {
@@ -45706,8 +46844,8 @@ func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWater
 	return s.String()
 }
 
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkListWaterMarkInputFile) SetBucket(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkListWaterMarkInputFile {
-	s.Bucket = &v
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkListWaterMarkInputFile) SetObject(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkListWaterMarkInputFile {
+	s.Object = &v
 	return s
 }
 
@@ -45716,8 +46854,124 @@ func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWate
 	return s
 }
 
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkListWaterMarkInputFile) SetObject(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkListWaterMarkInputFile {
-	s.Object = &v
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkListWaterMarkInputFile) SetBucket(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkListWaterMarkInputFile {
+	s.Bucket = &v
+	return s
+}
+
+type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigM3U8NonStandardSupport struct {
+	TS *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigM3U8NonStandardSupportTS `json:"TS,omitempty" xml:"TS,omitempty" type:"Struct"`
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigM3U8NonStandardSupport) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigM3U8NonStandardSupport) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigM3U8NonStandardSupport) SetTS(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigM3U8NonStandardSupportTS) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigM3U8NonStandardSupport {
+	s.TS = v
+	return s
+}
+
+type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigM3U8NonStandardSupportTS struct {
+	SizeSupport *bool `json:"SizeSupport,omitempty" xml:"SizeSupport,omitempty"`
+	Md5Support  *bool `json:"Md5Support,omitempty" xml:"Md5Support,omitempty"`
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigM3U8NonStandardSupportTS) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigM3U8NonStandardSupportTS) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigM3U8NonStandardSupportTS) SetSizeSupport(v bool) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigM3U8NonStandardSupportTS {
+	s.SizeSupport = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigM3U8NonStandardSupportTS) SetMd5Support(v bool) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigM3U8NonStandardSupportTS {
+	s.Md5Support = &v
+	return s
+}
+
+type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudio struct {
+	Profile    *string                                                                         `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	Codec      *string                                                                         `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	Samplerate *string                                                                         `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
+	Qscale     *string                                                                         `json:"Qscale,omitempty" xml:"Qscale,omitempty"`
+	Channels   *string                                                                         `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	Volume     *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudioVolume `json:"Volume,omitempty" xml:"Volume,omitempty" type:"Struct"`
+	Bitrate    *string                                                                         `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudio) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudio) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudio) SetProfile(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudio {
+	s.Profile = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudio) SetCodec(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudio {
+	s.Codec = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudio) SetSamplerate(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudio {
+	s.Samplerate = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudio) SetQscale(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudio {
+	s.Qscale = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudio) SetChannels(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudio {
+	s.Channels = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudio) SetVolume(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudioVolume) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudio {
+	s.Volume = v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudio) SetBitrate(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudio {
+	s.Bitrate = &v
+	return s
+}
+
+type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudioVolume struct {
+	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	Level  *string `json:"Level,omitempty" xml:"Level,omitempty"`
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudioVolume) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudioVolume) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudioVolume) SetMethod(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudioVolume {
+	s.Method = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudioVolume) SetLevel(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudioVolume {
+	s.Level = &v
 	return s
 }
 
@@ -45739,10 +46993,10 @@ func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMerg
 }
 
 type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMergeListMerge struct {
-	MergeURL *string `json:"MergeURL,omitempty" xml:"MergeURL,omitempty"`
 	Start    *string `json:"Start,omitempty" xml:"Start,omitempty"`
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	RoleArn  *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	MergeURL *string `json:"MergeURL,omitempty" xml:"MergeURL,omitempty"`
+	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
 }
 
 func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMergeListMerge) String() string {
@@ -45753,13 +47007,18 @@ func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMerge
 	return s.String()
 }
 
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMergeListMerge) SetMergeURL(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMergeListMerge {
-	s.MergeURL = &v
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMergeListMerge) SetStart(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMergeListMerge {
+	s.Start = &v
 	return s
 }
 
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMergeListMerge) SetStart(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMergeListMerge {
-	s.Start = &v
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMergeListMerge) SetRoleArn(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMergeListMerge {
+	s.RoleArn = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMergeListMerge) SetMergeURL(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMergeListMerge {
+	s.MergeURL = &v
 	return s
 }
 
@@ -45768,8 +47027,20 @@ func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMerg
 	return s
 }
 
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMergeListMerge) SetRoleArn(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMergeListMerge {
-	s.RoleArn = &v
+type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSuperReso struct {
+	IsHalfSample *string `json:"IsHalfSample,omitempty" xml:"IsHalfSample,omitempty"`
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSuperReso) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSuperReso) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSuperReso) SetIsHalfSample(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSuperReso {
+	s.IsHalfSample = &v
 	return s
 }
 
@@ -45803,9 +47074,9 @@ func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigDigi
 }
 
 type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigDigiWaterMarkInputFile struct {
-	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
 	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
 }
 
 func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigDigiWaterMarkInputFile) String() string {
@@ -45816,8 +47087,8 @@ func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigDigiW
 	return s.String()
 }
 
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigDigiWaterMarkInputFile) SetBucket(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigDigiWaterMarkInputFile {
-	s.Bucket = &v
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigDigiWaterMarkInputFile) SetObject(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigDigiWaterMarkInputFile {
+	s.Object = &v
 	return s
 }
 
@@ -45826,16 +47097,16 @@ func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigDigi
 	return s
 }
 
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigDigiWaterMarkInputFile) SetObject(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigDigiWaterMarkInputFile {
-	s.Object = &v
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigDigiWaterMarkInputFile) SetBucket(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigDigiWaterMarkInputFile {
+	s.Bucket = &v
 	return s
 }
 
 type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigOutputFile struct {
-	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
 	RoleArn  *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
 }
 
 func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigOutputFile) String() string {
@@ -45846,13 +47117,8 @@ func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigOutpu
 	return s.String()
 }
 
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigOutputFile) SetBucket(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigOutputFile {
-	s.Bucket = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigOutputFile) SetLocation(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigOutputFile {
-	s.Location = &v
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigOutputFile) SetRoleArn(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigOutputFile {
+	s.RoleArn = &v
 	return s
 }
 
@@ -45861,61 +47127,707 @@ func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigOutp
 	return s
 }
 
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigOutputFile) SetRoleArn(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigOutputFile {
-	s.RoleArn = &v
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigOutputFile) SetLocation(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigOutputFile {
+	s.Location = &v
 	return s
 }
 
-type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigM3U8NonStandardSupport struct {
-	TS *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigM3U8NonStandardSupportTS `json:"TS,omitempty" xml:"TS,omitempty" type:"Struct"`
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigOutputFile) SetBucket(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigOutputFile {
+	s.Bucket = &v
+	return s
 }
 
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigM3U8NonStandardSupport) String() string {
+type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditing struct {
+	Timeline *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimeline `json:"Timeline,omitempty" xml:"Timeline,omitempty" type:"Struct"`
+	ClipList *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipList `json:"ClipList,omitempty" xml:"ClipList,omitempty" type:"Struct"`
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditing) String() string {
 	return tea.Prettify(s)
 }
 
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigM3U8NonStandardSupport) GoString() string {
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditing) GoString() string {
 	return s.String()
 }
 
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigM3U8NonStandardSupport) SetTS(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigM3U8NonStandardSupportTS) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigM3U8NonStandardSupport {
-	s.TS = v
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditing) SetTimeline(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimeline) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditing {
+	s.Timeline = v
 	return s
 }
 
-type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigM3U8NonStandardSupportTS struct {
-	Md5Support  *bool `json:"Md5Support,omitempty" xml:"Md5Support,omitempty"`
-	SizeSupport *bool `json:"SizeSupport,omitempty" xml:"SizeSupport,omitempty"`
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditing) SetClipList(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipList) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditing {
+	s.ClipList = v
+	return s
 }
 
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigM3U8NonStandardSupportTS) String() string {
+type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimeline struct {
+	TrackList      *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackList      `json:"TrackList,omitempty" xml:"TrackList,omitempty" type:"Struct"`
+	TimelineConfig *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfig `json:"TimelineConfig,omitempty" xml:"TimelineConfig,omitempty" type:"Struct"`
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimeline) String() string {
 	return tea.Prettify(s)
 }
 
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigM3U8NonStandardSupportTS) GoString() string {
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimeline) GoString() string {
 	return s.String()
 }
 
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigM3U8NonStandardSupportTS) SetMd5Support(v bool) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigM3U8NonStandardSupportTS {
-	s.Md5Support = &v
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimeline) SetTrackList(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackList) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimeline {
+	s.TrackList = v
 	return s
 }
 
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigM3U8NonStandardSupportTS) SetSizeSupport(v bool) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigM3U8NonStandardSupportTS {
-	s.SizeSupport = &v
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimeline) SetTimelineConfig(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfig) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimeline {
+	s.TimelineConfig = v
+	return s
+}
+
+type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackList struct {
+	Track []*SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrack `json:"Track,omitempty" xml:"Track,omitempty" type:"Repeated"`
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackList) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackList) SetTrack(v []*SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrack) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackList {
+	s.Track = v
+	return s
+}
+
+type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrack struct {
+	Type  *string                                                                                                `json:"Type,omitempty" xml:"Type,omitempty"`
+	Order *string                                                                                                `json:"Order,omitempty" xml:"Order,omitempty"`
+	Id    *string                                                                                                `json:"Id,omitempty" xml:"Id,omitempty"`
+	Clips *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClips `json:"Clips,omitempty" xml:"Clips,omitempty" type:"Struct"`
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrack) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrack) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrack) SetType(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrack {
+	s.Type = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrack) SetOrder(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrack {
+	s.Order = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrack) SetId(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrack {
+	s.Id = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrack) SetClips(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClips) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrack {
+	s.Clips = v
+	return s
+}
+
+type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClips struct {
+	Clip []*SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClip `json:"Clip,omitempty" xml:"Clip,omitempty" type:"Repeated"`
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClips) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClips) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClips) SetClip(v []*SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClip) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClips {
+	s.Clip = v
+	return s
+}
+
+type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClip struct {
+	ClipsConfig *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClipClipsConfig `json:"ClipsConfig,omitempty" xml:"ClipsConfig,omitempty" type:"Struct"`
+	Out         *string                                                                                                               `json:"Out,omitempty" xml:"Out,omitempty"`
+	In          *string                                                                                                               `json:"In,omitempty" xml:"In,omitempty"`
+	ClipID      *string                                                                                                               `json:"clipID,omitempty" xml:"clipID,omitempty"`
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClip) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClip) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClip) SetClipsConfig(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClipClipsConfig) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClip {
+	s.ClipsConfig = v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClip) SetOut(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClip {
+	s.Out = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClip) SetIn(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClip {
+	s.In = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClip) SetClipID(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClip {
+	s.ClipID = &v
+	return s
+}
+
+type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClipClipsConfig struct {
+	ClipsConfigVideo *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClipClipsConfigClipsConfigVideo `json:"ClipsConfigVideo,omitempty" xml:"ClipsConfigVideo,omitempty" type:"Struct"`
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClipClipsConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClipClipsConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClipClipsConfig) SetClipsConfigVideo(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClipClipsConfigClipsConfigVideo) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClipClipsConfig {
+	s.ClipsConfigVideo = v
+	return s
+}
+
+type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClipClipsConfigClipsConfigVideo struct {
+	T *string `json:"T,omitempty" xml:"T,omitempty"`
+	L *string `json:"L,omitempty" xml:"L,omitempty"`
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClipClipsConfigClipsConfigVideo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClipClipsConfigClipsConfigVideo) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClipClipsConfigClipsConfigVideo) SetT(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClipClipsConfigClipsConfigVideo {
+	s.T = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClipClipsConfigClipsConfigVideo) SetL(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClipClipsConfigClipsConfigVideo {
+	s.L = &v
+	return s
+}
+
+type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfig struct {
+	TimelineConfigAudio *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigAudio `json:"TimelineConfigAudio,omitempty" xml:"TimelineConfigAudio,omitempty" type:"Struct"`
+	TimelineConfigVideo *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo `json:"TimelineConfigVideo,omitempty" xml:"TimelineConfigVideo,omitempty" type:"Struct"`
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfig) SetTimelineConfigAudio(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigAudio) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfig {
+	s.TimelineConfigAudio = v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfig) SetTimelineConfigVideo(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfig {
+	s.TimelineConfigVideo = v
+	return s
+}
+
+type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigAudio struct {
+	ChannelLayout *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
+	Samplerate    *string `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
+	Channels      *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigAudio) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigAudio) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigAudio) SetChannelLayout(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigAudio {
+	s.ChannelLayout = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigAudio) SetSamplerate(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigAudio {
+	s.Samplerate = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigAudio) SetChannels(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigAudio {
+	s.Channels = &v
+	return s
+}
+
+type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo struct {
+	BgColor        *string `json:"BgColor,omitempty" xml:"BgColor,omitempty"`
+	Width          *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	RenderRatio    *string `json:"RenderRatio,omitempty" xml:"RenderRatio,omitempty"`
+	IsGpuData      *string `json:"IsGpuData,omitempty" xml:"IsGpuData,omitempty"`
+	Height         *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	IsOneTrackData *string `json:"IsOneTrackData,omitempty" xml:"IsOneTrackData,omitempty"`
+	Fps            *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	ReclosePrec    *string `json:"ReclosePrec,omitempty" xml:"ReclosePrec,omitempty"`
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo) SetBgColor(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo {
+	s.BgColor = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo) SetWidth(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo {
+	s.Width = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo) SetRenderRatio(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo {
+	s.RenderRatio = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo) SetIsGpuData(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo {
+	s.IsGpuData = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo) SetHeight(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo {
+	s.Height = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo) SetIsOneTrackData(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo {
+	s.IsOneTrackData = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo) SetFps(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo {
+	s.Fps = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo) SetReclosePrec(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo {
+	s.ReclosePrec = &v
+	return s
+}
+
+type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipList struct {
+	Clip []*SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClip `json:"Clip,omitempty" xml:"Clip,omitempty" type:"Repeated"`
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipList) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipList) SetClip(v []*SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClip) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipList {
+	s.Clip = v
+	return s
+}
+
+type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClip struct {
+	Type          *string                                                                                        `json:"Type,omitempty" xml:"Type,omitempty"`
+	SourceID      *string                                                                                        `json:"SourceID,omitempty" xml:"SourceID,omitempty"`
+	Effects       *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClipEffects `json:"Effects,omitempty" xml:"Effects,omitempty" type:"Struct"`
+	SourceType    *string                                                                                        `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	SourceStrmMap *string                                                                                        `json:"SourceStrmMap,omitempty" xml:"SourceStrmMap,omitempty"`
+	Out           *string                                                                                        `json:"Out,omitempty" xml:"Out,omitempty"`
+	In            *string                                                                                        `json:"In,omitempty" xml:"In,omitempty"`
+	Id            *string                                                                                        `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClip) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClip) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClip) SetType(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClip {
+	s.Type = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClip) SetSourceID(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClip {
+	s.SourceID = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClip) SetEffects(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClipEffects) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClip {
+	s.Effects = v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClip) SetSourceType(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClip {
+	s.SourceType = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClip) SetSourceStrmMap(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClip {
+	s.SourceStrmMap = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClip) SetOut(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClip {
+	s.Out = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClip) SetIn(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClip {
+	s.In = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClip) SetId(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClip {
+	s.Id = &v
+	return s
+}
+
+type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClipEffects struct {
+	Effect []*SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClipEffectsEffect `json:"Effect,omitempty" xml:"Effect,omitempty" type:"Repeated"`
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClipEffects) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClipEffects) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClipEffects) SetEffect(v []*SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClipEffectsEffect) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClipEffects {
+	s.Effect = v
+	return s
+}
+
+type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClipEffectsEffect struct {
+	Effect       *string `json:"Effect,omitempty" xml:"Effect,omitempty"`
+	EffectConfig *string `json:"EffectConfig,omitempty" xml:"EffectConfig,omitempty"`
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClipEffectsEffect) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClipEffectsEffect) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClipEffectsEffect) SetEffect(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClipEffectsEffect {
+	s.Effect = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClipEffectsEffect) SetEffectConfig(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClipEffectsEffect {
+	s.EffectConfig = &v
+	return s
+}
+
+type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigContainer struct {
+	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigContainer) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigContainer) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigContainer) SetFormat(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigContainer {
+	s.Format = &v
+	return s
+}
+
+type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigClip struct {
+	TimeSpan *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigClipTimeSpan `json:"TimeSpan,omitempty" xml:"TimeSpan,omitempty" type:"Struct"`
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigClip) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigClip) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigClip) SetTimeSpan(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigClipTimeSpan) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigClip {
+	s.TimeSpan = v
+	return s
+}
+
+type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigClipTimeSpan struct {
+	Seek     *string `json:"Seek,omitempty" xml:"Seek,omitempty"`
+	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigClipTimeSpan) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigClipTimeSpan) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigClipTimeSpan) SetSeek(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigClipTimeSpan {
+	s.Seek = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigClipTimeSpan) SetDuration(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigClipTimeSpan {
+	s.Duration = &v
+	return s
+}
+
+type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfig struct {
+	Gif     *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfigGif     `json:"Gif,omitempty" xml:"Gif,omitempty" type:"Struct"`
+	Segment *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfigSegment `json:"Segment,omitempty" xml:"Segment,omitempty" type:"Struct"`
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfig) SetGif(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfigGif) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfig {
+	s.Gif = v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfig) SetSegment(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfigSegment) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfig {
+	s.Segment = v
+	return s
+}
+
+type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfigGif struct {
+	FinalDelay      *string `json:"FinalDelay,omitempty" xml:"FinalDelay,omitempty"`
+	DitherMode      *string `json:"DitherMode,omitempty" xml:"DitherMode,omitempty"`
+	Loop            *string `json:"Loop,omitempty" xml:"Loop,omitempty"`
+	IsCustomPalette *string `json:"IsCustomPalette,omitempty" xml:"IsCustomPalette,omitempty"`
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfigGif) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfigGif) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfigGif) SetFinalDelay(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfigGif {
+	s.FinalDelay = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfigGif) SetDitherMode(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfigGif {
+	s.DitherMode = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfigGif) SetLoop(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfigGif {
+	s.Loop = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfigGif) SetIsCustomPalette(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfigGif {
+	s.IsCustomPalette = &v
+	return s
+}
+
+type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfigSegment struct {
+	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfigSegment) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfigSegment) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfigSegment) SetDuration(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfigSegment {
+	s.Duration = &v
+	return s
+}
+
+type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfig struct {
+	ExtSubtitleList *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleList `json:"ExtSubtitleList,omitempty" xml:"ExtSubtitleList,omitempty" type:"Struct"`
+	SubtitleList    *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigSubtitleList    `json:"SubtitleList,omitempty" xml:"SubtitleList,omitempty" type:"Struct"`
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfig) SetExtSubtitleList(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleList) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfig {
+	s.ExtSubtitleList = v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfig) SetSubtitleList(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigSubtitleList) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfig {
+	s.SubtitleList = v
+	return s
+}
+
+type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleList struct {
+	ExtSubtitle []*SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitle `json:"ExtSubtitle,omitempty" xml:"ExtSubtitle,omitempty" type:"Repeated"`
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleList) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleList) SetExtSubtitle(v []*SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitle) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleList {
+	s.ExtSubtitle = v
+	return s
+}
+
+type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitle struct {
+	CharEnc  *string                                                                                                           `json:"CharEnc,omitempty" xml:"CharEnc,omitempty"`
+	FontName *string                                                                                                           `json:"FontName,omitempty" xml:"FontName,omitempty"`
+	Input    *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitleInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitle) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitle) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitle) SetCharEnc(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitle {
+	s.CharEnc = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitle) SetFontName(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitle {
+	s.FontName = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitle) SetInput(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitleInput) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitle {
+	s.Input = v
+	return s
+}
+
+type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitleInput struct {
+	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitleInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitleInput) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitleInput) SetObject(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitleInput {
+	s.Object = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitleInput) SetLocation(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitleInput {
+	s.Location = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitleInput) SetBucket(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitleInput {
+	s.Bucket = &v
+	return s
+}
+
+type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigSubtitleList struct {
+	Subtitle []*SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigSubtitleListSubtitle `json:"Subtitle,omitempty" xml:"Subtitle,omitempty" type:"Repeated"`
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigSubtitleList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigSubtitleList) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigSubtitleList) SetSubtitle(v []*SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigSubtitleListSubtitle) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigSubtitleList {
+	s.Subtitle = v
+	return s
+}
+
+type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigSubtitleListSubtitle struct {
+	Map *string `json:"Map,omitempty" xml:"Map,omitempty"`
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigSubtitleListSubtitle) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigSubtitleListSubtitle) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigSubtitleListSubtitle) SetMap(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigSubtitleListSubtitle {
+	s.Map = &v
 	return s
 }
 
 type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigProperties struct {
 	Width      *string                                                                               `json:"Width,omitempty" xml:"Width,omitempty"`
 	Height     *string                                                                               `json:"Height,omitempty" xml:"Height,omitempty"`
-	Bitrate    *string                                                                               `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
 	Duration   *string                                                                               `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	Fps        *string                                                                               `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	FileSize   *string                                                                               `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	Bitrate    *string                                                                               `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
 	FileFormat *string                                                                               `json:"FileFormat,omitempty" xml:"FileFormat,omitempty"`
 	Streams    *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreams `json:"Streams,omitempty" xml:"Streams,omitempty" type:"Struct"`
 	Format     *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesFormat  `json:"Format,omitempty" xml:"Format,omitempty" type:"Struct"`
+	FileSize   *string                                                                               `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
 }
 
 func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigProperties) String() string {
@@ -45936,11 +47848,6 @@ func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigProp
 	return s
 }
 
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigProperties) SetBitrate(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigProperties {
-	s.Bitrate = &v
-	return s
-}
-
 func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigProperties) SetDuration(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigProperties {
 	s.Duration = &v
 	return s
@@ -45951,8 +47858,8 @@ func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigProp
 	return s
 }
 
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigProperties) SetFileSize(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigProperties {
-	s.FileSize = &v
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigProperties) SetBitrate(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigProperties {
+	s.Bitrate = &v
 	return s
 }
 
@@ -45968,6 +47875,11 @@ func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigProp
 
 func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigProperties) SetFormat(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesFormat) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigProperties {
 	s.Format = v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigProperties) SetFileSize(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigProperties {
+	s.FileSize = &v
 	return s
 }
 
@@ -46019,28 +47931,28 @@ func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigProp
 
 type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream struct {
 	Index          *string                                                                                                                    `json:"Index,omitempty" xml:"Index,omitempty"`
-	CodecName      *string                                                                                                                    `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
-	CodecLongName  *string                                                                                                                    `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
-	Profile        *string                                                                                                                    `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	CodecTimeBase  *string                                                                                                                    `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
-	CodecTagString *string                                                                                                                    `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
-	CodecTag       *string                                                                                                                    `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
-	Width          *string                                                                                                                    `json:"Width,omitempty" xml:"Width,omitempty"`
-	Height         *string                                                                                                                    `json:"Height,omitempty" xml:"Height,omitempty"`
-	HasBFrames     *string                                                                                                                    `json:"HasBFrames,omitempty" xml:"HasBFrames,omitempty"`
-	Sar            *string                                                                                                                    `json:"Sar,omitempty" xml:"Sar,omitempty"`
-	Dar            *string                                                                                                                    `json:"Dar,omitempty" xml:"Dar,omitempty"`
-	PixFmt         *string                                                                                                                    `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
-	Level          *string                                                                                                                    `json:"Level,omitempty" xml:"Level,omitempty"`
-	Fps            *string                                                                                                                    `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	AvgFPS         *string                                                                                                                    `json:"AvgFPS,omitempty" xml:"AvgFPS,omitempty"`
 	Timebase       *string                                                                                                                    `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
-	StartTime      *string                                                                                                                    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Duration       *string                                                                                                                    `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Bitrate        *string                                                                                                                    `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	NumFrames      *string                                                                                                                    `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
+	AvgFPS         *string                                                                                                                    `json:"AvgFPS,omitempty" xml:"AvgFPS,omitempty"`
+	PixFmt         *string                                                                                                                    `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
+	Sar            *string                                                                                                                    `json:"Sar,omitempty" xml:"Sar,omitempty"`
 	Lang           *string                                                                                                                    `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	CodecLongName  *string                                                                                                                    `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	Height         *string                                                                                                                    `json:"Height,omitempty" xml:"Height,omitempty"`
+	NumFrames      *string                                                                                                                    `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
+	Bitrate        *string                                                                                                                    `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	CodecTagString *string                                                                                                                    `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
+	HasBFrames     *string                                                                                                                    `json:"HasBFrames,omitempty" xml:"HasBFrames,omitempty"`
+	Profile        *string                                                                                                                    `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	StartTime      *string                                                                                                                    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	NetworkCost    *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStreamNetworkCost `json:"NetworkCost,omitempty" xml:"NetworkCost,omitempty" type:"Struct"`
+	Dar            *string                                                                                                                    `json:"Dar,omitempty" xml:"Dar,omitempty"`
+	CodecName      *string                                                                                                                    `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	Width          *string                                                                                                                    `json:"Width,omitempty" xml:"Width,omitempty"`
+	Duration       *string                                                                                                                    `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Fps            *string                                                                                                                    `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	CodecTag       *string                                                                                                                    `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
+	CodecTimeBase  *string                                                                                                                    `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	Level          *string                                                                                                                    `json:"Level,omitempty" xml:"Level,omitempty"`
 }
 
 func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream) String() string {
@@ -46056,73 +47968,8 @@ func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigProp
 	return s
 }
 
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream) SetCodecName(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream {
-	s.CodecName = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream) SetCodecLongName(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream {
-	s.CodecLongName = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream) SetProfile(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream {
-	s.Profile = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream) SetCodecTimeBase(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream {
-	s.CodecTimeBase = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream) SetCodecTagString(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream {
-	s.CodecTagString = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream) SetCodecTag(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream {
-	s.CodecTag = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream) SetWidth(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream {
-	s.Width = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream) SetHeight(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream {
-	s.Height = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream) SetHasBFrames(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream {
-	s.HasBFrames = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream) SetSar(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream {
-	s.Sar = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream) SetDar(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream {
-	s.Dar = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream) SetPixFmt(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream {
-	s.PixFmt = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream) SetLevel(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream {
-	s.Level = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream) SetFps(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream {
-	s.Fps = &v
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream) SetTimebase(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream {
+	s.Timebase = &v
 	return s
 }
 
@@ -46131,28 +47978,13 @@ func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigProp
 	return s
 }
 
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream) SetTimebase(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream {
-	s.Timebase = &v
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream) SetPixFmt(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream {
+	s.PixFmt = &v
 	return s
 }
 
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream) SetStartTime(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream {
-	s.StartTime = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream) SetDuration(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream {
-	s.Duration = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream) SetBitrate(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream {
-	s.Bitrate = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream) SetNumFrames(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream {
-	s.NumFrames = &v
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream) SetSar(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream {
+	s.Sar = &v
 	return s
 }
 
@@ -46161,15 +47993,95 @@ func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigProp
 	return s
 }
 
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream) SetCodecLongName(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream {
+	s.CodecLongName = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream) SetHeight(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream {
+	s.Height = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream) SetNumFrames(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream {
+	s.NumFrames = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream) SetBitrate(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream {
+	s.Bitrate = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream) SetCodecTagString(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream {
+	s.CodecTagString = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream) SetHasBFrames(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream {
+	s.HasBFrames = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream) SetProfile(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream {
+	s.Profile = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream) SetStartTime(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream {
+	s.StartTime = &v
+	return s
+}
+
 func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream) SetNetworkCost(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStreamNetworkCost) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream {
 	s.NetworkCost = v
 	return s
 }
 
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream) SetDar(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream {
+	s.Dar = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream) SetCodecName(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream {
+	s.CodecName = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream) SetWidth(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream {
+	s.Width = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream) SetDuration(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream {
+	s.Duration = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream) SetFps(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream {
+	s.Fps = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream) SetCodecTag(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream {
+	s.CodecTag = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream) SetCodecTimeBase(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream {
+	s.CodecTimeBase = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream) SetLevel(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream {
+	s.Level = &v
+	return s
+}
+
 type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStreamNetworkCost struct {
 	PreloadTime   *string `json:"PreloadTime,omitempty" xml:"PreloadTime,omitempty"`
-	CostBandwidth *string `json:"CostBandwidth,omitempty" xml:"CostBandwidth,omitempty"`
 	AvgBitrate    *string `json:"AvgBitrate,omitempty" xml:"AvgBitrate,omitempty"`
+	CostBandwidth *string `json:"CostBandwidth,omitempty" xml:"CostBandwidth,omitempty"`
 }
 
 func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStreamNetworkCost) String() string {
@@ -46185,13 +48097,13 @@ func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigProp
 	return s
 }
 
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStreamNetworkCost) SetCostBandwidth(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStreamNetworkCost {
-	s.CostBandwidth = &v
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStreamNetworkCost) SetAvgBitrate(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStreamNetworkCost {
+	s.AvgBitrate = &v
 	return s
 }
 
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStreamNetworkCost) SetAvgBitrate(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStreamNetworkCost {
-	s.AvgBitrate = &v
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStreamNetworkCost) SetCostBandwidth(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStreamNetworkCost {
+	s.CostBandwidth = &v
 	return s
 }
 
@@ -46213,22 +48125,22 @@ func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigProp
 }
 
 type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream struct {
-	Index          *string `json:"Index,omitempty" xml:"Index,omitempty"`
-	CodecName      *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
-	CodecTimeBase  *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
-	CodecLongName  *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
-	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
-	CodecTag       *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
-	SampleFmt      *string `json:"SampleFmt,omitempty" xml:"SampleFmt,omitempty"`
-	Samplerate     *string `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
-	Channels       *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
-	ChannelLayout  *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
 	Timebase       *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
-	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Bitrate        *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	NumFrames      *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
+	Index          *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	SampleFmt      *string `json:"SampleFmt,omitempty" xml:"SampleFmt,omitempty"`
+	ChannelLayout  *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
 	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Samplerate     *string `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
+	CodecLongName  *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	Channels       *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	NumFrames      *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
+	Bitrate        *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	CodecName      *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	CodecTag       *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
+	CodecTimeBase  *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
 }
 
 func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream) String() string {
@@ -46239,33 +48151,13 @@ func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPrope
 	return s.String()
 }
 
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream) SetTimebase(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream {
+	s.Timebase = &v
+	return s
+}
+
 func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream) SetIndex(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream {
 	s.Index = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream) SetCodecName(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream {
-	s.CodecName = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream) SetCodecTimeBase(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream {
-	s.CodecTimeBase = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream) SetCodecLongName(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream {
-	s.CodecLongName = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream) SetCodecTagString(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream {
-	s.CodecTagString = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream) SetCodecTag(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream {
-	s.CodecTag = &v
 	return s
 }
 
@@ -46274,8 +48166,23 @@ func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigProp
 	return s
 }
 
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream) SetChannelLayout(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream {
+	s.ChannelLayout = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream) SetLang(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream {
+	s.Lang = &v
+	return s
+}
+
 func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream) SetSamplerate(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream {
 	s.Samplerate = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream) SetCodecLongName(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream {
+	s.CodecLongName = &v
 	return s
 }
 
@@ -46284,23 +48191,8 @@ func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigProp
 	return s
 }
 
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream) SetChannelLayout(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream {
-	s.ChannelLayout = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream) SetTimebase(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream {
-	s.Timebase = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream) SetStartTime(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream {
-	s.StartTime = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream) SetDuration(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream {
-	s.Duration = &v
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream) SetNumFrames(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream {
+	s.NumFrames = &v
 	return s
 }
 
@@ -46309,13 +48201,33 @@ func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigProp
 	return s
 }
 
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream) SetNumFrames(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream {
-	s.NumFrames = &v
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream) SetCodecTagString(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream {
+	s.CodecTagString = &v
 	return s
 }
 
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream) SetLang(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream {
-	s.Lang = &v
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream) SetStartTime(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream {
+	s.StartTime = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream) SetCodecName(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream {
+	s.CodecName = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream) SetDuration(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream {
+	s.Duration = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream) SetCodecTag(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream {
+	s.CodecTag = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream) SetCodecTimeBase(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream {
+	s.CodecTimeBase = &v
 	return s
 }
 
@@ -46360,14 +48272,14 @@ func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigProp
 }
 
 type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesFormat struct {
-	NumStreams     *string `json:"NumStreams,omitempty" xml:"NumStreams,omitempty"`
-	NumPrograms    *string `json:"NumPrograms,omitempty" xml:"NumPrograms,omitempty"`
-	FormatName     *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
-	FormatLongName *string `json:"FormatLongName,omitempty" xml:"FormatLongName,omitempty"`
 	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	NumPrograms    *string `json:"NumPrograms,omitempty" xml:"NumPrograms,omitempty"`
 	Size           *string `json:"Size,omitempty" xml:"Size,omitempty"`
+	NumStreams     *string `json:"NumStreams,omitempty" xml:"NumStreams,omitempty"`
+	FormatLongName *string `json:"FormatLongName,omitempty" xml:"FormatLongName,omitempty"`
+	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	Bitrate        *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	FormatName     *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
 }
 
 func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesFormat) String() string {
@@ -46378,8 +48290,8 @@ func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPrope
 	return s.String()
 }
 
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesFormat) SetNumStreams(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesFormat {
-	s.NumStreams = &v
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesFormat) SetStartTime(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesFormat {
+	s.StartTime = &v
 	return s
 }
 
@@ -46388,8 +48300,13 @@ func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigProp
 	return s
 }
 
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesFormat) SetFormatName(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesFormat {
-	s.FormatName = &v
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesFormat) SetSize(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesFormat {
+	s.Size = &v
+	return s
+}
+
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesFormat) SetNumStreams(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesFormat {
+	s.NumStreams = &v
 	return s
 }
 
@@ -46398,18 +48315,8 @@ func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigProp
 	return s
 }
 
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesFormat) SetStartTime(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesFormat {
-	s.StartTime = &v
-	return s
-}
-
 func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesFormat) SetDuration(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesFormat {
 	s.Duration = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesFormat) SetSize(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesFormat {
-	s.Size = &v
 	return s
 }
 
@@ -46418,1037 +48325,8 @@ func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigProp
 	return s
 }
 
-type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigClip struct {
-	TimeSpan *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigClipTimeSpan `json:"TimeSpan,omitempty" xml:"TimeSpan,omitempty" type:"Struct"`
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigClip) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigClip) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigClip) SetTimeSpan(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigClipTimeSpan) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigClip {
-	s.TimeSpan = v
-	return s
-}
-
-type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigClipTimeSpan struct {
-	Seek     *string `json:"Seek,omitempty" xml:"Seek,omitempty"`
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigClipTimeSpan) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigClipTimeSpan) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigClipTimeSpan) SetSeek(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigClipTimeSpan {
-	s.Seek = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigClipTimeSpan) SetDuration(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigClipTimeSpan {
-	s.Duration = &v
-	return s
-}
-
-type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSuperReso struct {
-	IsHalfSample *string `json:"IsHalfSample,omitempty" xml:"IsHalfSample,omitempty"`
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSuperReso) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSuperReso) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSuperReso) SetIsHalfSample(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSuperReso {
-	s.IsHalfSample = &v
-	return s
-}
-
-type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfig struct {
-	SubtitleList    *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigSubtitleList    `json:"SubtitleList,omitempty" xml:"SubtitleList,omitempty" type:"Struct"`
-	ExtSubtitleList *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleList `json:"ExtSubtitleList,omitempty" xml:"ExtSubtitleList,omitempty" type:"Struct"`
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfig) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfig) SetSubtitleList(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigSubtitleList) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfig {
-	s.SubtitleList = v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfig) SetExtSubtitleList(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleList) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfig {
-	s.ExtSubtitleList = v
-	return s
-}
-
-type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigSubtitleList struct {
-	Subtitle []*SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigSubtitleListSubtitle `json:"Subtitle,omitempty" xml:"Subtitle,omitempty" type:"Repeated"`
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigSubtitleList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigSubtitleList) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigSubtitleList) SetSubtitle(v []*SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigSubtitleListSubtitle) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigSubtitleList {
-	s.Subtitle = v
-	return s
-}
-
-type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigSubtitleListSubtitle struct {
-	Map *string `json:"Map,omitempty" xml:"Map,omitempty"`
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigSubtitleListSubtitle) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigSubtitleListSubtitle) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigSubtitleListSubtitle) SetMap(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigSubtitleListSubtitle {
-	s.Map = &v
-	return s
-}
-
-type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleList struct {
-	ExtSubtitle []*SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitle `json:"ExtSubtitle,omitempty" xml:"ExtSubtitle,omitempty" type:"Repeated"`
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleList) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleList) SetExtSubtitle(v []*SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitle) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleList {
-	s.ExtSubtitle = v
-	return s
-}
-
-type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitle struct {
-	FontName *string                                                                                                           `json:"FontName,omitempty" xml:"FontName,omitempty"`
-	CharEnc  *string                                                                                                           `json:"CharEnc,omitempty" xml:"CharEnc,omitempty"`
-	Input    *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitleInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitle) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitle) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitle) SetFontName(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitle {
-	s.FontName = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitle) SetCharEnc(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitle {
-	s.CharEnc = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitle) SetInput(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitleInput) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitle {
-	s.Input = v
-	return s
-}
-
-type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitleInput struct {
-	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitleInput) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitleInput) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitleInput) SetBucket(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitleInput {
-	s.Bucket = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitleInput) SetLocation(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitleInput {
-	s.Location = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitleInput) SetObject(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitleInput {
-	s.Object = &v
-	return s
-}
-
-type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig struct {
-	TransMode               *string `json:"TransMode,omitempty" xml:"TransMode,omitempty"`
-	IsCheckReso             *string `json:"IsCheckReso,omitempty" xml:"IsCheckReso,omitempty"`
-	IsCheckResoFail         *string `json:"IsCheckResoFail,omitempty" xml:"IsCheckResoFail,omitempty"`
-	IsCheckVideoBitrate     *string `json:"IsCheckVideoBitrate,omitempty" xml:"IsCheckVideoBitrate,omitempty"`
-	IsCheckAudioBitrate     *string `json:"IsCheckAudioBitrate,omitempty" xml:"IsCheckAudioBitrate,omitempty"`
-	AdjDarMethod            *string `json:"AdjDarMethod,omitempty" xml:"AdjDarMethod,omitempty"`
-	IsCheckVideoBitrateFail *string `json:"IsCheckVideoBitrateFail,omitempty" xml:"IsCheckVideoBitrateFail,omitempty"`
-	IsCheckAudioBitrateFail *string `json:"IsCheckAudioBitrateFail,omitempty" xml:"IsCheckAudioBitrateFail,omitempty"`
-	Duration                *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig) SetTransMode(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig {
-	s.TransMode = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig) SetIsCheckReso(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig {
-	s.IsCheckReso = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig) SetIsCheckResoFail(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig {
-	s.IsCheckResoFail = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig) SetIsCheckVideoBitrate(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig {
-	s.IsCheckVideoBitrate = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig) SetIsCheckAudioBitrate(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig {
-	s.IsCheckAudioBitrate = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig) SetAdjDarMethod(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig {
-	s.AdjDarMethod = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig) SetIsCheckVideoBitrateFail(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig {
-	s.IsCheckVideoBitrateFail = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig) SetIsCheckAudioBitrateFail(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig {
-	s.IsCheckAudioBitrateFail = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig) SetDuration(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig {
-	s.Duration = &v
-	return s
-}
-
-type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfig struct {
-	Segment *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfigSegment `json:"Segment,omitempty" xml:"Segment,omitempty" type:"Struct"`
-	Gif     *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfigGif     `json:"Gif,omitempty" xml:"Gif,omitempty" type:"Struct"`
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfig) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfig) SetSegment(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfigSegment) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfig {
-	s.Segment = v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfig) SetGif(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfigGif) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfig {
-	s.Gif = v
-	return s
-}
-
-type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfigSegment struct {
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfigSegment) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfigSegment) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfigSegment) SetDuration(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfigSegment {
-	s.Duration = &v
-	return s
-}
-
-type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfigGif struct {
-	Loop            *string `json:"Loop,omitempty" xml:"Loop,omitempty"`
-	FinalDelay      *string `json:"FinalDelay,omitempty" xml:"FinalDelay,omitempty"`
-	IsCustomPalette *string `json:"IsCustomPalette,omitempty" xml:"IsCustomPalette,omitempty"`
-	DitherMode      *string `json:"DitherMode,omitempty" xml:"DitherMode,omitempty"`
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfigGif) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfigGif) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfigGif) SetLoop(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfigGif {
-	s.Loop = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfigGif) SetFinalDelay(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfigGif {
-	s.FinalDelay = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfigGif) SetIsCustomPalette(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfigGif {
-	s.IsCustomPalette = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfigGif) SetDitherMode(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfigGif {
-	s.DitherMode = &v
-	return s
-}
-
-type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudio struct {
-	Codec      *string                                                                         `json:"Codec,omitempty" xml:"Codec,omitempty"`
-	Profile    *string                                                                         `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	Samplerate *string                                                                         `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
-	Bitrate    *string                                                                         `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	Channels   *string                                                                         `json:"Channels,omitempty" xml:"Channels,omitempty"`
-	Qscale     *string                                                                         `json:"Qscale,omitempty" xml:"Qscale,omitempty"`
-	Volume     *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudioVolume `json:"Volume,omitempty" xml:"Volume,omitempty" type:"Struct"`
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudio) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudio) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudio) SetCodec(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudio {
-	s.Codec = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudio) SetProfile(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudio {
-	s.Profile = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudio) SetSamplerate(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudio {
-	s.Samplerate = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudio) SetBitrate(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudio {
-	s.Bitrate = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudio) SetChannels(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudio {
-	s.Channels = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudio) SetQscale(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudio {
-	s.Qscale = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudio) SetVolume(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudioVolume) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudio {
-	s.Volume = v
-	return s
-}
-
-type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudioVolume struct {
-	Level  *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudioVolume) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudioVolume) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudioVolume) SetLevel(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudioVolume {
-	s.Level = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudioVolume) SetMethod(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudioVolume {
-	s.Method = &v
-	return s
-}
-
-type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo struct {
-	Codec      *string                                                                             `json:"Codec,omitempty" xml:"Codec,omitempty"`
-	Profile    *string                                                                             `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	Bitrate    *string                                                                             `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	Crf        *string                                                                             `json:"Crf,omitempty" xml:"Crf,omitempty"`
-	Width      *string                                                                             `json:"Width,omitempty" xml:"Width,omitempty"`
-	Height     *string                                                                             `json:"Height,omitempty" xml:"Height,omitempty"`
-	Fps        *string                                                                             `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	Gop        *string                                                                             `json:"Gop,omitempty" xml:"Gop,omitempty"`
-	Preset     *string                                                                             `json:"Preset,omitempty" xml:"Preset,omitempty"`
-	ScanMode   *string                                                                             `json:"ScanMode,omitempty" xml:"ScanMode,omitempty"`
-	Bufsize    *string                                                                             `json:"Bufsize,omitempty" xml:"Bufsize,omitempty"`
-	Maxrate    *string                                                                             `json:"Maxrate,omitempty" xml:"Maxrate,omitempty"`
-	PixFmt     *string                                                                             `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
-	Degrain    *string                                                                             `json:"Degrain,omitempty" xml:"Degrain,omitempty"`
-	Qscale     *string                                                                             `json:"Qscale,omitempty" xml:"Qscale,omitempty"`
-	Crop       *string                                                                             `json:"Crop,omitempty" xml:"Crop,omitempty"`
-	Pad        *string                                                                             `json:"Pad,omitempty" xml:"Pad,omitempty"`
-	MaxFps     *string                                                                             `json:"MaxFps,omitempty" xml:"MaxFps,omitempty"`
-	BitrateBnd *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideoBitrateBnd `json:"BitrateBnd,omitempty" xml:"BitrateBnd,omitempty" type:"Struct"`
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo) SetCodec(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo {
-	s.Codec = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo) SetProfile(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo {
-	s.Profile = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo) SetBitrate(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo {
-	s.Bitrate = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo) SetCrf(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo {
-	s.Crf = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo) SetWidth(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo {
-	s.Width = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo) SetHeight(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo {
-	s.Height = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo) SetFps(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo {
-	s.Fps = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo) SetGop(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo {
-	s.Gop = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo) SetPreset(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo {
-	s.Preset = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo) SetScanMode(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo {
-	s.ScanMode = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo) SetBufsize(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo {
-	s.Bufsize = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo) SetMaxrate(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo {
-	s.Maxrate = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo) SetPixFmt(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo {
-	s.PixFmt = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo) SetDegrain(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo {
-	s.Degrain = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo) SetQscale(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo {
-	s.Qscale = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo) SetCrop(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo {
-	s.Crop = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo) SetPad(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo {
-	s.Pad = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo) SetMaxFps(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo {
-	s.MaxFps = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo) SetBitrateBnd(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideoBitrateBnd) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo {
-	s.BitrateBnd = v
-	return s
-}
-
-type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideoBitrateBnd struct {
-	Max *string `json:"Max,omitempty" xml:"Max,omitempty"`
-	Min *string `json:"Min,omitempty" xml:"Min,omitempty"`
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideoBitrateBnd) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideoBitrateBnd) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideoBitrateBnd) SetMax(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideoBitrateBnd {
-	s.Max = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideoBitrateBnd) SetMin(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideoBitrateBnd {
-	s.Min = &v
-	return s
-}
-
-type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigContainer struct {
-	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigContainer) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigContainer) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigContainer) SetFormat(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigContainer {
-	s.Format = &v
-	return s
-}
-
-type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEncryption struct {
-	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Key     *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	KeyUri  *string `json:"KeyUri,omitempty" xml:"KeyUri,omitempty"`
-	KeyType *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
-	SkipCnt *string `json:"SkipCnt,omitempty" xml:"SkipCnt,omitempty"`
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEncryption) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEncryption) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEncryption) SetType(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEncryption {
-	s.Type = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEncryption) SetId(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEncryption {
-	s.Id = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEncryption) SetKey(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEncryption {
-	s.Key = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEncryption) SetKeyUri(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEncryption {
-	s.KeyUri = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEncryption) SetKeyType(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEncryption {
-	s.KeyType = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEncryption) SetSkipCnt(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEncryption {
-	s.SkipCnt = &v
-	return s
-}
-
-type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditing struct {
-	ClipList *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipList `json:"ClipList,omitempty" xml:"ClipList,omitempty" type:"Struct"`
-	Timeline *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimeline `json:"Timeline,omitempty" xml:"Timeline,omitempty" type:"Struct"`
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditing) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditing) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditing) SetClipList(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipList) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditing {
-	s.ClipList = v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditing) SetTimeline(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimeline) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditing {
-	s.Timeline = v
-	return s
-}
-
-type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipList struct {
-	Clip []*SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClip `json:"Clip,omitempty" xml:"Clip,omitempty" type:"Repeated"`
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipList) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipList) SetClip(v []*SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClip) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipList {
-	s.Clip = v
-	return s
-}
-
-type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClip struct {
-	Id            *string                                                                                        `json:"Id,omitempty" xml:"Id,omitempty"`
-	Type          *string                                                                                        `json:"Type,omitempty" xml:"Type,omitempty"`
-	SourceType    *string                                                                                        `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	SourceID      *string                                                                                        `json:"SourceID,omitempty" xml:"SourceID,omitempty"`
-	SourceStrmMap *string                                                                                        `json:"SourceStrmMap,omitempty" xml:"SourceStrmMap,omitempty"`
-	In            *string                                                                                        `json:"In,omitempty" xml:"In,omitempty"`
-	Out           *string                                                                                        `json:"Out,omitempty" xml:"Out,omitempty"`
-	Effects       *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClipEffects `json:"Effects,omitempty" xml:"Effects,omitempty" type:"Struct"`
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClip) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClip) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClip) SetId(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClip {
-	s.Id = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClip) SetType(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClip {
-	s.Type = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClip) SetSourceType(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClip {
-	s.SourceType = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClip) SetSourceID(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClip {
-	s.SourceID = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClip) SetSourceStrmMap(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClip {
-	s.SourceStrmMap = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClip) SetIn(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClip {
-	s.In = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClip) SetOut(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClip {
-	s.Out = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClip) SetEffects(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClipEffects) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClip {
-	s.Effects = v
-	return s
-}
-
-type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClipEffects struct {
-	Effect []*SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClipEffectsEffect `json:"Effect,omitempty" xml:"Effect,omitempty" type:"Repeated"`
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClipEffects) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClipEffects) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClipEffects) SetEffect(v []*SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClipEffectsEffect) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClipEffects {
-	s.Effect = v
-	return s
-}
-
-type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClipEffectsEffect struct {
-	Effect       *string `json:"Effect,omitempty" xml:"Effect,omitempty"`
-	EffectConfig *string `json:"EffectConfig,omitempty" xml:"EffectConfig,omitempty"`
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClipEffectsEffect) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClipEffectsEffect) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClipEffectsEffect) SetEffect(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClipEffectsEffect {
-	s.Effect = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClipEffectsEffect) SetEffectConfig(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClipEffectsEffect {
-	s.EffectConfig = &v
-	return s
-}
-
-type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimeline struct {
-	TrackList      *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackList      `json:"TrackList,omitempty" xml:"TrackList,omitempty" type:"Struct"`
-	TimelineConfig *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfig `json:"TimelineConfig,omitempty" xml:"TimelineConfig,omitempty" type:"Struct"`
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimeline) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimeline) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimeline) SetTrackList(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackList) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimeline {
-	s.TrackList = v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimeline) SetTimelineConfig(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfig) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimeline {
-	s.TimelineConfig = v
-	return s
-}
-
-type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackList struct {
-	Track []*SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrack `json:"Track,omitempty" xml:"Track,omitempty" type:"Repeated"`
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackList) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackList) SetTrack(v []*SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrack) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackList {
-	s.Track = v
-	return s
-}
-
-type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrack struct {
-	Id    *string                                                                                                `json:"Id,omitempty" xml:"Id,omitempty"`
-	Type  *string                                                                                                `json:"Type,omitempty" xml:"Type,omitempty"`
-	Order *string                                                                                                `json:"Order,omitempty" xml:"Order,omitempty"`
-	Clips *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClips `json:"Clips,omitempty" xml:"Clips,omitempty" type:"Struct"`
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrack) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrack) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrack) SetId(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrack {
-	s.Id = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrack) SetType(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrack {
-	s.Type = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrack) SetOrder(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrack {
-	s.Order = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrack) SetClips(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClips) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrack {
-	s.Clips = v
-	return s
-}
-
-type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClips struct {
-	Clip []*SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClip `json:"Clip,omitempty" xml:"Clip,omitempty" type:"Repeated"`
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClips) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClips) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClips) SetClip(v []*SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClip) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClips {
-	s.Clip = v
-	return s
-}
-
-type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClip struct {
-	ClipID      *string                                                                                                               `json:"clipID,omitempty" xml:"clipID,omitempty"`
-	In          *string                                                                                                               `json:"In,omitempty" xml:"In,omitempty"`
-	Out         *string                                                                                                               `json:"Out,omitempty" xml:"Out,omitempty"`
-	ClipsConfig *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClipClipsConfig `json:"ClipsConfig,omitempty" xml:"ClipsConfig,omitempty" type:"Struct"`
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClip) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClip) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClip) SetClipID(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClip {
-	s.ClipID = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClip) SetIn(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClip {
-	s.In = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClip) SetOut(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClip {
-	s.Out = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClip) SetClipsConfig(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClipClipsConfig) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClip {
-	s.ClipsConfig = v
-	return s
-}
-
-type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClipClipsConfig struct {
-	ClipsConfigVideo *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClipClipsConfigClipsConfigVideo `json:"ClipsConfigVideo,omitempty" xml:"ClipsConfigVideo,omitempty" type:"Struct"`
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClipClipsConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClipClipsConfig) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClipClipsConfig) SetClipsConfigVideo(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClipClipsConfigClipsConfigVideo) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClipClipsConfig {
-	s.ClipsConfigVideo = v
-	return s
-}
-
-type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClipClipsConfigClipsConfigVideo struct {
-	L *string `json:"L,omitempty" xml:"L,omitempty"`
-	T *string `json:"T,omitempty" xml:"T,omitempty"`
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClipClipsConfigClipsConfigVideo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClipClipsConfigClipsConfigVideo) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClipClipsConfigClipsConfigVideo) SetL(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClipClipsConfigClipsConfigVideo {
-	s.L = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClipClipsConfigClipsConfigVideo) SetT(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClipClipsConfigClipsConfigVideo {
-	s.T = &v
-	return s
-}
-
-type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfig struct {
-	TimelineConfigVideo *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo `json:"TimelineConfigVideo,omitempty" xml:"TimelineConfigVideo,omitempty" type:"Struct"`
-	TimelineConfigAudio *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigAudio `json:"TimelineConfigAudio,omitempty" xml:"TimelineConfigAudio,omitempty" type:"Struct"`
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfig) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfig) SetTimelineConfigVideo(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfig {
-	s.TimelineConfigVideo = v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfig) SetTimelineConfigAudio(v *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigAudio) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfig {
-	s.TimelineConfigAudio = v
-	return s
-}
-
-type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo struct {
-	Width          *string `json:"Width,omitempty" xml:"Width,omitempty"`
-	Height         *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	BgColor        *string `json:"BgColor,omitempty" xml:"BgColor,omitempty"`
-	Fps            *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	RenderRatio    *string `json:"RenderRatio,omitempty" xml:"RenderRatio,omitempty"`
-	ReclosePrec    *string `json:"ReclosePrec,omitempty" xml:"ReclosePrec,omitempty"`
-	IsGpuData      *string `json:"IsGpuData,omitempty" xml:"IsGpuData,omitempty"`
-	IsOneTrackData *string `json:"IsOneTrackData,omitempty" xml:"IsOneTrackData,omitempty"`
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo) SetWidth(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo {
-	s.Width = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo) SetHeight(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo {
-	s.Height = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo) SetBgColor(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo {
-	s.BgColor = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo) SetFps(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo {
-	s.Fps = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo) SetRenderRatio(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo {
-	s.RenderRatio = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo) SetReclosePrec(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo {
-	s.ReclosePrec = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo) SetIsGpuData(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo {
-	s.IsGpuData = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo) SetIsOneTrackData(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo {
-	s.IsOneTrackData = &v
-	return s
-}
-
-type SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigAudio struct {
-	Samplerate    *string `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
-	ChannelLayout *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
-	Channels      *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigAudio) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigAudio) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigAudio) SetSamplerate(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigAudio {
-	s.Samplerate = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigAudio) SetChannelLayout(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigAudio {
-	s.ChannelLayout = &v
-	return s
-}
-
-func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigAudio) SetChannels(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigAudio {
-	s.Channels = &v
+func (s *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesFormat) SetFormatName(v string) *SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesFormat {
+	s.FormatName = &v
 	return s
 }
 
@@ -47726,6 +48604,216 @@ func (s *SubmitFpCompareJobResponse) SetBody(v *SubmitFpCompareJobResponseBody) 
 	return s
 }
 
+type SubmitFpDBDeleteJobRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	PipelineId           *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	FpDBId               *string `json:"FpDBId,omitempty" xml:"FpDBId,omitempty"`
+	UserData             *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	DelType              *string `json:"DelType,omitempty" xml:"DelType,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+}
+
+func (s SubmitFpDBDeleteJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitFpDBDeleteJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitFpDBDeleteJobRequest) SetOwnerId(v int64) *SubmitFpDBDeleteJobRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *SubmitFpDBDeleteJobRequest) SetResourceOwnerAccount(v string) *SubmitFpDBDeleteJobRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *SubmitFpDBDeleteJobRequest) SetResourceOwnerId(v int64) *SubmitFpDBDeleteJobRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *SubmitFpDBDeleteJobRequest) SetPipelineId(v string) *SubmitFpDBDeleteJobRequest {
+	s.PipelineId = &v
+	return s
+}
+
+func (s *SubmitFpDBDeleteJobRequest) SetFpDBId(v string) *SubmitFpDBDeleteJobRequest {
+	s.FpDBId = &v
+	return s
+}
+
+func (s *SubmitFpDBDeleteJobRequest) SetUserData(v string) *SubmitFpDBDeleteJobRequest {
+	s.UserData = &v
+	return s
+}
+
+func (s *SubmitFpDBDeleteJobRequest) SetDelType(v string) *SubmitFpDBDeleteJobRequest {
+	s.DelType = &v
+	return s
+}
+
+func (s *SubmitFpDBDeleteJobRequest) SetOwnerAccount(v string) *SubmitFpDBDeleteJobRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+type SubmitFpDBDeleteJobResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s SubmitFpDBDeleteJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitFpDBDeleteJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitFpDBDeleteJobResponseBody) SetRequestId(v string) *SubmitFpDBDeleteJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitFpDBDeleteJobResponseBody) SetJobId(v string) *SubmitFpDBDeleteJobResponseBody {
+	s.JobId = &v
+	return s
+}
+
+type SubmitFpDBDeleteJobResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SubmitFpDBDeleteJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SubmitFpDBDeleteJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitFpDBDeleteJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitFpDBDeleteJobResponse) SetHeaders(v map[string]*string) *SubmitFpDBDeleteJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitFpDBDeleteJobResponse) SetBody(v *SubmitFpDBDeleteJobResponseBody) *SubmitFpDBDeleteJobResponse {
+	s.Body = v
+	return s
+}
+
+type SubmitFpFileDeleteJobRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	PipelineId           *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	FpDBId               *string `json:"FpDBId,omitempty" xml:"FpDBId,omitempty"`
+	UserData             *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	FileIds              *string `json:"FileIds,omitempty" xml:"FileIds,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+}
+
+func (s SubmitFpFileDeleteJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitFpFileDeleteJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitFpFileDeleteJobRequest) SetOwnerId(v int64) *SubmitFpFileDeleteJobRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *SubmitFpFileDeleteJobRequest) SetResourceOwnerAccount(v string) *SubmitFpFileDeleteJobRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *SubmitFpFileDeleteJobRequest) SetResourceOwnerId(v int64) *SubmitFpFileDeleteJobRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *SubmitFpFileDeleteJobRequest) SetPipelineId(v string) *SubmitFpFileDeleteJobRequest {
+	s.PipelineId = &v
+	return s
+}
+
+func (s *SubmitFpFileDeleteJobRequest) SetFpDBId(v string) *SubmitFpFileDeleteJobRequest {
+	s.FpDBId = &v
+	return s
+}
+
+func (s *SubmitFpFileDeleteJobRequest) SetUserData(v string) *SubmitFpFileDeleteJobRequest {
+	s.UserData = &v
+	return s
+}
+
+func (s *SubmitFpFileDeleteJobRequest) SetFileIds(v string) *SubmitFpFileDeleteJobRequest {
+	s.FileIds = &v
+	return s
+}
+
+func (s *SubmitFpFileDeleteJobRequest) SetOwnerAccount(v string) *SubmitFpFileDeleteJobRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+type SubmitFpFileDeleteJobResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s SubmitFpFileDeleteJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitFpFileDeleteJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitFpFileDeleteJobResponseBody) SetRequestId(v string) *SubmitFpFileDeleteJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitFpFileDeleteJobResponseBody) SetJobId(v string) *SubmitFpFileDeleteJobResponseBody {
+	s.JobId = &v
+	return s
+}
+
+type SubmitFpFileDeleteJobResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SubmitFpFileDeleteJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SubmitFpFileDeleteJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitFpFileDeleteJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitFpFileDeleteJobResponse) SetHeaders(v map[string]*string) *SubmitFpFileDeleteJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitFpFileDeleteJobResponse) SetBody(v *SubmitFpFileDeleteJobResponseBody) *SubmitFpFileDeleteJobResponse {
+	s.Body = v
+	return s
+}
+
 type SubmitFpShotJobRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -47908,13 +48996,13 @@ func (s *SubmitImageQualityJobResponseBody) SetImageQualityJob(v *SubmitImageQua
 }
 
 type SubmitImageQualityJobResponseBodyImageQualityJob struct {
+	CreationTime *string                                                 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Result       *SubmitImageQualityJobResponseBodyImageQualityJobResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	State        *string                                                 `json:"State,omitempty" xml:"State,omitempty"`
 	JobId        *string                                                 `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	UserData     *string                                                 `json:"UserData,omitempty" xml:"UserData,omitempty"`
 	PipelineId   *string                                                 `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	State        *string                                                 `json:"State,omitempty" xml:"State,omitempty"`
-	CreationTime *string                                                 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	Input        *SubmitImageQualityJobResponseBodyImageQualityJobInput  `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
-	Result       *SubmitImageQualityJobResponseBodyImageQualityJobResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s SubmitImageQualityJobResponseBodyImageQualityJob) String() string {
@@ -47923,6 +49011,21 @@ func (s SubmitImageQualityJobResponseBodyImageQualityJob) String() string {
 
 func (s SubmitImageQualityJobResponseBodyImageQualityJob) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitImageQualityJobResponseBodyImageQualityJob) SetCreationTime(v string) *SubmitImageQualityJobResponseBodyImageQualityJob {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *SubmitImageQualityJobResponseBodyImageQualityJob) SetResult(v *SubmitImageQualityJobResponseBodyImageQualityJobResult) *SubmitImageQualityJobResponseBodyImageQualityJob {
+	s.Result = v
+	return s
+}
+
+func (s *SubmitImageQualityJobResponseBodyImageQualityJob) SetState(v string) *SubmitImageQualityJobResponseBodyImageQualityJob {
+	s.State = &v
+	return s
 }
 
 func (s *SubmitImageQualityJobResponseBodyImageQualityJob) SetJobId(v string) *SubmitImageQualityJobResponseBodyImageQualityJob {
@@ -47940,58 +49043,8 @@ func (s *SubmitImageQualityJobResponseBodyImageQualityJob) SetPipelineId(v strin
 	return s
 }
 
-func (s *SubmitImageQualityJobResponseBodyImageQualityJob) SetState(v string) *SubmitImageQualityJobResponseBodyImageQualityJob {
-	s.State = &v
-	return s
-}
-
-func (s *SubmitImageQualityJobResponseBodyImageQualityJob) SetCreationTime(v string) *SubmitImageQualityJobResponseBodyImageQualityJob {
-	s.CreationTime = &v
-	return s
-}
-
 func (s *SubmitImageQualityJobResponseBodyImageQualityJob) SetInput(v *SubmitImageQualityJobResponseBodyImageQualityJobInput) *SubmitImageQualityJobResponseBodyImageQualityJob {
 	s.Input = v
-	return s
-}
-
-func (s *SubmitImageQualityJobResponseBodyImageQualityJob) SetResult(v *SubmitImageQualityJobResponseBodyImageQualityJobResult) *SubmitImageQualityJobResponseBodyImageQualityJob {
-	s.Result = v
-	return s
-}
-
-type SubmitImageQualityJobResponseBodyImageQualityJobInput struct {
-	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
-	Url      *string `json:"Url,omitempty" xml:"Url,omitempty"`
-}
-
-func (s SubmitImageQualityJobResponseBodyImageQualityJobInput) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitImageQualityJobResponseBodyImageQualityJobInput) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitImageQualityJobResponseBodyImageQualityJobInput) SetBucket(v string) *SubmitImageQualityJobResponseBodyImageQualityJobInput {
-	s.Bucket = &v
-	return s
-}
-
-func (s *SubmitImageQualityJobResponseBodyImageQualityJobInput) SetLocation(v string) *SubmitImageQualityJobResponseBodyImageQualityJobInput {
-	s.Location = &v
-	return s
-}
-
-func (s *SubmitImageQualityJobResponseBodyImageQualityJobInput) SetObject(v string) *SubmitImageQualityJobResponseBodyImageQualityJobInput {
-	s.Object = &v
-	return s
-}
-
-func (s *SubmitImageQualityJobResponseBodyImageQualityJobInput) SetUrl(v string) *SubmitImageQualityJobResponseBodyImageQualityJobInput {
-	s.Url = &v
 	return s
 }
 
@@ -48021,6 +49074,41 @@ func (s *SubmitImageQualityJobResponseBodyImageQualityJobResult) SetMessage(v st
 
 func (s *SubmitImageQualityJobResponseBodyImageQualityJobResult) SetScore(v string) *SubmitImageQualityJobResponseBodyImageQualityJobResult {
 	s.Score = &v
+	return s
+}
+
+type SubmitImageQualityJobResponseBodyImageQualityJobInput struct {
+	Url      *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+}
+
+func (s SubmitImageQualityJobResponseBodyImageQualityJobInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitImageQualityJobResponseBodyImageQualityJobInput) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitImageQualityJobResponseBodyImageQualityJobInput) SetUrl(v string) *SubmitImageQualityJobResponseBodyImageQualityJobInput {
+	s.Url = &v
+	return s
+}
+
+func (s *SubmitImageQualityJobResponseBodyImageQualityJobInput) SetObject(v string) *SubmitImageQualityJobResponseBodyImageQualityJobInput {
+	s.Object = &v
+	return s
+}
+
+func (s *SubmitImageQualityJobResponseBodyImageQualityJobInput) SetLocation(v string) *SubmitImageQualityJobResponseBodyImageQualityJobInput {
+	s.Location = &v
+	return s
+}
+
+func (s *SubmitImageQualityJobResponseBodyImageQualityJobInput) SetBucket(v string) *SubmitImageQualityJobResponseBodyImageQualityJobInput {
+	s.Bucket = &v
 	return s
 }
 
@@ -48160,6 +49248,111 @@ func (s *SubmitImageSearchJobResponse) SetHeaders(v map[string]*string) *SubmitI
 }
 
 func (s *SubmitImageSearchJobResponse) SetBody(v *SubmitImageSearchJobResponseBody) *SubmitImageSearchJobResponse {
+	s.Body = v
+	return s
+}
+
+type SubmitInnerJobRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	PipelineId           *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	Video                *string `json:"Video,omitempty" xml:"Video,omitempty"`
+	Images               *string `json:"Images,omitempty" xml:"Images,omitempty"`
+	Uid                  *int64  `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	Config               *string `json:"Config,omitempty" xml:"Config,omitempty"`
+}
+
+func (s SubmitInnerJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitInnerJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitInnerJobRequest) SetOwnerId(v int64) *SubmitInnerJobRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *SubmitInnerJobRequest) SetResourceOwnerAccount(v string) *SubmitInnerJobRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *SubmitInnerJobRequest) SetResourceOwnerId(v int64) *SubmitInnerJobRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *SubmitInnerJobRequest) SetPipelineId(v string) *SubmitInnerJobRequest {
+	s.PipelineId = &v
+	return s
+}
+
+func (s *SubmitInnerJobRequest) SetVideo(v string) *SubmitInnerJobRequest {
+	s.Video = &v
+	return s
+}
+
+func (s *SubmitInnerJobRequest) SetImages(v string) *SubmitInnerJobRequest {
+	s.Images = &v
+	return s
+}
+
+func (s *SubmitInnerJobRequest) SetUid(v int64) *SubmitInnerJobRequest {
+	s.Uid = &v
+	return s
+}
+
+func (s *SubmitInnerJobRequest) SetConfig(v string) *SubmitInnerJobRequest {
+	s.Config = &v
+	return s
+}
+
+type SubmitInnerJobResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s SubmitInnerJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitInnerJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitInnerJobResponseBody) SetRequestId(v string) *SubmitInnerJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitInnerJobResponseBody) SetJobId(v string) *SubmitInnerJobResponseBody {
+	s.JobId = &v
+	return s
+}
+
+type SubmitInnerJobResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SubmitInnerJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SubmitInnerJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitInnerJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitInnerJobResponse) SetHeaders(v map[string]*string) *SubmitInnerJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitInnerJobResponse) SetBody(v *SubmitInnerJobResponseBody) *SubmitInnerJobResponse {
 	s.Body = v
 	return s
 }
@@ -53100,14 +54293,14 @@ func (s *SubmitVideoPoseJobResponseBody) SetVideoPoseJob(v *SubmitVideoPoseJobRe
 }
 
 type SubmitVideoPoseJobResponseBodyVideoPoseJob struct {
-	JobId            *string                                                     `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	PipelineId       *string                                                     `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	UserData         *string                                                     `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	State            *string                                                     `json:"State,omitempty" xml:"State,omitempty"`
-	Input            *SubmitVideoPoseJobResponseBodyVideoPoseJobInput            `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
 	OutputConfig     *SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfig     `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty" type:"Struct"`
-	Properties       *SubmitVideoPoseJobResponseBodyVideoPoseJobProperties       `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
+	State            *string                                                     `json:"State,omitempty" xml:"State,omitempty"`
+	JobId            *string                                                     `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	UserData         *string                                                     `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	PipelineId       *string                                                     `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
 	MNSMessageResult *SubmitVideoPoseJobResponseBodyVideoPoseJobMNSMessageResult `json:"MNSMessageResult,omitempty" xml:"MNSMessageResult,omitempty" type:"Struct"`
+	Input            *SubmitVideoPoseJobResponseBodyVideoPoseJobInput            `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	Properties       *SubmitVideoPoseJobResponseBodyVideoPoseJobProperties       `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
 }
 
 func (s SubmitVideoPoseJobResponseBodyVideoPoseJob) String() string {
@@ -53118,18 +54311,8 @@ func (s SubmitVideoPoseJobResponseBodyVideoPoseJob) GoString() string {
 	return s.String()
 }
 
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJob) SetJobId(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJob {
-	s.JobId = &v
-	return s
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJob) SetPipelineId(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJob {
-	s.PipelineId = &v
-	return s
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJob) SetUserData(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJob {
-	s.UserData = &v
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJob) SetOutputConfig(v *SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfig) *SubmitVideoPoseJobResponseBodyVideoPoseJob {
+	s.OutputConfig = v
 	return s
 }
 
@@ -53138,18 +54321,18 @@ func (s *SubmitVideoPoseJobResponseBodyVideoPoseJob) SetState(v string) *SubmitV
 	return s
 }
 
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJob) SetInput(v *SubmitVideoPoseJobResponseBodyVideoPoseJobInput) *SubmitVideoPoseJobResponseBodyVideoPoseJob {
-	s.Input = v
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJob) SetJobId(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJob {
+	s.JobId = &v
 	return s
 }
 
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJob) SetOutputConfig(v *SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfig) *SubmitVideoPoseJobResponseBodyVideoPoseJob {
-	s.OutputConfig = v
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJob) SetUserData(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJob {
+	s.UserData = &v
 	return s
 }
 
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJob) SetProperties(v *SubmitVideoPoseJobResponseBodyVideoPoseJobProperties) *SubmitVideoPoseJobResponseBodyVideoPoseJob {
-	s.Properties = v
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJob) SetPipelineId(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJob {
+	s.PipelineId = &v
 	return s
 }
 
@@ -53158,44 +54341,19 @@ func (s *SubmitVideoPoseJobResponseBodyVideoPoseJob) SetMNSMessageResult(v *Subm
 	return s
 }
 
-type SubmitVideoPoseJobResponseBodyVideoPoseJobInput struct {
-	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
-	RoleArn  *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-}
-
-func (s SubmitVideoPoseJobResponseBodyVideoPoseJobInput) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitVideoPoseJobResponseBodyVideoPoseJobInput) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobInput) SetBucket(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobInput {
-	s.Bucket = &v
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJob) SetInput(v *SubmitVideoPoseJobResponseBodyVideoPoseJobInput) *SubmitVideoPoseJobResponseBodyVideoPoseJob {
+	s.Input = v
 	return s
 }
 
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobInput) SetLocation(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobInput {
-	s.Location = &v
-	return s
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobInput) SetObject(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobInput {
-	s.Object = &v
-	return s
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobInput) SetRoleArn(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobInput {
-	s.RoleArn = &v
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJob) SetProperties(v *SubmitVideoPoseJobResponseBodyVideoPoseJobProperties) *SubmitVideoPoseJobResponseBodyVideoPoseJob {
+	s.Properties = v
 	return s
 }
 
 type SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfig struct {
-	VideoFile *SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfigVideoFile `json:"VideoFile,omitempty" xml:"VideoFile,omitempty" type:"Struct"`
 	DataFile  *SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfigDataFile  `json:"DataFile,omitempty" xml:"DataFile,omitempty" type:"Struct"`
+	VideoFile *SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfigVideoFile `json:"VideoFile,omitempty" xml:"VideoFile,omitempty" type:"Struct"`
 }
 
 func (s SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfig) String() string {
@@ -53206,56 +54364,21 @@ func (s SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfig) GoString() strin
 	return s.String()
 }
 
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfig) SetVideoFile(v *SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfigVideoFile) *SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfig {
-	s.VideoFile = v
-	return s
-}
-
 func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfig) SetDataFile(v *SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfigDataFile) *SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfig {
 	s.DataFile = v
 	return s
 }
 
-type SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfigVideoFile struct {
-	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
-	RoleArn  *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-}
-
-func (s SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfigVideoFile) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfigVideoFile) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfigVideoFile) SetBucket(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfigVideoFile {
-	s.Bucket = &v
-	return s
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfigVideoFile) SetLocation(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfigVideoFile {
-	s.Location = &v
-	return s
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfigVideoFile) SetObject(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfigVideoFile {
-	s.Object = &v
-	return s
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfigVideoFile) SetRoleArn(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfigVideoFile {
-	s.RoleArn = &v
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfig) SetVideoFile(v *SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfigVideoFile) *SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfig {
+	s.VideoFile = v
 	return s
 }
 
 type SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfigDataFile struct {
-	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
 	RoleArn  *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
 }
 
 func (s SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfigDataFile) String() string {
@@ -53266,13 +54389,8 @@ func (s SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfigDataFile) GoString
 	return s.String()
 }
 
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfigDataFile) SetBucket(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfigDataFile {
-	s.Bucket = &v
-	return s
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfigDataFile) SetLocation(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfigDataFile {
-	s.Location = &v
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfigDataFile) SetRoleArn(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfigDataFile {
+	s.RoleArn = &v
 	return s
 }
 
@@ -53281,21 +54399,125 @@ func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfigDataFile) SetObje
 	return s
 }
 
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfigDataFile) SetRoleArn(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfigDataFile {
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfigDataFile) SetLocation(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfigDataFile {
+	s.Location = &v
+	return s
+}
+
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfigDataFile) SetBucket(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfigDataFile {
+	s.Bucket = &v
+	return s
+}
+
+type SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfigVideoFile struct {
+	RoleArn  *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+}
+
+func (s SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfigVideoFile) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfigVideoFile) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfigVideoFile) SetRoleArn(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfigVideoFile {
 	s.RoleArn = &v
+	return s
+}
+
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfigVideoFile) SetObject(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfigVideoFile {
+	s.Object = &v
+	return s
+}
+
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfigVideoFile) SetLocation(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfigVideoFile {
+	s.Location = &v
+	return s
+}
+
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfigVideoFile) SetBucket(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfigVideoFile {
+	s.Bucket = &v
+	return s
+}
+
+type SubmitVideoPoseJobResponseBodyVideoPoseJobMNSMessageResult struct {
+	MessageId    *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+}
+
+func (s SubmitVideoPoseJobResponseBodyVideoPoseJobMNSMessageResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitVideoPoseJobResponseBodyVideoPoseJobMNSMessageResult) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobMNSMessageResult) SetMessageId(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobMNSMessageResult {
+	s.MessageId = &v
+	return s
+}
+
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobMNSMessageResult) SetErrorMessage(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobMNSMessageResult {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobMNSMessageResult) SetErrorCode(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobMNSMessageResult {
+	s.ErrorCode = &v
+	return s
+}
+
+type SubmitVideoPoseJobResponseBodyVideoPoseJobInput struct {
+	RoleArn  *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+}
+
+func (s SubmitVideoPoseJobResponseBodyVideoPoseJobInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitVideoPoseJobResponseBodyVideoPoseJobInput) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobInput) SetRoleArn(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobInput {
+	s.RoleArn = &v
+	return s
+}
+
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobInput) SetObject(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobInput {
+	s.Object = &v
+	return s
+}
+
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobInput) SetLocation(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobInput {
+	s.Location = &v
+	return s
+}
+
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobInput) SetBucket(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobInput {
+	s.Bucket = &v
 	return s
 }
 
 type SubmitVideoPoseJobResponseBodyVideoPoseJobProperties struct {
 	Width      *string                                                      `json:"Width,omitempty" xml:"Width,omitempty"`
 	Height     *string                                                      `json:"Height,omitempty" xml:"Height,omitempty"`
-	Bitrate    *string                                                      `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
 	Duration   *string                                                      `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	Fps        *string                                                      `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	FileSize   *string                                                      `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	Bitrate    *string                                                      `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
 	FileFormat *string                                                      `json:"FileFormat,omitempty" xml:"FileFormat,omitempty"`
 	Streams    *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreams `json:"Streams,omitempty" xml:"Streams,omitempty" type:"Struct"`
 	Format     *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesFormat  `json:"Format,omitempty" xml:"Format,omitempty" type:"Struct"`
+	FileSize   *string                                                      `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
 }
 
 func (s SubmitVideoPoseJobResponseBodyVideoPoseJobProperties) String() string {
@@ -53316,11 +54538,6 @@ func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobProperties) SetHeight(v strin
 	return s
 }
 
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobProperties) SetBitrate(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobProperties {
-	s.Bitrate = &v
-	return s
-}
-
 func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobProperties) SetDuration(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobProperties {
 	s.Duration = &v
 	return s
@@ -53331,8 +54548,8 @@ func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobProperties) SetFps(v string) 
 	return s
 }
 
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobProperties) SetFileSize(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobProperties {
-	s.FileSize = &v
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobProperties) SetBitrate(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobProperties {
+	s.Bitrate = &v
 	return s
 }
 
@@ -53348,6 +54565,11 @@ func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobProperties) SetStreams(v *Sub
 
 func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobProperties) SetFormat(v *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesFormat) *SubmitVideoPoseJobResponseBodyVideoPoseJobProperties {
 	s.Format = v
+	return s
+}
+
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobProperties) SetFileSize(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobProperties {
+	s.FileSize = &v
 	return s
 }
 
@@ -53398,30 +54620,30 @@ func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamL
 }
 
 type SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream struct {
-	Index          *string                                                                                           `json:"Index,omitempty" xml:"Index,omitempty"`
-	CodecName      *string                                                                                           `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
-	CodecLongName  *string                                                                                           `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
-	Profile        *string                                                                                           `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	CodecTimeBase  *string                                                                                           `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
-	CodecTagString *string                                                                                           `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
-	CodecTag       *string                                                                                           `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
-	Width          *string                                                                                           `json:"Width,omitempty" xml:"Width,omitempty"`
-	Height         *string                                                                                           `json:"Height,omitempty" xml:"Height,omitempty"`
-	HasBFrames     *string                                                                                           `json:"HasBFrames,omitempty" xml:"HasBFrames,omitempty"`
 	Sar            *string                                                                                           `json:"Sar,omitempty" xml:"Sar,omitempty"`
-	Dar            *string                                                                                           `json:"Dar,omitempty" xml:"Dar,omitempty"`
-	PixFmt         *string                                                                                           `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
-	Level          *string                                                                                           `json:"Level,omitempty" xml:"Level,omitempty"`
-	Fps            *string                                                                                           `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	AvgFPS         *string                                                                                           `json:"AvgFPS,omitempty" xml:"AvgFPS,omitempty"`
-	Timebase       *string                                                                                           `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
-	StartTime      *string                                                                                           `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Duration       *string                                                                                           `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Bitrate        *string                                                                                           `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	NumFrames      *string                                                                                           `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
-	Lang           *string                                                                                           `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Rotate         *string                                                                                           `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
+	Height         *string                                                                                           `json:"Height,omitempty" xml:"Height,omitempty"`
+	CodecTagString *string                                                                                           `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
 	NetworkCost    *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStreamNetworkCost `json:"NetworkCost,omitempty" xml:"NetworkCost,omitempty" type:"Struct"`
+	Width          *string                                                                                           `json:"Width,omitempty" xml:"Width,omitempty"`
+	Index          *string                                                                                           `json:"Index,omitempty" xml:"Index,omitempty"`
+	Timebase       *string                                                                                           `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
+	AvgFPS         *string                                                                                           `json:"AvgFPS,omitempty" xml:"AvgFPS,omitempty"`
+	PixFmt         *string                                                                                           `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
+	Lang           *string                                                                                           `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	CodecLongName  *string                                                                                           `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	NumFrames      *string                                                                                           `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
+	Rotate         *string                                                                                           `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
+	Bitrate        *string                                                                                           `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	HasBFrames     *string                                                                                           `json:"HasBFrames,omitempty" xml:"HasBFrames,omitempty"`
+	Profile        *string                                                                                           `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	StartTime      *string                                                                                           `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Dar            *string                                                                                           `json:"Dar,omitempty" xml:"Dar,omitempty"`
+	CodecName      *string                                                                                           `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	Duration       *string                                                                                           `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Fps            *string                                                                                           `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	CodecTag       *string                                                                                           `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
+	CodecTimeBase  *string                                                                                           `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	Level          *string                                                                                           `json:"Level,omitempty" xml:"Level,omitempty"`
 }
 
 func (s SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream) String() string {
@@ -53432,43 +54654,8 @@ func (s SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamLi
 	return s.String()
 }
 
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream) SetIndex(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream {
-	s.Index = &v
-	return s
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream) SetCodecName(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream {
-	s.CodecName = &v
-	return s
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream) SetCodecLongName(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream {
-	s.CodecLongName = &v
-	return s
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream) SetProfile(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream {
-	s.Profile = &v
-	return s
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream) SetCodecTimeBase(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream {
-	s.CodecTimeBase = &v
-	return s
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream) SetCodecTagString(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream {
-	s.CodecTagString = &v
-	return s
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream) SetCodecTag(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream {
-	s.CodecTag = &v
-	return s
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream) SetWidth(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream {
-	s.Width = &v
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream) SetSar(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream {
+	s.Sar = &v
 	return s
 }
 
@@ -53477,73 +54664,8 @@ func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamL
 	return s
 }
 
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream) SetHasBFrames(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream {
-	s.HasBFrames = &v
-	return s
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream) SetSar(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream {
-	s.Sar = &v
-	return s
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream) SetDar(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream {
-	s.Dar = &v
-	return s
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream) SetPixFmt(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream {
-	s.PixFmt = &v
-	return s
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream) SetLevel(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream {
-	s.Level = &v
-	return s
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream) SetFps(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream {
-	s.Fps = &v
-	return s
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream) SetAvgFPS(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream {
-	s.AvgFPS = &v
-	return s
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream) SetTimebase(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream {
-	s.Timebase = &v
-	return s
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream) SetStartTime(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream {
-	s.StartTime = &v
-	return s
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream) SetDuration(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream {
-	s.Duration = &v
-	return s
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream) SetBitrate(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream {
-	s.Bitrate = &v
-	return s
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream) SetNumFrames(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream {
-	s.NumFrames = &v
-	return s
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream) SetLang(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream {
-	s.Lang = &v
-	return s
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream) SetRotate(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream {
-	s.Rotate = &v
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream) SetCodecTagString(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream {
+	s.CodecTagString = &v
 	return s
 }
 
@@ -53552,10 +54674,110 @@ func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamL
 	return s
 }
 
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream) SetWidth(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream {
+	s.Width = &v
+	return s
+}
+
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream) SetIndex(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream {
+	s.Index = &v
+	return s
+}
+
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream) SetTimebase(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream {
+	s.Timebase = &v
+	return s
+}
+
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream) SetAvgFPS(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream {
+	s.AvgFPS = &v
+	return s
+}
+
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream) SetPixFmt(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream {
+	s.PixFmt = &v
+	return s
+}
+
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream) SetLang(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream {
+	s.Lang = &v
+	return s
+}
+
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream) SetCodecLongName(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream {
+	s.CodecLongName = &v
+	return s
+}
+
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream) SetNumFrames(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream {
+	s.NumFrames = &v
+	return s
+}
+
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream) SetRotate(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream {
+	s.Rotate = &v
+	return s
+}
+
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream) SetBitrate(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream {
+	s.Bitrate = &v
+	return s
+}
+
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream) SetHasBFrames(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream {
+	s.HasBFrames = &v
+	return s
+}
+
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream) SetProfile(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream {
+	s.Profile = &v
+	return s
+}
+
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream) SetStartTime(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream {
+	s.StartTime = &v
+	return s
+}
+
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream) SetDar(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream {
+	s.Dar = &v
+	return s
+}
+
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream) SetCodecName(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream {
+	s.CodecName = &v
+	return s
+}
+
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream) SetDuration(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream {
+	s.Duration = &v
+	return s
+}
+
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream) SetFps(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream {
+	s.Fps = &v
+	return s
+}
+
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream) SetCodecTag(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream {
+	s.CodecTag = &v
+	return s
+}
+
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream) SetCodecTimeBase(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream {
+	s.CodecTimeBase = &v
+	return s
+}
+
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream) SetLevel(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStream {
+	s.Level = &v
+	return s
+}
+
 type SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStreamNetworkCost struct {
 	PreloadTime   *string `json:"PreloadTime,omitempty" xml:"PreloadTime,omitempty"`
-	CostBandwidth *string `json:"CostBandwidth,omitempty" xml:"CostBandwidth,omitempty"`
 	AvgBitrate    *string `json:"AvgBitrate,omitempty" xml:"AvgBitrate,omitempty"`
+	CostBandwidth *string `json:"CostBandwidth,omitempty" xml:"CostBandwidth,omitempty"`
 }
 
 func (s SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStreamNetworkCost) String() string {
@@ -53571,13 +54793,13 @@ func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamL
 	return s
 }
 
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStreamNetworkCost) SetCostBandwidth(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStreamNetworkCost {
-	s.CostBandwidth = &v
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStreamNetworkCost) SetAvgBitrate(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStreamNetworkCost {
+	s.AvgBitrate = &v
 	return s
 }
 
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStreamNetworkCost) SetAvgBitrate(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStreamNetworkCost {
-	s.AvgBitrate = &v
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStreamNetworkCost) SetCostBandwidth(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamListVideoStreamNetworkCost {
+	s.CostBandwidth = &v
 	return s
 }
 
@@ -53599,22 +54821,22 @@ func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamL
 }
 
 type SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream struct {
-	Index          *string `json:"Index,omitempty" xml:"Index,omitempty"`
-	CodecName      *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
-	CodecTimeBase  *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
-	CodecLongName  *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
-	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
-	CodecTag       *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
-	SampleFmt      *string `json:"SampleFmt,omitempty" xml:"SampleFmt,omitempty"`
-	Samplerate     *string `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
-	Channels       *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
-	ChannelLayout  *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
 	Timebase       *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
-	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Bitrate        *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	NumFrames      *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
+	Index          *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	SampleFmt      *string `json:"SampleFmt,omitempty" xml:"SampleFmt,omitempty"`
+	ChannelLayout  *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
 	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Samplerate     *string `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
+	CodecLongName  *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	Channels       *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	NumFrames      *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
+	Bitrate        *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	CodecName      *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	CodecTag       *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
+	CodecTimeBase  *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
 }
 
 func (s SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream) String() string {
@@ -53625,33 +54847,13 @@ func (s SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamLi
 	return s.String()
 }
 
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream) SetTimebase(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream {
+	s.Timebase = &v
+	return s
+}
+
 func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream) SetIndex(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream {
 	s.Index = &v
-	return s
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream) SetCodecName(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream {
-	s.CodecName = &v
-	return s
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream) SetCodecTimeBase(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream {
-	s.CodecTimeBase = &v
-	return s
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream) SetCodecLongName(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream {
-	s.CodecLongName = &v
-	return s
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream) SetCodecTagString(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream {
-	s.CodecTagString = &v
-	return s
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream) SetCodecTag(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream {
-	s.CodecTag = &v
 	return s
 }
 
@@ -53660,8 +54862,23 @@ func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamL
 	return s
 }
 
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream) SetChannelLayout(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream {
+	s.ChannelLayout = &v
+	return s
+}
+
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream) SetLang(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream {
+	s.Lang = &v
+	return s
+}
+
 func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream) SetSamplerate(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream {
 	s.Samplerate = &v
+	return s
+}
+
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream) SetCodecLongName(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream {
+	s.CodecLongName = &v
 	return s
 }
 
@@ -53670,23 +54887,8 @@ func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamL
 	return s
 }
 
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream) SetChannelLayout(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream {
-	s.ChannelLayout = &v
-	return s
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream) SetTimebase(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream {
-	s.Timebase = &v
-	return s
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream) SetStartTime(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream {
-	s.StartTime = &v
-	return s
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream) SetDuration(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream {
-	s.Duration = &v
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream) SetNumFrames(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream {
+	s.NumFrames = &v
 	return s
 }
 
@@ -53695,13 +54897,33 @@ func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamL
 	return s
 }
 
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream) SetNumFrames(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream {
-	s.NumFrames = &v
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream) SetCodecTagString(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream {
+	s.CodecTagString = &v
 	return s
 }
 
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream) SetLang(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream {
-	s.Lang = &v
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream) SetStartTime(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream {
+	s.StartTime = &v
+	return s
+}
+
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream) SetCodecName(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream {
+	s.CodecName = &v
+	return s
+}
+
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream) SetDuration(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream {
+	s.Duration = &v
+	return s
+}
+
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream) SetCodecTag(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream {
+	s.CodecTag = &v
+	return s
+}
+
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream) SetCodecTimeBase(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamListAudioStream {
+	s.CodecTimeBase = &v
 	return s
 }
 
@@ -53723,16 +54945,16 @@ func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsSubtitleStre
 }
 
 type SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsSubtitleStreamListSubtitleStream struct {
-	Index          *string `json:"Index,omitempty" xml:"Index,omitempty"`
-	CodecName      *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
-	CodecTimeBase  *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
-	CodecLongName  *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
-	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
-	CodecTag       *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
 	Timebase       *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
+	Index          *string `json:"Index,omitempty" xml:"Index,omitempty"`
 	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	CodecName      *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
 	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	CodecLongName  *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	CodecTag       *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
+	CodecTimeBase  *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
 }
 
 func (s SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsSubtitleStreamListSubtitleStream) String() string {
@@ -53743,38 +54965,13 @@ func (s SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsSubtitleStrea
 	return s.String()
 }
 
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsSubtitleStreamListSubtitleStream) SetIndex(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsSubtitleStreamListSubtitleStream {
-	s.Index = &v
-	return s
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsSubtitleStreamListSubtitleStream) SetCodecName(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsSubtitleStreamListSubtitleStream {
-	s.CodecName = &v
-	return s
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsSubtitleStreamListSubtitleStream) SetCodecTimeBase(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsSubtitleStreamListSubtitleStream {
-	s.CodecTimeBase = &v
-	return s
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsSubtitleStreamListSubtitleStream) SetCodecLongName(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsSubtitleStreamListSubtitleStream {
-	s.CodecLongName = &v
-	return s
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsSubtitleStreamListSubtitleStream) SetCodecTagString(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsSubtitleStreamListSubtitleStream {
-	s.CodecTagString = &v
-	return s
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsSubtitleStreamListSubtitleStream) SetCodecTag(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsSubtitleStreamListSubtitleStream {
-	s.CodecTag = &v
-	return s
-}
-
 func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsSubtitleStreamListSubtitleStream) SetTimebase(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsSubtitleStreamListSubtitleStream {
 	s.Timebase = &v
+	return s
+}
+
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsSubtitleStreamListSubtitleStream) SetIndex(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsSubtitleStreamListSubtitleStream {
+	s.Index = &v
 	return s
 }
 
@@ -53783,8 +54980,8 @@ func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsSubtitleStre
 	return s
 }
 
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsSubtitleStreamListSubtitleStream) SetDuration(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsSubtitleStreamListSubtitleStream {
-	s.Duration = &v
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsSubtitleStreamListSubtitleStream) SetCodecName(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsSubtitleStreamListSubtitleStream {
+	s.CodecName = &v
 	return s
 }
 
@@ -53793,15 +54990,40 @@ func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsSubtitleStre
 	return s
 }
 
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsSubtitleStreamListSubtitleStream) SetCodecLongName(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsSubtitleStreamListSubtitleStream {
+	s.CodecLongName = &v
+	return s
+}
+
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsSubtitleStreamListSubtitleStream) SetDuration(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsSubtitleStreamListSubtitleStream {
+	s.Duration = &v
+	return s
+}
+
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsSubtitleStreamListSubtitleStream) SetCodecTag(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsSubtitleStreamListSubtitleStream {
+	s.CodecTag = &v
+	return s
+}
+
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsSubtitleStreamListSubtitleStream) SetCodecTimeBase(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsSubtitleStreamListSubtitleStream {
+	s.CodecTimeBase = &v
+	return s
+}
+
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsSubtitleStreamListSubtitleStream) SetCodecTagString(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsSubtitleStreamListSubtitleStream {
+	s.CodecTagString = &v
+	return s
+}
+
 type SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesFormat struct {
-	NumStreams     *string `json:"NumStreams,omitempty" xml:"NumStreams,omitempty"`
-	NumPrograms    *string `json:"NumPrograms,omitempty" xml:"NumPrograms,omitempty"`
-	FormatName     *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
-	FormatLongName *string `json:"FormatLongName,omitempty" xml:"FormatLongName,omitempty"`
 	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	NumPrograms    *string `json:"NumPrograms,omitempty" xml:"NumPrograms,omitempty"`
 	Size           *string `json:"Size,omitempty" xml:"Size,omitempty"`
+	NumStreams     *string `json:"NumStreams,omitempty" xml:"NumStreams,omitempty"`
+	FormatLongName *string `json:"FormatLongName,omitempty" xml:"FormatLongName,omitempty"`
+	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	Bitrate        *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	FormatName     *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
 }
 
 func (s SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesFormat) String() string {
@@ -53812,8 +55034,8 @@ func (s SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesFormat) GoString() s
 	return s.String()
 }
 
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesFormat) SetNumStreams(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesFormat {
-	s.NumStreams = &v
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesFormat) SetStartTime(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesFormat {
+	s.StartTime = &v
 	return s
 }
 
@@ -53822,8 +55044,13 @@ func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesFormat) SetNumProgr
 	return s
 }
 
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesFormat) SetFormatName(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesFormat {
-	s.FormatName = &v
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesFormat) SetSize(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesFormat {
+	s.Size = &v
+	return s
+}
+
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesFormat) SetNumStreams(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesFormat {
+	s.NumStreams = &v
 	return s
 }
 
@@ -53832,18 +55059,8 @@ func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesFormat) SetFormatLo
 	return s
 }
 
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesFormat) SetStartTime(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesFormat {
-	s.StartTime = &v
-	return s
-}
-
 func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesFormat) SetDuration(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesFormat {
 	s.Duration = &v
-	return s
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesFormat) SetSize(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesFormat {
-	s.Size = &v
 	return s
 }
 
@@ -53852,32 +55069,8 @@ func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesFormat) SetBitrate(
 	return s
 }
 
-type SubmitVideoPoseJobResponseBodyVideoPoseJobMNSMessageResult struct {
-	MessageId    *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-}
-
-func (s SubmitVideoPoseJobResponseBodyVideoPoseJobMNSMessageResult) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitVideoPoseJobResponseBodyVideoPoseJobMNSMessageResult) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobMNSMessageResult) SetMessageId(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobMNSMessageResult {
-	s.MessageId = &v
-	return s
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobMNSMessageResult) SetErrorMessage(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobMNSMessageResult {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobMNSMessageResult) SetErrorCode(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobMNSMessageResult {
-	s.ErrorCode = &v
+func (s *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesFormat) SetFormatName(v string) *SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesFormat {
+	s.FormatName = &v
 	return s
 }
 
@@ -53900,6 +55093,135 @@ func (s *SubmitVideoPoseJobResponse) SetHeaders(v map[string]*string) *SubmitVid
 }
 
 func (s *SubmitVideoPoseJobResponse) SetBody(v *SubmitVideoPoseJobResponseBody) *SubmitVideoPoseJobResponse {
+	s.Body = v
+	return s
+}
+
+type SubmitVideoQualityJobRequest struct {
+	UserId         *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	PipelineId     *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	SourceType     *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	ModelId        *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	Input          *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	Output         *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	JobParams      *string `json:"JobParams,omitempty" xml:"JobParams,omitempty"`
+	ScheduleParams *string `json:"ScheduleParams,omitempty" xml:"ScheduleParams,omitempty"`
+	UserData       *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	NotifyUrl      *string `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
+}
+
+func (s SubmitVideoQualityJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitVideoQualityJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitVideoQualityJobRequest) SetUserId(v int64) *SubmitVideoQualityJobRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *SubmitVideoQualityJobRequest) SetPipelineId(v string) *SubmitVideoQualityJobRequest {
+	s.PipelineId = &v
+	return s
+}
+
+func (s *SubmitVideoQualityJobRequest) SetSourceType(v string) *SubmitVideoQualityJobRequest {
+	s.SourceType = &v
+	return s
+}
+
+func (s *SubmitVideoQualityJobRequest) SetModelId(v string) *SubmitVideoQualityJobRequest {
+	s.ModelId = &v
+	return s
+}
+
+func (s *SubmitVideoQualityJobRequest) SetInput(v string) *SubmitVideoQualityJobRequest {
+	s.Input = &v
+	return s
+}
+
+func (s *SubmitVideoQualityJobRequest) SetOutput(v string) *SubmitVideoQualityJobRequest {
+	s.Output = &v
+	return s
+}
+
+func (s *SubmitVideoQualityJobRequest) SetJobParams(v string) *SubmitVideoQualityJobRequest {
+	s.JobParams = &v
+	return s
+}
+
+func (s *SubmitVideoQualityJobRequest) SetScheduleParams(v string) *SubmitVideoQualityJobRequest {
+	s.ScheduleParams = &v
+	return s
+}
+
+func (s *SubmitVideoQualityJobRequest) SetUserData(v string) *SubmitVideoQualityJobRequest {
+	s.UserData = &v
+	return s
+}
+
+func (s *SubmitVideoQualityJobRequest) SetNotifyUrl(v string) *SubmitVideoQualityJobRequest {
+	s.NotifyUrl = &v
+	return s
+}
+
+type SubmitVideoQualityJobResponseBody struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s SubmitVideoQualityJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitVideoQualityJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitVideoQualityJobResponseBody) SetMessage(v string) *SubmitVideoQualityJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SubmitVideoQualityJobResponseBody) SetRequestId(v string) *SubmitVideoQualityJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitVideoQualityJobResponseBody) SetCode(v string) *SubmitVideoQualityJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SubmitVideoQualityJobResponseBody) SetJobId(v string) *SubmitVideoQualityJobResponseBody {
+	s.JobId = &v
+	return s
+}
+
+type SubmitVideoQualityJobResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SubmitVideoQualityJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SubmitVideoQualityJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitVideoQualityJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitVideoQualityJobResponse) SetHeaders(v map[string]*string) *SubmitVideoQualityJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitVideoQualityJobResponse) SetBody(v *SubmitVideoQualityJobResponseBody) *SubmitVideoQualityJobResponse {
 	s.Body = v
 	return s
 }
@@ -54575,11 +55897,11 @@ func (s *UpdateAsrPipelineResponseBody) SetPipeline(v *UpdateAsrPipelineResponse
 }
 
 type UpdateAsrPipelineResponseBodyPipeline struct {
-	Id           *string                                            `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name         *string                                            `json:"Name,omitempty" xml:"Name,omitempty"`
 	State        *string                                            `json:"State,omitempty" xml:"State,omitempty"`
-	Priority     *int32                                             `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	NotifyConfig *UpdateAsrPipelineResponseBodyPipelineNotifyConfig `json:"NotifyConfig,omitempty" xml:"NotifyConfig,omitempty" type:"Struct"`
+	Priority     *int32                                             `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Name         *string                                            `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id           *string                                            `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
 func (s UpdateAsrPipelineResponseBodyPipeline) String() string {
@@ -54590,23 +55912,8 @@ func (s UpdateAsrPipelineResponseBodyPipeline) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateAsrPipelineResponseBodyPipeline) SetId(v string) *UpdateAsrPipelineResponseBodyPipeline {
-	s.Id = &v
-	return s
-}
-
-func (s *UpdateAsrPipelineResponseBodyPipeline) SetName(v string) *UpdateAsrPipelineResponseBodyPipeline {
-	s.Name = &v
-	return s
-}
-
 func (s *UpdateAsrPipelineResponseBodyPipeline) SetState(v string) *UpdateAsrPipelineResponseBodyPipeline {
 	s.State = &v
-	return s
-}
-
-func (s *UpdateAsrPipelineResponseBodyPipeline) SetPriority(v int32) *UpdateAsrPipelineResponseBodyPipeline {
-	s.Priority = &v
 	return s
 }
 
@@ -54615,9 +55922,24 @@ func (s *UpdateAsrPipelineResponseBodyPipeline) SetNotifyConfig(v *UpdateAsrPipe
 	return s
 }
 
+func (s *UpdateAsrPipelineResponseBodyPipeline) SetPriority(v int32) *UpdateAsrPipelineResponseBodyPipeline {
+	s.Priority = &v
+	return s
+}
+
+func (s *UpdateAsrPipelineResponseBodyPipeline) SetName(v string) *UpdateAsrPipelineResponseBodyPipeline {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateAsrPipelineResponseBodyPipeline) SetId(v string) *UpdateAsrPipelineResponseBodyPipeline {
+	s.Id = &v
+	return s
+}
+
 type UpdateAsrPipelineResponseBodyPipelineNotifyConfig struct {
-	Topic     *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	Topic     *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s UpdateAsrPipelineResponseBodyPipelineNotifyConfig) String() string {
@@ -54628,13 +55950,13 @@ func (s UpdateAsrPipelineResponseBodyPipelineNotifyConfig) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateAsrPipelineResponseBodyPipelineNotifyConfig) SetTopic(v string) *UpdateAsrPipelineResponseBodyPipelineNotifyConfig {
-	s.Topic = &v
+func (s *UpdateAsrPipelineResponseBodyPipelineNotifyConfig) SetQueueName(v string) *UpdateAsrPipelineResponseBodyPipelineNotifyConfig {
+	s.QueueName = &v
 	return s
 }
 
-func (s *UpdateAsrPipelineResponseBodyPipelineNotifyConfig) SetQueueName(v string) *UpdateAsrPipelineResponseBodyPipelineNotifyConfig {
-	s.QueueName = &v
+func (s *UpdateAsrPipelineResponseBodyPipelineNotifyConfig) SetTopic(v string) *UpdateAsrPipelineResponseBodyPipelineNotifyConfig {
+	s.Topic = &v
 	return s
 }
 
@@ -54837,11 +56159,11 @@ func (s *UpdateCensorPipelineResponseBody) SetPipeline(v *UpdateCensorPipelineRe
 }
 
 type UpdateCensorPipelineResponseBodyPipeline struct {
-	Id           *string                                               `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name         *string                                               `json:"Name,omitempty" xml:"Name,omitempty"`
 	State        *string                                               `json:"State,omitempty" xml:"State,omitempty"`
-	Priority     *int32                                                `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	NotifyConfig *UpdateCensorPipelineResponseBodyPipelineNotifyConfig `json:"NotifyConfig,omitempty" xml:"NotifyConfig,omitempty" type:"Struct"`
+	Priority     *int32                                                `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Name         *string                                               `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id           *string                                               `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
 func (s UpdateCensorPipelineResponseBodyPipeline) String() string {
@@ -54852,18 +56174,13 @@ func (s UpdateCensorPipelineResponseBodyPipeline) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateCensorPipelineResponseBodyPipeline) SetId(v string) *UpdateCensorPipelineResponseBodyPipeline {
-	s.Id = &v
-	return s
-}
-
-func (s *UpdateCensorPipelineResponseBodyPipeline) SetName(v string) *UpdateCensorPipelineResponseBodyPipeline {
-	s.Name = &v
-	return s
-}
-
 func (s *UpdateCensorPipelineResponseBodyPipeline) SetState(v string) *UpdateCensorPipelineResponseBodyPipeline {
 	s.State = &v
+	return s
+}
+
+func (s *UpdateCensorPipelineResponseBodyPipeline) SetNotifyConfig(v *UpdateCensorPipelineResponseBodyPipelineNotifyConfig) *UpdateCensorPipelineResponseBodyPipeline {
+	s.NotifyConfig = v
 	return s
 }
 
@@ -54872,8 +56189,13 @@ func (s *UpdateCensorPipelineResponseBodyPipeline) SetPriority(v int32) *UpdateC
 	return s
 }
 
-func (s *UpdateCensorPipelineResponseBodyPipeline) SetNotifyConfig(v *UpdateCensorPipelineResponseBodyPipelineNotifyConfig) *UpdateCensorPipelineResponseBodyPipeline {
-	s.NotifyConfig = v
+func (s *UpdateCensorPipelineResponseBodyPipeline) SetName(v string) *UpdateCensorPipelineResponseBodyPipeline {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateCensorPipelineResponseBodyPipeline) SetId(v string) *UpdateCensorPipelineResponseBodyPipeline {
+	s.Id = &v
 	return s
 }
 
@@ -55018,12 +56340,12 @@ func (s *UpdateCoverPipelineResponseBody) SetPipeline(v *UpdateCoverPipelineResp
 }
 
 type UpdateCoverPipelineResponseBodyPipeline struct {
-	Id           *string                                              `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name         *string                                              `json:"Name,omitempty" xml:"Name,omitempty"`
 	State        *string                                              `json:"State,omitempty" xml:"State,omitempty"`
+	NotifyConfig *UpdateCoverPipelineResponseBodyPipelineNotifyConfig `json:"NotifyConfig,omitempty" xml:"NotifyConfig,omitempty" type:"Struct"`
 	Priority     *int32                                               `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	Role         *string                                              `json:"Role,omitempty" xml:"Role,omitempty"`
-	NotifyConfig *UpdateCoverPipelineResponseBodyPipelineNotifyConfig `json:"NotifyConfig,omitempty" xml:"NotifyConfig,omitempty" type:"Struct"`
+	Name         *string                                              `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id           *string                                              `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
 func (s UpdateCoverPipelineResponseBodyPipeline) String() string {
@@ -55034,18 +56356,13 @@ func (s UpdateCoverPipelineResponseBodyPipeline) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateCoverPipelineResponseBodyPipeline) SetId(v string) *UpdateCoverPipelineResponseBodyPipeline {
-	s.Id = &v
-	return s
-}
-
-func (s *UpdateCoverPipelineResponseBodyPipeline) SetName(v string) *UpdateCoverPipelineResponseBodyPipeline {
-	s.Name = &v
-	return s
-}
-
 func (s *UpdateCoverPipelineResponseBodyPipeline) SetState(v string) *UpdateCoverPipelineResponseBodyPipeline {
 	s.State = &v
+	return s
+}
+
+func (s *UpdateCoverPipelineResponseBodyPipeline) SetNotifyConfig(v *UpdateCoverPipelineResponseBodyPipelineNotifyConfig) *UpdateCoverPipelineResponseBodyPipeline {
+	s.NotifyConfig = v
 	return s
 }
 
@@ -55059,8 +56376,13 @@ func (s *UpdateCoverPipelineResponseBodyPipeline) SetRole(v string) *UpdateCover
 	return s
 }
 
-func (s *UpdateCoverPipelineResponseBodyPipeline) SetNotifyConfig(v *UpdateCoverPipelineResponseBodyPipelineNotifyConfig) *UpdateCoverPipelineResponseBodyPipeline {
-	s.NotifyConfig = v
+func (s *UpdateCoverPipelineResponseBodyPipeline) SetName(v string) *UpdateCoverPipelineResponseBodyPipeline {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateCoverPipelineResponseBodyPipeline) SetId(v string) *UpdateCoverPipelineResponseBodyPipeline {
+	s.Id = &v
 	return s
 }
 
@@ -55241,19 +56563,19 @@ func (s *UpdateMCTemplateResponseBody) SetTemplate(v *UpdateMCTemplateResponseBo
 }
 
 type UpdateMCTemplateResponseBodyTemplate struct {
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	State      *string `json:"State,omitempty" xml:"State,omitempty"`
-	Porn       *string `json:"Porn,omitempty" xml:"Porn,omitempty"`
-	Terrorism  *string `json:"Terrorism,omitempty" xml:"Terrorism,omitempty"`
-	Politics   *string `json:"Politics,omitempty" xml:"Politics,omitempty"`
-	Ad         *string `json:"Ad,omitempty" xml:"Ad,omitempty"`
-	Qrcode     *string `json:"Qrcode,omitempty" xml:"Qrcode,omitempty"`
-	Live       *string `json:"Live,omitempty" xml:"Live,omitempty"`
 	Logo       *string `json:"Logo,omitempty" xml:"Logo,omitempty"`
 	Abuse      *string `json:"Abuse,omitempty" xml:"Abuse,omitempty"`
-	Contraband *string `json:"Contraband,omitempty" xml:"Contraband,omitempty"`
+	State      *string `json:"State,omitempty" xml:"State,omitempty"`
+	Terrorism  *string `json:"Terrorism,omitempty" xml:"Terrorism,omitempty"`
+	Politics   *string `json:"Politics,omitempty" xml:"Politics,omitempty"`
+	Qrcode     *string `json:"Qrcode,omitempty" xml:"Qrcode,omitempty"`
+	Live       *string `json:"Live,omitempty" xml:"Live,omitempty"`
 	Spam       *string `json:"Spam,omitempty" xml:"Spam,omitempty"`
+	Contraband *string `json:"Contraband,omitempty" xml:"Contraband,omitempty"`
+	Ad         *string `json:"Ad,omitempty" xml:"Ad,omitempty"`
+	Porn       *string `json:"Porn,omitempty" xml:"Porn,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s UpdateMCTemplateResponseBodyTemplate) String() string {
@@ -55264,23 +56586,18 @@ func (s UpdateMCTemplateResponseBodyTemplate) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateMCTemplateResponseBodyTemplate) SetTemplateId(v string) *UpdateMCTemplateResponseBodyTemplate {
-	s.TemplateId = &v
+func (s *UpdateMCTemplateResponseBodyTemplate) SetLogo(v string) *UpdateMCTemplateResponseBodyTemplate {
+	s.Logo = &v
 	return s
 }
 
-func (s *UpdateMCTemplateResponseBodyTemplate) SetName(v string) *UpdateMCTemplateResponseBodyTemplate {
-	s.Name = &v
+func (s *UpdateMCTemplateResponseBodyTemplate) SetAbuse(v string) *UpdateMCTemplateResponseBodyTemplate {
+	s.Abuse = &v
 	return s
 }
 
 func (s *UpdateMCTemplateResponseBodyTemplate) SetState(v string) *UpdateMCTemplateResponseBodyTemplate {
 	s.State = &v
-	return s
-}
-
-func (s *UpdateMCTemplateResponseBodyTemplate) SetPorn(v string) *UpdateMCTemplateResponseBodyTemplate {
-	s.Porn = &v
 	return s
 }
 
@@ -55294,11 +56611,6 @@ func (s *UpdateMCTemplateResponseBodyTemplate) SetPolitics(v string) *UpdateMCTe
 	return s
 }
 
-func (s *UpdateMCTemplateResponseBodyTemplate) SetAd(v string) *UpdateMCTemplateResponseBodyTemplate {
-	s.Ad = &v
-	return s
-}
-
 func (s *UpdateMCTemplateResponseBodyTemplate) SetQrcode(v string) *UpdateMCTemplateResponseBodyTemplate {
 	s.Qrcode = &v
 	return s
@@ -55309,13 +56621,8 @@ func (s *UpdateMCTemplateResponseBodyTemplate) SetLive(v string) *UpdateMCTempla
 	return s
 }
 
-func (s *UpdateMCTemplateResponseBodyTemplate) SetLogo(v string) *UpdateMCTemplateResponseBodyTemplate {
-	s.Logo = &v
-	return s
-}
-
-func (s *UpdateMCTemplateResponseBodyTemplate) SetAbuse(v string) *UpdateMCTemplateResponseBodyTemplate {
-	s.Abuse = &v
+func (s *UpdateMCTemplateResponseBodyTemplate) SetSpam(v string) *UpdateMCTemplateResponseBodyTemplate {
+	s.Spam = &v
 	return s
 }
 
@@ -55324,8 +56631,23 @@ func (s *UpdateMCTemplateResponseBodyTemplate) SetContraband(v string) *UpdateMC
 	return s
 }
 
-func (s *UpdateMCTemplateResponseBodyTemplate) SetSpam(v string) *UpdateMCTemplateResponseBodyTemplate {
-	s.Spam = &v
+func (s *UpdateMCTemplateResponseBodyTemplate) SetAd(v string) *UpdateMCTemplateResponseBodyTemplate {
+	s.Ad = &v
+	return s
+}
+
+func (s *UpdateMCTemplateResponseBodyTemplate) SetPorn(v string) *UpdateMCTemplateResponseBodyTemplate {
+	s.Porn = &v
+	return s
+}
+
+func (s *UpdateMCTemplateResponseBodyTemplate) SetName(v string) *UpdateMCTemplateResponseBodyTemplate {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateMCTemplateResponseBodyTemplate) SetTemplateId(v string) *UpdateMCTemplateResponseBodyTemplate {
+	s.TemplateId = &v
 	return s
 }
 
@@ -56567,11 +57889,11 @@ func (s *UpdatePornPipelineResponseBody) SetPipeline(v *UpdatePornPipelineRespon
 }
 
 type UpdatePornPipelineResponseBodyPipeline struct {
-	Id           *string                                             `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name         *string                                             `json:"Name,omitempty" xml:"Name,omitempty"`
 	State        *string                                             `json:"State,omitempty" xml:"State,omitempty"`
-	Priority     *int32                                              `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	NotifyConfig *UpdatePornPipelineResponseBodyPipelineNotifyConfig `json:"NotifyConfig,omitempty" xml:"NotifyConfig,omitempty" type:"Struct"`
+	Priority     *int32                                              `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Name         *string                                             `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id           *string                                             `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
 func (s UpdatePornPipelineResponseBodyPipeline) String() string {
@@ -56582,18 +57904,13 @@ func (s UpdatePornPipelineResponseBodyPipeline) GoString() string {
 	return s.String()
 }
 
-func (s *UpdatePornPipelineResponseBodyPipeline) SetId(v string) *UpdatePornPipelineResponseBodyPipeline {
-	s.Id = &v
-	return s
-}
-
-func (s *UpdatePornPipelineResponseBodyPipeline) SetName(v string) *UpdatePornPipelineResponseBodyPipeline {
-	s.Name = &v
-	return s
-}
-
 func (s *UpdatePornPipelineResponseBodyPipeline) SetState(v string) *UpdatePornPipelineResponseBodyPipeline {
 	s.State = &v
+	return s
+}
+
+func (s *UpdatePornPipelineResponseBodyPipeline) SetNotifyConfig(v *UpdatePornPipelineResponseBodyPipelineNotifyConfig) *UpdatePornPipelineResponseBodyPipeline {
+	s.NotifyConfig = v
 	return s
 }
 
@@ -56602,8 +57919,13 @@ func (s *UpdatePornPipelineResponseBodyPipeline) SetPriority(v int32) *UpdatePor
 	return s
 }
 
-func (s *UpdatePornPipelineResponseBodyPipeline) SetNotifyConfig(v *UpdatePornPipelineResponseBodyPipelineNotifyConfig) *UpdatePornPipelineResponseBodyPipeline {
-	s.NotifyConfig = v
+func (s *UpdatePornPipelineResponseBodyPipeline) SetName(v string) *UpdatePornPipelineResponseBodyPipeline {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdatePornPipelineResponseBodyPipeline) SetId(v string) *UpdatePornPipelineResponseBodyPipeline {
+	s.Id = &v
 	return s
 }
 
@@ -57434,11 +58756,11 @@ func (s *UpdateTerrorismPipelineResponseBody) SetPipeline(v *UpdateTerrorismPipe
 }
 
 type UpdateTerrorismPipelineResponseBodyPipeline struct {
-	Id           *string                                                  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name         *string                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
 	State        *string                                                  `json:"State,omitempty" xml:"State,omitempty"`
-	Priority     *int32                                                   `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	NotifyConfig *UpdateTerrorismPipelineResponseBodyPipelineNotifyConfig `json:"NotifyConfig,omitempty" xml:"NotifyConfig,omitempty" type:"Struct"`
+	Priority     *int32                                                   `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Name         *string                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id           *string                                                  `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
 func (s UpdateTerrorismPipelineResponseBodyPipeline) String() string {
@@ -57449,18 +58771,13 @@ func (s UpdateTerrorismPipelineResponseBodyPipeline) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateTerrorismPipelineResponseBodyPipeline) SetId(v string) *UpdateTerrorismPipelineResponseBodyPipeline {
-	s.Id = &v
-	return s
-}
-
-func (s *UpdateTerrorismPipelineResponseBodyPipeline) SetName(v string) *UpdateTerrorismPipelineResponseBodyPipeline {
-	s.Name = &v
-	return s
-}
-
 func (s *UpdateTerrorismPipelineResponseBodyPipeline) SetState(v string) *UpdateTerrorismPipelineResponseBodyPipeline {
 	s.State = &v
+	return s
+}
+
+func (s *UpdateTerrorismPipelineResponseBodyPipeline) SetNotifyConfig(v *UpdateTerrorismPipelineResponseBodyPipelineNotifyConfig) *UpdateTerrorismPipelineResponseBodyPipeline {
+	s.NotifyConfig = v
 	return s
 }
 
@@ -57469,8 +58786,13 @@ func (s *UpdateTerrorismPipelineResponseBodyPipeline) SetPriority(v int32) *Upda
 	return s
 }
 
-func (s *UpdateTerrorismPipelineResponseBodyPipeline) SetNotifyConfig(v *UpdateTerrorismPipelineResponseBodyPipelineNotifyConfig) *UpdateTerrorismPipelineResponseBodyPipeline {
-	s.NotifyConfig = v
+func (s *UpdateTerrorismPipelineResponseBodyPipeline) SetName(v string) *UpdateTerrorismPipelineResponseBodyPipeline {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateTerrorismPipelineResponseBodyPipeline) SetId(v string) *UpdateTerrorismPipelineResponseBodyPipeline {
+	s.Id = &v
 	return s
 }
 
@@ -59131,6 +60453,34 @@ func (client *Client) ListFpShotDB(request *ListFpShotDBRequest) (_result *ListF
 	return _result, _err
 }
 
+func (client *Client) ListFpShotFilesWithOptions(request *ListFpShotFilesRequest, runtime *util.RuntimeOptions) (_result *ListFpShotFilesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListFpShotFilesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListFpShotFiles"), tea.String("2014-06-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListFpShotFiles(request *ListFpShotFilesRequest) (_result *ListFpShotFilesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListFpShotFilesResponse{}
+	_body, _err := client.ListFpShotFilesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListFpShotNotaryWithOptions(request *ListFpShotNotaryRequest, runtime *util.RuntimeOptions) (_result *ListFpShotNotaryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -59775,6 +61125,62 @@ func (client *Client) QueryFpCompareJobList(request *QueryFpCompareJobListReques
 	return _result, _err
 }
 
+func (client *Client) QueryFpDBDeleteJobListWithOptions(request *QueryFpDBDeleteJobListRequest, runtime *util.RuntimeOptions) (_result *QueryFpDBDeleteJobListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &QueryFpDBDeleteJobListResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("QueryFpDBDeleteJobList"), tea.String("2014-06-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryFpDBDeleteJobList(request *QueryFpDBDeleteJobListRequest) (_result *QueryFpDBDeleteJobListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryFpDBDeleteJobListResponse{}
+	_body, _err := client.QueryFpDBDeleteJobListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryFpFileDeleteJobListWithOptions(request *QueryFpFileDeleteJobListRequest, runtime *util.RuntimeOptions) (_result *QueryFpFileDeleteJobListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &QueryFpFileDeleteJobListResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("QueryFpFileDeleteJobList"), tea.String("2014-06-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryFpFileDeleteJobList(request *QueryFpFileDeleteJobListRequest) (_result *QueryFpFileDeleteJobListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryFpFileDeleteJobListResponse{}
+	_body, _err := client.QueryFpFileDeleteJobListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) QueryFpImportResultWithOptions(request *QueryFpImportResultRequest, runtime *util.RuntimeOptions) (_result *QueryFpImportResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -59852,6 +61258,34 @@ func (client *Client) QueryImageSearchJobList(request *QueryImageSearchJobListRe
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryImageSearchJobListResponse{}
 	_body, _err := client.QueryImageSearchJobListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryInnerJobWithOptions(request *QueryInnerJobRequest, runtime *util.RuntimeOptions) (_result *QueryInnerJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &QueryInnerJobResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("QueryInnerJob"), tea.String("2014-06-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryInnerJob(request *QueryInnerJobRequest) (_result *QueryInnerJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryInnerJobResponse{}
+	_body, _err := client.QueryInnerJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -60664,6 +62098,34 @@ func (client *Client) QueryVideoPoseJobList(request *QueryVideoPoseJobListReques
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryVideoPoseJobListResponse{}
 	_body, _err := client.QueryVideoPoseJobListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryVideoQualityJobWithOptions(request *QueryVideoQualityJobRequest, runtime *util.RuntimeOptions) (_result *QueryVideoQualityJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &QueryVideoQualityJobResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("QueryVideoQualityJob"), tea.String("2014-06-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryVideoQualityJob(request *QueryVideoQualityJobRequest) (_result *QueryVideoQualityJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryVideoQualityJobResponse{}
+	_body, _err := client.QueryVideoQualityJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -61595,6 +63057,62 @@ func (client *Client) SubmitFpCompareJob(request *SubmitFpCompareJobRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) SubmitFpDBDeleteJobWithOptions(request *SubmitFpDBDeleteJobRequest, runtime *util.RuntimeOptions) (_result *SubmitFpDBDeleteJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SubmitFpDBDeleteJobResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SubmitFpDBDeleteJob"), tea.String("2014-06-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubmitFpDBDeleteJob(request *SubmitFpDBDeleteJobRequest) (_result *SubmitFpDBDeleteJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitFpDBDeleteJobResponse{}
+	_body, _err := client.SubmitFpDBDeleteJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SubmitFpFileDeleteJobWithOptions(request *SubmitFpFileDeleteJobRequest, runtime *util.RuntimeOptions) (_result *SubmitFpFileDeleteJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SubmitFpFileDeleteJobResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SubmitFpFileDeleteJob"), tea.String("2014-06-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubmitFpFileDeleteJob(request *SubmitFpFileDeleteJobRequest) (_result *SubmitFpFileDeleteJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitFpFileDeleteJobResponse{}
+	_body, _err := client.SubmitFpFileDeleteJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SubmitFpShotJobWithOptions(request *SubmitFpShotJobRequest, runtime *util.RuntimeOptions) (_result *SubmitFpShotJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -61672,6 +63190,34 @@ func (client *Client) SubmitImageSearchJob(request *SubmitImageSearchJobRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitImageSearchJobResponse{}
 	_body, _err := client.SubmitImageSearchJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SubmitInnerJobWithOptions(request *SubmitInnerJobRequest, runtime *util.RuntimeOptions) (_result *SubmitInnerJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SubmitInnerJobResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SubmitInnerJob"), tea.String("2014-06-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubmitInnerJob(request *SubmitInnerJobRequest) (_result *SubmitInnerJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitInnerJobResponse{}
+	_body, _err := client.SubmitInnerJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -62120,6 +63666,34 @@ func (client *Client) SubmitVideoPoseJob(request *SubmitVideoPoseJobRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitVideoPoseJobResponse{}
 	_body, _err := client.SubmitVideoPoseJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SubmitVideoQualityJobWithOptions(request *SubmitVideoQualityJobRequest, runtime *util.RuntimeOptions) (_result *SubmitVideoQualityJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SubmitVideoQualityJobResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SubmitVideoQualityJob"), tea.String("2014-06-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubmitVideoQualityJob(request *SubmitVideoQualityJobRequest) (_result *SubmitVideoQualityJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitVideoQualityJobResponse{}
+	_body, _err := client.SubmitVideoQualityJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
