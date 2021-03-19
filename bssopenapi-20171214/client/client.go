@@ -1884,6 +1884,510 @@ func (s *DescribeResourcePackageProductResponse) SetBody(v *DescribeResourcePack
 	return s
 }
 
+type DescribeSplitItemBillRequest struct {
+	BillingCycle     *string                                  `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	ProductCode      *string                                  `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductType      *string                                  `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	SubscriptionType *string                                  `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	OwnerId          *int64                                   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	NextToken        *string                                  `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	MaxResults       *int32                                   `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	BillOwnerId      *int64                                   `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
+	InstanceID       *string                                  `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	SplitItemID      *string                                  `json:"SplitItemID,omitempty" xml:"SplitItemID,omitempty"`
+	TagFilter        []*DescribeSplitItemBillRequestTagFilter `json:"TagFilter,omitempty" xml:"TagFilter,omitempty" type:"Repeated"`
+}
+
+func (s DescribeSplitItemBillRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSplitItemBillRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSplitItemBillRequest) SetBillingCycle(v string) *DescribeSplitItemBillRequest {
+	s.BillingCycle = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillRequest) SetProductCode(v string) *DescribeSplitItemBillRequest {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillRequest) SetProductType(v string) *DescribeSplitItemBillRequest {
+	s.ProductType = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillRequest) SetSubscriptionType(v string) *DescribeSplitItemBillRequest {
+	s.SubscriptionType = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillRequest) SetOwnerId(v int64) *DescribeSplitItemBillRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillRequest) SetNextToken(v string) *DescribeSplitItemBillRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillRequest) SetMaxResults(v int32) *DescribeSplitItemBillRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillRequest) SetBillOwnerId(v int64) *DescribeSplitItemBillRequest {
+	s.BillOwnerId = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillRequest) SetInstanceID(v string) *DescribeSplitItemBillRequest {
+	s.InstanceID = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillRequest) SetSplitItemID(v string) *DescribeSplitItemBillRequest {
+	s.SplitItemID = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillRequest) SetTagFilter(v []*DescribeSplitItemBillRequestTagFilter) *DescribeSplitItemBillRequest {
+	s.TagFilter = v
+	return s
+}
+
+type DescribeSplitItemBillRequestTagFilter struct {
+	TagValues []*string `json:"TagValues,omitempty" xml:"TagValues,omitempty" type:"Repeated"`
+	TagKey    *string   `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+}
+
+func (s DescribeSplitItemBillRequestTagFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSplitItemBillRequestTagFilter) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSplitItemBillRequestTagFilter) SetTagValues(v []*string) *DescribeSplitItemBillRequestTagFilter {
+	s.TagValues = v
+	return s
+}
+
+func (s *DescribeSplitItemBillRequestTagFilter) SetTagKey(v string) *DescribeSplitItemBillRequestTagFilter {
+	s.TagKey = &v
+	return s
+}
+
+type DescribeSplitItemBillResponseBody struct {
+	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *DescribeSplitItemBillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeSplitItemBillResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSplitItemBillResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSplitItemBillResponseBody) SetMessage(v string) *DescribeSplitItemBillResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBody) SetRequestId(v string) *DescribeSplitItemBillResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBody) SetData(v *DescribeSplitItemBillResponseBodyData) *DescribeSplitItemBillResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBody) SetCode(v string) *DescribeSplitItemBillResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBody) SetSuccess(v bool) *DescribeSplitItemBillResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeSplitItemBillResponseBodyData struct {
+	Items        []*DescribeSplitItemBillResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	NextToken    *string                                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	BillingCycle *string                                       `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	MaxResults   *int32                                        `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	AccountID    *string                                       `json:"AccountID,omitempty" xml:"AccountID,omitempty"`
+	TotalCount   *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	AccountName  *string                                       `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+}
+
+func (s DescribeSplitItemBillResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSplitItemBillResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSplitItemBillResponseBodyData) SetItems(v []*DescribeSplitItemBillResponseBodyDataItems) *DescribeSplitItemBillResponseBodyData {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyData) SetNextToken(v string) *DescribeSplitItemBillResponseBodyData {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyData) SetBillingCycle(v string) *DescribeSplitItemBillResponseBodyData {
+	s.BillingCycle = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyData) SetMaxResults(v int32) *DescribeSplitItemBillResponseBodyData {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyData) SetAccountID(v string) *DescribeSplitItemBillResponseBodyData {
+	s.AccountID = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyData) SetTotalCount(v int32) *DescribeSplitItemBillResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyData) SetAccountName(v string) *DescribeSplitItemBillResponseBodyData {
+	s.AccountName = &v
+	return s
+}
+
+type DescribeSplitItemBillResponseBodyDataItems struct {
+	BillingDate               *string  `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
+	InstanceConfig            *string  `json:"InstanceConfig,omitempty" xml:"InstanceConfig,omitempty"`
+	InternetIP                *string  `json:"InternetIP,omitempty" xml:"InternetIP,omitempty"`
+	SplitItemID               *string  `json:"SplitItemID,omitempty" xml:"SplitItemID,omitempty"`
+	Item                      *string  `json:"Item,omitempty" xml:"Item,omitempty"`
+	SplitAccountID            *string  `json:"SplitAccountID,omitempty" xml:"SplitAccountID,omitempty"`
+	Tag                       *string  `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	InstanceID                *string  `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	Currency                  *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	DeductedByCashCoupons     *float32 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
+	SubscriptionType          *string  `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	InstanceSpec              *string  `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	BillingItem               *string  `json:"BillingItem,omitempty" xml:"BillingItem,omitempty"`
+	DeductedByCoupons         *float32 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
+	Region                    *string  `json:"Region,omitempty" xml:"Region,omitempty"`
+	OutstandingAmount         *float32 `json:"OutstandingAmount,omitempty" xml:"OutstandingAmount,omitempty"`
+	CostUnit                  *string  `json:"CostUnit,omitempty" xml:"CostUnit,omitempty"`
+	ListPriceUnit             *string  `json:"ListPriceUnit,omitempty" xml:"ListPriceUnit,omitempty"`
+	ResourceGroup             *string  `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	PipCode                   *string  `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
+	PretaxAmount              *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
+	ServicePeriodUnit         *string  `json:"ServicePeriodUnit,omitempty" xml:"ServicePeriodUnit,omitempty"`
+	ProductName               *string  `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	CommodityCode             *string  `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	SplitProductDetail        *string  `json:"SplitProductDetail,omitempty" xml:"SplitProductDetail,omitempty"`
+	NickName                  *string  `json:"NickName,omitempty" xml:"NickName,omitempty"`
+	ProductDetail             *string  `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
+	Usage                     *string  `json:"Usage,omitempty" xml:"Usage,omitempty"`
+	IntranetIP                *string  `json:"IntranetIP,omitempty" xml:"IntranetIP,omitempty"`
+	OwnerID                   *string  `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
+	SplitCommodityCode        *string  `json:"SplitCommodityCode,omitempty" xml:"SplitCommodityCode,omitempty"`
+	DeductedByPrepaidCard     *float32 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
+	UsageUnit                 *string  `json:"UsageUnit,omitempty" xml:"UsageUnit,omitempty"`
+	PaymentAmount             *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
+	InvoiceDiscount           *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
+	DeductedByResourcePackage *string  `json:"DeductedByResourcePackage,omitempty" xml:"DeductedByResourcePackage,omitempty"`
+	ProductType               *string  `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	SplitBillingCycle         *string  `json:"SplitBillingCycle,omitempty" xml:"SplitBillingCycle,omitempty"`
+	ServicePeriod             *string  `json:"ServicePeriod,omitempty" xml:"ServicePeriod,omitempty"`
+	SplitItemName             *string  `json:"SplitItemName,omitempty" xml:"SplitItemName,omitempty"`
+	Zone                      *string  `json:"Zone,omitempty" xml:"Zone,omitempty"`
+	ListPrice                 *string  `json:"ListPrice,omitempty" xml:"ListPrice,omitempty"`
+	PretaxGrossAmount         *float32 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
+	SplitAccountName          *string  `json:"SplitAccountName,omitempty" xml:"SplitAccountName,omitempty"`
+	ProductCode               *string  `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	BillingType               *string  `json:"BillingType,omitempty" xml:"BillingType,omitempty"`
+}
+
+func (s DescribeSplitItemBillResponseBodyDataItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSplitItemBillResponseBodyDataItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetBillingDate(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.BillingDate = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetInstanceConfig(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.InstanceConfig = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetInternetIP(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.InternetIP = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetSplitItemID(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.SplitItemID = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetItem(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.Item = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetSplitAccountID(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.SplitAccountID = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetTag(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.Tag = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetInstanceID(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.InstanceID = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetCurrency(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.Currency = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetDeductedByCashCoupons(v float32) *DescribeSplitItemBillResponseBodyDataItems {
+	s.DeductedByCashCoupons = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetSubscriptionType(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.SubscriptionType = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetInstanceSpec(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.InstanceSpec = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetBillingItem(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.BillingItem = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetDeductedByCoupons(v float32) *DescribeSplitItemBillResponseBodyDataItems {
+	s.DeductedByCoupons = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetRegion(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetOutstandingAmount(v float32) *DescribeSplitItemBillResponseBodyDataItems {
+	s.OutstandingAmount = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetCostUnit(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.CostUnit = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetListPriceUnit(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.ListPriceUnit = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetResourceGroup(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.ResourceGroup = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetPipCode(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.PipCode = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetPretaxAmount(v float32) *DescribeSplitItemBillResponseBodyDataItems {
+	s.PretaxAmount = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetServicePeriodUnit(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.ServicePeriodUnit = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetProductName(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.ProductName = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetCommodityCode(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetSplitProductDetail(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.SplitProductDetail = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetNickName(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.NickName = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetProductDetail(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.ProductDetail = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetUsage(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.Usage = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetIntranetIP(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.IntranetIP = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetOwnerID(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.OwnerID = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetSplitCommodityCode(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.SplitCommodityCode = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetDeductedByPrepaidCard(v float32) *DescribeSplitItemBillResponseBodyDataItems {
+	s.DeductedByPrepaidCard = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetUsageUnit(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.UsageUnit = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetPaymentAmount(v float32) *DescribeSplitItemBillResponseBodyDataItems {
+	s.PaymentAmount = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetInvoiceDiscount(v float32) *DescribeSplitItemBillResponseBodyDataItems {
+	s.InvoiceDiscount = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetDeductedByResourcePackage(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.DeductedByResourcePackage = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetProductType(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.ProductType = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetSplitBillingCycle(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.SplitBillingCycle = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetServicePeriod(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.ServicePeriod = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetSplitItemName(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.SplitItemName = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetZone(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.Zone = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetListPrice(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.ListPrice = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetPretaxGrossAmount(v float32) *DescribeSplitItemBillResponseBodyDataItems {
+	s.PretaxGrossAmount = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetSplitAccountName(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.SplitAccountName = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetProductCode(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetBillingType(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.BillingType = &v
+	return s
+}
+
+type DescribeSplitItemBillResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeSplitItemBillResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeSplitItemBillResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSplitItemBillResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSplitItemBillResponse) SetHeaders(v map[string]*string) *DescribeSplitItemBillResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponse) SetBody(v *DescribeSplitItemBillResponseBody) *DescribeSplitItemBillResponse {
+	s.Body = v
+	return s
+}
+
 type EnableBillGenerationRequest struct {
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -7555,6 +8059,180 @@ func (s *QueryInstanceBillResponse) SetHeaders(v map[string]*string) *QueryInsta
 }
 
 func (s *QueryInstanceBillResponse) SetBody(v *QueryInstanceBillResponseBody) *QueryInstanceBillResponse {
+	s.Body = v
+	return s
+}
+
+type QueryInstanceByTagRequest struct {
+	ResourceType *string                         `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ResourceId   []*string                       `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	Tag          []*QueryInstanceByTagRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s QueryInstanceByTagRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryInstanceByTagRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryInstanceByTagRequest) SetResourceType(v string) *QueryInstanceByTagRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *QueryInstanceByTagRequest) SetResourceId(v []*string) *QueryInstanceByTagRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *QueryInstanceByTagRequest) SetTag(v []*QueryInstanceByTagRequestTag) *QueryInstanceByTagRequest {
+	s.Tag = v
+	return s
+}
+
+type QueryInstanceByTagRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s QueryInstanceByTagRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryInstanceByTagRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *QueryInstanceByTagRequestTag) SetKey(v string) *QueryInstanceByTagRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *QueryInstanceByTagRequestTag) SetValue(v string) *QueryInstanceByTagRequestTag {
+	s.Value = &v
+	return s
+}
+
+type QueryInstanceByTagResponseBody struct {
+	Message     *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	NextToken   *string                                      `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId   *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TagResource []*QueryInstanceByTagResponseBodyTagResource `json:"TagResource,omitempty" xml:"TagResource,omitempty" type:"Repeated"`
+	Code        *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Success     *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryInstanceByTagResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryInstanceByTagResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryInstanceByTagResponseBody) SetMessage(v string) *QueryInstanceByTagResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryInstanceByTagResponseBody) SetNextToken(v string) *QueryInstanceByTagResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *QueryInstanceByTagResponseBody) SetRequestId(v string) *QueryInstanceByTagResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryInstanceByTagResponseBody) SetTagResource(v []*QueryInstanceByTagResponseBodyTagResource) *QueryInstanceByTagResponseBody {
+	s.TagResource = v
+	return s
+}
+
+func (s *QueryInstanceByTagResponseBody) SetCode(v string) *QueryInstanceByTagResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryInstanceByTagResponseBody) SetSuccess(v bool) *QueryInstanceByTagResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryInstanceByTagResponseBodyTagResource struct {
+	ResourceType *string                                         `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tag          []*QueryInstanceByTagResponseBodyTagResourceTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceId   *string                                         `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+}
+
+func (s QueryInstanceByTagResponseBodyTagResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryInstanceByTagResponseBodyTagResource) GoString() string {
+	return s.String()
+}
+
+func (s *QueryInstanceByTagResponseBodyTagResource) SetResourceType(v string) *QueryInstanceByTagResponseBodyTagResource {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *QueryInstanceByTagResponseBodyTagResource) SetTag(v []*QueryInstanceByTagResponseBodyTagResourceTag) *QueryInstanceByTagResponseBodyTagResource {
+	s.Tag = v
+	return s
+}
+
+func (s *QueryInstanceByTagResponseBodyTagResource) SetResourceId(v string) *QueryInstanceByTagResponseBodyTagResource {
+	s.ResourceId = &v
+	return s
+}
+
+type QueryInstanceByTagResponseBodyTagResourceTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s QueryInstanceByTagResponseBodyTagResourceTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryInstanceByTagResponseBodyTagResourceTag) GoString() string {
+	return s.String()
+}
+
+func (s *QueryInstanceByTagResponseBodyTagResourceTag) SetKey(v string) *QueryInstanceByTagResponseBodyTagResourceTag {
+	s.Key = &v
+	return s
+}
+
+func (s *QueryInstanceByTagResponseBodyTagResourceTag) SetValue(v string) *QueryInstanceByTagResponseBodyTagResourceTag {
+	s.Value = &v
+	return s
+}
+
+type QueryInstanceByTagResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QueryInstanceByTagResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryInstanceByTagResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryInstanceByTagResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryInstanceByTagResponse) SetHeaders(v map[string]*string) *QueryInstanceByTagResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryInstanceByTagResponse) SetBody(v *QueryInstanceByTagResponseBody) *QueryInstanceByTagResponse {
 	s.Body = v
 	return s
 }
@@ -13432,6 +14110,122 @@ func (s *SubscribeBillToOSSResponse) SetBody(v *SubscribeBillToOSSResponseBody) 
 	return s
 }
 
+type TagResourcesRequest struct {
+	ResourceType *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ResourceId   []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	Tag          []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s TagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesRequest) SetResourceType(v string) *TagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *TagResourcesRequest) SetResourceId(v []*string) *TagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesRequest {
+	s.Tag = v
+	return s
+}
+
+type TagResourcesRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s TagResourcesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesRequestTag) SetKey(v string) *TagResourcesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type TagResourcesResponseBody struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s TagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesResponseBody) SetMessage(v string) *TagResourcesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *TagResourcesResponseBody) SetData(v bool) *TagResourcesResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *TagResourcesResponseBody) SetCode(v string) *TagResourcesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *TagResourcesResponseBody) SetSuccess(v bool) *TagResourcesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type TagResourcesResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s TagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesResponse) SetHeaders(v map[string]*string) *TagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResourcesResponse {
+	s.Body = v
+	return s
+}
+
 type UnsubscribeBillToOSSRequest struct {
 	SubscribeType           *string `json:"SubscribeType,omitempty" xml:"SubscribeType,omitempty"`
 	MultAccountRelSubscribe *string `json:"MultAccountRelSubscribe,omitempty" xml:"MultAccountRelSubscribe,omitempty"`
@@ -13509,6 +14303,105 @@ func (s *UnsubscribeBillToOSSResponse) SetHeaders(v map[string]*string) *Unsubsc
 }
 
 func (s *UnsubscribeBillToOSSResponse) SetBody(v *UnsubscribeBillToOSSResponseBody) *UnsubscribeBillToOSSResponse {
+	s.Body = v
+	return s
+}
+
+type UntagResourcesRequest struct {
+	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	All          *bool     `json:"All,omitempty" xml:"All,omitempty"`
+	ResourceId   []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+}
+
+func (s UntagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesRequest) SetResourceType(v string) *UntagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetAll(v bool) *UntagResourcesRequest {
+	s.All = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetResourceId(v []*string) *UntagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
+	s.TagKey = v
+	return s
+}
+
+type UntagResourcesResponseBody struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UntagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesResponseBody) SetMessage(v string) *UntagResourcesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UntagResourcesResponseBody) SetRequestId(v string) *UntagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UntagResourcesResponseBody) SetData(v bool) *UntagResourcesResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UntagResourcesResponseBody) SetCode(v string) *UntagResourcesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UntagResourcesResponseBody) SetSuccess(v bool) *UntagResourcesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UntagResourcesResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UntagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesResponse) SetHeaders(v map[string]*string) *UntagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagResourcesResponse {
 	s.Body = v
 	return s
 }
@@ -14073,6 +14966,34 @@ func (client *Client) DescribeResourcePackageProduct(request *DescribeResourcePa
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeResourcePackageProductResponse{}
 	_body, _err := client.DescribeResourcePackageProductWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeSplitItemBillWithOptions(request *DescribeSplitItemBillRequest, runtime *util.RuntimeOptions) (_result *DescribeSplitItemBillResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeSplitItemBillResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeSplitItemBill"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeSplitItemBill(request *DescribeSplitItemBillRequest) (_result *DescribeSplitItemBillResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSplitItemBillResponse{}
+	_body, _err := client.DescribeSplitItemBillWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14727,6 +15648,34 @@ func (client *Client) QueryInstanceBill(request *QueryInstanceBillRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryInstanceBillResponse{}
 	_body, _err := client.QueryInstanceBillWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryInstanceByTagWithOptions(request *QueryInstanceByTagRequest, runtime *util.RuntimeOptions) (_result *QueryInstanceByTagResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &QueryInstanceByTagResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("QueryInstanceByTag"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryInstanceByTag(request *QueryInstanceByTagRequest) (_result *QueryInstanceByTagResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryInstanceByTagResponse{}
+	_body, _err := client.QueryInstanceByTagWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15491,6 +16440,34 @@ func (client *Client) SubscribeBillToOSS(request *SubscribeBillToOSSRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &TagResourcesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("TagResources"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &TagResourcesResponse{}
+	_body, _err := client.TagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UnsubscribeBillToOSSWithOptions(request *UnsubscribeBillToOSSRequest, runtime *util.RuntimeOptions) (_result *UnsubscribeBillToOSSResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15512,6 +16489,34 @@ func (client *Client) UnsubscribeBillToOSS(request *UnsubscribeBillToOSSRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &UnsubscribeBillToOSSResponse{}
 	_body, _err := client.UnsubscribeBillToOSSWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UntagResources"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.UntagResourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
