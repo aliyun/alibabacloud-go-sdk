@@ -93,10 +93,12 @@ func (s *AttachEaiResponse) SetBody(v *AttachEaiResponseBody) *AttachEaiResponse
 }
 
 type CreateEaiRequest struct {
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	InstanceType    *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	InstanceName    *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	VSwitchId       *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s CreateEaiRequest) String() string {
@@ -124,6 +126,16 @@ func (s *CreateEaiRequest) SetClientToken(v string) *CreateEaiRequest {
 
 func (s *CreateEaiRequest) SetInstanceName(v string) *CreateEaiRequest {
 	s.InstanceName = &v
+	return s
+}
+
+func (s *CreateEaiRequest) SetSecurityGroupId(v string) *CreateEaiRequest {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *CreateEaiRequest) SetVSwitchId(v string) *CreateEaiRequest {
+	s.VSwitchId = &v
 	return s
 }
 
