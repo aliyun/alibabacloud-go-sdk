@@ -316,7 +316,6 @@ type CreatePostPayOrderRequest struct {
 	DeployType *int32  `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
 	IoMax      *int32  `json:"IoMax,omitempty" xml:"IoMax,omitempty"`
 	EipMax     *int32  `json:"EipMax,omitempty" xml:"EipMax,omitempty"`
-	PaidType   *int32  `json:"PaidType,omitempty" xml:"PaidType,omitempty"`
 	SpecType   *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
 	IoMaxSpec  *string `json:"IoMaxSpec,omitempty" xml:"IoMaxSpec,omitempty"`
 }
@@ -361,11 +360,6 @@ func (s *CreatePostPayOrderRequest) SetIoMax(v int32) *CreatePostPayOrderRequest
 
 func (s *CreatePostPayOrderRequest) SetEipMax(v int32) *CreatePostPayOrderRequest {
 	s.EipMax = &v
-	return s
-}
-
-func (s *CreatePostPayOrderRequest) SetPaidType(v int32) *CreatePostPayOrderRequest {
-	s.PaidType = &v
 	return s
 }
 
@@ -676,9 +670,7 @@ type CreateTopicRequest struct {
 	Topic        *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 	Remark       *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	CompactTopic *bool   `json:"CompactTopic,omitempty" xml:"CompactTopic,omitempty"`
 	PartitionNum *string `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty"`
-	LocalTopic   *bool   `json:"LocalTopic,omitempty" xml:"LocalTopic,omitempty"`
 }
 
 func (s CreateTopicRequest) String() string {
@@ -709,18 +701,8 @@ func (s *CreateTopicRequest) SetRegionId(v string) *CreateTopicRequest {
 	return s
 }
 
-func (s *CreateTopicRequest) SetCompactTopic(v bool) *CreateTopicRequest {
-	s.CompactTopic = &v
-	return s
-}
-
 func (s *CreateTopicRequest) SetPartitionNum(v string) *CreateTopicRequest {
 	s.PartitionNum = &v
-	return s
-}
-
-func (s *CreateTopicRequest) SetLocalTopic(v bool) *CreateTopicRequest {
-	s.LocalTopic = &v
 	return s
 }
 
@@ -1242,11 +1224,12 @@ func (s *DeleteTopicResponse) SetBody(v *DeleteTopicResponseBody) *DeleteTopicRe
 }
 
 type DescribeAclsRequest struct {
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Username        *string `json:"Username,omitempty" xml:"Username,omitempty"`
-	AclResourceType *string `json:"AclResourceType,omitempty" xml:"AclResourceType,omitempty"`
-	AclResourceName *string `json:"AclResourceName,omitempty" xml:"AclResourceName,omitempty"`
+	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	InstanceId             *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Username               *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	AclResourceType        *string `json:"AclResourceType,omitempty" xml:"AclResourceType,omitempty"`
+	AclResourceName        *string `json:"AclResourceName,omitempty" xml:"AclResourceName,omitempty"`
+	AclResourcePatternType *string `json:"AclResourcePatternType,omitempty" xml:"AclResourcePatternType,omitempty"`
 }
 
 func (s DescribeAclsRequest) String() string {
@@ -1282,12 +1265,17 @@ func (s *DescribeAclsRequest) SetAclResourceName(v string) *DescribeAclsRequest 
 	return s
 }
 
+func (s *DescribeAclsRequest) SetAclResourcePatternType(v string) *DescribeAclsRequest {
+	s.AclResourcePatternType = &v
+	return s
+}
+
 type DescribeAclsResponseBody struct {
-	Message      *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId    *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code         *int32                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success      *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
-	KafkaAclList []*DescribeAclsResponseBodyKafkaAclList `json:"KafkaAclList,omitempty" xml:"KafkaAclList,omitempty" type:"Repeated"`
+	Message      *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId    *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code         *int32                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Success      *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	KafkaAclList *DescribeAclsResponseBodyKafkaAclList `json:"KafkaAclList,omitempty" xml:"KafkaAclList,omitempty" type:"Struct"`
 }
 
 func (s DescribeAclsResponseBody) String() string {
@@ -1318,18 +1306,13 @@ func (s *DescribeAclsResponseBody) SetSuccess(v bool) *DescribeAclsResponseBody 
 	return s
 }
 
-func (s *DescribeAclsResponseBody) SetKafkaAclList(v []*DescribeAclsResponseBodyKafkaAclList) *DescribeAclsResponseBody {
+func (s *DescribeAclsResponseBody) SetKafkaAclList(v *DescribeAclsResponseBodyKafkaAclList) *DescribeAclsResponseBody {
 	s.KafkaAclList = v
 	return s
 }
 
 type DescribeAclsResponseBodyKafkaAclList struct {
-	AclResourceType        *string `json:"AclResourceType,omitempty" xml:"AclResourceType,omitempty"`
-	Host                   *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	AclOperationType       *string `json:"AclOperationType,omitempty" xml:"AclOperationType,omitempty"`
-	AclResourceName        *string `json:"AclResourceName,omitempty" xml:"AclResourceName,omitempty"`
-	AclResourcePatternType *string `json:"AclResourcePatternType,omitempty" xml:"AclResourcePatternType,omitempty"`
-	Username               *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	KafkaAclVO []*DescribeAclsResponseBodyKafkaAclListKafkaAclVO `json:"KafkaAclVO,omitempty" xml:"KafkaAclVO,omitempty" type:"Repeated"`
 }
 
 func (s DescribeAclsResponseBodyKafkaAclList) String() string {
@@ -1340,32 +1323,54 @@ func (s DescribeAclsResponseBodyKafkaAclList) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeAclsResponseBodyKafkaAclList) SetAclResourceType(v string) *DescribeAclsResponseBodyKafkaAclList {
+func (s *DescribeAclsResponseBodyKafkaAclList) SetKafkaAclVO(v []*DescribeAclsResponseBodyKafkaAclListKafkaAclVO) *DescribeAclsResponseBodyKafkaAclList {
+	s.KafkaAclVO = v
+	return s
+}
+
+type DescribeAclsResponseBodyKafkaAclListKafkaAclVO struct {
+	AclResourceType        *string `json:"AclResourceType,omitempty" xml:"AclResourceType,omitempty"`
+	Host                   *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	AclOperationType       *string `json:"AclOperationType,omitempty" xml:"AclOperationType,omitempty"`
+	AclResourceName        *string `json:"AclResourceName,omitempty" xml:"AclResourceName,omitempty"`
+	AclResourcePatternType *string `json:"AclResourcePatternType,omitempty" xml:"AclResourcePatternType,omitempty"`
+	Username               *string `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s DescribeAclsResponseBodyKafkaAclListKafkaAclVO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAclsResponseBodyKafkaAclListKafkaAclVO) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAclsResponseBodyKafkaAclListKafkaAclVO) SetAclResourceType(v string) *DescribeAclsResponseBodyKafkaAclListKafkaAclVO {
 	s.AclResourceType = &v
 	return s
 }
 
-func (s *DescribeAclsResponseBodyKafkaAclList) SetHost(v string) *DescribeAclsResponseBodyKafkaAclList {
+func (s *DescribeAclsResponseBodyKafkaAclListKafkaAclVO) SetHost(v string) *DescribeAclsResponseBodyKafkaAclListKafkaAclVO {
 	s.Host = &v
 	return s
 }
 
-func (s *DescribeAclsResponseBodyKafkaAclList) SetAclOperationType(v string) *DescribeAclsResponseBodyKafkaAclList {
+func (s *DescribeAclsResponseBodyKafkaAclListKafkaAclVO) SetAclOperationType(v string) *DescribeAclsResponseBodyKafkaAclListKafkaAclVO {
 	s.AclOperationType = &v
 	return s
 }
 
-func (s *DescribeAclsResponseBodyKafkaAclList) SetAclResourceName(v string) *DescribeAclsResponseBodyKafkaAclList {
+func (s *DescribeAclsResponseBodyKafkaAclListKafkaAclVO) SetAclResourceName(v string) *DescribeAclsResponseBodyKafkaAclListKafkaAclVO {
 	s.AclResourceName = &v
 	return s
 }
 
-func (s *DescribeAclsResponseBodyKafkaAclList) SetAclResourcePatternType(v string) *DescribeAclsResponseBodyKafkaAclList {
+func (s *DescribeAclsResponseBodyKafkaAclListKafkaAclVO) SetAclResourcePatternType(v string) *DescribeAclsResponseBodyKafkaAclListKafkaAclVO {
 	s.AclResourcePatternType = &v
 	return s
 }
 
-func (s *DescribeAclsResponseBodyKafkaAclList) SetUsername(v string) *DescribeAclsResponseBodyKafkaAclList {
+func (s *DescribeAclsResponseBodyKafkaAclListKafkaAclVO) SetUsername(v string) *DescribeAclsResponseBodyKafkaAclListKafkaAclVO {
 	s.Username = &v
 	return s
 }
@@ -1417,11 +1422,11 @@ func (s *DescribeNodeStatusRequest) SetInstanceId(v string) *DescribeNodeStatusR
 }
 
 type DescribeNodeStatusResponseBody struct {
-	Message    *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StatusList []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
-	Code       *int32    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success    *bool     `json:"Success,omitempty" xml:"Success,omitempty"`
+	Message    *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StatusList *DescribeNodeStatusResponseBodyStatusList `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Struct"`
+	Code       *int32                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Success    *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeNodeStatusResponseBody) String() string {
@@ -1442,7 +1447,7 @@ func (s *DescribeNodeStatusResponseBody) SetRequestId(v string) *DescribeNodeSta
 	return s
 }
 
-func (s *DescribeNodeStatusResponseBody) SetStatusList(v []*string) *DescribeNodeStatusResponseBody {
+func (s *DescribeNodeStatusResponseBody) SetStatusList(v *DescribeNodeStatusResponseBodyStatusList) *DescribeNodeStatusResponseBody {
 	s.StatusList = v
 	return s
 }
@@ -1454,6 +1459,23 @@ func (s *DescribeNodeStatusResponseBody) SetCode(v int32) *DescribeNodeStatusRes
 
 func (s *DescribeNodeStatusResponseBody) SetSuccess(v bool) *DescribeNodeStatusResponseBody {
 	s.Success = &v
+	return s
+}
+
+type DescribeNodeStatusResponseBodyStatusList struct {
+	Status []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
+}
+
+func (s DescribeNodeStatusResponseBodyStatusList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNodeStatusResponseBodyStatusList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNodeStatusResponseBodyStatusList) SetStatus(v []*string) *DescribeNodeStatusResponseBodyStatusList {
+	s.Status = v
 	return s
 }
 
@@ -1504,11 +1526,11 @@ func (s *DescribeSaslUsersRequest) SetInstanceId(v string) *DescribeSaslUsersReq
 }
 
 type DescribeSaslUsersResponseBody struct {
-	SaslUserList []*DescribeSaslUsersResponseBodySaslUserList `json:"SaslUserList,omitempty" xml:"SaslUserList,omitempty" type:"Repeated"`
-	Message      *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId    *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code         *int32                                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success      *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	SaslUserList *DescribeSaslUsersResponseBodySaslUserList `json:"SaslUserList,omitempty" xml:"SaslUserList,omitempty" type:"Struct"`
+	Message      *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId    *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code         *int32                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Success      *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeSaslUsersResponseBody) String() string {
@@ -1519,7 +1541,7 @@ func (s DescribeSaslUsersResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeSaslUsersResponseBody) SetSaslUserList(v []*DescribeSaslUsersResponseBodySaslUserList) *DescribeSaslUsersResponseBody {
+func (s *DescribeSaslUsersResponseBody) SetSaslUserList(v *DescribeSaslUsersResponseBodySaslUserList) *DescribeSaslUsersResponseBody {
 	s.SaslUserList = v
 	return s
 }
@@ -1545,9 +1567,7 @@ func (s *DescribeSaslUsersResponseBody) SetSuccess(v bool) *DescribeSaslUsersRes
 }
 
 type DescribeSaslUsersResponseBodySaslUserList struct {
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	SaslUserVO []*DescribeSaslUsersResponseBodySaslUserListSaslUserVO `json:"SaslUserVO,omitempty" xml:"SaslUserVO,omitempty" type:"Repeated"`
 }
 
 func (s DescribeSaslUsersResponseBodySaslUserList) String() string {
@@ -1558,17 +1578,36 @@ func (s DescribeSaslUsersResponseBodySaslUserList) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeSaslUsersResponseBodySaslUserList) SetType(v string) *DescribeSaslUsersResponseBodySaslUserList {
+func (s *DescribeSaslUsersResponseBodySaslUserList) SetSaslUserVO(v []*DescribeSaslUsersResponseBodySaslUserListSaslUserVO) *DescribeSaslUsersResponseBodySaslUserList {
+	s.SaslUserVO = v
+	return s
+}
+
+type DescribeSaslUsersResponseBodySaslUserListSaslUserVO struct {
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s DescribeSaslUsersResponseBodySaslUserListSaslUserVO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSaslUsersResponseBodySaslUserListSaslUserVO) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSaslUsersResponseBodySaslUserListSaslUserVO) SetType(v string) *DescribeSaslUsersResponseBodySaslUserListSaslUserVO {
 	s.Type = &v
 	return s
 }
 
-func (s *DescribeSaslUsersResponseBodySaslUserList) SetPassword(v string) *DescribeSaslUsersResponseBodySaslUserList {
+func (s *DescribeSaslUsersResponseBodySaslUserListSaslUserVO) SetPassword(v string) *DescribeSaslUsersResponseBodySaslUserListSaslUserVO {
 	s.Password = &v
 	return s
 }
 
-func (s *DescribeSaslUsersResponseBodySaslUserList) SetUsername(v string) *DescribeSaslUsersResponseBodySaslUserList {
+func (s *DescribeSaslUsersResponseBodySaslUserListSaslUserVO) SetUsername(v string) *DescribeSaslUsersResponseBodySaslUserListSaslUserVO {
 	s.Username = &v
 	return s
 }
@@ -1759,10 +1798,8 @@ func (s *GetAllowedIpListResponse) SetBody(v *GetAllowedIpListResponseBody) *Get
 }
 
 type GetConsumerListRequest struct {
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetConsumerListRequest) String() string {
@@ -1783,22 +1820,12 @@ func (s *GetConsumerListRequest) SetRegionId(v string) *GetConsumerListRequest {
 	return s
 }
 
-func (s *GetConsumerListRequest) SetCurrentPage(v int32) *GetConsumerListRequest {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *GetConsumerListRequest) SetPageSize(v int32) *GetConsumerListRequest {
-	s.PageSize = &v
-	return s
-}
-
 type GetConsumerListResponseBody struct {
-	Message      *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId    *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code         *int32                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	ConsumerList []*GetConsumerListResponseBodyConsumerList `json:"ConsumerList,omitempty" xml:"ConsumerList,omitempty" type:"Repeated"`
-	Success      *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	Message      *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code         *int32                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	ConsumerList *GetConsumerListResponseBodyConsumerList `json:"ConsumerList,omitempty" xml:"ConsumerList,omitempty" type:"Struct"`
+	Success      *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetConsumerListResponseBody) String() string {
@@ -1824,7 +1851,7 @@ func (s *GetConsumerListResponseBody) SetCode(v int32) *GetConsumerListResponseB
 	return s
 }
 
-func (s *GetConsumerListResponseBody) SetConsumerList(v []*GetConsumerListResponseBodyConsumerList) *GetConsumerListResponseBody {
+func (s *GetConsumerListResponseBody) SetConsumerList(v *GetConsumerListResponseBodyConsumerList) *GetConsumerListResponseBody {
 	s.ConsumerList = v
 	return s
 }
@@ -1835,11 +1862,7 @@ func (s *GetConsumerListResponseBody) SetSuccess(v bool) *GetConsumerListRespons
 }
 
 type GetConsumerListResponseBodyConsumerList struct {
-	Remark     *string                                        `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	Tags       []*GetConsumerListResponseBodyConsumerListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	ConsumerId *string                                        `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
-	InstanceId *string                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ConsumerVO []*GetConsumerListResponseBodyConsumerListConsumerVO `json:"ConsumerVO,omitempty" xml:"ConsumerVO,omitempty" type:"Repeated"`
 }
 
 func (s GetConsumerListResponseBodyConsumerList) String() string {
@@ -1850,50 +1873,88 @@ func (s GetConsumerListResponseBodyConsumerList) GoString() string {
 	return s.String()
 }
 
-func (s *GetConsumerListResponseBodyConsumerList) SetRemark(v string) *GetConsumerListResponseBodyConsumerList {
+func (s *GetConsumerListResponseBodyConsumerList) SetConsumerVO(v []*GetConsumerListResponseBodyConsumerListConsumerVO) *GetConsumerListResponseBodyConsumerList {
+	s.ConsumerVO = v
+	return s
+}
+
+type GetConsumerListResponseBodyConsumerListConsumerVO struct {
+	Remark     *string                                                `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Tags       *GetConsumerListResponseBodyConsumerListConsumerVOTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	ConsumerId *string                                                `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
+	InstanceId *string                                                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string                                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetConsumerListResponseBodyConsumerListConsumerVO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConsumerListResponseBodyConsumerListConsumerVO) GoString() string {
+	return s.String()
+}
+
+func (s *GetConsumerListResponseBodyConsumerListConsumerVO) SetRemark(v string) *GetConsumerListResponseBodyConsumerListConsumerVO {
 	s.Remark = &v
 	return s
 }
 
-func (s *GetConsumerListResponseBodyConsumerList) SetTags(v []*GetConsumerListResponseBodyConsumerListTags) *GetConsumerListResponseBodyConsumerList {
+func (s *GetConsumerListResponseBodyConsumerListConsumerVO) SetTags(v *GetConsumerListResponseBodyConsumerListConsumerVOTags) *GetConsumerListResponseBodyConsumerListConsumerVO {
 	s.Tags = v
 	return s
 }
 
-func (s *GetConsumerListResponseBodyConsumerList) SetConsumerId(v string) *GetConsumerListResponseBodyConsumerList {
+func (s *GetConsumerListResponseBodyConsumerListConsumerVO) SetConsumerId(v string) *GetConsumerListResponseBodyConsumerListConsumerVO {
 	s.ConsumerId = &v
 	return s
 }
 
-func (s *GetConsumerListResponseBodyConsumerList) SetInstanceId(v string) *GetConsumerListResponseBodyConsumerList {
+func (s *GetConsumerListResponseBodyConsumerListConsumerVO) SetInstanceId(v string) *GetConsumerListResponseBodyConsumerListConsumerVO {
 	s.InstanceId = &v
 	return s
 }
 
-func (s *GetConsumerListResponseBodyConsumerList) SetRegionId(v string) *GetConsumerListResponseBodyConsumerList {
+func (s *GetConsumerListResponseBodyConsumerListConsumerVO) SetRegionId(v string) *GetConsumerListResponseBodyConsumerListConsumerVO {
 	s.RegionId = &v
 	return s
 }
 
-type GetConsumerListResponseBodyConsumerListTags struct {
+type GetConsumerListResponseBodyConsumerListConsumerVOTags struct {
+	TagVO []*GetConsumerListResponseBodyConsumerListConsumerVOTagsTagVO `json:"TagVO,omitempty" xml:"TagVO,omitempty" type:"Repeated"`
+}
+
+func (s GetConsumerListResponseBodyConsumerListConsumerVOTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConsumerListResponseBodyConsumerListConsumerVOTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetConsumerListResponseBodyConsumerListConsumerVOTags) SetTagVO(v []*GetConsumerListResponseBodyConsumerListConsumerVOTagsTagVO) *GetConsumerListResponseBodyConsumerListConsumerVOTags {
+	s.TagVO = v
+	return s
+}
+
+type GetConsumerListResponseBodyConsumerListConsumerVOTagsTagVO struct {
 	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
-func (s GetConsumerListResponseBodyConsumerListTags) String() string {
+func (s GetConsumerListResponseBodyConsumerListConsumerVOTagsTagVO) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetConsumerListResponseBodyConsumerListTags) GoString() string {
+func (s GetConsumerListResponseBodyConsumerListConsumerVOTagsTagVO) GoString() string {
 	return s.String()
 }
 
-func (s *GetConsumerListResponseBodyConsumerListTags) SetKey(v string) *GetConsumerListResponseBodyConsumerListTags {
+func (s *GetConsumerListResponseBodyConsumerListConsumerVOTagsTagVO) SetKey(v string) *GetConsumerListResponseBodyConsumerListConsumerVOTagsTagVO {
 	s.Key = &v
 	return s
 }
 
-func (s *GetConsumerListResponseBodyConsumerListTags) SetValue(v string) *GetConsumerListResponseBodyConsumerListTags {
+func (s *GetConsumerListResponseBodyConsumerListConsumerVOTagsTagVO) SetValue(v string) *GetConsumerListResponseBodyConsumerListConsumerVOTagsTagVO {
 	s.Value = &v
 	return s
 }
@@ -1992,9 +2053,9 @@ func (s *GetConsumerProgressResponseBody) SetSuccess(v bool) *GetConsumerProgres
 }
 
 type GetConsumerProgressResponseBodyConsumerProgress struct {
-	TopicList     []*GetConsumerProgressResponseBodyConsumerProgressTopicList `json:"TopicList,omitempty" xml:"TopicList,omitempty" type:"Repeated"`
-	LastTimestamp *int64                                                      `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
-	TotalDiff     *int64                                                      `json:"TotalDiff,omitempty" xml:"TotalDiff,omitempty"`
+	TopicList     *GetConsumerProgressResponseBodyConsumerProgressTopicList `json:"TopicList,omitempty" xml:"TopicList,omitempty" type:"Struct"`
+	LastTimestamp *int64                                                    `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
+	TotalDiff     *int64                                                    `json:"TotalDiff,omitempty" xml:"TotalDiff,omitempty"`
 }
 
 func (s GetConsumerProgressResponseBodyConsumerProgress) String() string {
@@ -2005,7 +2066,7 @@ func (s GetConsumerProgressResponseBodyConsumerProgress) GoString() string {
 	return s.String()
 }
 
-func (s *GetConsumerProgressResponseBodyConsumerProgress) SetTopicList(v []*GetConsumerProgressResponseBodyConsumerProgressTopicList) *GetConsumerProgressResponseBodyConsumerProgress {
+func (s *GetConsumerProgressResponseBodyConsumerProgress) SetTopicList(v *GetConsumerProgressResponseBodyConsumerProgressTopicList) *GetConsumerProgressResponseBodyConsumerProgress {
 	s.TopicList = v
 	return s
 }
@@ -2021,10 +2082,7 @@ func (s *GetConsumerProgressResponseBodyConsumerProgress) SetTotalDiff(v int64) 
 }
 
 type GetConsumerProgressResponseBodyConsumerProgressTopicList struct {
-	TotalDiff     *int64                                                                `json:"TotalDiff,omitempty" xml:"TotalDiff,omitempty"`
-	LastTimestamp *int64                                                                `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
-	Topic         *string                                                               `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	OffsetList    []*GetConsumerProgressResponseBodyConsumerProgressTopicListOffsetList `json:"OffsetList,omitempty" xml:"OffsetList,omitempty" type:"Repeated"`
+	TopicList []*GetConsumerProgressResponseBodyConsumerProgressTopicListTopicList `json:"TopicList,omitempty" xml:"TopicList,omitempty" type:"Repeated"`
 }
 
 func (s GetConsumerProgressResponseBodyConsumerProgressTopicList) String() string {
@@ -2035,57 +2093,94 @@ func (s GetConsumerProgressResponseBodyConsumerProgressTopicList) GoString() str
 	return s.String()
 }
 
-func (s *GetConsumerProgressResponseBodyConsumerProgressTopicList) SetTotalDiff(v int64) *GetConsumerProgressResponseBodyConsumerProgressTopicList {
+func (s *GetConsumerProgressResponseBodyConsumerProgressTopicList) SetTopicList(v []*GetConsumerProgressResponseBodyConsumerProgressTopicListTopicList) *GetConsumerProgressResponseBodyConsumerProgressTopicList {
+	s.TopicList = v
+	return s
+}
+
+type GetConsumerProgressResponseBodyConsumerProgressTopicListTopicList struct {
+	TotalDiff     *int64                                                                       `json:"TotalDiff,omitempty" xml:"TotalDiff,omitempty"`
+	LastTimestamp *int64                                                                       `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
+	Topic         *string                                                                      `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	OffsetList    *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetList `json:"OffsetList,omitempty" xml:"OffsetList,omitempty" type:"Struct"`
+}
+
+func (s GetConsumerProgressResponseBodyConsumerProgressTopicListTopicList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConsumerProgressResponseBodyConsumerProgressTopicListTopicList) GoString() string {
+	return s.String()
+}
+
+func (s *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicList) SetTotalDiff(v int64) *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicList {
 	s.TotalDiff = &v
 	return s
 }
 
-func (s *GetConsumerProgressResponseBodyConsumerProgressTopicList) SetLastTimestamp(v int64) *GetConsumerProgressResponseBodyConsumerProgressTopicList {
+func (s *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicList) SetLastTimestamp(v int64) *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicList {
 	s.LastTimestamp = &v
 	return s
 }
 
-func (s *GetConsumerProgressResponseBodyConsumerProgressTopicList) SetTopic(v string) *GetConsumerProgressResponseBodyConsumerProgressTopicList {
+func (s *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicList) SetTopic(v string) *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicList {
 	s.Topic = &v
 	return s
 }
 
-func (s *GetConsumerProgressResponseBodyConsumerProgressTopicList) SetOffsetList(v []*GetConsumerProgressResponseBodyConsumerProgressTopicListOffsetList) *GetConsumerProgressResponseBodyConsumerProgressTopicList {
+func (s *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicList) SetOffsetList(v *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetList) *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicList {
 	s.OffsetList = v
 	return s
 }
 
-type GetConsumerProgressResponseBodyConsumerProgressTopicListOffsetList struct {
+type GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetList struct {
+	OffsetList []*GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetListOffsetList `json:"OffsetList,omitempty" xml:"OffsetList,omitempty" type:"Repeated"`
+}
+
+func (s GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetList) GoString() string {
+	return s.String()
+}
+
+func (s *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetList) SetOffsetList(v []*GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetListOffsetList) *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetList {
+	s.OffsetList = v
+	return s
+}
+
+type GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetListOffsetList struct {
 	BrokerOffset   *int64 `json:"BrokerOffset,omitempty" xml:"BrokerOffset,omitempty"`
 	ConsumerOffset *int64 `json:"ConsumerOffset,omitempty" xml:"ConsumerOffset,omitempty"`
 	LastTimestamp  *int64 `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
 	Partition      *int32 `json:"Partition,omitempty" xml:"Partition,omitempty"`
 }
 
-func (s GetConsumerProgressResponseBodyConsumerProgressTopicListOffsetList) String() string {
+func (s GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetListOffsetList) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetConsumerProgressResponseBodyConsumerProgressTopicListOffsetList) GoString() string {
+func (s GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetListOffsetList) GoString() string {
 	return s.String()
 }
 
-func (s *GetConsumerProgressResponseBodyConsumerProgressTopicListOffsetList) SetBrokerOffset(v int64) *GetConsumerProgressResponseBodyConsumerProgressTopicListOffsetList {
+func (s *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetListOffsetList) SetBrokerOffset(v int64) *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetListOffsetList {
 	s.BrokerOffset = &v
 	return s
 }
 
-func (s *GetConsumerProgressResponseBodyConsumerProgressTopicListOffsetList) SetConsumerOffset(v int64) *GetConsumerProgressResponseBodyConsumerProgressTopicListOffsetList {
+func (s *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetListOffsetList) SetConsumerOffset(v int64) *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetListOffsetList {
 	s.ConsumerOffset = &v
 	return s
 }
 
-func (s *GetConsumerProgressResponseBodyConsumerProgressTopicListOffsetList) SetLastTimestamp(v int64) *GetConsumerProgressResponseBodyConsumerProgressTopicListOffsetList {
+func (s *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetListOffsetList) SetLastTimestamp(v int64) *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetListOffsetList {
 	s.LastTimestamp = &v
 	return s
 }
 
-func (s *GetConsumerProgressResponseBodyConsumerProgressTopicListOffsetList) SetPartition(v int32) *GetConsumerProgressResponseBodyConsumerProgressTopicListOffsetList {
+func (s *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetListOffsetList) SetPartition(v int32) *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetListOffsetList {
 	s.Partition = &v
 	return s
 }
@@ -2172,11 +2267,11 @@ func (s *GetInstanceListRequestTag) SetValue(v string) *GetInstanceListRequestTa
 }
 
 type GetInstanceListResponseBody struct {
-	Message      *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId    *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	InstanceList []*GetInstanceListResponseBodyInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
-	Code         *int32                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success      *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	Message      *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	InstanceList *GetInstanceListResponseBodyInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Struct"`
+	Code         *int32                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Success      *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetInstanceListResponseBody) String() string {
@@ -2197,7 +2292,7 @@ func (s *GetInstanceListResponseBody) SetRequestId(v string) *GetInstanceListRes
 	return s
 }
 
-func (s *GetInstanceListResponseBody) SetInstanceList(v []*GetInstanceListResponseBodyInstanceList) *GetInstanceListResponseBody {
+func (s *GetInstanceListResponseBody) SetInstanceList(v *GetInstanceListResponseBodyInstanceList) *GetInstanceListResponseBody {
 	s.InstanceList = v
 	return s
 }
@@ -2213,29 +2308,7 @@ func (s *GetInstanceListResponseBody) SetSuccess(v bool) *GetInstanceListRespons
 }
 
 type GetInstanceListResponseBodyInstanceList struct {
-	VpcId                    *string                                                            `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	UpgradeServiceDetailInfo []*GetInstanceListResponseBodyInstanceListUpgradeServiceDetailInfo `json:"UpgradeServiceDetailInfo,omitempty" xml:"UpgradeServiceDetailInfo,omitempty" type:"Repeated"`
-	SpecType                 *string                                                            `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
-	CreateTime               *int64                                                             `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DeployType               *int32                                                             `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
-	DiskSize                 *int32                                                             `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
-	Tags                     []*GetInstanceListResponseBodyInstanceListTags                     `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	DiskType                 *int32                                                             `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	InstanceId               *string                                                            `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	SslEndPoint              *string                                                            `json:"SslEndPoint,omitempty" xml:"SslEndPoint,omitempty"`
-	SecurityGroup            *string                                                            `json:"SecurityGroup,omitempty" xml:"SecurityGroup,omitempty"`
-	ServiceStatus            *int32                                                             `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
-	EipMax                   *int32                                                             `json:"EipMax,omitempty" xml:"EipMax,omitempty"`
-	RegionId                 *string                                                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	MsgRetain                *int32                                                             `json:"MsgRetain,omitempty" xml:"MsgRetain,omitempty"`
-	VSwitchId                *string                                                            `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	ExpiredTime              *int64                                                             `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	TopicNumLimit            *int32                                                             `json:"TopicNumLimit,omitempty" xml:"TopicNumLimit,omitempty"`
-	ZoneId                   *string                                                            `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	IoMax                    *int32                                                             `json:"IoMax,omitempty" xml:"IoMax,omitempty"`
-	PaidType                 *int32                                                             `json:"PaidType,omitempty" xml:"PaidType,omitempty"`
-	Name                     *string                                                            `json:"Name,omitempty" xml:"Name,omitempty"`
-	EndPoint                 *string                                                            `json:"EndPoint,omitempty" xml:"EndPoint,omitempty"`
+	InstanceVO []*GetInstanceListResponseBodyInstanceListInstanceVO `json:"InstanceVO,omitempty" xml:"InstanceVO,omitempty" type:"Repeated"`
 }
 
 func (s GetInstanceListResponseBodyInstanceList) String() string {
@@ -2246,158 +2319,220 @@ func (s GetInstanceListResponseBodyInstanceList) GoString() string {
 	return s.String()
 }
 
-func (s *GetInstanceListResponseBodyInstanceList) SetVpcId(v string) *GetInstanceListResponseBodyInstanceList {
+func (s *GetInstanceListResponseBodyInstanceList) SetInstanceVO(v []*GetInstanceListResponseBodyInstanceListInstanceVO) *GetInstanceListResponseBodyInstanceList {
+	s.InstanceVO = v
+	return s
+}
+
+type GetInstanceListResponseBodyInstanceListInstanceVO struct {
+	VpcId                    *string                                                                    `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	CreateTime               *int64                                                                     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DeployType               *int32                                                                     `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	Tags                     *GetInstanceListResponseBodyInstanceListInstanceVOTags                     `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	DiskType                 *int32                                                                     `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	SslEndPoint              *string                                                                    `json:"SslEndPoint,omitempty" xml:"SslEndPoint,omitempty"`
+	AllConfig                *string                                                                    `json:"AllConfig,omitempty" xml:"AllConfig,omitempty"`
+	PaidType                 *int32                                                                     `json:"PaidType,omitempty" xml:"PaidType,omitempty"`
+	Name                     *string                                                                    `json:"Name,omitempty" xml:"Name,omitempty"`
+	UpgradeServiceDetailInfo *GetInstanceListResponseBodyInstanceListInstanceVOUpgradeServiceDetailInfo `json:"UpgradeServiceDetailInfo,omitempty" xml:"UpgradeServiceDetailInfo,omitempty" type:"Struct"`
+	SpecType                 *string                                                                    `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
+	DiskSize                 *int32                                                                     `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	SecurityGroup            *string                                                                    `json:"SecurityGroup,omitempty" xml:"SecurityGroup,omitempty"`
+	InstanceId               *string                                                                    `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ServiceStatus            *int32                                                                     `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
+	EipMax                   *int32                                                                     `json:"EipMax,omitempty" xml:"EipMax,omitempty"`
+	RegionId                 *string                                                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	MsgRetain                *int32                                                                     `json:"MsgRetain,omitempty" xml:"MsgRetain,omitempty"`
+	VSwitchId                *string                                                                    `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ExpiredTime              *int64                                                                     `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	TopicNumLimit            *int32                                                                     `json:"TopicNumLimit,omitempty" xml:"TopicNumLimit,omitempty"`
+	ZoneId                   *string                                                                    `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	IoMax                    *int32                                                                     `json:"IoMax,omitempty" xml:"IoMax,omitempty"`
+	EndPoint                 *string                                                                    `json:"EndPoint,omitempty" xml:"EndPoint,omitempty"`
+}
+
+func (s GetInstanceListResponseBodyInstanceListInstanceVO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceListResponseBodyInstanceListInstanceVO) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetVpcId(v string) *GetInstanceListResponseBodyInstanceListInstanceVO {
 	s.VpcId = &v
 	return s
 }
 
-func (s *GetInstanceListResponseBodyInstanceList) SetUpgradeServiceDetailInfo(v []*GetInstanceListResponseBodyInstanceListUpgradeServiceDetailInfo) *GetInstanceListResponseBodyInstanceList {
-	s.UpgradeServiceDetailInfo = v
-	return s
-}
-
-func (s *GetInstanceListResponseBodyInstanceList) SetSpecType(v string) *GetInstanceListResponseBodyInstanceList {
-	s.SpecType = &v
-	return s
-}
-
-func (s *GetInstanceListResponseBodyInstanceList) SetCreateTime(v int64) *GetInstanceListResponseBodyInstanceList {
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetCreateTime(v int64) *GetInstanceListResponseBodyInstanceListInstanceVO {
 	s.CreateTime = &v
 	return s
 }
 
-func (s *GetInstanceListResponseBodyInstanceList) SetDeployType(v int32) *GetInstanceListResponseBodyInstanceList {
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetDeployType(v int32) *GetInstanceListResponseBodyInstanceListInstanceVO {
 	s.DeployType = &v
 	return s
 }
 
-func (s *GetInstanceListResponseBodyInstanceList) SetDiskSize(v int32) *GetInstanceListResponseBodyInstanceList {
-	s.DiskSize = &v
-	return s
-}
-
-func (s *GetInstanceListResponseBodyInstanceList) SetTags(v []*GetInstanceListResponseBodyInstanceListTags) *GetInstanceListResponseBodyInstanceList {
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetTags(v *GetInstanceListResponseBodyInstanceListInstanceVOTags) *GetInstanceListResponseBodyInstanceListInstanceVO {
 	s.Tags = v
 	return s
 }
 
-func (s *GetInstanceListResponseBodyInstanceList) SetDiskType(v int32) *GetInstanceListResponseBodyInstanceList {
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetDiskType(v int32) *GetInstanceListResponseBodyInstanceListInstanceVO {
 	s.DiskType = &v
 	return s
 }
 
-func (s *GetInstanceListResponseBodyInstanceList) SetInstanceId(v string) *GetInstanceListResponseBodyInstanceList {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *GetInstanceListResponseBodyInstanceList) SetSslEndPoint(v string) *GetInstanceListResponseBodyInstanceList {
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetSslEndPoint(v string) *GetInstanceListResponseBodyInstanceListInstanceVO {
 	s.SslEndPoint = &v
 	return s
 }
 
-func (s *GetInstanceListResponseBodyInstanceList) SetSecurityGroup(v string) *GetInstanceListResponseBodyInstanceList {
-	s.SecurityGroup = &v
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetAllConfig(v string) *GetInstanceListResponseBodyInstanceListInstanceVO {
+	s.AllConfig = &v
 	return s
 }
 
-func (s *GetInstanceListResponseBodyInstanceList) SetServiceStatus(v int32) *GetInstanceListResponseBodyInstanceList {
-	s.ServiceStatus = &v
-	return s
-}
-
-func (s *GetInstanceListResponseBodyInstanceList) SetEipMax(v int32) *GetInstanceListResponseBodyInstanceList {
-	s.EipMax = &v
-	return s
-}
-
-func (s *GetInstanceListResponseBodyInstanceList) SetRegionId(v string) *GetInstanceListResponseBodyInstanceList {
-	s.RegionId = &v
-	return s
-}
-
-func (s *GetInstanceListResponseBodyInstanceList) SetMsgRetain(v int32) *GetInstanceListResponseBodyInstanceList {
-	s.MsgRetain = &v
-	return s
-}
-
-func (s *GetInstanceListResponseBodyInstanceList) SetVSwitchId(v string) *GetInstanceListResponseBodyInstanceList {
-	s.VSwitchId = &v
-	return s
-}
-
-func (s *GetInstanceListResponseBodyInstanceList) SetExpiredTime(v int64) *GetInstanceListResponseBodyInstanceList {
-	s.ExpiredTime = &v
-	return s
-}
-
-func (s *GetInstanceListResponseBodyInstanceList) SetTopicNumLimit(v int32) *GetInstanceListResponseBodyInstanceList {
-	s.TopicNumLimit = &v
-	return s
-}
-
-func (s *GetInstanceListResponseBodyInstanceList) SetZoneId(v string) *GetInstanceListResponseBodyInstanceList {
-	s.ZoneId = &v
-	return s
-}
-
-func (s *GetInstanceListResponseBodyInstanceList) SetIoMax(v int32) *GetInstanceListResponseBodyInstanceList {
-	s.IoMax = &v
-	return s
-}
-
-func (s *GetInstanceListResponseBodyInstanceList) SetPaidType(v int32) *GetInstanceListResponseBodyInstanceList {
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetPaidType(v int32) *GetInstanceListResponseBodyInstanceListInstanceVO {
 	s.PaidType = &v
 	return s
 }
 
-func (s *GetInstanceListResponseBodyInstanceList) SetName(v string) *GetInstanceListResponseBodyInstanceList {
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetName(v string) *GetInstanceListResponseBodyInstanceListInstanceVO {
 	s.Name = &v
 	return s
 }
 
-func (s *GetInstanceListResponseBodyInstanceList) SetEndPoint(v string) *GetInstanceListResponseBodyInstanceList {
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetUpgradeServiceDetailInfo(v *GetInstanceListResponseBodyInstanceListInstanceVOUpgradeServiceDetailInfo) *GetInstanceListResponseBodyInstanceListInstanceVO {
+	s.UpgradeServiceDetailInfo = v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetSpecType(v string) *GetInstanceListResponseBodyInstanceListInstanceVO {
+	s.SpecType = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetDiskSize(v int32) *GetInstanceListResponseBodyInstanceListInstanceVO {
+	s.DiskSize = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetSecurityGroup(v string) *GetInstanceListResponseBodyInstanceListInstanceVO {
+	s.SecurityGroup = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetInstanceId(v string) *GetInstanceListResponseBodyInstanceListInstanceVO {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetServiceStatus(v int32) *GetInstanceListResponseBodyInstanceListInstanceVO {
+	s.ServiceStatus = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetEipMax(v int32) *GetInstanceListResponseBodyInstanceListInstanceVO {
+	s.EipMax = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetRegionId(v string) *GetInstanceListResponseBodyInstanceListInstanceVO {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetMsgRetain(v int32) *GetInstanceListResponseBodyInstanceListInstanceVO {
+	s.MsgRetain = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetVSwitchId(v string) *GetInstanceListResponseBodyInstanceListInstanceVO {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetExpiredTime(v int64) *GetInstanceListResponseBodyInstanceListInstanceVO {
+	s.ExpiredTime = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetTopicNumLimit(v int32) *GetInstanceListResponseBodyInstanceListInstanceVO {
+	s.TopicNumLimit = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetZoneId(v string) *GetInstanceListResponseBodyInstanceListInstanceVO {
+	s.ZoneId = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetIoMax(v int32) *GetInstanceListResponseBodyInstanceListInstanceVO {
+	s.IoMax = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetEndPoint(v string) *GetInstanceListResponseBodyInstanceListInstanceVO {
 	s.EndPoint = &v
 	return s
 }
 
-type GetInstanceListResponseBodyInstanceListUpgradeServiceDetailInfo struct {
-	Current2OpenSourceVersion *string `json:"Current2OpenSourceVersion,omitempty" xml:"Current2OpenSourceVersion,omitempty"`
+type GetInstanceListResponseBodyInstanceListInstanceVOTags struct {
+	TagVO []*GetInstanceListResponseBodyInstanceListInstanceVOTagsTagVO `json:"TagVO,omitempty" xml:"TagVO,omitempty" type:"Repeated"`
 }
 
-func (s GetInstanceListResponseBodyInstanceListUpgradeServiceDetailInfo) String() string {
+func (s GetInstanceListResponseBodyInstanceListInstanceVOTags) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetInstanceListResponseBodyInstanceListUpgradeServiceDetailInfo) GoString() string {
+func (s GetInstanceListResponseBodyInstanceListInstanceVOTags) GoString() string {
 	return s.String()
 }
 
-func (s *GetInstanceListResponseBodyInstanceListUpgradeServiceDetailInfo) SetCurrent2OpenSourceVersion(v string) *GetInstanceListResponseBodyInstanceListUpgradeServiceDetailInfo {
-	s.Current2OpenSourceVersion = &v
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOTags) SetTagVO(v []*GetInstanceListResponseBodyInstanceListInstanceVOTagsTagVO) *GetInstanceListResponseBodyInstanceListInstanceVOTags {
+	s.TagVO = v
 	return s
 }
 
-type GetInstanceListResponseBodyInstanceListTags struct {
+type GetInstanceListResponseBodyInstanceListInstanceVOTagsTagVO struct {
 	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
-func (s GetInstanceListResponseBodyInstanceListTags) String() string {
+func (s GetInstanceListResponseBodyInstanceListInstanceVOTagsTagVO) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetInstanceListResponseBodyInstanceListTags) GoString() string {
+func (s GetInstanceListResponseBodyInstanceListInstanceVOTagsTagVO) GoString() string {
 	return s.String()
 }
 
-func (s *GetInstanceListResponseBodyInstanceListTags) SetKey(v string) *GetInstanceListResponseBodyInstanceListTags {
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOTagsTagVO) SetKey(v string) *GetInstanceListResponseBodyInstanceListInstanceVOTagsTagVO {
 	s.Key = &v
 	return s
 }
 
-func (s *GetInstanceListResponseBodyInstanceListTags) SetValue(v string) *GetInstanceListResponseBodyInstanceListTags {
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOTagsTagVO) SetValue(v string) *GetInstanceListResponseBodyInstanceListInstanceVOTagsTagVO {
 	s.Value = &v
+	return s
+}
+
+type GetInstanceListResponseBodyInstanceListInstanceVOUpgradeServiceDetailInfo struct {
+	Current2OpenSourceVersion *string `json:"Current2OpenSourceVersion,omitempty" xml:"Current2OpenSourceVersion,omitempty"`
+}
+
+func (s GetInstanceListResponseBodyInstanceListInstanceVOUpgradeServiceDetailInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceListResponseBodyInstanceListInstanceVOUpgradeServiceDetailInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOUpgradeServiceDetailInfo) SetCurrent2OpenSourceVersion(v string) *GetInstanceListResponseBodyInstanceListInstanceVOUpgradeServiceDetailInfo {
+	s.Current2OpenSourceVersion = &v
 	return s
 }
 
@@ -2489,9 +2624,9 @@ func (s *GetMetaProductListResponseBody) SetSuccess(v bool) *GetMetaProductListR
 }
 
 type GetMetaProductListResponseBodyMetaData struct {
-	ProductsNormal       []*GetMetaProductListResponseBodyMetaDataProductsNormal       `json:"ProductsNormal,omitempty" xml:"ProductsNormal,omitempty" type:"Repeated"`
-	ProductsProfessional []*GetMetaProductListResponseBodyMetaDataProductsProfessional `json:"ProductsProfessional,omitempty" xml:"ProductsProfessional,omitempty" type:"Repeated"`
-	Names                map[string]interface{}                                        `json:"Names,omitempty" xml:"Names,omitempty"`
+	ProductsNormal       *GetMetaProductListResponseBodyMetaDataProductsNormal       `json:"ProductsNormal,omitempty" xml:"ProductsNormal,omitempty" type:"Struct"`
+	ProductsProfessional *GetMetaProductListResponseBodyMetaDataProductsProfessional `json:"ProductsProfessional,omitempty" xml:"ProductsProfessional,omitempty" type:"Struct"`
+	Names                map[string]interface{}                                      `json:"Names,omitempty" xml:"Names,omitempty"`
 }
 
 func (s GetMetaProductListResponseBodyMetaData) String() string {
@@ -2502,12 +2637,12 @@ func (s GetMetaProductListResponseBodyMetaData) GoString() string {
 	return s.String()
 }
 
-func (s *GetMetaProductListResponseBodyMetaData) SetProductsNormal(v []*GetMetaProductListResponseBodyMetaDataProductsNormal) *GetMetaProductListResponseBodyMetaData {
+func (s *GetMetaProductListResponseBodyMetaData) SetProductsNormal(v *GetMetaProductListResponseBodyMetaDataProductsNormal) *GetMetaProductListResponseBodyMetaData {
 	s.ProductsNormal = v
 	return s
 }
 
-func (s *GetMetaProductListResponseBodyMetaData) SetProductsProfessional(v []*GetMetaProductListResponseBodyMetaDataProductsProfessional) *GetMetaProductListResponseBodyMetaData {
+func (s *GetMetaProductListResponseBodyMetaData) SetProductsProfessional(v *GetMetaProductListResponseBodyMetaDataProductsProfessional) *GetMetaProductListResponseBodyMetaData {
 	s.ProductsProfessional = v
 	return s
 }
@@ -2518,13 +2653,7 @@ func (s *GetMetaProductListResponseBodyMetaData) SetNames(v map[string]interface
 }
 
 type GetMetaProductListResponseBodyMetaDataProductsNormal struct {
-	TopicQuota *string `json:"TopicQuota,omitempty" xml:"TopicQuota,omitempty"`
-	SpecType   *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
-	DeployType *string `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
-	DiskSize   *string `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
-	IoMax      *int64  `json:"IoMax,omitempty" xml:"IoMax,omitempty"`
-	DiskType   *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SpecVO []*GetMetaProductListResponseBodyMetaDataProductsNormalSpecVO `json:"SpecVO,omitempty" xml:"SpecVO,omitempty" type:"Repeated"`
 }
 
 func (s GetMetaProductListResponseBodyMetaDataProductsNormal) String() string {
@@ -2535,49 +2664,66 @@ func (s GetMetaProductListResponseBodyMetaDataProductsNormal) GoString() string 
 	return s.String()
 }
 
-func (s *GetMetaProductListResponseBodyMetaDataProductsNormal) SetTopicQuota(v string) *GetMetaProductListResponseBodyMetaDataProductsNormal {
+func (s *GetMetaProductListResponseBodyMetaDataProductsNormal) SetSpecVO(v []*GetMetaProductListResponseBodyMetaDataProductsNormalSpecVO) *GetMetaProductListResponseBodyMetaDataProductsNormal {
+	s.SpecVO = v
+	return s
+}
+
+type GetMetaProductListResponseBodyMetaDataProductsNormalSpecVO struct {
+	TopicQuota *string `json:"TopicQuota,omitempty" xml:"TopicQuota,omitempty"`
+	SpecType   *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
+	DeployType *string `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	DiskSize   *string `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	IoMax      *int64  `json:"IoMax,omitempty" xml:"IoMax,omitempty"`
+	DiskType   *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetMetaProductListResponseBodyMetaDataProductsNormalSpecVO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMetaProductListResponseBodyMetaDataProductsNormalSpecVO) GoString() string {
+	return s.String()
+}
+
+func (s *GetMetaProductListResponseBodyMetaDataProductsNormalSpecVO) SetTopicQuota(v string) *GetMetaProductListResponseBodyMetaDataProductsNormalSpecVO {
 	s.TopicQuota = &v
 	return s
 }
 
-func (s *GetMetaProductListResponseBodyMetaDataProductsNormal) SetSpecType(v string) *GetMetaProductListResponseBodyMetaDataProductsNormal {
+func (s *GetMetaProductListResponseBodyMetaDataProductsNormalSpecVO) SetSpecType(v string) *GetMetaProductListResponseBodyMetaDataProductsNormalSpecVO {
 	s.SpecType = &v
 	return s
 }
 
-func (s *GetMetaProductListResponseBodyMetaDataProductsNormal) SetDeployType(v string) *GetMetaProductListResponseBodyMetaDataProductsNormal {
+func (s *GetMetaProductListResponseBodyMetaDataProductsNormalSpecVO) SetDeployType(v string) *GetMetaProductListResponseBodyMetaDataProductsNormalSpecVO {
 	s.DeployType = &v
 	return s
 }
 
-func (s *GetMetaProductListResponseBodyMetaDataProductsNormal) SetDiskSize(v string) *GetMetaProductListResponseBodyMetaDataProductsNormal {
+func (s *GetMetaProductListResponseBodyMetaDataProductsNormalSpecVO) SetDiskSize(v string) *GetMetaProductListResponseBodyMetaDataProductsNormalSpecVO {
 	s.DiskSize = &v
 	return s
 }
 
-func (s *GetMetaProductListResponseBodyMetaDataProductsNormal) SetIoMax(v int64) *GetMetaProductListResponseBodyMetaDataProductsNormal {
+func (s *GetMetaProductListResponseBodyMetaDataProductsNormalSpecVO) SetIoMax(v int64) *GetMetaProductListResponseBodyMetaDataProductsNormalSpecVO {
 	s.IoMax = &v
 	return s
 }
 
-func (s *GetMetaProductListResponseBodyMetaDataProductsNormal) SetDiskType(v string) *GetMetaProductListResponseBodyMetaDataProductsNormal {
+func (s *GetMetaProductListResponseBodyMetaDataProductsNormalSpecVO) SetDiskType(v string) *GetMetaProductListResponseBodyMetaDataProductsNormalSpecVO {
 	s.DiskType = &v
 	return s
 }
 
-func (s *GetMetaProductListResponseBodyMetaDataProductsNormal) SetRegionId(v string) *GetMetaProductListResponseBodyMetaDataProductsNormal {
+func (s *GetMetaProductListResponseBodyMetaDataProductsNormalSpecVO) SetRegionId(v string) *GetMetaProductListResponseBodyMetaDataProductsNormalSpecVO {
 	s.RegionId = &v
 	return s
 }
 
 type GetMetaProductListResponseBodyMetaDataProductsProfessional struct {
-	TopicQuota *string `json:"TopicQuota,omitempty" xml:"TopicQuota,omitempty"`
-	SpecType   *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
-	DeployType *string `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
-	DiskSize   *string `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
-	IoMax      *int32  `json:"IoMax,omitempty" xml:"IoMax,omitempty"`
-	DiskType   *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SpecVO []*GetMetaProductListResponseBodyMetaDataProductsProfessionalSpecVO `json:"SpecVO,omitempty" xml:"SpecVO,omitempty" type:"Repeated"`
 }
 
 func (s GetMetaProductListResponseBodyMetaDataProductsProfessional) String() string {
@@ -2588,37 +2734,60 @@ func (s GetMetaProductListResponseBodyMetaDataProductsProfessional) GoString() s
 	return s.String()
 }
 
-func (s *GetMetaProductListResponseBodyMetaDataProductsProfessional) SetTopicQuota(v string) *GetMetaProductListResponseBodyMetaDataProductsProfessional {
+func (s *GetMetaProductListResponseBodyMetaDataProductsProfessional) SetSpecVO(v []*GetMetaProductListResponseBodyMetaDataProductsProfessionalSpecVO) *GetMetaProductListResponseBodyMetaDataProductsProfessional {
+	s.SpecVO = v
+	return s
+}
+
+type GetMetaProductListResponseBodyMetaDataProductsProfessionalSpecVO struct {
+	TopicQuota *string `json:"TopicQuota,omitempty" xml:"TopicQuota,omitempty"`
+	SpecType   *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
+	DeployType *string `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	DiskSize   *string `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	IoMax      *int32  `json:"IoMax,omitempty" xml:"IoMax,omitempty"`
+	DiskType   *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetMetaProductListResponseBodyMetaDataProductsProfessionalSpecVO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMetaProductListResponseBodyMetaDataProductsProfessionalSpecVO) GoString() string {
+	return s.String()
+}
+
+func (s *GetMetaProductListResponseBodyMetaDataProductsProfessionalSpecVO) SetTopicQuota(v string) *GetMetaProductListResponseBodyMetaDataProductsProfessionalSpecVO {
 	s.TopicQuota = &v
 	return s
 }
 
-func (s *GetMetaProductListResponseBodyMetaDataProductsProfessional) SetSpecType(v string) *GetMetaProductListResponseBodyMetaDataProductsProfessional {
+func (s *GetMetaProductListResponseBodyMetaDataProductsProfessionalSpecVO) SetSpecType(v string) *GetMetaProductListResponseBodyMetaDataProductsProfessionalSpecVO {
 	s.SpecType = &v
 	return s
 }
 
-func (s *GetMetaProductListResponseBodyMetaDataProductsProfessional) SetDeployType(v string) *GetMetaProductListResponseBodyMetaDataProductsProfessional {
+func (s *GetMetaProductListResponseBodyMetaDataProductsProfessionalSpecVO) SetDeployType(v string) *GetMetaProductListResponseBodyMetaDataProductsProfessionalSpecVO {
 	s.DeployType = &v
 	return s
 }
 
-func (s *GetMetaProductListResponseBodyMetaDataProductsProfessional) SetDiskSize(v string) *GetMetaProductListResponseBodyMetaDataProductsProfessional {
+func (s *GetMetaProductListResponseBodyMetaDataProductsProfessionalSpecVO) SetDiskSize(v string) *GetMetaProductListResponseBodyMetaDataProductsProfessionalSpecVO {
 	s.DiskSize = &v
 	return s
 }
 
-func (s *GetMetaProductListResponseBodyMetaDataProductsProfessional) SetIoMax(v int32) *GetMetaProductListResponseBodyMetaDataProductsProfessional {
+func (s *GetMetaProductListResponseBodyMetaDataProductsProfessionalSpecVO) SetIoMax(v int32) *GetMetaProductListResponseBodyMetaDataProductsProfessionalSpecVO {
 	s.IoMax = &v
 	return s
 }
 
-func (s *GetMetaProductListResponseBodyMetaDataProductsProfessional) SetDiskType(v string) *GetMetaProductListResponseBodyMetaDataProductsProfessional {
+func (s *GetMetaProductListResponseBodyMetaDataProductsProfessionalSpecVO) SetDiskType(v string) *GetMetaProductListResponseBodyMetaDataProductsProfessionalSpecVO {
 	s.DiskType = &v
 	return s
 }
 
-func (s *GetMetaProductListResponseBodyMetaDataProductsProfessional) SetRegionId(v string) *GetMetaProductListResponseBodyMetaDataProductsProfessional {
+func (s *GetMetaProductListResponseBodyMetaDataProductsProfessionalSpecVO) SetRegionId(v string) *GetMetaProductListResponseBodyMetaDataProductsProfessionalSpecVO {
 	s.RegionId = &v
 	return s
 }
@@ -2682,14 +2851,14 @@ func (s *GetTopicListRequest) SetRegionId(v string) *GetTopicListRequest {
 }
 
 type GetTopicListResponseBody struct {
-	RequestId   *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Message     *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageSize    *int32                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	CurrentPage *int32                               `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Total       *int32                               `json:"Total,omitempty" xml:"Total,omitempty"`
-	TopicList   []*GetTopicListResponseBodyTopicList `json:"TopicList,omitempty" xml:"TopicList,omitempty" type:"Repeated"`
-	Code        *int32                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success     *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId   *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Message     *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageSize    *int32                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	CurrentPage *int32                             `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Total       *int32                             `json:"Total,omitempty" xml:"Total,omitempty"`
+	TopicList   *GetTopicListResponseBodyTopicList `json:"TopicList,omitempty" xml:"TopicList,omitempty" type:"Struct"`
+	Code        *int32                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Success     *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetTopicListResponseBody) String() string {
@@ -2725,7 +2894,7 @@ func (s *GetTopicListResponseBody) SetTotal(v int32) *GetTopicListResponseBody {
 	return s
 }
 
-func (s *GetTopicListResponseBody) SetTopicList(v []*GetTopicListResponseBodyTopicList) *GetTopicListResponseBody {
+func (s *GetTopicListResponseBody) SetTopicList(v *GetTopicListResponseBodyTopicList) *GetTopicListResponseBody {
 	s.TopicList = v
 	return s
 }
@@ -2741,14 +2910,7 @@ func (s *GetTopicListResponseBody) SetSuccess(v bool) *GetTopicListResponseBody 
 }
 
 type GetTopicListResponseBodyTopicList struct {
-	Status     *int32                                   `json:"Status,omitempty" xml:"Status,omitempty"`
-	Remark     *string                                  `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	CreateTime *int64                                   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Topic      *string                                  `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	StatusName *string                                  `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
-	Tags       []*GetTopicListResponseBodyTopicListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	InstanceId *string                                  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TopicVO []*GetTopicListResponseBodyTopicListTopicVO `json:"TopicVO,omitempty" xml:"TopicVO,omitempty" type:"Repeated"`
 }
 
 func (s GetTopicListResponseBodyTopicList) String() string {
@@ -2759,65 +2921,106 @@ func (s GetTopicListResponseBodyTopicList) GoString() string {
 	return s.String()
 }
 
-func (s *GetTopicListResponseBodyTopicList) SetStatus(v int32) *GetTopicListResponseBodyTopicList {
+func (s *GetTopicListResponseBodyTopicList) SetTopicVO(v []*GetTopicListResponseBodyTopicListTopicVO) *GetTopicListResponseBodyTopicList {
+	s.TopicVO = v
+	return s
+}
+
+type GetTopicListResponseBodyTopicListTopicVO struct {
+	Status     *int32                                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	Remark     *string                                       `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	CreateTime *int64                                        `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Topic      *string                                       `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	StatusName *string                                       `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
+	Tags       *GetTopicListResponseBodyTopicListTopicVOTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	InstanceId *string                                       `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string                                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetTopicListResponseBodyTopicListTopicVO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTopicListResponseBodyTopicListTopicVO) GoString() string {
+	return s.String()
+}
+
+func (s *GetTopicListResponseBodyTopicListTopicVO) SetStatus(v int32) *GetTopicListResponseBodyTopicListTopicVO {
 	s.Status = &v
 	return s
 }
 
-func (s *GetTopicListResponseBodyTopicList) SetRemark(v string) *GetTopicListResponseBodyTopicList {
+func (s *GetTopicListResponseBodyTopicListTopicVO) SetRemark(v string) *GetTopicListResponseBodyTopicListTopicVO {
 	s.Remark = &v
 	return s
 }
 
-func (s *GetTopicListResponseBodyTopicList) SetCreateTime(v int64) *GetTopicListResponseBodyTopicList {
+func (s *GetTopicListResponseBodyTopicListTopicVO) SetCreateTime(v int64) *GetTopicListResponseBodyTopicListTopicVO {
 	s.CreateTime = &v
 	return s
 }
 
-func (s *GetTopicListResponseBodyTopicList) SetTopic(v string) *GetTopicListResponseBodyTopicList {
+func (s *GetTopicListResponseBodyTopicListTopicVO) SetTopic(v string) *GetTopicListResponseBodyTopicListTopicVO {
 	s.Topic = &v
 	return s
 }
 
-func (s *GetTopicListResponseBodyTopicList) SetStatusName(v string) *GetTopicListResponseBodyTopicList {
+func (s *GetTopicListResponseBodyTopicListTopicVO) SetStatusName(v string) *GetTopicListResponseBodyTopicListTopicVO {
 	s.StatusName = &v
 	return s
 }
 
-func (s *GetTopicListResponseBodyTopicList) SetTags(v []*GetTopicListResponseBodyTopicListTags) *GetTopicListResponseBodyTopicList {
+func (s *GetTopicListResponseBodyTopicListTopicVO) SetTags(v *GetTopicListResponseBodyTopicListTopicVOTags) *GetTopicListResponseBodyTopicListTopicVO {
 	s.Tags = v
 	return s
 }
 
-func (s *GetTopicListResponseBodyTopicList) SetInstanceId(v string) *GetTopicListResponseBodyTopicList {
+func (s *GetTopicListResponseBodyTopicListTopicVO) SetInstanceId(v string) *GetTopicListResponseBodyTopicListTopicVO {
 	s.InstanceId = &v
 	return s
 }
 
-func (s *GetTopicListResponseBodyTopicList) SetRegionId(v string) *GetTopicListResponseBodyTopicList {
+func (s *GetTopicListResponseBodyTopicListTopicVO) SetRegionId(v string) *GetTopicListResponseBodyTopicListTopicVO {
 	s.RegionId = &v
 	return s
 }
 
-type GetTopicListResponseBodyTopicListTags struct {
+type GetTopicListResponseBodyTopicListTopicVOTags struct {
+	TagVO []*GetTopicListResponseBodyTopicListTopicVOTagsTagVO `json:"TagVO,omitempty" xml:"TagVO,omitempty" type:"Repeated"`
+}
+
+func (s GetTopicListResponseBodyTopicListTopicVOTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTopicListResponseBodyTopicListTopicVOTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetTopicListResponseBodyTopicListTopicVOTags) SetTagVO(v []*GetTopicListResponseBodyTopicListTopicVOTagsTagVO) *GetTopicListResponseBodyTopicListTopicVOTags {
+	s.TagVO = v
+	return s
+}
+
+type GetTopicListResponseBodyTopicListTopicVOTagsTagVO struct {
 	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
-func (s GetTopicListResponseBodyTopicListTags) String() string {
+func (s GetTopicListResponseBodyTopicListTopicVOTagsTagVO) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetTopicListResponseBodyTopicListTags) GoString() string {
+func (s GetTopicListResponseBodyTopicListTopicVOTagsTagVO) GoString() string {
 	return s.String()
 }
 
-func (s *GetTopicListResponseBodyTopicListTags) SetKey(v string) *GetTopicListResponseBodyTopicListTags {
+func (s *GetTopicListResponseBodyTopicListTopicVOTagsTagVO) SetKey(v string) *GetTopicListResponseBodyTopicListTopicVOTagsTagVO {
 	s.Key = &v
 	return s
 }
 
-func (s *GetTopicListResponseBodyTopicListTags) SetValue(v string) *GetTopicListResponseBodyTopicListTags {
+func (s *GetTopicListResponseBodyTopicListTopicVOTagsTagVO) SetValue(v string) *GetTopicListResponseBodyTopicListTopicVOTagsTagVO {
 	s.Value = &v
 	return s
 }
@@ -2916,9 +3119,9 @@ func (s *GetTopicStatusResponseBody) SetSuccess(v bool) *GetTopicStatusResponseB
 }
 
 type GetTopicStatusResponseBodyTopicStatus struct {
-	LastTimeStamp *int64                                              `json:"LastTimeStamp,omitempty" xml:"LastTimeStamp,omitempty"`
-	TotalCount    *int64                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	OffsetTable   []*GetTopicStatusResponseBodyTopicStatusOffsetTable `json:"OffsetTable,omitempty" xml:"OffsetTable,omitempty" type:"Repeated"`
+	LastTimeStamp *int64                                            `json:"LastTimeStamp,omitempty" xml:"LastTimeStamp,omitempty"`
+	TotalCount    *int64                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	OffsetTable   *GetTopicStatusResponseBodyTopicStatusOffsetTable `json:"OffsetTable,omitempty" xml:"OffsetTable,omitempty" type:"Struct"`
 }
 
 func (s GetTopicStatusResponseBodyTopicStatus) String() string {
@@ -2939,17 +3142,13 @@ func (s *GetTopicStatusResponseBodyTopicStatus) SetTotalCount(v int64) *GetTopic
 	return s
 }
 
-func (s *GetTopicStatusResponseBodyTopicStatus) SetOffsetTable(v []*GetTopicStatusResponseBodyTopicStatusOffsetTable) *GetTopicStatusResponseBodyTopicStatus {
+func (s *GetTopicStatusResponseBodyTopicStatus) SetOffsetTable(v *GetTopicStatusResponseBodyTopicStatusOffsetTable) *GetTopicStatusResponseBodyTopicStatus {
 	s.OffsetTable = v
 	return s
 }
 
 type GetTopicStatusResponseBodyTopicStatusOffsetTable struct {
-	MinOffset           *int64  `json:"MinOffset,omitempty" xml:"MinOffset,omitempty"`
-	Topic               *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	Partition           *int32  `json:"Partition,omitempty" xml:"Partition,omitempty"`
-	LastUpdateTimestamp *int64  `json:"LastUpdateTimestamp,omitempty" xml:"LastUpdateTimestamp,omitempty"`
-	MaxOffset           *int64  `json:"MaxOffset,omitempty" xml:"MaxOffset,omitempty"`
+	OffsetTable []*GetTopicStatusResponseBodyTopicStatusOffsetTableOffsetTable `json:"OffsetTable,omitempty" xml:"OffsetTable,omitempty" type:"Repeated"`
 }
 
 func (s GetTopicStatusResponseBodyTopicStatusOffsetTable) String() string {
@@ -2960,27 +3159,48 @@ func (s GetTopicStatusResponseBodyTopicStatusOffsetTable) GoString() string {
 	return s.String()
 }
 
-func (s *GetTopicStatusResponseBodyTopicStatusOffsetTable) SetMinOffset(v int64) *GetTopicStatusResponseBodyTopicStatusOffsetTable {
+func (s *GetTopicStatusResponseBodyTopicStatusOffsetTable) SetOffsetTable(v []*GetTopicStatusResponseBodyTopicStatusOffsetTableOffsetTable) *GetTopicStatusResponseBodyTopicStatusOffsetTable {
+	s.OffsetTable = v
+	return s
+}
+
+type GetTopicStatusResponseBodyTopicStatusOffsetTableOffsetTable struct {
+	MinOffset           *int64  `json:"MinOffset,omitempty" xml:"MinOffset,omitempty"`
+	Topic               *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	Partition           *int32  `json:"Partition,omitempty" xml:"Partition,omitempty"`
+	LastUpdateTimestamp *int64  `json:"LastUpdateTimestamp,omitempty" xml:"LastUpdateTimestamp,omitempty"`
+	MaxOffset           *int64  `json:"MaxOffset,omitempty" xml:"MaxOffset,omitempty"`
+}
+
+func (s GetTopicStatusResponseBodyTopicStatusOffsetTableOffsetTable) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTopicStatusResponseBodyTopicStatusOffsetTableOffsetTable) GoString() string {
+	return s.String()
+}
+
+func (s *GetTopicStatusResponseBodyTopicStatusOffsetTableOffsetTable) SetMinOffset(v int64) *GetTopicStatusResponseBodyTopicStatusOffsetTableOffsetTable {
 	s.MinOffset = &v
 	return s
 }
 
-func (s *GetTopicStatusResponseBodyTopicStatusOffsetTable) SetTopic(v string) *GetTopicStatusResponseBodyTopicStatusOffsetTable {
+func (s *GetTopicStatusResponseBodyTopicStatusOffsetTableOffsetTable) SetTopic(v string) *GetTopicStatusResponseBodyTopicStatusOffsetTableOffsetTable {
 	s.Topic = &v
 	return s
 }
 
-func (s *GetTopicStatusResponseBodyTopicStatusOffsetTable) SetPartition(v int32) *GetTopicStatusResponseBodyTopicStatusOffsetTable {
+func (s *GetTopicStatusResponseBodyTopicStatusOffsetTableOffsetTable) SetPartition(v int32) *GetTopicStatusResponseBodyTopicStatusOffsetTableOffsetTable {
 	s.Partition = &v
 	return s
 }
 
-func (s *GetTopicStatusResponseBodyTopicStatusOffsetTable) SetLastUpdateTimestamp(v int64) *GetTopicStatusResponseBodyTopicStatusOffsetTable {
+func (s *GetTopicStatusResponseBodyTopicStatusOffsetTableOffsetTable) SetLastUpdateTimestamp(v int64) *GetTopicStatusResponseBodyTopicStatusOffsetTableOffsetTable {
 	s.LastUpdateTimestamp = &v
 	return s
 }
 
-func (s *GetTopicStatusResponseBodyTopicStatusOffsetTable) SetMaxOffset(v int64) *GetTopicStatusResponseBodyTopicStatusOffsetTable {
+func (s *GetTopicStatusResponseBodyTopicStatusOffsetTableOffsetTable) SetMaxOffset(v int64) *GetTopicStatusResponseBodyTopicStatusOffsetTableOffsetTable {
 	s.MaxOffset = &v
 	return s
 }
@@ -3073,9 +3293,9 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 }
 
 type ListTagResourcesResponseBody struct {
-	NextToken    *string                                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
+	NextToken    *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TagResources *ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
 }
 
 func (s ListTagResourcesResponseBody) String() string {
@@ -3096,16 +3316,13 @@ func (s *ListTagResourcesResponseBody) SetRequestId(v string) *ListTagResourcesR
 	return s
 }
 
-func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResponseBodyTagResources) *ListTagResourcesResponseBody {
+func (s *ListTagResourcesResponseBody) SetTagResources(v *ListTagResourcesResponseBodyTagResources) *ListTagResourcesResponseBody {
 	s.TagResources = v
 	return s
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagResource []*ListTagResourcesResponseBodyTagResourcesTagResource `json:"TagResource,omitempty" xml:"TagResource,omitempty" type:"Repeated"`
 }
 
 func (s ListTagResourcesResponseBodyTagResources) String() string {
@@ -3116,22 +3333,42 @@ func (s ListTagResourcesResponseBodyTagResources) GoString() string {
 	return s.String()
 }
 
-func (s *ListTagResourcesResponseBodyTagResources) SetResourceType(v string) *ListTagResourcesResponseBodyTagResources {
+func (s *ListTagResourcesResponseBodyTagResources) SetTagResource(v []*ListTagResourcesResponseBodyTagResourcesTagResource) *ListTagResourcesResponseBodyTagResources {
+	s.TagResource = v
+	return s
+}
+
+type ListTagResourcesResponseBodyTagResourcesTagResource struct {
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+}
+
+func (s ListTagResourcesResponseBodyTagResourcesTagResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBodyTagResourcesTagResource) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetResourceType(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
 	s.ResourceType = &v
 	return s
 }
 
-func (s *ListTagResourcesResponseBodyTagResources) SetTagValue(v string) *ListTagResourcesResponseBodyTagResources {
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagValue(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
 	s.TagValue = &v
 	return s
 }
 
-func (s *ListTagResourcesResponseBodyTagResources) SetResourceId(v string) *ListTagResourcesResponseBodyTagResources {
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetResourceId(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
 	s.ResourceId = &v
 	return s
 }
 
-func (s *ListTagResourcesResponseBodyTagResources) SetTagKey(v string) *ListTagResourcesResponseBodyTagResources {
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagKey(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
 	s.TagKey = &v
 	return s
 }
@@ -3435,7 +3672,6 @@ func (s *ModifyTopicRemarkResponse) SetBody(v *ModifyTopicRemarkResponseBody) *M
 type ReleaseInstanceRequest struct {
 	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ReleaseIgnoreTime   *bool   `json:"ReleaseIgnoreTime,omitempty" xml:"ReleaseIgnoreTime,omitempty"`
 	ForceDeleteInstance *bool   `json:"ForceDeleteInstance,omitempty" xml:"ForceDeleteInstance,omitempty"`
 }
 
@@ -3454,11 +3690,6 @@ func (s *ReleaseInstanceRequest) SetInstanceId(v string) *ReleaseInstanceRequest
 
 func (s *ReleaseInstanceRequest) SetRegionId(v string) *ReleaseInstanceRequest {
 	s.RegionId = &v
-	return s
-}
-
-func (s *ReleaseInstanceRequest) SetReleaseIgnoreTime(v bool) *ReleaseInstanceRequest {
-	s.ReleaseIgnoreTime = &v
 	return s
 }
 
@@ -3537,8 +3768,10 @@ type StartInstanceRequest struct {
 	Username             *string `json:"Username,omitempty" xml:"Username,omitempty"`
 	Password             *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	CrossZone            *bool   `json:"CrossZone,omitempty" xml:"CrossZone,omitempty"`
 	SecurityGroup        *string `json:"SecurityGroup,omitempty" xml:"SecurityGroup,omitempty"`
+	ServiceVersion       *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
+	Config               *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	KMSKeyId             *string `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
 }
 
 func (s StartInstanceRequest) String() string {
@@ -3604,13 +3837,23 @@ func (s *StartInstanceRequest) SetName(v string) *StartInstanceRequest {
 	return s
 }
 
-func (s *StartInstanceRequest) SetCrossZone(v bool) *StartInstanceRequest {
-	s.CrossZone = &v
+func (s *StartInstanceRequest) SetSecurityGroup(v string) *StartInstanceRequest {
+	s.SecurityGroup = &v
 	return s
 }
 
-func (s *StartInstanceRequest) SetSecurityGroup(v string) *StartInstanceRequest {
-	s.SecurityGroup = &v
+func (s *StartInstanceRequest) SetServiceVersion(v string) *StartInstanceRequest {
+	s.ServiceVersion = &v
+	return s
+}
+
+func (s *StartInstanceRequest) SetConfig(v string) *StartInstanceRequest {
+	s.Config = &v
+	return s
+}
+
+func (s *StartInstanceRequest) SetKMSKeyId(v string) *StartInstanceRequest {
+	s.KMSKeyId = &v
 	return s
 }
 
@@ -3952,6 +4195,180 @@ func (s *UpdateAllowedIpResponse) SetHeaders(v map[string]*string) *UpdateAllowe
 }
 
 func (s *UpdateAllowedIpResponse) SetBody(v *UpdateAllowedIpResponseBody) *UpdateAllowedIpResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateInstanceConfigRequest struct {
+	Config     *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s UpdateInstanceConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceConfigRequest) SetConfig(v string) *UpdateInstanceConfigRequest {
+	s.Config = &v
+	return s
+}
+
+func (s *UpdateInstanceConfigRequest) SetRegionId(v string) *UpdateInstanceConfigRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateInstanceConfigRequest) SetInstanceId(v string) *UpdateInstanceConfigRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type UpdateInstanceConfigResponseBody struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateInstanceConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceConfigResponseBody) SetMessage(v string) *UpdateInstanceConfigResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateInstanceConfigResponseBody) SetRequestId(v string) *UpdateInstanceConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateInstanceConfigResponseBody) SetCode(v int32) *UpdateInstanceConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateInstanceConfigResponseBody) SetSuccess(v bool) *UpdateInstanceConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateInstanceConfigResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateInstanceConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateInstanceConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceConfigResponse) SetHeaders(v map[string]*string) *UpdateInstanceConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateInstanceConfigResponse) SetBody(v *UpdateInstanceConfigResponseBody) *UpdateInstanceConfigResponse {
+	s.Body = v
+	return s
+}
+
+type UpgradeInstanceVersionRequest struct {
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	TargetVersion *string `json:"TargetVersion,omitempty" xml:"TargetVersion,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s UpgradeInstanceVersionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeInstanceVersionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeInstanceVersionRequest) SetInstanceId(v string) *UpgradeInstanceVersionRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpgradeInstanceVersionRequest) SetTargetVersion(v string) *UpgradeInstanceVersionRequest {
+	s.TargetVersion = &v
+	return s
+}
+
+func (s *UpgradeInstanceVersionRequest) SetRegionId(v string) *UpgradeInstanceVersionRequest {
+	s.RegionId = &v
+	return s
+}
+
+type UpgradeInstanceVersionResponseBody struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpgradeInstanceVersionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeInstanceVersionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeInstanceVersionResponseBody) SetMessage(v string) *UpgradeInstanceVersionResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpgradeInstanceVersionResponseBody) SetRequestId(v string) *UpgradeInstanceVersionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpgradeInstanceVersionResponseBody) SetCode(v int32) *UpgradeInstanceVersionResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpgradeInstanceVersionResponseBody) SetSuccess(v bool) *UpgradeInstanceVersionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpgradeInstanceVersionResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpgradeInstanceVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpgradeInstanceVersionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeInstanceVersionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeInstanceVersionResponse) SetHeaders(v map[string]*string) *UpgradeInstanceVersionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpgradeInstanceVersionResponse) SetBody(v *UpgradeInstanceVersionResponseBody) *UpgradeInstanceVersionResponse {
 	s.Body = v
 	return s
 }
@@ -5135,6 +5552,62 @@ func (client *Client) UpdateAllowedIp(request *UpdateAllowedIpRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAllowedIpResponse{}
 	_body, _err := client.UpdateAllowedIpWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateInstanceConfigWithOptions(request *UpdateInstanceConfigRequest, runtime *util.RuntimeOptions) (_result *UpdateInstanceConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &UpdateInstanceConfigResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UpdateInstanceConfig"), tea.String("2019-09-16"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateInstanceConfig(request *UpdateInstanceConfigRequest) (_result *UpdateInstanceConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateInstanceConfigResponse{}
+	_body, _err := client.UpdateInstanceConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpgradeInstanceVersionWithOptions(request *UpgradeInstanceVersionRequest, runtime *util.RuntimeOptions) (_result *UpgradeInstanceVersionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &UpgradeInstanceVersionResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UpgradeInstanceVersion"), tea.String("2019-09-16"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpgradeInstanceVersion(request *UpgradeInstanceVersionRequest) (_result *UpgradeInstanceVersionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpgradeInstanceVersionResponse{}
+	_body, _err := client.UpgradeInstanceVersionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
