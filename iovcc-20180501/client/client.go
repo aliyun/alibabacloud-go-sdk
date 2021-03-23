@@ -492,6 +492,175 @@ func (s *ConnectAssistDeviceResponse) SetBody(v *ConnectAssistDeviceResponseBody
 	return s
 }
 
+type CountActivatedOrNewRegistrationDeviceRequest struct {
+	ProjectId                    *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	DeviceType                   *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	DeviceBrandId                *string `json:"DeviceBrandId,omitempty" xml:"DeviceBrandId,omitempty"`
+	DeviceBrand                  *string `json:"DeviceBrand,omitempty" xml:"DeviceBrand,omitempty"`
+	DeviceModelId                *string `json:"DeviceModelId,omitempty" xml:"DeviceModelId,omitempty"`
+	DeviceModel                  *string `json:"DeviceModel,omitempty" xml:"DeviceModel,omitempty"`
+	DeviceCountStatType          *string `json:"DeviceCountStatType,omitempty" xml:"DeviceCountStatType,omitempty"`
+	IsQueryNewRegistrationDevice *string `json:"IsQueryNewRegistrationDevice,omitempty" xml:"IsQueryNewRegistrationDevice,omitempty"`
+	StartTime                    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	EndTime                      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	IsQueryYearlyActivate        *string `json:"IsQueryYearlyActivate,omitempty" xml:"IsQueryYearlyActivate,omitempty"`
+}
+
+func (s CountActivatedOrNewRegistrationDeviceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CountActivatedOrNewRegistrationDeviceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CountActivatedOrNewRegistrationDeviceRequest) SetProjectId(v string) *CountActivatedOrNewRegistrationDeviceRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CountActivatedOrNewRegistrationDeviceRequest) SetDeviceType(v string) *CountActivatedOrNewRegistrationDeviceRequest {
+	s.DeviceType = &v
+	return s
+}
+
+func (s *CountActivatedOrNewRegistrationDeviceRequest) SetDeviceBrandId(v string) *CountActivatedOrNewRegistrationDeviceRequest {
+	s.DeviceBrandId = &v
+	return s
+}
+
+func (s *CountActivatedOrNewRegistrationDeviceRequest) SetDeviceBrand(v string) *CountActivatedOrNewRegistrationDeviceRequest {
+	s.DeviceBrand = &v
+	return s
+}
+
+func (s *CountActivatedOrNewRegistrationDeviceRequest) SetDeviceModelId(v string) *CountActivatedOrNewRegistrationDeviceRequest {
+	s.DeviceModelId = &v
+	return s
+}
+
+func (s *CountActivatedOrNewRegistrationDeviceRequest) SetDeviceModel(v string) *CountActivatedOrNewRegistrationDeviceRequest {
+	s.DeviceModel = &v
+	return s
+}
+
+func (s *CountActivatedOrNewRegistrationDeviceRequest) SetDeviceCountStatType(v string) *CountActivatedOrNewRegistrationDeviceRequest {
+	s.DeviceCountStatType = &v
+	return s
+}
+
+func (s *CountActivatedOrNewRegistrationDeviceRequest) SetIsQueryNewRegistrationDevice(v string) *CountActivatedOrNewRegistrationDeviceRequest {
+	s.IsQueryNewRegistrationDevice = &v
+	return s
+}
+
+func (s *CountActivatedOrNewRegistrationDeviceRequest) SetStartTime(v string) *CountActivatedOrNewRegistrationDeviceRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *CountActivatedOrNewRegistrationDeviceRequest) SetEndTime(v string) *CountActivatedOrNewRegistrationDeviceRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *CountActivatedOrNewRegistrationDeviceRequest) SetIsQueryYearlyActivate(v string) *CountActivatedOrNewRegistrationDeviceRequest {
+	s.IsQueryYearlyActivate = &v
+	return s
+}
+
+type CountActivatedOrNewRegistrationDeviceResponseBody struct {
+	RequestId  *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Statistics *CountActivatedOrNewRegistrationDeviceResponseBodyStatistics `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Struct"`
+}
+
+func (s CountActivatedOrNewRegistrationDeviceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CountActivatedOrNewRegistrationDeviceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CountActivatedOrNewRegistrationDeviceResponseBody) SetRequestId(v string) *CountActivatedOrNewRegistrationDeviceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CountActivatedOrNewRegistrationDeviceResponseBody) SetStatistics(v *CountActivatedOrNewRegistrationDeviceResponseBodyStatistics) *CountActivatedOrNewRegistrationDeviceResponseBody {
+	s.Statistics = v
+	return s
+}
+
+type CountActivatedOrNewRegistrationDeviceResponseBodyStatistics struct {
+	Categories []*string                                                            `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	Series     []*CountActivatedOrNewRegistrationDeviceResponseBodyStatisticsSeries `json:"Series,omitempty" xml:"Series,omitempty" type:"Repeated"`
+}
+
+func (s CountActivatedOrNewRegistrationDeviceResponseBodyStatistics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CountActivatedOrNewRegistrationDeviceResponseBodyStatistics) GoString() string {
+	return s.String()
+}
+
+func (s *CountActivatedOrNewRegistrationDeviceResponseBodyStatistics) SetCategories(v []*string) *CountActivatedOrNewRegistrationDeviceResponseBodyStatistics {
+	s.Categories = v
+	return s
+}
+
+func (s *CountActivatedOrNewRegistrationDeviceResponseBodyStatistics) SetSeries(v []*CountActivatedOrNewRegistrationDeviceResponseBodyStatisticsSeries) *CountActivatedOrNewRegistrationDeviceResponseBodyStatistics {
+	s.Series = v
+	return s
+}
+
+type CountActivatedOrNewRegistrationDeviceResponseBodyStatisticsSeries struct {
+	Name *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Data []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+}
+
+func (s CountActivatedOrNewRegistrationDeviceResponseBodyStatisticsSeries) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CountActivatedOrNewRegistrationDeviceResponseBodyStatisticsSeries) GoString() string {
+	return s.String()
+}
+
+func (s *CountActivatedOrNewRegistrationDeviceResponseBodyStatisticsSeries) SetName(v string) *CountActivatedOrNewRegistrationDeviceResponseBodyStatisticsSeries {
+	s.Name = &v
+	return s
+}
+
+func (s *CountActivatedOrNewRegistrationDeviceResponseBodyStatisticsSeries) SetData(v []*string) *CountActivatedOrNewRegistrationDeviceResponseBodyStatisticsSeries {
+	s.Data = v
+	return s
+}
+
+type CountActivatedOrNewRegistrationDeviceResponse struct {
+	Headers map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CountActivatedOrNewRegistrationDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CountActivatedOrNewRegistrationDeviceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CountActivatedOrNewRegistrationDeviceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CountActivatedOrNewRegistrationDeviceResponse) SetHeaders(v map[string]*string) *CountActivatedOrNewRegistrationDeviceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CountActivatedOrNewRegistrationDeviceResponse) SetBody(v *CountActivatedOrNewRegistrationDeviceResponseBody) *CountActivatedOrNewRegistrationDeviceResponse {
+	s.Body = v
+	return s
+}
+
 type CountDeviceBrandsRequest struct {
 	DeviceBrandId *int64  `json:"DeviceBrandId,omitempty" xml:"DeviceBrandId,omitempty"`
 	DeviceBrand   *string `json:"DeviceBrand,omitempty" xml:"DeviceBrand,omitempty"`
@@ -794,8 +963,8 @@ func (s *CountYunIdInfoResponseBody) SetYunIdInfo(v []*CountYunIdInfoResponseBod
 
 type CountYunIdInfoResponseBodyYunIdInfo struct {
 	TotalBrandCount       *int64 `json:"TotalBrandCount,omitempty" xml:"TotalBrandCount,omitempty"`
-	TotalDeviceCount      *int64 `json:"TotalDeviceCount,omitempty" xml:"TotalDeviceCount,omitempty"`
 	TotalDeviceModelCount *int64 `json:"TotalDeviceModelCount,omitempty" xml:"TotalDeviceModelCount,omitempty"`
+	TotalDeviceCount      *int64 `json:"TotalDeviceCount,omitempty" xml:"TotalDeviceCount,omitempty"`
 }
 
 func (s CountYunIdInfoResponseBodyYunIdInfo) String() string {
@@ -811,13 +980,13 @@ func (s *CountYunIdInfoResponseBodyYunIdInfo) SetTotalBrandCount(v int64) *Count
 	return s
 }
 
-func (s *CountYunIdInfoResponseBodyYunIdInfo) SetTotalDeviceCount(v int64) *CountYunIdInfoResponseBodyYunIdInfo {
-	s.TotalDeviceCount = &v
+func (s *CountYunIdInfoResponseBodyYunIdInfo) SetTotalDeviceModelCount(v int64) *CountYunIdInfoResponseBodyYunIdInfo {
+	s.TotalDeviceModelCount = &v
 	return s
 }
 
-func (s *CountYunIdInfoResponseBodyYunIdInfo) SetTotalDeviceModelCount(v int64) *CountYunIdInfoResponseBodyYunIdInfo {
-	s.TotalDeviceModelCount = &v
+func (s *CountYunIdInfoResponseBodyYunIdInfo) SetTotalDeviceCount(v int64) *CountYunIdInfoResponseBodyYunIdInfo {
+	s.TotalDeviceCount = &v
 	return s
 }
 
@@ -970,8 +1139,8 @@ func (s *CreateAppVersionRequest) SetApkMd5(v string) *CreateAppVersionRequest {
 }
 
 type CreateAppVersionResponseBody struct {
-	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
 func (s CreateAppVersionResponseBody) String() string {
@@ -982,13 +1151,13 @@ func (s CreateAppVersionResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateAppVersionResponseBody) SetVersionId(v string) *CreateAppVersionResponseBody {
-	s.VersionId = &v
+func (s *CreateAppVersionResponseBody) SetRequestId(v string) *CreateAppVersionResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *CreateAppVersionResponseBody) SetRequestId(v string) *CreateAppVersionResponseBody {
-	s.RequestId = &v
+func (s *CreateAppVersionResponseBody) SetVersionId(v string) *CreateAppVersionResponseBody {
+	s.VersionId = &v
 	return s
 }
 
@@ -1075,8 +1244,8 @@ func (s *CreateCustomizedFilterRequest) SetVersionId(v string) *CreateCustomized
 }
 
 type CreateCustomizedFilterResponseBody struct {
-	CustomizedFilterId *string `json:"CustomizedFilterId,omitempty" xml:"CustomizedFilterId,omitempty"`
 	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	CustomizedFilterId *string `json:"CustomizedFilterId,omitempty" xml:"CustomizedFilterId,omitempty"`
 }
 
 func (s CreateCustomizedFilterResponseBody) String() string {
@@ -1087,13 +1256,13 @@ func (s CreateCustomizedFilterResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateCustomizedFilterResponseBody) SetCustomizedFilterId(v string) *CreateCustomizedFilterResponseBody {
-	s.CustomizedFilterId = &v
+func (s *CreateCustomizedFilterResponseBody) SetRequestId(v string) *CreateCustomizedFilterResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *CreateCustomizedFilterResponseBody) SetRequestId(v string) *CreateCustomizedFilterResponseBody {
-	s.RequestId = &v
+func (s *CreateCustomizedFilterResponseBody) SetCustomizedFilterId(v string) *CreateCustomizedFilterResponseBody {
+	s.CustomizedFilterId = &v
 	return s
 }
 
@@ -1774,8 +1943,8 @@ func (s *CreateOsVersionRequest) SetMobileDownloadMaxSize(v string) *CreateOsVer
 }
 
 type CreateOsVersionResponseBody struct {
-	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
 func (s CreateOsVersionResponseBody) String() string {
@@ -1786,13 +1955,13 @@ func (s CreateOsVersionResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateOsVersionResponseBody) SetVersionId(v string) *CreateOsVersionResponseBody {
-	s.VersionId = &v
+func (s *CreateOsVersionResponseBody) SetRequestId(v string) *CreateOsVersionResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *CreateOsVersionResponseBody) SetRequestId(v string) *CreateOsVersionResponseBody {
-	s.RequestId = &v
+func (s *CreateOsVersionResponseBody) SetVersionId(v string) *CreateOsVersionResponseBody {
+	s.VersionId = &v
 	return s
 }
 
@@ -2758,8 +2927,8 @@ func (s *CreateVersionTestRequest) SetProjectId(v string) *CreateVersionTestRequ
 }
 
 type CreateVersionTestResponseBody struct {
-	TestId    *string `json:"TestId,omitempty" xml:"TestId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TestId    *string `json:"TestId,omitempty" xml:"TestId,omitempty"`
 }
 
 func (s CreateVersionTestResponseBody) String() string {
@@ -2770,13 +2939,13 @@ func (s CreateVersionTestResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateVersionTestResponseBody) SetTestId(v string) *CreateVersionTestResponseBody {
-	s.TestId = &v
+func (s *CreateVersionTestResponseBody) SetRequestId(v string) *CreateVersionTestResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *CreateVersionTestResponseBody) SetRequestId(v string) *CreateVersionTestResponseBody {
-	s.RequestId = &v
+func (s *CreateVersionTestResponseBody) SetTestId(v string) *CreateVersionTestResponseBody {
+	s.TestId = &v
 	return s
 }
 
@@ -4770,9 +4939,9 @@ func (s *DescribeApiGatewayAppSecurityResponseBody) SetApiGatewayAppSecurity(v *
 }
 
 type DescribeApiGatewayAppSecurityResponseBodyApiGatewayAppSecurity struct {
+	GatewayAppId     *string `json:"GatewayAppId,omitempty" xml:"GatewayAppId,omitempty"`
 	GatewayAppKey    *string `json:"GatewayAppKey,omitempty" xml:"GatewayAppKey,omitempty"`
 	GatewayAppSecret *string `json:"GatewayAppSecret,omitempty" xml:"GatewayAppSecret,omitempty"`
-	GatewayAppId     *string `json:"GatewayAppId,omitempty" xml:"GatewayAppId,omitempty"`
 	GmtCreate        *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	GmtModified      *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 }
@@ -4785,6 +4954,11 @@ func (s DescribeApiGatewayAppSecurityResponseBodyApiGatewayAppSecurity) GoString
 	return s.String()
 }
 
+func (s *DescribeApiGatewayAppSecurityResponseBodyApiGatewayAppSecurity) SetGatewayAppId(v string) *DescribeApiGatewayAppSecurityResponseBodyApiGatewayAppSecurity {
+	s.GatewayAppId = &v
+	return s
+}
+
 func (s *DescribeApiGatewayAppSecurityResponseBodyApiGatewayAppSecurity) SetGatewayAppKey(v string) *DescribeApiGatewayAppSecurityResponseBodyApiGatewayAppSecurity {
 	s.GatewayAppKey = &v
 	return s
@@ -4792,11 +4966,6 @@ func (s *DescribeApiGatewayAppSecurityResponseBodyApiGatewayAppSecurity) SetGate
 
 func (s *DescribeApiGatewayAppSecurityResponseBodyApiGatewayAppSecurity) SetGatewayAppSecret(v string) *DescribeApiGatewayAppSecurityResponseBodyApiGatewayAppSecurity {
 	s.GatewayAppSecret = &v
-	return s
-}
-
-func (s *DescribeApiGatewayAppSecurityResponseBodyApiGatewayAppSecurity) SetGatewayAppId(v string) *DescribeApiGatewayAppSecurityResponseBodyApiGatewayAppSecurity {
-	s.GatewayAppId = &v
 	return s
 }
 
@@ -4857,8 +5026,8 @@ func (s *DescribeAppVersionRequest) SetVersionId(v string) *DescribeAppVersionRe
 }
 
 type DescribeAppVersionResponseBody struct {
-	AppVersion *DescribeAppVersionResponseBodyAppVersion `json:"AppVersion,omitempty" xml:"AppVersion,omitempty" type:"Struct"`
 	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	AppVersion *DescribeAppVersionResponseBodyAppVersion `json:"AppVersion,omitempty" xml:"AppVersion,omitempty" type:"Struct"`
 }
 
 func (s DescribeAppVersionResponseBody) String() string {
@@ -4869,45 +5038,45 @@ func (s DescribeAppVersionResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeAppVersionResponseBody) SetAppVersion(v *DescribeAppVersionResponseBodyAppVersion) *DescribeAppVersionResponseBody {
-	s.AppVersion = v
-	return s
-}
-
 func (s *DescribeAppVersionResponseBody) SetRequestId(v string) *DescribeAppVersionResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *DescribeAppVersionResponseBody) SetAppVersion(v *DescribeAppVersionResponseBodyAppVersion) *DescribeAppVersionResponseBody {
+	s.AppVersion = v
+	return s
+}
+
 type DescribeAppVersionResponseBodyAppVersion struct {
-	Status            *string                                             `json:"Status,omitempty" xml:"Status,omitempty"`
-	IsAllowNewInstall *string                                             `json:"IsAllowNewInstall,omitempty" xml:"IsAllowNewInstall,omitempty"`
+	Id                *int64                                              `json:"Id,omitempty" xml:"Id,omitempty"`
+	AppId             *string                                             `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	VersionCode       *int64                                              `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
 	ReleaseNote       *string                                             `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
-	PackageName       *string                                             `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
 	Remark            *string                                             `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	StatusName        *string                                             `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
+	Status            *string                                             `json:"Status,omitempty" xml:"Status,omitempty"`
+	AppVersion        *string                                             `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	DownloadUrl       *string                                             `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	OriginalUrl       *string                                             `json:"OriginalUrl,omitempty" xml:"OriginalUrl,omitempty"`
+	IsForceUpgrade    *string                                             `json:"IsForceUpgrade,omitempty" xml:"IsForceUpgrade,omitempty"`
+	IsSilentUpgrade   *string                                             `json:"IsSilentUpgrade,omitempty" xml:"IsSilentUpgrade,omitempty"`
+	Md5               *string                                             `json:"Md5,omitempty" xml:"Md5,omitempty"`
 	ApkMd5            *string                                             `json:"ApkMd5,omitempty" xml:"ApkMd5,omitempty"`
+	Size              *string                                             `json:"Size,omitempty" xml:"Size,omitempty"`
+	GmtCreate         *string                                             `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModify         *string                                             `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
+	IsNeedRestart     *string                                             `json:"IsNeedRestart,omitempty" xml:"IsNeedRestart,omitempty"`
+	IsAllowNewInstall *string                                             `json:"IsAllowNewInstall,omitempty" xml:"IsAllowNewInstall,omitempty"`
+	RestartType       *string                                             `json:"RestartType,omitempty" xml:"RestartType,omitempty"`
+	RestartAppType    *string                                             `json:"RestartAppType,omitempty" xml:"RestartAppType,omitempty"`
 	RestartAppParam   *string                                             `json:"RestartAppParam,omitempty" xml:"RestartAppParam,omitempty"`
+	InstallType       *string                                             `json:"InstallType,omitempty" xml:"InstallType,omitempty"`
+	BlackVersionList  *string                                             `json:"BlackVersionList,omitempty" xml:"BlackVersionList,omitempty"`
 	WhiteVersionList  *string                                             `json:"WhiteVersionList,omitempty" xml:"WhiteVersionList,omitempty"`
 	AppName           *string                                             `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	AppId             *string                                             `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	RestartAppType    *string                                             `json:"RestartAppType,omitempty" xml:"RestartAppType,omitempty"`
-	VersionCode       *int64                                              `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
-	BlackVersionList  *string                                             `json:"BlackVersionList,omitempty" xml:"BlackVersionList,omitempty"`
-	GmtModify         *string                                             `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
-	DownloadUrl       *string                                             `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	StatusName        *string                                             `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
+	PackageName       *string                                             `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
 	Adapters          []*DescribeAppVersionResponseBodyAppVersionAdapters `json:"Adapters,omitempty" xml:"Adapters,omitempty" type:"Repeated"`
-	IsSilentUpgrade   *string                                             `json:"IsSilentUpgrade,omitempty" xml:"IsSilentUpgrade,omitempty"`
-	InstallType       *string                                             `json:"InstallType,omitempty" xml:"InstallType,omitempty"`
-	IsNeedRestart     *string                                             `json:"IsNeedRestart,omitempty" xml:"IsNeedRestart,omitempty"`
-	Size              *string                                             `json:"Size,omitempty" xml:"Size,omitempty"`
-	RestartType       *string                                             `json:"RestartType,omitempty" xml:"RestartType,omitempty"`
-	GmtCreate         *string                                             `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Md5               *string                                             `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	AppVersion        *string                                             `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	IsForceUpgrade    *string                                             `json:"IsForceUpgrade,omitempty" xml:"IsForceUpgrade,omitempty"`
-	Id                *int64                                              `json:"Id,omitempty" xml:"Id,omitempty"`
-	OriginalUrl       *string                                             `json:"OriginalUrl,omitempty" xml:"OriginalUrl,omitempty"`
 }
 
 func (s DescribeAppVersionResponseBodyAppVersion) String() string {
@@ -4918,13 +5087,18 @@ func (s DescribeAppVersionResponseBodyAppVersion) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeAppVersionResponseBodyAppVersion) SetStatus(v string) *DescribeAppVersionResponseBodyAppVersion {
-	s.Status = &v
+func (s *DescribeAppVersionResponseBodyAppVersion) SetId(v int64) *DescribeAppVersionResponseBodyAppVersion {
+	s.Id = &v
 	return s
 }
 
-func (s *DescribeAppVersionResponseBodyAppVersion) SetIsAllowNewInstall(v string) *DescribeAppVersionResponseBodyAppVersion {
-	s.IsAllowNewInstall = &v
+func (s *DescribeAppVersionResponseBodyAppVersion) SetAppId(v string) *DescribeAppVersionResponseBodyAppVersion {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeAppVersionResponseBodyAppVersion) SetVersionCode(v int64) *DescribeAppVersionResponseBodyAppVersion {
+	s.VersionCode = &v
 	return s
 }
 
@@ -4933,18 +5107,43 @@ func (s *DescribeAppVersionResponseBodyAppVersion) SetReleaseNote(v string) *Des
 	return s
 }
 
-func (s *DescribeAppVersionResponseBodyAppVersion) SetPackageName(v string) *DescribeAppVersionResponseBodyAppVersion {
-	s.PackageName = &v
-	return s
-}
-
 func (s *DescribeAppVersionResponseBodyAppVersion) SetRemark(v string) *DescribeAppVersionResponseBodyAppVersion {
 	s.Remark = &v
 	return s
 }
 
-func (s *DescribeAppVersionResponseBodyAppVersion) SetStatusName(v string) *DescribeAppVersionResponseBodyAppVersion {
-	s.StatusName = &v
+func (s *DescribeAppVersionResponseBodyAppVersion) SetStatus(v string) *DescribeAppVersionResponseBodyAppVersion {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeAppVersionResponseBodyAppVersion) SetAppVersion(v string) *DescribeAppVersionResponseBodyAppVersion {
+	s.AppVersion = &v
+	return s
+}
+
+func (s *DescribeAppVersionResponseBodyAppVersion) SetDownloadUrl(v string) *DescribeAppVersionResponseBodyAppVersion {
+	s.DownloadUrl = &v
+	return s
+}
+
+func (s *DescribeAppVersionResponseBodyAppVersion) SetOriginalUrl(v string) *DescribeAppVersionResponseBodyAppVersion {
+	s.OriginalUrl = &v
+	return s
+}
+
+func (s *DescribeAppVersionResponseBodyAppVersion) SetIsForceUpgrade(v string) *DescribeAppVersionResponseBodyAppVersion {
+	s.IsForceUpgrade = &v
+	return s
+}
+
+func (s *DescribeAppVersionResponseBodyAppVersion) SetIsSilentUpgrade(v string) *DescribeAppVersionResponseBodyAppVersion {
+	s.IsSilentUpgrade = &v
+	return s
+}
+
+func (s *DescribeAppVersionResponseBodyAppVersion) SetMd5(v string) *DescribeAppVersionResponseBodyAppVersion {
+	s.Md5 = &v
 	return s
 }
 
@@ -4953,8 +5152,53 @@ func (s *DescribeAppVersionResponseBodyAppVersion) SetApkMd5(v string) *Describe
 	return s
 }
 
+func (s *DescribeAppVersionResponseBodyAppVersion) SetSize(v string) *DescribeAppVersionResponseBodyAppVersion {
+	s.Size = &v
+	return s
+}
+
+func (s *DescribeAppVersionResponseBodyAppVersion) SetGmtCreate(v string) *DescribeAppVersionResponseBodyAppVersion {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeAppVersionResponseBodyAppVersion) SetGmtModify(v string) *DescribeAppVersionResponseBodyAppVersion {
+	s.GmtModify = &v
+	return s
+}
+
+func (s *DescribeAppVersionResponseBodyAppVersion) SetIsNeedRestart(v string) *DescribeAppVersionResponseBodyAppVersion {
+	s.IsNeedRestart = &v
+	return s
+}
+
+func (s *DescribeAppVersionResponseBodyAppVersion) SetIsAllowNewInstall(v string) *DescribeAppVersionResponseBodyAppVersion {
+	s.IsAllowNewInstall = &v
+	return s
+}
+
+func (s *DescribeAppVersionResponseBodyAppVersion) SetRestartType(v string) *DescribeAppVersionResponseBodyAppVersion {
+	s.RestartType = &v
+	return s
+}
+
+func (s *DescribeAppVersionResponseBodyAppVersion) SetRestartAppType(v string) *DescribeAppVersionResponseBodyAppVersion {
+	s.RestartAppType = &v
+	return s
+}
+
 func (s *DescribeAppVersionResponseBodyAppVersion) SetRestartAppParam(v string) *DescribeAppVersionResponseBodyAppVersion {
 	s.RestartAppParam = &v
+	return s
+}
+
+func (s *DescribeAppVersionResponseBodyAppVersion) SetInstallType(v string) *DescribeAppVersionResponseBodyAppVersion {
+	s.InstallType = &v
+	return s
+}
+
+func (s *DescribeAppVersionResponseBodyAppVersion) SetBlackVersionList(v string) *DescribeAppVersionResponseBodyAppVersion {
+	s.BlackVersionList = &v
 	return s
 }
 
@@ -4968,33 +5212,13 @@ func (s *DescribeAppVersionResponseBodyAppVersion) SetAppName(v string) *Describ
 	return s
 }
 
-func (s *DescribeAppVersionResponseBodyAppVersion) SetAppId(v string) *DescribeAppVersionResponseBodyAppVersion {
-	s.AppId = &v
+func (s *DescribeAppVersionResponseBodyAppVersion) SetStatusName(v string) *DescribeAppVersionResponseBodyAppVersion {
+	s.StatusName = &v
 	return s
 }
 
-func (s *DescribeAppVersionResponseBodyAppVersion) SetRestartAppType(v string) *DescribeAppVersionResponseBodyAppVersion {
-	s.RestartAppType = &v
-	return s
-}
-
-func (s *DescribeAppVersionResponseBodyAppVersion) SetVersionCode(v int64) *DescribeAppVersionResponseBodyAppVersion {
-	s.VersionCode = &v
-	return s
-}
-
-func (s *DescribeAppVersionResponseBodyAppVersion) SetBlackVersionList(v string) *DescribeAppVersionResponseBodyAppVersion {
-	s.BlackVersionList = &v
-	return s
-}
-
-func (s *DescribeAppVersionResponseBodyAppVersion) SetGmtModify(v string) *DescribeAppVersionResponseBodyAppVersion {
-	s.GmtModify = &v
-	return s
-}
-
-func (s *DescribeAppVersionResponseBodyAppVersion) SetDownloadUrl(v string) *DescribeAppVersionResponseBodyAppVersion {
-	s.DownloadUrl = &v
+func (s *DescribeAppVersionResponseBodyAppVersion) SetPackageName(v string) *DescribeAppVersionResponseBodyAppVersion {
+	s.PackageName = &v
 	return s
 }
 
@@ -5003,67 +5227,12 @@ func (s *DescribeAppVersionResponseBodyAppVersion) SetAdapters(v []*DescribeAppV
 	return s
 }
 
-func (s *DescribeAppVersionResponseBodyAppVersion) SetIsSilentUpgrade(v string) *DescribeAppVersionResponseBodyAppVersion {
-	s.IsSilentUpgrade = &v
-	return s
-}
-
-func (s *DescribeAppVersionResponseBodyAppVersion) SetInstallType(v string) *DescribeAppVersionResponseBodyAppVersion {
-	s.InstallType = &v
-	return s
-}
-
-func (s *DescribeAppVersionResponseBodyAppVersion) SetIsNeedRestart(v string) *DescribeAppVersionResponseBodyAppVersion {
-	s.IsNeedRestart = &v
-	return s
-}
-
-func (s *DescribeAppVersionResponseBodyAppVersion) SetSize(v string) *DescribeAppVersionResponseBodyAppVersion {
-	s.Size = &v
-	return s
-}
-
-func (s *DescribeAppVersionResponseBodyAppVersion) SetRestartType(v string) *DescribeAppVersionResponseBodyAppVersion {
-	s.RestartType = &v
-	return s
-}
-
-func (s *DescribeAppVersionResponseBodyAppVersion) SetGmtCreate(v string) *DescribeAppVersionResponseBodyAppVersion {
-	s.GmtCreate = &v
-	return s
-}
-
-func (s *DescribeAppVersionResponseBodyAppVersion) SetMd5(v string) *DescribeAppVersionResponseBodyAppVersion {
-	s.Md5 = &v
-	return s
-}
-
-func (s *DescribeAppVersionResponseBodyAppVersion) SetAppVersion(v string) *DescribeAppVersionResponseBodyAppVersion {
-	s.AppVersion = &v
-	return s
-}
-
-func (s *DescribeAppVersionResponseBodyAppVersion) SetIsForceUpgrade(v string) *DescribeAppVersionResponseBodyAppVersion {
-	s.IsForceUpgrade = &v
-	return s
-}
-
-func (s *DescribeAppVersionResponseBodyAppVersion) SetId(v int64) *DescribeAppVersionResponseBodyAppVersion {
-	s.Id = &v
-	return s
-}
-
-func (s *DescribeAppVersionResponseBodyAppVersion) SetOriginalUrl(v string) *DescribeAppVersionResponseBodyAppVersion {
-	s.OriginalUrl = &v
-	return s
-}
-
 type DescribeAppVersionResponseBodyAppVersionAdapters struct {
-	DeviceModelId   *string `json:"DeviceModelId,omitempty" xml:"DeviceModelId,omitempty"`
-	MaxOsVersion    *string `json:"MaxOsVersion,omitempty" xml:"MaxOsVersion,omitempty"`
-	MinOsVersion    *string `json:"MinOsVersion,omitempty" xml:"MinOsVersion,omitempty"`
-	VersionId       *int64  `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	VersionId       *int64  `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	DeviceModelId   *string `json:"DeviceModelId,omitempty" xml:"DeviceModelId,omitempty"`
+	MinOsVersion    *string `json:"MinOsVersion,omitempty" xml:"MinOsVersion,omitempty"`
+	MaxOsVersion    *string `json:"MaxOsVersion,omitempty" xml:"MaxOsVersion,omitempty"`
 	DeviceModelName *string `json:"DeviceModelName,omitempty" xml:"DeviceModelName,omitempty"`
 }
 
@@ -5075,18 +5244,8 @@ func (s DescribeAppVersionResponseBodyAppVersionAdapters) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeAppVersionResponseBodyAppVersionAdapters) SetDeviceModelId(v string) *DescribeAppVersionResponseBodyAppVersionAdapters {
-	s.DeviceModelId = &v
-	return s
-}
-
-func (s *DescribeAppVersionResponseBodyAppVersionAdapters) SetMaxOsVersion(v string) *DescribeAppVersionResponseBodyAppVersionAdapters {
-	s.MaxOsVersion = &v
-	return s
-}
-
-func (s *DescribeAppVersionResponseBodyAppVersionAdapters) SetMinOsVersion(v string) *DescribeAppVersionResponseBodyAppVersionAdapters {
-	s.MinOsVersion = &v
+func (s *DescribeAppVersionResponseBodyAppVersionAdapters) SetId(v int64) *DescribeAppVersionResponseBodyAppVersionAdapters {
+	s.Id = &v
 	return s
 }
 
@@ -5095,8 +5254,18 @@ func (s *DescribeAppVersionResponseBodyAppVersionAdapters) SetVersionId(v int64)
 	return s
 }
 
-func (s *DescribeAppVersionResponseBodyAppVersionAdapters) SetId(v int64) *DescribeAppVersionResponseBodyAppVersionAdapters {
-	s.Id = &v
+func (s *DescribeAppVersionResponseBodyAppVersionAdapters) SetDeviceModelId(v string) *DescribeAppVersionResponseBodyAppVersionAdapters {
+	s.DeviceModelId = &v
+	return s
+}
+
+func (s *DescribeAppVersionResponseBodyAppVersionAdapters) SetMinOsVersion(v string) *DescribeAppVersionResponseBodyAppVersionAdapters {
+	s.MinOsVersion = &v
+	return s
+}
+
+func (s *DescribeAppVersionResponseBodyAppVersionAdapters) SetMaxOsVersion(v string) *DescribeAppVersionResponseBodyAppVersionAdapters {
+	s.MaxOsVersion = &v
 	return s
 }
 
@@ -5153,10 +5322,10 @@ func (s *DescribeAssistReportRequest) SetAssistId(v string) *DescribeAssistRepor
 
 type DescribeAssistReportResponseBody struct {
 	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	AssistResult      *string `json:"AssistResult,omitempty" xml:"AssistResult,omitempty"`
-	AssistReason      *string `json:"AssistReason,omitempty" xml:"AssistReason,omitempty"`
 	AssistId          *string `json:"AssistId,omitempty" xml:"AssistId,omitempty"`
 	AssistDescription *string `json:"AssistDescription,omitempty" xml:"AssistDescription,omitempty"`
+	AssistResult      *string `json:"AssistResult,omitempty" xml:"AssistResult,omitempty"`
+	AssistReason      *string `json:"AssistReason,omitempty" xml:"AssistReason,omitempty"`
 	AssistTag         *string `json:"AssistTag,omitempty" xml:"AssistTag,omitempty"`
 }
 
@@ -5173,16 +5342,6 @@ func (s *DescribeAssistReportResponseBody) SetRequestId(v string) *DescribeAssis
 	return s
 }
 
-func (s *DescribeAssistReportResponseBody) SetAssistResult(v string) *DescribeAssistReportResponseBody {
-	s.AssistResult = &v
-	return s
-}
-
-func (s *DescribeAssistReportResponseBody) SetAssistReason(v string) *DescribeAssistReportResponseBody {
-	s.AssistReason = &v
-	return s
-}
-
 func (s *DescribeAssistReportResponseBody) SetAssistId(v string) *DescribeAssistReportResponseBody {
 	s.AssistId = &v
 	return s
@@ -5190,6 +5349,16 @@ func (s *DescribeAssistReportResponseBody) SetAssistId(v string) *DescribeAssist
 
 func (s *DescribeAssistReportResponseBody) SetAssistDescription(v string) *DescribeAssistReportResponseBody {
 	s.AssistDescription = &v
+	return s
+}
+
+func (s *DescribeAssistReportResponseBody) SetAssistResult(v string) *DescribeAssistReportResponseBody {
+	s.AssistResult = &v
+	return s
+}
+
+func (s *DescribeAssistReportResponseBody) SetAssistReason(v string) *DescribeAssistReportResponseBody {
+	s.AssistReason = &v
 	return s
 }
 
@@ -5395,8 +5564,8 @@ func (s *DescribeCustomizedFilterRequest) SetId(v string) *DescribeCustomizedFil
 }
 
 type DescribeCustomizedFilterResponseBody struct {
-	CustomizedFilter *DescribeCustomizedFilterResponseBodyCustomizedFilter `json:"CustomizedFilter,omitempty" xml:"CustomizedFilter,omitempty" type:"Struct"`
 	RequestId        *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	CustomizedFilter *DescribeCustomizedFilterResponseBodyCustomizedFilter `json:"CustomizedFilter,omitempty" xml:"CustomizedFilter,omitempty" type:"Struct"`
 }
 
 func (s DescribeCustomizedFilterResponseBody) String() string {
@@ -5407,29 +5576,29 @@ func (s DescribeCustomizedFilterResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeCustomizedFilterResponseBody) SetCustomizedFilter(v *DescribeCustomizedFilterResponseBodyCustomizedFilter) *DescribeCustomizedFilterResponseBody {
-	s.CustomizedFilter = v
-	return s
-}
-
 func (s *DescribeCustomizedFilterResponseBody) SetRequestId(v string) *DescribeCustomizedFilterResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *DescribeCustomizedFilterResponseBody) SetCustomizedFilter(v *DescribeCustomizedFilterResponseBodyCustomizedFilter) *DescribeCustomizedFilterResponseBody {
+	s.CustomizedFilter = v
+	return s
+}
+
 type DescribeCustomizedFilterResponseBodyCustomizedFilter struct {
-	GmtCreateTimestamp *int64  `json:"GmtCreateTimestamp,omitempty" xml:"GmtCreateTimestamp,omitempty"`
-	GmtModify          *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
-	ValueCompareType   *string `json:"ValueCompareType,omitempty" xml:"ValueCompareType,omitempty"`
-	VersionId          *int64  `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
-	GmtModifyTimestamp *int64  `json:"GmtModifyTimestamp,omitempty" xml:"GmtModifyTimestamp,omitempty"`
-	Value              *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	ValueType          *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
-	GmtCreate          *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	BlackWhiteType     *string `json:"BlackWhiteType,omitempty" xml:"BlackWhiteType,omitempty"`
-	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	VersionType        *string `json:"VersionType,omitempty" xml:"VersionType,omitempty"`
 	Id                 *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	VersionType        *string `json:"VersionType,omitempty" xml:"VersionType,omitempty"`
+	VersionId          *int64  `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Value              *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	ValueCompareType   *string `json:"ValueCompareType,omitempty" xml:"ValueCompareType,omitempty"`
+	BlackWhiteType     *string `json:"BlackWhiteType,omitempty" xml:"BlackWhiteType,omitempty"`
+	GmtCreate          *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModify          *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
+	ValueType          *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
+	GmtCreateTimestamp *int64  `json:"GmtCreateTimestamp,omitempty" xml:"GmtCreateTimestamp,omitempty"`
+	GmtModifyTimestamp *int64  `json:"GmtModifyTimestamp,omitempty" xml:"GmtModifyTimestamp,omitempty"`
 }
 
 func (s DescribeCustomizedFilterResponseBodyCustomizedFilter) String() string {
@@ -5440,53 +5609,8 @@ func (s DescribeCustomizedFilterResponseBodyCustomizedFilter) GoString() string 
 	return s.String()
 }
 
-func (s *DescribeCustomizedFilterResponseBodyCustomizedFilter) SetGmtCreateTimestamp(v int64) *DescribeCustomizedFilterResponseBodyCustomizedFilter {
-	s.GmtCreateTimestamp = &v
-	return s
-}
-
-func (s *DescribeCustomizedFilterResponseBodyCustomizedFilter) SetGmtModify(v string) *DescribeCustomizedFilterResponseBodyCustomizedFilter {
-	s.GmtModify = &v
-	return s
-}
-
-func (s *DescribeCustomizedFilterResponseBodyCustomizedFilter) SetValueCompareType(v string) *DescribeCustomizedFilterResponseBodyCustomizedFilter {
-	s.ValueCompareType = &v
-	return s
-}
-
-func (s *DescribeCustomizedFilterResponseBodyCustomizedFilter) SetVersionId(v int64) *DescribeCustomizedFilterResponseBodyCustomizedFilter {
-	s.VersionId = &v
-	return s
-}
-
-func (s *DescribeCustomizedFilterResponseBodyCustomizedFilter) SetGmtModifyTimestamp(v int64) *DescribeCustomizedFilterResponseBodyCustomizedFilter {
-	s.GmtModifyTimestamp = &v
-	return s
-}
-
-func (s *DescribeCustomizedFilterResponseBodyCustomizedFilter) SetValue(v string) *DescribeCustomizedFilterResponseBodyCustomizedFilter {
-	s.Value = &v
-	return s
-}
-
-func (s *DescribeCustomizedFilterResponseBodyCustomizedFilter) SetValueType(v string) *DescribeCustomizedFilterResponseBodyCustomizedFilter {
-	s.ValueType = &v
-	return s
-}
-
-func (s *DescribeCustomizedFilterResponseBodyCustomizedFilter) SetGmtCreate(v string) *DescribeCustomizedFilterResponseBodyCustomizedFilter {
-	s.GmtCreate = &v
-	return s
-}
-
-func (s *DescribeCustomizedFilterResponseBodyCustomizedFilter) SetBlackWhiteType(v string) *DescribeCustomizedFilterResponseBodyCustomizedFilter {
-	s.BlackWhiteType = &v
-	return s
-}
-
-func (s *DescribeCustomizedFilterResponseBodyCustomizedFilter) SetName(v string) *DescribeCustomizedFilterResponseBodyCustomizedFilter {
-	s.Name = &v
+func (s *DescribeCustomizedFilterResponseBodyCustomizedFilter) SetId(v int64) *DescribeCustomizedFilterResponseBodyCustomizedFilter {
+	s.Id = &v
 	return s
 }
 
@@ -5495,8 +5619,53 @@ func (s *DescribeCustomizedFilterResponseBodyCustomizedFilter) SetVersionType(v 
 	return s
 }
 
-func (s *DescribeCustomizedFilterResponseBodyCustomizedFilter) SetId(v int64) *DescribeCustomizedFilterResponseBodyCustomizedFilter {
-	s.Id = &v
+func (s *DescribeCustomizedFilterResponseBodyCustomizedFilter) SetVersionId(v int64) *DescribeCustomizedFilterResponseBodyCustomizedFilter {
+	s.VersionId = &v
+	return s
+}
+
+func (s *DescribeCustomizedFilterResponseBodyCustomizedFilter) SetName(v string) *DescribeCustomizedFilterResponseBodyCustomizedFilter {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeCustomizedFilterResponseBodyCustomizedFilter) SetValue(v string) *DescribeCustomizedFilterResponseBodyCustomizedFilter {
+	s.Value = &v
+	return s
+}
+
+func (s *DescribeCustomizedFilterResponseBodyCustomizedFilter) SetValueCompareType(v string) *DescribeCustomizedFilterResponseBodyCustomizedFilter {
+	s.ValueCompareType = &v
+	return s
+}
+
+func (s *DescribeCustomizedFilterResponseBodyCustomizedFilter) SetBlackWhiteType(v string) *DescribeCustomizedFilterResponseBodyCustomizedFilter {
+	s.BlackWhiteType = &v
+	return s
+}
+
+func (s *DescribeCustomizedFilterResponseBodyCustomizedFilter) SetGmtCreate(v string) *DescribeCustomizedFilterResponseBodyCustomizedFilter {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeCustomizedFilterResponseBodyCustomizedFilter) SetGmtModify(v string) *DescribeCustomizedFilterResponseBodyCustomizedFilter {
+	s.GmtModify = &v
+	return s
+}
+
+func (s *DescribeCustomizedFilterResponseBodyCustomizedFilter) SetValueType(v string) *DescribeCustomizedFilterResponseBodyCustomizedFilter {
+	s.ValueType = &v
+	return s
+}
+
+func (s *DescribeCustomizedFilterResponseBodyCustomizedFilter) SetGmtCreateTimestamp(v int64) *DescribeCustomizedFilterResponseBodyCustomizedFilter {
+	s.GmtCreateTimestamp = &v
+	return s
+}
+
+func (s *DescribeCustomizedFilterResponseBodyCustomizedFilter) SetGmtModifyTimestamp(v int64) *DescribeCustomizedFilterResponseBodyCustomizedFilter {
+	s.GmtModifyTimestamp = &v
 	return s
 }
 
@@ -5639,27 +5808,27 @@ func (s *DescribeDeviceResponseBody) SetDeviceInfo(v *DescribeDeviceResponseBody
 }
 
 type DescribeDeviceResponseBodyDeviceInfo struct {
-	SerialNumber  *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	DeviceModelId *int64  `json:"DeviceModelId,omitempty" xml:"DeviceModelId,omitempty"`
-	MacAddress    *string `json:"MacAddress,omitempty" xml:"MacAddress,omitempty"`
 	DeviceId      *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 	DeviceType    *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	UsageType     *int32  `json:"UsageType,omitempty" xml:"UsageType,omitempty"`
+	UsageTypeDesc *string `json:"UsageTypeDesc,omitempty" xml:"UsageTypeDesc,omitempty"`
+	DeviceModel   *string `json:"DeviceModel,omitempty" xml:"DeviceModel,omitempty"`
+	DeviceModelId *int64  `json:"DeviceModelId,omitempty" xml:"DeviceModelId,omitempty"`
+	DeviceProduct *string `json:"DeviceProduct,omitempty" xml:"DeviceProduct,omitempty"`
+	DeviceBrandId *int64  `json:"DeviceBrandId,omitempty" xml:"DeviceBrandId,omitempty"`
+	DeviceBrand   *string `json:"DeviceBrand,omitempty" xml:"DeviceBrand,omitempty"`
+	Uuid          *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	Vin           *string `json:"Vin,omitempty" xml:"Vin,omitempty"`
+	SerialNumber  *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	MacAddress    *string `json:"MacAddress,omitempty" xml:"MacAddress,omitempty"`
+	HardwareId    *string `json:"HardwareId,omitempty" xml:"HardwareId,omitempty"`
+	SoftwareId    *string `json:"SoftwareId,omitempty" xml:"SoftwareId,omitempty"`
+	Region        *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Attributes    *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
 	ProjectId     *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	OsPlatform    *string `json:"OsPlatform,omitempty" xml:"OsPlatform,omitempty"`
-	DeviceModel   *string `json:"DeviceModel,omitempty" xml:"DeviceModel,omitempty"`
-	UsageType     *int32  `json:"UsageType,omitempty" xml:"UsageType,omitempty"`
-	Vin           *string `json:"Vin,omitempty" xml:"Vin,omitempty"`
-	UsageTypeDesc *string `json:"UsageTypeDesc,omitempty" xml:"UsageTypeDesc,omitempty"`
-	Uuid          *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	HardwareId    *string `json:"HardwareId,omitempty" xml:"HardwareId,omitempty"`
-	DeviceBrandId *int64  `json:"DeviceBrandId,omitempty" xml:"DeviceBrandId,omitempty"`
-	Region        *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	Attributes    *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
-	SoftwareId    *string `json:"SoftwareId,omitempty" xml:"SoftwareId,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	DeviceBrand   *string `json:"DeviceBrand,omitempty" xml:"DeviceBrand,omitempty"`
-	DeviceProduct *string `json:"DeviceProduct,omitempty" xml:"DeviceProduct,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDeviceResponseBodyDeviceInfo) String() string {
@@ -5670,13 +5839,28 @@ func (s DescribeDeviceResponseBodyDeviceInfo) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDeviceResponseBodyDeviceInfo) SetSerialNumber(v string) *DescribeDeviceResponseBodyDeviceInfo {
-	s.SerialNumber = &v
+func (s *DescribeDeviceResponseBodyDeviceInfo) SetDeviceId(v string) *DescribeDeviceResponseBodyDeviceInfo {
+	s.DeviceId = &v
 	return s
 }
 
-func (s *DescribeDeviceResponseBodyDeviceInfo) SetStatus(v string) *DescribeDeviceResponseBodyDeviceInfo {
-	s.Status = &v
+func (s *DescribeDeviceResponseBodyDeviceInfo) SetDeviceType(v string) *DescribeDeviceResponseBodyDeviceInfo {
+	s.DeviceType = &v
+	return s
+}
+
+func (s *DescribeDeviceResponseBodyDeviceInfo) SetUsageType(v int32) *DescribeDeviceResponseBodyDeviceInfo {
+	s.UsageType = &v
+	return s
+}
+
+func (s *DescribeDeviceResponseBodyDeviceInfo) SetUsageTypeDesc(v string) *DescribeDeviceResponseBodyDeviceInfo {
+	s.UsageTypeDesc = &v
+	return s
+}
+
+func (s *DescribeDeviceResponseBodyDeviceInfo) SetDeviceModel(v string) *DescribeDeviceResponseBodyDeviceInfo {
+	s.DeviceModel = &v
 	return s
 }
 
@@ -5685,18 +5869,63 @@ func (s *DescribeDeviceResponseBodyDeviceInfo) SetDeviceModelId(v int64) *Descri
 	return s
 }
 
+func (s *DescribeDeviceResponseBodyDeviceInfo) SetDeviceProduct(v string) *DescribeDeviceResponseBodyDeviceInfo {
+	s.DeviceProduct = &v
+	return s
+}
+
+func (s *DescribeDeviceResponseBodyDeviceInfo) SetDeviceBrandId(v int64) *DescribeDeviceResponseBodyDeviceInfo {
+	s.DeviceBrandId = &v
+	return s
+}
+
+func (s *DescribeDeviceResponseBodyDeviceInfo) SetDeviceBrand(v string) *DescribeDeviceResponseBodyDeviceInfo {
+	s.DeviceBrand = &v
+	return s
+}
+
+func (s *DescribeDeviceResponseBodyDeviceInfo) SetUuid(v string) *DescribeDeviceResponseBodyDeviceInfo {
+	s.Uuid = &v
+	return s
+}
+
+func (s *DescribeDeviceResponseBodyDeviceInfo) SetVin(v string) *DescribeDeviceResponseBodyDeviceInfo {
+	s.Vin = &v
+	return s
+}
+
+func (s *DescribeDeviceResponseBodyDeviceInfo) SetSerialNumber(v string) *DescribeDeviceResponseBodyDeviceInfo {
+	s.SerialNumber = &v
+	return s
+}
+
 func (s *DescribeDeviceResponseBodyDeviceInfo) SetMacAddress(v string) *DescribeDeviceResponseBodyDeviceInfo {
 	s.MacAddress = &v
 	return s
 }
 
-func (s *DescribeDeviceResponseBodyDeviceInfo) SetDeviceId(v string) *DescribeDeviceResponseBodyDeviceInfo {
-	s.DeviceId = &v
+func (s *DescribeDeviceResponseBodyDeviceInfo) SetHardwareId(v string) *DescribeDeviceResponseBodyDeviceInfo {
+	s.HardwareId = &v
 	return s
 }
 
-func (s *DescribeDeviceResponseBodyDeviceInfo) SetDeviceType(v string) *DescribeDeviceResponseBodyDeviceInfo {
-	s.DeviceType = &v
+func (s *DescribeDeviceResponseBodyDeviceInfo) SetSoftwareId(v string) *DescribeDeviceResponseBodyDeviceInfo {
+	s.SoftwareId = &v
+	return s
+}
+
+func (s *DescribeDeviceResponseBodyDeviceInfo) SetRegion(v string) *DescribeDeviceResponseBodyDeviceInfo {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeDeviceResponseBodyDeviceInfo) SetName(v string) *DescribeDeviceResponseBodyDeviceInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeDeviceResponseBodyDeviceInfo) SetAttributes(v string) *DescribeDeviceResponseBodyDeviceInfo {
+	s.Attributes = &v
 	return s
 }
 
@@ -5710,68 +5939,8 @@ func (s *DescribeDeviceResponseBodyDeviceInfo) SetOsPlatform(v string) *Describe
 	return s
 }
 
-func (s *DescribeDeviceResponseBodyDeviceInfo) SetDeviceModel(v string) *DescribeDeviceResponseBodyDeviceInfo {
-	s.DeviceModel = &v
-	return s
-}
-
-func (s *DescribeDeviceResponseBodyDeviceInfo) SetUsageType(v int32) *DescribeDeviceResponseBodyDeviceInfo {
-	s.UsageType = &v
-	return s
-}
-
-func (s *DescribeDeviceResponseBodyDeviceInfo) SetVin(v string) *DescribeDeviceResponseBodyDeviceInfo {
-	s.Vin = &v
-	return s
-}
-
-func (s *DescribeDeviceResponseBodyDeviceInfo) SetUsageTypeDesc(v string) *DescribeDeviceResponseBodyDeviceInfo {
-	s.UsageTypeDesc = &v
-	return s
-}
-
-func (s *DescribeDeviceResponseBodyDeviceInfo) SetUuid(v string) *DescribeDeviceResponseBodyDeviceInfo {
-	s.Uuid = &v
-	return s
-}
-
-func (s *DescribeDeviceResponseBodyDeviceInfo) SetHardwareId(v string) *DescribeDeviceResponseBodyDeviceInfo {
-	s.HardwareId = &v
-	return s
-}
-
-func (s *DescribeDeviceResponseBodyDeviceInfo) SetDeviceBrandId(v int64) *DescribeDeviceResponseBodyDeviceInfo {
-	s.DeviceBrandId = &v
-	return s
-}
-
-func (s *DescribeDeviceResponseBodyDeviceInfo) SetRegion(v string) *DescribeDeviceResponseBodyDeviceInfo {
-	s.Region = &v
-	return s
-}
-
-func (s *DescribeDeviceResponseBodyDeviceInfo) SetAttributes(v string) *DescribeDeviceResponseBodyDeviceInfo {
-	s.Attributes = &v
-	return s
-}
-
-func (s *DescribeDeviceResponseBodyDeviceInfo) SetSoftwareId(v string) *DescribeDeviceResponseBodyDeviceInfo {
-	s.SoftwareId = &v
-	return s
-}
-
-func (s *DescribeDeviceResponseBodyDeviceInfo) SetName(v string) *DescribeDeviceResponseBodyDeviceInfo {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeDeviceResponseBodyDeviceInfo) SetDeviceBrand(v string) *DescribeDeviceResponseBodyDeviceInfo {
-	s.DeviceBrand = &v
-	return s
-}
-
-func (s *DescribeDeviceResponseBodyDeviceInfo) SetDeviceProduct(v string) *DescribeDeviceResponseBodyDeviceInfo {
-	s.DeviceProduct = &v
+func (s *DescribeDeviceResponseBodyDeviceInfo) SetStatus(v string) *DescribeDeviceResponseBodyDeviceInfo {
+	s.Status = &v
 	return s
 }
 
@@ -5864,10 +6033,10 @@ func (s *DescribeDeviceBrandResponseBody) SetDeviceBrand(v *DescribeDeviceBrandR
 
 type DescribeDeviceBrandResponseBodyDeviceBrand struct {
 	DeviceBrandId *int64  `json:"DeviceBrandId,omitempty" xml:"DeviceBrandId,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DeviceBrand   *string `json:"DeviceBrand,omitempty" xml:"DeviceBrand,omitempty"`
 	ProjectId     *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	Manufacture   *string `json:"Manufacture,omitempty" xml:"Manufacture,omitempty"`
-	DeviceBrand   *string `json:"DeviceBrand,omitempty" xml:"DeviceBrand,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
 }
 
 func (s DescribeDeviceBrandResponseBodyDeviceBrand) String() string {
@@ -5883,8 +6052,8 @@ func (s *DescribeDeviceBrandResponseBodyDeviceBrand) SetDeviceBrandId(v int64) *
 	return s
 }
 
-func (s *DescribeDeviceBrandResponseBodyDeviceBrand) SetDescription(v string) *DescribeDeviceBrandResponseBodyDeviceBrand {
-	s.Description = &v
+func (s *DescribeDeviceBrandResponseBodyDeviceBrand) SetDeviceBrand(v string) *DescribeDeviceBrandResponseBodyDeviceBrand {
+	s.DeviceBrand = &v
 	return s
 }
 
@@ -5898,8 +6067,8 @@ func (s *DescribeDeviceBrandResponseBodyDeviceBrand) SetManufacture(v string) *D
 	return s
 }
 
-func (s *DescribeDeviceBrandResponseBodyDeviceBrand) SetDeviceBrand(v string) *DescribeDeviceBrandResponseBodyDeviceBrand {
-	s.DeviceBrand = &v
+func (s *DescribeDeviceBrandResponseBodyDeviceBrand) SetDescription(v string) *DescribeDeviceBrandResponseBodyDeviceBrand {
+	s.Description = &v
 	return s
 }
 
@@ -6054,23 +6223,23 @@ func (s *DescribeDeviceInfoResponseBody) SetDeviceInfo(v *DescribeDeviceInfoResp
 }
 
 type DescribeDeviceInfoResponseBodyDeviceInfo struct {
-	SerialNumber  *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	DeviceModelId *int64  `json:"DeviceModelId,omitempty" xml:"DeviceModelId,omitempty"`
-	MacAddress    *string `json:"MacAddress,omitempty" xml:"MacAddress,omitempty"`
 	DeviceId      *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 	DeviceType    *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
-	ProjectId     *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	DeviceModel   *string `json:"DeviceModel,omitempty" xml:"DeviceModel,omitempty"`
 	UsageType     *int32  `json:"UsageType,omitempty" xml:"UsageType,omitempty"`
-	Vin           *string `json:"Vin,omitempty" xml:"Vin,omitempty"`
 	UsageTypeDesc *string `json:"UsageTypeDesc,omitempty" xml:"UsageTypeDesc,omitempty"`
-	Uuid          *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	HardwareId    *string `json:"HardwareId,omitempty" xml:"HardwareId,omitempty"`
-	Region        *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	SoftwareId    *string `json:"SoftwareId,omitempty" xml:"SoftwareId,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	DeviceModel   *string `json:"DeviceModel,omitempty" xml:"DeviceModel,omitempty"`
+	DeviceModelId *int64  `json:"DeviceModelId,omitempty" xml:"DeviceModelId,omitempty"`
 	DeviceBrand   *string `json:"DeviceBrand,omitempty" xml:"DeviceBrand,omitempty"`
+	Uuid          *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	Vin           *string `json:"Vin,omitempty" xml:"Vin,omitempty"`
+	SerialNumber  *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	MacAddress    *string `json:"MacAddress,omitempty" xml:"MacAddress,omitempty"`
+	HardwareId    *string `json:"HardwareId,omitempty" xml:"HardwareId,omitempty"`
+	SoftwareId    *string `json:"SoftwareId,omitempty" xml:"SoftwareId,omitempty"`
+	Region        *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ProjectId     *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDeviceInfoResponseBodyDeviceInfo) String() string {
@@ -6079,26 +6248,6 @@ func (s DescribeDeviceInfoResponseBodyDeviceInfo) String() string {
 
 func (s DescribeDeviceInfoResponseBodyDeviceInfo) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeDeviceInfoResponseBodyDeviceInfo) SetSerialNumber(v string) *DescribeDeviceInfoResponseBodyDeviceInfo {
-	s.SerialNumber = &v
-	return s
-}
-
-func (s *DescribeDeviceInfoResponseBodyDeviceInfo) SetStatus(v string) *DescribeDeviceInfoResponseBodyDeviceInfo {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeDeviceInfoResponseBodyDeviceInfo) SetDeviceModelId(v int64) *DescribeDeviceInfoResponseBodyDeviceInfo {
-	s.DeviceModelId = &v
-	return s
-}
-
-func (s *DescribeDeviceInfoResponseBodyDeviceInfo) SetMacAddress(v string) *DescribeDeviceInfoResponseBodyDeviceInfo {
-	s.MacAddress = &v
-	return s
 }
 
 func (s *DescribeDeviceInfoResponseBodyDeviceInfo) SetDeviceId(v string) *DescribeDeviceInfoResponseBodyDeviceInfo {
@@ -6111,23 +6260,8 @@ func (s *DescribeDeviceInfoResponseBodyDeviceInfo) SetDeviceType(v string) *Desc
 	return s
 }
 
-func (s *DescribeDeviceInfoResponseBodyDeviceInfo) SetProjectId(v string) *DescribeDeviceInfoResponseBodyDeviceInfo {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *DescribeDeviceInfoResponseBodyDeviceInfo) SetDeviceModel(v string) *DescribeDeviceInfoResponseBodyDeviceInfo {
-	s.DeviceModel = &v
-	return s
-}
-
 func (s *DescribeDeviceInfoResponseBodyDeviceInfo) SetUsageType(v int32) *DescribeDeviceInfoResponseBodyDeviceInfo {
 	s.UsageType = &v
-	return s
-}
-
-func (s *DescribeDeviceInfoResponseBodyDeviceInfo) SetVin(v string) *DescribeDeviceInfoResponseBodyDeviceInfo {
-	s.Vin = &v
 	return s
 }
 
@@ -6136,8 +6270,38 @@ func (s *DescribeDeviceInfoResponseBodyDeviceInfo) SetUsageTypeDesc(v string) *D
 	return s
 }
 
+func (s *DescribeDeviceInfoResponseBodyDeviceInfo) SetDeviceModel(v string) *DescribeDeviceInfoResponseBodyDeviceInfo {
+	s.DeviceModel = &v
+	return s
+}
+
+func (s *DescribeDeviceInfoResponseBodyDeviceInfo) SetDeviceModelId(v int64) *DescribeDeviceInfoResponseBodyDeviceInfo {
+	s.DeviceModelId = &v
+	return s
+}
+
+func (s *DescribeDeviceInfoResponseBodyDeviceInfo) SetDeviceBrand(v string) *DescribeDeviceInfoResponseBodyDeviceInfo {
+	s.DeviceBrand = &v
+	return s
+}
+
 func (s *DescribeDeviceInfoResponseBodyDeviceInfo) SetUuid(v string) *DescribeDeviceInfoResponseBodyDeviceInfo {
 	s.Uuid = &v
+	return s
+}
+
+func (s *DescribeDeviceInfoResponseBodyDeviceInfo) SetVin(v string) *DescribeDeviceInfoResponseBodyDeviceInfo {
+	s.Vin = &v
+	return s
+}
+
+func (s *DescribeDeviceInfoResponseBodyDeviceInfo) SetSerialNumber(v string) *DescribeDeviceInfoResponseBodyDeviceInfo {
+	s.SerialNumber = &v
+	return s
+}
+
+func (s *DescribeDeviceInfoResponseBodyDeviceInfo) SetMacAddress(v string) *DescribeDeviceInfoResponseBodyDeviceInfo {
+	s.MacAddress = &v
 	return s
 }
 
@@ -6146,13 +6310,13 @@ func (s *DescribeDeviceInfoResponseBodyDeviceInfo) SetHardwareId(v string) *Desc
 	return s
 }
 
-func (s *DescribeDeviceInfoResponseBodyDeviceInfo) SetRegion(v string) *DescribeDeviceInfoResponseBodyDeviceInfo {
-	s.Region = &v
+func (s *DescribeDeviceInfoResponseBodyDeviceInfo) SetSoftwareId(v string) *DescribeDeviceInfoResponseBodyDeviceInfo {
+	s.SoftwareId = &v
 	return s
 }
 
-func (s *DescribeDeviceInfoResponseBodyDeviceInfo) SetSoftwareId(v string) *DescribeDeviceInfoResponseBodyDeviceInfo {
-	s.SoftwareId = &v
+func (s *DescribeDeviceInfoResponseBodyDeviceInfo) SetRegion(v string) *DescribeDeviceInfoResponseBodyDeviceInfo {
+	s.Region = &v
 	return s
 }
 
@@ -6161,8 +6325,13 @@ func (s *DescribeDeviceInfoResponseBodyDeviceInfo) SetName(v string) *DescribeDe
 	return s
 }
 
-func (s *DescribeDeviceInfoResponseBodyDeviceInfo) SetDeviceBrand(v string) *DescribeDeviceInfoResponseBodyDeviceInfo {
-	s.DeviceBrand = &v
+func (s *DescribeDeviceInfoResponseBodyDeviceInfo) SetProjectId(v string) *DescribeDeviceInfoResponseBodyDeviceInfo {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *DescribeDeviceInfoResponseBodyDeviceInfo) SetStatus(v string) *DescribeDeviceInfoResponseBodyDeviceInfo {
+	s.Status = &v
 	return s
 }
 
@@ -6219,8 +6388,8 @@ func (s *DescribeDeviceModelRequest) SetProjectId(v string) *DescribeDeviceModel
 }
 
 type DescribeDeviceModelResponseBody struct {
-	DeviceModel *DescribeDeviceModelResponseBodyDeviceModel `json:"DeviceModel,omitempty" xml:"DeviceModel,omitempty" type:"Struct"`
 	RequestId   *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	DeviceModel *DescribeDeviceModelResponseBodyDeviceModel `json:"DeviceModel,omitempty" xml:"DeviceModel,omitempty" type:"Struct"`
 }
 
 func (s DescribeDeviceModelResponseBody) String() string {
@@ -6231,32 +6400,32 @@ func (s DescribeDeviceModelResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDeviceModelResponseBody) SetDeviceModel(v *DescribeDeviceModelResponseBodyDeviceModel) *DescribeDeviceModelResponseBody {
-	s.DeviceModel = v
-	return s
-}
-
 func (s *DescribeDeviceModelResponseBody) SetRequestId(v string) *DescribeDeviceModelResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *DescribeDeviceModelResponseBody) SetDeviceModel(v *DescribeDeviceModelResponseBodyDeviceModel) *DescribeDeviceModelResponseBody {
+	s.DeviceModel = v
+	return s
+}
+
 type DescribeDeviceModelResponseBodyDeviceModel struct {
 	DeviceModelId     *int64  `json:"DeviceModelId,omitempty" xml:"DeviceModelId,omitempty"`
-	HardwareType      *string `json:"HardwareType,omitempty" xml:"HardwareType,omitempty"`
-	DeviceName        *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
 	DeviceType        *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
-	CanCreateDeviceId *int32  `json:"CanCreateDeviceId,omitempty" xml:"CanCreateDeviceId,omitempty"`
-	ProjectId         *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	OsPlatform        *string `json:"OsPlatform,omitempty" xml:"OsPlatform,omitempty"`
+	HardwareType      *string `json:"HardwareType,omitempty" xml:"HardwareType,omitempty"`
 	DeviceModel       *string `json:"DeviceModel,omitempty" xml:"DeviceModel,omitempty"`
-	SecurityChip      *string `json:"SecurityChip,omitempty" xml:"SecurityChip,omitempty"`
-	DeviceLogoUrl     *string `json:"DeviceLogoUrl,omitempty" xml:"DeviceLogoUrl,omitempty"`
-	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ObjectKey         *string `json:"ObjectKey,omitempty" xml:"ObjectKey,omitempty"`
-	InitUsageTypeDesc *string `json:"InitUsageTypeDesc,omitempty" xml:"InitUsageTypeDesc,omitempty"`
-	InitUsageType     *int32  `json:"InitUsageType,omitempty" xml:"InitUsageType,omitempty"`
 	DeviceBrand       *string `json:"DeviceBrand,omitempty" xml:"DeviceBrand,omitempty"`
+	CanCreateDeviceId *int32  `json:"CanCreateDeviceId,omitempty" xml:"CanCreateDeviceId,omitempty"`
+	InitUsageType     *int32  `json:"InitUsageType,omitempty" xml:"InitUsageType,omitempty"`
+	InitUsageTypeDesc *string `json:"InitUsageTypeDesc,omitempty" xml:"InitUsageTypeDesc,omitempty"`
+	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ProjectId         *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	SecurityChip      *string `json:"SecurityChip,omitempty" xml:"SecurityChip,omitempty"`
+	OsPlatform        *string `json:"OsPlatform,omitempty" xml:"OsPlatform,omitempty"`
+	ObjectKey         *string `json:"ObjectKey,omitempty" xml:"ObjectKey,omitempty"`
+	DeviceLogoUrl     *string `json:"DeviceLogoUrl,omitempty" xml:"DeviceLogoUrl,omitempty"`
+	DeviceName        *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
 }
 
 func (s DescribeDeviceModelResponseBodyDeviceModel) String() string {
@@ -6272,33 +6441,13 @@ func (s *DescribeDeviceModelResponseBodyDeviceModel) SetDeviceModelId(v int64) *
 	return s
 }
 
-func (s *DescribeDeviceModelResponseBodyDeviceModel) SetHardwareType(v string) *DescribeDeviceModelResponseBodyDeviceModel {
-	s.HardwareType = &v
-	return s
-}
-
-func (s *DescribeDeviceModelResponseBodyDeviceModel) SetDeviceName(v string) *DescribeDeviceModelResponseBodyDeviceModel {
-	s.DeviceName = &v
-	return s
-}
-
 func (s *DescribeDeviceModelResponseBodyDeviceModel) SetDeviceType(v string) *DescribeDeviceModelResponseBodyDeviceModel {
 	s.DeviceType = &v
 	return s
 }
 
-func (s *DescribeDeviceModelResponseBodyDeviceModel) SetCanCreateDeviceId(v int32) *DescribeDeviceModelResponseBodyDeviceModel {
-	s.CanCreateDeviceId = &v
-	return s
-}
-
-func (s *DescribeDeviceModelResponseBodyDeviceModel) SetProjectId(v string) *DescribeDeviceModelResponseBodyDeviceModel {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *DescribeDeviceModelResponseBodyDeviceModel) SetOsPlatform(v string) *DescribeDeviceModelResponseBodyDeviceModel {
-	s.OsPlatform = &v
+func (s *DescribeDeviceModelResponseBodyDeviceModel) SetHardwareType(v string) *DescribeDeviceModelResponseBodyDeviceModel {
+	s.HardwareType = &v
 	return s
 }
 
@@ -6307,28 +6456,13 @@ func (s *DescribeDeviceModelResponseBodyDeviceModel) SetDeviceModel(v string) *D
 	return s
 }
 
-func (s *DescribeDeviceModelResponseBodyDeviceModel) SetSecurityChip(v string) *DescribeDeviceModelResponseBodyDeviceModel {
-	s.SecurityChip = &v
+func (s *DescribeDeviceModelResponseBodyDeviceModel) SetDeviceBrand(v string) *DescribeDeviceModelResponseBodyDeviceModel {
+	s.DeviceBrand = &v
 	return s
 }
 
-func (s *DescribeDeviceModelResponseBodyDeviceModel) SetDeviceLogoUrl(v string) *DescribeDeviceModelResponseBodyDeviceModel {
-	s.DeviceLogoUrl = &v
-	return s
-}
-
-func (s *DescribeDeviceModelResponseBodyDeviceModel) SetDescription(v string) *DescribeDeviceModelResponseBodyDeviceModel {
-	s.Description = &v
-	return s
-}
-
-func (s *DescribeDeviceModelResponseBodyDeviceModel) SetObjectKey(v string) *DescribeDeviceModelResponseBodyDeviceModel {
-	s.ObjectKey = &v
-	return s
-}
-
-func (s *DescribeDeviceModelResponseBodyDeviceModel) SetInitUsageTypeDesc(v string) *DescribeDeviceModelResponseBodyDeviceModel {
-	s.InitUsageTypeDesc = &v
+func (s *DescribeDeviceModelResponseBodyDeviceModel) SetCanCreateDeviceId(v int32) *DescribeDeviceModelResponseBodyDeviceModel {
+	s.CanCreateDeviceId = &v
 	return s
 }
 
@@ -6337,8 +6471,43 @@ func (s *DescribeDeviceModelResponseBodyDeviceModel) SetInitUsageType(v int32) *
 	return s
 }
 
-func (s *DescribeDeviceModelResponseBodyDeviceModel) SetDeviceBrand(v string) *DescribeDeviceModelResponseBodyDeviceModel {
-	s.DeviceBrand = &v
+func (s *DescribeDeviceModelResponseBodyDeviceModel) SetInitUsageTypeDesc(v string) *DescribeDeviceModelResponseBodyDeviceModel {
+	s.InitUsageTypeDesc = &v
+	return s
+}
+
+func (s *DescribeDeviceModelResponseBodyDeviceModel) SetDescription(v string) *DescribeDeviceModelResponseBodyDeviceModel {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeDeviceModelResponseBodyDeviceModel) SetProjectId(v string) *DescribeDeviceModelResponseBodyDeviceModel {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *DescribeDeviceModelResponseBodyDeviceModel) SetSecurityChip(v string) *DescribeDeviceModelResponseBodyDeviceModel {
+	s.SecurityChip = &v
+	return s
+}
+
+func (s *DescribeDeviceModelResponseBodyDeviceModel) SetOsPlatform(v string) *DescribeDeviceModelResponseBodyDeviceModel {
+	s.OsPlatform = &v
+	return s
+}
+
+func (s *DescribeDeviceModelResponseBodyDeviceModel) SetObjectKey(v string) *DescribeDeviceModelResponseBodyDeviceModel {
+	s.ObjectKey = &v
+	return s
+}
+
+func (s *DescribeDeviceModelResponseBodyDeviceModel) SetDeviceLogoUrl(v string) *DescribeDeviceModelResponseBodyDeviceModel {
+	s.DeviceLogoUrl = &v
+	return s
+}
+
+func (s *DescribeDeviceModelResponseBodyDeviceModel) SetDeviceName(v string) *DescribeDeviceModelResponseBodyDeviceModel {
+	s.DeviceName = &v
 	return s
 }
 
@@ -6418,14 +6587,14 @@ func (s *DescribeDeviceOnlineInfoResponseBody) SetDevices(v []*DescribeDeviceOnl
 }
 
 type DescribeDeviceOnlineInfoResponseBodyDevices struct {
-	LoginTime     *int64  `json:"LoginTime,omitempty" xml:"LoginTime,omitempty"`
-	DeviceId      *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	Online        *int32  `json:"Online,omitempty" xml:"Online,omitempty"`
 	ProjectId     *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	IasId         *string `json:"IasId,omitempty" xml:"IasId,omitempty"`
-	SystemVersion *string `json:"SystemVersion,omitempty" xml:"SystemVersion,omitempty"`
 	Terminal      *string `json:"Terminal,omitempty" xml:"Terminal,omitempty"`
+	IasId         *string `json:"IasId,omitempty" xml:"IasId,omitempty"`
+	DeviceId      *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
+	SystemVersion *string `json:"SystemVersion,omitempty" xml:"SystemVersion,omitempty"`
+	Online        *int32  `json:"Online,omitempty" xml:"Online,omitempty"`
+	LoginTime     *int64  `json:"LoginTime,omitempty" xml:"LoginTime,omitempty"`
 }
 
 func (s DescribeDeviceOnlineInfoResponseBodyDevices) String() string {
@@ -6436,33 +6605,8 @@ func (s DescribeDeviceOnlineInfoResponseBodyDevices) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDeviceOnlineInfoResponseBodyDevices) SetLoginTime(v int64) *DescribeDeviceOnlineInfoResponseBodyDevices {
-	s.LoginTime = &v
-	return s
-}
-
-func (s *DescribeDeviceOnlineInfoResponseBodyDevices) SetDeviceId(v string) *DescribeDeviceOnlineInfoResponseBodyDevices {
-	s.DeviceId = &v
-	return s
-}
-
-func (s *DescribeDeviceOnlineInfoResponseBodyDevices) SetOnline(v int32) *DescribeDeviceOnlineInfoResponseBodyDevices {
-	s.Online = &v
-	return s
-}
-
 func (s *DescribeDeviceOnlineInfoResponseBodyDevices) SetProjectId(v string) *DescribeDeviceOnlineInfoResponseBodyDevices {
 	s.ProjectId = &v
-	return s
-}
-
-func (s *DescribeDeviceOnlineInfoResponseBodyDevices) SetIasId(v string) *DescribeDeviceOnlineInfoResponseBodyDevices {
-	s.IasId = &v
-	return s
-}
-
-func (s *DescribeDeviceOnlineInfoResponseBodyDevices) SetSystemVersion(v string) *DescribeDeviceOnlineInfoResponseBodyDevices {
-	s.SystemVersion = &v
 	return s
 }
 
@@ -6471,8 +6615,33 @@ func (s *DescribeDeviceOnlineInfoResponseBodyDevices) SetTerminal(v string) *Des
 	return s
 }
 
+func (s *DescribeDeviceOnlineInfoResponseBodyDevices) SetIasId(v string) *DescribeDeviceOnlineInfoResponseBodyDevices {
+	s.IasId = &v
+	return s
+}
+
+func (s *DescribeDeviceOnlineInfoResponseBodyDevices) SetDeviceId(v string) *DescribeDeviceOnlineInfoResponseBodyDevices {
+	s.DeviceId = &v
+	return s
+}
+
 func (s *DescribeDeviceOnlineInfoResponseBodyDevices) SetClientVersion(v string) *DescribeDeviceOnlineInfoResponseBodyDevices {
 	s.ClientVersion = &v
+	return s
+}
+
+func (s *DescribeDeviceOnlineInfoResponseBodyDevices) SetSystemVersion(v string) *DescribeDeviceOnlineInfoResponseBodyDevices {
+	s.SystemVersion = &v
+	return s
+}
+
+func (s *DescribeDeviceOnlineInfoResponseBodyDevices) SetOnline(v int32) *DescribeDeviceOnlineInfoResponseBodyDevices {
+	s.Online = &v
+	return s
+}
+
+func (s *DescribeDeviceOnlineInfoResponseBodyDevices) SetLoginTime(v int64) *DescribeDeviceOnlineInfoResponseBodyDevices {
+	s.LoginTime = &v
 	return s
 }
 
@@ -6564,8 +6733,8 @@ func (s *DescribeDeviceShadowResponseBody) SetDeviceShadow(v *DescribeDeviceShad
 }
 
 type DescribeDeviceShadowResponseBodyDeviceShadow struct {
-	DeviceShadow *string `json:"DeviceShadow,omitempty" xml:"DeviceShadow,omitempty"`
 	DeviceInfo   *string `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty"`
+	DeviceShadow *string `json:"DeviceShadow,omitempty" xml:"DeviceShadow,omitempty"`
 }
 
 func (s DescribeDeviceShadowResponseBodyDeviceShadow) String() string {
@@ -6576,13 +6745,13 @@ func (s DescribeDeviceShadowResponseBodyDeviceShadow) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDeviceShadowResponseBodyDeviceShadow) SetDeviceShadow(v string) *DescribeDeviceShadowResponseBodyDeviceShadow {
-	s.DeviceShadow = &v
+func (s *DescribeDeviceShadowResponseBodyDeviceShadow) SetDeviceInfo(v string) *DescribeDeviceShadowResponseBodyDeviceShadow {
+	s.DeviceInfo = &v
 	return s
 }
 
-func (s *DescribeDeviceShadowResponseBodyDeviceShadow) SetDeviceInfo(v string) *DescribeDeviceShadowResponseBodyDeviceShadow {
-	s.DeviceInfo = &v
+func (s *DescribeDeviceShadowResponseBodyDeviceShadow) SetDeviceShadow(v string) *DescribeDeviceShadowResponseBodyDeviceShadow {
+	s.DeviceShadow = &v
 	return s
 }
 
@@ -6662,17 +6831,17 @@ func (s *DescribeDeviceValiditySchemaResponseBody) SetItemList(v []*DescribeDevi
 }
 
 type DescribeDeviceValiditySchemaResponseBodyItemList struct {
-	Minimum          *float32 `json:"Minimum,omitempty" xml:"Minimum,omitempty"`
-	Type             *string  `json:"Type,omitempty" xml:"Type,omitempty"`
-	Maximum          *float32 `json:"Maximum,omitempty" xml:"Maximum,omitempty"`
-	ItemType         *string  `json:"ItemType,omitempty" xml:"ItemType,omitempty"`
-	EnumListStr      *string  `json:"EnumListStr,omitempty" xml:"EnumListStr,omitempty"`
-	ExclusiveMinimum *bool    `json:"ExclusiveMinimum,omitempty" xml:"ExclusiveMinimum,omitempty"`
-	MaxLength        *int32   `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
-	Required         *string  `json:"Required,omitempty" xml:"Required,omitempty"`
-	Description      *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	ExclusiveMaximum *bool    `json:"ExclusiveMaximum,omitempty" xml:"ExclusiveMaximum,omitempty"`
 	Path             *string  `json:"Path,omitempty" xml:"Path,omitempty"`
+	Type             *string  `json:"Type,omitempty" xml:"Type,omitempty"`
+	ItemType         *string  `json:"ItemType,omitempty" xml:"ItemType,omitempty"`
+	Description      *string  `json:"Description,omitempty" xml:"Description,omitempty"`
+	Required         *string  `json:"Required,omitempty" xml:"Required,omitempty"`
+	Maximum          *float32 `json:"Maximum,omitempty" xml:"Maximum,omitempty"`
+	Minimum          *float32 `json:"Minimum,omitempty" xml:"Minimum,omitempty"`
+	ExclusiveMaximum *bool    `json:"ExclusiveMaximum,omitempty" xml:"ExclusiveMaximum,omitempty"`
+	ExclusiveMinimum *bool    `json:"ExclusiveMinimum,omitempty" xml:"ExclusiveMinimum,omitempty"`
+	EnumListStr      *string  `json:"EnumListStr,omitempty" xml:"EnumListStr,omitempty"`
+	MaxLength        *int32   `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
 	MinLength        *int32   `json:"MinLength,omitempty" xml:"MinLength,omitempty"`
 }
 
@@ -6684,8 +6853,8 @@ func (s DescribeDeviceValiditySchemaResponseBodyItemList) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDeviceValiditySchemaResponseBodyItemList) SetMinimum(v float32) *DescribeDeviceValiditySchemaResponseBodyItemList {
-	s.Minimum = &v
+func (s *DescribeDeviceValiditySchemaResponseBodyItemList) SetPath(v string) *DescribeDeviceValiditySchemaResponseBodyItemList {
+	s.Path = &v
 	return s
 }
 
@@ -6694,33 +6863,8 @@ func (s *DescribeDeviceValiditySchemaResponseBodyItemList) SetType(v string) *De
 	return s
 }
 
-func (s *DescribeDeviceValiditySchemaResponseBodyItemList) SetMaximum(v float32) *DescribeDeviceValiditySchemaResponseBodyItemList {
-	s.Maximum = &v
-	return s
-}
-
 func (s *DescribeDeviceValiditySchemaResponseBodyItemList) SetItemType(v string) *DescribeDeviceValiditySchemaResponseBodyItemList {
 	s.ItemType = &v
-	return s
-}
-
-func (s *DescribeDeviceValiditySchemaResponseBodyItemList) SetEnumListStr(v string) *DescribeDeviceValiditySchemaResponseBodyItemList {
-	s.EnumListStr = &v
-	return s
-}
-
-func (s *DescribeDeviceValiditySchemaResponseBodyItemList) SetExclusiveMinimum(v bool) *DescribeDeviceValiditySchemaResponseBodyItemList {
-	s.ExclusiveMinimum = &v
-	return s
-}
-
-func (s *DescribeDeviceValiditySchemaResponseBodyItemList) SetMaxLength(v int32) *DescribeDeviceValiditySchemaResponseBodyItemList {
-	s.MaxLength = &v
-	return s
-}
-
-func (s *DescribeDeviceValiditySchemaResponseBodyItemList) SetRequired(v string) *DescribeDeviceValiditySchemaResponseBodyItemList {
-	s.Required = &v
 	return s
 }
 
@@ -6729,13 +6873,38 @@ func (s *DescribeDeviceValiditySchemaResponseBodyItemList) SetDescription(v stri
 	return s
 }
 
+func (s *DescribeDeviceValiditySchemaResponseBodyItemList) SetRequired(v string) *DescribeDeviceValiditySchemaResponseBodyItemList {
+	s.Required = &v
+	return s
+}
+
+func (s *DescribeDeviceValiditySchemaResponseBodyItemList) SetMaximum(v float32) *DescribeDeviceValiditySchemaResponseBodyItemList {
+	s.Maximum = &v
+	return s
+}
+
+func (s *DescribeDeviceValiditySchemaResponseBodyItemList) SetMinimum(v float32) *DescribeDeviceValiditySchemaResponseBodyItemList {
+	s.Minimum = &v
+	return s
+}
+
 func (s *DescribeDeviceValiditySchemaResponseBodyItemList) SetExclusiveMaximum(v bool) *DescribeDeviceValiditySchemaResponseBodyItemList {
 	s.ExclusiveMaximum = &v
 	return s
 }
 
-func (s *DescribeDeviceValiditySchemaResponseBodyItemList) SetPath(v string) *DescribeDeviceValiditySchemaResponseBodyItemList {
-	s.Path = &v
+func (s *DescribeDeviceValiditySchemaResponseBodyItemList) SetExclusiveMinimum(v bool) *DescribeDeviceValiditySchemaResponseBodyItemList {
+	s.ExclusiveMinimum = &v
+	return s
+}
+
+func (s *DescribeDeviceValiditySchemaResponseBodyItemList) SetEnumListStr(v string) *DescribeDeviceValiditySchemaResponseBodyItemList {
+	s.EnumListStr = &v
+	return s
+}
+
+func (s *DescribeDeviceValiditySchemaResponseBodyItemList) SetMaxLength(v int32) *DescribeDeviceValiditySchemaResponseBodyItemList {
+	s.MaxLength = &v
 	return s
 }
 
@@ -6814,23 +6983,23 @@ func (s *DescribeMessageResponseBody) SetMessage(v *DescribeMessageResponseBodyM
 }
 
 type DescribeMessageResponseBodyMessage struct {
-	Type           *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
-	Action         *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	Id             *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	ProjectId      *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	PredictSendCnt *int32  `json:"PredictSendCnt,omitempty" xml:"PredictSendCnt,omitempty"`
-	Uri            *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
-	Desc           *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	AuditMsg       *string `json:"AuditMsg,omitempty" xml:"AuditMsg,omitempty"`
 	AppName        *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	AppKey         *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	Type           *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	SendStatus     *int32  `json:"SendStatus,omitempty" xml:"SendStatus,omitempty"`
+	Title          *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Desc           *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	Action         *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	Uri            *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	Parameter      *string `json:"Parameter,omitempty" xml:"Parameter,omitempty"`
+	PredictSendCnt *int32  `json:"PredictSendCnt,omitempty" xml:"PredictSendCnt,omitempty"`
+	AckCnt         *int32  `json:"AckCnt,omitempty" xml:"AckCnt,omitempty"`
 	GmtCreateTime  *int64  `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
 	ExipiredTime   *int64  `json:"ExipiredTime,omitempty" xml:"ExipiredTime,omitempty"`
-	AckCnt         *int32  `json:"AckCnt,omitempty" xml:"AckCnt,omitempty"`
-	Title          *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	Parameter      *string `json:"Parameter,omitempty" xml:"Parameter,omitempty"`
 	Audit          *int32  `json:"Audit,omitempty" xml:"Audit,omitempty"`
-	Id             *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	SendStatus     *int32  `json:"SendStatus,omitempty" xml:"SendStatus,omitempty"`
+	AuditMsg       *string `json:"AuditMsg,omitempty" xml:"AuditMsg,omitempty"`
 }
 
 func (s DescribeMessageResponseBodyMessage) String() string {
@@ -6841,38 +7010,13 @@ func (s DescribeMessageResponseBodyMessage) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeMessageResponseBodyMessage) SetType(v int32) *DescribeMessageResponseBodyMessage {
-	s.Type = &v
-	return s
-}
-
-func (s *DescribeMessageResponseBodyMessage) SetAction(v string) *DescribeMessageResponseBodyMessage {
-	s.Action = &v
+func (s *DescribeMessageResponseBodyMessage) SetId(v int64) *DescribeMessageResponseBodyMessage {
+	s.Id = &v
 	return s
 }
 
 func (s *DescribeMessageResponseBodyMessage) SetProjectId(v string) *DescribeMessageResponseBodyMessage {
 	s.ProjectId = &v
-	return s
-}
-
-func (s *DescribeMessageResponseBodyMessage) SetPredictSendCnt(v int32) *DescribeMessageResponseBodyMessage {
-	s.PredictSendCnt = &v
-	return s
-}
-
-func (s *DescribeMessageResponseBodyMessage) SetUri(v string) *DescribeMessageResponseBodyMessage {
-	s.Uri = &v
-	return s
-}
-
-func (s *DescribeMessageResponseBodyMessage) SetDesc(v string) *DescribeMessageResponseBodyMessage {
-	s.Desc = &v
-	return s
-}
-
-func (s *DescribeMessageResponseBodyMessage) SetAuditMsg(v string) *DescribeMessageResponseBodyMessage {
-	s.AuditMsg = &v
 	return s
 }
 
@@ -6886,6 +7030,51 @@ func (s *DescribeMessageResponseBodyMessage) SetAppKey(v string) *DescribeMessag
 	return s
 }
 
+func (s *DescribeMessageResponseBodyMessage) SetType(v int32) *DescribeMessageResponseBodyMessage {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeMessageResponseBodyMessage) SetSendStatus(v int32) *DescribeMessageResponseBodyMessage {
+	s.SendStatus = &v
+	return s
+}
+
+func (s *DescribeMessageResponseBodyMessage) SetTitle(v string) *DescribeMessageResponseBodyMessage {
+	s.Title = &v
+	return s
+}
+
+func (s *DescribeMessageResponseBodyMessage) SetDesc(v string) *DescribeMessageResponseBodyMessage {
+	s.Desc = &v
+	return s
+}
+
+func (s *DescribeMessageResponseBodyMessage) SetAction(v string) *DescribeMessageResponseBodyMessage {
+	s.Action = &v
+	return s
+}
+
+func (s *DescribeMessageResponseBodyMessage) SetUri(v string) *DescribeMessageResponseBodyMessage {
+	s.Uri = &v
+	return s
+}
+
+func (s *DescribeMessageResponseBodyMessage) SetParameter(v string) *DescribeMessageResponseBodyMessage {
+	s.Parameter = &v
+	return s
+}
+
+func (s *DescribeMessageResponseBodyMessage) SetPredictSendCnt(v int32) *DescribeMessageResponseBodyMessage {
+	s.PredictSendCnt = &v
+	return s
+}
+
+func (s *DescribeMessageResponseBodyMessage) SetAckCnt(v int32) *DescribeMessageResponseBodyMessage {
+	s.AckCnt = &v
+	return s
+}
+
 func (s *DescribeMessageResponseBodyMessage) SetGmtCreateTime(v int64) *DescribeMessageResponseBodyMessage {
 	s.GmtCreateTime = &v
 	return s
@@ -6896,33 +7085,13 @@ func (s *DescribeMessageResponseBodyMessage) SetExipiredTime(v int64) *DescribeM
 	return s
 }
 
-func (s *DescribeMessageResponseBodyMessage) SetAckCnt(v int32) *DescribeMessageResponseBodyMessage {
-	s.AckCnt = &v
-	return s
-}
-
-func (s *DescribeMessageResponseBodyMessage) SetTitle(v string) *DescribeMessageResponseBodyMessage {
-	s.Title = &v
-	return s
-}
-
-func (s *DescribeMessageResponseBodyMessage) SetParameter(v string) *DescribeMessageResponseBodyMessage {
-	s.Parameter = &v
-	return s
-}
-
 func (s *DescribeMessageResponseBodyMessage) SetAudit(v int32) *DescribeMessageResponseBodyMessage {
 	s.Audit = &v
 	return s
 }
 
-func (s *DescribeMessageResponseBodyMessage) SetId(v int64) *DescribeMessageResponseBodyMessage {
-	s.Id = &v
-	return s
-}
-
-func (s *DescribeMessageResponseBodyMessage) SetSendStatus(v int32) *DescribeMessageResponseBodyMessage {
-	s.SendStatus = &v
+func (s *DescribeMessageResponseBodyMessage) SetAuditMsg(v string) *DescribeMessageResponseBodyMessage {
+	s.AuditMsg = &v
 	return s
 }
 
@@ -6979,8 +7148,8 @@ func (s *DescribeMqttClientStatusRequest) SetProjectId(v string) *DescribeMqttCl
 }
 
 type DescribeMqttClientStatusResponseBody struct {
-	ClientStatus *DescribeMqttClientStatusResponseBodyClientStatus `json:"ClientStatus,omitempty" xml:"ClientStatus,omitempty" type:"Struct"`
 	RequestId    *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ClientStatus *DescribeMqttClientStatusResponseBodyClientStatus `json:"ClientStatus,omitempty" xml:"ClientStatus,omitempty" type:"Struct"`
 }
 
 func (s DescribeMqttClientStatusResponseBody) String() string {
@@ -6991,20 +7160,20 @@ func (s DescribeMqttClientStatusResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeMqttClientStatusResponseBody) SetClientStatus(v *DescribeMqttClientStatusResponseBodyClientStatus) *DescribeMqttClientStatusResponseBody {
-	s.ClientStatus = v
-	return s
-}
-
 func (s *DescribeMqttClientStatusResponseBody) SetRequestId(v string) *DescribeMqttClientStatusResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *DescribeMqttClientStatusResponseBody) SetClientStatus(v *DescribeMqttClientStatusResponseBodyClientStatus) *DescribeMqttClientStatusResponseBody {
+	s.ClientStatus = v
+	return s
+}
+
 type DescribeMqttClientStatusResponseBodyClientStatus struct {
 	Status       *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	CleanSession *string `json:"CleanSession,omitempty" xml:"CleanSession,omitempty"`
 	LastUpdate   *int64  `json:"LastUpdate,omitempty" xml:"LastUpdate,omitempty"`
+	CleanSession *string `json:"CleanSession,omitempty" xml:"CleanSession,omitempty"`
 }
 
 func (s DescribeMqttClientStatusResponseBodyClientStatus) String() string {
@@ -7020,13 +7189,13 @@ func (s *DescribeMqttClientStatusResponseBodyClientStatus) SetStatus(v int32) *D
 	return s
 }
 
-func (s *DescribeMqttClientStatusResponseBodyClientStatus) SetCleanSession(v string) *DescribeMqttClientStatusResponseBodyClientStatus {
-	s.CleanSession = &v
+func (s *DescribeMqttClientStatusResponseBodyClientStatus) SetLastUpdate(v int64) *DescribeMqttClientStatusResponseBodyClientStatus {
+	s.LastUpdate = &v
 	return s
 }
 
-func (s *DescribeMqttClientStatusResponseBodyClientStatus) SetLastUpdate(v int64) *DescribeMqttClientStatusResponseBodyClientStatus {
-	s.LastUpdate = &v
+func (s *DescribeMqttClientStatusResponseBodyClientStatus) SetCleanSession(v string) *DescribeMqttClientStatusResponseBodyClientStatus {
+	s.CleanSession = &v
 	return s
 }
 
@@ -7106,12 +7275,12 @@ func (s *DescribeMqttMessageResponseBody) SetMessage(v *DescribeMqttMessageRespo
 }
 
 type DescribeMqttMessageResponseBodyMessage struct {
-	Time    *int64  `json:"Time,omitempty" xml:"Time,omitempty"`
-	AppKey  *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
 	Mid     *string `json:"Mid,omitempty" xml:"Mid,omitempty"`
+	AppKey  *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
 	Topic   *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	Payload *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
 	QoS     *int32  `json:"QoS,omitempty" xml:"QoS,omitempty"`
+	Payload *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
+	Time    *int64  `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
 func (s DescribeMqttMessageResponseBodyMessage) String() string {
@@ -7122,8 +7291,8 @@ func (s DescribeMqttMessageResponseBodyMessage) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeMqttMessageResponseBodyMessage) SetTime(v int64) *DescribeMqttMessageResponseBodyMessage {
-	s.Time = &v
+func (s *DescribeMqttMessageResponseBodyMessage) SetMid(v string) *DescribeMqttMessageResponseBodyMessage {
+	s.Mid = &v
 	return s
 }
 
@@ -7132,13 +7301,13 @@ func (s *DescribeMqttMessageResponseBodyMessage) SetAppKey(v string) *DescribeMq
 	return s
 }
 
-func (s *DescribeMqttMessageResponseBodyMessage) SetMid(v string) *DescribeMqttMessageResponseBodyMessage {
-	s.Mid = &v
+func (s *DescribeMqttMessageResponseBodyMessage) SetTopic(v string) *DescribeMqttMessageResponseBodyMessage {
+	s.Topic = &v
 	return s
 }
 
-func (s *DescribeMqttMessageResponseBodyMessage) SetTopic(v string) *DescribeMqttMessageResponseBodyMessage {
-	s.Topic = &v
+func (s *DescribeMqttMessageResponseBodyMessage) SetQoS(v int32) *DescribeMqttMessageResponseBodyMessage {
+	s.QoS = &v
 	return s
 }
 
@@ -7147,8 +7316,8 @@ func (s *DescribeMqttMessageResponseBodyMessage) SetPayload(v string) *DescribeM
 	return s
 }
 
-func (s *DescribeMqttMessageResponseBodyMessage) SetQoS(v int32) *DescribeMqttMessageResponseBodyMessage {
-	s.QoS = &v
+func (s *DescribeMqttMessageResponseBodyMessage) SetTime(v int64) *DescribeMqttMessageResponseBodyMessage {
+	s.Time = &v
 	return s
 }
 
@@ -7315,8 +7484,8 @@ func (s *DescribeOpenAccountRequest) SetOpenId(v string) *DescribeOpenAccountReq
 }
 
 type DescribeOpenAccountResponseBody struct {
-	OpenAccount *DescribeOpenAccountResponseBodyOpenAccount `json:"OpenAccount,omitempty" xml:"OpenAccount,omitempty" type:"Struct"`
 	RequestId   *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	OpenAccount *DescribeOpenAccountResponseBodyOpenAccount `json:"OpenAccount,omitempty" xml:"OpenAccount,omitempty" type:"Struct"`
 }
 
 func (s DescribeOpenAccountResponseBody) String() string {
@@ -7327,28 +7496,28 @@ func (s DescribeOpenAccountResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeOpenAccountResponseBody) SetOpenAccount(v *DescribeOpenAccountResponseBodyOpenAccount) *DescribeOpenAccountResponseBody {
-	s.OpenAccount = v
-	return s
-}
-
 func (s *DescribeOpenAccountResponseBody) SetRequestId(v string) *DescribeOpenAccountResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *DescribeOpenAccountResponseBody) SetOpenAccount(v *DescribeOpenAccountResponseBodyOpenAccount) *DescribeOpenAccountResponseBody {
+	s.OpenAccount = v
+	return s
+}
+
 type DescribeOpenAccountResponseBodyOpenAccount struct {
-	Status          *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type            *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
-	DisplayName     *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	CreateAccessKey *string `json:"CreateAccessKey,omitempty" xml:"CreateAccessKey,omitempty"`
-	OpenId          *string `json:"OpenId,omitempty" xml:"OpenId,omitempty"`
-	Mobile          *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	IdentityId      *string `json:"IdentityId,omitempty" xml:"IdentityId,omitempty"`
+	AliyunId        *string `json:"AliyunId,omitempty" xml:"AliyunId,omitempty"`
+	DisplayName     *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	LoginId         *string `json:"LoginId,omitempty" xml:"LoginId,omitempty"`
 	Idp             *string `json:"Idp,omitempty" xml:"Idp,omitempty"`
-	AliyunId        *string `json:"AliyunId,omitempty" xml:"AliyunId,omitempty"`
+	OpenId          *string `json:"OpenId,omitempty" xml:"OpenId,omitempty"`
+	Mobile          *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	Type            *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	Status          *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	CreateAccessKey *string `json:"CreateAccessKey,omitempty" xml:"CreateAccessKey,omitempty"`
 }
 
 func (s DescribeOpenAccountResponseBodyOpenAccount) String() string {
@@ -7359,43 +7528,18 @@ func (s DescribeOpenAccountResponseBodyOpenAccount) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeOpenAccountResponseBodyOpenAccount) SetStatus(v int32) *DescribeOpenAccountResponseBodyOpenAccount {
-	s.Status = &v
+func (s *DescribeOpenAccountResponseBodyOpenAccount) SetIdentityId(v string) *DescribeOpenAccountResponseBodyOpenAccount {
+	s.IdentityId = &v
 	return s
 }
 
-func (s *DescribeOpenAccountResponseBodyOpenAccount) SetType(v int32) *DescribeOpenAccountResponseBodyOpenAccount {
-	s.Type = &v
+func (s *DescribeOpenAccountResponseBodyOpenAccount) SetAliyunId(v string) *DescribeOpenAccountResponseBodyOpenAccount {
+	s.AliyunId = &v
 	return s
 }
 
 func (s *DescribeOpenAccountResponseBodyOpenAccount) SetDisplayName(v string) *DescribeOpenAccountResponseBodyOpenAccount {
 	s.DisplayName = &v
-	return s
-}
-
-func (s *DescribeOpenAccountResponseBodyOpenAccount) SetCreateAccessKey(v string) *DescribeOpenAccountResponseBodyOpenAccount {
-	s.CreateAccessKey = &v
-	return s
-}
-
-func (s *DescribeOpenAccountResponseBodyOpenAccount) SetOpenId(v string) *DescribeOpenAccountResponseBodyOpenAccount {
-	s.OpenId = &v
-	return s
-}
-
-func (s *DescribeOpenAccountResponseBodyOpenAccount) SetMobile(v string) *DescribeOpenAccountResponseBodyOpenAccount {
-	s.Mobile = &v
-	return s
-}
-
-func (s *DescribeOpenAccountResponseBodyOpenAccount) SetRegion(v string) *DescribeOpenAccountResponseBodyOpenAccount {
-	s.Region = &v
-	return s
-}
-
-func (s *DescribeOpenAccountResponseBodyOpenAccount) SetIdentityId(v string) *DescribeOpenAccountResponseBodyOpenAccount {
-	s.IdentityId = &v
 	return s
 }
 
@@ -7409,8 +7553,33 @@ func (s *DescribeOpenAccountResponseBodyOpenAccount) SetIdp(v string) *DescribeO
 	return s
 }
 
-func (s *DescribeOpenAccountResponseBodyOpenAccount) SetAliyunId(v string) *DescribeOpenAccountResponseBodyOpenAccount {
-	s.AliyunId = &v
+func (s *DescribeOpenAccountResponseBodyOpenAccount) SetOpenId(v string) *DescribeOpenAccountResponseBodyOpenAccount {
+	s.OpenId = &v
+	return s
+}
+
+func (s *DescribeOpenAccountResponseBodyOpenAccount) SetMobile(v string) *DescribeOpenAccountResponseBodyOpenAccount {
+	s.Mobile = &v
+	return s
+}
+
+func (s *DescribeOpenAccountResponseBodyOpenAccount) SetType(v int32) *DescribeOpenAccountResponseBodyOpenAccount {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeOpenAccountResponseBodyOpenAccount) SetStatus(v int32) *DescribeOpenAccountResponseBodyOpenAccount {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeOpenAccountResponseBodyOpenAccount) SetRegion(v string) *DescribeOpenAccountResponseBodyOpenAccount {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeOpenAccountResponseBodyOpenAccount) SetCreateAccessKey(v string) *DescribeOpenAccountResponseBodyOpenAccount {
+	s.CreateAccessKey = &v
 	return s
 }
 
@@ -7484,27 +7653,27 @@ func (s *DescribeOsVersionResponseBody) SetOsVersion(v *DescribeOsVersionRespons
 }
 
 type DescribeOsVersionResponseBodyOsVersion struct {
-	Status                *string                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Id                    *int64                                                    `json:"Id,omitempty" xml:"Id,omitempty"`
 	DeviceModelId         *string                                                   `json:"DeviceModelId,omitempty" xml:"DeviceModelId,omitempty"`
-	BlackVersionList      *string                                                   `json:"BlackVersionList,omitempty" xml:"BlackVersionList,omitempty"`
-	IsMilestone           *string                                                   `json:"IsMilestone,omitempty" xml:"IsMilestone,omitempty"`
-	GmtModify             *string                                                   `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
+	SystemVersion         *string                                                   `json:"SystemVersion,omitempty" xml:"SystemVersion,omitempty"`
 	ReleaseNote           *string                                                   `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
 	Remark                *string                                                   `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	SystemVersion         *string                                                   `json:"SystemVersion,omitempty" xml:"SystemVersion,omitempty"`
+	Status                *string                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
+	BlackVersionList      *string                                                   `json:"BlackVersionList,omitempty" xml:"BlackVersionList,omitempty"`
+	WhiteVersionList      *string                                                   `json:"WhiteVersionList,omitempty" xml:"WhiteVersionList,omitempty"`
+	MinClientVersion      *string                                                   `json:"MinClientVersion,omitempty" xml:"MinClientVersion,omitempty"`
+	MaxClientVersion      *string                                                   `json:"MaxClientVersion,omitempty" xml:"MaxClientVersion,omitempty"`
+	IsMilestone           *string                                                   `json:"IsMilestone,omitempty" xml:"IsMilestone,omitempty"`
+	IsForceUpgrade        *string                                                   `json:"IsForceUpgrade,omitempty" xml:"IsForceUpgrade,omitempty"`
+	IsForceNightUpgrade   *string                                                   `json:"IsForceNightUpgrade,omitempty" xml:"IsForceNightUpgrade,omitempty"`
+	GmtCreate             *string                                                   `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModify             *string                                                   `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
 	StatusName            *string                                                   `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
 	DeviceModelName       *string                                                   `json:"DeviceModelName,omitempty" xml:"DeviceModelName,omitempty"`
-	WhiteVersionList      *string                                                   `json:"WhiteVersionList,omitempty" xml:"WhiteVersionList,omitempty"`
-	MaxClientVersion      *string                                                   `json:"MaxClientVersion,omitempty" xml:"MaxClientVersion,omitempty"`
-	RomList               []*DescribeOsVersionResponseBodyOsVersionRomList          `json:"RomList,omitempty" xml:"RomList,omitempty" type:"Repeated"`
-	MinClientVersion      *string                                                   `json:"MinClientVersion,omitempty" xml:"MinClientVersion,omitempty"`
-	NightUpgradeOption    *DescribeOsVersionResponseBodyOsVersionNightUpgradeOption `json:"NightUpgradeOption,omitempty" xml:"NightUpgradeOption,omitempty" type:"Struct"`
-	GmtCreate             *string                                                   `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	IsForceNightUpgrade   *string                                                   `json:"IsForceNightUpgrade,omitempty" xml:"IsForceNightUpgrade,omitempty"`
-	MobileDownloadMaxSize *string                                                   `json:"MobileDownloadMaxSize,omitempty" xml:"MobileDownloadMaxSize,omitempty"`
 	EnableMobileDownload  *string                                                   `json:"EnableMobileDownload,omitempty" xml:"EnableMobileDownload,omitempty"`
-	IsForceUpgrade        *string                                                   `json:"IsForceUpgrade,omitempty" xml:"IsForceUpgrade,omitempty"`
-	Id                    *int64                                                    `json:"Id,omitempty" xml:"Id,omitempty"`
+	MobileDownloadMaxSize *string                                                   `json:"MobileDownloadMaxSize,omitempty" xml:"MobileDownloadMaxSize,omitempty"`
+	RomList               []*DescribeOsVersionResponseBodyOsVersionRomList          `json:"RomList,omitempty" xml:"RomList,omitempty" type:"Repeated"`
+	NightUpgradeOption    *DescribeOsVersionResponseBodyOsVersionNightUpgradeOption `json:"NightUpgradeOption,omitempty" xml:"NightUpgradeOption,omitempty" type:"Struct"`
 }
 
 func (s DescribeOsVersionResponseBodyOsVersion) String() string {
@@ -7515,8 +7684,8 @@ func (s DescribeOsVersionResponseBodyOsVersion) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeOsVersionResponseBodyOsVersion) SetStatus(v string) *DescribeOsVersionResponseBodyOsVersion {
-	s.Status = &v
+func (s *DescribeOsVersionResponseBodyOsVersion) SetId(v int64) *DescribeOsVersionResponseBodyOsVersion {
+	s.Id = &v
 	return s
 }
 
@@ -7525,18 +7694,8 @@ func (s *DescribeOsVersionResponseBodyOsVersion) SetDeviceModelId(v string) *Des
 	return s
 }
 
-func (s *DescribeOsVersionResponseBodyOsVersion) SetBlackVersionList(v string) *DescribeOsVersionResponseBodyOsVersion {
-	s.BlackVersionList = &v
-	return s
-}
-
-func (s *DescribeOsVersionResponseBodyOsVersion) SetIsMilestone(v string) *DescribeOsVersionResponseBodyOsVersion {
-	s.IsMilestone = &v
-	return s
-}
-
-func (s *DescribeOsVersionResponseBodyOsVersion) SetGmtModify(v string) *DescribeOsVersionResponseBodyOsVersion {
-	s.GmtModify = &v
+func (s *DescribeOsVersionResponseBodyOsVersion) SetSystemVersion(v string) *DescribeOsVersionResponseBodyOsVersion {
+	s.SystemVersion = &v
 	return s
 }
 
@@ -7550,8 +7709,53 @@ func (s *DescribeOsVersionResponseBodyOsVersion) SetRemark(v string) *DescribeOs
 	return s
 }
 
-func (s *DescribeOsVersionResponseBodyOsVersion) SetSystemVersion(v string) *DescribeOsVersionResponseBodyOsVersion {
-	s.SystemVersion = &v
+func (s *DescribeOsVersionResponseBodyOsVersion) SetStatus(v string) *DescribeOsVersionResponseBodyOsVersion {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeOsVersionResponseBodyOsVersion) SetBlackVersionList(v string) *DescribeOsVersionResponseBodyOsVersion {
+	s.BlackVersionList = &v
+	return s
+}
+
+func (s *DescribeOsVersionResponseBodyOsVersion) SetWhiteVersionList(v string) *DescribeOsVersionResponseBodyOsVersion {
+	s.WhiteVersionList = &v
+	return s
+}
+
+func (s *DescribeOsVersionResponseBodyOsVersion) SetMinClientVersion(v string) *DescribeOsVersionResponseBodyOsVersion {
+	s.MinClientVersion = &v
+	return s
+}
+
+func (s *DescribeOsVersionResponseBodyOsVersion) SetMaxClientVersion(v string) *DescribeOsVersionResponseBodyOsVersion {
+	s.MaxClientVersion = &v
+	return s
+}
+
+func (s *DescribeOsVersionResponseBodyOsVersion) SetIsMilestone(v string) *DescribeOsVersionResponseBodyOsVersion {
+	s.IsMilestone = &v
+	return s
+}
+
+func (s *DescribeOsVersionResponseBodyOsVersion) SetIsForceUpgrade(v string) *DescribeOsVersionResponseBodyOsVersion {
+	s.IsForceUpgrade = &v
+	return s
+}
+
+func (s *DescribeOsVersionResponseBodyOsVersion) SetIsForceNightUpgrade(v string) *DescribeOsVersionResponseBodyOsVersion {
+	s.IsForceNightUpgrade = &v
+	return s
+}
+
+func (s *DescribeOsVersionResponseBodyOsVersion) SetGmtCreate(v string) *DescribeOsVersionResponseBodyOsVersion {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeOsVersionResponseBodyOsVersion) SetGmtModify(v string) *DescribeOsVersionResponseBodyOsVersion {
+	s.GmtModify = &v
 	return s
 }
 
@@ -7565,38 +7769,8 @@ func (s *DescribeOsVersionResponseBodyOsVersion) SetDeviceModelName(v string) *D
 	return s
 }
 
-func (s *DescribeOsVersionResponseBodyOsVersion) SetWhiteVersionList(v string) *DescribeOsVersionResponseBodyOsVersion {
-	s.WhiteVersionList = &v
-	return s
-}
-
-func (s *DescribeOsVersionResponseBodyOsVersion) SetMaxClientVersion(v string) *DescribeOsVersionResponseBodyOsVersion {
-	s.MaxClientVersion = &v
-	return s
-}
-
-func (s *DescribeOsVersionResponseBodyOsVersion) SetRomList(v []*DescribeOsVersionResponseBodyOsVersionRomList) *DescribeOsVersionResponseBodyOsVersion {
-	s.RomList = v
-	return s
-}
-
-func (s *DescribeOsVersionResponseBodyOsVersion) SetMinClientVersion(v string) *DescribeOsVersionResponseBodyOsVersion {
-	s.MinClientVersion = &v
-	return s
-}
-
-func (s *DescribeOsVersionResponseBodyOsVersion) SetNightUpgradeOption(v *DescribeOsVersionResponseBodyOsVersionNightUpgradeOption) *DescribeOsVersionResponseBodyOsVersion {
-	s.NightUpgradeOption = v
-	return s
-}
-
-func (s *DescribeOsVersionResponseBodyOsVersion) SetGmtCreate(v string) *DescribeOsVersionResponseBodyOsVersion {
-	s.GmtCreate = &v
-	return s
-}
-
-func (s *DescribeOsVersionResponseBodyOsVersion) SetIsForceNightUpgrade(v string) *DescribeOsVersionResponseBodyOsVersion {
-	s.IsForceNightUpgrade = &v
+func (s *DescribeOsVersionResponseBodyOsVersion) SetEnableMobileDownload(v string) *DescribeOsVersionResponseBodyOsVersion {
+	s.EnableMobileDownload = &v
 	return s
 }
 
@@ -7605,32 +7779,27 @@ func (s *DescribeOsVersionResponseBodyOsVersion) SetMobileDownloadMaxSize(v stri
 	return s
 }
 
-func (s *DescribeOsVersionResponseBodyOsVersion) SetEnableMobileDownload(v string) *DescribeOsVersionResponseBodyOsVersion {
-	s.EnableMobileDownload = &v
+func (s *DescribeOsVersionResponseBodyOsVersion) SetRomList(v []*DescribeOsVersionResponseBodyOsVersionRomList) *DescribeOsVersionResponseBodyOsVersion {
+	s.RomList = v
 	return s
 }
 
-func (s *DescribeOsVersionResponseBodyOsVersion) SetIsForceUpgrade(v string) *DescribeOsVersionResponseBodyOsVersion {
-	s.IsForceUpgrade = &v
-	return s
-}
-
-func (s *DescribeOsVersionResponseBodyOsVersion) SetId(v int64) *DescribeOsVersionResponseBodyOsVersion {
-	s.Id = &v
+func (s *DescribeOsVersionResponseBodyOsVersion) SetNightUpgradeOption(v *DescribeOsVersionResponseBodyOsVersionNightUpgradeOption) *DescribeOsVersionResponseBodyOsVersion {
+	s.NightUpgradeOption = v
 	return s
 }
 
 type DescribeOsVersionResponseBodyOsVersionRomList struct {
-	GmtModify   *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
-	SplitNum    *string `json:"SplitNum,omitempty" xml:"SplitNum,omitempty"`
-	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
-	Size        *string `json:"Size,omitempty" xml:"Size,omitempty"`
-	GmtCreate   *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	VersionId   *int64  `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
-	Md5         *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	BaseVersion *string `json:"BaseVersion,omitempty" xml:"BaseVersion,omitempty"`
 	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	VersionId   *int64  `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	BaseVersion *string `json:"BaseVersion,omitempty" xml:"BaseVersion,omitempty"`
+	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
 	OriginalUrl *string `json:"OriginalUrl,omitempty" xml:"OriginalUrl,omitempty"`
+	Md5         *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	Size        *string `json:"Size,omitempty" xml:"Size,omitempty"`
+	SplitNum    *string `json:"SplitNum,omitempty" xml:"SplitNum,omitempty"`
+	GmtCreate   *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModify   *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
 }
 
 func (s DescribeOsVersionResponseBodyOsVersionRomList) String() string {
@@ -7641,28 +7810,8 @@ func (s DescribeOsVersionResponseBodyOsVersionRomList) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeOsVersionResponseBodyOsVersionRomList) SetGmtModify(v string) *DescribeOsVersionResponseBodyOsVersionRomList {
-	s.GmtModify = &v
-	return s
-}
-
-func (s *DescribeOsVersionResponseBodyOsVersionRomList) SetSplitNum(v string) *DescribeOsVersionResponseBodyOsVersionRomList {
-	s.SplitNum = &v
-	return s
-}
-
-func (s *DescribeOsVersionResponseBodyOsVersionRomList) SetDownloadUrl(v string) *DescribeOsVersionResponseBodyOsVersionRomList {
-	s.DownloadUrl = &v
-	return s
-}
-
-func (s *DescribeOsVersionResponseBodyOsVersionRomList) SetSize(v string) *DescribeOsVersionResponseBodyOsVersionRomList {
-	s.Size = &v
-	return s
-}
-
-func (s *DescribeOsVersionResponseBodyOsVersionRomList) SetGmtCreate(v string) *DescribeOsVersionResponseBodyOsVersionRomList {
-	s.GmtCreate = &v
+func (s *DescribeOsVersionResponseBodyOsVersionRomList) SetId(v int64) *DescribeOsVersionResponseBodyOsVersionRomList {
+	s.Id = &v
 	return s
 }
 
@@ -7671,18 +7820,13 @@ func (s *DescribeOsVersionResponseBodyOsVersionRomList) SetVersionId(v int64) *D
 	return s
 }
 
-func (s *DescribeOsVersionResponseBodyOsVersionRomList) SetMd5(v string) *DescribeOsVersionResponseBodyOsVersionRomList {
-	s.Md5 = &v
-	return s
-}
-
 func (s *DescribeOsVersionResponseBodyOsVersionRomList) SetBaseVersion(v string) *DescribeOsVersionResponseBodyOsVersionRomList {
 	s.BaseVersion = &v
 	return s
 }
 
-func (s *DescribeOsVersionResponseBodyOsVersionRomList) SetId(v int64) *DescribeOsVersionResponseBodyOsVersionRomList {
-	s.Id = &v
+func (s *DescribeOsVersionResponseBodyOsVersionRomList) SetDownloadUrl(v string) *DescribeOsVersionResponseBodyOsVersionRomList {
+	s.DownloadUrl = &v
 	return s
 }
 
@@ -7691,10 +7835,35 @@ func (s *DescribeOsVersionResponseBodyOsVersionRomList) SetOriginalUrl(v string)
 	return s
 }
 
+func (s *DescribeOsVersionResponseBodyOsVersionRomList) SetMd5(v string) *DescribeOsVersionResponseBodyOsVersionRomList {
+	s.Md5 = &v
+	return s
+}
+
+func (s *DescribeOsVersionResponseBodyOsVersionRomList) SetSize(v string) *DescribeOsVersionResponseBodyOsVersionRomList {
+	s.Size = &v
+	return s
+}
+
+func (s *DescribeOsVersionResponseBodyOsVersionRomList) SetSplitNum(v string) *DescribeOsVersionResponseBodyOsVersionRomList {
+	s.SplitNum = &v
+	return s
+}
+
+func (s *DescribeOsVersionResponseBodyOsVersionRomList) SetGmtCreate(v string) *DescribeOsVersionResponseBodyOsVersionRomList {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeOsVersionResponseBodyOsVersionRomList) SetGmtModify(v string) *DescribeOsVersionResponseBodyOsVersionRomList {
+	s.GmtModify = &v
+	return s
+}
+
 type DescribeOsVersionResponseBodyOsVersionNightUpgradeOption struct {
 	DownloadType    *string `json:"DownloadType,omitempty" xml:"DownloadType,omitempty"`
-	IsAllowedCancel *string `json:"IsAllowedCancel,omitempty" xml:"IsAllowedCancel,omitempty"`
 	IsShowTip       *string `json:"IsShowTip,omitempty" xml:"IsShowTip,omitempty"`
+	IsAllowedCancel *string `json:"IsAllowedCancel,omitempty" xml:"IsAllowedCancel,omitempty"`
 }
 
 func (s DescribeOsVersionResponseBodyOsVersionNightUpgradeOption) String() string {
@@ -7710,13 +7879,13 @@ func (s *DescribeOsVersionResponseBodyOsVersionNightUpgradeOption) SetDownloadTy
 	return s
 }
 
-func (s *DescribeOsVersionResponseBodyOsVersionNightUpgradeOption) SetIsAllowedCancel(v string) *DescribeOsVersionResponseBodyOsVersionNightUpgradeOption {
-	s.IsAllowedCancel = &v
+func (s *DescribeOsVersionResponseBodyOsVersionNightUpgradeOption) SetIsShowTip(v string) *DescribeOsVersionResponseBodyOsVersionNightUpgradeOption {
+	s.IsShowTip = &v
 	return s
 }
 
-func (s *DescribeOsVersionResponseBodyOsVersionNightUpgradeOption) SetIsShowTip(v string) *DescribeOsVersionResponseBodyOsVersionNightUpgradeOption {
-	s.IsShowTip = &v
+func (s *DescribeOsVersionResponseBodyOsVersionNightUpgradeOption) SetIsAllowedCancel(v string) *DescribeOsVersionResponseBodyOsVersionNightUpgradeOption {
+	s.IsAllowedCancel = &v
 	return s
 }
 
@@ -7761,8 +7930,8 @@ func (s *DescribeProjectRequest) SetProjectId(v string) *DescribeProjectRequest 
 }
 
 type DescribeProjectResponseBody struct {
-	Project   *DescribeProjectResponseBodyProject `json:"Project,omitempty" xml:"Project,omitempty" type:"Struct"`
 	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Project   *DescribeProjectResponseBodyProject `json:"Project,omitempty" xml:"Project,omitempty" type:"Struct"`
 }
 
 func (s DescribeProjectResponseBody) String() string {
@@ -7773,25 +7942,25 @@ func (s DescribeProjectResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeProjectResponseBody) SetProject(v *DescribeProjectResponseBodyProject) *DescribeProjectResponseBody {
-	s.Project = v
-	return s
-}
-
 func (s *DescribeProjectResponseBody) SetRequestId(v string) *DescribeProjectResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *DescribeProjectResponseBody) SetProject(v *DescribeProjectResponseBodyProject) *DescribeProjectResponseBody {
+	s.Project = v
+	return s
+}
+
 type DescribeProjectResponseBodyProject struct {
+	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	ProjectId   *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Status      *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	ProjectId   *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	GmtCreate   *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	GmtModified *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	Creator     *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
 }
 
@@ -7801,6 +7970,26 @@ func (s DescribeProjectResponseBodyProject) String() string {
 
 func (s DescribeProjectResponseBodyProject) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeProjectResponseBodyProject) SetId(v int64) *DescribeProjectResponseBodyProject {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyProject) SetProjectId(v string) *DescribeProjectResponseBodyProject {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyProject) SetUserId(v string) *DescribeProjectResponseBodyProject {
+	s.UserId = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyProject) SetName(v string) *DescribeProjectResponseBodyProject {
+	s.Name = &v
+	return s
 }
 
 func (s *DescribeProjectResponseBodyProject) SetStatus(v int32) *DescribeProjectResponseBodyProject {
@@ -7813,16 +8002,6 @@ func (s *DescribeProjectResponseBodyProject) SetDescription(v string) *DescribeP
 	return s
 }
 
-func (s *DescribeProjectResponseBodyProject) SetUserId(v string) *DescribeProjectResponseBodyProject {
-	s.UserId = &v
-	return s
-}
-
-func (s *DescribeProjectResponseBodyProject) SetProjectId(v string) *DescribeProjectResponseBodyProject {
-	s.ProjectId = &v
-	return s
-}
-
 func (s *DescribeProjectResponseBodyProject) SetGmtCreate(v int64) *DescribeProjectResponseBodyProject {
 	s.GmtCreate = &v
 	return s
@@ -7830,16 +8009,6 @@ func (s *DescribeProjectResponseBodyProject) SetGmtCreate(v int64) *DescribeProj
 
 func (s *DescribeProjectResponseBodyProject) SetGmtModified(v int64) *DescribeProjectResponseBodyProject {
 	s.GmtModified = &v
-	return s
-}
-
-func (s *DescribeProjectResponseBodyProject) SetName(v string) *DescribeProjectResponseBodyProject {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeProjectResponseBodyProject) SetId(v int64) *DescribeProjectResponseBodyProject {
-	s.Id = &v
 	return s
 }
 
@@ -7918,12 +8087,12 @@ func (s *DescribeProjectAppSecurityResponseBody) SetProjectAppSecurity(v *Descri
 }
 
 type DescribeProjectAppSecurityResponseBodyProjectAppSecurity struct {
-	AppSecret   *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
-	AppKey      *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppKey      *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	AppSecret   *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
 	GmtCreate   *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	GmtModified *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
 func (s DescribeProjectAppSecurityResponseBodyProjectAppSecurity) String() string {
@@ -7934,8 +8103,13 @@ func (s DescribeProjectAppSecurityResponseBodyProjectAppSecurity) GoString() str
 	return s.String()
 }
 
-func (s *DescribeProjectAppSecurityResponseBodyProjectAppSecurity) SetAppSecret(v string) *DescribeProjectAppSecurityResponseBodyProjectAppSecurity {
-	s.AppSecret = &v
+func (s *DescribeProjectAppSecurityResponseBodyProjectAppSecurity) SetId(v int64) *DescribeProjectAppSecurityResponseBodyProjectAppSecurity {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeProjectAppSecurityResponseBodyProjectAppSecurity) SetAppId(v string) *DescribeProjectAppSecurityResponseBodyProjectAppSecurity {
+	s.AppId = &v
 	return s
 }
 
@@ -7944,8 +8118,8 @@ func (s *DescribeProjectAppSecurityResponseBodyProjectAppSecurity) SetAppKey(v s
 	return s
 }
 
-func (s *DescribeProjectAppSecurityResponseBodyProjectAppSecurity) SetAppId(v string) *DescribeProjectAppSecurityResponseBodyProjectAppSecurity {
-	s.AppId = &v
+func (s *DescribeProjectAppSecurityResponseBodyProjectAppSecurity) SetAppSecret(v string) *DescribeProjectAppSecurityResponseBodyProjectAppSecurity {
+	s.AppSecret = &v
 	return s
 }
 
@@ -7956,11 +8130,6 @@ func (s *DescribeProjectAppSecurityResponseBodyProjectAppSecurity) SetGmtCreate(
 
 func (s *DescribeProjectAppSecurityResponseBodyProjectAppSecurity) SetGmtModified(v int64) *DescribeProjectAppSecurityResponseBodyProjectAppSecurity {
 	s.GmtModified = &v
-	return s
-}
-
-func (s *DescribeProjectAppSecurityResponseBodyProjectAppSecurity) SetId(v int64) *DescribeProjectAppSecurityResponseBodyProjectAppSecurity {
-	s.Id = &v
 	return s
 }
 
@@ -8109,11 +8278,11 @@ func (s *DescribeVersionDeviceGroupResponseBody) SetDeviceGroup(v *DescribeVersi
 }
 
 type DescribeVersionDeviceGroupResponseBodyDeviceGroup struct {
-	GmtModify   *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
+	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	GmtCreate   *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	GmtModify   *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
 	MaxCount    *string `json:"MaxCount,omitempty" xml:"MaxCount,omitempty"`
 }
 
@@ -8125,8 +8294,13 @@ func (s DescribeVersionDeviceGroupResponseBodyDeviceGroup) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeVersionDeviceGroupResponseBodyDeviceGroup) SetGmtModify(v string) *DescribeVersionDeviceGroupResponseBodyDeviceGroup {
-	s.GmtModify = &v
+func (s *DescribeVersionDeviceGroupResponseBodyDeviceGroup) SetId(v int64) *DescribeVersionDeviceGroupResponseBodyDeviceGroup {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeVersionDeviceGroupResponseBodyDeviceGroup) SetName(v string) *DescribeVersionDeviceGroupResponseBodyDeviceGroup {
+	s.Name = &v
 	return s
 }
 
@@ -8140,13 +8314,8 @@ func (s *DescribeVersionDeviceGroupResponseBodyDeviceGroup) SetGmtCreate(v strin
 	return s
 }
 
-func (s *DescribeVersionDeviceGroupResponseBodyDeviceGroup) SetName(v string) *DescribeVersionDeviceGroupResponseBodyDeviceGroup {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeVersionDeviceGroupResponseBodyDeviceGroup) SetId(v int64) *DescribeVersionDeviceGroupResponseBodyDeviceGroup {
-	s.Id = &v
+func (s *DescribeVersionDeviceGroupResponseBodyDeviceGroup) SetGmtModify(v string) *DescribeVersionDeviceGroupResponseBodyDeviceGroup {
+	s.GmtModify = &v
 	return s
 }
 
@@ -8343,8 +8512,8 @@ func (s *FindAppVersionsRequest) SetRemark(v string) *FindAppVersionsRequest {
 }
 
 type FindAppVersionsResponseBody struct {
-	AppVersionList *FindAppVersionsResponseBodyAppVersionList `json:"AppVersionList,omitempty" xml:"AppVersionList,omitempty" type:"Struct"`
 	RequestId      *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	AppVersionList *FindAppVersionsResponseBodyAppVersionList `json:"AppVersionList,omitempty" xml:"AppVersionList,omitempty" type:"Struct"`
 }
 
 func (s FindAppVersionsResponseBody) String() string {
@@ -8355,19 +8524,19 @@ func (s FindAppVersionsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *FindAppVersionsResponseBody) SetAppVersionList(v *FindAppVersionsResponseBodyAppVersionList) *FindAppVersionsResponseBody {
-	s.AppVersionList = v
-	return s
-}
-
 func (s *FindAppVersionsResponseBody) SetRequestId(v string) *FindAppVersionsResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *FindAppVersionsResponseBody) SetAppVersionList(v *FindAppVersionsResponseBodyAppVersionList) *FindAppVersionsResponseBody {
+	s.AppVersionList = v
+	return s
+}
+
 type FindAppVersionsResponseBodyAppVersionList struct {
-	Items      []*FindAppVersionsResponseBodyAppVersionListItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	TotalCount *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Items      []*FindAppVersionsResponseBodyAppVersionListItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 }
 
 func (s FindAppVersionsResponseBodyAppVersionList) String() string {
@@ -8378,37 +8547,37 @@ func (s FindAppVersionsResponseBodyAppVersionList) GoString() string {
 	return s.String()
 }
 
-func (s *FindAppVersionsResponseBodyAppVersionList) SetItems(v []*FindAppVersionsResponseBodyAppVersionListItems) *FindAppVersionsResponseBodyAppVersionList {
-	s.Items = v
-	return s
-}
-
 func (s *FindAppVersionsResponseBodyAppVersionList) SetTotalCount(v int32) *FindAppVersionsResponseBodyAppVersionList {
 	s.TotalCount = &v
 	return s
 }
 
+func (s *FindAppVersionsResponseBodyAppVersionList) SetItems(v []*FindAppVersionsResponseBodyAppVersionListItems) *FindAppVersionsResponseBodyAppVersionList {
+	s.Items = v
+	return s
+}
+
 type FindAppVersionsResponseBodyAppVersionListItems struct {
-	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	GmtCreateTimestamp *int64  `json:"GmtCreateTimestamp,omitempty" xml:"GmtCreateTimestamp,omitempty"`
-	GmtModify          *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
-	IsAllowNewInstall  *string `json:"IsAllowNewInstall,omitempty" xml:"IsAllowNewInstall,omitempty"`
-	StatusName         *string `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
-	RestartAppParam    *string `json:"RestartAppParam,omitempty" xml:"RestartAppParam,omitempty"`
-	IsSilentUpgrade    *string `json:"IsSilentUpgrade,omitempty" xml:"IsSilentUpgrade,omitempty"`
-	AppPackageName     *string `json:"AppPackageName,omitempty" xml:"AppPackageName,omitempty"`
-	GmtModifyTimestamp *int64  `json:"GmtModifyTimestamp,omitempty" xml:"GmtModifyTimestamp,omitempty"`
-	AppName            *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	InstallType        *string `json:"InstallType,omitempty" xml:"InstallType,omitempty"`
-	IsNeedRestart      *string `json:"IsNeedRestart,omitempty" xml:"IsNeedRestart,omitempty"`
-	RestartAppType     *string `json:"RestartAppType,omitempty" xml:"RestartAppType,omitempty"`
-	AppId              *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	RestartType        *string `json:"RestartType,omitempty" xml:"RestartType,omitempty"`
-	GmtCreate          *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	AppVersion         *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	VersionCode        *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
-	IsForceUpgrade     *string `json:"IsForceUpgrade,omitempty" xml:"IsForceUpgrade,omitempty"`
 	Id                 *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	AppId              *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	VersionCode        *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
+	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	GmtCreate          *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModify          *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
+	AppVersion         *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	IsNeedRestart      *string `json:"IsNeedRestart,omitempty" xml:"IsNeedRestart,omitempty"`
+	IsForceUpgrade     *string `json:"IsForceUpgrade,omitempty" xml:"IsForceUpgrade,omitempty"`
+	IsSilentUpgrade    *string `json:"IsSilentUpgrade,omitempty" xml:"IsSilentUpgrade,omitempty"`
+	IsAllowNewInstall  *string `json:"IsAllowNewInstall,omitempty" xml:"IsAllowNewInstall,omitempty"`
+	RestartType        *string `json:"RestartType,omitempty" xml:"RestartType,omitempty"`
+	RestartAppType     *string `json:"RestartAppType,omitempty" xml:"RestartAppType,omitempty"`
+	RestartAppParam    *string `json:"RestartAppParam,omitempty" xml:"RestartAppParam,omitempty"`
+	InstallType        *string `json:"InstallType,omitempty" xml:"InstallType,omitempty"`
+	AppName            *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppPackageName     *string `json:"AppPackageName,omitempty" xml:"AppPackageName,omitempty"`
+	StatusName         *string `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
+	GmtCreateTimestamp *int64  `json:"GmtCreateTimestamp,omitempty" xml:"GmtCreateTimestamp,omitempty"`
+	GmtModifyTimestamp *int64  `json:"GmtModifyTimestamp,omitempty" xml:"GmtModifyTimestamp,omitempty"`
 }
 
 func (s FindAppVersionsResponseBodyAppVersionListItems) String() string {
@@ -8419,68 +8588,8 @@ func (s FindAppVersionsResponseBodyAppVersionListItems) GoString() string {
 	return s.String()
 }
 
-func (s *FindAppVersionsResponseBodyAppVersionListItems) SetStatus(v string) *FindAppVersionsResponseBodyAppVersionListItems {
-	s.Status = &v
-	return s
-}
-
-func (s *FindAppVersionsResponseBodyAppVersionListItems) SetGmtCreateTimestamp(v int64) *FindAppVersionsResponseBodyAppVersionListItems {
-	s.GmtCreateTimestamp = &v
-	return s
-}
-
-func (s *FindAppVersionsResponseBodyAppVersionListItems) SetGmtModify(v string) *FindAppVersionsResponseBodyAppVersionListItems {
-	s.GmtModify = &v
-	return s
-}
-
-func (s *FindAppVersionsResponseBodyAppVersionListItems) SetIsAllowNewInstall(v string) *FindAppVersionsResponseBodyAppVersionListItems {
-	s.IsAllowNewInstall = &v
-	return s
-}
-
-func (s *FindAppVersionsResponseBodyAppVersionListItems) SetStatusName(v string) *FindAppVersionsResponseBodyAppVersionListItems {
-	s.StatusName = &v
-	return s
-}
-
-func (s *FindAppVersionsResponseBodyAppVersionListItems) SetRestartAppParam(v string) *FindAppVersionsResponseBodyAppVersionListItems {
-	s.RestartAppParam = &v
-	return s
-}
-
-func (s *FindAppVersionsResponseBodyAppVersionListItems) SetIsSilentUpgrade(v string) *FindAppVersionsResponseBodyAppVersionListItems {
-	s.IsSilentUpgrade = &v
-	return s
-}
-
-func (s *FindAppVersionsResponseBodyAppVersionListItems) SetAppPackageName(v string) *FindAppVersionsResponseBodyAppVersionListItems {
-	s.AppPackageName = &v
-	return s
-}
-
-func (s *FindAppVersionsResponseBodyAppVersionListItems) SetGmtModifyTimestamp(v int64) *FindAppVersionsResponseBodyAppVersionListItems {
-	s.GmtModifyTimestamp = &v
-	return s
-}
-
-func (s *FindAppVersionsResponseBodyAppVersionListItems) SetAppName(v string) *FindAppVersionsResponseBodyAppVersionListItems {
-	s.AppName = &v
-	return s
-}
-
-func (s *FindAppVersionsResponseBodyAppVersionListItems) SetInstallType(v string) *FindAppVersionsResponseBodyAppVersionListItems {
-	s.InstallType = &v
-	return s
-}
-
-func (s *FindAppVersionsResponseBodyAppVersionListItems) SetIsNeedRestart(v string) *FindAppVersionsResponseBodyAppVersionListItems {
-	s.IsNeedRestart = &v
-	return s
-}
-
-func (s *FindAppVersionsResponseBodyAppVersionListItems) SetRestartAppType(v string) *FindAppVersionsResponseBodyAppVersionListItems {
-	s.RestartAppType = &v
+func (s *FindAppVersionsResponseBodyAppVersionListItems) SetId(v int64) *FindAppVersionsResponseBodyAppVersionListItems {
+	s.Id = &v
 	return s
 }
 
@@ -8489,8 +8598,13 @@ func (s *FindAppVersionsResponseBodyAppVersionListItems) SetAppId(v string) *Fin
 	return s
 }
 
-func (s *FindAppVersionsResponseBodyAppVersionListItems) SetRestartType(v string) *FindAppVersionsResponseBodyAppVersionListItems {
-	s.RestartType = &v
+func (s *FindAppVersionsResponseBodyAppVersionListItems) SetVersionCode(v string) *FindAppVersionsResponseBodyAppVersionListItems {
+	s.VersionCode = &v
+	return s
+}
+
+func (s *FindAppVersionsResponseBodyAppVersionListItems) SetStatus(v string) *FindAppVersionsResponseBodyAppVersionListItems {
+	s.Status = &v
 	return s
 }
 
@@ -8499,13 +8613,18 @@ func (s *FindAppVersionsResponseBodyAppVersionListItems) SetGmtCreate(v string) 
 	return s
 }
 
+func (s *FindAppVersionsResponseBodyAppVersionListItems) SetGmtModify(v string) *FindAppVersionsResponseBodyAppVersionListItems {
+	s.GmtModify = &v
+	return s
+}
+
 func (s *FindAppVersionsResponseBodyAppVersionListItems) SetAppVersion(v string) *FindAppVersionsResponseBodyAppVersionListItems {
 	s.AppVersion = &v
 	return s
 }
 
-func (s *FindAppVersionsResponseBodyAppVersionListItems) SetVersionCode(v string) *FindAppVersionsResponseBodyAppVersionListItems {
-	s.VersionCode = &v
+func (s *FindAppVersionsResponseBodyAppVersionListItems) SetIsNeedRestart(v string) *FindAppVersionsResponseBodyAppVersionListItems {
+	s.IsNeedRestart = &v
 	return s
 }
 
@@ -8514,8 +8633,58 @@ func (s *FindAppVersionsResponseBodyAppVersionListItems) SetIsForceUpgrade(v str
 	return s
 }
 
-func (s *FindAppVersionsResponseBodyAppVersionListItems) SetId(v int64) *FindAppVersionsResponseBodyAppVersionListItems {
-	s.Id = &v
+func (s *FindAppVersionsResponseBodyAppVersionListItems) SetIsSilentUpgrade(v string) *FindAppVersionsResponseBodyAppVersionListItems {
+	s.IsSilentUpgrade = &v
+	return s
+}
+
+func (s *FindAppVersionsResponseBodyAppVersionListItems) SetIsAllowNewInstall(v string) *FindAppVersionsResponseBodyAppVersionListItems {
+	s.IsAllowNewInstall = &v
+	return s
+}
+
+func (s *FindAppVersionsResponseBodyAppVersionListItems) SetRestartType(v string) *FindAppVersionsResponseBodyAppVersionListItems {
+	s.RestartType = &v
+	return s
+}
+
+func (s *FindAppVersionsResponseBodyAppVersionListItems) SetRestartAppType(v string) *FindAppVersionsResponseBodyAppVersionListItems {
+	s.RestartAppType = &v
+	return s
+}
+
+func (s *FindAppVersionsResponseBodyAppVersionListItems) SetRestartAppParam(v string) *FindAppVersionsResponseBodyAppVersionListItems {
+	s.RestartAppParam = &v
+	return s
+}
+
+func (s *FindAppVersionsResponseBodyAppVersionListItems) SetInstallType(v string) *FindAppVersionsResponseBodyAppVersionListItems {
+	s.InstallType = &v
+	return s
+}
+
+func (s *FindAppVersionsResponseBodyAppVersionListItems) SetAppName(v string) *FindAppVersionsResponseBodyAppVersionListItems {
+	s.AppName = &v
+	return s
+}
+
+func (s *FindAppVersionsResponseBodyAppVersionListItems) SetAppPackageName(v string) *FindAppVersionsResponseBodyAppVersionListItems {
+	s.AppPackageName = &v
+	return s
+}
+
+func (s *FindAppVersionsResponseBodyAppVersionListItems) SetStatusName(v string) *FindAppVersionsResponseBodyAppVersionListItems {
+	s.StatusName = &v
+	return s
+}
+
+func (s *FindAppVersionsResponseBodyAppVersionListItems) SetGmtCreateTimestamp(v int64) *FindAppVersionsResponseBodyAppVersionListItems {
+	s.GmtCreateTimestamp = &v
+	return s
+}
+
+func (s *FindAppVersionsResponseBodyAppVersionListItems) SetGmtModifyTimestamp(v int64) *FindAppVersionsResponseBodyAppVersionListItems {
+	s.GmtModifyTimestamp = &v
 	return s
 }
 
@@ -8590,8 +8759,8 @@ func (s *FindCustomizedFiltersRequest) SetVersionType(v string) *FindCustomizedF
 }
 
 type FindCustomizedFiltersResponseBody struct {
-	CustomizedFilterList *FindCustomizedFiltersResponseBodyCustomizedFilterList `json:"CustomizedFilterList,omitempty" xml:"CustomizedFilterList,omitempty" type:"Struct"`
 	RequestId            *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	CustomizedFilterList *FindCustomizedFiltersResponseBodyCustomizedFilterList `json:"CustomizedFilterList,omitempty" xml:"CustomizedFilterList,omitempty" type:"Struct"`
 }
 
 func (s FindCustomizedFiltersResponseBody) String() string {
@@ -8602,19 +8771,19 @@ func (s FindCustomizedFiltersResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *FindCustomizedFiltersResponseBody) SetCustomizedFilterList(v *FindCustomizedFiltersResponseBodyCustomizedFilterList) *FindCustomizedFiltersResponseBody {
-	s.CustomizedFilterList = v
-	return s
-}
-
 func (s *FindCustomizedFiltersResponseBody) SetRequestId(v string) *FindCustomizedFiltersResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *FindCustomizedFiltersResponseBody) SetCustomizedFilterList(v *FindCustomizedFiltersResponseBodyCustomizedFilterList) *FindCustomizedFiltersResponseBody {
+	s.CustomizedFilterList = v
+	return s
+}
+
 type FindCustomizedFiltersResponseBodyCustomizedFilterList struct {
-	Items      []*FindCustomizedFiltersResponseBodyCustomizedFilterListItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	TotalCount *int32                                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Items      []*FindCustomizedFiltersResponseBodyCustomizedFilterListItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 }
 
 func (s FindCustomizedFiltersResponseBodyCustomizedFilterList) String() string {
@@ -8625,26 +8794,26 @@ func (s FindCustomizedFiltersResponseBodyCustomizedFilterList) GoString() string
 	return s.String()
 }
 
-func (s *FindCustomizedFiltersResponseBodyCustomizedFilterList) SetItems(v []*FindCustomizedFiltersResponseBodyCustomizedFilterListItems) *FindCustomizedFiltersResponseBodyCustomizedFilterList {
-	s.Items = v
-	return s
-}
-
 func (s *FindCustomizedFiltersResponseBodyCustomizedFilterList) SetTotalCount(v int32) *FindCustomizedFiltersResponseBodyCustomizedFilterList {
 	s.TotalCount = &v
 	return s
 }
 
+func (s *FindCustomizedFiltersResponseBodyCustomizedFilterList) SetItems(v []*FindCustomizedFiltersResponseBodyCustomizedFilterListItems) *FindCustomizedFiltersResponseBodyCustomizedFilterList {
+	s.Items = v
+	return s
+}
+
 type FindCustomizedFiltersResponseBodyCustomizedFilterListItems struct {
-	GmtModifyTimestamp *int64  `json:"GmtModifyTimestamp,omitempty" xml:"GmtModifyTimestamp,omitempty"`
-	GmtCreateTimestamp *int64  `json:"GmtCreateTimestamp,omitempty" xml:"GmtCreateTimestamp,omitempty"`
-	Value              *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	GmtModify          *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
-	ValueCompareType   *string `json:"ValueCompareType,omitempty" xml:"ValueCompareType,omitempty"`
-	GmtCreate          *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	BlackWhiteType     *string `json:"BlackWhiteType,omitempty" xml:"BlackWhiteType,omitempty"`
-	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Id                 *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Value              *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	ValueCompareType   *string `json:"ValueCompareType,omitempty" xml:"ValueCompareType,omitempty"`
+	BlackWhiteType     *string `json:"BlackWhiteType,omitempty" xml:"BlackWhiteType,omitempty"`
+	GmtCreate          *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModify          *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
+	GmtCreateTimestamp *int64  `json:"GmtCreateTimestamp,omitempty" xml:"GmtCreateTimestamp,omitempty"`
+	GmtModifyTimestamp *int64  `json:"GmtModifyTimestamp,omitempty" xml:"GmtModifyTimestamp,omitempty"`
 }
 
 func (s FindCustomizedFiltersResponseBodyCustomizedFilterListItems) String() string {
@@ -8655,38 +8824,8 @@ func (s FindCustomizedFiltersResponseBodyCustomizedFilterListItems) GoString() s
 	return s.String()
 }
 
-func (s *FindCustomizedFiltersResponseBodyCustomizedFilterListItems) SetGmtModifyTimestamp(v int64) *FindCustomizedFiltersResponseBodyCustomizedFilterListItems {
-	s.GmtModifyTimestamp = &v
-	return s
-}
-
-func (s *FindCustomizedFiltersResponseBodyCustomizedFilterListItems) SetGmtCreateTimestamp(v int64) *FindCustomizedFiltersResponseBodyCustomizedFilterListItems {
-	s.GmtCreateTimestamp = &v
-	return s
-}
-
-func (s *FindCustomizedFiltersResponseBodyCustomizedFilterListItems) SetValue(v string) *FindCustomizedFiltersResponseBodyCustomizedFilterListItems {
-	s.Value = &v
-	return s
-}
-
-func (s *FindCustomizedFiltersResponseBodyCustomizedFilterListItems) SetGmtModify(v string) *FindCustomizedFiltersResponseBodyCustomizedFilterListItems {
-	s.GmtModify = &v
-	return s
-}
-
-func (s *FindCustomizedFiltersResponseBodyCustomizedFilterListItems) SetValueCompareType(v string) *FindCustomizedFiltersResponseBodyCustomizedFilterListItems {
-	s.ValueCompareType = &v
-	return s
-}
-
-func (s *FindCustomizedFiltersResponseBodyCustomizedFilterListItems) SetGmtCreate(v string) *FindCustomizedFiltersResponseBodyCustomizedFilterListItems {
-	s.GmtCreate = &v
-	return s
-}
-
-func (s *FindCustomizedFiltersResponseBodyCustomizedFilterListItems) SetBlackWhiteType(v string) *FindCustomizedFiltersResponseBodyCustomizedFilterListItems {
-	s.BlackWhiteType = &v
+func (s *FindCustomizedFiltersResponseBodyCustomizedFilterListItems) SetId(v int64) *FindCustomizedFiltersResponseBodyCustomizedFilterListItems {
+	s.Id = &v
 	return s
 }
 
@@ -8695,8 +8834,38 @@ func (s *FindCustomizedFiltersResponseBodyCustomizedFilterListItems) SetName(v s
 	return s
 }
 
-func (s *FindCustomizedFiltersResponseBodyCustomizedFilterListItems) SetId(v int64) *FindCustomizedFiltersResponseBodyCustomizedFilterListItems {
-	s.Id = &v
+func (s *FindCustomizedFiltersResponseBodyCustomizedFilterListItems) SetValue(v string) *FindCustomizedFiltersResponseBodyCustomizedFilterListItems {
+	s.Value = &v
+	return s
+}
+
+func (s *FindCustomizedFiltersResponseBodyCustomizedFilterListItems) SetValueCompareType(v string) *FindCustomizedFiltersResponseBodyCustomizedFilterListItems {
+	s.ValueCompareType = &v
+	return s
+}
+
+func (s *FindCustomizedFiltersResponseBodyCustomizedFilterListItems) SetBlackWhiteType(v string) *FindCustomizedFiltersResponseBodyCustomizedFilterListItems {
+	s.BlackWhiteType = &v
+	return s
+}
+
+func (s *FindCustomizedFiltersResponseBodyCustomizedFilterListItems) SetGmtCreate(v string) *FindCustomizedFiltersResponseBodyCustomizedFilterListItems {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *FindCustomizedFiltersResponseBodyCustomizedFilterListItems) SetGmtModify(v string) *FindCustomizedFiltersResponseBodyCustomizedFilterListItems {
+	s.GmtModify = &v
+	return s
+}
+
+func (s *FindCustomizedFiltersResponseBodyCustomizedFilterListItems) SetGmtCreateTimestamp(v int64) *FindCustomizedFiltersResponseBodyCustomizedFilterListItems {
+	s.GmtCreateTimestamp = &v
+	return s
+}
+
+func (s *FindCustomizedFiltersResponseBodyCustomizedFilterListItems) SetGmtModifyTimestamp(v int64) *FindCustomizedFiltersResponseBodyCustomizedFilterListItems {
+	s.GmtModifyTimestamp = &v
 	return s
 }
 
@@ -8794,8 +8963,8 @@ func (s *FindCustomizedPropertiesResponseBody) SetCustomizedPropertyList(v *Find
 }
 
 type FindCustomizedPropertiesResponseBodyCustomizedPropertyList struct {
-	Items      []*FindCustomizedPropertiesResponseBodyCustomizedPropertyListItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	TotalCount *int32                                                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Items      []*FindCustomizedPropertiesResponseBodyCustomizedPropertyListItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 }
 
 func (s FindCustomizedPropertiesResponseBodyCustomizedPropertyList) String() string {
@@ -8806,22 +8975,22 @@ func (s FindCustomizedPropertiesResponseBodyCustomizedPropertyList) GoString() s
 	return s.String()
 }
 
-func (s *FindCustomizedPropertiesResponseBodyCustomizedPropertyList) SetItems(v []*FindCustomizedPropertiesResponseBodyCustomizedPropertyListItems) *FindCustomizedPropertiesResponseBodyCustomizedPropertyList {
-	s.Items = v
-	return s
-}
-
 func (s *FindCustomizedPropertiesResponseBodyCustomizedPropertyList) SetTotalCount(v int32) *FindCustomizedPropertiesResponseBodyCustomizedPropertyList {
 	s.TotalCount = &v
 	return s
 }
 
+func (s *FindCustomizedPropertiesResponseBodyCustomizedPropertyList) SetItems(v []*FindCustomizedPropertiesResponseBodyCustomizedPropertyListItems) *FindCustomizedPropertiesResponseBodyCustomizedPropertyList {
+	s.Items = v
+	return s
+}
+
 type FindCustomizedPropertiesResponseBodyCustomizedPropertyListItems struct {
-	GmtCreateTimestamp *int64  `json:"GmtCreateTimestamp,omitempty" xml:"GmtCreateTimestamp,omitempty"`
+	Id                 *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Value              *string `json:"Value,omitempty" xml:"Value,omitempty"`
 	GmtCreate          *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Id                 *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	GmtCreateTimestamp *int64  `json:"GmtCreateTimestamp,omitempty" xml:"GmtCreateTimestamp,omitempty"`
 }
 
 func (s FindCustomizedPropertiesResponseBodyCustomizedPropertyListItems) String() string {
@@ -8832,8 +9001,13 @@ func (s FindCustomizedPropertiesResponseBodyCustomizedPropertyListItems) GoStrin
 	return s.String()
 }
 
-func (s *FindCustomizedPropertiesResponseBodyCustomizedPropertyListItems) SetGmtCreateTimestamp(v int64) *FindCustomizedPropertiesResponseBodyCustomizedPropertyListItems {
-	s.GmtCreateTimestamp = &v
+func (s *FindCustomizedPropertiesResponseBodyCustomizedPropertyListItems) SetId(v int64) *FindCustomizedPropertiesResponseBodyCustomizedPropertyListItems {
+	s.Id = &v
+	return s
+}
+
+func (s *FindCustomizedPropertiesResponseBodyCustomizedPropertyListItems) SetName(v string) *FindCustomizedPropertiesResponseBodyCustomizedPropertyListItems {
+	s.Name = &v
 	return s
 }
 
@@ -8847,13 +9021,8 @@ func (s *FindCustomizedPropertiesResponseBodyCustomizedPropertyListItems) SetGmt
 	return s
 }
 
-func (s *FindCustomizedPropertiesResponseBodyCustomizedPropertyListItems) SetName(v string) *FindCustomizedPropertiesResponseBodyCustomizedPropertyListItems {
-	s.Name = &v
-	return s
-}
-
-func (s *FindCustomizedPropertiesResponseBodyCustomizedPropertyListItems) SetId(v int64) *FindCustomizedPropertiesResponseBodyCustomizedPropertyListItems {
-	s.Id = &v
+func (s *FindCustomizedPropertiesResponseBodyCustomizedPropertyListItems) SetGmtCreateTimestamp(v int64) *FindCustomizedPropertiesResponseBodyCustomizedPropertyListItems {
+	s.GmtCreateTimestamp = &v
 	return s
 }
 
@@ -8969,8 +9138,8 @@ func (s *FindOsVersionsResponseBody) SetOsVersionList(v *FindOsVersionsResponseB
 }
 
 type FindOsVersionsResponseBodyOsVersionList struct {
-	Items      []*FindOsVersionsResponseBodyOsVersionListItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	TotalCount *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Items      []*FindOsVersionsResponseBodyOsVersionListItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 }
 
 func (s FindOsVersionsResponseBodyOsVersionList) String() string {
@@ -8981,33 +9150,33 @@ func (s FindOsVersionsResponseBodyOsVersionList) GoString() string {
 	return s.String()
 }
 
-func (s *FindOsVersionsResponseBodyOsVersionList) SetItems(v []*FindOsVersionsResponseBodyOsVersionListItems) *FindOsVersionsResponseBodyOsVersionList {
-	s.Items = v
-	return s
-}
-
 func (s *FindOsVersionsResponseBodyOsVersionList) SetTotalCount(v int32) *FindOsVersionsResponseBodyOsVersionList {
 	s.TotalCount = &v
 	return s
 }
 
+func (s *FindOsVersionsResponseBodyOsVersionList) SetItems(v []*FindOsVersionsResponseBodyOsVersionListItems) *FindOsVersionsResponseBodyOsVersionList {
+	s.Items = v
+	return s
+}
+
 type FindOsVersionsResponseBodyOsVersionListItems struct {
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	GmtCreateTimestamp  *int64  `json:"GmtCreateTimestamp,omitempty" xml:"GmtCreateTimestamp,omitempty"`
+	Id                  *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	DeviceModelId       *string `json:"DeviceModelId,omitempty" xml:"DeviceModelId,omitempty"`
-	GmtModify           *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
-	IsMilestone         *string `json:"IsMilestone,omitempty" xml:"IsMilestone,omitempty"`
-	Remark              *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	SystemVersion       *string `json:"SystemVersion,omitempty" xml:"SystemVersion,omitempty"`
-	StatusName          *string `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
-	IsForceReboot       *string `json:"IsForceReboot,omitempty" xml:"IsForceReboot,omitempty"`
-	DeviceModelName     *string `json:"DeviceModelName,omitempty" xml:"DeviceModelName,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	IsMilestone         *string `json:"IsMilestone,omitempty" xml:"IsMilestone,omitempty"`
+	IsForceUpgrade      *string `json:"IsForceUpgrade,omitempty" xml:"IsForceUpgrade,omitempty"`
 	IsSilentUpgrade     *string `json:"IsSilentUpgrade,omitempty" xml:"IsSilentUpgrade,omitempty"`
-	GmtModifyTimestamp  *int64  `json:"GmtModifyTimestamp,omitempty" xml:"GmtModifyTimestamp,omitempty"`
+	IsForceReboot       *string `json:"IsForceReboot,omitempty" xml:"IsForceReboot,omitempty"`
 	IsForceNightUpgrade *string `json:"IsForceNightUpgrade,omitempty" xml:"IsForceNightUpgrade,omitempty"`
 	GmtCreate           *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	IsForceUpgrade      *string `json:"IsForceUpgrade,omitempty" xml:"IsForceUpgrade,omitempty"`
-	Id                  *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	GmtModify           *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
+	Remark              *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	StatusName          *string `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
+	DeviceModelName     *string `json:"DeviceModelName,omitempty" xml:"DeviceModelName,omitempty"`
+	GmtCreateTimestamp  *int64  `json:"GmtCreateTimestamp,omitempty" xml:"GmtCreateTimestamp,omitempty"`
+	GmtModifyTimestamp  *int64  `json:"GmtModifyTimestamp,omitempty" xml:"GmtModifyTimestamp,omitempty"`
 }
 
 func (s FindOsVersionsResponseBodyOsVersionListItems) String() string {
@@ -9018,13 +9187,8 @@ func (s FindOsVersionsResponseBodyOsVersionListItems) GoString() string {
 	return s.String()
 }
 
-func (s *FindOsVersionsResponseBodyOsVersionListItems) SetStatus(v string) *FindOsVersionsResponseBodyOsVersionListItems {
-	s.Status = &v
-	return s
-}
-
-func (s *FindOsVersionsResponseBodyOsVersionListItems) SetGmtCreateTimestamp(v int64) *FindOsVersionsResponseBodyOsVersionListItems {
-	s.GmtCreateTimestamp = &v
+func (s *FindOsVersionsResponseBodyOsVersionListItems) SetId(v int64) *FindOsVersionsResponseBodyOsVersionListItems {
+	s.Id = &v
 	return s
 }
 
@@ -9033,8 +9197,13 @@ func (s *FindOsVersionsResponseBodyOsVersionListItems) SetDeviceModelId(v string
 	return s
 }
 
-func (s *FindOsVersionsResponseBodyOsVersionListItems) SetGmtModify(v string) *FindOsVersionsResponseBodyOsVersionListItems {
-	s.GmtModify = &v
+func (s *FindOsVersionsResponseBodyOsVersionListItems) SetSystemVersion(v string) *FindOsVersionsResponseBodyOsVersionListItems {
+	s.SystemVersion = &v
+	return s
+}
+
+func (s *FindOsVersionsResponseBodyOsVersionListItems) SetStatus(v string) *FindOsVersionsResponseBodyOsVersionListItems {
+	s.Status = &v
 	return s
 }
 
@@ -9043,28 +9212,8 @@ func (s *FindOsVersionsResponseBodyOsVersionListItems) SetIsMilestone(v string) 
 	return s
 }
 
-func (s *FindOsVersionsResponseBodyOsVersionListItems) SetRemark(v string) *FindOsVersionsResponseBodyOsVersionListItems {
-	s.Remark = &v
-	return s
-}
-
-func (s *FindOsVersionsResponseBodyOsVersionListItems) SetSystemVersion(v string) *FindOsVersionsResponseBodyOsVersionListItems {
-	s.SystemVersion = &v
-	return s
-}
-
-func (s *FindOsVersionsResponseBodyOsVersionListItems) SetStatusName(v string) *FindOsVersionsResponseBodyOsVersionListItems {
-	s.StatusName = &v
-	return s
-}
-
-func (s *FindOsVersionsResponseBodyOsVersionListItems) SetIsForceReboot(v string) *FindOsVersionsResponseBodyOsVersionListItems {
-	s.IsForceReboot = &v
-	return s
-}
-
-func (s *FindOsVersionsResponseBodyOsVersionListItems) SetDeviceModelName(v string) *FindOsVersionsResponseBodyOsVersionListItems {
-	s.DeviceModelName = &v
+func (s *FindOsVersionsResponseBodyOsVersionListItems) SetIsForceUpgrade(v string) *FindOsVersionsResponseBodyOsVersionListItems {
+	s.IsForceUpgrade = &v
 	return s
 }
 
@@ -9073,8 +9222,8 @@ func (s *FindOsVersionsResponseBodyOsVersionListItems) SetIsSilentUpgrade(v stri
 	return s
 }
 
-func (s *FindOsVersionsResponseBodyOsVersionListItems) SetGmtModifyTimestamp(v int64) *FindOsVersionsResponseBodyOsVersionListItems {
-	s.GmtModifyTimestamp = &v
+func (s *FindOsVersionsResponseBodyOsVersionListItems) SetIsForceReboot(v string) *FindOsVersionsResponseBodyOsVersionListItems {
+	s.IsForceReboot = &v
 	return s
 }
 
@@ -9088,13 +9237,33 @@ func (s *FindOsVersionsResponseBodyOsVersionListItems) SetGmtCreate(v string) *F
 	return s
 }
 
-func (s *FindOsVersionsResponseBodyOsVersionListItems) SetIsForceUpgrade(v string) *FindOsVersionsResponseBodyOsVersionListItems {
-	s.IsForceUpgrade = &v
+func (s *FindOsVersionsResponseBodyOsVersionListItems) SetGmtModify(v string) *FindOsVersionsResponseBodyOsVersionListItems {
+	s.GmtModify = &v
 	return s
 }
 
-func (s *FindOsVersionsResponseBodyOsVersionListItems) SetId(v int64) *FindOsVersionsResponseBodyOsVersionListItems {
-	s.Id = &v
+func (s *FindOsVersionsResponseBodyOsVersionListItems) SetRemark(v string) *FindOsVersionsResponseBodyOsVersionListItems {
+	s.Remark = &v
+	return s
+}
+
+func (s *FindOsVersionsResponseBodyOsVersionListItems) SetStatusName(v string) *FindOsVersionsResponseBodyOsVersionListItems {
+	s.StatusName = &v
+	return s
+}
+
+func (s *FindOsVersionsResponseBodyOsVersionListItems) SetDeviceModelName(v string) *FindOsVersionsResponseBodyOsVersionListItems {
+	s.DeviceModelName = &v
+	return s
+}
+
+func (s *FindOsVersionsResponseBodyOsVersionListItems) SetGmtCreateTimestamp(v int64) *FindOsVersionsResponseBodyOsVersionListItems {
+	s.GmtCreateTimestamp = &v
+	return s
+}
+
+func (s *FindOsVersionsResponseBodyOsVersionListItems) SetGmtModifyTimestamp(v int64) *FindOsVersionsResponseBodyOsVersionListItems {
+	s.GmtModifyTimestamp = &v
 	return s
 }
 
@@ -9168,8 +9337,8 @@ func (s *FindPrepublishesByParentIdResponseBody) SetPrepublishList(v *FindPrepub
 }
 
 type FindPrepublishesByParentIdResponseBodyPrepublishList struct {
-	Items      []*FindPrepublishesByParentIdResponseBodyPrepublishListItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	TotalCount *int32                                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Items      []*FindPrepublishesByParentIdResponseBodyPrepublishListItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 }
 
 func (s FindPrepublishesByParentIdResponseBodyPrepublishList) String() string {
@@ -9180,30 +9349,30 @@ func (s FindPrepublishesByParentIdResponseBodyPrepublishList) GoString() string 
 	return s.String()
 }
 
-func (s *FindPrepublishesByParentIdResponseBodyPrepublishList) SetItems(v []*FindPrepublishesByParentIdResponseBodyPrepublishListItems) *FindPrepublishesByParentIdResponseBodyPrepublishList {
-	s.Items = v
-	return s
-}
-
 func (s *FindPrepublishesByParentIdResponseBodyPrepublishList) SetTotalCount(v int32) *FindPrepublishesByParentIdResponseBodyPrepublishList {
 	s.TotalCount = &v
 	return s
 }
 
+func (s *FindPrepublishesByParentIdResponseBodyPrepublishList) SetItems(v []*FindPrepublishesByParentIdResponseBodyPrepublishListItems) *FindPrepublishesByParentIdResponseBodyPrepublishList {
+	s.Items = v
+	return s
+}
+
 type FindPrepublishesByParentIdResponseBodyPrepublishListItems struct {
-	GmtCreateTimestamp *int64  `json:"GmtCreateTimestamp,omitempty" xml:"GmtCreateTimestamp,omitempty"`
-	DeviceModelId      *string `json:"DeviceModelId,omitempty" xml:"DeviceModelId,omitempty"`
-	GmtModify          *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
-	IsActive           *string `json:"IsActive,omitempty" xml:"IsActive,omitempty"`
+	Id                 *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	VersionType        *string `json:"VersionType,omitempty" xml:"VersionType,omitempty"`
 	VersionId          *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 	BarrierCount       *string `json:"BarrierCount,omitempty" xml:"BarrierCount,omitempty"`
-	IsTotalPrepublish  *string `json:"IsTotalPrepublish,omitempty" xml:"IsTotalPrepublish,omitempty"`
-	GmtModifyTimestamp *int64  `json:"GmtModifyTimestamp,omitempty" xml:"GmtModifyTimestamp,omitempty"`
+	DeviceModelId      *string `json:"DeviceModelId,omitempty" xml:"DeviceModelId,omitempty"`
 	ParentId           *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	IsActive           *string `json:"IsActive,omitempty" xml:"IsActive,omitempty"`
+	IsTotalPrepublish  *string `json:"IsTotalPrepublish,omitempty" xml:"IsTotalPrepublish,omitempty"`
 	GmtCreate          *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Id                 *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	VersionType        *string `json:"VersionType,omitempty" xml:"VersionType,omitempty"`
+	GmtModify          *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
+	GmtCreateTimestamp *int64  `json:"GmtCreateTimestamp,omitempty" xml:"GmtCreateTimestamp,omitempty"`
+	GmtModifyTimestamp *int64  `json:"GmtModifyTimestamp,omitempty" xml:"GmtModifyTimestamp,omitempty"`
 }
 
 func (s FindPrepublishesByParentIdResponseBodyPrepublishListItems) String() string {
@@ -9214,23 +9383,18 @@ func (s FindPrepublishesByParentIdResponseBodyPrepublishListItems) GoString() st
 	return s.String()
 }
 
-func (s *FindPrepublishesByParentIdResponseBodyPrepublishListItems) SetGmtCreateTimestamp(v int64) *FindPrepublishesByParentIdResponseBodyPrepublishListItems {
-	s.GmtCreateTimestamp = &v
+func (s *FindPrepublishesByParentIdResponseBodyPrepublishListItems) SetId(v int64) *FindPrepublishesByParentIdResponseBodyPrepublishListItems {
+	s.Id = &v
 	return s
 }
 
-func (s *FindPrepublishesByParentIdResponseBodyPrepublishListItems) SetDeviceModelId(v string) *FindPrepublishesByParentIdResponseBodyPrepublishListItems {
-	s.DeviceModelId = &v
+func (s *FindPrepublishesByParentIdResponseBodyPrepublishListItems) SetName(v string) *FindPrepublishesByParentIdResponseBodyPrepublishListItems {
+	s.Name = &v
 	return s
 }
 
-func (s *FindPrepublishesByParentIdResponseBodyPrepublishListItems) SetGmtModify(v string) *FindPrepublishesByParentIdResponseBodyPrepublishListItems {
-	s.GmtModify = &v
-	return s
-}
-
-func (s *FindPrepublishesByParentIdResponseBodyPrepublishListItems) SetIsActive(v string) *FindPrepublishesByParentIdResponseBodyPrepublishListItems {
-	s.IsActive = &v
+func (s *FindPrepublishesByParentIdResponseBodyPrepublishListItems) SetVersionType(v string) *FindPrepublishesByParentIdResponseBodyPrepublishListItems {
+	s.VersionType = &v
 	return s
 }
 
@@ -9244,13 +9408,8 @@ func (s *FindPrepublishesByParentIdResponseBodyPrepublishListItems) SetBarrierCo
 	return s
 }
 
-func (s *FindPrepublishesByParentIdResponseBodyPrepublishListItems) SetIsTotalPrepublish(v string) *FindPrepublishesByParentIdResponseBodyPrepublishListItems {
-	s.IsTotalPrepublish = &v
-	return s
-}
-
-func (s *FindPrepublishesByParentIdResponseBodyPrepublishListItems) SetGmtModifyTimestamp(v int64) *FindPrepublishesByParentIdResponseBodyPrepublishListItems {
-	s.GmtModifyTimestamp = &v
+func (s *FindPrepublishesByParentIdResponseBodyPrepublishListItems) SetDeviceModelId(v string) *FindPrepublishesByParentIdResponseBodyPrepublishListItems {
+	s.DeviceModelId = &v
 	return s
 }
 
@@ -9259,23 +9418,33 @@ func (s *FindPrepublishesByParentIdResponseBodyPrepublishListItems) SetParentId(
 	return s
 }
 
+func (s *FindPrepublishesByParentIdResponseBodyPrepublishListItems) SetIsActive(v string) *FindPrepublishesByParentIdResponseBodyPrepublishListItems {
+	s.IsActive = &v
+	return s
+}
+
+func (s *FindPrepublishesByParentIdResponseBodyPrepublishListItems) SetIsTotalPrepublish(v string) *FindPrepublishesByParentIdResponseBodyPrepublishListItems {
+	s.IsTotalPrepublish = &v
+	return s
+}
+
 func (s *FindPrepublishesByParentIdResponseBodyPrepublishListItems) SetGmtCreate(v string) *FindPrepublishesByParentIdResponseBodyPrepublishListItems {
 	s.GmtCreate = &v
 	return s
 }
 
-func (s *FindPrepublishesByParentIdResponseBodyPrepublishListItems) SetName(v string) *FindPrepublishesByParentIdResponseBodyPrepublishListItems {
-	s.Name = &v
+func (s *FindPrepublishesByParentIdResponseBodyPrepublishListItems) SetGmtModify(v string) *FindPrepublishesByParentIdResponseBodyPrepublishListItems {
+	s.GmtModify = &v
 	return s
 }
 
-func (s *FindPrepublishesByParentIdResponseBodyPrepublishListItems) SetId(v int64) *FindPrepublishesByParentIdResponseBodyPrepublishListItems {
-	s.Id = &v
+func (s *FindPrepublishesByParentIdResponseBodyPrepublishListItems) SetGmtCreateTimestamp(v int64) *FindPrepublishesByParentIdResponseBodyPrepublishListItems {
+	s.GmtCreateTimestamp = &v
 	return s
 }
 
-func (s *FindPrepublishesByParentIdResponseBodyPrepublishListItems) SetVersionType(v string) *FindPrepublishesByParentIdResponseBodyPrepublishListItems {
-	s.VersionType = &v
+func (s *FindPrepublishesByParentIdResponseBodyPrepublishListItems) SetGmtModifyTimestamp(v int64) *FindPrepublishesByParentIdResponseBodyPrepublishListItems {
+	s.GmtModifyTimestamp = &v
 	return s
 }
 
@@ -9355,21 +9524,21 @@ func (s *FindPrepublishesByVersionIdResponseBody) SetPrepublishList(v []*FindPre
 }
 
 type FindPrepublishesByVersionIdResponseBodyPrepublishList struct {
-	GmtCreateTimestamp *int64  `json:"GmtCreateTimestamp,omitempty" xml:"GmtCreateTimestamp,omitempty"`
-	DeviceModelId      *string `json:"DeviceModelId,omitempty" xml:"DeviceModelId,omitempty"`
-	GmtModify          *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
-	IsActive           *string `json:"IsActive,omitempty" xml:"IsActive,omitempty"`
+	Id                 *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	VersionType        *string `json:"VersionType,omitempty" xml:"VersionType,omitempty"`
 	VersionId          *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 	BarrierCount       *string `json:"BarrierCount,omitempty" xml:"BarrierCount,omitempty"`
-	DeviceModelName    *string `json:"DeviceModelName,omitempty" xml:"DeviceModelName,omitempty"`
-	IsTotalPrepublish  *string `json:"IsTotalPrepublish,omitempty" xml:"IsTotalPrepublish,omitempty"`
-	GmtModifyTimestamp *int64  `json:"GmtModifyTimestamp,omitempty" xml:"GmtModifyTimestamp,omitempty"`
+	DeviceModelId      *string `json:"DeviceModelId,omitempty" xml:"DeviceModelId,omitempty"`
 	ParentId           *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	IsActive           *string `json:"IsActive,omitempty" xml:"IsActive,omitempty"`
+	IsTotalPrepublish  *string `json:"IsTotalPrepublish,omitempty" xml:"IsTotalPrepublish,omitempty"`
 	GmtCreate          *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Id                 *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	VersionType        *string `json:"VersionType,omitempty" xml:"VersionType,omitempty"`
+	GmtModify          *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
+	DeviceModelName    *string `json:"DeviceModelName,omitempty" xml:"DeviceModelName,omitempty"`
 	PassedCount        *string `json:"PassedCount,omitempty" xml:"PassedCount,omitempty"`
+	GmtCreateTimestamp *int64  `json:"GmtCreateTimestamp,omitempty" xml:"GmtCreateTimestamp,omitempty"`
+	GmtModifyTimestamp *int64  `json:"GmtModifyTimestamp,omitempty" xml:"GmtModifyTimestamp,omitempty"`
 }
 
 func (s FindPrepublishesByVersionIdResponseBodyPrepublishList) String() string {
@@ -9380,23 +9549,18 @@ func (s FindPrepublishesByVersionIdResponseBodyPrepublishList) GoString() string
 	return s.String()
 }
 
-func (s *FindPrepublishesByVersionIdResponseBodyPrepublishList) SetGmtCreateTimestamp(v int64) *FindPrepublishesByVersionIdResponseBodyPrepublishList {
-	s.GmtCreateTimestamp = &v
+func (s *FindPrepublishesByVersionIdResponseBodyPrepublishList) SetId(v string) *FindPrepublishesByVersionIdResponseBodyPrepublishList {
+	s.Id = &v
 	return s
 }
 
-func (s *FindPrepublishesByVersionIdResponseBodyPrepublishList) SetDeviceModelId(v string) *FindPrepublishesByVersionIdResponseBodyPrepublishList {
-	s.DeviceModelId = &v
+func (s *FindPrepublishesByVersionIdResponseBodyPrepublishList) SetName(v string) *FindPrepublishesByVersionIdResponseBodyPrepublishList {
+	s.Name = &v
 	return s
 }
 
-func (s *FindPrepublishesByVersionIdResponseBodyPrepublishList) SetGmtModify(v string) *FindPrepublishesByVersionIdResponseBodyPrepublishList {
-	s.GmtModify = &v
-	return s
-}
-
-func (s *FindPrepublishesByVersionIdResponseBodyPrepublishList) SetIsActive(v string) *FindPrepublishesByVersionIdResponseBodyPrepublishList {
-	s.IsActive = &v
+func (s *FindPrepublishesByVersionIdResponseBodyPrepublishList) SetVersionType(v string) *FindPrepublishesByVersionIdResponseBodyPrepublishList {
+	s.VersionType = &v
 	return s
 }
 
@@ -9410,18 +9574,8 @@ func (s *FindPrepublishesByVersionIdResponseBodyPrepublishList) SetBarrierCount(
 	return s
 }
 
-func (s *FindPrepublishesByVersionIdResponseBodyPrepublishList) SetDeviceModelName(v string) *FindPrepublishesByVersionIdResponseBodyPrepublishList {
-	s.DeviceModelName = &v
-	return s
-}
-
-func (s *FindPrepublishesByVersionIdResponseBodyPrepublishList) SetIsTotalPrepublish(v string) *FindPrepublishesByVersionIdResponseBodyPrepublishList {
-	s.IsTotalPrepublish = &v
-	return s
-}
-
-func (s *FindPrepublishesByVersionIdResponseBodyPrepublishList) SetGmtModifyTimestamp(v int64) *FindPrepublishesByVersionIdResponseBodyPrepublishList {
-	s.GmtModifyTimestamp = &v
+func (s *FindPrepublishesByVersionIdResponseBodyPrepublishList) SetDeviceModelId(v string) *FindPrepublishesByVersionIdResponseBodyPrepublishList {
+	s.DeviceModelId = &v
 	return s
 }
 
@@ -9430,28 +9584,43 @@ func (s *FindPrepublishesByVersionIdResponseBodyPrepublishList) SetParentId(v st
 	return s
 }
 
+func (s *FindPrepublishesByVersionIdResponseBodyPrepublishList) SetIsActive(v string) *FindPrepublishesByVersionIdResponseBodyPrepublishList {
+	s.IsActive = &v
+	return s
+}
+
+func (s *FindPrepublishesByVersionIdResponseBodyPrepublishList) SetIsTotalPrepublish(v string) *FindPrepublishesByVersionIdResponseBodyPrepublishList {
+	s.IsTotalPrepublish = &v
+	return s
+}
+
 func (s *FindPrepublishesByVersionIdResponseBodyPrepublishList) SetGmtCreate(v string) *FindPrepublishesByVersionIdResponseBodyPrepublishList {
 	s.GmtCreate = &v
 	return s
 }
 
-func (s *FindPrepublishesByVersionIdResponseBodyPrepublishList) SetName(v string) *FindPrepublishesByVersionIdResponseBodyPrepublishList {
-	s.Name = &v
+func (s *FindPrepublishesByVersionIdResponseBodyPrepublishList) SetGmtModify(v string) *FindPrepublishesByVersionIdResponseBodyPrepublishList {
+	s.GmtModify = &v
 	return s
 }
 
-func (s *FindPrepublishesByVersionIdResponseBodyPrepublishList) SetId(v string) *FindPrepublishesByVersionIdResponseBodyPrepublishList {
-	s.Id = &v
-	return s
-}
-
-func (s *FindPrepublishesByVersionIdResponseBodyPrepublishList) SetVersionType(v string) *FindPrepublishesByVersionIdResponseBodyPrepublishList {
-	s.VersionType = &v
+func (s *FindPrepublishesByVersionIdResponseBodyPrepublishList) SetDeviceModelName(v string) *FindPrepublishesByVersionIdResponseBodyPrepublishList {
+	s.DeviceModelName = &v
 	return s
 }
 
 func (s *FindPrepublishesByVersionIdResponseBodyPrepublishList) SetPassedCount(v string) *FindPrepublishesByVersionIdResponseBodyPrepublishList {
 	s.PassedCount = &v
+	return s
+}
+
+func (s *FindPrepublishesByVersionIdResponseBodyPrepublishList) SetGmtCreateTimestamp(v int64) *FindPrepublishesByVersionIdResponseBodyPrepublishList {
+	s.GmtCreateTimestamp = &v
+	return s
+}
+
+func (s *FindPrepublishesByVersionIdResponseBodyPrepublishList) SetGmtModifyTimestamp(v int64) *FindPrepublishesByVersionIdResponseBodyPrepublishList {
+	s.GmtModifyTimestamp = &v
 	return s
 }
 
@@ -9543,8 +9712,8 @@ func (s *FindPrepublishPassedDevicesResponseBody) SetDeviceList(v *FindPrepublis
 }
 
 type FindPrepublishPassedDevicesResponseBodyDeviceList struct {
-	Items      []*FindPrepublishPassedDevicesResponseBodyDeviceListItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	TotalCount *int32                                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Items      []*FindPrepublishPassedDevicesResponseBodyDeviceListItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 }
 
 func (s FindPrepublishPassedDevicesResponseBodyDeviceList) String() string {
@@ -9555,20 +9724,20 @@ func (s FindPrepublishPassedDevicesResponseBodyDeviceList) GoString() string {
 	return s.String()
 }
 
-func (s *FindPrepublishPassedDevicesResponseBodyDeviceList) SetItems(v []*FindPrepublishPassedDevicesResponseBodyDeviceListItems) *FindPrepublishPassedDevicesResponseBodyDeviceList {
-	s.Items = v
-	return s
-}
-
 func (s *FindPrepublishPassedDevicesResponseBodyDeviceList) SetTotalCount(v int32) *FindPrepublishPassedDevicesResponseBodyDeviceList {
 	s.TotalCount = &v
 	return s
 }
 
+func (s *FindPrepublishPassedDevicesResponseBodyDeviceList) SetItems(v []*FindPrepublishPassedDevicesResponseBodyDeviceListItems) *FindPrepublishPassedDevicesResponseBodyDeviceList {
+	s.Items = v
+	return s
+}
+
 type FindPrepublishPassedDevicesResponseBodyDeviceListItems struct {
-	GmtCreateTimestamp *int64  `json:"GmtCreateTimestamp,omitempty" xml:"GmtCreateTimestamp,omitempty"`
 	DeviceId           *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 	GmtCreate          *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtCreateTimestamp *int64  `json:"GmtCreateTimestamp,omitempty" xml:"GmtCreateTimestamp,omitempty"`
 }
 
 func (s FindPrepublishPassedDevicesResponseBodyDeviceListItems) String() string {
@@ -9579,11 +9748,6 @@ func (s FindPrepublishPassedDevicesResponseBodyDeviceListItems) GoString() strin
 	return s.String()
 }
 
-func (s *FindPrepublishPassedDevicesResponseBodyDeviceListItems) SetGmtCreateTimestamp(v int64) *FindPrepublishPassedDevicesResponseBodyDeviceListItems {
-	s.GmtCreateTimestamp = &v
-	return s
-}
-
 func (s *FindPrepublishPassedDevicesResponseBodyDeviceListItems) SetDeviceId(v string) *FindPrepublishPassedDevicesResponseBodyDeviceListItems {
 	s.DeviceId = &v
 	return s
@@ -9591,6 +9755,11 @@ func (s *FindPrepublishPassedDevicesResponseBodyDeviceListItems) SetDeviceId(v s
 
 func (s *FindPrepublishPassedDevicesResponseBodyDeviceListItems) SetGmtCreate(v string) *FindPrepublishPassedDevicesResponseBodyDeviceListItems {
 	s.GmtCreate = &v
+	return s
+}
+
+func (s *FindPrepublishPassedDevicesResponseBodyDeviceListItems) SetGmtCreateTimestamp(v int64) *FindPrepublishPassedDevicesResponseBodyDeviceListItems {
+	s.GmtCreateTimestamp = &v
 	return s
 }
 
@@ -9694,8 +9863,8 @@ func (s *FindVersionBlackDevicesResponseBody) SetDeviceList(v *FindVersionBlackD
 }
 
 type FindVersionBlackDevicesResponseBodyDeviceList struct {
-	Items      []*FindVersionBlackDevicesResponseBodyDeviceListItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	TotalCount *int32                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Items      []*FindVersionBlackDevicesResponseBodyDeviceListItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 }
 
 func (s FindVersionBlackDevicesResponseBodyDeviceList) String() string {
@@ -9706,23 +9875,23 @@ func (s FindVersionBlackDevicesResponseBodyDeviceList) GoString() string {
 	return s.String()
 }
 
-func (s *FindVersionBlackDevicesResponseBodyDeviceList) SetItems(v []*FindVersionBlackDevicesResponseBodyDeviceListItems) *FindVersionBlackDevicesResponseBodyDeviceList {
-	s.Items = v
-	return s
-}
-
 func (s *FindVersionBlackDevicesResponseBodyDeviceList) SetTotalCount(v int32) *FindVersionBlackDevicesResponseBodyDeviceList {
 	s.TotalCount = &v
 	return s
 }
 
+func (s *FindVersionBlackDevicesResponseBodyDeviceList) SetItems(v []*FindVersionBlackDevicesResponseBodyDeviceListItems) *FindVersionBlackDevicesResponseBodyDeviceList {
+	s.Items = v
+	return s
+}
+
 type FindVersionBlackDevicesResponseBodyDeviceListItems struct {
-	GmtCreateTimestamp *int64  `json:"GmtCreateTimestamp,omitempty" xml:"GmtCreateTimestamp,omitempty"`
-	OriginalId         *string `json:"OriginalId,omitempty" xml:"OriginalId,omitempty"`
+	Id                 *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	DeviceId           *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	OriginalId         *string `json:"OriginalId,omitempty" xml:"OriginalId,omitempty"`
 	IdType             *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
 	GmtCreate          *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Id                 *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	GmtCreateTimestamp *int64  `json:"GmtCreateTimestamp,omitempty" xml:"GmtCreateTimestamp,omitempty"`
 }
 
 func (s FindVersionBlackDevicesResponseBodyDeviceListItems) String() string {
@@ -9733,18 +9902,18 @@ func (s FindVersionBlackDevicesResponseBodyDeviceListItems) GoString() string {
 	return s.String()
 }
 
-func (s *FindVersionBlackDevicesResponseBodyDeviceListItems) SetGmtCreateTimestamp(v int64) *FindVersionBlackDevicesResponseBodyDeviceListItems {
-	s.GmtCreateTimestamp = &v
-	return s
-}
-
-func (s *FindVersionBlackDevicesResponseBodyDeviceListItems) SetOriginalId(v string) *FindVersionBlackDevicesResponseBodyDeviceListItems {
-	s.OriginalId = &v
+func (s *FindVersionBlackDevicesResponseBodyDeviceListItems) SetId(v int64) *FindVersionBlackDevicesResponseBodyDeviceListItems {
+	s.Id = &v
 	return s
 }
 
 func (s *FindVersionBlackDevicesResponseBodyDeviceListItems) SetDeviceId(v string) *FindVersionBlackDevicesResponseBodyDeviceListItems {
 	s.DeviceId = &v
+	return s
+}
+
+func (s *FindVersionBlackDevicesResponseBodyDeviceListItems) SetOriginalId(v string) *FindVersionBlackDevicesResponseBodyDeviceListItems {
+	s.OriginalId = &v
 	return s
 }
 
@@ -9758,8 +9927,8 @@ func (s *FindVersionBlackDevicesResponseBodyDeviceListItems) SetGmtCreate(v stri
 	return s
 }
 
-func (s *FindVersionBlackDevicesResponseBodyDeviceListItems) SetId(v int64) *FindVersionBlackDevicesResponseBodyDeviceListItems {
-	s.Id = &v
+func (s *FindVersionBlackDevicesResponseBodyDeviceListItems) SetGmtCreateTimestamp(v int64) *FindVersionBlackDevicesResponseBodyDeviceListItems {
+	s.GmtCreateTimestamp = &v
 	return s
 }
 
@@ -9857,8 +10026,8 @@ func (s *FindVersionDeviceGroupsResponseBody) SetDeviceGroupList(v *FindVersionD
 }
 
 type FindVersionDeviceGroupsResponseBodyDeviceGroupList struct {
-	Items      []*FindVersionDeviceGroupsResponseBodyDeviceGroupListItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	TotalCount *int32                                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Items      []*FindVersionDeviceGroupsResponseBodyDeviceGroupListItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 }
 
 func (s FindVersionDeviceGroupsResponseBodyDeviceGroupList) String() string {
@@ -9869,25 +10038,25 @@ func (s FindVersionDeviceGroupsResponseBodyDeviceGroupList) GoString() string {
 	return s.String()
 }
 
-func (s *FindVersionDeviceGroupsResponseBodyDeviceGroupList) SetItems(v []*FindVersionDeviceGroupsResponseBodyDeviceGroupListItems) *FindVersionDeviceGroupsResponseBodyDeviceGroupList {
-	s.Items = v
-	return s
-}
-
 func (s *FindVersionDeviceGroupsResponseBodyDeviceGroupList) SetTotalCount(v int32) *FindVersionDeviceGroupsResponseBodyDeviceGroupList {
 	s.TotalCount = &v
 	return s
 }
 
+func (s *FindVersionDeviceGroupsResponseBodyDeviceGroupList) SetItems(v []*FindVersionDeviceGroupsResponseBodyDeviceGroupListItems) *FindVersionDeviceGroupsResponseBodyDeviceGroupList {
+	s.Items = v
+	return s
+}
+
 type FindVersionDeviceGroupsResponseBodyDeviceGroupListItems struct {
-	GmtModifyTimestamp *int64  `json:"GmtModifyTimestamp,omitempty" xml:"GmtModifyTimestamp,omitempty"`
-	GmtCreateTimestamp *int64  `json:"GmtCreateTimestamp,omitempty" xml:"GmtCreateTimestamp,omitempty"`
+	Id                 *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	GmtCreate          *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	GmtModify          *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
 	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GmtCreate          *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Id                 *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	MaxCount           *string `json:"MaxCount,omitempty" xml:"MaxCount,omitempty"`
+	GmtCreateTimestamp *int64  `json:"GmtCreateTimestamp,omitempty" xml:"GmtCreateTimestamp,omitempty"`
+	GmtModifyTimestamp *int64  `json:"GmtModifyTimestamp,omitempty" xml:"GmtModifyTimestamp,omitempty"`
 }
 
 func (s FindVersionDeviceGroupsResponseBodyDeviceGroupListItems) String() string {
@@ -9898,13 +10067,18 @@ func (s FindVersionDeviceGroupsResponseBodyDeviceGroupListItems) GoString() stri
 	return s.String()
 }
 
-func (s *FindVersionDeviceGroupsResponseBodyDeviceGroupListItems) SetGmtModifyTimestamp(v int64) *FindVersionDeviceGroupsResponseBodyDeviceGroupListItems {
-	s.GmtModifyTimestamp = &v
+func (s *FindVersionDeviceGroupsResponseBodyDeviceGroupListItems) SetId(v int64) *FindVersionDeviceGroupsResponseBodyDeviceGroupListItems {
+	s.Id = &v
 	return s
 }
 
-func (s *FindVersionDeviceGroupsResponseBodyDeviceGroupListItems) SetGmtCreateTimestamp(v int64) *FindVersionDeviceGroupsResponseBodyDeviceGroupListItems {
-	s.GmtCreateTimestamp = &v
+func (s *FindVersionDeviceGroupsResponseBodyDeviceGroupListItems) SetName(v string) *FindVersionDeviceGroupsResponseBodyDeviceGroupListItems {
+	s.Name = &v
+	return s
+}
+
+func (s *FindVersionDeviceGroupsResponseBodyDeviceGroupListItems) SetGmtCreate(v string) *FindVersionDeviceGroupsResponseBodyDeviceGroupListItems {
+	s.GmtCreate = &v
 	return s
 }
 
@@ -9918,23 +10092,18 @@ func (s *FindVersionDeviceGroupsResponseBodyDeviceGroupListItems) SetDescription
 	return s
 }
 
-func (s *FindVersionDeviceGroupsResponseBodyDeviceGroupListItems) SetGmtCreate(v string) *FindVersionDeviceGroupsResponseBodyDeviceGroupListItems {
-	s.GmtCreate = &v
-	return s
-}
-
-func (s *FindVersionDeviceGroupsResponseBodyDeviceGroupListItems) SetName(v string) *FindVersionDeviceGroupsResponseBodyDeviceGroupListItems {
-	s.Name = &v
-	return s
-}
-
-func (s *FindVersionDeviceGroupsResponseBodyDeviceGroupListItems) SetId(v int64) *FindVersionDeviceGroupsResponseBodyDeviceGroupListItems {
-	s.Id = &v
-	return s
-}
-
 func (s *FindVersionDeviceGroupsResponseBodyDeviceGroupListItems) SetMaxCount(v string) *FindVersionDeviceGroupsResponseBodyDeviceGroupListItems {
 	s.MaxCount = &v
+	return s
+}
+
+func (s *FindVersionDeviceGroupsResponseBodyDeviceGroupListItems) SetGmtCreateTimestamp(v int64) *FindVersionDeviceGroupsResponseBodyDeviceGroupListItems {
+	s.GmtCreateTimestamp = &v
+	return s
+}
+
+func (s *FindVersionDeviceGroupsResponseBodyDeviceGroupListItems) SetGmtModifyTimestamp(v int64) *FindVersionDeviceGroupsResponseBodyDeviceGroupListItems {
+	s.GmtModifyTimestamp = &v
 	return s
 }
 
@@ -10032,8 +10201,8 @@ func (s *FindVersionGroupDevicesResponseBody) SetGroupDeviceList(v *FindVersionG
 }
 
 type FindVersionGroupDevicesResponseBodyGroupDeviceList struct {
-	Items      []*FindVersionGroupDevicesResponseBodyGroupDeviceListItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	TotalCount *int32                                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Items      []*FindVersionGroupDevicesResponseBodyGroupDeviceListItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 }
 
 func (s FindVersionGroupDevicesResponseBodyGroupDeviceList) String() string {
@@ -10044,23 +10213,23 @@ func (s FindVersionGroupDevicesResponseBodyGroupDeviceList) GoString() string {
 	return s.String()
 }
 
-func (s *FindVersionGroupDevicesResponseBodyGroupDeviceList) SetItems(v []*FindVersionGroupDevicesResponseBodyGroupDeviceListItems) *FindVersionGroupDevicesResponseBodyGroupDeviceList {
-	s.Items = v
-	return s
-}
-
 func (s *FindVersionGroupDevicesResponseBodyGroupDeviceList) SetTotalCount(v int32) *FindVersionGroupDevicesResponseBodyGroupDeviceList {
 	s.TotalCount = &v
 	return s
 }
 
+func (s *FindVersionGroupDevicesResponseBodyGroupDeviceList) SetItems(v []*FindVersionGroupDevicesResponseBodyGroupDeviceListItems) *FindVersionGroupDevicesResponseBodyGroupDeviceList {
+	s.Items = v
+	return s
+}
+
 type FindVersionGroupDevicesResponseBodyGroupDeviceListItems struct {
-	GmtCreateTimestamp *int64  `json:"GmtCreateTimestamp,omitempty" xml:"GmtCreateTimestamp,omitempty"`
-	OriginalId         *string `json:"OriginalId,omitempty" xml:"OriginalId,omitempty"`
+	Id                 *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	DeviceId           *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 	IdType             *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	OriginalId         *string `json:"OriginalId,omitempty" xml:"OriginalId,omitempty"`
 	GmtCreate          *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Id                 *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	GmtCreateTimestamp *int64  `json:"GmtCreateTimestamp,omitempty" xml:"GmtCreateTimestamp,omitempty"`
 }
 
 func (s FindVersionGroupDevicesResponseBodyGroupDeviceListItems) String() string {
@@ -10071,13 +10240,8 @@ func (s FindVersionGroupDevicesResponseBodyGroupDeviceListItems) GoString() stri
 	return s.String()
 }
 
-func (s *FindVersionGroupDevicesResponseBodyGroupDeviceListItems) SetGmtCreateTimestamp(v int64) *FindVersionGroupDevicesResponseBodyGroupDeviceListItems {
-	s.GmtCreateTimestamp = &v
-	return s
-}
-
-func (s *FindVersionGroupDevicesResponseBodyGroupDeviceListItems) SetOriginalId(v string) *FindVersionGroupDevicesResponseBodyGroupDeviceListItems {
-	s.OriginalId = &v
+func (s *FindVersionGroupDevicesResponseBodyGroupDeviceListItems) SetId(v string) *FindVersionGroupDevicesResponseBodyGroupDeviceListItems {
+	s.Id = &v
 	return s
 }
 
@@ -10091,13 +10255,18 @@ func (s *FindVersionGroupDevicesResponseBodyGroupDeviceListItems) SetIdType(v st
 	return s
 }
 
+func (s *FindVersionGroupDevicesResponseBodyGroupDeviceListItems) SetOriginalId(v string) *FindVersionGroupDevicesResponseBodyGroupDeviceListItems {
+	s.OriginalId = &v
+	return s
+}
+
 func (s *FindVersionGroupDevicesResponseBodyGroupDeviceListItems) SetGmtCreate(v string) *FindVersionGroupDevicesResponseBodyGroupDeviceListItems {
 	s.GmtCreate = &v
 	return s
 }
 
-func (s *FindVersionGroupDevicesResponseBodyGroupDeviceListItems) SetId(v string) *FindVersionGroupDevicesResponseBodyGroupDeviceListItems {
-	s.Id = &v
+func (s *FindVersionGroupDevicesResponseBodyGroupDeviceListItems) SetGmtCreateTimestamp(v int64) *FindVersionGroupDevicesResponseBodyGroupDeviceListItems {
+	s.GmtCreateTimestamp = &v
 	return s
 }
 
@@ -10213,8 +10382,8 @@ func (s *FindVersionMessagesResponseBody) SetMessageList(v *FindVersionMessagesR
 }
 
 type FindVersionMessagesResponseBodyMessageList struct {
-	Items      []*FindVersionMessagesResponseBodyMessageListItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	TotalCount *int32                                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Items      []*FindVersionMessagesResponseBodyMessageListItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 }
 
 func (s FindVersionMessagesResponseBodyMessageList) String() string {
@@ -10225,28 +10394,28 @@ func (s FindVersionMessagesResponseBodyMessageList) GoString() string {
 	return s.String()
 }
 
-func (s *FindVersionMessagesResponseBodyMessageList) SetItems(v []*FindVersionMessagesResponseBodyMessageListItems) *FindVersionMessagesResponseBodyMessageList {
-	s.Items = v
-	return s
-}
-
 func (s *FindVersionMessagesResponseBodyMessageList) SetTotalCount(v int32) *FindVersionMessagesResponseBodyMessageList {
 	s.TotalCount = &v
 	return s
 }
 
+func (s *FindVersionMessagesResponseBodyMessageList) SetItems(v []*FindVersionMessagesResponseBodyMessageListItems) *FindVersionMessagesResponseBodyMessageList {
+	s.Items = v
+	return s
+}
+
 type FindVersionMessagesResponseBodyMessageListItems struct {
-	GmtModifyTimestamp *int64  `json:"GmtModifyTimestamp,omitempty" xml:"GmtModifyTimestamp,omitempty"`
-	GmtCreateTimestamp *int64  `json:"GmtCreateTimestamp,omitempty" xml:"GmtCreateTimestamp,omitempty"`
-	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	GmtModify          *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
+	Id                 *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	MessageId          *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	VersionId          *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	TestId             *string `json:"TestId,omitempty" xml:"TestId,omitempty"`
+	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusDesc         *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
 	DeviceId           *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 	GmtCreate          *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	VersionId          *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
-	StatusDesc         *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
-	TestId             *string `json:"TestId,omitempty" xml:"TestId,omitempty"`
-	Id                 *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	GmtModify          *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
+	GmtCreateTimestamp *int64  `json:"GmtCreateTimestamp,omitempty" xml:"GmtCreateTimestamp,omitempty"`
+	GmtModifyTimestamp *int64  `json:"GmtModifyTimestamp,omitempty" xml:"GmtModifyTimestamp,omitempty"`
 }
 
 func (s FindVersionMessagesResponseBodyMessageListItems) String() string {
@@ -10257,13 +10426,23 @@ func (s FindVersionMessagesResponseBodyMessageListItems) GoString() string {
 	return s.String()
 }
 
-func (s *FindVersionMessagesResponseBodyMessageListItems) SetGmtModifyTimestamp(v int64) *FindVersionMessagesResponseBodyMessageListItems {
-	s.GmtModifyTimestamp = &v
+func (s *FindVersionMessagesResponseBodyMessageListItems) SetId(v int64) *FindVersionMessagesResponseBodyMessageListItems {
+	s.Id = &v
 	return s
 }
 
-func (s *FindVersionMessagesResponseBodyMessageListItems) SetGmtCreateTimestamp(v int64) *FindVersionMessagesResponseBodyMessageListItems {
-	s.GmtCreateTimestamp = &v
+func (s *FindVersionMessagesResponseBodyMessageListItems) SetMessageId(v string) *FindVersionMessagesResponseBodyMessageListItems {
+	s.MessageId = &v
+	return s
+}
+
+func (s *FindVersionMessagesResponseBodyMessageListItems) SetVersionId(v string) *FindVersionMessagesResponseBodyMessageListItems {
+	s.VersionId = &v
+	return s
+}
+
+func (s *FindVersionMessagesResponseBodyMessageListItems) SetTestId(v string) *FindVersionMessagesResponseBodyMessageListItems {
+	s.TestId = &v
 	return s
 }
 
@@ -10272,13 +10451,8 @@ func (s *FindVersionMessagesResponseBodyMessageListItems) SetStatus(v string) *F
 	return s
 }
 
-func (s *FindVersionMessagesResponseBodyMessageListItems) SetGmtModify(v string) *FindVersionMessagesResponseBodyMessageListItems {
-	s.GmtModify = &v
-	return s
-}
-
-func (s *FindVersionMessagesResponseBodyMessageListItems) SetMessageId(v string) *FindVersionMessagesResponseBodyMessageListItems {
-	s.MessageId = &v
+func (s *FindVersionMessagesResponseBodyMessageListItems) SetStatusDesc(v string) *FindVersionMessagesResponseBodyMessageListItems {
+	s.StatusDesc = &v
 	return s
 }
 
@@ -10292,23 +10466,18 @@ func (s *FindVersionMessagesResponseBodyMessageListItems) SetGmtCreate(v string)
 	return s
 }
 
-func (s *FindVersionMessagesResponseBodyMessageListItems) SetVersionId(v string) *FindVersionMessagesResponseBodyMessageListItems {
-	s.VersionId = &v
+func (s *FindVersionMessagesResponseBodyMessageListItems) SetGmtModify(v string) *FindVersionMessagesResponseBodyMessageListItems {
+	s.GmtModify = &v
 	return s
 }
 
-func (s *FindVersionMessagesResponseBodyMessageListItems) SetStatusDesc(v string) *FindVersionMessagesResponseBodyMessageListItems {
-	s.StatusDesc = &v
+func (s *FindVersionMessagesResponseBodyMessageListItems) SetGmtCreateTimestamp(v int64) *FindVersionMessagesResponseBodyMessageListItems {
+	s.GmtCreateTimestamp = &v
 	return s
 }
 
-func (s *FindVersionMessagesResponseBodyMessageListItems) SetTestId(v string) *FindVersionMessagesResponseBodyMessageListItems {
-	s.TestId = &v
-	return s
-}
-
-func (s *FindVersionMessagesResponseBodyMessageListItems) SetId(v int64) *FindVersionMessagesResponseBodyMessageListItems {
-	s.Id = &v
+func (s *FindVersionMessagesResponseBodyMessageListItems) SetGmtModifyTimestamp(v int64) *FindVersionMessagesResponseBodyMessageListItems {
+	s.GmtModifyTimestamp = &v
 	return s
 }
 
@@ -10383,8 +10552,8 @@ func (s *FindVersionMessageSendRecordsRequest) SetVersionId(v string) *FindVersi
 }
 
 type FindVersionMessageSendRecordsResponseBody struct {
-	MessageSendRecordList *FindVersionMessageSendRecordsResponseBodyMessageSendRecordList `json:"MessageSendRecordList,omitempty" xml:"MessageSendRecordList,omitempty" type:"Struct"`
 	RequestId             *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	MessageSendRecordList *FindVersionMessageSendRecordsResponseBodyMessageSendRecordList `json:"MessageSendRecordList,omitempty" xml:"MessageSendRecordList,omitempty" type:"Struct"`
 }
 
 func (s FindVersionMessageSendRecordsResponseBody) String() string {
@@ -10395,19 +10564,19 @@ func (s FindVersionMessageSendRecordsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *FindVersionMessageSendRecordsResponseBody) SetMessageSendRecordList(v *FindVersionMessageSendRecordsResponseBodyMessageSendRecordList) *FindVersionMessageSendRecordsResponseBody {
-	s.MessageSendRecordList = v
-	return s
-}
-
 func (s *FindVersionMessageSendRecordsResponseBody) SetRequestId(v string) *FindVersionMessageSendRecordsResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *FindVersionMessageSendRecordsResponseBody) SetMessageSendRecordList(v *FindVersionMessageSendRecordsResponseBodyMessageSendRecordList) *FindVersionMessageSendRecordsResponseBody {
+	s.MessageSendRecordList = v
+	return s
+}
+
 type FindVersionMessageSendRecordsResponseBodyMessageSendRecordList struct {
-	Items      []*FindVersionMessageSendRecordsResponseBodyMessageSendRecordListItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	TotalCount *int32                                                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Items      []*FindVersionMessageSendRecordsResponseBodyMessageSendRecordListItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 }
 
 func (s FindVersionMessageSendRecordsResponseBodyMessageSendRecordList) String() string {
@@ -10418,28 +10587,28 @@ func (s FindVersionMessageSendRecordsResponseBodyMessageSendRecordList) GoString
 	return s.String()
 }
 
-func (s *FindVersionMessageSendRecordsResponseBodyMessageSendRecordList) SetItems(v []*FindVersionMessageSendRecordsResponseBodyMessageSendRecordListItems) *FindVersionMessageSendRecordsResponseBodyMessageSendRecordList {
-	s.Items = v
-	return s
-}
-
 func (s *FindVersionMessageSendRecordsResponseBodyMessageSendRecordList) SetTotalCount(v int32) *FindVersionMessageSendRecordsResponseBodyMessageSendRecordList {
 	s.TotalCount = &v
 	return s
 }
 
+func (s *FindVersionMessageSendRecordsResponseBodyMessageSendRecordList) SetItems(v []*FindVersionMessageSendRecordsResponseBodyMessageSendRecordListItems) *FindVersionMessageSendRecordsResponseBodyMessageSendRecordList {
+	s.Items = v
+	return s
+}
+
 type FindVersionMessageSendRecordsResponseBodyMessageSendRecordListItems struct {
-	GmtCreateTimestamp *int64  `json:"GmtCreateTimestamp,omitempty" xml:"GmtCreateTimestamp,omitempty"`
+	Id                 *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	MessageType        *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
+	VersionId          *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	TargetId           *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	Result             *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	ResultDesc         *string `json:"ResultDesc,omitempty" xml:"ResultDesc,omitempty"`
+	SucceededCount     *string `json:"SucceededCount,omitempty" xml:"SucceededCount,omitempty"`
 	FailedCount        *string `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
 	SkippedCount       *string `json:"SkippedCount,omitempty" xml:"SkippedCount,omitempty"`
-	Result             *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	SucceededCount     *string `json:"SucceededCount,omitempty" xml:"SucceededCount,omitempty"`
 	GmtCreate          *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	VersionId          *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
-	ResultDesc         *string `json:"ResultDesc,omitempty" xml:"ResultDesc,omitempty"`
-	TargetId           *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	Id                 *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	GmtCreateTimestamp *int64  `json:"GmtCreateTimestamp,omitempty" xml:"GmtCreateTimestamp,omitempty"`
 }
 
 func (s FindVersionMessageSendRecordsResponseBodyMessageSendRecordListItems) String() string {
@@ -10450,13 +10619,38 @@ func (s FindVersionMessageSendRecordsResponseBodyMessageSendRecordListItems) GoS
 	return s.String()
 }
 
-func (s *FindVersionMessageSendRecordsResponseBodyMessageSendRecordListItems) SetGmtCreateTimestamp(v int64) *FindVersionMessageSendRecordsResponseBodyMessageSendRecordListItems {
-	s.GmtCreateTimestamp = &v
+func (s *FindVersionMessageSendRecordsResponseBodyMessageSendRecordListItems) SetId(v int64) *FindVersionMessageSendRecordsResponseBodyMessageSendRecordListItems {
+	s.Id = &v
 	return s
 }
 
 func (s *FindVersionMessageSendRecordsResponseBodyMessageSendRecordListItems) SetMessageType(v string) *FindVersionMessageSendRecordsResponseBodyMessageSendRecordListItems {
 	s.MessageType = &v
+	return s
+}
+
+func (s *FindVersionMessageSendRecordsResponseBodyMessageSendRecordListItems) SetVersionId(v string) *FindVersionMessageSendRecordsResponseBodyMessageSendRecordListItems {
+	s.VersionId = &v
+	return s
+}
+
+func (s *FindVersionMessageSendRecordsResponseBodyMessageSendRecordListItems) SetTargetId(v string) *FindVersionMessageSendRecordsResponseBodyMessageSendRecordListItems {
+	s.TargetId = &v
+	return s
+}
+
+func (s *FindVersionMessageSendRecordsResponseBodyMessageSendRecordListItems) SetResult(v string) *FindVersionMessageSendRecordsResponseBodyMessageSendRecordListItems {
+	s.Result = &v
+	return s
+}
+
+func (s *FindVersionMessageSendRecordsResponseBodyMessageSendRecordListItems) SetResultDesc(v string) *FindVersionMessageSendRecordsResponseBodyMessageSendRecordListItems {
+	s.ResultDesc = &v
+	return s
+}
+
+func (s *FindVersionMessageSendRecordsResponseBodyMessageSendRecordListItems) SetSucceededCount(v string) *FindVersionMessageSendRecordsResponseBodyMessageSendRecordListItems {
+	s.SucceededCount = &v
 	return s
 }
 
@@ -10470,38 +10664,13 @@ func (s *FindVersionMessageSendRecordsResponseBodyMessageSendRecordListItems) Se
 	return s
 }
 
-func (s *FindVersionMessageSendRecordsResponseBodyMessageSendRecordListItems) SetResult(v string) *FindVersionMessageSendRecordsResponseBodyMessageSendRecordListItems {
-	s.Result = &v
-	return s
-}
-
-func (s *FindVersionMessageSendRecordsResponseBodyMessageSendRecordListItems) SetSucceededCount(v string) *FindVersionMessageSendRecordsResponseBodyMessageSendRecordListItems {
-	s.SucceededCount = &v
-	return s
-}
-
 func (s *FindVersionMessageSendRecordsResponseBodyMessageSendRecordListItems) SetGmtCreate(v string) *FindVersionMessageSendRecordsResponseBodyMessageSendRecordListItems {
 	s.GmtCreate = &v
 	return s
 }
 
-func (s *FindVersionMessageSendRecordsResponseBodyMessageSendRecordListItems) SetVersionId(v string) *FindVersionMessageSendRecordsResponseBodyMessageSendRecordListItems {
-	s.VersionId = &v
-	return s
-}
-
-func (s *FindVersionMessageSendRecordsResponseBodyMessageSendRecordListItems) SetResultDesc(v string) *FindVersionMessageSendRecordsResponseBodyMessageSendRecordListItems {
-	s.ResultDesc = &v
-	return s
-}
-
-func (s *FindVersionMessageSendRecordsResponseBodyMessageSendRecordListItems) SetTargetId(v string) *FindVersionMessageSendRecordsResponseBodyMessageSendRecordListItems {
-	s.TargetId = &v
-	return s
-}
-
-func (s *FindVersionMessageSendRecordsResponseBodyMessageSendRecordListItems) SetId(v int64) *FindVersionMessageSendRecordsResponseBodyMessageSendRecordListItems {
-	s.Id = &v
+func (s *FindVersionMessageSendRecordsResponseBodyMessageSendRecordListItems) SetGmtCreateTimestamp(v int64) *FindVersionMessageSendRecordsResponseBodyMessageSendRecordListItems {
+	s.GmtCreateTimestamp = &v
 	return s
 }
 
@@ -10593,8 +10762,8 @@ func (s *FindVersionTestsResponseBody) SetVersionTestList(v *FindVersionTestsRes
 }
 
 type FindVersionTestsResponseBodyVersionTestList struct {
-	Items      []*FindVersionTestsResponseBodyVersionTestListItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	TotalCount *int32                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Items      []*FindVersionTestsResponseBodyVersionTestListItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 }
 
 func (s FindVersionTestsResponseBodyVersionTestList) String() string {
@@ -10605,31 +10774,31 @@ func (s FindVersionTestsResponseBodyVersionTestList) GoString() string {
 	return s.String()
 }
 
-func (s *FindVersionTestsResponseBodyVersionTestList) SetItems(v []*FindVersionTestsResponseBodyVersionTestListItems) *FindVersionTestsResponseBodyVersionTestList {
-	s.Items = v
-	return s
-}
-
 func (s *FindVersionTestsResponseBodyVersionTestList) SetTotalCount(v int32) *FindVersionTestsResponseBodyVersionTestList {
 	s.TotalCount = &v
 	return s
 }
 
+func (s *FindVersionTestsResponseBodyVersionTestList) SetItems(v []*FindVersionTestsResponseBodyVersionTestListItems) *FindVersionTestsResponseBodyVersionTestList {
+	s.Items = v
+	return s
+}
+
 type FindVersionTestsResponseBodyVersionTestListItems struct {
-	GmtCreateTimestamp *int64  `json:"GmtCreateTimestamp,omitempty" xml:"GmtCreateTimestamp,omitempty"`
-	GmtModify          *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
-	VersionId          *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
-	GmtModifyTimestamp *int64  `json:"GmtModifyTimestamp,omitempty" xml:"GmtModifyTimestamp,omitempty"`
-	FailedCount        *string `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
-	DeviceGroupId      *string `json:"DeviceGroupId,omitempty" xml:"DeviceGroupId,omitempty"`
-	SkippedCount       *string `json:"SkippedCount,omitempty" xml:"SkippedCount,omitempty"`
-	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	SucceededCount     *string `json:"SucceededCount,omitempty" xml:"SucceededCount,omitempty"`
-	DeviceGroupName    *string `json:"DeviceGroupName,omitempty" xml:"DeviceGroupName,omitempty"`
-	GmtCreate          *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Id                 *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	VersionId          *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 	VersionType        *string `json:"VersionType,omitempty" xml:"VersionType,omitempty"`
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GmtCreate          *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModify          *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
+	DeviceGroupId      *string `json:"DeviceGroupId,omitempty" xml:"DeviceGroupId,omitempty"`
+	DeviceGroupName    *string `json:"DeviceGroupName,omitempty" xml:"DeviceGroupName,omitempty"`
+	SucceededCount     *string `json:"SucceededCount,omitempty" xml:"SucceededCount,omitempty"`
+	FailedCount        *string `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
+	SkippedCount       *string `json:"SkippedCount,omitempty" xml:"SkippedCount,omitempty"`
+	GmtCreateTimestamp *int64  `json:"GmtCreateTimestamp,omitempty" xml:"GmtCreateTimestamp,omitempty"`
+	GmtModifyTimestamp *int64  `json:"GmtModifyTimestamp,omitempty" xml:"GmtModifyTimestamp,omitempty"`
 }
 
 func (s FindVersionTestsResponseBodyVersionTestListItems) String() string {
@@ -10640,13 +10809,8 @@ func (s FindVersionTestsResponseBodyVersionTestListItems) GoString() string {
 	return s.String()
 }
 
-func (s *FindVersionTestsResponseBodyVersionTestListItems) SetGmtCreateTimestamp(v int64) *FindVersionTestsResponseBodyVersionTestListItems {
-	s.GmtCreateTimestamp = &v
-	return s
-}
-
-func (s *FindVersionTestsResponseBodyVersionTestListItems) SetGmtModify(v string) *FindVersionTestsResponseBodyVersionTestListItems {
-	s.GmtModify = &v
+func (s *FindVersionTestsResponseBodyVersionTestListItems) SetId(v int64) *FindVersionTestsResponseBodyVersionTestListItems {
+	s.Id = &v
 	return s
 }
 
@@ -10655,43 +10819,8 @@ func (s *FindVersionTestsResponseBodyVersionTestListItems) SetVersionId(v string
 	return s
 }
 
-func (s *FindVersionTestsResponseBodyVersionTestListItems) SetGmtModifyTimestamp(v int64) *FindVersionTestsResponseBodyVersionTestListItems {
-	s.GmtModifyTimestamp = &v
-	return s
-}
-
-func (s *FindVersionTestsResponseBodyVersionTestListItems) SetFailedCount(v string) *FindVersionTestsResponseBodyVersionTestListItems {
-	s.FailedCount = &v
-	return s
-}
-
-func (s *FindVersionTestsResponseBodyVersionTestListItems) SetDeviceGroupId(v string) *FindVersionTestsResponseBodyVersionTestListItems {
-	s.DeviceGroupId = &v
-	return s
-}
-
-func (s *FindVersionTestsResponseBodyVersionTestListItems) SetSkippedCount(v string) *FindVersionTestsResponseBodyVersionTestListItems {
-	s.SkippedCount = &v
-	return s
-}
-
-func (s *FindVersionTestsResponseBodyVersionTestListItems) SetDescription(v string) *FindVersionTestsResponseBodyVersionTestListItems {
-	s.Description = &v
-	return s
-}
-
-func (s *FindVersionTestsResponseBodyVersionTestListItems) SetSucceededCount(v string) *FindVersionTestsResponseBodyVersionTestListItems {
-	s.SucceededCount = &v
-	return s
-}
-
-func (s *FindVersionTestsResponseBodyVersionTestListItems) SetDeviceGroupName(v string) *FindVersionTestsResponseBodyVersionTestListItems {
-	s.DeviceGroupName = &v
-	return s
-}
-
-func (s *FindVersionTestsResponseBodyVersionTestListItems) SetGmtCreate(v string) *FindVersionTestsResponseBodyVersionTestListItems {
-	s.GmtCreate = &v
+func (s *FindVersionTestsResponseBodyVersionTestListItems) SetVersionType(v string) *FindVersionTestsResponseBodyVersionTestListItems {
+	s.VersionType = &v
 	return s
 }
 
@@ -10700,13 +10829,53 @@ func (s *FindVersionTestsResponseBodyVersionTestListItems) SetName(v string) *Fi
 	return s
 }
 
-func (s *FindVersionTestsResponseBodyVersionTestListItems) SetId(v int64) *FindVersionTestsResponseBodyVersionTestListItems {
-	s.Id = &v
+func (s *FindVersionTestsResponseBodyVersionTestListItems) SetDescription(v string) *FindVersionTestsResponseBodyVersionTestListItems {
+	s.Description = &v
 	return s
 }
 
-func (s *FindVersionTestsResponseBodyVersionTestListItems) SetVersionType(v string) *FindVersionTestsResponseBodyVersionTestListItems {
-	s.VersionType = &v
+func (s *FindVersionTestsResponseBodyVersionTestListItems) SetGmtCreate(v string) *FindVersionTestsResponseBodyVersionTestListItems {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *FindVersionTestsResponseBodyVersionTestListItems) SetGmtModify(v string) *FindVersionTestsResponseBodyVersionTestListItems {
+	s.GmtModify = &v
+	return s
+}
+
+func (s *FindVersionTestsResponseBodyVersionTestListItems) SetDeviceGroupId(v string) *FindVersionTestsResponseBodyVersionTestListItems {
+	s.DeviceGroupId = &v
+	return s
+}
+
+func (s *FindVersionTestsResponseBodyVersionTestListItems) SetDeviceGroupName(v string) *FindVersionTestsResponseBodyVersionTestListItems {
+	s.DeviceGroupName = &v
+	return s
+}
+
+func (s *FindVersionTestsResponseBodyVersionTestListItems) SetSucceededCount(v string) *FindVersionTestsResponseBodyVersionTestListItems {
+	s.SucceededCount = &v
+	return s
+}
+
+func (s *FindVersionTestsResponseBodyVersionTestListItems) SetFailedCount(v string) *FindVersionTestsResponseBodyVersionTestListItems {
+	s.FailedCount = &v
+	return s
+}
+
+func (s *FindVersionTestsResponseBodyVersionTestListItems) SetSkippedCount(v string) *FindVersionTestsResponseBodyVersionTestListItems {
+	s.SkippedCount = &v
+	return s
+}
+
+func (s *FindVersionTestsResponseBodyVersionTestListItems) SetGmtCreateTimestamp(v int64) *FindVersionTestsResponseBodyVersionTestListItems {
+	s.GmtCreateTimestamp = &v
+	return s
+}
+
+func (s *FindVersionTestsResponseBodyVersionTestListItems) SetGmtModifyTimestamp(v int64) *FindVersionTestsResponseBodyVersionTestListItems {
+	s.GmtModifyTimestamp = &v
 	return s
 }
 
@@ -10810,8 +10979,8 @@ func (s *FindVersionWhiteDevicesResponseBody) SetDeviceList(v *FindVersionWhiteD
 }
 
 type FindVersionWhiteDevicesResponseBodyDeviceList struct {
-	Items      []*FindVersionWhiteDevicesResponseBodyDeviceListItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	TotalCount *int32                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Items      []*FindVersionWhiteDevicesResponseBodyDeviceListItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 }
 
 func (s FindVersionWhiteDevicesResponseBodyDeviceList) String() string {
@@ -10822,23 +10991,23 @@ func (s FindVersionWhiteDevicesResponseBodyDeviceList) GoString() string {
 	return s.String()
 }
 
-func (s *FindVersionWhiteDevicesResponseBodyDeviceList) SetItems(v []*FindVersionWhiteDevicesResponseBodyDeviceListItems) *FindVersionWhiteDevicesResponseBodyDeviceList {
-	s.Items = v
-	return s
-}
-
 func (s *FindVersionWhiteDevicesResponseBodyDeviceList) SetTotalCount(v int32) *FindVersionWhiteDevicesResponseBodyDeviceList {
 	s.TotalCount = &v
 	return s
 }
 
+func (s *FindVersionWhiteDevicesResponseBodyDeviceList) SetItems(v []*FindVersionWhiteDevicesResponseBodyDeviceListItems) *FindVersionWhiteDevicesResponseBodyDeviceList {
+	s.Items = v
+	return s
+}
+
 type FindVersionWhiteDevicesResponseBodyDeviceListItems struct {
-	GmtCreateTimestamp *int64  `json:"GmtCreateTimestamp,omitempty" xml:"GmtCreateTimestamp,omitempty"`
-	OriginalId         *string `json:"OriginalId,omitempty" xml:"OriginalId,omitempty"`
+	Id                 *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	DeviceId           *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	OriginalId         *string `json:"OriginalId,omitempty" xml:"OriginalId,omitempty"`
 	IdType             *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
 	GmtCreate          *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Id                 *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	GmtCreateTimestamp *int64  `json:"GmtCreateTimestamp,omitempty" xml:"GmtCreateTimestamp,omitempty"`
 }
 
 func (s FindVersionWhiteDevicesResponseBodyDeviceListItems) String() string {
@@ -10849,18 +11018,18 @@ func (s FindVersionWhiteDevicesResponseBodyDeviceListItems) GoString() string {
 	return s.String()
 }
 
-func (s *FindVersionWhiteDevicesResponseBodyDeviceListItems) SetGmtCreateTimestamp(v int64) *FindVersionWhiteDevicesResponseBodyDeviceListItems {
-	s.GmtCreateTimestamp = &v
-	return s
-}
-
-func (s *FindVersionWhiteDevicesResponseBodyDeviceListItems) SetOriginalId(v string) *FindVersionWhiteDevicesResponseBodyDeviceListItems {
-	s.OriginalId = &v
+func (s *FindVersionWhiteDevicesResponseBodyDeviceListItems) SetId(v int64) *FindVersionWhiteDevicesResponseBodyDeviceListItems {
+	s.Id = &v
 	return s
 }
 
 func (s *FindVersionWhiteDevicesResponseBodyDeviceListItems) SetDeviceId(v string) *FindVersionWhiteDevicesResponseBodyDeviceListItems {
 	s.DeviceId = &v
+	return s
+}
+
+func (s *FindVersionWhiteDevicesResponseBodyDeviceListItems) SetOriginalId(v string) *FindVersionWhiteDevicesResponseBodyDeviceListItems {
+	s.OriginalId = &v
 	return s
 }
 
@@ -10874,8 +11043,8 @@ func (s *FindVersionWhiteDevicesResponseBodyDeviceListItems) SetGmtCreate(v stri
 	return s
 }
 
-func (s *FindVersionWhiteDevicesResponseBodyDeviceListItems) SetId(v int64) *FindVersionWhiteDevicesResponseBodyDeviceListItems {
-	s.Id = &v
+func (s *FindVersionWhiteDevicesResponseBodyDeviceListItems) SetGmtCreateTimestamp(v int64) *FindVersionWhiteDevicesResponseBodyDeviceListItems {
+	s.GmtCreateTimestamp = &v
 	return s
 }
 
@@ -10932,9 +11101,9 @@ func (s *GenerateAssistFileUploadUrlRequest) SetDeviceId(v string) *GenerateAssi
 }
 
 type GenerateAssistFileUploadUrlResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	FileKey   *string `json:"FileKey,omitempty" xml:"FileKey,omitempty"`
 	UploadUrl *string `json:"UploadUrl,omitempty" xml:"UploadUrl,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GenerateAssistFileUploadUrlResponseBody) String() string {
@@ -10945,6 +11114,11 @@ func (s GenerateAssistFileUploadUrlResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *GenerateAssistFileUploadUrlResponseBody) SetRequestId(v string) *GenerateAssistFileUploadUrlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 func (s *GenerateAssistFileUploadUrlResponseBody) SetFileKey(v string) *GenerateAssistFileUploadUrlResponseBody {
 	s.FileKey = &v
 	return s
@@ -10952,11 +11126,6 @@ func (s *GenerateAssistFileUploadUrlResponseBody) SetFileKey(v string) *Generate
 
 func (s *GenerateAssistFileUploadUrlResponseBody) SetUploadUrl(v string) *GenerateAssistFileUploadUrlResponseBody {
 	s.UploadUrl = &v
-	return s
-}
-
-func (s *GenerateAssistFileUploadUrlResponseBody) SetRequestId(v string) *GenerateAssistFileUploadUrlResponseBody {
-	s.RequestId = &v
 	return s
 }
 
@@ -11030,9 +11199,9 @@ func (s *GenerateFunctionFileUploadMetaResponseBody) SetUploadMeta(v *GenerateFu
 }
 
 type GenerateFunctionFileUploadMetaResponseBodyUploadMeta struct {
-	PostObjectPolicy *GenerateFunctionFileUploadMetaResponseBodyUploadMetaPostObjectPolicy `json:"PostObjectPolicy,omitempty" xml:"PostObjectPolicy,omitempty" type:"Struct"`
 	SecurityToken    *string                                                               `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	ObjectKey        *string                                                               `json:"ObjectKey,omitempty" xml:"ObjectKey,omitempty"`
+	PostObjectPolicy *GenerateFunctionFileUploadMetaResponseBodyUploadMetaPostObjectPolicy `json:"PostObjectPolicy,omitempty" xml:"PostObjectPolicy,omitempty" type:"Struct"`
 }
 
 func (s GenerateFunctionFileUploadMetaResponseBodyUploadMeta) String() string {
@@ -11041,11 +11210,6 @@ func (s GenerateFunctionFileUploadMetaResponseBodyUploadMeta) String() string {
 
 func (s GenerateFunctionFileUploadMetaResponseBodyUploadMeta) GoString() string {
 	return s.String()
-}
-
-func (s *GenerateFunctionFileUploadMetaResponseBodyUploadMeta) SetPostObjectPolicy(v *GenerateFunctionFileUploadMetaResponseBodyUploadMetaPostObjectPolicy) *GenerateFunctionFileUploadMetaResponseBodyUploadMeta {
-	s.PostObjectPolicy = v
-	return s
 }
 
 func (s *GenerateFunctionFileUploadMetaResponseBodyUploadMeta) SetSecurityToken(v string) *GenerateFunctionFileUploadMetaResponseBodyUploadMeta {
@@ -11058,12 +11222,17 @@ func (s *GenerateFunctionFileUploadMetaResponseBodyUploadMeta) SetObjectKey(v st
 	return s
 }
 
+func (s *GenerateFunctionFileUploadMetaResponseBodyUploadMeta) SetPostObjectPolicy(v *GenerateFunctionFileUploadMetaResponseBodyUploadMetaPostObjectPolicy) *GenerateFunctionFileUploadMetaResponseBodyUploadMeta {
+	s.PostObjectPolicy = v
+	return s
+}
+
 type GenerateFunctionFileUploadMetaResponseBodyUploadMetaPostObjectPolicy struct {
+	AccessId  *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
+	Expire    *string `json:"Expire,omitempty" xml:"Expire,omitempty"`
+	Policy    *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
 	Host      *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	Policy    *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	Expire    *string `json:"Expire,omitempty" xml:"Expire,omitempty"`
-	AccessId  *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
 }
 
 func (s GenerateFunctionFileUploadMetaResponseBodyUploadMetaPostObjectPolicy) String() string {
@@ -11074,18 +11243,8 @@ func (s GenerateFunctionFileUploadMetaResponseBodyUploadMetaPostObjectPolicy) Go
 	return s.String()
 }
 
-func (s *GenerateFunctionFileUploadMetaResponseBodyUploadMetaPostObjectPolicy) SetSignature(v string) *GenerateFunctionFileUploadMetaResponseBodyUploadMetaPostObjectPolicy {
-	s.Signature = &v
-	return s
-}
-
-func (s *GenerateFunctionFileUploadMetaResponseBodyUploadMetaPostObjectPolicy) SetHost(v string) *GenerateFunctionFileUploadMetaResponseBodyUploadMetaPostObjectPolicy {
-	s.Host = &v
-	return s
-}
-
-func (s *GenerateFunctionFileUploadMetaResponseBodyUploadMetaPostObjectPolicy) SetPolicy(v string) *GenerateFunctionFileUploadMetaResponseBodyUploadMetaPostObjectPolicy {
-	s.Policy = &v
+func (s *GenerateFunctionFileUploadMetaResponseBodyUploadMetaPostObjectPolicy) SetAccessId(v string) *GenerateFunctionFileUploadMetaResponseBodyUploadMetaPostObjectPolicy {
+	s.AccessId = &v
 	return s
 }
 
@@ -11094,8 +11253,18 @@ func (s *GenerateFunctionFileUploadMetaResponseBodyUploadMetaPostObjectPolicy) S
 	return s
 }
 
-func (s *GenerateFunctionFileUploadMetaResponseBodyUploadMetaPostObjectPolicy) SetAccessId(v string) *GenerateFunctionFileUploadMetaResponseBodyUploadMetaPostObjectPolicy {
-	s.AccessId = &v
+func (s *GenerateFunctionFileUploadMetaResponseBodyUploadMetaPostObjectPolicy) SetPolicy(v string) *GenerateFunctionFileUploadMetaResponseBodyUploadMetaPostObjectPolicy {
+	s.Policy = &v
+	return s
+}
+
+func (s *GenerateFunctionFileUploadMetaResponseBodyUploadMetaPostObjectPolicy) SetSignature(v string) *GenerateFunctionFileUploadMetaResponseBodyUploadMetaPostObjectPolicy {
+	s.Signature = &v
+	return s
+}
+
+func (s *GenerateFunctionFileUploadMetaResponseBodyUploadMetaPostObjectPolicy) SetHost(v string) *GenerateFunctionFileUploadMetaResponseBodyUploadMetaPostObjectPolicy {
+	s.Host = &v
 	return s
 }
 
@@ -11181,11 +11350,11 @@ func (s *GenerateOssPostPolicyResponseBody) SetOssPostPolicy(v *GenerateOssPostP
 }
 
 type GenerateOssPostPolicyResponseBodyOssPostPolicy struct {
+	AccessId  *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
+	Policy    *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
 	Host      *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	Policy    *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	Expire    *string `json:"Expire,omitempty" xml:"Expire,omitempty"`
-	AccessId  *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
 }
 
 func (s GenerateOssPostPolicyResponseBodyOssPostPolicy) String() string {
@@ -11194,6 +11363,16 @@ func (s GenerateOssPostPolicyResponseBodyOssPostPolicy) String() string {
 
 func (s GenerateOssPostPolicyResponseBodyOssPostPolicy) GoString() string {
 	return s.String()
+}
+
+func (s *GenerateOssPostPolicyResponseBodyOssPostPolicy) SetAccessId(v string) *GenerateOssPostPolicyResponseBodyOssPostPolicy {
+	s.AccessId = &v
+	return s
+}
+
+func (s *GenerateOssPostPolicyResponseBodyOssPostPolicy) SetPolicy(v string) *GenerateOssPostPolicyResponseBodyOssPostPolicy {
+	s.Policy = &v
+	return s
 }
 
 func (s *GenerateOssPostPolicyResponseBodyOssPostPolicy) SetSignature(v string) *GenerateOssPostPolicyResponseBodyOssPostPolicy {
@@ -11206,18 +11385,8 @@ func (s *GenerateOssPostPolicyResponseBodyOssPostPolicy) SetHost(v string) *Gene
 	return s
 }
 
-func (s *GenerateOssPostPolicyResponseBodyOssPostPolicy) SetPolicy(v string) *GenerateOssPostPolicyResponseBodyOssPostPolicy {
-	s.Policy = &v
-	return s
-}
-
 func (s *GenerateOssPostPolicyResponseBodyOssPostPolicy) SetExpire(v string) *GenerateOssPostPolicyResponseBodyOssPostPolicy {
 	s.Expire = &v
-	return s
-}
-
-func (s *GenerateOssPostPolicyResponseBodyOssPostPolicy) SetAccessId(v string) *GenerateOssPostPolicyResponseBodyOssPostPolicy {
-	s.AccessId = &v
 	return s
 }
 
@@ -11291,11 +11460,11 @@ func (s *GenerateOssUploadMetaResponseBody) SetOssUploadMeta(v *GenerateOssUploa
 }
 
 type GenerateOssUploadMetaResponseBodyOssUploadMeta struct {
-	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	ObjectKey       *string `json:"ObjectKey,omitempty" xml:"ObjectKey,omitempty"`
-	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
 	AccessKeyId     *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
+	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	Bucket          *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	ObjectKey       *string `json:"ObjectKey,omitempty" xml:"ObjectKey,omitempty"`
 }
 
 func (s GenerateOssUploadMetaResponseBodyOssUploadMeta) String() string {
@@ -11306,13 +11475,8 @@ func (s GenerateOssUploadMetaResponseBodyOssUploadMeta) GoString() string {
 	return s.String()
 }
 
-func (s *GenerateOssUploadMetaResponseBodyOssUploadMeta) SetSecurityToken(v string) *GenerateOssUploadMetaResponseBodyOssUploadMeta {
-	s.SecurityToken = &v
-	return s
-}
-
-func (s *GenerateOssUploadMetaResponseBodyOssUploadMeta) SetObjectKey(v string) *GenerateOssUploadMetaResponseBodyOssUploadMeta {
-	s.ObjectKey = &v
+func (s *GenerateOssUploadMetaResponseBodyOssUploadMeta) SetAccessKeyId(v string) *GenerateOssUploadMetaResponseBodyOssUploadMeta {
+	s.AccessKeyId = &v
 	return s
 }
 
@@ -11321,13 +11485,18 @@ func (s *GenerateOssUploadMetaResponseBodyOssUploadMeta) SetAccessKeySecret(v st
 	return s
 }
 
-func (s *GenerateOssUploadMetaResponseBodyOssUploadMeta) SetAccessKeyId(v string) *GenerateOssUploadMetaResponseBodyOssUploadMeta {
-	s.AccessKeyId = &v
+func (s *GenerateOssUploadMetaResponseBodyOssUploadMeta) SetSecurityToken(v string) *GenerateOssUploadMetaResponseBodyOssUploadMeta {
+	s.SecurityToken = &v
 	return s
 }
 
 func (s *GenerateOssUploadMetaResponseBodyOssUploadMeta) SetBucket(v string) *GenerateOssUploadMetaResponseBodyOssUploadMeta {
 	s.Bucket = &v
+	return s
+}
+
+func (s *GenerateOssUploadMetaResponseBodyOssUploadMeta) SetObjectKey(v string) *GenerateOssUploadMetaResponseBodyOssUploadMeta {
+	s.ObjectKey = &v
 	return s
 }
 
@@ -11639,13 +11808,13 @@ func (s *GetDeviceAppUpdateFunnelEventsResponseBody) SetEventList(v []*GetDevice
 }
 
 type GetDeviceAppUpdateFunnelEventsResponseBodyEventList struct {
-	PackageName       *string `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
+	TenantId          *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	DeviceId          *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 	TargetVersionCode *string `json:"TargetVersionCode,omitempty" xml:"TargetVersionCode,omitempty"`
 	Event             *string `json:"Event,omitempty" xml:"Event,omitempty"`
-	ReportTimestamp   *int64  `json:"ReportTimestamp,omitempty" xml:"ReportTimestamp,omitempty"`
 	ReportTime        *string `json:"ReportTime,omitempty" xml:"ReportTime,omitempty"`
-	TenantId          *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	PackageName       *string `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
+	ReportTimestamp   *int64  `json:"ReportTimestamp,omitempty" xml:"ReportTimestamp,omitempty"`
 }
 
 func (s GetDeviceAppUpdateFunnelEventsResponseBodyEventList) String() string {
@@ -11656,8 +11825,8 @@ func (s GetDeviceAppUpdateFunnelEventsResponseBodyEventList) GoString() string {
 	return s.String()
 }
 
-func (s *GetDeviceAppUpdateFunnelEventsResponseBodyEventList) SetPackageName(v string) *GetDeviceAppUpdateFunnelEventsResponseBodyEventList {
-	s.PackageName = &v
+func (s *GetDeviceAppUpdateFunnelEventsResponseBodyEventList) SetTenantId(v string) *GetDeviceAppUpdateFunnelEventsResponseBodyEventList {
+	s.TenantId = &v
 	return s
 }
 
@@ -11676,18 +11845,18 @@ func (s *GetDeviceAppUpdateFunnelEventsResponseBodyEventList) SetEvent(v string)
 	return s
 }
 
-func (s *GetDeviceAppUpdateFunnelEventsResponseBodyEventList) SetReportTimestamp(v int64) *GetDeviceAppUpdateFunnelEventsResponseBodyEventList {
-	s.ReportTimestamp = &v
-	return s
-}
-
 func (s *GetDeviceAppUpdateFunnelEventsResponseBodyEventList) SetReportTime(v string) *GetDeviceAppUpdateFunnelEventsResponseBodyEventList {
 	s.ReportTime = &v
 	return s
 }
 
-func (s *GetDeviceAppUpdateFunnelEventsResponseBodyEventList) SetTenantId(v string) *GetDeviceAppUpdateFunnelEventsResponseBodyEventList {
-	s.TenantId = &v
+func (s *GetDeviceAppUpdateFunnelEventsResponseBodyEventList) SetPackageName(v string) *GetDeviceAppUpdateFunnelEventsResponseBodyEventList {
+	s.PackageName = &v
+	return s
+}
+
+func (s *GetDeviceAppUpdateFunnelEventsResponseBodyEventList) SetReportTimestamp(v int64) *GetDeviceAppUpdateFunnelEventsResponseBodyEventList {
+	s.ReportTimestamp = &v
 	return s
 }
 
@@ -11773,12 +11942,12 @@ func (s *GetDeviceSystemUpdateFunnelEventsResponseBody) SetEventList(v []*GetDev
 }
 
 type GetDeviceSystemUpdateFunnelEventsResponseBodyEventList struct {
+	TenantId        *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	DeviceId        *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 	TargetVersion   *string `json:"TargetVersion,omitempty" xml:"TargetVersion,omitempty"`
 	Event           *string `json:"Event,omitempty" xml:"Event,omitempty"`
-	ReportTimestamp *int64  `json:"ReportTimestamp,omitempty" xml:"ReportTimestamp,omitempty"`
 	ReportTime      *string `json:"ReportTime,omitempty" xml:"ReportTime,omitempty"`
-	TenantId        *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	ReportTimestamp *int64  `json:"ReportTimestamp,omitempty" xml:"ReportTimestamp,omitempty"`
 }
 
 func (s GetDeviceSystemUpdateFunnelEventsResponseBodyEventList) String() string {
@@ -11787,6 +11956,11 @@ func (s GetDeviceSystemUpdateFunnelEventsResponseBodyEventList) String() string 
 
 func (s GetDeviceSystemUpdateFunnelEventsResponseBodyEventList) GoString() string {
 	return s.String()
+}
+
+func (s *GetDeviceSystemUpdateFunnelEventsResponseBodyEventList) SetTenantId(v string) *GetDeviceSystemUpdateFunnelEventsResponseBodyEventList {
+	s.TenantId = &v
+	return s
 }
 
 func (s *GetDeviceSystemUpdateFunnelEventsResponseBodyEventList) SetDeviceId(v string) *GetDeviceSystemUpdateFunnelEventsResponseBodyEventList {
@@ -11804,18 +11978,13 @@ func (s *GetDeviceSystemUpdateFunnelEventsResponseBodyEventList) SetEvent(v stri
 	return s
 }
 
-func (s *GetDeviceSystemUpdateFunnelEventsResponseBodyEventList) SetReportTimestamp(v int64) *GetDeviceSystemUpdateFunnelEventsResponseBodyEventList {
-	s.ReportTimestamp = &v
-	return s
-}
-
 func (s *GetDeviceSystemUpdateFunnelEventsResponseBodyEventList) SetReportTime(v string) *GetDeviceSystemUpdateFunnelEventsResponseBodyEventList {
 	s.ReportTime = &v
 	return s
 }
 
-func (s *GetDeviceSystemUpdateFunnelEventsResponseBodyEventList) SetTenantId(v string) *GetDeviceSystemUpdateFunnelEventsResponseBodyEventList {
-	s.TenantId = &v
+func (s *GetDeviceSystemUpdateFunnelEventsResponseBodyEventList) SetReportTimestamp(v int64) *GetDeviceSystemUpdateFunnelEventsResponseBodyEventList {
+	s.ReportTimestamp = &v
 	return s
 }
 
@@ -11941,6 +12110,139 @@ func (s *GetNamespaceDataResponse) SetBody(v *GetNamespaceDataResponseBody) *Get
 	return s
 }
 
+type GetNamespaceStatisticsDataRequest struct {
+	ProjectId     *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	Namespace     *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	DimensionType *string `json:"DimensionType,omitempty" xml:"DimensionType,omitempty"`
+	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+}
+
+func (s GetNamespaceStatisticsDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNamespaceStatisticsDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetNamespaceStatisticsDataRequest) SetProjectId(v string) *GetNamespaceStatisticsDataRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetNamespaceStatisticsDataRequest) SetNamespace(v string) *GetNamespaceStatisticsDataRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *GetNamespaceStatisticsDataRequest) SetDimensionType(v string) *GetNamespaceStatisticsDataRequest {
+	s.DimensionType = &v
+	return s
+}
+
+func (s *GetNamespaceStatisticsDataRequest) SetStartTime(v string) *GetNamespaceStatisticsDataRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetNamespaceStatisticsDataRequest) SetEndTime(v string) *GetNamespaceStatisticsDataRequest {
+	s.EndTime = &v
+	return s
+}
+
+type GetNamespaceStatisticsDataResponseBody struct {
+	RequestId  *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Statistics *GetNamespaceStatisticsDataResponseBodyStatistics `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Struct"`
+}
+
+func (s GetNamespaceStatisticsDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNamespaceStatisticsDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetNamespaceStatisticsDataResponseBody) SetRequestId(v string) *GetNamespaceStatisticsDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetNamespaceStatisticsDataResponseBody) SetStatistics(v *GetNamespaceStatisticsDataResponseBodyStatistics) *GetNamespaceStatisticsDataResponseBody {
+	s.Statistics = v
+	return s
+}
+
+type GetNamespaceStatisticsDataResponseBodyStatistics struct {
+	Categories []*string                                                 `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	Series     []*GetNamespaceStatisticsDataResponseBodyStatisticsSeries `json:"Series,omitempty" xml:"Series,omitempty" type:"Repeated"`
+}
+
+func (s GetNamespaceStatisticsDataResponseBodyStatistics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNamespaceStatisticsDataResponseBodyStatistics) GoString() string {
+	return s.String()
+}
+
+func (s *GetNamespaceStatisticsDataResponseBodyStatistics) SetCategories(v []*string) *GetNamespaceStatisticsDataResponseBodyStatistics {
+	s.Categories = v
+	return s
+}
+
+func (s *GetNamespaceStatisticsDataResponseBodyStatistics) SetSeries(v []*GetNamespaceStatisticsDataResponseBodyStatisticsSeries) *GetNamespaceStatisticsDataResponseBodyStatistics {
+	s.Series = v
+	return s
+}
+
+type GetNamespaceStatisticsDataResponseBodyStatisticsSeries struct {
+	Name *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Data []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+}
+
+func (s GetNamespaceStatisticsDataResponseBodyStatisticsSeries) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNamespaceStatisticsDataResponseBodyStatisticsSeries) GoString() string {
+	return s.String()
+}
+
+func (s *GetNamespaceStatisticsDataResponseBodyStatisticsSeries) SetName(v string) *GetNamespaceStatisticsDataResponseBodyStatisticsSeries {
+	s.Name = &v
+	return s
+}
+
+func (s *GetNamespaceStatisticsDataResponseBodyStatisticsSeries) SetData(v []*string) *GetNamespaceStatisticsDataResponseBodyStatisticsSeries {
+	s.Data = v
+	return s
+}
+
+type GetNamespaceStatisticsDataResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetNamespaceStatisticsDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetNamespaceStatisticsDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNamespaceStatisticsDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetNamespaceStatisticsDataResponse) SetHeaders(v map[string]*string) *GetNamespaceStatisticsDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetNamespaceStatisticsDataResponse) SetBody(v *GetNamespaceStatisticsDataResponseBody) *GetNamespaceStatisticsDataResponse {
+	s.Body = v
+	return s
+}
+
 type GetOssUploadMetaRequest struct {
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	Ext       *string `json:"Ext,omitempty" xml:"Ext,omitempty"`
@@ -11988,12 +12290,12 @@ func (s *GetOssUploadMetaResponseBody) SetOssUploadMeta(v *GetOssUploadMetaRespo
 }
 
 type GetOssUploadMetaResponseBodyOssUploadMeta struct {
-	AccessKey     *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
-	Signature     *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
-	Host          *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	Policy        *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	ObjectKey     *string `json:"ObjectKey,omitempty" xml:"ObjectKey,omitempty"`
+	AccessKey     *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
+	Policy        *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	Signature     *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	Host          *string `json:"Host,omitempty" xml:"Host,omitempty"`
 }
 
 func (s GetOssUploadMetaResponseBodyOssUploadMeta) String() string {
@@ -12004,18 +12306,13 @@ func (s GetOssUploadMetaResponseBodyOssUploadMeta) GoString() string {
 	return s.String()
 }
 
+func (s *GetOssUploadMetaResponseBodyOssUploadMeta) SetObjectKey(v string) *GetOssUploadMetaResponseBodyOssUploadMeta {
+	s.ObjectKey = &v
+	return s
+}
+
 func (s *GetOssUploadMetaResponseBodyOssUploadMeta) SetAccessKey(v string) *GetOssUploadMetaResponseBodyOssUploadMeta {
 	s.AccessKey = &v
-	return s
-}
-
-func (s *GetOssUploadMetaResponseBodyOssUploadMeta) SetSignature(v string) *GetOssUploadMetaResponseBodyOssUploadMeta {
-	s.Signature = &v
-	return s
-}
-
-func (s *GetOssUploadMetaResponseBodyOssUploadMeta) SetHost(v string) *GetOssUploadMetaResponseBodyOssUploadMeta {
-	s.Host = &v
 	return s
 }
 
@@ -12024,13 +12321,18 @@ func (s *GetOssUploadMetaResponseBodyOssUploadMeta) SetPolicy(v string) *GetOssU
 	return s
 }
 
+func (s *GetOssUploadMetaResponseBodyOssUploadMeta) SetSignature(v string) *GetOssUploadMetaResponseBodyOssUploadMeta {
+	s.Signature = &v
+	return s
+}
+
 func (s *GetOssUploadMetaResponseBodyOssUploadMeta) SetSecurityToken(v string) *GetOssUploadMetaResponseBodyOssUploadMeta {
 	s.SecurityToken = &v
 	return s
 }
 
-func (s *GetOssUploadMetaResponseBodyOssUploadMeta) SetObjectKey(v string) *GetOssUploadMetaResponseBodyOssUploadMeta {
-	s.ObjectKey = &v
+func (s *GetOssUploadMetaResponseBodyOssUploadMeta) SetHost(v string) *GetOssUploadMetaResponseBodyOssUploadMeta {
+	s.Host = &v
 	return s
 }
 
@@ -12122,8 +12424,8 @@ func (s *InvokeFunctionResponseBody) SetResult(v *InvokeFunctionResponseBodyResu
 }
 
 type InvokeFunctionResponseBodyResult struct {
-	Output           *string `json:"Output,omitempty" xml:"Output,omitempty"`
 	BackEndRequestId *string `json:"BackEndRequestId,omitempty" xml:"BackEndRequestId,omitempty"`
+	Output           *string `json:"Output,omitempty" xml:"Output,omitempty"`
 }
 
 func (s InvokeFunctionResponseBodyResult) String() string {
@@ -12134,13 +12436,13 @@ func (s InvokeFunctionResponseBodyResult) GoString() string {
 	return s.String()
 }
 
-func (s *InvokeFunctionResponseBodyResult) SetOutput(v string) *InvokeFunctionResponseBodyResult {
-	s.Output = &v
+func (s *InvokeFunctionResponseBodyResult) SetBackEndRequestId(v string) *InvokeFunctionResponseBodyResult {
+	s.BackEndRequestId = &v
 	return s
 }
 
-func (s *InvokeFunctionResponseBodyResult) SetBackEndRequestId(v string) *InvokeFunctionResponseBodyResult {
-	s.BackEndRequestId = &v
+func (s *InvokeFunctionResponseBodyResult) SetOutput(v string) *InvokeFunctionResponseBodyResult {
+	s.Output = &v
 	return s
 }
 
@@ -12185,8 +12487,8 @@ func (s *ListApiGatewayAppsRequest) SetProjectId(v string) *ListApiGatewayAppsRe
 }
 
 type ListApiGatewayAppsResponseBody struct {
-	ApiGatewayApps []*ListApiGatewayAppsResponseBodyApiGatewayApps `json:"ApiGatewayApps,omitempty" xml:"ApiGatewayApps,omitempty" type:"Repeated"`
 	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ApiGatewayApps []*ListApiGatewayAppsResponseBodyApiGatewayApps `json:"ApiGatewayApps,omitempty" xml:"ApiGatewayApps,omitempty" type:"Repeated"`
 }
 
 func (s ListApiGatewayAppsResponseBody) String() string {
@@ -12197,26 +12499,26 @@ func (s ListApiGatewayAppsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListApiGatewayAppsResponseBody) SetApiGatewayApps(v []*ListApiGatewayAppsResponseBodyApiGatewayApps) *ListApiGatewayAppsResponseBody {
-	s.ApiGatewayApps = v
-	return s
-}
-
 func (s *ListApiGatewayAppsResponseBody) SetRequestId(v string) *ListApiGatewayAppsResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *ListApiGatewayAppsResponseBody) SetApiGatewayApps(v []*ListApiGatewayAppsResponseBodyApiGatewayApps) *ListApiGatewayAppsResponseBody {
+	s.ApiGatewayApps = v
+	return s
+}
+
 type ListApiGatewayAppsResponseBodyApiGatewayApps struct {
-	GatewayAppKey    *string `json:"GatewayAppKey,omitempty" xml:"GatewayAppKey,omitempty"`
-	Status           *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	GatewayAppSecret *string `json:"GatewayAppSecret,omitempty" xml:"GatewayAppSecret,omitempty"`
-	GatewayAppId     *string `json:"GatewayAppId,omitempty" xml:"GatewayAppId,omitempty"`
-	UserId           *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Id               *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	ProjectId        *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	UserId           *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Status           *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 	GmtCreate        *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	GmtModified      *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Id               *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	GatewayAppKey    *string `json:"GatewayAppKey,omitempty" xml:"GatewayAppKey,omitempty"`
+	GatewayAppSecret *string `json:"GatewayAppSecret,omitempty" xml:"GatewayAppSecret,omitempty"`
+	GatewayAppId     *string `json:"GatewayAppId,omitempty" xml:"GatewayAppId,omitempty"`
 }
 
 func (s ListApiGatewayAppsResponseBodyApiGatewayApps) String() string {
@@ -12227,23 +12529,13 @@ func (s ListApiGatewayAppsResponseBodyApiGatewayApps) GoString() string {
 	return s.String()
 }
 
-func (s *ListApiGatewayAppsResponseBodyApiGatewayApps) SetGatewayAppKey(v string) *ListApiGatewayAppsResponseBodyApiGatewayApps {
-	s.GatewayAppKey = &v
+func (s *ListApiGatewayAppsResponseBodyApiGatewayApps) SetId(v int64) *ListApiGatewayAppsResponseBodyApiGatewayApps {
+	s.Id = &v
 	return s
 }
 
-func (s *ListApiGatewayAppsResponseBodyApiGatewayApps) SetStatus(v int32) *ListApiGatewayAppsResponseBodyApiGatewayApps {
-	s.Status = &v
-	return s
-}
-
-func (s *ListApiGatewayAppsResponseBodyApiGatewayApps) SetGatewayAppSecret(v string) *ListApiGatewayAppsResponseBodyApiGatewayApps {
-	s.GatewayAppSecret = &v
-	return s
-}
-
-func (s *ListApiGatewayAppsResponseBodyApiGatewayApps) SetGatewayAppId(v string) *ListApiGatewayAppsResponseBodyApiGatewayApps {
-	s.GatewayAppId = &v
+func (s *ListApiGatewayAppsResponseBodyApiGatewayApps) SetProjectId(v string) *ListApiGatewayAppsResponseBodyApiGatewayApps {
+	s.ProjectId = &v
 	return s
 }
 
@@ -12252,8 +12544,8 @@ func (s *ListApiGatewayAppsResponseBodyApiGatewayApps) SetUserId(v string) *List
 	return s
 }
 
-func (s *ListApiGatewayAppsResponseBodyApiGatewayApps) SetProjectId(v string) *ListApiGatewayAppsResponseBodyApiGatewayApps {
-	s.ProjectId = &v
+func (s *ListApiGatewayAppsResponseBodyApiGatewayApps) SetStatus(v int32) *ListApiGatewayAppsResponseBodyApiGatewayApps {
+	s.Status = &v
 	return s
 }
 
@@ -12267,8 +12559,18 @@ func (s *ListApiGatewayAppsResponseBodyApiGatewayApps) SetGmtModified(v int64) *
 	return s
 }
 
-func (s *ListApiGatewayAppsResponseBodyApiGatewayApps) SetId(v int64) *ListApiGatewayAppsResponseBodyApiGatewayApps {
-	s.Id = &v
+func (s *ListApiGatewayAppsResponseBodyApiGatewayApps) SetGatewayAppKey(v string) *ListApiGatewayAppsResponseBodyApiGatewayApps {
+	s.GatewayAppKey = &v
+	return s
+}
+
+func (s *ListApiGatewayAppsResponseBodyApiGatewayApps) SetGatewayAppSecret(v string) *ListApiGatewayAppsResponseBodyApiGatewayApps {
+	s.GatewayAppSecret = &v
+	return s
+}
+
+func (s *ListApiGatewayAppsResponseBodyApiGatewayApps) SetGatewayAppId(v string) *ListApiGatewayAppsResponseBodyApiGatewayApps {
+	s.GatewayAppId = &v
 	return s
 }
 
@@ -12336,10 +12638,10 @@ func (s *ListAppsResponseBody) SetApps(v []*ListAppsResponseBodyApps) *ListAppsR
 }
 
 type ListAppsResponseBodyApps struct {
-	AppName    *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	AppKey     *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	OsType     *int32  `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	AppName    *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	AppPackage *string `json:"AppPackage,omitempty" xml:"AppPackage,omitempty"`
+	OsType     *int32  `json:"OsType,omitempty" xml:"OsType,omitempty"`
 }
 
 func (s ListAppsResponseBodyApps) String() string {
@@ -12350,23 +12652,23 @@ func (s ListAppsResponseBodyApps) GoString() string {
 	return s.String()
 }
 
-func (s *ListAppsResponseBodyApps) SetAppName(v string) *ListAppsResponseBodyApps {
-	s.AppName = &v
-	return s
-}
-
 func (s *ListAppsResponseBodyApps) SetAppKey(v string) *ListAppsResponseBodyApps {
 	s.AppKey = &v
 	return s
 }
 
-func (s *ListAppsResponseBodyApps) SetOsType(v int32) *ListAppsResponseBodyApps {
-	s.OsType = &v
+func (s *ListAppsResponseBodyApps) SetAppName(v string) *ListAppsResponseBodyApps {
+	s.AppName = &v
 	return s
 }
 
 func (s *ListAppsResponseBodyApps) SetAppPackage(v string) *ListAppsResponseBodyApps {
 	s.AppPackage = &v
+	return s
+}
+
+func (s *ListAppsResponseBodyApps) SetOsType(v int32) *ListAppsResponseBodyApps {
+	s.OsType = &v
 	return s
 }
 
@@ -12440,14 +12742,14 @@ func (s *ListAssistActionDetailsResponseBody) SetResults(v []*ListAssistActionDe
 }
 
 type ListAssistActionDetailsResponseBodyResults struct {
-	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Action    *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	DeviceId  *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	Action    *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	Timestamp *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	ID        *string `json:"ID,omitempty" xml:"ID,omitempty"`
 	CreatedAt *int64  `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
 	UpdatedAt *int64  `json:"UpdatedAt,omitempty" xml:"UpdatedAt,omitempty"`
-	Timestamp *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	ID        *string `json:"ID,omitempty" xml:"ID,omitempty"`
 }
 
 func (s ListAssistActionDetailsResponseBodyResults) String() string {
@@ -12458,8 +12760,8 @@ func (s ListAssistActionDetailsResponseBodyResults) GoString() string {
 	return s.String()
 }
 
-func (s *ListAssistActionDetailsResponseBodyResults) SetType(v string) *ListAssistActionDetailsResponseBodyResults {
-	s.Type = &v
+func (s *ListAssistActionDetailsResponseBodyResults) SetDeviceId(v string) *ListAssistActionDetailsResponseBodyResults {
+	s.DeviceId = &v
 	return s
 }
 
@@ -12468,13 +12770,23 @@ func (s *ListAssistActionDetailsResponseBodyResults) SetAction(v string) *ListAs
 	return s
 }
 
+func (s *ListAssistActionDetailsResponseBodyResults) SetTimestamp(v string) *ListAssistActionDetailsResponseBodyResults {
+	s.Timestamp = &v
+	return s
+}
+
+func (s *ListAssistActionDetailsResponseBodyResults) SetType(v string) *ListAssistActionDetailsResponseBodyResults {
+	s.Type = &v
+	return s
+}
+
 func (s *ListAssistActionDetailsResponseBodyResults) SetData(v string) *ListAssistActionDetailsResponseBodyResults {
 	s.Data = &v
 	return s
 }
 
-func (s *ListAssistActionDetailsResponseBodyResults) SetDeviceId(v string) *ListAssistActionDetailsResponseBodyResults {
-	s.DeviceId = &v
+func (s *ListAssistActionDetailsResponseBodyResults) SetID(v string) *ListAssistActionDetailsResponseBodyResults {
+	s.ID = &v
 	return s
 }
 
@@ -12485,16 +12797,6 @@ func (s *ListAssistActionDetailsResponseBodyResults) SetCreatedAt(v int64) *List
 
 func (s *ListAssistActionDetailsResponseBodyResults) SetUpdatedAt(v int64) *ListAssistActionDetailsResponseBodyResults {
 	s.UpdatedAt = &v
-	return s
-}
-
-func (s *ListAssistActionDetailsResponseBodyResults) SetTimestamp(v string) *ListAssistActionDetailsResponseBodyResults {
-	s.Timestamp = &v
-	return s
-}
-
-func (s *ListAssistActionDetailsResponseBodyResults) SetID(v string) *ListAssistActionDetailsResponseBodyResults {
-	s.ID = &v
 	return s
 }
 
@@ -12557,10 +12859,10 @@ func (s *ListAssistDevicesRequest) SetPerPage(v int32) *ListAssistDevicesRequest
 }
 
 type ListAssistDevicesResponseBody struct {
-	TotalCount *int32                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PerPage    *int32                                  `json:"PerPage,omitempty" xml:"PerPage,omitempty"`
 	PageIndex  *int32                                  `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	PerPage    *int32                                  `json:"PerPage,omitempty" xml:"PerPage,omitempty"`
+	TotalCount *int32                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	Devices    []*ListAssistDevicesResponseBodyDevices `json:"Devices,omitempty" xml:"Devices,omitempty" type:"Repeated"`
 }
 
@@ -12572,13 +12874,13 @@ func (s ListAssistDevicesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListAssistDevicesResponseBody) SetTotalCount(v int32) *ListAssistDevicesResponseBody {
-	s.TotalCount = &v
+func (s *ListAssistDevicesResponseBody) SetRequestId(v string) *ListAssistDevicesResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *ListAssistDevicesResponseBody) SetRequestId(v string) *ListAssistDevicesResponseBody {
-	s.RequestId = &v
+func (s *ListAssistDevicesResponseBody) SetPageIndex(v int32) *ListAssistDevicesResponseBody {
+	s.PageIndex = &v
 	return s
 }
 
@@ -12587,8 +12889,8 @@ func (s *ListAssistDevicesResponseBody) SetPerPage(v int32) *ListAssistDevicesRe
 	return s
 }
 
-func (s *ListAssistDevicesResponseBody) SetPageIndex(v int32) *ListAssistDevicesResponseBody {
-	s.PageIndex = &v
+func (s *ListAssistDevicesResponseBody) SetTotalCount(v int32) *ListAssistDevicesResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -12598,13 +12900,13 @@ func (s *ListAssistDevicesResponseBody) SetDevices(v []*ListAssistDevicesRespons
 }
 
 type ListAssistDevicesResponseBodyDevices struct {
+	DeviceId     *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	DeviceName   *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
 	HardwareId   *string `json:"HardwareId,omitempty" xml:"HardwareId,omitempty"`
-	DeviceName   *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
-	AccessTime   *int64  `json:"AccessTime,omitempty" xml:"AccessTime,omitempty"`
-	DeviceId     *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 	UUID         *string `json:"UUID,omitempty" xml:"UUID,omitempty"`
 	VIN          *string `json:"VIN,omitempty" xml:"VIN,omitempty"`
+	AccessTime   *int64  `json:"AccessTime,omitempty" xml:"AccessTime,omitempty"`
 }
 
 func (s ListAssistDevicesResponseBodyDevices) String() string {
@@ -12613,6 +12915,16 @@ func (s ListAssistDevicesResponseBodyDevices) String() string {
 
 func (s ListAssistDevicesResponseBodyDevices) GoString() string {
 	return s.String()
+}
+
+func (s *ListAssistDevicesResponseBodyDevices) SetDeviceId(v string) *ListAssistDevicesResponseBodyDevices {
+	s.DeviceId = &v
+	return s
+}
+
+func (s *ListAssistDevicesResponseBodyDevices) SetDeviceName(v string) *ListAssistDevicesResponseBodyDevices {
+	s.DeviceName = &v
+	return s
 }
 
 func (s *ListAssistDevicesResponseBodyDevices) SetSerialNumber(v string) *ListAssistDevicesResponseBodyDevices {
@@ -12625,21 +12937,6 @@ func (s *ListAssistDevicesResponseBodyDevices) SetHardwareId(v string) *ListAssi
 	return s
 }
 
-func (s *ListAssistDevicesResponseBodyDevices) SetDeviceName(v string) *ListAssistDevicesResponseBodyDevices {
-	s.DeviceName = &v
-	return s
-}
-
-func (s *ListAssistDevicesResponseBodyDevices) SetAccessTime(v int64) *ListAssistDevicesResponseBodyDevices {
-	s.AccessTime = &v
-	return s
-}
-
-func (s *ListAssistDevicesResponseBodyDevices) SetDeviceId(v string) *ListAssistDevicesResponseBodyDevices {
-	s.DeviceId = &v
-	return s
-}
-
 func (s *ListAssistDevicesResponseBodyDevices) SetUUID(v string) *ListAssistDevicesResponseBodyDevices {
 	s.UUID = &v
 	return s
@@ -12647,6 +12944,11 @@ func (s *ListAssistDevicesResponseBodyDevices) SetUUID(v string) *ListAssistDevi
 
 func (s *ListAssistDevicesResponseBodyDevices) SetVIN(v string) *ListAssistDevicesResponseBodyDevices {
 	s.VIN = &v
+	return s
+}
+
+func (s *ListAssistDevicesResponseBodyDevices) SetAccessTime(v int64) *ListAssistDevicesResponseBodyDevices {
+	s.AccessTime = &v
 	return s
 }
 
@@ -12709,11 +13011,11 @@ func (s *ListAssistHistoriesRequest) SetProjectId(v string) *ListAssistHistories
 }
 
 type ListAssistHistoriesResponseBody struct {
-	TotalCount *int32                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PerPage    *int32                                      `json:"PerPage,omitempty" xml:"PerPage,omitempty"`
-	Histories  []*ListAssistHistoriesResponseBodyHistories `json:"Histories,omitempty" xml:"Histories,omitempty" type:"Repeated"`
 	PageIndex  *int32                                      `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	PerPage    *int32                                      `json:"PerPage,omitempty" xml:"PerPage,omitempty"`
+	TotalCount *int32                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Histories  []*ListAssistHistoriesResponseBodyHistories `json:"Histories,omitempty" xml:"Histories,omitempty" type:"Repeated"`
 }
 
 func (s ListAssistHistoriesResponseBody) String() string {
@@ -12724,23 +13026,8 @@ func (s ListAssistHistoriesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListAssistHistoriesResponseBody) SetTotalCount(v int32) *ListAssistHistoriesResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
 func (s *ListAssistHistoriesResponseBody) SetRequestId(v string) *ListAssistHistoriesResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *ListAssistHistoriesResponseBody) SetPerPage(v int32) *ListAssistHistoriesResponseBody {
-	s.PerPage = &v
-	return s
-}
-
-func (s *ListAssistHistoriesResponseBody) SetHistories(v []*ListAssistHistoriesResponseBodyHistories) *ListAssistHistoriesResponseBody {
-	s.Histories = v
 	return s
 }
 
@@ -12749,18 +13036,33 @@ func (s *ListAssistHistoriesResponseBody) SetPageIndex(v int32) *ListAssistHisto
 	return s
 }
 
+func (s *ListAssistHistoriesResponseBody) SetPerPage(v int32) *ListAssistHistoriesResponseBody {
+	s.PerPage = &v
+	return s
+}
+
+func (s *ListAssistHistoriesResponseBody) SetTotalCount(v int32) *ListAssistHistoriesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListAssistHistoriesResponseBody) SetHistories(v []*ListAssistHistoriesResponseBodyHistories) *ListAssistHistoriesResponseBody {
+	s.Histories = v
+	return s
+}
+
 type ListAssistHistoriesResponseBodyHistories struct {
-	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
-	EndTime      *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTime    *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	UNAME        *string `json:"UNAME,omitempty" xml:"UNAME,omitempty"`
-	HardwareId   *string `json:"HardwareId,omitempty" xml:"HardwareId,omitempty"`
+	ID           *string `json:"ID,omitempty" xml:"ID,omitempty"`
 	DeviceName   *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
-	UUID         *string `json:"UUID,omitempty" xml:"UUID,omitempty"`
+	StartTime    *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	EndTime      *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	DeviceId     *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	HardwareId   *string `json:"HardwareId,omitempty" xml:"HardwareId,omitempty"`
+	UUID         *string `json:"UUID,omitempty" xml:"UUID,omitempty"`
 	VIN          *string `json:"VIN,omitempty" xml:"VIN,omitempty"`
 	UID          *string `json:"UID,omitempty" xml:"UID,omitempty"`
-	ID           *string `json:"ID,omitempty" xml:"ID,omitempty"`
+	UNAME        *string `json:"UNAME,omitempty" xml:"UNAME,omitempty"`
 }
 
 func (s ListAssistHistoriesResponseBodyHistories) String() string {
@@ -12771,28 +13073,8 @@ func (s ListAssistHistoriesResponseBodyHistories) GoString() string {
 	return s.String()
 }
 
-func (s *ListAssistHistoriesResponseBodyHistories) SetSerialNumber(v string) *ListAssistHistoriesResponseBodyHistories {
-	s.SerialNumber = &v
-	return s
-}
-
-func (s *ListAssistHistoriesResponseBodyHistories) SetEndTime(v int64) *ListAssistHistoriesResponseBodyHistories {
-	s.EndTime = &v
-	return s
-}
-
-func (s *ListAssistHistoriesResponseBodyHistories) SetStartTime(v int64) *ListAssistHistoriesResponseBodyHistories {
-	s.StartTime = &v
-	return s
-}
-
-func (s *ListAssistHistoriesResponseBodyHistories) SetUNAME(v string) *ListAssistHistoriesResponseBodyHistories {
-	s.UNAME = &v
-	return s
-}
-
-func (s *ListAssistHistoriesResponseBodyHistories) SetHardwareId(v string) *ListAssistHistoriesResponseBodyHistories {
-	s.HardwareId = &v
+func (s *ListAssistHistoriesResponseBodyHistories) SetID(v string) *ListAssistHistoriesResponseBodyHistories {
+	s.ID = &v
 	return s
 }
 
@@ -12801,13 +13083,33 @@ func (s *ListAssistHistoriesResponseBodyHistories) SetDeviceName(v string) *List
 	return s
 }
 
-func (s *ListAssistHistoriesResponseBodyHistories) SetUUID(v string) *ListAssistHistoriesResponseBodyHistories {
-	s.UUID = &v
+func (s *ListAssistHistoriesResponseBodyHistories) SetStartTime(v int64) *ListAssistHistoriesResponseBodyHistories {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListAssistHistoriesResponseBodyHistories) SetEndTime(v int64) *ListAssistHistoriesResponseBodyHistories {
+	s.EndTime = &v
 	return s
 }
 
 func (s *ListAssistHistoriesResponseBodyHistories) SetDeviceId(v string) *ListAssistHistoriesResponseBodyHistories {
 	s.DeviceId = &v
+	return s
+}
+
+func (s *ListAssistHistoriesResponseBodyHistories) SetSerialNumber(v string) *ListAssistHistoriesResponseBodyHistories {
+	s.SerialNumber = &v
+	return s
+}
+
+func (s *ListAssistHistoriesResponseBodyHistories) SetHardwareId(v string) *ListAssistHistoriesResponseBodyHistories {
+	s.HardwareId = &v
+	return s
+}
+
+func (s *ListAssistHistoriesResponseBodyHistories) SetUUID(v string) *ListAssistHistoriesResponseBodyHistories {
+	s.UUID = &v
 	return s
 }
 
@@ -12821,8 +13123,8 @@ func (s *ListAssistHistoriesResponseBodyHistories) SetUID(v string) *ListAssistH
 	return s
 }
 
-func (s *ListAssistHistoriesResponseBodyHistories) SetID(v string) *ListAssistHistoriesResponseBodyHistories {
-	s.ID = &v
+func (s *ListAssistHistoriesResponseBodyHistories) SetUNAME(v string) *ListAssistHistoriesResponseBodyHistories {
+	s.UNAME = &v
 	return s
 }
 
@@ -12896,11 +13198,11 @@ func (s *ListAssistHistoryDetailsResponseBody) SetActions(v []*ListAssistHistory
 }
 
 type ListAssistHistoryDetailsResponseBodyActions struct {
-	Action    *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	CreatedAt *int64  `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	Timestamp *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	UpdatedAt *int64  `json:"UpdatedAt,omitempty" xml:"UpdatedAt,omitempty"`
 	AssistId  *string `json:"AssistId,omitempty" xml:"AssistId,omitempty"`
+	Action    *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	Timestamp *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	CreatedAt *int64  `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	UpdatedAt *int64  `json:"UpdatedAt,omitempty" xml:"UpdatedAt,omitempty"`
 	ID        *string `json:"ID,omitempty" xml:"ID,omitempty"`
 }
 
@@ -12912,13 +13214,13 @@ func (s ListAssistHistoryDetailsResponseBodyActions) GoString() string {
 	return s.String()
 }
 
-func (s *ListAssistHistoryDetailsResponseBodyActions) SetAction(v string) *ListAssistHistoryDetailsResponseBodyActions {
-	s.Action = &v
+func (s *ListAssistHistoryDetailsResponseBodyActions) SetAssistId(v string) *ListAssistHistoryDetailsResponseBodyActions {
+	s.AssistId = &v
 	return s
 }
 
-func (s *ListAssistHistoryDetailsResponseBodyActions) SetCreatedAt(v int64) *ListAssistHistoryDetailsResponseBodyActions {
-	s.CreatedAt = &v
+func (s *ListAssistHistoryDetailsResponseBodyActions) SetAction(v string) *ListAssistHistoryDetailsResponseBodyActions {
+	s.Action = &v
 	return s
 }
 
@@ -12927,13 +13229,13 @@ func (s *ListAssistHistoryDetailsResponseBodyActions) SetTimestamp(v string) *Li
 	return s
 }
 
-func (s *ListAssistHistoryDetailsResponseBodyActions) SetUpdatedAt(v int64) *ListAssistHistoryDetailsResponseBodyActions {
-	s.UpdatedAt = &v
+func (s *ListAssistHistoryDetailsResponseBodyActions) SetCreatedAt(v int64) *ListAssistHistoryDetailsResponseBodyActions {
+	s.CreatedAt = &v
 	return s
 }
 
-func (s *ListAssistHistoryDetailsResponseBodyActions) SetAssistId(v string) *ListAssistHistoryDetailsResponseBodyActions {
-	s.AssistId = &v
+func (s *ListAssistHistoryDetailsResponseBodyActions) SetUpdatedAt(v int64) *ListAssistHistoryDetailsResponseBodyActions {
+	s.UpdatedAt = &v
 	return s
 }
 
@@ -13006,8 +13308,8 @@ func (s *ListClientPluginsResponseBody) SetClientPlugins(v []*ListClientPluginsR
 }
 
 type ListClientPluginsResponseBodyClientPlugins struct {
-	PkgName *string `json:"PkgName,omitempty" xml:"PkgName,omitempty"`
 	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PkgName *string `json:"PkgName,omitempty" xml:"PkgName,omitempty"`
 }
 
 func (s ListClientPluginsResponseBodyClientPlugins) String() string {
@@ -13018,13 +13320,13 @@ func (s ListClientPluginsResponseBodyClientPlugins) GoString() string {
 	return s.String()
 }
 
-func (s *ListClientPluginsResponseBodyClientPlugins) SetPkgName(v string) *ListClientPluginsResponseBodyClientPlugins {
-	s.PkgName = &v
+func (s *ListClientPluginsResponseBodyClientPlugins) SetName(v string) *ListClientPluginsResponseBodyClientPlugins {
+	s.Name = &v
 	return s
 }
 
-func (s *ListClientPluginsResponseBodyClientPlugins) SetName(v string) *ListClientPluginsResponseBodyClientPlugins {
-	s.Name = &v
+func (s *ListClientPluginsResponseBodyClientPlugins) SetPkgName(v string) *ListClientPluginsResponseBodyClientPlugins {
+	s.PkgName = &v
 	return s
 }
 
@@ -13075,8 +13377,8 @@ func (s *ListClientPluginVersionsRequest) SetPkgName(v string) *ListClientPlugin
 }
 
 type ListClientPluginVersionsResponseBody struct {
-	ClientPluginVersions []*ListClientPluginVersionsResponseBodyClientPluginVersions `json:"ClientPluginVersions,omitempty" xml:"ClientPluginVersions,omitempty" type:"Repeated"`
 	RequestId            *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ClientPluginVersions []*ListClientPluginVersionsResponseBodyClientPluginVersions `json:"ClientPluginVersions,omitempty" xml:"ClientPluginVersions,omitempty" type:"Repeated"`
 }
 
 func (s ListClientPluginVersionsResponseBody) String() string {
@@ -13087,23 +13389,23 @@ func (s ListClientPluginVersionsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListClientPluginVersionsResponseBody) SetClientPluginVersions(v []*ListClientPluginVersionsResponseBodyClientPluginVersions) *ListClientPluginVersionsResponseBody {
-	s.ClientPluginVersions = v
-	return s
-}
-
 func (s *ListClientPluginVersionsResponseBody) SetRequestId(v string) *ListClientPluginVersionsResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *ListClientPluginVersionsResponseBody) SetClientPluginVersions(v []*ListClientPluginVersionsResponseBodyClientPluginVersions) *ListClientPluginVersionsResponseBody {
+	s.ClientPluginVersions = v
+	return s
+}
+
 type ListClientPluginVersionsResponseBodyClientPluginVersions struct {
-	Version     *string `json:"Version,omitempty" xml:"Version,omitempty"`
-	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
-	Size        *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
 	PkgName     *string `json:"PkgName,omitempty" xml:"PkgName,omitempty"`
 	VersionCode *int64  `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
+	Version     *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	Size        *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
 	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
 }
 
 func (s ListClientPluginVersionsResponseBodyClientPluginVersions) String() string {
@@ -13112,21 +13414,6 @@ func (s ListClientPluginVersionsResponseBodyClientPluginVersions) String() strin
 
 func (s ListClientPluginVersionsResponseBodyClientPluginVersions) GoString() string {
 	return s.String()
-}
-
-func (s *ListClientPluginVersionsResponseBodyClientPluginVersions) SetVersion(v string) *ListClientPluginVersionsResponseBodyClientPluginVersions {
-	s.Version = &v
-	return s
-}
-
-func (s *ListClientPluginVersionsResponseBodyClientPluginVersions) SetDownloadUrl(v string) *ListClientPluginVersionsResponseBodyClientPluginVersions {
-	s.DownloadUrl = &v
-	return s
-}
-
-func (s *ListClientPluginVersionsResponseBodyClientPluginVersions) SetSize(v int64) *ListClientPluginVersionsResponseBodyClientPluginVersions {
-	s.Size = &v
-	return s
 }
 
 func (s *ListClientPluginVersionsResponseBodyClientPluginVersions) SetPkgName(v string) *ListClientPluginVersionsResponseBodyClientPluginVersions {
@@ -13139,8 +13426,23 @@ func (s *ListClientPluginVersionsResponseBodyClientPluginVersions) SetVersionCod
 	return s
 }
 
+func (s *ListClientPluginVersionsResponseBodyClientPluginVersions) SetVersion(v string) *ListClientPluginVersionsResponseBodyClientPluginVersions {
+	s.Version = &v
+	return s
+}
+
+func (s *ListClientPluginVersionsResponseBodyClientPluginVersions) SetSize(v int64) *ListClientPluginVersionsResponseBodyClientPluginVersions {
+	s.Size = &v
+	return s
+}
+
 func (s *ListClientPluginVersionsResponseBodyClientPluginVersions) SetId(v int64) *ListClientPluginVersionsResponseBodyClientPluginVersions {
 	s.Id = &v
+	return s
+}
+
+func (s *ListClientPluginVersionsResponseBodyClientPluginVersions) SetDownloadUrl(v string) *ListClientPluginVersionsResponseBodyClientPluginVersions {
+	s.DownloadUrl = &v
 	return s
 }
 
@@ -13185,8 +13487,8 @@ func (s *ListClientSdksRequest) SetOsType(v string) *ListClientSdksRequest {
 }
 
 type ListClientSdksResponseBody struct {
-	ClientSdks []*ListClientSdksResponseBodyClientSdks `json:"ClientSdks,omitempty" xml:"ClientSdks,omitempty" type:"Repeated"`
 	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ClientSdks []*ListClientSdksResponseBodyClientSdks `json:"ClientSdks,omitempty" xml:"ClientSdks,omitempty" type:"Repeated"`
 }
 
 func (s ListClientSdksResponseBody) String() string {
@@ -13197,24 +13499,24 @@ func (s ListClientSdksResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListClientSdksResponseBody) SetClientSdks(v []*ListClientSdksResponseBodyClientSdks) *ListClientSdksResponseBody {
-	s.ClientSdks = v
-	return s
-}
-
 func (s *ListClientSdksResponseBody) SetRequestId(v string) *ListClientSdksResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *ListClientSdksResponseBody) SetClientSdks(v []*ListClientSdksResponseBodyClientSdks) *ListClientSdksResponseBody {
+	s.ClientSdks = v
+	return s
+}
+
 type ListClientSdksResponseBodyClientSdks struct {
-	OsType      *int32  `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	GmtCreate   *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	GmtModified *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	PkgName     *string `json:"PkgName,omitempty" xml:"PkgName,omitempty"`
 	PkgType     *int32  `json:"PkgType,omitempty" xml:"PkgType,omitempty"`
-	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	OsType      *int32  `json:"OsType,omitempty" xml:"OsType,omitempty"`
 }
 
 func (s ListClientSdksResponseBodyClientSdks) String() string {
@@ -13225,8 +13527,8 @@ func (s ListClientSdksResponseBodyClientSdks) GoString() string {
 	return s.String()
 }
 
-func (s *ListClientSdksResponseBodyClientSdks) SetOsType(v int32) *ListClientSdksResponseBodyClientSdks {
-	s.OsType = &v
+func (s *ListClientSdksResponseBodyClientSdks) SetId(v int64) *ListClientSdksResponseBodyClientSdks {
+	s.Id = &v
 	return s
 }
 
@@ -13255,8 +13557,8 @@ func (s *ListClientSdksResponseBodyClientSdks) SetPkgType(v int32) *ListClientSd
 	return s
 }
 
-func (s *ListClientSdksResponseBodyClientSdks) SetId(v int64) *ListClientSdksResponseBodyClientSdks {
-	s.Id = &v
+func (s *ListClientSdksResponseBodyClientSdks) SetOsType(v int32) *ListClientSdksResponseBodyClientSdks {
+	s.OsType = &v
 	return s
 }
 
@@ -13354,8 +13656,8 @@ func (s *ListConnectLogsResponseBody) SetLogs(v *ListConnectLogsResponseBodyLogs
 }
 
 type ListConnectLogsResponseBodyLogs struct {
-	Pagination *ListConnectLogsResponseBodyLogsPagination `json:"Pagination,omitempty" xml:"Pagination,omitempty" type:"Struct"`
 	List       []*ListConnectLogsResponseBodyLogsList     `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	Pagination *ListConnectLogsResponseBodyLogsPagination `json:"Pagination,omitempty" xml:"Pagination,omitempty" type:"Struct"`
 }
 
 func (s ListConnectLogsResponseBodyLogs) String() string {
@@ -13366,60 +13668,25 @@ func (s ListConnectLogsResponseBodyLogs) GoString() string {
 	return s.String()
 }
 
-func (s *ListConnectLogsResponseBodyLogs) SetPagination(v *ListConnectLogsResponseBodyLogsPagination) *ListConnectLogsResponseBodyLogs {
-	s.Pagination = v
-	return s
-}
-
 func (s *ListConnectLogsResponseBodyLogs) SetList(v []*ListConnectLogsResponseBodyLogsList) *ListConnectLogsResponseBodyLogs {
 	s.List = v
 	return s
 }
 
-type ListConnectLogsResponseBodyLogsPagination struct {
-	PageIndex      *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	TotalPageCount *int32 `json:"TotalPageCount,omitempty" xml:"TotalPageCount,omitempty"`
-	PageSize       *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount     *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ListConnectLogsResponseBodyLogsPagination) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListConnectLogsResponseBodyLogsPagination) GoString() string {
-	return s.String()
-}
-
-func (s *ListConnectLogsResponseBodyLogsPagination) SetPageIndex(v int32) *ListConnectLogsResponseBodyLogsPagination {
-	s.PageIndex = &v
-	return s
-}
-
-func (s *ListConnectLogsResponseBodyLogsPagination) SetTotalPageCount(v int32) *ListConnectLogsResponseBodyLogsPagination {
-	s.TotalPageCount = &v
-	return s
-}
-
-func (s *ListConnectLogsResponseBodyLogsPagination) SetPageSize(v int32) *ListConnectLogsResponseBodyLogsPagination {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListConnectLogsResponseBodyLogsPagination) SetTotalCount(v int32) *ListConnectLogsResponseBodyLogsPagination {
-	s.TotalCount = &v
+func (s *ListConnectLogsResponseBodyLogs) SetPagination(v *ListConnectLogsResponseBodyLogsPagination) *ListConnectLogsResponseBodyLogs {
+	s.Pagination = v
 	return s
 }
 
 type ListConnectLogsResponseBodyLogsList struct {
-	Sid           *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Time          *int64  `json:"Time,omitempty" xml:"Time,omitempty"`
 	DeviceId      *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 	SystemVersion *string `json:"SystemVersion,omitempty" xml:"SystemVersion,omitempty"`
+	Terminal      *string `json:"Terminal,omitempty" xml:"Terminal,omitempty"`
 	Ip            *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	NetWorking    *string `json:"NetWorking,omitempty" xml:"NetWorking,omitempty"`
-	Terminal      *string `json:"Terminal,omitempty" xml:"Terminal,omitempty"`
+	Time          *int64  `json:"Time,omitempty" xml:"Time,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Sid           *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
 }
 
 func (s ListConnectLogsResponseBodyLogsList) String() string {
@@ -13430,21 +13697,6 @@ func (s ListConnectLogsResponseBodyLogsList) GoString() string {
 	return s.String()
 }
 
-func (s *ListConnectLogsResponseBodyLogsList) SetSid(v string) *ListConnectLogsResponseBodyLogsList {
-	s.Sid = &v
-	return s
-}
-
-func (s *ListConnectLogsResponseBodyLogsList) SetStatus(v string) *ListConnectLogsResponseBodyLogsList {
-	s.Status = &v
-	return s
-}
-
-func (s *ListConnectLogsResponseBodyLogsList) SetTime(v int64) *ListConnectLogsResponseBodyLogsList {
-	s.Time = &v
-	return s
-}
-
 func (s *ListConnectLogsResponseBodyLogsList) SetDeviceId(v string) *ListConnectLogsResponseBodyLogsList {
 	s.DeviceId = &v
 	return s
@@ -13452,6 +13704,11 @@ func (s *ListConnectLogsResponseBodyLogsList) SetDeviceId(v string) *ListConnect
 
 func (s *ListConnectLogsResponseBodyLogsList) SetSystemVersion(v string) *ListConnectLogsResponseBodyLogsList {
 	s.SystemVersion = &v
+	return s
+}
+
+func (s *ListConnectLogsResponseBodyLogsList) SetTerminal(v string) *ListConnectLogsResponseBodyLogsList {
+	s.Terminal = &v
 	return s
 }
 
@@ -13465,8 +13722,53 @@ func (s *ListConnectLogsResponseBodyLogsList) SetNetWorking(v string) *ListConne
 	return s
 }
 
-func (s *ListConnectLogsResponseBodyLogsList) SetTerminal(v string) *ListConnectLogsResponseBodyLogsList {
-	s.Terminal = &v
+func (s *ListConnectLogsResponseBodyLogsList) SetTime(v int64) *ListConnectLogsResponseBodyLogsList {
+	s.Time = &v
+	return s
+}
+
+func (s *ListConnectLogsResponseBodyLogsList) SetStatus(v string) *ListConnectLogsResponseBodyLogsList {
+	s.Status = &v
+	return s
+}
+
+func (s *ListConnectLogsResponseBodyLogsList) SetSid(v string) *ListConnectLogsResponseBodyLogsList {
+	s.Sid = &v
+	return s
+}
+
+type ListConnectLogsResponseBodyLogsPagination struct {
+	TotalCount     *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalPageCount *int32 `json:"TotalPageCount,omitempty" xml:"TotalPageCount,omitempty"`
+	PageIndex      *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	PageSize       *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListConnectLogsResponseBodyLogsPagination) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConnectLogsResponseBodyLogsPagination) GoString() string {
+	return s.String()
+}
+
+func (s *ListConnectLogsResponseBodyLogsPagination) SetTotalCount(v int32) *ListConnectLogsResponseBodyLogsPagination {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListConnectLogsResponseBodyLogsPagination) SetTotalPageCount(v int32) *ListConnectLogsResponseBodyLogsPagination {
+	s.TotalPageCount = &v
+	return s
+}
+
+func (s *ListConnectLogsResponseBodyLogsPagination) SetPageIndex(v int32) *ListConnectLogsResponseBodyLogsPagination {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *ListConnectLogsResponseBodyLogsPagination) SetPageSize(v int32) *ListConnectLogsResponseBodyLogsPagination {
+	s.PageSize = &v
 	return s
 }
 
@@ -13540,12 +13842,12 @@ func (s *ListDeployedFunctionsResponseBody) SetFunctions(v []*ListDeployedFuncti
 }
 
 type ListDeployedFunctionsResponseBodyFunctions struct {
-	ProjectId   *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	GmtCreate   *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	GmtModified *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	ProjectId   *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	FileId      *int64  `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	GmtCreate   *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 }
 
 func (s ListDeployedFunctionsResponseBodyFunctions) String() string {
@@ -13556,13 +13858,13 @@ func (s ListDeployedFunctionsResponseBodyFunctions) GoString() string {
 	return s.String()
 }
 
-func (s *ListDeployedFunctionsResponseBodyFunctions) SetProjectId(v string) *ListDeployedFunctionsResponseBodyFunctions {
-	s.ProjectId = &v
+func (s *ListDeployedFunctionsResponseBodyFunctions) SetId(v int64) *ListDeployedFunctionsResponseBodyFunctions {
+	s.Id = &v
 	return s
 }
 
-func (s *ListDeployedFunctionsResponseBodyFunctions) SetGmtCreate(v int64) *ListDeployedFunctionsResponseBodyFunctions {
-	s.GmtCreate = &v
+func (s *ListDeployedFunctionsResponseBodyFunctions) SetProjectId(v string) *ListDeployedFunctionsResponseBodyFunctions {
+	s.ProjectId = &v
 	return s
 }
 
@@ -13571,18 +13873,18 @@ func (s *ListDeployedFunctionsResponseBodyFunctions) SetName(v string) *ListDepl
 	return s
 }
 
-func (s *ListDeployedFunctionsResponseBodyFunctions) SetGmtModified(v int64) *ListDeployedFunctionsResponseBodyFunctions {
-	s.GmtModified = &v
-	return s
-}
-
-func (s *ListDeployedFunctionsResponseBodyFunctions) SetId(v int64) *ListDeployedFunctionsResponseBodyFunctions {
-	s.Id = &v
-	return s
-}
-
 func (s *ListDeployedFunctionsResponseBodyFunctions) SetFileId(v int64) *ListDeployedFunctionsResponseBodyFunctions {
 	s.FileId = &v
+	return s
+}
+
+func (s *ListDeployedFunctionsResponseBodyFunctions) SetGmtCreate(v int64) *ListDeployedFunctionsResponseBodyFunctions {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListDeployedFunctionsResponseBodyFunctions) SetGmtModified(v int64) *ListDeployedFunctionsResponseBodyFunctions {
+	s.GmtModified = &v
 	return s
 }
 
@@ -13651,8 +13953,8 @@ func (s *ListDeviceBrandsRequest) SetLength(v string) *ListDeviceBrandsRequest {
 }
 
 type ListDeviceBrandsResponseBody struct {
-	DeviceBrands []*ListDeviceBrandsResponseBodyDeviceBrands `json:"DeviceBrands,omitempty" xml:"DeviceBrands,omitempty" type:"Repeated"`
 	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	DeviceBrands []*ListDeviceBrandsResponseBodyDeviceBrands `json:"DeviceBrands,omitempty" xml:"DeviceBrands,omitempty" type:"Repeated"`
 }
 
 func (s ListDeviceBrandsResponseBody) String() string {
@@ -13663,22 +13965,22 @@ func (s ListDeviceBrandsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListDeviceBrandsResponseBody) SetDeviceBrands(v []*ListDeviceBrandsResponseBodyDeviceBrands) *ListDeviceBrandsResponseBody {
-	s.DeviceBrands = v
-	return s
-}
-
 func (s *ListDeviceBrandsResponseBody) SetRequestId(v string) *ListDeviceBrandsResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *ListDeviceBrandsResponseBody) SetDeviceBrands(v []*ListDeviceBrandsResponseBodyDeviceBrands) *ListDeviceBrandsResponseBody {
+	s.DeviceBrands = v
+	return s
+}
+
 type ListDeviceBrandsResponseBodyDeviceBrands struct {
 	DeviceBrandId *int64  `json:"DeviceBrandId,omitempty" xml:"DeviceBrandId,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DeviceBrand   *string `json:"DeviceBrand,omitempty" xml:"DeviceBrand,omitempty"`
 	ProjectId     *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	Manufacture   *string `json:"Manufacture,omitempty" xml:"Manufacture,omitempty"`
-	DeviceBrand   *string `json:"DeviceBrand,omitempty" xml:"DeviceBrand,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
 }
 
 func (s ListDeviceBrandsResponseBodyDeviceBrands) String() string {
@@ -13694,8 +13996,8 @@ func (s *ListDeviceBrandsResponseBodyDeviceBrands) SetDeviceBrandId(v int64) *Li
 	return s
 }
 
-func (s *ListDeviceBrandsResponseBodyDeviceBrands) SetDescription(v string) *ListDeviceBrandsResponseBodyDeviceBrands {
-	s.Description = &v
+func (s *ListDeviceBrandsResponseBodyDeviceBrands) SetDeviceBrand(v string) *ListDeviceBrandsResponseBodyDeviceBrands {
+	s.DeviceBrand = &v
 	return s
 }
 
@@ -13709,8 +14011,8 @@ func (s *ListDeviceBrandsResponseBodyDeviceBrands) SetManufacture(v string) *Lis
 	return s
 }
 
-func (s *ListDeviceBrandsResponseBodyDeviceBrands) SetDeviceBrand(v string) *ListDeviceBrandsResponseBodyDeviceBrands {
-	s.DeviceBrand = &v
+func (s *ListDeviceBrandsResponseBodyDeviceBrands) SetDescription(v string) *ListDeviceBrandsResponseBodyDeviceBrands {
+	s.Description = &v
 	return s
 }
 
@@ -13755,8 +14057,8 @@ func (s *ListDeviceModelRequest) SetProjectId(v string) *ListDeviceModelRequest 
 }
 
 type ListDeviceModelResponseBody struct {
-	ModelList []*ListDeviceModelResponseBodyModelList `json:"ModelList,omitempty" xml:"ModelList,omitempty" type:"Repeated"`
 	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ModelList []*ListDeviceModelResponseBodyModelList `json:"ModelList,omitempty" xml:"ModelList,omitempty" type:"Repeated"`
 }
 
 func (s ListDeviceModelResponseBody) String() string {
@@ -13767,29 +14069,29 @@ func (s ListDeviceModelResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListDeviceModelResponseBody) SetModelList(v []*ListDeviceModelResponseBodyModelList) *ListDeviceModelResponseBody {
-	s.ModelList = v
-	return s
-}
-
 func (s *ListDeviceModelResponseBody) SetRequestId(v string) *ListDeviceModelResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *ListDeviceModelResponseBody) SetModelList(v []*ListDeviceModelResponseBodyModelList) *ListDeviceModelResponseBody {
+	s.ModelList = v
+	return s
+}
+
 type ListDeviceModelResponseBodyModelList struct {
 	DeviceModelId     *int64  `json:"DeviceModelId,omitempty" xml:"DeviceModelId,omitempty"`
-	HardwareType      *string `json:"HardwareType,omitempty" xml:"HardwareType,omitempty"`
 	DeviceType        *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
-	CanCreateDeviceId *int32  `json:"CanCreateDeviceId,omitempty" xml:"CanCreateDeviceId,omitempty"`
-	ProjectId         *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	OsPlatform        *string `json:"OsPlatform,omitempty" xml:"OsPlatform,omitempty"`
+	HardwareType      *string `json:"HardwareType,omitempty" xml:"HardwareType,omitempty"`
 	DeviceModel       *string `json:"DeviceModel,omitempty" xml:"DeviceModel,omitempty"`
-	SecurityChip      *string `json:"SecurityChip,omitempty" xml:"SecurityChip,omitempty"`
-	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	InitUsageTypeDesc *string `json:"InitUsageTypeDesc,omitempty" xml:"InitUsageTypeDesc,omitempty"`
-	InitUsageType     *int32  `json:"InitUsageType,omitempty" xml:"InitUsageType,omitempty"`
 	DeviceBrand       *string `json:"DeviceBrand,omitempty" xml:"DeviceBrand,omitempty"`
+	CanCreateDeviceId *int32  `json:"CanCreateDeviceId,omitempty" xml:"CanCreateDeviceId,omitempty"`
+	InitUsageType     *int32  `json:"InitUsageType,omitempty" xml:"InitUsageType,omitempty"`
+	InitUsageTypeDesc *string `json:"InitUsageTypeDesc,omitempty" xml:"InitUsageTypeDesc,omitempty"`
+	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ProjectId         *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	SecurityChip      *string `json:"SecurityChip,omitempty" xml:"SecurityChip,omitempty"`
+	OsPlatform        *string `json:"OsPlatform,omitempty" xml:"OsPlatform,omitempty"`
 }
 
 func (s ListDeviceModelResponseBodyModelList) String() string {
@@ -13805,28 +14107,13 @@ func (s *ListDeviceModelResponseBodyModelList) SetDeviceModelId(v int64) *ListDe
 	return s
 }
 
-func (s *ListDeviceModelResponseBodyModelList) SetHardwareType(v string) *ListDeviceModelResponseBodyModelList {
-	s.HardwareType = &v
-	return s
-}
-
 func (s *ListDeviceModelResponseBodyModelList) SetDeviceType(v string) *ListDeviceModelResponseBodyModelList {
 	s.DeviceType = &v
 	return s
 }
 
-func (s *ListDeviceModelResponseBodyModelList) SetCanCreateDeviceId(v int32) *ListDeviceModelResponseBodyModelList {
-	s.CanCreateDeviceId = &v
-	return s
-}
-
-func (s *ListDeviceModelResponseBodyModelList) SetProjectId(v string) *ListDeviceModelResponseBodyModelList {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *ListDeviceModelResponseBodyModelList) SetOsPlatform(v string) *ListDeviceModelResponseBodyModelList {
-	s.OsPlatform = &v
+func (s *ListDeviceModelResponseBodyModelList) SetHardwareType(v string) *ListDeviceModelResponseBodyModelList {
+	s.HardwareType = &v
 	return s
 }
 
@@ -13835,18 +14122,13 @@ func (s *ListDeviceModelResponseBodyModelList) SetDeviceModel(v string) *ListDev
 	return s
 }
 
-func (s *ListDeviceModelResponseBodyModelList) SetSecurityChip(v string) *ListDeviceModelResponseBodyModelList {
-	s.SecurityChip = &v
+func (s *ListDeviceModelResponseBodyModelList) SetDeviceBrand(v string) *ListDeviceModelResponseBodyModelList {
+	s.DeviceBrand = &v
 	return s
 }
 
-func (s *ListDeviceModelResponseBodyModelList) SetDescription(v string) *ListDeviceModelResponseBodyModelList {
-	s.Description = &v
-	return s
-}
-
-func (s *ListDeviceModelResponseBodyModelList) SetInitUsageTypeDesc(v string) *ListDeviceModelResponseBodyModelList {
-	s.InitUsageTypeDesc = &v
+func (s *ListDeviceModelResponseBodyModelList) SetCanCreateDeviceId(v int32) *ListDeviceModelResponseBodyModelList {
+	s.CanCreateDeviceId = &v
 	return s
 }
 
@@ -13855,8 +14137,28 @@ func (s *ListDeviceModelResponseBodyModelList) SetInitUsageType(v int32) *ListDe
 	return s
 }
 
-func (s *ListDeviceModelResponseBodyModelList) SetDeviceBrand(v string) *ListDeviceModelResponseBodyModelList {
-	s.DeviceBrand = &v
+func (s *ListDeviceModelResponseBodyModelList) SetInitUsageTypeDesc(v string) *ListDeviceModelResponseBodyModelList {
+	s.InitUsageTypeDesc = &v
+	return s
+}
+
+func (s *ListDeviceModelResponseBodyModelList) SetDescription(v string) *ListDeviceModelResponseBodyModelList {
+	s.Description = &v
+	return s
+}
+
+func (s *ListDeviceModelResponseBodyModelList) SetProjectId(v string) *ListDeviceModelResponseBodyModelList {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListDeviceModelResponseBodyModelList) SetSecurityChip(v string) *ListDeviceModelResponseBodyModelList {
+	s.SecurityChip = &v
+	return s
+}
+
+func (s *ListDeviceModelResponseBodyModelList) SetOsPlatform(v string) *ListDeviceModelResponseBodyModelList {
+	s.OsPlatform = &v
 	return s
 }
 
@@ -13937,8 +14239,8 @@ func (s *ListDeviceModelsRequest) SetDeviceBrandId(v int64) *ListDeviceModelsReq
 }
 
 type ListDeviceModelsResponseBody struct {
-	DeviceModels []*ListDeviceModelsResponseBodyDeviceModels `json:"DeviceModels,omitempty" xml:"DeviceModels,omitempty" type:"Repeated"`
 	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	DeviceModels []*ListDeviceModelsResponseBodyDeviceModels `json:"DeviceModels,omitempty" xml:"DeviceModels,omitempty" type:"Repeated"`
 }
 
 func (s ListDeviceModelsResponseBody) String() string {
@@ -13949,32 +14251,32 @@ func (s ListDeviceModelsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListDeviceModelsResponseBody) SetDeviceModels(v []*ListDeviceModelsResponseBodyDeviceModels) *ListDeviceModelsResponseBody {
-	s.DeviceModels = v
-	return s
-}
-
 func (s *ListDeviceModelsResponseBody) SetRequestId(v string) *ListDeviceModelsResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *ListDeviceModelsResponseBody) SetDeviceModels(v []*ListDeviceModelsResponseBodyDeviceModels) *ListDeviceModelsResponseBody {
+	s.DeviceModels = v
+	return s
+}
+
 type ListDeviceModelsResponseBodyDeviceModels struct {
 	DeviceModelId     *int64  `json:"DeviceModelId,omitempty" xml:"DeviceModelId,omitempty"`
-	HardwareType      *string `json:"HardwareType,omitempty" xml:"HardwareType,omitempty"`
-	DeviceName        *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
 	DeviceType        *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
-	CanCreateDeviceId *int32  `json:"CanCreateDeviceId,omitempty" xml:"CanCreateDeviceId,omitempty"`
-	ProjectId         *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	OsPlatform        *string `json:"OsPlatform,omitempty" xml:"OsPlatform,omitempty"`
+	HardwareType      *string `json:"HardwareType,omitempty" xml:"HardwareType,omitempty"`
 	DeviceModel       *string `json:"DeviceModel,omitempty" xml:"DeviceModel,omitempty"`
-	SecurityChip      *string `json:"SecurityChip,omitempty" xml:"SecurityChip,omitempty"`
-	DeviceLogoUrl     *string `json:"DeviceLogoUrl,omitempty" xml:"DeviceLogoUrl,omitempty"`
-	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ObjectKey         *string `json:"ObjectKey,omitempty" xml:"ObjectKey,omitempty"`
-	InitUsageTypeDesc *string `json:"InitUsageTypeDesc,omitempty" xml:"InitUsageTypeDesc,omitempty"`
-	InitUsageType     *int32  `json:"InitUsageType,omitempty" xml:"InitUsageType,omitempty"`
 	DeviceBrand       *string `json:"DeviceBrand,omitempty" xml:"DeviceBrand,omitempty"`
+	CanCreateDeviceId *int32  `json:"CanCreateDeviceId,omitempty" xml:"CanCreateDeviceId,omitempty"`
+	InitUsageType     *int32  `json:"InitUsageType,omitempty" xml:"InitUsageType,omitempty"`
+	InitUsageTypeDesc *string `json:"InitUsageTypeDesc,omitempty" xml:"InitUsageTypeDesc,omitempty"`
+	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ProjectId         *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	SecurityChip      *string `json:"SecurityChip,omitempty" xml:"SecurityChip,omitempty"`
+	OsPlatform        *string `json:"OsPlatform,omitempty" xml:"OsPlatform,omitempty"`
+	ObjectKey         *string `json:"ObjectKey,omitempty" xml:"ObjectKey,omitempty"`
+	DeviceLogoUrl     *string `json:"DeviceLogoUrl,omitempty" xml:"DeviceLogoUrl,omitempty"`
+	DeviceName        *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
 }
 
 func (s ListDeviceModelsResponseBodyDeviceModels) String() string {
@@ -13990,33 +14292,13 @@ func (s *ListDeviceModelsResponseBodyDeviceModels) SetDeviceModelId(v int64) *Li
 	return s
 }
 
-func (s *ListDeviceModelsResponseBodyDeviceModels) SetHardwareType(v string) *ListDeviceModelsResponseBodyDeviceModels {
-	s.HardwareType = &v
-	return s
-}
-
-func (s *ListDeviceModelsResponseBodyDeviceModels) SetDeviceName(v string) *ListDeviceModelsResponseBodyDeviceModels {
-	s.DeviceName = &v
-	return s
-}
-
 func (s *ListDeviceModelsResponseBodyDeviceModels) SetDeviceType(v string) *ListDeviceModelsResponseBodyDeviceModels {
 	s.DeviceType = &v
 	return s
 }
 
-func (s *ListDeviceModelsResponseBodyDeviceModels) SetCanCreateDeviceId(v int32) *ListDeviceModelsResponseBodyDeviceModels {
-	s.CanCreateDeviceId = &v
-	return s
-}
-
-func (s *ListDeviceModelsResponseBodyDeviceModels) SetProjectId(v string) *ListDeviceModelsResponseBodyDeviceModels {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *ListDeviceModelsResponseBodyDeviceModels) SetOsPlatform(v string) *ListDeviceModelsResponseBodyDeviceModels {
-	s.OsPlatform = &v
+func (s *ListDeviceModelsResponseBodyDeviceModels) SetHardwareType(v string) *ListDeviceModelsResponseBodyDeviceModels {
+	s.HardwareType = &v
 	return s
 }
 
@@ -14025,28 +14307,13 @@ func (s *ListDeviceModelsResponseBodyDeviceModels) SetDeviceModel(v string) *Lis
 	return s
 }
 
-func (s *ListDeviceModelsResponseBodyDeviceModels) SetSecurityChip(v string) *ListDeviceModelsResponseBodyDeviceModels {
-	s.SecurityChip = &v
+func (s *ListDeviceModelsResponseBodyDeviceModels) SetDeviceBrand(v string) *ListDeviceModelsResponseBodyDeviceModels {
+	s.DeviceBrand = &v
 	return s
 }
 
-func (s *ListDeviceModelsResponseBodyDeviceModels) SetDeviceLogoUrl(v string) *ListDeviceModelsResponseBodyDeviceModels {
-	s.DeviceLogoUrl = &v
-	return s
-}
-
-func (s *ListDeviceModelsResponseBodyDeviceModels) SetDescription(v string) *ListDeviceModelsResponseBodyDeviceModels {
-	s.Description = &v
-	return s
-}
-
-func (s *ListDeviceModelsResponseBodyDeviceModels) SetObjectKey(v string) *ListDeviceModelsResponseBodyDeviceModels {
-	s.ObjectKey = &v
-	return s
-}
-
-func (s *ListDeviceModelsResponseBodyDeviceModels) SetInitUsageTypeDesc(v string) *ListDeviceModelsResponseBodyDeviceModels {
-	s.InitUsageTypeDesc = &v
+func (s *ListDeviceModelsResponseBodyDeviceModels) SetCanCreateDeviceId(v int32) *ListDeviceModelsResponseBodyDeviceModels {
+	s.CanCreateDeviceId = &v
 	return s
 }
 
@@ -14055,8 +14322,43 @@ func (s *ListDeviceModelsResponseBodyDeviceModels) SetInitUsageType(v int32) *Li
 	return s
 }
 
-func (s *ListDeviceModelsResponseBodyDeviceModels) SetDeviceBrand(v string) *ListDeviceModelsResponseBodyDeviceModels {
-	s.DeviceBrand = &v
+func (s *ListDeviceModelsResponseBodyDeviceModels) SetInitUsageTypeDesc(v string) *ListDeviceModelsResponseBodyDeviceModels {
+	s.InitUsageTypeDesc = &v
+	return s
+}
+
+func (s *ListDeviceModelsResponseBodyDeviceModels) SetDescription(v string) *ListDeviceModelsResponseBodyDeviceModels {
+	s.Description = &v
+	return s
+}
+
+func (s *ListDeviceModelsResponseBodyDeviceModels) SetProjectId(v string) *ListDeviceModelsResponseBodyDeviceModels {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListDeviceModelsResponseBodyDeviceModels) SetSecurityChip(v string) *ListDeviceModelsResponseBodyDeviceModels {
+	s.SecurityChip = &v
+	return s
+}
+
+func (s *ListDeviceModelsResponseBodyDeviceModels) SetOsPlatform(v string) *ListDeviceModelsResponseBodyDeviceModels {
+	s.OsPlatform = &v
+	return s
+}
+
+func (s *ListDeviceModelsResponseBodyDeviceModels) SetObjectKey(v string) *ListDeviceModelsResponseBodyDeviceModels {
+	s.ObjectKey = &v
+	return s
+}
+
+func (s *ListDeviceModelsResponseBodyDeviceModels) SetDeviceLogoUrl(v string) *ListDeviceModelsResponseBodyDeviceModels {
+	s.DeviceLogoUrl = &v
+	return s
+}
+
+func (s *ListDeviceModelsResponseBodyDeviceModels) SetDeviceName(v string) *ListDeviceModelsResponseBodyDeviceModels {
+	s.DeviceName = &v
 	return s
 }
 
@@ -14148,23 +14450,23 @@ func (s *ListDevicesResponseBody) SetDevices(v []*ListDevicesResponseBodyDevices
 }
 
 type ListDevicesResponseBodyDevices struct {
-	SerialNumber  *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	DeviceModelId *int64  `json:"DeviceModelId,omitempty" xml:"DeviceModelId,omitempty"`
-	MacAddress    *string `json:"MacAddress,omitempty" xml:"MacAddress,omitempty"`
 	DeviceId      *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 	DeviceType    *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
-	ProjectId     *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	DeviceModel   *string `json:"DeviceModel,omitempty" xml:"DeviceModel,omitempty"`
 	UsageType     *int32  `json:"UsageType,omitempty" xml:"UsageType,omitempty"`
-	Vin           *string `json:"Vin,omitempty" xml:"Vin,omitempty"`
 	UsageTypeDesc *string `json:"UsageTypeDesc,omitempty" xml:"UsageTypeDesc,omitempty"`
-	Uuid          *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	HardwareId    *string `json:"HardwareId,omitempty" xml:"HardwareId,omitempty"`
-	Region        *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	SoftwareId    *string `json:"SoftwareId,omitempty" xml:"SoftwareId,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	DeviceModel   *string `json:"DeviceModel,omitempty" xml:"DeviceModel,omitempty"`
+	DeviceModelId *int64  `json:"DeviceModelId,omitempty" xml:"DeviceModelId,omitempty"`
 	DeviceBrand   *string `json:"DeviceBrand,omitempty" xml:"DeviceBrand,omitempty"`
+	Uuid          *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	Vin           *string `json:"Vin,omitempty" xml:"Vin,omitempty"`
+	SerialNumber  *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	MacAddress    *string `json:"MacAddress,omitempty" xml:"MacAddress,omitempty"`
+	HardwareId    *string `json:"HardwareId,omitempty" xml:"HardwareId,omitempty"`
+	SoftwareId    *string `json:"SoftwareId,omitempty" xml:"SoftwareId,omitempty"`
+	Region        *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ProjectId     *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListDevicesResponseBodyDevices) String() string {
@@ -14173,26 +14475,6 @@ func (s ListDevicesResponseBodyDevices) String() string {
 
 func (s ListDevicesResponseBodyDevices) GoString() string {
 	return s.String()
-}
-
-func (s *ListDevicesResponseBodyDevices) SetSerialNumber(v string) *ListDevicesResponseBodyDevices {
-	s.SerialNumber = &v
-	return s
-}
-
-func (s *ListDevicesResponseBodyDevices) SetStatus(v string) *ListDevicesResponseBodyDevices {
-	s.Status = &v
-	return s
-}
-
-func (s *ListDevicesResponseBodyDevices) SetDeviceModelId(v int64) *ListDevicesResponseBodyDevices {
-	s.DeviceModelId = &v
-	return s
-}
-
-func (s *ListDevicesResponseBodyDevices) SetMacAddress(v string) *ListDevicesResponseBodyDevices {
-	s.MacAddress = &v
-	return s
 }
 
 func (s *ListDevicesResponseBodyDevices) SetDeviceId(v string) *ListDevicesResponseBodyDevices {
@@ -14205,23 +14487,8 @@ func (s *ListDevicesResponseBodyDevices) SetDeviceType(v string) *ListDevicesRes
 	return s
 }
 
-func (s *ListDevicesResponseBodyDevices) SetProjectId(v string) *ListDevicesResponseBodyDevices {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *ListDevicesResponseBodyDevices) SetDeviceModel(v string) *ListDevicesResponseBodyDevices {
-	s.DeviceModel = &v
-	return s
-}
-
 func (s *ListDevicesResponseBodyDevices) SetUsageType(v int32) *ListDevicesResponseBodyDevices {
 	s.UsageType = &v
-	return s
-}
-
-func (s *ListDevicesResponseBodyDevices) SetVin(v string) *ListDevicesResponseBodyDevices {
-	s.Vin = &v
 	return s
 }
 
@@ -14230,8 +14497,38 @@ func (s *ListDevicesResponseBodyDevices) SetUsageTypeDesc(v string) *ListDevices
 	return s
 }
 
+func (s *ListDevicesResponseBodyDevices) SetDeviceModel(v string) *ListDevicesResponseBodyDevices {
+	s.DeviceModel = &v
+	return s
+}
+
+func (s *ListDevicesResponseBodyDevices) SetDeviceModelId(v int64) *ListDevicesResponseBodyDevices {
+	s.DeviceModelId = &v
+	return s
+}
+
+func (s *ListDevicesResponseBodyDevices) SetDeviceBrand(v string) *ListDevicesResponseBodyDevices {
+	s.DeviceBrand = &v
+	return s
+}
+
 func (s *ListDevicesResponseBodyDevices) SetUuid(v string) *ListDevicesResponseBodyDevices {
 	s.Uuid = &v
+	return s
+}
+
+func (s *ListDevicesResponseBodyDevices) SetVin(v string) *ListDevicesResponseBodyDevices {
+	s.Vin = &v
+	return s
+}
+
+func (s *ListDevicesResponseBodyDevices) SetSerialNumber(v string) *ListDevicesResponseBodyDevices {
+	s.SerialNumber = &v
+	return s
+}
+
+func (s *ListDevicesResponseBodyDevices) SetMacAddress(v string) *ListDevicesResponseBodyDevices {
+	s.MacAddress = &v
 	return s
 }
 
@@ -14240,13 +14537,13 @@ func (s *ListDevicesResponseBodyDevices) SetHardwareId(v string) *ListDevicesRes
 	return s
 }
 
-func (s *ListDevicesResponseBodyDevices) SetRegion(v string) *ListDevicesResponseBodyDevices {
-	s.Region = &v
+func (s *ListDevicesResponseBodyDevices) SetSoftwareId(v string) *ListDevicesResponseBodyDevices {
+	s.SoftwareId = &v
 	return s
 }
 
-func (s *ListDevicesResponseBodyDevices) SetSoftwareId(v string) *ListDevicesResponseBodyDevices {
-	s.SoftwareId = &v
+func (s *ListDevicesResponseBodyDevices) SetRegion(v string) *ListDevicesResponseBodyDevices {
+	s.Region = &v
 	return s
 }
 
@@ -14255,8 +14552,13 @@ func (s *ListDevicesResponseBodyDevices) SetName(v string) *ListDevicesResponseB
 	return s
 }
 
-func (s *ListDevicesResponseBodyDevices) SetDeviceBrand(v string) *ListDevicesResponseBodyDevices {
-	s.DeviceBrand = &v
+func (s *ListDevicesResponseBodyDevices) SetProjectId(v string) *ListDevicesResponseBodyDevices {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListDevicesResponseBodyDevices) SetStatus(v string) *ListDevicesResponseBodyDevices {
+	s.Status = &v
 	return s
 }
 
@@ -14417,8 +14719,8 @@ func (s *ListFunctionExecuteLogRequest) SetPageSize(v int32) *ListFunctionExecut
 }
 
 type ListFunctionExecuteLogResponseBody struct {
-	LogList   *ListFunctionExecuteLogResponseBodyLogList `json:"LogList,omitempty" xml:"LogList,omitempty" type:"Struct"`
 	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	LogList   *ListFunctionExecuteLogResponseBodyLogList `json:"LogList,omitempty" xml:"LogList,omitempty" type:"Struct"`
 }
 
 func (s ListFunctionExecuteLogResponseBody) String() string {
@@ -14429,19 +14731,19 @@ func (s ListFunctionExecuteLogResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListFunctionExecuteLogResponseBody) SetLogList(v *ListFunctionExecuteLogResponseBodyLogList) *ListFunctionExecuteLogResponseBody {
-	s.LogList = v
-	return s
-}
-
 func (s *ListFunctionExecuteLogResponseBody) SetRequestId(v string) *ListFunctionExecuteLogResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *ListFunctionExecuteLogResponseBody) SetLogList(v *ListFunctionExecuteLogResponseBodyLogList) *ListFunctionExecuteLogResponseBody {
+	s.LogList = v
+	return s
+}
+
 type ListFunctionExecuteLogResponseBodyLogList struct {
-	Pagination *ListFunctionExecuteLogResponseBodyLogListPagination `json:"Pagination,omitempty" xml:"Pagination,omitempty" type:"Struct"`
 	Logs       []*ListFunctionExecuteLogResponseBodyLogListLogs     `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
+	Pagination *ListFunctionExecuteLogResponseBodyLogListPagination `json:"Pagination,omitempty" xml:"Pagination,omitempty" type:"Struct"`
 }
 
 func (s ListFunctionExecuteLogResponseBodyLogList) String() string {
@@ -14452,13 +14754,36 @@ func (s ListFunctionExecuteLogResponseBodyLogList) GoString() string {
 	return s.String()
 }
 
+func (s *ListFunctionExecuteLogResponseBodyLogList) SetLogs(v []*ListFunctionExecuteLogResponseBodyLogListLogs) *ListFunctionExecuteLogResponseBodyLogList {
+	s.Logs = v
+	return s
+}
+
 func (s *ListFunctionExecuteLogResponseBodyLogList) SetPagination(v *ListFunctionExecuteLogResponseBodyLogListPagination) *ListFunctionExecuteLogResponseBodyLogList {
 	s.Pagination = v
 	return s
 }
 
-func (s *ListFunctionExecuteLogResponseBodyLogList) SetLogs(v []*ListFunctionExecuteLogResponseBodyLogListLogs) *ListFunctionExecuteLogResponseBodyLogList {
-	s.Logs = v
+type ListFunctionExecuteLogResponseBodyLogListLogs struct {
+	Message          *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	BackEndRequestId *string `json:"BackEndRequestId,omitempty" xml:"BackEndRequestId,omitempty"`
+}
+
+func (s ListFunctionExecuteLogResponseBodyLogListLogs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFunctionExecuteLogResponseBodyLogListLogs) GoString() string {
+	return s.String()
+}
+
+func (s *ListFunctionExecuteLogResponseBodyLogListLogs) SetMessage(v string) *ListFunctionExecuteLogResponseBodyLogListLogs {
+	s.Message = &v
+	return s
+}
+
+func (s *ListFunctionExecuteLogResponseBodyLogListLogs) SetBackEndRequestId(v string) *ListFunctionExecuteLogResponseBodyLogListLogs {
+	s.BackEndRequestId = &v
 	return s
 }
 
@@ -14488,29 +14813,6 @@ func (s *ListFunctionExecuteLogResponseBodyLogListPagination) SetPageSize(v int3
 
 func (s *ListFunctionExecuteLogResponseBodyLogListPagination) SetHasNextPage(v bool) *ListFunctionExecuteLogResponseBodyLogListPagination {
 	s.HasNextPage = &v
-	return s
-}
-
-type ListFunctionExecuteLogResponseBodyLogListLogs struct {
-	Message          *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	BackEndRequestId *string `json:"BackEndRequestId,omitempty" xml:"BackEndRequestId,omitempty"`
-}
-
-func (s ListFunctionExecuteLogResponseBodyLogListLogs) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListFunctionExecuteLogResponseBodyLogListLogs) GoString() string {
-	return s.String()
-}
-
-func (s *ListFunctionExecuteLogResponseBodyLogListLogs) SetMessage(v string) *ListFunctionExecuteLogResponseBodyLogListLogs {
-	s.Message = &v
-	return s
-}
-
-func (s *ListFunctionExecuteLogResponseBodyLogListLogs) SetBackEndRequestId(v string) *ListFunctionExecuteLogResponseBodyLogListLogs {
-	s.BackEndRequestId = &v
 	return s
 }
 
@@ -14596,8 +14898,8 @@ func (s *ListFunctionFilesResponseBody) SetFileList(v *ListFunctionFilesResponse
 }
 
 type ListFunctionFilesResponseBodyFileList struct {
-	Pagination *ListFunctionFilesResponseBodyFileListPagination `json:"Pagination,omitempty" xml:"Pagination,omitempty" type:"Struct"`
 	Files      []*ListFunctionFilesResponseBodyFileListFiles    `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	Pagination *ListFunctionFilesResponseBodyFileListPagination `json:"Pagination,omitempty" xml:"Pagination,omitempty" type:"Struct"`
 }
 
 func (s ListFunctionFilesResponseBodyFileList) String() string {
@@ -14608,21 +14910,98 @@ func (s ListFunctionFilesResponseBodyFileList) GoString() string {
 	return s.String()
 }
 
-func (s *ListFunctionFilesResponseBodyFileList) SetPagination(v *ListFunctionFilesResponseBodyFileListPagination) *ListFunctionFilesResponseBodyFileList {
-	s.Pagination = v
-	return s
-}
-
 func (s *ListFunctionFilesResponseBodyFileList) SetFiles(v []*ListFunctionFilesResponseBodyFileListFiles) *ListFunctionFilesResponseBodyFileList {
 	s.Files = v
 	return s
 }
 
+func (s *ListFunctionFilesResponseBodyFileList) SetPagination(v *ListFunctionFilesResponseBodyFileListPagination) *ListFunctionFilesResponseBodyFileList {
+	s.Pagination = v
+	return s
+}
+
+type ListFunctionFilesResponseBodyFileListFiles struct {
+	Id                     *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name                   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ContentId              *int64  `json:"ContentId,omitempty" xml:"ContentId,omitempty"`
+	Status                 *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	GmtCreate              *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified            *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Description            *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	SandboxDeployTime      *int64  `json:"SandboxDeployTime,omitempty" xml:"SandboxDeployTime,omitempty"`
+	ProductionDeployTime   *int64  `json:"ProductionDeployTime,omitempty" xml:"ProductionDeployTime,omitempty"`
+	SandboxDeployStatus    *int32  `json:"SandboxDeployStatus,omitempty" xml:"SandboxDeployStatus,omitempty"`
+	ProductionDeployStatus *int32  `json:"ProductionDeployStatus,omitempty" xml:"ProductionDeployStatus,omitempty"`
+}
+
+func (s ListFunctionFilesResponseBodyFileListFiles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFunctionFilesResponseBodyFileListFiles) GoString() string {
+	return s.String()
+}
+
+func (s *ListFunctionFilesResponseBodyFileListFiles) SetId(v int64) *ListFunctionFilesResponseBodyFileListFiles {
+	s.Id = &v
+	return s
+}
+
+func (s *ListFunctionFilesResponseBodyFileListFiles) SetName(v string) *ListFunctionFilesResponseBodyFileListFiles {
+	s.Name = &v
+	return s
+}
+
+func (s *ListFunctionFilesResponseBodyFileListFiles) SetContentId(v int64) *ListFunctionFilesResponseBodyFileListFiles {
+	s.ContentId = &v
+	return s
+}
+
+func (s *ListFunctionFilesResponseBodyFileListFiles) SetStatus(v int32) *ListFunctionFilesResponseBodyFileListFiles {
+	s.Status = &v
+	return s
+}
+
+func (s *ListFunctionFilesResponseBodyFileListFiles) SetGmtCreate(v int64) *ListFunctionFilesResponseBodyFileListFiles {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListFunctionFilesResponseBodyFileListFiles) SetGmtModified(v int64) *ListFunctionFilesResponseBodyFileListFiles {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ListFunctionFilesResponseBodyFileListFiles) SetDescription(v string) *ListFunctionFilesResponseBodyFileListFiles {
+	s.Description = &v
+	return s
+}
+
+func (s *ListFunctionFilesResponseBodyFileListFiles) SetSandboxDeployTime(v int64) *ListFunctionFilesResponseBodyFileListFiles {
+	s.SandboxDeployTime = &v
+	return s
+}
+
+func (s *ListFunctionFilesResponseBodyFileListFiles) SetProductionDeployTime(v int64) *ListFunctionFilesResponseBodyFileListFiles {
+	s.ProductionDeployTime = &v
+	return s
+}
+
+func (s *ListFunctionFilesResponseBodyFileListFiles) SetSandboxDeployStatus(v int32) *ListFunctionFilesResponseBodyFileListFiles {
+	s.SandboxDeployStatus = &v
+	return s
+}
+
+func (s *ListFunctionFilesResponseBodyFileListFiles) SetProductionDeployStatus(v int32) *ListFunctionFilesResponseBodyFileListFiles {
+	s.ProductionDeployStatus = &v
+	return s
+}
+
 type ListFunctionFilesResponseBodyFileListPagination struct {
 	PageIndex      *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	TotalPageCount *int32 `json:"TotalPageCount,omitempty" xml:"TotalPageCount,omitempty"`
 	PageSize       *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	TotalCount     *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalPageCount *int32 `json:"TotalPageCount,omitempty" xml:"TotalPageCount,omitempty"`
 }
 
 func (s ListFunctionFilesResponseBodyFileListPagination) String() string {
@@ -14638,11 +15017,6 @@ func (s *ListFunctionFilesResponseBodyFileListPagination) SetPageIndex(v int32) 
 	return s
 }
 
-func (s *ListFunctionFilesResponseBodyFileListPagination) SetTotalPageCount(v int32) *ListFunctionFilesResponseBodyFileListPagination {
-	s.TotalPageCount = &v
-	return s
-}
-
 func (s *ListFunctionFilesResponseBodyFileListPagination) SetPageSize(v int32) *ListFunctionFilesResponseBodyFileListPagination {
 	s.PageSize = &v
 	return s
@@ -14653,80 +15027,8 @@ func (s *ListFunctionFilesResponseBodyFileListPagination) SetTotalCount(v int32)
 	return s
 }
 
-type ListFunctionFilesResponseBodyFileListFiles struct {
-	Status                 *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	ProductionDeployTime   *int64  `json:"ProductionDeployTime,omitempty" xml:"ProductionDeployTime,omitempty"`
-	ProductionDeployStatus *int32  `json:"ProductionDeployStatus,omitempty" xml:"ProductionDeployStatus,omitempty"`
-	Description            *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	SandboxDeployTime      *int64  `json:"SandboxDeployTime,omitempty" xml:"SandboxDeployTime,omitempty"`
-	GmtCreate              *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	SandboxDeployStatus    *int32  `json:"SandboxDeployStatus,omitempty" xml:"SandboxDeployStatus,omitempty"`
-	GmtModified            *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Name                   *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ContentId              *int64  `json:"ContentId,omitempty" xml:"ContentId,omitempty"`
-	Id                     *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s ListFunctionFilesResponseBodyFileListFiles) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListFunctionFilesResponseBodyFileListFiles) GoString() string {
-	return s.String()
-}
-
-func (s *ListFunctionFilesResponseBodyFileListFiles) SetStatus(v int32) *ListFunctionFilesResponseBodyFileListFiles {
-	s.Status = &v
-	return s
-}
-
-func (s *ListFunctionFilesResponseBodyFileListFiles) SetProductionDeployTime(v int64) *ListFunctionFilesResponseBodyFileListFiles {
-	s.ProductionDeployTime = &v
-	return s
-}
-
-func (s *ListFunctionFilesResponseBodyFileListFiles) SetProductionDeployStatus(v int32) *ListFunctionFilesResponseBodyFileListFiles {
-	s.ProductionDeployStatus = &v
-	return s
-}
-
-func (s *ListFunctionFilesResponseBodyFileListFiles) SetDescription(v string) *ListFunctionFilesResponseBodyFileListFiles {
-	s.Description = &v
-	return s
-}
-
-func (s *ListFunctionFilesResponseBodyFileListFiles) SetSandboxDeployTime(v int64) *ListFunctionFilesResponseBodyFileListFiles {
-	s.SandboxDeployTime = &v
-	return s
-}
-
-func (s *ListFunctionFilesResponseBodyFileListFiles) SetGmtCreate(v int64) *ListFunctionFilesResponseBodyFileListFiles {
-	s.GmtCreate = &v
-	return s
-}
-
-func (s *ListFunctionFilesResponseBodyFileListFiles) SetSandboxDeployStatus(v int32) *ListFunctionFilesResponseBodyFileListFiles {
-	s.SandboxDeployStatus = &v
-	return s
-}
-
-func (s *ListFunctionFilesResponseBodyFileListFiles) SetGmtModified(v int64) *ListFunctionFilesResponseBodyFileListFiles {
-	s.GmtModified = &v
-	return s
-}
-
-func (s *ListFunctionFilesResponseBodyFileListFiles) SetName(v string) *ListFunctionFilesResponseBodyFileListFiles {
-	s.Name = &v
-	return s
-}
-
-func (s *ListFunctionFilesResponseBodyFileListFiles) SetContentId(v int64) *ListFunctionFilesResponseBodyFileListFiles {
-	s.ContentId = &v
-	return s
-}
-
-func (s *ListFunctionFilesResponseBodyFileListFiles) SetId(v int64) *ListFunctionFilesResponseBodyFileListFiles {
-	s.Id = &v
+func (s *ListFunctionFilesResponseBodyFileListPagination) SetTotalPageCount(v int32) *ListFunctionFilesResponseBodyFileListPagination {
+	s.TotalPageCount = &v
 	return s
 }
 
@@ -14806,13 +15108,13 @@ func (s *ListFunctionFilesByProjectIdResponseBody) SetFiles(v []*ListFunctionFil
 }
 
 type ListFunctionFilesByProjectIdResponseBodyFiles struct {
+	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Type        *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	ContentId   *int64  `json:"ContentId,omitempty" xml:"ContentId,omitempty"`
 	Status      *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 	GmtCreate   *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	GmtModified *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	ContentId   *int64  `json:"ContentId,omitempty" xml:"ContentId,omitempty"`
 }
 
 func (s ListFunctionFilesByProjectIdResponseBodyFiles) String() string {
@@ -14823,8 +15125,23 @@ func (s ListFunctionFilesByProjectIdResponseBodyFiles) GoString() string {
 	return s.String()
 }
 
+func (s *ListFunctionFilesByProjectIdResponseBodyFiles) SetId(v int64) *ListFunctionFilesByProjectIdResponseBodyFiles {
+	s.Id = &v
+	return s
+}
+
+func (s *ListFunctionFilesByProjectIdResponseBodyFiles) SetName(v string) *ListFunctionFilesByProjectIdResponseBodyFiles {
+	s.Name = &v
+	return s
+}
+
 func (s *ListFunctionFilesByProjectIdResponseBodyFiles) SetType(v int32) *ListFunctionFilesByProjectIdResponseBodyFiles {
 	s.Type = &v
+	return s
+}
+
+func (s *ListFunctionFilesByProjectIdResponseBodyFiles) SetContentId(v int64) *ListFunctionFilesByProjectIdResponseBodyFiles {
+	s.ContentId = &v
 	return s
 }
 
@@ -14840,21 +15157,6 @@ func (s *ListFunctionFilesByProjectIdResponseBodyFiles) SetGmtCreate(v int64) *L
 
 func (s *ListFunctionFilesByProjectIdResponseBodyFiles) SetGmtModified(v int64) *ListFunctionFilesByProjectIdResponseBodyFiles {
 	s.GmtModified = &v
-	return s
-}
-
-func (s *ListFunctionFilesByProjectIdResponseBodyFiles) SetName(v string) *ListFunctionFilesByProjectIdResponseBodyFiles {
-	s.Name = &v
-	return s
-}
-
-func (s *ListFunctionFilesByProjectIdResponseBodyFiles) SetId(v int64) *ListFunctionFilesByProjectIdResponseBodyFiles {
-	s.Id = &v
-	return s
-}
-
-func (s *ListFunctionFilesByProjectIdResponseBodyFiles) SetContentId(v int64) *ListFunctionFilesByProjectIdResponseBodyFiles {
-	s.ContentId = &v
 	return s
 }
 
@@ -14946,8 +15248,8 @@ func (s *ListMessageAcksResponseBody) SetMessageAcks(v *ListMessageAcksResponseB
 }
 
 type ListMessageAcksResponseBodyMessageAcks struct {
-	Pagination *ListMessageAcksResponseBodyMessageAcksPagination `json:"Pagination,omitempty" xml:"Pagination,omitempty" type:"Struct"`
 	List       []*ListMessageAcksResponseBodyMessageAcksList     `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	Pagination *ListMessageAcksResponseBodyMessageAcksPagination `json:"Pagination,omitempty" xml:"Pagination,omitempty" type:"Struct"`
 }
 
 func (s ListMessageAcksResponseBodyMessageAcks) String() string {
@@ -14958,55 +15260,20 @@ func (s ListMessageAcksResponseBodyMessageAcks) GoString() string {
 	return s.String()
 }
 
-func (s *ListMessageAcksResponseBodyMessageAcks) SetPagination(v *ListMessageAcksResponseBodyMessageAcksPagination) *ListMessageAcksResponseBodyMessageAcks {
-	s.Pagination = v
-	return s
-}
-
 func (s *ListMessageAcksResponseBodyMessageAcks) SetList(v []*ListMessageAcksResponseBodyMessageAcksList) *ListMessageAcksResponseBodyMessageAcks {
 	s.List = v
 	return s
 }
 
-type ListMessageAcksResponseBodyMessageAcksPagination struct {
-	PageIndex      *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	TotalPageCount *int32 `json:"TotalPageCount,omitempty" xml:"TotalPageCount,omitempty"`
-	PageSize       *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount     *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ListMessageAcksResponseBodyMessageAcksPagination) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListMessageAcksResponseBodyMessageAcksPagination) GoString() string {
-	return s.String()
-}
-
-func (s *ListMessageAcksResponseBodyMessageAcksPagination) SetPageIndex(v int32) *ListMessageAcksResponseBodyMessageAcksPagination {
-	s.PageIndex = &v
-	return s
-}
-
-func (s *ListMessageAcksResponseBodyMessageAcksPagination) SetTotalPageCount(v int32) *ListMessageAcksResponseBodyMessageAcksPagination {
-	s.TotalPageCount = &v
-	return s
-}
-
-func (s *ListMessageAcksResponseBodyMessageAcksPagination) SetPageSize(v int32) *ListMessageAcksResponseBodyMessageAcksPagination {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListMessageAcksResponseBodyMessageAcksPagination) SetTotalCount(v int32) *ListMessageAcksResponseBodyMessageAcksPagination {
-	s.TotalCount = &v
+func (s *ListMessageAcksResponseBodyMessageAcks) SetPagination(v *ListMessageAcksResponseBodyMessageAcksPagination) *ListMessageAcksResponseBodyMessageAcks {
+	s.Pagination = v
 	return s
 }
 
 type ListMessageAcksResponseBodyMessageAcksList struct {
+	Mid      *int64  `json:"Mid,omitempty" xml:"Mid,omitempty"`
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 	AckTime  *int64  `json:"AckTime,omitempty" xml:"AckTime,omitempty"`
-	Mid      *int64  `json:"Mid,omitempty" xml:"Mid,omitempty"`
 }
 
 func (s ListMessageAcksResponseBodyMessageAcksList) String() string {
@@ -15015,6 +15282,11 @@ func (s ListMessageAcksResponseBodyMessageAcksList) String() string {
 
 func (s ListMessageAcksResponseBodyMessageAcksList) GoString() string {
 	return s.String()
+}
+
+func (s *ListMessageAcksResponseBodyMessageAcksList) SetMid(v int64) *ListMessageAcksResponseBodyMessageAcksList {
+	s.Mid = &v
+	return s
 }
 
 func (s *ListMessageAcksResponseBodyMessageAcksList) SetDeviceId(v string) *ListMessageAcksResponseBodyMessageAcksList {
@@ -15027,8 +15299,38 @@ func (s *ListMessageAcksResponseBodyMessageAcksList) SetAckTime(v int64) *ListMe
 	return s
 }
 
-func (s *ListMessageAcksResponseBodyMessageAcksList) SetMid(v int64) *ListMessageAcksResponseBodyMessageAcksList {
-	s.Mid = &v
+type ListMessageAcksResponseBodyMessageAcksPagination struct {
+	TotalCount     *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalPageCount *int32 `json:"TotalPageCount,omitempty" xml:"TotalPageCount,omitempty"`
+	PageIndex      *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	PageSize       *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListMessageAcksResponseBodyMessageAcksPagination) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessageAcksResponseBodyMessageAcksPagination) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessageAcksResponseBodyMessageAcksPagination) SetTotalCount(v int32) *ListMessageAcksResponseBodyMessageAcksPagination {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListMessageAcksResponseBodyMessageAcksPagination) SetTotalPageCount(v int32) *ListMessageAcksResponseBodyMessageAcksPagination {
+	s.TotalPageCount = &v
+	return s
+}
+
+func (s *ListMessageAcksResponseBodyMessageAcksPagination) SetPageIndex(v int32) *ListMessageAcksResponseBodyMessageAcksPagination {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *ListMessageAcksResponseBodyMessageAcksPagination) SetPageSize(v int32) *ListMessageAcksResponseBodyMessageAcksPagination {
+	s.PageSize = &v
 	return s
 }
 
@@ -15091,8 +15393,8 @@ func (s *ListMessageReceiversRequest) SetPageSize(v int32) *ListMessageReceivers
 }
 
 type ListMessageReceiversResponseBody struct {
-	MessageReceivers *ListMessageReceiversResponseBodyMessageReceivers `json:"MessageReceivers,omitempty" xml:"MessageReceivers,omitempty" type:"Struct"`
 	RequestId        *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	MessageReceivers *ListMessageReceiversResponseBodyMessageReceivers `json:"MessageReceivers,omitempty" xml:"MessageReceivers,omitempty" type:"Struct"`
 }
 
 func (s ListMessageReceiversResponseBody) String() string {
@@ -15103,19 +15405,19 @@ func (s ListMessageReceiversResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListMessageReceiversResponseBody) SetMessageReceivers(v *ListMessageReceiversResponseBodyMessageReceivers) *ListMessageReceiversResponseBody {
-	s.MessageReceivers = v
-	return s
-}
-
 func (s *ListMessageReceiversResponseBody) SetRequestId(v string) *ListMessageReceiversResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *ListMessageReceiversResponseBody) SetMessageReceivers(v *ListMessageReceiversResponseBodyMessageReceivers) *ListMessageReceiversResponseBody {
+	s.MessageReceivers = v
+	return s
+}
+
 type ListMessageReceiversResponseBodyMessageReceivers struct {
-	Pagination *ListMessageReceiversResponseBodyMessageReceiversPagination `json:"Pagination,omitempty" xml:"Pagination,omitempty" type:"Struct"`
 	List       []*ListMessageReceiversResponseBodyMessageReceiversList     `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	Pagination *ListMessageReceiversResponseBodyMessageReceiversPagination `json:"Pagination,omitempty" xml:"Pagination,omitempty" type:"Struct"`
 }
 
 func (s ListMessageReceiversResponseBodyMessageReceivers) String() string {
@@ -15126,55 +15428,20 @@ func (s ListMessageReceiversResponseBodyMessageReceivers) GoString() string {
 	return s.String()
 }
 
-func (s *ListMessageReceiversResponseBodyMessageReceivers) SetPagination(v *ListMessageReceiversResponseBodyMessageReceiversPagination) *ListMessageReceiversResponseBodyMessageReceivers {
-	s.Pagination = v
-	return s
-}
-
 func (s *ListMessageReceiversResponseBodyMessageReceivers) SetList(v []*ListMessageReceiversResponseBodyMessageReceiversList) *ListMessageReceiversResponseBodyMessageReceivers {
 	s.List = v
 	return s
 }
 
-type ListMessageReceiversResponseBodyMessageReceiversPagination struct {
-	PageIndex      *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	TotalPageCount *int32 `json:"TotalPageCount,omitempty" xml:"TotalPageCount,omitempty"`
-	PageSize       *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount     *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ListMessageReceiversResponseBodyMessageReceiversPagination) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListMessageReceiversResponseBodyMessageReceiversPagination) GoString() string {
-	return s.String()
-}
-
-func (s *ListMessageReceiversResponseBodyMessageReceiversPagination) SetPageIndex(v int32) *ListMessageReceiversResponseBodyMessageReceiversPagination {
-	s.PageIndex = &v
-	return s
-}
-
-func (s *ListMessageReceiversResponseBodyMessageReceiversPagination) SetTotalPageCount(v int32) *ListMessageReceiversResponseBodyMessageReceiversPagination {
-	s.TotalPageCount = &v
-	return s
-}
-
-func (s *ListMessageReceiversResponseBodyMessageReceiversPagination) SetPageSize(v int32) *ListMessageReceiversResponseBodyMessageReceiversPagination {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListMessageReceiversResponseBodyMessageReceiversPagination) SetTotalCount(v int32) *ListMessageReceiversResponseBodyMessageReceiversPagination {
-	s.TotalCount = &v
+func (s *ListMessageReceiversResponseBodyMessageReceivers) SetPagination(v *ListMessageReceiversResponseBodyMessageReceiversPagination) *ListMessageReceiversResponseBodyMessageReceivers {
+	s.Pagination = v
 	return s
 }
 
 type ListMessageReceiversResponseBodyMessageReceiversList struct {
+	Mid   *int64  `json:"Mid,omitempty" xml:"Mid,omitempty"`
 	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	Mid   *int64  `json:"Mid,omitempty" xml:"Mid,omitempty"`
 }
 
 func (s ListMessageReceiversResponseBodyMessageReceiversList) String() string {
@@ -15183,6 +15450,11 @@ func (s ListMessageReceiversResponseBodyMessageReceiversList) String() string {
 
 func (s ListMessageReceiversResponseBodyMessageReceiversList) GoString() string {
 	return s.String()
+}
+
+func (s *ListMessageReceiversResponseBodyMessageReceiversList) SetMid(v int64) *ListMessageReceiversResponseBodyMessageReceiversList {
+	s.Mid = &v
+	return s
 }
 
 func (s *ListMessageReceiversResponseBodyMessageReceiversList) SetType(v string) *ListMessageReceiversResponseBodyMessageReceiversList {
@@ -15195,8 +15467,38 @@ func (s *ListMessageReceiversResponseBodyMessageReceiversList) SetValue(v string
 	return s
 }
 
-func (s *ListMessageReceiversResponseBodyMessageReceiversList) SetMid(v int64) *ListMessageReceiversResponseBodyMessageReceiversList {
-	s.Mid = &v
+type ListMessageReceiversResponseBodyMessageReceiversPagination struct {
+	TotalCount     *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalPageCount *int32 `json:"TotalPageCount,omitempty" xml:"TotalPageCount,omitempty"`
+	PageIndex      *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	PageSize       *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListMessageReceiversResponseBodyMessageReceiversPagination) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessageReceiversResponseBodyMessageReceiversPagination) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessageReceiversResponseBodyMessageReceiversPagination) SetTotalCount(v int32) *ListMessageReceiversResponseBodyMessageReceiversPagination {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListMessageReceiversResponseBodyMessageReceiversPagination) SetTotalPageCount(v int32) *ListMessageReceiversResponseBodyMessageReceiversPagination {
+	s.TotalPageCount = &v
+	return s
+}
+
+func (s *ListMessageReceiversResponseBodyMessageReceiversPagination) SetPageIndex(v int32) *ListMessageReceiversResponseBodyMessageReceiversPagination {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *ListMessageReceiversResponseBodyMessageReceiversPagination) SetPageSize(v int32) *ListMessageReceiversResponseBodyMessageReceiversPagination {
+	s.PageSize = &v
 	return s
 }
 
@@ -15276,8 +15578,8 @@ func (s *ListMqttClientSubscriptionsResponseBody) SetClientSubscriptions(v *List
 }
 
 type ListMqttClientSubscriptionsResponseBodyClientSubscriptions struct {
-	Pagination *ListMqttClientSubscriptionsResponseBodyClientSubscriptionsPagination `json:"Pagination,omitempty" xml:"Pagination,omitempty" type:"Struct"`
 	List       []*ListMqttClientSubscriptionsResponseBodyClientSubscriptionsList     `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	Pagination *ListMqttClientSubscriptionsResponseBodyClientSubscriptionsPagination `json:"Pagination,omitempty" xml:"Pagination,omitempty" type:"Struct"`
 }
 
 func (s ListMqttClientSubscriptionsResponseBodyClientSubscriptions) String() string {
@@ -15288,48 +15590,13 @@ func (s ListMqttClientSubscriptionsResponseBodyClientSubscriptions) GoString() s
 	return s.String()
 }
 
-func (s *ListMqttClientSubscriptionsResponseBodyClientSubscriptions) SetPagination(v *ListMqttClientSubscriptionsResponseBodyClientSubscriptionsPagination) *ListMqttClientSubscriptionsResponseBodyClientSubscriptions {
-	s.Pagination = v
-	return s
-}
-
 func (s *ListMqttClientSubscriptionsResponseBodyClientSubscriptions) SetList(v []*ListMqttClientSubscriptionsResponseBodyClientSubscriptionsList) *ListMqttClientSubscriptionsResponseBodyClientSubscriptions {
 	s.List = v
 	return s
 }
 
-type ListMqttClientSubscriptionsResponseBodyClientSubscriptionsPagination struct {
-	PageIndex      *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	TotalPageCount *int32 `json:"TotalPageCount,omitempty" xml:"TotalPageCount,omitempty"`
-	PageSize       *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount     *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ListMqttClientSubscriptionsResponseBodyClientSubscriptionsPagination) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListMqttClientSubscriptionsResponseBodyClientSubscriptionsPagination) GoString() string {
-	return s.String()
-}
-
-func (s *ListMqttClientSubscriptionsResponseBodyClientSubscriptionsPagination) SetPageIndex(v int32) *ListMqttClientSubscriptionsResponseBodyClientSubscriptionsPagination {
-	s.PageIndex = &v
-	return s
-}
-
-func (s *ListMqttClientSubscriptionsResponseBodyClientSubscriptionsPagination) SetTotalPageCount(v int32) *ListMqttClientSubscriptionsResponseBodyClientSubscriptionsPagination {
-	s.TotalPageCount = &v
-	return s
-}
-
-func (s *ListMqttClientSubscriptionsResponseBodyClientSubscriptionsPagination) SetPageSize(v int32) *ListMqttClientSubscriptionsResponseBodyClientSubscriptionsPagination {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListMqttClientSubscriptionsResponseBodyClientSubscriptionsPagination) SetTotalCount(v int32) *ListMqttClientSubscriptionsResponseBodyClientSubscriptionsPagination {
-	s.TotalCount = &v
+func (s *ListMqttClientSubscriptionsResponseBodyClientSubscriptions) SetPagination(v *ListMqttClientSubscriptionsResponseBodyClientSubscriptionsPagination) *ListMqttClientSubscriptionsResponseBodyClientSubscriptions {
+	s.Pagination = v
 	return s
 }
 
@@ -15353,6 +15620,41 @@ func (s *ListMqttClientSubscriptionsResponseBodyClientSubscriptionsList) SetTopi
 
 func (s *ListMqttClientSubscriptionsResponseBodyClientSubscriptionsList) SetQoS(v int32) *ListMqttClientSubscriptionsResponseBodyClientSubscriptionsList {
 	s.QoS = &v
+	return s
+}
+
+type ListMqttClientSubscriptionsResponseBodyClientSubscriptionsPagination struct {
+	TotalCount     *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalPageCount *int32 `json:"TotalPageCount,omitempty" xml:"TotalPageCount,omitempty"`
+	PageIndex      *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	PageSize       *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListMqttClientSubscriptionsResponseBodyClientSubscriptionsPagination) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMqttClientSubscriptionsResponseBodyClientSubscriptionsPagination) GoString() string {
+	return s.String()
+}
+
+func (s *ListMqttClientSubscriptionsResponseBodyClientSubscriptionsPagination) SetTotalCount(v int32) *ListMqttClientSubscriptionsResponseBodyClientSubscriptionsPagination {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListMqttClientSubscriptionsResponseBodyClientSubscriptionsPagination) SetTotalPageCount(v int32) *ListMqttClientSubscriptionsResponseBodyClientSubscriptionsPagination {
+	s.TotalPageCount = &v
+	return s
+}
+
+func (s *ListMqttClientSubscriptionsResponseBodyClientSubscriptionsPagination) SetPageIndex(v int32) *ListMqttClientSubscriptionsResponseBodyClientSubscriptionsPagination {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *ListMqttClientSubscriptionsResponseBodyClientSubscriptionsPagination) SetPageSize(v int32) *ListMqttClientSubscriptionsResponseBodyClientSubscriptionsPagination {
+	s.PageSize = &v
 	return s
 }
 
@@ -15462,8 +15764,8 @@ func (s *ListMqttMessageLogsResponseBody) SetTraces(v *ListMqttMessageLogsRespon
 }
 
 type ListMqttMessageLogsResponseBodyTraces struct {
-	Pagination *ListMqttMessageLogsResponseBodyTracesPagination `json:"Pagination,omitempty" xml:"Pagination,omitempty" type:"Struct"`
 	List       []*ListMqttMessageLogsResponseBodyTracesList     `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	Pagination *ListMqttMessageLogsResponseBodyTracesPagination `json:"Pagination,omitempty" xml:"Pagination,omitempty" type:"Struct"`
 }
 
 func (s ListMqttMessageLogsResponseBodyTraces) String() string {
@@ -15474,59 +15776,24 @@ func (s ListMqttMessageLogsResponseBodyTraces) GoString() string {
 	return s.String()
 }
 
-func (s *ListMqttMessageLogsResponseBodyTraces) SetPagination(v *ListMqttMessageLogsResponseBodyTracesPagination) *ListMqttMessageLogsResponseBodyTraces {
-	s.Pagination = v
-	return s
-}
-
 func (s *ListMqttMessageLogsResponseBodyTraces) SetList(v []*ListMqttMessageLogsResponseBodyTracesList) *ListMqttMessageLogsResponseBodyTraces {
 	s.List = v
 	return s
 }
 
-type ListMqttMessageLogsResponseBodyTracesPagination struct {
-	PageIndex      *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	TotalPageCount *int32 `json:"TotalPageCount,omitempty" xml:"TotalPageCount,omitempty"`
-	PageSize       *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount     *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ListMqttMessageLogsResponseBodyTracesPagination) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListMqttMessageLogsResponseBodyTracesPagination) GoString() string {
-	return s.String()
-}
-
-func (s *ListMqttMessageLogsResponseBodyTracesPagination) SetPageIndex(v int32) *ListMqttMessageLogsResponseBodyTracesPagination {
-	s.PageIndex = &v
-	return s
-}
-
-func (s *ListMqttMessageLogsResponseBodyTracesPagination) SetTotalPageCount(v int32) *ListMqttMessageLogsResponseBodyTracesPagination {
-	s.TotalPageCount = &v
-	return s
-}
-
-func (s *ListMqttMessageLogsResponseBodyTracesPagination) SetPageSize(v int32) *ListMqttMessageLogsResponseBodyTracesPagination {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListMqttMessageLogsResponseBodyTracesPagination) SetTotalCount(v int32) *ListMqttMessageLogsResponseBodyTracesPagination {
-	s.TotalCount = &v
+func (s *ListMqttMessageLogsResponseBodyTraces) SetPagination(v *ListMqttMessageLogsResponseBodyTracesPagination) *ListMqttMessageLogsResponseBodyTraces {
+	s.Pagination = v
 	return s
 }
 
 type ListMqttMessageLogsResponseBodyTracesList struct {
-	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	Time      *int64  `json:"Time,omitempty" xml:"Time,omitempty"`
-	Action    *string `json:"Action,omitempty" xml:"Action,omitempty"`
 	Topic     *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Action    *string `json:"Action,omitempty" xml:"Action,omitempty"`
 	Mid       *string `json:"Mid,omitempty" xml:"Mid,omitempty"`
-	ClientMid *string `json:"ClientMid,omitempty" xml:"ClientMid,omitempty"`
 	ClientId  *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	ClientMid *string `json:"ClientMid,omitempty" xml:"ClientMid,omitempty"`
 }
 
 func (s ListMqttMessageLogsResponseBodyTracesList) String() string {
@@ -15537,18 +15804,8 @@ func (s ListMqttMessageLogsResponseBodyTracesList) GoString() string {
 	return s.String()
 }
 
-func (s *ListMqttMessageLogsResponseBodyTracesList) SetType(v string) *ListMqttMessageLogsResponseBodyTracesList {
-	s.Type = &v
-	return s
-}
-
 func (s *ListMqttMessageLogsResponseBodyTracesList) SetTime(v int64) *ListMqttMessageLogsResponseBodyTracesList {
 	s.Time = &v
-	return s
-}
-
-func (s *ListMqttMessageLogsResponseBodyTracesList) SetAction(v string) *ListMqttMessageLogsResponseBodyTracesList {
-	s.Action = &v
 	return s
 }
 
@@ -15557,8 +15814,23 @@ func (s *ListMqttMessageLogsResponseBodyTracesList) SetTopic(v string) *ListMqtt
 	return s
 }
 
+func (s *ListMqttMessageLogsResponseBodyTracesList) SetType(v string) *ListMqttMessageLogsResponseBodyTracesList {
+	s.Type = &v
+	return s
+}
+
+func (s *ListMqttMessageLogsResponseBodyTracesList) SetAction(v string) *ListMqttMessageLogsResponseBodyTracesList {
+	s.Action = &v
+	return s
+}
+
 func (s *ListMqttMessageLogsResponseBodyTracesList) SetMid(v string) *ListMqttMessageLogsResponseBodyTracesList {
 	s.Mid = &v
+	return s
+}
+
+func (s *ListMqttMessageLogsResponseBodyTracesList) SetClientId(v string) *ListMqttMessageLogsResponseBodyTracesList {
+	s.ClientId = &v
 	return s
 }
 
@@ -15567,8 +15839,38 @@ func (s *ListMqttMessageLogsResponseBodyTracesList) SetClientMid(v string) *List
 	return s
 }
 
-func (s *ListMqttMessageLogsResponseBodyTracesList) SetClientId(v string) *ListMqttMessageLogsResponseBodyTracesList {
-	s.ClientId = &v
+type ListMqttMessageLogsResponseBodyTracesPagination struct {
+	TotalCount     *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalPageCount *int32 `json:"TotalPageCount,omitempty" xml:"TotalPageCount,omitempty"`
+	PageIndex      *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	PageSize       *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListMqttMessageLogsResponseBodyTracesPagination) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMqttMessageLogsResponseBodyTracesPagination) GoString() string {
+	return s.String()
+}
+
+func (s *ListMqttMessageLogsResponseBodyTracesPagination) SetTotalCount(v int32) *ListMqttMessageLogsResponseBodyTracesPagination {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListMqttMessageLogsResponseBodyTracesPagination) SetTotalPageCount(v int32) *ListMqttMessageLogsResponseBodyTracesPagination {
+	s.TotalPageCount = &v
+	return s
+}
+
+func (s *ListMqttMessageLogsResponseBodyTracesPagination) SetPageIndex(v int32) *ListMqttMessageLogsResponseBodyTracesPagination {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *ListMqttMessageLogsResponseBodyTracesPagination) SetPageSize(v int32) *ListMqttMessageLogsResponseBodyTracesPagination {
+	s.PageSize = &v
 	return s
 }
 
@@ -15642,8 +15944,8 @@ func (s *ListMqttRootTopicsResponseBody) SetRootTopics(v *ListMqttRootTopicsResp
 }
 
 type ListMqttRootTopicsResponseBodyRootTopics struct {
-	Pagination *ListMqttRootTopicsResponseBodyRootTopicsPagination `json:"Pagination,omitempty" xml:"Pagination,omitempty" type:"Struct"`
 	List       []*ListMqttRootTopicsResponseBodyRootTopicsList     `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	Pagination *ListMqttRootTopicsResponseBodyRootTopicsPagination `json:"Pagination,omitempty" xml:"Pagination,omitempty" type:"Struct"`
 }
 
 func (s ListMqttRootTopicsResponseBodyRootTopics) String() string {
@@ -15654,57 +15956,22 @@ func (s ListMqttRootTopicsResponseBodyRootTopics) GoString() string {
 	return s.String()
 }
 
-func (s *ListMqttRootTopicsResponseBodyRootTopics) SetPagination(v *ListMqttRootTopicsResponseBodyRootTopicsPagination) *ListMqttRootTopicsResponseBodyRootTopics {
-	s.Pagination = v
-	return s
-}
-
 func (s *ListMqttRootTopicsResponseBodyRootTopics) SetList(v []*ListMqttRootTopicsResponseBodyRootTopicsList) *ListMqttRootTopicsResponseBodyRootTopics {
 	s.List = v
 	return s
 }
 
-type ListMqttRootTopicsResponseBodyRootTopicsPagination struct {
-	PageIndex      *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	TotalPageCount *int32 `json:"TotalPageCount,omitempty" xml:"TotalPageCount,omitempty"`
-	PageSize       *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount     *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ListMqttRootTopicsResponseBodyRootTopicsPagination) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListMqttRootTopicsResponseBodyRootTopicsPagination) GoString() string {
-	return s.String()
-}
-
-func (s *ListMqttRootTopicsResponseBodyRootTopicsPagination) SetPageIndex(v int32) *ListMqttRootTopicsResponseBodyRootTopicsPagination {
-	s.PageIndex = &v
-	return s
-}
-
-func (s *ListMqttRootTopicsResponseBodyRootTopicsPagination) SetTotalPageCount(v int32) *ListMqttRootTopicsResponseBodyRootTopicsPagination {
-	s.TotalPageCount = &v
-	return s
-}
-
-func (s *ListMqttRootTopicsResponseBodyRootTopicsPagination) SetPageSize(v int32) *ListMqttRootTopicsResponseBodyRootTopicsPagination {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListMqttRootTopicsResponseBodyRootTopicsPagination) SetTotalCount(v int32) *ListMqttRootTopicsResponseBodyRootTopicsPagination {
-	s.TotalCount = &v
+func (s *ListMqttRootTopicsResponseBodyRootTopics) SetPagination(v *ListMqttRootTopicsResponseBodyRootTopicsPagination) *ListMqttRootTopicsResponseBodyRootTopics {
+	s.Pagination = v
 	return s
 }
 
 type ListMqttRootTopicsResponseBodyRootTopicsList struct {
-	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	AppKey     *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	QueueName  *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
 	CreateTime *int32  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	RootTopic  *string `json:"RootTopic,omitempty" xml:"RootTopic,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	QueueName  *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	AppKey     *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
 }
 
 func (s ListMqttRootTopicsResponseBodyRootTopicsList) String() string {
@@ -15715,13 +15982,18 @@ func (s ListMqttRootTopicsResponseBodyRootTopicsList) GoString() string {
 	return s.String()
 }
 
-func (s *ListMqttRootTopicsResponseBodyRootTopicsList) SetType(v string) *ListMqttRootTopicsResponseBodyRootTopicsList {
-	s.Type = &v
+func (s *ListMqttRootTopicsResponseBodyRootTopicsList) SetCreateTime(v int32) *ListMqttRootTopicsResponseBodyRootTopicsList {
+	s.CreateTime = &v
 	return s
 }
 
-func (s *ListMqttRootTopicsResponseBodyRootTopicsList) SetAppKey(v string) *ListMqttRootTopicsResponseBodyRootTopicsList {
-	s.AppKey = &v
+func (s *ListMqttRootTopicsResponseBodyRootTopicsList) SetRootTopic(v string) *ListMqttRootTopicsResponseBodyRootTopicsList {
+	s.RootTopic = &v
+	return s
+}
+
+func (s *ListMqttRootTopicsResponseBodyRootTopicsList) SetType(v string) *ListMqttRootTopicsResponseBodyRootTopicsList {
+	s.Type = &v
 	return s
 }
 
@@ -15730,13 +16002,43 @@ func (s *ListMqttRootTopicsResponseBodyRootTopicsList) SetQueueName(v string) *L
 	return s
 }
 
-func (s *ListMqttRootTopicsResponseBodyRootTopicsList) SetCreateTime(v int32) *ListMqttRootTopicsResponseBodyRootTopicsList {
-	s.CreateTime = &v
+func (s *ListMqttRootTopicsResponseBodyRootTopicsList) SetAppKey(v string) *ListMqttRootTopicsResponseBodyRootTopicsList {
+	s.AppKey = &v
 	return s
 }
 
-func (s *ListMqttRootTopicsResponseBodyRootTopicsList) SetRootTopic(v string) *ListMqttRootTopicsResponseBodyRootTopicsList {
-	s.RootTopic = &v
+type ListMqttRootTopicsResponseBodyRootTopicsPagination struct {
+	TotalCount     *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalPageCount *int32 `json:"TotalPageCount,omitempty" xml:"TotalPageCount,omitempty"`
+	PageIndex      *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	PageSize       *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListMqttRootTopicsResponseBodyRootTopicsPagination) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMqttRootTopicsResponseBodyRootTopicsPagination) GoString() string {
+	return s.String()
+}
+
+func (s *ListMqttRootTopicsResponseBodyRootTopicsPagination) SetTotalCount(v int32) *ListMqttRootTopicsResponseBodyRootTopicsPagination {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListMqttRootTopicsResponseBodyRootTopicsPagination) SetTotalPageCount(v int32) *ListMqttRootTopicsResponseBodyRootTopicsPagination {
+	s.TotalPageCount = &v
+	return s
+}
+
+func (s *ListMqttRootTopicsResponseBodyRootTopicsPagination) SetPageIndex(v int32) *ListMqttRootTopicsResponseBodyRootTopicsPagination {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *ListMqttRootTopicsResponseBodyRootTopicsPagination) SetPageSize(v int32) *ListMqttRootTopicsResponseBodyRootTopicsPagination {
+	s.PageSize = &v
 	return s
 }
 
@@ -15787,8 +16089,8 @@ func (s *ListNamespacesRequest) SetAuthType(v string) *ListNamespacesRequest {
 }
 
 type ListNamespacesResponseBody struct {
-	Namespaces []*ListNamespacesResponseBodyNamespaces `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
 	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Namespaces []*ListNamespacesResponseBodyNamespaces `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
 }
 
 func (s ListNamespacesResponseBody) String() string {
@@ -15799,25 +16101,25 @@ func (s ListNamespacesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListNamespacesResponseBody) SetNamespaces(v []*ListNamespacesResponseBodyNamespaces) *ListNamespacesResponseBody {
-	s.Namespaces = v
-	return s
-}
-
 func (s *ListNamespacesResponseBody) SetRequestId(v string) *ListNamespacesResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *ListNamespacesResponseBody) SetNamespaces(v []*ListNamespacesResponseBodyNamespaces) *ListNamespacesResponseBody {
+	s.Namespaces = v
+	return s
+}
+
 type ListNamespacesResponseBodyNamespaces struct {
-	AuthType    *int32  `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Namespace   *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	ProjectId   *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	GmtCreate   *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Namespace   *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	GmtModified *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	AuthType    *int32  `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
 }
 
 func (s ListNamespacesResponseBodyNamespaces) String() string {
@@ -15828,13 +16130,13 @@ func (s ListNamespacesResponseBodyNamespaces) GoString() string {
 	return s.String()
 }
 
-func (s *ListNamespacesResponseBodyNamespaces) SetAuthType(v int32) *ListNamespacesResponseBodyNamespaces {
-	s.AuthType = &v
+func (s *ListNamespacesResponseBodyNamespaces) SetNamespace(v string) *ListNamespacesResponseBodyNamespaces {
+	s.Namespace = &v
 	return s
 }
 
-func (s *ListNamespacesResponseBodyNamespaces) SetDescription(v string) *ListNamespacesResponseBodyNamespaces {
-	s.Description = &v
+func (s *ListNamespacesResponseBodyNamespaces) SetName(v string) *ListNamespacesResponseBodyNamespaces {
+	s.Name = &v
 	return s
 }
 
@@ -15848,13 +16150,13 @@ func (s *ListNamespacesResponseBodyNamespaces) SetProjectId(v string) *ListNames
 	return s
 }
 
-func (s *ListNamespacesResponseBodyNamespaces) SetGmtCreate(v int64) *ListNamespacesResponseBodyNamespaces {
-	s.GmtCreate = &v
+func (s *ListNamespacesResponseBodyNamespaces) SetDescription(v string) *ListNamespacesResponseBodyNamespaces {
+	s.Description = &v
 	return s
 }
 
-func (s *ListNamespacesResponseBodyNamespaces) SetNamespace(v string) *ListNamespacesResponseBodyNamespaces {
-	s.Namespace = &v
+func (s *ListNamespacesResponseBodyNamespaces) SetGmtCreate(v int64) *ListNamespacesResponseBodyNamespaces {
+	s.GmtCreate = &v
 	return s
 }
 
@@ -15863,8 +16165,8 @@ func (s *ListNamespacesResponseBodyNamespaces) SetGmtModified(v int64) *ListName
 	return s
 }
 
-func (s *ListNamespacesResponseBodyNamespaces) SetName(v string) *ListNamespacesResponseBodyNamespaces {
-	s.Name = &v
+func (s *ListNamespacesResponseBodyNamespaces) SetAuthType(v int32) *ListNamespacesResponseBodyNamespaces {
+	s.AuthType = &v
 	return s
 }
 
@@ -15956,8 +16258,8 @@ func (s *ListOfflineMessagesResponseBody) SetOfflineMessages(v *ListOfflineMessa
 }
 
 type ListOfflineMessagesResponseBodyOfflineMessages struct {
-	Pagination *ListOfflineMessagesResponseBodyOfflineMessagesPagination `json:"Pagination,omitempty" xml:"Pagination,omitempty" type:"Struct"`
 	List       []*ListOfflineMessagesResponseBodyOfflineMessagesList     `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	Pagination *ListOfflineMessagesResponseBodyOfflineMessagesPagination `json:"Pagination,omitempty" xml:"Pagination,omitempty" type:"Struct"`
 }
 
 func (s ListOfflineMessagesResponseBodyOfflineMessages) String() string {
@@ -15968,55 +16270,20 @@ func (s ListOfflineMessagesResponseBodyOfflineMessages) GoString() string {
 	return s.String()
 }
 
-func (s *ListOfflineMessagesResponseBodyOfflineMessages) SetPagination(v *ListOfflineMessagesResponseBodyOfflineMessagesPagination) *ListOfflineMessagesResponseBodyOfflineMessages {
-	s.Pagination = v
-	return s
-}
-
 func (s *ListOfflineMessagesResponseBodyOfflineMessages) SetList(v []*ListOfflineMessagesResponseBodyOfflineMessagesList) *ListOfflineMessagesResponseBodyOfflineMessages {
 	s.List = v
 	return s
 }
 
-type ListOfflineMessagesResponseBodyOfflineMessagesPagination struct {
-	PageIndex      *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	TotalPageCount *int32 `json:"TotalPageCount,omitempty" xml:"TotalPageCount,omitempty"`
-	PageSize       *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount     *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ListOfflineMessagesResponseBodyOfflineMessagesPagination) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListOfflineMessagesResponseBodyOfflineMessagesPagination) GoString() string {
-	return s.String()
-}
-
-func (s *ListOfflineMessagesResponseBodyOfflineMessagesPagination) SetPageIndex(v int32) *ListOfflineMessagesResponseBodyOfflineMessagesPagination {
-	s.PageIndex = &v
-	return s
-}
-
-func (s *ListOfflineMessagesResponseBodyOfflineMessagesPagination) SetTotalPageCount(v int32) *ListOfflineMessagesResponseBodyOfflineMessagesPagination {
-	s.TotalPageCount = &v
-	return s
-}
-
-func (s *ListOfflineMessagesResponseBodyOfflineMessagesPagination) SetPageSize(v int32) *ListOfflineMessagesResponseBodyOfflineMessagesPagination {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListOfflineMessagesResponseBodyOfflineMessagesPagination) SetTotalCount(v int32) *ListOfflineMessagesResponseBodyOfflineMessagesPagination {
-	s.TotalCount = &v
+func (s *ListOfflineMessagesResponseBodyOfflineMessages) SetPagination(v *ListOfflineMessagesResponseBodyOfflineMessagesPagination) *ListOfflineMessagesResponseBodyOfflineMessages {
+	s.Pagination = v
 	return s
 }
 
 type ListOfflineMessagesResponseBodyOfflineMessagesList struct {
-	ExpiredTime *int64 `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	Mid         *int64 `json:"Mid,omitempty" xml:"Mid,omitempty"`
 	GmtCreate   *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	ExpiredTime *int64 `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 }
 
 func (s ListOfflineMessagesResponseBodyOfflineMessagesList) String() string {
@@ -16027,11 +16294,6 @@ func (s ListOfflineMessagesResponseBodyOfflineMessagesList) GoString() string {
 	return s.String()
 }
 
-func (s *ListOfflineMessagesResponseBodyOfflineMessagesList) SetExpiredTime(v int64) *ListOfflineMessagesResponseBodyOfflineMessagesList {
-	s.ExpiredTime = &v
-	return s
-}
-
 func (s *ListOfflineMessagesResponseBodyOfflineMessagesList) SetMid(v int64) *ListOfflineMessagesResponseBodyOfflineMessagesList {
 	s.Mid = &v
 	return s
@@ -16039,6 +16301,46 @@ func (s *ListOfflineMessagesResponseBodyOfflineMessagesList) SetMid(v int64) *Li
 
 func (s *ListOfflineMessagesResponseBodyOfflineMessagesList) SetGmtCreate(v int64) *ListOfflineMessagesResponseBodyOfflineMessagesList {
 	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListOfflineMessagesResponseBodyOfflineMessagesList) SetExpiredTime(v int64) *ListOfflineMessagesResponseBodyOfflineMessagesList {
+	s.ExpiredTime = &v
+	return s
+}
+
+type ListOfflineMessagesResponseBodyOfflineMessagesPagination struct {
+	TotalCount     *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalPageCount *int32 `json:"TotalPageCount,omitempty" xml:"TotalPageCount,omitempty"`
+	PageIndex      *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	PageSize       *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListOfflineMessagesResponseBodyOfflineMessagesPagination) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOfflineMessagesResponseBodyOfflineMessagesPagination) GoString() string {
+	return s.String()
+}
+
+func (s *ListOfflineMessagesResponseBodyOfflineMessagesPagination) SetTotalCount(v int32) *ListOfflineMessagesResponseBodyOfflineMessagesPagination {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListOfflineMessagesResponseBodyOfflineMessagesPagination) SetTotalPageCount(v int32) *ListOfflineMessagesResponseBodyOfflineMessagesPagination {
+	s.TotalPageCount = &v
+	return s
+}
+
+func (s *ListOfflineMessagesResponseBodyOfflineMessagesPagination) SetPageIndex(v int32) *ListOfflineMessagesResponseBodyOfflineMessagesPagination {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *ListOfflineMessagesResponseBodyOfflineMessagesPagination) SetPageSize(v int32) *ListOfflineMessagesResponseBodyOfflineMessagesPagination {
+	s.PageSize = &v
 	return s
 }
 
@@ -16124,17 +16426,17 @@ func (s *ListOpenAccountLinksResponseBody) SetOpenAccounts(v []*ListOpenAccountL
 }
 
 type ListOpenAccountLinksResponseBodyOpenAccounts struct {
-	Status          *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type            *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
-	DisplayName     *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	CreateAccessKey *string `json:"CreateAccessKey,omitempty" xml:"CreateAccessKey,omitempty"`
-	OpenId          *string `json:"OpenId,omitempty" xml:"OpenId,omitempty"`
-	Mobile          *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	IdentityId      *string `json:"IdentityId,omitempty" xml:"IdentityId,omitempty"`
+	AliyunId        *string `json:"AliyunId,omitempty" xml:"AliyunId,omitempty"`
+	DisplayName     *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	LoginId         *string `json:"LoginId,omitempty" xml:"LoginId,omitempty"`
 	Idp             *string `json:"Idp,omitempty" xml:"Idp,omitempty"`
-	AliyunId        *string `json:"AliyunId,omitempty" xml:"AliyunId,omitempty"`
+	OpenId          *string `json:"OpenId,omitempty" xml:"OpenId,omitempty"`
+	Mobile          *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	Type            *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	Status          *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	CreateAccessKey *string `json:"CreateAccessKey,omitempty" xml:"CreateAccessKey,omitempty"`
 }
 
 func (s ListOpenAccountLinksResponseBodyOpenAccounts) String() string {
@@ -16145,43 +16447,18 @@ func (s ListOpenAccountLinksResponseBodyOpenAccounts) GoString() string {
 	return s.String()
 }
 
-func (s *ListOpenAccountLinksResponseBodyOpenAccounts) SetStatus(v int32) *ListOpenAccountLinksResponseBodyOpenAccounts {
-	s.Status = &v
+func (s *ListOpenAccountLinksResponseBodyOpenAccounts) SetIdentityId(v string) *ListOpenAccountLinksResponseBodyOpenAccounts {
+	s.IdentityId = &v
 	return s
 }
 
-func (s *ListOpenAccountLinksResponseBodyOpenAccounts) SetType(v int32) *ListOpenAccountLinksResponseBodyOpenAccounts {
-	s.Type = &v
+func (s *ListOpenAccountLinksResponseBodyOpenAccounts) SetAliyunId(v string) *ListOpenAccountLinksResponseBodyOpenAccounts {
+	s.AliyunId = &v
 	return s
 }
 
 func (s *ListOpenAccountLinksResponseBodyOpenAccounts) SetDisplayName(v string) *ListOpenAccountLinksResponseBodyOpenAccounts {
 	s.DisplayName = &v
-	return s
-}
-
-func (s *ListOpenAccountLinksResponseBodyOpenAccounts) SetCreateAccessKey(v string) *ListOpenAccountLinksResponseBodyOpenAccounts {
-	s.CreateAccessKey = &v
-	return s
-}
-
-func (s *ListOpenAccountLinksResponseBodyOpenAccounts) SetOpenId(v string) *ListOpenAccountLinksResponseBodyOpenAccounts {
-	s.OpenId = &v
-	return s
-}
-
-func (s *ListOpenAccountLinksResponseBodyOpenAccounts) SetMobile(v string) *ListOpenAccountLinksResponseBodyOpenAccounts {
-	s.Mobile = &v
-	return s
-}
-
-func (s *ListOpenAccountLinksResponseBodyOpenAccounts) SetRegion(v string) *ListOpenAccountLinksResponseBodyOpenAccounts {
-	s.Region = &v
-	return s
-}
-
-func (s *ListOpenAccountLinksResponseBodyOpenAccounts) SetIdentityId(v string) *ListOpenAccountLinksResponseBodyOpenAccounts {
-	s.IdentityId = &v
 	return s
 }
 
@@ -16195,8 +16472,33 @@ func (s *ListOpenAccountLinksResponseBodyOpenAccounts) SetIdp(v string) *ListOpe
 	return s
 }
 
-func (s *ListOpenAccountLinksResponseBodyOpenAccounts) SetAliyunId(v string) *ListOpenAccountLinksResponseBodyOpenAccounts {
-	s.AliyunId = &v
+func (s *ListOpenAccountLinksResponseBodyOpenAccounts) SetOpenId(v string) *ListOpenAccountLinksResponseBodyOpenAccounts {
+	s.OpenId = &v
+	return s
+}
+
+func (s *ListOpenAccountLinksResponseBodyOpenAccounts) SetMobile(v string) *ListOpenAccountLinksResponseBodyOpenAccounts {
+	s.Mobile = &v
+	return s
+}
+
+func (s *ListOpenAccountLinksResponseBodyOpenAccounts) SetType(v int32) *ListOpenAccountLinksResponseBodyOpenAccounts {
+	s.Type = &v
+	return s
+}
+
+func (s *ListOpenAccountLinksResponseBodyOpenAccounts) SetStatus(v int32) *ListOpenAccountLinksResponseBodyOpenAccounts {
+	s.Status = &v
+	return s
+}
+
+func (s *ListOpenAccountLinksResponseBodyOpenAccounts) SetRegion(v string) *ListOpenAccountLinksResponseBodyOpenAccounts {
+	s.Region = &v
+	return s
+}
+
+func (s *ListOpenAccountLinksResponseBodyOpenAccounts) SetCreateAccessKey(v string) *ListOpenAccountLinksResponseBodyOpenAccounts {
+	s.CreateAccessKey = &v
 	return s
 }
 
@@ -16294,17 +16596,17 @@ func (s *ListOpenAccountsResponseBody) SetOpenAccounts(v []*ListOpenAccountsResp
 }
 
 type ListOpenAccountsResponseBodyOpenAccounts struct {
-	Status          *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type            *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
-	DisplayName     *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	CreateAccessKey *string `json:"CreateAccessKey,omitempty" xml:"CreateAccessKey,omitempty"`
-	OpenId          *string `json:"OpenId,omitempty" xml:"OpenId,omitempty"`
-	Mobile          *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	IdentityId      *string `json:"IdentityId,omitempty" xml:"IdentityId,omitempty"`
+	AliyunId        *string `json:"AliyunId,omitempty" xml:"AliyunId,omitempty"`
+	DisplayName     *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	LoginId         *string `json:"LoginId,omitempty" xml:"LoginId,omitempty"`
 	Idp             *string `json:"Idp,omitempty" xml:"Idp,omitempty"`
-	AliyunId        *string `json:"AliyunId,omitempty" xml:"AliyunId,omitempty"`
+	OpenId          *string `json:"OpenId,omitempty" xml:"OpenId,omitempty"`
+	Mobile          *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	Type            *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	Status          *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	CreateAccessKey *string `json:"CreateAccessKey,omitempty" xml:"CreateAccessKey,omitempty"`
 }
 
 func (s ListOpenAccountsResponseBodyOpenAccounts) String() string {
@@ -16315,43 +16617,18 @@ func (s ListOpenAccountsResponseBodyOpenAccounts) GoString() string {
 	return s.String()
 }
 
-func (s *ListOpenAccountsResponseBodyOpenAccounts) SetStatus(v int32) *ListOpenAccountsResponseBodyOpenAccounts {
-	s.Status = &v
+func (s *ListOpenAccountsResponseBodyOpenAccounts) SetIdentityId(v string) *ListOpenAccountsResponseBodyOpenAccounts {
+	s.IdentityId = &v
 	return s
 }
 
-func (s *ListOpenAccountsResponseBodyOpenAccounts) SetType(v int32) *ListOpenAccountsResponseBodyOpenAccounts {
-	s.Type = &v
+func (s *ListOpenAccountsResponseBodyOpenAccounts) SetAliyunId(v string) *ListOpenAccountsResponseBodyOpenAccounts {
+	s.AliyunId = &v
 	return s
 }
 
 func (s *ListOpenAccountsResponseBodyOpenAccounts) SetDisplayName(v string) *ListOpenAccountsResponseBodyOpenAccounts {
 	s.DisplayName = &v
-	return s
-}
-
-func (s *ListOpenAccountsResponseBodyOpenAccounts) SetCreateAccessKey(v string) *ListOpenAccountsResponseBodyOpenAccounts {
-	s.CreateAccessKey = &v
-	return s
-}
-
-func (s *ListOpenAccountsResponseBodyOpenAccounts) SetOpenId(v string) *ListOpenAccountsResponseBodyOpenAccounts {
-	s.OpenId = &v
-	return s
-}
-
-func (s *ListOpenAccountsResponseBodyOpenAccounts) SetMobile(v string) *ListOpenAccountsResponseBodyOpenAccounts {
-	s.Mobile = &v
-	return s
-}
-
-func (s *ListOpenAccountsResponseBodyOpenAccounts) SetRegion(v string) *ListOpenAccountsResponseBodyOpenAccounts {
-	s.Region = &v
-	return s
-}
-
-func (s *ListOpenAccountsResponseBodyOpenAccounts) SetIdentityId(v string) *ListOpenAccountsResponseBodyOpenAccounts {
-	s.IdentityId = &v
 	return s
 }
 
@@ -16365,8 +16642,33 @@ func (s *ListOpenAccountsResponseBodyOpenAccounts) SetIdp(v string) *ListOpenAcc
 	return s
 }
 
-func (s *ListOpenAccountsResponseBodyOpenAccounts) SetAliyunId(v string) *ListOpenAccountsResponseBodyOpenAccounts {
-	s.AliyunId = &v
+func (s *ListOpenAccountsResponseBodyOpenAccounts) SetOpenId(v string) *ListOpenAccountsResponseBodyOpenAccounts {
+	s.OpenId = &v
+	return s
+}
+
+func (s *ListOpenAccountsResponseBodyOpenAccounts) SetMobile(v string) *ListOpenAccountsResponseBodyOpenAccounts {
+	s.Mobile = &v
+	return s
+}
+
+func (s *ListOpenAccountsResponseBodyOpenAccounts) SetType(v int32) *ListOpenAccountsResponseBodyOpenAccounts {
+	s.Type = &v
+	return s
+}
+
+func (s *ListOpenAccountsResponseBodyOpenAccounts) SetStatus(v int32) *ListOpenAccountsResponseBodyOpenAccounts {
+	s.Status = &v
+	return s
+}
+
+func (s *ListOpenAccountsResponseBodyOpenAccounts) SetRegion(v string) *ListOpenAccountsResponseBodyOpenAccounts {
+	s.Region = &v
+	return s
+}
+
+func (s *ListOpenAccountsResponseBodyOpenAccounts) SetCreateAccessKey(v string) *ListOpenAccountsResponseBodyOpenAccounts {
+	s.CreateAccessKey = &v
 	return s
 }
 
@@ -16533,9 +16835,9 @@ func (s *ListProjectAppsResponseBody) SetResult(v *ListProjectAppsResponseBodyRe
 }
 
 type ListProjectAppsResponseBodyResult struct {
-	ProjectApps []*ListProjectAppsResponseBodyResultProjectApps `json:"ProjectApps,omitempty" xml:"ProjectApps,omitempty" type:"Repeated"`
-	TotalPage   *int32                                          `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 	TotalCount  *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalPage   *int32                                          `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	ProjectApps []*ListProjectAppsResponseBodyResultProjectApps `json:"ProjectApps,omitempty" xml:"ProjectApps,omitempty" type:"Repeated"`
 }
 
 func (s ListProjectAppsResponseBodyResult) String() string {
@@ -16546,8 +16848,8 @@ func (s ListProjectAppsResponseBodyResult) GoString() string {
 	return s.String()
 }
 
-func (s *ListProjectAppsResponseBodyResult) SetProjectApps(v []*ListProjectAppsResponseBodyResultProjectApps) *ListProjectAppsResponseBodyResult {
-	s.ProjectApps = v
+func (s *ListProjectAppsResponseBodyResult) SetTotalCount(v int32) *ListProjectAppsResponseBodyResult {
+	s.TotalCount = &v
 	return s
 }
 
@@ -16556,24 +16858,24 @@ func (s *ListProjectAppsResponseBodyResult) SetTotalPage(v int32) *ListProjectAp
 	return s
 }
 
-func (s *ListProjectAppsResponseBodyResult) SetTotalCount(v int32) *ListProjectAppsResponseBodyResult {
-	s.TotalCount = &v
+func (s *ListProjectAppsResponseBodyResult) SetProjectApps(v []*ListProjectAppsResponseBodyResultProjectApps) *ListProjectAppsResponseBodyResult {
+	s.ProjectApps = v
 	return s
 }
 
 type ListProjectAppsResponseBodyResultProjectApps struct {
-	Status      *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	ProjectId   *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	ProjectId   *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	AppName     *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppKey      *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	AppSecret   *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
+	Status      *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	GmtCreate   *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	GmtModified *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	AppPkgName  *string `json:"AppPkgName,omitempty" xml:"AppPkgName,omitempty"`
-	AppName     *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	AppSecret   *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
-	AppKey      *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	OsType      *int32  `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	GmtCreate   *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
 func (s ListProjectAppsResponseBodyResultProjectApps) String() string {
@@ -16584,8 +16886,18 @@ func (s ListProjectAppsResponseBodyResultProjectApps) GoString() string {
 	return s.String()
 }
 
-func (s *ListProjectAppsResponseBodyResultProjectApps) SetStatus(v int32) *ListProjectAppsResponseBodyResultProjectApps {
-	s.Status = &v
+func (s *ListProjectAppsResponseBodyResultProjectApps) SetId(v int64) *ListProjectAppsResponseBodyResultProjectApps {
+	s.Id = &v
+	return s
+}
+
+func (s *ListProjectAppsResponseBodyResultProjectApps) SetAppId(v string) *ListProjectAppsResponseBodyResultProjectApps {
+	s.AppId = &v
+	return s
+}
+
+func (s *ListProjectAppsResponseBodyResultProjectApps) SetUserId(v string) *ListProjectAppsResponseBodyResultProjectApps {
+	s.UserId = &v
 	return s
 }
 
@@ -16594,8 +16906,28 @@ func (s *ListProjectAppsResponseBodyResultProjectApps) SetProjectId(v string) *L
 	return s
 }
 
-func (s *ListProjectAppsResponseBodyResultProjectApps) SetUserId(v string) *ListProjectAppsResponseBodyResultProjectApps {
-	s.UserId = &v
+func (s *ListProjectAppsResponseBodyResultProjectApps) SetAppName(v string) *ListProjectAppsResponseBodyResultProjectApps {
+	s.AppName = &v
+	return s
+}
+
+func (s *ListProjectAppsResponseBodyResultProjectApps) SetAppKey(v string) *ListProjectAppsResponseBodyResultProjectApps {
+	s.AppKey = &v
+	return s
+}
+
+func (s *ListProjectAppsResponseBodyResultProjectApps) SetAppSecret(v string) *ListProjectAppsResponseBodyResultProjectApps {
+	s.AppSecret = &v
+	return s
+}
+
+func (s *ListProjectAppsResponseBodyResultProjectApps) SetStatus(v int32) *ListProjectAppsResponseBodyResultProjectApps {
+	s.Status = &v
+	return s
+}
+
+func (s *ListProjectAppsResponseBodyResultProjectApps) SetGmtCreate(v int64) *ListProjectAppsResponseBodyResultProjectApps {
+	s.GmtCreate = &v
 	return s
 }
 
@@ -16609,38 +16941,8 @@ func (s *ListProjectAppsResponseBodyResultProjectApps) SetAppPkgName(v string) *
 	return s
 }
 
-func (s *ListProjectAppsResponseBodyResultProjectApps) SetAppName(v string) *ListProjectAppsResponseBodyResultProjectApps {
-	s.AppName = &v
-	return s
-}
-
-func (s *ListProjectAppsResponseBodyResultProjectApps) SetAppSecret(v string) *ListProjectAppsResponseBodyResultProjectApps {
-	s.AppSecret = &v
-	return s
-}
-
-func (s *ListProjectAppsResponseBodyResultProjectApps) SetAppKey(v string) *ListProjectAppsResponseBodyResultProjectApps {
-	s.AppKey = &v
-	return s
-}
-
-func (s *ListProjectAppsResponseBodyResultProjectApps) SetAppId(v string) *ListProjectAppsResponseBodyResultProjectApps {
-	s.AppId = &v
-	return s
-}
-
 func (s *ListProjectAppsResponseBodyResultProjectApps) SetOsType(v int32) *ListProjectAppsResponseBodyResultProjectApps {
 	s.OsType = &v
-	return s
-}
-
-func (s *ListProjectAppsResponseBodyResultProjectApps) SetGmtCreate(v int64) *ListProjectAppsResponseBodyResultProjectApps {
-	s.GmtCreate = &v
-	return s
-}
-
-func (s *ListProjectAppsResponseBodyResultProjectApps) SetId(v int64) *ListProjectAppsResponseBodyResultProjectApps {
-	s.Id = &v
 	return s
 }
 
@@ -16691,14 +16993,14 @@ func (s *ListProjectsResponseBody) SetProjects(v []*ListProjectsResponseBodyProj
 }
 
 type ListProjectsResponseBodyProjects struct {
+	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	ProjectId   *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Status      *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	ProjectId   *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	GmtCreate   *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	GmtModified *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	Creator     *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
 }
 
@@ -16708,6 +17010,26 @@ func (s ListProjectsResponseBodyProjects) String() string {
 
 func (s ListProjectsResponseBodyProjects) GoString() string {
 	return s.String()
+}
+
+func (s *ListProjectsResponseBodyProjects) SetId(v int64) *ListProjectsResponseBodyProjects {
+	s.Id = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyProjects) SetProjectId(v string) *ListProjectsResponseBodyProjects {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyProjects) SetUserId(v string) *ListProjectsResponseBodyProjects {
+	s.UserId = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyProjects) SetName(v string) *ListProjectsResponseBodyProjects {
+	s.Name = &v
+	return s
 }
 
 func (s *ListProjectsResponseBodyProjects) SetStatus(v int32) *ListProjectsResponseBodyProjects {
@@ -16720,16 +17042,6 @@ func (s *ListProjectsResponseBodyProjects) SetDescription(v string) *ListProject
 	return s
 }
 
-func (s *ListProjectsResponseBodyProjects) SetUserId(v string) *ListProjectsResponseBodyProjects {
-	s.UserId = &v
-	return s
-}
-
-func (s *ListProjectsResponseBodyProjects) SetProjectId(v string) *ListProjectsResponseBodyProjects {
-	s.ProjectId = &v
-	return s
-}
-
 func (s *ListProjectsResponseBodyProjects) SetGmtCreate(v int64) *ListProjectsResponseBodyProjects {
 	s.GmtCreate = &v
 	return s
@@ -16737,16 +17049,6 @@ func (s *ListProjectsResponseBodyProjects) SetGmtCreate(v int64) *ListProjectsRe
 
 func (s *ListProjectsResponseBodyProjects) SetGmtModified(v int64) *ListProjectsResponseBodyProjects {
 	s.GmtModified = &v
-	return s
-}
-
-func (s *ListProjectsResponseBodyProjects) SetName(v string) *ListProjectsResponseBodyProjects {
-	s.Name = &v
-	return s
-}
-
-func (s *ListProjectsResponseBodyProjects) SetId(v int64) *ListProjectsResponseBodyProjects {
-	s.Id = &v
 	return s
 }
 
@@ -16831,8 +17133,8 @@ func (s *ListRpcServicesResponseBody) SetRpcServices(v *ListRpcServicesResponseB
 }
 
 type ListRpcServicesResponseBodyRpcServices struct {
-	Pagination *ListRpcServicesResponseBodyRpcServicesPagination `json:"Pagination,omitempty" xml:"Pagination,omitempty" type:"Struct"`
 	List       []*ListRpcServicesResponseBodyRpcServicesList     `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	Pagination *ListRpcServicesResponseBodyRpcServicesPagination `json:"Pagination,omitempty" xml:"Pagination,omitempty" type:"Struct"`
 }
 
 func (s ListRpcServicesResponseBodyRpcServices) String() string {
@@ -16843,63 +17145,28 @@ func (s ListRpcServicesResponseBodyRpcServices) GoString() string {
 	return s.String()
 }
 
-func (s *ListRpcServicesResponseBodyRpcServices) SetPagination(v *ListRpcServicesResponseBodyRpcServicesPagination) *ListRpcServicesResponseBodyRpcServices {
-	s.Pagination = v
-	return s
-}
-
 func (s *ListRpcServicesResponseBodyRpcServices) SetList(v []*ListRpcServicesResponseBodyRpcServicesList) *ListRpcServicesResponseBodyRpcServices {
 	s.List = v
 	return s
 }
 
-type ListRpcServicesResponseBodyRpcServicesPagination struct {
-	PageIndex      *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	TotalPageCount *int32 `json:"TotalPageCount,omitempty" xml:"TotalPageCount,omitempty"`
-	PageSize       *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount     *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ListRpcServicesResponseBodyRpcServicesPagination) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListRpcServicesResponseBodyRpcServicesPagination) GoString() string {
-	return s.String()
-}
-
-func (s *ListRpcServicesResponseBodyRpcServicesPagination) SetPageIndex(v int32) *ListRpcServicesResponseBodyRpcServicesPagination {
-	s.PageIndex = &v
-	return s
-}
-
-func (s *ListRpcServicesResponseBodyRpcServicesPagination) SetTotalPageCount(v int32) *ListRpcServicesResponseBodyRpcServicesPagination {
-	s.TotalPageCount = &v
-	return s
-}
-
-func (s *ListRpcServicesResponseBodyRpcServicesPagination) SetPageSize(v int32) *ListRpcServicesResponseBodyRpcServicesPagination {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListRpcServicesResponseBodyRpcServicesPagination) SetTotalCount(v int32) *ListRpcServicesResponseBodyRpcServicesPagination {
-	s.TotalCount = &v
+func (s *ListRpcServicesResponseBodyRpcServices) SetPagination(v *ListRpcServicesResponseBodyRpcServicesPagination) *ListRpcServicesResponseBodyRpcServices {
+	s.Pagination = v
 	return s
 }
 
 type ListRpcServicesResponseBodyRpcServicesList struct {
-	MethodName    *string `json:"MethodName,omitempty" xml:"MethodName,omitempty"`
-	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	InterfaceName *string `json:"InterfaceName,omitempty" xml:"InterfaceName,omitempty"`
-	Params        *string `json:"Params,omitempty" xml:"Params,omitempty"`
-	AppKey        *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	GroupName     *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	GmtCreate     *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	IsDelete      *string `json:"IsDelete,omitempty" xml:"IsDelete,omitempty"`
-	VersionCode   *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
-	GmtModified   *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	Id            *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	AppKey        *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	InterfaceName *string `json:"InterfaceName,omitempty" xml:"InterfaceName,omitempty"`
+	GroupName     *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Params        *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	IsDelete      *string `json:"IsDelete,omitempty" xml:"IsDelete,omitempty"`
+	GmtCreate     *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified   *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	MethodName    *string `json:"MethodName,omitempty" xml:"MethodName,omitempty"`
+	VersionCode   *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
 }
 
 func (s ListRpcServicesResponseBodyRpcServicesList) String() string {
@@ -16910,23 +17177,8 @@ func (s ListRpcServicesResponseBodyRpcServicesList) GoString() string {
 	return s.String()
 }
 
-func (s *ListRpcServicesResponseBodyRpcServicesList) SetMethodName(v string) *ListRpcServicesResponseBodyRpcServicesList {
-	s.MethodName = &v
-	return s
-}
-
-func (s *ListRpcServicesResponseBodyRpcServicesList) SetType(v string) *ListRpcServicesResponseBodyRpcServicesList {
-	s.Type = &v
-	return s
-}
-
-func (s *ListRpcServicesResponseBodyRpcServicesList) SetInterfaceName(v string) *ListRpcServicesResponseBodyRpcServicesList {
-	s.InterfaceName = &v
-	return s
-}
-
-func (s *ListRpcServicesResponseBodyRpcServicesList) SetParams(v string) *ListRpcServicesResponseBodyRpcServicesList {
-	s.Params = &v
+func (s *ListRpcServicesResponseBodyRpcServicesList) SetId(v int64) *ListRpcServicesResponseBodyRpcServicesList {
+	s.Id = &v
 	return s
 }
 
@@ -16935,13 +17187,23 @@ func (s *ListRpcServicesResponseBodyRpcServicesList) SetAppKey(v string) *ListRp
 	return s
 }
 
+func (s *ListRpcServicesResponseBodyRpcServicesList) SetInterfaceName(v string) *ListRpcServicesResponseBodyRpcServicesList {
+	s.InterfaceName = &v
+	return s
+}
+
 func (s *ListRpcServicesResponseBodyRpcServicesList) SetGroupName(v string) *ListRpcServicesResponseBodyRpcServicesList {
 	s.GroupName = &v
 	return s
 }
 
-func (s *ListRpcServicesResponseBodyRpcServicesList) SetGmtCreate(v int64) *ListRpcServicesResponseBodyRpcServicesList {
-	s.GmtCreate = &v
+func (s *ListRpcServicesResponseBodyRpcServicesList) SetType(v string) *ListRpcServicesResponseBodyRpcServicesList {
+	s.Type = &v
+	return s
+}
+
+func (s *ListRpcServicesResponseBodyRpcServicesList) SetParams(v string) *ListRpcServicesResponseBodyRpcServicesList {
+	s.Params = &v
 	return s
 }
 
@@ -16950,8 +17212,8 @@ func (s *ListRpcServicesResponseBodyRpcServicesList) SetIsDelete(v string) *List
 	return s
 }
 
-func (s *ListRpcServicesResponseBodyRpcServicesList) SetVersionCode(v string) *ListRpcServicesResponseBodyRpcServicesList {
-	s.VersionCode = &v
+func (s *ListRpcServicesResponseBodyRpcServicesList) SetGmtCreate(v int64) *ListRpcServicesResponseBodyRpcServicesList {
+	s.GmtCreate = &v
 	return s
 }
 
@@ -16960,8 +17222,48 @@ func (s *ListRpcServicesResponseBodyRpcServicesList) SetGmtModified(v int64) *Li
 	return s
 }
 
-func (s *ListRpcServicesResponseBodyRpcServicesList) SetId(v int64) *ListRpcServicesResponseBodyRpcServicesList {
-	s.Id = &v
+func (s *ListRpcServicesResponseBodyRpcServicesList) SetMethodName(v string) *ListRpcServicesResponseBodyRpcServicesList {
+	s.MethodName = &v
+	return s
+}
+
+func (s *ListRpcServicesResponseBodyRpcServicesList) SetVersionCode(v string) *ListRpcServicesResponseBodyRpcServicesList {
+	s.VersionCode = &v
+	return s
+}
+
+type ListRpcServicesResponseBodyRpcServicesPagination struct {
+	TotalCount     *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalPageCount *int32 `json:"TotalPageCount,omitempty" xml:"TotalPageCount,omitempty"`
+	PageIndex      *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	PageSize       *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListRpcServicesResponseBodyRpcServicesPagination) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRpcServicesResponseBodyRpcServicesPagination) GoString() string {
+	return s.String()
+}
+
+func (s *ListRpcServicesResponseBodyRpcServicesPagination) SetTotalCount(v int32) *ListRpcServicesResponseBodyRpcServicesPagination {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListRpcServicesResponseBodyRpcServicesPagination) SetTotalPageCount(v int32) *ListRpcServicesResponseBodyRpcServicesPagination {
+	s.TotalPageCount = &v
+	return s
+}
+
+func (s *ListRpcServicesResponseBodyRpcServicesPagination) SetPageIndex(v int32) *ListRpcServicesResponseBodyRpcServicesPagination {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *ListRpcServicesResponseBodyRpcServicesPagination) SetPageSize(v int32) *ListRpcServicesResponseBodyRpcServicesPagination {
+	s.PageSize = &v
 	return s
 }
 
@@ -17047,8 +17349,8 @@ func (s *ListSchemaSubscribesResponseBody) SetPageList(v []*ListSchemaSubscribes
 }
 
 type ListSchemaSubscribesResponseBodyPageList struct {
-	Pagination *ListSchemaSubscribesResponseBodyPageListPagination `json:"Pagination,omitempty" xml:"Pagination,omitempty" type:"Struct"`
 	List       []*ListSchemaSubscribesResponseBodyPageListList     `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	Pagination *ListSchemaSubscribesResponseBodyPageListPagination `json:"Pagination,omitempty" xml:"Pagination,omitempty" type:"Struct"`
 }
 
 func (s ListSchemaSubscribesResponseBodyPageList) String() string {
@@ -17059,21 +17361,86 @@ func (s ListSchemaSubscribesResponseBodyPageList) GoString() string {
 	return s.String()
 }
 
-func (s *ListSchemaSubscribesResponseBodyPageList) SetPagination(v *ListSchemaSubscribesResponseBodyPageListPagination) *ListSchemaSubscribesResponseBodyPageList {
-	s.Pagination = v
-	return s
-}
-
 func (s *ListSchemaSubscribesResponseBodyPageList) SetList(v []*ListSchemaSubscribesResponseBodyPageListList) *ListSchemaSubscribesResponseBodyPageList {
 	s.List = v
 	return s
 }
 
+func (s *ListSchemaSubscribesResponseBodyPageList) SetPagination(v *ListSchemaSubscribesResponseBodyPageListPagination) *ListSchemaSubscribesResponseBodyPageList {
+	s.Pagination = v
+	return s
+}
+
+type ListSchemaSubscribesResponseBodyPageListList struct {
+	Id             *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Version        *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	ValiditySchema *string `json:"ValiditySchema,omitempty" xml:"ValiditySchema,omitempty"`
+	Namespace      *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	ProjectId      *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	DeviceModelId  *int64  `json:"DeviceModelId,omitempty" xml:"DeviceModelId,omitempty"`
+	DeviceModel    *string `json:"DeviceModel,omitempty" xml:"DeviceModel,omitempty"`
+	GmtCreate      *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified    *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+}
+
+func (s ListSchemaSubscribesResponseBodyPageListList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSchemaSubscribesResponseBodyPageListList) GoString() string {
+	return s.String()
+}
+
+func (s *ListSchemaSubscribesResponseBodyPageListList) SetId(v int64) *ListSchemaSubscribesResponseBodyPageListList {
+	s.Id = &v
+	return s
+}
+
+func (s *ListSchemaSubscribesResponseBodyPageListList) SetVersion(v string) *ListSchemaSubscribesResponseBodyPageListList {
+	s.Version = &v
+	return s
+}
+
+func (s *ListSchemaSubscribesResponseBodyPageListList) SetValiditySchema(v string) *ListSchemaSubscribesResponseBodyPageListList {
+	s.ValiditySchema = &v
+	return s
+}
+
+func (s *ListSchemaSubscribesResponseBodyPageListList) SetNamespace(v string) *ListSchemaSubscribesResponseBodyPageListList {
+	s.Namespace = &v
+	return s
+}
+
+func (s *ListSchemaSubscribesResponseBodyPageListList) SetProjectId(v string) *ListSchemaSubscribesResponseBodyPageListList {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListSchemaSubscribesResponseBodyPageListList) SetDeviceModelId(v int64) *ListSchemaSubscribesResponseBodyPageListList {
+	s.DeviceModelId = &v
+	return s
+}
+
+func (s *ListSchemaSubscribesResponseBodyPageListList) SetDeviceModel(v string) *ListSchemaSubscribesResponseBodyPageListList {
+	s.DeviceModel = &v
+	return s
+}
+
+func (s *ListSchemaSubscribesResponseBodyPageListList) SetGmtCreate(v int64) *ListSchemaSubscribesResponseBodyPageListList {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListSchemaSubscribesResponseBodyPageListList) SetGmtModified(v int64) *ListSchemaSubscribesResponseBodyPageListList {
+	s.GmtModified = &v
+	return s
+}
+
 type ListSchemaSubscribesResponseBodyPageListPagination struct {
-	PageIndex      *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	TotalPageCount *int32 `json:"TotalPageCount,omitempty" xml:"TotalPageCount,omitempty"`
-	PageSize       *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	TotalCount     *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalPageCount *int32 `json:"TotalPageCount,omitempty" xml:"TotalPageCount,omitempty"`
+	PageIndex      *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	PageSize       *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SimpleSign     *bool  `json:"SimpleSign,omitempty" xml:"SimpleSign,omitempty"`
 	HasNextPage    *bool  `json:"HasNextPage,omitempty" xml:"HasNextPage,omitempty"`
 }
@@ -17086,8 +17453,8 @@ func (s ListSchemaSubscribesResponseBodyPageListPagination) GoString() string {
 	return s.String()
 }
 
-func (s *ListSchemaSubscribesResponseBodyPageListPagination) SetPageIndex(v int32) *ListSchemaSubscribesResponseBodyPageListPagination {
-	s.PageIndex = &v
+func (s *ListSchemaSubscribesResponseBodyPageListPagination) SetTotalCount(v int32) *ListSchemaSubscribesResponseBodyPageListPagination {
+	s.TotalCount = &v
 	return s
 }
 
@@ -17096,13 +17463,13 @@ func (s *ListSchemaSubscribesResponseBodyPageListPagination) SetTotalPageCount(v
 	return s
 }
 
-func (s *ListSchemaSubscribesResponseBodyPageListPagination) SetPageSize(v int32) *ListSchemaSubscribesResponseBodyPageListPagination {
-	s.PageSize = &v
+func (s *ListSchemaSubscribesResponseBodyPageListPagination) SetPageIndex(v int32) *ListSchemaSubscribesResponseBodyPageListPagination {
+	s.PageIndex = &v
 	return s
 }
 
-func (s *ListSchemaSubscribesResponseBodyPageListPagination) SetTotalCount(v int32) *ListSchemaSubscribesResponseBodyPageListPagination {
-	s.TotalCount = &v
+func (s *ListSchemaSubscribesResponseBodyPageListPagination) SetPageSize(v int32) *ListSchemaSubscribesResponseBodyPageListPagination {
+	s.PageSize = &v
 	return s
 }
 
@@ -17113,71 +17480,6 @@ func (s *ListSchemaSubscribesResponseBodyPageListPagination) SetSimpleSign(v boo
 
 func (s *ListSchemaSubscribesResponseBodyPageListPagination) SetHasNextPage(v bool) *ListSchemaSubscribesResponseBodyPageListPagination {
 	s.HasNextPage = &v
-	return s
-}
-
-type ListSchemaSubscribesResponseBodyPageListList struct {
-	DeviceModelId  *int64  `json:"DeviceModelId,omitempty" xml:"DeviceModelId,omitempty"`
-	Version        *string `json:"Version,omitempty" xml:"Version,omitempty"`
-	ProjectId      *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	GmtCreate      *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Namespace      *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	ValiditySchema *string `json:"ValiditySchema,omitempty" xml:"ValiditySchema,omitempty"`
-	DeviceModel    *string `json:"DeviceModel,omitempty" xml:"DeviceModel,omitempty"`
-	GmtModified    *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Id             *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s ListSchemaSubscribesResponseBodyPageListList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListSchemaSubscribesResponseBodyPageListList) GoString() string {
-	return s.String()
-}
-
-func (s *ListSchemaSubscribesResponseBodyPageListList) SetDeviceModelId(v int64) *ListSchemaSubscribesResponseBodyPageListList {
-	s.DeviceModelId = &v
-	return s
-}
-
-func (s *ListSchemaSubscribesResponseBodyPageListList) SetVersion(v string) *ListSchemaSubscribesResponseBodyPageListList {
-	s.Version = &v
-	return s
-}
-
-func (s *ListSchemaSubscribesResponseBodyPageListList) SetProjectId(v string) *ListSchemaSubscribesResponseBodyPageListList {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *ListSchemaSubscribesResponseBodyPageListList) SetGmtCreate(v int64) *ListSchemaSubscribesResponseBodyPageListList {
-	s.GmtCreate = &v
-	return s
-}
-
-func (s *ListSchemaSubscribesResponseBodyPageListList) SetNamespace(v string) *ListSchemaSubscribesResponseBodyPageListList {
-	s.Namespace = &v
-	return s
-}
-
-func (s *ListSchemaSubscribesResponseBodyPageListList) SetValiditySchema(v string) *ListSchemaSubscribesResponseBodyPageListList {
-	s.ValiditySchema = &v
-	return s
-}
-
-func (s *ListSchemaSubscribesResponseBodyPageListList) SetDeviceModel(v string) *ListSchemaSubscribesResponseBodyPageListList {
-	s.DeviceModel = &v
-	return s
-}
-
-func (s *ListSchemaSubscribesResponseBodyPageListList) SetGmtModified(v int64) *ListSchemaSubscribesResponseBodyPageListList {
-	s.GmtModified = &v
-	return s
-}
-
-func (s *ListSchemaSubscribesResponseBodyPageListList) SetId(v int64) *ListSchemaSubscribesResponseBodyPageListList {
-	s.Id = &v
 	return s
 }
 
@@ -17268,8 +17570,8 @@ func (s *ListShadowSchemaDeviceModelsRequest) SetProjectId(v string) *ListShadow
 }
 
 type ListShadowSchemaDeviceModelsResponseBody struct {
-	ModelList []*ListShadowSchemaDeviceModelsResponseBodyModelList `json:"ModelList,omitempty" xml:"ModelList,omitempty" type:"Repeated"`
 	RequestId *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ModelList []*ListShadowSchemaDeviceModelsResponseBodyModelList `json:"ModelList,omitempty" xml:"ModelList,omitempty" type:"Repeated"`
 }
 
 func (s ListShadowSchemaDeviceModelsResponseBody) String() string {
@@ -17280,29 +17582,29 @@ func (s ListShadowSchemaDeviceModelsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListShadowSchemaDeviceModelsResponseBody) SetModelList(v []*ListShadowSchemaDeviceModelsResponseBodyModelList) *ListShadowSchemaDeviceModelsResponseBody {
-	s.ModelList = v
-	return s
-}
-
 func (s *ListShadowSchemaDeviceModelsResponseBody) SetRequestId(v string) *ListShadowSchemaDeviceModelsResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *ListShadowSchemaDeviceModelsResponseBody) SetModelList(v []*ListShadowSchemaDeviceModelsResponseBodyModelList) *ListShadowSchemaDeviceModelsResponseBody {
+	s.ModelList = v
+	return s
+}
+
 type ListShadowSchemaDeviceModelsResponseBodyModelList struct {
 	DeviceModelId     *int64  `json:"DeviceModelId,omitempty" xml:"DeviceModelId,omitempty"`
-	HardwareType      *string `json:"HardwareType,omitempty" xml:"HardwareType,omitempty"`
 	DeviceType        *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
-	CanCreateDeviceId *int32  `json:"CanCreateDeviceId,omitempty" xml:"CanCreateDeviceId,omitempty"`
-	ProjectId         *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	OsPlatform        *string `json:"OsPlatform,omitempty" xml:"OsPlatform,omitempty"`
+	HardwareType      *string `json:"HardwareType,omitempty" xml:"HardwareType,omitempty"`
 	DeviceModel       *string `json:"DeviceModel,omitempty" xml:"DeviceModel,omitempty"`
-	SecurityChip      *int32  `json:"SecurityChip,omitempty" xml:"SecurityChip,omitempty"`
-	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	InitUsageTypeDesc *string `json:"InitUsageTypeDesc,omitempty" xml:"InitUsageTypeDesc,omitempty"`
-	InitUsageType     *int32  `json:"InitUsageType,omitempty" xml:"InitUsageType,omitempty"`
 	DeviceBrand       *string `json:"DeviceBrand,omitempty" xml:"DeviceBrand,omitempty"`
+	CanCreateDeviceId *int32  `json:"CanCreateDeviceId,omitempty" xml:"CanCreateDeviceId,omitempty"`
+	InitUsageType     *int32  `json:"InitUsageType,omitempty" xml:"InitUsageType,omitempty"`
+	InitUsageTypeDesc *string `json:"InitUsageTypeDesc,omitempty" xml:"InitUsageTypeDesc,omitempty"`
+	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ProjectId         *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	SecurityChip      *int32  `json:"SecurityChip,omitempty" xml:"SecurityChip,omitempty"`
+	OsPlatform        *string `json:"OsPlatform,omitempty" xml:"OsPlatform,omitempty"`
 }
 
 func (s ListShadowSchemaDeviceModelsResponseBodyModelList) String() string {
@@ -17318,28 +17620,13 @@ func (s *ListShadowSchemaDeviceModelsResponseBodyModelList) SetDeviceModelId(v i
 	return s
 }
 
-func (s *ListShadowSchemaDeviceModelsResponseBodyModelList) SetHardwareType(v string) *ListShadowSchemaDeviceModelsResponseBodyModelList {
-	s.HardwareType = &v
-	return s
-}
-
 func (s *ListShadowSchemaDeviceModelsResponseBodyModelList) SetDeviceType(v string) *ListShadowSchemaDeviceModelsResponseBodyModelList {
 	s.DeviceType = &v
 	return s
 }
 
-func (s *ListShadowSchemaDeviceModelsResponseBodyModelList) SetCanCreateDeviceId(v int32) *ListShadowSchemaDeviceModelsResponseBodyModelList {
-	s.CanCreateDeviceId = &v
-	return s
-}
-
-func (s *ListShadowSchemaDeviceModelsResponseBodyModelList) SetProjectId(v string) *ListShadowSchemaDeviceModelsResponseBodyModelList {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *ListShadowSchemaDeviceModelsResponseBodyModelList) SetOsPlatform(v string) *ListShadowSchemaDeviceModelsResponseBodyModelList {
-	s.OsPlatform = &v
+func (s *ListShadowSchemaDeviceModelsResponseBodyModelList) SetHardwareType(v string) *ListShadowSchemaDeviceModelsResponseBodyModelList {
+	s.HardwareType = &v
 	return s
 }
 
@@ -17348,18 +17635,13 @@ func (s *ListShadowSchemaDeviceModelsResponseBodyModelList) SetDeviceModel(v str
 	return s
 }
 
-func (s *ListShadowSchemaDeviceModelsResponseBodyModelList) SetSecurityChip(v int32) *ListShadowSchemaDeviceModelsResponseBodyModelList {
-	s.SecurityChip = &v
+func (s *ListShadowSchemaDeviceModelsResponseBodyModelList) SetDeviceBrand(v string) *ListShadowSchemaDeviceModelsResponseBodyModelList {
+	s.DeviceBrand = &v
 	return s
 }
 
-func (s *ListShadowSchemaDeviceModelsResponseBodyModelList) SetDescription(v string) *ListShadowSchemaDeviceModelsResponseBodyModelList {
-	s.Description = &v
-	return s
-}
-
-func (s *ListShadowSchemaDeviceModelsResponseBodyModelList) SetInitUsageTypeDesc(v string) *ListShadowSchemaDeviceModelsResponseBodyModelList {
-	s.InitUsageTypeDesc = &v
+func (s *ListShadowSchemaDeviceModelsResponseBodyModelList) SetCanCreateDeviceId(v int32) *ListShadowSchemaDeviceModelsResponseBodyModelList {
+	s.CanCreateDeviceId = &v
 	return s
 }
 
@@ -17368,8 +17650,28 @@ func (s *ListShadowSchemaDeviceModelsResponseBodyModelList) SetInitUsageType(v i
 	return s
 }
 
-func (s *ListShadowSchemaDeviceModelsResponseBodyModelList) SetDeviceBrand(v string) *ListShadowSchemaDeviceModelsResponseBodyModelList {
-	s.DeviceBrand = &v
+func (s *ListShadowSchemaDeviceModelsResponseBodyModelList) SetInitUsageTypeDesc(v string) *ListShadowSchemaDeviceModelsResponseBodyModelList {
+	s.InitUsageTypeDesc = &v
+	return s
+}
+
+func (s *ListShadowSchemaDeviceModelsResponseBodyModelList) SetDescription(v string) *ListShadowSchemaDeviceModelsResponseBodyModelList {
+	s.Description = &v
+	return s
+}
+
+func (s *ListShadowSchemaDeviceModelsResponseBodyModelList) SetProjectId(v string) *ListShadowSchemaDeviceModelsResponseBodyModelList {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListShadowSchemaDeviceModelsResponseBodyModelList) SetSecurityChip(v int32) *ListShadowSchemaDeviceModelsResponseBodyModelList {
+	s.SecurityChip = &v
+	return s
+}
+
+func (s *ListShadowSchemaDeviceModelsResponseBodyModelList) SetOsPlatform(v string) *ListShadowSchemaDeviceModelsResponseBodyModelList {
+	s.OsPlatform = &v
 	return s
 }
 
@@ -17461,8 +17763,8 @@ func (s *ListShadowSchemasResponseBody) SetPageList(v *ListShadowSchemasResponse
 }
 
 type ListShadowSchemasResponseBodyPageList struct {
-	Pagination *ListShadowSchemasResponseBodyPageListPagination `json:"Pagination,omitempty" xml:"Pagination,omitempty" type:"Struct"`
 	List       []*ListShadowSchemasResponseBodyPageListList     `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	Pagination *ListShadowSchemasResponseBodyPageListPagination `json:"Pagination,omitempty" xml:"Pagination,omitempty" type:"Struct"`
 }
 
 func (s ListShadowSchemasResponseBodyPageList) String() string {
@@ -17473,74 +17775,27 @@ func (s ListShadowSchemasResponseBodyPageList) GoString() string {
 	return s.String()
 }
 
-func (s *ListShadowSchemasResponseBodyPageList) SetPagination(v *ListShadowSchemasResponseBodyPageListPagination) *ListShadowSchemasResponseBodyPageList {
-	s.Pagination = v
-	return s
-}
-
 func (s *ListShadowSchemasResponseBodyPageList) SetList(v []*ListShadowSchemasResponseBodyPageListList) *ListShadowSchemasResponseBodyPageList {
 	s.List = v
 	return s
 }
 
-type ListShadowSchemasResponseBodyPageListPagination struct {
-	PageIndex      *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	TotalPageCount *int32 `json:"TotalPageCount,omitempty" xml:"TotalPageCount,omitempty"`
-	PageSize       *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount     *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	SimpleSign     *bool  `json:"SimpleSign,omitempty" xml:"SimpleSign,omitempty"`
-	HasNextPage    *bool  `json:"HasNextPage,omitempty" xml:"HasNextPage,omitempty"`
-}
-
-func (s ListShadowSchemasResponseBodyPageListPagination) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListShadowSchemasResponseBodyPageListPagination) GoString() string {
-	return s.String()
-}
-
-func (s *ListShadowSchemasResponseBodyPageListPagination) SetPageIndex(v int32) *ListShadowSchemasResponseBodyPageListPagination {
-	s.PageIndex = &v
-	return s
-}
-
-func (s *ListShadowSchemasResponseBodyPageListPagination) SetTotalPageCount(v int32) *ListShadowSchemasResponseBodyPageListPagination {
-	s.TotalPageCount = &v
-	return s
-}
-
-func (s *ListShadowSchemasResponseBodyPageListPagination) SetPageSize(v int32) *ListShadowSchemasResponseBodyPageListPagination {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListShadowSchemasResponseBodyPageListPagination) SetTotalCount(v int32) *ListShadowSchemasResponseBodyPageListPagination {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *ListShadowSchemasResponseBodyPageListPagination) SetSimpleSign(v bool) *ListShadowSchemasResponseBodyPageListPagination {
-	s.SimpleSign = &v
-	return s
-}
-
-func (s *ListShadowSchemasResponseBodyPageListPagination) SetHasNextPage(v bool) *ListShadowSchemasResponseBodyPageListPagination {
-	s.HasNextPage = &v
+func (s *ListShadowSchemasResponseBodyPageList) SetPagination(v *ListShadowSchemasResponseBodyPageListPagination) *ListShadowSchemasResponseBodyPageList {
+	s.Pagination = v
 	return s
 }
 
 type ListShadowSchemasResponseBodyPageListList struct {
 	AuthTypeDesc  *string `json:"AuthTypeDesc,omitempty" xml:"AuthTypeDesc,omitempty"`
-	DeviceModelId *int64  `json:"DeviceModelId,omitempty" xml:"DeviceModelId,omitempty"`
-	AuthType      *int32  `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	ProjectId     *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	GmtCreate     *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Namespace     *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	DeviceModel   *string `json:"DeviceModel,omitempty" xml:"DeviceModel,omitempty"`
-	GmtModified   *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	ModuleSchema  *string `json:"ModuleSchema,omitempty" xml:"ModuleSchema,omitempty"`
 	Id            *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	ProjectId     *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	DeviceModelId *int64  `json:"DeviceModelId,omitempty" xml:"DeviceModelId,omitempty"`
+	DeviceModel   *string `json:"DeviceModel,omitempty" xml:"DeviceModel,omitempty"`
+	ModuleSchema  *string `json:"ModuleSchema,omitempty" xml:"ModuleSchema,omitempty"`
+	Namespace     *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	AuthType      *int32  `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	GmtCreate     *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified   *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 }
 
 func (s ListShadowSchemasResponseBodyPageListList) String() string {
@@ -17556,13 +17811,8 @@ func (s *ListShadowSchemasResponseBodyPageListList) SetAuthTypeDesc(v string) *L
 	return s
 }
 
-func (s *ListShadowSchemasResponseBodyPageListList) SetDeviceModelId(v int64) *ListShadowSchemasResponseBodyPageListList {
-	s.DeviceModelId = &v
-	return s
-}
-
-func (s *ListShadowSchemasResponseBodyPageListList) SetAuthType(v int32) *ListShadowSchemasResponseBodyPageListList {
-	s.AuthType = &v
+func (s *ListShadowSchemasResponseBodyPageListList) SetId(v int64) *ListShadowSchemasResponseBodyPageListList {
+	s.Id = &v
 	return s
 }
 
@@ -17571,13 +17821,8 @@ func (s *ListShadowSchemasResponseBodyPageListList) SetProjectId(v string) *List
 	return s
 }
 
-func (s *ListShadowSchemasResponseBodyPageListList) SetGmtCreate(v int64) *ListShadowSchemasResponseBodyPageListList {
-	s.GmtCreate = &v
-	return s
-}
-
-func (s *ListShadowSchemasResponseBodyPageListList) SetNamespace(v string) *ListShadowSchemasResponseBodyPageListList {
-	s.Namespace = &v
+func (s *ListShadowSchemasResponseBodyPageListList) SetDeviceModelId(v int64) *ListShadowSchemasResponseBodyPageListList {
+	s.DeviceModelId = &v
 	return s
 }
 
@@ -17586,18 +17831,75 @@ func (s *ListShadowSchemasResponseBodyPageListList) SetDeviceModel(v string) *Li
 	return s
 }
 
-func (s *ListShadowSchemasResponseBodyPageListList) SetGmtModified(v int64) *ListShadowSchemasResponseBodyPageListList {
-	s.GmtModified = &v
-	return s
-}
-
 func (s *ListShadowSchemasResponseBodyPageListList) SetModuleSchema(v string) *ListShadowSchemasResponseBodyPageListList {
 	s.ModuleSchema = &v
 	return s
 }
 
-func (s *ListShadowSchemasResponseBodyPageListList) SetId(v int64) *ListShadowSchemasResponseBodyPageListList {
-	s.Id = &v
+func (s *ListShadowSchemasResponseBodyPageListList) SetNamespace(v string) *ListShadowSchemasResponseBodyPageListList {
+	s.Namespace = &v
+	return s
+}
+
+func (s *ListShadowSchemasResponseBodyPageListList) SetAuthType(v int32) *ListShadowSchemasResponseBodyPageListList {
+	s.AuthType = &v
+	return s
+}
+
+func (s *ListShadowSchemasResponseBodyPageListList) SetGmtCreate(v int64) *ListShadowSchemasResponseBodyPageListList {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListShadowSchemasResponseBodyPageListList) SetGmtModified(v int64) *ListShadowSchemasResponseBodyPageListList {
+	s.GmtModified = &v
+	return s
+}
+
+type ListShadowSchemasResponseBodyPageListPagination struct {
+	TotalCount     *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalPageCount *int32 `json:"TotalPageCount,omitempty" xml:"TotalPageCount,omitempty"`
+	PageIndex      *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	PageSize       *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SimpleSign     *bool  `json:"SimpleSign,omitempty" xml:"SimpleSign,omitempty"`
+	HasNextPage    *bool  `json:"HasNextPage,omitempty" xml:"HasNextPage,omitempty"`
+}
+
+func (s ListShadowSchemasResponseBodyPageListPagination) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListShadowSchemasResponseBodyPageListPagination) GoString() string {
+	return s.String()
+}
+
+func (s *ListShadowSchemasResponseBodyPageListPagination) SetTotalCount(v int32) *ListShadowSchemasResponseBodyPageListPagination {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListShadowSchemasResponseBodyPageListPagination) SetTotalPageCount(v int32) *ListShadowSchemasResponseBodyPageListPagination {
+	s.TotalPageCount = &v
+	return s
+}
+
+func (s *ListShadowSchemasResponseBodyPageListPagination) SetPageIndex(v int32) *ListShadowSchemasResponseBodyPageListPagination {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *ListShadowSchemasResponseBodyPageListPagination) SetPageSize(v int32) *ListShadowSchemasResponseBodyPageListPagination {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListShadowSchemasResponseBodyPageListPagination) SetSimpleSign(v bool) *ListShadowSchemasResponseBodyPageListPagination {
+	s.SimpleSign = &v
+	return s
+}
+
+func (s *ListShadowSchemasResponseBodyPageListPagination) SetHasNextPage(v bool) *ListShadowSchemasResponseBodyPageListPagination {
+	s.HasNextPage = &v
 	return s
 }
 
@@ -17746,8 +18048,8 @@ func (s *ListTriggersResponseBody) SetTriggerList(v *ListTriggersResponseBodyTri
 }
 
 type ListTriggersResponseBodyTriggerList struct {
-	Pagination *ListTriggersResponseBodyTriggerListPagination `json:"Pagination,omitempty" xml:"Pagination,omitempty" type:"Struct"`
 	Triggers   []*ListTriggersResponseBodyTriggerListTriggers `json:"Triggers,omitempty" xml:"Triggers,omitempty" type:"Repeated"`
+	Pagination *ListTriggersResponseBodyTriggerListPagination `json:"Pagination,omitempty" xml:"Pagination,omitempty" type:"Struct"`
 }
 
 func (s ListTriggersResponseBodyTriggerList) String() string {
@@ -17758,21 +18060,151 @@ func (s ListTriggersResponseBodyTriggerList) GoString() string {
 	return s.String()
 }
 
-func (s *ListTriggersResponseBodyTriggerList) SetPagination(v *ListTriggersResponseBodyTriggerListPagination) *ListTriggersResponseBodyTriggerList {
-	s.Pagination = v
-	return s
-}
-
 func (s *ListTriggersResponseBodyTriggerList) SetTriggers(v []*ListTriggersResponseBodyTriggerListTriggers) *ListTriggersResponseBodyTriggerList {
 	s.Triggers = v
 	return s
 }
 
+func (s *ListTriggersResponseBodyTriggerList) SetPagination(v *ListTriggersResponseBodyTriggerListPagination) *ListTriggersResponseBodyTriggerList {
+	s.Pagination = v
+	return s
+}
+
+type ListTriggersResponseBodyTriggerListTriggers struct {
+	Id                 *int64                                                  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Namespace          *string                                                 `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	Source             *string                                                 `json:"Source,omitempty" xml:"Source,omitempty"`
+	GmtCreate          *int64                                                  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified        *int64                                                  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	ChainedFunctionIds *string                                                 `json:"ChainedFunctionIds,omitempty" xml:"ChainedFunctionIds,omitempty"`
+	Type               *int32                                                  `json:"Type,omitempty" xml:"Type,omitempty"`
+	Status             *int32                                                  `json:"Status,omitempty" xml:"Status,omitempty"`
+	InvocationMode     *int32                                                  `json:"InvocationMode,omitempty" xml:"InvocationMode,omitempty"`
+	Sandbox            *int32                                                  `json:"Sandbox,omitempty" xml:"Sandbox,omitempty"`
+	Production         *int32                                                  `json:"Production,omitempty" xml:"Production,omitempty"`
+	Functions          []*ListTriggersResponseBodyTriggerListTriggersFunctions `json:"Functions,omitempty" xml:"Functions,omitempty" type:"Repeated"`
+}
+
+func (s ListTriggersResponseBodyTriggerListTriggers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTriggersResponseBodyTriggerListTriggers) GoString() string {
+	return s.String()
+}
+
+func (s *ListTriggersResponseBodyTriggerListTriggers) SetId(v int64) *ListTriggersResponseBodyTriggerListTriggers {
+	s.Id = &v
+	return s
+}
+
+func (s *ListTriggersResponseBodyTriggerListTriggers) SetNamespace(v string) *ListTriggersResponseBodyTriggerListTriggers {
+	s.Namespace = &v
+	return s
+}
+
+func (s *ListTriggersResponseBodyTriggerListTriggers) SetSource(v string) *ListTriggersResponseBodyTriggerListTriggers {
+	s.Source = &v
+	return s
+}
+
+func (s *ListTriggersResponseBodyTriggerListTriggers) SetGmtCreate(v int64) *ListTriggersResponseBodyTriggerListTriggers {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListTriggersResponseBodyTriggerListTriggers) SetGmtModified(v int64) *ListTriggersResponseBodyTriggerListTriggers {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ListTriggersResponseBodyTriggerListTriggers) SetChainedFunctionIds(v string) *ListTriggersResponseBodyTriggerListTriggers {
+	s.ChainedFunctionIds = &v
+	return s
+}
+
+func (s *ListTriggersResponseBodyTriggerListTriggers) SetType(v int32) *ListTriggersResponseBodyTriggerListTriggers {
+	s.Type = &v
+	return s
+}
+
+func (s *ListTriggersResponseBodyTriggerListTriggers) SetStatus(v int32) *ListTriggersResponseBodyTriggerListTriggers {
+	s.Status = &v
+	return s
+}
+
+func (s *ListTriggersResponseBodyTriggerListTriggers) SetInvocationMode(v int32) *ListTriggersResponseBodyTriggerListTriggers {
+	s.InvocationMode = &v
+	return s
+}
+
+func (s *ListTriggersResponseBodyTriggerListTriggers) SetSandbox(v int32) *ListTriggersResponseBodyTriggerListTriggers {
+	s.Sandbox = &v
+	return s
+}
+
+func (s *ListTriggersResponseBodyTriggerListTriggers) SetProduction(v int32) *ListTriggersResponseBodyTriggerListTriggers {
+	s.Production = &v
+	return s
+}
+
+func (s *ListTriggersResponseBodyTriggerListTriggers) SetFunctions(v []*ListTriggersResponseBodyTriggerListTriggersFunctions) *ListTriggersResponseBodyTriggerListTriggers {
+	s.Functions = v
+	return s
+}
+
+type ListTriggersResponseBodyTriggerListTriggersFunctions struct {
+	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	FileId      *int64  `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	FileName    *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	GmtCreate   *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+}
+
+func (s ListTriggersResponseBodyTriggerListTriggersFunctions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTriggersResponseBodyTriggerListTriggersFunctions) GoString() string {
+	return s.String()
+}
+
+func (s *ListTriggersResponseBodyTriggerListTriggersFunctions) SetId(v int64) *ListTriggersResponseBodyTriggerListTriggersFunctions {
+	s.Id = &v
+	return s
+}
+
+func (s *ListTriggersResponseBodyTriggerListTriggersFunctions) SetName(v string) *ListTriggersResponseBodyTriggerListTriggersFunctions {
+	s.Name = &v
+	return s
+}
+
+func (s *ListTriggersResponseBodyTriggerListTriggersFunctions) SetFileId(v int64) *ListTriggersResponseBodyTriggerListTriggersFunctions {
+	s.FileId = &v
+	return s
+}
+
+func (s *ListTriggersResponseBodyTriggerListTriggersFunctions) SetFileName(v string) *ListTriggersResponseBodyTriggerListTriggersFunctions {
+	s.FileName = &v
+	return s
+}
+
+func (s *ListTriggersResponseBodyTriggerListTriggersFunctions) SetGmtCreate(v int64) *ListTriggersResponseBodyTriggerListTriggersFunctions {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListTriggersResponseBodyTriggerListTriggersFunctions) SetGmtModified(v int64) *ListTriggersResponseBodyTriggerListTriggersFunctions {
+	s.GmtModified = &v
+	return s
+}
+
 type ListTriggersResponseBodyTriggerListPagination struct {
 	PageIndex      *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	TotalPageCount *int32 `json:"TotalPageCount,omitempty" xml:"TotalPageCount,omitempty"`
 	PageSize       *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	TotalCount     *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalPageCount *int32 `json:"TotalPageCount,omitempty" xml:"TotalPageCount,omitempty"`
 }
 
 func (s ListTriggersResponseBodyTriggerListPagination) String() string {
@@ -17788,11 +18220,6 @@ func (s *ListTriggersResponseBodyTriggerListPagination) SetPageIndex(v int32) *L
 	return s
 }
 
-func (s *ListTriggersResponseBodyTriggerListPagination) SetTotalPageCount(v int32) *ListTriggersResponseBodyTriggerListPagination {
-	s.TotalPageCount = &v
-	return s
-}
-
 func (s *ListTriggersResponseBodyTriggerListPagination) SetPageSize(v int32) *ListTriggersResponseBodyTriggerListPagination {
 	s.PageSize = &v
 	return s
@@ -17803,133 +18230,8 @@ func (s *ListTriggersResponseBodyTriggerListPagination) SetTotalCount(v int32) *
 	return s
 }
 
-type ListTriggersResponseBodyTriggerListTriggers struct {
-	Status             *int32                                                  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type               *int32                                                  `json:"Type,omitempty" xml:"Type,omitempty"`
-	Production         *int32                                                  `json:"Production,omitempty" xml:"Production,omitempty"`
-	Functions          []*ListTriggersResponseBodyTriggerListTriggersFunctions `json:"Functions,omitempty" xml:"Functions,omitempty" type:"Repeated"`
-	Sandbox            *int32                                                  `json:"Sandbox,omitempty" xml:"Sandbox,omitempty"`
-	Namespace          *string                                                 `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	GmtModified        *int64                                                  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Source             *string                                                 `json:"Source,omitempty" xml:"Source,omitempty"`
-	ChainedFunctionIds *string                                                 `json:"ChainedFunctionIds,omitempty" xml:"ChainedFunctionIds,omitempty"`
-	GmtCreate          *int64                                                  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	InvocationMode     *int32                                                  `json:"InvocationMode,omitempty" xml:"InvocationMode,omitempty"`
-	Id                 *int64                                                  `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s ListTriggersResponseBodyTriggerListTriggers) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListTriggersResponseBodyTriggerListTriggers) GoString() string {
-	return s.String()
-}
-
-func (s *ListTriggersResponseBodyTriggerListTriggers) SetStatus(v int32) *ListTriggersResponseBodyTriggerListTriggers {
-	s.Status = &v
-	return s
-}
-
-func (s *ListTriggersResponseBodyTriggerListTriggers) SetType(v int32) *ListTriggersResponseBodyTriggerListTriggers {
-	s.Type = &v
-	return s
-}
-
-func (s *ListTriggersResponseBodyTriggerListTriggers) SetProduction(v int32) *ListTriggersResponseBodyTriggerListTriggers {
-	s.Production = &v
-	return s
-}
-
-func (s *ListTriggersResponseBodyTriggerListTriggers) SetFunctions(v []*ListTriggersResponseBodyTriggerListTriggersFunctions) *ListTriggersResponseBodyTriggerListTriggers {
-	s.Functions = v
-	return s
-}
-
-func (s *ListTriggersResponseBodyTriggerListTriggers) SetSandbox(v int32) *ListTriggersResponseBodyTriggerListTriggers {
-	s.Sandbox = &v
-	return s
-}
-
-func (s *ListTriggersResponseBodyTriggerListTriggers) SetNamespace(v string) *ListTriggersResponseBodyTriggerListTriggers {
-	s.Namespace = &v
-	return s
-}
-
-func (s *ListTriggersResponseBodyTriggerListTriggers) SetGmtModified(v int64) *ListTriggersResponseBodyTriggerListTriggers {
-	s.GmtModified = &v
-	return s
-}
-
-func (s *ListTriggersResponseBodyTriggerListTriggers) SetSource(v string) *ListTriggersResponseBodyTriggerListTriggers {
-	s.Source = &v
-	return s
-}
-
-func (s *ListTriggersResponseBodyTriggerListTriggers) SetChainedFunctionIds(v string) *ListTriggersResponseBodyTriggerListTriggers {
-	s.ChainedFunctionIds = &v
-	return s
-}
-
-func (s *ListTriggersResponseBodyTriggerListTriggers) SetGmtCreate(v int64) *ListTriggersResponseBodyTriggerListTriggers {
-	s.GmtCreate = &v
-	return s
-}
-
-func (s *ListTriggersResponseBodyTriggerListTriggers) SetInvocationMode(v int32) *ListTriggersResponseBodyTriggerListTriggers {
-	s.InvocationMode = &v
-	return s
-}
-
-func (s *ListTriggersResponseBodyTriggerListTriggers) SetId(v int64) *ListTriggersResponseBodyTriggerListTriggers {
-	s.Id = &v
-	return s
-}
-
-type ListTriggersResponseBodyTriggerListTriggersFunctions struct {
-	GmtCreate   *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	FileName    *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	GmtModified *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	FileId      *int64  `json:"FileId,omitempty" xml:"FileId,omitempty"`
-}
-
-func (s ListTriggersResponseBodyTriggerListTriggersFunctions) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListTriggersResponseBodyTriggerListTriggersFunctions) GoString() string {
-	return s.String()
-}
-
-func (s *ListTriggersResponseBodyTriggerListTriggersFunctions) SetGmtCreate(v int64) *ListTriggersResponseBodyTriggerListTriggersFunctions {
-	s.GmtCreate = &v
-	return s
-}
-
-func (s *ListTriggersResponseBodyTriggerListTriggersFunctions) SetFileName(v string) *ListTriggersResponseBodyTriggerListTriggersFunctions {
-	s.FileName = &v
-	return s
-}
-
-func (s *ListTriggersResponseBodyTriggerListTriggersFunctions) SetName(v string) *ListTriggersResponseBodyTriggerListTriggersFunctions {
-	s.Name = &v
-	return s
-}
-
-func (s *ListTriggersResponseBodyTriggerListTriggersFunctions) SetGmtModified(v int64) *ListTriggersResponseBodyTriggerListTriggersFunctions {
-	s.GmtModified = &v
-	return s
-}
-
-func (s *ListTriggersResponseBodyTriggerListTriggersFunctions) SetId(v int64) *ListTriggersResponseBodyTriggerListTriggersFunctions {
-	s.Id = &v
-	return s
-}
-
-func (s *ListTriggersResponseBodyTriggerListTriggersFunctions) SetFileId(v int64) *ListTriggersResponseBodyTriggerListTriggersFunctions {
-	s.FileId = &v
+func (s *ListTriggersResponseBodyTriggerListPagination) SetTotalPageCount(v int32) *ListTriggersResponseBodyTriggerListPagination {
+	s.TotalPageCount = &v
 	return s
 }
 
@@ -18015,8 +18317,8 @@ func (s *ListUpstreamAppKeyRelationsResponseBody) SetRelationList(v *ListUpstrea
 }
 
 type ListUpstreamAppKeyRelationsResponseBodyRelationList struct {
-	Pagination *ListUpstreamAppKeyRelationsResponseBodyRelationListPagination `json:"Pagination,omitempty" xml:"Pagination,omitempty" type:"Struct"`
 	List       []*ListUpstreamAppKeyRelationsResponseBodyRelationListList     `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	Pagination *ListUpstreamAppKeyRelationsResponseBodyRelationListPagination `json:"Pagination,omitempty" xml:"Pagination,omitempty" type:"Struct"`
 }
 
 func (s ListUpstreamAppKeyRelationsResponseBodyRelationList) String() string {
@@ -18027,59 +18329,24 @@ func (s ListUpstreamAppKeyRelationsResponseBodyRelationList) GoString() string {
 	return s.String()
 }
 
-func (s *ListUpstreamAppKeyRelationsResponseBodyRelationList) SetPagination(v *ListUpstreamAppKeyRelationsResponseBodyRelationListPagination) *ListUpstreamAppKeyRelationsResponseBodyRelationList {
-	s.Pagination = v
-	return s
-}
-
 func (s *ListUpstreamAppKeyRelationsResponseBodyRelationList) SetList(v []*ListUpstreamAppKeyRelationsResponseBodyRelationListList) *ListUpstreamAppKeyRelationsResponseBodyRelationList {
 	s.List = v
 	return s
 }
 
-type ListUpstreamAppKeyRelationsResponseBodyRelationListPagination struct {
-	PageIndex      *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	TotalPageCount *int32 `json:"TotalPageCount,omitempty" xml:"TotalPageCount,omitempty"`
-	PageSize       *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount     *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ListUpstreamAppKeyRelationsResponseBodyRelationListPagination) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUpstreamAppKeyRelationsResponseBodyRelationListPagination) GoString() string {
-	return s.String()
-}
-
-func (s *ListUpstreamAppKeyRelationsResponseBodyRelationListPagination) SetPageIndex(v int32) *ListUpstreamAppKeyRelationsResponseBodyRelationListPagination {
-	s.PageIndex = &v
-	return s
-}
-
-func (s *ListUpstreamAppKeyRelationsResponseBodyRelationListPagination) SetTotalPageCount(v int32) *ListUpstreamAppKeyRelationsResponseBodyRelationListPagination {
-	s.TotalPageCount = &v
-	return s
-}
-
-func (s *ListUpstreamAppKeyRelationsResponseBodyRelationListPagination) SetPageSize(v int32) *ListUpstreamAppKeyRelationsResponseBodyRelationListPagination {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListUpstreamAppKeyRelationsResponseBodyRelationListPagination) SetTotalCount(v int32) *ListUpstreamAppKeyRelationsResponseBodyRelationListPagination {
-	s.TotalCount = &v
+func (s *ListUpstreamAppKeyRelationsResponseBodyRelationList) SetPagination(v *ListUpstreamAppKeyRelationsResponseBodyRelationListPagination) *ListUpstreamAppKeyRelationsResponseBodyRelationList {
+	s.Pagination = v
 	return s
 }
 
 type ListUpstreamAppKeyRelationsResponseBodyRelationListList struct {
-	AppName    *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	Id         *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	AppKey     *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	AppPackage *string `json:"AppPackage,omitempty" xml:"AppPackage,omitempty"`
+	PAppKey    *string `json:"PAppKey,omitempty" xml:"PAppKey,omitempty"`
 	ProjectId  *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	GmtCreate  *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	PAppKey    *string `json:"PAppKey,omitempty" xml:"PAppKey,omitempty"`
-	Id         *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	AppName    *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppPackage *string `json:"AppPackage,omitempty" xml:"AppPackage,omitempty"`
 }
 
 func (s ListUpstreamAppKeyRelationsResponseBodyRelationListList) String() string {
@@ -18090,8 +18357,8 @@ func (s ListUpstreamAppKeyRelationsResponseBodyRelationListList) GoString() stri
 	return s.String()
 }
 
-func (s *ListUpstreamAppKeyRelationsResponseBodyRelationListList) SetAppName(v string) *ListUpstreamAppKeyRelationsResponseBodyRelationListList {
-	s.AppName = &v
+func (s *ListUpstreamAppKeyRelationsResponseBodyRelationListList) SetId(v int64) *ListUpstreamAppKeyRelationsResponseBodyRelationListList {
+	s.Id = &v
 	return s
 }
 
@@ -18100,8 +18367,8 @@ func (s *ListUpstreamAppKeyRelationsResponseBodyRelationListList) SetAppKey(v st
 	return s
 }
 
-func (s *ListUpstreamAppKeyRelationsResponseBodyRelationListList) SetAppPackage(v string) *ListUpstreamAppKeyRelationsResponseBodyRelationListList {
-	s.AppPackage = &v
+func (s *ListUpstreamAppKeyRelationsResponseBodyRelationListList) SetPAppKey(v string) *ListUpstreamAppKeyRelationsResponseBodyRelationListList {
+	s.PAppKey = &v
 	return s
 }
 
@@ -18115,13 +18382,48 @@ func (s *ListUpstreamAppKeyRelationsResponseBodyRelationListList) SetGmtCreate(v
 	return s
 }
 
-func (s *ListUpstreamAppKeyRelationsResponseBodyRelationListList) SetPAppKey(v string) *ListUpstreamAppKeyRelationsResponseBodyRelationListList {
-	s.PAppKey = &v
+func (s *ListUpstreamAppKeyRelationsResponseBodyRelationListList) SetAppName(v string) *ListUpstreamAppKeyRelationsResponseBodyRelationListList {
+	s.AppName = &v
 	return s
 }
 
-func (s *ListUpstreamAppKeyRelationsResponseBodyRelationListList) SetId(v int64) *ListUpstreamAppKeyRelationsResponseBodyRelationListList {
-	s.Id = &v
+func (s *ListUpstreamAppKeyRelationsResponseBodyRelationListList) SetAppPackage(v string) *ListUpstreamAppKeyRelationsResponseBodyRelationListList {
+	s.AppPackage = &v
+	return s
+}
+
+type ListUpstreamAppKeyRelationsResponseBodyRelationListPagination struct {
+	TotalCount     *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalPageCount *int32 `json:"TotalPageCount,omitempty" xml:"TotalPageCount,omitempty"`
+	PageIndex      *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	PageSize       *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListUpstreamAppKeyRelationsResponseBodyRelationListPagination) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUpstreamAppKeyRelationsResponseBodyRelationListPagination) GoString() string {
+	return s.String()
+}
+
+func (s *ListUpstreamAppKeyRelationsResponseBodyRelationListPagination) SetTotalCount(v int32) *ListUpstreamAppKeyRelationsResponseBodyRelationListPagination {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListUpstreamAppKeyRelationsResponseBodyRelationListPagination) SetTotalPageCount(v int32) *ListUpstreamAppKeyRelationsResponseBodyRelationListPagination {
+	s.TotalPageCount = &v
+	return s
+}
+
+func (s *ListUpstreamAppKeyRelationsResponseBodyRelationListPagination) SetPageIndex(v int32) *ListUpstreamAppKeyRelationsResponseBodyRelationListPagination {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *ListUpstreamAppKeyRelationsResponseBodyRelationListPagination) SetPageSize(v int32) *ListUpstreamAppKeyRelationsResponseBodyRelationListPagination {
+	s.PageSize = &v
 	return s
 }
 
@@ -18201,8 +18503,8 @@ func (s *ListUpstreamAppServersResponseBody) SetAppServers(v *ListUpstreamAppSer
 }
 
 type ListUpstreamAppServersResponseBodyAppServers struct {
-	Pagination *ListUpstreamAppServersResponseBodyAppServersPagination `json:"Pagination,omitempty" xml:"Pagination,omitempty" type:"Struct"`
 	List       []*ListUpstreamAppServersResponseBodyAppServersList     `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	Pagination *ListUpstreamAppServersResponseBodyAppServersPagination `json:"Pagination,omitempty" xml:"Pagination,omitempty" type:"Struct"`
 }
 
 func (s ListUpstreamAppServersResponseBodyAppServers) String() string {
@@ -18213,60 +18515,25 @@ func (s ListUpstreamAppServersResponseBodyAppServers) GoString() string {
 	return s.String()
 }
 
-func (s *ListUpstreamAppServersResponseBodyAppServers) SetPagination(v *ListUpstreamAppServersResponseBodyAppServersPagination) *ListUpstreamAppServersResponseBodyAppServers {
-	s.Pagination = v
-	return s
-}
-
 func (s *ListUpstreamAppServersResponseBodyAppServers) SetList(v []*ListUpstreamAppServersResponseBodyAppServersList) *ListUpstreamAppServersResponseBodyAppServers {
 	s.List = v
 	return s
 }
 
-type ListUpstreamAppServersResponseBodyAppServersPagination struct {
-	PageIndex      *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	TotalPageCount *int32 `json:"TotalPageCount,omitempty" xml:"TotalPageCount,omitempty"`
-	PageSize       *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount     *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ListUpstreamAppServersResponseBodyAppServersPagination) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUpstreamAppServersResponseBodyAppServersPagination) GoString() string {
-	return s.String()
-}
-
-func (s *ListUpstreamAppServersResponseBodyAppServersPagination) SetPageIndex(v int32) *ListUpstreamAppServersResponseBodyAppServersPagination {
-	s.PageIndex = &v
-	return s
-}
-
-func (s *ListUpstreamAppServersResponseBodyAppServersPagination) SetTotalPageCount(v int32) *ListUpstreamAppServersResponseBodyAppServersPagination {
-	s.TotalPageCount = &v
-	return s
-}
-
-func (s *ListUpstreamAppServersResponseBodyAppServersPagination) SetPageSize(v int32) *ListUpstreamAppServersResponseBodyAppServersPagination {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListUpstreamAppServersResponseBodyAppServersPagination) SetTotalCount(v int32) *ListUpstreamAppServersResponseBodyAppServersPagination {
-	s.TotalCount = &v
+func (s *ListUpstreamAppServersResponseBodyAppServers) SetPagination(v *ListUpstreamAppServersResponseBodyAppServersPagination) *ListUpstreamAppServersResponseBodyAppServers {
+	s.Pagination = v
 	return s
 }
 
 type ListUpstreamAppServersResponseBodyAppServersList struct {
-	ProjectId     *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	GmtCreate     *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Tags          *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	QueueNameList *string `json:"QueueNameList,omitempty" xml:"QueueNameList,omitempty"`
-	PAppKey       *string `json:"PAppKey,omitempty" xml:"PAppKey,omitempty"`
-	GmtModified   *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Id            *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	PAppKey       *string `json:"PAppKey,omitempty" xml:"PAppKey,omitempty"`
+	ProjectId     *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Tags          *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	GmtCreate     *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified   *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	QueueNameList *string `json:"QueueNameList,omitempty" xml:"QueueNameList,omitempty"`
 }
 
 func (s ListUpstreamAppServersResponseBodyAppServersList) String() string {
@@ -18277,23 +18544,8 @@ func (s ListUpstreamAppServersResponseBodyAppServersList) GoString() string {
 	return s.String()
 }
 
-func (s *ListUpstreamAppServersResponseBodyAppServersList) SetProjectId(v string) *ListUpstreamAppServersResponseBodyAppServersList {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *ListUpstreamAppServersResponseBodyAppServersList) SetGmtCreate(v int64) *ListUpstreamAppServersResponseBodyAppServersList {
-	s.GmtCreate = &v
-	return s
-}
-
-func (s *ListUpstreamAppServersResponseBodyAppServersList) SetTags(v string) *ListUpstreamAppServersResponseBodyAppServersList {
-	s.Tags = &v
-	return s
-}
-
-func (s *ListUpstreamAppServersResponseBodyAppServersList) SetQueueNameList(v string) *ListUpstreamAppServersResponseBodyAppServersList {
-	s.QueueNameList = &v
+func (s *ListUpstreamAppServersResponseBodyAppServersList) SetId(v int64) *ListUpstreamAppServersResponseBodyAppServersList {
+	s.Id = &v
 	return s
 }
 
@@ -18302,8 +18554,8 @@ func (s *ListUpstreamAppServersResponseBodyAppServersList) SetPAppKey(v string) 
 	return s
 }
 
-func (s *ListUpstreamAppServersResponseBodyAppServersList) SetGmtModified(v int64) *ListUpstreamAppServersResponseBodyAppServersList {
-	s.GmtModified = &v
+func (s *ListUpstreamAppServersResponseBodyAppServersList) SetProjectId(v string) *ListUpstreamAppServersResponseBodyAppServersList {
+	s.ProjectId = &v
 	return s
 }
 
@@ -18312,8 +18564,58 @@ func (s *ListUpstreamAppServersResponseBodyAppServersList) SetName(v string) *Li
 	return s
 }
 
-func (s *ListUpstreamAppServersResponseBodyAppServersList) SetId(v int64) *ListUpstreamAppServersResponseBodyAppServersList {
-	s.Id = &v
+func (s *ListUpstreamAppServersResponseBodyAppServersList) SetTags(v string) *ListUpstreamAppServersResponseBodyAppServersList {
+	s.Tags = &v
+	return s
+}
+
+func (s *ListUpstreamAppServersResponseBodyAppServersList) SetGmtCreate(v int64) *ListUpstreamAppServersResponseBodyAppServersList {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListUpstreamAppServersResponseBodyAppServersList) SetGmtModified(v int64) *ListUpstreamAppServersResponseBodyAppServersList {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ListUpstreamAppServersResponseBodyAppServersList) SetQueueNameList(v string) *ListUpstreamAppServersResponseBodyAppServersList {
+	s.QueueNameList = &v
+	return s
+}
+
+type ListUpstreamAppServersResponseBodyAppServersPagination struct {
+	TotalCount     *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalPageCount *int32 `json:"TotalPageCount,omitempty" xml:"TotalPageCount,omitempty"`
+	PageIndex      *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	PageSize       *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListUpstreamAppServersResponseBodyAppServersPagination) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUpstreamAppServersResponseBodyAppServersPagination) GoString() string {
+	return s.String()
+}
+
+func (s *ListUpstreamAppServersResponseBodyAppServersPagination) SetTotalCount(v int32) *ListUpstreamAppServersResponseBodyAppServersPagination {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListUpstreamAppServersResponseBodyAppServersPagination) SetTotalPageCount(v int32) *ListUpstreamAppServersResponseBodyAppServersPagination {
+	s.TotalPageCount = &v
+	return s
+}
+
+func (s *ListUpstreamAppServersResponseBodyAppServersPagination) SetPageIndex(v int32) *ListUpstreamAppServersResponseBodyAppServersPagination {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *ListUpstreamAppServersResponseBodyAppServersPagination) SetPageSize(v int32) *ListUpstreamAppServersResponseBodyAppServersPagination {
+	s.PageSize = &v
 	return s
 }
 
@@ -18381,11 +18683,11 @@ func (s *ListVersionDeviceGroupsResponseBody) SetDeviceGroupList(v []*ListVersio
 }
 
 type ListVersionDeviceGroupsResponseBodyDeviceGroupList struct {
-	GmtModify   *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	GmtCreate   *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	GmtModify   *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
 }
 
 func (s ListVersionDeviceGroupsResponseBodyDeviceGroupList) String() string {
@@ -18396,8 +18698,13 @@ func (s ListVersionDeviceGroupsResponseBodyDeviceGroupList) GoString() string {
 	return s.String()
 }
 
-func (s *ListVersionDeviceGroupsResponseBodyDeviceGroupList) SetGmtModify(v string) *ListVersionDeviceGroupsResponseBodyDeviceGroupList {
-	s.GmtModify = &v
+func (s *ListVersionDeviceGroupsResponseBodyDeviceGroupList) SetId(v string) *ListVersionDeviceGroupsResponseBodyDeviceGroupList {
+	s.Id = &v
+	return s
+}
+
+func (s *ListVersionDeviceGroupsResponseBodyDeviceGroupList) SetName(v string) *ListVersionDeviceGroupsResponseBodyDeviceGroupList {
+	s.Name = &v
 	return s
 }
 
@@ -18411,13 +18718,8 @@ func (s *ListVersionDeviceGroupsResponseBodyDeviceGroupList) SetGmtCreate(v stri
 	return s
 }
 
-func (s *ListVersionDeviceGroupsResponseBodyDeviceGroupList) SetName(v string) *ListVersionDeviceGroupsResponseBodyDeviceGroupList {
-	s.Name = &v
-	return s
-}
-
-func (s *ListVersionDeviceGroupsResponseBodyDeviceGroupList) SetId(v string) *ListVersionDeviceGroupsResponseBodyDeviceGroupList {
-	s.Id = &v
+func (s *ListVersionDeviceGroupsResponseBodyDeviceGroupList) SetGmtModify(v string) *ListVersionDeviceGroupsResponseBodyDeviceGroupList {
+	s.GmtModify = &v
 	return s
 }
 
@@ -21070,6 +21372,34 @@ func (client *Client) ConnectAssistDevice(request *ConnectAssistDeviceRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &ConnectAssistDeviceResponse{}
 	_body, _err := client.ConnectAssistDeviceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CountActivatedOrNewRegistrationDeviceWithOptions(request *CountActivatedOrNewRegistrationDeviceRequest, runtime *util.RuntimeOptions) (_result *CountActivatedOrNewRegistrationDeviceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CountActivatedOrNewRegistrationDeviceResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CountActivatedOrNewRegistrationDevice"), tea.String("2018-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CountActivatedOrNewRegistrationDevice(request *CountActivatedOrNewRegistrationDeviceRequest) (_result *CountActivatedOrNewRegistrationDeviceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CountActivatedOrNewRegistrationDeviceResponse{}
+	_body, _err := client.CountActivatedOrNewRegistrationDeviceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23954,6 +24284,34 @@ func (client *Client) GetNamespaceData(request *GetNamespaceDataRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &GetNamespaceDataResponse{}
 	_body, _err := client.GetNamespaceDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetNamespaceStatisticsDataWithOptions(request *GetNamespaceStatisticsDataRequest, runtime *util.RuntimeOptions) (_result *GetNamespaceStatisticsDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetNamespaceStatisticsDataResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetNamespaceStatisticsData"), tea.String("2018-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetNamespaceStatisticsData(request *GetNamespaceStatisticsDataRequest) (_result *GetNamespaceStatisticsDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetNamespaceStatisticsDataResponse{}
+	_body, _err := client.GetNamespaceStatisticsDataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
