@@ -1103,6 +1103,69 @@ func (s *ConfirmTransferInEmailResponse) SetBody(v *ConfirmTransferInEmailRespon
 	return s
 }
 
+type DeleteContactTemplatesRequest struct {
+	UserClientIp         *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	RegistrantProfileIds *string `json:"RegistrantProfileIds,omitempty" xml:"RegistrantProfileIds,omitempty"`
+}
+
+func (s DeleteContactTemplatesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteContactTemplatesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteContactTemplatesRequest) SetUserClientIp(v string) *DeleteContactTemplatesRequest {
+	s.UserClientIp = &v
+	return s
+}
+
+func (s *DeleteContactTemplatesRequest) SetRegistrantProfileIds(v string) *DeleteContactTemplatesRequest {
+	s.RegistrantProfileIds = &v
+	return s
+}
+
+type DeleteContactTemplatesResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteContactTemplatesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteContactTemplatesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteContactTemplatesResponseBody) SetRequestId(v string) *DeleteContactTemplatesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteContactTemplatesResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteContactTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteContactTemplatesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteContactTemplatesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteContactTemplatesResponse) SetHeaders(v map[string]*string) *DeleteContactTemplatesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteContactTemplatesResponse) SetBody(v *DeleteContactTemplatesResponseBody) *DeleteContactTemplatesResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteDomainGroupRequest struct {
 	UserClientIp  *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 	Lang          *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
@@ -10051,6 +10114,92 @@ func (s *SaveBatchTaskForModifyingDomainDnsResponse) SetBody(v *SaveBatchTaskFor
 	return s
 }
 
+type SaveBatchTaskForReserveDropListDomainRequest struct {
+	ContactTemplateId *string                                                `json:"ContactTemplateId,omitempty" xml:"ContactTemplateId,omitempty"`
+	Domains           []*SaveBatchTaskForReserveDropListDomainRequestDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
+}
+
+func (s SaveBatchTaskForReserveDropListDomainRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveBatchTaskForReserveDropListDomainRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SaveBatchTaskForReserveDropListDomainRequest) SetContactTemplateId(v string) *SaveBatchTaskForReserveDropListDomainRequest {
+	s.ContactTemplateId = &v
+	return s
+}
+
+func (s *SaveBatchTaskForReserveDropListDomainRequest) SetDomains(v []*SaveBatchTaskForReserveDropListDomainRequestDomains) *SaveBatchTaskForReserveDropListDomainRequest {
+	s.Domains = v
+	return s
+}
+
+type SaveBatchTaskForReserveDropListDomainRequestDomains struct {
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+}
+
+func (s SaveBatchTaskForReserveDropListDomainRequestDomains) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveBatchTaskForReserveDropListDomainRequestDomains) GoString() string {
+	return s.String()
+}
+
+func (s *SaveBatchTaskForReserveDropListDomainRequestDomains) SetDomainName(v string) *SaveBatchTaskForReserveDropListDomainRequestDomains {
+	s.DomainName = &v
+	return s
+}
+
+type SaveBatchTaskForReserveDropListDomainResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+}
+
+func (s SaveBatchTaskForReserveDropListDomainResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveBatchTaskForReserveDropListDomainResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SaveBatchTaskForReserveDropListDomainResponseBody) SetRequestId(v string) *SaveBatchTaskForReserveDropListDomainResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SaveBatchTaskForReserveDropListDomainResponseBody) SetTaskNo(v string) *SaveBatchTaskForReserveDropListDomainResponseBody {
+	s.TaskNo = &v
+	return s
+}
+
+type SaveBatchTaskForReserveDropListDomainResponse struct {
+	Headers map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SaveBatchTaskForReserveDropListDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SaveBatchTaskForReserveDropListDomainResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveBatchTaskForReserveDropListDomainResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SaveBatchTaskForReserveDropListDomainResponse) SetHeaders(v map[string]*string) *SaveBatchTaskForReserveDropListDomainResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SaveBatchTaskForReserveDropListDomainResponse) SetBody(v *SaveBatchTaskForReserveDropListDomainResponseBody) *SaveBatchTaskForReserveDropListDomainResponse {
+	s.Body = v
+	return s
+}
+
 type SaveBatchTaskForTransferProhibitionLockRequest struct {
 	UserClientIp *string   `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 	Lang         *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
@@ -10797,6 +10946,207 @@ func (s *SaveRegistrantProfileResponse) SetHeaders(v map[string]*string) *SaveRe
 }
 
 func (s *SaveRegistrantProfileResponse) SetBody(v *SaveRegistrantProfileResponseBody) *SaveRegistrantProfileResponse {
+	s.Body = v
+	return s
+}
+
+type SaveRegistrantProfileRealNameVerificationRequest struct {
+	Country                  *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	UserClientIp             *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	Lang                     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	RegistrantProfileId      *int64  `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
+	City                     *string `json:"City,omitempty" xml:"City,omitempty"`
+	RegistrantOrganization   *string `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
+	RegistrantName           *string `json:"RegistrantName,omitempty" xml:"RegistrantName,omitempty"`
+	Province                 *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	Address                  *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	Email                    *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	PostalCode               *string `json:"PostalCode,omitempty" xml:"PostalCode,omitempty"`
+	TelArea                  *string `json:"TelArea,omitempty" xml:"TelArea,omitempty"`
+	Telephone                *string `json:"Telephone,omitempty" xml:"Telephone,omitempty"`
+	TelExt                   *string `json:"TelExt,omitempty" xml:"TelExt,omitempty"`
+	ZhRegistrantOrganization *string `json:"ZhRegistrantOrganization,omitempty" xml:"ZhRegistrantOrganization,omitempty"`
+	ZhRegistrantName         *string `json:"ZhRegistrantName,omitempty" xml:"ZhRegistrantName,omitempty"`
+	ZhProvince               *string `json:"ZhProvince,omitempty" xml:"ZhProvince,omitempty"`
+	ZhAddress                *string `json:"ZhAddress,omitempty" xml:"ZhAddress,omitempty"`
+	ZhCity                   *string `json:"ZhCity,omitempty" xml:"ZhCity,omitempty"`
+	RegistrantType           *string `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
+	RegistrantProfileType    *string `json:"RegistrantProfileType,omitempty" xml:"RegistrantProfileType,omitempty"`
+	IdentityCredential       *string `json:"IdentityCredential,omitempty" xml:"IdentityCredential,omitempty"`
+	IdentityCredentialNo     *string `json:"IdentityCredentialNo,omitempty" xml:"IdentityCredentialNo,omitempty"`
+	IdentityCredentialType   *string `json:"IdentityCredentialType,omitempty" xml:"IdentityCredentialType,omitempty"`
+}
+
+func (s SaveRegistrantProfileRealNameVerificationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveRegistrantProfileRealNameVerificationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SaveRegistrantProfileRealNameVerificationRequest) SetCountry(v string) *SaveRegistrantProfileRealNameVerificationRequest {
+	s.Country = &v
+	return s
+}
+
+func (s *SaveRegistrantProfileRealNameVerificationRequest) SetUserClientIp(v string) *SaveRegistrantProfileRealNameVerificationRequest {
+	s.UserClientIp = &v
+	return s
+}
+
+func (s *SaveRegistrantProfileRealNameVerificationRequest) SetLang(v string) *SaveRegistrantProfileRealNameVerificationRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *SaveRegistrantProfileRealNameVerificationRequest) SetRegistrantProfileId(v int64) *SaveRegistrantProfileRealNameVerificationRequest {
+	s.RegistrantProfileId = &v
+	return s
+}
+
+func (s *SaveRegistrantProfileRealNameVerificationRequest) SetCity(v string) *SaveRegistrantProfileRealNameVerificationRequest {
+	s.City = &v
+	return s
+}
+
+func (s *SaveRegistrantProfileRealNameVerificationRequest) SetRegistrantOrganization(v string) *SaveRegistrantProfileRealNameVerificationRequest {
+	s.RegistrantOrganization = &v
+	return s
+}
+
+func (s *SaveRegistrantProfileRealNameVerificationRequest) SetRegistrantName(v string) *SaveRegistrantProfileRealNameVerificationRequest {
+	s.RegistrantName = &v
+	return s
+}
+
+func (s *SaveRegistrantProfileRealNameVerificationRequest) SetProvince(v string) *SaveRegistrantProfileRealNameVerificationRequest {
+	s.Province = &v
+	return s
+}
+
+func (s *SaveRegistrantProfileRealNameVerificationRequest) SetAddress(v string) *SaveRegistrantProfileRealNameVerificationRequest {
+	s.Address = &v
+	return s
+}
+
+func (s *SaveRegistrantProfileRealNameVerificationRequest) SetEmail(v string) *SaveRegistrantProfileRealNameVerificationRequest {
+	s.Email = &v
+	return s
+}
+
+func (s *SaveRegistrantProfileRealNameVerificationRequest) SetPostalCode(v string) *SaveRegistrantProfileRealNameVerificationRequest {
+	s.PostalCode = &v
+	return s
+}
+
+func (s *SaveRegistrantProfileRealNameVerificationRequest) SetTelArea(v string) *SaveRegistrantProfileRealNameVerificationRequest {
+	s.TelArea = &v
+	return s
+}
+
+func (s *SaveRegistrantProfileRealNameVerificationRequest) SetTelephone(v string) *SaveRegistrantProfileRealNameVerificationRequest {
+	s.Telephone = &v
+	return s
+}
+
+func (s *SaveRegistrantProfileRealNameVerificationRequest) SetTelExt(v string) *SaveRegistrantProfileRealNameVerificationRequest {
+	s.TelExt = &v
+	return s
+}
+
+func (s *SaveRegistrantProfileRealNameVerificationRequest) SetZhRegistrantOrganization(v string) *SaveRegistrantProfileRealNameVerificationRequest {
+	s.ZhRegistrantOrganization = &v
+	return s
+}
+
+func (s *SaveRegistrantProfileRealNameVerificationRequest) SetZhRegistrantName(v string) *SaveRegistrantProfileRealNameVerificationRequest {
+	s.ZhRegistrantName = &v
+	return s
+}
+
+func (s *SaveRegistrantProfileRealNameVerificationRequest) SetZhProvince(v string) *SaveRegistrantProfileRealNameVerificationRequest {
+	s.ZhProvince = &v
+	return s
+}
+
+func (s *SaveRegistrantProfileRealNameVerificationRequest) SetZhAddress(v string) *SaveRegistrantProfileRealNameVerificationRequest {
+	s.ZhAddress = &v
+	return s
+}
+
+func (s *SaveRegistrantProfileRealNameVerificationRequest) SetZhCity(v string) *SaveRegistrantProfileRealNameVerificationRequest {
+	s.ZhCity = &v
+	return s
+}
+
+func (s *SaveRegistrantProfileRealNameVerificationRequest) SetRegistrantType(v string) *SaveRegistrantProfileRealNameVerificationRequest {
+	s.RegistrantType = &v
+	return s
+}
+
+func (s *SaveRegistrantProfileRealNameVerificationRequest) SetRegistrantProfileType(v string) *SaveRegistrantProfileRealNameVerificationRequest {
+	s.RegistrantProfileType = &v
+	return s
+}
+
+func (s *SaveRegistrantProfileRealNameVerificationRequest) SetIdentityCredential(v string) *SaveRegistrantProfileRealNameVerificationRequest {
+	s.IdentityCredential = &v
+	return s
+}
+
+func (s *SaveRegistrantProfileRealNameVerificationRequest) SetIdentityCredentialNo(v string) *SaveRegistrantProfileRealNameVerificationRequest {
+	s.IdentityCredentialNo = &v
+	return s
+}
+
+func (s *SaveRegistrantProfileRealNameVerificationRequest) SetIdentityCredentialType(v string) *SaveRegistrantProfileRealNameVerificationRequest {
+	s.IdentityCredentialType = &v
+	return s
+}
+
+type SaveRegistrantProfileRealNameVerificationResponseBody struct {
+	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RegistrantProfileId *int64  `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
+}
+
+func (s SaveRegistrantProfileRealNameVerificationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveRegistrantProfileRealNameVerificationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SaveRegistrantProfileRealNameVerificationResponseBody) SetRequestId(v string) *SaveRegistrantProfileRealNameVerificationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SaveRegistrantProfileRealNameVerificationResponseBody) SetRegistrantProfileId(v int64) *SaveRegistrantProfileRealNameVerificationResponseBody {
+	s.RegistrantProfileId = &v
+	return s
+}
+
+type SaveRegistrantProfileRealNameVerificationResponse struct {
+	Headers map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SaveRegistrantProfileRealNameVerificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SaveRegistrantProfileRealNameVerificationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveRegistrantProfileRealNameVerificationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SaveRegistrantProfileRealNameVerificationResponse) SetHeaders(v map[string]*string) *SaveRegistrantProfileRealNameVerificationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SaveRegistrantProfileRealNameVerificationResponse) SetBody(v *SaveRegistrantProfileRealNameVerificationResponseBody) *SaveRegistrantProfileRealNameVerificationResponse {
 	s.Body = v
 	return s
 }
@@ -13915,6 +14265,69 @@ func (s *ScrollDomainListResponse) SetBody(v *ScrollDomainListResponseBody) *Scr
 	return s
 }
 
+type SetDefaultRegistrantProfileRequest struct {
+	UserClientIp        *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	RegistrantProfileId *int64  `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
+}
+
+func (s SetDefaultRegistrantProfileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetDefaultRegistrantProfileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetDefaultRegistrantProfileRequest) SetUserClientIp(v string) *SetDefaultRegistrantProfileRequest {
+	s.UserClientIp = &v
+	return s
+}
+
+func (s *SetDefaultRegistrantProfileRequest) SetRegistrantProfileId(v int64) *SetDefaultRegistrantProfileRequest {
+	s.RegistrantProfileId = &v
+	return s
+}
+
+type SetDefaultRegistrantProfileResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SetDefaultRegistrantProfileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetDefaultRegistrantProfileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetDefaultRegistrantProfileResponseBody) SetRequestId(v string) *SetDefaultRegistrantProfileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SetDefaultRegistrantProfileResponse struct {
+	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SetDefaultRegistrantProfileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SetDefaultRegistrantProfileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetDefaultRegistrantProfileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetDefaultRegistrantProfileResponse) SetHeaders(v map[string]*string) *SetDefaultRegistrantProfileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetDefaultRegistrantProfileResponse) SetBody(v *SetDefaultRegistrantProfileResponseBody) *SetDefaultRegistrantProfileResponse {
+	s.Body = v
+	return s
+}
+
 type SubmitEmailVerificationRequest struct {
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	Email        *string `json:"Email,omitempty" xml:"Email,omitempty"`
@@ -15300,6 +15713,34 @@ func (client *Client) ConfirmTransferInEmail(request *ConfirmTransferInEmailRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &ConfirmTransferInEmailResponse{}
 	_body, _err := client.ConfirmTransferInEmailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteContactTemplatesWithOptions(request *DeleteContactTemplatesRequest, runtime *util.RuntimeOptions) (_result *DeleteContactTemplatesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DeleteContactTemplatesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteContactTemplates"), tea.String("2018-01-29"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteContactTemplates(request *DeleteContactTemplatesRequest) (_result *DeleteContactTemplatesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteContactTemplatesResponse{}
+	_body, _err := client.DeleteContactTemplatesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16791,6 +17232,34 @@ func (client *Client) SaveBatchTaskForModifyingDomainDns(request *SaveBatchTaskF
 	return _result, _err
 }
 
+func (client *Client) SaveBatchTaskForReserveDropListDomainWithOptions(request *SaveBatchTaskForReserveDropListDomainRequest, runtime *util.RuntimeOptions) (_result *SaveBatchTaskForReserveDropListDomainResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SaveBatchTaskForReserveDropListDomainResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SaveBatchTaskForReserveDropListDomain"), tea.String("2018-01-29"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SaveBatchTaskForReserveDropListDomain(request *SaveBatchTaskForReserveDropListDomainRequest) (_result *SaveBatchTaskForReserveDropListDomainResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SaveBatchTaskForReserveDropListDomainResponse{}
+	_body, _err := client.SaveBatchTaskForReserveDropListDomainWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SaveBatchTaskForTransferProhibitionLockWithOptions(request *SaveBatchTaskForTransferProhibitionLockRequest, runtime *util.RuntimeOptions) (_result *SaveBatchTaskForTransferProhibitionLockResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16952,6 +17421,34 @@ func (client *Client) SaveRegistrantProfile(request *SaveRegistrantProfileReques
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveRegistrantProfileResponse{}
 	_body, _err := client.SaveRegistrantProfileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SaveRegistrantProfileRealNameVerificationWithOptions(request *SaveRegistrantProfileRealNameVerificationRequest, runtime *util.RuntimeOptions) (_result *SaveRegistrantProfileRealNameVerificationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SaveRegistrantProfileRealNameVerificationResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SaveRegistrantProfileRealNameVerification"), tea.String("2018-01-29"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SaveRegistrantProfileRealNameVerification(request *SaveRegistrantProfileRealNameVerificationRequest) (_result *SaveRegistrantProfileRealNameVerificationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SaveRegistrantProfileRealNameVerificationResponse{}
+	_body, _err := client.SaveRegistrantProfileRealNameVerificationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17764,6 +18261,34 @@ func (client *Client) ScrollDomainList(request *ScrollDomainListRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &ScrollDomainListResponse{}
 	_body, _err := client.ScrollDomainListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SetDefaultRegistrantProfileWithOptions(request *SetDefaultRegistrantProfileRequest, runtime *util.RuntimeOptions) (_result *SetDefaultRegistrantProfileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SetDefaultRegistrantProfileResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SetDefaultRegistrantProfile"), tea.String("2018-01-29"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetDefaultRegistrantProfile(request *SetDefaultRegistrantProfileRequest) (_result *SetDefaultRegistrantProfileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetDefaultRegistrantProfileResponse{}
+	_body, _err := client.SetDefaultRegistrantProfileWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
