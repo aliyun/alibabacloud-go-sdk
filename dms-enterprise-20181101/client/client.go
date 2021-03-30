@@ -1191,7 +1191,7 @@ type GetMetaTableDetailInfoResponseBodyDetailInfoColumnList struct {
 	Position      *string `json:"Position,omitempty" xml:"Position,omitempty"`
 	Nullable      *bool   `json:"Nullable,omitempty" xml:"Nullable,omitempty"`
 	ColumnId      *string `json:"ColumnId,omitempty" xml:"ColumnId,omitempty"`
-	DataLength    *int32  `json:"DataLength,omitempty" xml:"DataLength,omitempty"`
+	DataLength    *int64  `json:"DataLength,omitempty" xml:"DataLength,omitempty"`
 }
 
 func (s GetMetaTableDetailInfoResponseBodyDetailInfoColumnList) String() string {
@@ -1247,7 +1247,7 @@ func (s *GetMetaTableDetailInfoResponseBodyDetailInfoColumnList) SetColumnId(v s
 	return s
 }
 
-func (s *GetMetaTableDetailInfoResponseBodyDetailInfoColumnList) SetDataLength(v int32) *GetMetaTableDetailInfoResponseBodyDetailInfoColumnList {
+func (s *GetMetaTableDetailInfoResponseBodyDetailInfoColumnList) SetDataLength(v int64) *GetMetaTableDetailInfoResponseBodyDetailInfoColumnList {
 	s.DataLength = &v
 	return s
 }
@@ -1276,9 +1276,8 @@ func (s *GetMetaTableDetailInfoResponse) SetBody(v *GetMetaTableDetailInfoRespon
 }
 
 type GetDataCorrectSQLFileRequest struct {
-	OrderId         *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	OrderActionName *string `json:"OrderActionName,omitempty" xml:"OrderActionName,omitempty"`
-	Tid             *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetDataCorrectSQLFileRequest) String() string {
@@ -1291,11 +1290,6 @@ func (s GetDataCorrectSQLFileRequest) GoString() string {
 
 func (s *GetDataCorrectSQLFileRequest) SetOrderId(v int64) *GetDataCorrectSQLFileRequest {
 	s.OrderId = &v
-	return s
-}
-
-func (s *GetDataCorrectSQLFileRequest) SetOrderActionName(v string) *GetDataCorrectSQLFileRequest {
-	s.OrderActionName = &v
 	return s
 }
 
@@ -3313,6 +3307,265 @@ func (s *GetUserUploadFileJobResponse) SetBody(v *GetUserUploadFileJobResponseBo
 	return s
 }
 
+type ListDDLPublishRecordsRequest struct {
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ListDDLPublishRecordsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDDLPublishRecordsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDDLPublishRecordsRequest) SetOrderId(v int64) *ListDDLPublishRecordsRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsRequest) SetTid(v int64) *ListDDLPublishRecordsRequest {
+	s.Tid = &v
+	return s
+}
+
+type ListDDLPublishRecordsResponseBody struct {
+	// Id of the request
+	RequestId            *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success              *bool                                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorMessage         *string                                                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorCode            *string                                                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	DDLPublishRecordList []*ListDDLPublishRecordsResponseBodyDDLPublishRecordList `json:"DDLPublishRecordList,omitempty" xml:"DDLPublishRecordList,omitempty" type:"Repeated"`
+}
+
+func (s ListDDLPublishRecordsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDDLPublishRecordsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDDLPublishRecordsResponseBody) SetRequestId(v string) *ListDDLPublishRecordsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBody) SetSuccess(v bool) *ListDDLPublishRecordsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBody) SetErrorMessage(v string) *ListDDLPublishRecordsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBody) SetErrorCode(v string) *ListDDLPublishRecordsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBody) SetDDLPublishRecordList(v []*ListDDLPublishRecordsResponseBodyDDLPublishRecordList) *ListDDLPublishRecordsResponseBody {
+	s.DDLPublishRecordList = v
+	return s
+}
+
+type ListDDLPublishRecordsResponseBodyDDLPublishRecordList struct {
+	AuditStatus         *string                                                                     `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	AuditExpireTime     *string                                                                     `json:"AuditExpireTime,omitempty" xml:"AuditExpireTime,omitempty"`
+	CreatorId           *int64                                                                      `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	Finality            *bool                                                                       `json:"Finality,omitempty" xml:"Finality,omitempty"`
+	FinalityReason      *string                                                                     `json:"FinalityReason,omitempty" xml:"FinalityReason,omitempty"`
+	PublishStatus       *string                                                                     `json:"PublishStatus,omitempty" xml:"PublishStatus,omitempty"`
+	RiskLevel           *string                                                                     `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	StatusDesc          *string                                                                     `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
+	WorkflowInstanceId  *int64                                                                      `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
+	PublishTaskInfoList []*ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList `json:"PublishTaskInfoList,omitempty" xml:"PublishTaskInfoList,omitempty" type:"Repeated"`
+}
+
+func (s ListDDLPublishRecordsResponseBodyDDLPublishRecordList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDDLPublishRecordsResponseBodyDDLPublishRecordList) GoString() string {
+	return s.String()
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordList) SetAuditStatus(v string) *ListDDLPublishRecordsResponseBodyDDLPublishRecordList {
+	s.AuditStatus = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordList) SetAuditExpireTime(v string) *ListDDLPublishRecordsResponseBodyDDLPublishRecordList {
+	s.AuditExpireTime = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordList) SetCreatorId(v int64) *ListDDLPublishRecordsResponseBodyDDLPublishRecordList {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordList) SetFinality(v bool) *ListDDLPublishRecordsResponseBodyDDLPublishRecordList {
+	s.Finality = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordList) SetFinalityReason(v string) *ListDDLPublishRecordsResponseBodyDDLPublishRecordList {
+	s.FinalityReason = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordList) SetPublishStatus(v string) *ListDDLPublishRecordsResponseBodyDDLPublishRecordList {
+	s.PublishStatus = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordList) SetRiskLevel(v string) *ListDDLPublishRecordsResponseBodyDDLPublishRecordList {
+	s.RiskLevel = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordList) SetStatusDesc(v string) *ListDDLPublishRecordsResponseBodyDDLPublishRecordList {
+	s.StatusDesc = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordList) SetWorkflowInstanceId(v int64) *ListDDLPublishRecordsResponseBodyDDLPublishRecordList {
+	s.WorkflowInstanceId = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordList) SetPublishTaskInfoList(v []*ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList) *ListDDLPublishRecordsResponseBodyDDLPublishRecordList {
+	s.PublishTaskInfoList = v
+	return s
+}
+
+type ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList struct {
+	DbId            *int64                                                                                    `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	Logic           *bool                                                                                     `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	PlanTime        *string                                                                                   `json:"PlanTime,omitempty" xml:"PlanTime,omitempty"`
+	PublishStrategy *string                                                                                   `json:"PublishStrategy,omitempty" xml:"PublishStrategy,omitempty"`
+	StatusDesc      *string                                                                                   `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
+	TaskJobStatus   *string                                                                                   `json:"TaskJobStatus,omitempty" xml:"TaskJobStatus,omitempty"`
+	PublishJobList  []*ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList `json:"PublishJobList,omitempty" xml:"PublishJobList,omitempty" type:"Repeated"`
+}
+
+func (s ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList) SetDbId(v int64) *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList {
+	s.DbId = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList) SetLogic(v bool) *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList {
+	s.Logic = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList) SetPlanTime(v string) *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList {
+	s.PlanTime = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList) SetPublishStrategy(v string) *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList {
+	s.PublishStrategy = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList) SetStatusDesc(v string) *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList {
+	s.StatusDesc = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList) SetTaskJobStatus(v string) *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList {
+	s.TaskJobStatus = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList) SetPublishJobList(v []*ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList) *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList {
+	s.PublishJobList = v
+	return s
+}
+
+type ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList struct {
+	ExecuteCount  *int64  `json:"ExecuteCount,omitempty" xml:"ExecuteCount,omitempty"`
+	Scripts       *string `json:"Scripts,omitempty" xml:"Scripts,omitempty"`
+	TableName     *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	StatusDesc    *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
+	TaskJobStatus *string `json:"TaskJobStatus,omitempty" xml:"TaskJobStatus,omitempty"`
+	DBTaskGroupId *int64  `json:"DBTaskGroupId,omitempty" xml:"DBTaskGroupId,omitempty"`
+}
+
+func (s ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList) GoString() string {
+	return s.String()
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList) SetExecuteCount(v int64) *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList {
+	s.ExecuteCount = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList) SetScripts(v string) *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList {
+	s.Scripts = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList) SetTableName(v string) *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList {
+	s.TableName = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList) SetStatusDesc(v string) *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList {
+	s.StatusDesc = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList) SetTaskJobStatus(v string) *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList {
+	s.TaskJobStatus = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList) SetDBTaskGroupId(v int64) *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList {
+	s.DBTaskGroupId = &v
+	return s
+}
+
+type ListDDLPublishRecordsResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListDDLPublishRecordsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDDLPublishRecordsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDDLPublishRecordsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDDLPublishRecordsResponse) SetHeaders(v map[string]*string) *ListDDLPublishRecordsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponse) SetBody(v *ListDDLPublishRecordsResponseBody) *ListDDLPublishRecordsResponse {
+	s.Body = v
+	return s
+}
+
 type GetStructSyncJobDetailRequest struct {
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
@@ -3463,7 +3716,6 @@ func (s *GetStructSyncJobDetailResponse) SetBody(v *GetStructSyncJobDetailRespon
 type CreateUploadOSSFileJobRequest struct {
 	FileSource   *string                                    `json:"FileSource,omitempty" xml:"FileSource,omitempty"`
 	FileName     *string                                    `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	UploadType   *string                                    `json:"UploadType,omitempty" xml:"UploadType,omitempty"`
 	UploadTarget *CreateUploadOSSFileJobRequestUploadTarget `json:"UploadTarget,omitempty" xml:"UploadTarget,omitempty" type:"Struct"`
 	Tid          *int64                                     `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
@@ -3483,11 +3735,6 @@ func (s *CreateUploadOSSFileJobRequest) SetFileSource(v string) *CreateUploadOSS
 
 func (s *CreateUploadOSSFileJobRequest) SetFileName(v string) *CreateUploadOSSFileJobRequest {
 	s.FileName = &v
-	return s
-}
-
-func (s *CreateUploadOSSFileJobRequest) SetUploadType(v string) *CreateUploadOSSFileJobRequest {
-	s.UploadType = &v
 	return s
 }
 
@@ -3533,7 +3780,6 @@ func (s *CreateUploadOSSFileJobRequestUploadTarget) SetObjectName(v string) *Cre
 type CreateUploadOSSFileJobShrinkRequest struct {
 	FileSource         *string `json:"FileSource,omitempty" xml:"FileSource,omitempty"`
 	FileName           *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	UploadType         *string `json:"UploadType,omitempty" xml:"UploadType,omitempty"`
 	UploadTargetShrink *string `json:"UploadTarget,omitempty" xml:"UploadTarget,omitempty"`
 	Tid                *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
@@ -3553,11 +3799,6 @@ func (s *CreateUploadOSSFileJobShrinkRequest) SetFileSource(v string) *CreateUpl
 
 func (s *CreateUploadOSSFileJobShrinkRequest) SetFileName(v string) *CreateUploadOSSFileJobShrinkRequest {
 	s.FileName = &v
-	return s
-}
-
-func (s *CreateUploadOSSFileJobShrinkRequest) SetUploadType(v string) *CreateUploadOSSFileJobShrinkRequest {
-	s.UploadType = &v
 	return s
 }
 
@@ -5003,7 +5244,7 @@ type GetMetaTableColumnResponseBodyColumnList struct {
 	DataScale     *int32  `json:"DataScale,omitempty" xml:"DataScale,omitempty"`
 	Position      *int32  `json:"Position,omitempty" xml:"Position,omitempty"`
 	Nullable      *bool   `json:"Nullable,omitempty" xml:"Nullable,omitempty"`
-	DataLength    *int32  `json:"DataLength,omitempty" xml:"DataLength,omitempty"`
+	DataLength    *int64  `json:"DataLength,omitempty" xml:"DataLength,omitempty"`
 }
 
 func (s GetMetaTableColumnResponseBodyColumnList) String() string {
@@ -5069,7 +5310,7 @@ func (s *GetMetaTableColumnResponseBodyColumnList) SetNullable(v bool) *GetMetaT
 	return s
 }
 
-func (s *GetMetaTableColumnResponseBodyColumnList) SetDataLength(v int32) *GetMetaTableColumnResponseBodyColumnList {
+func (s *GetMetaTableColumnResponseBodyColumnList) SetDataLength(v int64) *GetMetaTableColumnResponseBodyColumnList {
 	s.DataLength = &v
 	return s
 }
@@ -7471,9 +7712,8 @@ func (s *GetTableTopologyResponse) SetBody(v *GetTableTopologyResponseBody) *Get
 }
 
 type GetDataExportDownloadURLRequest struct {
-	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
-	OrderId    *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	ActionName *string `json:"ActionName,omitempty" xml:"ActionName,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
 func (s GetDataExportDownloadURLRequest) String() string {
@@ -7491,11 +7731,6 @@ func (s *GetDataExportDownloadURLRequest) SetTid(v int64) *GetDataExportDownload
 
 func (s *GetDataExportDownloadURLRequest) SetOrderId(v int64) *GetDataExportDownloadURLRequest {
 	s.OrderId = &v
-	return s
-}
-
-func (s *GetDataExportDownloadURLRequest) SetActionName(v string) *GetDataExportDownloadURLRequest {
-	s.ActionName = &v
 	return s
 }
 
@@ -9673,7 +9908,6 @@ func (s *GetDataCorrectTaskDetailResponse) SetBody(v *GetDataCorrectTaskDetailRe
 type CreateUploadFileJobRequest struct {
 	FileSource *string `json:"FileSource,omitempty" xml:"FileSource,omitempty"`
 	FileName   *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	UploadType *string `json:"UploadType,omitempty" xml:"UploadType,omitempty"`
 	UploadURL  *string `json:"UploadURL,omitempty" xml:"UploadURL,omitempty"`
 	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
@@ -9693,11 +9927,6 @@ func (s *CreateUploadFileJobRequest) SetFileSource(v string) *CreateUploadFileJo
 
 func (s *CreateUploadFileJobRequest) SetFileName(v string) *CreateUploadFileJobRequest {
 	s.FileName = &v
-	return s
-}
-
-func (s *CreateUploadFileJobRequest) SetUploadType(v string) *CreateUploadFileJobRequest {
-	s.UploadType = &v
 	return s
 }
 
@@ -11472,7 +11701,6 @@ func (s *GetLogicDatabaseResponse) SetBody(v *GetLogicDatabaseResponseBody) *Get
 type GetDataCorrectBackupFilesRequest struct {
 	Tid          *int64                 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 	OrderId      *int64                 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	ActionName   *string                `json:"ActionName,omitempty" xml:"ActionName,omitempty"`
 	ActionDetail map[string]interface{} `json:"ActionDetail,omitempty" xml:"ActionDetail,omitempty"`
 }
 
@@ -11494,11 +11722,6 @@ func (s *GetDataCorrectBackupFilesRequest) SetOrderId(v int64) *GetDataCorrectBa
 	return s
 }
 
-func (s *GetDataCorrectBackupFilesRequest) SetActionName(v string) *GetDataCorrectBackupFilesRequest {
-	s.ActionName = &v
-	return s
-}
-
 func (s *GetDataCorrectBackupFilesRequest) SetActionDetail(v map[string]interface{}) *GetDataCorrectBackupFilesRequest {
 	s.ActionDetail = v
 	return s
@@ -11507,7 +11730,6 @@ func (s *GetDataCorrectBackupFilesRequest) SetActionDetail(v map[string]interfac
 type GetDataCorrectBackupFilesShrinkRequest struct {
 	Tid                *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 	OrderId            *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	ActionName         *string `json:"ActionName,omitempty" xml:"ActionName,omitempty"`
 	ActionDetailShrink *string `json:"ActionDetail,omitempty" xml:"ActionDetail,omitempty"`
 }
 
@@ -11526,11 +11748,6 @@ func (s *GetDataCorrectBackupFilesShrinkRequest) SetTid(v int64) *GetDataCorrect
 
 func (s *GetDataCorrectBackupFilesShrinkRequest) SetOrderId(v int64) *GetDataCorrectBackupFilesShrinkRequest {
 	s.OrderId = &v
-	return s
-}
-
-func (s *GetDataCorrectBackupFilesShrinkRequest) SetActionName(v string) *GetDataCorrectBackupFilesShrinkRequest {
-	s.ActionName = &v
 	return s
 }
 
@@ -12099,7 +12316,6 @@ func (s *CreateStructSyncOrderResponse) SetBody(v *CreateStructSyncOrderResponse
 type ExecuteDataExportRequest struct {
 	Tid          *int64                 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 	OrderId      *int64                 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	ActionName   *string                `json:"ActionName,omitempty" xml:"ActionName,omitempty"`
 	ActionDetail map[string]interface{} `json:"ActionDetail,omitempty" xml:"ActionDetail,omitempty"`
 }
 
@@ -12121,11 +12337,6 @@ func (s *ExecuteDataExportRequest) SetOrderId(v int64) *ExecuteDataExportRequest
 	return s
 }
 
-func (s *ExecuteDataExportRequest) SetActionName(v string) *ExecuteDataExportRequest {
-	s.ActionName = &v
-	return s
-}
-
 func (s *ExecuteDataExportRequest) SetActionDetail(v map[string]interface{}) *ExecuteDataExportRequest {
 	s.ActionDetail = v
 	return s
@@ -12134,7 +12345,6 @@ func (s *ExecuteDataExportRequest) SetActionDetail(v map[string]interface{}) *Ex
 type ExecuteDataExportShrinkRequest struct {
 	Tid                *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 	OrderId            *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	ActionName         *string `json:"ActionName,omitempty" xml:"ActionName,omitempty"`
 	ActionDetailShrink *string `json:"ActionDetail,omitempty" xml:"ActionDetail,omitempty"`
 }
 
@@ -12153,11 +12363,6 @@ func (s *ExecuteDataExportShrinkRequest) SetTid(v int64) *ExecuteDataExportShrin
 
 func (s *ExecuteDataExportShrinkRequest) SetOrderId(v int64) *ExecuteDataExportShrinkRequest {
 	s.OrderId = &v
-	return s
-}
-
-func (s *ExecuteDataExportShrinkRequest) SetActionName(v string) *ExecuteDataExportShrinkRequest {
-	s.ActionName = &v
 	return s
 }
 
@@ -12227,7 +12432,6 @@ func (s *ExecuteDataExportResponse) SetBody(v *ExecuteDataExportResponseBody) *E
 type ExecuteDataCorrectRequest struct {
 	Tid          *string                `json:"Tid,omitempty" xml:"Tid,omitempty"`
 	OrderId      *int64                 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	ActionName   *string                `json:"ActionName,omitempty" xml:"ActionName,omitempty"`
 	ActionDetail map[string]interface{} `json:"ActionDetail,omitempty" xml:"ActionDetail,omitempty"`
 }
 
@@ -12249,11 +12453,6 @@ func (s *ExecuteDataCorrectRequest) SetOrderId(v int64) *ExecuteDataCorrectReque
 	return s
 }
 
-func (s *ExecuteDataCorrectRequest) SetActionName(v string) *ExecuteDataCorrectRequest {
-	s.ActionName = &v
-	return s
-}
-
 func (s *ExecuteDataCorrectRequest) SetActionDetail(v map[string]interface{}) *ExecuteDataCorrectRequest {
 	s.ActionDetail = v
 	return s
@@ -12262,7 +12461,6 @@ func (s *ExecuteDataCorrectRequest) SetActionDetail(v map[string]interface{}) *E
 type ExecuteDataCorrectShrinkRequest struct {
 	Tid                *string `json:"Tid,omitempty" xml:"Tid,omitempty"`
 	OrderId            *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	ActionName         *string `json:"ActionName,omitempty" xml:"ActionName,omitempty"`
 	ActionDetailShrink *string `json:"ActionDetail,omitempty" xml:"ActionDetail,omitempty"`
 }
 
@@ -12281,11 +12479,6 @@ func (s *ExecuteDataCorrectShrinkRequest) SetTid(v string) *ExecuteDataCorrectSh
 
 func (s *ExecuteDataCorrectShrinkRequest) SetOrderId(v int64) *ExecuteDataCorrectShrinkRequest {
 	s.OrderId = &v
-	return s
-}
-
-func (s *ExecuteDataCorrectShrinkRequest) SetActionName(v string) *ExecuteDataCorrectShrinkRequest {
-	s.ActionName = &v
 	return s
 }
 
@@ -14343,6 +14536,34 @@ func (client *Client) GetUserUploadFileJob(request *GetUserUploadFileJobRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &GetUserUploadFileJobResponse{}
 	_body, _err := client.GetUserUploadFileJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDDLPublishRecordsWithOptions(request *ListDDLPublishRecordsRequest, runtime *util.RuntimeOptions) (_result *ListDDLPublishRecordsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListDDLPublishRecordsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListDDLPublishRecords"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDDLPublishRecords(request *ListDDLPublishRecordsRequest) (_result *ListDDLPublishRecordsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDDLPublishRecordsResponse{}
+	_body, _err := client.ListDDLPublishRecordsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
