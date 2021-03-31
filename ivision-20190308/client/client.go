@@ -12,77 +12,71 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
-type StartStreamPredictRequest struct {
-	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog   *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
-	PredictId *string `json:"PredictId,omitempty" xml:"PredictId,omitempty"`
+type CreateFaceGroupRequest struct {
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
-func (s StartStreamPredictRequest) String() string {
+func (s CreateFaceGroupRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s StartStreamPredictRequest) GoString() string {
+func (s CreateFaceGroupRequest) GoString() string {
 	return s.String()
 }
 
-func (s *StartStreamPredictRequest) SetOwnerId(v int64) *StartStreamPredictRequest {
+func (s *CreateFaceGroupRequest) SetOwnerId(v int64) *CreateFaceGroupRequest {
 	s.OwnerId = &v
 	return s
 }
 
-func (s *StartStreamPredictRequest) SetShowLog(v string) *StartStreamPredictRequest {
-	s.ShowLog = &v
+func (s *CreateFaceGroupRequest) SetName(v string) *CreateFaceGroupRequest {
+	s.Name = &v
 	return s
 }
 
-func (s *StartStreamPredictRequest) SetPredictId(v string) *StartStreamPredictRequest {
-	s.PredictId = &v
-	return s
-}
-
-type StartStreamPredictResponseBody struct {
+type CreateFaceGroupResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PredictId *string `json:"PredictId,omitempty" xml:"PredictId,omitempty"`
+	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 }
 
-func (s StartStreamPredictResponseBody) String() string {
+func (s CreateFaceGroupResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s StartStreamPredictResponseBody) GoString() string {
+func (s CreateFaceGroupResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *StartStreamPredictResponseBody) SetRequestId(v string) *StartStreamPredictResponseBody {
+func (s *CreateFaceGroupResponseBody) SetRequestId(v string) *CreateFaceGroupResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *StartStreamPredictResponseBody) SetPredictId(v string) *StartStreamPredictResponseBody {
-	s.PredictId = &v
+func (s *CreateFaceGroupResponseBody) SetGroupId(v string) *CreateFaceGroupResponseBody {
+	s.GroupId = &v
 	return s
 }
 
-type StartStreamPredictResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *StartStreamPredictResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+type CreateFaceGroupResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateFaceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s StartStreamPredictResponse) String() string {
+func (s CreateFaceGroupResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s StartStreamPredictResponse) GoString() string {
+func (s CreateFaceGroupResponse) GoString() string {
 	return s.String()
 }
 
-func (s *StartStreamPredictResponse) SetHeaders(v map[string]*string) *StartStreamPredictResponse {
+func (s *CreateFaceGroupResponse) SetHeaders(v map[string]*string) *CreateFaceGroupResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *StartStreamPredictResponse) SetBody(v *StartStreamPredictResponseBody) *StartStreamPredictResponse {
+func (s *CreateFaceGroupResponse) SetBody(v *CreateFaceGroupResponseBody) *CreateFaceGroupResponse {
 	s.Body = v
 	return s
 }
@@ -215,84 +209,695 @@ func (s *CreateFilePredictResponse) SetBody(v *CreateFilePredictResponseBody) *C
 	return s
 }
 
-type StopStreamPredictRequest struct {
-	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog   *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
-	PredictId *string `json:"PredictId,omitempty" xml:"PredictId,omitempty"`
+type CreateStreamPredictRequest struct {
+	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ClientToken           *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	StreamType            *string `json:"StreamType,omitempty" xml:"StreamType,omitempty"`
+	StreamId              *string `json:"StreamId,omitempty" xml:"StreamId,omitempty"`
+	PredictTemplateId     *string `json:"PredictTemplateId,omitempty" xml:"PredictTemplateId,omitempty"`
+	ModelIds              *string `json:"ModelIds,omitempty" xml:"ModelIds,omitempty"`
+	ProbabilityThresholds *string `json:"ProbabilityThresholds,omitempty" xml:"ProbabilityThresholds,omitempty"`
+	DetectIntervals       *string `json:"DetectIntervals,omitempty" xml:"DetectIntervals,omitempty"`
+	Output                *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	Notify                *string `json:"Notify,omitempty" xml:"Notify,omitempty"`
+	AutoStart             *string `json:"AutoStart,omitempty" xml:"AutoStart,omitempty"`
+	FaceGroupId           *string `json:"FaceGroupId,omitempty" xml:"FaceGroupId,omitempty"`
+	ModelUserData         *string `json:"ModelUserData,omitempty" xml:"ModelUserData,omitempty"`
 }
 
-func (s StopStreamPredictRequest) String() string {
+func (s CreateStreamPredictRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s StopStreamPredictRequest) GoString() string {
+func (s CreateStreamPredictRequest) GoString() string {
 	return s.String()
 }
 
-func (s *StopStreamPredictRequest) SetOwnerId(v int64) *StopStreamPredictRequest {
+func (s *CreateStreamPredictRequest) SetOwnerId(v int64) *CreateStreamPredictRequest {
 	s.OwnerId = &v
 	return s
 }
 
-func (s *StopStreamPredictRequest) SetShowLog(v string) *StopStreamPredictRequest {
-	s.ShowLog = &v
+func (s *CreateStreamPredictRequest) SetClientToken(v string) *CreateStreamPredictRequest {
+	s.ClientToken = &v
 	return s
 }
 
-func (s *StopStreamPredictRequest) SetPredictId(v string) *StopStreamPredictRequest {
-	s.PredictId = &v
+func (s *CreateStreamPredictRequest) SetStreamType(v string) *CreateStreamPredictRequest {
+	s.StreamType = &v
 	return s
 }
 
-type StopStreamPredictResponseBody struct {
+func (s *CreateStreamPredictRequest) SetStreamId(v string) *CreateStreamPredictRequest {
+	s.StreamId = &v
+	return s
+}
+
+func (s *CreateStreamPredictRequest) SetPredictTemplateId(v string) *CreateStreamPredictRequest {
+	s.PredictTemplateId = &v
+	return s
+}
+
+func (s *CreateStreamPredictRequest) SetModelIds(v string) *CreateStreamPredictRequest {
+	s.ModelIds = &v
+	return s
+}
+
+func (s *CreateStreamPredictRequest) SetProbabilityThresholds(v string) *CreateStreamPredictRequest {
+	s.ProbabilityThresholds = &v
+	return s
+}
+
+func (s *CreateStreamPredictRequest) SetDetectIntervals(v string) *CreateStreamPredictRequest {
+	s.DetectIntervals = &v
+	return s
+}
+
+func (s *CreateStreamPredictRequest) SetOutput(v string) *CreateStreamPredictRequest {
+	s.Output = &v
+	return s
+}
+
+func (s *CreateStreamPredictRequest) SetNotify(v string) *CreateStreamPredictRequest {
+	s.Notify = &v
+	return s
+}
+
+func (s *CreateStreamPredictRequest) SetAutoStart(v string) *CreateStreamPredictRequest {
+	s.AutoStart = &v
+	return s
+}
+
+func (s *CreateStreamPredictRequest) SetFaceGroupId(v string) *CreateStreamPredictRequest {
+	s.FaceGroupId = &v
+	return s
+}
+
+func (s *CreateStreamPredictRequest) SetModelUserData(v string) *CreateStreamPredictRequest {
+	s.ModelUserData = &v
+	return s
+}
+
+type CreateStreamPredictResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PredictId *string `json:"PredictId,omitempty" xml:"PredictId,omitempty"`
 }
 
-func (s StopStreamPredictResponseBody) String() string {
+func (s CreateStreamPredictResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s StopStreamPredictResponseBody) GoString() string {
+func (s CreateStreamPredictResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *StopStreamPredictResponseBody) SetRequestId(v string) *StopStreamPredictResponseBody {
+func (s *CreateStreamPredictResponseBody) SetRequestId(v string) *CreateStreamPredictResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *StopStreamPredictResponseBody) SetPredictId(v string) *StopStreamPredictResponseBody {
+func (s *CreateStreamPredictResponseBody) SetPredictId(v string) *CreateStreamPredictResponseBody {
 	s.PredictId = &v
 	return s
 }
 
-type StopStreamPredictResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *StopStreamPredictResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+type CreateStreamPredictResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateStreamPredictResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s StopStreamPredictResponse) String() string {
+func (s CreateStreamPredictResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s StopStreamPredictResponse) GoString() string {
+func (s CreateStreamPredictResponse) GoString() string {
 	return s.String()
 }
 
-func (s *StopStreamPredictResponse) SetHeaders(v map[string]*string) *StopStreamPredictResponse {
+func (s *CreateStreamPredictResponse) SetHeaders(v map[string]*string) *CreateStreamPredictResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *StopStreamPredictResponse) SetBody(v *StopStreamPredictResponseBody) *StopStreamPredictResponse {
+func (s *CreateStreamPredictResponse) SetBody(v *CreateStreamPredictResponseBody) *CreateStreamPredictResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteFaceGroupRequest struct {
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+}
+
+func (s DeleteFaceGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFaceGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFaceGroupRequest) SetOwnerId(v int64) *DeleteFaceGroupRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteFaceGroupRequest) SetGroupId(v string) *DeleteFaceGroupRequest {
+	s.GroupId = &v
+	return s
+}
+
+type DeleteFaceGroupResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+}
+
+func (s DeleteFaceGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFaceGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFaceGroupResponseBody) SetRequestId(v string) *DeleteFaceGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteFaceGroupResponseBody) SetGroupId(v string) *DeleteFaceGroupResponseBody {
+	s.GroupId = &v
+	return s
+}
+
+type DeleteFaceGroupResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteFaceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteFaceGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFaceGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFaceGroupResponse) SetHeaders(v map[string]*string) *DeleteFaceGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteFaceGroupResponse) SetBody(v *DeleteFaceGroupResponseBody) *DeleteFaceGroupResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteFilePredictRequest struct {
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s DeleteFilePredictRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFilePredictRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFilePredictRequest) SetTaskId(v string) *DeleteFilePredictRequest {
+	s.TaskId = &v
+	return s
+}
+
+type DeleteFilePredictResponseBody struct {
+	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *DeleteFilePredictResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Code      *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+}
+
+func (s DeleteFilePredictResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFilePredictResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFilePredictResponseBody) SetMessage(v string) *DeleteFilePredictResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteFilePredictResponseBody) SetRequestId(v string) *DeleteFilePredictResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteFilePredictResponseBody) SetData(v *DeleteFilePredictResponseBodyData) *DeleteFilePredictResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DeleteFilePredictResponseBody) SetCode(v string) *DeleteFilePredictResponseBody {
+	s.Code = &v
+	return s
+}
+
+type DeleteFilePredictResponseBodyData struct {
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s DeleteFilePredictResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFilePredictResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFilePredictResponseBodyData) SetTaskId(v string) *DeleteFilePredictResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type DeleteFilePredictResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteFilePredictResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteFilePredictResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFilePredictResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFilePredictResponse) SetHeaders(v map[string]*string) *DeleteFilePredictResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteFilePredictResponse) SetBody(v *DeleteFilePredictResponseBody) *DeleteFilePredictResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteStreamPredictRequest struct {
+	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PredictId *string `json:"PredictId,omitempty" xml:"PredictId,omitempty"`
+}
+
+func (s DeleteStreamPredictRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteStreamPredictRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteStreamPredictRequest) SetOwnerId(v int64) *DeleteStreamPredictRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteStreamPredictRequest) SetPredictId(v string) *DeleteStreamPredictRequest {
+	s.PredictId = &v
+	return s
+}
+
+type DeleteStreamPredictResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PredictId *string `json:"PredictId,omitempty" xml:"PredictId,omitempty"`
+}
+
+func (s DeleteStreamPredictResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteStreamPredictResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteStreamPredictResponseBody) SetRequestId(v string) *DeleteStreamPredictResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteStreamPredictResponseBody) SetPredictId(v string) *DeleteStreamPredictResponseBody {
+	s.PredictId = &v
+	return s
+}
+
+type DeleteStreamPredictResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteStreamPredictResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteStreamPredictResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteStreamPredictResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteStreamPredictResponse) SetHeaders(v map[string]*string) *DeleteStreamPredictResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteStreamPredictResponse) SetBody(v *DeleteStreamPredictResponseBody) *DeleteStreamPredictResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeFaceGroupsRequest struct {
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	CurrentPage   *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize      *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeFaceGroupsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFaceGroupsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFaceGroupsRequest) SetOwnerId(v int64) *DescribeFaceGroupsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeFaceGroupsRequest) SetNextPageToken(v string) *DescribeFaceGroupsRequest {
+	s.NextPageToken = &v
+	return s
+}
+
+func (s *DescribeFaceGroupsRequest) SetCurrentPage(v int64) *DescribeFaceGroupsRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeFaceGroupsRequest) SetPageSize(v int64) *DescribeFaceGroupsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeFaceGroupsResponseBody struct {
+	TotalNum      *int64                                  `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	PageSize      *int64                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId     *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	CurrentPage   *int64                                  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	NextPageToken *string                                 `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	Groups        []*DescribeFaceGroupsResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
+}
+
+func (s DescribeFaceGroupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFaceGroupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFaceGroupsResponseBody) SetTotalNum(v int64) *DescribeFaceGroupsResponseBody {
+	s.TotalNum = &v
+	return s
+}
+
+func (s *DescribeFaceGroupsResponseBody) SetPageSize(v int64) *DescribeFaceGroupsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeFaceGroupsResponseBody) SetRequestId(v string) *DescribeFaceGroupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeFaceGroupsResponseBody) SetCurrentPage(v int64) *DescribeFaceGroupsResponseBody {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeFaceGroupsResponseBody) SetNextPageToken(v string) *DescribeFaceGroupsResponseBody {
+	s.NextPageToken = &v
+	return s
+}
+
+func (s *DescribeFaceGroupsResponseBody) SetGroups(v []*DescribeFaceGroupsResponseBodyGroups) *DescribeFaceGroupsResponseBody {
+	s.Groups = v
+	return s
+}
+
+type DescribeFaceGroupsResponseBodyGroups struct {
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	GroupId      *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DescribeFaceGroupsResponseBodyGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFaceGroupsResponseBodyGroups) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFaceGroupsResponseBodyGroups) SetCreationTime(v string) *DescribeFaceGroupsResponseBodyGroups {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeFaceGroupsResponseBodyGroups) SetGroupId(v string) *DescribeFaceGroupsResponseBodyGroups {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeFaceGroupsResponseBodyGroups) SetName(v string) *DescribeFaceGroupsResponseBodyGroups {
+	s.Name = &v
+	return s
+}
+
+type DescribeFaceGroupsResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeFaceGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeFaceGroupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFaceGroupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFaceGroupsResponse) SetHeaders(v map[string]*string) *DescribeFaceGroupsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeFaceGroupsResponse) SetBody(v *DescribeFaceGroupsResponseBody) *DescribeFaceGroupsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeStreamPredictResultRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PredictId            *string `json:"PredictId,omitempty" xml:"PredictId,omitempty"`
+	ModelId              *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	StartTime            *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	EndTime              *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ProbabilityThreshold *string `json:"ProbabilityThreshold,omitempty" xml:"ProbabilityThreshold,omitempty"`
+	NextPageToken        *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	CurrentPage          *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeStreamPredictResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeStreamPredictResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeStreamPredictResultRequest) SetOwnerId(v int64) *DescribeStreamPredictResultRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeStreamPredictResultRequest) SetPredictId(v string) *DescribeStreamPredictResultRequest {
+	s.PredictId = &v
+	return s
+}
+
+func (s *DescribeStreamPredictResultRequest) SetModelId(v string) *DescribeStreamPredictResultRequest {
+	s.ModelId = &v
+	return s
+}
+
+func (s *DescribeStreamPredictResultRequest) SetStartTime(v string) *DescribeStreamPredictResultRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeStreamPredictResultRequest) SetEndTime(v string) *DescribeStreamPredictResultRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeStreamPredictResultRequest) SetProbabilityThreshold(v string) *DescribeStreamPredictResultRequest {
+	s.ProbabilityThreshold = &v
+	return s
+}
+
+func (s *DescribeStreamPredictResultRequest) SetNextPageToken(v string) *DescribeStreamPredictResultRequest {
+	s.NextPageToken = &v
+	return s
+}
+
+func (s *DescribeStreamPredictResultRequest) SetCurrentPage(v int64) *DescribeStreamPredictResultRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeStreamPredictResultRequest) SetPageSize(v int64) *DescribeStreamPredictResultRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeStreamPredictResultResponseBody struct {
+	StreamPredictDatas []*DescribeStreamPredictResultResponseBodyStreamPredictDatas `json:"StreamPredictDatas,omitempty" xml:"StreamPredictDatas,omitempty" type:"Repeated"`
+	TotalNum           *int64                                                       `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	PageSize           *int64                                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId          *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	CurrentPage        *int64                                                       `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	NextPageToken      *string                                                      `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+}
+
+func (s DescribeStreamPredictResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeStreamPredictResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeStreamPredictResultResponseBody) SetStreamPredictDatas(v []*DescribeStreamPredictResultResponseBodyStreamPredictDatas) *DescribeStreamPredictResultResponseBody {
+	s.StreamPredictDatas = v
+	return s
+}
+
+func (s *DescribeStreamPredictResultResponseBody) SetTotalNum(v int64) *DescribeStreamPredictResultResponseBody {
+	s.TotalNum = &v
+	return s
+}
+
+func (s *DescribeStreamPredictResultResponseBody) SetPageSize(v int64) *DescribeStreamPredictResultResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeStreamPredictResultResponseBody) SetRequestId(v string) *DescribeStreamPredictResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeStreamPredictResultResponseBody) SetCurrentPage(v int64) *DescribeStreamPredictResultResponseBody {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeStreamPredictResultResponseBody) SetNextPageToken(v string) *DescribeStreamPredictResultResponseBody {
+	s.NextPageToken = &v
+	return s
+}
+
+type DescribeStreamPredictResultResponseBodyStreamPredictDatas struct {
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	PredictResult *string `json:"PredictResult,omitempty" xml:"PredictResult,omitempty"`
+	PredictId     *string `json:"PredictId,omitempty" xml:"PredictId,omitempty"`
+	PredictTime   *string `json:"PredictTime,omitempty" xml:"PredictTime,omitempty"`
+	DataUrl       *string `json:"DataUrl,omitempty" xml:"DataUrl,omitempty"`
+	Timestamp     *int64  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	ModelId       *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+}
+
+func (s DescribeStreamPredictResultResponseBodyStreamPredictDatas) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeStreamPredictResultResponseBodyStreamPredictDatas) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeStreamPredictResultResponseBodyStreamPredictDatas) SetStatus(v string) *DescribeStreamPredictResultResponseBodyStreamPredictDatas {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeStreamPredictResultResponseBodyStreamPredictDatas) SetPredictResult(v string) *DescribeStreamPredictResultResponseBodyStreamPredictDatas {
+	s.PredictResult = &v
+	return s
+}
+
+func (s *DescribeStreamPredictResultResponseBodyStreamPredictDatas) SetPredictId(v string) *DescribeStreamPredictResultResponseBodyStreamPredictDatas {
+	s.PredictId = &v
+	return s
+}
+
+func (s *DescribeStreamPredictResultResponseBodyStreamPredictDatas) SetPredictTime(v string) *DescribeStreamPredictResultResponseBodyStreamPredictDatas {
+	s.PredictTime = &v
+	return s
+}
+
+func (s *DescribeStreamPredictResultResponseBodyStreamPredictDatas) SetDataUrl(v string) *DescribeStreamPredictResultResponseBodyStreamPredictDatas {
+	s.DataUrl = &v
+	return s
+}
+
+func (s *DescribeStreamPredictResultResponseBodyStreamPredictDatas) SetTimestamp(v int64) *DescribeStreamPredictResultResponseBodyStreamPredictDatas {
+	s.Timestamp = &v
+	return s
+}
+
+func (s *DescribeStreamPredictResultResponseBodyStreamPredictDatas) SetModelId(v string) *DescribeStreamPredictResultResponseBodyStreamPredictDatas {
+	s.ModelId = &v
+	return s
+}
+
+type DescribeStreamPredictResultResponse struct {
+	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeStreamPredictResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeStreamPredictResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeStreamPredictResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeStreamPredictResultResponse) SetHeaders(v map[string]*string) *DescribeStreamPredictResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeStreamPredictResultResponse) SetBody(v *DescribeStreamPredictResultResponseBody) *DescribeStreamPredictResultResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeStreamPredictsRequest struct {
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog       *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	PredictIds    *string `json:"PredictIds,omitempty" xml:"PredictIds,omitempty"`
 	ModelId       *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
 	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
@@ -310,11 +915,6 @@ func (s DescribeStreamPredictsRequest) GoString() string {
 
 func (s *DescribeStreamPredictsRequest) SetOwnerId(v int64) *DescribeStreamPredictsRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeStreamPredictsRequest) SetShowLog(v string) *DescribeStreamPredictsRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -510,1439 +1110,6 @@ func (s *DescribeStreamPredictsResponse) SetHeaders(v map[string]*string) *Descr
 }
 
 func (s *DescribeStreamPredictsResponse) SetBody(v *DescribeStreamPredictsResponseBody) *DescribeStreamPredictsResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeFaceGroupsRequest struct {
-	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog       *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
-	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	CurrentPage   *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize      *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-}
-
-func (s DescribeFaceGroupsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeFaceGroupsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeFaceGroupsRequest) SetOwnerId(v int64) *DescribeFaceGroupsRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeFaceGroupsRequest) SetShowLog(v string) *DescribeFaceGroupsRequest {
-	s.ShowLog = &v
-	return s
-}
-
-func (s *DescribeFaceGroupsRequest) SetNextPageToken(v string) *DescribeFaceGroupsRequest {
-	s.NextPageToken = &v
-	return s
-}
-
-func (s *DescribeFaceGroupsRequest) SetCurrentPage(v int64) *DescribeFaceGroupsRequest {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *DescribeFaceGroupsRequest) SetPageSize(v int64) *DescribeFaceGroupsRequest {
-	s.PageSize = &v
-	return s
-}
-
-type DescribeFaceGroupsResponseBody struct {
-	TotalNum      *int64                                  `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
-	PageSize      *int64                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId     *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	CurrentPage   *int64                                  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	NextPageToken *string                                 `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	Groups        []*DescribeFaceGroupsResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
-}
-
-func (s DescribeFaceGroupsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeFaceGroupsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeFaceGroupsResponseBody) SetTotalNum(v int64) *DescribeFaceGroupsResponseBody {
-	s.TotalNum = &v
-	return s
-}
-
-func (s *DescribeFaceGroupsResponseBody) SetPageSize(v int64) *DescribeFaceGroupsResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeFaceGroupsResponseBody) SetRequestId(v string) *DescribeFaceGroupsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeFaceGroupsResponseBody) SetCurrentPage(v int64) *DescribeFaceGroupsResponseBody {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *DescribeFaceGroupsResponseBody) SetNextPageToken(v string) *DescribeFaceGroupsResponseBody {
-	s.NextPageToken = &v
-	return s
-}
-
-func (s *DescribeFaceGroupsResponseBody) SetGroups(v []*DescribeFaceGroupsResponseBodyGroups) *DescribeFaceGroupsResponseBody {
-	s.Groups = v
-	return s
-}
-
-type DescribeFaceGroupsResponseBodyGroups struct {
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	GroupId      *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-}
-
-func (s DescribeFaceGroupsResponseBodyGroups) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeFaceGroupsResponseBodyGroups) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeFaceGroupsResponseBodyGroups) SetCreationTime(v string) *DescribeFaceGroupsResponseBodyGroups {
-	s.CreationTime = &v
-	return s
-}
-
-func (s *DescribeFaceGroupsResponseBodyGroups) SetGroupId(v string) *DescribeFaceGroupsResponseBodyGroups {
-	s.GroupId = &v
-	return s
-}
-
-func (s *DescribeFaceGroupsResponseBodyGroups) SetName(v string) *DescribeFaceGroupsResponseBodyGroups {
-	s.Name = &v
-	return s
-}
-
-type DescribeFaceGroupsResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeFaceGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeFaceGroupsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeFaceGroupsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeFaceGroupsResponse) SetHeaders(v map[string]*string) *DescribeFaceGroupsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeFaceGroupsResponse) SetBody(v *DescribeFaceGroupsResponseBody) *DescribeFaceGroupsResponse {
-	s.Body = v
-	return s
-}
-
-type CreateFaceGroupRequest struct {
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
-	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
-}
-
-func (s CreateFaceGroupRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateFaceGroupRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateFaceGroupRequest) SetOwnerId(v int64) *CreateFaceGroupRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *CreateFaceGroupRequest) SetShowLog(v string) *CreateFaceGroupRequest {
-	s.ShowLog = &v
-	return s
-}
-
-func (s *CreateFaceGroupRequest) SetName(v string) *CreateFaceGroupRequest {
-	s.Name = &v
-	return s
-}
-
-type CreateFaceGroupResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-}
-
-func (s CreateFaceGroupResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateFaceGroupResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateFaceGroupResponseBody) SetRequestId(v string) *CreateFaceGroupResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateFaceGroupResponseBody) SetGroupId(v string) *CreateFaceGroupResponseBody {
-	s.GroupId = &v
-	return s
-}
-
-type CreateFaceGroupResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateFaceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateFaceGroupResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateFaceGroupResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateFaceGroupResponse) SetHeaders(v map[string]*string) *CreateFaceGroupResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateFaceGroupResponse) SetBody(v *CreateFaceGroupResponseBody) *CreateFaceGroupResponse {
-	s.Body = v
-	return s
-}
-
-type SearchFaceRequest struct {
-	OwnerId              *int64   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog              *string  `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
-	GroupId              *string  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	ProbabilityThreshold *float32 `json:"ProbabilityThreshold,omitempty" xml:"ProbabilityThreshold,omitempty"`
-	Count                *int32   `json:"Count,omitempty" xml:"Count,omitempty"`
-	DataType             *string  `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	Content              *string  `json:"Content,omitempty" xml:"Content,omitempty"`
-}
-
-func (s SearchFaceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SearchFaceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SearchFaceRequest) SetOwnerId(v int64) *SearchFaceRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *SearchFaceRequest) SetShowLog(v string) *SearchFaceRequest {
-	s.ShowLog = &v
-	return s
-}
-
-func (s *SearchFaceRequest) SetGroupId(v string) *SearchFaceRequest {
-	s.GroupId = &v
-	return s
-}
-
-func (s *SearchFaceRequest) SetProbabilityThreshold(v float32) *SearchFaceRequest {
-	s.ProbabilityThreshold = &v
-	return s
-}
-
-func (s *SearchFaceRequest) SetCount(v int32) *SearchFaceRequest {
-	s.Count = &v
-	return s
-}
-
-func (s *SearchFaceRequest) SetDataType(v string) *SearchFaceRequest {
-	s.DataType = &v
-	return s
-}
-
-func (s *SearchFaceRequest) SetContent(v string) *SearchFaceRequest {
-	s.Content = &v
-	return s
-}
-
-type SearchFaceResponseBody struct {
-	Rect        *SearchFaceResponseBodyRect          `json:"Rect,omitempty" xml:"Rect,omitempty" type:"Struct"`
-	RequestId   *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	FaceResults []*SearchFaceResponseBodyFaceResults `json:"FaceResults,omitempty" xml:"FaceResults,omitempty" type:"Repeated"`
-	GroupId     *string                              `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-}
-
-func (s SearchFaceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SearchFaceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SearchFaceResponseBody) SetRect(v *SearchFaceResponseBodyRect) *SearchFaceResponseBody {
-	s.Rect = v
-	return s
-}
-
-func (s *SearchFaceResponseBody) SetRequestId(v string) *SearchFaceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *SearchFaceResponseBody) SetFaceResults(v []*SearchFaceResponseBodyFaceResults) *SearchFaceResponseBody {
-	s.FaceResults = v
-	return s
-}
-
-func (s *SearchFaceResponseBody) SetGroupId(v string) *SearchFaceResponseBody {
-	s.GroupId = &v
-	return s
-}
-
-type SearchFaceResponseBodyRect struct {
-	Top    *int32 `json:"Top,omitempty" xml:"Top,omitempty"`
-	Width  *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
-	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Left   *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
-}
-
-func (s SearchFaceResponseBodyRect) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SearchFaceResponseBodyRect) GoString() string {
-	return s.String()
-}
-
-func (s *SearchFaceResponseBodyRect) SetTop(v int32) *SearchFaceResponseBodyRect {
-	s.Top = &v
-	return s
-}
-
-func (s *SearchFaceResponseBodyRect) SetWidth(v int32) *SearchFaceResponseBodyRect {
-	s.Width = &v
-	return s
-}
-
-func (s *SearchFaceResponseBodyRect) SetHeight(v int32) *SearchFaceResponseBodyRect {
-	s.Height = &v
-	return s
-}
-
-func (s *SearchFaceResponseBodyRect) SetLeft(v int32) *SearchFaceResponseBodyRect {
-	s.Left = &v
-	return s
-}
-
-type SearchFaceResponseBodyFaceResults struct {
-	FaceToken   *string  `json:"FaceToken,omitempty" xml:"FaceToken,omitempty"`
-	Probability *float32 `json:"Probability,omitempty" xml:"Probability,omitempty"`
-}
-
-func (s SearchFaceResponseBodyFaceResults) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SearchFaceResponseBodyFaceResults) GoString() string {
-	return s.String()
-}
-
-func (s *SearchFaceResponseBodyFaceResults) SetFaceToken(v string) *SearchFaceResponseBodyFaceResults {
-	s.FaceToken = &v
-	return s
-}
-
-func (s *SearchFaceResponseBodyFaceResults) SetProbability(v float32) *SearchFaceResponseBodyFaceResults {
-	s.Probability = &v
-	return s
-}
-
-type SearchFaceResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SearchFaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SearchFaceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SearchFaceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SearchFaceResponse) SetHeaders(v map[string]*string) *SearchFaceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SearchFaceResponse) SetBody(v *SearchFaceResponseBody) *SearchFaceResponse {
-	s.Body = v
-	return s
-}
-
-type RegisterFaceRequest struct {
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog  *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
-	GroupId  *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	Content  *string `json:"Content,omitempty" xml:"Content,omitempty"`
-}
-
-func (s RegisterFaceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RegisterFaceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *RegisterFaceRequest) SetOwnerId(v int64) *RegisterFaceRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *RegisterFaceRequest) SetShowLog(v string) *RegisterFaceRequest {
-	s.ShowLog = &v
-	return s
-}
-
-func (s *RegisterFaceRequest) SetGroupId(v string) *RegisterFaceRequest {
-	s.GroupId = &v
-	return s
-}
-
-func (s *RegisterFaceRequest) SetDataType(v string) *RegisterFaceRequest {
-	s.DataType = &v
-	return s
-}
-
-func (s *RegisterFaceRequest) SetContent(v string) *RegisterFaceRequest {
-	s.Content = &v
-	return s
-}
-
-type RegisterFaceResponseBody struct {
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Faces     []*RegisterFaceResponseBodyFaces `json:"Faces,omitempty" xml:"Faces,omitempty" type:"Repeated"`
-	GroupId   *string                          `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-}
-
-func (s RegisterFaceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RegisterFaceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *RegisterFaceResponseBody) SetRequestId(v string) *RegisterFaceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *RegisterFaceResponseBody) SetFaces(v []*RegisterFaceResponseBodyFaces) *RegisterFaceResponseBody {
-	s.Faces = v
-	return s
-}
-
-func (s *RegisterFaceResponseBody) SetGroupId(v string) *RegisterFaceResponseBody {
-	s.GroupId = &v
-	return s
-}
-
-type RegisterFaceResponseBodyFaces struct {
-	FaceToken *string                            `json:"FaceToken,omitempty" xml:"FaceToken,omitempty"`
-	Rect      *RegisterFaceResponseBodyFacesRect `json:"Rect,omitempty" xml:"Rect,omitempty" type:"Struct"`
-}
-
-func (s RegisterFaceResponseBodyFaces) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RegisterFaceResponseBodyFaces) GoString() string {
-	return s.String()
-}
-
-func (s *RegisterFaceResponseBodyFaces) SetFaceToken(v string) *RegisterFaceResponseBodyFaces {
-	s.FaceToken = &v
-	return s
-}
-
-func (s *RegisterFaceResponseBodyFaces) SetRect(v *RegisterFaceResponseBodyFacesRect) *RegisterFaceResponseBodyFaces {
-	s.Rect = v
-	return s
-}
-
-type RegisterFaceResponseBodyFacesRect struct {
-	Top    *int32 `json:"Top,omitempty" xml:"Top,omitempty"`
-	Width  *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
-	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Left   *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
-}
-
-func (s RegisterFaceResponseBodyFacesRect) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RegisterFaceResponseBodyFacesRect) GoString() string {
-	return s.String()
-}
-
-func (s *RegisterFaceResponseBodyFacesRect) SetTop(v int32) *RegisterFaceResponseBodyFacesRect {
-	s.Top = &v
-	return s
-}
-
-func (s *RegisterFaceResponseBodyFacesRect) SetWidth(v int32) *RegisterFaceResponseBodyFacesRect {
-	s.Width = &v
-	return s
-}
-
-func (s *RegisterFaceResponseBodyFacesRect) SetHeight(v int32) *RegisterFaceResponseBodyFacesRect {
-	s.Height = &v
-	return s
-}
-
-func (s *RegisterFaceResponseBodyFacesRect) SetLeft(v int32) *RegisterFaceResponseBodyFacesRect {
-	s.Left = &v
-	return s
-}
-
-type RegisterFaceResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RegisterFaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s RegisterFaceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RegisterFaceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *RegisterFaceResponse) SetHeaders(v map[string]*string) *RegisterFaceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *RegisterFaceResponse) SetBody(v *RegisterFaceResponseBody) *RegisterFaceResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteFilePredictRequest struct {
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-}
-
-func (s DeleteFilePredictRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteFilePredictRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteFilePredictRequest) SetTaskId(v string) *DeleteFilePredictRequest {
-	s.TaskId = &v
-	return s
-}
-
-type DeleteFilePredictResponseBody struct {
-	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *DeleteFilePredictResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Code      *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
-}
-
-func (s DeleteFilePredictResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteFilePredictResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteFilePredictResponseBody) SetMessage(v string) *DeleteFilePredictResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DeleteFilePredictResponseBody) SetRequestId(v string) *DeleteFilePredictResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteFilePredictResponseBody) SetData(v *DeleteFilePredictResponseBodyData) *DeleteFilePredictResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *DeleteFilePredictResponseBody) SetCode(v string) *DeleteFilePredictResponseBody {
-	s.Code = &v
-	return s
-}
-
-type DeleteFilePredictResponseBodyData struct {
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-}
-
-func (s DeleteFilePredictResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteFilePredictResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteFilePredictResponseBodyData) SetTaskId(v string) *DeleteFilePredictResponseBodyData {
-	s.TaskId = &v
-	return s
-}
-
-type DeleteFilePredictResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteFilePredictResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteFilePredictResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteFilePredictResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteFilePredictResponse) SetHeaders(v map[string]*string) *DeleteFilePredictResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteFilePredictResponse) SetBody(v *DeleteFilePredictResponseBody) *DeleteFilePredictResponse {
-	s.Body = v
-	return s
-}
-
-type ListMyAlgorithmRequest struct {
-	AlgorithmName *string `json:"AlgorithmName,omitempty" xml:"AlgorithmName,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-}
-
-func (s ListMyAlgorithmRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListMyAlgorithmRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListMyAlgorithmRequest) SetAlgorithmName(v string) *ListMyAlgorithmRequest {
-	s.AlgorithmName = &v
-	return s
-}
-
-func (s *ListMyAlgorithmRequest) SetPageSize(v int32) *ListMyAlgorithmRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListMyAlgorithmRequest) SetPageNumber(v int32) *ListMyAlgorithmRequest {
-	s.PageNumber = &v
-	return s
-}
-
-type ListMyAlgorithmResponseBody struct {
-	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *ListMyAlgorithmResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Code      *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success   *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ListMyAlgorithmResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListMyAlgorithmResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListMyAlgorithmResponseBody) SetMessage(v string) *ListMyAlgorithmResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ListMyAlgorithmResponseBody) SetRequestId(v string) *ListMyAlgorithmResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListMyAlgorithmResponseBody) SetData(v *ListMyAlgorithmResponseBodyData) *ListMyAlgorithmResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ListMyAlgorithmResponseBody) SetCode(v string) *ListMyAlgorithmResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ListMyAlgorithmResponseBody) SetSuccess(v bool) *ListMyAlgorithmResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ListMyAlgorithmResponseBodyData struct {
-	AlgorithmList []*ListMyAlgorithmResponseBodyDataAlgorithmList `json:"AlgorithmList,omitempty" xml:"AlgorithmList,omitempty" type:"Repeated"`
-	PageSize      *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber    *int32                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	TotalCount    *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ListMyAlgorithmResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListMyAlgorithmResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ListMyAlgorithmResponseBodyData) SetAlgorithmList(v []*ListMyAlgorithmResponseBodyDataAlgorithmList) *ListMyAlgorithmResponseBodyData {
-	s.AlgorithmList = v
-	return s
-}
-
-func (s *ListMyAlgorithmResponseBodyData) SetPageSize(v int32) *ListMyAlgorithmResponseBodyData {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListMyAlgorithmResponseBodyData) SetPageNumber(v int32) *ListMyAlgorithmResponseBodyData {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListMyAlgorithmResponseBodyData) SetTotalCount(v int32) *ListMyAlgorithmResponseBodyData {
-	s.TotalCount = &v
-	return s
-}
-
-type ListMyAlgorithmResponseBodyDataAlgorithmList struct {
-	AlgorithmName     *string `json:"AlgorithmName,omitempty" xml:"AlgorithmName,omitempty"`
-	DeployRegion      *string `json:"DeployRegion,omitempty" xml:"DeployRegion,omitempty"`
-	CurrentMonthCount *int32  `json:"CurrentMonthCount,omitempty" xml:"CurrentMonthCount,omitempty"`
-	AlgorithmCode     *string `json:"AlgorithmCode,omitempty" xml:"AlgorithmCode,omitempty"`
-	ApiDocUrl         *string `json:"ApiDocUrl,omitempty" xml:"ApiDocUrl,omitempty"`
-	YesterdayCount    *int32  `json:"YesterdayCount,omitempty" xml:"YesterdayCount,omitempty"`
-	AlgorithmOrder    *int32  `json:"AlgorithmOrder,omitempty" xml:"AlgorithmOrder,omitempty"`
-}
-
-func (s ListMyAlgorithmResponseBodyDataAlgorithmList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListMyAlgorithmResponseBodyDataAlgorithmList) GoString() string {
-	return s.String()
-}
-
-func (s *ListMyAlgorithmResponseBodyDataAlgorithmList) SetAlgorithmName(v string) *ListMyAlgorithmResponseBodyDataAlgorithmList {
-	s.AlgorithmName = &v
-	return s
-}
-
-func (s *ListMyAlgorithmResponseBodyDataAlgorithmList) SetDeployRegion(v string) *ListMyAlgorithmResponseBodyDataAlgorithmList {
-	s.DeployRegion = &v
-	return s
-}
-
-func (s *ListMyAlgorithmResponseBodyDataAlgorithmList) SetCurrentMonthCount(v int32) *ListMyAlgorithmResponseBodyDataAlgorithmList {
-	s.CurrentMonthCount = &v
-	return s
-}
-
-func (s *ListMyAlgorithmResponseBodyDataAlgorithmList) SetAlgorithmCode(v string) *ListMyAlgorithmResponseBodyDataAlgorithmList {
-	s.AlgorithmCode = &v
-	return s
-}
-
-func (s *ListMyAlgorithmResponseBodyDataAlgorithmList) SetApiDocUrl(v string) *ListMyAlgorithmResponseBodyDataAlgorithmList {
-	s.ApiDocUrl = &v
-	return s
-}
-
-func (s *ListMyAlgorithmResponseBodyDataAlgorithmList) SetYesterdayCount(v int32) *ListMyAlgorithmResponseBodyDataAlgorithmList {
-	s.YesterdayCount = &v
-	return s
-}
-
-func (s *ListMyAlgorithmResponseBodyDataAlgorithmList) SetAlgorithmOrder(v int32) *ListMyAlgorithmResponseBodyDataAlgorithmList {
-	s.AlgorithmOrder = &v
-	return s
-}
-
-type ListMyAlgorithmResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListMyAlgorithmResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListMyAlgorithmResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListMyAlgorithmResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListMyAlgorithmResponse) SetHeaders(v map[string]*string) *ListMyAlgorithmResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListMyAlgorithmResponse) SetBody(v *ListMyAlgorithmResponseBody) *ListMyAlgorithmResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteFaceGroupRequest struct {
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-}
-
-func (s DeleteFaceGroupRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteFaceGroupRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteFaceGroupRequest) SetOwnerId(v int64) *DeleteFaceGroupRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DeleteFaceGroupRequest) SetShowLog(v string) *DeleteFaceGroupRequest {
-	s.ShowLog = &v
-	return s
-}
-
-func (s *DeleteFaceGroupRequest) SetGroupId(v string) *DeleteFaceGroupRequest {
-	s.GroupId = &v
-	return s
-}
-
-type DeleteFaceGroupResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-}
-
-func (s DeleteFaceGroupResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteFaceGroupResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteFaceGroupResponseBody) SetRequestId(v string) *DeleteFaceGroupResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteFaceGroupResponseBody) SetGroupId(v string) *DeleteFaceGroupResponseBody {
-	s.GroupId = &v
-	return s
-}
-
-type DeleteFaceGroupResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteFaceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteFaceGroupResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteFaceGroupResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteFaceGroupResponse) SetHeaders(v map[string]*string) *DeleteFaceGroupResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteFaceGroupResponse) SetBody(v *DeleteFaceGroupResponseBody) *DeleteFaceGroupResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeStreamPredictResultRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog              *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
-	PredictId            *string `json:"PredictId,omitempty" xml:"PredictId,omitempty"`
-	ModelId              *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
-	StartTime            *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	EndTime              *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	ProbabilityThreshold *string `json:"ProbabilityThreshold,omitempty" xml:"ProbabilityThreshold,omitempty"`
-	NextPageToken        *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	CurrentPage          *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-}
-
-func (s DescribeStreamPredictResultRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeStreamPredictResultRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeStreamPredictResultRequest) SetOwnerId(v int64) *DescribeStreamPredictResultRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeStreamPredictResultRequest) SetShowLog(v string) *DescribeStreamPredictResultRequest {
-	s.ShowLog = &v
-	return s
-}
-
-func (s *DescribeStreamPredictResultRequest) SetPredictId(v string) *DescribeStreamPredictResultRequest {
-	s.PredictId = &v
-	return s
-}
-
-func (s *DescribeStreamPredictResultRequest) SetModelId(v string) *DescribeStreamPredictResultRequest {
-	s.ModelId = &v
-	return s
-}
-
-func (s *DescribeStreamPredictResultRequest) SetStartTime(v string) *DescribeStreamPredictResultRequest {
-	s.StartTime = &v
-	return s
-}
-
-func (s *DescribeStreamPredictResultRequest) SetEndTime(v string) *DescribeStreamPredictResultRequest {
-	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeStreamPredictResultRequest) SetProbabilityThreshold(v string) *DescribeStreamPredictResultRequest {
-	s.ProbabilityThreshold = &v
-	return s
-}
-
-func (s *DescribeStreamPredictResultRequest) SetNextPageToken(v string) *DescribeStreamPredictResultRequest {
-	s.NextPageToken = &v
-	return s
-}
-
-func (s *DescribeStreamPredictResultRequest) SetCurrentPage(v int64) *DescribeStreamPredictResultRequest {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *DescribeStreamPredictResultRequest) SetPageSize(v int64) *DescribeStreamPredictResultRequest {
-	s.PageSize = &v
-	return s
-}
-
-type DescribeStreamPredictResultResponseBody struct {
-	StreamPredictDatas []*DescribeStreamPredictResultResponseBodyStreamPredictDatas `json:"StreamPredictDatas,omitempty" xml:"StreamPredictDatas,omitempty" type:"Repeated"`
-	TotalNum           *int64                                                       `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
-	PageSize           *int64                                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId          *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	CurrentPage        *int64                                                       `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	NextPageToken      *string                                                      `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-}
-
-func (s DescribeStreamPredictResultResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeStreamPredictResultResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeStreamPredictResultResponseBody) SetStreamPredictDatas(v []*DescribeStreamPredictResultResponseBodyStreamPredictDatas) *DescribeStreamPredictResultResponseBody {
-	s.StreamPredictDatas = v
-	return s
-}
-
-func (s *DescribeStreamPredictResultResponseBody) SetTotalNum(v int64) *DescribeStreamPredictResultResponseBody {
-	s.TotalNum = &v
-	return s
-}
-
-func (s *DescribeStreamPredictResultResponseBody) SetPageSize(v int64) *DescribeStreamPredictResultResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeStreamPredictResultResponseBody) SetRequestId(v string) *DescribeStreamPredictResultResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeStreamPredictResultResponseBody) SetCurrentPage(v int64) *DescribeStreamPredictResultResponseBody {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *DescribeStreamPredictResultResponseBody) SetNextPageToken(v string) *DescribeStreamPredictResultResponseBody {
-	s.NextPageToken = &v
-	return s
-}
-
-type DescribeStreamPredictResultResponseBodyStreamPredictDatas struct {
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	PredictResult *string `json:"PredictResult,omitempty" xml:"PredictResult,omitempty"`
-	PredictId     *string `json:"PredictId,omitempty" xml:"PredictId,omitempty"`
-	PredictTime   *string `json:"PredictTime,omitempty" xml:"PredictTime,omitempty"`
-	DataUrl       *string `json:"DataUrl,omitempty" xml:"DataUrl,omitempty"`
-	Timestamp     *int64  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	ModelId       *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
-}
-
-func (s DescribeStreamPredictResultResponseBodyStreamPredictDatas) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeStreamPredictResultResponseBodyStreamPredictDatas) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeStreamPredictResultResponseBodyStreamPredictDatas) SetStatus(v string) *DescribeStreamPredictResultResponseBodyStreamPredictDatas {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeStreamPredictResultResponseBodyStreamPredictDatas) SetPredictResult(v string) *DescribeStreamPredictResultResponseBodyStreamPredictDatas {
-	s.PredictResult = &v
-	return s
-}
-
-func (s *DescribeStreamPredictResultResponseBodyStreamPredictDatas) SetPredictId(v string) *DescribeStreamPredictResultResponseBodyStreamPredictDatas {
-	s.PredictId = &v
-	return s
-}
-
-func (s *DescribeStreamPredictResultResponseBodyStreamPredictDatas) SetPredictTime(v string) *DescribeStreamPredictResultResponseBodyStreamPredictDatas {
-	s.PredictTime = &v
-	return s
-}
-
-func (s *DescribeStreamPredictResultResponseBodyStreamPredictDatas) SetDataUrl(v string) *DescribeStreamPredictResultResponseBodyStreamPredictDatas {
-	s.DataUrl = &v
-	return s
-}
-
-func (s *DescribeStreamPredictResultResponseBodyStreamPredictDatas) SetTimestamp(v int64) *DescribeStreamPredictResultResponseBodyStreamPredictDatas {
-	s.Timestamp = &v
-	return s
-}
-
-func (s *DescribeStreamPredictResultResponseBodyStreamPredictDatas) SetModelId(v string) *DescribeStreamPredictResultResponseBodyStreamPredictDatas {
-	s.ModelId = &v
-	return s
-}
-
-type DescribeStreamPredictResultResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeStreamPredictResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeStreamPredictResultResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeStreamPredictResultResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeStreamPredictResultResponse) SetHeaders(v map[string]*string) *DescribeStreamPredictResultResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeStreamPredictResultResponse) SetBody(v *DescribeStreamPredictResultResponseBody) *DescribeStreamPredictResultResponse {
-	s.Body = v
-	return s
-}
-
-type CreateStreamPredictRequest struct {
-	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog               *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
-	ClientToken           *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	StreamType            *string `json:"StreamType,omitempty" xml:"StreamType,omitempty"`
-	StreamId              *string `json:"StreamId,omitempty" xml:"StreamId,omitempty"`
-	PredictTemplateId     *string `json:"PredictTemplateId,omitempty" xml:"PredictTemplateId,omitempty"`
-	ModelIds              *string `json:"ModelIds,omitempty" xml:"ModelIds,omitempty"`
-	ProbabilityThresholds *string `json:"ProbabilityThresholds,omitempty" xml:"ProbabilityThresholds,omitempty"`
-	DetectIntervals       *string `json:"DetectIntervals,omitempty" xml:"DetectIntervals,omitempty"`
-	Output                *string `json:"Output,omitempty" xml:"Output,omitempty"`
-	Notify                *string `json:"Notify,omitempty" xml:"Notify,omitempty"`
-	AutoStart             *string `json:"AutoStart,omitempty" xml:"AutoStart,omitempty"`
-	FaceGroupId           *string `json:"FaceGroupId,omitempty" xml:"FaceGroupId,omitempty"`
-	ModelUserData         *string `json:"ModelUserData,omitempty" xml:"ModelUserData,omitempty"`
-}
-
-func (s CreateStreamPredictRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateStreamPredictRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateStreamPredictRequest) SetOwnerId(v int64) *CreateStreamPredictRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *CreateStreamPredictRequest) SetShowLog(v string) *CreateStreamPredictRequest {
-	s.ShowLog = &v
-	return s
-}
-
-func (s *CreateStreamPredictRequest) SetClientToken(v string) *CreateStreamPredictRequest {
-	s.ClientToken = &v
-	return s
-}
-
-func (s *CreateStreamPredictRequest) SetStreamType(v string) *CreateStreamPredictRequest {
-	s.StreamType = &v
-	return s
-}
-
-func (s *CreateStreamPredictRequest) SetStreamId(v string) *CreateStreamPredictRequest {
-	s.StreamId = &v
-	return s
-}
-
-func (s *CreateStreamPredictRequest) SetPredictTemplateId(v string) *CreateStreamPredictRequest {
-	s.PredictTemplateId = &v
-	return s
-}
-
-func (s *CreateStreamPredictRequest) SetModelIds(v string) *CreateStreamPredictRequest {
-	s.ModelIds = &v
-	return s
-}
-
-func (s *CreateStreamPredictRequest) SetProbabilityThresholds(v string) *CreateStreamPredictRequest {
-	s.ProbabilityThresholds = &v
-	return s
-}
-
-func (s *CreateStreamPredictRequest) SetDetectIntervals(v string) *CreateStreamPredictRequest {
-	s.DetectIntervals = &v
-	return s
-}
-
-func (s *CreateStreamPredictRequest) SetOutput(v string) *CreateStreamPredictRequest {
-	s.Output = &v
-	return s
-}
-
-func (s *CreateStreamPredictRequest) SetNotify(v string) *CreateStreamPredictRequest {
-	s.Notify = &v
-	return s
-}
-
-func (s *CreateStreamPredictRequest) SetAutoStart(v string) *CreateStreamPredictRequest {
-	s.AutoStart = &v
-	return s
-}
-
-func (s *CreateStreamPredictRequest) SetFaceGroupId(v string) *CreateStreamPredictRequest {
-	s.FaceGroupId = &v
-	return s
-}
-
-func (s *CreateStreamPredictRequest) SetModelUserData(v string) *CreateStreamPredictRequest {
-	s.ModelUserData = &v
-	return s
-}
-
-type CreateStreamPredictResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PredictId *string `json:"PredictId,omitempty" xml:"PredictId,omitempty"`
-}
-
-func (s CreateStreamPredictResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateStreamPredictResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateStreamPredictResponseBody) SetRequestId(v string) *CreateStreamPredictResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateStreamPredictResponseBody) SetPredictId(v string) *CreateStreamPredictResponseBody {
-	s.PredictId = &v
-	return s
-}
-
-type CreateStreamPredictResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateStreamPredictResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateStreamPredictResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateStreamPredictResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateStreamPredictResponse) SetHeaders(v map[string]*string) *CreateStreamPredictResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateStreamPredictResponse) SetBody(v *CreateStreamPredictResponseBody) *CreateStreamPredictResponse {
-	s.Body = v
-	return s
-}
-
-type ImagePredictRequest struct {
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
-	ModelId *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
-	DataUrl *string `json:"DataUrl,omitempty" xml:"DataUrl,omitempty"`
-}
-
-func (s ImagePredictRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ImagePredictRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ImagePredictRequest) SetOwnerId(v int64) *ImagePredictRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *ImagePredictRequest) SetShowLog(v string) *ImagePredictRequest {
-	s.ShowLog = &v
-	return s
-}
-
-func (s *ImagePredictRequest) SetModelId(v string) *ImagePredictRequest {
-	s.ModelId = &v
-	return s
-}
-
-func (s *ImagePredictRequest) SetDataUrl(v string) *ImagePredictRequest {
-	s.DataUrl = &v
-	return s
-}
-
-type ImagePredictResponseBody struct {
-	RequestId    *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ImagePredict *ImagePredictResponseBodyImagePredict `json:"ImagePredict,omitempty" xml:"ImagePredict,omitempty" type:"Struct"`
-}
-
-func (s ImagePredictResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ImagePredictResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ImagePredictResponseBody) SetRequestId(v string) *ImagePredictResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ImagePredictResponseBody) SetImagePredict(v *ImagePredictResponseBodyImagePredict) *ImagePredictResponseBody {
-	s.ImagePredict = v
-	return s
-}
-
-type ImagePredictResponseBodyImagePredict struct {
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	PredictResult *string `json:"PredictResult,omitempty" xml:"PredictResult,omitempty"`
-	PredictId     *string `json:"PredictId,omitempty" xml:"PredictId,omitempty"`
-	PredictTime   *string `json:"PredictTime,omitempty" xml:"PredictTime,omitempty"`
-	DataUrl       *string `json:"DataUrl,omitempty" xml:"DataUrl,omitempty"`
-	Code          *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	ModelId       *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
-}
-
-func (s ImagePredictResponseBodyImagePredict) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ImagePredictResponseBodyImagePredict) GoString() string {
-	return s.String()
-}
-
-func (s *ImagePredictResponseBodyImagePredict) SetStatus(v string) *ImagePredictResponseBodyImagePredict {
-	s.Status = &v
-	return s
-}
-
-func (s *ImagePredictResponseBodyImagePredict) SetPredictResult(v string) *ImagePredictResponseBodyImagePredict {
-	s.PredictResult = &v
-	return s
-}
-
-func (s *ImagePredictResponseBodyImagePredict) SetPredictId(v string) *ImagePredictResponseBodyImagePredict {
-	s.PredictId = &v
-	return s
-}
-
-func (s *ImagePredictResponseBodyImagePredict) SetPredictTime(v string) *ImagePredictResponseBodyImagePredict {
-	s.PredictTime = &v
-	return s
-}
-
-func (s *ImagePredictResponseBodyImagePredict) SetDataUrl(v string) *ImagePredictResponseBodyImagePredict {
-	s.DataUrl = &v
-	return s
-}
-
-func (s *ImagePredictResponseBodyImagePredict) SetCode(v string) *ImagePredictResponseBodyImagePredict {
-	s.Code = &v
-	return s
-}
-
-func (s *ImagePredictResponseBodyImagePredict) SetMessage(v string) *ImagePredictResponseBodyImagePredict {
-	s.Message = &v
-	return s
-}
-
-func (s *ImagePredictResponseBodyImagePredict) SetModelId(v string) *ImagePredictResponseBodyImagePredict {
-	s.ModelId = &v
-	return s
-}
-
-type ImagePredictResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ImagePredictResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ImagePredictResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ImagePredictResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ImagePredictResponse) SetHeaders(v map[string]*string) *ImagePredictResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ImagePredictResponse) SetBody(v *ImagePredictResponseBody) *ImagePredictResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteStreamPredictRequest struct {
-	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog   *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
-	PredictId *string `json:"PredictId,omitempty" xml:"PredictId,omitempty"`
-}
-
-func (s DeleteStreamPredictRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteStreamPredictRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteStreamPredictRequest) SetOwnerId(v int64) *DeleteStreamPredictRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DeleteStreamPredictRequest) SetShowLog(v string) *DeleteStreamPredictRequest {
-	s.ShowLog = &v
-	return s
-}
-
-func (s *DeleteStreamPredictRequest) SetPredictId(v string) *DeleteStreamPredictRequest {
-	s.PredictId = &v
-	return s
-}
-
-type DeleteStreamPredictResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PredictId *string `json:"PredictId,omitempty" xml:"PredictId,omitempty"`
-}
-
-func (s DeleteStreamPredictResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteStreamPredictResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteStreamPredictResponseBody) SetRequestId(v string) *DeleteStreamPredictResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteStreamPredictResponseBody) SetPredictId(v string) *DeleteStreamPredictResponseBody {
-	s.PredictId = &v
-	return s
-}
-
-type DeleteStreamPredictResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteStreamPredictResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteStreamPredictResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteStreamPredictResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteStreamPredictResponse) SetHeaders(v map[string]*string) *DeleteStreamPredictResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteStreamPredictResponse) SetBody(v *DeleteStreamPredictResponseBody) *DeleteStreamPredictResponse {
 	s.Body = v
 	return s
 }
@@ -2232,89 +1399,317 @@ func (s *GetAlgorithmHistogramsResponse) SetBody(v *GetAlgorithmHistogramsRespon
 	return s
 }
 
-type UnregisterFaceRequest struct {
-	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog   *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
-	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	FaceToken *string `json:"FaceToken,omitempty" xml:"FaceToken,omitempty"`
+type ImagePredictRequest struct {
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ModelId *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	DataUrl *string `json:"DataUrl,omitempty" xml:"DataUrl,omitempty"`
 }
 
-func (s UnregisterFaceRequest) String() string {
+func (s ImagePredictRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s UnregisterFaceRequest) GoString() string {
+func (s ImagePredictRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UnregisterFaceRequest) SetOwnerId(v int64) *UnregisterFaceRequest {
+func (s *ImagePredictRequest) SetOwnerId(v int64) *ImagePredictRequest {
 	s.OwnerId = &v
 	return s
 }
 
-func (s *UnregisterFaceRequest) SetShowLog(v string) *UnregisterFaceRequest {
-	s.ShowLog = &v
+func (s *ImagePredictRequest) SetModelId(v string) *ImagePredictRequest {
+	s.ModelId = &v
 	return s
 }
 
-func (s *UnregisterFaceRequest) SetGroupId(v string) *UnregisterFaceRequest {
-	s.GroupId = &v
+func (s *ImagePredictRequest) SetDataUrl(v string) *ImagePredictRequest {
+	s.DataUrl = &v
 	return s
 }
 
-func (s *UnregisterFaceRequest) SetFaceToken(v string) *UnregisterFaceRequest {
-	s.FaceToken = &v
-	return s
+type ImagePredictResponseBody struct {
+	RequestId    *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ImagePredict *ImagePredictResponseBodyImagePredict `json:"ImagePredict,omitempty" xml:"ImagePredict,omitempty" type:"Struct"`
 }
 
-type UnregisterFaceResponseBody struct {
-	FaceToken *string `json:"FaceToken,omitempty" xml:"FaceToken,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-}
-
-func (s UnregisterFaceResponseBody) String() string {
+func (s ImagePredictResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s UnregisterFaceResponseBody) GoString() string {
+func (s ImagePredictResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *UnregisterFaceResponseBody) SetFaceToken(v string) *UnregisterFaceResponseBody {
-	s.FaceToken = &v
-	return s
-}
-
-func (s *UnregisterFaceResponseBody) SetRequestId(v string) *UnregisterFaceResponseBody {
+func (s *ImagePredictResponseBody) SetRequestId(v string) *ImagePredictResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *UnregisterFaceResponseBody) SetGroupId(v string) *UnregisterFaceResponseBody {
-	s.GroupId = &v
+func (s *ImagePredictResponseBody) SetImagePredict(v *ImagePredictResponseBodyImagePredict) *ImagePredictResponseBody {
+	s.ImagePredict = v
 	return s
 }
 
-type UnregisterFaceResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UnregisterFaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+type ImagePredictResponseBodyImagePredict struct {
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	PredictResult *string `json:"PredictResult,omitempty" xml:"PredictResult,omitempty"`
+	PredictId     *string `json:"PredictId,omitempty" xml:"PredictId,omitempty"`
+	PredictTime   *string `json:"PredictTime,omitempty" xml:"PredictTime,omitempty"`
+	DataUrl       *string `json:"DataUrl,omitempty" xml:"DataUrl,omitempty"`
+	Code          *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	ModelId       *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
 }
 
-func (s UnregisterFaceResponse) String() string {
+func (s ImagePredictResponseBodyImagePredict) String() string {
 	return tea.Prettify(s)
 }
 
-func (s UnregisterFaceResponse) GoString() string {
+func (s ImagePredictResponseBodyImagePredict) GoString() string {
 	return s.String()
 }
 
-func (s *UnregisterFaceResponse) SetHeaders(v map[string]*string) *UnregisterFaceResponse {
+func (s *ImagePredictResponseBodyImagePredict) SetStatus(v string) *ImagePredictResponseBodyImagePredict {
+	s.Status = &v
+	return s
+}
+
+func (s *ImagePredictResponseBodyImagePredict) SetPredictResult(v string) *ImagePredictResponseBodyImagePredict {
+	s.PredictResult = &v
+	return s
+}
+
+func (s *ImagePredictResponseBodyImagePredict) SetPredictId(v string) *ImagePredictResponseBodyImagePredict {
+	s.PredictId = &v
+	return s
+}
+
+func (s *ImagePredictResponseBodyImagePredict) SetPredictTime(v string) *ImagePredictResponseBodyImagePredict {
+	s.PredictTime = &v
+	return s
+}
+
+func (s *ImagePredictResponseBodyImagePredict) SetDataUrl(v string) *ImagePredictResponseBodyImagePredict {
+	s.DataUrl = &v
+	return s
+}
+
+func (s *ImagePredictResponseBodyImagePredict) SetCode(v string) *ImagePredictResponseBodyImagePredict {
+	s.Code = &v
+	return s
+}
+
+func (s *ImagePredictResponseBodyImagePredict) SetMessage(v string) *ImagePredictResponseBodyImagePredict {
+	s.Message = &v
+	return s
+}
+
+func (s *ImagePredictResponseBodyImagePredict) SetModelId(v string) *ImagePredictResponseBodyImagePredict {
+	s.ModelId = &v
+	return s
+}
+
+type ImagePredictResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ImagePredictResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ImagePredictResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImagePredictResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ImagePredictResponse) SetHeaders(v map[string]*string) *ImagePredictResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *UnregisterFaceResponse) SetBody(v *UnregisterFaceResponseBody) *UnregisterFaceResponse {
+func (s *ImagePredictResponse) SetBody(v *ImagePredictResponseBody) *ImagePredictResponse {
+	s.Body = v
+	return s
+}
+
+type ListMyAlgorithmRequest struct {
+	AlgorithmName *string `json:"AlgorithmName,omitempty" xml:"AlgorithmName,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+}
+
+func (s ListMyAlgorithmRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMyAlgorithmRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMyAlgorithmRequest) SetAlgorithmName(v string) *ListMyAlgorithmRequest {
+	s.AlgorithmName = &v
+	return s
+}
+
+func (s *ListMyAlgorithmRequest) SetPageSize(v int32) *ListMyAlgorithmRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListMyAlgorithmRequest) SetPageNumber(v int32) *ListMyAlgorithmRequest {
+	s.PageNumber = &v
+	return s
+}
+
+type ListMyAlgorithmResponseBody struct {
+	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *ListMyAlgorithmResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Code      *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Success   *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListMyAlgorithmResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMyAlgorithmResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListMyAlgorithmResponseBody) SetMessage(v string) *ListMyAlgorithmResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListMyAlgorithmResponseBody) SetRequestId(v string) *ListMyAlgorithmResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListMyAlgorithmResponseBody) SetData(v *ListMyAlgorithmResponseBodyData) *ListMyAlgorithmResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListMyAlgorithmResponseBody) SetCode(v string) *ListMyAlgorithmResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListMyAlgorithmResponseBody) SetSuccess(v bool) *ListMyAlgorithmResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListMyAlgorithmResponseBodyData struct {
+	AlgorithmList []*ListMyAlgorithmResponseBodyDataAlgorithmList `json:"AlgorithmList,omitempty" xml:"AlgorithmList,omitempty" type:"Repeated"`
+	PageSize      *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber    *int32                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalCount    *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListMyAlgorithmResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMyAlgorithmResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListMyAlgorithmResponseBodyData) SetAlgorithmList(v []*ListMyAlgorithmResponseBodyDataAlgorithmList) *ListMyAlgorithmResponseBodyData {
+	s.AlgorithmList = v
+	return s
+}
+
+func (s *ListMyAlgorithmResponseBodyData) SetPageSize(v int32) *ListMyAlgorithmResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListMyAlgorithmResponseBodyData) SetPageNumber(v int32) *ListMyAlgorithmResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListMyAlgorithmResponseBodyData) SetTotalCount(v int32) *ListMyAlgorithmResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type ListMyAlgorithmResponseBodyDataAlgorithmList struct {
+	AlgorithmName     *string `json:"AlgorithmName,omitempty" xml:"AlgorithmName,omitempty"`
+	DeployRegion      *string `json:"DeployRegion,omitempty" xml:"DeployRegion,omitempty"`
+	CurrentMonthCount *int32  `json:"CurrentMonthCount,omitempty" xml:"CurrentMonthCount,omitempty"`
+	AlgorithmCode     *string `json:"AlgorithmCode,omitempty" xml:"AlgorithmCode,omitempty"`
+	ApiDocUrl         *string `json:"ApiDocUrl,omitempty" xml:"ApiDocUrl,omitempty"`
+	YesterdayCount    *int32  `json:"YesterdayCount,omitempty" xml:"YesterdayCount,omitempty"`
+	AlgorithmOrder    *int32  `json:"AlgorithmOrder,omitempty" xml:"AlgorithmOrder,omitempty"`
+}
+
+func (s ListMyAlgorithmResponseBodyDataAlgorithmList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMyAlgorithmResponseBodyDataAlgorithmList) GoString() string {
+	return s.String()
+}
+
+func (s *ListMyAlgorithmResponseBodyDataAlgorithmList) SetAlgorithmName(v string) *ListMyAlgorithmResponseBodyDataAlgorithmList {
+	s.AlgorithmName = &v
+	return s
+}
+
+func (s *ListMyAlgorithmResponseBodyDataAlgorithmList) SetDeployRegion(v string) *ListMyAlgorithmResponseBodyDataAlgorithmList {
+	s.DeployRegion = &v
+	return s
+}
+
+func (s *ListMyAlgorithmResponseBodyDataAlgorithmList) SetCurrentMonthCount(v int32) *ListMyAlgorithmResponseBodyDataAlgorithmList {
+	s.CurrentMonthCount = &v
+	return s
+}
+
+func (s *ListMyAlgorithmResponseBodyDataAlgorithmList) SetAlgorithmCode(v string) *ListMyAlgorithmResponseBodyDataAlgorithmList {
+	s.AlgorithmCode = &v
+	return s
+}
+
+func (s *ListMyAlgorithmResponseBodyDataAlgorithmList) SetApiDocUrl(v string) *ListMyAlgorithmResponseBodyDataAlgorithmList {
+	s.ApiDocUrl = &v
+	return s
+}
+
+func (s *ListMyAlgorithmResponseBodyDataAlgorithmList) SetYesterdayCount(v int32) *ListMyAlgorithmResponseBodyDataAlgorithmList {
+	s.YesterdayCount = &v
+	return s
+}
+
+func (s *ListMyAlgorithmResponseBodyDataAlgorithmList) SetAlgorithmOrder(v int32) *ListMyAlgorithmResponseBodyDataAlgorithmList {
+	s.AlgorithmOrder = &v
+	return s
+}
+
+type ListMyAlgorithmResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListMyAlgorithmResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListMyAlgorithmResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMyAlgorithmResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListMyAlgorithmResponse) SetHeaders(v map[string]*string) *ListMyAlgorithmResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListMyAlgorithmResponse) SetBody(v *ListMyAlgorithmResponseBody) *ListMyAlgorithmResponse {
 	s.Body = v
 	return s
 }
@@ -2322,6 +1717,7 @@ func (s *UnregisterFaceResponse) SetBody(v *UnregisterFaceResponseBody) *Unregis
 type PredictPictureRequest struct {
 	AlgorithmCode *string `json:"AlgorithmCode,omitempty" xml:"AlgorithmCode,omitempty"`
 	OssPath       *string `json:"OssPath,omitempty" xml:"OssPath,omitempty"`
+	ResourceUrl   *string `json:"ResourceUrl,omitempty" xml:"ResourceUrl,omitempty"`
 }
 
 func (s PredictPictureRequest) String() string {
@@ -2339,6 +1735,11 @@ func (s *PredictPictureRequest) SetAlgorithmCode(v string) *PredictPictureReques
 
 func (s *PredictPictureRequest) SetOssPath(v string) *PredictPictureRequest {
 	s.OssPath = &v
+	return s
+}
+
+func (s *PredictPictureRequest) SetResourceUrl(v string) *PredictPictureRequest {
+	s.ResourceUrl = &v
 	return s
 }
 
@@ -2417,6 +1818,533 @@ func (s *PredictPictureResponse) SetBody(v *PredictPictureResponseBody) *Predict
 	return s
 }
 
+type RegisterFaceRequest struct {
+	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	GroupId  *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	Content  *string `json:"Content,omitempty" xml:"Content,omitempty"`
+}
+
+func (s RegisterFaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterFaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterFaceRequest) SetOwnerId(v int64) *RegisterFaceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *RegisterFaceRequest) SetGroupId(v string) *RegisterFaceRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *RegisterFaceRequest) SetDataType(v string) *RegisterFaceRequest {
+	s.DataType = &v
+	return s
+}
+
+func (s *RegisterFaceRequest) SetContent(v string) *RegisterFaceRequest {
+	s.Content = &v
+	return s
+}
+
+type RegisterFaceResponseBody struct {
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Faces     []*RegisterFaceResponseBodyFaces `json:"Faces,omitempty" xml:"Faces,omitempty" type:"Repeated"`
+	GroupId   *string                          `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+}
+
+func (s RegisterFaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterFaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterFaceResponseBody) SetRequestId(v string) *RegisterFaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RegisterFaceResponseBody) SetFaces(v []*RegisterFaceResponseBodyFaces) *RegisterFaceResponseBody {
+	s.Faces = v
+	return s
+}
+
+func (s *RegisterFaceResponseBody) SetGroupId(v string) *RegisterFaceResponseBody {
+	s.GroupId = &v
+	return s
+}
+
+type RegisterFaceResponseBodyFaces struct {
+	FaceToken *string                            `json:"FaceToken,omitempty" xml:"FaceToken,omitempty"`
+	Rect      *RegisterFaceResponseBodyFacesRect `json:"Rect,omitempty" xml:"Rect,omitempty" type:"Struct"`
+}
+
+func (s RegisterFaceResponseBodyFaces) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterFaceResponseBodyFaces) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterFaceResponseBodyFaces) SetFaceToken(v string) *RegisterFaceResponseBodyFaces {
+	s.FaceToken = &v
+	return s
+}
+
+func (s *RegisterFaceResponseBodyFaces) SetRect(v *RegisterFaceResponseBodyFacesRect) *RegisterFaceResponseBodyFaces {
+	s.Rect = v
+	return s
+}
+
+type RegisterFaceResponseBodyFacesRect struct {
+	Top    *int32 `json:"Top,omitempty" xml:"Top,omitempty"`
+	Width  *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	Left   *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
+}
+
+func (s RegisterFaceResponseBodyFacesRect) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterFaceResponseBodyFacesRect) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterFaceResponseBodyFacesRect) SetTop(v int32) *RegisterFaceResponseBodyFacesRect {
+	s.Top = &v
+	return s
+}
+
+func (s *RegisterFaceResponseBodyFacesRect) SetWidth(v int32) *RegisterFaceResponseBodyFacesRect {
+	s.Width = &v
+	return s
+}
+
+func (s *RegisterFaceResponseBodyFacesRect) SetHeight(v int32) *RegisterFaceResponseBodyFacesRect {
+	s.Height = &v
+	return s
+}
+
+func (s *RegisterFaceResponseBodyFacesRect) SetLeft(v int32) *RegisterFaceResponseBodyFacesRect {
+	s.Left = &v
+	return s
+}
+
+type RegisterFaceResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RegisterFaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RegisterFaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterFaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterFaceResponse) SetHeaders(v map[string]*string) *RegisterFaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RegisterFaceResponse) SetBody(v *RegisterFaceResponseBody) *RegisterFaceResponse {
+	s.Body = v
+	return s
+}
+
+type SearchFaceRequest struct {
+	OwnerId              *int64   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	GroupId              *string  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	ProbabilityThreshold *float32 `json:"ProbabilityThreshold,omitempty" xml:"ProbabilityThreshold,omitempty"`
+	Count                *int32   `json:"Count,omitempty" xml:"Count,omitempty"`
+	DataType             *string  `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	Content              *string  `json:"Content,omitempty" xml:"Content,omitempty"`
+}
+
+func (s SearchFaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchFaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SearchFaceRequest) SetOwnerId(v int64) *SearchFaceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *SearchFaceRequest) SetGroupId(v string) *SearchFaceRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *SearchFaceRequest) SetProbabilityThreshold(v float32) *SearchFaceRequest {
+	s.ProbabilityThreshold = &v
+	return s
+}
+
+func (s *SearchFaceRequest) SetCount(v int32) *SearchFaceRequest {
+	s.Count = &v
+	return s
+}
+
+func (s *SearchFaceRequest) SetDataType(v string) *SearchFaceRequest {
+	s.DataType = &v
+	return s
+}
+
+func (s *SearchFaceRequest) SetContent(v string) *SearchFaceRequest {
+	s.Content = &v
+	return s
+}
+
+type SearchFaceResponseBody struct {
+	Rect        *SearchFaceResponseBodyRect          `json:"Rect,omitempty" xml:"Rect,omitempty" type:"Struct"`
+	RequestId   *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	FaceResults []*SearchFaceResponseBodyFaceResults `json:"FaceResults,omitempty" xml:"FaceResults,omitempty" type:"Repeated"`
+	GroupId     *string                              `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+}
+
+func (s SearchFaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchFaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SearchFaceResponseBody) SetRect(v *SearchFaceResponseBodyRect) *SearchFaceResponseBody {
+	s.Rect = v
+	return s
+}
+
+func (s *SearchFaceResponseBody) SetRequestId(v string) *SearchFaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SearchFaceResponseBody) SetFaceResults(v []*SearchFaceResponseBodyFaceResults) *SearchFaceResponseBody {
+	s.FaceResults = v
+	return s
+}
+
+func (s *SearchFaceResponseBody) SetGroupId(v string) *SearchFaceResponseBody {
+	s.GroupId = &v
+	return s
+}
+
+type SearchFaceResponseBodyRect struct {
+	Top    *int32 `json:"Top,omitempty" xml:"Top,omitempty"`
+	Width  *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	Left   *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
+}
+
+func (s SearchFaceResponseBodyRect) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchFaceResponseBodyRect) GoString() string {
+	return s.String()
+}
+
+func (s *SearchFaceResponseBodyRect) SetTop(v int32) *SearchFaceResponseBodyRect {
+	s.Top = &v
+	return s
+}
+
+func (s *SearchFaceResponseBodyRect) SetWidth(v int32) *SearchFaceResponseBodyRect {
+	s.Width = &v
+	return s
+}
+
+func (s *SearchFaceResponseBodyRect) SetHeight(v int32) *SearchFaceResponseBodyRect {
+	s.Height = &v
+	return s
+}
+
+func (s *SearchFaceResponseBodyRect) SetLeft(v int32) *SearchFaceResponseBodyRect {
+	s.Left = &v
+	return s
+}
+
+type SearchFaceResponseBodyFaceResults struct {
+	FaceToken   *string  `json:"FaceToken,omitempty" xml:"FaceToken,omitempty"`
+	Probability *float32 `json:"Probability,omitempty" xml:"Probability,omitempty"`
+}
+
+func (s SearchFaceResponseBodyFaceResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchFaceResponseBodyFaceResults) GoString() string {
+	return s.String()
+}
+
+func (s *SearchFaceResponseBodyFaceResults) SetFaceToken(v string) *SearchFaceResponseBodyFaceResults {
+	s.FaceToken = &v
+	return s
+}
+
+func (s *SearchFaceResponseBodyFaceResults) SetProbability(v float32) *SearchFaceResponseBodyFaceResults {
+	s.Probability = &v
+	return s
+}
+
+type SearchFaceResponse struct {
+	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SearchFaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SearchFaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchFaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SearchFaceResponse) SetHeaders(v map[string]*string) *SearchFaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SearchFaceResponse) SetBody(v *SearchFaceResponseBody) *SearchFaceResponse {
+	s.Body = v
+	return s
+}
+
+type StartStreamPredictRequest struct {
+	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PredictId *string `json:"PredictId,omitempty" xml:"PredictId,omitempty"`
+}
+
+func (s StartStreamPredictRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartStreamPredictRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartStreamPredictRequest) SetOwnerId(v int64) *StartStreamPredictRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *StartStreamPredictRequest) SetPredictId(v string) *StartStreamPredictRequest {
+	s.PredictId = &v
+	return s
+}
+
+type StartStreamPredictResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PredictId *string `json:"PredictId,omitempty" xml:"PredictId,omitempty"`
+}
+
+func (s StartStreamPredictResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartStreamPredictResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartStreamPredictResponseBody) SetRequestId(v string) *StartStreamPredictResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StartStreamPredictResponseBody) SetPredictId(v string) *StartStreamPredictResponseBody {
+	s.PredictId = &v
+	return s
+}
+
+type StartStreamPredictResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *StartStreamPredictResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StartStreamPredictResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartStreamPredictResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartStreamPredictResponse) SetHeaders(v map[string]*string) *StartStreamPredictResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartStreamPredictResponse) SetBody(v *StartStreamPredictResponseBody) *StartStreamPredictResponse {
+	s.Body = v
+	return s
+}
+
+type StopStreamPredictRequest struct {
+	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PredictId *string `json:"PredictId,omitempty" xml:"PredictId,omitempty"`
+}
+
+func (s StopStreamPredictRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopStreamPredictRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopStreamPredictRequest) SetOwnerId(v int64) *StopStreamPredictRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *StopStreamPredictRequest) SetPredictId(v string) *StopStreamPredictRequest {
+	s.PredictId = &v
+	return s
+}
+
+type StopStreamPredictResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PredictId *string `json:"PredictId,omitempty" xml:"PredictId,omitempty"`
+}
+
+func (s StopStreamPredictResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopStreamPredictResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopStreamPredictResponseBody) SetRequestId(v string) *StopStreamPredictResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StopStreamPredictResponseBody) SetPredictId(v string) *StopStreamPredictResponseBody {
+	s.PredictId = &v
+	return s
+}
+
+type StopStreamPredictResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *StopStreamPredictResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StopStreamPredictResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopStreamPredictResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopStreamPredictResponse) SetHeaders(v map[string]*string) *StopStreamPredictResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopStreamPredictResponse) SetBody(v *StopStreamPredictResponseBody) *StopStreamPredictResponse {
+	s.Body = v
+	return s
+}
+
+type UnregisterFaceRequest struct {
+	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	FaceToken *string `json:"FaceToken,omitempty" xml:"FaceToken,omitempty"`
+}
+
+func (s UnregisterFaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnregisterFaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UnregisterFaceRequest) SetOwnerId(v int64) *UnregisterFaceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UnregisterFaceRequest) SetGroupId(v string) *UnregisterFaceRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *UnregisterFaceRequest) SetFaceToken(v string) *UnregisterFaceRequest {
+	s.FaceToken = &v
+	return s
+}
+
+type UnregisterFaceResponseBody struct {
+	FaceToken *string `json:"FaceToken,omitempty" xml:"FaceToken,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+}
+
+func (s UnregisterFaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnregisterFaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UnregisterFaceResponseBody) SetFaceToken(v string) *UnregisterFaceResponseBody {
+	s.FaceToken = &v
+	return s
+}
+
+func (s *UnregisterFaceResponseBody) SetRequestId(v string) *UnregisterFaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UnregisterFaceResponseBody) SetGroupId(v string) *UnregisterFaceResponseBody {
+	s.GroupId = &v
+	return s
+}
+
+type UnregisterFaceResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UnregisterFaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UnregisterFaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnregisterFaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UnregisterFaceResponse) SetHeaders(v map[string]*string) *UnregisterFaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UnregisterFaceResponse) SetBody(v *UnregisterFaceResponseBody) *UnregisterFaceResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -2464,16 +2392,17 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-func (client *Client) StartStreamPredictWithOptions(request *StartStreamPredictRequest, runtime *util.RuntimeOptions) (_result *StartStreamPredictResponse, _err error) {
+func (client *Client) CreateFaceGroupWithOptions(request *CreateFaceGroupRequest, runtime *util.RuntimeOptions) (_result *CreateFaceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: query,
 	}
-	_result = &StartStreamPredictResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("StartStreamPredict"), tea.String("2019-03-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_result = &CreateFaceGroupResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateFaceGroup"), tea.String("2019-03-08"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2481,10 +2410,10 @@ func (client *Client) StartStreamPredictWithOptions(request *StartStreamPredictR
 	return _result, _err
 }
 
-func (client *Client) StartStreamPredict(request *StartStreamPredictRequest) (_result *StartStreamPredictResponse, _err error) {
+func (client *Client) CreateFaceGroup(request *CreateFaceGroupRequest) (_result *CreateFaceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &StartStreamPredictResponse{}
-	_body, _err := client.StartStreamPredictWithOptions(request, runtime)
+	_result = &CreateFaceGroupResponse{}
+	_body, _err := client.CreateFaceGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2520,7 +2449,7 @@ func (client *Client) CreateFilePredict(request *CreateFilePredictRequest) (_res
 	return _result, _err
 }
 
-func (client *Client) StopStreamPredictWithOptions(request *StopStreamPredictRequest, runtime *util.RuntimeOptions) (_result *StopStreamPredictResponse, _err error) {
+func (client *Client) CreateStreamPredictWithOptions(request *CreateStreamPredictRequest, runtime *util.RuntimeOptions) (_result *CreateStreamPredictResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -2528,8 +2457,8 @@ func (client *Client) StopStreamPredictWithOptions(request *StopStreamPredictReq
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
-	_result = &StopStreamPredictResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("StopStreamPredict"), tea.String("2019-03-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_result = &CreateStreamPredictResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateStreamPredict"), tea.String("2019-03-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2537,210 +2466,10 @@ func (client *Client) StopStreamPredictWithOptions(request *StopStreamPredictReq
 	return _result, _err
 }
 
-func (client *Client) StopStreamPredict(request *StopStreamPredictRequest) (_result *StopStreamPredictResponse, _err error) {
+func (client *Client) CreateStreamPredict(request *CreateStreamPredictRequest) (_result *CreateStreamPredictResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &StopStreamPredictResponse{}
-	_body, _err := client.StopStreamPredictWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeStreamPredictsWithOptions(request *DescribeStreamPredictsRequest, runtime *util.RuntimeOptions) (_result *DescribeStreamPredictsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeStreamPredictsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeStreamPredicts"), tea.String("2019-03-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeStreamPredicts(request *DescribeStreamPredictsRequest) (_result *DescribeStreamPredictsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeStreamPredictsResponse{}
-	_body, _err := client.DescribeStreamPredictsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeFaceGroupsWithOptions(request *DescribeFaceGroupsRequest, runtime *util.RuntimeOptions) (_result *DescribeFaceGroupsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: query,
-	}
-	_result = &DescribeFaceGroupsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeFaceGroups"), tea.String("2019-03-08"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeFaceGroups(request *DescribeFaceGroupsRequest) (_result *DescribeFaceGroupsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeFaceGroupsResponse{}
-	_body, _err := client.DescribeFaceGroupsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateFaceGroupWithOptions(request *CreateFaceGroupRequest, runtime *util.RuntimeOptions) (_result *CreateFaceGroupResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: query,
-	}
-	_result = &CreateFaceGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateFaceGroup"), tea.String("2019-03-08"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateFaceGroup(request *CreateFaceGroupRequest) (_result *CreateFaceGroupResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateFaceGroupResponse{}
-	_body, _err := client.CreateFaceGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) SearchFaceWithOptions(request *SearchFaceRequest, runtime *util.RuntimeOptions) (_result *SearchFaceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: query,
-	}
-	_result = &SearchFaceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SearchFace"), tea.String("2019-03-08"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SearchFace(request *SearchFaceRequest) (_result *SearchFaceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SearchFaceResponse{}
-	_body, _err := client.SearchFaceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) RegisterFaceWithOptions(request *RegisterFaceRequest, runtime *util.RuntimeOptions) (_result *RegisterFaceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: query,
-	}
-	_result = &RegisterFaceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RegisterFace"), tea.String("2019-03-08"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) RegisterFace(request *RegisterFaceRequest) (_result *RegisterFaceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &RegisterFaceResponse{}
-	_body, _err := client.RegisterFaceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteFilePredictWithOptions(request *DeleteFilePredictRequest, runtime *util.RuntimeOptions) (_result *DeleteFilePredictResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DeleteFilePredictResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteFilePredict"), tea.String("2019-03-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteFilePredict(request *DeleteFilePredictRequest) (_result *DeleteFilePredictResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteFilePredictResponse{}
-	_body, _err := client.DeleteFilePredictWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListMyAlgorithmWithOptions(request *ListMyAlgorithmRequest, runtime *util.RuntimeOptions) (_result *ListMyAlgorithmResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListMyAlgorithmResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListMyAlgorithm"), tea.String("2019-03-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListMyAlgorithm(request *ListMyAlgorithmRequest) (_result *ListMyAlgorithmResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListMyAlgorithmResponse{}
-	_body, _err := client.ListMyAlgorithmWithOptions(request, runtime)
+	_result = &CreateStreamPredictResponse{}
+	_body, _err := client.CreateStreamPredictWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2777,7 +2506,7 @@ func (client *Client) DeleteFaceGroup(request *DeleteFaceGroupRequest) (_result 
 	return _result, _err
 }
 
-func (client *Client) DescribeStreamPredictResultWithOptions(request *DescribeStreamPredictResultRequest, runtime *util.RuntimeOptions) (_result *DescribeStreamPredictResultResponse, _err error) {
+func (client *Client) DeleteFilePredictWithOptions(request *DeleteFilePredictRequest, runtime *util.RuntimeOptions) (_result *DeleteFilePredictResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -2785,8 +2514,8 @@ func (client *Client) DescribeStreamPredictResultWithOptions(request *DescribeSt
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
-	_result = &DescribeStreamPredictResultResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeStreamPredictResult"), tea.String("2019-03-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_result = &DeleteFilePredictResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteFilePredict"), tea.String("2019-03-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2794,67 +2523,10 @@ func (client *Client) DescribeStreamPredictResultWithOptions(request *DescribeSt
 	return _result, _err
 }
 
-func (client *Client) DescribeStreamPredictResult(request *DescribeStreamPredictResultRequest) (_result *DescribeStreamPredictResultResponse, _err error) {
+func (client *Client) DeleteFilePredict(request *DeleteFilePredictRequest) (_result *DeleteFilePredictResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &DescribeStreamPredictResultResponse{}
-	_body, _err := client.DescribeStreamPredictResultWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateStreamPredictWithOptions(request *CreateStreamPredictRequest, runtime *util.RuntimeOptions) (_result *CreateStreamPredictResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreateStreamPredictResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateStreamPredict"), tea.String("2019-03-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateStreamPredict(request *CreateStreamPredictRequest) (_result *CreateStreamPredictResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateStreamPredictResponse{}
-	_body, _err := client.CreateStreamPredictWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ImagePredictWithOptions(request *ImagePredictRequest, runtime *util.RuntimeOptions) (_result *ImagePredictResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: query,
-	}
-	_result = &ImagePredictResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ImagePredict"), tea.String("2019-03-08"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ImagePredict(request *ImagePredictRequest) (_result *ImagePredictResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ImagePredictResponse{}
-	_body, _err := client.ImagePredictWithOptions(request, runtime)
+	_result = &DeleteFilePredictResponse{}
+	_body, _err := client.DeleteFilePredictWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2883,6 +2555,91 @@ func (client *Client) DeleteStreamPredict(request *DeleteStreamPredictRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteStreamPredictResponse{}
 	_body, _err := client.DeleteStreamPredictWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeFaceGroupsWithOptions(request *DescribeFaceGroupsRequest, runtime *util.RuntimeOptions) (_result *DescribeFaceGroupsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &DescribeFaceGroupsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeFaceGroups"), tea.String("2019-03-08"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeFaceGroups(request *DescribeFaceGroupsRequest) (_result *DescribeFaceGroupsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeFaceGroupsResponse{}
+	_body, _err := client.DescribeFaceGroupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeStreamPredictResultWithOptions(request *DescribeStreamPredictResultRequest, runtime *util.RuntimeOptions) (_result *DescribeStreamPredictResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeStreamPredictResultResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeStreamPredictResult"), tea.String("2019-03-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeStreamPredictResult(request *DescribeStreamPredictResultRequest) (_result *DescribeStreamPredictResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeStreamPredictResultResponse{}
+	_body, _err := client.DescribeStreamPredictResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeStreamPredictsWithOptions(request *DescribeStreamPredictsRequest, runtime *util.RuntimeOptions) (_result *DescribeStreamPredictsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeStreamPredictsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeStreamPredicts"), tea.String("2019-03-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeStreamPredicts(request *DescribeStreamPredictsRequest) (_result *DescribeStreamPredictsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeStreamPredictsResponse{}
+	_body, _err := client.DescribeStreamPredictsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2946,7 +2703,7 @@ func (client *Client) GetAlgorithmHistograms(request *GetAlgorithmHistogramsRequ
 	return _result, _err
 }
 
-func (client *Client) UnregisterFaceWithOptions(request *UnregisterFaceRequest, runtime *util.RuntimeOptions) (_result *UnregisterFaceResponse, _err error) {
+func (client *Client) ImagePredictWithOptions(request *ImagePredictRequest, runtime *util.RuntimeOptions) (_result *ImagePredictResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -2955,8 +2712,8 @@ func (client *Client) UnregisterFaceWithOptions(request *UnregisterFaceRequest, 
 	req := &openapi.OpenApiRequest{
 		Query: query,
 	}
-	_result = &UnregisterFaceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UnregisterFace"), tea.String("2019-03-08"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_result = &ImagePredictResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ImagePredict"), tea.String("2019-03-08"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2964,10 +2721,38 @@ func (client *Client) UnregisterFaceWithOptions(request *UnregisterFaceRequest, 
 	return _result, _err
 }
 
-func (client *Client) UnregisterFace(request *UnregisterFaceRequest) (_result *UnregisterFaceResponse, _err error) {
+func (client *Client) ImagePredict(request *ImagePredictRequest) (_result *ImagePredictResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &UnregisterFaceResponse{}
-	_body, _err := client.UnregisterFaceWithOptions(request, runtime)
+	_result = &ImagePredictResponse{}
+	_body, _err := client.ImagePredictWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListMyAlgorithmWithOptions(request *ListMyAlgorithmRequest, runtime *util.RuntimeOptions) (_result *ListMyAlgorithmResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListMyAlgorithmResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListMyAlgorithm"), tea.String("2019-03-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListMyAlgorithm(request *ListMyAlgorithmRequest) (_result *ListMyAlgorithmResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListMyAlgorithmResponse{}
+	_body, _err := client.ListMyAlgorithmWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2996,6 +2781,149 @@ func (client *Client) PredictPicture(request *PredictPictureRequest) (_result *P
 	runtime := &util.RuntimeOptions{}
 	_result = &PredictPictureResponse{}
 	_body, _err := client.PredictPictureWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RegisterFaceWithOptions(request *RegisterFaceRequest, runtime *util.RuntimeOptions) (_result *RegisterFaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &RegisterFaceResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("RegisterFace"), tea.String("2019-03-08"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RegisterFace(request *RegisterFaceRequest) (_result *RegisterFaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RegisterFaceResponse{}
+	_body, _err := client.RegisterFaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SearchFaceWithOptions(request *SearchFaceRequest, runtime *util.RuntimeOptions) (_result *SearchFaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &SearchFaceResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SearchFace"), tea.String("2019-03-08"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SearchFace(request *SearchFaceRequest) (_result *SearchFaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SearchFaceResponse{}
+	_body, _err := client.SearchFaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StartStreamPredictWithOptions(request *StartStreamPredictRequest, runtime *util.RuntimeOptions) (_result *StartStreamPredictResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &StartStreamPredictResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("StartStreamPredict"), tea.String("2019-03-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StartStreamPredict(request *StartStreamPredictRequest) (_result *StartStreamPredictResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartStreamPredictResponse{}
+	_body, _err := client.StartStreamPredictWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StopStreamPredictWithOptions(request *StopStreamPredictRequest, runtime *util.RuntimeOptions) (_result *StopStreamPredictResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &StopStreamPredictResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("StopStreamPredict"), tea.String("2019-03-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StopStreamPredict(request *StopStreamPredictRequest) (_result *StopStreamPredictResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StopStreamPredictResponse{}
+	_body, _err := client.StopStreamPredictWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UnregisterFaceWithOptions(request *UnregisterFaceRequest, runtime *util.RuntimeOptions) (_result *UnregisterFaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &UnregisterFaceResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UnregisterFace"), tea.String("2019-03-08"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UnregisterFace(request *UnregisterFaceRequest) (_result *UnregisterFaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UnregisterFaceResponse{}
+	_body, _err := client.UnregisterFaceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
