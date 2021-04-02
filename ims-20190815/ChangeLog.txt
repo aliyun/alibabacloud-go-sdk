@@ -1,3 +1,6 @@
+2021-04-02 Version: v1.0.1
+- For support u2f.
+
 2021-03-02 Version: v2.0.1
 - Generated golang 2019-08-15 for Ims.
 
