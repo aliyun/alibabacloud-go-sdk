@@ -228,7 +228,6 @@ func (s *ClassifyFNFResponse) SetBody(v *ClassifyFNFResponseBody) *ClassifyFNFRe
 }
 
 type DetectLungNoduleRequest struct {
-	Async      *bool                             `json:"Async,omitempty" xml:"Async,omitempty"`
 	DataFormat *string                           `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
 	OrgName    *string                           `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
 	OrgId      *string                           `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
@@ -242,11 +241,6 @@ func (s DetectLungNoduleRequest) String() string {
 
 func (s DetectLungNoduleRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DetectLungNoduleRequest) SetAsync(v bool) *DetectLungNoduleRequest {
-	s.Async = &v
-	return s
 }
 
 func (s *DetectLungNoduleRequest) SetDataFormat(v string) *DetectLungNoduleRequest {
@@ -491,7 +485,6 @@ func (s *DetectLungNoduleResponse) SetBody(v *DetectLungNoduleResponseBody) *Det
 }
 
 type RunCTRegistrationRequest struct {
-	Async          *bool                                    `json:"Async,omitempty" xml:"Async,omitempty"`
 	DataFormat     *string                                  `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
 	OrgName        *string                                  `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
 	OrgId          *string                                  `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
@@ -506,11 +499,6 @@ func (s RunCTRegistrationRequest) String() string {
 
 func (s RunCTRegistrationRequest) GoString() string {
 	return s.String()
-}
-
-func (s *RunCTRegistrationRequest) SetAsync(v bool) *RunCTRegistrationRequest {
-	s.Async = &v
-	return s
 }
 
 func (s *RunCTRegistrationRequest) SetDataFormat(v string) *RunCTRegistrationRequest {
@@ -924,7 +912,6 @@ func (s *DetectSpineMRIResponse) SetBody(v *DetectSpineMRIResponseBody) *DetectS
 }
 
 type CalcCACSRequest struct {
-	Async          *bool                     `json:"Async,omitempty" xml:"Async,omitempty"`
 	DataFormat     *string                   `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
 	OrgName        *string                   `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
 	OrgId          *string                   `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
@@ -938,11 +925,6 @@ func (s CalcCACSRequest) String() string {
 
 func (s CalcCACSRequest) GoString() string {
 	return s.String()
-}
-
-func (s *CalcCACSRequest) SetAsync(v bool) *CalcCACSRequest {
-	s.Async = &v
-	return s
 }
 
 func (s *CalcCACSRequest) SetDataFormat(v string) *CalcCACSRequest {
@@ -1735,7 +1717,6 @@ func (s *DetectKneeXRayResponse) SetBody(v *DetectKneeXRayResponseBody) *DetectK
 }
 
 type GetAsyncJobResultRequest struct {
-	Async *bool   `json:"Async,omitempty" xml:"Async,omitempty"`
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
@@ -1745,11 +1726,6 @@ func (s GetAsyncJobResultRequest) String() string {
 
 func (s GetAsyncJobResultRequest) GoString() string {
 	return s.String()
-}
-
-func (s *GetAsyncJobResultRequest) SetAsync(v bool) *GetAsyncJobResultRequest {
-	s.Async = &v
-	return s
 }
 
 func (s *GetAsyncJobResultRequest) SetJobId(v string) *GetAsyncJobResultRequest {
@@ -1845,7 +1821,6 @@ func (s *GetAsyncJobResultResponse) SetBody(v *GetAsyncJobResultResponseBody) *G
 }
 
 type DetectRibFractureRequest struct {
-	Async      *bool                              `json:"Async,omitempty" xml:"Async,omitempty"`
 	DataFormat *string                            `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
 	OrgName    *string                            `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
 	OrgId      *string                            `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
@@ -1859,11 +1834,6 @@ func (s DetectRibFractureRequest) String() string {
 
 func (s DetectRibFractureRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DetectRibFractureRequest) SetAsync(v bool) *DetectRibFractureRequest {
-	s.Async = &v
-	return s
 }
 
 func (s *DetectRibFractureRequest) SetDataFormat(v string) *DetectRibFractureRequest {
@@ -1972,6 +1942,8 @@ type DetectRibFractureResponseBodyDataDetections struct {
 	CoordinateImage    []*int32 `json:"CoordinateImage,omitempty" xml:"CoordinateImage,omitempty" type:"Repeated"`
 	FractureConfidence *float32 `json:"FractureConfidence,omitempty" xml:"FractureConfidence,omitempty"`
 	FractureCategory   *string  `json:"FractureCategory,omitempty" xml:"FractureCategory,omitempty"`
+	FractureLocation   *string  `json:"FractureLocation,omitempty" xml:"FractureLocation,omitempty"`
+	FractureSegment    *int64   `json:"FractureSegment,omitempty" xml:"FractureSegment,omitempty"`
 }
 
 func (s DetectRibFractureResponseBodyDataDetections) String() string {
@@ -2007,6 +1979,16 @@ func (s *DetectRibFractureResponseBodyDataDetections) SetFractureCategory(v stri
 	return s
 }
 
+func (s *DetectRibFractureResponseBodyDataDetections) SetFractureLocation(v string) *DetectRibFractureResponseBodyDataDetections {
+	s.FractureLocation = &v
+	return s
+}
+
+func (s *DetectRibFractureResponseBodyDataDetections) SetFractureSegment(v int64) *DetectRibFractureResponseBodyDataDetections {
+	s.FractureSegment = &v
+	return s
+}
+
 type DetectRibFractureResponse struct {
 	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	Body    *DetectRibFractureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -2031,7 +2013,6 @@ func (s *DetectRibFractureResponse) SetBody(v *DetectRibFractureResponseBody) *D
 }
 
 type DetectCovid19CadRequest struct {
-	Async      *bool                             `json:"Async,omitempty" xml:"Async,omitempty"`
 	DataFormat *string                           `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
 	OrgName    *string                           `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
 	OrgId      *string                           `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
@@ -2044,11 +2025,6 @@ func (s DetectCovid19CadRequest) String() string {
 
 func (s DetectCovid19CadRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DetectCovid19CadRequest) SetAsync(v bool) *DetectCovid19CadRequest {
-	s.Async = &v
-	return s
 }
 
 func (s *DetectCovid19CadRequest) SetDataFormat(v string) *DetectCovid19CadRequest {
@@ -2176,7 +2152,6 @@ func (s *DetectCovid19CadResponse) SetBody(v *DetectCovid19CadResponseBody) *Det
 }
 
 type ScreenChestCTRequest struct {
-	Async      *bool                          `json:"Async,omitempty" xml:"Async,omitempty"`
 	DataFormat *string                        `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
 	OrgName    *string                        `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
 	OrgId      *string                        `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
@@ -2189,11 +2164,6 @@ func (s ScreenChestCTRequest) String() string {
 
 func (s ScreenChestCTRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ScreenChestCTRequest) SetAsync(v bool) *ScreenChestCTRequest {
-	s.Async = &v
-	return s
 }
 
 func (s *ScreenChestCTRequest) SetDataFormat(v string) *ScreenChestCTRequest {
@@ -2549,6 +2519,8 @@ type ScreenChestCTResponseBodyDataDetectRibFractureDetections struct {
 	FractureCategory   *int64   `json:"FractureCategory,omitempty" xml:"FractureCategory,omitempty"`
 	Coordinates        []*int64 `json:"Coordinates,omitempty" xml:"Coordinates,omitempty" type:"Repeated"`
 	CoordinateImage    []*int64 `json:"CoordinateImage,omitempty" xml:"CoordinateImage,omitempty" type:"Repeated"`
+	FractureLocation   *string  `json:"FractureLocation,omitempty" xml:"FractureLocation,omitempty"`
+	FractureSegment    *int64   `json:"FractureSegment,omitempty" xml:"FractureSegment,omitempty"`
 }
 
 func (s ScreenChestCTResponseBodyDataDetectRibFractureDetections) String() string {
@@ -2581,6 +2553,16 @@ func (s *ScreenChestCTResponseBodyDataDetectRibFractureDetections) SetCoordinate
 
 func (s *ScreenChestCTResponseBodyDataDetectRibFractureDetections) SetCoordinateImage(v []*int64) *ScreenChestCTResponseBodyDataDetectRibFractureDetections {
 	s.CoordinateImage = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectRibFractureDetections) SetFractureLocation(v string) *ScreenChestCTResponseBodyDataDetectRibFractureDetections {
+	s.FractureLocation = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectRibFractureDetections) SetFractureSegment(v int64) *ScreenChestCTResponseBodyDataDetectRibFractureDetections {
+	s.FractureSegment = &v
 	return s
 }
 
