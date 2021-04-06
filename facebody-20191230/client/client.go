@@ -465,8 +465,7 @@ func (s *DetectVideoLivingFaceResponse) SetBody(v *DetectVideoLivingFaceResponse
 }
 
 type RecognizeFaceRequest struct {
-	ImageType *int32  `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	ImageURL  *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s RecognizeFaceRequest) String() string {
@@ -477,11 +476,6 @@ func (s RecognizeFaceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *RecognizeFaceRequest) SetImageType(v int32) *RecognizeFaceRequest {
-	s.ImageType = &v
-	return s
-}
-
 func (s *RecognizeFaceRequest) SetImageURL(v string) *RecognizeFaceRequest {
 	s.ImageURL = &v
 	return s
@@ -489,7 +483,6 @@ func (s *RecognizeFaceRequest) SetImageURL(v string) *RecognizeFaceRequest {
 
 type RecognizeFaceAdvanceRequest struct {
 	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
-	ImageType      *int32    `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
 }
 
 func (s RecognizeFaceAdvanceRequest) String() string {
@@ -502,11 +495,6 @@ func (s RecognizeFaceAdvanceRequest) GoString() string {
 
 func (s *RecognizeFaceAdvanceRequest) SetImageURLObject(v io.Reader) *RecognizeFaceAdvanceRequest {
 	s.ImageURLObject = v
-	return s
-}
-
-func (s *RecognizeFaceAdvanceRequest) SetImageType(v int32) *RecognizeFaceAdvanceRequest {
-	s.ImageType = &v
 	return s
 }
 
@@ -851,12 +839,10 @@ func (s *VerifyFaceMaskResponse) SetBody(v *VerifyFaceMaskResponseBody) *VerifyF
 }
 
 type DetectIPCPedestrianRequest struct {
-	ContinueOnError *bool   `json:"ContinueOnError,omitempty" xml:"ContinueOnError,omitempty"`
-	ImageData       *string `json:"ImageData,omitempty" xml:"ImageData,omitempty"`
-	Width           *int32  `json:"Width,omitempty" xml:"Width,omitempty"`
-	Height          *int32  `json:"Height,omitempty" xml:"Height,omitempty"`
-	ImageURL        *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-	DataId          *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	ImageData *string `json:"ImageData,omitempty" xml:"ImageData,omitempty"`
+	Width     *int32  `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height    *int32  `json:"Height,omitempty" xml:"Height,omitempty"`
+	ImageURL  *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s DetectIPCPedestrianRequest) String() string {
@@ -865,11 +851,6 @@ func (s DetectIPCPedestrianRequest) String() string {
 
 func (s DetectIPCPedestrianRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DetectIPCPedestrianRequest) SetContinueOnError(v bool) *DetectIPCPedestrianRequest {
-	s.ContinueOnError = &v
-	return s
 }
 
 func (s *DetectIPCPedestrianRequest) SetImageData(v string) *DetectIPCPedestrianRequest {
@@ -892,18 +873,11 @@ func (s *DetectIPCPedestrianRequest) SetImageURL(v string) *DetectIPCPedestrianR
 	return s
 }
 
-func (s *DetectIPCPedestrianRequest) SetDataId(v string) *DetectIPCPedestrianRequest {
-	s.DataId = &v
-	return s
-}
-
 type DetectIPCPedestrianAdvanceRequest struct {
-	ImageURLObject  io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
-	ContinueOnError *bool     `json:"ContinueOnError,omitempty" xml:"ContinueOnError,omitempty"`
-	ImageData       *string   `json:"ImageData,omitempty" xml:"ImageData,omitempty"`
-	Width           *int32    `json:"Width,omitempty" xml:"Width,omitempty"`
-	Height          *int32    `json:"Height,omitempty" xml:"Height,omitempty"`
-	DataId          *string   `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageData      *string   `json:"ImageData,omitempty" xml:"ImageData,omitempty"`
+	Width          *int32    `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height         *int32    `json:"Height,omitempty" xml:"Height,omitempty"`
 }
 
 func (s DetectIPCPedestrianAdvanceRequest) String() string {
@@ -919,11 +893,6 @@ func (s *DetectIPCPedestrianAdvanceRequest) SetImageURLObject(v io.Reader) *Dete
 	return s
 }
 
-func (s *DetectIPCPedestrianAdvanceRequest) SetContinueOnError(v bool) *DetectIPCPedestrianAdvanceRequest {
-	s.ContinueOnError = &v
-	return s
-}
-
 func (s *DetectIPCPedestrianAdvanceRequest) SetImageData(v string) *DetectIPCPedestrianAdvanceRequest {
 	s.ImageData = &v
 	return s
@@ -936,11 +905,6 @@ func (s *DetectIPCPedestrianAdvanceRequest) SetWidth(v int32) *DetectIPCPedestri
 
 func (s *DetectIPCPedestrianAdvanceRequest) SetHeight(v int32) *DetectIPCPedestrianAdvanceRequest {
 	s.Height = &v
-	return s
-}
-
-func (s *DetectIPCPedestrianAdvanceRequest) SetDataId(v string) *DetectIPCPedestrianAdvanceRequest {
-	s.DataId = &v
 	return s
 }
 
@@ -1171,7 +1135,6 @@ func (s *GetFaceEntityResponse) SetBody(v *GetFaceEntityResponseBody) *GetFaceEn
 type CompareFaceRequest struct {
 	// 质量分阈值，取值范围 [0.0, 100.0],   0.0或空  表示不做质量分判断逻辑。
 	QualityScoreThreshold *float32 `json:"QualityScoreThreshold,omitempty" xml:"QualityScoreThreshold,omitempty"`
-	ImageType             *int32   `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
 	ImageURLA             *string  `json:"ImageURLA,omitempty" xml:"ImageURLA,omitempty"`
 	ImageURLB             *string  `json:"ImageURLB,omitempty" xml:"ImageURLB,omitempty"`
 	ImageDataA            []byte   `json:"ImageDataA,omitempty" xml:"ImageDataA,omitempty"`
@@ -1188,11 +1151,6 @@ func (s CompareFaceRequest) GoString() string {
 
 func (s *CompareFaceRequest) SetQualityScoreThreshold(v float32) *CompareFaceRequest {
 	s.QualityScoreThreshold = &v
-	return s
-}
-
-func (s *CompareFaceRequest) SetImageType(v int32) *CompareFaceRequest {
-	s.ImageType = &v
 	return s
 }
 
@@ -1219,7 +1177,6 @@ func (s *CompareFaceRequest) SetImageDataB(v []byte) *CompareFaceRequest {
 type CompareFaceResponseBody struct {
 	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *CompareFaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Code      *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s CompareFaceResponseBody) String() string {
@@ -1237,11 +1194,6 @@ func (s *CompareFaceResponseBody) SetRequestId(v string) *CompareFaceResponseBod
 
 func (s *CompareFaceResponseBody) SetData(v *CompareFaceResponseBodyData) *CompareFaceResponseBody {
 	s.Data = v
-	return s
-}
-
-func (s *CompareFaceResponseBody) SetCode(v string) *CompareFaceResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -2338,8 +2290,7 @@ func (s *QueryFaceImageTemplateResponse) SetBody(v *QueryFaceImageTemplateRespon
 }
 
 type DetectFaceRequest struct {
-	ImageType *int32  `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	ImageURL  *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s DetectFaceRequest) String() string {
@@ -2350,11 +2301,6 @@ func (s DetectFaceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DetectFaceRequest) SetImageType(v int32) *DetectFaceRequest {
-	s.ImageType = &v
-	return s
-}
-
 func (s *DetectFaceRequest) SetImageURL(v string) *DetectFaceRequest {
 	s.ImageURL = &v
 	return s
@@ -2362,7 +2308,6 @@ func (s *DetectFaceRequest) SetImageURL(v string) *DetectFaceRequest {
 
 type DetectFaceAdvanceRequest struct {
 	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
-	ImageType      *int32    `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
 }
 
 func (s DetectFaceAdvanceRequest) String() string {
@@ -2375,11 +2320,6 @@ func (s DetectFaceAdvanceRequest) GoString() string {
 
 func (s *DetectFaceAdvanceRequest) SetImageURLObject(v io.Reader) *DetectFaceAdvanceRequest {
 	s.ImageURLObject = v
-	return s
-}
-
-func (s *DetectFaceAdvanceRequest) SetImageType(v int32) *DetectFaceAdvanceRequest {
-	s.ImageType = &v
 	return s
 }
 
@@ -3157,7 +3097,8 @@ func (s *DetectLivingFaceRequest) SetTasks(v []*DetectLivingFaceRequestTasks) *D
 }
 
 type DetectLivingFaceRequestTasks struct {
-	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	ImageURL  *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	ImageData []byte  `json:"ImageData,omitempty" xml:"ImageData,omitempty"`
 }
 
 func (s DetectLivingFaceRequestTasks) String() string {
@@ -3170,6 +3111,11 @@ func (s DetectLivingFaceRequestTasks) GoString() string {
 
 func (s *DetectLivingFaceRequestTasks) SetImageURL(v string) *DetectLivingFaceRequestTasks {
 	s.ImageURL = &v
+	return s
+}
+
+func (s *DetectLivingFaceRequestTasks) SetImageData(v []byte) *DetectLivingFaceRequestTasks {
+	s.ImageData = v
 	return s
 }
 
@@ -7082,7 +7028,8 @@ func (s *RecognizePublicFaceRequest) SetTask(v []*RecognizePublicFaceRequestTask
 }
 
 type RecognizePublicFaceRequestTask struct {
-	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	ImageURL  *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	ImageData []byte  `json:"ImageData,omitempty" xml:"ImageData,omitempty"`
 }
 
 func (s RecognizePublicFaceRequestTask) String() string {
@@ -7095,6 +7042,11 @@ func (s RecognizePublicFaceRequestTask) GoString() string {
 
 func (s *RecognizePublicFaceRequestTask) SetImageURL(v string) *RecognizePublicFaceRequestTask {
 	s.ImageURL = &v
+	return s
+}
+
+func (s *RecognizePublicFaceRequestTask) SetImageData(v []byte) *RecognizePublicFaceRequestTask {
+	s.ImageData = v
 	return s
 }
 
@@ -7458,7 +7410,8 @@ func (s *AddBodyTraceRequest) SetExtraData(v string) *AddBodyTraceRequest {
 
 type AddBodyTraceRequestImages struct {
 	// Trace图片URL
-	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	ImageURL  *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	ImageData []byte  `json:"ImageData,omitempty" xml:"ImageData,omitempty"`
 }
 
 func (s AddBodyTraceRequestImages) String() string {
@@ -7471,6 +7424,11 @@ func (s AddBodyTraceRequestImages) GoString() string {
 
 func (s *AddBodyTraceRequestImages) SetImageURL(v string) *AddBodyTraceRequestImages {
 	s.ImageURL = &v
+	return s
+}
+
+func (s *AddBodyTraceRequestImages) SetImageData(v []byte) *AddBodyTraceRequestImages {
+	s.ImageData = v
 	return s
 }
 
@@ -7620,6 +7578,8 @@ func (s *SearchBodyTraceRequest) SetMinScore(v float32) *SearchBodyTraceRequest 
 type SearchBodyTraceRequestImages struct {
 	// Trace图片URL
 	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	// 图片Base64数据
+	ImageData []byte `json:"ImageData,omitempty" xml:"ImageData,omitempty"`
 }
 
 func (s SearchBodyTraceRequestImages) String() string {
@@ -7632,6 +7592,11 @@ func (s SearchBodyTraceRequestImages) GoString() string {
 
 func (s *SearchBodyTraceRequestImages) SetImageURL(v string) *SearchBodyTraceRequestImages {
 	s.ImageURL = &v
+	return s
+}
+
+func (s *SearchBodyTraceRequestImages) SetImageData(v []byte) *SearchBodyTraceRequestImages {
+	s.ImageData = v
 	return s
 }
 
@@ -8473,6 +8438,269 @@ func (s *BodyPostureResponse) SetHeaders(v map[string]*string) *BodyPostureRespo
 }
 
 func (s *BodyPostureResponse) SetBody(v *BodyPostureResponseBody) *BodyPostureResponse {
+	s.Body = v
+	return s
+}
+
+type MonitorExaminationRequest struct {
+	// A short description of struct
+	Type     *int64  `json:"Type,omitempty" xml:"Type,omitempty"`
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+}
+
+func (s MonitorExaminationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MonitorExaminationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *MonitorExaminationRequest) SetType(v int64) *MonitorExaminationRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *MonitorExaminationRequest) SetImageURL(v string) *MonitorExaminationRequest {
+	s.ImageURL = &v
+	return s
+}
+
+type MonitorExaminationAdvanceRequest struct {
+	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	// A short description of struct
+	Type *int64 `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s MonitorExaminationAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MonitorExaminationAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *MonitorExaminationAdvanceRequest) SetImageURLObject(v io.Reader) *MonitorExaminationAdvanceRequest {
+	s.ImageURLObject = v
+	return s
+}
+
+func (s *MonitorExaminationAdvanceRequest) SetType(v int64) *MonitorExaminationAdvanceRequest {
+	s.Type = &v
+	return s
+}
+
+type MonitorExaminationResponseBody struct {
+	// Id of the request
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *MonitorExaminationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s MonitorExaminationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MonitorExaminationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *MonitorExaminationResponseBody) SetRequestId(v string) *MonitorExaminationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *MonitorExaminationResponseBody) SetData(v *MonitorExaminationResponseBodyData) *MonitorExaminationResponseBody {
+	s.Data = v
+	return s
+}
+
+type MonitorExaminationResponseBodyData struct {
+	FaceInfo   *MonitorExaminationResponseBodyDataFaceInfo   `json:"FaceInfo,omitempty" xml:"FaceInfo,omitempty" type:"Struct"`
+	PersonInfo *MonitorExaminationResponseBodyDataPersonInfo `json:"PersonInfo,omitempty" xml:"PersonInfo,omitempty" type:"Struct"`
+	ChatScore  *float32                                      `json:"ChatScore,omitempty" xml:"ChatScore,omitempty"`
+	Threshold  *float32                                      `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+}
+
+func (s MonitorExaminationResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MonitorExaminationResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *MonitorExaminationResponseBodyData) SetFaceInfo(v *MonitorExaminationResponseBodyDataFaceInfo) *MonitorExaminationResponseBodyData {
+	s.FaceInfo = v
+	return s
+}
+
+func (s *MonitorExaminationResponseBodyData) SetPersonInfo(v *MonitorExaminationResponseBodyDataPersonInfo) *MonitorExaminationResponseBodyData {
+	s.PersonInfo = v
+	return s
+}
+
+func (s *MonitorExaminationResponseBodyData) SetChatScore(v float32) *MonitorExaminationResponseBodyData {
+	s.ChatScore = &v
+	return s
+}
+
+func (s *MonitorExaminationResponseBodyData) SetThreshold(v float32) *MonitorExaminationResponseBodyData {
+	s.Threshold = &v
+	return s
+}
+
+type MonitorExaminationResponseBodyDataFaceInfo struct {
+	Completeness *int64                                          `json:"Completeness,omitempty" xml:"Completeness,omitempty"`
+	FaceNumber   *int64                                          `json:"FaceNumber,omitempty" xml:"FaceNumber,omitempty"`
+	Pose         *MonitorExaminationResponseBodyDataFaceInfoPose `json:"Pose,omitempty" xml:"Pose,omitempty" type:"Struct"`
+}
+
+func (s MonitorExaminationResponseBodyDataFaceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MonitorExaminationResponseBodyDataFaceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *MonitorExaminationResponseBodyDataFaceInfo) SetCompleteness(v int64) *MonitorExaminationResponseBodyDataFaceInfo {
+	s.Completeness = &v
+	return s
+}
+
+func (s *MonitorExaminationResponseBodyDataFaceInfo) SetFaceNumber(v int64) *MonitorExaminationResponseBodyDataFaceInfo {
+	s.FaceNumber = &v
+	return s
+}
+
+func (s *MonitorExaminationResponseBodyDataFaceInfo) SetPose(v *MonitorExaminationResponseBodyDataFaceInfoPose) *MonitorExaminationResponseBodyDataFaceInfo {
+	s.Pose = v
+	return s
+}
+
+type MonitorExaminationResponseBodyDataFaceInfoPose struct {
+	Pitch *float32 `json:"Pitch,omitempty" xml:"Pitch,omitempty"`
+	Roll  *float32 `json:"Roll,omitempty" xml:"Roll,omitempty"`
+	Yaw   *float32 `json:"Yaw,omitempty" xml:"Yaw,omitempty"`
+}
+
+func (s MonitorExaminationResponseBodyDataFaceInfoPose) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MonitorExaminationResponseBodyDataFaceInfoPose) GoString() string {
+	return s.String()
+}
+
+func (s *MonitorExaminationResponseBodyDataFaceInfoPose) SetPitch(v float32) *MonitorExaminationResponseBodyDataFaceInfoPose {
+	s.Pitch = &v
+	return s
+}
+
+func (s *MonitorExaminationResponseBodyDataFaceInfoPose) SetRoll(v float32) *MonitorExaminationResponseBodyDataFaceInfoPose {
+	s.Roll = &v
+	return s
+}
+
+func (s *MonitorExaminationResponseBodyDataFaceInfoPose) SetYaw(v float32) *MonitorExaminationResponseBodyDataFaceInfoPose {
+	s.Yaw = &v
+	return s
+}
+
+type MonitorExaminationResponseBodyDataPersonInfo struct {
+	CellPhone    *MonitorExaminationResponseBodyDataPersonInfoCellPhone `json:"CellPhone,omitempty" xml:"CellPhone,omitempty" type:"Struct"`
+	EarPhone     *MonitorExaminationResponseBodyDataPersonInfoEarPhone  `json:"EarPhone,omitempty" xml:"EarPhone,omitempty" type:"Struct"`
+	PersonNumber *int64                                                 `json:"PersonNumber,omitempty" xml:"PersonNumber,omitempty"`
+}
+
+func (s MonitorExaminationResponseBodyDataPersonInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MonitorExaminationResponseBodyDataPersonInfo) GoString() string {
+	return s.String()
+}
+
+func (s *MonitorExaminationResponseBodyDataPersonInfo) SetCellPhone(v *MonitorExaminationResponseBodyDataPersonInfoCellPhone) *MonitorExaminationResponseBodyDataPersonInfo {
+	s.CellPhone = v
+	return s
+}
+
+func (s *MonitorExaminationResponseBodyDataPersonInfo) SetEarPhone(v *MonitorExaminationResponseBodyDataPersonInfoEarPhone) *MonitorExaminationResponseBodyDataPersonInfo {
+	s.EarPhone = v
+	return s
+}
+
+func (s *MonitorExaminationResponseBodyDataPersonInfo) SetPersonNumber(v int64) *MonitorExaminationResponseBodyDataPersonInfo {
+	s.PersonNumber = &v
+	return s
+}
+
+type MonitorExaminationResponseBodyDataPersonInfoCellPhone struct {
+	Score     *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	Threshold *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+}
+
+func (s MonitorExaminationResponseBodyDataPersonInfoCellPhone) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MonitorExaminationResponseBodyDataPersonInfoCellPhone) GoString() string {
+	return s.String()
+}
+
+func (s *MonitorExaminationResponseBodyDataPersonInfoCellPhone) SetScore(v float32) *MonitorExaminationResponseBodyDataPersonInfoCellPhone {
+	s.Score = &v
+	return s
+}
+
+func (s *MonitorExaminationResponseBodyDataPersonInfoCellPhone) SetThreshold(v float32) *MonitorExaminationResponseBodyDataPersonInfoCellPhone {
+	s.Threshold = &v
+	return s
+}
+
+type MonitorExaminationResponseBodyDataPersonInfoEarPhone struct {
+	Score     *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	Threshold *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+}
+
+func (s MonitorExaminationResponseBodyDataPersonInfoEarPhone) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MonitorExaminationResponseBodyDataPersonInfoEarPhone) GoString() string {
+	return s.String()
+}
+
+func (s *MonitorExaminationResponseBodyDataPersonInfoEarPhone) SetScore(v float32) *MonitorExaminationResponseBodyDataPersonInfoEarPhone {
+	s.Score = &v
+	return s
+}
+
+func (s *MonitorExaminationResponseBodyDataPersonInfoEarPhone) SetThreshold(v float32) *MonitorExaminationResponseBodyDataPersonInfoEarPhone {
+	s.Threshold = &v
+	return s
+}
+
+type MonitorExaminationResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *MonitorExaminationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s MonitorExaminationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MonitorExaminationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *MonitorExaminationResponse) SetHeaders(v map[string]*string) *MonitorExaminationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *MonitorExaminationResponse) SetBody(v *MonitorExaminationResponseBody) *MonitorExaminationResponse {
 	s.Body = v
 	return s
 }
@@ -12739,6 +12967,121 @@ func (client *Client) BodyPostureAdvance(request *BodyPostureAdvanceRequest, run
 	}
 
 	_result = bodyPostureResp
+	return _result, _err
+}
+
+func (client *Client) MonitorExaminationWithOptions(request *MonitorExaminationRequest, runtime *util.RuntimeOptions) (_result *MonitorExaminationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &MonitorExaminationResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("MonitorExamination"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) MonitorExamination(request *MonitorExaminationRequest) (_result *MonitorExaminationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &MonitorExaminationResponse{}
+	_body, _err := client.MonitorExaminationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) MonitorExaminationAdvance(request *MonitorExaminationAdvanceRequest, runtime *util.RuntimeOptions) (_result *MonitorExaminationResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("facebody"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	monitorExaminationReq := &MonitorExaminationRequest{}
+	openapiutil.Convert(request, monitorExaminationReq)
+	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	ossConfig.AccessKeyId = authResponse.AccessKeyId
+	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+	ossClient, _err = oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	fileObj = &fileform.FileField{
+		Filename:    authResponse.ObjectKey,
+		Content:     request.ImageURLObject,
+		ContentType: tea.String(""),
+	}
+	ossHeader = &oss.PostObjectRequestHeader{
+		AccessKeyId:         authResponse.AccessKeyId,
+		Policy:              authResponse.EncodedPolicy,
+		Signature:           authResponse.Signature,
+		Key:                 authResponse.ObjectKey,
+		File:                fileObj,
+		SuccessActionStatus: tea.String("201"),
+	}
+	uploadRequest = &oss.PostObjectRequest{
+		BucketName: authResponse.Bucket,
+		Header:     ossHeader,
+	}
+	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+	if _err != nil {
+		return _result, _err
+	}
+	monitorExaminationReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	monitorExaminationResp, _err := client.MonitorExaminationWithOptions(monitorExaminationReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = monitorExaminationResp
 	return _result, _err
 }
 
