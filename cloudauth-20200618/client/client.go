@@ -14,6 +14,206 @@ import (
 	"io"
 )
 
+type VerifyBankElementRequest struct {
+	SceneId      *int64  `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	OuterOrderNo *string `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
+	Mode         *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	BankCardNo   *string `json:"BankCardNo,omitempty" xml:"BankCardNo,omitempty"`
+	IdNo         *string `json:"IdNo,omitempty" xml:"IdNo,omitempty"`
+	BankCardUrl  *string `json:"BankCardUrl,omitempty" xml:"BankCardUrl,omitempty"`
+	BankCardFile *string `json:"BankCardFile,omitempty" xml:"BankCardFile,omitempty"`
+	IdName       *string `json:"IdName,omitempty" xml:"IdName,omitempty"`
+	Mobile       *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+}
+
+func (s VerifyBankElementRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyBankElementRequest) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyBankElementRequest) SetSceneId(v int64) *VerifyBankElementRequest {
+	s.SceneId = &v
+	return s
+}
+
+func (s *VerifyBankElementRequest) SetOuterOrderNo(v string) *VerifyBankElementRequest {
+	s.OuterOrderNo = &v
+	return s
+}
+
+func (s *VerifyBankElementRequest) SetMode(v string) *VerifyBankElementRequest {
+	s.Mode = &v
+	return s
+}
+
+func (s *VerifyBankElementRequest) SetBankCardNo(v string) *VerifyBankElementRequest {
+	s.BankCardNo = &v
+	return s
+}
+
+func (s *VerifyBankElementRequest) SetIdNo(v string) *VerifyBankElementRequest {
+	s.IdNo = &v
+	return s
+}
+
+func (s *VerifyBankElementRequest) SetBankCardUrl(v string) *VerifyBankElementRequest {
+	s.BankCardUrl = &v
+	return s
+}
+
+func (s *VerifyBankElementRequest) SetBankCardFile(v string) *VerifyBankElementRequest {
+	s.BankCardFile = &v
+	return s
+}
+
+func (s *VerifyBankElementRequest) SetIdName(v string) *VerifyBankElementRequest {
+	s.IdName = &v
+	return s
+}
+
+func (s *VerifyBankElementRequest) SetMobile(v string) *VerifyBankElementRequest {
+	s.Mobile = &v
+	return s
+}
+
+type VerifyBankElementResponse struct {
+	RequestId    *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Message      *string                                `json:"Message,omitempty" xml:"Message,omitempty" require:"true"`
+	Code         *string                                `json:"Code,omitempty" xml:"Code,omitempty" require:"true"`
+	ResultObject *VerifyBankElementResponseResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" require:"true" type:"Struct"`
+}
+
+func (s VerifyBankElementResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyBankElementResponse) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyBankElementResponse) SetRequestId(v string) *VerifyBankElementResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *VerifyBankElementResponse) SetMessage(v string) *VerifyBankElementResponse {
+	s.Message = &v
+	return s
+}
+
+func (s *VerifyBankElementResponse) SetCode(v string) *VerifyBankElementResponse {
+	s.Code = &v
+	return s
+}
+
+func (s *VerifyBankElementResponse) SetResultObject(v *VerifyBankElementResponseResultObject) *VerifyBankElementResponse {
+	s.ResultObject = v
+	return s
+}
+
+type VerifyBankElementResponseResultObject struct {
+	Passed       *string `json:"Passed,omitempty" xml:"Passed,omitempty" require:"true"`
+	SubCode      *string `json:"SubCode,omitempty" xml:"SubCode,omitempty" require:"true"`
+	MaterialInfo *string `json:"MaterialInfo,omitempty" xml:"MaterialInfo,omitempty" require:"true"`
+	CertifyId    *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty" require:"true"`
+}
+
+func (s VerifyBankElementResponseResultObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyBankElementResponseResultObject) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyBankElementResponseResultObject) SetPassed(v string) *VerifyBankElementResponseResultObject {
+	s.Passed = &v
+	return s
+}
+
+func (s *VerifyBankElementResponseResultObject) SetSubCode(v string) *VerifyBankElementResponseResultObject {
+	s.SubCode = &v
+	return s
+}
+
+func (s *VerifyBankElementResponseResultObject) SetMaterialInfo(v string) *VerifyBankElementResponseResultObject {
+	s.MaterialInfo = &v
+	return s
+}
+
+func (s *VerifyBankElementResponseResultObject) SetCertifyId(v string) *VerifyBankElementResponseResultObject {
+	s.CertifyId = &v
+	return s
+}
+
+type VerifyBankElementAdvanceRequest struct {
+	BankCardFileObject io.Reader `json:"BankCardFileObject,omitempty" xml:"BankCardFileObject,omitempty" require:"true"`
+	SceneId            *int64    `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	OuterOrderNo       *string   `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
+	Mode               *string   `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	BankCardNo         *string   `json:"BankCardNo,omitempty" xml:"BankCardNo,omitempty"`
+	IdNo               *string   `json:"IdNo,omitempty" xml:"IdNo,omitempty"`
+	BankCardUrl        *string   `json:"BankCardUrl,omitempty" xml:"BankCardUrl,omitempty"`
+	IdName             *string   `json:"IdName,omitempty" xml:"IdName,omitempty"`
+	Mobile             *string   `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+}
+
+func (s VerifyBankElementAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyBankElementAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyBankElementAdvanceRequest) SetBankCardFileObject(v io.Reader) *VerifyBankElementAdvanceRequest {
+	s.BankCardFileObject = v
+	return s
+}
+
+func (s *VerifyBankElementAdvanceRequest) SetSceneId(v int64) *VerifyBankElementAdvanceRequest {
+	s.SceneId = &v
+	return s
+}
+
+func (s *VerifyBankElementAdvanceRequest) SetOuterOrderNo(v string) *VerifyBankElementAdvanceRequest {
+	s.OuterOrderNo = &v
+	return s
+}
+
+func (s *VerifyBankElementAdvanceRequest) SetMode(v string) *VerifyBankElementAdvanceRequest {
+	s.Mode = &v
+	return s
+}
+
+func (s *VerifyBankElementAdvanceRequest) SetBankCardNo(v string) *VerifyBankElementAdvanceRequest {
+	s.BankCardNo = &v
+	return s
+}
+
+func (s *VerifyBankElementAdvanceRequest) SetIdNo(v string) *VerifyBankElementAdvanceRequest {
+	s.IdNo = &v
+	return s
+}
+
+func (s *VerifyBankElementAdvanceRequest) SetBankCardUrl(v string) *VerifyBankElementAdvanceRequest {
+	s.BankCardUrl = &v
+	return s
+}
+
+func (s *VerifyBankElementAdvanceRequest) SetIdName(v string) *VerifyBankElementAdvanceRequest {
+	s.IdName = &v
+	return s
+}
+
+func (s *VerifyBankElementAdvanceRequest) SetMobile(v string) *VerifyBankElementAdvanceRequest {
+	s.Mobile = &v
+	return s
+}
+
 type ContrastSmartVerifyRequest struct {
 	SceneId       *int64  `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 	OuterOrderNo  *string `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
@@ -475,6 +675,8 @@ type InitSmartVerifyRequest struct {
 	CertifyId         *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
 	OssBucketName     *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
 	OssObjectName     *string `json:"OssObjectName,omitempty" xml:"OssObjectName,omitempty"`
+	IdNo              *string `json:"IdNo,omitempty" xml:"IdNo,omitempty"`
+	IdName            *string `json:"IdName,omitempty" xml:"IdName,omitempty"`
 }
 
 func (s InitSmartVerifyRequest) String() string {
@@ -572,6 +774,16 @@ func (s *InitSmartVerifyRequest) SetOssBucketName(v string) *InitSmartVerifyRequ
 
 func (s *InitSmartVerifyRequest) SetOssObjectName(v string) *InitSmartVerifyRequest {
 	s.OssObjectName = &v
+	return s
+}
+
+func (s *InitSmartVerifyRequest) SetIdNo(v string) *InitSmartVerifyRequest {
+	s.IdNo = &v
+	return s
+}
+
+func (s *InitSmartVerifyRequest) SetIdName(v string) *InitSmartVerifyRequest {
+	s.IdName = &v
 	return s
 }
 
@@ -754,6 +966,123 @@ func (client *Client) Init(config *rpc.Config) (_err error) {
 	return nil
 }
 
+func (client *Client) VerifyBankElement(request *VerifyBankElementRequest, runtime *util.RuntimeOptions) (_result *VerifyBankElementResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &VerifyBankElementResponse{}
+	_body, _err := client.DoRequest(tea.String("VerifyBankElement"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-06-18"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) VerifyBankElementSimply(request *VerifyBankElementRequest) (_result *VerifyBankElementResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &VerifyBankElementResponse{}
+	_body, _err := client.VerifyBankElement(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) VerifyBankElementAdvance(request *VerifyBankElementAdvanceRequest, runtime *util.RuntimeOptions) (_result *VerifyBankElementResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("Cloudauth"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	rpcutil.Convert(runtime, ossRuntime)
+	verifyBankElementReq := &VerifyBankElementRequest{}
+	rpcutil.Convert(request, verifyBankElementReq)
+	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	ossConfig.AccessKeyId = authResponse.AccessKeyId
+	ossConfig.Endpoint = rpcutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+	ossClient, _err = oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	fileObj = &fileform.FileField{
+		Filename:    authResponse.ObjectKey,
+		Content:     request.BankCardFileObject,
+		ContentType: tea.String(""),
+	}
+	ossHeader = &oss.PostObjectRequestHeader{
+		AccessKeyId:         authResponse.AccessKeyId,
+		Policy:              authResponse.EncodedPolicy,
+		Signature:           authResponse.Signature,
+		Key:                 authResponse.ObjectKey,
+		File:                fileObj,
+		SuccessActionStatus: tea.String("201"),
+	}
+	uploadRequest = &oss.PostObjectRequest{
+		BucketName: authResponse.Bucket,
+		Header:     ossHeader,
+	}
+	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+	if _err != nil {
+		return _result, _err
+	}
+	verifyBankElementReq.BankCardFile = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	verifyBankElementResp, _err := client.VerifyBankElement(verifyBankElementReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = verifyBankElementResp
+	return _result, _err
+}
+
 func (client *Client) ContrastSmartVerify(request *ContrastSmartVerifyRequest, runtime *util.RuntimeOptions) (_result *ContrastSmartVerifyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -791,11 +1120,16 @@ func (client *Client) ContrastSmartVerifyAdvance(request *ContrastSmartVerifyAdv
 		return _result, _err
 	}
 
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -903,11 +1237,16 @@ func (client *Client) ElementSmartVerifyAdvance(request *ElementSmartVerifyAdvan
 		return _result, _err
 	}
 
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
