@@ -1,148 +1,641 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
-	openapiutil "github.com/alibabacloud-go/openapi-util/service"
 	openplatform "github.com/alibabacloud-go/openplatform-20191219/client"
 	fileform "github.com/alibabacloud-go/tea-fileform/service"
 	oss "github.com/alibabacloud-go/tea-oss-sdk/client"
 	ossutil "github.com/alibabacloud-go/tea-oss-utils/service"
+	rpcutil "github.com/alibabacloud-go/tea-rpc-utils/service"
 	rpc "github.com/alibabacloud-go/tea-rpc/client"
 	util "github.com/alibabacloud-go/tea-utils/service"
 	"github.com/alibabacloud-go/tea/tea"
 	"io"
 )
 
-type CompareFacesRequest struct {
-	TargetImageType  *string `json:"TargetImageType,omitempty" xml:"TargetImageType,omitempty"`
-	SourceImageType  *string `json:"SourceImageType,omitempty" xml:"SourceImageType,omitempty"`
-	SourceImageValue *string `json:"SourceImageValue,omitempty" xml:"SourceImageValue,omitempty"`
-	TargetImageValue *string `json:"TargetImageValue,omitempty" xml:"TargetImageValue,omitempty"`
-	BizType          *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+type DescribeWhitelistRequest struct {
+	SourceIp       *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	BizType        *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	BizId          *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	IdCardNum      *string `json:"IdCardNum,omitempty" xml:"IdCardNum,omitempty"`
+	ValidStartDate *string `json:"ValidStartDate,omitempty" xml:"ValidStartDate,omitempty"`
+	ValidEndDate   *string `json:"ValidEndDate,omitempty" xml:"ValidEndDate,omitempty"`
+	Valid          *string `json:"Valid,omitempty" xml:"Valid,omitempty"`
+	PageSize       *int    `json:"PageSize,omitempty" xml:"PageSize,omitempty" require:"true"`
+	CurrentPage    *int    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty" require:"true"`
 }
 
-func (s CompareFacesRequest) String() string {
+func (s DescribeWhitelistRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s CompareFacesRequest) GoString() string {
+func (s DescribeWhitelistRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CompareFacesRequest) SetTargetImageType(v string) *CompareFacesRequest {
-	s.TargetImageType = &v
+func (s *DescribeWhitelistRequest) SetSourceIp(v string) *DescribeWhitelistRequest {
+	s.SourceIp = &v
 	return s
 }
 
-func (s *CompareFacesRequest) SetSourceImageType(v string) *CompareFacesRequest {
-	s.SourceImageType = &v
+func (s *DescribeWhitelistRequest) SetLang(v string) *DescribeWhitelistRequest {
+	s.Lang = &v
 	return s
 }
 
-func (s *CompareFacesRequest) SetSourceImageValue(v string) *CompareFacesRequest {
-	s.SourceImageValue = &v
-	return s
-}
-
-func (s *CompareFacesRequest) SetTargetImageValue(v string) *CompareFacesRequest {
-	s.TargetImageValue = &v
-	return s
-}
-
-func (s *CompareFacesRequest) SetBizType(v string) *CompareFacesRequest {
+func (s *DescribeWhitelistRequest) SetBizType(v string) *DescribeWhitelistRequest {
 	s.BizType = &v
 	return s
 }
 
-type CompareFacesResponseBody struct {
-	Message   *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *CompareFacesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Code      *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success   *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s CompareFacesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CompareFacesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CompareFacesResponseBody) SetMessage(v string) *CompareFacesResponseBody {
-	s.Message = &v
+func (s *DescribeWhitelistRequest) SetBizId(v string) *DescribeWhitelistRequest {
+	s.BizId = &v
 	return s
 }
 
-func (s *CompareFacesResponseBody) SetRequestId(v string) *CompareFacesResponseBody {
+func (s *DescribeWhitelistRequest) SetIdCardNum(v string) *DescribeWhitelistRequest {
+	s.IdCardNum = &v
+	return s
+}
+
+func (s *DescribeWhitelistRequest) SetValidStartDate(v string) *DescribeWhitelistRequest {
+	s.ValidStartDate = &v
+	return s
+}
+
+func (s *DescribeWhitelistRequest) SetValidEndDate(v string) *DescribeWhitelistRequest {
+	s.ValidEndDate = &v
+	return s
+}
+
+func (s *DescribeWhitelistRequest) SetValid(v string) *DescribeWhitelistRequest {
+	s.Valid = &v
+	return s
+}
+
+func (s *DescribeWhitelistRequest) SetPageSize(v int) *DescribeWhitelistRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeWhitelistRequest) SetCurrentPage(v int) *DescribeWhitelistRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+type DescribeWhitelistResponse struct {
+	RequestId   *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	TotalCount  *int                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty" require:"true"`
+	CurrentPage *int                              `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty" require:"true"`
+	PageSize    *int                              `json:"PageSize,omitempty" xml:"PageSize,omitempty" require:"true"`
+	Items       []*DescribeWhitelistResponseItems `json:"Items,omitempty" xml:"Items,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s DescribeWhitelistResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWhitelistResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWhitelistResponse) SetRequestId(v string) *DescribeWhitelistResponse {
 	s.RequestId = &v
 	return s
 }
 
-func (s *CompareFacesResponseBody) SetData(v *CompareFacesResponseBodyData) *CompareFacesResponseBody {
-	s.Data = v
+func (s *DescribeWhitelistResponse) SetTotalCount(v int) *DescribeWhitelistResponse {
+	s.TotalCount = &v
 	return s
 }
 
-func (s *CompareFacesResponseBody) SetCode(v string) *CompareFacesResponseBody {
+func (s *DescribeWhitelistResponse) SetCurrentPage(v int) *DescribeWhitelistResponse {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeWhitelistResponse) SetPageSize(v int) *DescribeWhitelistResponse {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeWhitelistResponse) SetItems(v []*DescribeWhitelistResponseItems) *DescribeWhitelistResponse {
+	s.Items = v
+	return s
+}
+
+type DescribeWhitelistResponseItems struct {
+	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty" require:"true"`
+	Uid         *int64  `json:"Uid,omitempty" xml:"Uid,omitempty" require:"true"`
+	BizType     *string `json:"BizType,omitempty" xml:"BizType,omitempty" require:"true"`
+	StartDate   *int64  `json:"StartDate,omitempty" xml:"StartDate,omitempty" require:"true"`
+	EndDate     *int64  `json:"EndDate,omitempty" xml:"EndDate,omitempty" require:"true"`
+	IdCardNum   *string `json:"IdCardNum,omitempty" xml:"IdCardNum,omitempty" require:"true"`
+	BizId       *string `json:"BizId,omitempty" xml:"BizId,omitempty" require:"true"`
+	Valid       *int    `json:"Valid,omitempty" xml:"Valid,omitempty" require:"true"`
+	GmtCreate   *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty" require:"true"`
+	GmtModified *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty" require:"true"`
+}
+
+func (s DescribeWhitelistResponseItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWhitelistResponseItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWhitelistResponseItems) SetId(v int64) *DescribeWhitelistResponseItems {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeWhitelistResponseItems) SetUid(v int64) *DescribeWhitelistResponseItems {
+	s.Uid = &v
+	return s
+}
+
+func (s *DescribeWhitelistResponseItems) SetBizType(v string) *DescribeWhitelistResponseItems {
+	s.BizType = &v
+	return s
+}
+
+func (s *DescribeWhitelistResponseItems) SetStartDate(v int64) *DescribeWhitelistResponseItems {
+	s.StartDate = &v
+	return s
+}
+
+func (s *DescribeWhitelistResponseItems) SetEndDate(v int64) *DescribeWhitelistResponseItems {
+	s.EndDate = &v
+	return s
+}
+
+func (s *DescribeWhitelistResponseItems) SetIdCardNum(v string) *DescribeWhitelistResponseItems {
+	s.IdCardNum = &v
+	return s
+}
+
+func (s *DescribeWhitelistResponseItems) SetBizId(v string) *DescribeWhitelistResponseItems {
+	s.BizId = &v
+	return s
+}
+
+func (s *DescribeWhitelistResponseItems) SetValid(v int) *DescribeWhitelistResponseItems {
+	s.Valid = &v
+	return s
+}
+
+func (s *DescribeWhitelistResponseItems) SetGmtCreate(v int64) *DescribeWhitelistResponseItems {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeWhitelistResponseItems) SetGmtModified(v int64) *DescribeWhitelistResponseItems {
+	s.GmtModified = &v
+	return s
+}
+
+type DeleteWhitelistRequest struct {
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Ids      *string `json:"Ids,omitempty" xml:"Ids,omitempty" require:"true"`
+}
+
+func (s DeleteWhitelistRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteWhitelistRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteWhitelistRequest) SetSourceIp(v string) *DeleteWhitelistRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *DeleteWhitelistRequest) SetLang(v string) *DeleteWhitelistRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DeleteWhitelistRequest) SetIds(v string) *DeleteWhitelistRequest {
+	s.Ids = &v
+	return s
+}
+
+type DeleteWhitelistResponse struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+}
+
+func (s DeleteWhitelistResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteWhitelistResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteWhitelistResponse) SetRequestId(v string) *DeleteWhitelistResponse {
+	s.RequestId = &v
+	return s
+}
+
+type CreateWhitelistRequest struct {
+	SourceIp  *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	Lang      *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	BizType   *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	BizId     *string `json:"BizId,omitempty" xml:"BizId,omitempty" require:"true"`
+	IdCardNum *string `json:"IdCardNum,omitempty" xml:"IdCardNum,omitempty" require:"true"`
+	ValidDay  *string `json:"ValidDay,omitempty" xml:"ValidDay,omitempty" require:"true"`
+}
+
+func (s CreateWhitelistRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWhitelistRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWhitelistRequest) SetSourceIp(v string) *CreateWhitelistRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *CreateWhitelistRequest) SetLang(v string) *CreateWhitelistRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *CreateWhitelistRequest) SetBizType(v string) *CreateWhitelistRequest {
+	s.BizType = &v
+	return s
+}
+
+func (s *CreateWhitelistRequest) SetBizId(v string) *CreateWhitelistRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *CreateWhitelistRequest) SetIdCardNum(v string) *CreateWhitelistRequest {
+	s.IdCardNum = &v
+	return s
+}
+
+func (s *CreateWhitelistRequest) SetValidDay(v string) *CreateWhitelistRequest {
+	s.ValidDay = &v
+	return s
+}
+
+type CreateWhitelistResponse struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+}
+
+func (s CreateWhitelistResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWhitelistResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWhitelistResponse) SetRequestId(v string) *CreateWhitelistResponse {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeFaceConfigRequest struct {
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+}
+
+func (s DescribeFaceConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFaceConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFaceConfigRequest) SetSourceIp(v string) *DescribeFaceConfigRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *DescribeFaceConfigRequest) SetLang(v string) *DescribeFaceConfigRequest {
+	s.Lang = &v
+	return s
+}
+
+type DescribeFaceConfigResponse struct {
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Items     []*DescribeFaceConfigResponseItems `json:"Items,omitempty" xml:"Items,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s DescribeFaceConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFaceConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFaceConfigResponse) SetRequestId(v string) *DescribeFaceConfigResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeFaceConfigResponse) SetItems(v []*DescribeFaceConfigResponseItems) *DescribeFaceConfigResponse {
+	s.Items = v
+	return s
+}
+
+type DescribeFaceConfigResponseItems struct {
+	BizType    *string `json:"BizType,omitempty" xml:"BizType,omitempty" require:"true"`
+	BizName    *string `json:"BizName,omitempty" xml:"BizName,omitempty" require:"true"`
+	GmtUpdated *int64  `json:"GmtUpdated,omitempty" xml:"GmtUpdated,omitempty" require:"true"`
+}
+
+func (s DescribeFaceConfigResponseItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFaceConfigResponseItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFaceConfigResponseItems) SetBizType(v string) *DescribeFaceConfigResponseItems {
+	s.BizType = &v
+	return s
+}
+
+func (s *DescribeFaceConfigResponseItems) SetBizName(v string) *DescribeFaceConfigResponseItems {
+	s.BizName = &v
+	return s
+}
+
+func (s *DescribeFaceConfigResponseItems) SetGmtUpdated(v int64) *DescribeFaceConfigResponseItems {
+	s.GmtUpdated = &v
+	return s
+}
+
+type UpdateFaceConfigRequest struct {
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	BizType  *string `json:"BizType,omitempty" xml:"BizType,omitempty" require:"true"`
+	BizName  *string `json:"BizName,omitempty" xml:"BizName,omitempty" require:"true"`
+}
+
+func (s UpdateFaceConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFaceConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFaceConfigRequest) SetSourceIp(v string) *UpdateFaceConfigRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *UpdateFaceConfigRequest) SetLang(v string) *UpdateFaceConfigRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *UpdateFaceConfigRequest) SetBizType(v string) *UpdateFaceConfigRequest {
+	s.BizType = &v
+	return s
+}
+
+func (s *UpdateFaceConfigRequest) SetBizName(v string) *UpdateFaceConfigRequest {
+	s.BizName = &v
+	return s
+}
+
+type UpdateFaceConfigResponse struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+}
+
+func (s UpdateFaceConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFaceConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFaceConfigResponse) SetRequestId(v string) *UpdateFaceConfigResponse {
+	s.RequestId = &v
+	return s
+}
+
+type CreateFaceConfigRequest struct {
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	BizType  *string `json:"BizType,omitempty" xml:"BizType,omitempty" require:"true"`
+	BizName  *string `json:"BizName,omitempty" xml:"BizName,omitempty" require:"true"`
+}
+
+func (s CreateFaceConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFaceConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFaceConfigRequest) SetSourceIp(v string) *CreateFaceConfigRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *CreateFaceConfigRequest) SetLang(v string) *CreateFaceConfigRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *CreateFaceConfigRequest) SetBizType(v string) *CreateFaceConfigRequest {
+	s.BizType = &v
+	return s
+}
+
+func (s *CreateFaceConfigRequest) SetBizName(v string) *CreateFaceConfigRequest {
+	s.BizName = &v
+	return s
+}
+
+type CreateFaceConfigResponse struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+}
+
+func (s CreateFaceConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFaceConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFaceConfigResponse) SetRequestId(v string) *CreateFaceConfigResponse {
+	s.RequestId = &v
+	return s
+}
+
+type LivenessFaceVerifyRequest struct {
+	SceneId                *int64  `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	OuterOrderNo           *string `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
+	ProductCode            *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	FaceContrastPicture    *string `json:"FaceContrastPicture,omitempty" xml:"FaceContrastPicture,omitempty"`
+	DeviceToken            *string `json:"DeviceToken,omitempty" xml:"DeviceToken,omitempty"`
+	Mobile                 *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	Ip                     *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	UserId                 *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	FaceContrastPictureUrl *string `json:"FaceContrastPictureUrl,omitempty" xml:"FaceContrastPictureUrl,omitempty"`
+	CertifyId              *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
+	OssBucketName          *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
+	OssObjectName          *string `json:"OssObjectName,omitempty" xml:"OssObjectName,omitempty"`
+	Model                  *string `json:"Model,omitempty" xml:"Model,omitempty"`
+}
+
+func (s LivenessFaceVerifyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LivenessFaceVerifyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *LivenessFaceVerifyRequest) SetSceneId(v int64) *LivenessFaceVerifyRequest {
+	s.SceneId = &v
+	return s
+}
+
+func (s *LivenessFaceVerifyRequest) SetOuterOrderNo(v string) *LivenessFaceVerifyRequest {
+	s.OuterOrderNo = &v
+	return s
+}
+
+func (s *LivenessFaceVerifyRequest) SetProductCode(v string) *LivenessFaceVerifyRequest {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *LivenessFaceVerifyRequest) SetFaceContrastPicture(v string) *LivenessFaceVerifyRequest {
+	s.FaceContrastPicture = &v
+	return s
+}
+
+func (s *LivenessFaceVerifyRequest) SetDeviceToken(v string) *LivenessFaceVerifyRequest {
+	s.DeviceToken = &v
+	return s
+}
+
+func (s *LivenessFaceVerifyRequest) SetMobile(v string) *LivenessFaceVerifyRequest {
+	s.Mobile = &v
+	return s
+}
+
+func (s *LivenessFaceVerifyRequest) SetIp(v string) *LivenessFaceVerifyRequest {
+	s.Ip = &v
+	return s
+}
+
+func (s *LivenessFaceVerifyRequest) SetUserId(v string) *LivenessFaceVerifyRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *LivenessFaceVerifyRequest) SetFaceContrastPictureUrl(v string) *LivenessFaceVerifyRequest {
+	s.FaceContrastPictureUrl = &v
+	return s
+}
+
+func (s *LivenessFaceVerifyRequest) SetCertifyId(v string) *LivenessFaceVerifyRequest {
+	s.CertifyId = &v
+	return s
+}
+
+func (s *LivenessFaceVerifyRequest) SetOssBucketName(v string) *LivenessFaceVerifyRequest {
+	s.OssBucketName = &v
+	return s
+}
+
+func (s *LivenessFaceVerifyRequest) SetOssObjectName(v string) *LivenessFaceVerifyRequest {
+	s.OssObjectName = &v
+	return s
+}
+
+func (s *LivenessFaceVerifyRequest) SetModel(v string) *LivenessFaceVerifyRequest {
+	s.Model = &v
+	return s
+}
+
+type LivenessFaceVerifyResponse struct {
+	RequestId    *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Message      *string                                 `json:"Message,omitempty" xml:"Message,omitempty" require:"true"`
+	Code         *string                                 `json:"Code,omitempty" xml:"Code,omitempty" require:"true"`
+	ResultObject *LivenessFaceVerifyResponseResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" require:"true" type:"Struct"`
+}
+
+func (s LivenessFaceVerifyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LivenessFaceVerifyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *LivenessFaceVerifyResponse) SetRequestId(v string) *LivenessFaceVerifyResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *LivenessFaceVerifyResponse) SetMessage(v string) *LivenessFaceVerifyResponse {
+	s.Message = &v
+	return s
+}
+
+func (s *LivenessFaceVerifyResponse) SetCode(v string) *LivenessFaceVerifyResponse {
 	s.Code = &v
 	return s
 }
 
-func (s *CompareFacesResponseBody) SetSuccess(v bool) *CompareFacesResponseBody {
-	s.Success = &v
+func (s *LivenessFaceVerifyResponse) SetResultObject(v *LivenessFaceVerifyResponseResultObject) *LivenessFaceVerifyResponse {
+	s.ResultObject = v
 	return s
 }
 
-type CompareFacesResponseBodyData struct {
-	SimilarityScore      *float32 `json:"SimilarityScore,omitempty" xml:"SimilarityScore,omitempty"`
-	ConfidenceThresholds *string  `json:"ConfidenceThresholds,omitempty" xml:"ConfidenceThresholds,omitempty"`
+type LivenessFaceVerifyResponseResultObject struct {
+	Passed       *string `json:"Passed,omitempty" xml:"Passed,omitempty" require:"true"`
+	MaterialInfo *string `json:"MaterialInfo,omitempty" xml:"MaterialInfo,omitempty" require:"true"`
+	SubCode      *string `json:"SubCode,omitempty" xml:"SubCode,omitempty" require:"true"`
 }
 
-func (s CompareFacesResponseBodyData) String() string {
+func (s LivenessFaceVerifyResponseResultObject) String() string {
 	return tea.Prettify(s)
 }
 
-func (s CompareFacesResponseBodyData) GoString() string {
+func (s LivenessFaceVerifyResponseResultObject) GoString() string {
 	return s.String()
 }
 
-func (s *CompareFacesResponseBodyData) SetSimilarityScore(v float32) *CompareFacesResponseBodyData {
-	s.SimilarityScore = &v
+func (s *LivenessFaceVerifyResponseResultObject) SetPassed(v string) *LivenessFaceVerifyResponseResultObject {
+	s.Passed = &v
 	return s
 }
 
-func (s *CompareFacesResponseBodyData) SetConfidenceThresholds(v string) *CompareFacesResponseBodyData {
-	s.ConfidenceThresholds = &v
+func (s *LivenessFaceVerifyResponseResultObject) SetMaterialInfo(v string) *LivenessFaceVerifyResponseResultObject {
+	s.MaterialInfo = &v
 	return s
 }
 
-type CompareFacesResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CompareFacesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CompareFacesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CompareFacesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CompareFacesResponse) SetHeaders(v map[string]*string) *CompareFacesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CompareFacesResponse) SetBody(v *CompareFacesResponseBody) *CompareFacesResponse {
-	s.Body = v
+func (s *LivenessFaceVerifyResponseResultObject) SetSubCode(v string) *LivenessFaceVerifyResponseResultObject {
+	s.SubCode = &v
 	return s
 }
 
@@ -235,67 +728,11 @@ func (s *CompareFaceVerifyRequest) SetTargetOssObjectName(v string) *CompareFace
 	return s
 }
 
-type CompareFaceVerifyResponseBody struct {
-	ResultObject *CompareFaceVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
-	Message      *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId    *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code         *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-}
-
-func (s CompareFaceVerifyResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CompareFaceVerifyResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CompareFaceVerifyResponseBody) SetResultObject(v *CompareFaceVerifyResponseBodyResultObject) *CompareFaceVerifyResponseBody {
-	s.ResultObject = v
-	return s
-}
-
-func (s *CompareFaceVerifyResponseBody) SetMessage(v string) *CompareFaceVerifyResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *CompareFaceVerifyResponseBody) SetRequestId(v string) *CompareFaceVerifyResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CompareFaceVerifyResponseBody) SetCode(v string) *CompareFaceVerifyResponseBody {
-	s.Code = &v
-	return s
-}
-
-type CompareFaceVerifyResponseBodyResultObject struct {
-	VerifyScore *float32 `json:"VerifyScore,omitempty" xml:"VerifyScore,omitempty"`
-	Passed      *string  `json:"Passed,omitempty" xml:"Passed,omitempty"`
-}
-
-func (s CompareFaceVerifyResponseBodyResultObject) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CompareFaceVerifyResponseBodyResultObject) GoString() string {
-	return s.String()
-}
-
-func (s *CompareFaceVerifyResponseBodyResultObject) SetVerifyScore(v float32) *CompareFaceVerifyResponseBodyResultObject {
-	s.VerifyScore = &v
-	return s
-}
-
-func (s *CompareFaceVerifyResponseBodyResultObject) SetPassed(v string) *CompareFaceVerifyResponseBodyResultObject {
-	s.Passed = &v
-	return s
-}
-
 type CompareFaceVerifyResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CompareFaceVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	RequestId    *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Message      *string                                `json:"Message,omitempty" xml:"Message,omitempty" require:"true"`
+	Code         *string                                `json:"Code,omitempty" xml:"Code,omitempty" require:"true"`
+	ResultObject *CompareFaceVerifyResponseResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" require:"true" type:"Struct"`
 }
 
 func (s CompareFaceVerifyResponse) String() string {
@@ -306,13 +743,458 @@ func (s CompareFaceVerifyResponse) GoString() string {
 	return s.String()
 }
 
-func (s *CompareFaceVerifyResponse) SetHeaders(v map[string]*string) *CompareFaceVerifyResponse {
-	s.Headers = v
+func (s *CompareFaceVerifyResponse) SetRequestId(v string) *CompareFaceVerifyResponse {
+	s.RequestId = &v
 	return s
 }
 
-func (s *CompareFaceVerifyResponse) SetBody(v *CompareFaceVerifyResponseBody) *CompareFaceVerifyResponse {
-	s.Body = v
+func (s *CompareFaceVerifyResponse) SetMessage(v string) *CompareFaceVerifyResponse {
+	s.Message = &v
+	return s
+}
+
+func (s *CompareFaceVerifyResponse) SetCode(v string) *CompareFaceVerifyResponse {
+	s.Code = &v
+	return s
+}
+
+func (s *CompareFaceVerifyResponse) SetResultObject(v *CompareFaceVerifyResponseResultObject) *CompareFaceVerifyResponse {
+	s.ResultObject = v
+	return s
+}
+
+type CompareFaceVerifyResponseResultObject struct {
+	Passed      *string  `json:"Passed,omitempty" xml:"Passed,omitempty" require:"true"`
+	VerifyScore *float32 `json:"VerifyScore,omitempty" xml:"VerifyScore,omitempty" require:"true"`
+}
+
+func (s CompareFaceVerifyResponseResultObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CompareFaceVerifyResponseResultObject) GoString() string {
+	return s.String()
+}
+
+func (s *CompareFaceVerifyResponseResultObject) SetPassed(v string) *CompareFaceVerifyResponseResultObject {
+	s.Passed = &v
+	return s
+}
+
+func (s *CompareFaceVerifyResponseResultObject) SetVerifyScore(v float32) *CompareFaceVerifyResponseResultObject {
+	s.VerifyScore = &v
+	return s
+}
+
+type DescribeSdkUrlRequest struct {
+	Id    *int64 `json:"Id,omitempty" xml:"Id,omitempty" require:"true"`
+	Debug *bool  `json:"Debug,omitempty" xml:"Debug,omitempty"`
+}
+
+func (s DescribeSdkUrlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSdkUrlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSdkUrlRequest) SetId(v int64) *DescribeSdkUrlRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeSdkUrlRequest) SetDebug(v bool) *DescribeSdkUrlRequest {
+	s.Debug = &v
+	return s
+}
+
+type DescribeSdkUrlResponse struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	SdkUrl    *string `json:"SdkUrl,omitempty" xml:"SdkUrl,omitempty" require:"true"`
+}
+
+func (s DescribeSdkUrlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSdkUrlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSdkUrlResponse) SetRequestId(v string) *DescribeSdkUrlResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSdkUrlResponse) SetSdkUrl(v string) *DescribeSdkUrlResponse {
+	s.SdkUrl = &v
+	return s
+}
+
+type DescribeUpdatePackageResultRequest struct {
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty" require:"true"`
+}
+
+func (s DescribeUpdatePackageResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUpdatePackageResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUpdatePackageResultRequest) SetTaskId(v string) *DescribeUpdatePackageResultRequest {
+	s.TaskId = &v
+	return s
+}
+
+type DescribeUpdatePackageResultResponse struct {
+	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	AppInfo   *DescribeUpdatePackageResultResponseAppInfo `json:"AppInfo,omitempty" xml:"AppInfo,omitempty" require:"true" type:"Struct"`
+}
+
+func (s DescribeUpdatePackageResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUpdatePackageResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUpdatePackageResultResponse) SetRequestId(v string) *DescribeUpdatePackageResultResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeUpdatePackageResultResponse) SetAppInfo(v *DescribeUpdatePackageResultResponseAppInfo) *DescribeUpdatePackageResultResponse {
+	s.AppInfo = v
+	return s
+}
+
+type DescribeUpdatePackageResultResponseAppInfo struct {
+	Id               *int64                                                      `json:"Id,omitempty" xml:"Id,omitempty" require:"true"`
+	Name             *string                                                     `json:"Name,omitempty" xml:"Name,omitempty" require:"true"`
+	PackageName      *string                                                     `json:"PackageName,omitempty" xml:"PackageName,omitempty" require:"true"`
+	Icon             *string                                                     `json:"Icon,omitempty" xml:"Icon,omitempty" require:"true"`
+	StartDate        *string                                                     `json:"StartDate,omitempty" xml:"StartDate,omitempty" require:"true"`
+	EndDate          *string                                                     `json:"EndDate,omitempty" xml:"EndDate,omitempty" require:"true"`
+	Type             *int                                                        `json:"Type,omitempty" xml:"Type,omitempty" require:"true"`
+	PackageInfo      *DescribeUpdatePackageResultResponseAppInfoPackageInfo      `json:"PackageInfo,omitempty" xml:"PackageInfo,omitempty" require:"true" type:"Struct"`
+	DebugPackageInfo *DescribeUpdatePackageResultResponseAppInfoDebugPackageInfo `json:"DebugPackageInfo,omitempty" xml:"DebugPackageInfo,omitempty" require:"true" type:"Struct"`
+}
+
+func (s DescribeUpdatePackageResultResponseAppInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUpdatePackageResultResponseAppInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUpdatePackageResultResponseAppInfo) SetId(v int64) *DescribeUpdatePackageResultResponseAppInfo {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeUpdatePackageResultResponseAppInfo) SetName(v string) *DescribeUpdatePackageResultResponseAppInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeUpdatePackageResultResponseAppInfo) SetPackageName(v string) *DescribeUpdatePackageResultResponseAppInfo {
+	s.PackageName = &v
+	return s
+}
+
+func (s *DescribeUpdatePackageResultResponseAppInfo) SetIcon(v string) *DescribeUpdatePackageResultResponseAppInfo {
+	s.Icon = &v
+	return s
+}
+
+func (s *DescribeUpdatePackageResultResponseAppInfo) SetStartDate(v string) *DescribeUpdatePackageResultResponseAppInfo {
+	s.StartDate = &v
+	return s
+}
+
+func (s *DescribeUpdatePackageResultResponseAppInfo) SetEndDate(v string) *DescribeUpdatePackageResultResponseAppInfo {
+	s.EndDate = &v
+	return s
+}
+
+func (s *DescribeUpdatePackageResultResponseAppInfo) SetType(v int) *DescribeUpdatePackageResultResponseAppInfo {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeUpdatePackageResultResponseAppInfo) SetPackageInfo(v *DescribeUpdatePackageResultResponseAppInfoPackageInfo) *DescribeUpdatePackageResultResponseAppInfo {
+	s.PackageInfo = v
+	return s
+}
+
+func (s *DescribeUpdatePackageResultResponseAppInfo) SetDebugPackageInfo(v *DescribeUpdatePackageResultResponseAppInfoDebugPackageInfo) *DescribeUpdatePackageResultResponseAppInfo {
+	s.DebugPackageInfo = v
+	return s
+}
+
+type DescribeUpdatePackageResultResponseAppInfoPackageInfo struct {
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty" require:"true"`
+}
+
+func (s DescribeUpdatePackageResultResponseAppInfoPackageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUpdatePackageResultResponseAppInfoPackageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUpdatePackageResultResponseAppInfoPackageInfo) SetVersion(v string) *DescribeUpdatePackageResultResponseAppInfoPackageInfo {
+	s.Version = &v
+	return s
+}
+
+type DescribeUpdatePackageResultResponseAppInfoDebugPackageInfo struct {
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty" require:"true"`
+}
+
+func (s DescribeUpdatePackageResultResponseAppInfoDebugPackageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUpdatePackageResultResponseAppInfoDebugPackageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUpdatePackageResultResponseAppInfoDebugPackageInfo) SetVersion(v string) *DescribeUpdatePackageResultResponseAppInfoDebugPackageInfo {
+	s.Version = &v
+	return s
+}
+
+type UpdateAppPackageRequest struct {
+	Id         *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	PackageUrl *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty" require:"true"`
+	Platform   *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	Debug      *bool   `json:"Debug,omitempty" xml:"Debug,omitempty"`
+}
+
+func (s UpdateAppPackageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAppPackageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAppPackageRequest) SetId(v int64) *UpdateAppPackageRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateAppPackageRequest) SetPackageUrl(v string) *UpdateAppPackageRequest {
+	s.PackageUrl = &v
+	return s
+}
+
+func (s *UpdateAppPackageRequest) SetPlatform(v string) *UpdateAppPackageRequest {
+	s.Platform = &v
+	return s
+}
+
+func (s *UpdateAppPackageRequest) SetDebug(v bool) *UpdateAppPackageRequest {
+	s.Debug = &v
+	return s
+}
+
+type UpdateAppPackageResponse struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty" require:"true"`
+}
+
+func (s UpdateAppPackageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAppPackageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAppPackageResponse) SetRequestId(v string) *UpdateAppPackageResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateAppPackageResponse) SetTaskId(v string) *UpdateAppPackageResponse {
+	s.TaskId = &v
+	return s
+}
+
+type DescribeAppInfoRequest struct {
+	PageSize    *int    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	CurrentPage *int    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Platform    *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+}
+
+func (s DescribeAppInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppInfoRequest) SetPageSize(v int) *DescribeAppInfoRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeAppInfoRequest) SetCurrentPage(v int) *DescribeAppInfoRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeAppInfoRequest) SetPlatform(v string) *DescribeAppInfoRequest {
+	s.Platform = &v
+	return s
+}
+
+type DescribeAppInfoResponse struct {
+	RequestId   *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	PageSize    *int                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty" require:"true"`
+	CurrentPage *int                                  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty" require:"true"`
+	TotalCount  *int                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty" require:"true"`
+	AppInfoList []*DescribeAppInfoResponseAppInfoList `json:"AppInfoList,omitempty" xml:"AppInfoList,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s DescribeAppInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppInfoResponse) SetRequestId(v string) *DescribeAppInfoResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAppInfoResponse) SetPageSize(v int) *DescribeAppInfoResponse {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeAppInfoResponse) SetCurrentPage(v int) *DescribeAppInfoResponse {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeAppInfoResponse) SetTotalCount(v int) *DescribeAppInfoResponse {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeAppInfoResponse) SetAppInfoList(v []*DescribeAppInfoResponseAppInfoList) *DescribeAppInfoResponse {
+	s.AppInfoList = v
+	return s
+}
+
+type DescribeAppInfoResponseAppInfoList struct {
+	Id               *int64                                              `json:"Id,omitempty" xml:"Id,omitempty" require:"true"`
+	Name             *string                                             `json:"Name,omitempty" xml:"Name,omitempty" require:"true"`
+	PackageName      *string                                             `json:"PackageName,omitempty" xml:"PackageName,omitempty" require:"true"`
+	Icon             *string                                             `json:"Icon,omitempty" xml:"Icon,omitempty" require:"true"`
+	StartDate        *string                                             `json:"StartDate,omitempty" xml:"StartDate,omitempty" require:"true"`
+	EndDate          *string                                             `json:"EndDate,omitempty" xml:"EndDate,omitempty" require:"true"`
+	Type             *int                                                `json:"Type,omitempty" xml:"Type,omitempty" require:"true"`
+	PackageInfo      *DescribeAppInfoResponseAppInfoListPackageInfo      `json:"PackageInfo,omitempty" xml:"PackageInfo,omitempty" require:"true" type:"Struct"`
+	DebugPackageInfo *DescribeAppInfoResponseAppInfoListDebugPackageInfo `json:"DebugPackageInfo,omitempty" xml:"DebugPackageInfo,omitempty" require:"true" type:"Struct"`
+}
+
+func (s DescribeAppInfoResponseAppInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppInfoResponseAppInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppInfoResponseAppInfoList) SetId(v int64) *DescribeAppInfoResponseAppInfoList {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeAppInfoResponseAppInfoList) SetName(v string) *DescribeAppInfoResponseAppInfoList {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeAppInfoResponseAppInfoList) SetPackageName(v string) *DescribeAppInfoResponseAppInfoList {
+	s.PackageName = &v
+	return s
+}
+
+func (s *DescribeAppInfoResponseAppInfoList) SetIcon(v string) *DescribeAppInfoResponseAppInfoList {
+	s.Icon = &v
+	return s
+}
+
+func (s *DescribeAppInfoResponseAppInfoList) SetStartDate(v string) *DescribeAppInfoResponseAppInfoList {
+	s.StartDate = &v
+	return s
+}
+
+func (s *DescribeAppInfoResponseAppInfoList) SetEndDate(v string) *DescribeAppInfoResponseAppInfoList {
+	s.EndDate = &v
+	return s
+}
+
+func (s *DescribeAppInfoResponseAppInfoList) SetType(v int) *DescribeAppInfoResponseAppInfoList {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeAppInfoResponseAppInfoList) SetPackageInfo(v *DescribeAppInfoResponseAppInfoListPackageInfo) *DescribeAppInfoResponseAppInfoList {
+	s.PackageInfo = v
+	return s
+}
+
+func (s *DescribeAppInfoResponseAppInfoList) SetDebugPackageInfo(v *DescribeAppInfoResponseAppInfoListDebugPackageInfo) *DescribeAppInfoResponseAppInfoList {
+	s.DebugPackageInfo = v
+	return s
+}
+
+type DescribeAppInfoResponseAppInfoListPackageInfo struct {
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty" require:"true"`
+}
+
+func (s DescribeAppInfoResponseAppInfoListPackageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppInfoResponseAppInfoListPackageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppInfoResponseAppInfoListPackageInfo) SetVersion(v string) *DescribeAppInfoResponseAppInfoListPackageInfo {
+	s.Version = &v
+	return s
+}
+
+type DescribeAppInfoResponseAppInfoListDebugPackageInfo struct {
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty" require:"true"`
+}
+
+func (s DescribeAppInfoResponseAppInfoListDebugPackageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppInfoResponseAppInfoListDebugPackageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppInfoResponseAppInfoListDebugPackageInfo) SetVersion(v string) *DescribeAppInfoResponseAppInfoListDebugPackageInfo {
+	s.Version = &v
 	return s
 }
 
@@ -429,6 +1311,76 @@ func (s *ContrastFaceVerifyRequest) SetFaceContrastFile(v string) *ContrastFaceV
 	return s
 }
 
+type ContrastFaceVerifyResponse struct {
+	RequestId    *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Message      *string                                 `json:"Message,omitempty" xml:"Message,omitempty" require:"true"`
+	Code         *string                                 `json:"Code,omitempty" xml:"Code,omitempty" require:"true"`
+	ResultObject *ContrastFaceVerifyResponseResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" require:"true" type:"Struct"`
+}
+
+func (s ContrastFaceVerifyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ContrastFaceVerifyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ContrastFaceVerifyResponse) SetRequestId(v string) *ContrastFaceVerifyResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ContrastFaceVerifyResponse) SetMessage(v string) *ContrastFaceVerifyResponse {
+	s.Message = &v
+	return s
+}
+
+func (s *ContrastFaceVerifyResponse) SetCode(v string) *ContrastFaceVerifyResponse {
+	s.Code = &v
+	return s
+}
+
+func (s *ContrastFaceVerifyResponse) SetResultObject(v *ContrastFaceVerifyResponseResultObject) *ContrastFaceVerifyResponse {
+	s.ResultObject = v
+	return s
+}
+
+type ContrastFaceVerifyResponseResultObject struct {
+	Passed       *string `json:"Passed,omitempty" xml:"Passed,omitempty" require:"true"`
+	IdentityInfo *string `json:"IdentityInfo,omitempty" xml:"IdentityInfo,omitempty" require:"true"`
+	MaterialInfo *string `json:"MaterialInfo,omitempty" xml:"MaterialInfo,omitempty" require:"true"`
+	SubCode      *string `json:"SubCode,omitempty" xml:"SubCode,omitempty" require:"true"`
+}
+
+func (s ContrastFaceVerifyResponseResultObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ContrastFaceVerifyResponseResultObject) GoString() string {
+	return s.String()
+}
+
+func (s *ContrastFaceVerifyResponseResultObject) SetPassed(v string) *ContrastFaceVerifyResponseResultObject {
+	s.Passed = &v
+	return s
+}
+
+func (s *ContrastFaceVerifyResponseResultObject) SetIdentityInfo(v string) *ContrastFaceVerifyResponseResultObject {
+	s.IdentityInfo = &v
+	return s
+}
+
+func (s *ContrastFaceVerifyResponseResultObject) SetMaterialInfo(v string) *ContrastFaceVerifyResponseResultObject {
+	s.MaterialInfo = &v
+	return s
+}
+
+func (s *ContrastFaceVerifyResponseResultObject) SetSubCode(v string) *ContrastFaceVerifyResponseResultObject {
+	s.SubCode = &v
+	return s
+}
+
 type ContrastFaceVerifyAdvanceRequest struct {
 	FaceContrastFileObject io.Reader `json:"FaceContrastFileObject,omitempty" xml:"FaceContrastFileObject,omitempty" require:"true"`
 	SceneId                *int64    `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
@@ -542,3581 +1494,6 @@ func (s *ContrastFaceVerifyAdvanceRequest) SetModel(v string) *ContrastFaceVerif
 	return s
 }
 
-type ContrastFaceVerifyResponseBody struct {
-	ResultObject *ContrastFaceVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
-	Message      *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code         *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-}
-
-func (s ContrastFaceVerifyResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ContrastFaceVerifyResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ContrastFaceVerifyResponseBody) SetResultObject(v *ContrastFaceVerifyResponseBodyResultObject) *ContrastFaceVerifyResponseBody {
-	s.ResultObject = v
-	return s
-}
-
-func (s *ContrastFaceVerifyResponseBody) SetMessage(v string) *ContrastFaceVerifyResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ContrastFaceVerifyResponseBody) SetRequestId(v string) *ContrastFaceVerifyResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ContrastFaceVerifyResponseBody) SetCode(v string) *ContrastFaceVerifyResponseBody {
-	s.Code = &v
-	return s
-}
-
-type ContrastFaceVerifyResponseBodyResultObject struct {
-	MaterialInfo *string `json:"MaterialInfo,omitempty" xml:"MaterialInfo,omitempty"`
-	SubCode      *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	IdentityInfo *string `json:"IdentityInfo,omitempty" xml:"IdentityInfo,omitempty"`
-	Passed       *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
-}
-
-func (s ContrastFaceVerifyResponseBodyResultObject) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ContrastFaceVerifyResponseBodyResultObject) GoString() string {
-	return s.String()
-}
-
-func (s *ContrastFaceVerifyResponseBodyResultObject) SetMaterialInfo(v string) *ContrastFaceVerifyResponseBodyResultObject {
-	s.MaterialInfo = &v
-	return s
-}
-
-func (s *ContrastFaceVerifyResponseBodyResultObject) SetSubCode(v string) *ContrastFaceVerifyResponseBodyResultObject {
-	s.SubCode = &v
-	return s
-}
-
-func (s *ContrastFaceVerifyResponseBodyResultObject) SetIdentityInfo(v string) *ContrastFaceVerifyResponseBodyResultObject {
-	s.IdentityInfo = &v
-	return s
-}
-
-func (s *ContrastFaceVerifyResponseBodyResultObject) SetPassed(v string) *ContrastFaceVerifyResponseBodyResultObject {
-	s.Passed = &v
-	return s
-}
-
-type ContrastFaceVerifyResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ContrastFaceVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ContrastFaceVerifyResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ContrastFaceVerifyResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ContrastFaceVerifyResponse) SetHeaders(v map[string]*string) *ContrastFaceVerifyResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ContrastFaceVerifyResponse) SetBody(v *ContrastFaceVerifyResponseBody) *ContrastFaceVerifyResponse {
-	s.Body = v
-	return s
-}
-
-type CreateAuthKeyRequest struct {
-	SourceIp     *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	BizType      *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	UserDeviceId *string `json:"UserDeviceId,omitempty" xml:"UserDeviceId,omitempty"`
-	Test         *bool   `json:"Test,omitempty" xml:"Test,omitempty"`
-	AuthYears    *int32  `json:"AuthYears,omitempty" xml:"AuthYears,omitempty"`
-}
-
-func (s CreateAuthKeyRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateAuthKeyRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateAuthKeyRequest) SetSourceIp(v string) *CreateAuthKeyRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *CreateAuthKeyRequest) SetLang(v string) *CreateAuthKeyRequest {
-	s.Lang = &v
-	return s
-}
-
-func (s *CreateAuthKeyRequest) SetBizType(v string) *CreateAuthKeyRequest {
-	s.BizType = &v
-	return s
-}
-
-func (s *CreateAuthKeyRequest) SetUserDeviceId(v string) *CreateAuthKeyRequest {
-	s.UserDeviceId = &v
-	return s
-}
-
-func (s *CreateAuthKeyRequest) SetTest(v bool) *CreateAuthKeyRequest {
-	s.Test = &v
-	return s
-}
-
-func (s *CreateAuthKeyRequest) SetAuthYears(v int32) *CreateAuthKeyRequest {
-	s.AuthYears = &v
-	return s
-}
-
-type CreateAuthKeyResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	AuthKey   *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
-}
-
-func (s CreateAuthKeyResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateAuthKeyResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateAuthKeyResponseBody) SetRequestId(v string) *CreateAuthKeyResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateAuthKeyResponseBody) SetAuthKey(v string) *CreateAuthKeyResponseBody {
-	s.AuthKey = &v
-	return s
-}
-
-type CreateAuthKeyResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateAuthKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateAuthKeyResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateAuthKeyResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateAuthKeyResponse) SetHeaders(v map[string]*string) *CreateAuthKeyResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateAuthKeyResponse) SetBody(v *CreateAuthKeyResponseBody) *CreateAuthKeyResponse {
-	s.Body = v
-	return s
-}
-
-type CreateFaceConfigRequest struct {
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	BizType  *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	BizName  *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
-}
-
-func (s CreateFaceConfigRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateFaceConfigRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateFaceConfigRequest) SetSourceIp(v string) *CreateFaceConfigRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *CreateFaceConfigRequest) SetLang(v string) *CreateFaceConfigRequest {
-	s.Lang = &v
-	return s
-}
-
-func (s *CreateFaceConfigRequest) SetBizType(v string) *CreateFaceConfigRequest {
-	s.BizType = &v
-	return s
-}
-
-func (s *CreateFaceConfigRequest) SetBizName(v string) *CreateFaceConfigRequest {
-	s.BizName = &v
-	return s
-}
-
-type CreateFaceConfigResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CreateFaceConfigResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateFaceConfigResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateFaceConfigResponseBody) SetRequestId(v string) *CreateFaceConfigResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CreateFaceConfigResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateFaceConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateFaceConfigResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateFaceConfigResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateFaceConfigResponse) SetHeaders(v map[string]*string) *CreateFaceConfigResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateFaceConfigResponse) SetBody(v *CreateFaceConfigResponseBody) *CreateFaceConfigResponse {
-	s.Body = v
-	return s
-}
-
-type CreateRPSDKRequest struct {
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	AppUrl   *string `json:"AppUrl,omitempty" xml:"AppUrl,omitempty"`
-	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-}
-
-func (s CreateRPSDKRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateRPSDKRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateRPSDKRequest) SetSourceIp(v string) *CreateRPSDKRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *CreateRPSDKRequest) SetLang(v string) *CreateRPSDKRequest {
-	s.Lang = &v
-	return s
-}
-
-func (s *CreateRPSDKRequest) SetAppUrl(v string) *CreateRPSDKRequest {
-	s.AppUrl = &v
-	return s
-}
-
-func (s *CreateRPSDKRequest) SetPlatform(v string) *CreateRPSDKRequest {
-	s.Platform = &v
-	return s
-}
-
-type CreateRPSDKResponseBody struct {
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CreateRPSDKResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateRPSDKResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateRPSDKResponseBody) SetTaskId(v string) *CreateRPSDKResponseBody {
-	s.TaskId = &v
-	return s
-}
-
-func (s *CreateRPSDKResponseBody) SetRequestId(v string) *CreateRPSDKResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CreateRPSDKResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateRPSDKResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateRPSDKResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateRPSDKResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateRPSDKResponse) SetHeaders(v map[string]*string) *CreateRPSDKResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateRPSDKResponse) SetBody(v *CreateRPSDKResponseBody) *CreateRPSDKResponse {
-	s.Body = v
-	return s
-}
-
-type CreateVerifySDKRequest struct {
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	AppUrl   *string `json:"AppUrl,omitempty" xml:"AppUrl,omitempty"`
-	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-}
-
-func (s CreateVerifySDKRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateVerifySDKRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateVerifySDKRequest) SetSourceIp(v string) *CreateVerifySDKRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *CreateVerifySDKRequest) SetLang(v string) *CreateVerifySDKRequest {
-	s.Lang = &v
-	return s
-}
-
-func (s *CreateVerifySDKRequest) SetAppUrl(v string) *CreateVerifySDKRequest {
-	s.AppUrl = &v
-	return s
-}
-
-func (s *CreateVerifySDKRequest) SetPlatform(v string) *CreateVerifySDKRequest {
-	s.Platform = &v
-	return s
-}
-
-type CreateVerifySDKResponseBody struct {
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CreateVerifySDKResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateVerifySDKResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateVerifySDKResponseBody) SetTaskId(v string) *CreateVerifySDKResponseBody {
-	s.TaskId = &v
-	return s
-}
-
-func (s *CreateVerifySDKResponseBody) SetRequestId(v string) *CreateVerifySDKResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CreateVerifySDKResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateVerifySDKResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateVerifySDKResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateVerifySDKResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateVerifySDKResponse) SetHeaders(v map[string]*string) *CreateVerifySDKResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateVerifySDKResponse) SetBody(v *CreateVerifySDKResponseBody) *CreateVerifySDKResponse {
-	s.Body = v
-	return s
-}
-
-type CreateVerifySettingRequest struct {
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	BizType     *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	BizName     *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
-	Solution    *string `json:"Solution,omitempty" xml:"Solution,omitempty"`
-	GuideStep   *bool   `json:"GuideStep,omitempty" xml:"GuideStep,omitempty"`
-	PrivacyStep *bool   `json:"PrivacyStep,omitempty" xml:"PrivacyStep,omitempty"`
-	ResultStep  *bool   `json:"ResultStep,omitempty" xml:"ResultStep,omitempty"`
-}
-
-func (s CreateVerifySettingRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateVerifySettingRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateVerifySettingRequest) SetSourceIp(v string) *CreateVerifySettingRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *CreateVerifySettingRequest) SetBizType(v string) *CreateVerifySettingRequest {
-	s.BizType = &v
-	return s
-}
-
-func (s *CreateVerifySettingRequest) SetBizName(v string) *CreateVerifySettingRequest {
-	s.BizName = &v
-	return s
-}
-
-func (s *CreateVerifySettingRequest) SetSolution(v string) *CreateVerifySettingRequest {
-	s.Solution = &v
-	return s
-}
-
-func (s *CreateVerifySettingRequest) SetGuideStep(v bool) *CreateVerifySettingRequest {
-	s.GuideStep = &v
-	return s
-}
-
-func (s *CreateVerifySettingRequest) SetPrivacyStep(v bool) *CreateVerifySettingRequest {
-	s.PrivacyStep = &v
-	return s
-}
-
-func (s *CreateVerifySettingRequest) SetResultStep(v bool) *CreateVerifySettingRequest {
-	s.ResultStep = &v
-	return s
-}
-
-type CreateVerifySettingResponseBody struct {
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StepList  []*string `json:"StepList,omitempty" xml:"StepList,omitempty" type:"Repeated"`
-	BizName   *string   `json:"BizName,omitempty" xml:"BizName,omitempty"`
-	BizType   *string   `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	Solution  *string   `json:"Solution,omitempty" xml:"Solution,omitempty"`
-}
-
-func (s CreateVerifySettingResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateVerifySettingResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateVerifySettingResponseBody) SetRequestId(v string) *CreateVerifySettingResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateVerifySettingResponseBody) SetStepList(v []*string) *CreateVerifySettingResponseBody {
-	s.StepList = v
-	return s
-}
-
-func (s *CreateVerifySettingResponseBody) SetBizName(v string) *CreateVerifySettingResponseBody {
-	s.BizName = &v
-	return s
-}
-
-func (s *CreateVerifySettingResponseBody) SetBizType(v string) *CreateVerifySettingResponseBody {
-	s.BizType = &v
-	return s
-}
-
-func (s *CreateVerifySettingResponseBody) SetSolution(v string) *CreateVerifySettingResponseBody {
-	s.Solution = &v
-	return s
-}
-
-type CreateVerifySettingResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateVerifySettingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateVerifySettingResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateVerifySettingResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateVerifySettingResponse) SetHeaders(v map[string]*string) *CreateVerifySettingResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateVerifySettingResponse) SetBody(v *CreateVerifySettingResponseBody) *CreateVerifySettingResponse {
-	s.Body = v
-	return s
-}
-
-type CreateWhitelistRequest struct {
-	SourceIp  *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang      *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	BizType   *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	BizId     *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	IdCardNum *string `json:"IdCardNum,omitempty" xml:"IdCardNum,omitempty"`
-	ValidDay  *string `json:"ValidDay,omitempty" xml:"ValidDay,omitempty"`
-}
-
-func (s CreateWhitelistRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateWhitelistRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateWhitelistRequest) SetSourceIp(v string) *CreateWhitelistRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *CreateWhitelistRequest) SetLang(v string) *CreateWhitelistRequest {
-	s.Lang = &v
-	return s
-}
-
-func (s *CreateWhitelistRequest) SetBizType(v string) *CreateWhitelistRequest {
-	s.BizType = &v
-	return s
-}
-
-func (s *CreateWhitelistRequest) SetBizId(v string) *CreateWhitelistRequest {
-	s.BizId = &v
-	return s
-}
-
-func (s *CreateWhitelistRequest) SetIdCardNum(v string) *CreateWhitelistRequest {
-	s.IdCardNum = &v
-	return s
-}
-
-func (s *CreateWhitelistRequest) SetValidDay(v string) *CreateWhitelistRequest {
-	s.ValidDay = &v
-	return s
-}
-
-type CreateWhitelistResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CreateWhitelistResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateWhitelistResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateWhitelistResponseBody) SetRequestId(v string) *CreateWhitelistResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CreateWhitelistResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateWhitelistResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateWhitelistResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateWhitelistResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateWhitelistResponse) SetHeaders(v map[string]*string) *CreateWhitelistResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateWhitelistResponse) SetBody(v *CreateWhitelistResponseBody) *CreateWhitelistResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteWhitelistRequest struct {
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Ids      *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
-}
-
-func (s DeleteWhitelistRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteWhitelistRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteWhitelistRequest) SetSourceIp(v string) *DeleteWhitelistRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DeleteWhitelistRequest) SetLang(v string) *DeleteWhitelistRequest {
-	s.Lang = &v
-	return s
-}
-
-func (s *DeleteWhitelistRequest) SetIds(v string) *DeleteWhitelistRequest {
-	s.Ids = &v
-	return s
-}
-
-type DeleteWhitelistResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DeleteWhitelistResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteWhitelistResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteWhitelistResponseBody) SetRequestId(v string) *DeleteWhitelistResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DeleteWhitelistResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteWhitelistResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteWhitelistResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteWhitelistResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteWhitelistResponse) SetHeaders(v map[string]*string) *DeleteWhitelistResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteWhitelistResponse) SetBody(v *DeleteWhitelistResponseBody) *DeleteWhitelistResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeAppInfoRequest struct {
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Platform    *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-}
-
-func (s DescribeAppInfoRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAppInfoRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAppInfoRequest) SetSourceIp(v string) *DescribeAppInfoRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DescribeAppInfoRequest) SetPageSize(v int32) *DescribeAppInfoRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeAppInfoRequest) SetCurrentPage(v int32) *DescribeAppInfoRequest {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *DescribeAppInfoRequest) SetPlatform(v string) *DescribeAppInfoRequest {
-	s.Platform = &v
-	return s
-}
-
-type DescribeAppInfoResponseBody struct {
-	TotalCount  *int32                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	RequestId   *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize    *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	CurrentPage *int32                                    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	AppInfoList []*DescribeAppInfoResponseBodyAppInfoList `json:"AppInfoList,omitempty" xml:"AppInfoList,omitempty" type:"Repeated"`
-}
-
-func (s DescribeAppInfoResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAppInfoResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAppInfoResponseBody) SetTotalCount(v int32) *DescribeAppInfoResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *DescribeAppInfoResponseBody) SetRequestId(v string) *DescribeAppInfoResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeAppInfoResponseBody) SetPageSize(v int32) *DescribeAppInfoResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeAppInfoResponseBody) SetCurrentPage(v int32) *DescribeAppInfoResponseBody {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *DescribeAppInfoResponseBody) SetAppInfoList(v []*DescribeAppInfoResponseBodyAppInfoList) *DescribeAppInfoResponseBody {
-	s.AppInfoList = v
-	return s
-}
-
-type DescribeAppInfoResponseBodyAppInfoList struct {
-	Type             *int32                                                  `json:"Type,omitempty" xml:"Type,omitempty"`
-	EndDate          *string                                                 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	PackageName      *string                                                 `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
-	DebugPackageInfo *DescribeAppInfoResponseBodyAppInfoListDebugPackageInfo `json:"DebugPackageInfo,omitempty" xml:"DebugPackageInfo,omitempty" type:"Struct"`
-	Icon             *string                                                 `json:"Icon,omitempty" xml:"Icon,omitempty"`
-	StartDate        *string                                                 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	PackageInfo      *DescribeAppInfoResponseBodyAppInfoListPackageInfo      `json:"PackageInfo,omitempty" xml:"PackageInfo,omitempty" type:"Struct"`
-	Name             *string                                                 `json:"Name,omitempty" xml:"Name,omitempty"`
-	Id               *int64                                                  `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s DescribeAppInfoResponseBodyAppInfoList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAppInfoResponseBodyAppInfoList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAppInfoResponseBodyAppInfoList) SetType(v int32) *DescribeAppInfoResponseBodyAppInfoList {
-	s.Type = &v
-	return s
-}
-
-func (s *DescribeAppInfoResponseBodyAppInfoList) SetEndDate(v string) *DescribeAppInfoResponseBodyAppInfoList {
-	s.EndDate = &v
-	return s
-}
-
-func (s *DescribeAppInfoResponseBodyAppInfoList) SetPackageName(v string) *DescribeAppInfoResponseBodyAppInfoList {
-	s.PackageName = &v
-	return s
-}
-
-func (s *DescribeAppInfoResponseBodyAppInfoList) SetDebugPackageInfo(v *DescribeAppInfoResponseBodyAppInfoListDebugPackageInfo) *DescribeAppInfoResponseBodyAppInfoList {
-	s.DebugPackageInfo = v
-	return s
-}
-
-func (s *DescribeAppInfoResponseBodyAppInfoList) SetIcon(v string) *DescribeAppInfoResponseBodyAppInfoList {
-	s.Icon = &v
-	return s
-}
-
-func (s *DescribeAppInfoResponseBodyAppInfoList) SetStartDate(v string) *DescribeAppInfoResponseBodyAppInfoList {
-	s.StartDate = &v
-	return s
-}
-
-func (s *DescribeAppInfoResponseBodyAppInfoList) SetPackageInfo(v *DescribeAppInfoResponseBodyAppInfoListPackageInfo) *DescribeAppInfoResponseBodyAppInfoList {
-	s.PackageInfo = v
-	return s
-}
-
-func (s *DescribeAppInfoResponseBodyAppInfoList) SetName(v string) *DescribeAppInfoResponseBodyAppInfoList {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeAppInfoResponseBodyAppInfoList) SetId(v int64) *DescribeAppInfoResponseBodyAppInfoList {
-	s.Id = &v
-	return s
-}
-
-type DescribeAppInfoResponseBodyAppInfoListDebugPackageInfo struct {
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
-}
-
-func (s DescribeAppInfoResponseBodyAppInfoListDebugPackageInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAppInfoResponseBodyAppInfoListDebugPackageInfo) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAppInfoResponseBodyAppInfoListDebugPackageInfo) SetVersion(v string) *DescribeAppInfoResponseBodyAppInfoListDebugPackageInfo {
-	s.Version = &v
-	return s
-}
-
-type DescribeAppInfoResponseBodyAppInfoListPackageInfo struct {
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
-}
-
-func (s DescribeAppInfoResponseBodyAppInfoListPackageInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAppInfoResponseBodyAppInfoListPackageInfo) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAppInfoResponseBodyAppInfoListPackageInfo) SetVersion(v string) *DescribeAppInfoResponseBodyAppInfoListPackageInfo {
-	s.Version = &v
-	return s
-}
-
-type DescribeAppInfoResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeAppInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeAppInfoResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAppInfoResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAppInfoResponse) SetHeaders(v map[string]*string) *DescribeAppInfoResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeAppInfoResponse) SetBody(v *DescribeAppInfoResponseBody) *DescribeAppInfoResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeDeviceInfoRequest struct {
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	TotalCount      *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	CurrentPage     *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DeviceId        *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	BizType         *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	UserDeviceId    *string `json:"UserDeviceId,omitempty" xml:"UserDeviceId,omitempty"`
-	ExpiredStartDay *string `json:"ExpiredStartDay,omitempty" xml:"ExpiredStartDay,omitempty"`
-	ExpiredEndDay   *string `json:"ExpiredEndDay,omitempty" xml:"ExpiredEndDay,omitempty"`
-}
-
-func (s DescribeDeviceInfoRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDeviceInfoRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDeviceInfoRequest) SetSourceIp(v string) *DescribeDeviceInfoRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DescribeDeviceInfoRequest) SetLang(v string) *DescribeDeviceInfoRequest {
-	s.Lang = &v
-	return s
-}
-
-func (s *DescribeDeviceInfoRequest) SetTotalCount(v int32) *DescribeDeviceInfoRequest {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *DescribeDeviceInfoRequest) SetPageSize(v int32) *DescribeDeviceInfoRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeDeviceInfoRequest) SetCurrentPage(v int32) *DescribeDeviceInfoRequest {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *DescribeDeviceInfoRequest) SetDeviceId(v string) *DescribeDeviceInfoRequest {
-	s.DeviceId = &v
-	return s
-}
-
-func (s *DescribeDeviceInfoRequest) SetBizType(v string) *DescribeDeviceInfoRequest {
-	s.BizType = &v
-	return s
-}
-
-func (s *DescribeDeviceInfoRequest) SetUserDeviceId(v string) *DescribeDeviceInfoRequest {
-	s.UserDeviceId = &v
-	return s
-}
-
-func (s *DescribeDeviceInfoRequest) SetExpiredStartDay(v string) *DescribeDeviceInfoRequest {
-	s.ExpiredStartDay = &v
-	return s
-}
-
-func (s *DescribeDeviceInfoRequest) SetExpiredEndDay(v string) *DescribeDeviceInfoRequest {
-	s.ExpiredEndDay = &v
-	return s
-}
-
-type DescribeDeviceInfoResponseBody struct {
-	DeviceInfoList *DescribeDeviceInfoResponseBodyDeviceInfoList `json:"DeviceInfoList,omitempty" xml:"DeviceInfoList,omitempty" type:"Struct"`
-	TotalCount     *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	RequestId      *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize       *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	CurrentPage    *int32                                        `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-}
-
-func (s DescribeDeviceInfoResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDeviceInfoResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDeviceInfoResponseBody) SetDeviceInfoList(v *DescribeDeviceInfoResponseBodyDeviceInfoList) *DescribeDeviceInfoResponseBody {
-	s.DeviceInfoList = v
-	return s
-}
-
-func (s *DescribeDeviceInfoResponseBody) SetTotalCount(v int32) *DescribeDeviceInfoResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *DescribeDeviceInfoResponseBody) SetRequestId(v string) *DescribeDeviceInfoResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeDeviceInfoResponseBody) SetPageSize(v int32) *DescribeDeviceInfoResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeDeviceInfoResponseBody) SetCurrentPage(v int32) *DescribeDeviceInfoResponseBody {
-	s.CurrentPage = &v
-	return s
-}
-
-type DescribeDeviceInfoResponseBodyDeviceInfoList struct {
-	DeviceInfo []*DescribeDeviceInfoResponseBodyDeviceInfoListDeviceInfo `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty" type:"Repeated"`
-}
-
-func (s DescribeDeviceInfoResponseBodyDeviceInfoList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDeviceInfoResponseBodyDeviceInfoList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDeviceInfoResponseBodyDeviceInfoList) SetDeviceInfo(v []*DescribeDeviceInfoResponseBodyDeviceInfoListDeviceInfo) *DescribeDeviceInfoResponseBodyDeviceInfoList {
-	s.DeviceInfo = v
-	return s
-}
-
-type DescribeDeviceInfoResponseBodyDeviceInfoListDeviceInfo struct {
-	UserDeviceId *string `json:"UserDeviceId,omitempty" xml:"UserDeviceId,omitempty"`
-	DeviceId     *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	ExpiredDay   *string `json:"ExpiredDay,omitempty" xml:"ExpiredDay,omitempty"`
-	BeginDay     *string `json:"BeginDay,omitempty" xml:"BeginDay,omitempty"`
-	BizType      *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-}
-
-func (s DescribeDeviceInfoResponseBodyDeviceInfoListDeviceInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDeviceInfoResponseBodyDeviceInfoListDeviceInfo) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDeviceInfoResponseBodyDeviceInfoListDeviceInfo) SetUserDeviceId(v string) *DescribeDeviceInfoResponseBodyDeviceInfoListDeviceInfo {
-	s.UserDeviceId = &v
-	return s
-}
-
-func (s *DescribeDeviceInfoResponseBodyDeviceInfoListDeviceInfo) SetDeviceId(v string) *DescribeDeviceInfoResponseBodyDeviceInfoListDeviceInfo {
-	s.DeviceId = &v
-	return s
-}
-
-func (s *DescribeDeviceInfoResponseBodyDeviceInfoListDeviceInfo) SetExpiredDay(v string) *DescribeDeviceInfoResponseBodyDeviceInfoListDeviceInfo {
-	s.ExpiredDay = &v
-	return s
-}
-
-func (s *DescribeDeviceInfoResponseBodyDeviceInfoListDeviceInfo) SetBeginDay(v string) *DescribeDeviceInfoResponseBodyDeviceInfoListDeviceInfo {
-	s.BeginDay = &v
-	return s
-}
-
-func (s *DescribeDeviceInfoResponseBodyDeviceInfoListDeviceInfo) SetBizType(v string) *DescribeDeviceInfoResponseBodyDeviceInfoListDeviceInfo {
-	s.BizType = &v
-	return s
-}
-
-type DescribeDeviceInfoResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeDeviceInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeDeviceInfoResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDeviceInfoResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDeviceInfoResponse) SetHeaders(v map[string]*string) *DescribeDeviceInfoResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeDeviceInfoResponse) SetBody(v *DescribeDeviceInfoResponseBody) *DescribeDeviceInfoResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeFaceConfigRequest struct {
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-}
-
-func (s DescribeFaceConfigRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeFaceConfigRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeFaceConfigRequest) SetSourceIp(v string) *DescribeFaceConfigRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DescribeFaceConfigRequest) SetLang(v string) *DescribeFaceConfigRequest {
-	s.Lang = &v
-	return s
-}
-
-type DescribeFaceConfigResponseBody struct {
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Items     []*DescribeFaceConfigResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-}
-
-func (s DescribeFaceConfigResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeFaceConfigResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeFaceConfigResponseBody) SetRequestId(v string) *DescribeFaceConfigResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeFaceConfigResponseBody) SetItems(v []*DescribeFaceConfigResponseBodyItems) *DescribeFaceConfigResponseBody {
-	s.Items = v
-	return s
-}
-
-type DescribeFaceConfigResponseBodyItems struct {
-	GmtUpdated *int64  `json:"GmtUpdated,omitempty" xml:"GmtUpdated,omitempty"`
-	BizName    *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
-	BizType    *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-}
-
-func (s DescribeFaceConfigResponseBodyItems) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeFaceConfigResponseBodyItems) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeFaceConfigResponseBodyItems) SetGmtUpdated(v int64) *DescribeFaceConfigResponseBodyItems {
-	s.GmtUpdated = &v
-	return s
-}
-
-func (s *DescribeFaceConfigResponseBodyItems) SetBizName(v string) *DescribeFaceConfigResponseBodyItems {
-	s.BizName = &v
-	return s
-}
-
-func (s *DescribeFaceConfigResponseBodyItems) SetBizType(v string) *DescribeFaceConfigResponseBodyItems {
-	s.BizType = &v
-	return s
-}
-
-type DescribeFaceConfigResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeFaceConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeFaceConfigResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeFaceConfigResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeFaceConfigResponse) SetHeaders(v map[string]*string) *DescribeFaceConfigResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeFaceConfigResponse) SetBody(v *DescribeFaceConfigResponseBody) *DescribeFaceConfigResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeFaceUsageRequest struct {
-	SourceIp  *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	EndDate   *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-}
-
-func (s DescribeFaceUsageRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeFaceUsageRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeFaceUsageRequest) SetSourceIp(v string) *DescribeFaceUsageRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DescribeFaceUsageRequest) SetStartDate(v string) *DescribeFaceUsageRequest {
-	s.StartDate = &v
-	return s
-}
-
-func (s *DescribeFaceUsageRequest) SetEndDate(v string) *DescribeFaceUsageRequest {
-	s.EndDate = &v
-	return s
-}
-
-type DescribeFaceUsageResponseBody struct {
-	TotalCount    *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	FaceUsageList []*DescribeFaceUsageResponseBodyFaceUsageList `json:"FaceUsageList,omitempty" xml:"FaceUsageList,omitempty" type:"Repeated"`
-	RequestId     *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeFaceUsageResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeFaceUsageResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeFaceUsageResponseBody) SetTotalCount(v int32) *DescribeFaceUsageResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *DescribeFaceUsageResponseBody) SetFaceUsageList(v []*DescribeFaceUsageResponseBodyFaceUsageList) *DescribeFaceUsageResponseBody {
-	s.FaceUsageList = v
-	return s
-}
-
-func (s *DescribeFaceUsageResponseBody) SetRequestId(v string) *DescribeFaceUsageResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeFaceUsageResponseBodyFaceUsageList struct {
-	Date       *string `json:"Date,omitempty" xml:"Date,omitempty"`
-	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s DescribeFaceUsageResponseBodyFaceUsageList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeFaceUsageResponseBodyFaceUsageList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeFaceUsageResponseBodyFaceUsageList) SetDate(v string) *DescribeFaceUsageResponseBodyFaceUsageList {
-	s.Date = &v
-	return s
-}
-
-func (s *DescribeFaceUsageResponseBodyFaceUsageList) SetTotalCount(v int64) *DescribeFaceUsageResponseBodyFaceUsageList {
-	s.TotalCount = &v
-	return s
-}
-
-type DescribeFaceUsageResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeFaceUsageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeFaceUsageResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeFaceUsageResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeFaceUsageResponse) SetHeaders(v map[string]*string) *DescribeFaceUsageResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeFaceUsageResponse) SetBody(v *DescribeFaceUsageResponseBody) *DescribeFaceUsageResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeFaceVerifyRequest struct {
-	SceneId   *int64  `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
-}
-
-func (s DescribeFaceVerifyRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeFaceVerifyRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeFaceVerifyRequest) SetSceneId(v int64) *DescribeFaceVerifyRequest {
-	s.SceneId = &v
-	return s
-}
-
-func (s *DescribeFaceVerifyRequest) SetCertifyId(v string) *DescribeFaceVerifyRequest {
-	s.CertifyId = &v
-	return s
-}
-
-type DescribeFaceVerifyResponseBody struct {
-	ResultObject *DescribeFaceVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
-	Message      *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code         *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-}
-
-func (s DescribeFaceVerifyResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeFaceVerifyResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeFaceVerifyResponseBody) SetResultObject(v *DescribeFaceVerifyResponseBodyResultObject) *DescribeFaceVerifyResponseBody {
-	s.ResultObject = v
-	return s
-}
-
-func (s *DescribeFaceVerifyResponseBody) SetMessage(v string) *DescribeFaceVerifyResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DescribeFaceVerifyResponseBody) SetRequestId(v string) *DescribeFaceVerifyResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeFaceVerifyResponseBody) SetCode(v string) *DescribeFaceVerifyResponseBody {
-	s.Code = &v
-	return s
-}
-
-type DescribeFaceVerifyResponseBodyResultObject struct {
-	MaterialInfo *string `json:"MaterialInfo,omitempty" xml:"MaterialInfo,omitempty"`
-	SubCode      *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	IdentityInfo *string `json:"IdentityInfo,omitempty" xml:"IdentityInfo,omitempty"`
-	DeviceToken  *string `json:"DeviceToken,omitempty" xml:"DeviceToken,omitempty"`
-	Passed       *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
-}
-
-func (s DescribeFaceVerifyResponseBodyResultObject) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeFaceVerifyResponseBodyResultObject) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeFaceVerifyResponseBodyResultObject) SetMaterialInfo(v string) *DescribeFaceVerifyResponseBodyResultObject {
-	s.MaterialInfo = &v
-	return s
-}
-
-func (s *DescribeFaceVerifyResponseBodyResultObject) SetSubCode(v string) *DescribeFaceVerifyResponseBodyResultObject {
-	s.SubCode = &v
-	return s
-}
-
-func (s *DescribeFaceVerifyResponseBodyResultObject) SetIdentityInfo(v string) *DescribeFaceVerifyResponseBodyResultObject {
-	s.IdentityInfo = &v
-	return s
-}
-
-func (s *DescribeFaceVerifyResponseBodyResultObject) SetDeviceToken(v string) *DescribeFaceVerifyResponseBodyResultObject {
-	s.DeviceToken = &v
-	return s
-}
-
-func (s *DescribeFaceVerifyResponseBodyResultObject) SetPassed(v string) *DescribeFaceVerifyResponseBodyResultObject {
-	s.Passed = &v
-	return s
-}
-
-type DescribeFaceVerifyResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeFaceVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeFaceVerifyResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeFaceVerifyResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeFaceVerifyResponse) SetHeaders(v map[string]*string) *DescribeFaceVerifyResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeFaceVerifyResponse) SetBody(v *DescribeFaceVerifyResponseBody) *DescribeFaceVerifyResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeOssUploadTokenRequest struct {
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-}
-
-func (s DescribeOssUploadTokenRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeOssUploadTokenRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeOssUploadTokenRequest) SetSourceIp(v string) *DescribeOssUploadTokenRequest {
-	s.SourceIp = &v
-	return s
-}
-
-type DescribeOssUploadTokenResponseBody struct {
-	RequestId      *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	OssUploadToken *DescribeOssUploadTokenResponseBodyOssUploadToken `json:"OssUploadToken,omitempty" xml:"OssUploadToken,omitempty" type:"Struct"`
-}
-
-func (s DescribeOssUploadTokenResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeOssUploadTokenResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeOssUploadTokenResponseBody) SetRequestId(v string) *DescribeOssUploadTokenResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeOssUploadTokenResponseBody) SetOssUploadToken(v *DescribeOssUploadTokenResponseBodyOssUploadToken) *DescribeOssUploadTokenResponseBody {
-	s.OssUploadToken = v
-	return s
-}
-
-type DescribeOssUploadTokenResponseBodyOssUploadToken struct {
-	Key      *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Token    *string `json:"Token,omitempty" xml:"Token,omitempty"`
-	Secret   *string `json:"Secret,omitempty" xml:"Secret,omitempty"`
-	Expired  *int64  `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	Path     *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	EndPoint *string `json:"EndPoint,omitempty" xml:"EndPoint,omitempty"`
-	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-}
-
-func (s DescribeOssUploadTokenResponseBodyOssUploadToken) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeOssUploadTokenResponseBodyOssUploadToken) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeOssUploadTokenResponseBodyOssUploadToken) SetKey(v string) *DescribeOssUploadTokenResponseBodyOssUploadToken {
-	s.Key = &v
-	return s
-}
-
-func (s *DescribeOssUploadTokenResponseBodyOssUploadToken) SetToken(v string) *DescribeOssUploadTokenResponseBodyOssUploadToken {
-	s.Token = &v
-	return s
-}
-
-func (s *DescribeOssUploadTokenResponseBodyOssUploadToken) SetSecret(v string) *DescribeOssUploadTokenResponseBodyOssUploadToken {
-	s.Secret = &v
-	return s
-}
-
-func (s *DescribeOssUploadTokenResponseBodyOssUploadToken) SetExpired(v int64) *DescribeOssUploadTokenResponseBodyOssUploadToken {
-	s.Expired = &v
-	return s
-}
-
-func (s *DescribeOssUploadTokenResponseBodyOssUploadToken) SetPath(v string) *DescribeOssUploadTokenResponseBodyOssUploadToken {
-	s.Path = &v
-	return s
-}
-
-func (s *DescribeOssUploadTokenResponseBodyOssUploadToken) SetEndPoint(v string) *DescribeOssUploadTokenResponseBodyOssUploadToken {
-	s.EndPoint = &v
-	return s
-}
-
-func (s *DescribeOssUploadTokenResponseBodyOssUploadToken) SetBucket(v string) *DescribeOssUploadTokenResponseBodyOssUploadToken {
-	s.Bucket = &v
-	return s
-}
-
-type DescribeOssUploadTokenResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeOssUploadTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeOssUploadTokenResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeOssUploadTokenResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeOssUploadTokenResponse) SetHeaders(v map[string]*string) *DescribeOssUploadTokenResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeOssUploadTokenResponse) SetBody(v *DescribeOssUploadTokenResponseBody) *DescribeOssUploadTokenResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeRPSDKRequest struct {
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	TaskId   *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-}
-
-func (s DescribeRPSDKRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRPSDKRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRPSDKRequest) SetSourceIp(v string) *DescribeRPSDKRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DescribeRPSDKRequest) SetLang(v string) *DescribeRPSDKRequest {
-	s.Lang = &v
-	return s
-}
-
-func (s *DescribeRPSDKRequest) SetTaskId(v string) *DescribeRPSDKRequest {
-	s.TaskId = &v
-	return s
-}
-
-type DescribeRPSDKResponseBody struct {
-	SdkUrl    *string `json:"SdkUrl,omitempty" xml:"SdkUrl,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeRPSDKResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRPSDKResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRPSDKResponseBody) SetSdkUrl(v string) *DescribeRPSDKResponseBody {
-	s.SdkUrl = &v
-	return s
-}
-
-func (s *DescribeRPSDKResponseBody) SetRequestId(v string) *DescribeRPSDKResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeRPSDKResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeRPSDKResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeRPSDKResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRPSDKResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRPSDKResponse) SetHeaders(v map[string]*string) *DescribeRPSDKResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeRPSDKResponse) SetBody(v *DescribeRPSDKResponseBody) *DescribeRPSDKResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeSdkUrlRequest struct {
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Id       *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Debug    *bool   `json:"Debug,omitempty" xml:"Debug,omitempty"`
-}
-
-func (s DescribeSdkUrlRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSdkUrlRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSdkUrlRequest) SetSourceIp(v string) *DescribeSdkUrlRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DescribeSdkUrlRequest) SetId(v int64) *DescribeSdkUrlRequest {
-	s.Id = &v
-	return s
-}
-
-func (s *DescribeSdkUrlRequest) SetDebug(v bool) *DescribeSdkUrlRequest {
-	s.Debug = &v
-	return s
-}
-
-type DescribeSdkUrlResponseBody struct {
-	SdkUrl    *string `json:"SdkUrl,omitempty" xml:"SdkUrl,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeSdkUrlResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSdkUrlResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSdkUrlResponseBody) SetSdkUrl(v string) *DescribeSdkUrlResponseBody {
-	s.SdkUrl = &v
-	return s
-}
-
-func (s *DescribeSdkUrlResponseBody) SetRequestId(v string) *DescribeSdkUrlResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeSdkUrlResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeSdkUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeSdkUrlResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSdkUrlResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSdkUrlResponse) SetHeaders(v map[string]*string) *DescribeSdkUrlResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeSdkUrlResponse) SetBody(v *DescribeSdkUrlResponseBody) *DescribeSdkUrlResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeUpdatePackageResultRequest struct {
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	TaskId   *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-}
-
-func (s DescribeUpdatePackageResultRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUpdatePackageResultRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUpdatePackageResultRequest) SetSourceIp(v string) *DescribeUpdatePackageResultRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DescribeUpdatePackageResultRequest) SetTaskId(v string) *DescribeUpdatePackageResultRequest {
-	s.TaskId = &v
-	return s
-}
-
-type DescribeUpdatePackageResultResponseBody struct {
-	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	AppInfo   *DescribeUpdatePackageResultResponseBodyAppInfo `json:"AppInfo,omitempty" xml:"AppInfo,omitempty" type:"Struct"`
-}
-
-func (s DescribeUpdatePackageResultResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUpdatePackageResultResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUpdatePackageResultResponseBody) SetRequestId(v string) *DescribeUpdatePackageResultResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeUpdatePackageResultResponseBody) SetAppInfo(v *DescribeUpdatePackageResultResponseBodyAppInfo) *DescribeUpdatePackageResultResponseBody {
-	s.AppInfo = v
-	return s
-}
-
-type DescribeUpdatePackageResultResponseBodyAppInfo struct {
-	Type             *int32                                                          `json:"Type,omitempty" xml:"Type,omitempty"`
-	EndDate          *string                                                         `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	PackageName      *string                                                         `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
-	DebugPackageInfo *DescribeUpdatePackageResultResponseBodyAppInfoDebugPackageInfo `json:"DebugPackageInfo,omitempty" xml:"DebugPackageInfo,omitempty" type:"Struct"`
-	Icon             *string                                                         `json:"Icon,omitempty" xml:"Icon,omitempty"`
-	StartDate        *string                                                         `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	PackageInfo      *DescribeUpdatePackageResultResponseBodyAppInfoPackageInfo      `json:"PackageInfo,omitempty" xml:"PackageInfo,omitempty" type:"Struct"`
-	Name             *string                                                         `json:"Name,omitempty" xml:"Name,omitempty"`
-	Id               *int64                                                          `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s DescribeUpdatePackageResultResponseBodyAppInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUpdatePackageResultResponseBodyAppInfo) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUpdatePackageResultResponseBodyAppInfo) SetType(v int32) *DescribeUpdatePackageResultResponseBodyAppInfo {
-	s.Type = &v
-	return s
-}
-
-func (s *DescribeUpdatePackageResultResponseBodyAppInfo) SetEndDate(v string) *DescribeUpdatePackageResultResponseBodyAppInfo {
-	s.EndDate = &v
-	return s
-}
-
-func (s *DescribeUpdatePackageResultResponseBodyAppInfo) SetPackageName(v string) *DescribeUpdatePackageResultResponseBodyAppInfo {
-	s.PackageName = &v
-	return s
-}
-
-func (s *DescribeUpdatePackageResultResponseBodyAppInfo) SetDebugPackageInfo(v *DescribeUpdatePackageResultResponseBodyAppInfoDebugPackageInfo) *DescribeUpdatePackageResultResponseBodyAppInfo {
-	s.DebugPackageInfo = v
-	return s
-}
-
-func (s *DescribeUpdatePackageResultResponseBodyAppInfo) SetIcon(v string) *DescribeUpdatePackageResultResponseBodyAppInfo {
-	s.Icon = &v
-	return s
-}
-
-func (s *DescribeUpdatePackageResultResponseBodyAppInfo) SetStartDate(v string) *DescribeUpdatePackageResultResponseBodyAppInfo {
-	s.StartDate = &v
-	return s
-}
-
-func (s *DescribeUpdatePackageResultResponseBodyAppInfo) SetPackageInfo(v *DescribeUpdatePackageResultResponseBodyAppInfoPackageInfo) *DescribeUpdatePackageResultResponseBodyAppInfo {
-	s.PackageInfo = v
-	return s
-}
-
-func (s *DescribeUpdatePackageResultResponseBodyAppInfo) SetName(v string) *DescribeUpdatePackageResultResponseBodyAppInfo {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeUpdatePackageResultResponseBodyAppInfo) SetId(v int64) *DescribeUpdatePackageResultResponseBodyAppInfo {
-	s.Id = &v
-	return s
-}
-
-type DescribeUpdatePackageResultResponseBodyAppInfoDebugPackageInfo struct {
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
-}
-
-func (s DescribeUpdatePackageResultResponseBodyAppInfoDebugPackageInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUpdatePackageResultResponseBodyAppInfoDebugPackageInfo) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUpdatePackageResultResponseBodyAppInfoDebugPackageInfo) SetVersion(v string) *DescribeUpdatePackageResultResponseBodyAppInfoDebugPackageInfo {
-	s.Version = &v
-	return s
-}
-
-type DescribeUpdatePackageResultResponseBodyAppInfoPackageInfo struct {
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
-}
-
-func (s DescribeUpdatePackageResultResponseBodyAppInfoPackageInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUpdatePackageResultResponseBodyAppInfoPackageInfo) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUpdatePackageResultResponseBodyAppInfoPackageInfo) SetVersion(v string) *DescribeUpdatePackageResultResponseBodyAppInfoPackageInfo {
-	s.Version = &v
-	return s
-}
-
-type DescribeUpdatePackageResultResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeUpdatePackageResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeUpdatePackageResultResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUpdatePackageResultResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUpdatePackageResultResponse) SetHeaders(v map[string]*string) *DescribeUpdatePackageResultResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeUpdatePackageResultResponse) SetBody(v *DescribeUpdatePackageResultResponseBody) *DescribeUpdatePackageResultResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeUploadInfoRequest struct {
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Biz      *string `json:"Biz,omitempty" xml:"Biz,omitempty"`
-}
-
-func (s DescribeUploadInfoRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUploadInfoRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUploadInfoRequest) SetSourceIp(v string) *DescribeUploadInfoRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DescribeUploadInfoRequest) SetBiz(v string) *DescribeUploadInfoRequest {
-	s.Biz = &v
-	return s
-}
-
-type DescribeUploadInfoResponseBody struct {
-	Policy    *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	Expire    *int64  `json:"Expire,omitempty" xml:"Expire,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Accessid  *string `json:"Accessid,omitempty" xml:"Accessid,omitempty"`
-	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
-	Host      *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	Folder    *string `json:"Folder,omitempty" xml:"Folder,omitempty"`
-}
-
-func (s DescribeUploadInfoResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUploadInfoResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUploadInfoResponseBody) SetPolicy(v string) *DescribeUploadInfoResponseBody {
-	s.Policy = &v
-	return s
-}
-
-func (s *DescribeUploadInfoResponseBody) SetExpire(v int64) *DescribeUploadInfoResponseBody {
-	s.Expire = &v
-	return s
-}
-
-func (s *DescribeUploadInfoResponseBody) SetRequestId(v string) *DescribeUploadInfoResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeUploadInfoResponseBody) SetAccessid(v string) *DescribeUploadInfoResponseBody {
-	s.Accessid = &v
-	return s
-}
-
-func (s *DescribeUploadInfoResponseBody) SetSignature(v string) *DescribeUploadInfoResponseBody {
-	s.Signature = &v
-	return s
-}
-
-func (s *DescribeUploadInfoResponseBody) SetHost(v string) *DescribeUploadInfoResponseBody {
-	s.Host = &v
-	return s
-}
-
-func (s *DescribeUploadInfoResponseBody) SetFolder(v string) *DescribeUploadInfoResponseBody {
-	s.Folder = &v
-	return s
-}
-
-type DescribeUploadInfoResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeUploadInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeUploadInfoResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUploadInfoResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUploadInfoResponse) SetHeaders(v map[string]*string) *DescribeUploadInfoResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeUploadInfoResponse) SetBody(v *DescribeUploadInfoResponseBody) *DescribeUploadInfoResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeUserStatusRequest struct {
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-}
-
-func (s DescribeUserStatusRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUserStatusRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUserStatusRequest) SetSourceIp(v string) *DescribeUserStatusRequest {
-	s.SourceIp = &v
-	return s
-}
-
-type DescribeUserStatusResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Enabled   *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-}
-
-func (s DescribeUserStatusResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUserStatusResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUserStatusResponseBody) SetRequestId(v string) *DescribeUserStatusResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeUserStatusResponseBody) SetEnabled(v bool) *DescribeUserStatusResponseBody {
-	s.Enabled = &v
-	return s
-}
-
-type DescribeUserStatusResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeUserStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeUserStatusResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUserStatusResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUserStatusResponse) SetHeaders(v map[string]*string) *DescribeUserStatusResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeUserStatusResponse) SetBody(v *DescribeUserStatusResponseBody) *DescribeUserStatusResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeVerifyRecordsRequest struct {
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	TotalCount  *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	BizType     *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	StartDate   *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	EndDate     *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	BizId       *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	IdCardNum   *string `json:"IdCardNum,omitempty" xml:"IdCardNum,omitempty"`
-	StatusList  *string `json:"StatusList,omitempty" xml:"StatusList,omitempty"`
-	QueryId     *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
-}
-
-func (s DescribeVerifyRecordsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVerifyRecordsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVerifyRecordsRequest) SetSourceIp(v string) *DescribeVerifyRecordsRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DescribeVerifyRecordsRequest) SetTotalCount(v int32) *DescribeVerifyRecordsRequest {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *DescribeVerifyRecordsRequest) SetPageSize(v int32) *DescribeVerifyRecordsRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeVerifyRecordsRequest) SetCurrentPage(v int32) *DescribeVerifyRecordsRequest {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *DescribeVerifyRecordsRequest) SetBizType(v string) *DescribeVerifyRecordsRequest {
-	s.BizType = &v
-	return s
-}
-
-func (s *DescribeVerifyRecordsRequest) SetStartDate(v string) *DescribeVerifyRecordsRequest {
-	s.StartDate = &v
-	return s
-}
-
-func (s *DescribeVerifyRecordsRequest) SetEndDate(v string) *DescribeVerifyRecordsRequest {
-	s.EndDate = &v
-	return s
-}
-
-func (s *DescribeVerifyRecordsRequest) SetBizId(v string) *DescribeVerifyRecordsRequest {
-	s.BizId = &v
-	return s
-}
-
-func (s *DescribeVerifyRecordsRequest) SetIdCardNum(v string) *DescribeVerifyRecordsRequest {
-	s.IdCardNum = &v
-	return s
-}
-
-func (s *DescribeVerifyRecordsRequest) SetStatusList(v string) *DescribeVerifyRecordsRequest {
-	s.StatusList = &v
-	return s
-}
-
-func (s *DescribeVerifyRecordsRequest) SetQueryId(v string) *DescribeVerifyRecordsRequest {
-	s.QueryId = &v
-	return s
-}
-
-type DescribeVerifyRecordsResponseBody struct {
-	TotalCount  *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	PageSize    *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	CurrentPage *int32                                          `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	QueryId     *string                                         `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
-	RecordsList []*DescribeVerifyRecordsResponseBodyRecordsList `json:"RecordsList,omitempty" xml:"RecordsList,omitempty" type:"Repeated"`
-}
-
-func (s DescribeVerifyRecordsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVerifyRecordsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVerifyRecordsResponseBody) SetTotalCount(v int32) *DescribeVerifyRecordsResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *DescribeVerifyRecordsResponseBody) SetPageSize(v int32) *DescribeVerifyRecordsResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeVerifyRecordsResponseBody) SetRequestId(v string) *DescribeVerifyRecordsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeVerifyRecordsResponseBody) SetCurrentPage(v int32) *DescribeVerifyRecordsResponseBody {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *DescribeVerifyRecordsResponseBody) SetQueryId(v string) *DescribeVerifyRecordsResponseBody {
-	s.QueryId = &v
-	return s
-}
-
-func (s *DescribeVerifyRecordsResponseBody) SetRecordsList(v []*DescribeVerifyRecordsResponseBodyRecordsList) *DescribeVerifyRecordsResponseBody {
-	s.RecordsList = v
-	return s
-}
-
-type DescribeVerifyRecordsResponseBodyRecordsList struct {
-	Status                    *int32                                                `json:"Status,omitempty" xml:"Status,omitempty"`
-	FinishTime                *int64                                                `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	Material                  *DescribeVerifyRecordsResponseBodyRecordsListMaterial `json:"Material,omitempty" xml:"Material,omitempty" type:"Struct"`
-	IdCardFaceComparisonScore *float32                                              `json:"IdCardFaceComparisonScore,omitempty" xml:"IdCardFaceComparisonScore,omitempty"`
-	BizId                     *string                                               `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	VerifyId                  *string                                               `json:"VerifyId,omitempty" xml:"VerifyId,omitempty"`
-	AuthorityComparisonScore  *float32                                              `json:"AuthorityComparisonScore,omitempty" xml:"AuthorityComparisonScore,omitempty"`
-	DataStats                 *string                                               `json:"DataStats,omitempty" xml:"DataStats,omitempty"`
-	BizType                   *string                                               `json:"BizType,omitempty" xml:"BizType,omitempty"`
-}
-
-func (s DescribeVerifyRecordsResponseBodyRecordsList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVerifyRecordsResponseBodyRecordsList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVerifyRecordsResponseBodyRecordsList) SetStatus(v int32) *DescribeVerifyRecordsResponseBodyRecordsList {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeVerifyRecordsResponseBodyRecordsList) SetFinishTime(v int64) *DescribeVerifyRecordsResponseBodyRecordsList {
-	s.FinishTime = &v
-	return s
-}
-
-func (s *DescribeVerifyRecordsResponseBodyRecordsList) SetMaterial(v *DescribeVerifyRecordsResponseBodyRecordsListMaterial) *DescribeVerifyRecordsResponseBodyRecordsList {
-	s.Material = v
-	return s
-}
-
-func (s *DescribeVerifyRecordsResponseBodyRecordsList) SetIdCardFaceComparisonScore(v float32) *DescribeVerifyRecordsResponseBodyRecordsList {
-	s.IdCardFaceComparisonScore = &v
-	return s
-}
-
-func (s *DescribeVerifyRecordsResponseBodyRecordsList) SetBizId(v string) *DescribeVerifyRecordsResponseBodyRecordsList {
-	s.BizId = &v
-	return s
-}
-
-func (s *DescribeVerifyRecordsResponseBodyRecordsList) SetVerifyId(v string) *DescribeVerifyRecordsResponseBodyRecordsList {
-	s.VerifyId = &v
-	return s
-}
-
-func (s *DescribeVerifyRecordsResponseBodyRecordsList) SetAuthorityComparisonScore(v float32) *DescribeVerifyRecordsResponseBodyRecordsList {
-	s.AuthorityComparisonScore = &v
-	return s
-}
-
-func (s *DescribeVerifyRecordsResponseBodyRecordsList) SetDataStats(v string) *DescribeVerifyRecordsResponseBodyRecordsList {
-	s.DataStats = &v
-	return s
-}
-
-func (s *DescribeVerifyRecordsResponseBodyRecordsList) SetBizType(v string) *DescribeVerifyRecordsResponseBodyRecordsList {
-	s.BizType = &v
-	return s
-}
-
-type DescribeVerifyRecordsResponseBodyRecordsListMaterial struct {
-	IdCardNumber *string                                                         `json:"IdCardNumber,omitempty" xml:"IdCardNumber,omitempty"`
-	FaceImageUrl *string                                                         `json:"FaceImageUrl,omitempty" xml:"FaceImageUrl,omitempty"`
-	IdCardName   *string                                                         `json:"IdCardName,omitempty" xml:"IdCardName,omitempty"`
-	IdCardInfo   *DescribeVerifyRecordsResponseBodyRecordsListMaterialIdCardInfo `json:"IdCardInfo,omitempty" xml:"IdCardInfo,omitempty" type:"Struct"`
-}
-
-func (s DescribeVerifyRecordsResponseBodyRecordsListMaterial) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVerifyRecordsResponseBodyRecordsListMaterial) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVerifyRecordsResponseBodyRecordsListMaterial) SetIdCardNumber(v string) *DescribeVerifyRecordsResponseBodyRecordsListMaterial {
-	s.IdCardNumber = &v
-	return s
-}
-
-func (s *DescribeVerifyRecordsResponseBodyRecordsListMaterial) SetFaceImageUrl(v string) *DescribeVerifyRecordsResponseBodyRecordsListMaterial {
-	s.FaceImageUrl = &v
-	return s
-}
-
-func (s *DescribeVerifyRecordsResponseBodyRecordsListMaterial) SetIdCardName(v string) *DescribeVerifyRecordsResponseBodyRecordsListMaterial {
-	s.IdCardName = &v
-	return s
-}
-
-func (s *DescribeVerifyRecordsResponseBodyRecordsListMaterial) SetIdCardInfo(v *DescribeVerifyRecordsResponseBodyRecordsListMaterialIdCardInfo) *DescribeVerifyRecordsResponseBodyRecordsListMaterial {
-	s.IdCardInfo = v
-	return s
-}
-
-type DescribeVerifyRecordsResponseBodyRecordsListMaterialIdCardInfo struct {
-	EndDate       *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	Sex           *string `json:"Sex,omitempty" xml:"Sex,omitempty"`
-	Authority     *string `json:"Authority,omitempty" xml:"Authority,omitempty"`
-	Address       *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	Number        *string `json:"Number,omitempty" xml:"Number,omitempty"`
-	StartDate     *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	Nationality   *string `json:"Nationality,omitempty" xml:"Nationality,omitempty"`
-	BackImageUrl  *string `json:"BackImageUrl,omitempty" xml:"BackImageUrl,omitempty"`
-	Birth         *string `json:"Birth,omitempty" xml:"Birth,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	FrontImageUrl *string `json:"FrontImageUrl,omitempty" xml:"FrontImageUrl,omitempty"`
-}
-
-func (s DescribeVerifyRecordsResponseBodyRecordsListMaterialIdCardInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVerifyRecordsResponseBodyRecordsListMaterialIdCardInfo) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVerifyRecordsResponseBodyRecordsListMaterialIdCardInfo) SetEndDate(v string) *DescribeVerifyRecordsResponseBodyRecordsListMaterialIdCardInfo {
-	s.EndDate = &v
-	return s
-}
-
-func (s *DescribeVerifyRecordsResponseBodyRecordsListMaterialIdCardInfo) SetSex(v string) *DescribeVerifyRecordsResponseBodyRecordsListMaterialIdCardInfo {
-	s.Sex = &v
-	return s
-}
-
-func (s *DescribeVerifyRecordsResponseBodyRecordsListMaterialIdCardInfo) SetAuthority(v string) *DescribeVerifyRecordsResponseBodyRecordsListMaterialIdCardInfo {
-	s.Authority = &v
-	return s
-}
-
-func (s *DescribeVerifyRecordsResponseBodyRecordsListMaterialIdCardInfo) SetAddress(v string) *DescribeVerifyRecordsResponseBodyRecordsListMaterialIdCardInfo {
-	s.Address = &v
-	return s
-}
-
-func (s *DescribeVerifyRecordsResponseBodyRecordsListMaterialIdCardInfo) SetNumber(v string) *DescribeVerifyRecordsResponseBodyRecordsListMaterialIdCardInfo {
-	s.Number = &v
-	return s
-}
-
-func (s *DescribeVerifyRecordsResponseBodyRecordsListMaterialIdCardInfo) SetStartDate(v string) *DescribeVerifyRecordsResponseBodyRecordsListMaterialIdCardInfo {
-	s.StartDate = &v
-	return s
-}
-
-func (s *DescribeVerifyRecordsResponseBodyRecordsListMaterialIdCardInfo) SetNationality(v string) *DescribeVerifyRecordsResponseBodyRecordsListMaterialIdCardInfo {
-	s.Nationality = &v
-	return s
-}
-
-func (s *DescribeVerifyRecordsResponseBodyRecordsListMaterialIdCardInfo) SetBackImageUrl(v string) *DescribeVerifyRecordsResponseBodyRecordsListMaterialIdCardInfo {
-	s.BackImageUrl = &v
-	return s
-}
-
-func (s *DescribeVerifyRecordsResponseBodyRecordsListMaterialIdCardInfo) SetBirth(v string) *DescribeVerifyRecordsResponseBodyRecordsListMaterialIdCardInfo {
-	s.Birth = &v
-	return s
-}
-
-func (s *DescribeVerifyRecordsResponseBodyRecordsListMaterialIdCardInfo) SetName(v string) *DescribeVerifyRecordsResponseBodyRecordsListMaterialIdCardInfo {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeVerifyRecordsResponseBodyRecordsListMaterialIdCardInfo) SetFrontImageUrl(v string) *DescribeVerifyRecordsResponseBodyRecordsListMaterialIdCardInfo {
-	s.FrontImageUrl = &v
-	return s
-}
-
-type DescribeVerifyRecordsResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeVerifyRecordsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeVerifyRecordsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVerifyRecordsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVerifyRecordsResponse) SetHeaders(v map[string]*string) *DescribeVerifyRecordsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeVerifyRecordsResponse) SetBody(v *DescribeVerifyRecordsResponseBody) *DescribeVerifyRecordsResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeVerifyResultRequest struct {
-	BizId   *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-}
-
-func (s DescribeVerifyResultRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVerifyResultRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVerifyResultRequest) SetBizId(v string) *DescribeVerifyResultRequest {
-	s.BizId = &v
-	return s
-}
-
-func (s *DescribeVerifyResultRequest) SetBizType(v string) *DescribeVerifyResultRequest {
-	s.BizType = &v
-	return s
-}
-
-type DescribeVerifyResultResponseBody struct {
-	VerifyStatus              *int32                                    `json:"VerifyStatus,omitempty" xml:"VerifyStatus,omitempty"`
-	RequestId                 *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Material                  *DescribeVerifyResultResponseBodyMaterial `json:"Material,omitempty" xml:"Material,omitempty" type:"Struct"`
-	AuthorityComparisionScore *float32                                  `json:"AuthorityComparisionScore,omitempty" xml:"AuthorityComparisionScore,omitempty"`
-	FaceComparisonScore       *float32                                  `json:"FaceComparisonScore,omitempty" xml:"FaceComparisonScore,omitempty"`
-	IdCardFaceComparisonScore *float32                                  `json:"IdCardFaceComparisonScore,omitempty" xml:"IdCardFaceComparisonScore,omitempty"`
-}
-
-func (s DescribeVerifyResultResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVerifyResultResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVerifyResultResponseBody) SetVerifyStatus(v int32) *DescribeVerifyResultResponseBody {
-	s.VerifyStatus = &v
-	return s
-}
-
-func (s *DescribeVerifyResultResponseBody) SetRequestId(v string) *DescribeVerifyResultResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeVerifyResultResponseBody) SetMaterial(v *DescribeVerifyResultResponseBodyMaterial) *DescribeVerifyResultResponseBody {
-	s.Material = v
-	return s
-}
-
-func (s *DescribeVerifyResultResponseBody) SetAuthorityComparisionScore(v float32) *DescribeVerifyResultResponseBody {
-	s.AuthorityComparisionScore = &v
-	return s
-}
-
-func (s *DescribeVerifyResultResponseBody) SetFaceComparisonScore(v float32) *DescribeVerifyResultResponseBody {
-	s.FaceComparisonScore = &v
-	return s
-}
-
-func (s *DescribeVerifyResultResponseBody) SetIdCardFaceComparisonScore(v float32) *DescribeVerifyResultResponseBody {
-	s.IdCardFaceComparisonScore = &v
-	return s
-}
-
-type DescribeVerifyResultResponseBodyMaterial struct {
-	IdCardNumber  *string                                             `json:"IdCardNumber,omitempty" xml:"IdCardNumber,omitempty"`
-	FaceGlobalUrl *string                                             `json:"FaceGlobalUrl,omitempty" xml:"FaceGlobalUrl,omitempty"`
-	FaceImageUrl  *string                                             `json:"FaceImageUrl,omitempty" xml:"FaceImageUrl,omitempty"`
-	FaceMask      *bool                                               `json:"FaceMask,omitempty" xml:"FaceMask,omitempty"`
-	IdCardName    *string                                             `json:"IdCardName,omitempty" xml:"IdCardName,omitempty"`
-	VideoUrls     []*string                                           `json:"VideoUrls,omitempty" xml:"VideoUrls,omitempty" type:"Repeated"`
-	IdCardInfo    *DescribeVerifyResultResponseBodyMaterialIdCardInfo `json:"IdCardInfo,omitempty" xml:"IdCardInfo,omitempty" type:"Struct"`
-	FaceQuality   *string                                             `json:"FaceQuality,omitempty" xml:"FaceQuality,omitempty"`
-}
-
-func (s DescribeVerifyResultResponseBodyMaterial) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVerifyResultResponseBodyMaterial) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVerifyResultResponseBodyMaterial) SetIdCardNumber(v string) *DescribeVerifyResultResponseBodyMaterial {
-	s.IdCardNumber = &v
-	return s
-}
-
-func (s *DescribeVerifyResultResponseBodyMaterial) SetFaceGlobalUrl(v string) *DescribeVerifyResultResponseBodyMaterial {
-	s.FaceGlobalUrl = &v
-	return s
-}
-
-func (s *DescribeVerifyResultResponseBodyMaterial) SetFaceImageUrl(v string) *DescribeVerifyResultResponseBodyMaterial {
-	s.FaceImageUrl = &v
-	return s
-}
-
-func (s *DescribeVerifyResultResponseBodyMaterial) SetFaceMask(v bool) *DescribeVerifyResultResponseBodyMaterial {
-	s.FaceMask = &v
-	return s
-}
-
-func (s *DescribeVerifyResultResponseBodyMaterial) SetIdCardName(v string) *DescribeVerifyResultResponseBodyMaterial {
-	s.IdCardName = &v
-	return s
-}
-
-func (s *DescribeVerifyResultResponseBodyMaterial) SetVideoUrls(v []*string) *DescribeVerifyResultResponseBodyMaterial {
-	s.VideoUrls = v
-	return s
-}
-
-func (s *DescribeVerifyResultResponseBodyMaterial) SetIdCardInfo(v *DescribeVerifyResultResponseBodyMaterialIdCardInfo) *DescribeVerifyResultResponseBodyMaterial {
-	s.IdCardInfo = v
-	return s
-}
-
-func (s *DescribeVerifyResultResponseBodyMaterial) SetFaceQuality(v string) *DescribeVerifyResultResponseBodyMaterial {
-	s.FaceQuality = &v
-	return s
-}
-
-type DescribeVerifyResultResponseBodyMaterialIdCardInfo struct {
-	EndDate       *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	Authority     *string `json:"Authority,omitempty" xml:"Authority,omitempty"`
-	Address       *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	Number        *string `json:"Number,omitempty" xml:"Number,omitempty"`
-	StartDate     *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	BackImageUrl  *string `json:"BackImageUrl,omitempty" xml:"BackImageUrl,omitempty"`
-	Nationality   *string `json:"Nationality,omitempty" xml:"Nationality,omitempty"`
-	Birth         *string `json:"Birth,omitempty" xml:"Birth,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	FrontImageUrl *string `json:"FrontImageUrl,omitempty" xml:"FrontImageUrl,omitempty"`
-}
-
-func (s DescribeVerifyResultResponseBodyMaterialIdCardInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVerifyResultResponseBodyMaterialIdCardInfo) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVerifyResultResponseBodyMaterialIdCardInfo) SetEndDate(v string) *DescribeVerifyResultResponseBodyMaterialIdCardInfo {
-	s.EndDate = &v
-	return s
-}
-
-func (s *DescribeVerifyResultResponseBodyMaterialIdCardInfo) SetAuthority(v string) *DescribeVerifyResultResponseBodyMaterialIdCardInfo {
-	s.Authority = &v
-	return s
-}
-
-func (s *DescribeVerifyResultResponseBodyMaterialIdCardInfo) SetAddress(v string) *DescribeVerifyResultResponseBodyMaterialIdCardInfo {
-	s.Address = &v
-	return s
-}
-
-func (s *DescribeVerifyResultResponseBodyMaterialIdCardInfo) SetNumber(v string) *DescribeVerifyResultResponseBodyMaterialIdCardInfo {
-	s.Number = &v
-	return s
-}
-
-func (s *DescribeVerifyResultResponseBodyMaterialIdCardInfo) SetStartDate(v string) *DescribeVerifyResultResponseBodyMaterialIdCardInfo {
-	s.StartDate = &v
-	return s
-}
-
-func (s *DescribeVerifyResultResponseBodyMaterialIdCardInfo) SetBackImageUrl(v string) *DescribeVerifyResultResponseBodyMaterialIdCardInfo {
-	s.BackImageUrl = &v
-	return s
-}
-
-func (s *DescribeVerifyResultResponseBodyMaterialIdCardInfo) SetNationality(v string) *DescribeVerifyResultResponseBodyMaterialIdCardInfo {
-	s.Nationality = &v
-	return s
-}
-
-func (s *DescribeVerifyResultResponseBodyMaterialIdCardInfo) SetBirth(v string) *DescribeVerifyResultResponseBodyMaterialIdCardInfo {
-	s.Birth = &v
-	return s
-}
-
-func (s *DescribeVerifyResultResponseBodyMaterialIdCardInfo) SetName(v string) *DescribeVerifyResultResponseBodyMaterialIdCardInfo {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeVerifyResultResponseBodyMaterialIdCardInfo) SetFrontImageUrl(v string) *DescribeVerifyResultResponseBodyMaterialIdCardInfo {
-	s.FrontImageUrl = &v
-	return s
-}
-
-type DescribeVerifyResultResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeVerifyResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeVerifyResultResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVerifyResultResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVerifyResultResponse) SetHeaders(v map[string]*string) *DescribeVerifyResultResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeVerifyResultResponse) SetBody(v *DescribeVerifyResultResponseBody) *DescribeVerifyResultResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeVerifySDKRequest struct {
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	TaskId   *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-}
-
-func (s DescribeVerifySDKRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVerifySDKRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVerifySDKRequest) SetSourceIp(v string) *DescribeVerifySDKRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DescribeVerifySDKRequest) SetLang(v string) *DescribeVerifySDKRequest {
-	s.Lang = &v
-	return s
-}
-
-func (s *DescribeVerifySDKRequest) SetTaskId(v string) *DescribeVerifySDKRequest {
-	s.TaskId = &v
-	return s
-}
-
-type DescribeVerifySDKResponseBody struct {
-	SdkUrl    *string `json:"SdkUrl,omitempty" xml:"SdkUrl,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeVerifySDKResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVerifySDKResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVerifySDKResponseBody) SetSdkUrl(v string) *DescribeVerifySDKResponseBody {
-	s.SdkUrl = &v
-	return s
-}
-
-func (s *DescribeVerifySDKResponseBody) SetRequestId(v string) *DescribeVerifySDKResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeVerifySDKResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeVerifySDKResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeVerifySDKResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVerifySDKResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVerifySDKResponse) SetHeaders(v map[string]*string) *DescribeVerifySDKResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeVerifySDKResponse) SetBody(v *DescribeVerifySDKResponseBody) *DescribeVerifySDKResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeVerifySettingRequest struct {
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-}
-
-func (s DescribeVerifySettingRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVerifySettingRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVerifySettingRequest) SetSourceIp(v string) *DescribeVerifySettingRequest {
-	s.SourceIp = &v
-	return s
-}
-
-type DescribeVerifySettingResponseBody struct {
-	RequestId         *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	VerifySettingList []*DescribeVerifySettingResponseBodyVerifySettingList `json:"VerifySettingList,omitempty" xml:"VerifySettingList,omitempty" type:"Repeated"`
-}
-
-func (s DescribeVerifySettingResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVerifySettingResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVerifySettingResponseBody) SetRequestId(v string) *DescribeVerifySettingResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeVerifySettingResponseBody) SetVerifySettingList(v []*DescribeVerifySettingResponseBodyVerifySettingList) *DescribeVerifySettingResponseBody {
-	s.VerifySettingList = v
-	return s
-}
-
-type DescribeVerifySettingResponseBodyVerifySettingList struct {
-	StepList []*string `json:"StepList,omitempty" xml:"StepList,omitempty" type:"Repeated"`
-	BizName  *string   `json:"BizName,omitempty" xml:"BizName,omitempty"`
-	Solution *string   `json:"Solution,omitempty" xml:"Solution,omitempty"`
-	BizType  *string   `json:"BizType,omitempty" xml:"BizType,omitempty"`
-}
-
-func (s DescribeVerifySettingResponseBodyVerifySettingList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVerifySettingResponseBodyVerifySettingList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVerifySettingResponseBodyVerifySettingList) SetStepList(v []*string) *DescribeVerifySettingResponseBodyVerifySettingList {
-	s.StepList = v
-	return s
-}
-
-func (s *DescribeVerifySettingResponseBodyVerifySettingList) SetBizName(v string) *DescribeVerifySettingResponseBodyVerifySettingList {
-	s.BizName = &v
-	return s
-}
-
-func (s *DescribeVerifySettingResponseBodyVerifySettingList) SetSolution(v string) *DescribeVerifySettingResponseBodyVerifySettingList {
-	s.Solution = &v
-	return s
-}
-
-func (s *DescribeVerifySettingResponseBodyVerifySettingList) SetBizType(v string) *DescribeVerifySettingResponseBodyVerifySettingList {
-	s.BizType = &v
-	return s
-}
-
-type DescribeVerifySettingResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeVerifySettingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeVerifySettingResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVerifySettingResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVerifySettingResponse) SetHeaders(v map[string]*string) *DescribeVerifySettingResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeVerifySettingResponse) SetBody(v *DescribeVerifySettingResponseBody) *DescribeVerifySettingResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeVerifyTokenRequest struct {
-	IdCardBackImageUrl   *string `json:"IdCardBackImageUrl,omitempty" xml:"IdCardBackImageUrl,omitempty"`
-	BizType              *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	FailedRedirectUrl    *string `json:"FailedRedirectUrl,omitempty" xml:"FailedRedirectUrl,omitempty"`
-	FaceRetainedImageUrl *string `json:"FaceRetainedImageUrl,omitempty" xml:"FaceRetainedImageUrl,omitempty"`
-	CallbackSeed         *string `json:"CallbackSeed,omitempty" xml:"CallbackSeed,omitempty"`
-	IdCardFrontImageUrl  *string `json:"IdCardFrontImageUrl,omitempty" xml:"IdCardFrontImageUrl,omitempty"`
-	UserId               *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	BizId                *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	IdCardNumber         *string `json:"IdCardNumber,omitempty" xml:"IdCardNumber,omitempty"`
-	PassedRedirectUrl    *string `json:"PassedRedirectUrl,omitempty" xml:"PassedRedirectUrl,omitempty"`
-	CallbackUrl          *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
-	UserIp               *string `json:"UserIp,omitempty" xml:"UserIp,omitempty"`
-	UserPhoneNumber      *string `json:"UserPhoneNumber,omitempty" xml:"UserPhoneNumber,omitempty"`
-	UserRegistTime       *int64  `json:"UserRegistTime,omitempty" xml:"UserRegistTime,omitempty"`
-}
-
-func (s DescribeVerifyTokenRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVerifyTokenRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVerifyTokenRequest) SetIdCardBackImageUrl(v string) *DescribeVerifyTokenRequest {
-	s.IdCardBackImageUrl = &v
-	return s
-}
-
-func (s *DescribeVerifyTokenRequest) SetBizType(v string) *DescribeVerifyTokenRequest {
-	s.BizType = &v
-	return s
-}
-
-func (s *DescribeVerifyTokenRequest) SetFailedRedirectUrl(v string) *DescribeVerifyTokenRequest {
-	s.FailedRedirectUrl = &v
-	return s
-}
-
-func (s *DescribeVerifyTokenRequest) SetFaceRetainedImageUrl(v string) *DescribeVerifyTokenRequest {
-	s.FaceRetainedImageUrl = &v
-	return s
-}
-
-func (s *DescribeVerifyTokenRequest) SetCallbackSeed(v string) *DescribeVerifyTokenRequest {
-	s.CallbackSeed = &v
-	return s
-}
-
-func (s *DescribeVerifyTokenRequest) SetIdCardFrontImageUrl(v string) *DescribeVerifyTokenRequest {
-	s.IdCardFrontImageUrl = &v
-	return s
-}
-
-func (s *DescribeVerifyTokenRequest) SetUserId(v string) *DescribeVerifyTokenRequest {
-	s.UserId = &v
-	return s
-}
-
-func (s *DescribeVerifyTokenRequest) SetBizId(v string) *DescribeVerifyTokenRequest {
-	s.BizId = &v
-	return s
-}
-
-func (s *DescribeVerifyTokenRequest) SetName(v string) *DescribeVerifyTokenRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeVerifyTokenRequest) SetIdCardNumber(v string) *DescribeVerifyTokenRequest {
-	s.IdCardNumber = &v
-	return s
-}
-
-func (s *DescribeVerifyTokenRequest) SetPassedRedirectUrl(v string) *DescribeVerifyTokenRequest {
-	s.PassedRedirectUrl = &v
-	return s
-}
-
-func (s *DescribeVerifyTokenRequest) SetCallbackUrl(v string) *DescribeVerifyTokenRequest {
-	s.CallbackUrl = &v
-	return s
-}
-
-func (s *DescribeVerifyTokenRequest) SetUserIp(v string) *DescribeVerifyTokenRequest {
-	s.UserIp = &v
-	return s
-}
-
-func (s *DescribeVerifyTokenRequest) SetUserPhoneNumber(v string) *DescribeVerifyTokenRequest {
-	s.UserPhoneNumber = &v
-	return s
-}
-
-func (s *DescribeVerifyTokenRequest) SetUserRegistTime(v int64) *DescribeVerifyTokenRequest {
-	s.UserRegistTime = &v
-	return s
-}
-
-type DescribeVerifyTokenResponseBody struct {
-	VerifyPageUrl  *string                                        `json:"VerifyPageUrl,omitempty" xml:"VerifyPageUrl,omitempty"`
-	RequestId      *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	OssUploadToken *DescribeVerifyTokenResponseBodyOssUploadToken `json:"OssUploadToken,omitempty" xml:"OssUploadToken,omitempty" type:"Struct"`
-	VerifyToken    *string                                        `json:"VerifyToken,omitempty" xml:"VerifyToken,omitempty"`
-}
-
-func (s DescribeVerifyTokenResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVerifyTokenResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVerifyTokenResponseBody) SetVerifyPageUrl(v string) *DescribeVerifyTokenResponseBody {
-	s.VerifyPageUrl = &v
-	return s
-}
-
-func (s *DescribeVerifyTokenResponseBody) SetRequestId(v string) *DescribeVerifyTokenResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeVerifyTokenResponseBody) SetOssUploadToken(v *DescribeVerifyTokenResponseBodyOssUploadToken) *DescribeVerifyTokenResponseBody {
-	s.OssUploadToken = v
-	return s
-}
-
-func (s *DescribeVerifyTokenResponseBody) SetVerifyToken(v string) *DescribeVerifyTokenResponseBody {
-	s.VerifyToken = &v
-	return s
-}
-
-type DescribeVerifyTokenResponseBodyOssUploadToken struct {
-	Key      *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Token    *string `json:"Token,omitempty" xml:"Token,omitempty"`
-	Secret   *string `json:"Secret,omitempty" xml:"Secret,omitempty"`
-	Expired  *int64  `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	Path     *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	EndPoint *string `json:"EndPoint,omitempty" xml:"EndPoint,omitempty"`
-	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-}
-
-func (s DescribeVerifyTokenResponseBodyOssUploadToken) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVerifyTokenResponseBodyOssUploadToken) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVerifyTokenResponseBodyOssUploadToken) SetKey(v string) *DescribeVerifyTokenResponseBodyOssUploadToken {
-	s.Key = &v
-	return s
-}
-
-func (s *DescribeVerifyTokenResponseBodyOssUploadToken) SetToken(v string) *DescribeVerifyTokenResponseBodyOssUploadToken {
-	s.Token = &v
-	return s
-}
-
-func (s *DescribeVerifyTokenResponseBodyOssUploadToken) SetSecret(v string) *DescribeVerifyTokenResponseBodyOssUploadToken {
-	s.Secret = &v
-	return s
-}
-
-func (s *DescribeVerifyTokenResponseBodyOssUploadToken) SetExpired(v int64) *DescribeVerifyTokenResponseBodyOssUploadToken {
-	s.Expired = &v
-	return s
-}
-
-func (s *DescribeVerifyTokenResponseBodyOssUploadToken) SetPath(v string) *DescribeVerifyTokenResponseBodyOssUploadToken {
-	s.Path = &v
-	return s
-}
-
-func (s *DescribeVerifyTokenResponseBodyOssUploadToken) SetEndPoint(v string) *DescribeVerifyTokenResponseBodyOssUploadToken {
-	s.EndPoint = &v
-	return s
-}
-
-func (s *DescribeVerifyTokenResponseBodyOssUploadToken) SetBucket(v string) *DescribeVerifyTokenResponseBodyOssUploadToken {
-	s.Bucket = &v
-	return s
-}
-
-type DescribeVerifyTokenResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeVerifyTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeVerifyTokenResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVerifyTokenResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVerifyTokenResponse) SetHeaders(v map[string]*string) *DescribeVerifyTokenResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeVerifyTokenResponse) SetBody(v *DescribeVerifyTokenResponseBody) *DescribeVerifyTokenResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeVerifyUsageRequest struct {
-	SourceIp  *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	BizType   *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	EndDate   *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-}
-
-func (s DescribeVerifyUsageRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVerifyUsageRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVerifyUsageRequest) SetSourceIp(v string) *DescribeVerifyUsageRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DescribeVerifyUsageRequest) SetBizType(v string) *DescribeVerifyUsageRequest {
-	s.BizType = &v
-	return s
-}
-
-func (s *DescribeVerifyUsageRequest) SetStartDate(v string) *DescribeVerifyUsageRequest {
-	s.StartDate = &v
-	return s
-}
-
-func (s *DescribeVerifyUsageRequest) SetEndDate(v string) *DescribeVerifyUsageRequest {
-	s.EndDate = &v
-	return s
-}
-
-type DescribeVerifyUsageResponseBody struct {
-	TotalCount      *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	VerifyUsageList []*DescribeVerifyUsageResponseBodyVerifyUsageList `json:"VerifyUsageList,omitempty" xml:"VerifyUsageList,omitempty" type:"Repeated"`
-	RequestId       *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeVerifyUsageResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVerifyUsageResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVerifyUsageResponseBody) SetTotalCount(v int32) *DescribeVerifyUsageResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *DescribeVerifyUsageResponseBody) SetVerifyUsageList(v []*DescribeVerifyUsageResponseBodyVerifyUsageList) *DescribeVerifyUsageResponseBody {
-	s.VerifyUsageList = v
-	return s
-}
-
-func (s *DescribeVerifyUsageResponseBody) SetRequestId(v string) *DescribeVerifyUsageResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeVerifyUsageResponseBodyVerifyUsageList struct {
-	PassCount  *int64  `json:"PassCount,omitempty" xml:"PassCount,omitempty"`
-	FailCount  *int64  `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
-	Date       *string `json:"Date,omitempty" xml:"Date,omitempty"`
-	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	BizType    *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-}
-
-func (s DescribeVerifyUsageResponseBodyVerifyUsageList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVerifyUsageResponseBodyVerifyUsageList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVerifyUsageResponseBodyVerifyUsageList) SetPassCount(v int64) *DescribeVerifyUsageResponseBodyVerifyUsageList {
-	s.PassCount = &v
-	return s
-}
-
-func (s *DescribeVerifyUsageResponseBodyVerifyUsageList) SetFailCount(v int64) *DescribeVerifyUsageResponseBodyVerifyUsageList {
-	s.FailCount = &v
-	return s
-}
-
-func (s *DescribeVerifyUsageResponseBodyVerifyUsageList) SetDate(v string) *DescribeVerifyUsageResponseBodyVerifyUsageList {
-	s.Date = &v
-	return s
-}
-
-func (s *DescribeVerifyUsageResponseBodyVerifyUsageList) SetTotalCount(v int64) *DescribeVerifyUsageResponseBodyVerifyUsageList {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *DescribeVerifyUsageResponseBodyVerifyUsageList) SetBizType(v string) *DescribeVerifyUsageResponseBodyVerifyUsageList {
-	s.BizType = &v
-	return s
-}
-
-type DescribeVerifyUsageResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeVerifyUsageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeVerifyUsageResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVerifyUsageResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVerifyUsageResponse) SetHeaders(v map[string]*string) *DescribeVerifyUsageResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeVerifyUsageResponse) SetBody(v *DescribeVerifyUsageResponseBody) *DescribeVerifyUsageResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeWhitelistRequest struct {
-	SourceIp       *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	BizType        *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	BizId          *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	IdCardNum      *string `json:"IdCardNum,omitempty" xml:"IdCardNum,omitempty"`
-	ValidStartDate *string `json:"ValidStartDate,omitempty" xml:"ValidStartDate,omitempty"`
-	ValidEndDate   *string `json:"ValidEndDate,omitempty" xml:"ValidEndDate,omitempty"`
-	Valid          *string `json:"Valid,omitempty" xml:"Valid,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	CurrentPage    *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-}
-
-func (s DescribeWhitelistRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeWhitelistRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeWhitelistRequest) SetSourceIp(v string) *DescribeWhitelistRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DescribeWhitelistRequest) SetLang(v string) *DescribeWhitelistRequest {
-	s.Lang = &v
-	return s
-}
-
-func (s *DescribeWhitelistRequest) SetBizType(v string) *DescribeWhitelistRequest {
-	s.BizType = &v
-	return s
-}
-
-func (s *DescribeWhitelistRequest) SetBizId(v string) *DescribeWhitelistRequest {
-	s.BizId = &v
-	return s
-}
-
-func (s *DescribeWhitelistRequest) SetIdCardNum(v string) *DescribeWhitelistRequest {
-	s.IdCardNum = &v
-	return s
-}
-
-func (s *DescribeWhitelistRequest) SetValidStartDate(v string) *DescribeWhitelistRequest {
-	s.ValidStartDate = &v
-	return s
-}
-
-func (s *DescribeWhitelistRequest) SetValidEndDate(v string) *DescribeWhitelistRequest {
-	s.ValidEndDate = &v
-	return s
-}
-
-func (s *DescribeWhitelistRequest) SetValid(v string) *DescribeWhitelistRequest {
-	s.Valid = &v
-	return s
-}
-
-func (s *DescribeWhitelistRequest) SetPageSize(v int32) *DescribeWhitelistRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeWhitelistRequest) SetCurrentPage(v int32) *DescribeWhitelistRequest {
-	s.CurrentPage = &v
-	return s
-}
-
-type DescribeWhitelistResponseBody struct {
-	TotalCount  *int32                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	PageSize    *int32                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	CurrentPage *int32                                `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Items       []*DescribeWhitelistResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-}
-
-func (s DescribeWhitelistResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeWhitelistResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeWhitelistResponseBody) SetTotalCount(v int32) *DescribeWhitelistResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *DescribeWhitelistResponseBody) SetPageSize(v int32) *DescribeWhitelistResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeWhitelistResponseBody) SetRequestId(v string) *DescribeWhitelistResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeWhitelistResponseBody) SetCurrentPage(v int32) *DescribeWhitelistResponseBody {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *DescribeWhitelistResponseBody) SetItems(v []*DescribeWhitelistResponseBodyItems) *DescribeWhitelistResponseBody {
-	s.Items = v
-	return s
-}
-
-type DescribeWhitelistResponseBodyItems struct {
-	EndDate     *int64  `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	GmtCreate   *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	BizId       *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	StartDate   *int64  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	IdCardNum   *string `json:"IdCardNum,omitempty" xml:"IdCardNum,omitempty"`
-	GmtModified *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Valid       *int32  `json:"Valid,omitempty" xml:"Valid,omitempty"`
-	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	BizType     *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	Uid         *int64  `json:"Uid,omitempty" xml:"Uid,omitempty"`
-}
-
-func (s DescribeWhitelistResponseBodyItems) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeWhitelistResponseBodyItems) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeWhitelistResponseBodyItems) SetEndDate(v int64) *DescribeWhitelistResponseBodyItems {
-	s.EndDate = &v
-	return s
-}
-
-func (s *DescribeWhitelistResponseBodyItems) SetGmtCreate(v int64) *DescribeWhitelistResponseBodyItems {
-	s.GmtCreate = &v
-	return s
-}
-
-func (s *DescribeWhitelistResponseBodyItems) SetBizId(v string) *DescribeWhitelistResponseBodyItems {
-	s.BizId = &v
-	return s
-}
-
-func (s *DescribeWhitelistResponseBodyItems) SetStartDate(v int64) *DescribeWhitelistResponseBodyItems {
-	s.StartDate = &v
-	return s
-}
-
-func (s *DescribeWhitelistResponseBodyItems) SetIdCardNum(v string) *DescribeWhitelistResponseBodyItems {
-	s.IdCardNum = &v
-	return s
-}
-
-func (s *DescribeWhitelistResponseBodyItems) SetGmtModified(v int64) *DescribeWhitelistResponseBodyItems {
-	s.GmtModified = &v
-	return s
-}
-
-func (s *DescribeWhitelistResponseBodyItems) SetValid(v int32) *DescribeWhitelistResponseBodyItems {
-	s.Valid = &v
-	return s
-}
-
-func (s *DescribeWhitelistResponseBodyItems) SetId(v int64) *DescribeWhitelistResponseBodyItems {
-	s.Id = &v
-	return s
-}
-
-func (s *DescribeWhitelistResponseBodyItems) SetBizType(v string) *DescribeWhitelistResponseBodyItems {
-	s.BizType = &v
-	return s
-}
-
-func (s *DescribeWhitelistResponseBodyItems) SetUid(v int64) *DescribeWhitelistResponseBodyItems {
-	s.Uid = &v
-	return s
-}
-
-type DescribeWhitelistResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeWhitelistResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeWhitelistResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeWhitelistResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeWhitelistResponse) SetHeaders(v map[string]*string) *DescribeWhitelistResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeWhitelistResponse) SetBody(v *DescribeWhitelistResponseBody) *DescribeWhitelistResponse {
-	s.Body = v
-	return s
-}
-
-type DetectFaceAttributesRequest struct {
-	MaterialValue *string `json:"MaterialValue,omitempty" xml:"MaterialValue,omitempty"`
-	BizType       *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-}
-
-func (s DetectFaceAttributesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectFaceAttributesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DetectFaceAttributesRequest) SetMaterialValue(v string) *DetectFaceAttributesRequest {
-	s.MaterialValue = &v
-	return s
-}
-
-func (s *DetectFaceAttributesRequest) SetBizType(v string) *DetectFaceAttributesRequest {
-	s.BizType = &v
-	return s
-}
-
-type DetectFaceAttributesResponseBody struct {
-	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *DetectFaceAttributesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Code      *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DetectFaceAttributesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectFaceAttributesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DetectFaceAttributesResponseBody) SetMessage(v string) *DetectFaceAttributesResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DetectFaceAttributesResponseBody) SetRequestId(v string) *DetectFaceAttributesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DetectFaceAttributesResponseBody) SetData(v *DetectFaceAttributesResponseBodyData) *DetectFaceAttributesResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *DetectFaceAttributesResponseBody) SetCode(v string) *DetectFaceAttributesResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DetectFaceAttributesResponseBody) SetSuccess(v bool) *DetectFaceAttributesResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DetectFaceAttributesResponseBodyData struct {
-	ImgHeight *int32                                         `json:"ImgHeight,omitempty" xml:"ImgHeight,omitempty"`
-	ImgWidth  *int32                                         `json:"ImgWidth,omitempty" xml:"ImgWidth,omitempty"`
-	FaceInfos *DetectFaceAttributesResponseBodyDataFaceInfos `json:"FaceInfos,omitempty" xml:"FaceInfos,omitempty" type:"Struct"`
-}
-
-func (s DetectFaceAttributesResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectFaceAttributesResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *DetectFaceAttributesResponseBodyData) SetImgHeight(v int32) *DetectFaceAttributesResponseBodyData {
-	s.ImgHeight = &v
-	return s
-}
-
-func (s *DetectFaceAttributesResponseBodyData) SetImgWidth(v int32) *DetectFaceAttributesResponseBodyData {
-	s.ImgWidth = &v
-	return s
-}
-
-func (s *DetectFaceAttributesResponseBodyData) SetFaceInfos(v *DetectFaceAttributesResponseBodyDataFaceInfos) *DetectFaceAttributesResponseBodyData {
-	s.FaceInfos = v
-	return s
-}
-
-type DetectFaceAttributesResponseBodyDataFaceInfos struct {
-	FaceAttributesDetectInfo []*DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfo `json:"FaceAttributesDetectInfo,omitempty" xml:"FaceAttributesDetectInfo,omitempty" type:"Repeated"`
-}
-
-func (s DetectFaceAttributesResponseBodyDataFaceInfos) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectFaceAttributesResponseBodyDataFaceInfos) GoString() string {
-	return s.String()
-}
-
-func (s *DetectFaceAttributesResponseBodyDataFaceInfos) SetFaceAttributesDetectInfo(v []*DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfo) *DetectFaceAttributesResponseBodyDataFaceInfos {
-	s.FaceAttributesDetectInfo = v
-	return s
-}
-
-type DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfo struct {
-	FaceAttributes *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributes `json:"FaceAttributes,omitempty" xml:"FaceAttributes,omitempty" type:"Struct"`
-	FaceRect       *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceRect       `json:"FaceRect,omitempty" xml:"FaceRect,omitempty" type:"Struct"`
-}
-
-func (s DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfo) GoString() string {
-	return s.String()
-}
-
-func (s *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfo) SetFaceAttributes(v *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributes) *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfo {
-	s.FaceAttributes = v
-	return s
-}
-
-func (s *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfo) SetFaceRect(v *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceRect) *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfo {
-	s.FaceRect = v
-	return s
-}
-
-type DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributes struct {
-	Glasses    *string                                                                                      `json:"Glasses,omitempty" xml:"Glasses,omitempty"`
-	Facequal   *float32                                                                                     `json:"Facequal,omitempty" xml:"Facequal,omitempty"`
-	Integrity  *int32                                                                                       `json:"Integrity,omitempty" xml:"Integrity,omitempty"`
-	Smiling    *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling  `json:"Smiling,omitempty" xml:"Smiling,omitempty" type:"Struct"`
-	Facetype   *string                                                                                      `json:"Facetype,omitempty" xml:"Facetype,omitempty"`
-	Respirator *string                                                                                      `json:"Respirator,omitempty" xml:"Respirator,omitempty"`
-	Headpose   *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributesHeadpose `json:"Headpose,omitempty" xml:"Headpose,omitempty" type:"Struct"`
-	Blur       *float32                                                                                     `json:"Blur,omitempty" xml:"Blur,omitempty"`
-}
-
-func (s DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributes) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributes) GoString() string {
-	return s.String()
-}
-
-func (s *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributes) SetGlasses(v string) *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributes {
-	s.Glasses = &v
-	return s
-}
-
-func (s *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributes) SetFacequal(v float32) *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributes {
-	s.Facequal = &v
-	return s
-}
-
-func (s *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributes) SetIntegrity(v int32) *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributes {
-	s.Integrity = &v
-	return s
-}
-
-func (s *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributes) SetSmiling(v *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling) *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributes {
-	s.Smiling = v
-	return s
-}
-
-func (s *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributes) SetFacetype(v string) *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributes {
-	s.Facetype = &v
-	return s
-}
-
-func (s *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributes) SetRespirator(v string) *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributes {
-	s.Respirator = &v
-	return s
-}
-
-func (s *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributes) SetHeadpose(v *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributesHeadpose) *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributes {
-	s.Headpose = v
-	return s
-}
-
-func (s *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributes) SetBlur(v float32) *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributes {
-	s.Blur = &v
-	return s
-}
-
-type DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling struct {
-	Value     *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
-	Threshold *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-}
-
-func (s DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling) GoString() string {
-	return s.String()
-}
-
-func (s *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling) SetValue(v float32) *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling {
-	s.Value = &v
-	return s
-}
-
-func (s *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling) SetThreshold(v float32) *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling {
-	s.Threshold = &v
-	return s
-}
-
-type DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributesHeadpose struct {
-	PitchAngle *float32 `json:"PitchAngle,omitempty" xml:"PitchAngle,omitempty"`
-	RollAngle  *float32 `json:"RollAngle,omitempty" xml:"RollAngle,omitempty"`
-	YawAngle   *float32 `json:"YawAngle,omitempty" xml:"YawAngle,omitempty"`
-}
-
-func (s DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributesHeadpose) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributesHeadpose) GoString() string {
-	return s.String()
-}
-
-func (s *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributesHeadpose) SetPitchAngle(v float32) *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributesHeadpose {
-	s.PitchAngle = &v
-	return s
-}
-
-func (s *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributesHeadpose) SetRollAngle(v float32) *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributesHeadpose {
-	s.RollAngle = &v
-	return s
-}
-
-func (s *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributesHeadpose) SetYawAngle(v float32) *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributesHeadpose {
-	s.YawAngle = &v
-	return s
-}
-
-type DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceRect struct {
-	Top    *int32 `json:"Top,omitempty" xml:"Top,omitempty"`
-	Width  *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
-	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Left   *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
-}
-
-func (s DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceRect) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceRect) GoString() string {
-	return s.String()
-}
-
-func (s *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceRect) SetTop(v int32) *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceRect {
-	s.Top = &v
-	return s
-}
-
-func (s *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceRect) SetWidth(v int32) *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceRect {
-	s.Width = &v
-	return s
-}
-
-func (s *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceRect) SetHeight(v int32) *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceRect {
-	s.Height = &v
-	return s
-}
-
-func (s *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceRect) SetLeft(v int32) *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceRect {
-	s.Left = &v
-	return s
-}
-
-type DetectFaceAttributesResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetectFaceAttributesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DetectFaceAttributesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectFaceAttributesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DetectFaceAttributesResponse) SetHeaders(v map[string]*string) *DetectFaceAttributesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DetectFaceAttributesResponse) SetBody(v *DetectFaceAttributesResponseBody) *DetectFaceAttributesResponse {
-	s.Body = v
-	return s
-}
-
 type InitDeviceRequest struct {
 	CertifyId        *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
 	OuterOrderNo     *string `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
@@ -4206,145 +1583,11 @@ func (s *InitDeviceRequest) SetWebUmidToken(v string) *InitDeviceRequest {
 	return s
 }
 
-type InitDeviceResponseBody struct {
-	ResultObject *InitDeviceResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
-	Message      *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId    *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code         *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
-}
-
-func (s InitDeviceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InitDeviceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *InitDeviceResponseBody) SetResultObject(v *InitDeviceResponseBodyResultObject) *InitDeviceResponseBody {
-	s.ResultObject = v
-	return s
-}
-
-func (s *InitDeviceResponseBody) SetMessage(v string) *InitDeviceResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *InitDeviceResponseBody) SetRequestId(v string) *InitDeviceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *InitDeviceResponseBody) SetCode(v string) *InitDeviceResponseBody {
-	s.Code = &v
-	return s
-}
-
-type InitDeviceResponseBodyResultObject struct {
-	OssEndPoint     *string `json:"OssEndPoint,omitempty" xml:"OssEndPoint,omitempty"`
-	RetCodeSub      *string `json:"RetCodeSub,omitempty" xml:"RetCodeSub,omitempty"`
-	Protocol        *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	Message         *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	ExtParams       *string `json:"ExtParams,omitempty" xml:"ExtParams,omitempty"`
-	CertifyId       *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
-	FileName        *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	AccessKeyId     *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
-	PresignedUrl    *string `json:"PresignedUrl,omitempty" xml:"PresignedUrl,omitempty"`
-	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	BucketName      *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	FileNamePrefix  *string `json:"FileNamePrefix,omitempty" xml:"FileNamePrefix,omitempty"`
-	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
-	RetMessageSub   *string `json:"RetMessageSub,omitempty" xml:"RetMessageSub,omitempty"`
-	RetCode         *string `json:"RetCode,omitempty" xml:"RetCode,omitempty"`
-}
-
-func (s InitDeviceResponseBodyResultObject) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InitDeviceResponseBodyResultObject) GoString() string {
-	return s.String()
-}
-
-func (s *InitDeviceResponseBodyResultObject) SetOssEndPoint(v string) *InitDeviceResponseBodyResultObject {
-	s.OssEndPoint = &v
-	return s
-}
-
-func (s *InitDeviceResponseBodyResultObject) SetRetCodeSub(v string) *InitDeviceResponseBodyResultObject {
-	s.RetCodeSub = &v
-	return s
-}
-
-func (s *InitDeviceResponseBodyResultObject) SetProtocol(v string) *InitDeviceResponseBodyResultObject {
-	s.Protocol = &v
-	return s
-}
-
-func (s *InitDeviceResponseBodyResultObject) SetMessage(v string) *InitDeviceResponseBodyResultObject {
-	s.Message = &v
-	return s
-}
-
-func (s *InitDeviceResponseBodyResultObject) SetExtParams(v string) *InitDeviceResponseBodyResultObject {
-	s.ExtParams = &v
-	return s
-}
-
-func (s *InitDeviceResponseBodyResultObject) SetCertifyId(v string) *InitDeviceResponseBodyResultObject {
-	s.CertifyId = &v
-	return s
-}
-
-func (s *InitDeviceResponseBodyResultObject) SetFileName(v string) *InitDeviceResponseBodyResultObject {
-	s.FileName = &v
-	return s
-}
-
-func (s *InitDeviceResponseBodyResultObject) SetAccessKeyId(v string) *InitDeviceResponseBodyResultObject {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *InitDeviceResponseBodyResultObject) SetPresignedUrl(v string) *InitDeviceResponseBodyResultObject {
-	s.PresignedUrl = &v
-	return s
-}
-
-func (s *InitDeviceResponseBodyResultObject) SetSecurityToken(v string) *InitDeviceResponseBodyResultObject {
-	s.SecurityToken = &v
-	return s
-}
-
-func (s *InitDeviceResponseBodyResultObject) SetBucketName(v string) *InitDeviceResponseBodyResultObject {
-	s.BucketName = &v
-	return s
-}
-
-func (s *InitDeviceResponseBodyResultObject) SetFileNamePrefix(v string) *InitDeviceResponseBodyResultObject {
-	s.FileNamePrefix = &v
-	return s
-}
-
-func (s *InitDeviceResponseBodyResultObject) SetAccessKeySecret(v string) *InitDeviceResponseBodyResultObject {
-	s.AccessKeySecret = &v
-	return s
-}
-
-func (s *InitDeviceResponseBodyResultObject) SetRetMessageSub(v string) *InitDeviceResponseBodyResultObject {
-	s.RetMessageSub = &v
-	return s
-}
-
-func (s *InitDeviceResponseBodyResultObject) SetRetCode(v string) *InitDeviceResponseBodyResultObject {
-	s.RetCode = &v
-	return s
-}
-
 type InitDeviceResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *InitDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	RequestId    *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Message      *string                         `json:"Message,omitempty" xml:"Message,omitempty" require:"true"`
+	Code         *string                         `json:"Code,omitempty" xml:"Code,omitempty" require:"true"`
+	ResultObject *InitDeviceResponseResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" require:"true" type:"Struct"`
 }
 
 func (s InitDeviceResponse) String() string {
@@ -4355,13 +1598,124 @@ func (s InitDeviceResponse) GoString() string {
 	return s.String()
 }
 
-func (s *InitDeviceResponse) SetHeaders(v map[string]*string) *InitDeviceResponse {
-	s.Headers = v
+func (s *InitDeviceResponse) SetRequestId(v string) *InitDeviceResponse {
+	s.RequestId = &v
 	return s
 }
 
-func (s *InitDeviceResponse) SetBody(v *InitDeviceResponseBody) *InitDeviceResponse {
-	s.Body = v
+func (s *InitDeviceResponse) SetMessage(v string) *InitDeviceResponse {
+	s.Message = &v
+	return s
+}
+
+func (s *InitDeviceResponse) SetCode(v string) *InitDeviceResponse {
+	s.Code = &v
+	return s
+}
+
+func (s *InitDeviceResponse) SetResultObject(v *InitDeviceResponseResultObject) *InitDeviceResponse {
+	s.ResultObject = v
+	return s
+}
+
+type InitDeviceResponseResultObject struct {
+	CertifyId       *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty" require:"true"`
+	Protocol        *string `json:"Protocol,omitempty" xml:"Protocol,omitempty" require:"true"`
+	ExtParams       *string `json:"ExtParams,omitempty" xml:"ExtParams,omitempty" require:"true"`
+	RetCode         *string `json:"RetCode,omitempty" xml:"RetCode,omitempty" require:"true"`
+	RetCodeSub      *string `json:"RetCodeSub,omitempty" xml:"RetCodeSub,omitempty" require:"true"`
+	RetMessageSub   *string `json:"RetMessageSub,omitempty" xml:"RetMessageSub,omitempty" require:"true"`
+	Message         *string `json:"Message,omitempty" xml:"Message,omitempty" require:"true"`
+	OssEndPoint     *string `json:"OssEndPoint,omitempty" xml:"OssEndPoint,omitempty" require:"true"`
+	AccessKeyId     *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty" require:"true"`
+	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty" require:"true"`
+	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty" require:"true"`
+	BucketName      *string `json:"BucketName,omitempty" xml:"BucketName,omitempty" require:"true"`
+	FileNamePrefix  *string `json:"FileNamePrefix,omitempty" xml:"FileNamePrefix,omitempty" require:"true"`
+	FileName        *string `json:"FileName,omitempty" xml:"FileName,omitempty" require:"true"`
+	PresignedUrl    *string `json:"PresignedUrl,omitempty" xml:"PresignedUrl,omitempty" require:"true"`
+}
+
+func (s InitDeviceResponseResultObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitDeviceResponseResultObject) GoString() string {
+	return s.String()
+}
+
+func (s *InitDeviceResponseResultObject) SetCertifyId(v string) *InitDeviceResponseResultObject {
+	s.CertifyId = &v
+	return s
+}
+
+func (s *InitDeviceResponseResultObject) SetProtocol(v string) *InitDeviceResponseResultObject {
+	s.Protocol = &v
+	return s
+}
+
+func (s *InitDeviceResponseResultObject) SetExtParams(v string) *InitDeviceResponseResultObject {
+	s.ExtParams = &v
+	return s
+}
+
+func (s *InitDeviceResponseResultObject) SetRetCode(v string) *InitDeviceResponseResultObject {
+	s.RetCode = &v
+	return s
+}
+
+func (s *InitDeviceResponseResultObject) SetRetCodeSub(v string) *InitDeviceResponseResultObject {
+	s.RetCodeSub = &v
+	return s
+}
+
+func (s *InitDeviceResponseResultObject) SetRetMessageSub(v string) *InitDeviceResponseResultObject {
+	s.RetMessageSub = &v
+	return s
+}
+
+func (s *InitDeviceResponseResultObject) SetMessage(v string) *InitDeviceResponseResultObject {
+	s.Message = &v
+	return s
+}
+
+func (s *InitDeviceResponseResultObject) SetOssEndPoint(v string) *InitDeviceResponseResultObject {
+	s.OssEndPoint = &v
+	return s
+}
+
+func (s *InitDeviceResponseResultObject) SetAccessKeyId(v string) *InitDeviceResponseResultObject {
+	s.AccessKeyId = &v
+	return s
+}
+
+func (s *InitDeviceResponseResultObject) SetAccessKeySecret(v string) *InitDeviceResponseResultObject {
+	s.AccessKeySecret = &v
+	return s
+}
+
+func (s *InitDeviceResponseResultObject) SetSecurityToken(v string) *InitDeviceResponseResultObject {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *InitDeviceResponseResultObject) SetBucketName(v string) *InitDeviceResponseResultObject {
+	s.BucketName = &v
+	return s
+}
+
+func (s *InitDeviceResponseResultObject) SetFileNamePrefix(v string) *InitDeviceResponseResultObject {
+	s.FileNamePrefix = &v
+	return s
+}
+
+func (s *InitDeviceResponseResultObject) SetFileName(v string) *InitDeviceResponseResultObject {
+	s.FileName = &v
+	return s
+}
+
+func (s *InitDeviceResponseResultObject) SetPresignedUrl(v string) *InitDeviceResponseResultObject {
+	s.PresignedUrl = &v
 	return s
 }
 
@@ -4490,67 +1844,11 @@ func (s *InitFaceVerifyRequest) SetCallbackToken(v string) *InitFaceVerifyReques
 	return s
 }
 
-type InitFaceVerifyResponseBody struct {
-	ResultObject *InitFaceVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
-	Message      *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId    *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code         *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-}
-
-func (s InitFaceVerifyResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InitFaceVerifyResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *InitFaceVerifyResponseBody) SetResultObject(v *InitFaceVerifyResponseBodyResultObject) *InitFaceVerifyResponseBody {
-	s.ResultObject = v
-	return s
-}
-
-func (s *InitFaceVerifyResponseBody) SetMessage(v string) *InitFaceVerifyResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *InitFaceVerifyResponseBody) SetRequestId(v string) *InitFaceVerifyResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *InitFaceVerifyResponseBody) SetCode(v string) *InitFaceVerifyResponseBody {
-	s.Code = &v
-	return s
-}
-
-type InitFaceVerifyResponseBodyResultObject struct {
-	CertifyId  *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
-	CertifyUrl *string `json:"CertifyUrl,omitempty" xml:"CertifyUrl,omitempty"`
-}
-
-func (s InitFaceVerifyResponseBodyResultObject) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InitFaceVerifyResponseBodyResultObject) GoString() string {
-	return s.String()
-}
-
-func (s *InitFaceVerifyResponseBodyResultObject) SetCertifyId(v string) *InitFaceVerifyResponseBodyResultObject {
-	s.CertifyId = &v
-	return s
-}
-
-func (s *InitFaceVerifyResponseBodyResultObject) SetCertifyUrl(v string) *InitFaceVerifyResponseBodyResultObject {
-	s.CertifyUrl = &v
-	return s
-}
-
 type InitFaceVerifyResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *InitFaceVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	RequestId    *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Message      *string                             `json:"Message,omitempty" xml:"Message,omitempty" require:"true"`
+	Code         *string                             `json:"Code,omitempty" xml:"Code,omitempty" require:"true"`
+	ResultObject *InitFaceVerifyResponseResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" require:"true" type:"Struct"`
 }
 
 func (s InitFaceVerifyResponse) String() string {
@@ -4561,196 +1859,279 @@ func (s InitFaceVerifyResponse) GoString() string {
 	return s.String()
 }
 
-func (s *InitFaceVerifyResponse) SetHeaders(v map[string]*string) *InitFaceVerifyResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *InitFaceVerifyResponse) SetBody(v *InitFaceVerifyResponseBody) *InitFaceVerifyResponse {
-	s.Body = v
-	return s
-}
-
-type LivenessFaceVerifyRequest struct {
-	SceneId                *int64  `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	OuterOrderNo           *string `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
-	ProductCode            *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	FaceContrastPicture    *string `json:"FaceContrastPicture,omitempty" xml:"FaceContrastPicture,omitempty"`
-	DeviceToken            *string `json:"DeviceToken,omitempty" xml:"DeviceToken,omitempty"`
-	Mobile                 *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	Ip                     *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	UserId                 *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	FaceContrastPictureUrl *string `json:"FaceContrastPictureUrl,omitempty" xml:"FaceContrastPictureUrl,omitempty"`
-	CertifyId              *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
-	OssBucketName          *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
-	OssObjectName          *string `json:"OssObjectName,omitempty" xml:"OssObjectName,omitempty"`
-	Model                  *string `json:"Model,omitempty" xml:"Model,omitempty"`
-}
-
-func (s LivenessFaceVerifyRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s LivenessFaceVerifyRequest) GoString() string {
-	return s.String()
-}
-
-func (s *LivenessFaceVerifyRequest) SetSceneId(v int64) *LivenessFaceVerifyRequest {
-	s.SceneId = &v
-	return s
-}
-
-func (s *LivenessFaceVerifyRequest) SetOuterOrderNo(v string) *LivenessFaceVerifyRequest {
-	s.OuterOrderNo = &v
-	return s
-}
-
-func (s *LivenessFaceVerifyRequest) SetProductCode(v string) *LivenessFaceVerifyRequest {
-	s.ProductCode = &v
-	return s
-}
-
-func (s *LivenessFaceVerifyRequest) SetFaceContrastPicture(v string) *LivenessFaceVerifyRequest {
-	s.FaceContrastPicture = &v
-	return s
-}
-
-func (s *LivenessFaceVerifyRequest) SetDeviceToken(v string) *LivenessFaceVerifyRequest {
-	s.DeviceToken = &v
-	return s
-}
-
-func (s *LivenessFaceVerifyRequest) SetMobile(v string) *LivenessFaceVerifyRequest {
-	s.Mobile = &v
-	return s
-}
-
-func (s *LivenessFaceVerifyRequest) SetIp(v string) *LivenessFaceVerifyRequest {
-	s.Ip = &v
-	return s
-}
-
-func (s *LivenessFaceVerifyRequest) SetUserId(v string) *LivenessFaceVerifyRequest {
-	s.UserId = &v
-	return s
-}
-
-func (s *LivenessFaceVerifyRequest) SetFaceContrastPictureUrl(v string) *LivenessFaceVerifyRequest {
-	s.FaceContrastPictureUrl = &v
-	return s
-}
-
-func (s *LivenessFaceVerifyRequest) SetCertifyId(v string) *LivenessFaceVerifyRequest {
-	s.CertifyId = &v
-	return s
-}
-
-func (s *LivenessFaceVerifyRequest) SetOssBucketName(v string) *LivenessFaceVerifyRequest {
-	s.OssBucketName = &v
-	return s
-}
-
-func (s *LivenessFaceVerifyRequest) SetOssObjectName(v string) *LivenessFaceVerifyRequest {
-	s.OssObjectName = &v
-	return s
-}
-
-func (s *LivenessFaceVerifyRequest) SetModel(v string) *LivenessFaceVerifyRequest {
-	s.Model = &v
-	return s
-}
-
-type LivenessFaceVerifyResponseBody struct {
-	ResultObject *LivenessFaceVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
-	Message      *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code         *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-}
-
-func (s LivenessFaceVerifyResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s LivenessFaceVerifyResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *LivenessFaceVerifyResponseBody) SetResultObject(v *LivenessFaceVerifyResponseBodyResultObject) *LivenessFaceVerifyResponseBody {
-	s.ResultObject = v
-	return s
-}
-
-func (s *LivenessFaceVerifyResponseBody) SetMessage(v string) *LivenessFaceVerifyResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *LivenessFaceVerifyResponseBody) SetRequestId(v string) *LivenessFaceVerifyResponseBody {
+func (s *InitFaceVerifyResponse) SetRequestId(v string) *InitFaceVerifyResponse {
 	s.RequestId = &v
 	return s
 }
 
-func (s *LivenessFaceVerifyResponseBody) SetCode(v string) *LivenessFaceVerifyResponseBody {
+func (s *InitFaceVerifyResponse) SetMessage(v string) *InitFaceVerifyResponse {
+	s.Message = &v
+	return s
+}
+
+func (s *InitFaceVerifyResponse) SetCode(v string) *InitFaceVerifyResponse {
 	s.Code = &v
 	return s
 }
 
-type LivenessFaceVerifyResponseBodyResultObject struct {
-	MaterialInfo *string `json:"MaterialInfo,omitempty" xml:"MaterialInfo,omitempty"`
-	SubCode      *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	Passed       *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
+func (s *InitFaceVerifyResponse) SetResultObject(v *InitFaceVerifyResponseResultObject) *InitFaceVerifyResponse {
+	s.ResultObject = v
+	return s
 }
 
-func (s LivenessFaceVerifyResponseBodyResultObject) String() string {
+type InitFaceVerifyResponseResultObject struct {
+	CertifyId  *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty" require:"true"`
+	CertifyUrl *string `json:"CertifyUrl,omitempty" xml:"CertifyUrl,omitempty" require:"true"`
+}
+
+func (s InitFaceVerifyResponseResultObject) String() string {
 	return tea.Prettify(s)
 }
 
-func (s LivenessFaceVerifyResponseBodyResultObject) GoString() string {
+func (s InitFaceVerifyResponseResultObject) GoString() string {
 	return s.String()
 }
 
-func (s *LivenessFaceVerifyResponseBodyResultObject) SetMaterialInfo(v string) *LivenessFaceVerifyResponseBodyResultObject {
-	s.MaterialInfo = &v
+func (s *InitFaceVerifyResponseResultObject) SetCertifyId(v string) *InitFaceVerifyResponseResultObject {
+	s.CertifyId = &v
 	return s
 }
 
-func (s *LivenessFaceVerifyResponseBodyResultObject) SetSubCode(v string) *LivenessFaceVerifyResponseBodyResultObject {
-	s.SubCode = &v
+func (s *InitFaceVerifyResponseResultObject) SetCertifyUrl(v string) *InitFaceVerifyResponseResultObject {
+	s.CertifyUrl = &v
 	return s
 }
 
-func (s *LivenessFaceVerifyResponseBodyResultObject) SetPassed(v string) *LivenessFaceVerifyResponseBodyResultObject {
+type DescribeFaceVerifyRequest struct {
+	SceneId           *int64  `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	CertifyId         *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
+	PictureReturnType *string `json:"PictureReturnType,omitempty" xml:"PictureReturnType,omitempty"`
+}
+
+func (s DescribeFaceVerifyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFaceVerifyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFaceVerifyRequest) SetSceneId(v int64) *DescribeFaceVerifyRequest {
+	s.SceneId = &v
+	return s
+}
+
+func (s *DescribeFaceVerifyRequest) SetCertifyId(v string) *DescribeFaceVerifyRequest {
+	s.CertifyId = &v
+	return s
+}
+
+func (s *DescribeFaceVerifyRequest) SetPictureReturnType(v string) *DescribeFaceVerifyRequest {
+	s.PictureReturnType = &v
+	return s
+}
+
+type DescribeFaceVerifyResponse struct {
+	RequestId    *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Message      *string                                 `json:"Message,omitempty" xml:"Message,omitempty" require:"true"`
+	Code         *string                                 `json:"Code,omitempty" xml:"Code,omitempty" require:"true"`
+	ResultObject *DescribeFaceVerifyResponseResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" require:"true" type:"Struct"`
+}
+
+func (s DescribeFaceVerifyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFaceVerifyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFaceVerifyResponse) SetRequestId(v string) *DescribeFaceVerifyResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeFaceVerifyResponse) SetMessage(v string) *DescribeFaceVerifyResponse {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeFaceVerifyResponse) SetCode(v string) *DescribeFaceVerifyResponse {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeFaceVerifyResponse) SetResultObject(v *DescribeFaceVerifyResponseResultObject) *DescribeFaceVerifyResponse {
+	s.ResultObject = v
+	return s
+}
+
+type DescribeFaceVerifyResponseResultObject struct {
+	Passed       *string `json:"Passed,omitempty" xml:"Passed,omitempty" require:"true"`
+	IdentityInfo *string `json:"IdentityInfo,omitempty" xml:"IdentityInfo,omitempty" require:"true"`
+	MaterialInfo *string `json:"MaterialInfo,omitempty" xml:"MaterialInfo,omitempty" require:"true"`
+	DeviceToken  *string `json:"DeviceToken,omitempty" xml:"DeviceToken,omitempty" require:"true"`
+	SubCode      *string `json:"SubCode,omitempty" xml:"SubCode,omitempty" require:"true"`
+}
+
+func (s DescribeFaceVerifyResponseResultObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFaceVerifyResponseResultObject) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFaceVerifyResponseResultObject) SetPassed(v string) *DescribeFaceVerifyResponseResultObject {
 	s.Passed = &v
 	return s
 }
 
-type LivenessFaceVerifyResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *LivenessFaceVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s LivenessFaceVerifyResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s LivenessFaceVerifyResponse) GoString() string {
-	return s.String()
-}
-
-func (s *LivenessFaceVerifyResponse) SetHeaders(v map[string]*string) *LivenessFaceVerifyResponse {
-	s.Headers = v
+func (s *DescribeFaceVerifyResponseResultObject) SetIdentityInfo(v string) *DescribeFaceVerifyResponseResultObject {
+	s.IdentityInfo = &v
 	return s
 }
 
-func (s *LivenessFaceVerifyResponse) SetBody(v *LivenessFaceVerifyResponseBody) *LivenessFaceVerifyResponse {
-	s.Body = v
+func (s *DescribeFaceVerifyResponseResultObject) SetMaterialInfo(v string) *DescribeFaceVerifyResponseResultObject {
+	s.MaterialInfo = &v
+	return s
+}
+
+func (s *DescribeFaceVerifyResponseResultObject) SetDeviceToken(v string) *DescribeFaceVerifyResponseResultObject {
+	s.DeviceToken = &v
+	return s
+}
+
+func (s *DescribeFaceVerifyResponseResultObject) SetSubCode(v string) *DescribeFaceVerifyResponseResultObject {
+	s.SubCode = &v
+	return s
+}
+
+type VerifyDeviceRequest struct {
+	CertifyId   *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
+	CertifyData *string `json:"CertifyData,omitempty" xml:"CertifyData,omitempty"`
+	AppVersion  *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	ExtInfo     *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
+	DeviceToken *string `json:"DeviceToken,omitempty" xml:"DeviceToken,omitempty"`
+}
+
+func (s VerifyDeviceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyDeviceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyDeviceRequest) SetCertifyId(v string) *VerifyDeviceRequest {
+	s.CertifyId = &v
+	return s
+}
+
+func (s *VerifyDeviceRequest) SetCertifyData(v string) *VerifyDeviceRequest {
+	s.CertifyData = &v
+	return s
+}
+
+func (s *VerifyDeviceRequest) SetAppVersion(v string) *VerifyDeviceRequest {
+	s.AppVersion = &v
+	return s
+}
+
+func (s *VerifyDeviceRequest) SetExtInfo(v string) *VerifyDeviceRequest {
+	s.ExtInfo = &v
+	return s
+}
+
+func (s *VerifyDeviceRequest) SetDeviceToken(v string) *VerifyDeviceRequest {
+	s.DeviceToken = &v
+	return s
+}
+
+type VerifyDeviceResponse struct {
+	RequestId    *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Code         *string                           `json:"Code,omitempty" xml:"Code,omitempty" require:"true"`
+	Message      *string                           `json:"Message,omitempty" xml:"Message,omitempty" require:"true"`
+	ResultObject *VerifyDeviceResponseResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" require:"true" type:"Struct"`
+}
+
+func (s VerifyDeviceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyDeviceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyDeviceResponse) SetRequestId(v string) *VerifyDeviceResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *VerifyDeviceResponse) SetCode(v string) *VerifyDeviceResponse {
+	s.Code = &v
+	return s
+}
+
+func (s *VerifyDeviceResponse) SetMessage(v string) *VerifyDeviceResponse {
+	s.Message = &v
+	return s
+}
+
+func (s *VerifyDeviceResponse) SetResultObject(v *VerifyDeviceResponseResultObject) *VerifyDeviceResponse {
+	s.ResultObject = v
+	return s
+}
+
+type VerifyDeviceResponseResultObject struct {
+	ValidationRetCode *string `json:"ValidationRetCode,omitempty" xml:"ValidationRetCode,omitempty" require:"true"`
+	ProductRetCode    *string `json:"ProductRetCode,omitempty" xml:"ProductRetCode,omitempty" require:"true"`
+	RetCodeSub        *string `json:"RetCodeSub,omitempty" xml:"RetCodeSub,omitempty" require:"true"`
+	RetMessageSub     *string `json:"RetMessageSub,omitempty" xml:"RetMessageSub,omitempty" require:"true"`
+	HasNext           *string `json:"HasNext,omitempty" xml:"HasNext,omitempty" require:"true"`
+	ExtParams         *string `json:"ExtParams,omitempty" xml:"ExtParams,omitempty" require:"true"`
+}
+
+func (s VerifyDeviceResponseResultObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyDeviceResponseResultObject) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyDeviceResponseResultObject) SetValidationRetCode(v string) *VerifyDeviceResponseResultObject {
+	s.ValidationRetCode = &v
+	return s
+}
+
+func (s *VerifyDeviceResponseResultObject) SetProductRetCode(v string) *VerifyDeviceResponseResultObject {
+	s.ProductRetCode = &v
+	return s
+}
+
+func (s *VerifyDeviceResponseResultObject) SetRetCodeSub(v string) *VerifyDeviceResponseResultObject {
+	s.RetCodeSub = &v
+	return s
+}
+
+func (s *VerifyDeviceResponseResultObject) SetRetMessageSub(v string) *VerifyDeviceResponseResultObject {
+	s.RetMessageSub = &v
+	return s
+}
+
+func (s *VerifyDeviceResponseResultObject) SetHasNext(v string) *VerifyDeviceResponseResultObject {
+	s.HasNext = &v
+	return s
+}
+
+func (s *VerifyDeviceResponseResultObject) SetExtParams(v string) *VerifyDeviceResponseResultObject {
+	s.ExtParams = &v
 	return s
 }
 
 type ModifyDeviceInfoRequest struct {
-	SourceIp     *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	DeviceId     *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	DeviceId     *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty" require:"true"`
 	UserDeviceId *string `json:"UserDeviceId,omitempty" xml:"UserDeviceId,omitempty"`
 	BizType      *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	Duration     *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
@@ -4763,16 +2144,6 @@ func (s ModifyDeviceInfoRequest) String() string {
 
 func (s ModifyDeviceInfoRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ModifyDeviceInfoRequest) SetSourceIp(v string) *ModifyDeviceInfoRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *ModifyDeviceInfoRequest) SetLang(v string) *ModifyDeviceInfoRequest {
-	s.Lang = &v
-	return s
 }
 
 func (s *ModifyDeviceInfoRequest) SetDeviceId(v string) *ModifyDeviceInfoRequest {
@@ -4800,56 +2171,13 @@ func (s *ModifyDeviceInfoRequest) SetExpiredDay(v string) *ModifyDeviceInfoReque
 	return s
 }
 
-type ModifyDeviceInfoResponseBody struct {
-	ExpiredDay   *string `json:"ExpiredDay,omitempty" xml:"ExpiredDay,omitempty"`
-	BeginDay     *string `json:"BeginDay,omitempty" xml:"BeginDay,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	DeviceId     *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	BizType      *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	UserDeviceId *string `json:"UserDeviceId,omitempty" xml:"UserDeviceId,omitempty"`
-}
-
-func (s ModifyDeviceInfoResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyDeviceInfoResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyDeviceInfoResponseBody) SetExpiredDay(v string) *ModifyDeviceInfoResponseBody {
-	s.ExpiredDay = &v
-	return s
-}
-
-func (s *ModifyDeviceInfoResponseBody) SetBeginDay(v string) *ModifyDeviceInfoResponseBody {
-	s.BeginDay = &v
-	return s
-}
-
-func (s *ModifyDeviceInfoResponseBody) SetRequestId(v string) *ModifyDeviceInfoResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ModifyDeviceInfoResponseBody) SetDeviceId(v string) *ModifyDeviceInfoResponseBody {
-	s.DeviceId = &v
-	return s
-}
-
-func (s *ModifyDeviceInfoResponseBody) SetBizType(v string) *ModifyDeviceInfoResponseBody {
-	s.BizType = &v
-	return s
-}
-
-func (s *ModifyDeviceInfoResponseBody) SetUserDeviceId(v string) *ModifyDeviceInfoResponseBody {
-	s.UserDeviceId = &v
-	return s
-}
-
 type ModifyDeviceInfoResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyDeviceInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	DeviceId     *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty" require:"true"`
+	UserDeviceId *string `json:"UserDeviceId,omitempty" xml:"UserDeviceId,omitempty" require:"true"`
+	BizType      *string `json:"BizType,omitempty" xml:"BizType,omitempty" require:"true"`
+	BeginDay     *string `json:"BeginDay,omitempty" xml:"BeginDay,omitempty" require:"true"`
+	ExpiredDay   *string `json:"ExpiredDay,omitempty" xml:"ExpiredDay,omitempty" require:"true"`
 }
 
 func (s ModifyDeviceInfoResponse) String() string {
@@ -4860,181 +2188,1094 @@ func (s ModifyDeviceInfoResponse) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyDeviceInfoResponse) SetHeaders(v map[string]*string) *ModifyDeviceInfoResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ModifyDeviceInfoResponse) SetBody(v *ModifyDeviceInfoResponseBody) *ModifyDeviceInfoResponse {
-	s.Body = v
-	return s
-}
-
-type UpdateAppPackageRequest struct {
-	SourceIp   *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Id         *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	PackageUrl *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
-	Platform   *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	Debug      *bool   `json:"Debug,omitempty" xml:"Debug,omitempty"`
-}
-
-func (s UpdateAppPackageRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateAppPackageRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateAppPackageRequest) SetSourceIp(v string) *UpdateAppPackageRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *UpdateAppPackageRequest) SetId(v int64) *UpdateAppPackageRequest {
-	s.Id = &v
-	return s
-}
-
-func (s *UpdateAppPackageRequest) SetPackageUrl(v string) *UpdateAppPackageRequest {
-	s.PackageUrl = &v
-	return s
-}
-
-func (s *UpdateAppPackageRequest) SetPlatform(v string) *UpdateAppPackageRequest {
-	s.Platform = &v
-	return s
-}
-
-func (s *UpdateAppPackageRequest) SetDebug(v bool) *UpdateAppPackageRequest {
-	s.Debug = &v
-	return s
-}
-
-type UpdateAppPackageResponseBody struct {
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s UpdateAppPackageResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateAppPackageResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateAppPackageResponseBody) SetTaskId(v string) *UpdateAppPackageResponseBody {
-	s.TaskId = &v
-	return s
-}
-
-func (s *UpdateAppPackageResponseBody) SetRequestId(v string) *UpdateAppPackageResponseBody {
+func (s *ModifyDeviceInfoResponse) SetRequestId(v string) *ModifyDeviceInfoResponse {
 	s.RequestId = &v
 	return s
 }
 
-type UpdateAppPackageResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateAppPackageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateAppPackageResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateAppPackageResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateAppPackageResponse) SetHeaders(v map[string]*string) *UpdateAppPackageResponse {
-	s.Headers = v
+func (s *ModifyDeviceInfoResponse) SetDeviceId(v string) *ModifyDeviceInfoResponse {
+	s.DeviceId = &v
 	return s
 }
 
-func (s *UpdateAppPackageResponse) SetBody(v *UpdateAppPackageResponseBody) *UpdateAppPackageResponse {
-	s.Body = v
+func (s *ModifyDeviceInfoResponse) SetUserDeviceId(v string) *ModifyDeviceInfoResponse {
+	s.UserDeviceId = &v
 	return s
 }
 
-type UpdateFaceConfigRequest struct {
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	BizType  *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	BizName  *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
-}
-
-func (s UpdateFaceConfigRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateFaceConfigRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateFaceConfigRequest) SetSourceIp(v string) *UpdateFaceConfigRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *UpdateFaceConfigRequest) SetLang(v string) *UpdateFaceConfigRequest {
-	s.Lang = &v
-	return s
-}
-
-func (s *UpdateFaceConfigRequest) SetBizType(v string) *UpdateFaceConfigRequest {
+func (s *ModifyDeviceInfoResponse) SetBizType(v string) *ModifyDeviceInfoResponse {
 	s.BizType = &v
 	return s
 }
 
-func (s *UpdateFaceConfigRequest) SetBizName(v string) *UpdateFaceConfigRequest {
-	s.BizName = &v
+func (s *ModifyDeviceInfoResponse) SetBeginDay(v string) *ModifyDeviceInfoResponse {
+	s.BeginDay = &v
 	return s
 }
 
-type UpdateFaceConfigResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+func (s *ModifyDeviceInfoResponse) SetExpiredDay(v string) *ModifyDeviceInfoResponse {
+	s.ExpiredDay = &v
+	return s
 }
 
-func (s UpdateFaceConfigResponseBody) String() string {
+type DescribeVerifySDKRequest struct {
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty" require:"true"`
+}
+
+func (s DescribeVerifySDKRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s UpdateFaceConfigResponseBody) GoString() string {
+func (s DescribeVerifySDKRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateFaceConfigResponseBody) SetRequestId(v string) *UpdateFaceConfigResponseBody {
+func (s *DescribeVerifySDKRequest) SetTaskId(v string) *DescribeVerifySDKRequest {
+	s.TaskId = &v
+	return s
+}
+
+type DescribeVerifySDKResponse struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	SdkUrl    *string `json:"SdkUrl,omitempty" xml:"SdkUrl,omitempty" require:"true"`
+}
+
+func (s DescribeVerifySDKResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVerifySDKResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVerifySDKResponse) SetRequestId(v string) *DescribeVerifySDKResponse {
 	s.RequestId = &v
 	return s
 }
 
-type UpdateFaceConfigResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateFaceConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateFaceConfigResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateFaceConfigResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateFaceConfigResponse) SetHeaders(v map[string]*string) *UpdateFaceConfigResponse {
-	s.Headers = v
+func (s *DescribeVerifySDKResponse) SetSdkUrl(v string) *DescribeVerifySDKResponse {
+	s.SdkUrl = &v
 	return s
 }
 
-func (s *UpdateFaceConfigResponse) SetBody(v *UpdateFaceConfigResponseBody) *UpdateFaceConfigResponse {
-	s.Body = v
+type DescribeDeviceInfoRequest struct {
+	PageSize        *int    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	CurrentPage     *int    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	DeviceId        *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	BizType         *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	UserDeviceId    *string `json:"UserDeviceId,omitempty" xml:"UserDeviceId,omitempty"`
+	ExpiredStartDay *string `json:"ExpiredStartDay,omitempty" xml:"ExpiredStartDay,omitempty"`
+	ExpiredEndDay   *string `json:"ExpiredEndDay,omitempty" xml:"ExpiredEndDay,omitempty"`
+}
+
+func (s DescribeDeviceInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDeviceInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDeviceInfoRequest) SetPageSize(v int) *DescribeDeviceInfoRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDeviceInfoRequest) SetCurrentPage(v int) *DescribeDeviceInfoRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeDeviceInfoRequest) SetDeviceId(v string) *DescribeDeviceInfoRequest {
+	s.DeviceId = &v
+	return s
+}
+
+func (s *DescribeDeviceInfoRequest) SetBizType(v string) *DescribeDeviceInfoRequest {
+	s.BizType = &v
+	return s
+}
+
+func (s *DescribeDeviceInfoRequest) SetUserDeviceId(v string) *DescribeDeviceInfoRequest {
+	s.UserDeviceId = &v
+	return s
+}
+
+func (s *DescribeDeviceInfoRequest) SetExpiredStartDay(v string) *DescribeDeviceInfoRequest {
+	s.ExpiredStartDay = &v
+	return s
+}
+
+func (s *DescribeDeviceInfoRequest) SetExpiredEndDay(v string) *DescribeDeviceInfoRequest {
+	s.ExpiredEndDay = &v
+	return s
+}
+
+type DescribeDeviceInfoResponse struct {
+	RequestId      *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	PageSize       *int                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty" require:"true"`
+	CurrentPage    *int                                      `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty" require:"true"`
+	TotalCount     *int                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty" require:"true"`
+	DeviceInfoList *DescribeDeviceInfoResponseDeviceInfoList `json:"DeviceInfoList,omitempty" xml:"DeviceInfoList,omitempty" require:"true" type:"Struct"`
+}
+
+func (s DescribeDeviceInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDeviceInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDeviceInfoResponse) SetRequestId(v string) *DescribeDeviceInfoResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDeviceInfoResponse) SetPageSize(v int) *DescribeDeviceInfoResponse {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDeviceInfoResponse) SetCurrentPage(v int) *DescribeDeviceInfoResponse {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeDeviceInfoResponse) SetTotalCount(v int) *DescribeDeviceInfoResponse {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeDeviceInfoResponse) SetDeviceInfoList(v *DescribeDeviceInfoResponseDeviceInfoList) *DescribeDeviceInfoResponse {
+	s.DeviceInfoList = v
+	return s
+}
+
+type DescribeDeviceInfoResponseDeviceInfoList struct {
+	DeviceInfo []*DescribeDeviceInfoResponseDeviceInfoListDeviceInfo `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s DescribeDeviceInfoResponseDeviceInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDeviceInfoResponseDeviceInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDeviceInfoResponseDeviceInfoList) SetDeviceInfo(v []*DescribeDeviceInfoResponseDeviceInfoListDeviceInfo) *DescribeDeviceInfoResponseDeviceInfoList {
+	s.DeviceInfo = v
+	return s
+}
+
+type DescribeDeviceInfoResponseDeviceInfoListDeviceInfo struct {
+	DeviceId     *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty" require:"true"`
+	UserDeviceId *string `json:"UserDeviceId,omitempty" xml:"UserDeviceId,omitempty" require:"true"`
+	BizType      *string `json:"BizType,omitempty" xml:"BizType,omitempty" require:"true"`
+	BeginDay     *string `json:"BeginDay,omitempty" xml:"BeginDay,omitempty" require:"true"`
+	ExpiredDay   *string `json:"ExpiredDay,omitempty" xml:"ExpiredDay,omitempty" require:"true"`
+}
+
+func (s DescribeDeviceInfoResponseDeviceInfoListDeviceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDeviceInfoResponseDeviceInfoListDeviceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDeviceInfoResponseDeviceInfoListDeviceInfo) SetDeviceId(v string) *DescribeDeviceInfoResponseDeviceInfoListDeviceInfo {
+	s.DeviceId = &v
+	return s
+}
+
+func (s *DescribeDeviceInfoResponseDeviceInfoListDeviceInfo) SetUserDeviceId(v string) *DescribeDeviceInfoResponseDeviceInfoListDeviceInfo {
+	s.UserDeviceId = &v
+	return s
+}
+
+func (s *DescribeDeviceInfoResponseDeviceInfoListDeviceInfo) SetBizType(v string) *DescribeDeviceInfoResponseDeviceInfoListDeviceInfo {
+	s.BizType = &v
+	return s
+}
+
+func (s *DescribeDeviceInfoResponseDeviceInfoListDeviceInfo) SetBeginDay(v string) *DescribeDeviceInfoResponseDeviceInfoListDeviceInfo {
+	s.BeginDay = &v
+	return s
+}
+
+func (s *DescribeDeviceInfoResponseDeviceInfoListDeviceInfo) SetExpiredDay(v string) *DescribeDeviceInfoResponseDeviceInfoListDeviceInfo {
+	s.ExpiredDay = &v
+	return s
+}
+
+type CreateVerifySDKRequest struct {
+	AppUrl   *string `json:"AppUrl,omitempty" xml:"AppUrl,omitempty" require:"true"`
+	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+}
+
+func (s CreateVerifySDKRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVerifySDKRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVerifySDKRequest) SetAppUrl(v string) *CreateVerifySDKRequest {
+	s.AppUrl = &v
+	return s
+}
+
+func (s *CreateVerifySDKRequest) SetPlatform(v string) *CreateVerifySDKRequest {
+	s.Platform = &v
+	return s
+}
+
+type CreateVerifySDKResponse struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty" require:"true"`
+}
+
+func (s CreateVerifySDKResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVerifySDKResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVerifySDKResponse) SetRequestId(v string) *CreateVerifySDKResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateVerifySDKResponse) SetTaskId(v string) *CreateVerifySDKResponse {
+	s.TaskId = &v
+	return s
+}
+
+type CreateAuthKeyRequest struct {
+	BizType      *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	UserDeviceId *string `json:"UserDeviceId,omitempty" xml:"UserDeviceId,omitempty"`
+	Test         *bool   `json:"Test,omitempty" xml:"Test,omitempty"`
+	AuthYears    *int    `json:"AuthYears,omitempty" xml:"AuthYears,omitempty"`
+}
+
+func (s CreateAuthKeyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAuthKeyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAuthKeyRequest) SetBizType(v string) *CreateAuthKeyRequest {
+	s.BizType = &v
+	return s
+}
+
+func (s *CreateAuthKeyRequest) SetUserDeviceId(v string) *CreateAuthKeyRequest {
+	s.UserDeviceId = &v
+	return s
+}
+
+func (s *CreateAuthKeyRequest) SetTest(v bool) *CreateAuthKeyRequest {
+	s.Test = &v
+	return s
+}
+
+func (s *CreateAuthKeyRequest) SetAuthYears(v int) *CreateAuthKeyRequest {
+	s.AuthYears = &v
+	return s
+}
+
+type CreateAuthKeyResponse struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	AuthKey   *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty" require:"true"`
+}
+
+func (s CreateAuthKeyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAuthKeyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAuthKeyResponse) SetRequestId(v string) *CreateAuthKeyResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateAuthKeyResponse) SetAuthKey(v string) *CreateAuthKeyResponse {
+	s.AuthKey = &v
+	return s
+}
+
+type DetectFaceAttributesRequest struct {
+	MaterialValue *string `json:"MaterialValue,omitempty" xml:"MaterialValue,omitempty" require:"true"`
+	BizType       *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+}
+
+func (s DetectFaceAttributesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectFaceAttributesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetectFaceAttributesRequest) SetMaterialValue(v string) *DetectFaceAttributesRequest {
+	s.MaterialValue = &v
+	return s
+}
+
+func (s *DetectFaceAttributesRequest) SetBizType(v string) *DetectFaceAttributesRequest {
+	s.BizType = &v
+	return s
+}
+
+type DetectFaceAttributesResponse struct {
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Success   *bool                             `json:"Success,omitempty" xml:"Success,omitempty" require:"true"`
+	Code      *string                           `json:"Code,omitempty" xml:"Code,omitempty" require:"true"`
+	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty" require:"true"`
+	Data      *DetectFaceAttributesResponseData `json:"Data,omitempty" xml:"Data,omitempty" require:"true" type:"Struct"`
+}
+
+func (s DetectFaceAttributesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectFaceAttributesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DetectFaceAttributesResponse) SetRequestId(v string) *DetectFaceAttributesResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DetectFaceAttributesResponse) SetSuccess(v bool) *DetectFaceAttributesResponse {
+	s.Success = &v
+	return s
+}
+
+func (s *DetectFaceAttributesResponse) SetCode(v string) *DetectFaceAttributesResponse {
+	s.Code = &v
+	return s
+}
+
+func (s *DetectFaceAttributesResponse) SetMessage(v string) *DetectFaceAttributesResponse {
+	s.Message = &v
+	return s
+}
+
+func (s *DetectFaceAttributesResponse) SetData(v *DetectFaceAttributesResponseData) *DetectFaceAttributesResponse {
+	s.Data = v
+	return s
+}
+
+type DetectFaceAttributesResponseData struct {
+	ImgWidth  *int                                       `json:"ImgWidth,omitempty" xml:"ImgWidth,omitempty" require:"true"`
+	ImgHeight *int                                       `json:"ImgHeight,omitempty" xml:"ImgHeight,omitempty" require:"true"`
+	FaceInfos *DetectFaceAttributesResponseDataFaceInfos `json:"FaceInfos,omitempty" xml:"FaceInfos,omitempty" require:"true" type:"Struct"`
+}
+
+func (s DetectFaceAttributesResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectFaceAttributesResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *DetectFaceAttributesResponseData) SetImgWidth(v int) *DetectFaceAttributesResponseData {
+	s.ImgWidth = &v
+	return s
+}
+
+func (s *DetectFaceAttributesResponseData) SetImgHeight(v int) *DetectFaceAttributesResponseData {
+	s.ImgHeight = &v
+	return s
+}
+
+func (s *DetectFaceAttributesResponseData) SetFaceInfos(v *DetectFaceAttributesResponseDataFaceInfos) *DetectFaceAttributesResponseData {
+	s.FaceInfos = v
+	return s
+}
+
+type DetectFaceAttributesResponseDataFaceInfos struct {
+	FaceAttributesDetectInfo []*DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfo `json:"FaceAttributesDetectInfo,omitempty" xml:"FaceAttributesDetectInfo,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s DetectFaceAttributesResponseDataFaceInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectFaceAttributesResponseDataFaceInfos) GoString() string {
+	return s.String()
+}
+
+func (s *DetectFaceAttributesResponseDataFaceInfos) SetFaceAttributesDetectInfo(v []*DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfo) *DetectFaceAttributesResponseDataFaceInfos {
+	s.FaceAttributesDetectInfo = v
+	return s
+}
+
+type DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfo struct {
+	FaceRect       *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceRect       `json:"FaceRect,omitempty" xml:"FaceRect,omitempty" require:"true" type:"Struct"`
+	FaceAttributes *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributes `json:"FaceAttributes,omitempty" xml:"FaceAttributes,omitempty" require:"true" type:"Struct"`
+}
+
+func (s DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfo) SetFaceRect(v *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceRect) *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfo {
+	s.FaceRect = v
+	return s
+}
+
+func (s *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfo) SetFaceAttributes(v *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributes) *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfo {
+	s.FaceAttributes = v
+	return s
+}
+
+type DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceRect struct {
+	Top    *int `json:"Top,omitempty" xml:"Top,omitempty" require:"true"`
+	Left   *int `json:"Left,omitempty" xml:"Left,omitempty" require:"true"`
+	Width  *int `json:"Width,omitempty" xml:"Width,omitempty" require:"true"`
+	Height *int `json:"Height,omitempty" xml:"Height,omitempty" require:"true"`
+}
+
+func (s DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceRect) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceRect) GoString() string {
+	return s.String()
+}
+
+func (s *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceRect) SetTop(v int) *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceRect {
+	s.Top = &v
+	return s
+}
+
+func (s *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceRect) SetLeft(v int) *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceRect {
+	s.Left = &v
+	return s
+}
+
+func (s *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceRect) SetWidth(v int) *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceRect {
+	s.Width = &v
+	return s
+}
+
+func (s *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceRect) SetHeight(v int) *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceRect {
+	s.Height = &v
+	return s
+}
+
+type DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributes struct {
+	Glasses         *string                                                                                  `json:"Glasses,omitempty" xml:"Glasses,omitempty" require:"true"`
+	Facetype        *string                                                                                  `json:"Facetype,omitempty" xml:"Facetype,omitempty" require:"true"`
+	Blur            *float32                                                                                 `json:"Blur,omitempty" xml:"Blur,omitempty" require:"true"`
+	Facequal        *float32                                                                                 `json:"Facequal,omitempty" xml:"Facequal,omitempty" require:"true"`
+	Integrity       *int                                                                                     `json:"Integrity,omitempty" xml:"Integrity,omitempty" require:"true"`
+	Respirator      *string                                                                                  `json:"Respirator,omitempty" xml:"Respirator,omitempty" require:"true"`
+	AppearanceScore *float32                                                                                 `json:"AppearanceScore,omitempty" xml:"AppearanceScore,omitempty" require:"true"`
+	Smiling         *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling  `json:"Smiling,omitempty" xml:"Smiling,omitempty" require:"true" type:"Struct"`
+	Headpose        *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributesHeadpose `json:"Headpose,omitempty" xml:"Headpose,omitempty" require:"true" type:"Struct"`
+}
+
+func (s DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributes) GoString() string {
+	return s.String()
+}
+
+func (s *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributes) SetGlasses(v string) *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributes {
+	s.Glasses = &v
+	return s
+}
+
+func (s *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributes) SetFacetype(v string) *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributes {
+	s.Facetype = &v
+	return s
+}
+
+func (s *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributes) SetBlur(v float32) *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributes {
+	s.Blur = &v
+	return s
+}
+
+func (s *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributes) SetFacequal(v float32) *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributes {
+	s.Facequal = &v
+	return s
+}
+
+func (s *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributes) SetIntegrity(v int) *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributes {
+	s.Integrity = &v
+	return s
+}
+
+func (s *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributes) SetRespirator(v string) *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributes {
+	s.Respirator = &v
+	return s
+}
+
+func (s *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributes) SetAppearanceScore(v float32) *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributes {
+	s.AppearanceScore = &v
+	return s
+}
+
+func (s *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributes) SetSmiling(v *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling) *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributes {
+	s.Smiling = v
+	return s
+}
+
+func (s *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributes) SetHeadpose(v *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributesHeadpose) *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributes {
+	s.Headpose = v
+	return s
+}
+
+type DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling struct {
+	Value     *float32 `json:"Value,omitempty" xml:"Value,omitempty" require:"true"`
+	Threshold *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty" require:"true"`
+}
+
+func (s DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling) GoString() string {
+	return s.String()
+}
+
+func (s *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling) SetValue(v float32) *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling {
+	s.Value = &v
+	return s
+}
+
+func (s *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling) SetThreshold(v float32) *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling {
+	s.Threshold = &v
+	return s
+}
+
+type DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributesHeadpose struct {
+	PitchAngle *float32 `json:"PitchAngle,omitempty" xml:"PitchAngle,omitempty" require:"true"`
+	RollAngle  *float32 `json:"RollAngle,omitempty" xml:"RollAngle,omitempty" require:"true"`
+	YawAngle   *float32 `json:"YawAngle,omitempty" xml:"YawAngle,omitempty" require:"true"`
+}
+
+func (s DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributesHeadpose) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributesHeadpose) GoString() string {
+	return s.String()
+}
+
+func (s *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributesHeadpose) SetPitchAngle(v float32) *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributesHeadpose {
+	s.PitchAngle = &v
+	return s
+}
+
+func (s *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributesHeadpose) SetRollAngle(v float32) *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributesHeadpose {
+	s.RollAngle = &v
+	return s
+}
+
+func (s *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributesHeadpose) SetYawAngle(v float32) *DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributesHeadpose {
+	s.YawAngle = &v
+	return s
+}
+
+type CompareFacesRequest struct {
+	TargetImageType  *string `json:"TargetImageType,omitempty" xml:"TargetImageType,omitempty"`
+	SourceImageType  *string `json:"SourceImageType,omitempty" xml:"SourceImageType,omitempty"`
+	SourceImageValue *string `json:"SourceImageValue,omitempty" xml:"SourceImageValue,omitempty"`
+	TargetImageValue *string `json:"TargetImageValue,omitempty" xml:"TargetImageValue,omitempty"`
+	BizType          *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+}
+
+func (s CompareFacesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CompareFacesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CompareFacesRequest) SetTargetImageType(v string) *CompareFacesRequest {
+	s.TargetImageType = &v
+	return s
+}
+
+func (s *CompareFacesRequest) SetSourceImageType(v string) *CompareFacesRequest {
+	s.SourceImageType = &v
+	return s
+}
+
+func (s *CompareFacesRequest) SetSourceImageValue(v string) *CompareFacesRequest {
+	s.SourceImageValue = &v
+	return s
+}
+
+func (s *CompareFacesRequest) SetTargetImageValue(v string) *CompareFacesRequest {
+	s.TargetImageValue = &v
+	return s
+}
+
+func (s *CompareFacesRequest) SetBizType(v string) *CompareFacesRequest {
+	s.BizType = &v
+	return s
+}
+
+type CompareFacesResponse struct {
+	RequestId *string                   `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Success   *bool                     `json:"Success,omitempty" xml:"Success,omitempty" require:"true"`
+	Code      *string                   `json:"Code,omitempty" xml:"Code,omitempty" require:"true"`
+	Message   *string                   `json:"Message,omitempty" xml:"Message,omitempty" require:"true"`
+	Data      *CompareFacesResponseData `json:"Data,omitempty" xml:"Data,omitempty" require:"true" type:"Struct"`
+}
+
+func (s CompareFacesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CompareFacesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CompareFacesResponse) SetRequestId(v string) *CompareFacesResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CompareFacesResponse) SetSuccess(v bool) *CompareFacesResponse {
+	s.Success = &v
+	return s
+}
+
+func (s *CompareFacesResponse) SetCode(v string) *CompareFacesResponse {
+	s.Code = &v
+	return s
+}
+
+func (s *CompareFacesResponse) SetMessage(v string) *CompareFacesResponse {
+	s.Message = &v
+	return s
+}
+
+func (s *CompareFacesResponse) SetData(v *CompareFacesResponseData) *CompareFacesResponse {
+	s.Data = v
+	return s
+}
+
+type CompareFacesResponseData struct {
+	SimilarityScore      *float32 `json:"SimilarityScore,omitempty" xml:"SimilarityScore,omitempty" require:"true"`
+	ConfidenceThresholds *string  `json:"ConfidenceThresholds,omitempty" xml:"ConfidenceThresholds,omitempty" require:"true"`
+}
+
+func (s CompareFacesResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CompareFacesResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *CompareFacesResponseData) SetSimilarityScore(v float32) *CompareFacesResponseData {
+	s.SimilarityScore = &v
+	return s
+}
+
+func (s *CompareFacesResponseData) SetConfidenceThresholds(v string) *CompareFacesResponseData {
+	s.ConfidenceThresholds = &v
+	return s
+}
+
+type DescribeFaceUsageRequest struct {
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty" require:"true"`
+	EndDate   *string `json:"EndDate,omitempty" xml:"EndDate,omitempty" require:"true"`
+}
+
+func (s DescribeFaceUsageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFaceUsageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFaceUsageRequest) SetStartDate(v string) *DescribeFaceUsageRequest {
+	s.StartDate = &v
+	return s
+}
+
+func (s *DescribeFaceUsageRequest) SetEndDate(v string) *DescribeFaceUsageRequest {
+	s.EndDate = &v
+	return s
+}
+
+type DescribeFaceUsageResponse struct {
+	RequestId     *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	TotalCount    *int                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty" require:"true"`
+	FaceUsageList []*DescribeFaceUsageResponseFaceUsageList `json:"FaceUsageList,omitempty" xml:"FaceUsageList,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s DescribeFaceUsageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFaceUsageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFaceUsageResponse) SetRequestId(v string) *DescribeFaceUsageResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeFaceUsageResponse) SetTotalCount(v int) *DescribeFaceUsageResponse {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeFaceUsageResponse) SetFaceUsageList(v []*DescribeFaceUsageResponseFaceUsageList) *DescribeFaceUsageResponse {
+	s.FaceUsageList = v
+	return s
+}
+
+type DescribeFaceUsageResponseFaceUsageList struct {
+	Date       *string `json:"Date,omitempty" xml:"Date,omitempty" require:"true"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty" require:"true"`
+}
+
+func (s DescribeFaceUsageResponseFaceUsageList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFaceUsageResponseFaceUsageList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFaceUsageResponseFaceUsageList) SetDate(v string) *DescribeFaceUsageResponseFaceUsageList {
+	s.Date = &v
+	return s
+}
+
+func (s *DescribeFaceUsageResponseFaceUsageList) SetTotalCount(v int64) *DescribeFaceUsageResponseFaceUsageList {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeVerifyRecordsRequest struct {
+	TotalCount  *int    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageSize    *int    `json:"PageSize,omitempty" xml:"PageSize,omitempty" require:"true"`
+	CurrentPage *int    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty" require:"true"`
+	BizType     *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	StartDate   *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	EndDate     *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	BizId       *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	IdCardNum   *string `json:"IdCardNum,omitempty" xml:"IdCardNum,omitempty"`
+	StatusList  *string `json:"StatusList,omitempty" xml:"StatusList,omitempty"`
+	QueryId     *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
+}
+
+func (s DescribeVerifyRecordsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVerifyRecordsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVerifyRecordsRequest) SetTotalCount(v int) *DescribeVerifyRecordsRequest {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeVerifyRecordsRequest) SetPageSize(v int) *DescribeVerifyRecordsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeVerifyRecordsRequest) SetCurrentPage(v int) *DescribeVerifyRecordsRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeVerifyRecordsRequest) SetBizType(v string) *DescribeVerifyRecordsRequest {
+	s.BizType = &v
+	return s
+}
+
+func (s *DescribeVerifyRecordsRequest) SetStartDate(v string) *DescribeVerifyRecordsRequest {
+	s.StartDate = &v
+	return s
+}
+
+func (s *DescribeVerifyRecordsRequest) SetEndDate(v string) *DescribeVerifyRecordsRequest {
+	s.EndDate = &v
+	return s
+}
+
+func (s *DescribeVerifyRecordsRequest) SetBizId(v string) *DescribeVerifyRecordsRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *DescribeVerifyRecordsRequest) SetIdCardNum(v string) *DescribeVerifyRecordsRequest {
+	s.IdCardNum = &v
+	return s
+}
+
+func (s *DescribeVerifyRecordsRequest) SetStatusList(v string) *DescribeVerifyRecordsRequest {
+	s.StatusList = &v
+	return s
+}
+
+func (s *DescribeVerifyRecordsRequest) SetQueryId(v string) *DescribeVerifyRecordsRequest {
+	s.QueryId = &v
+	return s
+}
+
+type DescribeVerifyRecordsResponse struct {
+	RequestId   *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	TotalCount  *int                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty" require:"true"`
+	PageSize    *int                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty" require:"true"`
+	CurrentPage *int                                        `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty" require:"true"`
+	QueryId     *string                                     `json:"QueryId,omitempty" xml:"QueryId,omitempty" require:"true"`
+	RecordsList []*DescribeVerifyRecordsResponseRecordsList `json:"RecordsList,omitempty" xml:"RecordsList,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s DescribeVerifyRecordsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVerifyRecordsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVerifyRecordsResponse) SetRequestId(v string) *DescribeVerifyRecordsResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeVerifyRecordsResponse) SetTotalCount(v int) *DescribeVerifyRecordsResponse {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeVerifyRecordsResponse) SetPageSize(v int) *DescribeVerifyRecordsResponse {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeVerifyRecordsResponse) SetCurrentPage(v int) *DescribeVerifyRecordsResponse {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeVerifyRecordsResponse) SetQueryId(v string) *DescribeVerifyRecordsResponse {
+	s.QueryId = &v
+	return s
+}
+
+func (s *DescribeVerifyRecordsResponse) SetRecordsList(v []*DescribeVerifyRecordsResponseRecordsList) *DescribeVerifyRecordsResponse {
+	s.RecordsList = v
+	return s
+}
+
+type DescribeVerifyRecordsResponseRecordsList struct {
+	BizType                   *string                                           `json:"BizType,omitempty" xml:"BizType,omitempty" require:"true"`
+	BizId                     *string                                           `json:"BizId,omitempty" xml:"BizId,omitempty" require:"true"`
+	DataStats                 *string                                           `json:"DataStats,omitempty" xml:"DataStats,omitempty" require:"true"`
+	VerifyId                  *string                                           `json:"VerifyId,omitempty" xml:"VerifyId,omitempty" require:"true"`
+	FinishTime                *int64                                            `json:"FinishTime,omitempty" xml:"FinishTime,omitempty" require:"true"`
+	Status                    *int                                              `json:"Status,omitempty" xml:"Status,omitempty" require:"true"`
+	IdCardFaceComparisonScore *float32                                          `json:"IdCardFaceComparisonScore,omitempty" xml:"IdCardFaceComparisonScore,omitempty" require:"true"`
+	AuthorityComparisonScore  *float32                                          `json:"AuthorityComparisonScore,omitempty" xml:"AuthorityComparisonScore,omitempty" require:"true"`
+	Material                  *DescribeVerifyRecordsResponseRecordsListMaterial `json:"Material,omitempty" xml:"Material,omitempty" require:"true" type:"Struct"`
+}
+
+func (s DescribeVerifyRecordsResponseRecordsList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVerifyRecordsResponseRecordsList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVerifyRecordsResponseRecordsList) SetBizType(v string) *DescribeVerifyRecordsResponseRecordsList {
+	s.BizType = &v
+	return s
+}
+
+func (s *DescribeVerifyRecordsResponseRecordsList) SetBizId(v string) *DescribeVerifyRecordsResponseRecordsList {
+	s.BizId = &v
+	return s
+}
+
+func (s *DescribeVerifyRecordsResponseRecordsList) SetDataStats(v string) *DescribeVerifyRecordsResponseRecordsList {
+	s.DataStats = &v
+	return s
+}
+
+func (s *DescribeVerifyRecordsResponseRecordsList) SetVerifyId(v string) *DescribeVerifyRecordsResponseRecordsList {
+	s.VerifyId = &v
+	return s
+}
+
+func (s *DescribeVerifyRecordsResponseRecordsList) SetFinishTime(v int64) *DescribeVerifyRecordsResponseRecordsList {
+	s.FinishTime = &v
+	return s
+}
+
+func (s *DescribeVerifyRecordsResponseRecordsList) SetStatus(v int) *DescribeVerifyRecordsResponseRecordsList {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeVerifyRecordsResponseRecordsList) SetIdCardFaceComparisonScore(v float32) *DescribeVerifyRecordsResponseRecordsList {
+	s.IdCardFaceComparisonScore = &v
+	return s
+}
+
+func (s *DescribeVerifyRecordsResponseRecordsList) SetAuthorityComparisonScore(v float32) *DescribeVerifyRecordsResponseRecordsList {
+	s.AuthorityComparisonScore = &v
+	return s
+}
+
+func (s *DescribeVerifyRecordsResponseRecordsList) SetMaterial(v *DescribeVerifyRecordsResponseRecordsListMaterial) *DescribeVerifyRecordsResponseRecordsList {
+	s.Material = v
+	return s
+}
+
+type DescribeVerifyRecordsResponseRecordsListMaterial struct {
+	FaceImageUrl *string                                                     `json:"FaceImageUrl,omitempty" xml:"FaceImageUrl,omitempty" require:"true"`
+	IdCardName   *string                                                     `json:"IdCardName,omitempty" xml:"IdCardName,omitempty" require:"true"`
+	IdCardNumber *string                                                     `json:"IdCardNumber,omitempty" xml:"IdCardNumber,omitempty" require:"true"`
+	IdCardInfo   *DescribeVerifyRecordsResponseRecordsListMaterialIdCardInfo `json:"IdCardInfo,omitempty" xml:"IdCardInfo,omitempty" require:"true" type:"Struct"`
+}
+
+func (s DescribeVerifyRecordsResponseRecordsListMaterial) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVerifyRecordsResponseRecordsListMaterial) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVerifyRecordsResponseRecordsListMaterial) SetFaceImageUrl(v string) *DescribeVerifyRecordsResponseRecordsListMaterial {
+	s.FaceImageUrl = &v
+	return s
+}
+
+func (s *DescribeVerifyRecordsResponseRecordsListMaterial) SetIdCardName(v string) *DescribeVerifyRecordsResponseRecordsListMaterial {
+	s.IdCardName = &v
+	return s
+}
+
+func (s *DescribeVerifyRecordsResponseRecordsListMaterial) SetIdCardNumber(v string) *DescribeVerifyRecordsResponseRecordsListMaterial {
+	s.IdCardNumber = &v
+	return s
+}
+
+func (s *DescribeVerifyRecordsResponseRecordsListMaterial) SetIdCardInfo(v *DescribeVerifyRecordsResponseRecordsListMaterialIdCardInfo) *DescribeVerifyRecordsResponseRecordsListMaterial {
+	s.IdCardInfo = v
+	return s
+}
+
+type DescribeVerifyRecordsResponseRecordsListMaterialIdCardInfo struct {
+	FrontImageUrl *string `json:"FrontImageUrl,omitempty" xml:"FrontImageUrl,omitempty" require:"true"`
+	BackImageUrl  *string `json:"BackImageUrl,omitempty" xml:"BackImageUrl,omitempty" require:"true"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty" require:"true"`
+	Number        *string `json:"Number,omitempty" xml:"Number,omitempty" require:"true"`
+	Address       *string `json:"Address,omitempty" xml:"Address,omitempty" require:"true"`
+	Birth         *string `json:"Birth,omitempty" xml:"Birth,omitempty" require:"true"`
+	Sex           *string `json:"Sex,omitempty" xml:"Sex,omitempty" require:"true"`
+	Nationality   *string `json:"Nationality,omitempty" xml:"Nationality,omitempty" require:"true"`
+	Authority     *string `json:"Authority,omitempty" xml:"Authority,omitempty" require:"true"`
+	StartDate     *string `json:"StartDate,omitempty" xml:"StartDate,omitempty" require:"true"`
+	EndDate       *string `json:"EndDate,omitempty" xml:"EndDate,omitempty" require:"true"`
+}
+
+func (s DescribeVerifyRecordsResponseRecordsListMaterialIdCardInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVerifyRecordsResponseRecordsListMaterialIdCardInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVerifyRecordsResponseRecordsListMaterialIdCardInfo) SetFrontImageUrl(v string) *DescribeVerifyRecordsResponseRecordsListMaterialIdCardInfo {
+	s.FrontImageUrl = &v
+	return s
+}
+
+func (s *DescribeVerifyRecordsResponseRecordsListMaterialIdCardInfo) SetBackImageUrl(v string) *DescribeVerifyRecordsResponseRecordsListMaterialIdCardInfo {
+	s.BackImageUrl = &v
+	return s
+}
+
+func (s *DescribeVerifyRecordsResponseRecordsListMaterialIdCardInfo) SetName(v string) *DescribeVerifyRecordsResponseRecordsListMaterialIdCardInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeVerifyRecordsResponseRecordsListMaterialIdCardInfo) SetNumber(v string) *DescribeVerifyRecordsResponseRecordsListMaterialIdCardInfo {
+	s.Number = &v
+	return s
+}
+
+func (s *DescribeVerifyRecordsResponseRecordsListMaterialIdCardInfo) SetAddress(v string) *DescribeVerifyRecordsResponseRecordsListMaterialIdCardInfo {
+	s.Address = &v
+	return s
+}
+
+func (s *DescribeVerifyRecordsResponseRecordsListMaterialIdCardInfo) SetBirth(v string) *DescribeVerifyRecordsResponseRecordsListMaterialIdCardInfo {
+	s.Birth = &v
+	return s
+}
+
+func (s *DescribeVerifyRecordsResponseRecordsListMaterialIdCardInfo) SetSex(v string) *DescribeVerifyRecordsResponseRecordsListMaterialIdCardInfo {
+	s.Sex = &v
+	return s
+}
+
+func (s *DescribeVerifyRecordsResponseRecordsListMaterialIdCardInfo) SetNationality(v string) *DescribeVerifyRecordsResponseRecordsListMaterialIdCardInfo {
+	s.Nationality = &v
+	return s
+}
+
+func (s *DescribeVerifyRecordsResponseRecordsListMaterialIdCardInfo) SetAuthority(v string) *DescribeVerifyRecordsResponseRecordsListMaterialIdCardInfo {
+	s.Authority = &v
+	return s
+}
+
+func (s *DescribeVerifyRecordsResponseRecordsListMaterialIdCardInfo) SetStartDate(v string) *DescribeVerifyRecordsResponseRecordsListMaterialIdCardInfo {
+	s.StartDate = &v
+	return s
+}
+
+func (s *DescribeVerifyRecordsResponseRecordsListMaterialIdCardInfo) SetEndDate(v string) *DescribeVerifyRecordsResponseRecordsListMaterialIdCardInfo {
+	s.EndDate = &v
 	return s
 }
 
 type UpdateVerifySettingRequest struct {
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	BizType     *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	BizType     *string `json:"BizType,omitempty" xml:"BizType,omitempty" require:"true"`
 	BizName     *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
 	Solution    *string `json:"Solution,omitempty" xml:"Solution,omitempty"`
 	GuideStep   *bool   `json:"GuideStep,omitempty" xml:"GuideStep,omitempty"`
@@ -5048,11 +3289,6 @@ func (s UpdateVerifySettingRequest) String() string {
 
 func (s UpdateVerifySettingRequest) GoString() string {
 	return s.String()
-}
-
-func (s *UpdateVerifySettingRequest) SetSourceIp(v string) *UpdateVerifySettingRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *UpdateVerifySettingRequest) SetBizType(v string) *UpdateVerifySettingRequest {
@@ -5085,50 +3321,12 @@ func (s *UpdateVerifySettingRequest) SetResultStep(v bool) *UpdateVerifySettingR
 	return s
 }
 
-type UpdateVerifySettingResponseBody struct {
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StepList  []*string `json:"StepList,omitempty" xml:"StepList,omitempty" type:"Repeated"`
-	BizName   *string   `json:"BizName,omitempty" xml:"BizName,omitempty"`
-	BizType   *string   `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	Solution  *string   `json:"Solution,omitempty" xml:"Solution,omitempty"`
-}
-
-func (s UpdateVerifySettingResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateVerifySettingResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateVerifySettingResponseBody) SetRequestId(v string) *UpdateVerifySettingResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *UpdateVerifySettingResponseBody) SetStepList(v []*string) *UpdateVerifySettingResponseBody {
-	s.StepList = v
-	return s
-}
-
-func (s *UpdateVerifySettingResponseBody) SetBizName(v string) *UpdateVerifySettingResponseBody {
-	s.BizName = &v
-	return s
-}
-
-func (s *UpdateVerifySettingResponseBody) SetBizType(v string) *UpdateVerifySettingResponseBody {
-	s.BizType = &v
-	return s
-}
-
-func (s *UpdateVerifySettingResponseBody) SetSolution(v string) *UpdateVerifySettingResponseBody {
-	s.Solution = &v
-	return s
-}
-
 type UpdateVerifySettingResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateVerifySettingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	BizType   *string   `json:"BizType,omitempty" xml:"BizType,omitempty" require:"true"`
+	BizName   *string   `json:"BizName,omitempty" xml:"BizName,omitempty" require:"true"`
+	Solution  *string   `json:"Solution,omitempty" xml:"Solution,omitempty" require:"true"`
+	StepList  []*string `json:"StepList,omitempty" xml:"StepList,omitempty" require:"true" type:"Repeated"`
 }
 
 func (s UpdateVerifySettingResponse) String() string {
@@ -5139,163 +3337,508 @@ func (s UpdateVerifySettingResponse) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateVerifySettingResponse) SetHeaders(v map[string]*string) *UpdateVerifySettingResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateVerifySettingResponse) SetBody(v *UpdateVerifySettingResponseBody) *UpdateVerifySettingResponse {
-	s.Body = v
-	return s
-}
-
-type VerifyDeviceRequest struct {
-	CertifyId   *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
-	CertifyData *string `json:"CertifyData,omitempty" xml:"CertifyData,omitempty"`
-	AppVersion  *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	ExtInfo     *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
-}
-
-func (s VerifyDeviceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s VerifyDeviceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *VerifyDeviceRequest) SetCertifyId(v string) *VerifyDeviceRequest {
-	s.CertifyId = &v
-	return s
-}
-
-func (s *VerifyDeviceRequest) SetCertifyData(v string) *VerifyDeviceRequest {
-	s.CertifyData = &v
-	return s
-}
-
-func (s *VerifyDeviceRequest) SetAppVersion(v string) *VerifyDeviceRequest {
-	s.AppVersion = &v
-	return s
-}
-
-func (s *VerifyDeviceRequest) SetExtInfo(v string) *VerifyDeviceRequest {
-	s.ExtInfo = &v
-	return s
-}
-
-type VerifyDeviceResponseBody struct {
-	ResultObject *VerifyDeviceResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
-	Message      *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId    *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code         *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
-}
-
-func (s VerifyDeviceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s VerifyDeviceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *VerifyDeviceResponseBody) SetResultObject(v *VerifyDeviceResponseBodyResultObject) *VerifyDeviceResponseBody {
-	s.ResultObject = v
-	return s
-}
-
-func (s *VerifyDeviceResponseBody) SetMessage(v string) *VerifyDeviceResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *VerifyDeviceResponseBody) SetRequestId(v string) *VerifyDeviceResponseBody {
+func (s *UpdateVerifySettingResponse) SetRequestId(v string) *UpdateVerifySettingResponse {
 	s.RequestId = &v
 	return s
 }
 
-func (s *VerifyDeviceResponseBody) SetCode(v string) *VerifyDeviceResponseBody {
-	s.Code = &v
+func (s *UpdateVerifySettingResponse) SetBizType(v string) *UpdateVerifySettingResponse {
+	s.BizType = &v
 	return s
 }
 
-type VerifyDeviceResponseBodyResultObject struct {
-	RetCodeSub        *string `json:"RetCodeSub,omitempty" xml:"RetCodeSub,omitempty"`
-	ProductRetCode    *string `json:"ProductRetCode,omitempty" xml:"ProductRetCode,omitempty"`
-	HasNext           *string `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
-	RetMessageSub     *string `json:"RetMessageSub,omitempty" xml:"RetMessageSub,omitempty"`
-	ExtParams         *string `json:"ExtParams,omitempty" xml:"ExtParams,omitempty"`
-	ValidationRetCode *string `json:"ValidationRetCode,omitempty" xml:"ValidationRetCode,omitempty"`
+func (s *UpdateVerifySettingResponse) SetBizName(v string) *UpdateVerifySettingResponse {
+	s.BizName = &v
+	return s
 }
 
-func (s VerifyDeviceResponseBodyResultObject) String() string {
+func (s *UpdateVerifySettingResponse) SetSolution(v string) *UpdateVerifySettingResponse {
+	s.Solution = &v
+	return s
+}
+
+func (s *UpdateVerifySettingResponse) SetStepList(v []*string) *UpdateVerifySettingResponse {
+	s.StepList = v
+	return s
+}
+
+type CreateVerifySettingRequest struct {
+	BizType     *string `json:"BizType,omitempty" xml:"BizType,omitempty" require:"true"`
+	BizName     *string `json:"BizName,omitempty" xml:"BizName,omitempty" require:"true"`
+	Solution    *string `json:"Solution,omitempty" xml:"Solution,omitempty" require:"true"`
+	GuideStep   *bool   `json:"GuideStep,omitempty" xml:"GuideStep,omitempty"`
+	PrivacyStep *bool   `json:"PrivacyStep,omitempty" xml:"PrivacyStep,omitempty"`
+	ResultStep  *bool   `json:"ResultStep,omitempty" xml:"ResultStep,omitempty"`
+}
+
+func (s CreateVerifySettingRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s VerifyDeviceResponseBodyResultObject) GoString() string {
+func (s CreateVerifySettingRequest) GoString() string {
 	return s.String()
 }
 
-func (s *VerifyDeviceResponseBodyResultObject) SetRetCodeSub(v string) *VerifyDeviceResponseBodyResultObject {
-	s.RetCodeSub = &v
+func (s *CreateVerifySettingRequest) SetBizType(v string) *CreateVerifySettingRequest {
+	s.BizType = &v
 	return s
 }
 
-func (s *VerifyDeviceResponseBodyResultObject) SetProductRetCode(v string) *VerifyDeviceResponseBodyResultObject {
-	s.ProductRetCode = &v
+func (s *CreateVerifySettingRequest) SetBizName(v string) *CreateVerifySettingRequest {
+	s.BizName = &v
 	return s
 }
 
-func (s *VerifyDeviceResponseBodyResultObject) SetHasNext(v string) *VerifyDeviceResponseBodyResultObject {
-	s.HasNext = &v
+func (s *CreateVerifySettingRequest) SetSolution(v string) *CreateVerifySettingRequest {
+	s.Solution = &v
 	return s
 }
 
-func (s *VerifyDeviceResponseBodyResultObject) SetRetMessageSub(v string) *VerifyDeviceResponseBodyResultObject {
-	s.RetMessageSub = &v
+func (s *CreateVerifySettingRequest) SetGuideStep(v bool) *CreateVerifySettingRequest {
+	s.GuideStep = &v
 	return s
 }
 
-func (s *VerifyDeviceResponseBodyResultObject) SetExtParams(v string) *VerifyDeviceResponseBodyResultObject {
-	s.ExtParams = &v
+func (s *CreateVerifySettingRequest) SetPrivacyStep(v bool) *CreateVerifySettingRequest {
+	s.PrivacyStep = &v
 	return s
 }
 
-func (s *VerifyDeviceResponseBodyResultObject) SetValidationRetCode(v string) *VerifyDeviceResponseBodyResultObject {
-	s.ValidationRetCode = &v
+func (s *CreateVerifySettingRequest) SetResultStep(v bool) *CreateVerifySettingRequest {
+	s.ResultStep = &v
 	return s
 }
 
-type VerifyDeviceResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *VerifyDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+type CreateVerifySettingResponse struct {
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	BizType   *string   `json:"BizType,omitempty" xml:"BizType,omitempty" require:"true"`
+	BizName   *string   `json:"BizName,omitempty" xml:"BizName,omitempty" require:"true"`
+	Solution  *string   `json:"Solution,omitempty" xml:"Solution,omitempty" require:"true"`
+	StepList  []*string `json:"StepList,omitempty" xml:"StepList,omitempty" require:"true" type:"Repeated"`
 }
 
-func (s VerifyDeviceResponse) String() string {
+func (s CreateVerifySettingResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s VerifyDeviceResponse) GoString() string {
+func (s CreateVerifySettingResponse) GoString() string {
 	return s.String()
 }
 
-func (s *VerifyDeviceResponse) SetHeaders(v map[string]*string) *VerifyDeviceResponse {
-	s.Headers = v
+func (s *CreateVerifySettingResponse) SetRequestId(v string) *CreateVerifySettingResponse {
+	s.RequestId = &v
 	return s
 }
 
-func (s *VerifyDeviceResponse) SetBody(v *VerifyDeviceResponseBody) *VerifyDeviceResponse {
-	s.Body = v
+func (s *CreateVerifySettingResponse) SetBizType(v string) *CreateVerifySettingResponse {
+	s.BizType = &v
+	return s
+}
+
+func (s *CreateVerifySettingResponse) SetBizName(v string) *CreateVerifySettingResponse {
+	s.BizName = &v
+	return s
+}
+
+func (s *CreateVerifySettingResponse) SetSolution(v string) *CreateVerifySettingResponse {
+	s.Solution = &v
+	return s
+}
+
+func (s *CreateVerifySettingResponse) SetStepList(v []*string) *CreateVerifySettingResponse {
+	s.StepList = v
+	return s
+}
+
+type DescribeVerifySettingRequest struct {
+}
+
+func (s DescribeVerifySettingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVerifySettingRequest) GoString() string {
+	return s.String()
+}
+
+type DescribeVerifySettingResponse struct {
+	RequestId         *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	VerifySettingList []*DescribeVerifySettingResponseVerifySettingList `json:"VerifySettingList,omitempty" xml:"VerifySettingList,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s DescribeVerifySettingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVerifySettingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVerifySettingResponse) SetRequestId(v string) *DescribeVerifySettingResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeVerifySettingResponse) SetVerifySettingList(v []*DescribeVerifySettingResponseVerifySettingList) *DescribeVerifySettingResponse {
+	s.VerifySettingList = v
+	return s
+}
+
+type DescribeVerifySettingResponseVerifySettingList struct {
+	BizType  *string   `json:"BizType,omitempty" xml:"BizType,omitempty" require:"true"`
+	BizName  *string   `json:"BizName,omitempty" xml:"BizName,omitempty" require:"true"`
+	Solution *string   `json:"Solution,omitempty" xml:"Solution,omitempty" require:"true"`
+	StepList []*string `json:"StepList,omitempty" xml:"StepList,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s DescribeVerifySettingResponseVerifySettingList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVerifySettingResponseVerifySettingList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVerifySettingResponseVerifySettingList) SetBizType(v string) *DescribeVerifySettingResponseVerifySettingList {
+	s.BizType = &v
+	return s
+}
+
+func (s *DescribeVerifySettingResponseVerifySettingList) SetBizName(v string) *DescribeVerifySettingResponseVerifySettingList {
+	s.BizName = &v
+	return s
+}
+
+func (s *DescribeVerifySettingResponseVerifySettingList) SetSolution(v string) *DescribeVerifySettingResponseVerifySettingList {
+	s.Solution = &v
+	return s
+}
+
+func (s *DescribeVerifySettingResponseVerifySettingList) SetStepList(v []*string) *DescribeVerifySettingResponseVerifySettingList {
+	s.StepList = v
+	return s
+}
+
+type DescribeVerifyUsageRequest struct {
+	BizType   *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty" require:"true"`
+	EndDate   *string `json:"EndDate,omitempty" xml:"EndDate,omitempty" require:"true"`
+}
+
+func (s DescribeVerifyUsageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVerifyUsageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVerifyUsageRequest) SetBizType(v string) *DescribeVerifyUsageRequest {
+	s.BizType = &v
+	return s
+}
+
+func (s *DescribeVerifyUsageRequest) SetStartDate(v string) *DescribeVerifyUsageRequest {
+	s.StartDate = &v
+	return s
+}
+
+func (s *DescribeVerifyUsageRequest) SetEndDate(v string) *DescribeVerifyUsageRequest {
+	s.EndDate = &v
+	return s
+}
+
+type DescribeVerifyUsageResponse struct {
+	RequestId       *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	TotalCount      *int                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty" require:"true"`
+	VerifyUsageList []*DescribeVerifyUsageResponseVerifyUsageList `json:"VerifyUsageList,omitempty" xml:"VerifyUsageList,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s DescribeVerifyUsageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVerifyUsageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVerifyUsageResponse) SetRequestId(v string) *DescribeVerifyUsageResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeVerifyUsageResponse) SetTotalCount(v int) *DescribeVerifyUsageResponse {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeVerifyUsageResponse) SetVerifyUsageList(v []*DescribeVerifyUsageResponseVerifyUsageList) *DescribeVerifyUsageResponse {
+	s.VerifyUsageList = v
+	return s
+}
+
+type DescribeVerifyUsageResponseVerifyUsageList struct {
+	BizType    *string `json:"BizType,omitempty" xml:"BizType,omitempty" require:"true"`
+	Date       *string `json:"Date,omitempty" xml:"Date,omitempty" require:"true"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty" require:"true"`
+	PassCount  *int64  `json:"PassCount,omitempty" xml:"PassCount,omitempty" require:"true"`
+	FailCount  *int64  `json:"FailCount,omitempty" xml:"FailCount,omitempty" require:"true"`
+}
+
+func (s DescribeVerifyUsageResponseVerifyUsageList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVerifyUsageResponseVerifyUsageList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVerifyUsageResponseVerifyUsageList) SetBizType(v string) *DescribeVerifyUsageResponseVerifyUsageList {
+	s.BizType = &v
+	return s
+}
+
+func (s *DescribeVerifyUsageResponseVerifyUsageList) SetDate(v string) *DescribeVerifyUsageResponseVerifyUsageList {
+	s.Date = &v
+	return s
+}
+
+func (s *DescribeVerifyUsageResponseVerifyUsageList) SetTotalCount(v int64) *DescribeVerifyUsageResponseVerifyUsageList {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeVerifyUsageResponseVerifyUsageList) SetPassCount(v int64) *DescribeVerifyUsageResponseVerifyUsageList {
+	s.PassCount = &v
+	return s
+}
+
+func (s *DescribeVerifyUsageResponseVerifyUsageList) SetFailCount(v int64) *DescribeVerifyUsageResponseVerifyUsageList {
+	s.FailCount = &v
+	return s
+}
+
+type DescribeUserStatusRequest struct {
+}
+
+func (s DescribeUserStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserStatusRequest) GoString() string {
+	return s.String()
+}
+
+type DescribeUserStatusResponse struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Enabled   *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty" require:"true"`
+}
+
+func (s DescribeUserStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserStatusResponse) SetRequestId(v string) *DescribeUserStatusResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeUserStatusResponse) SetEnabled(v bool) *DescribeUserStatusResponse {
+	s.Enabled = &v
+	return s
+}
+
+type DescribeUploadInfoRequest struct {
+	Biz *string `json:"Biz,omitempty" xml:"Biz,omitempty"`
+}
+
+func (s DescribeUploadInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUploadInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUploadInfoRequest) SetBiz(v string) *DescribeUploadInfoRequest {
+	s.Biz = &v
+	return s
+}
+
+type DescribeUploadInfoResponse struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Accessid  *string `json:"Accessid,omitempty" xml:"Accessid,omitempty" require:"true"`
+	Policy    *string `json:"Policy,omitempty" xml:"Policy,omitempty" require:"true"`
+	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty" require:"true"`
+	Folder    *string `json:"Folder,omitempty" xml:"Folder,omitempty" require:"true"`
+	Host      *string `json:"Host,omitempty" xml:"Host,omitempty" require:"true"`
+	Expire    *int64  `json:"Expire,omitempty" xml:"Expire,omitempty" require:"true"`
+}
+
+func (s DescribeUploadInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUploadInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUploadInfoResponse) SetRequestId(v string) *DescribeUploadInfoResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeUploadInfoResponse) SetAccessid(v string) *DescribeUploadInfoResponse {
+	s.Accessid = &v
+	return s
+}
+
+func (s *DescribeUploadInfoResponse) SetPolicy(v string) *DescribeUploadInfoResponse {
+	s.Policy = &v
+	return s
+}
+
+func (s *DescribeUploadInfoResponse) SetSignature(v string) *DescribeUploadInfoResponse {
+	s.Signature = &v
+	return s
+}
+
+func (s *DescribeUploadInfoResponse) SetFolder(v string) *DescribeUploadInfoResponse {
+	s.Folder = &v
+	return s
+}
+
+func (s *DescribeUploadInfoResponse) SetHost(v string) *DescribeUploadInfoResponse {
+	s.Host = &v
+	return s
+}
+
+func (s *DescribeUploadInfoResponse) SetExpire(v int64) *DescribeUploadInfoResponse {
+	s.Expire = &v
+	return s
+}
+
+type DescribeRPSDKRequest struct {
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	TaskId   *string `json:"TaskId,omitempty" xml:"TaskId,omitempty" require:"true"`
+}
+
+func (s DescribeRPSDKRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRPSDKRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRPSDKRequest) SetSourceIp(v string) *DescribeRPSDKRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *DescribeRPSDKRequest) SetLang(v string) *DescribeRPSDKRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeRPSDKRequest) SetTaskId(v string) *DescribeRPSDKRequest {
+	s.TaskId = &v
+	return s
+}
+
+type DescribeRPSDKResponse struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	SdkUrl    *string `json:"SdkUrl,omitempty" xml:"SdkUrl,omitempty" require:"true"`
+}
+
+func (s DescribeRPSDKResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRPSDKResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRPSDKResponse) SetRequestId(v string) *DescribeRPSDKResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeRPSDKResponse) SetSdkUrl(v string) *DescribeRPSDKResponse {
+	s.SdkUrl = &v
+	return s
+}
+
+type CreateRPSDKRequest struct {
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	AppUrl   *string `json:"AppUrl,omitempty" xml:"AppUrl,omitempty" require:"true"`
+	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+}
+
+func (s CreateRPSDKRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRPSDKRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRPSDKRequest) SetSourceIp(v string) *CreateRPSDKRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *CreateRPSDKRequest) SetLang(v string) *CreateRPSDKRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *CreateRPSDKRequest) SetAppUrl(v string) *CreateRPSDKRequest {
+	s.AppUrl = &v
+	return s
+}
+
+func (s *CreateRPSDKRequest) SetPlatform(v string) *CreateRPSDKRequest {
+	s.Platform = &v
+	return s
+}
+
+type CreateRPSDKResponse struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty" require:"true"`
+}
+
+func (s CreateRPSDKResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRPSDKResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRPSDKResponse) SetRequestId(v string) *CreateRPSDKResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateRPSDKResponse) SetTaskId(v string) *CreateRPSDKResponse {
+	s.TaskId = &v
 	return s
 }
 
 type VerifyMaterialRequest struct {
 	IdCardBackImageUrl  *string `json:"IdCardBackImageUrl,omitempty" xml:"IdCardBackImageUrl,omitempty"`
-	FaceImageUrl        *string `json:"FaceImageUrl,omitempty" xml:"FaceImageUrl,omitempty"`
-	BizType             *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	BizId               *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	IdCardNumber        *string `json:"IdCardNumber,omitempty" xml:"IdCardNumber,omitempty"`
+	FaceImageUrl        *string `json:"FaceImageUrl,omitempty" xml:"FaceImageUrl,omitempty" require:"true"`
+	BizType             *string `json:"BizType,omitempty" xml:"BizType,omitempty" require:"true"`
+	BizId               *string `json:"BizId,omitempty" xml:"BizId,omitempty" require:"true"`
+	Name                *string `json:"Name,omitempty" xml:"Name,omitempty" require:"true"`
+	IdCardNumber        *string `json:"IdCardNumber,omitempty" xml:"IdCardNumber,omitempty" require:"true"`
 	IdCardFrontImageUrl *string `json:"IdCardFrontImageUrl,omitempty" xml:"IdCardFrontImageUrl,omitempty"`
 	UserId              *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
@@ -5348,180 +3891,13 @@ func (s *VerifyMaterialRequest) SetUserId(v string) *VerifyMaterialRequest {
 	return s
 }
 
-type VerifyMaterialResponseBody struct {
-	VerifyStatus              *int32                              `json:"VerifyStatus,omitempty" xml:"VerifyStatus,omitempty"`
-	RequestId                 *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Material                  *VerifyMaterialResponseBodyMaterial `json:"Material,omitempty" xml:"Material,omitempty" type:"Struct"`
-	AuthorityComparisionScore *float32                            `json:"AuthorityComparisionScore,omitempty" xml:"AuthorityComparisionScore,omitempty"`
-	VerifyToken               *string                             `json:"VerifyToken,omitempty" xml:"VerifyToken,omitempty"`
-	IdCardFaceComparisonScore *float32                            `json:"IdCardFaceComparisonScore,omitempty" xml:"IdCardFaceComparisonScore,omitempty"`
-}
-
-func (s VerifyMaterialResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s VerifyMaterialResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *VerifyMaterialResponseBody) SetVerifyStatus(v int32) *VerifyMaterialResponseBody {
-	s.VerifyStatus = &v
-	return s
-}
-
-func (s *VerifyMaterialResponseBody) SetRequestId(v string) *VerifyMaterialResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *VerifyMaterialResponseBody) SetMaterial(v *VerifyMaterialResponseBodyMaterial) *VerifyMaterialResponseBody {
-	s.Material = v
-	return s
-}
-
-func (s *VerifyMaterialResponseBody) SetAuthorityComparisionScore(v float32) *VerifyMaterialResponseBody {
-	s.AuthorityComparisionScore = &v
-	return s
-}
-
-func (s *VerifyMaterialResponseBody) SetVerifyToken(v string) *VerifyMaterialResponseBody {
-	s.VerifyToken = &v
-	return s
-}
-
-func (s *VerifyMaterialResponseBody) SetIdCardFaceComparisonScore(v float32) *VerifyMaterialResponseBody {
-	s.IdCardFaceComparisonScore = &v
-	return s
-}
-
-type VerifyMaterialResponseBodyMaterial struct {
-	IdCardNumber  *string                                       `json:"IdCardNumber,omitempty" xml:"IdCardNumber,omitempty"`
-	FaceGlobalUrl *string                                       `json:"FaceGlobalUrl,omitempty" xml:"FaceGlobalUrl,omitempty"`
-	FaceImageUrl  *string                                       `json:"FaceImageUrl,omitempty" xml:"FaceImageUrl,omitempty"`
-	FaceMask      *string                                       `json:"FaceMask,omitempty" xml:"FaceMask,omitempty"`
-	IdCardName    *string                                       `json:"IdCardName,omitempty" xml:"IdCardName,omitempty"`
-	IdCardInfo    *VerifyMaterialResponseBodyMaterialIdCardInfo `json:"IdCardInfo,omitempty" xml:"IdCardInfo,omitempty" type:"Struct"`
-	FaceQuality   *string                                       `json:"FaceQuality,omitempty" xml:"FaceQuality,omitempty"`
-}
-
-func (s VerifyMaterialResponseBodyMaterial) String() string {
-	return tea.Prettify(s)
-}
-
-func (s VerifyMaterialResponseBodyMaterial) GoString() string {
-	return s.String()
-}
-
-func (s *VerifyMaterialResponseBodyMaterial) SetIdCardNumber(v string) *VerifyMaterialResponseBodyMaterial {
-	s.IdCardNumber = &v
-	return s
-}
-
-func (s *VerifyMaterialResponseBodyMaterial) SetFaceGlobalUrl(v string) *VerifyMaterialResponseBodyMaterial {
-	s.FaceGlobalUrl = &v
-	return s
-}
-
-func (s *VerifyMaterialResponseBodyMaterial) SetFaceImageUrl(v string) *VerifyMaterialResponseBodyMaterial {
-	s.FaceImageUrl = &v
-	return s
-}
-
-func (s *VerifyMaterialResponseBodyMaterial) SetFaceMask(v string) *VerifyMaterialResponseBodyMaterial {
-	s.FaceMask = &v
-	return s
-}
-
-func (s *VerifyMaterialResponseBodyMaterial) SetIdCardName(v string) *VerifyMaterialResponseBodyMaterial {
-	s.IdCardName = &v
-	return s
-}
-
-func (s *VerifyMaterialResponseBodyMaterial) SetIdCardInfo(v *VerifyMaterialResponseBodyMaterialIdCardInfo) *VerifyMaterialResponseBodyMaterial {
-	s.IdCardInfo = v
-	return s
-}
-
-func (s *VerifyMaterialResponseBodyMaterial) SetFaceQuality(v string) *VerifyMaterialResponseBodyMaterial {
-	s.FaceQuality = &v
-	return s
-}
-
-type VerifyMaterialResponseBodyMaterialIdCardInfo struct {
-	EndDate       *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	Authority     *string `json:"Authority,omitempty" xml:"Authority,omitempty"`
-	Address       *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	Number        *string `json:"Number,omitempty" xml:"Number,omitempty"`
-	StartDate     *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	BackImageUrl  *string `json:"BackImageUrl,omitempty" xml:"BackImageUrl,omitempty"`
-	Nationality   *string `json:"Nationality,omitempty" xml:"Nationality,omitempty"`
-	Birth         *string `json:"Birth,omitempty" xml:"Birth,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	FrontImageUrl *string `json:"FrontImageUrl,omitempty" xml:"FrontImageUrl,omitempty"`
-}
-
-func (s VerifyMaterialResponseBodyMaterialIdCardInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s VerifyMaterialResponseBodyMaterialIdCardInfo) GoString() string {
-	return s.String()
-}
-
-func (s *VerifyMaterialResponseBodyMaterialIdCardInfo) SetEndDate(v string) *VerifyMaterialResponseBodyMaterialIdCardInfo {
-	s.EndDate = &v
-	return s
-}
-
-func (s *VerifyMaterialResponseBodyMaterialIdCardInfo) SetAuthority(v string) *VerifyMaterialResponseBodyMaterialIdCardInfo {
-	s.Authority = &v
-	return s
-}
-
-func (s *VerifyMaterialResponseBodyMaterialIdCardInfo) SetAddress(v string) *VerifyMaterialResponseBodyMaterialIdCardInfo {
-	s.Address = &v
-	return s
-}
-
-func (s *VerifyMaterialResponseBodyMaterialIdCardInfo) SetNumber(v string) *VerifyMaterialResponseBodyMaterialIdCardInfo {
-	s.Number = &v
-	return s
-}
-
-func (s *VerifyMaterialResponseBodyMaterialIdCardInfo) SetStartDate(v string) *VerifyMaterialResponseBodyMaterialIdCardInfo {
-	s.StartDate = &v
-	return s
-}
-
-func (s *VerifyMaterialResponseBodyMaterialIdCardInfo) SetBackImageUrl(v string) *VerifyMaterialResponseBodyMaterialIdCardInfo {
-	s.BackImageUrl = &v
-	return s
-}
-
-func (s *VerifyMaterialResponseBodyMaterialIdCardInfo) SetNationality(v string) *VerifyMaterialResponseBodyMaterialIdCardInfo {
-	s.Nationality = &v
-	return s
-}
-
-func (s *VerifyMaterialResponseBodyMaterialIdCardInfo) SetBirth(v string) *VerifyMaterialResponseBodyMaterialIdCardInfo {
-	s.Birth = &v
-	return s
-}
-
-func (s *VerifyMaterialResponseBodyMaterialIdCardInfo) SetName(v string) *VerifyMaterialResponseBodyMaterialIdCardInfo {
-	s.Name = &v
-	return s
-}
-
-func (s *VerifyMaterialResponseBodyMaterialIdCardInfo) SetFrontImageUrl(v string) *VerifyMaterialResponseBodyMaterialIdCardInfo {
-	s.FrontImageUrl = &v
-	return s
-}
-
 type VerifyMaterialResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *VerifyMaterialResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	RequestId                 *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	VerifyToken               *string                         `json:"VerifyToken,omitempty" xml:"VerifyToken,omitempty" require:"true"`
+	VerifyStatus              *int                            `json:"VerifyStatus,omitempty" xml:"VerifyStatus,omitempty" require:"true"`
+	AuthorityComparisionScore *float32                        `json:"AuthorityComparisionScore,omitempty" xml:"AuthorityComparisionScore,omitempty" require:"true"`
+	IdCardFaceComparisonScore *float32                        `json:"IdCardFaceComparisonScore,omitempty" xml:"IdCardFaceComparisonScore,omitempty" require:"true"`
+	Material                  *VerifyMaterialResponseMaterial `json:"Material,omitempty" xml:"Material,omitempty" require:"true" type:"Struct"`
 }
 
 func (s VerifyMaterialResponse) String() string {
@@ -5532,27 +3908,647 @@ func (s VerifyMaterialResponse) GoString() string {
 	return s.String()
 }
 
-func (s *VerifyMaterialResponse) SetHeaders(v map[string]*string) *VerifyMaterialResponse {
-	s.Headers = v
+func (s *VerifyMaterialResponse) SetRequestId(v string) *VerifyMaterialResponse {
+	s.RequestId = &v
 	return s
 }
 
-func (s *VerifyMaterialResponse) SetBody(v *VerifyMaterialResponseBody) *VerifyMaterialResponse {
-	s.Body = v
+func (s *VerifyMaterialResponse) SetVerifyToken(v string) *VerifyMaterialResponse {
+	s.VerifyToken = &v
+	return s
+}
+
+func (s *VerifyMaterialResponse) SetVerifyStatus(v int) *VerifyMaterialResponse {
+	s.VerifyStatus = &v
+	return s
+}
+
+func (s *VerifyMaterialResponse) SetAuthorityComparisionScore(v float32) *VerifyMaterialResponse {
+	s.AuthorityComparisionScore = &v
+	return s
+}
+
+func (s *VerifyMaterialResponse) SetIdCardFaceComparisonScore(v float32) *VerifyMaterialResponse {
+	s.IdCardFaceComparisonScore = &v
+	return s
+}
+
+func (s *VerifyMaterialResponse) SetMaterial(v *VerifyMaterialResponseMaterial) *VerifyMaterialResponse {
+	s.Material = v
+	return s
+}
+
+type VerifyMaterialResponseMaterial struct {
+	FaceImageUrl  *string                                   `json:"FaceImageUrl,omitempty" xml:"FaceImageUrl,omitempty" require:"true"`
+	IdCardName    *string                                   `json:"IdCardName,omitempty" xml:"IdCardName,omitempty" require:"true"`
+	IdCardNumber  *string                                   `json:"IdCardNumber,omitempty" xml:"IdCardNumber,omitempty" require:"true"`
+	FaceQuality   *string                                   `json:"FaceQuality,omitempty" xml:"FaceQuality,omitempty" require:"true"`
+	FaceGlobalUrl *string                                   `json:"FaceGlobalUrl,omitempty" xml:"FaceGlobalUrl,omitempty" require:"true"`
+	FaceMask      *string                                   `json:"FaceMask,omitempty" xml:"FaceMask,omitempty" require:"true"`
+	IdCardInfo    *VerifyMaterialResponseMaterialIdCardInfo `json:"IdCardInfo,omitempty" xml:"IdCardInfo,omitempty" require:"true" type:"Struct"`
+}
+
+func (s VerifyMaterialResponseMaterial) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyMaterialResponseMaterial) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyMaterialResponseMaterial) SetFaceImageUrl(v string) *VerifyMaterialResponseMaterial {
+	s.FaceImageUrl = &v
+	return s
+}
+
+func (s *VerifyMaterialResponseMaterial) SetIdCardName(v string) *VerifyMaterialResponseMaterial {
+	s.IdCardName = &v
+	return s
+}
+
+func (s *VerifyMaterialResponseMaterial) SetIdCardNumber(v string) *VerifyMaterialResponseMaterial {
+	s.IdCardNumber = &v
+	return s
+}
+
+func (s *VerifyMaterialResponseMaterial) SetFaceQuality(v string) *VerifyMaterialResponseMaterial {
+	s.FaceQuality = &v
+	return s
+}
+
+func (s *VerifyMaterialResponseMaterial) SetFaceGlobalUrl(v string) *VerifyMaterialResponseMaterial {
+	s.FaceGlobalUrl = &v
+	return s
+}
+
+func (s *VerifyMaterialResponseMaterial) SetFaceMask(v string) *VerifyMaterialResponseMaterial {
+	s.FaceMask = &v
+	return s
+}
+
+func (s *VerifyMaterialResponseMaterial) SetIdCardInfo(v *VerifyMaterialResponseMaterialIdCardInfo) *VerifyMaterialResponseMaterial {
+	s.IdCardInfo = v
+	return s
+}
+
+type VerifyMaterialResponseMaterialIdCardInfo struct {
+	Number        *string `json:"Number,omitempty" xml:"Number,omitempty" require:"true"`
+	Address       *string `json:"Address,omitempty" xml:"Address,omitempty" require:"true"`
+	Nationality   *string `json:"Nationality,omitempty" xml:"Nationality,omitempty" require:"true"`
+	EndDate       *string `json:"EndDate,omitempty" xml:"EndDate,omitempty" require:"true"`
+	FrontImageUrl *string `json:"FrontImageUrl,omitempty" xml:"FrontImageUrl,omitempty" require:"true"`
+	Authority     *string `json:"Authority,omitempty" xml:"Authority,omitempty" require:"true"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty" require:"true"`
+	Birth         *string `json:"Birth,omitempty" xml:"Birth,omitempty" require:"true"`
+	BackImageUrl  *string `json:"BackImageUrl,omitempty" xml:"BackImageUrl,omitempty" require:"true"`
+	StartDate     *string `json:"StartDate,omitempty" xml:"StartDate,omitempty" require:"true"`
+}
+
+func (s VerifyMaterialResponseMaterialIdCardInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyMaterialResponseMaterialIdCardInfo) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyMaterialResponseMaterialIdCardInfo) SetNumber(v string) *VerifyMaterialResponseMaterialIdCardInfo {
+	s.Number = &v
+	return s
+}
+
+func (s *VerifyMaterialResponseMaterialIdCardInfo) SetAddress(v string) *VerifyMaterialResponseMaterialIdCardInfo {
+	s.Address = &v
+	return s
+}
+
+func (s *VerifyMaterialResponseMaterialIdCardInfo) SetNationality(v string) *VerifyMaterialResponseMaterialIdCardInfo {
+	s.Nationality = &v
+	return s
+}
+
+func (s *VerifyMaterialResponseMaterialIdCardInfo) SetEndDate(v string) *VerifyMaterialResponseMaterialIdCardInfo {
+	s.EndDate = &v
+	return s
+}
+
+func (s *VerifyMaterialResponseMaterialIdCardInfo) SetFrontImageUrl(v string) *VerifyMaterialResponseMaterialIdCardInfo {
+	s.FrontImageUrl = &v
+	return s
+}
+
+func (s *VerifyMaterialResponseMaterialIdCardInfo) SetAuthority(v string) *VerifyMaterialResponseMaterialIdCardInfo {
+	s.Authority = &v
+	return s
+}
+
+func (s *VerifyMaterialResponseMaterialIdCardInfo) SetName(v string) *VerifyMaterialResponseMaterialIdCardInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *VerifyMaterialResponseMaterialIdCardInfo) SetBirth(v string) *VerifyMaterialResponseMaterialIdCardInfo {
+	s.Birth = &v
+	return s
+}
+
+func (s *VerifyMaterialResponseMaterialIdCardInfo) SetBackImageUrl(v string) *VerifyMaterialResponseMaterialIdCardInfo {
+	s.BackImageUrl = &v
+	return s
+}
+
+func (s *VerifyMaterialResponseMaterialIdCardInfo) SetStartDate(v string) *VerifyMaterialResponseMaterialIdCardInfo {
+	s.StartDate = &v
+	return s
+}
+
+type DescribeVerifyResultRequest struct {
+	BizId   *string `json:"BizId,omitempty" xml:"BizId,omitempty" require:"true"`
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty" require:"true"`
+}
+
+func (s DescribeVerifyResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVerifyResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVerifyResultRequest) SetBizId(v string) *DescribeVerifyResultRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *DescribeVerifyResultRequest) SetBizType(v string) *DescribeVerifyResultRequest {
+	s.BizType = &v
+	return s
+}
+
+type DescribeVerifyResultResponse struct {
+	RequestId                 *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	VerifyStatus              *int                                  `json:"VerifyStatus,omitempty" xml:"VerifyStatus,omitempty" require:"true"`
+	AuthorityComparisionScore *float32                              `json:"AuthorityComparisionScore,omitempty" xml:"AuthorityComparisionScore,omitempty" require:"true"`
+	FaceComparisonScore       *float32                              `json:"FaceComparisonScore,omitempty" xml:"FaceComparisonScore,omitempty" require:"true"`
+	IdCardFaceComparisonScore *float32                              `json:"IdCardFaceComparisonScore,omitempty" xml:"IdCardFaceComparisonScore,omitempty" require:"true"`
+	Material                  *DescribeVerifyResultResponseMaterial `json:"Material,omitempty" xml:"Material,omitempty" require:"true" type:"Struct"`
+}
+
+func (s DescribeVerifyResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVerifyResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVerifyResultResponse) SetRequestId(v string) *DescribeVerifyResultResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeVerifyResultResponse) SetVerifyStatus(v int) *DescribeVerifyResultResponse {
+	s.VerifyStatus = &v
+	return s
+}
+
+func (s *DescribeVerifyResultResponse) SetAuthorityComparisionScore(v float32) *DescribeVerifyResultResponse {
+	s.AuthorityComparisionScore = &v
+	return s
+}
+
+func (s *DescribeVerifyResultResponse) SetFaceComparisonScore(v float32) *DescribeVerifyResultResponse {
+	s.FaceComparisonScore = &v
+	return s
+}
+
+func (s *DescribeVerifyResultResponse) SetIdCardFaceComparisonScore(v float32) *DescribeVerifyResultResponse {
+	s.IdCardFaceComparisonScore = &v
+	return s
+}
+
+func (s *DescribeVerifyResultResponse) SetMaterial(v *DescribeVerifyResultResponseMaterial) *DescribeVerifyResultResponse {
+	s.Material = v
+	return s
+}
+
+type DescribeVerifyResultResponseMaterial struct {
+	FaceImageUrl  *string                                         `json:"FaceImageUrl,omitempty" xml:"FaceImageUrl,omitempty" require:"true"`
+	IdCardName    *string                                         `json:"IdCardName,omitempty" xml:"IdCardName,omitempty" require:"true"`
+	IdCardNumber  *string                                         `json:"IdCardNumber,omitempty" xml:"IdCardNumber,omitempty" require:"true"`
+	FaceQuality   *string                                         `json:"FaceQuality,omitempty" xml:"FaceQuality,omitempty" require:"true"`
+	FaceGlobalUrl *string                                         `json:"FaceGlobalUrl,omitempty" xml:"FaceGlobalUrl,omitempty" require:"true"`
+	FaceMask      *bool                                           `json:"FaceMask,omitempty" xml:"FaceMask,omitempty" require:"true"`
+	IdCardInfo    *DescribeVerifyResultResponseMaterialIdCardInfo `json:"IdCardInfo,omitempty" xml:"IdCardInfo,omitempty" require:"true" type:"Struct"`
+	VideoUrls     []*string                                       `json:"VideoUrls,omitempty" xml:"VideoUrls,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s DescribeVerifyResultResponseMaterial) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVerifyResultResponseMaterial) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVerifyResultResponseMaterial) SetFaceImageUrl(v string) *DescribeVerifyResultResponseMaterial {
+	s.FaceImageUrl = &v
+	return s
+}
+
+func (s *DescribeVerifyResultResponseMaterial) SetIdCardName(v string) *DescribeVerifyResultResponseMaterial {
+	s.IdCardName = &v
+	return s
+}
+
+func (s *DescribeVerifyResultResponseMaterial) SetIdCardNumber(v string) *DescribeVerifyResultResponseMaterial {
+	s.IdCardNumber = &v
+	return s
+}
+
+func (s *DescribeVerifyResultResponseMaterial) SetFaceQuality(v string) *DescribeVerifyResultResponseMaterial {
+	s.FaceQuality = &v
+	return s
+}
+
+func (s *DescribeVerifyResultResponseMaterial) SetFaceGlobalUrl(v string) *DescribeVerifyResultResponseMaterial {
+	s.FaceGlobalUrl = &v
+	return s
+}
+
+func (s *DescribeVerifyResultResponseMaterial) SetFaceMask(v bool) *DescribeVerifyResultResponseMaterial {
+	s.FaceMask = &v
+	return s
+}
+
+func (s *DescribeVerifyResultResponseMaterial) SetIdCardInfo(v *DescribeVerifyResultResponseMaterialIdCardInfo) *DescribeVerifyResultResponseMaterial {
+	s.IdCardInfo = v
+	return s
+}
+
+func (s *DescribeVerifyResultResponseMaterial) SetVideoUrls(v []*string) *DescribeVerifyResultResponseMaterial {
+	s.VideoUrls = v
+	return s
+}
+
+type DescribeVerifyResultResponseMaterialIdCardInfo struct {
+	Number        *string `json:"Number,omitempty" xml:"Number,omitempty" require:"true"`
+	Address       *string `json:"Address,omitempty" xml:"Address,omitempty" require:"true"`
+	Nationality   *string `json:"Nationality,omitempty" xml:"Nationality,omitempty" require:"true"`
+	EndDate       *string `json:"EndDate,omitempty" xml:"EndDate,omitempty" require:"true"`
+	FrontImageUrl *string `json:"FrontImageUrl,omitempty" xml:"FrontImageUrl,omitempty" require:"true"`
+	Authority     *string `json:"Authority,omitempty" xml:"Authority,omitempty" require:"true"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty" require:"true"`
+	Birth         *string `json:"Birth,omitempty" xml:"Birth,omitempty" require:"true"`
+	BackImageUrl  *string `json:"BackImageUrl,omitempty" xml:"BackImageUrl,omitempty" require:"true"`
+	StartDate     *string `json:"StartDate,omitempty" xml:"StartDate,omitempty" require:"true"`
+}
+
+func (s DescribeVerifyResultResponseMaterialIdCardInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVerifyResultResponseMaterialIdCardInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVerifyResultResponseMaterialIdCardInfo) SetNumber(v string) *DescribeVerifyResultResponseMaterialIdCardInfo {
+	s.Number = &v
+	return s
+}
+
+func (s *DescribeVerifyResultResponseMaterialIdCardInfo) SetAddress(v string) *DescribeVerifyResultResponseMaterialIdCardInfo {
+	s.Address = &v
+	return s
+}
+
+func (s *DescribeVerifyResultResponseMaterialIdCardInfo) SetNationality(v string) *DescribeVerifyResultResponseMaterialIdCardInfo {
+	s.Nationality = &v
+	return s
+}
+
+func (s *DescribeVerifyResultResponseMaterialIdCardInfo) SetEndDate(v string) *DescribeVerifyResultResponseMaterialIdCardInfo {
+	s.EndDate = &v
+	return s
+}
+
+func (s *DescribeVerifyResultResponseMaterialIdCardInfo) SetFrontImageUrl(v string) *DescribeVerifyResultResponseMaterialIdCardInfo {
+	s.FrontImageUrl = &v
+	return s
+}
+
+func (s *DescribeVerifyResultResponseMaterialIdCardInfo) SetAuthority(v string) *DescribeVerifyResultResponseMaterialIdCardInfo {
+	s.Authority = &v
+	return s
+}
+
+func (s *DescribeVerifyResultResponseMaterialIdCardInfo) SetName(v string) *DescribeVerifyResultResponseMaterialIdCardInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeVerifyResultResponseMaterialIdCardInfo) SetBirth(v string) *DescribeVerifyResultResponseMaterialIdCardInfo {
+	s.Birth = &v
+	return s
+}
+
+func (s *DescribeVerifyResultResponseMaterialIdCardInfo) SetBackImageUrl(v string) *DescribeVerifyResultResponseMaterialIdCardInfo {
+	s.BackImageUrl = &v
+	return s
+}
+
+func (s *DescribeVerifyResultResponseMaterialIdCardInfo) SetStartDate(v string) *DescribeVerifyResultResponseMaterialIdCardInfo {
+	s.StartDate = &v
+	return s
+}
+
+type DescribeOssUploadTokenRequest struct {
+}
+
+func (s DescribeOssUploadTokenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOssUploadTokenRequest) GoString() string {
+	return s.String()
+}
+
+type DescribeOssUploadTokenResponse struct {
+	RequestId      *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	OssUploadToken *DescribeOssUploadTokenResponseOssUploadToken `json:"OssUploadToken,omitempty" xml:"OssUploadToken,omitempty" require:"true" type:"Struct"`
+}
+
+func (s DescribeOssUploadTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOssUploadTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOssUploadTokenResponse) SetRequestId(v string) *DescribeOssUploadTokenResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeOssUploadTokenResponse) SetOssUploadToken(v *DescribeOssUploadTokenResponseOssUploadToken) *DescribeOssUploadTokenResponse {
+	s.OssUploadToken = v
+	return s
+}
+
+type DescribeOssUploadTokenResponseOssUploadToken struct {
+	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty" require:"true"`
+	EndPoint *string `json:"EndPoint,omitempty" xml:"EndPoint,omitempty" require:"true"`
+	Path     *string `json:"Path,omitempty" xml:"Path,omitempty" require:"true"`
+	Expired  *int64  `json:"Expired,omitempty" xml:"Expired,omitempty" require:"true"`
+	Secret   *string `json:"Secret,omitempty" xml:"Secret,omitempty" require:"true"`
+	Key      *string `json:"Key,omitempty" xml:"Key,omitempty" require:"true"`
+	Token    *string `json:"Token,omitempty" xml:"Token,omitempty" require:"true"`
+}
+
+func (s DescribeOssUploadTokenResponseOssUploadToken) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOssUploadTokenResponseOssUploadToken) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOssUploadTokenResponseOssUploadToken) SetBucket(v string) *DescribeOssUploadTokenResponseOssUploadToken {
+	s.Bucket = &v
+	return s
+}
+
+func (s *DescribeOssUploadTokenResponseOssUploadToken) SetEndPoint(v string) *DescribeOssUploadTokenResponseOssUploadToken {
+	s.EndPoint = &v
+	return s
+}
+
+func (s *DescribeOssUploadTokenResponseOssUploadToken) SetPath(v string) *DescribeOssUploadTokenResponseOssUploadToken {
+	s.Path = &v
+	return s
+}
+
+func (s *DescribeOssUploadTokenResponseOssUploadToken) SetExpired(v int64) *DescribeOssUploadTokenResponseOssUploadToken {
+	s.Expired = &v
+	return s
+}
+
+func (s *DescribeOssUploadTokenResponseOssUploadToken) SetSecret(v string) *DescribeOssUploadTokenResponseOssUploadToken {
+	s.Secret = &v
+	return s
+}
+
+func (s *DescribeOssUploadTokenResponseOssUploadToken) SetKey(v string) *DescribeOssUploadTokenResponseOssUploadToken {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeOssUploadTokenResponseOssUploadToken) SetToken(v string) *DescribeOssUploadTokenResponseOssUploadToken {
+	s.Token = &v
+	return s
+}
+
+type DescribeVerifyTokenRequest struct {
+	IdCardBackImageUrl   *string `json:"IdCardBackImageUrl,omitempty" xml:"IdCardBackImageUrl,omitempty"`
+	BizType              *string `json:"BizType,omitempty" xml:"BizType,omitempty" require:"true"`
+	FailedRedirectUrl    *string `json:"FailedRedirectUrl,omitempty" xml:"FailedRedirectUrl,omitempty"`
+	FaceRetainedImageUrl *string `json:"FaceRetainedImageUrl,omitempty" xml:"FaceRetainedImageUrl,omitempty"`
+	CallbackSeed         *string `json:"CallbackSeed,omitempty" xml:"CallbackSeed,omitempty"`
+	IdCardFrontImageUrl  *string `json:"IdCardFrontImageUrl,omitempty" xml:"IdCardFrontImageUrl,omitempty"`
+	UserId               *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	BizId                *string `json:"BizId,omitempty" xml:"BizId,omitempty" require:"true"`
+	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	IdCardNumber         *string `json:"IdCardNumber,omitempty" xml:"IdCardNumber,omitempty"`
+	PassedRedirectUrl    *string `json:"PassedRedirectUrl,omitempty" xml:"PassedRedirectUrl,omitempty"`
+	CallbackUrl          *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
+	UserIp               *string `json:"UserIp,omitempty" xml:"UserIp,omitempty"`
+	UserPhoneNumber      *string `json:"UserPhoneNumber,omitempty" xml:"UserPhoneNumber,omitempty"`
+	UserRegistTime       *int64  `json:"UserRegistTime,omitempty" xml:"UserRegistTime,omitempty"`
+}
+
+func (s DescribeVerifyTokenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVerifyTokenRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVerifyTokenRequest) SetIdCardBackImageUrl(v string) *DescribeVerifyTokenRequest {
+	s.IdCardBackImageUrl = &v
+	return s
+}
+
+func (s *DescribeVerifyTokenRequest) SetBizType(v string) *DescribeVerifyTokenRequest {
+	s.BizType = &v
+	return s
+}
+
+func (s *DescribeVerifyTokenRequest) SetFailedRedirectUrl(v string) *DescribeVerifyTokenRequest {
+	s.FailedRedirectUrl = &v
+	return s
+}
+
+func (s *DescribeVerifyTokenRequest) SetFaceRetainedImageUrl(v string) *DescribeVerifyTokenRequest {
+	s.FaceRetainedImageUrl = &v
+	return s
+}
+
+func (s *DescribeVerifyTokenRequest) SetCallbackSeed(v string) *DescribeVerifyTokenRequest {
+	s.CallbackSeed = &v
+	return s
+}
+
+func (s *DescribeVerifyTokenRequest) SetIdCardFrontImageUrl(v string) *DescribeVerifyTokenRequest {
+	s.IdCardFrontImageUrl = &v
+	return s
+}
+
+func (s *DescribeVerifyTokenRequest) SetUserId(v string) *DescribeVerifyTokenRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *DescribeVerifyTokenRequest) SetBizId(v string) *DescribeVerifyTokenRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *DescribeVerifyTokenRequest) SetName(v string) *DescribeVerifyTokenRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeVerifyTokenRequest) SetIdCardNumber(v string) *DescribeVerifyTokenRequest {
+	s.IdCardNumber = &v
+	return s
+}
+
+func (s *DescribeVerifyTokenRequest) SetPassedRedirectUrl(v string) *DescribeVerifyTokenRequest {
+	s.PassedRedirectUrl = &v
+	return s
+}
+
+func (s *DescribeVerifyTokenRequest) SetCallbackUrl(v string) *DescribeVerifyTokenRequest {
+	s.CallbackUrl = &v
+	return s
+}
+
+func (s *DescribeVerifyTokenRequest) SetUserIp(v string) *DescribeVerifyTokenRequest {
+	s.UserIp = &v
+	return s
+}
+
+func (s *DescribeVerifyTokenRequest) SetUserPhoneNumber(v string) *DescribeVerifyTokenRequest {
+	s.UserPhoneNumber = &v
+	return s
+}
+
+func (s *DescribeVerifyTokenRequest) SetUserRegistTime(v int64) *DescribeVerifyTokenRequest {
+	s.UserRegistTime = &v
+	return s
+}
+
+type DescribeVerifyTokenResponse struct {
+	RequestId      *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	VerifyPageUrl  *string                                    `json:"VerifyPageUrl,omitempty" xml:"VerifyPageUrl,omitempty" require:"true"`
+	VerifyToken    *string                                    `json:"VerifyToken,omitempty" xml:"VerifyToken,omitempty" require:"true"`
+	OssUploadToken *DescribeVerifyTokenResponseOssUploadToken `json:"OssUploadToken,omitempty" xml:"OssUploadToken,omitempty" require:"true" type:"Struct"`
+}
+
+func (s DescribeVerifyTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVerifyTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVerifyTokenResponse) SetRequestId(v string) *DescribeVerifyTokenResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeVerifyTokenResponse) SetVerifyPageUrl(v string) *DescribeVerifyTokenResponse {
+	s.VerifyPageUrl = &v
+	return s
+}
+
+func (s *DescribeVerifyTokenResponse) SetVerifyToken(v string) *DescribeVerifyTokenResponse {
+	s.VerifyToken = &v
+	return s
+}
+
+func (s *DescribeVerifyTokenResponse) SetOssUploadToken(v *DescribeVerifyTokenResponseOssUploadToken) *DescribeVerifyTokenResponse {
+	s.OssUploadToken = v
+	return s
+}
+
+type DescribeVerifyTokenResponseOssUploadToken struct {
+	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty" require:"true"`
+	EndPoint *string `json:"EndPoint,omitempty" xml:"EndPoint,omitempty" require:"true"`
+	Path     *string `json:"Path,omitempty" xml:"Path,omitempty" require:"true"`
+	Expired  *int64  `json:"Expired,omitempty" xml:"Expired,omitempty" require:"true"`
+	Secret   *string `json:"Secret,omitempty" xml:"Secret,omitempty" require:"true"`
+	Key      *string `json:"Key,omitempty" xml:"Key,omitempty" require:"true"`
+	Token    *string `json:"Token,omitempty" xml:"Token,omitempty" require:"true"`
+}
+
+func (s DescribeVerifyTokenResponseOssUploadToken) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVerifyTokenResponseOssUploadToken) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVerifyTokenResponseOssUploadToken) SetBucket(v string) *DescribeVerifyTokenResponseOssUploadToken {
+	s.Bucket = &v
+	return s
+}
+
+func (s *DescribeVerifyTokenResponseOssUploadToken) SetEndPoint(v string) *DescribeVerifyTokenResponseOssUploadToken {
+	s.EndPoint = &v
+	return s
+}
+
+func (s *DescribeVerifyTokenResponseOssUploadToken) SetPath(v string) *DescribeVerifyTokenResponseOssUploadToken {
+	s.Path = &v
+	return s
+}
+
+func (s *DescribeVerifyTokenResponseOssUploadToken) SetExpired(v int64) *DescribeVerifyTokenResponseOssUploadToken {
+	s.Expired = &v
+	return s
+}
+
+func (s *DescribeVerifyTokenResponseOssUploadToken) SetSecret(v string) *DescribeVerifyTokenResponseOssUploadToken {
+	s.Secret = &v
+	return s
+}
+
+func (s *DescribeVerifyTokenResponseOssUploadToken) SetKey(v string) *DescribeVerifyTokenResponseOssUploadToken {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeVerifyTokenResponseOssUploadToken) SetToken(v string) *DescribeVerifyTokenResponseOssUploadToken {
+	s.Token = &v
 	return s
 }
 
 type Client struct {
-	openapi.Client
+	rpc.Client
 }
 
-func NewClient(config *openapi.Config) (*Client, error) {
+func NewClient(config *rpc.Config) (*Client, error) {
 	client := new(Client)
 	err := client.Init(config)
 	return client, err
 }
 
-func (client *Client) Init(config *openapi.Config) (_err error) {
+func (client *Client) Init(config *rpc.Config) (_err error) {
 	_err = client.Client.Init(config)
 	if _err != nil {
 		return _err
@@ -5570,35 +4566,13 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	return nil
 }
 
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !tea.BoolValue(util.Empty(endpoint)) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !tea.BoolValue(util.IsUnset(endpointMap)) && !tea.BoolValue(util.Empty(endpointMap[tea.StringValue(regionId)])) {
-		_result = endpointMap[tea.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CompareFacesWithOptions(request *CompareFacesRequest, runtime *util.RuntimeOptions) (_result *CompareFacesResponse, _err error) {
+func (client *Client) DescribeWhitelist(request *DescribeWhitelistRequest, runtime *util.RuntimeOptions) (_result *DescribeWhitelistResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CompareFacesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CompareFaces"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_result = &DescribeWhitelistResponse{}
+	_body, _err := client.DoRequest(tea.String("DescribeWhitelist"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-03-07"), tea.String("AK"), nil, tea.ToMap(request), runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5606,10 +4580,10 @@ func (client *Client) CompareFacesWithOptions(request *CompareFacesRequest, runt
 	return _result, _err
 }
 
-func (client *Client) CompareFaces(request *CompareFacesRequest) (_result *CompareFacesResponse, _err error) {
+func (client *Client) DescribeWhitelistSimply(request *DescribeWhitelistRequest) (_result *DescribeWhitelistResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &CompareFacesResponse{}
-	_body, _err := client.CompareFacesWithOptions(request, runtime)
+	_result = &DescribeWhitelistResponse{}
+	_body, _err := client.DescribeWhitelist(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5617,16 +4591,163 @@ func (client *Client) CompareFaces(request *CompareFacesRequest) (_result *Compa
 	return _result, _err
 }
 
-func (client *Client) CompareFaceVerifyWithOptions(request *CompareFaceVerifyRequest, runtime *util.RuntimeOptions) (_result *CompareFaceVerifyResponse, _err error) {
+func (client *Client) DeleteWhitelist(request *DeleteWhitelistRequest, runtime *util.RuntimeOptions) (_result *DeleteWhitelistResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+	_result = &DeleteWhitelistResponse{}
+	_body, _err := client.DoRequest(tea.String("DeleteWhitelist"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-03-07"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteWhitelistSimply(request *DeleteWhitelistRequest) (_result *DeleteWhitelistResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteWhitelistResponse{}
+	_body, _err := client.DeleteWhitelist(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateWhitelist(request *CreateWhitelistRequest, runtime *util.RuntimeOptions) (_result *CreateWhitelistResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &CreateWhitelistResponse{}
+	_body, _err := client.DoRequest(tea.String("CreateWhitelist"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-03-07"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateWhitelistSimply(request *CreateWhitelistRequest) (_result *CreateWhitelistResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateWhitelistResponse{}
+	_body, _err := client.CreateWhitelist(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeFaceConfig(request *DescribeFaceConfigRequest, runtime *util.RuntimeOptions) (_result *DescribeFaceConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &DescribeFaceConfigResponse{}
+	_body, _err := client.DoRequest(tea.String("DescribeFaceConfig"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-03-07"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeFaceConfigSimply(request *DescribeFaceConfigRequest) (_result *DescribeFaceConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeFaceConfigResponse{}
+	_body, _err := client.DescribeFaceConfig(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateFaceConfig(request *UpdateFaceConfigRequest, runtime *util.RuntimeOptions) (_result *UpdateFaceConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &UpdateFaceConfigResponse{}
+	_body, _err := client.DoRequest(tea.String("UpdateFaceConfig"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-03-07"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateFaceConfigSimply(request *UpdateFaceConfigRequest) (_result *UpdateFaceConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateFaceConfigResponse{}
+	_body, _err := client.UpdateFaceConfig(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateFaceConfig(request *CreateFaceConfigRequest, runtime *util.RuntimeOptions) (_result *CreateFaceConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &CreateFaceConfigResponse{}
+	_body, _err := client.DoRequest(tea.String("CreateFaceConfig"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-03-07"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateFaceConfigSimply(request *CreateFaceConfigRequest) (_result *CreateFaceConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateFaceConfigResponse{}
+	_body, _err := client.CreateFaceConfig(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) LivenessFaceVerify(request *LivenessFaceVerifyRequest, runtime *util.RuntimeOptions) (_result *LivenessFaceVerifyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &LivenessFaceVerifyResponse{}
+	_body, _err := client.DoRequest(tea.String("LivenessFaceVerify"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-03-07"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) LivenessFaceVerifySimply(request *LivenessFaceVerifyRequest) (_result *LivenessFaceVerifyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &LivenessFaceVerifyResponse{}
+	_body, _err := client.LivenessFaceVerify(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CompareFaceVerify(request *CompareFaceVerifyRequest, runtime *util.RuntimeOptions) (_result *CompareFaceVerifyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
 	}
 	_result = &CompareFaceVerifyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CompareFaceVerify"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.DoRequest(tea.String("CompareFaceVerify"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-03-07"), tea.String("AK"), nil, tea.ToMap(request), runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5634,10 +4755,10 @@ func (client *Client) CompareFaceVerifyWithOptions(request *CompareFaceVerifyReq
 	return _result, _err
 }
 
-func (client *Client) CompareFaceVerify(request *CompareFaceVerifyRequest) (_result *CompareFaceVerifyResponse, _err error) {
+func (client *Client) CompareFaceVerifySimply(request *CompareFaceVerifyRequest) (_result *CompareFaceVerifyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CompareFaceVerifyResponse{}
-	_body, _err := client.CompareFaceVerifyWithOptions(request, runtime)
+	_body, _err := client.CompareFaceVerify(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5645,16 +4766,13 @@ func (client *Client) CompareFaceVerify(request *CompareFaceVerifyRequest) (_res
 	return _result, _err
 }
 
-func (client *Client) ContrastFaceVerifyWithOptions(request *ContrastFaceVerifyRequest, runtime *util.RuntimeOptions) (_result *ContrastFaceVerifyResponse, _err error) {
+func (client *Client) DescribeSdkUrl(request *DescribeSdkUrlRequest, runtime *util.RuntimeOptions) (_result *DescribeSdkUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ContrastFaceVerifyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ContrastFaceVerify"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_result = &DescribeSdkUrlResponse{}
+	_body, _err := client.DoRequest(tea.String("DescribeSdkUrl"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-03-07"), tea.String("AK"), nil, tea.ToMap(request), runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5662,10 +4780,110 @@ func (client *Client) ContrastFaceVerifyWithOptions(request *ContrastFaceVerifyR
 	return _result, _err
 }
 
-func (client *Client) ContrastFaceVerify(request *ContrastFaceVerifyRequest) (_result *ContrastFaceVerifyResponse, _err error) {
+func (client *Client) DescribeSdkUrlSimply(request *DescribeSdkUrlRequest) (_result *DescribeSdkUrlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSdkUrlResponse{}
+	_body, _err := client.DescribeSdkUrl(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeUpdatePackageResult(request *DescribeUpdatePackageResultRequest, runtime *util.RuntimeOptions) (_result *DescribeUpdatePackageResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &DescribeUpdatePackageResultResponse{}
+	_body, _err := client.DoRequest(tea.String("DescribeUpdatePackageResult"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-03-07"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeUpdatePackageResultSimply(request *DescribeUpdatePackageResultRequest) (_result *DescribeUpdatePackageResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeUpdatePackageResultResponse{}
+	_body, _err := client.DescribeUpdatePackageResult(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateAppPackage(request *UpdateAppPackageRequest, runtime *util.RuntimeOptions) (_result *UpdateAppPackageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &UpdateAppPackageResponse{}
+	_body, _err := client.DoRequest(tea.String("UpdateAppPackage"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-03-07"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateAppPackageSimply(request *UpdateAppPackageRequest) (_result *UpdateAppPackageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateAppPackageResponse{}
+	_body, _err := client.UpdateAppPackage(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeAppInfo(request *DescribeAppInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeAppInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &DescribeAppInfoResponse{}
+	_body, _err := client.DoRequest(tea.String("DescribeAppInfo"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-03-07"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeAppInfoSimply(request *DescribeAppInfoRequest) (_result *DescribeAppInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAppInfoResponse{}
+	_body, _err := client.DescribeAppInfo(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ContrastFaceVerify(request *ContrastFaceVerifyRequest, runtime *util.RuntimeOptions) (_result *ContrastFaceVerifyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &ContrastFaceVerifyResponse{}
+	_body, _err := client.DoRequest(tea.String("ContrastFaceVerify"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-03-07"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ContrastFaceVerifySimply(request *ContrastFaceVerifyRequest) (_result *ContrastFaceVerifyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ContrastFaceVerifyResponse{}
-	_body, _err := client.ContrastFaceVerifyWithOptions(request, runtime)
+	_body, _err := client.ContrastFaceVerify(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5685,11 +4903,16 @@ func (client *Client) ContrastFaceVerifyAdvance(request *ContrastFaceVerifyAdvan
 		return _result, _err
 	}
 
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -5714,16 +4937,16 @@ func (client *Client) ContrastFaceVerifyAdvance(request *ContrastFaceVerifyAdvan
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
 	ossRuntime := &ossutil.RuntimeOptions{}
-	openapiutil.Convert(runtime, ossRuntime)
+	rpcutil.Convert(runtime, ossRuntime)
 	contrastFaceVerifyReq := &ContrastFaceVerifyRequest{}
-	openapiutil.Convert(request, contrastFaceVerifyReq)
+	rpcutil.Convert(request, contrastFaceVerifyReq)
 	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 
 	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+	ossConfig.Endpoint = rpcutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
 	ossClient, _err = oss.NewClient(ossConfig)
 	if _err != nil {
 		return _result, _err
@@ -5751,7 +4974,7 @@ func (client *Client) ContrastFaceVerifyAdvance(request *ContrastFaceVerifyAdvan
 		return _result, _err
 	}
 	contrastFaceVerifyReq.FaceContrastFile = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
-	contrastFaceVerifyResp, _err := client.ContrastFaceVerifyWithOptions(contrastFaceVerifyReq, runtime)
+	contrastFaceVerifyResp, _err := client.ContrastFaceVerify(contrastFaceVerifyReq, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5760,744 +4983,13 @@ func (client *Client) ContrastFaceVerifyAdvance(request *ContrastFaceVerifyAdvan
 	return _result, _err
 }
 
-func (client *Client) CreateAuthKeyWithOptions(request *CreateAuthKeyRequest, runtime *util.RuntimeOptions) (_result *CreateAuthKeyResponse, _err error) {
+func (client *Client) InitDevice(request *InitDeviceRequest, runtime *util.RuntimeOptions) (_result *InitDeviceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreateAuthKeyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateAuthKey"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateAuthKey(request *CreateAuthKeyRequest) (_result *CreateAuthKeyResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateAuthKeyResponse{}
-	_body, _err := client.CreateAuthKeyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateFaceConfigWithOptions(request *CreateFaceConfigRequest, runtime *util.RuntimeOptions) (_result *CreateFaceConfigResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreateFaceConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateFaceConfig"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateFaceConfig(request *CreateFaceConfigRequest) (_result *CreateFaceConfigResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateFaceConfigResponse{}
-	_body, _err := client.CreateFaceConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateRPSDKWithOptions(request *CreateRPSDKRequest, runtime *util.RuntimeOptions) (_result *CreateRPSDKResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreateRPSDKResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateRPSDK"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateRPSDK(request *CreateRPSDKRequest) (_result *CreateRPSDKResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateRPSDKResponse{}
-	_body, _err := client.CreateRPSDKWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateVerifySDKWithOptions(request *CreateVerifySDKRequest, runtime *util.RuntimeOptions) (_result *CreateVerifySDKResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreateVerifySDKResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateVerifySDK"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateVerifySDK(request *CreateVerifySDKRequest) (_result *CreateVerifySDKResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateVerifySDKResponse{}
-	_body, _err := client.CreateVerifySDKWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateVerifySettingWithOptions(request *CreateVerifySettingRequest, runtime *util.RuntimeOptions) (_result *CreateVerifySettingResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreateVerifySettingResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateVerifySetting"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateVerifySetting(request *CreateVerifySettingRequest) (_result *CreateVerifySettingResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateVerifySettingResponse{}
-	_body, _err := client.CreateVerifySettingWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateWhitelistWithOptions(request *CreateWhitelistRequest, runtime *util.RuntimeOptions) (_result *CreateWhitelistResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreateWhitelistResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateWhitelist"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateWhitelist(request *CreateWhitelistRequest) (_result *CreateWhitelistResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateWhitelistResponse{}
-	_body, _err := client.CreateWhitelistWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteWhitelistWithOptions(request *DeleteWhitelistRequest, runtime *util.RuntimeOptions) (_result *DeleteWhitelistResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DeleteWhitelistResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteWhitelist"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteWhitelist(request *DeleteWhitelistRequest) (_result *DeleteWhitelistResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteWhitelistResponse{}
-	_body, _err := client.DeleteWhitelistWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeAppInfoWithOptions(request *DescribeAppInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeAppInfoResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeAppInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeAppInfo"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeAppInfo(request *DescribeAppInfoRequest) (_result *DescribeAppInfoResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeAppInfoResponse{}
-	_body, _err := client.DescribeAppInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeDeviceInfoWithOptions(request *DescribeDeviceInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeDeviceInfoResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeDeviceInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDeviceInfo"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeDeviceInfo(request *DescribeDeviceInfoRequest) (_result *DescribeDeviceInfoResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeDeviceInfoResponse{}
-	_body, _err := client.DescribeDeviceInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeFaceConfigWithOptions(request *DescribeFaceConfigRequest, runtime *util.RuntimeOptions) (_result *DescribeFaceConfigResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeFaceConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeFaceConfig"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeFaceConfig(request *DescribeFaceConfigRequest) (_result *DescribeFaceConfigResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeFaceConfigResponse{}
-	_body, _err := client.DescribeFaceConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeFaceUsageWithOptions(request *DescribeFaceUsageRequest, runtime *util.RuntimeOptions) (_result *DescribeFaceUsageResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeFaceUsageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeFaceUsage"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeFaceUsage(request *DescribeFaceUsageRequest) (_result *DescribeFaceUsageResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeFaceUsageResponse{}
-	_body, _err := client.DescribeFaceUsageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeFaceVerifyWithOptions(request *DescribeFaceVerifyRequest, runtime *util.RuntimeOptions) (_result *DescribeFaceVerifyResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeFaceVerifyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeFaceVerify"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeFaceVerify(request *DescribeFaceVerifyRequest) (_result *DescribeFaceVerifyResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeFaceVerifyResponse{}
-	_body, _err := client.DescribeFaceVerifyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeOssUploadTokenWithOptions(request *DescribeOssUploadTokenRequest, runtime *util.RuntimeOptions) (_result *DescribeOssUploadTokenResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeOssUploadTokenResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeOssUploadToken"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeOssUploadToken(request *DescribeOssUploadTokenRequest) (_result *DescribeOssUploadTokenResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeOssUploadTokenResponse{}
-	_body, _err := client.DescribeOssUploadTokenWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeRPSDKWithOptions(request *DescribeRPSDKRequest, runtime *util.RuntimeOptions) (_result *DescribeRPSDKResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeRPSDKResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeRPSDK"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeRPSDK(request *DescribeRPSDKRequest) (_result *DescribeRPSDKResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeRPSDKResponse{}
-	_body, _err := client.DescribeRPSDKWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeSdkUrlWithOptions(request *DescribeSdkUrlRequest, runtime *util.RuntimeOptions) (_result *DescribeSdkUrlResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeSdkUrlResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeSdkUrl"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeSdkUrl(request *DescribeSdkUrlRequest) (_result *DescribeSdkUrlResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeSdkUrlResponse{}
-	_body, _err := client.DescribeSdkUrlWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeUpdatePackageResultWithOptions(request *DescribeUpdatePackageResultRequest, runtime *util.RuntimeOptions) (_result *DescribeUpdatePackageResultResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeUpdatePackageResultResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeUpdatePackageResult"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeUpdatePackageResult(request *DescribeUpdatePackageResultRequest) (_result *DescribeUpdatePackageResultResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeUpdatePackageResultResponse{}
-	_body, _err := client.DescribeUpdatePackageResultWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeUploadInfoWithOptions(request *DescribeUploadInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeUploadInfoResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeUploadInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeUploadInfo"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeUploadInfo(request *DescribeUploadInfoRequest) (_result *DescribeUploadInfoResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeUploadInfoResponse{}
-	_body, _err := client.DescribeUploadInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeUserStatusWithOptions(request *DescribeUserStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeUserStatusResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeUserStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeUserStatus"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeUserStatus(request *DescribeUserStatusRequest) (_result *DescribeUserStatusResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeUserStatusResponse{}
-	_body, _err := client.DescribeUserStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeVerifyRecordsWithOptions(request *DescribeVerifyRecordsRequest, runtime *util.RuntimeOptions) (_result *DescribeVerifyRecordsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeVerifyRecordsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeVerifyRecords"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeVerifyRecords(request *DescribeVerifyRecordsRequest) (_result *DescribeVerifyRecordsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeVerifyRecordsResponse{}
-	_body, _err := client.DescribeVerifyRecordsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeVerifyResultWithOptions(request *DescribeVerifyResultRequest, runtime *util.RuntimeOptions) (_result *DescribeVerifyResultResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeVerifyResultResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeVerifyResult"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeVerifyResult(request *DescribeVerifyResultRequest) (_result *DescribeVerifyResultResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeVerifyResultResponse{}
-	_body, _err := client.DescribeVerifyResultWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeVerifySDKWithOptions(request *DescribeVerifySDKRequest, runtime *util.RuntimeOptions) (_result *DescribeVerifySDKResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeVerifySDKResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeVerifySDK"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeVerifySDK(request *DescribeVerifySDKRequest) (_result *DescribeVerifySDKResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeVerifySDKResponse{}
-	_body, _err := client.DescribeVerifySDKWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeVerifySettingWithOptions(request *DescribeVerifySettingRequest, runtime *util.RuntimeOptions) (_result *DescribeVerifySettingResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeVerifySettingResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeVerifySetting"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeVerifySetting(request *DescribeVerifySettingRequest) (_result *DescribeVerifySettingResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeVerifySettingResponse{}
-	_body, _err := client.DescribeVerifySettingWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeVerifyTokenWithOptions(request *DescribeVerifyTokenRequest, runtime *util.RuntimeOptions) (_result *DescribeVerifyTokenResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeVerifyTokenResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeVerifyToken"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeVerifyToken(request *DescribeVerifyTokenRequest) (_result *DescribeVerifyTokenResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeVerifyTokenResponse{}
-	_body, _err := client.DescribeVerifyTokenWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeVerifyUsageWithOptions(request *DescribeVerifyUsageRequest, runtime *util.RuntimeOptions) (_result *DescribeVerifyUsageResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeVerifyUsageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeVerifyUsage"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeVerifyUsage(request *DescribeVerifyUsageRequest) (_result *DescribeVerifyUsageResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeVerifyUsageResponse{}
-	_body, _err := client.DescribeVerifyUsageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeWhitelistWithOptions(request *DescribeWhitelistRequest, runtime *util.RuntimeOptions) (_result *DescribeWhitelistResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeWhitelistResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeWhitelist"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeWhitelist(request *DescribeWhitelistRequest) (_result *DescribeWhitelistResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeWhitelistResponse{}
-	_body, _err := client.DescribeWhitelistWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DetectFaceAttributesWithOptions(request *DetectFaceAttributesRequest, runtime *util.RuntimeOptions) (_result *DetectFaceAttributesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DetectFaceAttributesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DetectFaceAttributes"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DetectFaceAttributes(request *DetectFaceAttributesRequest) (_result *DetectFaceAttributesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DetectFaceAttributesResponse{}
-	_body, _err := client.DetectFaceAttributesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) InitDeviceWithOptions(request *InitDeviceRequest, runtime *util.RuntimeOptions) (_result *InitDeviceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
 	}
 	_result = &InitDeviceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("InitDevice"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.DoRequest(tea.String("InitDevice"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-03-07"), tea.String("AK"), nil, tea.ToMap(request), runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6505,10 +4997,10 @@ func (client *Client) InitDeviceWithOptions(request *InitDeviceRequest, runtime 
 	return _result, _err
 }
 
-func (client *Client) InitDevice(request *InitDeviceRequest) (_result *InitDeviceResponse, _err error) {
+func (client *Client) InitDeviceSimply(request *InitDeviceRequest) (_result *InitDeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &InitDeviceResponse{}
-	_body, _err := client.InitDeviceWithOptions(request, runtime)
+	_body, _err := client.InitDevice(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6516,16 +5008,13 @@ func (client *Client) InitDevice(request *InitDeviceRequest) (_result *InitDevic
 	return _result, _err
 }
 
-func (client *Client) InitFaceVerifyWithOptions(request *InitFaceVerifyRequest, runtime *util.RuntimeOptions) (_result *InitFaceVerifyResponse, _err error) {
+func (client *Client) InitFaceVerify(request *InitFaceVerifyRequest, runtime *util.RuntimeOptions) (_result *InitFaceVerifyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
 	}
 	_result = &InitFaceVerifyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("InitFaceVerify"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.DoRequest(tea.String("InitFaceVerify"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-03-07"), tea.String("AK"), nil, tea.ToMap(request), runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6533,10 +5022,10 @@ func (client *Client) InitFaceVerifyWithOptions(request *InitFaceVerifyRequest, 
 	return _result, _err
 }
 
-func (client *Client) InitFaceVerify(request *InitFaceVerifyRequest) (_result *InitFaceVerifyResponse, _err error) {
+func (client *Client) InitFaceVerifySimply(request *InitFaceVerifyRequest) (_result *InitFaceVerifyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &InitFaceVerifyResponse{}
-	_body, _err := client.InitFaceVerifyWithOptions(request, runtime)
+	_body, _err := client.InitFaceVerify(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6544,16 +5033,13 @@ func (client *Client) InitFaceVerify(request *InitFaceVerifyRequest) (_result *I
 	return _result, _err
 }
 
-func (client *Client) LivenessFaceVerifyWithOptions(request *LivenessFaceVerifyRequest, runtime *util.RuntimeOptions) (_result *LivenessFaceVerifyResponse, _err error) {
+func (client *Client) DescribeFaceVerify(request *DescribeFaceVerifyRequest, runtime *util.RuntimeOptions) (_result *DescribeFaceVerifyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &LivenessFaceVerifyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("LivenessFaceVerify"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_result = &DescribeFaceVerifyResponse{}
+	_body, _err := client.DoRequest(tea.String("DescribeFaceVerify"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-03-07"), tea.String("AK"), nil, tea.ToMap(request), runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6561,10 +5047,10 @@ func (client *Client) LivenessFaceVerifyWithOptions(request *LivenessFaceVerifyR
 	return _result, _err
 }
 
-func (client *Client) LivenessFaceVerify(request *LivenessFaceVerifyRequest) (_result *LivenessFaceVerifyResponse, _err error) {
+func (client *Client) DescribeFaceVerifySimply(request *DescribeFaceVerifyRequest) (_result *DescribeFaceVerifyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &LivenessFaceVerifyResponse{}
-	_body, _err := client.LivenessFaceVerifyWithOptions(request, runtime)
+	_result = &DescribeFaceVerifyResponse{}
+	_body, _err := client.DescribeFaceVerify(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6572,128 +5058,13 @@ func (client *Client) LivenessFaceVerify(request *LivenessFaceVerifyRequest) (_r
 	return _result, _err
 }
 
-func (client *Client) ModifyDeviceInfoWithOptions(request *ModifyDeviceInfoRequest, runtime *util.RuntimeOptions) (_result *ModifyDeviceInfoResponse, _err error) {
+func (client *Client) VerifyDevice(request *VerifyDeviceRequest, runtime *util.RuntimeOptions) (_result *VerifyDeviceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ModifyDeviceInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyDeviceInfo"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ModifyDeviceInfo(request *ModifyDeviceInfoRequest) (_result *ModifyDeviceInfoResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ModifyDeviceInfoResponse{}
-	_body, _err := client.ModifyDeviceInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpdateAppPackageWithOptions(request *UpdateAppPackageRequest, runtime *util.RuntimeOptions) (_result *UpdateAppPackageResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &UpdateAppPackageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateAppPackage"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateAppPackage(request *UpdateAppPackageRequest) (_result *UpdateAppPackageResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateAppPackageResponse{}
-	_body, _err := client.UpdateAppPackageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpdateFaceConfigWithOptions(request *UpdateFaceConfigRequest, runtime *util.RuntimeOptions) (_result *UpdateFaceConfigResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &UpdateFaceConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateFaceConfig"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateFaceConfig(request *UpdateFaceConfigRequest) (_result *UpdateFaceConfigResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateFaceConfigResponse{}
-	_body, _err := client.UpdateFaceConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpdateVerifySettingWithOptions(request *UpdateVerifySettingRequest, runtime *util.RuntimeOptions) (_result *UpdateVerifySettingResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &UpdateVerifySettingResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateVerifySetting"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateVerifySetting(request *UpdateVerifySettingRequest) (_result *UpdateVerifySettingResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateVerifySettingResponse{}
-	_body, _err := client.UpdateVerifySettingWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) VerifyDeviceWithOptions(request *VerifyDeviceRequest, runtime *util.RuntimeOptions) (_result *VerifyDeviceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
 	}
 	_result = &VerifyDeviceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("VerifyDevice"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.DoRequest(tea.String("VerifyDevice"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-03-07"), tea.String("AK"), nil, tea.ToMap(request), runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6701,10 +5072,10 @@ func (client *Client) VerifyDeviceWithOptions(request *VerifyDeviceRequest, runt
 	return _result, _err
 }
 
-func (client *Client) VerifyDevice(request *VerifyDeviceRequest) (_result *VerifyDeviceResponse, _err error) {
+func (client *Client) VerifyDeviceSimply(request *VerifyDeviceRequest) (_result *VerifyDeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &VerifyDeviceResponse{}
-	_body, _err := client.VerifyDeviceWithOptions(request, runtime)
+	_body, _err := client.VerifyDevice(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6712,16 +5083,13 @@ func (client *Client) VerifyDevice(request *VerifyDeviceRequest) (_result *Verif
 	return _result, _err
 }
 
-func (client *Client) VerifyMaterialWithOptions(request *VerifyMaterialRequest, runtime *util.RuntimeOptions) (_result *VerifyMaterialResponse, _err error) {
+func (client *Client) ModifyDeviceInfo(request *ModifyDeviceInfoRequest, runtime *util.RuntimeOptions) (_result *ModifyDeviceInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &VerifyMaterialResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("VerifyMaterial"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_result = &ModifyDeviceInfoResponse{}
+	_body, _err := client.DoRequest(tea.String("ModifyDeviceInfo"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-03-07"), tea.String("AK"), nil, tea.ToMap(request), runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6729,10 +5097,529 @@ func (client *Client) VerifyMaterialWithOptions(request *VerifyMaterialRequest, 
 	return _result, _err
 }
 
-func (client *Client) VerifyMaterial(request *VerifyMaterialRequest) (_result *VerifyMaterialResponse, _err error) {
+func (client *Client) ModifyDeviceInfoSimply(request *ModifyDeviceInfoRequest) (_result *ModifyDeviceInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyDeviceInfoResponse{}
+	_body, _err := client.ModifyDeviceInfo(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeVerifySDK(request *DescribeVerifySDKRequest, runtime *util.RuntimeOptions) (_result *DescribeVerifySDKResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &DescribeVerifySDKResponse{}
+	_body, _err := client.DoRequest(tea.String("DescribeVerifySDK"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-03-07"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeVerifySDKSimply(request *DescribeVerifySDKRequest) (_result *DescribeVerifySDKResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeVerifySDKResponse{}
+	_body, _err := client.DescribeVerifySDK(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDeviceInfo(request *DescribeDeviceInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeDeviceInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &DescribeDeviceInfoResponse{}
+	_body, _err := client.DoRequest(tea.String("DescribeDeviceInfo"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-03-07"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDeviceInfoSimply(request *DescribeDeviceInfoRequest) (_result *DescribeDeviceInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDeviceInfoResponse{}
+	_body, _err := client.DescribeDeviceInfo(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateVerifySDK(request *CreateVerifySDKRequest, runtime *util.RuntimeOptions) (_result *CreateVerifySDKResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &CreateVerifySDKResponse{}
+	_body, _err := client.DoRequest(tea.String("CreateVerifySDK"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-03-07"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateVerifySDKSimply(request *CreateVerifySDKRequest) (_result *CreateVerifySDKResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateVerifySDKResponse{}
+	_body, _err := client.CreateVerifySDK(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateAuthKey(request *CreateAuthKeyRequest, runtime *util.RuntimeOptions) (_result *CreateAuthKeyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &CreateAuthKeyResponse{}
+	_body, _err := client.DoRequest(tea.String("CreateAuthKey"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-03-07"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateAuthKeySimply(request *CreateAuthKeyRequest) (_result *CreateAuthKeyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateAuthKeyResponse{}
+	_body, _err := client.CreateAuthKey(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DetectFaceAttributes(request *DetectFaceAttributesRequest, runtime *util.RuntimeOptions) (_result *DetectFaceAttributesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &DetectFaceAttributesResponse{}
+	_body, _err := client.DoRequest(tea.String("DetectFaceAttributes"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-03-07"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DetectFaceAttributesSimply(request *DetectFaceAttributesRequest) (_result *DetectFaceAttributesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DetectFaceAttributesResponse{}
+	_body, _err := client.DetectFaceAttributes(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CompareFaces(request *CompareFacesRequest, runtime *util.RuntimeOptions) (_result *CompareFacesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &CompareFacesResponse{}
+	_body, _err := client.DoRequest(tea.String("CompareFaces"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-03-07"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CompareFacesSimply(request *CompareFacesRequest) (_result *CompareFacesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CompareFacesResponse{}
+	_body, _err := client.CompareFaces(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeFaceUsage(request *DescribeFaceUsageRequest, runtime *util.RuntimeOptions) (_result *DescribeFaceUsageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &DescribeFaceUsageResponse{}
+	_body, _err := client.DoRequest(tea.String("DescribeFaceUsage"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-03-07"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeFaceUsageSimply(request *DescribeFaceUsageRequest) (_result *DescribeFaceUsageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeFaceUsageResponse{}
+	_body, _err := client.DescribeFaceUsage(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeVerifyRecords(request *DescribeVerifyRecordsRequest, runtime *util.RuntimeOptions) (_result *DescribeVerifyRecordsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &DescribeVerifyRecordsResponse{}
+	_body, _err := client.DoRequest(tea.String("DescribeVerifyRecords"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-03-07"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeVerifyRecordsSimply(request *DescribeVerifyRecordsRequest) (_result *DescribeVerifyRecordsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeVerifyRecordsResponse{}
+	_body, _err := client.DescribeVerifyRecords(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateVerifySetting(request *UpdateVerifySettingRequest, runtime *util.RuntimeOptions) (_result *UpdateVerifySettingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &UpdateVerifySettingResponse{}
+	_body, _err := client.DoRequest(tea.String("UpdateVerifySetting"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-03-07"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateVerifySettingSimply(request *UpdateVerifySettingRequest) (_result *UpdateVerifySettingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateVerifySettingResponse{}
+	_body, _err := client.UpdateVerifySetting(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateVerifySetting(request *CreateVerifySettingRequest, runtime *util.RuntimeOptions) (_result *CreateVerifySettingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &CreateVerifySettingResponse{}
+	_body, _err := client.DoRequest(tea.String("CreateVerifySetting"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-03-07"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateVerifySettingSimply(request *CreateVerifySettingRequest) (_result *CreateVerifySettingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateVerifySettingResponse{}
+	_body, _err := client.CreateVerifySetting(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeVerifySetting(request *DescribeVerifySettingRequest, runtime *util.RuntimeOptions) (_result *DescribeVerifySettingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &DescribeVerifySettingResponse{}
+	_body, _err := client.DoRequest(tea.String("DescribeVerifySetting"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-03-07"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeVerifySettingSimply(request *DescribeVerifySettingRequest) (_result *DescribeVerifySettingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeVerifySettingResponse{}
+	_body, _err := client.DescribeVerifySetting(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeVerifyUsage(request *DescribeVerifyUsageRequest, runtime *util.RuntimeOptions) (_result *DescribeVerifyUsageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &DescribeVerifyUsageResponse{}
+	_body, _err := client.DoRequest(tea.String("DescribeVerifyUsage"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-03-07"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeVerifyUsageSimply(request *DescribeVerifyUsageRequest) (_result *DescribeVerifyUsageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeVerifyUsageResponse{}
+	_body, _err := client.DescribeVerifyUsage(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeUserStatus(request *DescribeUserStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeUserStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &DescribeUserStatusResponse{}
+	_body, _err := client.DoRequest(tea.String("DescribeUserStatus"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-03-07"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeUserStatusSimply(request *DescribeUserStatusRequest) (_result *DescribeUserStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeUserStatusResponse{}
+	_body, _err := client.DescribeUserStatus(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeUploadInfo(request *DescribeUploadInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeUploadInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &DescribeUploadInfoResponse{}
+	_body, _err := client.DoRequest(tea.String("DescribeUploadInfo"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-03-07"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeUploadInfoSimply(request *DescribeUploadInfoRequest) (_result *DescribeUploadInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeUploadInfoResponse{}
+	_body, _err := client.DescribeUploadInfo(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeRPSDK(request *DescribeRPSDKRequest, runtime *util.RuntimeOptions) (_result *DescribeRPSDKResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &DescribeRPSDKResponse{}
+	_body, _err := client.DoRequest(tea.String("DescribeRPSDK"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-03-07"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeRPSDKSimply(request *DescribeRPSDKRequest) (_result *DescribeRPSDKResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeRPSDKResponse{}
+	_body, _err := client.DescribeRPSDK(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateRPSDK(request *CreateRPSDKRequest, runtime *util.RuntimeOptions) (_result *CreateRPSDKResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &CreateRPSDKResponse{}
+	_body, _err := client.DoRequest(tea.String("CreateRPSDK"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-03-07"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateRPSDKSimply(request *CreateRPSDKRequest) (_result *CreateRPSDKResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateRPSDKResponse{}
+	_body, _err := client.CreateRPSDK(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) VerifyMaterial(request *VerifyMaterialRequest, runtime *util.RuntimeOptions) (_result *VerifyMaterialResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &VerifyMaterialResponse{}
+	_body, _err := client.DoRequest(tea.String("VerifyMaterial"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-03-07"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) VerifyMaterialSimply(request *VerifyMaterialRequest) (_result *VerifyMaterialResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &VerifyMaterialResponse{}
-	_body, _err := client.VerifyMaterialWithOptions(request, runtime)
+	_body, _err := client.VerifyMaterial(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeVerifyResult(request *DescribeVerifyResultRequest, runtime *util.RuntimeOptions) (_result *DescribeVerifyResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &DescribeVerifyResultResponse{}
+	_body, _err := client.DoRequest(tea.String("DescribeVerifyResult"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-03-07"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeVerifyResultSimply(request *DescribeVerifyResultRequest) (_result *DescribeVerifyResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeVerifyResultResponse{}
+	_body, _err := client.DescribeVerifyResult(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeOssUploadToken(request *DescribeOssUploadTokenRequest, runtime *util.RuntimeOptions) (_result *DescribeOssUploadTokenResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &DescribeOssUploadTokenResponse{}
+	_body, _err := client.DoRequest(tea.String("DescribeOssUploadToken"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-03-07"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeOssUploadTokenSimply(request *DescribeOssUploadTokenRequest) (_result *DescribeOssUploadTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeOssUploadTokenResponse{}
+	_body, _err := client.DescribeOssUploadToken(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeVerifyToken(request *DescribeVerifyTokenRequest, runtime *util.RuntimeOptions) (_result *DescribeVerifyTokenResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &DescribeVerifyTokenResponse{}
+	_body, _err := client.DoRequest(tea.String("DescribeVerifyToken"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-03-07"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeVerifyTokenSimply(request *DescribeVerifyTokenRequest) (_result *DescribeVerifyTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeVerifyTokenResponse{}
+	_body, _err := client.DescribeVerifyToken(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
+	if !tea.BoolValue(util.Empty(endpoint)) {
+		_result = endpoint
+		return _result, _err
+	}
+
+	if !tea.BoolValue(util.IsUnset(endpointMap)) && !tea.BoolValue(util.Empty(endpointMap[tea.StringValue(regionId)])) {
+		_result = endpointMap[tea.StringValue(regionId)]
+		return _result, _err
+	}
+
+	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
 	if _err != nil {
 		return _result, _err
 	}
