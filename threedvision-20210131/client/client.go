@@ -123,6 +123,221 @@ func (s *ReconstructBodyBySingleImageResponse) SetBody(v *ReconstructBodyBySingl
 	return s
 }
 
+type ReconstructThreeDMultiViewRequest struct {
+	// A short description of struct
+	ZipFileUrl *string `json:"ZipFileUrl,omitempty" xml:"ZipFileUrl,omitempty"`
+	Mode       *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+}
+
+func (s ReconstructThreeDMultiViewRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReconstructThreeDMultiViewRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReconstructThreeDMultiViewRequest) SetZipFileUrl(v string) *ReconstructThreeDMultiViewRequest {
+	s.ZipFileUrl = &v
+	return s
+}
+
+func (s *ReconstructThreeDMultiViewRequest) SetMode(v string) *ReconstructThreeDMultiViewRequest {
+	s.Mode = &v
+	return s
+}
+
+type ReconstructThreeDMultiViewAdvanceRequest struct {
+	ZipFileUrlObject io.Reader `json:"ZipFileUrlObject,omitempty" xml:"ZipFileUrlObject,omitempty" require:"true"`
+	Mode             *string   `json:"Mode,omitempty" xml:"Mode,omitempty"`
+}
+
+func (s ReconstructThreeDMultiViewAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReconstructThreeDMultiViewAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReconstructThreeDMultiViewAdvanceRequest) SetZipFileUrlObject(v io.Reader) *ReconstructThreeDMultiViewAdvanceRequest {
+	s.ZipFileUrlObject = v
+	return s
+}
+
+func (s *ReconstructThreeDMultiViewAdvanceRequest) SetMode(v string) *ReconstructThreeDMultiViewAdvanceRequest {
+	s.Mode = &v
+	return s
+}
+
+type ReconstructThreeDMultiViewResponseBody struct {
+	// Id of the request
+	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *ReconstructThreeDMultiViewResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s ReconstructThreeDMultiViewResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReconstructThreeDMultiViewResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ReconstructThreeDMultiViewResponseBody) SetRequestId(v string) *ReconstructThreeDMultiViewResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ReconstructThreeDMultiViewResponseBody) SetData(v *ReconstructThreeDMultiViewResponseBodyData) *ReconstructThreeDMultiViewResponseBody {
+	s.Data = v
+	return s
+}
+
+type ReconstructThreeDMultiViewResponseBodyData struct {
+	PointCloudURL *string `json:"PointCloudURL,omitempty" xml:"PointCloudURL,omitempty"`
+}
+
+func (s ReconstructThreeDMultiViewResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReconstructThreeDMultiViewResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ReconstructThreeDMultiViewResponseBodyData) SetPointCloudURL(v string) *ReconstructThreeDMultiViewResponseBodyData {
+	s.PointCloudURL = &v
+	return s
+}
+
+type ReconstructThreeDMultiViewResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ReconstructThreeDMultiViewResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ReconstructThreeDMultiViewResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReconstructThreeDMultiViewResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReconstructThreeDMultiViewResponse) SetHeaders(v map[string]*string) *ReconstructThreeDMultiViewResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ReconstructThreeDMultiViewResponse) SetBody(v *ReconstructThreeDMultiViewResponseBody) *ReconstructThreeDMultiViewResponse {
+	s.Body = v
+	return s
+}
+
+type GetAsyncJobResultRequest struct {
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s GetAsyncJobResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAsyncJobResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAsyncJobResultRequest) SetJobId(v string) *GetAsyncJobResultRequest {
+	s.JobId = &v
+	return s
+}
+
+type GetAsyncJobResultResponseBody struct {
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *GetAsyncJobResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s GetAsyncJobResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAsyncJobResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAsyncJobResultResponseBody) SetRequestId(v string) *GetAsyncJobResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAsyncJobResultResponseBody) SetData(v *GetAsyncJobResultResponseBodyData) *GetAsyncJobResultResponseBody {
+	s.Data = v
+	return s
+}
+
+type GetAsyncJobResultResponseBodyData struct {
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Result       *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	JobId        *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s GetAsyncJobResultResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAsyncJobResultResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetAsyncJobResultResponseBodyData) SetStatus(v string) *GetAsyncJobResultResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetAsyncJobResultResponseBodyData) SetErrorMessage(v string) *GetAsyncJobResultResponseBodyData {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetAsyncJobResultResponseBodyData) SetResult(v string) *GetAsyncJobResultResponseBodyData {
+	s.Result = &v
+	return s
+}
+
+func (s *GetAsyncJobResultResponseBodyData) SetErrorCode(v string) *GetAsyncJobResultResponseBodyData {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetAsyncJobResultResponseBodyData) SetJobId(v string) *GetAsyncJobResultResponseBodyData {
+	s.JobId = &v
+	return s
+}
+
+type GetAsyncJobResultResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetAsyncJobResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAsyncJobResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAsyncJobResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAsyncJobResultResponse) SetHeaders(v map[string]*string) *GetAsyncJobResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAsyncJobResultResponse) SetBody(v *GetAsyncJobResultResponseBody) *GetAsyncJobResultResponse {
+	s.Body = v
+	return s
+}
+
 type EstimateMonocularImageDepthRequest struct {
 	// A short description of struct
 	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
@@ -481,6 +696,149 @@ func (client *Client) ReconstructBodyBySingleImageAdvance(request *ReconstructBo
 	}
 
 	_result = reconstructBodyBySingleImageResp
+	return _result, _err
+}
+
+func (client *Client) ReconstructThreeDMultiViewWithOptions(request *ReconstructThreeDMultiViewRequest, runtime *util.RuntimeOptions) (_result *ReconstructThreeDMultiViewResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ReconstructThreeDMultiViewResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ReconstructThreeDMultiView"), tea.String("2021-01-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ReconstructThreeDMultiView(request *ReconstructThreeDMultiViewRequest) (_result *ReconstructThreeDMultiViewResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ReconstructThreeDMultiViewResponse{}
+	_body, _err := client.ReconstructThreeDMultiViewWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ReconstructThreeDMultiViewAdvance(request *ReconstructThreeDMultiViewAdvanceRequest, runtime *util.RuntimeOptions) (_result *ReconstructThreeDMultiViewResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("threedvision"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	reconstructThreeDMultiViewReq := &ReconstructThreeDMultiViewRequest{}
+	openapiutil.Convert(request, reconstructThreeDMultiViewReq)
+	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	ossConfig.AccessKeyId = authResponse.AccessKeyId
+	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+	ossClient, _err = oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	fileObj = &fileform.FileField{
+		Filename:    authResponse.ObjectKey,
+		Content:     request.ZipFileUrlObject,
+		ContentType: tea.String(""),
+	}
+	ossHeader = &oss.PostObjectRequestHeader{
+		AccessKeyId:         authResponse.AccessKeyId,
+		Policy:              authResponse.EncodedPolicy,
+		Signature:           authResponse.Signature,
+		Key:                 authResponse.ObjectKey,
+		File:                fileObj,
+		SuccessActionStatus: tea.String("201"),
+	}
+	uploadRequest = &oss.PostObjectRequest{
+		BucketName: authResponse.Bucket,
+		Header:     ossHeader,
+	}
+	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+	if _err != nil {
+		return _result, _err
+	}
+	reconstructThreeDMultiViewReq.ZipFileUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	reconstructThreeDMultiViewResp, _err := client.ReconstructThreeDMultiViewWithOptions(reconstructThreeDMultiViewReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = reconstructThreeDMultiViewResp
+	return _result, _err
+}
+
+func (client *Client) GetAsyncJobResultWithOptions(request *GetAsyncJobResultRequest, runtime *util.RuntimeOptions) (_result *GetAsyncJobResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetAsyncJobResultResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetAsyncJobResult"), tea.String("2021-01-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAsyncJobResult(request *GetAsyncJobResultRequest) (_result *GetAsyncJobResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAsyncJobResultResponse{}
+	_body, _err := client.GetAsyncJobResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
 
