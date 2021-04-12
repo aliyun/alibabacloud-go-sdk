@@ -36,7 +36,6 @@ type CreateContainerGroupRequest struct {
 	RamRoleName                   *string                                               `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
 	TerminationGracePeriodSeconds *int64                                                `json:"TerminationGracePeriodSeconds,omitempty" xml:"TerminationGracePeriodSeconds,omitempty"`
 	AutoMatchImageCache           *bool                                                 `json:"AutoMatchImageCache,omitempty" xml:"AutoMatchImageCache,omitempty"`
-	VkClientVersion               *string                                               `json:"VkClientVersion,omitempty" xml:"VkClientVersion,omitempty"`
 	Ipv6AddressCount              *int32                                                `json:"Ipv6AddressCount,omitempty" xml:"Ipv6AddressCount,omitempty"`
 	ActiveDeadlineSeconds         *int64                                                `json:"ActiveDeadlineSeconds,omitempty" xml:"ActiveDeadlineSeconds,omitempty"`
 	SpotStrategy                  *string                                               `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
@@ -195,11 +194,6 @@ func (s *CreateContainerGroupRequest) SetTerminationGracePeriodSeconds(v int64) 
 
 func (s *CreateContainerGroupRequest) SetAutoMatchImageCache(v bool) *CreateContainerGroupRequest {
 	s.AutoMatchImageCache = &v
-	return s
-}
-
-func (s *CreateContainerGroupRequest) SetVkClientVersion(v string) *CreateContainerGroupRequest {
-	s.VkClientVersion = &v
 	return s
 }
 
@@ -1066,10 +1060,11 @@ func (s *CreateContainerGroupRequestContainerEnvironmentVarFieldRef) SetFieldPat
 }
 
 type CreateContainerGroupRequestContainerVolumeMount struct {
-	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	ReadOnly  *bool   `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
-	SubPath   *string `json:"SubPath,omitempty" xml:"SubPath,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	MountPropagation *string `json:"MountPropagation,omitempty" xml:"MountPropagation,omitempty"`
+	MountPath        *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	ReadOnly         *bool   `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
+	SubPath          *string `json:"SubPath,omitempty" xml:"SubPath,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s CreateContainerGroupRequestContainerVolumeMount) String() string {
@@ -1078,6 +1073,11 @@ func (s CreateContainerGroupRequestContainerVolumeMount) String() string {
 
 func (s CreateContainerGroupRequestContainerVolumeMount) GoString() string {
 	return s.String()
+}
+
+func (s *CreateContainerGroupRequestContainerVolumeMount) SetMountPropagation(v string) *CreateContainerGroupRequestContainerVolumeMount {
+	s.MountPropagation = &v
+	return s
 }
 
 func (s *CreateContainerGroupRequestContainerVolumeMount) SetMountPath(v string) *CreateContainerGroupRequestContainerVolumeMount {
@@ -1555,10 +1555,11 @@ func (s *CreateContainerGroupRequestInitContainerSecurityContextCapability) SetA
 }
 
 type CreateContainerGroupRequestInitContainerVolumeMount struct {
-	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	ReadOnly  *bool   `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
-	SubPath   *string `json:"SubPath,omitempty" xml:"SubPath,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	MountPropagation *string `json:"MountPropagation,omitempty" xml:"MountPropagation,omitempty"`
+	MountPath        *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	ReadOnly         *bool   `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
+	SubPath          *string `json:"SubPath,omitempty" xml:"SubPath,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s CreateContainerGroupRequestInitContainerVolumeMount) String() string {
@@ -1567,6 +1568,11 @@ func (s CreateContainerGroupRequestInitContainerVolumeMount) String() string {
 
 func (s CreateContainerGroupRequestInitContainerVolumeMount) GoString() string {
 	return s.String()
+}
+
+func (s *CreateContainerGroupRequestInitContainerVolumeMount) SetMountPropagation(v string) *CreateContainerGroupRequestInitContainerVolumeMount {
+	s.MountPropagation = &v
+	return s
 }
 
 func (s *CreateContainerGroupRequestInitContainerVolumeMount) SetMountPath(v string) *CreateContainerGroupRequestInitContainerVolumeMount {
@@ -1805,7 +1811,6 @@ type CreateImageCacheRequest struct {
 	ResourceGroupId         *string                                           `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ClientToken             *string                                           `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	ImageCacheSize          *int32                                            `json:"ImageCacheSize,omitempty" xml:"ImageCacheSize,omitempty"`
-	VkClientVersion         *string                                           `json:"VkClientVersion,omitempty" xml:"VkClientVersion,omitempty"`
 	RetentionDays           *int32                                            `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
 	AutoMatchImageCache     *bool                                             `json:"AutoMatchImageCache,omitempty" xml:"AutoMatchImageCache,omitempty"`
 	ImageRegistryCredential []*CreateImageCacheRequestImageRegistryCredential `json:"ImageRegistryCredential,omitempty" xml:"ImageRegistryCredential,omitempty" type:"Repeated"`
@@ -1883,11 +1888,6 @@ func (s *CreateImageCacheRequest) SetClientToken(v string) *CreateImageCacheRequ
 
 func (s *CreateImageCacheRequest) SetImageCacheSize(v int32) *CreateImageCacheRequest {
 	s.ImageCacheSize = &v
-	return s
-}
-
-func (s *CreateImageCacheRequest) SetVkClientVersion(v string) *CreateImageCacheRequest {
-	s.VkClientVersion = &v
 	return s
 }
 
@@ -2028,7 +2028,6 @@ type DeleteContainerGroupRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ContainerGroupId     *string `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
 	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	VkClientVersion      *string `json:"VkClientVersion,omitempty" xml:"VkClientVersion,omitempty"`
 }
 
 func (s DeleteContainerGroupRequest) String() string {
@@ -2071,11 +2070,6 @@ func (s *DeleteContainerGroupRequest) SetContainerGroupId(v string) *DeleteConta
 
 func (s *DeleteContainerGroupRequest) SetClientToken(v string) *DeleteContainerGroupRequest {
 	s.ClientToken = &v
-	return s
-}
-
-func (s *DeleteContainerGroupRequest) SetVkClientVersion(v string) *DeleteContainerGroupRequest {
-	s.VkClientVersion = &v
 	return s
 }
 
@@ -2127,7 +2121,6 @@ type DeleteImageCacheRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ImageCacheId         *string `json:"ImageCacheId,omitempty" xml:"ImageCacheId,omitempty"`
 	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	VkClientVersion      *string `json:"VkClientVersion,omitempty" xml:"VkClientVersion,omitempty"`
 }
 
 func (s DeleteImageCacheRequest) String() string {
@@ -2170,11 +2163,6 @@ func (s *DeleteImageCacheRequest) SetImageCacheId(v string) *DeleteImageCacheReq
 
 func (s *DeleteImageCacheRequest) SetClientToken(v string) *DeleteImageCacheRequest {
 	s.ClientToken = &v
-	return s
-}
-
-func (s *DeleteImageCacheRequest) SetVkClientVersion(v string) *DeleteImageCacheRequest {
-	s.VkClientVersion = &v
 	return s
 }
 
@@ -2228,7 +2216,6 @@ type DescribeContainerGroupMetricRequest struct {
 	StartTime            *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	EndTime              *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Period               *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	VkClientVersion      *string `json:"VkClientVersion,omitempty" xml:"VkClientVersion,omitempty"`
 }
 
 func (s DescribeContainerGroupMetricRequest) String() string {
@@ -2284,11 +2271,6 @@ func (s *DescribeContainerGroupMetricRequest) SetPeriod(v string) *DescribeConta
 	return s
 }
 
-func (s *DescribeContainerGroupMetricRequest) SetVkClientVersion(v string) *DescribeContainerGroupMetricRequest {
-	s.VkClientVersion = &v
-	return s
-}
-
 type DescribeContainerGroupMetricResponseBody struct {
 	RequestId        *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ContainerGroupId *string                                            `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
@@ -2321,8 +2303,10 @@ func (s *DescribeContainerGroupMetricResponseBody) SetRecords(v []*DescribeConta
 type DescribeContainerGroupMetricResponseBodyRecords struct {
 	Network    *DescribeContainerGroupMetricResponseBodyRecordsNetwork      `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
 	CPU        *DescribeContainerGroupMetricResponseBodyRecordsCPU          `json:"CPU,omitempty" xml:"CPU,omitempty" type:"Struct"`
+	Disk       []*DescribeContainerGroupMetricResponseBodyRecordsDisk       `json:"Disk,omitempty" xml:"Disk,omitempty" type:"Repeated"`
 	Timestamp  *string                                                      `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 	Memory     *DescribeContainerGroupMetricResponseBodyRecordsMemory       `json:"Memory,omitempty" xml:"Memory,omitempty" type:"Struct"`
+	Filesystem []*DescribeContainerGroupMetricResponseBodyRecordsFilesystem `json:"Filesystem,omitempty" xml:"Filesystem,omitempty" type:"Repeated"`
 	Containers []*DescribeContainerGroupMetricResponseBodyRecordsContainers `json:"Containers,omitempty" xml:"Containers,omitempty" type:"Repeated"`
 }
 
@@ -2344,6 +2328,11 @@ func (s *DescribeContainerGroupMetricResponseBodyRecords) SetCPU(v *DescribeCont
 	return s
 }
 
+func (s *DescribeContainerGroupMetricResponseBodyRecords) SetDisk(v []*DescribeContainerGroupMetricResponseBodyRecordsDisk) *DescribeContainerGroupMetricResponseBodyRecords {
+	s.Disk = v
+	return s
+}
+
 func (s *DescribeContainerGroupMetricResponseBodyRecords) SetTimestamp(v string) *DescribeContainerGroupMetricResponseBodyRecords {
 	s.Timestamp = &v
 	return s
@@ -2351,6 +2340,11 @@ func (s *DescribeContainerGroupMetricResponseBodyRecords) SetTimestamp(v string)
 
 func (s *DescribeContainerGroupMetricResponseBodyRecords) SetMemory(v *DescribeContainerGroupMetricResponseBodyRecordsMemory) *DescribeContainerGroupMetricResponseBodyRecords {
 	s.Memory = v
+	return s
+}
+
+func (s *DescribeContainerGroupMetricResponseBodyRecords) SetFilesystem(v []*DescribeContainerGroupMetricResponseBodyRecordsFilesystem) *DescribeContainerGroupMetricResponseBodyRecords {
+	s.Filesystem = v
 	return s
 }
 
@@ -2377,11 +2371,15 @@ func (s *DescribeContainerGroupMetricResponseBodyRecordsNetwork) SetInterfaces(v
 }
 
 type DescribeContainerGroupMetricResponseBodyRecordsNetworkInterfaces struct {
-	RxErrors *int64  `json:"RxErrors,omitempty" xml:"RxErrors,omitempty"`
-	TxBytes  *int64  `json:"TxBytes,omitempty" xml:"TxBytes,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	TxErrors *int64  `json:"TxErrors,omitempty" xml:"TxErrors,omitempty"`
-	RxBytes  *int64  `json:"RxBytes,omitempty" xml:"RxBytes,omitempty"`
+	RxErrors  *int64  `json:"RxErrors,omitempty" xml:"RxErrors,omitempty"`
+	TxDrops   *int64  `json:"TxDrops,omitempty" xml:"TxDrops,omitempty"`
+	TxBytes   *int64  `json:"TxBytes,omitempty" xml:"TxBytes,omitempty"`
+	RxPackets *int64  `json:"RxPackets,omitempty" xml:"RxPackets,omitempty"`
+	TxPackets *int64  `json:"TxPackets,omitempty" xml:"TxPackets,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	TxErrors  *int64  `json:"TxErrors,omitempty" xml:"TxErrors,omitempty"`
+	RxBytes   *int64  `json:"RxBytes,omitempty" xml:"RxBytes,omitempty"`
+	RxDrops   *int64  `json:"RxDrops,omitempty" xml:"RxDrops,omitempty"`
 }
 
 func (s DescribeContainerGroupMetricResponseBodyRecordsNetworkInterfaces) String() string {
@@ -2397,8 +2395,23 @@ func (s *DescribeContainerGroupMetricResponseBodyRecordsNetworkInterfaces) SetRx
 	return s
 }
 
+func (s *DescribeContainerGroupMetricResponseBodyRecordsNetworkInterfaces) SetTxDrops(v int64) *DescribeContainerGroupMetricResponseBodyRecordsNetworkInterfaces {
+	s.TxDrops = &v
+	return s
+}
+
 func (s *DescribeContainerGroupMetricResponseBodyRecordsNetworkInterfaces) SetTxBytes(v int64) *DescribeContainerGroupMetricResponseBodyRecordsNetworkInterfaces {
 	s.TxBytes = &v
+	return s
+}
+
+func (s *DescribeContainerGroupMetricResponseBodyRecordsNetworkInterfaces) SetRxPackets(v int64) *DescribeContainerGroupMetricResponseBodyRecordsNetworkInterfaces {
+	s.RxPackets = &v
+	return s
+}
+
+func (s *DescribeContainerGroupMetricResponseBodyRecordsNetworkInterfaces) SetTxPackets(v int64) *DescribeContainerGroupMetricResponseBodyRecordsNetworkInterfaces {
+	s.TxPackets = &v
 	return s
 }
 
@@ -2414,6 +2427,11 @@ func (s *DescribeContainerGroupMetricResponseBodyRecordsNetworkInterfaces) SetTx
 
 func (s *DescribeContainerGroupMetricResponseBodyRecordsNetworkInterfaces) SetRxBytes(v int64) *DescribeContainerGroupMetricResponseBodyRecordsNetworkInterfaces {
 	s.RxBytes = &v
+	return s
+}
+
+func (s *DescribeContainerGroupMetricResponseBodyRecordsNetworkInterfaces) SetRxDrops(v int64) *DescribeContainerGroupMetricResponseBodyRecordsNetworkInterfaces {
+	s.RxDrops = &v
 	return s
 }
 
@@ -2449,6 +2467,47 @@ func (s *DescribeContainerGroupMetricResponseBodyRecordsCPU) SetUsageCoreNanoSec
 
 func (s *DescribeContainerGroupMetricResponseBodyRecordsCPU) SetLoad(v int64) *DescribeContainerGroupMetricResponseBodyRecordsCPU {
 	s.Load = &v
+	return s
+}
+
+type DescribeContainerGroupMetricResponseBodyRecordsDisk struct {
+	WriteBytes *int64  `json:"WriteBytes,omitempty" xml:"WriteBytes,omitempty"`
+	WriteIO    *int64  `json:"WriteIO,omitempty" xml:"WriteIO,omitempty"`
+	Device     *string `json:"Device,omitempty" xml:"Device,omitempty"`
+	ReadIO     *int64  `json:"ReadIO,omitempty" xml:"ReadIO,omitempty"`
+	ReadBytes  *int64  `json:"ReadBytes,omitempty" xml:"ReadBytes,omitempty"`
+}
+
+func (s DescribeContainerGroupMetricResponseBodyRecordsDisk) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerGroupMetricResponseBodyRecordsDisk) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerGroupMetricResponseBodyRecordsDisk) SetWriteBytes(v int64) *DescribeContainerGroupMetricResponseBodyRecordsDisk {
+	s.WriteBytes = &v
+	return s
+}
+
+func (s *DescribeContainerGroupMetricResponseBodyRecordsDisk) SetWriteIO(v int64) *DescribeContainerGroupMetricResponseBodyRecordsDisk {
+	s.WriteIO = &v
+	return s
+}
+
+func (s *DescribeContainerGroupMetricResponseBodyRecordsDisk) SetDevice(v string) *DescribeContainerGroupMetricResponseBodyRecordsDisk {
+	s.Device = &v
+	return s
+}
+
+func (s *DescribeContainerGroupMetricResponseBodyRecordsDisk) SetReadIO(v int64) *DescribeContainerGroupMetricResponseBodyRecordsDisk {
+	s.ReadIO = &v
+	return s
+}
+
+func (s *DescribeContainerGroupMetricResponseBodyRecordsDisk) SetReadBytes(v int64) *DescribeContainerGroupMetricResponseBodyRecordsDisk {
+	s.ReadBytes = &v
 	return s
 }
 
@@ -2490,6 +2549,41 @@ func (s *DescribeContainerGroupMetricResponseBodyRecordsMemory) SetAvailableByte
 
 func (s *DescribeContainerGroupMetricResponseBodyRecordsMemory) SetCache(v int64) *DescribeContainerGroupMetricResponseBodyRecordsMemory {
 	s.Cache = &v
+	return s
+}
+
+type DescribeContainerGroupMetricResponseBodyRecordsFilesystem struct {
+	Capacity  *int64  `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	Available *int64  `json:"Available,omitempty" xml:"Available,omitempty"`
+	FsName    *string `json:"FsName,omitempty" xml:"FsName,omitempty"`
+	Usage     *int64  `json:"Usage,omitempty" xml:"Usage,omitempty"`
+}
+
+func (s DescribeContainerGroupMetricResponseBodyRecordsFilesystem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerGroupMetricResponseBodyRecordsFilesystem) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerGroupMetricResponseBodyRecordsFilesystem) SetCapacity(v int64) *DescribeContainerGroupMetricResponseBodyRecordsFilesystem {
+	s.Capacity = &v
+	return s
+}
+
+func (s *DescribeContainerGroupMetricResponseBodyRecordsFilesystem) SetAvailable(v int64) *DescribeContainerGroupMetricResponseBodyRecordsFilesystem {
+	s.Available = &v
+	return s
+}
+
+func (s *DescribeContainerGroupMetricResponseBodyRecordsFilesystem) SetFsName(v string) *DescribeContainerGroupMetricResponseBodyRecordsFilesystem {
+	s.FsName = &v
+	return s
+}
+
+func (s *DescribeContainerGroupMetricResponseBodyRecordsFilesystem) SetUsage(v int64) *DescribeContainerGroupMetricResponseBodyRecordsFilesystem {
+	s.Usage = &v
 	return s
 }
 
@@ -2633,6 +2727,7 @@ type DescribeContainerGroupPriceRequest struct {
 	SpotStrategy         *string  `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
 	ZoneId               *string  `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 	SpotPriceLimit       *float32 `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty"`
+	EphemeralStorage     *int32   `json:"EphemeralStorage,omitempty" xml:"EphemeralStorage,omitempty"`
 }
 
 func (s DescribeContainerGroupPriceRequest) String() string {
@@ -2695,6 +2790,11 @@ func (s *DescribeContainerGroupPriceRequest) SetZoneId(v string) *DescribeContai
 
 func (s *DescribeContainerGroupPriceRequest) SetSpotPriceLimit(v float32) *DescribeContainerGroupPriceRequest {
 	s.SpotPriceLimit = &v
+	return s
+}
+
+func (s *DescribeContainerGroupPriceRequest) SetEphemeralStorage(v int32) *DescribeContainerGroupPriceRequest {
+	s.EphemeralStorage = &v
 	return s
 }
 
@@ -3017,7 +3117,6 @@ type DescribeContainerGroupsRequest struct {
 	ContainerGroupIds    *string                              `json:"ContainerGroupIds,omitempty" xml:"ContainerGroupIds,omitempty"`
 	ContainerGroupName   *string                              `json:"ContainerGroupName,omitempty" xml:"ContainerGroupName,omitempty"`
 	Status               *string                              `json:"Status,omitempty" xml:"Status,omitempty"`
-	VkClientVersion      *string                              `json:"VkClientVersion,omitempty" xml:"VkClientVersion,omitempty"`
 	ResourceGroupId      *string                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	WithEvent            *bool                                `json:"WithEvent,omitempty" xml:"WithEvent,omitempty"`
 	Tag                  []*DescribeContainerGroupsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -3088,11 +3187,6 @@ func (s *DescribeContainerGroupsRequest) SetContainerGroupName(v string) *Descri
 
 func (s *DescribeContainerGroupsRequest) SetStatus(v string) *DescribeContainerGroupsRequest {
 	s.Status = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsRequest) SetVkClientVersion(v string) *DescribeContainerGroupsRequest {
-	s.VkClientVersion = &v
 	return s
 }
 
@@ -3191,9 +3285,10 @@ type DescribeContainerGroupsResponseBodyContainerGroups struct {
 	EniInstanceId         *string                                                               `json:"EniInstanceId,omitempty" xml:"EniInstanceId,omitempty"`
 	InitContainers        []*DescribeContainerGroupsResponseBodyContainerGroupsInitContainers   `json:"InitContainers,omitempty" xml:"InitContainers,omitempty" type:"Repeated"`
 	ContainerGroupId      *string                                                               `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
+	TenantEniIp           *string                                                               `json:"TenantEniIp,omitempty" xml:"TenantEniIp,omitempty"`
 	InstanceType          *string                                                               `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	Ipv6Address           *string                                                               `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty"`
 	IntranetIp            *string                                                               `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	Ipv6Address           *string                                                               `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty"`
 	RegionId              *string                                                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	DnsConfig             *DescribeContainerGroupsResponseBodyContainerGroupsDnsConfig          `json:"DnsConfig,omitempty" xml:"DnsConfig,omitempty" type:"Struct"`
 	Volumes               []*DescribeContainerGroupsResponseBodyContainerGroupsVolumes          `json:"Volumes,omitempty" xml:"Volumes,omitempty" type:"Repeated"`
@@ -3321,18 +3416,23 @@ func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetContainerGroupId
 	return s
 }
 
+func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetTenantEniIp(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
+	s.TenantEniIp = &v
+	return s
+}
+
 func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetInstanceType(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
 	s.InstanceType = &v
 	return s
 }
 
-func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetIpv6Address(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
-	s.Ipv6Address = &v
+func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetIntranetIp(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
+	s.IntranetIp = &v
 	return s
 }
 
-func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetIntranetIp(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
-	s.IntranetIp = &v
+func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetIpv6Address(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
+	s.Ipv6Address = &v
 	return s
 }
 
@@ -3750,9 +3850,10 @@ func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessPro
 }
 
 type DescribeContainerGroupsResponseBodyContainerGroupsContainersVolumeMounts struct {
-	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	ReadOnly  *bool   `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	MountPropagation *string `json:"MountPropagation,omitempty" xml:"MountPropagation,omitempty"`
+	MountPath        *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	ReadOnly         *bool   `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersVolumeMounts) String() string {
@@ -3761,6 +3862,11 @@ func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersVolumeMounts
 
 func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersVolumeMounts) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersVolumeMounts) SetMountPropagation(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersVolumeMounts {
+	s.MountPropagation = &v
+	return s
 }
 
 func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersVolumeMounts) SetMountPath(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersVolumeMounts {
@@ -4253,9 +4359,10 @@ func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers) SetEn
 }
 
 type DescribeContainerGroupsResponseBodyContainerGroupsInitContainersVolumeMounts struct {
-	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	ReadOnly  *bool   `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	MountPropagation *string `json:"MountPropagation,omitempty" xml:"MountPropagation,omitempty"`
+	MountPath        *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	ReadOnly         *bool   `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainersVolumeMounts) String() string {
@@ -4264,6 +4371,11 @@ func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainersVolumeMo
 
 func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainersVolumeMounts) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersVolumeMounts) SetMountPropagation(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersVolumeMounts {
+	s.MountPropagation = &v
+	return s
 }
 
 func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersVolumeMounts) SetMountPath(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersVolumeMounts {
@@ -5023,6 +5135,7 @@ type DescribeImageCachesResponseBodyImageCaches struct {
 	RegionId         *string                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SnapshotId       *string                                             `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 	ResourceGroupId  *string                                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ImageCacheSize   *int32                                              `json:"ImageCacheSize,omitempty" xml:"ImageCacheSize,omitempty"`
 	ImageCacheName   *string                                             `json:"ImageCacheName,omitempty" xml:"ImageCacheName,omitempty"`
 }
 
@@ -5091,6 +5204,11 @@ func (s *DescribeImageCachesResponseBodyImageCaches) SetSnapshotId(v string) *De
 
 func (s *DescribeImageCachesResponseBodyImageCaches) SetResourceGroupId(v string) *DescribeImageCachesResponseBodyImageCaches {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeImageCachesResponseBodyImageCaches) SetImageCacheSize(v int32) *DescribeImageCachesResponseBodyImageCaches {
+	s.ImageCacheSize = &v
 	return s
 }
 
@@ -5306,9 +5424,11 @@ func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatas) SetContainer
 type DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecords struct {
 	Network    *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsNetwork      `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
 	CPU        *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsCPU          `json:"CPU,omitempty" xml:"CPU,omitempty" type:"Struct"`
+	Disk       []*DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsDisk       `json:"Disk,omitempty" xml:"Disk,omitempty" type:"Repeated"`
 	Timestamp  *string                                                                       `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 	Memory     *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsMemory       `json:"Memory,omitempty" xml:"Memory,omitempty" type:"Struct"`
 	Containers []*DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsContainers `json:"Containers,omitempty" xml:"Containers,omitempty" type:"Repeated"`
+	Filesystem []*DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsFilesystem `json:"Filesystem,omitempty" xml:"Filesystem,omitempty" type:"Repeated"`
 }
 
 func (s DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecords) String() string {
@@ -5329,6 +5449,11 @@ func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecords) SetCP
 	return s
 }
 
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecords) SetDisk(v []*DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsDisk) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecords {
+	s.Disk = v
+	return s
+}
+
 func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecords) SetTimestamp(v string) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecords {
 	s.Timestamp = &v
 	return s
@@ -5341,6 +5466,11 @@ func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecords) SetMe
 
 func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecords) SetContainers(v []*DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsContainers) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecords {
 	s.Containers = v
+	return s
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecords) SetFilesystem(v []*DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsFilesystem) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecords {
+	s.Filesystem = v
 	return s
 }
 
@@ -5362,11 +5492,15 @@ func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsNetwork
 }
 
 type DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsNetworkInterfaces struct {
-	RxErrors *int64  `json:"RxErrors,omitempty" xml:"RxErrors,omitempty"`
-	TxBytes  *int64  `json:"TxBytes,omitempty" xml:"TxBytes,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	TxErrors *int64  `json:"TxErrors,omitempty" xml:"TxErrors,omitempty"`
-	RxBytes  *int64  `json:"RxBytes,omitempty" xml:"RxBytes,omitempty"`
+	RxErrors  *int64  `json:"RxErrors,omitempty" xml:"RxErrors,omitempty"`
+	TxDrops   *int64  `json:"TxDrops,omitempty" xml:"TxDrops,omitempty"`
+	TxBytes   *int64  `json:"TxBytes,omitempty" xml:"TxBytes,omitempty"`
+	RxPackets *int64  `json:"RxPackets,omitempty" xml:"RxPackets,omitempty"`
+	TxPackets *int64  `json:"TxPackets,omitempty" xml:"TxPackets,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	TxErrors  *int64  `json:"TxErrors,omitempty" xml:"TxErrors,omitempty"`
+	RxBytes   *int64  `json:"RxBytes,omitempty" xml:"RxBytes,omitempty"`
+	RxDrops   *int64  `json:"RxDrops,omitempty" xml:"RxDrops,omitempty"`
 }
 
 func (s DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsNetworkInterfaces) String() string {
@@ -5382,8 +5516,23 @@ func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsNetwork
 	return s
 }
 
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsNetworkInterfaces) SetTxDrops(v int64) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsNetworkInterfaces {
+	s.TxDrops = &v
+	return s
+}
+
 func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsNetworkInterfaces) SetTxBytes(v int64) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsNetworkInterfaces {
 	s.TxBytes = &v
+	return s
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsNetworkInterfaces) SetRxPackets(v int64) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsNetworkInterfaces {
+	s.RxPackets = &v
+	return s
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsNetworkInterfaces) SetTxPackets(v int64) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsNetworkInterfaces {
+	s.TxPackets = &v
 	return s
 }
 
@@ -5399,6 +5548,11 @@ func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsNetwork
 
 func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsNetworkInterfaces) SetRxBytes(v int64) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsNetworkInterfaces {
 	s.RxBytes = &v
+	return s
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsNetworkInterfaces) SetRxDrops(v int64) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsNetworkInterfaces {
+	s.RxDrops = &v
 	return s
 }
 
@@ -5434,6 +5588,47 @@ func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsCPU) Se
 
 func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsCPU) SetLoad(v int64) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsCPU {
 	s.Load = &v
+	return s
+}
+
+type DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsDisk struct {
+	WriteBytes *int64  `json:"WriteBytes,omitempty" xml:"WriteBytes,omitempty"`
+	Device     *string `json:"Device,omitempty" xml:"Device,omitempty"`
+	WriteIo    *int64  `json:"WriteIo,omitempty" xml:"WriteIo,omitempty"`
+	ReadBytes  *int64  `json:"ReadBytes,omitempty" xml:"ReadBytes,omitempty"`
+	ReadIo     *int64  `json:"ReadIo,omitempty" xml:"ReadIo,omitempty"`
+}
+
+func (s DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsDisk) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsDisk) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsDisk) SetWriteBytes(v int64) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsDisk {
+	s.WriteBytes = &v
+	return s
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsDisk) SetDevice(v string) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsDisk {
+	s.Device = &v
+	return s
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsDisk) SetWriteIo(v int64) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsDisk {
+	s.WriteIo = &v
+	return s
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsDisk) SetReadBytes(v int64) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsDisk {
+	s.ReadBytes = &v
+	return s
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsDisk) SetReadIo(v int64) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsDisk {
+	s.ReadIo = &v
 	return s
 }
 
@@ -5580,6 +5775,41 @@ func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsContain
 
 func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsContainersMemory) SetCache(v int64) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsContainersMemory {
 	s.Cache = &v
+	return s
+}
+
+type DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsFilesystem struct {
+	Capacity  *int64  `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	Available *int64  `json:"Available,omitempty" xml:"Available,omitempty"`
+	FsName    *string `json:"FsName,omitempty" xml:"FsName,omitempty"`
+	Usage     *int64  `json:"Usage,omitempty" xml:"Usage,omitempty"`
+}
+
+func (s DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsFilesystem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsFilesystem) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsFilesystem) SetCapacity(v int64) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsFilesystem {
+	s.Capacity = &v
+	return s
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsFilesystem) SetAvailable(v int64) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsFilesystem {
+	s.Available = &v
+	return s
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsFilesystem) SetFsName(v string) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsFilesystem {
+	s.FsName = &v
+	return s
+}
+
+func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsFilesystem) SetUsage(v int64) *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsFilesystem {
+	s.Usage = &v
 	return s
 }
 
@@ -7231,6 +7461,7 @@ func (s *ExecContainerCommandRequest) SetStdin(v bool) *ExecContainerCommandRequ
 type ExecContainerCommandResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	WebSocketUri *string `json:"WebSocketUri,omitempty" xml:"WebSocketUri,omitempty"`
+	HttpUrl      *string `json:"HttpUrl,omitempty" xml:"HttpUrl,omitempty"`
 }
 
 func (s ExecContainerCommandResponseBody) String() string {
@@ -7248,6 +7479,11 @@ func (s *ExecContainerCommandResponseBody) SetRequestId(v string) *ExecContainer
 
 func (s *ExecContainerCommandResponseBody) SetWebSocketUri(v string) *ExecContainerCommandResponseBody {
 	s.WebSocketUri = &v
+	return s
+}
+
+func (s *ExecContainerCommandResponseBody) SetHttpUrl(v string) *ExecContainerCommandResponseBody {
+	s.HttpUrl = &v
 	return s
 }
 
@@ -7369,7 +7605,6 @@ type RestartContainerGroupRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ContainerGroupId     *string `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
 	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	VkClientVersion      *string `json:"VkClientVersion,omitempty" xml:"VkClientVersion,omitempty"`
 }
 
 func (s RestartContainerGroupRequest) String() string {
@@ -7412,11 +7647,6 @@ func (s *RestartContainerGroupRequest) SetContainerGroupId(v string) *RestartCon
 
 func (s *RestartContainerGroupRequest) SetClientToken(v string) *RestartContainerGroupRequest {
 	s.ClientToken = &v
-	return s
-}
-
-func (s *RestartContainerGroupRequest) SetVkClientVersion(v string) *RestartContainerGroupRequest {
-	s.VkClientVersion = &v
 	return s
 }
 
@@ -8327,10 +8557,11 @@ func (s *UpdateContainerGroupRequestContainerEnvironmentVarFieldRef) SetFieldPat
 }
 
 type UpdateContainerGroupRequestContainerVolumeMount struct {
-	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	ReadOnly  *bool   `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
-	SubPath   *string `json:"SubPath,omitempty" xml:"SubPath,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	MountPropagation *string `json:"MountPropagation,omitempty" xml:"MountPropagation,omitempty"`
+	MountPath        *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	ReadOnly         *bool   `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
+	SubPath          *string `json:"SubPath,omitempty" xml:"SubPath,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s UpdateContainerGroupRequestContainerVolumeMount) String() string {
@@ -8339,6 +8570,11 @@ func (s UpdateContainerGroupRequestContainerVolumeMount) String() string {
 
 func (s UpdateContainerGroupRequestContainerVolumeMount) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateContainerGroupRequestContainerVolumeMount) SetMountPropagation(v string) *UpdateContainerGroupRequestContainerVolumeMount {
+	s.MountPropagation = &v
+	return s
 }
 
 func (s *UpdateContainerGroupRequestContainerVolumeMount) SetMountPath(v string) *UpdateContainerGroupRequestContainerVolumeMount {
@@ -8584,10 +8820,11 @@ func (s *UpdateContainerGroupRequestInitContainerSecurityContextCapability) SetA
 }
 
 type UpdateContainerGroupRequestInitContainerVolumeMount struct {
-	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	ReadOnly  *bool   `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
-	SubPath   *string `json:"SubPath,omitempty" xml:"SubPath,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	MountPropagation *string `json:"MountPropagation,omitempty" xml:"MountPropagation,omitempty"`
+	MountPath        *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	ReadOnly         *bool   `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
+	SubPath          *string `json:"SubPath,omitempty" xml:"SubPath,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s UpdateContainerGroupRequestInitContainerVolumeMount) String() string {
@@ -8596,6 +8833,11 @@ func (s UpdateContainerGroupRequestInitContainerVolumeMount) String() string {
 
 func (s UpdateContainerGroupRequestInitContainerVolumeMount) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateContainerGroupRequestInitContainerVolumeMount) SetMountPropagation(v string) *UpdateContainerGroupRequestInitContainerVolumeMount {
+	s.MountPropagation = &v
+	return s
 }
 
 func (s *UpdateContainerGroupRequestInitContainerVolumeMount) SetMountPath(v string) *UpdateContainerGroupRequestInitContainerVolumeMount {
