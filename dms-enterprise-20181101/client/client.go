@@ -4158,6 +4158,218 @@ func (s *SearchDatabaseResponse) SetBody(v *SearchDatabaseResponseBody) *SearchD
 	return s
 }
 
+type GetDBTopologyRequest struct {
+	LogicDbId *int64 `json:"LogicDbId,omitempty" xml:"LogicDbId,omitempty"`
+	Tid       *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetDBTopologyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDBTopologyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDBTopologyRequest) SetLogicDbId(v int64) *GetDBTopologyRequest {
+	s.LogicDbId = &v
+	return s
+}
+
+func (s *GetDBTopologyRequest) SetTid(v int64) *GetDBTopologyRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetDBTopologyResponseBody struct {
+	// Id of the request
+	RequestId    *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorMessage *string                              `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorCode    *string                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	DBTopology   *GetDBTopologyResponseBodyDBTopology `json:"DBTopology,omitempty" xml:"DBTopology,omitempty" type:"Struct"`
+}
+
+func (s GetDBTopologyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDBTopologyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDBTopologyResponseBody) SetRequestId(v string) *GetDBTopologyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDBTopologyResponseBody) SetSuccess(v bool) *GetDBTopologyResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetDBTopologyResponseBody) SetErrorMessage(v string) *GetDBTopologyResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetDBTopologyResponseBody) SetErrorCode(v string) *GetDBTopologyResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetDBTopologyResponseBody) SetDBTopology(v *GetDBTopologyResponseBodyDBTopology) *GetDBTopologyResponseBody {
+	s.DBTopology = v
+	return s
+}
+
+type GetDBTopologyResponseBodyDBTopology struct {
+	LogicDbId          *int64                                                   `json:"LogicDbId,omitempty" xml:"LogicDbId,omitempty"`
+	LogicDbName        *string                                                  `json:"LogicDbName,omitempty" xml:"LogicDbName,omitempty"`
+	SearchName         *string                                                  `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+	Alias              *string                                                  `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	DbType             *string                                                  `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	EnvType            *string                                                  `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	DBTopologyInfoList []*GetDBTopologyResponseBodyDBTopologyDBTopologyInfoList `json:"DBTopologyInfoList,omitempty" xml:"DBTopologyInfoList,omitempty" type:"Repeated"`
+}
+
+func (s GetDBTopologyResponseBodyDBTopology) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDBTopologyResponseBodyDBTopology) GoString() string {
+	return s.String()
+}
+
+func (s *GetDBTopologyResponseBodyDBTopology) SetLogicDbId(v int64) *GetDBTopologyResponseBodyDBTopology {
+	s.LogicDbId = &v
+	return s
+}
+
+func (s *GetDBTopologyResponseBodyDBTopology) SetLogicDbName(v string) *GetDBTopologyResponseBodyDBTopology {
+	s.LogicDbName = &v
+	return s
+}
+
+func (s *GetDBTopologyResponseBodyDBTopology) SetSearchName(v string) *GetDBTopologyResponseBodyDBTopology {
+	s.SearchName = &v
+	return s
+}
+
+func (s *GetDBTopologyResponseBodyDBTopology) SetAlias(v string) *GetDBTopologyResponseBodyDBTopology {
+	s.Alias = &v
+	return s
+}
+
+func (s *GetDBTopologyResponseBodyDBTopology) SetDbType(v string) *GetDBTopologyResponseBodyDBTopology {
+	s.DbType = &v
+	return s
+}
+
+func (s *GetDBTopologyResponseBodyDBTopology) SetEnvType(v string) *GetDBTopologyResponseBodyDBTopology {
+	s.EnvType = &v
+	return s
+}
+
+func (s *GetDBTopologyResponseBodyDBTopology) SetDBTopologyInfoList(v []*GetDBTopologyResponseBodyDBTopologyDBTopologyInfoList) *GetDBTopologyResponseBodyDBTopology {
+	s.DBTopologyInfoList = v
+	return s
+}
+
+type GetDBTopologyResponseBodyDBTopologyDBTopologyInfoList struct {
+	DbId               *int64  `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	SchemaName         *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	CatalogName        *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	SearchName         *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+	DbType             *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	EnvType            *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	InstanceId         *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	InstanceResourceId *string `json:"InstanceResourceId,omitempty" xml:"InstanceResourceId,omitempty"`
+	InstanceSource     *string `json:"InstanceSource,omitempty" xml:"InstanceSource,omitempty"`
+}
+
+func (s GetDBTopologyResponseBodyDBTopologyDBTopologyInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDBTopologyResponseBodyDBTopologyDBTopologyInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *GetDBTopologyResponseBodyDBTopologyDBTopologyInfoList) SetDbId(v int64) *GetDBTopologyResponseBodyDBTopologyDBTopologyInfoList {
+	s.DbId = &v
+	return s
+}
+
+func (s *GetDBTopologyResponseBodyDBTopologyDBTopologyInfoList) SetSchemaName(v string) *GetDBTopologyResponseBodyDBTopologyDBTopologyInfoList {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *GetDBTopologyResponseBodyDBTopologyDBTopologyInfoList) SetCatalogName(v string) *GetDBTopologyResponseBodyDBTopologyDBTopologyInfoList {
+	s.CatalogName = &v
+	return s
+}
+
+func (s *GetDBTopologyResponseBodyDBTopologyDBTopologyInfoList) SetSearchName(v string) *GetDBTopologyResponseBodyDBTopologyDBTopologyInfoList {
+	s.SearchName = &v
+	return s
+}
+
+func (s *GetDBTopologyResponseBodyDBTopologyDBTopologyInfoList) SetDbType(v string) *GetDBTopologyResponseBodyDBTopologyDBTopologyInfoList {
+	s.DbType = &v
+	return s
+}
+
+func (s *GetDBTopologyResponseBodyDBTopologyDBTopologyInfoList) SetEnvType(v string) *GetDBTopologyResponseBodyDBTopologyDBTopologyInfoList {
+	s.EnvType = &v
+	return s
+}
+
+func (s *GetDBTopologyResponseBodyDBTopologyDBTopologyInfoList) SetInstanceId(v int64) *GetDBTopologyResponseBodyDBTopologyDBTopologyInfoList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetDBTopologyResponseBodyDBTopologyDBTopologyInfoList) SetRegionId(v string) *GetDBTopologyResponseBodyDBTopologyDBTopologyInfoList {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetDBTopologyResponseBodyDBTopologyDBTopologyInfoList) SetInstanceResourceId(v string) *GetDBTopologyResponseBodyDBTopologyDBTopologyInfoList {
+	s.InstanceResourceId = &v
+	return s
+}
+
+func (s *GetDBTopologyResponseBodyDBTopologyDBTopologyInfoList) SetInstanceSource(v string) *GetDBTopologyResponseBodyDBTopologyDBTopologyInfoList {
+	s.InstanceSource = &v
+	return s
+}
+
+type GetDBTopologyResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetDBTopologyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDBTopologyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDBTopologyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDBTopologyResponse) SetHeaders(v map[string]*string) *GetDBTopologyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDBTopologyResponse) SetBody(v *GetDBTopologyResponseBody) *GetDBTopologyResponse {
+	s.Body = v
+	return s
+}
+
 type SyncDatabaseMetaRequest struct {
 	Tid   *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 	DbId  *string `json:"DbId,omitempty" xml:"DbId,omitempty"`
@@ -14654,6 +14866,34 @@ func (client *Client) SearchDatabase(request *SearchDatabaseRequest) (_result *S
 	runtime := &util.RuntimeOptions{}
 	_result = &SearchDatabaseResponse{}
 	_body, _err := client.SearchDatabaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDBTopologyWithOptions(request *GetDBTopologyRequest, runtime *util.RuntimeOptions) (_result *GetDBTopologyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetDBTopologyResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetDBTopology"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDBTopology(request *GetDBTopologyRequest) (_result *GetDBTopologyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDBTopologyResponse{}
+	_body, _err := client.GetDBTopologyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
