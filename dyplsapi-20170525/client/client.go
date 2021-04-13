@@ -117,14 +117,11 @@ func (s *AddAxnTrackNoResponse) SetBody(v *AddAxnTrackNoResponseBody) *AddAxnTra
 }
 
 type AddSecretBlacklistRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	PoolKey              *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
-	BlackNo              *string `json:"BlackNo,omitempty" xml:"BlackNo,omitempty"`
-	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	BlackType            *string `json:"BlackType,omitempty" xml:"BlackType,omitempty"`
-	WayControl           *string `json:"WayControl,omitempty" xml:"WayControl,omitempty"`
+	PoolKey    *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
+	BlackNo    *string `json:"BlackNo,omitempty" xml:"BlackNo,omitempty"`
+	Remark     *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	BlackType  *string `json:"BlackType,omitempty" xml:"BlackType,omitempty"`
+	WayControl *string `json:"WayControl,omitempty" xml:"WayControl,omitempty"`
 }
 
 func (s AddSecretBlacklistRequest) String() string {
@@ -133,21 +130,6 @@ func (s AddSecretBlacklistRequest) String() string {
 
 func (s AddSecretBlacklistRequest) GoString() string {
 	return s.String()
-}
-
-func (s *AddSecretBlacklistRequest) SetOwnerId(v int64) *AddSecretBlacklistRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *AddSecretBlacklistRequest) SetResourceOwnerAccount(v string) *AddSecretBlacklistRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *AddSecretBlacklistRequest) SetResourceOwnerId(v int64) *AddSecretBlacklistRequest {
-	s.ResourceOwnerId = &v
-	return s
 }
 
 func (s *AddSecretBlacklistRequest) SetPoolKey(v string) *AddSecretBlacklistRequest {
@@ -245,6 +227,7 @@ type BindAxbRequest struct {
 	RingConfig           *string `json:"RingConfig,omitempty" xml:"RingConfig,omitempty"`
 	ASRStatus            *bool   `json:"ASRStatus,omitempty" xml:"ASRStatus,omitempty"`
 	ASRModelId           *string `json:"ASRModelId,omitempty" xml:"ASRModelId,omitempty"`
+	CallTimeout          *int32  `json:"CallTimeout,omitempty" xml:"CallTimeout,omitempty"`
 }
 
 func (s BindAxbRequest) String() string {
@@ -337,6 +320,11 @@ func (s *BindAxbRequest) SetASRStatus(v bool) *BindAxbRequest {
 
 func (s *BindAxbRequest) SetASRModelId(v string) *BindAxbRequest {
 	s.ASRModelId = &v
+	return s
+}
+
+func (s *BindAxbRequest) SetCallTimeout(v int32) *BindAxbRequest {
+	s.CallTimeout = &v
 	return s
 }
 
@@ -1304,7 +1292,6 @@ type CreateSubscriptionRequest struct {
 	SecretNo             *string `json:"SecretNo,omitempty" xml:"SecretNo,omitempty"`
 	PhoneNo              *string `json:"PhoneNo,omitempty" xml:"PhoneNo,omitempty"`
 	BindToken            *string `json:"BindToken,omitempty" xml:"BindToken,omitempty"`
-	ProdCode             *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
 }
 
 func (s CreateSubscriptionRequest) String() string {
@@ -1347,11 +1334,6 @@ func (s *CreateSubscriptionRequest) SetPhoneNo(v string) *CreateSubscriptionRequ
 
 func (s *CreateSubscriptionRequest) SetBindToken(v string) *CreateSubscriptionRequest {
 	s.BindToken = &v
-	return s
-}
-
-func (s *CreateSubscriptionRequest) SetProdCode(v string) *CreateSubscriptionRequest {
-	s.ProdCode = &v
 	return s
 }
 
@@ -1431,14 +1413,11 @@ func (s *CreateSubscriptionResponse) SetBody(v *CreateSubscriptionResponseBody) 
 }
 
 type DeleteSecretBlacklistRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	PoolKey              *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
-	BlackNo              *string `json:"BlackNo,omitempty" xml:"BlackNo,omitempty"`
-	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	BlackType            *string `json:"BlackType,omitempty" xml:"BlackType,omitempty"`
-	WayControl           *string `json:"WayControl,omitempty" xml:"WayControl,omitempty"`
+	PoolKey    *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
+	BlackNo    *string `json:"BlackNo,omitempty" xml:"BlackNo,omitempty"`
+	Remark     *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	BlackType  *string `json:"BlackType,omitempty" xml:"BlackType,omitempty"`
+	WayControl *string `json:"WayControl,omitempty" xml:"WayControl,omitempty"`
 }
 
 func (s DeleteSecretBlacklistRequest) String() string {
@@ -1447,21 +1426,6 @@ func (s DeleteSecretBlacklistRequest) String() string {
 
 func (s DeleteSecretBlacklistRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DeleteSecretBlacklistRequest) SetOwnerId(v int64) *DeleteSecretBlacklistRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DeleteSecretBlacklistRequest) SetResourceOwnerAccount(v string) *DeleteSecretBlacklistRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *DeleteSecretBlacklistRequest) SetResourceOwnerId(v int64) *DeleteSecretBlacklistRequest {
-	s.ResourceOwnerId = &v
-	return s
 }
 
 func (s *DeleteSecretBlacklistRequest) SetPoolKey(v string) *DeleteSecretBlacklistRequest {
@@ -1545,7 +1509,6 @@ type GetFaceVerifyRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ProdCode             *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
 	VerifyToken          *string `json:"VerifyToken,omitempty" xml:"VerifyToken,omitempty"`
 }
 
@@ -1569,11 +1532,6 @@ func (s *GetFaceVerifyRequest) SetResourceOwnerAccount(v string) *GetFaceVerifyR
 
 func (s *GetFaceVerifyRequest) SetResourceOwnerId(v int64) *GetFaceVerifyRequest {
 	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *GetFaceVerifyRequest) SetProdCode(v string) *GetFaceVerifyRequest {
-	s.ProdCode = &v
 	return s
 }
 
@@ -1658,12 +1616,9 @@ func (s *GetFaceVerifyResponse) SetBody(v *GetFaceVerifyResponseBody) *GetFaceVe
 }
 
 type GetSecretAsrDetailRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	CallId               *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
-	CallTime             *string `json:"CallTime,omitempty" xml:"CallTime,omitempty"`
-	PoolKey              *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
+	CallId   *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	CallTime *string `json:"CallTime,omitempty" xml:"CallTime,omitempty"`
+	PoolKey  *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
 }
 
 func (s GetSecretAsrDetailRequest) String() string {
@@ -1672,21 +1627,6 @@ func (s GetSecretAsrDetailRequest) String() string {
 
 func (s GetSecretAsrDetailRequest) GoString() string {
 	return s.String()
-}
-
-func (s *GetSecretAsrDetailRequest) SetOwnerId(v int64) *GetSecretAsrDetailRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *GetSecretAsrDetailRequest) SetResourceOwnerAccount(v string) *GetSecretAsrDetailRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *GetSecretAsrDetailRequest) SetResourceOwnerId(v int64) *GetSecretAsrDetailRequest {
-	s.ResourceOwnerId = &v
-	return s
 }
 
 func (s *GetSecretAsrDetailRequest) SetCallId(v string) *GetSecretAsrDetailRequest {
@@ -1766,7 +1706,6 @@ type GetSubscriptionDetailRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ProdCode             *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
 	PoolKey              *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
 	SubsId               *int64  `json:"SubsId,omitempty" xml:"SubsId,omitempty"`
 	SecretNo             *string `json:"SecretNo,omitempty" xml:"SecretNo,omitempty"`
@@ -1792,11 +1731,6 @@ func (s *GetSubscriptionDetailRequest) SetResourceOwnerAccount(v string) *GetSub
 
 func (s *GetSubscriptionDetailRequest) SetResourceOwnerId(v int64) *GetSubscriptionDetailRequest {
 	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *GetSubscriptionDetailRequest) SetProdCode(v string) *GetSubscriptionDetailRequest {
-	s.ProdCode = &v
 	return s
 }
 
@@ -2064,7 +1998,6 @@ type InitFaceVerifyRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ProdCode             *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
 	MetaInfo             *string `json:"MetaInfo,omitempty" xml:"MetaInfo,omitempty"`
 }
 
@@ -2088,11 +2021,6 @@ func (s *InitFaceVerifyRequest) SetResourceOwnerAccount(v string) *InitFaceVerif
 
 func (s *InitFaceVerifyRequest) SetResourceOwnerId(v int64) *InitFaceVerifyRequest {
 	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *InitFaceVerifyRequest) SetProdCode(v string) *InitFaceVerifyRequest {
-	s.ProdCode = &v
 	return s
 }
 
@@ -2611,8 +2539,9 @@ type QueryPhoneNoAByTrackNoRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	PhoneNoX             *string `json:"PhoneNoX,omitempty" xml:"PhoneNoX,omitempty"`
 	TrackNo              *string `json:"trackNo,omitempty" xml:"trackNo,omitempty"`
+	CabinetNo            *string `json:"CabinetNo,omitempty" xml:"CabinetNo,omitempty"`
+	PhoneNoX             *string `json:"PhoneNoX,omitempty" xml:"PhoneNoX,omitempty"`
 }
 
 func (s QueryPhoneNoAByTrackNoRequest) String() string {
@@ -2638,21 +2567,26 @@ func (s *QueryPhoneNoAByTrackNoRequest) SetResourceOwnerId(v int64) *QueryPhoneN
 	return s
 }
 
-func (s *QueryPhoneNoAByTrackNoRequest) SetPhoneNoX(v string) *QueryPhoneNoAByTrackNoRequest {
-	s.PhoneNoX = &v
-	return s
-}
-
 func (s *QueryPhoneNoAByTrackNoRequest) SetTrackNo(v string) *QueryPhoneNoAByTrackNoRequest {
 	s.TrackNo = &v
 	return s
 }
 
+func (s *QueryPhoneNoAByTrackNoRequest) SetCabinetNo(v string) *QueryPhoneNoAByTrackNoRequest {
+	s.CabinetNo = &v
+	return s
+}
+
+func (s *QueryPhoneNoAByTrackNoRequest) SetPhoneNoX(v string) *QueryPhoneNoAByTrackNoRequest {
+	s.PhoneNoX = &v
+	return s
+}
+
 type QueryPhoneNoAByTrackNoResponseBody struct {
-	Message   *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Module    *QueryPhoneNoAByTrackNoResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
-	Code      *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Module    []*QueryPhoneNoAByTrackNoResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Repeated"`
+	Code      *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s QueryPhoneNoAByTrackNoResponseBody) String() string {
@@ -2673,7 +2607,7 @@ func (s *QueryPhoneNoAByTrackNoResponseBody) SetRequestId(v string) *QueryPhoneN
 	return s
 }
 
-func (s *QueryPhoneNoAByTrackNoResponseBody) SetModule(v *QueryPhoneNoAByTrackNoResponseBodyModule) *QueryPhoneNoAByTrackNoResponseBody {
+func (s *QueryPhoneNoAByTrackNoResponseBody) SetModule(v []*QueryPhoneNoAByTrackNoResponseBodyModule) *QueryPhoneNoAByTrackNoResponseBody {
 	s.Module = v
 	return s
 }
@@ -2684,7 +2618,9 @@ func (s *QueryPhoneNoAByTrackNoResponseBody) SetCode(v string) *QueryPhoneNoAByT
 }
 
 type QueryPhoneNoAByTrackNoResponseBodyModule struct {
-	PhoneNoAInfo []*QueryPhoneNoAByTrackNoResponseBodyModulePhoneNoAInfo `json:"phoneNoAInfo,omitempty" xml:"phoneNoAInfo,omitempty" type:"Repeated"`
+	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	PhoneNoX  *string `json:"PhoneNoX,omitempty" xml:"PhoneNoX,omitempty"`
+	PhoneNoA  *string `json:"PhoneNoA,omitempty" xml:"PhoneNoA,omitempty"`
 }
 
 func (s QueryPhoneNoAByTrackNoResponseBodyModule) String() string {
@@ -2695,30 +2631,17 @@ func (s QueryPhoneNoAByTrackNoResponseBodyModule) GoString() string {
 	return s.String()
 }
 
-func (s *QueryPhoneNoAByTrackNoResponseBodyModule) SetPhoneNoAInfo(v []*QueryPhoneNoAByTrackNoResponseBodyModulePhoneNoAInfo) *QueryPhoneNoAByTrackNoResponseBodyModule {
-	s.PhoneNoAInfo = v
+func (s *QueryPhoneNoAByTrackNoResponseBodyModule) SetExtension(v string) *QueryPhoneNoAByTrackNoResponseBodyModule {
+	s.Extension = &v
 	return s
 }
 
-type QueryPhoneNoAByTrackNoResponseBodyModulePhoneNoAInfo struct {
-	PhoneNoX *string `json:"PhoneNoX,omitempty" xml:"PhoneNoX,omitempty"`
-	PhoneNoA *string `json:"PhoneNoA,omitempty" xml:"PhoneNoA,omitempty"`
-}
-
-func (s QueryPhoneNoAByTrackNoResponseBodyModulePhoneNoAInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryPhoneNoAByTrackNoResponseBodyModulePhoneNoAInfo) GoString() string {
-	return s.String()
-}
-
-func (s *QueryPhoneNoAByTrackNoResponseBodyModulePhoneNoAInfo) SetPhoneNoX(v string) *QueryPhoneNoAByTrackNoResponseBodyModulePhoneNoAInfo {
+func (s *QueryPhoneNoAByTrackNoResponseBodyModule) SetPhoneNoX(v string) *QueryPhoneNoAByTrackNoResponseBodyModule {
 	s.PhoneNoX = &v
 	return s
 }
 
-func (s *QueryPhoneNoAByTrackNoResponseBodyModulePhoneNoAInfo) SetPhoneNoA(v string) *QueryPhoneNoAByTrackNoResponseBodyModulePhoneNoAInfo {
+func (s *QueryPhoneNoAByTrackNoResponseBodyModule) SetPhoneNoA(v string) *QueryPhoneNoAByTrackNoResponseBodyModule {
 	s.PhoneNoA = &v
 	return s
 }
@@ -3631,7 +3554,6 @@ type UpdateDefaultBRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ProdCode             *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
 	PoolKey              *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
 	SubsId               *int64  `json:"SubsId,omitempty" xml:"SubsId,omitempty"`
 	SecretNo             *string `json:"SecretNo,omitempty" xml:"SecretNo,omitempty"`
@@ -3658,11 +3580,6 @@ func (s *UpdateDefaultBRequest) SetResourceOwnerAccount(v string) *UpdateDefault
 
 func (s *UpdateDefaultBRequest) SetResourceOwnerId(v int64) *UpdateDefaultBRequest {
 	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *UpdateDefaultBRequest) SetProdCode(v string) *UpdateDefaultBRequest {
-	s.ProdCode = &v
 	return s
 }
 
@@ -3748,7 +3665,6 @@ type UpdatePhoneNumberRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ProdCode             *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
 	PoolKey              *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
 	SubsId               *int64  `json:"SubsId,omitempty" xml:"SubsId,omitempty"`
 	SecretNo             *string `json:"SecretNo,omitempty" xml:"SecretNo,omitempty"`
@@ -3776,11 +3692,6 @@ func (s *UpdatePhoneNumberRequest) SetResourceOwnerAccount(v string) *UpdatePhon
 
 func (s *UpdatePhoneNumberRequest) SetResourceOwnerId(v int64) *UpdatePhoneNumberRequest {
 	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *UpdatePhoneNumberRequest) SetProdCode(v string) *UpdatePhoneNumberRequest {
-	s.ProdCode = &v
 	return s
 }
 
@@ -3875,7 +3786,6 @@ type UpdatePhoneSwitchRequest struct {
 	SubsId               *int64  `json:"SubsId,omitempty" xml:"SubsId,omitempty"`
 	SecretNo             *string `json:"SecretNo,omitempty" xml:"SecretNo,omitempty"`
 	SwitchStatus         *int32  `json:"SwitchStatus,omitempty" xml:"SwitchStatus,omitempty"`
-	ProdCode             *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
 }
 
 func (s UpdatePhoneSwitchRequest) String() string {
@@ -3918,11 +3828,6 @@ func (s *UpdatePhoneSwitchRequest) SetSecretNo(v string) *UpdatePhoneSwitchReque
 
 func (s *UpdatePhoneSwitchRequest) SetSwitchStatus(v int32) *UpdatePhoneSwitchRequest {
 	s.SwitchStatus = &v
-	return s
-}
-
-func (s *UpdatePhoneSwitchRequest) SetProdCode(v string) *UpdatePhoneSwitchRequest {
-	s.ProdCode = &v
 	return s
 }
 
