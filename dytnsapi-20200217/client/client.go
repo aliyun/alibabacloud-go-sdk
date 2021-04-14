@@ -255,6 +255,23 @@ func (s *DescribePhoneNumberStatusResponse) SetBody(v *DescribePhoneNumberStatus
 	return s
 }
 
+type PvrCallbackFCUResponse struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+}
+
+func (s PvrCallbackFCUResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PvrCallbackFCUResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PvrCallbackFCUResponse) SetHeaders(v map[string]*string) *PvrCallbackFCUResponse {
+	s.Headers = v
+	return s
+}
+
 type QueryPhoneNumberAttributeRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -410,7 +427,7 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = tea.String("")
+	client.EndpointRule = tea.String("central")
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -491,6 +508,28 @@ func (client *Client) DescribePhoneNumberStatus(request *DescribePhoneNumberStat
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePhoneNumberStatusResponse{}
 	_body, _err := client.DescribePhoneNumberStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PvrCallbackFCUWithOptions(runtime *util.RuntimeOptions) (_result *PvrCallbackFCUResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	_result = &PvrCallbackFCUResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("PvrCallbackFCU"), tea.String("2020-02-17"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("none"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PvrCallbackFCU() (_result *PvrCallbackFCUResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PvrCallbackFCUResponse{}
+	_body, _err := client.PvrCallbackFCUWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
