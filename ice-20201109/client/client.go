@@ -312,6 +312,7 @@ type DescribeRelatedAuthorizationStatusResponseBody struct {
 	OSSAuthorized *bool   `json:"OSSAuthorized,omitempty" xml:"OSSAuthorized,omitempty"`
 	MTSAuthorized *bool   `json:"MTSAuthorized,omitempty" xml:"MTSAuthorized,omitempty"`
 	MNSAuthorized *bool   `json:"MNSAuthorized,omitempty" xml:"MNSAuthorized,omitempty"`
+	Authorized    *bool   `json:"Authorized,omitempty" xml:"Authorized,omitempty"`
 }
 
 func (s DescribeRelatedAuthorizationStatusResponseBody) String() string {
@@ -339,6 +340,11 @@ func (s *DescribeRelatedAuthorizationStatusResponseBody) SetMTSAuthorized(v bool
 
 func (s *DescribeRelatedAuthorizationStatusResponseBody) SetMNSAuthorized(v bool) *DescribeRelatedAuthorizationStatusResponseBody {
 	s.MNSAuthorized = &v
+	return s
+}
+
+func (s *DescribeRelatedAuthorizationStatusResponseBody) SetAuthorized(v bool) *DescribeRelatedAuthorizationStatusResponseBody {
+	s.Authorized = &v
 	return s
 }
 
@@ -564,6 +570,8 @@ type ListMediaBasicInfosResponseBodyMediaInfosMediaBasicInfo struct {
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 	// 媒资删除时间
 	DeletedTime *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
+	// 雪碧图
+	SpriteImages *string `json:"SpriteImages,omitempty" xml:"SpriteImages,omitempty"`
 }
 
 func (s ListMediaBasicInfosResponseBodyMediaInfosMediaBasicInfo) String() string {
@@ -656,6 +664,11 @@ func (s *ListMediaBasicInfosResponseBodyMediaInfosMediaBasicInfo) SetModifiedTim
 
 func (s *ListMediaBasicInfosResponseBodyMediaInfosMediaBasicInfo) SetDeletedTime(v string) *ListMediaBasicInfosResponseBodyMediaInfosMediaBasicInfo {
 	s.DeletedTime = &v
+	return s
+}
+
+func (s *ListMediaBasicInfosResponseBodyMediaInfosMediaBasicInfo) SetSpriteImages(v string) *ListMediaBasicInfosResponseBodyMediaInfosMediaBasicInfo {
+	s.SpriteImages = &v
 	return s
 }
 
@@ -1123,6 +1136,8 @@ type AddEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo struct {
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 	// 媒资删除时间
 	DeletedTime *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
+	// 雪碧图
+	SpriteImages *string `json:"SpriteImages,omitempty" xml:"SpriteImages,omitempty"`
 }
 
 func (s AddEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) String() string {
@@ -1215,6 +1230,11 @@ func (s *AddEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) SetModi
 
 func (s *AddEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) SetDeletedTime(v string) *AddEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo {
 	s.DeletedTime = &v
+	return s
+}
+
+func (s *AddEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) SetSpriteImages(v string) *AddEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo {
+	s.SpriteImages = &v
 	return s
 }
 
@@ -1352,6 +1372,10 @@ type SubmitASRJobRequest struct {
 	UserData    *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 	Title       *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// 持续时间
+	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
 }
 
 func (s SubmitASRJobRequest) String() string {
@@ -1379,6 +1403,16 @@ func (s *SubmitASRJobRequest) SetTitle(v string) *SubmitASRJobRequest {
 
 func (s *SubmitASRJobRequest) SetDescription(v string) *SubmitASRJobRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *SubmitASRJobRequest) SetStartTime(v string) *SubmitASRJobRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *SubmitASRJobRequest) SetDuration(v string) *SubmitASRJobRequest {
+	s.Duration = &v
 	return s
 }
 
@@ -2298,6 +2332,8 @@ type GetMediaInfoResponseBodyMediaInfoMediaBasicInfo struct {
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 	// 媒资删除时间
 	DeletedTime *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
+	// 雪碧图
+	SpriteImages *string `json:"SpriteImages,omitempty" xml:"SpriteImages,omitempty"`
 }
 
 func (s GetMediaInfoResponseBodyMediaInfoMediaBasicInfo) String() string {
@@ -2380,6 +2416,11 @@ func (s *GetMediaInfoResponseBodyMediaInfoMediaBasicInfo) SetModifiedTime(v stri
 
 func (s *GetMediaInfoResponseBodyMediaInfoMediaBasicInfo) SetDeletedTime(v string) *GetMediaInfoResponseBodyMediaInfoMediaBasicInfo {
 	s.DeletedTime = &v
+	return s
+}
+
+func (s *GetMediaInfoResponseBodyMediaInfoMediaBasicInfo) SetSpriteImages(v string) *GetMediaInfoResponseBodyMediaInfoMediaBasicInfo {
+	s.SpriteImages = &v
 	return s
 }
 
@@ -3094,6 +3135,121 @@ func (s *SubmitSmartJobResponse) SetBody(v *SubmitSmartJobResponseBody) *SubmitS
 	return s
 }
 
+type SubmitDelogoJobRequest struct {
+	// 输入文件
+	InputFile   *string `json:"InputFile,omitempty" xml:"InputFile,omitempty"`
+	UserData    *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	Title       *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 输出bucket
+	OutputConfig *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
+	// 输入文件类型
+	InputType *string `json:"InputType,omitempty" xml:"InputType,omitempty"`
+}
+
+func (s SubmitDelogoJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDelogoJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDelogoJobRequest) SetInputFile(v string) *SubmitDelogoJobRequest {
+	s.InputFile = &v
+	return s
+}
+
+func (s *SubmitDelogoJobRequest) SetUserData(v string) *SubmitDelogoJobRequest {
+	s.UserData = &v
+	return s
+}
+
+func (s *SubmitDelogoJobRequest) SetTitle(v string) *SubmitDelogoJobRequest {
+	s.Title = &v
+	return s
+}
+
+func (s *SubmitDelogoJobRequest) SetDescription(v string) *SubmitDelogoJobRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *SubmitDelogoJobRequest) SetOutputConfig(v string) *SubmitDelogoJobRequest {
+	s.OutputConfig = &v
+	return s
+}
+
+func (s *SubmitDelogoJobRequest) SetInputType(v string) *SubmitDelogoJobRequest {
+	s.InputType = &v
+	return s
+}
+
+type SubmitDelogoJobResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Output    *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	State     *string `json:"State,omitempty" xml:"State,omitempty"`
+	UserData  *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s SubmitDelogoJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDelogoJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDelogoJobResponseBody) SetRequestId(v string) *SubmitDelogoJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitDelogoJobResponseBody) SetJobId(v string) *SubmitDelogoJobResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *SubmitDelogoJobResponseBody) SetOutput(v string) *SubmitDelogoJobResponseBody {
+	s.Output = &v
+	return s
+}
+
+func (s *SubmitDelogoJobResponseBody) SetState(v string) *SubmitDelogoJobResponseBody {
+	s.State = &v
+	return s
+}
+
+func (s *SubmitDelogoJobResponseBody) SetUserData(v string) *SubmitDelogoJobResponseBody {
+	s.UserData = &v
+	return s
+}
+
+type SubmitDelogoJobResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SubmitDelogoJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SubmitDelogoJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDelogoJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDelogoJobResponse) SetHeaders(v map[string]*string) *SubmitDelogoJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitDelogoJobResponse) SetBody(v *SubmitDelogoJobResponseBody) *SubmitDelogoJobResponse {
+	s.Body = v
+	return s
+}
+
 type ListMediaProducingJobsRequest struct {
 	// 查询以下状态的合成任务，支持多值，以英文逗号分隔
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
@@ -3364,6 +3520,8 @@ type GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo struct {
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 	// 媒资删除时间
 	DeletedTime *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
+	// 雪碧图
+	SpriteImages *string `json:"SpriteImages,omitempty" xml:"SpriteImages,omitempty"`
 }
 
 func (s GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) String() string {
@@ -3456,6 +3614,11 @@ func (s *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) SetModi
 
 func (s *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) SetDeletedTime(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo {
 	s.DeletedTime = &v
+	return s
+}
+
+func (s *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) SetSpriteImages(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo {
+	s.SpriteImages = &v
 	return s
 }
 
@@ -3584,6 +3747,108 @@ func (s *GetEditingProjectMaterialsResponse) SetHeaders(v map[string]*string) *G
 }
 
 func (s *GetEditingProjectMaterialsResponse) SetBody(v *GetEditingProjectMaterialsResponseBody) *GetEditingProjectMaterialsResponse {
+	s.Body = v
+	return s
+}
+
+type SubmitAudioProduceJobRequest struct {
+	EditingConfig *string `json:"EditingConfig,omitempty" xml:"EditingConfig,omitempty"`
+	OutputConfig  *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
+	InputConfig   *string `json:"InputConfig,omitempty" xml:"InputConfig,omitempty"`
+	Title         *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	UserData      *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s SubmitAudioProduceJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAudioProduceJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAudioProduceJobRequest) SetEditingConfig(v string) *SubmitAudioProduceJobRequest {
+	s.EditingConfig = &v
+	return s
+}
+
+func (s *SubmitAudioProduceJobRequest) SetOutputConfig(v string) *SubmitAudioProduceJobRequest {
+	s.OutputConfig = &v
+	return s
+}
+
+func (s *SubmitAudioProduceJobRequest) SetInputConfig(v string) *SubmitAudioProduceJobRequest {
+	s.InputConfig = &v
+	return s
+}
+
+func (s *SubmitAudioProduceJobRequest) SetTitle(v string) *SubmitAudioProduceJobRequest {
+	s.Title = &v
+	return s
+}
+
+func (s *SubmitAudioProduceJobRequest) SetDescription(v string) *SubmitAudioProduceJobRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *SubmitAudioProduceJobRequest) SetUserData(v string) *SubmitAudioProduceJobRequest {
+	s.UserData = &v
+	return s
+}
+
+type SubmitAudioProduceJobResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 任务ID
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// 任务状态
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s SubmitAudioProduceJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAudioProduceJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAudioProduceJobResponseBody) SetRequestId(v string) *SubmitAudioProduceJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitAudioProduceJobResponseBody) SetJobId(v string) *SubmitAudioProduceJobResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *SubmitAudioProduceJobResponseBody) SetState(v string) *SubmitAudioProduceJobResponseBody {
+	s.State = &v
+	return s
+}
+
+type SubmitAudioProduceJobResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SubmitAudioProduceJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SubmitAudioProduceJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAudioProduceJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAudioProduceJobResponse) SetHeaders(v map[string]*string) *SubmitAudioProduceJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitAudioProduceJobResponse) SetBody(v *SubmitAudioProduceJobResponseBody) *SubmitAudioProduceJobResponse {
 	s.Body = v
 	return s
 }
@@ -3955,6 +4220,121 @@ func (s *ListAllPublicMediaTagsResponse) SetBody(v *ListAllPublicMediaTagsRespon
 	return s
 }
 
+type SubmitMattingJobRequest struct {
+	// 输入文件
+	InputFile   *string `json:"InputFile,omitempty" xml:"InputFile,omitempty"`
+	UserData    *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	Title       *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 输出bucket
+	OutputConfig *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
+	// 输入文件类型
+	InputType *string `json:"InputType,omitempty" xml:"InputType,omitempty"`
+}
+
+func (s SubmitMattingJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitMattingJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitMattingJobRequest) SetInputFile(v string) *SubmitMattingJobRequest {
+	s.InputFile = &v
+	return s
+}
+
+func (s *SubmitMattingJobRequest) SetUserData(v string) *SubmitMattingJobRequest {
+	s.UserData = &v
+	return s
+}
+
+func (s *SubmitMattingJobRequest) SetTitle(v string) *SubmitMattingJobRequest {
+	s.Title = &v
+	return s
+}
+
+func (s *SubmitMattingJobRequest) SetDescription(v string) *SubmitMattingJobRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *SubmitMattingJobRequest) SetOutputConfig(v string) *SubmitMattingJobRequest {
+	s.OutputConfig = &v
+	return s
+}
+
+func (s *SubmitMattingJobRequest) SetInputType(v string) *SubmitMattingJobRequest {
+	s.InputType = &v
+	return s
+}
+
+type SubmitMattingJobResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Output    *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	State     *string `json:"State,omitempty" xml:"State,omitempty"`
+	UserData  *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s SubmitMattingJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitMattingJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitMattingJobResponseBody) SetRequestId(v string) *SubmitMattingJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitMattingJobResponseBody) SetJobId(v string) *SubmitMattingJobResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *SubmitMattingJobResponseBody) SetOutput(v string) *SubmitMattingJobResponseBody {
+	s.Output = &v
+	return s
+}
+
+func (s *SubmitMattingJobResponseBody) SetState(v string) *SubmitMattingJobResponseBody {
+	s.State = &v
+	return s
+}
+
+func (s *SubmitMattingJobResponseBody) SetUserData(v string) *SubmitMattingJobResponseBody {
+	s.UserData = &v
+	return s
+}
+
+type SubmitMattingJobResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SubmitMattingJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SubmitMattingJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitMattingJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitMattingJobResponse) SetHeaders(v map[string]*string) *SubmitMattingJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitMattingJobResponse) SetBody(v *SubmitMattingJobResponseBody) *SubmitMattingJobResponse {
+	s.Body = v
+	return s
+}
+
 type RegisterMediaInfoRequest struct {
 	// 媒资媒体url
 	InputURL *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
@@ -3980,6 +4360,8 @@ type RegisterMediaInfoRequest struct {
 	Overwrite *bool `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
 	// 客户端token
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// 注册媒资的配置
+	RegisterConfig *string `json:"RegisterConfig,omitempty" xml:"RegisterConfig,omitempty"`
 }
 
 func (s RegisterMediaInfoRequest) String() string {
@@ -4047,6 +4429,11 @@ func (s *RegisterMediaInfoRequest) SetOverwrite(v bool) *RegisterMediaInfoReques
 
 func (s *RegisterMediaInfoRequest) SetClientToken(v string) *RegisterMediaInfoRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *RegisterMediaInfoRequest) SetRegisterConfig(v string) *RegisterMediaInfoRequest {
+	s.RegisterConfig = &v
 	return s
 }
 
@@ -4623,6 +5010,114 @@ func (s *ListPublicMediaBasicInfosResponse) SetBody(v *ListPublicMediaBasicInfos
 	return s
 }
 
+type SubmitCoverJobRequest struct {
+	// 输入文件
+	InputFile   *string `json:"InputFile,omitempty" xml:"InputFile,omitempty"`
+	UserData    *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	Title       *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 输出bucket
+	OutputConfig *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
+}
+
+func (s SubmitCoverJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitCoverJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitCoverJobRequest) SetInputFile(v string) *SubmitCoverJobRequest {
+	s.InputFile = &v
+	return s
+}
+
+func (s *SubmitCoverJobRequest) SetUserData(v string) *SubmitCoverJobRequest {
+	s.UserData = &v
+	return s
+}
+
+func (s *SubmitCoverJobRequest) SetTitle(v string) *SubmitCoverJobRequest {
+	s.Title = &v
+	return s
+}
+
+func (s *SubmitCoverJobRequest) SetDescription(v string) *SubmitCoverJobRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *SubmitCoverJobRequest) SetOutputConfig(v string) *SubmitCoverJobRequest {
+	s.OutputConfig = &v
+	return s
+}
+
+type SubmitCoverJobResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Output    *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	State     *string `json:"State,omitempty" xml:"State,omitempty"`
+	UserData  *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s SubmitCoverJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitCoverJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitCoverJobResponseBody) SetRequestId(v string) *SubmitCoverJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitCoverJobResponseBody) SetJobId(v string) *SubmitCoverJobResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *SubmitCoverJobResponseBody) SetOutput(v string) *SubmitCoverJobResponseBody {
+	s.Output = &v
+	return s
+}
+
+func (s *SubmitCoverJobResponseBody) SetState(v string) *SubmitCoverJobResponseBody {
+	s.State = &v
+	return s
+}
+
+func (s *SubmitCoverJobResponseBody) SetUserData(v string) *SubmitCoverJobResponseBody {
+	s.UserData = &v
+	return s
+}
+
+type SubmitCoverJobResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SubmitCoverJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SubmitCoverJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitCoverJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitCoverJobResponse) SetHeaders(v map[string]*string) *SubmitCoverJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitCoverJobResponse) SetBody(v *SubmitCoverJobResponseBody) *SubmitCoverJobResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateMediaInfoRequest struct {
 	// 媒资Id
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
@@ -5109,6 +5604,121 @@ func (s *GetSmartHandleJobResponse) SetHeaders(v map[string]*string) *GetSmartHa
 }
 
 func (s *GetSmartHandleJobResponse) SetBody(v *GetSmartHandleJobResponseBody) *GetSmartHandleJobResponse {
+	s.Body = v
+	return s
+}
+
+type SubmitH2VJobRequest struct {
+	// 输入文件
+	InputFile   *string `json:"InputFile,omitempty" xml:"InputFile,omitempty"`
+	UserData    *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	Title       *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 输出bucket
+	OutputConfig *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
+	// 输入文件类型
+	InputType *string `json:"InputType,omitempty" xml:"InputType,omitempty"`
+}
+
+func (s SubmitH2VJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitH2VJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitH2VJobRequest) SetInputFile(v string) *SubmitH2VJobRequest {
+	s.InputFile = &v
+	return s
+}
+
+func (s *SubmitH2VJobRequest) SetUserData(v string) *SubmitH2VJobRequest {
+	s.UserData = &v
+	return s
+}
+
+func (s *SubmitH2VJobRequest) SetTitle(v string) *SubmitH2VJobRequest {
+	s.Title = &v
+	return s
+}
+
+func (s *SubmitH2VJobRequest) SetDescription(v string) *SubmitH2VJobRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *SubmitH2VJobRequest) SetOutputConfig(v string) *SubmitH2VJobRequest {
+	s.OutputConfig = &v
+	return s
+}
+
+func (s *SubmitH2VJobRequest) SetInputType(v string) *SubmitH2VJobRequest {
+	s.InputType = &v
+	return s
+}
+
+type SubmitH2VJobResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Output    *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	State     *string `json:"State,omitempty" xml:"State,omitempty"`
+	UserData  *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s SubmitH2VJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitH2VJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitH2VJobResponseBody) SetRequestId(v string) *SubmitH2VJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitH2VJobResponseBody) SetJobId(v string) *SubmitH2VJobResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *SubmitH2VJobResponseBody) SetOutput(v string) *SubmitH2VJobResponseBody {
+	s.Output = &v
+	return s
+}
+
+func (s *SubmitH2VJobResponseBody) SetState(v string) *SubmitH2VJobResponseBody {
+	s.State = &v
+	return s
+}
+
+func (s *SubmitH2VJobResponseBody) SetUserData(v string) *SubmitH2VJobResponseBody {
+	s.UserData = &v
+	return s
+}
+
+type SubmitH2VJobResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SubmitH2VJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SubmitH2VJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitH2VJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitH2VJobResponse) SetHeaders(v map[string]*string) *SubmitH2VJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitH2VJobResponse) SetBody(v *SubmitH2VJobResponseBody) *SubmitH2VJobResponse {
 	s.Body = v
 	return s
 }
@@ -5786,6 +6396,34 @@ func (client *Client) SubmitSmartJob(request *SubmitSmartJobRequest) (_result *S
 	return _result, _err
 }
 
+func (client *Client) SubmitDelogoJobWithOptions(request *SubmitDelogoJobRequest, runtime *util.RuntimeOptions) (_result *SubmitDelogoJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SubmitDelogoJobResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SubmitDelogoJob"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubmitDelogoJob(request *SubmitDelogoJobRequest) (_result *SubmitDelogoJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitDelogoJobResponse{}
+	_body, _err := client.SubmitDelogoJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListMediaProducingJobsWithOptions(request *ListMediaProducingJobsRequest, runtime *util.RuntimeOptions) (_result *ListMediaProducingJobsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5836,6 +6474,34 @@ func (client *Client) GetEditingProjectMaterials(request *GetEditingProjectMater
 	runtime := &util.RuntimeOptions{}
 	_result = &GetEditingProjectMaterialsResponse{}
 	_body, _err := client.GetEditingProjectMaterialsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SubmitAudioProduceJobWithOptions(request *SubmitAudioProduceJobRequest, runtime *util.RuntimeOptions) (_result *SubmitAudioProduceJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SubmitAudioProduceJobResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SubmitAudioProduceJob"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubmitAudioProduceJob(request *SubmitAudioProduceJobRequest) (_result *SubmitAudioProduceJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitAudioProduceJobResponse{}
+	_body, _err := client.SubmitAudioProduceJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5955,6 +6621,34 @@ func (client *Client) ListAllPublicMediaTags(request *ListAllPublicMediaTagsRequ
 	return _result, _err
 }
 
+func (client *Client) SubmitMattingJobWithOptions(request *SubmitMattingJobRequest, runtime *util.RuntimeOptions) (_result *SubmitMattingJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SubmitMattingJobResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SubmitMattingJob"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubmitMattingJob(request *SubmitMattingJobRequest) (_result *SubmitMattingJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitMattingJobResponse{}
+	_body, _err := client.SubmitMattingJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) RegisterMediaInfoWithOptions(request *RegisterMediaInfoRequest, runtime *util.RuntimeOptions) (_result *RegisterMediaInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6032,6 +6726,34 @@ func (client *Client) ListPublicMediaBasicInfos(request *ListPublicMediaBasicInf
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPublicMediaBasicInfosResponse{}
 	_body, _err := client.ListPublicMediaBasicInfosWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SubmitCoverJobWithOptions(request *SubmitCoverJobRequest, runtime *util.RuntimeOptions) (_result *SubmitCoverJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SubmitCoverJobResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SubmitCoverJob"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubmitCoverJob(request *SubmitCoverJobRequest) (_result *SubmitCoverJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitCoverJobResponse{}
+	_body, _err := client.SubmitCoverJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6118,6 +6840,34 @@ func (client *Client) GetSmartHandleJob(request *GetSmartHandleJobRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSmartHandleJobResponse{}
 	_body, _err := client.GetSmartHandleJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SubmitH2VJobWithOptions(request *SubmitH2VJobRequest, runtime *util.RuntimeOptions) (_result *SubmitH2VJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SubmitH2VJobResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SubmitH2VJob"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubmitH2VJob(request *SubmitH2VJobRequest) (_result *SubmitH2VJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitH2VJobResponse{}
+	_body, _err := client.SubmitH2VJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
