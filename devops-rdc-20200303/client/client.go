@@ -3186,6 +3186,93 @@ func (s *GetDevopsProjectTaskInfoResponse) SetBody(v *GetDevopsProjectTaskInfoRe
 	return s
 }
 
+type GetLastWorkspaceRequest struct {
+	OrgId  *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	RealPk *string `json:"RealPk,omitempty" xml:"RealPk,omitempty"`
+}
+
+func (s GetLastWorkspaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLastWorkspaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetLastWorkspaceRequest) SetOrgId(v string) *GetLastWorkspaceRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *GetLastWorkspaceRequest) SetRealPk(v string) *GetLastWorkspaceRequest {
+	s.RealPk = &v
+	return s
+}
+
+type GetLastWorkspaceResponseBody struct {
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Object       *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetLastWorkspaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLastWorkspaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetLastWorkspaceResponseBody) SetRequestId(v string) *GetLastWorkspaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetLastWorkspaceResponseBody) SetObject(v string) *GetLastWorkspaceResponseBody {
+	s.Object = &v
+	return s
+}
+
+func (s *GetLastWorkspaceResponseBody) SetErrorCode(v string) *GetLastWorkspaceResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetLastWorkspaceResponseBody) SetErrorMessage(v string) *GetLastWorkspaceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetLastWorkspaceResponseBody) SetSuccess(v bool) *GetLastWorkspaceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetLastWorkspaceResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetLastWorkspaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetLastWorkspaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLastWorkspaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetLastWorkspaceResponse) SetHeaders(v map[string]*string) *GetLastWorkspaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetLastWorkspaceResponse) SetBody(v *GetLastWorkspaceResponseBody) *GetLastWorkspaceResponse {
+	s.Body = v
+	return s
+}
+
 type GetPipelineInstanceBuildNumberStatusRequest struct {
 	OrgId      *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
 	PipelineId *int64  `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
@@ -9042,11 +9129,11 @@ func (s *ListUserOrganizationRequest) SetRealPk(v string) *ListUserOrganizationR
 }
 
 type ListUserOrganizationResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Object       *string `json:"Object,omitempty" xml:"Object,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Object       []*ListUserOrganizationResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
+	ErrorCode    *string                                   `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                                   `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Success      *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListUserOrganizationResponseBody) String() string {
@@ -9062,8 +9149,8 @@ func (s *ListUserOrganizationResponseBody) SetRequestId(v string) *ListUserOrgan
 	return s
 }
 
-func (s *ListUserOrganizationResponseBody) SetObject(v string) *ListUserOrganizationResponseBody {
-	s.Object = &v
+func (s *ListUserOrganizationResponseBody) SetObject(v []*ListUserOrganizationResponseBodyObject) *ListUserOrganizationResponseBody {
+	s.Object = v
 	return s
 }
 
@@ -9079,6 +9166,29 @@ func (s *ListUserOrganizationResponseBody) SetErrorMessage(v string) *ListUserOr
 
 func (s *ListUserOrganizationResponseBody) SetSuccess(v bool) *ListUserOrganizationResponseBody {
 	s.Success = &v
+	return s
+}
+
+type ListUserOrganizationResponseBodyObject struct {
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s ListUserOrganizationResponseBodyObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserOrganizationResponseBodyObject) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserOrganizationResponseBodyObject) SetName(v string) *ListUserOrganizationResponseBodyObject {
+	s.Name = &v
+	return s
+}
+
+func (s *ListUserOrganizationResponseBodyObject) SetId(v string) *ListUserOrganizationResponseBodyObject {
+	s.Id = &v
 	return s
 }
 
@@ -10713,6 +10823,34 @@ func (client *Client) GetDevopsProjectTaskInfo(request *GetDevopsProjectTaskInfo
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDevopsProjectTaskInfoResponse{}
 	_body, _err := client.GetDevopsProjectTaskInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetLastWorkspaceWithOptions(request *GetLastWorkspaceRequest, runtime *util.RuntimeOptions) (_result *GetLastWorkspaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetLastWorkspaceResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetLastWorkspace"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetLastWorkspace(request *GetLastWorkspaceRequest) (_result *GetLastWorkspaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetLastWorkspaceResponse{}
+	_body, _err := client.GetLastWorkspaceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
