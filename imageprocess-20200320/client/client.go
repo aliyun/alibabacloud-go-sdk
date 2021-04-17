@@ -1469,9 +1469,14 @@ func (s *DetectKneeKeypointXRayResponse) SetBody(v *DetectKneeKeypointXRayRespon
 }
 
 type RunMedQARequest struct {
-	Question *string `json:"Question,omitempty" xml:"Question,omitempty"`
-	OrgId    *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	OrgName  *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	OrgId               *string                               `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	OrgName             *string                               `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	SessionId           *string                               `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	Department          *string                               `json:"Department,omitempty" xml:"Department,omitempty"`
+	QuestionType        *string                               `json:"QuestionType,omitempty" xml:"QuestionType,omitempty"`
+	AnswerImageURLList  []*RunMedQARequestAnswerImageURLList  `json:"AnswerImageURLList,omitempty" xml:"AnswerImageURLList,omitempty" type:"Repeated"`
+	AnswerImageDataList []*RunMedQARequestAnswerImageDataList `json:"AnswerImageDataList,omitempty" xml:"AnswerImageDataList,omitempty" type:"Repeated"`
+	AnswerTextList      []*RunMedQARequestAnswerTextList      `json:"AnswerTextList,omitempty" xml:"AnswerTextList,omitempty" type:"Repeated"`
 }
 
 func (s RunMedQARequest) String() string {
@@ -1482,11 +1487,6 @@ func (s RunMedQARequest) GoString() string {
 	return s.String()
 }
 
-func (s *RunMedQARequest) SetQuestion(v string) *RunMedQARequest {
-	s.Question = &v
-	return s
-}
-
 func (s *RunMedQARequest) SetOrgId(v string) *RunMedQARequest {
 	s.OrgId = &v
 	return s
@@ -1494,6 +1494,87 @@ func (s *RunMedQARequest) SetOrgId(v string) *RunMedQARequest {
 
 func (s *RunMedQARequest) SetOrgName(v string) *RunMedQARequest {
 	s.OrgName = &v
+	return s
+}
+
+func (s *RunMedQARequest) SetSessionId(v string) *RunMedQARequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunMedQARequest) SetDepartment(v string) *RunMedQARequest {
+	s.Department = &v
+	return s
+}
+
+func (s *RunMedQARequest) SetQuestionType(v string) *RunMedQARequest {
+	s.QuestionType = &v
+	return s
+}
+
+func (s *RunMedQARequest) SetAnswerImageURLList(v []*RunMedQARequestAnswerImageURLList) *RunMedQARequest {
+	s.AnswerImageURLList = v
+	return s
+}
+
+func (s *RunMedQARequest) SetAnswerImageDataList(v []*RunMedQARequestAnswerImageDataList) *RunMedQARequest {
+	s.AnswerImageDataList = v
+	return s
+}
+
+func (s *RunMedQARequest) SetAnswerTextList(v []*RunMedQARequestAnswerTextList) *RunMedQARequest {
+	s.AnswerTextList = v
+	return s
+}
+
+type RunMedQARequestAnswerImageURLList struct {
+	AnswerImageURL *string `json:"AnswerImageURL,omitempty" xml:"AnswerImageURL,omitempty"`
+}
+
+func (s RunMedQARequestAnswerImageURLList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunMedQARequestAnswerImageURLList) GoString() string {
+	return s.String()
+}
+
+func (s *RunMedQARequestAnswerImageURLList) SetAnswerImageURL(v string) *RunMedQARequestAnswerImageURLList {
+	s.AnswerImageURL = &v
+	return s
+}
+
+type RunMedQARequestAnswerImageDataList struct {
+	AnswerImageData []byte `json:"AnswerImageData,omitempty" xml:"AnswerImageData,omitempty"`
+}
+
+func (s RunMedQARequestAnswerImageDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunMedQARequestAnswerImageDataList) GoString() string {
+	return s.String()
+}
+
+func (s *RunMedQARequestAnswerImageDataList) SetAnswerImageData(v []byte) *RunMedQARequestAnswerImageDataList {
+	s.AnswerImageData = v
+	return s
+}
+
+type RunMedQARequestAnswerTextList struct {
+	AnswerText *string `json:"AnswerText,omitempty" xml:"AnswerText,omitempty"`
+}
+
+func (s RunMedQARequestAnswerTextList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunMedQARequestAnswerTextList) GoString() string {
+	return s.String()
+}
+
+func (s *RunMedQARequestAnswerTextList) SetAnswerText(v string) *RunMedQARequestAnswerTextList {
+	s.AnswerText = &v
 	return s
 }
 
@@ -1521,8 +1602,12 @@ func (s *RunMedQAResponseBody) SetData(v *RunMedQAResponseBodyData) *RunMedQARes
 }
 
 type RunMedQAResponseBodyData struct {
-	Answer          *string   `json:"Answer,omitempty" xml:"Answer,omitempty"`
-	SimilarQuestion []*string `json:"SimilarQuestion,omitempty" xml:"SimilarQuestion,omitempty" type:"Repeated"`
+	SessionId    *string            `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	QuestionType *string            `json:"QuestionType,omitempty" xml:"QuestionType,omitempty"`
+	Question     *string            `json:"Question,omitempty" xml:"Question,omitempty"`
+	AnswerType   *string            `json:"AnswerType,omitempty" xml:"AnswerType,omitempty"`
+	Options      []*string          `json:"Options,omitempty" xml:"Options,omitempty" type:"Repeated"`
+	Reports      map[string]*string `json:"Reports,omitempty" xml:"Reports,omitempty"`
 }
 
 func (s RunMedQAResponseBodyData) String() string {
@@ -1533,13 +1618,33 @@ func (s RunMedQAResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *RunMedQAResponseBodyData) SetAnswer(v string) *RunMedQAResponseBodyData {
-	s.Answer = &v
+func (s *RunMedQAResponseBodyData) SetSessionId(v string) *RunMedQAResponseBodyData {
+	s.SessionId = &v
 	return s
 }
 
-func (s *RunMedQAResponseBodyData) SetSimilarQuestion(v []*string) *RunMedQAResponseBodyData {
-	s.SimilarQuestion = v
+func (s *RunMedQAResponseBodyData) SetQuestionType(v string) *RunMedQAResponseBodyData {
+	s.QuestionType = &v
+	return s
+}
+
+func (s *RunMedQAResponseBodyData) SetQuestion(v string) *RunMedQAResponseBodyData {
+	s.Question = &v
+	return s
+}
+
+func (s *RunMedQAResponseBodyData) SetAnswerType(v string) *RunMedQAResponseBodyData {
+	s.AnswerType = &v
+	return s
+}
+
+func (s *RunMedQAResponseBodyData) SetOptions(v []*string) *RunMedQAResponseBodyData {
+	s.Options = v
+	return s
+}
+
+func (s *RunMedQAResponseBodyData) SetReports(v map[string]*string) *RunMedQAResponseBodyData {
+	s.Reports = v
 	return s
 }
 
@@ -2797,11 +2902,16 @@ func (client *Client) ClassifyFNFAdvance(request *ClassifyFNFAdvanceRequest, run
 		return _result, _err
 	}
 
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -3052,11 +3162,16 @@ func (client *Client) DetectHipKeypointXRayAdvance(request *DetectHipKeypointXRa
 		return _result, _err
 	}
 
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -3167,11 +3282,16 @@ func (client *Client) DetectKneeKeypointXRayAdvance(request *DetectKneeKeypointX
 		return _result, _err
 	}
 
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -3310,11 +3430,16 @@ func (client *Client) DetectKneeXRayAdvance(request *DetectKneeXRayAdvanceReques
 		return _result, _err
 	}
 
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -3537,11 +3662,16 @@ func (client *Client) DetectSkinDiseaseAdvance(request *DetectSkinDiseaseAdvance
 		return _result, _err
 	}
 
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
