@@ -614,6 +614,7 @@ type LivenessFaceVerifyResponseResultObject struct {
 	Passed       *string `json:"Passed,omitempty" xml:"Passed,omitempty" require:"true"`
 	MaterialInfo *string `json:"MaterialInfo,omitempty" xml:"MaterialInfo,omitempty" require:"true"`
 	SubCode      *string `json:"SubCode,omitempty" xml:"SubCode,omitempty" require:"true"`
+	CertifyId    *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty" require:"true"`
 }
 
 func (s LivenessFaceVerifyResponseResultObject) String() string {
@@ -636,6 +637,11 @@ func (s *LivenessFaceVerifyResponseResultObject) SetMaterialInfo(v string) *Live
 
 func (s *LivenessFaceVerifyResponseResultObject) SetSubCode(v string) *LivenessFaceVerifyResponseResultObject {
 	s.SubCode = &v
+	return s
+}
+
+func (s *LivenessFaceVerifyResponseResultObject) SetCertifyId(v string) *LivenessFaceVerifyResponseResultObject {
+	s.CertifyId = &v
 	return s
 }
 
@@ -766,6 +772,7 @@ func (s *CompareFaceVerifyResponse) SetResultObject(v *CompareFaceVerifyResponse
 type CompareFaceVerifyResponseResultObject struct {
 	Passed      *string  `json:"Passed,omitempty" xml:"Passed,omitempty" require:"true"`
 	VerifyScore *float32 `json:"VerifyScore,omitempty" xml:"VerifyScore,omitempty" require:"true"`
+	CertifyId   *string  `json:"CertifyId,omitempty" xml:"CertifyId,omitempty" require:"true"`
 }
 
 func (s CompareFaceVerifyResponseResultObject) String() string {
@@ -783,6 +790,11 @@ func (s *CompareFaceVerifyResponseResultObject) SetPassed(v string) *CompareFace
 
 func (s *CompareFaceVerifyResponseResultObject) SetVerifyScore(v float32) *CompareFaceVerifyResponseResultObject {
 	s.VerifyScore = &v
+	return s
+}
+
+func (s *CompareFaceVerifyResponseResultObject) SetCertifyId(v string) *CompareFaceVerifyResponseResultObject {
+	s.CertifyId = &v
 	return s
 }
 
@@ -1351,6 +1363,7 @@ type ContrastFaceVerifyResponseResultObject struct {
 	IdentityInfo *string `json:"IdentityInfo,omitempty" xml:"IdentityInfo,omitempty" require:"true"`
 	MaterialInfo *string `json:"MaterialInfo,omitempty" xml:"MaterialInfo,omitempty" require:"true"`
 	SubCode      *string `json:"SubCode,omitempty" xml:"SubCode,omitempty" require:"true"`
+	CertifyId    *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty" require:"true"`
 }
 
 func (s ContrastFaceVerifyResponseResultObject) String() string {
@@ -1378,6 +1391,11 @@ func (s *ContrastFaceVerifyResponseResultObject) SetMaterialInfo(v string) *Cont
 
 func (s *ContrastFaceVerifyResponseResultObject) SetSubCode(v string) *ContrastFaceVerifyResponseResultObject {
 	s.SubCode = &v
+	return s
+}
+
+func (s *ContrastFaceVerifyResponseResultObject) SetCertifyId(v string) *ContrastFaceVerifyResponseResultObject {
+	s.CertifyId = &v
 	return s
 }
 
@@ -2804,7 +2822,6 @@ type CompareFacesRequest struct {
 	SourceImageType  *string `json:"SourceImageType,omitempty" xml:"SourceImageType,omitempty"`
 	SourceImageValue *string `json:"SourceImageValue,omitempty" xml:"SourceImageValue,omitempty"`
 	TargetImageValue *string `json:"TargetImageValue,omitempty" xml:"TargetImageValue,omitempty"`
-	BizType          *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 }
 
 func (s CompareFacesRequest) String() string {
@@ -2832,11 +2849,6 @@ func (s *CompareFacesRequest) SetSourceImageValue(v string) *CompareFacesRequest
 
 func (s *CompareFacesRequest) SetTargetImageValue(v string) *CompareFacesRequest {
 	s.TargetImageValue = &v
-	return s
-}
-
-func (s *CompareFacesRequest) SetBizType(v string) *CompareFacesRequest {
-	s.BizType = &v
 	return s
 }
 
