@@ -1085,6 +1085,114 @@ func (s *CreateAppResponse) SetBody(v *CreateAppResponseBody) *CreateAppResponse
 	return s
 }
 
+type SetUsersPermissionsRequest struct {
+	// 需要设置权限的用户ID，多个用英文逗号（,）分隔，最多30个，每个ID由纯数字组成
+	UserIds *string `json:"UserIds,omitempty" xml:"UserIds,omitempty"`
+	// 白板文档唯一标识符
+	DocKey *string `json:"DocKey,omitempty" xml:"DocKey,omitempty"`
+	// 白板应用唯一标识符
+	AppID *string `json:"AppID,omitempty" xml:"AppID,omitempty"`
+	// 用户白板权限类型，可选值：ban/read/edit
+	PermissionType *string `json:"PermissionType,omitempty" xml:"PermissionType,omitempty"`
+}
+
+func (s SetUsersPermissionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetUsersPermissionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetUsersPermissionsRequest) SetUserIds(v string) *SetUsersPermissionsRequest {
+	s.UserIds = &v
+	return s
+}
+
+func (s *SetUsersPermissionsRequest) SetDocKey(v string) *SetUsersPermissionsRequest {
+	s.DocKey = &v
+	return s
+}
+
+func (s *SetUsersPermissionsRequest) SetAppID(v string) *SetUsersPermissionsRequest {
+	s.AppID = &v
+	return s
+}
+
+func (s *SetUsersPermissionsRequest) SetPermissionType(v string) *SetUsersPermissionsRequest {
+	s.PermissionType = &v
+	return s
+}
+
+type SetUsersPermissionsResponseBody struct {
+	// 请求ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 请求结果
+	ResponseSuccess *bool `json:"ResponseSuccess,omitempty" xml:"ResponseSuccess,omitempty"`
+	// 错误码
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 错误信息
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// 返回结果
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s SetUsersPermissionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetUsersPermissionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetUsersPermissionsResponseBody) SetRequestId(v string) *SetUsersPermissionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SetUsersPermissionsResponseBody) SetResponseSuccess(v bool) *SetUsersPermissionsResponseBody {
+	s.ResponseSuccess = &v
+	return s
+}
+
+func (s *SetUsersPermissionsResponseBody) SetErrorCode(v string) *SetUsersPermissionsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *SetUsersPermissionsResponseBody) SetErrorMsg(v string) *SetUsersPermissionsResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *SetUsersPermissionsResponseBody) SetResult(v bool) *SetUsersPermissionsResponseBody {
+	s.Result = &v
+	return s
+}
+
+type SetUsersPermissionsResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SetUsersPermissionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SetUsersPermissionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetUsersPermissionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetUsersPermissionsResponse) SetHeaders(v map[string]*string) *SetUsersPermissionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetUsersPermissionsResponse) SetBody(v *SetUsersPermissionsResponseBody) *SetUsersPermissionsResponse {
+	s.Body = v
+	return s
+}
+
 type CreateWhiteBoardRequest struct {
 	// 创建白板的用户ID（客户业务用户），由纯数字组成。
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
@@ -1555,6 +1663,34 @@ func (client *Client) CreateApp(request *CreateAppRequest) (_result *CreateAppRe
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAppResponse{}
 	_body, _err := client.CreateAppWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SetUsersPermissionsWithOptions(request *SetUsersPermissionsRequest, runtime *util.RuntimeOptions) (_result *SetUsersPermissionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SetUsersPermissionsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SetUsersPermissions"), tea.String("2020-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetUsersPermissions(request *SetUsersPermissionsRequest) (_result *SetUsersPermissionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetUsersPermissionsResponse{}
+	_body, _err := client.SetUsersPermissionsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
