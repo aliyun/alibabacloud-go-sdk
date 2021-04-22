@@ -13801,6 +13801,234 @@ func (s *UpdateUserResponse) SetBody(v *UpdateUserResponseBody) *UpdateUserRespo
 	return s
 }
 
+type GetPhysicalDatabaseRequest struct {
+	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	Tid  *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetPhysicalDatabaseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPhysicalDatabaseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetPhysicalDatabaseRequest) SetDbId(v int64) *GetPhysicalDatabaseRequest {
+	s.DbId = &v
+	return s
+}
+
+func (s *GetPhysicalDatabaseRequest) SetTid(v int64) *GetPhysicalDatabaseRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetPhysicalDatabaseResponseBody struct {
+	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Database     *GetPhysicalDatabaseResponseBodyDatabase `json:"Database,omitempty" xml:"Database,omitempty" type:"Struct"`
+	ErrorCode    *string                                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Success      *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetPhysicalDatabaseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPhysicalDatabaseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPhysicalDatabaseResponseBody) SetRequestId(v string) *GetPhysicalDatabaseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetPhysicalDatabaseResponseBody) SetDatabase(v *GetPhysicalDatabaseResponseBodyDatabase) *GetPhysicalDatabaseResponseBody {
+	s.Database = v
+	return s
+}
+
+func (s *GetPhysicalDatabaseResponseBody) SetErrorCode(v string) *GetPhysicalDatabaseResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetPhysicalDatabaseResponseBody) SetErrorMessage(v string) *GetPhysicalDatabaseResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetPhysicalDatabaseResponseBody) SetSuccess(v bool) *GetPhysicalDatabaseResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetPhysicalDatabaseResponseBodyDatabase struct {
+	DatabaseId    *string                                               `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	Host          *string                                               `json:"Host,omitempty" xml:"Host,omitempty"`
+	CatalogName   *string                                               `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	DbaName       *string                                               `json:"DbaName,omitempty" xml:"DbaName,omitempty"`
+	State         *string                                               `json:"State,omitempty" xml:"State,omitempty"`
+	DbaId         *string                                               `json:"DbaId,omitempty" xml:"DbaId,omitempty"`
+	SchemaName    *string                                               `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	InstanceId    *string                                               `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Port          *int32                                                `json:"Port,omitempty" xml:"Port,omitempty"`
+	EnvType       *string                                               `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	Sid           *string                                               `json:"Sid,omitempty" xml:"Sid,omitempty"`
+	OwnerIdList   *GetPhysicalDatabaseResponseBodyDatabaseOwnerIdList   `json:"OwnerIdList,omitempty" xml:"OwnerIdList,omitempty" type:"Struct"`
+	Encoding      *string                                               `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
+	DbType        *string                                               `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	OwnerNameList *GetPhysicalDatabaseResponseBodyDatabaseOwnerNameList `json:"OwnerNameList,omitempty" xml:"OwnerNameList,omitempty" type:"Struct"`
+	SearchName    *string                                               `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+}
+
+func (s GetPhysicalDatabaseResponseBodyDatabase) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPhysicalDatabaseResponseBodyDatabase) GoString() string {
+	return s.String()
+}
+
+func (s *GetPhysicalDatabaseResponseBodyDatabase) SetDatabaseId(v string) *GetPhysicalDatabaseResponseBodyDatabase {
+	s.DatabaseId = &v
+	return s
+}
+
+func (s *GetPhysicalDatabaseResponseBodyDatabase) SetHost(v string) *GetPhysicalDatabaseResponseBodyDatabase {
+	s.Host = &v
+	return s
+}
+
+func (s *GetPhysicalDatabaseResponseBodyDatabase) SetCatalogName(v string) *GetPhysicalDatabaseResponseBodyDatabase {
+	s.CatalogName = &v
+	return s
+}
+
+func (s *GetPhysicalDatabaseResponseBodyDatabase) SetDbaName(v string) *GetPhysicalDatabaseResponseBodyDatabase {
+	s.DbaName = &v
+	return s
+}
+
+func (s *GetPhysicalDatabaseResponseBodyDatabase) SetState(v string) *GetPhysicalDatabaseResponseBodyDatabase {
+	s.State = &v
+	return s
+}
+
+func (s *GetPhysicalDatabaseResponseBodyDatabase) SetDbaId(v string) *GetPhysicalDatabaseResponseBodyDatabase {
+	s.DbaId = &v
+	return s
+}
+
+func (s *GetPhysicalDatabaseResponseBodyDatabase) SetSchemaName(v string) *GetPhysicalDatabaseResponseBodyDatabase {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *GetPhysicalDatabaseResponseBodyDatabase) SetInstanceId(v string) *GetPhysicalDatabaseResponseBodyDatabase {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetPhysicalDatabaseResponseBodyDatabase) SetPort(v int32) *GetPhysicalDatabaseResponseBodyDatabase {
+	s.Port = &v
+	return s
+}
+
+func (s *GetPhysicalDatabaseResponseBodyDatabase) SetEnvType(v string) *GetPhysicalDatabaseResponseBodyDatabase {
+	s.EnvType = &v
+	return s
+}
+
+func (s *GetPhysicalDatabaseResponseBodyDatabase) SetSid(v string) *GetPhysicalDatabaseResponseBodyDatabase {
+	s.Sid = &v
+	return s
+}
+
+func (s *GetPhysicalDatabaseResponseBodyDatabase) SetOwnerIdList(v *GetPhysicalDatabaseResponseBodyDatabaseOwnerIdList) *GetPhysicalDatabaseResponseBodyDatabase {
+	s.OwnerIdList = v
+	return s
+}
+
+func (s *GetPhysicalDatabaseResponseBodyDatabase) SetEncoding(v string) *GetPhysicalDatabaseResponseBodyDatabase {
+	s.Encoding = &v
+	return s
+}
+
+func (s *GetPhysicalDatabaseResponseBodyDatabase) SetDbType(v string) *GetPhysicalDatabaseResponseBodyDatabase {
+	s.DbType = &v
+	return s
+}
+
+func (s *GetPhysicalDatabaseResponseBodyDatabase) SetOwnerNameList(v *GetPhysicalDatabaseResponseBodyDatabaseOwnerNameList) *GetPhysicalDatabaseResponseBodyDatabase {
+	s.OwnerNameList = v
+	return s
+}
+
+func (s *GetPhysicalDatabaseResponseBodyDatabase) SetSearchName(v string) *GetPhysicalDatabaseResponseBodyDatabase {
+	s.SearchName = &v
+	return s
+}
+
+type GetPhysicalDatabaseResponseBodyDatabaseOwnerIdList struct {
+	OwnerIds []*string `json:"OwnerIds,omitempty" xml:"OwnerIds,omitempty" type:"Repeated"`
+}
+
+func (s GetPhysicalDatabaseResponseBodyDatabaseOwnerIdList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPhysicalDatabaseResponseBodyDatabaseOwnerIdList) GoString() string {
+	return s.String()
+}
+
+func (s *GetPhysicalDatabaseResponseBodyDatabaseOwnerIdList) SetOwnerIds(v []*string) *GetPhysicalDatabaseResponseBodyDatabaseOwnerIdList {
+	s.OwnerIds = v
+	return s
+}
+
+type GetPhysicalDatabaseResponseBodyDatabaseOwnerNameList struct {
+	OwnerNames []*string `json:"OwnerNames,omitempty" xml:"OwnerNames,omitempty" type:"Repeated"`
+}
+
+func (s GetPhysicalDatabaseResponseBodyDatabaseOwnerNameList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPhysicalDatabaseResponseBodyDatabaseOwnerNameList) GoString() string {
+	return s.String()
+}
+
+func (s *GetPhysicalDatabaseResponseBodyDatabaseOwnerNameList) SetOwnerNames(v []*string) *GetPhysicalDatabaseResponseBodyDatabaseOwnerNameList {
+	s.OwnerNames = v
+	return s
+}
+
+type GetPhysicalDatabaseResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetPhysicalDatabaseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetPhysicalDatabaseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPhysicalDatabaseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPhysicalDatabaseResponse) SetHeaders(v map[string]*string) *GetPhysicalDatabaseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPhysicalDatabaseResponse) SetBody(v *GetPhysicalDatabaseResponseBody) *GetPhysicalDatabaseResponse {
+	s.Body = v
+	return s
+}
+
 type GetStructSyncExecSqlDetailRequest struct {
 	OrderId    *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -16464,6 +16692,34 @@ func (client *Client) UpdateUser(request *UpdateUserRequest) (_result *UpdateUse
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateUserResponse{}
 	_body, _err := client.UpdateUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetPhysicalDatabaseWithOptions(request *GetPhysicalDatabaseRequest, runtime *util.RuntimeOptions) (_result *GetPhysicalDatabaseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetPhysicalDatabaseResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetPhysicalDatabase"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetPhysicalDatabase(request *GetPhysicalDatabaseRequest) (_result *GetPhysicalDatabaseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetPhysicalDatabaseResponse{}
+	_body, _err := client.GetPhysicalDatabaseWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
