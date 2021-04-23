@@ -537,6 +537,123 @@ func (s *EstimateStereoImageDepthResponse) SetBody(v *EstimateStereoImageDepthRe
 	return s
 }
 
+type EstimateStereoVideoDepthRequest struct {
+	// A short description of struct
+	VideoURL   *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
+	SampleRate *string `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
+}
+
+func (s EstimateStereoVideoDepthRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EstimateStereoVideoDepthRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EstimateStereoVideoDepthRequest) SetVideoURL(v string) *EstimateStereoVideoDepthRequest {
+	s.VideoURL = &v
+	return s
+}
+
+func (s *EstimateStereoVideoDepthRequest) SetSampleRate(v string) *EstimateStereoVideoDepthRequest {
+	s.SampleRate = &v
+	return s
+}
+
+type EstimateStereoVideoDepthAdvanceRequest struct {
+	VideoURLObject io.Reader `json:"VideoURLObject,omitempty" xml:"VideoURLObject,omitempty" require:"true"`
+	SampleRate     *string   `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
+}
+
+func (s EstimateStereoVideoDepthAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EstimateStereoVideoDepthAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EstimateStereoVideoDepthAdvanceRequest) SetVideoURLObject(v io.Reader) *EstimateStereoVideoDepthAdvanceRequest {
+	s.VideoURLObject = v
+	return s
+}
+
+func (s *EstimateStereoVideoDepthAdvanceRequest) SetSampleRate(v string) *EstimateStereoVideoDepthAdvanceRequest {
+	s.SampleRate = &v
+	return s
+}
+
+type EstimateStereoVideoDepthResponseBody struct {
+	// Id of the request
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *EstimateStereoVideoDepthResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s EstimateStereoVideoDepthResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EstimateStereoVideoDepthResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EstimateStereoVideoDepthResponseBody) SetRequestId(v string) *EstimateStereoVideoDepthResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *EstimateStereoVideoDepthResponseBody) SetData(v *EstimateStereoVideoDepthResponseBodyData) *EstimateStereoVideoDepthResponseBody {
+	s.Data = v
+	return s
+}
+
+type EstimateStereoVideoDepthResponseBodyData struct {
+	DepthUrl    *string `json:"DepthUrl,omitempty" xml:"DepthUrl,omitempty"`
+	DepthVisUrl *string `json:"DepthVisUrl,omitempty" xml:"DepthVisUrl,omitempty"`
+}
+
+func (s EstimateStereoVideoDepthResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EstimateStereoVideoDepthResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *EstimateStereoVideoDepthResponseBodyData) SetDepthUrl(v string) *EstimateStereoVideoDepthResponseBodyData {
+	s.DepthUrl = &v
+	return s
+}
+
+func (s *EstimateStereoVideoDepthResponseBodyData) SetDepthVisUrl(v string) *EstimateStereoVideoDepthResponseBodyData {
+	s.DepthVisUrl = &v
+	return s
+}
+
+type EstimateStereoVideoDepthResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *EstimateStereoVideoDepthResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s EstimateStereoVideoDepthResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EstimateStereoVideoDepthResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EstimateStereoVideoDepthResponse) SetHeaders(v map[string]*string) *EstimateStereoVideoDepthResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EstimateStereoVideoDepthResponse) SetBody(v *EstimateStereoVideoDepthResponseBody) *EstimateStereoVideoDepthResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -624,11 +741,16 @@ func (client *Client) ReconstructBodyBySingleImageAdvance(request *ReconstructBo
 		return _result, _err
 	}
 
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -739,11 +861,16 @@ func (client *Client) ReconstructThreeDMultiViewAdvance(request *ReconstructThre
 		return _result, _err
 	}
 
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -882,11 +1009,16 @@ func (client *Client) EstimateMonocularImageDepthAdvance(request *EstimateMonocu
 		return _result, _err
 	}
 
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -982,5 +1114,125 @@ func (client *Client) EstimateStereoImageDepth(request *EstimateStereoImageDepth
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+func (client *Client) EstimateStereoVideoDepthWithOptions(request *EstimateStereoVideoDepthRequest, runtime *util.RuntimeOptions) (_result *EstimateStereoVideoDepthResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &EstimateStereoVideoDepthResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("EstimateStereoVideoDepth"), tea.String("2021-01-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) EstimateStereoVideoDepth(request *EstimateStereoVideoDepthRequest) (_result *EstimateStereoVideoDepthResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EstimateStereoVideoDepthResponse{}
+	_body, _err := client.EstimateStereoVideoDepthWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) EstimateStereoVideoDepthAdvance(request *EstimateStereoVideoDepthAdvanceRequest, runtime *util.RuntimeOptions) (_result *EstimateStereoVideoDepthResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("threedvision"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	estimateStereoVideoDepthReq := &EstimateStereoVideoDepthRequest{}
+	openapiutil.Convert(request, estimateStereoVideoDepthReq)
+	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	ossConfig.AccessKeyId = authResponse.AccessKeyId
+	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+	ossClient, _err = oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	fileObj = &fileform.FileField{
+		Filename:    authResponse.ObjectKey,
+		Content:     request.VideoURLObject,
+		ContentType: tea.String(""),
+	}
+	ossHeader = &oss.PostObjectRequestHeader{
+		AccessKeyId:         authResponse.AccessKeyId,
+		Policy:              authResponse.EncodedPolicy,
+		Signature:           authResponse.Signature,
+		Key:                 authResponse.ObjectKey,
+		File:                fileObj,
+		SuccessActionStatus: tea.String("201"),
+	}
+	uploadRequest = &oss.PostObjectRequest{
+		BucketName: authResponse.Bucket,
+		Header:     ossHeader,
+	}
+	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+	if _err != nil {
+		return _result, _err
+	}
+	estimateStereoVideoDepthReq.VideoURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	estimateStereoVideoDepthResp, _err := client.EstimateStereoVideoDepthWithOptions(estimateStereoVideoDepthReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = estimateStereoVideoDepthResp
 	return _result, _err
 }
