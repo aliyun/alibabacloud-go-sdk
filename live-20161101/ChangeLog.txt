@@ -1,3 +1,6 @@
+2021-04-23 Version: v1.0.1
+- Generated golang 2016-11-01 for live.
+
 2021-01-10 Version: v1.0.0
 - Generated golang 2016-11-01 for live.
 

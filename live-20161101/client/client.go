@@ -1114,6 +1114,105 @@ func (s *AddCustomLiveStreamTranscodeResponse) SetBody(v *AddCustomLiveStreamTra
 	return s
 }
 
+type AddDRMCertificateRequest struct {
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	CertName    *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	ServCert    *string `json:"ServCert,omitempty" xml:"ServCert,omitempty"`
+	PrivateKey  *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
+	Passphrase  *string `json:"Passphrase,omitempty" xml:"Passphrase,omitempty"`
+	Ask         *string `json:"Ask,omitempty" xml:"Ask,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+}
+
+func (s AddDRMCertificateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDRMCertificateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddDRMCertificateRequest) SetOwnerId(v int64) *AddDRMCertificateRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *AddDRMCertificateRequest) SetCertName(v string) *AddDRMCertificateRequest {
+	s.CertName = &v
+	return s
+}
+
+func (s *AddDRMCertificateRequest) SetServCert(v string) *AddDRMCertificateRequest {
+	s.ServCert = &v
+	return s
+}
+
+func (s *AddDRMCertificateRequest) SetPrivateKey(v string) *AddDRMCertificateRequest {
+	s.PrivateKey = &v
+	return s
+}
+
+func (s *AddDRMCertificateRequest) SetPassphrase(v string) *AddDRMCertificateRequest {
+	s.Passphrase = &v
+	return s
+}
+
+func (s *AddDRMCertificateRequest) SetAsk(v string) *AddDRMCertificateRequest {
+	s.Ask = &v
+	return s
+}
+
+func (s *AddDRMCertificateRequest) SetDescription(v string) *AddDRMCertificateRequest {
+	s.Description = &v
+	return s
+}
+
+type AddDRMCertificateResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	CertId    *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
+}
+
+func (s AddDRMCertificateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDRMCertificateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddDRMCertificateResponseBody) SetRequestId(v string) *AddDRMCertificateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddDRMCertificateResponseBody) SetCertId(v string) *AddDRMCertificateResponseBody {
+	s.CertId = &v
+	return s
+}
+
+type AddDRMCertificateResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *AddDRMCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddDRMCertificateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDRMCertificateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddDRMCertificateResponse) SetHeaders(v map[string]*string) *AddDRMCertificateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddDRMCertificateResponse) SetBody(v *AddDRMCertificateResponseBody) *AddDRMCertificateResponse {
+	s.Body = v
+	return s
+}
+
 type AddLiveAppRecordConfigRequest struct {
 	SecurityToken *string                                      `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	OwnerId       *int64                                       `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -1982,7 +2081,6 @@ type AddLivePullStreamInfoConfigRequest struct {
 	SourceUrl  *string `json:"SourceUrl,omitempty" xml:"SourceUrl,omitempty"`
 	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	PullAlways *string `json:"PullAlways,omitempty" xml:"PullAlways,omitempty"`
 }
 
 func (s AddLivePullStreamInfoConfigRequest) String() string {
@@ -2025,11 +2123,6 @@ func (s *AddLivePullStreamInfoConfigRequest) SetStartTime(v string) *AddLivePull
 
 func (s *AddLivePullStreamInfoConfigRequest) SetEndTime(v string) *AddLivePullStreamInfoConfigRequest {
 	s.EndTime = &v
-	return s
-}
-
-func (s *AddLivePullStreamInfoConfigRequest) SetPullAlways(v string) *AddLivePullStreamInfoConfigRequest {
-	s.PullAlways = &v
 	return s
 }
 
@@ -2377,10 +2470,6 @@ type AddLiveStreamTranscodeRequest struct {
 	Template          *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	EncryptParameters *string `json:"EncryptParameters,omitempty" xml:"EncryptParameters,omitempty"`
 	Lazy              *string `json:"Lazy,omitempty" xml:"Lazy,omitempty"`
-	Watermark         *string `json:"Watermark,omitempty" xml:"Watermark,omitempty"`
-	Mix               *string `json:"Mix,omitempty" xml:"Mix,omitempty"`
-	OnlyAudio         *string `json:"OnlyAudio,omitempty" xml:"OnlyAudio,omitempty"`
-	WaterPattern      *string `json:"WaterPattern,omitempty" xml:"WaterPattern,omitempty"`
 }
 
 func (s AddLiveStreamTranscodeRequest) String() string {
@@ -2421,26 +2510,6 @@ func (s *AddLiveStreamTranscodeRequest) SetLazy(v string) *AddLiveStreamTranscod
 	return s
 }
 
-func (s *AddLiveStreamTranscodeRequest) SetWatermark(v string) *AddLiveStreamTranscodeRequest {
-	s.Watermark = &v
-	return s
-}
-
-func (s *AddLiveStreamTranscodeRequest) SetMix(v string) *AddLiveStreamTranscodeRequest {
-	s.Mix = &v
-	return s
-}
-
-func (s *AddLiveStreamTranscodeRequest) SetOnlyAudio(v string) *AddLiveStreamTranscodeRequest {
-	s.OnlyAudio = &v
-	return s
-}
-
-func (s *AddLiveStreamTranscodeRequest) SetWaterPattern(v string) *AddLiveStreamTranscodeRequest {
-	s.WaterPattern = &v
-	return s
-}
-
 type AddLiveStreamTranscodeResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -2477,6 +2546,397 @@ func (s *AddLiveStreamTranscodeResponse) SetHeaders(v map[string]*string) *AddLi
 }
 
 func (s *AddLiveStreamTranscodeResponse) SetBody(v *AddLiveStreamTranscodeResponseBody) *AddLiveStreamTranscodeResponse {
+	s.Body = v
+	return s
+}
+
+type AddMultiRateConfigRequest struct {
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	DomainName  *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	App         *string `json:"App,omitempty" xml:"App,omitempty"`
+	AvFormat    *string `json:"AvFormat,omitempty" xml:"AvFormat,omitempty"`
+	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	IsLazy      *string `json:"IsLazy,omitempty" xml:"IsLazy,omitempty"`
+	IsTimeAlign *string `json:"IsTimeAlign,omitempty" xml:"IsTimeAlign,omitempty"`
+	Templates   *string `json:"Templates,omitempty" xml:"Templates,omitempty"`
+}
+
+func (s AddMultiRateConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddMultiRateConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddMultiRateConfigRequest) SetOwnerId(v int64) *AddMultiRateConfigRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *AddMultiRateConfigRequest) SetDomainName(v string) *AddMultiRateConfigRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *AddMultiRateConfigRequest) SetApp(v string) *AddMultiRateConfigRequest {
+	s.App = &v
+	return s
+}
+
+func (s *AddMultiRateConfigRequest) SetAvFormat(v string) *AddMultiRateConfigRequest {
+	s.AvFormat = &v
+	return s
+}
+
+func (s *AddMultiRateConfigRequest) SetGroupId(v string) *AddMultiRateConfigRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *AddMultiRateConfigRequest) SetIsLazy(v string) *AddMultiRateConfigRequest {
+	s.IsLazy = &v
+	return s
+}
+
+func (s *AddMultiRateConfigRequest) SetIsTimeAlign(v string) *AddMultiRateConfigRequest {
+	s.IsTimeAlign = &v
+	return s
+}
+
+func (s *AddMultiRateConfigRequest) SetTemplates(v string) *AddMultiRateConfigRequest {
+	s.Templates = &v
+	return s
+}
+
+type AddMultiRateConfigResponseBody struct {
+	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code      *int32                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Body      *AddMultiRateConfigResponseBodyBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
+}
+
+func (s AddMultiRateConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddMultiRateConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddMultiRateConfigResponseBody) SetMessage(v string) *AddMultiRateConfigResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AddMultiRateConfigResponseBody) SetRequestId(v string) *AddMultiRateConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddMultiRateConfigResponseBody) SetCode(v int32) *AddMultiRateConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AddMultiRateConfigResponseBody) SetBody(v *AddMultiRateConfigResponseBodyBody) *AddMultiRateConfigResponseBody {
+	s.Body = v
+	return s
+}
+
+type AddMultiRateConfigResponseBodyBody struct {
+	FailedTemplates []*AddMultiRateConfigResponseBodyBodyFailedTemplates `json:"FailedTemplates,omitempty" xml:"FailedTemplates,omitempty" type:"Repeated"`
+}
+
+func (s AddMultiRateConfigResponseBodyBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddMultiRateConfigResponseBodyBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddMultiRateConfigResponseBodyBody) SetFailedTemplates(v []*AddMultiRateConfigResponseBodyBodyFailedTemplates) *AddMultiRateConfigResponseBodyBody {
+	s.FailedTemplates = v
+	return s
+}
+
+type AddMultiRateConfigResponseBodyBodyFailedTemplates struct {
+	AudioBitrate    *int32  `json:"AudioBitrate,omitempty" xml:"AudioBitrate,omitempty"`
+	Height          *int32  `json:"Height,omitempty" xml:"Height,omitempty"`
+	Template        *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	TemplateType    *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	BandWidth       *int32  `json:"BandWidth,omitempty" xml:"BandWidth,omitempty"`
+	Profile         *int32  `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	AudioRate       *int32  `json:"AudioRate,omitempty" xml:"AudioRate,omitempty"`
+	AudioCodec      *string `json:"AudioCodec,omitempty" xml:"AudioCodec,omitempty"`
+	Gop             *string `json:"Gop,omitempty" xml:"Gop,omitempty"`
+	VideoBitrate    *int32  `json:"VideoBitrate,omitempty" xml:"VideoBitrate,omitempty"`
+	Width           *int32  `json:"Width,omitempty" xml:"Width,omitempty"`
+	AudioChannelNum *int32  `json:"AudioChannelNum,omitempty" xml:"AudioChannelNum,omitempty"`
+	Fps             *int32  `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	AudioProfile    *string `json:"AudioProfile,omitempty" xml:"AudioProfile,omitempty"`
+}
+
+func (s AddMultiRateConfigResponseBodyBodyFailedTemplates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddMultiRateConfigResponseBodyBodyFailedTemplates) GoString() string {
+	return s.String()
+}
+
+func (s *AddMultiRateConfigResponseBodyBodyFailedTemplates) SetAudioBitrate(v int32) *AddMultiRateConfigResponseBodyBodyFailedTemplates {
+	s.AudioBitrate = &v
+	return s
+}
+
+func (s *AddMultiRateConfigResponseBodyBodyFailedTemplates) SetHeight(v int32) *AddMultiRateConfigResponseBodyBodyFailedTemplates {
+	s.Height = &v
+	return s
+}
+
+func (s *AddMultiRateConfigResponseBodyBodyFailedTemplates) SetTemplate(v string) *AddMultiRateConfigResponseBodyBodyFailedTemplates {
+	s.Template = &v
+	return s
+}
+
+func (s *AddMultiRateConfigResponseBodyBodyFailedTemplates) SetTemplateType(v string) *AddMultiRateConfigResponseBodyBodyFailedTemplates {
+	s.TemplateType = &v
+	return s
+}
+
+func (s *AddMultiRateConfigResponseBodyBodyFailedTemplates) SetBandWidth(v int32) *AddMultiRateConfigResponseBodyBodyFailedTemplates {
+	s.BandWidth = &v
+	return s
+}
+
+func (s *AddMultiRateConfigResponseBodyBodyFailedTemplates) SetProfile(v int32) *AddMultiRateConfigResponseBodyBodyFailedTemplates {
+	s.Profile = &v
+	return s
+}
+
+func (s *AddMultiRateConfigResponseBodyBodyFailedTemplates) SetAudioRate(v int32) *AddMultiRateConfigResponseBodyBodyFailedTemplates {
+	s.AudioRate = &v
+	return s
+}
+
+func (s *AddMultiRateConfigResponseBodyBodyFailedTemplates) SetAudioCodec(v string) *AddMultiRateConfigResponseBodyBodyFailedTemplates {
+	s.AudioCodec = &v
+	return s
+}
+
+func (s *AddMultiRateConfigResponseBodyBodyFailedTemplates) SetGop(v string) *AddMultiRateConfigResponseBodyBodyFailedTemplates {
+	s.Gop = &v
+	return s
+}
+
+func (s *AddMultiRateConfigResponseBodyBodyFailedTemplates) SetVideoBitrate(v int32) *AddMultiRateConfigResponseBodyBodyFailedTemplates {
+	s.VideoBitrate = &v
+	return s
+}
+
+func (s *AddMultiRateConfigResponseBodyBodyFailedTemplates) SetWidth(v int32) *AddMultiRateConfigResponseBodyBodyFailedTemplates {
+	s.Width = &v
+	return s
+}
+
+func (s *AddMultiRateConfigResponseBodyBodyFailedTemplates) SetAudioChannelNum(v int32) *AddMultiRateConfigResponseBodyBodyFailedTemplates {
+	s.AudioChannelNum = &v
+	return s
+}
+
+func (s *AddMultiRateConfigResponseBodyBodyFailedTemplates) SetFps(v int32) *AddMultiRateConfigResponseBodyBodyFailedTemplates {
+	s.Fps = &v
+	return s
+}
+
+func (s *AddMultiRateConfigResponseBodyBodyFailedTemplates) SetAudioProfile(v string) *AddMultiRateConfigResponseBodyBodyFailedTemplates {
+	s.AudioProfile = &v
+	return s
+}
+
+type AddMultiRateConfigResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *AddMultiRateConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddMultiRateConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddMultiRateConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddMultiRateConfigResponse) SetHeaders(v map[string]*string) *AddMultiRateConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddMultiRateConfigResponse) SetBody(v *AddMultiRateConfigResponseBody) *AddMultiRateConfigResponse {
+	s.Body = v
+	return s
+}
+
+type AddPlaylistItemsRequest struct {
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	CasterId      *string `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
+	ProgramItems  *string `json:"ProgramItems,omitempty" xml:"ProgramItems,omitempty"`
+	ProgramId     *string `json:"ProgramId,omitempty" xml:"ProgramId,omitempty"`
+	ProgramConfig *string `json:"ProgramConfig,omitempty" xml:"ProgramConfig,omitempty"`
+}
+
+func (s AddPlaylistItemsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddPlaylistItemsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddPlaylistItemsRequest) SetOwnerId(v int64) *AddPlaylistItemsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *AddPlaylistItemsRequest) SetCasterId(v string) *AddPlaylistItemsRequest {
+	s.CasterId = &v
+	return s
+}
+
+func (s *AddPlaylistItemsRequest) SetProgramItems(v string) *AddPlaylistItemsRequest {
+	s.ProgramItems = &v
+	return s
+}
+
+func (s *AddPlaylistItemsRequest) SetProgramId(v string) *AddPlaylistItemsRequest {
+	s.ProgramId = &v
+	return s
+}
+
+func (s *AddPlaylistItemsRequest) SetProgramConfig(v string) *AddPlaylistItemsRequest {
+	s.ProgramConfig = &v
+	return s
+}
+
+type AddPlaylistItemsResponseBody struct {
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Items     *AddPlaylistItemsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	ProgramId *string                            `json:"ProgramId,omitempty" xml:"ProgramId,omitempty"`
+}
+
+func (s AddPlaylistItemsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddPlaylistItemsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddPlaylistItemsResponseBody) SetRequestId(v string) *AddPlaylistItemsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddPlaylistItemsResponseBody) SetItems(v *AddPlaylistItemsResponseBodyItems) *AddPlaylistItemsResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *AddPlaylistItemsResponseBody) SetProgramId(v string) *AddPlaylistItemsResponseBody {
+	s.ProgramId = &v
+	return s
+}
+
+type AddPlaylistItemsResponseBodyItems struct {
+	SuccessItems []*AddPlaylistItemsResponseBodyItemsSuccessItems `json:"SuccessItems,omitempty" xml:"SuccessItems,omitempty" type:"Repeated"`
+	FailedItems  []*AddPlaylistItemsResponseBodyItemsFailedItems  `json:"FailedItems,omitempty" xml:"FailedItems,omitempty" type:"Repeated"`
+}
+
+func (s AddPlaylistItemsResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddPlaylistItemsResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *AddPlaylistItemsResponseBodyItems) SetSuccessItems(v []*AddPlaylistItemsResponseBodyItemsSuccessItems) *AddPlaylistItemsResponseBodyItems {
+	s.SuccessItems = v
+	return s
+}
+
+func (s *AddPlaylistItemsResponseBodyItems) SetFailedItems(v []*AddPlaylistItemsResponseBodyItemsFailedItems) *AddPlaylistItemsResponseBodyItems {
+	s.FailedItems = v
+	return s
+}
+
+type AddPlaylistItemsResponseBodyItemsSuccessItems struct {
+	ItemName *string `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
+	ItemId   *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+}
+
+func (s AddPlaylistItemsResponseBodyItemsSuccessItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddPlaylistItemsResponseBodyItemsSuccessItems) GoString() string {
+	return s.String()
+}
+
+func (s *AddPlaylistItemsResponseBodyItemsSuccessItems) SetItemName(v string) *AddPlaylistItemsResponseBodyItemsSuccessItems {
+	s.ItemName = &v
+	return s
+}
+
+func (s *AddPlaylistItemsResponseBodyItemsSuccessItems) SetItemId(v string) *AddPlaylistItemsResponseBodyItemsSuccessItems {
+	s.ItemId = &v
+	return s
+}
+
+type AddPlaylistItemsResponseBodyItemsFailedItems struct {
+	ItemName *string `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
+	ItemId   *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+}
+
+func (s AddPlaylistItemsResponseBodyItemsFailedItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddPlaylistItemsResponseBodyItemsFailedItems) GoString() string {
+	return s.String()
+}
+
+func (s *AddPlaylistItemsResponseBodyItemsFailedItems) SetItemName(v string) *AddPlaylistItemsResponseBodyItemsFailedItems {
+	s.ItemName = &v
+	return s
+}
+
+func (s *AddPlaylistItemsResponseBodyItemsFailedItems) SetItemId(v string) *AddPlaylistItemsResponseBodyItemsFailedItems {
+	s.ItemId = &v
+	return s
+}
+
+type AddPlaylistItemsResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *AddPlaylistItemsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddPlaylistItemsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddPlaylistItemsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddPlaylistItemsResponse) SetHeaders(v map[string]*string) *AddPlaylistItemsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddPlaylistItemsResponse) SetBody(v *AddPlaylistItemsResponseBody) *AddPlaylistItemsResponse {
 	s.Body = v
 	return s
 }
@@ -2642,6 +3102,117 @@ func (s *AddRtsLiveStreamTranscodeResponse) SetHeaders(v map[string]*string) *Ad
 }
 
 func (s *AddRtsLiveStreamTranscodeResponse) SetBody(v *AddRtsLiveStreamTranscodeResponseBody) *AddRtsLiveStreamTranscodeResponse {
+	s.Body = v
+	return s
+}
+
+type AddStudioLayoutRequest struct {
+	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	CasterId              *string `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
+	LayoutName            *string `json:"LayoutName,omitempty" xml:"LayoutName,omitempty"`
+	LayoutType            *string `json:"LayoutType,omitempty" xml:"LayoutType,omitempty"`
+	CommonConfig          *string `json:"CommonConfig,omitempty" xml:"CommonConfig,omitempty"`
+	BgImageConfig         *string `json:"BgImageConfig,omitempty" xml:"BgImageConfig,omitempty"`
+	ScreenInputConfigList *string `json:"ScreenInputConfigList,omitempty" xml:"ScreenInputConfigList,omitempty"`
+	MediaInputConfigList  *string `json:"MediaInputConfigList,omitempty" xml:"MediaInputConfigList,omitempty"`
+	LayerOrderConfigList  *string `json:"LayerOrderConfigList,omitempty" xml:"LayerOrderConfigList,omitempty"`
+}
+
+func (s AddStudioLayoutRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddStudioLayoutRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddStudioLayoutRequest) SetOwnerId(v int64) *AddStudioLayoutRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *AddStudioLayoutRequest) SetCasterId(v string) *AddStudioLayoutRequest {
+	s.CasterId = &v
+	return s
+}
+
+func (s *AddStudioLayoutRequest) SetLayoutName(v string) *AddStudioLayoutRequest {
+	s.LayoutName = &v
+	return s
+}
+
+func (s *AddStudioLayoutRequest) SetLayoutType(v string) *AddStudioLayoutRequest {
+	s.LayoutType = &v
+	return s
+}
+
+func (s *AddStudioLayoutRequest) SetCommonConfig(v string) *AddStudioLayoutRequest {
+	s.CommonConfig = &v
+	return s
+}
+
+func (s *AddStudioLayoutRequest) SetBgImageConfig(v string) *AddStudioLayoutRequest {
+	s.BgImageConfig = &v
+	return s
+}
+
+func (s *AddStudioLayoutRequest) SetScreenInputConfigList(v string) *AddStudioLayoutRequest {
+	s.ScreenInputConfigList = &v
+	return s
+}
+
+func (s *AddStudioLayoutRequest) SetMediaInputConfigList(v string) *AddStudioLayoutRequest {
+	s.MediaInputConfigList = &v
+	return s
+}
+
+func (s *AddStudioLayoutRequest) SetLayerOrderConfigList(v string) *AddStudioLayoutRequest {
+	s.LayerOrderConfigList = &v
+	return s
+}
+
+type AddStudioLayoutResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	LayoutId  *string `json:"LayoutId,omitempty" xml:"LayoutId,omitempty"`
+}
+
+func (s AddStudioLayoutResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddStudioLayoutResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddStudioLayoutResponseBody) SetRequestId(v string) *AddStudioLayoutResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddStudioLayoutResponseBody) SetLayoutId(v string) *AddStudioLayoutResponseBody {
+	s.LayoutId = &v
+	return s
+}
+
+type AddStudioLayoutResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *AddStudioLayoutResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddStudioLayoutResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddStudioLayoutResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddStudioLayoutResponse) SetHeaders(v map[string]*string) *AddStudioLayoutResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddStudioLayoutResponse) SetBody(v *AddStudioLayoutResponseBody) *AddStudioLayoutResponse {
 	s.Body = v
 	return s
 }
@@ -2925,10 +3496,10 @@ func (s *ApplyRecordTokenRequest) SetAppId(v string) *ApplyRecordTokenRequest {
 }
 
 type ApplyRecordTokenResponseBody struct {
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	AccessKeyId     *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
 	Expiration      *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
 }
 
@@ -2940,23 +3511,23 @@ func (s ApplyRecordTokenResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ApplyRecordTokenResponseBody) SetRequestId(v string) *ApplyRecordTokenResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *ApplyRecordTokenResponseBody) SetSecurityToken(v string) *ApplyRecordTokenResponseBody {
 	s.SecurityToken = &v
 	return s
 }
 
-func (s *ApplyRecordTokenResponseBody) SetAccessKeySecret(v string) *ApplyRecordTokenResponseBody {
-	s.AccessKeySecret = &v
+func (s *ApplyRecordTokenResponseBody) SetRequestId(v string) *ApplyRecordTokenResponseBody {
+	s.RequestId = &v
 	return s
 }
 
 func (s *ApplyRecordTokenResponseBody) SetAccessKeyId(v string) *ApplyRecordTokenResponseBody {
 	s.AccessKeyId = &v
+	return s
+}
+
+func (s *ApplyRecordTokenResponseBody) SetAccessKeySecret(v string) *ApplyRecordTokenResponseBody {
+	s.AccessKeySecret = &v
 	return s
 }
 
@@ -3146,6 +3717,168 @@ func (s *BatchSetLiveDomainConfigsResponse) SetHeaders(v map[string]*string) *Ba
 }
 
 func (s *BatchSetLiveDomainConfigsResponse) SetBody(v *BatchSetLiveDomainConfigsResponseBody) *BatchSetLiveDomainConfigsResponse {
+	s.Body = v
+	return s
+}
+
+type CheckServiceForRoleRequest struct {
+	RoleArn        *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	SPIRegionId    *string `json:"SPIRegionId,omitempty" xml:"SPIRegionId,omitempty"`
+	ServiceName    *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	DeletionTaskId *string `json:"DeletionTaskId,omitempty" xml:"DeletionTaskId,omitempty"`
+	AccountId      *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+}
+
+func (s CheckServiceForRoleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckServiceForRoleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CheckServiceForRoleRequest) SetRoleArn(v string) *CheckServiceForRoleRequest {
+	s.RoleArn = &v
+	return s
+}
+
+func (s *CheckServiceForRoleRequest) SetSPIRegionId(v string) *CheckServiceForRoleRequest {
+	s.SPIRegionId = &v
+	return s
+}
+
+func (s *CheckServiceForRoleRequest) SetServiceName(v string) *CheckServiceForRoleRequest {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *CheckServiceForRoleRequest) SetDeletionTaskId(v string) *CheckServiceForRoleRequest {
+	s.DeletionTaskId = &v
+	return s
+}
+
+func (s *CheckServiceForRoleRequest) SetAccountId(v string) *CheckServiceForRoleRequest {
+	s.AccountId = &v
+	return s
+}
+
+type CheckServiceForRoleResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Deletable *bool   `json:"Deletable,omitempty" xml:"Deletable,omitempty"`
+}
+
+func (s CheckServiceForRoleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckServiceForRoleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CheckServiceForRoleResponseBody) SetRequestId(v string) *CheckServiceForRoleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CheckServiceForRoleResponseBody) SetDeletable(v bool) *CheckServiceForRoleResponseBody {
+	s.Deletable = &v
+	return s
+}
+
+type CheckServiceForRoleResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CheckServiceForRoleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CheckServiceForRoleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckServiceForRoleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CheckServiceForRoleResponse) SetHeaders(v map[string]*string) *CheckServiceForRoleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CheckServiceForRoleResponse) SetBody(v *CheckServiceForRoleResponseBody) *CheckServiceForRoleResponse {
+	s.Body = v
+	return s
+}
+
+type CloseLiveShiftRequest struct {
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	AppName    *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+}
+
+func (s CloseLiveShiftRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloseLiveShiftRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CloseLiveShiftRequest) SetOwnerId(v int64) *CloseLiveShiftRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CloseLiveShiftRequest) SetDomainName(v string) *CloseLiveShiftRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *CloseLiveShiftRequest) SetAppName(v string) *CloseLiveShiftRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *CloseLiveShiftRequest) SetStreamName(v string) *CloseLiveShiftRequest {
+	s.StreamName = &v
+	return s
+}
+
+type CloseLiveShiftResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CloseLiveShiftResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloseLiveShiftResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CloseLiveShiftResponseBody) SetRequestId(v string) *CloseLiveShiftResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CloseLiveShiftResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CloseLiveShiftResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CloseLiveShiftResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloseLiveShiftResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CloseLiveShiftResponse) SetHeaders(v map[string]*string) *CloseLiveShiftResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CloseLiveShiftResponse) SetBody(v *CloseLiveShiftResponseBody) *CloseLiveShiftResponse {
 	s.Body = v
 	return s
 }
@@ -3342,8 +4075,8 @@ func (s *ControlHtmlResourceRequest) SetOperate(v string) *ControlHtmlResourceRe
 }
 
 type ControlHtmlResourceResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	StreamId  *string `json:"StreamId,omitempty" xml:"StreamId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ControlHtmlResourceResponseBody) String() string {
@@ -3354,13 +4087,13 @@ func (s ControlHtmlResourceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ControlHtmlResourceResponseBody) SetRequestId(v string) *ControlHtmlResourceResponseBody {
-	s.RequestId = &v
+func (s *ControlHtmlResourceResponseBody) SetStreamId(v string) *ControlHtmlResourceResponseBody {
+	s.StreamId = &v
 	return s
 }
 
-func (s *ControlHtmlResourceResponseBody) SetStreamId(v string) *ControlHtmlResourceResponseBody {
-	s.StreamId = &v
+func (s *ControlHtmlResourceResponseBody) SetRequestId(v string) *ControlHtmlResourceResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -3573,8 +4306,8 @@ func (s *CreateBoardRequest) SetAppUid(v string) *CreateBoardRequest {
 }
 
 type CreateBoardResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	BoardId   *string `json:"BoardId,omitempty" xml:"BoardId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateBoardResponseBody) String() string {
@@ -3585,13 +4318,13 @@ func (s CreateBoardResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateBoardResponseBody) SetRequestId(v string) *CreateBoardResponseBody {
-	s.RequestId = &v
+func (s *CreateBoardResponseBody) SetBoardId(v string) *CreateBoardResponseBody {
+	s.BoardId = &v
 	return s
 }
 
-func (s *CreateBoardResponseBody) SetBoardId(v string) *CreateBoardResponseBody {
-	s.BoardId = &v
+func (s *CreateBoardResponseBody) SetRequestId(v string) *CreateBoardResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -4284,9 +5017,8 @@ func (s *DeleteBoardResponse) SetBody(v *DeleteBoardResponseBody) *DeleteBoardRe
 }
 
 type DeleteCasterRequest struct {
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	CasterId      *string `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
+	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	CasterId *string `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
 }
 
 func (s DeleteCasterRequest) String() string {
@@ -4295,11 +5027,6 @@ func (s DeleteCasterRequest) String() string {
 
 func (s DeleteCasterRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DeleteCasterRequest) SetSecurityToken(v string) *DeleteCasterRequest {
-	s.SecurityToken = &v
-	return s
 }
 
 func (s *DeleteCasterRequest) SetOwnerId(v int64) *DeleteCasterRequest {
@@ -6365,6 +7092,249 @@ func (s *DeleteMixStreamResponse) SetBody(v *DeleteMixStreamResponseBody) *Delet
 	return s
 }
 
+type DeleteMultiRateConfigRequest struct {
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	App        *string `json:"App,omitempty" xml:"App,omitempty"`
+	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	DeleteAll  *string `json:"DeleteAll,omitempty" xml:"DeleteAll,omitempty"`
+	Templates  *string `json:"Templates,omitempty" xml:"Templates,omitempty"`
+}
+
+func (s DeleteMultiRateConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMultiRateConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMultiRateConfigRequest) SetOwnerId(v int64) *DeleteMultiRateConfigRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteMultiRateConfigRequest) SetDomainName(v string) *DeleteMultiRateConfigRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DeleteMultiRateConfigRequest) SetApp(v string) *DeleteMultiRateConfigRequest {
+	s.App = &v
+	return s
+}
+
+func (s *DeleteMultiRateConfigRequest) SetGroupId(v string) *DeleteMultiRateConfigRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DeleteMultiRateConfigRequest) SetDeleteAll(v string) *DeleteMultiRateConfigRequest {
+	s.DeleteAll = &v
+	return s
+}
+
+func (s *DeleteMultiRateConfigRequest) SetTemplates(v string) *DeleteMultiRateConfigRequest {
+	s.Templates = &v
+	return s
+}
+
+type DeleteMultiRateConfigResponseBody struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+}
+
+func (s DeleteMultiRateConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMultiRateConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMultiRateConfigResponseBody) SetMessage(v string) *DeleteMultiRateConfigResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteMultiRateConfigResponseBody) SetRequestId(v string) *DeleteMultiRateConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteMultiRateConfigResponseBody) SetCode(v int32) *DeleteMultiRateConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+type DeleteMultiRateConfigResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteMultiRateConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteMultiRateConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMultiRateConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMultiRateConfigResponse) SetHeaders(v map[string]*string) *DeleteMultiRateConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteMultiRateConfigResponse) SetBody(v *DeleteMultiRateConfigResponseBody) *DeleteMultiRateConfigResponse {
+	s.Body = v
+	return s
+}
+
+type DeletePlaylistRequest struct {
+	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ProgramId *string `json:"ProgramId,omitempty" xml:"ProgramId,omitempty"`
+}
+
+func (s DeletePlaylistRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePlaylistRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePlaylistRequest) SetOwnerId(v int64) *DeletePlaylistRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeletePlaylistRequest) SetProgramId(v string) *DeletePlaylistRequest {
+	s.ProgramId = &v
+	return s
+}
+
+type DeletePlaylistResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ProgramId *string `json:"ProgramId,omitempty" xml:"ProgramId,omitempty"`
+}
+
+func (s DeletePlaylistResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePlaylistResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePlaylistResponseBody) SetRequestId(v string) *DeletePlaylistResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeletePlaylistResponseBody) SetProgramId(v string) *DeletePlaylistResponseBody {
+	s.ProgramId = &v
+	return s
+}
+
+type DeletePlaylistResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeletePlaylistResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeletePlaylistResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePlaylistResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePlaylistResponse) SetHeaders(v map[string]*string) *DeletePlaylistResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeletePlaylistResponse) SetBody(v *DeletePlaylistResponseBody) *DeletePlaylistResponse {
+	s.Body = v
+	return s
+}
+
+type DeletePlaylistItemsRequest struct {
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ProgramId      *string `json:"ProgramId,omitempty" xml:"ProgramId,omitempty"`
+	ProgramItemIds *string `json:"ProgramItemIds,omitempty" xml:"ProgramItemIds,omitempty"`
+}
+
+func (s DeletePlaylistItemsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePlaylistItemsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePlaylistItemsRequest) SetOwnerId(v int64) *DeletePlaylistItemsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeletePlaylistItemsRequest) SetProgramId(v string) *DeletePlaylistItemsRequest {
+	s.ProgramId = &v
+	return s
+}
+
+func (s *DeletePlaylistItemsRequest) SetProgramItemIds(v string) *DeletePlaylistItemsRequest {
+	s.ProgramItemIds = &v
+	return s
+}
+
+type DeletePlaylistItemsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ProgramId *string `json:"ProgramId,omitempty" xml:"ProgramId,omitempty"`
+}
+
+func (s DeletePlaylistItemsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePlaylistItemsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePlaylistItemsResponseBody) SetRequestId(v string) *DeletePlaylistItemsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeletePlaylistItemsResponseBody) SetProgramId(v string) *DeletePlaylistItemsResponseBody {
+	s.ProgramId = &v
+	return s
+}
+
+type DeletePlaylistItemsResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeletePlaylistItemsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeletePlaylistItemsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePlaylistItemsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePlaylistItemsResponse) SetHeaders(v map[string]*string) *DeletePlaylistItemsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeletePlaylistItemsResponse) SetBody(v *DeletePlaylistItemsResponseBody) *DeletePlaylistItemsResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteRoomRequest struct {
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
@@ -6430,6 +7400,75 @@ func (s *DeleteRoomResponse) SetHeaders(v map[string]*string) *DeleteRoomRespons
 }
 
 func (s *DeleteRoomResponse) SetBody(v *DeleteRoomResponseBody) *DeleteRoomResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteStudioLayoutRequest struct {
+	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	CasterId *string `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
+	LayoutId *string `json:"LayoutId,omitempty" xml:"LayoutId,omitempty"`
+}
+
+func (s DeleteStudioLayoutRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteStudioLayoutRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteStudioLayoutRequest) SetOwnerId(v int64) *DeleteStudioLayoutRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteStudioLayoutRequest) SetCasterId(v string) *DeleteStudioLayoutRequest {
+	s.CasterId = &v
+	return s
+}
+
+func (s *DeleteStudioLayoutRequest) SetLayoutId(v string) *DeleteStudioLayoutRequest {
+	s.LayoutId = &v
+	return s
+}
+
+type DeleteStudioLayoutResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteStudioLayoutResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteStudioLayoutResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteStudioLayoutResponseBody) SetRequestId(v string) *DeleteStudioLayoutResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteStudioLayoutResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteStudioLayoutResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteStudioLayoutResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteStudioLayoutResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteStudioLayoutResponse) SetHeaders(v map[string]*string) *DeleteStudioLayoutResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteStudioLayoutResponse) SetBody(v *DeleteStudioLayoutResponseBody) *DeleteStudioLayoutResponse {
 	s.Body = v
 	return s
 }
@@ -6500,9 +7539,9 @@ func (s *DescribeBoardEventsResponseBody) SetEvents(v []*DescribeBoardEventsResp
 
 type DescribeBoardEventsResponseBodyEvents struct {
 	EventId   *int64  `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	EventType *int32  `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	UserId    *int32  `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	Timestamp *int64  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
@@ -6519,6 +7558,11 @@ func (s *DescribeBoardEventsResponseBodyEvents) SetEventId(v int64) *DescribeBoa
 	return s
 }
 
+func (s *DescribeBoardEventsResponseBodyEvents) SetData(v string) *DescribeBoardEventsResponseBodyEvents {
+	s.Data = &v
+	return s
+}
+
 func (s *DescribeBoardEventsResponseBodyEvents) SetEventType(v int32) *DescribeBoardEventsResponseBodyEvents {
 	s.EventType = &v
 	return s
@@ -6526,11 +7570,6 @@ func (s *DescribeBoardEventsResponseBodyEvents) SetEventType(v int32) *DescribeB
 
 func (s *DescribeBoardEventsResponseBodyEvents) SetUserId(v int32) *DescribeBoardEventsResponseBodyEvents {
 	s.UserId = &v
-	return s
-}
-
-func (s *DescribeBoardEventsResponseBodyEvents) SetData(v string) *DescribeBoardEventsResponseBodyEvents {
-	s.Data = &v
 	return s
 }
 
@@ -6622,9 +7661,9 @@ func (s *DescribeBoardsResponseBody) SetBoards(v []*DescribeBoardsResponseBodyBo
 
 type DescribeBoardsResponseBodyBoards struct {
 	BoardId *string `json:"BoardId,omitempty" xml:"BoardId,omitempty"`
-	Topic   *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 	State   *int32  `json:"State,omitempty" xml:"State,omitempty"`
 	UserId  *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Topic   *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s DescribeBoardsResponseBodyBoards) String() string {
@@ -6640,11 +7679,6 @@ func (s *DescribeBoardsResponseBodyBoards) SetBoardId(v string) *DescribeBoardsR
 	return s
 }
 
-func (s *DescribeBoardsResponseBodyBoards) SetTopic(v string) *DescribeBoardsResponseBodyBoards {
-	s.Topic = &v
-	return s
-}
-
 func (s *DescribeBoardsResponseBodyBoards) SetState(v int32) *DescribeBoardsResponseBodyBoards {
 	s.State = &v
 	return s
@@ -6652,6 +7686,11 @@ func (s *DescribeBoardsResponseBodyBoards) SetState(v int32) *DescribeBoardsResp
 
 func (s *DescribeBoardsResponseBodyBoards) SetUserId(v string) *DescribeBoardsResponseBodyBoards {
 	s.UserId = &v
+	return s
+}
+
+func (s *DescribeBoardsResponseBodyBoards) SetTopic(v string) *DescribeBoardsResponseBodyBoards {
+	s.Topic = &v
 	return s
 }
 
@@ -6708,8 +7747,8 @@ func (s *DescribeBoardSnapshotRequest) SetBoardId(v string) *DescribeBoardSnapsh
 }
 
 type DescribeBoardSnapshotResponseBody struct {
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Snapshot  *DescribeBoardSnapshotResponseBodySnapshot `json:"Snapshot,omitempty" xml:"Snapshot,omitempty" type:"Struct"`
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeBoardSnapshotResponseBody) String() string {
@@ -6720,13 +7759,13 @@ func (s DescribeBoardSnapshotResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeBoardSnapshotResponseBody) SetRequestId(v string) *DescribeBoardSnapshotResponseBody {
-	s.RequestId = &v
+func (s *DescribeBoardSnapshotResponseBody) SetSnapshot(v *DescribeBoardSnapshotResponseBodySnapshot) *DescribeBoardSnapshotResponseBody {
+	s.Snapshot = v
 	return s
 }
 
-func (s *DescribeBoardSnapshotResponseBody) SetSnapshot(v *DescribeBoardSnapshotResponseBodySnapshot) *DescribeBoardSnapshotResponseBody {
-	s.Snapshot = v
+func (s *DescribeBoardSnapshotResponseBody) SetRequestId(v string) *DescribeBoardSnapshotResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -6748,13 +7787,13 @@ func (s *DescribeBoardSnapshotResponseBodySnapshot) SetBoard(v *DescribeBoardSna
 }
 
 type DescribeBoardSnapshotResponseBodySnapshotBoard struct {
-	BoardId         *string                                                  `json:"BoardId,omitempty" xml:"BoardId,omitempty"`
+	UpdateTimestamp *int64                                                   `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
 	AppUid          *string                                                  `json:"AppUid,omitempty" xml:"AppUid,omitempty"`
+	BoardId         *string                                                  `json:"BoardId,omitempty" xml:"BoardId,omitempty"`
+	Configs         []*DescribeBoardSnapshotResponseBodySnapshotBoardConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	Pages           []*DescribeBoardSnapshotResponseBodySnapshotBoardPages   `json:"Pages,omitempty" xml:"Pages,omitempty" type:"Repeated"`
 	EventTimestamp  *int64                                                   `json:"EventTimestamp,omitempty" xml:"EventTimestamp,omitempty"`
 	CreateTimestamp *int64                                                   `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	UpdateTimestamp *int64                                                   `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
-	Pages           []*DescribeBoardSnapshotResponseBodySnapshotBoardPages   `json:"Pages,omitempty" xml:"Pages,omitempty" type:"Repeated"`
-	Configs         []*DescribeBoardSnapshotResponseBodySnapshotBoardConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
 }
 
 func (s DescribeBoardSnapshotResponseBodySnapshotBoard) String() string {
@@ -6765,13 +7804,28 @@ func (s DescribeBoardSnapshotResponseBodySnapshotBoard) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeBoardSnapshotResponseBodySnapshotBoard) SetBoardId(v string) *DescribeBoardSnapshotResponseBodySnapshotBoard {
-	s.BoardId = &v
+func (s *DescribeBoardSnapshotResponseBodySnapshotBoard) SetUpdateTimestamp(v int64) *DescribeBoardSnapshotResponseBodySnapshotBoard {
+	s.UpdateTimestamp = &v
 	return s
 }
 
 func (s *DescribeBoardSnapshotResponseBodySnapshotBoard) SetAppUid(v string) *DescribeBoardSnapshotResponseBodySnapshotBoard {
 	s.AppUid = &v
+	return s
+}
+
+func (s *DescribeBoardSnapshotResponseBodySnapshotBoard) SetBoardId(v string) *DescribeBoardSnapshotResponseBodySnapshotBoard {
+	s.BoardId = &v
+	return s
+}
+
+func (s *DescribeBoardSnapshotResponseBodySnapshotBoard) SetConfigs(v []*DescribeBoardSnapshotResponseBodySnapshotBoardConfigs) *DescribeBoardSnapshotResponseBodySnapshotBoard {
+	s.Configs = v
+	return s
+}
+
+func (s *DescribeBoardSnapshotResponseBodySnapshotBoard) SetPages(v []*DescribeBoardSnapshotResponseBodySnapshotBoardPages) *DescribeBoardSnapshotResponseBodySnapshotBoard {
+	s.Pages = v
 	return s
 }
 
@@ -6785,18 +7839,26 @@ func (s *DescribeBoardSnapshotResponseBodySnapshotBoard) SetCreateTimestamp(v in
 	return s
 }
 
-func (s *DescribeBoardSnapshotResponseBodySnapshotBoard) SetUpdateTimestamp(v int64) *DescribeBoardSnapshotResponseBodySnapshotBoard {
-	s.UpdateTimestamp = &v
+type DescribeBoardSnapshotResponseBodySnapshotBoardConfigs struct {
+	AppUid *string `json:"AppUid,omitempty" xml:"AppUid,omitempty"`
+	Data   *string `json:"Data,omitempty" xml:"Data,omitempty"`
+}
+
+func (s DescribeBoardSnapshotResponseBodySnapshotBoardConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBoardSnapshotResponseBodySnapshotBoardConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBoardSnapshotResponseBodySnapshotBoardConfigs) SetAppUid(v string) *DescribeBoardSnapshotResponseBodySnapshotBoardConfigs {
+	s.AppUid = &v
 	return s
 }
 
-func (s *DescribeBoardSnapshotResponseBodySnapshotBoard) SetPages(v []*DescribeBoardSnapshotResponseBodySnapshotBoardPages) *DescribeBoardSnapshotResponseBodySnapshotBoard {
-	s.Pages = v
-	return s
-}
-
-func (s *DescribeBoardSnapshotResponseBodySnapshotBoard) SetConfigs(v []*DescribeBoardSnapshotResponseBodySnapshotBoardConfigs) *DescribeBoardSnapshotResponseBodySnapshotBoard {
-	s.Configs = v
+func (s *DescribeBoardSnapshotResponseBodySnapshotBoardConfigs) SetData(v string) *DescribeBoardSnapshotResponseBodySnapshotBoardConfigs {
+	s.Data = &v
 	return s
 }
 
@@ -6824,11 +7886,11 @@ func (s *DescribeBoardSnapshotResponseBodySnapshotBoardPages) SetElements(v []*D
 }
 
 type DescribeBoardSnapshotResponseBodySnapshotBoardPagesElements struct {
-	ElementIndex    *string `json:"ElementIndex,omitempty" xml:"ElementIndex,omitempty"`
-	OwnerId         *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ElementType     *int32  `json:"ElementType,omitempty" xml:"ElementType,omitempty"`
 	UpdateTimestamp *int64  `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
 	Data            *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	ElementIndex    *string `json:"ElementIndex,omitempty" xml:"ElementIndex,omitempty"`
+	ElementType     *int32  `json:"ElementType,omitempty" xml:"ElementType,omitempty"`
+	OwnerId         *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
 
 func (s DescribeBoardSnapshotResponseBodySnapshotBoardPagesElements) String() string {
@@ -6837,21 +7899,6 @@ func (s DescribeBoardSnapshotResponseBodySnapshotBoardPagesElements) String() st
 
 func (s DescribeBoardSnapshotResponseBodySnapshotBoardPagesElements) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeBoardSnapshotResponseBodySnapshotBoardPagesElements) SetElementIndex(v string) *DescribeBoardSnapshotResponseBodySnapshotBoardPagesElements {
-	s.ElementIndex = &v
-	return s
-}
-
-func (s *DescribeBoardSnapshotResponseBodySnapshotBoardPagesElements) SetOwnerId(v string) *DescribeBoardSnapshotResponseBodySnapshotBoardPagesElements {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeBoardSnapshotResponseBodySnapshotBoardPagesElements) SetElementType(v int32) *DescribeBoardSnapshotResponseBodySnapshotBoardPagesElements {
-	s.ElementType = &v
-	return s
 }
 
 func (s *DescribeBoardSnapshotResponseBodySnapshotBoardPagesElements) SetUpdateTimestamp(v int64) *DescribeBoardSnapshotResponseBodySnapshotBoardPagesElements {
@@ -6864,26 +7911,18 @@ func (s *DescribeBoardSnapshotResponseBodySnapshotBoardPagesElements) SetData(v 
 	return s
 }
 
-type DescribeBoardSnapshotResponseBodySnapshotBoardConfigs struct {
-	AppUid *string `json:"AppUid,omitempty" xml:"AppUid,omitempty"`
-	Data   *string `json:"Data,omitempty" xml:"Data,omitempty"`
-}
-
-func (s DescribeBoardSnapshotResponseBodySnapshotBoardConfigs) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeBoardSnapshotResponseBodySnapshotBoardConfigs) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeBoardSnapshotResponseBodySnapshotBoardConfigs) SetAppUid(v string) *DescribeBoardSnapshotResponseBodySnapshotBoardConfigs {
-	s.AppUid = &v
+func (s *DescribeBoardSnapshotResponseBodySnapshotBoardPagesElements) SetElementIndex(v string) *DescribeBoardSnapshotResponseBodySnapshotBoardPagesElements {
+	s.ElementIndex = &v
 	return s
 }
 
-func (s *DescribeBoardSnapshotResponseBodySnapshotBoardConfigs) SetData(v string) *DescribeBoardSnapshotResponseBodySnapshotBoardConfigs {
-	s.Data = &v
+func (s *DescribeBoardSnapshotResponseBodySnapshotBoardPagesElements) SetElementType(v int32) *DescribeBoardSnapshotResponseBodySnapshotBoardPagesElements {
+	s.ElementType = &v
+	return s
+}
+
+func (s *DescribeBoardSnapshotResponseBodySnapshotBoardPagesElements) SetOwnerId(v string) *DescribeBoardSnapshotResponseBodySnapshotBoardPagesElements {
+	s.OwnerId = &v
 	return s
 }
 
@@ -8232,8 +9271,8 @@ func (s *DescribeCasterRtcInfoRequest) SetCasterId(v string) *DescribeCasterRtcI
 
 type DescribeCasterRtcInfoResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	CasterId  *string `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
 	AuthToken *string `json:"AuthToken,omitempty" xml:"AuthToken,omitempty"`
+	CasterId  *string `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
 }
 
 func (s DescribeCasterRtcInfoResponseBody) String() string {
@@ -8249,13 +9288,13 @@ func (s *DescribeCasterRtcInfoResponseBody) SetRequestId(v string) *DescribeCast
 	return s
 }
 
-func (s *DescribeCasterRtcInfoResponseBody) SetCasterId(v string) *DescribeCasterRtcInfoResponseBody {
-	s.CasterId = &v
+func (s *DescribeCasterRtcInfoResponseBody) SetAuthToken(v string) *DescribeCasterRtcInfoResponseBody {
+	s.AuthToken = &v
 	return s
 }
 
-func (s *DescribeCasterRtcInfoResponseBody) SetAuthToken(v string) *DescribeCasterRtcInfoResponseBody {
-	s.AuthToken = &v
+func (s *DescribeCasterRtcInfoResponseBody) SetCasterId(v string) *DescribeCasterRtcInfoResponseBody {
+	s.CasterId = &v
 	return s
 }
 
@@ -9073,8 +10112,8 @@ func (s *DescribeCasterSyncGroupRequest) SetCasterId(v string) *DescribeCasterSy
 
 type DescribeCasterSyncGroupResponseBody struct {
 	RequestId  *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	CasterId   *string                                        `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
 	SyncGroups *DescribeCasterSyncGroupResponseBodySyncGroups `json:"SyncGroups,omitempty" xml:"SyncGroups,omitempty" type:"Struct"`
+	CasterId   *string                                        `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
 }
 
 func (s DescribeCasterSyncGroupResponseBody) String() string {
@@ -9090,13 +10129,13 @@ func (s *DescribeCasterSyncGroupResponseBody) SetRequestId(v string) *DescribeCa
 	return s
 }
 
-func (s *DescribeCasterSyncGroupResponseBody) SetCasterId(v string) *DescribeCasterSyncGroupResponseBody {
-	s.CasterId = &v
+func (s *DescribeCasterSyncGroupResponseBody) SetSyncGroups(v *DescribeCasterSyncGroupResponseBodySyncGroups) *DescribeCasterSyncGroupResponseBody {
+	s.SyncGroups = v
 	return s
 }
 
-func (s *DescribeCasterSyncGroupResponseBody) SetSyncGroups(v *DescribeCasterSyncGroupResponseBodySyncGroups) *DescribeCasterSyncGroupResponseBody {
-	s.SyncGroups = v
+func (s *DescribeCasterSyncGroupResponseBody) SetCasterId(v string) *DescribeCasterSyncGroupResponseBody {
+	s.CasterId = &v
 	return s
 }
 
@@ -9118,9 +10157,9 @@ func (s *DescribeCasterSyncGroupResponseBodySyncGroups) SetSyncGroup(v []*Descri
 }
 
 type DescribeCasterSyncGroupResponseBodySyncGroupsSyncGroup struct {
-	Mode           *int32                                                             `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	HostResourceId *string                                                            `json:"HostResourceId,omitempty" xml:"HostResourceId,omitempty"`
 	ResourceIds    *DescribeCasterSyncGroupResponseBodySyncGroupsSyncGroupResourceIds `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Struct"`
+	Mode           *int32                                                             `json:"Mode,omitempty" xml:"Mode,omitempty"`
 }
 
 func (s DescribeCasterSyncGroupResponseBodySyncGroupsSyncGroup) String() string {
@@ -9131,11 +10170,6 @@ func (s DescribeCasterSyncGroupResponseBodySyncGroupsSyncGroup) GoString() strin
 	return s.String()
 }
 
-func (s *DescribeCasterSyncGroupResponseBodySyncGroupsSyncGroup) SetMode(v int32) *DescribeCasterSyncGroupResponseBodySyncGroupsSyncGroup {
-	s.Mode = &v
-	return s
-}
-
 func (s *DescribeCasterSyncGroupResponseBodySyncGroupsSyncGroup) SetHostResourceId(v string) *DescribeCasterSyncGroupResponseBodySyncGroupsSyncGroup {
 	s.HostResourceId = &v
 	return s
@@ -9143,6 +10177,11 @@ func (s *DescribeCasterSyncGroupResponseBodySyncGroupsSyncGroup) SetHostResource
 
 func (s *DescribeCasterSyncGroupResponseBodySyncGroupsSyncGroup) SetResourceIds(v *DescribeCasterSyncGroupResponseBodySyncGroupsSyncGroupResourceIds) *DescribeCasterSyncGroupResponseBodySyncGroupsSyncGroup {
 	s.ResourceIds = v
+	return s
+}
+
+func (s *DescribeCasterSyncGroupResponseBodySyncGroupsSyncGroup) SetMode(v int32) *DescribeCasterSyncGroupResponseBodySyncGroupsSyncGroup {
+	s.Mode = &v
 	return s
 }
 
@@ -9530,6 +10569,151 @@ func (s *DescribeDomainUsageDataResponse) SetBody(v *DescribeDomainUsageDataResp
 	return s
 }
 
+type DescribeDRMCertListRequest struct {
+	OwnerId  *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNum  *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeDRMCertListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDRMCertListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDRMCertListRequest) SetOwnerId(v int64) *DescribeDRMCertListRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeDRMCertListRequest) SetPageNum(v int32) *DescribeDRMCertListRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *DescribeDRMCertListRequest) SetPageSize(v int32) *DescribeDRMCertListRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeDRMCertListResponseBody struct {
+	DRMCertInfoListList *DescribeDRMCertListResponseBodyDRMCertInfoListList `json:"DRMCertInfoListList,omitempty" xml:"DRMCertInfoListList,omitempty" type:"Struct"`
+	RequestId           *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDRMCertListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDRMCertListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDRMCertListResponseBody) SetDRMCertInfoListList(v *DescribeDRMCertListResponseBodyDRMCertInfoListList) *DescribeDRMCertListResponseBody {
+	s.DRMCertInfoListList = v
+	return s
+}
+
+func (s *DescribeDRMCertListResponseBody) SetRequestId(v string) *DescribeDRMCertListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDRMCertListResponseBodyDRMCertInfoListList struct {
+	CertInfo []*DescribeDRMCertListResponseBodyDRMCertInfoListListCertInfo `json:"CertInfo,omitempty" xml:"CertInfo,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDRMCertListResponseBodyDRMCertInfoListList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDRMCertListResponseBodyDRMCertInfoListList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDRMCertListResponseBodyDRMCertInfoListList) SetCertInfo(v []*DescribeDRMCertListResponseBodyDRMCertInfoListListCertInfo) *DescribeDRMCertListResponseBodyDRMCertInfoListList {
+	s.CertInfo = v
+	return s
+}
+
+type DescribeDRMCertListResponseBodyDRMCertInfoListListCertInfo struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	PrivateKey  *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
+	ServCert    *string `json:"ServCert,omitempty" xml:"ServCert,omitempty"`
+	CertName    *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	Passphrase  *string `json:"Passphrase,omitempty" xml:"Passphrase,omitempty"`
+	CertId      *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	Ask         *string `json:"Ask,omitempty" xml:"Ask,omitempty"`
+}
+
+func (s DescribeDRMCertListResponseBodyDRMCertInfoListListCertInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDRMCertListResponseBodyDRMCertInfoListListCertInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDRMCertListResponseBodyDRMCertInfoListListCertInfo) SetDescription(v string) *DescribeDRMCertListResponseBodyDRMCertInfoListListCertInfo {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeDRMCertListResponseBodyDRMCertInfoListListCertInfo) SetPrivateKey(v string) *DescribeDRMCertListResponseBodyDRMCertInfoListListCertInfo {
+	s.PrivateKey = &v
+	return s
+}
+
+func (s *DescribeDRMCertListResponseBodyDRMCertInfoListListCertInfo) SetServCert(v string) *DescribeDRMCertListResponseBodyDRMCertInfoListListCertInfo {
+	s.ServCert = &v
+	return s
+}
+
+func (s *DescribeDRMCertListResponseBodyDRMCertInfoListListCertInfo) SetCertName(v string) *DescribeDRMCertListResponseBodyDRMCertInfoListListCertInfo {
+	s.CertName = &v
+	return s
+}
+
+func (s *DescribeDRMCertListResponseBodyDRMCertInfoListListCertInfo) SetPassphrase(v string) *DescribeDRMCertListResponseBodyDRMCertInfoListListCertInfo {
+	s.Passphrase = &v
+	return s
+}
+
+func (s *DescribeDRMCertListResponseBodyDRMCertInfoListListCertInfo) SetCertId(v string) *DescribeDRMCertListResponseBodyDRMCertInfoListListCertInfo {
+	s.CertId = &v
+	return s
+}
+
+func (s *DescribeDRMCertListResponseBodyDRMCertInfoListListCertInfo) SetAsk(v string) *DescribeDRMCertListResponseBodyDRMCertInfoListListCertInfo {
+	s.Ask = &v
+	return s
+}
+
+type DescribeDRMCertListResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeDRMCertListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDRMCertListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDRMCertListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDRMCertListResponse) SetHeaders(v map[string]*string) *DescribeDRMCertListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDRMCertListResponse) SetBody(v *DescribeDRMCertListResponseBody) *DescribeDRMCertListResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeForbidPushStreamRoomListRequest struct {
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	AppId    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
@@ -9879,12 +11063,12 @@ func (s *DescribeHtmlResourceResponseBody) SetHtmlResource(v *DescribeHtmlResour
 }
 
 type DescribeHtmlResourceResponseBodyHtmlResource struct {
-	HtmlResourceId *string `json:"HtmlResourceId,omitempty" xml:"HtmlResourceId,omitempty"`
 	HtmlUrl        *string `json:"HtmlUrl,omitempty" xml:"HtmlUrl,omitempty"`
-	HtmlContent    *string `json:"HtmlContent,omitempty" xml:"HtmlContent,omitempty"`
 	CasterId       *string `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
-	Config         *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	StreamId       *string `json:"StreamId,omitempty" xml:"StreamId,omitempty"`
+	Config         *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	HtmlResourceId *string `json:"HtmlResourceId,omitempty" xml:"HtmlResourceId,omitempty"`
+	HtmlContent    *string `json:"HtmlContent,omitempty" xml:"HtmlContent,omitempty"`
 }
 
 func (s DescribeHtmlResourceResponseBodyHtmlResource) String() string {
@@ -9895,18 +11079,8 @@ func (s DescribeHtmlResourceResponseBodyHtmlResource) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeHtmlResourceResponseBodyHtmlResource) SetHtmlResourceId(v string) *DescribeHtmlResourceResponseBodyHtmlResource {
-	s.HtmlResourceId = &v
-	return s
-}
-
 func (s *DescribeHtmlResourceResponseBodyHtmlResource) SetHtmlUrl(v string) *DescribeHtmlResourceResponseBodyHtmlResource {
 	s.HtmlUrl = &v
-	return s
-}
-
-func (s *DescribeHtmlResourceResponseBodyHtmlResource) SetHtmlContent(v string) *DescribeHtmlResourceResponseBodyHtmlResource {
-	s.HtmlContent = &v
 	return s
 }
 
@@ -9915,13 +11089,23 @@ func (s *DescribeHtmlResourceResponseBodyHtmlResource) SetCasterId(v string) *De
 	return s
 }
 
+func (s *DescribeHtmlResourceResponseBodyHtmlResource) SetStreamId(v string) *DescribeHtmlResourceResponseBodyHtmlResource {
+	s.StreamId = &v
+	return s
+}
+
 func (s *DescribeHtmlResourceResponseBodyHtmlResource) SetConfig(v string) *DescribeHtmlResourceResponseBodyHtmlResource {
 	s.Config = &v
 	return s
 }
 
-func (s *DescribeHtmlResourceResponseBodyHtmlResource) SetStreamId(v string) *DescribeHtmlResourceResponseBodyHtmlResource {
-	s.StreamId = &v
+func (s *DescribeHtmlResourceResponseBodyHtmlResource) SetHtmlResourceId(v string) *DescribeHtmlResourceResponseBodyHtmlResource {
+	s.HtmlResourceId = &v
+	return s
+}
+
+func (s *DescribeHtmlResourceResponseBodyHtmlResource) SetHtmlContent(v string) *DescribeHtmlResourceResponseBodyHtmlResource {
+	s.HtmlContent = &v
 	return s
 }
 
@@ -10024,13 +11208,13 @@ func (s *DescribeLiveAsrConfigResponseBodyLiveAsrConfig) SetLiveAsrConfigList(v 
 }
 
 type DescribeLiveAsrConfigResponseBodyLiveAsrConfigLiveAsrConfigList struct {
-	DomainName      *int32  `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	AppName         *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	MnsRegion       *string `json:"MnsRegion,omitempty" xml:"MnsRegion,omitempty"`
 	StreamName      *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+	HttpCallbackURL *string `json:"HttpCallbackURL,omitempty" xml:"HttpCallbackURL,omitempty"`
+	DomainName      *int32  `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	Period          *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
 	MnsTopic        *string `json:"MnsTopic,omitempty" xml:"MnsTopic,omitempty"`
-	MnsRegion       *string `json:"MnsRegion,omitempty" xml:"MnsRegion,omitempty"`
-	HttpCallbackURL *string `json:"HttpCallbackURL,omitempty" xml:"HttpCallbackURL,omitempty"`
 }
 
 func (s DescribeLiveAsrConfigResponseBodyLiveAsrConfigLiveAsrConfigList) String() string {
@@ -10041,18 +11225,28 @@ func (s DescribeLiveAsrConfigResponseBodyLiveAsrConfigLiveAsrConfigList) GoStrin
 	return s.String()
 }
 
-func (s *DescribeLiveAsrConfigResponseBodyLiveAsrConfigLiveAsrConfigList) SetDomainName(v int32) *DescribeLiveAsrConfigResponseBodyLiveAsrConfigLiveAsrConfigList {
-	s.DomainName = &v
-	return s
-}
-
 func (s *DescribeLiveAsrConfigResponseBodyLiveAsrConfigLiveAsrConfigList) SetAppName(v string) *DescribeLiveAsrConfigResponseBodyLiveAsrConfigLiveAsrConfigList {
 	s.AppName = &v
 	return s
 }
 
+func (s *DescribeLiveAsrConfigResponseBodyLiveAsrConfigLiveAsrConfigList) SetMnsRegion(v string) *DescribeLiveAsrConfigResponseBodyLiveAsrConfigLiveAsrConfigList {
+	s.MnsRegion = &v
+	return s
+}
+
 func (s *DescribeLiveAsrConfigResponseBodyLiveAsrConfigLiveAsrConfigList) SetStreamName(v string) *DescribeLiveAsrConfigResponseBodyLiveAsrConfigLiveAsrConfigList {
 	s.StreamName = &v
+	return s
+}
+
+func (s *DescribeLiveAsrConfigResponseBodyLiveAsrConfigLiveAsrConfigList) SetHttpCallbackURL(v string) *DescribeLiveAsrConfigResponseBodyLiveAsrConfigLiveAsrConfigList {
+	s.HttpCallbackURL = &v
+	return s
+}
+
+func (s *DescribeLiveAsrConfigResponseBodyLiveAsrConfigLiveAsrConfigList) SetDomainName(v int32) *DescribeLiveAsrConfigResponseBodyLiveAsrConfigLiveAsrConfigList {
+	s.DomainName = &v
 	return s
 }
 
@@ -10063,16 +11257,6 @@ func (s *DescribeLiveAsrConfigResponseBodyLiveAsrConfigLiveAsrConfigList) SetPer
 
 func (s *DescribeLiveAsrConfigResponseBodyLiveAsrConfigLiveAsrConfigList) SetMnsTopic(v string) *DescribeLiveAsrConfigResponseBodyLiveAsrConfigLiveAsrConfigList {
 	s.MnsTopic = &v
-	return s
-}
-
-func (s *DescribeLiveAsrConfigResponseBodyLiveAsrConfigLiveAsrConfigList) SetMnsRegion(v string) *DescribeLiveAsrConfigResponseBodyLiveAsrConfigLiveAsrConfigList {
-	s.MnsRegion = &v
-	return s
-}
-
-func (s *DescribeLiveAsrConfigResponseBodyLiveAsrConfigLiveAsrConfigList) SetHttpCallbackURL(v string) *DescribeLiveAsrConfigResponseBodyLiveAsrConfigLiveAsrConfigList {
-	s.HttpCallbackURL = &v
 	return s
 }
 
@@ -10829,14 +12013,14 @@ func (s *DescribeLiveDetectPornDataResponseBodyDetectPornData) SetDataModule(v [
 }
 
 type DescribeLiveDetectPornDataResponseBodyDetectPornDataDataModule struct {
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	App       *string `json:"App,omitempty" xml:"App,omitempty"`
 	Domain    *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	Stream    *string `json:"Stream,omitempty" xml:"Stream,omitempty"`
-	Fee       *string `json:"Fee,omitempty" xml:"Fee,omitempty"`
-	Scene     *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
 	Region    *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	App       *string `json:"App,omitempty" xml:"App,omitempty"`
+	Stream    *string `json:"Stream,omitempty" xml:"Stream,omitempty"`
+	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 	Count     *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+	Scene     *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	Fee       *string `json:"Fee,omitempty" xml:"Fee,omitempty"`
 }
 
 func (s DescribeLiveDetectPornDataResponseBodyDetectPornDataDataModule) String() string {
@@ -10847,33 +12031,8 @@ func (s DescribeLiveDetectPornDataResponseBodyDetectPornDataDataModule) GoString
 	return s.String()
 }
 
-func (s *DescribeLiveDetectPornDataResponseBodyDetectPornDataDataModule) SetTimeStamp(v string) *DescribeLiveDetectPornDataResponseBodyDetectPornDataDataModule {
-	s.TimeStamp = &v
-	return s
-}
-
-func (s *DescribeLiveDetectPornDataResponseBodyDetectPornDataDataModule) SetApp(v string) *DescribeLiveDetectPornDataResponseBodyDetectPornDataDataModule {
-	s.App = &v
-	return s
-}
-
 func (s *DescribeLiveDetectPornDataResponseBodyDetectPornDataDataModule) SetDomain(v string) *DescribeLiveDetectPornDataResponseBodyDetectPornDataDataModule {
 	s.Domain = &v
-	return s
-}
-
-func (s *DescribeLiveDetectPornDataResponseBodyDetectPornDataDataModule) SetStream(v string) *DescribeLiveDetectPornDataResponseBodyDetectPornDataDataModule {
-	s.Stream = &v
-	return s
-}
-
-func (s *DescribeLiveDetectPornDataResponseBodyDetectPornDataDataModule) SetFee(v string) *DescribeLiveDetectPornDataResponseBodyDetectPornDataDataModule {
-	s.Fee = &v
-	return s
-}
-
-func (s *DescribeLiveDetectPornDataResponseBodyDetectPornDataDataModule) SetScene(v string) *DescribeLiveDetectPornDataResponseBodyDetectPornDataDataModule {
-	s.Scene = &v
 	return s
 }
 
@@ -10882,8 +12041,33 @@ func (s *DescribeLiveDetectPornDataResponseBodyDetectPornDataDataModule) SetRegi
 	return s
 }
 
+func (s *DescribeLiveDetectPornDataResponseBodyDetectPornDataDataModule) SetApp(v string) *DescribeLiveDetectPornDataResponseBodyDetectPornDataDataModule {
+	s.App = &v
+	return s
+}
+
+func (s *DescribeLiveDetectPornDataResponseBodyDetectPornDataDataModule) SetStream(v string) *DescribeLiveDetectPornDataResponseBodyDetectPornDataDataModule {
+	s.Stream = &v
+	return s
+}
+
+func (s *DescribeLiveDetectPornDataResponseBodyDetectPornDataDataModule) SetTimeStamp(v string) *DescribeLiveDetectPornDataResponseBodyDetectPornDataDataModule {
+	s.TimeStamp = &v
+	return s
+}
+
 func (s *DescribeLiveDetectPornDataResponseBodyDetectPornDataDataModule) SetCount(v int64) *DescribeLiveDetectPornDataResponseBodyDetectPornDataDataModule {
 	s.Count = &v
+	return s
+}
+
+func (s *DescribeLiveDetectPornDataResponseBodyDetectPornDataDataModule) SetScene(v string) *DescribeLiveDetectPornDataResponseBodyDetectPornDataDataModule {
+	s.Scene = &v
+	return s
+}
+
+func (s *DescribeLiveDetectPornDataResponseBodyDetectPornDataDataModule) SetFee(v string) *DescribeLiveDetectPornDataResponseBodyDetectPornDataDataModule {
+	s.Fee = &v
 	return s
 }
 
@@ -11127,10 +12311,10 @@ func (s *DescribeLiveDomainBpsDataByTimeStampRequest) SetLocationNames(v string)
 }
 
 type DescribeLiveDomainBpsDataByTimeStampResponseBody struct {
+	BpsDataList *DescribeLiveDomainBpsDataByTimeStampResponseBodyBpsDataList `json:"BpsDataList,omitempty" xml:"BpsDataList,omitempty" type:"Struct"`
 	RequestId   *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DomainName  *string                                                      `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	TimeStamp   *string                                                      `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	BpsDataList *DescribeLiveDomainBpsDataByTimeStampResponseBodyBpsDataList `json:"BpsDataList,omitempty" xml:"BpsDataList,omitempty" type:"Struct"`
 }
 
 func (s DescribeLiveDomainBpsDataByTimeStampResponseBody) String() string {
@@ -11139,6 +12323,11 @@ func (s DescribeLiveDomainBpsDataByTimeStampResponseBody) String() string {
 
 func (s DescribeLiveDomainBpsDataByTimeStampResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeLiveDomainBpsDataByTimeStampResponseBody) SetBpsDataList(v *DescribeLiveDomainBpsDataByTimeStampResponseBodyBpsDataList) *DescribeLiveDomainBpsDataByTimeStampResponseBody {
+	s.BpsDataList = v
+	return s
 }
 
 func (s *DescribeLiveDomainBpsDataByTimeStampResponseBody) SetRequestId(v string) *DescribeLiveDomainBpsDataByTimeStampResponseBody {
@@ -11153,11 +12342,6 @@ func (s *DescribeLiveDomainBpsDataByTimeStampResponseBody) SetDomainName(v strin
 
 func (s *DescribeLiveDomainBpsDataByTimeStampResponseBody) SetTimeStamp(v string) *DescribeLiveDomainBpsDataByTimeStampResponseBody {
 	s.TimeStamp = &v
-	return s
-}
-
-func (s *DescribeLiveDomainBpsDataByTimeStampResponseBody) SetBpsDataList(v *DescribeLiveDomainBpsDataByTimeStampResponseBodyBpsDataList) *DescribeLiveDomainBpsDataByTimeStampResponseBody {
-	s.BpsDataList = v
 	return s
 }
 
@@ -11179,8 +12363,8 @@ func (s *DescribeLiveDomainBpsDataByTimeStampResponseBodyBpsDataList) SetBpsData
 }
 
 type DescribeLiveDomainBpsDataByTimeStampResponseBodyBpsDataListBpsDataModel struct {
-	TimeStamp    *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 	LocationName *string `json:"LocationName,omitempty" xml:"LocationName,omitempty"`
+	TimeStamp    *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 	IspName      *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
 	Bps          *int64  `json:"Bps,omitempty" xml:"Bps,omitempty"`
 }
@@ -11193,13 +12377,13 @@ func (s DescribeLiveDomainBpsDataByTimeStampResponseBodyBpsDataListBpsDataModel)
 	return s.String()
 }
 
-func (s *DescribeLiveDomainBpsDataByTimeStampResponseBodyBpsDataListBpsDataModel) SetTimeStamp(v string) *DescribeLiveDomainBpsDataByTimeStampResponseBodyBpsDataListBpsDataModel {
-	s.TimeStamp = &v
+func (s *DescribeLiveDomainBpsDataByTimeStampResponseBodyBpsDataListBpsDataModel) SetLocationName(v string) *DescribeLiveDomainBpsDataByTimeStampResponseBodyBpsDataListBpsDataModel {
+	s.LocationName = &v
 	return s
 }
 
-func (s *DescribeLiveDomainBpsDataByTimeStampResponseBodyBpsDataListBpsDataModel) SetLocationName(v string) *DescribeLiveDomainBpsDataByTimeStampResponseBodyBpsDataListBpsDataModel {
-	s.LocationName = &v
+func (s *DescribeLiveDomainBpsDataByTimeStampResponseBodyBpsDataListBpsDataModel) SetTimeStamp(v string) *DescribeLiveDomainBpsDataByTimeStampResponseBodyBpsDataListBpsDataModel {
+	s.TimeStamp = &v
 	return s
 }
 
@@ -11260,8 +12444,8 @@ func (s *DescribeLiveDomainCertificateInfoRequest) SetDomainName(v string) *Desc
 }
 
 type DescribeLiveDomainCertificateInfoResponseBody struct {
-	RequestId *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	CertInfos *DescribeLiveDomainCertificateInfoResponseBodyCertInfos `json:"CertInfos,omitempty" xml:"CertInfos,omitempty" type:"Struct"`
+	RequestId *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeLiveDomainCertificateInfoResponseBody) String() string {
@@ -11272,13 +12456,13 @@ func (s DescribeLiveDomainCertificateInfoResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeLiveDomainCertificateInfoResponseBody) SetRequestId(v string) *DescribeLiveDomainCertificateInfoResponseBody {
-	s.RequestId = &v
+func (s *DescribeLiveDomainCertificateInfoResponseBody) SetCertInfos(v *DescribeLiveDomainCertificateInfoResponseBodyCertInfos) *DescribeLiveDomainCertificateInfoResponseBody {
+	s.CertInfos = v
 	return s
 }
 
-func (s *DescribeLiveDomainCertificateInfoResponseBody) SetCertInfos(v *DescribeLiveDomainCertificateInfoResponseBodyCertInfos) *DescribeLiveDomainCertificateInfoResponseBody {
-	s.CertInfos = v
+func (s *DescribeLiveDomainCertificateInfoResponseBody) SetRequestId(v string) *DescribeLiveDomainCertificateInfoResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -11300,16 +12484,16 @@ func (s *DescribeLiveDomainCertificateInfoResponseBodyCertInfos) SetCertInfo(v [
 }
 
 type DescribeLiveDomainCertificateInfoResponseBodyCertInfosCertInfo struct {
-	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	CertName       *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
-	CertDomainName *string `json:"CertDomainName,omitempty" xml:"CertDomainName,omitempty"`
-	CertExpireTime *string `json:"CertExpireTime,omitempty" xml:"CertExpireTime,omitempty"`
-	CertLife       *string `json:"CertLife,omitempty" xml:"CertLife,omitempty"`
-	CertOrg        *string `json:"CertOrg,omitempty" xml:"CertOrg,omitempty"`
-	CertType       *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
-	SSLProtocol    *string `json:"SSLProtocol,omitempty" xml:"SSLProtocol,omitempty"`
 	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	CertLife       *string `json:"CertLife,omitempty" xml:"CertLife,omitempty"`
+	CertExpireTime *string `json:"CertExpireTime,omitempty" xml:"CertExpireTime,omitempty"`
 	SSLPub         *string `json:"SSLPub,omitempty" xml:"SSLPub,omitempty"`
+	SSLProtocol    *string `json:"SSLProtocol,omitempty" xml:"SSLProtocol,omitempty"`
+	CertType       *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
+	CertDomainName *string `json:"CertDomainName,omitempty" xml:"CertDomainName,omitempty"`
+	CertName       *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	CertOrg        *string `json:"CertOrg,omitempty" xml:"CertOrg,omitempty"`
+	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 }
 
 func (s DescribeLiveDomainCertificateInfoResponseBodyCertInfosCertInfo) String() string {
@@ -11320,23 +12504,8 @@ func (s DescribeLiveDomainCertificateInfoResponseBodyCertInfosCertInfo) GoString
 	return s.String()
 }
 
-func (s *DescribeLiveDomainCertificateInfoResponseBodyCertInfosCertInfo) SetDomainName(v string) *DescribeLiveDomainCertificateInfoResponseBodyCertInfosCertInfo {
-	s.DomainName = &v
-	return s
-}
-
-func (s *DescribeLiveDomainCertificateInfoResponseBodyCertInfosCertInfo) SetCertName(v string) *DescribeLiveDomainCertificateInfoResponseBodyCertInfosCertInfo {
-	s.CertName = &v
-	return s
-}
-
-func (s *DescribeLiveDomainCertificateInfoResponseBodyCertInfosCertInfo) SetCertDomainName(v string) *DescribeLiveDomainCertificateInfoResponseBodyCertInfosCertInfo {
-	s.CertDomainName = &v
-	return s
-}
-
-func (s *DescribeLiveDomainCertificateInfoResponseBodyCertInfosCertInfo) SetCertExpireTime(v string) *DescribeLiveDomainCertificateInfoResponseBodyCertInfosCertInfo {
-	s.CertExpireTime = &v
+func (s *DescribeLiveDomainCertificateInfoResponseBodyCertInfosCertInfo) SetStatus(v string) *DescribeLiveDomainCertificateInfoResponseBodyCertInfosCertInfo {
+	s.Status = &v
 	return s
 }
 
@@ -11345,13 +12514,13 @@ func (s *DescribeLiveDomainCertificateInfoResponseBodyCertInfosCertInfo) SetCert
 	return s
 }
 
-func (s *DescribeLiveDomainCertificateInfoResponseBodyCertInfosCertInfo) SetCertOrg(v string) *DescribeLiveDomainCertificateInfoResponseBodyCertInfosCertInfo {
-	s.CertOrg = &v
+func (s *DescribeLiveDomainCertificateInfoResponseBodyCertInfosCertInfo) SetCertExpireTime(v string) *DescribeLiveDomainCertificateInfoResponseBodyCertInfosCertInfo {
+	s.CertExpireTime = &v
 	return s
 }
 
-func (s *DescribeLiveDomainCertificateInfoResponseBodyCertInfosCertInfo) SetCertType(v string) *DescribeLiveDomainCertificateInfoResponseBodyCertInfosCertInfo {
-	s.CertType = &v
+func (s *DescribeLiveDomainCertificateInfoResponseBodyCertInfosCertInfo) SetSSLPub(v string) *DescribeLiveDomainCertificateInfoResponseBodyCertInfosCertInfo {
+	s.SSLPub = &v
 	return s
 }
 
@@ -11360,13 +12529,28 @@ func (s *DescribeLiveDomainCertificateInfoResponseBodyCertInfosCertInfo) SetSSLP
 	return s
 }
 
-func (s *DescribeLiveDomainCertificateInfoResponseBodyCertInfosCertInfo) SetStatus(v string) *DescribeLiveDomainCertificateInfoResponseBodyCertInfosCertInfo {
-	s.Status = &v
+func (s *DescribeLiveDomainCertificateInfoResponseBodyCertInfosCertInfo) SetCertType(v string) *DescribeLiveDomainCertificateInfoResponseBodyCertInfosCertInfo {
+	s.CertType = &v
 	return s
 }
 
-func (s *DescribeLiveDomainCertificateInfoResponseBodyCertInfosCertInfo) SetSSLPub(v string) *DescribeLiveDomainCertificateInfoResponseBodyCertInfosCertInfo {
-	s.SSLPub = &v
+func (s *DescribeLiveDomainCertificateInfoResponseBodyCertInfosCertInfo) SetCertDomainName(v string) *DescribeLiveDomainCertificateInfoResponseBodyCertInfosCertInfo {
+	s.CertDomainName = &v
+	return s
+}
+
+func (s *DescribeLiveDomainCertificateInfoResponseBodyCertInfosCertInfo) SetCertName(v string) *DescribeLiveDomainCertificateInfoResponseBodyCertInfosCertInfo {
+	s.CertName = &v
+	return s
+}
+
+func (s *DescribeLiveDomainCertificateInfoResponseBodyCertInfosCertInfo) SetCertOrg(v string) *DescribeLiveDomainCertificateInfoResponseBodyCertInfosCertInfo {
+	s.CertOrg = &v
+	return s
+}
+
+func (s *DescribeLiveDomainCertificateInfoResponseBodyCertInfosCertInfo) SetDomainName(v string) *DescribeLiveDomainCertificateInfoResponseBodyCertInfosCertInfo {
+	s.DomainName = &v
 	return s
 }
 
@@ -11921,9 +13105,9 @@ func (s *DescribeLiveDomainLimitResponseBodyLiveDomainLimitList) SetLiveDomainLi
 }
 
 type DescribeLiveDomainLimitResponseBodyLiveDomainLimitListLiveDomainLimit struct {
-	DomainName        *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	LimitNum          *int32  `json:"LimitNum,omitempty" xml:"LimitNum,omitempty"`
 	LimitTranscodeNum *int32  `json:"LimitTranscodeNum,omitempty" xml:"LimitTranscodeNum,omitempty"`
+	LimitNum          *int32  `json:"LimitNum,omitempty" xml:"LimitNum,omitempty"`
+	DomainName        *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 }
 
 func (s DescribeLiveDomainLimitResponseBodyLiveDomainLimitListLiveDomainLimit) String() string {
@@ -11934,8 +13118,8 @@ func (s DescribeLiveDomainLimitResponseBodyLiveDomainLimitListLiveDomainLimit) G
 	return s.String()
 }
 
-func (s *DescribeLiveDomainLimitResponseBodyLiveDomainLimitListLiveDomainLimit) SetDomainName(v string) *DescribeLiveDomainLimitResponseBodyLiveDomainLimitListLiveDomainLimit {
-	s.DomainName = &v
+func (s *DescribeLiveDomainLimitResponseBodyLiveDomainLimitListLiveDomainLimit) SetLimitTranscodeNum(v int32) *DescribeLiveDomainLimitResponseBodyLiveDomainLimitListLiveDomainLimit {
+	s.LimitTranscodeNum = &v
 	return s
 }
 
@@ -11944,8 +13128,8 @@ func (s *DescribeLiveDomainLimitResponseBodyLiveDomainLimitListLiveDomainLimit) 
 	return s
 }
 
-func (s *DescribeLiveDomainLimitResponseBodyLiveDomainLimitListLiveDomainLimit) SetLimitTranscodeNum(v int32) *DescribeLiveDomainLimitResponseBodyLiveDomainLimitListLiveDomainLimit {
-	s.LimitTranscodeNum = &v
+func (s *DescribeLiveDomainLimitResponseBodyLiveDomainLimitListLiveDomainLimit) SetDomainName(v string) *DescribeLiveDomainLimitResponseBodyLiveDomainLimitListLiveDomainLimit {
+	s.DomainName = &v
 	return s
 }
 
@@ -12302,10 +13486,10 @@ func (s *DescribeLiveDomainPushBpsDataRequest) SetLocationNameEn(v string) *Desc
 }
 
 type DescribeLiveDomainPushBpsDataResponseBody struct {
+	EndTime            *string                                                      `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	RequestId          *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DomainName         *string                                                      `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	StartTime          *string                                                      `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	EndTime            *string                                                      `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	DataInterval       *string                                                      `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
 	BpsDataPerInterval *DescribeLiveDomainPushBpsDataResponseBodyBpsDataPerInterval `json:"BpsDataPerInterval,omitempty" xml:"BpsDataPerInterval,omitempty" type:"Struct"`
 }
@@ -12316,6 +13500,11 @@ func (s DescribeLiveDomainPushBpsDataResponseBody) String() string {
 
 func (s DescribeLiveDomainPushBpsDataResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeLiveDomainPushBpsDataResponseBody) SetEndTime(v string) *DescribeLiveDomainPushBpsDataResponseBody {
+	s.EndTime = &v
+	return s
 }
 
 func (s *DescribeLiveDomainPushBpsDataResponseBody) SetRequestId(v string) *DescribeLiveDomainPushBpsDataResponseBody {
@@ -12330,11 +13519,6 @@ func (s *DescribeLiveDomainPushBpsDataResponseBody) SetDomainName(v string) *Des
 
 func (s *DescribeLiveDomainPushBpsDataResponseBody) SetStartTime(v string) *DescribeLiveDomainPushBpsDataResponseBody {
 	s.StartTime = &v
-	return s
-}
-
-func (s *DescribeLiveDomainPushBpsDataResponseBody) SetEndTime(v string) *DescribeLiveDomainPushBpsDataResponseBody {
-	s.EndTime = &v
 	return s
 }
 
@@ -12366,8 +13550,8 @@ func (s *DescribeLiveDomainPushBpsDataResponseBodyBpsDataPerInterval) SetDataMod
 }
 
 type DescribeLiveDomainPushBpsDataResponseBodyBpsDataPerIntervalDataModule struct {
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 	BpsValue  *string `json:"BpsValue,omitempty" xml:"BpsValue,omitempty"`
+	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
 func (s DescribeLiveDomainPushBpsDataResponseBodyBpsDataPerIntervalDataModule) String() string {
@@ -12378,13 +13562,13 @@ func (s DescribeLiveDomainPushBpsDataResponseBodyBpsDataPerIntervalDataModule) G
 	return s.String()
 }
 
-func (s *DescribeLiveDomainPushBpsDataResponseBodyBpsDataPerIntervalDataModule) SetTimeStamp(v string) *DescribeLiveDomainPushBpsDataResponseBodyBpsDataPerIntervalDataModule {
-	s.TimeStamp = &v
+func (s *DescribeLiveDomainPushBpsDataResponseBodyBpsDataPerIntervalDataModule) SetBpsValue(v string) *DescribeLiveDomainPushBpsDataResponseBodyBpsDataPerIntervalDataModule {
+	s.BpsValue = &v
 	return s
 }
 
-func (s *DescribeLiveDomainPushBpsDataResponseBodyBpsDataPerIntervalDataModule) SetBpsValue(v string) *DescribeLiveDomainPushBpsDataResponseBodyBpsDataPerIntervalDataModule {
-	s.BpsValue = &v
+func (s *DescribeLiveDomainPushBpsDataResponseBodyBpsDataPerIntervalDataModule) SetTimeStamp(v string) *DescribeLiveDomainPushBpsDataResponseBodyBpsDataPerIntervalDataModule {
+	s.TimeStamp = &v
 	return s
 }
 
@@ -12465,12 +13649,12 @@ func (s *DescribeLiveDomainPushTrafficDataRequest) SetLocationNameEn(v string) *
 }
 
 type DescribeLiveDomainPushTrafficDataResponseBody struct {
+	EndTime                *string                                                              `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	RequestId              *string                                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DomainName             *string                                                              `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	StartTime              *string                                                              `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	EndTime                *string                                                              `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	DataInterval           *string                                                              `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
 	TrafficDataPerInterval *DescribeLiveDomainPushTrafficDataResponseBodyTrafficDataPerInterval `json:"TrafficDataPerInterval,omitempty" xml:"TrafficDataPerInterval,omitempty" type:"Struct"`
+	StartTime              *string                                                              `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	DataInterval           *string                                                              `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
 }
 
 func (s DescribeLiveDomainPushTrafficDataResponseBody) String() string {
@@ -12479,6 +13663,11 @@ func (s DescribeLiveDomainPushTrafficDataResponseBody) String() string {
 
 func (s DescribeLiveDomainPushTrafficDataResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeLiveDomainPushTrafficDataResponseBody) SetEndTime(v string) *DescribeLiveDomainPushTrafficDataResponseBody {
+	s.EndTime = &v
+	return s
 }
 
 func (s *DescribeLiveDomainPushTrafficDataResponseBody) SetRequestId(v string) *DescribeLiveDomainPushTrafficDataResponseBody {
@@ -12491,23 +13680,18 @@ func (s *DescribeLiveDomainPushTrafficDataResponseBody) SetDomainName(v string) 
 	return s
 }
 
+func (s *DescribeLiveDomainPushTrafficDataResponseBody) SetTrafficDataPerInterval(v *DescribeLiveDomainPushTrafficDataResponseBodyTrafficDataPerInterval) *DescribeLiveDomainPushTrafficDataResponseBody {
+	s.TrafficDataPerInterval = v
+	return s
+}
+
 func (s *DescribeLiveDomainPushTrafficDataResponseBody) SetStartTime(v string) *DescribeLiveDomainPushTrafficDataResponseBody {
 	s.StartTime = &v
 	return s
 }
 
-func (s *DescribeLiveDomainPushTrafficDataResponseBody) SetEndTime(v string) *DescribeLiveDomainPushTrafficDataResponseBody {
-	s.EndTime = &v
-	return s
-}
-
 func (s *DescribeLiveDomainPushTrafficDataResponseBody) SetDataInterval(v string) *DescribeLiveDomainPushTrafficDataResponseBody {
 	s.DataInterval = &v
-	return s
-}
-
-func (s *DescribeLiveDomainPushTrafficDataResponseBody) SetTrafficDataPerInterval(v *DescribeLiveDomainPushTrafficDataResponseBodyTrafficDataPerInterval) *DescribeLiveDomainPushTrafficDataResponseBody {
-	s.TrafficDataPerInterval = v
 	return s
 }
 
@@ -12529,8 +13713,8 @@ func (s *DescribeLiveDomainPushTrafficDataResponseBodyTrafficDataPerInterval) Se
 }
 
 type DescribeLiveDomainPushTrafficDataResponseBodyTrafficDataPerIntervalDataModule struct {
-	TimeStamp    *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 	TrafficValue *string `json:"TrafficValue,omitempty" xml:"TrafficValue,omitempty"`
+	TimeStamp    *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
 func (s DescribeLiveDomainPushTrafficDataResponseBodyTrafficDataPerIntervalDataModule) String() string {
@@ -12541,13 +13725,13 @@ func (s DescribeLiveDomainPushTrafficDataResponseBodyTrafficDataPerIntervalDataM
 	return s.String()
 }
 
-func (s *DescribeLiveDomainPushTrafficDataResponseBodyTrafficDataPerIntervalDataModule) SetTimeStamp(v string) *DescribeLiveDomainPushTrafficDataResponseBodyTrafficDataPerIntervalDataModule {
-	s.TimeStamp = &v
+func (s *DescribeLiveDomainPushTrafficDataResponseBodyTrafficDataPerIntervalDataModule) SetTrafficValue(v string) *DescribeLiveDomainPushTrafficDataResponseBodyTrafficDataPerIntervalDataModule {
+	s.TrafficValue = &v
 	return s
 }
 
-func (s *DescribeLiveDomainPushTrafficDataResponseBodyTrafficDataPerIntervalDataModule) SetTrafficValue(v string) *DescribeLiveDomainPushTrafficDataResponseBodyTrafficDataPerIntervalDataModule {
-	s.TrafficValue = &v
+func (s *DescribeLiveDomainPushTrafficDataResponseBodyTrafficDataPerIntervalDataModule) SetTimeStamp(v string) *DescribeLiveDomainPushTrafficDataResponseBodyTrafficDataPerIntervalDataModule {
+	s.TimeStamp = &v
 	return s
 }
 
@@ -12610,10 +13794,10 @@ func (s *DescribeLiveDomainPvUvDataRequest) SetEndTime(v string) *DescribeLiveDo
 }
 
 type DescribeLiveDomainPvUvDataResponseBody struct {
+	EndTime       *string                                              `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	RequestId     *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DomainName    *string                                              `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	StartTime     *string                                              `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	EndTime       *string                                              `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	DataInterval  *string                                              `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
 	PvUvDataInfos *DescribeLiveDomainPvUvDataResponseBodyPvUvDataInfos `json:"PvUvDataInfos,omitempty" xml:"PvUvDataInfos,omitempty" type:"Struct"`
 }
@@ -12624,6 +13808,11 @@ func (s DescribeLiveDomainPvUvDataResponseBody) String() string {
 
 func (s DescribeLiveDomainPvUvDataResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeLiveDomainPvUvDataResponseBody) SetEndTime(v string) *DescribeLiveDomainPvUvDataResponseBody {
+	s.EndTime = &v
+	return s
 }
 
 func (s *DescribeLiveDomainPvUvDataResponseBody) SetRequestId(v string) *DescribeLiveDomainPvUvDataResponseBody {
@@ -12638,11 +13827,6 @@ func (s *DescribeLiveDomainPvUvDataResponseBody) SetDomainName(v string) *Descri
 
 func (s *DescribeLiveDomainPvUvDataResponseBody) SetStartTime(v string) *DescribeLiveDomainPvUvDataResponseBody {
 	s.StartTime = &v
-	return s
-}
-
-func (s *DescribeLiveDomainPvUvDataResponseBody) SetEndTime(v string) *DescribeLiveDomainPvUvDataResponseBody {
-	s.EndTime = &v
 	return s
 }
 
@@ -12675,8 +13859,8 @@ func (s *DescribeLiveDomainPvUvDataResponseBodyPvUvDataInfos) SetPvUvDataInfo(v 
 
 type DescribeLiveDomainPvUvDataResponseBodyPvUvDataInfosPvUvDataInfo struct {
 	PV        *string `json:"PV,omitempty" xml:"PV,omitempty"`
-	UV        *string `json:"UV,omitempty" xml:"UV,omitempty"`
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	UV        *string `json:"UV,omitempty" xml:"UV,omitempty"`
 }
 
 func (s DescribeLiveDomainPvUvDataResponseBodyPvUvDataInfosPvUvDataInfo) String() string {
@@ -12692,13 +13876,13 @@ func (s *DescribeLiveDomainPvUvDataResponseBodyPvUvDataInfosPvUvDataInfo) SetPV(
 	return s
 }
 
-func (s *DescribeLiveDomainPvUvDataResponseBodyPvUvDataInfosPvUvDataInfo) SetUV(v string) *DescribeLiveDomainPvUvDataResponseBodyPvUvDataInfosPvUvDataInfo {
-	s.UV = &v
+func (s *DescribeLiveDomainPvUvDataResponseBodyPvUvDataInfosPvUvDataInfo) SetTimeStamp(v string) *DescribeLiveDomainPvUvDataResponseBodyPvUvDataInfosPvUvDataInfo {
+	s.TimeStamp = &v
 	return s
 }
 
-func (s *DescribeLiveDomainPvUvDataResponseBodyPvUvDataInfosPvUvDataInfo) SetTimeStamp(v string) *DescribeLiveDomainPvUvDataResponseBodyPvUvDataInfosPvUvDataInfo {
-	s.TimeStamp = &v
+func (s *DescribeLiveDomainPvUvDataResponseBodyPvUvDataInfosPvUvDataInfo) SetUV(v string) *DescribeLiveDomainPvUvDataResponseBodyPvUvDataInfosPvUvDataInfo {
+	s.UV = &v
 	return s
 }
 
@@ -13109,11 +14293,11 @@ func (s *DescribeLiveDomainRealtimeLogDeliveryRequest) SetDomainName(v string) *
 }
 
 type DescribeLiveDomainRealtimeLogDeliveryResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Project   *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	Region    *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	Logstore  *string `json:"Logstore,omitempty" xml:"Logstore,omitempty"`
 	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Project   *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Logstore  *string `json:"Logstore,omitempty" xml:"Logstore,omitempty"`
+	Region    *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
 func (s DescribeLiveDomainRealtimeLogDeliveryResponseBody) String() string {
@@ -13124,8 +14308,8 @@ func (s DescribeLiveDomainRealtimeLogDeliveryResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeLiveDomainRealtimeLogDeliveryResponseBody) SetRequestId(v string) *DescribeLiveDomainRealtimeLogDeliveryResponseBody {
-	s.RequestId = &v
+func (s *DescribeLiveDomainRealtimeLogDeliveryResponseBody) SetStatus(v string) *DescribeLiveDomainRealtimeLogDeliveryResponseBody {
+	s.Status = &v
 	return s
 }
 
@@ -13134,8 +14318,8 @@ func (s *DescribeLiveDomainRealtimeLogDeliveryResponseBody) SetProject(v string)
 	return s
 }
 
-func (s *DescribeLiveDomainRealtimeLogDeliveryResponseBody) SetRegion(v string) *DescribeLiveDomainRealtimeLogDeliveryResponseBody {
-	s.Region = &v
+func (s *DescribeLiveDomainRealtimeLogDeliveryResponseBody) SetRequestId(v string) *DescribeLiveDomainRealtimeLogDeliveryResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -13144,8 +14328,8 @@ func (s *DescribeLiveDomainRealtimeLogDeliveryResponseBody) SetLogstore(v string
 	return s
 }
 
-func (s *DescribeLiveDomainRealtimeLogDeliveryResponseBody) SetStatus(v string) *DescribeLiveDomainRealtimeLogDeliveryResponseBody {
-	s.Status = &v
+func (s *DescribeLiveDomainRealtimeLogDeliveryResponseBody) SetRegion(v string) *DescribeLiveDomainRealtimeLogDeliveryResponseBody {
+	s.Region = &v
 	return s
 }
 
@@ -13612,6 +14796,163 @@ func (s *DescribeLiveDomainSnapshotDataResponse) SetBody(v *DescribeLiveDomainSn
 	return s
 }
 
+type DescribeLiveDomainStreamTranscodeDataRequest struct {
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Split      *string `json:"Split,omitempty" xml:"Split,omitempty"`
+}
+
+func (s DescribeLiveDomainStreamTranscodeDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLiveDomainStreamTranscodeDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLiveDomainStreamTranscodeDataRequest) SetOwnerId(v int64) *DescribeLiveDomainStreamTranscodeDataRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeLiveDomainStreamTranscodeDataRequest) SetDomainName(v string) *DescribeLiveDomainStreamTranscodeDataRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeLiveDomainStreamTranscodeDataRequest) SetStartTime(v string) *DescribeLiveDomainStreamTranscodeDataRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeLiveDomainStreamTranscodeDataRequest) SetEndTime(v string) *DescribeLiveDomainStreamTranscodeDataRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeLiveDomainStreamTranscodeDataRequest) SetSplit(v string) *DescribeLiveDomainStreamTranscodeDataRequest {
+	s.Split = &v
+	return s
+}
+
+type DescribeLiveDomainStreamTranscodeDataResponseBody struct {
+	RequestId         *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TranscodeDataList *DescribeLiveDomainStreamTranscodeDataResponseBodyTranscodeDataList `json:"TranscodeDataList,omitempty" xml:"TranscodeDataList,omitempty" type:"Struct"`
+}
+
+func (s DescribeLiveDomainStreamTranscodeDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLiveDomainStreamTranscodeDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLiveDomainStreamTranscodeDataResponseBody) SetRequestId(v string) *DescribeLiveDomainStreamTranscodeDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeLiveDomainStreamTranscodeDataResponseBody) SetTranscodeDataList(v *DescribeLiveDomainStreamTranscodeDataResponseBodyTranscodeDataList) *DescribeLiveDomainStreamTranscodeDataResponseBody {
+	s.TranscodeDataList = v
+	return s
+}
+
+type DescribeLiveDomainStreamTranscodeDataResponseBodyTranscodeDataList struct {
+	TranscodeData []*DescribeLiveDomainStreamTranscodeDataResponseBodyTranscodeDataListTranscodeData `json:"TranscodeData,omitempty" xml:"TranscodeData,omitempty" type:"Repeated"`
+}
+
+func (s DescribeLiveDomainStreamTranscodeDataResponseBodyTranscodeDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLiveDomainStreamTranscodeDataResponseBodyTranscodeDataList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLiveDomainStreamTranscodeDataResponseBodyTranscodeDataList) SetTranscodeData(v []*DescribeLiveDomainStreamTranscodeDataResponseBodyTranscodeDataListTranscodeData) *DescribeLiveDomainStreamTranscodeDataResponseBodyTranscodeDataList {
+	s.TranscodeData = v
+	return s
+}
+
+type DescribeLiveDomainStreamTranscodeDataResponseBodyTranscodeDataListTranscodeData struct {
+	TanscodeType *string `json:"TanscodeType,omitempty" xml:"TanscodeType,omitempty"`
+	Domain       *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Duration     *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	TimeStamp    *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	Fps          *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	Resolution   *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
+}
+
+func (s DescribeLiveDomainStreamTranscodeDataResponseBodyTranscodeDataListTranscodeData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLiveDomainStreamTranscodeDataResponseBodyTranscodeDataListTranscodeData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLiveDomainStreamTranscodeDataResponseBodyTranscodeDataListTranscodeData) SetTanscodeType(v string) *DescribeLiveDomainStreamTranscodeDataResponseBodyTranscodeDataListTranscodeData {
+	s.TanscodeType = &v
+	return s
+}
+
+func (s *DescribeLiveDomainStreamTranscodeDataResponseBodyTranscodeDataListTranscodeData) SetDomain(v string) *DescribeLiveDomainStreamTranscodeDataResponseBodyTranscodeDataListTranscodeData {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribeLiveDomainStreamTranscodeDataResponseBodyTranscodeDataListTranscodeData) SetRegion(v string) *DescribeLiveDomainStreamTranscodeDataResponseBodyTranscodeDataListTranscodeData {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeLiveDomainStreamTranscodeDataResponseBodyTranscodeDataListTranscodeData) SetDuration(v int32) *DescribeLiveDomainStreamTranscodeDataResponseBodyTranscodeDataListTranscodeData {
+	s.Duration = &v
+	return s
+}
+
+func (s *DescribeLiveDomainStreamTranscodeDataResponseBodyTranscodeDataListTranscodeData) SetTimeStamp(v string) *DescribeLiveDomainStreamTranscodeDataResponseBodyTranscodeDataListTranscodeData {
+	s.TimeStamp = &v
+	return s
+}
+
+func (s *DescribeLiveDomainStreamTranscodeDataResponseBodyTranscodeDataListTranscodeData) SetFps(v string) *DescribeLiveDomainStreamTranscodeDataResponseBodyTranscodeDataListTranscodeData {
+	s.Fps = &v
+	return s
+}
+
+func (s *DescribeLiveDomainStreamTranscodeDataResponseBodyTranscodeDataListTranscodeData) SetResolution(v string) *DescribeLiveDomainStreamTranscodeDataResponseBodyTranscodeDataListTranscodeData {
+	s.Resolution = &v
+	return s
+}
+
+type DescribeLiveDomainStreamTranscodeDataResponse struct {
+	Headers map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeLiveDomainStreamTranscodeDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeLiveDomainStreamTranscodeDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLiveDomainStreamTranscodeDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLiveDomainStreamTranscodeDataResponse) SetHeaders(v map[string]*string) *DescribeLiveDomainStreamTranscodeDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeLiveDomainStreamTranscodeDataResponse) SetBody(v *DescribeLiveDomainStreamTranscodeDataResponseBody) *DescribeLiveDomainStreamTranscodeDataResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeLiveDomainTimeShiftDataRequest struct {
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
@@ -13654,8 +14995,8 @@ func (s *DescribeLiveDomainTimeShiftDataRequest) SetInterval(v string) *Describe
 }
 
 type DescribeLiveDomainTimeShiftDataResponseBody struct {
-	RequestId     *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TimeShiftData *DescribeLiveDomainTimeShiftDataResponseBodyTimeShiftData `json:"TimeShiftData,omitempty" xml:"TimeShiftData,omitempty" type:"Struct"`
+	RequestId     *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeLiveDomainTimeShiftDataResponseBody) String() string {
@@ -13666,13 +15007,13 @@ func (s DescribeLiveDomainTimeShiftDataResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeLiveDomainTimeShiftDataResponseBody) SetRequestId(v string) *DescribeLiveDomainTimeShiftDataResponseBody {
-	s.RequestId = &v
+func (s *DescribeLiveDomainTimeShiftDataResponseBody) SetTimeShiftData(v *DescribeLiveDomainTimeShiftDataResponseBodyTimeShiftData) *DescribeLiveDomainTimeShiftDataResponseBody {
+	s.TimeShiftData = v
 	return s
 }
 
-func (s *DescribeLiveDomainTimeShiftDataResponseBody) SetTimeShiftData(v *DescribeLiveDomainTimeShiftDataResponseBodyTimeShiftData) *DescribeLiveDomainTimeShiftDataResponseBody {
-	s.TimeShiftData = v
+func (s *DescribeLiveDomainTimeShiftDataResponseBody) SetRequestId(v string) *DescribeLiveDomainTimeShiftDataResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -13694,9 +15035,9 @@ func (s *DescribeLiveDomainTimeShiftDataResponseBodyTimeShiftData) SetDataModule
 }
 
 type DescribeLiveDomainTimeShiftDataResponseBodyTimeShiftDataDataModule struct {
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	Size      *string `json:"Size,omitempty" xml:"Size,omitempty"`
 	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Size      *string `json:"Size,omitempty" xml:"Size,omitempty"`
+	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
 func (s DescribeLiveDomainTimeShiftDataResponseBodyTimeShiftDataDataModule) String() string {
@@ -13707,8 +15048,8 @@ func (s DescribeLiveDomainTimeShiftDataResponseBodyTimeShiftDataDataModule) GoSt
 	return s.String()
 }
 
-func (s *DescribeLiveDomainTimeShiftDataResponseBodyTimeShiftDataDataModule) SetTimeStamp(v string) *DescribeLiveDomainTimeShiftDataResponseBodyTimeShiftDataDataModule {
-	s.TimeStamp = &v
+func (s *DescribeLiveDomainTimeShiftDataResponseBodyTimeShiftDataDataModule) SetType(v string) *DescribeLiveDomainTimeShiftDataResponseBodyTimeShiftDataDataModule {
+	s.Type = &v
 	return s
 }
 
@@ -13717,8 +15058,8 @@ func (s *DescribeLiveDomainTimeShiftDataResponseBodyTimeShiftDataDataModule) Set
 	return s
 }
 
-func (s *DescribeLiveDomainTimeShiftDataResponseBodyTimeShiftDataDataModule) SetType(v string) *DescribeLiveDomainTimeShiftDataResponseBodyTimeShiftDataDataModule {
-	s.Type = &v
+func (s *DescribeLiveDomainTimeShiftDataResponseBodyTimeShiftDataDataModule) SetTimeStamp(v string) *DescribeLiveDomainTimeShiftDataResponseBodyTimeShiftDataDataModule {
+	s.TimeStamp = &v
 	return s
 }
 
@@ -14048,10 +15389,9 @@ func (s *DescribeLiveDomainTranscodeDataResponse) SetBody(v *DescribeLiveDomainT
 }
 
 type DescribeLiveLazyPullStreamConfigRequest struct {
-	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	DomainName         *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	AppName            *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	LiveapiRequestFrom *string `json:"LiveapiRequestFrom,omitempty" xml:"LiveapiRequestFrom,omitempty"`
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	AppName    *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 }
 
 func (s DescribeLiveLazyPullStreamConfigRequest) String() string {
@@ -14074,11 +15414,6 @@ func (s *DescribeLiveLazyPullStreamConfigRequest) SetDomainName(v string) *Descr
 
 func (s *DescribeLiveLazyPullStreamConfigRequest) SetAppName(v string) *DescribeLiveLazyPullStreamConfigRequest {
 	s.AppName = &v
-	return s
-}
-
-func (s *DescribeLiveLazyPullStreamConfigRequest) SetLiveapiRequestFrom(v string) *DescribeLiveLazyPullStreamConfigRequest {
-	s.LiveapiRequestFrom = &v
 	return s
 }
 
@@ -14123,14 +15458,11 @@ func (s *DescribeLiveLazyPullStreamConfigResponseBodyLiveLazyPullConfigList) Set
 }
 
 type DescribeLiveLazyPullStreamConfigResponseBodyLiveLazyPullConfigListLiveLazyPullConfig struct {
-	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	AppName        *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	PullDomainName *string `json:"PullDomainName,omitempty" xml:"PullDomainName,omitempty"`
 	PullAppName    *string `json:"PullAppName,omitempty" xml:"PullAppName,omitempty"`
 	PullProtocol   *string `json:"PullProtocol,omitempty" xml:"PullProtocol,omitempty"`
-	PullAuthType   *string `json:"PullAuthType,omitempty" xml:"PullAuthType,omitempty"`
-	PullAuthKey    *string `json:"PullAuthKey,omitempty" xml:"PullAuthKey,omitempty"`
-	PullArgs       *string `json:"PullArgs,omitempty" xml:"PullArgs,omitempty"`
+	PullDomainName *string `json:"PullDomainName,omitempty" xml:"PullDomainName,omitempty"`
+	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 }
 
 func (s DescribeLiveLazyPullStreamConfigResponseBodyLiveLazyPullConfigListLiveLazyPullConfig) String() string {
@@ -14141,18 +15473,8 @@ func (s DescribeLiveLazyPullStreamConfigResponseBodyLiveLazyPullConfigListLiveLa
 	return s.String()
 }
 
-func (s *DescribeLiveLazyPullStreamConfigResponseBodyLiveLazyPullConfigListLiveLazyPullConfig) SetDomainName(v string) *DescribeLiveLazyPullStreamConfigResponseBodyLiveLazyPullConfigListLiveLazyPullConfig {
-	s.DomainName = &v
-	return s
-}
-
 func (s *DescribeLiveLazyPullStreamConfigResponseBodyLiveLazyPullConfigListLiveLazyPullConfig) SetAppName(v string) *DescribeLiveLazyPullStreamConfigResponseBodyLiveLazyPullConfigListLiveLazyPullConfig {
 	s.AppName = &v
-	return s
-}
-
-func (s *DescribeLiveLazyPullStreamConfigResponseBodyLiveLazyPullConfigListLiveLazyPullConfig) SetPullDomainName(v string) *DescribeLiveLazyPullStreamConfigResponseBodyLiveLazyPullConfigListLiveLazyPullConfig {
-	s.PullDomainName = &v
 	return s
 }
 
@@ -14166,18 +15488,13 @@ func (s *DescribeLiveLazyPullStreamConfigResponseBodyLiveLazyPullConfigListLiveL
 	return s
 }
 
-func (s *DescribeLiveLazyPullStreamConfigResponseBodyLiveLazyPullConfigListLiveLazyPullConfig) SetPullAuthType(v string) *DescribeLiveLazyPullStreamConfigResponseBodyLiveLazyPullConfigListLiveLazyPullConfig {
-	s.PullAuthType = &v
+func (s *DescribeLiveLazyPullStreamConfigResponseBodyLiveLazyPullConfigListLiveLazyPullConfig) SetPullDomainName(v string) *DescribeLiveLazyPullStreamConfigResponseBodyLiveLazyPullConfigListLiveLazyPullConfig {
+	s.PullDomainName = &v
 	return s
 }
 
-func (s *DescribeLiveLazyPullStreamConfigResponseBodyLiveLazyPullConfigListLiveLazyPullConfig) SetPullAuthKey(v string) *DescribeLiveLazyPullStreamConfigResponseBodyLiveLazyPullConfigListLiveLazyPullConfig {
-	s.PullAuthKey = &v
-	return s
-}
-
-func (s *DescribeLiveLazyPullStreamConfigResponseBodyLiveLazyPullConfigListLiveLazyPullConfig) SetPullArgs(v string) *DescribeLiveLazyPullStreamConfigResponseBodyLiveLazyPullConfigListLiveLazyPullConfig {
-	s.PullArgs = &v
+func (s *DescribeLiveLazyPullStreamConfigResponseBodyLiveLazyPullConfigListLiveLazyPullConfig) SetDomainName(v string) *DescribeLiveLazyPullStreamConfigResponseBodyLiveLazyPullConfigListLiveLazyPullConfig {
+	s.DomainName = &v
 	return s
 }
 
@@ -14205,9 +15522,8 @@ func (s *DescribeLiveLazyPullStreamConfigResponse) SetBody(v *DescribeLiveLazyPu
 }
 
 type DescribeLivePullStreamConfigRequest struct {
-	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	DomainName         *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	LiveapiRequestFrom *string `json:"LiveapiRequestFrom,omitempty" xml:"LiveapiRequestFrom,omitempty"`
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 }
 
 func (s DescribeLivePullStreamConfigRequest) String() string {
@@ -14225,11 +15541,6 @@ func (s *DescribeLivePullStreamConfigRequest) SetOwnerId(v int64) *DescribeLiveP
 
 func (s *DescribeLivePullStreamConfigRequest) SetDomainName(v string) *DescribeLivePullStreamConfigRequest {
 	s.DomainName = &v
-	return s
-}
-
-func (s *DescribeLivePullStreamConfigRequest) SetLiveapiRequestFrom(v string) *DescribeLivePullStreamConfigRequest {
-	s.LiveapiRequestFrom = &v
 	return s
 }
 
@@ -14391,8 +15702,8 @@ func (s *DescribeLiveRealtimeDeliveryAccRequest) SetLogStore(v string) *Describe
 }
 
 type DescribeLiveRealtimeDeliveryAccResponseBody struct {
-	RequestId               *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RealTimeDeliveryAccData *DescribeLiveRealtimeDeliveryAccResponseBodyRealTimeDeliveryAccData `json:"RealTimeDeliveryAccData,omitempty" xml:"RealTimeDeliveryAccData,omitempty" type:"Struct"`
+	RequestId               *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeLiveRealtimeDeliveryAccResponseBody) String() string {
@@ -14403,13 +15714,13 @@ func (s DescribeLiveRealtimeDeliveryAccResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeLiveRealtimeDeliveryAccResponseBody) SetRequestId(v string) *DescribeLiveRealtimeDeliveryAccResponseBody {
-	s.RequestId = &v
+func (s *DescribeLiveRealtimeDeliveryAccResponseBody) SetRealTimeDeliveryAccData(v *DescribeLiveRealtimeDeliveryAccResponseBodyRealTimeDeliveryAccData) *DescribeLiveRealtimeDeliveryAccResponseBody {
+	s.RealTimeDeliveryAccData = v
 	return s
 }
 
-func (s *DescribeLiveRealtimeDeliveryAccResponseBody) SetRealTimeDeliveryAccData(v *DescribeLiveRealtimeDeliveryAccResponseBodyRealTimeDeliveryAccData) *DescribeLiveRealtimeDeliveryAccResponseBody {
-	s.RealTimeDeliveryAccData = v
+func (s *DescribeLiveRealtimeDeliveryAccResponseBody) SetRequestId(v string) *DescribeLiveRealtimeDeliveryAccResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -14431,9 +15742,9 @@ func (s *DescribeLiveRealtimeDeliveryAccResponseBodyRealTimeDeliveryAccData) Set
 }
 
 type DescribeLiveRealtimeDeliveryAccResponseBodyRealTimeDeliveryAccDataAccData struct {
+	FailedNum  *int32  `json:"FailedNum,omitempty" xml:"FailedNum,omitempty"`
 	TimeStamp  *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 	SuccessNum *int32  `json:"SuccessNum,omitempty" xml:"SuccessNum,omitempty"`
-	FailedNum  *int32  `json:"FailedNum,omitempty" xml:"FailedNum,omitempty"`
 }
 
 func (s DescribeLiveRealtimeDeliveryAccResponseBodyRealTimeDeliveryAccDataAccData) String() string {
@@ -14444,6 +15755,11 @@ func (s DescribeLiveRealtimeDeliveryAccResponseBodyRealTimeDeliveryAccDataAccDat
 	return s.String()
 }
 
+func (s *DescribeLiveRealtimeDeliveryAccResponseBodyRealTimeDeliveryAccDataAccData) SetFailedNum(v int32) *DescribeLiveRealtimeDeliveryAccResponseBodyRealTimeDeliveryAccDataAccData {
+	s.FailedNum = &v
+	return s
+}
+
 func (s *DescribeLiveRealtimeDeliveryAccResponseBodyRealTimeDeliveryAccDataAccData) SetTimeStamp(v string) *DescribeLiveRealtimeDeliveryAccResponseBodyRealTimeDeliveryAccDataAccData {
 	s.TimeStamp = &v
 	return s
@@ -14451,11 +15767,6 @@ func (s *DescribeLiveRealtimeDeliveryAccResponseBodyRealTimeDeliveryAccDataAccDa
 
 func (s *DescribeLiveRealtimeDeliveryAccResponseBodyRealTimeDeliveryAccDataAccData) SetSuccessNum(v int32) *DescribeLiveRealtimeDeliveryAccResponseBodyRealTimeDeliveryAccDataAccData {
 	s.SuccessNum = &v
-	return s
-}
-
-func (s *DescribeLiveRealtimeDeliveryAccResponseBodyRealTimeDeliveryAccDataAccData) SetFailedNum(v int32) *DescribeLiveRealtimeDeliveryAccResponseBodyRealTimeDeliveryAccDataAccData {
-	s.FailedNum = &v
 	return s
 }
 
@@ -14506,8 +15817,8 @@ func (s *DescribeLiveRealtimeLogAuthorizedRequest) SetLiveOpenapiReserve(v strin
 }
 
 type DescribeLiveRealtimeLogAuthorizedResponseBody struct {
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	AuthorizedStatus *string `json:"AuthorizedStatus,omitempty" xml:"AuthorizedStatus,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeLiveRealtimeLogAuthorizedResponseBody) String() string {
@@ -14518,13 +15829,13 @@ func (s DescribeLiveRealtimeLogAuthorizedResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeLiveRealtimeLogAuthorizedResponseBody) SetRequestId(v string) *DescribeLiveRealtimeLogAuthorizedResponseBody {
-	s.RequestId = &v
+func (s *DescribeLiveRealtimeLogAuthorizedResponseBody) SetAuthorizedStatus(v string) *DescribeLiveRealtimeLogAuthorizedResponseBody {
+	s.AuthorizedStatus = &v
 	return s
 }
 
-func (s *DescribeLiveRealtimeLogAuthorizedResponseBody) SetAuthorizedStatus(v string) *DescribeLiveRealtimeLogAuthorizedResponseBody {
-	s.AuthorizedStatus = &v
+func (s *DescribeLiveRealtimeLogAuthorizedResponseBody) SetRequestId(v string) *DescribeLiveRealtimeLogAuthorizedResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -15119,6 +16430,127 @@ func (s *DescribeLiveRecordVodConfigsResponse) SetHeaders(v map[string]*string) 
 }
 
 func (s *DescribeLiveRecordVodConfigsResponse) SetBody(v *DescribeLiveRecordVodConfigsResponseBody) *DescribeLiveRecordVodConfigsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeLiveShiftConfigsRequest struct {
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+}
+
+func (s DescribeLiveShiftConfigsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLiveShiftConfigsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLiveShiftConfigsRequest) SetOwnerId(v int64) *DescribeLiveShiftConfigsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeLiveShiftConfigsRequest) SetDomainName(v string) *DescribeLiveShiftConfigsRequest {
+	s.DomainName = &v
+	return s
+}
+
+type DescribeLiveShiftConfigsResponseBody struct {
+	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Content   *DescribeLiveShiftConfigsResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+}
+
+func (s DescribeLiveShiftConfigsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLiveShiftConfigsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLiveShiftConfigsResponseBody) SetRequestId(v string) *DescribeLiveShiftConfigsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeLiveShiftConfigsResponseBody) SetContent(v *DescribeLiveShiftConfigsResponseBodyContent) *DescribeLiveShiftConfigsResponseBody {
+	s.Content = v
+	return s
+}
+
+type DescribeLiveShiftConfigsResponseBodyContent struct {
+	Config []*DescribeLiveShiftConfigsResponseBodyContentConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Repeated"`
+}
+
+func (s DescribeLiveShiftConfigsResponseBodyContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLiveShiftConfigsResponseBodyContent) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLiveShiftConfigsResponseBodyContent) SetConfig(v []*DescribeLiveShiftConfigsResponseBodyContentConfig) *DescribeLiveShiftConfigsResponseBodyContent {
+	s.Config = v
+	return s
+}
+
+type DescribeLiveShiftConfigsResponseBodyContentConfig struct {
+	AppName    *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	Vision     *int32  `json:"Vision,omitempty" xml:"Vision,omitempty"`
+	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+}
+
+func (s DescribeLiveShiftConfigsResponseBodyContentConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLiveShiftConfigsResponseBodyContentConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLiveShiftConfigsResponseBodyContentConfig) SetAppName(v string) *DescribeLiveShiftConfigsResponseBodyContentConfig {
+	s.AppName = &v
+	return s
+}
+
+func (s *DescribeLiveShiftConfigsResponseBodyContentConfig) SetVision(v int32) *DescribeLiveShiftConfigsResponseBodyContentConfig {
+	s.Vision = &v
+	return s
+}
+
+func (s *DescribeLiveShiftConfigsResponseBodyContentConfig) SetStreamName(v string) *DescribeLiveShiftConfigsResponseBodyContentConfig {
+	s.StreamName = &v
+	return s
+}
+
+func (s *DescribeLiveShiftConfigsResponseBodyContentConfig) SetDomainName(v string) *DescribeLiveShiftConfigsResponseBodyContentConfig {
+	s.DomainName = &v
+	return s
+}
+
+type DescribeLiveShiftConfigsResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeLiveShiftConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeLiveShiftConfigsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLiveShiftConfigsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLiveShiftConfigsResponse) SetHeaders(v map[string]*string) *DescribeLiveShiftConfigsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeLiveShiftConfigsResponse) SetBody(v *DescribeLiveShiftConfigsResponseBody) *DescribeLiveShiftConfigsResponse {
 	s.Body = v
 	return s
 }
@@ -15898,10 +17330,10 @@ func (s *DescribeLiveStreamDelayConfigRequest) SetDomainName(v string) *Describe
 }
 
 type DescribeLiveStreamDelayConfigResponseBody struct {
-	RequestId                 *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	LiveStreamHlsDelayConfig  *DescribeLiveStreamDelayConfigResponseBodyLiveStreamHlsDelayConfig  `json:"LiveStreamHlsDelayConfig,omitempty" xml:"LiveStreamHlsDelayConfig,omitempty" type:"Struct"`
 	LiveStreamFlvDelayConfig  *DescribeLiveStreamDelayConfigResponseBodyLiveStreamFlvDelayConfig  `json:"LiveStreamFlvDelayConfig,omitempty" xml:"LiveStreamFlvDelayConfig,omitempty" type:"Struct"`
 	LiveStreamRtmpDelayConfig *DescribeLiveStreamDelayConfigResponseBodyLiveStreamRtmpDelayConfig `json:"LiveStreamRtmpDelayConfig,omitempty" xml:"LiveStreamRtmpDelayConfig,omitempty" type:"Struct"`
+	RequestId                 *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	LiveStreamHlsDelayConfig  *DescribeLiveStreamDelayConfigResponseBodyLiveStreamHlsDelayConfig  `json:"LiveStreamHlsDelayConfig,omitempty" xml:"LiveStreamHlsDelayConfig,omitempty" type:"Struct"`
 }
 
 func (s DescribeLiveStreamDelayConfigResponseBody) String() string {
@@ -15910,16 +17342,6 @@ func (s DescribeLiveStreamDelayConfigResponseBody) String() string {
 
 func (s DescribeLiveStreamDelayConfigResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeLiveStreamDelayConfigResponseBody) SetRequestId(v string) *DescribeLiveStreamDelayConfigResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeLiveStreamDelayConfigResponseBody) SetLiveStreamHlsDelayConfig(v *DescribeLiveStreamDelayConfigResponseBodyLiveStreamHlsDelayConfig) *DescribeLiveStreamDelayConfigResponseBody {
-	s.LiveStreamHlsDelayConfig = v
-	return s
 }
 
 func (s *DescribeLiveStreamDelayConfigResponseBody) SetLiveStreamFlvDelayConfig(v *DescribeLiveStreamDelayConfigResponseBodyLiveStreamFlvDelayConfig) *DescribeLiveStreamDelayConfigResponseBody {
@@ -15932,32 +17354,19 @@ func (s *DescribeLiveStreamDelayConfigResponseBody) SetLiveStreamRtmpDelayConfig
 	return s
 }
 
-type DescribeLiveStreamDelayConfigResponseBodyLiveStreamHlsDelayConfig struct {
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	Delay *int32  `json:"Delay,omitempty" xml:"Delay,omitempty"`
-}
-
-func (s DescribeLiveStreamDelayConfigResponseBodyLiveStreamHlsDelayConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLiveStreamDelayConfigResponseBodyLiveStreamHlsDelayConfig) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLiveStreamDelayConfigResponseBodyLiveStreamHlsDelayConfig) SetLevel(v string) *DescribeLiveStreamDelayConfigResponseBodyLiveStreamHlsDelayConfig {
-	s.Level = &v
+func (s *DescribeLiveStreamDelayConfigResponseBody) SetRequestId(v string) *DescribeLiveStreamDelayConfigResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *DescribeLiveStreamDelayConfigResponseBodyLiveStreamHlsDelayConfig) SetDelay(v int32) *DescribeLiveStreamDelayConfigResponseBodyLiveStreamHlsDelayConfig {
-	s.Delay = &v
+func (s *DescribeLiveStreamDelayConfigResponseBody) SetLiveStreamHlsDelayConfig(v *DescribeLiveStreamDelayConfigResponseBodyLiveStreamHlsDelayConfig) *DescribeLiveStreamDelayConfigResponseBody {
+	s.LiveStreamHlsDelayConfig = v
 	return s
 }
 
 type DescribeLiveStreamDelayConfigResponseBodyLiveStreamFlvDelayConfig struct {
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
 	Delay *int32  `json:"Delay,omitempty" xml:"Delay,omitempty"`
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
 }
 
 func (s DescribeLiveStreamDelayConfigResponseBodyLiveStreamFlvDelayConfig) String() string {
@@ -15968,19 +17377,19 @@ func (s DescribeLiveStreamDelayConfigResponseBodyLiveStreamFlvDelayConfig) GoStr
 	return s.String()
 }
 
-func (s *DescribeLiveStreamDelayConfigResponseBodyLiveStreamFlvDelayConfig) SetLevel(v string) *DescribeLiveStreamDelayConfigResponseBodyLiveStreamFlvDelayConfig {
-	s.Level = &v
-	return s
-}
-
 func (s *DescribeLiveStreamDelayConfigResponseBodyLiveStreamFlvDelayConfig) SetDelay(v int32) *DescribeLiveStreamDelayConfigResponseBodyLiveStreamFlvDelayConfig {
 	s.Delay = &v
 	return s
 }
 
+func (s *DescribeLiveStreamDelayConfigResponseBodyLiveStreamFlvDelayConfig) SetLevel(v string) *DescribeLiveStreamDelayConfigResponseBodyLiveStreamFlvDelayConfig {
+	s.Level = &v
+	return s
+}
+
 type DescribeLiveStreamDelayConfigResponseBodyLiveStreamRtmpDelayConfig struct {
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
 	Delay *int32  `json:"Delay,omitempty" xml:"Delay,omitempty"`
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
 }
 
 func (s DescribeLiveStreamDelayConfigResponseBodyLiveStreamRtmpDelayConfig) String() string {
@@ -15991,13 +17400,36 @@ func (s DescribeLiveStreamDelayConfigResponseBodyLiveStreamRtmpDelayConfig) GoSt
 	return s.String()
 }
 
+func (s *DescribeLiveStreamDelayConfigResponseBodyLiveStreamRtmpDelayConfig) SetDelay(v int32) *DescribeLiveStreamDelayConfigResponseBodyLiveStreamRtmpDelayConfig {
+	s.Delay = &v
+	return s
+}
+
 func (s *DescribeLiveStreamDelayConfigResponseBodyLiveStreamRtmpDelayConfig) SetLevel(v string) *DescribeLiveStreamDelayConfigResponseBodyLiveStreamRtmpDelayConfig {
 	s.Level = &v
 	return s
 }
 
-func (s *DescribeLiveStreamDelayConfigResponseBodyLiveStreamRtmpDelayConfig) SetDelay(v int32) *DescribeLiveStreamDelayConfigResponseBodyLiveStreamRtmpDelayConfig {
+type DescribeLiveStreamDelayConfigResponseBodyLiveStreamHlsDelayConfig struct {
+	Delay *int32  `json:"Delay,omitempty" xml:"Delay,omitempty"`
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+}
+
+func (s DescribeLiveStreamDelayConfigResponseBodyLiveStreamHlsDelayConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLiveStreamDelayConfigResponseBodyLiveStreamHlsDelayConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLiveStreamDelayConfigResponseBodyLiveStreamHlsDelayConfig) SetDelay(v int32) *DescribeLiveStreamDelayConfigResponseBodyLiveStreamHlsDelayConfig {
 	s.Delay = &v
+	return s
+}
+
+func (s *DescribeLiveStreamDelayConfigResponseBodyLiveStreamHlsDelayConfig) SetLevel(v string) *DescribeLiveStreamDelayConfigResponseBodyLiveStreamHlsDelayConfig {
+	s.Level = &v
 	return s
 }
 
@@ -16163,157 +17595,6 @@ func (s *DescribeLiveStreamHistoryUserNumResponse) SetBody(v *DescribeLiveStream
 	return s
 }
 
-type DescribeLiveStreamOnlineUserNumRequest struct {
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	AppName       *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	StreamName    *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
-	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-}
-
-func (s DescribeLiveStreamOnlineUserNumRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLiveStreamOnlineUserNumRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLiveStreamOnlineUserNumRequest) SetSecurityToken(v string) *DescribeLiveStreamOnlineUserNumRequest {
-	s.SecurityToken = &v
-	return s
-}
-
-func (s *DescribeLiveStreamOnlineUserNumRequest) SetOwnerId(v int64) *DescribeLiveStreamOnlineUserNumRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeLiveStreamOnlineUserNumRequest) SetDomainName(v string) *DescribeLiveStreamOnlineUserNumRequest {
-	s.DomainName = &v
-	return s
-}
-
-func (s *DescribeLiveStreamOnlineUserNumRequest) SetAppName(v string) *DescribeLiveStreamOnlineUserNumRequest {
-	s.AppName = &v
-	return s
-}
-
-func (s *DescribeLiveStreamOnlineUserNumRequest) SetStreamName(v string) *DescribeLiveStreamOnlineUserNumRequest {
-	s.StreamName = &v
-	return s
-}
-
-func (s *DescribeLiveStreamOnlineUserNumRequest) SetStartTime(v string) *DescribeLiveStreamOnlineUserNumRequest {
-	s.StartTime = &v
-	return s
-}
-
-func (s *DescribeLiveStreamOnlineUserNumRequest) SetEndTime(v string) *DescribeLiveStreamOnlineUserNumRequest {
-	s.EndTime = &v
-	return s
-}
-
-type DescribeLiveStreamOnlineUserNumResponseBody struct {
-	OnlineUserInfo  *DescribeLiveStreamOnlineUserNumResponseBodyOnlineUserInfo `json:"OnlineUserInfo,omitempty" xml:"OnlineUserInfo,omitempty" type:"Struct"`
-	RequestId       *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalUserNumber *int64                                                     `json:"TotalUserNumber,omitempty" xml:"TotalUserNumber,omitempty"`
-}
-
-func (s DescribeLiveStreamOnlineUserNumResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLiveStreamOnlineUserNumResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLiveStreamOnlineUserNumResponseBody) SetOnlineUserInfo(v *DescribeLiveStreamOnlineUserNumResponseBodyOnlineUserInfo) *DescribeLiveStreamOnlineUserNumResponseBody {
-	s.OnlineUserInfo = v
-	return s
-}
-
-func (s *DescribeLiveStreamOnlineUserNumResponseBody) SetRequestId(v string) *DescribeLiveStreamOnlineUserNumResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeLiveStreamOnlineUserNumResponseBody) SetTotalUserNumber(v int64) *DescribeLiveStreamOnlineUserNumResponseBody {
-	s.TotalUserNumber = &v
-	return s
-}
-
-type DescribeLiveStreamOnlineUserNumResponseBodyOnlineUserInfo struct {
-	LiveStreamOnlineUserNumInfo []*DescribeLiveStreamOnlineUserNumResponseBodyOnlineUserInfoLiveStreamOnlineUserNumInfo `json:"LiveStreamOnlineUserNumInfo,omitempty" xml:"LiveStreamOnlineUserNumInfo,omitempty" type:"Repeated"`
-}
-
-func (s DescribeLiveStreamOnlineUserNumResponseBodyOnlineUserInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLiveStreamOnlineUserNumResponseBodyOnlineUserInfo) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLiveStreamOnlineUserNumResponseBodyOnlineUserInfo) SetLiveStreamOnlineUserNumInfo(v []*DescribeLiveStreamOnlineUserNumResponseBodyOnlineUserInfoLiveStreamOnlineUserNumInfo) *DescribeLiveStreamOnlineUserNumResponseBodyOnlineUserInfo {
-	s.LiveStreamOnlineUserNumInfo = v
-	return s
-}
-
-type DescribeLiveStreamOnlineUserNumResponseBodyOnlineUserInfoLiveStreamOnlineUserNumInfo struct {
-	Time       *string `json:"Time,omitempty" xml:"Time,omitempty"`
-	UserNumber *int64  `json:"UserNumber,omitempty" xml:"UserNumber,omitempty"`
-	StreamUrl  *string `json:"StreamUrl,omitempty" xml:"StreamUrl,omitempty"`
-}
-
-func (s DescribeLiveStreamOnlineUserNumResponseBodyOnlineUserInfoLiveStreamOnlineUserNumInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLiveStreamOnlineUserNumResponseBodyOnlineUserInfoLiveStreamOnlineUserNumInfo) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLiveStreamOnlineUserNumResponseBodyOnlineUserInfoLiveStreamOnlineUserNumInfo) SetTime(v string) *DescribeLiveStreamOnlineUserNumResponseBodyOnlineUserInfoLiveStreamOnlineUserNumInfo {
-	s.Time = &v
-	return s
-}
-
-func (s *DescribeLiveStreamOnlineUserNumResponseBodyOnlineUserInfoLiveStreamOnlineUserNumInfo) SetUserNumber(v int64) *DescribeLiveStreamOnlineUserNumResponseBodyOnlineUserInfoLiveStreamOnlineUserNumInfo {
-	s.UserNumber = &v
-	return s
-}
-
-func (s *DescribeLiveStreamOnlineUserNumResponseBodyOnlineUserInfoLiveStreamOnlineUserNumInfo) SetStreamUrl(v string) *DescribeLiveStreamOnlineUserNumResponseBodyOnlineUserInfoLiveStreamOnlineUserNumInfo {
-	s.StreamUrl = &v
-	return s
-}
-
-type DescribeLiveStreamOnlineUserNumResponse struct {
-	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeLiveStreamOnlineUserNumResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeLiveStreamOnlineUserNumResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLiveStreamOnlineUserNumResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLiveStreamOnlineUserNumResponse) SetHeaders(v map[string]*string) *DescribeLiveStreamOnlineUserNumResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeLiveStreamOnlineUserNumResponse) SetBody(v *DescribeLiveStreamOnlineUserNumResponseBody) *DescribeLiveStreamOnlineUserNumResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeLiveStreamOptimizedFeatureConfigRequest struct {
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
@@ -16384,10 +17665,10 @@ func (s *DescribeLiveStreamOptimizedFeatureConfigResponseBodyLiveStreamOptimized
 }
 
 type DescribeLiveStreamOptimizedFeatureConfigResponseBodyLiveStreamOptimizedFeatureConfigListLiveStreamOptimizedFeatureConfig struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	ConfigName   *string `json:"ConfigName,omitempty" xml:"ConfigName,omitempty"`
-	ConfigStatus *string `json:"ConfigStatus,omitempty" xml:"ConfigStatus,omitempty"`
 	ConfigValue  *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	ConfigStatus *string `json:"ConfigStatus,omitempty" xml:"ConfigStatus,omitempty"`
+	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 }
 
 func (s DescribeLiveStreamOptimizedFeatureConfigResponseBodyLiveStreamOptimizedFeatureConfigListLiveStreamOptimizedFeatureConfig) String() string {
@@ -16398,13 +17679,13 @@ func (s DescribeLiveStreamOptimizedFeatureConfigResponseBodyLiveStreamOptimizedF
 	return s.String()
 }
 
-func (s *DescribeLiveStreamOptimizedFeatureConfigResponseBodyLiveStreamOptimizedFeatureConfigListLiveStreamOptimizedFeatureConfig) SetDomainName(v string) *DescribeLiveStreamOptimizedFeatureConfigResponseBodyLiveStreamOptimizedFeatureConfigListLiveStreamOptimizedFeatureConfig {
-	s.DomainName = &v
+func (s *DescribeLiveStreamOptimizedFeatureConfigResponseBodyLiveStreamOptimizedFeatureConfigListLiveStreamOptimizedFeatureConfig) SetConfigName(v string) *DescribeLiveStreamOptimizedFeatureConfigResponseBodyLiveStreamOptimizedFeatureConfigListLiveStreamOptimizedFeatureConfig {
+	s.ConfigName = &v
 	return s
 }
 
-func (s *DescribeLiveStreamOptimizedFeatureConfigResponseBodyLiveStreamOptimizedFeatureConfigListLiveStreamOptimizedFeatureConfig) SetConfigName(v string) *DescribeLiveStreamOptimizedFeatureConfigResponseBodyLiveStreamOptimizedFeatureConfigListLiveStreamOptimizedFeatureConfig {
-	s.ConfigName = &v
+func (s *DescribeLiveStreamOptimizedFeatureConfigResponseBodyLiveStreamOptimizedFeatureConfigListLiveStreamOptimizedFeatureConfig) SetConfigValue(v string) *DescribeLiveStreamOptimizedFeatureConfigResponseBodyLiveStreamOptimizedFeatureConfigListLiveStreamOptimizedFeatureConfig {
+	s.ConfigValue = &v
 	return s
 }
 
@@ -16413,8 +17694,8 @@ func (s *DescribeLiveStreamOptimizedFeatureConfigResponseBodyLiveStreamOptimized
 	return s
 }
 
-func (s *DescribeLiveStreamOptimizedFeatureConfigResponseBodyLiveStreamOptimizedFeatureConfigListLiveStreamOptimizedFeatureConfig) SetConfigValue(v string) *DescribeLiveStreamOptimizedFeatureConfigResponseBodyLiveStreamOptimizedFeatureConfigListLiveStreamOptimizedFeatureConfig {
-	s.ConfigValue = &v
+func (s *DescribeLiveStreamOptimizedFeatureConfigResponseBodyLiveStreamOptimizedFeatureConfigListLiveStreamOptimizedFeatureConfig) SetDomainName(v string) *DescribeLiveStreamOptimizedFeatureConfigResponseBodyLiveStreamOptimizedFeatureConfigListLiveStreamOptimizedFeatureConfig {
+	s.DomainName = &v
 	return s
 }
 
@@ -17191,8 +18472,6 @@ type DescribeLiveStreamsControlHistoryRequest struct {
 	AppName    *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Page       *int32  `json:"Page,omitempty" xml:"Page,omitempty"`
-	Rows       *int32  `json:"Rows,omitempty" xml:"Rows,omitempty"`
 }
 
 func (s DescribeLiveStreamsControlHistoryRequest) String() string {
@@ -17225,16 +18504,6 @@ func (s *DescribeLiveStreamsControlHistoryRequest) SetStartTime(v string) *Descr
 
 func (s *DescribeLiveStreamsControlHistoryRequest) SetEndTime(v string) *DescribeLiveStreamsControlHistoryRequest {
 	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeLiveStreamsControlHistoryRequest) SetPage(v int32) *DescribeLiveStreamsControlHistoryRequest {
-	s.Page = &v
-	return s
-}
-
-func (s *DescribeLiveStreamsControlHistoryRequest) SetRows(v int32) *DescribeLiveStreamsControlHistoryRequest {
-	s.Rows = &v
 	return s
 }
 
@@ -17332,163 +18601,6 @@ func (s *DescribeLiveStreamsControlHistoryResponse) SetHeaders(v map[string]*str
 }
 
 func (s *DescribeLiveStreamsControlHistoryResponse) SetBody(v *DescribeLiveStreamsControlHistoryResponseBody) *DescribeLiveStreamsControlHistoryResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeLiveStreamsFrameRateAndBitRateDataRequest struct {
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	AppName       *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	StreamName    *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
-	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-}
-
-func (s DescribeLiveStreamsFrameRateAndBitRateDataRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLiveStreamsFrameRateAndBitRateDataRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLiveStreamsFrameRateAndBitRateDataRequest) SetSecurityToken(v string) *DescribeLiveStreamsFrameRateAndBitRateDataRequest {
-	s.SecurityToken = &v
-	return s
-}
-
-func (s *DescribeLiveStreamsFrameRateAndBitRateDataRequest) SetOwnerId(v int64) *DescribeLiveStreamsFrameRateAndBitRateDataRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeLiveStreamsFrameRateAndBitRateDataRequest) SetDomainName(v string) *DescribeLiveStreamsFrameRateAndBitRateDataRequest {
-	s.DomainName = &v
-	return s
-}
-
-func (s *DescribeLiveStreamsFrameRateAndBitRateDataRequest) SetAppName(v string) *DescribeLiveStreamsFrameRateAndBitRateDataRequest {
-	s.AppName = &v
-	return s
-}
-
-func (s *DescribeLiveStreamsFrameRateAndBitRateDataRequest) SetStreamName(v string) *DescribeLiveStreamsFrameRateAndBitRateDataRequest {
-	s.StreamName = &v
-	return s
-}
-
-func (s *DescribeLiveStreamsFrameRateAndBitRateDataRequest) SetStartTime(v string) *DescribeLiveStreamsFrameRateAndBitRateDataRequest {
-	s.StartTime = &v
-	return s
-}
-
-func (s *DescribeLiveStreamsFrameRateAndBitRateDataRequest) SetEndTime(v string) *DescribeLiveStreamsFrameRateAndBitRateDataRequest {
-	s.EndTime = &v
-	return s
-}
-
-type DescribeLiveStreamsFrameRateAndBitRateDataResponseBody struct {
-	RequestId                *string                                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	FrameRateAndBitRateInfos *DescribeLiveStreamsFrameRateAndBitRateDataResponseBodyFrameRateAndBitRateInfos `json:"FrameRateAndBitRateInfos,omitempty" xml:"FrameRateAndBitRateInfos,omitempty" type:"Struct"`
-}
-
-func (s DescribeLiveStreamsFrameRateAndBitRateDataResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLiveStreamsFrameRateAndBitRateDataResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLiveStreamsFrameRateAndBitRateDataResponseBody) SetRequestId(v string) *DescribeLiveStreamsFrameRateAndBitRateDataResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeLiveStreamsFrameRateAndBitRateDataResponseBody) SetFrameRateAndBitRateInfos(v *DescribeLiveStreamsFrameRateAndBitRateDataResponseBodyFrameRateAndBitRateInfos) *DescribeLiveStreamsFrameRateAndBitRateDataResponseBody {
-	s.FrameRateAndBitRateInfos = v
-	return s
-}
-
-type DescribeLiveStreamsFrameRateAndBitRateDataResponseBodyFrameRateAndBitRateInfos struct {
-	FrameRateAndBitRateInfo []*DescribeLiveStreamsFrameRateAndBitRateDataResponseBodyFrameRateAndBitRateInfosFrameRateAndBitRateInfo `json:"FrameRateAndBitRateInfo,omitempty" xml:"FrameRateAndBitRateInfo,omitempty" type:"Repeated"`
-}
-
-func (s DescribeLiveStreamsFrameRateAndBitRateDataResponseBodyFrameRateAndBitRateInfos) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLiveStreamsFrameRateAndBitRateDataResponseBodyFrameRateAndBitRateInfos) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLiveStreamsFrameRateAndBitRateDataResponseBodyFrameRateAndBitRateInfos) SetFrameRateAndBitRateInfo(v []*DescribeLiveStreamsFrameRateAndBitRateDataResponseBodyFrameRateAndBitRateInfosFrameRateAndBitRateInfo) *DescribeLiveStreamsFrameRateAndBitRateDataResponseBodyFrameRateAndBitRateInfos {
-	s.FrameRateAndBitRateInfo = v
-	return s
-}
-
-type DescribeLiveStreamsFrameRateAndBitRateDataResponseBodyFrameRateAndBitRateInfosFrameRateAndBitRateInfo struct {
-	Time           *string  `json:"Time,omitempty" xml:"Time,omitempty"`
-	AudioFrameRate *float32 `json:"AudioFrameRate,omitempty" xml:"AudioFrameRate,omitempty"`
-	VideoFrameRate *float32 `json:"VideoFrameRate,omitempty" xml:"VideoFrameRate,omitempty"`
-	StreamUrl      *string  `json:"StreamUrl,omitempty" xml:"StreamUrl,omitempty"`
-	BitRate        *float32 `json:"BitRate,omitempty" xml:"BitRate,omitempty"`
-}
-
-func (s DescribeLiveStreamsFrameRateAndBitRateDataResponseBodyFrameRateAndBitRateInfosFrameRateAndBitRateInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLiveStreamsFrameRateAndBitRateDataResponseBodyFrameRateAndBitRateInfosFrameRateAndBitRateInfo) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLiveStreamsFrameRateAndBitRateDataResponseBodyFrameRateAndBitRateInfosFrameRateAndBitRateInfo) SetTime(v string) *DescribeLiveStreamsFrameRateAndBitRateDataResponseBodyFrameRateAndBitRateInfosFrameRateAndBitRateInfo {
-	s.Time = &v
-	return s
-}
-
-func (s *DescribeLiveStreamsFrameRateAndBitRateDataResponseBodyFrameRateAndBitRateInfosFrameRateAndBitRateInfo) SetAudioFrameRate(v float32) *DescribeLiveStreamsFrameRateAndBitRateDataResponseBodyFrameRateAndBitRateInfosFrameRateAndBitRateInfo {
-	s.AudioFrameRate = &v
-	return s
-}
-
-func (s *DescribeLiveStreamsFrameRateAndBitRateDataResponseBodyFrameRateAndBitRateInfosFrameRateAndBitRateInfo) SetVideoFrameRate(v float32) *DescribeLiveStreamsFrameRateAndBitRateDataResponseBodyFrameRateAndBitRateInfosFrameRateAndBitRateInfo {
-	s.VideoFrameRate = &v
-	return s
-}
-
-func (s *DescribeLiveStreamsFrameRateAndBitRateDataResponseBodyFrameRateAndBitRateInfosFrameRateAndBitRateInfo) SetStreamUrl(v string) *DescribeLiveStreamsFrameRateAndBitRateDataResponseBodyFrameRateAndBitRateInfosFrameRateAndBitRateInfo {
-	s.StreamUrl = &v
-	return s
-}
-
-func (s *DescribeLiveStreamsFrameRateAndBitRateDataResponseBodyFrameRateAndBitRateInfosFrameRateAndBitRateInfo) SetBitRate(v float32) *DescribeLiveStreamsFrameRateAndBitRateDataResponseBodyFrameRateAndBitRateInfosFrameRateAndBitRateInfo {
-	s.BitRate = &v
-	return s
-}
-
-type DescribeLiveStreamsFrameRateAndBitRateDataResponse struct {
-	Headers map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeLiveStreamsFrameRateAndBitRateDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeLiveStreamsFrameRateAndBitRateDataResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLiveStreamsFrameRateAndBitRateDataResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLiveStreamsFrameRateAndBitRateDataResponse) SetHeaders(v map[string]*string) *DescribeLiveStreamsFrameRateAndBitRateDataResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeLiveStreamsFrameRateAndBitRateDataResponse) SetBody(v *DescribeLiveStreamsFrameRateAndBitRateDataResponseBody) *DescribeLiveStreamsFrameRateAndBitRateDataResponse {
 	s.Body = v
 	return s
 }
@@ -17762,10 +18874,7 @@ type DescribeLiveStreamsOnlineListRequest struct {
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PageNum    *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	StreamType *string `json:"StreamType,omitempty" xml:"StreamType,omitempty"`
-	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	QueryType  *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
-	OrderBy    *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 }
 
 func (s DescribeLiveStreamsOnlineListRequest) String() string {
@@ -17811,23 +18920,8 @@ func (s *DescribeLiveStreamsOnlineListRequest) SetStreamType(v string) *Describe
 	return s
 }
 
-func (s *DescribeLiveStreamsOnlineListRequest) SetStartTime(v string) *DescribeLiveStreamsOnlineListRequest {
-	s.StartTime = &v
-	return s
-}
-
-func (s *DescribeLiveStreamsOnlineListRequest) SetEndTime(v string) *DescribeLiveStreamsOnlineListRequest {
-	s.EndTime = &v
-	return s
-}
-
 func (s *DescribeLiveStreamsOnlineListRequest) SetQueryType(v string) *DescribeLiveStreamsOnlineListRequest {
 	s.QueryType = &v
-	return s
-}
-
-func (s *DescribeLiveStreamsOnlineListRequest) SetOrderBy(v string) *DescribeLiveStreamsOnlineListRequest {
-	s.OrderBy = &v
 	return s
 }
 
@@ -18493,11 +19587,11 @@ func (s *DescribeLiveStreamTranscodeStreamNumRequest) SetDomainName(v string) *D
 }
 
 type DescribeLiveStreamTranscodeStreamNumResponseBody struct {
-	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total                *int64  `json:"Total,omitempty" xml:"Total,omitempty"`
-	TranscodedNumber     *int64  `json:"TranscodedNumber,omitempty" xml:"TranscodedNumber,omitempty"`
 	UntranscodeNumber    *int64  `json:"UntranscodeNumber,omitempty" xml:"UntranscodeNumber,omitempty"`
 	LazyTranscodedNumber *int64  `json:"LazyTranscodedNumber,omitempty" xml:"LazyTranscodedNumber,omitempty"`
+	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TranscodedNumber     *int64  `json:"TranscodedNumber,omitempty" xml:"TranscodedNumber,omitempty"`
+	Total                *int64  `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeLiveStreamTranscodeStreamNumResponseBody) String() string {
@@ -18508,13 +19602,18 @@ func (s DescribeLiveStreamTranscodeStreamNumResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeLiveStreamTranscodeStreamNumResponseBody) SetRequestId(v string) *DescribeLiveStreamTranscodeStreamNumResponseBody {
-	s.RequestId = &v
+func (s *DescribeLiveStreamTranscodeStreamNumResponseBody) SetUntranscodeNumber(v int64) *DescribeLiveStreamTranscodeStreamNumResponseBody {
+	s.UntranscodeNumber = &v
 	return s
 }
 
-func (s *DescribeLiveStreamTranscodeStreamNumResponseBody) SetTotal(v int64) *DescribeLiveStreamTranscodeStreamNumResponseBody {
-	s.Total = &v
+func (s *DescribeLiveStreamTranscodeStreamNumResponseBody) SetLazyTranscodedNumber(v int64) *DescribeLiveStreamTranscodeStreamNumResponseBody {
+	s.LazyTranscodedNumber = &v
+	return s
+}
+
+func (s *DescribeLiveStreamTranscodeStreamNumResponseBody) SetRequestId(v string) *DescribeLiveStreamTranscodeStreamNumResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -18523,13 +19622,8 @@ func (s *DescribeLiveStreamTranscodeStreamNumResponseBody) SetTranscodedNumber(v
 	return s
 }
 
-func (s *DescribeLiveStreamTranscodeStreamNumResponseBody) SetUntranscodeNumber(v int64) *DescribeLiveStreamTranscodeStreamNumResponseBody {
-	s.UntranscodeNumber = &v
-	return s
-}
-
-func (s *DescribeLiveStreamTranscodeStreamNumResponseBody) SetLazyTranscodedNumber(v int64) *DescribeLiveStreamTranscodeStreamNumResponseBody {
-	s.LazyTranscodedNumber = &v
+func (s *DescribeLiveStreamTranscodeStreamNumResponseBody) SetTotal(v int64) *DescribeLiveStreamTranscodeStreamNumResponseBody {
+	s.Total = &v
 	return s
 }
 
@@ -18558,10 +19652,9 @@ func (s *DescribeLiveStreamTranscodeStreamNumResponse) SetBody(v *DescribeLiveSt
 
 type DescribeLiveTagResourcesRequest struct {
 	OwnerId      *int64                                `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceId   []*string                             `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceType *string                               `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ResourceId   []*string                             `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	Tag          []*DescribeLiveTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	Scope        *string                               `json:"Scope,omitempty" xml:"Scope,omitempty"`
 }
 
 func (s DescribeLiveTagResourcesRequest) String() string {
@@ -18577,23 +19670,18 @@ func (s *DescribeLiveTagResourcesRequest) SetOwnerId(v int64) *DescribeLiveTagRe
 	return s
 }
 
-func (s *DescribeLiveTagResourcesRequest) SetResourceId(v []*string) *DescribeLiveTagResourcesRequest {
-	s.ResourceId = v
-	return s
-}
-
 func (s *DescribeLiveTagResourcesRequest) SetResourceType(v string) *DescribeLiveTagResourcesRequest {
 	s.ResourceType = &v
 	return s
 }
 
-func (s *DescribeLiveTagResourcesRequest) SetTag(v []*DescribeLiveTagResourcesRequestTag) *DescribeLiveTagResourcesRequest {
-	s.Tag = v
+func (s *DescribeLiveTagResourcesRequest) SetResourceId(v []*string) *DescribeLiveTagResourcesRequest {
+	s.ResourceId = v
 	return s
 }
 
-func (s *DescribeLiveTagResourcesRequest) SetScope(v string) *DescribeLiveTagResourcesRequest {
-	s.Scope = &v
+func (s *DescribeLiveTagResourcesRequest) SetTag(v []*DescribeLiveTagResourcesRequestTag) *DescribeLiveTagResourcesRequest {
+	s.Tag = v
 	return s
 }
 
@@ -18644,8 +19732,8 @@ func (s *DescribeLiveTagResourcesResponseBody) SetTagResources(v []*DescribeLive
 }
 
 type DescribeLiveTagResourcesResponseBodyTagResources struct {
-	ResourceId *string                                                `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	Tag        []*DescribeLiveTagResourcesResponseBodyTagResourcesTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceId *string                                                `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 }
 
 func (s DescribeLiveTagResourcesResponseBodyTagResources) String() string {
@@ -18656,13 +19744,13 @@ func (s DescribeLiveTagResourcesResponseBodyTagResources) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeLiveTagResourcesResponseBodyTagResources) SetResourceId(v string) *DescribeLiveTagResourcesResponseBodyTagResources {
-	s.ResourceId = &v
+func (s *DescribeLiveTagResourcesResponseBodyTagResources) SetTag(v []*DescribeLiveTagResourcesResponseBodyTagResourcesTag) *DescribeLiveTagResourcesResponseBodyTagResources {
+	s.Tag = v
 	return s
 }
 
-func (s *DescribeLiveTagResourcesResponseBodyTagResources) SetTag(v []*DescribeLiveTagResourcesResponseBodyTagResourcesTag) *DescribeLiveTagResourcesResponseBodyTagResources {
-	s.Tag = v
+func (s *DescribeLiveTagResourcesResponseBodyTagResources) SetResourceId(v string) *DescribeLiveTagResourcesResponseBodyTagResources {
+	s.ResourceId = &v
 	return s
 }
 
@@ -18748,12 +19836,12 @@ func (s *DescribeLiveTopDomainsByFlowRequest) SetLimit(v int64) *DescribeLiveTop
 }
 
 type DescribeLiveTopDomainsByFlowResponseBody struct {
-	RequestId         *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StartTime         *string                                             `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	EndTime           *string                                             `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	DomainCount       *int64                                              `json:"DomainCount,omitempty" xml:"DomainCount,omitempty"`
-	DomainOnlineCount *int64                                              `json:"DomainOnlineCount,omitempty" xml:"DomainOnlineCount,omitempty"`
 	TopDomains        *DescribeLiveTopDomainsByFlowResponseBodyTopDomains `json:"TopDomains,omitempty" xml:"TopDomains,omitempty" type:"Struct"`
+	EndTime           *string                                             `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	RequestId         *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	DomainOnlineCount *int64                                              `json:"DomainOnlineCount,omitempty" xml:"DomainOnlineCount,omitempty"`
+	StartTime         *string                                             `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	DomainCount       *int64                                              `json:"DomainCount,omitempty" xml:"DomainCount,omitempty"`
 }
 
 func (s DescribeLiveTopDomainsByFlowResponseBody) String() string {
@@ -18764,13 +19852,8 @@ func (s DescribeLiveTopDomainsByFlowResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeLiveTopDomainsByFlowResponseBody) SetRequestId(v string) *DescribeLiveTopDomainsByFlowResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeLiveTopDomainsByFlowResponseBody) SetStartTime(v string) *DescribeLiveTopDomainsByFlowResponseBody {
-	s.StartTime = &v
+func (s *DescribeLiveTopDomainsByFlowResponseBody) SetTopDomains(v *DescribeLiveTopDomainsByFlowResponseBodyTopDomains) *DescribeLiveTopDomainsByFlowResponseBody {
+	s.TopDomains = v
 	return s
 }
 
@@ -18779,8 +19862,8 @@ func (s *DescribeLiveTopDomainsByFlowResponseBody) SetEndTime(v string) *Describ
 	return s
 }
 
-func (s *DescribeLiveTopDomainsByFlowResponseBody) SetDomainCount(v int64) *DescribeLiveTopDomainsByFlowResponseBody {
-	s.DomainCount = &v
+func (s *DescribeLiveTopDomainsByFlowResponseBody) SetRequestId(v string) *DescribeLiveTopDomainsByFlowResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -18789,8 +19872,13 @@ func (s *DescribeLiveTopDomainsByFlowResponseBody) SetDomainOnlineCount(v int64)
 	return s
 }
 
-func (s *DescribeLiveTopDomainsByFlowResponseBody) SetTopDomains(v *DescribeLiveTopDomainsByFlowResponseBodyTopDomains) *DescribeLiveTopDomainsByFlowResponseBody {
-	s.TopDomains = v
+func (s *DescribeLiveTopDomainsByFlowResponseBody) SetStartTime(v string) *DescribeLiveTopDomainsByFlowResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeLiveTopDomainsByFlowResponseBody) SetDomainCount(v int64) *DescribeLiveTopDomainsByFlowResponseBody {
+	s.DomainCount = &v
 	return s
 }
 
@@ -18812,13 +19900,13 @@ func (s *DescribeLiveTopDomainsByFlowResponseBodyTopDomains) SetTopDomain(v []*D
 }
 
 type DescribeLiveTopDomainsByFlowResponseBodyTopDomainsTopDomain struct {
-	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Rank           *int64  `json:"Rank,omitempty" xml:"Rank,omitempty"`
-	TotalTraffic   *string `json:"TotalTraffic,omitempty" xml:"TotalTraffic,omitempty"`
-	TrafficPercent *string `json:"TrafficPercent,omitempty" xml:"TrafficPercent,omitempty"`
 	MaxBps         *int64  `json:"MaxBps,omitempty" xml:"MaxBps,omitempty"`
-	MaxBpsTime     *string `json:"MaxBpsTime,omitempty" xml:"MaxBpsTime,omitempty"`
+	Rank           *int64  `json:"Rank,omitempty" xml:"Rank,omitempty"`
 	TotalAccess    *int64  `json:"TotalAccess,omitempty" xml:"TotalAccess,omitempty"`
+	TrafficPercent *string `json:"TrafficPercent,omitempty" xml:"TrafficPercent,omitempty"`
+	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	TotalTraffic   *string `json:"TotalTraffic,omitempty" xml:"TotalTraffic,omitempty"`
+	MaxBpsTime     *string `json:"MaxBpsTime,omitempty" xml:"MaxBpsTime,omitempty"`
 }
 
 func (s DescribeLiveTopDomainsByFlowResponseBodyTopDomainsTopDomain) String() string {
@@ -18829,8 +19917,8 @@ func (s DescribeLiveTopDomainsByFlowResponseBodyTopDomainsTopDomain) GoString() 
 	return s.String()
 }
 
-func (s *DescribeLiveTopDomainsByFlowResponseBodyTopDomainsTopDomain) SetDomainName(v string) *DescribeLiveTopDomainsByFlowResponseBodyTopDomainsTopDomain {
-	s.DomainName = &v
+func (s *DescribeLiveTopDomainsByFlowResponseBodyTopDomainsTopDomain) SetMaxBps(v int64) *DescribeLiveTopDomainsByFlowResponseBodyTopDomainsTopDomain {
+	s.MaxBps = &v
 	return s
 }
 
@@ -18839,8 +19927,8 @@ func (s *DescribeLiveTopDomainsByFlowResponseBodyTopDomainsTopDomain) SetRank(v 
 	return s
 }
 
-func (s *DescribeLiveTopDomainsByFlowResponseBodyTopDomainsTopDomain) SetTotalTraffic(v string) *DescribeLiveTopDomainsByFlowResponseBodyTopDomainsTopDomain {
-	s.TotalTraffic = &v
+func (s *DescribeLiveTopDomainsByFlowResponseBodyTopDomainsTopDomain) SetTotalAccess(v int64) *DescribeLiveTopDomainsByFlowResponseBodyTopDomainsTopDomain {
+	s.TotalAccess = &v
 	return s
 }
 
@@ -18849,18 +19937,18 @@ func (s *DescribeLiveTopDomainsByFlowResponseBodyTopDomainsTopDomain) SetTraffic
 	return s
 }
 
-func (s *DescribeLiveTopDomainsByFlowResponseBodyTopDomainsTopDomain) SetMaxBps(v int64) *DescribeLiveTopDomainsByFlowResponseBodyTopDomainsTopDomain {
-	s.MaxBps = &v
+func (s *DescribeLiveTopDomainsByFlowResponseBodyTopDomainsTopDomain) SetDomainName(v string) *DescribeLiveTopDomainsByFlowResponseBodyTopDomainsTopDomain {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeLiveTopDomainsByFlowResponseBodyTopDomainsTopDomain) SetTotalTraffic(v string) *DescribeLiveTopDomainsByFlowResponseBodyTopDomainsTopDomain {
+	s.TotalTraffic = &v
 	return s
 }
 
 func (s *DescribeLiveTopDomainsByFlowResponseBodyTopDomainsTopDomain) SetMaxBpsTime(v string) *DescribeLiveTopDomainsByFlowResponseBodyTopDomainsTopDomain {
 	s.MaxBpsTime = &v
-	return s
-}
-
-func (s *DescribeLiveTopDomainsByFlowResponseBodyTopDomainsTopDomain) SetTotalAccess(v int64) *DescribeLiveTopDomainsByFlowResponseBodyTopDomainsTopDomain {
-	s.TotalAccess = &v
 	return s
 }
 
@@ -19488,17 +20576,17 @@ func (s *DescribeRecordRequest) SetRecordId(v string) *DescribeRecordRequest {
 }
 
 type DescribeRecordResponseBody struct {
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RecordId        *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	BoardId         *int32  `json:"BoardId,omitempty" xml:"BoardId,omitempty"`
-	RecordStartTime *int64  `json:"RecordStartTime,omitempty" xml:"RecordStartTime,omitempty"`
-	StartTime       *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	EndTime         *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	RecordStartTime *int64  `json:"RecordStartTime,omitempty" xml:"RecordStartTime,omitempty"`
+	OssEndpoint     *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
 	State           *int32  `json:"State,omitempty" xml:"State,omitempty"`
 	OssPath         *string `json:"OssPath,omitempty" xml:"OssPath,omitempty"`
+	StartTime       *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	OssBucket       *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	OssEndpoint     *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
+	RecordId        *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
 }
 
 func (s DescribeRecordResponseBody) String() string {
@@ -19509,13 +20597,18 @@ func (s DescribeRecordResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRecordResponseBody) SetRequestId(v string) *DescribeRecordResponseBody {
-	s.RequestId = &v
+func (s *DescribeRecordResponseBody) SetBoardId(v int32) *DescribeRecordResponseBody {
+	s.BoardId = &v
 	return s
 }
 
-func (s *DescribeRecordResponseBody) SetRecordId(v string) *DescribeRecordResponseBody {
-	s.RecordId = &v
+func (s *DescribeRecordResponseBody) SetEndTime(v int64) *DescribeRecordResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeRecordResponseBody) SetRequestId(v string) *DescribeRecordResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -19524,23 +20617,13 @@ func (s *DescribeRecordResponseBody) SetAppId(v string) *DescribeRecordResponseB
 	return s
 }
 
-func (s *DescribeRecordResponseBody) SetBoardId(v int32) *DescribeRecordResponseBody {
-	s.BoardId = &v
-	return s
-}
-
 func (s *DescribeRecordResponseBody) SetRecordStartTime(v int64) *DescribeRecordResponseBody {
 	s.RecordStartTime = &v
 	return s
 }
 
-func (s *DescribeRecordResponseBody) SetStartTime(v int64) *DescribeRecordResponseBody {
-	s.StartTime = &v
-	return s
-}
-
-func (s *DescribeRecordResponseBody) SetEndTime(v int64) *DescribeRecordResponseBody {
-	s.EndTime = &v
+func (s *DescribeRecordResponseBody) SetOssEndpoint(v string) *DescribeRecordResponseBody {
+	s.OssEndpoint = &v
 	return s
 }
 
@@ -19554,13 +20637,18 @@ func (s *DescribeRecordResponseBody) SetOssPath(v string) *DescribeRecordRespons
 	return s
 }
 
+func (s *DescribeRecordResponseBody) SetStartTime(v int64) *DescribeRecordResponseBody {
+	s.StartTime = &v
+	return s
+}
+
 func (s *DescribeRecordResponseBody) SetOssBucket(v string) *DescribeRecordResponseBody {
 	s.OssBucket = &v
 	return s
 }
 
-func (s *DescribeRecordResponseBody) SetOssEndpoint(v string) *DescribeRecordResponseBody {
-	s.OssEndpoint = &v
+func (s *DescribeRecordResponseBody) SetRecordId(v string) *DescribeRecordResponseBody {
+	s.RecordId = &v
 	return s
 }
 
@@ -19652,15 +20740,15 @@ func (s *DescribeRecordsResponseBody) SetRecords(v []*DescribeRecordsResponseBod
 }
 
 type DescribeRecordsResponseBodyRecords struct {
-	RecordId        *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	BoardId         *int32  `json:"BoardId,omitempty" xml:"BoardId,omitempty"`
-	RecordStartTime *int64  `json:"RecordStartTime,omitempty" xml:"RecordStartTime,omitempty"`
-	StartTime       *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	EndTime         *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime       *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	BoardId         *int32  `json:"BoardId,omitempty" xml:"BoardId,omitempty"`
 	State           *int32  `json:"State,omitempty" xml:"State,omitempty"`
-	OssPath         *string `json:"OssPath,omitempty" xml:"OssPath,omitempty"`
+	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	RecordId        *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
 	OssBucket       *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	RecordStartTime *int64  `json:"RecordStartTime,omitempty" xml:"RecordStartTime,omitempty"`
+	OssPath         *string `json:"OssPath,omitempty" xml:"OssPath,omitempty"`
 	OssEndpoint     *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
 }
 
@@ -19672,23 +20760,8 @@ func (s DescribeRecordsResponseBodyRecords) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRecordsResponseBodyRecords) SetRecordId(v string) *DescribeRecordsResponseBodyRecords {
-	s.RecordId = &v
-	return s
-}
-
-func (s *DescribeRecordsResponseBodyRecords) SetAppId(v string) *DescribeRecordsResponseBodyRecords {
-	s.AppId = &v
-	return s
-}
-
-func (s *DescribeRecordsResponseBodyRecords) SetBoardId(v int32) *DescribeRecordsResponseBodyRecords {
-	s.BoardId = &v
-	return s
-}
-
-func (s *DescribeRecordsResponseBodyRecords) SetRecordStartTime(v int64) *DescribeRecordsResponseBodyRecords {
-	s.RecordStartTime = &v
+func (s *DescribeRecordsResponseBodyRecords) SetEndTime(v int64) *DescribeRecordsResponseBodyRecords {
+	s.EndTime = &v
 	return s
 }
 
@@ -19697,8 +20770,8 @@ func (s *DescribeRecordsResponseBodyRecords) SetStartTime(v int64) *DescribeReco
 	return s
 }
 
-func (s *DescribeRecordsResponseBodyRecords) SetEndTime(v int64) *DescribeRecordsResponseBodyRecords {
-	s.EndTime = &v
+func (s *DescribeRecordsResponseBodyRecords) SetBoardId(v int32) *DescribeRecordsResponseBodyRecords {
+	s.BoardId = &v
 	return s
 }
 
@@ -19707,13 +20780,28 @@ func (s *DescribeRecordsResponseBodyRecords) SetState(v int32) *DescribeRecordsR
 	return s
 }
 
-func (s *DescribeRecordsResponseBodyRecords) SetOssPath(v string) *DescribeRecordsResponseBodyRecords {
-	s.OssPath = &v
+func (s *DescribeRecordsResponseBodyRecords) SetAppId(v string) *DescribeRecordsResponseBodyRecords {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeRecordsResponseBodyRecords) SetRecordId(v string) *DescribeRecordsResponseBodyRecords {
+	s.RecordId = &v
 	return s
 }
 
 func (s *DescribeRecordsResponseBodyRecords) SetOssBucket(v string) *DescribeRecordsResponseBodyRecords {
 	s.OssBucket = &v
+	return s
+}
+
+func (s *DescribeRecordsResponseBodyRecords) SetRecordStartTime(v int64) *DescribeRecordsResponseBodyRecords {
+	s.RecordStartTime = &v
+	return s
+}
+
+func (s *DescribeRecordsResponseBodyRecords) SetOssPath(v string) *DescribeRecordsResponseBodyRecords {
+	s.OssPath = &v
 	return s
 }
 
@@ -20124,6 +21212,357 @@ func (s *DescribeRoomStatusResponse) SetBody(v *DescribeRoomStatusResponseBody) 
 	return s
 }
 
+type DescribeStudioLayoutsRequest struct {
+	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	CasterId *string `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
+	LayoutId *string `json:"LayoutId,omitempty" xml:"LayoutId,omitempty"`
+}
+
+func (s DescribeStudioLayoutsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeStudioLayoutsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeStudioLayoutsRequest) SetOwnerId(v int64) *DescribeStudioLayoutsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeStudioLayoutsRequest) SetCasterId(v string) *DescribeStudioLayoutsRequest {
+	s.CasterId = &v
+	return s
+}
+
+func (s *DescribeStudioLayoutsRequest) SetLayoutId(v string) *DescribeStudioLayoutsRequest {
+	s.LayoutId = &v
+	return s
+}
+
+type DescribeStudioLayoutsResponseBody struct {
+	StudioLayouts []*DescribeStudioLayoutsResponseBodyStudioLayouts `json:"StudioLayouts,omitempty" xml:"StudioLayouts,omitempty" type:"Repeated"`
+	RequestId     *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Total         *int32                                            `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s DescribeStudioLayoutsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeStudioLayoutsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeStudioLayoutsResponseBody) SetStudioLayouts(v []*DescribeStudioLayoutsResponseBodyStudioLayouts) *DescribeStudioLayoutsResponseBody {
+	s.StudioLayouts = v
+	return s
+}
+
+func (s *DescribeStudioLayoutsResponseBody) SetRequestId(v string) *DescribeStudioLayoutsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeStudioLayoutsResponseBody) SetTotal(v int32) *DescribeStudioLayoutsResponseBody {
+	s.Total = &v
+	return s
+}
+
+type DescribeStudioLayoutsResponseBodyStudioLayouts struct {
+	LayoutType            *string                                                                `json:"LayoutType,omitempty" xml:"LayoutType,omitempty"`
+	LayoutId              *string                                                                `json:"LayoutId,omitempty" xml:"LayoutId,omitempty"`
+	BgImageConfig         *DescribeStudioLayoutsResponseBodyStudioLayoutsBgImageConfig           `json:"BgImageConfig,omitempty" xml:"BgImageConfig,omitempty" type:"Struct"`
+	ScreenInputConfigList []*DescribeStudioLayoutsResponseBodyStudioLayoutsScreenInputConfigList `json:"ScreenInputConfigList,omitempty" xml:"ScreenInputConfigList,omitempty" type:"Repeated"`
+	LayoutName            *string                                                                `json:"LayoutName,omitempty" xml:"LayoutName,omitempty"`
+	LayerOrderConfigList  []*DescribeStudioLayoutsResponseBodyStudioLayoutsLayerOrderConfigList  `json:"LayerOrderConfigList,omitempty" xml:"LayerOrderConfigList,omitempty" type:"Repeated"`
+	MediaInputConfigList  []*DescribeStudioLayoutsResponseBodyStudioLayoutsMediaInputConfigList  `json:"MediaInputConfigList,omitempty" xml:"MediaInputConfigList,omitempty" type:"Repeated"`
+	CommonConfig          *DescribeStudioLayoutsResponseBodyStudioLayoutsCommonConfig            `json:"CommonConfig,omitempty" xml:"CommonConfig,omitempty" type:"Struct"`
+}
+
+func (s DescribeStudioLayoutsResponseBodyStudioLayouts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeStudioLayoutsResponseBodyStudioLayouts) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeStudioLayoutsResponseBodyStudioLayouts) SetLayoutType(v string) *DescribeStudioLayoutsResponseBodyStudioLayouts {
+	s.LayoutType = &v
+	return s
+}
+
+func (s *DescribeStudioLayoutsResponseBodyStudioLayouts) SetLayoutId(v string) *DescribeStudioLayoutsResponseBodyStudioLayouts {
+	s.LayoutId = &v
+	return s
+}
+
+func (s *DescribeStudioLayoutsResponseBodyStudioLayouts) SetBgImageConfig(v *DescribeStudioLayoutsResponseBodyStudioLayoutsBgImageConfig) *DescribeStudioLayoutsResponseBodyStudioLayouts {
+	s.BgImageConfig = v
+	return s
+}
+
+func (s *DescribeStudioLayoutsResponseBodyStudioLayouts) SetScreenInputConfigList(v []*DescribeStudioLayoutsResponseBodyStudioLayoutsScreenInputConfigList) *DescribeStudioLayoutsResponseBodyStudioLayouts {
+	s.ScreenInputConfigList = v
+	return s
+}
+
+func (s *DescribeStudioLayoutsResponseBodyStudioLayouts) SetLayoutName(v string) *DescribeStudioLayoutsResponseBodyStudioLayouts {
+	s.LayoutName = &v
+	return s
+}
+
+func (s *DescribeStudioLayoutsResponseBodyStudioLayouts) SetLayerOrderConfigList(v []*DescribeStudioLayoutsResponseBodyStudioLayoutsLayerOrderConfigList) *DescribeStudioLayoutsResponseBodyStudioLayouts {
+	s.LayerOrderConfigList = v
+	return s
+}
+
+func (s *DescribeStudioLayoutsResponseBodyStudioLayouts) SetMediaInputConfigList(v []*DescribeStudioLayoutsResponseBodyStudioLayoutsMediaInputConfigList) *DescribeStudioLayoutsResponseBodyStudioLayouts {
+	s.MediaInputConfigList = v
+	return s
+}
+
+func (s *DescribeStudioLayoutsResponseBodyStudioLayouts) SetCommonConfig(v *DescribeStudioLayoutsResponseBodyStudioLayoutsCommonConfig) *DescribeStudioLayoutsResponseBodyStudioLayouts {
+	s.CommonConfig = v
+	return s
+}
+
+type DescribeStudioLayoutsResponseBodyStudioLayoutsBgImageConfig struct {
+	MaterialId *string `json:"MaterialId,omitempty" xml:"MaterialId,omitempty"`
+	ImageUrl   *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s DescribeStudioLayoutsResponseBodyStudioLayoutsBgImageConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeStudioLayoutsResponseBodyStudioLayoutsBgImageConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeStudioLayoutsResponseBodyStudioLayoutsBgImageConfig) SetMaterialId(v string) *DescribeStudioLayoutsResponseBodyStudioLayoutsBgImageConfig {
+	s.MaterialId = &v
+	return s
+}
+
+func (s *DescribeStudioLayoutsResponseBodyStudioLayoutsBgImageConfig) SetImageUrl(v string) *DescribeStudioLayoutsResponseBodyStudioLayoutsBgImageConfig {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *DescribeStudioLayoutsResponseBodyStudioLayoutsBgImageConfig) SetId(v string) *DescribeStudioLayoutsResponseBodyStudioLayoutsBgImageConfig {
+	s.Id = &v
+	return s
+}
+
+type DescribeStudioLayoutsResponseBodyStudioLayoutsScreenInputConfigList struct {
+	PortraitType     *int32   `json:"PortraitType,omitempty" xml:"PortraitType,omitempty"`
+	Index            *int32   `json:"Index,omitempty" xml:"Index,omitempty"`
+	PositionX        *string  `json:"PositionX,omitempty" xml:"PositionX,omitempty"`
+	Color            *string  `json:"Color,omitempty" xml:"Color,omitempty"`
+	HeightNormalized *float32 `json:"HeightNormalized,omitempty" xml:"HeightNormalized,omitempty"`
+	PositionY        *string  `json:"PositionY,omitempty" xml:"PositionY,omitempty"`
+	ChannelId        *string  `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	VideoResourceId  *string  `json:"VideoResourceId,omitempty" xml:"VideoResourceId,omitempty"`
+	Id               *string  `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s DescribeStudioLayoutsResponseBodyStudioLayoutsScreenInputConfigList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeStudioLayoutsResponseBodyStudioLayoutsScreenInputConfigList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeStudioLayoutsResponseBodyStudioLayoutsScreenInputConfigList) SetPortraitType(v int32) *DescribeStudioLayoutsResponseBodyStudioLayoutsScreenInputConfigList {
+	s.PortraitType = &v
+	return s
+}
+
+func (s *DescribeStudioLayoutsResponseBodyStudioLayoutsScreenInputConfigList) SetIndex(v int32) *DescribeStudioLayoutsResponseBodyStudioLayoutsScreenInputConfigList {
+	s.Index = &v
+	return s
+}
+
+func (s *DescribeStudioLayoutsResponseBodyStudioLayoutsScreenInputConfigList) SetPositionX(v string) *DescribeStudioLayoutsResponseBodyStudioLayoutsScreenInputConfigList {
+	s.PositionX = &v
+	return s
+}
+
+func (s *DescribeStudioLayoutsResponseBodyStudioLayoutsScreenInputConfigList) SetColor(v string) *DescribeStudioLayoutsResponseBodyStudioLayoutsScreenInputConfigList {
+	s.Color = &v
+	return s
+}
+
+func (s *DescribeStudioLayoutsResponseBodyStudioLayoutsScreenInputConfigList) SetHeightNormalized(v float32) *DescribeStudioLayoutsResponseBodyStudioLayoutsScreenInputConfigList {
+	s.HeightNormalized = &v
+	return s
+}
+
+func (s *DescribeStudioLayoutsResponseBodyStudioLayoutsScreenInputConfigList) SetPositionY(v string) *DescribeStudioLayoutsResponseBodyStudioLayoutsScreenInputConfigList {
+	s.PositionY = &v
+	return s
+}
+
+func (s *DescribeStudioLayoutsResponseBodyStudioLayoutsScreenInputConfigList) SetChannelId(v string) *DescribeStudioLayoutsResponseBodyStudioLayoutsScreenInputConfigList {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *DescribeStudioLayoutsResponseBodyStudioLayoutsScreenInputConfigList) SetVideoResourceId(v string) *DescribeStudioLayoutsResponseBodyStudioLayoutsScreenInputConfigList {
+	s.VideoResourceId = &v
+	return s
+}
+
+func (s *DescribeStudioLayoutsResponseBodyStudioLayoutsScreenInputConfigList) SetId(v string) *DescribeStudioLayoutsResponseBodyStudioLayoutsScreenInputConfigList {
+	s.Id = &v
+	return s
+}
+
+type DescribeStudioLayoutsResponseBodyStudioLayoutsLayerOrderConfigList struct {
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s DescribeStudioLayoutsResponseBodyStudioLayoutsLayerOrderConfigList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeStudioLayoutsResponseBodyStudioLayoutsLayerOrderConfigList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeStudioLayoutsResponseBodyStudioLayoutsLayerOrderConfigList) SetType(v string) *DescribeStudioLayoutsResponseBodyStudioLayoutsLayerOrderConfigList {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeStudioLayoutsResponseBodyStudioLayoutsLayerOrderConfigList) SetId(v string) *DescribeStudioLayoutsResponseBodyStudioLayoutsLayerOrderConfigList {
+	s.Id = &v
+	return s
+}
+
+type DescribeStudioLayoutsResponseBodyStudioLayoutsMediaInputConfigList struct {
+	Index              *int32     `json:"Index,omitempty" xml:"Index,omitempty"`
+	HeightNormalized   *float32   `json:"HeightNormalized,omitempty" xml:"HeightNormalized,omitempty"`
+	FillMode           *string    `json:"FillMode,omitempty" xml:"FillMode,omitempty"`
+	PositionRefer      *string    `json:"PositionRefer,omitempty" xml:"PositionRefer,omitempty"`
+	ChannelId          *string    `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	PositionNormalized []*float32 `json:"PositionNormalized,omitempty" xml:"PositionNormalized,omitempty" type:"Repeated"`
+	VideoResourceId    *string    `json:"VideoResourceId,omitempty" xml:"VideoResourceId,omitempty"`
+	WidthNormalized    *float32   `json:"WidthNormalized,omitempty" xml:"WidthNormalized,omitempty"`
+	ImageMaterialId    *string    `json:"ImageMaterialId,omitempty" xml:"ImageMaterialId,omitempty"`
+	Id                 *string    `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s DescribeStudioLayoutsResponseBodyStudioLayoutsMediaInputConfigList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeStudioLayoutsResponseBodyStudioLayoutsMediaInputConfigList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeStudioLayoutsResponseBodyStudioLayoutsMediaInputConfigList) SetIndex(v int32) *DescribeStudioLayoutsResponseBodyStudioLayoutsMediaInputConfigList {
+	s.Index = &v
+	return s
+}
+
+func (s *DescribeStudioLayoutsResponseBodyStudioLayoutsMediaInputConfigList) SetHeightNormalized(v float32) *DescribeStudioLayoutsResponseBodyStudioLayoutsMediaInputConfigList {
+	s.HeightNormalized = &v
+	return s
+}
+
+func (s *DescribeStudioLayoutsResponseBodyStudioLayoutsMediaInputConfigList) SetFillMode(v string) *DescribeStudioLayoutsResponseBodyStudioLayoutsMediaInputConfigList {
+	s.FillMode = &v
+	return s
+}
+
+func (s *DescribeStudioLayoutsResponseBodyStudioLayoutsMediaInputConfigList) SetPositionRefer(v string) *DescribeStudioLayoutsResponseBodyStudioLayoutsMediaInputConfigList {
+	s.PositionRefer = &v
+	return s
+}
+
+func (s *DescribeStudioLayoutsResponseBodyStudioLayoutsMediaInputConfigList) SetChannelId(v string) *DescribeStudioLayoutsResponseBodyStudioLayoutsMediaInputConfigList {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *DescribeStudioLayoutsResponseBodyStudioLayoutsMediaInputConfigList) SetPositionNormalized(v []*float32) *DescribeStudioLayoutsResponseBodyStudioLayoutsMediaInputConfigList {
+	s.PositionNormalized = v
+	return s
+}
+
+func (s *DescribeStudioLayoutsResponseBodyStudioLayoutsMediaInputConfigList) SetVideoResourceId(v string) *DescribeStudioLayoutsResponseBodyStudioLayoutsMediaInputConfigList {
+	s.VideoResourceId = &v
+	return s
+}
+
+func (s *DescribeStudioLayoutsResponseBodyStudioLayoutsMediaInputConfigList) SetWidthNormalized(v float32) *DescribeStudioLayoutsResponseBodyStudioLayoutsMediaInputConfigList {
+	s.WidthNormalized = &v
+	return s
+}
+
+func (s *DescribeStudioLayoutsResponseBodyStudioLayoutsMediaInputConfigList) SetImageMaterialId(v string) *DescribeStudioLayoutsResponseBodyStudioLayoutsMediaInputConfigList {
+	s.ImageMaterialId = &v
+	return s
+}
+
+func (s *DescribeStudioLayoutsResponseBodyStudioLayoutsMediaInputConfigList) SetId(v string) *DescribeStudioLayoutsResponseBodyStudioLayoutsMediaInputConfigList {
+	s.Id = &v
+	return s
+}
+
+type DescribeStudioLayoutsResponseBodyStudioLayoutsCommonConfig struct {
+	ChannelId       *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	VideoResourceId *string `json:"VideoResourceId,omitempty" xml:"VideoResourceId,omitempty"`
+}
+
+func (s DescribeStudioLayoutsResponseBodyStudioLayoutsCommonConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeStudioLayoutsResponseBodyStudioLayoutsCommonConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeStudioLayoutsResponseBodyStudioLayoutsCommonConfig) SetChannelId(v string) *DescribeStudioLayoutsResponseBodyStudioLayoutsCommonConfig {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *DescribeStudioLayoutsResponseBodyStudioLayoutsCommonConfig) SetVideoResourceId(v string) *DescribeStudioLayoutsResponseBodyStudioLayoutsCommonConfig {
+	s.VideoResourceId = &v
+	return s
+}
+
+type DescribeStudioLayoutsResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeStudioLayoutsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeStudioLayoutsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeStudioLayoutsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeStudioLayoutsResponse) SetHeaders(v map[string]*string) *DescribeStudioLayoutsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeStudioLayoutsResponse) SetBody(v *DescribeStudioLayoutsResponseBody) *DescribeStudioLayoutsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeUpBpsPeakDataRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
@@ -20206,9 +21645,9 @@ func (s *DescribeUpBpsPeakDataResponseBodyDescribeUpPeakTraffics) SetDescribeUpP
 }
 
 type DescribeUpBpsPeakDataResponseBodyDescribeUpPeakTrafficsDescribeUpPeakTraffic struct {
-	PeakTime  *string `json:"PeakTime,omitempty" xml:"PeakTime,omitempty"`
 	QueryTime *string `json:"QueryTime,omitempty" xml:"QueryTime,omitempty"`
 	StatName  *string `json:"StatName,omitempty" xml:"StatName,omitempty"`
+	PeakTime  *string `json:"PeakTime,omitempty" xml:"PeakTime,omitempty"`
 	BandWidth *string `json:"BandWidth,omitempty" xml:"BandWidth,omitempty"`
 }
 
@@ -20220,11 +21659,6 @@ func (s DescribeUpBpsPeakDataResponseBodyDescribeUpPeakTrafficsDescribeUpPeakTra
 	return s.String()
 }
 
-func (s *DescribeUpBpsPeakDataResponseBodyDescribeUpPeakTrafficsDescribeUpPeakTraffic) SetPeakTime(v string) *DescribeUpBpsPeakDataResponseBodyDescribeUpPeakTrafficsDescribeUpPeakTraffic {
-	s.PeakTime = &v
-	return s
-}
-
 func (s *DescribeUpBpsPeakDataResponseBodyDescribeUpPeakTrafficsDescribeUpPeakTraffic) SetQueryTime(v string) *DescribeUpBpsPeakDataResponseBodyDescribeUpPeakTrafficsDescribeUpPeakTraffic {
 	s.QueryTime = &v
 	return s
@@ -20232,6 +21666,11 @@ func (s *DescribeUpBpsPeakDataResponseBodyDescribeUpPeakTrafficsDescribeUpPeakTr
 
 func (s *DescribeUpBpsPeakDataResponseBodyDescribeUpPeakTrafficsDescribeUpPeakTraffic) SetStatName(v string) *DescribeUpBpsPeakDataResponseBodyDescribeUpPeakTrafficsDescribeUpPeakTraffic {
 	s.StatName = &v
+	return s
+}
+
+func (s *DescribeUpBpsPeakDataResponseBodyDescribeUpPeakTrafficsDescribeUpPeakTraffic) SetPeakTime(v string) *DescribeUpBpsPeakDataResponseBodyDescribeUpPeakTrafficsDescribeUpPeakTraffic {
+	s.PeakTime = &v
 	return s
 }
 
@@ -20311,8 +21750,8 @@ func (s *DescribeUpBpsPeakOfLineRequest) SetDomainName(v string) *DescribeUpBpsP
 }
 
 type DescribeUpBpsPeakOfLineResponseBody struct {
-	RequestId                *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DescribeUpBpsPeakOfLines *DescribeUpBpsPeakOfLineResponseBodyDescribeUpBpsPeakOfLines `json:"DescribeUpBpsPeakOfLines,omitempty" xml:"DescribeUpBpsPeakOfLines,omitempty" type:"Struct"`
+	RequestId                *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeUpBpsPeakOfLineResponseBody) String() string {
@@ -20323,13 +21762,13 @@ func (s DescribeUpBpsPeakOfLineResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeUpBpsPeakOfLineResponseBody) SetRequestId(v string) *DescribeUpBpsPeakOfLineResponseBody {
-	s.RequestId = &v
+func (s *DescribeUpBpsPeakOfLineResponseBody) SetDescribeUpBpsPeakOfLines(v *DescribeUpBpsPeakOfLineResponseBodyDescribeUpBpsPeakOfLines) *DescribeUpBpsPeakOfLineResponseBody {
+	s.DescribeUpBpsPeakOfLines = v
 	return s
 }
 
-func (s *DescribeUpBpsPeakOfLineResponseBody) SetDescribeUpBpsPeakOfLines(v *DescribeUpBpsPeakOfLineResponseBodyDescribeUpBpsPeakOfLines) *DescribeUpBpsPeakOfLineResponseBody {
-	s.DescribeUpBpsPeakOfLines = v
+func (s *DescribeUpBpsPeakOfLineResponseBody) SetRequestId(v string) *DescribeUpBpsPeakOfLineResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -20351,10 +21790,10 @@ func (s *DescribeUpBpsPeakOfLineResponseBodyDescribeUpBpsPeakOfLines) SetDescrib
 }
 
 type DescribeUpBpsPeakOfLineResponseBodyDescribeUpBpsPeakOfLinesDescribeUpBpsPeakOfLine struct {
-	BandWidth *float32 `json:"BandWidth,omitempty" xml:"BandWidth,omitempty"`
-	PeakTime  *string  `json:"PeakTime,omitempty" xml:"PeakTime,omitempty"`
 	QueryTime *string  `json:"QueryTime,omitempty" xml:"QueryTime,omitempty"`
 	StatName  *string  `json:"StatName,omitempty" xml:"StatName,omitempty"`
+	PeakTime  *string  `json:"PeakTime,omitempty" xml:"PeakTime,omitempty"`
+	BandWidth *float32 `json:"BandWidth,omitempty" xml:"BandWidth,omitempty"`
 }
 
 func (s DescribeUpBpsPeakOfLineResponseBodyDescribeUpBpsPeakOfLinesDescribeUpBpsPeakOfLine) String() string {
@@ -20365,8 +21804,13 @@ func (s DescribeUpBpsPeakOfLineResponseBodyDescribeUpBpsPeakOfLinesDescribeUpBps
 	return s.String()
 }
 
-func (s *DescribeUpBpsPeakOfLineResponseBodyDescribeUpBpsPeakOfLinesDescribeUpBpsPeakOfLine) SetBandWidth(v float32) *DescribeUpBpsPeakOfLineResponseBodyDescribeUpBpsPeakOfLinesDescribeUpBpsPeakOfLine {
-	s.BandWidth = &v
+func (s *DescribeUpBpsPeakOfLineResponseBodyDescribeUpBpsPeakOfLinesDescribeUpBpsPeakOfLine) SetQueryTime(v string) *DescribeUpBpsPeakOfLineResponseBodyDescribeUpBpsPeakOfLinesDescribeUpBpsPeakOfLine {
+	s.QueryTime = &v
+	return s
+}
+
+func (s *DescribeUpBpsPeakOfLineResponseBodyDescribeUpBpsPeakOfLinesDescribeUpBpsPeakOfLine) SetStatName(v string) *DescribeUpBpsPeakOfLineResponseBodyDescribeUpBpsPeakOfLinesDescribeUpBpsPeakOfLine {
+	s.StatName = &v
 	return s
 }
 
@@ -20375,13 +21819,8 @@ func (s *DescribeUpBpsPeakOfLineResponseBodyDescribeUpBpsPeakOfLinesDescribeUpBp
 	return s
 }
 
-func (s *DescribeUpBpsPeakOfLineResponseBodyDescribeUpBpsPeakOfLinesDescribeUpBpsPeakOfLine) SetQueryTime(v string) *DescribeUpBpsPeakOfLineResponseBodyDescribeUpBpsPeakOfLinesDescribeUpBpsPeakOfLine {
-	s.QueryTime = &v
-	return s
-}
-
-func (s *DescribeUpBpsPeakOfLineResponseBodyDescribeUpBpsPeakOfLinesDescribeUpBpsPeakOfLine) SetStatName(v string) *DescribeUpBpsPeakOfLineResponseBodyDescribeUpBpsPeakOfLinesDescribeUpBpsPeakOfLine {
-	s.StatName = &v
+func (s *DescribeUpBpsPeakOfLineResponseBodyDescribeUpBpsPeakOfLinesDescribeUpBpsPeakOfLine) SetBandWidth(v float32) *DescribeUpBpsPeakOfLineResponseBodyDescribeUpBpsPeakOfLinesDescribeUpBpsPeakOfLine {
+	s.BandWidth = &v
 	return s
 }
 
@@ -20450,8 +21889,8 @@ func (s *DescribeUpPeakPublishStreamDataRequest) SetDomainName(v string) *Descri
 }
 
 type DescribeUpPeakPublishStreamDataResponseBody struct {
-	RequestId                        *string                                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DescribeUpPeakPublishStreamDatas *DescribeUpPeakPublishStreamDataResponseBodyDescribeUpPeakPublishStreamDatas `json:"DescribeUpPeakPublishStreamDatas,omitempty" xml:"DescribeUpPeakPublishStreamDatas,omitempty" type:"Struct"`
+	RequestId                        *string                                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeUpPeakPublishStreamDataResponseBody) String() string {
@@ -20462,13 +21901,13 @@ func (s DescribeUpPeakPublishStreamDataResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeUpPeakPublishStreamDataResponseBody) SetRequestId(v string) *DescribeUpPeakPublishStreamDataResponseBody {
-	s.RequestId = &v
+func (s *DescribeUpPeakPublishStreamDataResponseBody) SetDescribeUpPeakPublishStreamDatas(v *DescribeUpPeakPublishStreamDataResponseBodyDescribeUpPeakPublishStreamDatas) *DescribeUpPeakPublishStreamDataResponseBody {
+	s.DescribeUpPeakPublishStreamDatas = v
 	return s
 }
 
-func (s *DescribeUpPeakPublishStreamDataResponseBody) SetDescribeUpPeakPublishStreamDatas(v *DescribeUpPeakPublishStreamDataResponseBodyDescribeUpPeakPublishStreamDatas) *DescribeUpPeakPublishStreamDataResponseBody {
-	s.DescribeUpPeakPublishStreamDatas = v
+func (s *DescribeUpPeakPublishStreamDataResponseBody) SetRequestId(v string) *DescribeUpPeakPublishStreamDataResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -20490,11 +21929,11 @@ func (s *DescribeUpPeakPublishStreamDataResponseBodyDescribeUpPeakPublishStreamD
 }
 
 type DescribeUpPeakPublishStreamDataResponseBodyDescribeUpPeakPublishStreamDatasDescribeUpPeakPublishStreamData struct {
-	PublishStreamNum *int32  `json:"PublishStreamNum,omitempty" xml:"PublishStreamNum,omitempty"`
-	PeakTime         *string `json:"PeakTime,omitempty" xml:"PeakTime,omitempty"`
 	QueryTime        *string `json:"QueryTime,omitempty" xml:"QueryTime,omitempty"`
 	StatName         *string `json:"StatName,omitempty" xml:"StatName,omitempty"`
+	PeakTime         *string `json:"PeakTime,omitempty" xml:"PeakTime,omitempty"`
 	BandWidth        *string `json:"BandWidth,omitempty" xml:"BandWidth,omitempty"`
+	PublishStreamNum *int32  `json:"PublishStreamNum,omitempty" xml:"PublishStreamNum,omitempty"`
 }
 
 func (s DescribeUpPeakPublishStreamDataResponseBodyDescribeUpPeakPublishStreamDatasDescribeUpPeakPublishStreamData) String() string {
@@ -20503,16 +21942,6 @@ func (s DescribeUpPeakPublishStreamDataResponseBodyDescribeUpPeakPublishStreamDa
 
 func (s DescribeUpPeakPublishStreamDataResponseBodyDescribeUpPeakPublishStreamDatasDescribeUpPeakPublishStreamData) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeUpPeakPublishStreamDataResponseBodyDescribeUpPeakPublishStreamDatasDescribeUpPeakPublishStreamData) SetPublishStreamNum(v int32) *DescribeUpPeakPublishStreamDataResponseBodyDescribeUpPeakPublishStreamDatasDescribeUpPeakPublishStreamData {
-	s.PublishStreamNum = &v
-	return s
-}
-
-func (s *DescribeUpPeakPublishStreamDataResponseBodyDescribeUpPeakPublishStreamDatasDescribeUpPeakPublishStreamData) SetPeakTime(v string) *DescribeUpPeakPublishStreamDataResponseBodyDescribeUpPeakPublishStreamDatasDescribeUpPeakPublishStreamData {
-	s.PeakTime = &v
-	return s
 }
 
 func (s *DescribeUpPeakPublishStreamDataResponseBodyDescribeUpPeakPublishStreamDatasDescribeUpPeakPublishStreamData) SetQueryTime(v string) *DescribeUpPeakPublishStreamDataResponseBodyDescribeUpPeakPublishStreamDatasDescribeUpPeakPublishStreamData {
@@ -20525,8 +21954,18 @@ func (s *DescribeUpPeakPublishStreamDataResponseBodyDescribeUpPeakPublishStreamD
 	return s
 }
 
+func (s *DescribeUpPeakPublishStreamDataResponseBodyDescribeUpPeakPublishStreamDatasDescribeUpPeakPublishStreamData) SetPeakTime(v string) *DescribeUpPeakPublishStreamDataResponseBodyDescribeUpPeakPublishStreamDatasDescribeUpPeakPublishStreamData {
+	s.PeakTime = &v
+	return s
+}
+
 func (s *DescribeUpPeakPublishStreamDataResponseBodyDescribeUpPeakPublishStreamDatasDescribeUpPeakPublishStreamData) SetBandWidth(v string) *DescribeUpPeakPublishStreamDataResponseBodyDescribeUpPeakPublishStreamDatasDescribeUpPeakPublishStreamData {
 	s.BandWidth = &v
+	return s
+}
+
+func (s *DescribeUpPeakPublishStreamDataResponseBodyDescribeUpPeakPublishStreamDatasDescribeUpPeakPublishStreamData) SetPublishStreamNum(v int32) *DescribeUpPeakPublishStreamDataResponseBodyDescribeUpPeakPublishStreamDatasDescribeUpPeakPublishStreamData {
+	s.PublishStreamNum = &v
 	return s
 }
 
@@ -20705,6 +22144,168 @@ func (s *EditHtmlResourceResponse) SetHeaders(v map[string]*string) *EditHtmlRes
 }
 
 func (s *EditHtmlResourceResponse) SetBody(v *EditHtmlResourceResponseBody) *EditHtmlResourceResponse {
+	s.Body = v
+	return s
+}
+
+type EditPlaylistRequest struct {
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ProgramId     *string `json:"ProgramId,omitempty" xml:"ProgramId,omitempty"`
+	ProgramItems  *string `json:"ProgramItems,omitempty" xml:"ProgramItems,omitempty"`
+	ProgramConfig *string `json:"ProgramConfig,omitempty" xml:"ProgramConfig,omitempty"`
+}
+
+func (s EditPlaylistRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EditPlaylistRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EditPlaylistRequest) SetOwnerId(v int64) *EditPlaylistRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *EditPlaylistRequest) SetProgramId(v string) *EditPlaylistRequest {
+	s.ProgramId = &v
+	return s
+}
+
+func (s *EditPlaylistRequest) SetProgramItems(v string) *EditPlaylistRequest {
+	s.ProgramItems = &v
+	return s
+}
+
+func (s *EditPlaylistRequest) SetProgramConfig(v string) *EditPlaylistRequest {
+	s.ProgramConfig = &v
+	return s
+}
+
+type EditPlaylistResponseBody struct {
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Items     *EditPlaylistResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	ProgramId *string                        `json:"ProgramId,omitempty" xml:"ProgramId,omitempty"`
+	CasterId  *string                        `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
+}
+
+func (s EditPlaylistResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EditPlaylistResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EditPlaylistResponseBody) SetRequestId(v string) *EditPlaylistResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *EditPlaylistResponseBody) SetItems(v *EditPlaylistResponseBodyItems) *EditPlaylistResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *EditPlaylistResponseBody) SetProgramId(v string) *EditPlaylistResponseBody {
+	s.ProgramId = &v
+	return s
+}
+
+func (s *EditPlaylistResponseBody) SetCasterId(v string) *EditPlaylistResponseBody {
+	s.CasterId = &v
+	return s
+}
+
+type EditPlaylistResponseBodyItems struct {
+	SuccessItems []*EditPlaylistResponseBodyItemsSuccessItems `json:"SuccessItems,omitempty" xml:"SuccessItems,omitempty" type:"Repeated"`
+	FailedItems  []*EditPlaylistResponseBodyItemsFailedItems  `json:"FailedItems,omitempty" xml:"FailedItems,omitempty" type:"Repeated"`
+}
+
+func (s EditPlaylistResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EditPlaylistResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *EditPlaylistResponseBodyItems) SetSuccessItems(v []*EditPlaylistResponseBodyItemsSuccessItems) *EditPlaylistResponseBodyItems {
+	s.SuccessItems = v
+	return s
+}
+
+func (s *EditPlaylistResponseBodyItems) SetFailedItems(v []*EditPlaylistResponseBodyItemsFailedItems) *EditPlaylistResponseBodyItems {
+	s.FailedItems = v
+	return s
+}
+
+type EditPlaylistResponseBodyItemsSuccessItems struct {
+	ItemName *string `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
+	ItemId   *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+}
+
+func (s EditPlaylistResponseBodyItemsSuccessItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EditPlaylistResponseBodyItemsSuccessItems) GoString() string {
+	return s.String()
+}
+
+func (s *EditPlaylistResponseBodyItemsSuccessItems) SetItemName(v string) *EditPlaylistResponseBodyItemsSuccessItems {
+	s.ItemName = &v
+	return s
+}
+
+func (s *EditPlaylistResponseBodyItemsSuccessItems) SetItemId(v string) *EditPlaylistResponseBodyItemsSuccessItems {
+	s.ItemId = &v
+	return s
+}
+
+type EditPlaylistResponseBodyItemsFailedItems struct {
+	ItemName *string `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
+	ItemId   *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+}
+
+func (s EditPlaylistResponseBodyItemsFailedItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EditPlaylistResponseBodyItemsFailedItems) GoString() string {
+	return s.String()
+}
+
+func (s *EditPlaylistResponseBodyItemsFailedItems) SetItemName(v string) *EditPlaylistResponseBodyItemsFailedItems {
+	s.ItemName = &v
+	return s
+}
+
+func (s *EditPlaylistResponseBodyItemsFailedItems) SetItemId(v string) *EditPlaylistResponseBodyItemsFailedItems {
+	s.ItemId = &v
+	return s
+}
+
+type EditPlaylistResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *EditPlaylistResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s EditPlaylistResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EditPlaylistResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EditPlaylistResponse) SetHeaders(v map[string]*string) *EditPlaylistResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EditPlaylistResponse) SetBody(v *EditPlaylistResponseBody) *EditPlaylistResponse {
 	s.Body = v
 	return s
 }
@@ -20917,14 +22518,13 @@ func (s *EnableLiveRealtimeLogDeliveryResponse) SetBody(v *EnableLiveRealtimeLog
 }
 
 type ForbidLiveStreamRequest struct {
-	OwnerId             *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	DomainName          *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	AppName             *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	StreamName          *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
-	LiveStreamType      *string `json:"LiveStreamType,omitempty" xml:"LiveStreamType,omitempty"`
-	Oneshot             *string `json:"Oneshot,omitempty" xml:"Oneshot,omitempty"`
-	ControlStreamAction *string `json:"ControlStreamAction,omitempty" xml:"ControlStreamAction,omitempty"`
-	ResumeTime          *string `json:"ResumeTime,omitempty" xml:"ResumeTime,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	AppName        *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	StreamName     *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+	LiveStreamType *string `json:"LiveStreamType,omitempty" xml:"LiveStreamType,omitempty"`
+	Oneshot        *string `json:"Oneshot,omitempty" xml:"Oneshot,omitempty"`
+	ResumeTime     *string `json:"ResumeTime,omitempty" xml:"ResumeTime,omitempty"`
 }
 
 func (s ForbidLiveStreamRequest) String() string {
@@ -20962,11 +22562,6 @@ func (s *ForbidLiveStreamRequest) SetLiveStreamType(v string) *ForbidLiveStreamR
 
 func (s *ForbidLiveStreamRequest) SetOneshot(v string) *ForbidLiveStreamRequest {
 	s.Oneshot = &v
-	return s
-}
-
-func (s *ForbidLiveStreamRequest) SetControlStreamAction(v string) *ForbidLiveStreamRequest {
-	s.ControlStreamAction = &v
 	return s
 }
 
@@ -21096,6 +22691,386 @@ func (s *ForbidPushStreamResponse) SetBody(v *ForbidPushStreamResponseBody) *For
 	return s
 }
 
+type GetMultiRateConfigRequest struct {
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	App        *string `json:"App,omitempty" xml:"App,omitempty"`
+	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+}
+
+func (s GetMultiRateConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiRateConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiRateConfigRequest) SetOwnerId(v int64) *GetMultiRateConfigRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetMultiRateConfigRequest) SetDomainName(v string) *GetMultiRateConfigRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *GetMultiRateConfigRequest) SetApp(v string) *GetMultiRateConfigRequest {
+	s.App = &v
+	return s
+}
+
+func (s *GetMultiRateConfigRequest) SetGroupId(v string) *GetMultiRateConfigRequest {
+	s.GroupId = &v
+	return s
+}
+
+type GetMultiRateConfigResponseBody struct {
+	App           *string                                      `json:"App,omitempty" xml:"App,omitempty"`
+	RequestId     *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Message       *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	IsLazy        *string                                      `json:"IsLazy,omitempty" xml:"IsLazy,omitempty"`
+	IsTimeAlign   *string                                      `json:"IsTimeAlign,omitempty" xml:"IsTimeAlign,omitempty"`
+	Stream        *string                                      `json:"Stream,omitempty" xml:"Stream,omitempty"`
+	Domain        *string                                      `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	AvFormat      *string                                      `json:"AvFormat,omitempty" xml:"AvFormat,omitempty"`
+	Code          *int32                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	TemplatesInfo *GetMultiRateConfigResponseBodyTemplatesInfo `json:"TemplatesInfo,omitempty" xml:"TemplatesInfo,omitempty" type:"Struct"`
+	GroupId       *string                                      `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+}
+
+func (s GetMultiRateConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiRateConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiRateConfigResponseBody) SetApp(v string) *GetMultiRateConfigResponseBody {
+	s.App = &v
+	return s
+}
+
+func (s *GetMultiRateConfigResponseBody) SetRequestId(v string) *GetMultiRateConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetMultiRateConfigResponseBody) SetMessage(v string) *GetMultiRateConfigResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetMultiRateConfigResponseBody) SetIsLazy(v string) *GetMultiRateConfigResponseBody {
+	s.IsLazy = &v
+	return s
+}
+
+func (s *GetMultiRateConfigResponseBody) SetIsTimeAlign(v string) *GetMultiRateConfigResponseBody {
+	s.IsTimeAlign = &v
+	return s
+}
+
+func (s *GetMultiRateConfigResponseBody) SetStream(v string) *GetMultiRateConfigResponseBody {
+	s.Stream = &v
+	return s
+}
+
+func (s *GetMultiRateConfigResponseBody) SetDomain(v string) *GetMultiRateConfigResponseBody {
+	s.Domain = &v
+	return s
+}
+
+func (s *GetMultiRateConfigResponseBody) SetAvFormat(v string) *GetMultiRateConfigResponseBody {
+	s.AvFormat = &v
+	return s
+}
+
+func (s *GetMultiRateConfigResponseBody) SetCode(v int32) *GetMultiRateConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetMultiRateConfigResponseBody) SetTemplatesInfo(v *GetMultiRateConfigResponseBodyTemplatesInfo) *GetMultiRateConfigResponseBody {
+	s.TemplatesInfo = v
+	return s
+}
+
+func (s *GetMultiRateConfigResponseBody) SetGroupId(v string) *GetMultiRateConfigResponseBody {
+	s.GroupId = &v
+	return s
+}
+
+type GetMultiRateConfigResponseBodyTemplatesInfo struct {
+	Detail []*GetMultiRateConfigResponseBodyTemplatesInfoDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Repeated"`
+}
+
+func (s GetMultiRateConfigResponseBodyTemplatesInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiRateConfigResponseBodyTemplatesInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiRateConfigResponseBodyTemplatesInfo) SetDetail(v []*GetMultiRateConfigResponseBodyTemplatesInfoDetail) *GetMultiRateConfigResponseBodyTemplatesInfo {
+	s.Detail = v
+	return s
+}
+
+type GetMultiRateConfigResponseBodyTemplatesInfoDetail struct {
+	AudioBitrate    *int32  `json:"AudioBitrate,omitempty" xml:"AudioBitrate,omitempty"`
+	Height          *int32  `json:"Height,omitempty" xml:"Height,omitempty"`
+	Template        *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	TemplateType    *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	BandWidth       *int32  `json:"BandWidth,omitempty" xml:"BandWidth,omitempty"`
+	Profile         *int32  `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	AudioRate       *int32  `json:"AudioRate,omitempty" xml:"AudioRate,omitempty"`
+	AudioCodec      *string `json:"AudioCodec,omitempty" xml:"AudioCodec,omitempty"`
+	Gop             *string `json:"Gop,omitempty" xml:"Gop,omitempty"`
+	VideoBitrate    *int32  `json:"VideoBitrate,omitempty" xml:"VideoBitrate,omitempty"`
+	Width           *int32  `json:"Width,omitempty" xml:"Width,omitempty"`
+	AudioChannelNum *int32  `json:"AudioChannelNum,omitempty" xml:"AudioChannelNum,omitempty"`
+	Fps             *int32  `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	AudioProfile    *string `json:"AudioProfile,omitempty" xml:"AudioProfile,omitempty"`
+}
+
+func (s GetMultiRateConfigResponseBodyTemplatesInfoDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiRateConfigResponseBodyTemplatesInfoDetail) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiRateConfigResponseBodyTemplatesInfoDetail) SetAudioBitrate(v int32) *GetMultiRateConfigResponseBodyTemplatesInfoDetail {
+	s.AudioBitrate = &v
+	return s
+}
+
+func (s *GetMultiRateConfigResponseBodyTemplatesInfoDetail) SetHeight(v int32) *GetMultiRateConfigResponseBodyTemplatesInfoDetail {
+	s.Height = &v
+	return s
+}
+
+func (s *GetMultiRateConfigResponseBodyTemplatesInfoDetail) SetTemplate(v string) *GetMultiRateConfigResponseBodyTemplatesInfoDetail {
+	s.Template = &v
+	return s
+}
+
+func (s *GetMultiRateConfigResponseBodyTemplatesInfoDetail) SetTemplateType(v string) *GetMultiRateConfigResponseBodyTemplatesInfoDetail {
+	s.TemplateType = &v
+	return s
+}
+
+func (s *GetMultiRateConfigResponseBodyTemplatesInfoDetail) SetBandWidth(v int32) *GetMultiRateConfigResponseBodyTemplatesInfoDetail {
+	s.BandWidth = &v
+	return s
+}
+
+func (s *GetMultiRateConfigResponseBodyTemplatesInfoDetail) SetProfile(v int32) *GetMultiRateConfigResponseBodyTemplatesInfoDetail {
+	s.Profile = &v
+	return s
+}
+
+func (s *GetMultiRateConfigResponseBodyTemplatesInfoDetail) SetAudioRate(v int32) *GetMultiRateConfigResponseBodyTemplatesInfoDetail {
+	s.AudioRate = &v
+	return s
+}
+
+func (s *GetMultiRateConfigResponseBodyTemplatesInfoDetail) SetAudioCodec(v string) *GetMultiRateConfigResponseBodyTemplatesInfoDetail {
+	s.AudioCodec = &v
+	return s
+}
+
+func (s *GetMultiRateConfigResponseBodyTemplatesInfoDetail) SetGop(v string) *GetMultiRateConfigResponseBodyTemplatesInfoDetail {
+	s.Gop = &v
+	return s
+}
+
+func (s *GetMultiRateConfigResponseBodyTemplatesInfoDetail) SetVideoBitrate(v int32) *GetMultiRateConfigResponseBodyTemplatesInfoDetail {
+	s.VideoBitrate = &v
+	return s
+}
+
+func (s *GetMultiRateConfigResponseBodyTemplatesInfoDetail) SetWidth(v int32) *GetMultiRateConfigResponseBodyTemplatesInfoDetail {
+	s.Width = &v
+	return s
+}
+
+func (s *GetMultiRateConfigResponseBodyTemplatesInfoDetail) SetAudioChannelNum(v int32) *GetMultiRateConfigResponseBodyTemplatesInfoDetail {
+	s.AudioChannelNum = &v
+	return s
+}
+
+func (s *GetMultiRateConfigResponseBodyTemplatesInfoDetail) SetFps(v int32) *GetMultiRateConfigResponseBodyTemplatesInfoDetail {
+	s.Fps = &v
+	return s
+}
+
+func (s *GetMultiRateConfigResponseBodyTemplatesInfoDetail) SetAudioProfile(v string) *GetMultiRateConfigResponseBodyTemplatesInfoDetail {
+	s.AudioProfile = &v
+	return s
+}
+
+type GetMultiRateConfigResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetMultiRateConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetMultiRateConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiRateConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiRateConfigResponse) SetHeaders(v map[string]*string) *GetMultiRateConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMultiRateConfigResponse) SetBody(v *GetMultiRateConfigResponseBody) *GetMultiRateConfigResponse {
+	s.Body = v
+	return s
+}
+
+type GetMultiRateConfigListRequest struct {
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+}
+
+func (s GetMultiRateConfigListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiRateConfigListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiRateConfigListRequest) SetOwnerId(v int64) *GetMultiRateConfigListRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetMultiRateConfigListRequest) SetDomainName(v string) *GetMultiRateConfigListRequest {
+	s.DomainName = &v
+	return s
+}
+
+type GetMultiRateConfigListResponseBody struct {
+	Message   *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	GroupInfo *GetMultiRateConfigListResponseBodyGroupInfo `json:"GroupInfo,omitempty" xml:"GroupInfo,omitempty" type:"Struct"`
+	Code      *int32                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+}
+
+func (s GetMultiRateConfigListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiRateConfigListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiRateConfigListResponseBody) SetMessage(v string) *GetMultiRateConfigListResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetMultiRateConfigListResponseBody) SetRequestId(v string) *GetMultiRateConfigListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetMultiRateConfigListResponseBody) SetGroupInfo(v *GetMultiRateConfigListResponseBodyGroupInfo) *GetMultiRateConfigListResponseBody {
+	s.GroupInfo = v
+	return s
+}
+
+func (s *GetMultiRateConfigListResponseBody) SetCode(v int32) *GetMultiRateConfigListResponseBody {
+	s.Code = &v
+	return s
+}
+
+type GetMultiRateConfigListResponseBodyGroupInfo struct {
+	Info []*GetMultiRateConfigListResponseBodyGroupInfoInfo `json:"Info,omitempty" xml:"Info,omitempty" type:"Repeated"`
+}
+
+func (s GetMultiRateConfigListResponseBodyGroupInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiRateConfigListResponseBodyGroupInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiRateConfigListResponseBodyGroupInfo) SetInfo(v []*GetMultiRateConfigListResponseBodyGroupInfoInfo) *GetMultiRateConfigListResponseBodyGroupInfo {
+	s.Info = v
+	return s
+}
+
+type GetMultiRateConfigListResponseBodyGroupInfoInfo struct {
+	GroupId  *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	App      *string `json:"App,omitempty" xml:"App,omitempty"`
+	AvFormat *string `json:"AvFormat,omitempty" xml:"AvFormat,omitempty"`
+	Count    *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+}
+
+func (s GetMultiRateConfigListResponseBodyGroupInfoInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiRateConfigListResponseBodyGroupInfoInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiRateConfigListResponseBodyGroupInfoInfo) SetGroupId(v string) *GetMultiRateConfigListResponseBodyGroupInfoInfo {
+	s.GroupId = &v
+	return s
+}
+
+func (s *GetMultiRateConfigListResponseBodyGroupInfoInfo) SetApp(v string) *GetMultiRateConfigListResponseBodyGroupInfoInfo {
+	s.App = &v
+	return s
+}
+
+func (s *GetMultiRateConfigListResponseBodyGroupInfoInfo) SetAvFormat(v string) *GetMultiRateConfigListResponseBodyGroupInfoInfo {
+	s.AvFormat = &v
+	return s
+}
+
+func (s *GetMultiRateConfigListResponseBodyGroupInfoInfo) SetCount(v int32) *GetMultiRateConfigListResponseBodyGroupInfoInfo {
+	s.Count = &v
+	return s
+}
+
+type GetMultiRateConfigListResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetMultiRateConfigListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetMultiRateConfigListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiRateConfigListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiRateConfigListResponse) SetHeaders(v map[string]*string) *GetMultiRateConfigListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMultiRateConfigListResponse) SetBody(v *GetMultiRateConfigListResponseBody) *GetMultiRateConfigListResponse {
+	s.Body = v
+	return s
+}
+
 type JoinBoardRequest struct {
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
@@ -21132,9 +23107,9 @@ func (s *JoinBoardRequest) SetBoardId(v string) *JoinBoardRequest {
 }
 
 type JoinBoardResponseBody struct {
+	BoardId           *string `json:"BoardId,omitempty" xml:"BoardId,omitempty"`
 	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Token             *string `json:"Token,omitempty" xml:"Token,omitempty"`
-	BoardId           *string `json:"BoardId,omitempty" xml:"BoardId,omitempty"`
 	TopicId           *string `json:"TopicId,omitempty" xml:"TopicId,omitempty"`
 	KeepaliveTopic    *string `json:"KeepaliveTopic,omitempty" xml:"KeepaliveTopic,omitempty"`
 	KeepaliveInterval *int32  `json:"KeepaliveInterval,omitempty" xml:"KeepaliveInterval,omitempty"`
@@ -21148,6 +23123,11 @@ func (s JoinBoardResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *JoinBoardResponseBody) SetBoardId(v string) *JoinBoardResponseBody {
+	s.BoardId = &v
+	return s
+}
+
 func (s *JoinBoardResponseBody) SetRequestId(v string) *JoinBoardResponseBody {
 	s.RequestId = &v
 	return s
@@ -21155,11 +23135,6 @@ func (s *JoinBoardResponseBody) SetRequestId(v string) *JoinBoardResponseBody {
 
 func (s *JoinBoardResponseBody) SetToken(v string) *JoinBoardResponseBody {
 	s.Token = &v
-	return s
-}
-
-func (s *JoinBoardResponseBody) SetBoardId(v string) *JoinBoardResponseBody {
-	s.BoardId = &v
 	return s
 }
 
@@ -21265,12 +23240,12 @@ func (s *ListLiveRealtimeLogDeliveryResponseBodyContent) SetRealtimeLogDeliveryI
 }
 
 type ListLiveRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo struct {
-	Project    *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	Logstore   *string `json:"Logstore,omitempty" xml:"Logstore,omitempty"`
-	Region     *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	DmId       *int32  `json:"DmId,omitempty" xml:"DmId,omitempty"`
 	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	DmId       *int32  `json:"DmId,omitempty" xml:"DmId,omitempty"`
+	Region     *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Logstore   *string `json:"Logstore,omitempty" xml:"Logstore,omitempty"`
+	Project    *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 }
 
 func (s ListLiveRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo) String() string {
@@ -21281,23 +23256,8 @@ func (s ListLiveRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo) G
 	return s.String()
 }
 
-func (s *ListLiveRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo) SetProject(v string) *ListLiveRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo {
-	s.Project = &v
-	return s
-}
-
-func (s *ListLiveRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo) SetLogstore(v string) *ListLiveRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo {
-	s.Logstore = &v
-	return s
-}
-
-func (s *ListLiveRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo) SetRegion(v string) *ListLiveRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo {
-	s.Region = &v
-	return s
-}
-
-func (s *ListLiveRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo) SetDomainName(v string) *ListLiveRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo {
-	s.DomainName = &v
+func (s *ListLiveRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo) SetStatus(v string) *ListLiveRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo {
+	s.Status = &v
 	return s
 }
 
@@ -21306,8 +23266,23 @@ func (s *ListLiveRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo) 
 	return s
 }
 
-func (s *ListLiveRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo) SetStatus(v string) *ListLiveRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo {
-	s.Status = &v
+func (s *ListLiveRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo) SetRegion(v string) *ListLiveRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo {
+	s.Region = &v
+	return s
+}
+
+func (s *ListLiveRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo) SetLogstore(v string) *ListLiveRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo {
+	s.Logstore = &v
+	return s
+}
+
+func (s *ListLiveRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo) SetProject(v string) *ListLiveRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo {
+	s.Project = &v
+	return s
+}
+
+func (s *ListLiveRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo) SetDomainName(v string) *ListLiveRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo {
+	s.DomainName = &v
 	return s
 }
 
@@ -21410,8 +23385,8 @@ func (s *ListLiveRealtimeLogDeliveryDomainsResponseBodyContent) SetDomains(v []*
 }
 
 type ListLiveRealtimeLogDeliveryDomainsResponseBodyContentDomains struct {
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 }
 
 func (s ListLiveRealtimeLogDeliveryDomainsResponseBodyContentDomains) String() string {
@@ -21422,13 +23397,13 @@ func (s ListLiveRealtimeLogDeliveryDomainsResponseBodyContentDomains) GoString()
 	return s.String()
 }
 
-func (s *ListLiveRealtimeLogDeliveryDomainsResponseBodyContentDomains) SetDomainName(v string) *ListLiveRealtimeLogDeliveryDomainsResponseBodyContentDomains {
-	s.DomainName = &v
+func (s *ListLiveRealtimeLogDeliveryDomainsResponseBodyContentDomains) SetStatus(v string) *ListLiveRealtimeLogDeliveryDomainsResponseBodyContentDomains {
+	s.Status = &v
 	return s
 }
 
-func (s *ListLiveRealtimeLogDeliveryDomainsResponseBodyContentDomains) SetStatus(v string) *ListLiveRealtimeLogDeliveryDomainsResponseBodyContentDomains {
-	s.Status = &v
+func (s *ListLiveRealtimeLogDeliveryDomainsResponseBodyContentDomains) SetDomainName(v string) *ListLiveRealtimeLogDeliveryDomainsResponseBodyContentDomains {
+	s.DomainName = &v
 	return s
 }
 
@@ -21519,9 +23494,9 @@ func (s *ListLiveRealtimeLogDeliveryInfosResponseBodyContent) SetRealtimeLogDeli
 }
 
 type ListLiveRealtimeLogDeliveryInfosResponseBodyContentRealtimeLogDeliveryInfos struct {
-	Project  *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	Logstore *string `json:"Logstore,omitempty" xml:"Logstore,omitempty"`
 	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Logstore *string `json:"Logstore,omitempty" xml:"Logstore,omitempty"`
+	Project  *string `json:"Project,omitempty" xml:"Project,omitempty"`
 }
 
 func (s ListLiveRealtimeLogDeliveryInfosResponseBodyContentRealtimeLogDeliveryInfos) String() string {
@@ -21532,8 +23507,8 @@ func (s ListLiveRealtimeLogDeliveryInfosResponseBodyContentRealtimeLogDeliveryIn
 	return s.String()
 }
 
-func (s *ListLiveRealtimeLogDeliveryInfosResponseBodyContentRealtimeLogDeliveryInfos) SetProject(v string) *ListLiveRealtimeLogDeliveryInfosResponseBodyContentRealtimeLogDeliveryInfos {
-	s.Project = &v
+func (s *ListLiveRealtimeLogDeliveryInfosResponseBodyContentRealtimeLogDeliveryInfos) SetRegion(v string) *ListLiveRealtimeLogDeliveryInfosResponseBodyContentRealtimeLogDeliveryInfos {
+	s.Region = &v
 	return s
 }
 
@@ -21542,8 +23517,8 @@ func (s *ListLiveRealtimeLogDeliveryInfosResponseBodyContentRealtimeLogDeliveryI
 	return s
 }
 
-func (s *ListLiveRealtimeLogDeliveryInfosResponseBodyContentRealtimeLogDeliveryInfos) SetRegion(v string) *ListLiveRealtimeLogDeliveryInfosResponseBodyContentRealtimeLogDeliveryInfos {
-	s.Region = &v
+func (s *ListLiveRealtimeLogDeliveryInfosResponseBodyContentRealtimeLogDeliveryInfos) SetProject(v string) *ListLiveRealtimeLogDeliveryInfosResponseBodyContentRealtimeLogDeliveryInfos {
+	s.Project = &v
 	return s
 }
 
@@ -21566,6 +23541,268 @@ func (s *ListLiveRealtimeLogDeliveryInfosResponse) SetHeaders(v map[string]*stri
 }
 
 func (s *ListLiveRealtimeLogDeliveryInfosResponse) SetBody(v *ListLiveRealtimeLogDeliveryInfosResponseBody) *ListLiveRealtimeLogDeliveryInfosResponse {
+	s.Body = v
+	return s
+}
+
+type ListPlaylistRequest struct {
+	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ProgramId *string `json:"ProgramId,omitempty" xml:"ProgramId,omitempty"`
+	Page      *int32  `json:"Page,omitempty" xml:"Page,omitempty"`
+	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListPlaylistRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPlaylistRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPlaylistRequest) SetOwnerId(v int64) *ListPlaylistRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListPlaylistRequest) SetProgramId(v string) *ListPlaylistRequest {
+	s.ProgramId = &v
+	return s
+}
+
+func (s *ListPlaylistRequest) SetPage(v int32) *ListPlaylistRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *ListPlaylistRequest) SetPageSize(v int32) *ListPlaylistRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListPlaylistResponseBody struct {
+	ProgramList []*ListPlaylistResponseBodyProgramList `json:"ProgramList,omitempty" xml:"ProgramList,omitempty" type:"Repeated"`
+	RequestId   *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Total       *int32                                 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListPlaylistResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPlaylistResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListPlaylistResponseBody) SetProgramList(v []*ListPlaylistResponseBodyProgramList) *ListPlaylistResponseBody {
+	s.ProgramList = v
+	return s
+}
+
+func (s *ListPlaylistResponseBody) SetRequestId(v string) *ListPlaylistResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListPlaylistResponseBody) SetTotal(v int32) *ListPlaylistResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListPlaylistResponseBodyProgramList struct {
+	Status       *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	RepeatNumber *int32  `json:"RepeatNumber,omitempty" xml:"RepeatNumber,omitempty"`
+	ProgramName  *string `json:"ProgramName,omitempty" xml:"ProgramName,omitempty"`
+	ProgramId    *string `json:"ProgramId,omitempty" xml:"ProgramId,omitempty"`
+	CasterId     *string `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
+	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+}
+
+func (s ListPlaylistResponseBodyProgramList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPlaylistResponseBodyProgramList) GoString() string {
+	return s.String()
+}
+
+func (s *ListPlaylistResponseBodyProgramList) SetStatus(v int32) *ListPlaylistResponseBodyProgramList {
+	s.Status = &v
+	return s
+}
+
+func (s *ListPlaylistResponseBodyProgramList) SetRepeatNumber(v int32) *ListPlaylistResponseBodyProgramList {
+	s.RepeatNumber = &v
+	return s
+}
+
+func (s *ListPlaylistResponseBodyProgramList) SetProgramName(v string) *ListPlaylistResponseBodyProgramList {
+	s.ProgramName = &v
+	return s
+}
+
+func (s *ListPlaylistResponseBodyProgramList) SetProgramId(v string) *ListPlaylistResponseBodyProgramList {
+	s.ProgramId = &v
+	return s
+}
+
+func (s *ListPlaylistResponseBodyProgramList) SetCasterId(v string) *ListPlaylistResponseBodyProgramList {
+	s.CasterId = &v
+	return s
+}
+
+func (s *ListPlaylistResponseBodyProgramList) SetDomainName(v string) *ListPlaylistResponseBodyProgramList {
+	s.DomainName = &v
+	return s
+}
+
+type ListPlaylistResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListPlaylistResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListPlaylistResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPlaylistResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListPlaylistResponse) SetHeaders(v map[string]*string) *ListPlaylistResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListPlaylistResponse) SetBody(v *ListPlaylistResponseBody) *ListPlaylistResponse {
+	s.Body = v
+	return s
+}
+
+type ListPlaylistItemsRequest struct {
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ProgramId      *string `json:"ProgramId,omitempty" xml:"ProgramId,omitempty"`
+	ProgramItemIds *string `json:"ProgramItemIds,omitempty" xml:"ProgramItemIds,omitempty"`
+}
+
+func (s ListPlaylistItemsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPlaylistItemsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPlaylistItemsRequest) SetOwnerId(v int64) *ListPlaylistItemsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListPlaylistItemsRequest) SetProgramId(v string) *ListPlaylistItemsRequest {
+	s.ProgramId = &v
+	return s
+}
+
+func (s *ListPlaylistItemsRequest) SetProgramItemIds(v string) *ListPlaylistItemsRequest {
+	s.ProgramItemIds = &v
+	return s
+}
+
+type ListPlaylistItemsResponseBody struct {
+	RequestId    *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ProgramItems []*ListPlaylistItemsResponseBodyProgramItems `json:"ProgramItems,omitempty" xml:"ProgramItems,omitempty" type:"Repeated"`
+	Total        *int32                                       `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListPlaylistItemsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPlaylistItemsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListPlaylistItemsResponseBody) SetRequestId(v string) *ListPlaylistItemsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListPlaylistItemsResponseBody) SetProgramItems(v []*ListPlaylistItemsResponseBodyProgramItems) *ListPlaylistItemsResponseBody {
+	s.ProgramItems = v
+	return s
+}
+
+func (s *ListPlaylistItemsResponseBody) SetTotal(v int32) *ListPlaylistItemsResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListPlaylistItemsResponseBodyProgramItems struct {
+	Index           *int32  `json:"Index,omitempty" xml:"Index,omitempty"`
+	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ProgramItemId   *string `json:"ProgramItemId,omitempty" xml:"ProgramItemId,omitempty"`
+	ProgramId       *string `json:"ProgramId,omitempty" xml:"ProgramId,omitempty"`
+	ProgramItemName *string `json:"ProgramItemName,omitempty" xml:"ProgramItemName,omitempty"`
+	ResourceValue   *string `json:"ResourceValue,omitempty" xml:"ResourceValue,omitempty"`
+}
+
+func (s ListPlaylistItemsResponseBodyProgramItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPlaylistItemsResponseBodyProgramItems) GoString() string {
+	return s.String()
+}
+
+func (s *ListPlaylistItemsResponseBodyProgramItems) SetIndex(v int32) *ListPlaylistItemsResponseBodyProgramItems {
+	s.Index = &v
+	return s
+}
+
+func (s *ListPlaylistItemsResponseBodyProgramItems) SetResourceType(v string) *ListPlaylistItemsResponseBodyProgramItems {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListPlaylistItemsResponseBodyProgramItems) SetProgramItemId(v string) *ListPlaylistItemsResponseBodyProgramItems {
+	s.ProgramItemId = &v
+	return s
+}
+
+func (s *ListPlaylistItemsResponseBodyProgramItems) SetProgramId(v string) *ListPlaylistItemsResponseBodyProgramItems {
+	s.ProgramId = &v
+	return s
+}
+
+func (s *ListPlaylistItemsResponseBodyProgramItems) SetProgramItemName(v string) *ListPlaylistItemsResponseBodyProgramItems {
+	s.ProgramItemName = &v
+	return s
+}
+
+func (s *ListPlaylistItemsResponseBodyProgramItems) SetResourceValue(v string) *ListPlaylistItemsResponseBodyProgramItems {
+	s.ResourceValue = &v
+	return s
+}
+
+type ListPlaylistItemsResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListPlaylistItemsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListPlaylistItemsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPlaylistItemsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListPlaylistItemsResponse) SetHeaders(v map[string]*string) *ListPlaylistItemsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListPlaylistItemsResponse) SetBody(v *ListPlaylistItemsResponseBody) *ListPlaylistItemsResponse {
 	s.Body = v
 	return s
 }
@@ -22392,6 +24629,198 @@ func (s *ModifyLiveRealtimeLogDeliveryResponse) SetBody(v *ModifyLiveRealtimeLog
 	return s
 }
 
+type ModifyStudioLayoutRequest struct {
+	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	CasterId              *string `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
+	LayoutId              *string `json:"LayoutId,omitempty" xml:"LayoutId,omitempty"`
+	LayoutName            *string `json:"LayoutName,omitempty" xml:"LayoutName,omitempty"`
+	CommonConfig          *string `json:"CommonConfig,omitempty" xml:"CommonConfig,omitempty"`
+	BgImageConfig         *string `json:"BgImageConfig,omitempty" xml:"BgImageConfig,omitempty"`
+	ScreenInputConfigList *string `json:"ScreenInputConfigList,omitempty" xml:"ScreenInputConfigList,omitempty"`
+	MediaInputConfigList  *string `json:"MediaInputConfigList,omitempty" xml:"MediaInputConfigList,omitempty"`
+	LayerOrderConfigList  *string `json:"LayerOrderConfigList,omitempty" xml:"LayerOrderConfigList,omitempty"`
+}
+
+func (s ModifyStudioLayoutRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyStudioLayoutRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyStudioLayoutRequest) SetOwnerId(v int64) *ModifyStudioLayoutRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyStudioLayoutRequest) SetCasterId(v string) *ModifyStudioLayoutRequest {
+	s.CasterId = &v
+	return s
+}
+
+func (s *ModifyStudioLayoutRequest) SetLayoutId(v string) *ModifyStudioLayoutRequest {
+	s.LayoutId = &v
+	return s
+}
+
+func (s *ModifyStudioLayoutRequest) SetLayoutName(v string) *ModifyStudioLayoutRequest {
+	s.LayoutName = &v
+	return s
+}
+
+func (s *ModifyStudioLayoutRequest) SetCommonConfig(v string) *ModifyStudioLayoutRequest {
+	s.CommonConfig = &v
+	return s
+}
+
+func (s *ModifyStudioLayoutRequest) SetBgImageConfig(v string) *ModifyStudioLayoutRequest {
+	s.BgImageConfig = &v
+	return s
+}
+
+func (s *ModifyStudioLayoutRequest) SetScreenInputConfigList(v string) *ModifyStudioLayoutRequest {
+	s.ScreenInputConfigList = &v
+	return s
+}
+
+func (s *ModifyStudioLayoutRequest) SetMediaInputConfigList(v string) *ModifyStudioLayoutRequest {
+	s.MediaInputConfigList = &v
+	return s
+}
+
+func (s *ModifyStudioLayoutRequest) SetLayerOrderConfigList(v string) *ModifyStudioLayoutRequest {
+	s.LayerOrderConfigList = &v
+	return s
+}
+
+type ModifyStudioLayoutResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyStudioLayoutResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyStudioLayoutResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyStudioLayoutResponseBody) SetRequestId(v string) *ModifyStudioLayoutResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyStudioLayoutResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ModifyStudioLayoutResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyStudioLayoutResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyStudioLayoutResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyStudioLayoutResponse) SetHeaders(v map[string]*string) *ModifyStudioLayoutResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyStudioLayoutResponse) SetBody(v *ModifyStudioLayoutResponseBody) *ModifyStudioLayoutResponse {
+	s.Body = v
+	return s
+}
+
+type OpenLiveShiftRequest struct {
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	AppName    *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+	Duration   *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Vision     *int32  `json:"Vision,omitempty" xml:"Vision,omitempty"`
+}
+
+func (s OpenLiveShiftRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenLiveShiftRequest) GoString() string {
+	return s.String()
+}
+
+func (s *OpenLiveShiftRequest) SetOwnerId(v int64) *OpenLiveShiftRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *OpenLiveShiftRequest) SetDomainName(v string) *OpenLiveShiftRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *OpenLiveShiftRequest) SetAppName(v string) *OpenLiveShiftRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *OpenLiveShiftRequest) SetStreamName(v string) *OpenLiveShiftRequest {
+	s.StreamName = &v
+	return s
+}
+
+func (s *OpenLiveShiftRequest) SetDuration(v int32) *OpenLiveShiftRequest {
+	s.Duration = &v
+	return s
+}
+
+func (s *OpenLiveShiftRequest) SetVision(v int32) *OpenLiveShiftRequest {
+	s.Vision = &v
+	return s
+}
+
+type OpenLiveShiftResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s OpenLiveShiftResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenLiveShiftResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *OpenLiveShiftResponseBody) SetRequestId(v string) *OpenLiveShiftResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type OpenLiveShiftResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *OpenLiveShiftResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s OpenLiveShiftResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenLiveShiftResponse) GoString() string {
+	return s.String()
+}
+
+func (s *OpenLiveShiftResponse) SetHeaders(v map[string]*string) *OpenLiveShiftResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *OpenLiveShiftResponse) SetBody(v *OpenLiveShiftResponseBody) *OpenLiveShiftResponse {
+	s.Body = v
+	return s
+}
+
 type RealTimeRecordCommandRequest struct {
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	Command    *string `json:"Command,omitempty" xml:"Command,omitempty"`
@@ -22945,7 +25374,6 @@ type SetCasterChannelRequest struct {
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	SeekOffset *int32  `json:"SeekOffset,omitempty" xml:"SeekOffset,omitempty"`
 	PlayStatus *int32  `json:"PlayStatus,omitempty" xml:"PlayStatus,omitempty"`
-	ReloadFlag *int32  `json:"ReloadFlag,omitempty" xml:"ReloadFlag,omitempty"`
 }
 
 func (s SetCasterChannelRequest) String() string {
@@ -22983,11 +25411,6 @@ func (s *SetCasterChannelRequest) SetSeekOffset(v int32) *SetCasterChannelReques
 
 func (s *SetCasterChannelRequest) SetPlayStatus(v int32) *SetCasterChannelRequest {
 	s.PlayStatus = &v
-	return s
-}
-
-func (s *SetCasterChannelRequest) SetReloadFlag(v int32) *SetCasterChannelRequest {
-	s.ReloadFlag = &v
 	return s
 }
 
@@ -23277,10 +25700,10 @@ func (s *SetCasterSyncGroupRequest) SetSyncGroup(v []*SetCasterSyncGroupRequestS
 }
 
 type SetCasterSyncGroupRequestSyncGroup struct {
-	Mode               *int32    `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	SyncDelayThreshold *int64    `json:"SyncDelayThreshold,omitempty" xml:"SyncDelayThreshold,omitempty"`
 	HostResourceId     *string   `json:"HostResourceId,omitempty" xml:"HostResourceId,omitempty"`
 	ResourceIds        []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
+	SyncDelayThreshold *int64    `json:"SyncDelayThreshold,omitempty" xml:"SyncDelayThreshold,omitempty"`
+	Mode               *int32    `json:"Mode,omitempty" xml:"Mode,omitempty"`
 }
 
 func (s SetCasterSyncGroupRequestSyncGroup) String() string {
@@ -23291,8 +25714,13 @@ func (s SetCasterSyncGroupRequestSyncGroup) GoString() string {
 	return s.String()
 }
 
-func (s *SetCasterSyncGroupRequestSyncGroup) SetMode(v int32) *SetCasterSyncGroupRequestSyncGroup {
-	s.Mode = &v
+func (s *SetCasterSyncGroupRequestSyncGroup) SetHostResourceId(v string) *SetCasterSyncGroupRequestSyncGroup {
+	s.HostResourceId = &v
+	return s
+}
+
+func (s *SetCasterSyncGroupRequestSyncGroup) SetResourceIds(v []*string) *SetCasterSyncGroupRequestSyncGroup {
+	s.ResourceIds = v
 	return s
 }
 
@@ -23301,13 +25729,8 @@ func (s *SetCasterSyncGroupRequestSyncGroup) SetSyncDelayThreshold(v int64) *Set
 	return s
 }
 
-func (s *SetCasterSyncGroupRequestSyncGroup) SetHostResourceId(v string) *SetCasterSyncGroupRequestSyncGroup {
-	s.HostResourceId = &v
-	return s
-}
-
-func (s *SetCasterSyncGroupRequestSyncGroup) SetResourceIds(v []*string) *SetCasterSyncGroupRequestSyncGroup {
-	s.ResourceIds = v
+func (s *SetCasterSyncGroupRequestSyncGroup) SetMode(v int32) *SetCasterSyncGroupRequestSyncGroup {
+	s.Mode = &v
 	return s
 }
 
@@ -23457,16 +25880,12 @@ func (s *SetLiveDomainCertificateResponse) SetBody(v *SetLiveDomainCertificateRe
 }
 
 type SetLiveLazyPullStreamInfoConfigRequest struct {
-	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	DomainName         *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	AppName            *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	PullDomainName     *string `json:"PullDomainName,omitempty" xml:"PullDomainName,omitempty"`
-	PullAppName        *string `json:"PullAppName,omitempty" xml:"PullAppName,omitempty"`
-	PullProtocol       *string `json:"PullProtocol,omitempty" xml:"PullProtocol,omitempty"`
-	PullAuthType       *string `json:"PullAuthType,omitempty" xml:"PullAuthType,omitempty"`
-	PullAuthKey        *string `json:"PullAuthKey,omitempty" xml:"PullAuthKey,omitempty"`
-	PullArgs           *string `json:"PullArgs,omitempty" xml:"PullArgs,omitempty"`
-	LiveapiRequestFrom *string `json:"LiveapiRequestFrom,omitempty" xml:"LiveapiRequestFrom,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	AppName        *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	PullDomainName *string `json:"PullDomainName,omitempty" xml:"PullDomainName,omitempty"`
+	PullAppName    *string `json:"PullAppName,omitempty" xml:"PullAppName,omitempty"`
+	PullProtocol   *string `json:"PullProtocol,omitempty" xml:"PullProtocol,omitempty"`
 }
 
 func (s SetLiveLazyPullStreamInfoConfigRequest) String() string {
@@ -23504,26 +25923,6 @@ func (s *SetLiveLazyPullStreamInfoConfigRequest) SetPullAppName(v string) *SetLi
 
 func (s *SetLiveLazyPullStreamInfoConfigRequest) SetPullProtocol(v string) *SetLiveLazyPullStreamInfoConfigRequest {
 	s.PullProtocol = &v
-	return s
-}
-
-func (s *SetLiveLazyPullStreamInfoConfigRequest) SetPullAuthType(v string) *SetLiveLazyPullStreamInfoConfigRequest {
-	s.PullAuthType = &v
-	return s
-}
-
-func (s *SetLiveLazyPullStreamInfoConfigRequest) SetPullAuthKey(v string) *SetLiveLazyPullStreamInfoConfigRequest {
-	s.PullAuthKey = &v
-	return s
-}
-
-func (s *SetLiveLazyPullStreamInfoConfigRequest) SetPullArgs(v string) *SetLiveLazyPullStreamInfoConfigRequest {
-	s.PullArgs = &v
-	return s
-}
-
-func (s *SetLiveLazyPullStreamInfoConfigRequest) SetLiveapiRequestFrom(v string) *SetLiveLazyPullStreamInfoConfigRequest {
-	s.LiveapiRequestFrom = &v
 	return s
 }
 
@@ -23751,9 +26150,6 @@ type SetLiveStreamsNotifyUrlConfigRequest struct {
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	NotifyUrl  *string `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
-	NotifyType *string `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
-	AuthType   *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	AuthKey    *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
 }
 
 func (s SetLiveStreamsNotifyUrlConfigRequest) String() string {
@@ -23776,21 +26172,6 @@ func (s *SetLiveStreamsNotifyUrlConfigRequest) SetDomainName(v string) *SetLiveS
 
 func (s *SetLiveStreamsNotifyUrlConfigRequest) SetNotifyUrl(v string) *SetLiveStreamsNotifyUrlConfigRequest {
 	s.NotifyUrl = &v
-	return s
-}
-
-func (s *SetLiveStreamsNotifyUrlConfigRequest) SetNotifyType(v string) *SetLiveStreamsNotifyUrlConfigRequest {
-	s.NotifyType = &v
-	return s
-}
-
-func (s *SetLiveStreamsNotifyUrlConfigRequest) SetAuthType(v string) *SetLiveStreamsNotifyUrlConfigRequest {
-	s.AuthType = &v
-	return s
-}
-
-func (s *SetLiveStreamsNotifyUrlConfigRequest) SetAuthKey(v string) *SetLiveStreamsNotifyUrlConfigRequest {
-	s.AuthKey = &v
 	return s
 }
 
@@ -24344,8 +26725,8 @@ func (s *StartLiveIndexRequest) SetOssRamRole(v string) *StartLiveIndexRequest {
 }
 
 type StartLiveIndexResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s StartLiveIndexResponseBody) String() string {
@@ -24356,13 +26737,13 @@ func (s StartLiveIndexResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *StartLiveIndexResponseBody) SetRequestId(v string) *StartLiveIndexResponseBody {
-	s.RequestId = &v
+func (s *StartLiveIndexResponseBody) SetTaskId(v string) *StartLiveIndexResponseBody {
+	s.TaskId = &v
 	return s
 }
 
-func (s *StartLiveIndexResponseBody) SetTaskId(v string) *StartLiveIndexResponseBody {
-	s.TaskId = &v
+func (s *StartLiveIndexResponseBody) SetRequestId(v string) *StartLiveIndexResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -24385,6 +26766,186 @@ func (s *StartLiveIndexResponse) SetHeaders(v map[string]*string) *StartLiveInde
 }
 
 func (s *StartLiveIndexResponse) SetBody(v *StartLiveIndexResponseBody) *StartLiveIndexResponse {
+	s.Body = v
+	return s
+}
+
+type StartPlaylistRequest struct {
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ProgramId   *string `json:"ProgramId,omitempty" xml:"ProgramId,omitempty"`
+	ResumeMode  *string `json:"ResumeMode,omitempty" xml:"ResumeMode,omitempty"`
+	StartItemId *string `json:"StartItemId,omitempty" xml:"StartItemId,omitempty"`
+	Offset      *int32  `json:"Offset,omitempty" xml:"Offset,omitempty"`
+}
+
+func (s StartPlaylistRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartPlaylistRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartPlaylistRequest) SetOwnerId(v int64) *StartPlaylistRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *StartPlaylistRequest) SetProgramId(v string) *StartPlaylistRequest {
+	s.ProgramId = &v
+	return s
+}
+
+func (s *StartPlaylistRequest) SetResumeMode(v string) *StartPlaylistRequest {
+	s.ResumeMode = &v
+	return s
+}
+
+func (s *StartPlaylistRequest) SetStartItemId(v string) *StartPlaylistRequest {
+	s.StartItemId = &v
+	return s
+}
+
+func (s *StartPlaylistRequest) SetOffset(v int32) *StartPlaylistRequest {
+	s.Offset = &v
+	return s
+}
+
+type StartPlaylistResponseBody struct {
+	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StreamInfo *StartPlaylistResponseBodyStreamInfo `json:"StreamInfo,omitempty" xml:"StreamInfo,omitempty" type:"Struct"`
+	ProgramId  *string                              `json:"ProgramId,omitempty" xml:"ProgramId,omitempty"`
+}
+
+func (s StartPlaylistResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartPlaylistResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartPlaylistResponseBody) SetRequestId(v string) *StartPlaylistResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StartPlaylistResponseBody) SetStreamInfo(v *StartPlaylistResponseBodyStreamInfo) *StartPlaylistResponseBody {
+	s.StreamInfo = v
+	return s
+}
+
+func (s *StartPlaylistResponseBody) SetProgramId(v string) *StartPlaylistResponseBody {
+	s.ProgramId = &v
+	return s
+}
+
+type StartPlaylistResponseBodyStreamInfo struct {
+	AppName    *string                                     `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	StreamName *string                                     `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+	Streams    *StartPlaylistResponseBodyStreamInfoStreams `json:"Streams,omitempty" xml:"Streams,omitempty" type:"Struct"`
+	DomainName *string                                     `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+}
+
+func (s StartPlaylistResponseBodyStreamInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartPlaylistResponseBodyStreamInfo) GoString() string {
+	return s.String()
+}
+
+func (s *StartPlaylistResponseBodyStreamInfo) SetAppName(v string) *StartPlaylistResponseBodyStreamInfo {
+	s.AppName = &v
+	return s
+}
+
+func (s *StartPlaylistResponseBodyStreamInfo) SetStreamName(v string) *StartPlaylistResponseBodyStreamInfo {
+	s.StreamName = &v
+	return s
+}
+
+func (s *StartPlaylistResponseBodyStreamInfo) SetStreams(v *StartPlaylistResponseBodyStreamInfoStreams) *StartPlaylistResponseBodyStreamInfo {
+	s.Streams = v
+	return s
+}
+
+func (s *StartPlaylistResponseBodyStreamInfo) SetDomainName(v string) *StartPlaylistResponseBodyStreamInfo {
+	s.DomainName = &v
+	return s
+}
+
+type StartPlaylistResponseBodyStreamInfoStreams struct {
+	Stream []*StartPlaylistResponseBodyStreamInfoStreamsStream `json:"Stream,omitempty" xml:"Stream,omitempty" type:"Repeated"`
+}
+
+func (s StartPlaylistResponseBodyStreamInfoStreams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartPlaylistResponseBodyStreamInfoStreams) GoString() string {
+	return s.String()
+}
+
+func (s *StartPlaylistResponseBodyStreamInfoStreams) SetStream(v []*StartPlaylistResponseBodyStreamInfoStreamsStream) *StartPlaylistResponseBodyStreamInfoStreams {
+	s.Stream = v
+	return s
+}
+
+type StartPlaylistResponseBodyStreamInfoStreamsStream struct {
+	Quality     *string `json:"Quality,omitempty" xml:"Quality,omitempty"`
+	PullFlvUrl  *string `json:"PullFlvUrl,omitempty" xml:"PullFlvUrl,omitempty"`
+	PullM3U8Url *string `json:"PullM3U8Url,omitempty" xml:"PullM3U8Url,omitempty"`
+	PullRtmpUrl *string `json:"PullRtmpUrl,omitempty" xml:"PullRtmpUrl,omitempty"`
+}
+
+func (s StartPlaylistResponseBodyStreamInfoStreamsStream) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartPlaylistResponseBodyStreamInfoStreamsStream) GoString() string {
+	return s.String()
+}
+
+func (s *StartPlaylistResponseBodyStreamInfoStreamsStream) SetQuality(v string) *StartPlaylistResponseBodyStreamInfoStreamsStream {
+	s.Quality = &v
+	return s
+}
+
+func (s *StartPlaylistResponseBodyStreamInfoStreamsStream) SetPullFlvUrl(v string) *StartPlaylistResponseBodyStreamInfoStreamsStream {
+	s.PullFlvUrl = &v
+	return s
+}
+
+func (s *StartPlaylistResponseBodyStreamInfoStreamsStream) SetPullM3U8Url(v string) *StartPlaylistResponseBodyStreamInfoStreamsStream {
+	s.PullM3U8Url = &v
+	return s
+}
+
+func (s *StartPlaylistResponseBodyStreamInfoStreamsStream) SetPullRtmpUrl(v string) *StartPlaylistResponseBodyStreamInfoStreamsStream {
+	s.PullRtmpUrl = &v
+	return s
+}
+
+type StartPlaylistResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *StartPlaylistResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StartPlaylistResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartPlaylistResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartPlaylistResponse) SetHeaders(v map[string]*string) *StartPlaylistResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartPlaylistResponse) SetBody(v *StartPlaylistResponseBody) *StartPlaylistResponse {
 	s.Body = v
 	return s
 }
@@ -24671,10 +27232,79 @@ func (s *StopLiveIndexResponse) SetBody(v *StopLiveIndexResponseBody) *StopLiveI
 	return s
 }
 
+type StopPlaylistRequest struct {
+	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ProgramId *string `json:"ProgramId,omitempty" xml:"ProgramId,omitempty"`
+}
+
+func (s StopPlaylistRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopPlaylistRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopPlaylistRequest) SetOwnerId(v int64) *StopPlaylistRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *StopPlaylistRequest) SetProgramId(v string) *StopPlaylistRequest {
+	s.ProgramId = &v
+	return s
+}
+
+type StopPlaylistResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ProgramId *string `json:"ProgramId,omitempty" xml:"ProgramId,omitempty"`
+}
+
+func (s StopPlaylistResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopPlaylistResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopPlaylistResponseBody) SetRequestId(v string) *StopPlaylistResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StopPlaylistResponseBody) SetProgramId(v string) *StopPlaylistResponseBody {
+	s.ProgramId = &v
+	return s
+}
+
+type StopPlaylistResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *StopPlaylistResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StopPlaylistResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopPlaylistResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopPlaylistResponse) SetHeaders(v map[string]*string) *StopPlaylistResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopPlaylistResponse) SetBody(v *StopPlaylistResponseBody) *StopPlaylistResponse {
+	s.Body = v
+	return s
+}
+
 type TagLiveResourcesRequest struct {
 	OwnerId      *int64                        `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceId   []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ResourceId   []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	Tag          []*TagLiveResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -24691,13 +27321,13 @@ func (s *TagLiveResourcesRequest) SetOwnerId(v int64) *TagLiveResourcesRequest {
 	return s
 }
 
-func (s *TagLiveResourcesRequest) SetResourceId(v []*string) *TagLiveResourcesRequest {
-	s.ResourceId = v
+func (s *TagLiveResourcesRequest) SetResourceType(v string) *TagLiveResourcesRequest {
+	s.ResourceType = &v
 	return s
 }
 
-func (s *TagLiveResourcesRequest) SetResourceType(v string) *TagLiveResourcesRequest {
-	s.ResourceType = &v
+func (s *TagLiveResourcesRequest) SetResourceId(v []*string) *TagLiveResourcesRequest {
+	s.ResourceId = v
 	return s
 }
 
@@ -24771,10 +27401,10 @@ func (s *TagLiveResourcesResponse) SetBody(v *TagLiveResourcesResponseBody) *Tag
 
 type UnTagLiveResourcesRequest struct {
 	OwnerId      *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceId   []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 	All          *bool     `json:"All,omitempty" xml:"All,omitempty"`
+	ResourceId   []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
 func (s UnTagLiveResourcesRequest) String() string {
@@ -24790,23 +27420,23 @@ func (s *UnTagLiveResourcesRequest) SetOwnerId(v int64) *UnTagLiveResourcesReque
 	return s
 }
 
-func (s *UnTagLiveResourcesRequest) SetResourceId(v []*string) *UnTagLiveResourcesRequest {
-	s.ResourceId = v
-	return s
-}
-
 func (s *UnTagLiveResourcesRequest) SetResourceType(v string) *UnTagLiveResourcesRequest {
 	s.ResourceType = &v
 	return s
 }
 
-func (s *UnTagLiveResourcesRequest) SetTagKey(v []*string) *UnTagLiveResourcesRequest {
-	s.TagKey = v
+func (s *UnTagLiveResourcesRequest) SetAll(v bool) *UnTagLiveResourcesRequest {
+	s.All = &v
 	return s
 }
 
-func (s *UnTagLiveResourcesRequest) SetAll(v bool) *UnTagLiveResourcesRequest {
-	s.All = &v
+func (s *UnTagLiveResourcesRequest) SetResourceId(v []*string) *UnTagLiveResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *UnTagLiveResourcesRequest) SetTagKey(v []*string) *UnTagLiveResourcesRequest {
+	s.TagKey = v
 	return s
 }
 
@@ -25861,7 +28491,6 @@ func (s *UpdateLiveSnapshotDetectPornConfigResponse) SetBody(v *UpdateLiveSnapsh
 }
 
 type UpdateLiveTopLevelDomainRequest struct {
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	SecurityToken  *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	TopLevelDomain *string `json:"TopLevelDomain,omitempty" xml:"TopLevelDomain,omitempty"`
@@ -25873,11 +28502,6 @@ func (s UpdateLiveTopLevelDomainRequest) String() string {
 
 func (s UpdateLiveTopLevelDomainRequest) GoString() string {
 	return s.String()
-}
-
-func (s *UpdateLiveTopLevelDomainRequest) SetOwnerId(v int64) *UpdateLiveTopLevelDomainRequest {
-	s.OwnerId = &v
-	return s
 }
 
 func (s *UpdateLiveTopLevelDomainRequest) SetSecurityToken(v string) *UpdateLiveTopLevelDomainRequest {
@@ -26424,6 +29048,34 @@ func (client *Client) AddCustomLiveStreamTranscode(request *AddCustomLiveStreamT
 	return _result, _err
 }
 
+func (client *Client) AddDRMCertificateWithOptions(request *AddDRMCertificateRequest, runtime *util.RuntimeOptions) (_result *AddDRMCertificateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &AddDRMCertificateResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("AddDRMCertificate"), tea.String("2016-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddDRMCertificate(request *AddDRMCertificateRequest) (_result *AddDRMCertificateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddDRMCertificateResponse{}
+	_body, _err := client.AddDRMCertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) AddLiveAppRecordConfigWithOptions(request *AddLiveAppRecordConfigRequest, runtime *util.RuntimeOptions) (_result *AddLiveAppRecordConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26816,6 +29468,62 @@ func (client *Client) AddLiveStreamTranscode(request *AddLiveStreamTranscodeRequ
 	return _result, _err
 }
 
+func (client *Client) AddMultiRateConfigWithOptions(request *AddMultiRateConfigRequest, runtime *util.RuntimeOptions) (_result *AddMultiRateConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &AddMultiRateConfigResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("AddMultiRateConfig"), tea.String("2016-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddMultiRateConfig(request *AddMultiRateConfigRequest) (_result *AddMultiRateConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddMultiRateConfigResponse{}
+	_body, _err := client.AddMultiRateConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddPlaylistItemsWithOptions(request *AddPlaylistItemsRequest, runtime *util.RuntimeOptions) (_result *AddPlaylistItemsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &AddPlaylistItemsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("AddPlaylistItems"), tea.String("2016-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddPlaylistItems(request *AddPlaylistItemsRequest) (_result *AddPlaylistItemsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddPlaylistItemsResponse{}
+	_body, _err := client.AddPlaylistItemsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) AddRtsLiveStreamTranscodeWithOptions(request *AddRtsLiveStreamTranscodeRequest, runtime *util.RuntimeOptions) (_result *AddRtsLiveStreamTranscodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26837,6 +29545,34 @@ func (client *Client) AddRtsLiveStreamTranscode(request *AddRtsLiveStreamTransco
 	runtime := &util.RuntimeOptions{}
 	_result = &AddRtsLiveStreamTranscodeResponse{}
 	_body, _err := client.AddRtsLiveStreamTranscodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddStudioLayoutWithOptions(request *AddStudioLayoutRequest, runtime *util.RuntimeOptions) (_result *AddStudioLayoutResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &AddStudioLayoutResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("AddStudioLayout"), tea.String("2016-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddStudioLayout(request *AddStudioLayoutRequest) (_result *AddStudioLayoutResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddStudioLayoutResponse{}
+	_body, _err := client.AddStudioLayoutWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27005,6 +29741,62 @@ func (client *Client) BatchSetLiveDomainConfigs(request *BatchSetLiveDomainConfi
 	runtime := &util.RuntimeOptions{}
 	_result = &BatchSetLiveDomainConfigsResponse{}
 	_body, _err := client.BatchSetLiveDomainConfigsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CheckServiceForRoleWithOptions(request *CheckServiceForRoleRequest, runtime *util.RuntimeOptions) (_result *CheckServiceForRoleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CheckServiceForRoleResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CheckServiceForRole"), tea.String("2016-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CheckServiceForRole(request *CheckServiceForRoleRequest) (_result *CheckServiceForRoleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CheckServiceForRoleResponse{}
+	_body, _err := client.CheckServiceForRoleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CloseLiveShiftWithOptions(request *CloseLiveShiftRequest, runtime *util.RuntimeOptions) (_result *CloseLiveShiftResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CloseLiveShiftResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CloseLiveShift"), tea.String("2016-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CloseLiveShift(request *CloseLiveShiftRequest) (_result *CloseLiveShiftResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CloseLiveShiftResponse{}
+	_body, _err := client.CloseLiveShiftWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28135,6 +30927,90 @@ func (client *Client) DeleteMixStream(request *DeleteMixStreamRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) DeleteMultiRateConfigWithOptions(request *DeleteMultiRateConfigRequest, runtime *util.RuntimeOptions) (_result *DeleteMultiRateConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DeleteMultiRateConfigResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteMultiRateConfig"), tea.String("2016-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteMultiRateConfig(request *DeleteMultiRateConfigRequest) (_result *DeleteMultiRateConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteMultiRateConfigResponse{}
+	_body, _err := client.DeleteMultiRateConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeletePlaylistWithOptions(request *DeletePlaylistRequest, runtime *util.RuntimeOptions) (_result *DeletePlaylistResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DeletePlaylistResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeletePlaylist"), tea.String("2016-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeletePlaylist(request *DeletePlaylistRequest) (_result *DeletePlaylistResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeletePlaylistResponse{}
+	_body, _err := client.DeletePlaylistWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeletePlaylistItemsWithOptions(request *DeletePlaylistItemsRequest, runtime *util.RuntimeOptions) (_result *DeletePlaylistItemsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DeletePlaylistItemsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeletePlaylistItems"), tea.String("2016-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeletePlaylistItems(request *DeletePlaylistItemsRequest) (_result *DeletePlaylistItemsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeletePlaylistItemsResponse{}
+	_body, _err := client.DeletePlaylistItemsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteRoomWithOptions(request *DeleteRoomRequest, runtime *util.RuntimeOptions) (_result *DeleteRoomResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28156,6 +31032,34 @@ func (client *Client) DeleteRoom(request *DeleteRoomRequest) (_result *DeleteRoo
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteRoomResponse{}
 	_body, _err := client.DeleteRoomWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteStudioLayoutWithOptions(request *DeleteStudioLayoutRequest, runtime *util.RuntimeOptions) (_result *DeleteStudioLayoutResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DeleteStudioLayoutResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteStudioLayout"), tea.String("2016-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteStudioLayout(request *DeleteStudioLayoutRequest) (_result *DeleteStudioLayoutResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteStudioLayoutResponse{}
+	_body, _err := client.DeleteStudioLayoutWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28604,6 +31508,34 @@ func (client *Client) DescribeDomainUsageData(request *DescribeDomainUsageDataRe
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDomainUsageDataResponse{}
 	_body, _err := client.DescribeDomainUsageDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDRMCertListWithOptions(request *DescribeDRMCertListRequest, runtime *util.RuntimeOptions) (_result *DescribeDRMCertListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeDRMCertListResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeDRMCertList"), tea.String("2016-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDRMCertList(request *DescribeDRMCertListRequest) (_result *DescribeDRMCertListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDRMCertListResponse{}
+	_body, _err := client.DescribeDRMCertListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29399,6 +32331,34 @@ func (client *Client) DescribeLiveDomainSnapshotData(request *DescribeLiveDomain
 	return _result, _err
 }
 
+func (client *Client) DescribeLiveDomainStreamTranscodeDataWithOptions(request *DescribeLiveDomainStreamTranscodeDataRequest, runtime *util.RuntimeOptions) (_result *DescribeLiveDomainStreamTranscodeDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeLiveDomainStreamTranscodeDataResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeLiveDomainStreamTranscodeData"), tea.String("2016-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeLiveDomainStreamTranscodeData(request *DescribeLiveDomainStreamTranscodeDataRequest) (_result *DescribeLiveDomainStreamTranscodeDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeLiveDomainStreamTranscodeDataResponse{}
+	_body, _err := client.DescribeLiveDomainStreamTranscodeDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeLiveDomainTimeShiftDataWithOptions(request *DescribeLiveDomainTimeShiftDataRequest, runtime *util.RuntimeOptions) (_result *DescribeLiveDomainTimeShiftDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29680,6 +32640,34 @@ func (client *Client) DescribeLiveRecordVodConfigs(request *DescribeLiveRecordVo
 	return _result, _err
 }
 
+func (client *Client) DescribeLiveShiftConfigsWithOptions(request *DescribeLiveShiftConfigsRequest, runtime *util.RuntimeOptions) (_result *DescribeLiveShiftConfigsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeLiveShiftConfigsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeLiveShiftConfigs"), tea.String("2016-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeLiveShiftConfigs(request *DescribeLiveShiftConfigsRequest) (_result *DescribeLiveShiftConfigsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeLiveShiftConfigsResponse{}
+	_body, _err := client.DescribeLiveShiftConfigsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeLiveSnapshotConfigWithOptions(request *DescribeLiveSnapshotConfigRequest, runtime *util.RuntimeOptions) (_result *DescribeLiveSnapshotConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29849,34 +32837,6 @@ func (client *Client) DescribeLiveStreamHistoryUserNum(request *DescribeLiveStre
 	return _result, _err
 }
 
-func (client *Client) DescribeLiveStreamOnlineUserNumWithOptions(request *DescribeLiveStreamOnlineUserNumRequest, runtime *util.RuntimeOptions) (_result *DescribeLiveStreamOnlineUserNumResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeLiveStreamOnlineUserNumResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeLiveStreamOnlineUserNum"), tea.String("2016-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeLiveStreamOnlineUserNum(request *DescribeLiveStreamOnlineUserNumRequest) (_result *DescribeLiveStreamOnlineUserNumResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeLiveStreamOnlineUserNumResponse{}
-	_body, _err := client.DescribeLiveStreamOnlineUserNumWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeLiveStreamOptimizedFeatureConfigWithOptions(request *DescribeLiveStreamOptimizedFeatureConfigRequest, runtime *util.RuntimeOptions) (_result *DescribeLiveStreamOptimizedFeatureConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30038,34 +32998,6 @@ func (client *Client) DescribeLiveStreamsControlHistory(request *DescribeLiveStr
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeLiveStreamsControlHistoryResponse{}
 	_body, _err := client.DescribeLiveStreamsControlHistoryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeLiveStreamsFrameRateAndBitRateDataWithOptions(request *DescribeLiveStreamsFrameRateAndBitRateDataRequest, runtime *util.RuntimeOptions) (_result *DescribeLiveStreamsFrameRateAndBitRateDataResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeLiveStreamsFrameRateAndBitRateDataResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeLiveStreamsFrameRateAndBitRateData"), tea.String("2016-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeLiveStreamsFrameRateAndBitRateData(request *DescribeLiveStreamsFrameRateAndBitRateDataRequest) (_result *DescribeLiveStreamsFrameRateAndBitRateDataResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeLiveStreamsFrameRateAndBitRateDataResponse{}
-	_body, _err := client.DescribeLiveStreamsFrameRateAndBitRateDataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30549,6 +33481,34 @@ func (client *Client) DescribeRoomStatus(request *DescribeRoomStatusRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) DescribeStudioLayoutsWithOptions(request *DescribeStudioLayoutsRequest, runtime *util.RuntimeOptions) (_result *DescribeStudioLayoutsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeStudioLayoutsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeStudioLayouts"), tea.String("2016-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeStudioLayouts(request *DescribeStudioLayoutsRequest) (_result *DescribeStudioLayoutsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeStudioLayoutsResponse{}
+	_body, _err := client.DescribeStudioLayoutsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeUpBpsPeakDataWithOptions(request *DescribeUpBpsPeakDataRequest, runtime *util.RuntimeOptions) (_result *DescribeUpBpsPeakDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30683,6 +33643,34 @@ func (client *Client) EditHtmlResource(request *EditHtmlResourceRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &EditHtmlResourceResponse{}
 	_body, _err := client.EditHtmlResourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) EditPlaylistWithOptions(request *EditPlaylistRequest, runtime *util.RuntimeOptions) (_result *EditPlaylistResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &EditPlaylistResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("EditPlaylist"), tea.String("2016-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) EditPlaylist(request *EditPlaylistRequest) (_result *EditPlaylistResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EditPlaylistResponse{}
+	_body, _err := client.EditPlaylistWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30831,6 +33819,62 @@ func (client *Client) ForbidPushStream(request *ForbidPushStreamRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) GetMultiRateConfigWithOptions(request *GetMultiRateConfigRequest, runtime *util.RuntimeOptions) (_result *GetMultiRateConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetMultiRateConfigResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetMultiRateConfig"), tea.String("2016-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetMultiRateConfig(request *GetMultiRateConfigRequest) (_result *GetMultiRateConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetMultiRateConfigResponse{}
+	_body, _err := client.GetMultiRateConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetMultiRateConfigListWithOptions(request *GetMultiRateConfigListRequest, runtime *util.RuntimeOptions) (_result *GetMultiRateConfigListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetMultiRateConfigListResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetMultiRateConfigList"), tea.String("2016-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetMultiRateConfigList(request *GetMultiRateConfigListRequest) (_result *GetMultiRateConfigListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetMultiRateConfigListResponse{}
+	_body, _err := client.GetMultiRateConfigListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) JoinBoardWithOptions(request *JoinBoardRequest, runtime *util.RuntimeOptions) (_result *JoinBoardResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30939,6 +33983,62 @@ func (client *Client) ListLiveRealtimeLogDeliveryInfos(request *ListLiveRealtime
 	runtime := &util.RuntimeOptions{}
 	_result = &ListLiveRealtimeLogDeliveryInfosResponse{}
 	_body, _err := client.ListLiveRealtimeLogDeliveryInfosWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListPlaylistWithOptions(request *ListPlaylistRequest, runtime *util.RuntimeOptions) (_result *ListPlaylistResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListPlaylistResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListPlaylist"), tea.String("2016-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListPlaylist(request *ListPlaylistRequest) (_result *ListPlaylistResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListPlaylistResponse{}
+	_body, _err := client.ListPlaylistWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListPlaylistItemsWithOptions(request *ListPlaylistItemsRequest, runtime *util.RuntimeOptions) (_result *ListPlaylistItemsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListPlaylistItemsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListPlaylistItems"), tea.String("2016-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListPlaylistItems(request *ListPlaylistItemsRequest) (_result *ListPlaylistItemsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListPlaylistItemsResponse{}
+	_body, _err := client.ListPlaylistItemsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31136,6 +34236,62 @@ func (client *Client) ModifyLiveRealtimeLogDelivery(request *ModifyLiveRealtimeL
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyLiveRealtimeLogDeliveryResponse{}
 	_body, _err := client.ModifyLiveRealtimeLogDeliveryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyStudioLayoutWithOptions(request *ModifyStudioLayoutRequest, runtime *util.RuntimeOptions) (_result *ModifyStudioLayoutResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ModifyStudioLayoutResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ModifyStudioLayout"), tea.String("2016-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyStudioLayout(request *ModifyStudioLayoutRequest) (_result *ModifyStudioLayoutResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyStudioLayoutResponse{}
+	_body, _err := client.ModifyStudioLayoutWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) OpenLiveShiftWithOptions(request *OpenLiveShiftRequest, runtime *util.RuntimeOptions) (_result *OpenLiveShiftResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &OpenLiveShiftResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("OpenLiveShift"), tea.String("2016-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) OpenLiveShift(request *OpenLiveShiftRequest) (_result *OpenLiveShiftResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &OpenLiveShiftResponse{}
+	_body, _err := client.OpenLiveShiftWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31703,6 +34859,34 @@ func (client *Client) StartLiveIndex(request *StartLiveIndexRequest) (_result *S
 	return _result, _err
 }
 
+func (client *Client) StartPlaylistWithOptions(request *StartPlaylistRequest, runtime *util.RuntimeOptions) (_result *StartPlaylistResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &StartPlaylistResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("StartPlaylist"), tea.String("2016-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StartPlaylist(request *StartPlaylistRequest) (_result *StartPlaylistResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartPlaylistResponse{}
+	_body, _err := client.StartPlaylistWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) StopCasterWithOptions(request *StopCasterRequest, runtime *util.RuntimeOptions) (_result *StopCasterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31808,6 +34992,34 @@ func (client *Client) StopLiveIndex(request *StopLiveIndexRequest) (_result *Sto
 	runtime := &util.RuntimeOptions{}
 	_result = &StopLiveIndexResponse{}
 	_body, _err := client.StopLiveIndexWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StopPlaylistWithOptions(request *StopPlaylistRequest, runtime *util.RuntimeOptions) (_result *StopPlaylistResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &StopPlaylistResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("StopPlaylist"), tea.String("2016-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StopPlaylist(request *StopPlaylistRequest) (_result *StopPlaylistResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StopPlaylistResponse{}
+	_body, _err := client.StopPlaylistWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
