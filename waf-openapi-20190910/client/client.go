@@ -12,8 +12,6 @@ import (
 )
 
 type CreateCertificateRequest struct {
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	Domain          *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	Certificate     *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
 	PrivateKey      *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
@@ -27,16 +25,6 @@ func (s CreateCertificateRequest) String() string {
 
 func (s CreateCertificateRequest) GoString() string {
 	return s.String()
-}
-
-func (s *CreateCertificateRequest) SetSourceIp(v string) *CreateCertificateRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *CreateCertificateRequest) SetLang(v string) *CreateCertificateRequest {
-	s.Lang = &v
-	return s
 }
 
 func (s *CreateCertificateRequest) SetDomain(v string) *CreateCertificateRequest {
@@ -111,8 +99,6 @@ func (s *CreateCertificateResponse) SetBody(v *CreateCertificateResponseBody) *C
 }
 
 type CreateCertificateByCertificateIdRequest struct {
-	SourceIp      *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang          *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	Domain        *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	CertificateId *int64  `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -124,16 +110,6 @@ func (s CreateCertificateByCertificateIdRequest) String() string {
 
 func (s CreateCertificateByCertificateIdRequest) GoString() string {
 	return s.String()
-}
-
-func (s *CreateCertificateByCertificateIdRequest) SetSourceIp(v string) *CreateCertificateByCertificateIdRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *CreateCertificateByCertificateIdRequest) SetLang(v string) *CreateCertificateByCertificateIdRequest {
-	s.Lang = &v
-	return s
 }
 
 func (s *CreateCertificateByCertificateIdRequest) SetDomain(v string) *CreateCertificateByCertificateIdRequest {
@@ -198,12 +174,12 @@ func (s *CreateCertificateByCertificateIdResponse) SetBody(v *CreateCertificateB
 }
 
 type CreateDomainRequest struct {
-	SourceIp             *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang                 *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Domain               *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	SourceIps            *string `json:"SourceIps,omitempty" xml:"SourceIps,omitempty"`
 	IsAccessProduct      *int32  `json:"IsAccessProduct,omitempty" xml:"IsAccessProduct,omitempty"`
+	AccessHeaderMode     *int32  `json:"AccessHeaderMode,omitempty" xml:"AccessHeaderMode,omitempty"`
+	AccessHeaders        *string `json:"AccessHeaders,omitempty" xml:"AccessHeaders,omitempty"`
 	LoadBalancing        *int32  `json:"LoadBalancing,omitempty" xml:"LoadBalancing,omitempty"`
 	LogHeaders           *string `json:"LogHeaders,omitempty" xml:"LogHeaders,omitempty"`
 	HttpPort             *string `json:"HttpPort,omitempty" xml:"HttpPort,omitempty"`
@@ -229,16 +205,6 @@ func (s CreateDomainRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateDomainRequest) SetSourceIp(v string) *CreateDomainRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *CreateDomainRequest) SetLang(v string) *CreateDomainRequest {
-	s.Lang = &v
-	return s
-}
-
 func (s *CreateDomainRequest) SetInstanceId(v string) *CreateDomainRequest {
 	s.InstanceId = &v
 	return s
@@ -256,6 +222,16 @@ func (s *CreateDomainRequest) SetSourceIps(v string) *CreateDomainRequest {
 
 func (s *CreateDomainRequest) SetIsAccessProduct(v int32) *CreateDomainRequest {
 	s.IsAccessProduct = &v
+	return s
+}
+
+func (s *CreateDomainRequest) SetAccessHeaderMode(v int32) *CreateDomainRequest {
+	s.AccessHeaderMode = &v
+	return s
+}
+
+func (s *CreateDomainRequest) SetAccessHeaders(v string) *CreateDomainRequest {
+	s.AccessHeaders = &v
 	return s
 }
 
@@ -381,8 +357,6 @@ func (s *CreateDomainResponse) SetBody(v *CreateDomainResponseBody) *CreateDomai
 }
 
 type CreateProtectionModuleRuleRequest struct {
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	DefenseType *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
 	Rule        *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
@@ -395,16 +369,6 @@ func (s CreateProtectionModuleRuleRequest) String() string {
 
 func (s CreateProtectionModuleRuleRequest) GoString() string {
 	return s.String()
-}
-
-func (s *CreateProtectionModuleRuleRequest) SetSourceIp(v string) *CreateProtectionModuleRuleRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *CreateProtectionModuleRuleRequest) SetLang(v string) *CreateProtectionModuleRuleRequest {
-	s.Lang = &v
-	return s
 }
 
 func (s *CreateProtectionModuleRuleRequest) SetDomain(v string) *CreateProtectionModuleRuleRequest {
@@ -468,8 +432,6 @@ func (s *CreateProtectionModuleRuleResponse) SetBody(v *CreateProtectionModuleRu
 }
 
 type DeleteDomainRequest struct {
-	SourceIp   *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Domain     *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 }
@@ -480,16 +442,6 @@ func (s DeleteDomainRequest) String() string {
 
 func (s DeleteDomainRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DeleteDomainRequest) SetSourceIp(v string) *DeleteDomainRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DeleteDomainRequest) SetLang(v string) *DeleteDomainRequest {
-	s.Lang = &v
-	return s
 }
 
 func (s *DeleteDomainRequest) SetInstanceId(v string) *DeleteDomainRequest {
@@ -543,8 +495,6 @@ func (s *DeleteDomainResponse) SetBody(v *DeleteDomainResponseBody) *DeleteDomai
 }
 
 type DeleteInstanceRequest struct {
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
@@ -555,16 +505,6 @@ func (s DeleteInstanceRequest) String() string {
 
 func (s DeleteInstanceRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DeleteInstanceRequest) SetSourceIp(v string) *DeleteInstanceRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DeleteInstanceRequest) SetLang(v string) *DeleteInstanceRequest {
-	s.Lang = &v
-	return s
 }
 
 func (s *DeleteInstanceRequest) SetInstanceId(v string) *DeleteInstanceRequest {
@@ -618,8 +558,6 @@ func (s *DeleteInstanceResponse) SetBody(v *DeleteInstanceResponseBody) *DeleteI
 }
 
 type DeleteProtectionModuleRuleRequest struct {
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	DefenseType *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
 	RuleId      *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
@@ -632,16 +570,6 @@ func (s DeleteProtectionModuleRuleRequest) String() string {
 
 func (s DeleteProtectionModuleRuleRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DeleteProtectionModuleRuleRequest) SetSourceIp(v string) *DeleteProtectionModuleRuleRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DeleteProtectionModuleRuleRequest) SetLang(v string) *DeleteProtectionModuleRuleRequest {
-	s.Lang = &v
-	return s
 }
 
 func (s *DeleteProtectionModuleRuleRequest) SetDomain(v string) *DeleteProtectionModuleRuleRequest {
@@ -705,8 +633,6 @@ func (s *DeleteProtectionModuleRuleResponse) SetBody(v *DeleteProtectionModuleRu
 }
 
 type DescribeCertificatesRequest struct {
-	SourceIp   *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Domain     *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 }
@@ -717,16 +643,6 @@ func (s DescribeCertificatesRequest) String() string {
 
 func (s DescribeCertificatesRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeCertificatesRequest) SetSourceIp(v string) *DescribeCertificatesRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DescribeCertificatesRequest) SetLang(v string) *DescribeCertificatesRequest {
-	s.Lang = &v
-	return s
 }
 
 func (s *DescribeCertificatesRequest) SetInstanceId(v string) *DescribeCertificatesRequest {
@@ -827,8 +743,6 @@ func (s *DescribeCertificatesResponse) SetBody(v *DescribeCertificatesResponseBo
 }
 
 type DescribeCertMatchStatusRequest struct {
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
 	PrivateKey  *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
@@ -841,16 +755,6 @@ func (s DescribeCertMatchStatusRequest) String() string {
 
 func (s DescribeCertMatchStatusRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeCertMatchStatusRequest) SetSourceIp(v string) *DescribeCertMatchStatusRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DescribeCertMatchStatusRequest) SetLang(v string) *DescribeCertMatchStatusRequest {
-	s.Lang = &v
-	return s
 }
 
 func (s *DescribeCertMatchStatusRequest) SetDomain(v string) *DescribeCertMatchStatusRequest {
@@ -920,8 +824,6 @@ func (s *DescribeCertMatchStatusResponse) SetBody(v *DescribeCertMatchStatusResp
 }
 
 type DescribeDomainRequest struct {
-	SourceIp   *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Domain     *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 }
@@ -932,16 +834,6 @@ func (s DescribeDomainRequest) String() string {
 
 func (s DescribeDomainRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeDomainRequest) SetSourceIp(v string) *DescribeDomainRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DescribeDomainRequest) SetLang(v string) *DescribeDomainRequest {
-	s.Lang = &v
-	return s
 }
 
 func (s *DescribeDomainRequest) SetInstanceId(v string) *DescribeDomainRequest {
@@ -984,14 +876,16 @@ type DescribeDomainResponseBodyDomain struct {
 	HttpPort             []*string                                               `json:"HttpPort,omitempty" xml:"HttpPort,omitempty" type:"Repeated"`
 	LogHeaders           []*DescribeDomainResponseBodyDomainLogHeaders           `json:"LogHeaders,omitempty" xml:"LogHeaders,omitempty" type:"Repeated"`
 	IsAccessProduct      *int32                                                  `json:"IsAccessProduct,omitempty" xml:"IsAccessProduct,omitempty"`
+	AccessHeaders        []*string                                               `json:"AccessHeaders,omitempty" xml:"AccessHeaders,omitempty" type:"Repeated"`
+	AccessHeaderMode     *int32                                                  `json:"AccessHeaderMode,omitempty" xml:"AccessHeaderMode,omitempty"`
 	HttpsRedirect        *int32                                                  `json:"HttpsRedirect,omitempty" xml:"HttpsRedirect,omitempty"`
 	LoadBalancing        *int32                                                  `json:"LoadBalancing,omitempty" xml:"LoadBalancing,omitempty"`
 	IpFollowStatus       *int32                                                  `json:"IpFollowStatus,omitempty" xml:"IpFollowStatus,omitempty"`
 	AccessType           *string                                                 `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
 	Version              *int64                                                  `json:"Version,omitempty" xml:"Version,omitempty"`
 	ClusterType          *int32                                                  `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	WriteTime            *int32                                                  `json:"WriteTime,omitempty" xml:"WriteTime,omitempty"`
 	ReadTime             *int32                                                  `json:"ReadTime,omitempty" xml:"ReadTime,omitempty"`
+	WriteTime            *int32                                                  `json:"WriteTime,omitempty" xml:"WriteTime,omitempty"`
 	ResourceGroupId      *string                                                 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Cname                *string                                                 `json:"Cname,omitempty" xml:"Cname,omitempty"`
 	SourceIps            []*string                                               `json:"SourceIps,omitempty" xml:"SourceIps,omitempty" type:"Repeated"`
@@ -1037,6 +931,16 @@ func (s *DescribeDomainResponseBodyDomain) SetIsAccessProduct(v int32) *Describe
 	return s
 }
 
+func (s *DescribeDomainResponseBodyDomain) SetAccessHeaders(v []*string) *DescribeDomainResponseBodyDomain {
+	s.AccessHeaders = v
+	return s
+}
+
+func (s *DescribeDomainResponseBodyDomain) SetAccessHeaderMode(v int32) *DescribeDomainResponseBodyDomain {
+	s.AccessHeaderMode = &v
+	return s
+}
+
 func (s *DescribeDomainResponseBodyDomain) SetHttpsRedirect(v int32) *DescribeDomainResponseBodyDomain {
 	s.HttpsRedirect = &v
 	return s
@@ -1067,13 +971,13 @@ func (s *DescribeDomainResponseBodyDomain) SetClusterType(v int32) *DescribeDoma
 	return s
 }
 
-func (s *DescribeDomainResponseBodyDomain) SetWriteTime(v int32) *DescribeDomainResponseBodyDomain {
-	s.WriteTime = &v
+func (s *DescribeDomainResponseBodyDomain) SetReadTime(v int32) *DescribeDomainResponseBodyDomain {
+	s.ReadTime = &v
 	return s
 }
 
-func (s *DescribeDomainResponseBodyDomain) SetReadTime(v int32) *DescribeDomainResponseBodyDomain {
-	s.ReadTime = &v
+func (s *DescribeDomainResponseBodyDomain) SetWriteTime(v int32) *DescribeDomainResponseBodyDomain {
+	s.WriteTime = &v
 	return s
 }
 
@@ -1213,8 +1117,6 @@ func (s *DescribeDomainResponse) SetBody(v *DescribeDomainResponseBody) *Describ
 }
 
 type DescribeDomainAdvanceConfigsRequest struct {
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	DomainList      *string `json:"DomainList,omitempty" xml:"DomainList,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
@@ -1226,16 +1128,6 @@ func (s DescribeDomainAdvanceConfigsRequest) String() string {
 
 func (s DescribeDomainAdvanceConfigsRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeDomainAdvanceConfigsRequest) SetSourceIp(v string) *DescribeDomainAdvanceConfigsRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DescribeDomainAdvanceConfigsRequest) SetLang(v string) *DescribeDomainAdvanceConfigsRequest {
-	s.Lang = &v
-	return s
 }
 
 func (s *DescribeDomainAdvanceConfigsRequest) SetInstanceId(v string) *DescribeDomainAdvanceConfigsRequest {
@@ -1406,8 +1298,6 @@ func (s *DescribeDomainAdvanceConfigsResponse) SetBody(v *DescribeDomainAdvanceC
 }
 
 type DescribeDomainBasicConfigsRequest struct {
-	SourceIp             *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang                 *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	DomainKey            *string `json:"DomainKey,omitempty" xml:"DomainKey,omitempty"`
 	AccessType           *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
@@ -1423,16 +1313,6 @@ func (s DescribeDomainBasicConfigsRequest) String() string {
 
 func (s DescribeDomainBasicConfigsRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeDomainBasicConfigsRequest) SetSourceIp(v string) *DescribeDomainBasicConfigsRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DescribeDomainBasicConfigsRequest) SetLang(v string) *DescribeDomainBasicConfigsRequest {
-	s.Lang = &v
-	return s
 }
 
 func (s *DescribeDomainBasicConfigsRequest) SetInstanceId(v string) *DescribeDomainBasicConfigsRequest {
@@ -1594,7 +1474,6 @@ func (s *DescribeDomainBasicConfigsResponse) SetBody(v *DescribeDomainBasicConfi
 }
 
 type DescribeDomainListRequest struct {
-	SourceIp        *string   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	ResourceGroupId *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	InstanceId      *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	DomainName      *string   `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
@@ -1610,11 +1489,6 @@ func (s DescribeDomainListRequest) String() string {
 
 func (s DescribeDomainListRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeDomainListRequest) SetSourceIp(v string) *DescribeDomainListRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *DescribeDomainListRequest) SetResourceGroupId(v string) *DescribeDomainListRequest {
@@ -1705,11 +1579,8 @@ func (s *DescribeDomainListResponse) SetBody(v *DescribeDomainListResponseBody) 
 }
 
 type DescribeDomainNamesRequest struct {
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	CallSource      *string `json:"CallSource,omitempty" xml:"CallSource,omitempty"`
 }
 
 func (s DescribeDomainNamesRequest) String() string {
@@ -1720,16 +1591,6 @@ func (s DescribeDomainNamesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDomainNamesRequest) SetSourceIp(v string) *DescribeDomainNamesRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DescribeDomainNamesRequest) SetLang(v string) *DescribeDomainNamesRequest {
-	s.Lang = &v
-	return s
-}
-
 func (s *DescribeDomainNamesRequest) SetInstanceId(v string) *DescribeDomainNamesRequest {
 	s.InstanceId = &v
 	return s
@@ -1737,11 +1598,6 @@ func (s *DescribeDomainNamesRequest) SetInstanceId(v string) *DescribeDomainName
 
 func (s *DescribeDomainNamesRequest) SetResourceGroupId(v string) *DescribeDomainNamesRequest {
 	s.ResourceGroupId = &v
-	return s
-}
-
-func (s *DescribeDomainNamesRequest) SetCallSource(v string) *DescribeDomainNamesRequest {
-	s.CallSource = &v
 	return s
 }
 
@@ -1792,8 +1648,6 @@ func (s *DescribeDomainNamesResponse) SetBody(v *DescribeDomainNamesResponseBody
 }
 
 type DescribeDomainRuleGroupRequest struct {
-	SourceIp   *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	Domain     *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
@@ -1804,16 +1658,6 @@ func (s DescribeDomainRuleGroupRequest) String() string {
 
 func (s DescribeDomainRuleGroupRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeDomainRuleGroupRequest) SetSourceIp(v string) *DescribeDomainRuleGroupRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DescribeDomainRuleGroupRequest) SetLang(v string) *DescribeDomainRuleGroupRequest {
-	s.Lang = &v
-	return s
 }
 
 func (s *DescribeDomainRuleGroupRequest) SetDomain(v string) *DescribeDomainRuleGroupRequest {
@@ -1873,9 +1717,6 @@ func (s *DescribeDomainRuleGroupResponse) SetBody(v *DescribeDomainRuleGroupResp
 }
 
 type DescribeInstanceInfoRequest struct {
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	InstanceSource  *string `json:"InstanceSource,omitempty" xml:"InstanceSource,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
@@ -1886,21 +1727,6 @@ func (s DescribeInstanceInfoRequest) String() string {
 
 func (s DescribeInstanceInfoRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeInstanceInfoRequest) SetSourceIp(v string) *DescribeInstanceInfoRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DescribeInstanceInfoRequest) SetLang(v string) *DescribeInstanceInfoRequest {
-	s.Lang = &v
-	return s
-}
-
-func (s *DescribeInstanceInfoRequest) SetInstanceSource(v string) *DescribeInstanceInfoRequest {
-	s.InstanceSource = &v
-	return s
 }
 
 func (s *DescribeInstanceInfoRequest) SetInstanceId(v string) *DescribeInstanceInfoRequest {
@@ -2031,8 +1857,6 @@ func (s *DescribeInstanceInfoResponse) SetBody(v *DescribeInstanceInfoResponseBo
 }
 
 type DescribeInstanceInfosRequest struct {
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	InstanceSource  *string `json:"InstanceSource,omitempty" xml:"InstanceSource,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
@@ -2044,16 +1868,6 @@ func (s DescribeInstanceInfosRequest) String() string {
 
 func (s DescribeInstanceInfosRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeInstanceInfosRequest) SetSourceIp(v string) *DescribeInstanceInfosRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DescribeInstanceInfosRequest) SetLang(v string) *DescribeInstanceInfosRequest {
-	s.Lang = &v
-	return s
 }
 
 func (s *DescribeInstanceInfosRequest) SetInstanceSource(v string) *DescribeInstanceInfosRequest {
@@ -2183,8 +1997,6 @@ func (s *DescribeInstanceInfosResponse) SetBody(v *DescribeInstanceInfosResponse
 }
 
 type DescribeInstanceSpecInfoRequest struct {
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
@@ -2195,16 +2007,6 @@ func (s DescribeInstanceSpecInfoRequest) String() string {
 
 func (s DescribeInstanceSpecInfoRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeInstanceSpecInfoRequest) SetSourceIp(v string) *DescribeInstanceSpecInfoRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DescribeInstanceSpecInfoRequest) SetLang(v string) *DescribeInstanceSpecInfoRequest {
-	s.Lang = &v
-	return s
 }
 
 func (s *DescribeInstanceSpecInfoRequest) SetInstanceId(v string) *DescribeInstanceSpecInfoRequest {
@@ -2305,7 +2107,6 @@ func (s *DescribeInstanceSpecInfoResponse) SetBody(v *DescribeInstanceSpecInfoRe
 }
 
 type DescribeLogServiceStatusRequest struct {
-	SourceIp        *string   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId      *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Region          *string   `json:"Region,omitempty" xml:"Region,omitempty"`
 	ResourceGroupId *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
@@ -2320,11 +2121,6 @@ func (s DescribeLogServiceStatusRequest) String() string {
 
 func (s DescribeLogServiceStatusRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeLogServiceStatusRequest) SetSourceIp(v string) *DescribeLogServiceStatusRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *DescribeLogServiceStatusRequest) SetInstanceId(v string) *DescribeLogServiceStatusRequest {
@@ -2526,8 +2322,6 @@ func (s *DescribeProtectionModuleCodeConfigResponse) SetBody(v *DescribeProtecti
 }
 
 type DescribeProtectionModuleModeRequest struct {
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	Domain          *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	DefenseType     *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -2540,16 +2334,6 @@ func (s DescribeProtectionModuleModeRequest) String() string {
 
 func (s DescribeProtectionModuleModeRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeProtectionModuleModeRequest) SetSourceIp(v string) *DescribeProtectionModuleModeRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DescribeProtectionModuleModeRequest) SetLang(v string) *DescribeProtectionModuleModeRequest {
-	s.Lang = &v
-	return s
 }
 
 func (s *DescribeProtectionModuleModeRequest) SetDomain(v string) *DescribeProtectionModuleModeRequest {
@@ -2625,7 +2409,6 @@ func (s *DescribeProtectionModuleModeResponse) SetBody(v *DescribeProtectionModu
 }
 
 type DescribeProtectionModuleRulesRequest struct {
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	Domain          *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
@@ -2642,11 +2425,6 @@ func (s DescribeProtectionModuleRulesRequest) String() string {
 
 func (s DescribeProtectionModuleRulesRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeProtectionModuleRulesRequest) SetSourceIp(v string) *DescribeProtectionModuleRulesRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *DescribeProtectionModuleRulesRequest) SetPageSize(v int32) *DescribeProtectionModuleRulesRequest {
@@ -2783,8 +2561,6 @@ func (s *DescribeProtectionModuleRulesResponse) SetBody(v *DescribeProtectionMod
 }
 
 type DescribeProtectionModuleStatusRequest struct {
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	DefenseType *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -2796,16 +2572,6 @@ func (s DescribeProtectionModuleStatusRequest) String() string {
 
 func (s DescribeProtectionModuleStatusRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeProtectionModuleStatusRequest) SetSourceIp(v string) *DescribeProtectionModuleStatusRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DescribeProtectionModuleStatusRequest) SetLang(v string) *DescribeProtectionModuleStatusRequest {
-	s.Lang = &v
-	return s
 }
 
 func (s *DescribeProtectionModuleStatusRequest) SetDomain(v string) *DescribeProtectionModuleStatusRequest {
@@ -2870,8 +2636,6 @@ func (s *DescribeProtectionModuleStatusResponse) SetBody(v *DescribeProtectionMo
 }
 
 type DescribeWafSourceIpSegmentRequest struct {
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
@@ -2882,16 +2646,6 @@ func (s DescribeWafSourceIpSegmentRequest) String() string {
 
 func (s DescribeWafSourceIpSegmentRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeWafSourceIpSegmentRequest) SetSourceIp(v string) *DescribeWafSourceIpSegmentRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DescribeWafSourceIpSegmentRequest) SetLang(v string) *DescribeWafSourceIpSegmentRequest {
-	s.Lang = &v
-	return s
 }
 
 func (s *DescribeWafSourceIpSegmentRequest) SetInstanceId(v string) *DescribeWafSourceIpSegmentRequest {
@@ -2957,8 +2711,6 @@ func (s *DescribeWafSourceIpSegmentResponse) SetBody(v *DescribeWafSourceIpSegme
 }
 
 type ModifyDomainRequest struct {
-	SourceIp             *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang                 *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Domain               *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	SourceIps            *string `json:"SourceIps,omitempty" xml:"SourceIps,omitempty"`
@@ -2969,10 +2721,7 @@ type ModifyDomainRequest struct {
 	HttpsRedirect        *int32  `json:"HttpsRedirect,omitempty" xml:"HttpsRedirect,omitempty"`
 	HttpToUserIp         *int32  `json:"HttpToUserIp,omitempty" xml:"HttpToUserIp,omitempty"`
 	IsAccessProduct      *int32  `json:"IsAccessProduct,omitempty" xml:"IsAccessProduct,omitempty"`
-	XffHeaderMode        *int32  `json:"XffHeaderMode,omitempty" xml:"XffHeaderMode,omitempty"`
-	XffHeaders           *string `json:"XffHeaders,omitempty" xml:"XffHeaders,omitempty"`
 	LogHeaders           *string `json:"LogHeaders,omitempty" xml:"LogHeaders,omitempty"`
-	BindingIpv6          *int32  `json:"BindingIpv6,omitempty" xml:"BindingIpv6,omitempty"`
 	ClusterType          *int32  `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	ConnectionTime       *int32  `json:"ConnectionTime,omitempty" xml:"ConnectionTime,omitempty"`
 	ReadTime             *int32  `json:"ReadTime,omitempty" xml:"ReadTime,omitempty"`
@@ -2988,16 +2737,6 @@ func (s ModifyDomainRequest) String() string {
 
 func (s ModifyDomainRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ModifyDomainRequest) SetSourceIp(v string) *ModifyDomainRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *ModifyDomainRequest) SetLang(v string) *ModifyDomainRequest {
-	s.Lang = &v
-	return s
 }
 
 func (s *ModifyDomainRequest) SetInstanceId(v string) *ModifyDomainRequest {
@@ -3050,23 +2789,8 @@ func (s *ModifyDomainRequest) SetIsAccessProduct(v int32) *ModifyDomainRequest {
 	return s
 }
 
-func (s *ModifyDomainRequest) SetXffHeaderMode(v int32) *ModifyDomainRequest {
-	s.XffHeaderMode = &v
-	return s
-}
-
-func (s *ModifyDomainRequest) SetXffHeaders(v string) *ModifyDomainRequest {
-	s.XffHeaders = &v
-	return s
-}
-
 func (s *ModifyDomainRequest) SetLogHeaders(v string) *ModifyDomainRequest {
 	s.LogHeaders = &v
-	return s
-}
-
-func (s *ModifyDomainRequest) SetBindingIpv6(v int32) *ModifyDomainRequest {
-	s.BindingIpv6 = &v
 	return s
 }
 
@@ -3146,12 +2870,9 @@ func (s *ModifyDomainResponse) SetBody(v *ModifyDomainResponseBody) *ModifyDomai
 }
 
 type ModifyDomainIpv6StatusRequest struct {
-	SourceIp   *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Domain     *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	Enabled    *string `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	WafVersion *string `json:"WafVersion,omitempty" xml:"WafVersion,omitempty"`
 }
 
 func (s ModifyDomainIpv6StatusRequest) String() string {
@@ -3160,16 +2881,6 @@ func (s ModifyDomainIpv6StatusRequest) String() string {
 
 func (s ModifyDomainIpv6StatusRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ModifyDomainIpv6StatusRequest) SetSourceIp(v string) *ModifyDomainIpv6StatusRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *ModifyDomainIpv6StatusRequest) SetLang(v string) *ModifyDomainIpv6StatusRequest {
-	s.Lang = &v
-	return s
 }
 
 func (s *ModifyDomainIpv6StatusRequest) SetInstanceId(v string) *ModifyDomainIpv6StatusRequest {
@@ -3184,11 +2895,6 @@ func (s *ModifyDomainIpv6StatusRequest) SetDomain(v string) *ModifyDomainIpv6Sta
 
 func (s *ModifyDomainIpv6StatusRequest) SetEnabled(v string) *ModifyDomainIpv6StatusRequest {
 	s.Enabled = &v
-	return s
-}
-
-func (s *ModifyDomainIpv6StatusRequest) SetWafVersion(v string) *ModifyDomainIpv6StatusRequest {
-	s.WafVersion = &v
 	return s
 }
 
@@ -3233,8 +2939,6 @@ func (s *ModifyDomainIpv6StatusResponse) SetBody(v *ModifyDomainIpv6StatusRespon
 }
 
 type ModifyLogRetrievalStatusRequest struct {
-	SourceIp   *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Domain     *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	Enabled    *int32  `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
@@ -3246,16 +2950,6 @@ func (s ModifyLogRetrievalStatusRequest) String() string {
 
 func (s ModifyLogRetrievalStatusRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ModifyLogRetrievalStatusRequest) SetSourceIp(v string) *ModifyLogRetrievalStatusRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *ModifyLogRetrievalStatusRequest) SetLang(v string) *ModifyLogRetrievalStatusRequest {
-	s.Lang = &v
-	return s
 }
 
 func (s *ModifyLogRetrievalStatusRequest) SetInstanceId(v string) *ModifyLogRetrievalStatusRequest {
@@ -3314,8 +3008,6 @@ func (s *ModifyLogRetrievalStatusResponse) SetBody(v *ModifyLogRetrievalStatusRe
 }
 
 type ModifyLogServiceStatusRequest struct {
-	SourceIp   *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Domain     *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	Enabled    *int32  `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
@@ -3327,16 +3019,6 @@ func (s ModifyLogServiceStatusRequest) String() string {
 
 func (s ModifyLogServiceStatusRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ModifyLogServiceStatusRequest) SetSourceIp(v string) *ModifyLogServiceStatusRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *ModifyLogServiceStatusRequest) SetLang(v string) *ModifyLogServiceStatusRequest {
-	s.Lang = &v
-	return s
 }
 
 func (s *ModifyLogServiceStatusRequest) SetInstanceId(v string) *ModifyLogServiceStatusRequest {
@@ -3395,8 +3077,6 @@ func (s *ModifyLogServiceStatusResponse) SetBody(v *ModifyLogServiceStatusRespon
 }
 
 type ModifyProtectionModuleModeRequest struct {
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	DefenseType *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
 	Mode        *int32  `json:"Mode,omitempty" xml:"Mode,omitempty"`
@@ -3409,16 +3089,6 @@ func (s ModifyProtectionModuleModeRequest) String() string {
 
 func (s ModifyProtectionModuleModeRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ModifyProtectionModuleModeRequest) SetSourceIp(v string) *ModifyProtectionModuleModeRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *ModifyProtectionModuleModeRequest) SetLang(v string) *ModifyProtectionModuleModeRequest {
-	s.Lang = &v
-	return s
 }
 
 func (s *ModifyProtectionModuleModeRequest) SetDomain(v string) *ModifyProtectionModuleModeRequest {
@@ -3482,8 +3152,6 @@ func (s *ModifyProtectionModuleModeResponse) SetBody(v *ModifyProtectionModuleMo
 }
 
 type ModifyProtectionModuleRuleRequest struct {
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	DefenseType *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
 	Rule        *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
@@ -3498,16 +3166,6 @@ func (s ModifyProtectionModuleRuleRequest) String() string {
 
 func (s ModifyProtectionModuleRuleRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ModifyProtectionModuleRuleRequest) SetSourceIp(v string) *ModifyProtectionModuleRuleRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *ModifyProtectionModuleRuleRequest) SetLang(v string) *ModifyProtectionModuleRuleRequest {
-	s.Lang = &v
-	return s
 }
 
 func (s *ModifyProtectionModuleRuleRequest) SetDomain(v string) *ModifyProtectionModuleRuleRequest {
@@ -3581,8 +3239,6 @@ func (s *ModifyProtectionModuleRuleResponse) SetBody(v *ModifyProtectionModuleRu
 }
 
 type ModifyProtectionModuleStatusRequest struct {
-	SourceIp     *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	Domain       *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	DefenseType  *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
 	ModuleStatus *int32  `json:"ModuleStatus,omitempty" xml:"ModuleStatus,omitempty"`
@@ -3595,16 +3251,6 @@ func (s ModifyProtectionModuleStatusRequest) String() string {
 
 func (s ModifyProtectionModuleStatusRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ModifyProtectionModuleStatusRequest) SetSourceIp(v string) *ModifyProtectionModuleStatusRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *ModifyProtectionModuleStatusRequest) SetLang(v string) *ModifyProtectionModuleStatusRequest {
-	s.Lang = &v
-	return s
 }
 
 func (s *ModifyProtectionModuleStatusRequest) SetDomain(v string) *ModifyProtectionModuleStatusRequest {
@@ -3668,8 +3314,6 @@ func (s *ModifyProtectionModuleStatusResponse) SetBody(v *ModifyProtectionModule
 }
 
 type ModifyProtectionRuleCacheStatusRequest struct {
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	RuleId      *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	DefenseType *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
@@ -3682,16 +3326,6 @@ func (s ModifyProtectionRuleCacheStatusRequest) String() string {
 
 func (s ModifyProtectionRuleCacheStatusRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ModifyProtectionRuleCacheStatusRequest) SetSourceIp(v string) *ModifyProtectionRuleCacheStatusRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *ModifyProtectionRuleCacheStatusRequest) SetLang(v string) *ModifyProtectionRuleCacheStatusRequest {
-	s.Lang = &v
-	return s
 }
 
 func (s *ModifyProtectionRuleCacheStatusRequest) SetDomain(v string) *ModifyProtectionRuleCacheStatusRequest {
@@ -3755,8 +3389,6 @@ func (s *ModifyProtectionRuleCacheStatusResponse) SetBody(v *ModifyProtectionRul
 }
 
 type ModifyProtectionRuleStatusRequest struct {
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	DefenseType *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
 	RuleId      *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
@@ -3771,16 +3403,6 @@ func (s ModifyProtectionRuleStatusRequest) String() string {
 
 func (s ModifyProtectionRuleStatusRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ModifyProtectionRuleStatusRequest) SetSourceIp(v string) *ModifyProtectionRuleStatusRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *ModifyProtectionRuleStatusRequest) SetLang(v string) *ModifyProtectionRuleStatusRequest {
-	s.Lang = &v
-	return s
 }
 
 func (s *ModifyProtectionRuleStatusRequest) SetDomain(v string) *ModifyProtectionRuleStatusRequest {
@@ -3854,8 +3476,6 @@ func (s *ModifyProtectionRuleStatusResponse) SetBody(v *ModifyProtectionRuleStat
 }
 
 type SetDomainRuleGroupRequest struct {
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	Domains         *string `json:"Domains,omitempty" xml:"Domains,omitempty"`
 	RuleGroupId     *int64  `json:"RuleGroupId,omitempty" xml:"RuleGroupId,omitempty"`
 	WafVersion      *int64  `json:"WafVersion,omitempty" xml:"WafVersion,omitempty"`
@@ -3869,16 +3489,6 @@ func (s SetDomainRuleGroupRequest) String() string {
 
 func (s SetDomainRuleGroupRequest) GoString() string {
 	return s.String()
-}
-
-func (s *SetDomainRuleGroupRequest) SetSourceIp(v string) *SetDomainRuleGroupRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *SetDomainRuleGroupRequest) SetLang(v string) *SetDomainRuleGroupRequest {
-	s.Lang = &v
-	return s
 }
 
 func (s *SetDomainRuleGroupRequest) SetDomains(v string) *SetDomainRuleGroupRequest {
