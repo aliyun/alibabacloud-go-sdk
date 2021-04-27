@@ -1112,19 +1112,8 @@ func (client *Client) ContrastSmartVerifyWithOptions(request *ContrastSmartVerif
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ContrastSmartVerify"),
-		Version:     tea.String("2020-06-18"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &ContrastSmartVerifyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("ContrastSmartVerify"), tea.String("2020-06-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1243,19 +1232,8 @@ func (client *Client) DescribeSmartVerifyWithOptions(request *DescribeSmartVerif
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeSmartVerify"),
-		Version:     tea.String("2020-06-18"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &DescribeSmartVerifyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DescribeSmartVerify"), tea.String("2020-06-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1282,19 +1260,8 @@ func (client *Client) ElementSmartVerifyWithOptions(request *ElementSmartVerifyR
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ElementSmartVerify"),
-		Version:     tea.String("2020-06-18"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &ElementSmartVerifyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("ElementSmartVerify"), tea.String("2020-06-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1413,19 +1380,8 @@ func (client *Client) InitSmartVerifyWithOptions(request *InitSmartVerifyRequest
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("InitSmartVerify"),
-		Version:     tea.String("2020-06-18"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &InitSmartVerifyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("InitSmartVerify"), tea.String("2020-06-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1452,19 +1408,8 @@ func (client *Client) VerifyBankElementWithOptions(request *VerifyBankElementReq
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("VerifyBankElement"),
-		Version:     tea.String("2020-06-18"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &VerifyBankElementResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("VerifyBankElement"), tea.String("2020-06-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}

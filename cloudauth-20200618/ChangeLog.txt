@@ -1,3 +1,6 @@
+2021-04-27 Version: vv2.0.2
+- Generated golang 2020-06-18 for Cloudauth.
+
 2021-04-08 Version: v2.0.1
 - Add VerifyBankElement API.
 
