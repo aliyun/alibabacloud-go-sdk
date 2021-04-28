@@ -1,3 +1,6 @@
+2021-04-28 Version: vv1.0.4
+- AMP Version Change.
+
 2021-03-23 Version: vv1.0.3
 - Generated golang 2017-12-14 for BssOpenApi.
 
