@@ -4225,6 +4225,87 @@ func (s *CancelOTATaskByJobResponse) SetBody(v *CancelOTATaskByJobResponseBody) 
 	return s
 }
 
+type CancelReleaseProductRequest struct {
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+}
+
+func (s CancelReleaseProductRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelReleaseProductRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CancelReleaseProductRequest) SetIotInstanceId(v string) *CancelReleaseProductRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *CancelReleaseProductRequest) SetProductKey(v string) *CancelReleaseProductRequest {
+	s.ProductKey = &v
+	return s
+}
+
+type CancelReleaseProductResponseBody struct {
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+}
+
+func (s CancelReleaseProductResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelReleaseProductResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CancelReleaseProductResponseBody) SetRequestId(v string) *CancelReleaseProductResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CancelReleaseProductResponseBody) SetSuccess(v bool) *CancelReleaseProductResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CancelReleaseProductResponseBody) SetErrorMessage(v string) *CancelReleaseProductResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CancelReleaseProductResponseBody) SetCode(v string) *CancelReleaseProductResponseBody {
+	s.Code = &v
+	return s
+}
+
+type CancelReleaseProductResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CancelReleaseProductResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CancelReleaseProductResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelReleaseProductResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelReleaseProductResponse) SetHeaders(v map[string]*string) *CancelReleaseProductResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelReleaseProductResponse) SetBody(v *CancelReleaseProductResponseBody) *CancelReleaseProductResponse {
+	s.Body = v
+	return s
+}
+
 type ClearEdgeInstanceDriverConfigsRequest struct {
 	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -6007,6 +6088,7 @@ type CreateJobRequest struct {
 	TimeoutConfig *string `json:"TimeoutConfig,omitempty" xml:"TimeoutConfig,omitempty"`
 	RolloutConfig *string `json:"RolloutConfig,omitempty" xml:"RolloutConfig,omitempty"`
 	TargetConfig  *string `json:"TargetConfig,omitempty" xml:"TargetConfig,omitempty"`
+	ScheduledTime *int64  `json:"ScheduledTime,omitempty" xml:"ScheduledTime,omitempty"`
 }
 
 func (s CreateJobRequest) String() string {
@@ -6059,6 +6141,11 @@ func (s *CreateJobRequest) SetRolloutConfig(v string) *CreateJobRequest {
 
 func (s *CreateJobRequest) SetTargetConfig(v string) *CreateJobRequest {
 	s.TargetConfig = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetScheduledTime(v int64) *CreateJobRequest {
+	s.ScheduledTime = &v
 	return s
 }
 
@@ -10248,6 +10335,87 @@ func (s *DeleteSceneRuleResponse) SetBody(v *DeleteSceneRuleResponseBody) *Delet
 	return s
 }
 
+type DeleteSpeechRequest struct {
+	IotInstanceId  *string   `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	SpeechCodeList []*string `json:"SpeechCodeList,omitempty" xml:"SpeechCodeList,omitempty" type:"Repeated"`
+}
+
+func (s DeleteSpeechRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSpeechRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSpeechRequest) SetIotInstanceId(v string) *DeleteSpeechRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *DeleteSpeechRequest) SetSpeechCodeList(v []*string) *DeleteSpeechRequest {
+	s.SpeechCodeList = v
+	return s
+}
+
+type DeleteSpeechResponseBody struct {
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+}
+
+func (s DeleteSpeechResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSpeechResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSpeechResponseBody) SetRequestId(v string) *DeleteSpeechResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteSpeechResponseBody) SetSuccess(v bool) *DeleteSpeechResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DeleteSpeechResponseBody) SetCode(v string) *DeleteSpeechResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteSpeechResponseBody) SetErrorMessage(v string) *DeleteSpeechResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+type DeleteSpeechResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteSpeechResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteSpeechResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSpeechResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSpeechResponse) SetHeaders(v map[string]*string) *DeleteSpeechResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteSpeechResponse) SetBody(v *DeleteSpeechResponseBody) *DeleteSpeechResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteSubscribeRelationRequest struct {
 	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
@@ -12175,7 +12343,8 @@ func (s *GetDeviceStatusResponseBody) SetData(v *GetDeviceStatusResponseBodyData
 }
 
 type GetDeviceStatusResponseBodyData struct {
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Timestamp *int64  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
 func (s GetDeviceStatusResponseBodyData) String() string {
@@ -12188,6 +12357,11 @@ func (s GetDeviceStatusResponseBodyData) GoString() string {
 
 func (s *GetDeviceStatusResponseBodyData) SetStatus(v string) *GetDeviceStatusResponseBodyData {
 	s.Status = &v
+	return s
+}
+
+func (s *GetDeviceStatusResponseBodyData) SetTimestamp(v int64) *GetDeviceStatusResponseBodyData {
+	s.Timestamp = &v
 	return s
 }
 
@@ -15702,6 +15876,7 @@ type ListDeviceDistributeJobRequest struct {
 	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Status      *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	JobId       *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
 func (s ListDeviceDistributeJobRequest) String() string {
@@ -15729,6 +15904,11 @@ func (s *ListDeviceDistributeJobRequest) SetPageSize(v int32) *ListDeviceDistrib
 
 func (s *ListDeviceDistributeJobRequest) SetStatus(v int32) *ListDeviceDistributeJobRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *ListDeviceDistributeJobRequest) SetJobId(v string) *ListDeviceDistributeJobRequest {
+	s.JobId = &v
 	return s
 }
 
@@ -15823,6 +16003,8 @@ type ListDeviceDistributeJobResponseBodyDataJobInfoItems struct {
 	Total                 *int32                                                                    `json:"Total,omitempty" xml:"Total,omitempty"`
 	Status                *int32                                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
 	Strategy              *int32                                                                    `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
+	SourceRegion          *string                                                                   `json:"SourceRegion,omitempty" xml:"SourceRegion,omitempty"`
+	SourceInstanceName    *string                                                                   `json:"SourceInstanceName,omitempty" xml:"SourceInstanceName,omitempty"`
 	TargetInstanceConfigs *ListDeviceDistributeJobResponseBodyDataJobInfoItemsTargetInstanceConfigs `json:"TargetInstanceConfigs,omitempty" xml:"TargetInstanceConfigs,omitempty" type:"Struct"`
 }
 
@@ -15879,6 +16061,16 @@ func (s *ListDeviceDistributeJobResponseBodyDataJobInfoItems) SetStrategy(v int3
 	return s
 }
 
+func (s *ListDeviceDistributeJobResponseBodyDataJobInfoItems) SetSourceRegion(v string) *ListDeviceDistributeJobResponseBodyDataJobInfoItems {
+	s.SourceRegion = &v
+	return s
+}
+
+func (s *ListDeviceDistributeJobResponseBodyDataJobInfoItems) SetSourceInstanceName(v string) *ListDeviceDistributeJobResponseBodyDataJobInfoItems {
+	s.SourceInstanceName = &v
+	return s
+}
+
 func (s *ListDeviceDistributeJobResponseBodyDataJobInfoItems) SetTargetInstanceConfigs(v *ListDeviceDistributeJobResponseBodyDataJobInfoItemsTargetInstanceConfigs) *ListDeviceDistributeJobResponseBodyDataJobInfoItems {
 	s.TargetInstanceConfigs = v
 	return s
@@ -15902,7 +16094,9 @@ func (s *ListDeviceDistributeJobResponseBodyDataJobInfoItemsTargetInstanceConfig
 }
 
 type ListDeviceDistributeJobResponseBodyDataJobInfoItemsTargetInstanceConfigsTargetInstanceConfigs struct {
-	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
+	TargetInstanceId   *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
+	TargetRegion       *string `json:"TargetRegion,omitempty" xml:"TargetRegion,omitempty"`
+	TargetInstanceName *string `json:"TargetInstanceName,omitempty" xml:"TargetInstanceName,omitempty"`
 }
 
 func (s ListDeviceDistributeJobResponseBodyDataJobInfoItemsTargetInstanceConfigsTargetInstanceConfigs) String() string {
@@ -15915,6 +16109,16 @@ func (s ListDeviceDistributeJobResponseBodyDataJobInfoItemsTargetInstanceConfigs
 
 func (s *ListDeviceDistributeJobResponseBodyDataJobInfoItemsTargetInstanceConfigsTargetInstanceConfigs) SetTargetInstanceId(v string) *ListDeviceDistributeJobResponseBodyDataJobInfoItemsTargetInstanceConfigsTargetInstanceConfigs {
 	s.TargetInstanceId = &v
+	return s
+}
+
+func (s *ListDeviceDistributeJobResponseBodyDataJobInfoItemsTargetInstanceConfigsTargetInstanceConfigs) SetTargetRegion(v string) *ListDeviceDistributeJobResponseBodyDataJobInfoItemsTargetInstanceConfigsTargetInstanceConfigs {
+	s.TargetRegion = &v
+	return s
+}
+
+func (s *ListDeviceDistributeJobResponseBodyDataJobInfoItemsTargetInstanceConfigsTargetInstanceConfigs) SetTargetInstanceName(v string) *ListDeviceDistributeJobResponseBodyDataJobInfoItemsTargetInstanceConfigsTargetInstanceConfigs {
+	s.TargetInstanceName = &v
 	return s
 }
 
@@ -16521,13 +16725,14 @@ func (s *ListJobResponseBodyData) SetData(v []*ListJobResponseBodyDataData) *Lis
 }
 
 type ListJobResponseBodyDataData struct {
-	JobId       *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	JobName     *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	UtcCreate   *string `json:"UtcCreate,omitempty" xml:"UtcCreate,omitempty"`
-	UtcModified *string `json:"UtcModified,omitempty" xml:"UtcModified,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	JobId         *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobName       *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	UtcCreate     *string `json:"UtcCreate,omitempty" xml:"UtcCreate,omitempty"`
+	UtcModified   *string `json:"UtcModified,omitempty" xml:"UtcModified,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	ScheduledTime *int64  `json:"ScheduledTime,omitempty" xml:"ScheduledTime,omitempty"`
 }
 
 func (s ListJobResponseBodyDataData) String() string {
@@ -16570,6 +16775,11 @@ func (s *ListJobResponseBodyDataData) SetDescription(v string) *ListJobResponseB
 
 func (s *ListJobResponseBodyDataData) SetType(v string) *ListJobResponseBodyDataData {
 	s.Type = &v
+	return s
+}
+
+func (s *ListJobResponseBodyDataData) SetScheduledTime(v int64) *ListJobResponseBodyDataData {
+	s.ScheduledTime = &v
 	return s
 }
 
@@ -16730,7 +16940,6 @@ type ListOTAFirmwareResponseBodyFirmwareInfoSimpleFirmwareInfo struct {
 	FirmwareDesc *string `json:"FirmwareDesc,omitempty" xml:"FirmwareDesc,omitempty"`
 	FirmwareSign *string `json:"FirmwareSign,omitempty" xml:"FirmwareSign,omitempty"`
 	FirmwareSize *int32  `json:"FirmwareSize,omitempty" xml:"FirmwareSize,omitempty"`
-	FirmwareUrl  *string `json:"FirmwareUrl,omitempty" xml:"FirmwareUrl,omitempty"`
 	ProductKey   *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
 	SignMethod   *string `json:"SignMethod,omitempty" xml:"SignMethod,omitempty"`
 	ProductName  *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
@@ -16793,11 +17002,6 @@ func (s *ListOTAFirmwareResponseBodyFirmwareInfoSimpleFirmwareInfo) SetFirmwareS
 
 func (s *ListOTAFirmwareResponseBodyFirmwareInfoSimpleFirmwareInfo) SetFirmwareSize(v int32) *ListOTAFirmwareResponseBodyFirmwareInfoSimpleFirmwareInfo {
 	s.FirmwareSize = &v
-	return s
-}
-
-func (s *ListOTAFirmwareResponseBodyFirmwareInfoSimpleFirmwareInfo) SetFirmwareUrl(v string) *ListOTAFirmwareResponseBodyFirmwareInfoSimpleFirmwareInfo {
-	s.FirmwareUrl = &v
 	return s
 }
 
@@ -17858,6 +18062,7 @@ type ListOTATaskByJobResponseBodyDataSimpleOTATaskInfo struct {
 	Progress    *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
 	IotId       *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
 	UtcCreate   *string `json:"UtcCreate,omitempty" xml:"UtcCreate,omitempty"`
+	Timeout     *string `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s ListOTATaskByJobResponseBodyDataSimpleOTATaskInfo) String() string {
@@ -17935,6 +18140,11 @@ func (s *ListOTATaskByJobResponseBodyDataSimpleOTATaskInfo) SetIotId(v string) *
 
 func (s *ListOTATaskByJobResponseBodyDataSimpleOTATaskInfo) SetUtcCreate(v string) *ListOTATaskByJobResponseBodyDataSimpleOTATaskInfo {
 	s.UtcCreate = &v
+	return s
+}
+
+func (s *ListOTATaskByJobResponseBodyDataSimpleOTATaskInfo) SetTimeout(v string) *ListOTATaskByJobResponseBodyDataSimpleOTATaskInfo {
+	s.Timeout = &v
 	return s
 }
 
@@ -19622,6 +19832,7 @@ type PrintByTemplateResponseBodyData struct {
 	DeviceErrorMessage *string `json:"DeviceErrorMessage,omitempty" xml:"DeviceErrorMessage,omitempty"`
 	Id                 *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	RetryCount         *int32  `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
+	MaxRetryCount      *int32  `json:"MaxRetryCount,omitempty" xml:"MaxRetryCount,omitempty"`
 }
 
 func (s PrintByTemplateResponseBodyData) String() string {
@@ -19654,6 +19865,11 @@ func (s *PrintByTemplateResponseBodyData) SetId(v string) *PrintByTemplateRespon
 
 func (s *PrintByTemplateResponseBodyData) SetRetryCount(v int32) *PrintByTemplateResponseBodyData {
 	s.RetryCount = &v
+	return s
+}
+
+func (s *PrintByTemplateResponseBodyData) SetMaxRetryCount(v int32) *PrintByTemplateResponseBodyData {
+	s.MaxRetryCount = &v
 	return s
 }
 
@@ -28581,6 +28797,7 @@ type QueryJobResponseBodyData struct {
 	Type          *string                                `json:"Type,omitempty" xml:"Type,omitempty"`
 	JobDocument   *string                                `json:"JobDocument,omitempty" xml:"JobDocument,omitempty"`
 	UtcModified   *string                                `json:"UtcModified,omitempty" xml:"UtcModified,omitempty"`
+	ScheduledTime *int64                                 `json:"ScheduledTime,omitempty" xml:"ScheduledTime,omitempty"`
 	RolloutConfig *QueryJobResponseBodyDataRolloutConfig `json:"RolloutConfig,omitempty" xml:"RolloutConfig,omitempty" type:"Struct"`
 	TimeoutConfig *QueryJobResponseBodyDataTimeoutConfig `json:"TimeoutConfig,omitempty" xml:"TimeoutConfig,omitempty" type:"Struct"`
 	JobFile       *QueryJobResponseBodyDataJobFile       `json:"JobFile,omitempty" xml:"JobFile,omitempty" type:"Struct"`
@@ -28632,6 +28849,11 @@ func (s *QueryJobResponseBodyData) SetJobDocument(v string) *QueryJobResponseBod
 
 func (s *QueryJobResponseBodyData) SetUtcModified(v string) *QueryJobResponseBodyData {
 	s.UtcModified = &v
+	return s
+}
+
+func (s *QueryJobResponseBodyData) SetScheduledTime(v int64) *QueryJobResponseBodyData {
+	s.ScheduledTime = &v
 	return s
 }
 
@@ -32399,6 +32621,87 @@ func (s *ReleaseEdgeDriverVersionResponse) SetBody(v *ReleaseEdgeDriverVersionRe
 	return s
 }
 
+type ReleaseProductRequest struct {
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+}
+
+func (s ReleaseProductRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseProductRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseProductRequest) SetIotInstanceId(v string) *ReleaseProductRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *ReleaseProductRequest) SetProductKey(v string) *ReleaseProductRequest {
+	s.ProductKey = &v
+	return s
+}
+
+type ReleaseProductResponseBody struct {
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+}
+
+func (s ReleaseProductResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseProductResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseProductResponseBody) SetRequestId(v string) *ReleaseProductResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ReleaseProductResponseBody) SetSuccess(v bool) *ReleaseProductResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ReleaseProductResponseBody) SetErrorMessage(v string) *ReleaseProductResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ReleaseProductResponseBody) SetCode(v string) *ReleaseProductResponseBody {
+	s.Code = &v
+	return s
+}
+
+type ReleaseProductResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ReleaseProductResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ReleaseProductResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseProductResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseProductResponse) SetHeaders(v map[string]*string) *ReleaseProductResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ReleaseProductResponse) SetBody(v *ReleaseProductResponseBody) *ReleaseProductResponse {
+	s.Body = v
+	return s
+}
+
 type RemoveThingTopoRequest struct {
 	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
@@ -34104,8 +34407,12 @@ func (s *SyncSpeechByCombinationResponseBody) SetData(v *SyncSpeechByCombination
 }
 
 type SyncSpeechByCombinationResponseBodyData struct {
-	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	RetryCount *int32  `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
+	Id                 *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	RetryCount         *int32  `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
+	Success            *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	MaxRetryCount      *int32  `json:"MaxRetryCount,omitempty" xml:"MaxRetryCount,omitempty"`
+	DeviceErrorCode    *string `json:"DeviceErrorCode,omitempty" xml:"DeviceErrorCode,omitempty"`
+	DeviceErrorMessage *string `json:"DeviceErrorMessage,omitempty" xml:"DeviceErrorMessage,omitempty"`
 }
 
 func (s SyncSpeechByCombinationResponseBodyData) String() string {
@@ -34123,6 +34430,26 @@ func (s *SyncSpeechByCombinationResponseBodyData) SetId(v string) *SyncSpeechByC
 
 func (s *SyncSpeechByCombinationResponseBodyData) SetRetryCount(v int32) *SyncSpeechByCombinationResponseBodyData {
 	s.RetryCount = &v
+	return s
+}
+
+func (s *SyncSpeechByCombinationResponseBodyData) SetSuccess(v bool) *SyncSpeechByCombinationResponseBodyData {
+	s.Success = &v
+	return s
+}
+
+func (s *SyncSpeechByCombinationResponseBodyData) SetMaxRetryCount(v int32) *SyncSpeechByCombinationResponseBodyData {
+	s.MaxRetryCount = &v
+	return s
+}
+
+func (s *SyncSpeechByCombinationResponseBodyData) SetDeviceErrorCode(v string) *SyncSpeechByCombinationResponseBodyData {
+	s.DeviceErrorCode = &v
+	return s
+}
+
+func (s *SyncSpeechByCombinationResponseBodyData) SetDeviceErrorMessage(v string) *SyncSpeechByCombinationResponseBodyData {
+	s.DeviceErrorMessage = &v
 	return s
 }
 
@@ -37856,6 +38183,34 @@ func (client *Client) CancelOTATaskByJob(request *CancelOTATaskByJobRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) CancelReleaseProductWithOptions(request *CancelReleaseProductRequest, runtime *util.RuntimeOptions) (_result *CancelReleaseProductResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CancelReleaseProductResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CancelReleaseProduct"), tea.String("2018-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CancelReleaseProduct(request *CancelReleaseProductRequest) (_result *CancelReleaseProductResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CancelReleaseProductResponse{}
+	_body, _err := client.CancelReleaseProductWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ClearEdgeInstanceDriverConfigsWithOptions(request *ClearEdgeInstanceDriverConfigsRequest, runtime *util.RuntimeOptions) (_result *ClearEdgeInstanceDriverConfigsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -39361,6 +39716,34 @@ func (client *Client) DeleteSceneRule(request *DeleteSceneRuleRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteSceneRuleResponse{}
 	_body, _err := client.DeleteSceneRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteSpeechWithOptions(request *DeleteSpeechRequest, runtime *util.RuntimeOptions) (_result *DeleteSpeechResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DeleteSpeechResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteSpeech"), tea.String("2018-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteSpeech(request *DeleteSpeechRequest) (_result *DeleteSpeechResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteSpeechResponse{}
+	_body, _err := client.DeleteSpeechWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -43087,6 +43470,34 @@ func (client *Client) ReleaseEdgeDriverVersion(request *ReleaseEdgeDriverVersion
 	runtime := &util.RuntimeOptions{}
 	_result = &ReleaseEdgeDriverVersionResponse{}
 	_body, _err := client.ReleaseEdgeDriverVersionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ReleaseProductWithOptions(request *ReleaseProductRequest, runtime *util.RuntimeOptions) (_result *ReleaseProductResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ReleaseProductResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ReleaseProduct"), tea.String("2018-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ReleaseProduct(request *ReleaseProductRequest) (_result *ReleaseProductResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ReleaseProductResponse{}
+	_body, _err := client.ReleaseProductWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
