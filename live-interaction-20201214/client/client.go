@@ -828,10 +828,14 @@ func (s *CreateRoomRequest) SetRequest(v *CreateRoomRequestRequest) *CreateRoomR
 }
 
 type CreateRoomRequestRequest struct {
-	Domain    *string `json:"domain,omitempty" xml:"domain,omitempty"`
-	OwnerId   *string `json:"ownerId,omitempty" xml:"ownerId,omitempty"`
+	// 应用appKey
+	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
+	// 创建者id
+	OwnerId *string `json:"ownerId,omitempty" xml:"ownerId,omitempty"`
+	// 创建者昵称
 	OwnerNick *string `json:"ownerNick,omitempty" xml:"ownerNick,omitempty"`
-	Title     *string `json:"title,omitempty" xml:"title,omitempty"`
+	// 创建房间的标题
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s CreateRoomRequestRequest) String() string {
@@ -863,9 +867,10 @@ func (s *CreateRoomRequestRequest) SetTitle(v string) *CreateRoomRequestRequest 
 }
 
 type CreateRoomResponseBody struct {
-	// Id of the request
-	Success   *bool                         `json:"success,omitempty" xml:"success,omitempty"`
-	ErrorCode *string                       `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ResponseSuccess *bool `json:"ResponseSuccess,omitempty" xml:"ResponseSuccess,omitempty"`
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
 	ErrorMsg  *string                       `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
 	Result    *CreateRoomResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -879,8 +884,8 @@ func (s CreateRoomResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateRoomResponseBody) SetSuccess(v bool) *CreateRoomResponseBody {
-	s.Success = &v
+func (s *CreateRoomResponseBody) SetResponseSuccess(v bool) *CreateRoomResponseBody {
+	s.ResponseSuccess = &v
 	return s
 }
 
@@ -905,6 +910,7 @@ func (s *CreateRoomResponseBody) SetRequestId(v string) *CreateRoomResponseBody 
 }
 
 type CreateRoomResponseBodyResult struct {
+	// 房间id
 	RoomId *string `json:"roomId,omitempty" xml:"roomId,omitempty"`
 }
 
@@ -944,6 +950,86 @@ func (s *CreateRoomResponse) SetBody(v *CreateRoomResponseBody) *CreateRoomRespo
 	return s
 }
 
+type DeleteAppRequest struct {
+	// 应用id
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+}
+
+func (s DeleteAppRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAppRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAppRequest) SetAppId(v string) *DeleteAppRequest {
+	s.AppId = &v
+	return s
+}
+
+type DeleteAppResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 是否成功
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 错误信息
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 错误码
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+}
+
+func (s DeleteAppResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAppResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAppResponseBody) SetRequestId(v string) *DeleteAppResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteAppResponseBody) SetSuccess(v bool) *DeleteAppResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DeleteAppResponseBody) SetMessage(v string) *DeleteAppResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteAppResponseBody) SetCode(v string) *DeleteAppResponseBody {
+	s.Code = &v
+	return s
+}
+
+type DeleteAppResponse struct {
+	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteAppResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAppResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAppResponse) SetHeaders(v map[string]*string) *DeleteAppResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAppResponse) SetBody(v *DeleteAppResponseBody) *DeleteAppResponse {
+	s.Body = v
+	return s
+}
+
 type DestroyRoomRequest struct {
 	Request *DestroyRoomRequestRequest `json:"Request,omitempty" xml:"Request,omitempty" type:"Struct"`
 }
@@ -962,8 +1048,11 @@ func (s *DestroyRoomRequest) SetRequest(v *DestroyRoomRequestRequest) *DestroyRo
 }
 
 type DestroyRoomRequestRequest struct {
+	// 应用appKey
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
+	// 房间id
 	RoomId *string `json:"roomId,omitempty" xml:"roomId,omitempty"`
+	// 操作人id
 	OpenId *string `json:"openId,omitempty" xml:"openId,omitempty"`
 }
 
@@ -991,11 +1080,14 @@ func (s *DestroyRoomRequestRequest) SetOpenId(v string) *DestroyRoomRequestReque
 }
 
 type DestroyRoomResponseBody struct {
+	// 错误码
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
 	ErrorMsg  *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"result,omitempty" xml:"result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 是否销毁成功
+	Result          *bool `json:"result,omitempty" xml:"result,omitempty"`
+	ResponseSuccess *bool `json:"ResponseSuccess,omitempty" xml:"ResponseSuccess,omitempty"`
 }
 
 func (s DestroyRoomResponseBody) String() string {
@@ -1026,8 +1118,8 @@ func (s *DestroyRoomResponseBody) SetResult(v bool) *DestroyRoomResponseBody {
 	return s
 }
 
-func (s *DestroyRoomResponseBody) SetSuccess(v bool) *DestroyRoomResponseBody {
-	s.Success = &v
+func (s *DestroyRoomResponseBody) SetResponseSuccess(v bool) *DestroyRoomResponseBody {
+	s.ResponseSuccess = &v
 	return s
 }
 
@@ -1175,6 +1267,426 @@ func (s *DismissGroupResponse) SetHeaders(v map[string]*string) *DismissGroupRes
 }
 
 func (s *DismissGroupResponse) SetBody(v *DismissGroupResponseBody) *DismissGroupResponse {
+	s.Body = v
+	return s
+}
+
+type GetCommonConfigRequest struct {
+	// 应用id
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+}
+
+func (s GetCommonConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCommonConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCommonConfigRequest) SetAppId(v string) *GetCommonConfigRequest {
+	s.AppId = &v
+	return s
+}
+
+type GetCommonConfigResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 是否成功
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 错误码
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 错误信息
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 返回值
+	Result *GetCommonConfigResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s GetCommonConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCommonConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCommonConfigResponseBody) SetRequestId(v string) *GetCommonConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetCommonConfigResponseBody) SetSuccess(v bool) *GetCommonConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetCommonConfigResponseBody) SetCode(v string) *GetCommonConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetCommonConfigResponseBody) SetMessage(v string) *GetCommonConfigResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetCommonConfigResponseBody) SetResult(v *GetCommonConfigResponseBodyResult) *GetCommonConfigResponseBody {
+	s.Result = v
+	return s
+}
+
+type GetCommonConfigResponseBodyResult struct {
+	// 通用配置
+	CommonConfig *GetCommonConfigResponseBodyResultCommonConfig `json:"CommonConfig,omitempty" xml:"CommonConfig,omitempty" type:"Struct"`
+}
+
+func (s GetCommonConfigResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCommonConfigResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetCommonConfigResponseBodyResult) SetCommonConfig(v *GetCommonConfigResponseBodyResultCommonConfig) *GetCommonConfigResponseBodyResult {
+	s.CommonConfig = v
+	return s
+}
+
+type GetCommonConfigResponseBodyResultCommonConfig struct {
+	// 登录配置
+	LoginConfig *GetCommonConfigResponseBodyResultCommonConfigLoginConfig `json:"LoginConfig,omitempty" xml:"LoginConfig,omitempty" type:"Struct"`
+	// app配置
+	AppConfigs []*GetCommonConfigResponseBodyResultCommonConfigAppConfigs `json:"AppConfigs,omitempty" xml:"AppConfigs,omitempty" type:"Repeated"`
+	// 多媒体配置
+	MediaConfig *GetCommonConfigResponseBodyResultCommonConfigMediaConfig `json:"MediaConfig,omitempty" xml:"MediaConfig,omitempty" type:"Struct"`
+	// 长连接配置
+	ConnectionConfig *GetCommonConfigResponseBodyResultCommonConfigConnectionConfig `json:"ConnectionConfig,omitempty" xml:"ConnectionConfig,omitempty" type:"Struct"`
+}
+
+func (s GetCommonConfigResponseBodyResultCommonConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCommonConfigResponseBodyResultCommonConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetCommonConfigResponseBodyResultCommonConfig) SetLoginConfig(v *GetCommonConfigResponseBodyResultCommonConfigLoginConfig) *GetCommonConfigResponseBodyResultCommonConfig {
+	s.LoginConfig = v
+	return s
+}
+
+func (s *GetCommonConfigResponseBodyResultCommonConfig) SetAppConfigs(v []*GetCommonConfigResponseBodyResultCommonConfigAppConfigs) *GetCommonConfigResponseBodyResultCommonConfig {
+	s.AppConfigs = v
+	return s
+}
+
+func (s *GetCommonConfigResponseBodyResultCommonConfig) SetMediaConfig(v *GetCommonConfigResponseBodyResultCommonConfigMediaConfig) *GetCommonConfigResponseBodyResultCommonConfig {
+	s.MediaConfig = v
+	return s
+}
+
+func (s *GetCommonConfigResponseBodyResultCommonConfig) SetConnectionConfig(v *GetCommonConfigResponseBodyResultCommonConfigConnectionConfig) *GetCommonConfigResponseBodyResultCommonConfig {
+	s.ConnectionConfig = v
+	return s
+}
+
+type GetCommonConfigResponseBodyResultCommonConfigLoginConfig struct {
+	// 登录类型
+	LoginType *int32 `json:"LoginType,omitempty" xml:"LoginType,omitempty"`
+}
+
+func (s GetCommonConfigResponseBodyResultCommonConfigLoginConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCommonConfigResponseBodyResultCommonConfigLoginConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetCommonConfigResponseBodyResultCommonConfigLoginConfig) SetLoginType(v int32) *GetCommonConfigResponseBodyResultCommonConfigLoginConfig {
+	s.LoginType = &v
+	return s
+}
+
+type GetCommonConfigResponseBodyResultCommonConfigAppConfigs struct {
+	// appKey
+	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// 平台
+	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+}
+
+func (s GetCommonConfigResponseBodyResultCommonConfigAppConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCommonConfigResponseBodyResultCommonConfigAppConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *GetCommonConfigResponseBodyResultCommonConfigAppConfigs) SetAppKey(v string) *GetCommonConfigResponseBodyResultCommonConfigAppConfigs {
+	s.AppKey = &v
+	return s
+}
+
+func (s *GetCommonConfigResponseBodyResultCommonConfigAppConfigs) SetPlatform(v string) *GetCommonConfigResponseBodyResultCommonConfigAppConfigs {
+	s.Platform = &v
+	return s
+}
+
+type GetCommonConfigResponseBodyResultCommonConfigMediaConfig struct {
+	// 域名
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+}
+
+func (s GetCommonConfigResponseBodyResultCommonConfigMediaConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCommonConfigResponseBodyResultCommonConfigMediaConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetCommonConfigResponseBodyResultCommonConfigMediaConfig) SetDomain(v string) *GetCommonConfigResponseBodyResultCommonConfigMediaConfig {
+	s.Domain = &v
+	return s
+}
+
+type GetCommonConfigResponseBodyResultCommonConfigConnectionConfig struct {
+	// 域名
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+}
+
+func (s GetCommonConfigResponseBodyResultCommonConfigConnectionConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCommonConfigResponseBodyResultCommonConfigConnectionConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetCommonConfigResponseBodyResultCommonConfigConnectionConfig) SetDomain(v string) *GetCommonConfigResponseBodyResultCommonConfigConnectionConfig {
+	s.Domain = &v
+	return s
+}
+
+type GetCommonConfigResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetCommonConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetCommonConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCommonConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCommonConfigResponse) SetHeaders(v map[string]*string) *GetCommonConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCommonConfigResponse) SetBody(v *GetCommonConfigResponseBody) *GetCommonConfigResponse {
+	s.Body = v
+	return s
+}
+
+type GetGroupByIdRequest struct {
+	// APP ID, IMPaaS租户的ID
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 群会话信息获取的请求体
+	RequestParams *GetGroupByIdRequestRequestParams `json:"RequestParams,omitempty" xml:"RequestParams,omitempty" type:"Struct"`
+}
+
+func (s GetGroupByIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGroupByIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetGroupByIdRequest) SetAppId(v string) *GetGroupByIdRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetGroupByIdRequest) SetRequestParams(v *GetGroupByIdRequestRequestParams) *GetGroupByIdRequest {
+	s.RequestParams = v
+	return s
+}
+
+type GetGroupByIdRequestRequestParams struct {
+	// 群会话ID
+	AppCid *string `json:"AppCid,omitempty" xml:"AppCid,omitempty"`
+}
+
+func (s GetGroupByIdRequestRequestParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGroupByIdRequestRequestParams) GoString() string {
+	return s.String()
+}
+
+func (s *GetGroupByIdRequestRequestParams) SetAppCid(v string) *GetGroupByIdRequestRequestParams {
+	s.AppCid = &v
+	return s
+}
+
+type GetGroupByIdShrinkRequest struct {
+	// APP ID, IMPaaS租户的ID
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 群会话信息获取的请求体
+	RequestParamsShrink *string `json:"RequestParams,omitempty" xml:"RequestParams,omitempty"`
+}
+
+func (s GetGroupByIdShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGroupByIdShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetGroupByIdShrinkRequest) SetAppId(v string) *GetGroupByIdShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetGroupByIdShrinkRequest) SetRequestParamsShrink(v string) *GetGroupByIdShrinkRequest {
+	s.RequestParamsShrink = &v
+	return s
+}
+
+type GetGroupByIdResponseBody struct {
+	// 请求ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 错误码
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 错误信息
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 群信息获取的返回结果
+	Result *GetGroupByIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s GetGroupByIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGroupByIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetGroupByIdResponseBody) SetRequestId(v string) *GetGroupByIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetGroupByIdResponseBody) SetCode(v string) *GetGroupByIdResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetGroupByIdResponseBody) SetMessage(v string) *GetGroupByIdResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetGroupByIdResponseBody) SetResult(v *GetGroupByIdResponseBodyResult) *GetGroupByIdResponseBody {
+	s.Result = v
+	return s
+}
+
+type GetGroupByIdResponseBodyResult struct {
+	// 群会话ID
+	AppCid *string `json:"AppCid,omitempty" xml:"AppCid,omitempty"`
+	// 群主ID
+	OwnerAppUid *string `json:"OwnerAppUid,omitempty" xml:"OwnerAppUid,omitempty"`
+	// 群图像
+	IconMediaId *string `json:"IconMediaId,omitempty" xml:"IconMediaId,omitempty"`
+	// 群名称
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// 当前群人数
+	MemberCount *int32 `json:"MemberCount,omitempty" xml:"MemberCount,omitempty"`
+	// 群人数上限
+	MemberLimit *int32 `json:"MemberLimit,omitempty" xml:"MemberLimit,omitempty"`
+	// 群扩展信息
+	Extensions map[string]*string `json:"Extensions,omitempty" xml:"Extensions,omitempty"`
+	// 群创建时间
+	CeateTime *int64 `json:"CeateTime,omitempty" xml:"CeateTime,omitempty"`
+}
+
+func (s GetGroupByIdResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGroupByIdResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetGroupByIdResponseBodyResult) SetAppCid(v string) *GetGroupByIdResponseBodyResult {
+	s.AppCid = &v
+	return s
+}
+
+func (s *GetGroupByIdResponseBodyResult) SetOwnerAppUid(v string) *GetGroupByIdResponseBodyResult {
+	s.OwnerAppUid = &v
+	return s
+}
+
+func (s *GetGroupByIdResponseBodyResult) SetIconMediaId(v string) *GetGroupByIdResponseBodyResult {
+	s.IconMediaId = &v
+	return s
+}
+
+func (s *GetGroupByIdResponseBodyResult) SetTitle(v string) *GetGroupByIdResponseBodyResult {
+	s.Title = &v
+	return s
+}
+
+func (s *GetGroupByIdResponseBodyResult) SetMemberCount(v int32) *GetGroupByIdResponseBodyResult {
+	s.MemberCount = &v
+	return s
+}
+
+func (s *GetGroupByIdResponseBodyResult) SetMemberLimit(v int32) *GetGroupByIdResponseBodyResult {
+	s.MemberLimit = &v
+	return s
+}
+
+func (s *GetGroupByIdResponseBodyResult) SetExtensions(v map[string]*string) *GetGroupByIdResponseBodyResult {
+	s.Extensions = v
+	return s
+}
+
+func (s *GetGroupByIdResponseBodyResult) SetCeateTime(v int64) *GetGroupByIdResponseBodyResult {
+	s.CeateTime = &v
+	return s
+}
+
+type GetGroupByIdResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetGroupByIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetGroupByIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGroupByIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetGroupByIdResponse) SetHeaders(v map[string]*string) *GetGroupByIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetGroupByIdResponse) SetBody(v *GetGroupByIdResponseBody) *GetGroupByIdResponse {
 	s.Body = v
 	return s
 }
@@ -1367,6 +1879,199 @@ func (s *GetGroupMemberByIdsResponse) SetHeaders(v map[string]*string) *GetGroup
 }
 
 func (s *GetGroupMemberByIdsResponse) SetBody(v *GetGroupMemberByIdsResponseBody) *GetGroupMemberByIdsResponse {
+	s.Body = v
+	return s
+}
+
+type GetIMConfigRequest struct {
+	// 应用名
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+}
+
+func (s GetIMConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIMConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetIMConfigRequest) SetAppId(v string) *GetIMConfigRequest {
+	s.AppId = &v
+	return s
+}
+
+type GetIMConfigResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 错误码
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 网络错误码
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// 错误信息
+	Messaage *string `json:"Messaage,omitempty" xml:"Messaage,omitempty"`
+	// 返回结果
+	Result *GetIMConfigResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s GetIMConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIMConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetIMConfigResponseBody) SetRequestId(v string) *GetIMConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetIMConfigResponseBody) SetSuccess(v bool) *GetIMConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetIMConfigResponseBody) SetCode(v string) *GetIMConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetIMConfigResponseBody) SetHttpStatusCode(v int32) *GetIMConfigResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetIMConfigResponseBody) SetMessaage(v string) *GetIMConfigResponseBody {
+	s.Messaage = &v
+	return s
+}
+
+func (s *GetIMConfigResponseBody) SetResult(v *GetIMConfigResponseBodyResult) *GetIMConfigResponseBody {
+	s.Result = v
+	return s
+}
+
+type GetIMConfigResponseBodyResult struct {
+	// im相关配置
+	ImConfig *GetIMConfigResponseBodyResultImConfig `json:"ImConfig,omitempty" xml:"ImConfig,omitempty" type:"Struct"`
+}
+
+func (s GetIMConfigResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIMConfigResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetIMConfigResponseBodyResult) SetImConfig(v *GetIMConfigResponseBodyResultImConfig) *GetIMConfigResponseBodyResult {
+	s.ImConfig = v
+	return s
+}
+
+type GetIMConfigResponseBodyResultImConfig struct {
+	// 消息配置
+	MsgConfig *GetIMConfigResponseBodyResultImConfigMsgConfig `json:"MsgConfig,omitempty" xml:"MsgConfig,omitempty" type:"Struct"`
+	// 回调配置
+	CallbackConfig *GetIMConfigResponseBodyResultImConfigCallbackConfig `json:"CallbackConfig,omitempty" xml:"CallbackConfig,omitempty" type:"Struct"`
+}
+
+func (s GetIMConfigResponseBodyResultImConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIMConfigResponseBodyResultImConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetIMConfigResponseBodyResultImConfig) SetMsgConfig(v *GetIMConfigResponseBodyResultImConfigMsgConfig) *GetIMConfigResponseBodyResultImConfig {
+	s.MsgConfig = v
+	return s
+}
+
+func (s *GetIMConfigResponseBodyResultImConfig) SetCallbackConfig(v *GetIMConfigResponseBodyResultImConfigCallbackConfig) *GetIMConfigResponseBodyResultImConfig {
+	s.CallbackConfig = v
+	return s
+}
+
+type GetIMConfigResponseBodyResultImConfigMsgConfig struct {
+	// 消息撤回时间，分钟
+	ClientMsgRecallTimeIntervalMinute *int64 `json:"ClientMsgRecallTimeIntervalMinute,omitempty" xml:"ClientMsgRecallTimeIntervalMinute,omitempty"`
+}
+
+func (s GetIMConfigResponseBodyResultImConfigMsgConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIMConfigResponseBodyResultImConfigMsgConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetIMConfigResponseBodyResultImConfigMsgConfig) SetClientMsgRecallTimeIntervalMinute(v int64) *GetIMConfigResponseBodyResultImConfigMsgConfig {
+	s.ClientMsgRecallTimeIntervalMinute = &v
+	return s
+}
+
+type GetIMConfigResponseBodyResultImConfigCallbackConfig struct {
+	// 回调url，支持外部url
+	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
+	// 加签密钥-key
+	SignatureKey *string `json:"SignatureKey,omitempty" xml:"SignatureKey,omitempty"`
+	// 加签密钥-value
+	SignatureValue *string `json:"SignatureValue,omitempty" xml:"SignatureValue,omitempty"`
+	// 已开通的回调方法Id列表
+	Apis map[string]*bool `json:"Apis,omitempty" xml:"Apis,omitempty"`
+}
+
+func (s GetIMConfigResponseBodyResultImConfigCallbackConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIMConfigResponseBodyResultImConfigCallbackConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetIMConfigResponseBodyResultImConfigCallbackConfig) SetCallbackUrl(v string) *GetIMConfigResponseBodyResultImConfigCallbackConfig {
+	s.CallbackUrl = &v
+	return s
+}
+
+func (s *GetIMConfigResponseBodyResultImConfigCallbackConfig) SetSignatureKey(v string) *GetIMConfigResponseBodyResultImConfigCallbackConfig {
+	s.SignatureKey = &v
+	return s
+}
+
+func (s *GetIMConfigResponseBodyResultImConfigCallbackConfig) SetSignatureValue(v string) *GetIMConfigResponseBodyResultImConfigCallbackConfig {
+	s.SignatureValue = &v
+	return s
+}
+
+func (s *GetIMConfigResponseBodyResultImConfigCallbackConfig) SetApis(v map[string]*bool) *GetIMConfigResponseBodyResultImConfigCallbackConfig {
+	s.Apis = v
+	return s
+}
+
+type GetIMConfigResponse struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetIMConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetIMConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIMConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetIMConfigResponse) SetHeaders(v map[string]*string) *GetIMConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetIMConfigResponse) SetBody(v *GetIMConfigResponseBody) *GetIMConfigResponse {
 	s.Body = v
 	return s
 }
@@ -1566,8 +2271,8 @@ func (s *GetMediaUploadUrlRequest) SetRequestParams(v *GetMediaUploadUrlRequestR
 }
 
 type GetMediaUploadUrlRequestRequestParams struct {
-	// 多媒体资源类型(取值参照文档中类型枚举值)
-	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 多媒体资源类型(文件后缀名)
+	MimeType *string `json:"MimeType,omitempty" xml:"MimeType,omitempty"`
 }
 
 func (s GetMediaUploadUrlRequestRequestParams) String() string {
@@ -1578,8 +2283,8 @@ func (s GetMediaUploadUrlRequestRequestParams) GoString() string {
 	return s.String()
 }
 
-func (s *GetMediaUploadUrlRequestRequestParams) SetType(v int32) *GetMediaUploadUrlRequestRequestParams {
-	s.Type = &v
+func (s *GetMediaUploadUrlRequestRequestParams) SetMimeType(v string) *GetMediaUploadUrlRequestRequestParams {
+	s.MimeType = &v
 	return s
 }
 
@@ -2028,6 +2733,149 @@ func (s *GetMessageByIdResponse) SetHeaders(v map[string]*string) *GetMessageByI
 }
 
 func (s *GetMessageByIdResponse) SetBody(v *GetMessageByIdResponseBody) *GetMessageByIdResponse {
+	s.Body = v
+	return s
+}
+
+type GetUserMuteSettingRequest struct {
+	// AppId
+	AppId         *string                                 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	RequestParams *GetUserMuteSettingRequestRequestParams `json:"RequestParams,omitempty" xml:"RequestParams,omitempty" type:"Struct"`
+}
+
+func (s GetUserMuteSettingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserMuteSettingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserMuteSettingRequest) SetAppId(v string) *GetUserMuteSettingRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetUserMuteSettingRequest) SetRequestParams(v *GetUserMuteSettingRequestRequestParams) *GetUserMuteSettingRequest {
+	s.RequestParams = v
+	return s
+}
+
+type GetUserMuteSettingRequestRequestParams struct {
+	// 用户列表
+	AppUids []*string `json:"AppUids,omitempty" xml:"AppUids,omitempty" type:"Repeated"`
+}
+
+func (s GetUserMuteSettingRequestRequestParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserMuteSettingRequestRequestParams) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserMuteSettingRequestRequestParams) SetAppUids(v []*string) *GetUserMuteSettingRequestRequestParams {
+	s.AppUids = v
+	return s
+}
+
+type GetUserMuteSettingShrinkRequest struct {
+	// AppId
+	AppId               *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	RequestParamsShrink *string `json:"RequestParams,omitempty" xml:"RequestParams,omitempty"`
+}
+
+func (s GetUserMuteSettingShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserMuteSettingShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserMuteSettingShrinkRequest) SetAppId(v string) *GetUserMuteSettingShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetUserMuteSettingShrinkRequest) SetRequestParamsShrink(v string) *GetUserMuteSettingShrinkRequest {
+	s.RequestParamsShrink = &v
+	return s
+}
+
+type GetUserMuteSettingResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 返回值
+	Result *GetUserMuteSettingResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s GetUserMuteSettingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserMuteSettingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserMuteSettingResponseBody) SetRequestId(v string) *GetUserMuteSettingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetUserMuteSettingResponseBody) SetCode(v string) *GetUserMuteSettingResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetUserMuteSettingResponseBody) SetMessage(v string) *GetUserMuteSettingResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetUserMuteSettingResponseBody) SetResult(v *GetUserMuteSettingResponseBodyResult) *GetUserMuteSettingResponseBody {
+	s.Result = v
+	return s
+}
+
+type GetUserMuteSettingResponseBodyResult struct {
+	UserMuteSettings map[string]*ResultUserMuteSettingsValue `json:"UserMuteSettings,omitempty" xml:"UserMuteSettings,omitempty"`
+}
+
+func (s GetUserMuteSettingResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserMuteSettingResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserMuteSettingResponseBodyResult) SetUserMuteSettings(v map[string]*ResultUserMuteSettingsValue) *GetUserMuteSettingResponseBodyResult {
+	s.UserMuteSettings = v
+	return s
+}
+
+type GetUserMuteSettingResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetUserMuteSettingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetUserMuteSettingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserMuteSettingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserMuteSettingResponse) SetHeaders(v map[string]*string) *GetUserMuteSettingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetUserMuteSettingResponse) SetBody(v *GetUserMuteSettingResponseBody) *GetUserMuteSettingResponse {
 	s.Body = v
 	return s
 }
@@ -2823,6 +3671,7 @@ func (s *InitTenantRequest) SetRequest(v *InitTenantRequestRequest) *InitTenantR
 }
 
 type InitTenantRequestRequest struct {
+	// 应用appKey
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
 }
 
@@ -2840,10 +3689,12 @@ func (s *InitTenantRequestRequest) SetDomain(v string) *InitTenantRequestRequest
 }
 
 type InitTenantResponseBody struct {
-	// Id of the request
-	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	ResponseSuccess *bool `json:"ResponseSuccess,omitempty" xml:"ResponseSuccess,omitempty"`
+	// 错误码
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	ErrorMsg  *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// 错误信息
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// 是否初始化成功
 	Result    *bool   `json:"result,omitempty" xml:"result,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -2856,8 +3707,8 @@ func (s InitTenantResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *InitTenantResponseBody) SetSuccess(v bool) *InitTenantResponseBody {
-	s.Success = &v
+func (s *InitTenantResponseBody) SetResponseSuccess(v bool) *InitTenantResponseBody {
+	s.ResponseSuccess = &v
 	return s
 }
 
@@ -3036,6 +3887,596 @@ func (s *KickOffResponse) SetBody(v *KickOffResponseBody) *KickOffResponse {
 	return s
 }
 
+type ListAppInfosRequest struct {
+	RequestParams *ListAppInfosRequestRequestParams `json:"RequestParams,omitempty" xml:"RequestParams,omitempty" type:"Struct"`
+}
+
+func (s ListAppInfosRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAppInfosRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAppInfosRequest) SetRequestParams(v *ListAppInfosRequestRequestParams) *ListAppInfosRequest {
+	s.RequestParams = v
+	return s
+}
+
+type ListAppInfosRequestRequestParams struct {
+	// 关键字类型，包含appName、appId两类
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 关键字
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// 分页大小，大于0的任意数
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 页码，从1开始
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+}
+
+func (s ListAppInfosRequestRequestParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAppInfosRequestRequestParams) GoString() string {
+	return s.String()
+}
+
+func (s *ListAppInfosRequestRequestParams) SetType(v string) *ListAppInfosRequestRequestParams {
+	s.Type = &v
+	return s
+}
+
+func (s *ListAppInfosRequestRequestParams) SetKeyword(v string) *ListAppInfosRequestRequestParams {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListAppInfosRequestRequestParams) SetPageSize(v int32) *ListAppInfosRequestRequestParams {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAppInfosRequestRequestParams) SetPageNumber(v int32) *ListAppInfosRequestRequestParams {
+	s.PageNumber = &v
+	return s
+}
+
+type ListAppInfosShrinkRequest struct {
+	RequestParamsShrink *string `json:"RequestParams,omitempty" xml:"RequestParams,omitempty"`
+}
+
+func (s ListAppInfosShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAppInfosShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAppInfosShrinkRequest) SetRequestParamsShrink(v string) *ListAppInfosShrinkRequest {
+	s.RequestParamsShrink = &v
+	return s
+}
+
+type ListAppInfosResponseBody struct {
+	// desc
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// requestId
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// httpStatusCode
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// code
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// success
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// result
+	Result *ListAppInfosResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s ListAppInfosResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAppInfosResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAppInfosResponseBody) SetMessage(v string) *ListAppInfosResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListAppInfosResponseBody) SetRequestId(v string) *ListAppInfosResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAppInfosResponseBody) SetHttpStatusCode(v int32) *ListAppInfosResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListAppInfosResponseBody) SetCode(v string) *ListAppInfosResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListAppInfosResponseBody) SetSuccess(v bool) *ListAppInfosResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListAppInfosResponseBody) SetResult(v *ListAppInfosResponseBodyResult) *ListAppInfosResponseBody {
+	s.Result = v
+	return s
+}
+
+type ListAppInfosResponseBodyResult struct {
+	// 总数，用于分页
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// 应用信息列表
+	AppInfos []*ListAppInfosResponseBodyResultAppInfos `json:"AppInfos,omitempty" xml:"AppInfos,omitempty" type:"Repeated"`
+}
+
+func (s ListAppInfosResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAppInfosResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListAppInfosResponseBodyResult) SetTotalCount(v int32) *ListAppInfosResponseBodyResult {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListAppInfosResponseBodyResult) SetAppInfos(v []*ListAppInfosResponseBodyResultAppInfos) *ListAppInfosResponseBodyResult {
+	s.AppInfos = v
+	return s
+}
+
+type ListAppInfosResponseBodyResultAppInfos struct {
+	// 应用Id
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 应用名
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 应用状态
+	AppStatus *int32 `json:"AppStatus,omitempty" xml:"AppStatus,omitempty"`
+	// 产品版本
+	ProdVersion *string `json:"ProdVersion,omitempty" xml:"ProdVersion,omitempty"`
+}
+
+func (s ListAppInfosResponseBodyResultAppInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAppInfosResponseBodyResultAppInfos) GoString() string {
+	return s.String()
+}
+
+func (s *ListAppInfosResponseBodyResultAppInfos) SetAppId(v string) *ListAppInfosResponseBodyResultAppInfos {
+	s.AppId = &v
+	return s
+}
+
+func (s *ListAppInfosResponseBodyResultAppInfos) SetAppName(v string) *ListAppInfosResponseBodyResultAppInfos {
+	s.AppName = &v
+	return s
+}
+
+func (s *ListAppInfosResponseBodyResultAppInfos) SetCreateTime(v string) *ListAppInfosResponseBodyResultAppInfos {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListAppInfosResponseBodyResultAppInfos) SetAppStatus(v int32) *ListAppInfosResponseBodyResultAppInfos {
+	s.AppStatus = &v
+	return s
+}
+
+func (s *ListAppInfosResponseBodyResultAppInfos) SetProdVersion(v string) *ListAppInfosResponseBodyResultAppInfos {
+	s.ProdVersion = &v
+	return s
+}
+
+type ListAppInfosResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListAppInfosResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListAppInfosResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAppInfosResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAppInfosResponse) SetHeaders(v map[string]*string) *ListAppInfosResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAppInfosResponse) SetBody(v *ListAppInfosResponseBody) *ListAppInfosResponse {
+	s.Body = v
+	return s
+}
+
+type ListDetailReportStatisticsRequest struct {
+	// 应用Id
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 请求
+	RequestParams *ListDetailReportStatisticsRequestRequestParams `json:"RequestParams,omitempty" xml:"RequestParams,omitempty" type:"Struct"`
+}
+
+func (s ListDetailReportStatisticsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDetailReportStatisticsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDetailReportStatisticsRequest) SetAppId(v string) *ListDetailReportStatisticsRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *ListDetailReportStatisticsRequest) SetRequestParams(v *ListDetailReportStatisticsRequestRequestParams) *ListDetailReportStatisticsRequest {
+	s.RequestParams = v
+	return s
+}
+
+type ListDetailReportStatisticsRequestRequestParams struct {
+	// 开始时间，utc
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// 结束时间，utc
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// 报表类型  user、groupChat、message
+	ReportStatisticsType *string `json:"ReportStatisticsType,omitempty" xml:"ReportStatisticsType,omitempty"`
+}
+
+func (s ListDetailReportStatisticsRequestRequestParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDetailReportStatisticsRequestRequestParams) GoString() string {
+	return s.String()
+}
+
+func (s *ListDetailReportStatisticsRequestRequestParams) SetStartTime(v string) *ListDetailReportStatisticsRequestRequestParams {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListDetailReportStatisticsRequestRequestParams) SetEndTime(v string) *ListDetailReportStatisticsRequestRequestParams {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListDetailReportStatisticsRequestRequestParams) SetReportStatisticsType(v string) *ListDetailReportStatisticsRequestRequestParams {
+	s.ReportStatisticsType = &v
+	return s
+}
+
+type ListDetailReportStatisticsShrinkRequest struct {
+	// 应用Id
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 请求
+	RequestParamsShrink *string `json:"RequestParams,omitempty" xml:"RequestParams,omitempty"`
+}
+
+func (s ListDetailReportStatisticsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDetailReportStatisticsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDetailReportStatisticsShrinkRequest) SetAppId(v string) *ListDetailReportStatisticsShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *ListDetailReportStatisticsShrinkRequest) SetRequestParamsShrink(v string) *ListDetailReportStatisticsShrinkRequest {
+	s.RequestParamsShrink = &v
+	return s
+}
+
+type ListDetailReportStatisticsResponseBody struct {
+	// desc
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// requestId
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// httpStatusCode
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// code
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// success
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// result
+	Result *ListDetailReportStatisticsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s ListDetailReportStatisticsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDetailReportStatisticsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDetailReportStatisticsResponseBody) SetMessage(v string) *ListDetailReportStatisticsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListDetailReportStatisticsResponseBody) SetRequestId(v string) *ListDetailReportStatisticsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDetailReportStatisticsResponseBody) SetHttpStatusCode(v int32) *ListDetailReportStatisticsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListDetailReportStatisticsResponseBody) SetCode(v string) *ListDetailReportStatisticsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListDetailReportStatisticsResponseBody) SetSuccess(v bool) *ListDetailReportStatisticsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListDetailReportStatisticsResponseBody) SetResult(v *ListDetailReportStatisticsResponseBodyResult) *ListDetailReportStatisticsResponseBody {
+	s.Result = v
+	return s
+}
+
+type ListDetailReportStatisticsResponseBodyResult struct {
+	// 数据
+	Data []map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+}
+
+func (s ListDetailReportStatisticsResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDetailReportStatisticsResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListDetailReportStatisticsResponseBodyResult) SetData(v []map[string]interface{}) *ListDetailReportStatisticsResponseBodyResult {
+	s.Data = v
+	return s
+}
+
+type ListDetailReportStatisticsResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListDetailReportStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDetailReportStatisticsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDetailReportStatisticsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDetailReportStatisticsResponse) SetHeaders(v map[string]*string) *ListDetailReportStatisticsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDetailReportStatisticsResponse) SetBody(v *ListDetailReportStatisticsResponseBody) *ListDetailReportStatisticsResponse {
+	s.Body = v
+	return s
+}
+
+type ListGroupAllMembersRequest struct {
+	// App ID, IMPaaS租户的ID
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 拉取群成员列表的请求体
+	RequestParams *ListGroupAllMembersRequestRequestParams `json:"RequestParams,omitempty" xml:"RequestParams,omitempty" type:"Struct"`
+}
+
+func (s ListGroupAllMembersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupAllMembersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupAllMembersRequest) SetAppId(v string) *ListGroupAllMembersRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *ListGroupAllMembersRequest) SetRequestParams(v *ListGroupAllMembersRequestRequestParams) *ListGroupAllMembersRequest {
+	s.RequestParams = v
+	return s
+}
+
+type ListGroupAllMembersRequestRequestParams struct {
+	// 会话ID
+	AppCid *string `json:"AppCid,omitempty" xml:"AppCid,omitempty"`
+}
+
+func (s ListGroupAllMembersRequestRequestParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupAllMembersRequestRequestParams) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupAllMembersRequestRequestParams) SetAppCid(v string) *ListGroupAllMembersRequestRequestParams {
+	s.AppCid = &v
+	return s
+}
+
+type ListGroupAllMembersShrinkRequest struct {
+	// App ID, IMPaaS租户的ID
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 拉取群成员列表的请求体
+	RequestParamsShrink *string `json:"RequestParams,omitempty" xml:"RequestParams,omitempty"`
+}
+
+func (s ListGroupAllMembersShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupAllMembersShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupAllMembersShrinkRequest) SetAppId(v string) *ListGroupAllMembersShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *ListGroupAllMembersShrinkRequest) SetRequestParamsShrink(v string) *ListGroupAllMembersShrinkRequest {
+	s.RequestParamsShrink = &v
+	return s
+}
+
+type ListGroupAllMembersResponseBody struct {
+	// 请求ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 错误码
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 错误信息
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 拉取群成员列表的结果
+	Result *ListGroupAllMembersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s ListGroupAllMembersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupAllMembersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupAllMembersResponseBody) SetRequestId(v string) *ListGroupAllMembersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListGroupAllMembersResponseBody) SetCode(v string) *ListGroupAllMembersResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListGroupAllMembersResponseBody) SetMessage(v string) *ListGroupAllMembersResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListGroupAllMembersResponseBody) SetResult(v *ListGroupAllMembersResponseBodyResult) *ListGroupAllMembersResponseBody {
+	s.Result = v
+	return s
+}
+
+type ListGroupAllMembersResponseBodyResult struct {
+	// 群成员列表
+	Members []*ListGroupAllMembersResponseBodyResultMembers `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
+}
+
+func (s ListGroupAllMembersResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupAllMembersResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupAllMembersResponseBodyResult) SetMembers(v []*ListGroupAllMembersResponseBodyResultMembers) *ListGroupAllMembersResponseBodyResult {
+	s.Members = v
+	return s
+}
+
+type ListGroupAllMembersResponseBodyResultMembers struct {
+	// 群成员ID
+	AppUid *string `json:"AppUid,omitempty" xml:"AppUid,omitempty"`
+	// 群成员角色
+	Role *int32 `json:"Role,omitempty" xml:"Role,omitempty"`
+	// 群成员昵称
+	Nick *string `json:"Nick,omitempty" xml:"Nick,omitempty"`
+	// 群成员入群时间
+	JoinTime *int64 `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
+	// 群成员扩展信息
+	Extensions map[string]*string `json:"Extensions,omitempty" xml:"Extensions,omitempty"`
+}
+
+func (s ListGroupAllMembersResponseBodyResultMembers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupAllMembersResponseBodyResultMembers) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupAllMembersResponseBodyResultMembers) SetAppUid(v string) *ListGroupAllMembersResponseBodyResultMembers {
+	s.AppUid = &v
+	return s
+}
+
+func (s *ListGroupAllMembersResponseBodyResultMembers) SetRole(v int32) *ListGroupAllMembersResponseBodyResultMembers {
+	s.Role = &v
+	return s
+}
+
+func (s *ListGroupAllMembersResponseBodyResultMembers) SetNick(v string) *ListGroupAllMembersResponseBodyResultMembers {
+	s.Nick = &v
+	return s
+}
+
+func (s *ListGroupAllMembersResponseBodyResultMembers) SetJoinTime(v int64) *ListGroupAllMembersResponseBodyResultMembers {
+	s.JoinTime = &v
+	return s
+}
+
+func (s *ListGroupAllMembersResponseBodyResultMembers) SetExtensions(v map[string]*string) *ListGroupAllMembersResponseBodyResultMembers {
+	s.Extensions = v
+	return s
+}
+
+type ListGroupAllMembersResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListGroupAllMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListGroupAllMembersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupAllMembersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupAllMembersResponse) SetHeaders(v map[string]*string) *ListGroupAllMembersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListGroupAllMembersResponse) SetBody(v *ListGroupAllMembersResponseBody) *ListGroupAllMembersResponse {
+	s.Body = v
+	return s
+}
+
 type ListGroupSilenceMembersRequest struct {
 	// AppId
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
@@ -3153,7 +4594,7 @@ type ListGroupSilenceMembersResponseBodyResult struct {
 	// 禁言白名单
 	Whitelist []*string `json:"Whitelist,omitempty" xml:"Whitelist,omitempty" type:"Repeated"`
 	// 禁言黑名单用户及对应禁言时长
-	Blacklist map[string]*string `json:"Blacklist,omitempty" xml:"Blacklist,omitempty"`
+	Blacklist map[string]*int64 `json:"Blacklist,omitempty" xml:"Blacklist,omitempty"`
 }
 
 func (s ListGroupSilenceMembersResponseBodyResult) String() string {
@@ -3174,7 +4615,7 @@ func (s *ListGroupSilenceMembersResponseBodyResult) SetWhitelist(v []*string) *L
 	return s
 }
 
-func (s *ListGroupSilenceMembersResponseBodyResult) SetBlacklist(v map[string]*string) *ListGroupSilenceMembersResponseBodyResult {
+func (s *ListGroupSilenceMembersResponseBodyResult) SetBlacklist(v map[string]*int64) *ListGroupSilenceMembersResponseBodyResult {
 	s.Blacklist = v
 	return s
 }
@@ -3198,6 +4639,139 @@ func (s *ListGroupSilenceMembersResponse) SetHeaders(v map[string]*string) *List
 }
 
 func (s *ListGroupSilenceMembersResponse) SetBody(v *ListGroupSilenceMembersResponseBody) *ListGroupSilenceMembersResponse {
+	s.Body = v
+	return s
+}
+
+type MuteUsersRequest struct {
+	// AppId
+	AppId         *string                        `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	RequestParams *MuteUsersRequestRequestParams `json:"RequestParams,omitempty" xml:"RequestParams,omitempty" type:"Struct"`
+}
+
+func (s MuteUsersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MuteUsersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *MuteUsersRequest) SetAppId(v string) *MuteUsersRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *MuteUsersRequest) SetRequestParams(v *MuteUsersRequestRequestParams) *MuteUsersRequest {
+	s.RequestParams = v
+	return s
+}
+
+type MuteUsersRequestRequestParams struct {
+	// 需要禁言的用户
+	AppUids []*string `json:"AppUids,omitempty" xml:"AppUids,omitempty" type:"Repeated"`
+	// 单位秒
+	MuteDuration *int64 `json:"MuteDuration,omitempty" xml:"MuteDuration,omitempty"`
+	// true: 禁言, false: 解除禁言
+	Mute *bool `json:"Mute,omitempty" xml:"Mute,omitempty"`
+}
+
+func (s MuteUsersRequestRequestParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MuteUsersRequestRequestParams) GoString() string {
+	return s.String()
+}
+
+func (s *MuteUsersRequestRequestParams) SetAppUids(v []*string) *MuteUsersRequestRequestParams {
+	s.AppUids = v
+	return s
+}
+
+func (s *MuteUsersRequestRequestParams) SetMuteDuration(v int64) *MuteUsersRequestRequestParams {
+	s.MuteDuration = &v
+	return s
+}
+
+func (s *MuteUsersRequestRequestParams) SetMute(v bool) *MuteUsersRequestRequestParams {
+	s.Mute = &v
+	return s
+}
+
+type MuteUsersShrinkRequest struct {
+	// AppId
+	AppId               *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	RequestParamsShrink *string `json:"RequestParams,omitempty" xml:"RequestParams,omitempty"`
+}
+
+func (s MuteUsersShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MuteUsersShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *MuteUsersShrinkRequest) SetAppId(v string) *MuteUsersShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *MuteUsersShrinkRequest) SetRequestParamsShrink(v string) *MuteUsersShrinkRequest {
+	s.RequestParamsShrink = &v
+	return s
+}
+
+type MuteUsersResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+}
+
+func (s MuteUsersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MuteUsersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *MuteUsersResponseBody) SetRequestId(v string) *MuteUsersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *MuteUsersResponseBody) SetCode(v string) *MuteUsersResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *MuteUsersResponseBody) SetMessage(v string) *MuteUsersResponseBody {
+	s.Message = &v
+	return s
+}
+
+type MuteUsersResponse struct {
+	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *MuteUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s MuteUsersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MuteUsersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *MuteUsersResponse) SetHeaders(v map[string]*string) *MuteUsersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *MuteUsersResponse) SetBody(v *MuteUsersResponseBody) *MuteUsersResponse {
 	s.Body = v
 	return s
 }
@@ -3559,6 +5133,143 @@ func (s *RemoveGroupExtensionByKeysResponse) SetHeaders(v map[string]*string) *R
 }
 
 func (s *RemoveGroupExtensionByKeysResponse) SetBody(v *RemoveGroupExtensionByKeysResponseBody) *RemoveGroupExtensionByKeysResponse {
+	s.Body = v
+	return s
+}
+
+type RemoveGroupMemberExtensionByKeysRequest struct {
+	// App ID, IMPaaS租户的ID
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 删除群成员扩展信息的请求体
+	RequestParams *RemoveGroupMemberExtensionByKeysRequestRequestParams `json:"RequestParams,omitempty" xml:"RequestParams,omitempty" type:"Struct"`
+}
+
+func (s RemoveGroupMemberExtensionByKeysRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveGroupMemberExtensionByKeysRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveGroupMemberExtensionByKeysRequest) SetAppId(v string) *RemoveGroupMemberExtensionByKeysRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *RemoveGroupMemberExtensionByKeysRequest) SetRequestParams(v *RemoveGroupMemberExtensionByKeysRequestRequestParams) *RemoveGroupMemberExtensionByKeysRequest {
+	s.RequestParams = v
+	return s
+}
+
+type RemoveGroupMemberExtensionByKeysRequestRequestParams struct {
+	// 会话ID
+	AppCid *string `json:"AppCid,omitempty" xml:"AppCid,omitempty"`
+	// 用户ID
+	AppUid *string `json:"AppUid,omitempty" xml:"AppUid,omitempty"`
+	// 扩展信息中需要删除的key列表
+	Keys []*string `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
+}
+
+func (s RemoveGroupMemberExtensionByKeysRequestRequestParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveGroupMemberExtensionByKeysRequestRequestParams) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveGroupMemberExtensionByKeysRequestRequestParams) SetAppCid(v string) *RemoveGroupMemberExtensionByKeysRequestRequestParams {
+	s.AppCid = &v
+	return s
+}
+
+func (s *RemoveGroupMemberExtensionByKeysRequestRequestParams) SetAppUid(v string) *RemoveGroupMemberExtensionByKeysRequestRequestParams {
+	s.AppUid = &v
+	return s
+}
+
+func (s *RemoveGroupMemberExtensionByKeysRequestRequestParams) SetKeys(v []*string) *RemoveGroupMemberExtensionByKeysRequestRequestParams {
+	s.Keys = v
+	return s
+}
+
+type RemoveGroupMemberExtensionByKeysShrinkRequest struct {
+	// App ID, IMPaaS租户的ID
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 删除群成员扩展信息的请求体
+	RequestParamsShrink *string `json:"RequestParams,omitempty" xml:"RequestParams,omitempty"`
+}
+
+func (s RemoveGroupMemberExtensionByKeysShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveGroupMemberExtensionByKeysShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveGroupMemberExtensionByKeysShrinkRequest) SetAppId(v string) *RemoveGroupMemberExtensionByKeysShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *RemoveGroupMemberExtensionByKeysShrinkRequest) SetRequestParamsShrink(v string) *RemoveGroupMemberExtensionByKeysShrinkRequest {
+	s.RequestParamsShrink = &v
+	return s
+}
+
+type RemoveGroupMemberExtensionByKeysResponseBody struct {
+	// 请求ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 错误码
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 错误信息
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+}
+
+func (s RemoveGroupMemberExtensionByKeysResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveGroupMemberExtensionByKeysResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveGroupMemberExtensionByKeysResponseBody) SetRequestId(v string) *RemoveGroupMemberExtensionByKeysResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RemoveGroupMemberExtensionByKeysResponseBody) SetCode(v string) *RemoveGroupMemberExtensionByKeysResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RemoveGroupMemberExtensionByKeysResponseBody) SetMessage(v string) *RemoveGroupMemberExtensionByKeysResponseBody {
+	s.Message = &v
+	return s
+}
+
+type RemoveGroupMemberExtensionByKeysResponse struct {
+	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RemoveGroupMemberExtensionByKeysResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RemoveGroupMemberExtensionByKeysResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveGroupMemberExtensionByKeysResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveGroupMemberExtensionByKeysResponse) SetHeaders(v map[string]*string) *RemoveGroupMemberExtensionByKeysResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RemoveGroupMemberExtensionByKeysResponse) SetBody(v *RemoveGroupMemberExtensionByKeysResponseBody) *RemoveGroupMemberExtensionByKeysResponse {
 	s.Body = v
 	return s
 }
@@ -4950,6 +6661,273 @@ func (s *SetGroupExtensionByKeysResponse) SetBody(v *SetGroupExtensionByKeysResp
 	return s
 }
 
+type SetGroupMemberExtensionByKeysRequest struct {
+	// App ID, IMPaaS租户的ID
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 设置群成员扩展信息的请求体
+	RequestParams *SetGroupMemberExtensionByKeysRequestRequestParams `json:"RequestParams,omitempty" xml:"RequestParams,omitempty" type:"Struct"`
+}
+
+func (s SetGroupMemberExtensionByKeysRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetGroupMemberExtensionByKeysRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetGroupMemberExtensionByKeysRequest) SetAppId(v string) *SetGroupMemberExtensionByKeysRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *SetGroupMemberExtensionByKeysRequest) SetRequestParams(v *SetGroupMemberExtensionByKeysRequestRequestParams) *SetGroupMemberExtensionByKeysRequest {
+	s.RequestParams = v
+	return s
+}
+
+type SetGroupMemberExtensionByKeysRequestRequestParams struct {
+	// 会话ID
+	AppCid *string `json:"AppCid,omitempty" xml:"AppCid,omitempty"`
+	// 用户ID
+	AppUid *string `json:"AppUid,omitempty" xml:"AppUid,omitempty"`
+	// 扩展信息
+	Extensions map[string]*string `json:"Extensions,omitempty" xml:"Extensions,omitempty"`
+}
+
+func (s SetGroupMemberExtensionByKeysRequestRequestParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetGroupMemberExtensionByKeysRequestRequestParams) GoString() string {
+	return s.String()
+}
+
+func (s *SetGroupMemberExtensionByKeysRequestRequestParams) SetAppCid(v string) *SetGroupMemberExtensionByKeysRequestRequestParams {
+	s.AppCid = &v
+	return s
+}
+
+func (s *SetGroupMemberExtensionByKeysRequestRequestParams) SetAppUid(v string) *SetGroupMemberExtensionByKeysRequestRequestParams {
+	s.AppUid = &v
+	return s
+}
+
+func (s *SetGroupMemberExtensionByKeysRequestRequestParams) SetExtensions(v map[string]*string) *SetGroupMemberExtensionByKeysRequestRequestParams {
+	s.Extensions = v
+	return s
+}
+
+type SetGroupMemberExtensionByKeysShrinkRequest struct {
+	// App ID, IMPaaS租户的ID
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 设置群成员扩展信息的请求体
+	RequestParamsShrink *string `json:"RequestParams,omitempty" xml:"RequestParams,omitempty"`
+}
+
+func (s SetGroupMemberExtensionByKeysShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetGroupMemberExtensionByKeysShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetGroupMemberExtensionByKeysShrinkRequest) SetAppId(v string) *SetGroupMemberExtensionByKeysShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *SetGroupMemberExtensionByKeysShrinkRequest) SetRequestParamsShrink(v string) *SetGroupMemberExtensionByKeysShrinkRequest {
+	s.RequestParamsShrink = &v
+	return s
+}
+
+type SetGroupMemberExtensionByKeysResponseBody struct {
+	// 请求ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 错误码
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 错误信息
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+}
+
+func (s SetGroupMemberExtensionByKeysResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetGroupMemberExtensionByKeysResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetGroupMemberExtensionByKeysResponseBody) SetRequestId(v string) *SetGroupMemberExtensionByKeysResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SetGroupMemberExtensionByKeysResponseBody) SetCode(v string) *SetGroupMemberExtensionByKeysResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SetGroupMemberExtensionByKeysResponseBody) SetMessage(v string) *SetGroupMemberExtensionByKeysResponseBody {
+	s.Message = &v
+	return s
+}
+
+type SetGroupMemberExtensionByKeysResponse struct {
+	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SetGroupMemberExtensionByKeysResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SetGroupMemberExtensionByKeysResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetGroupMemberExtensionByKeysResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetGroupMemberExtensionByKeysResponse) SetHeaders(v map[string]*string) *SetGroupMemberExtensionByKeysResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetGroupMemberExtensionByKeysResponse) SetBody(v *SetGroupMemberExtensionByKeysResponseBody) *SetGroupMemberExtensionByKeysResponse {
+	s.Body = v
+	return s
+}
+
+type SetGroupOwnerRequest struct {
+	// App ID，IMPaaS租户的ID
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 群主转让的请求体
+	RequestParams *SetGroupOwnerRequestRequestParams `json:"RequestParams,omitempty" xml:"RequestParams,omitempty" type:"Struct"`
+}
+
+func (s SetGroupOwnerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetGroupOwnerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetGroupOwnerRequest) SetAppId(v string) *SetGroupOwnerRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *SetGroupOwnerRequest) SetRequestParams(v *SetGroupOwnerRequestRequestParams) *SetGroupOwnerRequest {
+	s.RequestParams = v
+	return s
+}
+
+type SetGroupOwnerRequestRequestParams struct {
+	// 会话ID
+	AppCid *string `json:"AppCid,omitempty" xml:"AppCid,omitempty"`
+	// 新群主
+	NewOwnerAppUid *string `json:"NewOwnerAppUid,omitempty" xml:"NewOwnerAppUid,omitempty"`
+}
+
+func (s SetGroupOwnerRequestRequestParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetGroupOwnerRequestRequestParams) GoString() string {
+	return s.String()
+}
+
+func (s *SetGroupOwnerRequestRequestParams) SetAppCid(v string) *SetGroupOwnerRequestRequestParams {
+	s.AppCid = &v
+	return s
+}
+
+func (s *SetGroupOwnerRequestRequestParams) SetNewOwnerAppUid(v string) *SetGroupOwnerRequestRequestParams {
+	s.NewOwnerAppUid = &v
+	return s
+}
+
+type SetGroupOwnerShrinkRequest struct {
+	// App ID，IMPaaS租户的ID
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 群主转让的请求体
+	RequestParamsShrink *string `json:"RequestParams,omitempty" xml:"RequestParams,omitempty"`
+}
+
+func (s SetGroupOwnerShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetGroupOwnerShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetGroupOwnerShrinkRequest) SetAppId(v string) *SetGroupOwnerShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *SetGroupOwnerShrinkRequest) SetRequestParamsShrink(v string) *SetGroupOwnerShrinkRequest {
+	s.RequestParamsShrink = &v
+	return s
+}
+
+type SetGroupOwnerResponseBody struct {
+	// 请求ID。
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 错误码。
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 错误信息。
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+}
+
+func (s SetGroupOwnerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetGroupOwnerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetGroupOwnerResponseBody) SetRequestId(v string) *SetGroupOwnerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SetGroupOwnerResponseBody) SetCode(v string) *SetGroupOwnerResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SetGroupOwnerResponseBody) SetMessage(v string) *SetGroupOwnerResponseBody {
+	s.Message = &v
+	return s
+}
+
+type SetGroupOwnerResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SetGroupOwnerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SetGroupOwnerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetGroupOwnerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetGroupOwnerResponse) SetHeaders(v map[string]*string) *SetGroupOwnerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetGroupOwnerResponse) SetBody(v *SetGroupOwnerResponseBody) *SetGroupOwnerResponse {
+	s.Body = v
+	return s
+}
+
 type SetMessageExtensionByKeysRequest struct {
 	// AppId
 	AppId         *string                                        `json:"AppId,omitempty" xml:"AppId,omitempty"`
@@ -5557,6 +7535,536 @@ func (s *SilenceAllGroupMembersResponse) SetBody(v *SilenceAllGroupMembersRespon
 	return s
 }
 
+type UpdateAppNameRequest struct {
+	// 应用Id
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 请求
+	RequestParams *UpdateAppNameRequestRequestParams `json:"RequestParams,omitempty" xml:"RequestParams,omitempty" type:"Struct"`
+}
+
+func (s UpdateAppNameRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAppNameRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAppNameRequest) SetAppId(v string) *UpdateAppNameRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *UpdateAppNameRequest) SetRequestParams(v *UpdateAppNameRequestRequestParams) *UpdateAppNameRequest {
+	s.RequestParams = v
+	return s
+}
+
+type UpdateAppNameRequestRequestParams struct {
+	// 应用名
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+}
+
+func (s UpdateAppNameRequestRequestParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAppNameRequestRequestParams) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAppNameRequestRequestParams) SetAppName(v string) *UpdateAppNameRequestRequestParams {
+	s.AppName = &v
+	return s
+}
+
+type UpdateAppNameShrinkRequest struct {
+	// 应用Id
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 请求
+	RequestParamsShrink *string `json:"RequestParams,omitempty" xml:"RequestParams,omitempty"`
+}
+
+func (s UpdateAppNameShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAppNameShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAppNameShrinkRequest) SetAppId(v string) *UpdateAppNameShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *UpdateAppNameShrinkRequest) SetRequestParamsShrink(v string) *UpdateAppNameShrinkRequest {
+	s.RequestParamsShrink = &v
+	return s
+}
+
+type UpdateAppNameResponseBody struct {
+	// desc
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// requestId
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// httpStatusCode
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// code
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// success
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateAppNameResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAppNameResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAppNameResponseBody) SetMessage(v string) *UpdateAppNameResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateAppNameResponseBody) SetRequestId(v string) *UpdateAppNameResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateAppNameResponseBody) SetHttpStatusCode(v int32) *UpdateAppNameResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateAppNameResponseBody) SetCode(v string) *UpdateAppNameResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateAppNameResponseBody) SetSuccess(v bool) *UpdateAppNameResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateAppNameResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateAppNameResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateAppNameResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAppNameResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAppNameResponse) SetHeaders(v map[string]*string) *UpdateAppNameResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateAppNameResponse) SetBody(v *UpdateAppNameResponseBody) *UpdateAppNameResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateAppStatusRequest struct {
+	// 应用Id
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 请求
+	RequestParams *UpdateAppStatusRequestRequestParams `json:"RequestParams,omitempty" xml:"RequestParams,omitempty" type:"Struct"`
+}
+
+func (s UpdateAppStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAppStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAppStatusRequest) SetAppId(v string) *UpdateAppStatusRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *UpdateAppStatusRequest) SetRequestParams(v *UpdateAppStatusRequestRequestParams) *UpdateAppStatusRequest {
+	s.RequestParams = v
+	return s
+}
+
+type UpdateAppStatusRequestRequestParams struct {
+	// 是否开启
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+}
+
+func (s UpdateAppStatusRequestRequestParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAppStatusRequestRequestParams) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAppStatusRequestRequestParams) SetEnable(v bool) *UpdateAppStatusRequestRequestParams {
+	s.Enable = &v
+	return s
+}
+
+type UpdateAppStatusShrinkRequest struct {
+	// 应用Id
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 请求
+	RequestParamsShrink *string `json:"RequestParams,omitempty" xml:"RequestParams,omitempty"`
+}
+
+func (s UpdateAppStatusShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAppStatusShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAppStatusShrinkRequest) SetAppId(v string) *UpdateAppStatusShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *UpdateAppStatusShrinkRequest) SetRequestParamsShrink(v string) *UpdateAppStatusShrinkRequest {
+	s.RequestParamsShrink = &v
+	return s
+}
+
+type UpdateAppStatusResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 是否成功
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 错误信息
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 错误码
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+}
+
+func (s UpdateAppStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAppStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAppStatusResponseBody) SetRequestId(v string) *UpdateAppStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateAppStatusResponseBody) SetSuccess(v bool) *UpdateAppStatusResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *UpdateAppStatusResponseBody) SetMessage(v string) *UpdateAppStatusResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateAppStatusResponseBody) SetCode(v string) *UpdateAppStatusResponseBody {
+	s.Code = &v
+	return s
+}
+
+type UpdateAppStatusResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateAppStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateAppStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAppStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAppStatusResponse) SetHeaders(v map[string]*string) *UpdateAppStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateAppStatusResponse) SetBody(v *UpdateAppStatusResponseBody) *UpdateAppStatusResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateCallbackConfigRequest struct {
+	// 应用Id
+	AppId         *string                                   `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	RequestParams *UpdateCallbackConfigRequestRequestParams `json:"RequestParams,omitempty" xml:"RequestParams,omitempty" type:"Struct"`
+}
+
+func (s UpdateCallbackConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCallbackConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCallbackConfigRequest) SetAppId(v string) *UpdateCallbackConfigRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *UpdateCallbackConfigRequest) SetRequestParams(v *UpdateCallbackConfigRequestRequestParams) *UpdateCallbackConfigRequest {
+	s.RequestParams = v
+	return s
+}
+
+type UpdateCallbackConfigRequestRequestParams struct {
+	// 回调url
+	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
+	// 加签密钥-key
+	SignatureKey *string `json:"SignatureKey,omitempty" xml:"SignatureKey,omitempty"`
+	// 加签密钥-value
+	SignatureValue *string `json:"SignatureValue,omitempty" xml:"SignatureValue,omitempty"`
+	// 回调api列表
+	Apis map[string]*bool `json:"Apis,omitempty" xml:"Apis,omitempty"`
+}
+
+func (s UpdateCallbackConfigRequestRequestParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCallbackConfigRequestRequestParams) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCallbackConfigRequestRequestParams) SetCallbackUrl(v string) *UpdateCallbackConfigRequestRequestParams {
+	s.CallbackUrl = &v
+	return s
+}
+
+func (s *UpdateCallbackConfigRequestRequestParams) SetSignatureKey(v string) *UpdateCallbackConfigRequestRequestParams {
+	s.SignatureKey = &v
+	return s
+}
+
+func (s *UpdateCallbackConfigRequestRequestParams) SetSignatureValue(v string) *UpdateCallbackConfigRequestRequestParams {
+	s.SignatureValue = &v
+	return s
+}
+
+func (s *UpdateCallbackConfigRequestRequestParams) SetApis(v map[string]*bool) *UpdateCallbackConfigRequestRequestParams {
+	s.Apis = v
+	return s
+}
+
+type UpdateCallbackConfigShrinkRequest struct {
+	// 应用Id
+	AppId               *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	RequestParamsShrink *string `json:"RequestParams,omitempty" xml:"RequestParams,omitempty"`
+}
+
+func (s UpdateCallbackConfigShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCallbackConfigShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCallbackConfigShrinkRequest) SetAppId(v string) *UpdateCallbackConfigShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *UpdateCallbackConfigShrinkRequest) SetRequestParamsShrink(v string) *UpdateCallbackConfigShrinkRequest {
+	s.RequestParamsShrink = &v
+	return s
+}
+
+type UpdateCallbackConfigResponseBody struct {
+	// desc
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// requestId
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// httpStatusCode
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// code
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// success
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// result
+	Result *UpdateCallbackConfigResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s UpdateCallbackConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCallbackConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCallbackConfigResponseBody) SetMessage(v string) *UpdateCallbackConfigResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateCallbackConfigResponseBody) SetRequestId(v string) *UpdateCallbackConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateCallbackConfigResponseBody) SetHttpStatusCode(v int32) *UpdateCallbackConfigResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateCallbackConfigResponseBody) SetCode(v string) *UpdateCallbackConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateCallbackConfigResponseBody) SetSuccess(v bool) *UpdateCallbackConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *UpdateCallbackConfigResponseBody) SetResult(v *UpdateCallbackConfigResponseBodyResult) *UpdateCallbackConfigResponseBody {
+	s.Result = v
+	return s
+}
+
+type UpdateCallbackConfigResponseBodyResult struct {
+	// im相关配置
+	ImConfig *UpdateCallbackConfigResponseBodyResultImConfig `json:"ImConfig,omitempty" xml:"ImConfig,omitempty" type:"Struct"`
+}
+
+func (s UpdateCallbackConfigResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCallbackConfigResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCallbackConfigResponseBodyResult) SetImConfig(v *UpdateCallbackConfigResponseBodyResultImConfig) *UpdateCallbackConfigResponseBodyResult {
+	s.ImConfig = v
+	return s
+}
+
+type UpdateCallbackConfigResponseBodyResultImConfig struct {
+	// 消息配置
+	MsgConfig *UpdateCallbackConfigResponseBodyResultImConfigMsgConfig `json:"MsgConfig,omitempty" xml:"MsgConfig,omitempty" type:"Struct"`
+	// 回调配置
+	CallbackConfig *UpdateCallbackConfigResponseBodyResultImConfigCallbackConfig `json:"CallbackConfig,omitempty" xml:"CallbackConfig,omitempty" type:"Struct"`
+}
+
+func (s UpdateCallbackConfigResponseBodyResultImConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCallbackConfigResponseBodyResultImConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCallbackConfigResponseBodyResultImConfig) SetMsgConfig(v *UpdateCallbackConfigResponseBodyResultImConfigMsgConfig) *UpdateCallbackConfigResponseBodyResultImConfig {
+	s.MsgConfig = v
+	return s
+}
+
+func (s *UpdateCallbackConfigResponseBodyResultImConfig) SetCallbackConfig(v *UpdateCallbackConfigResponseBodyResultImConfigCallbackConfig) *UpdateCallbackConfigResponseBodyResultImConfig {
+	s.CallbackConfig = v
+	return s
+}
+
+type UpdateCallbackConfigResponseBodyResultImConfigMsgConfig struct {
+	// 消息撤回时间间隔，毫秒
+	MsgRecallTimeInterval *int64 `json:"MsgRecallTimeInterval,omitempty" xml:"MsgRecallTimeInterval,omitempty"`
+}
+
+func (s UpdateCallbackConfigResponseBodyResultImConfigMsgConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCallbackConfigResponseBodyResultImConfigMsgConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCallbackConfigResponseBodyResultImConfigMsgConfig) SetMsgRecallTimeInterval(v int64) *UpdateCallbackConfigResponseBodyResultImConfigMsgConfig {
+	s.MsgRecallTimeInterval = &v
+	return s
+}
+
+type UpdateCallbackConfigResponseBodyResultImConfigCallbackConfig struct {
+	// 回调url
+	BackendUrl *string `json:"BackendUrl,omitempty" xml:"BackendUrl,omitempty"`
+	// 加签密钥-key
+	SignatureKey *string `json:"SignatureKey,omitempty" xml:"SignatureKey,omitempty"`
+	// 加签密钥-value
+	SignatureValue *string `json:"SignatureValue,omitempty" xml:"SignatureValue,omitempty"`
+	// 回调方法列表
+	ApiIds []*string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty" type:"Repeated"`
+}
+
+func (s UpdateCallbackConfigResponseBodyResultImConfigCallbackConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCallbackConfigResponseBodyResultImConfigCallbackConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCallbackConfigResponseBodyResultImConfigCallbackConfig) SetBackendUrl(v string) *UpdateCallbackConfigResponseBodyResultImConfigCallbackConfig {
+	s.BackendUrl = &v
+	return s
+}
+
+func (s *UpdateCallbackConfigResponseBodyResultImConfigCallbackConfig) SetSignatureKey(v string) *UpdateCallbackConfigResponseBodyResultImConfigCallbackConfig {
+	s.SignatureKey = &v
+	return s
+}
+
+func (s *UpdateCallbackConfigResponseBodyResultImConfigCallbackConfig) SetSignatureValue(v string) *UpdateCallbackConfigResponseBodyResultImConfigCallbackConfig {
+	s.SignatureValue = &v
+	return s
+}
+
+func (s *UpdateCallbackConfigResponseBodyResultImConfigCallbackConfig) SetApiIds(v []*string) *UpdateCallbackConfigResponseBodyResultImConfigCallbackConfig {
+	s.ApiIds = v
+	return s
+}
+
+type UpdateCallbackConfigResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateCallbackConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateCallbackConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCallbackConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCallbackConfigResponse) SetHeaders(v map[string]*string) *UpdateCallbackConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateCallbackConfigResponse) SetBody(v *UpdateCallbackConfigResponseBody) *UpdateCallbackConfigResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateGroupIconRequest struct {
 	// AppId
 	AppId         *string                              `json:"AppId,omitempty" xml:"AppId,omitempty"`
@@ -5690,8 +8198,9 @@ func (s *UpdateGroupIconResponse) SetBody(v *UpdateGroupIconResponseBody) *Updat
 }
 
 type UpdateGroupMembersRoleRequest struct {
-	// AppId
-	AppId         *string                                     `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// App ID。IMPaaS租户的ID。
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 更新群成员角色请求体。
 	RequestParams *UpdateGroupMembersRoleRequestRequestParams `json:"RequestParams,omitempty" xml:"RequestParams,omitempty" type:"Struct"`
 }
 
@@ -5716,10 +8225,10 @@ func (s *UpdateGroupMembersRoleRequest) SetRequestParams(v *UpdateGroupMembersRo
 type UpdateGroupMembersRoleRequestRequestParams struct {
 	// 会话ID
 	AppCid *string `json:"AppCid,omitempty" xml:"AppCid,omitempty"`
-	// 操作者uid
+	// 操作用户ID。
 	OperatorAppUid *string `json:"OperatorAppUid,omitempty" xml:"OperatorAppUid,omitempty"`
-	// 角色
-	Rrole *int32 `json:"Rrole,omitempty" xml:"Rrole,omitempty"`
+	// 更新后的成员角色。取值： 2：管理员。 3：普通。 100~127：自定义。 不能为1。
+	Role *int32 `json:"Role,omitempty" xml:"Role,omitempty"`
 	// 需要更改的uids
 	AppUids []*string `json:"AppUids,omitempty" xml:"AppUids,omitempty" type:"Repeated"`
 }
@@ -5742,8 +8251,8 @@ func (s *UpdateGroupMembersRoleRequestRequestParams) SetOperatorAppUid(v string)
 	return s
 }
 
-func (s *UpdateGroupMembersRoleRequestRequestParams) SetRrole(v int32) *UpdateGroupMembersRoleRequestRequestParams {
-	s.Rrole = &v
+func (s *UpdateGroupMembersRoleRequestRequestParams) SetRole(v int32) *UpdateGroupMembersRoleRequestRequestParams {
+	s.Role = &v
 	return s
 }
 
@@ -5753,8 +8262,9 @@ func (s *UpdateGroupMembersRoleRequestRequestParams) SetAppUids(v []*string) *Up
 }
 
 type UpdateGroupMembersRoleShrinkRequest struct {
-	// AppId
-	AppId               *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// App ID。IMPaaS租户的ID。
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 更新群成员角色请求体。
 	RequestParamsShrink *string `json:"RequestParams,omitempty" xml:"RequestParams,omitempty"`
 }
 
@@ -5777,9 +8287,12 @@ func (s *UpdateGroupMembersRoleShrinkRequest) SetRequestParamsShrink(v string) *
 }
 
 type UpdateGroupMembersRoleResponseBody struct {
+	// 请求ID。
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 错误码。
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 错误信息。
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
 func (s UpdateGroupMembersRoleResponseBody) String() string {
@@ -5960,6 +8473,150 @@ func (s *UpdateGroupTitleResponse) SetBody(v *UpdateGroupTitleResponseBody) *Upd
 	return s
 }
 
+type UpdateMsgRecallIntervalRequest struct {
+	// 请求
+	RequestParams *UpdateMsgRecallIntervalRequestRequestParams `json:"RequestParams,omitempty" xml:"RequestParams,omitempty" type:"Struct"`
+	// 应用Id
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+}
+
+func (s UpdateMsgRecallIntervalRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMsgRecallIntervalRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMsgRecallIntervalRequest) SetRequestParams(v *UpdateMsgRecallIntervalRequestRequestParams) *UpdateMsgRecallIntervalRequest {
+	s.RequestParams = v
+	return s
+}
+
+func (s *UpdateMsgRecallIntervalRequest) SetAppId(v string) *UpdateMsgRecallIntervalRequest {
+	s.AppId = &v
+	return s
+}
+
+type UpdateMsgRecallIntervalRequestRequestParams struct {
+	// 消息撤回时间间隔
+	ClientMsgRecallIntervalMinute *int64 `json:"ClientMsgRecallIntervalMinute,omitempty" xml:"ClientMsgRecallIntervalMinute,omitempty"`
+}
+
+func (s UpdateMsgRecallIntervalRequestRequestParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMsgRecallIntervalRequestRequestParams) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMsgRecallIntervalRequestRequestParams) SetClientMsgRecallIntervalMinute(v int64) *UpdateMsgRecallIntervalRequestRequestParams {
+	s.ClientMsgRecallIntervalMinute = &v
+	return s
+}
+
+type UpdateMsgRecallIntervalShrinkRequest struct {
+	// 请求
+	RequestParamsShrink *string `json:"RequestParams,omitempty" xml:"RequestParams,omitempty"`
+	// 应用Id
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+}
+
+func (s UpdateMsgRecallIntervalShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMsgRecallIntervalShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMsgRecallIntervalShrinkRequest) SetRequestParamsShrink(v string) *UpdateMsgRecallIntervalShrinkRequest {
+	s.RequestParamsShrink = &v
+	return s
+}
+
+func (s *UpdateMsgRecallIntervalShrinkRequest) SetAppId(v string) *UpdateMsgRecallIntervalShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+type UpdateMsgRecallIntervalResponseBody struct {
+	// desc
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// requestId
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// httpStatusCode
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// code
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// success
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// result
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s UpdateMsgRecallIntervalResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMsgRecallIntervalResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMsgRecallIntervalResponseBody) SetMessage(v string) *UpdateMsgRecallIntervalResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateMsgRecallIntervalResponseBody) SetRequestId(v string) *UpdateMsgRecallIntervalResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateMsgRecallIntervalResponseBody) SetHttpStatusCode(v int32) *UpdateMsgRecallIntervalResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateMsgRecallIntervalResponseBody) SetCode(v string) *UpdateMsgRecallIntervalResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateMsgRecallIntervalResponseBody) SetSuccess(v bool) *UpdateMsgRecallIntervalResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *UpdateMsgRecallIntervalResponseBody) SetResult(v string) *UpdateMsgRecallIntervalResponseBody {
+	s.Result = &v
+	return s
+}
+
+type UpdateMsgRecallIntervalResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateMsgRecallIntervalResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateMsgRecallIntervalResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMsgRecallIntervalResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMsgRecallIntervalResponse) SetHeaders(v map[string]*string) *UpdateMsgRecallIntervalResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateMsgRecallIntervalResponse) SetBody(v *UpdateMsgRecallIntervalResponseBody) *UpdateMsgRecallIntervalResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateTenantStatusRequest struct {
 	Request *UpdateTenantStatusRequestRequest `json:"Request,omitempty" xml:"Request,omitempty" type:"Struct"`
 }
@@ -5978,8 +8635,10 @@ func (s *UpdateTenantStatusRequest) SetRequest(v *UpdateTenantStatusRequestReque
 }
 
 type UpdateTenantStatusRequestRequest struct {
+	// 应用appKey
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
-	Status *int64  `json:"status,omitempty" xml:"status,omitempty"`
+	// 应用状态
+	Status *int64 `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s UpdateTenantStatusRequestRequest) String() string {
@@ -6002,9 +8661,12 @@ func (s *UpdateTenantStatusRequestRequest) SetStatus(v int64) *UpdateTenantStatu
 
 type UpdateTenantStatusResponseBody struct {
 	// Id of the request
-	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	ResponseSuccess *bool `json:"ResponseSuccess,omitempty" xml:"ResponseSuccess,omitempty"`
+	// 错误码
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	ErrorMsg  *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// 错误信息
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// 是否更新成功
 	Result    *bool   `json:"result,omitempty" xml:"result,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -6017,8 +8679,8 @@ func (s UpdateTenantStatusResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateTenantStatusResponseBody) SetSuccess(v bool) *UpdateTenantStatusResponseBody {
-	s.Success = &v
+func (s *UpdateTenantStatusResponseBody) SetResponseSuccess(v bool) *UpdateTenantStatusResponseBody {
+	s.ResponseSuccess = &v
 	return s
 }
 
@@ -6062,6 +8724,29 @@ func (s *UpdateTenantStatusResponse) SetHeaders(v map[string]*string) *UpdateTen
 
 func (s *UpdateTenantStatusResponse) SetBody(v *UpdateTenantStatusResponseBody) *UpdateTenantStatusResponse {
 	s.Body = v
+	return s
+}
+
+type ResultUserMuteSettingsValue struct {
+	Mute       *bool  `json:"Mute,omitempty" xml:"Mute,omitempty"`
+	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+}
+
+func (s ResultUserMuteSettingsValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResultUserMuteSettingsValue) GoString() string {
+	return s.String()
+}
+
+func (s *ResultUserMuteSettingsValue) SetMute(v bool) *ResultUserMuteSettingsValue {
+	s.Mute = &v
+	return s
+}
+
+func (s *ResultUserMuteSettingsValue) SetExpireTime(v int64) *ResultUserMuteSettingsValue {
+	s.ExpireTime = &v
 	return s
 }
 
@@ -6413,6 +9098,34 @@ func (client *Client) CreateRoom(request *CreateRoomRequest) (_result *CreateRoo
 	return _result, _err
 }
 
+func (client *Client) DeleteAppWithOptions(request *DeleteAppRequest, runtime *util.RuntimeOptions) (_result *DeleteAppResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DeleteAppResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteApp"), tea.String("2020-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteApp(request *DeleteAppRequest) (_result *DeleteAppResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteAppResponse{}
+	_body, _err := client.DeleteAppWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DestroyRoomWithOptions(request *DestroyRoomRequest, runtime *util.RuntimeOptions) (_result *DestroyRoomResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6475,6 +9188,68 @@ func (client *Client) DismissGroup(request *DismissGroupRequest) (_result *Dismi
 	return _result, _err
 }
 
+func (client *Client) GetCommonConfigWithOptions(request *GetCommonConfigRequest, runtime *util.RuntimeOptions) (_result *GetCommonConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetCommonConfigResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetCommonConfig"), tea.String("2020-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetCommonConfig(request *GetCommonConfigRequest) (_result *GetCommonConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetCommonConfigResponse{}
+	_body, _err := client.GetCommonConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetGroupByIdWithOptions(tmpReq *GetGroupByIdRequest, runtime *util.RuntimeOptions) (_result *GetGroupByIdResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetGroupByIdShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.RequestParams))) {
+		request.RequestParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.RequestParams), tea.String("RequestParams"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetGroupByIdResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetGroupById"), tea.String("2020-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetGroupById(request *GetGroupByIdRequest) (_result *GetGroupByIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetGroupByIdResponse{}
+	_body, _err := client.GetGroupByIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetGroupMemberByIdsWithOptions(tmpReq *GetGroupMemberByIdsRequest, runtime *util.RuntimeOptions) (_result *GetGroupMemberByIdsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -6502,6 +9277,34 @@ func (client *Client) GetGroupMemberByIds(request *GetGroupMemberByIdsRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &GetGroupMemberByIdsResponse{}
 	_body, _err := client.GetGroupMemberByIdsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetIMConfigWithOptions(request *GetIMConfigRequest, runtime *util.RuntimeOptions) (_result *GetIMConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetIMConfigResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetIMConfig"), tea.String("2020-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetIMConfig(request *GetIMConfigRequest) (_result *GetIMConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetIMConfigResponse{}
+	_body, _err := client.GetIMConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6638,6 +9441,40 @@ func (client *Client) GetMessageById(request *GetMessageByIdRequest) (_result *G
 	runtime := &util.RuntimeOptions{}
 	_result = &GetMessageByIdResponse{}
 	_body, _err := client.GetMessageByIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetUserMuteSettingWithOptions(tmpReq *GetUserMuteSettingRequest, runtime *util.RuntimeOptions) (_result *GetUserMuteSettingResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetUserMuteSettingShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.RequestParams))) {
+		request.RequestParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.RequestParams), tea.String("RequestParams"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetUserMuteSettingResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetUserMuteSetting"), tea.String("2020-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetUserMuteSetting(request *GetUserMuteSettingRequest) (_result *GetUserMuteSettingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetUserMuteSettingResponse{}
+	_body, _err := client.GetUserMuteSettingWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6843,6 +9680,108 @@ func (client *Client) KickOff(request *KickOffRequest) (_result *KickOffResponse
 	return _result, _err
 }
 
+func (client *Client) ListAppInfosWithOptions(tmpReq *ListAppInfosRequest, runtime *util.RuntimeOptions) (_result *ListAppInfosResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListAppInfosShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.RequestParams))) {
+		request.RequestParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.RequestParams), tea.String("RequestParams"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListAppInfosResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListAppInfos"), tea.String("2020-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListAppInfos(request *ListAppInfosRequest) (_result *ListAppInfosResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAppInfosResponse{}
+	_body, _err := client.ListAppInfosWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDetailReportStatisticsWithOptions(tmpReq *ListDetailReportStatisticsRequest, runtime *util.RuntimeOptions) (_result *ListDetailReportStatisticsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListDetailReportStatisticsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.RequestParams))) {
+		request.RequestParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.RequestParams), tea.String("RequestParams"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListDetailReportStatisticsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListDetailReportStatistics"), tea.String("2020-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDetailReportStatistics(request *ListDetailReportStatisticsRequest) (_result *ListDetailReportStatisticsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDetailReportStatisticsResponse{}
+	_body, _err := client.ListDetailReportStatisticsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListGroupAllMembersWithOptions(tmpReq *ListGroupAllMembersRequest, runtime *util.RuntimeOptions) (_result *ListGroupAllMembersResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListGroupAllMembersShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.RequestParams))) {
+		request.RequestParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.RequestParams), tea.String("RequestParams"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListGroupAllMembersResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListGroupAllMembers"), tea.String("2020-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListGroupAllMembers(request *ListGroupAllMembersRequest) (_result *ListGroupAllMembersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListGroupAllMembersResponse{}
+	_body, _err := client.ListGroupAllMembersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListGroupSilenceMembersWithOptions(tmpReq *ListGroupSilenceMembersRequest, runtime *util.RuntimeOptions) (_result *ListGroupSilenceMembersResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -6870,6 +9809,40 @@ func (client *Client) ListGroupSilenceMembers(request *ListGroupSilenceMembersRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ListGroupSilenceMembersResponse{}
 	_body, _err := client.ListGroupSilenceMembersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) MuteUsersWithOptions(tmpReq *MuteUsersRequest, runtime *util.RuntimeOptions) (_result *MuteUsersResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &MuteUsersShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.RequestParams))) {
+		request.RequestParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.RequestParams), tea.String("RequestParams"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &MuteUsersResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("MuteUsers"), tea.String("2020-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) MuteUsers(request *MuteUsersRequest) (_result *MuteUsersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &MuteUsersResponse{}
+	_body, _err := client.MuteUsersWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6966,6 +9939,40 @@ func (client *Client) RemoveGroupExtensionByKeys(request *RemoveGroupExtensionBy
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveGroupExtensionByKeysResponse{}
 	_body, _err := client.RemoveGroupExtensionByKeysWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RemoveGroupMemberExtensionByKeysWithOptions(tmpReq *RemoveGroupMemberExtensionByKeysRequest, runtime *util.RuntimeOptions) (_result *RemoveGroupMemberExtensionByKeysResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RemoveGroupMemberExtensionByKeysShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.RequestParams))) {
+		request.RequestParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.RequestParams), tea.String("RequestParams"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &RemoveGroupMemberExtensionByKeysResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("RemoveGroupMemberExtensionByKeys"), tea.String("2020-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RemoveGroupMemberExtensionByKeys(request *RemoveGroupMemberExtensionByKeysRequest) (_result *RemoveGroupMemberExtensionByKeysResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RemoveGroupMemberExtensionByKeysResponse{}
+	_body, _err := client.RemoveGroupMemberExtensionByKeysWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7301,6 +10308,74 @@ func (client *Client) SetGroupExtensionByKeys(request *SetGroupExtensionByKeysRe
 	return _result, _err
 }
 
+func (client *Client) SetGroupMemberExtensionByKeysWithOptions(tmpReq *SetGroupMemberExtensionByKeysRequest, runtime *util.RuntimeOptions) (_result *SetGroupMemberExtensionByKeysResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SetGroupMemberExtensionByKeysShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.RequestParams))) {
+		request.RequestParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.RequestParams), tea.String("RequestParams"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SetGroupMemberExtensionByKeysResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SetGroupMemberExtensionByKeys"), tea.String("2020-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetGroupMemberExtensionByKeys(request *SetGroupMemberExtensionByKeysRequest) (_result *SetGroupMemberExtensionByKeysResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetGroupMemberExtensionByKeysResponse{}
+	_body, _err := client.SetGroupMemberExtensionByKeysWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SetGroupOwnerWithOptions(tmpReq *SetGroupOwnerRequest, runtime *util.RuntimeOptions) (_result *SetGroupOwnerResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SetGroupOwnerShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.RequestParams))) {
+		request.RequestParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.RequestParams), tea.String("RequestParams"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SetGroupOwnerResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SetGroupOwner"), tea.String("2020-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetGroupOwner(request *SetGroupOwnerRequest) (_result *SetGroupOwnerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetGroupOwnerResponse{}
+	_body, _err := client.SetGroupOwnerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SetMessageExtensionByKeysWithOptions(tmpReq *SetMessageExtensionByKeysRequest, runtime *util.RuntimeOptions) (_result *SetMessageExtensionByKeysResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -7465,6 +10540,108 @@ func (client *Client) SilenceAllGroupMembers(request *SilenceAllGroupMembersRequ
 	return _result, _err
 }
 
+func (client *Client) UpdateAppNameWithOptions(tmpReq *UpdateAppNameRequest, runtime *util.RuntimeOptions) (_result *UpdateAppNameResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateAppNameShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.RequestParams))) {
+		request.RequestParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.RequestParams), tea.String("RequestParams"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &UpdateAppNameResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UpdateAppName"), tea.String("2020-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateAppName(request *UpdateAppNameRequest) (_result *UpdateAppNameResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateAppNameResponse{}
+	_body, _err := client.UpdateAppNameWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateAppStatusWithOptions(tmpReq *UpdateAppStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateAppStatusResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateAppStatusShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.RequestParams))) {
+		request.RequestParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.RequestParams), tea.String("RequestParams"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &UpdateAppStatusResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UpdateAppStatus"), tea.String("2020-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateAppStatus(request *UpdateAppStatusRequest) (_result *UpdateAppStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateAppStatusResponse{}
+	_body, _err := client.UpdateAppStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateCallbackConfigWithOptions(tmpReq *UpdateCallbackConfigRequest, runtime *util.RuntimeOptions) (_result *UpdateCallbackConfigResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateCallbackConfigShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.RequestParams))) {
+		request.RequestParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.RequestParams), tea.String("RequestParams"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &UpdateCallbackConfigResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UpdateCallbackConfig"), tea.String("2020-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateCallbackConfig(request *UpdateCallbackConfigRequest) (_result *UpdateCallbackConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateCallbackConfigResponse{}
+	_body, _err := client.UpdateCallbackConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateGroupIconWithOptions(tmpReq *UpdateGroupIconRequest, runtime *util.RuntimeOptions) (_result *UpdateGroupIconResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -7560,6 +10737,40 @@ func (client *Client) UpdateGroupTitle(request *UpdateGroupTitleRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateGroupTitleResponse{}
 	_body, _err := client.UpdateGroupTitleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateMsgRecallIntervalWithOptions(tmpReq *UpdateMsgRecallIntervalRequest, runtime *util.RuntimeOptions) (_result *UpdateMsgRecallIntervalResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateMsgRecallIntervalShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.RequestParams))) {
+		request.RequestParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.RequestParams), tea.String("RequestParams"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &UpdateMsgRecallIntervalResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UpdateMsgRecallInterval"), tea.String("2020-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateMsgRecallInterval(request *UpdateMsgRecallIntervalRequest) (_result *UpdateMsgRecallIntervalResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateMsgRecallIntervalResponse{}
+	_body, _err := client.UpdateMsgRecallIntervalWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
