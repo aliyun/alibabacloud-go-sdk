@@ -139,6 +139,8 @@ type DescribeAppsResponseBodyResultAppList struct {
 	DomainNames *string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty"`
 	// 白板应用创建时间
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 白板应用回调类型
+	CallbackType *string `json:"CallbackType,omitempty" xml:"CallbackType,omitempty"`
 }
 
 func (s DescribeAppsResponseBodyResultAppList) String() string {
@@ -176,6 +178,11 @@ func (s *DescribeAppsResponseBodyResultAppList) SetDomainNames(v string) *Descri
 
 func (s *DescribeAppsResponseBodyResultAppList) SetCreateTime(v string) *DescribeAppsResponseBodyResultAppList {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultAppList) SetCallbackType(v string) *DescribeAppsResponseBodyResultAppList {
+	s.CallbackType = &v
 	return s
 }
 
@@ -980,6 +987,100 @@ func (s *RefreshUsersPermissionsResponse) SetBody(v *RefreshUsersPermissionsResp
 	return s
 }
 
+type SetAppCallbackTypeRequest struct {
+	// 白板应用唯一标识符
+	AppID *string `json:"AppID,omitempty" xml:"AppID,omitempty"`
+	// 白板应用回调类型
+	AppCallbackType *string `json:"AppCallbackType,omitempty" xml:"AppCallbackType,omitempty"`
+}
+
+func (s SetAppCallbackTypeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetAppCallbackTypeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetAppCallbackTypeRequest) SetAppID(v string) *SetAppCallbackTypeRequest {
+	s.AppID = &v
+	return s
+}
+
+func (s *SetAppCallbackTypeRequest) SetAppCallbackType(v string) *SetAppCallbackTypeRequest {
+	s.AppCallbackType = &v
+	return s
+}
+
+type SetAppCallbackTypeResponseBody struct {
+	// 请求ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 请求结果
+	ResponseSuccess *bool `json:"ResponseSuccess,omitempty" xml:"ResponseSuccess,omitempty"`
+	// 错误码
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 错误信息
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// 返回结果
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s SetAppCallbackTypeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetAppCallbackTypeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetAppCallbackTypeResponseBody) SetRequestId(v string) *SetAppCallbackTypeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SetAppCallbackTypeResponseBody) SetResponseSuccess(v bool) *SetAppCallbackTypeResponseBody {
+	s.ResponseSuccess = &v
+	return s
+}
+
+func (s *SetAppCallbackTypeResponseBody) SetErrorCode(v string) *SetAppCallbackTypeResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *SetAppCallbackTypeResponseBody) SetErrorMsg(v string) *SetAppCallbackTypeResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *SetAppCallbackTypeResponseBody) SetResult(v bool) *SetAppCallbackTypeResponseBody {
+	s.Result = &v
+	return s
+}
+
+type SetAppCallbackTypeResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SetAppCallbackTypeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SetAppCallbackTypeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetAppCallbackTypeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetAppCallbackTypeResponse) SetHeaders(v map[string]*string) *SetAppCallbackTypeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetAppCallbackTypeResponse) SetBody(v *SetAppCallbackTypeResponseBody) *SetAppCallbackTypeResponse {
+	s.Body = v
+	return s
+}
+
 type CreateAppRequest struct {
 	// 白板应用名，由不超过32位的中文、英文、数字或下划线组成
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
@@ -1635,6 +1736,34 @@ func (client *Client) RefreshUsersPermissions(request *RefreshUsersPermissionsRe
 	runtime := &util.RuntimeOptions{}
 	_result = &RefreshUsersPermissionsResponse{}
 	_body, _err := client.RefreshUsersPermissionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SetAppCallbackTypeWithOptions(request *SetAppCallbackTypeRequest, runtime *util.RuntimeOptions) (_result *SetAppCallbackTypeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SetAppCallbackTypeResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SetAppCallbackType"), tea.String("2020-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetAppCallbackType(request *SetAppCallbackTypeRequest) (_result *SetAppCallbackTypeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetAppCallbackTypeResponse{}
+	_body, _err := client.SetAppCallbackTypeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
