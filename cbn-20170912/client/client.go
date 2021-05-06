@@ -71,8 +71,8 @@ func (s *ActiveFlowLogRequest) SetCenId(v string) *ActiveFlowLogRequest {
 }
 
 type ActiveFlowLogResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ActiveFlowLogResponseBody) String() string {
@@ -83,13 +83,13 @@ func (s ActiveFlowLogResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ActiveFlowLogResponseBody) SetRequestId(v string) *ActiveFlowLogResponseBody {
-	s.RequestId = &v
+func (s *ActiveFlowLogResponseBody) SetSuccess(v string) *ActiveFlowLogResponseBody {
+	s.Success = &v
 	return s
 }
 
-func (s *ActiveFlowLogResponseBody) SetSuccess(v string) *ActiveFlowLogResponseBody {
-	s.Success = &v
+func (s *ActiveFlowLogResponseBody) SetRequestId(v string) *ActiveFlowLogResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -317,7 +317,6 @@ type CreateCenRequest struct {
 	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	ProtectionLevel      *string `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
-	Ipv6Level            *string `json:"Ipv6Level,omitempty" xml:"Ipv6Level,omitempty"`
 }
 
 func (s CreateCenRequest) String() string {
@@ -368,14 +367,9 @@ func (s *CreateCenRequest) SetProtectionLevel(v string) *CreateCenRequest {
 	return s
 }
 
-func (s *CreateCenRequest) SetIpv6Level(v string) *CreateCenRequest {
-	s.Ipv6Level = &v
-	return s
-}
-
 type CreateCenResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	CenId     *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateCenResponseBody) String() string {
@@ -386,13 +380,13 @@ func (s CreateCenResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateCenResponseBody) SetRequestId(v string) *CreateCenResponseBody {
-	s.RequestId = &v
+func (s *CreateCenResponseBody) SetCenId(v string) *CreateCenResponseBody {
+	s.CenId = &v
 	return s
 }
 
-func (s *CreateCenResponseBody) SetCenId(v string) *CreateCenResponseBody {
-	s.CenId = &v
+func (s *CreateCenResponseBody) SetRequestId(v string) *CreateCenResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -527,9 +521,9 @@ func (s *CreateCenBandwidthPackageRequest) SetAutoRenewDuration(v int32) *Create
 }
 
 type CreateCenBandwidthPackageResponseBody struct {
-	RequestId                  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	CenBandwidthPackageId      *string `json:"CenBandwidthPackageId,omitempty" xml:"CenBandwidthPackageId,omitempty"`
 	CenBandwidthPackageOrderId *string `json:"CenBandwidthPackageOrderId,omitempty" xml:"CenBandwidthPackageOrderId,omitempty"`
+	RequestId                  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateCenBandwidthPackageResponseBody) String() string {
@@ -540,11 +534,6 @@ func (s CreateCenBandwidthPackageResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateCenBandwidthPackageResponseBody) SetRequestId(v string) *CreateCenBandwidthPackageResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *CreateCenBandwidthPackageResponseBody) SetCenBandwidthPackageId(v string) *CreateCenBandwidthPackageResponseBody {
 	s.CenBandwidthPackageId = &v
 	return s
@@ -552,6 +541,11 @@ func (s *CreateCenBandwidthPackageResponseBody) SetCenBandwidthPackageId(v strin
 
 func (s *CreateCenBandwidthPackageResponseBody) SetCenBandwidthPackageOrderId(v string) *CreateCenBandwidthPackageResponseBody {
 	s.CenBandwidthPackageOrderId = &v
+	return s
+}
+
+func (s *CreateCenBandwidthPackageResponseBody) SetRequestId(v string) *CreateCenBandwidthPackageResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -714,9 +708,6 @@ type CreateCenRouteMapRequest struct {
 	Preference                         *int32    `json:"Preference,omitempty" xml:"Preference,omitempty"`
 	SourceInstanceIdsReverseMatch      *bool     `json:"SourceInstanceIdsReverseMatch,omitempty" xml:"SourceInstanceIdsReverseMatch,omitempty"`
 	DestinationInstanceIdsReverseMatch *bool     `json:"DestinationInstanceIdsReverseMatch,omitempty" xml:"DestinationInstanceIdsReverseMatch,omitempty"`
-	GatewayZoneId                      *string   `json:"GatewayZoneId,omitempty" xml:"GatewayZoneId,omitempty"`
-	SystemPolicy                       *bool     `json:"SystemPolicy,omitempty" xml:"SystemPolicy,omitempty"`
-	MatchAddressType                   *string   `json:"MatchAddressType,omitempty" xml:"MatchAddressType,omitempty"`
 	SourceInstanceIds                  []*string `json:"SourceInstanceIds,omitempty" xml:"SourceInstanceIds,omitempty" type:"Repeated"`
 	DestinationInstanceIds             []*string `json:"DestinationInstanceIds,omitempty" xml:"DestinationInstanceIds,omitempty" type:"Repeated"`
 	SourceRouteTableIds                []*string `json:"SourceRouteTableIds,omitempty" xml:"SourceRouteTableIds,omitempty" type:"Repeated"`
@@ -730,9 +721,6 @@ type CreateCenRouteMapRequest struct {
 	MatchCommunitySet                  []*string `json:"MatchCommunitySet,omitempty" xml:"MatchCommunitySet,omitempty" type:"Repeated"`
 	OperateCommunitySet                []*string `json:"OperateCommunitySet,omitempty" xml:"OperateCommunitySet,omitempty" type:"Repeated"`
 	PrependAsPath                      []*int    `json:"PrependAsPath,omitempty" xml:"PrependAsPath,omitempty" type:"Repeated"`
-	DestinationRegionIds               []*string `json:"DestinationRegionIds,omitempty" xml:"DestinationRegionIds,omitempty" type:"Repeated"`
-	SourceZoneIds                      []*string `json:"SourceZoneIds,omitempty" xml:"SourceZoneIds,omitempty" type:"Repeated"`
-	OriginalRouteTableIds              []*string `json:"OriginalRouteTableIds,omitempty" xml:"OriginalRouteTableIds,omitempty" type:"Repeated"`
 }
 
 func (s CreateCenRouteMapRequest) String() string {
@@ -833,21 +821,6 @@ func (s *CreateCenRouteMapRequest) SetDestinationInstanceIdsReverseMatch(v bool)
 	return s
 }
 
-func (s *CreateCenRouteMapRequest) SetGatewayZoneId(v string) *CreateCenRouteMapRequest {
-	s.GatewayZoneId = &v
-	return s
-}
-
-func (s *CreateCenRouteMapRequest) SetSystemPolicy(v bool) *CreateCenRouteMapRequest {
-	s.SystemPolicy = &v
-	return s
-}
-
-func (s *CreateCenRouteMapRequest) SetMatchAddressType(v string) *CreateCenRouteMapRequest {
-	s.MatchAddressType = &v
-	return s
-}
-
 func (s *CreateCenRouteMapRequest) SetSourceInstanceIds(v []*string) *CreateCenRouteMapRequest {
 	s.SourceInstanceIds = v
 	return s
@@ -913,24 +886,9 @@ func (s *CreateCenRouteMapRequest) SetPrependAsPath(v []*int) *CreateCenRouteMap
 	return s
 }
 
-func (s *CreateCenRouteMapRequest) SetDestinationRegionIds(v []*string) *CreateCenRouteMapRequest {
-	s.DestinationRegionIds = v
-	return s
-}
-
-func (s *CreateCenRouteMapRequest) SetSourceZoneIds(v []*string) *CreateCenRouteMapRequest {
-	s.SourceZoneIds = v
-	return s
-}
-
-func (s *CreateCenRouteMapRequest) SetOriginalRouteTableIds(v []*string) *CreateCenRouteMapRequest {
-	s.OriginalRouteTableIds = v
-	return s
-}
-
 type CreateCenRouteMapResponseBody struct {
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RouteMapId *string `json:"RouteMapId,omitempty" xml:"RouteMapId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateCenRouteMapResponseBody) String() string {
@@ -941,13 +899,13 @@ func (s CreateCenRouteMapResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateCenRouteMapResponseBody) SetRequestId(v string) *CreateCenRouteMapResponseBody {
-	s.RequestId = &v
+func (s *CreateCenRouteMapResponseBody) SetRouteMapId(v string) *CreateCenRouteMapResponseBody {
+	s.RouteMapId = &v
 	return s
 }
 
-func (s *CreateCenRouteMapResponseBody) SetRouteMapId(v string) *CreateCenRouteMapResponseBody {
-	s.RouteMapId = &v
+func (s *CreateCenRouteMapResponseBody) SetRequestId(v string) *CreateCenRouteMapResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1053,8 +1011,8 @@ func (s *CreateFlowlogRequest) SetLogStoreName(v string) *CreateFlowlogRequest {
 
 type CreateFlowlogResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	FlowLogId *string `json:"FlowLogId,omitempty" xml:"FlowLogId,omitempty"`
 	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	FlowLogId *string `json:"FlowLogId,omitempty" xml:"FlowLogId,omitempty"`
 }
 
 func (s CreateFlowlogResponseBody) String() string {
@@ -1070,13 +1028,13 @@ func (s *CreateFlowlogResponseBody) SetRequestId(v string) *CreateFlowlogRespons
 	return s
 }
 
-func (s *CreateFlowlogResponseBody) SetFlowLogId(v string) *CreateFlowlogResponseBody {
-	s.FlowLogId = &v
+func (s *CreateFlowlogResponseBody) SetSuccess(v string) *CreateFlowlogResponseBody {
+	s.Success = &v
 	return s
 }
 
-func (s *CreateFlowlogResponseBody) SetSuccess(v string) *CreateFlowlogResponseBody {
-	s.Success = &v
+func (s *CreateFlowlogResponseBody) SetFlowLogId(v string) *CreateFlowlogResponseBody {
+	s.FlowLogId = &v
 	return s
 }
 
@@ -1163,8 +1121,8 @@ func (s *DeactiveFlowLogRequest) SetCenId(v string) *DeactiveFlowLogRequest {
 }
 
 type DeactiveFlowLogResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeactiveFlowLogResponseBody) String() string {
@@ -1175,13 +1133,13 @@ func (s DeactiveFlowLogResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DeactiveFlowLogResponseBody) SetRequestId(v string) *DeactiveFlowLogResponseBody {
-	s.RequestId = &v
+func (s *DeactiveFlowLogResponseBody) SetSuccess(v string) *DeactiveFlowLogResponseBody {
+	s.Success = &v
 	return s
 }
 
-func (s *DeactiveFlowLogResponseBody) SetSuccess(v string) *DeactiveFlowLogResponseBody {
-	s.Success = &v
+func (s *DeactiveFlowLogResponseBody) SetRequestId(v string) *DeactiveFlowLogResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1640,8 +1598,8 @@ func (s *DeleteFlowlogRequest) SetCenId(v string) *DeleteFlowlogRequest {
 }
 
 type DeleteFlowlogResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteFlowlogResponseBody) String() string {
@@ -1652,13 +1610,13 @@ func (s DeleteFlowlogResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteFlowlogResponseBody) SetRequestId(v string) *DeleteFlowlogResponseBody {
-	s.RequestId = &v
+func (s *DeleteFlowlogResponseBody) SetSuccess(v string) *DeleteFlowlogResponseBody {
+	s.Success = &v
 	return s
 }
 
-func (s *DeleteFlowlogResponseBody) SetSuccess(v string) *DeleteFlowlogResponseBody {
-	s.Success = &v
+func (s *DeleteFlowlogResponseBody) SetRequestId(v string) *DeleteFlowlogResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1799,7 +1757,6 @@ type DescribeCenAttachedChildInstanceAttributeRequest struct {
 	ChildInstanceId       *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
 	ChildInstanceType     *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
 	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
-	IncludeRouteTable     *bool   `json:"IncludeRouteTable,omitempty" xml:"IncludeRouteTable,omitempty"`
 }
 
 func (s DescribeCenAttachedChildInstanceAttributeRequest) String() string {
@@ -1850,21 +1807,16 @@ func (s *DescribeCenAttachedChildInstanceAttributeRequest) SetChildInstanceRegio
 	return s
 }
 
-func (s *DescribeCenAttachedChildInstanceAttributeRequest) SetIncludeRouteTable(v bool) *DescribeCenAttachedChildInstanceAttributeRequest {
-	s.IncludeRouteTable = &v
-	return s
-}
-
 type DescribeCenAttachedChildInstanceAttributeResponseBody struct {
 	Status                  *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	ChildInstanceType       *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
-	RequestId               *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	CenId                   *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	ChildInstanceAttachTime *string `json:"ChildInstanceAttachTime,omitempty" xml:"ChildInstanceAttachTime,omitempty"`
-	ChildInstanceOwnerId    *int64  `json:"ChildInstanceOwnerId,omitempty" xml:"ChildInstanceOwnerId,omitempty"`
-	ChildInstanceName       *string `json:"ChildInstanceName,omitempty" xml:"ChildInstanceName,omitempty"`
-	ChildInstanceId         *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
 	ChildInstanceRegionId   *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
+	RequestId               *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ChildInstanceOwnerId    *int64  `json:"ChildInstanceOwnerId,omitempty" xml:"ChildInstanceOwnerId,omitempty"`
+	ChildInstanceId         *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
+	CenId                   *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	ChildInstanceName       *string `json:"ChildInstanceName,omitempty" xml:"ChildInstanceName,omitempty"`
+	ChildInstanceAttachTime *string `json:"ChildInstanceAttachTime,omitempty" xml:"ChildInstanceAttachTime,omitempty"`
 }
 
 func (s DescribeCenAttachedChildInstanceAttributeResponseBody) String() string {
@@ -1885,18 +1837,13 @@ func (s *DescribeCenAttachedChildInstanceAttributeResponseBody) SetChildInstance
 	return s
 }
 
+func (s *DescribeCenAttachedChildInstanceAttributeResponseBody) SetChildInstanceRegionId(v string) *DescribeCenAttachedChildInstanceAttributeResponseBody {
+	s.ChildInstanceRegionId = &v
+	return s
+}
+
 func (s *DescribeCenAttachedChildInstanceAttributeResponseBody) SetRequestId(v string) *DescribeCenAttachedChildInstanceAttributeResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeCenAttachedChildInstanceAttributeResponseBody) SetCenId(v string) *DescribeCenAttachedChildInstanceAttributeResponseBody {
-	s.CenId = &v
-	return s
-}
-
-func (s *DescribeCenAttachedChildInstanceAttributeResponseBody) SetChildInstanceAttachTime(v string) *DescribeCenAttachedChildInstanceAttributeResponseBody {
-	s.ChildInstanceAttachTime = &v
 	return s
 }
 
@@ -1905,18 +1852,23 @@ func (s *DescribeCenAttachedChildInstanceAttributeResponseBody) SetChildInstance
 	return s
 }
 
-func (s *DescribeCenAttachedChildInstanceAttributeResponseBody) SetChildInstanceName(v string) *DescribeCenAttachedChildInstanceAttributeResponseBody {
-	s.ChildInstanceName = &v
-	return s
-}
-
 func (s *DescribeCenAttachedChildInstanceAttributeResponseBody) SetChildInstanceId(v string) *DescribeCenAttachedChildInstanceAttributeResponseBody {
 	s.ChildInstanceId = &v
 	return s
 }
 
-func (s *DescribeCenAttachedChildInstanceAttributeResponseBody) SetChildInstanceRegionId(v string) *DescribeCenAttachedChildInstanceAttributeResponseBody {
-	s.ChildInstanceRegionId = &v
+func (s *DescribeCenAttachedChildInstanceAttributeResponseBody) SetCenId(v string) *DescribeCenAttachedChildInstanceAttributeResponseBody {
+	s.CenId = &v
+	return s
+}
+
+func (s *DescribeCenAttachedChildInstanceAttributeResponseBody) SetChildInstanceName(v string) *DescribeCenAttachedChildInstanceAttributeResponseBody {
+	s.ChildInstanceName = &v
+	return s
+}
+
+func (s *DescribeCenAttachedChildInstanceAttributeResponseBody) SetChildInstanceAttachTime(v string) *DescribeCenAttachedChildInstanceAttributeResponseBody {
+	s.ChildInstanceAttachTime = &v
 	return s
 }
 
@@ -2009,11 +1961,11 @@ func (s *DescribeCenAttachedChildInstancesRequest) SetChildInstanceRegionId(v st
 }
 
 type DescribeCenAttachedChildInstancesResponseBody struct {
-	TotalCount     *int32                                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	PageSize       *int32                                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId      *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNumber     *int32                                                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	ChildInstances []*DescribeCenAttachedChildInstancesResponseBodyChildInstances `json:"ChildInstances,omitempty" xml:"ChildInstances,omitempty" type:"Repeated"`
+	PageSize       *int32                                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId      *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageNumber     *int32                                                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalCount     *int32                                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	ChildInstances *DescribeCenAttachedChildInstancesResponseBodyChildInstances `json:"ChildInstances,omitempty" xml:"ChildInstances,omitempty" type:"Struct"`
 }
 
 func (s DescribeCenAttachedChildInstancesResponseBody) String() string {
@@ -2022,11 +1974,6 @@ func (s DescribeCenAttachedChildInstancesResponseBody) String() string {
 
 func (s DescribeCenAttachedChildInstancesResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeCenAttachedChildInstancesResponseBody) SetTotalCount(v int32) *DescribeCenAttachedChildInstancesResponseBody {
-	s.TotalCount = &v
-	return s
 }
 
 func (s *DescribeCenAttachedChildInstancesResponseBody) SetPageSize(v int32) *DescribeCenAttachedChildInstancesResponseBody {
@@ -2044,19 +1991,18 @@ func (s *DescribeCenAttachedChildInstancesResponseBody) SetPageNumber(v int32) *
 	return s
 }
 
-func (s *DescribeCenAttachedChildInstancesResponseBody) SetChildInstances(v []*DescribeCenAttachedChildInstancesResponseBodyChildInstances) *DescribeCenAttachedChildInstancesResponseBody {
+func (s *DescribeCenAttachedChildInstancesResponseBody) SetTotalCount(v int32) *DescribeCenAttachedChildInstancesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeCenAttachedChildInstancesResponseBody) SetChildInstances(v *DescribeCenAttachedChildInstancesResponseBodyChildInstances) *DescribeCenAttachedChildInstancesResponseBody {
 	s.ChildInstances = v
 	return s
 }
 
 type DescribeCenAttachedChildInstancesResponseBodyChildInstances struct {
-	ChildInstanceType       *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
-	Status                  *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	ChildInstanceRegionId   *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
-	ChildInstanceOwnerId    *int64  `json:"ChildInstanceOwnerId,omitempty" xml:"ChildInstanceOwnerId,omitempty"`
-	ChildInstanceId         *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
-	CenId                   *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	ChildInstanceAttachTime *string `json:"ChildInstanceAttachTime,omitempty" xml:"ChildInstanceAttachTime,omitempty"`
+	ChildInstance []*DescribeCenAttachedChildInstancesResponseBodyChildInstancesChildInstance `json:"ChildInstance,omitempty" xml:"ChildInstance,omitempty" type:"Repeated"`
 }
 
 func (s DescribeCenAttachedChildInstancesResponseBodyChildInstances) String() string {
@@ -2067,37 +2013,60 @@ func (s DescribeCenAttachedChildInstancesResponseBodyChildInstances) GoString() 
 	return s.String()
 }
 
-func (s *DescribeCenAttachedChildInstancesResponseBodyChildInstances) SetChildInstanceType(v string) *DescribeCenAttachedChildInstancesResponseBodyChildInstances {
+func (s *DescribeCenAttachedChildInstancesResponseBodyChildInstances) SetChildInstance(v []*DescribeCenAttachedChildInstancesResponseBodyChildInstancesChildInstance) *DescribeCenAttachedChildInstancesResponseBodyChildInstances {
+	s.ChildInstance = v
+	return s
+}
+
+type DescribeCenAttachedChildInstancesResponseBodyChildInstancesChildInstance struct {
+	ChildInstanceType       *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
+	Status                  *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	ChildInstanceRegionId   *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
+	ChildInstanceOwnerId    *int64  `json:"ChildInstanceOwnerId,omitempty" xml:"ChildInstanceOwnerId,omitempty"`
+	ChildInstanceId         *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
+	CenId                   *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	ChildInstanceAttachTime *string `json:"ChildInstanceAttachTime,omitempty" xml:"ChildInstanceAttachTime,omitempty"`
+}
+
+func (s DescribeCenAttachedChildInstancesResponseBodyChildInstancesChildInstance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenAttachedChildInstancesResponseBodyChildInstancesChildInstance) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenAttachedChildInstancesResponseBodyChildInstancesChildInstance) SetChildInstanceType(v string) *DescribeCenAttachedChildInstancesResponseBodyChildInstancesChildInstance {
 	s.ChildInstanceType = &v
 	return s
 }
 
-func (s *DescribeCenAttachedChildInstancesResponseBodyChildInstances) SetStatus(v string) *DescribeCenAttachedChildInstancesResponseBodyChildInstances {
+func (s *DescribeCenAttachedChildInstancesResponseBodyChildInstancesChildInstance) SetStatus(v string) *DescribeCenAttachedChildInstancesResponseBodyChildInstancesChildInstance {
 	s.Status = &v
 	return s
 }
 
-func (s *DescribeCenAttachedChildInstancesResponseBodyChildInstances) SetChildInstanceRegionId(v string) *DescribeCenAttachedChildInstancesResponseBodyChildInstances {
+func (s *DescribeCenAttachedChildInstancesResponseBodyChildInstancesChildInstance) SetChildInstanceRegionId(v string) *DescribeCenAttachedChildInstancesResponseBodyChildInstancesChildInstance {
 	s.ChildInstanceRegionId = &v
 	return s
 }
 
-func (s *DescribeCenAttachedChildInstancesResponseBodyChildInstances) SetChildInstanceOwnerId(v int64) *DescribeCenAttachedChildInstancesResponseBodyChildInstances {
+func (s *DescribeCenAttachedChildInstancesResponseBodyChildInstancesChildInstance) SetChildInstanceOwnerId(v int64) *DescribeCenAttachedChildInstancesResponseBodyChildInstancesChildInstance {
 	s.ChildInstanceOwnerId = &v
 	return s
 }
 
-func (s *DescribeCenAttachedChildInstancesResponseBodyChildInstances) SetChildInstanceId(v string) *DescribeCenAttachedChildInstancesResponseBodyChildInstances {
+func (s *DescribeCenAttachedChildInstancesResponseBodyChildInstancesChildInstance) SetChildInstanceId(v string) *DescribeCenAttachedChildInstancesResponseBodyChildInstancesChildInstance {
 	s.ChildInstanceId = &v
 	return s
 }
 
-func (s *DescribeCenAttachedChildInstancesResponseBodyChildInstances) SetCenId(v string) *DescribeCenAttachedChildInstancesResponseBodyChildInstances {
+func (s *DescribeCenAttachedChildInstancesResponseBodyChildInstancesChildInstance) SetCenId(v string) *DescribeCenAttachedChildInstancesResponseBodyChildInstancesChildInstance {
 	s.CenId = &v
 	return s
 }
 
-func (s *DescribeCenAttachedChildInstancesResponseBodyChildInstances) SetChildInstanceAttachTime(v string) *DescribeCenAttachedChildInstancesResponseBodyChildInstances {
+func (s *DescribeCenAttachedChildInstancesResponseBodyChildInstancesChildInstance) SetChildInstanceAttachTime(v string) *DescribeCenAttachedChildInstancesResponseBodyChildInstancesChildInstance {
 	s.ChildInstanceAttachTime = &v
 	return s
 }
@@ -2214,11 +2183,11 @@ func (s *DescribeCenBandwidthPackagesRequestFilter) SetValue(v []*string) *Descr
 }
 
 type DescribeCenBandwidthPackagesResponseBody struct {
-	TotalCount           *int32                                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	PageSize             *int32                                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId            *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNumber           *int32                                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	CenBandwidthPackages []*DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages `json:"CenBandwidthPackages,omitempty" xml:"CenBandwidthPackages,omitempty" type:"Repeated"`
+	PageSize             *int32                                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId            *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageNumber           *int32                                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalCount           *int32                                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	CenBandwidthPackages *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages `json:"CenBandwidthPackages,omitempty" xml:"CenBandwidthPackages,omitempty" type:"Struct"`
 }
 
 func (s DescribeCenBandwidthPackagesResponseBody) String() string {
@@ -2227,11 +2196,6 @@ func (s DescribeCenBandwidthPackagesResponseBody) String() string {
 
 func (s DescribeCenBandwidthPackagesResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeCenBandwidthPackagesResponseBody) SetTotalCount(v int32) *DescribeCenBandwidthPackagesResponseBody {
-	s.TotalCount = &v
-	return s
 }
 
 func (s *DescribeCenBandwidthPackagesResponseBody) SetPageSize(v int32) *DescribeCenBandwidthPackagesResponseBody {
@@ -2249,34 +2213,18 @@ func (s *DescribeCenBandwidthPackagesResponseBody) SetPageNumber(v int32) *Descr
 	return s
 }
 
-func (s *DescribeCenBandwidthPackagesResponseBody) SetCenBandwidthPackages(v []*DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages) *DescribeCenBandwidthPackagesResponseBody {
+func (s *DescribeCenBandwidthPackagesResponseBody) SetTotalCount(v int32) *DescribeCenBandwidthPackagesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeCenBandwidthPackagesResponseBody) SetCenBandwidthPackages(v *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages) *DescribeCenBandwidthPackagesResponseBody {
 	s.CenBandwidthPackages = v
 	return s
 }
 
 type DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages struct {
-	CreationTime                    *string                                                                                        `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Status                          *string                                                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
-	ReservationActiveTime           *string                                                                                        `json:"ReservationActiveTime,omitempty" xml:"ReservationActiveTime,omitempty"`
-	ReservationOrderType            *string                                                                                        `json:"ReservationOrderType,omitempty" xml:"ReservationOrderType,omitempty"`
-	BandwidthPackageChargeType      *string                                                                                        `json:"BandwidthPackageChargeType,omitempty" xml:"BandwidthPackageChargeType,omitempty"`
-	CenBandwidthPackageId           *string                                                                                        `json:"CenBandwidthPackageId,omitempty" xml:"CenBandwidthPackageId,omitempty"`
-	OrginInterRegionBandwidthLimits []*DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesOrginInterRegionBandwidthLimits `json:"OrginInterRegionBandwidthLimits,omitempty" xml:"OrginInterRegionBandwidthLimits,omitempty" type:"Repeated"`
-	CenIds                          []*string                                                                                      `json:"CenIds,omitempty" xml:"CenIds,omitempty" type:"Repeated"`
-	GeographicRegionAId             *string                                                                                        `json:"GeographicRegionAId,omitempty" xml:"GeographicRegionAId,omitempty"`
-	Ratio                           *string                                                                                        `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
-	ReservationInternetChargeType   *string                                                                                        `json:"ReservationInternetChargeType,omitempty" xml:"ReservationInternetChargeType,omitempty"`
-	TypeFor95                       *string                                                                                        `json:"TypeFor95,omitempty" xml:"TypeFor95,omitempty"`
-	Bandwidth                       *int64                                                                                         `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	Description                     *string                                                                                        `json:"Description,omitempty" xml:"Description,omitempty"`
-	ExpiredTime                     *string                                                                                        `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	ReservationBandwidth            *string                                                                                        `json:"ReservationBandwidth,omitempty" xml:"ReservationBandwidth,omitempty"`
-	GeographicSpanId                *string                                                                                        `json:"GeographicSpanId,omitempty" xml:"GeographicSpanId,omitempty"`
-	GeographicRegionBId             *string                                                                                        `json:"GeographicRegionBId,omitempty" xml:"GeographicRegionBId,omitempty"`
-	IsCrossBorder                   *bool                                                                                          `json:"IsCrossBorder,omitempty" xml:"IsCrossBorder,omitempty"`
-	BusinessStatus                  *string                                                                                        `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
-	Name                            *string                                                                                        `json:"Name,omitempty" xml:"Name,omitempty"`
-	HasReservationData              *string                                                                                        `json:"HasReservationData,omitempty" xml:"HasReservationData,omitempty"`
+	CenBandwidthPackage []*DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage `json:"CenBandwidthPackage,omitempty" xml:"CenBandwidthPackage,omitempty" type:"Repeated"`
 }
 
 func (s DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages) String() string {
@@ -2287,148 +2235,220 @@ func (s DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages) GoString()
 	return s.String()
 }
 
-func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages) SetCreationTime(v string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages {
-	s.CreationTime = &v
+func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages) SetCenBandwidthPackage(v []*DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages {
+	s.CenBandwidthPackage = v
 	return s
 }
 
-func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages) SetStatus(v string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages {
-	s.Status = &v
-	return s
+type DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage struct {
+	ReservationActiveTime           *string                                                                                                         `json:"ReservationActiveTime,omitempty" xml:"ReservationActiveTime,omitempty"`
+	Status                          *string                                                                                                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	CreationTime                    *string                                                                                                         `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	ReservationOrderType            *string                                                                                                         `json:"ReservationOrderType,omitempty" xml:"ReservationOrderType,omitempty"`
+	BandwidthPackageChargeType      *string                                                                                                         `json:"BandwidthPackageChargeType,omitempty" xml:"BandwidthPackageChargeType,omitempty"`
+	CenBandwidthPackageId           *string                                                                                                         `json:"CenBandwidthPackageId,omitempty" xml:"CenBandwidthPackageId,omitempty"`
+	ReservationInternetChargeType   *string                                                                                                         `json:"ReservationInternetChargeType,omitempty" xml:"ReservationInternetChargeType,omitempty"`
+	Ratio                           *string                                                                                                         `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
+	GeographicRegionAId             *string                                                                                                         `json:"GeographicRegionAId,omitempty" xml:"GeographicRegionAId,omitempty"`
+	TypeFor95                       *string                                                                                                         `json:"TypeFor95,omitempty" xml:"TypeFor95,omitempty"`
+	Bandwidth                       *int64                                                                                                          `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	Description                     *string                                                                                                         `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExpiredTime                     *string                                                                                                         `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	ReservationBandwidth            *string                                                                                                         `json:"ReservationBandwidth,omitempty" xml:"ReservationBandwidth,omitempty"`
+	GeographicSpanId                *string                                                                                                         `json:"GeographicSpanId,omitempty" xml:"GeographicSpanId,omitempty"`
+	GeographicRegionBId             *string                                                                                                         `json:"GeographicRegionBId,omitempty" xml:"GeographicRegionBId,omitempty"`
+	IsCrossBorder                   *bool                                                                                                           `json:"IsCrossBorder,omitempty" xml:"IsCrossBorder,omitempty"`
+	BusinessStatus                  *string                                                                                                         `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
+	Name                            *string                                                                                                         `json:"Name,omitempty" xml:"Name,omitempty"`
+	HasReservationData              *string                                                                                                         `json:"HasReservationData,omitempty" xml:"HasReservationData,omitempty"`
+	OrginInterRegionBandwidthLimits *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageOrginInterRegionBandwidthLimits `json:"OrginInterRegionBandwidthLimits,omitempty" xml:"OrginInterRegionBandwidthLimits,omitempty" type:"Struct"`
+	CenIds                          *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageCenIds                          `json:"CenIds,omitempty" xml:"CenIds,omitempty" type:"Struct"`
 }
 
-func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages) SetReservationActiveTime(v string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages {
+func (s DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage) SetReservationActiveTime(v string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage {
 	s.ReservationActiveTime = &v
 	return s
 }
 
-func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages) SetReservationOrderType(v string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages {
+func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage) SetStatus(v string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage) SetCreationTime(v string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage) SetReservationOrderType(v string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage {
 	s.ReservationOrderType = &v
 	return s
 }
 
-func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages) SetBandwidthPackageChargeType(v string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages {
+func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage) SetBandwidthPackageChargeType(v string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage {
 	s.BandwidthPackageChargeType = &v
 	return s
 }
 
-func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages) SetCenBandwidthPackageId(v string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages {
+func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage) SetCenBandwidthPackageId(v string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage {
 	s.CenBandwidthPackageId = &v
 	return s
 }
 
-func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages) SetOrginInterRegionBandwidthLimits(v []*DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesOrginInterRegionBandwidthLimits) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages {
-	s.OrginInterRegionBandwidthLimits = v
-	return s
-}
-
-func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages) SetCenIds(v []*string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages {
-	s.CenIds = v
-	return s
-}
-
-func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages) SetGeographicRegionAId(v string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages {
-	s.GeographicRegionAId = &v
-	return s
-}
-
-func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages) SetRatio(v string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages {
-	s.Ratio = &v
-	return s
-}
-
-func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages) SetReservationInternetChargeType(v string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages {
+func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage) SetReservationInternetChargeType(v string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage {
 	s.ReservationInternetChargeType = &v
 	return s
 }
 
-func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages) SetTypeFor95(v string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages {
+func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage) SetRatio(v string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage {
+	s.Ratio = &v
+	return s
+}
+
+func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage) SetGeographicRegionAId(v string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage {
+	s.GeographicRegionAId = &v
+	return s
+}
+
+func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage) SetTypeFor95(v string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage {
 	s.TypeFor95 = &v
 	return s
 }
 
-func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages) SetBandwidth(v int64) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages {
+func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage) SetBandwidth(v int64) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage {
 	s.Bandwidth = &v
 	return s
 }
 
-func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages) SetDescription(v string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages {
+func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage) SetDescription(v string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage {
 	s.Description = &v
 	return s
 }
 
-func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages) SetExpiredTime(v string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages {
+func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage) SetExpiredTime(v string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage {
 	s.ExpiredTime = &v
 	return s
 }
 
-func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages) SetReservationBandwidth(v string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages {
+func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage) SetReservationBandwidth(v string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage {
 	s.ReservationBandwidth = &v
 	return s
 }
 
-func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages) SetGeographicSpanId(v string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages {
+func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage) SetGeographicSpanId(v string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage {
 	s.GeographicSpanId = &v
 	return s
 }
 
-func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages) SetGeographicRegionBId(v string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages {
+func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage) SetGeographicRegionBId(v string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage {
 	s.GeographicRegionBId = &v
 	return s
 }
 
-func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages) SetIsCrossBorder(v bool) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages {
+func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage) SetIsCrossBorder(v bool) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage {
 	s.IsCrossBorder = &v
 	return s
 }
 
-func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages) SetBusinessStatus(v string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages {
+func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage) SetBusinessStatus(v string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage {
 	s.BusinessStatus = &v
 	return s
 }
 
-func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages) SetName(v string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages {
+func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage) SetName(v string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage {
 	s.Name = &v
 	return s
 }
 
-func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages) SetHasReservationData(v string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages {
+func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage) SetHasReservationData(v string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage {
 	s.HasReservationData = &v
 	return s
 }
 
-type DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesOrginInterRegionBandwidthLimits struct {
-	OppositeRegionId *string `json:"OppositeRegionId,omitempty" xml:"OppositeRegionId,omitempty"`
-	GeographicSpanId *string `json:"GeographicSpanId,omitempty" xml:"GeographicSpanId,omitempty"`
-	LocalRegionId    *string `json:"LocalRegionId,omitempty" xml:"LocalRegionId,omitempty"`
-	BandwidthLimit   *string `json:"BandwidthLimit,omitempty" xml:"BandwidthLimit,omitempty"`
+func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage) SetOrginInterRegionBandwidthLimits(v *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageOrginInterRegionBandwidthLimits) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage {
+	s.OrginInterRegionBandwidthLimits = v
+	return s
 }
 
-func (s DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesOrginInterRegionBandwidthLimits) String() string {
+func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage) SetCenIds(v *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageCenIds) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage {
+	s.CenIds = v
+	return s
+}
+
+type DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageOrginInterRegionBandwidthLimits struct {
+	OrginInterRegionBandwidthLimit []*DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageOrginInterRegionBandwidthLimitsOrginInterRegionBandwidthLimit `json:"OrginInterRegionBandwidthLimit,omitempty" xml:"OrginInterRegionBandwidthLimit,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageOrginInterRegionBandwidthLimits) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesOrginInterRegionBandwidthLimits) GoString() string {
+func (s DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageOrginInterRegionBandwidthLimits) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesOrginInterRegionBandwidthLimits) SetOppositeRegionId(v string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesOrginInterRegionBandwidthLimits {
+func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageOrginInterRegionBandwidthLimits) SetOrginInterRegionBandwidthLimit(v []*DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageOrginInterRegionBandwidthLimitsOrginInterRegionBandwidthLimit) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageOrginInterRegionBandwidthLimits {
+	s.OrginInterRegionBandwidthLimit = v
+	return s
+}
+
+type DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageOrginInterRegionBandwidthLimitsOrginInterRegionBandwidthLimit struct {
+	BandwidthLimit   *string `json:"BandwidthLimit,omitempty" xml:"BandwidthLimit,omitempty"`
+	OppositeRegionId *string `json:"OppositeRegionId,omitempty" xml:"OppositeRegionId,omitempty"`
+	GeographicSpanId *string `json:"GeographicSpanId,omitempty" xml:"GeographicSpanId,omitempty"`
+	LocalRegionId    *string `json:"LocalRegionId,omitempty" xml:"LocalRegionId,omitempty"`
+}
+
+func (s DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageOrginInterRegionBandwidthLimitsOrginInterRegionBandwidthLimit) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageOrginInterRegionBandwidthLimitsOrginInterRegionBandwidthLimit) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageOrginInterRegionBandwidthLimitsOrginInterRegionBandwidthLimit) SetBandwidthLimit(v string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageOrginInterRegionBandwidthLimitsOrginInterRegionBandwidthLimit {
+	s.BandwidthLimit = &v
+	return s
+}
+
+func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageOrginInterRegionBandwidthLimitsOrginInterRegionBandwidthLimit) SetOppositeRegionId(v string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageOrginInterRegionBandwidthLimitsOrginInterRegionBandwidthLimit {
 	s.OppositeRegionId = &v
 	return s
 }
 
-func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesOrginInterRegionBandwidthLimits) SetGeographicSpanId(v string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesOrginInterRegionBandwidthLimits {
+func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageOrginInterRegionBandwidthLimitsOrginInterRegionBandwidthLimit) SetGeographicSpanId(v string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageOrginInterRegionBandwidthLimitsOrginInterRegionBandwidthLimit {
 	s.GeographicSpanId = &v
 	return s
 }
 
-func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesOrginInterRegionBandwidthLimits) SetLocalRegionId(v string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesOrginInterRegionBandwidthLimits {
+func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageOrginInterRegionBandwidthLimitsOrginInterRegionBandwidthLimit) SetLocalRegionId(v string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageOrginInterRegionBandwidthLimitsOrginInterRegionBandwidthLimit {
 	s.LocalRegionId = &v
 	return s
 }
 
-func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesOrginInterRegionBandwidthLimits) SetBandwidthLimit(v string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesOrginInterRegionBandwidthLimits {
-	s.BandwidthLimit = &v
+type DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageCenIds struct {
+	CenId []*string `json:"CenId,omitempty" xml:"CenId,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageCenIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageCenIds) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageCenIds) SetCenId(v []*string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageCenIds {
+	s.CenId = v
 	return s
 }
 
@@ -2456,19 +2476,17 @@ func (s *DescribeCenBandwidthPackagesResponse) SetBody(v *DescribeCenBandwidthPa
 }
 
 type DescribeCenChildInstanceRouteEntriesRequest struct {
-	OwnerAccount              *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId                   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount      *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId           *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	CenId                     *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	ChildInstanceId           *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
-	ChildInstanceType         *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
-	Status                    *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	PageNumber                *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize                  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ChildInstanceRegionId     *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
-	ChildInstanceRouteTableId *string `json:"ChildInstanceRouteTableId,omitempty" xml:"ChildInstanceRouteTableId,omitempty"`
-	DestinationCidrBlock      *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
+	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount  *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId       *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	CenId                 *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	ChildInstanceId       *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
+	ChildInstanceType     *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
+	Status                *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	PageNumber            *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize              *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
 }
 
 func (s DescribeCenChildInstanceRouteEntriesRequest) String() string {
@@ -2534,22 +2552,12 @@ func (s *DescribeCenChildInstanceRouteEntriesRequest) SetChildInstanceRegionId(v
 	return s
 }
 
-func (s *DescribeCenChildInstanceRouteEntriesRequest) SetChildInstanceRouteTableId(v string) *DescribeCenChildInstanceRouteEntriesRequest {
-	s.ChildInstanceRouteTableId = &v
-	return s
-}
-
-func (s *DescribeCenChildInstanceRouteEntriesRequest) SetDestinationCidrBlock(v string) *DescribeCenChildInstanceRouteEntriesRequest {
-	s.DestinationCidrBlock = &v
-	return s
-}
-
 type DescribeCenChildInstanceRouteEntriesResponseBody struct {
-	TotalCount      *int32                                                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	PageSize        *int32                                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId       *string                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNumber      *int32                                                             `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	CenRouteEntries []*DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntries `json:"CenRouteEntries,omitempty" xml:"CenRouteEntries,omitempty" type:"Repeated"`
+	PageSize        *int32                                                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId       *string                                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageNumber      *int32                                                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalCount      *int32                                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	CenRouteEntries *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntries `json:"CenRouteEntries,omitempty" xml:"CenRouteEntries,omitempty" type:"Struct"`
 }
 
 func (s DescribeCenChildInstanceRouteEntriesResponseBody) String() string {
@@ -2558,11 +2566,6 @@ func (s DescribeCenChildInstanceRouteEntriesResponseBody) String() string {
 
 func (s DescribeCenChildInstanceRouteEntriesResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeCenChildInstanceRouteEntriesResponseBody) SetTotalCount(v int32) *DescribeCenChildInstanceRouteEntriesResponseBody {
-	s.TotalCount = &v
-	return s
 }
 
 func (s *DescribeCenChildInstanceRouteEntriesResponseBody) SetPageSize(v int32) *DescribeCenChildInstanceRouteEntriesResponseBody {
@@ -2580,25 +2583,18 @@ func (s *DescribeCenChildInstanceRouteEntriesResponseBody) SetPageNumber(v int32
 	return s
 }
 
-func (s *DescribeCenChildInstanceRouteEntriesResponseBody) SetCenRouteEntries(v []*DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntries) *DescribeCenChildInstanceRouteEntriesResponseBody {
+func (s *DescribeCenChildInstanceRouteEntriesResponseBody) SetTotalCount(v int32) *DescribeCenChildInstanceRouteEntriesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeCenChildInstanceRouteEntriesResponseBody) SetCenRouteEntries(v *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntries) *DescribeCenChildInstanceRouteEntriesResponseBody {
 	s.CenRouteEntries = v
 	return s
 }
 
 type DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntries struct {
-	Status               *string                                                                              `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type                 *string                                                                              `json:"Type,omitempty" xml:"Type,omitempty"`
-	PublishStatus        *string                                                                              `json:"PublishStatus,omitempty" xml:"PublishStatus,omitempty"`
-	NextHopType          *string                                                                              `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
-	OperationalMode      *bool                                                                                `json:"OperationalMode,omitempty" xml:"OperationalMode,omitempty"`
-	NextHopRegionId      *string                                                                              `json:"NextHopRegionId,omitempty" xml:"NextHopRegionId,omitempty"`
-	NextHopInstanceId    *string                                                                              `json:"NextHopInstanceId,omitempty" xml:"NextHopInstanceId,omitempty"`
-	RouteTableId         *string                                                                              `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
-	AsPaths              []*string                                                                            `json:"AsPaths,omitempty" xml:"AsPaths,omitempty" type:"Repeated"`
-	Conflicts            []*DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesConflicts          `json:"Conflicts,omitempty" xml:"Conflicts,omitempty" type:"Repeated"`
-	Communities          []*string                                                                            `json:"Communities,omitempty" xml:"Communities,omitempty" type:"Repeated"`
-	DestinationCidrBlock *string                                                                              `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	CenRouteMapRecords   []*DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteMapRecords `json:"CenRouteMapRecords,omitempty" xml:"CenRouteMapRecords,omitempty" type:"Repeated"`
+	CenRouteEntry []*DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry `json:"CenRouteEntry,omitempty" xml:"CenRouteEntry,omitempty" type:"Repeated"`
 }
 
 func (s DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntries) String() string {
@@ -2609,72 +2605,158 @@ func (s DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntries) GoStrin
 	return s.String()
 }
 
-func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntries) SetStatus(v string) *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntries {
+func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntries) SetCenRouteEntry(v []*DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry) *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntries {
+	s.CenRouteEntry = v
+	return s
+}
+
+type DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry struct {
+	Status               *string                                                                                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type                 *string                                                                                         `json:"Type,omitempty" xml:"Type,omitempty"`
+	PublishStatus        *string                                                                                         `json:"PublishStatus,omitempty" xml:"PublishStatus,omitempty"`
+	NextHopType          *string                                                                                         `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
+	OperationalMode      *bool                                                                                           `json:"OperationalMode,omitempty" xml:"OperationalMode,omitempty"`
+	NextHopRegionId      *string                                                                                         `json:"NextHopRegionId,omitempty" xml:"NextHopRegionId,omitempty"`
+	NextHopInstanceId    *string                                                                                         `json:"NextHopInstanceId,omitempty" xml:"NextHopInstanceId,omitempty"`
+	DestinationCidrBlock *string                                                                                         `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
+	RouteTableId         *string                                                                                         `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+	CenRouteMapRecords   *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecords `json:"CenRouteMapRecords,omitempty" xml:"CenRouteMapRecords,omitempty" type:"Struct"`
+	Conflicts            *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryConflicts          `json:"Conflicts,omitempty" xml:"Conflicts,omitempty" type:"Struct"`
+	Communities          *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCommunities        `json:"Communities,omitempty" xml:"Communities,omitempty" type:"Struct"`
+	AsPaths              *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryAsPaths            `json:"AsPaths,omitempty" xml:"AsPaths,omitempty" type:"Struct"`
+}
+
+func (s DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry) SetStatus(v string) *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry {
 	s.Status = &v
 	return s
 }
 
-func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntries) SetType(v string) *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntries {
+func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry) SetType(v string) *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry {
 	s.Type = &v
 	return s
 }
 
-func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntries) SetPublishStatus(v string) *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntries {
+func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry) SetPublishStatus(v string) *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry {
 	s.PublishStatus = &v
 	return s
 }
 
-func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntries) SetNextHopType(v string) *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntries {
+func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry) SetNextHopType(v string) *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry {
 	s.NextHopType = &v
 	return s
 }
 
-func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntries) SetOperationalMode(v bool) *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntries {
+func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry) SetOperationalMode(v bool) *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry {
 	s.OperationalMode = &v
 	return s
 }
 
-func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntries) SetNextHopRegionId(v string) *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntries {
+func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry) SetNextHopRegionId(v string) *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry {
 	s.NextHopRegionId = &v
 	return s
 }
 
-func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntries) SetNextHopInstanceId(v string) *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntries {
+func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry) SetNextHopInstanceId(v string) *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry {
 	s.NextHopInstanceId = &v
 	return s
 }
 
-func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntries) SetRouteTableId(v string) *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntries {
-	s.RouteTableId = &v
-	return s
-}
-
-func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntries) SetAsPaths(v []*string) *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntries {
-	s.AsPaths = v
-	return s
-}
-
-func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntries) SetConflicts(v []*DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesConflicts) *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntries {
-	s.Conflicts = v
-	return s
-}
-
-func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntries) SetCommunities(v []*string) *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntries {
-	s.Communities = v
-	return s
-}
-
-func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntries) SetDestinationCidrBlock(v string) *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntries {
+func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry) SetDestinationCidrBlock(v string) *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry {
 	s.DestinationCidrBlock = &v
 	return s
 }
 
-func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntries) SetCenRouteMapRecords(v []*DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteMapRecords) *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntries {
+func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry) SetRouteTableId(v string) *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry {
+	s.RouteTableId = &v
+	return s
+}
+
+func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry) SetCenRouteMapRecords(v *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecords) *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry {
 	s.CenRouteMapRecords = v
 	return s
 }
 
-type DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesConflicts struct {
+func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry) SetConflicts(v *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryConflicts) *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry {
+	s.Conflicts = v
+	return s
+}
+
+func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry) SetCommunities(v *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCommunities) *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry {
+	s.Communities = v
+	return s
+}
+
+func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry) SetAsPaths(v *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryAsPaths) *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry {
+	s.AsPaths = v
+	return s
+}
+
+type DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecords struct {
+	CenRouteMapRecord []*DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecordsCenRouteMapRecord `json:"CenRouteMapRecord,omitempty" xml:"CenRouteMapRecord,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecords) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecords) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecords) SetCenRouteMapRecord(v []*DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecordsCenRouteMapRecord) *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecords {
+	s.CenRouteMapRecord = v
+	return s
+}
+
+type DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecordsCenRouteMapRecord struct {
+	RouteMapId *string `json:"RouteMapId,omitempty" xml:"RouteMapId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecordsCenRouteMapRecord) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecordsCenRouteMapRecord) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecordsCenRouteMapRecord) SetRouteMapId(v string) *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecordsCenRouteMapRecord {
+	s.RouteMapId = &v
+	return s
+}
+
+func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecordsCenRouteMapRecord) SetRegionId(v string) *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecordsCenRouteMapRecord {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryConflicts struct {
+	Conflict []*DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryConflictsConflict `json:"Conflict,omitempty" xml:"Conflict,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryConflicts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryConflicts) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryConflicts) SetConflict(v []*DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryConflictsConflict) *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryConflicts {
+	s.Conflict = v
+	return s
+}
+
+type DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryConflictsConflict struct {
 	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -2682,59 +2764,70 @@ type DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesConflicts st
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
-func (s DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesConflicts) String() string {
+func (s DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryConflictsConflict) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesConflicts) GoString() string {
+func (s DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryConflictsConflict) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesConflicts) SetStatus(v string) *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesConflicts {
+func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryConflictsConflict) SetStatus(v string) *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryConflictsConflict {
 	s.Status = &v
 	return s
 }
 
-func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesConflicts) SetDestinationCidrBlock(v string) *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesConflicts {
+func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryConflictsConflict) SetDestinationCidrBlock(v string) *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryConflictsConflict {
 	s.DestinationCidrBlock = &v
 	return s
 }
 
-func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesConflicts) SetInstanceId(v string) *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesConflicts {
+func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryConflictsConflict) SetInstanceId(v string) *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryConflictsConflict {
 	s.InstanceId = &v
 	return s
 }
 
-func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesConflicts) SetInstanceType(v string) *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesConflicts {
+func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryConflictsConflict) SetInstanceType(v string) *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryConflictsConflict {
 	s.InstanceType = &v
 	return s
 }
 
-func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesConflicts) SetRegionId(v string) *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesConflicts {
+func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryConflictsConflict) SetRegionId(v string) *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryConflictsConflict {
 	s.RegionId = &v
 	return s
 }
 
-type DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteMapRecords struct {
-	RouteMapId *string `json:"RouteMapId,omitempty" xml:"RouteMapId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+type DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCommunities struct {
+	Community []*string `json:"Community,omitempty" xml:"Community,omitempty" type:"Repeated"`
 }
 
-func (s DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteMapRecords) String() string {
+func (s DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCommunities) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteMapRecords) GoString() string {
+func (s DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCommunities) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteMapRecords) SetRouteMapId(v string) *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteMapRecords {
-	s.RouteMapId = &v
+func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCommunities) SetCommunity(v []*string) *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCommunities {
+	s.Community = v
 	return s
 }
 
-func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteMapRecords) SetRegionId(v string) *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteMapRecords {
-	s.RegionId = &v
+type DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryAsPaths struct {
+	AsPath []*string `json:"AsPath,omitempty" xml:"AsPath,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryAsPaths) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryAsPaths) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryAsPaths) SetAsPath(v []*string) *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryAsPaths {
+	s.AsPath = v
 	return s
 }
 
@@ -2827,8 +2920,8 @@ func (s *DescribeCenGeographicSpanRemainingBandwidthRequest) SetGeographicRegion
 }
 
 type DescribeCenGeographicSpanRemainingBandwidthResponseBody struct {
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RemainingBandwidth *int64  `json:"RemainingBandwidth,omitempty" xml:"RemainingBandwidth,omitempty"`
+	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeCenGeographicSpanRemainingBandwidthResponseBody) String() string {
@@ -2839,13 +2932,13 @@ func (s DescribeCenGeographicSpanRemainingBandwidthResponseBody) GoString() stri
 	return s.String()
 }
 
-func (s *DescribeCenGeographicSpanRemainingBandwidthResponseBody) SetRequestId(v string) *DescribeCenGeographicSpanRemainingBandwidthResponseBody {
-	s.RequestId = &v
+func (s *DescribeCenGeographicSpanRemainingBandwidthResponseBody) SetRemainingBandwidth(v int64) *DescribeCenGeographicSpanRemainingBandwidthResponseBody {
+	s.RemainingBandwidth = &v
 	return s
 }
 
-func (s *DescribeCenGeographicSpanRemainingBandwidthResponseBody) SetRemainingBandwidth(v int64) *DescribeCenGeographicSpanRemainingBandwidthResponseBody {
-	s.RemainingBandwidth = &v
+func (s *DescribeCenGeographicSpanRemainingBandwidthResponseBody) SetRequestId(v string) *DescribeCenGeographicSpanRemainingBandwidthResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2926,11 +3019,11 @@ func (s *DescribeCenGeographicSpansRequest) SetGeographicSpanId(v string) *Descr
 }
 
 type DescribeCenGeographicSpansResponseBody struct {
-	TotalCount           *int32                                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	PageSize             *int32                                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId            *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNumber           *int32                                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	GeographicSpanModels []*DescribeCenGeographicSpansResponseBodyGeographicSpanModels `json:"GeographicSpanModels,omitempty" xml:"GeographicSpanModels,omitempty" type:"Repeated"`
+	PageSize             *int32                                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId            *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageNumber           *int32                                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalCount           *int32                                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	GeographicSpanModels *DescribeCenGeographicSpansResponseBodyGeographicSpanModels `json:"GeographicSpanModels,omitempty" xml:"GeographicSpanModels,omitempty" type:"Struct"`
 }
 
 func (s DescribeCenGeographicSpansResponseBody) String() string {
@@ -2939,11 +3032,6 @@ func (s DescribeCenGeographicSpansResponseBody) String() string {
 
 func (s DescribeCenGeographicSpansResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeCenGeographicSpansResponseBody) SetTotalCount(v int32) *DescribeCenGeographicSpansResponseBody {
-	s.TotalCount = &v
-	return s
 }
 
 func (s *DescribeCenGeographicSpansResponseBody) SetPageSize(v int32) *DescribeCenGeographicSpansResponseBody {
@@ -2961,15 +3049,18 @@ func (s *DescribeCenGeographicSpansResponseBody) SetPageNumber(v int32) *Describ
 	return s
 }
 
-func (s *DescribeCenGeographicSpansResponseBody) SetGeographicSpanModels(v []*DescribeCenGeographicSpansResponseBodyGeographicSpanModels) *DescribeCenGeographicSpansResponseBody {
+func (s *DescribeCenGeographicSpansResponseBody) SetTotalCount(v int32) *DescribeCenGeographicSpansResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeCenGeographicSpansResponseBody) SetGeographicSpanModels(v *DescribeCenGeographicSpansResponseBodyGeographicSpanModels) *DescribeCenGeographicSpansResponseBody {
 	s.GeographicSpanModels = v
 	return s
 }
 
 type DescribeCenGeographicSpansResponseBodyGeographicSpanModels struct {
-	GeographicSpanId    *string `json:"GeographicSpanId,omitempty" xml:"GeographicSpanId,omitempty"`
-	OppositeGeoRegionId *string `json:"OppositeGeoRegionId,omitempty" xml:"OppositeGeoRegionId,omitempty"`
-	LocalGeoRegionId    *string `json:"LocalGeoRegionId,omitempty" xml:"LocalGeoRegionId,omitempty"`
+	GeographicSpanModel []*DescribeCenGeographicSpansResponseBodyGeographicSpanModelsGeographicSpanModel `json:"GeographicSpanModel,omitempty" xml:"GeographicSpanModel,omitempty" type:"Repeated"`
 }
 
 func (s DescribeCenGeographicSpansResponseBodyGeographicSpanModels) String() string {
@@ -2980,18 +3071,37 @@ func (s DescribeCenGeographicSpansResponseBodyGeographicSpanModels) GoString() s
 	return s.String()
 }
 
-func (s *DescribeCenGeographicSpansResponseBodyGeographicSpanModels) SetGeographicSpanId(v string) *DescribeCenGeographicSpansResponseBodyGeographicSpanModels {
+func (s *DescribeCenGeographicSpansResponseBodyGeographicSpanModels) SetGeographicSpanModel(v []*DescribeCenGeographicSpansResponseBodyGeographicSpanModelsGeographicSpanModel) *DescribeCenGeographicSpansResponseBodyGeographicSpanModels {
+	s.GeographicSpanModel = v
+	return s
+}
+
+type DescribeCenGeographicSpansResponseBodyGeographicSpanModelsGeographicSpanModel struct {
+	LocalGeoRegionId    *string `json:"LocalGeoRegionId,omitempty" xml:"LocalGeoRegionId,omitempty"`
+	GeographicSpanId    *string `json:"GeographicSpanId,omitempty" xml:"GeographicSpanId,omitempty"`
+	OppositeGeoRegionId *string `json:"OppositeGeoRegionId,omitempty" xml:"OppositeGeoRegionId,omitempty"`
+}
+
+func (s DescribeCenGeographicSpansResponseBodyGeographicSpanModelsGeographicSpanModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenGeographicSpansResponseBodyGeographicSpanModelsGeographicSpanModel) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenGeographicSpansResponseBodyGeographicSpanModelsGeographicSpanModel) SetLocalGeoRegionId(v string) *DescribeCenGeographicSpansResponseBodyGeographicSpanModelsGeographicSpanModel {
+	s.LocalGeoRegionId = &v
+	return s
+}
+
+func (s *DescribeCenGeographicSpansResponseBodyGeographicSpanModelsGeographicSpanModel) SetGeographicSpanId(v string) *DescribeCenGeographicSpansResponseBodyGeographicSpanModelsGeographicSpanModel {
 	s.GeographicSpanId = &v
 	return s
 }
 
-func (s *DescribeCenGeographicSpansResponseBodyGeographicSpanModels) SetOppositeGeoRegionId(v string) *DescribeCenGeographicSpansResponseBodyGeographicSpanModels {
+func (s *DescribeCenGeographicSpansResponseBodyGeographicSpanModelsGeographicSpanModel) SetOppositeGeoRegionId(v string) *DescribeCenGeographicSpansResponseBodyGeographicSpanModelsGeographicSpanModel {
 	s.OppositeGeoRegionId = &v
-	return s
-}
-
-func (s *DescribeCenGeographicSpansResponseBodyGeographicSpanModels) SetLocalGeoRegionId(v string) *DescribeCenGeographicSpansResponseBodyGeographicSpanModels {
-	s.LocalGeoRegionId = &v
 	return s
 }
 
@@ -3072,11 +3182,11 @@ func (s *DescribeCenInterRegionBandwidthLimitsRequest) SetCenId(v string) *Descr
 }
 
 type DescribeCenInterRegionBandwidthLimitsResponseBody struct {
-	CenInterRegionBandwidthLimits []*DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimits `json:"CenInterRegionBandwidthLimits,omitempty" xml:"CenInterRegionBandwidthLimits,omitempty" type:"Repeated"`
-	TotalCount                    *int32                                                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	PageSize                      *int32                                                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId                     *string                                                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNumber                    *int32                                                                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize                      *int32                                                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId                     *string                                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageNumber                    *int32                                                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalCount                    *int32                                                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	CenInterRegionBandwidthLimits *DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimits `json:"CenInterRegionBandwidthLimits,omitempty" xml:"CenInterRegionBandwidthLimits,omitempty" type:"Struct"`
 }
 
 func (s DescribeCenInterRegionBandwidthLimitsResponseBody) String() string {
@@ -3085,16 +3195,6 @@ func (s DescribeCenInterRegionBandwidthLimitsResponseBody) String() string {
 
 func (s DescribeCenInterRegionBandwidthLimitsResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeCenInterRegionBandwidthLimitsResponseBody) SetCenInterRegionBandwidthLimits(v []*DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimits) *DescribeCenInterRegionBandwidthLimitsResponseBody {
-	s.CenInterRegionBandwidthLimits = v
-	return s
-}
-
-func (s *DescribeCenInterRegionBandwidthLimitsResponseBody) SetTotalCount(v int32) *DescribeCenInterRegionBandwidthLimitsResponseBody {
-	s.TotalCount = &v
-	return s
 }
 
 func (s *DescribeCenInterRegionBandwidthLimitsResponseBody) SetPageSize(v int32) *DescribeCenInterRegionBandwidthLimitsResponseBody {
@@ -3112,14 +3212,18 @@ func (s *DescribeCenInterRegionBandwidthLimitsResponseBody) SetPageNumber(v int3
 	return s
 }
 
+func (s *DescribeCenInterRegionBandwidthLimitsResponseBody) SetTotalCount(v int32) *DescribeCenInterRegionBandwidthLimitsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeCenInterRegionBandwidthLimitsResponseBody) SetCenInterRegionBandwidthLimits(v *DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimits) *DescribeCenInterRegionBandwidthLimitsResponseBody {
+	s.CenInterRegionBandwidthLimits = v
+	return s
+}
+
 type DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimits struct {
-	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	OppositeRegionId   *string `json:"OppositeRegionId,omitempty" xml:"OppositeRegionId,omitempty"`
-	GeographicSpanId   *string `json:"GeographicSpanId,omitempty" xml:"GeographicSpanId,omitempty"`
-	CenId              *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	LocalRegionId      *string `json:"LocalRegionId,omitempty" xml:"LocalRegionId,omitempty"`
-	BandwidthLimit     *int64  `json:"BandwidthLimit,omitempty" xml:"BandwidthLimit,omitempty"`
+	CenInterRegionBandwidthLimit []*DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimitsCenInterRegionBandwidthLimit `json:"CenInterRegionBandwidthLimit,omitempty" xml:"CenInterRegionBandwidthLimit,omitempty" type:"Repeated"`
 }
 
 func (s DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimits) String() string {
@@ -3130,37 +3234,60 @@ func (s DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidth
 	return s.String()
 }
 
-func (s *DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimits) SetStatus(v string) *DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimits {
+func (s *DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimits) SetCenInterRegionBandwidthLimit(v []*DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimitsCenInterRegionBandwidthLimit) *DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimits {
+	s.CenInterRegionBandwidthLimit = v
+	return s
+}
+
+type DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimitsCenInterRegionBandwidthLimit struct {
+	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	OppositeRegionId   *string `json:"OppositeRegionId,omitempty" xml:"OppositeRegionId,omitempty"`
+	GeographicSpanId   *string `json:"GeographicSpanId,omitempty" xml:"GeographicSpanId,omitempty"`
+	CenId              *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	LocalRegionId      *string `json:"LocalRegionId,omitempty" xml:"LocalRegionId,omitempty"`
+	BandwidthLimit     *int64  `json:"BandwidthLimit,omitempty" xml:"BandwidthLimit,omitempty"`
+}
+
+func (s DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimitsCenInterRegionBandwidthLimit) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimitsCenInterRegionBandwidthLimit) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimitsCenInterRegionBandwidthLimit) SetStatus(v string) *DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimitsCenInterRegionBandwidthLimit {
 	s.Status = &v
 	return s
 }
 
-func (s *DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimits) SetBandwidthPackageId(v string) *DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimits {
+func (s *DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimitsCenInterRegionBandwidthLimit) SetBandwidthPackageId(v string) *DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimitsCenInterRegionBandwidthLimit {
 	s.BandwidthPackageId = &v
 	return s
 }
 
-func (s *DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimits) SetOppositeRegionId(v string) *DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimits {
+func (s *DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimitsCenInterRegionBandwidthLimit) SetOppositeRegionId(v string) *DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimitsCenInterRegionBandwidthLimit {
 	s.OppositeRegionId = &v
 	return s
 }
 
-func (s *DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimits) SetGeographicSpanId(v string) *DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimits {
+func (s *DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimitsCenInterRegionBandwidthLimit) SetGeographicSpanId(v string) *DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimitsCenInterRegionBandwidthLimit {
 	s.GeographicSpanId = &v
 	return s
 }
 
-func (s *DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimits) SetCenId(v string) *DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimits {
+func (s *DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimitsCenInterRegionBandwidthLimit) SetCenId(v string) *DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimitsCenInterRegionBandwidthLimit {
 	s.CenId = &v
 	return s
 }
 
-func (s *DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimits) SetLocalRegionId(v string) *DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimits {
+func (s *DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimitsCenInterRegionBandwidthLimit) SetLocalRegionId(v string) *DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimitsCenInterRegionBandwidthLimit {
 	s.LocalRegionId = &v
 	return s
 }
 
-func (s *DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimits) SetBandwidthLimit(v int64) *DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimits {
+func (s *DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimitsCenInterRegionBandwidthLimit) SetBandwidthLimit(v int64) *DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimitsCenInterRegionBandwidthLimit {
 	s.BandwidthLimit = &v
 	return s
 }
@@ -3242,13 +3369,13 @@ func (s *DescribeCenPrivateZoneRoutesRequest) SetHostRegionId(v string) *Describ
 }
 
 type DescribeCenPrivateZoneRoutesResponseBody struct {
-	TotalCount            *int32                                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	RequestId             *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize              *int32                                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PrivateZoneInfos      []*DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfos `json:"PrivateZoneInfos,omitempty" xml:"PrivateZoneInfos,omitempty" type:"Repeated"`
-	PageNumber            *int32                                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	CenId                 *string                                                     `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	PrivateZoneDnsServers *string                                                     `json:"PrivateZoneDnsServers,omitempty" xml:"PrivateZoneDnsServers,omitempty"`
+	RequestId             *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PrivateZoneDnsServers *string                                                   `json:"PrivateZoneDnsServers,omitempty" xml:"PrivateZoneDnsServers,omitempty"`
+	CenId                 *string                                                   `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	PageNumber            *int32                                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize              *int32                                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount            *int32                                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PrivateZoneInfos      *DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfos `json:"PrivateZoneInfos,omitempty" xml:"PrivateZoneInfos,omitempty" type:"Struct"`
 }
 
 func (s DescribeCenPrivateZoneRoutesResponseBody) String() string {
@@ -3259,33 +3386,8 @@ func (s DescribeCenPrivateZoneRoutesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeCenPrivateZoneRoutesResponseBody) SetTotalCount(v int32) *DescribeCenPrivateZoneRoutesResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
 func (s *DescribeCenPrivateZoneRoutesResponseBody) SetRequestId(v string) *DescribeCenPrivateZoneRoutesResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeCenPrivateZoneRoutesResponseBody) SetPageSize(v int32) *DescribeCenPrivateZoneRoutesResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeCenPrivateZoneRoutesResponseBody) SetPrivateZoneInfos(v []*DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfos) *DescribeCenPrivateZoneRoutesResponseBody {
-	s.PrivateZoneInfos = v
-	return s
-}
-
-func (s *DescribeCenPrivateZoneRoutesResponseBody) SetPageNumber(v int32) *DescribeCenPrivateZoneRoutesResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *DescribeCenPrivateZoneRoutesResponseBody) SetCenId(v string) *DescribeCenPrivateZoneRoutesResponseBody {
-	s.CenId = &v
 	return s
 }
 
@@ -3294,11 +3396,33 @@ func (s *DescribeCenPrivateZoneRoutesResponseBody) SetPrivateZoneDnsServers(v st
 	return s
 }
 
+func (s *DescribeCenPrivateZoneRoutesResponseBody) SetCenId(v string) *DescribeCenPrivateZoneRoutesResponseBody {
+	s.CenId = &v
+	return s
+}
+
+func (s *DescribeCenPrivateZoneRoutesResponseBody) SetPageNumber(v int32) *DescribeCenPrivateZoneRoutesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeCenPrivateZoneRoutesResponseBody) SetPageSize(v int32) *DescribeCenPrivateZoneRoutesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeCenPrivateZoneRoutesResponseBody) SetTotalCount(v int32) *DescribeCenPrivateZoneRoutesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeCenPrivateZoneRoutesResponseBody) SetPrivateZoneInfos(v *DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfos) *DescribeCenPrivateZoneRoutesResponseBody {
+	s.PrivateZoneInfos = v
+	return s
+}
+
 type DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfos struct {
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	HostVpcId      *string `json:"HostVpcId,omitempty" xml:"HostVpcId,omitempty"`
-	AccessRegionId *string `json:"AccessRegionId,omitempty" xml:"AccessRegionId,omitempty"`
-	HostRegionId   *string `json:"HostRegionId,omitempty" xml:"HostRegionId,omitempty"`
+	PrivateZoneInfo []*DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfosPrivateZoneInfo `json:"PrivateZoneInfo,omitempty" xml:"PrivateZoneInfo,omitempty" type:"Repeated"`
 }
 
 func (s DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfos) String() string {
@@ -3309,23 +3433,43 @@ func (s DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfos) GoString() str
 	return s.String()
 }
 
-func (s *DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfos) SetStatus(v string) *DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfos {
+func (s *DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfos) SetPrivateZoneInfo(v []*DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfosPrivateZoneInfo) *DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfos {
+	s.PrivateZoneInfo = v
+	return s
+}
+
+type DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfosPrivateZoneInfo struct {
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	AccessRegionId *string `json:"AccessRegionId,omitempty" xml:"AccessRegionId,omitempty"`
+	HostRegionId   *string `json:"HostRegionId,omitempty" xml:"HostRegionId,omitempty"`
+	HostVpcId      *string `json:"HostVpcId,omitempty" xml:"HostVpcId,omitempty"`
+}
+
+func (s DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfosPrivateZoneInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfosPrivateZoneInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfosPrivateZoneInfo) SetStatus(v string) *DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfosPrivateZoneInfo {
 	s.Status = &v
 	return s
 }
 
-func (s *DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfos) SetHostVpcId(v string) *DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfos {
-	s.HostVpcId = &v
-	return s
-}
-
-func (s *DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfos) SetAccessRegionId(v string) *DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfos {
+func (s *DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfosPrivateZoneInfo) SetAccessRegionId(v string) *DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfosPrivateZoneInfo {
 	s.AccessRegionId = &v
 	return s
 }
 
-func (s *DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfos) SetHostRegionId(v string) *DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfos {
+func (s *DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfosPrivateZoneInfo) SetHostRegionId(v string) *DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfosPrivateZoneInfo {
 	s.HostRegionId = &v
+	return s
+}
+
+func (s *DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfosPrivateZoneInfo) SetHostVpcId(v string) *DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfosPrivateZoneInfo {
+	s.HostVpcId = &v
 	return s
 }
 
@@ -3362,7 +3506,6 @@ type DescribeCenRegionDomainRouteEntriesRequest struct {
 	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
 }
 
 func (s DescribeCenRegionDomainRouteEntriesRequest) String() string {
@@ -3418,17 +3561,12 @@ func (s *DescribeCenRegionDomainRouteEntriesRequest) SetStatus(v string) *Descri
 	return s
 }
 
-func (s *DescribeCenRegionDomainRouteEntriesRequest) SetDestinationCidrBlock(v string) *DescribeCenRegionDomainRouteEntriesRequest {
-	s.DestinationCidrBlock = &v
-	return s
-}
-
 type DescribeCenRegionDomainRouteEntriesResponseBody struct {
-	TotalCount      *int32                                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	PageSize        *int32                                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId       *string                                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNumber      *int32                                                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	CenRouteEntries []*DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntries `json:"CenRouteEntries,omitempty" xml:"CenRouteEntries,omitempty" type:"Repeated"`
+	PageSize        *int32                                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId       *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageNumber      *int32                                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalCount      *int32                                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	CenRouteEntries *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntries `json:"CenRouteEntries,omitempty" xml:"CenRouteEntries,omitempty" type:"Struct"`
 }
 
 func (s DescribeCenRegionDomainRouteEntriesResponseBody) String() string {
@@ -3437,11 +3575,6 @@ func (s DescribeCenRegionDomainRouteEntriesResponseBody) String() string {
 
 func (s DescribeCenRegionDomainRouteEntriesResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeCenRegionDomainRouteEntriesResponseBody) SetTotalCount(v int32) *DescribeCenRegionDomainRouteEntriesResponseBody {
-	s.TotalCount = &v
-	return s
 }
 
 func (s *DescribeCenRegionDomainRouteEntriesResponseBody) SetPageSize(v int32) *DescribeCenRegionDomainRouteEntriesResponseBody {
@@ -3459,24 +3592,18 @@ func (s *DescribeCenRegionDomainRouteEntriesResponseBody) SetPageNumber(v int32)
 	return s
 }
 
-func (s *DescribeCenRegionDomainRouteEntriesResponseBody) SetCenRouteEntries(v []*DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntries) *DescribeCenRegionDomainRouteEntriesResponseBody {
+func (s *DescribeCenRegionDomainRouteEntriesResponseBody) SetTotalCount(v int32) *DescribeCenRegionDomainRouteEntriesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeCenRegionDomainRouteEntriesResponseBody) SetCenRouteEntries(v *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntries) *DescribeCenRegionDomainRouteEntriesResponseBody {
 	s.CenRouteEntries = v
 	return s
 }
 
 type DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntries struct {
-	Type                  *string                                                                                `json:"Type,omitempty" xml:"Type,omitempty"`
-	Status                *string                                                                                `json:"Status,omitempty" xml:"Status,omitempty"`
-	CenOutRouteMapRecords []*DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenOutRouteMapRecords `json:"CenOutRouteMapRecords,omitempty" xml:"CenOutRouteMapRecords,omitempty" type:"Repeated"`
-	NextHopType           *string                                                                                `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
-	NextHopInstanceId     *string                                                                                `json:"NextHopInstanceId,omitempty" xml:"NextHopInstanceId,omitempty"`
-	NextHopRegionId       *string                                                                                `json:"NextHopRegionId,omitempty" xml:"NextHopRegionId,omitempty"`
-	AsPaths               []*string                                                                              `json:"AsPaths,omitempty" xml:"AsPaths,omitempty" type:"Repeated"`
-	ToOtherRegionStatus   *string                                                                                `json:"ToOtherRegionStatus,omitempty" xml:"ToOtherRegionStatus,omitempty"`
-	Communities           []*string                                                                              `json:"Communities,omitempty" xml:"Communities,omitempty" type:"Repeated"`
-	DestinationCidrBlock  *string                                                                                `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	Preference            *int32                                                                                 `json:"Preference,omitempty" xml:"Preference,omitempty"`
-	CenRouteMapRecords    []*DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteMapRecords    `json:"CenRouteMapRecords,omitempty" xml:"CenRouteMapRecords,omitempty" type:"Repeated"`
+	CenRouteEntry []*DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry `json:"CenRouteEntry,omitempty" xml:"CenRouteEntry,omitempty" type:"Repeated"`
 }
 
 func (s DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntries) String() string {
@@ -3487,109 +3614,205 @@ func (s DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntries) GoString
 	return s.String()
 }
 
-func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntries) SetType(v string) *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntries {
-	s.Type = &v
+func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntries) SetCenRouteEntry(v []*DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry) *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntries {
+	s.CenRouteEntry = v
 	return s
 }
 
-func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntries) SetStatus(v string) *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntries {
-	s.Status = &v
-	return s
+type DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry struct {
+	ToOtherRegionStatus   *string                                                                                           `json:"ToOtherRegionStatus,omitempty" xml:"ToOtherRegionStatus,omitempty"`
+	Type                  *string                                                                                           `json:"Type,omitempty" xml:"Type,omitempty"`
+	Status                *string                                                                                           `json:"Status,omitempty" xml:"Status,omitempty"`
+	NextHopType           *string                                                                                           `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
+	NextHopInstanceId     *string                                                                                           `json:"NextHopInstanceId,omitempty" xml:"NextHopInstanceId,omitempty"`
+	NextHopRegionId       *string                                                                                           `json:"NextHopRegionId,omitempty" xml:"NextHopRegionId,omitempty"`
+	DestinationCidrBlock  *string                                                                                           `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
+	Preference            *int32                                                                                            `json:"Preference,omitempty" xml:"Preference,omitempty"`
+	CenRouteMapRecords    *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecords    `json:"CenRouteMapRecords,omitempty" xml:"CenRouteMapRecords,omitempty" type:"Struct"`
+	CenOutRouteMapRecords *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenOutRouteMapRecords `json:"CenOutRouteMapRecords,omitempty" xml:"CenOutRouteMapRecords,omitempty" type:"Struct"`
+	Communities           *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCommunities           `json:"Communities,omitempty" xml:"Communities,omitempty" type:"Struct"`
+	AsPaths               *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryAsPaths               `json:"AsPaths,omitempty" xml:"AsPaths,omitempty" type:"Struct"`
 }
 
-func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntries) SetCenOutRouteMapRecords(v []*DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenOutRouteMapRecords) *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntries {
-	s.CenOutRouteMapRecords = v
-	return s
+func (s DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry) String() string {
+	return tea.Prettify(s)
 }
 
-func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntries) SetNextHopType(v string) *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntries {
-	s.NextHopType = &v
-	return s
+func (s DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry) GoString() string {
+	return s.String()
 }
 
-func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntries) SetNextHopInstanceId(v string) *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntries {
-	s.NextHopInstanceId = &v
-	return s
-}
-
-func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntries) SetNextHopRegionId(v string) *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntries {
-	s.NextHopRegionId = &v
-	return s
-}
-
-func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntries) SetAsPaths(v []*string) *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntries {
-	s.AsPaths = v
-	return s
-}
-
-func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntries) SetToOtherRegionStatus(v string) *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntries {
+func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry) SetToOtherRegionStatus(v string) *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry {
 	s.ToOtherRegionStatus = &v
 	return s
 }
 
-func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntries) SetCommunities(v []*string) *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntries {
-	s.Communities = v
+func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry) SetType(v string) *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry {
+	s.Type = &v
 	return s
 }
 
-func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntries) SetDestinationCidrBlock(v string) *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntries {
+func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry) SetStatus(v string) *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry) SetNextHopType(v string) *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry {
+	s.NextHopType = &v
+	return s
+}
+
+func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry) SetNextHopInstanceId(v string) *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry {
+	s.NextHopInstanceId = &v
+	return s
+}
+
+func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry) SetNextHopRegionId(v string) *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry {
+	s.NextHopRegionId = &v
+	return s
+}
+
+func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry) SetDestinationCidrBlock(v string) *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry {
 	s.DestinationCidrBlock = &v
 	return s
 }
 
-func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntries) SetPreference(v int32) *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntries {
+func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry) SetPreference(v int32) *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry {
 	s.Preference = &v
 	return s
 }
 
-func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntries) SetCenRouteMapRecords(v []*DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteMapRecords) *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntries {
+func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry) SetCenRouteMapRecords(v *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecords) *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry {
 	s.CenRouteMapRecords = v
 	return s
 }
 
-type DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenOutRouteMapRecords struct {
+func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry) SetCenOutRouteMapRecords(v *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenOutRouteMapRecords) *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry {
+	s.CenOutRouteMapRecords = v
+	return s
+}
+
+func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry) SetCommunities(v *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCommunities) *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry {
+	s.Communities = v
+	return s
+}
+
+func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry) SetAsPaths(v *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryAsPaths) *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry {
+	s.AsPaths = v
+	return s
+}
+
+type DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecords struct {
+	CenRouteMapRecord []*DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecordsCenRouteMapRecord `json:"CenRouteMapRecord,omitempty" xml:"CenRouteMapRecord,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecords) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecords) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecords) SetCenRouteMapRecord(v []*DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecordsCenRouteMapRecord) *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecords {
+	s.CenRouteMapRecord = v
+	return s
+}
+
+type DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecordsCenRouteMapRecord struct {
 	RouteMapId *string `json:"RouteMapId,omitempty" xml:"RouteMapId,omitempty"`
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
-func (s DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenOutRouteMapRecords) String() string {
+func (s DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecordsCenRouteMapRecord) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenOutRouteMapRecords) GoString() string {
+func (s DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecordsCenRouteMapRecord) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenOutRouteMapRecords) SetRouteMapId(v string) *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenOutRouteMapRecords {
+func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecordsCenRouteMapRecord) SetRouteMapId(v string) *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecordsCenRouteMapRecord {
 	s.RouteMapId = &v
 	return s
 }
 
-func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenOutRouteMapRecords) SetRegionId(v string) *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenOutRouteMapRecords {
+func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecordsCenRouteMapRecord) SetRegionId(v string) *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecordsCenRouteMapRecord {
 	s.RegionId = &v
 	return s
 }
 
-type DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteMapRecords struct {
+type DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenOutRouteMapRecords struct {
+	CenOutRouteMapRecord []*DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenOutRouteMapRecordsCenOutRouteMapRecord `json:"CenOutRouteMapRecord,omitempty" xml:"CenOutRouteMapRecord,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenOutRouteMapRecords) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenOutRouteMapRecords) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenOutRouteMapRecords) SetCenOutRouteMapRecord(v []*DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenOutRouteMapRecordsCenOutRouteMapRecord) *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenOutRouteMapRecords {
+	s.CenOutRouteMapRecord = v
+	return s
+}
+
+type DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenOutRouteMapRecordsCenOutRouteMapRecord struct {
 	RouteMapId *string `json:"RouteMapId,omitempty" xml:"RouteMapId,omitempty"`
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
-func (s DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteMapRecords) String() string {
+func (s DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenOutRouteMapRecordsCenOutRouteMapRecord) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteMapRecords) GoString() string {
+func (s DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenOutRouteMapRecordsCenOutRouteMapRecord) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteMapRecords) SetRouteMapId(v string) *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteMapRecords {
+func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenOutRouteMapRecordsCenOutRouteMapRecord) SetRouteMapId(v string) *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenOutRouteMapRecordsCenOutRouteMapRecord {
 	s.RouteMapId = &v
 	return s
 }
 
-func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteMapRecords) SetRegionId(v string) *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteMapRecords {
+func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenOutRouteMapRecordsCenOutRouteMapRecord) SetRegionId(v string) *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenOutRouteMapRecordsCenOutRouteMapRecord {
 	s.RegionId = &v
+	return s
+}
+
+type DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCommunities struct {
+	Community []*string `json:"Community,omitempty" xml:"Community,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCommunities) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCommunities) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCommunities) SetCommunity(v []*string) *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCommunities {
+	s.Community = v
+	return s
+}
+
+type DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryAsPaths struct {
+	AsPath []*string `json:"AsPath,omitempty" xml:"AsPath,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryAsPaths) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryAsPaths) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryAsPaths) SetAsPath(v []*string) *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryAsPaths {
+	s.AsPath = v
 	return s
 }
 
@@ -3617,17 +3840,16 @@ func (s *DescribeCenRegionDomainRouteEntriesResponse) SetBody(v *DescribeCenRegi
 }
 
 type DescribeCenRouteMapsRequest struct {
-	OwnerAccount         *string                              `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64                               `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string                              `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                               `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	PageNumber           *int32                               `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize             *int32                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	CenId                *string                              `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	RouteMapId           *string                              `json:"RouteMapId,omitempty" xml:"RouteMapId,omitempty"`
-	CenRegionId          *string                              `json:"CenRegionId,omitempty" xml:"CenRegionId,omitempty"`
-	TransmitDirection    *string                              `json:"TransmitDirection,omitempty" xml:"TransmitDirection,omitempty"`
-	Filter               []*DescribeCenRouteMapsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	CenId                *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	RouteMapId           *string `json:"RouteMapId,omitempty" xml:"RouteMapId,omitempty"`
+	CenRegionId          *string `json:"CenRegionId,omitempty" xml:"CenRegionId,omitempty"`
+	TransmitDirection    *string `json:"TransmitDirection,omitempty" xml:"TransmitDirection,omitempty"`
 }
 
 func (s DescribeCenRouteMapsRequest) String() string {
@@ -3688,28 +3910,12 @@ func (s *DescribeCenRouteMapsRequest) SetTransmitDirection(v string) *DescribeCe
 	return s
 }
 
-func (s *DescribeCenRouteMapsRequest) SetFilter(v []*DescribeCenRouteMapsRequestFilter) *DescribeCenRouteMapsRequest {
-	s.Filter = v
-	return s
-}
-
-type DescribeCenRouteMapsRequestFilter struct {
-}
-
-func (s DescribeCenRouteMapsRequestFilter) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeCenRouteMapsRequestFilter) GoString() string {
-	return s.String()
-}
-
 type DescribeCenRouteMapsResponseBody struct {
-	TotalCount *int32                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	PageSize   *int32                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNumber *int32                                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	RouteMaps  []*DescribeCenRouteMapsResponseBodyRouteMaps `json:"RouteMaps,omitempty" xml:"RouteMaps,omitempty" type:"Repeated"`
+	PageSize   *int32                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageNumber *int32                                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalCount *int32                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RouteMaps  *DescribeCenRouteMapsResponseBodyRouteMaps `json:"RouteMaps,omitempty" xml:"RouteMaps,omitempty" type:"Struct"`
 }
 
 func (s DescribeCenRouteMapsResponseBody) String() string {
@@ -3718,11 +3924,6 @@ func (s DescribeCenRouteMapsResponseBody) String() string {
 
 func (s DescribeCenRouteMapsResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeCenRouteMapsResponseBody) SetTotalCount(v int32) *DescribeCenRouteMapsResponseBody {
-	s.TotalCount = &v
-	return s
 }
 
 func (s *DescribeCenRouteMapsResponseBody) SetPageSize(v int32) *DescribeCenRouteMapsResponseBody {
@@ -3740,41 +3941,18 @@ func (s *DescribeCenRouteMapsResponseBody) SetPageNumber(v int32) *DescribeCenRo
 	return s
 }
 
-func (s *DescribeCenRouteMapsResponseBody) SetRouteMaps(v []*DescribeCenRouteMapsResponseBodyRouteMaps) *DescribeCenRouteMapsResponseBody {
+func (s *DescribeCenRouteMapsResponseBody) SetTotalCount(v int32) *DescribeCenRouteMapsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeCenRouteMapsResponseBody) SetRouteMaps(v *DescribeCenRouteMapsResponseBodyRouteMaps) *DescribeCenRouteMapsResponseBody {
 	s.RouteMaps = v
 	return s
 }
 
 type DescribeCenRouteMapsResponseBodyRouteMaps struct {
-	Status                             *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	SourceInstanceIdsReverseMatch      *bool     `json:"SourceInstanceIdsReverseMatch,omitempty" xml:"SourceInstanceIdsReverseMatch,omitempty"`
-	SourceRegionIds                    []*string `json:"SourceRegionIds,omitempty" xml:"SourceRegionIds,omitempty" type:"Repeated"`
-	MatchCommunitySet                  []*string `json:"MatchCommunitySet,omitempty" xml:"MatchCommunitySet,omitempty" type:"Repeated"`
-	Priority                           *int32    `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	CommunityOperateMode               *string   `json:"CommunityOperateMode,omitempty" xml:"CommunityOperateMode,omitempty"`
-	PrependAsPath                      []*string `json:"PrependAsPath,omitempty" xml:"PrependAsPath,omitempty" type:"Repeated"`
-	RouteTypes                         []*string `json:"RouteTypes,omitempty" xml:"RouteTypes,omitempty" type:"Repeated"`
-	Description                        *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	DestinationInstanceIds             []*string `json:"DestinationInstanceIds,omitempty" xml:"DestinationInstanceIds,omitempty" type:"Repeated"`
-	MatchAsns                          []*string `json:"MatchAsns,omitempty" xml:"MatchAsns,omitempty" type:"Repeated"`
-	DestinationInstanceIdsReverseMatch *bool     `json:"DestinationInstanceIdsReverseMatch,omitempty" xml:"DestinationInstanceIdsReverseMatch,omitempty"`
-	OperateCommunitySet                []*string `json:"OperateCommunitySet,omitempty" xml:"OperateCommunitySet,omitempty" type:"Repeated"`
-	NextPriority                       *int32    `json:"NextPriority,omitempty" xml:"NextPriority,omitempty"`
-	RouteMapId                         *string   `json:"RouteMapId,omitempty" xml:"RouteMapId,omitempty"`
-	TransmitDirection                  *string   `json:"TransmitDirection,omitempty" xml:"TransmitDirection,omitempty"`
-	SourceChildInstanceTypes           []*string `json:"SourceChildInstanceTypes,omitempty" xml:"SourceChildInstanceTypes,omitempty" type:"Repeated"`
-	DestinationRouteTableIds           []*string `json:"DestinationRouteTableIds,omitempty" xml:"DestinationRouteTableIds,omitempty" type:"Repeated"`
-	SourceInstanceIds                  []*string `json:"SourceInstanceIds,omitempty" xml:"SourceInstanceIds,omitempty" type:"Repeated"`
-	CenRegionId                        *string   `json:"CenRegionId,omitempty" xml:"CenRegionId,omitempty"`
-	DestinationCidrBlocks              []*string `json:"DestinationCidrBlocks,omitempty" xml:"DestinationCidrBlocks,omitempty" type:"Repeated"`
-	CenId                              *string   `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	SourceRouteTableIds                []*string `json:"SourceRouteTableIds,omitempty" xml:"SourceRouteTableIds,omitempty" type:"Repeated"`
-	MapResult                          *string   `json:"MapResult,omitempty" xml:"MapResult,omitempty"`
-	CommunityMatchMode                 *string   `json:"CommunityMatchMode,omitempty" xml:"CommunityMatchMode,omitempty"`
-	DestinationChildInstanceTypes      []*string `json:"DestinationChildInstanceTypes,omitempty" xml:"DestinationChildInstanceTypes,omitempty" type:"Repeated"`
-	AsPathMatchMode                    *string   `json:"AsPathMatchMode,omitempty" xml:"AsPathMatchMode,omitempty"`
-	Preference                         *int32    `json:"Preference,omitempty" xml:"Preference,omitempty"`
-	CidrMatchMode                      *string   `json:"CidrMatchMode,omitempty" xml:"CidrMatchMode,omitempty"`
+	RouteMap []*DescribeCenRouteMapsResponseBodyRouteMapsRouteMap `json:"RouteMap,omitempty" xml:"RouteMap,omitempty" type:"Repeated"`
 }
 
 func (s DescribeCenRouteMapsResponseBodyRouteMaps) String() string {
@@ -3785,148 +3963,414 @@ func (s DescribeCenRouteMapsResponseBodyRouteMaps) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeCenRouteMapsResponseBodyRouteMaps) SetStatus(v string) *DescribeCenRouteMapsResponseBodyRouteMaps {
-	s.Status = &v
+func (s *DescribeCenRouteMapsResponseBodyRouteMaps) SetRouteMap(v []*DescribeCenRouteMapsResponseBodyRouteMapsRouteMap) *DescribeCenRouteMapsResponseBodyRouteMaps {
+	s.RouteMap = v
 	return s
 }
 
-func (s *DescribeCenRouteMapsResponseBodyRouteMaps) SetSourceInstanceIdsReverseMatch(v bool) *DescribeCenRouteMapsResponseBodyRouteMaps {
-	s.SourceInstanceIdsReverseMatch = &v
-	return s
+type DescribeCenRouteMapsResponseBodyRouteMapsRouteMap struct {
+	RouteMapId                         *string                                                                         `json:"RouteMapId,omitempty" xml:"RouteMapId,omitempty"`
+	Status                             *string                                                                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	TransmitDirection                  *string                                                                         `json:"TransmitDirection,omitempty" xml:"TransmitDirection,omitempty"`
+	SourceInstanceIdsReverseMatch      *bool                                                                           `json:"SourceInstanceIdsReverseMatch,omitempty" xml:"SourceInstanceIdsReverseMatch,omitempty"`
+	CenRegionId                        *string                                                                         `json:"CenRegionId,omitempty" xml:"CenRegionId,omitempty"`
+	CenId                              *string                                                                         `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	Priority                           *int32                                                                          `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	CommunityOperateMode               *string                                                                         `json:"CommunityOperateMode,omitempty" xml:"CommunityOperateMode,omitempty"`
+	MapResult                          *string                                                                         `json:"MapResult,omitempty" xml:"MapResult,omitempty"`
+	CommunityMatchMode                 *string                                                                         `json:"CommunityMatchMode,omitempty" xml:"CommunityMatchMode,omitempty"`
+	Description                        *string                                                                         `json:"Description,omitempty" xml:"Description,omitempty"`
+	AsPathMatchMode                    *string                                                                         `json:"AsPathMatchMode,omitempty" xml:"AsPathMatchMode,omitempty"`
+	Preference                         *int32                                                                          `json:"Preference,omitempty" xml:"Preference,omitempty"`
+	DestinationInstanceIdsReverseMatch *bool                                                                           `json:"DestinationInstanceIdsReverseMatch,omitempty" xml:"DestinationInstanceIdsReverseMatch,omitempty"`
+	CidrMatchMode                      *string                                                                         `json:"CidrMatchMode,omitempty" xml:"CidrMatchMode,omitempty"`
+	NextPriority                       *int32                                                                          `json:"NextPriority,omitempty" xml:"NextPriority,omitempty"`
+	SourceRegionIds                    *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceRegionIds               `json:"SourceRegionIds,omitempty" xml:"SourceRegionIds,omitempty" type:"Struct"`
+	SourceChildInstanceTypes           *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceChildInstanceTypes      `json:"SourceChildInstanceTypes,omitempty" xml:"SourceChildInstanceTypes,omitempty" type:"Struct"`
+	DestinationRouteTableIds           *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationRouteTableIds      `json:"DestinationRouteTableIds,omitempty" xml:"DestinationRouteTableIds,omitempty" type:"Struct"`
+	SourceInstanceIds                  *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceInstanceIds             `json:"SourceInstanceIds,omitempty" xml:"SourceInstanceIds,omitempty" type:"Struct"`
+	DestinationCidrBlocks              *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationCidrBlocks         `json:"DestinationCidrBlocks,omitempty" xml:"DestinationCidrBlocks,omitempty" type:"Struct"`
+	SourceRouteTableIds                *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceRouteTableIds           `json:"SourceRouteTableIds,omitempty" xml:"SourceRouteTableIds,omitempty" type:"Struct"`
+	MatchCommunitySet                  *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapMatchCommunitySet             `json:"MatchCommunitySet,omitempty" xml:"MatchCommunitySet,omitempty" type:"Struct"`
+	PrependAsPath                      *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapPrependAsPath                 `json:"PrependAsPath,omitempty" xml:"PrependAsPath,omitempty" type:"Struct"`
+	RouteTypes                         *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapRouteTypes                    `json:"RouteTypes,omitempty" xml:"RouteTypes,omitempty" type:"Struct"`
+	DestinationChildInstanceTypes      *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationChildInstanceTypes `json:"DestinationChildInstanceTypes,omitempty" xml:"DestinationChildInstanceTypes,omitempty" type:"Struct"`
+	DestinationInstanceIds             *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationInstanceIds        `json:"DestinationInstanceIds,omitempty" xml:"DestinationInstanceIds,omitempty" type:"Struct"`
+	MatchAsns                          *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapMatchAsns                     `json:"MatchAsns,omitempty" xml:"MatchAsns,omitempty" type:"Struct"`
+	OperateCommunitySet                *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapOperateCommunitySet           `json:"OperateCommunitySet,omitempty" xml:"OperateCommunitySet,omitempty" type:"Struct"`
 }
 
-func (s *DescribeCenRouteMapsResponseBodyRouteMaps) SetSourceRegionIds(v []*string) *DescribeCenRouteMapsResponseBodyRouteMaps {
-	s.SourceRegionIds = v
-	return s
+func (s DescribeCenRouteMapsResponseBodyRouteMapsRouteMap) String() string {
+	return tea.Prettify(s)
 }
 
-func (s *DescribeCenRouteMapsResponseBodyRouteMaps) SetMatchCommunitySet(v []*string) *DescribeCenRouteMapsResponseBodyRouteMaps {
-	s.MatchCommunitySet = v
-	return s
+func (s DescribeCenRouteMapsResponseBodyRouteMapsRouteMap) GoString() string {
+	return s.String()
 }
 
-func (s *DescribeCenRouteMapsResponseBodyRouteMaps) SetPriority(v int32) *DescribeCenRouteMapsResponseBodyRouteMaps {
-	s.Priority = &v
-	return s
-}
-
-func (s *DescribeCenRouteMapsResponseBodyRouteMaps) SetCommunityOperateMode(v string) *DescribeCenRouteMapsResponseBodyRouteMaps {
-	s.CommunityOperateMode = &v
-	return s
-}
-
-func (s *DescribeCenRouteMapsResponseBodyRouteMaps) SetPrependAsPath(v []*string) *DescribeCenRouteMapsResponseBodyRouteMaps {
-	s.PrependAsPath = v
-	return s
-}
-
-func (s *DescribeCenRouteMapsResponseBodyRouteMaps) SetRouteTypes(v []*string) *DescribeCenRouteMapsResponseBodyRouteMaps {
-	s.RouteTypes = v
-	return s
-}
-
-func (s *DescribeCenRouteMapsResponseBodyRouteMaps) SetDescription(v string) *DescribeCenRouteMapsResponseBodyRouteMaps {
-	s.Description = &v
-	return s
-}
-
-func (s *DescribeCenRouteMapsResponseBodyRouteMaps) SetDestinationInstanceIds(v []*string) *DescribeCenRouteMapsResponseBodyRouteMaps {
-	s.DestinationInstanceIds = v
-	return s
-}
-
-func (s *DescribeCenRouteMapsResponseBodyRouteMaps) SetMatchAsns(v []*string) *DescribeCenRouteMapsResponseBodyRouteMaps {
-	s.MatchAsns = v
-	return s
-}
-
-func (s *DescribeCenRouteMapsResponseBodyRouteMaps) SetDestinationInstanceIdsReverseMatch(v bool) *DescribeCenRouteMapsResponseBodyRouteMaps {
-	s.DestinationInstanceIdsReverseMatch = &v
-	return s
-}
-
-func (s *DescribeCenRouteMapsResponseBodyRouteMaps) SetOperateCommunitySet(v []*string) *DescribeCenRouteMapsResponseBodyRouteMaps {
-	s.OperateCommunitySet = v
-	return s
-}
-
-func (s *DescribeCenRouteMapsResponseBodyRouteMaps) SetNextPriority(v int32) *DescribeCenRouteMapsResponseBodyRouteMaps {
-	s.NextPriority = &v
-	return s
-}
-
-func (s *DescribeCenRouteMapsResponseBodyRouteMaps) SetRouteMapId(v string) *DescribeCenRouteMapsResponseBodyRouteMaps {
+func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap) SetRouteMapId(v string) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap {
 	s.RouteMapId = &v
 	return s
 }
 
-func (s *DescribeCenRouteMapsResponseBodyRouteMaps) SetTransmitDirection(v string) *DescribeCenRouteMapsResponseBodyRouteMaps {
+func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap) SetStatus(v string) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap) SetTransmitDirection(v string) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap {
 	s.TransmitDirection = &v
 	return s
 }
 
-func (s *DescribeCenRouteMapsResponseBodyRouteMaps) SetSourceChildInstanceTypes(v []*string) *DescribeCenRouteMapsResponseBodyRouteMaps {
-	s.SourceChildInstanceTypes = v
+func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap) SetSourceInstanceIdsReverseMatch(v bool) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap {
+	s.SourceInstanceIdsReverseMatch = &v
 	return s
 }
 
-func (s *DescribeCenRouteMapsResponseBodyRouteMaps) SetDestinationRouteTableIds(v []*string) *DescribeCenRouteMapsResponseBodyRouteMaps {
-	s.DestinationRouteTableIds = v
-	return s
-}
-
-func (s *DescribeCenRouteMapsResponseBodyRouteMaps) SetSourceInstanceIds(v []*string) *DescribeCenRouteMapsResponseBodyRouteMaps {
-	s.SourceInstanceIds = v
-	return s
-}
-
-func (s *DescribeCenRouteMapsResponseBodyRouteMaps) SetCenRegionId(v string) *DescribeCenRouteMapsResponseBodyRouteMaps {
+func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap) SetCenRegionId(v string) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap {
 	s.CenRegionId = &v
 	return s
 }
 
-func (s *DescribeCenRouteMapsResponseBodyRouteMaps) SetDestinationCidrBlocks(v []*string) *DescribeCenRouteMapsResponseBodyRouteMaps {
-	s.DestinationCidrBlocks = v
-	return s
-}
-
-func (s *DescribeCenRouteMapsResponseBodyRouteMaps) SetCenId(v string) *DescribeCenRouteMapsResponseBodyRouteMaps {
+func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap) SetCenId(v string) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap {
 	s.CenId = &v
 	return s
 }
 
-func (s *DescribeCenRouteMapsResponseBodyRouteMaps) SetSourceRouteTableIds(v []*string) *DescribeCenRouteMapsResponseBodyRouteMaps {
-	s.SourceRouteTableIds = v
+func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap) SetPriority(v int32) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap {
+	s.Priority = &v
 	return s
 }
 
-func (s *DescribeCenRouteMapsResponseBodyRouteMaps) SetMapResult(v string) *DescribeCenRouteMapsResponseBodyRouteMaps {
+func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap) SetCommunityOperateMode(v string) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap {
+	s.CommunityOperateMode = &v
+	return s
+}
+
+func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap) SetMapResult(v string) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap {
 	s.MapResult = &v
 	return s
 }
 
-func (s *DescribeCenRouteMapsResponseBodyRouteMaps) SetCommunityMatchMode(v string) *DescribeCenRouteMapsResponseBodyRouteMaps {
+func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap) SetCommunityMatchMode(v string) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap {
 	s.CommunityMatchMode = &v
 	return s
 }
 
-func (s *DescribeCenRouteMapsResponseBodyRouteMaps) SetDestinationChildInstanceTypes(v []*string) *DescribeCenRouteMapsResponseBodyRouteMaps {
-	s.DestinationChildInstanceTypes = v
+func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap) SetDescription(v string) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap {
+	s.Description = &v
 	return s
 }
 
-func (s *DescribeCenRouteMapsResponseBodyRouteMaps) SetAsPathMatchMode(v string) *DescribeCenRouteMapsResponseBodyRouteMaps {
+func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap) SetAsPathMatchMode(v string) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap {
 	s.AsPathMatchMode = &v
 	return s
 }
 
-func (s *DescribeCenRouteMapsResponseBodyRouteMaps) SetPreference(v int32) *DescribeCenRouteMapsResponseBodyRouteMaps {
+func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap) SetPreference(v int32) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap {
 	s.Preference = &v
 	return s
 }
 
-func (s *DescribeCenRouteMapsResponseBodyRouteMaps) SetCidrMatchMode(v string) *DescribeCenRouteMapsResponseBodyRouteMaps {
+func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap) SetDestinationInstanceIdsReverseMatch(v bool) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap {
+	s.DestinationInstanceIdsReverseMatch = &v
+	return s
+}
+
+func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap) SetCidrMatchMode(v string) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap {
 	s.CidrMatchMode = &v
+	return s
+}
+
+func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap) SetNextPriority(v int32) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap {
+	s.NextPriority = &v
+	return s
+}
+
+func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap) SetSourceRegionIds(v *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceRegionIds) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap {
+	s.SourceRegionIds = v
+	return s
+}
+
+func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap) SetSourceChildInstanceTypes(v *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceChildInstanceTypes) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap {
+	s.SourceChildInstanceTypes = v
+	return s
+}
+
+func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap) SetDestinationRouteTableIds(v *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationRouteTableIds) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap {
+	s.DestinationRouteTableIds = v
+	return s
+}
+
+func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap) SetSourceInstanceIds(v *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceInstanceIds) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap {
+	s.SourceInstanceIds = v
+	return s
+}
+
+func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap) SetDestinationCidrBlocks(v *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationCidrBlocks) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap {
+	s.DestinationCidrBlocks = v
+	return s
+}
+
+func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap) SetSourceRouteTableIds(v *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceRouteTableIds) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap {
+	s.SourceRouteTableIds = v
+	return s
+}
+
+func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap) SetMatchCommunitySet(v *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapMatchCommunitySet) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap {
+	s.MatchCommunitySet = v
+	return s
+}
+
+func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap) SetPrependAsPath(v *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapPrependAsPath) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap {
+	s.PrependAsPath = v
+	return s
+}
+
+func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap) SetRouteTypes(v *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapRouteTypes) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap {
+	s.RouteTypes = v
+	return s
+}
+
+func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap) SetDestinationChildInstanceTypes(v *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationChildInstanceTypes) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap {
+	s.DestinationChildInstanceTypes = v
+	return s
+}
+
+func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap) SetDestinationInstanceIds(v *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationInstanceIds) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap {
+	s.DestinationInstanceIds = v
+	return s
+}
+
+func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap) SetMatchAsns(v *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapMatchAsns) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap {
+	s.MatchAsns = v
+	return s
+}
+
+func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap) SetOperateCommunitySet(v *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapOperateCommunitySet) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap {
+	s.OperateCommunitySet = v
+	return s
+}
+
+type DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceRegionIds struct {
+	SourceRegionId []*string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceRegionIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceRegionIds) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceRegionIds) SetSourceRegionId(v []*string) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceRegionIds {
+	s.SourceRegionId = v
+	return s
+}
+
+type DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceChildInstanceTypes struct {
+	SourceChildInstanceType []*string `json:"SourceChildInstanceType,omitempty" xml:"SourceChildInstanceType,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceChildInstanceTypes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceChildInstanceTypes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceChildInstanceTypes) SetSourceChildInstanceType(v []*string) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceChildInstanceTypes {
+	s.SourceChildInstanceType = v
+	return s
+}
+
+type DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationRouteTableIds struct {
+	DestinationRouteTableId []*string `json:"DestinationRouteTableId,omitempty" xml:"DestinationRouteTableId,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationRouteTableIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationRouteTableIds) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationRouteTableIds) SetDestinationRouteTableId(v []*string) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationRouteTableIds {
+	s.DestinationRouteTableId = v
+	return s
+}
+
+type DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceInstanceIds struct {
+	SourceInstanceId []*string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceInstanceIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceInstanceIds) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceInstanceIds) SetSourceInstanceId(v []*string) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceInstanceIds {
+	s.SourceInstanceId = v
+	return s
+}
+
+type DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationCidrBlocks struct {
+	DestinationCidrBlock []*string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationCidrBlocks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationCidrBlocks) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationCidrBlocks) SetDestinationCidrBlock(v []*string) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationCidrBlocks {
+	s.DestinationCidrBlock = v
+	return s
+}
+
+type DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceRouteTableIds struct {
+	SourceRouteTableId []*string `json:"SourceRouteTableId,omitempty" xml:"SourceRouteTableId,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceRouteTableIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceRouteTableIds) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceRouteTableIds) SetSourceRouteTableId(v []*string) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceRouteTableIds {
+	s.SourceRouteTableId = v
+	return s
+}
+
+type DescribeCenRouteMapsResponseBodyRouteMapsRouteMapMatchCommunitySet struct {
+	MatchCommunity []*string `json:"MatchCommunity,omitempty" xml:"MatchCommunity,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCenRouteMapsResponseBodyRouteMapsRouteMapMatchCommunitySet) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenRouteMapsResponseBodyRouteMapsRouteMapMatchCommunitySet) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapMatchCommunitySet) SetMatchCommunity(v []*string) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapMatchCommunitySet {
+	s.MatchCommunity = v
+	return s
+}
+
+type DescribeCenRouteMapsResponseBodyRouteMapsRouteMapPrependAsPath struct {
+	AsPath []*string `json:"AsPath,omitempty" xml:"AsPath,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCenRouteMapsResponseBodyRouteMapsRouteMapPrependAsPath) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenRouteMapsResponseBodyRouteMapsRouteMapPrependAsPath) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapPrependAsPath) SetAsPath(v []*string) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapPrependAsPath {
+	s.AsPath = v
+	return s
+}
+
+type DescribeCenRouteMapsResponseBodyRouteMapsRouteMapRouteTypes struct {
+	RouteType []*string `json:"RouteType,omitempty" xml:"RouteType,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCenRouteMapsResponseBodyRouteMapsRouteMapRouteTypes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenRouteMapsResponseBodyRouteMapsRouteMapRouteTypes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapRouteTypes) SetRouteType(v []*string) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapRouteTypes {
+	s.RouteType = v
+	return s
+}
+
+type DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationChildInstanceTypes struct {
+	DestinationChildInstanceType []*string `json:"DestinationChildInstanceType,omitempty" xml:"DestinationChildInstanceType,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationChildInstanceTypes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationChildInstanceTypes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationChildInstanceTypes) SetDestinationChildInstanceType(v []*string) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationChildInstanceTypes {
+	s.DestinationChildInstanceType = v
+	return s
+}
+
+type DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationInstanceIds struct {
+	DestinationInstanceId []*string `json:"DestinationInstanceId,omitempty" xml:"DestinationInstanceId,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationInstanceIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationInstanceIds) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationInstanceIds) SetDestinationInstanceId(v []*string) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationInstanceIds {
+	s.DestinationInstanceId = v
+	return s
+}
+
+type DescribeCenRouteMapsResponseBodyRouteMapsRouteMapMatchAsns struct {
+	MatchAsn []*string `json:"MatchAsn,omitempty" xml:"MatchAsn,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCenRouteMapsResponseBodyRouteMapsRouteMapMatchAsns) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenRouteMapsResponseBodyRouteMapsRouteMapMatchAsns) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapMatchAsns) SetMatchAsn(v []*string) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapMatchAsns {
+	s.MatchAsn = v
+	return s
+}
+
+type DescribeCenRouteMapsResponseBodyRouteMapsRouteMapOperateCommunitySet struct {
+	OperateCommunity []*string `json:"OperateCommunity,omitempty" xml:"OperateCommunity,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCenRouteMapsResponseBodyRouteMapsRouteMapOperateCommunitySet) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenRouteMapsResponseBodyRouteMapsRouteMapOperateCommunitySet) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapOperateCommunitySet) SetOperateCommunity(v []*string) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapOperateCommunitySet {
+	s.OperateCommunity = v
 	return s
 }
 
@@ -4059,11 +4503,11 @@ func (s *DescribeCensRequestTag) SetValue(v string) *DescribeCensRequestTag {
 }
 
 type DescribeCensResponseBody struct {
-	TotalCount *int32                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	PageSize   *int32                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNumber *int32                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	Cens       []*DescribeCensResponseBodyCens `json:"Cens,omitempty" xml:"Cens,omitempty" type:"Repeated"`
+	PageSize   *int32                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageNumber *int32                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalCount *int32                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Cens       *DescribeCensResponseBodyCens `json:"Cens,omitempty" xml:"Cens,omitempty" type:"Struct"`
 }
 
 func (s DescribeCensResponseBody) String() string {
@@ -4072,11 +4516,6 @@ func (s DescribeCensResponseBody) String() string {
 
 func (s DescribeCensResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeCensResponseBody) SetTotalCount(v int32) *DescribeCensResponseBody {
-	s.TotalCount = &v
-	return s
 }
 
 func (s *DescribeCensResponseBody) SetPageSize(v int32) *DescribeCensResponseBody {
@@ -4094,20 +4533,18 @@ func (s *DescribeCensResponseBody) SetPageNumber(v int32) *DescribeCensResponseB
 	return s
 }
 
-func (s *DescribeCensResponseBody) SetCens(v []*DescribeCensResponseBodyCens) *DescribeCensResponseBody {
+func (s *DescribeCensResponseBody) SetTotalCount(v int32) *DescribeCensResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeCensResponseBody) SetCens(v *DescribeCensResponseBodyCens) *DescribeCensResponseBody {
 	s.Cens = v
 	return s
 }
 
 type DescribeCensResponseBodyCens struct {
-	Status                 *string                             `json:"Status,omitempty" xml:"Status,omitempty"`
-	CreationTime           *string                             `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	CenBandwidthPackageIds []*string                           `json:"CenBandwidthPackageIds,omitempty" xml:"CenBandwidthPackageIds,omitempty" type:"Repeated"`
-	Description            *string                             `json:"Description,omitempty" xml:"Description,omitempty"`
-	CenId                  *string                             `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	ProtectionLevel        *string                             `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
-	Tags                   []*DescribeCensResponseBodyCensTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	Name                   *string                             `json:"Name,omitempty" xml:"Name,omitempty"`
+	Cen []*DescribeCensResponseBodyCensCen `json:"Cen,omitempty" xml:"Cen,omitempty" type:"Repeated"`
 }
 
 func (s DescribeCensResponseBodyCens) String() string {
@@ -4118,66 +4555,124 @@ func (s DescribeCensResponseBodyCens) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeCensResponseBodyCens) SetStatus(v string) *DescribeCensResponseBodyCens {
+func (s *DescribeCensResponseBodyCens) SetCen(v []*DescribeCensResponseBodyCensCen) *DescribeCensResponseBodyCens {
+	s.Cen = v
+	return s
+}
+
+type DescribeCensResponseBodyCensCen struct {
+	Status                 *string                                                `json:"Status,omitempty" xml:"Status,omitempty"`
+	CreationTime           *string                                                `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description            *string                                                `json:"Description,omitempty" xml:"Description,omitempty"`
+	CenId                  *string                                                `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	ProtectionLevel        *string                                                `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
+	Name                   *string                                                `json:"Name,omitempty" xml:"Name,omitempty"`
+	Tags                   *DescribeCensResponseBodyCensCenTags                   `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	CenBandwidthPackageIds *DescribeCensResponseBodyCensCenCenBandwidthPackageIds `json:"CenBandwidthPackageIds,omitempty" xml:"CenBandwidthPackageIds,omitempty" type:"Struct"`
+}
+
+func (s DescribeCensResponseBodyCensCen) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCensResponseBodyCensCen) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCensResponseBodyCensCen) SetStatus(v string) *DescribeCensResponseBodyCensCen {
 	s.Status = &v
 	return s
 }
 
-func (s *DescribeCensResponseBodyCens) SetCreationTime(v string) *DescribeCensResponseBodyCens {
+func (s *DescribeCensResponseBodyCensCen) SetCreationTime(v string) *DescribeCensResponseBodyCensCen {
 	s.CreationTime = &v
 	return s
 }
 
-func (s *DescribeCensResponseBodyCens) SetCenBandwidthPackageIds(v []*string) *DescribeCensResponseBodyCens {
-	s.CenBandwidthPackageIds = v
-	return s
-}
-
-func (s *DescribeCensResponseBodyCens) SetDescription(v string) *DescribeCensResponseBodyCens {
+func (s *DescribeCensResponseBodyCensCen) SetDescription(v string) *DescribeCensResponseBodyCensCen {
 	s.Description = &v
 	return s
 }
 
-func (s *DescribeCensResponseBodyCens) SetCenId(v string) *DescribeCensResponseBodyCens {
+func (s *DescribeCensResponseBodyCensCen) SetCenId(v string) *DescribeCensResponseBodyCensCen {
 	s.CenId = &v
 	return s
 }
 
-func (s *DescribeCensResponseBodyCens) SetProtectionLevel(v string) *DescribeCensResponseBodyCens {
+func (s *DescribeCensResponseBodyCensCen) SetProtectionLevel(v string) *DescribeCensResponseBodyCensCen {
 	s.ProtectionLevel = &v
 	return s
 }
 
-func (s *DescribeCensResponseBodyCens) SetTags(v []*DescribeCensResponseBodyCensTags) *DescribeCensResponseBodyCens {
-	s.Tags = v
-	return s
-}
-
-func (s *DescribeCensResponseBodyCens) SetName(v string) *DescribeCensResponseBodyCens {
+func (s *DescribeCensResponseBodyCensCen) SetName(v string) *DescribeCensResponseBodyCensCen {
 	s.Name = &v
 	return s
 }
 
-type DescribeCensResponseBodyCensTags struct {
+func (s *DescribeCensResponseBodyCensCen) SetTags(v *DescribeCensResponseBodyCensCenTags) *DescribeCensResponseBodyCensCen {
+	s.Tags = v
+	return s
+}
+
+func (s *DescribeCensResponseBodyCensCen) SetCenBandwidthPackageIds(v *DescribeCensResponseBodyCensCenCenBandwidthPackageIds) *DescribeCensResponseBodyCensCen {
+	s.CenBandwidthPackageIds = v
+	return s
+}
+
+type DescribeCensResponseBodyCensCenTags struct {
+	Tag []*DescribeCensResponseBodyCensCenTagsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCensResponseBodyCensCenTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCensResponseBodyCensCenTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCensResponseBodyCensCenTags) SetTag(v []*DescribeCensResponseBodyCensCenTagsTag) *DescribeCensResponseBodyCensCenTags {
+	s.Tag = v
+	return s
+}
+
+type DescribeCensResponseBodyCensCenTagsTag struct {
 	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
-func (s DescribeCensResponseBodyCensTags) String() string {
+func (s DescribeCensResponseBodyCensCenTagsTag) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeCensResponseBodyCensTags) GoString() string {
+func (s DescribeCensResponseBodyCensCenTagsTag) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeCensResponseBodyCensTags) SetKey(v string) *DescribeCensResponseBodyCensTags {
+func (s *DescribeCensResponseBodyCensCenTagsTag) SetKey(v string) *DescribeCensResponseBodyCensCenTagsTag {
 	s.Key = &v
 	return s
 }
 
-func (s *DescribeCensResponseBodyCensTags) SetValue(v string) *DescribeCensResponseBodyCensTags {
+func (s *DescribeCensResponseBodyCensCenTagsTag) SetValue(v string) *DescribeCensResponseBodyCensCenTagsTag {
 	s.Value = &v
+	return s
+}
+
+type DescribeCensResponseBodyCensCenCenBandwidthPackageIds struct {
+	CenBandwidthPackageId []*string `json:"CenBandwidthPackageId,omitempty" xml:"CenBandwidthPackageId,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCensResponseBodyCensCenCenBandwidthPackageIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCensResponseBodyCensCenCenBandwidthPackageIds) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCensResponseBodyCensCenCenBandwidthPackageIds) SetCenBandwidthPackageId(v []*string) *DescribeCensResponseBodyCensCenCenBandwidthPackageIds {
+	s.CenBandwidthPackageId = v
 	return s
 }
 
@@ -4276,11 +4771,11 @@ func (s *DescribeCenVbrHealthCheckRequest) SetPageSize(v int32) *DescribeCenVbrH
 }
 
 type DescribeCenVbrHealthCheckResponseBody struct {
-	TotalCount      *int32                                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	PageSize        *int32                                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId       *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNumber      *int32                                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	VbrHealthChecks []*DescribeCenVbrHealthCheckResponseBodyVbrHealthChecks `json:"VbrHealthChecks,omitempty" xml:"VbrHealthChecks,omitempty" type:"Repeated"`
+	PageSize        *int32                                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId       *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageNumber      *int32                                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalCount      *int32                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	VbrHealthChecks *DescribeCenVbrHealthCheckResponseBodyVbrHealthChecks `json:"VbrHealthChecks,omitempty" xml:"VbrHealthChecks,omitempty" type:"Struct"`
 }
 
 func (s DescribeCenVbrHealthCheckResponseBody) String() string {
@@ -4289,11 +4784,6 @@ func (s DescribeCenVbrHealthCheckResponseBody) String() string {
 
 func (s DescribeCenVbrHealthCheckResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeCenVbrHealthCheckResponseBody) SetTotalCount(v int32) *DescribeCenVbrHealthCheckResponseBody {
-	s.TotalCount = &v
-	return s
 }
 
 func (s *DescribeCenVbrHealthCheckResponseBody) SetPageSize(v int32) *DescribeCenVbrHealthCheckResponseBody {
@@ -4311,19 +4801,18 @@ func (s *DescribeCenVbrHealthCheckResponseBody) SetPageNumber(v int32) *Describe
 	return s
 }
 
-func (s *DescribeCenVbrHealthCheckResponseBody) SetVbrHealthChecks(v []*DescribeCenVbrHealthCheckResponseBodyVbrHealthChecks) *DescribeCenVbrHealthCheckResponseBody {
+func (s *DescribeCenVbrHealthCheckResponseBody) SetTotalCount(v int32) *DescribeCenVbrHealthCheckResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeCenVbrHealthCheckResponseBody) SetVbrHealthChecks(v *DescribeCenVbrHealthCheckResponseBodyVbrHealthChecks) *DescribeCenVbrHealthCheckResponseBody {
 	s.VbrHealthChecks = v
 	return s
 }
 
 type DescribeCenVbrHealthCheckResponseBodyVbrHealthChecks struct {
-	HealthCheckTargetIp *string `json:"HealthCheckTargetIp,omitempty" xml:"HealthCheckTargetIp,omitempty"`
-	VbrInstanceId       *string `json:"VbrInstanceId,omitempty" xml:"VbrInstanceId,omitempty"`
-	VbrInstanceRegionId *string `json:"VbrInstanceRegionId,omitempty" xml:"VbrInstanceRegionId,omitempty"`
-	CenId               *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	HealthyThreshold    *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	HealthCheckInterval *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	HealthCheckSourceIp *string `json:"HealthCheckSourceIp,omitempty" xml:"HealthCheckSourceIp,omitempty"`
+	VbrHealthCheck []*DescribeCenVbrHealthCheckResponseBodyVbrHealthChecksVbrHealthCheck `json:"VbrHealthCheck,omitempty" xml:"VbrHealthCheck,omitempty" type:"Repeated"`
 }
 
 func (s DescribeCenVbrHealthCheckResponseBodyVbrHealthChecks) String() string {
@@ -4334,37 +4823,60 @@ func (s DescribeCenVbrHealthCheckResponseBodyVbrHealthChecks) GoString() string 
 	return s.String()
 }
 
-func (s *DescribeCenVbrHealthCheckResponseBodyVbrHealthChecks) SetHealthCheckTargetIp(v string) *DescribeCenVbrHealthCheckResponseBodyVbrHealthChecks {
+func (s *DescribeCenVbrHealthCheckResponseBodyVbrHealthChecks) SetVbrHealthCheck(v []*DescribeCenVbrHealthCheckResponseBodyVbrHealthChecksVbrHealthCheck) *DescribeCenVbrHealthCheckResponseBodyVbrHealthChecks {
+	s.VbrHealthCheck = v
+	return s
+}
+
+type DescribeCenVbrHealthCheckResponseBodyVbrHealthChecksVbrHealthCheck struct {
+	HealthCheckTargetIp *string `json:"HealthCheckTargetIp,omitempty" xml:"HealthCheckTargetIp,omitempty"`
+	VbrInstanceId       *string `json:"VbrInstanceId,omitempty" xml:"VbrInstanceId,omitempty"`
+	VbrInstanceRegionId *string `json:"VbrInstanceRegionId,omitempty" xml:"VbrInstanceRegionId,omitempty"`
+	CenId               *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	HealthyThreshold    *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	HealthCheckInterval *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	HealthCheckSourceIp *string `json:"HealthCheckSourceIp,omitempty" xml:"HealthCheckSourceIp,omitempty"`
+}
+
+func (s DescribeCenVbrHealthCheckResponseBodyVbrHealthChecksVbrHealthCheck) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenVbrHealthCheckResponseBodyVbrHealthChecksVbrHealthCheck) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenVbrHealthCheckResponseBodyVbrHealthChecksVbrHealthCheck) SetHealthCheckTargetIp(v string) *DescribeCenVbrHealthCheckResponseBodyVbrHealthChecksVbrHealthCheck {
 	s.HealthCheckTargetIp = &v
 	return s
 }
 
-func (s *DescribeCenVbrHealthCheckResponseBodyVbrHealthChecks) SetVbrInstanceId(v string) *DescribeCenVbrHealthCheckResponseBodyVbrHealthChecks {
+func (s *DescribeCenVbrHealthCheckResponseBodyVbrHealthChecksVbrHealthCheck) SetVbrInstanceId(v string) *DescribeCenVbrHealthCheckResponseBodyVbrHealthChecksVbrHealthCheck {
 	s.VbrInstanceId = &v
 	return s
 }
 
-func (s *DescribeCenVbrHealthCheckResponseBodyVbrHealthChecks) SetVbrInstanceRegionId(v string) *DescribeCenVbrHealthCheckResponseBodyVbrHealthChecks {
+func (s *DescribeCenVbrHealthCheckResponseBodyVbrHealthChecksVbrHealthCheck) SetVbrInstanceRegionId(v string) *DescribeCenVbrHealthCheckResponseBodyVbrHealthChecksVbrHealthCheck {
 	s.VbrInstanceRegionId = &v
 	return s
 }
 
-func (s *DescribeCenVbrHealthCheckResponseBodyVbrHealthChecks) SetCenId(v string) *DescribeCenVbrHealthCheckResponseBodyVbrHealthChecks {
+func (s *DescribeCenVbrHealthCheckResponseBodyVbrHealthChecksVbrHealthCheck) SetCenId(v string) *DescribeCenVbrHealthCheckResponseBodyVbrHealthChecksVbrHealthCheck {
 	s.CenId = &v
 	return s
 }
 
-func (s *DescribeCenVbrHealthCheckResponseBodyVbrHealthChecks) SetHealthyThreshold(v int32) *DescribeCenVbrHealthCheckResponseBodyVbrHealthChecks {
+func (s *DescribeCenVbrHealthCheckResponseBodyVbrHealthChecksVbrHealthCheck) SetHealthyThreshold(v int32) *DescribeCenVbrHealthCheckResponseBodyVbrHealthChecksVbrHealthCheck {
 	s.HealthyThreshold = &v
 	return s
 }
 
-func (s *DescribeCenVbrHealthCheckResponseBodyVbrHealthChecks) SetHealthCheckInterval(v int32) *DescribeCenVbrHealthCheckResponseBodyVbrHealthChecks {
+func (s *DescribeCenVbrHealthCheckResponseBodyVbrHealthChecksVbrHealthCheck) SetHealthCheckInterval(v int32) *DescribeCenVbrHealthCheckResponseBodyVbrHealthChecksVbrHealthCheck {
 	s.HealthCheckInterval = &v
 	return s
 }
 
-func (s *DescribeCenVbrHealthCheckResponseBodyVbrHealthChecks) SetHealthCheckSourceIp(v string) *DescribeCenVbrHealthCheckResponseBodyVbrHealthChecks {
+func (s *DescribeCenVbrHealthCheckResponseBodyVbrHealthChecksVbrHealthCheck) SetHealthCheckSourceIp(v string) *DescribeCenVbrHealthCheckResponseBodyVbrHealthChecksVbrHealthCheck {
 	s.HealthCheckSourceIp = &v
 	return s
 }
@@ -4398,7 +4910,6 @@ type DescribeChildInstanceRegionsRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	ProductType          *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	ChildInstanceOwnerId *int64  `json:"ChildInstanceOwnerId,omitempty" xml:"ChildInstanceOwnerId,omitempty"`
 }
 
 func (s DescribeChildInstanceRegionsRequest) String() string {
@@ -4434,14 +4945,9 @@ func (s *DescribeChildInstanceRegionsRequest) SetProductType(v string) *Describe
 	return s
 }
 
-func (s *DescribeChildInstanceRegionsRequest) SetChildInstanceOwnerId(v int64) *DescribeChildInstanceRegionsRequest {
-	s.ChildInstanceOwnerId = &v
-	return s
-}
-
 type DescribeChildInstanceRegionsResponseBody struct {
-	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Regions   []*DescribeChildInstanceRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Regions   *DescribeChildInstanceRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
 }
 
 func (s DescribeChildInstanceRegionsResponseBody) String() string {
@@ -4457,14 +4963,13 @@ func (s *DescribeChildInstanceRegionsResponseBody) SetRequestId(v string) *Descr
 	return s
 }
 
-func (s *DescribeChildInstanceRegionsResponseBody) SetRegions(v []*DescribeChildInstanceRegionsResponseBodyRegions) *DescribeChildInstanceRegionsResponseBody {
+func (s *DescribeChildInstanceRegionsResponseBody) SetRegions(v *DescribeChildInstanceRegionsResponseBodyRegions) *DescribeChildInstanceRegionsResponseBody {
 	s.Regions = v
 	return s
 }
 
 type DescribeChildInstanceRegionsResponseBodyRegions struct {
-	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Region []*DescribeChildInstanceRegionsResponseBodyRegionsRegion `json:"Region,omitempty" xml:"Region,omitempty" type:"Repeated"`
 }
 
 func (s DescribeChildInstanceRegionsResponseBodyRegions) String() string {
@@ -4475,12 +4980,30 @@ func (s DescribeChildInstanceRegionsResponseBodyRegions) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeChildInstanceRegionsResponseBodyRegions) SetLocalName(v string) *DescribeChildInstanceRegionsResponseBodyRegions {
+func (s *DescribeChildInstanceRegionsResponseBodyRegions) SetRegion(v []*DescribeChildInstanceRegionsResponseBodyRegionsRegion) *DescribeChildInstanceRegionsResponseBodyRegions {
+	s.Region = v
+	return s
+}
+
+type DescribeChildInstanceRegionsResponseBodyRegionsRegion struct {
+	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeChildInstanceRegionsResponseBodyRegionsRegion) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeChildInstanceRegionsResponseBodyRegionsRegion) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeChildInstanceRegionsResponseBodyRegionsRegion) SetLocalName(v string) *DescribeChildInstanceRegionsResponseBodyRegionsRegion {
 	s.LocalName = &v
 	return s
 }
 
-func (s *DescribeChildInstanceRegionsResponseBodyRegions) SetRegionId(v string) *DescribeChildInstanceRegionsResponseBodyRegions {
+func (s *DescribeChildInstanceRegionsResponseBodyRegionsRegion) SetRegionId(v string) *DescribeChildInstanceRegionsResponseBodyRegionsRegion {
 	s.RegionId = &v
 	return s
 }
@@ -4610,12 +5133,12 @@ func (s *DescribeFlowlogsRequest) SetPageSize(v int32) *DescribeFlowlogsRequest 
 }
 
 type DescribeFlowlogsResponseBody struct {
-	TotalCount *string                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	FlowLogs   []*DescribeFlowlogsResponseBodyFlowLogs `json:"FlowLogs,omitempty" xml:"FlowLogs,omitempty" type:"Repeated"`
-	PageSize   *string                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNumber *string                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	Success    *string                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	PageSize   *string                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber *string                               `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *string                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Success    *string                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	FlowLogs   *DescribeFlowlogsResponseBodyFlowLogs `json:"FlowLogs,omitempty" xml:"FlowLogs,omitempty" type:"Struct"`
 }
 
 func (s DescribeFlowlogsResponseBody) String() string {
@@ -4626,23 +5149,8 @@ func (s DescribeFlowlogsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeFlowlogsResponseBody) SetTotalCount(v string) *DescribeFlowlogsResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *DescribeFlowlogsResponseBody) SetFlowLogs(v []*DescribeFlowlogsResponseBodyFlowLogs) *DescribeFlowlogsResponseBody {
-	s.FlowLogs = v
-	return s
-}
-
 func (s *DescribeFlowlogsResponseBody) SetPageSize(v string) *DescribeFlowlogsResponseBody {
 	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeFlowlogsResponseBody) SetRequestId(v string) *DescribeFlowlogsResponseBody {
-	s.RequestId = &v
 	return s
 }
 
@@ -4651,12 +5159,44 @@ func (s *DescribeFlowlogsResponseBody) SetPageNumber(v string) *DescribeFlowlogs
 	return s
 }
 
+func (s *DescribeFlowlogsResponseBody) SetRequestId(v string) *DescribeFlowlogsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeFlowlogsResponseBody) SetTotalCount(v string) *DescribeFlowlogsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
 func (s *DescribeFlowlogsResponseBody) SetSuccess(v string) *DescribeFlowlogsResponseBody {
 	s.Success = &v
 	return s
 }
 
+func (s *DescribeFlowlogsResponseBody) SetFlowLogs(v *DescribeFlowlogsResponseBodyFlowLogs) *DescribeFlowlogsResponseBody {
+	s.FlowLogs = v
+	return s
+}
+
 type DescribeFlowlogsResponseBodyFlowLogs struct {
+	FlowLog []*DescribeFlowlogsResponseBodyFlowLogsFlowLog `json:"FlowLog,omitempty" xml:"FlowLog,omitempty" type:"Repeated"`
+}
+
+func (s DescribeFlowlogsResponseBodyFlowLogs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFlowlogsResponseBodyFlowLogs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFlowlogsResponseBodyFlowLogs) SetFlowLog(v []*DescribeFlowlogsResponseBodyFlowLogsFlowLog) *DescribeFlowlogsResponseBodyFlowLogs {
+	s.FlowLog = v
+	return s
+}
+
+type DescribeFlowlogsResponseBodyFlowLogsFlowLog struct {
 	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	FlowLogName  *string `json:"FlowLogName,omitempty" xml:"FlowLogName,omitempty"`
@@ -4668,55 +5208,55 @@ type DescribeFlowlogsResponseBodyFlowLogs struct {
 	FlowLogId    *string `json:"FlowLogId,omitempty" xml:"FlowLogId,omitempty"`
 }
 
-func (s DescribeFlowlogsResponseBodyFlowLogs) String() string {
+func (s DescribeFlowlogsResponseBodyFlowLogsFlowLog) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeFlowlogsResponseBodyFlowLogs) GoString() string {
+func (s DescribeFlowlogsResponseBodyFlowLogsFlowLog) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeFlowlogsResponseBodyFlowLogs) SetStatus(v string) *DescribeFlowlogsResponseBodyFlowLogs {
+func (s *DescribeFlowlogsResponseBodyFlowLogsFlowLog) SetStatus(v string) *DescribeFlowlogsResponseBodyFlowLogsFlowLog {
 	s.Status = &v
 	return s
 }
 
-func (s *DescribeFlowlogsResponseBodyFlowLogs) SetCreationTime(v string) *DescribeFlowlogsResponseBodyFlowLogs {
+func (s *DescribeFlowlogsResponseBodyFlowLogsFlowLog) SetCreationTime(v string) *DescribeFlowlogsResponseBodyFlowLogsFlowLog {
 	s.CreationTime = &v
 	return s
 }
 
-func (s *DescribeFlowlogsResponseBodyFlowLogs) SetFlowLogName(v string) *DescribeFlowlogsResponseBodyFlowLogs {
+func (s *DescribeFlowlogsResponseBodyFlowLogsFlowLog) SetFlowLogName(v string) *DescribeFlowlogsResponseBodyFlowLogsFlowLog {
 	s.FlowLogName = &v
 	return s
 }
 
-func (s *DescribeFlowlogsResponseBodyFlowLogs) SetDescription(v string) *DescribeFlowlogsResponseBodyFlowLogs {
+func (s *DescribeFlowlogsResponseBodyFlowLogsFlowLog) SetDescription(v string) *DescribeFlowlogsResponseBodyFlowLogsFlowLog {
 	s.Description = &v
 	return s
 }
 
-func (s *DescribeFlowlogsResponseBodyFlowLogs) SetProjectName(v string) *DescribeFlowlogsResponseBodyFlowLogs {
+func (s *DescribeFlowlogsResponseBodyFlowLogsFlowLog) SetProjectName(v string) *DescribeFlowlogsResponseBodyFlowLogsFlowLog {
 	s.ProjectName = &v
 	return s
 }
 
-func (s *DescribeFlowlogsResponseBodyFlowLogs) SetCenId(v string) *DescribeFlowlogsResponseBodyFlowLogs {
+func (s *DescribeFlowlogsResponseBodyFlowLogsFlowLog) SetCenId(v string) *DescribeFlowlogsResponseBodyFlowLogsFlowLog {
 	s.CenId = &v
 	return s
 }
 
-func (s *DescribeFlowlogsResponseBodyFlowLogs) SetLogStoreName(v string) *DescribeFlowlogsResponseBodyFlowLogs {
+func (s *DescribeFlowlogsResponseBodyFlowLogsFlowLog) SetLogStoreName(v string) *DescribeFlowlogsResponseBodyFlowLogsFlowLog {
 	s.LogStoreName = &v
 	return s
 }
 
-func (s *DescribeFlowlogsResponseBodyFlowLogs) SetRegionId(v string) *DescribeFlowlogsResponseBodyFlowLogs {
+func (s *DescribeFlowlogsResponseBodyFlowLogsFlowLog) SetRegionId(v string) *DescribeFlowlogsResponseBodyFlowLogsFlowLog {
 	s.RegionId = &v
 	return s
 }
 
-func (s *DescribeFlowlogsResponseBodyFlowLogs) SetFlowLogId(v string) *DescribeFlowlogsResponseBodyFlowLogs {
+func (s *DescribeFlowlogsResponseBodyFlowLogsFlowLog) SetFlowLogId(v string) *DescribeFlowlogsResponseBodyFlowLogsFlowLog {
 	s.FlowLogId = &v
 	return s
 }
@@ -4798,11 +5338,11 @@ func (s *DescribeGeographicRegionMembershipRequest) SetGeographicRegionId(v stri
 }
 
 type DescribeGeographicRegionMembershipResponseBody struct {
-	TotalCount *int32                                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	PageSize   *int32                                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RegionIds  []*DescribeGeographicRegionMembershipResponseBodyRegionIds `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
-	PageNumber *int32                                                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageNumber *int32                                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalCount *int32                                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RegionIds  *DescribeGeographicRegionMembershipResponseBodyRegionIds `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Struct"`
 }
 
 func (s DescribeGeographicRegionMembershipResponseBody) String() string {
@@ -4811,11 +5351,6 @@ func (s DescribeGeographicRegionMembershipResponseBody) String() string {
 
 func (s DescribeGeographicRegionMembershipResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeGeographicRegionMembershipResponseBody) SetTotalCount(v int32) *DescribeGeographicRegionMembershipResponseBody {
-	s.TotalCount = &v
-	return s
 }
 
 func (s *DescribeGeographicRegionMembershipResponseBody) SetPageSize(v int32) *DescribeGeographicRegionMembershipResponseBody {
@@ -4828,18 +5363,23 @@ func (s *DescribeGeographicRegionMembershipResponseBody) SetRequestId(v string) 
 	return s
 }
 
-func (s *DescribeGeographicRegionMembershipResponseBody) SetRegionIds(v []*DescribeGeographicRegionMembershipResponseBodyRegionIds) *DescribeGeographicRegionMembershipResponseBody {
-	s.RegionIds = v
-	return s
-}
-
 func (s *DescribeGeographicRegionMembershipResponseBody) SetPageNumber(v int32) *DescribeGeographicRegionMembershipResponseBody {
 	s.PageNumber = &v
 	return s
 }
 
+func (s *DescribeGeographicRegionMembershipResponseBody) SetTotalCount(v int32) *DescribeGeographicRegionMembershipResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeGeographicRegionMembershipResponseBody) SetRegionIds(v *DescribeGeographicRegionMembershipResponseBodyRegionIds) *DescribeGeographicRegionMembershipResponseBody {
+	s.RegionIds = v
+	return s
+}
+
 type DescribeGeographicRegionMembershipResponseBodyRegionIds struct {
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId []*DescribeGeographicRegionMembershipResponseBodyRegionIdsRegionId `json:"RegionId,omitempty" xml:"RegionId,omitempty" type:"Repeated"`
 }
 
 func (s DescribeGeographicRegionMembershipResponseBodyRegionIds) String() string {
@@ -4850,7 +5390,24 @@ func (s DescribeGeographicRegionMembershipResponseBodyRegionIds) GoString() stri
 	return s.String()
 }
 
-func (s *DescribeGeographicRegionMembershipResponseBodyRegionIds) SetRegionId(v string) *DescribeGeographicRegionMembershipResponseBodyRegionIds {
+func (s *DescribeGeographicRegionMembershipResponseBodyRegionIds) SetRegionId(v []*DescribeGeographicRegionMembershipResponseBodyRegionIdsRegionId) *DescribeGeographicRegionMembershipResponseBodyRegionIds {
+	s.RegionId = v
+	return s
+}
+
+type DescribeGeographicRegionMembershipResponseBodyRegionIdsRegionId struct {
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeGeographicRegionMembershipResponseBodyRegionIdsRegionId) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGeographicRegionMembershipResponseBodyRegionIdsRegionId) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGeographicRegionMembershipResponseBodyRegionIdsRegionId) SetRegionId(v string) *DescribeGeographicRegionMembershipResponseBodyRegionIdsRegionId {
 	s.RegionId = &v
 	return s
 }
@@ -4932,8 +5489,8 @@ func (s *DescribeGrantRulesToCenRequest) SetProductType(v string) *DescribeGrant
 }
 
 type DescribeGrantRulesToCenResponseBody struct {
-	RequestId  *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	GrantRules []*DescribeGrantRulesToCenResponseBodyGrantRules `json:"GrantRules,omitempty" xml:"GrantRules,omitempty" type:"Repeated"`
+	RequestId  *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	GrantRules *DescribeGrantRulesToCenResponseBodyGrantRules `json:"GrantRules,omitempty" xml:"GrantRules,omitempty" type:"Struct"`
 }
 
 func (s DescribeGrantRulesToCenResponseBody) String() string {
@@ -4949,17 +5506,13 @@ func (s *DescribeGrantRulesToCenResponseBody) SetRequestId(v string) *DescribeGr
 	return s
 }
 
-func (s *DescribeGrantRulesToCenResponseBody) SetGrantRules(v []*DescribeGrantRulesToCenResponseBodyGrantRules) *DescribeGrantRulesToCenResponseBody {
+func (s *DescribeGrantRulesToCenResponseBody) SetGrantRules(v *DescribeGrantRulesToCenResponseBodyGrantRules) *DescribeGrantRulesToCenResponseBody {
 	s.GrantRules = v
 	return s
 }
 
 type DescribeGrantRulesToCenResponseBodyGrantRules struct {
-	ChildInstanceType     *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
-	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
-	ChildInstanceOwnerId  *int64  `json:"ChildInstanceOwnerId,omitempty" xml:"ChildInstanceOwnerId,omitempty"`
-	ChildInstanceId       *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
-	CenId                 *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	GrantRule []*DescribeGrantRulesToCenResponseBodyGrantRulesGrantRule `json:"GrantRule,omitempty" xml:"GrantRule,omitempty" type:"Repeated"`
 }
 
 func (s DescribeGrantRulesToCenResponseBodyGrantRules) String() string {
@@ -4970,27 +5523,48 @@ func (s DescribeGrantRulesToCenResponseBodyGrantRules) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeGrantRulesToCenResponseBodyGrantRules) SetChildInstanceType(v string) *DescribeGrantRulesToCenResponseBodyGrantRules {
+func (s *DescribeGrantRulesToCenResponseBodyGrantRules) SetGrantRule(v []*DescribeGrantRulesToCenResponseBodyGrantRulesGrantRule) *DescribeGrantRulesToCenResponseBodyGrantRules {
+	s.GrantRule = v
+	return s
+}
+
+type DescribeGrantRulesToCenResponseBodyGrantRulesGrantRule struct {
+	ChildInstanceType     *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
+	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
+	ChildInstanceOwnerId  *int64  `json:"ChildInstanceOwnerId,omitempty" xml:"ChildInstanceOwnerId,omitempty"`
+	ChildInstanceId       *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
+	CenId                 *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+}
+
+func (s DescribeGrantRulesToCenResponseBodyGrantRulesGrantRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGrantRulesToCenResponseBodyGrantRulesGrantRule) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGrantRulesToCenResponseBodyGrantRulesGrantRule) SetChildInstanceType(v string) *DescribeGrantRulesToCenResponseBodyGrantRulesGrantRule {
 	s.ChildInstanceType = &v
 	return s
 }
 
-func (s *DescribeGrantRulesToCenResponseBodyGrantRules) SetChildInstanceRegionId(v string) *DescribeGrantRulesToCenResponseBodyGrantRules {
+func (s *DescribeGrantRulesToCenResponseBodyGrantRulesGrantRule) SetChildInstanceRegionId(v string) *DescribeGrantRulesToCenResponseBodyGrantRulesGrantRule {
 	s.ChildInstanceRegionId = &v
 	return s
 }
 
-func (s *DescribeGrantRulesToCenResponseBodyGrantRules) SetChildInstanceOwnerId(v int64) *DescribeGrantRulesToCenResponseBodyGrantRules {
+func (s *DescribeGrantRulesToCenResponseBodyGrantRulesGrantRule) SetChildInstanceOwnerId(v int64) *DescribeGrantRulesToCenResponseBodyGrantRulesGrantRule {
 	s.ChildInstanceOwnerId = &v
 	return s
 }
 
-func (s *DescribeGrantRulesToCenResponseBodyGrantRules) SetChildInstanceId(v string) *DescribeGrantRulesToCenResponseBodyGrantRules {
+func (s *DescribeGrantRulesToCenResponseBodyGrantRulesGrantRule) SetChildInstanceId(v string) *DescribeGrantRulesToCenResponseBodyGrantRulesGrantRule {
 	s.ChildInstanceId = &v
 	return s
 }
 
-func (s *DescribeGrantRulesToCenResponseBodyGrantRules) SetCenId(v string) *DescribeGrantRulesToCenResponseBodyGrantRules {
+func (s *DescribeGrantRulesToCenResponseBodyGrantRulesGrantRule) SetCenId(v string) *DescribeGrantRulesToCenResponseBodyGrantRulesGrantRule {
 	s.CenId = &v
 	return s
 }
@@ -5090,11 +5664,11 @@ func (s *DescribePublishedRouteEntriesRequest) SetDestinationCidrBlock(v string)
 }
 
 type DescribePublishedRouteEntriesResponseBody struct {
-	TotalCount            *int32                                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	PageSize              *int32                                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId             *string                                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNumber            *int32                                                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PublishedRouteEntries []*DescribePublishedRouteEntriesResponseBodyPublishedRouteEntries `json:"PublishedRouteEntries,omitempty" xml:"PublishedRouteEntries,omitempty" type:"Repeated"`
+	PageSize              *int32                                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId             *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageNumber            *int32                                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalCount            *int32                                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PublishedRouteEntries *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntries `json:"PublishedRouteEntries,omitempty" xml:"PublishedRouteEntries,omitempty" type:"Struct"`
 }
 
 func (s DescribePublishedRouteEntriesResponseBody) String() string {
@@ -5103,11 +5677,6 @@ func (s DescribePublishedRouteEntriesResponseBody) String() string {
 
 func (s DescribePublishedRouteEntriesResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *DescribePublishedRouteEntriesResponseBody) SetTotalCount(v int32) *DescribePublishedRouteEntriesResponseBody {
-	s.TotalCount = &v
-	return s
 }
 
 func (s *DescribePublishedRouteEntriesResponseBody) SetPageSize(v int32) *DescribePublishedRouteEntriesResponseBody {
@@ -5125,20 +5694,18 @@ func (s *DescribePublishedRouteEntriesResponseBody) SetPageNumber(v int32) *Desc
 	return s
 }
 
-func (s *DescribePublishedRouteEntriesResponseBody) SetPublishedRouteEntries(v []*DescribePublishedRouteEntriesResponseBodyPublishedRouteEntries) *DescribePublishedRouteEntriesResponseBody {
+func (s *DescribePublishedRouteEntriesResponseBody) SetTotalCount(v int32) *DescribePublishedRouteEntriesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribePublishedRouteEntriesResponseBody) SetPublishedRouteEntries(v *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntries) *DescribePublishedRouteEntriesResponseBody {
 	s.PublishedRouteEntries = v
 	return s
 }
 
 type DescribePublishedRouteEntriesResponseBodyPublishedRouteEntries struct {
-	NextHopId                 *string                                                                    `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
-	Conflicts                 []*DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesConflicts `json:"Conflicts,omitempty" xml:"Conflicts,omitempty" type:"Repeated"`
-	PublishStatus             *string                                                                    `json:"PublishStatus,omitempty" xml:"PublishStatus,omitempty"`
-	ChildInstanceRouteTableId *string                                                                    `json:"ChildInstanceRouteTableId,omitempty" xml:"ChildInstanceRouteTableId,omitempty"`
-	NextHopType               *string                                                                    `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
-	OperationalMode           *bool                                                                      `json:"OperationalMode,omitempty" xml:"OperationalMode,omitempty"`
-	DestinationCidrBlock      *string                                                                    `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	RouteType                 *string                                                                    `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
+	PublishedRouteEntry []*DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntry `json:"PublishedRouteEntry,omitempty" xml:"PublishedRouteEntry,omitempty" type:"Repeated"`
 }
 
 func (s DescribePublishedRouteEntriesResponseBodyPublishedRouteEntries) String() string {
@@ -5149,47 +5716,88 @@ func (s DescribePublishedRouteEntriesResponseBodyPublishedRouteEntries) GoString
 	return s.String()
 }
 
-func (s *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntries) SetNextHopId(v string) *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntries {
+func (s *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntries) SetPublishedRouteEntry(v []*DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntry) *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntries {
+	s.PublishedRouteEntry = v
+	return s
+}
+
+type DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntry struct {
+	NextHopId                 *string                                                                                     `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
+	PublishStatus             *string                                                                                     `json:"PublishStatus,omitempty" xml:"PublishStatus,omitempty"`
+	ChildInstanceRouteTableId *string                                                                                     `json:"ChildInstanceRouteTableId,omitempty" xml:"ChildInstanceRouteTableId,omitempty"`
+	NextHopType               *string                                                                                     `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
+	OperationalMode           *bool                                                                                       `json:"OperationalMode,omitempty" xml:"OperationalMode,omitempty"`
+	DestinationCidrBlock      *string                                                                                     `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
+	RouteType                 *string                                                                                     `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
+	Conflicts                 *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntryConflicts `json:"Conflicts,omitempty" xml:"Conflicts,omitempty" type:"Struct"`
+}
+
+func (s DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntry) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntry) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntry) SetNextHopId(v string) *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntry {
 	s.NextHopId = &v
 	return s
 }
 
-func (s *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntries) SetConflicts(v []*DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesConflicts) *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntries {
-	s.Conflicts = v
-	return s
-}
-
-func (s *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntries) SetPublishStatus(v string) *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntries {
+func (s *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntry) SetPublishStatus(v string) *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntry {
 	s.PublishStatus = &v
 	return s
 }
 
-func (s *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntries) SetChildInstanceRouteTableId(v string) *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntries {
+func (s *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntry) SetChildInstanceRouteTableId(v string) *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntry {
 	s.ChildInstanceRouteTableId = &v
 	return s
 }
 
-func (s *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntries) SetNextHopType(v string) *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntries {
+func (s *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntry) SetNextHopType(v string) *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntry {
 	s.NextHopType = &v
 	return s
 }
 
-func (s *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntries) SetOperationalMode(v bool) *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntries {
+func (s *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntry) SetOperationalMode(v bool) *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntry {
 	s.OperationalMode = &v
 	return s
 }
 
-func (s *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntries) SetDestinationCidrBlock(v string) *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntries {
+func (s *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntry) SetDestinationCidrBlock(v string) *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntry {
 	s.DestinationCidrBlock = &v
 	return s
 }
 
-func (s *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntries) SetRouteType(v string) *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntries {
+func (s *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntry) SetRouteType(v string) *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntry {
 	s.RouteType = &v
 	return s
 }
 
-type DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesConflicts struct {
+func (s *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntry) SetConflicts(v *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntryConflicts) *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntry {
+	s.Conflicts = v
+	return s
+}
+
+type DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntryConflicts struct {
+	Conflict []*DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntryConflictsConflict `json:"Conflict,omitempty" xml:"Conflict,omitempty" type:"Repeated"`
+}
+
+func (s DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntryConflicts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntryConflicts) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntryConflicts) SetConflict(v []*DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntryConflictsConflict) *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntryConflicts {
+	s.Conflict = v
+	return s
+}
+
+type DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntryConflictsConflict struct {
 	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -5197,35 +5805,35 @@ type DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesConflicts str
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
-func (s DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesConflicts) String() string {
+func (s DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntryConflictsConflict) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesConflicts) GoString() string {
+func (s DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntryConflictsConflict) GoString() string {
 	return s.String()
 }
 
-func (s *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesConflicts) SetStatus(v string) *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesConflicts {
+func (s *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntryConflictsConflict) SetStatus(v string) *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntryConflictsConflict {
 	s.Status = &v
 	return s
 }
 
-func (s *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesConflicts) SetDestinationCidrBlock(v string) *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesConflicts {
+func (s *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntryConflictsConflict) SetDestinationCidrBlock(v string) *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntryConflictsConflict {
 	s.DestinationCidrBlock = &v
 	return s
 }
 
-func (s *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesConflicts) SetInstanceId(v string) *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesConflicts {
+func (s *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntryConflictsConflict) SetInstanceId(v string) *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntryConflictsConflict {
 	s.InstanceId = &v
 	return s
 }
 
-func (s *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesConflicts) SetInstanceType(v string) *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesConflicts {
+func (s *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntryConflictsConflict) SetInstanceType(v string) *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntryConflictsConflict {
 	s.InstanceType = &v
 	return s
 }
 
-func (s *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesConflicts) SetRegionId(v string) *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesConflicts {
+func (s *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntryConflictsConflict) SetRegionId(v string) *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntryConflictsConflict {
 	s.RegionId = &v
 	return s
 }
@@ -5331,11 +5939,11 @@ func (s *DescribeRouteConflictRequest) SetDestinationCidrBlock(v string) *Descri
 }
 
 type DescribeRouteConflictResponseBody struct {
-	TotalCount     *int32                                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	PageSize       *int32                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId      *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNumber     *int32                                             `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	RouteConflicts []*DescribeRouteConflictResponseBodyRouteConflicts `json:"RouteConflicts,omitempty" xml:"RouteConflicts,omitempty" type:"Repeated"`
+	PageSize       *int32                                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId      *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageNumber     *int32                                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalCount     *int32                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RouteConflicts *DescribeRouteConflictResponseBodyRouteConflicts `json:"RouteConflicts,omitempty" xml:"RouteConflicts,omitempty" type:"Struct"`
 }
 
 func (s DescribeRouteConflictResponseBody) String() string {
@@ -5344,11 +5952,6 @@ func (s DescribeRouteConflictResponseBody) String() string {
 
 func (s DescribeRouteConflictResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeRouteConflictResponseBody) SetTotalCount(v int32) *DescribeRouteConflictResponseBody {
-	s.TotalCount = &v
-	return s
 }
 
 func (s *DescribeRouteConflictResponseBody) SetPageSize(v int32) *DescribeRouteConflictResponseBody {
@@ -5366,17 +5969,18 @@ func (s *DescribeRouteConflictResponseBody) SetPageNumber(v int32) *DescribeRout
 	return s
 }
 
-func (s *DescribeRouteConflictResponseBody) SetRouteConflicts(v []*DescribeRouteConflictResponseBodyRouteConflicts) *DescribeRouteConflictResponseBody {
+func (s *DescribeRouteConflictResponseBody) SetTotalCount(v int32) *DescribeRouteConflictResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeRouteConflictResponseBody) SetRouteConflicts(v *DescribeRouteConflictResponseBodyRouteConflicts) *DescribeRouteConflictResponseBody {
 	s.RouteConflicts = v
 	return s
 }
 
 type DescribeRouteConflictResponseBodyRouteConflicts struct {
-	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceType         *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RouteConflict []*DescribeRouteConflictResponseBodyRouteConflictsRouteConflict `json:"RouteConflict,omitempty" xml:"RouteConflict,omitempty" type:"Repeated"`
 }
 
 func (s DescribeRouteConflictResponseBodyRouteConflicts) String() string {
@@ -5387,27 +5991,48 @@ func (s DescribeRouteConflictResponseBodyRouteConflicts) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRouteConflictResponseBodyRouteConflicts) SetStatus(v string) *DescribeRouteConflictResponseBodyRouteConflicts {
+func (s *DescribeRouteConflictResponseBodyRouteConflicts) SetRouteConflict(v []*DescribeRouteConflictResponseBodyRouteConflictsRouteConflict) *DescribeRouteConflictResponseBodyRouteConflicts {
+	s.RouteConflict = v
+	return s
+}
+
+type DescribeRouteConflictResponseBodyRouteConflictsRouteConflict struct {
+	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceType         *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeRouteConflictResponseBodyRouteConflictsRouteConflict) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRouteConflictResponseBodyRouteConflictsRouteConflict) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRouteConflictResponseBodyRouteConflictsRouteConflict) SetStatus(v string) *DescribeRouteConflictResponseBodyRouteConflictsRouteConflict {
 	s.Status = &v
 	return s
 }
 
-func (s *DescribeRouteConflictResponseBodyRouteConflicts) SetDestinationCidrBlock(v string) *DescribeRouteConflictResponseBodyRouteConflicts {
+func (s *DescribeRouteConflictResponseBodyRouteConflictsRouteConflict) SetDestinationCidrBlock(v string) *DescribeRouteConflictResponseBodyRouteConflictsRouteConflict {
 	s.DestinationCidrBlock = &v
 	return s
 }
 
-func (s *DescribeRouteConflictResponseBodyRouteConflicts) SetInstanceId(v string) *DescribeRouteConflictResponseBodyRouteConflicts {
+func (s *DescribeRouteConflictResponseBodyRouteConflictsRouteConflict) SetInstanceId(v string) *DescribeRouteConflictResponseBodyRouteConflictsRouteConflict {
 	s.InstanceId = &v
 	return s
 }
 
-func (s *DescribeRouteConflictResponseBodyRouteConflicts) SetInstanceType(v string) *DescribeRouteConflictResponseBodyRouteConflicts {
+func (s *DescribeRouteConflictResponseBodyRouteConflictsRouteConflict) SetInstanceType(v string) *DescribeRouteConflictResponseBodyRouteConflictsRouteConflict {
 	s.InstanceType = &v
 	return s
 }
 
-func (s *DescribeRouteConflictResponseBodyRouteConflicts) SetRegionId(v string) *DescribeRouteConflictResponseBodyRouteConflicts {
+func (s *DescribeRouteConflictResponseBodyRouteConflictsRouteConflict) SetRegionId(v string) *DescribeRouteConflictResponseBodyRouteConflictsRouteConflict {
 	s.RegionId = &v
 	return s
 }
@@ -5513,11 +6138,11 @@ func (s *DescribeRouteServicesInCenRequest) SetHostVpcId(v string) *DescribeRout
 }
 
 type DescribeRouteServicesInCenResponseBody struct {
-	TotalCount          *int32                                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	PageSize            *int32                                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId           *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNumber          *int32                                                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	RouteServiceEntries []*DescribeRouteServicesInCenResponseBodyRouteServiceEntries `json:"RouteServiceEntries,omitempty" xml:"RouteServiceEntries,omitempty" type:"Repeated"`
+	PageSize            *int32                                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId           *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageNumber          *int32                                                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalCount          *int32                                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RouteServiceEntries *DescribeRouteServicesInCenResponseBodyRouteServiceEntries `json:"RouteServiceEntries,omitempty" xml:"RouteServiceEntries,omitempty" type:"Struct"`
 }
 
 func (s DescribeRouteServicesInCenResponseBody) String() string {
@@ -5526,11 +6151,6 @@ func (s DescribeRouteServicesInCenResponseBody) String() string {
 
 func (s DescribeRouteServicesInCenResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeRouteServicesInCenResponseBody) SetTotalCount(v int32) *DescribeRouteServicesInCenResponseBody {
-	s.TotalCount = &v
-	return s
 }
 
 func (s *DescribeRouteServicesInCenResponseBody) SetPageSize(v int32) *DescribeRouteServicesInCenResponseBody {
@@ -5548,21 +6168,18 @@ func (s *DescribeRouteServicesInCenResponseBody) SetPageNumber(v int32) *Describ
 	return s
 }
 
-func (s *DescribeRouteServicesInCenResponseBody) SetRouteServiceEntries(v []*DescribeRouteServicesInCenResponseBodyRouteServiceEntries) *DescribeRouteServicesInCenResponseBody {
+func (s *DescribeRouteServicesInCenResponseBody) SetTotalCount(v int32) *DescribeRouteServicesInCenResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeRouteServicesInCenResponseBody) SetRouteServiceEntries(v *DescribeRouteServicesInCenResponseBodyRouteServiceEntries) *DescribeRouteServicesInCenResponseBody {
 	s.RouteServiceEntries = v
 	return s
 }
 
 type DescribeRouteServicesInCenResponseBodyRouteServiceEntries struct {
-	Status         *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	Host           *string   `json:"Host,omitempty" xml:"Host,omitempty"`
-	Description    *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	HostVpcId      *string   `json:"HostVpcId,omitempty" xml:"HostVpcId,omitempty"`
-	Cidrs          []*string `json:"Cidrs,omitempty" xml:"Cidrs,omitempty" type:"Repeated"`
-	CenId          *string   `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	AccessRegionId *string   `json:"AccessRegionId,omitempty" xml:"AccessRegionId,omitempty"`
-	HostRegionId   *string   `json:"HostRegionId,omitempty" xml:"HostRegionId,omitempty"`
-	UpdateInterval *string   `json:"UpdateInterval,omitempty" xml:"UpdateInterval,omitempty"`
+	RouteServiceEntry []*DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntry `json:"RouteServiceEntry,omitempty" xml:"RouteServiceEntry,omitempty" type:"Repeated"`
 }
 
 func (s DescribeRouteServicesInCenResponseBodyRouteServiceEntries) String() string {
@@ -5573,48 +6190,90 @@ func (s DescribeRouteServicesInCenResponseBodyRouteServiceEntries) GoString() st
 	return s.String()
 }
 
-func (s *DescribeRouteServicesInCenResponseBodyRouteServiceEntries) SetStatus(v string) *DescribeRouteServicesInCenResponseBodyRouteServiceEntries {
+func (s *DescribeRouteServicesInCenResponseBodyRouteServiceEntries) SetRouteServiceEntry(v []*DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntry) *DescribeRouteServicesInCenResponseBodyRouteServiceEntries {
+	s.RouteServiceEntry = v
+	return s
+}
+
+type DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntry struct {
+	Status         *string                                                                          `json:"Status,omitempty" xml:"Status,omitempty"`
+	Host           *string                                                                          `json:"Host,omitempty" xml:"Host,omitempty"`
+	Description    *string                                                                          `json:"Description,omitempty" xml:"Description,omitempty"`
+	HostVpcId      *string                                                                          `json:"HostVpcId,omitempty" xml:"HostVpcId,omitempty"`
+	CenId          *string                                                                          `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	AccessRegionId *string                                                                          `json:"AccessRegionId,omitempty" xml:"AccessRegionId,omitempty"`
+	HostRegionId   *string                                                                          `json:"HostRegionId,omitempty" xml:"HostRegionId,omitempty"`
+	UpdateInterval *string                                                                          `json:"UpdateInterval,omitempty" xml:"UpdateInterval,omitempty"`
+	Cidrs          *DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntryCidrs `json:"Cidrs,omitempty" xml:"Cidrs,omitempty" type:"Struct"`
+}
+
+func (s DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntry) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntry) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntry) SetStatus(v string) *DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntry {
 	s.Status = &v
 	return s
 }
 
-func (s *DescribeRouteServicesInCenResponseBodyRouteServiceEntries) SetHost(v string) *DescribeRouteServicesInCenResponseBodyRouteServiceEntries {
+func (s *DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntry) SetHost(v string) *DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntry {
 	s.Host = &v
 	return s
 }
 
-func (s *DescribeRouteServicesInCenResponseBodyRouteServiceEntries) SetDescription(v string) *DescribeRouteServicesInCenResponseBodyRouteServiceEntries {
+func (s *DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntry) SetDescription(v string) *DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntry {
 	s.Description = &v
 	return s
 }
 
-func (s *DescribeRouteServicesInCenResponseBodyRouteServiceEntries) SetHostVpcId(v string) *DescribeRouteServicesInCenResponseBodyRouteServiceEntries {
+func (s *DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntry) SetHostVpcId(v string) *DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntry {
 	s.HostVpcId = &v
 	return s
 }
 
-func (s *DescribeRouteServicesInCenResponseBodyRouteServiceEntries) SetCidrs(v []*string) *DescribeRouteServicesInCenResponseBodyRouteServiceEntries {
-	s.Cidrs = v
-	return s
-}
-
-func (s *DescribeRouteServicesInCenResponseBodyRouteServiceEntries) SetCenId(v string) *DescribeRouteServicesInCenResponseBodyRouteServiceEntries {
+func (s *DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntry) SetCenId(v string) *DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntry {
 	s.CenId = &v
 	return s
 }
 
-func (s *DescribeRouteServicesInCenResponseBodyRouteServiceEntries) SetAccessRegionId(v string) *DescribeRouteServicesInCenResponseBodyRouteServiceEntries {
+func (s *DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntry) SetAccessRegionId(v string) *DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntry {
 	s.AccessRegionId = &v
 	return s
 }
 
-func (s *DescribeRouteServicesInCenResponseBodyRouteServiceEntries) SetHostRegionId(v string) *DescribeRouteServicesInCenResponseBodyRouteServiceEntries {
+func (s *DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntry) SetHostRegionId(v string) *DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntry {
 	s.HostRegionId = &v
 	return s
 }
 
-func (s *DescribeRouteServicesInCenResponseBodyRouteServiceEntries) SetUpdateInterval(v string) *DescribeRouteServicesInCenResponseBodyRouteServiceEntries {
+func (s *DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntry) SetUpdateInterval(v string) *DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntry {
 	s.UpdateInterval = &v
+	return s
+}
+
+func (s *DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntry) SetCidrs(v *DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntryCidrs) *DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntry {
+	s.Cidrs = v
+	return s
+}
+
+type DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntryCidrs struct {
+	Cidr []*string `json:"Cidr,omitempty" xml:"Cidr,omitempty" type:"Repeated"`
+}
+
+func (s DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntryCidrs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntryCidrs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntryCidrs) SetCidr(v []*string) *DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntryCidrs {
+	s.Cidr = v
 	return s
 }
 
@@ -6063,9 +6722,9 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 }
 
 type ListTagResourcesResponseBody struct {
-	NextToken    *string                                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
+	NextToken    *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TagResources *ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
 }
 
 func (s ListTagResourcesResponseBody) String() string {
@@ -6086,16 +6745,13 @@ func (s *ListTagResourcesResponseBody) SetRequestId(v string) *ListTagResourcesR
 	return s
 }
 
-func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResponseBodyTagResources) *ListTagResourcesResponseBody {
+func (s *ListTagResourcesResponseBody) SetTagResources(v *ListTagResourcesResponseBodyTagResources) *ListTagResourcesResponseBody {
 	s.TagResources = v
 	return s
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagResource []*ListTagResourcesResponseBodyTagResourcesTagResource `json:"TagResource,omitempty" xml:"TagResource,omitempty" type:"Repeated"`
 }
 
 func (s ListTagResourcesResponseBodyTagResources) String() string {
@@ -6106,22 +6762,42 @@ func (s ListTagResourcesResponseBodyTagResources) GoString() string {
 	return s.String()
 }
 
-func (s *ListTagResourcesResponseBodyTagResources) SetResourceType(v string) *ListTagResourcesResponseBodyTagResources {
+func (s *ListTagResourcesResponseBodyTagResources) SetTagResource(v []*ListTagResourcesResponseBodyTagResourcesTagResource) *ListTagResourcesResponseBodyTagResources {
+	s.TagResource = v
+	return s
+}
+
+type ListTagResourcesResponseBodyTagResourcesTagResource struct {
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+}
+
+func (s ListTagResourcesResponseBodyTagResourcesTagResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBodyTagResourcesTagResource) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetResourceType(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
 	s.ResourceType = &v
 	return s
 }
 
-func (s *ListTagResourcesResponseBodyTagResources) SetTagValue(v string) *ListTagResourcesResponseBodyTagResources {
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagValue(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
 	s.TagValue = &v
 	return s
 }
 
-func (s *ListTagResourcesResponseBodyTagResources) SetResourceId(v string) *ListTagResourcesResponseBodyTagResources {
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetResourceId(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
 	s.ResourceId = &v
 	return s
 }
 
-func (s *ListTagResourcesResponseBodyTagResources) SetTagKey(v string) *ListTagResourcesResponseBodyTagResources {
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagKey(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
 	s.TagKey = &v
 	return s
 }
@@ -6158,7 +6834,6 @@ type ModifyCenAttributeRequest struct {
 	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	ProtectionLevel      *string `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
-	Ipv6Level            *string `json:"Ipv6Level,omitempty" xml:"Ipv6Level,omitempty"`
 }
 
 func (s ModifyCenAttributeRequest) String() string {
@@ -6206,11 +6881,6 @@ func (s *ModifyCenAttributeRequest) SetDescription(v string) *ModifyCenAttribute
 
 func (s *ModifyCenAttributeRequest) SetProtectionLevel(v string) *ModifyCenAttributeRequest {
 	s.ProtectionLevel = &v
-	return s
-}
-
-func (s *ModifyCenAttributeRequest) SetIpv6Level(v string) *ModifyCenAttributeRequest {
-	s.Ipv6Level = &v
 	return s
 }
 
@@ -6453,8 +7123,6 @@ type ModifyCenRouteMapRequest struct {
 	Priority                           *int32    `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	SourceInstanceIdsReverseMatch      *bool     `json:"SourceInstanceIdsReverseMatch,omitempty" xml:"SourceInstanceIdsReverseMatch,omitempty"`
 	DestinationInstanceIdsReverseMatch *bool     `json:"DestinationInstanceIdsReverseMatch,omitempty" xml:"DestinationInstanceIdsReverseMatch,omitempty"`
-	GatewayZoneId                      *string   `json:"GatewayZoneId,omitempty" xml:"GatewayZoneId,omitempty"`
-	MatchAddressType                   *string   `json:"MatchAddressType,omitempty" xml:"MatchAddressType,omitempty"`
 	SourceInstanceIds                  []*string `json:"SourceInstanceIds,omitempty" xml:"SourceInstanceIds,omitempty" type:"Repeated"`
 	DestinationInstanceIds             []*string `json:"DestinationInstanceIds,omitempty" xml:"DestinationInstanceIds,omitempty" type:"Repeated"`
 	SourceRouteTableIds                []*string `json:"SourceRouteTableIds,omitempty" xml:"SourceRouteTableIds,omitempty" type:"Repeated"`
@@ -6468,9 +7136,6 @@ type ModifyCenRouteMapRequest struct {
 	MatchCommunitySet                  []*string `json:"MatchCommunitySet,omitempty" xml:"MatchCommunitySet,omitempty" type:"Repeated"`
 	OperateCommunitySet                []*string `json:"OperateCommunitySet,omitempty" xml:"OperateCommunitySet,omitempty" type:"Repeated"`
 	PrependAsPath                      []*int    `json:"PrependAsPath,omitempty" xml:"PrependAsPath,omitempty" type:"Repeated"`
-	DestinationRegionIds               []*string `json:"DestinationRegionIds,omitempty" xml:"DestinationRegionIds,omitempty" type:"Repeated"`
-	SourceZoneIds                      []*string `json:"SourceZoneIds,omitempty" xml:"SourceZoneIds,omitempty" type:"Repeated"`
-	OriginalRouteTableIds              []*string `json:"OriginalRouteTableIds,omitempty" xml:"OriginalRouteTableIds,omitempty" type:"Repeated"`
 }
 
 func (s ModifyCenRouteMapRequest) String() string {
@@ -6571,16 +7236,6 @@ func (s *ModifyCenRouteMapRequest) SetDestinationInstanceIdsReverseMatch(v bool)
 	return s
 }
 
-func (s *ModifyCenRouteMapRequest) SetGatewayZoneId(v string) *ModifyCenRouteMapRequest {
-	s.GatewayZoneId = &v
-	return s
-}
-
-func (s *ModifyCenRouteMapRequest) SetMatchAddressType(v string) *ModifyCenRouteMapRequest {
-	s.MatchAddressType = &v
-	return s
-}
-
 func (s *ModifyCenRouteMapRequest) SetSourceInstanceIds(v []*string) *ModifyCenRouteMapRequest {
 	s.SourceInstanceIds = v
 	return s
@@ -6643,21 +7298,6 @@ func (s *ModifyCenRouteMapRequest) SetOperateCommunitySet(v []*string) *ModifyCe
 
 func (s *ModifyCenRouteMapRequest) SetPrependAsPath(v []*int) *ModifyCenRouteMapRequest {
 	s.PrependAsPath = v
-	return s
-}
-
-func (s *ModifyCenRouteMapRequest) SetDestinationRegionIds(v []*string) *ModifyCenRouteMapRequest {
-	s.DestinationRegionIds = v
-	return s
-}
-
-func (s *ModifyCenRouteMapRequest) SetSourceZoneIds(v []*string) *ModifyCenRouteMapRequest {
-	s.SourceZoneIds = v
-	return s
-}
-
-func (s *ModifyCenRouteMapRequest) SetOriginalRouteTableIds(v []*string) *ModifyCenRouteMapRequest {
-	s.OriginalRouteTableIds = v
 	return s
 }
 
@@ -6773,8 +7413,8 @@ func (s *ModifyFlowLogAttributeRequest) SetCenId(v string) *ModifyFlowLogAttribu
 }
 
 type ModifyFlowLogAttributeResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ModifyFlowLogAttributeResponseBody) String() string {
@@ -6785,13 +7425,13 @@ func (s ModifyFlowLogAttributeResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyFlowLogAttributeResponseBody) SetRequestId(v string) *ModifyFlowLogAttributeResponseBody {
-	s.RequestId = &v
+func (s *ModifyFlowLogAttributeResponseBody) SetSuccess(v string) *ModifyFlowLogAttributeResponseBody {
+	s.Success = &v
 	return s
 }
 
-func (s *ModifyFlowLogAttributeResponseBody) SetSuccess(v string) *ModifyFlowLogAttributeResponseBody {
-	s.Success = &v
+func (s *ModifyFlowLogAttributeResponseBody) SetRequestId(v string) *ModifyFlowLogAttributeResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -6926,7 +7566,6 @@ type ResolveAndRouteServiceInCenRequest struct {
 	CenId                *string   `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	Host                 *string   `json:"Host,omitempty" xml:"Host,omitempty"`
 	HostRegionId         *string   `json:"HostRegionId,omitempty" xml:"HostRegionId,omitempty"`
-	UpdateInterval       *int64    `json:"UpdateInterval,omitempty" xml:"UpdateInterval,omitempty"`
 	HostVpcId            *string   `json:"HostVpcId,omitempty" xml:"HostVpcId,omitempty"`
 	Description          *string   `json:"Description,omitempty" xml:"Description,omitempty"`
 	AccessRegionIds      []*string `json:"AccessRegionIds,omitempty" xml:"AccessRegionIds,omitempty" type:"Repeated"`
@@ -6977,11 +7616,6 @@ func (s *ResolveAndRouteServiceInCenRequest) SetHost(v string) *ResolveAndRouteS
 
 func (s *ResolveAndRouteServiceInCenRequest) SetHostRegionId(v string) *ResolveAndRouteServiceInCenRequest {
 	s.HostRegionId = &v
-	return s
-}
-
-func (s *ResolveAndRouteServiceInCenRequest) SetUpdateInterval(v int64) *ResolveAndRouteServiceInCenRequest {
-	s.UpdateInterval = &v
 	return s
 }
 
@@ -7148,7 +7782,6 @@ type SetCenInterRegionBandwidthLimitRequest struct {
 	LocalRegionId        *string `json:"LocalRegionId,omitempty" xml:"LocalRegionId,omitempty"`
 	OppositeRegionId     *string `json:"OppositeRegionId,omitempty" xml:"OppositeRegionId,omitempty"`
 	BandwidthLimit       *int64  `json:"BandwidthLimit,omitempty" xml:"BandwidthLimit,omitempty"`
-	BandwidthPackageId   *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
 }
 
 func (s SetCenInterRegionBandwidthLimitRequest) String() string {
@@ -7196,11 +7829,6 @@ func (s *SetCenInterRegionBandwidthLimitRequest) SetOppositeRegionId(v string) *
 
 func (s *SetCenInterRegionBandwidthLimitRequest) SetBandwidthLimit(v int64) *SetCenInterRegionBandwidthLimitRequest {
 	s.BandwidthLimit = &v
-	return s
-}
-
-func (s *SetCenInterRegionBandwidthLimitRequest) SetBandwidthPackageId(v string) *SetCenInterRegionBandwidthLimitRequest {
-	s.BandwidthPackageId = &v
 	return s
 }
 
@@ -7840,67 +8468,7 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = tea.String("regional")
-	client.EndpointMap = map[string]*string{
-		"cn-qingdao":                  tea.String("cbn.aliyuncs.com"),
-		"cn-beijing":                  tea.String("cbn.aliyuncs.com"),
-		"cn-chengdu":                  tea.String("cbn.aliyuncs.com"),
-		"cn-zhangjiakou":              tea.String("cbn.aliyuncs.com"),
-		"cn-huhehaote":                tea.String("cbn.aliyuncs.com"),
-		"cn-hangzhou":                 tea.String("cbn.aliyuncs.com"),
-		"cn-shanghai":                 tea.String("cbn.aliyuncs.com"),
-		"cn-shenzhen":                 tea.String("cbn.aliyuncs.com"),
-		"cn-heyuan":                   tea.String("cbn.aliyuncs.com"),
-		"cn-wulanchabu":               tea.String("cbn.aliyuncs.com"),
-		"cn-hongkong":                 tea.String("cbn.aliyuncs.com"),
-		"ap-southeast-1":              tea.String("cbn.aliyuncs.com"),
-		"ap-southeast-2":              tea.String("cbn.aliyuncs.com"),
-		"ap-southeast-3":              tea.String("cbn.aliyuncs.com"),
-		"ap-southeast-5":              tea.String("cbn.aliyuncs.com"),
-		"ap-northeast-1":              tea.String("cbn.aliyuncs.com"),
-		"eu-west-1":                   tea.String("cbn.aliyuncs.com"),
-		"us-west-1":                   tea.String("cbn.aliyuncs.com"),
-		"us-east-1":                   tea.String("cbn.aliyuncs.com"),
-		"eu-central-1":                tea.String("cbn.aliyuncs.com"),
-		"me-east-1":                   tea.String("cbn.aliyuncs.com"),
-		"ap-south-1":                  tea.String("cbn.aliyuncs.com"),
-		"cn-shanghai-finance-1":       tea.String("cbn.aliyuncs.com"),
-		"cn-shenzhen-finance-1":       tea.String("cbn.aliyuncs.com"),
-		"cn-north-2-gov-1":            tea.String("cbn.aliyuncs.com"),
-		"ap-northeast-2-pop":          tea.String("cbn.aliyuncs.com"),
-		"cn-beijing-finance-1":        tea.String("cbn.aliyuncs.com"),
-		"cn-beijing-finance-pop":      tea.String("cbn.aliyuncs.com"),
-		"cn-beijing-gov-1":            tea.String("cbn.aliyuncs.com"),
-		"cn-beijing-nu16-b01":         tea.String("cbn.aliyuncs.com"),
-		"cn-edge-1":                   tea.String("cbn.aliyuncs.com"),
-		"cn-fujian":                   tea.String("cbn.aliyuncs.com"),
-		"cn-haidian-cm12-c01":         tea.String("cbn.aliyuncs.com"),
-		"cn-hangzhou-bj-b01":          tea.String("cbn.aliyuncs.com"),
-		"cn-hangzhou-finance":         tea.String("cbn.aliyuncs.com"),
-		"cn-hangzhou-internal-prod-1": tea.String("cbn.aliyuncs.com"),
-		"cn-hangzhou-internal-test-1": tea.String("cbn.aliyuncs.com"),
-		"cn-hangzhou-internal-test-2": tea.String("cbn.aliyuncs.com"),
-		"cn-hangzhou-internal-test-3": tea.String("cbn.aliyuncs.com"),
-		"cn-hangzhou-test-306":        tea.String("cbn.aliyuncs.com"),
-		"cn-hongkong-finance-pop":     tea.String("cbn.aliyuncs.com"),
-		"cn-huhehaote-nebula-1":       tea.String("cbn.aliyuncs.com"),
-		"cn-qingdao-nebula":           tea.String("cbn.aliyuncs.com"),
-		"cn-shanghai-et15-b01":        tea.String("cbn.aliyuncs.com"),
-		"cn-shanghai-et2-b01":         tea.String("cbn.aliyuncs.com"),
-		"cn-shanghai-inner":           tea.String("cbn.aliyuncs.com"),
-		"cn-shanghai-internal-test-1": tea.String("cbn.aliyuncs.com"),
-		"cn-shenzhen-inner":           tea.String("cbn.aliyuncs.com"),
-		"cn-shenzhen-st4-d01":         tea.String("cbn.aliyuncs.com"),
-		"cn-shenzhen-su18-b01":        tea.String("cbn.aliyuncs.com"),
-		"cn-wuhan":                    tea.String("cbn.aliyuncs.com"),
-		"cn-yushanfang":               tea.String("cbn.aliyuncs.com"),
-		"cn-zhangbei":                 tea.String("cbn.aliyuncs.com"),
-		"cn-zhangbei-na61-b01":        tea.String("cbn.aliyuncs.com"),
-		"cn-zhangjiakou-na62-a01":     tea.String("cbn.aliyuncs.com"),
-		"cn-zhengzhou-nebula-1":       tea.String("cbn.aliyuncs.com"),
-		"eu-west-1-oxs":               tea.String("cbn.aliyuncs.com"),
-		"rus-west-1-pop":              tea.String("cbn-share.aliyuncs.com"),
-	}
+	client.EndpointRule = tea.String("central")
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
