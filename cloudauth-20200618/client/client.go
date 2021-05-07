@@ -185,10 +185,10 @@ func (s *ContrastSmartVerifyAdvanceRequest) SetFacePicString(v string) *Contrast
 }
 
 type ContrastSmartVerifyResponseBody struct {
-	ResultObject *ContrastSmartVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
+	Code         *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message      *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId    *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code         *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	ResultObject *ContrastSmartVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
 func (s ContrastSmartVerifyResponseBody) String() string {
@@ -199,8 +199,8 @@ func (s ContrastSmartVerifyResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ContrastSmartVerifyResponseBody) SetResultObject(v *ContrastSmartVerifyResponseBodyResultObject) *ContrastSmartVerifyResponseBody {
-	s.ResultObject = v
+func (s *ContrastSmartVerifyResponseBody) SetCode(v string) *ContrastSmartVerifyResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -214,15 +214,15 @@ func (s *ContrastSmartVerifyResponseBody) SetRequestId(v string) *ContrastSmartV
 	return s
 }
 
-func (s *ContrastSmartVerifyResponseBody) SetCode(v string) *ContrastSmartVerifyResponseBody {
-	s.Code = &v
+func (s *ContrastSmartVerifyResponseBody) SetResultObject(v *ContrastSmartVerifyResponseBodyResultObject) *ContrastSmartVerifyResponseBody {
+	s.ResultObject = v
 	return s
 }
 
 type ContrastSmartVerifyResponseBodyResultObject struct {
-	VerifyInfo *string `json:"VerifyInfo,omitempty" xml:"VerifyInfo,omitempty"`
 	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
 	CertifyId  *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
+	VerifyInfo *string `json:"VerifyInfo,omitempty" xml:"VerifyInfo,omitempty"`
 	RiskInfo   *string `json:"RiskInfo,omitempty" xml:"RiskInfo,omitempty"`
 	Passed     *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
 }
@@ -235,11 +235,6 @@ func (s ContrastSmartVerifyResponseBodyResultObject) GoString() string {
 	return s.String()
 }
 
-func (s *ContrastSmartVerifyResponseBodyResultObject) SetVerifyInfo(v string) *ContrastSmartVerifyResponseBodyResultObject {
-	s.VerifyInfo = &v
-	return s
-}
-
 func (s *ContrastSmartVerifyResponseBodyResultObject) SetSubCode(v string) *ContrastSmartVerifyResponseBodyResultObject {
 	s.SubCode = &v
 	return s
@@ -247,6 +242,11 @@ func (s *ContrastSmartVerifyResponseBodyResultObject) SetSubCode(v string) *Cont
 
 func (s *ContrastSmartVerifyResponseBodyResultObject) SetCertifyId(v string) *ContrastSmartVerifyResponseBodyResultObject {
 	s.CertifyId = &v
+	return s
+}
+
+func (s *ContrastSmartVerifyResponseBodyResultObject) SetVerifyInfo(v string) *ContrastSmartVerifyResponseBodyResultObject {
+	s.VerifyInfo = &v
 	return s
 }
 
@@ -313,10 +313,10 @@ func (s *DescribeSmartVerifyRequest) SetPictureReturnType(v string) *DescribeSma
 }
 
 type DescribeSmartVerifyResponseBody struct {
-	ResultObject *DescribeSmartVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
+	Code         *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message      *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId    *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code         *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	ResultObject *DescribeSmartVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
 func (s DescribeSmartVerifyResponseBody) String() string {
@@ -327,8 +327,8 @@ func (s DescribeSmartVerifyResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeSmartVerifyResponseBody) SetResultObject(v *DescribeSmartVerifyResponseBodyResultObject) *DescribeSmartVerifyResponseBody {
-	s.ResultObject = v
+func (s *DescribeSmartVerifyResponseBody) SetCode(v string) *DescribeSmartVerifyResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -342,15 +342,15 @@ func (s *DescribeSmartVerifyResponseBody) SetRequestId(v string) *DescribeSmartV
 	return s
 }
 
-func (s *DescribeSmartVerifyResponseBody) SetCode(v string) *DescribeSmartVerifyResponseBody {
-	s.Code = &v
+func (s *DescribeSmartVerifyResponseBody) SetResultObject(v *DescribeSmartVerifyResponseBodyResultObject) *DescribeSmartVerifyResponseBody {
+	s.ResultObject = v
 	return s
 }
 
 type DescribeSmartVerifyResponseBodyResultObject struct {
+	SubCode      *string  `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
 	PassedScore  *float32 `json:"PassedScore,omitempty" xml:"PassedScore,omitempty"`
 	MaterialInfo *string  `json:"MaterialInfo,omitempty" xml:"MaterialInfo,omitempty"`
-	SubCode      *string  `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
 	Passed       *string  `json:"Passed,omitempty" xml:"Passed,omitempty"`
 }
 
@@ -362,6 +362,11 @@ func (s DescribeSmartVerifyResponseBodyResultObject) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeSmartVerifyResponseBodyResultObject) SetSubCode(v string) *DescribeSmartVerifyResponseBodyResultObject {
+	s.SubCode = &v
+	return s
+}
+
 func (s *DescribeSmartVerifyResponseBodyResultObject) SetPassedScore(v float32) *DescribeSmartVerifyResponseBodyResultObject {
 	s.PassedScore = &v
 	return s
@@ -369,11 +374,6 @@ func (s *DescribeSmartVerifyResponseBodyResultObject) SetPassedScore(v float32) 
 
 func (s *DescribeSmartVerifyResponseBodyResultObject) SetMaterialInfo(v string) *DescribeSmartVerifyResponseBodyResultObject {
 	s.MaterialInfo = &v
-	return s
-}
-
-func (s *DescribeSmartVerifyResponseBodyResultObject) SetSubCode(v string) *DescribeSmartVerifyResponseBodyResultObject {
-	s.SubCode = &v
 	return s
 }
 
@@ -401,6 +401,248 @@ func (s *DescribeSmartVerifyResponse) SetHeaders(v map[string]*string) *Describe
 }
 
 func (s *DescribeSmartVerifyResponse) SetBody(v *DescribeSmartVerifyResponseBody) *DescribeSmartVerifyResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeSmsDetailRequest struct {
+	Mobile       *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	SendDate     *string `json:"SendDate,omitempty" xml:"SendDate,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	OuterOrderNo *string `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
+	SendStatus   *string `json:"SendStatus,omitempty" xml:"SendStatus,omitempty"`
+	SignName     *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	CurrentPage  *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	BizId        *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+}
+
+func (s DescribeSmsDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSmsDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSmsDetailRequest) SetMobile(v string) *DescribeSmsDetailRequest {
+	s.Mobile = &v
+	return s
+}
+
+func (s *DescribeSmsDetailRequest) SetSendDate(v string) *DescribeSmsDetailRequest {
+	s.SendDate = &v
+	return s
+}
+
+func (s *DescribeSmsDetailRequest) SetErrorCode(v string) *DescribeSmsDetailRequest {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DescribeSmsDetailRequest) SetOuterOrderNo(v string) *DescribeSmsDetailRequest {
+	s.OuterOrderNo = &v
+	return s
+}
+
+func (s *DescribeSmsDetailRequest) SetSendStatus(v string) *DescribeSmsDetailRequest {
+	s.SendStatus = &v
+	return s
+}
+
+func (s *DescribeSmsDetailRequest) SetSignName(v string) *DescribeSmsDetailRequest {
+	s.SignName = &v
+	return s
+}
+
+func (s *DescribeSmsDetailRequest) SetTemplateCode(v string) *DescribeSmsDetailRequest {
+	s.TemplateCode = &v
+	return s
+}
+
+func (s *DescribeSmsDetailRequest) SetCurrentPage(v int32) *DescribeSmsDetailRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeSmsDetailRequest) SetPageSize(v int32) *DescribeSmsDetailRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeSmsDetailRequest) SetBizId(v string) *DescribeSmsDetailRequest {
+	s.BizId = &v
+	return s
+}
+
+type DescribeSmsDetailResponseBody struct {
+	TotalItem   *int32                                `json:"TotalItem,omitempty" xml:"TotalItem,omitempty"`
+	CurrentPage *int32                                `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	RequestId   *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code        *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message     *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	TotalPage   *int32                                `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	PageSize    *int32                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Items       []*DescribeSmsDetailResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+}
+
+func (s DescribeSmsDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSmsDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSmsDetailResponseBody) SetTotalItem(v int32) *DescribeSmsDetailResponseBody {
+	s.TotalItem = &v
+	return s
+}
+
+func (s *DescribeSmsDetailResponseBody) SetCurrentPage(v int32) *DescribeSmsDetailResponseBody {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeSmsDetailResponseBody) SetRequestId(v string) *DescribeSmsDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSmsDetailResponseBody) SetCode(v string) *DescribeSmsDetailResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeSmsDetailResponseBody) SetMessage(v string) *DescribeSmsDetailResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeSmsDetailResponseBody) SetTotalPage(v int32) *DescribeSmsDetailResponseBody {
+	s.TotalPage = &v
+	return s
+}
+
+func (s *DescribeSmsDetailResponseBody) SetPageSize(v int32) *DescribeSmsDetailResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeSmsDetailResponseBody) SetItems(v []*DescribeSmsDetailResponseBodyItems) *DescribeSmsDetailResponseBody {
+	s.Items = v
+	return s
+}
+
+type DescribeSmsDetailResponseBodyItems struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ReceiveDate  *string `json:"ReceiveDate,omitempty" xml:"ReceiveDate,omitempty"`
+	SendDate     *string `json:"SendDate,omitempty" xml:"SendDate,omitempty"`
+	BizId        *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	TaskDate     *string `json:"TaskDate,omitempty" xml:"TaskDate,omitempty"`
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	OuterOrderNo *string `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Mobile       *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	SmsSize      *int32  `json:"SmsSize,omitempty" xml:"SmsSize,omitempty"`
+	Content      *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	SignName     *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	SendStatus   *string `json:"SendStatus,omitempty" xml:"SendStatus,omitempty"`
+}
+
+func (s DescribeSmsDetailResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSmsDetailResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSmsDetailResponseBodyItems) SetErrorMessage(v string) *DescribeSmsDetailResponseBodyItems {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeSmsDetailResponseBodyItems) SetReceiveDate(v string) *DescribeSmsDetailResponseBodyItems {
+	s.ReceiveDate = &v
+	return s
+}
+
+func (s *DescribeSmsDetailResponseBodyItems) SetSendDate(v string) *DescribeSmsDetailResponseBodyItems {
+	s.SendDate = &v
+	return s
+}
+
+func (s *DescribeSmsDetailResponseBodyItems) SetBizId(v string) *DescribeSmsDetailResponseBodyItems {
+	s.BizId = &v
+	return s
+}
+
+func (s *DescribeSmsDetailResponseBodyItems) SetTaskDate(v string) *DescribeSmsDetailResponseBodyItems {
+	s.TaskDate = &v
+	return s
+}
+
+func (s *DescribeSmsDetailResponseBodyItems) SetTemplateCode(v string) *DescribeSmsDetailResponseBodyItems {
+	s.TemplateCode = &v
+	return s
+}
+
+func (s *DescribeSmsDetailResponseBodyItems) SetOuterOrderNo(v string) *DescribeSmsDetailResponseBodyItems {
+	s.OuterOrderNo = &v
+	return s
+}
+
+func (s *DescribeSmsDetailResponseBodyItems) SetErrorCode(v string) *DescribeSmsDetailResponseBodyItems {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DescribeSmsDetailResponseBodyItems) SetMobile(v string) *DescribeSmsDetailResponseBodyItems {
+	s.Mobile = &v
+	return s
+}
+
+func (s *DescribeSmsDetailResponseBodyItems) SetSmsSize(v int32) *DescribeSmsDetailResponseBodyItems {
+	s.SmsSize = &v
+	return s
+}
+
+func (s *DescribeSmsDetailResponseBodyItems) SetContent(v string) *DescribeSmsDetailResponseBodyItems {
+	s.Content = &v
+	return s
+}
+
+func (s *DescribeSmsDetailResponseBodyItems) SetSignName(v string) *DescribeSmsDetailResponseBodyItems {
+	s.SignName = &v
+	return s
+}
+
+func (s *DescribeSmsDetailResponseBodyItems) SetSendStatus(v string) *DescribeSmsDetailResponseBodyItems {
+	s.SendStatus = &v
+	return s
+}
+
+type DescribeSmsDetailResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeSmsDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeSmsDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSmsDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSmsDetailResponse) SetHeaders(v map[string]*string) *DescribeSmsDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSmsDetailResponse) SetBody(v *DescribeSmsDetailResponseBody) *DescribeSmsDetailResponse {
 	s.Body = v
 	return s
 }
@@ -536,10 +778,10 @@ func (s *ElementSmartVerifyAdvanceRequest) SetCertNationalEmblemUrl(v string) *E
 }
 
 type ElementSmartVerifyResponseBody struct {
-	ResultObject *ElementSmartVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
+	Code         *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message      *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code         *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	ResultObject *ElementSmartVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
 func (s ElementSmartVerifyResponseBody) String() string {
@@ -550,8 +792,8 @@ func (s ElementSmartVerifyResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ElementSmartVerifyResponseBody) SetResultObject(v *ElementSmartVerifyResponseBodyResultObject) *ElementSmartVerifyResponseBody {
-	s.ResultObject = v
+func (s *ElementSmartVerifyResponseBody) SetCode(v string) *ElementSmartVerifyResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -565,15 +807,15 @@ func (s *ElementSmartVerifyResponseBody) SetRequestId(v string) *ElementSmartVer
 	return s
 }
 
-func (s *ElementSmartVerifyResponseBody) SetCode(v string) *ElementSmartVerifyResponseBody {
-	s.Code = &v
+func (s *ElementSmartVerifyResponseBody) SetResultObject(v *ElementSmartVerifyResponseBodyResultObject) *ElementSmartVerifyResponseBody {
+	s.ResultObject = v
 	return s
 }
 
 type ElementSmartVerifyResponseBodyResultObject struct {
-	MaterialInfo *string `json:"MaterialInfo,omitempty" xml:"MaterialInfo,omitempty"`
 	CertifyId    *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
 	SubCode      *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	MaterialInfo *string `json:"MaterialInfo,omitempty" xml:"MaterialInfo,omitempty"`
 	Passed       *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
 }
 
@@ -585,11 +827,6 @@ func (s ElementSmartVerifyResponseBodyResultObject) GoString() string {
 	return s.String()
 }
 
-func (s *ElementSmartVerifyResponseBodyResultObject) SetMaterialInfo(v string) *ElementSmartVerifyResponseBodyResultObject {
-	s.MaterialInfo = &v
-	return s
-}
-
 func (s *ElementSmartVerifyResponseBodyResultObject) SetCertifyId(v string) *ElementSmartVerifyResponseBodyResultObject {
 	s.CertifyId = &v
 	return s
@@ -597,6 +834,11 @@ func (s *ElementSmartVerifyResponseBodyResultObject) SetCertifyId(v string) *Ele
 
 func (s *ElementSmartVerifyResponseBodyResultObject) SetSubCode(v string) *ElementSmartVerifyResponseBodyResultObject {
 	s.SubCode = &v
+	return s
+}
+
+func (s *ElementSmartVerifyResponseBodyResultObject) SetMaterialInfo(v string) *ElementSmartVerifyResponseBodyResultObject {
+	s.MaterialInfo = &v
 	return s
 }
 
@@ -760,10 +1002,10 @@ func (s *InitSmartVerifyRequest) SetIdName(v string) *InitSmartVerifyRequest {
 }
 
 type InitSmartVerifyResponseBody struct {
-	ResultObject *InitSmartVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
+	Code         *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message      *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code         *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	ResultObject *InitSmartVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
 func (s InitSmartVerifyResponseBody) String() string {
@@ -774,8 +1016,8 @@ func (s InitSmartVerifyResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *InitSmartVerifyResponseBody) SetResultObject(v *InitSmartVerifyResponseBodyResultObject) *InitSmartVerifyResponseBody {
-	s.ResultObject = v
+func (s *InitSmartVerifyResponseBody) SetCode(v string) *InitSmartVerifyResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -789,8 +1031,8 @@ func (s *InitSmartVerifyResponseBody) SetRequestId(v string) *InitSmartVerifyRes
 	return s
 }
 
-func (s *InitSmartVerifyResponseBody) SetCode(v string) *InitSmartVerifyResponseBody {
-	s.Code = &v
+func (s *InitSmartVerifyResponseBody) SetResultObject(v *InitSmartVerifyResponseBodyResultObject) *InitSmartVerifyResponseBody {
+	s.ResultObject = v
 	return s
 }
 
@@ -830,6 +1072,122 @@ func (s *InitSmartVerifyResponse) SetHeaders(v map[string]*string) *InitSmartVer
 }
 
 func (s *InitSmartVerifyResponse) SetBody(v *InitSmartVerifyResponseBody) *InitSmartVerifyResponse {
+	s.Body = v
+	return s
+}
+
+type SendSmsRequest struct {
+	Mobile        *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	SignName      *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	TemplateCode  *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	TemplateParam *string `json:"TemplateParam,omitempty" xml:"TemplateParam,omitempty"`
+	OuterOrderNo  *string `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
+}
+
+func (s SendSmsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendSmsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SendSmsRequest) SetMobile(v string) *SendSmsRequest {
+	s.Mobile = &v
+	return s
+}
+
+func (s *SendSmsRequest) SetSignName(v string) *SendSmsRequest {
+	s.SignName = &v
+	return s
+}
+
+func (s *SendSmsRequest) SetTemplateCode(v string) *SendSmsRequest {
+	s.TemplateCode = &v
+	return s
+}
+
+func (s *SendSmsRequest) SetTemplateParam(v string) *SendSmsRequest {
+	s.TemplateParam = &v
+	return s
+}
+
+func (s *SendSmsRequest) SetOuterOrderNo(v string) *SendSmsRequest {
+	s.OuterOrderNo = &v
+	return s
+}
+
+type SendSmsResponseBody struct {
+	Code         *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message      *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId    *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultObject *SendSmsResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
+}
+
+func (s SendSmsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendSmsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SendSmsResponseBody) SetCode(v string) *SendSmsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SendSmsResponseBody) SetMessage(v string) *SendSmsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SendSmsResponseBody) SetRequestId(v string) *SendSmsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SendSmsResponseBody) SetResultObject(v *SendSmsResponseBodyResultObject) *SendSmsResponseBody {
+	s.ResultObject = v
+	return s
+}
+
+type SendSmsResponseBodyResultObject struct {
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+}
+
+func (s SendSmsResponseBodyResultObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendSmsResponseBodyResultObject) GoString() string {
+	return s.String()
+}
+
+func (s *SendSmsResponseBodyResultObject) SetBizId(v string) *SendSmsResponseBodyResultObject {
+	s.BizId = &v
+	return s
+}
+
+type SendSmsResponse struct {
+	Headers map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SendSmsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SendSmsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendSmsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SendSmsResponse) SetHeaders(v map[string]*string) *SendSmsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SendSmsResponse) SetBody(v *SendSmsResponseBody) *SendSmsResponse {
 	s.Body = v
 	return s
 }
@@ -965,10 +1323,10 @@ func (s *VerifyBankElementAdvanceRequest) SetMobile(v string) *VerifyBankElement
 }
 
 type VerifyBankElementResponseBody struct {
-	ResultObject *VerifyBankElementResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
+	Code         *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message      *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId    *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code         *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	ResultObject *VerifyBankElementResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
 func (s VerifyBankElementResponseBody) String() string {
@@ -979,8 +1337,8 @@ func (s VerifyBankElementResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *VerifyBankElementResponseBody) SetResultObject(v *VerifyBankElementResponseBodyResultObject) *VerifyBankElementResponseBody {
-	s.ResultObject = v
+func (s *VerifyBankElementResponseBody) SetCode(v string) *VerifyBankElementResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -994,15 +1352,15 @@ func (s *VerifyBankElementResponseBody) SetRequestId(v string) *VerifyBankElemen
 	return s
 }
 
-func (s *VerifyBankElementResponseBody) SetCode(v string) *VerifyBankElementResponseBody {
-	s.Code = &v
+func (s *VerifyBankElementResponseBody) SetResultObject(v *VerifyBankElementResponseBodyResultObject) *VerifyBankElementResponseBody {
+	s.ResultObject = v
 	return s
 }
 
 type VerifyBankElementResponseBodyResultObject struct {
-	MaterialInfo *string `json:"MaterialInfo,omitempty" xml:"MaterialInfo,omitempty"`
 	CertifyId    *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
 	SubCode      *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	MaterialInfo *string `json:"MaterialInfo,omitempty" xml:"MaterialInfo,omitempty"`
 	Passed       *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
 }
 
@@ -1014,11 +1372,6 @@ func (s VerifyBankElementResponseBodyResultObject) GoString() string {
 	return s.String()
 }
 
-func (s *VerifyBankElementResponseBodyResultObject) SetMaterialInfo(v string) *VerifyBankElementResponseBodyResultObject {
-	s.MaterialInfo = &v
-	return s
-}
-
 func (s *VerifyBankElementResponseBodyResultObject) SetCertifyId(v string) *VerifyBankElementResponseBodyResultObject {
 	s.CertifyId = &v
 	return s
@@ -1026,6 +1379,11 @@ func (s *VerifyBankElementResponseBodyResultObject) SetCertifyId(v string) *Veri
 
 func (s *VerifyBankElementResponseBodyResultObject) SetSubCode(v string) *VerifyBankElementResponseBodyResultObject {
 	s.SubCode = &v
+	return s
+}
+
+func (s *VerifyBankElementResponseBodyResultObject) SetMaterialInfo(v string) *VerifyBankElementResponseBodyResultObject {
+	s.MaterialInfo = &v
 	return s
 }
 
@@ -1181,40 +1539,43 @@ func (client *Client) ContrastSmartVerifyAdvance(request *ContrastSmartVerifyAdv
 	openapiutil.Convert(runtime, ossRuntime)
 	contrastSmartVerifyReq := &ContrastSmartVerifyRequest{}
 	openapiutil.Convert(request, contrastSmartVerifyReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.FacePicFileObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.ObjectKey,
+			Content:     request.FacePicFileObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.AccessKeyId,
+			Policy:              authResponse.EncodedPolicy,
+			Signature:           authResponse.Signature,
+			Key:                 authResponse.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		contrastSmartVerifyReq.FacePicFile = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.FacePicFileObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	contrastSmartVerifyReq.FacePicFile = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	contrastSmartVerifyResp, _err := client.ContrastSmartVerifyWithOptions(contrastSmartVerifyReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1245,6 +1606,34 @@ func (client *Client) DescribeSmartVerify(request *DescribeSmartVerifyRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSmartVerifyResponse{}
 	_body, _err := client.DescribeSmartVerifyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeSmsDetailWithOptions(request *DescribeSmsDetailRequest, runtime *util.RuntimeOptions) (_result *DescribeSmsDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeSmsDetailResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeSmsDetail"), tea.String("2020-06-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeSmsDetail(request *DescribeSmsDetailRequest) (_result *DescribeSmsDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSmsDetailResponse{}
+	_body, _err := client.DescribeSmsDetailWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1329,40 +1718,43 @@ func (client *Client) ElementSmartVerifyAdvance(request *ElementSmartVerifyAdvan
 	openapiutil.Convert(runtime, ossRuntime)
 	elementSmartVerifyReq := &ElementSmartVerifyRequest{}
 	openapiutil.Convert(request, elementSmartVerifyReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.CertFileObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.ObjectKey,
+			Content:     request.CertFileObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.AccessKeyId,
+			Policy:              authResponse.EncodedPolicy,
+			Signature:           authResponse.Signature,
+			Key:                 authResponse.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		elementSmartVerifyReq.CertFile = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.CertFileObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	elementSmartVerifyReq.CertFile = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	elementSmartVerifyResp, _err := client.ElementSmartVerifyWithOptions(elementSmartVerifyReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1393,6 +1785,34 @@ func (client *Client) InitSmartVerify(request *InitSmartVerifyRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &InitSmartVerifyResponse{}
 	_body, _err := client.InitSmartVerifyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SendSmsWithOptions(request *SendSmsRequest, runtime *util.RuntimeOptions) (_result *SendSmsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SendSmsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SendSms"), tea.String("2020-06-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SendSms(request *SendSmsRequest) (_result *SendSmsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SendSmsResponse{}
+	_body, _err := client.SendSmsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1477,40 +1897,43 @@ func (client *Client) VerifyBankElementAdvance(request *VerifyBankElementAdvance
 	openapiutil.Convert(runtime, ossRuntime)
 	verifyBankElementReq := &VerifyBankElementRequest{}
 	openapiutil.Convert(request, verifyBankElementReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.BankCardFileObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.ObjectKey,
+			Content:     request.BankCardFileObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.AccessKeyId,
+			Policy:              authResponse.EncodedPolicy,
+			Signature:           authResponse.Signature,
+			Key:                 authResponse.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		verifyBankElementReq.BankCardFile = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.BankCardFileObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	verifyBankElementReq.BankCardFile = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	verifyBankElementResp, _err := client.VerifyBankElementWithOptions(verifyBankElementReq, runtime)
 	if _err != nil {
 		return _result, _err
