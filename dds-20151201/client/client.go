@@ -548,6 +548,7 @@ type CreateDBInstanceRequest struct {
 	ResourceOwnerAccount  *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId       *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ClientToken           *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	ZoneId                *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 	Engine                *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
@@ -606,6 +607,11 @@ func (s *CreateDBInstanceRequest) SetResourceOwnerId(v int64) *CreateDBInstanceR
 
 func (s *CreateDBInstanceRequest) SetOwnerAccount(v string) *CreateDBInstanceRequest {
 	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CreateDBInstanceRequest) SetRegionId(v string) *CreateDBInstanceRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -1051,9 +1057,7 @@ type CreateServerlessDBInstanceRequest struct {
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
 	SecurityIPList        *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
 	AccountPassword       *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
-	ChargeType            *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	Period                *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
-	NetworkType           *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	VpcId                 *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	VSwitchId             *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	ClientToken           *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
@@ -1136,18 +1140,8 @@ func (s *CreateServerlessDBInstanceRequest) SetAccountPassword(v string) *Create
 	return s
 }
 
-func (s *CreateServerlessDBInstanceRequest) SetChargeType(v string) *CreateServerlessDBInstanceRequest {
-	s.ChargeType = &v
-	return s
-}
-
 func (s *CreateServerlessDBInstanceRequest) SetPeriod(v int32) *CreateServerlessDBInstanceRequest {
 	s.Period = &v
-	return s
-}
-
-func (s *CreateServerlessDBInstanceRequest) SetNetworkType(v string) *CreateServerlessDBInstanceRequest {
-	s.NetworkType = &v
 	return s
 }
 
@@ -1239,6 +1233,7 @@ func (s *CreateServerlessDBInstanceResponse) SetBody(v *CreateServerlessDBInstan
 }
 
 type CreateShardingDBInstanceRequest struct {
+	RegionId              *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SecurityToken         *string                                        `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	OwnerId               *int64                                         `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount  *string                                        `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -1272,6 +1267,11 @@ func (s CreateShardingDBInstanceRequest) String() string {
 
 func (s CreateShardingDBInstanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateShardingDBInstanceRequest) SetRegionId(v string) *CreateShardingDBInstanceRequest {
+	s.RegionId = &v
+	return s
 }
 
 func (s *CreateShardingDBInstanceRequest) SetSecurityToken(v string) *CreateShardingDBInstanceRequest {
@@ -2742,363 +2742,6 @@ func (s *DescribeAuditRecordsResponse) SetHeaders(v map[string]*string) *Describ
 }
 
 func (s *DescribeAuditRecordsResponse) SetBody(v *DescribeAuditRecordsResponseBody) *DescribeAuditRecordsResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeAvailableResourceRequest struct {
-	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ZoneId               *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	InstanceChargeType   *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-}
-
-func (s DescribeAvailableResourceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAvailableResourceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAvailableResourceRequest) SetSecurityToken(v string) *DescribeAvailableResourceRequest {
-	s.SecurityToken = &v
-	return s
-}
-
-func (s *DescribeAvailableResourceRequest) SetOwnerId(v int64) *DescribeAvailableResourceRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeAvailableResourceRequest) SetResourceOwnerAccount(v string) *DescribeAvailableResourceRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *DescribeAvailableResourceRequest) SetResourceOwnerId(v int64) *DescribeAvailableResourceRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *DescribeAvailableResourceRequest) SetOwnerAccount(v string) *DescribeAvailableResourceRequest {
-	s.OwnerAccount = &v
-	return s
-}
-
-func (s *DescribeAvailableResourceRequest) SetRegionId(v string) *DescribeAvailableResourceRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeAvailableResourceRequest) SetZoneId(v string) *DescribeAvailableResourceRequest {
-	s.ZoneId = &v
-	return s
-}
-
-func (s *DescribeAvailableResourceRequest) SetInstanceChargeType(v string) *DescribeAvailableResourceRequest {
-	s.InstanceChargeType = &v
-	return s
-}
-
-type DescribeAvailableResourceResponseBody struct {
-	RequestId        *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SupportedDBTypes *DescribeAvailableResourceResponseBodySupportedDBTypes `json:"SupportedDBTypes,omitempty" xml:"SupportedDBTypes,omitempty" type:"Struct"`
-}
-
-func (s DescribeAvailableResourceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAvailableResourceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAvailableResourceResponseBody) SetRequestId(v string) *DescribeAvailableResourceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeAvailableResourceResponseBody) SetSupportedDBTypes(v *DescribeAvailableResourceResponseBodySupportedDBTypes) *DescribeAvailableResourceResponseBody {
-	s.SupportedDBTypes = v
-	return s
-}
-
-type DescribeAvailableResourceResponseBodySupportedDBTypes struct {
-	SupportedDBType []*DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBType `json:"SupportedDBType,omitempty" xml:"SupportedDBType,omitempty" type:"Repeated"`
-}
-
-func (s DescribeAvailableResourceResponseBodySupportedDBTypes) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAvailableResourceResponseBodySupportedDBTypes) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAvailableResourceResponseBodySupportedDBTypes) SetSupportedDBType(v []*DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBType) *DescribeAvailableResourceResponseBodySupportedDBTypes {
-	s.SupportedDBType = v
-	return s
-}
-
-type DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBType struct {
-	AvailableZones *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZones `json:"AvailableZones,omitempty" xml:"AvailableZones,omitempty" type:"Struct"`
-	DbType         *string                                                                             `json:"DbType,omitempty" xml:"DbType,omitempty"`
-}
-
-func (s DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBType) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBType) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBType) SetAvailableZones(v *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZones) *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBType {
-	s.AvailableZones = v
-	return s
-}
-
-func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBType) SetDbType(v string) *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBType {
-	s.DbType = &v
-	return s
-}
-
-type DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZones struct {
-	AvailableZone []*DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZone `json:"AvailableZone,omitempty" xml:"AvailableZone,omitempty" type:"Repeated"`
-}
-
-func (s DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZones) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZones) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZones) SetAvailableZone(v []*DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZone) *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZones {
-	s.AvailableZone = v
-	return s
-}
-
-type DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZone struct {
-	SupportedEngineVersions *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersions `json:"SupportedEngineVersions,omitempty" xml:"SupportedEngineVersions,omitempty" type:"Struct"`
-	ZoneId                  *string                                                                                                                 `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	RegionId                *string                                                                                                                 `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZone) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZone) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZone) SetSupportedEngineVersions(v *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersions) *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZone {
-	s.SupportedEngineVersions = v
-	return s
-}
-
-func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZone) SetZoneId(v string) *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZone {
-	s.ZoneId = &v
-	return s
-}
-
-func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZone) SetRegionId(v string) *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZone {
-	s.RegionId = &v
-	return s
-}
-
-type DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersions struct {
-	SupportedEngineVersion []*DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersion `json:"SupportedEngineVersion,omitempty" xml:"SupportedEngineVersion,omitempty" type:"Repeated"`
-}
-
-func (s DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersions) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersions) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersions) SetSupportedEngineVersion(v []*DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersion) *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersions {
-	s.SupportedEngineVersion = v
-	return s
-}
-
-type DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersion struct {
-	SupportedEngines *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEngines `json:"SupportedEngines,omitempty" xml:"SupportedEngines,omitempty" type:"Struct"`
-	Version          *string                                                                                                                                                       `json:"Version,omitempty" xml:"Version,omitempty"`
-}
-
-func (s DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersion) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersion) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersion) SetSupportedEngines(v *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEngines) *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersion {
-	s.SupportedEngines = v
-	return s
-}
-
-func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersion) SetVersion(v string) *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersion {
-	s.Version = &v
-	return s
-}
-
-type DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEngines struct {
-	SupportedEngine []*DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngine `json:"SupportedEngine,omitempty" xml:"SupportedEngine,omitempty" type:"Repeated"`
-}
-
-func (s DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEngines) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEngines) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEngines) SetSupportedEngine(v []*DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngine) *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEngines {
-	s.SupportedEngine = v
-	return s
-}
-
-type DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngine struct {
-	SupportedNodeTypes *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypes `json:"SupportedNodeTypes,omitempty" xml:"SupportedNodeTypes,omitempty" type:"Struct"`
-	Engine             *string                                                                                                                                                                                        `json:"Engine,omitempty" xml:"Engine,omitempty"`
-}
-
-func (s DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngine) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngine) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngine) SetSupportedNodeTypes(v *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypes) *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngine {
-	s.SupportedNodeTypes = v
-	return s
-}
-
-func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngine) SetEngine(v string) *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngine {
-	s.Engine = &v
-	return s
-}
-
-type DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypes struct {
-	SupportedNodeType []*DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypesSupportedNodeType `json:"SupportedNodeType,omitempty" xml:"SupportedNodeType,omitempty" type:"Repeated"`
-}
-
-func (s DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypes) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypes) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypes) SetSupportedNodeType(v []*DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypesSupportedNodeType) *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypes {
-	s.SupportedNodeType = v
-	return s
-}
-
-type DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypesSupportedNodeType struct {
-	NodeType           *string                                                                                                                                                                                                                           `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	NetworkTypes       *string                                                                                                                                                                                                                           `json:"NetworkTypes,omitempty" xml:"NetworkTypes,omitempty"`
-	AvailableResources *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypesSupportedNodeTypeAvailableResources `json:"AvailableResources,omitempty" xml:"AvailableResources,omitempty" type:"Struct"`
-}
-
-func (s DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypesSupportedNodeType) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypesSupportedNodeType) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypesSupportedNodeType) SetNodeType(v string) *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypesSupportedNodeType {
-	s.NodeType = &v
-	return s
-}
-
-func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypesSupportedNodeType) SetNetworkTypes(v string) *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypesSupportedNodeType {
-	s.NetworkTypes = &v
-	return s
-}
-
-func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypesSupportedNodeType) SetAvailableResources(v *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypesSupportedNodeTypeAvailableResources) *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypesSupportedNodeType {
-	s.AvailableResources = v
-	return s
-}
-
-type DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypesSupportedNodeTypeAvailableResources struct {
-	AvailableResource []*DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypesSupportedNodeTypeAvailableResourcesAvailableResource `json:"AvailableResource,omitempty" xml:"AvailableResource,omitempty" type:"Repeated"`
-}
-
-func (s DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypesSupportedNodeTypeAvailableResources) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypesSupportedNodeTypeAvailableResources) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypesSupportedNodeTypeAvailableResources) SetAvailableResource(v []*DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypesSupportedNodeTypeAvailableResourcesAvailableResource) *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypesSupportedNodeTypeAvailableResources {
-	s.AvailableResource = v
-	return s
-}
-
-type DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypesSupportedNodeTypeAvailableResourcesAvailableResource struct {
-	InstanceClassRemark *string `json:"InstanceClassRemark,omitempty" xml:"InstanceClassRemark,omitempty"`
-	InstanceClass       *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-}
-
-func (s DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypesSupportedNodeTypeAvailableResourcesAvailableResource) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypesSupportedNodeTypeAvailableResourcesAvailableResource) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypesSupportedNodeTypeAvailableResourcesAvailableResource) SetInstanceClassRemark(v string) *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypesSupportedNodeTypeAvailableResourcesAvailableResource {
-	s.InstanceClassRemark = &v
-	return s
-}
-
-func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypesSupportedNodeTypeAvailableResourcesAvailableResource) SetInstanceClass(v string) *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypesSupportedNodeTypeAvailableResourcesAvailableResource {
-	s.InstanceClass = &v
-	return s
-}
-
-type DescribeAvailableResourceResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeAvailableResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeAvailableResourceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAvailableResourceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAvailableResourceResponse) SetHeaders(v map[string]*string) *DescribeAvailableResourceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeAvailableResourceResponse) SetBody(v *DescribeAvailableResourceResponseBody) *DescribeAvailableResourceResponse {
 	s.Body = v
 	return s
 }
@@ -5740,7 +5383,6 @@ type DescribeDedicatedClusterInstanceListRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Region               *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	ZoneId               *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceStatus       *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
@@ -5788,11 +5430,6 @@ func (s *DescribeDedicatedClusterInstanceListRequest) SetOwnerAccount(v string) 
 
 func (s *DescribeDedicatedClusterInstanceListRequest) SetRegionId(v string) *DescribeDedicatedClusterInstanceListRequest {
 	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListRequest) SetRegion(v string) *DescribeDedicatedClusterInstanceListRequest {
-	s.Region = &v
 	return s
 }
 
@@ -7792,7 +7429,6 @@ type DescribeRegionsRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ZoneId               *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeRegionsRequest) String() string {
@@ -7830,11 +7466,6 @@ func (s *DescribeRegionsRequest) SetOwnerAccount(v string) *DescribeRegionsReque
 
 func (s *DescribeRegionsRequest) SetRegionId(v string) *DescribeRegionsRequest {
 	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeRegionsRequest) SetZoneId(v string) *DescribeRegionsRequest {
-	s.ZoneId = &v
 	return s
 }
 
@@ -10968,7 +10599,6 @@ type ModifyDBInstanceSpecRequest struct {
 	DBInstanceStorage    *string `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
 	OrderType            *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	AutoPay              *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	FromApp              *string `json:"FromApp,omitempty" xml:"FromApp,omitempty"`
 	BusinessInfo         *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
 	ReplicationFactor    *string `json:"ReplicationFactor,omitempty" xml:"ReplicationFactor,omitempty"`
 	ReadonlyReplicas     *string `json:"ReadonlyReplicas,omitempty" xml:"ReadonlyReplicas,omitempty"`
@@ -11031,11 +10661,6 @@ func (s *ModifyDBInstanceSpecRequest) SetOrderType(v string) *ModifyDBInstanceSp
 
 func (s *ModifyDBInstanceSpecRequest) SetAutoPay(v bool) *ModifyDBInstanceSpecRequest {
 	s.AutoPay = &v
-	return s
-}
-
-func (s *ModifyDBInstanceSpecRequest) SetFromApp(v string) *ModifyDBInstanceSpecRequest {
-	s.FromApp = &v
 	return s
 }
 
@@ -11532,8 +11157,11 @@ type ModifyNodeSpecRequest struct {
 	FromApp              *string `json:"FromApp,omitempty" xml:"FromApp,omitempty"`
 	AutoPay              *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	EffectiveTime        *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
+	SwitchTime           *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
 	OrderType            *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	ReadonlyReplicas     *int32  `json:"ReadonlyReplicas,omitempty" xml:"ReadonlyReplicas,omitempty"`
+	BusinessInfo         *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
+	CouponNo             *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
 }
 
 func (s ModifyNodeSpecRequest) String() string {
@@ -11609,6 +11237,11 @@ func (s *ModifyNodeSpecRequest) SetEffectiveTime(v string) *ModifyNodeSpecReques
 	return s
 }
 
+func (s *ModifyNodeSpecRequest) SetSwitchTime(v string) *ModifyNodeSpecRequest {
+	s.SwitchTime = &v
+	return s
+}
+
 func (s *ModifyNodeSpecRequest) SetOrderType(v string) *ModifyNodeSpecRequest {
 	s.OrderType = &v
 	return s
@@ -11616,6 +11249,16 @@ func (s *ModifyNodeSpecRequest) SetOrderType(v string) *ModifyNodeSpecRequest {
 
 func (s *ModifyNodeSpecRequest) SetReadonlyReplicas(v int32) *ModifyNodeSpecRequest {
 	s.ReadonlyReplicas = &v
+	return s
+}
+
+func (s *ModifyNodeSpecRequest) SetBusinessInfo(v string) *ModifyNodeSpecRequest {
+	s.BusinessInfo = &v
+	return s
+}
+
+func (s *ModifyNodeSpecRequest) SetCouponNo(v string) *ModifyNodeSpecRequest {
+	s.CouponNo = &v
 	return s
 }
 
@@ -13858,34 +13501,6 @@ func (client *Client) DescribeAuditRecords(request *DescribeAuditRecordsRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAuditRecordsResponse{}
 	_body, _err := client.DescribeAuditRecordsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeAvailableResourceWithOptions(request *DescribeAvailableResourceRequest, runtime *util.RuntimeOptions) (_result *DescribeAvailableResourceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeAvailableResourceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeAvailableResource"), tea.String("2015-12-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeAvailableResource(request *DescribeAvailableResourceRequest) (_result *DescribeAvailableResourceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeAvailableResourceResponse{}
-	_body, _err := client.DescribeAvailableResourceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
