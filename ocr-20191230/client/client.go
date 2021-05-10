@@ -19,9 +19,8 @@ import (
 )
 
 type RecognizeDrivingLicenseRequest struct {
-	ImageType *int32  `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	ImageURL  *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-	Side      *string `json:"Side,omitempty" xml:"Side,omitempty"`
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	Side     *string `json:"Side,omitempty" xml:"Side,omitempty"`
 }
 
 func (s RecognizeDrivingLicenseRequest) String() string {
@@ -30,11 +29,6 @@ func (s RecognizeDrivingLicenseRequest) String() string {
 
 func (s RecognizeDrivingLicenseRequest) GoString() string {
 	return s.String()
-}
-
-func (s *RecognizeDrivingLicenseRequest) SetImageType(v int32) *RecognizeDrivingLicenseRequest {
-	s.ImageType = &v
-	return s
 }
 
 func (s *RecognizeDrivingLicenseRequest) SetImageURL(v string) *RecognizeDrivingLicenseRequest {
@@ -49,7 +43,6 @@ func (s *RecognizeDrivingLicenseRequest) SetSide(v string) *RecognizeDrivingLice
 
 type RecognizeDrivingLicenseAdvanceRequest struct {
 	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
-	ImageType      *int32    `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
 	Side           *string   `json:"Side,omitempty" xml:"Side,omitempty"`
 }
 
@@ -63,11 +56,6 @@ func (s RecognizeDrivingLicenseAdvanceRequest) GoString() string {
 
 func (s *RecognizeDrivingLicenseAdvanceRequest) SetImageURLObject(v io.Reader) *RecognizeDrivingLicenseAdvanceRequest {
 	s.ImageURLObject = v
-	return s
-}
-
-func (s *RecognizeDrivingLicenseAdvanceRequest) SetImageType(v int32) *RecognizeDrivingLicenseAdvanceRequest {
-	s.ImageType = &v
 	return s
 }
 
@@ -514,7 +502,6 @@ type TrimDocumentRequest struct {
 	FileURL    *string `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
 	FileType   *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
 	OutputType *string `json:"OutputType,omitempty" xml:"OutputType,omitempty"`
-	Async      *bool   `json:"Async,omitempty" xml:"Async,omitempty"`
 }
 
 func (s TrimDocumentRequest) String() string {
@@ -540,16 +527,10 @@ func (s *TrimDocumentRequest) SetOutputType(v string) *TrimDocumentRequest {
 	return s
 }
 
-func (s *TrimDocumentRequest) SetAsync(v bool) *TrimDocumentRequest {
-	s.Async = &v
-	return s
-}
-
 type TrimDocumentAdvanceRequest struct {
 	FileURLObject io.Reader `json:"FileURLObject,omitempty" xml:"FileURLObject,omitempty" require:"true"`
 	FileType      *string   `json:"FileType,omitempty" xml:"FileType,omitempty"`
 	OutputType    *string   `json:"OutputType,omitempty" xml:"OutputType,omitempty"`
-	Async         *bool     `json:"Async,omitempty" xml:"Async,omitempty"`
 }
 
 func (s TrimDocumentAdvanceRequest) String() string {
@@ -572,11 +553,6 @@ func (s *TrimDocumentAdvanceRequest) SetFileType(v string) *TrimDocumentAdvanceR
 
 func (s *TrimDocumentAdvanceRequest) SetOutputType(v string) *TrimDocumentAdvanceRequest {
 	s.OutputType = &v
-	return s
-}
-
-func (s *TrimDocumentAdvanceRequest) SetAsync(v bool) *TrimDocumentAdvanceRequest {
-	s.Async = &v
 	return s
 }
 
@@ -644,7 +620,6 @@ func (s *TrimDocumentResponse) SetBody(v *TrimDocumentResponseBody) *TrimDocumen
 }
 
 type RecognizeTableRequest struct {
-	ImageType       *int32  `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
 	ImageURL        *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	OutputFormat    *string `json:"OutputFormat,omitempty" xml:"OutputFormat,omitempty"`
 	UseFinanceModel *bool   `json:"UseFinanceModel,omitempty" xml:"UseFinanceModel,omitempty"`
@@ -659,11 +634,6 @@ func (s RecognizeTableRequest) String() string {
 
 func (s RecognizeTableRequest) GoString() string {
 	return s.String()
-}
-
-func (s *RecognizeTableRequest) SetImageType(v int32) *RecognizeTableRequest {
-	s.ImageType = &v
-	return s
 }
 
 func (s *RecognizeTableRequest) SetImageURL(v string) *RecognizeTableRequest {
@@ -698,7 +668,6 @@ func (s *RecognizeTableRequest) SetSkipDetection(v bool) *RecognizeTableRequest 
 
 type RecognizeTableAdvanceRequest struct {
 	ImageURLObject  io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
-	ImageType       *int32    `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
 	OutputFormat    *string   `json:"OutputFormat,omitempty" xml:"OutputFormat,omitempty"`
 	UseFinanceModel *bool     `json:"UseFinanceModel,omitempty" xml:"UseFinanceModel,omitempty"`
 	AssureDirection *bool     `json:"AssureDirection,omitempty" xml:"AssureDirection,omitempty"`
@@ -716,11 +685,6 @@ func (s RecognizeTableAdvanceRequest) GoString() string {
 
 func (s *RecognizeTableAdvanceRequest) SetImageURLObject(v io.Reader) *RecognizeTableAdvanceRequest {
 	s.ImageURLObject = v
-	return s
-}
-
-func (s *RecognizeTableAdvanceRequest) SetImageType(v int32) *RecognizeTableAdvanceRequest {
-	s.ImageType = &v
 	return s
 }
 
@@ -918,9 +882,8 @@ func (s *RecognizeTableResponse) SetBody(v *RecognizeTableResponseBody) *Recogni
 }
 
 type RecognizeIdentityCardRequest struct {
-	ImageType *int32  `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	ImageURL  *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-	Side      *string `json:"Side,omitempty" xml:"Side,omitempty"`
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	Side     *string `json:"Side,omitempty" xml:"Side,omitempty"`
 }
 
 func (s RecognizeIdentityCardRequest) String() string {
@@ -929,11 +892,6 @@ func (s RecognizeIdentityCardRequest) String() string {
 
 func (s RecognizeIdentityCardRequest) GoString() string {
 	return s.String()
-}
-
-func (s *RecognizeIdentityCardRequest) SetImageType(v int32) *RecognizeIdentityCardRequest {
-	s.ImageType = &v
-	return s
 }
 
 func (s *RecognizeIdentityCardRequest) SetImageURL(v string) *RecognizeIdentityCardRequest {
@@ -948,7 +906,6 @@ func (s *RecognizeIdentityCardRequest) SetSide(v string) *RecognizeIdentityCardR
 
 type RecognizeIdentityCardAdvanceRequest struct {
 	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
-	ImageType      *int32    `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
 	Side           *string   `json:"Side,omitempty" xml:"Side,omitempty"`
 }
 
@@ -962,11 +919,6 @@ func (s RecognizeIdentityCardAdvanceRequest) GoString() string {
 
 func (s *RecognizeIdentityCardAdvanceRequest) SetImageURLObject(v io.Reader) *RecognizeIdentityCardAdvanceRequest {
 	s.ImageURLObject = v
-	return s
-}
-
-func (s *RecognizeIdentityCardAdvanceRequest) SetImageType(v int32) *RecognizeIdentityCardAdvanceRequest {
-	s.ImageType = &v
 	return s
 }
 
@@ -1260,8 +1212,7 @@ func (s *RecognizeIdentityCardResponse) SetBody(v *RecognizeIdentityCardResponse
 }
 
 type RecognizeBusinessLicenseRequest struct {
-	ImageType *int32  `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	ImageURL  *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s RecognizeBusinessLicenseRequest) String() string {
@@ -1272,11 +1223,6 @@ func (s RecognizeBusinessLicenseRequest) GoString() string {
 	return s.String()
 }
 
-func (s *RecognizeBusinessLicenseRequest) SetImageType(v int32) *RecognizeBusinessLicenseRequest {
-	s.ImageType = &v
-	return s
-}
-
 func (s *RecognizeBusinessLicenseRequest) SetImageURL(v string) *RecognizeBusinessLicenseRequest {
 	s.ImageURL = &v
 	return s
@@ -1284,7 +1230,6 @@ func (s *RecognizeBusinessLicenseRequest) SetImageURL(v string) *RecognizeBusine
 
 type RecognizeBusinessLicenseAdvanceRequest struct {
 	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
-	ImageType      *int32    `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
 }
 
 func (s RecognizeBusinessLicenseAdvanceRequest) String() string {
@@ -1297,11 +1242,6 @@ func (s RecognizeBusinessLicenseAdvanceRequest) GoString() string {
 
 func (s *RecognizeBusinessLicenseAdvanceRequest) SetImageURLObject(v io.Reader) *RecognizeBusinessLicenseAdvanceRequest {
 	s.ImageURLObject = v
-	return s
-}
-
-func (s *RecognizeBusinessLicenseAdvanceRequest) SetImageType(v int32) *RecognizeBusinessLicenseAdvanceRequest {
-	s.ImageType = &v
 	return s
 }
 
@@ -1587,8 +1527,7 @@ func (s *RecognizeBusinessLicenseResponse) SetBody(v *RecognizeBusinessLicenseRe
 }
 
 type RecognizeBankCardRequest struct {
-	ImageType *int32  `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	ImageURL  *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s RecognizeBankCardRequest) String() string {
@@ -1599,11 +1538,6 @@ func (s RecognizeBankCardRequest) GoString() string {
 	return s.String()
 }
 
-func (s *RecognizeBankCardRequest) SetImageType(v int32) *RecognizeBankCardRequest {
-	s.ImageType = &v
-	return s
-}
-
 func (s *RecognizeBankCardRequest) SetImageURL(v string) *RecognizeBankCardRequest {
 	s.ImageURL = &v
 	return s
@@ -1611,7 +1545,6 @@ func (s *RecognizeBankCardRequest) SetImageURL(v string) *RecognizeBankCardReque
 
 type RecognizeBankCardAdvanceRequest struct {
 	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
-	ImageType      *int32    `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
 }
 
 func (s RecognizeBankCardAdvanceRequest) String() string {
@@ -1624,11 +1557,6 @@ func (s RecognizeBankCardAdvanceRequest) GoString() string {
 
 func (s *RecognizeBankCardAdvanceRequest) SetImageURLObject(v io.Reader) *RecognizeBankCardAdvanceRequest {
 	s.ImageURLObject = v
-	return s
-}
-
-func (s *RecognizeBankCardAdvanceRequest) SetImageType(v int32) *RecognizeBankCardAdvanceRequest {
-	s.ImageType = &v
 	return s
 }
 
@@ -1805,8 +1733,7 @@ func (s *RecognizeVerificationcodeResponse) SetBody(v *RecognizeVerificationcode
 }
 
 type RecognizeAccountPageRequest struct {
-	ImageType *int32  `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	ImageURL  *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s RecognizeAccountPageRequest) String() string {
@@ -1817,11 +1744,6 @@ func (s RecognizeAccountPageRequest) GoString() string {
 	return s.String()
 }
 
-func (s *RecognizeAccountPageRequest) SetImageType(v int32) *RecognizeAccountPageRequest {
-	s.ImageType = &v
-	return s
-}
-
 func (s *RecognizeAccountPageRequest) SetImageURL(v string) *RecognizeAccountPageRequest {
 	s.ImageURL = &v
 	return s
@@ -1829,7 +1751,6 @@ func (s *RecognizeAccountPageRequest) SetImageURL(v string) *RecognizeAccountPag
 
 type RecognizeAccountPageAdvanceRequest struct {
 	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
-	ImageType      *int32    `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
 }
 
 func (s RecognizeAccountPageAdvanceRequest) String() string {
@@ -1842,11 +1763,6 @@ func (s RecognizeAccountPageAdvanceRequest) GoString() string {
 
 func (s *RecognizeAccountPageAdvanceRequest) SetImageURLObject(v io.Reader) *RecognizeAccountPageAdvanceRequest {
 	s.ImageURLObject = v
-	return s
-}
-
-func (s *RecognizeAccountPageAdvanceRequest) SetImageType(v int32) *RecognizeAccountPageAdvanceRequest {
-	s.ImageType = &v
 	return s
 }
 
@@ -2167,7 +2083,6 @@ func (s *RecognizeAccountPageResponse) SetBody(v *RecognizeAccountPageResponseBo
 }
 
 type RecognizeCharacterRequest struct {
-	ImageType         *int32  `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
 	ImageURL          *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	MinHeight         *int32  `json:"MinHeight,omitempty" xml:"MinHeight,omitempty"`
 	OutputProbability *bool   `json:"OutputProbability,omitempty" xml:"OutputProbability,omitempty"`
@@ -2179,11 +2094,6 @@ func (s RecognizeCharacterRequest) String() string {
 
 func (s RecognizeCharacterRequest) GoString() string {
 	return s.String()
-}
-
-func (s *RecognizeCharacterRequest) SetImageType(v int32) *RecognizeCharacterRequest {
-	s.ImageType = &v
-	return s
 }
 
 func (s *RecognizeCharacterRequest) SetImageURL(v string) *RecognizeCharacterRequest {
@@ -2203,7 +2113,6 @@ func (s *RecognizeCharacterRequest) SetOutputProbability(v bool) *RecognizeChara
 
 type RecognizeCharacterAdvanceRequest struct {
 	ImageURLObject    io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
-	ImageType         *int32    `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
 	MinHeight         *int32    `json:"MinHeight,omitempty" xml:"MinHeight,omitempty"`
 	OutputProbability *bool     `json:"OutputProbability,omitempty" xml:"OutputProbability,omitempty"`
 }
@@ -2218,11 +2127,6 @@ func (s RecognizeCharacterAdvanceRequest) GoString() string {
 
 func (s *RecognizeCharacterAdvanceRequest) SetImageURLObject(v io.Reader) *RecognizeCharacterAdvanceRequest {
 	s.ImageURLObject = v
-	return s
-}
-
-func (s *RecognizeCharacterAdvanceRequest) SetImageType(v int32) *RecognizeCharacterAdvanceRequest {
-	s.ImageType = &v
 	return s
 }
 
@@ -2370,7 +2274,6 @@ func (s *RecognizeCharacterResponse) SetBody(v *RecognizeCharacterResponseBody) 
 }
 
 type GetAsyncJobResultRequest struct {
-	Async *bool   `json:"Async,omitempty" xml:"Async,omitempty"`
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
@@ -2380,11 +2283,6 @@ func (s GetAsyncJobResultRequest) String() string {
 
 func (s GetAsyncJobResultRequest) GoString() string {
 	return s.String()
-}
-
-func (s *GetAsyncJobResultRequest) SetAsync(v bool) *GetAsyncJobResultRequest {
-	s.Async = &v
-	return s
 }
 
 func (s *GetAsyncJobResultRequest) SetJobId(v string) *GetAsyncJobResultRequest {
@@ -2612,8 +2510,7 @@ func (s *RecognizeTakeoutOrderResponse) SetBody(v *RecognizeTakeoutOrderResponse
 }
 
 type RecognizeBusinessCardRequest struct {
-	ImageType *int32  `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	ImageURL  *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s RecognizeBusinessCardRequest) String() string {
@@ -2624,11 +2521,6 @@ func (s RecognizeBusinessCardRequest) GoString() string {
 	return s.String()
 }
 
-func (s *RecognizeBusinessCardRequest) SetImageType(v int32) *RecognizeBusinessCardRequest {
-	s.ImageType = &v
-	return s
-}
-
 func (s *RecognizeBusinessCardRequest) SetImageURL(v string) *RecognizeBusinessCardRequest {
 	s.ImageURL = &v
 	return s
@@ -2636,7 +2528,6 @@ func (s *RecognizeBusinessCardRequest) SetImageURL(v string) *RecognizeBusinessC
 
 type RecognizeBusinessCardAdvanceRequest struct {
 	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
-	ImageType      *int32    `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
 }
 
 func (s RecognizeBusinessCardAdvanceRequest) String() string {
@@ -2649,11 +2540,6 @@ func (s RecognizeBusinessCardAdvanceRequest) GoString() string {
 
 func (s *RecognizeBusinessCardAdvanceRequest) SetImageURLObject(v io.Reader) *RecognizeBusinessCardAdvanceRequest {
 	s.ImageURLObject = v
-	return s
-}
-
-func (s *RecognizeBusinessCardAdvanceRequest) SetImageType(v int32) *RecognizeBusinessCardAdvanceRequest {
-	s.ImageType = &v
 	return s
 }
 
@@ -2918,9 +2804,8 @@ func (s *DetectCardScreenshotResponse) SetBody(v *DetectCardScreenshotResponseBo
 }
 
 type RecognizeDriverLicenseRequest struct {
-	ImageType *int32  `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	ImageURL  *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-	Side      *string `json:"Side,omitempty" xml:"Side,omitempty"`
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	Side     *string `json:"Side,omitempty" xml:"Side,omitempty"`
 }
 
 func (s RecognizeDriverLicenseRequest) String() string {
@@ -2929,11 +2814,6 @@ func (s RecognizeDriverLicenseRequest) String() string {
 
 func (s RecognizeDriverLicenseRequest) GoString() string {
 	return s.String()
-}
-
-func (s *RecognizeDriverLicenseRequest) SetImageType(v int32) *RecognizeDriverLicenseRequest {
-	s.ImageType = &v
-	return s
 }
 
 func (s *RecognizeDriverLicenseRequest) SetImageURL(v string) *RecognizeDriverLicenseRequest {
@@ -2948,7 +2828,6 @@ func (s *RecognizeDriverLicenseRequest) SetSide(v string) *RecognizeDriverLicens
 
 type RecognizeDriverLicenseAdvanceRequest struct {
 	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
-	ImageType      *int32    `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
 	Side           *string   `json:"Side,omitempty" xml:"Side,omitempty"`
 }
 
@@ -2962,11 +2841,6 @@ func (s RecognizeDriverLicenseAdvanceRequest) GoString() string {
 
 func (s *RecognizeDriverLicenseAdvanceRequest) SetImageURLObject(v io.Reader) *RecognizeDriverLicenseAdvanceRequest {
 	s.ImageURLObject = v
-	return s
-}
-
-func (s *RecognizeDriverLicenseAdvanceRequest) SetImageType(v int32) *RecognizeDriverLicenseAdvanceRequest {
-	s.ImageType = &v
 	return s
 }
 
@@ -3023,6 +2897,9 @@ func (s *RecognizeDriverLicenseResponseBodyData) SetFaceResult(v *RecognizeDrive
 
 type RecognizeDriverLicenseResponseBodyDataBackResult struct {
 	ArchiveNumber *string `json:"ArchiveNumber,omitempty" xml:"ArchiveNumber,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	CardNumber    *string `json:"CardNumber,omitempty" xml:"CardNumber,omitempty"`
+	Record        *string `json:"Record,omitempty" xml:"Record,omitempty"`
 }
 
 func (s RecognizeDriverLicenseResponseBodyDataBackResult) String() string {
@@ -3038,6 +2915,21 @@ func (s *RecognizeDriverLicenseResponseBodyDataBackResult) SetArchiveNumber(v st
 	return s
 }
 
+func (s *RecognizeDriverLicenseResponseBodyDataBackResult) SetName(v string) *RecognizeDriverLicenseResponseBodyDataBackResult {
+	s.Name = &v
+	return s
+}
+
+func (s *RecognizeDriverLicenseResponseBodyDataBackResult) SetCardNumber(v string) *RecognizeDriverLicenseResponseBodyDataBackResult {
+	s.CardNumber = &v
+	return s
+}
+
+func (s *RecognizeDriverLicenseResponseBodyDataBackResult) SetRecord(v string) *RecognizeDriverLicenseResponseBodyDataBackResult {
+	s.Record = &v
+	return s
+}
+
 type RecognizeDriverLicenseResponseBodyDataFaceResult struct {
 	VehicleType   *string `json:"VehicleType,omitempty" xml:"VehicleType,omitempty"`
 	IssueDate     *string `json:"IssueDate,omitempty" xml:"IssueDate,omitempty"`
@@ -3047,6 +2939,7 @@ type RecognizeDriverLicenseResponseBodyDataFaceResult struct {
 	StartDate     *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 	LicenseNumber *string `json:"LicenseNumber,omitempty" xml:"LicenseNumber,omitempty"`
 	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	IssueUnit     *string `json:"IssueUnit,omitempty" xml:"IssueUnit,omitempty"`
 }
 
 func (s RecognizeDriverLicenseResponseBodyDataFaceResult) String() string {
@@ -3097,6 +2990,11 @@ func (s *RecognizeDriverLicenseResponseBodyDataFaceResult) SetName(v string) *Re
 	return s
 }
 
+func (s *RecognizeDriverLicenseResponseBodyDataFaceResult) SetIssueUnit(v string) *RecognizeDriverLicenseResponseBodyDataFaceResult {
+	s.IssueUnit = &v
+	return s
+}
+
 type RecognizeDriverLicenseResponse struct {
 	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	Body    *RecognizeDriverLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -3121,8 +3019,7 @@ func (s *RecognizeDriverLicenseResponse) SetBody(v *RecognizeDriverLicenseRespon
 }
 
 type RecognizeLicensePlateRequest struct {
-	ImageType *int32  `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	ImageURL  *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s RecognizeLicensePlateRequest) String() string {
@@ -3133,11 +3030,6 @@ func (s RecognizeLicensePlateRequest) GoString() string {
 	return s.String()
 }
 
-func (s *RecognizeLicensePlateRequest) SetImageType(v int32) *RecognizeLicensePlateRequest {
-	s.ImageType = &v
-	return s
-}
-
 func (s *RecognizeLicensePlateRequest) SetImageURL(v string) *RecognizeLicensePlateRequest {
 	s.ImageURL = &v
 	return s
@@ -3145,7 +3037,6 @@ func (s *RecognizeLicensePlateRequest) SetImageURL(v string) *RecognizeLicensePl
 
 type RecognizeLicensePlateAdvanceRequest struct {
 	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
-	ImageType      *int32    `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
 }
 
 func (s RecognizeLicensePlateAdvanceRequest) String() string {
@@ -3158,11 +3049,6 @@ func (s RecognizeLicensePlateAdvanceRequest) GoString() string {
 
 func (s *RecognizeLicensePlateAdvanceRequest) SetImageURLObject(v io.Reader) *RecognizeLicensePlateAdvanceRequest {
 	s.ImageURLObject = v
-	return s
-}
-
-func (s *RecognizeLicensePlateAdvanceRequest) SetImageType(v int32) *RecognizeLicensePlateAdvanceRequest {
-	s.ImageType = &v
 	return s
 }
 
@@ -3207,11 +3093,12 @@ func (s *RecognizeLicensePlateResponseBodyData) SetPlates(v []*RecognizeLicenseP
 }
 
 type RecognizeLicensePlateResponseBodyDataPlates struct {
-	PlateTypeConfidence *float32                                        `json:"PlateTypeConfidence,omitempty" xml:"PlateTypeConfidence,omitempty"`
-	PlateType           *string                                         `json:"PlateType,omitempty" xml:"PlateType,omitempty"`
-	Confidence          *float32                                        `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	PlateNumber         *string                                         `json:"PlateNumber,omitempty" xml:"PlateNumber,omitempty"`
-	Roi                 *RecognizeLicensePlateResponseBodyDataPlatesRoi `json:"Roi,omitempty" xml:"Roi,omitempty" type:"Struct"`
+	PlateTypeConfidence *float32                                                `json:"PlateTypeConfidence,omitempty" xml:"PlateTypeConfidence,omitempty"`
+	PlateType           *string                                                 `json:"PlateType,omitempty" xml:"PlateType,omitempty"`
+	Confidence          *float32                                                `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	PlateNumber         *string                                                 `json:"PlateNumber,omitempty" xml:"PlateNumber,omitempty"`
+	Roi                 *RecognizeLicensePlateResponseBodyDataPlatesRoi         `json:"Roi,omitempty" xml:"Roi,omitempty" type:"Struct"`
+	Positions           []*RecognizeLicensePlateResponseBodyDataPlatesPositions `json:"Positions,omitempty" xml:"Positions,omitempty" type:"Repeated"`
 }
 
 func (s RecognizeLicensePlateResponseBodyDataPlates) String() string {
@@ -3244,6 +3131,11 @@ func (s *RecognizeLicensePlateResponseBodyDataPlates) SetPlateNumber(v string) *
 
 func (s *RecognizeLicensePlateResponseBodyDataPlates) SetRoi(v *RecognizeLicensePlateResponseBodyDataPlatesRoi) *RecognizeLicensePlateResponseBodyDataPlates {
 	s.Roi = v
+	return s
+}
+
+func (s *RecognizeLicensePlateResponseBodyDataPlates) SetPositions(v []*RecognizeLicensePlateResponseBodyDataPlatesPositions) *RecognizeLicensePlateResponseBodyDataPlates {
+	s.Positions = v
 	return s
 }
 
@@ -3282,6 +3174,29 @@ func (s *RecognizeLicensePlateResponseBodyDataPlatesRoi) SetX(v int32) *Recogniz
 	return s
 }
 
+type RecognizeLicensePlateResponseBodyDataPlatesPositions struct {
+	X *int64 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *int64 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeLicensePlateResponseBodyDataPlatesPositions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeLicensePlateResponseBodyDataPlatesPositions) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeLicensePlateResponseBodyDataPlatesPositions) SetX(v int64) *RecognizeLicensePlateResponseBodyDataPlatesPositions {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeLicensePlateResponseBodyDataPlatesPositions) SetY(v int64) *RecognizeLicensePlateResponseBodyDataPlatesPositions {
+	s.Y = &v
+	return s
+}
+
 type RecognizeLicensePlateResponse struct {
 	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	Body    *RecognizeLicensePlateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -3306,8 +3221,7 @@ func (s *RecognizeLicensePlateResponse) SetBody(v *RecognizeLicensePlateResponse
 }
 
 type RecognizeStampRequest struct {
-	ImageType *int32  `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	ImageURL  *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s RecognizeStampRequest) String() string {
@@ -3318,11 +3232,6 @@ func (s RecognizeStampRequest) GoString() string {
 	return s.String()
 }
 
-func (s *RecognizeStampRequest) SetImageType(v int32) *RecognizeStampRequest {
-	s.ImageType = &v
-	return s
-}
-
 func (s *RecognizeStampRequest) SetImageURL(v string) *RecognizeStampRequest {
 	s.ImageURL = &v
 	return s
@@ -3330,7 +3239,6 @@ func (s *RecognizeStampRequest) SetImageURL(v string) *RecognizeStampRequest {
 
 type RecognizeStampAdvanceRequest struct {
 	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
-	ImageType      *int32    `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
 }
 
 func (s RecognizeStampAdvanceRequest) String() string {
@@ -3343,11 +3251,6 @@ func (s RecognizeStampAdvanceRequest) GoString() string {
 
 func (s *RecognizeStampAdvanceRequest) SetImageURLObject(v io.Reader) *RecognizeStampAdvanceRequest {
 	s.ImageURLObject = v
-	return s
-}
-
-func (s *RecognizeStampAdvanceRequest) SetImageType(v int32) *RecognizeStampAdvanceRequest {
-	s.ImageType = &v
 	return s
 }
 
@@ -3525,8 +3428,7 @@ func (s *RecognizeStampResponse) SetBody(v *RecognizeStampResponseBody) *Recogni
 }
 
 type RecognizeTaxiInvoiceRequest struct {
-	ImageType *int32  `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	ImageURL  *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s RecognizeTaxiInvoiceRequest) String() string {
@@ -3537,11 +3439,6 @@ func (s RecognizeTaxiInvoiceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *RecognizeTaxiInvoiceRequest) SetImageType(v int32) *RecognizeTaxiInvoiceRequest {
-	s.ImageType = &v
-	return s
-}
-
 func (s *RecognizeTaxiInvoiceRequest) SetImageURL(v string) *RecognizeTaxiInvoiceRequest {
 	s.ImageURL = &v
 	return s
@@ -3549,7 +3446,6 @@ func (s *RecognizeTaxiInvoiceRequest) SetImageURL(v string) *RecognizeTaxiInvoic
 
 type RecognizeTaxiInvoiceAdvanceRequest struct {
 	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
-	ImageType      *int32    `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
 }
 
 func (s RecognizeTaxiInvoiceAdvanceRequest) String() string {
@@ -3562,11 +3458,6 @@ func (s RecognizeTaxiInvoiceAdvanceRequest) GoString() string {
 
 func (s *RecognizeTaxiInvoiceAdvanceRequest) SetImageURLObject(v io.Reader) *RecognizeTaxiInvoiceAdvanceRequest {
 	s.ImageURLObject = v
-	return s
-}
-
-func (s *RecognizeTaxiInvoiceAdvanceRequest) SetImageType(v int32) *RecognizeTaxiInvoiceAdvanceRequest {
-	s.ImageType = &v
 	return s
 }
 
@@ -4299,8 +4190,7 @@ func (s *RecognizePassportMRZResponse) SetBody(v *RecognizePassportMRZResponseBo
 }
 
 type RecognizeTrainTicketRequest struct {
-	ImageType *int32  `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	ImageURL  *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s RecognizeTrainTicketRequest) String() string {
@@ -4311,11 +4201,6 @@ func (s RecognizeTrainTicketRequest) GoString() string {
 	return s.String()
 }
 
-func (s *RecognizeTrainTicketRequest) SetImageType(v int32) *RecognizeTrainTicketRequest {
-	s.ImageType = &v
-	return s
-}
-
 func (s *RecognizeTrainTicketRequest) SetImageURL(v string) *RecognizeTrainTicketRequest {
 	s.ImageURL = &v
 	return s
@@ -4323,7 +4208,6 @@ func (s *RecognizeTrainTicketRequest) SetImageURL(v string) *RecognizeTrainTicke
 
 type RecognizeTrainTicketAdvanceRequest struct {
 	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
-	ImageType      *int32    `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
 }
 
 func (s RecognizeTrainTicketAdvanceRequest) String() string {
@@ -4336,11 +4220,6 @@ func (s RecognizeTrainTicketAdvanceRequest) GoString() string {
 
 func (s *RecognizeTrainTicketAdvanceRequest) SetImageURLObject(v io.Reader) *RecognizeTrainTicketAdvanceRequest {
 	s.ImageURLObject = v
-	return s
-}
-
-func (s *RecognizeTrainTicketAdvanceRequest) SetImageType(v int32) *RecognizeTrainTicketAdvanceRequest {
-	s.ImageType = &v
 	return s
 }
 
@@ -4795,8 +4674,7 @@ func (s *RecognizeQrCodeResponse) SetBody(v *RecognizeQrCodeResponseBody) *Recog
 }
 
 type RecognizeVINCodeRequest struct {
-	ImageType *int32  `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	ImageURL  *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s RecognizeVINCodeRequest) String() string {
@@ -4807,11 +4685,6 @@ func (s RecognizeVINCodeRequest) GoString() string {
 	return s.String()
 }
 
-func (s *RecognizeVINCodeRequest) SetImageType(v int32) *RecognizeVINCodeRequest {
-	s.ImageType = &v
-	return s
-}
-
 func (s *RecognizeVINCodeRequest) SetImageURL(v string) *RecognizeVINCodeRequest {
 	s.ImageURL = &v
 	return s
@@ -4819,7 +4692,6 @@ func (s *RecognizeVINCodeRequest) SetImageURL(v string) *RecognizeVINCodeRequest
 
 type RecognizeVINCodeAdvanceRequest struct {
 	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
-	ImageType      *int32    `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
 }
 
 func (s RecognizeVINCodeAdvanceRequest) String() string {
@@ -4832,11 +4704,6 @@ func (s RecognizeVINCodeAdvanceRequest) GoString() string {
 
 func (s *RecognizeVINCodeAdvanceRequest) SetImageURLObject(v io.Reader) *RecognizeVINCodeAdvanceRequest {
 	s.ImageURLObject = v
-	return s
-}
-
-func (s *RecognizeVINCodeAdvanceRequest) SetImageType(v int32) *RecognizeVINCodeAdvanceRequest {
-	s.ImageType = &v
 	return s
 }
 
@@ -4990,11 +4857,16 @@ func (client *Client) RecognizeDrivingLicenseAdvance(request *RecognizeDrivingLi
 		return _result, _err
 	}
 
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -5022,40 +4894,43 @@ func (client *Client) RecognizeDrivingLicenseAdvance(request *RecognizeDrivingLi
 	openapiutil.Convert(runtime, ossRuntime)
 	recognizeDrivingLicenseReq := &RecognizeDrivingLicenseRequest{}
 	openapiutil.Convert(request, recognizeDrivingLicenseReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.AccessKeyId,
+			Policy:              authResponse.EncodedPolicy,
+			Signature:           authResponse.Signature,
+			Key:                 authResponse.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		recognizeDrivingLicenseReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	recognizeDrivingLicenseReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	recognizeDrivingLicenseResp, _err := client.RecognizeDrivingLicenseWithOptions(recognizeDrivingLicenseReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5105,11 +4980,16 @@ func (client *Client) RecognizeChinapassportAdvance(request *RecognizeChinapassp
 		return _result, _err
 	}
 
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -5137,40 +5017,43 @@ func (client *Client) RecognizeChinapassportAdvance(request *RecognizeChinapassp
 	openapiutil.Convert(runtime, ossRuntime)
 	recognizeChinapassportReq := &RecognizeChinapassportRequest{}
 	openapiutil.Convert(request, recognizeChinapassportReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.AccessKeyId,
+			Policy:              authResponse.EncodedPolicy,
+			Signature:           authResponse.Signature,
+			Key:                 authResponse.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		recognizeChinapassportReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	recognizeChinapassportReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	recognizeChinapassportResp, _err := client.RecognizeChinapassportWithOptions(recognizeChinapassportReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5220,11 +5103,16 @@ func (client *Client) TrimDocumentAdvance(request *TrimDocumentAdvanceRequest, r
 		return _result, _err
 	}
 
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -5252,40 +5140,43 @@ func (client *Client) TrimDocumentAdvance(request *TrimDocumentAdvanceRequest, r
 	openapiutil.Convert(runtime, ossRuntime)
 	trimDocumentReq := &TrimDocumentRequest{}
 	openapiutil.Convert(request, trimDocumentReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.FileURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.ObjectKey,
+			Content:     request.FileURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.AccessKeyId,
+			Policy:              authResponse.EncodedPolicy,
+			Signature:           authResponse.Signature,
+			Key:                 authResponse.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		trimDocumentReq.FileURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.FileURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	trimDocumentReq.FileURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	trimDocumentResp, _err := client.TrimDocumentWithOptions(trimDocumentReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5335,11 +5226,16 @@ func (client *Client) RecognizeTableAdvance(request *RecognizeTableAdvanceReques
 		return _result, _err
 	}
 
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -5367,40 +5263,43 @@ func (client *Client) RecognizeTableAdvance(request *RecognizeTableAdvanceReques
 	openapiutil.Convert(runtime, ossRuntime)
 	recognizeTableReq := &RecognizeTableRequest{}
 	openapiutil.Convert(request, recognizeTableReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.AccessKeyId,
+			Policy:              authResponse.EncodedPolicy,
+			Signature:           authResponse.Signature,
+			Key:                 authResponse.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		recognizeTableReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	recognizeTableReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	recognizeTableResp, _err := client.RecognizeTableWithOptions(recognizeTableReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5450,11 +5349,16 @@ func (client *Client) RecognizeIdentityCardAdvance(request *RecognizeIdentityCar
 		return _result, _err
 	}
 
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -5482,40 +5386,43 @@ func (client *Client) RecognizeIdentityCardAdvance(request *RecognizeIdentityCar
 	openapiutil.Convert(runtime, ossRuntime)
 	recognizeIdentityCardReq := &RecognizeIdentityCardRequest{}
 	openapiutil.Convert(request, recognizeIdentityCardReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.AccessKeyId,
+			Policy:              authResponse.EncodedPolicy,
+			Signature:           authResponse.Signature,
+			Key:                 authResponse.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		recognizeIdentityCardReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	recognizeIdentityCardReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	recognizeIdentityCardResp, _err := client.RecognizeIdentityCardWithOptions(recognizeIdentityCardReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5565,11 +5472,16 @@ func (client *Client) RecognizeBusinessLicenseAdvance(request *RecognizeBusiness
 		return _result, _err
 	}
 
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -5597,40 +5509,43 @@ func (client *Client) RecognizeBusinessLicenseAdvance(request *RecognizeBusiness
 	openapiutil.Convert(runtime, ossRuntime)
 	recognizeBusinessLicenseReq := &RecognizeBusinessLicenseRequest{}
 	openapiutil.Convert(request, recognizeBusinessLicenseReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.AccessKeyId,
+			Policy:              authResponse.EncodedPolicy,
+			Signature:           authResponse.Signature,
+			Key:                 authResponse.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		recognizeBusinessLicenseReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	recognizeBusinessLicenseReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	recognizeBusinessLicenseResp, _err := client.RecognizeBusinessLicenseWithOptions(recognizeBusinessLicenseReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5680,11 +5595,16 @@ func (client *Client) RecognizeBankCardAdvance(request *RecognizeBankCardAdvance
 		return _result, _err
 	}
 
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -5712,40 +5632,43 @@ func (client *Client) RecognizeBankCardAdvance(request *RecognizeBankCardAdvance
 	openapiutil.Convert(runtime, ossRuntime)
 	recognizeBankCardReq := &RecognizeBankCardRequest{}
 	openapiutil.Convert(request, recognizeBankCardReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.AccessKeyId,
+			Policy:              authResponse.EncodedPolicy,
+			Signature:           authResponse.Signature,
+			Key:                 authResponse.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		recognizeBankCardReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	recognizeBankCardReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	recognizeBankCardResp, _err := client.RecognizeBankCardWithOptions(recognizeBankCardReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5795,11 +5718,16 @@ func (client *Client) RecognizeVerificationcodeAdvance(request *RecognizeVerific
 		return _result, _err
 	}
 
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -5827,40 +5755,43 @@ func (client *Client) RecognizeVerificationcodeAdvance(request *RecognizeVerific
 	openapiutil.Convert(runtime, ossRuntime)
 	recognizeVerificationcodeReq := &RecognizeVerificationcodeRequest{}
 	openapiutil.Convert(request, recognizeVerificationcodeReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.AccessKeyId,
+			Policy:              authResponse.EncodedPolicy,
+			Signature:           authResponse.Signature,
+			Key:                 authResponse.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		recognizeVerificationcodeReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	recognizeVerificationcodeReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	recognizeVerificationcodeResp, _err := client.RecognizeVerificationcodeWithOptions(recognizeVerificationcodeReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5910,11 +5841,16 @@ func (client *Client) RecognizeAccountPageAdvance(request *RecognizeAccountPageA
 		return _result, _err
 	}
 
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -5942,40 +5878,43 @@ func (client *Client) RecognizeAccountPageAdvance(request *RecognizeAccountPageA
 	openapiutil.Convert(runtime, ossRuntime)
 	recognizeAccountPageReq := &RecognizeAccountPageRequest{}
 	openapiutil.Convert(request, recognizeAccountPageReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.AccessKeyId,
+			Policy:              authResponse.EncodedPolicy,
+			Signature:           authResponse.Signature,
+			Key:                 authResponse.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		recognizeAccountPageReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	recognizeAccountPageReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	recognizeAccountPageResp, _err := client.RecognizeAccountPageWithOptions(recognizeAccountPageReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6025,11 +5964,16 @@ func (client *Client) RecognizeCharacterAdvance(request *RecognizeCharacterAdvan
 		return _result, _err
 	}
 
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -6057,40 +6001,43 @@ func (client *Client) RecognizeCharacterAdvance(request *RecognizeCharacterAdvan
 	openapiutil.Convert(runtime, ossRuntime)
 	recognizeCharacterReq := &RecognizeCharacterRequest{}
 	openapiutil.Convert(request, recognizeCharacterReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.AccessKeyId,
+			Policy:              authResponse.EncodedPolicy,
+			Signature:           authResponse.Signature,
+			Key:                 authResponse.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		recognizeCharacterReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	recognizeCharacterReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	recognizeCharacterResp, _err := client.RecognizeCharacterWithOptions(recognizeCharacterReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6168,11 +6115,16 @@ func (client *Client) RecognizeTakeoutOrderAdvance(request *RecognizeTakeoutOrde
 		return _result, _err
 	}
 
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -6200,40 +6152,43 @@ func (client *Client) RecognizeTakeoutOrderAdvance(request *RecognizeTakeoutOrde
 	openapiutil.Convert(runtime, ossRuntime)
 	recognizeTakeoutOrderReq := &RecognizeTakeoutOrderRequest{}
 	openapiutil.Convert(request, recognizeTakeoutOrderReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.AccessKeyId,
+			Policy:              authResponse.EncodedPolicy,
+			Signature:           authResponse.Signature,
+			Key:                 authResponse.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		recognizeTakeoutOrderReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	recognizeTakeoutOrderReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	recognizeTakeoutOrderResp, _err := client.RecognizeTakeoutOrderWithOptions(recognizeTakeoutOrderReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6283,11 +6238,16 @@ func (client *Client) RecognizeBusinessCardAdvance(request *RecognizeBusinessCar
 		return _result, _err
 	}
 
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -6315,40 +6275,43 @@ func (client *Client) RecognizeBusinessCardAdvance(request *RecognizeBusinessCar
 	openapiutil.Convert(runtime, ossRuntime)
 	recognizeBusinessCardReq := &RecognizeBusinessCardRequest{}
 	openapiutil.Convert(request, recognizeBusinessCardReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.AccessKeyId,
+			Policy:              authResponse.EncodedPolicy,
+			Signature:           authResponse.Signature,
+			Key:                 authResponse.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		recognizeBusinessCardReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	recognizeBusinessCardReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	recognizeBusinessCardResp, _err := client.RecognizeBusinessCardWithOptions(recognizeBusinessCardReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6398,11 +6361,16 @@ func (client *Client) DetectCardScreenshotAdvance(request *DetectCardScreenshotA
 		return _result, _err
 	}
 
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -6430,40 +6398,43 @@ func (client *Client) DetectCardScreenshotAdvance(request *DetectCardScreenshotA
 	openapiutil.Convert(runtime, ossRuntime)
 	detectCardScreenshotReq := &DetectCardScreenshotRequest{}
 	openapiutil.Convert(request, detectCardScreenshotReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.AccessKeyId,
+			Policy:              authResponse.EncodedPolicy,
+			Signature:           authResponse.Signature,
+			Key:                 authResponse.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		detectCardScreenshotReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	detectCardScreenshotReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	detectCardScreenshotResp, _err := client.DetectCardScreenshotWithOptions(detectCardScreenshotReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6513,11 +6484,16 @@ func (client *Client) RecognizeDriverLicenseAdvance(request *RecognizeDriverLice
 		return _result, _err
 	}
 
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -6545,40 +6521,43 @@ func (client *Client) RecognizeDriverLicenseAdvance(request *RecognizeDriverLice
 	openapiutil.Convert(runtime, ossRuntime)
 	recognizeDriverLicenseReq := &RecognizeDriverLicenseRequest{}
 	openapiutil.Convert(request, recognizeDriverLicenseReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.AccessKeyId,
+			Policy:              authResponse.EncodedPolicy,
+			Signature:           authResponse.Signature,
+			Key:                 authResponse.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		recognizeDriverLicenseReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	recognizeDriverLicenseReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	recognizeDriverLicenseResp, _err := client.RecognizeDriverLicenseWithOptions(recognizeDriverLicenseReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6628,11 +6607,16 @@ func (client *Client) RecognizeLicensePlateAdvance(request *RecognizeLicensePlat
 		return _result, _err
 	}
 
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -6660,40 +6644,43 @@ func (client *Client) RecognizeLicensePlateAdvance(request *RecognizeLicensePlat
 	openapiutil.Convert(runtime, ossRuntime)
 	recognizeLicensePlateReq := &RecognizeLicensePlateRequest{}
 	openapiutil.Convert(request, recognizeLicensePlateReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.AccessKeyId,
+			Policy:              authResponse.EncodedPolicy,
+			Signature:           authResponse.Signature,
+			Key:                 authResponse.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		recognizeLicensePlateReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	recognizeLicensePlateReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	recognizeLicensePlateResp, _err := client.RecognizeLicensePlateWithOptions(recognizeLicensePlateReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6743,11 +6730,16 @@ func (client *Client) RecognizeStampAdvance(request *RecognizeStampAdvanceReques
 		return _result, _err
 	}
 
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -6775,40 +6767,43 @@ func (client *Client) RecognizeStampAdvance(request *RecognizeStampAdvanceReques
 	openapiutil.Convert(runtime, ossRuntime)
 	recognizeStampReq := &RecognizeStampRequest{}
 	openapiutil.Convert(request, recognizeStampReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.AccessKeyId,
+			Policy:              authResponse.EncodedPolicy,
+			Signature:           authResponse.Signature,
+			Key:                 authResponse.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		recognizeStampReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	recognizeStampReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	recognizeStampResp, _err := client.RecognizeStampWithOptions(recognizeStampReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6858,11 +6853,16 @@ func (client *Client) RecognizeTaxiInvoiceAdvance(request *RecognizeTaxiInvoiceA
 		return _result, _err
 	}
 
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -6890,40 +6890,43 @@ func (client *Client) RecognizeTaxiInvoiceAdvance(request *RecognizeTaxiInvoiceA
 	openapiutil.Convert(runtime, ossRuntime)
 	recognizeTaxiInvoiceReq := &RecognizeTaxiInvoiceRequest{}
 	openapiutil.Convert(request, recognizeTaxiInvoiceReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.AccessKeyId,
+			Policy:              authResponse.EncodedPolicy,
+			Signature:           authResponse.Signature,
+			Key:                 authResponse.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		recognizeTaxiInvoiceReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	recognizeTaxiInvoiceReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	recognizeTaxiInvoiceResp, _err := client.RecognizeTaxiInvoiceWithOptions(recognizeTaxiInvoiceReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6973,11 +6976,16 @@ func (client *Client) RecognizeVATInvoiceAdvance(request *RecognizeVATInvoiceAdv
 		return _result, _err
 	}
 
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -7005,40 +7013,43 @@ func (client *Client) RecognizeVATInvoiceAdvance(request *RecognizeVATInvoiceAdv
 	openapiutil.Convert(runtime, ossRuntime)
 	recognizeVATInvoiceReq := &RecognizeVATInvoiceRequest{}
 	openapiutil.Convert(request, recognizeVATInvoiceReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.FileURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.ObjectKey,
+			Content:     request.FileURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.AccessKeyId,
+			Policy:              authResponse.EncodedPolicy,
+			Signature:           authResponse.Signature,
+			Key:                 authResponse.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		recognizeVATInvoiceReq.FileURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.FileURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	recognizeVATInvoiceReq.FileURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	recognizeVATInvoiceResp, _err := client.RecognizeVATInvoiceWithOptions(recognizeVATInvoiceReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -7088,11 +7099,16 @@ func (client *Client) RecognizePassportMRZAdvance(request *RecognizePassportMRZA
 		return _result, _err
 	}
 
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -7120,40 +7136,43 @@ func (client *Client) RecognizePassportMRZAdvance(request *RecognizePassportMRZA
 	openapiutil.Convert(runtime, ossRuntime)
 	recognizePassportMRZReq := &RecognizePassportMRZRequest{}
 	openapiutil.Convert(request, recognizePassportMRZReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.AccessKeyId,
+			Policy:              authResponse.EncodedPolicy,
+			Signature:           authResponse.Signature,
+			Key:                 authResponse.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		recognizePassportMRZReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	recognizePassportMRZReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	recognizePassportMRZResp, _err := client.RecognizePassportMRZWithOptions(recognizePassportMRZReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -7203,11 +7222,16 @@ func (client *Client) RecognizeTrainTicketAdvance(request *RecognizeTrainTicketA
 		return _result, _err
 	}
 
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -7235,40 +7259,43 @@ func (client *Client) RecognizeTrainTicketAdvance(request *RecognizeTrainTicketA
 	openapiutil.Convert(runtime, ossRuntime)
 	recognizeTrainTicketReq := &RecognizeTrainTicketRequest{}
 	openapiutil.Convert(request, recognizeTrainTicketReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.AccessKeyId,
+			Policy:              authResponse.EncodedPolicy,
+			Signature:           authResponse.Signature,
+			Key:                 authResponse.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		recognizeTrainTicketReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	recognizeTrainTicketReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	recognizeTrainTicketResp, _err := client.RecognizeTrainTicketWithOptions(recognizeTrainTicketReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -7318,11 +7345,16 @@ func (client *Client) RecognizePoiNameAdvance(request *RecognizePoiNameAdvanceRe
 		return _result, _err
 	}
 
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -7350,40 +7382,43 @@ func (client *Client) RecognizePoiNameAdvance(request *RecognizePoiNameAdvanceRe
 	openapiutil.Convert(runtime, ossRuntime)
 	recognizePoiNameReq := &RecognizePoiNameRequest{}
 	openapiutil.Convert(request, recognizePoiNameReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.AccessKeyId,
+			Policy:              authResponse.EncodedPolicy,
+			Signature:           authResponse.Signature,
+			Key:                 authResponse.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		recognizePoiNameReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	recognizePoiNameReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	recognizePoiNameResp, _err := client.RecognizePoiNameWithOptions(recognizePoiNameReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -7461,11 +7496,16 @@ func (client *Client) RecognizeVINCodeAdvance(request *RecognizeVINCodeAdvanceRe
 		return _result, _err
 	}
 
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -7493,40 +7533,43 @@ func (client *Client) RecognizeVINCodeAdvance(request *RecognizeVINCodeAdvanceRe
 	openapiutil.Convert(runtime, ossRuntime)
 	recognizeVINCodeReq := &RecognizeVINCodeRequest{}
 	openapiutil.Convert(request, recognizeVINCodeReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.AccessKeyId,
+			Policy:              authResponse.EncodedPolicy,
+			Signature:           authResponse.Signature,
+			Key:                 authResponse.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		recognizeVINCodeReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	recognizeVINCodeReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	recognizeVINCodeResp, _err := client.RecognizeVINCodeWithOptions(recognizeVINCodeReq, runtime)
 	if _err != nil {
 		return _result, _err
