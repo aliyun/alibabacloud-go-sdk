@@ -4620,6 +4620,7 @@ type DescribeDBInstancesRequest struct {
 	ResourceOwnerAccount  *string                          `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId       *int64                           `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	OwnerAccount          *string                          `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	RegionId              *string                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	PageNumber            *int32                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize              *int32                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	DBInstanceId          *string                          `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
@@ -4672,6 +4673,11 @@ func (s *DescribeDBInstancesRequest) SetResourceOwnerId(v int64) *DescribeDBInst
 
 func (s *DescribeDBInstancesRequest) SetOwnerAccount(v string) *DescribeDBInstancesRequest {
 	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeDBInstancesRequest) SetRegionId(v string) *DescribeDBInstancesRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -6851,6 +6857,7 @@ type DescribeParameterTemplatesRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Engine               *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	EngineVersion        *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 }
@@ -6885,6 +6892,11 @@ func (s *DescribeParameterTemplatesRequest) SetResourceOwnerId(v int64) *Describ
 
 func (s *DescribeParameterTemplatesRequest) SetOwnerAccount(v string) *DescribeParameterTemplatesRequest {
 	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeParameterTemplatesRequest) SetRegionId(v string) *DescribeParameterTemplatesRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -7032,6 +7044,7 @@ type DescribePriceRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	OrderType            *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	DBInstances          *string `json:"DBInstances,omitempty" xml:"DBInstances,omitempty"`
 	CommodityCode        *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
@@ -7072,6 +7085,11 @@ func (s *DescribePriceRequest) SetResourceOwnerId(v int64) *DescribePriceRequest
 
 func (s *DescribePriceRequest) SetOwnerAccount(v string) *DescribePriceRequest {
 	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribePriceRequest) SetRegionId(v string) *DescribePriceRequest {
+	s.RegionId = &v
 	return s
 }
 
