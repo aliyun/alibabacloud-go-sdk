@@ -36,8 +36,8 @@ func (s *CheckDrdsDbNameRequest) SetDbName(v string) *CheckDrdsDbNameRequest {
 
 type CheckDrdsDbNameResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CheckDrdsDbNameResponseBody) String() string {
@@ -53,13 +53,13 @@ func (s *CheckDrdsDbNameResponseBody) SetRequestId(v string) *CheckDrdsDbNameRes
 	return s
 }
 
-func (s *CheckDrdsDbNameResponseBody) SetSuccess(v bool) *CheckDrdsDbNameResponseBody {
-	s.Success = &v
+func (s *CheckDrdsDbNameResponseBody) SetResult(v bool) *CheckDrdsDbNameResponseBody {
+	s.Result = &v
 	return s
 }
 
-func (s *CheckDrdsDbNameResponseBody) SetResult(v bool) *CheckDrdsDbNameResponseBody {
-	s.Result = &v
+func (s *CheckDrdsDbNameResponseBody) SetSuccess(v bool) *CheckDrdsDbNameResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -110,9 +110,9 @@ func (s *CheckExpandStatusRequest) SetDbName(v string) *CheckExpandStatusRequest
 }
 
 type CheckExpandStatusResponseBody struct {
+	Success   *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
 	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *CheckExpandStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Success   *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CheckExpandStatusResponseBody) String() string {
@@ -123,6 +123,11 @@ func (s CheckExpandStatusResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *CheckExpandStatusResponseBody) SetSuccess(v bool) *CheckExpandStatusResponseBody {
+	s.Success = &v
+	return s
+}
+
 func (s *CheckExpandStatusResponseBody) SetRequestId(v string) *CheckExpandStatusResponseBody {
 	s.RequestId = &v
 	return s
@@ -130,11 +135,6 @@ func (s *CheckExpandStatusResponseBody) SetRequestId(v string) *CheckExpandStatu
 
 func (s *CheckExpandStatusResponseBody) SetData(v *CheckExpandStatusResponseBodyData) *CheckExpandStatusResponseBody {
 	s.Data = v
-	return s
-}
-
-func (s *CheckExpandStatusResponseBody) SetSuccess(v bool) *CheckExpandStatusResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -389,8 +389,8 @@ func (s *CreateDrdsDBRequestInstDbName) SetShardDbName(v []*string) *CreateDrdsD
 }
 
 type CreateDrdsDBResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateDrdsDBResponseBody) String() string {
@@ -401,13 +401,13 @@ func (s CreateDrdsDBResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateDrdsDBResponseBody) SetRequestId(v string) *CreateDrdsDBResponseBody {
-	s.RequestId = &v
+func (s *CreateDrdsDBResponseBody) SetSuccess(v bool) *CreateDrdsDBResponseBody {
+	s.Success = &v
 	return s
 }
 
-func (s *CreateDrdsDBResponseBody) SetSuccess(v bool) *CreateDrdsDBResponseBody {
-	s.Success = &v
+func (s *CreateDrdsDBResponseBody) SetRequestId(v string) *CreateDrdsDBResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -554,9 +554,9 @@ func (s *CreateDrdsInstanceRequest) SetResourceGroupId(v string) *CreateDrdsInst
 }
 
 type CreateDrdsInstanceResponseBody struct {
+	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
 	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *CreateDrdsInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateDrdsInstanceResponseBody) String() string {
@@ -565,6 +565,11 @@ func (s CreateDrdsInstanceResponseBody) String() string {
 
 func (s CreateDrdsInstanceResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateDrdsInstanceResponseBody) SetSuccess(v bool) *CreateDrdsInstanceResponseBody {
+	s.Success = &v
+	return s
 }
 
 func (s *CreateDrdsInstanceResponseBody) SetRequestId(v string) *CreateDrdsInstanceResponseBody {
@@ -577,14 +582,9 @@ func (s *CreateDrdsInstanceResponseBody) SetData(v *CreateDrdsInstanceResponseBo
 	return s
 }
 
-func (s *CreateDrdsInstanceResponseBody) SetSuccess(v bool) *CreateDrdsInstanceResponseBody {
-	s.Success = &v
-	return s
-}
-
 type CreateDrdsInstanceResponseBodyData struct {
-	DrdsInstanceIdList *CreateDrdsInstanceResponseBodyDataDrdsInstanceIdList `json:"DrdsInstanceIdList,omitempty" xml:"DrdsInstanceIdList,omitempty" type:"Struct"`
 	OrderId            *int64                                                `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	DrdsInstanceIdList *CreateDrdsInstanceResponseBodyDataDrdsInstanceIdList `json:"DrdsInstanceIdList,omitempty" xml:"DrdsInstanceIdList,omitempty" type:"Struct"`
 }
 
 func (s CreateDrdsInstanceResponseBodyData) String() string {
@@ -595,13 +595,13 @@ func (s CreateDrdsInstanceResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *CreateDrdsInstanceResponseBodyData) SetDrdsInstanceIdList(v *CreateDrdsInstanceResponseBodyDataDrdsInstanceIdList) *CreateDrdsInstanceResponseBodyData {
-	s.DrdsInstanceIdList = v
+func (s *CreateDrdsInstanceResponseBodyData) SetOrderId(v int64) *CreateDrdsInstanceResponseBodyData {
+	s.OrderId = &v
 	return s
 }
 
-func (s *CreateDrdsInstanceResponseBodyData) SetOrderId(v int64) *CreateDrdsInstanceResponseBodyData {
-	s.OrderId = &v
+func (s *CreateDrdsInstanceResponseBodyData) SetDrdsInstanceIdList(v *CreateDrdsInstanceResponseBodyDataDrdsInstanceIdList) *CreateDrdsInstanceResponseBodyData {
+	s.DrdsInstanceIdList = v
 	return s
 }
 
@@ -704,8 +704,8 @@ func (s *CreateInstanceAccountRequestDbPrivilege) SetPrivilege(v string) *Create
 }
 
 type CreateInstanceAccountResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateInstanceAccountResponseBody) String() string {
@@ -716,13 +716,13 @@ func (s CreateInstanceAccountResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateInstanceAccountResponseBody) SetRequestId(v string) *CreateInstanceAccountResponseBody {
-	s.RequestId = &v
+func (s *CreateInstanceAccountResponseBody) SetSuccess(v bool) *CreateInstanceAccountResponseBody {
+	s.Success = &v
 	return s
 }
 
-func (s *CreateInstanceAccountResponseBody) SetSuccess(v bool) *CreateInstanceAccountResponseBody {
-	s.Success = &v
+func (s *CreateInstanceAccountResponseBody) SetRequestId(v string) *CreateInstanceAccountResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -752,7 +752,6 @@ func (s *CreateInstanceAccountResponse) SetBody(v *CreateInstanceAccountResponse
 type CreateInstanceInternetAddressRequest struct {
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	DrdsPassword   *string `json:"DrdsPassword,omitempty" xml:"DrdsPassword,omitempty"`
 }
 
 func (s CreateInstanceInternetAddressRequest) String() string {
@@ -773,15 +772,10 @@ func (s *CreateInstanceInternetAddressRequest) SetRegionId(v string) *CreateInst
 	return s
 }
 
-func (s *CreateInstanceInternetAddressRequest) SetDrdsPassword(v string) *CreateInstanceInternetAddressRequest {
-	s.DrdsPassword = &v
-	return s
-}
-
 type CreateInstanceInternetAddressResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
 	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -793,8 +787,8 @@ func (s CreateInstanceInternetAddressResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateInstanceInternetAddressResponseBody) SetRequestId(v string) *CreateInstanceInternetAddressResponseBody {
-	s.RequestId = &v
+func (s *CreateInstanceInternetAddressResponseBody) SetCode(v int32) *CreateInstanceInternetAddressResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -803,8 +797,8 @@ func (s *CreateInstanceInternetAddressResponseBody) SetData(v bool) *CreateInsta
 	return s
 }
 
-func (s *CreateInstanceInternetAddressResponseBody) SetCode(v int32) *CreateInstanceInternetAddressResponseBody {
-	s.Code = &v
+func (s *CreateInstanceInternetAddressResponseBody) SetRequestId(v string) *CreateInstanceInternetAddressResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -860,8 +854,8 @@ func (s *CreateOrderForRdsRequest) SetParams(v string) *CreateOrderForRdsRequest
 }
 
 type CreateOrderForRdsResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -873,13 +867,13 @@ func (s CreateOrderForRdsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateOrderForRdsResponseBody) SetRequestId(v string) *CreateOrderForRdsResponseBody {
-	s.RequestId = &v
+func (s *CreateOrderForRdsResponseBody) SetData(v string) *CreateOrderForRdsResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *CreateOrderForRdsResponseBody) SetData(v string) *CreateOrderForRdsResponseBody {
-	s.Data = &v
+func (s *CreateOrderForRdsResponseBody) SetRequestId(v string) *CreateOrderForRdsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -959,8 +953,8 @@ func (s *CreateShardTaskRequest) SetTaskType(v string) *CreateShardTaskRequest {
 }
 
 type CreateShardTaskResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -972,13 +966,13 @@ func (s CreateShardTaskResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateShardTaskResponseBody) SetRequestId(v string) *CreateShardTaskResponseBody {
-	s.RequestId = &v
+func (s *CreateShardTaskResponseBody) SetData(v bool) *CreateShardTaskResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *CreateShardTaskResponseBody) SetData(v bool) *CreateShardTaskResponseBody {
-	s.Data = &v
+func (s *CreateShardTaskResponseBody) SetRequestId(v string) *CreateShardTaskResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1028,9 +1022,9 @@ func (s *DescribeBackMenuRequest) SetDrdsInstanceId(v string) *DescribeBackMenuR
 }
 
 type DescribeBackMenuResponseBody struct {
+	Success   *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
 	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	List      *DescribeBackMenuResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Struct"`
-	Success   *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeBackMenuResponseBody) String() string {
@@ -1041,6 +1035,11 @@ func (s DescribeBackMenuResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeBackMenuResponseBody) SetSuccess(v bool) *DescribeBackMenuResponseBody {
+	s.Success = &v
+	return s
+}
+
 func (s *DescribeBackMenuResponseBody) SetRequestId(v string) *DescribeBackMenuResponseBody {
 	s.RequestId = &v
 	return s
@@ -1048,11 +1047,6 @@ func (s *DescribeBackMenuResponseBody) SetRequestId(v string) *DescribeBackMenuR
 
 func (s *DescribeBackMenuResponseBody) SetList(v *DescribeBackMenuResponseBodyList) *DescribeBackMenuResponseBody {
 	s.List = v
-	return s
-}
-
-func (s *DescribeBackMenuResponseBody) SetSuccess(v bool) *DescribeBackMenuResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -1074,8 +1068,8 @@ func (s *DescribeBackMenuResponseBodyList) SetList(v []*DescribeBackMenuResponse
 }
 
 type DescribeBackMenuResponseBodyListList struct {
-	MenuName *string `json:"MenuName,omitempty" xml:"MenuName,omitempty"`
 	Support  *bool   `json:"Support,omitempty" xml:"Support,omitempty"`
+	MenuName *string `json:"MenuName,omitempty" xml:"MenuName,omitempty"`
 }
 
 func (s DescribeBackMenuResponseBodyListList) String() string {
@@ -1086,13 +1080,13 @@ func (s DescribeBackMenuResponseBodyListList) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeBackMenuResponseBodyListList) SetMenuName(v string) *DescribeBackMenuResponseBodyListList {
-	s.MenuName = &v
+func (s *DescribeBackMenuResponseBodyListList) SetSupport(v bool) *DescribeBackMenuResponseBodyListList {
+	s.Support = &v
 	return s
 }
 
-func (s *DescribeBackMenuResponseBodyListList) SetSupport(v bool) *DescribeBackMenuResponseBodyListList {
-	s.Support = &v
+func (s *DescribeBackMenuResponseBodyListList) SetMenuName(v string) *DescribeBackMenuResponseBodyListList {
+	s.MenuName = &v
 	return s
 }
 
@@ -1149,9 +1143,9 @@ func (s *DescribeBackupDbsRequest) SetBackupId(v string) *DescribeBackupDbsReque
 }
 
 type DescribeBackupDbsResponseBody struct {
-	DbNames   *DescribeBackupDbsResponseBodyDbNames `json:"DbNames,omitempty" xml:"DbNames,omitempty" type:"Struct"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	DbNames   *DescribeBackupDbsResponseBodyDbNames `json:"DbNames,omitempty" xml:"DbNames,omitempty" type:"Struct"`
 }
 
 func (s DescribeBackupDbsResponseBody) String() string {
@@ -1162,8 +1156,8 @@ func (s DescribeBackupDbsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeBackupDbsResponseBody) SetDbNames(v *DescribeBackupDbsResponseBodyDbNames) *DescribeBackupDbsResponseBody {
-	s.DbNames = v
+func (s *DescribeBackupDbsResponseBody) SetSuccess(v bool) *DescribeBackupDbsResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -1172,8 +1166,8 @@ func (s *DescribeBackupDbsResponseBody) SetRequestId(v string) *DescribeBackupDb
 	return s
 }
 
-func (s *DescribeBackupDbsResponseBody) SetSuccess(v bool) *DescribeBackupDbsResponseBody {
-	s.Success = &v
+func (s *DescribeBackupDbsResponseBody) SetDbNames(v *DescribeBackupDbsResponseBodyDbNames) *DescribeBackupDbsResponseBody {
+	s.DbNames = v
 	return s
 }
 
@@ -1235,8 +1229,8 @@ func (s *DescribeBackupLocalRequest) SetDrdsInstanceId(v string) *DescribeBackup
 }
 
 type DescribeBackupLocalResponseBody struct {
-	RequestId      *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success        *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId      *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	BackupPolicyDO *DescribeBackupLocalResponseBodyBackupPolicyDO `json:"BackupPolicyDO,omitempty" xml:"BackupPolicyDO,omitempty" type:"Struct"`
 }
 
@@ -1248,13 +1242,13 @@ func (s DescribeBackupLocalResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeBackupLocalResponseBody) SetRequestId(v string) *DescribeBackupLocalResponseBody {
-	s.RequestId = &v
+func (s *DescribeBackupLocalResponseBody) SetSuccess(v bool) *DescribeBackupLocalResponseBody {
+	s.Success = &v
 	return s
 }
 
-func (s *DescribeBackupLocalResponseBody) SetSuccess(v bool) *DescribeBackupLocalResponseBody {
-	s.Success = &v
+func (s *DescribeBackupLocalResponseBody) SetRequestId(v string) *DescribeBackupLocalResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1270,10 +1264,10 @@ type DescribeBackupLocalResponseBodyBackupPolicyDO struct {
 	BackupType                *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
 	BackupLevel               *string `json:"BackupLevel,omitempty" xml:"BackupLevel,omitempty"`
 	LocalLogRetentionHours    *int64  `json:"LocalLogRetentionHours,omitempty" xml:"LocalLogRetentionHours,omitempty"`
-	GmtModified               *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	HighSpaceUsageProtection  *int64  `json:"HighSpaceUsageProtection,omitempty" xml:"HighSpaceUsageProtection,omitempty"`
-	BackupPolicyMode          *string `json:"BackupPolicyMode,omitempty" xml:"BackupPolicyMode,omitempty"`
+	GmtModified               *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	BackupRetentionPeriod     *int64  `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
+	BackupPolicyMode          *string `json:"BackupPolicyMode,omitempty" xml:"BackupPolicyMode,omitempty"`
 	PreferredBackupPeriod     *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
 	LocalLogRetentionSpace    *int64  `json:"LocalLogRetentionSpace,omitempty" xml:"LocalLogRetentionSpace,omitempty"`
 	BackupAppName             *string `json:"BackupAppName,omitempty" xml:"BackupAppName,omitempty"`
@@ -1322,23 +1316,23 @@ func (s *DescribeBackupLocalResponseBodyBackupPolicyDO) SetLocalLogRetentionHour
 	return s
 }
 
-func (s *DescribeBackupLocalResponseBodyBackupPolicyDO) SetGmtModified(v int64) *DescribeBackupLocalResponseBodyBackupPolicyDO {
-	s.GmtModified = &v
-	return s
-}
-
 func (s *DescribeBackupLocalResponseBodyBackupPolicyDO) SetHighSpaceUsageProtection(v int64) *DescribeBackupLocalResponseBodyBackupPolicyDO {
 	s.HighSpaceUsageProtection = &v
 	return s
 }
 
-func (s *DescribeBackupLocalResponseBodyBackupPolicyDO) SetBackupPolicyMode(v string) *DescribeBackupLocalResponseBodyBackupPolicyDO {
-	s.BackupPolicyMode = &v
+func (s *DescribeBackupLocalResponseBodyBackupPolicyDO) SetGmtModified(v int64) *DescribeBackupLocalResponseBodyBackupPolicyDO {
+	s.GmtModified = &v
 	return s
 }
 
 func (s *DescribeBackupLocalResponseBodyBackupPolicyDO) SetBackupRetentionPeriod(v int64) *DescribeBackupLocalResponseBodyBackupPolicyDO {
 	s.BackupRetentionPeriod = &v
+	return s
+}
+
+func (s *DescribeBackupLocalResponseBodyBackupPolicyDO) SetBackupPolicyMode(v string) *DescribeBackupLocalResponseBodyBackupPolicyDO {
+	s.BackupPolicyMode = &v
 	return s
 }
 
@@ -1423,8 +1417,8 @@ func (s *DescribeBackupPolicyRequest) SetDrdsInstanceId(v string) *DescribeBacku
 }
 
 type DescribeBackupPolicyResponseBody struct {
-	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success        *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	BackupPolicyDO *DescribeBackupPolicyResponseBodyBackupPolicyDO `json:"BackupPolicyDO,omitempty" xml:"BackupPolicyDO,omitempty" type:"Struct"`
 }
 
@@ -1436,13 +1430,13 @@ func (s DescribeBackupPolicyResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeBackupPolicyResponseBody) SetRequestId(v string) *DescribeBackupPolicyResponseBody {
-	s.RequestId = &v
+func (s *DescribeBackupPolicyResponseBody) SetSuccess(v bool) *DescribeBackupPolicyResponseBody {
+	s.Success = &v
 	return s
 }
 
-func (s *DescribeBackupPolicyResponseBody) SetSuccess(v bool) *DescribeBackupPolicyResponseBody {
-	s.Success = &v
+func (s *DescribeBackupPolicyResponseBody) SetRequestId(v string) *DescribeBackupPolicyResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1458,10 +1452,10 @@ type DescribeBackupPolicyResponseBodyBackupPolicyDO struct {
 	BackupType                *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
 	BackupLevel               *string `json:"BackupLevel,omitempty" xml:"BackupLevel,omitempty"`
 	LocalLogRetentionHours    *int64  `json:"LocalLogRetentionHours,omitempty" xml:"LocalLogRetentionHours,omitempty"`
-	GmtModified               *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	HighSpaceUsageProtection  *int64  `json:"HighSpaceUsageProtection,omitempty" xml:"HighSpaceUsageProtection,omitempty"`
-	BackupPolicyMode          *string `json:"BackupPolicyMode,omitempty" xml:"BackupPolicyMode,omitempty"`
+	GmtModified               *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	BackupRetentionPeriod     *int64  `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
+	BackupPolicyMode          *string `json:"BackupPolicyMode,omitempty" xml:"BackupPolicyMode,omitempty"`
 	PreferredBackupPeriod     *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
 	LocalLogRetentionSpace    *int64  `json:"LocalLogRetentionSpace,omitempty" xml:"LocalLogRetentionSpace,omitempty"`
 	BackupAppName             *string `json:"BackupAppName,omitempty" xml:"BackupAppName,omitempty"`
@@ -1510,23 +1504,23 @@ func (s *DescribeBackupPolicyResponseBodyBackupPolicyDO) SetLocalLogRetentionHou
 	return s
 }
 
-func (s *DescribeBackupPolicyResponseBodyBackupPolicyDO) SetGmtModified(v int64) *DescribeBackupPolicyResponseBodyBackupPolicyDO {
-	s.GmtModified = &v
-	return s
-}
-
 func (s *DescribeBackupPolicyResponseBodyBackupPolicyDO) SetHighSpaceUsageProtection(v int64) *DescribeBackupPolicyResponseBodyBackupPolicyDO {
 	s.HighSpaceUsageProtection = &v
 	return s
 }
 
-func (s *DescribeBackupPolicyResponseBodyBackupPolicyDO) SetBackupPolicyMode(v string) *DescribeBackupPolicyResponseBodyBackupPolicyDO {
-	s.BackupPolicyMode = &v
+func (s *DescribeBackupPolicyResponseBodyBackupPolicyDO) SetGmtModified(v int64) *DescribeBackupPolicyResponseBodyBackupPolicyDO {
+	s.GmtModified = &v
 	return s
 }
 
 func (s *DescribeBackupPolicyResponseBodyBackupPolicyDO) SetBackupRetentionPeriod(v int64) *DescribeBackupPolicyResponseBodyBackupPolicyDO {
 	s.BackupRetentionPeriod = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponseBodyBackupPolicyDO) SetBackupPolicyMode(v string) *DescribeBackupPolicyResponseBodyBackupPolicyDO {
+	s.BackupPolicyMode = &v
 	return s
 }
 
@@ -1623,9 +1617,9 @@ func (s *DescribeBackupSetsRequest) SetEndTime(v string) *DescribeBackupSetsRequ
 }
 
 type DescribeBackupSetsResponseBody struct {
+	Success    *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
 	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	BackupSets *DescribeBackupSetsResponseBodyBackupSets `json:"BackupSets,omitempty" xml:"BackupSets,omitempty" type:"Struct"`
-	Success    *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeBackupSetsResponseBody) String() string {
@@ -1636,6 +1630,11 @@ func (s DescribeBackupSetsResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeBackupSetsResponseBody) SetSuccess(v bool) *DescribeBackupSetsResponseBody {
+	s.Success = &v
+	return s
+}
+
 func (s *DescribeBackupSetsResponseBody) SetRequestId(v string) *DescribeBackupSetsResponseBody {
 	s.RequestId = &v
 	return s
@@ -1643,11 +1642,6 @@ func (s *DescribeBackupSetsResponseBody) SetRequestId(v string) *DescribeBackupS
 
 func (s *DescribeBackupSetsResponseBody) SetBackupSets(v *DescribeBackupSetsResponseBodyBackupSets) *DescribeBackupSetsResponseBody {
 	s.BackupSets = v
-	return s
-}
-
-func (s *DescribeBackupSetsResponseBody) SetSuccess(v bool) *DescribeBackupSetsResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -1803,8 +1797,8 @@ func (s *DescribeBackupTimesRequest) SetDrdsInstanceId(v string) *DescribeBackup
 }
 
 type DescribeBackupTimesResponseBody struct {
-	RequestId   *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success     *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId   *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RestoreTime *DescribeBackupTimesResponseBodyRestoreTime `json:"RestoreTime,omitempty" xml:"RestoreTime,omitempty" type:"Struct"`
 }
 
@@ -1816,13 +1810,13 @@ func (s DescribeBackupTimesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeBackupTimesResponseBody) SetRequestId(v string) *DescribeBackupTimesResponseBody {
-	s.RequestId = &v
+func (s *DescribeBackupTimesResponseBody) SetSuccess(v bool) *DescribeBackupTimesResponseBody {
+	s.Success = &v
 	return s
 }
 
-func (s *DescribeBackupTimesResponseBody) SetSuccess(v bool) *DescribeBackupTimesResponseBody {
-	s.Success = &v
+func (s *DescribeBackupTimesResponseBody) SetRequestId(v string) *DescribeBackupTimesResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1925,13 +1919,13 @@ func (s *DescribeBroadcastTablesRequest) SetCurrentPage(v int32) *DescribeBroadc
 }
 
 type DescribeBroadcastTablesResponseBody struct {
-	IsShard    *bool                                      `json:"IsShard,omitempty" xml:"IsShard,omitempty"`
 	RequestId  *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize   *int32                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Success    *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	IsShard    *bool                                      `json:"IsShard,omitempty" xml:"IsShard,omitempty"`
 	PageNumber *int32                                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Total      *int32                                     `json:"Total,omitempty" xml:"Total,omitempty"`
 	List       []*DescribeBroadcastTablesResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	Success    *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeBroadcastTablesResponseBody) String() string {
@@ -1942,23 +1936,28 @@ func (s DescribeBroadcastTablesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeBroadcastTablesResponseBody) SetIsShard(v bool) *DescribeBroadcastTablesResponseBody {
-	s.IsShard = &v
-	return s
-}
-
 func (s *DescribeBroadcastTablesResponseBody) SetRequestId(v string) *DescribeBroadcastTablesResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *DescribeBroadcastTablesResponseBody) SetPageSize(v int32) *DescribeBroadcastTablesResponseBody {
-	s.PageSize = &v
+func (s *DescribeBroadcastTablesResponseBody) SetSuccess(v bool) *DescribeBroadcastTablesResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeBroadcastTablesResponseBody) SetIsShard(v bool) *DescribeBroadcastTablesResponseBody {
+	s.IsShard = &v
 	return s
 }
 
 func (s *DescribeBroadcastTablesResponseBody) SetPageNumber(v int32) *DescribeBroadcastTablesResponseBody {
 	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeBroadcastTablesResponseBody) SetPageSize(v int32) *DescribeBroadcastTablesResponseBody {
+	s.PageSize = &v
 	return s
 }
 
@@ -1969,11 +1968,6 @@ func (s *DescribeBroadcastTablesResponseBody) SetTotal(v int32) *DescribeBroadca
 
 func (s *DescribeBroadcastTablesResponseBody) SetList(v []*DescribeBroadcastTablesResponseBodyList) *DescribeBroadcastTablesResponseBody {
 	s.List = v
-	return s
-}
-
-func (s *DescribeBroadcastTablesResponseBody) SetSuccess(v bool) *DescribeBroadcastTablesResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -2089,10 +2083,10 @@ func (s *DescribeDbInstanceDbsRequest) SetDbInstType(v string) *DescribeDbInstan
 }
 
 type DescribeDbInstanceDbsResponseBody struct {
-	Databases *DescribeDbInstanceDbsResponseBodyDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Struct"`
 	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total     *string                                     `json:"Total,omitempty" xml:"Total,omitempty"`
 	Success   *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	Total     *string                                     `json:"Total,omitempty" xml:"Total,omitempty"`
+	Databases *DescribeDbInstanceDbsResponseBodyDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Struct"`
 }
 
 func (s DescribeDbInstanceDbsResponseBody) String() string {
@@ -2103,13 +2097,13 @@ func (s DescribeDbInstanceDbsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDbInstanceDbsResponseBody) SetDatabases(v *DescribeDbInstanceDbsResponseBodyDatabases) *DescribeDbInstanceDbsResponseBody {
-	s.Databases = v
+func (s *DescribeDbInstanceDbsResponseBody) SetRequestId(v string) *DescribeDbInstanceDbsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *DescribeDbInstanceDbsResponseBody) SetRequestId(v string) *DescribeDbInstanceDbsResponseBody {
-	s.RequestId = &v
+func (s *DescribeDbInstanceDbsResponseBody) SetSuccess(v bool) *DescribeDbInstanceDbsResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -2118,8 +2112,8 @@ func (s *DescribeDbInstanceDbsResponseBody) SetTotal(v string) *DescribeDbInstan
 	return s
 }
 
-func (s *DescribeDbInstanceDbsResponseBody) SetSuccess(v bool) *DescribeDbInstanceDbsResponseBody {
-	s.Success = &v
+func (s *DescribeDbInstanceDbsResponseBody) SetDatabases(v *DescribeDbInstanceDbsResponseBodyDatabases) *DescribeDbInstanceDbsResponseBody {
+	s.Databases = v
 	return s
 }
 
@@ -2274,7 +2268,6 @@ func (s *DescribeDbInstancesResponseBodyItems) SetDBInstance(v []*DescribeDbInst
 }
 
 type DescribeDbInstancesResponseBodyItemsDBInstance struct {
-	ReadOnlyDBInstanceId  *DescribeDbInstancesResponseBodyItemsDBInstanceReadOnlyDBInstanceId `json:"ReadOnlyDBInstanceId,omitempty" xml:"ReadOnlyDBInstanceId,omitempty" type:"Struct"`
 	InstanceNetworkType   *string                                                             `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
 	DBInstanceType        *string                                                             `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
 	ZoneId                *string                                                             `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
@@ -2284,6 +2277,7 @@ type DescribeDbInstancesResponseBodyItemsDBInstance struct {
 	DBInstanceDescription *string                                                             `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
 	EngineVersion         *string                                                             `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	RegionId              *string                                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ReadOnlyDBInstanceId  *DescribeDbInstancesResponseBodyItemsDBInstanceReadOnlyDBInstanceId `json:"ReadOnlyDBInstanceId,omitempty" xml:"ReadOnlyDBInstanceId,omitempty" type:"Struct"`
 }
 
 func (s DescribeDbInstancesResponseBodyItemsDBInstance) String() string {
@@ -2292,11 +2286,6 @@ func (s DescribeDbInstancesResponseBodyItemsDBInstance) String() string {
 
 func (s DescribeDbInstancesResponseBodyItemsDBInstance) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeDbInstancesResponseBodyItemsDBInstance) SetReadOnlyDBInstanceId(v *DescribeDbInstancesResponseBodyItemsDBInstanceReadOnlyDBInstanceId) *DescribeDbInstancesResponseBodyItemsDBInstance {
-	s.ReadOnlyDBInstanceId = v
-	return s
 }
 
 func (s *DescribeDbInstancesResponseBodyItemsDBInstance) SetInstanceNetworkType(v string) *DescribeDbInstancesResponseBodyItemsDBInstance {
@@ -2341,6 +2330,11 @@ func (s *DescribeDbInstancesResponseBodyItemsDBInstance) SetEngineVersion(v stri
 
 func (s *DescribeDbInstancesResponseBodyItemsDBInstance) SetRegionId(v string) *DescribeDbInstancesResponseBodyItemsDBInstance {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDbInstancesResponseBodyItemsDBInstance) SetReadOnlyDBInstanceId(v *DescribeDbInstancesResponseBodyItemsDBInstanceReadOnlyDBInstanceId) *DescribeDbInstancesResponseBodyItemsDBInstance {
+	s.ReadOnlyDBInstanceId = v
 	return s
 }
 
@@ -2408,9 +2402,9 @@ func (s *DescribeDrdsDBRequest) SetDbName(v string) *DescribeDrdsDBRequest {
 }
 
 type DescribeDrdsDBResponseBody struct {
+	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
 	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *DescribeDrdsDBResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeDrdsDBResponseBody) String() string {
@@ -2421,6 +2415,11 @@ func (s DescribeDrdsDBResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeDrdsDBResponseBody) SetSuccess(v bool) *DescribeDrdsDBResponseBody {
+	s.Success = &v
+	return s
+}
+
 func (s *DescribeDrdsDBResponseBody) SetRequestId(v string) *DescribeDrdsDBResponseBody {
 	s.RequestId = &v
 	return s
@@ -2428,11 +2427,6 @@ func (s *DescribeDrdsDBResponseBody) SetRequestId(v string) *DescribeDrdsDBRespo
 
 func (s *DescribeDrdsDBResponseBody) SetData(v *DescribeDrdsDBResponseBodyData) *DescribeDrdsDBResponseBody {
 	s.Data = v
-	return s
-}
-
-func (s *DescribeDrdsDBResponseBody) SetSuccess(v bool) *DescribeDrdsDBResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -2542,9 +2536,9 @@ func (s *DescribeDrdsDBClusterRequest) SetDbInstanceId(v string) *DescribeDrdsDB
 }
 
 type DescribeDrdsDBClusterResponseBody struct {
+	Success    *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
 	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DbInstance *DescribeDrdsDBClusterResponseBodyDbInstance `json:"DbInstance,omitempty" xml:"DbInstance,omitempty" type:"Struct"`
-	Success    *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeDrdsDBClusterResponseBody) String() string {
@@ -2553,6 +2547,11 @@ func (s DescribeDrdsDBClusterResponseBody) String() string {
 
 func (s DescribeDrdsDBClusterResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDrdsDBClusterResponseBody) SetSuccess(v bool) *DescribeDrdsDBClusterResponseBody {
+	s.Success = &v
+	return s
 }
 
 func (s *DescribeDrdsDBClusterResponseBody) SetRequestId(v string) *DescribeDrdsDBClusterResponseBody {
@@ -2565,26 +2564,21 @@ func (s *DescribeDrdsDBClusterResponseBody) SetDbInstance(v *DescribeDrdsDBClust
 	return s
 }
 
-func (s *DescribeDrdsDBClusterResponseBody) SetSuccess(v bool) *DescribeDrdsDBClusterResponseBody {
-	s.Success = &v
-	return s
-}
-
 type DescribeDrdsDBClusterResponseBodyDbInstance struct {
-	Endpoints        *DescribeDrdsDBClusterResponseBodyDbInstanceEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Struct"`
 	ExpireTime       *string                                               `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	PayType          *string                                               `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	DBInstanceStatus *string                                               `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
 	NetworkType      *string                                               `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	Port             *int32                                                `json:"Port,omitempty" xml:"Port,omitempty"`
 	EngineVersion    *string                                               `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	DBNodes          *DescribeDrdsDBClusterResponseBodyDbInstanceDBNodes   `json:"DBNodes,omitempty" xml:"DBNodes,omitempty" type:"Struct"`
 	RdsInstType      *string                                               `json:"RdsInstType,omitempty" xml:"RdsInstType,omitempty"`
 	RemainDays       *string                                               `json:"RemainDays,omitempty" xml:"RemainDays,omitempty"`
 	DBInstanceId     *string                                               `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	DbInstType       *string                                               `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
 	Engine           *string                                               `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	ReadMode         *string                                               `json:"ReadMode,omitempty" xml:"ReadMode,omitempty"`
+	Endpoints        *DescribeDrdsDBClusterResponseBodyDbInstanceEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Struct"`
+	DBNodes          *DescribeDrdsDBClusterResponseBodyDbInstanceDBNodes   `json:"DBNodes,omitempty" xml:"DBNodes,omitempty" type:"Struct"`
 }
 
 func (s DescribeDrdsDBClusterResponseBodyDbInstance) String() string {
@@ -2593,11 +2587,6 @@ func (s DescribeDrdsDBClusterResponseBodyDbInstance) String() string {
 
 func (s DescribeDrdsDBClusterResponseBodyDbInstance) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeDrdsDBClusterResponseBodyDbInstance) SetEndpoints(v *DescribeDrdsDBClusterResponseBodyDbInstanceEndpoints) *DescribeDrdsDBClusterResponseBodyDbInstance {
-	s.Endpoints = v
-	return s
 }
 
 func (s *DescribeDrdsDBClusterResponseBodyDbInstance) SetExpireTime(v string) *DescribeDrdsDBClusterResponseBodyDbInstance {
@@ -2627,11 +2616,6 @@ func (s *DescribeDrdsDBClusterResponseBodyDbInstance) SetPort(v int32) *Describe
 
 func (s *DescribeDrdsDBClusterResponseBodyDbInstance) SetEngineVersion(v string) *DescribeDrdsDBClusterResponseBodyDbInstance {
 	s.EngineVersion = &v
-	return s
-}
-
-func (s *DescribeDrdsDBClusterResponseBodyDbInstance) SetDBNodes(v *DescribeDrdsDBClusterResponseBodyDbInstanceDBNodes) *DescribeDrdsDBClusterResponseBodyDbInstance {
-	s.DBNodes = v
 	return s
 }
 
@@ -2665,6 +2649,16 @@ func (s *DescribeDrdsDBClusterResponseBodyDbInstance) SetReadMode(v string) *Des
 	return s
 }
 
+func (s *DescribeDrdsDBClusterResponseBodyDbInstance) SetEndpoints(v *DescribeDrdsDBClusterResponseBodyDbInstanceEndpoints) *DescribeDrdsDBClusterResponseBodyDbInstance {
+	s.Endpoints = v
+	return s
+}
+
+func (s *DescribeDrdsDBClusterResponseBodyDbInstance) SetDBNodes(v *DescribeDrdsDBClusterResponseBodyDbInstanceDBNodes) *DescribeDrdsDBClusterResponseBodyDbInstance {
+	s.DBNodes = v
+	return s
+}
+
 type DescribeDrdsDBClusterResponseBodyDbInstanceEndpoints struct {
 	Endpoint []*DescribeDrdsDBClusterResponseBodyDbInstanceEndpointsEndpoint `json:"Endpoint,omitempty" xml:"Endpoint,omitempty" type:"Repeated"`
 }
@@ -2684,8 +2678,8 @@ func (s *DescribeDrdsDBClusterResponseBodyDbInstanceEndpoints) SetEndpoint(v []*
 
 type DescribeDrdsDBClusterResponseBodyDbInstanceEndpointsEndpoint struct {
 	ReadWeight *int32  `json:"ReadWeight,omitempty" xml:"ReadWeight,omitempty"`
-	NodeIds    *string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty"`
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	NodeIds    *string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty"`
 }
 
 func (s DescribeDrdsDBClusterResponseBodyDbInstanceEndpointsEndpoint) String() string {
@@ -2701,13 +2695,13 @@ func (s *DescribeDrdsDBClusterResponseBodyDbInstanceEndpointsEndpoint) SetReadWe
 	return s
 }
 
-func (s *DescribeDrdsDBClusterResponseBodyDbInstanceEndpointsEndpoint) SetNodeIds(v string) *DescribeDrdsDBClusterResponseBodyDbInstanceEndpointsEndpoint {
-	s.NodeIds = &v
+func (s *DescribeDrdsDBClusterResponseBodyDbInstanceEndpointsEndpoint) SetEndpointId(v string) *DescribeDrdsDBClusterResponseBodyDbInstanceEndpointsEndpoint {
+	s.EndpointId = &v
 	return s
 }
 
-func (s *DescribeDrdsDBClusterResponseBodyDbInstanceEndpointsEndpoint) SetEndpointId(v string) *DescribeDrdsDBClusterResponseBodyDbInstanceEndpointsEndpoint {
-	s.EndpointId = &v
+func (s *DescribeDrdsDBClusterResponseBodyDbInstanceEndpointsEndpoint) SetNodeIds(v string) *DescribeDrdsDBClusterResponseBodyDbInstanceEndpointsEndpoint {
+	s.NodeIds = &v
 	return s
 }
 
@@ -2816,9 +2810,9 @@ func (s *DescribeDrdsDbInstanceRequest) SetDbInstanceId(v string) *DescribeDrdsD
 }
 
 type DescribeDrdsDbInstanceResponseBody struct {
+	Success    *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
 	RequestId  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DbInstance *DescribeDrdsDbInstanceResponseBodyDbInstance `json:"DbInstance,omitempty" xml:"DbInstance,omitempty" type:"Struct"`
-	Success    *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeDrdsDbInstanceResponseBody) String() string {
@@ -2829,6 +2823,11 @@ func (s DescribeDrdsDbInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeDrdsDbInstanceResponseBody) SetSuccess(v bool) *DescribeDrdsDbInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
 func (s *DescribeDrdsDbInstanceResponseBody) SetRequestId(v string) *DescribeDrdsDbInstanceResponseBody {
 	s.RequestId = &v
 	return s
@@ -2836,11 +2835,6 @@ func (s *DescribeDrdsDbInstanceResponseBody) SetRequestId(v string) *DescribeDrd
 
 func (s *DescribeDrdsDbInstanceResponseBody) SetDbInstance(v *DescribeDrdsDbInstanceResponseBodyDbInstance) *DescribeDrdsDbInstanceResponseBody {
 	s.DbInstance = v
-	return s
-}
-
-func (s *DescribeDrdsDbInstanceResponseBody) SetSuccess(v bool) *DescribeDrdsDbInstanceResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -3123,11 +3117,11 @@ func (s *DescribeDrdsDbInstancesRequest) SetPageSize(v int32) *DescribeDrdsDbIns
 
 type DescribeDrdsDbInstancesResponseBody struct {
 	PageSize    *string                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageNumber  *string                                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	RequestId   *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Total       *string                                         `json:"Total,omitempty" xml:"Total,omitempty"`
-	DbInstances *DescribeDrdsDbInstancesResponseBodyDbInstances `json:"DbInstances,omitempty" xml:"DbInstances,omitempty" type:"Struct"`
 	Success     *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	DbInstances *DescribeDrdsDbInstancesResponseBodyDbInstances `json:"DbInstances,omitempty" xml:"DbInstances,omitempty" type:"Struct"`
 }
 
 func (s DescribeDrdsDbInstancesResponseBody) String() string {
@@ -3143,13 +3137,13 @@ func (s *DescribeDrdsDbInstancesResponseBody) SetPageSize(v string) *DescribeDrd
 	return s
 }
 
-func (s *DescribeDrdsDbInstancesResponseBody) SetRequestId(v string) *DescribeDrdsDbInstancesResponseBody {
-	s.RequestId = &v
+func (s *DescribeDrdsDbInstancesResponseBody) SetPageNumber(v string) *DescribeDrdsDbInstancesResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
-func (s *DescribeDrdsDbInstancesResponseBody) SetPageNumber(v string) *DescribeDrdsDbInstancesResponseBody {
-	s.PageNumber = &v
+func (s *DescribeDrdsDbInstancesResponseBody) SetRequestId(v string) *DescribeDrdsDbInstancesResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -3158,13 +3152,13 @@ func (s *DescribeDrdsDbInstancesResponseBody) SetTotal(v string) *DescribeDrdsDb
 	return s
 }
 
-func (s *DescribeDrdsDbInstancesResponseBody) SetDbInstances(v *DescribeDrdsDbInstancesResponseBodyDbInstances) *DescribeDrdsDbInstancesResponseBody {
-	s.DbInstances = v
+func (s *DescribeDrdsDbInstancesResponseBody) SetSuccess(v bool) *DescribeDrdsDbInstancesResponseBody {
+	s.Success = &v
 	return s
 }
 
-func (s *DescribeDrdsDbInstancesResponseBody) SetSuccess(v bool) *DescribeDrdsDbInstancesResponseBody {
-	s.Success = &v
+func (s *DescribeDrdsDbInstancesResponseBody) SetDbInstances(v *DescribeDrdsDbInstancesResponseBodyDbInstances) *DescribeDrdsDbInstancesResponseBody {
+	s.DbInstances = v
 	return s
 }
 
@@ -3451,9 +3445,9 @@ func (s *DescribeDrdsDBIpWhiteListRequest) SetGroupName(v string) *DescribeDrdsD
 }
 
 type DescribeDrdsDBIpWhiteListResponseBody struct {
+	Success     *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
 	RequestId   *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	IpWhiteList *DescribeDrdsDBIpWhiteListResponseBodyIpWhiteList `json:"IpWhiteList,omitempty" xml:"IpWhiteList,omitempty" type:"Struct"`
-	Success     *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeDrdsDBIpWhiteListResponseBody) String() string {
@@ -3464,6 +3458,11 @@ func (s DescribeDrdsDBIpWhiteListResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeDrdsDBIpWhiteListResponseBody) SetSuccess(v bool) *DescribeDrdsDBIpWhiteListResponseBody {
+	s.Success = &v
+	return s
+}
+
 func (s *DescribeDrdsDBIpWhiteListResponseBody) SetRequestId(v string) *DescribeDrdsDBIpWhiteListResponseBody {
 	s.RequestId = &v
 	return s
@@ -3471,11 +3470,6 @@ func (s *DescribeDrdsDBIpWhiteListResponseBody) SetRequestId(v string) *Describe
 
 func (s *DescribeDrdsDBIpWhiteListResponseBody) SetIpWhiteList(v *DescribeDrdsDBIpWhiteListResponseBodyIpWhiteList) *DescribeDrdsDBIpWhiteListResponseBody {
 	s.IpWhiteList = v
-	return s
-}
-
-func (s *DescribeDrdsDBIpWhiteListResponseBody) SetSuccess(v bool) *DescribeDrdsDBIpWhiteListResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -3543,9 +3537,9 @@ func (s *DescribeDrdsDbRdsNameListRequest) SetDbName(v string) *DescribeDrdsDbRd
 }
 
 type DescribeDrdsDbRdsNameListResponseBody struct {
+	Success          *bool                                                  `json:"Success,omitempty" xml:"Success,omitempty"`
 	RequestId        *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	InstanceNameList *DescribeDrdsDbRdsNameListResponseBodyInstanceNameList `json:"InstanceNameList,omitempty" xml:"InstanceNameList,omitempty" type:"Struct"`
-	Success          *bool                                                  `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeDrdsDbRdsNameListResponseBody) String() string {
@@ -3556,6 +3550,11 @@ func (s DescribeDrdsDbRdsNameListResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeDrdsDbRdsNameListResponseBody) SetSuccess(v bool) *DescribeDrdsDbRdsNameListResponseBody {
+	s.Success = &v
+	return s
+}
+
 func (s *DescribeDrdsDbRdsNameListResponseBody) SetRequestId(v string) *DescribeDrdsDbRdsNameListResponseBody {
 	s.RequestId = &v
 	return s
@@ -3563,11 +3562,6 @@ func (s *DescribeDrdsDbRdsNameListResponseBody) SetRequestId(v string) *Describe
 
 func (s *DescribeDrdsDbRdsNameListResponseBody) SetInstanceNameList(v *DescribeDrdsDbRdsNameListResponseBodyInstanceNameList) *DescribeDrdsDbRdsNameListResponseBody {
 	s.InstanceNameList = v
-	return s
-}
-
-func (s *DescribeDrdsDbRdsNameListResponseBody) SetSuccess(v bool) *DescribeDrdsDbRdsNameListResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -3615,6 +3609,7 @@ type DescribeDrdsDBsRequest struct {
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeDrdsDBsRequest) String() string {
@@ -3640,13 +3635,18 @@ func (s *DescribeDrdsDBsRequest) SetPageSize(v int32) *DescribeDrdsDBsRequest {
 	return s
 }
 
+func (s *DescribeDrdsDBsRequest) SetRegionId(v string) *DescribeDrdsDBsRequest {
+	s.RegionId = &v
+	return s
+}
+
 type DescribeDrdsDBsResponseBody struct {
 	PageSize   *string                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageNumber *string                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	RequestId  *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Total      *string                          `json:"Total,omitempty" xml:"Total,omitempty"`
-	Data       *DescribeDrdsDBsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Success    *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data       *DescribeDrdsDBsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s DescribeDrdsDBsResponseBody) String() string {
@@ -3662,13 +3662,13 @@ func (s *DescribeDrdsDBsResponseBody) SetPageSize(v string) *DescribeDrdsDBsResp
 	return s
 }
 
-func (s *DescribeDrdsDBsResponseBody) SetRequestId(v string) *DescribeDrdsDBsResponseBody {
-	s.RequestId = &v
+func (s *DescribeDrdsDBsResponseBody) SetPageNumber(v string) *DescribeDrdsDBsResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
-func (s *DescribeDrdsDBsResponseBody) SetPageNumber(v string) *DescribeDrdsDBsResponseBody {
-	s.PageNumber = &v
+func (s *DescribeDrdsDBsResponseBody) SetRequestId(v string) *DescribeDrdsDBsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -3677,13 +3677,13 @@ func (s *DescribeDrdsDBsResponseBody) SetTotal(v string) *DescribeDrdsDBsRespons
 	return s
 }
 
-func (s *DescribeDrdsDBsResponseBody) SetData(v *DescribeDrdsDBsResponseBodyData) *DescribeDrdsDBsResponseBody {
-	s.Data = v
+func (s *DescribeDrdsDBsResponseBody) SetSuccess(v bool) *DescribeDrdsDBsResponseBody {
+	s.Success = &v
 	return s
 }
 
-func (s *DescribeDrdsDBsResponseBody) SetSuccess(v bool) *DescribeDrdsDBsResponseBody {
-	s.Success = &v
+func (s *DescribeDrdsDBsResponseBody) SetData(v *DescribeDrdsDBsResponseBodyData) *DescribeDrdsDBsResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -3804,9 +3804,9 @@ func (s *DescribeDrdsDbTasksRequest) SetTaskType(v string) *DescribeDrdsDbTasksR
 }
 
 type DescribeDrdsDbTasksResponseBody struct {
-	Tasks     *DescribeDrdsDbTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Struct"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Tasks     *DescribeDrdsDbTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Struct"`
 }
 
 func (s DescribeDrdsDbTasksResponseBody) String() string {
@@ -3817,8 +3817,8 @@ func (s DescribeDrdsDbTasksResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDrdsDbTasksResponseBody) SetTasks(v *DescribeDrdsDbTasksResponseBodyTasks) *DescribeDrdsDbTasksResponseBody {
-	s.Tasks = v
+func (s *DescribeDrdsDbTasksResponseBody) SetSuccess(v bool) *DescribeDrdsDbTasksResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -3827,8 +3827,8 @@ func (s *DescribeDrdsDbTasksResponseBody) SetRequestId(v string) *DescribeDrdsDb
 	return s
 }
 
-func (s *DescribeDrdsDbTasksResponseBody) SetSuccess(v bool) *DescribeDrdsDbTasksResponseBody {
-	s.Success = &v
+func (s *DescribeDrdsDbTasksResponseBody) SetTasks(v *DescribeDrdsDbTasksResponseBodyTasks) *DescribeDrdsDbTasksResponseBody {
+	s.Tasks = v
 	return s
 }
 
@@ -3850,16 +3850,16 @@ func (s *DescribeDrdsDbTasksResponseBodyTasks) SetTask(v []*DescribeDrdsDbTasksR
 }
 
 type DescribeDrdsDbTasksResponseBodyTasksTask struct {
-	TaskPhase       *string `json:"TaskPhase,omitempty" xml:"TaskPhase,omitempty"`
 	Progress        *int32  `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	TaskPhase       *string `json:"TaskPhase,omitempty" xml:"TaskPhase,omitempty"`
 	TbComputeLength *int32  `json:"TbComputeLength,omitempty" xml:"TbComputeLength,omitempty"`
 	TaskName        *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	ParentJobId     *string `json:"ParentJobId,omitempty" xml:"ParentJobId,omitempty"`
 	Label           *string `json:"Label,omitempty" xml:"Label,omitempty"`
 	TaskType        *int32  `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 	DbComputeLength *int32  `json:"DbComputeLength,omitempty" xml:"DbComputeLength,omitempty"`
-	AllowCancel     *bool   `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
 	TaskStatus      *int32  `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	AllowCancel     *bool   `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
 	ShowProgress    *bool   `json:"ShowProgress,omitempty" xml:"ShowProgress,omitempty"`
 	TaskDetail      *string `json:"TaskDetail,omitempty" xml:"TaskDetail,omitempty"`
 	GmtCreate       *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
@@ -3876,13 +3876,13 @@ func (s DescribeDrdsDbTasksResponseBodyTasksTask) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDrdsDbTasksResponseBodyTasksTask) SetTaskPhase(v string) *DescribeDrdsDbTasksResponseBodyTasksTask {
-	s.TaskPhase = &v
+func (s *DescribeDrdsDbTasksResponseBodyTasksTask) SetProgress(v int32) *DescribeDrdsDbTasksResponseBodyTasksTask {
+	s.Progress = &v
 	return s
 }
 
-func (s *DescribeDrdsDbTasksResponseBodyTasksTask) SetProgress(v int32) *DescribeDrdsDbTasksResponseBodyTasksTask {
-	s.Progress = &v
+func (s *DescribeDrdsDbTasksResponseBodyTasksTask) SetTaskPhase(v string) *DescribeDrdsDbTasksResponseBodyTasksTask {
+	s.TaskPhase = &v
 	return s
 }
 
@@ -3916,13 +3916,13 @@ func (s *DescribeDrdsDbTasksResponseBodyTasksTask) SetDbComputeLength(v int32) *
 	return s
 }
 
-func (s *DescribeDrdsDbTasksResponseBodyTasksTask) SetAllowCancel(v bool) *DescribeDrdsDbTasksResponseBodyTasksTask {
-	s.AllowCancel = &v
+func (s *DescribeDrdsDbTasksResponseBodyTasksTask) SetTaskStatus(v int32) *DescribeDrdsDbTasksResponseBodyTasksTask {
+	s.TaskStatus = &v
 	return s
 }
 
-func (s *DescribeDrdsDbTasksResponseBodyTasksTask) SetTaskStatus(v int32) *DescribeDrdsDbTasksResponseBodyTasksTask {
-	s.TaskStatus = &v
+func (s *DescribeDrdsDbTasksResponseBodyTasksTask) SetAllowCancel(v bool) *DescribeDrdsDbTasksResponseBodyTasksTask {
+	s.AllowCancel = &v
 	return s
 }
 
@@ -4003,9 +4003,9 @@ func (s *DescribeDrdsInstanceRequest) SetRegionId(v string) *DescribeDrdsInstanc
 }
 
 type DescribeDrdsInstanceResponseBody struct {
+	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
 	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *DescribeDrdsInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeDrdsInstanceResponseBody) String() string {
@@ -4016,6 +4016,11 @@ func (s DescribeDrdsInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeDrdsInstanceResponseBody) SetSuccess(v bool) *DescribeDrdsInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
 func (s *DescribeDrdsInstanceResponseBody) SetRequestId(v string) *DescribeDrdsInstanceResponseBody {
 	s.RequestId = &v
 	return s
@@ -4023,11 +4028,6 @@ func (s *DescribeDrdsInstanceResponseBody) SetRequestId(v string) *DescribeDrdsI
 
 func (s *DescribeDrdsInstanceResponseBody) SetData(v *DescribeDrdsInstanceResponseBodyData) *DescribeDrdsInstanceResponseBody {
 	s.Data = v
-	return s
-}
-
-func (s *DescribeDrdsInstanceResponseBody) SetSuccess(v bool) *DescribeDrdsInstanceResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -4043,21 +4043,21 @@ type DescribeDrdsInstanceResponseBodyData struct {
 	InstanceSpec          *string                                                    `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
 	VpcCloudInstanceId    *string                                                    `json:"VpcCloudInstanceId,omitempty" xml:"VpcCloudInstanceId,omitempty"`
 	Description           *string                                                    `json:"Description,omitempty" xml:"Description,omitempty"`
-	Vips                  *DescribeDrdsInstanceResponseBodyDataVips                  `json:"Vips,omitempty" xml:"Vips,omitempty" type:"Struct"`
 	Version               *int64                                                     `json:"Version,omitempty" xml:"Version,omitempty"`
-	MasterInstanceId      *string                                                    `json:"MasterInstanceId,omitempty" xml:"MasterInstanceId,omitempty"`
 	ExpireDate            *int64                                                     `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
+	MasterInstanceId      *string                                                    `json:"MasterInstanceId,omitempty" xml:"MasterInstanceId,omitempty"`
 	CommodityCode         *string                                                    `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	MachineType           *string                                                    `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
 	InstanceSeries        *string                                                    `json:"InstanceSeries,omitempty" xml:"InstanceSeries,omitempty"`
-	ReadOnlyDBInstanceIds *DescribeDrdsInstanceResponseBodyDataReadOnlyDBInstanceIds `json:"ReadOnlyDBInstanceIds,omitempty" xml:"ReadOnlyDBInstanceIds,omitempty" type:"Struct"`
 	ProductVersion        *string                                                    `json:"ProductVersion,omitempty" xml:"ProductVersion,omitempty"`
 	RegionId              *string                                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId       *string                                                    `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ZoneId                *string                                                    `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 	DrdsInstanceId        *string                                                    `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
+	ZoneId                *string                                                    `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 	InstRole              *string                                                    `json:"InstRole,omitempty" xml:"InstRole,omitempty"`
 	OrderInstanceId       *string                                                    `json:"OrderInstanceId,omitempty" xml:"OrderInstanceId,omitempty"`
+	Vips                  *DescribeDrdsInstanceResponseBodyDataVips                  `json:"Vips,omitempty" xml:"Vips,omitempty" type:"Struct"`
+	ReadOnlyDBInstanceIds *DescribeDrdsInstanceResponseBodyDataReadOnlyDBInstanceIds `json:"ReadOnlyDBInstanceIds,omitempty" xml:"ReadOnlyDBInstanceIds,omitempty" type:"Struct"`
 }
 
 func (s DescribeDrdsInstanceResponseBodyData) String() string {
@@ -4123,23 +4123,18 @@ func (s *DescribeDrdsInstanceResponseBodyData) SetDescription(v string) *Describ
 	return s
 }
 
-func (s *DescribeDrdsInstanceResponseBodyData) SetVips(v *DescribeDrdsInstanceResponseBodyDataVips) *DescribeDrdsInstanceResponseBodyData {
-	s.Vips = v
-	return s
-}
-
 func (s *DescribeDrdsInstanceResponseBodyData) SetVersion(v int64) *DescribeDrdsInstanceResponseBodyData {
 	s.Version = &v
 	return s
 }
 
-func (s *DescribeDrdsInstanceResponseBodyData) SetMasterInstanceId(v string) *DescribeDrdsInstanceResponseBodyData {
-	s.MasterInstanceId = &v
+func (s *DescribeDrdsInstanceResponseBodyData) SetExpireDate(v int64) *DescribeDrdsInstanceResponseBodyData {
+	s.ExpireDate = &v
 	return s
 }
 
-func (s *DescribeDrdsInstanceResponseBodyData) SetExpireDate(v int64) *DescribeDrdsInstanceResponseBodyData {
-	s.ExpireDate = &v
+func (s *DescribeDrdsInstanceResponseBodyData) SetMasterInstanceId(v string) *DescribeDrdsInstanceResponseBodyData {
+	s.MasterInstanceId = &v
 	return s
 }
 
@@ -4158,11 +4153,6 @@ func (s *DescribeDrdsInstanceResponseBodyData) SetInstanceSeries(v string) *Desc
 	return s
 }
 
-func (s *DescribeDrdsInstanceResponseBodyData) SetReadOnlyDBInstanceIds(v *DescribeDrdsInstanceResponseBodyDataReadOnlyDBInstanceIds) *DescribeDrdsInstanceResponseBodyData {
-	s.ReadOnlyDBInstanceIds = v
-	return s
-}
-
 func (s *DescribeDrdsInstanceResponseBodyData) SetProductVersion(v string) *DescribeDrdsInstanceResponseBodyData {
 	s.ProductVersion = &v
 	return s
@@ -4178,13 +4168,13 @@ func (s *DescribeDrdsInstanceResponseBodyData) SetResourceGroupId(v string) *Des
 	return s
 }
 
-func (s *DescribeDrdsInstanceResponseBodyData) SetZoneId(v string) *DescribeDrdsInstanceResponseBodyData {
-	s.ZoneId = &v
+func (s *DescribeDrdsInstanceResponseBodyData) SetDrdsInstanceId(v string) *DescribeDrdsInstanceResponseBodyData {
+	s.DrdsInstanceId = &v
 	return s
 }
 
-func (s *DescribeDrdsInstanceResponseBodyData) SetDrdsInstanceId(v string) *DescribeDrdsInstanceResponseBodyData {
-	s.DrdsInstanceId = &v
+func (s *DescribeDrdsInstanceResponseBodyData) SetZoneId(v string) *DescribeDrdsInstanceResponseBodyData {
+	s.ZoneId = &v
 	return s
 }
 
@@ -4195,6 +4185,16 @@ func (s *DescribeDrdsInstanceResponseBodyData) SetInstRole(v string) *DescribeDr
 
 func (s *DescribeDrdsInstanceResponseBodyData) SetOrderInstanceId(v string) *DescribeDrdsInstanceResponseBodyData {
 	s.OrderInstanceId = &v
+	return s
+}
+
+func (s *DescribeDrdsInstanceResponseBodyData) SetVips(v *DescribeDrdsInstanceResponseBodyDataVips) *DescribeDrdsInstanceResponseBodyData {
+	s.Vips = v
+	return s
+}
+
+func (s *DescribeDrdsInstanceResponseBodyData) SetReadOnlyDBInstanceIds(v *DescribeDrdsInstanceResponseBodyDataReadOnlyDBInstanceIds) *DescribeDrdsInstanceResponseBodyData {
+	s.ReadOnlyDBInstanceIds = v
 	return s
 }
 
@@ -4350,9 +4350,9 @@ func (s *DescribeDrdsInstanceDbMonitorRequest) SetRegionId(v string) *DescribeDr
 }
 
 type DescribeDrdsInstanceDbMonitorResponseBody struct {
+	Success   *bool                                            `json:"Success,omitempty" xml:"Success,omitempty"`
 	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      []*DescribeDrdsInstanceDbMonitorResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Success   *bool                                            `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeDrdsInstanceDbMonitorResponseBody) String() string {
@@ -4363,6 +4363,11 @@ func (s DescribeDrdsInstanceDbMonitorResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeDrdsInstanceDbMonitorResponseBody) SetSuccess(v bool) *DescribeDrdsInstanceDbMonitorResponseBody {
+	s.Success = &v
+	return s
+}
+
 func (s *DescribeDrdsInstanceDbMonitorResponseBody) SetRequestId(v string) *DescribeDrdsInstanceDbMonitorResponseBody {
 	s.RequestId = &v
 	return s
@@ -4370,11 +4375,6 @@ func (s *DescribeDrdsInstanceDbMonitorResponseBody) SetRequestId(v string) *Desc
 
 func (s *DescribeDrdsInstanceDbMonitorResponseBody) SetData(v []*DescribeDrdsInstanceDbMonitorResponseBodyData) *DescribeDrdsInstanceDbMonitorResponseBody {
 	s.Data = v
-	return s
-}
-
-func (s *DescribeDrdsInstanceDbMonitorResponseBody) SetSuccess(v bool) *DescribeDrdsInstanceDbMonitorResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -4408,8 +4408,8 @@ func (s *DescribeDrdsInstanceDbMonitorResponseBodyData) SetValues(v []*DescribeD
 }
 
 type DescribeDrdsInstanceDbMonitorResponseBodyDataValues struct {
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 	Date  *int64  `json:"Date,omitempty" xml:"Date,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeDrdsInstanceDbMonitorResponseBodyDataValues) String() string {
@@ -4420,13 +4420,13 @@ func (s DescribeDrdsInstanceDbMonitorResponseBodyDataValues) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDrdsInstanceDbMonitorResponseBodyDataValues) SetValue(v string) *DescribeDrdsInstanceDbMonitorResponseBodyDataValues {
-	s.Value = &v
+func (s *DescribeDrdsInstanceDbMonitorResponseBodyDataValues) SetDate(v int64) *DescribeDrdsInstanceDbMonitorResponseBodyDataValues {
+	s.Date = &v
 	return s
 }
 
-func (s *DescribeDrdsInstanceDbMonitorResponseBodyDataValues) SetDate(v int64) *DescribeDrdsInstanceDbMonitorResponseBodyDataValues {
-	s.Date = &v
+func (s *DescribeDrdsInstanceDbMonitorResponseBodyDataValues) SetValue(v string) *DescribeDrdsInstanceDbMonitorResponseBodyDataValues {
+	s.Value = &v
 	return s
 }
 
@@ -4471,9 +4471,9 @@ func (s *DescribeDrdsInstanceLevelTasksRequest) SetDrdsInstanceId(v string) *Des
 }
 
 type DescribeDrdsInstanceLevelTasksResponseBody struct {
-	Tasks     *DescribeDrdsInstanceLevelTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Struct"`
-	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Tasks     *DescribeDrdsInstanceLevelTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Struct"`
 }
 
 func (s DescribeDrdsInstanceLevelTasksResponseBody) String() string {
@@ -4484,8 +4484,8 @@ func (s DescribeDrdsInstanceLevelTasksResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDrdsInstanceLevelTasksResponseBody) SetTasks(v *DescribeDrdsInstanceLevelTasksResponseBodyTasks) *DescribeDrdsInstanceLevelTasksResponseBody {
-	s.Tasks = v
+func (s *DescribeDrdsInstanceLevelTasksResponseBody) SetSuccess(v bool) *DescribeDrdsInstanceLevelTasksResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -4494,8 +4494,8 @@ func (s *DescribeDrdsInstanceLevelTasksResponseBody) SetRequestId(v string) *Des
 	return s
 }
 
-func (s *DescribeDrdsInstanceLevelTasksResponseBody) SetSuccess(v bool) *DescribeDrdsInstanceLevelTasksResponseBody {
-	s.Success = &v
+func (s *DescribeDrdsInstanceLevelTasksResponseBody) SetTasks(v *DescribeDrdsInstanceLevelTasksResponseBodyTasks) *DescribeDrdsInstanceLevelTasksResponseBody {
+	s.Tasks = v
 	return s
 }
 
@@ -4689,8 +4689,8 @@ func (s *DescribeDrdsInstanceMonitorResponseBody) SetData(v []*DescribeDrdsInsta
 type DescribeDrdsInstanceMonitorResponseBodyData struct {
 	Key     *string                                              `json:"Key,omitempty" xml:"Key,omitempty"`
 	Unit    *string                                              `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Values  []*DescribeDrdsInstanceMonitorResponseBodyDataValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 	NodeNum *int32                                               `json:"NodeNum,omitempty" xml:"NodeNum,omitempty"`
+	Values  []*DescribeDrdsInstanceMonitorResponseBodyDataValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
 func (s DescribeDrdsInstanceMonitorResponseBodyData) String() string {
@@ -4711,19 +4711,19 @@ func (s *DescribeDrdsInstanceMonitorResponseBodyData) SetUnit(v string) *Describ
 	return s
 }
 
-func (s *DescribeDrdsInstanceMonitorResponseBodyData) SetValues(v []*DescribeDrdsInstanceMonitorResponseBodyDataValues) *DescribeDrdsInstanceMonitorResponseBodyData {
-	s.Values = v
-	return s
-}
-
 func (s *DescribeDrdsInstanceMonitorResponseBodyData) SetNodeNum(v int32) *DescribeDrdsInstanceMonitorResponseBodyData {
 	s.NodeNum = &v
 	return s
 }
 
+func (s *DescribeDrdsInstanceMonitorResponseBodyData) SetValues(v []*DescribeDrdsInstanceMonitorResponseBodyDataValues) *DescribeDrdsInstanceMonitorResponseBodyData {
+	s.Values = v
+	return s
+}
+
 type DescribeDrdsInstanceMonitorResponseBodyDataValues struct {
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 	Date  *int64  `json:"Date,omitempty" xml:"Date,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeDrdsInstanceMonitorResponseBodyDataValues) String() string {
@@ -4734,13 +4734,13 @@ func (s DescribeDrdsInstanceMonitorResponseBodyDataValues) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDrdsInstanceMonitorResponseBodyDataValues) SetValue(v string) *DescribeDrdsInstanceMonitorResponseBodyDataValues {
-	s.Value = &v
+func (s *DescribeDrdsInstanceMonitorResponseBodyDataValues) SetDate(v int64) *DescribeDrdsInstanceMonitorResponseBodyDataValues {
+	s.Date = &v
 	return s
 }
 
-func (s *DescribeDrdsInstanceMonitorResponseBodyDataValues) SetDate(v int64) *DescribeDrdsInstanceMonitorResponseBodyDataValues {
-	s.Date = &v
+func (s *DescribeDrdsInstanceMonitorResponseBodyDataValues) SetValue(v string) *DescribeDrdsInstanceMonitorResponseBodyDataValues {
+	s.Value = &v
 	return s
 }
 
@@ -4862,11 +4862,11 @@ func (s *DescribeDrdsInstancesRequestTag) SetValue(v string) *DescribeDrdsInstan
 }
 
 type DescribeDrdsInstancesResponseBody struct {
-	Instances  *DescribeDrdsInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
 	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize   *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PageNumber *int32                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Total      *int32                                      `json:"Total,omitempty" xml:"Total,omitempty"`
+	Instances  *DescribeDrdsInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
 }
 
 func (s DescribeDrdsInstancesResponseBody) String() string {
@@ -4877,18 +4877,8 @@ func (s DescribeDrdsInstancesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDrdsInstancesResponseBody) SetInstances(v *DescribeDrdsInstancesResponseBodyInstances) *DescribeDrdsInstancesResponseBody {
-	s.Instances = v
-	return s
-}
-
 func (s *DescribeDrdsInstancesResponseBody) SetRequestId(v string) *DescribeDrdsInstancesResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeDrdsInstancesResponseBody) SetPageSize(v int32) *DescribeDrdsInstancesResponseBody {
-	s.PageSize = &v
 	return s
 }
 
@@ -4897,8 +4887,18 @@ func (s *DescribeDrdsInstancesResponseBody) SetPageNumber(v int32) *DescribeDrds
 	return s
 }
 
+func (s *DescribeDrdsInstancesResponseBody) SetPageSize(v int32) *DescribeDrdsInstancesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
 func (s *DescribeDrdsInstancesResponseBody) SetTotal(v int32) *DescribeDrdsInstancesResponseBody {
 	s.Total = &v
+	return s
+}
+
+func (s *DescribeDrdsInstancesResponseBody) SetInstances(v *DescribeDrdsInstancesResponseBodyInstances) *DescribeDrdsInstancesResponseBody {
+	s.Instances = v
 	return s
 }
 
@@ -4920,31 +4920,31 @@ func (s *DescribeDrdsInstancesResponseBodyInstances) SetInstance(v []*DescribeDr
 }
 
 type DescribeDrdsInstancesResponseBodyInstancesInstance struct {
-	Type                  *string                                                                  `json:"Type,omitempty" xml:"Type,omitempty"`
-	Status                *string                                                                  `json:"Status,omitempty" xml:"Status,omitempty"`
 	VpcId                 *string                                                                  `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	CreateTime            *int64                                                                   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	VersionAction         *string                                                                  `json:"VersionAction,omitempty" xml:"VersionAction,omitempty"`
-	NetworkType           *string                                                                  `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	Label                 *string                                                                  `json:"Label,omitempty" xml:"Label,omitempty"`
-	InstanceSpec          *string                                                                  `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
-	VpcCloudInstanceId    *string                                                                  `json:"VpcCloudInstanceId,omitempty" xml:"VpcCloudInstanceId,omitempty"`
-	Description           *string                                                                  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Vips                  *DescribeDrdsInstancesResponseBodyInstancesInstanceVips                  `json:"Vips,omitempty" xml:"Vips,omitempty" type:"Struct"`
-	Version               *int64                                                                   `json:"Version,omitempty" xml:"Version,omitempty"`
-	ExpireDate            *int64                                                                   `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
-	MasterInstanceId      *string                                                                  `json:"MasterInstanceId,omitempty" xml:"MasterInstanceId,omitempty"`
+	Status                *string                                                                  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type                  *string                                                                  `json:"Type,omitempty" xml:"Type,omitempty"`
 	CommodityCode         *string                                                                  `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	MachineType           *string                                                                  `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
+	CreateTime            *int64                                                                   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	VersionAction         *string                                                                  `json:"VersionAction,omitempty" xml:"VersionAction,omitempty"`
 	InstanceSeries        *string                                                                  `json:"InstanceSeries,omitempty" xml:"InstanceSeries,omitempty"`
-	ReadOnlyDBInstanceIds *DescribeDrdsInstancesResponseBodyInstancesInstanceReadOnlyDBInstanceIds `json:"ReadOnlyDBInstanceIds,omitempty" xml:"ReadOnlyDBInstanceIds,omitempty" type:"Struct"`
+	NetworkType           *string                                                                  `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	Label                 *string                                                                  `json:"Label,omitempty" xml:"Label,omitempty"`
 	ProductVersion        *string                                                                  `json:"ProductVersion,omitempty" xml:"ProductVersion,omitempty"`
+	InstanceSpec          *string                                                                  `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
 	RegionId              *string                                                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	VpcCloudInstanceId    *string                                                                  `json:"VpcCloudInstanceId,omitempty" xml:"VpcCloudInstanceId,omitempty"`
+	Description           *string                                                                  `json:"Description,omitempty" xml:"Description,omitempty"`
+	Version               *int64                                                                   `json:"Version,omitempty" xml:"Version,omitempty"`
 	ResourceGroupId       *string                                                                  `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ZoneId                *string                                                                  `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 	DrdsInstanceId        *string                                                                  `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	InstRole              *string                                                                  `json:"InstRole,omitempty" xml:"InstRole,omitempty"`
+	ExpireDate            *int64                                                                   `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
+	MasterInstanceId      *string                                                                  `json:"MasterInstanceId,omitempty" xml:"MasterInstanceId,omitempty"`
 	OrderInstanceId       *string                                                                  `json:"OrderInstanceId,omitempty" xml:"OrderInstanceId,omitempty"`
+	InstRole              *string                                                                  `json:"InstRole,omitempty" xml:"InstRole,omitempty"`
+	Vips                  *DescribeDrdsInstancesResponseBodyInstancesInstanceVips                  `json:"Vips,omitempty" xml:"Vips,omitempty" type:"Struct"`
+	ReadOnlyDBInstanceIds *DescribeDrdsInstancesResponseBodyInstancesInstanceReadOnlyDBInstanceIds `json:"ReadOnlyDBInstanceIds,omitempty" xml:"ReadOnlyDBInstanceIds,omitempty" type:"Struct"`
 }
 
 func (s DescribeDrdsInstancesResponseBodyInstancesInstance) String() string {
@@ -4955,8 +4955,8 @@ func (s DescribeDrdsInstancesResponseBodyInstancesInstance) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDrdsInstancesResponseBodyInstancesInstance) SetType(v string) *DescribeDrdsInstancesResponseBodyInstancesInstance {
-	s.Type = &v
+func (s *DescribeDrdsInstancesResponseBodyInstancesInstance) SetVpcId(v string) *DescribeDrdsInstancesResponseBodyInstancesInstance {
+	s.VpcId = &v
 	return s
 }
 
@@ -4965,63 +4965,8 @@ func (s *DescribeDrdsInstancesResponseBodyInstancesInstance) SetStatus(v string)
 	return s
 }
 
-func (s *DescribeDrdsInstancesResponseBodyInstancesInstance) SetVpcId(v string) *DescribeDrdsInstancesResponseBodyInstancesInstance {
-	s.VpcId = &v
-	return s
-}
-
-func (s *DescribeDrdsInstancesResponseBodyInstancesInstance) SetCreateTime(v int64) *DescribeDrdsInstancesResponseBodyInstancesInstance {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *DescribeDrdsInstancesResponseBodyInstancesInstance) SetVersionAction(v string) *DescribeDrdsInstancesResponseBodyInstancesInstance {
-	s.VersionAction = &v
-	return s
-}
-
-func (s *DescribeDrdsInstancesResponseBodyInstancesInstance) SetNetworkType(v string) *DescribeDrdsInstancesResponseBodyInstancesInstance {
-	s.NetworkType = &v
-	return s
-}
-
-func (s *DescribeDrdsInstancesResponseBodyInstancesInstance) SetLabel(v string) *DescribeDrdsInstancesResponseBodyInstancesInstance {
-	s.Label = &v
-	return s
-}
-
-func (s *DescribeDrdsInstancesResponseBodyInstancesInstance) SetInstanceSpec(v string) *DescribeDrdsInstancesResponseBodyInstancesInstance {
-	s.InstanceSpec = &v
-	return s
-}
-
-func (s *DescribeDrdsInstancesResponseBodyInstancesInstance) SetVpcCloudInstanceId(v string) *DescribeDrdsInstancesResponseBodyInstancesInstance {
-	s.VpcCloudInstanceId = &v
-	return s
-}
-
-func (s *DescribeDrdsInstancesResponseBodyInstancesInstance) SetDescription(v string) *DescribeDrdsInstancesResponseBodyInstancesInstance {
-	s.Description = &v
-	return s
-}
-
-func (s *DescribeDrdsInstancesResponseBodyInstancesInstance) SetVips(v *DescribeDrdsInstancesResponseBodyInstancesInstanceVips) *DescribeDrdsInstancesResponseBodyInstancesInstance {
-	s.Vips = v
-	return s
-}
-
-func (s *DescribeDrdsInstancesResponseBodyInstancesInstance) SetVersion(v int64) *DescribeDrdsInstancesResponseBodyInstancesInstance {
-	s.Version = &v
-	return s
-}
-
-func (s *DescribeDrdsInstancesResponseBodyInstancesInstance) SetExpireDate(v int64) *DescribeDrdsInstancesResponseBodyInstancesInstance {
-	s.ExpireDate = &v
-	return s
-}
-
-func (s *DescribeDrdsInstancesResponseBodyInstancesInstance) SetMasterInstanceId(v string) *DescribeDrdsInstancesResponseBodyInstancesInstance {
-	s.MasterInstanceId = &v
+func (s *DescribeDrdsInstancesResponseBodyInstancesInstance) SetType(v string) *DescribeDrdsInstancesResponseBodyInstancesInstance {
+	s.Type = &v
 	return s
 }
 
@@ -5035,13 +4980,28 @@ func (s *DescribeDrdsInstancesResponseBodyInstancesInstance) SetMachineType(v st
 	return s
 }
 
+func (s *DescribeDrdsInstancesResponseBodyInstancesInstance) SetCreateTime(v int64) *DescribeDrdsInstancesResponseBodyInstancesInstance {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeDrdsInstancesResponseBodyInstancesInstance) SetVersionAction(v string) *DescribeDrdsInstancesResponseBodyInstancesInstance {
+	s.VersionAction = &v
+	return s
+}
+
 func (s *DescribeDrdsInstancesResponseBodyInstancesInstance) SetInstanceSeries(v string) *DescribeDrdsInstancesResponseBodyInstancesInstance {
 	s.InstanceSeries = &v
 	return s
 }
 
-func (s *DescribeDrdsInstancesResponseBodyInstancesInstance) SetReadOnlyDBInstanceIds(v *DescribeDrdsInstancesResponseBodyInstancesInstanceReadOnlyDBInstanceIds) *DescribeDrdsInstancesResponseBodyInstancesInstance {
-	s.ReadOnlyDBInstanceIds = v
+func (s *DescribeDrdsInstancesResponseBodyInstancesInstance) SetNetworkType(v string) *DescribeDrdsInstancesResponseBodyInstancesInstance {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *DescribeDrdsInstancesResponseBodyInstancesInstance) SetLabel(v string) *DescribeDrdsInstancesResponseBodyInstancesInstance {
+	s.Label = &v
 	return s
 }
 
@@ -5050,8 +5010,28 @@ func (s *DescribeDrdsInstancesResponseBodyInstancesInstance) SetProductVersion(v
 	return s
 }
 
+func (s *DescribeDrdsInstancesResponseBodyInstancesInstance) SetInstanceSpec(v string) *DescribeDrdsInstancesResponseBodyInstancesInstance {
+	s.InstanceSpec = &v
+	return s
+}
+
 func (s *DescribeDrdsInstancesResponseBodyInstancesInstance) SetRegionId(v string) *DescribeDrdsInstancesResponseBodyInstancesInstance {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDrdsInstancesResponseBodyInstancesInstance) SetVpcCloudInstanceId(v string) *DescribeDrdsInstancesResponseBodyInstancesInstance {
+	s.VpcCloudInstanceId = &v
+	return s
+}
+
+func (s *DescribeDrdsInstancesResponseBodyInstancesInstance) SetDescription(v string) *DescribeDrdsInstancesResponseBodyInstancesInstance {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeDrdsInstancesResponseBodyInstancesInstance) SetVersion(v int64) *DescribeDrdsInstancesResponseBodyInstancesInstance {
+	s.Version = &v
 	return s
 }
 
@@ -5070,13 +5050,33 @@ func (s *DescribeDrdsInstancesResponseBodyInstancesInstance) SetDrdsInstanceId(v
 	return s
 }
 
-func (s *DescribeDrdsInstancesResponseBodyInstancesInstance) SetInstRole(v string) *DescribeDrdsInstancesResponseBodyInstancesInstance {
-	s.InstRole = &v
+func (s *DescribeDrdsInstancesResponseBodyInstancesInstance) SetExpireDate(v int64) *DescribeDrdsInstancesResponseBodyInstancesInstance {
+	s.ExpireDate = &v
+	return s
+}
+
+func (s *DescribeDrdsInstancesResponseBodyInstancesInstance) SetMasterInstanceId(v string) *DescribeDrdsInstancesResponseBodyInstancesInstance {
+	s.MasterInstanceId = &v
 	return s
 }
 
 func (s *DescribeDrdsInstancesResponseBodyInstancesInstance) SetOrderInstanceId(v string) *DescribeDrdsInstancesResponseBodyInstancesInstance {
 	s.OrderInstanceId = &v
+	return s
+}
+
+func (s *DescribeDrdsInstancesResponseBodyInstancesInstance) SetInstRole(v string) *DescribeDrdsInstancesResponseBodyInstancesInstance {
+	s.InstRole = &v
+	return s
+}
+
+func (s *DescribeDrdsInstancesResponseBodyInstancesInstance) SetVips(v *DescribeDrdsInstancesResponseBodyInstancesInstanceVips) *DescribeDrdsInstancesResponseBodyInstancesInstance {
+	s.Vips = v
+	return s
+}
+
+func (s *DescribeDrdsInstancesResponseBodyInstancesInstance) SetReadOnlyDBInstanceIds(v *DescribeDrdsInstancesResponseBodyInstancesInstanceReadOnlyDBInstanceIds) *DescribeDrdsInstancesResponseBodyInstancesInstance {
+	s.ReadOnlyDBInstanceIds = v
 	return s
 }
 
@@ -5202,9 +5202,9 @@ func (s *DescribeDrdsInstanceVersionRequest) SetRegionId(v string) *DescribeDrds
 }
 
 type DescribeDrdsInstanceVersionResponseBody struct {
+	Success   *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
 	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *DescribeDrdsInstanceVersionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Success   *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeDrdsInstanceVersionResponseBody) String() string {
@@ -5213,6 +5213,11 @@ func (s DescribeDrdsInstanceVersionResponseBody) String() string {
 
 func (s DescribeDrdsInstanceVersionResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDrdsInstanceVersionResponseBody) SetSuccess(v bool) *DescribeDrdsInstanceVersionResponseBody {
+	s.Success = &v
+	return s
 }
 
 func (s *DescribeDrdsInstanceVersionResponseBody) SetRequestId(v string) *DescribeDrdsInstanceVersionResponseBody {
@@ -5225,14 +5230,9 @@ func (s *DescribeDrdsInstanceVersionResponseBody) SetData(v *DescribeDrdsInstanc
 	return s
 }
 
-func (s *DescribeDrdsInstanceVersionResponseBody) SetSuccess(v bool) *DescribeDrdsInstanceVersionResponseBody {
-	s.Success = &v
-	return s
-}
-
 type DescribeDrdsInstanceVersionResponseBodyData struct {
-	InstanceVersion *string `json:"InstanceVersion,omitempty" xml:"InstanceVersion,omitempty"`
 	NewestVersion   *string `json:"NewestVersion,omitempty" xml:"NewestVersion,omitempty"`
+	InstanceVersion *string `json:"InstanceVersion,omitempty" xml:"InstanceVersion,omitempty"`
 }
 
 func (s DescribeDrdsInstanceVersionResponseBodyData) String() string {
@@ -5243,13 +5243,13 @@ func (s DescribeDrdsInstanceVersionResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDrdsInstanceVersionResponseBodyData) SetInstanceVersion(v string) *DescribeDrdsInstanceVersionResponseBodyData {
-	s.InstanceVersion = &v
+func (s *DescribeDrdsInstanceVersionResponseBodyData) SetNewestVersion(v string) *DescribeDrdsInstanceVersionResponseBodyData {
+	s.NewestVersion = &v
 	return s
 }
 
-func (s *DescribeDrdsInstanceVersionResponseBodyData) SetNewestVersion(v string) *DescribeDrdsInstanceVersionResponseBodyData {
-	s.NewestVersion = &v
+func (s *DescribeDrdsInstanceVersionResponseBodyData) SetInstanceVersion(v string) *DescribeDrdsInstanceVersionResponseBodyData {
+	s.InstanceVersion = &v
 	return s
 }
 
@@ -5312,9 +5312,9 @@ func (s *DescribeDrdsParamsRequest) SetDbName(v string) *DescribeDrdsParamsReque
 }
 
 type DescribeDrdsParamsResponseBody struct {
+	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
 	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	List      []*DescribeDrdsParamsResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeDrdsParamsResponseBody) String() string {
@@ -5325,6 +5325,11 @@ func (s DescribeDrdsParamsResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeDrdsParamsResponseBody) SetSuccess(v bool) *DescribeDrdsParamsResponseBody {
+	s.Success = &v
+	return s
+}
+
 func (s *DescribeDrdsParamsResponseBody) SetRequestId(v string) *DescribeDrdsParamsResponseBody {
 	s.RequestId = &v
 	return s
@@ -5332,11 +5337,6 @@ func (s *DescribeDrdsParamsResponseBody) SetRequestId(v string) *DescribeDrdsPar
 
 func (s *DescribeDrdsParamsResponseBody) SetList(v []*DescribeDrdsParamsResponseBodyList) *DescribeDrdsParamsResponseBody {
 	s.List = v
-	return s
-}
-
-func (s *DescribeDrdsParamsResponseBody) SetSuccess(v bool) *DescribeDrdsParamsResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -5440,6 +5440,199 @@ func (s *DescribeDrdsParamsResponse) SetBody(v *DescribeDrdsParamsResponseBody) 
 	return s
 }
 
+type DescribeDrdsRdsInstancesRequest struct {
+	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
+}
+
+func (s DescribeDrdsRdsInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDrdsRdsInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDrdsRdsInstancesRequest) SetDrdsInstanceId(v string) *DescribeDrdsRdsInstancesRequest {
+	s.DrdsInstanceId = &v
+	return s
+}
+
+type DescribeDrdsRdsInstancesResponseBody struct {
+	RequestId   *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success     *bool                                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	DbInstances *DescribeDrdsRdsInstancesResponseBodyDbInstances `json:"DbInstances,omitempty" xml:"DbInstances,omitempty" type:"Struct"`
+}
+
+func (s DescribeDrdsRdsInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDrdsRdsInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDrdsRdsInstancesResponseBody) SetRequestId(v string) *DescribeDrdsRdsInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDrdsRdsInstancesResponseBody) SetSuccess(v bool) *DescribeDrdsRdsInstancesResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeDrdsRdsInstancesResponseBody) SetDbInstances(v *DescribeDrdsRdsInstancesResponseBodyDbInstances) *DescribeDrdsRdsInstancesResponseBody {
+	s.DbInstances = v
+	return s
+}
+
+type DescribeDrdsRdsInstancesResponseBodyDbInstances struct {
+	DbInstance []*DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance `json:"DbInstance,omitempty" xml:"DbInstance,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDrdsRdsInstancesResponseBodyDbInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDrdsRdsInstancesResponseBodyDbInstances) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDrdsRdsInstancesResponseBodyDbInstances) SetDbInstance(v []*DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance) *DescribeDrdsRdsInstancesResponseBodyDbInstances {
+	s.DbInstance = v
+	return s
+}
+
+type DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance struct {
+	DBInstanceCPU       *string `json:"DBInstanceCPU,omitempty" xml:"DBInstanceCPU,omitempty"`
+	DBInstanceMemory    *int64  `json:"DBInstanceMemory,omitempty" xml:"DBInstanceMemory,omitempty"`
+	PayType             *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	DBInstanceStatus    *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
+	NetworkType         *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	Port                *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	EngineVersion       *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	DmInstanceId        *string `json:"DmInstanceId,omitempty" xml:"DmInstanceId,omitempty"`
+	DBInstanceStorage   *int64  `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
+	ConnectUrl          *string `json:"ConnectUrl,omitempty" xml:"ConnectUrl,omitempty"`
+	ReadWeight          *int32  `json:"ReadWeight,omitempty" xml:"ReadWeight,omitempty"`
+	RdsInstType         *string `json:"RdsInstType,omitempty" xml:"RdsInstType,omitempty"`
+	DBInstanceClassType *string `json:"DBInstanceClassType,omitempty" xml:"DBInstanceClassType,omitempty"`
+	DBInstanceId        *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Engine              *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	DbInstType          *string `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
+}
+
+func (s DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance) SetDBInstanceCPU(v string) *DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance {
+	s.DBInstanceCPU = &v
+	return s
+}
+
+func (s *DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance) SetDBInstanceMemory(v int64) *DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance {
+	s.DBInstanceMemory = &v
+	return s
+}
+
+func (s *DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance) SetPayType(v string) *DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance {
+	s.PayType = &v
+	return s
+}
+
+func (s *DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance) SetDBInstanceStatus(v string) *DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance {
+	s.DBInstanceStatus = &v
+	return s
+}
+
+func (s *DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance) SetNetworkType(v string) *DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance) SetPort(v int32) *DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance) SetEngineVersion(v string) *DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance {
+	s.EngineVersion = &v
+	return s
+}
+
+func (s *DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance) SetDmInstanceId(v string) *DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance {
+	s.DmInstanceId = &v
+	return s
+}
+
+func (s *DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance) SetDBInstanceStorage(v int64) *DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance {
+	s.DBInstanceStorage = &v
+	return s
+}
+
+func (s *DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance) SetConnectUrl(v string) *DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance {
+	s.ConnectUrl = &v
+	return s
+}
+
+func (s *DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance) SetReadWeight(v int32) *DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance {
+	s.ReadWeight = &v
+	return s
+}
+
+func (s *DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance) SetRdsInstType(v string) *DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance {
+	s.RdsInstType = &v
+	return s
+}
+
+func (s *DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance) SetDBInstanceClassType(v string) *DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance {
+	s.DBInstanceClassType = &v
+	return s
+}
+
+func (s *DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance) SetDBInstanceId(v string) *DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance) SetEngine(v string) *DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance {
+	s.Engine = &v
+	return s
+}
+
+func (s *DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance) SetDbInstType(v string) *DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance {
+	s.DbInstType = &v
+	return s
+}
+
+type DescribeDrdsRdsInstancesResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeDrdsRdsInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDrdsRdsInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDrdsRdsInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDrdsRdsInstancesResponse) SetHeaders(v map[string]*string) *DescribeDrdsRdsInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDrdsRdsInstancesResponse) SetBody(v *DescribeDrdsRdsInstancesResponseBody) *DescribeDrdsRdsInstancesResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDrdsShardingDbsRequest struct {
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
@@ -5470,9 +5663,9 @@ func (s *DescribeDrdsShardingDbsRequest) SetDbNamePattern(v string) *DescribeDrd
 }
 
 type DescribeDrdsShardingDbsResponseBody struct {
+	Success     *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
 	RequestId   *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ShardingDbs *DescribeDrdsShardingDbsResponseBodyShardingDbs `json:"ShardingDbs,omitempty" xml:"ShardingDbs,omitempty" type:"Struct"`
-	Success     *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeDrdsShardingDbsResponseBody) String() string {
@@ -5483,6 +5676,11 @@ func (s DescribeDrdsShardingDbsResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeDrdsShardingDbsResponseBody) SetSuccess(v bool) *DescribeDrdsShardingDbsResponseBody {
+	s.Success = &v
+	return s
+}
+
 func (s *DescribeDrdsShardingDbsResponseBody) SetRequestId(v string) *DescribeDrdsShardingDbsResponseBody {
 	s.RequestId = &v
 	return s
@@ -5490,11 +5688,6 @@ func (s *DescribeDrdsShardingDbsResponseBody) SetRequestId(v string) *DescribeDr
 
 func (s *DescribeDrdsShardingDbsResponseBody) SetShardingDbs(v *DescribeDrdsShardingDbsResponseBodyShardingDbs) *DescribeDrdsShardingDbsResponseBody {
 	s.ShardingDbs = v
-	return s
-}
-
-func (s *DescribeDrdsShardingDbsResponseBody) SetSuccess(v bool) *DescribeDrdsShardingDbsResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -5521,11 +5714,11 @@ type DescribeDrdsShardingDbsResponseBodyShardingDbsShardingDb struct {
 	DbInstanceId               *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
 	ConnectUrl                 *string `json:"ConnectUrl,omitempty" xml:"ConnectUrl,omitempty"`
 	GroupName                  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	IdleTimeOut                *int32  `json:"IdleTimeOut,omitempty" xml:"IdleTimeOut,omitempty"`
 	DbType                     *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	IdleTimeOut                *int32  `json:"IdleTimeOut,omitempty" xml:"IdleTimeOut,omitempty"`
 	ShardingDbName             *string `json:"ShardingDbName,omitempty" xml:"ShardingDbName,omitempty"`
-	PreparedStatementCacheSize *int32  `json:"PreparedStatementCacheSize,omitempty" xml:"PreparedStatementCacheSize,omitempty"`
 	BlockingTimeout            *int32  `json:"BlockingTimeout,omitempty" xml:"BlockingTimeout,omitempty"`
+	PreparedStatementCacheSize *int32  `json:"PreparedStatementCacheSize,omitempty" xml:"PreparedStatementCacheSize,omitempty"`
 	ConnectionProperties       *string `json:"ConnectionProperties,omitempty" xml:"ConnectionProperties,omitempty"`
 	UserName                   *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 	DbStatus                   *string `json:"DbStatus,omitempty" xml:"DbStatus,omitempty"`
@@ -5564,13 +5757,13 @@ func (s *DescribeDrdsShardingDbsResponseBodyShardingDbsShardingDb) SetGroupName(
 	return s
 }
 
-func (s *DescribeDrdsShardingDbsResponseBodyShardingDbsShardingDb) SetIdleTimeOut(v int32) *DescribeDrdsShardingDbsResponseBodyShardingDbsShardingDb {
-	s.IdleTimeOut = &v
+func (s *DescribeDrdsShardingDbsResponseBodyShardingDbsShardingDb) SetDbType(v string) *DescribeDrdsShardingDbsResponseBodyShardingDbsShardingDb {
+	s.DbType = &v
 	return s
 }
 
-func (s *DescribeDrdsShardingDbsResponseBodyShardingDbsShardingDb) SetDbType(v string) *DescribeDrdsShardingDbsResponseBodyShardingDbsShardingDb {
-	s.DbType = &v
+func (s *DescribeDrdsShardingDbsResponseBodyShardingDbsShardingDb) SetIdleTimeOut(v int32) *DescribeDrdsShardingDbsResponseBodyShardingDbsShardingDb {
+	s.IdleTimeOut = &v
 	return s
 }
 
@@ -5579,13 +5772,13 @@ func (s *DescribeDrdsShardingDbsResponseBodyShardingDbsShardingDb) SetShardingDb
 	return s
 }
 
-func (s *DescribeDrdsShardingDbsResponseBodyShardingDbsShardingDb) SetPreparedStatementCacheSize(v int32) *DescribeDrdsShardingDbsResponseBodyShardingDbsShardingDb {
-	s.PreparedStatementCacheSize = &v
+func (s *DescribeDrdsShardingDbsResponseBodyShardingDbsShardingDb) SetBlockingTimeout(v int32) *DescribeDrdsShardingDbsResponseBodyShardingDbsShardingDb {
+	s.BlockingTimeout = &v
 	return s
 }
 
-func (s *DescribeDrdsShardingDbsResponseBodyShardingDbsShardingDb) SetBlockingTimeout(v int32) *DescribeDrdsShardingDbsResponseBodyShardingDbsShardingDb {
-	s.BlockingTimeout = &v
+func (s *DescribeDrdsShardingDbsResponseBodyShardingDbsShardingDb) SetPreparedStatementCacheSize(v int32) *DescribeDrdsShardingDbsResponseBodyShardingDbsShardingDb {
+	s.PreparedStatementCacheSize = &v
 	return s
 }
 
@@ -5682,11 +5875,11 @@ func (s *DescribeDrdsSlowSqlsRequest) SetPageSize(v int32) *DescribeDrdsSlowSqls
 
 type DescribeDrdsSlowSqlsResponseBody struct {
 	PageSize   *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageNumber *int32                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	RequestId  *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Total      *int32                                 `json:"Total,omitempty" xml:"Total,omitempty"`
-	Items      *DescribeDrdsSlowSqlsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	Success    *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	Items      *DescribeDrdsSlowSqlsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 }
 
 func (s DescribeDrdsSlowSqlsResponseBody) String() string {
@@ -5702,13 +5895,13 @@ func (s *DescribeDrdsSlowSqlsResponseBody) SetPageSize(v int32) *DescribeDrdsSlo
 	return s
 }
 
-func (s *DescribeDrdsSlowSqlsResponseBody) SetRequestId(v string) *DescribeDrdsSlowSqlsResponseBody {
-	s.RequestId = &v
+func (s *DescribeDrdsSlowSqlsResponseBody) SetPageNumber(v int32) *DescribeDrdsSlowSqlsResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
-func (s *DescribeDrdsSlowSqlsResponseBody) SetPageNumber(v int32) *DescribeDrdsSlowSqlsResponseBody {
-	s.PageNumber = &v
+func (s *DescribeDrdsSlowSqlsResponseBody) SetRequestId(v string) *DescribeDrdsSlowSqlsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -5717,13 +5910,13 @@ func (s *DescribeDrdsSlowSqlsResponseBody) SetTotal(v int32) *DescribeDrdsSlowSq
 	return s
 }
 
-func (s *DescribeDrdsSlowSqlsResponseBody) SetItems(v *DescribeDrdsSlowSqlsResponseBodyItems) *DescribeDrdsSlowSqlsResponseBody {
-	s.Items = v
+func (s *DescribeDrdsSlowSqlsResponseBody) SetSuccess(v bool) *DescribeDrdsSlowSqlsResponseBody {
+	s.Success = &v
 	return s
 }
 
-func (s *DescribeDrdsSlowSqlsResponseBody) SetSuccess(v bool) *DescribeDrdsSlowSqlsResponseBody {
-	s.Success = &v
+func (s *DescribeDrdsSlowSqlsResponseBody) SetItems(v *DescribeDrdsSlowSqlsResponseBodyItems) *DescribeDrdsSlowSqlsResponseBody {
+	s.Items = v
 	return s
 }
 
@@ -5745,11 +5938,11 @@ func (s *DescribeDrdsSlowSqlsResponseBodyItems) SetItem(v []*DescribeDrdsSlowSql
 }
 
 type DescribeDrdsSlowSqlsResponseBodyItemsItem struct {
-	Host         *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	Schema       *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
 	SendTime     *int64  `json:"SendTime,omitempty" xml:"SendTime,omitempty"`
+	Host         *string `json:"Host,omitempty" xml:"Host,omitempty"`
 	Sql          *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
 	ResponseTime *int64  `json:"ResponseTime,omitempty" xml:"ResponseTime,omitempty"`
+	Schema       *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
 }
 
 func (s DescribeDrdsSlowSqlsResponseBodyItemsItem) String() string {
@@ -5760,18 +5953,13 @@ func (s DescribeDrdsSlowSqlsResponseBodyItemsItem) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDrdsSlowSqlsResponseBodyItemsItem) SetHost(v string) *DescribeDrdsSlowSqlsResponseBodyItemsItem {
-	s.Host = &v
-	return s
-}
-
-func (s *DescribeDrdsSlowSqlsResponseBodyItemsItem) SetSchema(v string) *DescribeDrdsSlowSqlsResponseBodyItemsItem {
-	s.Schema = &v
-	return s
-}
-
 func (s *DescribeDrdsSlowSqlsResponseBodyItemsItem) SetSendTime(v int64) *DescribeDrdsSlowSqlsResponseBodyItemsItem {
 	s.SendTime = &v
+	return s
+}
+
+func (s *DescribeDrdsSlowSqlsResponseBodyItemsItem) SetHost(v string) *DescribeDrdsSlowSqlsResponseBodyItemsItem {
+	s.Host = &v
 	return s
 }
 
@@ -5782,6 +5970,11 @@ func (s *DescribeDrdsSlowSqlsResponseBodyItemsItem) SetSql(v string) *DescribeDr
 
 func (s *DescribeDrdsSlowSqlsResponseBodyItemsItem) SetResponseTime(v int64) *DescribeDrdsSlowSqlsResponseBodyItemsItem {
 	s.ResponseTime = &v
+	return s
+}
+
+func (s *DescribeDrdsSlowSqlsResponseBodyItemsItem) SetSchema(v string) *DescribeDrdsSlowSqlsResponseBodyItemsItem {
+	s.Schema = &v
 	return s
 }
 
@@ -5826,9 +6019,9 @@ func (s *DescribeDrdsSqlAuditStatusRequest) SetDrdsInstanceId(v string) *Describ
 }
 
 type DescribeDrdsSqlAuditStatusResponseBody struct {
+	Success   *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
 	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *DescribeDrdsSqlAuditStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Success   *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeDrdsSqlAuditStatusResponseBody) String() string {
@@ -5839,6 +6032,11 @@ func (s DescribeDrdsSqlAuditStatusResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeDrdsSqlAuditStatusResponseBody) SetSuccess(v bool) *DescribeDrdsSqlAuditStatusResponseBody {
+	s.Success = &v
+	return s
+}
+
 func (s *DescribeDrdsSqlAuditStatusResponseBody) SetRequestId(v string) *DescribeDrdsSqlAuditStatusResponseBody {
 	s.RequestId = &v
 	return s
@@ -5846,11 +6044,6 @@ func (s *DescribeDrdsSqlAuditStatusResponseBody) SetRequestId(v string) *Describ
 
 func (s *DescribeDrdsSqlAuditStatusResponseBody) SetData(v *DescribeDrdsSqlAuditStatusResponseBodyData) *DescribeDrdsSqlAuditStatusResponseBody {
 	s.Data = v
-	return s
-}
-
-func (s *DescribeDrdsSqlAuditStatusResponseBody) SetSuccess(v bool) *DescribeDrdsSqlAuditStatusResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -5977,9 +6170,9 @@ func (s *DescribeDrdsTasksRequest) SetTaskType(v string) *DescribeDrdsTasksReque
 }
 
 type DescribeDrdsTasksResponseBody struct {
-	Tasks     *DescribeDrdsTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Struct"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Tasks     *DescribeDrdsTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Struct"`
 }
 
 func (s DescribeDrdsTasksResponseBody) String() string {
@@ -5990,8 +6183,8 @@ func (s DescribeDrdsTasksResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDrdsTasksResponseBody) SetTasks(v *DescribeDrdsTasksResponseBodyTasks) *DescribeDrdsTasksResponseBody {
-	s.Tasks = v
+func (s *DescribeDrdsTasksResponseBody) SetSuccess(v bool) *DescribeDrdsTasksResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -6000,8 +6193,8 @@ func (s *DescribeDrdsTasksResponseBody) SetRequestId(v string) *DescribeDrdsTask
 	return s
 }
 
-func (s *DescribeDrdsTasksResponseBody) SetSuccess(v bool) *DescribeDrdsTasksResponseBody {
-	s.Success = &v
+func (s *DescribeDrdsTasksResponseBody) SetTasks(v *DescribeDrdsTasksResponseBodyTasks) *DescribeDrdsTasksResponseBody {
+	s.Tasks = v
 	return s
 }
 
@@ -6098,9 +6291,9 @@ func (s *DescribeExpandLogicTableInfoListRequest) SetDbName(v string) *DescribeE
 }
 
 type DescribeExpandLogicTableInfoListResponseBody struct {
+	Success   *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
 	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *DescribeExpandLogicTableInfoListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Success   *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeExpandLogicTableInfoListResponseBody) String() string {
@@ -6111,6 +6304,11 @@ func (s DescribeExpandLogicTableInfoListResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeExpandLogicTableInfoListResponseBody) SetSuccess(v bool) *DescribeExpandLogicTableInfoListResponseBody {
+	s.Success = &v
+	return s
+}
+
 func (s *DescribeExpandLogicTableInfoListResponseBody) SetRequestId(v string) *DescribeExpandLogicTableInfoListResponseBody {
 	s.RequestId = &v
 	return s
@@ -6118,11 +6316,6 @@ func (s *DescribeExpandLogicTableInfoListResponseBody) SetRequestId(v string) *D
 
 func (s *DescribeExpandLogicTableInfoListResponseBody) SetData(v *DescribeExpandLogicTableInfoListResponseBodyData) *DescribeExpandLogicTableInfoListResponseBody {
 	s.Data = v
-	return s
-}
-
-func (s *DescribeExpandLogicTableInfoListResponseBody) SetSuccess(v bool) *DescribeExpandLogicTableInfoListResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -6144,8 +6337,8 @@ func (s *DescribeExpandLogicTableInfoListResponseBodyData) SetData(v []*Describe
 }
 
 type DescribeExpandLogicTableInfoListResponseBodyDataData struct {
-	TableName  *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 	ShardTbKey *string `json:"ShardTbKey,omitempty" xml:"ShardTbKey,omitempty"`
+	TableName  *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 	ShardDbKey *string `json:"ShardDbKey,omitempty" xml:"ShardDbKey,omitempty"`
 }
 
@@ -6157,13 +6350,13 @@ func (s DescribeExpandLogicTableInfoListResponseBodyDataData) GoString() string 
 	return s.String()
 }
 
-func (s *DescribeExpandLogicTableInfoListResponseBodyDataData) SetTableName(v string) *DescribeExpandLogicTableInfoListResponseBodyDataData {
-	s.TableName = &v
+func (s *DescribeExpandLogicTableInfoListResponseBodyDataData) SetShardTbKey(v string) *DescribeExpandLogicTableInfoListResponseBodyDataData {
+	s.ShardTbKey = &v
 	return s
 }
 
-func (s *DescribeExpandLogicTableInfoListResponseBodyDataData) SetShardTbKey(v string) *DescribeExpandLogicTableInfoListResponseBodyDataData {
-	s.ShardTbKey = &v
+func (s *DescribeExpandLogicTableInfoListResponseBodyDataData) SetTableName(v string) *DescribeExpandLogicTableInfoListResponseBodyDataData {
+	s.TableName = &v
 	return s
 }
 
@@ -6219,9 +6412,9 @@ func (s *DescribeHiStoreInstanceInfoRequest) SetHistoreInstanceId(v string) *Des
 }
 
 type DescribeHiStoreInstanceInfoResponseBody struct {
-	HiStoreInstanceInfo *DescribeHiStoreInstanceInfoResponseBodyHiStoreInstanceInfo `json:"HiStoreInstanceInfo,omitempty" xml:"HiStoreInstanceInfo,omitempty" type:"Struct"`
-	RequestId           *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success             *bool                                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId           *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	HiStoreInstanceInfo *DescribeHiStoreInstanceInfoResponseBodyHiStoreInstanceInfo `json:"HiStoreInstanceInfo,omitempty" xml:"HiStoreInstanceInfo,omitempty" type:"Struct"`
 }
 
 func (s DescribeHiStoreInstanceInfoResponseBody) String() string {
@@ -6232,8 +6425,8 @@ func (s DescribeHiStoreInstanceInfoResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeHiStoreInstanceInfoResponseBody) SetHiStoreInstanceInfo(v *DescribeHiStoreInstanceInfoResponseBodyHiStoreInstanceInfo) *DescribeHiStoreInstanceInfoResponseBody {
-	s.HiStoreInstanceInfo = v
+func (s *DescribeHiStoreInstanceInfoResponseBody) SetSuccess(v bool) *DescribeHiStoreInstanceInfoResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -6242,17 +6435,17 @@ func (s *DescribeHiStoreInstanceInfoResponseBody) SetRequestId(v string) *Descri
 	return s
 }
 
-func (s *DescribeHiStoreInstanceInfoResponseBody) SetSuccess(v bool) *DescribeHiStoreInstanceInfoResponseBody {
-	s.Success = &v
+func (s *DescribeHiStoreInstanceInfoResponseBody) SetHiStoreInstanceInfo(v *DescribeHiStoreInstanceInfoResponseBodyHiStoreInstanceInfo) *DescribeHiStoreInstanceInfoResponseBody {
+	s.HiStoreInstanceInfo = v
 	return s
 }
 
 type DescribeHiStoreInstanceInfoResponseBodyHiStoreInstanceInfo struct {
+	GmtCreate         *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	MachineSpec       *string `json:"MachineSpec,omitempty" xml:"MachineSpec,omitempty"`
 	DiskSize          *int32  `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
 	RpmVersion        *string `json:"RpmVersion,omitempty" xml:"RpmVersion,omitempty"`
 	HistoreInstanceId *string `json:"HistoreInstanceId,omitempty" xml:"HistoreInstanceId,omitempty"`
-	GmtCreate         *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	MachineSpec       *string `json:"MachineSpec,omitempty" xml:"MachineSpec,omitempty"`
 }
 
 func (s DescribeHiStoreInstanceInfoResponseBodyHiStoreInstanceInfo) String() string {
@@ -6261,6 +6454,16 @@ func (s DescribeHiStoreInstanceInfoResponseBodyHiStoreInstanceInfo) String() str
 
 func (s DescribeHiStoreInstanceInfoResponseBodyHiStoreInstanceInfo) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeHiStoreInstanceInfoResponseBodyHiStoreInstanceInfo) SetGmtCreate(v int64) *DescribeHiStoreInstanceInfoResponseBodyHiStoreInstanceInfo {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeHiStoreInstanceInfoResponseBodyHiStoreInstanceInfo) SetMachineSpec(v string) *DescribeHiStoreInstanceInfoResponseBodyHiStoreInstanceInfo {
+	s.MachineSpec = &v
+	return s
 }
 
 func (s *DescribeHiStoreInstanceInfoResponseBodyHiStoreInstanceInfo) SetDiskSize(v int32) *DescribeHiStoreInstanceInfoResponseBodyHiStoreInstanceInfo {
@@ -6275,16 +6478,6 @@ func (s *DescribeHiStoreInstanceInfoResponseBodyHiStoreInstanceInfo) SetRpmVersi
 
 func (s *DescribeHiStoreInstanceInfoResponseBodyHiStoreInstanceInfo) SetHistoreInstanceId(v string) *DescribeHiStoreInstanceInfoResponseBodyHiStoreInstanceInfo {
 	s.HistoreInstanceId = &v
-	return s
-}
-
-func (s *DescribeHiStoreInstanceInfoResponseBodyHiStoreInstanceInfo) SetGmtCreate(v int64) *DescribeHiStoreInstanceInfoResponseBodyHiStoreInstanceInfo {
-	s.GmtCreate = &v
-	return s
-}
-
-func (s *DescribeHiStoreInstanceInfoResponseBodyHiStoreInstanceInfo) SetMachineSpec(v string) *DescribeHiStoreInstanceInfoResponseBodyHiStoreInstanceInfo {
-	s.MachineSpec = &v
 	return s
 }
 
@@ -6337,8 +6530,8 @@ func (s *DescribeHotDbListRequest) SetDbName(v string) *DescribeHotDbListRequest
 type DescribeHotDbListResponseBody struct {
 	Msg       *string                            `json:"Msg,omitempty" xml:"Msg,omitempty"`
 	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *DescribeHotDbListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Success   *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data      *DescribeHotDbListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s DescribeHotDbListResponseBody) String() string {
@@ -6359,13 +6552,13 @@ func (s *DescribeHotDbListResponseBody) SetRequestId(v string) *DescribeHotDbLis
 	return s
 }
 
-func (s *DescribeHotDbListResponseBody) SetData(v *DescribeHotDbListResponseBodyData) *DescribeHotDbListResponseBody {
-	s.Data = v
+func (s *DescribeHotDbListResponseBody) SetSuccess(v bool) *DescribeHotDbListResponseBody {
+	s.Success = &v
 	return s
 }
 
-func (s *DescribeHotDbListResponseBody) SetSuccess(v bool) *DescribeHotDbListResponseBody {
-	s.Success = &v
+func (s *DescribeHotDbListResponseBody) SetData(v *DescribeHotDbListResponseBodyData) *DescribeHotDbListResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -6490,9 +6683,9 @@ func (s *DescribeInstanceAccountsRequest) SetDrdsInstanceId(v string) *DescribeI
 }
 
 type DescribeInstanceAccountsResponseBody struct {
+	Success          *bool                                                 `json:"Success,omitempty" xml:"Success,omitempty"`
 	RequestId        *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	InstanceAccounts *DescribeInstanceAccountsResponseBodyInstanceAccounts `json:"InstanceAccounts,omitempty" xml:"InstanceAccounts,omitempty" type:"Struct"`
-	Success          *bool                                                 `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeInstanceAccountsResponseBody) String() string {
@@ -6503,6 +6696,11 @@ func (s DescribeInstanceAccountsResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeInstanceAccountsResponseBody) SetSuccess(v bool) *DescribeInstanceAccountsResponseBody {
+	s.Success = &v
+	return s
+}
+
 func (s *DescribeInstanceAccountsResponseBody) SetRequestId(v string) *DescribeInstanceAccountsResponseBody {
 	s.RequestId = &v
 	return s
@@ -6510,11 +6708,6 @@ func (s *DescribeInstanceAccountsResponseBody) SetRequestId(v string) *DescribeI
 
 func (s *DescribeInstanceAccountsResponseBody) SetInstanceAccounts(v *DescribeInstanceAccountsResponseBodyInstanceAccounts) *DescribeInstanceAccountsResponseBody {
 	s.InstanceAccounts = v
-	return s
-}
-
-func (s *DescribeInstanceAccountsResponseBody) SetSuccess(v bool) *DescribeInstanceAccountsResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -6536,11 +6729,11 @@ func (s *DescribeInstanceAccountsResponseBodyInstanceAccounts) SetInstanceAccoun
 }
 
 type DescribeInstanceAccountsResponseBodyInstanceAccountsInstanceAccount struct {
-	DbPrivileges *DescribeInstanceAccountsResponseBodyInstanceAccountsInstanceAccountDbPrivileges `json:"DbPrivileges,omitempty" xml:"DbPrivileges,omitempty" type:"Struct"`
 	Host         *string                                                                          `json:"Host,omitempty" xml:"Host,omitempty"`
 	Description  *string                                                                          `json:"Description,omitempty" xml:"Description,omitempty"`
 	AccountType  *int32                                                                           `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
 	AccountName  *string                                                                          `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	DbPrivileges *DescribeInstanceAccountsResponseBodyInstanceAccountsInstanceAccountDbPrivileges `json:"DbPrivileges,omitempty" xml:"DbPrivileges,omitempty" type:"Struct"`
 }
 
 func (s DescribeInstanceAccountsResponseBodyInstanceAccountsInstanceAccount) String() string {
@@ -6549,11 +6742,6 @@ func (s DescribeInstanceAccountsResponseBodyInstanceAccountsInstanceAccount) Str
 
 func (s DescribeInstanceAccountsResponseBodyInstanceAccountsInstanceAccount) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeInstanceAccountsResponseBodyInstanceAccountsInstanceAccount) SetDbPrivileges(v *DescribeInstanceAccountsResponseBodyInstanceAccountsInstanceAccountDbPrivileges) *DescribeInstanceAccountsResponseBodyInstanceAccountsInstanceAccount {
-	s.DbPrivileges = v
-	return s
 }
 
 func (s *DescribeInstanceAccountsResponseBodyInstanceAccountsInstanceAccount) SetHost(v string) *DescribeInstanceAccountsResponseBodyInstanceAccountsInstanceAccount {
@@ -6573,6 +6761,11 @@ func (s *DescribeInstanceAccountsResponseBodyInstanceAccountsInstanceAccount) Se
 
 func (s *DescribeInstanceAccountsResponseBodyInstanceAccountsInstanceAccount) SetAccountName(v string) *DescribeInstanceAccountsResponseBodyInstanceAccountsInstanceAccount {
 	s.AccountName = &v
+	return s
+}
+
+func (s *DescribeInstanceAccountsResponseBodyInstanceAccountsInstanceAccount) SetDbPrivileges(v *DescribeInstanceAccountsResponseBodyInstanceAccountsInstanceAccountDbPrivileges) *DescribeInstanceAccountsResponseBodyInstanceAccountsInstanceAccount {
+	s.DbPrivileges = v
 	return s
 }
 
@@ -6658,8 +6851,8 @@ func (s *DescribeInstanceMenuSwitchRequest) SetDrdsInstanceId(v string) *Describ
 
 type DescribeInstanceMenuSwitchResponseBody struct {
 	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Config    map[string]interface{} `json:"Config,omitempty" xml:"Config,omitempty"`
 	Success   *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	Config    map[string]interface{} `json:"Config,omitempty" xml:"Config,omitempty"`
 }
 
 func (s DescribeInstanceMenuSwitchResponseBody) String() string {
@@ -6675,13 +6868,13 @@ func (s *DescribeInstanceMenuSwitchResponseBody) SetRequestId(v string) *Describ
 	return s
 }
 
-func (s *DescribeInstanceMenuSwitchResponseBody) SetConfig(v map[string]interface{}) *DescribeInstanceMenuSwitchResponseBody {
-	s.Config = v
+func (s *DescribeInstanceMenuSwitchResponseBody) SetSuccess(v bool) *DescribeInstanceMenuSwitchResponseBody {
+	s.Success = &v
 	return s
 }
 
-func (s *DescribeInstanceMenuSwitchResponseBody) SetSuccess(v bool) *DescribeInstanceMenuSwitchResponseBody {
-	s.Success = &v
+func (s *DescribeInstanceMenuSwitchResponseBody) SetConfig(v map[string]interface{}) *DescribeInstanceMenuSwitchResponseBody {
+	s.Config = v
 	return s
 }
 
@@ -6726,8 +6919,8 @@ func (s *DescribeInstanceSwitchAzoneRequest) SetDrdsInstanceId(v string) *Descri
 }
 
 type DescribeInstanceSwitchAzoneResponseBody struct {
-	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *DescribeInstanceSwitchAzoneResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -6739,13 +6932,13 @@ func (s DescribeInstanceSwitchAzoneResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeInstanceSwitchAzoneResponseBody) SetRequestId(v string) *DescribeInstanceSwitchAzoneResponseBody {
-	s.RequestId = &v
+func (s *DescribeInstanceSwitchAzoneResponseBody) SetSuccess(v bool) *DescribeInstanceSwitchAzoneResponseBody {
+	s.Success = &v
 	return s
 }
 
-func (s *DescribeInstanceSwitchAzoneResponseBody) SetSuccess(v bool) *DescribeInstanceSwitchAzoneResponseBody {
-	s.Success = &v
+func (s *DescribeInstanceSwitchAzoneResponseBody) SetRequestId(v string) *DescribeInstanceSwitchAzoneResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -6755,10 +6948,10 @@ func (s *DescribeInstanceSwitchAzoneResponseBody) SetResult(v *DescribeInstanceS
 }
 
 type DescribeInstanceSwitchAzoneResponseBodyResult struct {
-	TargetAzones  *DescribeInstanceSwitchAzoneResponseBodyResultTargetAzones `json:"TargetAzones,omitempty" xml:"TargetAzones,omitempty" type:"Struct"`
-	SwitchAble    *bool                                                      `json:"SwitchAble,omitempty" xml:"SwitchAble,omitempty"`
 	OriginAzoneId *string                                                    `json:"OriginAzoneId,omitempty" xml:"OriginAzoneId,omitempty"`
+	SwitchAble    *bool                                                      `json:"SwitchAble,omitempty" xml:"SwitchAble,omitempty"`
 	RegionId      *string                                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TargetAzones  *DescribeInstanceSwitchAzoneResponseBodyResultTargetAzones `json:"TargetAzones,omitempty" xml:"TargetAzones,omitempty" type:"Struct"`
 }
 
 func (s DescribeInstanceSwitchAzoneResponseBodyResult) String() string {
@@ -6769,8 +6962,8 @@ func (s DescribeInstanceSwitchAzoneResponseBodyResult) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeInstanceSwitchAzoneResponseBodyResult) SetTargetAzones(v *DescribeInstanceSwitchAzoneResponseBodyResultTargetAzones) *DescribeInstanceSwitchAzoneResponseBodyResult {
-	s.TargetAzones = v
+func (s *DescribeInstanceSwitchAzoneResponseBodyResult) SetOriginAzoneId(v string) *DescribeInstanceSwitchAzoneResponseBodyResult {
+	s.OriginAzoneId = &v
 	return s
 }
 
@@ -6779,13 +6972,13 @@ func (s *DescribeInstanceSwitchAzoneResponseBodyResult) SetSwitchAble(v bool) *D
 	return s
 }
 
-func (s *DescribeInstanceSwitchAzoneResponseBodyResult) SetOriginAzoneId(v string) *DescribeInstanceSwitchAzoneResponseBodyResult {
-	s.OriginAzoneId = &v
+func (s *DescribeInstanceSwitchAzoneResponseBodyResult) SetRegionId(v string) *DescribeInstanceSwitchAzoneResponseBodyResult {
+	s.RegionId = &v
 	return s
 }
 
-func (s *DescribeInstanceSwitchAzoneResponseBodyResult) SetRegionId(v string) *DescribeInstanceSwitchAzoneResponseBodyResult {
-	s.RegionId = &v
+func (s *DescribeInstanceSwitchAzoneResponseBodyResult) SetTargetAzones(v *DescribeInstanceSwitchAzoneResponseBodyResultTargetAzones) *DescribeInstanceSwitchAzoneResponseBodyResult {
+	s.TargetAzones = v
 	return s
 }
 
@@ -6847,9 +7040,9 @@ func (s *DescribeInstanceSwitchNetworkRequest) SetDrdsInstanceId(v string) *Desc
 }
 
 type DescribeInstanceSwitchNetworkResponseBody struct {
+	Success   *bool                                              `json:"Success,omitempty" xml:"Success,omitempty"`
 	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	VpcInfos  *DescribeInstanceSwitchNetworkResponseBodyVpcInfos `json:"VpcInfos,omitempty" xml:"VpcInfos,omitempty" type:"Struct"`
-	Success   *bool                                              `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeInstanceSwitchNetworkResponseBody) String() string {
@@ -6860,6 +7053,11 @@ func (s DescribeInstanceSwitchNetworkResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeInstanceSwitchNetworkResponseBody) SetSuccess(v bool) *DescribeInstanceSwitchNetworkResponseBody {
+	s.Success = &v
+	return s
+}
+
 func (s *DescribeInstanceSwitchNetworkResponseBody) SetRequestId(v string) *DescribeInstanceSwitchNetworkResponseBody {
 	s.RequestId = &v
 	return s
@@ -6867,11 +7065,6 @@ func (s *DescribeInstanceSwitchNetworkResponseBody) SetRequestId(v string) *Desc
 
 func (s *DescribeInstanceSwitchNetworkResponseBody) SetVpcInfos(v *DescribeInstanceSwitchNetworkResponseBodyVpcInfos) *DescribeInstanceSwitchNetworkResponseBody {
 	s.VpcInfos = v
-	return s
-}
-
-func (s *DescribeInstanceSwitchNetworkResponseBody) SetSuccess(v bool) *DescribeInstanceSwitchNetworkResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -6895,8 +7088,8 @@ func (s *DescribeInstanceSwitchNetworkResponseBodyVpcInfos) SetVpcInfo(v []*Desc
 type DescribeInstanceSwitchNetworkResponseBodyVpcInfosVpcInfo struct {
 	VpcId        *string                                                               `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	VpcName      *string                                                               `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
-	VswitchInfos *DescribeInstanceSwitchNetworkResponseBodyVpcInfosVpcInfoVswitchInfos `json:"VswitchInfos,omitempty" xml:"VswitchInfos,omitempty" type:"Struct"`
 	RegionId     *string                                                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	VswitchInfos *DescribeInstanceSwitchNetworkResponseBodyVpcInfosVpcInfoVswitchInfos `json:"VswitchInfos,omitempty" xml:"VswitchInfos,omitempty" type:"Struct"`
 }
 
 func (s DescribeInstanceSwitchNetworkResponseBodyVpcInfosVpcInfo) String() string {
@@ -6917,13 +7110,13 @@ func (s *DescribeInstanceSwitchNetworkResponseBodyVpcInfosVpcInfo) SetVpcName(v 
 	return s
 }
 
-func (s *DescribeInstanceSwitchNetworkResponseBodyVpcInfosVpcInfo) SetVswitchInfos(v *DescribeInstanceSwitchNetworkResponseBodyVpcInfosVpcInfoVswitchInfos) *DescribeInstanceSwitchNetworkResponseBodyVpcInfosVpcInfo {
-	s.VswitchInfos = v
+func (s *DescribeInstanceSwitchNetworkResponseBodyVpcInfosVpcInfo) SetRegionId(v string) *DescribeInstanceSwitchNetworkResponseBodyVpcInfosVpcInfo {
+	s.RegionId = &v
 	return s
 }
 
-func (s *DescribeInstanceSwitchNetworkResponseBodyVpcInfosVpcInfo) SetRegionId(v string) *DescribeInstanceSwitchNetworkResponseBodyVpcInfosVpcInfo {
-	s.RegionId = &v
+func (s *DescribeInstanceSwitchNetworkResponseBodyVpcInfosVpcInfo) SetVswitchInfos(v *DescribeInstanceSwitchNetworkResponseBodyVpcInfosVpcInfoVswitchInfos) *DescribeInstanceSwitchNetworkResponseBodyVpcInfosVpcInfo {
+	s.VswitchInfos = v
 	return s
 }
 
@@ -6948,8 +7141,8 @@ type DescribeInstanceSwitchNetworkResponseBodyVpcInfosVpcInfoVswitchInfosVswitch
 	VpcId         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	DrdsSupported *bool   `json:"DrdsSupported,omitempty" xml:"DrdsSupported,omitempty"`
 	VswitchId     *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
-	VswitchName   *string `json:"VswitchName,omitempty" xml:"VswitchName,omitempty"`
 	AzoneId       *string `json:"AzoneId,omitempty" xml:"AzoneId,omitempty"`
+	VswitchName   *string `json:"VswitchName,omitempty" xml:"VswitchName,omitempty"`
 }
 
 func (s DescribeInstanceSwitchNetworkResponseBodyVpcInfosVpcInfoVswitchInfosVswitchInfo) String() string {
@@ -6975,13 +7168,13 @@ func (s *DescribeInstanceSwitchNetworkResponseBodyVpcInfosVpcInfoVswitchInfosVsw
 	return s
 }
 
-func (s *DescribeInstanceSwitchNetworkResponseBodyVpcInfosVpcInfoVswitchInfosVswitchInfo) SetVswitchName(v string) *DescribeInstanceSwitchNetworkResponseBodyVpcInfosVpcInfoVswitchInfosVswitchInfo {
-	s.VswitchName = &v
+func (s *DescribeInstanceSwitchNetworkResponseBodyVpcInfosVpcInfoVswitchInfosVswitchInfo) SetAzoneId(v string) *DescribeInstanceSwitchNetworkResponseBodyVpcInfosVpcInfoVswitchInfosVswitchInfo {
+	s.AzoneId = &v
 	return s
 }
 
-func (s *DescribeInstanceSwitchNetworkResponseBodyVpcInfosVpcInfoVswitchInfosVswitchInfo) SetAzoneId(v string) *DescribeInstanceSwitchNetworkResponseBodyVpcInfosVpcInfoVswitchInfosVswitchInfo {
-	s.AzoneId = &v
+func (s *DescribeInstanceSwitchNetworkResponseBodyVpcInfosVpcInfoVswitchInfosVswitchInfo) SetVswitchName(v string) *DescribeInstanceSwitchNetworkResponseBodyVpcInfosVpcInfoVswitchInfosVswitchInfo {
+	s.VswitchName = &v
 	return s
 }
 
@@ -7032,9 +7225,9 @@ func (s *DescribeInstDbLogInfoRequest) SetDbName(v string) *DescribeInstDbLogInf
 }
 
 type DescribeInstDbLogInfoResponseBody struct {
+	Success      *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
 	RequestId    *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	LogTimeRange *DescribeInstDbLogInfoResponseBodyLogTimeRange `json:"LogTimeRange,omitempty" xml:"LogTimeRange,omitempty" type:"Struct"`
-	Success      *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeInstDbLogInfoResponseBody) String() string {
@@ -7043,6 +7236,11 @@ func (s DescribeInstDbLogInfoResponseBody) String() string {
 
 func (s DescribeInstDbLogInfoResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeInstDbLogInfoResponseBody) SetSuccess(v bool) *DescribeInstDbLogInfoResponseBody {
+	s.Success = &v
+	return s
 }
 
 func (s *DescribeInstDbLogInfoResponseBody) SetRequestId(v string) *DescribeInstDbLogInfoResponseBody {
@@ -7055,14 +7253,9 @@ func (s *DescribeInstDbLogInfoResponseBody) SetLogTimeRange(v *DescribeInstDbLog
 	return s
 }
 
-func (s *DescribeInstDbLogInfoResponseBody) SetSuccess(v bool) *DescribeInstDbLogInfoResponseBody {
-	s.Success = &v
-	return s
-}
-
 type DescribeInstDbLogInfoResponseBodyLogTimeRange struct {
-	SupportLatestTime *int64 `json:"SupportLatestTime,omitempty" xml:"SupportLatestTime,omitempty"`
 	SupportOldestTime *int64 `json:"SupportOldestTime,omitempty" xml:"SupportOldestTime,omitempty"`
+	SupportLatestTime *int64 `json:"SupportLatestTime,omitempty" xml:"SupportLatestTime,omitempty"`
 }
 
 func (s DescribeInstDbLogInfoResponseBodyLogTimeRange) String() string {
@@ -7073,13 +7266,13 @@ func (s DescribeInstDbLogInfoResponseBodyLogTimeRange) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeInstDbLogInfoResponseBodyLogTimeRange) SetSupportLatestTime(v int64) *DescribeInstDbLogInfoResponseBodyLogTimeRange {
-	s.SupportLatestTime = &v
+func (s *DescribeInstDbLogInfoResponseBodyLogTimeRange) SetSupportOldestTime(v int64) *DescribeInstDbLogInfoResponseBodyLogTimeRange {
+	s.SupportOldestTime = &v
 	return s
 }
 
-func (s *DescribeInstDbLogInfoResponseBodyLogTimeRange) SetSupportOldestTime(v int64) *DescribeInstDbLogInfoResponseBodyLogTimeRange {
-	s.SupportOldestTime = &v
+func (s *DescribeInstDbLogInfoResponseBodyLogTimeRange) SetSupportLatestTime(v int64) *DescribeInstDbLogInfoResponseBodyLogTimeRange {
+	s.SupportLatestTime = &v
 	return s
 }
 
@@ -7130,9 +7323,9 @@ func (s *DescribeInstDbSlsInfoRequest) SetDbName(v string) *DescribeInstDbSlsInf
 }
 
 type DescribeInstDbSlsInfoResponseBody struct {
-	AuditInfo *DescribeInstDbSlsInfoResponseBodyAuditInfo `json:"AuditInfo,omitempty" xml:"AuditInfo,omitempty" type:"Struct"`
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	AuditInfo *DescribeInstDbSlsInfoResponseBodyAuditInfo `json:"AuditInfo,omitempty" xml:"AuditInfo,omitempty" type:"Struct"`
 }
 
 func (s DescribeInstDbSlsInfoResponseBody) String() string {
@@ -7143,8 +7336,8 @@ func (s DescribeInstDbSlsInfoResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeInstDbSlsInfoResponseBody) SetAuditInfo(v *DescribeInstDbSlsInfoResponseBodyAuditInfo) *DescribeInstDbSlsInfoResponseBody {
-	s.AuditInfo = v
+func (s *DescribeInstDbSlsInfoResponseBody) SetSuccess(v bool) *DescribeInstDbSlsInfoResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -7153,8 +7346,8 @@ func (s *DescribeInstDbSlsInfoResponseBody) SetRequestId(v string) *DescribeInst
 	return s
 }
 
-func (s *DescribeInstDbSlsInfoResponseBody) SetSuccess(v bool) *DescribeInstDbSlsInfoResponseBody {
-	s.Success = &v
+func (s *DescribeInstDbSlsInfoResponseBody) SetAuditInfo(v *DescribeInstDbSlsInfoResponseBodyAuditInfo) *DescribeInstDbSlsInfoResponseBody {
+	s.AuditInfo = v
 	return s
 }
 
@@ -7234,9 +7427,9 @@ func (s *DescribePreCheckResultRequest) SetTaskId(v string) *DescribePreCheckRes
 }
 
 type DescribePreCheckResultResponseBody struct {
-	PreCheckResult *DescribePreCheckResultResponseBodyPreCheckResult `json:"PreCheckResult,omitempty" xml:"PreCheckResult,omitempty" type:"Struct"`
-	RequestId      *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success        *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId      *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PreCheckResult *DescribePreCheckResultResponseBodyPreCheckResult `json:"PreCheckResult,omitempty" xml:"PreCheckResult,omitempty" type:"Struct"`
 }
 
 func (s DescribePreCheckResultResponseBody) String() string {
@@ -7247,8 +7440,8 @@ func (s DescribePreCheckResultResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribePreCheckResultResponseBody) SetPreCheckResult(v *DescribePreCheckResultResponseBodyPreCheckResult) *DescribePreCheckResultResponseBody {
-	s.PreCheckResult = v
+func (s *DescribePreCheckResultResponseBody) SetSuccess(v bool) *DescribePreCheckResultResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -7257,14 +7450,14 @@ func (s *DescribePreCheckResultResponseBody) SetRequestId(v string) *DescribePre
 	return s
 }
 
-func (s *DescribePreCheckResultResponseBody) SetSuccess(v bool) *DescribePreCheckResultResponseBody {
-	s.Success = &v
+func (s *DescribePreCheckResultResponseBody) SetPreCheckResult(v *DescribePreCheckResultResponseBodyPreCheckResult) *DescribePreCheckResultResponseBody {
+	s.PreCheckResult = v
 	return s
 }
 
 type DescribePreCheckResultResponseBodyPreCheckResult struct {
-	State         *string                                                          `json:"State,omitempty" xml:"State,omitempty"`
 	PreCheckName  *string                                                          `json:"PreCheckName,omitempty" xml:"PreCheckName,omitempty"`
+	State         *string                                                          `json:"State,omitempty" xml:"State,omitempty"`
 	SubCheckItems []*DescribePreCheckResultResponseBodyPreCheckResultSubCheckItems `json:"SubCheckItems,omitempty" xml:"SubCheckItems,omitempty" type:"Repeated"`
 }
 
@@ -7276,13 +7469,13 @@ func (s DescribePreCheckResultResponseBodyPreCheckResult) GoString() string {
 	return s.String()
 }
 
-func (s *DescribePreCheckResultResponseBodyPreCheckResult) SetState(v string) *DescribePreCheckResultResponseBodyPreCheckResult {
-	s.State = &v
+func (s *DescribePreCheckResultResponseBodyPreCheckResult) SetPreCheckName(v string) *DescribePreCheckResultResponseBodyPreCheckResult {
+	s.PreCheckName = &v
 	return s
 }
 
-func (s *DescribePreCheckResultResponseBodyPreCheckResult) SetPreCheckName(v string) *DescribePreCheckResultResponseBodyPreCheckResult {
-	s.PreCheckName = &v
+func (s *DescribePreCheckResultResponseBodyPreCheckResult) SetState(v string) *DescribePreCheckResultResponseBodyPreCheckResult {
+	s.State = &v
 	return s
 }
 
@@ -7293,9 +7486,9 @@ func (s *DescribePreCheckResultResponseBodyPreCheckResult) SetSubCheckItems(v []
 
 type DescribePreCheckResultResponseBodyPreCheckResultSubCheckItems struct {
 	ErrorMsgCode     *string   `json:"ErrorMsgCode,omitempty" xml:"ErrorMsgCode,omitempty"`
+	PreCheckItemName *string   `json:"PreCheckItemName,omitempty" xml:"PreCheckItemName,omitempty"`
 	State            *string   `json:"State,omitempty" xml:"State,omitempty"`
 	ErrorMsgParams   []*string `json:"ErrorMsgParams,omitempty" xml:"ErrorMsgParams,omitempty" type:"Repeated"`
-	PreCheckItemName *string   `json:"PreCheckItemName,omitempty" xml:"PreCheckItemName,omitempty"`
 }
 
 func (s DescribePreCheckResultResponseBodyPreCheckResultSubCheckItems) String() string {
@@ -7311,6 +7504,11 @@ func (s *DescribePreCheckResultResponseBodyPreCheckResultSubCheckItems) SetError
 	return s
 }
 
+func (s *DescribePreCheckResultResponseBodyPreCheckResultSubCheckItems) SetPreCheckItemName(v string) *DescribePreCheckResultResponseBodyPreCheckResultSubCheckItems {
+	s.PreCheckItemName = &v
+	return s
+}
+
 func (s *DescribePreCheckResultResponseBodyPreCheckResultSubCheckItems) SetState(v string) *DescribePreCheckResultResponseBodyPreCheckResultSubCheckItems {
 	s.State = &v
 	return s
@@ -7318,11 +7516,6 @@ func (s *DescribePreCheckResultResponseBodyPreCheckResultSubCheckItems) SetState
 
 func (s *DescribePreCheckResultResponseBodyPreCheckResultSubCheckItems) SetErrorMsgParams(v []*string) *DescribePreCheckResultResponseBodyPreCheckResultSubCheckItems {
 	s.ErrorMsgParams = v
-	return s
-}
-
-func (s *DescribePreCheckResultResponseBodyPreCheckResultSubCheckItems) SetPreCheckItemName(v string) *DescribePreCheckResultResponseBodyPreCheckResultSubCheckItems {
-	s.PreCheckItemName = &v
 	return s
 }
 
@@ -7379,8 +7572,8 @@ func (s *DescribeRdsCommodityRequest) SetOrderType(v string) *DescribeRdsCommodi
 }
 
 type DescribeRdsCommodityResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -7392,13 +7585,13 @@ func (s DescribeRdsCommodityResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRdsCommodityResponseBody) SetRequestId(v string) *DescribeRdsCommodityResponseBody {
-	s.RequestId = &v
+func (s *DescribeRdsCommodityResponseBody) SetData(v string) *DescribeRdsCommodityResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *DescribeRdsCommodityResponseBody) SetData(v string) *DescribeRdsCommodityResponseBody {
-	s.Data = &v
+func (s *DescribeRdsCommodityResponseBody) SetRequestId(v string) *DescribeRdsCommodityResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -7478,9 +7671,9 @@ func (s *DescribeRDSPerformanceRequest) SetDbInstType(v string) *DescribeRDSPerf
 }
 
 type DescribeRDSPerformanceResponseBody struct {
+	Success   *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
 	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      []*DescribeRDSPerformanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Success   *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeRDSPerformanceResponseBody) String() string {
@@ -7489,6 +7682,11 @@ func (s DescribeRDSPerformanceResponseBody) String() string {
 
 func (s DescribeRDSPerformanceResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeRDSPerformanceResponseBody) SetSuccess(v bool) *DescribeRDSPerformanceResponseBody {
+	s.Success = &v
+	return s
 }
 
 func (s *DescribeRDSPerformanceResponseBody) SetRequestId(v string) *DescribeRDSPerformanceResponseBody {
@@ -7501,17 +7699,12 @@ func (s *DescribeRDSPerformanceResponseBody) SetData(v []*DescribeRDSPerformance
 	return s
 }
 
-func (s *DescribeRDSPerformanceResponseBody) SetSuccess(v bool) *DescribeRDSPerformanceResponseBody {
-	s.Success = &v
-	return s
-}
-
 type DescribeRDSPerformanceResponseBodyData struct {
 	Key      *string                                         `json:"Key,omitempty" xml:"Key,omitempty"`
 	NodeName *string                                         `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
 	Unit     *string                                         `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Values   []*DescribeRDSPerformanceResponseBodyDataValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 	NodeNum  *int32                                          `json:"NodeNum,omitempty" xml:"NodeNum,omitempty"`
+	Values   []*DescribeRDSPerformanceResponseBodyDataValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
 func (s DescribeRDSPerformanceResponseBodyData) String() string {
@@ -7537,19 +7730,19 @@ func (s *DescribeRDSPerformanceResponseBodyData) SetUnit(v string) *DescribeRDSP
 	return s
 }
 
-func (s *DescribeRDSPerformanceResponseBodyData) SetValues(v []*DescribeRDSPerformanceResponseBodyDataValues) *DescribeRDSPerformanceResponseBodyData {
-	s.Values = v
-	return s
-}
-
 func (s *DescribeRDSPerformanceResponseBodyData) SetNodeNum(v int32) *DescribeRDSPerformanceResponseBodyData {
 	s.NodeNum = &v
 	return s
 }
 
+func (s *DescribeRDSPerformanceResponseBodyData) SetValues(v []*DescribeRDSPerformanceResponseBodyDataValues) *DescribeRDSPerformanceResponseBodyData {
+	s.Values = v
+	return s
+}
+
 type DescribeRDSPerformanceResponseBodyDataValues struct {
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 	Date  *int64  `json:"Date,omitempty" xml:"Date,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeRDSPerformanceResponseBodyDataValues) String() string {
@@ -7560,13 +7753,13 @@ func (s DescribeRDSPerformanceResponseBodyDataValues) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRDSPerformanceResponseBodyDataValues) SetValue(v string) *DescribeRDSPerformanceResponseBodyDataValues {
-	s.Value = &v
+func (s *DescribeRDSPerformanceResponseBodyDataValues) SetDate(v int64) *DescribeRDSPerformanceResponseBodyDataValues {
+	s.Date = &v
 	return s
 }
 
-func (s *DescribeRDSPerformanceResponseBodyDataValues) SetDate(v int64) *DescribeRDSPerformanceResponseBodyDataValues {
-	s.Date = &v
+func (s *DescribeRDSPerformanceResponseBodyDataValues) SetValue(v string) *DescribeRDSPerformanceResponseBodyDataValues {
+	s.Value = &v
 	return s
 }
 
@@ -7623,9 +7816,9 @@ func (s *DescribeRdsPerformanceSummaryRequest) SetRdsInstanceId(v []*string) *De
 }
 
 type DescribeRdsPerformanceSummaryResponseBody struct {
+	Success             *bool                                                           `json:"Success,omitempty" xml:"Success,omitempty"`
 	RequestId           *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RdsPerformanceInfos []*DescribeRdsPerformanceSummaryResponseBodyRdsPerformanceInfos `json:"RdsPerformanceInfos,omitempty" xml:"RdsPerformanceInfos,omitempty" type:"Repeated"`
-	Success             *bool                                                           `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeRdsPerformanceSummaryResponseBody) String() string {
@@ -7636,6 +7829,11 @@ func (s DescribeRdsPerformanceSummaryResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeRdsPerformanceSummaryResponseBody) SetSuccess(v bool) *DescribeRdsPerformanceSummaryResponseBody {
+	s.Success = &v
+	return s
+}
+
 func (s *DescribeRdsPerformanceSummaryResponseBody) SetRequestId(v string) *DescribeRdsPerformanceSummaryResponseBody {
 	s.RequestId = &v
 	return s
@@ -7643,11 +7841,6 @@ func (s *DescribeRdsPerformanceSummaryResponseBody) SetRequestId(v string) *Desc
 
 func (s *DescribeRdsPerformanceSummaryResponseBody) SetRdsPerformanceInfos(v []*DescribeRdsPerformanceSummaryResponseBodyRdsPerformanceInfos) *DescribeRdsPerformanceSummaryResponseBody {
 	s.RdsPerformanceInfos = v
-	return s
-}
-
-func (s *DescribeRdsPerformanceSummaryResponseBody) SetSuccess(v bool) *DescribeRdsPerformanceSummaryResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -7861,9 +8054,9 @@ func (s *DescribeRestoreOrderRequest) SetBackupId(v string) *DescribeRestoreOrde
 }
 
 type DescribeRestoreOrderResponseBody struct {
-	RestoreOrderDO *DescribeRestoreOrderResponseBodyRestoreOrderDO `json:"RestoreOrderDO,omitempty" xml:"RestoreOrderDO,omitempty" type:"Struct"`
-	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success        *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RestoreOrderDO *DescribeRestoreOrderResponseBodyRestoreOrderDO `json:"RestoreOrderDO,omitempty" xml:"RestoreOrderDO,omitempty" type:"Struct"`
 }
 
 func (s DescribeRestoreOrderResponseBody) String() string {
@@ -7874,8 +8067,8 @@ func (s DescribeRestoreOrderResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRestoreOrderResponseBody) SetRestoreOrderDO(v *DescribeRestoreOrderResponseBodyRestoreOrderDO) *DescribeRestoreOrderResponseBody {
-	s.RestoreOrderDO = v
+func (s *DescribeRestoreOrderResponseBody) SetSuccess(v bool) *DescribeRestoreOrderResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -7884,8 +8077,8 @@ func (s *DescribeRestoreOrderResponseBody) SetRequestId(v string) *DescribeResto
 	return s
 }
 
-func (s *DescribeRestoreOrderResponseBody) SetSuccess(v bool) *DescribeRestoreOrderResponseBody {
-	s.Success = &v
+func (s *DescribeRestoreOrderResponseBody) SetRestoreOrderDO(v *DescribeRestoreOrderResponseBodyRestoreOrderDO) *DescribeRestoreOrderResponseBody {
+	s.RestoreOrderDO = v
 	return s
 }
 
@@ -8199,9 +8392,9 @@ func (s *DescribeShardTaskInfoRequest) SetTargetTableName(v string) *DescribeSha
 }
 
 type DescribeShardTaskInfoResponseBody struct {
+	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
 	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *DescribeShardTaskInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeShardTaskInfoResponseBody) String() string {
@@ -8210,6 +8403,11 @@ func (s DescribeShardTaskInfoResponseBody) String() string {
 
 func (s DescribeShardTaskInfoResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeShardTaskInfoResponseBody) SetSuccess(v bool) *DescribeShardTaskInfoResponseBody {
+	s.Success = &v
+	return s
 }
 
 func (s *DescribeShardTaskInfoResponseBody) SetRequestId(v string) *DescribeShardTaskInfoResponseBody {
@@ -8222,22 +8420,17 @@ func (s *DescribeShardTaskInfoResponseBody) SetData(v *DescribeShardTaskInfoResp
 	return s
 }
 
-func (s *DescribeShardTaskInfoResponseBody) SetSuccess(v bool) *DescribeShardTaskInfoResponseBody {
-	s.Success = &v
-	return s
-}
-
 type DescribeShardTaskInfoResponseBodyData struct {
 	Status          *string                                          `json:"Status,omitempty" xml:"Status,omitempty"`
-	Full            *DescribeShardTaskInfoResponseBodyDataFull       `json:"Full,omitempty" xml:"Full,omitempty" type:"Struct"`
 	Stage           *string                                          `json:"Stage,omitempty" xml:"Stage,omitempty"`
 	Progress        *string                                          `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	Review          *DescribeShardTaskInfoResponseBodyDataReview     `json:"Review,omitempty" xml:"Review,omitempty" type:"Struct"`
 	Expired         *string                                          `json:"Expired,omitempty" xml:"Expired,omitempty"`
 	TargetTableName *string                                          `json:"TargetTableName,omitempty" xml:"TargetTableName,omitempty"`
-	FullRevise      *DescribeShardTaskInfoResponseBodyDataFullRevise `json:"FullRevise,omitempty" xml:"FullRevise,omitempty" type:"Struct"`
 	SourceTableName *string                                          `json:"SourceTableName,omitempty" xml:"SourceTableName,omitempty"`
+	Full            *DescribeShardTaskInfoResponseBodyDataFull       `json:"Full,omitempty" xml:"Full,omitempty" type:"Struct"`
 	FullCheck       *DescribeShardTaskInfoResponseBodyDataFullCheck  `json:"FullCheck,omitempty" xml:"FullCheck,omitempty" type:"Struct"`
+	FullRevise      *DescribeShardTaskInfoResponseBodyDataFullRevise `json:"FullRevise,omitempty" xml:"FullRevise,omitempty" type:"Struct"`
+	Review          *DescribeShardTaskInfoResponseBodyDataReview     `json:"Review,omitempty" xml:"Review,omitempty" type:"Struct"`
 	Increment       *DescribeShardTaskInfoResponseBodyDataIncrement  `json:"Increment,omitempty" xml:"Increment,omitempty" type:"Struct"`
 }
 
@@ -8254,11 +8447,6 @@ func (s *DescribeShardTaskInfoResponseBodyData) SetStatus(v string) *DescribeSha
 	return s
 }
 
-func (s *DescribeShardTaskInfoResponseBodyData) SetFull(v *DescribeShardTaskInfoResponseBodyDataFull) *DescribeShardTaskInfoResponseBodyData {
-	s.Full = v
-	return s
-}
-
 func (s *DescribeShardTaskInfoResponseBodyData) SetStage(v string) *DescribeShardTaskInfoResponseBodyData {
 	s.Stage = &v
 	return s
@@ -8266,11 +8454,6 @@ func (s *DescribeShardTaskInfoResponseBodyData) SetStage(v string) *DescribeShar
 
 func (s *DescribeShardTaskInfoResponseBodyData) SetProgress(v string) *DescribeShardTaskInfoResponseBodyData {
 	s.Progress = &v
-	return s
-}
-
-func (s *DescribeShardTaskInfoResponseBodyData) SetReview(v *DescribeShardTaskInfoResponseBodyDataReview) *DescribeShardTaskInfoResponseBodyData {
-	s.Review = v
 	return s
 }
 
@@ -8284,18 +8467,28 @@ func (s *DescribeShardTaskInfoResponseBodyData) SetTargetTableName(v string) *De
 	return s
 }
 
-func (s *DescribeShardTaskInfoResponseBodyData) SetFullRevise(v *DescribeShardTaskInfoResponseBodyDataFullRevise) *DescribeShardTaskInfoResponseBodyData {
-	s.FullRevise = v
-	return s
-}
-
 func (s *DescribeShardTaskInfoResponseBodyData) SetSourceTableName(v string) *DescribeShardTaskInfoResponseBodyData {
 	s.SourceTableName = &v
 	return s
 }
 
+func (s *DescribeShardTaskInfoResponseBodyData) SetFull(v *DescribeShardTaskInfoResponseBodyDataFull) *DescribeShardTaskInfoResponseBodyData {
+	s.Full = v
+	return s
+}
+
 func (s *DescribeShardTaskInfoResponseBodyData) SetFullCheck(v *DescribeShardTaskInfoResponseBodyDataFullCheck) *DescribeShardTaskInfoResponseBodyData {
 	s.FullCheck = v
+	return s
+}
+
+func (s *DescribeShardTaskInfoResponseBodyData) SetFullRevise(v *DescribeShardTaskInfoResponseBodyDataFullRevise) *DescribeShardTaskInfoResponseBodyData {
+	s.FullRevise = v
+	return s
+}
+
+func (s *DescribeShardTaskInfoResponseBodyData) SetReview(v *DescribeShardTaskInfoResponseBodyDataReview) *DescribeShardTaskInfoResponseBodyData {
+	s.Review = v
 	return s
 }
 
@@ -8308,8 +8501,8 @@ type DescribeShardTaskInfoResponseBodyDataFull struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	Progress  *int32  `json:"Progress,omitempty" xml:"Progress,omitempty"`
 	Tps       *int32  `json:"Tps,omitempty" xml:"Tps,omitempty"`
-	Expired   *int32  `json:"Expired,omitempty" xml:"Expired,omitempty"`
 	Total     *int32  `json:"Total,omitempty" xml:"Total,omitempty"`
+	Expired   *int32  `json:"Expired,omitempty" xml:"Expired,omitempty"`
 }
 
 func (s DescribeShardTaskInfoResponseBodyDataFull) String() string {
@@ -8335,95 +8528,13 @@ func (s *DescribeShardTaskInfoResponseBodyDataFull) SetTps(v int32) *DescribeSha
 	return s
 }
 
-func (s *DescribeShardTaskInfoResponseBodyDataFull) SetExpired(v int32) *DescribeShardTaskInfoResponseBodyDataFull {
-	s.Expired = &v
-	return s
-}
-
 func (s *DescribeShardTaskInfoResponseBodyDataFull) SetTotal(v int32) *DescribeShardTaskInfoResponseBodyDataFull {
 	s.Total = &v
 	return s
 }
 
-type DescribeShardTaskInfoResponseBodyDataReview struct {
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Progress  *int32  `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	Tps       *int32  `json:"Tps,omitempty" xml:"Tps,omitempty"`
-	Expired   *int32  `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	Total     *int32  `json:"Total,omitempty" xml:"Total,omitempty"`
-}
-
-func (s DescribeShardTaskInfoResponseBodyDataReview) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeShardTaskInfoResponseBodyDataReview) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeShardTaskInfoResponseBodyDataReview) SetStartTime(v string) *DescribeShardTaskInfoResponseBodyDataReview {
-	s.StartTime = &v
-	return s
-}
-
-func (s *DescribeShardTaskInfoResponseBodyDataReview) SetProgress(v int32) *DescribeShardTaskInfoResponseBodyDataReview {
-	s.Progress = &v
-	return s
-}
-
-func (s *DescribeShardTaskInfoResponseBodyDataReview) SetTps(v int32) *DescribeShardTaskInfoResponseBodyDataReview {
-	s.Tps = &v
-	return s
-}
-
-func (s *DescribeShardTaskInfoResponseBodyDataReview) SetExpired(v int32) *DescribeShardTaskInfoResponseBodyDataReview {
+func (s *DescribeShardTaskInfoResponseBodyDataFull) SetExpired(v int32) *DescribeShardTaskInfoResponseBodyDataFull {
 	s.Expired = &v
-	return s
-}
-
-func (s *DescribeShardTaskInfoResponseBodyDataReview) SetTotal(v int32) *DescribeShardTaskInfoResponseBodyDataReview {
-	s.Total = &v
-	return s
-}
-
-type DescribeShardTaskInfoResponseBodyDataFullRevise struct {
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Progress  *int32  `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	Tps       *int32  `json:"Tps,omitempty" xml:"Tps,omitempty"`
-	Expired   *int32  `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	Total     *int32  `json:"Total,omitempty" xml:"Total,omitempty"`
-}
-
-func (s DescribeShardTaskInfoResponseBodyDataFullRevise) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeShardTaskInfoResponseBodyDataFullRevise) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeShardTaskInfoResponseBodyDataFullRevise) SetStartTime(v string) *DescribeShardTaskInfoResponseBodyDataFullRevise {
-	s.StartTime = &v
-	return s
-}
-
-func (s *DescribeShardTaskInfoResponseBodyDataFullRevise) SetProgress(v int32) *DescribeShardTaskInfoResponseBodyDataFullRevise {
-	s.Progress = &v
-	return s
-}
-
-func (s *DescribeShardTaskInfoResponseBodyDataFullRevise) SetTps(v int32) *DescribeShardTaskInfoResponseBodyDataFullRevise {
-	s.Tps = &v
-	return s
-}
-
-func (s *DescribeShardTaskInfoResponseBodyDataFullRevise) SetExpired(v int32) *DescribeShardTaskInfoResponseBodyDataFullRevise {
-	s.Expired = &v
-	return s
-}
-
-func (s *DescribeShardTaskInfoResponseBodyDataFullRevise) SetTotal(v int32) *DescribeShardTaskInfoResponseBodyDataFullRevise {
-	s.Total = &v
 	return s
 }
 
@@ -8431,8 +8542,8 @@ type DescribeShardTaskInfoResponseBodyDataFullCheck struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	Progress  *int32  `json:"Progress,omitempty" xml:"Progress,omitempty"`
 	Tps       *int32  `json:"Tps,omitempty" xml:"Tps,omitempty"`
-	Expired   *int32  `json:"Expired,omitempty" xml:"Expired,omitempty"`
 	Total     *int32  `json:"Total,omitempty" xml:"Total,omitempty"`
+	Expired   *int32  `json:"Expired,omitempty" xml:"Expired,omitempty"`
 }
 
 func (s DescribeShardTaskInfoResponseBodyDataFullCheck) String() string {
@@ -8458,13 +8569,95 @@ func (s *DescribeShardTaskInfoResponseBodyDataFullCheck) SetTps(v int32) *Descri
 	return s
 }
 
+func (s *DescribeShardTaskInfoResponseBodyDataFullCheck) SetTotal(v int32) *DescribeShardTaskInfoResponseBodyDataFullCheck {
+	s.Total = &v
+	return s
+}
+
 func (s *DescribeShardTaskInfoResponseBodyDataFullCheck) SetExpired(v int32) *DescribeShardTaskInfoResponseBodyDataFullCheck {
 	s.Expired = &v
 	return s
 }
 
-func (s *DescribeShardTaskInfoResponseBodyDataFullCheck) SetTotal(v int32) *DescribeShardTaskInfoResponseBodyDataFullCheck {
+type DescribeShardTaskInfoResponseBodyDataFullRevise struct {
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Progress  *int32  `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Tps       *int32  `json:"Tps,omitempty" xml:"Tps,omitempty"`
+	Total     *int32  `json:"Total,omitempty" xml:"Total,omitempty"`
+	Expired   *int32  `json:"Expired,omitempty" xml:"Expired,omitempty"`
+}
+
+func (s DescribeShardTaskInfoResponseBodyDataFullRevise) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeShardTaskInfoResponseBodyDataFullRevise) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeShardTaskInfoResponseBodyDataFullRevise) SetStartTime(v string) *DescribeShardTaskInfoResponseBodyDataFullRevise {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeShardTaskInfoResponseBodyDataFullRevise) SetProgress(v int32) *DescribeShardTaskInfoResponseBodyDataFullRevise {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeShardTaskInfoResponseBodyDataFullRevise) SetTps(v int32) *DescribeShardTaskInfoResponseBodyDataFullRevise {
+	s.Tps = &v
+	return s
+}
+
+func (s *DescribeShardTaskInfoResponseBodyDataFullRevise) SetTotal(v int32) *DescribeShardTaskInfoResponseBodyDataFullRevise {
 	s.Total = &v
+	return s
+}
+
+func (s *DescribeShardTaskInfoResponseBodyDataFullRevise) SetExpired(v int32) *DescribeShardTaskInfoResponseBodyDataFullRevise {
+	s.Expired = &v
+	return s
+}
+
+type DescribeShardTaskInfoResponseBodyDataReview struct {
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Progress  *int32  `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Tps       *int32  `json:"Tps,omitempty" xml:"Tps,omitempty"`
+	Total     *int32  `json:"Total,omitempty" xml:"Total,omitempty"`
+	Expired   *int32  `json:"Expired,omitempty" xml:"Expired,omitempty"`
+}
+
+func (s DescribeShardTaskInfoResponseBodyDataReview) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeShardTaskInfoResponseBodyDataReview) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeShardTaskInfoResponseBodyDataReview) SetStartTime(v string) *DescribeShardTaskInfoResponseBodyDataReview {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeShardTaskInfoResponseBodyDataReview) SetProgress(v int32) *DescribeShardTaskInfoResponseBodyDataReview {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeShardTaskInfoResponseBodyDataReview) SetTps(v int32) *DescribeShardTaskInfoResponseBodyDataReview {
+	s.Tps = &v
+	return s
+}
+
+func (s *DescribeShardTaskInfoResponseBodyDataReview) SetTotal(v int32) *DescribeShardTaskInfoResponseBodyDataReview {
+	s.Total = &v
+	return s
+}
+
+func (s *DescribeShardTaskInfoResponseBodyDataReview) SetExpired(v int32) *DescribeShardTaskInfoResponseBodyDataReview {
+	s.Expired = &v
 	return s
 }
 
@@ -8520,6 +8713,176 @@ func (s *DescribeShardTaskInfoResponse) SetBody(v *DescribeShardTaskInfoResponse
 	return s
 }
 
+type DescribeShardTaskListRequest struct {
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
+	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	Query          *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	CurrentPage    *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	TaskType       *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+}
+
+func (s DescribeShardTaskListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeShardTaskListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeShardTaskListRequest) SetRegionId(v string) *DescribeShardTaskListRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeShardTaskListRequest) SetDrdsInstanceId(v string) *DescribeShardTaskListRequest {
+	s.DrdsInstanceId = &v
+	return s
+}
+
+func (s *DescribeShardTaskListRequest) SetDbName(v string) *DescribeShardTaskListRequest {
+	s.DbName = &v
+	return s
+}
+
+func (s *DescribeShardTaskListRequest) SetQuery(v string) *DescribeShardTaskListRequest {
+	s.Query = &v
+	return s
+}
+
+func (s *DescribeShardTaskListRequest) SetPageSize(v int32) *DescribeShardTaskListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeShardTaskListRequest) SetCurrentPage(v int32) *DescribeShardTaskListRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeShardTaskListRequest) SetTaskType(v string) *DescribeShardTaskListRequest {
+	s.TaskType = &v
+	return s
+}
+
+type DescribeShardTaskListResponseBody struct {
+	RequestId  *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success    *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	PageNumber *int32                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total      *int32                                   `json:"Total,omitempty" xml:"Total,omitempty"`
+	List       []*DescribeShardTaskListResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+}
+
+func (s DescribeShardTaskListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeShardTaskListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeShardTaskListResponseBody) SetRequestId(v string) *DescribeShardTaskListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeShardTaskListResponseBody) SetSuccess(v bool) *DescribeShardTaskListResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeShardTaskListResponseBody) SetPageNumber(v int32) *DescribeShardTaskListResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeShardTaskListResponseBody) SetPageSize(v int32) *DescribeShardTaskListResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeShardTaskListResponseBody) SetTotal(v int32) *DescribeShardTaskListResponseBody {
+	s.Total = &v
+	return s
+}
+
+func (s *DescribeShardTaskListResponseBody) SetList(v []*DescribeShardTaskListResponseBodyList) *DescribeShardTaskListResponseBody {
+	s.List = v
+	return s
+}
+
+type DescribeShardTaskListResponseBodyList struct {
+	SourceTableName *string `json:"SourceTableName,omitempty" xml:"SourceTableName,omitempty"`
+	TargetTableName *string `json:"TargetTableName,omitempty" xml:"TargetTableName,omitempty"`
+	Expired         *int64  `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	Stage           *int32  `json:"Stage,omitempty" xml:"Stage,omitempty"`
+	Progress        *int32  `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Delay           *int32  `json:"Delay,omitempty" xml:"Delay,omitempty"`
+}
+
+func (s DescribeShardTaskListResponseBodyList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeShardTaskListResponseBodyList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeShardTaskListResponseBodyList) SetSourceTableName(v string) *DescribeShardTaskListResponseBodyList {
+	s.SourceTableName = &v
+	return s
+}
+
+func (s *DescribeShardTaskListResponseBodyList) SetTargetTableName(v string) *DescribeShardTaskListResponseBodyList {
+	s.TargetTableName = &v
+	return s
+}
+
+func (s *DescribeShardTaskListResponseBodyList) SetExpired(v int64) *DescribeShardTaskListResponseBodyList {
+	s.Expired = &v
+	return s
+}
+
+func (s *DescribeShardTaskListResponseBodyList) SetStage(v int32) *DescribeShardTaskListResponseBodyList {
+	s.Stage = &v
+	return s
+}
+
+func (s *DescribeShardTaskListResponseBodyList) SetProgress(v int32) *DescribeShardTaskListResponseBodyList {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeShardTaskListResponseBodyList) SetDelay(v int32) *DescribeShardTaskListResponseBodyList {
+	s.Delay = &v
+	return s
+}
+
+type DescribeShardTaskListResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeShardTaskListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeShardTaskListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeShardTaskListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeShardTaskListResponse) SetHeaders(v map[string]*string) *DescribeShardTaskListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeShardTaskListResponse) SetBody(v *DescribeShardTaskListResponseBody) *DescribeShardTaskListResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeSqlFlashbakTaskRequest struct {
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
@@ -8538,9 +8901,9 @@ func (s *DescribeSqlFlashbakTaskRequest) SetDrdsInstanceId(v string) *DescribeSq
 }
 
 type DescribeSqlFlashbakTaskResponseBody struct {
-	SqlFlashbackTasks *DescribeSqlFlashbakTaskResponseBodySqlFlashbackTasks `json:"SqlFlashbackTasks,omitempty" xml:"SqlFlashbackTasks,omitempty" type:"Struct"`
-	RequestId         *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success           *bool                                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId         *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SqlFlashbackTasks *DescribeSqlFlashbakTaskResponseBodySqlFlashbackTasks `json:"SqlFlashbackTasks,omitempty" xml:"SqlFlashbackTasks,omitempty" type:"Struct"`
 }
 
 func (s DescribeSqlFlashbakTaskResponseBody) String() string {
@@ -8551,8 +8914,8 @@ func (s DescribeSqlFlashbakTaskResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeSqlFlashbakTaskResponseBody) SetSqlFlashbackTasks(v *DescribeSqlFlashbakTaskResponseBodySqlFlashbackTasks) *DescribeSqlFlashbakTaskResponseBody {
-	s.SqlFlashbackTasks = v
+func (s *DescribeSqlFlashbakTaskResponseBody) SetSuccess(v bool) *DescribeSqlFlashbakTaskResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -8561,8 +8924,8 @@ func (s *DescribeSqlFlashbakTaskResponseBody) SetRequestId(v string) *DescribeSq
 	return s
 }
 
-func (s *DescribeSqlFlashbakTaskResponseBody) SetSuccess(v bool) *DescribeSqlFlashbakTaskResponseBody {
-	s.Success = &v
+func (s *DescribeSqlFlashbakTaskResponseBody) SetSqlFlashbackTasks(v *DescribeSqlFlashbakTaskResponseBodySqlFlashbackTasks) *DescribeSqlFlashbakTaskResponseBody {
+	s.SqlFlashbackTasks = v
 	return s
 }
 
@@ -8589,13 +8952,13 @@ type DescribeSqlFlashbakTaskResponseBodySqlFlashbackTasksSqlFlashbackTask struct
 	ExpireTime        *int64  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	DownloadUrl       *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
 	RecallProgress    *int32  `json:"RecallProgress,omitempty" xml:"RecallProgress,omitempty"`
-	InstId            *string `json:"InstId,omitempty" xml:"InstId,omitempty"`
 	SqlPk             *string `json:"SqlPk,omitempty" xml:"SqlPk,omitempty"`
+	InstId            *string `json:"InstId,omitempty" xml:"InstId,omitempty"`
 	RecallType        *int32  `json:"RecallType,omitempty" xml:"RecallType,omitempty"`
-	GmtModified       *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	SearchStartTime   *int64  `json:"SearchStartTime,omitempty" xml:"SearchStartTime,omitempty"`
-	DbName            *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	GmtModified       *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	SqlCounter        *int64  `json:"SqlCounter,omitempty" xml:"SqlCounter,omitempty"`
+	DbName            *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	RecallRestoreType *int32  `json:"RecallRestoreType,omitempty" xml:"RecallRestoreType,omitempty"`
 	GmtCreate         *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	TraceId           *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
@@ -8637,13 +9000,13 @@ func (s *DescribeSqlFlashbakTaskResponseBodySqlFlashbackTasksSqlFlashbackTask) S
 	return s
 }
 
-func (s *DescribeSqlFlashbakTaskResponseBodySqlFlashbackTasksSqlFlashbackTask) SetInstId(v string) *DescribeSqlFlashbakTaskResponseBodySqlFlashbackTasksSqlFlashbackTask {
-	s.InstId = &v
+func (s *DescribeSqlFlashbakTaskResponseBodySqlFlashbackTasksSqlFlashbackTask) SetSqlPk(v string) *DescribeSqlFlashbakTaskResponseBodySqlFlashbackTasksSqlFlashbackTask {
+	s.SqlPk = &v
 	return s
 }
 
-func (s *DescribeSqlFlashbakTaskResponseBodySqlFlashbackTasksSqlFlashbackTask) SetSqlPk(v string) *DescribeSqlFlashbakTaskResponseBodySqlFlashbackTasksSqlFlashbackTask {
-	s.SqlPk = &v
+func (s *DescribeSqlFlashbakTaskResponseBodySqlFlashbackTasksSqlFlashbackTask) SetInstId(v string) *DescribeSqlFlashbakTaskResponseBodySqlFlashbackTasksSqlFlashbackTask {
+	s.InstId = &v
 	return s
 }
 
@@ -8652,23 +9015,23 @@ func (s *DescribeSqlFlashbakTaskResponseBodySqlFlashbackTasksSqlFlashbackTask) S
 	return s
 }
 
-func (s *DescribeSqlFlashbakTaskResponseBodySqlFlashbackTasksSqlFlashbackTask) SetGmtModified(v int64) *DescribeSqlFlashbakTaskResponseBodySqlFlashbackTasksSqlFlashbackTask {
-	s.GmtModified = &v
-	return s
-}
-
 func (s *DescribeSqlFlashbakTaskResponseBodySqlFlashbackTasksSqlFlashbackTask) SetSearchStartTime(v int64) *DescribeSqlFlashbakTaskResponseBodySqlFlashbackTasksSqlFlashbackTask {
 	s.SearchStartTime = &v
 	return s
 }
 
-func (s *DescribeSqlFlashbakTaskResponseBodySqlFlashbackTasksSqlFlashbackTask) SetDbName(v string) *DescribeSqlFlashbakTaskResponseBodySqlFlashbackTasksSqlFlashbackTask {
-	s.DbName = &v
+func (s *DescribeSqlFlashbakTaskResponseBodySqlFlashbackTasksSqlFlashbackTask) SetGmtModified(v int64) *DescribeSqlFlashbakTaskResponseBodySqlFlashbackTasksSqlFlashbackTask {
+	s.GmtModified = &v
 	return s
 }
 
 func (s *DescribeSqlFlashbakTaskResponseBodySqlFlashbackTasksSqlFlashbackTask) SetSqlCounter(v int64) *DescribeSqlFlashbakTaskResponseBodySqlFlashbackTasksSqlFlashbackTask {
 	s.SqlCounter = &v
+	return s
+}
+
+func (s *DescribeSqlFlashbakTaskResponseBodySqlFlashbackTasksSqlFlashbackTask) SetDbName(v string) *DescribeSqlFlashbakTaskResponseBodySqlFlashbackTasksSqlFlashbackTask {
+	s.DbName = &v
 	return s
 }
 
@@ -8761,9 +9124,9 @@ func (s *DescribeTableRequest) SetTableName(v string) *DescribeTableRequest {
 }
 
 type DescribeTableResponseBody struct {
+	Success   *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
 	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *DescribeTableResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Success   *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeTableResponseBody) String() string {
@@ -8774,6 +9137,11 @@ func (s DescribeTableResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeTableResponseBody) SetSuccess(v bool) *DescribeTableResponseBody {
+	s.Success = &v
+	return s
+}
+
 func (s *DescribeTableResponseBody) SetRequestId(v string) *DescribeTableResponseBody {
 	s.RequestId = &v
 	return s
@@ -8781,11 +9149,6 @@ func (s *DescribeTableResponseBody) SetRequestId(v string) *DescribeTableRespons
 
 func (s *DescribeTableResponseBody) SetData(v *DescribeTableResponseBodyData) *DescribeTableResponseBody {
 	s.Data = v
-	return s
-}
-
-func (s *DescribeTableResponseBody) SetSuccess(v bool) *DescribeTableResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -8931,11 +9294,11 @@ func (s *DescribeTableListByTypeRequest) SetTableType(v string) *DescribeTableLi
 
 type DescribeTableListByTypeResponseBody struct {
 	PageSize   *int32                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageNumber *int32                                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	RequestId  *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Total      *int32                                     `json:"Total,omitempty" xml:"Total,omitempty"`
-	List       []*DescribeTableListByTypeResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 	Success    *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	List       []*DescribeTableListByTypeResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 }
 
 func (s DescribeTableListByTypeResponseBody) String() string {
@@ -8951,13 +9314,13 @@ func (s *DescribeTableListByTypeResponseBody) SetPageSize(v int32) *DescribeTabl
 	return s
 }
 
-func (s *DescribeTableListByTypeResponseBody) SetRequestId(v string) *DescribeTableListByTypeResponseBody {
-	s.RequestId = &v
+func (s *DescribeTableListByTypeResponseBody) SetPageNumber(v int32) *DescribeTableListByTypeResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
-func (s *DescribeTableListByTypeResponseBody) SetPageNumber(v int32) *DescribeTableListByTypeResponseBody {
-	s.PageNumber = &v
+func (s *DescribeTableListByTypeResponseBody) SetRequestId(v string) *DescribeTableListByTypeResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -8966,13 +9329,13 @@ func (s *DescribeTableListByTypeResponseBody) SetTotal(v int32) *DescribeTableLi
 	return s
 }
 
-func (s *DescribeTableListByTypeResponseBody) SetList(v []*DescribeTableListByTypeResponseBodyList) *DescribeTableListByTypeResponseBody {
-	s.List = v
+func (s *DescribeTableListByTypeResponseBody) SetSuccess(v bool) *DescribeTableListByTypeResponseBody {
+	s.Success = &v
 	return s
 }
 
-func (s *DescribeTableListByTypeResponseBody) SetSuccess(v bool) *DescribeTableListByTypeResponseBody {
-	s.Success = &v
+func (s *DescribeTableListByTypeResponseBody) SetList(v []*DescribeTableListByTypeResponseBodyList) *DescribeTableListByTypeResponseBody {
+	s.List = v
 	return s
 }
 
@@ -9071,11 +9434,11 @@ func (s *DescribeTablesRequest) SetRegionId(v string) *DescribeTablesRequest {
 
 type DescribeTablesResponseBody struct {
 	PageSize   *int32                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageNumber *int32                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	RequestId  *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Total      *int32                            `json:"Total,omitempty" xml:"Total,omitempty"`
-	List       []*DescribeTablesResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 	Success    *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	List       []*DescribeTablesResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 }
 
 func (s DescribeTablesResponseBody) String() string {
@@ -9091,13 +9454,13 @@ func (s *DescribeTablesResponseBody) SetPageSize(v int32) *DescribeTablesRespons
 	return s
 }
 
-func (s *DescribeTablesResponseBody) SetRequestId(v string) *DescribeTablesResponseBody {
-	s.RequestId = &v
+func (s *DescribeTablesResponseBody) SetPageNumber(v int32) *DescribeTablesResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
-func (s *DescribeTablesResponseBody) SetPageNumber(v int32) *DescribeTablesResponseBody {
-	s.PageNumber = &v
+func (s *DescribeTablesResponseBody) SetRequestId(v string) *DescribeTablesResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -9106,13 +9469,13 @@ func (s *DescribeTablesResponseBody) SetTotal(v int32) *DescribeTablesResponseBo
 	return s
 }
 
-func (s *DescribeTablesResponseBody) SetList(v []*DescribeTablesResponseBodyList) *DescribeTablesResponseBody {
-	s.List = v
+func (s *DescribeTablesResponseBody) SetSuccess(v bool) *DescribeTablesResponseBody {
+	s.Success = &v
 	return s
 }
 
-func (s *DescribeTablesResponseBody) SetSuccess(v bool) *DescribeTablesResponseBody {
-	s.Success = &v
+func (s *DescribeTablesResponseBody) SetList(v []*DescribeTablesResponseBodyList) *DescribeTablesResponseBody {
+	s.List = v
 	return s
 }
 
@@ -9223,8 +9586,8 @@ func (s *DisableSqlAuditRequest) SetDbName(v string) *DisableSqlAuditRequest {
 
 type DisableSqlAuditResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DisableSqlAuditResponseBody) String() string {
@@ -9240,13 +9603,13 @@ func (s *DisableSqlAuditResponseBody) SetRequestId(v string) *DisableSqlAuditRes
 	return s
 }
 
-func (s *DisableSqlAuditResponseBody) SetSuccess(v bool) *DisableSqlAuditResponseBody {
-	s.Success = &v
+func (s *DisableSqlAuditResponseBody) SetResult(v bool) *DisableSqlAuditResponseBody {
+	s.Result = &v
 	return s
 }
 
-func (s *DisableSqlAuditResponseBody) SetResult(v bool) *DisableSqlAuditResponseBody {
-	s.Result = &v
+func (s *DisableSqlAuditResponseBody) SetSuccess(v bool) *DisableSqlAuditResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -9316,8 +9679,8 @@ func (s *EnableSqlAuditRequest) SetRecallEndTimestamp(v string) *EnableSqlAuditR
 
 type EnableSqlAuditResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s EnableSqlAuditResponseBody) String() string {
@@ -9333,13 +9696,13 @@ func (s *EnableSqlAuditResponseBody) SetRequestId(v string) *EnableSqlAuditRespo
 	return s
 }
 
-func (s *EnableSqlAuditResponseBody) SetSuccess(v bool) *EnableSqlAuditResponseBody {
-	s.Success = &v
+func (s *EnableSqlAuditResponseBody) SetResult(v bool) *EnableSqlAuditResponseBody {
+	s.Result = &v
 	return s
 }
 
-func (s *EnableSqlAuditResponseBody) SetResult(v bool) *EnableSqlAuditResponseBody {
-	s.Result = &v
+func (s *EnableSqlAuditResponseBody) SetSuccess(v bool) *EnableSqlAuditResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -9391,8 +9754,8 @@ func (s *EnableSqlFlashbackMatchSwitchRequest) SetDbName(v string) *EnableSqlFla
 
 type EnableSqlFlashbackMatchSwitchResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s EnableSqlFlashbackMatchSwitchResponseBody) String() string {
@@ -9408,13 +9771,13 @@ func (s *EnableSqlFlashbackMatchSwitchResponseBody) SetRequestId(v string) *Enab
 	return s
 }
 
-func (s *EnableSqlFlashbackMatchSwitchResponseBody) SetSuccess(v bool) *EnableSqlFlashbackMatchSwitchResponseBody {
-	s.Success = &v
+func (s *EnableSqlFlashbackMatchSwitchResponseBody) SetResult(v bool) *EnableSqlFlashbackMatchSwitchResponseBody {
+	s.Result = &v
 	return s
 }
 
-func (s *EnableSqlFlashbackMatchSwitchResponseBody) SetResult(v bool) *EnableSqlFlashbackMatchSwitchResponseBody {
-	s.Result = &v
+func (s *EnableSqlFlashbackMatchSwitchResponseBody) SetSuccess(v bool) *EnableSqlFlashbackMatchSwitchResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -9444,7 +9807,6 @@ func (s *EnableSqlFlashbackMatchSwitchResponse) SetBody(v *EnableSqlFlashbackMat
 type ListTagResourcesRequest struct {
 	RegionId     *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	NoRole       *bool                         `json:"NoRole,omitempty" xml:"NoRole,omitempty"`
 	NextToken    *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	ResourceId   []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
@@ -9465,11 +9827,6 @@ func (s *ListTagResourcesRequest) SetRegionId(v string) *ListTagResourcesRequest
 
 func (s *ListTagResourcesRequest) SetResourceType(v string) *ListTagResourcesRequest {
 	s.ResourceType = &v
-	return s
-}
-
-func (s *ListTagResourcesRequest) SetNoRole(v bool) *ListTagResourcesRequest {
-	s.NoRole = &v
 	return s
 }
 
@@ -9514,8 +9871,8 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 type ListTagResourcesResponseBody struct {
 	NextToken    *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TagResources *ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
 	Success      *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	TagResources *ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
 }
 
 func (s ListTagResourcesResponseBody) String() string {
@@ -9536,13 +9893,13 @@ func (s *ListTagResourcesResponseBody) SetRequestId(v string) *ListTagResourcesR
 	return s
 }
 
-func (s *ListTagResourcesResponseBody) SetTagResources(v *ListTagResourcesResponseBodyTagResources) *ListTagResourcesResponseBody {
-	s.TagResources = v
+func (s *ListTagResourcesResponseBody) SetSuccess(v bool) *ListTagResourcesResponseBody {
+	s.Success = &v
 	return s
 }
 
-func (s *ListTagResourcesResponseBody) SetSuccess(v bool) *ListTagResourcesResponseBody {
-	s.Success = &v
+func (s *ListTagResourcesResponseBody) SetTagResources(v *ListTagResourcesResponseBodyTagResources) *ListTagResourcesResponseBody {
+	s.TagResources = v
 	return s
 }
 
@@ -9663,8 +10020,8 @@ func (s *ManagePrivateRdsRequest) SetParams(v string) *ManagePrivateRdsRequest {
 }
 
 type ManagePrivateRdsResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -9676,13 +10033,13 @@ func (s ManagePrivateRdsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ManagePrivateRdsResponseBody) SetRequestId(v string) *ManagePrivateRdsResponseBody {
-	s.RequestId = &v
+func (s *ManagePrivateRdsResponseBody) SetData(v string) *ManagePrivateRdsResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *ManagePrivateRdsResponseBody) SetData(v string) *ManagePrivateRdsResponseBody {
-	s.Data = &v
+func (s *ManagePrivateRdsResponseBody) SetRequestId(v string) *ManagePrivateRdsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -9738,8 +10095,8 @@ func (s *ModifyDrdsInstanceDescriptionRequest) SetDescription(v string) *ModifyD
 }
 
 type ModifyDrdsInstanceDescriptionResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ModifyDrdsInstanceDescriptionResponseBody) String() string {
@@ -9750,13 +10107,13 @@ func (s ModifyDrdsInstanceDescriptionResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyDrdsInstanceDescriptionResponseBody) SetRequestId(v string) *ModifyDrdsInstanceDescriptionResponseBody {
-	s.RequestId = &v
+func (s *ModifyDrdsInstanceDescriptionResponseBody) SetSuccess(v bool) *ModifyDrdsInstanceDescriptionResponseBody {
+	s.Success = &v
 	return s
 }
 
-func (s *ModifyDrdsInstanceDescriptionResponseBody) SetSuccess(v bool) *ModifyDrdsInstanceDescriptionResponseBody {
-	s.Success = &v
+func (s *ModifyDrdsInstanceDescriptionResponseBody) SetRequestId(v string) *ModifyDrdsInstanceDescriptionResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -9831,8 +10188,8 @@ func (s *ModifyDrdsIpWhiteListRequest) SetGroupAttribute(v string) *ModifyDrdsIp
 }
 
 type ModifyDrdsIpWhiteListResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ModifyDrdsIpWhiteListResponseBody) String() string {
@@ -9843,13 +10200,13 @@ func (s ModifyDrdsIpWhiteListResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyDrdsIpWhiteListResponseBody) SetRequestId(v string) *ModifyDrdsIpWhiteListResponseBody {
-	s.RequestId = &v
+func (s *ModifyDrdsIpWhiteListResponseBody) SetSuccess(v bool) *ModifyDrdsIpWhiteListResponseBody {
+	s.Success = &v
 	return s
 }
 
-func (s *ModifyDrdsIpWhiteListResponseBody) SetSuccess(v bool) *ModifyDrdsIpWhiteListResponseBody {
-	s.Success = &v
+func (s *ModifyDrdsIpWhiteListResponseBody) SetRequestId(v string) *ModifyDrdsIpWhiteListResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -9912,8 +10269,8 @@ func (s *ModifyRdsReadWeightRequest) SetWeights(v string) *ModifyRdsReadWeightRe
 }
 
 type ModifyRdsReadWeightResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ModifyRdsReadWeightResponseBody) String() string {
@@ -9924,13 +10281,13 @@ func (s ModifyRdsReadWeightResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyRdsReadWeightResponseBody) SetRequestId(v string) *ModifyRdsReadWeightResponseBody {
-	s.RequestId = &v
+func (s *ModifyRdsReadWeightResponseBody) SetSuccess(v bool) *ModifyRdsReadWeightResponseBody {
+	s.Success = &v
 	return s
 }
 
-func (s *ModifyRdsReadWeightResponseBody) SetSuccess(v bool) *ModifyRdsReadWeightResponseBody {
-	s.Success = &v
+func (s *ModifyRdsReadWeightResponseBody) SetRequestId(v string) *ModifyRdsReadWeightResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -9994,8 +10351,8 @@ func (s *PutStartBackupRequest) SetBackupDbNames(v string) *PutStartBackupReques
 
 type PutStartBackupResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s PutStartBackupResponseBody) String() string {
@@ -10011,13 +10368,13 @@ func (s *PutStartBackupResponseBody) SetRequestId(v string) *PutStartBackupRespo
 	return s
 }
 
-func (s *PutStartBackupResponseBody) SetSuccess(v bool) *PutStartBackupResponseBody {
-	s.Success = &v
+func (s *PutStartBackupResponseBody) SetResult(v string) *PutStartBackupResponseBody {
+	s.Result = &v
 	return s
 }
 
-func (s *PutStartBackupResponseBody) SetResult(v string) *PutStartBackupResponseBody {
-	s.Result = &v
+func (s *PutStartBackupResponseBody) SetSuccess(v bool) *PutStartBackupResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -10047,7 +10404,6 @@ func (s *PutStartBackupResponse) SetBody(v *PutStartBackupResponseBody) *PutStar
 type ReleaseInstanceInternetAddressRequest struct {
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	DrdsPassword   *string `json:"DrdsPassword,omitempty" xml:"DrdsPassword,omitempty"`
 }
 
 func (s ReleaseInstanceInternetAddressRequest) String() string {
@@ -10068,14 +10424,9 @@ func (s *ReleaseInstanceInternetAddressRequest) SetRegionId(v string) *ReleaseIn
 	return s
 }
 
-func (s *ReleaseInstanceInternetAddressRequest) SetDrdsPassword(v string) *ReleaseInstanceInternetAddressRequest {
-	s.DrdsPassword = &v
-	return s
-}
-
 type ReleaseInstanceInternetAddressResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ReleaseInstanceInternetAddressResponseBody) String() string {
@@ -10086,13 +10437,13 @@ func (s ReleaseInstanceInternetAddressResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ReleaseInstanceInternetAddressResponseBody) SetRequestId(v string) *ReleaseInstanceInternetAddressResponseBody {
-	s.RequestId = &v
+func (s *ReleaseInstanceInternetAddressResponseBody) SetData(v bool) *ReleaseInstanceInternetAddressResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *ReleaseInstanceInternetAddressResponseBody) SetData(v bool) *ReleaseInstanceInternetAddressResponseBody {
-	s.Data = &v
+func (s *ReleaseInstanceInternetAddressResponseBody) SetRequestId(v string) *ReleaseInstanceInternetAddressResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -10144,8 +10495,8 @@ func (s *RemoveBackupsSetRequest) SetBackupId(v string) *RemoveBackupsSetRequest
 
 type RemoveBackupsSetResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s RemoveBackupsSetResponseBody) String() string {
@@ -10161,13 +10512,13 @@ func (s *RemoveBackupsSetResponseBody) SetRequestId(v string) *RemoveBackupsSetR
 	return s
 }
 
-func (s *RemoveBackupsSetResponseBody) SetSuccess(v bool) *RemoveBackupsSetResponseBody {
-	s.Success = &v
+func (s *RemoveBackupsSetResponseBody) SetResult(v string) *RemoveBackupsSetResponseBody {
+	s.Result = &v
 	return s
 }
 
-func (s *RemoveBackupsSetResponseBody) SetResult(v string) *RemoveBackupsSetResponseBody {
-	s.Result = &v
+func (s *RemoveBackupsSetResponseBody) SetSuccess(v bool) *RemoveBackupsSetResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -10218,8 +10569,8 @@ func (s *RemoveDrdsDbRequest) SetDbName(v string) *RemoveDrdsDbRequest {
 }
 
 type RemoveDrdsDbResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RemoveDrdsDbResponseBody) String() string {
@@ -10230,13 +10581,13 @@ func (s RemoveDrdsDbResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *RemoveDrdsDbResponseBody) SetRequestId(v string) *RemoveDrdsDbResponseBody {
-	s.RequestId = &v
+func (s *RemoveDrdsDbResponseBody) SetSuccess(v bool) *RemoveDrdsDbResponseBody {
+	s.Success = &v
 	return s
 }
 
-func (s *RemoveDrdsDbResponseBody) SetSuccess(v bool) *RemoveDrdsDbResponseBody {
-	s.Success = &v
+func (s *RemoveDrdsDbResponseBody) SetRequestId(v string) *RemoveDrdsDbResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -10288,8 +10639,8 @@ func (s *RemoveDrdsDbFailedRecordRequest) SetDbName(v string) *RemoveDrdsDbFaile
 
 type RemoveDrdsDbFailedRecordResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s RemoveDrdsDbFailedRecordResponseBody) String() string {
@@ -10305,13 +10656,13 @@ func (s *RemoveDrdsDbFailedRecordResponseBody) SetRequestId(v string) *RemoveDrd
 	return s
 }
 
-func (s *RemoveDrdsDbFailedRecordResponseBody) SetSuccess(v bool) *RemoveDrdsDbFailedRecordResponseBody {
-	s.Success = &v
+func (s *RemoveDrdsDbFailedRecordResponseBody) SetResult(v bool) *RemoveDrdsDbFailedRecordResponseBody {
+	s.Result = &v
 	return s
 }
 
-func (s *RemoveDrdsDbFailedRecordResponseBody) SetResult(v bool) *RemoveDrdsDbFailedRecordResponseBody {
-	s.Result = &v
+func (s *RemoveDrdsDbFailedRecordResponseBody) SetSuccess(v bool) *RemoveDrdsDbFailedRecordResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -10356,8 +10707,8 @@ func (s *RemoveDrdsInstanceRequest) SetDrdsInstanceId(v string) *RemoveDrdsInsta
 }
 
 type RemoveDrdsInstanceResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RemoveDrdsInstanceResponseBody) String() string {
@@ -10368,13 +10719,13 @@ func (s RemoveDrdsInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *RemoveDrdsInstanceResponseBody) SetRequestId(v string) *RemoveDrdsInstanceResponseBody {
-	s.RequestId = &v
+func (s *RemoveDrdsInstanceResponseBody) SetSuccess(v bool) *RemoveDrdsInstanceResponseBody {
+	s.Success = &v
 	return s
 }
 
-func (s *RemoveDrdsInstanceResponseBody) SetSuccess(v bool) *RemoveDrdsInstanceResponseBody {
-	s.Success = &v
+func (s *RemoveDrdsInstanceResponseBody) SetRequestId(v string) *RemoveDrdsInstanceResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -10425,8 +10776,8 @@ func (s *RemoveInstanceAccountRequest) SetAccountName(v string) *RemoveInstanceA
 }
 
 type RemoveInstanceAccountResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RemoveInstanceAccountResponseBody) String() string {
@@ -10437,13 +10788,13 @@ func (s RemoveInstanceAccountResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *RemoveInstanceAccountResponseBody) SetRequestId(v string) *RemoveInstanceAccountResponseBody {
-	s.RequestId = &v
+func (s *RemoveInstanceAccountResponseBody) SetSuccess(v bool) *RemoveInstanceAccountResponseBody {
+	s.Success = &v
 	return s
 }
 
-func (s *RemoveInstanceAccountResponseBody) SetSuccess(v bool) *RemoveInstanceAccountResponseBody {
-	s.Success = &v
+func (s *RemoveInstanceAccountResponseBody) SetRequestId(v string) *RemoveInstanceAccountResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -10507,8 +10858,8 @@ func (s *SetBackupLocalRequest) SetHighSpaceUsageProtection(v string) *SetBackup
 
 type SetBackupLocalResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SetBackupLocalResponseBody) String() string {
@@ -10524,13 +10875,13 @@ func (s *SetBackupLocalResponseBody) SetRequestId(v string) *SetBackupLocalRespo
 	return s
 }
 
-func (s *SetBackupLocalResponseBody) SetSuccess(v bool) *SetBackupLocalResponseBody {
-	s.Success = &v
+func (s *SetBackupLocalResponseBody) SetResult(v string) *SetBackupLocalResponseBody {
+	s.Result = &v
 	return s
 }
 
-func (s *SetBackupLocalResponseBody) SetResult(v string) *SetBackupLocalResponseBody {
-	s.Result = &v
+func (s *SetBackupLocalResponseBody) SetSuccess(v bool) *SetBackupLocalResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -10630,8 +10981,8 @@ func (s *SetBackupPolicyRequest) SetLogBackupRetentionPeriod(v string) *SetBacku
 
 type SetBackupPolicyResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SetBackupPolicyResponseBody) String() string {
@@ -10647,13 +10998,13 @@ func (s *SetBackupPolicyResponseBody) SetRequestId(v string) *SetBackupPolicyRes
 	return s
 }
 
-func (s *SetBackupPolicyResponseBody) SetSuccess(v bool) *SetBackupPolicyResponseBody {
-	s.Success = &v
+func (s *SetBackupPolicyResponseBody) SetResult(v string) *SetBackupPolicyResponseBody {
+	s.Result = &v
 	return s
 }
 
-func (s *SetBackupPolicyResponseBody) SetResult(v string) *SetBackupPolicyResponseBody {
-	s.Result = &v
+func (s *SetBackupPolicyResponseBody) SetSuccess(v bool) *SetBackupPolicyResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -10722,8 +11073,8 @@ func (s *SetupBroadcastTablesRequest) SetTableName(v []*string) *SetupBroadcastT
 }
 
 type SetupBroadcastTablesResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -10735,13 +11086,13 @@ func (s SetupBroadcastTablesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SetupBroadcastTablesResponseBody) SetRequestId(v string) *SetupBroadcastTablesResponseBody {
-	s.RequestId = &v
+func (s *SetupBroadcastTablesResponseBody) SetData(v bool) *SetupBroadcastTablesResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *SetupBroadcastTablesResponseBody) SetData(v bool) *SetupBroadcastTablesResponseBody {
-	s.Data = &v
+func (s *SetupBroadcastTablesResponseBody) SetRequestId(v string) *SetupBroadcastTablesResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -10850,8 +11201,8 @@ func (s *SetupDrdsParamsRequestData) SetParamRanges(v string) *SetupDrdsParamsRe
 }
 
 type SetupDrdsParamsResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -10863,13 +11214,13 @@ func (s SetupDrdsParamsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SetupDrdsParamsResponseBody) SetRequestId(v string) *SetupDrdsParamsResponseBody {
-	s.RequestId = &v
+func (s *SetupDrdsParamsResponseBody) SetData(v bool) *SetupDrdsParamsResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *SetupDrdsParamsResponseBody) SetData(v bool) *SetupDrdsParamsResponseBody {
-	s.Data = &v
+func (s *SetupDrdsParamsResponseBody) SetRequestId(v string) *SetupDrdsParamsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -10943,8 +11294,8 @@ func (s *SetupTableRequest) SetTableName(v []*string) *SetupTableRequest {
 }
 
 type SetupTableResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -10956,13 +11307,13 @@ func (s SetupTableResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SetupTableResponseBody) SetRequestId(v string) *SetupTableResponseBody {
-	s.RequestId = &v
+func (s *SetupTableResponseBody) SetData(v bool) *SetupTableResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *SetupTableResponseBody) SetData(v bool) *SetupTableResponseBody {
-	s.Data = &v
+func (s *SetupTableResponseBody) SetRequestId(v string) *SetupTableResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -11043,8 +11394,8 @@ func (s *StartRestoreRequest) SetBackupId(v string) *StartRestoreRequest {
 
 type StartRestoreResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s StartRestoreResponseBody) String() string {
@@ -11060,13 +11411,13 @@ func (s *StartRestoreResponseBody) SetRequestId(v string) *StartRestoreResponseB
 	return s
 }
 
-func (s *StartRestoreResponseBody) SetSuccess(v bool) *StartRestoreResponseBody {
-	s.Success = &v
+func (s *StartRestoreResponseBody) SetResult(v string) *StartRestoreResponseBody {
+	s.Result = &v
 	return s
 }
 
-func (s *StartRestoreResponseBody) SetResult(v string) *StartRestoreResponseBody {
-	s.Result = &v
+func (s *StartRestoreResponseBody) SetSuccess(v bool) *StartRestoreResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -11135,8 +11486,8 @@ func (s *SubmitCleanTaskRequest) SetExpandType(v string) *SubmitCleanTaskRequest
 }
 
 type SubmitCleanTaskResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SubmitCleanTaskResponseBody) String() string {
@@ -11147,13 +11498,13 @@ func (s SubmitCleanTaskResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SubmitCleanTaskResponseBody) SetRequestId(v string) *SubmitCleanTaskResponseBody {
-	s.RequestId = &v
+func (s *SubmitCleanTaskResponseBody) SetSuccess(v bool) *SubmitCleanTaskResponseBody {
+	s.Success = &v
 	return s
 }
 
-func (s *SubmitCleanTaskResponseBody) SetSuccess(v bool) *SubmitCleanTaskResponseBody {
-	s.Success = &v
+func (s *SubmitCleanTaskResponseBody) SetRequestId(v string) *SubmitCleanTaskResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -11217,8 +11568,8 @@ func (s *SubmitHotExpandPreCheckTaskRequest) SetTableList(v []*string) *SubmitHo
 
 type SubmitHotExpandPreCheckTaskResponseBody struct {
 	Msg       *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	TaskId    *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -11235,13 +11586,13 @@ func (s *SubmitHotExpandPreCheckTaskResponseBody) SetMsg(v string) *SubmitHotExp
 	return s
 }
 
-func (s *SubmitHotExpandPreCheckTaskResponseBody) SetTaskId(v int64) *SubmitHotExpandPreCheckTaskResponseBody {
-	s.TaskId = &v
+func (s *SubmitHotExpandPreCheckTaskResponseBody) SetRequestId(v string) *SubmitHotExpandPreCheckTaskResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *SubmitHotExpandPreCheckTaskResponseBody) SetRequestId(v string) *SubmitHotExpandPreCheckTaskResponseBody {
-	s.RequestId = &v
+func (s *SubmitHotExpandPreCheckTaskResponseBody) SetTaskId(v int64) *SubmitHotExpandPreCheckTaskResponseBody {
+	s.TaskId = &v
 	return s
 }
 
@@ -11461,8 +11812,8 @@ func (s *SubmitHotExpandTaskRequestExtendedMapping) SetSrcInstanceId(v string) *
 }
 
 type SubmitHotExpandTaskResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SubmitHotExpandTaskResponseBody) String() string {
@@ -11473,13 +11824,13 @@ func (s SubmitHotExpandTaskResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SubmitHotExpandTaskResponseBody) SetRequestId(v string) *SubmitHotExpandTaskResponseBody {
-	s.RequestId = &v
+func (s *SubmitHotExpandTaskResponseBody) SetSuccess(v bool) *SubmitHotExpandTaskResponseBody {
+	s.Success = &v
 	return s
 }
 
-func (s *SubmitHotExpandTaskResponseBody) SetSuccess(v bool) *SubmitHotExpandTaskResponseBody {
-	s.Success = &v
+func (s *SubmitHotExpandTaskResponseBody) SetRequestId(v string) *SubmitHotExpandTaskResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -11537,8 +11888,8 @@ func (s *SubmitSmoothExpandPreCheckRequest) SetDbInstType(v string) *SubmitSmoot
 
 type SubmitSmoothExpandPreCheckResponseBody struct {
 	Msg       *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	TaskId    *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -11555,13 +11906,13 @@ func (s *SubmitSmoothExpandPreCheckResponseBody) SetMsg(v string) *SubmitSmoothE
 	return s
 }
 
-func (s *SubmitSmoothExpandPreCheckResponseBody) SetTaskId(v int64) *SubmitSmoothExpandPreCheckResponseBody {
-	s.TaskId = &v
+func (s *SubmitSmoothExpandPreCheckResponseBody) SetRequestId(v string) *SubmitSmoothExpandPreCheckResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *SubmitSmoothExpandPreCheckResponseBody) SetRequestId(v string) *SubmitSmoothExpandPreCheckResponseBody {
-	s.RequestId = &v
+func (s *SubmitSmoothExpandPreCheckResponseBody) SetTaskId(v int64) *SubmitSmoothExpandPreCheckResponseBody {
+	s.TaskId = &v
 	return s
 }
 
@@ -11618,8 +11969,8 @@ func (s *SubmitSmoothExpandPreCheckTaskRequest) SetDbName(v string) *SubmitSmoot
 
 type SubmitSmoothExpandPreCheckTaskResponseBody struct {
 	Msg       *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	TaskId    *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -11636,13 +11987,13 @@ func (s *SubmitSmoothExpandPreCheckTaskResponseBody) SetMsg(v string) *SubmitSmo
 	return s
 }
 
-func (s *SubmitSmoothExpandPreCheckTaskResponseBody) SetTaskId(v int64) *SubmitSmoothExpandPreCheckTaskResponseBody {
-	s.TaskId = &v
+func (s *SubmitSmoothExpandPreCheckTaskResponseBody) SetRequestId(v string) *SubmitSmoothExpandPreCheckTaskResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *SubmitSmoothExpandPreCheckTaskResponseBody) SetRequestId(v string) *SubmitSmoothExpandPreCheckTaskResponseBody {
-	s.RequestId = &v
+func (s *SubmitSmoothExpandPreCheckTaskResponseBody) SetTaskId(v int64) *SubmitSmoothExpandPreCheckTaskResponseBody {
+	s.TaskId = &v
 	return s
 }
 
@@ -11780,8 +12131,8 @@ func (s *SubmitSmoothExpandTaskRequestRdsSuperInstances) SetAccountName(v string
 }
 
 type SubmitSmoothExpandTaskResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SubmitSmoothExpandTaskResponseBody) String() string {
@@ -11792,13 +12143,13 @@ func (s SubmitSmoothExpandTaskResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SubmitSmoothExpandTaskResponseBody) SetRequestId(v string) *SubmitSmoothExpandTaskResponseBody {
-	s.RequestId = &v
+func (s *SubmitSmoothExpandTaskResponseBody) SetSuccess(v bool) *SubmitSmoothExpandTaskResponseBody {
+	s.Success = &v
 	return s
 }
 
-func (s *SubmitSmoothExpandTaskResponseBody) SetSuccess(v bool) *SubmitSmoothExpandTaskResponseBody {
-	s.Success = &v
+func (s *SubmitSmoothExpandTaskResponseBody) SetRequestId(v string) *SubmitSmoothExpandTaskResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -11897,9 +12248,9 @@ func (s *SubmitSqlFlashbackTaskRequest) SetRecallRestoreType(v int32) *SubmitSql
 }
 
 type SubmitSqlFlashbackTaskResponseBody struct {
-	TaskId    *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TaskId    *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s SubmitSqlFlashbackTaskResponseBody) String() string {
@@ -11910,11 +12261,6 @@ func (s SubmitSqlFlashbackTaskResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SubmitSqlFlashbackTaskResponseBody) SetTaskId(v int64) *SubmitSqlFlashbackTaskResponseBody {
-	s.TaskId = &v
-	return s
-}
-
 func (s *SubmitSqlFlashbackTaskResponseBody) SetRequestId(v string) *SubmitSqlFlashbackTaskResponseBody {
 	s.RequestId = &v
 	return s
@@ -11922,6 +12268,11 @@ func (s *SubmitSqlFlashbackTaskResponseBody) SetRequestId(v string) *SubmitSqlFl
 
 func (s *SubmitSqlFlashbackTaskResponseBody) SetSuccess(v bool) *SubmitSqlFlashbackTaskResponseBody {
 	s.Success = &v
+	return s
+}
+
+func (s *SubmitSqlFlashbackTaskResponseBody) SetTaskId(v int64) *SubmitSqlFlashbackTaskResponseBody {
+	s.TaskId = &v
 	return s
 }
 
@@ -11990,8 +12341,8 @@ func (s *SubmitSwitchTaskRequest) SetExpandType(v string) *SubmitSwitchTaskReque
 }
 
 type SubmitSwitchTaskResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SubmitSwitchTaskResponseBody) String() string {
@@ -12002,13 +12353,13 @@ func (s SubmitSwitchTaskResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SubmitSwitchTaskResponseBody) SetRequestId(v string) *SubmitSwitchTaskResponseBody {
-	s.RequestId = &v
+func (s *SubmitSwitchTaskResponseBody) SetSuccess(v bool) *SubmitSwitchTaskResponseBody {
+	s.Success = &v
 	return s
 }
 
-func (s *SubmitSwitchTaskResponseBody) SetSuccess(v bool) *SubmitSwitchTaskResponseBody {
-	s.Success = &v
+func (s *SubmitSwitchTaskResponseBody) SetRequestId(v string) *SubmitSwitchTaskResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -12065,8 +12416,8 @@ func (s *SwitchGlobalBroadcastTypeRequest) SetDbName(v string) *SwitchGlobalBroa
 }
 
 type SwitchGlobalBroadcastTypeResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -12078,13 +12429,13 @@ func (s SwitchGlobalBroadcastTypeResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SwitchGlobalBroadcastTypeResponseBody) SetRequestId(v string) *SwitchGlobalBroadcastTypeResponseBody {
-	s.RequestId = &v
+func (s *SwitchGlobalBroadcastTypeResponseBody) SetData(v bool) *SwitchGlobalBroadcastTypeResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *SwitchGlobalBroadcastTypeResponseBody) SetData(v bool) *SwitchGlobalBroadcastTypeResponseBody {
-	s.Data = &v
+func (s *SwitchGlobalBroadcastTypeResponseBody) SetRequestId(v string) *SwitchGlobalBroadcastTypeResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -12119,7 +12470,6 @@ func (s *SwitchGlobalBroadcastTypeResponse) SetBody(v *SwitchGlobalBroadcastType
 type TagResourcesRequest struct {
 	RegionId     *string                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceType *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	NoRole       *bool                     `json:"NoRole,omitempty" xml:"NoRole,omitempty"`
 	Tag          []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	ResourceId   []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 }
@@ -12139,11 +12489,6 @@ func (s *TagResourcesRequest) SetRegionId(v string) *TagResourcesRequest {
 
 func (s *TagResourcesRequest) SetResourceType(v string) *TagResourcesRequest {
 	s.ResourceType = &v
-	return s
-}
-
-func (s *TagResourcesRequest) SetNoRole(v bool) *TagResourcesRequest {
-	s.NoRole = &v
 	return s
 }
 
@@ -12181,8 +12526,8 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 }
 
 type TagResourcesResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s TagResourcesResponseBody) String() string {
@@ -12193,13 +12538,13 @@ func (s TagResourcesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseBody {
-	s.RequestId = &v
+func (s *TagResourcesResponseBody) SetSuccess(v bool) *TagResourcesResponseBody {
+	s.Success = &v
 	return s
 }
 
-func (s *TagResourcesResponseBody) SetSuccess(v bool) *TagResourcesResponseBody {
-	s.Success = &v
+func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -12230,7 +12575,6 @@ type UntagResourcesRequest struct {
 	RegionId     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	All          *bool     `json:"All,omitempty" xml:"All,omitempty"`
-	NoRole       *bool     `json:"NoRole,omitempty" xml:"NoRole,omitempty"`
 	ResourceId   []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
@@ -12258,11 +12602,6 @@ func (s *UntagResourcesRequest) SetAll(v bool) *UntagResourcesRequest {
 	return s
 }
 
-func (s *UntagResourcesRequest) SetNoRole(v bool) *UntagResourcesRequest {
-	s.NoRole = &v
-	return s
-}
-
 func (s *UntagResourcesRequest) SetResourceId(v []*string) *UntagResourcesRequest {
 	s.ResourceId = v
 	return s
@@ -12274,8 +12613,8 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 }
 
 type UntagResourcesResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UntagResourcesResponseBody) String() string {
@@ -12286,13 +12625,13 @@ func (s UntagResourcesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *UntagResourcesResponseBody) SetRequestId(v string) *UntagResourcesResponseBody {
-	s.RequestId = &v
+func (s *UntagResourcesResponseBody) SetSuccess(v bool) *UntagResourcesResponseBody {
+	s.Success = &v
 	return s
 }
 
-func (s *UntagResourcesResponseBody) SetSuccess(v bool) *UntagResourcesResponseBody {
-	s.Success = &v
+func (s *UntagResourcesResponseBody) SetRequestId(v string) *UntagResourcesResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -12355,8 +12694,8 @@ func (s *UpdateInstanceNetworkRequest) SetClassicExpiredDays(v int32) *UpdateIns
 }
 
 type UpdateInstanceNetworkResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateInstanceNetworkResponseBody) String() string {
@@ -12367,13 +12706,13 @@ func (s UpdateInstanceNetworkResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateInstanceNetworkResponseBody) SetRequestId(v string) *UpdateInstanceNetworkResponseBody {
-	s.RequestId = &v
+func (s *UpdateInstanceNetworkResponseBody) SetSuccess(v bool) *UpdateInstanceNetworkResponseBody {
+	s.Success = &v
 	return s
 }
 
-func (s *UpdateInstanceNetworkResponseBody) SetSuccess(v bool) *UpdateInstanceNetworkResponseBody {
-	s.Success = &v
+func (s *UpdateInstanceNetworkResponseBody) SetRequestId(v string) *UpdateInstanceNetworkResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -12400,10 +12739,177 @@ func (s *UpdateInstanceNetworkResponse) SetBody(v *UpdateInstanceNetworkResponse
 	return s
 }
 
+type UpdatePrivateRdsClassRequest struct {
+	RdsClass       *string `json:"RdsClass,omitempty" xml:"RdsClass,omitempty"`
+	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
+	DBInstanceId   *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Storage        *string `json:"Storage,omitempty" xml:"Storage,omitempty"`
+	AutoUseCoupon  *bool   `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
+	PrePayDuration *int32  `json:"PrePayDuration,omitempty" xml:"PrePayDuration,omitempty"`
+}
+
+func (s UpdatePrivateRdsClassRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePrivateRdsClassRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePrivateRdsClassRequest) SetRdsClass(v string) *UpdatePrivateRdsClassRequest {
+	s.RdsClass = &v
+	return s
+}
+
+func (s *UpdatePrivateRdsClassRequest) SetDrdsInstanceId(v string) *UpdatePrivateRdsClassRequest {
+	s.DrdsInstanceId = &v
+	return s
+}
+
+func (s *UpdatePrivateRdsClassRequest) SetDBInstanceId(v string) *UpdatePrivateRdsClassRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *UpdatePrivateRdsClassRequest) SetStorage(v string) *UpdatePrivateRdsClassRequest {
+	s.Storage = &v
+	return s
+}
+
+func (s *UpdatePrivateRdsClassRequest) SetAutoUseCoupon(v bool) *UpdatePrivateRdsClassRequest {
+	s.AutoUseCoupon = &v
+	return s
+}
+
+func (s *UpdatePrivateRdsClassRequest) SetPrePayDuration(v int32) *UpdatePrivateRdsClassRequest {
+	s.PrePayDuration = &v
+	return s
+}
+
+type UpdatePrivateRdsClassResponseBody struct {
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdatePrivateRdsClassResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePrivateRdsClassResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePrivateRdsClassResponseBody) SetData(v string) *UpdatePrivateRdsClassResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UpdatePrivateRdsClassResponseBody) SetRequestId(v string) *UpdatePrivateRdsClassResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdatePrivateRdsClassResponseBody) SetSuccess(v bool) *UpdatePrivateRdsClassResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdatePrivateRdsClassResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdatePrivateRdsClassResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdatePrivateRdsClassResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePrivateRdsClassResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePrivateRdsClassResponse) SetHeaders(v map[string]*string) *UpdatePrivateRdsClassResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdatePrivateRdsClassResponse) SetBody(v *UpdatePrivateRdsClassResponseBody) *UpdatePrivateRdsClassResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateResourceGroupAttributeRequest struct {
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	DrdsInstanceId     *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
+	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
+}
+
+func (s UpdateResourceGroupAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateResourceGroupAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateResourceGroupAttributeRequest) SetRegionId(v string) *UpdateResourceGroupAttributeRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateResourceGroupAttributeRequest) SetDrdsInstanceId(v string) *UpdateResourceGroupAttributeRequest {
+	s.DrdsInstanceId = &v
+	return s
+}
+
+func (s *UpdateResourceGroupAttributeRequest) SetNewResourceGroupId(v string) *UpdateResourceGroupAttributeRequest {
+	s.NewResourceGroupId = &v
+	return s
+}
+
+type UpdateResourceGroupAttributeResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateResourceGroupAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateResourceGroupAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateResourceGroupAttributeResponseBody) SetRequestId(v string) *UpdateResourceGroupAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateResourceGroupAttributeResponse struct {
+	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateResourceGroupAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateResourceGroupAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateResourceGroupAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateResourceGroupAttributeResponse) SetHeaders(v map[string]*string) *UpdateResourceGroupAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateResourceGroupAttributeResponse) SetBody(v *UpdateResourceGroupAttributeResponseBody) *UpdateResourceGroupAttributeResponse {
+	s.Body = v
+	return s
+}
+
 type UpgradeHiStoreInstanceRequest struct {
 	DrdsInstanceId    *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	DrdsPassword      *string `json:"DrdsPassword,omitempty" xml:"DrdsPassword,omitempty"`
 	HistoreInstanceId *string `json:"HistoreInstanceId,omitempty" xml:"HistoreInstanceId,omitempty"`
 }
 
@@ -12425,19 +12931,14 @@ func (s *UpgradeHiStoreInstanceRequest) SetRegionId(v string) *UpgradeHiStoreIns
 	return s
 }
 
-func (s *UpgradeHiStoreInstanceRequest) SetDrdsPassword(v string) *UpgradeHiStoreInstanceRequest {
-	s.DrdsPassword = &v
-	return s
-}
-
 func (s *UpgradeHiStoreInstanceRequest) SetHistoreInstanceId(v string) *UpgradeHiStoreInstanceRequest {
 	s.HistoreInstanceId = &v
 	return s
 }
 
 type UpgradeHiStoreInstanceResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpgradeHiStoreInstanceResponseBody) String() string {
@@ -12448,13 +12949,13 @@ func (s UpgradeHiStoreInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *UpgradeHiStoreInstanceResponseBody) SetRequestId(v string) *UpgradeHiStoreInstanceResponseBody {
-	s.RequestId = &v
+func (s *UpgradeHiStoreInstanceResponseBody) SetData(v string) *UpgradeHiStoreInstanceResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *UpgradeHiStoreInstanceResponseBody) SetData(v string) *UpgradeHiStoreInstanceResponseBody {
-	s.Data = &v
+func (s *UpgradeHiStoreInstanceResponseBody) SetRequestId(v string) *UpgradeHiStoreInstanceResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -12484,7 +12985,6 @@ func (s *UpgradeHiStoreInstanceResponse) SetBody(v *UpgradeHiStoreInstanceRespon
 type UpgradeInstanceVersionRequest struct {
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	DrdsPassword   *string `json:"DrdsPassword,omitempty" xml:"DrdsPassword,omitempty"`
 	Rpm            *string `json:"Rpm,omitempty" xml:"Rpm,omitempty"`
 }
 
@@ -12506,19 +13006,14 @@ func (s *UpgradeInstanceVersionRequest) SetRegionId(v string) *UpgradeInstanceVe
 	return s
 }
 
-func (s *UpgradeInstanceVersionRequest) SetDrdsPassword(v string) *UpgradeInstanceVersionRequest {
-	s.DrdsPassword = &v
-	return s
-}
-
 func (s *UpgradeInstanceVersionRequest) SetRpm(v string) *UpgradeInstanceVersionRequest {
 	s.Rpm = &v
 	return s
 }
 
 type UpgradeInstanceVersionResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpgradeInstanceVersionResponseBody) String() string {
@@ -12529,13 +13024,13 @@ func (s UpgradeInstanceVersionResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *UpgradeInstanceVersionResponseBody) SetRequestId(v string) *UpgradeInstanceVersionResponseBody {
-	s.RequestId = &v
+func (s *UpgradeInstanceVersionResponseBody) SetData(v string) *UpgradeInstanceVersionResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *UpgradeInstanceVersionResponseBody) SetData(v string) *UpgradeInstanceVersionResponseBody {
-	s.Data = &v
+func (s *UpgradeInstanceVersionResponseBody) SetRequestId(v string) *UpgradeInstanceVersionResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -12610,9 +13105,9 @@ func (s *ValidateShardTaskRequest) SetTaskType(v string) *ValidateShardTaskReque
 }
 
 type ValidateShardTaskResponseBody struct {
+	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
 	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	List      []*ValidateShardTaskResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ValidateShardTaskResponseBody) String() string {
@@ -12623,6 +13118,11 @@ func (s ValidateShardTaskResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ValidateShardTaskResponseBody) SetSuccess(v bool) *ValidateShardTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
 func (s *ValidateShardTaskResponseBody) SetRequestId(v string) *ValidateShardTaskResponseBody {
 	s.RequestId = &v
 	return s
@@ -12630,11 +13130,6 @@ func (s *ValidateShardTaskResponseBody) SetRequestId(v string) *ValidateShardTas
 
 func (s *ValidateShardTaskResponseBody) SetList(v []*ValidateShardTaskResponseBodyList) *ValidateShardTaskResponseBody {
 	s.List = v
-	return s
-}
-
-func (s *ValidateShardTaskResponseBody) SetSuccess(v bool) *ValidateShardTaskResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -13698,6 +14193,34 @@ func (client *Client) DescribeDrdsParams(request *DescribeDrdsParamsRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) DescribeDrdsRdsInstancesWithOptions(request *DescribeDrdsRdsInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeDrdsRdsInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeDrdsRdsInstancesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeDrdsRdsInstances"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDrdsRdsInstances(request *DescribeDrdsRdsInstancesRequest) (_result *DescribeDrdsRdsInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDrdsRdsInstancesResponse{}
+	_body, _err := client.DescribeDrdsRdsInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeDrdsShardingDbsWithOptions(request *DescribeDrdsShardingDbsRequest, runtime *util.RuntimeOptions) (_result *DescribeDrdsShardingDbsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14251,6 +14774,34 @@ func (client *Client) DescribeShardTaskInfo(request *DescribeShardTaskInfoReques
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeShardTaskInfoResponse{}
 	_body, _err := client.DescribeShardTaskInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeShardTaskListWithOptions(request *DescribeShardTaskListRequest, runtime *util.RuntimeOptions) (_result *DescribeShardTaskListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeShardTaskListResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeShardTaskList"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeShardTaskList(request *DescribeShardTaskListRequest) (_result *DescribeShardTaskListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeShardTaskListResponse{}
+	_body, _err := client.DescribeShardTaskListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15287,6 +15838,62 @@ func (client *Client) UpdateInstanceNetwork(request *UpdateInstanceNetworkReques
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateInstanceNetworkResponse{}
 	_body, _err := client.UpdateInstanceNetworkWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdatePrivateRdsClassWithOptions(request *UpdatePrivateRdsClassRequest, runtime *util.RuntimeOptions) (_result *UpdatePrivateRdsClassResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &UpdatePrivateRdsClassResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UpdatePrivateRdsClass"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdatePrivateRdsClass(request *UpdatePrivateRdsClassRequest) (_result *UpdatePrivateRdsClassResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdatePrivateRdsClassResponse{}
+	_body, _err := client.UpdatePrivateRdsClassWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateResourceGroupAttributeWithOptions(request *UpdateResourceGroupAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateResourceGroupAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &UpdateResourceGroupAttributeResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UpdateResourceGroupAttribute"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateResourceGroupAttribute(request *UpdateResourceGroupAttributeRequest) (_result *UpdateResourceGroupAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateResourceGroupAttributeResponse{}
+	_body, _err := client.UpdateResourceGroupAttributeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
