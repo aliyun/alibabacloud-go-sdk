@@ -7,12 +7,12 @@ package client
 import (
 	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
+	openapiutil "github.com/alibabacloud-go/openapi-util/service"
 	util "github.com/alibabacloud-go/tea-utils/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
 type AddVpcHoneyPotRequest struct {
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	VpcId       *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	VpcSwitchId *string `json:"VpcSwitchId,omitempty" xml:"VpcSwitchId,omitempty"`
 }
@@ -23,11 +23,6 @@ func (s AddVpcHoneyPotRequest) String() string {
 
 func (s AddVpcHoneyPotRequest) GoString() string {
 	return s.String()
-}
-
-func (s *AddVpcHoneyPotRequest) SetSourceIp(v string) *AddVpcHoneyPotRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *AddVpcHoneyPotRequest) SetVpcId(v string) *AddVpcHoneyPotRequest {
@@ -80,6 +75,144 @@ func (s *AddVpcHoneyPotResponse) SetBody(v *AddVpcHoneyPotResponseBody) *AddVpcH
 	return s
 }
 
+type CheckQuaraFileIdRequest struct {
+	Uuid         *string   `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	QuaraFileIds []*string `json:"QuaraFileIds,omitempty" xml:"QuaraFileIds,omitempty" type:"Repeated"`
+}
+
+func (s CheckQuaraFileIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckQuaraFileIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CheckQuaraFileIdRequest) SetUuid(v string) *CheckQuaraFileIdRequest {
+	s.Uuid = &v
+	return s
+}
+
+func (s *CheckQuaraFileIdRequest) SetQuaraFileIds(v []*string) *CheckQuaraFileIdRequest {
+	s.QuaraFileIds = v
+	return s
+}
+
+type CheckQuaraFileIdResponseBody struct {
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CheckQuaraFileIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckQuaraFileIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CheckQuaraFileIdResponseBody) SetData(v bool) *CheckQuaraFileIdResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CheckQuaraFileIdResponseBody) SetRequestId(v string) *CheckQuaraFileIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CheckQuaraFileIdResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CheckQuaraFileIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CheckQuaraFileIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckQuaraFileIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CheckQuaraFileIdResponse) SetHeaders(v map[string]*string) *CheckQuaraFileIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CheckQuaraFileIdResponse) SetBody(v *CheckQuaraFileIdResponseBody) *CheckQuaraFileIdResponse {
+	s.Body = v
+	return s
+}
+
+type CheckSecurityEventIdRequest struct {
+	Uuid             *string   `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	SecurityEventIds []*string `json:"SecurityEventIds,omitempty" xml:"SecurityEventIds,omitempty" type:"Repeated"`
+}
+
+func (s CheckSecurityEventIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckSecurityEventIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CheckSecurityEventIdRequest) SetUuid(v string) *CheckSecurityEventIdRequest {
+	s.Uuid = &v
+	return s
+}
+
+func (s *CheckSecurityEventIdRequest) SetSecurityEventIds(v []*string) *CheckSecurityEventIdRequest {
+	s.SecurityEventIds = v
+	return s
+}
+
+type CheckSecurityEventIdResponseBody struct {
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CheckSecurityEventIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckSecurityEventIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CheckSecurityEventIdResponseBody) SetData(v bool) *CheckSecurityEventIdResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CheckSecurityEventIdResponseBody) SetRequestId(v string) *CheckSecurityEventIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CheckSecurityEventIdResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CheckSecurityEventIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CheckSecurityEventIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckSecurityEventIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CheckSecurityEventIdResponse) SetHeaders(v map[string]*string) *CheckSecurityEventIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CheckSecurityEventIdResponse) SetBody(v *CheckSecurityEventIdResponseBody) *CheckSecurityEventIdResponse {
+	s.Body = v
+	return s
+}
+
 type CreateAntiBruteForceRuleRequest struct {
 	SourceIp        *string   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	ResourceOwnerId *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -87,7 +220,6 @@ type CreateAntiBruteForceRuleRequest struct {
 	Span            *int32    `json:"Span,omitempty" xml:"Span,omitempty"`
 	FailCount       *int32    `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
 	ForbiddenTime   *int32    `json:"ForbiddenTime,omitempty" xml:"ForbiddenTime,omitempty"`
-	EnableSmartRule *bool     `json:"EnableSmartRule,omitempty" xml:"EnableSmartRule,omitempty"`
 	DefaultRule     *bool     `json:"DefaultRule,omitempty" xml:"DefaultRule,omitempty"`
 	UuidList        []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
 }
@@ -127,11 +259,6 @@ func (s *CreateAntiBruteForceRuleRequest) SetFailCount(v int32) *CreateAntiBrute
 
 func (s *CreateAntiBruteForceRuleRequest) SetForbiddenTime(v int32) *CreateAntiBruteForceRuleRequest {
 	s.ForbiddenTime = &v
-	return s
-}
-
-func (s *CreateAntiBruteForceRuleRequest) SetEnableSmartRule(v bool) *CreateAntiBruteForceRuleRequest {
-	s.EnableSmartRule = &v
 	return s
 }
 
@@ -208,8 +335,153 @@ func (s *CreateAntiBruteForceRuleResponse) SetBody(v *CreateAntiBruteForceRuleRe
 	return s
 }
 
+type CreateBackupPolicyRequest struct {
+	SourceIp        *string                `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	ResourceOwnerId *int64                 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Name            *string                `json:"Name,omitempty" xml:"Name,omitempty"`
+	Policy          map[string]interface{} `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	Status          *string                `json:"Status,omitempty" xml:"Status,omitempty"`
+	PolicyVersion   *string                `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty"`
+	UuidList        []*string              `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
+}
+
+func (s CreateBackupPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBackupPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBackupPolicyRequest) SetSourceIp(v string) *CreateBackupPolicyRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *CreateBackupPolicyRequest) SetResourceOwnerId(v int64) *CreateBackupPolicyRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateBackupPolicyRequest) SetName(v string) *CreateBackupPolicyRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateBackupPolicyRequest) SetPolicy(v map[string]interface{}) *CreateBackupPolicyRequest {
+	s.Policy = v
+	return s
+}
+
+func (s *CreateBackupPolicyRequest) SetStatus(v string) *CreateBackupPolicyRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateBackupPolicyRequest) SetPolicyVersion(v string) *CreateBackupPolicyRequest {
+	s.PolicyVersion = &v
+	return s
+}
+
+func (s *CreateBackupPolicyRequest) SetUuidList(v []*string) *CreateBackupPolicyRequest {
+	s.UuidList = v
+	return s
+}
+
+type CreateBackupPolicyShrinkRequest struct {
+	SourceIp        *string   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	ResourceOwnerId *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Name            *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	PolicyShrink    *string   `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	Status          *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	PolicyVersion   *string   `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty"`
+	UuidList        []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
+}
+
+func (s CreateBackupPolicyShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBackupPolicyShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBackupPolicyShrinkRequest) SetSourceIp(v string) *CreateBackupPolicyShrinkRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *CreateBackupPolicyShrinkRequest) SetResourceOwnerId(v int64) *CreateBackupPolicyShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateBackupPolicyShrinkRequest) SetName(v string) *CreateBackupPolicyShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateBackupPolicyShrinkRequest) SetPolicyShrink(v string) *CreateBackupPolicyShrinkRequest {
+	s.PolicyShrink = &v
+	return s
+}
+
+func (s *CreateBackupPolicyShrinkRequest) SetStatus(v string) *CreateBackupPolicyShrinkRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateBackupPolicyShrinkRequest) SetPolicyVersion(v string) *CreateBackupPolicyShrinkRequest {
+	s.PolicyVersion = &v
+	return s
+}
+
+func (s *CreateBackupPolicyShrinkRequest) SetUuidList(v []*string) *CreateBackupPolicyShrinkRequest {
+	s.UuidList = v
+	return s
+}
+
+type CreateBackupPolicyResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateBackupPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBackupPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBackupPolicyResponseBody) SetRequestId(v string) *CreateBackupPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateBackupPolicyResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateBackupPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateBackupPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBackupPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBackupPolicyResponse) SetHeaders(v map[string]*string) *CreateBackupPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateBackupPolicyResponse) SetBody(v *CreateBackupPolicyResponseBody) *CreateBackupPolicyResponse {
+	s.Body = v
+	return s
+}
+
 type CreateOrUpdateAssetGroupRequest struct {
-	SourceIp  *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	Uuids     *string `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	GroupId   *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
@@ -221,11 +493,6 @@ func (s CreateOrUpdateAssetGroupRequest) String() string {
 
 func (s CreateOrUpdateAssetGroupRequest) GoString() string {
 	return s.String()
-}
-
-func (s *CreateOrUpdateAssetGroupRequest) SetSourceIp(v string) *CreateOrUpdateAssetGroupRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *CreateOrUpdateAssetGroupRequest) SetUuids(v string) *CreateOrUpdateAssetGroupRequest {
@@ -244,6 +511,7 @@ func (s *CreateOrUpdateAssetGroupRequest) SetGroupId(v int64) *CreateOrUpdateAss
 }
 
 type CreateOrUpdateAssetGroupResponseBody struct {
+	GroupId   *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -253,6 +521,11 @@ func (s CreateOrUpdateAssetGroupResponseBody) String() string {
 
 func (s CreateOrUpdateAssetGroupResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateOrUpdateAssetGroupResponseBody) SetGroupId(v int64) *CreateOrUpdateAssetGroupResponseBody {
+	s.GroupId = &v
+	return s
 }
 
 func (s *CreateOrUpdateAssetGroupResponseBody) SetRequestId(v string) *CreateOrUpdateAssetGroupResponseBody {
@@ -283,6 +556,117 @@ func (s *CreateOrUpdateAssetGroupResponse) SetBody(v *CreateOrUpdateAssetGroupRe
 	return s
 }
 
+type CreateRestoreJobRequest struct {
+	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Uuid            *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	SnapshotId      *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	SnapshotHash    *string `json:"SnapshotHash,omitempty" xml:"SnapshotHash,omitempty"`
+	Target          *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	SnapshotVersion *string `json:"SnapshotVersion,omitempty" xml:"SnapshotVersion,omitempty"`
+	PolicyVersion   *string `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty"`
+	Includes        *string `json:"Includes,omitempty" xml:"Includes,omitempty"`
+}
+
+func (s CreateRestoreJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRestoreJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRestoreJobRequest) SetSourceIp(v string) *CreateRestoreJobRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *CreateRestoreJobRequest) SetResourceOwnerId(v int64) *CreateRestoreJobRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateRestoreJobRequest) SetUuid(v string) *CreateRestoreJobRequest {
+	s.Uuid = &v
+	return s
+}
+
+func (s *CreateRestoreJobRequest) SetInstanceId(v string) *CreateRestoreJobRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateRestoreJobRequest) SetSnapshotId(v string) *CreateRestoreJobRequest {
+	s.SnapshotId = &v
+	return s
+}
+
+func (s *CreateRestoreJobRequest) SetSnapshotHash(v string) *CreateRestoreJobRequest {
+	s.SnapshotHash = &v
+	return s
+}
+
+func (s *CreateRestoreJobRequest) SetTarget(v string) *CreateRestoreJobRequest {
+	s.Target = &v
+	return s
+}
+
+func (s *CreateRestoreJobRequest) SetSnapshotVersion(v string) *CreateRestoreJobRequest {
+	s.SnapshotVersion = &v
+	return s
+}
+
+func (s *CreateRestoreJobRequest) SetPolicyVersion(v string) *CreateRestoreJobRequest {
+	s.PolicyVersion = &v
+	return s
+}
+
+func (s *CreateRestoreJobRequest) SetIncludes(v string) *CreateRestoreJobRequest {
+	s.Includes = &v
+	return s
+}
+
+type CreateRestoreJobResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateRestoreJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRestoreJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRestoreJobResponseBody) SetRequestId(v string) *CreateRestoreJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateRestoreJobResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateRestoreJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateRestoreJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRestoreJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRestoreJobResponse) SetHeaders(v map[string]*string) *CreateRestoreJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateRestoreJobResponse) SetBody(v *CreateRestoreJobResponseBody) *CreateRestoreJobResponse {
+	s.Body = v
+	return s
+}
+
 type CreateSasOrderRequest struct {
 	Period              *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
 	PeriodUnit          *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
@@ -297,6 +681,8 @@ type CreateSasOrderRequest struct {
 	SasSc               *string `json:"SasSc,omitempty" xml:"SasSc,omitempty"`
 	SasProductService   *string `json:"SasProductService,omitempty" xml:"SasProductService,omitempty"`
 	SasWebguardOrderNum *string `json:"SasWebguardOrderNum,omitempty" xml:"SasWebguardOrderNum,omitempty"`
+	Vcore               *string `json:"Vcore,omitempty" xml:"Vcore,omitempty"`
+	ContainerImageScan  *string `json:"ContainerImageScan,omitempty" xml:"ContainerImageScan,omitempty"`
 }
 
 func (s CreateSasOrderRequest) String() string {
@@ -372,9 +758,19 @@ func (s *CreateSasOrderRequest) SetSasWebguardOrderNum(v string) *CreateSasOrder
 	return s
 }
 
+func (s *CreateSasOrderRequest) SetVcore(v string) *CreateSasOrderRequest {
+	s.Vcore = &v
+	return s
+}
+
+func (s *CreateSasOrderRequest) SetContainerImageScan(v string) *CreateSasOrderRequest {
+	s.ContainerImageScan = &v
+	return s
+}
+
 type CreateSasOrderResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateSasOrderResponseBody) String() string {
@@ -385,13 +781,13 @@ func (s CreateSasOrderResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateSasOrderResponseBody) SetRequestId(v string) *CreateSasOrderResponseBody {
-	s.RequestId = &v
+func (s *CreateSasOrderResponseBody) SetOrderId(v string) *CreateSasOrderResponseBody {
+	s.OrderId = &v
 	return s
 }
 
-func (s *CreateSasOrderResponseBody) SetOrderId(v string) *CreateSasOrderResponseBody {
-	s.OrderId = &v
+func (s *CreateSasOrderResponseBody) SetRequestId(v string) *CreateSasOrderResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -414,6 +810,46 @@ func (s *CreateSasOrderResponse) SetHeaders(v map[string]*string) *CreateSasOrde
 }
 
 func (s *CreateSasOrderResponse) SetBody(v *CreateSasOrderResponseBody) *CreateSasOrderResponse {
+	s.Body = v
+	return s
+}
+
+type CreateServiceLinkedRoleResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateServiceLinkedRoleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceLinkedRoleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceLinkedRoleResponseBody) SetRequestId(v string) *CreateServiceLinkedRoleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateServiceLinkedRoleResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateServiceLinkedRoleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateServiceLinkedRoleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceLinkedRoleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceLinkedRoleResponse) SetHeaders(v map[string]*string) *CreateServiceLinkedRoleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateServiceLinkedRoleResponse) SetBody(v *CreateServiceLinkedRoleResponseBody) *CreateServiceLinkedRoleResponse {
 	s.Body = v
 	return s
 }
@@ -522,6 +958,168 @@ func (s *CreateSimilarSecurityEventsQueryTaskResponse) SetBody(v *CreateSimilarS
 	return s
 }
 
+type DeleteBackupPolicyRequest struct {
+	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	PolicyVersion   *string `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty"`
+}
+
+func (s DeleteBackupPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBackupPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBackupPolicyRequest) SetSourceIp(v string) *DeleteBackupPolicyRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *DeleteBackupPolicyRequest) SetResourceOwnerId(v int64) *DeleteBackupPolicyRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DeleteBackupPolicyRequest) SetId(v int64) *DeleteBackupPolicyRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *DeleteBackupPolicyRequest) SetPolicyVersion(v string) *DeleteBackupPolicyRequest {
+	s.PolicyVersion = &v
+	return s
+}
+
+type DeleteBackupPolicyResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteBackupPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBackupPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBackupPolicyResponseBody) SetRequestId(v string) *DeleteBackupPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteBackupPolicyResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteBackupPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteBackupPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBackupPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBackupPolicyResponse) SetHeaders(v map[string]*string) *DeleteBackupPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteBackupPolicyResponse) SetBody(v *DeleteBackupPolicyResponseBody) *DeleteBackupPolicyResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteBackupPolicyMachineRequest struct {
+	SourceIp        *string   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	ResourceOwnerId *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Uuid            *string   `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	PolicyId        *int64    `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	PolicyVersion   *string   `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty"`
+	UuidList        []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
+}
+
+func (s DeleteBackupPolicyMachineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBackupPolicyMachineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBackupPolicyMachineRequest) SetSourceIp(v string) *DeleteBackupPolicyMachineRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *DeleteBackupPolicyMachineRequest) SetResourceOwnerId(v int64) *DeleteBackupPolicyMachineRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DeleteBackupPolicyMachineRequest) SetUuid(v string) *DeleteBackupPolicyMachineRequest {
+	s.Uuid = &v
+	return s
+}
+
+func (s *DeleteBackupPolicyMachineRequest) SetPolicyId(v int64) *DeleteBackupPolicyMachineRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *DeleteBackupPolicyMachineRequest) SetPolicyVersion(v string) *DeleteBackupPolicyMachineRequest {
+	s.PolicyVersion = &v
+	return s
+}
+
+func (s *DeleteBackupPolicyMachineRequest) SetUuidList(v []*string) *DeleteBackupPolicyMachineRequest {
+	s.UuidList = v
+	return s
+}
+
+type DeleteBackupPolicyMachineResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteBackupPolicyMachineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBackupPolicyMachineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBackupPolicyMachineResponseBody) SetRequestId(v string) *DeleteBackupPolicyMachineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteBackupPolicyMachineResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteBackupPolicyMachineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteBackupPolicyMachineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBackupPolicyMachineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBackupPolicyMachineResponse) SetHeaders(v map[string]*string) *DeleteBackupPolicyMachineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteBackupPolicyMachineResponse) SetBody(v *DeleteBackupPolicyMachineResponseBody) *DeleteBackupPolicyMachineResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteGroupRequest struct {
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	GroupId  *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
@@ -586,10 +1184,9 @@ func (s *DeleteGroupResponse) SetBody(v *DeleteGroupResponseBody) *DeleteGroupRe
 }
 
 type DeleteLoginBaseConfigRequest struct {
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Config   *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	Target   *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
 }
 
 func (s DeleteLoginBaseConfigRequest) String() string {
@@ -598,11 +1195,6 @@ func (s DeleteLoginBaseConfigRequest) String() string {
 
 func (s DeleteLoginBaseConfigRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DeleteLoginBaseConfigRequest) SetSourceIp(v string) *DeleteLoginBaseConfigRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *DeleteLoginBaseConfigRequest) SetType(v string) *DeleteLoginBaseConfigRequest {
@@ -661,7 +1253,6 @@ func (s *DeleteLoginBaseConfigResponse) SetBody(v *DeleteLoginBaseConfigResponse
 }
 
 type DeleteTagWithUuidRequest struct {
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	TagName  *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 	UuidList *string `json:"UuidList,omitempty" xml:"UuidList,omitempty"`
 }
@@ -672,11 +1263,6 @@ func (s DeleteTagWithUuidRequest) String() string {
 
 func (s DeleteTagWithUuidRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DeleteTagWithUuidRequest) SetSourceIp(v string) *DeleteTagWithUuidRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *DeleteTagWithUuidRequest) SetTagName(v string) *DeleteTagWithUuidRequest {
@@ -730,8 +1316,7 @@ func (s *DeleteTagWithUuidResponse) SetBody(v *DeleteTagWithUuidResponseBody) *D
 }
 
 type DeleteVpcHoneyPotRequest struct {
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	VpcId    *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DeleteVpcHoneyPotRequest) String() string {
@@ -740,11 +1325,6 @@ func (s DeleteVpcHoneyPotRequest) String() string {
 
 func (s DeleteVpcHoneyPotRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DeleteVpcHoneyPotRequest) SetSourceIp(v string) *DeleteVpcHoneyPotRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *DeleteVpcHoneyPotRequest) SetVpcId(v string) *DeleteVpcHoneyPotRequest {
@@ -793,7 +1373,6 @@ func (s *DeleteVpcHoneyPotResponse) SetBody(v *DeleteVpcHoneyPotResponseBody) *D
 }
 
 type DescribeAccesskeyLeakListRequest struct {
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	Query       *string `json:"Query,omitempty" xml:"Query,omitempty"`
 	StartTs     *int64  `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
@@ -807,11 +1386,6 @@ func (s DescribeAccesskeyLeakListRequest) String() string {
 
 func (s DescribeAccesskeyLeakListRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeAccesskeyLeakListRequest) SetSourceIp(v string) *DescribeAccesskeyLeakListRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *DescribeAccesskeyLeakListRequest) SetStatus(v string) *DescribeAccesskeyLeakListRequest {
@@ -840,13 +1414,13 @@ func (s *DescribeAccesskeyLeakListRequest) SetCurrentPage(v int32) *DescribeAcce
 }
 
 type DescribeAccesskeyLeakListResponseBody struct {
-	AkLeakCount       *int32                                                    `json:"AkLeakCount,omitempty" xml:"AkLeakCount,omitempty"`
-	AccessKeyLeakList []*DescribeAccesskeyLeakListResponseBodyAccessKeyLeakList `json:"AccessKeyLeakList,omitempty" xml:"AccessKeyLeakList,omitempty" type:"Repeated"`
-	TotalCount        *int32                                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	RequestId         *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize          *int32                                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	CurrentPage       *int32                                                    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	RequestId         *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	GmtLast           *int64                                                    `json:"GmtLast,omitempty" xml:"GmtLast,omitempty"`
+	AkLeakCount       *int32                                                    `json:"AkLeakCount,omitempty" xml:"AkLeakCount,omitempty"`
+	PageSize          *int32                                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount        *int32                                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	AccessKeyLeakList []*DescribeAccesskeyLeakListResponseBodyAccessKeyLeakList `json:"AccessKeyLeakList,omitempty" xml:"AccessKeyLeakList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeAccesskeyLeakListResponseBody) String() string {
@@ -857,18 +1431,8 @@ func (s DescribeAccesskeyLeakListResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeAccesskeyLeakListResponseBody) SetAkLeakCount(v int32) *DescribeAccesskeyLeakListResponseBody {
-	s.AkLeakCount = &v
-	return s
-}
-
-func (s *DescribeAccesskeyLeakListResponseBody) SetAccessKeyLeakList(v []*DescribeAccesskeyLeakListResponseBodyAccessKeyLeakList) *DescribeAccesskeyLeakListResponseBody {
-	s.AccessKeyLeakList = v
-	return s
-}
-
-func (s *DescribeAccesskeyLeakListResponseBody) SetTotalCount(v int32) *DescribeAccesskeyLeakListResponseBody {
-	s.TotalCount = &v
+func (s *DescribeAccesskeyLeakListResponseBody) SetCurrentPage(v int32) *DescribeAccesskeyLeakListResponseBody {
+	s.CurrentPage = &v
 	return s
 }
 
@@ -877,18 +1441,28 @@ func (s *DescribeAccesskeyLeakListResponseBody) SetRequestId(v string) *Describe
 	return s
 }
 
+func (s *DescribeAccesskeyLeakListResponseBody) SetGmtLast(v int64) *DescribeAccesskeyLeakListResponseBody {
+	s.GmtLast = &v
+	return s
+}
+
+func (s *DescribeAccesskeyLeakListResponseBody) SetAkLeakCount(v int32) *DescribeAccesskeyLeakListResponseBody {
+	s.AkLeakCount = &v
+	return s
+}
+
 func (s *DescribeAccesskeyLeakListResponseBody) SetPageSize(v int32) *DescribeAccesskeyLeakListResponseBody {
 	s.PageSize = &v
 	return s
 }
 
-func (s *DescribeAccesskeyLeakListResponseBody) SetCurrentPage(v int32) *DescribeAccesskeyLeakListResponseBody {
-	s.CurrentPage = &v
+func (s *DescribeAccesskeyLeakListResponseBody) SetTotalCount(v int32) *DescribeAccesskeyLeakListResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
-func (s *DescribeAccesskeyLeakListResponseBody) SetGmtLast(v int64) *DescribeAccesskeyLeakListResponseBody {
-	s.GmtLast = &v
+func (s *DescribeAccesskeyLeakListResponseBody) SetAccessKeyLeakList(v []*DescribeAccesskeyLeakListResponseBodyAccessKeyLeakList) *DescribeAccesskeyLeakListResponseBody {
+	s.AccessKeyLeakList = v
 	return s
 }
 
@@ -993,20 +1567,18 @@ func (s *DescribeAccesskeyLeakListResponse) SetBody(v *DescribeAccesskeyLeakList
 }
 
 type DescribeAffectedMaliciousFileImagesRequest struct {
-	SourceIp       *string   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	MaliciousMd5   *string   `json:"MaliciousMd5,omitempty" xml:"MaliciousMd5,omitempty"`
-	CurrentPage    *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize       *string   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Lang           *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	RepoRegionId   *string   `json:"RepoRegionId,omitempty" xml:"RepoRegionId,omitempty"`
-	RepoInstanceId *string   `json:"RepoInstanceId,omitempty" xml:"RepoInstanceId,omitempty"`
-	RepoId         *string   `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	RepoName       *string   `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	RepoNamespace  *string   `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
-	ImageTag       *string   `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
-	ImageDigest    *string   `json:"ImageDigest,omitempty" xml:"ImageDigest,omitempty"`
-	ImageLayer     *string   `json:"ImageLayer,omitempty" xml:"ImageLayer,omitempty"`
-	Uuids          []*string `json:"Uuids,omitempty" xml:"Uuids,omitempty" type:"Repeated"`
+	MaliciousMd5   *string `json:"MaliciousMd5,omitempty" xml:"MaliciousMd5,omitempty"`
+	CurrentPage    *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize       *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	RepoRegionId   *string `json:"RepoRegionId,omitempty" xml:"RepoRegionId,omitempty"`
+	RepoInstanceId *string `json:"RepoInstanceId,omitempty" xml:"RepoInstanceId,omitempty"`
+	RepoId         *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	RepoName       *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	RepoNamespace  *string `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
+	ImageTag       *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
+	ImageDigest    *string `json:"ImageDigest,omitempty" xml:"ImageDigest,omitempty"`
+	ImageLayer     *string `json:"ImageLayer,omitempty" xml:"ImageLayer,omitempty"`
 }
 
 func (s DescribeAffectedMaliciousFileImagesRequest) String() string {
@@ -1015,11 +1587,6 @@ func (s DescribeAffectedMaliciousFileImagesRequest) String() string {
 
 func (s DescribeAffectedMaliciousFileImagesRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeAffectedMaliciousFileImagesRequest) SetSourceIp(v string) *DescribeAffectedMaliciousFileImagesRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *DescribeAffectedMaliciousFileImagesRequest) SetMaliciousMd5(v string) *DescribeAffectedMaliciousFileImagesRequest {
@@ -1082,15 +1649,10 @@ func (s *DescribeAffectedMaliciousFileImagesRequest) SetImageLayer(v string) *De
 	return s
 }
 
-func (s *DescribeAffectedMaliciousFileImagesRequest) SetUuids(v []*string) *DescribeAffectedMaliciousFileImagesRequest {
-	s.Uuids = v
-	return s
-}
-
 type DescribeAffectedMaliciousFileImagesResponseBody struct {
-	AffectedMaliciousFileImagesResponse []*DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse `json:"AffectedMaliciousFileImagesResponse,omitempty" xml:"AffectedMaliciousFileImagesResponse,omitempty" type:"Repeated"`
-	PageInfo                            *DescribeAffectedMaliciousFileImagesResponseBodyPageInfo                              `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	RequestId                           *string                                                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageInfo                            *DescribeAffectedMaliciousFileImagesResponseBodyPageInfo                              `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	AffectedMaliciousFileImagesResponse []*DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse `json:"AffectedMaliciousFileImagesResponse,omitempty" xml:"AffectedMaliciousFileImagesResponse,omitempty" type:"Repeated"`
 }
 
 func (s DescribeAffectedMaliciousFileImagesResponseBody) String() string {
@@ -1101,8 +1663,8 @@ func (s DescribeAffectedMaliciousFileImagesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeAffectedMaliciousFileImagesResponseBody) SetAffectedMaliciousFileImagesResponse(v []*DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse) *DescribeAffectedMaliciousFileImagesResponseBody {
-	s.AffectedMaliciousFileImagesResponse = v
+func (s *DescribeAffectedMaliciousFileImagesResponseBody) SetRequestId(v string) *DescribeAffectedMaliciousFileImagesResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1111,8 +1673,43 @@ func (s *DescribeAffectedMaliciousFileImagesResponseBody) SetPageInfo(v *Describ
 	return s
 }
 
-func (s *DescribeAffectedMaliciousFileImagesResponseBody) SetRequestId(v string) *DescribeAffectedMaliciousFileImagesResponseBody {
-	s.RequestId = &v
+func (s *DescribeAffectedMaliciousFileImagesResponseBody) SetAffectedMaliciousFileImagesResponse(v []*DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse) *DescribeAffectedMaliciousFileImagesResponseBody {
+	s.AffectedMaliciousFileImagesResponse = v
+	return s
+}
+
+type DescribeAffectedMaliciousFileImagesResponseBodyPageInfo struct {
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount  *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Count       *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+}
+
+func (s DescribeAffectedMaliciousFileImagesResponseBodyPageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAffectedMaliciousFileImagesResponseBodyPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAffectedMaliciousFileImagesResponseBodyPageInfo) SetCurrentPage(v int32) *DescribeAffectedMaliciousFileImagesResponseBodyPageInfo {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeAffectedMaliciousFileImagesResponseBodyPageInfo) SetPageSize(v int32) *DescribeAffectedMaliciousFileImagesResponseBodyPageInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeAffectedMaliciousFileImagesResponseBodyPageInfo) SetTotalCount(v int32) *DescribeAffectedMaliciousFileImagesResponseBodyPageInfo {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeAffectedMaliciousFileImagesResponseBodyPageInfo) SetCount(v int32) *DescribeAffectedMaliciousFileImagesResponseBodyPageInfo {
+	s.Count = &v
 	return s
 }
 
@@ -1122,11 +1719,11 @@ type DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesR
 	LatestVerifyTimestamp *int64  `json:"LatestVerifyTimestamp,omitempty" xml:"LatestVerifyTimestamp,omitempty"`
 	RepoInstanceId        *string `json:"RepoInstanceId,omitempty" xml:"RepoInstanceId,omitempty"`
 	Namespace             *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	RepoRegionId          *string `json:"RepoRegionId,omitempty" xml:"RepoRegionId,omitempty"`
 	Tag                   *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	RepoRegionId          *string `json:"RepoRegionId,omitempty" xml:"RepoRegionId,omitempty"`
 	ImageUuid             *string `json:"ImageUuid,omitempty" xml:"ImageUuid,omitempty"`
-	MaliciousMd5          *string `json:"MaliciousMd5,omitempty" xml:"MaliciousMd5,omitempty"`
 	FirstScanTimestamp    *int64  `json:"FirstScanTimestamp,omitempty" xml:"FirstScanTimestamp,omitempty"`
+	MaliciousMd5          *string `json:"MaliciousMd5,omitempty" xml:"MaliciousMd5,omitempty"`
 	FilePath              *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
 	RepoId                *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	Layer                 *string `json:"Layer,omitempty" xml:"Layer,omitempty"`
@@ -1168,13 +1765,13 @@ func (s *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileIma
 	return s
 }
 
-func (s *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse) SetRepoRegionId(v string) *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse {
-	s.RepoRegionId = &v
+func (s *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse) SetTag(v string) *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse {
+	s.Tag = &v
 	return s
 }
 
-func (s *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse) SetTag(v string) *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse {
-	s.Tag = &v
+func (s *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse) SetRepoRegionId(v string) *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse {
+	s.RepoRegionId = &v
 	return s
 }
 
@@ -1183,13 +1780,13 @@ func (s *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileIma
 	return s
 }
 
-func (s *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse) SetMaliciousMd5(v string) *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse {
-	s.MaliciousMd5 = &v
+func (s *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse) SetFirstScanTimestamp(v int64) *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse {
+	s.FirstScanTimestamp = &v
 	return s
 }
 
-func (s *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse) SetFirstScanTimestamp(v int64) *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse {
-	s.FirstScanTimestamp = &v
+func (s *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse) SetMaliciousMd5(v string) *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse {
+	s.MaliciousMd5 = &v
 	return s
 }
 
@@ -1220,41 +1817,6 @@ func (s *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileIma
 
 func (s *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse) SetLevel(v string) *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse {
 	s.Level = &v
-	return s
-}
-
-type DescribeAffectedMaliciousFileImagesResponseBodyPageInfo struct {
-	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount  *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	Count       *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-}
-
-func (s DescribeAffectedMaliciousFileImagesResponseBodyPageInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAffectedMaliciousFileImagesResponseBodyPageInfo) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAffectedMaliciousFileImagesResponseBodyPageInfo) SetCurrentPage(v int32) *DescribeAffectedMaliciousFileImagesResponseBodyPageInfo {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *DescribeAffectedMaliciousFileImagesResponseBodyPageInfo) SetPageSize(v int32) *DescribeAffectedMaliciousFileImagesResponseBodyPageInfo {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeAffectedMaliciousFileImagesResponseBodyPageInfo) SetTotalCount(v int32) *DescribeAffectedMaliciousFileImagesResponseBodyPageInfo {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *DescribeAffectedMaliciousFileImagesResponseBodyPageInfo) SetCount(v int32) *DescribeAffectedMaliciousFileImagesResponseBodyPageInfo {
-	s.Count = &v
 	return s
 }
 
@@ -1346,27 +1908,27 @@ type DescribeAlarmEventDetailResponseBodyData struct {
 	ContainerImageId    *string                                                 `json:"ContainerImageId,omitempty" xml:"ContainerImageId,omitempty"`
 	AlarmEventDesc      *string                                                 `json:"AlarmEventDesc,omitempty" xml:"AlarmEventDesc,omitempty"`
 	AlarmUniqueInfo     *string                                                 `json:"AlarmUniqueInfo,omitempty" xml:"AlarmUniqueInfo,omitempty"`
-	CauseDetails        []*DescribeAlarmEventDetailResponseBodyDataCauseDetails `json:"CauseDetails,omitempty" xml:"CauseDetails,omitempty" type:"Repeated"`
 	CanCancelFault      *bool                                                   `json:"CanCancelFault,omitempty" xml:"CanCancelFault,omitempty"`
 	AppName             *string                                                 `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	CanBeDealOnLine     *bool                                                   `json:"CanBeDealOnLine,omitempty" xml:"CanBeDealOnLine,omitempty"`
 	ContainerImageName  *string                                                 `json:"ContainerImageName,omitempty" xml:"ContainerImageName,omitempty"`
 	K8sClusterId        *string                                                 `json:"K8sClusterId,omitempty" xml:"K8sClusterId,omitempty"`
 	ContainHwMode       *bool                                                   `json:"ContainHwMode,omitempty" xml:"ContainHwMode,omitempty"`
-	K8sNodeId           *string                                                 `json:"K8sNodeId,omitempty" xml:"K8sNodeId,omitempty"`
 	InstanceName        *string                                                 `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	K8sNodeId           *string                                                 `json:"K8sNodeId,omitempty" xml:"K8sNodeId,omitempty"`
 	Solution            *string                                                 `json:"Solution,omitempty" xml:"Solution,omitempty"`
 	DataSource          *string                                                 `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
 	IntranetIp          *string                                                 `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	EndTime             *int64                                                  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	AlarmEventAliasName *string                                                 `json:"AlarmEventAliasName,omitempty" xml:"AlarmEventAliasName,omitempty"`
-	StartTime           *int64                                                  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	EndTime             *int64                                                  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Uuid                *string                                                 `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	K8sPodName          *string                                                 `json:"K8sPodName,omitempty" xml:"K8sPodName,omitempty"`
+	StartTime           *int64                                                  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	ContainerId         *string                                                 `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
+	K8sPodName          *string                                                 `json:"K8sPodName,omitempty" xml:"K8sPodName,omitempty"`
 	K8sNamespace        *string                                                 `json:"K8sNamespace,omitempty" xml:"K8sNamespace,omitempty"`
 	K8sNodeName         *string                                                 `json:"K8sNodeName,omitempty" xml:"K8sNodeName,omitempty"`
 	Level               *string                                                 `json:"Level,omitempty" xml:"Level,omitempty"`
+	CauseDetails        []*DescribeAlarmEventDetailResponseBodyDataCauseDetails `json:"CauseDetails,omitempty" xml:"CauseDetails,omitempty" type:"Repeated"`
 }
 
 func (s DescribeAlarmEventDetailResponseBodyData) String() string {
@@ -1407,11 +1969,6 @@ func (s *DescribeAlarmEventDetailResponseBodyData) SetAlarmUniqueInfo(v string) 
 	return s
 }
 
-func (s *DescribeAlarmEventDetailResponseBodyData) SetCauseDetails(v []*DescribeAlarmEventDetailResponseBodyDataCauseDetails) *DescribeAlarmEventDetailResponseBodyData {
-	s.CauseDetails = v
-	return s
-}
-
 func (s *DescribeAlarmEventDetailResponseBodyData) SetCanCancelFault(v bool) *DescribeAlarmEventDetailResponseBodyData {
 	s.CanCancelFault = &v
 	return s
@@ -1442,13 +1999,13 @@ func (s *DescribeAlarmEventDetailResponseBodyData) SetContainHwMode(v bool) *Des
 	return s
 }
 
-func (s *DescribeAlarmEventDetailResponseBodyData) SetK8sNodeId(v string) *DescribeAlarmEventDetailResponseBodyData {
-	s.K8sNodeId = &v
+func (s *DescribeAlarmEventDetailResponseBodyData) SetInstanceName(v string) *DescribeAlarmEventDetailResponseBodyData {
+	s.InstanceName = &v
 	return s
 }
 
-func (s *DescribeAlarmEventDetailResponseBodyData) SetInstanceName(v string) *DescribeAlarmEventDetailResponseBodyData {
-	s.InstanceName = &v
+func (s *DescribeAlarmEventDetailResponseBodyData) SetK8sNodeId(v string) *DescribeAlarmEventDetailResponseBodyData {
+	s.K8sNodeId = &v
 	return s
 }
 
@@ -1467,18 +2024,13 @@ func (s *DescribeAlarmEventDetailResponseBodyData) SetIntranetIp(v string) *Desc
 	return s
 }
 
-func (s *DescribeAlarmEventDetailResponseBodyData) SetEndTime(v int64) *DescribeAlarmEventDetailResponseBodyData {
-	s.EndTime = &v
-	return s
-}
-
 func (s *DescribeAlarmEventDetailResponseBodyData) SetAlarmEventAliasName(v string) *DescribeAlarmEventDetailResponseBodyData {
 	s.AlarmEventAliasName = &v
 	return s
 }
 
-func (s *DescribeAlarmEventDetailResponseBodyData) SetStartTime(v int64) *DescribeAlarmEventDetailResponseBodyData {
-	s.StartTime = &v
+func (s *DescribeAlarmEventDetailResponseBodyData) SetEndTime(v int64) *DescribeAlarmEventDetailResponseBodyData {
+	s.EndTime = &v
 	return s
 }
 
@@ -1487,13 +2039,18 @@ func (s *DescribeAlarmEventDetailResponseBodyData) SetUuid(v string) *DescribeAl
 	return s
 }
 
-func (s *DescribeAlarmEventDetailResponseBodyData) SetK8sPodName(v string) *DescribeAlarmEventDetailResponseBodyData {
-	s.K8sPodName = &v
+func (s *DescribeAlarmEventDetailResponseBodyData) SetStartTime(v int64) *DescribeAlarmEventDetailResponseBodyData {
+	s.StartTime = &v
 	return s
 }
 
 func (s *DescribeAlarmEventDetailResponseBodyData) SetContainerId(v string) *DescribeAlarmEventDetailResponseBodyData {
 	s.ContainerId = &v
+	return s
+}
+
+func (s *DescribeAlarmEventDetailResponseBodyData) SetK8sPodName(v string) *DescribeAlarmEventDetailResponseBodyData {
+	s.K8sPodName = &v
 	return s
 }
 
@@ -1509,6 +2066,11 @@ func (s *DescribeAlarmEventDetailResponseBodyData) SetK8sNodeName(v string) *Des
 
 func (s *DescribeAlarmEventDetailResponseBodyData) SetLevel(v string) *DescribeAlarmEventDetailResponseBodyData {
 	s.Level = &v
+	return s
+}
+
+func (s *DescribeAlarmEventDetailResponseBodyData) SetCauseDetails(v []*DescribeAlarmEventDetailResponseBodyDataCauseDetails) *DescribeAlarmEventDetailResponseBodyData {
+	s.CauseDetails = v
 	return s
 }
 
@@ -1695,8 +2257,8 @@ func (s *DescribeAlarmEventListRequest) SetOperateErrorCodeList(v []*string) *De
 }
 
 type DescribeAlarmEventListResponseBody struct {
-	PageInfo   *DescribeAlarmEventListResponseBodyPageInfo     `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	RequestId  *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageInfo   *DescribeAlarmEventListResponseBodyPageInfo     `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	SuspEvents []*DescribeAlarmEventListResponseBodySuspEvents `json:"SuspEvents,omitempty" xml:"SuspEvents,omitempty" type:"Repeated"`
 }
 
@@ -1708,13 +2270,13 @@ func (s DescribeAlarmEventListResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeAlarmEventListResponseBody) SetPageInfo(v *DescribeAlarmEventListResponseBodyPageInfo) *DescribeAlarmEventListResponseBody {
-	s.PageInfo = v
+func (s *DescribeAlarmEventListResponseBody) SetRequestId(v string) *DescribeAlarmEventListResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *DescribeAlarmEventListResponseBody) SetRequestId(v string) *DescribeAlarmEventListResponseBody {
-	s.RequestId = &v
+func (s *DescribeAlarmEventListResponseBody) SetPageInfo(v *DescribeAlarmEventListResponseBodyPageInfo) *DescribeAlarmEventListResponseBody {
+	s.PageInfo = v
 	return s
 }
 
@@ -1771,19 +2333,19 @@ type DescribeAlarmEventListResponseBodySuspEvents struct {
 	CanCancelFault         *bool   `json:"CanCancelFault,omitempty" xml:"CanCancelFault,omitempty"`
 	AppName                *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	SecurityEventIds       *string `json:"SecurityEventIds,omitempty" xml:"SecurityEventIds,omitempty"`
-	CanBeDealOnLine        *bool   `json:"CanBeDealOnLine,omitempty" xml:"CanBeDealOnLine,omitempty"`
-	ContainerImageName     *string `json:"ContainerImageName,omitempty" xml:"ContainerImageName,omitempty"`
 	K8sClusterId           *string `json:"K8sClusterId,omitempty" xml:"K8sClusterId,omitempty"`
+	ContainerImageName     *string `json:"ContainerImageName,omitempty" xml:"ContainerImageName,omitempty"`
+	CanBeDealOnLine        *bool   `json:"CanBeDealOnLine,omitempty" xml:"CanBeDealOnLine,omitempty"`
 	Description            *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	ContainHwMode          *bool   `json:"ContainHwMode,omitempty" xml:"ContainHwMode,omitempty"`
-	InstanceName           *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	K8sNodeId              *string `json:"K8sNodeId,omitempty" xml:"K8sNodeId,omitempty"`
+	InstanceName           *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	SaleVersion            *string `json:"SaleVersion,omitempty" xml:"SaleVersion,omitempty"`
 	OperateErrorCode       *string `json:"OperateErrorCode,omitempty" xml:"OperateErrorCode,omitempty"`
 	Solution               *string `json:"Solution,omitempty" xml:"Solution,omitempty"`
 	HasTraceInfo           *bool   `json:"HasTraceInfo,omitempty" xml:"HasTraceInfo,omitempty"`
-	OperateTime            *int64  `json:"OperateTime,omitempty" xml:"OperateTime,omitempty"`
 	DataSource             *string `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
+	OperateTime            *int64  `json:"OperateTime,omitempty" xml:"OperateTime,omitempty"`
 	InstanceId             *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	IntranetIp             *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
 	EndTime                *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
@@ -1866,8 +2428,8 @@ func (s *DescribeAlarmEventListResponseBodySuspEvents) SetSecurityEventIds(v str
 	return s
 }
 
-func (s *DescribeAlarmEventListResponseBodySuspEvents) SetCanBeDealOnLine(v bool) *DescribeAlarmEventListResponseBodySuspEvents {
-	s.CanBeDealOnLine = &v
+func (s *DescribeAlarmEventListResponseBodySuspEvents) SetK8sClusterId(v string) *DescribeAlarmEventListResponseBodySuspEvents {
+	s.K8sClusterId = &v
 	return s
 }
 
@@ -1876,8 +2438,8 @@ func (s *DescribeAlarmEventListResponseBodySuspEvents) SetContainerImageName(v s
 	return s
 }
 
-func (s *DescribeAlarmEventListResponseBodySuspEvents) SetK8sClusterId(v string) *DescribeAlarmEventListResponseBodySuspEvents {
-	s.K8sClusterId = &v
+func (s *DescribeAlarmEventListResponseBodySuspEvents) SetCanBeDealOnLine(v bool) *DescribeAlarmEventListResponseBodySuspEvents {
+	s.CanBeDealOnLine = &v
 	return s
 }
 
@@ -1891,13 +2453,13 @@ func (s *DescribeAlarmEventListResponseBodySuspEvents) SetContainHwMode(v bool) 
 	return s
 }
 
-func (s *DescribeAlarmEventListResponseBodySuspEvents) SetInstanceName(v string) *DescribeAlarmEventListResponseBodySuspEvents {
-	s.InstanceName = &v
+func (s *DescribeAlarmEventListResponseBodySuspEvents) SetK8sNodeId(v string) *DescribeAlarmEventListResponseBodySuspEvents {
+	s.K8sNodeId = &v
 	return s
 }
 
-func (s *DescribeAlarmEventListResponseBodySuspEvents) SetK8sNodeId(v string) *DescribeAlarmEventListResponseBodySuspEvents {
-	s.K8sNodeId = &v
+func (s *DescribeAlarmEventListResponseBodySuspEvents) SetInstanceName(v string) *DescribeAlarmEventListResponseBodySuspEvents {
+	s.InstanceName = &v
 	return s
 }
 
@@ -1921,13 +2483,13 @@ func (s *DescribeAlarmEventListResponseBodySuspEvents) SetHasTraceInfo(v bool) *
 	return s
 }
 
-func (s *DescribeAlarmEventListResponseBodySuspEvents) SetOperateTime(v int64) *DescribeAlarmEventListResponseBodySuspEvents {
-	s.OperateTime = &v
+func (s *DescribeAlarmEventListResponseBodySuspEvents) SetDataSource(v string) *DescribeAlarmEventListResponseBodySuspEvents {
+	s.DataSource = &v
 	return s
 }
 
-func (s *DescribeAlarmEventListResponseBodySuspEvents) SetDataSource(v string) *DescribeAlarmEventListResponseBodySuspEvents {
-	s.DataSource = &v
+func (s *DescribeAlarmEventListResponseBodySuspEvents) SetOperateTime(v int64) *DescribeAlarmEventListResponseBodySuspEvents {
+	s.OperateTime = &v
 	return s
 }
 
@@ -2014,20 +2576,90 @@ func (s *DescribeAlarmEventListResponse) SetBody(v *DescribeAlarmEventListRespon
 	return s
 }
 
-type DescribeAllEntityRequest struct {
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+type DescribeAlarmEventStackInfoRequest struct {
+	SourceIp   *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Uuid       *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	EventName  *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	UniqueInfo *string `json:"UniqueInfo,omitempty" xml:"UniqueInfo,omitempty"`
 }
 
-func (s DescribeAllEntityRequest) String() string {
+func (s DescribeAlarmEventStackInfoRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeAllEntityRequest) GoString() string {
+func (s DescribeAlarmEventStackInfoRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeAllEntityRequest) SetSourceIp(v string) *DescribeAllEntityRequest {
+func (s *DescribeAlarmEventStackInfoRequest) SetSourceIp(v string) *DescribeAlarmEventStackInfoRequest {
 	s.SourceIp = &v
+	return s
+}
+
+func (s *DescribeAlarmEventStackInfoRequest) SetLang(v string) *DescribeAlarmEventStackInfoRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeAlarmEventStackInfoRequest) SetUuid(v string) *DescribeAlarmEventStackInfoRequest {
+	s.Uuid = &v
+	return s
+}
+
+func (s *DescribeAlarmEventStackInfoRequest) SetEventName(v string) *DescribeAlarmEventStackInfoRequest {
+	s.EventName = &v
+	return s
+}
+
+func (s *DescribeAlarmEventStackInfoRequest) SetUniqueInfo(v string) *DescribeAlarmEventStackInfoRequest {
+	s.UniqueInfo = &v
+	return s
+}
+
+type DescribeAlarmEventStackInfoResponseBody struct {
+	StackInfo *string `json:"StackInfo,omitempty" xml:"StackInfo,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeAlarmEventStackInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAlarmEventStackInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAlarmEventStackInfoResponseBody) SetStackInfo(v string) *DescribeAlarmEventStackInfoResponseBody {
+	s.StackInfo = &v
+	return s
+}
+
+func (s *DescribeAlarmEventStackInfoResponseBody) SetRequestId(v string) *DescribeAlarmEventStackInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeAlarmEventStackInfoResponse struct {
+	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeAlarmEventStackInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeAlarmEventStackInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAlarmEventStackInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAlarmEventStackInfoResponse) SetHeaders(v map[string]*string) *DescribeAlarmEventStackInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAlarmEventStackInfoResponse) SetBody(v *DescribeAlarmEventStackInfoResponseBody) *DescribeAlarmEventStackInfoResponse {
+	s.Body = v
 	return s
 }
 
@@ -2131,8 +2763,7 @@ func (s *DescribeAllEntityResponse) SetBody(v *DescribeAllEntityResponseBody) *D
 }
 
 type DescribeAllGroupsRequest struct {
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s DescribeAllGroupsRequest) String() string {
@@ -2143,20 +2774,15 @@ func (s DescribeAllGroupsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeAllGroupsRequest) SetSourceIp(v string) *DescribeAllGroupsRequest {
-	s.SourceIp = &v
-	return s
-}
-
 func (s *DescribeAllGroupsRequest) SetLang(v string) *DescribeAllGroupsRequest {
 	s.Lang = &v
 	return s
 }
 
 type DescribeAllGroupsResponseBody struct {
+	Count     *int32                                 `json:"Count,omitempty" xml:"Count,omitempty"`
 	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Groups    []*DescribeAllGroupsResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
-	Count     *int32                                 `json:"Count,omitempty" xml:"Count,omitempty"`
 }
 
 func (s DescribeAllGroupsResponseBody) String() string {
@@ -2167,6 +2793,11 @@ func (s DescribeAllGroupsResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeAllGroupsResponseBody) SetCount(v int32) *DescribeAllGroupsResponseBody {
+	s.Count = &v
+	return s
+}
+
 func (s *DescribeAllGroupsResponseBody) SetRequestId(v string) *DescribeAllGroupsResponseBody {
 	s.RequestId = &v
 	return s
@@ -2174,11 +2805,6 @@ func (s *DescribeAllGroupsResponseBody) SetRequestId(v string) *DescribeAllGroup
 
 func (s *DescribeAllGroupsResponseBody) SetGroups(v []*DescribeAllGroupsResponseBodyGroups) *DescribeAllGroupsResponseBody {
 	s.Groups = v
-	return s
-}
-
-func (s *DescribeAllGroupsResponseBody) SetCount(v int32) *DescribeAllGroupsResponseBody {
-	s.Count = &v
 	return s
 }
 
@@ -2488,8 +3114,8 @@ func (s *DescribeAntiBruteForceRulesRequest) SetResourceOwnerId(v int64) *Descri
 }
 
 type DescribeAntiBruteForceRulesResponseBody struct {
-	PageInfo  *DescribeAntiBruteForceRulesResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageInfo  *DescribeAntiBruteForceRulesResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	Rules     []*DescribeAntiBruteForceRulesResponseBodyRules  `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
@@ -2501,13 +3127,13 @@ func (s DescribeAntiBruteForceRulesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeAntiBruteForceRulesResponseBody) SetPageInfo(v *DescribeAntiBruteForceRulesResponseBodyPageInfo) *DescribeAntiBruteForceRulesResponseBody {
-	s.PageInfo = v
+func (s *DescribeAntiBruteForceRulesResponseBody) SetRequestId(v string) *DescribeAntiBruteForceRulesResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *DescribeAntiBruteForceRulesResponseBody) SetRequestId(v string) *DescribeAntiBruteForceRulesResponseBody {
-	s.RequestId = &v
+func (s *DescribeAntiBruteForceRulesResponseBody) SetPageInfo(v *DescribeAntiBruteForceRulesResponseBodyPageInfo) *DescribeAntiBruteForceRulesResponseBody {
+	s.PageInfo = v
 	return s
 }
 
@@ -2552,7 +3178,6 @@ func (s *DescribeAntiBruteForceRulesResponseBodyPageInfo) SetCount(v int32) *Des
 }
 
 type DescribeAntiBruteForceRulesResponseBodyRules struct {
-	UuidList        []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
 	MachineCount    *int32    `json:"MachineCount,omitempty" xml:"MachineCount,omitempty"`
 	EnableSmartRule *bool     `json:"EnableSmartRule,omitempty" xml:"EnableSmartRule,omitempty"`
 	FailCount       *int32    `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
@@ -2561,6 +3186,7 @@ type DescribeAntiBruteForceRulesResponseBodyRules struct {
 	DefaultRule     *bool     `json:"DefaultRule,omitempty" xml:"DefaultRule,omitempty"`
 	Name            *string   `json:"Name,omitempty" xml:"Name,omitempty"`
 	Id              *int64    `json:"Id,omitempty" xml:"Id,omitempty"`
+	UuidList        []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeAntiBruteForceRulesResponseBodyRules) String() string {
@@ -2569,11 +3195,6 @@ func (s DescribeAntiBruteForceRulesResponseBodyRules) String() string {
 
 func (s DescribeAntiBruteForceRulesResponseBodyRules) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeAntiBruteForceRulesResponseBodyRules) SetUuidList(v []*string) *DescribeAntiBruteForceRulesResponseBodyRules {
-	s.UuidList = v
-	return s
 }
 
 func (s *DescribeAntiBruteForceRulesResponseBodyRules) SetMachineCount(v int32) *DescribeAntiBruteForceRulesResponseBodyRules {
@@ -2613,6 +3234,11 @@ func (s *DescribeAntiBruteForceRulesResponseBodyRules) SetName(v string) *Descri
 
 func (s *DescribeAntiBruteForceRulesResponseBodyRules) SetId(v int64) *DescribeAntiBruteForceRulesResponseBodyRules {
 	s.Id = &v
+	return s
+}
+
+func (s *DescribeAntiBruteForceRulesResponseBodyRules) SetUuidList(v []*string) *DescribeAntiBruteForceRulesResponseBodyRules {
+	s.UuidList = v
 	return s
 }
 
@@ -2692,33 +3318,33 @@ func (s *DescribeAssetDetailByUuidResponseBody) SetAssetDetail(v *DescribeAssetD
 }
 
 type DescribeAssetDetailByUuidResponseBodyAssetDetail struct {
-	CpuInfo        *string   `json:"CpuInfo,omitempty" xml:"CpuInfo,omitempty"`
-	InternetIp     *string   `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	OsDetail       *string   `json:"OsDetail,omitempty" xml:"OsDetail,omitempty"`
-	Kernel         *string   `json:"Kernel,omitempty" xml:"Kernel,omitempty"`
-	CreateTime     *int64    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	OsName         *string   `json:"OsName,omitempty" xml:"OsName,omitempty"`
-	Tag            *string   `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	ClientStatus   *string   `json:"ClientStatus,omitempty" xml:"ClientStatus,omitempty"`
-	Mem            *int32    `json:"Mem,omitempty" xml:"Mem,omitempty"`
-	VpcInstanceId  *string   `json:"VpcInstanceId,omitempty" xml:"VpcInstanceId,omitempty"`
-	InstanceName   *string   `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	Region         *string   `json:"Region,omitempty" xml:"Region,omitempty"`
-	IpList         []*string `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Repeated"`
-	GroupTrace     *string   `json:"GroupTrace,omitempty" xml:"GroupTrace,omitempty"`
-	DiskInfoList   []*string `json:"DiskInfoList,omitempty" xml:"DiskInfoList,omitempty" type:"Repeated"`
-	HostName       *string   `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	Ip             *string   `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	MacList        []*string `json:"MacList,omitempty" xml:"MacList,omitempty" type:"Repeated"`
-	Os             *string   `json:"Os,omitempty" xml:"Os,omitempty"`
-	InstanceId     *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	AssetType      *string   `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
-	IntranetIp     *string   `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	SysInfo        *string   `json:"SysInfo,omitempty" xml:"SysInfo,omitempty"`
-	Uuid           *string   `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	Cpu            *int32    `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	RegionName     *string   `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
-	InstanceStatus *string   `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	CpuInfo       *string   `json:"CpuInfo,omitempty" xml:"CpuInfo,omitempty"`
+	InternetIp    *string   `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	OsDetail      *string   `json:"OsDetail,omitempty" xml:"OsDetail,omitempty"`
+	CreateTime    *int64    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Kernel        *string   `json:"Kernel,omitempty" xml:"Kernel,omitempty"`
+	OsName        *string   `json:"OsName,omitempty" xml:"OsName,omitempty"`
+	Tag           *string   `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	ClientStatus  *string   `json:"ClientStatus,omitempty" xml:"ClientStatus,omitempty"`
+	Mem           *int32    `json:"Mem,omitempty" xml:"Mem,omitempty"`
+	VpcInstanceId *string   `json:"VpcInstanceId,omitempty" xml:"VpcInstanceId,omitempty"`
+	InstanceName  *string   `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	Region        *string   `json:"Region,omitempty" xml:"Region,omitempty"`
+	GroupTrace    *string   `json:"GroupTrace,omitempty" xml:"GroupTrace,omitempty"`
+	Ip            *string   `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	HostName      *string   `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	Os            *string   `json:"Os,omitempty" xml:"Os,omitempty"`
+	InstanceId    *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IntranetIp    *string   `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	AssetType     *string   `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
+	RegionId      *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SysInfo       *string   `json:"SysInfo,omitempty" xml:"SysInfo,omitempty"`
+	Uuid          *string   `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	Cpu           *int32    `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	RegionName    *string   `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
+	IpList        []*string `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Repeated"`
+	MacList       []*string `json:"MacList,omitempty" xml:"MacList,omitempty" type:"Repeated"`
+	DiskInfoList  []*string `json:"DiskInfoList,omitempty" xml:"DiskInfoList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeAssetDetailByUuidResponseBodyAssetDetail) String() string {
@@ -2744,13 +3370,13 @@ func (s *DescribeAssetDetailByUuidResponseBodyAssetDetail) SetOsDetail(v string)
 	return s
 }
 
-func (s *DescribeAssetDetailByUuidResponseBodyAssetDetail) SetKernel(v string) *DescribeAssetDetailByUuidResponseBodyAssetDetail {
-	s.Kernel = &v
+func (s *DescribeAssetDetailByUuidResponseBodyAssetDetail) SetCreateTime(v int64) *DescribeAssetDetailByUuidResponseBodyAssetDetail {
+	s.CreateTime = &v
 	return s
 }
 
-func (s *DescribeAssetDetailByUuidResponseBodyAssetDetail) SetCreateTime(v int64) *DescribeAssetDetailByUuidResponseBodyAssetDetail {
-	s.CreateTime = &v
+func (s *DescribeAssetDetailByUuidResponseBodyAssetDetail) SetKernel(v string) *DescribeAssetDetailByUuidResponseBodyAssetDetail {
+	s.Kernel = &v
 	return s
 }
 
@@ -2789,23 +3415,8 @@ func (s *DescribeAssetDetailByUuidResponseBodyAssetDetail) SetRegion(v string) *
 	return s
 }
 
-func (s *DescribeAssetDetailByUuidResponseBodyAssetDetail) SetIpList(v []*string) *DescribeAssetDetailByUuidResponseBodyAssetDetail {
-	s.IpList = v
-	return s
-}
-
 func (s *DescribeAssetDetailByUuidResponseBodyAssetDetail) SetGroupTrace(v string) *DescribeAssetDetailByUuidResponseBodyAssetDetail {
 	s.GroupTrace = &v
-	return s
-}
-
-func (s *DescribeAssetDetailByUuidResponseBodyAssetDetail) SetDiskInfoList(v []*string) *DescribeAssetDetailByUuidResponseBodyAssetDetail {
-	s.DiskInfoList = v
-	return s
-}
-
-func (s *DescribeAssetDetailByUuidResponseBodyAssetDetail) SetHostName(v string) *DescribeAssetDetailByUuidResponseBodyAssetDetail {
-	s.HostName = &v
 	return s
 }
 
@@ -2814,8 +3425,8 @@ func (s *DescribeAssetDetailByUuidResponseBodyAssetDetail) SetIp(v string) *Desc
 	return s
 }
 
-func (s *DescribeAssetDetailByUuidResponseBodyAssetDetail) SetMacList(v []*string) *DescribeAssetDetailByUuidResponseBodyAssetDetail {
-	s.MacList = v
+func (s *DescribeAssetDetailByUuidResponseBodyAssetDetail) SetHostName(v string) *DescribeAssetDetailByUuidResponseBodyAssetDetail {
+	s.HostName = &v
 	return s
 }
 
@@ -2829,13 +3440,18 @@ func (s *DescribeAssetDetailByUuidResponseBodyAssetDetail) SetInstanceId(v strin
 	return s
 }
 
+func (s *DescribeAssetDetailByUuidResponseBodyAssetDetail) SetIntranetIp(v string) *DescribeAssetDetailByUuidResponseBodyAssetDetail {
+	s.IntranetIp = &v
+	return s
+}
+
 func (s *DescribeAssetDetailByUuidResponseBodyAssetDetail) SetAssetType(v string) *DescribeAssetDetailByUuidResponseBodyAssetDetail {
 	s.AssetType = &v
 	return s
 }
 
-func (s *DescribeAssetDetailByUuidResponseBodyAssetDetail) SetIntranetIp(v string) *DescribeAssetDetailByUuidResponseBodyAssetDetail {
-	s.IntranetIp = &v
+func (s *DescribeAssetDetailByUuidResponseBodyAssetDetail) SetRegionId(v string) *DescribeAssetDetailByUuidResponseBodyAssetDetail {
+	s.RegionId = &v
 	return s
 }
 
@@ -2859,8 +3475,18 @@ func (s *DescribeAssetDetailByUuidResponseBodyAssetDetail) SetRegionName(v strin
 	return s
 }
 
-func (s *DescribeAssetDetailByUuidResponseBodyAssetDetail) SetInstanceStatus(v string) *DescribeAssetDetailByUuidResponseBodyAssetDetail {
-	s.InstanceStatus = &v
+func (s *DescribeAssetDetailByUuidResponseBodyAssetDetail) SetIpList(v []*string) *DescribeAssetDetailByUuidResponseBodyAssetDetail {
+	s.IpList = v
+	return s
+}
+
+func (s *DescribeAssetDetailByUuidResponseBodyAssetDetail) SetMacList(v []*string) *DescribeAssetDetailByUuidResponseBodyAssetDetail {
+	s.MacList = v
+	return s
+}
+
+func (s *DescribeAssetDetailByUuidResponseBodyAssetDetail) SetDiskInfoList(v []*string) *DescribeAssetDetailByUuidResponseBodyAssetDetail {
+	s.DiskInfoList = v
 	return s
 }
 
@@ -2888,8 +3514,7 @@ func (s *DescribeAssetDetailByUuidResponse) SetBody(v *DescribeAssetDetailByUuid
 }
 
 type DescribeAssetDetailByUuidsRequest struct {
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Uuids    *string `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
+	Uuids *string `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
 }
 
 func (s DescribeAssetDetailByUuidsRequest) String() string {
@@ -2898,11 +3523,6 @@ func (s DescribeAssetDetailByUuidsRequest) String() string {
 
 func (s DescribeAssetDetailByUuidsRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeAssetDetailByUuidsRequest) SetSourceIp(v string) *DescribeAssetDetailByUuidsRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *DescribeAssetDetailByUuidsRequest) SetUuids(v string) *DescribeAssetDetailByUuidsRequest {
@@ -2941,8 +3561,8 @@ type DescribeAssetDetailByUuidsResponseBodyAssetList struct {
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ClientStatus  *string `json:"ClientStatus,omitempty" xml:"ClientStatus,omitempty"`
 	VpcInstanceId *string `json:"VpcInstanceId,omitempty" xml:"VpcInstanceId,omitempty"`
-	AssetType     *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
 	IntranetIp    *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	AssetType     *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
 	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Uuid          *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 	RegionName    *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
@@ -2993,13 +3613,13 @@ func (s *DescribeAssetDetailByUuidsResponseBodyAssetList) SetVpcInstanceId(v str
 	return s
 }
 
-func (s *DescribeAssetDetailByUuidsResponseBodyAssetList) SetAssetType(v string) *DescribeAssetDetailByUuidsResponseBodyAssetList {
-	s.AssetType = &v
+func (s *DescribeAssetDetailByUuidsResponseBodyAssetList) SetIntranetIp(v string) *DescribeAssetDetailByUuidsResponseBodyAssetList {
+	s.IntranetIp = &v
 	return s
 }
 
-func (s *DescribeAssetDetailByUuidsResponseBodyAssetList) SetIntranetIp(v string) *DescribeAssetDetailByUuidsResponseBodyAssetList {
-	s.IntranetIp = &v
+func (s *DescribeAssetDetailByUuidsResponseBodyAssetList) SetAssetType(v string) *DescribeAssetDetailByUuidsResponseBodyAssetList {
+	s.AssetType = &v
 	return s
 }
 
@@ -3051,26 +3671,9 @@ func (s *DescribeAssetDetailByUuidsResponse) SetBody(v *DescribeAssetDetailByUui
 	return s
 }
 
-type DescribeAutoDelConfigRequest struct {
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-}
-
-func (s DescribeAutoDelConfigRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAutoDelConfigRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAutoDelConfigRequest) SetSourceIp(v string) *DescribeAutoDelConfigRequest {
-	s.SourceIp = &v
-	return s
-}
-
 type DescribeAutoDelConfigResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Days      *int32  `json:"Days,omitempty" xml:"Days,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeAutoDelConfigResponseBody) String() string {
@@ -3081,13 +3684,13 @@ func (s DescribeAutoDelConfigResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeAutoDelConfigResponseBody) SetRequestId(v string) *DescribeAutoDelConfigResponseBody {
-	s.RequestId = &v
+func (s *DescribeAutoDelConfigResponseBody) SetDays(v int32) *DescribeAutoDelConfigResponseBody {
+	s.Days = &v
 	return s
 }
 
-func (s *DescribeAutoDelConfigResponseBody) SetDays(v int32) *DescribeAutoDelConfigResponseBody {
-	s.Days = &v
+func (s *DescribeAutoDelConfigResponseBody) SetRequestId(v string) *DescribeAutoDelConfigResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -3110,6 +3713,1028 @@ func (s *DescribeAutoDelConfigResponse) SetHeaders(v map[string]*string) *Descri
 }
 
 func (s *DescribeAutoDelConfigResponse) SetBody(v *DescribeAutoDelConfigResponseBody) *DescribeAutoDelConfigResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeBackupDirsRequest struct {
+	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	PolicyId        *int64  `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	Uuid            *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	CurrentPage     *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+}
+
+func (s DescribeBackupDirsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupDirsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupDirsRequest) SetSourceIp(v string) *DescribeBackupDirsRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *DescribeBackupDirsRequest) SetResourceOwnerId(v int64) *DescribeBackupDirsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeBackupDirsRequest) SetPolicyId(v int64) *DescribeBackupDirsRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *DescribeBackupDirsRequest) SetUuid(v string) *DescribeBackupDirsRequest {
+	s.Uuid = &v
+	return s
+}
+
+func (s *DescribeBackupDirsRequest) SetPageSize(v int32) *DescribeBackupDirsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeBackupDirsRequest) SetCurrentPage(v int32) *DescribeBackupDirsRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+type DescribeBackupDirsResponseBody struct {
+	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageInfo   *DescribeBackupDirsResponseBodyPageInfo     `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	BackupDirs []*DescribeBackupDirsResponseBodyBackupDirs `json:"BackupDirs,omitempty" xml:"BackupDirs,omitempty" type:"Repeated"`
+}
+
+func (s DescribeBackupDirsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupDirsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupDirsResponseBody) SetRequestId(v string) *DescribeBackupDirsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeBackupDirsResponseBody) SetPageInfo(v *DescribeBackupDirsResponseBodyPageInfo) *DescribeBackupDirsResponseBody {
+	s.PageInfo = v
+	return s
+}
+
+func (s *DescribeBackupDirsResponseBody) SetBackupDirs(v []*DescribeBackupDirsResponseBodyBackupDirs) *DescribeBackupDirsResponseBody {
+	s.BackupDirs = v
+	return s
+}
+
+type DescribeBackupDirsResponseBodyPageInfo struct {
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount  *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Count       *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+}
+
+func (s DescribeBackupDirsResponseBodyPageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupDirsResponseBodyPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupDirsResponseBodyPageInfo) SetCurrentPage(v int32) *DescribeBackupDirsResponseBodyPageInfo {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeBackupDirsResponseBodyPageInfo) SetPageSize(v int32) *DescribeBackupDirsResponseBodyPageInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeBackupDirsResponseBodyPageInfo) SetTotalCount(v int32) *DescribeBackupDirsResponseBodyPageInfo {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeBackupDirsResponseBodyPageInfo) SetCount(v int32) *DescribeBackupDirsResponseBodyPageInfo {
+	s.Count = &v
+	return s
+}
+
+type DescribeBackupDirsResponseBodyBackupDirs struct {
+	Source      *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	BackupJobId *int64  `json:"BackupJobId,omitempty" xml:"BackupJobId,omitempty"`
+}
+
+func (s DescribeBackupDirsResponseBodyBackupDirs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupDirsResponseBodyBackupDirs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupDirsResponseBodyBackupDirs) SetSource(v string) *DescribeBackupDirsResponseBodyBackupDirs {
+	s.Source = &v
+	return s
+}
+
+func (s *DescribeBackupDirsResponseBodyBackupDirs) SetBackupJobId(v int64) *DescribeBackupDirsResponseBodyBackupDirs {
+	s.BackupJobId = &v
+	return s
+}
+
+type DescribeBackupDirsResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeBackupDirsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeBackupDirsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupDirsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupDirsResponse) SetHeaders(v map[string]*string) *DescribeBackupDirsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeBackupDirsResponse) SetBody(v *DescribeBackupDirsResponseBody) *DescribeBackupDirsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeBackupFilesRequest struct {
+	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Uuid            *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	Path            *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	SnapshotHash    *string `json:"SnapshotHash,omitempty" xml:"SnapshotHash,omitempty"`
+	CurrentPage     *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize        *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeBackupFilesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupFilesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupFilesRequest) SetSourceIp(v string) *DescribeBackupFilesRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *DescribeBackupFilesRequest) SetResourceOwnerId(v int64) *DescribeBackupFilesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeBackupFilesRequest) SetUuid(v string) *DescribeBackupFilesRequest {
+	s.Uuid = &v
+	return s
+}
+
+func (s *DescribeBackupFilesRequest) SetPath(v string) *DescribeBackupFilesRequest {
+	s.Path = &v
+	return s
+}
+
+func (s *DescribeBackupFilesRequest) SetSnapshotHash(v string) *DescribeBackupFilesRequest {
+	s.SnapshotHash = &v
+	return s
+}
+
+func (s *DescribeBackupFilesRequest) SetCurrentPage(v string) *DescribeBackupFilesRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeBackupFilesRequest) SetPageSize(v string) *DescribeBackupFilesRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeBackupFilesResponseBody struct {
+	RequestId   *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageInfo    *DescribeBackupFilesResponseBodyPageInfo      `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	BackupFiles []*DescribeBackupFilesResponseBodyBackupFiles `json:"BackupFiles,omitempty" xml:"BackupFiles,omitempty" type:"Repeated"`
+}
+
+func (s DescribeBackupFilesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupFilesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupFilesResponseBody) SetRequestId(v string) *DescribeBackupFilesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeBackupFilesResponseBody) SetPageInfo(v *DescribeBackupFilesResponseBodyPageInfo) *DescribeBackupFilesResponseBody {
+	s.PageInfo = v
+	return s
+}
+
+func (s *DescribeBackupFilesResponseBody) SetBackupFiles(v []*DescribeBackupFilesResponseBodyBackupFiles) *DescribeBackupFilesResponseBody {
+	s.BackupFiles = v
+	return s
+}
+
+type DescribeBackupFilesResponseBodyPageInfo struct {
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount  *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Count       *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+}
+
+func (s DescribeBackupFilesResponseBodyPageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupFilesResponseBodyPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupFilesResponseBodyPageInfo) SetCurrentPage(v int32) *DescribeBackupFilesResponseBodyPageInfo {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeBackupFilesResponseBodyPageInfo) SetPageSize(v int32) *DescribeBackupFilesResponseBodyPageInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeBackupFilesResponseBodyPageInfo) SetTotalCount(v int32) *DescribeBackupFilesResponseBodyPageInfo {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeBackupFilesResponseBodyPageInfo) SetCount(v int32) *DescribeBackupFilesResponseBodyPageInfo {
+	s.Count = &v
+	return s
+}
+
+type DescribeBackupFilesResponseBodyBackupFiles struct {
+	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Subtree *string `json:"Subtree,omitempty" xml:"Subtree,omitempty"`
+	Size    *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
+}
+
+func (s DescribeBackupFilesResponseBodyBackupFiles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupFilesResponseBodyBackupFiles) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupFilesResponseBodyBackupFiles) SetType(v string) *DescribeBackupFilesResponseBodyBackupFiles {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeBackupFilesResponseBodyBackupFiles) SetName(v string) *DescribeBackupFilesResponseBodyBackupFiles {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeBackupFilesResponseBodyBackupFiles) SetSubtree(v string) *DescribeBackupFilesResponseBodyBackupFiles {
+	s.Subtree = &v
+	return s
+}
+
+func (s *DescribeBackupFilesResponseBodyBackupFiles) SetSize(v int64) *DescribeBackupFilesResponseBodyBackupFiles {
+	s.Size = &v
+	return s
+}
+
+type DescribeBackupFilesResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeBackupFilesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeBackupFilesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupFilesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupFilesResponse) SetHeaders(v map[string]*string) *DescribeBackupFilesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeBackupFilesResponse) SetBody(v *DescribeBackupFilesResponseBody) *DescribeBackupFilesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeBackupMachineStatusRequest struct {
+	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	PolicyId        *int64  `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	Uuid            *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	PolicyVersion   *string `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty"`
+}
+
+func (s DescribeBackupMachineStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupMachineStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupMachineStatusRequest) SetSourceIp(v string) *DescribeBackupMachineStatusRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *DescribeBackupMachineStatusRequest) SetResourceOwnerId(v int64) *DescribeBackupMachineStatusRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeBackupMachineStatusRequest) SetPolicyId(v int64) *DescribeBackupMachineStatusRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *DescribeBackupMachineStatusRequest) SetUuid(v string) *DescribeBackupMachineStatusRequest {
+	s.Uuid = &v
+	return s
+}
+
+func (s *DescribeBackupMachineStatusRequest) SetPolicyVersion(v string) *DescribeBackupMachineStatusRequest {
+	s.PolicyVersion = &v
+	return s
+}
+
+type DescribeBackupMachineStatusResponseBody struct {
+	RequestId           *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	BackupMachineStatus *DescribeBackupMachineStatusResponseBodyBackupMachineStatus `json:"BackupMachineStatus,omitempty" xml:"BackupMachineStatus,omitempty" type:"Struct"`
+}
+
+func (s DescribeBackupMachineStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupMachineStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupMachineStatusResponseBody) SetRequestId(v string) *DescribeBackupMachineStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeBackupMachineStatusResponseBody) SetBackupMachineStatus(v *DescribeBackupMachineStatusResponseBodyBackupMachineStatus) *DescribeBackupMachineStatusResponseBody {
+	s.BackupMachineStatus = v
+	return s
+}
+
+type DescribeBackupMachineStatusResponseBodyBackupMachineStatus struct {
+	Status           *string                                                                `json:"Status,omitempty" xml:"Status,omitempty"`
+	VaultId          *string                                                                `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+	Jobs             *string                                                                `json:"Jobs,omitempty" xml:"Jobs,omitempty"`
+	InstanceId       *string                                                                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ClientStatus     *string                                                                `json:"ClientStatus,omitempty" xml:"ClientStatus,omitempty"`
+	ClientId         *string                                                                `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	RegionId         *string                                                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Uuid             *string                                                                `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	RequestId        *string                                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorCode        *string                                                                `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	SavedBackupCount *int32                                                                 `json:"SavedBackupCount,omitempty" xml:"SavedBackupCount,omitempty"`
+	ClientVersion    *string                                                                `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
+	ErrorList        []*DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList `json:"ErrorList,omitempty" xml:"ErrorList,omitempty" type:"Repeated"`
+}
+
+func (s DescribeBackupMachineStatusResponseBodyBackupMachineStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupMachineStatusResponseBodyBackupMachineStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatus) SetStatus(v string) *DescribeBackupMachineStatusResponseBodyBackupMachineStatus {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatus) SetVaultId(v string) *DescribeBackupMachineStatusResponseBodyBackupMachineStatus {
+	s.VaultId = &v
+	return s
+}
+
+func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatus) SetJobs(v string) *DescribeBackupMachineStatusResponseBodyBackupMachineStatus {
+	s.Jobs = &v
+	return s
+}
+
+func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatus) SetInstanceId(v string) *DescribeBackupMachineStatusResponseBodyBackupMachineStatus {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatus) SetClientStatus(v string) *DescribeBackupMachineStatusResponseBodyBackupMachineStatus {
+	s.ClientStatus = &v
+	return s
+}
+
+func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatus) SetClientId(v string) *DescribeBackupMachineStatusResponseBodyBackupMachineStatus {
+	s.ClientId = &v
+	return s
+}
+
+func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatus) SetRegionId(v string) *DescribeBackupMachineStatusResponseBodyBackupMachineStatus {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatus) SetUuid(v string) *DescribeBackupMachineStatusResponseBodyBackupMachineStatus {
+	s.Uuid = &v
+	return s
+}
+
+func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatus) SetRequestId(v string) *DescribeBackupMachineStatusResponseBodyBackupMachineStatus {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatus) SetErrorCode(v string) *DescribeBackupMachineStatusResponseBodyBackupMachineStatus {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatus) SetSavedBackupCount(v int32) *DescribeBackupMachineStatusResponseBodyBackupMachineStatus {
+	s.SavedBackupCount = &v
+	return s
+}
+
+func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatus) SetClientVersion(v string) *DescribeBackupMachineStatusResponseBodyBackupMachineStatus {
+	s.ClientVersion = &v
+	return s
+}
+
+func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatus) SetErrorList(v []*DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList) *DescribeBackupMachineStatusResponseBodyBackupMachineStatus {
+	s.ErrorList = v
+	return s
+}
+
+type DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList struct {
+	Key          *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	ErrorFile    *string `json:"ErrorFile,omitempty" xml:"ErrorFile,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorFileUrl *string `json:"ErrorFileUrl,omitempty" xml:"ErrorFileUrl,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorStatus  *string `json:"ErrorStatus,omitempty" xml:"ErrorStatus,omitempty"`
+	Path         *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	ErrorMsg     *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	ErrorType    *string `json:"ErrorType,omitempty" xml:"ErrorType,omitempty"`
+	ErrorTime    *int64  `json:"ErrorTime,omitempty" xml:"ErrorTime,omitempty"`
+}
+
+func (s DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList) SetKey(v string) *DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList) SetErrorFile(v string) *DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList {
+	s.ErrorFile = &v
+	return s
+}
+
+func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList) SetRequestId(v string) *DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList) SetErrorFileUrl(v string) *DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList {
+	s.ErrorFileUrl = &v
+	return s
+}
+
+func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList) SetErrorCode(v string) *DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList) SetErrorStatus(v string) *DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList {
+	s.ErrorStatus = &v
+	return s
+}
+
+func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList) SetPath(v string) *DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList {
+	s.Path = &v
+	return s
+}
+
+func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList) SetErrorMsg(v string) *DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList) SetErrorType(v string) *DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList {
+	s.ErrorType = &v
+	return s
+}
+
+func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList) SetErrorTime(v int64) *DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList {
+	s.ErrorTime = &v
+	return s
+}
+
+type DescribeBackupMachineStatusResponse struct {
+	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeBackupMachineStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeBackupMachineStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupMachineStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupMachineStatusResponse) SetHeaders(v map[string]*string) *DescribeBackupMachineStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeBackupMachineStatusResponse) SetBody(v *DescribeBackupMachineStatusResponseBody) *DescribeBackupMachineStatusResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeBackupPoliciesRequest struct {
+	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	CurrentPage     *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+}
+
+func (s DescribeBackupPoliciesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupPoliciesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupPoliciesRequest) SetSourceIp(v string) *DescribeBackupPoliciesRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *DescribeBackupPoliciesRequest) SetResourceOwnerId(v int64) *DescribeBackupPoliciesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeBackupPoliciesRequest) SetName(v string) *DescribeBackupPoliciesRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeBackupPoliciesRequest) SetStatus(v string) *DescribeBackupPoliciesRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeBackupPoliciesRequest) SetPageSize(v int32) *DescribeBackupPoliciesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeBackupPoliciesRequest) SetCurrentPage(v int32) *DescribeBackupPoliciesRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+type DescribeBackupPoliciesResponseBody struct {
+	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageInfo  *DescribeBackupPoliciesResponseBodyPageInfo   `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	Policies  []*DescribeBackupPoliciesResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
+}
+
+func (s DescribeBackupPoliciesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupPoliciesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupPoliciesResponseBody) SetRequestId(v string) *DescribeBackupPoliciesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeBackupPoliciesResponseBody) SetPageInfo(v *DescribeBackupPoliciesResponseBodyPageInfo) *DescribeBackupPoliciesResponseBody {
+	s.PageInfo = v
+	return s
+}
+
+func (s *DescribeBackupPoliciesResponseBody) SetPolicies(v []*DescribeBackupPoliciesResponseBodyPolicies) *DescribeBackupPoliciesResponseBody {
+	s.Policies = v
+	return s
+}
+
+type DescribeBackupPoliciesResponseBodyPageInfo struct {
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount  *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Count       *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+}
+
+func (s DescribeBackupPoliciesResponseBodyPageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupPoliciesResponseBodyPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupPoliciesResponseBodyPageInfo) SetCurrentPage(v int32) *DescribeBackupPoliciesResponseBodyPageInfo {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeBackupPoliciesResponseBodyPageInfo) SetPageSize(v int32) *DescribeBackupPoliciesResponseBodyPageInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeBackupPoliciesResponseBodyPageInfo) SetTotalCount(v int32) *DescribeBackupPoliciesResponseBodyPageInfo {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeBackupPoliciesResponseBodyPageInfo) SetCount(v int32) *DescribeBackupPoliciesResponseBodyPageInfo {
+	s.Count = &v
+	return s
+}
+
+type DescribeBackupPoliciesResponseBodyPolicies struct {
+	ClientErrorCount     *int32    `json:"ClientErrorCount,omitempty" xml:"ClientErrorCount,omitempty"`
+	Status               *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	PolicyVersion        *string   `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty"`
+	Policy               *string   `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	ServiceErrorCount    *int32    `json:"ServiceErrorCount,omitempty" xml:"ServiceErrorCount,omitempty"`
+	ClientStatus         *string   `json:"ClientStatus,omitempty" xml:"ClientStatus,omitempty"`
+	Name                 *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	HealthClientCount    *int32    `json:"HealthClientCount,omitempty" xml:"HealthClientCount,omitempty"`
+	Id                   *int64    `json:"Id,omitempty" xml:"Id,omitempty"`
+	UuidList             []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
+	ClientErrorUuidList  []*string `json:"ClientErrorUuidList,omitempty" xml:"ClientErrorUuidList,omitempty" type:"Repeated"`
+	ServiceErrorUuidList []*string `json:"ServiceErrorUuidList,omitempty" xml:"ServiceErrorUuidList,omitempty" type:"Repeated"`
+	HealthClientUuidList []*string `json:"HealthClientUuidList,omitempty" xml:"HealthClientUuidList,omitempty" type:"Repeated"`
+}
+
+func (s DescribeBackupPoliciesResponseBodyPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupPoliciesResponseBodyPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupPoliciesResponseBodyPolicies) SetClientErrorCount(v int32) *DescribeBackupPoliciesResponseBodyPolicies {
+	s.ClientErrorCount = &v
+	return s
+}
+
+func (s *DescribeBackupPoliciesResponseBodyPolicies) SetStatus(v string) *DescribeBackupPoliciesResponseBodyPolicies {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeBackupPoliciesResponseBodyPolicies) SetPolicyVersion(v string) *DescribeBackupPoliciesResponseBodyPolicies {
+	s.PolicyVersion = &v
+	return s
+}
+
+func (s *DescribeBackupPoliciesResponseBodyPolicies) SetPolicy(v string) *DescribeBackupPoliciesResponseBodyPolicies {
+	s.Policy = &v
+	return s
+}
+
+func (s *DescribeBackupPoliciesResponseBodyPolicies) SetServiceErrorCount(v int32) *DescribeBackupPoliciesResponseBodyPolicies {
+	s.ServiceErrorCount = &v
+	return s
+}
+
+func (s *DescribeBackupPoliciesResponseBodyPolicies) SetClientStatus(v string) *DescribeBackupPoliciesResponseBodyPolicies {
+	s.ClientStatus = &v
+	return s
+}
+
+func (s *DescribeBackupPoliciesResponseBodyPolicies) SetName(v string) *DescribeBackupPoliciesResponseBodyPolicies {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeBackupPoliciesResponseBodyPolicies) SetHealthClientCount(v int32) *DescribeBackupPoliciesResponseBodyPolicies {
+	s.HealthClientCount = &v
+	return s
+}
+
+func (s *DescribeBackupPoliciesResponseBodyPolicies) SetId(v int64) *DescribeBackupPoliciesResponseBodyPolicies {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeBackupPoliciesResponseBodyPolicies) SetUuidList(v []*string) *DescribeBackupPoliciesResponseBodyPolicies {
+	s.UuidList = v
+	return s
+}
+
+func (s *DescribeBackupPoliciesResponseBodyPolicies) SetClientErrorUuidList(v []*string) *DescribeBackupPoliciesResponseBodyPolicies {
+	s.ClientErrorUuidList = v
+	return s
+}
+
+func (s *DescribeBackupPoliciesResponseBodyPolicies) SetServiceErrorUuidList(v []*string) *DescribeBackupPoliciesResponseBodyPolicies {
+	s.ServiceErrorUuidList = v
+	return s
+}
+
+func (s *DescribeBackupPoliciesResponseBodyPolicies) SetHealthClientUuidList(v []*string) *DescribeBackupPoliciesResponseBodyPolicies {
+	s.HealthClientUuidList = v
+	return s
+}
+
+type DescribeBackupPoliciesResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeBackupPoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeBackupPoliciesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupPoliciesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupPoliciesResponse) SetHeaders(v map[string]*string) *DescribeBackupPoliciesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeBackupPoliciesResponse) SetBody(v *DescribeBackupPoliciesResponseBody) *DescribeBackupPoliciesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeBackupPolicyRequest struct {
+	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	PolicyVersion   *string `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty"`
+}
+
+func (s DescribeBackupPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupPolicyRequest) SetSourceIp(v string) *DescribeBackupPolicyRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyRequest) SetResourceOwnerId(v int64) *DescribeBackupPolicyRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyRequest) SetId(v int64) *DescribeBackupPolicyRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyRequest) SetPolicyVersion(v string) *DescribeBackupPolicyRequest {
+	s.PolicyVersion = &v
+	return s
+}
+
+type DescribeBackupPolicyResponseBody struct {
+	RequestId          *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	BackupPolicyDetail *DescribeBackupPolicyResponseBodyBackupPolicyDetail `json:"BackupPolicyDetail,omitempty" xml:"BackupPolicyDetail,omitempty" type:"Struct"`
+}
+
+func (s DescribeBackupPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupPolicyResponseBody) SetRequestId(v string) *DescribeBackupPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponseBody) SetBackupPolicyDetail(v *DescribeBackupPolicyResponseBodyBackupPolicyDetail) *DescribeBackupPolicyResponseBody {
+	s.BackupPolicyDetail = v
+	return s
+}
+
+type DescribeBackupPolicyResponseBodyBackupPolicyDetail struct {
+	Status       *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Policy       *string   `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	ClientStatus *string   `json:"ClientStatus,omitempty" xml:"ClientStatus,omitempty"`
+	Name         *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id           *int64    `json:"Id,omitempty" xml:"Id,omitempty"`
+	UuidList     []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
+}
+
+func (s DescribeBackupPolicyResponseBodyBackupPolicyDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupPolicyResponseBodyBackupPolicyDetail) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupPolicyResponseBodyBackupPolicyDetail) SetStatus(v string) *DescribeBackupPolicyResponseBodyBackupPolicyDetail {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponseBodyBackupPolicyDetail) SetPolicy(v string) *DescribeBackupPolicyResponseBodyBackupPolicyDetail {
+	s.Policy = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponseBodyBackupPolicyDetail) SetClientStatus(v string) *DescribeBackupPolicyResponseBodyBackupPolicyDetail {
+	s.ClientStatus = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponseBodyBackupPolicyDetail) SetName(v string) *DescribeBackupPolicyResponseBodyBackupPolicyDetail {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponseBodyBackupPolicyDetail) SetId(v int64) *DescribeBackupPolicyResponseBodyBackupPolicyDetail {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponseBodyBackupPolicyDetail) SetUuidList(v []*string) *DescribeBackupPolicyResponseBodyBackupPolicyDetail {
+	s.UuidList = v
+	return s
+}
+
+type DescribeBackupPolicyResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeBackupPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeBackupPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupPolicyResponse) SetHeaders(v map[string]*string) *DescribeBackupPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponse) SetBody(v *DescribeBackupPolicyResponseBody) *DescribeBackupPolicyResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeBackupRestoreCountRequest struct {
+	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DescribeBackupRestoreCountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupRestoreCountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupRestoreCountRequest) SetSourceIp(v string) *DescribeBackupRestoreCountRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *DescribeBackupRestoreCountRequest) SetResourceOwnerId(v int64) *DescribeBackupRestoreCountRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DescribeBackupRestoreCountResponseBody struct {
+	RequestId          *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	BackupRestoreCount *DescribeBackupRestoreCountResponseBodyBackupRestoreCount `json:"BackupRestoreCount,omitempty" xml:"BackupRestoreCount,omitempty" type:"Struct"`
+}
+
+func (s DescribeBackupRestoreCountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupRestoreCountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupRestoreCountResponseBody) SetRequestId(v string) *DescribeBackupRestoreCountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeBackupRestoreCountResponseBody) SetBackupRestoreCount(v *DescribeBackupRestoreCountResponseBodyBackupRestoreCount) *DescribeBackupRestoreCountResponseBody {
+	s.BackupRestoreCount = v
+	return s
+}
+
+type DescribeBackupRestoreCountResponseBodyBackupRestoreCount struct {
+	Total      *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	Recovering *int32 `json:"Recovering,omitempty" xml:"Recovering,omitempty"`
+}
+
+func (s DescribeBackupRestoreCountResponseBodyBackupRestoreCount) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupRestoreCountResponseBodyBackupRestoreCount) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupRestoreCountResponseBodyBackupRestoreCount) SetTotal(v int32) *DescribeBackupRestoreCountResponseBodyBackupRestoreCount {
+	s.Total = &v
+	return s
+}
+
+func (s *DescribeBackupRestoreCountResponseBodyBackupRestoreCount) SetRecovering(v int32) *DescribeBackupRestoreCountResponseBodyBackupRestoreCount {
+	s.Recovering = &v
+	return s
+}
+
+type DescribeBackupRestoreCountResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeBackupRestoreCountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeBackupRestoreCountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupRestoreCountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupRestoreCountResponse) SetHeaders(v map[string]*string) *DescribeBackupRestoreCountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeBackupRestoreCountResponse) SetBody(v *DescribeBackupRestoreCountResponseBody) *DescribeBackupRestoreCountResponse {
 	s.Body = v
 	return s
 }
@@ -3208,7 +4833,6 @@ func (s *DescribeBruteForceSummaryResponse) SetBody(v *DescribeBruteForceSummary
 
 type DescribeCheckEcsWarningsRequest struct {
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	UuidList *string `json:"UuidList,omitempty" xml:"UuidList,omitempty"`
 }
 
 func (s DescribeCheckEcsWarningsRequest) String() string {
@@ -3224,16 +4848,11 @@ func (s *DescribeCheckEcsWarningsRequest) SetSourceIp(v string) *DescribeCheckEc
 	return s
 }
 
-func (s *DescribeCheckEcsWarningsRequest) SetUuidList(v string) *DescribeCheckEcsWarningsRequest {
-	s.UuidList = &v
-	return s
-}
-
 type DescribeCheckEcsWarningsResponseBody struct {
 	SasVersion        *string `json:"SasVersion,omitempty" xml:"SasVersion,omitempty"`
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	CanTry            *string `json:"CanTry,omitempty" xml:"CanTry,omitempty"`
 	WeakPasswordCount *string `json:"WeakPasswordCount,omitempty" xml:"WeakPasswordCount,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeCheckEcsWarningsResponseBody) String() string {
@@ -3249,11 +4868,6 @@ func (s *DescribeCheckEcsWarningsResponseBody) SetSasVersion(v string) *Describe
 	return s
 }
 
-func (s *DescribeCheckEcsWarningsResponseBody) SetRequestId(v string) *DescribeCheckEcsWarningsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *DescribeCheckEcsWarningsResponseBody) SetCanTry(v string) *DescribeCheckEcsWarningsResponseBody {
 	s.CanTry = &v
 	return s
@@ -3261,6 +4875,11 @@ func (s *DescribeCheckEcsWarningsResponseBody) SetCanTry(v string) *DescribeChec
 
 func (s *DescribeCheckEcsWarningsResponseBody) SetWeakPasswordCount(v string) *DescribeCheckEcsWarningsResponseBody {
 	s.WeakPasswordCount = &v
+	return s
+}
+
+func (s *DescribeCheckEcsWarningsResponseBody) SetRequestId(v string) *DescribeCheckEcsWarningsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -3317,14 +4936,14 @@ func (s *DescribeCheckWarningDetailRequest) SetCheckWarningId(v int64) *Describe
 }
 
 type DescribeCheckWarningDetailResponseBody struct {
-	Item        *string `json:"Item,omitempty" xml:"Item,omitempty"`
+	Advice      *string `json:"Advice,omitempty" xml:"Advice,omitempty"`
 	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Item        *string `json:"Item,omitempty" xml:"Item,omitempty"`
 	CheckId     *int64  `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
 	Level       *string `json:"Level,omitempty" xml:"Level,omitempty"`
 	Prompt      *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
-	Advice      *string `json:"Advice,omitempty" xml:"Advice,omitempty"`
 }
 
 func (s DescribeCheckWarningDetailResponseBody) String() string {
@@ -3335,8 +4954,8 @@ func (s DescribeCheckWarningDetailResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeCheckWarningDetailResponseBody) SetItem(v string) *DescribeCheckWarningDetailResponseBody {
-	s.Item = &v
+func (s *DescribeCheckWarningDetailResponseBody) SetAdvice(v string) *DescribeCheckWarningDetailResponseBody {
+	s.Advice = &v
 	return s
 }
 
@@ -3345,13 +4964,18 @@ func (s *DescribeCheckWarningDetailResponseBody) SetType(v string) *DescribeChec
 	return s
 }
 
+func (s *DescribeCheckWarningDetailResponseBody) SetRequestId(v string) *DescribeCheckWarningDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 func (s *DescribeCheckWarningDetailResponseBody) SetDescription(v string) *DescribeCheckWarningDetailResponseBody {
 	s.Description = &v
 	return s
 }
 
-func (s *DescribeCheckWarningDetailResponseBody) SetRequestId(v string) *DescribeCheckWarningDetailResponseBody {
-	s.RequestId = &v
+func (s *DescribeCheckWarningDetailResponseBody) SetItem(v string) *DescribeCheckWarningDetailResponseBody {
+	s.Item = &v
 	return s
 }
 
@@ -3367,11 +4991,6 @@ func (s *DescribeCheckWarningDetailResponseBody) SetLevel(v string) *DescribeChe
 
 func (s *DescribeCheckWarningDetailResponseBody) SetPrompt(v string) *DescribeCheckWarningDetailResponseBody {
 	s.Prompt = &v
-	return s
-}
-
-func (s *DescribeCheckWarningDetailResponseBody) SetAdvice(v string) *DescribeCheckWarningDetailResponseBody {
-	s.Advice = &v
 	return s
 }
 
@@ -3446,12 +5065,12 @@ func (s *DescribeCheckWarningsRequest) SetCurrentPage(v int32) *DescribeCheckWar
 }
 
 type DescribeCheckWarningsResponseBody struct {
-	TotalCount    *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	CheckWarnings []*DescribeCheckWarningsResponseBodyCheckWarnings `json:"CheckWarnings,omitempty" xml:"CheckWarnings,omitempty" type:"Repeated"`
+	CurrentPage   *int32                                            `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	PageSize      *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId     *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	CurrentPage   *int32                                            `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	TotalCount    *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	Count         *int32                                            `json:"Count,omitempty" xml:"Count,omitempty"`
+	CheckWarnings []*DescribeCheckWarningsResponseBodyCheckWarnings `json:"CheckWarnings,omitempty" xml:"CheckWarnings,omitempty" type:"Repeated"`
 }
 
 func (s DescribeCheckWarningsResponseBody) String() string {
@@ -3462,13 +5081,8 @@ func (s DescribeCheckWarningsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeCheckWarningsResponseBody) SetTotalCount(v int32) *DescribeCheckWarningsResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *DescribeCheckWarningsResponseBody) SetCheckWarnings(v []*DescribeCheckWarningsResponseBodyCheckWarnings) *DescribeCheckWarningsResponseBody {
-	s.CheckWarnings = v
+func (s *DescribeCheckWarningsResponseBody) SetCurrentPage(v int32) *DescribeCheckWarningsResponseBody {
+	s.CurrentPage = &v
 	return s
 }
 
@@ -3482,13 +5096,18 @@ func (s *DescribeCheckWarningsResponseBody) SetRequestId(v string) *DescribeChec
 	return s
 }
 
-func (s *DescribeCheckWarningsResponseBody) SetCurrentPage(v int32) *DescribeCheckWarningsResponseBody {
-	s.CurrentPage = &v
+func (s *DescribeCheckWarningsResponseBody) SetTotalCount(v int32) *DescribeCheckWarningsResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
 func (s *DescribeCheckWarningsResponseBody) SetCount(v int32) *DescribeCheckWarningsResponseBody {
 	s.Count = &v
+	return s
+}
+
+func (s *DescribeCheckWarningsResponseBody) SetCheckWarnings(v []*DescribeCheckWarningsResponseBodyCheckWarnings) *DescribeCheckWarningsResponseBody {
+	s.CheckWarnings = v
 	return s
 }
 
@@ -3640,10 +5259,10 @@ func (s *DescribeCheckWarningSummaryRequest) SetCurrentPage(v int32) *DescribeCh
 }
 
 type DescribeCheckWarningSummaryResponseBody struct {
-	TotalCount      *int32                                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	CurrentPage     *int32                                                    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	PageSize        *int32                                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId       *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	CurrentPage     *int32                                                    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	TotalCount      *int32                                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	Count           *int32                                                    `json:"Count,omitempty" xml:"Count,omitempty"`
 	WarningSummarys []*DescribeCheckWarningSummaryResponseBodyWarningSummarys `json:"WarningSummarys,omitempty" xml:"WarningSummarys,omitempty" type:"Repeated"`
 }
@@ -3656,8 +5275,8 @@ func (s DescribeCheckWarningSummaryResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeCheckWarningSummaryResponseBody) SetTotalCount(v int32) *DescribeCheckWarningSummaryResponseBody {
-	s.TotalCount = &v
+func (s *DescribeCheckWarningSummaryResponseBody) SetCurrentPage(v int32) *DescribeCheckWarningSummaryResponseBody {
+	s.CurrentPage = &v
 	return s
 }
 
@@ -3671,8 +5290,8 @@ func (s *DescribeCheckWarningSummaryResponseBody) SetRequestId(v string) *Descri
 	return s
 }
 
-func (s *DescribeCheckWarningSummaryResponseBody) SetCurrentPage(v int32) *DescribeCheckWarningSummaryResponseBody {
-	s.CurrentPage = &v
+func (s *DescribeCheckWarningSummaryResponseBody) SetTotalCount(v int32) *DescribeCheckWarningSummaryResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -3787,7 +5406,6 @@ func (s *DescribeCheckWarningSummaryResponse) SetBody(v *DescribeCheckWarningSum
 }
 
 type DescribeCloudCenterInstancesRequest struct {
-	SourceIp     *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Criteria     *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
 	MachineTypes *string `json:"MachineTypes,omitempty" xml:"MachineTypes,omitempty"`
@@ -3804,11 +5422,6 @@ func (s DescribeCloudCenterInstancesRequest) String() string {
 
 func (s DescribeCloudCenterInstancesRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeCloudCenterInstancesRequest) SetSourceIp(v string) *DescribeCloudCenterInstancesRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *DescribeCloudCenterInstancesRequest) SetRegionId(v string) *DescribeCloudCenterInstancesRequest {
@@ -3852,10 +5465,10 @@ func (s *DescribeCloudCenterInstancesRequest) SetImportance(v int32) *DescribeCl
 }
 
 type DescribeCloudCenterInstancesResponseBody struct {
-	Instances []*DescribeCloudCenterInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	PageInfo  *DescribeCloudCenterInstancesResponseBodyPageInfo    `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	RequestId *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageInfo  *DescribeCloudCenterInstancesResponseBodyPageInfo    `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	Instances []*DescribeCloudCenterInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
 }
 
 func (s DescribeCloudCenterInstancesResponseBody) String() string {
@@ -3866,13 +5479,8 @@ func (s DescribeCloudCenterInstancesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeCloudCenterInstancesResponseBody) SetInstances(v []*DescribeCloudCenterInstancesResponseBodyInstances) *DescribeCloudCenterInstancesResponseBody {
-	s.Instances = v
-	return s
-}
-
-func (s *DescribeCloudCenterInstancesResponseBody) SetPageInfo(v *DescribeCloudCenterInstancesResponseBodyPageInfo) *DescribeCloudCenterInstancesResponseBody {
-	s.PageInfo = v
+func (s *DescribeCloudCenterInstancesResponseBody) SetSuccess(v bool) *DescribeCloudCenterInstancesResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -3881,45 +5489,86 @@ func (s *DescribeCloudCenterInstancesResponseBody) SetRequestId(v string) *Descr
 	return s
 }
 
-func (s *DescribeCloudCenterInstancesResponseBody) SetSuccess(v bool) *DescribeCloudCenterInstancesResponseBody {
-	s.Success = &v
+func (s *DescribeCloudCenterInstancesResponseBody) SetPageInfo(v *DescribeCloudCenterInstancesResponseBodyPageInfo) *DescribeCloudCenterInstancesResponseBody {
+	s.PageInfo = v
+	return s
+}
+
+func (s *DescribeCloudCenterInstancesResponseBody) SetInstances(v []*DescribeCloudCenterInstancesResponseBodyInstances) *DescribeCloudCenterInstancesResponseBody {
+	s.Instances = v
+	return s
+}
+
+type DescribeCloudCenterInstancesResponseBodyPageInfo struct {
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount  *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Count       *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+}
+
+func (s DescribeCloudCenterInstancesResponseBodyPageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudCenterInstancesResponseBodyPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudCenterInstancesResponseBodyPageInfo) SetCurrentPage(v int32) *DescribeCloudCenterInstancesResponseBodyPageInfo {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeCloudCenterInstancesResponseBodyPageInfo) SetPageSize(v int32) *DescribeCloudCenterInstancesResponseBodyPageInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeCloudCenterInstancesResponseBodyPageInfo) SetTotalCount(v int32) *DescribeCloudCenterInstancesResponseBodyPageInfo {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeCloudCenterInstancesResponseBodyPageInfo) SetCount(v int32) *DescribeCloudCenterInstancesResponseBodyPageInfo {
+	s.Count = &v
 	return s
 }
 
 type DescribeCloudCenterInstancesResponseBodyInstances struct {
-	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	InternetIp       *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	OsName           *string `json:"OsName,omitempty" xml:"OsName,omitempty"`
-	Tag              *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	ClientStatus     *string `json:"ClientStatus,omitempty" xml:"ClientStatus,omitempty"`
-	VpcInstanceId    *string `json:"VpcInstanceId,omitempty" xml:"VpcInstanceId,omitempty"`
-	Flag             *int32  `json:"Flag,omitempty" xml:"Flag,omitempty"`
-	Region           *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	InstanceName     *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	PodCount         *int32  `json:"PodCount,omitempty" xml:"PodCount,omitempty"`
-	VulCount         *int32  `json:"VulCount,omitempty" xml:"VulCount,omitempty"`
-	HcStatus         *string `json:"HcStatus,omitempty" xml:"HcStatus,omitempty"`
-	CreatedTime      *int64  `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	ClusterId        *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	RiskStatus       *string `json:"RiskStatus,omitempty" xml:"RiskStatus,omitempty"`
-	VulStatus        *string `json:"VulStatus,omitempty" xml:"VulStatus,omitempty"`
-	AlarmStatus      *string `json:"AlarmStatus,omitempty" xml:"AlarmStatus,omitempty"`
-	HealthCheckCount *int32  `json:"HealthCheckCount,omitempty" xml:"HealthCheckCount,omitempty"`
-	Importance       *int32  `json:"Importance,omitempty" xml:"Importance,omitempty"`
-	Ip               *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	Os               *string `json:"Os,omitempty" xml:"Os,omitempty"`
-	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	SafeEventCount   *int32  `json:"SafeEventCount,omitempty" xml:"SafeEventCount,omitempty"`
-	AssetType        *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
-	IntranetIp       *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Uuid             *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	GroupId          *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	RegionName       *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
-	ClusterName      *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	ExposedStatus    *int32  `json:"ExposedStatus,omitempty" xml:"ExposedStatus,omitempty"`
-	RiskCount        *string `json:"RiskCount,omitempty" xml:"RiskCount,omitempty"`
-	ClientVersion    *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
+	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	InternetIp         *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	OsName             *string `json:"OsName,omitempty" xml:"OsName,omitempty"`
+	Tag                *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	ClientStatus       *string `json:"ClientStatus,omitempty" xml:"ClientStatus,omitempty"`
+	VpcInstanceId      *string `json:"VpcInstanceId,omitempty" xml:"VpcInstanceId,omitempty"`
+	Flag               *int32  `json:"Flag,omitempty" xml:"Flag,omitempty"`
+	Region             *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	InstanceName       *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	PodCount           *int32  `json:"PodCount,omitempty" xml:"PodCount,omitempty"`
+	VulCount           *int32  `json:"VulCount,omitempty" xml:"VulCount,omitempty"`
+	HcStatus           *string `json:"HcStatus,omitempty" xml:"HcStatus,omitempty"`
+	CreatedTime        *int64  `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	ClusterId          *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	RiskStatus         *string `json:"RiskStatus,omitempty" xml:"RiskStatus,omitempty"`
+	VulStatus          *string `json:"VulStatus,omitempty" xml:"VulStatus,omitempty"`
+	AlarmStatus        *string `json:"AlarmStatus,omitempty" xml:"AlarmStatus,omitempty"`
+	Importance         *int32  `json:"Importance,omitempty" xml:"Importance,omitempty"`
+	HealthCheckCount   *int32  `json:"HealthCheckCount,omitempty" xml:"HealthCheckCount,omitempty"`
+	Ip                 *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Os                 *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	SafeEventCount     *int32  `json:"SafeEventCount,omitempty" xml:"SafeEventCount,omitempty"`
+	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	AssetType          *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
+	IntranetIp         *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Uuid               *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	AutoSnapshotsLevel *int32  `json:"AutoSnapshotsLevel,omitempty" xml:"AutoSnapshotsLevel,omitempty"`
+	GroupId            *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	RegionName         *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
+	ClusterName        *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	ExposedStatus      *int32  `json:"ExposedStatus,omitempty" xml:"ExposedStatus,omitempty"`
+	RiskCount          *string `json:"RiskCount,omitempty" xml:"RiskCount,omitempty"`
+	ClientVersion      *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
 }
 
 func (s DescribeCloudCenterInstancesResponseBodyInstances) String() string {
@@ -4015,13 +5664,13 @@ func (s *DescribeCloudCenterInstancesResponseBodyInstances) SetAlarmStatus(v str
 	return s
 }
 
-func (s *DescribeCloudCenterInstancesResponseBodyInstances) SetHealthCheckCount(v int32) *DescribeCloudCenterInstancesResponseBodyInstances {
-	s.HealthCheckCount = &v
+func (s *DescribeCloudCenterInstancesResponseBodyInstances) SetImportance(v int32) *DescribeCloudCenterInstancesResponseBodyInstances {
+	s.Importance = &v
 	return s
 }
 
-func (s *DescribeCloudCenterInstancesResponseBodyInstances) SetImportance(v int32) *DescribeCloudCenterInstancesResponseBodyInstances {
-	s.Importance = &v
+func (s *DescribeCloudCenterInstancesResponseBodyInstances) SetHealthCheckCount(v int32) *DescribeCloudCenterInstancesResponseBodyInstances {
+	s.HealthCheckCount = &v
 	return s
 }
 
@@ -4035,13 +5684,13 @@ func (s *DescribeCloudCenterInstancesResponseBodyInstances) SetOs(v string) *Des
 	return s
 }
 
-func (s *DescribeCloudCenterInstancesResponseBodyInstances) SetInstanceId(v string) *DescribeCloudCenterInstancesResponseBodyInstances {
-	s.InstanceId = &v
+func (s *DescribeCloudCenterInstancesResponseBodyInstances) SetSafeEventCount(v int32) *DescribeCloudCenterInstancesResponseBodyInstances {
+	s.SafeEventCount = &v
 	return s
 }
 
-func (s *DescribeCloudCenterInstancesResponseBodyInstances) SetSafeEventCount(v int32) *DescribeCloudCenterInstancesResponseBodyInstances {
-	s.SafeEventCount = &v
+func (s *DescribeCloudCenterInstancesResponseBodyInstances) SetInstanceId(v string) *DescribeCloudCenterInstancesResponseBodyInstances {
+	s.InstanceId = &v
 	return s
 }
 
@@ -4062,6 +5711,11 @@ func (s *DescribeCloudCenterInstancesResponseBodyInstances) SetRegionId(v string
 
 func (s *DescribeCloudCenterInstancesResponseBodyInstances) SetUuid(v string) *DescribeCloudCenterInstancesResponseBodyInstances {
 	s.Uuid = &v
+	return s
+}
+
+func (s *DescribeCloudCenterInstancesResponseBodyInstances) SetAutoSnapshotsLevel(v int32) *DescribeCloudCenterInstancesResponseBodyInstances {
+	s.AutoSnapshotsLevel = &v
 	return s
 }
 
@@ -4095,41 +5749,6 @@ func (s *DescribeCloudCenterInstancesResponseBodyInstances) SetClientVersion(v s
 	return s
 }
 
-type DescribeCloudCenterInstancesResponseBodyPageInfo struct {
-	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount  *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	Count       *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-}
-
-func (s DescribeCloudCenterInstancesResponseBodyPageInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeCloudCenterInstancesResponseBodyPageInfo) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeCloudCenterInstancesResponseBodyPageInfo) SetCurrentPage(v int32) *DescribeCloudCenterInstancesResponseBodyPageInfo {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *DescribeCloudCenterInstancesResponseBodyPageInfo) SetPageSize(v int32) *DescribeCloudCenterInstancesResponseBodyPageInfo {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeCloudCenterInstancesResponseBodyPageInfo) SetTotalCount(v int32) *DescribeCloudCenterInstancesResponseBodyPageInfo {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *DescribeCloudCenterInstancesResponseBodyPageInfo) SetCount(v int32) *DescribeCloudCenterInstancesResponseBodyPageInfo {
-	s.Count = &v
-	return s
-}
-
 type DescribeCloudCenterInstancesResponse struct {
 	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	Body    *DescribeCloudCenterInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -4150,23 +5769,6 @@ func (s *DescribeCloudCenterInstancesResponse) SetHeaders(v map[string]*string) 
 
 func (s *DescribeCloudCenterInstancesResponse) SetBody(v *DescribeCloudCenterInstancesResponseBody) *DescribeCloudCenterInstancesResponse {
 	s.Body = v
-	return s
-}
-
-type DescribeCloudProductFieldStatisticsRequest struct {
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-}
-
-func (s DescribeCloudProductFieldStatisticsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeCloudProductFieldStatisticsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeCloudProductFieldStatisticsRequest) SetSourceIp(v string) *DescribeCloudProductFieldStatisticsRequest {
-	s.SourceIp = &v
 	return s
 }
 
@@ -4246,8 +5848,7 @@ func (s *DescribeCloudProductFieldStatisticsResponse) SetBody(v *DescribeCloudPr
 }
 
 type DescribeConcernNecessityRequest struct {
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s DescribeConcernNecessityRequest) String() string {
@@ -4256,11 +5857,6 @@ func (s DescribeConcernNecessityRequest) String() string {
 
 func (s DescribeConcernNecessityRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeConcernNecessityRequest) SetSourceIp(v string) *DescribeConcernNecessityRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *DescribeConcernNecessityRequest) SetLang(v string) *DescribeConcernNecessityRequest {
@@ -4315,7 +5911,6 @@ func (s *DescribeConcernNecessityResponse) SetBody(v *DescribeConcernNecessityRe
 }
 
 type DescribeContainerStatisticsRequest struct {
-	SourceIp  *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -4325,11 +5920,6 @@ func (s DescribeContainerStatisticsRequest) String() string {
 
 func (s DescribeContainerStatisticsRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeContainerStatisticsRequest) SetSourceIp(v string) *DescribeContainerStatisticsRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *DescribeContainerStatisticsRequest) SetClusterId(v string) *DescribeContainerStatisticsRequest {
@@ -4431,7 +6021,6 @@ func (s *DescribeContainerStatisticsResponse) SetBody(v *DescribeContainerStatis
 }
 
 type DescribeCriteriaRequest struct {
-	SourceIp     *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	MachineTypes *string `json:"MachineTypes,omitempty" xml:"MachineTypes,omitempty"`
 	Value        *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
@@ -4442,11 +6031,6 @@ func (s DescribeCriteriaRequest) String() string {
 
 func (s DescribeCriteriaRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeCriteriaRequest) SetSourceIp(v string) *DescribeCriteriaRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *DescribeCriteriaRequest) SetMachineTypes(v string) *DescribeCriteriaRequest {
@@ -4460,8 +6044,8 @@ func (s *DescribeCriteriaRequest) SetValue(v string) *DescribeCriteriaRequest {
 }
 
 type DescribeCriteriaResponseBody struct {
-	CriteriaList []*DescribeCriteriaResponseBodyCriteriaList `json:"CriteriaList,omitempty" xml:"CriteriaList,omitempty" type:"Repeated"`
 	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	CriteriaList []*DescribeCriteriaResponseBodyCriteriaList `json:"CriteriaList,omitempty" xml:"CriteriaList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeCriteriaResponseBody) String() string {
@@ -4472,20 +6056,20 @@ func (s DescribeCriteriaResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeCriteriaResponseBody) SetCriteriaList(v []*DescribeCriteriaResponseBodyCriteriaList) *DescribeCriteriaResponseBody {
-	s.CriteriaList = v
-	return s
-}
-
 func (s *DescribeCriteriaResponseBody) SetRequestId(v string) *DescribeCriteriaResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *DescribeCriteriaResponseBody) SetCriteriaList(v []*DescribeCriteriaResponseBodyCriteriaList) *DescribeCriteriaResponseBody {
+	s.CriteriaList = v
+	return s
+}
+
 type DescribeCriteriaResponseBodyCriteriaList struct {
 	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Values *string `json:"Values,omitempty" xml:"Values,omitempty"`
 	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Values *string `json:"Values,omitempty" xml:"Values,omitempty"`
 }
 
 func (s DescribeCriteriaResponseBodyCriteriaList) String() string {
@@ -4501,13 +6085,13 @@ func (s *DescribeCriteriaResponseBodyCriteriaList) SetType(v string) *DescribeCr
 	return s
 }
 
-func (s *DescribeCriteriaResponseBodyCriteriaList) SetValues(v string) *DescribeCriteriaResponseBodyCriteriaList {
-	s.Values = &v
+func (s *DescribeCriteriaResponseBodyCriteriaList) SetName(v string) *DescribeCriteriaResponseBodyCriteriaList {
+	s.Name = &v
 	return s
 }
 
-func (s *DescribeCriteriaResponseBodyCriteriaList) SetName(v string) *DescribeCriteriaResponseBodyCriteriaList {
-	s.Name = &v
+func (s *DescribeCriteriaResponseBodyCriteriaList) SetValues(v string) *DescribeCriteriaResponseBodyCriteriaList {
+	s.Values = &v
 	return s
 }
 
@@ -4633,7 +6217,6 @@ func (s *DescribeDialogMessagesResponse) SetBody(v *DescribeDialogMessagesRespon
 }
 
 type DescribeDingTalkRequest struct {
-	SourceIp       *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	RuleActionName *string `json:"RuleActionName,omitempty" xml:"RuleActionName,omitempty"`
 	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	CurrentPage    *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
@@ -4645,11 +6228,6 @@ func (s DescribeDingTalkRequest) String() string {
 
 func (s DescribeDingTalkRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeDingTalkRequest) SetSourceIp(v string) *DescribeDingTalkRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *DescribeDingTalkRequest) SetRuleActionName(v string) *DescribeDingTalkRequest {
@@ -4668,8 +6246,8 @@ func (s *DescribeDingTalkRequest) SetCurrentPage(v int32) *DescribeDingTalkReque
 }
 
 type DescribeDingTalkResponseBody struct {
-	PageInfo   *DescribeDingTalkResponseBodyPageInfo     `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageInfo   *DescribeDingTalkResponseBodyPageInfo     `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	ActionList []*DescribeDingTalkResponseBodyActionList `json:"ActionList,omitempty" xml:"ActionList,omitempty" type:"Repeated"`
 }
 
@@ -4681,13 +6259,13 @@ func (s DescribeDingTalkResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDingTalkResponseBody) SetPageInfo(v *DescribeDingTalkResponseBodyPageInfo) *DescribeDingTalkResponseBody {
-	s.PageInfo = v
+func (s *DescribeDingTalkResponseBody) SetRequestId(v string) *DescribeDingTalkResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *DescribeDingTalkResponseBody) SetRequestId(v string) *DescribeDingTalkResponseBody {
-	s.RequestId = &v
+func (s *DescribeDingTalkResponseBody) SetPageInfo(v *DescribeDingTalkResponseBodyPageInfo) *DescribeDingTalkResponseBody {
+	s.PageInfo = v
 	return s
 }
 
@@ -4843,9 +6421,10 @@ func (s *DescribeDomainCountRequest) SetSourceIp(v string) *DescribeDomainCountR
 }
 
 type DescribeDomainCountResponseBody struct {
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalDomainsCount *int32  `json:"TotalDomainsCount,omitempty" xml:"TotalDomainsCount,omitempty"`
 	RootDomainsCount  *int32  `json:"RootDomainsCount,omitempty" xml:"RootDomainsCount,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubDomainsCount   *int32  `json:"SubDomainsCount,omitempty" xml:"SubDomainsCount,omitempty"`
+	TotalDomainsCount *int32  `json:"TotalDomainsCount,omitempty" xml:"TotalDomainsCount,omitempty"`
 }
 
 func (s DescribeDomainCountResponseBody) String() string {
@@ -4856,18 +6435,23 @@ func (s DescribeDomainCountResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeDomainCountResponseBody) SetRootDomainsCount(v int32) *DescribeDomainCountResponseBody {
+	s.RootDomainsCount = &v
+	return s
+}
+
 func (s *DescribeDomainCountResponseBody) SetRequestId(v string) *DescribeDomainCountResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *DescribeDomainCountResponseBody) SetTotalDomainsCount(v int32) *DescribeDomainCountResponseBody {
-	s.TotalDomainsCount = &v
+func (s *DescribeDomainCountResponseBody) SetSubDomainsCount(v int32) *DescribeDomainCountResponseBody {
+	s.SubDomainsCount = &v
 	return s
 }
 
-func (s *DescribeDomainCountResponseBody) SetRootDomainsCount(v int32) *DescribeDomainCountResponseBody {
-	s.RootDomainsCount = &v
+func (s *DescribeDomainCountResponseBody) SetTotalDomainsCount(v int32) *DescribeDomainCountResponseBody {
+	s.TotalDomainsCount = &v
 	return s
 }
 
@@ -4918,12 +6502,12 @@ func (s *DescribeDomainDetailRequest) SetDomainName(v string) *DescribeDomainDet
 }
 
 type DescribeDomainDetailResponseBody struct {
-	DomainDetailItems []*DescribeDomainDetailResponseBodyDomainDetailItems `json:"DomainDetailItems,omitempty" xml:"DomainDetailItems,omitempty" type:"Repeated"`
-	RequestId         *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RootDomain        *string                                              `json:"RootDomain,omitempty" xml:"RootDomain,omitempty"`
 	Domain            *string                                              `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	RequestId         *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	VulCount          *int32                                               `json:"VulCount,omitempty" xml:"VulCount,omitempty"`
 	AlarmCount        *int32                                               `json:"AlarmCount,omitempty" xml:"AlarmCount,omitempty"`
+	RootDomain        *string                                              `json:"RootDomain,omitempty" xml:"RootDomain,omitempty"`
+	DomainDetailItems []*DescribeDomainDetailResponseBodyDomainDetailItems `json:"DomainDetailItems,omitempty" xml:"DomainDetailItems,omitempty" type:"Repeated"`
 }
 
 func (s DescribeDomainDetailResponseBody) String() string {
@@ -4934,23 +6518,13 @@ func (s DescribeDomainDetailResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDomainDetailResponseBody) SetDomainDetailItems(v []*DescribeDomainDetailResponseBodyDomainDetailItems) *DescribeDomainDetailResponseBody {
-	s.DomainDetailItems = v
+func (s *DescribeDomainDetailResponseBody) SetDomain(v string) *DescribeDomainDetailResponseBody {
+	s.Domain = &v
 	return s
 }
 
 func (s *DescribeDomainDetailResponseBody) SetRequestId(v string) *DescribeDomainDetailResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeDomainDetailResponseBody) SetRootDomain(v string) *DescribeDomainDetailResponseBody {
-	s.RootDomain = &v
-	return s
-}
-
-func (s *DescribeDomainDetailResponseBody) SetDomain(v string) *DescribeDomainDetailResponseBody {
-	s.Domain = &v
 	return s
 }
 
@@ -4961,6 +6535,16 @@ func (s *DescribeDomainDetailResponseBody) SetVulCount(v int32) *DescribeDomainD
 
 func (s *DescribeDomainDetailResponseBody) SetAlarmCount(v int32) *DescribeDomainDetailResponseBody {
 	s.AlarmCount = &v
+	return s
+}
+
+func (s *DescribeDomainDetailResponseBody) SetRootDomain(v string) *DescribeDomainDetailResponseBody {
+	s.RootDomain = &v
+	return s
+}
+
+func (s *DescribeDomainDetailResponseBody) SetDomainDetailItems(v []*DescribeDomainDetailResponseBodyDomainDetailItems) *DescribeDomainDetailResponseBody {
+	s.DomainDetailItems = v
 	return s
 }
 
@@ -5076,8 +6660,8 @@ func (s *DescribeDomainListRequest) SetCurrentPage(v int32) *DescribeDomainListR
 }
 
 type DescribeDomainListResponseBody struct {
-	PageInfo               *DescribeDomainListResponseBodyPageInfo                 `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	RequestId              *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageInfo               *DescribeDomainListResponseBodyPageInfo                 `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	DomainListResponseList []*DescribeDomainListResponseBodyDomainListResponseList `json:"DomainListResponseList,omitempty" xml:"DomainListResponseList,omitempty" type:"Repeated"`
 }
 
@@ -5089,13 +6673,13 @@ func (s DescribeDomainListResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDomainListResponseBody) SetPageInfo(v *DescribeDomainListResponseBodyPageInfo) *DescribeDomainListResponseBody {
-	s.PageInfo = v
+func (s *DescribeDomainListResponseBody) SetRequestId(v string) *DescribeDomainListResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *DescribeDomainListResponseBody) SetRequestId(v string) *DescribeDomainListResponseBody {
-	s.RequestId = &v
+func (s *DescribeDomainListResponseBody) SetPageInfo(v *DescribeDomainListResponseBodyPageInfo) *DescribeDomainListResponseBody {
+	s.PageInfo = v
 	return s
 }
 
@@ -5140,8 +6724,8 @@ func (s *DescribeDomainListResponseBodyPageInfo) SetCount(v int32) *DescribeDoma
 }
 
 type DescribeDomainListResponseBodyDomainListResponseList struct {
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	IpList *string `json:"IpList,omitempty" xml:"IpList,omitempty"`
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 }
 
 func (s DescribeDomainListResponseBodyDomainListResponseList) String() string {
@@ -5152,13 +6736,13 @@ func (s DescribeDomainListResponseBodyDomainListResponseList) GoString() string 
 	return s.String()
 }
 
-func (s *DescribeDomainListResponseBodyDomainListResponseList) SetDomain(v string) *DescribeDomainListResponseBodyDomainListResponseList {
-	s.Domain = &v
+func (s *DescribeDomainListResponseBodyDomainListResponseList) SetIpList(v string) *DescribeDomainListResponseBodyDomainListResponseList {
+	s.IpList = &v
 	return s
 }
 
-func (s *DescribeDomainListResponseBodyDomainListResponseList) SetIpList(v string) *DescribeDomainListResponseBodyDomainListResponseList {
-	s.IpList = &v
+func (s *DescribeDomainListResponseBodyDomainListResponseList) SetDomain(v string) *DescribeDomainListResponseBodyDomainListResponseList {
+	s.Domain = &v
 	return s
 }
 
@@ -5185,131 +6769,329 @@ func (s *DescribeDomainListResponse) SetBody(v *DescribeDomainListResponseBody) 
 	return s
 }
 
-type DescribeEmgVulGroupRequest struct {
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+type DescribeEmgVulItemRequest struct {
+	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	RiskStatus  *string `json:"RiskStatus,omitempty" xml:"RiskStatus,omitempty"`
+	ScanType    *string `json:"ScanType,omitempty" xml:"ScanType,omitempty"`
+	VulName     *string `json:"VulName,omitempty" xml:"VulName,omitempty"`
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
-func (s DescribeEmgVulGroupRequest) String() string {
+func (s DescribeEmgVulItemRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeEmgVulGroupRequest) GoString() string {
+func (s DescribeEmgVulItemRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeEmgVulGroupRequest) SetSourceIp(v string) *DescribeEmgVulGroupRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DescribeEmgVulGroupRequest) SetLang(v string) *DescribeEmgVulGroupRequest {
+func (s *DescribeEmgVulItemRequest) SetLang(v string) *DescribeEmgVulItemRequest {
 	s.Lang = &v
 	return s
 }
 
-type DescribeEmgVulGroupResponseBody struct {
-	TotalCount      *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	RequestId       *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	EmgVulGroupList []*DescribeEmgVulGroupResponseBodyEmgVulGroupList `json:"EmgVulGroupList,omitempty" xml:"EmgVulGroupList,omitempty" type:"Repeated"`
-}
-
-func (s DescribeEmgVulGroupResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeEmgVulGroupResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeEmgVulGroupResponseBody) SetTotalCount(v int32) *DescribeEmgVulGroupResponseBody {
-	s.TotalCount = &v
+func (s *DescribeEmgVulItemRequest) SetRiskStatus(v string) *DescribeEmgVulItemRequest {
+	s.RiskStatus = &v
 	return s
 }
 
-func (s *DescribeEmgVulGroupResponseBody) SetRequestId(v string) *DescribeEmgVulGroupResponseBody {
+func (s *DescribeEmgVulItemRequest) SetScanType(v string) *DescribeEmgVulItemRequest {
+	s.ScanType = &v
+	return s
+}
+
+func (s *DescribeEmgVulItemRequest) SetVulName(v string) *DescribeEmgVulItemRequest {
+	s.VulName = &v
+	return s
+}
+
+func (s *DescribeEmgVulItemRequest) SetCurrentPage(v int32) *DescribeEmgVulItemRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeEmgVulItemRequest) SetPageSize(v int32) *DescribeEmgVulItemRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeEmgVulItemResponseBody struct {
+	CurrentPage     *int32                                           `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	RequestId       *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageSize        *int32                                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount      *int32                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	GroupedVulItems []*DescribeEmgVulItemResponseBodyGroupedVulItems `json:"GroupedVulItems,omitempty" xml:"GroupedVulItems,omitempty" type:"Repeated"`
+}
+
+func (s DescribeEmgVulItemResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEmgVulItemResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEmgVulItemResponseBody) SetCurrentPage(v int32) *DescribeEmgVulItemResponseBody {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeEmgVulItemResponseBody) SetRequestId(v string) *DescribeEmgVulItemResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *DescribeEmgVulGroupResponseBody) SetEmgVulGroupList(v []*DescribeEmgVulGroupResponseBodyEmgVulGroupList) *DescribeEmgVulGroupResponseBody {
-	s.EmgVulGroupList = v
+func (s *DescribeEmgVulItemResponseBody) SetPageSize(v int32) *DescribeEmgVulItemResponseBody {
+	s.PageSize = &v
 	return s
 }
 
-type DescribeEmgVulGroupResponseBodyEmgVulGroupList struct {
+func (s *DescribeEmgVulItemResponseBody) SetTotalCount(v int32) *DescribeEmgVulItemResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeEmgVulItemResponseBody) SetGroupedVulItems(v []*DescribeEmgVulItemResponseBodyGroupedVulItems) *DescribeEmgVulItemResponseBody {
+	s.GroupedVulItems = v
+	return s
+}
+
+type DescribeEmgVulItemResponseBodyGroupedVulItems struct {
+	Status       *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GmtLastCheck *int64  `json:"GmtLastCheck,omitempty" xml:"GmtLastCheck,omitempty"`
+	Progress     *int32  `json:"Progress,omitempty" xml:"Progress,omitempty"`
 	GmtPublish   *int64  `json:"GmtPublish,omitempty" xml:"GmtPublish,omitempty"`
 	PendingCount *int32  `json:"PendingCount,omitempty" xml:"PendingCount,omitempty"`
 	AliasName    *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
-func (s DescribeEmgVulGroupResponseBodyEmgVulGroupList) String() string {
+func (s DescribeEmgVulItemResponseBodyGroupedVulItems) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeEmgVulGroupResponseBodyEmgVulGroupList) GoString() string {
+func (s DescribeEmgVulItemResponseBodyGroupedVulItems) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeEmgVulGroupResponseBodyEmgVulGroupList) SetType(v string) *DescribeEmgVulGroupResponseBodyEmgVulGroupList {
+func (s *DescribeEmgVulItemResponseBodyGroupedVulItems) SetStatus(v int32) *DescribeEmgVulItemResponseBodyGroupedVulItems {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeEmgVulItemResponseBodyGroupedVulItems) SetType(v string) *DescribeEmgVulItemResponseBodyGroupedVulItems {
 	s.Type = &v
 	return s
 }
 
-func (s *DescribeEmgVulGroupResponseBodyEmgVulGroupList) SetDescription(v string) *DescribeEmgVulGroupResponseBodyEmgVulGroupList {
-	s.Description = &v
+func (s *DescribeEmgVulItemResponseBodyGroupedVulItems) SetGmtLastCheck(v int64) *DescribeEmgVulItemResponseBodyGroupedVulItems {
+	s.GmtLastCheck = &v
 	return s
 }
 
-func (s *DescribeEmgVulGroupResponseBodyEmgVulGroupList) SetGmtPublish(v int64) *DescribeEmgVulGroupResponseBodyEmgVulGroupList {
+func (s *DescribeEmgVulItemResponseBodyGroupedVulItems) SetProgress(v int32) *DescribeEmgVulItemResponseBodyGroupedVulItems {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeEmgVulItemResponseBodyGroupedVulItems) SetGmtPublish(v int64) *DescribeEmgVulItemResponseBodyGroupedVulItems {
 	s.GmtPublish = &v
 	return s
 }
 
-func (s *DescribeEmgVulGroupResponseBodyEmgVulGroupList) SetPendingCount(v int32) *DescribeEmgVulGroupResponseBodyEmgVulGroupList {
+func (s *DescribeEmgVulItemResponseBodyGroupedVulItems) SetPendingCount(v int32) *DescribeEmgVulItemResponseBodyGroupedVulItems {
 	s.PendingCount = &v
 	return s
 }
 
-func (s *DescribeEmgVulGroupResponseBodyEmgVulGroupList) SetAliasName(v string) *DescribeEmgVulGroupResponseBodyEmgVulGroupList {
+func (s *DescribeEmgVulItemResponseBodyGroupedVulItems) SetAliasName(v string) *DescribeEmgVulItemResponseBodyGroupedVulItems {
 	s.AliasName = &v
 	return s
 }
 
-func (s *DescribeEmgVulGroupResponseBodyEmgVulGroupList) SetName(v string) *DescribeEmgVulGroupResponseBodyEmgVulGroupList {
+func (s *DescribeEmgVulItemResponseBodyGroupedVulItems) SetName(v string) *DescribeEmgVulItemResponseBodyGroupedVulItems {
 	s.Name = &v
 	return s
 }
 
-type DescribeEmgVulGroupResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeEmgVulGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+type DescribeEmgVulItemResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeEmgVulItemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s DescribeEmgVulGroupResponse) String() string {
+func (s DescribeEmgVulItemResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeEmgVulGroupResponse) GoString() string {
+func (s DescribeEmgVulItemResponse) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeEmgVulGroupResponse) SetHeaders(v map[string]*string) *DescribeEmgVulGroupResponse {
+func (s *DescribeEmgVulItemResponse) SetHeaders(v map[string]*string) *DescribeEmgVulItemResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *DescribeEmgVulGroupResponse) SetBody(v *DescribeEmgVulGroupResponseBody) *DescribeEmgVulGroupResponse {
+func (s *DescribeEmgVulItemResponse) SetBody(v *DescribeEmgVulItemResponseBody) *DescribeEmgVulItemResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeExcludeSystemPathRequest struct {
+	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	CurrentPage     *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+}
+
+func (s DescribeExcludeSystemPathRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeExcludeSystemPathRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeExcludeSystemPathRequest) SetSourceIp(v string) *DescribeExcludeSystemPathRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *DescribeExcludeSystemPathRequest) SetResourceOwnerId(v int64) *DescribeExcludeSystemPathRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeExcludeSystemPathRequest) SetPageSize(v int32) *DescribeExcludeSystemPathRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeExcludeSystemPathRequest) SetCurrentPage(v int32) *DescribeExcludeSystemPathRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+type DescribeExcludeSystemPathResponseBody struct {
+	RequestId    *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageInfo     *DescribeExcludeSystemPathResponseBodyPageInfo       `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	ExcludePaths []*DescribeExcludeSystemPathResponseBodyExcludePaths `json:"ExcludePaths,omitempty" xml:"ExcludePaths,omitempty" type:"Repeated"`
+}
+
+func (s DescribeExcludeSystemPathResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeExcludeSystemPathResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeExcludeSystemPathResponseBody) SetRequestId(v string) *DescribeExcludeSystemPathResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeExcludeSystemPathResponseBody) SetPageInfo(v *DescribeExcludeSystemPathResponseBodyPageInfo) *DescribeExcludeSystemPathResponseBody {
+	s.PageInfo = v
+	return s
+}
+
+func (s *DescribeExcludeSystemPathResponseBody) SetExcludePaths(v []*DescribeExcludeSystemPathResponseBodyExcludePaths) *DescribeExcludeSystemPathResponseBody {
+	s.ExcludePaths = v
+	return s
+}
+
+type DescribeExcludeSystemPathResponseBodyPageInfo struct {
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount  *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Count       *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+}
+
+func (s DescribeExcludeSystemPathResponseBodyPageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeExcludeSystemPathResponseBodyPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeExcludeSystemPathResponseBodyPageInfo) SetCurrentPage(v int32) *DescribeExcludeSystemPathResponseBodyPageInfo {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeExcludeSystemPathResponseBodyPageInfo) SetPageSize(v int32) *DescribeExcludeSystemPathResponseBodyPageInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeExcludeSystemPathResponseBodyPageInfo) SetTotalCount(v int32) *DescribeExcludeSystemPathResponseBodyPageInfo {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeExcludeSystemPathResponseBodyPageInfo) SetCount(v int32) *DescribeExcludeSystemPathResponseBodyPageInfo {
+	s.Count = &v
+	return s
+}
+
+type DescribeExcludeSystemPathResponseBodyExcludePaths struct {
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Os   *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s DescribeExcludeSystemPathResponseBodyExcludePaths) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeExcludeSystemPathResponseBodyExcludePaths) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeExcludeSystemPathResponseBodyExcludePaths) SetPath(v string) *DescribeExcludeSystemPathResponseBodyExcludePaths {
+	s.Path = &v
+	return s
+}
+
+func (s *DescribeExcludeSystemPathResponseBodyExcludePaths) SetOs(v string) *DescribeExcludeSystemPathResponseBodyExcludePaths {
+	s.Os = &v
+	return s
+}
+
+func (s *DescribeExcludeSystemPathResponseBodyExcludePaths) SetId(v int64) *DescribeExcludeSystemPathResponseBodyExcludePaths {
+	s.Id = &v
+	return s
+}
+
+type DescribeExcludeSystemPathResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeExcludeSystemPathResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeExcludeSystemPathResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeExcludeSystemPathResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeExcludeSystemPathResponse) SetHeaders(v map[string]*string) *DescribeExcludeSystemPathResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeExcludeSystemPathResponse) SetBody(v *DescribeExcludeSystemPathResponseBody) *DescribeExcludeSystemPathResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeExportInfoRequest struct {
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	ExportId *int64  `json:"ExportId,omitempty" xml:"ExportId,omitempty"`
+	ExportId *int64 `json:"ExportId,omitempty" xml:"ExportId,omitempty"`
 }
 
 func (s DescribeExportInfoRequest) String() string {
@@ -5320,26 +7102,21 @@ func (s DescribeExportInfoRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeExportInfoRequest) SetSourceIp(v string) *DescribeExportInfoRequest {
-	s.SourceIp = &v
-	return s
-}
-
 func (s *DescribeExportInfoRequest) SetExportId(v int64) *DescribeExportInfoRequest {
 	s.ExportId = &v
 	return s
 }
 
 type DescribeExportInfoResponseBody struct {
+	Link         *string `json:"Link,omitempty" xml:"Link,omitempty"`
 	Progress     *int32  `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	TotalCount   *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	CurrentCount *int32  `json:"CurrentCount,omitempty" xml:"CurrentCount,omitempty"`
 	Message      *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	FileName     *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	TotalCount   *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	ExportStatus *string `json:"ExportStatus,omitempty" xml:"ExportStatus,omitempty"`
-	CurrentCount *int32  `json:"CurrentCount,omitempty" xml:"CurrentCount,omitempty"`
 	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Link         *string `json:"Link,omitempty" xml:"Link,omitempty"`
 }
 
 func (s DescribeExportInfoResponseBody) String() string {
@@ -5350,18 +7127,23 @@ func (s DescribeExportInfoResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeExportInfoResponseBody) SetLink(v string) *DescribeExportInfoResponseBody {
+	s.Link = &v
+	return s
+}
+
 func (s *DescribeExportInfoResponseBody) SetProgress(v int32) *DescribeExportInfoResponseBody {
 	s.Progress = &v
 	return s
 }
 
-func (s *DescribeExportInfoResponseBody) SetTotalCount(v int32) *DescribeExportInfoResponseBody {
-	s.TotalCount = &v
+func (s *DescribeExportInfoResponseBody) SetRequestId(v string) *DescribeExportInfoResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *DescribeExportInfoResponseBody) SetRequestId(v string) *DescribeExportInfoResponseBody {
-	s.RequestId = &v
+func (s *DescribeExportInfoResponseBody) SetCurrentCount(v int32) *DescribeExportInfoResponseBody {
+	s.CurrentCount = &v
 	return s
 }
 
@@ -5375,23 +7157,18 @@ func (s *DescribeExportInfoResponseBody) SetFileName(v string) *DescribeExportIn
 	return s
 }
 
+func (s *DescribeExportInfoResponseBody) SetTotalCount(v int32) *DescribeExportInfoResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
 func (s *DescribeExportInfoResponseBody) SetExportStatus(v string) *DescribeExportInfoResponseBody {
 	s.ExportStatus = &v
 	return s
 }
 
-func (s *DescribeExportInfoResponseBody) SetCurrentCount(v int32) *DescribeExportInfoResponseBody {
-	s.CurrentCount = &v
-	return s
-}
-
 func (s *DescribeExportInfoResponseBody) SetId(v int64) *DescribeExportInfoResponseBody {
 	s.Id = &v
-	return s
-}
-
-func (s *DescribeExportInfoResponseBody) SetLink(v string) *DescribeExportInfoResponseBody {
-	s.Link = &v
 	return s
 }
 
@@ -5419,8 +7196,7 @@ func (s *DescribeExportInfoResponse) SetBody(v *DescribeExportInfoResponseBody) 
 }
 
 type DescribeExposedInstanceCriteriaRequest struct {
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeExposedInstanceCriteriaRequest) String() string {
@@ -5431,19 +7207,14 @@ func (s DescribeExposedInstanceCriteriaRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeExposedInstanceCriteriaRequest) SetSourceIp(v string) *DescribeExposedInstanceCriteriaRequest {
-	s.SourceIp = &v
-	return s
-}
-
 func (s *DescribeExposedInstanceCriteriaRequest) SetValue(v string) *DescribeExposedInstanceCriteriaRequest {
 	s.Value = &v
 	return s
 }
 
 type DescribeExposedInstanceCriteriaResponseBody struct {
-	CriteriaList []*DescribeExposedInstanceCriteriaResponseBodyCriteriaList `json:"CriteriaList,omitempty" xml:"CriteriaList,omitempty" type:"Repeated"`
 	RequestId    *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	CriteriaList []*DescribeExposedInstanceCriteriaResponseBodyCriteriaList `json:"CriteriaList,omitempty" xml:"CriteriaList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeExposedInstanceCriteriaResponseBody) String() string {
@@ -5454,20 +7225,20 @@ func (s DescribeExposedInstanceCriteriaResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeExposedInstanceCriteriaResponseBody) SetCriteriaList(v []*DescribeExposedInstanceCriteriaResponseBodyCriteriaList) *DescribeExposedInstanceCriteriaResponseBody {
-	s.CriteriaList = v
-	return s
-}
-
 func (s *DescribeExposedInstanceCriteriaResponseBody) SetRequestId(v string) *DescribeExposedInstanceCriteriaResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *DescribeExposedInstanceCriteriaResponseBody) SetCriteriaList(v []*DescribeExposedInstanceCriteriaResponseBodyCriteriaList) *DescribeExposedInstanceCriteriaResponseBody {
+	s.CriteriaList = v
+	return s
+}
+
 type DescribeExposedInstanceCriteriaResponseBodyCriteriaList struct {
 	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Values *string `json:"Values,omitempty" xml:"Values,omitempty"`
 	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Values *string `json:"Values,omitempty" xml:"Values,omitempty"`
 }
 
 func (s DescribeExposedInstanceCriteriaResponseBodyCriteriaList) String() string {
@@ -5483,13 +7254,13 @@ func (s *DescribeExposedInstanceCriteriaResponseBodyCriteriaList) SetType(v stri
 	return s
 }
 
-func (s *DescribeExposedInstanceCriteriaResponseBodyCriteriaList) SetValues(v string) *DescribeExposedInstanceCriteriaResponseBodyCriteriaList {
-	s.Values = &v
+func (s *DescribeExposedInstanceCriteriaResponseBodyCriteriaList) SetName(v string) *DescribeExposedInstanceCriteriaResponseBodyCriteriaList {
+	s.Name = &v
 	return s
 }
 
-func (s *DescribeExposedInstanceCriteriaResponseBodyCriteriaList) SetName(v string) *DescribeExposedInstanceCriteriaResponseBodyCriteriaList {
-	s.Name = &v
+func (s *DescribeExposedInstanceCriteriaResponseBodyCriteriaList) SetValues(v string) *DescribeExposedInstanceCriteriaResponseBodyCriteriaList {
+	s.Values = &v
 	return s
 }
 
@@ -5517,8 +7288,7 @@ func (s *DescribeExposedInstanceCriteriaResponse) SetBody(v *DescribeExposedInst
 }
 
 type DescribeExposedInstanceDetailRequest struct {
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Uuid     *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s DescribeExposedInstanceDetailRequest) String() string {
@@ -5527,11 +7297,6 @@ func (s DescribeExposedInstanceDetailRequest) String() string {
 
 func (s DescribeExposedInstanceDetailRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeExposedInstanceDetailRequest) SetSourceIp(v string) *DescribeExposedInstanceDetailRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *DescribeExposedInstanceDetailRequest) SetUuid(v string) *DescribeExposedInstanceDetailRequest {
@@ -5564,21 +7329,19 @@ func (s *DescribeExposedInstanceDetailResponseBody) SetExposedChains(v []*Descri
 
 type DescribeExposedInstanceDetailResponseBodyExposedChains struct {
 	ExposureIp        *string                                                              `json:"ExposureIp,omitempty" xml:"ExposureIp,omitempty"`
+	GroupNo           *string                                                              `json:"GroupNo,omitempty" xml:"GroupNo,omitempty"`
 	InternetIp        *string                                                              `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	NntfVulCount      *int32                                                               `json:"NntfVulCount,omitempty" xml:"NntfVulCount,omitempty"`
-	AllVulList        []*DescribeExposedInstanceDetailResponseBodyExposedChainsAllVulList  `json:"AllVulList,omitempty" xml:"AllVulList,omitempty" type:"Repeated"`
 	InstanceId        *string                                                              `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ExposureType      *string                                                              `json:"ExposureType,omitempty" xml:"ExposureType,omitempty"`
 	IntranetIp        *string                                                              `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
 	ExposureTypeId    *string                                                              `json:"ExposureTypeId,omitempty" xml:"ExposureTypeId,omitempty"`
 	RegionId          *string                                                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	AsapVulCount      *int32                                                               `json:"AsapVulCount,omitempty" xml:"AsapVulCount,omitempty"`
 	Uuid              *string                                                              `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	RealVulList       []*DescribeExposedInstanceDetailResponseBodyExposedChainsRealVulList `json:"RealVulList,omitempty" xml:"RealVulList,omitempty" type:"Repeated"`
 	ExposurePort      *string                                                              `json:"ExposurePort,omitempty" xml:"ExposurePort,omitempty"`
 	InstanceName      *string                                                              `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	LaterVulCount     *int32                                                               `json:"LaterVulCount,omitempty" xml:"LaterVulCount,omitempty"`
 	ExposureComponent *string                                                              `json:"ExposureComponent,omitempty" xml:"ExposureComponent,omitempty"`
+	RealVulList       []*DescribeExposedInstanceDetailResponseBodyExposedChainsRealVulList `json:"RealVulList,omitempty" xml:"RealVulList,omitempty" type:"Repeated"`
+	AllVulList        []*DescribeExposedInstanceDetailResponseBodyExposedChainsAllVulList  `json:"AllVulList,omitempty" xml:"AllVulList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeExposedInstanceDetailResponseBodyExposedChains) String() string {
@@ -5594,18 +7357,13 @@ func (s *DescribeExposedInstanceDetailResponseBodyExposedChains) SetExposureIp(v
 	return s
 }
 
+func (s *DescribeExposedInstanceDetailResponseBodyExposedChains) SetGroupNo(v string) *DescribeExposedInstanceDetailResponseBodyExposedChains {
+	s.GroupNo = &v
+	return s
+}
+
 func (s *DescribeExposedInstanceDetailResponseBodyExposedChains) SetInternetIp(v string) *DescribeExposedInstanceDetailResponseBodyExposedChains {
 	s.InternetIp = &v
-	return s
-}
-
-func (s *DescribeExposedInstanceDetailResponseBodyExposedChains) SetNntfVulCount(v int32) *DescribeExposedInstanceDetailResponseBodyExposedChains {
-	s.NntfVulCount = &v
-	return s
-}
-
-func (s *DescribeExposedInstanceDetailResponseBodyExposedChains) SetAllVulList(v []*DescribeExposedInstanceDetailResponseBodyExposedChainsAllVulList) *DescribeExposedInstanceDetailResponseBodyExposedChains {
-	s.AllVulList = v
 	return s
 }
 
@@ -5634,18 +7392,8 @@ func (s *DescribeExposedInstanceDetailResponseBodyExposedChains) SetRegionId(v s
 	return s
 }
 
-func (s *DescribeExposedInstanceDetailResponseBodyExposedChains) SetAsapVulCount(v int32) *DescribeExposedInstanceDetailResponseBodyExposedChains {
-	s.AsapVulCount = &v
-	return s
-}
-
 func (s *DescribeExposedInstanceDetailResponseBodyExposedChains) SetUuid(v string) *DescribeExposedInstanceDetailResponseBodyExposedChains {
 	s.Uuid = &v
-	return s
-}
-
-func (s *DescribeExposedInstanceDetailResponseBodyExposedChains) SetRealVulList(v []*DescribeExposedInstanceDetailResponseBodyExposedChainsRealVulList) *DescribeExposedInstanceDetailResponseBodyExposedChains {
-	s.RealVulList = v
 	return s
 }
 
@@ -5659,61 +7407,25 @@ func (s *DescribeExposedInstanceDetailResponseBodyExposedChains) SetInstanceName
 	return s
 }
 
-func (s *DescribeExposedInstanceDetailResponseBodyExposedChains) SetLaterVulCount(v int32) *DescribeExposedInstanceDetailResponseBodyExposedChains {
-	s.LaterVulCount = &v
-	return s
-}
-
 func (s *DescribeExposedInstanceDetailResponseBodyExposedChains) SetExposureComponent(v string) *DescribeExposedInstanceDetailResponseBodyExposedChains {
 	s.ExposureComponent = &v
 	return s
 }
 
-type DescribeExposedInstanceDetailResponseBodyExposedChainsAllVulList struct {
-	Type      *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
-	Necessity *string `json:"Necessity,omitempty" xml:"Necessity,omitempty"`
-	Uuid      *int32  `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
-}
-
-func (s DescribeExposedInstanceDetailResponseBodyExposedChainsAllVulList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeExposedInstanceDetailResponseBodyExposedChainsAllVulList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeExposedInstanceDetailResponseBodyExposedChainsAllVulList) SetType(v int32) *DescribeExposedInstanceDetailResponseBodyExposedChainsAllVulList {
-	s.Type = &v
+func (s *DescribeExposedInstanceDetailResponseBodyExposedChains) SetRealVulList(v []*DescribeExposedInstanceDetailResponseBodyExposedChainsRealVulList) *DescribeExposedInstanceDetailResponseBodyExposedChains {
+	s.RealVulList = v
 	return s
 }
 
-func (s *DescribeExposedInstanceDetailResponseBodyExposedChainsAllVulList) SetNecessity(v string) *DescribeExposedInstanceDetailResponseBodyExposedChainsAllVulList {
-	s.Necessity = &v
-	return s
-}
-
-func (s *DescribeExposedInstanceDetailResponseBodyExposedChainsAllVulList) SetUuid(v int32) *DescribeExposedInstanceDetailResponseBodyExposedChainsAllVulList {
-	s.Uuid = &v
-	return s
-}
-
-func (s *DescribeExposedInstanceDetailResponseBodyExposedChainsAllVulList) SetAliasName(v string) *DescribeExposedInstanceDetailResponseBodyExposedChainsAllVulList {
-	s.AliasName = &v
-	return s
-}
-
-func (s *DescribeExposedInstanceDetailResponseBodyExposedChainsAllVulList) SetName(v string) *DescribeExposedInstanceDetailResponseBodyExposedChainsAllVulList {
-	s.Name = &v
+func (s *DescribeExposedInstanceDetailResponseBodyExposedChains) SetAllVulList(v []*DescribeExposedInstanceDetailResponseBodyExposedChainsAllVulList) *DescribeExposedInstanceDetailResponseBodyExposedChains {
+	s.AllVulList = v
 	return s
 }
 
 type DescribeExposedInstanceDetailResponseBodyExposedChainsRealVulList struct {
-	Type      *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	Necessity *string `json:"Necessity,omitempty" xml:"Necessity,omitempty"`
-	Uuid      *int32  `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	Uuid      *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
 	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
@@ -5726,7 +7438,7 @@ func (s DescribeExposedInstanceDetailResponseBodyExposedChainsRealVulList) GoStr
 	return s.String()
 }
 
-func (s *DescribeExposedInstanceDetailResponseBodyExposedChainsRealVulList) SetType(v int32) *DescribeExposedInstanceDetailResponseBodyExposedChainsRealVulList {
+func (s *DescribeExposedInstanceDetailResponseBodyExposedChainsRealVulList) SetType(v string) *DescribeExposedInstanceDetailResponseBodyExposedChainsRealVulList {
 	s.Type = &v
 	return s
 }
@@ -5736,7 +7448,7 @@ func (s *DescribeExposedInstanceDetailResponseBodyExposedChainsRealVulList) SetN
 	return s
 }
 
-func (s *DescribeExposedInstanceDetailResponseBodyExposedChainsRealVulList) SetUuid(v int32) *DescribeExposedInstanceDetailResponseBodyExposedChainsRealVulList {
+func (s *DescribeExposedInstanceDetailResponseBodyExposedChainsRealVulList) SetUuid(v string) *DescribeExposedInstanceDetailResponseBodyExposedChainsRealVulList {
 	s.Uuid = &v
 	return s
 }
@@ -5747,6 +7459,47 @@ func (s *DescribeExposedInstanceDetailResponseBodyExposedChainsRealVulList) SetA
 }
 
 func (s *DescribeExposedInstanceDetailResponseBodyExposedChainsRealVulList) SetName(v string) *DescribeExposedInstanceDetailResponseBodyExposedChainsRealVulList {
+	s.Name = &v
+	return s
+}
+
+type DescribeExposedInstanceDetailResponseBodyExposedChainsAllVulList struct {
+	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Necessity *string `json:"Necessity,omitempty" xml:"Necessity,omitempty"`
+	Uuid      *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DescribeExposedInstanceDetailResponseBodyExposedChainsAllVulList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeExposedInstanceDetailResponseBodyExposedChainsAllVulList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeExposedInstanceDetailResponseBodyExposedChainsAllVulList) SetType(v string) *DescribeExposedInstanceDetailResponseBodyExposedChainsAllVulList {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeExposedInstanceDetailResponseBodyExposedChainsAllVulList) SetNecessity(v string) *DescribeExposedInstanceDetailResponseBodyExposedChainsAllVulList {
+	s.Necessity = &v
+	return s
+}
+
+func (s *DescribeExposedInstanceDetailResponseBodyExposedChainsAllVulList) SetUuid(v string) *DescribeExposedInstanceDetailResponseBodyExposedChainsAllVulList {
+	s.Uuid = &v
+	return s
+}
+
+func (s *DescribeExposedInstanceDetailResponseBodyExposedChainsAllVulList) SetAliasName(v string) *DescribeExposedInstanceDetailResponseBodyExposedChainsAllVulList {
+	s.AliasName = &v
+	return s
+}
+
+func (s *DescribeExposedInstanceDetailResponseBodyExposedChainsAllVulList) SetName(v string) *DescribeExposedInstanceDetailResponseBodyExposedChainsAllVulList {
 	s.Name = &v
 	return s
 }
@@ -5775,15 +7528,12 @@ func (s *DescribeExposedInstanceDetailResponse) SetBody(v *DescribeExposedInstan
 }
 
 type DescribeExposedInstanceListRequest struct {
-	SourceIp          *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	From              *string `json:"From,omitempty" xml:"From,omitempty"`
 	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	CurrentPage       *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Uuid              *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 	GroupId           *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	VulStatus         *bool   `json:"VulStatus,omitempty" xml:"VulStatus,omitempty"`
+	HealthStatus      *bool   `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
 	ExposureComponent *string `json:"ExposureComponent,omitempty" xml:"ExposureComponent,omitempty"`
-	ExposureType      *string `json:"ExposureType,omitempty" xml:"ExposureType,omitempty"`
 	ExposurePort      *string `json:"ExposurePort,omitempty" xml:"ExposurePort,omitempty"`
 	ExposureIp        *string `json:"ExposureIp,omitempty" xml:"ExposureIp,omitempty"`
 	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -5798,16 +7548,6 @@ func (s DescribeExposedInstanceListRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeExposedInstanceListRequest) SetSourceIp(v string) *DescribeExposedInstanceListRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DescribeExposedInstanceListRequest) SetFrom(v string) *DescribeExposedInstanceListRequest {
-	s.From = &v
-	return s
-}
-
 func (s *DescribeExposedInstanceListRequest) SetPageSize(v int32) *DescribeExposedInstanceListRequest {
 	s.PageSize = &v
 	return s
@@ -5815,11 +7555,6 @@ func (s *DescribeExposedInstanceListRequest) SetPageSize(v int32) *DescribeExpos
 
 func (s *DescribeExposedInstanceListRequest) SetCurrentPage(v int32) *DescribeExposedInstanceListRequest {
 	s.CurrentPage = &v
-	return s
-}
-
-func (s *DescribeExposedInstanceListRequest) SetUuid(v string) *DescribeExposedInstanceListRequest {
-	s.Uuid = &v
 	return s
 }
 
@@ -5833,13 +7568,13 @@ func (s *DescribeExposedInstanceListRequest) SetVulStatus(v bool) *DescribeExpos
 	return s
 }
 
-func (s *DescribeExposedInstanceListRequest) SetExposureComponent(v string) *DescribeExposedInstanceListRequest {
-	s.ExposureComponent = &v
+func (s *DescribeExposedInstanceListRequest) SetHealthStatus(v bool) *DescribeExposedInstanceListRequest {
+	s.HealthStatus = &v
 	return s
 }
 
-func (s *DescribeExposedInstanceListRequest) SetExposureType(v string) *DescribeExposedInstanceListRequest {
-	s.ExposureType = &v
+func (s *DescribeExposedInstanceListRequest) SetExposureComponent(v string) *DescribeExposedInstanceListRequest {
+	s.ExposureComponent = &v
 	return s
 }
 
@@ -5864,10 +7599,9 @@ func (s *DescribeExposedInstanceListRequest) SetInstanceName(v string) *Describe
 }
 
 type DescribeExposedInstanceListResponseBody struct {
-	PageInfo         *DescribeExposedInstanceListResponseBodyPageInfo           `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	RequestId        *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageInfo         *DescribeExposedInstanceListResponseBodyPageInfo           `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	ExposedInstances []*DescribeExposedInstanceListResponseBodyExposedInstances `json:"ExposedInstances,omitempty" xml:"ExposedInstances,omitempty" type:"Repeated"`
-	Success          *bool                                                      `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeExposedInstanceListResponseBody) String() string {
@@ -5878,23 +7612,18 @@ func (s DescribeExposedInstanceListResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeExposedInstanceListResponseBody) SetPageInfo(v *DescribeExposedInstanceListResponseBodyPageInfo) *DescribeExposedInstanceListResponseBody {
-	s.PageInfo = v
-	return s
-}
-
 func (s *DescribeExposedInstanceListResponseBody) SetRequestId(v string) *DescribeExposedInstanceListResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *DescribeExposedInstanceListResponseBody) SetExposedInstances(v []*DescribeExposedInstanceListResponseBodyExposedInstances) *DescribeExposedInstanceListResponseBody {
-	s.ExposedInstances = v
+func (s *DescribeExposedInstanceListResponseBody) SetPageInfo(v *DescribeExposedInstanceListResponseBodyPageInfo) *DescribeExposedInstanceListResponseBody {
+	s.PageInfo = v
 	return s
 }
 
-func (s *DescribeExposedInstanceListResponseBody) SetSuccess(v bool) *DescribeExposedInstanceListResponseBody {
-	s.Success = &v
+func (s *DescribeExposedInstanceListResponseBody) SetExposedInstances(v []*DescribeExposedInstanceListResponseBodyExposedInstances) *DescribeExposedInstanceListResponseBody {
+	s.ExposedInstances = v
 	return s
 }
 
@@ -5934,23 +7663,24 @@ func (s *DescribeExposedInstanceListResponseBodyPageInfo) SetCount(v int32) *Des
 }
 
 type DescribeExposedInstanceListResponseBodyExposedInstances struct {
-	TotalVulCount     *int32  `json:"TotalVulCount,omitempty" xml:"TotalVulCount,omitempty"`
-	ExposureIp        *string `json:"ExposureIp,omitempty" xml:"ExposureIp,omitempty"`
-	InternetIp        *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	NntfVulCount      *int32  `json:"NntfVulCount,omitempty" xml:"NntfVulCount,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ExposureType      *string `json:"ExposureType,omitempty" xml:"ExposureType,omitempty"`
-	IntranetIp        *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	ExposureTypeId    *string `json:"ExposureTypeId,omitempty" xml:"ExposureTypeId,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	AsapVulCount      *int32  `json:"AsapVulCount,omitempty" xml:"AsapVulCount,omitempty"`
-	Uuid              *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	ExposurePort      *string `json:"ExposurePort,omitempty" xml:"ExposurePort,omitempty"`
-	GroupName         *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	GroupId           *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	InstanceName      *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	ExposureComponent *string `json:"ExposureComponent,omitempty" xml:"ExposureComponent,omitempty"`
-	LaterVulCount     *int32  `json:"LaterVulCount,omitempty" xml:"LaterVulCount,omitempty"`
+	ExposureIp         *string `json:"ExposureIp,omitempty" xml:"ExposureIp,omitempty"`
+	TotalVulCount      *int32  `json:"TotalVulCount,omitempty" xml:"TotalVulCount,omitempty"`
+	InternetIp         *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	NntfVulCount       *int32  `json:"NntfVulCount,omitempty" xml:"NntfVulCount,omitempty"`
+	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ExposureType       *string `json:"ExposureType,omitempty" xml:"ExposureType,omitempty"`
+	IntranetIp         *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ExposureTypeId     *string `json:"ExposureTypeId,omitempty" xml:"ExposureTypeId,omitempty"`
+	AsapVulCount       *int32  `json:"AsapVulCount,omitempty" xml:"AsapVulCount,omitempty"`
+	ExposurePort       *string `json:"ExposurePort,omitempty" xml:"ExposurePort,omitempty"`
+	Uuid               *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	GroupName          *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	GroupId            *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	ExploitHealthCount *int32  `json:"ExploitHealthCount,omitempty" xml:"ExploitHealthCount,omitempty"`
+	InstanceName       *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	ExposureComponent  *string `json:"ExposureComponent,omitempty" xml:"ExposureComponent,omitempty"`
+	LaterVulCount      *int32  `json:"LaterVulCount,omitempty" xml:"LaterVulCount,omitempty"`
 }
 
 func (s DescribeExposedInstanceListResponseBodyExposedInstances) String() string {
@@ -5961,13 +7691,13 @@ func (s DescribeExposedInstanceListResponseBodyExposedInstances) GoString() stri
 	return s.String()
 }
 
-func (s *DescribeExposedInstanceListResponseBodyExposedInstances) SetTotalVulCount(v int32) *DescribeExposedInstanceListResponseBodyExposedInstances {
-	s.TotalVulCount = &v
+func (s *DescribeExposedInstanceListResponseBodyExposedInstances) SetExposureIp(v string) *DescribeExposedInstanceListResponseBodyExposedInstances {
+	s.ExposureIp = &v
 	return s
 }
 
-func (s *DescribeExposedInstanceListResponseBodyExposedInstances) SetExposureIp(v string) *DescribeExposedInstanceListResponseBodyExposedInstances {
-	s.ExposureIp = &v
+func (s *DescribeExposedInstanceListResponseBodyExposedInstances) SetTotalVulCount(v int32) *DescribeExposedInstanceListResponseBodyExposedInstances {
+	s.TotalVulCount = &v
 	return s
 }
 
@@ -5996,13 +7726,13 @@ func (s *DescribeExposedInstanceListResponseBodyExposedInstances) SetIntranetIp(
 	return s
 }
 
-func (s *DescribeExposedInstanceListResponseBodyExposedInstances) SetExposureTypeId(v string) *DescribeExposedInstanceListResponseBodyExposedInstances {
-	s.ExposureTypeId = &v
+func (s *DescribeExposedInstanceListResponseBodyExposedInstances) SetRegionId(v string) *DescribeExposedInstanceListResponseBodyExposedInstances {
+	s.RegionId = &v
 	return s
 }
 
-func (s *DescribeExposedInstanceListResponseBodyExposedInstances) SetRegionId(v string) *DescribeExposedInstanceListResponseBodyExposedInstances {
-	s.RegionId = &v
+func (s *DescribeExposedInstanceListResponseBodyExposedInstances) SetExposureTypeId(v string) *DescribeExposedInstanceListResponseBodyExposedInstances {
+	s.ExposureTypeId = &v
 	return s
 }
 
@@ -6011,13 +7741,13 @@ func (s *DescribeExposedInstanceListResponseBodyExposedInstances) SetAsapVulCoun
 	return s
 }
 
-func (s *DescribeExposedInstanceListResponseBodyExposedInstances) SetUuid(v string) *DescribeExposedInstanceListResponseBodyExposedInstances {
-	s.Uuid = &v
+func (s *DescribeExposedInstanceListResponseBodyExposedInstances) SetExposurePort(v string) *DescribeExposedInstanceListResponseBodyExposedInstances {
+	s.ExposurePort = &v
 	return s
 }
 
-func (s *DescribeExposedInstanceListResponseBodyExposedInstances) SetExposurePort(v string) *DescribeExposedInstanceListResponseBodyExposedInstances {
-	s.ExposurePort = &v
+func (s *DescribeExposedInstanceListResponseBodyExposedInstances) SetUuid(v string) *DescribeExposedInstanceListResponseBodyExposedInstances {
+	s.Uuid = &v
 	return s
 }
 
@@ -6028,6 +7758,11 @@ func (s *DescribeExposedInstanceListResponseBodyExposedInstances) SetGroupName(v
 
 func (s *DescribeExposedInstanceListResponseBodyExposedInstances) SetGroupId(v int64) *DescribeExposedInstanceListResponseBodyExposedInstances {
 	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeExposedInstanceListResponseBodyExposedInstances) SetExploitHealthCount(v int32) *DescribeExposedInstanceListResponseBodyExposedInstances {
+	s.ExploitHealthCount = &v
 	return s
 }
 
@@ -6069,33 +7804,17 @@ func (s *DescribeExposedInstanceListResponse) SetBody(v *DescribeExposedInstance
 	return s
 }
 
-type DescribeExposedStatisticsRequest struct {
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-}
-
-func (s DescribeExposedStatisticsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeExposedStatisticsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeExposedStatisticsRequest) SetSourceIp(v string) *DescribeExposedStatisticsRequest {
-	s.SourceIp = &v
-	return s
-}
-
 type DescribeExposedStatisticsResponseBody struct {
-	ExposedPortCount      *int32  `json:"ExposedPortCount,omitempty" xml:"ExposedPortCount,omitempty"`
-	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ExposedLaterVulCount  *int32  `json:"ExposedLaterVulCount,omitempty" xml:"ExposedLaterVulCount,omitempty"`
-	ExposedInstanceCount  *int32  `json:"ExposedInstanceCount,omitempty" xml:"ExposedInstanceCount,omitempty"`
-	GatewayAssetCount     *int32  `json:"GatewayAssetCount,omitempty" xml:"GatewayAssetCount,omitempty"`
-	ExposedComponentCount *int32  `json:"ExposedComponentCount,omitempty" xml:"ExposedComponentCount,omitempty"`
-	ExposedNntfVulCount   *int32  `json:"ExposedNntfVulCount,omitempty" xml:"ExposedNntfVulCount,omitempty"`
-	ExposedIpCount        *int32  `json:"ExposedIpCount,omitempty" xml:"ExposedIpCount,omitempty"`
-	ExposedAsapVulCount   *int32  `json:"ExposedAsapVulCount,omitempty" xml:"ExposedAsapVulCount,omitempty"`
+	RequestId                       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ExposedLaterVulCount            *int32  `json:"ExposedLaterVulCount,omitempty" xml:"ExposedLaterVulCount,omitempty"`
+	ExposedComponentCount           *int32  `json:"ExposedComponentCount,omitempty" xml:"ExposedComponentCount,omitempty"`
+	ExposedPortCount                *int32  `json:"ExposedPortCount,omitempty" xml:"ExposedPortCount,omitempty"`
+	ExposedInstanceCount            *int32  `json:"ExposedInstanceCount,omitempty" xml:"ExposedInstanceCount,omitempty"`
+	ExposedWeekPasswordMachineCount *int32  `json:"ExposedWeekPasswordMachineCount,omitempty" xml:"ExposedWeekPasswordMachineCount,omitempty"`
+	ExposedNntfVulCount             *int32  `json:"ExposedNntfVulCount,omitempty" xml:"ExposedNntfVulCount,omitempty"`
+	GatewayAssetCount               *int32  `json:"GatewayAssetCount,omitempty" xml:"GatewayAssetCount,omitempty"`
+	ExposedIpCount                  *int32  `json:"ExposedIpCount,omitempty" xml:"ExposedIpCount,omitempty"`
+	ExposedAsapVulCount             *int32  `json:"ExposedAsapVulCount,omitempty" xml:"ExposedAsapVulCount,omitempty"`
 }
 
 func (s DescribeExposedStatisticsResponseBody) String() string {
@@ -6104,11 +7823,6 @@ func (s DescribeExposedStatisticsResponseBody) String() string {
 
 func (s DescribeExposedStatisticsResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeExposedStatisticsResponseBody) SetExposedPortCount(v int32) *DescribeExposedStatisticsResponseBody {
-	s.ExposedPortCount = &v
-	return s
 }
 
 func (s *DescribeExposedStatisticsResponseBody) SetRequestId(v string) *DescribeExposedStatisticsResponseBody {
@@ -6121,23 +7835,33 @@ func (s *DescribeExposedStatisticsResponseBody) SetExposedLaterVulCount(v int32)
 	return s
 }
 
-func (s *DescribeExposedStatisticsResponseBody) SetExposedInstanceCount(v int32) *DescribeExposedStatisticsResponseBody {
-	s.ExposedInstanceCount = &v
-	return s
-}
-
-func (s *DescribeExposedStatisticsResponseBody) SetGatewayAssetCount(v int32) *DescribeExposedStatisticsResponseBody {
-	s.GatewayAssetCount = &v
-	return s
-}
-
 func (s *DescribeExposedStatisticsResponseBody) SetExposedComponentCount(v int32) *DescribeExposedStatisticsResponseBody {
 	s.ExposedComponentCount = &v
 	return s
 }
 
+func (s *DescribeExposedStatisticsResponseBody) SetExposedPortCount(v int32) *DescribeExposedStatisticsResponseBody {
+	s.ExposedPortCount = &v
+	return s
+}
+
+func (s *DescribeExposedStatisticsResponseBody) SetExposedInstanceCount(v int32) *DescribeExposedStatisticsResponseBody {
+	s.ExposedInstanceCount = &v
+	return s
+}
+
+func (s *DescribeExposedStatisticsResponseBody) SetExposedWeekPasswordMachineCount(v int32) *DescribeExposedStatisticsResponseBody {
+	s.ExposedWeekPasswordMachineCount = &v
+	return s
+}
+
 func (s *DescribeExposedStatisticsResponseBody) SetExposedNntfVulCount(v int32) *DescribeExposedStatisticsResponseBody {
 	s.ExposedNntfVulCount = &v
+	return s
+}
+
+func (s *DescribeExposedStatisticsResponseBody) SetGatewayAssetCount(v int32) *DescribeExposedStatisticsResponseBody {
+	s.GatewayAssetCount = &v
 	return s
 }
 
@@ -6174,8 +7898,194 @@ func (s *DescribeExposedStatisticsResponse) SetBody(v *DescribeExposedStatistics
 	return s
 }
 
+type DescribeExposedStatisticsDetailRequest struct {
+	PageSize                    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	CurrentPage                 *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	StatisticsType              *string `json:"StatisticsType,omitempty" xml:"StatisticsType,omitempty"`
+	StatisticsTypeInstanceValue *string `json:"StatisticsTypeInstanceValue,omitempty" xml:"StatisticsTypeInstanceValue,omitempty"`
+	StatisticsTypeGatewayType   *string `json:"StatisticsTypeGatewayType,omitempty" xml:"StatisticsTypeGatewayType,omitempty"`
+}
+
+func (s DescribeExposedStatisticsDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeExposedStatisticsDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeExposedStatisticsDetailRequest) SetPageSize(v int32) *DescribeExposedStatisticsDetailRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeExposedStatisticsDetailRequest) SetCurrentPage(v int32) *DescribeExposedStatisticsDetailRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeExposedStatisticsDetailRequest) SetStatisticsType(v string) *DescribeExposedStatisticsDetailRequest {
+	s.StatisticsType = &v
+	return s
+}
+
+func (s *DescribeExposedStatisticsDetailRequest) SetStatisticsTypeInstanceValue(v string) *DescribeExposedStatisticsDetailRequest {
+	s.StatisticsTypeInstanceValue = &v
+	return s
+}
+
+func (s *DescribeExposedStatisticsDetailRequest) SetStatisticsTypeGatewayType(v string) *DescribeExposedStatisticsDetailRequest {
+	s.StatisticsTypeGatewayType = &v
+	return s
+}
+
+type DescribeExposedStatisticsDetailResponseBody struct {
+	RequestId         *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageInfo          *DescribeExposedStatisticsDetailResponseBodyPageInfo            `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	StatisticsDetails []*DescribeExposedStatisticsDetailResponseBodyStatisticsDetails `json:"StatisticsDetails,omitempty" xml:"StatisticsDetails,omitempty" type:"Repeated"`
+}
+
+func (s DescribeExposedStatisticsDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeExposedStatisticsDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeExposedStatisticsDetailResponseBody) SetRequestId(v string) *DescribeExposedStatisticsDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeExposedStatisticsDetailResponseBody) SetPageInfo(v *DescribeExposedStatisticsDetailResponseBodyPageInfo) *DescribeExposedStatisticsDetailResponseBody {
+	s.PageInfo = v
+	return s
+}
+
+func (s *DescribeExposedStatisticsDetailResponseBody) SetStatisticsDetails(v []*DescribeExposedStatisticsDetailResponseBodyStatisticsDetails) *DescribeExposedStatisticsDetailResponseBody {
+	s.StatisticsDetails = v
+	return s
+}
+
+type DescribeExposedStatisticsDetailResponseBodyPageInfo struct {
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount  *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Count       *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+}
+
+func (s DescribeExposedStatisticsDetailResponseBodyPageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeExposedStatisticsDetailResponseBodyPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeExposedStatisticsDetailResponseBodyPageInfo) SetCurrentPage(v int32) *DescribeExposedStatisticsDetailResponseBodyPageInfo {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeExposedStatisticsDetailResponseBodyPageInfo) SetPageSize(v int32) *DescribeExposedStatisticsDetailResponseBodyPageInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeExposedStatisticsDetailResponseBodyPageInfo) SetTotalCount(v int32) *DescribeExposedStatisticsDetailResponseBodyPageInfo {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeExposedStatisticsDetailResponseBodyPageInfo) SetCount(v int32) *DescribeExposedStatisticsDetailResponseBodyPageInfo {
+	s.Count = &v
+	return s
+}
+
+type DescribeExposedStatisticsDetailResponseBodyStatisticsDetails struct {
+	ExposureIp               *string `json:"ExposureIp,omitempty" xml:"ExposureIp,omitempty"`
+	ExposurePort             *string `json:"ExposurePort,omitempty" xml:"ExposurePort,omitempty"`
+	ExposureTypeInstanceName *string `json:"ExposureTypeInstanceName,omitempty" xml:"ExposureTypeInstanceName,omitempty"`
+	ExposedCount             *int32  `json:"ExposedCount,omitempty" xml:"ExposedCount,omitempty"`
+	ExposureType             *string `json:"ExposureType,omitempty" xml:"ExposureType,omitempty"`
+	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ExposureComponent        *string `json:"ExposureComponent,omitempty" xml:"ExposureComponent,omitempty"`
+	ExposureTypeId           *string `json:"ExposureTypeId,omitempty" xml:"ExposureTypeId,omitempty"`
+}
+
+func (s DescribeExposedStatisticsDetailResponseBodyStatisticsDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeExposedStatisticsDetailResponseBodyStatisticsDetails) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeExposedStatisticsDetailResponseBodyStatisticsDetails) SetExposureIp(v string) *DescribeExposedStatisticsDetailResponseBodyStatisticsDetails {
+	s.ExposureIp = &v
+	return s
+}
+
+func (s *DescribeExposedStatisticsDetailResponseBodyStatisticsDetails) SetExposurePort(v string) *DescribeExposedStatisticsDetailResponseBodyStatisticsDetails {
+	s.ExposurePort = &v
+	return s
+}
+
+func (s *DescribeExposedStatisticsDetailResponseBodyStatisticsDetails) SetExposureTypeInstanceName(v string) *DescribeExposedStatisticsDetailResponseBodyStatisticsDetails {
+	s.ExposureTypeInstanceName = &v
+	return s
+}
+
+func (s *DescribeExposedStatisticsDetailResponseBodyStatisticsDetails) SetExposedCount(v int32) *DescribeExposedStatisticsDetailResponseBodyStatisticsDetails {
+	s.ExposedCount = &v
+	return s
+}
+
+func (s *DescribeExposedStatisticsDetailResponseBodyStatisticsDetails) SetExposureType(v string) *DescribeExposedStatisticsDetailResponseBodyStatisticsDetails {
+	s.ExposureType = &v
+	return s
+}
+
+func (s *DescribeExposedStatisticsDetailResponseBodyStatisticsDetails) SetRegionId(v string) *DescribeExposedStatisticsDetailResponseBodyStatisticsDetails {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeExposedStatisticsDetailResponseBodyStatisticsDetails) SetExposureComponent(v string) *DescribeExposedStatisticsDetailResponseBodyStatisticsDetails {
+	s.ExposureComponent = &v
+	return s
+}
+
+func (s *DescribeExposedStatisticsDetailResponseBodyStatisticsDetails) SetExposureTypeId(v string) *DescribeExposedStatisticsDetailResponseBodyStatisticsDetails {
+	s.ExposureTypeId = &v
+	return s
+}
+
+type DescribeExposedStatisticsDetailResponse struct {
+	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeExposedStatisticsDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeExposedStatisticsDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeExposedStatisticsDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeExposedStatisticsDetailResponse) SetHeaders(v map[string]*string) *DescribeExposedStatisticsDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeExposedStatisticsDetailResponse) SetBody(v *DescribeExposedStatisticsDetailResponseBody) *DescribeExposedStatisticsDetailResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeFieldStatisticsRequest struct {
-	SourceIp     *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	MachineTypes *string `json:"MachineTypes,omitempty" xml:"MachineTypes,omitempty"`
 }
@@ -6186,11 +8096,6 @@ func (s DescribeFieldStatisticsRequest) String() string {
 
 func (s DescribeFieldStatisticsRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeFieldStatisticsRequest) SetSourceIp(v string) *DescribeFieldStatisticsRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *DescribeFieldStatisticsRequest) SetRegionId(v string) *DescribeFieldStatisticsRequest {
@@ -6230,14 +8135,14 @@ type DescribeFieldStatisticsResponseBodyGroupedFields struct {
 	OfflineInstanceCount     *int32 `json:"OfflineInstanceCount,omitempty" xml:"OfflineInstanceCount,omitempty"`
 	RegionCount              *int32 `json:"RegionCount,omitempty" xml:"RegionCount,omitempty"`
 	NewInstanceCount         *int32 `json:"NewInstanceCount,omitempty" xml:"NewInstanceCount,omitempty"`
-	GroupCount               *int32 `json:"GroupCount,omitempty" xml:"GroupCount,omitempty"`
 	ExposedInstanceCount     *int32 `json:"ExposedInstanceCount,omitempty" xml:"ExposedInstanceCount,omitempty"`
+	GroupCount               *int32 `json:"GroupCount,omitempty" xml:"GroupCount,omitempty"`
 	GeneralAssetCount        *int32 `json:"GeneralAssetCount,omitempty" xml:"GeneralAssetCount,omitempty"`
 	UnprotectedInstanceCount *int32 `json:"UnprotectedInstanceCount,omitempty" xml:"UnprotectedInstanceCount,omitempty"`
 	ImportantAssetCount      *int32 `json:"ImportantAssetCount,omitempty" xml:"ImportantAssetCount,omitempty"`
 	TestAssetCount           *int32 `json:"TestAssetCount,omitempty" xml:"TestAssetCount,omitempty"`
-	VpcCount                 *int32 `json:"VpcCount,omitempty" xml:"VpcCount,omitempty"`
 	InstanceCount            *int32 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	VpcCount                 *int32 `json:"VpcCount,omitempty" xml:"VpcCount,omitempty"`
 	NotRunningStatusCount    *int32 `json:"NotRunningStatusCount,omitempty" xml:"NotRunningStatusCount,omitempty"`
 	RiskInstanceCount        *int32 `json:"RiskInstanceCount,omitempty" xml:"RiskInstanceCount,omitempty"`
 }
@@ -6265,13 +8170,13 @@ func (s *DescribeFieldStatisticsResponseBodyGroupedFields) SetNewInstanceCount(v
 	return s
 }
 
-func (s *DescribeFieldStatisticsResponseBodyGroupedFields) SetGroupCount(v int32) *DescribeFieldStatisticsResponseBodyGroupedFields {
-	s.GroupCount = &v
+func (s *DescribeFieldStatisticsResponseBodyGroupedFields) SetExposedInstanceCount(v int32) *DescribeFieldStatisticsResponseBodyGroupedFields {
+	s.ExposedInstanceCount = &v
 	return s
 }
 
-func (s *DescribeFieldStatisticsResponseBodyGroupedFields) SetExposedInstanceCount(v int32) *DescribeFieldStatisticsResponseBodyGroupedFields {
-	s.ExposedInstanceCount = &v
+func (s *DescribeFieldStatisticsResponseBodyGroupedFields) SetGroupCount(v int32) *DescribeFieldStatisticsResponseBodyGroupedFields {
+	s.GroupCount = &v
 	return s
 }
 
@@ -6295,13 +8200,13 @@ func (s *DescribeFieldStatisticsResponseBodyGroupedFields) SetTestAssetCount(v i
 	return s
 }
 
-func (s *DescribeFieldStatisticsResponseBodyGroupedFields) SetVpcCount(v int32) *DescribeFieldStatisticsResponseBodyGroupedFields {
-	s.VpcCount = &v
+func (s *DescribeFieldStatisticsResponseBodyGroupedFields) SetInstanceCount(v int32) *DescribeFieldStatisticsResponseBodyGroupedFields {
+	s.InstanceCount = &v
 	return s
 }
 
-func (s *DescribeFieldStatisticsResponseBodyGroupedFields) SetInstanceCount(v int32) *DescribeFieldStatisticsResponseBodyGroupedFields {
-	s.InstanceCount = &v
+func (s *DescribeFieldStatisticsResponseBodyGroupedFields) SetVpcCount(v int32) *DescribeFieldStatisticsResponseBodyGroupedFields {
+	s.VpcCount = &v
 	return s
 }
 
@@ -6338,8 +8243,128 @@ func (s *DescribeFieldStatisticsResponse) SetBody(v *DescribeFieldStatisticsResp
 	return s
 }
 
+type DescribeFrontVulPatchListRequest struct {
+	Info        *string `json:"Info,omitempty" xml:"Info,omitempty"`
+	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeFrontVulPatchListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFrontVulPatchListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFrontVulPatchListRequest) SetInfo(v string) *DescribeFrontVulPatchListRequest {
+	s.Info = &v
+	return s
+}
+
+func (s *DescribeFrontVulPatchListRequest) SetOperateType(v string) *DescribeFrontVulPatchListRequest {
+	s.OperateType = &v
+	return s
+}
+
+func (s *DescribeFrontVulPatchListRequest) SetType(v string) *DescribeFrontVulPatchListRequest {
+	s.Type = &v
+	return s
+}
+
+type DescribeFrontVulPatchListResponseBody struct {
+	RequestId      *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	FrontPatchList []*DescribeFrontVulPatchListResponseBodyFrontPatchList `json:"FrontPatchList,omitempty" xml:"FrontPatchList,omitempty" type:"Repeated"`
+}
+
+func (s DescribeFrontVulPatchListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFrontVulPatchListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFrontVulPatchListResponseBody) SetRequestId(v string) *DescribeFrontVulPatchListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeFrontVulPatchListResponseBody) SetFrontPatchList(v []*DescribeFrontVulPatchListResponseBodyFrontPatchList) *DescribeFrontVulPatchListResponseBody {
+	s.FrontPatchList = v
+	return s
+}
+
+type DescribeFrontVulPatchListResponseBodyFrontPatchList struct {
+	Uuid      *string                                                         `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	PatchList []*DescribeFrontVulPatchListResponseBodyFrontPatchListPatchList `json:"PatchList,omitempty" xml:"PatchList,omitempty" type:"Repeated"`
+}
+
+func (s DescribeFrontVulPatchListResponseBodyFrontPatchList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFrontVulPatchListResponseBodyFrontPatchList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFrontVulPatchListResponseBodyFrontPatchList) SetUuid(v string) *DescribeFrontVulPatchListResponseBodyFrontPatchList {
+	s.Uuid = &v
+	return s
+}
+
+func (s *DescribeFrontVulPatchListResponseBodyFrontPatchList) SetPatchList(v []*DescribeFrontVulPatchListResponseBodyFrontPatchListPatchList) *DescribeFrontVulPatchListResponseBodyFrontPatchList {
+	s.PatchList = v
+	return s
+}
+
+type DescribeFrontVulPatchListResponseBodyFrontPatchListPatchList struct {
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+}
+
+func (s DescribeFrontVulPatchListResponseBodyFrontPatchListPatchList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFrontVulPatchListResponseBodyFrontPatchListPatchList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFrontVulPatchListResponseBodyFrontPatchListPatchList) SetName(v string) *DescribeFrontVulPatchListResponseBodyFrontPatchListPatchList {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeFrontVulPatchListResponseBodyFrontPatchListPatchList) SetAliasName(v string) *DescribeFrontVulPatchListResponseBodyFrontPatchListPatchList {
+	s.AliasName = &v
+	return s
+}
+
+type DescribeFrontVulPatchListResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeFrontVulPatchListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeFrontVulPatchListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFrontVulPatchListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFrontVulPatchListResponse) SetHeaders(v map[string]*string) *DescribeFrontVulPatchListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeFrontVulPatchListResponse) SetBody(v *DescribeFrontVulPatchListResponseBody) *DescribeFrontVulPatchListResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeGraph4InvestigationOnlineRequest struct {
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	Namespace   *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	VertexId    *string `json:"VertexId,omitempty" xml:"VertexId,omitempty"`
@@ -6355,11 +8380,6 @@ func (s DescribeGraph4InvestigationOnlineRequest) String() string {
 
 func (s DescribeGraph4InvestigationOnlineRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeGraph4InvestigationOnlineRequest) SetSourceIp(v string) *DescribeGraph4InvestigationOnlineRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *DescribeGraph4InvestigationOnlineRequest) SetLang(v string) *DescribeGraph4InvestigationOnlineRequest {
@@ -6422,9 +8442,9 @@ func (s *DescribeGraph4InvestigationOnlineResponseBody) SetData(v *DescribeGraph
 
 type DescribeGraph4InvestigationOnlineResponseBodyData struct {
 	VertexList       []*DescribeGraph4InvestigationOnlineResponseBodyDataVertexList       `json:"VertexList,omitempty" xml:"VertexList,omitempty" type:"Repeated"`
+	EdgeList         []*DescribeGraph4InvestigationOnlineResponseBodyDataEdgeList         `json:"EdgeList,omitempty" xml:"EdgeList,omitempty" type:"Repeated"`
 	EntityTypeList   []*DescribeGraph4InvestigationOnlineResponseBodyDataEntityTypeList   `json:"EntityTypeList,omitempty" xml:"EntityTypeList,omitempty" type:"Repeated"`
 	RelationTypeList []*DescribeGraph4InvestigationOnlineResponseBodyDataRelationTypeList `json:"RelationTypeList,omitempty" xml:"RelationTypeList,omitempty" type:"Repeated"`
-	EdgeList         []*DescribeGraph4InvestigationOnlineResponseBodyDataEdgeList         `json:"EdgeList,omitempty" xml:"EdgeList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeGraph4InvestigationOnlineResponseBodyData) String() string {
@@ -6440,6 +8460,11 @@ func (s *DescribeGraph4InvestigationOnlineResponseBodyData) SetVertexList(v []*D
 	return s
 }
 
+func (s *DescribeGraph4InvestigationOnlineResponseBodyData) SetEdgeList(v []*DescribeGraph4InvestigationOnlineResponseBodyDataEdgeList) *DescribeGraph4InvestigationOnlineResponseBodyData {
+	s.EdgeList = v
+	return s
+}
+
 func (s *DescribeGraph4InvestigationOnlineResponseBodyData) SetEntityTypeList(v []*DescribeGraph4InvestigationOnlineResponseBodyDataEntityTypeList) *DescribeGraph4InvestigationOnlineResponseBodyData {
 	s.EntityTypeList = v
 	return s
@@ -6450,22 +8475,17 @@ func (s *DescribeGraph4InvestigationOnlineResponseBodyData) SetRelationTypeList(
 	return s
 }
 
-func (s *DescribeGraph4InvestigationOnlineResponseBodyData) SetEdgeList(v []*DescribeGraph4InvestigationOnlineResponseBodyDataEdgeList) *DescribeGraph4InvestigationOnlineResponseBodyData {
-	s.EdgeList = v
-	return s
-}
-
 type DescribeGraph4InvestigationOnlineResponseBodyDataVertexList struct {
 	Type         *string                                                                    `json:"Type,omitempty" xml:"Type,omitempty"`
 	Uuid         *string                                                                    `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 	Time         *string                                                                    `json:"Time,omitempty" xml:"Time,omitempty"`
 	Aliuid       *string                                                                    `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
-	NeighborList []*DescribeGraph4InvestigationOnlineResponseBodyDataVertexListNeighborList `json:"NeighborList,omitempty" xml:"NeighborList,omitempty" type:"Repeated"`
 	Position     *string                                                                    `json:"Position,omitempty" xml:"Position,omitempty"`
 	PositionId   *string                                                                    `json:"PositionId,omitempty" xml:"PositionId,omitempty"`
 	Name         *string                                                                    `json:"Name,omitempty" xml:"Name,omitempty"`
 	Id           *string                                                                    `json:"Id,omitempty" xml:"Id,omitempty"`
 	Properties   *string                                                                    `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	NeighborList []*DescribeGraph4InvestigationOnlineResponseBodyDataVertexListNeighborList `json:"NeighborList,omitempty" xml:"NeighborList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeGraph4InvestigationOnlineResponseBodyDataVertexList) String() string {
@@ -6496,11 +8516,6 @@ func (s *DescribeGraph4InvestigationOnlineResponseBodyDataVertexList) SetAliuid(
 	return s
 }
 
-func (s *DescribeGraph4InvestigationOnlineResponseBodyDataVertexList) SetNeighborList(v []*DescribeGraph4InvestigationOnlineResponseBodyDataVertexListNeighborList) *DescribeGraph4InvestigationOnlineResponseBodyDataVertexList {
-	s.NeighborList = v
-	return s
-}
-
 func (s *DescribeGraph4InvestigationOnlineResponseBodyDataVertexList) SetPosition(v string) *DescribeGraph4InvestigationOnlineResponseBodyDataVertexList {
 	s.Position = &v
 	return s
@@ -6523,6 +8538,11 @@ func (s *DescribeGraph4InvestigationOnlineResponseBodyDataVertexList) SetId(v st
 
 func (s *DescribeGraph4InvestigationOnlineResponseBodyDataVertexList) SetProperties(v string) *DescribeGraph4InvestigationOnlineResponseBodyDataVertexList {
 	s.Properties = &v
+	return s
+}
+
+func (s *DescribeGraph4InvestigationOnlineResponseBodyDataVertexList) SetNeighborList(v []*DescribeGraph4InvestigationOnlineResponseBodyDataVertexListNeighborList) *DescribeGraph4InvestigationOnlineResponseBodyDataVertexList {
+	s.NeighborList = v
 	return s
 }
 
@@ -6552,82 +8572,6 @@ func (s *DescribeGraph4InvestigationOnlineResponseBodyDataVertexListNeighborList
 
 func (s *DescribeGraph4InvestigationOnlineResponseBodyDataVertexListNeighborList) SetCount(v int32) *DescribeGraph4InvestigationOnlineResponseBodyDataVertexListNeighborList {
 	s.Count = &v
-	return s
-}
-
-type DescribeGraph4InvestigationOnlineResponseBodyDataEntityTypeList struct {
-	DisplayColor *string `json:"DisplayColor,omitempty" xml:"DisplayColor,omitempty"`
-	DisplayIcon  *string `json:"DisplayIcon,omitempty" xml:"DisplayIcon,omitempty"`
-	DisplayOrder *string `json:"DisplayOrder,omitempty" xml:"DisplayOrder,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Id           *string `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s DescribeGraph4InvestigationOnlineResponseBodyDataEntityTypeList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeGraph4InvestigationOnlineResponseBodyDataEntityTypeList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponseBodyDataEntityTypeList) SetDisplayColor(v string) *DescribeGraph4InvestigationOnlineResponseBodyDataEntityTypeList {
-	s.DisplayColor = &v
-	return s
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponseBodyDataEntityTypeList) SetDisplayIcon(v string) *DescribeGraph4InvestigationOnlineResponseBodyDataEntityTypeList {
-	s.DisplayIcon = &v
-	return s
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponseBodyDataEntityTypeList) SetDisplayOrder(v string) *DescribeGraph4InvestigationOnlineResponseBodyDataEntityTypeList {
-	s.DisplayOrder = &v
-	return s
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponseBodyDataEntityTypeList) SetName(v string) *DescribeGraph4InvestigationOnlineResponseBodyDataEntityTypeList {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponseBodyDataEntityTypeList) SetId(v string) *DescribeGraph4InvestigationOnlineResponseBodyDataEntityTypeList {
-	s.Id = &v
-	return s
-}
-
-type DescribeGraph4InvestigationOnlineResponseBodyDataRelationTypeList struct {
-	ShowType *string `json:"ShowType,omitempty" xml:"ShowType,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Id       *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Directed *int32  `json:"Directed,omitempty" xml:"Directed,omitempty"`
-}
-
-func (s DescribeGraph4InvestigationOnlineResponseBodyDataRelationTypeList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeGraph4InvestigationOnlineResponseBodyDataRelationTypeList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponseBodyDataRelationTypeList) SetShowType(v string) *DescribeGraph4InvestigationOnlineResponseBodyDataRelationTypeList {
-	s.ShowType = &v
-	return s
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponseBodyDataRelationTypeList) SetName(v string) *DescribeGraph4InvestigationOnlineResponseBodyDataRelationTypeList {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponseBodyDataRelationTypeList) SetId(v string) *DescribeGraph4InvestigationOnlineResponseBodyDataRelationTypeList {
-	s.Id = &v
-	return s
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponseBodyDataRelationTypeList) SetDirected(v int32) *DescribeGraph4InvestigationOnlineResponseBodyDataRelationTypeList {
-	s.Directed = &v
 	return s
 }
 
@@ -6690,6 +8634,82 @@ func (s *DescribeGraph4InvestigationOnlineResponseBodyDataEdgeList) SetId(v int3
 	return s
 }
 
+type DescribeGraph4InvestigationOnlineResponseBodyDataEntityTypeList struct {
+	DisplayColor *string `json:"DisplayColor,omitempty" xml:"DisplayColor,omitempty"`
+	DisplayOrder *string `json:"DisplayOrder,omitempty" xml:"DisplayOrder,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	DisplayIcon  *string `json:"DisplayIcon,omitempty" xml:"DisplayIcon,omitempty"`
+	Id           *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s DescribeGraph4InvestigationOnlineResponseBodyDataEntityTypeList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGraph4InvestigationOnlineResponseBodyDataEntityTypeList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGraph4InvestigationOnlineResponseBodyDataEntityTypeList) SetDisplayColor(v string) *DescribeGraph4InvestigationOnlineResponseBodyDataEntityTypeList {
+	s.DisplayColor = &v
+	return s
+}
+
+func (s *DescribeGraph4InvestigationOnlineResponseBodyDataEntityTypeList) SetDisplayOrder(v string) *DescribeGraph4InvestigationOnlineResponseBodyDataEntityTypeList {
+	s.DisplayOrder = &v
+	return s
+}
+
+func (s *DescribeGraph4InvestigationOnlineResponseBodyDataEntityTypeList) SetName(v string) *DescribeGraph4InvestigationOnlineResponseBodyDataEntityTypeList {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeGraph4InvestigationOnlineResponseBodyDataEntityTypeList) SetDisplayIcon(v string) *DescribeGraph4InvestigationOnlineResponseBodyDataEntityTypeList {
+	s.DisplayIcon = &v
+	return s
+}
+
+func (s *DescribeGraph4InvestigationOnlineResponseBodyDataEntityTypeList) SetId(v string) *DescribeGraph4InvestigationOnlineResponseBodyDataEntityTypeList {
+	s.Id = &v
+	return s
+}
+
+type DescribeGraph4InvestigationOnlineResponseBodyDataRelationTypeList struct {
+	ShowType *string `json:"ShowType,omitempty" xml:"ShowType,omitempty"`
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id       *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Directed *int32  `json:"Directed,omitempty" xml:"Directed,omitempty"`
+}
+
+func (s DescribeGraph4InvestigationOnlineResponseBodyDataRelationTypeList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGraph4InvestigationOnlineResponseBodyDataRelationTypeList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGraph4InvestigationOnlineResponseBodyDataRelationTypeList) SetShowType(v string) *DescribeGraph4InvestigationOnlineResponseBodyDataRelationTypeList {
+	s.ShowType = &v
+	return s
+}
+
+func (s *DescribeGraph4InvestigationOnlineResponseBodyDataRelationTypeList) SetName(v string) *DescribeGraph4InvestigationOnlineResponseBodyDataRelationTypeList {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeGraph4InvestigationOnlineResponseBodyDataRelationTypeList) SetId(v string) *DescribeGraph4InvestigationOnlineResponseBodyDataRelationTypeList {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeGraph4InvestigationOnlineResponseBodyDataRelationTypeList) SetDirected(v int32) *DescribeGraph4InvestigationOnlineResponseBodyDataRelationTypeList {
+	s.Directed = &v
+	return s
+}
+
 type DescribeGraph4InvestigationOnlineResponse struct {
 	Headers map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	Body    *DescribeGraph4InvestigationOnlineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -6714,7 +8734,6 @@ func (s *DescribeGraph4InvestigationOnlineResponse) SetBody(v *DescribeGraph4Inv
 }
 
 type DescribeGroupedContainerInstancesRequest struct {
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	Criteria    *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
 	LogicalExp  *string `json:"LogicalExp,omitempty" xml:"LogicalExp,omitempty"`
 	GroupField  *string `json:"GroupField,omitempty" xml:"GroupField,omitempty"`
@@ -6729,11 +8748,6 @@ func (s DescribeGroupedContainerInstancesRequest) String() string {
 
 func (s DescribeGroupedContainerInstancesRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeGroupedContainerInstancesRequest) SetSourceIp(v string) *DescribeGroupedContainerInstancesRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *DescribeGroupedContainerInstancesRequest) SetCriteria(v string) *DescribeGroupedContainerInstancesRequest {
@@ -6767,9 +8781,9 @@ func (s *DescribeGroupedContainerInstancesRequest) SetCurrentPage(v int32) *Desc
 }
 
 type DescribeGroupedContainerInstancesResponseBody struct {
+	RequestId                    *string                                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageInfo                     *DescribeGroupedContainerInstancesResponseBodyPageInfo                       `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	GroupedContainerInstanceList []*DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList `json:"GroupedContainerInstanceList,omitempty" xml:"GroupedContainerInstanceList,omitempty" type:"Repeated"`
-	RequestId                    *string                                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeGroupedContainerInstancesResponseBody) String() string {
@@ -6780,6 +8794,11 @@ func (s DescribeGroupedContainerInstancesResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeGroupedContainerInstancesResponseBody) SetRequestId(v string) *DescribeGroupedContainerInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 func (s *DescribeGroupedContainerInstancesResponseBody) SetPageInfo(v *DescribeGroupedContainerInstancesResponseBodyPageInfo) *DescribeGroupedContainerInstancesResponseBody {
 	s.PageInfo = v
 	return s
@@ -6787,11 +8806,6 @@ func (s *DescribeGroupedContainerInstancesResponseBody) SetPageInfo(v *DescribeG
 
 func (s *DescribeGroupedContainerInstancesResponseBody) SetGroupedContainerInstanceList(v []*DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList) *DescribeGroupedContainerInstancesResponseBody {
 	s.GroupedContainerInstanceList = v
-	return s
-}
-
-func (s *DescribeGroupedContainerInstancesResponseBody) SetRequestId(v string) *DescribeGroupedContainerInstancesResponseBody {
-	s.RequestId = &v
 	return s
 }
 
@@ -6831,13 +8845,13 @@ func (s *DescribeGroupedContainerInstancesResponseBodyPageInfo) SetCount(v int32
 }
 
 type DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList struct {
-	HostIp            *string `json:"HostIp,omitempty" xml:"HostIp,omitempty"`
 	RiskLevel         *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	RiskStatus        *string `json:"RiskStatus,omitempty" xml:"RiskStatus,omitempty"`
+	HostIp            *string `json:"HostIp,omitempty" xml:"HostIp,omitempty"`
 	Pod               *string `json:"Pod,omitempty" xml:"Pod,omitempty"`
+	RiskStatus        *string `json:"RiskStatus,omitempty" xml:"RiskStatus,omitempty"`
 	CreateTime        *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CusterState       *string `json:"CusterState,omitempty" xml:"CusterState,omitempty"`
 	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	CusterState       *string `json:"CusterState,omitempty" xml:"CusterState,omitempty"`
 	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	AppName           *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
@@ -6859,18 +8873,13 @@ func (s DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceLis
 	return s.String()
 }
 
-func (s *DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList) SetHostIp(v string) *DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList {
-	s.HostIp = &v
-	return s
-}
-
 func (s *DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList) SetRiskLevel(v string) *DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList {
 	s.RiskLevel = &v
 	return s
 }
 
-func (s *DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList) SetRiskStatus(v string) *DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList {
-	s.RiskStatus = &v
+func (s *DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList) SetHostIp(v string) *DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList {
+	s.HostIp = &v
 	return s
 }
 
@@ -6879,18 +8888,23 @@ func (s *DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceLi
 	return s
 }
 
+func (s *DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList) SetRiskStatus(v string) *DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList {
+	s.RiskStatus = &v
+	return s
+}
+
 func (s *DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList) SetCreateTime(v int64) *DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList {
 	s.CreateTime = &v
 	return s
 }
 
-func (s *DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList) SetCusterState(v string) *DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList {
-	s.CusterState = &v
+func (s *DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList) SetNamespace(v string) *DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList {
+	s.Namespace = &v
 	return s
 }
 
-func (s *DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList) SetNamespace(v string) *DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList {
-	s.Namespace = &v
+func (s *DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList) SetCusterState(v string) *DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList {
+	s.CusterState = &v
 	return s
 }
 
@@ -6972,22 +8986,225 @@ func (s *DescribeGroupedContainerInstancesResponse) SetBody(v *DescribeGroupedCo
 	return s
 }
 
+type DescribeGroupedInstancesRequest struct {
+	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Criteria     *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
+	MachineTypes *string `json:"MachineTypes,omitempty" xml:"MachineTypes,omitempty"`
+	GroupField   *string `json:"GroupField,omitempty" xml:"GroupField,omitempty"`
+	FieldValue   *string `json:"FieldValue,omitempty" xml:"FieldValue,omitempty"`
+	NoPage       *bool   `json:"NoPage,omitempty" xml:"NoPage,omitempty"`
+	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	CurrentPage  *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+}
+
+func (s DescribeGroupedInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGroupedInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGroupedInstancesRequest) SetLang(v string) *DescribeGroupedInstancesRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeGroupedInstancesRequest) SetCriteria(v string) *DescribeGroupedInstancesRequest {
+	s.Criteria = &v
+	return s
+}
+
+func (s *DescribeGroupedInstancesRequest) SetMachineTypes(v string) *DescribeGroupedInstancesRequest {
+	s.MachineTypes = &v
+	return s
+}
+
+func (s *DescribeGroupedInstancesRequest) SetGroupField(v string) *DescribeGroupedInstancesRequest {
+	s.GroupField = &v
+	return s
+}
+
+func (s *DescribeGroupedInstancesRequest) SetFieldValue(v string) *DescribeGroupedInstancesRequest {
+	s.FieldValue = &v
+	return s
+}
+
+func (s *DescribeGroupedInstancesRequest) SetNoPage(v bool) *DescribeGroupedInstancesRequest {
+	s.NoPage = &v
+	return s
+}
+
+func (s *DescribeGroupedInstancesRequest) SetPageSize(v int32) *DescribeGroupedInstancesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeGroupedInstancesRequest) SetCurrentPage(v int32) *DescribeGroupedInstancesRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+type DescribeGroupedInstancesResponseBody struct {
+	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageInfo  *DescribeGroupedInstancesResponseBodyPageInfo    `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	Instances []*DescribeGroupedInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+}
+
+func (s DescribeGroupedInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGroupedInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGroupedInstancesResponseBody) SetRequestId(v string) *DescribeGroupedInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeGroupedInstancesResponseBody) SetPageInfo(v *DescribeGroupedInstancesResponseBodyPageInfo) *DescribeGroupedInstancesResponseBody {
+	s.PageInfo = v
+	return s
+}
+
+func (s *DescribeGroupedInstancesResponseBody) SetInstances(v []*DescribeGroupedInstancesResponseBodyInstances) *DescribeGroupedInstancesResponseBody {
+	s.Instances = v
+	return s
+}
+
+type DescribeGroupedInstancesResponseBodyPageInfo struct {
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount  *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Count       *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+}
+
+func (s DescribeGroupedInstancesResponseBodyPageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGroupedInstancesResponseBodyPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGroupedInstancesResponseBodyPageInfo) SetCurrentPage(v int32) *DescribeGroupedInstancesResponseBodyPageInfo {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeGroupedInstancesResponseBodyPageInfo) SetPageSize(v int32) *DescribeGroupedInstancesResponseBodyPageInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeGroupedInstancesResponseBodyPageInfo) SetTotalCount(v int32) *DescribeGroupedInstancesResponseBodyPageInfo {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeGroupedInstancesResponseBodyPageInfo) SetCount(v int32) *DescribeGroupedInstancesResponseBodyPageInfo {
+	s.Count = &v
+	return s
+}
+
+type DescribeGroupedInstancesResponseBodyInstances struct {
+	AsapVulInstanceCount     *int64    `json:"AsapVulInstanceCount,omitempty" xml:"AsapVulInstanceCount,omitempty"`
+	UnProtectedInstanceCount *string   `json:"UnProtectedInstanceCount,omitempty" xml:"UnProtectedInstanceCount,omitempty"`
+	FieldAliasName           *string   `json:"FieldAliasName,omitempty" xml:"FieldAliasName,omitempty"`
+	InstanceCount            *string   `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	FieldId                  *int64    `json:"FieldId,omitempty" xml:"FieldId,omitempty"`
+	RiskInstanceCount        *string   `json:"RiskInstanceCount,omitempty" xml:"RiskInstanceCount,omitempty"`
+	GroupFlag                *int32    `json:"GroupFlag,omitempty" xml:"GroupFlag,omitempty"`
+	GroupPath                []*string `json:"GroupPath,omitempty" xml:"GroupPath,omitempty" type:"Repeated"`
+}
+
+func (s DescribeGroupedInstancesResponseBodyInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGroupedInstancesResponseBodyInstances) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGroupedInstancesResponseBodyInstances) SetAsapVulInstanceCount(v int64) *DescribeGroupedInstancesResponseBodyInstances {
+	s.AsapVulInstanceCount = &v
+	return s
+}
+
+func (s *DescribeGroupedInstancesResponseBodyInstances) SetUnProtectedInstanceCount(v string) *DescribeGroupedInstancesResponseBodyInstances {
+	s.UnProtectedInstanceCount = &v
+	return s
+}
+
+func (s *DescribeGroupedInstancesResponseBodyInstances) SetFieldAliasName(v string) *DescribeGroupedInstancesResponseBodyInstances {
+	s.FieldAliasName = &v
+	return s
+}
+
+func (s *DescribeGroupedInstancesResponseBodyInstances) SetInstanceCount(v string) *DescribeGroupedInstancesResponseBodyInstances {
+	s.InstanceCount = &v
+	return s
+}
+
+func (s *DescribeGroupedInstancesResponseBodyInstances) SetFieldId(v int64) *DescribeGroupedInstancesResponseBodyInstances {
+	s.FieldId = &v
+	return s
+}
+
+func (s *DescribeGroupedInstancesResponseBodyInstances) SetRiskInstanceCount(v string) *DescribeGroupedInstancesResponseBodyInstances {
+	s.RiskInstanceCount = &v
+	return s
+}
+
+func (s *DescribeGroupedInstancesResponseBodyInstances) SetGroupFlag(v int32) *DescribeGroupedInstancesResponseBodyInstances {
+	s.GroupFlag = &v
+	return s
+}
+
+func (s *DescribeGroupedInstancesResponseBodyInstances) SetGroupPath(v []*string) *DescribeGroupedInstancesResponseBodyInstances {
+	s.GroupPath = v
+	return s
+}
+
+type DescribeGroupedInstancesResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeGroupedInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeGroupedInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGroupedInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGroupedInstancesResponse) SetHeaders(v map[string]*string) *DescribeGroupedInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeGroupedInstancesResponse) SetBody(v *DescribeGroupedInstancesResponseBody) *DescribeGroupedInstancesResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeGroupedMaliciousFilesRequest struct {
-	SourceIp           *string   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang               *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Levels             *string   `json:"Levels,omitempty" xml:"Levels,omitempty"`
-	FuzzyMaliciousName *string   `json:"FuzzyMaliciousName,omitempty" xml:"FuzzyMaliciousName,omitempty"`
-	CurrentPage        *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize           *string   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RepoRegionId       *string   `json:"RepoRegionId,omitempty" xml:"RepoRegionId,omitempty"`
-	RepoInstanceId     *string   `json:"RepoInstanceId,omitempty" xml:"RepoInstanceId,omitempty"`
-	RepoId             *string   `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	RepoName           *string   `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	RepoNamespace      *string   `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
-	ImageTag           *string   `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
-	ImageDigest        *string   `json:"ImageDigest,omitempty" xml:"ImageDigest,omitempty"`
-	ImageLayer         *string   `json:"ImageLayer,omitempty" xml:"ImageLayer,omitempty"`
-	Uuids              []*string `json:"Uuids,omitempty" xml:"Uuids,omitempty" type:"Repeated"`
+	Lang               *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Levels             *string `json:"Levels,omitempty" xml:"Levels,omitempty"`
+	FuzzyMaliciousName *string `json:"FuzzyMaliciousName,omitempty" xml:"FuzzyMaliciousName,omitempty"`
+	CurrentPage        *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize           *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RepoRegionId       *string `json:"RepoRegionId,omitempty" xml:"RepoRegionId,omitempty"`
+	RepoInstanceId     *string `json:"RepoInstanceId,omitempty" xml:"RepoInstanceId,omitempty"`
+	RepoId             *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	RepoName           *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	RepoNamespace      *string `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
+	ImageTag           *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
+	ImageDigest        *string `json:"ImageDigest,omitempty" xml:"ImageDigest,omitempty"`
+	ImageLayer         *string `json:"ImageLayer,omitempty" xml:"ImageLayer,omitempty"`
 }
 
 func (s DescribeGroupedMaliciousFilesRequest) String() string {
@@ -6996,11 +9213,6 @@ func (s DescribeGroupedMaliciousFilesRequest) String() string {
 
 func (s DescribeGroupedMaliciousFilesRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeGroupedMaliciousFilesRequest) SetSourceIp(v string) *DescribeGroupedMaliciousFilesRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *DescribeGroupedMaliciousFilesRequest) SetLang(v string) *DescribeGroupedMaliciousFilesRequest {
@@ -7068,15 +9280,10 @@ func (s *DescribeGroupedMaliciousFilesRequest) SetImageLayer(v string) *Describe
 	return s
 }
 
-func (s *DescribeGroupedMaliciousFilesRequest) SetUuids(v []*string) *DescribeGroupedMaliciousFilesRequest {
-	s.Uuids = v
-	return s
-}
-
 type DescribeGroupedMaliciousFilesResponseBody struct {
+	RequestId                    *string                                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageInfo                     *DescribeGroupedMaliciousFilesResponseBodyPageInfo                       `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	GroupedMaliciousFileResponse []*DescribeGroupedMaliciousFilesResponseBodyGroupedMaliciousFileResponse `json:"GroupedMaliciousFileResponse,omitempty" xml:"GroupedMaliciousFileResponse,omitempty" type:"Repeated"`
-	RequestId                    *string                                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeGroupedMaliciousFilesResponseBody) String() string {
@@ -7087,6 +9294,11 @@ func (s DescribeGroupedMaliciousFilesResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeGroupedMaliciousFilesResponseBody) SetRequestId(v string) *DescribeGroupedMaliciousFilesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 func (s *DescribeGroupedMaliciousFilesResponseBody) SetPageInfo(v *DescribeGroupedMaliciousFilesResponseBodyPageInfo) *DescribeGroupedMaliciousFilesResponseBody {
 	s.PageInfo = v
 	return s
@@ -7094,11 +9306,6 @@ func (s *DescribeGroupedMaliciousFilesResponseBody) SetPageInfo(v *DescribeGroup
 
 func (s *DescribeGroupedMaliciousFilesResponseBody) SetGroupedMaliciousFileResponse(v []*DescribeGroupedMaliciousFilesResponseBodyGroupedMaliciousFileResponse) *DescribeGroupedMaliciousFilesResponseBody {
 	s.GroupedMaliciousFileResponse = v
-	return s
-}
-
-func (s *DescribeGroupedMaliciousFilesResponseBody) SetRequestId(v string) *DescribeGroupedMaliciousFilesResponseBody {
-	s.RequestId = &v
 	return s
 }
 
@@ -7214,7 +9421,6 @@ func (s *DescribeGroupedMaliciousFilesResponse) SetBody(v *DescribeGroupedMalici
 }
 
 type DescribeGroupedTagsRequest struct {
-	SourceIp     *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	MachineTypes *string `json:"MachineTypes,omitempty" xml:"MachineTypes,omitempty"`
 }
 
@@ -7226,22 +9432,17 @@ func (s DescribeGroupedTagsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeGroupedTagsRequest) SetSourceIp(v string) *DescribeGroupedTagsRequest {
-	s.SourceIp = &v
-	return s
-}
-
 func (s *DescribeGroupedTagsRequest) SetMachineTypes(v string) *DescribeGroupedTagsRequest {
 	s.MachineTypes = &v
 	return s
 }
 
 type DescribeGroupedTagsResponseBody struct {
-	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	HttpStatusCode *int32                                          `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	GroupedFileds  []*DescribeGroupedTagsResponseBodyGroupedFileds `json:"GroupedFileds,omitempty" xml:"GroupedFileds,omitempty" type:"Repeated"`
-	Count          *int32                                          `json:"Count,omitempty" xml:"Count,omitempty"`
+	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success        *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	Count          *int32                                          `json:"Count,omitempty" xml:"Count,omitempty"`
+	GroupedFileds  []*DescribeGroupedTagsResponseBodyGroupedFileds `json:"GroupedFileds,omitempty" xml:"GroupedFileds,omitempty" type:"Repeated"`
 }
 
 func (s DescribeGroupedTagsResponseBody) String() string {
@@ -7252,18 +9453,18 @@ func (s DescribeGroupedTagsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeGroupedTagsResponseBody) SetRequestId(v string) *DescribeGroupedTagsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *DescribeGroupedTagsResponseBody) SetHttpStatusCode(v int32) *DescribeGroupedTagsResponseBody {
 	s.HttpStatusCode = &v
 	return s
 }
 
-func (s *DescribeGroupedTagsResponseBody) SetGroupedFileds(v []*DescribeGroupedTagsResponseBodyGroupedFileds) *DescribeGroupedTagsResponseBody {
-	s.GroupedFileds = v
+func (s *DescribeGroupedTagsResponseBody) SetRequestId(v string) *DescribeGroupedTagsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeGroupedTagsResponseBody) SetSuccess(v bool) *DescribeGroupedTagsResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -7272,8 +9473,8 @@ func (s *DescribeGroupedTagsResponseBody) SetCount(v int32) *DescribeGroupedTags
 	return s
 }
 
-func (s *DescribeGroupedTagsResponseBody) SetSuccess(v bool) *DescribeGroupedTagsResponseBody {
-	s.Success = &v
+func (s *DescribeGroupedTagsResponseBody) SetGroupedFileds(v []*DescribeGroupedTagsResponseBodyGroupedFileds) *DescribeGroupedTagsResponseBody {
+	s.GroupedFileds = v
 	return s
 }
 
@@ -7330,7 +9531,6 @@ func (s *DescribeGroupedTagsResponse) SetBody(v *DescribeGroupedTagsResponseBody
 }
 
 type DescribeGroupedVulRequest struct {
-	SourceIp            *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	Lang                *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	Uuids               *string `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
@@ -7339,7 +9539,6 @@ type DescribeGroupedVulRequest struct {
 	Dealed              *string `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
 	CurrentPage         *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	PageSize            *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StatusList          *string `json:"StatusList,omitempty" xml:"StatusList,omitempty"`
 	GroupId             *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	ContainerFieldName  *string `json:"ContainerFieldName,omitempty" xml:"ContainerFieldName,omitempty"`
 	ContainerFieldValue *string `json:"ContainerFieldValue,omitempty" xml:"ContainerFieldValue,omitempty"`
@@ -7354,11 +9553,6 @@ func (s DescribeGroupedVulRequest) String() string {
 
 func (s DescribeGroupedVulRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeGroupedVulRequest) SetSourceIp(v string) *DescribeGroupedVulRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *DescribeGroupedVulRequest) SetLang(v string) *DescribeGroupedVulRequest {
@@ -7401,11 +9595,6 @@ func (s *DescribeGroupedVulRequest) SetPageSize(v int32) *DescribeGroupedVulRequ
 	return s
 }
 
-func (s *DescribeGroupedVulRequest) SetStatusList(v string) *DescribeGroupedVulRequest {
-	s.StatusList = &v
-	return s
-}
-
 func (s *DescribeGroupedVulRequest) SetGroupId(v string) *DescribeGroupedVulRequest {
 	s.GroupId = &v
 	return s
@@ -7437,10 +9626,10 @@ func (s *DescribeGroupedVulRequest) SetMinScore(v int32) *DescribeGroupedVulRequ
 }
 
 type DescribeGroupedVulResponseBody struct {
-	TotalCount      *int32                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	CurrentPage     *int32                                           `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	RequestId       *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageSize        *int32                                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	CurrentPage     *int32                                           `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	TotalCount      *int32                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	GroupedVulItems []*DescribeGroupedVulResponseBodyGroupedVulItems `json:"GroupedVulItems,omitempty" xml:"GroupedVulItems,omitempty" type:"Repeated"`
 }
 
@@ -7452,8 +9641,8 @@ func (s DescribeGroupedVulResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeGroupedVulResponseBody) SetTotalCount(v int32) *DescribeGroupedVulResponseBody {
-	s.TotalCount = &v
+func (s *DescribeGroupedVulResponseBody) SetCurrentPage(v int32) *DescribeGroupedVulResponseBody {
+	s.CurrentPage = &v
 	return s
 }
 
@@ -7467,8 +9656,8 @@ func (s *DescribeGroupedVulResponseBody) SetPageSize(v int32) *DescribeGroupedVu
 	return s
 }
 
-func (s *DescribeGroupedVulResponseBody) SetCurrentPage(v int32) *DescribeGroupedVulResponseBody {
-	s.CurrentPage = &v
+func (s *DescribeGroupedVulResponseBody) SetTotalCount(v int32) *DescribeGroupedVulResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -7478,15 +9667,16 @@ func (s *DescribeGroupedVulResponseBody) SetGroupedVulItems(v []*DescribeGrouped
 }
 
 type DescribeGroupedVulResponseBodyGroupedVulItems struct {
-	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	NntfCount    *int32  `json:"NntfCount,omitempty" xml:"NntfCount,omitempty"`
-	HandledCount *int32  `json:"HandledCount,omitempty" xml:"HandledCount,omitempty"`
-	GmtLast      *int64  `json:"GmtLast,omitempty" xml:"GmtLast,omitempty"`
-	Tags         *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	LaterCount   *int32  `json:"LaterCount,omitempty" xml:"LaterCount,omitempty"`
-	AliasName    *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	AsapCount    *int32  `json:"AsapCount,omitempty" xml:"AsapCount,omitempty"`
+	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	NntfCount     *int32  `json:"NntfCount,omitempty" xml:"NntfCount,omitempty"`
+	HandledCount  *int32  `json:"HandledCount,omitempty" xml:"HandledCount,omitempty"`
+	GmtLast       *int64  `json:"GmtLast,omitempty" xml:"GmtLast,omitempty"`
+	Tags          *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	LaterCount    *int32  `json:"LaterCount,omitempty" xml:"LaterCount,omitempty"`
+	AliasName     *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	TotalFixCount *int64  `json:"TotalFixCount,omitempty" xml:"TotalFixCount,omitempty"`
+	AsapCount     *int32  `json:"AsapCount,omitempty" xml:"AsapCount,omitempty"`
 }
 
 func (s DescribeGroupedVulResponseBodyGroupedVulItems) String() string {
@@ -7537,6 +9727,11 @@ func (s *DescribeGroupedVulResponseBodyGroupedVulItems) SetName(v string) *Descr
 	return s
 }
 
+func (s *DescribeGroupedVulResponseBodyGroupedVulItems) SetTotalFixCount(v int64) *DescribeGroupedVulResponseBodyGroupedVulItems {
+	s.TotalFixCount = &v
+	return s
+}
+
 func (s *DescribeGroupedVulResponseBodyGroupedVulItems) SetAsapCount(v int32) *DescribeGroupedVulResponseBodyGroupedVulItems {
 	s.AsapCount = &v
 	return s
@@ -7565,27 +9760,10 @@ func (s *DescribeGroupedVulResponse) SetBody(v *DescribeGroupedVulResponseBody) 
 	return s
 }
 
-type DescribeHoneyPotAuthRequest struct {
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-}
-
-func (s DescribeHoneyPotAuthRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeHoneyPotAuthRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeHoneyPotAuthRequest) SetSourceIp(v string) *DescribeHoneyPotAuthRequest {
-	s.SourceIp = &v
-	return s
-}
-
 type DescribeHoneyPotAuthResponseBody struct {
 	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	HoneyPotAuthCount *int64  `json:"HoneyPotAuthCount,omitempty" xml:"HoneyPotAuthCount,omitempty"`
 	HoneyPotCount     *int32  `json:"HoneyPotCount,omitempty" xml:"HoneyPotCount,omitempty"`
+	HoneyPotAuthCount *int64  `json:"HoneyPotAuthCount,omitempty" xml:"HoneyPotAuthCount,omitempty"`
 }
 
 func (s DescribeHoneyPotAuthResponseBody) String() string {
@@ -7601,13 +9779,13 @@ func (s *DescribeHoneyPotAuthResponseBody) SetRequestId(v string) *DescribeHoney
 	return s
 }
 
-func (s *DescribeHoneyPotAuthResponseBody) SetHoneyPotAuthCount(v int64) *DescribeHoneyPotAuthResponseBody {
-	s.HoneyPotAuthCount = &v
+func (s *DescribeHoneyPotAuthResponseBody) SetHoneyPotCount(v int32) *DescribeHoneyPotAuthResponseBody {
+	s.HoneyPotCount = &v
 	return s
 }
 
-func (s *DescribeHoneyPotAuthResponseBody) SetHoneyPotCount(v int32) *DescribeHoneyPotAuthResponseBody {
-	s.HoneyPotCount = &v
+func (s *DescribeHoneyPotAuthResponseBody) SetHoneyPotAuthCount(v int64) *DescribeHoneyPotAuthResponseBody {
+	s.HoneyPotAuthCount = &v
 	return s
 }
 
@@ -7635,7 +9813,6 @@ func (s *DescribeHoneyPotAuthResponse) SetBody(v *DescribeHoneyPotAuthResponseBo
 }
 
 type DescribeHoneyPotSuspStatisticsRequest struct {
-	SourceIp          *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	From              *string `json:"From,omitempty" xml:"From,omitempty"`
 	StatisticsKeyType *string `json:"StatisticsKeyType,omitempty" xml:"StatisticsKeyType,omitempty"`
 	StatisticsDays    *int32  `json:"StatisticsDays,omitempty" xml:"StatisticsDays,omitempty"`
@@ -7647,11 +9824,6 @@ func (s DescribeHoneyPotSuspStatisticsRequest) String() string {
 
 func (s DescribeHoneyPotSuspStatisticsRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeHoneyPotSuspStatisticsRequest) SetSourceIp(v string) *DescribeHoneyPotSuspStatisticsRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *DescribeHoneyPotSuspStatisticsRequest) SetFrom(v string) *DescribeHoneyPotSuspStatisticsRequest {
@@ -7693,12 +9865,11 @@ func (s *DescribeHoneyPotSuspStatisticsResponseBody) SetSuspHoneyPotStatisticsRe
 }
 
 type DescribeHoneyPotSuspStatisticsResponseBodySuspHoneyPotStatisticsResponse struct {
-	VpcName      *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
 	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	VpcId        *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcName      *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Count        *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
 }
 
@@ -7708,11 +9879,6 @@ func (s DescribeHoneyPotSuspStatisticsResponseBodySuspHoneyPotStatisticsResponse
 
 func (s DescribeHoneyPotSuspStatisticsResponseBodySuspHoneyPotStatisticsResponse) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeHoneyPotSuspStatisticsResponseBodySuspHoneyPotStatisticsResponse) SetVpcName(v string) *DescribeHoneyPotSuspStatisticsResponseBodySuspHoneyPotStatisticsResponse {
-	s.VpcName = &v
-	return s
 }
 
 func (s *DescribeHoneyPotSuspStatisticsResponseBodySuspHoneyPotStatisticsResponse) SetType(v string) *DescribeHoneyPotSuspStatisticsResponseBodySuspHoneyPotStatisticsResponse {
@@ -7725,6 +9891,11 @@ func (s *DescribeHoneyPotSuspStatisticsResponseBodySuspHoneyPotStatisticsRespons
 	return s
 }
 
+func (s *DescribeHoneyPotSuspStatisticsResponseBodySuspHoneyPotStatisticsResponse) SetVpcName(v string) *DescribeHoneyPotSuspStatisticsResponseBodySuspHoneyPotStatisticsResponse {
+	s.VpcName = &v
+	return s
+}
+
 func (s *DescribeHoneyPotSuspStatisticsResponseBodySuspHoneyPotStatisticsResponse) SetInstanceName(v string) *DescribeHoneyPotSuspStatisticsResponseBodySuspHoneyPotStatisticsResponse {
 	s.InstanceName = &v
 	return s
@@ -7732,11 +9903,6 @@ func (s *DescribeHoneyPotSuspStatisticsResponseBodySuspHoneyPotStatisticsRespons
 
 func (s *DescribeHoneyPotSuspStatisticsResponseBodySuspHoneyPotStatisticsResponse) SetInstanceId(v string) *DescribeHoneyPotSuspStatisticsResponseBodySuspHoneyPotStatisticsResponse {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *DescribeHoneyPotSuspStatisticsResponseBodySuspHoneyPotStatisticsResponse) SetName(v string) *DescribeHoneyPotSuspStatisticsResponseBodySuspHoneyPotStatisticsResponse {
-	s.Name = &v
 	return s
 }
 
@@ -7769,7 +9935,6 @@ func (s *DescribeHoneyPotSuspStatisticsResponse) SetBody(v *DescribeHoneyPotSusp
 }
 
 type DescribeImageGroupedVulListRequest struct {
-	SourceIp       *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	GroupId        *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	CveId          *string `json:"CveId,omitempty" xml:"CveId,omitempty"`
@@ -7799,6 +9964,7 @@ type DescribeImageGroupedVulListRequest struct {
 	ImageTag       *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
 	ImageDigest    *string `json:"ImageDigest,omitempty" xml:"ImageDigest,omitempty"`
 	ImageLayer     *string `json:"ImageLayer,omitempty" xml:"ImageLayer,omitempty"`
+	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s DescribeImageGroupedVulListRequest) String() string {
@@ -7807,11 +9973,6 @@ func (s DescribeImageGroupedVulListRequest) String() string {
 
 func (s DescribeImageGroupedVulListRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeImageGroupedVulListRequest) SetSourceIp(v string) *DescribeImageGroupedVulListRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *DescribeImageGroupedVulListRequest) SetType(v string) *DescribeImageGroupedVulListRequest {
@@ -7959,11 +10120,16 @@ func (s *DescribeImageGroupedVulListRequest) SetImageLayer(v string) *DescribeIm
 	return s
 }
 
+func (s *DescribeImageGroupedVulListRequest) SetLang(v string) *DescribeImageGroupedVulListRequest {
+	s.Lang = &v
+	return s
+}
+
 type DescribeImageGroupedVulListResponseBody struct {
-	TotalCount      *int32                                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	CurrentPage     *int32                                                    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	RequestId       *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageSize        *int32                                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	CurrentPage     *int32                                                    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	TotalCount      *int32                                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	GroupedVulItems []*DescribeImageGroupedVulListResponseBodyGroupedVulItems `json:"GroupedVulItems,omitempty" xml:"GroupedVulItems,omitempty" type:"Repeated"`
 }
 
@@ -7975,8 +10141,8 @@ func (s DescribeImageGroupedVulListResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeImageGroupedVulListResponseBody) SetTotalCount(v int32) *DescribeImageGroupedVulListResponseBody {
-	s.TotalCount = &v
+func (s *DescribeImageGroupedVulListResponseBody) SetCurrentPage(v int32) *DescribeImageGroupedVulListResponseBody {
+	s.CurrentPage = &v
 	return s
 }
 
@@ -7990,8 +10156,8 @@ func (s *DescribeImageGroupedVulListResponseBody) SetPageSize(v int32) *Describe
 	return s
 }
 
-func (s *DescribeImageGroupedVulListResponseBody) SetCurrentPage(v int32) *DescribeImageGroupedVulListResponseBody {
-	s.CurrentPage = &v
+func (s *DescribeImageGroupedVulListResponseBody) SetTotalCount(v int32) *DescribeImageGroupedVulListResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -8094,26 +10260,9 @@ func (s *DescribeImageGroupedVulListResponse) SetBody(v *DescribeImageGroupedVul
 	return s
 }
 
-type DescribeImageStatisticsRequest struct {
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-}
-
-func (s DescribeImageStatisticsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeImageStatisticsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeImageStatisticsRequest) SetSourceIp(v string) *DescribeImageStatisticsRequest {
-	s.SourceIp = &v
-	return s
-}
-
 type DescribeImageStatisticsResponseBody struct {
-	InstanceCount     *int32  `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
 	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	InstanceCount     *int32  `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
 	RiskInstanceCount *int32  `json:"RiskInstanceCount,omitempty" xml:"RiskInstanceCount,omitempty"`
 }
 
@@ -8125,13 +10274,13 @@ func (s DescribeImageStatisticsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeImageStatisticsResponseBody) SetInstanceCount(v int32) *DescribeImageStatisticsResponseBody {
-	s.InstanceCount = &v
+func (s *DescribeImageStatisticsResponseBody) SetRequestId(v string) *DescribeImageStatisticsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *DescribeImageStatisticsResponseBody) SetRequestId(v string) *DescribeImageStatisticsResponseBody {
-	s.RequestId = &v
+func (s *DescribeImageStatisticsResponseBody) SetInstanceCount(v int32) *DescribeImageStatisticsResponseBody {
+	s.InstanceCount = &v
 	return s
 }
 
@@ -8164,32 +10313,23 @@ func (s *DescribeImageStatisticsResponse) SetBody(v *DescribeImageStatisticsResp
 }
 
 type DescribeImageVulListRequest struct {
-	SourceIp            *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	Lang                *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Ids                 *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
-	Remark              *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	GroupId             *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	Uuids               *string `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
 	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	AliasName           *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	Level               *string `json:"Level,omitempty" xml:"Level,omitempty"`
 	StatusList          *string `json:"StatusList,omitempty" xml:"StatusList,omitempty"`
 	Necessity           *string `json:"Necessity,omitempty" xml:"Necessity,omitempty"`
 	Dealed              *string `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
-	BatchName           *string `json:"BatchName,omitempty" xml:"BatchName,omitempty"`
-	Resource            *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	CreateTsStart       *int64  `json:"CreateTsStart,omitempty" xml:"CreateTsStart,omitempty"`
-	CreateTsEnd         *int64  `json:"CreateTsEnd,omitempty" xml:"CreateTsEnd,omitempty"`
 	CurrentPage         *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	PageSize            *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ModifyTsStart       *int64  `json:"ModifyTsStart,omitempty" xml:"ModifyTsStart,omitempty"`
-	ModifyTsEnd         *int64  `json:"ModifyTsEnd,omitempty" xml:"ModifyTsEnd,omitempty"`
-	CveId               *string `json:"CveId,omitempty" xml:"CveId,omitempty"`
+	RepoRegionId        *string `json:"RepoRegionId,omitempty" xml:"RepoRegionId,omitempty"`
+	RepoInstanceId      *string `json:"RepoInstanceId,omitempty" xml:"RepoInstanceId,omitempty"`
+	RepoId              *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	RepoName            *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	RepoNamespace       *string `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
 	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RepoId              *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	Tag                 *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	Digest              *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
 	ContainerFieldName  *string `json:"ContainerFieldName,omitempty" xml:"ContainerFieldName,omitempty"`
@@ -8205,28 +10345,8 @@ func (s DescribeImageVulListRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeImageVulListRequest) SetSourceIp(v string) *DescribeImageVulListRequest {
-	s.SourceIp = &v
-	return s
-}
-
 func (s *DescribeImageVulListRequest) SetLang(v string) *DescribeImageVulListRequest {
 	s.Lang = &v
-	return s
-}
-
-func (s *DescribeImageVulListRequest) SetIds(v string) *DescribeImageVulListRequest {
-	s.Ids = &v
-	return s
-}
-
-func (s *DescribeImageVulListRequest) SetRemark(v string) *DescribeImageVulListRequest {
-	s.Remark = &v
-	return s
-}
-
-func (s *DescribeImageVulListRequest) SetGroupId(v string) *DescribeImageVulListRequest {
-	s.GroupId = &v
 	return s
 }
 
@@ -8250,11 +10370,6 @@ func (s *DescribeImageVulListRequest) SetAliasName(v string) *DescribeImageVulLi
 	return s
 }
 
-func (s *DescribeImageVulListRequest) SetLevel(v string) *DescribeImageVulListRequest {
-	s.Level = &v
-	return s
-}
-
 func (s *DescribeImageVulListRequest) SetStatusList(v string) *DescribeImageVulListRequest {
 	s.StatusList = &v
 	return s
@@ -8270,26 +10385,6 @@ func (s *DescribeImageVulListRequest) SetDealed(v string) *DescribeImageVulListR
 	return s
 }
 
-func (s *DescribeImageVulListRequest) SetBatchName(v string) *DescribeImageVulListRequest {
-	s.BatchName = &v
-	return s
-}
-
-func (s *DescribeImageVulListRequest) SetResource(v string) *DescribeImageVulListRequest {
-	s.Resource = &v
-	return s
-}
-
-func (s *DescribeImageVulListRequest) SetCreateTsStart(v int64) *DescribeImageVulListRequest {
-	s.CreateTsStart = &v
-	return s
-}
-
-func (s *DescribeImageVulListRequest) SetCreateTsEnd(v int64) *DescribeImageVulListRequest {
-	s.CreateTsEnd = &v
-	return s
-}
-
 func (s *DescribeImageVulListRequest) SetCurrentPage(v int32) *DescribeImageVulListRequest {
 	s.CurrentPage = &v
 	return s
@@ -8300,23 +10395,28 @@ func (s *DescribeImageVulListRequest) SetPageSize(v int32) *DescribeImageVulList
 	return s
 }
 
-func (s *DescribeImageVulListRequest) SetModifyTsStart(v int64) *DescribeImageVulListRequest {
-	s.ModifyTsStart = &v
+func (s *DescribeImageVulListRequest) SetRepoRegionId(v string) *DescribeImageVulListRequest {
+	s.RepoRegionId = &v
 	return s
 }
 
-func (s *DescribeImageVulListRequest) SetModifyTsEnd(v int64) *DescribeImageVulListRequest {
-	s.ModifyTsEnd = &v
+func (s *DescribeImageVulListRequest) SetRepoInstanceId(v string) *DescribeImageVulListRequest {
+	s.RepoInstanceId = &v
 	return s
 }
 
-func (s *DescribeImageVulListRequest) SetCveId(v string) *DescribeImageVulListRequest {
-	s.CveId = &v
+func (s *DescribeImageVulListRequest) SetRepoId(v string) *DescribeImageVulListRequest {
+	s.RepoId = &v
 	return s
 }
 
 func (s *DescribeImageVulListRequest) SetRepoName(v string) *DescribeImageVulListRequest {
 	s.RepoName = &v
+	return s
+}
+
+func (s *DescribeImageVulListRequest) SetRepoNamespace(v string) *DescribeImageVulListRequest {
+	s.RepoNamespace = &v
 	return s
 }
 
@@ -8327,11 +10427,6 @@ func (s *DescribeImageVulListRequest) SetRegionId(v string) *DescribeImageVulLis
 
 func (s *DescribeImageVulListRequest) SetInstanceId(v string) *DescribeImageVulListRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *DescribeImageVulListRequest) SetRepoId(v string) *DescribeImageVulListRequest {
-	s.RepoId = &v
 	return s
 }
 
@@ -8361,11 +10456,11 @@ func (s *DescribeImageVulListRequest) SetTargetType(v string) *DescribeImageVulL
 }
 
 type DescribeImageVulListResponseBody struct {
-	TotalCount  *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	CurrentPage *int32                                        `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	RequestId   *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageSize    *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount  *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	VulRecords  []*DescribeImageVulListResponseBodyVulRecords `json:"VulRecords,omitempty" xml:"VulRecords,omitempty" type:"Repeated"`
-	CurrentPage *int32                                        `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 }
 
 func (s DescribeImageVulListResponseBody) String() string {
@@ -8376,8 +10471,8 @@ func (s DescribeImageVulListResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeImageVulListResponseBody) SetTotalCount(v int32) *DescribeImageVulListResponseBody {
-	s.TotalCount = &v
+func (s *DescribeImageVulListResponseBody) SetCurrentPage(v int32) *DescribeImageVulListResponseBody {
+	s.CurrentPage = &v
 	return s
 }
 
@@ -8391,31 +10486,32 @@ func (s *DescribeImageVulListResponseBody) SetPageSize(v int32) *DescribeImageVu
 	return s
 }
 
+func (s *DescribeImageVulListResponseBody) SetTotalCount(v int32) *DescribeImageVulListResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
 func (s *DescribeImageVulListResponseBody) SetVulRecords(v []*DescribeImageVulListResponseBodyVulRecords) *DescribeImageVulListResponseBody {
 	s.VulRecords = v
 	return s
 }
 
-func (s *DescribeImageVulListResponseBody) SetCurrentPage(v int32) *DescribeImageVulListResponseBody {
-	s.CurrentPage = &v
-	return s
-}
-
 type DescribeImageVulListResponseBodyVulRecords struct {
-	Status            *int32                                                       `json:"Status,omitempty" xml:"Status,omitempty"`
+	CanUpdate         *bool                                                        `json:"CanUpdate,omitempty" xml:"CanUpdate,omitempty"`
 	Type              *string                                                      `json:"Type,omitempty" xml:"Type,omitempty"`
+	Status            *int32                                                       `json:"Status,omitempty" xml:"Status,omitempty"`
 	ModifyTs          *int64                                                       `json:"ModifyTs,omitempty" xml:"ModifyTs,omitempty"`
 	ImageDigest       *string                                                      `json:"ImageDigest,omitempty" xml:"ImageDigest,omitempty"`
-	Layers            []*string                                                    `json:"Layers,omitempty" xml:"Layers,omitempty" type:"Repeated"`
 	PrimaryId         *int64                                                       `json:"PrimaryId,omitempty" xml:"PrimaryId,omitempty"`
 	Tag               *string                                                      `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	Related           *string                                                      `json:"Related,omitempty" xml:"Related,omitempty"`
-	LastTs            *int64                                                       `json:"LastTs,omitempty" xml:"LastTs,omitempty"`
 	FirstTs           *int64                                                       `json:"FirstTs,omitempty" xml:"FirstTs,omitempty"`
+	LastTs            *int64                                                       `json:"LastTs,omitempty" xml:"LastTs,omitempty"`
 	Necessity         *string                                                      `json:"Necessity,omitempty" xml:"Necessity,omitempty"`
 	Uuid              *string                                                      `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 	AliasName         *string                                                      `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
 	Name              *string                                                      `json:"Name,omitempty" xml:"Name,omitempty"`
+	Layers            []*string                                                    `json:"Layers,omitempty" xml:"Layers,omitempty" type:"Repeated"`
 	ExtendContentJson *DescribeImageVulListResponseBodyVulRecordsExtendContentJson `json:"ExtendContentJson,omitempty" xml:"ExtendContentJson,omitempty" type:"Struct"`
 }
 
@@ -8427,13 +10523,18 @@ func (s DescribeImageVulListResponseBodyVulRecords) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeImageVulListResponseBodyVulRecords) SetStatus(v int32) *DescribeImageVulListResponseBodyVulRecords {
-	s.Status = &v
+func (s *DescribeImageVulListResponseBodyVulRecords) SetCanUpdate(v bool) *DescribeImageVulListResponseBodyVulRecords {
+	s.CanUpdate = &v
 	return s
 }
 
 func (s *DescribeImageVulListResponseBodyVulRecords) SetType(v string) *DescribeImageVulListResponseBodyVulRecords {
 	s.Type = &v
+	return s
+}
+
+func (s *DescribeImageVulListResponseBodyVulRecords) SetStatus(v int32) *DescribeImageVulListResponseBodyVulRecords {
+	s.Status = &v
 	return s
 }
 
@@ -8444,11 +10545,6 @@ func (s *DescribeImageVulListResponseBodyVulRecords) SetModifyTs(v int64) *Descr
 
 func (s *DescribeImageVulListResponseBodyVulRecords) SetImageDigest(v string) *DescribeImageVulListResponseBodyVulRecords {
 	s.ImageDigest = &v
-	return s
-}
-
-func (s *DescribeImageVulListResponseBodyVulRecords) SetLayers(v []*string) *DescribeImageVulListResponseBodyVulRecords {
-	s.Layers = v
 	return s
 }
 
@@ -8467,13 +10563,13 @@ func (s *DescribeImageVulListResponseBodyVulRecords) SetRelated(v string) *Descr
 	return s
 }
 
-func (s *DescribeImageVulListResponseBodyVulRecords) SetLastTs(v int64) *DescribeImageVulListResponseBodyVulRecords {
-	s.LastTs = &v
+func (s *DescribeImageVulListResponseBodyVulRecords) SetFirstTs(v int64) *DescribeImageVulListResponseBodyVulRecords {
+	s.FirstTs = &v
 	return s
 }
 
-func (s *DescribeImageVulListResponseBodyVulRecords) SetFirstTs(v int64) *DescribeImageVulListResponseBodyVulRecords {
-	s.FirstTs = &v
+func (s *DescribeImageVulListResponseBodyVulRecords) SetLastTs(v int64) *DescribeImageVulListResponseBodyVulRecords {
+	s.LastTs = &v
 	return s
 }
 
@@ -8497,6 +10593,11 @@ func (s *DescribeImageVulListResponseBodyVulRecords) SetName(v string) *Describe
 	return s
 }
 
+func (s *DescribeImageVulListResponseBodyVulRecords) SetLayers(v []*string) *DescribeImageVulListResponseBodyVulRecords {
+	s.Layers = v
+	return s
+}
+
 func (s *DescribeImageVulListResponseBodyVulRecords) SetExtendContentJson(v *DescribeImageVulListResponseBodyVulRecordsExtendContentJson) *DescribeImageVulListResponseBodyVulRecords {
 	s.ExtendContentJson = v
 	return s
@@ -8504,8 +10605,8 @@ func (s *DescribeImageVulListResponseBodyVulRecords) SetExtendContentJson(v *Des
 
 type DescribeImageVulListResponseBodyVulRecordsExtendContentJson struct {
 	OsRelease     *string                                                                     `json:"OsRelease,omitempty" xml:"OsRelease,omitempty"`
-	RpmEntityList []*DescribeImageVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList `json:"RpmEntityList,omitempty" xml:"RpmEntityList,omitempty" type:"Repeated"`
 	Os            *string                                                                     `json:"Os,omitempty" xml:"Os,omitempty"`
+	RpmEntityList []*DescribeImageVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList `json:"RpmEntityList,omitempty" xml:"RpmEntityList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeImageVulListResponseBodyVulRecordsExtendContentJson) String() string {
@@ -8521,17 +10622,18 @@ func (s *DescribeImageVulListResponseBodyVulRecordsExtendContentJson) SetOsRelea
 	return s
 }
 
-func (s *DescribeImageVulListResponseBodyVulRecordsExtendContentJson) SetRpmEntityList(v []*DescribeImageVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList) *DescribeImageVulListResponseBodyVulRecordsExtendContentJson {
-	s.RpmEntityList = v
-	return s
-}
-
 func (s *DescribeImageVulListResponseBodyVulRecordsExtendContentJson) SetOs(v string) *DescribeImageVulListResponseBodyVulRecordsExtendContentJson {
 	s.Os = &v
 	return s
 }
 
+func (s *DescribeImageVulListResponseBodyVulRecordsExtendContentJson) SetRpmEntityList(v []*DescribeImageVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList) *DescribeImageVulListResponseBodyVulRecordsExtendContentJson {
+	s.RpmEntityList = v
+	return s
+}
+
 type DescribeImageVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList struct {
+	MatchList   *string `json:"MatchList,omitempty" xml:"MatchList,omitempty"`
 	Layer       *string `json:"Layer,omitempty" xml:"Layer,omitempty"`
 	FullVersion *string `json:"FullVersion,omitempty" xml:"FullVersion,omitempty"`
 	Version     *string `json:"Version,omitempty" xml:"Version,omitempty"`
@@ -8547,6 +10649,11 @@ func (s DescribeImageVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList
 
 func (s DescribeImageVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeImageVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList) SetMatchList(v string) *DescribeImageVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList {
+	s.MatchList = &v
+	return s
 }
 
 func (s *DescribeImageVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList) SetLayer(v string) *DescribeImageVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList {
@@ -8637,8 +10744,8 @@ func (s *DescribeInstallCaptchaRequest) SetDeadline(v string) *DescribeInstallCa
 }
 
 type DescribeInstallCaptchaResponseBody struct {
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Deadline    *int32  `json:"Deadline,omitempty" xml:"Deadline,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	CaptchaCode *string `json:"CaptchaCode,omitempty" xml:"CaptchaCode,omitempty"`
 }
 
@@ -8650,13 +10757,13 @@ func (s DescribeInstallCaptchaResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeInstallCaptchaResponseBody) SetRequestId(v string) *DescribeInstallCaptchaResponseBody {
-	s.RequestId = &v
+func (s *DescribeInstallCaptchaResponseBody) SetDeadline(v int32) *DescribeInstallCaptchaResponseBody {
+	s.Deadline = &v
 	return s
 }
 
-func (s *DescribeInstallCaptchaResponseBody) SetDeadline(v int32) *DescribeInstallCaptchaResponseBody {
-	s.Deadline = &v
+func (s *DescribeInstallCaptchaResponseBody) SetRequestId(v string) *DescribeInstallCaptchaResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -8718,8 +10825,8 @@ func (s *DescribeInstanceAntiBruteForceRulesRequest) SetUuidList(v []*string) *D
 }
 
 type DescribeInstanceAntiBruteForceRulesResponseBody struct {
-	PageInfo  *DescribeInstanceAntiBruteForceRulesResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	RequestId *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageInfo  *DescribeInstanceAntiBruteForceRulesResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	Rules     []*DescribeInstanceAntiBruteForceRulesResponseBodyRules  `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
@@ -8731,13 +10838,13 @@ func (s DescribeInstanceAntiBruteForceRulesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeInstanceAntiBruteForceRulesResponseBody) SetPageInfo(v *DescribeInstanceAntiBruteForceRulesResponseBodyPageInfo) *DescribeInstanceAntiBruteForceRulesResponseBody {
-	s.PageInfo = v
+func (s *DescribeInstanceAntiBruteForceRulesResponseBody) SetRequestId(v string) *DescribeInstanceAntiBruteForceRulesResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *DescribeInstanceAntiBruteForceRulesResponseBody) SetRequestId(v string) *DescribeInstanceAntiBruteForceRulesResponseBody {
-	s.RequestId = &v
+func (s *DescribeInstanceAntiBruteForceRulesResponseBody) SetPageInfo(v *DescribeInstanceAntiBruteForceRulesResponseBodyPageInfo) *DescribeInstanceAntiBruteForceRulesResponseBody {
+	s.PageInfo = v
 	return s
 }
 
@@ -8896,8 +11003,8 @@ type DescribeInstanceStatisticsResponseBodyData struct {
 	AppNum     *int32  `json:"AppNum,omitempty" xml:"AppNum,omitempty"`
 	ScaNum     *int32  `json:"ScaNum,omitempty" xml:"ScaNum,omitempty"`
 	Trojan     *int32  `json:"Trojan,omitempty" xml:"Trojan,omitempty"`
-	EmgNum     *int32  `json:"EmgNum,omitempty" xml:"EmgNum,omitempty"`
 	CveNum     *int32  `json:"CveNum,omitempty" xml:"CveNum,omitempty"`
+	EmgNum     *int32  `json:"EmgNum,omitempty" xml:"EmgNum,omitempty"`
 	Suspicious *int32  `json:"Suspicious,omitempty" xml:"Suspicious,omitempty"`
 	CmsNum     *int32  `json:"CmsNum,omitempty" xml:"CmsNum,omitempty"`
 	Uuid       *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
@@ -8934,13 +11041,13 @@ func (s *DescribeInstanceStatisticsResponseBodyData) SetTrojan(v int32) *Describ
 	return s
 }
 
-func (s *DescribeInstanceStatisticsResponseBodyData) SetEmgNum(v int32) *DescribeInstanceStatisticsResponseBodyData {
-	s.EmgNum = &v
+func (s *DescribeInstanceStatisticsResponseBodyData) SetCveNum(v int32) *DescribeInstanceStatisticsResponseBodyData {
+	s.CveNum = &v
 	return s
 }
 
-func (s *DescribeInstanceStatisticsResponseBodyData) SetCveNum(v int32) *DescribeInstanceStatisticsResponseBodyData {
-	s.CveNum = &v
+func (s *DescribeInstanceStatisticsResponseBodyData) SetEmgNum(v int32) *DescribeInstanceStatisticsResponseBodyData {
+	s.EmgNum = &v
 	return s
 }
 
@@ -8998,9 +11105,8 @@ func (s *DescribeInstanceStatisticsResponse) SetBody(v *DescribeInstanceStatisti
 }
 
 type DescribeIpInfoRequest struct {
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Ip       *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	Field    *string `json:"Field,omitempty" xml:"Field,omitempty"`
+	Ip    *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
 }
 
 func (s DescribeIpInfoRequest) String() string {
@@ -9009,11 +11115,6 @@ func (s DescribeIpInfoRequest) String() string {
 
 func (s DescribeIpInfoRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeIpInfoRequest) SetSourceIp(v string) *DescribeIpInfoRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *DescribeIpInfoRequest) SetIp(v string) *DescribeIpInfoRequest {
@@ -9027,68 +11128,68 @@ func (s *DescribeIpInfoRequest) SetField(v string) *DescribeIpInfoRequest {
 }
 
 type DescribeIpInfoResponseBody struct {
-	Country                 *string `json:"country,omitempty" xml:"country,omitempty"`
-	MaliciousScore          *string `json:"malicious_score,omitempty" xml:"malicious_score,omitempty"`
-	IsProxy7d               *string `json:"is_proxy_7d,omitempty" xml:"is_proxy_7d,omitempty"`
-	DayCnt30dWebAttack      *string `json:"day_cnt_30d_web_attack,omitempty" xml:"day_cnt_30d_web_attack,omitempty"`
-	IsWebAttack             *string `json:"is_web_attack,omitempty" xml:"is_web_attack,omitempty"`
-	Isp                     *string `json:"isp,omitempty" xml:"isp,omitempty"`
 	GmtLastC2               *string `json:"gmt_last_c2,omitempty" xml:"gmt_last_c2,omitempty"`
-	IsNat1d                 *string `json:"is_nat_1d,omitempty" xml:"is_nat_1d,omitempty"`
-	GmtLastMaliciousSource  *string `json:"gmt_last_malicious_source,omitempty" xml:"gmt_last_malicious_source,omitempty"`
+	NatDayTrace             *string `json:"nat_day_trace,omitempty" xml:"nat_day_trace,omitempty"`
+	IsProxy1d               *string `json:"is_proxy_1d,omitempty" xml:"is_proxy_1d,omitempty"`
+	GmtFirstMiningPool      *string `json:"gmt_first_mining_pool,omitempty" xml:"gmt_first_mining_pool,omitempty"`
 	Province                *string `json:"province,omitempty" xml:"province,omitempty"`
-	ProxyDayTrace           *string `json:"proxy_day_trace,omitempty" xml:"proxy_day_trace,omitempty"`
-	GmtLastWebAttack        *string `json:"gmt_last_web_attack,omitempty" xml:"gmt_last_web_attack,omitempty"`
-	IsWebAttack7d           *string `json:"is_web_attack_7d,omitempty" xml:"is_web_attack_7d,omitempty"`
-	MiningPoolDayTrace      *string `json:"mining_pool_day_trace,omitempty" xml:"mining_pool_day_trace,omitempty"`
-	IsC2                    *string `json:"is_c2,omitempty" xml:"is_c2,omitempty"`
-	GmtLastMiningPool       *string `json:"gmt_last_mining_pool,omitempty" xml:"gmt_last_mining_pool,omitempty"`
-	IsMaliciousSource1d     *string `json:"is_malicious_source_1d,omitempty" xml:"is_malicious_source_1d,omitempty"`
-	IsMiningPool1d          *string `json:"is_mining_pool_1d,omitempty" xml:"is_mining_pool_1d,omitempty"`
-	IsTor1d                 *string `json:"is_tor_1d,omitempty" xml:"is_tor_1d,omitempty"`
-	IsNat                   *string `json:"is_nat,omitempty" xml:"is_nat,omitempty"`
+	IsMaliciousLogin7d      *string `json:"is_malicious_login_7d,omitempty" xml:"is_malicious_login_7d,omitempty"`
+	TotalDayCntTor          *string `json:"total_day_cnt_tor,omitempty" xml:"total_day_cnt_tor,omitempty"`
+	TotalDayCntWebAttack    *string `json:"total_day_cnt_web_attack,omitempty" xml:"total_day_cnt_web_attack,omitempty"`
+	GmtLastProxy            *string `json:"gmt_last_proxy,omitempty" xml:"gmt_last_proxy,omitempty"`
+	IsNat7d                 *string `json:"is_nat_7d,omitempty" xml:"is_nat_7d,omitempty"`
 	RequestId               *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Ip                      *string `json:"ip,omitempty" xml:"ip,omitempty"`
-	IsC27d                  *string `json:"is_c2_7d,omitempty" xml:"is_c2_7d,omitempty"`
-	IsMaliciousLogin1d      *string `json:"is_malicious_login_1d,omitempty" xml:"is_malicious_login_1d,omitempty"`
+	Isp                     *string `json:"isp,omitempty" xml:"isp,omitempty"`
 	Tags                    *string `json:"tags,omitempty" xml:"tags,omitempty"`
+	ProxyDayTrace           *string `json:"proxy_day_trace,omitempty" xml:"proxy_day_trace,omitempty"`
+	DayCnt7dWebAttack       *string `json:"day_cnt_7d_web_attack,omitempty" xml:"day_cnt_7d_web_attack,omitempty"`
+	GmtLastTor              *string `json:"gmt_last_tor,omitempty" xml:"gmt_last_tor,omitempty"`
+	WebAttackDayTrace       *string `json:"web_attack_day_trace,omitempty" xml:"web_attack_day_trace,omitempty"`
+	GmtLastMaliciousLogin   *string `json:"gmt_last_malicious_login,omitempty" xml:"gmt_last_malicious_login,omitempty"`
+	GmtLastWebAttack        *string `json:"gmt_last_web_attack,omitempty" xml:"gmt_last_web_attack,omitempty"`
+	IsWebAttack1d           *string `json:"is_web_attack_1d,omitempty" xml:"is_web_attack_1d,omitempty"`
+	DayCnt7dTor             *string `json:"day_cnt_7d_tor,omitempty" xml:"day_cnt_7d_tor,omitempty"`
+	IsTor                   *string `json:"is_tor,omitempty" xml:"is_tor,omitempty"`
+	IsProxy7d               *string `json:"is_proxy_7d,omitempty" xml:"is_proxy_7d,omitempty"`
+	GmtLastMaliciousSource  *string `json:"gmt_last_malicious_source,omitempty" xml:"gmt_last_malicious_source,omitempty"`
+	Rdns                    *string `json:"rdns,omitempty" xml:"rdns,omitempty"`
+	IsC21d                  *string `json:"is_c2_1d,omitempty" xml:"is_c2_1d,omitempty"`
+	IsWebAttack7d           *string `json:"is_web_attack_7d,omitempty" xml:"is_web_attack_7d,omitempty"`
+	IsMaliciousSource1d     *string `json:"is_malicious_source_1d,omitempty" xml:"is_malicious_source_1d,omitempty"`
+	Geo                     *string `json:"geo,omitempty" xml:"geo,omitempty"`
+	IsTor1d                 *string `json:"is_tor_1d,omitempty" xml:"is_tor_1d,omitempty"`
+	IsMaliciousLogin        *string `json:"is_malicious_login,omitempty" xml:"is_malicious_login,omitempty"`
+	GmtFirstC2              *string `json:"gmt_first_c2,omitempty" xml:"gmt_first_c2,omitempty"`
+	C2DayTrace              *string `json:"c2_day_trace,omitempty" xml:"c2_day_trace,omitempty"`
+	DayCnt30dWebAttack      *string `json:"day_cnt_30d_web_attack,omitempty" xml:"day_cnt_30d_web_attack,omitempty"`
 	MaliciousSourceDayTrace *string `json:"malicious_source_day_trace,omitempty" xml:"malicious_source_day_trace,omitempty"`
 	IsMiningPool            *string `json:"is_mining_pool,omitempty" xml:"is_mining_pool,omitempty"`
-	GmtFirstMiningPool      *string `json:"gmt_first_mining_pool,omitempty" xml:"gmt_first_mining_pool,omitempty"`
-	IsIdc                   *string `json:"is_idc,omitempty" xml:"is_idc,omitempty"`
-	IsMaliciousLogin        *string `json:"is_malicious_login,omitempty" xml:"is_malicious_login,omitempty"`
-	Rdns                    *string `json:"rdns,omitempty" xml:"rdns,omitempty"`
-	City                    *string `json:"city,omitempty" xml:"city,omitempty"`
-	IsTor7d                 *string `json:"is_tor_7d,omitempty" xml:"is_tor_7d,omitempty"`
-	GmtLastNat              *string `json:"gmt_last_nat,omitempty" xml:"gmt_last_nat,omitempty"`
-	GmtLastMaliciousLogin   *string `json:"gmt_last_malicious_login,omitempty" xml:"gmt_last_malicious_login,omitempty"`
-	IsNat7d                 *string `json:"is_nat_7d,omitempty" xml:"is_nat_7d,omitempty"`
-	IsProxy1d               *string `json:"is_proxy_1d,omitempty" xml:"is_proxy_1d,omitempty"`
-	Geo                     *string `json:"geo,omitempty" xml:"geo,omitempty"`
-	GmtFirstC2              *string `json:"gmt_first_c2,omitempty" xml:"gmt_first_c2,omitempty"`
 	IsMaliciousSource7d     *string `json:"is_malicious_source_7d,omitempty" xml:"is_malicious_source_7d,omitempty"`
-	IsMiningPool7d          *string `json:"is_mining_pool_7d,omitempty" xml:"is_mining_pool_7d,omitempty"`
-	DayCnt7dTor             *string `json:"day_cnt_7d_tor,omitempty" xml:"day_cnt_7d_tor,omitempty"`
+	MiningPoolDayTrace      *string `json:"mining_pool_day_trace,omitempty" xml:"mining_pool_day_trace,omitempty"`
+	IsIdc                   *string `json:"is_idc,omitempty" xml:"is_idc,omitempty"`
+	GmtLastMiningPool       *string `json:"gmt_last_mining_pool,omitempty" xml:"gmt_last_mining_pool,omitempty"`
 	IsWebAttack30d          *string `json:"is_web_attack_30d,omitempty" xml:"is_web_attack_30d,omitempty"`
-	GmtLastProxy            *string `json:"gmt_last_proxy,omitempty" xml:"gmt_last_proxy,omitempty"`
-	NatDayTrace             *string `json:"nat_day_trace,omitempty" xml:"nat_day_trace,omitempty"`
-	TotalDayCntWebAttack    *string `json:"total_day_cnt_web_attack,omitempty" xml:"total_day_cnt_web_attack,omitempty"`
-	IsWebAttack1d           *string `json:"is_web_attack_1d,omitempty" xml:"is_web_attack_1d,omitempty"`
-	MaliciousLoginDayTrace  *string `json:"malicious_login_day_trace,omitempty" xml:"malicious_login_day_trace,omitempty"`
-	DayCnt30dTor            *string `json:"day_cnt_30d_tor,omitempty" xml:"day_cnt_30d_tor,omitempty"`
-	TotalDayCntTor          *string `json:"total_day_cnt_tor,omitempty" xml:"total_day_cnt_tor,omitempty"`
-	IsProxy                 *string `json:"is_proxy,omitempty" xml:"is_proxy,omitempty"`
-	C2DayTrace              *string `json:"c2_day_trace,omitempty" xml:"c2_day_trace,omitempty"`
-	IsC21d                  *string `json:"is_c2_1d,omitempty" xml:"is_c2_1d,omitempty"`
-	IsMaliciousSource30d    *string `json:"is_malicious_source_30d,omitempty" xml:"is_malicious_source_30d,omitempty"`
-	DayCnt7dWebAttack       *string `json:"day_cnt_7d_web_attack,omitempty" xml:"day_cnt_7d_web_attack,omitempty"`
-	IdcName                 *string `json:"idc_name,omitempty" xml:"idc_name,omitempty"`
-	TorDayTrace             *string `json:"tor_day_trace,omitempty" xml:"tor_day_trace,omitempty"`
-	IsTor                   *string `json:"is_tor,omitempty" xml:"is_tor,omitempty"`
-	IsMaliciousLogin7d      *string `json:"is_malicious_login_7d,omitempty" xml:"is_malicious_login_7d,omitempty"`
-	GmtLastTor              *string `json:"gmt_last_tor,omitempty" xml:"gmt_last_tor,omitempty"`
+	IsTor7d                 *string `json:"is_tor_7d,omitempty" xml:"is_tor_7d,omitempty"`
+	IsNat                   *string `json:"is_nat,omitempty" xml:"is_nat,omitempty"`
+	IsNat1d                 *string `json:"is_nat_1d,omitempty" xml:"is_nat_1d,omitempty"`
 	IsMaliciousSource       *string `json:"is_malicious_source,omitempty" xml:"is_malicious_source,omitempty"`
-	WebAttackDayTrace       *string `json:"web_attack_day_trace,omitempty" xml:"web_attack_day_trace,omitempty"`
+	TorDayTrace             *string `json:"tor_day_trace,omitempty" xml:"tor_day_trace,omitempty"`
+	Ip                      *string `json:"ip,omitempty" xml:"ip,omitempty"`
+	IsWebAttack             *string `json:"is_web_attack,omitempty" xml:"is_web_attack,omitempty"`
+	City                    *string `json:"city,omitempty" xml:"city,omitempty"`
+	IsC2                    *string `json:"is_c2,omitempty" xml:"is_c2,omitempty"`
+	IsMiningPool7d          *string `json:"is_mining_pool_7d,omitempty" xml:"is_mining_pool_7d,omitempty"`
+	MaliciousScore          *string `json:"malicious_score,omitempty" xml:"malicious_score,omitempty"`
+	IsMaliciousSource30d    *string `json:"is_malicious_source_30d,omitempty" xml:"is_malicious_source_30d,omitempty"`
+	GmtLastNat              *string `json:"gmt_last_nat,omitempty" xml:"gmt_last_nat,omitempty"`
+	IdcName                 *string `json:"idc_name,omitempty" xml:"idc_name,omitempty"`
+	IsMiningPool1d          *string `json:"is_mining_pool_1d,omitempty" xml:"is_mining_pool_1d,omitempty"`
+	IsMaliciousLogin1d      *string `json:"is_malicious_login_1d,omitempty" xml:"is_malicious_login_1d,omitempty"`
+	Country                 *string `json:"country,omitempty" xml:"country,omitempty"`
+	DayCnt30dTor            *string `json:"day_cnt_30d_tor,omitempty" xml:"day_cnt_30d_tor,omitempty"`
+	IsProxy                 *string `json:"is_proxy,omitempty" xml:"is_proxy,omitempty"`
+	MaliciousLoginDayTrace  *string `json:"malicious_login_day_trace,omitempty" xml:"malicious_login_day_trace,omitempty"`
+	IsC27d                  *string `json:"is_c2_7d,omitempty" xml:"is_c2_7d,omitempty"`
 }
 
 func (s DescribeIpInfoResponseBody) String() string {
@@ -9099,48 +11200,23 @@ func (s DescribeIpInfoResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeIpInfoResponseBody) SetCountry(v string) *DescribeIpInfoResponseBody {
-	s.Country = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetMaliciousScore(v string) *DescribeIpInfoResponseBody {
-	s.MaliciousScore = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsProxy7d(v string) *DescribeIpInfoResponseBody {
-	s.IsProxy7d = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetDayCnt30dWebAttack(v string) *DescribeIpInfoResponseBody {
-	s.DayCnt30dWebAttack = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsWebAttack(v string) *DescribeIpInfoResponseBody {
-	s.IsWebAttack = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsp(v string) *DescribeIpInfoResponseBody {
-	s.Isp = &v
-	return s
-}
-
 func (s *DescribeIpInfoResponseBody) SetGmtLastC2(v string) *DescribeIpInfoResponseBody {
 	s.GmtLastC2 = &v
 	return s
 }
 
-func (s *DescribeIpInfoResponseBody) SetIsNat1d(v string) *DescribeIpInfoResponseBody {
-	s.IsNat1d = &v
+func (s *DescribeIpInfoResponseBody) SetNatDayTrace(v string) *DescribeIpInfoResponseBody {
+	s.NatDayTrace = &v
 	return s
 }
 
-func (s *DescribeIpInfoResponseBody) SetGmtLastMaliciousSource(v string) *DescribeIpInfoResponseBody {
-	s.GmtLastMaliciousSource = &v
+func (s *DescribeIpInfoResponseBody) SetIsProxy1d(v string) *DescribeIpInfoResponseBody {
+	s.IsProxy1d = &v
+	return s
+}
+
+func (s *DescribeIpInfoResponseBody) SetGmtFirstMiningPool(v string) *DescribeIpInfoResponseBody {
+	s.GmtFirstMiningPool = &v
 	return s
 }
 
@@ -9149,53 +11225,28 @@ func (s *DescribeIpInfoResponseBody) SetProvince(v string) *DescribeIpInfoRespon
 	return s
 }
 
-func (s *DescribeIpInfoResponseBody) SetProxyDayTrace(v string) *DescribeIpInfoResponseBody {
-	s.ProxyDayTrace = &v
+func (s *DescribeIpInfoResponseBody) SetIsMaliciousLogin7d(v string) *DescribeIpInfoResponseBody {
+	s.IsMaliciousLogin7d = &v
 	return s
 }
 
-func (s *DescribeIpInfoResponseBody) SetGmtLastWebAttack(v string) *DescribeIpInfoResponseBody {
-	s.GmtLastWebAttack = &v
+func (s *DescribeIpInfoResponseBody) SetTotalDayCntTor(v string) *DescribeIpInfoResponseBody {
+	s.TotalDayCntTor = &v
 	return s
 }
 
-func (s *DescribeIpInfoResponseBody) SetIsWebAttack7d(v string) *DescribeIpInfoResponseBody {
-	s.IsWebAttack7d = &v
+func (s *DescribeIpInfoResponseBody) SetTotalDayCntWebAttack(v string) *DescribeIpInfoResponseBody {
+	s.TotalDayCntWebAttack = &v
 	return s
 }
 
-func (s *DescribeIpInfoResponseBody) SetMiningPoolDayTrace(v string) *DescribeIpInfoResponseBody {
-	s.MiningPoolDayTrace = &v
+func (s *DescribeIpInfoResponseBody) SetGmtLastProxy(v string) *DescribeIpInfoResponseBody {
+	s.GmtLastProxy = &v
 	return s
 }
 
-func (s *DescribeIpInfoResponseBody) SetIsC2(v string) *DescribeIpInfoResponseBody {
-	s.IsC2 = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetGmtLastMiningPool(v string) *DescribeIpInfoResponseBody {
-	s.GmtLastMiningPool = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsMaliciousSource1d(v string) *DescribeIpInfoResponseBody {
-	s.IsMaliciousSource1d = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsMiningPool1d(v string) *DescribeIpInfoResponseBody {
-	s.IsMiningPool1d = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsTor1d(v string) *DescribeIpInfoResponseBody {
-	s.IsTor1d = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsNat(v string) *DescribeIpInfoResponseBody {
-	s.IsNat = &v
+func (s *DescribeIpInfoResponseBody) SetIsNat7d(v string) *DescribeIpInfoResponseBody {
+	s.IsNat7d = &v
 	return s
 }
 
@@ -9204,23 +11255,118 @@ func (s *DescribeIpInfoResponseBody) SetRequestId(v string) *DescribeIpInfoRespo
 	return s
 }
 
-func (s *DescribeIpInfoResponseBody) SetIp(v string) *DescribeIpInfoResponseBody {
-	s.Ip = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsC27d(v string) *DescribeIpInfoResponseBody {
-	s.IsC27d = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsMaliciousLogin1d(v string) *DescribeIpInfoResponseBody {
-	s.IsMaliciousLogin1d = &v
+func (s *DescribeIpInfoResponseBody) SetIsp(v string) *DescribeIpInfoResponseBody {
+	s.Isp = &v
 	return s
 }
 
 func (s *DescribeIpInfoResponseBody) SetTags(v string) *DescribeIpInfoResponseBody {
 	s.Tags = &v
+	return s
+}
+
+func (s *DescribeIpInfoResponseBody) SetProxyDayTrace(v string) *DescribeIpInfoResponseBody {
+	s.ProxyDayTrace = &v
+	return s
+}
+
+func (s *DescribeIpInfoResponseBody) SetDayCnt7dWebAttack(v string) *DescribeIpInfoResponseBody {
+	s.DayCnt7dWebAttack = &v
+	return s
+}
+
+func (s *DescribeIpInfoResponseBody) SetGmtLastTor(v string) *DescribeIpInfoResponseBody {
+	s.GmtLastTor = &v
+	return s
+}
+
+func (s *DescribeIpInfoResponseBody) SetWebAttackDayTrace(v string) *DescribeIpInfoResponseBody {
+	s.WebAttackDayTrace = &v
+	return s
+}
+
+func (s *DescribeIpInfoResponseBody) SetGmtLastMaliciousLogin(v string) *DescribeIpInfoResponseBody {
+	s.GmtLastMaliciousLogin = &v
+	return s
+}
+
+func (s *DescribeIpInfoResponseBody) SetGmtLastWebAttack(v string) *DescribeIpInfoResponseBody {
+	s.GmtLastWebAttack = &v
+	return s
+}
+
+func (s *DescribeIpInfoResponseBody) SetIsWebAttack1d(v string) *DescribeIpInfoResponseBody {
+	s.IsWebAttack1d = &v
+	return s
+}
+
+func (s *DescribeIpInfoResponseBody) SetDayCnt7dTor(v string) *DescribeIpInfoResponseBody {
+	s.DayCnt7dTor = &v
+	return s
+}
+
+func (s *DescribeIpInfoResponseBody) SetIsTor(v string) *DescribeIpInfoResponseBody {
+	s.IsTor = &v
+	return s
+}
+
+func (s *DescribeIpInfoResponseBody) SetIsProxy7d(v string) *DescribeIpInfoResponseBody {
+	s.IsProxy7d = &v
+	return s
+}
+
+func (s *DescribeIpInfoResponseBody) SetGmtLastMaliciousSource(v string) *DescribeIpInfoResponseBody {
+	s.GmtLastMaliciousSource = &v
+	return s
+}
+
+func (s *DescribeIpInfoResponseBody) SetRdns(v string) *DescribeIpInfoResponseBody {
+	s.Rdns = &v
+	return s
+}
+
+func (s *DescribeIpInfoResponseBody) SetIsC21d(v string) *DescribeIpInfoResponseBody {
+	s.IsC21d = &v
+	return s
+}
+
+func (s *DescribeIpInfoResponseBody) SetIsWebAttack7d(v string) *DescribeIpInfoResponseBody {
+	s.IsWebAttack7d = &v
+	return s
+}
+
+func (s *DescribeIpInfoResponseBody) SetIsMaliciousSource1d(v string) *DescribeIpInfoResponseBody {
+	s.IsMaliciousSource1d = &v
+	return s
+}
+
+func (s *DescribeIpInfoResponseBody) SetGeo(v string) *DescribeIpInfoResponseBody {
+	s.Geo = &v
+	return s
+}
+
+func (s *DescribeIpInfoResponseBody) SetIsTor1d(v string) *DescribeIpInfoResponseBody {
+	s.IsTor1d = &v
+	return s
+}
+
+func (s *DescribeIpInfoResponseBody) SetIsMaliciousLogin(v string) *DescribeIpInfoResponseBody {
+	s.IsMaliciousLogin = &v
+	return s
+}
+
+func (s *DescribeIpInfoResponseBody) SetGmtFirstC2(v string) *DescribeIpInfoResponseBody {
+	s.GmtFirstC2 = &v
+	return s
+}
+
+func (s *DescribeIpInfoResponseBody) SetC2DayTrace(v string) *DescribeIpInfoResponseBody {
+	s.C2DayTrace = &v
+	return s
+}
+
+func (s *DescribeIpInfoResponseBody) SetDayCnt30dWebAttack(v string) *DescribeIpInfoResponseBody {
+	s.DayCnt30dWebAttack = &v
 	return s
 }
 
@@ -9234,8 +11380,13 @@ func (s *DescribeIpInfoResponseBody) SetIsMiningPool(v string) *DescribeIpInfoRe
 	return s
 }
 
-func (s *DescribeIpInfoResponseBody) SetGmtFirstMiningPool(v string) *DescribeIpInfoResponseBody {
-	s.GmtFirstMiningPool = &v
+func (s *DescribeIpInfoResponseBody) SetIsMaliciousSource7d(v string) *DescribeIpInfoResponseBody {
+	s.IsMaliciousSource7d = &v
+	return s
+}
+
+func (s *DescribeIpInfoResponseBody) SetMiningPoolDayTrace(v string) *DescribeIpInfoResponseBody {
+	s.MiningPoolDayTrace = &v
 	return s
 }
 
@@ -9244,68 +11395,8 @@ func (s *DescribeIpInfoResponseBody) SetIsIdc(v string) *DescribeIpInfoResponseB
 	return s
 }
 
-func (s *DescribeIpInfoResponseBody) SetIsMaliciousLogin(v string) *DescribeIpInfoResponseBody {
-	s.IsMaliciousLogin = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetRdns(v string) *DescribeIpInfoResponseBody {
-	s.Rdns = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetCity(v string) *DescribeIpInfoResponseBody {
-	s.City = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsTor7d(v string) *DescribeIpInfoResponseBody {
-	s.IsTor7d = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetGmtLastNat(v string) *DescribeIpInfoResponseBody {
-	s.GmtLastNat = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetGmtLastMaliciousLogin(v string) *DescribeIpInfoResponseBody {
-	s.GmtLastMaliciousLogin = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsNat7d(v string) *DescribeIpInfoResponseBody {
-	s.IsNat7d = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsProxy1d(v string) *DescribeIpInfoResponseBody {
-	s.IsProxy1d = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetGeo(v string) *DescribeIpInfoResponseBody {
-	s.Geo = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetGmtFirstC2(v string) *DescribeIpInfoResponseBody {
-	s.GmtFirstC2 = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsMaliciousSource7d(v string) *DescribeIpInfoResponseBody {
-	s.IsMaliciousSource7d = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsMiningPool7d(v string) *DescribeIpInfoResponseBody {
-	s.IsMiningPool7d = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetDayCnt7dTor(v string) *DescribeIpInfoResponseBody {
-	s.DayCnt7dTor = &v
+func (s *DescribeIpInfoResponseBody) SetGmtLastMiningPool(v string) *DescribeIpInfoResponseBody {
+	s.GmtLastMiningPool = &v
 	return s
 }
 
@@ -9314,88 +11405,18 @@ func (s *DescribeIpInfoResponseBody) SetIsWebAttack30d(v string) *DescribeIpInfo
 	return s
 }
 
-func (s *DescribeIpInfoResponseBody) SetGmtLastProxy(v string) *DescribeIpInfoResponseBody {
-	s.GmtLastProxy = &v
+func (s *DescribeIpInfoResponseBody) SetIsTor7d(v string) *DescribeIpInfoResponseBody {
+	s.IsTor7d = &v
 	return s
 }
 
-func (s *DescribeIpInfoResponseBody) SetNatDayTrace(v string) *DescribeIpInfoResponseBody {
-	s.NatDayTrace = &v
+func (s *DescribeIpInfoResponseBody) SetIsNat(v string) *DescribeIpInfoResponseBody {
+	s.IsNat = &v
 	return s
 }
 
-func (s *DescribeIpInfoResponseBody) SetTotalDayCntWebAttack(v string) *DescribeIpInfoResponseBody {
-	s.TotalDayCntWebAttack = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsWebAttack1d(v string) *DescribeIpInfoResponseBody {
-	s.IsWebAttack1d = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetMaliciousLoginDayTrace(v string) *DescribeIpInfoResponseBody {
-	s.MaliciousLoginDayTrace = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetDayCnt30dTor(v string) *DescribeIpInfoResponseBody {
-	s.DayCnt30dTor = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetTotalDayCntTor(v string) *DescribeIpInfoResponseBody {
-	s.TotalDayCntTor = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsProxy(v string) *DescribeIpInfoResponseBody {
-	s.IsProxy = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetC2DayTrace(v string) *DescribeIpInfoResponseBody {
-	s.C2DayTrace = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsC21d(v string) *DescribeIpInfoResponseBody {
-	s.IsC21d = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsMaliciousSource30d(v string) *DescribeIpInfoResponseBody {
-	s.IsMaliciousSource30d = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetDayCnt7dWebAttack(v string) *DescribeIpInfoResponseBody {
-	s.DayCnt7dWebAttack = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIdcName(v string) *DescribeIpInfoResponseBody {
-	s.IdcName = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetTorDayTrace(v string) *DescribeIpInfoResponseBody {
-	s.TorDayTrace = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsTor(v string) *DescribeIpInfoResponseBody {
-	s.IsTor = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsMaliciousLogin7d(v string) *DescribeIpInfoResponseBody {
-	s.IsMaliciousLogin7d = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetGmtLastTor(v string) *DescribeIpInfoResponseBody {
-	s.GmtLastTor = &v
+func (s *DescribeIpInfoResponseBody) SetIsNat1d(v string) *DescribeIpInfoResponseBody {
+	s.IsNat1d = &v
 	return s
 }
 
@@ -9404,8 +11425,88 @@ func (s *DescribeIpInfoResponseBody) SetIsMaliciousSource(v string) *DescribeIpI
 	return s
 }
 
-func (s *DescribeIpInfoResponseBody) SetWebAttackDayTrace(v string) *DescribeIpInfoResponseBody {
-	s.WebAttackDayTrace = &v
+func (s *DescribeIpInfoResponseBody) SetTorDayTrace(v string) *DescribeIpInfoResponseBody {
+	s.TorDayTrace = &v
+	return s
+}
+
+func (s *DescribeIpInfoResponseBody) SetIp(v string) *DescribeIpInfoResponseBody {
+	s.Ip = &v
+	return s
+}
+
+func (s *DescribeIpInfoResponseBody) SetIsWebAttack(v string) *DescribeIpInfoResponseBody {
+	s.IsWebAttack = &v
+	return s
+}
+
+func (s *DescribeIpInfoResponseBody) SetCity(v string) *DescribeIpInfoResponseBody {
+	s.City = &v
+	return s
+}
+
+func (s *DescribeIpInfoResponseBody) SetIsC2(v string) *DescribeIpInfoResponseBody {
+	s.IsC2 = &v
+	return s
+}
+
+func (s *DescribeIpInfoResponseBody) SetIsMiningPool7d(v string) *DescribeIpInfoResponseBody {
+	s.IsMiningPool7d = &v
+	return s
+}
+
+func (s *DescribeIpInfoResponseBody) SetMaliciousScore(v string) *DescribeIpInfoResponseBody {
+	s.MaliciousScore = &v
+	return s
+}
+
+func (s *DescribeIpInfoResponseBody) SetIsMaliciousSource30d(v string) *DescribeIpInfoResponseBody {
+	s.IsMaliciousSource30d = &v
+	return s
+}
+
+func (s *DescribeIpInfoResponseBody) SetGmtLastNat(v string) *DescribeIpInfoResponseBody {
+	s.GmtLastNat = &v
+	return s
+}
+
+func (s *DescribeIpInfoResponseBody) SetIdcName(v string) *DescribeIpInfoResponseBody {
+	s.IdcName = &v
+	return s
+}
+
+func (s *DescribeIpInfoResponseBody) SetIsMiningPool1d(v string) *DescribeIpInfoResponseBody {
+	s.IsMiningPool1d = &v
+	return s
+}
+
+func (s *DescribeIpInfoResponseBody) SetIsMaliciousLogin1d(v string) *DescribeIpInfoResponseBody {
+	s.IsMaliciousLogin1d = &v
+	return s
+}
+
+func (s *DescribeIpInfoResponseBody) SetCountry(v string) *DescribeIpInfoResponseBody {
+	s.Country = &v
+	return s
+}
+
+func (s *DescribeIpInfoResponseBody) SetDayCnt30dTor(v string) *DescribeIpInfoResponseBody {
+	s.DayCnt30dTor = &v
+	return s
+}
+
+func (s *DescribeIpInfoResponseBody) SetIsProxy(v string) *DescribeIpInfoResponseBody {
+	s.IsProxy = &v
+	return s
+}
+
+func (s *DescribeIpInfoResponseBody) SetMaliciousLoginDayTrace(v string) *DescribeIpInfoResponseBody {
+	s.MaliciousLoginDayTrace = &v
+	return s
+}
+
+func (s *DescribeIpInfoResponseBody) SetIsC27d(v string) *DescribeIpInfoResponseBody {
+	s.IsC27d = &v
 	return s
 }
 
@@ -9432,29 +11533,99 @@ func (s *DescribeIpInfoResponse) SetBody(v *DescribeIpInfoResponseBody) *Describ
 	return s
 }
 
-type DescribeModuleConfigRequest struct {
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+type DescribeLogstoreStorageRequest struct {
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	From *string `json:"From,omitempty" xml:"From,omitempty"`
 }
 
-func (s DescribeModuleConfigRequest) String() string {
+func (s DescribeLogstoreStorageRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeModuleConfigRequest) GoString() string {
+func (s DescribeLogstoreStorageRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeModuleConfigRequest) SetSourceIp(v string) *DescribeModuleConfigRequest {
-	s.SourceIp = &v
+func (s *DescribeLogstoreStorageRequest) SetLang(v string) *DescribeLogstoreStorageRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeLogstoreStorageRequest) SetFrom(v string) *DescribeLogstoreStorageRequest {
+	s.From = &v
+	return s
+}
+
+type DescribeLogstoreStorageResponseBody struct {
+	Used      *int64  `json:"Used,omitempty" xml:"Used,omitempty"`
+	Ttl       *int32  `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	Logstore  *string `json:"Logstore,omitempty" xml:"Logstore,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Preserve  *int64  `json:"Preserve,omitempty" xml:"Preserve,omitempty"`
+}
+
+func (s DescribeLogstoreStorageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLogstoreStorageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLogstoreStorageResponseBody) SetUsed(v int64) *DescribeLogstoreStorageResponseBody {
+	s.Used = &v
+	return s
+}
+
+func (s *DescribeLogstoreStorageResponseBody) SetTtl(v int32) *DescribeLogstoreStorageResponseBody {
+	s.Ttl = &v
+	return s
+}
+
+func (s *DescribeLogstoreStorageResponseBody) SetLogstore(v string) *DescribeLogstoreStorageResponseBody {
+	s.Logstore = &v
+	return s
+}
+
+func (s *DescribeLogstoreStorageResponseBody) SetRequestId(v string) *DescribeLogstoreStorageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeLogstoreStorageResponseBody) SetPreserve(v int64) *DescribeLogstoreStorageResponseBody {
+	s.Preserve = &v
+	return s
+}
+
+type DescribeLogstoreStorageResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeLogstoreStorageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeLogstoreStorageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLogstoreStorageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLogstoreStorageResponse) SetHeaders(v map[string]*string) *DescribeLogstoreStorageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeLogstoreStorageResponse) SetBody(v *DescribeLogstoreStorageResponseBody) *DescribeLogstoreStorageResponse {
+	s.Body = v
 	return s
 }
 
 type DescribeModuleConfigResponseBody struct {
-	RequestId        *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	HttpStatusCode   *int32                                              `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId        *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success          *bool                                               `json:"Success,omitempty" xml:"Success,omitempty"`
 	Count            *int32                                              `json:"Count,omitempty" xml:"Count,omitempty"`
 	ModuleConfigList []*DescribeModuleConfigResponseBodyModuleConfigList `json:"ModuleConfigList,omitempty" xml:"ModuleConfigList,omitempty" type:"Repeated"`
-	Success          *bool                                               `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeModuleConfigResponseBody) String() string {
@@ -9465,13 +11636,18 @@ func (s DescribeModuleConfigResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeModuleConfigResponseBody) SetHttpStatusCode(v int32) *DescribeModuleConfigResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
 func (s *DescribeModuleConfigResponseBody) SetRequestId(v string) *DescribeModuleConfigResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *DescribeModuleConfigResponseBody) SetHttpStatusCode(v int32) *DescribeModuleConfigResponseBody {
-	s.HttpStatusCode = &v
+func (s *DescribeModuleConfigResponseBody) SetSuccess(v bool) *DescribeModuleConfigResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -9482,11 +11658,6 @@ func (s *DescribeModuleConfigResponseBody) SetCount(v int32) *DescribeModuleConf
 
 func (s *DescribeModuleConfigResponseBody) SetModuleConfigList(v []*DescribeModuleConfigResponseBodyModuleConfigList) *DescribeModuleConfigResponseBody {
 	s.ModuleConfigList = v
-	return s
-}
-
-func (s *DescribeModuleConfigResponseBody) SetSuccess(v bool) *DescribeModuleConfigResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -9630,11 +11801,11 @@ func (s *DescribeNoticeConfigResponseBody) SetNoticeConfigList(v []*DescribeNoti
 }
 
 type DescribeNoticeConfigResponseBodyNoticeConfigList struct {
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Route       *int32  `json:"Route,omitempty" xml:"Route,omitempty"`
 	TimeLimit   *int32  `json:"TimeLimit,omitempty" xml:"TimeLimit,omitempty"`
 	AliUid      *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	Project     *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	Route       *int32  `json:"Route,omitempty" xml:"Route,omitempty"`
 }
 
 func (s DescribeNoticeConfigResponseBodyNoticeConfigList) String() string {
@@ -9643,16 +11814,6 @@ func (s DescribeNoticeConfigResponseBodyNoticeConfigList) String() string {
 
 func (s DescribeNoticeConfigResponseBodyNoticeConfigList) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeNoticeConfigResponseBodyNoticeConfigList) SetCurrentPage(v int32) *DescribeNoticeConfigResponseBodyNoticeConfigList {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *DescribeNoticeConfigResponseBodyNoticeConfigList) SetRoute(v int32) *DescribeNoticeConfigResponseBodyNoticeConfigList {
-	s.Route = &v
-	return s
 }
 
 func (s *DescribeNoticeConfigResponseBodyNoticeConfigList) SetTimeLimit(v int32) *DescribeNoticeConfigResponseBodyNoticeConfigList {
@@ -9665,8 +11826,18 @@ func (s *DescribeNoticeConfigResponseBodyNoticeConfigList) SetAliUid(v int64) *D
 	return s
 }
 
+func (s *DescribeNoticeConfigResponseBodyNoticeConfigList) SetCurrentPage(v int32) *DescribeNoticeConfigResponseBodyNoticeConfigList {
+	s.CurrentPage = &v
+	return s
+}
+
 func (s *DescribeNoticeConfigResponseBodyNoticeConfigList) SetProject(v string) *DescribeNoticeConfigResponseBodyNoticeConfigList {
 	s.Project = &v
+	return s
+}
+
+func (s *DescribeNoticeConfigResponseBodyNoticeConfigList) SetRoute(v int32) *DescribeNoticeConfigResponseBodyNoticeConfigList {
+	s.Route = &v
 	return s
 }
 
@@ -9694,7 +11865,6 @@ func (s *DescribeNoticeConfigResponse) SetBody(v *DescribeNoticeConfigResponseBo
 }
 
 type DescribePropertyCountRequest struct {
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	UuidList *string `json:"UuidList,omitempty" xml:"UuidList,omitempty"`
 }
@@ -9705,11 +11875,6 @@ func (s DescribePropertyCountRequest) String() string {
 
 func (s DescribePropertyCountRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribePropertyCountRequest) SetSourceIp(v string) *DescribePropertyCountRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *DescribePropertyCountRequest) SetType(v string) *DescribePropertyCountRequest {
@@ -9723,14 +11888,14 @@ func (s *DescribePropertyCountRequest) SetUuidList(v string) *DescribePropertyCo
 }
 
 type DescribePropertyCountResponseBody struct {
-	Sca       *int32  `json:"Sca,omitempty" xml:"Sca,omitempty"`
-	User      *int32  `json:"User,omitempty" xml:"User,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Port      *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
 	Process   *int32  `json:"Process,omitempty" xml:"Process,omitempty"`
-	Software  *int32  `json:"Software,omitempty" xml:"Software,omitempty"`
 	AutoRun   *int32  `json:"AutoRun,omitempty" xml:"AutoRun,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	User      *int32  `json:"User,omitempty" xml:"User,omitempty"`
+	Software  *int32  `json:"Software,omitempty" xml:"Software,omitempty"`
 	Cron      *int32  `json:"Cron,omitempty" xml:"Cron,omitempty"`
+	Port      *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	Sca       *int32  `json:"Sca,omitempty" xml:"Sca,omitempty"`
 }
 
 func (s DescribePropertyCountResponseBody) String() string {
@@ -9741,33 +11906,8 @@ func (s DescribePropertyCountResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribePropertyCountResponseBody) SetSca(v int32) *DescribePropertyCountResponseBody {
-	s.Sca = &v
-	return s
-}
-
-func (s *DescribePropertyCountResponseBody) SetUser(v int32) *DescribePropertyCountResponseBody {
-	s.User = &v
-	return s
-}
-
-func (s *DescribePropertyCountResponseBody) SetRequestId(v string) *DescribePropertyCountResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribePropertyCountResponseBody) SetPort(v int32) *DescribePropertyCountResponseBody {
-	s.Port = &v
-	return s
-}
-
 func (s *DescribePropertyCountResponseBody) SetProcess(v int32) *DescribePropertyCountResponseBody {
 	s.Process = &v
-	return s
-}
-
-func (s *DescribePropertyCountResponseBody) SetSoftware(v int32) *DescribePropertyCountResponseBody {
-	s.Software = &v
 	return s
 }
 
@@ -9776,8 +11916,33 @@ func (s *DescribePropertyCountResponseBody) SetAutoRun(v int32) *DescribePropert
 	return s
 }
 
+func (s *DescribePropertyCountResponseBody) SetRequestId(v string) *DescribePropertyCountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribePropertyCountResponseBody) SetUser(v int32) *DescribePropertyCountResponseBody {
+	s.User = &v
+	return s
+}
+
+func (s *DescribePropertyCountResponseBody) SetSoftware(v int32) *DescribePropertyCountResponseBody {
+	s.Software = &v
+	return s
+}
+
 func (s *DescribePropertyCountResponseBody) SetCron(v int32) *DescribePropertyCountResponseBody {
 	s.Cron = &v
+	return s
+}
+
+func (s *DescribePropertyCountResponseBody) SetPort(v int32) *DescribePropertyCountResponseBody {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribePropertyCountResponseBody) SetSca(v int32) *DescribePropertyCountResponseBody {
+	s.Sca = &v
 	return s
 }
 
@@ -9805,7 +11970,6 @@ func (s *DescribePropertyCountResponse) SetBody(v *DescribePropertyCountResponse
 }
 
 type DescribePropertyCronDetailRequest struct {
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	Remark      *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	Source      *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	User        *string `json:"User,omitempty" xml:"User,omitempty"`
@@ -9820,11 +11984,6 @@ func (s DescribePropertyCronDetailRequest) String() string {
 
 func (s DescribePropertyCronDetailRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribePropertyCronDetailRequest) SetSourceIp(v string) *DescribePropertyCronDetailRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *DescribePropertyCronDetailRequest) SetRemark(v string) *DescribePropertyCronDetailRequest {
@@ -9858,9 +12017,9 @@ func (s *DescribePropertyCronDetailRequest) SetPageSize(v int32) *DescribeProper
 }
 
 type DescribePropertyCronDetailResponseBody struct {
-	Propertys []*DescribePropertyCronDetailResponseBodyPropertys `json:"Propertys,omitempty" xml:"Propertys,omitempty" type:"Repeated"`
-	PageInfo  *DescribePropertyCronDetailResponseBodyPageInfo    `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageInfo  *DescribePropertyCronDetailResponseBodyPageInfo    `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	Propertys []*DescribePropertyCronDetailResponseBodyPropertys `json:"Propertys,omitempty" xml:"Propertys,omitempty" type:"Repeated"`
 }
 
 func (s DescribePropertyCronDetailResponseBody) String() string {
@@ -9871,8 +12030,8 @@ func (s DescribePropertyCronDetailResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribePropertyCronDetailResponseBody) SetPropertys(v []*DescribePropertyCronDetailResponseBodyPropertys) *DescribePropertyCronDetailResponseBody {
-	s.Propertys = v
+func (s *DescribePropertyCronDetailResponseBody) SetRequestId(v string) *DescribePropertyCronDetailResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -9881,97 +12040,8 @@ func (s *DescribePropertyCronDetailResponseBody) SetPageInfo(v *DescribeProperty
 	return s
 }
 
-func (s *DescribePropertyCronDetailResponseBody) SetRequestId(v string) *DescribePropertyCronDetailResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribePropertyCronDetailResponseBodyPropertys struct {
-	Create          *string `json:"Create,omitempty" xml:"Create,omitempty"`
-	InternetIp      *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	User            *string `json:"User,omitempty" xml:"User,omitempty"`
-	Ip              *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Source          *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	Cmd             *string `json:"Cmd,omitempty" xml:"Cmd,omitempty"`
-	IntranetIp      *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	Period          *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	Uuid            *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	InstanceName    *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	Md5             *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	CreateTimestamp *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-}
-
-func (s DescribePropertyCronDetailResponseBodyPropertys) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePropertyCronDetailResponseBodyPropertys) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePropertyCronDetailResponseBodyPropertys) SetCreate(v string) *DescribePropertyCronDetailResponseBodyPropertys {
-	s.Create = &v
-	return s
-}
-
-func (s *DescribePropertyCronDetailResponseBodyPropertys) SetInternetIp(v string) *DescribePropertyCronDetailResponseBodyPropertys {
-	s.InternetIp = &v
-	return s
-}
-
-func (s *DescribePropertyCronDetailResponseBodyPropertys) SetUser(v string) *DescribePropertyCronDetailResponseBodyPropertys {
-	s.User = &v
-	return s
-}
-
-func (s *DescribePropertyCronDetailResponseBodyPropertys) SetIp(v string) *DescribePropertyCronDetailResponseBodyPropertys {
-	s.Ip = &v
-	return s
-}
-
-func (s *DescribePropertyCronDetailResponseBodyPropertys) SetInstanceId(v string) *DescribePropertyCronDetailResponseBodyPropertys {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DescribePropertyCronDetailResponseBodyPropertys) SetSource(v string) *DescribePropertyCronDetailResponseBodyPropertys {
-	s.Source = &v
-	return s
-}
-
-func (s *DescribePropertyCronDetailResponseBodyPropertys) SetCmd(v string) *DescribePropertyCronDetailResponseBodyPropertys {
-	s.Cmd = &v
-	return s
-}
-
-func (s *DescribePropertyCronDetailResponseBodyPropertys) SetIntranetIp(v string) *DescribePropertyCronDetailResponseBodyPropertys {
-	s.IntranetIp = &v
-	return s
-}
-
-func (s *DescribePropertyCronDetailResponseBodyPropertys) SetPeriod(v string) *DescribePropertyCronDetailResponseBodyPropertys {
-	s.Period = &v
-	return s
-}
-
-func (s *DescribePropertyCronDetailResponseBodyPropertys) SetUuid(v string) *DescribePropertyCronDetailResponseBodyPropertys {
-	s.Uuid = &v
-	return s
-}
-
-func (s *DescribePropertyCronDetailResponseBodyPropertys) SetInstanceName(v string) *DescribePropertyCronDetailResponseBodyPropertys {
-	s.InstanceName = &v
-	return s
-}
-
-func (s *DescribePropertyCronDetailResponseBodyPropertys) SetMd5(v string) *DescribePropertyCronDetailResponseBodyPropertys {
-	s.Md5 = &v
-	return s
-}
-
-func (s *DescribePropertyCronDetailResponseBodyPropertys) SetCreateTimestamp(v int64) *DescribePropertyCronDetailResponseBodyPropertys {
-	s.CreateTimestamp = &v
+func (s *DescribePropertyCronDetailResponseBody) SetPropertys(v []*DescribePropertyCronDetailResponseBodyPropertys) *DescribePropertyCronDetailResponseBody {
+	s.Propertys = v
 	return s
 }
 
@@ -10010,6 +12080,95 @@ func (s *DescribePropertyCronDetailResponseBodyPageInfo) SetCount(v int32) *Desc
 	return s
 }
 
+type DescribePropertyCronDetailResponseBodyPropertys struct {
+	Create          *string `json:"Create,omitempty" xml:"Create,omitempty"`
+	InternetIp      *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	Ip              *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	User            *string `json:"User,omitempty" xml:"User,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Source          *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	IntranetIp      *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	Cmd             *string `json:"Cmd,omitempty" xml:"Cmd,omitempty"`
+	Period          *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	Uuid            *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	InstanceName    *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	Md5             *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	CreateTimestamp *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+}
+
+func (s DescribePropertyCronDetailResponseBodyPropertys) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePropertyCronDetailResponseBodyPropertys) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePropertyCronDetailResponseBodyPropertys) SetCreate(v string) *DescribePropertyCronDetailResponseBodyPropertys {
+	s.Create = &v
+	return s
+}
+
+func (s *DescribePropertyCronDetailResponseBodyPropertys) SetInternetIp(v string) *DescribePropertyCronDetailResponseBodyPropertys {
+	s.InternetIp = &v
+	return s
+}
+
+func (s *DescribePropertyCronDetailResponseBodyPropertys) SetIp(v string) *DescribePropertyCronDetailResponseBodyPropertys {
+	s.Ip = &v
+	return s
+}
+
+func (s *DescribePropertyCronDetailResponseBodyPropertys) SetUser(v string) *DescribePropertyCronDetailResponseBodyPropertys {
+	s.User = &v
+	return s
+}
+
+func (s *DescribePropertyCronDetailResponseBodyPropertys) SetInstanceId(v string) *DescribePropertyCronDetailResponseBodyPropertys {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribePropertyCronDetailResponseBodyPropertys) SetSource(v string) *DescribePropertyCronDetailResponseBodyPropertys {
+	s.Source = &v
+	return s
+}
+
+func (s *DescribePropertyCronDetailResponseBodyPropertys) SetIntranetIp(v string) *DescribePropertyCronDetailResponseBodyPropertys {
+	s.IntranetIp = &v
+	return s
+}
+
+func (s *DescribePropertyCronDetailResponseBodyPropertys) SetCmd(v string) *DescribePropertyCronDetailResponseBodyPropertys {
+	s.Cmd = &v
+	return s
+}
+
+func (s *DescribePropertyCronDetailResponseBodyPropertys) SetPeriod(v string) *DescribePropertyCronDetailResponseBodyPropertys {
+	s.Period = &v
+	return s
+}
+
+func (s *DescribePropertyCronDetailResponseBodyPropertys) SetUuid(v string) *DescribePropertyCronDetailResponseBodyPropertys {
+	s.Uuid = &v
+	return s
+}
+
+func (s *DescribePropertyCronDetailResponseBodyPropertys) SetInstanceName(v string) *DescribePropertyCronDetailResponseBodyPropertys {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribePropertyCronDetailResponseBodyPropertys) SetMd5(v string) *DescribePropertyCronDetailResponseBodyPropertys {
+	s.Md5 = &v
+	return s
+}
+
+func (s *DescribePropertyCronDetailResponseBodyPropertys) SetCreateTimestamp(v int64) *DescribePropertyCronDetailResponseBodyPropertys {
+	s.CreateTimestamp = &v
+	return s
+}
+
 type DescribePropertyCronDetailResponse struct {
 	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	Body    *DescribePropertyCronDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -10034,7 +12193,6 @@ func (s *DescribePropertyCronDetailResponse) SetBody(v *DescribePropertyCronDeta
 }
 
 type DescribePropertyPortDetailRequest struct {
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	Remark      *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	Port        *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	ProcName    *string `json:"ProcName,omitempty" xml:"ProcName,omitempty"`
@@ -10049,11 +12207,6 @@ func (s DescribePropertyPortDetailRequest) String() string {
 
 func (s DescribePropertyPortDetailRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribePropertyPortDetailRequest) SetSourceIp(v string) *DescribePropertyPortDetailRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *DescribePropertyPortDetailRequest) SetRemark(v string) *DescribePropertyPortDetailRequest {
@@ -10087,9 +12240,9 @@ func (s *DescribePropertyPortDetailRequest) SetPageSize(v int32) *DescribeProper
 }
 
 type DescribePropertyPortDetailResponseBody struct {
-	Propertys []*DescribePropertyPortDetailResponseBodyPropertys `json:"Propertys,omitempty" xml:"Propertys,omitempty" type:"Repeated"`
-	PageInfo  *DescribePropertyPortDetailResponseBodyPageInfo    `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageInfo  *DescribePropertyPortDetailResponseBodyPageInfo    `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	Propertys []*DescribePropertyPortDetailResponseBodyPropertys `json:"Propertys,omitempty" xml:"Propertys,omitempty" type:"Repeated"`
 }
 
 func (s DescribePropertyPortDetailResponseBody) String() string {
@@ -10100,8 +12253,8 @@ func (s DescribePropertyPortDetailResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribePropertyPortDetailResponseBody) SetPropertys(v []*DescribePropertyPortDetailResponseBodyPropertys) *DescribePropertyPortDetailResponseBody {
-	s.Propertys = v
+func (s *DescribePropertyPortDetailResponseBody) SetRequestId(v string) *DescribePropertyPortDetailResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -10110,91 +12263,8 @@ func (s *DescribePropertyPortDetailResponseBody) SetPageInfo(v *DescribeProperty
 	return s
 }
 
-func (s *DescribePropertyPortDetailResponseBody) SetRequestId(v string) *DescribePropertyPortDetailResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribePropertyPortDetailResponseBodyPropertys struct {
-	Create          *string `json:"Create,omitempty" xml:"Create,omitempty"`
-	InternetIp      *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	Ip              *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	BindIp          *string `json:"BindIp,omitempty" xml:"BindIp,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ProcName        *string `json:"ProcName,omitempty" xml:"ProcName,omitempty"`
-	Port            *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	IntranetIp      *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	Uuid            *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	InstanceName    *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	CreateTimestamp *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	Proto           *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
-}
-
-func (s DescribePropertyPortDetailResponseBodyPropertys) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePropertyPortDetailResponseBodyPropertys) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePropertyPortDetailResponseBodyPropertys) SetCreate(v string) *DescribePropertyPortDetailResponseBodyPropertys {
-	s.Create = &v
-	return s
-}
-
-func (s *DescribePropertyPortDetailResponseBodyPropertys) SetInternetIp(v string) *DescribePropertyPortDetailResponseBodyPropertys {
-	s.InternetIp = &v
-	return s
-}
-
-func (s *DescribePropertyPortDetailResponseBodyPropertys) SetIp(v string) *DescribePropertyPortDetailResponseBodyPropertys {
-	s.Ip = &v
-	return s
-}
-
-func (s *DescribePropertyPortDetailResponseBodyPropertys) SetBindIp(v string) *DescribePropertyPortDetailResponseBodyPropertys {
-	s.BindIp = &v
-	return s
-}
-
-func (s *DescribePropertyPortDetailResponseBodyPropertys) SetInstanceId(v string) *DescribePropertyPortDetailResponseBodyPropertys {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DescribePropertyPortDetailResponseBodyPropertys) SetProcName(v string) *DescribePropertyPortDetailResponseBodyPropertys {
-	s.ProcName = &v
-	return s
-}
-
-func (s *DescribePropertyPortDetailResponseBodyPropertys) SetPort(v string) *DescribePropertyPortDetailResponseBodyPropertys {
-	s.Port = &v
-	return s
-}
-
-func (s *DescribePropertyPortDetailResponseBodyPropertys) SetIntranetIp(v string) *DescribePropertyPortDetailResponseBodyPropertys {
-	s.IntranetIp = &v
-	return s
-}
-
-func (s *DescribePropertyPortDetailResponseBodyPropertys) SetUuid(v string) *DescribePropertyPortDetailResponseBodyPropertys {
-	s.Uuid = &v
-	return s
-}
-
-func (s *DescribePropertyPortDetailResponseBodyPropertys) SetInstanceName(v string) *DescribePropertyPortDetailResponseBodyPropertys {
-	s.InstanceName = &v
-	return s
-}
-
-func (s *DescribePropertyPortDetailResponseBodyPropertys) SetCreateTimestamp(v int64) *DescribePropertyPortDetailResponseBodyPropertys {
-	s.CreateTimestamp = &v
-	return s
-}
-
-func (s *DescribePropertyPortDetailResponseBodyPropertys) SetProto(v string) *DescribePropertyPortDetailResponseBodyPropertys {
-	s.Proto = &v
+func (s *DescribePropertyPortDetailResponseBody) SetPropertys(v []*DescribePropertyPortDetailResponseBodyPropertys) *DescribePropertyPortDetailResponseBody {
+	s.Propertys = v
 	return s
 }
 
@@ -10233,6 +12303,89 @@ func (s *DescribePropertyPortDetailResponseBodyPageInfo) SetCount(v int32) *Desc
 	return s
 }
 
+type DescribePropertyPortDetailResponseBodyPropertys struct {
+	Create          *string `json:"Create,omitempty" xml:"Create,omitempty"`
+	InternetIp      *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	BindIp          *string `json:"BindIp,omitempty" xml:"BindIp,omitempty"`
+	Ip              *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	ProcName        *string `json:"ProcName,omitempty" xml:"ProcName,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Port            *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	IntranetIp      *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	Uuid            *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	InstanceName    *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	Proto           *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
+	CreateTimestamp *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+}
+
+func (s DescribePropertyPortDetailResponseBodyPropertys) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePropertyPortDetailResponseBodyPropertys) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePropertyPortDetailResponseBodyPropertys) SetCreate(v string) *DescribePropertyPortDetailResponseBodyPropertys {
+	s.Create = &v
+	return s
+}
+
+func (s *DescribePropertyPortDetailResponseBodyPropertys) SetInternetIp(v string) *DescribePropertyPortDetailResponseBodyPropertys {
+	s.InternetIp = &v
+	return s
+}
+
+func (s *DescribePropertyPortDetailResponseBodyPropertys) SetBindIp(v string) *DescribePropertyPortDetailResponseBodyPropertys {
+	s.BindIp = &v
+	return s
+}
+
+func (s *DescribePropertyPortDetailResponseBodyPropertys) SetIp(v string) *DescribePropertyPortDetailResponseBodyPropertys {
+	s.Ip = &v
+	return s
+}
+
+func (s *DescribePropertyPortDetailResponseBodyPropertys) SetProcName(v string) *DescribePropertyPortDetailResponseBodyPropertys {
+	s.ProcName = &v
+	return s
+}
+
+func (s *DescribePropertyPortDetailResponseBodyPropertys) SetInstanceId(v string) *DescribePropertyPortDetailResponseBodyPropertys {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribePropertyPortDetailResponseBodyPropertys) SetPort(v string) *DescribePropertyPortDetailResponseBodyPropertys {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribePropertyPortDetailResponseBodyPropertys) SetIntranetIp(v string) *DescribePropertyPortDetailResponseBodyPropertys {
+	s.IntranetIp = &v
+	return s
+}
+
+func (s *DescribePropertyPortDetailResponseBodyPropertys) SetUuid(v string) *DescribePropertyPortDetailResponseBodyPropertys {
+	s.Uuid = &v
+	return s
+}
+
+func (s *DescribePropertyPortDetailResponseBodyPropertys) SetInstanceName(v string) *DescribePropertyPortDetailResponseBodyPropertys {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribePropertyPortDetailResponseBodyPropertys) SetProto(v string) *DescribePropertyPortDetailResponseBodyPropertys {
+	s.Proto = &v
+	return s
+}
+
+func (s *DescribePropertyPortDetailResponseBodyPropertys) SetCreateTimestamp(v int64) *DescribePropertyPortDetailResponseBodyPropertys {
+	s.CreateTimestamp = &v
+	return s
+}
+
 type DescribePropertyPortDetailResponse struct {
 	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	Body    *DescribePropertyPortDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -10257,7 +12410,6 @@ func (s *DescribePropertyPortDetailResponse) SetBody(v *DescribePropertyPortDeta
 }
 
 type DescribePropertyPortItemRequest struct {
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	ForceFlush  *bool   `json:"ForceFlush,omitempty" xml:"ForceFlush,omitempty"`
 	Port        *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
@@ -10270,11 +12422,6 @@ func (s DescribePropertyPortItemRequest) String() string {
 
 func (s DescribePropertyPortItemRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribePropertyPortItemRequest) SetSourceIp(v string) *DescribePropertyPortItemRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *DescribePropertyPortItemRequest) SetForceFlush(v bool) *DescribePropertyPortItemRequest {
@@ -10298,8 +12445,8 @@ func (s *DescribePropertyPortItemRequest) SetPageSize(v int32) *DescribeProperty
 }
 
 type DescribePropertyPortItemResponseBody struct {
-	PageInfo      *DescribePropertyPortItemResponseBodyPageInfo        `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	RequestId     *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageInfo      *DescribePropertyPortItemResponseBodyPageInfo        `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	PropertyItems []*DescribePropertyPortItemResponseBodyPropertyItems `json:"PropertyItems,omitempty" xml:"PropertyItems,omitempty" type:"Repeated"`
 }
 
@@ -10311,13 +12458,13 @@ func (s DescribePropertyPortItemResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribePropertyPortItemResponseBody) SetPageInfo(v *DescribePropertyPortItemResponseBodyPageInfo) *DescribePropertyPortItemResponseBody {
-	s.PageInfo = v
+func (s *DescribePropertyPortItemResponseBody) SetRequestId(v string) *DescribePropertyPortItemResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *DescribePropertyPortItemResponseBody) SetRequestId(v string) *DescribePropertyPortItemResponseBody {
-	s.RequestId = &v
+func (s *DescribePropertyPortItemResponseBody) SetPageInfo(v *DescribePropertyPortItemResponseBodyPageInfo) *DescribePropertyPortItemResponseBody {
+	s.PageInfo = v
 	return s
 }
 
@@ -10414,7 +12561,6 @@ func (s *DescribePropertyPortItemResponse) SetBody(v *DescribePropertyPortItemRe
 }
 
 type DescribePropertyProcDetailRequest struct {
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	Remark      *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	User        *string `json:"User,omitempty" xml:"User,omitempty"`
@@ -10430,11 +12576,6 @@ func (s DescribePropertyProcDetailRequest) String() string {
 
 func (s DescribePropertyProcDetailRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribePropertyProcDetailRequest) SetSourceIp(v string) *DescribePropertyProcDetailRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *DescribePropertyProcDetailRequest) SetRemark(v string) *DescribePropertyProcDetailRequest {
@@ -10473,9 +12614,9 @@ func (s *DescribePropertyProcDetailRequest) SetPageSize(v int32) *DescribeProper
 }
 
 type DescribePropertyProcDetailResponseBody struct {
-	Propertys []*DescribePropertyProcDetailResponseBodyPropertys `json:"Propertys,omitempty" xml:"Propertys,omitempty" type:"Repeated"`
-	PageInfo  *DescribePropertyProcDetailResponseBodyPageInfo    `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageInfo  *DescribePropertyProcDetailResponseBodyPageInfo    `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	Propertys []*DescribePropertyProcDetailResponseBodyPropertys `json:"Propertys,omitempty" xml:"Propertys,omitempty" type:"Repeated"`
 }
 
 func (s DescribePropertyProcDetailResponseBody) String() string {
@@ -10486,8 +12627,8 @@ func (s DescribePropertyProcDetailResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribePropertyProcDetailResponseBody) SetPropertys(v []*DescribePropertyProcDetailResponseBodyPropertys) *DescribePropertyProcDetailResponseBody {
-	s.Propertys = v
+func (s *DescribePropertyProcDetailResponseBody) SetRequestId(v string) *DescribePropertyProcDetailResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -10496,8 +12637,43 @@ func (s *DescribePropertyProcDetailResponseBody) SetPageInfo(v *DescribeProperty
 	return s
 }
 
-func (s *DescribePropertyProcDetailResponseBody) SetRequestId(v string) *DescribePropertyProcDetailResponseBody {
-	s.RequestId = &v
+func (s *DescribePropertyProcDetailResponseBody) SetPropertys(v []*DescribePropertyProcDetailResponseBodyPropertys) *DescribePropertyProcDetailResponseBody {
+	s.Propertys = v
+	return s
+}
+
+type DescribePropertyProcDetailResponseBodyPageInfo struct {
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount  *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Count       *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+}
+
+func (s DescribePropertyProcDetailResponseBodyPageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePropertyProcDetailResponseBodyPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePropertyProcDetailResponseBodyPageInfo) SetCurrentPage(v int32) *DescribePropertyProcDetailResponseBodyPageInfo {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribePropertyProcDetailResponseBodyPageInfo) SetPageSize(v int32) *DescribePropertyProcDetailResponseBodyPageInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribePropertyProcDetailResponseBodyPageInfo) SetTotalCount(v int32) *DescribePropertyProcDetailResponseBodyPageInfo {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribePropertyProcDetailResponseBodyPageInfo) SetCount(v int32) *DescribePropertyProcDetailResponseBodyPageInfo {
+	s.Count = &v
 	return s
 }
 
@@ -10510,8 +12686,8 @@ type DescribePropertyProcDetailResponseBodyPropertys struct {
 	Cmdline         *string `json:"Cmdline,omitempty" xml:"Cmdline,omitempty"`
 	IntranetIp      *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
 	EuidName        *string `json:"EuidName,omitempty" xml:"EuidName,omitempty"`
-	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	Uuid            *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	Pname           *string `json:"Pname,omitempty" xml:"Pname,omitempty"`
 	InstanceName    *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	Path            *string `json:"Path,omitempty" xml:"Path,omitempty"`
@@ -10568,13 +12744,13 @@ func (s *DescribePropertyProcDetailResponseBodyPropertys) SetEuidName(v string) 
 	return s
 }
 
-func (s *DescribePropertyProcDetailResponseBodyPropertys) SetStartTime(v string) *DescribePropertyProcDetailResponseBodyPropertys {
-	s.StartTime = &v
+func (s *DescribePropertyProcDetailResponseBodyPropertys) SetUuid(v string) *DescribePropertyProcDetailResponseBodyPropertys {
+	s.Uuid = &v
 	return s
 }
 
-func (s *DescribePropertyProcDetailResponseBodyPropertys) SetUuid(v string) *DescribePropertyProcDetailResponseBodyPropertys {
-	s.Uuid = &v
+func (s *DescribePropertyProcDetailResponseBodyPropertys) SetStartTime(v string) *DescribePropertyProcDetailResponseBodyPropertys {
+	s.StartTime = &v
 	return s
 }
 
@@ -10608,41 +12784,6 @@ func (s *DescribePropertyProcDetailResponseBodyPropertys) SetCreateTimestamp(v i
 	return s
 }
 
-type DescribePropertyProcDetailResponseBodyPageInfo struct {
-	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount  *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	Count       *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-}
-
-func (s DescribePropertyProcDetailResponseBodyPageInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePropertyProcDetailResponseBodyPageInfo) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePropertyProcDetailResponseBodyPageInfo) SetCurrentPage(v int32) *DescribePropertyProcDetailResponseBodyPageInfo {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *DescribePropertyProcDetailResponseBodyPageInfo) SetPageSize(v int32) *DescribePropertyProcDetailResponseBodyPageInfo {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribePropertyProcDetailResponseBodyPageInfo) SetTotalCount(v int32) *DescribePropertyProcDetailResponseBodyPageInfo {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *DescribePropertyProcDetailResponseBodyPageInfo) SetCount(v int32) *DescribePropertyProcDetailResponseBodyPageInfo {
-	s.Count = &v
-	return s
-}
-
 type DescribePropertyProcDetailResponse struct {
 	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	Body    *DescribePropertyProcDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -10667,7 +12808,6 @@ func (s *DescribePropertyProcDetailResponse) SetBody(v *DescribePropertyProcDeta
 }
 
 type DescribePropertyProcItemRequest struct {
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	ForceFlush  *bool   `json:"ForceFlush,omitempty" xml:"ForceFlush,omitempty"`
 	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
@@ -10680,11 +12820,6 @@ func (s DescribePropertyProcItemRequest) String() string {
 
 func (s DescribePropertyProcItemRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribePropertyProcItemRequest) SetSourceIp(v string) *DescribePropertyProcItemRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *DescribePropertyProcItemRequest) SetForceFlush(v bool) *DescribePropertyProcItemRequest {
@@ -10708,8 +12843,8 @@ func (s *DescribePropertyProcItemRequest) SetPageSize(v int32) *DescribeProperty
 }
 
 type DescribePropertyProcItemResponseBody struct {
-	PageInfo      *DescribePropertyProcItemResponseBodyPageInfo        `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	RequestId     *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageInfo      *DescribePropertyProcItemResponseBodyPageInfo        `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	PropertyItems []*DescribePropertyProcItemResponseBodyPropertyItems `json:"PropertyItems,omitempty" xml:"PropertyItems,omitempty" type:"Repeated"`
 }
 
@@ -10721,13 +12856,13 @@ func (s DescribePropertyProcItemResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribePropertyProcItemResponseBody) SetPageInfo(v *DescribePropertyProcItemResponseBodyPageInfo) *DescribePropertyProcItemResponseBody {
-	s.PageInfo = v
+func (s *DescribePropertyProcItemResponseBody) SetRequestId(v string) *DescribePropertyProcItemResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *DescribePropertyProcItemResponseBody) SetRequestId(v string) *DescribePropertyProcItemResponseBody {
-	s.RequestId = &v
+func (s *DescribePropertyProcItemResponseBody) SetPageInfo(v *DescribePropertyProcItemResponseBodyPageInfo) *DescribePropertyProcItemResponseBody {
+	s.PageInfo = v
 	return s
 }
 
@@ -10818,7 +12953,6 @@ func (s *DescribePropertyProcItemResponse) SetBody(v *DescribePropertyProcItemRe
 }
 
 type DescribePropertyScaDetailRequest struct {
-	SourceIp      *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	Lang          *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	SearchItem    *string `json:"SearchItem,omitempty" xml:"SearchItem,omitempty"`
 	SearchInfo    *string `json:"SearchInfo,omitempty" xml:"SearchInfo,omitempty"`
@@ -10839,11 +12973,6 @@ func (s DescribePropertyScaDetailRequest) String() string {
 
 func (s DescribePropertyScaDetailRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribePropertyScaDetailRequest) SetSourceIp(v string) *DescribePropertyScaDetailRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *DescribePropertyScaDetailRequest) SetLang(v string) *DescribePropertyScaDetailRequest {
@@ -10907,9 +13036,9 @@ func (s *DescribePropertyScaDetailRequest) SetPageSize(v int32) *DescribePropert
 }
 
 type DescribePropertyScaDetailResponseBody struct {
-	Propertys []*DescribePropertyScaDetailResponseBodyPropertys `json:"Propertys,omitempty" xml:"Propertys,omitempty" type:"Repeated"`
-	PageInfo  *DescribePropertyScaDetailResponseBodyPageInfo    `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageInfo  *DescribePropertyScaDetailResponseBodyPageInfo    `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	Propertys []*DescribePropertyScaDetailResponseBodyPropertys `json:"Propertys,omitempty" xml:"Propertys,omitempty" type:"Repeated"`
 }
 
 func (s DescribePropertyScaDetailResponseBody) String() string {
@@ -10920,8 +13049,8 @@ func (s DescribePropertyScaDetailResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribePropertyScaDetailResponseBody) SetPropertys(v []*DescribePropertyScaDetailResponseBodyPropertys) *DescribePropertyScaDetailResponseBody {
-	s.Propertys = v
+func (s *DescribePropertyScaDetailResponseBody) SetRequestId(v string) *DescribePropertyScaDetailResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -10930,8 +13059,43 @@ func (s *DescribePropertyScaDetailResponseBody) SetPageInfo(v *DescribePropertyS
 	return s
 }
 
-func (s *DescribePropertyScaDetailResponseBody) SetRequestId(v string) *DescribePropertyScaDetailResponseBody {
-	s.RequestId = &v
+func (s *DescribePropertyScaDetailResponseBody) SetPropertys(v []*DescribePropertyScaDetailResponseBodyPropertys) *DescribePropertyScaDetailResponseBody {
+	s.Propertys = v
+	return s
+}
+
+type DescribePropertyScaDetailResponseBodyPageInfo struct {
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount  *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Count       *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+}
+
+func (s DescribePropertyScaDetailResponseBodyPageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePropertyScaDetailResponseBodyPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePropertyScaDetailResponseBodyPageInfo) SetCurrentPage(v int32) *DescribePropertyScaDetailResponseBodyPageInfo {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribePropertyScaDetailResponseBodyPageInfo) SetPageSize(v int32) *DescribePropertyScaDetailResponseBodyPageInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribePropertyScaDetailResponseBodyPageInfo) SetTotalCount(v int32) *DescribePropertyScaDetailResponseBodyPageInfo {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribePropertyScaDetailResponseBodyPageInfo) SetCount(v int32) *DescribePropertyScaDetailResponseBodyPageInfo {
+	s.Count = &v
 	return s
 }
 
@@ -10951,8 +13115,8 @@ type DescribePropertyScaDetailResponseBodyPropertys struct {
 	ListenStatus    *string `json:"ListenStatus,omitempty" xml:"ListenStatus,omitempty"`
 	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Create          *string `json:"Create,omitempty" xml:"Create,omitempty"`
-	ProcessUser     *string `json:"ProcessUser,omitempty" xml:"ProcessUser,omitempty"`
 	Ip              *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	ProcessUser     *string `json:"ProcessUser,omitempty" xml:"ProcessUser,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	WebPath         *string `json:"WebPath,omitempty" xml:"WebPath,omitempty"`
 	Ppid            *string `json:"Ppid,omitempty" xml:"Ppid,omitempty"`
@@ -11049,13 +13213,13 @@ func (s *DescribePropertyScaDetailResponseBodyPropertys) SetCreate(v string) *De
 	return s
 }
 
-func (s *DescribePropertyScaDetailResponseBodyPropertys) SetProcessUser(v string) *DescribePropertyScaDetailResponseBodyPropertys {
-	s.ProcessUser = &v
+func (s *DescribePropertyScaDetailResponseBodyPropertys) SetIp(v string) *DescribePropertyScaDetailResponseBodyPropertys {
+	s.Ip = &v
 	return s
 }
 
-func (s *DescribePropertyScaDetailResponseBodyPropertys) SetIp(v string) *DescribePropertyScaDetailResponseBodyPropertys {
-	s.Ip = &v
+func (s *DescribePropertyScaDetailResponseBodyPropertys) SetProcessUser(v string) *DescribePropertyScaDetailResponseBodyPropertys {
+	s.ProcessUser = &v
 	return s
 }
 
@@ -11114,41 +13278,6 @@ func (s *DescribePropertyScaDetailResponseBodyPropertys) SetCreateTimestamp(v in
 	return s
 }
 
-type DescribePropertyScaDetailResponseBodyPageInfo struct {
-	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount  *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	Count       *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-}
-
-func (s DescribePropertyScaDetailResponseBodyPageInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePropertyScaDetailResponseBodyPageInfo) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePropertyScaDetailResponseBodyPageInfo) SetCurrentPage(v int32) *DescribePropertyScaDetailResponseBodyPageInfo {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *DescribePropertyScaDetailResponseBodyPageInfo) SetPageSize(v int32) *DescribePropertyScaDetailResponseBodyPageInfo {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribePropertyScaDetailResponseBodyPageInfo) SetTotalCount(v int32) *DescribePropertyScaDetailResponseBodyPageInfo {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *DescribePropertyScaDetailResponseBodyPageInfo) SetCount(v int32) *DescribePropertyScaDetailResponseBodyPageInfo {
-	s.Count = &v
-	return s
-}
-
 type DescribePropertyScaDetailResponse struct {
 	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	Body    *DescribePropertyScaDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -11173,7 +13302,6 @@ func (s *DescribePropertyScaDetailResponse) SetBody(v *DescribePropertyScaDetail
 }
 
 type DescribePropertySoftwareDetailRequest struct {
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	Remark          *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Path            *string `json:"Path,omitempty" xml:"Path,omitempty"`
@@ -11189,11 +13317,6 @@ func (s DescribePropertySoftwareDetailRequest) String() string {
 
 func (s DescribePropertySoftwareDetailRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribePropertySoftwareDetailRequest) SetSourceIp(v string) *DescribePropertySoftwareDetailRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *DescribePropertySoftwareDetailRequest) SetRemark(v string) *DescribePropertySoftwareDetailRequest {
@@ -11232,9 +13355,9 @@ func (s *DescribePropertySoftwareDetailRequest) SetPageSize(v int32) *DescribePr
 }
 
 type DescribePropertySoftwareDetailResponseBody struct {
-	Propertys []*DescribePropertySoftwareDetailResponseBodyPropertys `json:"Propertys,omitempty" xml:"Propertys,omitempty" type:"Repeated"`
-	PageInfo  *DescribePropertySoftwareDetailResponseBodyPageInfo    `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	RequestId *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageInfo  *DescribePropertySoftwareDetailResponseBodyPageInfo    `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	Propertys []*DescribePropertySoftwareDetailResponseBodyPropertys `json:"Propertys,omitempty" xml:"Propertys,omitempty" type:"Repeated"`
 }
 
 func (s DescribePropertySoftwareDetailResponseBody) String() string {
@@ -11245,8 +13368,8 @@ func (s DescribePropertySoftwareDetailResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribePropertySoftwareDetailResponseBody) SetPropertys(v []*DescribePropertySoftwareDetailResponseBodyPropertys) *DescribePropertySoftwareDetailResponseBody {
-	s.Propertys = v
+func (s *DescribePropertySoftwareDetailResponseBody) SetRequestId(v string) *DescribePropertySoftwareDetailResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -11255,8 +13378,43 @@ func (s *DescribePropertySoftwareDetailResponseBody) SetPageInfo(v *DescribeProp
 	return s
 }
 
-func (s *DescribePropertySoftwareDetailResponseBody) SetRequestId(v string) *DescribePropertySoftwareDetailResponseBody {
-	s.RequestId = &v
+func (s *DescribePropertySoftwareDetailResponseBody) SetPropertys(v []*DescribePropertySoftwareDetailResponseBodyPropertys) *DescribePropertySoftwareDetailResponseBody {
+	s.Propertys = v
+	return s
+}
+
+type DescribePropertySoftwareDetailResponseBodyPageInfo struct {
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount  *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Count       *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+}
+
+func (s DescribePropertySoftwareDetailResponseBodyPageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePropertySoftwareDetailResponseBodyPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePropertySoftwareDetailResponseBodyPageInfo) SetCurrentPage(v int32) *DescribePropertySoftwareDetailResponseBodyPageInfo {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribePropertySoftwareDetailResponseBodyPageInfo) SetPageSize(v int32) *DescribePropertySoftwareDetailResponseBodyPageInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribePropertySoftwareDetailResponseBodyPageInfo) SetTotalCount(v int32) *DescribePropertySoftwareDetailResponseBodyPageInfo {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribePropertySoftwareDetailResponseBodyPageInfo) SetCount(v int32) *DescribePropertySoftwareDetailResponseBodyPageInfo {
+	s.Count = &v
 	return s
 }
 
@@ -11343,41 +13501,6 @@ func (s *DescribePropertySoftwareDetailResponseBodyPropertys) SetCreateTimestamp
 	return s
 }
 
-type DescribePropertySoftwareDetailResponseBodyPageInfo struct {
-	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount  *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	Count       *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-}
-
-func (s DescribePropertySoftwareDetailResponseBodyPageInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePropertySoftwareDetailResponseBodyPageInfo) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePropertySoftwareDetailResponseBodyPageInfo) SetCurrentPage(v int32) *DescribePropertySoftwareDetailResponseBodyPageInfo {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *DescribePropertySoftwareDetailResponseBodyPageInfo) SetPageSize(v int32) *DescribePropertySoftwareDetailResponseBodyPageInfo {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribePropertySoftwareDetailResponseBodyPageInfo) SetTotalCount(v int32) *DescribePropertySoftwareDetailResponseBodyPageInfo {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *DescribePropertySoftwareDetailResponseBodyPageInfo) SetCount(v int32) *DescribePropertySoftwareDetailResponseBodyPageInfo {
-	s.Count = &v
-	return s
-}
-
 type DescribePropertySoftwareDetailResponse struct {
 	Headers map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	Body    *DescribePropertySoftwareDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -11402,7 +13525,6 @@ func (s *DescribePropertySoftwareDetailResponse) SetBody(v *DescribePropertySoft
 }
 
 type DescribePropertySoftwareItemRequest struct {
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	ForceFlush  *bool   `json:"ForceFlush,omitempty" xml:"ForceFlush,omitempty"`
 	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
@@ -11415,11 +13537,6 @@ func (s DescribePropertySoftwareItemRequest) String() string {
 
 func (s DescribePropertySoftwareItemRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribePropertySoftwareItemRequest) SetSourceIp(v string) *DescribePropertySoftwareItemRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *DescribePropertySoftwareItemRequest) SetForceFlush(v bool) *DescribePropertySoftwareItemRequest {
@@ -11443,8 +13560,8 @@ func (s *DescribePropertySoftwareItemRequest) SetPageSize(v int32) *DescribeProp
 }
 
 type DescribePropertySoftwareItemResponseBody struct {
-	PageInfo      *DescribePropertySoftwareItemResponseBodyPageInfo        `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	RequestId     *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageInfo      *DescribePropertySoftwareItemResponseBodyPageInfo        `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	PropertyItems []*DescribePropertySoftwareItemResponseBodyPropertyItems `json:"PropertyItems,omitempty" xml:"PropertyItems,omitempty" type:"Repeated"`
 }
 
@@ -11456,13 +13573,13 @@ func (s DescribePropertySoftwareItemResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribePropertySoftwareItemResponseBody) SetPageInfo(v *DescribePropertySoftwareItemResponseBodyPageInfo) *DescribePropertySoftwareItemResponseBody {
-	s.PageInfo = v
+func (s *DescribePropertySoftwareItemResponseBody) SetRequestId(v string) *DescribePropertySoftwareItemResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *DescribePropertySoftwareItemResponseBody) SetRequestId(v string) *DescribePropertySoftwareItemResponseBody {
-	s.RequestId = &v
+func (s *DescribePropertySoftwareItemResponseBody) SetPageInfo(v *DescribePropertySoftwareItemResponseBodyPageInfo) *DescribePropertySoftwareItemResponseBody {
+	s.PageInfo = v
 	return s
 }
 
@@ -11553,8 +13670,7 @@ func (s *DescribePropertySoftwareItemResponse) SetBody(v *DescribePropertySoftwa
 }
 
 type DescribePropertyUsageNewestRequest struct {
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribePropertyUsageNewestRequest) String() string {
@@ -11565,21 +13681,16 @@ func (s DescribePropertyUsageNewestRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribePropertyUsageNewestRequest) SetSourceIp(v string) *DescribePropertyUsageNewestRequest {
-	s.SourceIp = &v
-	return s
-}
-
 func (s *DescribePropertyUsageNewestRequest) SetType(v string) *DescribePropertyUsageNewestRequest {
 	s.Type = &v
 	return s
 }
 
 type DescribePropertyUsageNewestResponseBody struct {
-	NewestStatisticItems []*DescribePropertyUsageNewestResponseBodyNewestStatisticItems `json:"NewestStatisticItems,omitempty" xml:"NewestStatisticItems,omitempty" type:"Repeated"`
 	Type                 *string                                                        `json:"Type,omitempty" xml:"Type,omitempty"`
-	RequestId            *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ItemCount            *int32                                                         `json:"ItemCount,omitempty" xml:"ItemCount,omitempty"`
+	RequestId            *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	NewestStatisticItems []*DescribePropertyUsageNewestResponseBodyNewestStatisticItems `json:"NewestStatisticItems,omitempty" xml:"NewestStatisticItems,omitempty" type:"Repeated"`
 }
 
 func (s DescribePropertyUsageNewestResponseBody) String() string {
@@ -11590,18 +13701,8 @@ func (s DescribePropertyUsageNewestResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribePropertyUsageNewestResponseBody) SetNewestStatisticItems(v []*DescribePropertyUsageNewestResponseBodyNewestStatisticItems) *DescribePropertyUsageNewestResponseBody {
-	s.NewestStatisticItems = v
-	return s
-}
-
 func (s *DescribePropertyUsageNewestResponseBody) SetType(v string) *DescribePropertyUsageNewestResponseBody {
 	s.Type = &v
-	return s
-}
-
-func (s *DescribePropertyUsageNewestResponseBody) SetRequestId(v string) *DescribePropertyUsageNewestResponseBody {
-	s.RequestId = &v
 	return s
 }
 
@@ -11610,9 +13711,19 @@ func (s *DescribePropertyUsageNewestResponseBody) SetItemCount(v int32) *Describ
 	return s
 }
 
+func (s *DescribePropertyUsageNewestResponseBody) SetRequestId(v string) *DescribePropertyUsageNewestResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribePropertyUsageNewestResponseBody) SetNewestStatisticItems(v []*DescribePropertyUsageNewestResponseBodyNewestStatisticItems) *DescribePropertyUsageNewestResponseBody {
+	s.NewestStatisticItems = v
+	return s
+}
+
 type DescribePropertyUsageNewestResponseBodyNewestStatisticItems struct {
-	Create *int64  `json:"Create,omitempty" xml:"Create,omitempty"`
 	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Create *int64  `json:"Create,omitempty" xml:"Create,omitempty"`
 }
 
 func (s DescribePropertyUsageNewestResponseBodyNewestStatisticItems) String() string {
@@ -11623,13 +13734,13 @@ func (s DescribePropertyUsageNewestResponseBodyNewestStatisticItems) GoString() 
 	return s.String()
 }
 
-func (s *DescribePropertyUsageNewestResponseBodyNewestStatisticItems) SetCreate(v int64) *DescribePropertyUsageNewestResponseBodyNewestStatisticItems {
-	s.Create = &v
+func (s *DescribePropertyUsageNewestResponseBodyNewestStatisticItems) SetName(v string) *DescribePropertyUsageNewestResponseBodyNewestStatisticItems {
+	s.Name = &v
 	return s
 }
 
-func (s *DescribePropertyUsageNewestResponseBodyNewestStatisticItems) SetName(v string) *DescribePropertyUsageNewestResponseBodyNewestStatisticItems {
-	s.Name = &v
+func (s *DescribePropertyUsageNewestResponseBodyNewestStatisticItems) SetCreate(v int64) *DescribePropertyUsageNewestResponseBodyNewestStatisticItems {
+	s.Create = &v
 	return s
 }
 
@@ -11657,7 +13768,6 @@ func (s *DescribePropertyUsageNewestResponse) SetBody(v *DescribePropertyUsageNe
 }
 
 type DescribePropertyUserDetailRequest struct {
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	Remark      *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	User        *string `json:"User,omitempty" xml:"User,omitempty"`
 	IsRoot      *string `json:"IsRoot,omitempty" xml:"IsRoot,omitempty"`
@@ -11672,11 +13782,6 @@ func (s DescribePropertyUserDetailRequest) String() string {
 
 func (s DescribePropertyUserDetailRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribePropertyUserDetailRequest) SetSourceIp(v string) *DescribePropertyUserDetailRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *DescribePropertyUserDetailRequest) SetRemark(v string) *DescribePropertyUserDetailRequest {
@@ -11710,9 +13815,9 @@ func (s *DescribePropertyUserDetailRequest) SetPageSize(v int32) *DescribeProper
 }
 
 type DescribePropertyUserDetailResponseBody struct {
-	Propertys []*DescribePropertyUserDetailResponseBodyPropertys `json:"Propertys,omitempty" xml:"Propertys,omitempty" type:"Repeated"`
-	PageInfo  *DescribePropertyUserDetailResponseBodyPageInfo    `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageInfo  *DescribePropertyUserDetailResponseBodyPageInfo    `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	Propertys []*DescribePropertyUserDetailResponseBodyPropertys `json:"Propertys,omitempty" xml:"Propertys,omitempty" type:"Repeated"`
 }
 
 func (s DescribePropertyUserDetailResponseBody) String() string {
@@ -11723,8 +13828,8 @@ func (s DescribePropertyUserDetailResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribePropertyUserDetailResponseBody) SetPropertys(v []*DescribePropertyUserDetailResponseBodyPropertys) *DescribePropertyUserDetailResponseBody {
-	s.Propertys = v
+func (s *DescribePropertyUserDetailResponseBody) SetRequestId(v string) *DescribePropertyUserDetailResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -11733,121 +13838,8 @@ func (s *DescribePropertyUserDetailResponseBody) SetPageInfo(v *DescribeProperty
 	return s
 }
 
-func (s *DescribePropertyUserDetailResponseBody) SetRequestId(v string) *DescribePropertyUserDetailResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribePropertyUserDetailResponseBodyPropertys struct {
-	Status                 *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	LastLoginIp            *string   `json:"LastLoginIp,omitempty" xml:"LastLoginIp,omitempty"`
-	Create                 *string   `json:"Create,omitempty" xml:"Create,omitempty"`
-	InternetIp             *string   `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	IsRoot                 *string   `json:"IsRoot,omitempty" xml:"IsRoot,omitempty"`
-	LastLoginTime          *string   `json:"LastLoginTime,omitempty" xml:"LastLoginTime,omitempty"`
-	User                   *string   `json:"User,omitempty" xml:"User,omitempty"`
-	Ip                     *string   `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	InstanceId             *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PasswordExpirationDate *string   `json:"PasswordExpirationDate,omitempty" xml:"PasswordExpirationDate,omitempty"`
-	IntranetIp             *string   `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	GroupNames             []*string `json:"GroupNames,omitempty" xml:"GroupNames,omitempty" type:"Repeated"`
-	Uuid                   *string   `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	LastLoginTimestamp     *int64    `json:"LastLoginTimestamp,omitempty" xml:"LastLoginTimestamp,omitempty"`
-	InstanceName           *string   `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	AccountsExpirationDate *string   `json:"AccountsExpirationDate,omitempty" xml:"AccountsExpirationDate,omitempty"`
-	CreateTimestamp        *int64    `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-}
-
-func (s DescribePropertyUserDetailResponseBodyPropertys) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePropertyUserDetailResponseBodyPropertys) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePropertyUserDetailResponseBodyPropertys) SetStatus(v string) *DescribePropertyUserDetailResponseBodyPropertys {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribePropertyUserDetailResponseBodyPropertys) SetLastLoginIp(v string) *DescribePropertyUserDetailResponseBodyPropertys {
-	s.LastLoginIp = &v
-	return s
-}
-
-func (s *DescribePropertyUserDetailResponseBodyPropertys) SetCreate(v string) *DescribePropertyUserDetailResponseBodyPropertys {
-	s.Create = &v
-	return s
-}
-
-func (s *DescribePropertyUserDetailResponseBodyPropertys) SetInternetIp(v string) *DescribePropertyUserDetailResponseBodyPropertys {
-	s.InternetIp = &v
-	return s
-}
-
-func (s *DescribePropertyUserDetailResponseBodyPropertys) SetIsRoot(v string) *DescribePropertyUserDetailResponseBodyPropertys {
-	s.IsRoot = &v
-	return s
-}
-
-func (s *DescribePropertyUserDetailResponseBodyPropertys) SetLastLoginTime(v string) *DescribePropertyUserDetailResponseBodyPropertys {
-	s.LastLoginTime = &v
-	return s
-}
-
-func (s *DescribePropertyUserDetailResponseBodyPropertys) SetUser(v string) *DescribePropertyUserDetailResponseBodyPropertys {
-	s.User = &v
-	return s
-}
-
-func (s *DescribePropertyUserDetailResponseBodyPropertys) SetIp(v string) *DescribePropertyUserDetailResponseBodyPropertys {
-	s.Ip = &v
-	return s
-}
-
-func (s *DescribePropertyUserDetailResponseBodyPropertys) SetInstanceId(v string) *DescribePropertyUserDetailResponseBodyPropertys {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DescribePropertyUserDetailResponseBodyPropertys) SetPasswordExpirationDate(v string) *DescribePropertyUserDetailResponseBodyPropertys {
-	s.PasswordExpirationDate = &v
-	return s
-}
-
-func (s *DescribePropertyUserDetailResponseBodyPropertys) SetIntranetIp(v string) *DescribePropertyUserDetailResponseBodyPropertys {
-	s.IntranetIp = &v
-	return s
-}
-
-func (s *DescribePropertyUserDetailResponseBodyPropertys) SetGroupNames(v []*string) *DescribePropertyUserDetailResponseBodyPropertys {
-	s.GroupNames = v
-	return s
-}
-
-func (s *DescribePropertyUserDetailResponseBodyPropertys) SetUuid(v string) *DescribePropertyUserDetailResponseBodyPropertys {
-	s.Uuid = &v
-	return s
-}
-
-func (s *DescribePropertyUserDetailResponseBodyPropertys) SetLastLoginTimestamp(v int64) *DescribePropertyUserDetailResponseBodyPropertys {
-	s.LastLoginTimestamp = &v
-	return s
-}
-
-func (s *DescribePropertyUserDetailResponseBodyPropertys) SetInstanceName(v string) *DescribePropertyUserDetailResponseBodyPropertys {
-	s.InstanceName = &v
-	return s
-}
-
-func (s *DescribePropertyUserDetailResponseBodyPropertys) SetAccountsExpirationDate(v string) *DescribePropertyUserDetailResponseBodyPropertys {
-	s.AccountsExpirationDate = &v
-	return s
-}
-
-func (s *DescribePropertyUserDetailResponseBodyPropertys) SetCreateTimestamp(v int64) *DescribePropertyUserDetailResponseBodyPropertys {
-	s.CreateTimestamp = &v
+func (s *DescribePropertyUserDetailResponseBody) SetPropertys(v []*DescribePropertyUserDetailResponseBodyPropertys) *DescribePropertyUserDetailResponseBody {
+	s.Propertys = v
 	return s
 }
 
@@ -11886,6 +13878,119 @@ func (s *DescribePropertyUserDetailResponseBodyPageInfo) SetCount(v int32) *Desc
 	return s
 }
 
+type DescribePropertyUserDetailResponseBodyPropertys struct {
+	Status                 *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Create                 *string   `json:"Create,omitempty" xml:"Create,omitempty"`
+	LastLoginIp            *string   `json:"LastLoginIp,omitempty" xml:"LastLoginIp,omitempty"`
+	InternetIp             *string   `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	LastLoginTime          *string   `json:"LastLoginTime,omitempty" xml:"LastLoginTime,omitempty"`
+	IsRoot                 *string   `json:"IsRoot,omitempty" xml:"IsRoot,omitempty"`
+	Ip                     *string   `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	User                   *string   `json:"User,omitempty" xml:"User,omitempty"`
+	InstanceId             *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IntranetIp             *string   `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	PasswordExpirationDate *string   `json:"PasswordExpirationDate,omitempty" xml:"PasswordExpirationDate,omitempty"`
+	Uuid                   *string   `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	LastLoginTimestamp     *int64    `json:"LastLoginTimestamp,omitempty" xml:"LastLoginTimestamp,omitempty"`
+	InstanceName           *string   `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	AccountsExpirationDate *string   `json:"AccountsExpirationDate,omitempty" xml:"AccountsExpirationDate,omitempty"`
+	CreateTimestamp        *int64    `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	GroupNames             []*string `json:"GroupNames,omitempty" xml:"GroupNames,omitempty" type:"Repeated"`
+}
+
+func (s DescribePropertyUserDetailResponseBodyPropertys) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePropertyUserDetailResponseBodyPropertys) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePropertyUserDetailResponseBodyPropertys) SetStatus(v string) *DescribePropertyUserDetailResponseBodyPropertys {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribePropertyUserDetailResponseBodyPropertys) SetCreate(v string) *DescribePropertyUserDetailResponseBodyPropertys {
+	s.Create = &v
+	return s
+}
+
+func (s *DescribePropertyUserDetailResponseBodyPropertys) SetLastLoginIp(v string) *DescribePropertyUserDetailResponseBodyPropertys {
+	s.LastLoginIp = &v
+	return s
+}
+
+func (s *DescribePropertyUserDetailResponseBodyPropertys) SetInternetIp(v string) *DescribePropertyUserDetailResponseBodyPropertys {
+	s.InternetIp = &v
+	return s
+}
+
+func (s *DescribePropertyUserDetailResponseBodyPropertys) SetLastLoginTime(v string) *DescribePropertyUserDetailResponseBodyPropertys {
+	s.LastLoginTime = &v
+	return s
+}
+
+func (s *DescribePropertyUserDetailResponseBodyPropertys) SetIsRoot(v string) *DescribePropertyUserDetailResponseBodyPropertys {
+	s.IsRoot = &v
+	return s
+}
+
+func (s *DescribePropertyUserDetailResponseBodyPropertys) SetIp(v string) *DescribePropertyUserDetailResponseBodyPropertys {
+	s.Ip = &v
+	return s
+}
+
+func (s *DescribePropertyUserDetailResponseBodyPropertys) SetUser(v string) *DescribePropertyUserDetailResponseBodyPropertys {
+	s.User = &v
+	return s
+}
+
+func (s *DescribePropertyUserDetailResponseBodyPropertys) SetInstanceId(v string) *DescribePropertyUserDetailResponseBodyPropertys {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribePropertyUserDetailResponseBodyPropertys) SetIntranetIp(v string) *DescribePropertyUserDetailResponseBodyPropertys {
+	s.IntranetIp = &v
+	return s
+}
+
+func (s *DescribePropertyUserDetailResponseBodyPropertys) SetPasswordExpirationDate(v string) *DescribePropertyUserDetailResponseBodyPropertys {
+	s.PasswordExpirationDate = &v
+	return s
+}
+
+func (s *DescribePropertyUserDetailResponseBodyPropertys) SetUuid(v string) *DescribePropertyUserDetailResponseBodyPropertys {
+	s.Uuid = &v
+	return s
+}
+
+func (s *DescribePropertyUserDetailResponseBodyPropertys) SetLastLoginTimestamp(v int64) *DescribePropertyUserDetailResponseBodyPropertys {
+	s.LastLoginTimestamp = &v
+	return s
+}
+
+func (s *DescribePropertyUserDetailResponseBodyPropertys) SetInstanceName(v string) *DescribePropertyUserDetailResponseBodyPropertys {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribePropertyUserDetailResponseBodyPropertys) SetAccountsExpirationDate(v string) *DescribePropertyUserDetailResponseBodyPropertys {
+	s.AccountsExpirationDate = &v
+	return s
+}
+
+func (s *DescribePropertyUserDetailResponseBodyPropertys) SetCreateTimestamp(v int64) *DescribePropertyUserDetailResponseBodyPropertys {
+	s.CreateTimestamp = &v
+	return s
+}
+
+func (s *DescribePropertyUserDetailResponseBodyPropertys) SetGroupNames(v []*string) *DescribePropertyUserDetailResponseBodyPropertys {
+	s.GroupNames = v
+	return s
+}
+
 type DescribePropertyUserDetailResponse struct {
 	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	Body    *DescribePropertyUserDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -11910,7 +14015,6 @@ func (s *DescribePropertyUserDetailResponse) SetBody(v *DescribePropertyUserDeta
 }
 
 type DescribePropertyUserItemRequest struct {
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	ForceFlush  *bool   `json:"ForceFlush,omitempty" xml:"ForceFlush,omitempty"`
 	User        *string `json:"User,omitempty" xml:"User,omitempty"`
 	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
@@ -11923,11 +14027,6 @@ func (s DescribePropertyUserItemRequest) String() string {
 
 func (s DescribePropertyUserItemRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribePropertyUserItemRequest) SetSourceIp(v string) *DescribePropertyUserItemRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *DescribePropertyUserItemRequest) SetForceFlush(v bool) *DescribePropertyUserItemRequest {
@@ -11951,8 +14050,8 @@ func (s *DescribePropertyUserItemRequest) SetPageSize(v int32) *DescribeProperty
 }
 
 type DescribePropertyUserItemResponseBody struct {
-	PageInfo      *DescribePropertyUserItemResponseBodyPageInfo        `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	RequestId     *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageInfo      *DescribePropertyUserItemResponseBodyPageInfo        `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	PropertyItems []*DescribePropertyUserItemResponseBodyPropertyItems `json:"PropertyItems,omitempty" xml:"PropertyItems,omitempty" type:"Repeated"`
 }
 
@@ -11964,13 +14063,13 @@ func (s DescribePropertyUserItemResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribePropertyUserItemResponseBody) SetPageInfo(v *DescribePropertyUserItemResponseBodyPageInfo) *DescribePropertyUserItemResponseBody {
-	s.PageInfo = v
+func (s *DescribePropertyUserItemResponseBody) SetRequestId(v string) *DescribePropertyUserItemResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *DescribePropertyUserItemResponseBody) SetRequestId(v string) *DescribePropertyUserItemResponseBody {
-	s.RequestId = &v
+func (s *DescribePropertyUserItemResponseBody) SetPageInfo(v *DescribePropertyUserItemResponseBodyPageInfo) *DescribePropertyUserItemResponseBody {
+	s.PageInfo = v
 	return s
 }
 
@@ -12060,6 +14159,508 @@ func (s *DescribePropertyUserItemResponse) SetBody(v *DescribePropertyUserItemRe
 	return s
 }
 
+type DescribeQuaraFileDownloadInfoRequest struct {
+	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	QuaraFileId *int32  `json:"QuaraFileId,omitempty" xml:"QuaraFileId,omitempty"`
+	From        *string `json:"From,omitempty" xml:"From,omitempty"`
+}
+
+func (s DescribeQuaraFileDownloadInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeQuaraFileDownloadInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeQuaraFileDownloadInfoRequest) SetSourceIp(v string) *DescribeQuaraFileDownloadInfoRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *DescribeQuaraFileDownloadInfoRequest) SetQuaraFileId(v int32) *DescribeQuaraFileDownloadInfoRequest {
+	s.QuaraFileId = &v
+	return s
+}
+
+func (s *DescribeQuaraFileDownloadInfoRequest) SetFrom(v string) *DescribeQuaraFileDownloadInfoRequest {
+	s.From = &v
+	return s
+}
+
+type DescribeQuaraFileDownloadInfoResponseBody struct {
+	Uuid        *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	QuaraFileId *int32  `json:"QuaraFileId,omitempty" xml:"QuaraFileId,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	Path        *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Md5         *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	Tag         *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s DescribeQuaraFileDownloadInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeQuaraFileDownloadInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeQuaraFileDownloadInfoResponseBody) SetUuid(v string) *DescribeQuaraFileDownloadInfoResponseBody {
+	s.Uuid = &v
+	return s
+}
+
+func (s *DescribeQuaraFileDownloadInfoResponseBody) SetQuaraFileId(v int32) *DescribeQuaraFileDownloadInfoResponseBody {
+	s.QuaraFileId = &v
+	return s
+}
+
+func (s *DescribeQuaraFileDownloadInfoResponseBody) SetRequestId(v string) *DescribeQuaraFileDownloadInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeQuaraFileDownloadInfoResponseBody) SetDownloadUrl(v string) *DescribeQuaraFileDownloadInfoResponseBody {
+	s.DownloadUrl = &v
+	return s
+}
+
+func (s *DescribeQuaraFileDownloadInfoResponseBody) SetPath(v string) *DescribeQuaraFileDownloadInfoResponseBody {
+	s.Path = &v
+	return s
+}
+
+func (s *DescribeQuaraFileDownloadInfoResponseBody) SetMd5(v string) *DescribeQuaraFileDownloadInfoResponseBody {
+	s.Md5 = &v
+	return s
+}
+
+func (s *DescribeQuaraFileDownloadInfoResponseBody) SetTag(v string) *DescribeQuaraFileDownloadInfoResponseBody {
+	s.Tag = &v
+	return s
+}
+
+type DescribeQuaraFileDownloadInfoResponse struct {
+	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeQuaraFileDownloadInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeQuaraFileDownloadInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeQuaraFileDownloadInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeQuaraFileDownloadInfoResponse) SetHeaders(v map[string]*string) *DescribeQuaraFileDownloadInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeQuaraFileDownloadInfoResponse) SetBody(v *DescribeQuaraFileDownloadInfoResponseBody) *DescribeQuaraFileDownloadInfoResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeRestoreJobsRequest struct {
+	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	MachineRemark   *string `json:"MachineRemark,omitempty" xml:"MachineRemark,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	CurrentPage     *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+}
+
+func (s DescribeRestoreJobsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRestoreJobsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRestoreJobsRequest) SetSourceIp(v string) *DescribeRestoreJobsRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsRequest) SetResourceOwnerId(v int64) *DescribeRestoreJobsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsRequest) SetStatus(v string) *DescribeRestoreJobsRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsRequest) SetMachineRemark(v string) *DescribeRestoreJobsRequest {
+	s.MachineRemark = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsRequest) SetPageSize(v int32) *DescribeRestoreJobsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsRequest) SetCurrentPage(v int32) *DescribeRestoreJobsRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+type DescribeRestoreJobsResponseBody struct {
+	RequestId   *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RestoreJobs []*DescribeRestoreJobsResponseBodyRestoreJobs `json:"RestoreJobs,omitempty" xml:"RestoreJobs,omitempty" type:"Repeated"`
+	PageInfo    *DescribeRestoreJobsResponseBodyPageInfo      `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+}
+
+func (s DescribeRestoreJobsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRestoreJobsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRestoreJobsResponseBody) SetRequestId(v string) *DescribeRestoreJobsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponseBody) SetRestoreJobs(v []*DescribeRestoreJobsResponseBodyRestoreJobs) *DescribeRestoreJobsResponseBody {
+	s.RestoreJobs = v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponseBody) SetPageInfo(v *DescribeRestoreJobsResponseBodyPageInfo) *DescribeRestoreJobsResponseBody {
+	s.PageInfo = v
+	return s
+}
+
+type DescribeRestoreJobsResponseBodyRestoreJobs struct {
+	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	CreatedTime     *int64  `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	UpdatedTime     *int64  `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	Uuid            *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	Message         *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RestoreId       *string `json:"RestoreId,omitempty" xml:"RestoreId,omitempty"`
+	ClientId        *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	VaultId         *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+	SnapshotId      *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	SnapshotHash    *string `json:"SnapshotHash,omitempty" xml:"SnapshotHash,omitempty"`
+	Source          *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	Target          *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	RestoreType     *string `json:"RestoreType,omitempty" xml:"RestoreType,omitempty"`
+	Speed           *int64  `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	CompleteTime    *int64  `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
+	Eta             *int64  `json:"Eta,omitempty" xml:"Eta,omitempty"`
+	ErrorCount      *int64  `json:"ErrorCount,omitempty" xml:"ErrorCount,omitempty"`
+	BytesDone       *int64  `json:"BytesDone,omitempty" xml:"BytesDone,omitempty"`
+	BytesTotal      *int64  `json:"BytesTotal,omitempty" xml:"BytesTotal,omitempty"`
+	ItemsDone       *int64  `json:"ItemsDone,omitempty" xml:"ItemsDone,omitempty"`
+	ItemsTotal      *int64  `json:"ItemsTotal,omitempty" xml:"ItemsTotal,omitempty"`
+	ActualBytes     *int64  `json:"ActualBytes,omitempty" xml:"ActualBytes,omitempty"`
+	Percentage      *int32  `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	ErrorType       *string `json:"ErrorType,omitempty" xml:"ErrorType,omitempty"`
+	SourceClientId  *string `json:"SourceClientId,omitempty" xml:"SourceClientId,omitempty"`
+	SnapshotVersion *string `json:"SnapshotVersion,omitempty" xml:"SnapshotVersion,omitempty"`
+	InstanceName    *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InternetIp      *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	IntranetIp      *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	ErrorFile       *string `json:"ErrorFile,omitempty" xml:"ErrorFile,omitempty"`
+	ErrorFileUrl    *string `json:"ErrorFileUrl,omitempty" xml:"ErrorFileUrl,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RestoreName     *string `json:"RestoreName,omitempty" xml:"RestoreName,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Extra           *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	Duration        *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	ExitCode        *string `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
+	GmtCreate       *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified     *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Excludes        *string `json:"Excludes,omitempty" xml:"Excludes,omitempty"`
+	Includes        *string `json:"Includes,omitempty" xml:"Includes,omitempty"`
+}
+
+func (s DescribeRestoreJobsResponseBodyRestoreJobs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRestoreJobsResponseBodyRestoreJobs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRestoreJobsResponseBodyRestoreJobs) SetId(v int64) *DescribeRestoreJobsResponseBodyRestoreJobs {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponseBodyRestoreJobs) SetCreatedTime(v int64) *DescribeRestoreJobsResponseBodyRestoreJobs {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponseBodyRestoreJobs) SetUpdatedTime(v int64) *DescribeRestoreJobsResponseBodyRestoreJobs {
+	s.UpdatedTime = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponseBodyRestoreJobs) SetUuid(v string) *DescribeRestoreJobsResponseBodyRestoreJobs {
+	s.Uuid = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponseBodyRestoreJobs) SetMessage(v string) *DescribeRestoreJobsResponseBodyRestoreJobs {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponseBodyRestoreJobs) SetRestoreId(v string) *DescribeRestoreJobsResponseBodyRestoreJobs {
+	s.RestoreId = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponseBodyRestoreJobs) SetClientId(v string) *DescribeRestoreJobsResponseBodyRestoreJobs {
+	s.ClientId = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponseBodyRestoreJobs) SetVaultId(v string) *DescribeRestoreJobsResponseBodyRestoreJobs {
+	s.VaultId = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponseBodyRestoreJobs) SetSnapshotId(v string) *DescribeRestoreJobsResponseBodyRestoreJobs {
+	s.SnapshotId = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponseBodyRestoreJobs) SetSnapshotHash(v string) *DescribeRestoreJobsResponseBodyRestoreJobs {
+	s.SnapshotHash = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponseBodyRestoreJobs) SetSource(v string) *DescribeRestoreJobsResponseBodyRestoreJobs {
+	s.Source = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponseBodyRestoreJobs) SetTarget(v string) *DescribeRestoreJobsResponseBodyRestoreJobs {
+	s.Target = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponseBodyRestoreJobs) SetStatus(v string) *DescribeRestoreJobsResponseBodyRestoreJobs {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponseBodyRestoreJobs) SetRestoreType(v string) *DescribeRestoreJobsResponseBodyRestoreJobs {
+	s.RestoreType = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponseBodyRestoreJobs) SetSpeed(v int64) *DescribeRestoreJobsResponseBodyRestoreJobs {
+	s.Speed = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponseBodyRestoreJobs) SetCompleteTime(v int64) *DescribeRestoreJobsResponseBodyRestoreJobs {
+	s.CompleteTime = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponseBodyRestoreJobs) SetEta(v int64) *DescribeRestoreJobsResponseBodyRestoreJobs {
+	s.Eta = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponseBodyRestoreJobs) SetErrorCount(v int64) *DescribeRestoreJobsResponseBodyRestoreJobs {
+	s.ErrorCount = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponseBodyRestoreJobs) SetBytesDone(v int64) *DescribeRestoreJobsResponseBodyRestoreJobs {
+	s.BytesDone = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponseBodyRestoreJobs) SetBytesTotal(v int64) *DescribeRestoreJobsResponseBodyRestoreJobs {
+	s.BytesTotal = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponseBodyRestoreJobs) SetItemsDone(v int64) *DescribeRestoreJobsResponseBodyRestoreJobs {
+	s.ItemsDone = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponseBodyRestoreJobs) SetItemsTotal(v int64) *DescribeRestoreJobsResponseBodyRestoreJobs {
+	s.ItemsTotal = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponseBodyRestoreJobs) SetActualBytes(v int64) *DescribeRestoreJobsResponseBodyRestoreJobs {
+	s.ActualBytes = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponseBodyRestoreJobs) SetPercentage(v int32) *DescribeRestoreJobsResponseBodyRestoreJobs {
+	s.Percentage = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponseBodyRestoreJobs) SetErrorType(v string) *DescribeRestoreJobsResponseBodyRestoreJobs {
+	s.ErrorType = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponseBodyRestoreJobs) SetSourceClientId(v string) *DescribeRestoreJobsResponseBodyRestoreJobs {
+	s.SourceClientId = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponseBodyRestoreJobs) SetSnapshotVersion(v string) *DescribeRestoreJobsResponseBodyRestoreJobs {
+	s.SnapshotVersion = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponseBodyRestoreJobs) SetInstanceName(v string) *DescribeRestoreJobsResponseBodyRestoreJobs {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponseBodyRestoreJobs) SetInternetIp(v string) *DescribeRestoreJobsResponseBodyRestoreJobs {
+	s.InternetIp = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponseBodyRestoreJobs) SetIntranetIp(v string) *DescribeRestoreJobsResponseBodyRestoreJobs {
+	s.IntranetIp = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponseBodyRestoreJobs) SetErrorFile(v string) *DescribeRestoreJobsResponseBodyRestoreJobs {
+	s.ErrorFile = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponseBodyRestoreJobs) SetErrorFileUrl(v string) *DescribeRestoreJobsResponseBodyRestoreJobs {
+	s.ErrorFileUrl = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponseBodyRestoreJobs) SetRequestId(v string) *DescribeRestoreJobsResponseBodyRestoreJobs {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponseBodyRestoreJobs) SetRestoreName(v string) *DescribeRestoreJobsResponseBodyRestoreJobs {
+	s.RestoreName = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponseBodyRestoreJobs) SetInstanceId(v string) *DescribeRestoreJobsResponseBodyRestoreJobs {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponseBodyRestoreJobs) SetExtra(v string) *DescribeRestoreJobsResponseBodyRestoreJobs {
+	s.Extra = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponseBodyRestoreJobs) SetDuration(v int64) *DescribeRestoreJobsResponseBodyRestoreJobs {
+	s.Duration = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponseBodyRestoreJobs) SetExitCode(v string) *DescribeRestoreJobsResponseBodyRestoreJobs {
+	s.ExitCode = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponseBodyRestoreJobs) SetGmtCreate(v string) *DescribeRestoreJobsResponseBodyRestoreJobs {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponseBodyRestoreJobs) SetGmtModified(v int64) *DescribeRestoreJobsResponseBodyRestoreJobs {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponseBodyRestoreJobs) SetExcludes(v string) *DescribeRestoreJobsResponseBodyRestoreJobs {
+	s.Excludes = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponseBodyRestoreJobs) SetIncludes(v string) *DescribeRestoreJobsResponseBodyRestoreJobs {
+	s.Includes = &v
+	return s
+}
+
+type DescribeRestoreJobsResponseBodyPageInfo struct {
+	Count       *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount  *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+}
+
+func (s DescribeRestoreJobsResponseBodyPageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRestoreJobsResponseBodyPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRestoreJobsResponseBodyPageInfo) SetCount(v int32) *DescribeRestoreJobsResponseBodyPageInfo {
+	s.Count = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponseBodyPageInfo) SetPageSize(v int32) *DescribeRestoreJobsResponseBodyPageInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponseBodyPageInfo) SetTotalCount(v int32) *DescribeRestoreJobsResponseBodyPageInfo {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponseBodyPageInfo) SetCurrentPage(v int32) *DescribeRestoreJobsResponseBodyPageInfo {
+	s.CurrentPage = &v
+	return s
+}
+
+type DescribeRestoreJobsResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeRestoreJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeRestoreJobsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRestoreJobsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRestoreJobsResponse) SetHeaders(v map[string]*string) *DescribeRestoreJobsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeRestoreJobsResponse) SetBody(v *DescribeRestoreJobsResponseBody) *DescribeRestoreJobsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeRiskCheckItemResultRequest struct {
 	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -12067,7 +14668,6 @@ type DescribeRiskCheckItemResultRequest struct {
 	ItemId          *int64  `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
 	CurrentPage     *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s DescribeRiskCheckItemResultRequest) String() string {
@@ -12105,11 +14705,6 @@ func (s *DescribeRiskCheckItemResultRequest) SetCurrentPage(v int32) *DescribeRi
 
 func (s *DescribeRiskCheckItemResultRequest) SetPageSize(v int32) *DescribeRiskCheckItemResultRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeRiskCheckItemResultRequest) SetInstanceId(v string) *DescribeRiskCheckItemResultRequest {
-	s.InstanceId = &v
 	return s
 }
 
@@ -12217,7 +14812,6 @@ type DescribeRiskCheckResultRequest struct {
 	AssetType       *string   `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
 	Name            *string   `json:"Name,omitempty" xml:"Name,omitempty"`
 	PageSize        *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	InstanceId      *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	QueryFlag       *string   `json:"QueryFlag,omitempty" xml:"QueryFlag,omitempty"`
 	ItemIds         []*string `json:"ItemIds,omitempty" xml:"ItemIds,omitempty" type:"Repeated"`
 }
@@ -12280,11 +14874,6 @@ func (s *DescribeRiskCheckResultRequest) SetPageSize(v int32) *DescribeRiskCheck
 	return s
 }
 
-func (s *DescribeRiskCheckResultRequest) SetInstanceId(v string) *DescribeRiskCheckResultRequest {
-	s.InstanceId = &v
-	return s
-}
-
 func (s *DescribeRiskCheckResultRequest) SetQueryFlag(v string) *DescribeRiskCheckResultRequest {
 	s.QueryFlag = &v
 	return s
@@ -12296,13 +14885,13 @@ func (s *DescribeRiskCheckResultRequest) SetItemIds(v []*string) *DescribeRiskCh
 }
 
 type DescribeRiskCheckResultResponseBody struct {
-	TotalCount  *int32                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	CurrentPage *int32                                     `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	RequestId   *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageSize    *int32                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount  *int32                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	PageCount   *int32                                     `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
-	CurrentPage *int32                                     `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	List        []*DescribeRiskCheckResultResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 	Count       *int32                                     `json:"Count,omitempty" xml:"Count,omitempty"`
+	List        []*DescribeRiskCheckResultResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 }
 
 func (s DescribeRiskCheckResultResponseBody) String() string {
@@ -12313,8 +14902,8 @@ func (s DescribeRiskCheckResultResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRiskCheckResultResponseBody) SetTotalCount(v int32) *DescribeRiskCheckResultResponseBody {
-	s.TotalCount = &v
+func (s *DescribeRiskCheckResultResponseBody) SetCurrentPage(v int32) *DescribeRiskCheckResultResponseBody {
+	s.CurrentPage = &v
 	return s
 }
 
@@ -12328,18 +14917,13 @@ func (s *DescribeRiskCheckResultResponseBody) SetPageSize(v int32) *DescribeRisk
 	return s
 }
 
+func (s *DescribeRiskCheckResultResponseBody) SetTotalCount(v int32) *DescribeRiskCheckResultResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
 func (s *DescribeRiskCheckResultResponseBody) SetPageCount(v int32) *DescribeRiskCheckResultResponseBody {
 	s.PageCount = &v
-	return s
-}
-
-func (s *DescribeRiskCheckResultResponseBody) SetCurrentPage(v int32) *DescribeRiskCheckResultResponseBody {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *DescribeRiskCheckResultResponseBody) SetList(v []*DescribeRiskCheckResultResponseBodyList) *DescribeRiskCheckResultResponseBody {
-	s.List = v
 	return s
 }
 
@@ -12348,10 +14932,15 @@ func (s *DescribeRiskCheckResultResponseBody) SetCount(v int32) *DescribeRiskChe
 	return s
 }
 
+func (s *DescribeRiskCheckResultResponseBody) SetList(v []*DescribeRiskCheckResultResponseBodyList) *DescribeRiskCheckResultResponseBody {
+	s.List = v
+	return s
+}
+
 type DescribeRiskCheckResultResponseBodyList struct {
-	Type              *string                                                     `json:"Type,omitempty" xml:"Type,omitempty"`
-	Status            *string                                                     `json:"Status,omitempty" xml:"Status,omitempty"`
 	RiskLevel         *string                                                     `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	Status            *string                                                     `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type              *string                                                     `json:"Type,omitempty" xml:"Type,omitempty"`
 	Sort              *int32                                                      `json:"Sort,omitempty" xml:"Sort,omitempty"`
 	RepairStatus      *string                                                     `json:"RepairStatus,omitempty" xml:"RepairStatus,omitempty"`
 	RemainingTime     *int32                                                      `json:"RemainingTime,omitempty" xml:"RemainingTime,omitempty"`
@@ -12359,10 +14948,10 @@ type DescribeRiskCheckResultResponseBodyList struct {
 	StartStatus       *string                                                     `json:"StartStatus,omitempty" xml:"StartStatus,omitempty"`
 	AffectedCount     *int32                                                      `json:"AffectedCount,omitempty" xml:"AffectedCount,omitempty"`
 	RiskAssertType    *string                                                     `json:"RiskAssertType,omitempty" xml:"RiskAssertType,omitempty"`
-	RiskItemResources []*DescribeRiskCheckResultResponseBodyListRiskItemResources `json:"RiskItemResources,omitempty" xml:"RiskItemResources,omitempty" type:"Repeated"`
 	Title             *string                                                     `json:"Title,omitempty" xml:"Title,omitempty"`
 	TaskId            *int64                                                      `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	CheckTime         *int64                                                      `json:"CheckTime,omitempty" xml:"CheckTime,omitempty"`
+	RiskItemResources []*DescribeRiskCheckResultResponseBodyListRiskItemResources `json:"RiskItemResources,omitempty" xml:"RiskItemResources,omitempty" type:"Repeated"`
 }
 
 func (s DescribeRiskCheckResultResponseBodyList) String() string {
@@ -12373,8 +14962,8 @@ func (s DescribeRiskCheckResultResponseBodyList) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRiskCheckResultResponseBodyList) SetType(v string) *DescribeRiskCheckResultResponseBodyList {
-	s.Type = &v
+func (s *DescribeRiskCheckResultResponseBodyList) SetRiskLevel(v string) *DescribeRiskCheckResultResponseBodyList {
+	s.RiskLevel = &v
 	return s
 }
 
@@ -12383,8 +14972,8 @@ func (s *DescribeRiskCheckResultResponseBodyList) SetStatus(v string) *DescribeR
 	return s
 }
 
-func (s *DescribeRiskCheckResultResponseBodyList) SetRiskLevel(v string) *DescribeRiskCheckResultResponseBodyList {
-	s.RiskLevel = &v
+func (s *DescribeRiskCheckResultResponseBodyList) SetType(v string) *DescribeRiskCheckResultResponseBodyList {
+	s.Type = &v
 	return s
 }
 
@@ -12423,11 +15012,6 @@ func (s *DescribeRiskCheckResultResponseBodyList) SetRiskAssertType(v string) *D
 	return s
 }
 
-func (s *DescribeRiskCheckResultResponseBodyList) SetRiskItemResources(v []*DescribeRiskCheckResultResponseBodyListRiskItemResources) *DescribeRiskCheckResultResponseBodyList {
-	s.RiskItemResources = v
-	return s
-}
-
 func (s *DescribeRiskCheckResultResponseBodyList) SetTitle(v string) *DescribeRiskCheckResultResponseBodyList {
 	s.Title = &v
 	return s
@@ -12440,6 +15024,11 @@ func (s *DescribeRiskCheckResultResponseBodyList) SetTaskId(v int64) *DescribeRi
 
 func (s *DescribeRiskCheckResultResponseBodyList) SetCheckTime(v int64) *DescribeRiskCheckResultResponseBodyList {
 	s.CheckTime = &v
+	return s
+}
+
+func (s *DescribeRiskCheckResultResponseBodyList) SetRiskItemResources(v []*DescribeRiskCheckResultResponseBodyListRiskItemResources) *DescribeRiskCheckResultResponseBodyList {
+	s.RiskItemResources = v
 	return s
 }
 
@@ -12549,15 +15138,15 @@ func (s *DescribeRiskCheckSummaryResponseBody) SetRiskCheckSummary(v *DescribeRi
 
 type DescribeRiskCheckSummaryResponseBodyRiskCheckSummary struct {
 	ItemCount          *int32                                                                `json:"ItemCount,omitempty" xml:"ItemCount,omitempty"`
-	Groups             []*DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroups         `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
 	AffectedAssetCount *int32                                                                `json:"AffectedAssetCount,omitempty" xml:"AffectedAssetCount,omitempty"`
 	DisabledRiskCount  *int32                                                                `json:"DisabledRiskCount,omitempty" xml:"DisabledRiskCount,omitempty"`
-	RiskLevelCount     []*DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryRiskLevelCount `json:"RiskLevelCount,omitempty" xml:"RiskLevelCount,omitempty" type:"Repeated"`
 	RiskCount          *int32                                                                `json:"RiskCount,omitempty" xml:"RiskCount,omitempty"`
 	RiskRate           *float32                                                              `json:"RiskRate,omitempty" xml:"RiskRate,omitempty"`
 	PreviousCount      *int32                                                                `json:"PreviousCount,omitempty" xml:"PreviousCount,omitempty"`
 	PreviousTime       *int64                                                                `json:"PreviousTime,omitempty" xml:"PreviousTime,omitempty"`
 	EnabledRiskCount   *int32                                                                `json:"EnabledRiskCount,omitempty" xml:"EnabledRiskCount,omitempty"`
+	RiskLevelCount     []*DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryRiskLevelCount `json:"RiskLevelCount,omitempty" xml:"RiskLevelCount,omitempty" type:"Repeated"`
+	Groups             []*DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroups         `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
 }
 
 func (s DescribeRiskCheckSummaryResponseBodyRiskCheckSummary) String() string {
@@ -12573,11 +15162,6 @@ func (s *DescribeRiskCheckSummaryResponseBodyRiskCheckSummary) SetItemCount(v in
 	return s
 }
 
-func (s *DescribeRiskCheckSummaryResponseBodyRiskCheckSummary) SetGroups(v []*DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroups) *DescribeRiskCheckSummaryResponseBodyRiskCheckSummary {
-	s.Groups = v
-	return s
-}
-
 func (s *DescribeRiskCheckSummaryResponseBodyRiskCheckSummary) SetAffectedAssetCount(v int32) *DescribeRiskCheckSummaryResponseBodyRiskCheckSummary {
 	s.AffectedAssetCount = &v
 	return s
@@ -12585,11 +15169,6 @@ func (s *DescribeRiskCheckSummaryResponseBodyRiskCheckSummary) SetAffectedAssetC
 
 func (s *DescribeRiskCheckSummaryResponseBodyRiskCheckSummary) SetDisabledRiskCount(v int32) *DescribeRiskCheckSummaryResponseBodyRiskCheckSummary {
 	s.DisabledRiskCount = &v
-	return s
-}
-
-func (s *DescribeRiskCheckSummaryResponseBodyRiskCheckSummary) SetRiskLevelCount(v []*DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryRiskLevelCount) *DescribeRiskCheckSummaryResponseBodyRiskCheckSummary {
-	s.RiskLevelCount = v
 	return s
 }
 
@@ -12618,73 +15197,13 @@ func (s *DescribeRiskCheckSummaryResponseBodyRiskCheckSummary) SetEnabledRiskCou
 	return s
 }
 
-type DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroups struct {
-	Status        *string                                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
-	Sort          *int32                                                                     `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	RemainingTime *int32                                                                     `json:"RemainingTime,omitempty" xml:"RemainingTime,omitempty"`
-	CountByStatus []*DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroupsCountByStatus `json:"CountByStatus,omitempty" xml:"CountByStatus,omitempty" type:"Repeated"`
-	Title         *string                                                                    `json:"Title,omitempty" xml:"Title,omitempty"`
-	Id            *int64                                                                     `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroups) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroups) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroups) SetStatus(v string) *DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroups {
-	s.Status = &v
+func (s *DescribeRiskCheckSummaryResponseBodyRiskCheckSummary) SetRiskLevelCount(v []*DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryRiskLevelCount) *DescribeRiskCheckSummaryResponseBodyRiskCheckSummary {
+	s.RiskLevelCount = v
 	return s
 }
 
-func (s *DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroups) SetSort(v int32) *DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroups {
-	s.Sort = &v
-	return s
-}
-
-func (s *DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroups) SetRemainingTime(v int32) *DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroups {
-	s.RemainingTime = &v
-	return s
-}
-
-func (s *DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroups) SetCountByStatus(v []*DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroupsCountByStatus) *DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroups {
-	s.CountByStatus = v
-	return s
-}
-
-func (s *DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroups) SetTitle(v string) *DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroups {
-	s.Title = &v
-	return s
-}
-
-func (s *DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroups) SetId(v int64) *DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroups {
-	s.Id = &v
-	return s
-}
-
-type DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroupsCountByStatus struct {
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Count  *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
-}
-
-func (s DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroupsCountByStatus) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroupsCountByStatus) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroupsCountByStatus) SetStatus(v string) *DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroupsCountByStatus {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroupsCountByStatus) SetCount(v int32) *DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroupsCountByStatus {
-	s.Count = &v
+func (s *DescribeRiskCheckSummaryResponseBodyRiskCheckSummary) SetGroups(v []*DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroups) *DescribeRiskCheckSummaryResponseBodyRiskCheckSummary {
+	s.Groups = v
 	return s
 }
 
@@ -12707,6 +15226,76 @@ func (s *DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryRiskLevelCount) Set
 }
 
 func (s *DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryRiskLevelCount) SetCount(v int32) *DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryRiskLevelCount {
+	s.Count = &v
+	return s
+}
+
+type DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroups struct {
+	RemainingTime *int32                                                                     `json:"RemainingTime,omitempty" xml:"RemainingTime,omitempty"`
+	Status        *string                                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
+	Sort          *int32                                                                     `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	Title         *string                                                                    `json:"Title,omitempty" xml:"Title,omitempty"`
+	Id            *int64                                                                     `json:"Id,omitempty" xml:"Id,omitempty"`
+	CountByStatus []*DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroupsCountByStatus `json:"CountByStatus,omitempty" xml:"CountByStatus,omitempty" type:"Repeated"`
+}
+
+func (s DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroups) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroups) SetRemainingTime(v int32) *DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroups {
+	s.RemainingTime = &v
+	return s
+}
+
+func (s *DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroups) SetStatus(v string) *DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroups {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroups) SetSort(v int32) *DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroups {
+	s.Sort = &v
+	return s
+}
+
+func (s *DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroups) SetTitle(v string) *DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroups {
+	s.Title = &v
+	return s
+}
+
+func (s *DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroups) SetId(v int64) *DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroups {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroups) SetCountByStatus(v []*DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroupsCountByStatus) *DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroups {
+	s.CountByStatus = v
+	return s
+}
+
+type DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroupsCountByStatus struct {
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Count  *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+}
+
+func (s DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroupsCountByStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroupsCountByStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroupsCountByStatus) SetStatus(v string) *DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroupsCountByStatus {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroupsCountByStatus) SetCount(v int32) *DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroupsCountByStatus {
 	s.Count = &v
 	return s
 }
@@ -12787,8 +15376,8 @@ func (s *DescribeRiskItemTypeResponseBody) SetList(v []*DescribeRiskItemTypeResp
 }
 
 type DescribeRiskItemTypeResponseBodyList struct {
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	Id    *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s DescribeRiskItemTypeResponseBodyList) String() string {
@@ -12799,13 +15388,13 @@ func (s DescribeRiskItemTypeResponseBodyList) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRiskItemTypeResponseBodyList) SetTitle(v string) *DescribeRiskItemTypeResponseBodyList {
-	s.Title = &v
+func (s *DescribeRiskItemTypeResponseBodyList) SetId(v int64) *DescribeRiskItemTypeResponseBodyList {
+	s.Id = &v
 	return s
 }
 
-func (s *DescribeRiskItemTypeResponseBodyList) SetId(v int64) *DescribeRiskItemTypeResponseBodyList {
-	s.Id = &v
+func (s *DescribeRiskItemTypeResponseBodyList) SetTitle(v string) *DescribeRiskItemTypeResponseBodyList {
+	s.Title = &v
 	return s
 }
 
@@ -12966,8 +15555,8 @@ func (s *DescribeSasAssetStatisticsColumnRequest) SetSourceIp(v string) *Describ
 }
 
 type DescribeSasAssetStatisticsColumnResponseBody struct {
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	StatisticsColumn *string `json:"StatisticsColumn,omitempty" xml:"StatisticsColumn,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeSasAssetStatisticsColumnResponseBody) String() string {
@@ -12978,13 +15567,13 @@ func (s DescribeSasAssetStatisticsColumnResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeSasAssetStatisticsColumnResponseBody) SetRequestId(v string) *DescribeSasAssetStatisticsColumnResponseBody {
-	s.RequestId = &v
+func (s *DescribeSasAssetStatisticsColumnResponseBody) SetStatisticsColumn(v string) *DescribeSasAssetStatisticsColumnResponseBody {
+	s.StatisticsColumn = &v
 	return s
 }
 
-func (s *DescribeSasAssetStatisticsColumnResponseBody) SetStatisticsColumn(v string) *DescribeSasAssetStatisticsColumnResponseBody {
-	s.StatisticsColumn = &v
+func (s *DescribeSasAssetStatisticsColumnResponseBody) SetRequestId(v string) *DescribeSasAssetStatisticsColumnResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -13007,6 +15596,75 @@ func (s *DescribeSasAssetStatisticsColumnResponse) SetHeaders(v map[string]*stri
 }
 
 func (s *DescribeSasAssetStatisticsColumnResponse) SetBody(v *DescribeSasAssetStatisticsColumnResponseBody) *DescribeSasAssetStatisticsColumnResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeScanTaskProgressRequest struct {
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s DescribeScanTaskProgressRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeScanTaskProgressRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeScanTaskProgressRequest) SetTaskId(v int64) *DescribeScanTaskProgressRequest {
+	s.TaskId = &v
+	return s
+}
+
+type DescribeScanTaskProgressResponseBody struct {
+	TargetInfo       *string `json:"TargetInfo,omitempty" xml:"TargetInfo,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ScanTaskProgress *string `json:"ScanTaskProgress,omitempty" xml:"ScanTaskProgress,omitempty"`
+}
+
+func (s DescribeScanTaskProgressResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeScanTaskProgressResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeScanTaskProgressResponseBody) SetTargetInfo(v string) *DescribeScanTaskProgressResponseBody {
+	s.TargetInfo = &v
+	return s
+}
+
+func (s *DescribeScanTaskProgressResponseBody) SetRequestId(v string) *DescribeScanTaskProgressResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeScanTaskProgressResponseBody) SetScanTaskProgress(v string) *DescribeScanTaskProgressResponseBody {
+	s.ScanTaskProgress = &v
+	return s
+}
+
+type DescribeScanTaskProgressResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeScanTaskProgressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeScanTaskProgressResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeScanTaskProgressResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeScanTaskProgressResponse) SetHeaders(v map[string]*string) *DescribeScanTaskProgressResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeScanTaskProgressResponse) SetBody(v *DescribeScanTaskProgressResponseBody) *DescribeScanTaskProgressResponse {
 	s.Body = v
 	return s
 }
@@ -13041,8 +15699,8 @@ func (s *DescribeSearchConditionRequest) SetType(v string) *DescribeSearchCondit
 }
 
 type DescribeSearchConditionResponseBody struct {
-	ConditionList []*DescribeSearchConditionResponseBodyConditionList `json:"ConditionList,omitempty" xml:"ConditionList,omitempty" type:"Repeated"`
 	RequestId     *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ConditionList []*DescribeSearchConditionResponseBodyConditionList `json:"ConditionList,omitempty" xml:"ConditionList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeSearchConditionResponseBody) String() string {
@@ -13053,13 +15711,13 @@ func (s DescribeSearchConditionResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeSearchConditionResponseBody) SetConditionList(v []*DescribeSearchConditionResponseBodyConditionList) *DescribeSearchConditionResponseBody {
-	s.ConditionList = v
+func (s *DescribeSearchConditionResponseBody) SetRequestId(v string) *DescribeSearchConditionResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *DescribeSearchConditionResponseBody) SetRequestId(v string) *DescribeSearchConditionResponseBody {
-	s.RequestId = &v
+func (s *DescribeSearchConditionResponseBody) SetConditionList(v []*DescribeSearchConditionResponseBodyConditionList) *DescribeSearchConditionResponseBody {
+	s.ConditionList = v
 	return s
 }
 
@@ -13145,9 +15803,9 @@ func (s *DescribeSecureSuggestionRequest) SetLang(v string) *DescribeSecureSugge
 }
 
 type DescribeSecureSuggestionResponseBody struct {
-	Suggestions []*DescribeSecureSuggestionResponseBodySuggestions `json:"Suggestions,omitempty" xml:"Suggestions,omitempty" type:"Repeated"`
 	TotalCount  *int32                                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId   *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Suggestions []*DescribeSecureSuggestionResponseBodySuggestions `json:"Suggestions,omitempty" xml:"Suggestions,omitempty" type:"Repeated"`
 }
 
 func (s DescribeSecureSuggestionResponseBody) String() string {
@@ -13156,11 +15814,6 @@ func (s DescribeSecureSuggestionResponseBody) String() string {
 
 func (s DescribeSecureSuggestionResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeSecureSuggestionResponseBody) SetSuggestions(v []*DescribeSecureSuggestionResponseBodySuggestions) *DescribeSecureSuggestionResponseBody {
-	s.Suggestions = v
-	return s
 }
 
 func (s *DescribeSecureSuggestionResponseBody) SetTotalCount(v int32) *DescribeSecureSuggestionResponseBody {
@@ -13173,9 +15826,14 @@ func (s *DescribeSecureSuggestionResponseBody) SetRequestId(v string) *DescribeS
 	return s
 }
 
+func (s *DescribeSecureSuggestionResponseBody) SetSuggestions(v []*DescribeSecureSuggestionResponseBodySuggestions) *DescribeSecureSuggestionResponseBody {
+	s.Suggestions = v
+	return s
+}
+
 type DescribeSecureSuggestionResponseBodySuggestions struct {
-	SuggestType *string                                                  `json:"SuggestType,omitempty" xml:"SuggestType,omitempty"`
 	Points      *int32                                                   `json:"Points,omitempty" xml:"Points,omitempty"`
+	SuggestType *string                                                  `json:"SuggestType,omitempty" xml:"SuggestType,omitempty"`
 	Detail      []*DescribeSecureSuggestionResponseBodySuggestionsDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Repeated"`
 }
 
@@ -13187,13 +15845,13 @@ func (s DescribeSecureSuggestionResponseBodySuggestions) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeSecureSuggestionResponseBodySuggestions) SetSuggestType(v string) *DescribeSecureSuggestionResponseBodySuggestions {
-	s.SuggestType = &v
+func (s *DescribeSecureSuggestionResponseBodySuggestions) SetPoints(v int32) *DescribeSecureSuggestionResponseBodySuggestions {
+	s.Points = &v
 	return s
 }
 
-func (s *DescribeSecureSuggestionResponseBodySuggestions) SetPoints(v int32) *DescribeSecureSuggestionResponseBodySuggestions {
-	s.Points = &v
+func (s *DescribeSecureSuggestionResponseBodySuggestions) SetSuggestType(v string) *DescribeSecureSuggestionResponseBodySuggestions {
+	s.SuggestType = &v
 	return s
 }
 
@@ -13203,8 +15861,8 @@ func (s *DescribeSecureSuggestionResponseBodySuggestions) SetDetail(v []*Describ
 }
 
 type DescribeSecureSuggestionResponseBodySuggestionsDetail struct {
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	Title       *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	SubType     *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
 }
 
@@ -13216,13 +15874,13 @@ func (s DescribeSecureSuggestionResponseBodySuggestionsDetail) GoString() string
 	return s.String()
 }
 
-func (s *DescribeSecureSuggestionResponseBodySuggestionsDetail) SetDescription(v string) *DescribeSecureSuggestionResponseBodySuggestionsDetail {
-	s.Description = &v
+func (s *DescribeSecureSuggestionResponseBodySuggestionsDetail) SetTitle(v string) *DescribeSecureSuggestionResponseBodySuggestionsDetail {
+	s.Title = &v
 	return s
 }
 
-func (s *DescribeSecureSuggestionResponseBodySuggestionsDetail) SetTitle(v string) *DescribeSecureSuggestionResponseBodySuggestionsDetail {
-	s.Title = &v
+func (s *DescribeSecureSuggestionResponseBodySuggestionsDetail) SetDescription(v string) *DescribeSecureSuggestionResponseBodySuggestionsDetail {
+	s.Description = &v
 	return s
 }
 
@@ -13284,8 +15942,8 @@ func (s *DescribeSecurityCheckScheduleConfigRequest) SetLang(v string) *Describe
 }
 
 type DescribeSecurityCheckScheduleConfigResponseBody struct {
-	RiskCheckJobConfig *DescribeSecurityCheckScheduleConfigResponseBodyRiskCheckJobConfig `json:"RiskCheckJobConfig,omitempty" xml:"RiskCheckJobConfig,omitempty" type:"Struct"`
 	RequestId          *string                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RiskCheckJobConfig *DescribeSecurityCheckScheduleConfigResponseBodyRiskCheckJobConfig `json:"RiskCheckJobConfig,omitempty" xml:"RiskCheckJobConfig,omitempty" type:"Struct"`
 }
 
 func (s DescribeSecurityCheckScheduleConfigResponseBody) String() string {
@@ -13296,13 +15954,13 @@ func (s DescribeSecurityCheckScheduleConfigResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeSecurityCheckScheduleConfigResponseBody) SetRiskCheckJobConfig(v *DescribeSecurityCheckScheduleConfigResponseBodyRiskCheckJobConfig) *DescribeSecurityCheckScheduleConfigResponseBody {
-	s.RiskCheckJobConfig = v
+func (s *DescribeSecurityCheckScheduleConfigResponseBody) SetRequestId(v string) *DescribeSecurityCheckScheduleConfigResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *DescribeSecurityCheckScheduleConfigResponseBody) SetRequestId(v string) *DescribeSecurityCheckScheduleConfigResponseBody {
-	s.RequestId = &v
+func (s *DescribeSecurityCheckScheduleConfigResponseBody) SetRiskCheckJobConfig(v *DescribeSecurityCheckScheduleConfigResponseBodyRiskCheckJobConfig) *DescribeSecurityCheckScheduleConfigResponseBody {
+	s.RiskCheckJobConfig = v
 	return s
 }
 
@@ -13361,6 +16019,7 @@ func (s *DescribeSecurityCheckScheduleConfigResponse) SetBody(v *DescribeSecurit
 type DescribeSecurityEventOperationsRequest struct {
 	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	SecurityEventId *int64  `json:"SecurityEventId,omitempty" xml:"SecurityEventId,omitempty"`
 }
 
@@ -13379,6 +16038,11 @@ func (s *DescribeSecurityEventOperationsRequest) SetSourceIp(v string) *Describe
 
 func (s *DescribeSecurityEventOperationsRequest) SetResourceOwnerId(v int64) *DescribeSecurityEventOperationsRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeSecurityEventOperationsRequest) SetLang(v string) *DescribeSecurityEventOperationsRequest {
+	s.Lang = &v
 	return s
 }
 
@@ -13413,8 +16077,8 @@ func (s *DescribeSecurityEventOperationsResponseBody) SetSecurityEventOperations
 type DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponse struct {
 	OperationParams  *string                                                                                       `json:"OperationParams,omitempty" xml:"OperationParams,omitempty"`
 	OperationCode    *string                                                                                       `json:"OperationCode,omitempty" xml:"OperationCode,omitempty"`
-	MarkField        []*DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkField        `json:"MarkField,omitempty" xml:"MarkField,omitempty" type:"Repeated"`
 	UserCanOperate   *bool                                                                                         `json:"UserCanOperate,omitempty" xml:"UserCanOperate,omitempty"`
+	MarkField        []*DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkField        `json:"MarkField,omitempty" xml:"MarkField,omitempty" type:"Repeated"`
 	MarkFieldsSource []*DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkFieldsSource `json:"MarkFieldsSource,omitempty" xml:"MarkFieldsSource,omitempty" type:"Repeated"`
 }
 
@@ -13436,13 +16100,13 @@ func (s *DescribeSecurityEventOperationsResponseBodySecurityEventOperationsRespo
 	return s
 }
 
-func (s *DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponse) SetMarkField(v []*DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkField) *DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponse {
-	s.MarkField = v
+func (s *DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponse) SetUserCanOperate(v bool) *DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponse {
+	s.UserCanOperate = &v
 	return s
 }
 
-func (s *DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponse) SetUserCanOperate(v bool) *DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponse {
-	s.UserCanOperate = &v
+func (s *DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponse) SetMarkField(v []*DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkField) *DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponse {
+	s.MarkField = v
 	return s
 }
 
@@ -13453,10 +16117,10 @@ func (s *DescribeSecurityEventOperationsResponseBodySecurityEventOperationsRespo
 
 type DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkField struct {
 	MarkMisType      *string   `json:"MarkMisType,omitempty" xml:"MarkMisType,omitempty"`
-	MarkMisValue     *string   `json:"MarkMisValue,omitempty" xml:"MarkMisValue,omitempty"`
-	SupportedMisType []*string `json:"SupportedMisType,omitempty" xml:"SupportedMisType,omitempty" type:"Repeated"`
 	FiledName        *string   `json:"FiledName,omitempty" xml:"FiledName,omitempty"`
 	FiledAliasName   *string   `json:"FiledAliasName,omitempty" xml:"FiledAliasName,omitempty"`
+	MarkMisValue     *string   `json:"MarkMisValue,omitempty" xml:"MarkMisValue,omitempty"`
+	SupportedMisType []*string `json:"SupportedMisType,omitempty" xml:"SupportedMisType,omitempty" type:"Repeated"`
 }
 
 func (s DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkField) String() string {
@@ -13472,16 +16136,6 @@ func (s *DescribeSecurityEventOperationsResponseBodySecurityEventOperationsRespo
 	return s
 }
 
-func (s *DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkField) SetMarkMisValue(v string) *DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkField {
-	s.MarkMisValue = &v
-	return s
-}
-
-func (s *DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkField) SetSupportedMisType(v []*string) *DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkField {
-	s.SupportedMisType = v
-	return s
-}
-
 func (s *DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkField) SetFiledName(v string) *DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkField {
 	s.FiledName = &v
 	return s
@@ -13492,11 +16146,21 @@ func (s *DescribeSecurityEventOperationsResponseBodySecurityEventOperationsRespo
 	return s
 }
 
+func (s *DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkField) SetMarkMisValue(v string) *DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkField {
+	s.MarkMisValue = &v
+	return s
+}
+
+func (s *DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkField) SetSupportedMisType(v []*string) *DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkField {
+	s.SupportedMisType = v
+	return s
+}
+
 type DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkFieldsSource struct {
-	MarkMisValue     *string   `json:"MarkMisValue,omitempty" xml:"MarkMisValue,omitempty"`
-	SupportedMisType []*string `json:"SupportedMisType,omitempty" xml:"SupportedMisType,omitempty" type:"Repeated"`
 	FiledName        *string   `json:"FiledName,omitempty" xml:"FiledName,omitempty"`
 	FiledAliasName   *string   `json:"FiledAliasName,omitempty" xml:"FiledAliasName,omitempty"`
+	MarkMisValue     *string   `json:"MarkMisValue,omitempty" xml:"MarkMisValue,omitempty"`
+	SupportedMisType []*string `json:"SupportedMisType,omitempty" xml:"SupportedMisType,omitempty" type:"Repeated"`
 }
 
 func (s DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkFieldsSource) String() string {
@@ -13507,16 +16171,6 @@ func (s DescribeSecurityEventOperationsResponseBodySecurityEventOperationsRespon
 	return s.String()
 }
 
-func (s *DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkFieldsSource) SetMarkMisValue(v string) *DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkFieldsSource {
-	s.MarkMisValue = &v
-	return s
-}
-
-func (s *DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkFieldsSource) SetSupportedMisType(v []*string) *DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkFieldsSource {
-	s.SupportedMisType = v
-	return s
-}
-
 func (s *DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkFieldsSource) SetFiledName(v string) *DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkFieldsSource {
 	s.FiledName = &v
 	return s
@@ -13524,6 +16178,16 @@ func (s *DescribeSecurityEventOperationsResponseBodySecurityEventOperationsRespo
 
 func (s *DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkFieldsSource) SetFiledAliasName(v string) *DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkFieldsSource {
 	s.FiledAliasName = &v
+	return s
+}
+
+func (s *DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkFieldsSource) SetMarkMisValue(v string) *DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkFieldsSource {
+	s.MarkMisValue = &v
+	return s
+}
+
+func (s *DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkFieldsSource) SetSupportedMisType(v []*string) *DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkFieldsSource {
+	s.SupportedMisType = v
 	return s
 }
 
@@ -13586,8 +16250,8 @@ func (s *DescribeSecurityEventOperationStatusRequest) SetSecurityEventIds(v []*s
 }
 
 type DescribeSecurityEventOperationStatusResponseBody struct {
-	SecurityEventOperationStatusResponse *DescribeSecurityEventOperationStatusResponseBodySecurityEventOperationStatusResponse `json:"SecurityEventOperationStatusResponse,omitempty" xml:"SecurityEventOperationStatusResponse,omitempty" type:"Struct"`
 	RequestId                            *string                                                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SecurityEventOperationStatusResponse *DescribeSecurityEventOperationStatusResponseBodySecurityEventOperationStatusResponse `json:"SecurityEventOperationStatusResponse,omitempty" xml:"SecurityEventOperationStatusResponse,omitempty" type:"Struct"`
 }
 
 func (s DescribeSecurityEventOperationStatusResponseBody) String() string {
@@ -13598,13 +16262,13 @@ func (s DescribeSecurityEventOperationStatusResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeSecurityEventOperationStatusResponseBody) SetSecurityEventOperationStatusResponse(v *DescribeSecurityEventOperationStatusResponseBodySecurityEventOperationStatusResponse) *DescribeSecurityEventOperationStatusResponseBody {
-	s.SecurityEventOperationStatusResponse = v
+func (s *DescribeSecurityEventOperationStatusResponseBody) SetRequestId(v string) *DescribeSecurityEventOperationStatusResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *DescribeSecurityEventOperationStatusResponseBody) SetRequestId(v string) *DescribeSecurityEventOperationStatusResponseBody {
-	s.RequestId = &v
+func (s *DescribeSecurityEventOperationStatusResponseBody) SetSecurityEventOperationStatusResponse(v *DescribeSecurityEventOperationStatusResponseBodySecurityEventOperationStatusResponse) *DescribeSecurityEventOperationStatusResponseBody {
+	s.SecurityEventOperationStatusResponse = v
 	return s
 }
 
@@ -13713,12 +16377,12 @@ func (s *DescribeSecurityStatInfoRequest) SetResourceDirectoryAccountId(v string
 }
 
 type DescribeSecurityStatInfoResponseBody struct {
-	SecurityEvent *DescribeSecurityStatInfoResponseBodySecurityEvent `json:"SecurityEvent,omitempty" xml:"SecurityEvent,omitempty" type:"Struct"`
+	Success       *bool                                              `json:"Success,omitempty" xml:"Success,omitempty"`
 	RequestId     *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SecurityEvent *DescribeSecurityStatInfoResponseBodySecurityEvent `json:"SecurityEvent,omitempty" xml:"SecurityEvent,omitempty" type:"Struct"`
+	AttackEvent   *DescribeSecurityStatInfoResponseBodyAttackEvent   `json:"AttackEvent,omitempty" xml:"AttackEvent,omitempty" type:"Struct"`
 	HealthCheck   *DescribeSecurityStatInfoResponseBodyHealthCheck   `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty" type:"Struct"`
 	Vulnerability *DescribeSecurityStatInfoResponseBodyVulnerability `json:"Vulnerability,omitempty" xml:"Vulnerability,omitempty" type:"Struct"`
-	AttackEvent   *DescribeSecurityStatInfoResponseBodyAttackEvent   `json:"AttackEvent,omitempty" xml:"AttackEvent,omitempty" type:"Struct"`
-	Success       *bool                                              `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeSecurityStatInfoResponseBody) String() string {
@@ -13729,13 +16393,23 @@ func (s DescribeSecurityStatInfoResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeSecurityStatInfoResponseBody) SetSecurityEvent(v *DescribeSecurityStatInfoResponseBodySecurityEvent) *DescribeSecurityStatInfoResponseBody {
-	s.SecurityEvent = v
+func (s *DescribeSecurityStatInfoResponseBody) SetSuccess(v bool) *DescribeSecurityStatInfoResponseBody {
+	s.Success = &v
 	return s
 }
 
 func (s *DescribeSecurityStatInfoResponseBody) SetRequestId(v string) *DescribeSecurityStatInfoResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSecurityStatInfoResponseBody) SetSecurityEvent(v *DescribeSecurityStatInfoResponseBodySecurityEvent) *DescribeSecurityStatInfoResponseBody {
+	s.SecurityEvent = v
+	return s
+}
+
+func (s *DescribeSecurityStatInfoResponseBody) SetAttackEvent(v *DescribeSecurityStatInfoResponseBodyAttackEvent) *DescribeSecurityStatInfoResponseBody {
+	s.AttackEvent = v
 	return s
 }
 
@@ -13749,25 +16423,15 @@ func (s *DescribeSecurityStatInfoResponseBody) SetVulnerability(v *DescribeSecur
 	return s
 }
 
-func (s *DescribeSecurityStatInfoResponseBody) SetAttackEvent(v *DescribeSecurityStatInfoResponseBodyAttackEvent) *DescribeSecurityStatInfoResponseBody {
-	s.AttackEvent = v
-	return s
-}
-
-func (s *DescribeSecurityStatInfoResponseBody) SetSuccess(v bool) *DescribeSecurityStatInfoResponseBody {
-	s.Success = &v
-	return s
-}
-
 type DescribeSecurityStatInfoResponseBodySecurityEvent struct {
 	SuspiciousCount *int32    `json:"SuspiciousCount,omitempty" xml:"SuspiciousCount,omitempty"`
+	SeriousCount    *int32    `json:"SeriousCount,omitempty" xml:"SeriousCount,omitempty"`
 	RemindCount     *int32    `json:"RemindCount,omitempty" xml:"RemindCount,omitempty"`
+	TotalCount      *int32    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	ValueArray      []*string `json:"ValueArray,omitempty" xml:"ValueArray,omitempty" type:"Repeated"`
 	TimeArray       []*string `json:"TimeArray,omitempty" xml:"TimeArray,omitempty" type:"Repeated"`
 	RemindList      []*string `json:"RemindList,omitempty" xml:"RemindList,omitempty" type:"Repeated"`
 	LevelsOn        []*string `json:"LevelsOn,omitempty" xml:"LevelsOn,omitempty" type:"Repeated"`
-	SeriousCount    *int32    `json:"SeriousCount,omitempty" xml:"SeriousCount,omitempty"`
-	TotalCount      *int32    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	DateArray       []*string `json:"DateArray,omitempty" xml:"DateArray,omitempty" type:"Repeated"`
 	SuspiciousList  []*string `json:"SuspiciousList,omitempty" xml:"SuspiciousList,omitempty" type:"Repeated"`
 	SeriousList     []*string `json:"SeriousList,omitempty" xml:"SeriousList,omitempty" type:"Repeated"`
@@ -13786,8 +16450,18 @@ func (s *DescribeSecurityStatInfoResponseBodySecurityEvent) SetSuspiciousCount(v
 	return s
 }
 
+func (s *DescribeSecurityStatInfoResponseBodySecurityEvent) SetSeriousCount(v int32) *DescribeSecurityStatInfoResponseBodySecurityEvent {
+	s.SeriousCount = &v
+	return s
+}
+
 func (s *DescribeSecurityStatInfoResponseBodySecurityEvent) SetRemindCount(v int32) *DescribeSecurityStatInfoResponseBodySecurityEvent {
 	s.RemindCount = &v
+	return s
+}
+
+func (s *DescribeSecurityStatInfoResponseBodySecurityEvent) SetTotalCount(v int32) *DescribeSecurityStatInfoResponseBodySecurityEvent {
+	s.TotalCount = &v
 	return s
 }
 
@@ -13811,16 +16485,6 @@ func (s *DescribeSecurityStatInfoResponseBodySecurityEvent) SetLevelsOn(v []*str
 	return s
 }
 
-func (s *DescribeSecurityStatInfoResponseBodySecurityEvent) SetSeriousCount(v int32) *DescribeSecurityStatInfoResponseBodySecurityEvent {
-	s.SeriousCount = &v
-	return s
-}
-
-func (s *DescribeSecurityStatInfoResponseBodySecurityEvent) SetTotalCount(v int32) *DescribeSecurityStatInfoResponseBodySecurityEvent {
-	s.TotalCount = &v
-	return s
-}
-
 func (s *DescribeSecurityStatInfoResponseBodySecurityEvent) SetDateArray(v []*string) *DescribeSecurityStatInfoResponseBodySecurityEvent {
 	s.DateArray = v
 	return s
@@ -13836,16 +16500,45 @@ func (s *DescribeSecurityStatInfoResponseBodySecurityEvent) SetSeriousList(v []*
 	return s
 }
 
+type DescribeSecurityStatInfoResponseBodyAttackEvent struct {
+	TotalCount *int32    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	DateArray  []*string `json:"DateArray,omitempty" xml:"DateArray,omitempty" type:"Repeated"`
+	ValueArray []*string `json:"ValueArray,omitempty" xml:"ValueArray,omitempty" type:"Repeated"`
+}
+
+func (s DescribeSecurityStatInfoResponseBodyAttackEvent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSecurityStatInfoResponseBodyAttackEvent) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSecurityStatInfoResponseBodyAttackEvent) SetTotalCount(v int32) *DescribeSecurityStatInfoResponseBodyAttackEvent {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeSecurityStatInfoResponseBodyAttackEvent) SetDateArray(v []*string) *DescribeSecurityStatInfoResponseBodyAttackEvent {
+	s.DateArray = v
+	return s
+}
+
+func (s *DescribeSecurityStatInfoResponseBodyAttackEvent) SetValueArray(v []*string) *DescribeSecurityStatInfoResponseBodyAttackEvent {
+	s.ValueArray = v
+	return s
+}
+
 type DescribeSecurityStatInfoResponseBodyHealthCheck struct {
 	HighCount   *int32    `json:"HighCount,omitempty" xml:"HighCount,omitempty"`
 	LowCount    *int32    `json:"LowCount,omitempty" xml:"LowCount,omitempty"`
+	TotalCount  *int32    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	MediumCount *int32    `json:"MediumCount,omitempty" xml:"MediumCount,omitempty"`
 	ValueArray  []*string `json:"ValueArray,omitempty" xml:"ValueArray,omitempty" type:"Repeated"`
 	TimeArray   []*string `json:"TimeArray,omitempty" xml:"TimeArray,omitempty" type:"Repeated"`
 	LevelsOn    []*string `json:"LevelsOn,omitempty" xml:"LevelsOn,omitempty" type:"Repeated"`
 	LowList     []*string `json:"LowList,omitempty" xml:"LowList,omitempty" type:"Repeated"`
 	MediumList  []*string `json:"MediumList,omitempty" xml:"MediumList,omitempty" type:"Repeated"`
-	TotalCount  *int32    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	MediumCount *int32    `json:"MediumCount,omitempty" xml:"MediumCount,omitempty"`
 	DateArray   []*string `json:"DateArray,omitempty" xml:"DateArray,omitempty" type:"Repeated"`
 	HighList    []*string `json:"HighList,omitempty" xml:"HighList,omitempty" type:"Repeated"`
 }
@@ -13865,6 +16558,16 @@ func (s *DescribeSecurityStatInfoResponseBodyHealthCheck) SetHighCount(v int32) 
 
 func (s *DescribeSecurityStatInfoResponseBodyHealthCheck) SetLowCount(v int32) *DescribeSecurityStatInfoResponseBodyHealthCheck {
 	s.LowCount = &v
+	return s
+}
+
+func (s *DescribeSecurityStatInfoResponseBodyHealthCheck) SetTotalCount(v int32) *DescribeSecurityStatInfoResponseBodyHealthCheck {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeSecurityStatInfoResponseBodyHealthCheck) SetMediumCount(v int32) *DescribeSecurityStatInfoResponseBodyHealthCheck {
+	s.MediumCount = &v
 	return s
 }
 
@@ -13893,16 +16596,6 @@ func (s *DescribeSecurityStatInfoResponseBodyHealthCheck) SetMediumList(v []*str
 	return s
 }
 
-func (s *DescribeSecurityStatInfoResponseBodyHealthCheck) SetTotalCount(v int32) *DescribeSecurityStatInfoResponseBodyHealthCheck {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *DescribeSecurityStatInfoResponseBodyHealthCheck) SetMediumCount(v int32) *DescribeSecurityStatInfoResponseBodyHealthCheck {
-	s.MediumCount = &v
-	return s
-}
-
 func (s *DescribeSecurityStatInfoResponseBodyHealthCheck) SetDateArray(v []*string) *DescribeSecurityStatInfoResponseBodyHealthCheck {
 	s.DateArray = v
 	return s
@@ -13915,16 +16608,16 @@ func (s *DescribeSecurityStatInfoResponseBodyHealthCheck) SetHighList(v []*strin
 
 type DescribeSecurityStatInfoResponseBodyVulnerability struct {
 	NntfCount  *int32    `json:"NntfCount,omitempty" xml:"NntfCount,omitempty"`
+	LaterCount *int32    `json:"LaterCount,omitempty" xml:"LaterCount,omitempty"`
+	TotalCount *int32    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	AsapCount  *int32    `json:"AsapCount,omitempty" xml:"AsapCount,omitempty"`
 	NntfList   []*string `json:"NntfList,omitempty" xml:"NntfList,omitempty" type:"Repeated"`
 	AsapList   []*string `json:"AsapList,omitempty" xml:"AsapList,omitempty" type:"Repeated"`
 	ValueArray []*string `json:"ValueArray,omitempty" xml:"ValueArray,omitempty" type:"Repeated"`
 	TimeArray  []*string `json:"TimeArray,omitempty" xml:"TimeArray,omitempty" type:"Repeated"`
 	LevelsOn   []*string `json:"LevelsOn,omitempty" xml:"LevelsOn,omitempty" type:"Repeated"`
 	LaterList  []*string `json:"LaterList,omitempty" xml:"LaterList,omitempty" type:"Repeated"`
-	LaterCount *int32    `json:"LaterCount,omitempty" xml:"LaterCount,omitempty"`
-	TotalCount *int32    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	DateArray  []*string `json:"DateArray,omitempty" xml:"DateArray,omitempty" type:"Repeated"`
-	AsapCount  *int32    `json:"AsapCount,omitempty" xml:"AsapCount,omitempty"`
 }
 
 func (s DescribeSecurityStatInfoResponseBodyVulnerability) String() string {
@@ -13937,6 +16630,21 @@ func (s DescribeSecurityStatInfoResponseBodyVulnerability) GoString() string {
 
 func (s *DescribeSecurityStatInfoResponseBodyVulnerability) SetNntfCount(v int32) *DescribeSecurityStatInfoResponseBodyVulnerability {
 	s.NntfCount = &v
+	return s
+}
+
+func (s *DescribeSecurityStatInfoResponseBodyVulnerability) SetLaterCount(v int32) *DescribeSecurityStatInfoResponseBodyVulnerability {
+	s.LaterCount = &v
+	return s
+}
+
+func (s *DescribeSecurityStatInfoResponseBodyVulnerability) SetTotalCount(v int32) *DescribeSecurityStatInfoResponseBodyVulnerability {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeSecurityStatInfoResponseBodyVulnerability) SetAsapCount(v int32) *DescribeSecurityStatInfoResponseBodyVulnerability {
+	s.AsapCount = &v
 	return s
 }
 
@@ -13970,51 +16678,7 @@ func (s *DescribeSecurityStatInfoResponseBodyVulnerability) SetLaterList(v []*st
 	return s
 }
 
-func (s *DescribeSecurityStatInfoResponseBodyVulnerability) SetLaterCount(v int32) *DescribeSecurityStatInfoResponseBodyVulnerability {
-	s.LaterCount = &v
-	return s
-}
-
-func (s *DescribeSecurityStatInfoResponseBodyVulnerability) SetTotalCount(v int32) *DescribeSecurityStatInfoResponseBodyVulnerability {
-	s.TotalCount = &v
-	return s
-}
-
 func (s *DescribeSecurityStatInfoResponseBodyVulnerability) SetDateArray(v []*string) *DescribeSecurityStatInfoResponseBodyVulnerability {
-	s.DateArray = v
-	return s
-}
-
-func (s *DescribeSecurityStatInfoResponseBodyVulnerability) SetAsapCount(v int32) *DescribeSecurityStatInfoResponseBodyVulnerability {
-	s.AsapCount = &v
-	return s
-}
-
-type DescribeSecurityStatInfoResponseBodyAttackEvent struct {
-	ValueArray []*string `json:"ValueArray,omitempty" xml:"ValueArray,omitempty" type:"Repeated"`
-	TotalCount *int32    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	DateArray  []*string `json:"DateArray,omitempty" xml:"DateArray,omitempty" type:"Repeated"`
-}
-
-func (s DescribeSecurityStatInfoResponseBodyAttackEvent) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSecurityStatInfoResponseBodyAttackEvent) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSecurityStatInfoResponseBodyAttackEvent) SetValueArray(v []*string) *DescribeSecurityStatInfoResponseBodyAttackEvent {
-	s.ValueArray = v
-	return s
-}
-
-func (s *DescribeSecurityStatInfoResponseBodyAttackEvent) SetTotalCount(v int32) *DescribeSecurityStatInfoResponseBodyAttackEvent {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *DescribeSecurityStatInfoResponseBodyAttackEvent) SetDateArray(v []*string) *DescribeSecurityStatInfoResponseBodyAttackEvent {
 	s.DateArray = v
 	return s
 }
@@ -14038,6 +16702,69 @@ func (s *DescribeSecurityStatInfoResponse) SetHeaders(v map[string]*string) *Des
 }
 
 func (s *DescribeSecurityStatInfoResponse) SetBody(v *DescribeSecurityStatInfoResponseBody) *DescribeSecurityStatInfoResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeServiceLinkedRoleStatusResponseBody struct {
+	RequestId  *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RoleStatus *DescribeServiceLinkedRoleStatusResponseBodyRoleStatus `json:"RoleStatus,omitempty" xml:"RoleStatus,omitempty" type:"Struct"`
+}
+
+func (s DescribeServiceLinkedRoleStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceLinkedRoleStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceLinkedRoleStatusResponseBody) SetRequestId(v string) *DescribeServiceLinkedRoleStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeServiceLinkedRoleStatusResponseBody) SetRoleStatus(v *DescribeServiceLinkedRoleStatusResponseBodyRoleStatus) *DescribeServiceLinkedRoleStatusResponseBody {
+	s.RoleStatus = v
+	return s
+}
+
+type DescribeServiceLinkedRoleStatusResponseBodyRoleStatus struct {
+	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeServiceLinkedRoleStatusResponseBodyRoleStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceLinkedRoleStatusResponseBodyRoleStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceLinkedRoleStatusResponseBodyRoleStatus) SetStatus(v bool) *DescribeServiceLinkedRoleStatusResponseBodyRoleStatus {
+	s.Status = &v
+	return s
+}
+
+type DescribeServiceLinkedRoleStatusResponse struct {
+	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeServiceLinkedRoleStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeServiceLinkedRoleStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceLinkedRoleStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceLinkedRoleStatusResponse) SetHeaders(v map[string]*string) *DescribeServiceLinkedRoleStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeServiceLinkedRoleStatusResponse) SetBody(v *DescribeServiceLinkedRoleStatusResponseBody) *DescribeServiceLinkedRoleStatusResponse {
 	s.Body = v
 	return s
 }
@@ -14182,8 +16909,8 @@ func (s *DescribeSimilarSecurityEventsRequest) SetPageSize(v int32) *DescribeSim
 }
 
 type DescribeSimilarSecurityEventsResponseBody struct {
-	PageInfo               *DescribeSimilarSecurityEventsResponseBodyPageInfo                 `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	RequestId              *string                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageInfo               *DescribeSimilarSecurityEventsResponseBodyPageInfo                 `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	SecurityEventsResponse []*DescribeSimilarSecurityEventsResponseBodySecurityEventsResponse `json:"SecurityEventsResponse,omitempty" xml:"SecurityEventsResponse,omitempty" type:"Repeated"`
 }
 
@@ -14195,13 +16922,13 @@ func (s DescribeSimilarSecurityEventsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeSimilarSecurityEventsResponseBody) SetPageInfo(v *DescribeSimilarSecurityEventsResponseBodyPageInfo) *DescribeSimilarSecurityEventsResponseBody {
-	s.PageInfo = v
+func (s *DescribeSimilarSecurityEventsResponseBody) SetRequestId(v string) *DescribeSimilarSecurityEventsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *DescribeSimilarSecurityEventsResponseBody) SetRequestId(v string) *DescribeSimilarSecurityEventsResponseBody {
-	s.RequestId = &v
+func (s *DescribeSimilarSecurityEventsResponseBody) SetPageInfo(v *DescribeSimilarSecurityEventsResponseBodyPageInfo) *DescribeSimilarSecurityEventsResponseBody {
+	s.PageInfo = v
 	return s
 }
 
@@ -14315,6 +17042,457 @@ func (s *DescribeSimilarSecurityEventsResponse) SetBody(v *DescribeSimilarSecuri
 	return s
 }
 
+type DescribeSnapshotsRequest struct {
+	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Uuid            *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	MachineRegion   *string `json:"MachineRegion,omitempty" xml:"MachineRegion,omitempty"`
+	MachineRemark   *string `json:"MachineRemark,omitempty" xml:"MachineRemark,omitempty"`
+	StatusList      *string `json:"StatusList,omitempty" xml:"StatusList,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	CurrentPage     *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	NextToken       *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ApiVersion      *string `json:"ApiVersion,omitempty" xml:"ApiVersion,omitempty"`
+}
+
+func (s DescribeSnapshotsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSnapshotsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSnapshotsRequest) SetSourceIp(v string) *DescribeSnapshotsRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *DescribeSnapshotsRequest) SetResourceOwnerId(v int64) *DescribeSnapshotsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeSnapshotsRequest) SetUuid(v string) *DescribeSnapshotsRequest {
+	s.Uuid = &v
+	return s
+}
+
+func (s *DescribeSnapshotsRequest) SetMachineRegion(v string) *DescribeSnapshotsRequest {
+	s.MachineRegion = &v
+	return s
+}
+
+func (s *DescribeSnapshotsRequest) SetMachineRemark(v string) *DescribeSnapshotsRequest {
+	s.MachineRemark = &v
+	return s
+}
+
+func (s *DescribeSnapshotsRequest) SetStatusList(v string) *DescribeSnapshotsRequest {
+	s.StatusList = &v
+	return s
+}
+
+func (s *DescribeSnapshotsRequest) SetPageSize(v int32) *DescribeSnapshotsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeSnapshotsRequest) SetCurrentPage(v int32) *DescribeSnapshotsRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeSnapshotsRequest) SetNextToken(v string) *DescribeSnapshotsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeSnapshotsRequest) SetApiVersion(v string) *DescribeSnapshotsRequest {
+	s.ApiVersion = &v
+	return s
+}
+
+type DescribeSnapshotsResponseBody struct {
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageInfo  *DescribeSnapshotsResponseBodyPageInfo    `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	Snapshots []*DescribeSnapshotsResponseBodySnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
+}
+
+func (s DescribeSnapshotsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSnapshotsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSnapshotsResponseBody) SetRequestId(v string) *DescribeSnapshotsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBody) SetPageInfo(v *DescribeSnapshotsResponseBodyPageInfo) *DescribeSnapshotsResponseBody {
+	s.PageInfo = v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBody) SetSnapshots(v []*DescribeSnapshotsResponseBodySnapshots) *DescribeSnapshotsResponseBody {
+	s.Snapshots = v
+	return s
+}
+
+type DescribeSnapshotsResponseBodyPageInfo struct {
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount  *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Count       *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+}
+
+func (s DescribeSnapshotsResponseBodyPageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSnapshotsResponseBodyPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSnapshotsResponseBodyPageInfo) SetCurrentPage(v int32) *DescribeSnapshotsResponseBodyPageInfo {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodyPageInfo) SetNextToken(v string) *DescribeSnapshotsResponseBodyPageInfo {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodyPageInfo) SetPageSize(v int32) *DescribeSnapshotsResponseBodyPageInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodyPageInfo) SetTotalCount(v int32) *DescribeSnapshotsResponseBodyPageInfo {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodyPageInfo) SetCount(v int32) *DescribeSnapshotsResponseBodyPageInfo {
+	s.Count = &v
+	return s
+}
+
+type DescribeSnapshotsResponseBodySnapshots struct {
+	ContainerSnapshotId *string   `json:"ContainerSnapshotId,omitempty" xml:"ContainerSnapshotId,omitempty"`
+	Status              *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	SnapshotHash        *string   `json:"SnapshotHash,omitempty" xml:"SnapshotHash,omitempty"`
+	ErrorMessage        *string   `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ActualItems         *int64    `json:"ActualItems,omitempty" xml:"ActualItems,omitempty"`
+	VaultId             *string   `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+	CreateTime          *int64    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	BackupType          *string   `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	ActualBytes         *int64    `json:"ActualBytes,omitempty" xml:"ActualBytes,omitempty"`
+	Prefix              *string   `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+	SourceType          *string   `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Extra               *string   `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	ServerId            *string   `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	ExitCode            *string   `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
+	ClientId            *string   `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	ItemsDone           *int64    `json:"ItemsDone,omitempty" xml:"ItemsDone,omitempty"`
+	BytesTotal          *int64    `json:"BytesTotal,omitempty" xml:"BytesTotal,omitempty"`
+	CompleteTime        *int64    `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
+	Retention           *int64    `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	ErrorType           *string   `json:"ErrorType,omitempty" xml:"ErrorType,omitempty"`
+	CreatedTime         *int64    `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Bucket              *string   `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	ParentSnapshotHash  *string   `json:"ParentSnapshotHash,omitempty" xml:"ParentSnapshotHash,omitempty"`
+	MachineInfoJson     *string   `json:"MachineInfoJson,omitempty" xml:"MachineInfoJson,omitempty"`
+	InstanceId          *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PlanId              *string   `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	Source              *string   `json:"Source,omitempty" xml:"Source,omitempty"`
+	RegionId            *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	FileSystemId        *string   `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	ParentHash          *string   `json:"ParentHash,omitempty" xml:"ParentHash,omitempty"`
+	StartTime           *int64    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Uuid                *string   `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	ErrorFile           *string   `json:"ErrorFile,omitempty" xml:"ErrorFile,omitempty"`
+	SnapshotType        *string   `json:"SnapshotType,omitempty" xml:"SnapshotType,omitempty"`
+	SnapshotName        *string   `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
+	SnapshotOption      *string   `json:"SnapshotOption,omitempty" xml:"SnapshotOption,omitempty"`
+	UpdatedTime         *int64    `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	SnapshotId          *string   `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	JobId               *string   `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Size                *int64    `json:"Size,omitempty" xml:"Size,omitempty"`
+	Path                *string   `json:"Path,omitempty" xml:"Path,omitempty"`
+	ErrorCount          *int64    `json:"ErrorCount,omitempty" xml:"ErrorCount,omitempty"`
+	Duration            *int64    `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	ItemsTotal          *int64    `json:"ItemsTotal,omitempty" xml:"ItemsTotal,omitempty"`
+	BytesDone           *int64    `json:"BytesDone,omitempty" xml:"BytesDone,omitempty"`
+	Paths               []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
+}
+
+func (s DescribeSnapshotsResponseBodySnapshots) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSnapshotsResponseBodySnapshots) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetContainerSnapshotId(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.ContainerSnapshotId = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetStatus(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetSnapshotHash(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.SnapshotHash = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetErrorMessage(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetActualItems(v int64) *DescribeSnapshotsResponseBodySnapshots {
+	s.ActualItems = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetVaultId(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.VaultId = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetCreateTime(v int64) *DescribeSnapshotsResponseBodySnapshots {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetBackupType(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.BackupType = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetActualBytes(v int64) *DescribeSnapshotsResponseBodySnapshots {
+	s.ActualBytes = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetPrefix(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.Prefix = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetSourceType(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.SourceType = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetExtra(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.Extra = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetServerId(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.ServerId = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetExitCode(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.ExitCode = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetClientId(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.ClientId = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetItemsDone(v int64) *DescribeSnapshotsResponseBodySnapshots {
+	s.ItemsDone = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetBytesTotal(v int64) *DescribeSnapshotsResponseBodySnapshots {
+	s.BytesTotal = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetCompleteTime(v int64) *DescribeSnapshotsResponseBodySnapshots {
+	s.CompleteTime = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetRetention(v int64) *DescribeSnapshotsResponseBodySnapshots {
+	s.Retention = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetErrorType(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.ErrorType = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetCreatedTime(v int64) *DescribeSnapshotsResponseBodySnapshots {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetBucket(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.Bucket = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetParentSnapshotHash(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.ParentSnapshotHash = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetMachineInfoJson(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.MachineInfoJson = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetInstanceId(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetPlanId(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.PlanId = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetSource(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.Source = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetRegionId(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetFileSystemId(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.FileSystemId = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetParentHash(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.ParentHash = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetStartTime(v int64) *DescribeSnapshotsResponseBodySnapshots {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetUuid(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.Uuid = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetErrorFile(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.ErrorFile = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetSnapshotType(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.SnapshotType = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetSnapshotName(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.SnapshotName = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetSnapshotOption(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.SnapshotOption = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetUpdatedTime(v int64) *DescribeSnapshotsResponseBodySnapshots {
+	s.UpdatedTime = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetSnapshotId(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.SnapshotId = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetJobId(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.JobId = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetSize(v int64) *DescribeSnapshotsResponseBodySnapshots {
+	s.Size = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetPath(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.Path = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetErrorCount(v int64) *DescribeSnapshotsResponseBodySnapshots {
+	s.ErrorCount = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetDuration(v int64) *DescribeSnapshotsResponseBodySnapshots {
+	s.Duration = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetItemsTotal(v int64) *DescribeSnapshotsResponseBodySnapshots {
+	s.ItemsTotal = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetBytesDone(v int64) *DescribeSnapshotsResponseBodySnapshots {
+	s.BytesDone = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetPaths(v []*string) *DescribeSnapshotsResponseBodySnapshots {
+	s.Paths = v
+	return s
+}
+
+type DescribeSnapshotsResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeSnapshotsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeSnapshotsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSnapshotsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSnapshotsResponse) SetHeaders(v map[string]*string) *DescribeSnapshotsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSnapshotsResponse) SetBody(v *DescribeSnapshotsResponseBody) *DescribeSnapshotsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeStrategyExecDetailRequest struct {
 	SourceIp   *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	StrategyId *int32  `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
@@ -14339,15 +17517,15 @@ func (s *DescribeStrategyExecDetailRequest) SetStrategyId(v int32) *DescribeStra
 }
 
 type DescribeStrategyExecDetailResponseBody struct {
-	EndTime        *string                                                `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	RequestId      *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Percent        *string                                                `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	FailCount      *int32                                                 `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
-	StartTime      *string                                                `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	SuccessCount   *int32                                                 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
-	Source         *string                                                `json:"Source,omitempty" xml:"Source,omitempty"`
-	FailedEcsList  []*DescribeStrategyExecDetailResponseBodyFailedEcsList `json:"FailedEcsList,omitempty" xml:"FailedEcsList,omitempty" type:"Repeated"`
 	InProcessCount *int32                                                 `json:"InProcessCount,omitempty" xml:"InProcessCount,omitempty"`
+	EndTime        *string                                                `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime      *string                                                `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Percent        *string                                                `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	RequestId      *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	FailCount      *int32                                                 `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
+	Source         *string                                                `json:"Source,omitempty" xml:"Source,omitempty"`
+	SuccessCount   *int32                                                 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+	FailedEcsList  []*DescribeStrategyExecDetailResponseBodyFailedEcsList `json:"FailedEcsList,omitempty" xml:"FailedEcsList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeStrategyExecDetailResponseBody) String() string {
@@ -14358,23 +17536,13 @@ func (s DescribeStrategyExecDetailResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeStrategyExecDetailResponseBody) SetInProcessCount(v int32) *DescribeStrategyExecDetailResponseBody {
+	s.InProcessCount = &v
+	return s
+}
+
 func (s *DescribeStrategyExecDetailResponseBody) SetEndTime(v string) *DescribeStrategyExecDetailResponseBody {
 	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeStrategyExecDetailResponseBody) SetRequestId(v string) *DescribeStrategyExecDetailResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeStrategyExecDetailResponseBody) SetPercent(v string) *DescribeStrategyExecDetailResponseBody {
-	s.Percent = &v
-	return s
-}
-
-func (s *DescribeStrategyExecDetailResponseBody) SetFailCount(v int32) *DescribeStrategyExecDetailResponseBody {
-	s.FailCount = &v
 	return s
 }
 
@@ -14383,8 +17551,18 @@ func (s *DescribeStrategyExecDetailResponseBody) SetStartTime(v string) *Describ
 	return s
 }
 
-func (s *DescribeStrategyExecDetailResponseBody) SetSuccessCount(v int32) *DescribeStrategyExecDetailResponseBody {
-	s.SuccessCount = &v
+func (s *DescribeStrategyExecDetailResponseBody) SetPercent(v string) *DescribeStrategyExecDetailResponseBody {
+	s.Percent = &v
+	return s
+}
+
+func (s *DescribeStrategyExecDetailResponseBody) SetRequestId(v string) *DescribeStrategyExecDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeStrategyExecDetailResponseBody) SetFailCount(v int32) *DescribeStrategyExecDetailResponseBody {
+	s.FailCount = &v
 	return s
 }
 
@@ -14393,21 +17571,21 @@ func (s *DescribeStrategyExecDetailResponseBody) SetSource(v string) *DescribeSt
 	return s
 }
 
+func (s *DescribeStrategyExecDetailResponseBody) SetSuccessCount(v int32) *DescribeStrategyExecDetailResponseBody {
+	s.SuccessCount = &v
+	return s
+}
+
 func (s *DescribeStrategyExecDetailResponseBody) SetFailedEcsList(v []*DescribeStrategyExecDetailResponseBodyFailedEcsList) *DescribeStrategyExecDetailResponseBody {
 	s.FailedEcsList = v
 	return s
 }
 
-func (s *DescribeStrategyExecDetailResponseBody) SetInProcessCount(v int32) *DescribeStrategyExecDetailResponseBody {
-	s.InProcessCount = &v
-	return s
-}
-
 type DescribeStrategyExecDetailResponseBodyFailedEcsList struct {
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	IP           *string `json:"IP,omitempty" xml:"IP,omitempty"`
 	IntranetIp   *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
 	Reason       *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 }
 
 func (s DescribeStrategyExecDetailResponseBodyFailedEcsList) String() string {
@@ -14416,11 +17594,6 @@ func (s DescribeStrategyExecDetailResponseBodyFailedEcsList) String() string {
 
 func (s DescribeStrategyExecDetailResponseBodyFailedEcsList) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeStrategyExecDetailResponseBodyFailedEcsList) SetInstanceName(v string) *DescribeStrategyExecDetailResponseBodyFailedEcsList {
-	s.InstanceName = &v
-	return s
 }
 
 func (s *DescribeStrategyExecDetailResponseBodyFailedEcsList) SetIP(v string) *DescribeStrategyExecDetailResponseBodyFailedEcsList {
@@ -14435,6 +17608,11 @@ func (s *DescribeStrategyExecDetailResponseBodyFailedEcsList) SetIntranetIp(v st
 
 func (s *DescribeStrategyExecDetailResponseBodyFailedEcsList) SetReason(v string) *DescribeStrategyExecDetailResponseBodyFailedEcsList {
 	s.Reason = &v
+	return s
+}
+
+func (s *DescribeStrategyExecDetailResponseBodyFailedEcsList) SetInstanceName(v string) *DescribeStrategyExecDetailResponseBodyFailedEcsList {
+	s.InstanceName = &v
 	return s
 }
 
@@ -14457,187 +17635,6 @@ func (s *DescribeStrategyExecDetailResponse) SetHeaders(v map[string]*string) *D
 }
 
 func (s *DescribeStrategyExecDetailResponse) SetBody(v *DescribeStrategyExecDetailResponseBody) *DescribeStrategyExecDetailResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeStratetyRequest struct {
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	StrategyIds *string `json:"StrategyIds,omitempty" xml:"StrategyIds,omitempty"`
-}
-
-func (s DescribeStratetyRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeStratetyRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeStratetyRequest) SetSourceIp(v string) *DescribeStratetyRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DescribeStratetyRequest) SetLang(v string) *DescribeStratetyRequest {
-	s.Lang = &v
-	return s
-}
-
-func (s *DescribeStratetyRequest) SetStrategyIds(v string) *DescribeStratetyRequest {
-	s.StrategyIds = &v
-	return s
-}
-
-type DescribeStratetyResponseBody struct {
-	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Strategies []*DescribeStratetyResponseBodyStrategies `json:"Strategies,omitempty" xml:"Strategies,omitempty" type:"Repeated"`
-}
-
-func (s DescribeStratetyResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeStratetyResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeStratetyResponseBody) SetRequestId(v string) *DescribeStratetyResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeStratetyResponseBody) SetStrategies(v []*DescribeStratetyResponseBodyStrategies) *DescribeStratetyResponseBody {
-	s.Strategies = v
-	return s
-}
-
-type DescribeStratetyResponseBodyStrategies struct {
-	ExecStatus     *int32                                                 `json:"ExecStatus,omitempty" xml:"ExecStatus,omitempty"`
-	Type           *int32                                                 `json:"Type,omitempty" xml:"Type,omitempty"`
-	ConfigTargets  []*DescribeStratetyResponseBodyStrategiesConfigTargets `json:"ConfigTargets,omitempty" xml:"ConfigTargets,omitempty" type:"Repeated"`
-	CycleStartTime *int32                                                 `json:"CycleStartTime,omitempty" xml:"CycleStartTime,omitempty"`
-	EcsCount       *int32                                                 `json:"EcsCount,omitempty" xml:"EcsCount,omitempty"`
-	ProcessRate    *int32                                                 `json:"ProcessRate,omitempty" xml:"ProcessRate,omitempty"`
-	CycleDays      *int32                                                 `json:"CycleDays,omitempty" xml:"CycleDays,omitempty"`
-	RiskCount      *int32                                                 `json:"RiskCount,omitempty" xml:"RiskCount,omitempty"`
-	Name           *string                                                `json:"Name,omitempty" xml:"Name,omitempty"`
-	PassRate       *int32                                                 `json:"PassRate,omitempty" xml:"PassRate,omitempty"`
-	Id             *int32                                                 `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s DescribeStratetyResponseBodyStrategies) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeStratetyResponseBodyStrategies) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeStratetyResponseBodyStrategies) SetExecStatus(v int32) *DescribeStratetyResponseBodyStrategies {
-	s.ExecStatus = &v
-	return s
-}
-
-func (s *DescribeStratetyResponseBodyStrategies) SetType(v int32) *DescribeStratetyResponseBodyStrategies {
-	s.Type = &v
-	return s
-}
-
-func (s *DescribeStratetyResponseBodyStrategies) SetConfigTargets(v []*DescribeStratetyResponseBodyStrategiesConfigTargets) *DescribeStratetyResponseBodyStrategies {
-	s.ConfigTargets = v
-	return s
-}
-
-func (s *DescribeStratetyResponseBodyStrategies) SetCycleStartTime(v int32) *DescribeStratetyResponseBodyStrategies {
-	s.CycleStartTime = &v
-	return s
-}
-
-func (s *DescribeStratetyResponseBodyStrategies) SetEcsCount(v int32) *DescribeStratetyResponseBodyStrategies {
-	s.EcsCount = &v
-	return s
-}
-
-func (s *DescribeStratetyResponseBodyStrategies) SetProcessRate(v int32) *DescribeStratetyResponseBodyStrategies {
-	s.ProcessRate = &v
-	return s
-}
-
-func (s *DescribeStratetyResponseBodyStrategies) SetCycleDays(v int32) *DescribeStratetyResponseBodyStrategies {
-	s.CycleDays = &v
-	return s
-}
-
-func (s *DescribeStratetyResponseBodyStrategies) SetRiskCount(v int32) *DescribeStratetyResponseBodyStrategies {
-	s.RiskCount = &v
-	return s
-}
-
-func (s *DescribeStratetyResponseBodyStrategies) SetName(v string) *DescribeStratetyResponseBodyStrategies {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeStratetyResponseBodyStrategies) SetPassRate(v int32) *DescribeStratetyResponseBodyStrategies {
-	s.PassRate = &v
-	return s
-}
-
-func (s *DescribeStratetyResponseBodyStrategies) SetId(v int32) *DescribeStratetyResponseBodyStrategies {
-	s.Id = &v
-	return s
-}
-
-type DescribeStratetyResponseBodyStrategiesConfigTargets struct {
-	Flag       *string `json:"Flag,omitempty" xml:"Flag,omitempty"`
-	Target     *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-}
-
-func (s DescribeStratetyResponseBodyStrategiesConfigTargets) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeStratetyResponseBodyStrategiesConfigTargets) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeStratetyResponseBodyStrategiesConfigTargets) SetFlag(v string) *DescribeStratetyResponseBodyStrategiesConfigTargets {
-	s.Flag = &v
-	return s
-}
-
-func (s *DescribeStratetyResponseBodyStrategiesConfigTargets) SetTarget(v string) *DescribeStratetyResponseBodyStrategiesConfigTargets {
-	s.Target = &v
-	return s
-}
-
-func (s *DescribeStratetyResponseBodyStrategiesConfigTargets) SetTargetType(v string) *DescribeStratetyResponseBodyStrategiesConfigTargets {
-	s.TargetType = &v
-	return s
-}
-
-type DescribeStratetyResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeStratetyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeStratetyResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeStratetyResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeStratetyResponse) SetHeaders(v map[string]*string) *DescribeStratetyResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeStratetyResponse) SetBody(v *DescribeStratetyResponseBody) *DescribeStratetyResponse {
 	s.Body = v
 	return s
 }
@@ -14672,11 +17669,11 @@ func (s *DescribeSummaryInfoRequest) SetResourceDirectoryAccountId(v string) *De
 }
 
 type DescribeSummaryInfoResponseBody struct {
-	AegisClientOnlineCount  *int32  `json:"AegisClientOnlineCount,omitempty" xml:"AegisClientOnlineCount,omitempty"`
 	RequestId               *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	AegisClientOfflineCount *int32  `json:"AegisClientOfflineCount,omitempty" xml:"AegisClientOfflineCount,omitempty"`
-	SecurityScore           *int32  `json:"SecurityScore,omitempty" xml:"SecurityScore,omitempty"`
 	Success                 *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	AegisClientOfflineCount *int32  `json:"AegisClientOfflineCount,omitempty" xml:"AegisClientOfflineCount,omitempty"`
+	AegisClientOnlineCount  *int32  `json:"AegisClientOnlineCount,omitempty" xml:"AegisClientOnlineCount,omitempty"`
+	SecurityScore           *int32  `json:"SecurityScore,omitempty" xml:"SecurityScore,omitempty"`
 }
 
 func (s DescribeSummaryInfoResponseBody) String() string {
@@ -14687,13 +17684,13 @@ func (s DescribeSummaryInfoResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeSummaryInfoResponseBody) SetAegisClientOnlineCount(v int32) *DescribeSummaryInfoResponseBody {
-	s.AegisClientOnlineCount = &v
+func (s *DescribeSummaryInfoResponseBody) SetRequestId(v string) *DescribeSummaryInfoResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *DescribeSummaryInfoResponseBody) SetRequestId(v string) *DescribeSummaryInfoResponseBody {
-	s.RequestId = &v
+func (s *DescribeSummaryInfoResponseBody) SetSuccess(v bool) *DescribeSummaryInfoResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -14702,13 +17699,13 @@ func (s *DescribeSummaryInfoResponseBody) SetAegisClientOfflineCount(v int32) *D
 	return s
 }
 
-func (s *DescribeSummaryInfoResponseBody) SetSecurityScore(v int32) *DescribeSummaryInfoResponseBody {
-	s.SecurityScore = &v
+func (s *DescribeSummaryInfoResponseBody) SetAegisClientOnlineCount(v int32) *DescribeSummaryInfoResponseBody {
+	s.AegisClientOnlineCount = &v
 	return s
 }
 
-func (s *DescribeSummaryInfoResponseBody) SetSuccess(v bool) *DescribeSummaryInfoResponseBody {
-	s.Success = &v
+func (s *DescribeSummaryInfoResponseBody) SetSecurityScore(v int32) *DescribeSummaryInfoResponseBody {
+	s.SecurityScore = &v
 	return s
 }
 
@@ -14731,6 +17728,75 @@ func (s *DescribeSummaryInfoResponse) SetHeaders(v map[string]*string) *Describe
 }
 
 func (s *DescribeSummaryInfoResponse) SetBody(v *DescribeSummaryInfoResponseBody) *DescribeSummaryInfoResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeSupportRegionRequest struct {
+	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DescribeSupportRegionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSupportRegionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSupportRegionRequest) SetSourceIp(v string) *DescribeSupportRegionRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *DescribeSupportRegionRequest) SetResourceOwnerId(v int64) *DescribeSupportRegionRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DescribeSupportRegionResponseBody struct {
+	RequestId     *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SupportRegion []*string `json:"SupportRegion,omitempty" xml:"SupportRegion,omitempty" type:"Repeated"`
+}
+
+func (s DescribeSupportRegionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSupportRegionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSupportRegionResponseBody) SetRequestId(v string) *DescribeSupportRegionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSupportRegionResponseBody) SetSupportRegion(v []*string) *DescribeSupportRegionResponseBody {
+	s.SupportRegion = v
+	return s
+}
+
+type DescribeSupportRegionResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeSupportRegionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeSupportRegionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSupportRegionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSupportRegionResponse) SetHeaders(v map[string]*string) *DescribeSupportRegionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSupportRegionResponse) SetBody(v *DescribeSupportRegionResponseBody) *DescribeSupportRegionResponse {
 	s.Body = v
 	return s
 }
@@ -14771,25 +17837,25 @@ func (s *DescribeSuspEventDetailRequest) SetFrom(v string) *DescribeSuspEventDet
 }
 
 type DescribeSuspEventDetailResponseBody struct {
-	EventDesc        *string                                       `json:"EventDesc,omitempty" xml:"EventDesc,omitempty"`
+	DataSource       *string                                       `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
+	EventName        *string                                       `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	InternetIp       *string                                       `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	IntranetIp       *string                                       `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	LastTime         *string                                       `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
+	OperateMsg       *string                                       `json:"OperateMsg,omitempty" xml:"OperateMsg,omitempty"`
+	Uuid             *string                                       `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	CanBeDealOnLine  *bool                                         `json:"CanBeDealOnLine,omitempty" xml:"CanBeDealOnLine,omitempty"`
 	RequestId        *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	EventTypeDesc    *string                                       `json:"EventTypeDesc,omitempty" xml:"EventTypeDesc,omitempty"`
-	OperateErrorCode *string                                       `json:"OperateErrorCode,omitempty" xml:"OperateErrorCode,omitempty"`
-	EventStatus      *string                                       `json:"EventStatus,omitempty" xml:"EventStatus,omitempty"`
-	EventName        *string                                       `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	SaleVersion      *string                                       `json:"SaleVersion,omitempty" xml:"SaleVersion,omitempty"`
-	IntranetIp       *string                                       `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	DataSource       *string                                       `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
+	EventDesc        *string                                       `json:"EventDesc,omitempty" xml:"EventDesc,omitempty"`
 	InstanceName     *string                                       `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	OperateMsg       *string                                       `json:"OperateMsg,omitempty" xml:"OperateMsg,omitempty"`
-	CanBeDealOnLine  *bool                                         `json:"CanBeDealOnLine,omitempty" xml:"CanBeDealOnLine,omitempty"`
-	Uuid             *string                                       `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	Details          []*DescribeSuspEventDetailResponseBodyDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
-	InternetIp       *string                                       `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	EventStatus      *string                                       `json:"EventStatus,omitempty" xml:"EventStatus,omitempty"`
+	SaleVersion      *string                                       `json:"SaleVersion,omitempty" xml:"SaleVersion,omitempty"`
+	OperateErrorCode *string                                       `json:"OperateErrorCode,omitempty" xml:"OperateErrorCode,omitempty"`
+	SasId            *string                                       `json:"SasId,omitempty" xml:"SasId,omitempty"`
 	Level            *string                                       `json:"Level,omitempty" xml:"Level,omitempty"`
 	Id               *int32                                        `json:"Id,omitempty" xml:"Id,omitempty"`
-	LastTime         *string                                       `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
-	SasId            *string                                       `json:"SasId,omitempty" xml:"SasId,omitempty"`
+	Details          []*DescribeSuspEventDetailResponseBodyDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
 }
 
 func (s DescribeSuspEventDetailResponseBody) String() string {
@@ -14800,8 +17866,43 @@ func (s DescribeSuspEventDetailResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeSuspEventDetailResponseBody) SetEventDesc(v string) *DescribeSuspEventDetailResponseBody {
-	s.EventDesc = &v
+func (s *DescribeSuspEventDetailResponseBody) SetDataSource(v string) *DescribeSuspEventDetailResponseBody {
+	s.DataSource = &v
+	return s
+}
+
+func (s *DescribeSuspEventDetailResponseBody) SetEventName(v string) *DescribeSuspEventDetailResponseBody {
+	s.EventName = &v
+	return s
+}
+
+func (s *DescribeSuspEventDetailResponseBody) SetInternetIp(v string) *DescribeSuspEventDetailResponseBody {
+	s.InternetIp = &v
+	return s
+}
+
+func (s *DescribeSuspEventDetailResponseBody) SetIntranetIp(v string) *DescribeSuspEventDetailResponseBody {
+	s.IntranetIp = &v
+	return s
+}
+
+func (s *DescribeSuspEventDetailResponseBody) SetLastTime(v string) *DescribeSuspEventDetailResponseBody {
+	s.LastTime = &v
+	return s
+}
+
+func (s *DescribeSuspEventDetailResponseBody) SetOperateMsg(v string) *DescribeSuspEventDetailResponseBody {
+	s.OperateMsg = &v
+	return s
+}
+
+func (s *DescribeSuspEventDetailResponseBody) SetUuid(v string) *DescribeSuspEventDetailResponseBody {
+	s.Uuid = &v
+	return s
+}
+
+func (s *DescribeSuspEventDetailResponseBody) SetCanBeDealOnLine(v bool) *DescribeSuspEventDetailResponseBody {
+	s.CanBeDealOnLine = &v
 	return s
 }
 
@@ -14815,33 +17916,8 @@ func (s *DescribeSuspEventDetailResponseBody) SetEventTypeDesc(v string) *Descri
 	return s
 }
 
-func (s *DescribeSuspEventDetailResponseBody) SetOperateErrorCode(v string) *DescribeSuspEventDetailResponseBody {
-	s.OperateErrorCode = &v
-	return s
-}
-
-func (s *DescribeSuspEventDetailResponseBody) SetEventStatus(v string) *DescribeSuspEventDetailResponseBody {
-	s.EventStatus = &v
-	return s
-}
-
-func (s *DescribeSuspEventDetailResponseBody) SetEventName(v string) *DescribeSuspEventDetailResponseBody {
-	s.EventName = &v
-	return s
-}
-
-func (s *DescribeSuspEventDetailResponseBody) SetSaleVersion(v string) *DescribeSuspEventDetailResponseBody {
-	s.SaleVersion = &v
-	return s
-}
-
-func (s *DescribeSuspEventDetailResponseBody) SetIntranetIp(v string) *DescribeSuspEventDetailResponseBody {
-	s.IntranetIp = &v
-	return s
-}
-
-func (s *DescribeSuspEventDetailResponseBody) SetDataSource(v string) *DescribeSuspEventDetailResponseBody {
-	s.DataSource = &v
+func (s *DescribeSuspEventDetailResponseBody) SetEventDesc(v string) *DescribeSuspEventDetailResponseBody {
+	s.EventDesc = &v
 	return s
 }
 
@@ -14850,28 +17926,23 @@ func (s *DescribeSuspEventDetailResponseBody) SetInstanceName(v string) *Describ
 	return s
 }
 
-func (s *DescribeSuspEventDetailResponseBody) SetOperateMsg(v string) *DescribeSuspEventDetailResponseBody {
-	s.OperateMsg = &v
+func (s *DescribeSuspEventDetailResponseBody) SetEventStatus(v string) *DescribeSuspEventDetailResponseBody {
+	s.EventStatus = &v
 	return s
 }
 
-func (s *DescribeSuspEventDetailResponseBody) SetCanBeDealOnLine(v bool) *DescribeSuspEventDetailResponseBody {
-	s.CanBeDealOnLine = &v
+func (s *DescribeSuspEventDetailResponseBody) SetSaleVersion(v string) *DescribeSuspEventDetailResponseBody {
+	s.SaleVersion = &v
 	return s
 }
 
-func (s *DescribeSuspEventDetailResponseBody) SetUuid(v string) *DescribeSuspEventDetailResponseBody {
-	s.Uuid = &v
+func (s *DescribeSuspEventDetailResponseBody) SetOperateErrorCode(v string) *DescribeSuspEventDetailResponseBody {
+	s.OperateErrorCode = &v
 	return s
 }
 
-func (s *DescribeSuspEventDetailResponseBody) SetDetails(v []*DescribeSuspEventDetailResponseBodyDetails) *DescribeSuspEventDetailResponseBody {
-	s.Details = v
-	return s
-}
-
-func (s *DescribeSuspEventDetailResponseBody) SetInternetIp(v string) *DescribeSuspEventDetailResponseBody {
-	s.InternetIp = &v
+func (s *DescribeSuspEventDetailResponseBody) SetSasId(v string) *DescribeSuspEventDetailResponseBody {
+	s.SasId = &v
 	return s
 }
 
@@ -14885,13 +17956,8 @@ func (s *DescribeSuspEventDetailResponseBody) SetId(v int32) *DescribeSuspEventD
 	return s
 }
 
-func (s *DescribeSuspEventDetailResponseBody) SetLastTime(v string) *DescribeSuspEventDetailResponseBody {
-	s.LastTime = &v
-	return s
-}
-
-func (s *DescribeSuspEventDetailResponseBody) SetSasId(v string) *DescribeSuspEventDetailResponseBody {
-	s.SasId = &v
+func (s *DescribeSuspEventDetailResponseBody) SetDetails(v []*DescribeSuspEventDetailResponseBodyDetails) *DescribeSuspEventDetailResponseBody {
+	s.Details = v
 	return s
 }
 
@@ -14957,6 +18023,7 @@ type DescribeSuspEventQuaraFilesRequest struct {
 	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	PageSize    *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	QuaraTag    *string `json:"QuaraTag,omitempty" xml:"QuaraTag,omitempty"`
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	From        *string `json:"From,omitempty" xml:"From,omitempty"`
@@ -14985,6 +18052,11 @@ func (s *DescribeSuspEventQuaraFilesRequest) SetStatus(v string) *DescribeSuspEv
 	return s
 }
 
+func (s *DescribeSuspEventQuaraFilesRequest) SetGroupId(v string) *DescribeSuspEventQuaraFilesRequest {
+	s.GroupId = &v
+	return s
+}
+
 func (s *DescribeSuspEventQuaraFilesRequest) SetQuaraTag(v string) *DescribeSuspEventQuaraFilesRequest {
 	s.QuaraTag = &v
 	return s
@@ -15001,12 +18073,12 @@ func (s *DescribeSuspEventQuaraFilesRequest) SetFrom(v string) *DescribeSuspEven
 }
 
 type DescribeSuspEventQuaraFilesResponseBody struct {
-	TotalCount  *int32                                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	CurrentPage *int32                                               `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	PageSize    *int32                                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId   *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	CurrentPage *int32                                               `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	QuaraFiles  []*DescribeSuspEventQuaraFilesResponseBodyQuaraFiles `json:"QuaraFiles,omitempty" xml:"QuaraFiles,omitempty" type:"Repeated"`
+	TotalCount  *int32                                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	Count       *int32                                               `json:"Count,omitempty" xml:"Count,omitempty"`
+	QuaraFiles  []*DescribeSuspEventQuaraFilesResponseBodyQuaraFiles `json:"QuaraFiles,omitempty" xml:"QuaraFiles,omitempty" type:"Repeated"`
 }
 
 func (s DescribeSuspEventQuaraFilesResponseBody) String() string {
@@ -15017,8 +18089,8 @@ func (s DescribeSuspEventQuaraFilesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeSuspEventQuaraFilesResponseBody) SetTotalCount(v int32) *DescribeSuspEventQuaraFilesResponseBody {
-	s.TotalCount = &v
+func (s *DescribeSuspEventQuaraFilesResponseBody) SetCurrentPage(v int32) *DescribeSuspEventQuaraFilesResponseBody {
+	s.CurrentPage = &v
 	return s
 }
 
@@ -15032,13 +18104,8 @@ func (s *DescribeSuspEventQuaraFilesResponseBody) SetRequestId(v string) *Descri
 	return s
 }
 
-func (s *DescribeSuspEventQuaraFilesResponseBody) SetCurrentPage(v int32) *DescribeSuspEventQuaraFilesResponseBody {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *DescribeSuspEventQuaraFilesResponseBody) SetQuaraFiles(v []*DescribeSuspEventQuaraFilesResponseBodyQuaraFiles) *DescribeSuspEventQuaraFilesResponseBody {
-	s.QuaraFiles = v
+func (s *DescribeSuspEventQuaraFilesResponseBody) SetTotalCount(v int32) *DescribeSuspEventQuaraFilesResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -15047,12 +18114,19 @@ func (s *DescribeSuspEventQuaraFilesResponseBody) SetCount(v int32) *DescribeSus
 	return s
 }
 
+func (s *DescribeSuspEventQuaraFilesResponseBody) SetQuaraFiles(v []*DescribeSuspEventQuaraFilesResponseBodyQuaraFiles) *DescribeSuspEventQuaraFilesResponseBody {
+	s.QuaraFiles = v
+	return s
+}
+
 type DescribeSuspEventQuaraFilesResponseBodyQuaraFiles struct {
+	Link         *string `json:"Link,omitempty" xml:"Link,omitempty"`
 	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	EventName    *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
 	InternetIp   *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
 	Ip           *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	Tag          *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Uuid         *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 	EventType    *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
@@ -15068,6 +18142,11 @@ func (s DescribeSuspEventQuaraFilesResponseBodyQuaraFiles) String() string {
 
 func (s DescribeSuspEventQuaraFilesResponseBodyQuaraFiles) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeSuspEventQuaraFilesResponseBodyQuaraFiles) SetLink(v string) *DescribeSuspEventQuaraFilesResponseBodyQuaraFiles {
+	s.Link = &v
+	return s
 }
 
 func (s *DescribeSuspEventQuaraFilesResponseBodyQuaraFiles) SetStatus(v string) *DescribeSuspEventQuaraFilesResponseBodyQuaraFiles {
@@ -15092,6 +18171,11 @@ func (s *DescribeSuspEventQuaraFilesResponseBodyQuaraFiles) SetIp(v string) *Des
 
 func (s *DescribeSuspEventQuaraFilesResponseBodyQuaraFiles) SetTag(v string) *DescribeSuspEventQuaraFilesResponseBodyQuaraFiles {
 	s.Tag = &v
+	return s
+}
+
+func (s *DescribeSuspEventQuaraFilesResponseBodyQuaraFiles) SetInstanceId(v string) *DescribeSuspEventQuaraFilesResponseBodyQuaraFiles {
+	s.InstanceId = &v
 	return s
 }
 
@@ -15291,10 +18375,10 @@ func (s *DescribeSuspEventsRequest) SetOperateErrorCodeList(v []*string) *Descri
 }
 
 type DescribeSuspEventsResponseBody struct {
-	TotalCount  *int32                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	CurrentPage *int32                                      `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	PageSize    *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId   *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	CurrentPage *int32                                      `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	TotalCount  *int32                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	Count       *int32                                      `json:"Count,omitempty" xml:"Count,omitempty"`
 	SuspEvents  []*DescribeSuspEventsResponseBodySuspEvents `json:"SuspEvents,omitempty" xml:"SuspEvents,omitempty" type:"Repeated"`
 }
@@ -15307,8 +18391,8 @@ func (s DescribeSuspEventsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeSuspEventsResponseBody) SetTotalCount(v int32) *DescribeSuspEventsResponseBody {
-	s.TotalCount = &v
+func (s *DescribeSuspEventsResponseBody) SetCurrentPage(v int32) *DescribeSuspEventsResponseBody {
+	s.CurrentPage = &v
 	return s
 }
 
@@ -15322,8 +18406,8 @@ func (s *DescribeSuspEventsResponseBody) SetRequestId(v string) *DescribeSuspEve
 	return s
 }
 
-func (s *DescribeSuspEventsResponseBody) SetCurrentPage(v int32) *DescribeSuspEventsResponseBody {
-	s.CurrentPage = &v
+func (s *DescribeSuspEventsResponseBody) SetTotalCount(v int32) *DescribeSuspEventsResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -15338,51 +18422,53 @@ func (s *DescribeSuspEventsResponseBody) SetSuspEvents(v []*DescribeSuspEventsRe
 }
 
 type DescribeSuspEventsResponseBodySuspEvents struct {
-	Stages                *string                                            `json:"Stages,omitempty" xml:"Stages,omitempty"`
-	InternetIp            *string                                            `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	K8sClusterName        *string                                            `json:"K8sClusterName,omitempty" xml:"K8sClusterName,omitempty"`
-	ContainerImageId      *string                                            `json:"ContainerImageId,omitempty" xml:"ContainerImageId,omitempty"`
-	LastTimeStamp         *int64                                             `json:"LastTimeStamp,omitempty" xml:"LastTimeStamp,omitempty"`
-	OccurrenceTime        *string                                            `json:"OccurrenceTime,omitempty" xml:"OccurrenceTime,omitempty"`
-	AlarmUniqueInfo       *string                                            `json:"AlarmUniqueInfo,omitempty" xml:"AlarmUniqueInfo,omitempty"`
-	Desc                  *string                                            `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	Details               []*DescribeSuspEventsResponseBodySuspEventsDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
-	CanCancelFault        *bool                                              `json:"CanCancelFault,omitempty" xml:"CanCancelFault,omitempty"`
-	AlarmEventNameDisplay *string                                            `json:"AlarmEventNameDisplay,omitempty" xml:"AlarmEventNameDisplay,omitempty"`
-	AppName               *string                                            `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	SecurityEventIds      *string                                            `json:"SecurityEventIds,omitempty" xml:"SecurityEventIds,omitempty"`
-	CanBeDealOnLine       *bool                                              `json:"CanBeDealOnLine,omitempty" xml:"CanBeDealOnLine,omitempty"`
-	MarkMisRules          *string                                            `json:"MarkMisRules,omitempty" xml:"MarkMisRules,omitempty"`
-	ContainerImageName    *string                                            `json:"ContainerImageName,omitempty" xml:"ContainerImageName,omitempty"`
-	K8sClusterId          *string                                            `json:"K8sClusterId,omitempty" xml:"K8sClusterId,omitempty"`
-	ContainHwMode         *bool                                              `json:"ContainHwMode,omitempty" xml:"ContainHwMode,omitempty"`
-	InstanceName          *string                                            `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	K8sNodeId             *string                                            `json:"K8sNodeId,omitempty" xml:"K8sNodeId,omitempty"`
-	EventStatus           *int32                                             `json:"EventStatus,omitempty" xml:"EventStatus,omitempty"`
-	SaleVersion           *string                                            `json:"SaleVersion,omitempty" xml:"SaleVersion,omitempty"`
-	OperateErrorCode      *string                                            `json:"OperateErrorCode,omitempty" xml:"OperateErrorCode,omitempty"`
-	Name                  *string                                            `json:"Name,omitempty" xml:"Name,omitempty"`
-	HasTraceInfo          *bool                                              `json:"HasTraceInfo,omitempty" xml:"HasTraceInfo,omitempty"`
-	DataSource            *string                                            `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
-	OperateTime           *int64                                             `json:"OperateTime,omitempty" xml:"OperateTime,omitempty"`
-	EventSubType          *string                                            `json:"EventSubType,omitempty" xml:"EventSubType,omitempty"`
-	Advanced              *bool                                              `json:"Advanced,omitempty" xml:"Advanced,omitempty"`
-	OccurrenceTimeStamp   *int64                                             `json:"OccurrenceTimeStamp,omitempty" xml:"OccurrenceTimeStamp,omitempty"`
-	AlarmEventTypeDisplay *string                                            `json:"AlarmEventTypeDisplay,omitempty" xml:"AlarmEventTypeDisplay,omitempty"`
-	IntranetIp            *string                                            `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	LastTime              *string                                            `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
-	OperateMsg            *string                                            `json:"OperateMsg,omitempty" xml:"OperateMsg,omitempty"`
-	Uuid                  *string                                            `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	K8sPodName            *string                                            `json:"K8sPodName,omitempty" xml:"K8sPodName,omitempty"`
-	ContainerId           *string                                            `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
-	AlarmEventType        *string                                            `json:"AlarmEventType,omitempty" xml:"AlarmEventType,omitempty"`
-	K8sNamespace          *string                                            `json:"K8sNamespace,omitempty" xml:"K8sNamespace,omitempty"`
-	AutoBreaking          *bool                                              `json:"AutoBreaking,omitempty" xml:"AutoBreaking,omitempty"`
-	K8sNodeName           *string                                            `json:"K8sNodeName,omitempty" xml:"K8sNodeName,omitempty"`
-	AlarmEventName        *string                                            `json:"AlarmEventName,omitempty" xml:"AlarmEventName,omitempty"`
-	UniqueInfo            *string                                            `json:"UniqueInfo,omitempty" xml:"UniqueInfo,omitempty"`
-	Level                 *string                                            `json:"Level,omitempty" xml:"Level,omitempty"`
-	Id                    *int64                                             `json:"Id,omitempty" xml:"Id,omitempty"`
+	Stages                *string                                               `json:"Stages,omitempty" xml:"Stages,omitempty"`
+	InternetIp            *string                                               `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	K8sClusterName        *string                                               `json:"K8sClusterName,omitempty" xml:"K8sClusterName,omitempty"`
+	ContainerImageId      *string                                               `json:"ContainerImageId,omitempty" xml:"ContainerImageId,omitempty"`
+	LastTimeStamp         *int64                                                `json:"LastTimeStamp,omitempty" xml:"LastTimeStamp,omitempty"`
+	OccurrenceTime        *string                                               `json:"OccurrenceTime,omitempty" xml:"OccurrenceTime,omitempty"`
+	AlarmUniqueInfo       *string                                               `json:"AlarmUniqueInfo,omitempty" xml:"AlarmUniqueInfo,omitempty"`
+	Desc                  *string                                               `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	CanCancelFault        *bool                                                 `json:"CanCancelFault,omitempty" xml:"CanCancelFault,omitempty"`
+	AlarmEventNameDisplay *string                                               `json:"AlarmEventNameDisplay,omitempty" xml:"AlarmEventNameDisplay,omitempty"`
+	AppName               *string                                               `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	SecurityEventIds      *string                                               `json:"SecurityEventIds,omitempty" xml:"SecurityEventIds,omitempty"`
+	K8sClusterId          *string                                               `json:"K8sClusterId,omitempty" xml:"K8sClusterId,omitempty"`
+	ContainerImageName    *string                                               `json:"ContainerImageName,omitempty" xml:"ContainerImageName,omitempty"`
+	MarkMisRules          *string                                               `json:"MarkMisRules,omitempty" xml:"MarkMisRules,omitempty"`
+	CanBeDealOnLine       *bool                                                 `json:"CanBeDealOnLine,omitempty" xml:"CanBeDealOnLine,omitempty"`
+	ContainHwMode         *bool                                                 `json:"ContainHwMode,omitempty" xml:"ContainHwMode,omitempty"`
+	K8sNodeId             *string                                               `json:"K8sNodeId,omitempty" xml:"K8sNodeId,omitempty"`
+	InstanceName          *string                                               `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	EventStatus           *int32                                                `json:"EventStatus,omitempty" xml:"EventStatus,omitempty"`
+	SaleVersion           *string                                               `json:"SaleVersion,omitempty" xml:"SaleVersion,omitempty"`
+	OperateErrorCode      *string                                               `json:"OperateErrorCode,omitempty" xml:"OperateErrorCode,omitempty"`
+	Name                  *string                                               `json:"Name,omitempty" xml:"Name,omitempty"`
+	HasTraceInfo          *bool                                                 `json:"HasTraceInfo,omitempty" xml:"HasTraceInfo,omitempty"`
+	DataSource            *string                                               `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
+	OperateTime           *int64                                                `json:"OperateTime,omitempty" xml:"OperateTime,omitempty"`
+	EventSubType          *string                                               `json:"EventSubType,omitempty" xml:"EventSubType,omitempty"`
+	Advanced              *bool                                                 `json:"Advanced,omitempty" xml:"Advanced,omitempty"`
+	OccurrenceTimeStamp   *int64                                                `json:"OccurrenceTimeStamp,omitempty" xml:"OccurrenceTimeStamp,omitempty"`
+	InstanceId            *string                                               `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	AlarmEventTypeDisplay *string                                               `json:"AlarmEventTypeDisplay,omitempty" xml:"AlarmEventTypeDisplay,omitempty"`
+	IntranetIp            *string                                               `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	LastTime              *string                                               `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
+	OperateMsg            *string                                               `json:"OperateMsg,omitempty" xml:"OperateMsg,omitempty"`
+	Uuid                  *string                                               `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	K8sPodName            *string                                               `json:"K8sPodName,omitempty" xml:"K8sPodName,omitempty"`
+	ContainerId           *string                                               `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
+	AlarmEventType        *string                                               `json:"AlarmEventType,omitempty" xml:"AlarmEventType,omitempty"`
+	K8sNamespace          *string                                               `json:"K8sNamespace,omitempty" xml:"K8sNamespace,omitempty"`
+	AutoBreaking          *bool                                                 `json:"AutoBreaking,omitempty" xml:"AutoBreaking,omitempty"`
+	K8sNodeName           *string                                               `json:"K8sNodeName,omitempty" xml:"K8sNodeName,omitempty"`
+	AlarmEventName        *string                                               `json:"AlarmEventName,omitempty" xml:"AlarmEventName,omitempty"`
+	UniqueInfo            *string                                               `json:"UniqueInfo,omitempty" xml:"UniqueInfo,omitempty"`
+	Level                 *string                                               `json:"Level,omitempty" xml:"Level,omitempty"`
+	Id                    *int64                                                `json:"Id,omitempty" xml:"Id,omitempty"`
+	Details               []*DescribeSuspEventsResponseBodySuspEventsDetails    `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
+	EventNotes            []*DescribeSuspEventsResponseBodySuspEventsEventNotes `json:"EventNotes,omitempty" xml:"EventNotes,omitempty" type:"Repeated"`
 }
 
 func (s DescribeSuspEventsResponseBodySuspEvents) String() string {
@@ -15433,11 +18519,6 @@ func (s *DescribeSuspEventsResponseBodySuspEvents) SetDesc(v string) *DescribeSu
 	return s
 }
 
-func (s *DescribeSuspEventsResponseBodySuspEvents) SetDetails(v []*DescribeSuspEventsResponseBodySuspEventsDetails) *DescribeSuspEventsResponseBodySuspEvents {
-	s.Details = v
-	return s
-}
-
 func (s *DescribeSuspEventsResponseBodySuspEvents) SetCanCancelFault(v bool) *DescribeSuspEventsResponseBodySuspEvents {
 	s.CanCancelFault = &v
 	return s
@@ -15458,13 +18539,8 @@ func (s *DescribeSuspEventsResponseBodySuspEvents) SetSecurityEventIds(v string)
 	return s
 }
 
-func (s *DescribeSuspEventsResponseBodySuspEvents) SetCanBeDealOnLine(v bool) *DescribeSuspEventsResponseBodySuspEvents {
-	s.CanBeDealOnLine = &v
-	return s
-}
-
-func (s *DescribeSuspEventsResponseBodySuspEvents) SetMarkMisRules(v string) *DescribeSuspEventsResponseBodySuspEvents {
-	s.MarkMisRules = &v
+func (s *DescribeSuspEventsResponseBodySuspEvents) SetK8sClusterId(v string) *DescribeSuspEventsResponseBodySuspEvents {
+	s.K8sClusterId = &v
 	return s
 }
 
@@ -15473,8 +18549,13 @@ func (s *DescribeSuspEventsResponseBodySuspEvents) SetContainerImageName(v strin
 	return s
 }
 
-func (s *DescribeSuspEventsResponseBodySuspEvents) SetK8sClusterId(v string) *DescribeSuspEventsResponseBodySuspEvents {
-	s.K8sClusterId = &v
+func (s *DescribeSuspEventsResponseBodySuspEvents) SetMarkMisRules(v string) *DescribeSuspEventsResponseBodySuspEvents {
+	s.MarkMisRules = &v
+	return s
+}
+
+func (s *DescribeSuspEventsResponseBodySuspEvents) SetCanBeDealOnLine(v bool) *DescribeSuspEventsResponseBodySuspEvents {
+	s.CanBeDealOnLine = &v
 	return s
 }
 
@@ -15483,13 +18564,13 @@ func (s *DescribeSuspEventsResponseBodySuspEvents) SetContainHwMode(v bool) *Des
 	return s
 }
 
-func (s *DescribeSuspEventsResponseBodySuspEvents) SetInstanceName(v string) *DescribeSuspEventsResponseBodySuspEvents {
-	s.InstanceName = &v
+func (s *DescribeSuspEventsResponseBodySuspEvents) SetK8sNodeId(v string) *DescribeSuspEventsResponseBodySuspEvents {
+	s.K8sNodeId = &v
 	return s
 }
 
-func (s *DescribeSuspEventsResponseBodySuspEvents) SetK8sNodeId(v string) *DescribeSuspEventsResponseBodySuspEvents {
-	s.K8sNodeId = &v
+func (s *DescribeSuspEventsResponseBodySuspEvents) SetInstanceName(v string) *DescribeSuspEventsResponseBodySuspEvents {
+	s.InstanceName = &v
 	return s
 }
 
@@ -15540,6 +18621,11 @@ func (s *DescribeSuspEventsResponseBodySuspEvents) SetAdvanced(v bool) *Describe
 
 func (s *DescribeSuspEventsResponseBodySuspEvents) SetOccurrenceTimeStamp(v int64) *DescribeSuspEventsResponseBodySuspEvents {
 	s.OccurrenceTimeStamp = &v
+	return s
+}
+
+func (s *DescribeSuspEventsResponseBodySuspEvents) SetInstanceId(v string) *DescribeSuspEventsResponseBodySuspEvents {
+	s.InstanceId = &v
 	return s
 }
 
@@ -15618,6 +18704,16 @@ func (s *DescribeSuspEventsResponseBodySuspEvents) SetId(v int64) *DescribeSuspE
 	return s
 }
 
+func (s *DescribeSuspEventsResponseBodySuspEvents) SetDetails(v []*DescribeSuspEventsResponseBodySuspEventsDetails) *DescribeSuspEventsResponseBodySuspEvents {
+	s.Details = v
+	return s
+}
+
+func (s *DescribeSuspEventsResponseBodySuspEvents) SetEventNotes(v []*DescribeSuspEventsResponseBodySuspEventsEventNotes) *DescribeSuspEventsResponseBodySuspEvents {
+	s.EventNotes = v
+	return s
+}
+
 type DescribeSuspEventsResponseBodySuspEventsDetails struct {
 	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	Value        *string `json:"Value,omitempty" xml:"Value,omitempty"`
@@ -15665,6 +18761,35 @@ func (s *DescribeSuspEventsResponseBodySuspEventsDetails) SetValueDisplay(v stri
 	return s
 }
 
+type DescribeSuspEventsResponseBodySuspEventsEventNotes struct {
+	Note     *string `json:"Note,omitempty" xml:"Note,omitempty"`
+	NoteId   *int64  `json:"NoteId,omitempty" xml:"NoteId,omitempty"`
+	NoteTime *string `json:"NoteTime,omitempty" xml:"NoteTime,omitempty"`
+}
+
+func (s DescribeSuspEventsResponseBodySuspEventsEventNotes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSuspEventsResponseBodySuspEventsEventNotes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSuspEventsResponseBodySuspEventsEventNotes) SetNote(v string) *DescribeSuspEventsResponseBodySuspEventsEventNotes {
+	s.Note = &v
+	return s
+}
+
+func (s *DescribeSuspEventsResponseBodySuspEventsEventNotes) SetNoteId(v int64) *DescribeSuspEventsResponseBodySuspEventsEventNotes {
+	s.NoteId = &v
+	return s
+}
+
+func (s *DescribeSuspEventsResponseBodySuspEventsEventNotes) SetNoteTime(v string) *DescribeSuspEventsResponseBodySuspEventsEventNotes {
+	s.NoteTime = &v
+	return s
+}
+
 type DescribeSuspEventsResponse struct {
 	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	Body    *DescribeSuspEventsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -15684,6 +18809,116 @@ func (s *DescribeSuspEventsResponse) SetHeaders(v map[string]*string) *DescribeS
 }
 
 func (s *DescribeSuspEventsResponse) SetBody(v *DescribeSuspEventsResponseBody) *DescribeSuspEventsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeUserBackupMachinesRequest struct {
+	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	CurrentPage     *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+}
+
+func (s DescribeUserBackupMachinesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserBackupMachinesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserBackupMachinesRequest) SetSourceIp(v string) *DescribeUserBackupMachinesRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *DescribeUserBackupMachinesRequest) SetResourceOwnerId(v int64) *DescribeUserBackupMachinesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeUserBackupMachinesRequest) SetPageSize(v int32) *DescribeUserBackupMachinesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeUserBackupMachinesRequest) SetCurrentPage(v int32) *DescribeUserBackupMachinesRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+type DescribeUserBackupMachinesResponseBody struct {
+	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Machines  []*DescribeUserBackupMachinesResponseBodyMachines `json:"Machines,omitempty" xml:"Machines,omitempty" type:"Repeated"`
+}
+
+func (s DescribeUserBackupMachinesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserBackupMachinesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserBackupMachinesResponseBody) SetRequestId(v string) *DescribeUserBackupMachinesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeUserBackupMachinesResponseBody) SetMachines(v []*DescribeUserBackupMachinesResponseBodyMachines) *DescribeUserBackupMachinesResponseBody {
+	s.Machines = v
+	return s
+}
+
+type DescribeUserBackupMachinesResponseBodyMachines struct {
+	Uuid       *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	Id         *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s DescribeUserBackupMachinesResponseBodyMachines) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserBackupMachinesResponseBodyMachines) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserBackupMachinesResponseBodyMachines) SetUuid(v string) *DescribeUserBackupMachinesResponseBodyMachines {
+	s.Uuid = &v
+	return s
+}
+
+func (s *DescribeUserBackupMachinesResponseBodyMachines) SetPolicyName(v string) *DescribeUserBackupMachinesResponseBodyMachines {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *DescribeUserBackupMachinesResponseBodyMachines) SetId(v int64) *DescribeUserBackupMachinesResponseBodyMachines {
+	s.Id = &v
+	return s
+}
+
+type DescribeUserBackupMachinesResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeUserBackupMachinesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeUserBackupMachinesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserBackupMachinesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserBackupMachinesResponse) SetHeaders(v map[string]*string) *DescribeUserBackupMachinesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeUserBackupMachinesResponse) SetBody(v *DescribeUserBackupMachinesResponseBody) *DescribeUserBackupMachinesResponse {
 	s.Body = v
 	return s
 }
@@ -15810,8 +19045,8 @@ func (s *DescribeUserLayoutAuthorizationRequest) SetLang(v string) *DescribeUser
 }
 
 type DescribeUserLayoutAuthorizationResponseBody struct {
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Authorized *bool   `json:"Authorized,omitempty" xml:"Authorized,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeUserLayoutAuthorizationResponseBody) String() string {
@@ -15822,13 +19057,13 @@ func (s DescribeUserLayoutAuthorizationResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeUserLayoutAuthorizationResponseBody) SetRequestId(v string) *DescribeUserLayoutAuthorizationResponseBody {
-	s.RequestId = &v
+func (s *DescribeUserLayoutAuthorizationResponseBody) SetAuthorized(v bool) *DescribeUserLayoutAuthorizationResponseBody {
+	s.Authorized = &v
 	return s
 }
 
-func (s *DescribeUserLayoutAuthorizationResponseBody) SetAuthorized(v bool) *DescribeUserLayoutAuthorizationResponseBody {
-	s.Authorized = &v
+func (s *DescribeUserLayoutAuthorizationResponseBody) SetRequestId(v string) *DescribeUserLayoutAuthorizationResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -15851,6 +19086,200 @@ func (s *DescribeUserLayoutAuthorizationResponse) SetHeaders(v map[string]*strin
 }
 
 func (s *DescribeUserLayoutAuthorizationResponse) SetBody(v *DescribeUserLayoutAuthorizationResponseBody) *DescribeUserLayoutAuthorizationResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeUuidsByVulNamesRequest struct {
+	Lang           *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Type           *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	StatusList     *string   `json:"StatusList,omitempty" xml:"StatusList,omitempty"`
+	Tag            *string   `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	Level          *string   `json:"Level,omitempty" xml:"Level,omitempty"`
+	Dealed         *string   `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
+	GroupId        *int64    `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	VpcInstanceIds *string   `json:"VpcInstanceIds,omitempty" xml:"VpcInstanceIds,omitempty"`
+	Remark         *string   `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	SearchTags     *string   `json:"SearchTags,omitempty" xml:"SearchTags,omitempty"`
+	FieldName      *string   `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	FieldValue     *string   `json:"FieldValue,omitempty" xml:"FieldValue,omitempty"`
+	TargetType     *string   `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	Necessity      *string   `json:"Necessity,omitempty" xml:"Necessity,omitempty"`
+	VulNames       []*string `json:"VulNames,omitempty" xml:"VulNames,omitempty" type:"Repeated"`
+}
+
+func (s DescribeUuidsByVulNamesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUuidsByVulNamesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUuidsByVulNamesRequest) SetLang(v string) *DescribeUuidsByVulNamesRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeUuidsByVulNamesRequest) SetType(v string) *DescribeUuidsByVulNamesRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeUuidsByVulNamesRequest) SetStatusList(v string) *DescribeUuidsByVulNamesRequest {
+	s.StatusList = &v
+	return s
+}
+
+func (s *DescribeUuidsByVulNamesRequest) SetTag(v string) *DescribeUuidsByVulNamesRequest {
+	s.Tag = &v
+	return s
+}
+
+func (s *DescribeUuidsByVulNamesRequest) SetLevel(v string) *DescribeUuidsByVulNamesRequest {
+	s.Level = &v
+	return s
+}
+
+func (s *DescribeUuidsByVulNamesRequest) SetDealed(v string) *DescribeUuidsByVulNamesRequest {
+	s.Dealed = &v
+	return s
+}
+
+func (s *DescribeUuidsByVulNamesRequest) SetGroupId(v int64) *DescribeUuidsByVulNamesRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeUuidsByVulNamesRequest) SetVpcInstanceIds(v string) *DescribeUuidsByVulNamesRequest {
+	s.VpcInstanceIds = &v
+	return s
+}
+
+func (s *DescribeUuidsByVulNamesRequest) SetRemark(v string) *DescribeUuidsByVulNamesRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *DescribeUuidsByVulNamesRequest) SetSearchTags(v string) *DescribeUuidsByVulNamesRequest {
+	s.SearchTags = &v
+	return s
+}
+
+func (s *DescribeUuidsByVulNamesRequest) SetFieldName(v string) *DescribeUuidsByVulNamesRequest {
+	s.FieldName = &v
+	return s
+}
+
+func (s *DescribeUuidsByVulNamesRequest) SetFieldValue(v string) *DescribeUuidsByVulNamesRequest {
+	s.FieldValue = &v
+	return s
+}
+
+func (s *DescribeUuidsByVulNamesRequest) SetTargetType(v string) *DescribeUuidsByVulNamesRequest {
+	s.TargetType = &v
+	return s
+}
+
+func (s *DescribeUuidsByVulNamesRequest) SetNecessity(v string) *DescribeUuidsByVulNamesRequest {
+	s.Necessity = &v
+	return s
+}
+
+func (s *DescribeUuidsByVulNamesRequest) SetVulNames(v []*string) *DescribeUuidsByVulNamesRequest {
+	s.VulNames = v
+	return s
+}
+
+type DescribeUuidsByVulNamesResponseBody struct {
+	RequestId             *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	MachineInfoStatistics []*DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics `json:"MachineInfoStatistics,omitempty" xml:"MachineInfoStatistics,omitempty" type:"Repeated"`
+}
+
+func (s DescribeUuidsByVulNamesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUuidsByVulNamesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUuidsByVulNamesResponseBody) SetRequestId(v string) *DescribeUuidsByVulNamesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeUuidsByVulNamesResponseBody) SetMachineInfoStatistics(v []*DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics) *DescribeUuidsByVulNamesResponseBody {
+	s.MachineInfoStatistics = v
+	return s
+}
+
+type DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics struct {
+	Uuid              *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	MachineIp         *string `json:"MachineIp,omitempty" xml:"MachineIp,omitempty"`
+	Os                *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	MachineName       *string `json:"MachineName,omitempty" xml:"MachineName,omitempty"`
+	MachineInstanceId *string `json:"MachineInstanceId,omitempty" xml:"MachineInstanceId,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics) SetUuid(v string) *DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics {
+	s.Uuid = &v
+	return s
+}
+
+func (s *DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics) SetMachineIp(v string) *DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics {
+	s.MachineIp = &v
+	return s
+}
+
+func (s *DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics) SetOs(v string) *DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics {
+	s.Os = &v
+	return s
+}
+
+func (s *DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics) SetMachineName(v string) *DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics {
+	s.MachineName = &v
+	return s
+}
+
+func (s *DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics) SetMachineInstanceId(v string) *DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics {
+	s.MachineInstanceId = &v
+	return s
+}
+
+func (s *DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics) SetRegionId(v string) *DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeUuidsByVulNamesResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeUuidsByVulNamesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeUuidsByVulNamesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUuidsByVulNamesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUuidsByVulNamesResponse) SetHeaders(v map[string]*string) *DescribeUuidsByVulNamesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeUuidsByVulNamesResponse) SetBody(v *DescribeUuidsByVulNamesResponseBody) *DescribeUuidsByVulNamesResponse {
 	s.Body = v
 	return s
 }
@@ -15879,25 +19308,25 @@ func (s *DescribeVersionConfigRequest) SetResourceDirectoryAccountId(v string) *
 }
 
 type DescribeVersionConfigResponseBody struct {
-	ImageScanCapacity     *int64  `json:"ImageScanCapacity,omitempty" xml:"ImageScanCapacity,omitempty"`
-	AppWhiteListAuthCount *int64  `json:"AppWhiteListAuthCount,omitempty" xml:"AppWhiteListAuthCount,omitempty"`
 	SasLog                *int32  `json:"SasLog,omitempty" xml:"SasLog,omitempty"`
-	Version               *int32  `json:"Version,omitempty" xml:"Version,omitempty"`
-	LastTrailEndTime      *int64  `json:"LastTrailEndTime,omitempty" xml:"LastTrailEndTime,omitempty"`
-	WebLockAuthCount      *int64  `json:"WebLockAuthCount,omitempty" xml:"WebLockAuthCount,omitempty"`
-	SlsCapacity           *int64  `json:"SlsCapacity,omitempty" xml:"SlsCapacity,omitempty"`
-	UserDefinedAlarms     *int32  `json:"UserDefinedAlarms,omitempty" xml:"UserDefinedAlarms,omitempty"`
-	WebLock               *int32  `json:"WebLock,omitempty" xml:"WebLock,omitempty"`
-	IsOverBalance         *bool   `json:"IsOverBalance,omitempty" xml:"IsOverBalance,omitempty"`
-	VmCores               *int32  `json:"VmCores,omitempty" xml:"VmCores,omitempty"`
-	HoneypotCapacity      *int64  `json:"HoneypotCapacity,omitempty" xml:"HoneypotCapacity,omitempty"`
-	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	AssetLevel            *int32  `json:"AssetLevel,omitempty" xml:"AssetLevel,omitempty"`
-	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	SasScreen             *int32  `json:"SasScreen,omitempty" xml:"SasScreen,omitempty"`
+	HoneypotCapacity      *int64  `json:"HoneypotCapacity,omitempty" xml:"HoneypotCapacity,omitempty"`
+	WebLock               *int32  `json:"WebLock,omitempty" xml:"WebLock,omitempty"`
+	AppWhiteListAuthCount *int64  `json:"AppWhiteListAuthCount,omitempty" xml:"AppWhiteListAuthCount,omitempty"`
+	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	LastTrailEndTime      *int64  `json:"LastTrailEndTime,omitempty" xml:"LastTrailEndTime,omitempty"`
+	Version               *int32  `json:"Version,omitempty" xml:"Version,omitempty"`
+	WebLockAuthCount      *int64  `json:"WebLockAuthCount,omitempty" xml:"WebLockAuthCount,omitempty"`
 	ReleaseTime           *int64  `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
-	IsTrialVersion        *int32  `json:"IsTrialVersion,omitempty" xml:"IsTrialVersion,omitempty"`
+	AssetLevel            *int32  `json:"AssetLevel,omitempty" xml:"AssetLevel,omitempty"`
+	IsOverBalance         *bool   `json:"IsOverBalance,omitempty" xml:"IsOverBalance,omitempty"`
+	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	SlsCapacity           *int64  `json:"SlsCapacity,omitempty" xml:"SlsCapacity,omitempty"`
+	VmCores               *int32  `json:"VmCores,omitempty" xml:"VmCores,omitempty"`
 	AppWhiteList          *int32  `json:"AppWhiteList,omitempty" xml:"AppWhiteList,omitempty"`
+	ImageScanCapacity     *int64  `json:"ImageScanCapacity,omitempty" xml:"ImageScanCapacity,omitempty"`
+	IsTrialVersion        *int32  `json:"IsTrialVersion,omitempty" xml:"IsTrialVersion,omitempty"`
+	UserDefinedAlarms     *int32  `json:"UserDefinedAlarms,omitempty" xml:"UserDefinedAlarms,omitempty"`
 }
 
 func (s DescribeVersionConfigResponseBody) String() string {
@@ -15908,78 +19337,8 @@ func (s DescribeVersionConfigResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeVersionConfigResponseBody) SetImageScanCapacity(v int64) *DescribeVersionConfigResponseBody {
-	s.ImageScanCapacity = &v
-	return s
-}
-
-func (s *DescribeVersionConfigResponseBody) SetAppWhiteListAuthCount(v int64) *DescribeVersionConfigResponseBody {
-	s.AppWhiteListAuthCount = &v
-	return s
-}
-
 func (s *DescribeVersionConfigResponseBody) SetSasLog(v int32) *DescribeVersionConfigResponseBody {
 	s.SasLog = &v
-	return s
-}
-
-func (s *DescribeVersionConfigResponseBody) SetVersion(v int32) *DescribeVersionConfigResponseBody {
-	s.Version = &v
-	return s
-}
-
-func (s *DescribeVersionConfigResponseBody) SetLastTrailEndTime(v int64) *DescribeVersionConfigResponseBody {
-	s.LastTrailEndTime = &v
-	return s
-}
-
-func (s *DescribeVersionConfigResponseBody) SetWebLockAuthCount(v int64) *DescribeVersionConfigResponseBody {
-	s.WebLockAuthCount = &v
-	return s
-}
-
-func (s *DescribeVersionConfigResponseBody) SetSlsCapacity(v int64) *DescribeVersionConfigResponseBody {
-	s.SlsCapacity = &v
-	return s
-}
-
-func (s *DescribeVersionConfigResponseBody) SetUserDefinedAlarms(v int32) *DescribeVersionConfigResponseBody {
-	s.UserDefinedAlarms = &v
-	return s
-}
-
-func (s *DescribeVersionConfigResponseBody) SetWebLock(v int32) *DescribeVersionConfigResponseBody {
-	s.WebLock = &v
-	return s
-}
-
-func (s *DescribeVersionConfigResponseBody) SetIsOverBalance(v bool) *DescribeVersionConfigResponseBody {
-	s.IsOverBalance = &v
-	return s
-}
-
-func (s *DescribeVersionConfigResponseBody) SetVmCores(v int32) *DescribeVersionConfigResponseBody {
-	s.VmCores = &v
-	return s
-}
-
-func (s *DescribeVersionConfigResponseBody) SetHoneypotCapacity(v int64) *DescribeVersionConfigResponseBody {
-	s.HoneypotCapacity = &v
-	return s
-}
-
-func (s *DescribeVersionConfigResponseBody) SetRequestId(v string) *DescribeVersionConfigResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeVersionConfigResponseBody) SetAssetLevel(v int32) *DescribeVersionConfigResponseBody {
-	s.AssetLevel = &v
-	return s
-}
-
-func (s *DescribeVersionConfigResponseBody) SetInstanceId(v string) *DescribeVersionConfigResponseBody {
-	s.InstanceId = &v
 	return s
 }
 
@@ -15988,8 +19347,78 @@ func (s *DescribeVersionConfigResponseBody) SetSasScreen(v int32) *DescribeVersi
 	return s
 }
 
+func (s *DescribeVersionConfigResponseBody) SetHoneypotCapacity(v int64) *DescribeVersionConfigResponseBody {
+	s.HoneypotCapacity = &v
+	return s
+}
+
+func (s *DescribeVersionConfigResponseBody) SetWebLock(v int32) *DescribeVersionConfigResponseBody {
+	s.WebLock = &v
+	return s
+}
+
+func (s *DescribeVersionConfigResponseBody) SetAppWhiteListAuthCount(v int64) *DescribeVersionConfigResponseBody {
+	s.AppWhiteListAuthCount = &v
+	return s
+}
+
+func (s *DescribeVersionConfigResponseBody) SetRequestId(v string) *DescribeVersionConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeVersionConfigResponseBody) SetLastTrailEndTime(v int64) *DescribeVersionConfigResponseBody {
+	s.LastTrailEndTime = &v
+	return s
+}
+
+func (s *DescribeVersionConfigResponseBody) SetVersion(v int32) *DescribeVersionConfigResponseBody {
+	s.Version = &v
+	return s
+}
+
+func (s *DescribeVersionConfigResponseBody) SetWebLockAuthCount(v int64) *DescribeVersionConfigResponseBody {
+	s.WebLockAuthCount = &v
+	return s
+}
+
 func (s *DescribeVersionConfigResponseBody) SetReleaseTime(v int64) *DescribeVersionConfigResponseBody {
 	s.ReleaseTime = &v
+	return s
+}
+
+func (s *DescribeVersionConfigResponseBody) SetAssetLevel(v int32) *DescribeVersionConfigResponseBody {
+	s.AssetLevel = &v
+	return s
+}
+
+func (s *DescribeVersionConfigResponseBody) SetIsOverBalance(v bool) *DescribeVersionConfigResponseBody {
+	s.IsOverBalance = &v
+	return s
+}
+
+func (s *DescribeVersionConfigResponseBody) SetInstanceId(v string) *DescribeVersionConfigResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeVersionConfigResponseBody) SetSlsCapacity(v int64) *DescribeVersionConfigResponseBody {
+	s.SlsCapacity = &v
+	return s
+}
+
+func (s *DescribeVersionConfigResponseBody) SetVmCores(v int32) *DescribeVersionConfigResponseBody {
+	s.VmCores = &v
+	return s
+}
+
+func (s *DescribeVersionConfigResponseBody) SetAppWhiteList(v int32) *DescribeVersionConfigResponseBody {
+	s.AppWhiteList = &v
+	return s
+}
+
+func (s *DescribeVersionConfigResponseBody) SetImageScanCapacity(v int64) *DescribeVersionConfigResponseBody {
+	s.ImageScanCapacity = &v
 	return s
 }
 
@@ -15998,8 +19427,8 @@ func (s *DescribeVersionConfigResponseBody) SetIsTrialVersion(v int32) *Describe
 	return s
 }
 
-func (s *DescribeVersionConfigResponseBody) SetAppWhiteList(v int32) *DescribeVersionConfigResponseBody {
-	s.AppWhiteList = &v
+func (s *DescribeVersionConfigResponseBody) SetUserDefinedAlarms(v int32) *DescribeVersionConfigResponseBody {
+	s.UserDefinedAlarms = &v
 	return s
 }
 
@@ -16050,8 +19479,8 @@ func (s *DescribeVolDingdingMessageRequest) SetLang(v string) *DescribeVolDingdi
 }
 
 type DescribeVolDingdingMessageResponseBody struct {
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DingdingUrl *string `json:"DingdingUrl,omitempty" xml:"DingdingUrl,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeVolDingdingMessageResponseBody) String() string {
@@ -16062,13 +19491,13 @@ func (s DescribeVolDingdingMessageResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeVolDingdingMessageResponseBody) SetRequestId(v string) *DescribeVolDingdingMessageResponseBody {
-	s.RequestId = &v
+func (s *DescribeVolDingdingMessageResponseBody) SetDingdingUrl(v string) *DescribeVolDingdingMessageResponseBody {
+	s.DingdingUrl = &v
 	return s
 }
 
-func (s *DescribeVolDingdingMessageResponseBody) SetDingdingUrl(v string) *DescribeVolDingdingMessageResponseBody {
-	s.DingdingUrl = &v
+func (s *DescribeVolDingdingMessageResponseBody) SetRequestId(v string) *DescribeVolDingdingMessageResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -16095,26 +19524,9 @@ func (s *DescribeVolDingdingMessageResponse) SetBody(v *DescribeVolDingdingMessa
 	return s
 }
 
-type DescribeVpcHoneyPotCriteriaRequest struct {
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-}
-
-func (s DescribeVpcHoneyPotCriteriaRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVpcHoneyPotCriteriaRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVpcHoneyPotCriteriaRequest) SetSourceIp(v string) *DescribeVpcHoneyPotCriteriaRequest {
-	s.SourceIp = &v
-	return s
-}
-
 type DescribeVpcHoneyPotCriteriaResponseBody struct {
-	CriteriaList []*DescribeVpcHoneyPotCriteriaResponseBodyCriteriaList `json:"CriteriaList,omitempty" xml:"CriteriaList,omitempty" type:"Repeated"`
 	RequestId    *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	CriteriaList []*DescribeVpcHoneyPotCriteriaResponseBodyCriteriaList `json:"CriteriaList,omitempty" xml:"CriteriaList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeVpcHoneyPotCriteriaResponseBody) String() string {
@@ -16125,20 +19537,20 @@ func (s DescribeVpcHoneyPotCriteriaResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeVpcHoneyPotCriteriaResponseBody) SetCriteriaList(v []*DescribeVpcHoneyPotCriteriaResponseBodyCriteriaList) *DescribeVpcHoneyPotCriteriaResponseBody {
-	s.CriteriaList = v
-	return s
-}
-
 func (s *DescribeVpcHoneyPotCriteriaResponseBody) SetRequestId(v string) *DescribeVpcHoneyPotCriteriaResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *DescribeVpcHoneyPotCriteriaResponseBody) SetCriteriaList(v []*DescribeVpcHoneyPotCriteriaResponseBodyCriteriaList) *DescribeVpcHoneyPotCriteriaResponseBody {
+	s.CriteriaList = v
+	return s
+}
+
 type DescribeVpcHoneyPotCriteriaResponseBodyCriteriaList struct {
 	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Values *string `json:"Values,omitempty" xml:"Values,omitempty"`
 	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Values *string `json:"Values,omitempty" xml:"Values,omitempty"`
 }
 
 func (s DescribeVpcHoneyPotCriteriaResponseBodyCriteriaList) String() string {
@@ -16154,13 +19566,13 @@ func (s *DescribeVpcHoneyPotCriteriaResponseBodyCriteriaList) SetType(v string) 
 	return s
 }
 
-func (s *DescribeVpcHoneyPotCriteriaResponseBodyCriteriaList) SetValues(v string) *DescribeVpcHoneyPotCriteriaResponseBodyCriteriaList {
-	s.Values = &v
+func (s *DescribeVpcHoneyPotCriteriaResponseBodyCriteriaList) SetName(v string) *DescribeVpcHoneyPotCriteriaResponseBodyCriteriaList {
+	s.Name = &v
 	return s
 }
 
-func (s *DescribeVpcHoneyPotCriteriaResponseBodyCriteriaList) SetName(v string) *DescribeVpcHoneyPotCriteriaResponseBodyCriteriaList {
-	s.Name = &v
+func (s *DescribeVpcHoneyPotCriteriaResponseBodyCriteriaList) SetValues(v string) *DescribeVpcHoneyPotCriteriaResponseBodyCriteriaList {
+	s.Values = &v
 	return s
 }
 
@@ -16188,7 +19600,6 @@ func (s *DescribeVpcHoneyPotCriteriaResponse) SetBody(v *DescribeVpcHoneyPotCrit
 }
 
 type DescribeVpcHoneyPotListRequest struct {
-	SourceIp          *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	VpcId             *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	VpcName           *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
 	VpcRegionId       *string `json:"VpcRegionId,omitempty" xml:"VpcRegionId,omitempty"`
@@ -16203,11 +19614,6 @@ func (s DescribeVpcHoneyPotListRequest) String() string {
 
 func (s DescribeVpcHoneyPotListRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeVpcHoneyPotListRequest) SetSourceIp(v string) *DescribeVpcHoneyPotListRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *DescribeVpcHoneyPotListRequest) SetVpcId(v string) *DescribeVpcHoneyPotListRequest {
@@ -16241,9 +19647,9 @@ func (s *DescribeVpcHoneyPotListRequest) SetCurrentPage(v int32) *DescribeVpcHon
 }
 
 type DescribeVpcHoneyPotListResponseBody struct {
-	VpcHoneyPotDTOList []*DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList `json:"VpcHoneyPotDTOList,omitempty" xml:"VpcHoneyPotDTOList,omitempty" type:"Repeated"`
-	PageInfo           *DescribeVpcHoneyPotListResponseBodyPageInfo             `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	RequestId          *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageInfo           *DescribeVpcHoneyPotListResponseBodyPageInfo             `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	VpcHoneyPotDTOList []*DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList `json:"VpcHoneyPotDTOList,omitempty" xml:"VpcHoneyPotDTOList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeVpcHoneyPotListResponseBody) String() string {
@@ -16254,8 +19660,8 @@ func (s DescribeVpcHoneyPotListResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeVpcHoneyPotListResponseBody) SetVpcHoneyPotDTOList(v []*DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList) *DescribeVpcHoneyPotListResponseBody {
-	s.VpcHoneyPotDTOList = v
+func (s *DescribeVpcHoneyPotListResponseBody) SetRequestId(v string) *DescribeVpcHoneyPotListResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -16264,91 +19670,8 @@ func (s *DescribeVpcHoneyPotListResponseBody) SetPageInfo(v *DescribeVpcHoneyPot
 	return s
 }
 
-func (s *DescribeVpcHoneyPotListResponseBody) SetRequestId(v string) *DescribeVpcHoneyPotListResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList struct {
-	VpcId                     *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VpcStatus                 *string   `json:"VpcStatus,omitempty" xml:"VpcStatus,omitempty"`
-	CreateTime                *int64    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	HoneyPotExistence         *bool     `json:"HoneyPotExistence,omitempty" xml:"HoneyPotExistence,omitempty"`
-	VpcRegionId               *string   `json:"VpcRegionId,omitempty" xml:"VpcRegionId,omitempty"`
-	HoneyPotInstanceStatus    *string   `json:"HoneyPotInstanceStatus,omitempty" xml:"HoneyPotInstanceStatus,omitempty"`
-	HoneyPotVSwitchId         *string   `json:"HoneyPotVSwitchId,omitempty" xml:"HoneyPotVSwitchId,omitempty"`
-	VpcSwitchIdList           []*string `json:"VpcSwitchIdList,omitempty" xml:"VpcSwitchIdList,omitempty" type:"Repeated"`
-	VpcName                   *string   `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
-	HoneyPotEniInstanceId     *string   `json:"HoneyPotEniInstanceId,omitempty" xml:"HoneyPotEniInstanceId,omitempty"`
-	CidrBlock                 *string   `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	HoneyPotEcsInstanceStatus *string   `json:"HoneyPotEcsInstanceStatus,omitempty" xml:"HoneyPotEcsInstanceStatus,omitempty"`
-}
-
-func (s DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList) SetVpcId(v string) *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList {
-	s.VpcId = &v
-	return s
-}
-
-func (s *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList) SetVpcStatus(v string) *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList {
-	s.VpcStatus = &v
-	return s
-}
-
-func (s *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList) SetCreateTime(v int64) *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList) SetHoneyPotExistence(v bool) *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList {
-	s.HoneyPotExistence = &v
-	return s
-}
-
-func (s *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList) SetVpcRegionId(v string) *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList {
-	s.VpcRegionId = &v
-	return s
-}
-
-func (s *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList) SetHoneyPotInstanceStatus(v string) *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList {
-	s.HoneyPotInstanceStatus = &v
-	return s
-}
-
-func (s *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList) SetHoneyPotVSwitchId(v string) *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList {
-	s.HoneyPotVSwitchId = &v
-	return s
-}
-
-func (s *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList) SetVpcSwitchIdList(v []*string) *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList {
-	s.VpcSwitchIdList = v
-	return s
-}
-
-func (s *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList) SetVpcName(v string) *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList {
-	s.VpcName = &v
-	return s
-}
-
-func (s *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList) SetHoneyPotEniInstanceId(v string) *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList {
-	s.HoneyPotEniInstanceId = &v
-	return s
-}
-
-func (s *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList) SetCidrBlock(v string) *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList {
-	s.CidrBlock = &v
-	return s
-}
-
-func (s *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList) SetHoneyPotEcsInstanceStatus(v string) *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList {
-	s.HoneyPotEcsInstanceStatus = &v
+func (s *DescribeVpcHoneyPotListResponseBody) SetVpcHoneyPotDTOList(v []*DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList) *DescribeVpcHoneyPotListResponseBody {
+	s.VpcHoneyPotDTOList = v
 	return s
 }
 
@@ -16387,6 +19710,118 @@ func (s *DescribeVpcHoneyPotListResponseBodyPageInfo) SetCount(v int32) *Describ
 	return s
 }
 
+type DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList struct {
+	VpcName                   *string                                                                 `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
+	VpcId                     *string                                                                 `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	HoneyPotEniInstanceId     *string                                                                 `json:"HoneyPotEniInstanceId,omitempty" xml:"HoneyPotEniInstanceId,omitempty"`
+	CidrBlock                 *string                                                                 `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	VpcStatus                 *string                                                                 `json:"VpcStatus,omitempty" xml:"VpcStatus,omitempty"`
+	CreateTime                *int64                                                                  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	HoneyPotVpcSwitchId       *string                                                                 `json:"HoneyPotVpcSwitchId,omitempty" xml:"HoneyPotVpcSwitchId,omitempty"`
+	HoneyPotExistence         *bool                                                                   `json:"HoneyPotExistence,omitempty" xml:"HoneyPotExistence,omitempty"`
+	VpcRegionId               *string                                                                 `json:"VpcRegionId,omitempty" xml:"VpcRegionId,omitempty"`
+	HoneyPotEcsInstanceStatus *string                                                                 `json:"HoneyPotEcsInstanceStatus,omitempty" xml:"HoneyPotEcsInstanceStatus,omitempty"`
+	HoneyPotInstanceStatus    *string                                                                 `json:"HoneyPotInstanceStatus,omitempty" xml:"HoneyPotInstanceStatus,omitempty"`
+	VpcSwitchIdList           []*DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOListVpcSwitchIdList `json:"VpcSwitchIdList,omitempty" xml:"VpcSwitchIdList,omitempty" type:"Repeated"`
+}
+
+func (s DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList) SetVpcName(v string) *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList {
+	s.VpcName = &v
+	return s
+}
+
+func (s *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList) SetVpcId(v string) *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList {
+	s.VpcId = &v
+	return s
+}
+
+func (s *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList) SetHoneyPotEniInstanceId(v string) *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList {
+	s.HoneyPotEniInstanceId = &v
+	return s
+}
+
+func (s *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList) SetCidrBlock(v string) *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList {
+	s.CidrBlock = &v
+	return s
+}
+
+func (s *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList) SetVpcStatus(v string) *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList {
+	s.VpcStatus = &v
+	return s
+}
+
+func (s *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList) SetCreateTime(v int64) *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList) SetHoneyPotVpcSwitchId(v string) *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList {
+	s.HoneyPotVpcSwitchId = &v
+	return s
+}
+
+func (s *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList) SetHoneyPotExistence(v bool) *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList {
+	s.HoneyPotExistence = &v
+	return s
+}
+
+func (s *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList) SetVpcRegionId(v string) *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList {
+	s.VpcRegionId = &v
+	return s
+}
+
+func (s *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList) SetHoneyPotEcsInstanceStatus(v string) *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList {
+	s.HoneyPotEcsInstanceStatus = &v
+	return s
+}
+
+func (s *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList) SetHoneyPotInstanceStatus(v string) *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList {
+	s.HoneyPotInstanceStatus = &v
+	return s
+}
+
+func (s *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList) SetVpcSwitchIdList(v []*DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOListVpcSwitchIdList) *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList {
+	s.VpcSwitchIdList = v
+	return s
+}
+
+type DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOListVpcSwitchIdList struct {
+	VpcSwitchName *string `json:"VpcSwitchName,omitempty" xml:"VpcSwitchName,omitempty"`
+	ZoneId        *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	VpcSwitchId   *string `json:"VpcSwitchId,omitempty" xml:"VpcSwitchId,omitempty"`
+}
+
+func (s DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOListVpcSwitchIdList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOListVpcSwitchIdList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOListVpcSwitchIdList) SetVpcSwitchName(v string) *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOListVpcSwitchIdList {
+	s.VpcSwitchName = &v
+	return s
+}
+
+func (s *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOListVpcSwitchIdList) SetZoneId(v string) *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOListVpcSwitchIdList {
+	s.ZoneId = &v
+	return s
+}
+
+func (s *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOListVpcSwitchIdList) SetVpcSwitchId(v string) *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOListVpcSwitchIdList {
+	s.VpcSwitchId = &v
+	return s
+}
+
 type DescribeVpcHoneyPotListResponse struct {
 	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	Body    *DescribeVpcHoneyPotListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -16410,27 +19845,10 @@ func (s *DescribeVpcHoneyPotListResponse) SetBody(v *DescribeVpcHoneyPotListResp
 	return s
 }
 
-type DescribeVpcListRequest struct {
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-}
-
-func (s DescribeVpcListRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVpcListRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVpcListRequest) SetSourceIp(v string) *DescribeVpcListRequest {
-	s.SourceIp = &v
-	return s
-}
-
 type DescribeVpcListResponseBody struct {
+	Count     *int32                                `json:"Count,omitempty" xml:"Count,omitempty"`
 	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	VpcList   []*DescribeVpcListResponseBodyVpcList `json:"VpcList,omitempty" xml:"VpcList,omitempty" type:"Repeated"`
-	Count     *int32                                `json:"Count,omitempty" xml:"Count,omitempty"`
 }
 
 func (s DescribeVpcListResponseBody) String() string {
@@ -16441,6 +19859,11 @@ func (s DescribeVpcListResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeVpcListResponseBody) SetCount(v int32) *DescribeVpcListResponseBody {
+	s.Count = &v
+	return s
+}
+
 func (s *DescribeVpcListResponseBody) SetRequestId(v string) *DescribeVpcListResponseBody {
 	s.RequestId = &v
 	return s
@@ -16448,11 +19871,6 @@ func (s *DescribeVpcListResponseBody) SetRequestId(v string) *DescribeVpcListRes
 
 func (s *DescribeVpcListResponseBody) SetVpcList(v []*DescribeVpcListResponseBodyVpcList) *DescribeVpcListResponseBody {
 	s.VpcList = v
-	return s
-}
-
-func (s *DescribeVpcListResponseBody) SetCount(v int32) *DescribeVpcListResponseBody {
-	s.Count = &v
 	return s
 }
 
@@ -16521,7 +19939,6 @@ func (s *DescribeVpcListResponse) SetBody(v *DescribeVpcListResponseBody) *Descr
 }
 
 type DescribeVulDetailsRequest struct {
-	SourceIp  *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	Lang      *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -16534,11 +19951,6 @@ func (s DescribeVulDetailsRequest) String() string {
 
 func (s DescribeVulDetailsRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeVulDetailsRequest) SetSourceIp(v string) *DescribeVulDetailsRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *DescribeVulDetailsRequest) SetLang(v string) *DescribeVulDetailsRequest {
@@ -16562,8 +19974,8 @@ func (s *DescribeVulDetailsRequest) SetAliasName(v string) *DescribeVulDetailsRe
 }
 
 type DescribeVulDetailsResponseBody struct {
-	Cves      []*DescribeVulDetailsResponseBodyCves `json:"Cves,omitempty" xml:"Cves,omitempty" type:"Repeated"`
 	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Cves      []*DescribeVulDetailsResponseBodyCves `json:"Cves,omitempty" xml:"Cves,omitempty" type:"Repeated"`
 }
 
 func (s DescribeVulDetailsResponseBody) String() string {
@@ -16574,19 +19986,19 @@ func (s DescribeVulDetailsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeVulDetailsResponseBody) SetCves(v []*DescribeVulDetailsResponseBodyCves) *DescribeVulDetailsResponseBody {
-	s.Cves = v
-	return s
-}
-
 func (s *DescribeVulDetailsResponseBody) SetRequestId(v string) *DescribeVulDetailsResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *DescribeVulDetailsResponseBody) SetCves(v []*DescribeVulDetailsResponseBodyCves) *DescribeVulDetailsResponseBody {
+	s.Cves = v
+	return s
+}
+
 type DescribeVulDetailsResponseBodyCves struct {
-	Complexity        *string                                        `json:"Complexity,omitempty" xml:"Complexity,omitempty"`
 	Summary           *string                                        `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Complexity        *string                                        `json:"Complexity,omitempty" xml:"Complexity,omitempty"`
 	Product           *string                                        `json:"Product,omitempty" xml:"Product,omitempty"`
 	PocCreateTime     *int64                                         `json:"PocCreateTime,omitempty" xml:"PocCreateTime,omitempty"`
 	CveId             *string                                        `json:"CveId,omitempty" xml:"CveId,omitempty"`
@@ -16595,8 +20007,8 @@ type DescribeVulDetailsResponseBodyCves struct {
 	CvssScore         *string                                        `json:"CvssScore,omitempty" xml:"CvssScore,omitempty"`
 	Vendor            *string                                        `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 	PocDisclosureTime *int64                                         `json:"PocDisclosureTime,omitempty" xml:"PocDisclosureTime,omitempty"`
-	CvssVector        *string                                        `json:"CvssVector,omitempty" xml:"CvssVector,omitempty"`
 	Classify          *string                                        `json:"Classify,omitempty" xml:"Classify,omitempty"`
+	CvssVector        *string                                        `json:"CvssVector,omitempty" xml:"CvssVector,omitempty"`
 	VulLevel          *string                                        `json:"VulLevel,omitempty" xml:"VulLevel,omitempty"`
 	ReleaseTime       *int64                                         `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
 	Title             *string                                        `json:"Title,omitempty" xml:"Title,omitempty"`
@@ -16614,13 +20026,13 @@ func (s DescribeVulDetailsResponseBodyCves) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeVulDetailsResponseBodyCves) SetComplexity(v string) *DescribeVulDetailsResponseBodyCves {
-	s.Complexity = &v
+func (s *DescribeVulDetailsResponseBodyCves) SetSummary(v string) *DescribeVulDetailsResponseBodyCves {
+	s.Summary = &v
 	return s
 }
 
-func (s *DescribeVulDetailsResponseBodyCves) SetSummary(v string) *DescribeVulDetailsResponseBodyCves {
-	s.Summary = &v
+func (s *DescribeVulDetailsResponseBodyCves) SetComplexity(v string) *DescribeVulDetailsResponseBodyCves {
+	s.Complexity = &v
 	return s
 }
 
@@ -16664,13 +20076,13 @@ func (s *DescribeVulDetailsResponseBodyCves) SetPocDisclosureTime(v int64) *Desc
 	return s
 }
 
-func (s *DescribeVulDetailsResponseBodyCves) SetCvssVector(v string) *DescribeVulDetailsResponseBodyCves {
-	s.CvssVector = &v
+func (s *DescribeVulDetailsResponseBodyCves) SetClassify(v string) *DescribeVulDetailsResponseBodyCves {
+	s.Classify = &v
 	return s
 }
 
-func (s *DescribeVulDetailsResponseBodyCves) SetClassify(v string) *DescribeVulDetailsResponseBodyCves {
-	s.Classify = &v
+func (s *DescribeVulDetailsResponseBodyCves) SetCvssVector(v string) *DescribeVulDetailsResponseBodyCves {
+	s.CvssVector = &v
 	return s
 }
 
@@ -16762,34 +20174,18 @@ func (s *DescribeVulDetailsResponse) SetBody(v *DescribeVulDetailsResponseBody) 
 }
 
 type DescribeVulListRequest struct {
-	SourceIp            *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang                *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Ids                 *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
-	Remark              *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	GroupId             *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Uuids               *string `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
-	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	AliasName           *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	Level               *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	StatusList          *string `json:"StatusList,omitempty" xml:"StatusList,omitempty"`
-	Necessity           *string `json:"Necessity,omitempty" xml:"Necessity,omitempty"`
-	Dealed              *string `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
-	BatchName           *string `json:"BatchName,omitempty" xml:"BatchName,omitempty"`
-	Resource            *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	CreateTsStart       *int64  `json:"CreateTsStart,omitempty" xml:"CreateTsStart,omitempty"`
-	CreateTsEnd         *int64  `json:"CreateTsEnd,omitempty" xml:"CreateTsEnd,omitempty"`
-	CurrentPage         *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize            *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ModifyTsStart       *int64  `json:"ModifyTsStart,omitempty" xml:"ModifyTsStart,omitempty"`
-	ModifyTsEnd         *int64  `json:"ModifyTsEnd,omitempty" xml:"ModifyTsEnd,omitempty"`
-	AttachTypes         *string `json:"AttachTypes,omitempty" xml:"AttachTypes,omitempty"`
-	ContainerFieldName  *string `json:"ContainerFieldName,omitempty" xml:"ContainerFieldName,omitempty"`
-	ContainerFieldValue *string `json:"ContainerFieldValue,omitempty" xml:"ContainerFieldValue,omitempty"`
-	TargetType          *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	ClusterId           *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	MinScore            *int32  `json:"MinScore,omitempty" xml:"MinScore,omitempty"`
-	VpcInstanceIds      *string `json:"VpcInstanceIds,omitempty" xml:"VpcInstanceIds,omitempty"`
+	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Remark         *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	GroupId        *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Uuids          *string `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
+	AliasName      *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	Necessity      *string `json:"Necessity,omitempty" xml:"Necessity,omitempty"`
+	Dealed         *string `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
+	CurrentPage    *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	AttachTypes    *string `json:"AttachTypes,omitempty" xml:"AttachTypes,omitempty"`
+	VpcInstanceIds *string `json:"VpcInstanceIds,omitempty" xml:"VpcInstanceIds,omitempty"`
 }
 
 func (s DescribeVulListRequest) String() string {
@@ -16800,18 +20196,8 @@ func (s DescribeVulListRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeVulListRequest) SetSourceIp(v string) *DescribeVulListRequest {
-	s.SourceIp = &v
-	return s
-}
-
 func (s *DescribeVulListRequest) SetLang(v string) *DescribeVulListRequest {
 	s.Lang = &v
-	return s
-}
-
-func (s *DescribeVulListRequest) SetIds(v string) *DescribeVulListRequest {
-	s.Ids = &v
 	return s
 }
 
@@ -16835,23 +20221,8 @@ func (s *DescribeVulListRequest) SetUuids(v string) *DescribeVulListRequest {
 	return s
 }
 
-func (s *DescribeVulListRequest) SetName(v string) *DescribeVulListRequest {
-	s.Name = &v
-	return s
-}
-
 func (s *DescribeVulListRequest) SetAliasName(v string) *DescribeVulListRequest {
 	s.AliasName = &v
-	return s
-}
-
-func (s *DescribeVulListRequest) SetLevel(v string) *DescribeVulListRequest {
-	s.Level = &v
-	return s
-}
-
-func (s *DescribeVulListRequest) SetStatusList(v string) *DescribeVulListRequest {
-	s.StatusList = &v
 	return s
 }
 
@@ -16865,26 +20236,6 @@ func (s *DescribeVulListRequest) SetDealed(v string) *DescribeVulListRequest {
 	return s
 }
 
-func (s *DescribeVulListRequest) SetBatchName(v string) *DescribeVulListRequest {
-	s.BatchName = &v
-	return s
-}
-
-func (s *DescribeVulListRequest) SetResource(v string) *DescribeVulListRequest {
-	s.Resource = &v
-	return s
-}
-
-func (s *DescribeVulListRequest) SetCreateTsStart(v int64) *DescribeVulListRequest {
-	s.CreateTsStart = &v
-	return s
-}
-
-func (s *DescribeVulListRequest) SetCreateTsEnd(v int64) *DescribeVulListRequest {
-	s.CreateTsEnd = &v
-	return s
-}
-
 func (s *DescribeVulListRequest) SetCurrentPage(v int32) *DescribeVulListRequest {
 	s.CurrentPage = &v
 	return s
@@ -16895,43 +20246,8 @@ func (s *DescribeVulListRequest) SetPageSize(v int32) *DescribeVulListRequest {
 	return s
 }
 
-func (s *DescribeVulListRequest) SetModifyTsStart(v int64) *DescribeVulListRequest {
-	s.ModifyTsStart = &v
-	return s
-}
-
-func (s *DescribeVulListRequest) SetModifyTsEnd(v int64) *DescribeVulListRequest {
-	s.ModifyTsEnd = &v
-	return s
-}
-
 func (s *DescribeVulListRequest) SetAttachTypes(v string) *DescribeVulListRequest {
 	s.AttachTypes = &v
-	return s
-}
-
-func (s *DescribeVulListRequest) SetContainerFieldName(v string) *DescribeVulListRequest {
-	s.ContainerFieldName = &v
-	return s
-}
-
-func (s *DescribeVulListRequest) SetContainerFieldValue(v string) *DescribeVulListRequest {
-	s.ContainerFieldValue = &v
-	return s
-}
-
-func (s *DescribeVulListRequest) SetTargetType(v string) *DescribeVulListRequest {
-	s.TargetType = &v
-	return s
-}
-
-func (s *DescribeVulListRequest) SetClusterId(v string) *DescribeVulListRequest {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *DescribeVulListRequest) SetMinScore(v int32) *DescribeVulListRequest {
-	s.MinScore = &v
 	return s
 }
 
@@ -16941,11 +20257,11 @@ func (s *DescribeVulListRequest) SetVpcInstanceIds(v string) *DescribeVulListReq
 }
 
 type DescribeVulListResponseBody struct {
-	TotalCount  *int32                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	CurrentPage *int32                                   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	RequestId   *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageSize    *int32                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount  *int32                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	VulRecords  []*DescribeVulListResponseBodyVulRecords `json:"VulRecords,omitempty" xml:"VulRecords,omitempty" type:"Repeated"`
-	CurrentPage *int32                                   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 }
 
 func (s DescribeVulListResponseBody) String() string {
@@ -16956,8 +20272,8 @@ func (s DescribeVulListResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeVulListResponseBody) SetTotalCount(v int32) *DescribeVulListResponseBody {
-	s.TotalCount = &v
+func (s *DescribeVulListResponseBody) SetCurrentPage(v int32) *DescribeVulListResponseBody {
+	s.CurrentPage = &v
 	return s
 }
 
@@ -16971,50 +20287,40 @@ func (s *DescribeVulListResponseBody) SetPageSize(v int32) *DescribeVulListRespo
 	return s
 }
 
+func (s *DescribeVulListResponseBody) SetTotalCount(v int32) *DescribeVulListResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
 func (s *DescribeVulListResponseBody) SetVulRecords(v []*DescribeVulListResponseBodyVulRecords) *DescribeVulListResponseBody {
 	s.VulRecords = v
 	return s
 }
 
-func (s *DescribeVulListResponseBody) SetCurrentPage(v int32) *DescribeVulListResponseBody {
-	s.CurrentPage = &v
-	return s
-}
-
 type DescribeVulListResponseBodyVulRecords struct {
-	Status             *int32                                                  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type               *string                                                 `json:"Type,omitempty" xml:"Type,omitempty"`
-	ModifyTs           *int64                                                  `json:"ModifyTs,omitempty" xml:"ModifyTs,omitempty"`
-	InternetIp         *string                                                 `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	ContainerImageId   *string                                                 `json:"ContainerImageId,omitempty" xml:"ContainerImageId,omitempty"`
-	PrimaryId          *int64                                                  `json:"PrimaryId,omitempty" xml:"PrimaryId,omitempty"`
-	Tag                *string                                                 `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	K8sClusterId       *string                                                 `json:"K8sClusterId,omitempty" xml:"K8sClusterId,omitempty"`
-	ContainerImageName *string                                                 `json:"ContainerImageName,omitempty" xml:"ContainerImageName,omitempty"`
-	K8sNodeId          *string                                                 `json:"K8sNodeId,omitempty" xml:"K8sNodeId,omitempty"`
-	InstanceName       *string                                                 `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	Online             *bool                                                   `json:"Online,omitempty" xml:"Online,omitempty"`
-	ContainerInnerPath *string                                                 `json:"ContainerInnerPath,omitempty" xml:"ContainerInnerPath,omitempty"`
-	OsVersion          *string                                                 `json:"OsVersion,omitempty" xml:"OsVersion,omitempty"`
-	Name               *string                                                 `json:"Name,omitempty" xml:"Name,omitempty"`
-	ExtendContentJson  *DescribeVulListResponseBodyVulRecordsExtendContentJson `json:"ExtendContentJson,omitempty" xml:"ExtendContentJson,omitempty" type:"Struct"`
-	ResultCode         *string                                                 `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	InstanceId         *string                                                 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Related            *string                                                 `json:"Related,omitempty" xml:"Related,omitempty"`
-	IntranetIp         *string                                                 `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	LastTs             *int64                                                  `json:"LastTs,omitempty" xml:"LastTs,omitempty"`
-	FirstTs            *int64                                                  `json:"FirstTs,omitempty" xml:"FirstTs,omitempty"`
-	Necessity          *string                                                 `json:"Necessity,omitempty" xml:"Necessity,omitempty"`
-	RepairTs           *int64                                                  `json:"RepairTs,omitempty" xml:"RepairTs,omitempty"`
-	Uuid               *string                                                 `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	K8sPodName         *string                                                 `json:"K8sPodName,omitempty" xml:"K8sPodName,omitempty"`
-	ContainerId        *string                                                 `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
-	GroupId            *int32                                                  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	ResultMessage      *string                                                 `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
-	K8sNamespace       *string                                                 `json:"K8sNamespace,omitempty" xml:"K8sNamespace,omitempty"`
-	AliasName          *string                                                 `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	K8sNodeName        *string                                                 `json:"K8sNodeName,omitempty" xml:"K8sNodeName,omitempty"`
-	ContainerName      *string                                                 `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
+	Status            *int32                                                  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type              *string                                                 `json:"Type,omitempty" xml:"Type,omitempty"`
+	ModifyTs          *int64                                                  `json:"ModifyTs,omitempty" xml:"ModifyTs,omitempty"`
+	InternetIp        *string                                                 `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	PrimaryId         *int64                                                  `json:"PrimaryId,omitempty" xml:"PrimaryId,omitempty"`
+	Tag               *string                                                 `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	InstanceName      *string                                                 `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	Online            *bool                                                   `json:"Online,omitempty" xml:"Online,omitempty"`
+	OsVersion         *string                                                 `json:"OsVersion,omitempty" xml:"OsVersion,omitempty"`
+	Name              *string                                                 `json:"Name,omitempty" xml:"Name,omitempty"`
+	ResultCode        *string                                                 `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	InstanceId        *string                                                 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Related           *string                                                 `json:"Related,omitempty" xml:"Related,omitempty"`
+	IntranetIp        *string                                                 `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	LastTs            *int64                                                  `json:"LastTs,omitempty" xml:"LastTs,omitempty"`
+	FirstTs           *int64                                                  `json:"FirstTs,omitempty" xml:"FirstTs,omitempty"`
+	Necessity         *string                                                 `json:"Necessity,omitempty" xml:"Necessity,omitempty"`
+	RepairTs          *int64                                                  `json:"RepairTs,omitempty" xml:"RepairTs,omitempty"`
+	Uuid              *string                                                 `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	GroupId           *int32                                                  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	ResultMessage     *string                                                 `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	AliasName         *string                                                 `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	ExtendContentJson *DescribeVulListResponseBodyVulRecordsExtendContentJson `json:"ExtendContentJson,omitempty" xml:"ExtendContentJson,omitempty" type:"Struct"`
 }
 
 func (s DescribeVulListResponseBodyVulRecords) String() string {
@@ -17045,11 +20351,6 @@ func (s *DescribeVulListResponseBodyVulRecords) SetInternetIp(v string) *Describ
 	return s
 }
 
-func (s *DescribeVulListResponseBodyVulRecords) SetContainerImageId(v string) *DescribeVulListResponseBodyVulRecords {
-	s.ContainerImageId = &v
-	return s
-}
-
 func (s *DescribeVulListResponseBodyVulRecords) SetPrimaryId(v int64) *DescribeVulListResponseBodyVulRecords {
 	s.PrimaryId = &v
 	return s
@@ -17057,21 +20358,6 @@ func (s *DescribeVulListResponseBodyVulRecords) SetPrimaryId(v int64) *DescribeV
 
 func (s *DescribeVulListResponseBodyVulRecords) SetTag(v string) *DescribeVulListResponseBodyVulRecords {
 	s.Tag = &v
-	return s
-}
-
-func (s *DescribeVulListResponseBodyVulRecords) SetK8sClusterId(v string) *DescribeVulListResponseBodyVulRecords {
-	s.K8sClusterId = &v
-	return s
-}
-
-func (s *DescribeVulListResponseBodyVulRecords) SetContainerImageName(v string) *DescribeVulListResponseBodyVulRecords {
-	s.ContainerImageName = &v
-	return s
-}
-
-func (s *DescribeVulListResponseBodyVulRecords) SetK8sNodeId(v string) *DescribeVulListResponseBodyVulRecords {
-	s.K8sNodeId = &v
 	return s
 }
 
@@ -17085,11 +20371,6 @@ func (s *DescribeVulListResponseBodyVulRecords) SetOnline(v bool) *DescribeVulLi
 	return s
 }
 
-func (s *DescribeVulListResponseBodyVulRecords) SetContainerInnerPath(v string) *DescribeVulListResponseBodyVulRecords {
-	s.ContainerInnerPath = &v
-	return s
-}
-
 func (s *DescribeVulListResponseBodyVulRecords) SetOsVersion(v string) *DescribeVulListResponseBodyVulRecords {
 	s.OsVersion = &v
 	return s
@@ -17097,11 +20378,6 @@ func (s *DescribeVulListResponseBodyVulRecords) SetOsVersion(v string) *Describe
 
 func (s *DescribeVulListResponseBodyVulRecords) SetName(v string) *DescribeVulListResponseBodyVulRecords {
 	s.Name = &v
-	return s
-}
-
-func (s *DescribeVulListResponseBodyVulRecords) SetExtendContentJson(v *DescribeVulListResponseBodyVulRecordsExtendContentJson) *DescribeVulListResponseBodyVulRecords {
-	s.ExtendContentJson = v
 	return s
 }
 
@@ -17150,16 +20426,6 @@ func (s *DescribeVulListResponseBodyVulRecords) SetUuid(v string) *DescribeVulLi
 	return s
 }
 
-func (s *DescribeVulListResponseBodyVulRecords) SetK8sPodName(v string) *DescribeVulListResponseBodyVulRecords {
-	s.K8sPodName = &v
-	return s
-}
-
-func (s *DescribeVulListResponseBodyVulRecords) SetContainerId(v string) *DescribeVulListResponseBodyVulRecords {
-	s.ContainerId = &v
-	return s
-}
-
 func (s *DescribeVulListResponseBodyVulRecords) SetGroupId(v int32) *DescribeVulListResponseBodyVulRecords {
 	s.GroupId = &v
 	return s
@@ -17170,39 +20436,29 @@ func (s *DescribeVulListResponseBodyVulRecords) SetResultMessage(v string) *Desc
 	return s
 }
 
-func (s *DescribeVulListResponseBodyVulRecords) SetK8sNamespace(v string) *DescribeVulListResponseBodyVulRecords {
-	s.K8sNamespace = &v
-	return s
-}
-
 func (s *DescribeVulListResponseBodyVulRecords) SetAliasName(v string) *DescribeVulListResponseBodyVulRecords {
 	s.AliasName = &v
 	return s
 }
 
-func (s *DescribeVulListResponseBodyVulRecords) SetK8sNodeName(v string) *DescribeVulListResponseBodyVulRecords {
-	s.K8sNodeName = &v
-	return s
-}
-
-func (s *DescribeVulListResponseBodyVulRecords) SetContainerName(v string) *DescribeVulListResponseBodyVulRecords {
-	s.ContainerName = &v
+func (s *DescribeVulListResponseBodyVulRecords) SetExtendContentJson(v *DescribeVulListResponseBodyVulRecordsExtendContentJson) *DescribeVulListResponseBodyVulRecords {
+	s.ExtendContentJson = v
 	return s
 }
 
 type DescribeVulListResponseBodyVulRecordsExtendContentJson struct {
-	Status        *int32                                                                 `json:"Status,omitempty" xml:"Status,omitempty"`
-	CveList       []*string                                                              `json:"cveList,omitempty" xml:"cveList,omitempty" type:"Repeated"`
-	PrimaryId     *int64                                                                 `json:"PrimaryId,omitempty" xml:"PrimaryId,omitempty"`
-	Tag           *string                                                                `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	OsRelease     *string                                                                `json:"OsRelease,omitempty" xml:"OsRelease,omitempty"`
-	RpmEntityList []*DescribeVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList `json:"RpmEntityList,omitempty" xml:"RpmEntityList,omitempty" type:"Repeated"`
+	Status        *string                                                                `json:"Status,omitempty" xml:"Status,omitempty"`
 	Ip            *string                                                                `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	PrimaryId     *int64                                                                 `json:"PrimaryId,omitempty" xml:"PrimaryId,omitempty"`
 	Os            *string                                                                `json:"Os,omitempty" xml:"Os,omitempty"`
+	Tag           *string                                                                `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	LastTs        *int64                                                                 `json:"LastTs,omitempty" xml:"LastTs,omitempty"`
-	Necessity     *DescribeVulListResponseBodyVulRecordsExtendContentJsonNecessity       `json:"Necessity,omitempty" xml:"Necessity,omitempty" type:"Struct"`
+	OsRelease     *string                                                                `json:"OsRelease,omitempty" xml:"OsRelease,omitempty"`
 	AliasName     *string                                                                `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
 	AbsolutePath  *string                                                                `json:"AbsolutePath,omitempty" xml:"AbsolutePath,omitempty"`
+	RpmEntityList []*DescribeVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList `json:"RpmEntityList,omitempty" xml:"RpmEntityList,omitempty" type:"Repeated"`
+	CveList       []*string                                                              `json:"cveList,omitempty" xml:"cveList,omitempty" type:"Repeated"`
+	Necessity     *DescribeVulListResponseBodyVulRecordsExtendContentJsonNecessity       `json:"Necessity,omitempty" xml:"Necessity,omitempty" type:"Struct"`
 }
 
 func (s DescribeVulListResponseBodyVulRecordsExtendContentJson) String() string {
@@ -17213,33 +20469,8 @@ func (s DescribeVulListResponseBodyVulRecordsExtendContentJson) GoString() strin
 	return s.String()
 }
 
-func (s *DescribeVulListResponseBodyVulRecordsExtendContentJson) SetStatus(v int32) *DescribeVulListResponseBodyVulRecordsExtendContentJson {
+func (s *DescribeVulListResponseBodyVulRecordsExtendContentJson) SetStatus(v string) *DescribeVulListResponseBodyVulRecordsExtendContentJson {
 	s.Status = &v
-	return s
-}
-
-func (s *DescribeVulListResponseBodyVulRecordsExtendContentJson) SetCveList(v []*string) *DescribeVulListResponseBodyVulRecordsExtendContentJson {
-	s.CveList = v
-	return s
-}
-
-func (s *DescribeVulListResponseBodyVulRecordsExtendContentJson) SetPrimaryId(v int64) *DescribeVulListResponseBodyVulRecordsExtendContentJson {
-	s.PrimaryId = &v
-	return s
-}
-
-func (s *DescribeVulListResponseBodyVulRecordsExtendContentJson) SetTag(v string) *DescribeVulListResponseBodyVulRecordsExtendContentJson {
-	s.Tag = &v
-	return s
-}
-
-func (s *DescribeVulListResponseBodyVulRecordsExtendContentJson) SetOsRelease(v string) *DescribeVulListResponseBodyVulRecordsExtendContentJson {
-	s.OsRelease = &v
-	return s
-}
-
-func (s *DescribeVulListResponseBodyVulRecordsExtendContentJson) SetRpmEntityList(v []*DescribeVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList) *DescribeVulListResponseBodyVulRecordsExtendContentJson {
-	s.RpmEntityList = v
 	return s
 }
 
@@ -17248,8 +20479,18 @@ func (s *DescribeVulListResponseBodyVulRecordsExtendContentJson) SetIp(v string)
 	return s
 }
 
+func (s *DescribeVulListResponseBodyVulRecordsExtendContentJson) SetPrimaryId(v int64) *DescribeVulListResponseBodyVulRecordsExtendContentJson {
+	s.PrimaryId = &v
+	return s
+}
+
 func (s *DescribeVulListResponseBodyVulRecordsExtendContentJson) SetOs(v string) *DescribeVulListResponseBodyVulRecordsExtendContentJson {
 	s.Os = &v
+	return s
+}
+
+func (s *DescribeVulListResponseBodyVulRecordsExtendContentJson) SetTag(v string) *DescribeVulListResponseBodyVulRecordsExtendContentJson {
+	s.Tag = &v
 	return s
 }
 
@@ -17258,8 +20499,8 @@ func (s *DescribeVulListResponseBodyVulRecordsExtendContentJson) SetLastTs(v int
 	return s
 }
 
-func (s *DescribeVulListResponseBodyVulRecordsExtendContentJson) SetNecessity(v *DescribeVulListResponseBodyVulRecordsExtendContentJsonNecessity) *DescribeVulListResponseBodyVulRecordsExtendContentJson {
-	s.Necessity = v
+func (s *DescribeVulListResponseBodyVulRecordsExtendContentJson) SetOsRelease(v string) *DescribeVulListResponseBodyVulRecordsExtendContentJson {
+	s.OsRelease = &v
 	return s
 }
 
@@ -17270,6 +20511,21 @@ func (s *DescribeVulListResponseBodyVulRecordsExtendContentJson) SetAliasName(v 
 
 func (s *DescribeVulListResponseBodyVulRecordsExtendContentJson) SetAbsolutePath(v string) *DescribeVulListResponseBodyVulRecordsExtendContentJson {
 	s.AbsolutePath = &v
+	return s
+}
+
+func (s *DescribeVulListResponseBodyVulRecordsExtendContentJson) SetRpmEntityList(v []*DescribeVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList) *DescribeVulListResponseBodyVulRecordsExtendContentJson {
+	s.RpmEntityList = v
+	return s
+}
+
+func (s *DescribeVulListResponseBodyVulRecordsExtendContentJson) SetCveList(v []*string) *DescribeVulListResponseBodyVulRecordsExtendContentJson {
+	s.CveList = v
+	return s
+}
+
+func (s *DescribeVulListResponseBodyVulRecordsExtendContentJson) SetNecessity(v *DescribeVulListResponseBodyVulRecordsExtendContentJsonNecessity) *DescribeVulListResponseBodyVulRecordsExtendContentJson {
+	s.Necessity = v
 	return s
 }
 
@@ -17397,9 +20653,8 @@ func (s *DescribeVulListResponse) SetBody(v *DescribeVulListResponseBody) *Descr
 }
 
 type DescribeVulWhitelistRequest struct {
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeVulWhitelistRequest) String() string {
@@ -17408,11 +20663,6 @@ func (s DescribeVulWhitelistRequest) String() string {
 
 func (s DescribeVulWhitelistRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeVulWhitelistRequest) SetSourceIp(v string) *DescribeVulWhitelistRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *DescribeVulWhitelistRequest) SetCurrentPage(v int32) *DescribeVulWhitelistRequest {
@@ -17426,11 +20676,11 @@ func (s *DescribeVulWhitelistRequest) SetPageSize(v int32) *DescribeVulWhitelist
 }
 
 type DescribeVulWhitelistResponseBody struct {
-	TotalCount    *int32                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	CurrentPage   *int32                                           `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	RequestId     *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageSize      *int32                                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount    *int32                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	VulWhitelists []*DescribeVulWhitelistResponseBodyVulWhitelists `json:"VulWhitelists,omitempty" xml:"VulWhitelists,omitempty" type:"Repeated"`
-	CurrentPage   *int32                                           `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 }
 
 func (s DescribeVulWhitelistResponseBody) String() string {
@@ -17441,8 +20691,8 @@ func (s DescribeVulWhitelistResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeVulWhitelistResponseBody) SetTotalCount(v int32) *DescribeVulWhitelistResponseBody {
-	s.TotalCount = &v
+func (s *DescribeVulWhitelistResponseBody) SetCurrentPage(v int32) *DescribeVulWhitelistResponseBody {
+	s.CurrentPage = &v
 	return s
 }
 
@@ -17456,13 +20706,13 @@ func (s *DescribeVulWhitelistResponseBody) SetPageSize(v int32) *DescribeVulWhit
 	return s
 }
 
-func (s *DescribeVulWhitelistResponseBody) SetVulWhitelists(v []*DescribeVulWhitelistResponseBodyVulWhitelists) *DescribeVulWhitelistResponseBody {
-	s.VulWhitelists = v
+func (s *DescribeVulWhitelistResponseBody) SetTotalCount(v int32) *DescribeVulWhitelistResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
-func (s *DescribeVulWhitelistResponseBody) SetCurrentPage(v int32) *DescribeVulWhitelistResponseBody {
-	s.CurrentPage = &v
+func (s *DescribeVulWhitelistResponseBody) SetVulWhitelists(v []*DescribeVulWhitelistResponseBodyVulWhitelists) *DescribeVulWhitelistResponseBody {
+	s.VulWhitelists = v
 	return s
 }
 
@@ -17584,12 +20834,12 @@ func (s *DescribeWarningMachinesRequest) SetCurrentPage(v int32) *DescribeWarnin
 }
 
 type DescribeWarningMachinesResponseBody struct {
-	TotalCount      *int32                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	CurrentPage     *int32                                                `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	PageSize        *int32                                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId       *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	CurrentPage     *int32                                                `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	WarningMachines []*DescribeWarningMachinesResponseBodyWarningMachines `json:"WarningMachines,omitempty" xml:"WarningMachines,omitempty" type:"Repeated"`
+	TotalCount      *int32                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	Count           *int32                                                `json:"Count,omitempty" xml:"Count,omitempty"`
+	WarningMachines []*DescribeWarningMachinesResponseBodyWarningMachines `json:"WarningMachines,omitempty" xml:"WarningMachines,omitempty" type:"Repeated"`
 }
 
 func (s DescribeWarningMachinesResponseBody) String() string {
@@ -17600,8 +20850,8 @@ func (s DescribeWarningMachinesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeWarningMachinesResponseBody) SetTotalCount(v int32) *DescribeWarningMachinesResponseBody {
-	s.TotalCount = &v
+func (s *DescribeWarningMachinesResponseBody) SetCurrentPage(v int32) *DescribeWarningMachinesResponseBody {
+	s.CurrentPage = &v
 	return s
 }
 
@@ -17615,18 +20865,18 @@ func (s *DescribeWarningMachinesResponseBody) SetRequestId(v string) *DescribeWa
 	return s
 }
 
-func (s *DescribeWarningMachinesResponseBody) SetCurrentPage(v int32) *DescribeWarningMachinesResponseBody {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *DescribeWarningMachinesResponseBody) SetWarningMachines(v []*DescribeWarningMachinesResponseBodyWarningMachines) *DescribeWarningMachinesResponseBody {
-	s.WarningMachines = v
+func (s *DescribeWarningMachinesResponseBody) SetTotalCount(v int32) *DescribeWarningMachinesResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
 func (s *DescribeWarningMachinesResponseBody) SetCount(v int32) *DescribeWarningMachinesResponseBody {
 	s.Count = &v
+	return s
+}
+
+func (s *DescribeWarningMachinesResponseBody) SetWarningMachines(v []*DescribeWarningMachinesResponseBodyWarningMachines) *DescribeWarningMachinesResponseBody {
+	s.WarningMachines = v
 	return s
 }
 
@@ -17778,10 +21028,10 @@ func (s *DescribeWebLockBindListRequest) SetPageSize(v int32) *DescribeWebLockBi
 }
 
 type DescribeWebLockBindListResponseBody struct {
-	TotalCount  *int32                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	CurrentPage *int32                                         `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	RequestId   *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageSize    *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	CurrentPage *int32                                         `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	TotalCount  *int32                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	BindList    []*DescribeWebLockBindListResponseBodyBindList `json:"BindList,omitempty" xml:"BindList,omitempty" type:"Repeated"`
 }
 
@@ -17793,8 +21043,8 @@ func (s DescribeWebLockBindListResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeWebLockBindListResponseBody) SetTotalCount(v int32) *DescribeWebLockBindListResponseBody {
-	s.TotalCount = &v
+func (s *DescribeWebLockBindListResponseBody) SetCurrentPage(v int32) *DescribeWebLockBindListResponseBody {
+	s.CurrentPage = &v
 	return s
 }
 
@@ -17808,8 +21058,8 @@ func (s *DescribeWebLockBindListResponseBody) SetPageSize(v int32) *DescribeWebL
 	return s
 }
 
-func (s *DescribeWebLockBindListResponseBody) SetCurrentPage(v int32) *DescribeWebLockBindListResponseBody {
-	s.CurrentPage = &v
+func (s *DescribeWebLockBindListResponseBody) SetTotalCount(v int32) *DescribeWebLockBindListResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -17821,8 +21071,8 @@ func (s *DescribeWebLockBindListResponseBody) SetBindList(v []*DescribeWebLockBi
 type DescribeWebLockBindListResponseBodyBindList struct {
 	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	Percent       *int32  `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	ServiceDetail *string `json:"ServiceDetail,omitempty" xml:"ServiceDetail,omitempty"`
 	InternetIp    *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	ServiceDetail *string `json:"ServiceDetail,omitempty" xml:"ServiceDetail,omitempty"`
 	Os            *string `json:"Os,omitempty" xml:"Os,omitempty"`
 	ServiceStatus *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
 	IntranetIp    *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
@@ -17852,13 +21102,13 @@ func (s *DescribeWebLockBindListResponseBodyBindList) SetPercent(v int32) *Descr
 	return s
 }
 
-func (s *DescribeWebLockBindListResponseBodyBindList) SetServiceDetail(v string) *DescribeWebLockBindListResponseBodyBindList {
-	s.ServiceDetail = &v
+func (s *DescribeWebLockBindListResponseBodyBindList) SetInternetIp(v string) *DescribeWebLockBindListResponseBodyBindList {
+	s.InternetIp = &v
 	return s
 }
 
-func (s *DescribeWebLockBindListResponseBodyBindList) SetInternetIp(v string) *DescribeWebLockBindListResponseBodyBindList {
-	s.InternetIp = &v
+func (s *DescribeWebLockBindListResponseBodyBindList) SetServiceDetail(v string) *DescribeWebLockBindListResponseBodyBindList {
+	s.ServiceDetail = &v
 	return s
 }
 
@@ -18089,7 +21339,6 @@ func (s *DescribeWebLockConfigListResponse) SetBody(v *DescribeWebLockConfigList
 }
 
 type ExportRecordRequest struct {
-	SourceIp   *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	Params     *string `json:"Params,omitempty" xml:"Params,omitempty"`
 	ExportType *string `json:"ExportType,omitempty" xml:"ExportType,omitempty"`
@@ -18101,11 +21350,6 @@ func (s ExportRecordRequest) String() string {
 
 func (s ExportRecordRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ExportRecordRequest) SetSourceIp(v string) *ExportRecordRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *ExportRecordRequest) SetLang(v string) *ExportRecordRequest {
@@ -18217,8 +21461,8 @@ func (s *FixCheckWarningsRequest) SetUuids(v string) *FixCheckWarningsRequest {
 }
 
 type FixCheckWarningsResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	BatchId   *int64  `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s FixCheckWarningsResponseBody) String() string {
@@ -18229,13 +21473,13 @@ func (s FixCheckWarningsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *FixCheckWarningsResponseBody) SetRequestId(v string) *FixCheckWarningsResponseBody {
-	s.RequestId = &v
+func (s *FixCheckWarningsResponseBody) SetBatchId(v int64) *FixCheckWarningsResponseBody {
+	s.BatchId = &v
 	return s
 }
 
-func (s *FixCheckWarningsResponseBody) SetBatchId(v int64) *FixCheckWarningsResponseBody {
-	s.BatchId = &v
+func (s *FixCheckWarningsResponseBody) SetRequestId(v string) *FixCheckWarningsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -18262,10 +21506,107 @@ func (s *FixCheckWarningsResponse) SetBody(v *FixCheckWarningsResponseBody) *Fix
 	return s
 }
 
+type GetBackupStorageCountRequest struct {
+	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s GetBackupStorageCountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBackupStorageCountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetBackupStorageCountRequest) SetSourceIp(v string) *GetBackupStorageCountRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *GetBackupStorageCountRequest) SetResourceOwnerId(v int64) *GetBackupStorageCountRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type GetBackupStorageCountResponseBody struct {
+	RequestId          *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	BackupStorageCount *GetBackupStorageCountResponseBodyBackupStorageCount `json:"BackupStorageCount,omitempty" xml:"BackupStorageCount,omitempty" type:"Struct"`
+}
+
+func (s GetBackupStorageCountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBackupStorageCountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetBackupStorageCountResponseBody) SetRequestId(v string) *GetBackupStorageCountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetBackupStorageCountResponseBody) SetBackupStorageCount(v *GetBackupStorageCountResponseBodyBackupStorageCount) *GetBackupStorageCountResponseBody {
+	s.BackupStorageCount = v
+	return s
+}
+
+type GetBackupStorageCountResponseBodyBackupStorageCount struct {
+	Overflow         *int32 `json:"Overflow,omitempty" xml:"Overflow,omitempty"`
+	BuyStorageByte   *int64 `json:"BuyStorageByte,omitempty" xml:"BuyStorageByte,omitempty"`
+	UsageStorageByte *int64 `json:"UsageStorageByte,omitempty" xml:"UsageStorageByte,omitempty"`
+}
+
+func (s GetBackupStorageCountResponseBodyBackupStorageCount) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBackupStorageCountResponseBodyBackupStorageCount) GoString() string {
+	return s.String()
+}
+
+func (s *GetBackupStorageCountResponseBodyBackupStorageCount) SetOverflow(v int32) *GetBackupStorageCountResponseBodyBackupStorageCount {
+	s.Overflow = &v
+	return s
+}
+
+func (s *GetBackupStorageCountResponseBodyBackupStorageCount) SetBuyStorageByte(v int64) *GetBackupStorageCountResponseBodyBackupStorageCount {
+	s.BuyStorageByte = &v
+	return s
+}
+
+func (s *GetBackupStorageCountResponseBodyBackupStorageCount) SetUsageStorageByte(v int64) *GetBackupStorageCountResponseBodyBackupStorageCount {
+	s.UsageStorageByte = &v
+	return s
+}
+
+type GetBackupStorageCountResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetBackupStorageCountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetBackupStorageCountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBackupStorageCountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetBackupStorageCountResponse) SetHeaders(v map[string]*string) *GetBackupStorageCountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetBackupStorageCountResponse) SetBody(v *GetBackupStorageCountResponseBody) *GetBackupStorageCountResponse {
+	s.Body = v
+	return s
+}
+
 type GetIncIOCsRequest struct {
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Date     *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
 }
 
 func (s GetIncIOCsRequest) String() string {
@@ -18274,11 +21615,6 @@ func (s GetIncIOCsRequest) String() string {
 
 func (s GetIncIOCsRequest) GoString() string {
 	return s.String()
-}
-
-func (s *GetIncIOCsRequest) SetSourceIp(v string) *GetIncIOCsRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *GetIncIOCsRequest) SetType(v string) *GetIncIOCsRequest {
@@ -18338,9 +21674,8 @@ func (s *GetIncIOCsResponse) SetBody(v *GetIncIOCsResponseBody) *GetIncIOCsRespo
 }
 
 type GetIOCsRequest struct {
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Date     *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
 }
 
 func (s GetIOCsRequest) String() string {
@@ -18349,11 +21684,6 @@ func (s GetIOCsRequest) String() string {
 
 func (s GetIOCsRequest) GoString() string {
 	return s.String()
-}
-
-func (s *GetIOCsRequest) SetSourceIp(v string) *GetIOCsRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *GetIOCsRequest) SetType(v string) *GetIOCsRequest {
@@ -18412,12 +21742,187 @@ func (s *GetIOCsResponse) SetBody(v *GetIOCsResponseBody) *GetIOCsResponse {
 	return s
 }
 
+type GetSuspiciousStatisticsRequest struct {
+	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	GroupIdList *string `json:"GroupIdList,omitempty" xml:"GroupIdList,omitempty"`
+}
+
+func (s GetSuspiciousStatisticsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSuspiciousStatisticsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSuspiciousStatisticsRequest) SetSourceIp(v string) *GetSuspiciousStatisticsRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *GetSuspiciousStatisticsRequest) SetGroupIdList(v string) *GetSuspiciousStatisticsRequest {
+	s.GroupIdList = &v
+	return s
+}
+
+type GetSuspiciousStatisticsResponseBody struct {
+	SuspiciousCount *int32  `json:"SuspiciousCount,omitempty" xml:"SuspiciousCount,omitempty"`
+	RemindCount     *int32  `json:"RemindCount,omitempty" xml:"RemindCount,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SeriousCount    *int32  `json:"SeriousCount,omitempty" xml:"SeriousCount,omitempty"`
+	TotalCount      *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s GetSuspiciousStatisticsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSuspiciousStatisticsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSuspiciousStatisticsResponseBody) SetSuspiciousCount(v int32) *GetSuspiciousStatisticsResponseBody {
+	s.SuspiciousCount = &v
+	return s
+}
+
+func (s *GetSuspiciousStatisticsResponseBody) SetRemindCount(v int32) *GetSuspiciousStatisticsResponseBody {
+	s.RemindCount = &v
+	return s
+}
+
+func (s *GetSuspiciousStatisticsResponseBody) SetRequestId(v string) *GetSuspiciousStatisticsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSuspiciousStatisticsResponseBody) SetSeriousCount(v int32) *GetSuspiciousStatisticsResponseBody {
+	s.SeriousCount = &v
+	return s
+}
+
+func (s *GetSuspiciousStatisticsResponseBody) SetTotalCount(v int32) *GetSuspiciousStatisticsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type GetSuspiciousStatisticsResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetSuspiciousStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetSuspiciousStatisticsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSuspiciousStatisticsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSuspiciousStatisticsResponse) SetHeaders(v map[string]*string) *GetSuspiciousStatisticsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSuspiciousStatisticsResponse) SetBody(v *GetSuspiciousStatisticsResponseBody) *GetSuspiciousStatisticsResponse {
+	s.Body = v
+	return s
+}
+
+type GetVulStatisticsRequest struct {
+	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	GroupIdList *string `json:"GroupIdList,omitempty" xml:"GroupIdList,omitempty"`
+	TypeList    *string `json:"TypeList,omitempty" xml:"TypeList,omitempty"`
+}
+
+func (s GetVulStatisticsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVulStatisticsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetVulStatisticsRequest) SetSourceIp(v string) *GetVulStatisticsRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *GetVulStatisticsRequest) SetGroupIdList(v string) *GetVulStatisticsRequest {
+	s.GroupIdList = &v
+	return s
+}
+
+func (s *GetVulStatisticsRequest) SetTypeList(v string) *GetVulStatisticsRequest {
+	s.TypeList = &v
+	return s
+}
+
+type GetVulStatisticsResponseBody struct {
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	VulLaterSum *int32  `json:"VulLaterSum,omitempty" xml:"VulLaterSum,omitempty"`
+	VulNntfSum  *int32  `json:"VulNntfSum,omitempty" xml:"VulNntfSum,omitempty"`
+	VulAsapSum  *int32  `json:"VulAsapSum,omitempty" xml:"VulAsapSum,omitempty"`
+}
+
+func (s GetVulStatisticsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVulStatisticsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetVulStatisticsResponseBody) SetRequestId(v string) *GetVulStatisticsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetVulStatisticsResponseBody) SetVulLaterSum(v int32) *GetVulStatisticsResponseBody {
+	s.VulLaterSum = &v
+	return s
+}
+
+func (s *GetVulStatisticsResponseBody) SetVulNntfSum(v int32) *GetVulStatisticsResponseBody {
+	s.VulNntfSum = &v
+	return s
+}
+
+func (s *GetVulStatisticsResponseBody) SetVulAsapSum(v int32) *GetVulStatisticsResponseBody {
+	s.VulAsapSum = &v
+	return s
+}
+
+type GetVulStatisticsResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetVulStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetVulStatisticsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVulStatisticsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetVulStatisticsResponse) SetHeaders(v map[string]*string) *GetVulStatisticsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetVulStatisticsResponse) SetBody(v *GetVulStatisticsResponseBody) *GetVulStatisticsResponse {
+	s.Body = v
+	return s
+}
+
 type HandleSecurityEventsRequest struct {
 	SourceIp         *string   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	ResourceOwnerId  *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	OperationCode    *string   `json:"OperationCode,omitempty" xml:"OperationCode,omitempty"`
 	OperationParams  *string   `json:"OperationParams,omitempty" xml:"OperationParams,omitempty"`
 	MarkMissParam    *string   `json:"MarkMissParam,omitempty" xml:"MarkMissParam,omitempty"`
+	MarkBatch        *string   `json:"MarkBatch,omitempty" xml:"MarkBatch,omitempty"`
 	SecurityEventIds []*string `json:"SecurityEventIds,omitempty" xml:"SecurityEventIds,omitempty" type:"Repeated"`
 }
 
@@ -18454,14 +21959,19 @@ func (s *HandleSecurityEventsRequest) SetMarkMissParam(v string) *HandleSecurity
 	return s
 }
 
+func (s *HandleSecurityEventsRequest) SetMarkBatch(v string) *HandleSecurityEventsRequest {
+	s.MarkBatch = &v
+	return s
+}
+
 func (s *HandleSecurityEventsRequest) SetSecurityEventIds(v []*string) *HandleSecurityEventsRequest {
 	s.SecurityEventIds = v
 	return s
 }
 
 type HandleSecurityEventsResponseBody struct {
-	HandleSecurityEventsResponse *HandleSecurityEventsResponseBodyHandleSecurityEventsResponse `json:"HandleSecurityEventsResponse,omitempty" xml:"HandleSecurityEventsResponse,omitempty" type:"Struct"`
 	RequestId                    *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	HandleSecurityEventsResponse *HandleSecurityEventsResponseBodyHandleSecurityEventsResponse `json:"HandleSecurityEventsResponse,omitempty" xml:"HandleSecurityEventsResponse,omitempty" type:"Struct"`
 }
 
 func (s HandleSecurityEventsResponseBody) String() string {
@@ -18472,13 +21982,13 @@ func (s HandleSecurityEventsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *HandleSecurityEventsResponseBody) SetHandleSecurityEventsResponse(v *HandleSecurityEventsResponseBodyHandleSecurityEventsResponse) *HandleSecurityEventsResponseBody {
-	s.HandleSecurityEventsResponse = v
+func (s *HandleSecurityEventsResponseBody) SetRequestId(v string) *HandleSecurityEventsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *HandleSecurityEventsResponseBody) SetRequestId(v string) *HandleSecurityEventsResponseBody {
-	s.RequestId = &v
+func (s *HandleSecurityEventsResponseBody) SetHandleSecurityEventsResponse(v *HandleSecurityEventsResponseBodyHandleSecurityEventsResponse) *HandleSecurityEventsResponseBody {
+	s.HandleSecurityEventsResponse = v
 	return s
 }
 
@@ -18696,6 +22206,87 @@ func (s *IgnoreHcCheckWarningsResponse) SetBody(v *IgnoreHcCheckWarningsResponse
 	return s
 }
 
+type InstallBackupClientRequest struct {
+	SourceIp        *string   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	ResourceOwnerId *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Uuid            *string   `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	PolicyVersion   *string   `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty"`
+	UuidList        []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
+}
+
+func (s InstallBackupClientRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InstallBackupClientRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InstallBackupClientRequest) SetSourceIp(v string) *InstallBackupClientRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *InstallBackupClientRequest) SetResourceOwnerId(v int64) *InstallBackupClientRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *InstallBackupClientRequest) SetUuid(v string) *InstallBackupClientRequest {
+	s.Uuid = &v
+	return s
+}
+
+func (s *InstallBackupClientRequest) SetPolicyVersion(v string) *InstallBackupClientRequest {
+	s.PolicyVersion = &v
+	return s
+}
+
+func (s *InstallBackupClientRequest) SetUuidList(v []*string) *InstallBackupClientRequest {
+	s.UuidList = v
+	return s
+}
+
+type InstallBackupClientResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s InstallBackupClientResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InstallBackupClientResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InstallBackupClientResponseBody) SetRequestId(v string) *InstallBackupClientResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type InstallBackupClientResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *InstallBackupClientResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s InstallBackupClientResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InstallBackupClientResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InstallBackupClientResponse) SetHeaders(v map[string]*string) *InstallBackupClientResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InstallBackupClientResponse) SetBody(v *InstallBackupClientResponseBody) *InstallBackupClientResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyAntiBruteForceRuleRequest struct {
 	SourceIp        *string   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	ResourceOwnerId *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -18704,7 +22295,6 @@ type ModifyAntiBruteForceRuleRequest struct {
 	Span            *int32    `json:"Span,omitempty" xml:"Span,omitempty"`
 	FailCount       *int32    `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
 	ForbiddenTime   *int32    `json:"ForbiddenTime,omitempty" xml:"ForbiddenTime,omitempty"`
-	EnableSmartRule *bool     `json:"EnableSmartRule,omitempty" xml:"EnableSmartRule,omitempty"`
 	DefaultRule     *bool     `json:"DefaultRule,omitempty" xml:"DefaultRule,omitempty"`
 	UuidList        []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
 }
@@ -18749,11 +22339,6 @@ func (s *ModifyAntiBruteForceRuleRequest) SetFailCount(v int32) *ModifyAntiBrute
 
 func (s *ModifyAntiBruteForceRuleRequest) SetForbiddenTime(v int32) *ModifyAntiBruteForceRuleRequest {
 	s.ForbiddenTime = &v
-	return s
-}
-
-func (s *ModifyAntiBruteForceRuleRequest) SetEnableSmartRule(v bool) *ModifyAntiBruteForceRuleRequest {
-	s.EnableSmartRule = &v
 	return s
 }
 
@@ -18807,8 +22392,303 @@ func (s *ModifyAntiBruteForceRuleResponse) SetBody(v *ModifyAntiBruteForceRuleRe
 	return s
 }
 
+type ModifyAssetGroupRequest struct {
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	GroupId  *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Uuids    *string `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
+}
+
+func (s ModifyAssetGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAssetGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAssetGroupRequest) SetSourceIp(v string) *ModifyAssetGroupRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *ModifyAssetGroupRequest) SetGroupId(v int64) *ModifyAssetGroupRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ModifyAssetGroupRequest) SetUuids(v string) *ModifyAssetGroupRequest {
+	s.Uuids = &v
+	return s
+}
+
+type ModifyAssetGroupResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyAssetGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAssetGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAssetGroupResponseBody) SetRequestId(v string) *ModifyAssetGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyAssetGroupResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ModifyAssetGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyAssetGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAssetGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAssetGroupResponse) SetHeaders(v map[string]*string) *ModifyAssetGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyAssetGroupResponse) SetBody(v *ModifyAssetGroupResponseBody) *ModifyAssetGroupResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyBackupPolicyRequest struct {
+	SourceIp        *string                `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	ResourceOwnerId *int64                 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Id              *int64                 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name            *string                `json:"Name,omitempty" xml:"Name,omitempty"`
+	Policy          map[string]interface{} `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	PolicyVersion   *string                `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty"`
+	UuidList        []*string              `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
+}
+
+func (s ModifyBackupPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBackupPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBackupPolicyRequest) SetSourceIp(v string) *ModifyBackupPolicyRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyRequest) SetResourceOwnerId(v int64) *ModifyBackupPolicyRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyRequest) SetId(v int64) *ModifyBackupPolicyRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyRequest) SetName(v string) *ModifyBackupPolicyRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyRequest) SetPolicy(v map[string]interface{}) *ModifyBackupPolicyRequest {
+	s.Policy = v
+	return s
+}
+
+func (s *ModifyBackupPolicyRequest) SetPolicyVersion(v string) *ModifyBackupPolicyRequest {
+	s.PolicyVersion = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyRequest) SetUuidList(v []*string) *ModifyBackupPolicyRequest {
+	s.UuidList = v
+	return s
+}
+
+type ModifyBackupPolicyShrinkRequest struct {
+	SourceIp        *string   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	ResourceOwnerId *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Id              *int64    `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name            *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	PolicyShrink    *string   `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	PolicyVersion   *string   `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty"`
+	UuidList        []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
+}
+
+func (s ModifyBackupPolicyShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBackupPolicyShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBackupPolicyShrinkRequest) SetSourceIp(v string) *ModifyBackupPolicyShrinkRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyShrinkRequest) SetResourceOwnerId(v int64) *ModifyBackupPolicyShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyShrinkRequest) SetId(v int64) *ModifyBackupPolicyShrinkRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyShrinkRequest) SetName(v string) *ModifyBackupPolicyShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyShrinkRequest) SetPolicyShrink(v string) *ModifyBackupPolicyShrinkRequest {
+	s.PolicyShrink = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyShrinkRequest) SetPolicyVersion(v string) *ModifyBackupPolicyShrinkRequest {
+	s.PolicyVersion = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyShrinkRequest) SetUuidList(v []*string) *ModifyBackupPolicyShrinkRequest {
+	s.UuidList = v
+	return s
+}
+
+type ModifyBackupPolicyResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyBackupPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBackupPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBackupPolicyResponseBody) SetRequestId(v string) *ModifyBackupPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyBackupPolicyResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ModifyBackupPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyBackupPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBackupPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBackupPolicyResponse) SetHeaders(v map[string]*string) *ModifyBackupPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyBackupPolicyResponse) SetBody(v *ModifyBackupPolicyResponseBody) *ModifyBackupPolicyResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyBackupPolicyStatusRequest struct {
+	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	PolicyVersion   *string `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty"`
+}
+
+func (s ModifyBackupPolicyStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBackupPolicyStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBackupPolicyStatusRequest) SetSourceIp(v string) *ModifyBackupPolicyStatusRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyStatusRequest) SetResourceOwnerId(v int64) *ModifyBackupPolicyStatusRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyStatusRequest) SetId(v int64) *ModifyBackupPolicyStatusRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyStatusRequest) SetStatus(v string) *ModifyBackupPolicyStatusRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyStatusRequest) SetPolicyVersion(v string) *ModifyBackupPolicyStatusRequest {
+	s.PolicyVersion = &v
+	return s
+}
+
+type ModifyBackupPolicyStatusResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyBackupPolicyStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBackupPolicyStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBackupPolicyStatusResponseBody) SetRequestId(v string) *ModifyBackupPolicyStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyBackupPolicyStatusResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ModifyBackupPolicyStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyBackupPolicyStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBackupPolicyStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBackupPolicyStatusResponse) SetHeaders(v map[string]*string) *ModifyBackupPolicyStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyBackupPolicyStatusResponse) SetBody(v *ModifyBackupPolicyStatusResponseBody) *ModifyBackupPolicyStatusResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyCreateVulWhitelistRequest struct {
-	SourceIp  *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	Whitelist *string `json:"Whitelist,omitempty" xml:"Whitelist,omitempty"`
 	Reason    *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 }
@@ -18819,11 +22699,6 @@ func (s ModifyCreateVulWhitelistRequest) String() string {
 
 func (s ModifyCreateVulWhitelistRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ModifyCreateVulWhitelistRequest) SetSourceIp(v string) *ModifyCreateVulWhitelistRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *ModifyCreateVulWhitelistRequest) SetWhitelist(v string) *ModifyCreateVulWhitelistRequest {
@@ -18877,7 +22752,6 @@ func (s *ModifyCreateVulWhitelistResponse) SetBody(v *ModifyCreateVulWhitelistRe
 }
 
 type ModifyEmgVulSubmitRequest struct {
-	SourceIp      *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	Lang          *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	UserAgreement *string `json:"UserAgreement,omitempty" xml:"UserAgreement,omitempty"`
@@ -18889,11 +22763,6 @@ func (s ModifyEmgVulSubmitRequest) String() string {
 
 func (s ModifyEmgVulSubmitRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ModifyEmgVulSubmitRequest) SetSourceIp(v string) *ModifyEmgVulSubmitRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *ModifyEmgVulSubmitRequest) SetLang(v string) *ModifyEmgVulSubmitRequest {
@@ -18952,8 +22821,7 @@ func (s *ModifyEmgVulSubmitResponse) SetBody(v *ModifyEmgVulSubmitResponseBody) 
 }
 
 type ModifyGroupPropertyRequest struct {
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Data     *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 }
 
 func (s ModifyGroupPropertyRequest) String() string {
@@ -18962,11 +22830,6 @@ func (s ModifyGroupPropertyRequest) String() string {
 
 func (s ModifyGroupPropertyRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ModifyGroupPropertyRequest) SetSourceIp(v string) *ModifyGroupPropertyRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *ModifyGroupPropertyRequest) SetData(v string) *ModifyGroupPropertyRequest {
@@ -19090,10 +22953,9 @@ func (s *ModifyInstanceAntiBruteForceRuleResponse) SetBody(v *ModifyInstanceAnti
 }
 
 type ModifyLoginBaseConfigRequest struct {
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Config   *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	Target   *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
 }
 
 func (s ModifyLoginBaseConfigRequest) String() string {
@@ -19102,11 +22964,6 @@ func (s ModifyLoginBaseConfigRequest) String() string {
 
 func (s ModifyLoginBaseConfigRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ModifyLoginBaseConfigRequest) SetSourceIp(v string) *ModifyLoginBaseConfigRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *ModifyLoginBaseConfigRequest) SetType(v string) *ModifyLoginBaseConfigRequest {
@@ -19165,9 +23022,8 @@ func (s *ModifyLoginBaseConfigResponse) SetBody(v *ModifyLoginBaseConfigResponse
 }
 
 type ModifyLoginSwitchConfigRequest struct {
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Item     *string `json:"Item,omitempty" xml:"Item,omitempty"`
-	Status   *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Item   *string `json:"Item,omitempty" xml:"Item,omitempty"`
+	Status *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ModifyLoginSwitchConfigRequest) String() string {
@@ -19176,11 +23032,6 @@ func (s ModifyLoginSwitchConfigRequest) String() string {
 
 func (s ModifyLoginSwitchConfigRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ModifyLoginSwitchConfigRequest) SetSourceIp(v string) *ModifyLoginSwitchConfigRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *ModifyLoginSwitchConfigRequest) SetItem(v string) *ModifyLoginSwitchConfigRequest {
@@ -19308,8 +23159,64 @@ func (s *ModifyNoticeConfigResponse) SetBody(v *ModifyNoticeConfigResponseBody) 
 	return s
 }
 
+type ModifyOpenLogShipperRequest struct {
+	From *string `json:"From,omitempty" xml:"From,omitempty"`
+}
+
+func (s ModifyOpenLogShipperRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyOpenLogShipperRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyOpenLogShipperRequest) SetFrom(v string) *ModifyOpenLogShipperRequest {
+	s.From = &v
+	return s
+}
+
+type ModifyOpenLogShipperResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyOpenLogShipperResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyOpenLogShipperResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyOpenLogShipperResponseBody) SetRequestId(v string) *ModifyOpenLogShipperResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyOpenLogShipperResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ModifyOpenLogShipperResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyOpenLogShipperResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyOpenLogShipperResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyOpenLogShipperResponse) SetHeaders(v map[string]*string) *ModifyOpenLogShipperResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyOpenLogShipperResponse) SetBody(v *ModifyOpenLogShipperResponseBody) *ModifyOpenLogShipperResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyOperateVulRequest struct {
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	Info        *string `json:"Info,omitempty" xml:"Info,omitempty"`
 	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
 	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
@@ -19322,11 +23229,6 @@ func (s ModifyOperateVulRequest) String() string {
 
 func (s ModifyOperateVulRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ModifyOperateVulRequest) SetSourceIp(v string) *ModifyOperateVulRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *ModifyOperateVulRequest) SetInfo(v string) *ModifyOperateVulRequest {
@@ -19814,9 +23716,8 @@ func (s *ModifySecurityCheckScheduleConfigResponse) SetBody(v *ModifySecurityChe
 }
 
 type ModifyStartVulScanRequest struct {
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Types    *string `json:"Types,omitempty" xml:"Types,omitempty"`
-	Uuids    *string `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
+	Types *string `json:"Types,omitempty" xml:"Types,omitempty"`
+	Uuids *string `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
 }
 
 func (s ModifyStartVulScanRequest) String() string {
@@ -19825,11 +23726,6 @@ func (s ModifyStartVulScanRequest) String() string {
 
 func (s ModifyStartVulScanRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ModifyStartVulScanRequest) SetSourceIp(v string) *ModifyStartVulScanRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *ModifyStartVulScanRequest) SetTypes(v string) *ModifyStartVulScanRequest {
@@ -19883,7 +23779,6 @@ func (s *ModifyStartVulScanResponse) SetBody(v *ModifyStartVulScanResponseBody) 
 }
 
 type ModifyTagWithUuidRequest struct {
-	SourceIp     *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	UuidList     *string `json:"UuidList,omitempty" xml:"UuidList,omitempty"`
 	TagList      *string `json:"TagList,omitempty" xml:"TagList,omitempty"`
 	TagId        *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
@@ -19896,11 +23791,6 @@ func (s ModifyTagWithUuidRequest) String() string {
 
 func (s ModifyTagWithUuidRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ModifyTagWithUuidRequest) SetSourceIp(v string) *ModifyTagWithUuidRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *ModifyTagWithUuidRequest) SetUuidList(v string) *ModifyTagWithUuidRequest {
@@ -19964,7 +23854,6 @@ func (s *ModifyTagWithUuidResponse) SetBody(v *ModifyTagWithUuidResponseBody) *M
 }
 
 type ModifyVpcHoneyPotRequest struct {
-	SourceIp       *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	VpcId          *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	HoneyPotAction *string `json:"HoneyPotAction,omitempty" xml:"HoneyPotAction,omitempty"`
 }
@@ -19975,11 +23864,6 @@ func (s ModifyVpcHoneyPotRequest) String() string {
 
 func (s ModifyVpcHoneyPotRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ModifyVpcHoneyPotRequest) SetSourceIp(v string) *ModifyVpcHoneyPotRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *ModifyVpcHoneyPotRequest) SetVpcId(v string) *ModifyVpcHoneyPotRequest {
@@ -20306,7 +24190,6 @@ func (s *ModifyWebLockDeleteConfigResponse) SetBody(v *ModifyWebLockDeleteConfig
 }
 
 type ModifyWebLockStartRequest struct {
-	SourceIp          *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	Mode              *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	LocalBackupDir    *string `json:"LocalBackupDir,omitempty" xml:"LocalBackupDir,omitempty"`
 	ExclusiveFile     *string `json:"ExclusiveFile,omitempty" xml:"ExclusiveFile,omitempty"`
@@ -20324,11 +24207,6 @@ func (s ModifyWebLockStartRequest) String() string {
 
 func (s ModifyWebLockStartRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ModifyWebLockStartRequest) SetSourceIp(v string) *ModifyWebLockStartRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *ModifyWebLockStartRequest) SetMode(v string) *ModifyWebLockStartRequest {
@@ -20416,9 +24294,83 @@ func (s *ModifyWebLockStartResponse) SetBody(v *ModifyWebLockStartResponseBody) 
 	return s
 }
 
-type ModifyWebLockUnbindRequest struct {
+type ModifyWebLockStatusRequest struct {
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	Uuid     *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ModifyWebLockStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyWebLockStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyWebLockStatusRequest) SetSourceIp(v string) *ModifyWebLockStatusRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *ModifyWebLockStatusRequest) SetLang(v string) *ModifyWebLockStatusRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *ModifyWebLockStatusRequest) SetUuid(v string) *ModifyWebLockStatusRequest {
+	s.Uuid = &v
+	return s
+}
+
+func (s *ModifyWebLockStatusRequest) SetStatus(v string) *ModifyWebLockStatusRequest {
+	s.Status = &v
+	return s
+}
+
+type ModifyWebLockStatusResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyWebLockStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyWebLockStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyWebLockStatusResponseBody) SetRequestId(v string) *ModifyWebLockStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyWebLockStatusResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ModifyWebLockStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyWebLockStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyWebLockStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyWebLockStatusResponse) SetHeaders(v map[string]*string) *ModifyWebLockStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyWebLockStatusResponse) SetBody(v *ModifyWebLockStatusResponseBody) *ModifyWebLockStatusResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyWebLockUnbindRequest struct {
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s ModifyWebLockUnbindRequest) String() string {
@@ -20427,11 +24379,6 @@ func (s ModifyWebLockUnbindRequest) String() string {
 
 func (s ModifyWebLockUnbindRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ModifyWebLockUnbindRequest) SetSourceIp(v string) *ModifyWebLockUnbindRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *ModifyWebLockUnbindRequest) SetUuid(v string) *ModifyWebLockUnbindRequest {
@@ -20689,6 +24636,93 @@ func (s *OperateSuspiciousTargetConfigResponse) SetBody(v *OperateSuspiciousTarg
 	return s
 }
 
+type OperateVulsRequest struct {
+	Type         *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	OperateType  *string   `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
+	Reason       *string   `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Precondition *int32    `json:"Precondition,omitempty" xml:"Precondition,omitempty"`
+	VulNames     []*string `json:"VulNames,omitempty" xml:"VulNames,omitempty" type:"Repeated"`
+	Uuids        []*string `json:"Uuids,omitempty" xml:"Uuids,omitempty" type:"Repeated"`
+}
+
+func (s OperateVulsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OperateVulsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *OperateVulsRequest) SetType(v string) *OperateVulsRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *OperateVulsRequest) SetOperateType(v string) *OperateVulsRequest {
+	s.OperateType = &v
+	return s
+}
+
+func (s *OperateVulsRequest) SetReason(v string) *OperateVulsRequest {
+	s.Reason = &v
+	return s
+}
+
+func (s *OperateVulsRequest) SetPrecondition(v int32) *OperateVulsRequest {
+	s.Precondition = &v
+	return s
+}
+
+func (s *OperateVulsRequest) SetVulNames(v []*string) *OperateVulsRequest {
+	s.VulNames = v
+	return s
+}
+
+func (s *OperateVulsRequest) SetUuids(v []*string) *OperateVulsRequest {
+	s.Uuids = v
+	return s
+}
+
+type OperateVulsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s OperateVulsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OperateVulsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *OperateVulsResponseBody) SetRequestId(v string) *OperateVulsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type OperateVulsResponse struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *OperateVulsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s OperateVulsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OperateVulsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *OperateVulsResponse) SetHeaders(v map[string]*string) *OperateVulsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *OperateVulsResponse) SetBody(v *OperateVulsResponseBody) *OperateVulsResponse {
+	s.Body = v
+	return s
+}
+
 type OperationSuspEventsRequest struct {
 	SourceIp           *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	SuspiciousEventIds *string `json:"SuspiciousEventIds,omitempty" xml:"SuspiciousEventIds,omitempty"`
@@ -20789,10 +24823,8 @@ func (s *OperationSuspEventsResponse) SetBody(v *OperationSuspEventsResponseBody
 }
 
 type PauseClientRequest struct {
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Uuids    *string `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	AppName  *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	Uuids *string `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s PauseClientRequest) String() string {
@@ -20803,11 +24835,6 @@ func (s PauseClientRequest) GoString() string {
 	return s.String()
 }
 
-func (s *PauseClientRequest) SetSourceIp(v string) *PauseClientRequest {
-	s.SourceIp = &v
-	return s
-}
-
 func (s *PauseClientRequest) SetUuids(v string) *PauseClientRequest {
 	s.Uuids = &v
 	return s
@@ -20815,11 +24842,6 @@ func (s *PauseClientRequest) SetUuids(v string) *PauseClientRequest {
 
 func (s *PauseClientRequest) SetValue(v string) *PauseClientRequest {
 	s.Value = &v
-	return s
-}
-
-func (s *PauseClientRequest) SetAppName(v string) *PauseClientRequest {
-	s.AppName = &v
 	return s
 }
 
@@ -20864,7 +24886,6 @@ func (s *PauseClientResponse) SetBody(v *PauseClientResponseBody) *PauseClientRe
 }
 
 type RefreshContainerAssetsRequest struct {
-	SourceIp  *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	AssetType *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
 }
 
@@ -20874,11 +24895,6 @@ func (s RefreshContainerAssetsRequest) String() string {
 
 func (s RefreshContainerAssetsRequest) GoString() string {
 	return s.String()
-}
-
-func (s *RefreshContainerAssetsRequest) SetSourceIp(v string) *RefreshContainerAssetsRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *RefreshContainerAssetsRequest) SetAssetType(v string) *RefreshContainerAssetsRequest {
@@ -21059,12 +25075,11 @@ func (s *SasInstallCodeResponse) SetBody(v *SasInstallCodeResponseBody) *SasInst
 }
 
 type StartBaselineSecurityCheckRequest struct {
-	SourceIp        *string   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	ResourceOwnerId *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Lang            *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Type            *string   `json:"Type,omitempty" xml:"Type,omitempty"`
-	ItemIds         []*int    `json:"ItemIds,omitempty" xml:"ItemIds,omitempty" type:"Repeated"`
-	Assets          []*string `json:"Assets,omitempty" xml:"Assets,omitempty" type:"Repeated"`
+	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	ItemIds         []*int  `json:"ItemIds,omitempty" xml:"ItemIds,omitempty" type:"Repeated"`
 }
 
 func (s StartBaselineSecurityCheckRequest) String() string {
@@ -21097,11 +25112,6 @@ func (s *StartBaselineSecurityCheckRequest) SetType(v string) *StartBaselineSecu
 
 func (s *StartBaselineSecurityCheckRequest) SetItemIds(v []*int) *StartBaselineSecurityCheckRequest {
 	s.ItemIds = v
-	return s
-}
-
-func (s *StartBaselineSecurityCheckRequest) SetAssets(v []*string) *StartBaselineSecurityCheckRequest {
-	s.Assets = v
 	return s
 }
 
@@ -21146,7 +25156,6 @@ func (s *StartBaselineSecurityCheckResponse) SetBody(v *StartBaselineSecurityChe
 }
 
 type StartImageVulScanRequest struct {
-	SourceIp       *string   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	Lang           *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	RepoRegionId   *string   `json:"RepoRegionId,omitempty" xml:"RepoRegionId,omitempty"`
 	RepoInstanceId *string   `json:"RepoInstanceId,omitempty" xml:"RepoInstanceId,omitempty"`
@@ -21165,11 +25174,6 @@ func (s StartImageVulScanRequest) String() string {
 
 func (s StartImageVulScanRequest) GoString() string {
 	return s.String()
-}
-
-func (s *StartImageVulScanRequest) SetSourceIp(v string) *StartImageVulScanRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *StartImageVulScanRequest) SetLang(v string) *StartImageVulScanRequest {
@@ -21262,6 +25266,207 @@ func (s *StartImageVulScanResponse) SetBody(v *StartImageVulScanResponseBody) *S
 	return s
 }
 
+type StartVirusScanTaskRequest struct {
+	TargetInfo *string `json:"TargetInfo,omitempty" xml:"TargetInfo,omitempty"`
+}
+
+func (s StartVirusScanTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartVirusScanTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartVirusScanTaskRequest) SetTargetInfo(v string) *StartVirusScanTaskRequest {
+	s.TargetInfo = &v
+	return s
+}
+
+type StartVirusScanTaskResponseBody struct {
+	ScanTaskId *int64  `json:"ScanTaskId,omitempty" xml:"ScanTaskId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StartVirusScanTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartVirusScanTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartVirusScanTaskResponseBody) SetScanTaskId(v int64) *StartVirusScanTaskResponseBody {
+	s.ScanTaskId = &v
+	return s
+}
+
+func (s *StartVirusScanTaskResponseBody) SetRequestId(v string) *StartVirusScanTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StartVirusScanTaskResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *StartVirusScanTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StartVirusScanTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartVirusScanTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartVirusScanTaskResponse) SetHeaders(v map[string]*string) *StartVirusScanTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartVirusScanTaskResponse) SetBody(v *StartVirusScanTaskResponseBody) *StartVirusScanTaskResponse {
+	s.Body = v
+	return s
+}
+
+type UnbindAegisRequest struct {
+	Uuids *string `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
+}
+
+func (s UnbindAegisRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnbindAegisRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UnbindAegisRequest) SetUuids(v string) *UnbindAegisRequest {
+	s.Uuids = &v
+	return s
+}
+
+type UnbindAegisResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UnbindAegisResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnbindAegisResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UnbindAegisResponseBody) SetRequestId(v string) *UnbindAegisResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UnbindAegisResponse struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UnbindAegisResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UnbindAegisResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnbindAegisResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UnbindAegisResponse) SetHeaders(v map[string]*string) *UnbindAegisResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UnbindAegisResponse) SetBody(v *UnbindAegisResponseBody) *UnbindAegisResponse {
+	s.Body = v
+	return s
+}
+
+type UninstallBackupClientRequest struct {
+	SourceIp        *string   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	ResourceOwnerId *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Uuid            *string   `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	PolicyVersion   *string   `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty"`
+	UuidList        []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
+}
+
+func (s UninstallBackupClientRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UninstallBackupClientRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UninstallBackupClientRequest) SetSourceIp(v string) *UninstallBackupClientRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *UninstallBackupClientRequest) SetResourceOwnerId(v int64) *UninstallBackupClientRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *UninstallBackupClientRequest) SetUuid(v string) *UninstallBackupClientRequest {
+	s.Uuid = &v
+	return s
+}
+
+func (s *UninstallBackupClientRequest) SetPolicyVersion(v string) *UninstallBackupClientRequest {
+	s.PolicyVersion = &v
+	return s
+}
+
+func (s *UninstallBackupClientRequest) SetUuidList(v []*string) *UninstallBackupClientRequest {
+	s.UuidList = v
+	return s
+}
+
+type UninstallBackupClientResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UninstallBackupClientResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UninstallBackupClientResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UninstallBackupClientResponseBody) SetRequestId(v string) *UninstallBackupClientResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UninstallBackupClientResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UninstallBackupClientResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UninstallBackupClientResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UninstallBackupClientResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UninstallBackupClientResponse) SetHeaders(v map[string]*string) *UninstallBackupClientResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UninstallBackupClientResponse) SetBody(v *UninstallBackupClientResponseBody) *UninstallBackupClientResponse {
+	s.Body = v
+	return s
+}
+
 type ValidateHcWarningsRequest struct {
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	RiskIds  *string `json:"RiskIds,omitempty" xml:"RiskIds,omitempty"`
@@ -21346,11 +25551,65 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = tea.String("central")
+	client.EndpointRule = tea.String("regional")
 	client.EndpointMap = map[string]*string{
-		"cn-hangzhou":         tea.String("tds.aliyuncs.com"),
-		"ap-southeast-3":      tea.String("tds.ap-southeast-3.aliyuncs.com"),
-		"cn-shanghai-et2-b01": tea.String("tds.cn-shanghai-et2-b01.aliyuncs.com"),
+		"cn-hangzhou":                 tea.String("tds.aliyuncs.com"),
+		"ap-southeast-3":              tea.String("tds.ap-southeast-3.aliyuncs.com"),
+		"ap-northeast-1":              tea.String("sas.aliyuncs.com"),
+		"ap-northeast-2-pop":          tea.String("sas.aliyuncs.com"),
+		"ap-south-1":                  tea.String("sas.aliyuncs.com"),
+		"ap-southeast-1":              tea.String("sas.aliyuncs.com"),
+		"ap-southeast-2":              tea.String("sas.aliyuncs.com"),
+		"ap-southeast-5":              tea.String("sas.aliyuncs.com"),
+		"cn-beijing":                  tea.String("sas.aliyuncs.com"),
+		"cn-beijing-finance-1":        tea.String("sas.aliyuncs.com"),
+		"cn-beijing-finance-pop":      tea.String("sas.aliyuncs.com"),
+		"cn-beijing-gov-1":            tea.String("sas.aliyuncs.com"),
+		"cn-beijing-nu16-b01":         tea.String("sas.aliyuncs.com"),
+		"cn-chengdu":                  tea.String("sas.aliyuncs.com"),
+		"cn-edge-1":                   tea.String("sas.aliyuncs.com"),
+		"cn-fujian":                   tea.String("sas.aliyuncs.com"),
+		"cn-haidian-cm12-c01":         tea.String("sas.aliyuncs.com"),
+		"cn-hangzhou-bj-b01":          tea.String("sas.aliyuncs.com"),
+		"cn-hangzhou-finance":         tea.String("sas.aliyuncs.com"),
+		"cn-hangzhou-internal-prod-1": tea.String("sas.aliyuncs.com"),
+		"cn-hangzhou-internal-test-1": tea.String("sas.aliyuncs.com"),
+		"cn-hangzhou-internal-test-2": tea.String("sas.aliyuncs.com"),
+		"cn-hangzhou-internal-test-3": tea.String("sas.aliyuncs.com"),
+		"cn-hangzhou-test-306":        tea.String("sas.aliyuncs.com"),
+		"cn-hongkong":                 tea.String("sas.aliyuncs.com"),
+		"cn-hongkong-finance-pop":     tea.String("sas.aliyuncs.com"),
+		"cn-huhehaote":                tea.String("sas.aliyuncs.com"),
+		"cn-huhehaote-nebula-1":       tea.String("sas.aliyuncs.com"),
+		"cn-north-2-gov-1":            tea.String("sas.aliyuncs.com"),
+		"cn-qingdao":                  tea.String("sas.aliyuncs.com"),
+		"cn-qingdao-nebula":           tea.String("sas.aliyuncs.com"),
+		"cn-shanghai":                 tea.String("sas.aliyuncs.com"),
+		"cn-shanghai-et15-b01":        tea.String("sas.aliyuncs.com"),
+		"cn-shanghai-et2-b01":         tea.String("sas.aliyuncs.com"),
+		"cn-shanghai-finance-1":       tea.String("sas.aliyuncs.com"),
+		"cn-shanghai-inner":           tea.String("sas.aliyuncs.com"),
+		"cn-shanghai-internal-test-1": tea.String("sas.aliyuncs.com"),
+		"cn-shenzhen":                 tea.String("sas.aliyuncs.com"),
+		"cn-shenzhen-finance-1":       tea.String("sas.aliyuncs.com"),
+		"cn-shenzhen-inner":           tea.String("sas.aliyuncs.com"),
+		"cn-shenzhen-st4-d01":         tea.String("sas.aliyuncs.com"),
+		"cn-shenzhen-su18-b01":        tea.String("sas.aliyuncs.com"),
+		"cn-wuhan":                    tea.String("sas.aliyuncs.com"),
+		"cn-wulanchabu":               tea.String("sas.aliyuncs.com"),
+		"cn-yushanfang":               tea.String("sas.aliyuncs.com"),
+		"cn-zhangbei":                 tea.String("sas.aliyuncs.com"),
+		"cn-zhangbei-na61-b01":        tea.String("sas.aliyuncs.com"),
+		"cn-zhangjiakou":              tea.String("sas.aliyuncs.com"),
+		"cn-zhangjiakou-na62-a01":     tea.String("sas.aliyuncs.com"),
+		"cn-zhengzhou-nebula-1":       tea.String("sas.aliyuncs.com"),
+		"eu-central-1":                tea.String("sas.aliyuncs.com"),
+		"eu-west-1":                   tea.String("sas.aliyuncs.com"),
+		"eu-west-1-oxs":               tea.String("sas.aliyuncs.com"),
+		"me-east-1":                   tea.String("sas.aliyuncs.com"),
+		"rus-west-1-pop":              tea.String("sas.aliyuncs.com"),
+		"us-east-1":                   tea.String("sas.aliyuncs.com"),
+		"us-west-1":                   tea.String("sas.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -21411,6 +25670,62 @@ func (client *Client) AddVpcHoneyPot(request *AddVpcHoneyPotRequest) (_result *A
 	return _result, _err
 }
 
+func (client *Client) CheckQuaraFileIdWithOptions(request *CheckQuaraFileIdRequest, runtime *util.RuntimeOptions) (_result *CheckQuaraFileIdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CheckQuaraFileIdResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CheckQuaraFileId"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CheckQuaraFileId(request *CheckQuaraFileIdRequest) (_result *CheckQuaraFileIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CheckQuaraFileIdResponse{}
+	_body, _err := client.CheckQuaraFileIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CheckSecurityEventIdWithOptions(request *CheckSecurityEventIdRequest, runtime *util.RuntimeOptions) (_result *CheckSecurityEventIdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CheckSecurityEventIdResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CheckSecurityEventId"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CheckSecurityEventId(request *CheckSecurityEventIdRequest) (_result *CheckSecurityEventIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CheckSecurityEventIdResponse{}
+	_body, _err := client.CheckSecurityEventIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateAntiBruteForceRuleWithOptions(request *CreateAntiBruteForceRuleRequest, runtime *util.RuntimeOptions) (_result *CreateAntiBruteForceRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21432,6 +25747,40 @@ func (client *Client) CreateAntiBruteForceRule(request *CreateAntiBruteForceRule
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAntiBruteForceRuleResponse{}
 	_body, _err := client.CreateAntiBruteForceRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateBackupPolicyWithOptions(tmpReq *CreateBackupPolicyRequest, runtime *util.RuntimeOptions) (_result *CreateBackupPolicyResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateBackupPolicyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Policy)) {
+		request.PolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Policy, tea.String("Policy"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateBackupPolicyResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateBackupPolicy"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateBackupPolicy(request *CreateBackupPolicyRequest) (_result *CreateBackupPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateBackupPolicyResponse{}
+	_body, _err := client.CreateBackupPolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21467,6 +25816,34 @@ func (client *Client) CreateOrUpdateAssetGroup(request *CreateOrUpdateAssetGroup
 	return _result, _err
 }
 
+func (client *Client) CreateRestoreJobWithOptions(request *CreateRestoreJobRequest, runtime *util.RuntimeOptions) (_result *CreateRestoreJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateRestoreJobResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateRestoreJob"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateRestoreJob(request *CreateRestoreJobRequest) (_result *CreateRestoreJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateRestoreJobResponse{}
+	_body, _err := client.CreateRestoreJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateSasOrderWithOptions(request *CreateSasOrderRequest, runtime *util.RuntimeOptions) (_result *CreateSasOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21495,6 +25872,28 @@ func (client *Client) CreateSasOrder(request *CreateSasOrderRequest) (_result *C
 	return _result, _err
 }
 
+func (client *Client) CreateServiceLinkedRoleWithOptions(runtime *util.RuntimeOptions) (_result *CreateServiceLinkedRoleResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	_result = &CreateServiceLinkedRoleResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateServiceLinkedRole"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateServiceLinkedRole() (_result *CreateServiceLinkedRoleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateServiceLinkedRoleResponse{}
+	_body, _err := client.CreateServiceLinkedRoleWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateSimilarSecurityEventsQueryTaskWithOptions(request *CreateSimilarSecurityEventsQueryTaskRequest, runtime *util.RuntimeOptions) (_result *CreateSimilarSecurityEventsQueryTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21516,6 +25915,62 @@ func (client *Client) CreateSimilarSecurityEventsQueryTask(request *CreateSimila
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateSimilarSecurityEventsQueryTaskResponse{}
 	_body, _err := client.CreateSimilarSecurityEventsQueryTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteBackupPolicyWithOptions(request *DeleteBackupPolicyRequest, runtime *util.RuntimeOptions) (_result *DeleteBackupPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DeleteBackupPolicyResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteBackupPolicy"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteBackupPolicy(request *DeleteBackupPolicyRequest) (_result *DeleteBackupPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteBackupPolicyResponse{}
+	_body, _err := client.DeleteBackupPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteBackupPolicyMachineWithOptions(request *DeleteBackupPolicyMachineRequest, runtime *util.RuntimeOptions) (_result *DeleteBackupPolicyMachineResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DeleteBackupPolicyMachineResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteBackupPolicyMachine"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteBackupPolicyMachine(request *DeleteBackupPolicyMachineRequest) (_result *DeleteBackupPolicyMachineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteBackupPolicyMachineResponse{}
+	_body, _err := client.DeleteBackupPolicyMachineWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21747,7 +26202,7 @@ func (client *Client) DescribeAlarmEventList(request *DescribeAlarmEventListRequ
 	return _result, _err
 }
 
-func (client *Client) DescribeAllEntityWithOptions(request *DescribeAllEntityRequest, runtime *util.RuntimeOptions) (_result *DescribeAllEntityResponse, _err error) {
+func (client *Client) DescribeAlarmEventStackInfoWithOptions(request *DescribeAlarmEventStackInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeAlarmEventStackInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -21755,6 +26210,28 @@ func (client *Client) DescribeAllEntityWithOptions(request *DescribeAllEntityReq
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	_result = &DescribeAlarmEventStackInfoResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeAlarmEventStackInfo"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeAlarmEventStackInfo(request *DescribeAlarmEventStackInfoRequest) (_result *DescribeAlarmEventStackInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAlarmEventStackInfoResponse{}
+	_body, _err := client.DescribeAlarmEventStackInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeAllEntityWithOptions(runtime *util.RuntimeOptions) (_result *DescribeAllEntityResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
 	_result = &DescribeAllEntityResponse{}
 	_body, _err := client.DoRPCRequest(tea.String("DescribeAllEntity"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
@@ -21764,10 +26241,10 @@ func (client *Client) DescribeAllEntityWithOptions(request *DescribeAllEntityReq
 	return _result, _err
 }
 
-func (client *Client) DescribeAllEntity(request *DescribeAllEntityRequest) (_result *DescribeAllEntityResponse, _err error) {
+func (client *Client) DescribeAllEntity() (_result *DescribeAllEntityResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAllEntityResponse{}
-	_body, _err := client.DescribeAllEntityWithOptions(request, runtime)
+	_body, _err := client.DescribeAllEntityWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21915,14 +26392,8 @@ func (client *Client) DescribeAssetDetailByUuids(request *DescribeAssetDetailByU
 	return _result, _err
 }
 
-func (client *Client) DescribeAutoDelConfigWithOptions(request *DescribeAutoDelConfigRequest, runtime *util.RuntimeOptions) (_result *DescribeAutoDelConfigResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
+func (client *Client) DescribeAutoDelConfigWithOptions(runtime *util.RuntimeOptions) (_result *DescribeAutoDelConfigResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
 	_result = &DescribeAutoDelConfigResponse{}
 	_body, _err := client.DoRPCRequest(tea.String("DescribeAutoDelConfig"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
@@ -21932,10 +26403,178 @@ func (client *Client) DescribeAutoDelConfigWithOptions(request *DescribeAutoDelC
 	return _result, _err
 }
 
-func (client *Client) DescribeAutoDelConfig(request *DescribeAutoDelConfigRequest) (_result *DescribeAutoDelConfigResponse, _err error) {
+func (client *Client) DescribeAutoDelConfig() (_result *DescribeAutoDelConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAutoDelConfigResponse{}
-	_body, _err := client.DescribeAutoDelConfigWithOptions(request, runtime)
+	_body, _err := client.DescribeAutoDelConfigWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeBackupDirsWithOptions(request *DescribeBackupDirsRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupDirsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeBackupDirsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeBackupDirs"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeBackupDirs(request *DescribeBackupDirsRequest) (_result *DescribeBackupDirsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeBackupDirsResponse{}
+	_body, _err := client.DescribeBackupDirsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeBackupFilesWithOptions(request *DescribeBackupFilesRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupFilesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeBackupFilesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeBackupFiles"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeBackupFiles(request *DescribeBackupFilesRequest) (_result *DescribeBackupFilesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeBackupFilesResponse{}
+	_body, _err := client.DescribeBackupFilesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeBackupMachineStatusWithOptions(request *DescribeBackupMachineStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupMachineStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeBackupMachineStatusResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeBackupMachineStatus"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeBackupMachineStatus(request *DescribeBackupMachineStatusRequest) (_result *DescribeBackupMachineStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeBackupMachineStatusResponse{}
+	_body, _err := client.DescribeBackupMachineStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeBackupPoliciesWithOptions(request *DescribeBackupPoliciesRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupPoliciesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeBackupPoliciesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeBackupPolicies"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeBackupPolicies(request *DescribeBackupPoliciesRequest) (_result *DescribeBackupPoliciesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeBackupPoliciesResponse{}
+	_body, _err := client.DescribeBackupPoliciesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeBackupPolicyWithOptions(request *DescribeBackupPolicyRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeBackupPolicyResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeBackupPolicy"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeBackupPolicy(request *DescribeBackupPolicyRequest) (_result *DescribeBackupPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeBackupPolicyResponse{}
+	_body, _err := client.DescribeBackupPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeBackupRestoreCountWithOptions(request *DescribeBackupRestoreCountRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupRestoreCountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeBackupRestoreCountResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeBackupRestoreCount"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeBackupRestoreCount(request *DescribeBackupRestoreCountRequest) (_result *DescribeBackupRestoreCountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeBackupRestoreCountResponse{}
+	_body, _err := client.DescribeBackupRestoreCountWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22111,14 +26750,8 @@ func (client *Client) DescribeCloudCenterInstances(request *DescribeCloudCenterI
 	return _result, _err
 }
 
-func (client *Client) DescribeCloudProductFieldStatisticsWithOptions(request *DescribeCloudProductFieldStatisticsRequest, runtime *util.RuntimeOptions) (_result *DescribeCloudProductFieldStatisticsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
+func (client *Client) DescribeCloudProductFieldStatisticsWithOptions(runtime *util.RuntimeOptions) (_result *DescribeCloudProductFieldStatisticsResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
 	_result = &DescribeCloudProductFieldStatisticsResponse{}
 	_body, _err := client.DoRPCRequest(tea.String("DescribeCloudProductFieldStatistics"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
@@ -22128,10 +26761,10 @@ func (client *Client) DescribeCloudProductFieldStatisticsWithOptions(request *De
 	return _result, _err
 }
 
-func (client *Client) DescribeCloudProductFieldStatistics(request *DescribeCloudProductFieldStatisticsRequest) (_result *DescribeCloudProductFieldStatisticsResponse, _err error) {
+func (client *Client) DescribeCloudProductFieldStatistics() (_result *DescribeCloudProductFieldStatisticsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCloudProductFieldStatisticsResponse{}
-	_body, _err := client.DescribeCloudProductFieldStatisticsWithOptions(request, runtime)
+	_body, _err := client.DescribeCloudProductFieldStatisticsWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22363,7 +26996,7 @@ func (client *Client) DescribeDomainList(request *DescribeDomainListRequest) (_r
 	return _result, _err
 }
 
-func (client *Client) DescribeEmgVulGroupWithOptions(request *DescribeEmgVulGroupRequest, runtime *util.RuntimeOptions) (_result *DescribeEmgVulGroupResponse, _err error) {
+func (client *Client) DescribeEmgVulItemWithOptions(request *DescribeEmgVulItemRequest, runtime *util.RuntimeOptions) (_result *DescribeEmgVulItemResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -22371,8 +27004,8 @@ func (client *Client) DescribeEmgVulGroupWithOptions(request *DescribeEmgVulGrou
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
-	_result = &DescribeEmgVulGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeEmgVulGroup"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_result = &DescribeEmgVulItemResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeEmgVulItem"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22380,10 +27013,38 @@ func (client *Client) DescribeEmgVulGroupWithOptions(request *DescribeEmgVulGrou
 	return _result, _err
 }
 
-func (client *Client) DescribeEmgVulGroup(request *DescribeEmgVulGroupRequest) (_result *DescribeEmgVulGroupResponse, _err error) {
+func (client *Client) DescribeEmgVulItem(request *DescribeEmgVulItemRequest) (_result *DescribeEmgVulItemResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &DescribeEmgVulGroupResponse{}
-	_body, _err := client.DescribeEmgVulGroupWithOptions(request, runtime)
+	_result = &DescribeEmgVulItemResponse{}
+	_body, _err := client.DescribeEmgVulItemWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeExcludeSystemPathWithOptions(request *DescribeExcludeSystemPathRequest, runtime *util.RuntimeOptions) (_result *DescribeExcludeSystemPathResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeExcludeSystemPathResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeExcludeSystemPath"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeExcludeSystemPath(request *DescribeExcludeSystemPathRequest) (_result *DescribeExcludeSystemPathResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeExcludeSystemPathResponse{}
+	_body, _err := client.DescribeExcludeSystemPathWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22503,14 +27164,8 @@ func (client *Client) DescribeExposedInstanceList(request *DescribeExposedInstan
 	return _result, _err
 }
 
-func (client *Client) DescribeExposedStatisticsWithOptions(request *DescribeExposedStatisticsRequest, runtime *util.RuntimeOptions) (_result *DescribeExposedStatisticsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
+func (client *Client) DescribeExposedStatisticsWithOptions(runtime *util.RuntimeOptions) (_result *DescribeExposedStatisticsResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
 	_result = &DescribeExposedStatisticsResponse{}
 	_body, _err := client.DoRPCRequest(tea.String("DescribeExposedStatistics"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
@@ -22520,10 +27175,38 @@ func (client *Client) DescribeExposedStatisticsWithOptions(request *DescribeExpo
 	return _result, _err
 }
 
-func (client *Client) DescribeExposedStatistics(request *DescribeExposedStatisticsRequest) (_result *DescribeExposedStatisticsResponse, _err error) {
+func (client *Client) DescribeExposedStatistics() (_result *DescribeExposedStatisticsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeExposedStatisticsResponse{}
-	_body, _err := client.DescribeExposedStatisticsWithOptions(request, runtime)
+	_body, _err := client.DescribeExposedStatisticsWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeExposedStatisticsDetailWithOptions(request *DescribeExposedStatisticsDetailRequest, runtime *util.RuntimeOptions) (_result *DescribeExposedStatisticsDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeExposedStatisticsDetailResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeExposedStatisticsDetail"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeExposedStatisticsDetail(request *DescribeExposedStatisticsDetailRequest) (_result *DescribeExposedStatisticsDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeExposedStatisticsDetailResponse{}
+	_body, _err := client.DescribeExposedStatisticsDetailWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22552,6 +27235,34 @@ func (client *Client) DescribeFieldStatistics(request *DescribeFieldStatisticsRe
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFieldStatisticsResponse{}
 	_body, _err := client.DescribeFieldStatisticsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeFrontVulPatchListWithOptions(request *DescribeFrontVulPatchListRequest, runtime *util.RuntimeOptions) (_result *DescribeFrontVulPatchListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeFrontVulPatchListResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeFrontVulPatchList"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeFrontVulPatchList(request *DescribeFrontVulPatchListRequest) (_result *DescribeFrontVulPatchListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeFrontVulPatchListResponse{}
+	_body, _err := client.DescribeFrontVulPatchListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22608,6 +27319,34 @@ func (client *Client) DescribeGroupedContainerInstances(request *DescribeGrouped
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeGroupedContainerInstancesResponse{}
 	_body, _err := client.DescribeGroupedContainerInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeGroupedInstancesWithOptions(request *DescribeGroupedInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeGroupedInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeGroupedInstancesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeGroupedInstances"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeGroupedInstances(request *DescribeGroupedInstancesRequest) (_result *DescribeGroupedInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeGroupedInstancesResponse{}
+	_body, _err := client.DescribeGroupedInstancesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22699,14 +27438,8 @@ func (client *Client) DescribeGroupedVul(request *DescribeGroupedVulRequest) (_r
 	return _result, _err
 }
 
-func (client *Client) DescribeHoneyPotAuthWithOptions(request *DescribeHoneyPotAuthRequest, runtime *util.RuntimeOptions) (_result *DescribeHoneyPotAuthResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
+func (client *Client) DescribeHoneyPotAuthWithOptions(runtime *util.RuntimeOptions) (_result *DescribeHoneyPotAuthResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
 	_result = &DescribeHoneyPotAuthResponse{}
 	_body, _err := client.DoRPCRequest(tea.String("DescribeHoneyPotAuth"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
@@ -22716,10 +27449,10 @@ func (client *Client) DescribeHoneyPotAuthWithOptions(request *DescribeHoneyPotA
 	return _result, _err
 }
 
-func (client *Client) DescribeHoneyPotAuth(request *DescribeHoneyPotAuthRequest) (_result *DescribeHoneyPotAuthResponse, _err error) {
+func (client *Client) DescribeHoneyPotAuth() (_result *DescribeHoneyPotAuthResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeHoneyPotAuthResponse{}
-	_body, _err := client.DescribeHoneyPotAuthWithOptions(request, runtime)
+	_body, _err := client.DescribeHoneyPotAuthWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22783,14 +27516,8 @@ func (client *Client) DescribeImageGroupedVulList(request *DescribeImageGroupedV
 	return _result, _err
 }
 
-func (client *Client) DescribeImageStatisticsWithOptions(request *DescribeImageStatisticsRequest, runtime *util.RuntimeOptions) (_result *DescribeImageStatisticsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
+func (client *Client) DescribeImageStatisticsWithOptions(runtime *util.RuntimeOptions) (_result *DescribeImageStatisticsResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
 	_result = &DescribeImageStatisticsResponse{}
 	_body, _err := client.DoRPCRequest(tea.String("DescribeImageStatistics"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
@@ -22800,10 +27527,10 @@ func (client *Client) DescribeImageStatisticsWithOptions(request *DescribeImageS
 	return _result, _err
 }
 
-func (client *Client) DescribeImageStatistics(request *DescribeImageStatisticsRequest) (_result *DescribeImageStatisticsResponse, _err error) {
+func (client *Client) DescribeImageStatistics() (_result *DescribeImageStatisticsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeImageStatisticsResponse{}
-	_body, _err := client.DescribeImageStatisticsWithOptions(request, runtime)
+	_body, _err := client.DescribeImageStatisticsWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22951,7 +27678,7 @@ func (client *Client) DescribeIpInfo(request *DescribeIpInfoRequest) (_result *D
 	return _result, _err
 }
 
-func (client *Client) DescribeModuleConfigWithOptions(request *DescribeModuleConfigRequest, runtime *util.RuntimeOptions) (_result *DescribeModuleConfigResponse, _err error) {
+func (client *Client) DescribeLogstoreStorageWithOptions(request *DescribeLogstoreStorageRequest, runtime *util.RuntimeOptions) (_result *DescribeLogstoreStorageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -22959,6 +27686,28 @@ func (client *Client) DescribeModuleConfigWithOptions(request *DescribeModuleCon
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	_result = &DescribeLogstoreStorageResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeLogstoreStorage"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeLogstoreStorage(request *DescribeLogstoreStorageRequest) (_result *DescribeLogstoreStorageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeLogstoreStorageResponse{}
+	_body, _err := client.DescribeLogstoreStorageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeModuleConfigWithOptions(runtime *util.RuntimeOptions) (_result *DescribeModuleConfigResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
 	_result = &DescribeModuleConfigResponse{}
 	_body, _err := client.DoRPCRequest(tea.String("DescribeModuleConfig"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
@@ -22968,10 +27717,10 @@ func (client *Client) DescribeModuleConfigWithOptions(request *DescribeModuleCon
 	return _result, _err
 }
 
-func (client *Client) DescribeModuleConfig(request *DescribeModuleConfigRequest) (_result *DescribeModuleConfigResponse, _err error) {
+func (client *Client) DescribeModuleConfig() (_result *DescribeModuleConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeModuleConfigResponse{}
-	_body, _err := client.DescribeModuleConfigWithOptions(request, runtime)
+	_body, _err := client.DescribeModuleConfigWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23343,6 +28092,62 @@ func (client *Client) DescribePropertyUserItem(request *DescribePropertyUserItem
 	return _result, _err
 }
 
+func (client *Client) DescribeQuaraFileDownloadInfoWithOptions(request *DescribeQuaraFileDownloadInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeQuaraFileDownloadInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeQuaraFileDownloadInfoResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeQuaraFileDownloadInfo"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeQuaraFileDownloadInfo(request *DescribeQuaraFileDownloadInfoRequest) (_result *DescribeQuaraFileDownloadInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeQuaraFileDownloadInfoResponse{}
+	_body, _err := client.DescribeQuaraFileDownloadInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeRestoreJobsWithOptions(request *DescribeRestoreJobsRequest, runtime *util.RuntimeOptions) (_result *DescribeRestoreJobsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeRestoreJobsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeRestoreJobs"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeRestoreJobs(request *DescribeRestoreJobsRequest) (_result *DescribeRestoreJobsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeRestoreJobsResponse{}
+	_body, _err := client.DescribeRestoreJobsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeRiskCheckItemResultWithOptions(request *DescribeRiskCheckItemResultRequest, runtime *util.RuntimeOptions) (_result *DescribeRiskCheckItemResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23504,6 +28309,34 @@ func (client *Client) DescribeSasAssetStatisticsColumn(request *DescribeSasAsset
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSasAssetStatisticsColumnResponse{}
 	_body, _err := client.DescribeSasAssetStatisticsColumnWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeScanTaskProgressWithOptions(request *DescribeScanTaskProgressRequest, runtime *util.RuntimeOptions) (_result *DescribeScanTaskProgressResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeScanTaskProgressResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeScanTaskProgress"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeScanTaskProgress(request *DescribeScanTaskProgressRequest) (_result *DescribeScanTaskProgressResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeScanTaskProgressResponse{}
+	_body, _err := client.DescribeScanTaskProgressWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23679,6 +28512,28 @@ func (client *Client) DescribeSecurityStatInfo(request *DescribeSecurityStatInfo
 	return _result, _err
 }
 
+func (client *Client) DescribeServiceLinkedRoleStatusWithOptions(runtime *util.RuntimeOptions) (_result *DescribeServiceLinkedRoleStatusResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	_result = &DescribeServiceLinkedRoleStatusResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeServiceLinkedRoleStatus"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeServiceLinkedRoleStatus() (_result *DescribeServiceLinkedRoleStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeServiceLinkedRoleStatusResponse{}
+	_body, _err := client.DescribeServiceLinkedRoleStatusWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeSimilarEventScenariosWithOptions(request *DescribeSimilarEventScenariosRequest, runtime *util.RuntimeOptions) (_result *DescribeSimilarEventScenariosResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23735,6 +28590,34 @@ func (client *Client) DescribeSimilarSecurityEvents(request *DescribeSimilarSecu
 	return _result, _err
 }
 
+func (client *Client) DescribeSnapshotsWithOptions(request *DescribeSnapshotsRequest, runtime *util.RuntimeOptions) (_result *DescribeSnapshotsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeSnapshotsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeSnapshots"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeSnapshots(request *DescribeSnapshotsRequest) (_result *DescribeSnapshotsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSnapshotsResponse{}
+	_body, _err := client.DescribeSnapshotsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeStrategyExecDetailWithOptions(request *DescribeStrategyExecDetailRequest, runtime *util.RuntimeOptions) (_result *DescribeStrategyExecDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23763,34 +28646,6 @@ func (client *Client) DescribeStrategyExecDetail(request *DescribeStrategyExecDe
 	return _result, _err
 }
 
-func (client *Client) DescribeStratetyWithOptions(request *DescribeStratetyRequest, runtime *util.RuntimeOptions) (_result *DescribeStratetyResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeStratetyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeStratety"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeStratety(request *DescribeStratetyRequest) (_result *DescribeStratetyResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeStratetyResponse{}
-	_body, _err := client.DescribeStratetyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeSummaryInfoWithOptions(request *DescribeSummaryInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeSummaryInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23812,6 +28667,34 @@ func (client *Client) DescribeSummaryInfo(request *DescribeSummaryInfoRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSummaryInfoResponse{}
 	_body, _err := client.DescribeSummaryInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeSupportRegionWithOptions(request *DescribeSupportRegionRequest, runtime *util.RuntimeOptions) (_result *DescribeSupportRegionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeSupportRegionResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeSupportRegion"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeSupportRegion(request *DescribeSupportRegionRequest) (_result *DescribeSupportRegionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSupportRegionResponse{}
+	_body, _err := client.DescribeSupportRegionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23903,6 +28786,34 @@ func (client *Client) DescribeSuspEvents(request *DescribeSuspEventsRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) DescribeUserBackupMachinesWithOptions(request *DescribeUserBackupMachinesRequest, runtime *util.RuntimeOptions) (_result *DescribeUserBackupMachinesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeUserBackupMachinesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeUserBackupMachines"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeUserBackupMachines(request *DescribeUserBackupMachinesRequest) (_result *DescribeUserBackupMachinesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeUserBackupMachinesResponse{}
+	_body, _err := client.DescribeUserBackupMachinesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeUserBaselineAuthorizationWithOptions(request *DescribeUserBaselineAuthorizationRequest, runtime *util.RuntimeOptions) (_result *DescribeUserBaselineAuthorizationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23952,6 +28863,34 @@ func (client *Client) DescribeUserLayoutAuthorization(request *DescribeUserLayou
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeUserLayoutAuthorizationResponse{}
 	_body, _err := client.DescribeUserLayoutAuthorizationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeUuidsByVulNamesWithOptions(request *DescribeUuidsByVulNamesRequest, runtime *util.RuntimeOptions) (_result *DescribeUuidsByVulNamesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeUuidsByVulNamesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeUuidsByVulNames"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeUuidsByVulNames(request *DescribeUuidsByVulNamesRequest) (_result *DescribeUuidsByVulNamesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeUuidsByVulNamesResponse{}
+	_body, _err := client.DescribeUuidsByVulNamesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24015,14 +28954,8 @@ func (client *Client) DescribeVolDingdingMessage(request *DescribeVolDingdingMes
 	return _result, _err
 }
 
-func (client *Client) DescribeVpcHoneyPotCriteriaWithOptions(request *DescribeVpcHoneyPotCriteriaRequest, runtime *util.RuntimeOptions) (_result *DescribeVpcHoneyPotCriteriaResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
+func (client *Client) DescribeVpcHoneyPotCriteriaWithOptions(runtime *util.RuntimeOptions) (_result *DescribeVpcHoneyPotCriteriaResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
 	_result = &DescribeVpcHoneyPotCriteriaResponse{}
 	_body, _err := client.DoRPCRequest(tea.String("DescribeVpcHoneyPotCriteria"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
@@ -24032,10 +28965,10 @@ func (client *Client) DescribeVpcHoneyPotCriteriaWithOptions(request *DescribeVp
 	return _result, _err
 }
 
-func (client *Client) DescribeVpcHoneyPotCriteria(request *DescribeVpcHoneyPotCriteriaRequest) (_result *DescribeVpcHoneyPotCriteriaResponse, _err error) {
+func (client *Client) DescribeVpcHoneyPotCriteria() (_result *DescribeVpcHoneyPotCriteriaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeVpcHoneyPotCriteriaResponse{}
-	_body, _err := client.DescribeVpcHoneyPotCriteriaWithOptions(request, runtime)
+	_body, _err := client.DescribeVpcHoneyPotCriteriaWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24071,14 +29004,8 @@ func (client *Client) DescribeVpcHoneyPotList(request *DescribeVpcHoneyPotListRe
 	return _result, _err
 }
 
-func (client *Client) DescribeVpcListWithOptions(request *DescribeVpcListRequest, runtime *util.RuntimeOptions) (_result *DescribeVpcListResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
+func (client *Client) DescribeVpcListWithOptions(runtime *util.RuntimeOptions) (_result *DescribeVpcListResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
 	_result = &DescribeVpcListResponse{}
 	_body, _err := client.DoRPCRequest(tea.String("DescribeVpcList"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
@@ -24088,10 +29015,10 @@ func (client *Client) DescribeVpcListWithOptions(request *DescribeVpcListRequest
 	return _result, _err
 }
 
-func (client *Client) DescribeVpcList(request *DescribeVpcListRequest) (_result *DescribeVpcListResponse, _err error) {
+func (client *Client) DescribeVpcList() (_result *DescribeVpcListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeVpcListResponse{}
-	_body, _err := client.DescribeVpcListWithOptions(request, runtime)
+	_body, _err := client.DescribeVpcListWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24323,6 +29250,34 @@ func (client *Client) FixCheckWarnings(request *FixCheckWarningsRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) GetBackupStorageCountWithOptions(request *GetBackupStorageCountRequest, runtime *util.RuntimeOptions) (_result *GetBackupStorageCountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetBackupStorageCountResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetBackupStorageCount"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetBackupStorageCount(request *GetBackupStorageCountRequest) (_result *GetBackupStorageCountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetBackupStorageCountResponse{}
+	_body, _err := client.GetBackupStorageCountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetIncIOCsWithOptions(request *GetIncIOCsRequest, runtime *util.RuntimeOptions) (_result *GetIncIOCsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24372,6 +29327,62 @@ func (client *Client) GetIOCs(request *GetIOCsRequest) (_result *GetIOCsResponse
 	runtime := &util.RuntimeOptions{}
 	_result = &GetIOCsResponse{}
 	_body, _err := client.GetIOCsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetSuspiciousStatisticsWithOptions(request *GetSuspiciousStatisticsRequest, runtime *util.RuntimeOptions) (_result *GetSuspiciousStatisticsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetSuspiciousStatisticsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetSuspiciousStatistics"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetSuspiciousStatistics(request *GetSuspiciousStatisticsRequest) (_result *GetSuspiciousStatisticsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSuspiciousStatisticsResponse{}
+	_body, _err := client.GetSuspiciousStatisticsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetVulStatisticsWithOptions(request *GetVulStatisticsRequest, runtime *util.RuntimeOptions) (_result *GetVulStatisticsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetVulStatisticsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetVulStatistics"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetVulStatistics(request *GetVulStatisticsRequest) (_result *GetVulStatisticsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetVulStatisticsResponse{}
+	_body, _err := client.GetVulStatisticsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24463,6 +29474,34 @@ func (client *Client) IgnoreHcCheckWarnings(request *IgnoreHcCheckWarningsReques
 	return _result, _err
 }
 
+func (client *Client) InstallBackupClientWithOptions(request *InstallBackupClientRequest, runtime *util.RuntimeOptions) (_result *InstallBackupClientResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &InstallBackupClientResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("InstallBackupClient"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) InstallBackupClient(request *InstallBackupClientRequest) (_result *InstallBackupClientResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &InstallBackupClientResponse{}
+	_body, _err := client.InstallBackupClientWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ModifyAntiBruteForceRuleWithOptions(request *ModifyAntiBruteForceRuleRequest, runtime *util.RuntimeOptions) (_result *ModifyAntiBruteForceRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24484,6 +29523,96 @@ func (client *Client) ModifyAntiBruteForceRule(request *ModifyAntiBruteForceRule
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyAntiBruteForceRuleResponse{}
 	_body, _err := client.ModifyAntiBruteForceRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyAssetGroupWithOptions(request *ModifyAssetGroupRequest, runtime *util.RuntimeOptions) (_result *ModifyAssetGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ModifyAssetGroupResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ModifyAssetGroup"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyAssetGroup(request *ModifyAssetGroupRequest) (_result *ModifyAssetGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyAssetGroupResponse{}
+	_body, _err := client.ModifyAssetGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyBackupPolicyWithOptions(tmpReq *ModifyBackupPolicyRequest, runtime *util.RuntimeOptions) (_result *ModifyBackupPolicyResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ModifyBackupPolicyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Policy)) {
+		request.PolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Policy, tea.String("Policy"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ModifyBackupPolicyResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ModifyBackupPolicy"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyBackupPolicy(request *ModifyBackupPolicyRequest) (_result *ModifyBackupPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyBackupPolicyResponse{}
+	_body, _err := client.ModifyBackupPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyBackupPolicyStatusWithOptions(request *ModifyBackupPolicyStatusRequest, runtime *util.RuntimeOptions) (_result *ModifyBackupPolicyStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ModifyBackupPolicyStatusResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ModifyBackupPolicyStatus"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyBackupPolicyStatus(request *ModifyBackupPolicyStatusRequest) (_result *ModifyBackupPolicyStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyBackupPolicyStatusResponse{}
+	_body, _err := client.ModifyBackupPolicyStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24680,6 +29809,34 @@ func (client *Client) ModifyNoticeConfig(request *ModifyNoticeConfigRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyNoticeConfigResponse{}
 	_body, _err := client.ModifyNoticeConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyOpenLogShipperWithOptions(request *ModifyOpenLogShipperRequest, runtime *util.RuntimeOptions) (_result *ModifyOpenLogShipperResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ModifyOpenLogShipperResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ModifyOpenLogShipper"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyOpenLogShipper(request *ModifyOpenLogShipperRequest) (_result *ModifyOpenLogShipperResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyOpenLogShipperResponse{}
+	_body, _err := client.ModifyOpenLogShipperWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25023,6 +30180,34 @@ func (client *Client) ModifyWebLockStart(request *ModifyWebLockStartRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) ModifyWebLockStatusWithOptions(request *ModifyWebLockStatusRequest, runtime *util.RuntimeOptions) (_result *ModifyWebLockStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ModifyWebLockStatusResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ModifyWebLockStatus"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyWebLockStatus(request *ModifyWebLockStatusRequest) (_result *ModifyWebLockStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyWebLockStatusResponse{}
+	_body, _err := client.ModifyWebLockStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ModifyWebLockUnbindWithOptions(request *ModifyWebLockUnbindRequest, runtime *util.RuntimeOptions) (_result *ModifyWebLockUnbindResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25100,6 +30285,34 @@ func (client *Client) OperateSuspiciousTargetConfig(request *OperateSuspiciousTa
 	runtime := &util.RuntimeOptions{}
 	_result = &OperateSuspiciousTargetConfigResponse{}
 	_body, _err := client.OperateSuspiciousTargetConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) OperateVulsWithOptions(request *OperateVulsRequest, runtime *util.RuntimeOptions) (_result *OperateVulsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &OperateVulsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("OperateVuls"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) OperateVuls(request *OperateVulsRequest) (_result *OperateVulsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &OperateVulsResponse{}
+	_body, _err := client.OperateVulsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25296,6 +30509,90 @@ func (client *Client) StartImageVulScan(request *StartImageVulScanRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &StartImageVulScanResponse{}
 	_body, _err := client.StartImageVulScanWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StartVirusScanTaskWithOptions(request *StartVirusScanTaskRequest, runtime *util.RuntimeOptions) (_result *StartVirusScanTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &StartVirusScanTaskResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("StartVirusScanTask"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StartVirusScanTask(request *StartVirusScanTaskRequest) (_result *StartVirusScanTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartVirusScanTaskResponse{}
+	_body, _err := client.StartVirusScanTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UnbindAegisWithOptions(request *UnbindAegisRequest, runtime *util.RuntimeOptions) (_result *UnbindAegisResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &UnbindAegisResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UnbindAegis"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UnbindAegis(request *UnbindAegisRequest) (_result *UnbindAegisResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UnbindAegisResponse{}
+	_body, _err := client.UnbindAegisWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UninstallBackupClientWithOptions(request *UninstallBackupClientRequest, runtime *util.RuntimeOptions) (_result *UninstallBackupClientResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &UninstallBackupClientResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UninstallBackupClient"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UninstallBackupClient(request *UninstallBackupClientRequest) (_result *UninstallBackupClientResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UninstallBackupClientResponse{}
+	_body, _err := client.UninstallBackupClientWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
