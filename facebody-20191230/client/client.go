@@ -3484,7 +3484,7 @@ func (s *GetRealPersonVerificationResultResponseBody) SetSuccess(v bool) *GetRea
 }
 
 type GetRealPersonVerificationResultResponseBodyData struct {
-	Pass          *bool   `json:"Pass,omitempty" xml:"Pass,omitempty"`
+	Passed        *bool   `json:"Passed,omitempty" xml:"Passed,omitempty"`
 	IdentityInfo  *string `json:"IdentityInfo,omitempty" xml:"IdentityInfo,omitempty"`
 	MaterialMatch *string `json:"MaterialMatch,omitempty" xml:"MaterialMatch,omitempty"`
 }
@@ -3497,8 +3497,8 @@ func (s GetRealPersonVerificationResultResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *GetRealPersonVerificationResultResponseBodyData) SetPass(v bool) *GetRealPersonVerificationResultResponseBodyData {
-	s.Pass = &v
+func (s *GetRealPersonVerificationResultResponseBodyData) SetPassed(v bool) *GetRealPersonVerificationResultResponseBodyData {
+	s.Passed = &v
 	return s
 }
 
@@ -4215,6 +4215,116 @@ func (s *MergeImageFaceResponse) SetHeaders(v map[string]*string) *MergeImageFac
 }
 
 func (s *MergeImageFaceResponse) SetBody(v *MergeImageFaceResponseBody) *MergeImageFaceResponse {
+	s.Body = v
+	return s
+}
+
+type ExtractFingerPrintRequest struct {
+	ImageURL  *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	ImageData []byte  `json:"ImageData,omitempty" xml:"ImageData,omitempty"`
+}
+
+func (s ExtractFingerPrintRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExtractFingerPrintRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExtractFingerPrintRequest) SetImageURL(v string) *ExtractFingerPrintRequest {
+	s.ImageURL = &v
+	return s
+}
+
+func (s *ExtractFingerPrintRequest) SetImageData(v []byte) *ExtractFingerPrintRequest {
+	s.ImageData = v
+	return s
+}
+
+type ExtractFingerPrintAdvanceRequest struct {
+	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageData      []byte    `json:"ImageData,omitempty" xml:"ImageData,omitempty"`
+}
+
+func (s ExtractFingerPrintAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExtractFingerPrintAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExtractFingerPrintAdvanceRequest) SetImageURLObject(v io.Reader) *ExtractFingerPrintAdvanceRequest {
+	s.ImageURLObject = v
+	return s
+}
+
+func (s *ExtractFingerPrintAdvanceRequest) SetImageData(v []byte) *ExtractFingerPrintAdvanceRequest {
+	s.ImageData = v
+	return s
+}
+
+type ExtractFingerPrintResponseBody struct {
+	// Id of the request
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *ExtractFingerPrintResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s ExtractFingerPrintResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExtractFingerPrintResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExtractFingerPrintResponseBody) SetRequestId(v string) *ExtractFingerPrintResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ExtractFingerPrintResponseBody) SetData(v *ExtractFingerPrintResponseBodyData) *ExtractFingerPrintResponseBody {
+	s.Data = v
+	return s
+}
+
+type ExtractFingerPrintResponseBodyData struct {
+	FingerPrint []byte `json:"FingerPrint,omitempty" xml:"FingerPrint,omitempty"`
+}
+
+func (s ExtractFingerPrintResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExtractFingerPrintResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ExtractFingerPrintResponseBodyData) SetFingerPrint(v []byte) *ExtractFingerPrintResponseBodyData {
+	s.FingerPrint = v
+	return s
+}
+
+type ExtractFingerPrintResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ExtractFingerPrintResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ExtractFingerPrintResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExtractFingerPrintResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExtractFingerPrintResponse) SetHeaders(v map[string]*string) *ExtractFingerPrintResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExtractFingerPrintResponse) SetBody(v *ExtractFingerPrintResponseBody) *ExtractFingerPrintResponse {
 	s.Body = v
 	return s
 }
@@ -5283,7 +5393,8 @@ func (s *AddFaceResponse) SetBody(v *AddFaceResponseBody) *AddFaceResponse {
 
 type GenerateHumanSketchStyleRequest struct {
 	// A short description of struct
-	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	ImageURL   *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	ReturnType *string `json:"ReturnType,omitempty" xml:"ReturnType,omitempty"`
 }
 
 func (s GenerateHumanSketchStyleRequest) String() string {
@@ -5299,8 +5410,14 @@ func (s *GenerateHumanSketchStyleRequest) SetImageURL(v string) *GenerateHumanSk
 	return s
 }
 
+func (s *GenerateHumanSketchStyleRequest) SetReturnType(v string) *GenerateHumanSketchStyleRequest {
+	s.ReturnType = &v
+	return s
+}
+
 type GenerateHumanSketchStyleAdvanceRequest struct {
 	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ReturnType     *string   `json:"ReturnType,omitempty" xml:"ReturnType,omitempty"`
 }
 
 func (s GenerateHumanSketchStyleAdvanceRequest) String() string {
@@ -5313,6 +5430,11 @@ func (s GenerateHumanSketchStyleAdvanceRequest) GoString() string {
 
 func (s *GenerateHumanSketchStyleAdvanceRequest) SetImageURLObject(v io.Reader) *GenerateHumanSketchStyleAdvanceRequest {
 	s.ImageURLObject = v
+	return s
+}
+
+func (s *GenerateHumanSketchStyleAdvanceRequest) SetReturnType(v string) *GenerateHumanSketchStyleAdvanceRequest {
+	s.ReturnType = &v
 	return s
 }
 
@@ -10998,6 +11120,129 @@ func (client *Client) MergeImageFaceAdvance(request *MergeImageFaceAdvanceReques
 	}
 
 	_result = mergeImageFaceResp
+	return _result, _err
+}
+
+func (client *Client) ExtractFingerPrintWithOptions(request *ExtractFingerPrintRequest, runtime *util.RuntimeOptions) (_result *ExtractFingerPrintResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ExtractFingerPrintResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ExtractFingerPrint"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ExtractFingerPrint(request *ExtractFingerPrintRequest) (_result *ExtractFingerPrintResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ExtractFingerPrintResponse{}
+	_body, _err := client.ExtractFingerPrintWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ExtractFingerPrintAdvance(request *ExtractFingerPrintAdvanceRequest, runtime *util.RuntimeOptions) (_result *ExtractFingerPrintResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("facebody"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	extractFingerPrintReq := &ExtractFingerPrintRequest{}
+	openapiutil.Convert(request, extractFingerPrintReq)
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.AccessKeyId,
+			Policy:              authResponse.EncodedPolicy,
+			Signature:           authResponse.Signature,
+			Key:                 authResponse.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		extractFingerPrintReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	}
+
+	extractFingerPrintResp, _err := client.ExtractFingerPrintWithOptions(extractFingerPrintReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = extractFingerPrintResp
 	return _result, _err
 }
 
