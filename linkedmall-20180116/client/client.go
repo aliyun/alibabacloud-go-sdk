@@ -48,9 +48,9 @@ func (s *AddAddressRequest) SetAddressInfo(v string) *AddAddressRequest {
 }
 
 type AddAddressResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	AddressId *int64  `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
 }
 
@@ -62,6 +62,11 @@ func (s AddAddressResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *AddAddressResponseBody) SetCode(v string) *AddAddressResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *AddAddressResponseBody) SetMessage(v string) *AddAddressResponseBody {
 	s.Message = &v
 	return s
@@ -69,11 +74,6 @@ func (s *AddAddressResponseBody) SetMessage(v string) *AddAddressResponseBody {
 
 func (s *AddAddressResponseBody) SetRequestId(v string) *AddAddressResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *AddAddressResponseBody) SetCode(v string) *AddAddressResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -171,11 +171,11 @@ func (s *AddItemLimitRuleRequest) SetEndTime(v int64) *AddItemLimitRuleRequest {
 }
 
 type AddItemLimitRuleResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Model     *int64  `json:"Model,omitempty" xml:"Model,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RuleId    *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	Model     *int64  `json:"Model,omitempty" xml:"Model,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s AddItemLimitRuleResponseBody) String() string {
@@ -184,6 +184,16 @@ func (s AddItemLimitRuleResponseBody) String() string {
 
 func (s AddItemLimitRuleResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *AddItemLimitRuleResponseBody) SetCode(v string) *AddItemLimitRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AddItemLimitRuleResponseBody) SetModel(v int64) *AddItemLimitRuleResponseBody {
+	s.Model = &v
+	return s
 }
 
 func (s *AddItemLimitRuleResponseBody) SetMessage(v string) *AddItemLimitRuleResponseBody {
@@ -198,16 +208,6 @@ func (s *AddItemLimitRuleResponseBody) SetRequestId(v string) *AddItemLimitRuleR
 
 func (s *AddItemLimitRuleResponseBody) SetRuleId(v int64) *AddItemLimitRuleResponseBody {
 	s.RuleId = &v
-	return s
-}
-
-func (s *AddItemLimitRuleResponseBody) SetModel(v int64) *AddItemLimitRuleResponseBody {
-	s.Model = &v
-	return s
-}
-
-func (s *AddItemLimitRuleResponseBody) SetCode(v string) *AddItemLimitRuleResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -230,6 +230,128 @@ func (s *AddItemLimitRuleResponse) SetHeaders(v map[string]*string) *AddItemLimi
 }
 
 func (s *AddItemLimitRuleResponse) SetBody(v *AddItemLimitRuleResponseBody) *AddItemLimitRuleResponse {
+	s.Body = v
+	return s
+}
+
+type AddItemToSubBizsRequest struct {
+	BizId     *string                `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	ItemId    *int64                 `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	LmItemId  *string                `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
+	SubBizIds map[string]interface{} `json:"SubBizIds,omitempty" xml:"SubBizIds,omitempty"`
+}
+
+func (s AddItemToSubBizsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddItemToSubBizsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddItemToSubBizsRequest) SetBizId(v string) *AddItemToSubBizsRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *AddItemToSubBizsRequest) SetItemId(v int64) *AddItemToSubBizsRequest {
+	s.ItemId = &v
+	return s
+}
+
+func (s *AddItemToSubBizsRequest) SetLmItemId(v string) *AddItemToSubBizsRequest {
+	s.LmItemId = &v
+	return s
+}
+
+func (s *AddItemToSubBizsRequest) SetSubBizIds(v map[string]interface{}) *AddItemToSubBizsRequest {
+	s.SubBizIds = v
+	return s
+}
+
+type AddItemToSubBizsShrinkRequest struct {
+	BizId           *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	ItemId          *int64  `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	LmItemId        *string `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
+	SubBizIdsShrink *string `json:"SubBizIds,omitempty" xml:"SubBizIds,omitempty"`
+}
+
+func (s AddItemToSubBizsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddItemToSubBizsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddItemToSubBizsShrinkRequest) SetBizId(v string) *AddItemToSubBizsShrinkRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *AddItemToSubBizsShrinkRequest) SetItemId(v int64) *AddItemToSubBizsShrinkRequest {
+	s.ItemId = &v
+	return s
+}
+
+func (s *AddItemToSubBizsShrinkRequest) SetLmItemId(v string) *AddItemToSubBizsShrinkRequest {
+	s.LmItemId = &v
+	return s
+}
+
+func (s *AddItemToSubBizsShrinkRequest) SetSubBizIdsShrink(v string) *AddItemToSubBizsShrinkRequest {
+	s.SubBizIdsShrink = &v
+	return s
+}
+
+type AddItemToSubBizsResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AddItemToSubBizsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddItemToSubBizsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddItemToSubBizsResponseBody) SetCode(v string) *AddItemToSubBizsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AddItemToSubBizsResponseBody) SetMessage(v string) *AddItemToSubBizsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AddItemToSubBizsResponseBody) SetRequestId(v string) *AddItemToSubBizsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AddItemToSubBizsResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *AddItemToSubBizsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddItemToSubBizsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddItemToSubBizsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddItemToSubBizsResponse) SetHeaders(v map[string]*string) *AddItemToSubBizsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddItemToSubBizsResponse) SetBody(v *AddItemToSubBizsResponseBody) *AddItemToSubBizsResponse {
 	s.Body = v
 	return s
 }
@@ -287,9 +409,9 @@ func (s *AddSupplierNewItemsRequestItemList) SetSkuList(v []*int) *AddSupplierNe
 }
 
 type AddSupplierNewItemsResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s AddSupplierNewItemsResponseBody) String() string {
@@ -300,6 +422,11 @@ func (s AddSupplierNewItemsResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *AddSupplierNewItemsResponseBody) SetCode(v string) *AddSupplierNewItemsResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *AddSupplierNewItemsResponseBody) SetMessage(v string) *AddSupplierNewItemsResponseBody {
 	s.Message = &v
 	return s
@@ -307,11 +434,6 @@ func (s *AddSupplierNewItemsResponseBody) SetMessage(v string) *AddSupplierNewIt
 
 func (s *AddSupplierNewItemsResponseBody) SetRequestId(v string) *AddSupplierNewItemsResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *AddSupplierNewItemsResponseBody) SetCode(v string) *AddSupplierNewItemsResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -451,10 +573,10 @@ func (s *ApplyRefundRequestLeavePictureList) SetDesc(v string) *ApplyRefundReque
 }
 
 type ApplyRefundResponseBody struct {
-	RefundApplicationData *ApplyRefundResponseBodyRefundApplicationData `json:"RefundApplicationData,omitempty" xml:"RefundApplicationData,omitempty" type:"Struct"`
+	Code                  *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message               *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId             *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code                  *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	RefundApplicationData *ApplyRefundResponseBodyRefundApplicationData `json:"RefundApplicationData,omitempty" xml:"RefundApplicationData,omitempty" type:"Struct"`
 }
 
 func (s ApplyRefundResponseBody) String() string {
@@ -465,8 +587,8 @@ func (s ApplyRefundResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ApplyRefundResponseBody) SetRefundApplicationData(v *ApplyRefundResponseBodyRefundApplicationData) *ApplyRefundResponseBody {
-	s.RefundApplicationData = v
+func (s *ApplyRefundResponseBody) SetCode(v string) *ApplyRefundResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -480,8 +602,8 @@ func (s *ApplyRefundResponseBody) SetRequestId(v string) *ApplyRefundResponseBod
 	return s
 }
 
-func (s *ApplyRefundResponseBody) SetCode(v string) *ApplyRefundResponseBody {
-	s.Code = &v
+func (s *ApplyRefundResponseBody) SetRefundApplicationData(v *ApplyRefundResponseBodyRefundApplicationData) *ApplyRefundResponseBody {
+	s.RefundApplicationData = v
 	return s
 }
 
@@ -561,10 +683,10 @@ func (s *BatchRegistAnonymousTbAccountRequest) SetIdJsonList(v string) *BatchReg
 }
 
 type BatchRegistAnonymousTbAccountResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	BatchId   *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s BatchRegistAnonymousTbAccountResponseBody) String() string {
@@ -573,6 +695,11 @@ func (s BatchRegistAnonymousTbAccountResponseBody) String() string {
 
 func (s BatchRegistAnonymousTbAccountResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *BatchRegistAnonymousTbAccountResponseBody) SetCode(v string) *BatchRegistAnonymousTbAccountResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *BatchRegistAnonymousTbAccountResponseBody) SetMessage(v string) *BatchRegistAnonymousTbAccountResponseBody {
@@ -587,11 +714,6 @@ func (s *BatchRegistAnonymousTbAccountResponseBody) SetRequestId(v string) *Batc
 
 func (s *BatchRegistAnonymousTbAccountResponseBody) SetBatchId(v string) *BatchRegistAnonymousTbAccountResponseBody {
 	s.BatchId = &v
-	return s
-}
-
-func (s *BatchRegistAnonymousTbAccountResponseBody) SetCode(v string) *BatchRegistAnonymousTbAccountResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -667,12 +789,12 @@ func (s *CancelOrderRequest) SetUseAnonymousTbAccount(v bool) *CancelOrderReques
 
 type CancelOrderResponseBody struct {
 	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	LogsId     *string `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
-	SubMessage *string `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
-	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	SubMessage *string `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	LogsId     *string `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
 }
 
 func (s CancelOrderResponseBody) String() string {
@@ -688,13 +810,8 @@ func (s *CancelOrderResponseBody) SetRequestId(v string) *CancelOrderResponseBod
 	return s
 }
 
-func (s *CancelOrderResponseBody) SetMessage(v string) *CancelOrderResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *CancelOrderResponseBody) SetLogsId(v string) *CancelOrderResponseBody {
-	s.LogsId = &v
+func (s *CancelOrderResponseBody) SetSuccess(v bool) *CancelOrderResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -703,18 +820,23 @@ func (s *CancelOrderResponseBody) SetSubMessage(v string) *CancelOrderResponseBo
 	return s
 }
 
-func (s *CancelOrderResponseBody) SetSubCode(v string) *CancelOrderResponseBody {
-	s.SubCode = &v
-	return s
-}
-
 func (s *CancelOrderResponseBody) SetCode(v string) *CancelOrderResponseBody {
 	s.Code = &v
 	return s
 }
 
-func (s *CancelOrderResponseBody) SetSuccess(v bool) *CancelOrderResponseBody {
-	s.Success = &v
+func (s *CancelOrderResponseBody) SetMessage(v string) *CancelOrderResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CancelOrderResponseBody) SetSubCode(v string) *CancelOrderResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *CancelOrderResponseBody) SetLogsId(v string) *CancelOrderResponseBody {
+	s.LogsId = &v
 	return s
 }
 
@@ -795,10 +917,10 @@ func (s *CancelRefundRequest) SetAccountType(v string) *CancelRefundRequest {
 }
 
 type CancelRefundResponseBody struct {
-	RefundApplicationData *CancelRefundResponseBodyRefundApplicationData `json:"RefundApplicationData,omitempty" xml:"RefundApplicationData,omitempty" type:"Struct"`
+	Code                  *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message               *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId             *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code                  *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	RefundApplicationData *CancelRefundResponseBodyRefundApplicationData `json:"RefundApplicationData,omitempty" xml:"RefundApplicationData,omitempty" type:"Struct"`
 }
 
 func (s CancelRefundResponseBody) String() string {
@@ -809,8 +931,8 @@ func (s CancelRefundResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CancelRefundResponseBody) SetRefundApplicationData(v *CancelRefundResponseBodyRefundApplicationData) *CancelRefundResponseBody {
-	s.RefundApplicationData = v
+func (s *CancelRefundResponseBody) SetCode(v string) *CancelRefundResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -824,8 +946,8 @@ func (s *CancelRefundResponseBody) SetRequestId(v string) *CancelRefundResponseB
 	return s
 }
 
-func (s *CancelRefundResponseBody) SetCode(v string) *CancelRefundResponseBody {
-	s.Code = &v
+func (s *CancelRefundResponseBody) SetRefundApplicationData(v *CancelRefundResponseBodyRefundApplicationData) *CancelRefundResponseBody {
+	s.RefundApplicationData = v
 	return s
 }
 
@@ -929,9 +1051,9 @@ func (s *ConfirmDisburseRequest) SetAccountType(v string) *ConfirmDisburseReques
 }
 
 type ConfirmDisburseResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s ConfirmDisburseResponseBody) String() string {
@@ -942,6 +1064,11 @@ func (s ConfirmDisburseResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ConfirmDisburseResponseBody) SetCode(v string) *ConfirmDisburseResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *ConfirmDisburseResponseBody) SetMessage(v string) *ConfirmDisburseResponseBody {
 	s.Message = &v
 	return s
@@ -949,11 +1076,6 @@ func (s *ConfirmDisburseResponseBody) SetMessage(v string) *ConfirmDisburseRespo
 
 func (s *ConfirmDisburseResponseBody) SetRequestId(v string) *ConfirmDisburseResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *ConfirmDisburseResponseBody) SetCode(v string) *ConfirmDisburseResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -1022,15 +1144,15 @@ func (s *CreateMovieTicketOrderRequest) SetExtJson(v string) *CreateMovieTicketO
 }
 
 type CreateMovieTicketOrderResponseBody struct {
-	TotalCount *int64                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId  *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success    *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	SubMessage *string                                  `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Code       *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message    *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	SubCode    *string                                  `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	TotalCount *int64                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	LogsId     *string                                  `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
 	Model      *CreateMovieTicketOrderResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
-	SubMessage *string                                  `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
-	SubCode    *string                                  `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	Code       *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success    *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateMovieTicketOrderResponseBody) String() string {
@@ -1041,18 +1163,38 @@ func (s CreateMovieTicketOrderResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateMovieTicketOrderResponseBody) SetTotalCount(v int64) *CreateMovieTicketOrderResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
 func (s *CreateMovieTicketOrderResponseBody) SetRequestId(v string) *CreateMovieTicketOrderResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *CreateMovieTicketOrderResponseBody) SetSuccess(v bool) *CreateMovieTicketOrderResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateMovieTicketOrderResponseBody) SetSubMessage(v string) *CreateMovieTicketOrderResponseBody {
+	s.SubMessage = &v
+	return s
+}
+
+func (s *CreateMovieTicketOrderResponseBody) SetCode(v string) *CreateMovieTicketOrderResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *CreateMovieTicketOrderResponseBody) SetMessage(v string) *CreateMovieTicketOrderResponseBody {
 	s.Message = &v
+	return s
+}
+
+func (s *CreateMovieTicketOrderResponseBody) SetSubCode(v string) *CreateMovieTicketOrderResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *CreateMovieTicketOrderResponseBody) SetTotalCount(v int64) *CreateMovieTicketOrderResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -1066,29 +1208,9 @@ func (s *CreateMovieTicketOrderResponseBody) SetModel(v *CreateMovieTicketOrderR
 	return s
 }
 
-func (s *CreateMovieTicketOrderResponseBody) SetSubMessage(v string) *CreateMovieTicketOrderResponseBody {
-	s.SubMessage = &v
-	return s
-}
-
-func (s *CreateMovieTicketOrderResponseBody) SetSubCode(v string) *CreateMovieTicketOrderResponseBody {
-	s.SubCode = &v
-	return s
-}
-
-func (s *CreateMovieTicketOrderResponseBody) SetCode(v string) *CreateMovieTicketOrderResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *CreateMovieTicketOrderResponseBody) SetSuccess(v bool) *CreateMovieTicketOrderResponseBody {
-	s.Success = &v
-	return s
-}
-
 type CreateMovieTicketOrderResponseBodyModel struct {
-	PayTradeIds *CreateMovieTicketOrderResponseBodyModelPayTradeIds `json:"PayTradeIds,omitempty" xml:"PayTradeIds,omitempty" type:"Struct"`
 	RedirectUrl *string                                             `json:"RedirectUrl,omitempty" xml:"RedirectUrl,omitempty"`
+	PayTradeIds *CreateMovieTicketOrderResponseBodyModelPayTradeIds `json:"PayTradeIds,omitempty" xml:"PayTradeIds,omitempty" type:"Struct"`
 	OrderIds    *CreateMovieTicketOrderResponseBodyModelOrderIds    `json:"OrderIds,omitempty" xml:"OrderIds,omitempty" type:"Struct"`
 }
 
@@ -1100,13 +1222,13 @@ func (s CreateMovieTicketOrderResponseBodyModel) GoString() string {
 	return s.String()
 }
 
-func (s *CreateMovieTicketOrderResponseBodyModel) SetPayTradeIds(v *CreateMovieTicketOrderResponseBodyModelPayTradeIds) *CreateMovieTicketOrderResponseBodyModel {
-	s.PayTradeIds = v
+func (s *CreateMovieTicketOrderResponseBodyModel) SetRedirectUrl(v string) *CreateMovieTicketOrderResponseBodyModel {
+	s.RedirectUrl = &v
 	return s
 }
 
-func (s *CreateMovieTicketOrderResponseBodyModel) SetRedirectUrl(v string) *CreateMovieTicketOrderResponseBodyModel {
-	s.RedirectUrl = &v
+func (s *CreateMovieTicketOrderResponseBodyModel) SetPayTradeIds(v *CreateMovieTicketOrderResponseBodyModelPayTradeIds) *CreateMovieTicketOrderResponseBodyModel {
+	s.PayTradeIds = v
 	return s
 }
 
@@ -1186,6 +1308,7 @@ type CreateOrderRequest struct {
 	ThirdPartyUserId      *string                       `json:"ThirdPartyUserId,omitempty" xml:"ThirdPartyUserId,omitempty"`
 	AccountType           *string                       `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
 	LmItemId              *string                       `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
+	BuyerMessageMap       *string                       `json:"BuyerMessageMap,omitempty" xml:"BuyerMessageMap,omitempty"`
 	ItemList              []*CreateOrderRequestItemList `json:"ItemList,omitempty" xml:"ItemList,omitempty" type:"Repeated"`
 }
 
@@ -1262,14 +1385,19 @@ func (s *CreateOrderRequest) SetLmItemId(v string) *CreateOrderRequest {
 	return s
 }
 
+func (s *CreateOrderRequest) SetBuyerMessageMap(v string) *CreateOrderRequest {
+	s.BuyerMessageMap = &v
+	return s
+}
+
 func (s *CreateOrderRequest) SetItemList(v []*CreateOrderRequestItemList) *CreateOrderRequest {
 	s.ItemList = v
 	return s
 }
 
 type CreateOrderRequestItemList struct {
-	LmItemId *string `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
 	SkuId    *int64  `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
+	LmItemId *string `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
 	ItemId   *int64  `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
 	Quantity *int32  `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
 }
@@ -1282,13 +1410,13 @@ func (s CreateOrderRequestItemList) GoString() string {
 	return s.String()
 }
 
-func (s *CreateOrderRequestItemList) SetLmItemId(v string) *CreateOrderRequestItemList {
-	s.LmItemId = &v
+func (s *CreateOrderRequestItemList) SetSkuId(v int64) *CreateOrderRequestItemList {
+	s.SkuId = &v
 	return s
 }
 
-func (s *CreateOrderRequestItemList) SetSkuId(v int64) *CreateOrderRequestItemList {
-	s.SkuId = &v
+func (s *CreateOrderRequestItemList) SetLmItemId(v string) *CreateOrderRequestItemList {
+	s.LmItemId = &v
 	return s
 }
 
@@ -1303,15 +1431,15 @@ func (s *CreateOrderRequestItemList) SetQuantity(v int32) *CreateOrderRequestIte
 }
 
 type CreateOrderResponseBody struct {
-	TotalCount *int64                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId  *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success    *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	SubMessage *string                       `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Code       *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message    *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	SubCode    *string                       `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	TotalCount *int64                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	LogsId     *string                       `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
 	Model      *CreateOrderResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
-	SubMessage *string                       `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
-	SubCode    *string                       `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	Code       *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success    *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateOrderResponseBody) String() string {
@@ -1322,18 +1450,38 @@ func (s CreateOrderResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateOrderResponseBody) SetTotalCount(v int64) *CreateOrderResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
 func (s *CreateOrderResponseBody) SetRequestId(v string) *CreateOrderResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *CreateOrderResponseBody) SetSuccess(v bool) *CreateOrderResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateOrderResponseBody) SetSubMessage(v string) *CreateOrderResponseBody {
+	s.SubMessage = &v
+	return s
+}
+
+func (s *CreateOrderResponseBody) SetCode(v string) *CreateOrderResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *CreateOrderResponseBody) SetMessage(v string) *CreateOrderResponseBody {
 	s.Message = &v
+	return s
+}
+
+func (s *CreateOrderResponseBody) SetSubCode(v string) *CreateOrderResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *CreateOrderResponseBody) SetTotalCount(v int64) *CreateOrderResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -1347,30 +1495,10 @@ func (s *CreateOrderResponseBody) SetModel(v *CreateOrderResponseBodyModel) *Cre
 	return s
 }
 
-func (s *CreateOrderResponseBody) SetSubMessage(v string) *CreateOrderResponseBody {
-	s.SubMessage = &v
-	return s
-}
-
-func (s *CreateOrderResponseBody) SetSubCode(v string) *CreateOrderResponseBody {
-	s.SubCode = &v
-	return s
-}
-
-func (s *CreateOrderResponseBody) SetCode(v string) *CreateOrderResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *CreateOrderResponseBody) SetSuccess(v bool) *CreateOrderResponseBody {
-	s.Success = &v
-	return s
-}
-
 type CreateOrderResponseBodyModel struct {
-	PayTradeIds *CreateOrderResponseBodyModelPayTradeIds `json:"PayTradeIds,omitempty" xml:"PayTradeIds,omitempty" type:"Struct"`
 	RedirectUrl *string                                  `json:"RedirectUrl,omitempty" xml:"RedirectUrl,omitempty"`
 	LmOrderList *CreateOrderResponseBodyModelLmOrderList `json:"LmOrderList,omitempty" xml:"LmOrderList,omitempty" type:"Struct"`
+	PayTradeIds *CreateOrderResponseBodyModelPayTradeIds `json:"PayTradeIds,omitempty" xml:"PayTradeIds,omitempty" type:"Struct"`
 	OrderIds    *CreateOrderResponseBodyModelOrderIds    `json:"OrderIds,omitempty" xml:"OrderIds,omitempty" type:"Struct"`
 }
 
@@ -1380,11 +1508,6 @@ func (s CreateOrderResponseBodyModel) String() string {
 
 func (s CreateOrderResponseBodyModel) GoString() string {
 	return s.String()
-}
-
-func (s *CreateOrderResponseBodyModel) SetPayTradeIds(v *CreateOrderResponseBodyModelPayTradeIds) *CreateOrderResponseBodyModel {
-	s.PayTradeIds = v
-	return s
 }
 
 func (s *CreateOrderResponseBodyModel) SetRedirectUrl(v string) *CreateOrderResponseBodyModel {
@@ -1397,25 +1520,13 @@ func (s *CreateOrderResponseBodyModel) SetLmOrderList(v *CreateOrderResponseBody
 	return s
 }
 
-func (s *CreateOrderResponseBodyModel) SetOrderIds(v *CreateOrderResponseBodyModelOrderIds) *CreateOrderResponseBodyModel {
-	s.OrderIds = v
+func (s *CreateOrderResponseBodyModel) SetPayTradeIds(v *CreateOrderResponseBodyModelPayTradeIds) *CreateOrderResponseBodyModel {
+	s.PayTradeIds = v
 	return s
 }
 
-type CreateOrderResponseBodyModelPayTradeIds struct {
-	PayTradeIds []*string `json:"PayTradeIds,omitempty" xml:"PayTradeIds,omitempty" type:"Repeated"`
-}
-
-func (s CreateOrderResponseBodyModelPayTradeIds) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateOrderResponseBodyModelPayTradeIds) GoString() string {
-	return s.String()
-}
-
-func (s *CreateOrderResponseBodyModelPayTradeIds) SetPayTradeIds(v []*string) *CreateOrderResponseBodyModelPayTradeIds {
-	s.PayTradeIds = v
+func (s *CreateOrderResponseBodyModel) SetOrderIds(v *CreateOrderResponseBodyModelOrderIds) *CreateOrderResponseBodyModel {
+	s.OrderIds = v
 	return s
 }
 
@@ -1450,6 +1561,23 @@ func (s CreateOrderResponseBodyModelLmOrderListLmOrderList) GoString() string {
 
 func (s *CreateOrderResponseBodyModelLmOrderListLmOrderList) SetLmOrderId(v string) *CreateOrderResponseBodyModelLmOrderListLmOrderList {
 	s.LmOrderId = &v
+	return s
+}
+
+type CreateOrderResponseBodyModelPayTradeIds struct {
+	PayTradeIds []*string `json:"PayTradeIds,omitempty" xml:"PayTradeIds,omitempty" type:"Repeated"`
+}
+
+func (s CreateOrderResponseBodyModelPayTradeIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrderResponseBodyModelPayTradeIds) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrderResponseBodyModelPayTradeIds) SetPayTradeIds(v []*string) *CreateOrderResponseBodyModelPayTradeIds {
+	s.PayTradeIds = v
 	return s
 }
 
@@ -1507,6 +1635,7 @@ type CreateOrderV2Request struct {
 	ThirdPartyUserId      *string                         `json:"ThirdPartyUserId,omitempty" xml:"ThirdPartyUserId,omitempty"`
 	AccountType           *string                         `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
 	LmItemId              *string                         `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
+	BuyerMessageMap       *string                         `json:"BuyerMessageMap,omitempty" xml:"BuyerMessageMap,omitempty"`
 	ItemList              []*CreateOrderV2RequestItemList `json:"ItemList,omitempty" xml:"ItemList,omitempty" type:"Repeated"`
 }
 
@@ -1583,14 +1712,19 @@ func (s *CreateOrderV2Request) SetLmItemId(v string) *CreateOrderV2Request {
 	return s
 }
 
+func (s *CreateOrderV2Request) SetBuyerMessageMap(v string) *CreateOrderV2Request {
+	s.BuyerMessageMap = &v
+	return s
+}
+
 func (s *CreateOrderV2Request) SetItemList(v []*CreateOrderV2RequestItemList) *CreateOrderV2Request {
 	s.ItemList = v
 	return s
 }
 
 type CreateOrderV2RequestItemList struct {
-	LmItemId *string `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
 	SkuId    *int64  `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
+	LmItemId *string `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
 	ItemId   *int64  `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
 	Quantity *int32  `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
 }
@@ -1603,13 +1737,13 @@ func (s CreateOrderV2RequestItemList) GoString() string {
 	return s.String()
 }
 
-func (s *CreateOrderV2RequestItemList) SetLmItemId(v string) *CreateOrderV2RequestItemList {
-	s.LmItemId = &v
+func (s *CreateOrderV2RequestItemList) SetSkuId(v int64) *CreateOrderV2RequestItemList {
+	s.SkuId = &v
 	return s
 }
 
-func (s *CreateOrderV2RequestItemList) SetSkuId(v int64) *CreateOrderV2RequestItemList {
-	s.SkuId = &v
+func (s *CreateOrderV2RequestItemList) SetLmItemId(v string) *CreateOrderV2RequestItemList {
+	s.LmItemId = &v
 	return s
 }
 
@@ -1624,15 +1758,15 @@ func (s *CreateOrderV2RequestItemList) SetQuantity(v int32) *CreateOrderV2Reques
 }
 
 type CreateOrderV2ResponseBody struct {
-	TotalCount *int64                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId  *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success    *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	SubMessage *string                         `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Code       *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message    *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	SubCode    *string                         `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	TotalCount *int64                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	LogsId     *string                         `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
 	Model      *CreateOrderV2ResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
-	SubMessage *string                         `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
-	SubCode    *string                         `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	Code       *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success    *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateOrderV2ResponseBody) String() string {
@@ -1643,18 +1777,38 @@ func (s CreateOrderV2ResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateOrderV2ResponseBody) SetTotalCount(v int64) *CreateOrderV2ResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
 func (s *CreateOrderV2ResponseBody) SetRequestId(v string) *CreateOrderV2ResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *CreateOrderV2ResponseBody) SetSuccess(v bool) *CreateOrderV2ResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateOrderV2ResponseBody) SetSubMessage(v string) *CreateOrderV2ResponseBody {
+	s.SubMessage = &v
+	return s
+}
+
+func (s *CreateOrderV2ResponseBody) SetCode(v string) *CreateOrderV2ResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *CreateOrderV2ResponseBody) SetMessage(v string) *CreateOrderV2ResponseBody {
 	s.Message = &v
+	return s
+}
+
+func (s *CreateOrderV2ResponseBody) SetSubCode(v string) *CreateOrderV2ResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *CreateOrderV2ResponseBody) SetTotalCount(v int64) *CreateOrderV2ResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -1668,30 +1822,10 @@ func (s *CreateOrderV2ResponseBody) SetModel(v *CreateOrderV2ResponseBodyModel) 
 	return s
 }
 
-func (s *CreateOrderV2ResponseBody) SetSubMessage(v string) *CreateOrderV2ResponseBody {
-	s.SubMessage = &v
-	return s
-}
-
-func (s *CreateOrderV2ResponseBody) SetSubCode(v string) *CreateOrderV2ResponseBody {
-	s.SubCode = &v
-	return s
-}
-
-func (s *CreateOrderV2ResponseBody) SetCode(v string) *CreateOrderV2ResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *CreateOrderV2ResponseBody) SetSuccess(v bool) *CreateOrderV2ResponseBody {
-	s.Success = &v
-	return s
-}
-
 type CreateOrderV2ResponseBodyModel struct {
-	PayTradeIds *CreateOrderV2ResponseBodyModelPayTradeIds `json:"PayTradeIds,omitempty" xml:"PayTradeIds,omitempty" type:"Struct"`
 	RedirectUrl *string                                    `json:"RedirectUrl,omitempty" xml:"RedirectUrl,omitempty"`
 	LmOrderList *CreateOrderV2ResponseBodyModelLmOrderList `json:"LmOrderList,omitempty" xml:"LmOrderList,omitempty" type:"Struct"`
+	PayTradeIds *CreateOrderV2ResponseBodyModelPayTradeIds `json:"PayTradeIds,omitempty" xml:"PayTradeIds,omitempty" type:"Struct"`
 	OrderIds    *CreateOrderV2ResponseBodyModelOrderIds    `json:"OrderIds,omitempty" xml:"OrderIds,omitempty" type:"Struct"`
 }
 
@@ -1701,11 +1835,6 @@ func (s CreateOrderV2ResponseBodyModel) String() string {
 
 func (s CreateOrderV2ResponseBodyModel) GoString() string {
 	return s.String()
-}
-
-func (s *CreateOrderV2ResponseBodyModel) SetPayTradeIds(v *CreateOrderV2ResponseBodyModelPayTradeIds) *CreateOrderV2ResponseBodyModel {
-	s.PayTradeIds = v
-	return s
 }
 
 func (s *CreateOrderV2ResponseBodyModel) SetRedirectUrl(v string) *CreateOrderV2ResponseBodyModel {
@@ -1718,25 +1847,13 @@ func (s *CreateOrderV2ResponseBodyModel) SetLmOrderList(v *CreateOrderV2Response
 	return s
 }
 
-func (s *CreateOrderV2ResponseBodyModel) SetOrderIds(v *CreateOrderV2ResponseBodyModelOrderIds) *CreateOrderV2ResponseBodyModel {
-	s.OrderIds = v
+func (s *CreateOrderV2ResponseBodyModel) SetPayTradeIds(v *CreateOrderV2ResponseBodyModelPayTradeIds) *CreateOrderV2ResponseBodyModel {
+	s.PayTradeIds = v
 	return s
 }
 
-type CreateOrderV2ResponseBodyModelPayTradeIds struct {
-	PayTradeIds []*string `json:"PayTradeIds,omitempty" xml:"PayTradeIds,omitempty" type:"Repeated"`
-}
-
-func (s CreateOrderV2ResponseBodyModelPayTradeIds) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateOrderV2ResponseBodyModelPayTradeIds) GoString() string {
-	return s.String()
-}
-
-func (s *CreateOrderV2ResponseBodyModelPayTradeIds) SetPayTradeIds(v []*string) *CreateOrderV2ResponseBodyModelPayTradeIds {
-	s.PayTradeIds = v
+func (s *CreateOrderV2ResponseBodyModel) SetOrderIds(v *CreateOrderV2ResponseBodyModelOrderIds) *CreateOrderV2ResponseBodyModel {
+	s.OrderIds = v
 	return s
 }
 
@@ -1771,6 +1888,23 @@ func (s CreateOrderV2ResponseBodyModelLmOrderListLmOrderList) GoString() string 
 
 func (s *CreateOrderV2ResponseBodyModelLmOrderListLmOrderList) SetLmOrderId(v string) *CreateOrderV2ResponseBodyModelLmOrderListLmOrderList {
 	s.LmOrderId = &v
+	return s
+}
+
+type CreateOrderV2ResponseBodyModelPayTradeIds struct {
+	PayTradeIds []*string `json:"PayTradeIds,omitempty" xml:"PayTradeIds,omitempty" type:"Repeated"`
+}
+
+func (s CreateOrderV2ResponseBodyModelPayTradeIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrderV2ResponseBodyModelPayTradeIds) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrderV2ResponseBodyModelPayTradeIds) SetPayTradeIds(v []*string) *CreateOrderV2ResponseBodyModelPayTradeIds {
+	s.PayTradeIds = v
 	return s
 }
 
@@ -1856,11 +1990,11 @@ func (s *CreatePayUrlRequest) SetThirdPartyUserId(v string) *CreatePayUrlRequest
 }
 
 type CreatePayUrlResponseBody struct {
+	Code      *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Model     *CreatePayUrlResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
-	Code      *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success   *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	Model     *CreatePayUrlResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
 }
 
 func (s CreatePayUrlResponseBody) String() string {
@@ -1869,6 +2003,11 @@ func (s CreatePayUrlResponseBody) String() string {
 
 func (s CreatePayUrlResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreatePayUrlResponseBody) SetCode(v string) *CreatePayUrlResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *CreatePayUrlResponseBody) SetMessage(v string) *CreatePayUrlResponseBody {
@@ -1881,24 +2020,19 @@ func (s *CreatePayUrlResponseBody) SetRequestId(v string) *CreatePayUrlResponseB
 	return s
 }
 
-func (s *CreatePayUrlResponseBody) SetModel(v *CreatePayUrlResponseBodyModel) *CreatePayUrlResponseBody {
-	s.Model = v
-	return s
-}
-
-func (s *CreatePayUrlResponseBody) SetCode(v string) *CreatePayUrlResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *CreatePayUrlResponseBody) SetSuccess(v bool) *CreatePayUrlResponseBody {
 	s.Success = &v
 	return s
 }
 
+func (s *CreatePayUrlResponseBody) SetModel(v *CreatePayUrlResponseBodyModel) *CreatePayUrlResponseBody {
+	s.Model = v
+	return s
+}
+
 type CreatePayUrlResponseBodyModel struct {
-	PayTradeIds []*string `json:"PayTradeIds,omitempty" xml:"PayTradeIds,omitempty" type:"Repeated"`
 	RedirectUrl *string   `json:"RedirectUrl,omitempty" xml:"RedirectUrl,omitempty"`
+	PayTradeIds []*string `json:"PayTradeIds,omitempty" xml:"PayTradeIds,omitempty" type:"Repeated"`
 	LmOrderList []*string `json:"LmOrderList,omitempty" xml:"LmOrderList,omitempty" type:"Repeated"`
 	OrderIds    []*string `json:"OrderIds,omitempty" xml:"OrderIds,omitempty" type:"Repeated"`
 }
@@ -1911,13 +2045,13 @@ func (s CreatePayUrlResponseBodyModel) GoString() string {
 	return s.String()
 }
 
-func (s *CreatePayUrlResponseBodyModel) SetPayTradeIds(v []*string) *CreatePayUrlResponseBodyModel {
-	s.PayTradeIds = v
+func (s *CreatePayUrlResponseBodyModel) SetRedirectUrl(v string) *CreatePayUrlResponseBodyModel {
+	s.RedirectUrl = &v
 	return s
 }
 
-func (s *CreatePayUrlResponseBodyModel) SetRedirectUrl(v string) *CreatePayUrlResponseBodyModel {
-	s.RedirectUrl = &v
+func (s *CreatePayUrlResponseBodyModel) SetPayTradeIds(v []*string) *CreatePayUrlResponseBodyModel {
+	s.PayTradeIds = v
 	return s
 }
 
@@ -2050,8 +2184,8 @@ func (s *CreateVirtualProductOrderRequest) SetItemList(v []*CreateVirtualProduct
 }
 
 type CreateVirtualProductOrderRequestItemList struct {
-	LmItemId *string `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
 	SkuId    *int64  `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
+	LmItemId *string `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
 	ItemId   *int64  `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
 	Quantity *int32  `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
 }
@@ -2064,13 +2198,13 @@ func (s CreateVirtualProductOrderRequestItemList) GoString() string {
 	return s.String()
 }
 
-func (s *CreateVirtualProductOrderRequestItemList) SetLmItemId(v string) *CreateVirtualProductOrderRequestItemList {
-	s.LmItemId = &v
+func (s *CreateVirtualProductOrderRequestItemList) SetSkuId(v int64) *CreateVirtualProductOrderRequestItemList {
+	s.SkuId = &v
 	return s
 }
 
-func (s *CreateVirtualProductOrderRequestItemList) SetSkuId(v int64) *CreateVirtualProductOrderRequestItemList {
-	s.SkuId = &v
+func (s *CreateVirtualProductOrderRequestItemList) SetLmItemId(v string) *CreateVirtualProductOrderRequestItemList {
+	s.LmItemId = &v
 	return s
 }
 
@@ -2085,15 +2219,15 @@ func (s *CreateVirtualProductOrderRequestItemList) SetQuantity(v int32) *CreateV
 }
 
 type CreateVirtualProductOrderResponseBody struct {
-	TotalCount *int64                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success    *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	SubMessage *string                                     `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Code       *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message    *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	SubCode    *string                                     `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	TotalCount *int64                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	LogsId     *string                                     `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
 	Model      *CreateVirtualProductOrderResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
-	SubMessage *string                                     `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
-	SubCode    *string                                     `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	Code       *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success    *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateVirtualProductOrderResponseBody) String() string {
@@ -2104,18 +2238,38 @@ func (s CreateVirtualProductOrderResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateVirtualProductOrderResponseBody) SetTotalCount(v int64) *CreateVirtualProductOrderResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
 func (s *CreateVirtualProductOrderResponseBody) SetRequestId(v string) *CreateVirtualProductOrderResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *CreateVirtualProductOrderResponseBody) SetSuccess(v bool) *CreateVirtualProductOrderResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateVirtualProductOrderResponseBody) SetSubMessage(v string) *CreateVirtualProductOrderResponseBody {
+	s.SubMessage = &v
+	return s
+}
+
+func (s *CreateVirtualProductOrderResponseBody) SetCode(v string) *CreateVirtualProductOrderResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *CreateVirtualProductOrderResponseBody) SetMessage(v string) *CreateVirtualProductOrderResponseBody {
 	s.Message = &v
+	return s
+}
+
+func (s *CreateVirtualProductOrderResponseBody) SetSubCode(v string) *CreateVirtualProductOrderResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *CreateVirtualProductOrderResponseBody) SetTotalCount(v int64) *CreateVirtualProductOrderResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -2129,30 +2283,10 @@ func (s *CreateVirtualProductOrderResponseBody) SetModel(v *CreateVirtualProduct
 	return s
 }
 
-func (s *CreateVirtualProductOrderResponseBody) SetSubMessage(v string) *CreateVirtualProductOrderResponseBody {
-	s.SubMessage = &v
-	return s
-}
-
-func (s *CreateVirtualProductOrderResponseBody) SetSubCode(v string) *CreateVirtualProductOrderResponseBody {
-	s.SubCode = &v
-	return s
-}
-
-func (s *CreateVirtualProductOrderResponseBody) SetCode(v string) *CreateVirtualProductOrderResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *CreateVirtualProductOrderResponseBody) SetSuccess(v bool) *CreateVirtualProductOrderResponseBody {
-	s.Success = &v
-	return s
-}
-
 type CreateVirtualProductOrderResponseBodyModel struct {
-	PayTradeIds *CreateVirtualProductOrderResponseBodyModelPayTradeIds `json:"PayTradeIds,omitempty" xml:"PayTradeIds,omitempty" type:"Struct"`
 	RedirectUrl *string                                                `json:"RedirectUrl,omitempty" xml:"RedirectUrl,omitempty"`
 	LmOrderList *CreateVirtualProductOrderResponseBodyModelLmOrderList `json:"LmOrderList,omitempty" xml:"LmOrderList,omitempty" type:"Struct"`
+	PayTradeIds *CreateVirtualProductOrderResponseBodyModelPayTradeIds `json:"PayTradeIds,omitempty" xml:"PayTradeIds,omitempty" type:"Struct"`
 	OrderIds    *CreateVirtualProductOrderResponseBodyModelOrderIds    `json:"OrderIds,omitempty" xml:"OrderIds,omitempty" type:"Struct"`
 }
 
@@ -2162,11 +2296,6 @@ func (s CreateVirtualProductOrderResponseBodyModel) String() string {
 
 func (s CreateVirtualProductOrderResponseBodyModel) GoString() string {
 	return s.String()
-}
-
-func (s *CreateVirtualProductOrderResponseBodyModel) SetPayTradeIds(v *CreateVirtualProductOrderResponseBodyModelPayTradeIds) *CreateVirtualProductOrderResponseBodyModel {
-	s.PayTradeIds = v
-	return s
 }
 
 func (s *CreateVirtualProductOrderResponseBodyModel) SetRedirectUrl(v string) *CreateVirtualProductOrderResponseBodyModel {
@@ -2179,25 +2308,13 @@ func (s *CreateVirtualProductOrderResponseBodyModel) SetLmOrderList(v *CreateVir
 	return s
 }
 
-func (s *CreateVirtualProductOrderResponseBodyModel) SetOrderIds(v *CreateVirtualProductOrderResponseBodyModelOrderIds) *CreateVirtualProductOrderResponseBodyModel {
-	s.OrderIds = v
+func (s *CreateVirtualProductOrderResponseBodyModel) SetPayTradeIds(v *CreateVirtualProductOrderResponseBodyModelPayTradeIds) *CreateVirtualProductOrderResponseBodyModel {
+	s.PayTradeIds = v
 	return s
 }
 
-type CreateVirtualProductOrderResponseBodyModelPayTradeIds struct {
-	PayTradeIds []*string `json:"PayTradeIds,omitempty" xml:"PayTradeIds,omitempty" type:"Repeated"`
-}
-
-func (s CreateVirtualProductOrderResponseBodyModelPayTradeIds) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateVirtualProductOrderResponseBodyModelPayTradeIds) GoString() string {
-	return s.String()
-}
-
-func (s *CreateVirtualProductOrderResponseBodyModelPayTradeIds) SetPayTradeIds(v []*string) *CreateVirtualProductOrderResponseBodyModelPayTradeIds {
-	s.PayTradeIds = v
+func (s *CreateVirtualProductOrderResponseBodyModel) SetOrderIds(v *CreateVirtualProductOrderResponseBodyModelOrderIds) *CreateVirtualProductOrderResponseBodyModel {
+	s.OrderIds = v
 	return s
 }
 
@@ -2232,6 +2349,23 @@ func (s CreateVirtualProductOrderResponseBodyModelLmOrderListLmOrderList) GoStri
 
 func (s *CreateVirtualProductOrderResponseBodyModelLmOrderListLmOrderList) SetLmOrderId(v string) *CreateVirtualProductOrderResponseBodyModelLmOrderListLmOrderList {
 	s.LmOrderId = &v
+	return s
+}
+
+type CreateVirtualProductOrderResponseBodyModelPayTradeIds struct {
+	PayTradeIds []*string `json:"PayTradeIds,omitempty" xml:"PayTradeIds,omitempty" type:"Repeated"`
+}
+
+func (s CreateVirtualProductOrderResponseBodyModelPayTradeIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVirtualProductOrderResponseBodyModelPayTradeIds) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVirtualProductOrderResponseBodyModelPayTradeIds) SetPayTradeIds(v []*string) *CreateVirtualProductOrderResponseBodyModelPayTradeIds {
+	s.PayTradeIds = v
 	return s
 }
 
@@ -2353,10 +2487,10 @@ func (s *CreateWithholdTradeRequest) SetExtInfo(v string) *CreateWithholdTradeRe
 }
 
 type CreateWithholdTradeResponseBody struct {
+	Code                  *string                                               `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message               *string                                               `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId             *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	WithholdTradeResponse *CreateWithholdTradeResponseBodyWithholdTradeResponse `json:"WithholdTradeResponse,omitempty" xml:"WithholdTradeResponse,omitempty" type:"Struct"`
-	Code                  *string                                               `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s CreateWithholdTradeResponseBody) String() string {
@@ -2365,6 +2499,11 @@ func (s CreateWithholdTradeResponseBody) String() string {
 
 func (s CreateWithholdTradeResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateWithholdTradeResponseBody) SetCode(v string) *CreateWithholdTradeResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *CreateWithholdTradeResponseBody) SetMessage(v string) *CreateWithholdTradeResponseBody {
@@ -2379,11 +2518,6 @@ func (s *CreateWithholdTradeResponseBody) SetRequestId(v string) *CreateWithhold
 
 func (s *CreateWithholdTradeResponseBody) SetWithholdTradeResponse(v *CreateWithholdTradeResponseBodyWithholdTradeResponse) *CreateWithholdTradeResponseBody {
 	s.WithholdTradeResponse = v
-	return s
-}
-
-func (s *CreateWithholdTradeResponseBody) SetCode(v string) *CreateWithholdTradeResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -2475,9 +2609,9 @@ func (s *DeleteBizItemsRequest) SetItemIdList(v []*int) *DeleteBizItemsRequest {
 }
 
 type DeleteBizItemsResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s DeleteBizItemsResponseBody) String() string {
@@ -2488,6 +2622,11 @@ func (s DeleteBizItemsResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteBizItemsResponseBody) SetCode(v string) *DeleteBizItemsResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *DeleteBizItemsResponseBody) SetMessage(v string) *DeleteBizItemsResponseBody {
 	s.Message = &v
 	return s
@@ -2495,11 +2634,6 @@ func (s *DeleteBizItemsResponseBody) SetMessage(v string) *DeleteBizItemsRespons
 
 func (s *DeleteBizItemsResponseBody) SetRequestId(v string) *DeleteBizItemsResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteBizItemsResponseBody) SetCode(v string) *DeleteBizItemsResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -2574,10 +2708,10 @@ func (s *DeleteItemLimitRuleRequest) SetRuleId(v int64) *DeleteItemLimitRuleRequ
 }
 
 type DeleteItemLimitRuleResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Model     *bool   `json:"Model,omitempty" xml:"Model,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Model     *bool   `json:"Model,omitempty" xml:"Model,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s DeleteItemLimitRuleResponseBody) String() string {
@@ -2588,13 +2722,8 @@ func (s DeleteItemLimitRuleResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteItemLimitRuleResponseBody) SetMessage(v string) *DeleteItemLimitRuleResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DeleteItemLimitRuleResponseBody) SetRequestId(v string) *DeleteItemLimitRuleResponseBody {
-	s.RequestId = &v
+func (s *DeleteItemLimitRuleResponseBody) SetCode(v string) *DeleteItemLimitRuleResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -2603,8 +2732,13 @@ func (s *DeleteItemLimitRuleResponseBody) SetModel(v bool) *DeleteItemLimitRuleR
 	return s
 }
 
-func (s *DeleteItemLimitRuleResponseBody) SetCode(v string) *DeleteItemLimitRuleResponseBody {
-	s.Code = &v
+func (s *DeleteItemLimitRuleResponseBody) SetMessage(v string) *DeleteItemLimitRuleResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteItemLimitRuleResponseBody) SetRequestId(v string) *DeleteItemLimitRuleResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2691,15 +2825,15 @@ func (s *EnableOrderRequest) SetAccountType(v string) *EnableOrderRequest {
 }
 
 type EnableOrderResponseBody struct {
-	TotalCount *int64                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId  *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success    *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	SubMessage *string                       `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Code       *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message    *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	SubCode    *string                       `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	TotalCount *int64                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	LogsId     *string                       `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
 	Model      *EnableOrderResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
-	SubMessage *string                       `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
-	SubCode    *string                       `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	Code       *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success    *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s EnableOrderResponseBody) String() string {
@@ -2710,18 +2844,38 @@ func (s EnableOrderResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *EnableOrderResponseBody) SetTotalCount(v int64) *EnableOrderResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
 func (s *EnableOrderResponseBody) SetRequestId(v string) *EnableOrderResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *EnableOrderResponseBody) SetSuccess(v bool) *EnableOrderResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *EnableOrderResponseBody) SetSubMessage(v string) *EnableOrderResponseBody {
+	s.SubMessage = &v
+	return s
+}
+
+func (s *EnableOrderResponseBody) SetCode(v string) *EnableOrderResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *EnableOrderResponseBody) SetMessage(v string) *EnableOrderResponseBody {
 	s.Message = &v
+	return s
+}
+
+func (s *EnableOrderResponseBody) SetSubCode(v string) *EnableOrderResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *EnableOrderResponseBody) SetTotalCount(v int64) *EnableOrderResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -2735,30 +2889,10 @@ func (s *EnableOrderResponseBody) SetModel(v *EnableOrderResponseBodyModel) *Ena
 	return s
 }
 
-func (s *EnableOrderResponseBody) SetSubMessage(v string) *EnableOrderResponseBody {
-	s.SubMessage = &v
-	return s
-}
-
-func (s *EnableOrderResponseBody) SetSubCode(v string) *EnableOrderResponseBody {
-	s.SubCode = &v
-	return s
-}
-
-func (s *EnableOrderResponseBody) SetCode(v string) *EnableOrderResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *EnableOrderResponseBody) SetSuccess(v bool) *EnableOrderResponseBody {
-	s.Success = &v
-	return s
-}
-
 type EnableOrderResponseBodyModel struct {
-	PayTradeIds *EnableOrderResponseBodyModelPayTradeIds `json:"PayTradeIds,omitempty" xml:"PayTradeIds,omitempty" type:"Struct"`
 	RedirectUrl *string                                  `json:"RedirectUrl,omitempty" xml:"RedirectUrl,omitempty"`
 	LmOrderList *EnableOrderResponseBodyModelLmOrderList `json:"LmOrderList,omitempty" xml:"LmOrderList,omitempty" type:"Struct"`
+	PayTradeIds *EnableOrderResponseBodyModelPayTradeIds `json:"PayTradeIds,omitempty" xml:"PayTradeIds,omitempty" type:"Struct"`
 	OrderIds    *EnableOrderResponseBodyModelOrderIds    `json:"OrderIds,omitempty" xml:"OrderIds,omitempty" type:"Struct"`
 }
 
@@ -2768,11 +2902,6 @@ func (s EnableOrderResponseBodyModel) String() string {
 
 func (s EnableOrderResponseBodyModel) GoString() string {
 	return s.String()
-}
-
-func (s *EnableOrderResponseBodyModel) SetPayTradeIds(v *EnableOrderResponseBodyModelPayTradeIds) *EnableOrderResponseBodyModel {
-	s.PayTradeIds = v
-	return s
 }
 
 func (s *EnableOrderResponseBodyModel) SetRedirectUrl(v string) *EnableOrderResponseBodyModel {
@@ -2785,25 +2914,13 @@ func (s *EnableOrderResponseBodyModel) SetLmOrderList(v *EnableOrderResponseBody
 	return s
 }
 
-func (s *EnableOrderResponseBodyModel) SetOrderIds(v *EnableOrderResponseBodyModelOrderIds) *EnableOrderResponseBodyModel {
-	s.OrderIds = v
+func (s *EnableOrderResponseBodyModel) SetPayTradeIds(v *EnableOrderResponseBodyModelPayTradeIds) *EnableOrderResponseBodyModel {
+	s.PayTradeIds = v
 	return s
 }
 
-type EnableOrderResponseBodyModelPayTradeIds struct {
-	PayTradeIds []*string `json:"PayTradeIds,omitempty" xml:"PayTradeIds,omitempty" type:"Repeated"`
-}
-
-func (s EnableOrderResponseBodyModelPayTradeIds) String() string {
-	return tea.Prettify(s)
-}
-
-func (s EnableOrderResponseBodyModelPayTradeIds) GoString() string {
-	return s.String()
-}
-
-func (s *EnableOrderResponseBodyModelPayTradeIds) SetPayTradeIds(v []*string) *EnableOrderResponseBodyModelPayTradeIds {
-	s.PayTradeIds = v
+func (s *EnableOrderResponseBodyModel) SetOrderIds(v *EnableOrderResponseBodyModelOrderIds) *EnableOrderResponseBodyModel {
+	s.OrderIds = v
 	return s
 }
 
@@ -2838,6 +2955,23 @@ func (s EnableOrderResponseBodyModelLmOrderListLmOrderList) GoString() string {
 
 func (s *EnableOrderResponseBodyModelLmOrderListLmOrderList) SetLmOrderId(v string) *EnableOrderResponseBodyModelLmOrderListLmOrderList {
 	s.LmOrderId = &v
+	return s
+}
+
+type EnableOrderResponseBodyModelPayTradeIds struct {
+	PayTradeIds []*string `json:"PayTradeIds,omitempty" xml:"PayTradeIds,omitempty" type:"Repeated"`
+}
+
+func (s EnableOrderResponseBodyModelPayTradeIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableOrderResponseBodyModelPayTradeIds) GoString() string {
+	return s.String()
+}
+
+func (s *EnableOrderResponseBodyModelPayTradeIds) SetPayTradeIds(v []*string) *EnableOrderResponseBodyModelPayTradeIds {
+	s.PayTradeIds = v
 	return s
 }
 
@@ -2881,6 +3015,158 @@ func (s *EnableOrderResponse) SetBody(v *EnableOrderResponseBody) *EnableOrderRe
 	return s
 }
 
+type ExecuteNodeRequest struct {
+	ProcessInstanceId *string `json:"ProcessInstanceId,omitempty" xml:"ProcessInstanceId,omitempty"`
+	ProcessId         *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	NodeInstanceId    *string `json:"NodeInstanceId,omitempty" xml:"NodeInstanceId,omitempty"`
+	NodeId            *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	RequestData       *string `json:"RequestData,omitempty" xml:"RequestData,omitempty"`
+}
+
+func (s ExecuteNodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteNodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteNodeRequest) SetProcessInstanceId(v string) *ExecuteNodeRequest {
+	s.ProcessInstanceId = &v
+	return s
+}
+
+func (s *ExecuteNodeRequest) SetProcessId(v string) *ExecuteNodeRequest {
+	s.ProcessId = &v
+	return s
+}
+
+func (s *ExecuteNodeRequest) SetNodeInstanceId(v string) *ExecuteNodeRequest {
+	s.NodeInstanceId = &v
+	return s
+}
+
+func (s *ExecuteNodeRequest) SetNodeId(v string) *ExecuteNodeRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *ExecuteNodeRequest) SetRequestData(v string) *ExecuteNodeRequest {
+	s.RequestData = &v
+	return s
+}
+
+type ExecuteNodeResponseBody struct {
+	RequestId  *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success    *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	SubMessage *string                       `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Code       *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message    *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	SubCode    *string                       `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	TotalCount *int64                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	LogsId     *string                       `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
+	Model      *ExecuteNodeResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+}
+
+func (s ExecuteNodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteNodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteNodeResponseBody) SetRequestId(v string) *ExecuteNodeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ExecuteNodeResponseBody) SetSuccess(v bool) *ExecuteNodeResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ExecuteNodeResponseBody) SetSubMessage(v string) *ExecuteNodeResponseBody {
+	s.SubMessage = &v
+	return s
+}
+
+func (s *ExecuteNodeResponseBody) SetCode(v string) *ExecuteNodeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ExecuteNodeResponseBody) SetMessage(v string) *ExecuteNodeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ExecuteNodeResponseBody) SetSubCode(v string) *ExecuteNodeResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *ExecuteNodeResponseBody) SetTotalCount(v int64) *ExecuteNodeResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ExecuteNodeResponseBody) SetLogsId(v string) *ExecuteNodeResponseBody {
+	s.LogsId = &v
+	return s
+}
+
+func (s *ExecuteNodeResponseBody) SetModel(v *ExecuteNodeResponseBodyModel) *ExecuteNodeResponseBody {
+	s.Model = v
+	return s
+}
+
+type ExecuteNodeResponseBodyModel struct {
+	ResponseData      map[string]interface{} `json:"ResponseData,omitempty" xml:"ResponseData,omitempty"`
+	ProcessInstanceId *string                `json:"ProcessInstanceId,omitempty" xml:"ProcessInstanceId,omitempty"`
+}
+
+func (s ExecuteNodeResponseBodyModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteNodeResponseBodyModel) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteNodeResponseBodyModel) SetResponseData(v map[string]interface{}) *ExecuteNodeResponseBodyModel {
+	s.ResponseData = v
+	return s
+}
+
+func (s *ExecuteNodeResponseBodyModel) SetProcessInstanceId(v string) *ExecuteNodeResponseBodyModel {
+	s.ProcessInstanceId = &v
+	return s
+}
+
+type ExecuteNodeResponse struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ExecuteNodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ExecuteNodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteNodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteNodeResponse) SetHeaders(v map[string]*string) *ExecuteNodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExecuteNodeResponse) SetBody(v *ExecuteNodeResponseBody) *ExecuteNodeResponse {
+	s.Body = v
+	return s
+}
+
 type GetCategoryChainRequest struct {
 	BizId      *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	CategoryId *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
@@ -2917,10 +3203,10 @@ func (s *GetCategoryChainRequest) SetLmItemId(v string) *GetCategoryChainRequest
 }
 
 type GetCategoryChainResponseBody struct {
-	CategoryList []*GetCategoryChainResponseBodyCategoryList `json:"CategoryList,omitempty" xml:"CategoryList,omitempty" type:"Repeated"`
+	Code         *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message      *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code         *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	CategoryList []*GetCategoryChainResponseBodyCategoryList `json:"CategoryList,omitempty" xml:"CategoryList,omitempty" type:"Repeated"`
 }
 
 func (s GetCategoryChainResponseBody) String() string {
@@ -2931,8 +3217,8 @@ func (s GetCategoryChainResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetCategoryChainResponseBody) SetCategoryList(v []*GetCategoryChainResponseBodyCategoryList) *GetCategoryChainResponseBody {
-	s.CategoryList = v
+func (s *GetCategoryChainResponseBody) SetCode(v string) *GetCategoryChainResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -2946,14 +3232,14 @@ func (s *GetCategoryChainResponseBody) SetRequestId(v string) *GetCategoryChainR
 	return s
 }
 
-func (s *GetCategoryChainResponseBody) SetCode(v string) *GetCategoryChainResponseBody {
-	s.Code = &v
+func (s *GetCategoryChainResponseBody) SetCategoryList(v []*GetCategoryChainResponseBodyCategoryList) *GetCategoryChainResponseBody {
+	s.CategoryList = v
 	return s
 }
 
 type GetCategoryChainResponseBodyCategoryList struct {
-	CategoryId *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	CategoryId *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 }
 
 func (s GetCategoryChainResponseBodyCategoryList) String() string {
@@ -2964,13 +3250,13 @@ func (s GetCategoryChainResponseBodyCategoryList) GoString() string {
 	return s.String()
 }
 
-func (s *GetCategoryChainResponseBodyCategoryList) SetCategoryId(v int64) *GetCategoryChainResponseBodyCategoryList {
-	s.CategoryId = &v
+func (s *GetCategoryChainResponseBodyCategoryList) SetName(v string) *GetCategoryChainResponseBodyCategoryList {
+	s.Name = &v
 	return s
 }
 
-func (s *GetCategoryChainResponseBodyCategoryList) SetName(v string) *GetCategoryChainResponseBodyCategoryList {
-	s.Name = &v
+func (s *GetCategoryChainResponseBodyCategoryList) SetCategoryId(v int64) *GetCategoryChainResponseBodyCategoryList {
+	s.CategoryId = &v
 	return s
 }
 
@@ -3021,10 +3307,10 @@ func (s *GetCategoryListRequest) SetCategoryId(v int64) *GetCategoryListRequest 
 }
 
 type GetCategoryListResponseBody struct {
-	CategoryList *GetCategoryListResponseBodyCategoryList `json:"CategoryList,omitempty" xml:"CategoryList,omitempty" type:"Struct"`
+	Code         *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message      *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code         *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	CategoryList *GetCategoryListResponseBodyCategoryList `json:"CategoryList,omitempty" xml:"CategoryList,omitempty" type:"Struct"`
 }
 
 func (s GetCategoryListResponseBody) String() string {
@@ -3035,8 +3321,8 @@ func (s GetCategoryListResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetCategoryListResponseBody) SetCategoryList(v *GetCategoryListResponseBodyCategoryList) *GetCategoryListResponseBody {
-	s.CategoryList = v
+func (s *GetCategoryListResponseBody) SetCode(v string) *GetCategoryListResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -3050,8 +3336,8 @@ func (s *GetCategoryListResponseBody) SetRequestId(v string) *GetCategoryListRes
 	return s
 }
 
-func (s *GetCategoryListResponseBody) SetCode(v string) *GetCategoryListResponseBody {
-	s.Code = &v
+func (s *GetCategoryListResponseBody) SetCategoryList(v *GetCategoryListResponseBodyCategoryList) *GetCategoryListResponseBody {
+	s.CategoryList = v
 	return s
 }
 
@@ -3073,8 +3359,8 @@ func (s *GetCategoryListResponseBodyCategoryList) SetCategory(v []*GetCategoryLi
 }
 
 type GetCategoryListResponseBodyCategoryListCategory struct {
-	CategoryId *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	CategoryId *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 }
 
 func (s GetCategoryListResponseBodyCategoryListCategory) String() string {
@@ -3085,13 +3371,13 @@ func (s GetCategoryListResponseBodyCategoryListCategory) GoString() string {
 	return s.String()
 }
 
-func (s *GetCategoryListResponseBodyCategoryListCategory) SetCategoryId(v int64) *GetCategoryListResponseBodyCategoryListCategory {
-	s.CategoryId = &v
+func (s *GetCategoryListResponseBodyCategoryListCategory) SetName(v string) *GetCategoryListResponseBodyCategoryListCategory {
+	s.Name = &v
 	return s
 }
 
-func (s *GetCategoryListResponseBodyCategoryListCategory) SetName(v string) *GetCategoryListResponseBodyCategoryListCategory {
-	s.Name = &v
+func (s *GetCategoryListResponseBodyCategoryListCategory) SetCategoryId(v int64) *GetCategoryListResponseBodyCategoryListCategory {
+	s.CategoryId = &v
 	return s
 }
 
@@ -3178,10 +3464,10 @@ func (s *GetCustomServiceUrlRequest) SetAccountType(v string) *GetCustomServiceU
 }
 
 type GetCustomServiceUrlResponseBody struct {
+	Code      *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	UrlData   *GetCustomServiceUrlResponseBodyUrlData `json:"UrlData,omitempty" xml:"UrlData,omitempty" type:"Struct"`
-	Code      *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s GetCustomServiceUrlResponseBody) String() string {
@@ -3190,6 +3476,11 @@ func (s GetCustomServiceUrlResponseBody) String() string {
 
 func (s GetCustomServiceUrlResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetCustomServiceUrlResponseBody) SetCode(v string) *GetCustomServiceUrlResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *GetCustomServiceUrlResponseBody) SetMessage(v string) *GetCustomServiceUrlResponseBody {
@@ -3204,11 +3495,6 @@ func (s *GetCustomServiceUrlResponseBody) SetRequestId(v string) *GetCustomServi
 
 func (s *GetCustomServiceUrlResponseBody) SetUrlData(v *GetCustomServiceUrlResponseBodyUrlData) *GetCustomServiceUrlResponseBody {
 	s.UrlData = v
-	return s
-}
-
-func (s *GetCustomServiceUrlResponseBody) SetCode(v string) *GetCustomServiceUrlResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -3270,10 +3556,10 @@ func (s *GetGuidePageRequest) SetBizId(v string) *GetGuidePageRequest {
 }
 
 type GetGuidePageResponseBody struct {
+	Code         *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message      *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId    *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	MiniShopInfo []*GetGuidePageResponseBodyMiniShopInfo `json:"MiniShopInfo,omitempty" xml:"MiniShopInfo,omitempty" type:"Repeated"`
-	Code         *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s GetGuidePageResponseBody) String() string {
@@ -3282,6 +3568,11 @@ func (s GetGuidePageResponseBody) String() string {
 
 func (s GetGuidePageResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetGuidePageResponseBody) SetCode(v string) *GetGuidePageResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *GetGuidePageResponseBody) SetMessage(v string) *GetGuidePageResponseBody {
@@ -3296,11 +3587,6 @@ func (s *GetGuidePageResponseBody) SetRequestId(v string) *GetGuidePageResponseB
 
 func (s *GetGuidePageResponseBody) SetMiniShopInfo(v []*GetGuidePageResponseBodyMiniShopInfo) *GetGuidePageResponseBody {
 	s.MiniShopInfo = v
-	return s
-}
-
-func (s *GetGuidePageResponseBody) SetCode(v string) *GetGuidePageResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -3392,13 +3678,13 @@ func (s *GetItemPromotionRequest) SetLmItemId(v string) *GetItemPromotionRequest
 }
 
 type GetItemPromotionResponseBody struct {
-	ItemPromotionModel *GetItemPromotionResponseBodyItemPromotionModel `json:"ItemPromotionModel,omitempty" xml:"ItemPromotionModel,omitempty" type:"Struct"`
 	RequestId          *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Message            *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	SubMessage         *string                                         `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
-	SubCode            *string                                         `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	Code               *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success            *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	SubMessage         *string                                         `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Code               *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message            *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	SubCode            *string                                         `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	ItemPromotionModel *GetItemPromotionResponseBodyItemPromotionModel `json:"ItemPromotionModel,omitempty" xml:"ItemPromotionModel,omitempty" type:"Struct"`
 }
 
 func (s GetItemPromotionResponseBody) String() string {
@@ -3409,18 +3695,13 @@ func (s GetItemPromotionResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetItemPromotionResponseBody) SetItemPromotionModel(v *GetItemPromotionResponseBodyItemPromotionModel) *GetItemPromotionResponseBody {
-	s.ItemPromotionModel = v
-	return s
-}
-
 func (s *GetItemPromotionResponseBody) SetRequestId(v string) *GetItemPromotionResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *GetItemPromotionResponseBody) SetMessage(v string) *GetItemPromotionResponseBody {
-	s.Message = &v
+func (s *GetItemPromotionResponseBody) SetSuccess(v bool) *GetItemPromotionResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -3429,18 +3710,23 @@ func (s *GetItemPromotionResponseBody) SetSubMessage(v string) *GetItemPromotion
 	return s
 }
 
-func (s *GetItemPromotionResponseBody) SetSubCode(v string) *GetItemPromotionResponseBody {
-	s.SubCode = &v
-	return s
-}
-
 func (s *GetItemPromotionResponseBody) SetCode(v string) *GetItemPromotionResponseBody {
 	s.Code = &v
 	return s
 }
 
-func (s *GetItemPromotionResponseBody) SetSuccess(v bool) *GetItemPromotionResponseBody {
-	s.Success = &v
+func (s *GetItemPromotionResponseBody) SetMessage(v string) *GetItemPromotionResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetItemPromotionResponseBody) SetSubCode(v string) *GetItemPromotionResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *GetItemPromotionResponseBody) SetItemPromotionModel(v *GetItemPromotionResponseBodyItemPromotionModel) *GetItemPromotionResponseBody {
+	s.ItemPromotionModel = v
 	return s
 }
 
@@ -3580,10 +3866,10 @@ func (s *GetLoginPageRequest) SetFailUrl(v string) *GetLoginPageRequest {
 }
 
 type GetLoginPageResponseBody struct {
+	Code      *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	UrlData   *GetLoginPageResponseBodyUrlData `json:"UrlData,omitempty" xml:"UrlData,omitempty" type:"Struct"`
-	Code      *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s GetLoginPageResponseBody) String() string {
@@ -3592,6 +3878,11 @@ func (s GetLoginPageResponseBody) String() string {
 
 func (s GetLoginPageResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetLoginPageResponseBody) SetCode(v string) *GetLoginPageResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *GetLoginPageResponseBody) SetMessage(v string) *GetLoginPageResponseBody {
@@ -3606,11 +3897,6 @@ func (s *GetLoginPageResponseBody) SetRequestId(v string) *GetLoginPageResponseB
 
 func (s *GetLoginPageResponseBody) SetUrlData(v *GetLoginPageResponseBodyUrlData) *GetLoginPageResponseBody {
 	s.UrlData = v
-	return s
-}
-
-func (s *GetLoginPageResponseBody) SetCode(v string) *GetLoginPageResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -3696,10 +3982,10 @@ func (s *GetSwitchUrlRequest) SetThirdPartyUserId(v string) *GetSwitchUrlRequest
 }
 
 type GetSwitchUrlResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Url       *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetSwitchUrlResponseBody) String() string {
@@ -3710,16 +3996,6 @@ func (s GetSwitchUrlResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetSwitchUrlResponseBody) SetMessage(v string) *GetSwitchUrlResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetSwitchUrlResponseBody) SetRequestId(v string) *GetSwitchUrlResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *GetSwitchUrlResponseBody) SetCode(v string) *GetSwitchUrlResponseBody {
 	s.Code = &v
 	return s
@@ -3727,6 +4003,16 @@ func (s *GetSwitchUrlResponseBody) SetCode(v string) *GetSwitchUrlResponseBody {
 
 func (s *GetSwitchUrlResponseBody) SetUrl(v string) *GetSwitchUrlResponseBody {
 	s.Url = &v
+	return s
+}
+
+func (s *GetSwitchUrlResponseBody) SetMessage(v string) *GetSwitchUrlResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetSwitchUrlResponseBody) SetRequestId(v string) *GetSwitchUrlResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -3789,10 +4075,10 @@ func (s *GetUserInfoRequest) SetQueryJson(v string) *GetUserInfoRequest {
 }
 
 type GetUserInfoResponseBody struct {
+	Code        *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message     *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId   *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	LoginResult *GetUserInfoResponseBodyLoginResult `json:"LoginResult,omitempty" xml:"LoginResult,omitempty" type:"Struct"`
-	Code        *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s GetUserInfoResponseBody) String() string {
@@ -3801,6 +4087,11 @@ func (s GetUserInfoResponseBody) String() string {
 
 func (s GetUserInfoResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetUserInfoResponseBody) SetCode(v string) *GetUserInfoResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *GetUserInfoResponseBody) SetMessage(v string) *GetUserInfoResponseBody {
@@ -3818,19 +4109,14 @@ func (s *GetUserInfoResponseBody) SetLoginResult(v *GetUserInfoResponseBodyLogin
 	return s
 }
 
-func (s *GetUserInfoResponseBody) SetCode(v string) *GetUserInfoResponseBody {
-	s.Code = &v
-	return s
-}
-
 type GetUserInfoResponseBodyLoginResult struct {
 	ReturnUrl   *string                `json:"ReturnUrl,omitempty" xml:"ReturnUrl,omitempty"`
 	BizUserName *string                `json:"BizUserName,omitempty" xml:"BizUserName,omitempty"`
 	BizUid      *string                `json:"BizUid,omitempty" xml:"BizUid,omitempty"`
 	BizId       *string                `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	SubBizId    []*string              `json:"SubBizId,omitempty" xml:"SubBizId,omitempty" type:"Repeated"`
 	LmUserId    *int64                 `json:"LmUserId,omitempty" xml:"LmUserId,omitempty"`
 	ExtInfo     map[string]interface{} `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
+	SubBizId    []*string              `json:"SubBizId,omitempty" xml:"SubBizId,omitempty" type:"Repeated"`
 }
 
 func (s GetUserInfoResponseBodyLoginResult) String() string {
@@ -3861,11 +4147,6 @@ func (s *GetUserInfoResponseBodyLoginResult) SetBizId(v string) *GetUserInfoResp
 	return s
 }
 
-func (s *GetUserInfoResponseBodyLoginResult) SetSubBizId(v []*string) *GetUserInfoResponseBodyLoginResult {
-	s.SubBizId = v
-	return s
-}
-
 func (s *GetUserInfoResponseBodyLoginResult) SetLmUserId(v int64) *GetUserInfoResponseBodyLoginResult {
 	s.LmUserId = &v
 	return s
@@ -3873,6 +4154,11 @@ func (s *GetUserInfoResponseBodyLoginResult) SetLmUserId(v int64) *GetUserInfoRe
 
 func (s *GetUserInfoResponseBodyLoginResult) SetExtInfo(v map[string]interface{}) *GetUserInfoResponseBodyLoginResult {
 	s.ExtInfo = v
+	return s
+}
+
+func (s *GetUserInfoResponseBodyLoginResult) SetSubBizId(v []*string) *GetUserInfoResponseBodyLoginResult {
+	s.SubBizId = v
 	return s
 }
 
@@ -3971,10 +4257,10 @@ func (s *GetWithholdSignPageUrlRequest) SetExtInfo(v string) *GetWithholdSignPag
 }
 
 type GetWithholdSignPageUrlResponseBody struct {
+	Code                 *string                                                 `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message              *string                                                 `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId            *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	WithholdSignResponse *GetWithholdSignPageUrlResponseBodyWithholdSignResponse `json:"WithholdSignResponse,omitempty" xml:"WithholdSignResponse,omitempty" type:"Struct"`
-	Code                 *string                                                 `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s GetWithholdSignPageUrlResponseBody) String() string {
@@ -3983,6 +4269,11 @@ func (s GetWithholdSignPageUrlResponseBody) String() string {
 
 func (s GetWithholdSignPageUrlResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetWithholdSignPageUrlResponseBody) SetCode(v string) *GetWithholdSignPageUrlResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *GetWithholdSignPageUrlResponseBody) SetMessage(v string) *GetWithholdSignPageUrlResponseBody {
@@ -3997,11 +4288,6 @@ func (s *GetWithholdSignPageUrlResponseBody) SetRequestId(v string) *GetWithhold
 
 func (s *GetWithholdSignPageUrlResponseBody) SetWithholdSignResponse(v *GetWithholdSignPageUrlResponseBodyWithholdSignResponse) *GetWithholdSignPageUrlResponseBody {
 	s.WithholdSignResponse = v
-	return s
-}
-
-func (s *GetWithholdSignPageUrlResponseBody) SetCode(v string) *GetWithholdSignPageUrlResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -4111,11 +4397,11 @@ func (s *InitApplyRefundRequest) SetAccountType(v string) *InitApplyRefundReques
 }
 
 type InitApplyRefundResponseBody struct {
-	InitApplyRefundData *InitApplyRefundResponseBodyInitApplyRefundData `json:"InitApplyRefundData,omitempty" xml:"InitApplyRefundData,omitempty" type:"Struct"`
-	Message             *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId           *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SubLmOrderId        *string                                         `json:"SubLmOrderId,omitempty" xml:"SubLmOrderId,omitempty"`
 	Code                *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message             *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	SubLmOrderId        *string                                         `json:"SubLmOrderId,omitempty" xml:"SubLmOrderId,omitempty"`
+	RequestId           *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	InitApplyRefundData *InitApplyRefundResponseBodyInitApplyRefundData `json:"InitApplyRefundData,omitempty" xml:"InitApplyRefundData,omitempty" type:"Struct"`
 }
 
 func (s InitApplyRefundResponseBody) String() string {
@@ -4126,8 +4412,8 @@ func (s InitApplyRefundResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *InitApplyRefundResponseBody) SetInitApplyRefundData(v *InitApplyRefundResponseBodyInitApplyRefundData) *InitApplyRefundResponseBody {
-	s.InitApplyRefundData = v
+func (s *InitApplyRefundResponseBody) SetCode(v string) *InitApplyRefundResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -4136,26 +4422,26 @@ func (s *InitApplyRefundResponseBody) SetMessage(v string) *InitApplyRefundRespo
 	return s
 }
 
-func (s *InitApplyRefundResponseBody) SetRequestId(v string) *InitApplyRefundResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *InitApplyRefundResponseBody) SetSubLmOrderId(v string) *InitApplyRefundResponseBody {
 	s.SubLmOrderId = &v
 	return s
 }
 
-func (s *InitApplyRefundResponseBody) SetCode(v string) *InitApplyRefundResponseBody {
-	s.Code = &v
+func (s *InitApplyRefundResponseBody) SetRequestId(v string) *InitApplyRefundResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *InitApplyRefundResponseBody) SetInitApplyRefundData(v *InitApplyRefundResponseBodyInitApplyRefundData) *InitApplyRefundResponseBody {
+	s.InitApplyRefundData = v
 	return s
 }
 
 type InitApplyRefundResponseBodyInitApplyRefundData struct {
-	MaxRefundFeeData *InitApplyRefundResponseBodyInitApplyRefundDataMaxRefundFeeData `json:"MaxRefundFeeData,omitempty" xml:"MaxRefundFeeData,omitempty" type:"Struct"`
-	BizClaimType     *int32                                                          `json:"BizClaimType,omitempty" xml:"BizClaimType,omitempty"`
 	MainOrderRefund  *bool                                                           `json:"MainOrderRefund,omitempty" xml:"MainOrderRefund,omitempty"`
+	BizClaimType     *int32                                                          `json:"BizClaimType,omitempty" xml:"BizClaimType,omitempty"`
 	RefundReasonList *InitApplyRefundResponseBodyInitApplyRefundDataRefundReasonList `json:"RefundReasonList,omitempty" xml:"RefundReasonList,omitempty" type:"Struct"`
+	MaxRefundFeeData *InitApplyRefundResponseBodyInitApplyRefundDataMaxRefundFeeData `json:"MaxRefundFeeData,omitempty" xml:"MaxRefundFeeData,omitempty" type:"Struct"`
 }
 
 func (s InitApplyRefundResponseBodyInitApplyRefundData) String() string {
@@ -4166,8 +4452,8 @@ func (s InitApplyRefundResponseBodyInitApplyRefundData) GoString() string {
 	return s.String()
 }
 
-func (s *InitApplyRefundResponseBodyInitApplyRefundData) SetMaxRefundFeeData(v *InitApplyRefundResponseBodyInitApplyRefundDataMaxRefundFeeData) *InitApplyRefundResponseBodyInitApplyRefundData {
-	s.MaxRefundFeeData = v
+func (s *InitApplyRefundResponseBodyInitApplyRefundData) SetMainOrderRefund(v bool) *InitApplyRefundResponseBodyInitApplyRefundData {
+	s.MainOrderRefund = &v
 	return s
 }
 
@@ -4176,36 +4462,13 @@ func (s *InitApplyRefundResponseBodyInitApplyRefundData) SetBizClaimType(v int32
 	return s
 }
 
-func (s *InitApplyRefundResponseBodyInitApplyRefundData) SetMainOrderRefund(v bool) *InitApplyRefundResponseBodyInitApplyRefundData {
-	s.MainOrderRefund = &v
-	return s
-}
-
 func (s *InitApplyRefundResponseBodyInitApplyRefundData) SetRefundReasonList(v *InitApplyRefundResponseBodyInitApplyRefundDataRefundReasonList) *InitApplyRefundResponseBodyInitApplyRefundData {
 	s.RefundReasonList = v
 	return s
 }
 
-type InitApplyRefundResponseBodyInitApplyRefundDataMaxRefundFeeData struct {
-	MaxRefundFee *int32 `json:"MaxRefundFee,omitempty" xml:"MaxRefundFee,omitempty"`
-	MinRefundFee *int32 `json:"MinRefundFee,omitempty" xml:"MinRefundFee,omitempty"`
-}
-
-func (s InitApplyRefundResponseBodyInitApplyRefundDataMaxRefundFeeData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InitApplyRefundResponseBodyInitApplyRefundDataMaxRefundFeeData) GoString() string {
-	return s.String()
-}
-
-func (s *InitApplyRefundResponseBodyInitApplyRefundDataMaxRefundFeeData) SetMaxRefundFee(v int32) *InitApplyRefundResponseBodyInitApplyRefundDataMaxRefundFeeData {
-	s.MaxRefundFee = &v
-	return s
-}
-
-func (s *InitApplyRefundResponseBodyInitApplyRefundDataMaxRefundFeeData) SetMinRefundFee(v int32) *InitApplyRefundResponseBodyInitApplyRefundDataMaxRefundFeeData {
-	s.MinRefundFee = &v
+func (s *InitApplyRefundResponseBodyInitApplyRefundData) SetMaxRefundFeeData(v *InitApplyRefundResponseBodyInitApplyRefundDataMaxRefundFeeData) *InitApplyRefundResponseBodyInitApplyRefundData {
+	s.MaxRefundFeeData = v
 	return s
 }
 
@@ -4258,6 +4521,29 @@ func (s *InitApplyRefundResponseBodyInitApplyRefundDataRefundReasonListRefundRea
 
 func (s *InitApplyRefundResponseBodyInitApplyRefundDataRefundReasonListRefundReasonList) SetRefundDescRequired(v bool) *InitApplyRefundResponseBodyInitApplyRefundDataRefundReasonListRefundReasonList {
 	s.RefundDescRequired = &v
+	return s
+}
+
+type InitApplyRefundResponseBodyInitApplyRefundDataMaxRefundFeeData struct {
+	MaxRefundFee *int32 `json:"MaxRefundFee,omitempty" xml:"MaxRefundFee,omitempty"`
+	MinRefundFee *int32 `json:"MinRefundFee,omitempty" xml:"MinRefundFee,omitempty"`
+}
+
+func (s InitApplyRefundResponseBodyInitApplyRefundDataMaxRefundFeeData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitApplyRefundResponseBodyInitApplyRefundDataMaxRefundFeeData) GoString() string {
+	return s.String()
+}
+
+func (s *InitApplyRefundResponseBodyInitApplyRefundDataMaxRefundFeeData) SetMaxRefundFee(v int32) *InitApplyRefundResponseBodyInitApplyRefundDataMaxRefundFeeData {
+	s.MaxRefundFee = &v
+	return s
+}
+
+func (s *InitApplyRefundResponseBodyInitApplyRefundDataMaxRefundFeeData) SetMinRefundFee(v int32) *InitApplyRefundResponseBodyInitApplyRefundDataMaxRefundFeeData {
+	s.MinRefundFee = &v
 	return s
 }
 
@@ -4343,10 +4629,10 @@ func (s *ListItemActivitiesShrinkRequest) SetItemIdsShrink(v string) *ListItemAc
 }
 
 type ListItemActivitiesResponseBody struct {
+	Code                    *string                                                `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message                 *string                                                `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId               *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	LmItemActivityModelList *ListItemActivitiesResponseBodyLmItemActivityModelList `json:"LmItemActivityModelList,omitempty" xml:"LmItemActivityModelList,omitempty" type:"Struct"`
-	Code                    *string                                                `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s ListItemActivitiesResponseBody) String() string {
@@ -4355,6 +4641,11 @@ func (s ListItemActivitiesResponseBody) String() string {
 
 func (s ListItemActivitiesResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListItemActivitiesResponseBody) SetCode(v string) *ListItemActivitiesResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *ListItemActivitiesResponseBody) SetMessage(v string) *ListItemActivitiesResponseBody {
@@ -4369,11 +4660,6 @@ func (s *ListItemActivitiesResponseBody) SetRequestId(v string) *ListItemActivit
 
 func (s *ListItemActivitiesResponseBody) SetLmItemActivityModelList(v *ListItemActivitiesResponseBodyLmItemActivityModelList) *ListItemActivitiesResponseBody {
 	s.LmItemActivityModelList = v
-	return s
-}
-
-func (s *ListItemActivitiesResponseBody) SetCode(v string) *ListItemActivitiesResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -4395,9 +4681,9 @@ func (s *ListItemActivitiesResponseBodyLmItemActivityModelList) SetLmItemActivit
 }
 
 type ListItemActivitiesResponseBodyLmItemActivityModelListLmItemActivityModel struct {
-	LmActivityPopModel *ListItemActivitiesResponseBodyLmItemActivityModelListLmItemActivityModelLmActivityPopModel `json:"LmActivityPopModel,omitempty" xml:"LmActivityPopModel,omitempty" type:"Struct"`
 	LmItemId           *string                                                                                     `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
 	ItemId             *int64                                                                                      `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	LmActivityPopModel *ListItemActivitiesResponseBodyLmItemActivityModelListLmItemActivityModelLmActivityPopModel `json:"LmActivityPopModel,omitempty" xml:"LmActivityPopModel,omitempty" type:"Struct"`
 }
 
 func (s ListItemActivitiesResponseBodyLmItemActivityModelListLmItemActivityModel) String() string {
@@ -4408,11 +4694,6 @@ func (s ListItemActivitiesResponseBodyLmItemActivityModelListLmItemActivityModel
 	return s.String()
 }
 
-func (s *ListItemActivitiesResponseBodyLmItemActivityModelListLmItemActivityModel) SetLmActivityPopModel(v *ListItemActivitiesResponseBodyLmItemActivityModelListLmItemActivityModelLmActivityPopModel) *ListItemActivitiesResponseBodyLmItemActivityModelListLmItemActivityModel {
-	s.LmActivityPopModel = v
-	return s
-}
-
 func (s *ListItemActivitiesResponseBodyLmItemActivityModelListLmItemActivityModel) SetLmItemId(v string) *ListItemActivitiesResponseBodyLmItemActivityModelListLmItemActivityModel {
 	s.LmItemId = &v
 	return s
@@ -4420,6 +4701,11 @@ func (s *ListItemActivitiesResponseBodyLmItemActivityModelListLmItemActivityMode
 
 func (s *ListItemActivitiesResponseBodyLmItemActivityModelListLmItemActivityModel) SetItemId(v int64) *ListItemActivitiesResponseBodyLmItemActivityModelListLmItemActivityModel {
 	s.ItemId = &v
+	return s
+}
+
+func (s *ListItemActivitiesResponseBodyLmItemActivityModelListLmItemActivityModel) SetLmActivityPopModel(v *ListItemActivitiesResponseBodyLmItemActivityModelListLmItemActivityModelLmActivityPopModel) *ListItemActivitiesResponseBodyLmItemActivityModelListLmItemActivityModel {
+	s.LmActivityPopModel = v
 	return s
 }
 
@@ -4623,10 +4909,10 @@ func (s *ModifyBasicAndBizItemsRequestItemListSkuList) SetQuantity(v int32) *Mod
 }
 
 type ModifyBasicAndBizItemsResponseBody struct {
-	FailedItemList *ModifyBasicAndBizItemsResponseBodyFailedItemList `json:"FailedItemList,omitempty" xml:"FailedItemList,omitempty" type:"Struct"`
+	Code           *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message        *string                                           `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId      *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code           *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	FailedItemList *ModifyBasicAndBizItemsResponseBodyFailedItemList `json:"FailedItemList,omitempty" xml:"FailedItemList,omitempty" type:"Struct"`
 }
 
 func (s ModifyBasicAndBizItemsResponseBody) String() string {
@@ -4637,8 +4923,8 @@ func (s ModifyBasicAndBizItemsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyBasicAndBizItemsResponseBody) SetFailedItemList(v *ModifyBasicAndBizItemsResponseBodyFailedItemList) *ModifyBasicAndBizItemsResponseBody {
-	s.FailedItemList = v
+func (s *ModifyBasicAndBizItemsResponseBody) SetCode(v string) *ModifyBasicAndBizItemsResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -4652,8 +4938,8 @@ func (s *ModifyBasicAndBizItemsResponseBody) SetRequestId(v string) *ModifyBasic
 	return s
 }
 
-func (s *ModifyBasicAndBizItemsResponseBody) SetCode(v string) *ModifyBasicAndBizItemsResponseBody {
-	s.Code = &v
+func (s *ModifyBasicAndBizItemsResponseBody) SetFailedItemList(v *ModifyBasicAndBizItemsResponseBodyFailedItemList) *ModifyBasicAndBizItemsResponseBody {
+	s.FailedItemList = v
 	return s
 }
 
@@ -4855,13 +5141,13 @@ func (s *ModifyBizItemsRequestItemListSkuList) SetQuantity(v int32) *ModifyBizIt
 }
 
 type ModifyBizItemsResponseBody struct {
-	FailedItemList *ModifyBizItemsResponseBodyFailedItemList `json:"FailedItemList,omitempty" xml:"FailedItemList,omitempty" type:"Struct"`
-	TotalCount     *int32                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId      *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Message        *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageSize       *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber     *int32                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	Code           *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message        *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber     *int32                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount     *int32                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	FailedItemList *ModifyBizItemsResponseBodyFailedItemList `json:"FailedItemList,omitempty" xml:"FailedItemList,omitempty" type:"Struct"`
 }
 
 func (s ModifyBizItemsResponseBody) String() string {
@@ -4872,18 +5158,13 @@ func (s ModifyBizItemsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyBizItemsResponseBody) SetFailedItemList(v *ModifyBizItemsResponseBodyFailedItemList) *ModifyBizItemsResponseBody {
-	s.FailedItemList = v
-	return s
-}
-
-func (s *ModifyBizItemsResponseBody) SetTotalCount(v int32) *ModifyBizItemsResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
 func (s *ModifyBizItemsResponseBody) SetRequestId(v string) *ModifyBizItemsResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyBizItemsResponseBody) SetCode(v string) *ModifyBizItemsResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -4892,18 +5173,23 @@ func (s *ModifyBizItemsResponseBody) SetMessage(v string) *ModifyBizItemsRespons
 	return s
 }
 
-func (s *ModifyBizItemsResponseBody) SetPageSize(v int32) *ModifyBizItemsResponseBody {
-	s.PageSize = &v
-	return s
-}
-
 func (s *ModifyBizItemsResponseBody) SetPageNumber(v int32) *ModifyBizItemsResponseBody {
 	s.PageNumber = &v
 	return s
 }
 
-func (s *ModifyBizItemsResponseBody) SetCode(v string) *ModifyBizItemsResponseBody {
-	s.Code = &v
+func (s *ModifyBizItemsResponseBody) SetPageSize(v int32) *ModifyBizItemsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ModifyBizItemsResponseBody) SetTotalCount(v int32) *ModifyBizItemsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ModifyBizItemsResponseBody) SetFailedItemList(v *ModifyBizItemsResponseBodyFailedItemList) *ModifyBizItemsResponseBody {
+	s.FailedItemList = v
 	return s
 }
 
@@ -5065,10 +5351,10 @@ func (s *ModifyItemLimitRuleRequest) SetEndTime(v int64) *ModifyItemLimitRuleReq
 }
 
 type ModifyItemLimitRuleResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Model     *bool   `json:"Model,omitempty" xml:"Model,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Model     *bool   `json:"Model,omitempty" xml:"Model,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s ModifyItemLimitRuleResponseBody) String() string {
@@ -5079,13 +5365,8 @@ func (s ModifyItemLimitRuleResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyItemLimitRuleResponseBody) SetMessage(v string) *ModifyItemLimitRuleResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ModifyItemLimitRuleResponseBody) SetRequestId(v string) *ModifyItemLimitRuleResponseBody {
-	s.RequestId = &v
+func (s *ModifyItemLimitRuleResponseBody) SetCode(v string) *ModifyItemLimitRuleResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -5094,8 +5375,13 @@ func (s *ModifyItemLimitRuleResponseBody) SetModel(v bool) *ModifyItemLimitRuleR
 	return s
 }
 
-func (s *ModifyItemLimitRuleResponseBody) SetCode(v string) *ModifyItemLimitRuleResponseBody {
-	s.Code = &v
+func (s *ModifyItemLimitRuleResponseBody) SetMessage(v string) *ModifyItemLimitRuleResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ModifyItemLimitRuleResponseBody) SetRequestId(v string) *ModifyItemLimitRuleResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -5164,8 +5450,8 @@ func (s *NotifyPayOrderStatusRequest) SetAmount(v int64) *NotifyPayOrderStatusRe
 }
 
 type NotifyPayOrderStatusResponseBody struct {
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
 func (s NotifyPayOrderStatusResponseBody) String() string {
@@ -5176,13 +5462,13 @@ func (s NotifyPayOrderStatusResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *NotifyPayOrderStatusResponseBody) SetMessage(v string) *NotifyPayOrderStatusResponseBody {
-	s.Message = &v
+func (s *NotifyPayOrderStatusResponseBody) SetCode(v string) *NotifyPayOrderStatusResponseBody {
+	s.Code = &v
 	return s
 }
 
-func (s *NotifyPayOrderStatusResponseBody) SetCode(v string) *NotifyPayOrderStatusResponseBody {
-	s.Code = &v
+func (s *NotifyPayOrderStatusResponseBody) SetMessage(v string) *NotifyPayOrderStatusResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -5257,9 +5543,9 @@ func (s *NotifyWithholdFundRequest) SetTenantOrderId(v string) *NotifyWithholdFu
 }
 
 type NotifyWithholdFundResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s NotifyWithholdFundResponseBody) String() string {
@@ -5270,6 +5556,11 @@ func (s NotifyWithholdFundResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *NotifyWithholdFundResponseBody) SetCode(v string) *NotifyWithholdFundResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *NotifyWithholdFundResponseBody) SetMessage(v string) *NotifyWithholdFundResponseBody {
 	s.Message = &v
 	return s
@@ -5277,11 +5568,6 @@ func (s *NotifyWithholdFundResponseBody) SetMessage(v string) *NotifyWithholdFun
 
 func (s *NotifyWithholdFundResponseBody) SetRequestId(v string) *NotifyWithholdFundResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *NotifyWithholdFundResponseBody) SetCode(v string) *NotifyWithholdFundResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -5344,13 +5630,13 @@ func (s *QueryActivityItemsRequest) SetLmActivityId(v int64) *QueryActivityItems
 }
 
 type QueryActivityItemsResponseBody struct {
-	TotalCount              *int64                                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId               *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Message                 *string                                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageSize                *int64                                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber              *int64                                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	LmActivityItemModelList *QueryActivityItemsResponseBodyLmActivityItemModelList `json:"LmActivityItemModelList,omitempty" xml:"LmActivityItemModelList,omitempty" type:"Struct"`
 	Code                    *string                                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message                 *string                                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber              *int64                                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize                *int64                                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount              *int64                                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	LmActivityItemModelList *QueryActivityItemsResponseBodyLmActivityItemModelList `json:"LmActivityItemModelList,omitempty" xml:"LmActivityItemModelList,omitempty" type:"Struct"`
 }
 
 func (s QueryActivityItemsResponseBody) String() string {
@@ -5361,13 +5647,13 @@ func (s QueryActivityItemsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *QueryActivityItemsResponseBody) SetTotalCount(v int64) *QueryActivityItemsResponseBody {
-	s.TotalCount = &v
+func (s *QueryActivityItemsResponseBody) SetRequestId(v string) *QueryActivityItemsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *QueryActivityItemsResponseBody) SetRequestId(v string) *QueryActivityItemsResponseBody {
-	s.RequestId = &v
+func (s *QueryActivityItemsResponseBody) SetCode(v string) *QueryActivityItemsResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -5376,23 +5662,23 @@ func (s *QueryActivityItemsResponseBody) SetMessage(v string) *QueryActivityItem
 	return s
 }
 
-func (s *QueryActivityItemsResponseBody) SetPageSize(v int64) *QueryActivityItemsResponseBody {
-	s.PageSize = &v
-	return s
-}
-
 func (s *QueryActivityItemsResponseBody) SetPageNumber(v int64) *QueryActivityItemsResponseBody {
 	s.PageNumber = &v
 	return s
 }
 
-func (s *QueryActivityItemsResponseBody) SetLmActivityItemModelList(v *QueryActivityItemsResponseBodyLmActivityItemModelList) *QueryActivityItemsResponseBody {
-	s.LmActivityItemModelList = v
+func (s *QueryActivityItemsResponseBody) SetPageSize(v int64) *QueryActivityItemsResponseBody {
+	s.PageSize = &v
 	return s
 }
 
-func (s *QueryActivityItemsResponseBody) SetCode(v string) *QueryActivityItemsResponseBody {
-	s.Code = &v
+func (s *QueryActivityItemsResponseBody) SetTotalCount(v int64) *QueryActivityItemsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *QueryActivityItemsResponseBody) SetLmActivityItemModelList(v *QueryActivityItemsResponseBodyLmActivityItemModelList) *QueryActivityItemsResponseBody {
+	s.LmActivityItemModelList = v
 	return s
 }
 
@@ -5414,21 +5700,21 @@ func (s *QueryActivityItemsResponseBodyLmActivityItemModelList) SetLmActivityIte
 }
 
 type QueryActivityItemsResponseBodyLmActivityItemModelListLmActivityItemModel struct {
-	TbSellerId           *int64                                                                                `json:"TbSellerId,omitempty" xml:"TbSellerId,omitempty"`
 	ItemTitle            *string                                                                               `json:"ItemTitle,omitempty" xml:"ItemTitle,omitempty"`
+	TbSellerId           *int64                                                                                `json:"TbSellerId,omitempty" xml:"TbSellerId,omitempty"`
 	SellableQuantity     *int32                                                                                `json:"SellableQuantity,omitempty" xml:"SellableQuantity,omitempty"`
 	TbShopId             *int64                                                                                `json:"TbShopId,omitempty" xml:"TbShopId,omitempty"`
-	ItemActivityQuantity *int32                                                                                `json:"ItemActivityQuantity,omitempty" xml:"ItemActivityQuantity,omitempty"`
-	TbShopName           *string                                                                               `json:"TbShopName,omitempty" xml:"TbShopName,omitempty"`
 	LmItemId             *string                                                                               `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
+	TbShopName           *string                                                                               `json:"TbShopName,omitempty" xml:"TbShopName,omitempty"`
+	ItemActivityQuantity *int32                                                                                `json:"ItemActivityQuantity,omitempty" xml:"ItemActivityQuantity,omitempty"`
 	LmActivityId         *int64                                                                                `json:"LmActivityId,omitempty" xml:"LmActivityId,omitempty"`
-	ItemId               *int64                                                                                `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
 	CanSell              *bool                                                                                 `json:"CanSell,omitempty" xml:"CanSell,omitempty"`
+	ItemId               *int64                                                                                `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
 	MainPicUrl           *string                                                                               `json:"MainPicUrl,omitempty" xml:"MainPicUrl,omitempty"`
 	Tips                 *string                                                                               `json:"Tips,omitempty" xml:"Tips,omitempty"`
 	LmShopId             *string                                                                               `json:"LmShopId,omitempty" xml:"LmShopId,omitempty"`
-	SkuModelList         *QueryActivityItemsResponseBodyLmActivityItemModelListLmActivityItemModelSkuModelList `json:"SkuModelList,omitempty" xml:"SkuModelList,omitempty" type:"Struct"`
 	ItemActivityStatus   *string                                                                               `json:"ItemActivityStatus,omitempty" xml:"ItemActivityStatus,omitempty"`
+	SkuModelList         *QueryActivityItemsResponseBodyLmActivityItemModelListLmActivityItemModelSkuModelList `json:"SkuModelList,omitempty" xml:"SkuModelList,omitempty" type:"Struct"`
 }
 
 func (s QueryActivityItemsResponseBodyLmActivityItemModelListLmActivityItemModel) String() string {
@@ -5439,13 +5725,13 @@ func (s QueryActivityItemsResponseBodyLmActivityItemModelListLmActivityItemModel
 	return s.String()
 }
 
-func (s *QueryActivityItemsResponseBodyLmActivityItemModelListLmActivityItemModel) SetTbSellerId(v int64) *QueryActivityItemsResponseBodyLmActivityItemModelListLmActivityItemModel {
-	s.TbSellerId = &v
+func (s *QueryActivityItemsResponseBodyLmActivityItemModelListLmActivityItemModel) SetItemTitle(v string) *QueryActivityItemsResponseBodyLmActivityItemModelListLmActivityItemModel {
+	s.ItemTitle = &v
 	return s
 }
 
-func (s *QueryActivityItemsResponseBodyLmActivityItemModelListLmActivityItemModel) SetItemTitle(v string) *QueryActivityItemsResponseBodyLmActivityItemModelListLmActivityItemModel {
-	s.ItemTitle = &v
+func (s *QueryActivityItemsResponseBodyLmActivityItemModelListLmActivityItemModel) SetTbSellerId(v int64) *QueryActivityItemsResponseBodyLmActivityItemModelListLmActivityItemModel {
+	s.TbSellerId = &v
 	return s
 }
 
@@ -5459,8 +5745,8 @@ func (s *QueryActivityItemsResponseBodyLmActivityItemModelListLmActivityItemMode
 	return s
 }
 
-func (s *QueryActivityItemsResponseBodyLmActivityItemModelListLmActivityItemModel) SetItemActivityQuantity(v int32) *QueryActivityItemsResponseBodyLmActivityItemModelListLmActivityItemModel {
-	s.ItemActivityQuantity = &v
+func (s *QueryActivityItemsResponseBodyLmActivityItemModelListLmActivityItemModel) SetLmItemId(v string) *QueryActivityItemsResponseBodyLmActivityItemModelListLmActivityItemModel {
+	s.LmItemId = &v
 	return s
 }
 
@@ -5469,8 +5755,8 @@ func (s *QueryActivityItemsResponseBodyLmActivityItemModelListLmActivityItemMode
 	return s
 }
 
-func (s *QueryActivityItemsResponseBodyLmActivityItemModelListLmActivityItemModel) SetLmItemId(v string) *QueryActivityItemsResponseBodyLmActivityItemModelListLmActivityItemModel {
-	s.LmItemId = &v
+func (s *QueryActivityItemsResponseBodyLmActivityItemModelListLmActivityItemModel) SetItemActivityQuantity(v int32) *QueryActivityItemsResponseBodyLmActivityItemModelListLmActivityItemModel {
+	s.ItemActivityQuantity = &v
 	return s
 }
 
@@ -5479,13 +5765,13 @@ func (s *QueryActivityItemsResponseBodyLmActivityItemModelListLmActivityItemMode
 	return s
 }
 
-func (s *QueryActivityItemsResponseBodyLmActivityItemModelListLmActivityItemModel) SetItemId(v int64) *QueryActivityItemsResponseBodyLmActivityItemModelListLmActivityItemModel {
-	s.ItemId = &v
+func (s *QueryActivityItemsResponseBodyLmActivityItemModelListLmActivityItemModel) SetCanSell(v bool) *QueryActivityItemsResponseBodyLmActivityItemModelListLmActivityItemModel {
+	s.CanSell = &v
 	return s
 }
 
-func (s *QueryActivityItemsResponseBodyLmActivityItemModelListLmActivityItemModel) SetCanSell(v bool) *QueryActivityItemsResponseBodyLmActivityItemModelListLmActivityItemModel {
-	s.CanSell = &v
+func (s *QueryActivityItemsResponseBodyLmActivityItemModelListLmActivityItemModel) SetItemId(v int64) *QueryActivityItemsResponseBodyLmActivityItemModelListLmActivityItemModel {
+	s.ItemId = &v
 	return s
 }
 
@@ -5504,13 +5790,13 @@ func (s *QueryActivityItemsResponseBodyLmActivityItemModelListLmActivityItemMode
 	return s
 }
 
-func (s *QueryActivityItemsResponseBodyLmActivityItemModelListLmActivityItemModel) SetSkuModelList(v *QueryActivityItemsResponseBodyLmActivityItemModelListLmActivityItemModelSkuModelList) *QueryActivityItemsResponseBodyLmActivityItemModelListLmActivityItemModel {
-	s.SkuModelList = v
+func (s *QueryActivityItemsResponseBodyLmActivityItemModelListLmActivityItemModel) SetItemActivityStatus(v string) *QueryActivityItemsResponseBodyLmActivityItemModelListLmActivityItemModel {
+	s.ItemActivityStatus = &v
 	return s
 }
 
-func (s *QueryActivityItemsResponseBodyLmActivityItemModelListLmActivityItemModel) SetItemActivityStatus(v string) *QueryActivityItemsResponseBodyLmActivityItemModelListLmActivityItemModel {
-	s.ItemActivityStatus = &v
+func (s *QueryActivityItemsResponseBodyLmActivityItemModelListLmActivityItemModel) SetSkuModelList(v *QueryActivityItemsResponseBodyLmActivityItemModelListLmActivityItemModelSkuModelList) *QueryActivityItemsResponseBodyLmActivityItemModelListLmActivityItemModel {
+	s.SkuModelList = v
 	return s
 }
 
@@ -5661,10 +5947,10 @@ func (s *QueryAddressRequest) SetDivisionCode(v string) *QueryAddressRequest {
 }
 
 type QueryAddressResponseBody struct {
+	Code            *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message         *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId       *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DivisionAddress *QueryAddressResponseBodyDivisionAddress `json:"DivisionAddress,omitempty" xml:"DivisionAddress,omitempty" type:"Struct"`
-	Code            *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s QueryAddressResponseBody) String() string {
@@ -5673,6 +5959,11 @@ func (s QueryAddressResponseBody) String() string {
 
 func (s QueryAddressResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *QueryAddressResponseBody) SetCode(v string) *QueryAddressResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *QueryAddressResponseBody) SetMessage(v string) *QueryAddressResponseBody {
@@ -5687,11 +5978,6 @@ func (s *QueryAddressResponseBody) SetRequestId(v string) *QueryAddressResponseB
 
 func (s *QueryAddressResponseBody) SetDivisionAddress(v *QueryAddressResponseBodyDivisionAddress) *QueryAddressResponseBody {
 	s.DivisionAddress = v
-	return s
-}
-
-func (s *QueryAddressResponseBody) SetCode(v string) *QueryAddressResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -5715,8 +6001,8 @@ func (s *QueryAddressResponseBodyDivisionAddress) SetDivisionAddress(v []*QueryA
 type QueryAddressResponseBodyDivisionAddressDivisionAddress struct {
 	ParentId      *int64  `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
 	DivisionCode  *int64  `json:"DivisionCode,omitempty" xml:"DivisionCode,omitempty"`
-	DivisionName  *string `json:"DivisionName,omitempty" xml:"DivisionName,omitempty"`
 	DivisionLevel *int32  `json:"DivisionLevel,omitempty" xml:"DivisionLevel,omitempty"`
+	DivisionName  *string `json:"DivisionName,omitempty" xml:"DivisionName,omitempty"`
 }
 
 func (s QueryAddressResponseBodyDivisionAddressDivisionAddress) String() string {
@@ -5737,13 +6023,13 @@ func (s *QueryAddressResponseBodyDivisionAddressDivisionAddress) SetDivisionCode
 	return s
 }
 
-func (s *QueryAddressResponseBodyDivisionAddressDivisionAddress) SetDivisionName(v string) *QueryAddressResponseBodyDivisionAddressDivisionAddress {
-	s.DivisionName = &v
+func (s *QueryAddressResponseBodyDivisionAddressDivisionAddress) SetDivisionLevel(v int32) *QueryAddressResponseBodyDivisionAddressDivisionAddress {
+	s.DivisionLevel = &v
 	return s
 }
 
-func (s *QueryAddressResponseBodyDivisionAddressDivisionAddress) SetDivisionLevel(v int32) *QueryAddressResponseBodyDivisionAddressDivisionAddress {
-	s.DivisionLevel = &v
+func (s *QueryAddressResponseBodyDivisionAddressDivisionAddress) SetDivisionName(v string) *QueryAddressResponseBodyDivisionAddressDivisionAddress {
+	s.DivisionName = &v
 	return s
 }
 
@@ -5806,10 +6092,10 @@ func (s *QueryAddressDetailRequest) SetAddressInfo(v string) *QueryAddressDetail
 }
 
 type QueryAddressDetailResponseBody struct {
+	Code            *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message         *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId       *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DeliveryAddress *QueryAddressDetailResponseBodyDeliveryAddress `json:"DeliveryAddress,omitempty" xml:"DeliveryAddress,omitempty" type:"Struct"`
-	Code            *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s QueryAddressDetailResponseBody) String() string {
@@ -5818,6 +6104,11 @@ func (s QueryAddressDetailResponseBody) String() string {
 
 func (s QueryAddressDetailResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *QueryAddressDetailResponseBody) SetCode(v string) *QueryAddressDetailResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *QueryAddressDetailResponseBody) SetMessage(v string) *QueryAddressDetailResponseBody {
@@ -5835,11 +6126,6 @@ func (s *QueryAddressDetailResponseBody) SetDeliveryAddress(v *QueryAddressDetai
 	return s
 }
 
-func (s *QueryAddressDetailResponseBody) SetCode(v string) *QueryAddressDetailResponseBody {
-	s.Code = &v
-	return s
-}
-
 type QueryAddressDetailResponseBodyDeliveryAddress struct {
 	Status           *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 	PostCode         *string `json:"PostCode,omitempty" xml:"PostCode,omitempty"`
@@ -5850,8 +6136,8 @@ type QueryAddressDetailResponseBodyDeliveryAddress struct {
 	DivisionCode     *string `json:"DivisionCode,omitempty" xml:"DivisionCode,omitempty"`
 	Mobile           *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
 	Country          *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	TownDivisionCode *string `json:"TownDivisionCode,omitempty" xml:"TownDivisionCode,omitempty"`
 	Area             *string `json:"Area,omitempty" xml:"Area,omitempty"`
+	TownDivisionCode *string `json:"TownDivisionCode,omitempty" xml:"TownDivisionCode,omitempty"`
 	Town             *string `json:"Town,omitempty" xml:"Town,omitempty"`
 	Province         *string `json:"Province,omitempty" xml:"Province,omitempty"`
 }
@@ -5909,13 +6195,13 @@ func (s *QueryAddressDetailResponseBodyDeliveryAddress) SetCountry(v string) *Qu
 	return s
 }
 
-func (s *QueryAddressDetailResponseBodyDeliveryAddress) SetTownDivisionCode(v string) *QueryAddressDetailResponseBodyDeliveryAddress {
-	s.TownDivisionCode = &v
+func (s *QueryAddressDetailResponseBodyDeliveryAddress) SetArea(v string) *QueryAddressDetailResponseBodyDeliveryAddress {
+	s.Area = &v
 	return s
 }
 
-func (s *QueryAddressDetailResponseBodyDeliveryAddress) SetArea(v string) *QueryAddressDetailResponseBodyDeliveryAddress {
-	s.Area = &v
+func (s *QueryAddressDetailResponseBodyDeliveryAddress) SetTownDivisionCode(v string) *QueryAddressDetailResponseBodyDeliveryAddress {
+	s.TownDivisionCode = &v
 	return s
 }
 
@@ -5982,10 +6268,10 @@ func (s *QueryAddressListRequest) SetUseAnonymousTbAccount(v bool) *QueryAddress
 }
 
 type QueryAddressListResponseBody struct {
+	Code        *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message     *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId   *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	AddressList []*QueryAddressListResponseBodyAddressList `json:"AddressList,omitempty" xml:"AddressList,omitempty" type:"Repeated"`
-	Code        *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s QueryAddressListResponseBody) String() string {
@@ -5994,6 +6280,11 @@ func (s QueryAddressListResponseBody) String() string {
 
 func (s QueryAddressListResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *QueryAddressListResponseBody) SetCode(v string) *QueryAddressListResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *QueryAddressListResponseBody) SetMessage(v string) *QueryAddressListResponseBody {
@@ -6011,11 +6302,6 @@ func (s *QueryAddressListResponseBody) SetAddressList(v []*QueryAddressListRespo
 	return s
 }
 
-func (s *QueryAddressListResponseBody) SetCode(v string) *QueryAddressListResponseBody {
-	s.Code = &v
-	return s
-}
-
 type QueryAddressListResponseBodyAddressList struct {
 	Status           *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 	PostCode         *string `json:"PostCode,omitempty" xml:"PostCode,omitempty"`
@@ -6026,8 +6312,8 @@ type QueryAddressListResponseBodyAddressList struct {
 	DivisionCode     *string `json:"DivisionCode,omitempty" xml:"DivisionCode,omitempty"`
 	Mobile           *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
 	Country          *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	TownDivisionCode *string `json:"TownDivisionCode,omitempty" xml:"TownDivisionCode,omitempty"`
 	Area             *string `json:"Area,omitempty" xml:"Area,omitempty"`
+	TownDivisionCode *string `json:"TownDivisionCode,omitempty" xml:"TownDivisionCode,omitempty"`
 	Town             *string `json:"Town,omitempty" xml:"Town,omitempty"`
 	Province         *string `json:"Province,omitempty" xml:"Province,omitempty"`
 }
@@ -6085,13 +6371,13 @@ func (s *QueryAddressListResponseBodyAddressList) SetCountry(v string) *QueryAdd
 	return s
 }
 
-func (s *QueryAddressListResponseBodyAddressList) SetTownDivisionCode(v string) *QueryAddressListResponseBodyAddressList {
-	s.TownDivisionCode = &v
+func (s *QueryAddressListResponseBodyAddressList) SetArea(v string) *QueryAddressListResponseBodyAddressList {
+	s.Area = &v
 	return s
 }
 
-func (s *QueryAddressListResponseBodyAddressList) SetArea(v string) *QueryAddressListResponseBodyAddressList {
-	s.Area = &v
+func (s *QueryAddressListResponseBodyAddressList) SetTownDivisionCode(v string) *QueryAddressListResponseBodyAddressList {
+	s.TownDivisionCode = &v
 	return s
 }
 
@@ -6128,6 +6414,271 @@ func (s *QueryAddressListResponse) SetBody(v *QueryAddressListResponseBody) *Que
 	return s
 }
 
+type QueryAdvertisementSettleInfoRequest struct {
+	MediaSettleDetailId *string `json:"MediaSettleDetailId,omitempty" xml:"MediaSettleDetailId,omitempty"`
+	ChannelId           *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	SettleNo            *string `json:"SettleNo,omitempty" xml:"SettleNo,omitempty"`
+	StartTime           *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	EndTime             *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	PageSize            *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber          *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	ExtInfo             *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
+}
+
+func (s QueryAdvertisementSettleInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAdvertisementSettleInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAdvertisementSettleInfoRequest) SetMediaSettleDetailId(v string) *QueryAdvertisementSettleInfoRequest {
+	s.MediaSettleDetailId = &v
+	return s
+}
+
+func (s *QueryAdvertisementSettleInfoRequest) SetChannelId(v string) *QueryAdvertisementSettleInfoRequest {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *QueryAdvertisementSettleInfoRequest) SetSettleNo(v string) *QueryAdvertisementSettleInfoRequest {
+	s.SettleNo = &v
+	return s
+}
+
+func (s *QueryAdvertisementSettleInfoRequest) SetStartTime(v string) *QueryAdvertisementSettleInfoRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *QueryAdvertisementSettleInfoRequest) SetEndTime(v string) *QueryAdvertisementSettleInfoRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *QueryAdvertisementSettleInfoRequest) SetPageSize(v int32) *QueryAdvertisementSettleInfoRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryAdvertisementSettleInfoRequest) SetPageNumber(v int32) *QueryAdvertisementSettleInfoRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *QueryAdvertisementSettleInfoRequest) SetExtInfo(v string) *QueryAdvertisementSettleInfoRequest {
+	s.ExtInfo = &v
+	return s
+}
+
+type QueryAdvertisementSettleInfoResponseBody struct {
+	RequestId  *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success    *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	SubMessage *string                                        `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Code       *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message    *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	SubCode    *string                                        `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	TotalCount *int64                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	LogsId     *string                                        `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
+	Model      *QueryAdvertisementSettleInfoResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+}
+
+func (s QueryAdvertisementSettleInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAdvertisementSettleInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAdvertisementSettleInfoResponseBody) SetRequestId(v string) *QueryAdvertisementSettleInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryAdvertisementSettleInfoResponseBody) SetSuccess(v bool) *QueryAdvertisementSettleInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *QueryAdvertisementSettleInfoResponseBody) SetSubMessage(v string) *QueryAdvertisementSettleInfoResponseBody {
+	s.SubMessage = &v
+	return s
+}
+
+func (s *QueryAdvertisementSettleInfoResponseBody) SetCode(v string) *QueryAdvertisementSettleInfoResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryAdvertisementSettleInfoResponseBody) SetMessage(v string) *QueryAdvertisementSettleInfoResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryAdvertisementSettleInfoResponseBody) SetSubCode(v string) *QueryAdvertisementSettleInfoResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *QueryAdvertisementSettleInfoResponseBody) SetTotalCount(v int64) *QueryAdvertisementSettleInfoResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *QueryAdvertisementSettleInfoResponseBody) SetLogsId(v string) *QueryAdvertisementSettleInfoResponseBody {
+	s.LogsId = &v
+	return s
+}
+
+func (s *QueryAdvertisementSettleInfoResponseBody) SetModel(v *QueryAdvertisementSettleInfoResponseBodyModel) *QueryAdvertisementSettleInfoResponseBody {
+	s.Model = v
+	return s
+}
+
+type QueryAdvertisementSettleInfoResponseBodyModel struct {
+	PageSize                *int32                                                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber              *int32                                                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalCount              *int32                                                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	AdvertiseSettleInfoList []*QueryAdvertisementSettleInfoResponseBodyModelAdvertiseSettleInfoList `json:"AdvertiseSettleInfoList,omitempty" xml:"AdvertiseSettleInfoList,omitempty" type:"Repeated"`
+}
+
+func (s QueryAdvertisementSettleInfoResponseBodyModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAdvertisementSettleInfoResponseBodyModel) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAdvertisementSettleInfoResponseBodyModel) SetPageSize(v int32) *QueryAdvertisementSettleInfoResponseBodyModel {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryAdvertisementSettleInfoResponseBodyModel) SetPageNumber(v int32) *QueryAdvertisementSettleInfoResponseBodyModel {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *QueryAdvertisementSettleInfoResponseBodyModel) SetTotalCount(v int32) *QueryAdvertisementSettleInfoResponseBodyModel {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *QueryAdvertisementSettleInfoResponseBodyModel) SetAdvertiseSettleInfoList(v []*QueryAdvertisementSettleInfoResponseBodyModelAdvertiseSettleInfoList) *QueryAdvertisementSettleInfoResponseBodyModel {
+	s.AdvertiseSettleInfoList = v
+	return s
+}
+
+type QueryAdvertisementSettleInfoResponseBodyModelAdvertiseSettleInfoList struct {
+	AdvertiseSettleDetailId *string `json:"AdvertiseSettleDetailId,omitempty" xml:"AdvertiseSettleDetailId,omitempty"`
+	CreateDate              *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	MediaSettleDetailId     *string `json:"MediaSettleDetailId,omitempty" xml:"MediaSettleDetailId,omitempty"`
+	ExtInfo                 *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
+	EndTime                 *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime               *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	SettleNo                *string `json:"SettleNo,omitempty" xml:"SettleNo,omitempty"`
+	AdvertiseSettleAmount   *string `json:"AdvertiseSettleAmount,omitempty" xml:"AdvertiseSettleAmount,omitempty"`
+	SettleStatus            *string `json:"SettleStatus,omitempty" xml:"SettleStatus,omitempty"`
+	AdvertiseName           *string `json:"AdvertiseName,omitempty" xml:"AdvertiseName,omitempty"`
+	ChannelId               *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	ModifiedDate            *string `json:"ModifiedDate,omitempty" xml:"ModifiedDate,omitempty"`
+}
+
+func (s QueryAdvertisementSettleInfoResponseBodyModelAdvertiseSettleInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAdvertisementSettleInfoResponseBodyModelAdvertiseSettleInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAdvertisementSettleInfoResponseBodyModelAdvertiseSettleInfoList) SetAdvertiseSettleDetailId(v string) *QueryAdvertisementSettleInfoResponseBodyModelAdvertiseSettleInfoList {
+	s.AdvertiseSettleDetailId = &v
+	return s
+}
+
+func (s *QueryAdvertisementSettleInfoResponseBodyModelAdvertiseSettleInfoList) SetCreateDate(v string) *QueryAdvertisementSettleInfoResponseBodyModelAdvertiseSettleInfoList {
+	s.CreateDate = &v
+	return s
+}
+
+func (s *QueryAdvertisementSettleInfoResponseBodyModelAdvertiseSettleInfoList) SetMediaSettleDetailId(v string) *QueryAdvertisementSettleInfoResponseBodyModelAdvertiseSettleInfoList {
+	s.MediaSettleDetailId = &v
+	return s
+}
+
+func (s *QueryAdvertisementSettleInfoResponseBodyModelAdvertiseSettleInfoList) SetExtInfo(v string) *QueryAdvertisementSettleInfoResponseBodyModelAdvertiseSettleInfoList {
+	s.ExtInfo = &v
+	return s
+}
+
+func (s *QueryAdvertisementSettleInfoResponseBodyModelAdvertiseSettleInfoList) SetEndTime(v string) *QueryAdvertisementSettleInfoResponseBodyModelAdvertiseSettleInfoList {
+	s.EndTime = &v
+	return s
+}
+
+func (s *QueryAdvertisementSettleInfoResponseBodyModelAdvertiseSettleInfoList) SetStartTime(v string) *QueryAdvertisementSettleInfoResponseBodyModelAdvertiseSettleInfoList {
+	s.StartTime = &v
+	return s
+}
+
+func (s *QueryAdvertisementSettleInfoResponseBodyModelAdvertiseSettleInfoList) SetSettleNo(v string) *QueryAdvertisementSettleInfoResponseBodyModelAdvertiseSettleInfoList {
+	s.SettleNo = &v
+	return s
+}
+
+func (s *QueryAdvertisementSettleInfoResponseBodyModelAdvertiseSettleInfoList) SetAdvertiseSettleAmount(v string) *QueryAdvertisementSettleInfoResponseBodyModelAdvertiseSettleInfoList {
+	s.AdvertiseSettleAmount = &v
+	return s
+}
+
+func (s *QueryAdvertisementSettleInfoResponseBodyModelAdvertiseSettleInfoList) SetSettleStatus(v string) *QueryAdvertisementSettleInfoResponseBodyModelAdvertiseSettleInfoList {
+	s.SettleStatus = &v
+	return s
+}
+
+func (s *QueryAdvertisementSettleInfoResponseBodyModelAdvertiseSettleInfoList) SetAdvertiseName(v string) *QueryAdvertisementSettleInfoResponseBodyModelAdvertiseSettleInfoList {
+	s.AdvertiseName = &v
+	return s
+}
+
+func (s *QueryAdvertisementSettleInfoResponseBodyModelAdvertiseSettleInfoList) SetChannelId(v string) *QueryAdvertisementSettleInfoResponseBodyModelAdvertiseSettleInfoList {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *QueryAdvertisementSettleInfoResponseBodyModelAdvertiseSettleInfoList) SetModifiedDate(v string) *QueryAdvertisementSettleInfoResponseBodyModelAdvertiseSettleInfoList {
+	s.ModifiedDate = &v
+	return s
+}
+
+type QueryAdvertisementSettleInfoResponse struct {
+	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QueryAdvertisementSettleInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryAdvertisementSettleInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAdvertisementSettleInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAdvertisementSettleInfoResponse) SetHeaders(v map[string]*string) *QueryAdvertisementSettleInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryAdvertisementSettleInfoResponse) SetBody(v *QueryAdvertisementSettleInfoResponseBody) *QueryAdvertisementSettleInfoResponse {
+	s.Body = v
+	return s
+}
+
 type QueryAgreementRequest struct {
 	ExternalAgreementNo *string `json:"ExternalAgreementNo,omitempty" xml:"ExternalAgreementNo,omitempty"`
 	MerchantId          *string `json:"MerchantId,omitempty" xml:"MerchantId,omitempty"`
@@ -6158,9 +6709,9 @@ func (s *QueryAgreementRequest) SetAgreementNo(v string) *QueryAgreementRequest 
 }
 
 type QueryAgreementResponseBody struct {
+	Code                   *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message                *string                                           `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId              *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code                   *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
 	QueryAgreementResponse *QueryAgreementResponseBodyQueryAgreementResponse `json:"QueryAgreementResponse,omitempty" xml:"QueryAgreementResponse,omitempty" type:"Struct"`
 }
 
@@ -6172,6 +6723,11 @@ func (s QueryAgreementResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *QueryAgreementResponseBody) SetCode(v string) *QueryAgreementResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *QueryAgreementResponseBody) SetMessage(v string) *QueryAgreementResponseBody {
 	s.Message = &v
 	return s
@@ -6179,11 +6735,6 @@ func (s *QueryAgreementResponseBody) SetMessage(v string) *QueryAgreementRespons
 
 func (s *QueryAgreementResponseBody) SetRequestId(v string) *QueryAgreementResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *QueryAgreementResponseBody) SetCode(v string) *QueryAgreementResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -6298,14 +6849,14 @@ func (s *QueryAllCinemasRequest) SetExtJson(v string) *QueryAllCinemasRequest {
 }
 
 type QueryAllCinemasResponseBody struct {
-	TotalCount *int64                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId  *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Message    *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	LogsId     *string                             `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
-	SubMessage *string                             `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
-	SubCode    *string                             `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	Code       *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success    *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	SubMessage *string                             `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Code       *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message    *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	SubCode    *string                             `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	TotalCount *int64                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	LogsId     *string                             `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
 	Cinemas    *QueryAllCinemasResponseBodyCinemas `json:"Cinemas,omitempty" xml:"Cinemas,omitempty" type:"Struct"`
 }
 
@@ -6317,23 +6868,13 @@ func (s QueryAllCinemasResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *QueryAllCinemasResponseBody) SetTotalCount(v int64) *QueryAllCinemasResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
 func (s *QueryAllCinemasResponseBody) SetRequestId(v string) *QueryAllCinemasResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *QueryAllCinemasResponseBody) SetMessage(v string) *QueryAllCinemasResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *QueryAllCinemasResponseBody) SetLogsId(v string) *QueryAllCinemasResponseBody {
-	s.LogsId = &v
+func (s *QueryAllCinemasResponseBody) SetSuccess(v bool) *QueryAllCinemasResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -6342,18 +6883,28 @@ func (s *QueryAllCinemasResponseBody) SetSubMessage(v string) *QueryAllCinemasRe
 	return s
 }
 
-func (s *QueryAllCinemasResponseBody) SetSubCode(v string) *QueryAllCinemasResponseBody {
-	s.SubCode = &v
-	return s
-}
-
 func (s *QueryAllCinemasResponseBody) SetCode(v string) *QueryAllCinemasResponseBody {
 	s.Code = &v
 	return s
 }
 
-func (s *QueryAllCinemasResponseBody) SetSuccess(v bool) *QueryAllCinemasResponseBody {
-	s.Success = &v
+func (s *QueryAllCinemasResponseBody) SetMessage(v string) *QueryAllCinemasResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryAllCinemasResponseBody) SetSubCode(v string) *QueryAllCinemasResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *QueryAllCinemasResponseBody) SetTotalCount(v int64) *QueryAllCinemasResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *QueryAllCinemasResponseBody) SetLogsId(v string) *QueryAllCinemasResponseBody {
+	s.LogsId = &v
 	return s
 }
 
@@ -6521,13 +7072,13 @@ func (s *QueryAllCitiesShrinkRequest) SetExtJsonShrink(v string) *QueryAllCities
 
 type QueryAllCitiesResponseBody struct {
 	RequestId  *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Message    *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	LogsId     *string                           `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
-	SubMessage *string                           `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
-	Cities     *QueryAllCitiesResponseBodyCities `json:"Cities,omitempty" xml:"Cities,omitempty" type:"Struct"`
-	SubCode    *string                           `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	Code       *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success    *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	SubMessage *string                           `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Code       *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message    *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	SubCode    *string                           `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	LogsId     *string                           `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
+	Cities     *QueryAllCitiesResponseBodyCities `json:"Cities,omitempty" xml:"Cities,omitempty" type:"Struct"`
 }
 
 func (s QueryAllCitiesResponseBody) String() string {
@@ -6543,13 +7094,8 @@ func (s *QueryAllCitiesResponseBody) SetRequestId(v string) *QueryAllCitiesRespo
 	return s
 }
 
-func (s *QueryAllCitiesResponseBody) SetMessage(v string) *QueryAllCitiesResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *QueryAllCitiesResponseBody) SetLogsId(v string) *QueryAllCitiesResponseBody {
-	s.LogsId = &v
+func (s *QueryAllCitiesResponseBody) SetSuccess(v bool) *QueryAllCitiesResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -6558,8 +7104,13 @@ func (s *QueryAllCitiesResponseBody) SetSubMessage(v string) *QueryAllCitiesResp
 	return s
 }
 
-func (s *QueryAllCitiesResponseBody) SetCities(v *QueryAllCitiesResponseBodyCities) *QueryAllCitiesResponseBody {
-	s.Cities = v
+func (s *QueryAllCitiesResponseBody) SetCode(v string) *QueryAllCitiesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryAllCitiesResponseBody) SetMessage(v string) *QueryAllCitiesResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -6568,13 +7119,13 @@ func (s *QueryAllCitiesResponseBody) SetSubCode(v string) *QueryAllCitiesRespons
 	return s
 }
 
-func (s *QueryAllCitiesResponseBody) SetCode(v string) *QueryAllCitiesResponseBody {
-	s.Code = &v
+func (s *QueryAllCitiesResponseBody) SetLogsId(v string) *QueryAllCitiesResponseBody {
+	s.LogsId = &v
 	return s
 }
 
-func (s *QueryAllCitiesResponseBody) SetSuccess(v bool) *QueryAllCitiesResponseBody {
-	s.Success = &v
+func (s *QueryAllCitiesResponseBody) SetCities(v *QueryAllCitiesResponseBodyCities) *QueryAllCitiesResponseBody {
+	s.Cities = v
 	return s
 }
 
@@ -6684,10 +7235,10 @@ func (s *QueryBatchRegistAnonymousTbAccountResultRequest) SetBatchId(v string) *
 
 type QueryBatchRegistAnonymousTbAccountResultResponseBody struct {
 	Status    *string                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	Code      *string                                                      `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                                                      `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	BatchId   *string                                                      `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
-	Code      *string                                                      `json:"Code,omitempty" xml:"Code,omitempty"`
 	FailIds   *QueryBatchRegistAnonymousTbAccountResultResponseBodyFailIds `json:"FailIds,omitempty" xml:"FailIds,omitempty" type:"Struct"`
 }
 
@@ -6704,6 +7255,11 @@ func (s *QueryBatchRegistAnonymousTbAccountResultResponseBody) SetStatus(v strin
 	return s
 }
 
+func (s *QueryBatchRegistAnonymousTbAccountResultResponseBody) SetCode(v string) *QueryBatchRegistAnonymousTbAccountResultResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *QueryBatchRegistAnonymousTbAccountResultResponseBody) SetMessage(v string) *QueryBatchRegistAnonymousTbAccountResultResponseBody {
 	s.Message = &v
 	return s
@@ -6716,11 +7272,6 @@ func (s *QueryBatchRegistAnonymousTbAccountResultResponseBody) SetRequestId(v st
 
 func (s *QueryBatchRegistAnonymousTbAccountResultResponseBody) SetBatchId(v string) *QueryBatchRegistAnonymousTbAccountResultResponseBody {
 	s.BatchId = &v
-	return s
-}
-
-func (s *QueryBatchRegistAnonymousTbAccountResultResponseBody) SetCode(v string) *QueryBatchRegistAnonymousTbAccountResultResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -6828,9 +7379,9 @@ func (s *QueryBestSession4ItemsShrinkRequest) SetItemIdsShrink(v string) *QueryB
 }
 
 type QueryBestSession4ItemsResponseBody struct {
+	Code                           *string                                                           `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message                        *string                                                           `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId                      *string                                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code                           *string                                                           `json:"Code,omitempty" xml:"Code,omitempty"`
 	LmItemActivitySessionModelList *QueryBestSession4ItemsResponseBodyLmItemActivitySessionModelList `json:"LmItemActivitySessionModelList,omitempty" xml:"LmItemActivitySessionModelList,omitempty" type:"Struct"`
 }
 
@@ -6842,6 +7393,11 @@ func (s QueryBestSession4ItemsResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *QueryBestSession4ItemsResponseBody) SetCode(v string) *QueryBestSession4ItemsResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *QueryBestSession4ItemsResponseBody) SetMessage(v string) *QueryBestSession4ItemsResponseBody {
 	s.Message = &v
 	return s
@@ -6849,11 +7405,6 @@ func (s *QueryBestSession4ItemsResponseBody) SetMessage(v string) *QueryBestSess
 
 func (s *QueryBestSession4ItemsResponseBody) SetRequestId(v string) *QueryBestSession4ItemsResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *QueryBestSession4ItemsResponseBody) SetCode(v string) *QueryBestSession4ItemsResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -6880,9 +7431,9 @@ func (s *QueryBestSession4ItemsResponseBodyLmItemActivitySessionModelList) SetLm
 }
 
 type QueryBestSession4ItemsResponseBodyLmItemActivitySessionModelListLmItemActivitySessionModel struct {
-	LmActivitySessionModel *QueryBestSession4ItemsResponseBodyLmItemActivitySessionModelListLmItemActivitySessionModelLmActivitySessionModel `json:"LmActivitySessionModel,omitempty" xml:"LmActivitySessionModel,omitempty" type:"Struct"`
 	LmItemId               *string                                                                                                           `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
 	ItemId                 *int64                                                                                                            `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	LmActivitySessionModel *QueryBestSession4ItemsResponseBodyLmItemActivitySessionModelListLmItemActivitySessionModelLmActivitySessionModel `json:"LmActivitySessionModel,omitempty" xml:"LmActivitySessionModel,omitempty" type:"Struct"`
 }
 
 func (s QueryBestSession4ItemsResponseBodyLmItemActivitySessionModelListLmItemActivitySessionModel) String() string {
@@ -6893,11 +7444,6 @@ func (s QueryBestSession4ItemsResponseBodyLmItemActivitySessionModelListLmItemAc
 	return s.String()
 }
 
-func (s *QueryBestSession4ItemsResponseBodyLmItemActivitySessionModelListLmItemActivitySessionModel) SetLmActivitySessionModel(v *QueryBestSession4ItemsResponseBodyLmItemActivitySessionModelListLmItemActivitySessionModelLmActivitySessionModel) *QueryBestSession4ItemsResponseBodyLmItemActivitySessionModelListLmItemActivitySessionModel {
-	s.LmActivitySessionModel = v
-	return s
-}
-
 func (s *QueryBestSession4ItemsResponseBodyLmItemActivitySessionModelListLmItemActivitySessionModel) SetLmItemId(v string) *QueryBestSession4ItemsResponseBodyLmItemActivitySessionModelListLmItemActivitySessionModel {
 	s.LmItemId = &v
 	return s
@@ -6905,6 +7451,11 @@ func (s *QueryBestSession4ItemsResponseBodyLmItemActivitySessionModelListLmItemA
 
 func (s *QueryBestSession4ItemsResponseBodyLmItemActivitySessionModelListLmItemActivitySessionModel) SetItemId(v int64) *QueryBestSession4ItemsResponseBodyLmItemActivitySessionModelListLmItemActivitySessionModel {
 	s.ItemId = &v
+	return s
+}
+
+func (s *QueryBestSession4ItemsResponseBodyLmItemActivitySessionModelListLmItemActivitySessionModel) SetLmActivitySessionModel(v *QueryBestSession4ItemsResponseBodyLmItemActivitySessionModelListLmItemActivitySessionModelLmActivitySessionModel) *QueryBestSession4ItemsResponseBodyLmItemActivitySessionModelListLmItemActivitySessionModel {
+	s.LmActivitySessionModel = v
 	return s
 }
 
@@ -7003,14 +7554,14 @@ func (s *QueryBestSession4ItemsResponse) SetBody(v *QueryBestSession4ItemsRespon
 }
 
 type QueryBizItemListRequest struct {
-	BizId      *string                `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	SubBizId   *string                `json:"SubBizId,omitempty" xml:"SubBizId,omitempty"`
-	PageSize   *int32                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber *int32                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	UserId     *string                `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	LmItemIds  map[string]interface{} `json:"LmItemIds,omitempty" xml:"LmItemIds,omitempty"`
-	ItemIds    map[string]interface{} `json:"ItemIds,omitempty" xml:"ItemIds,omitempty"`
-	CategoryId *int64                 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	BizId      *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	SubBizId   *string `json:"SubBizId,omitempty" xml:"SubBizId,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	LmItemIds  *string `json:"LmItemIds,omitempty" xml:"LmItemIds,omitempty"`
+	ItemIds    *string `json:"ItemIds,omitempty" xml:"ItemIds,omitempty"`
+	CategoryId *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 }
 
 func (s QueryBizItemListRequest) String() string {
@@ -7046,13 +7597,13 @@ func (s *QueryBizItemListRequest) SetUserId(v string) *QueryBizItemListRequest {
 	return s
 }
 
-func (s *QueryBizItemListRequest) SetLmItemIds(v map[string]interface{}) *QueryBizItemListRequest {
-	s.LmItemIds = v
+func (s *QueryBizItemListRequest) SetLmItemIds(v string) *QueryBizItemListRequest {
+	s.LmItemIds = &v
 	return s
 }
 
-func (s *QueryBizItemListRequest) SetItemIds(v map[string]interface{}) *QueryBizItemListRequest {
-	s.ItemIds = v
+func (s *QueryBizItemListRequest) SetItemIds(v string) *QueryBizItemListRequest {
+	s.ItemIds = &v
 	return s
 }
 
@@ -7061,73 +7612,14 @@ func (s *QueryBizItemListRequest) SetCategoryId(v int64) *QueryBizItemListReques
 	return s
 }
 
-type QueryBizItemListShrinkRequest struct {
-	BizId           *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	SubBizId        *string `json:"SubBizId,omitempty" xml:"SubBizId,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	UserId          *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	LmItemIdsShrink *string `json:"LmItemIds,omitempty" xml:"LmItemIds,omitempty"`
-	ItemIdsShrink   *string `json:"ItemIds,omitempty" xml:"ItemIds,omitempty"`
-	CategoryId      *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-}
-
-func (s QueryBizItemListShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryBizItemListShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *QueryBizItemListShrinkRequest) SetBizId(v string) *QueryBizItemListShrinkRequest {
-	s.BizId = &v
-	return s
-}
-
-func (s *QueryBizItemListShrinkRequest) SetSubBizId(v string) *QueryBizItemListShrinkRequest {
-	s.SubBizId = &v
-	return s
-}
-
-func (s *QueryBizItemListShrinkRequest) SetPageSize(v int32) *QueryBizItemListShrinkRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *QueryBizItemListShrinkRequest) SetPageNumber(v int32) *QueryBizItemListShrinkRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *QueryBizItemListShrinkRequest) SetUserId(v string) *QueryBizItemListShrinkRequest {
-	s.UserId = &v
-	return s
-}
-
-func (s *QueryBizItemListShrinkRequest) SetLmItemIdsShrink(v string) *QueryBizItemListShrinkRequest {
-	s.LmItemIdsShrink = &v
-	return s
-}
-
-func (s *QueryBizItemListShrinkRequest) SetItemIdsShrink(v string) *QueryBizItemListShrinkRequest {
-	s.ItemIdsShrink = &v
-	return s
-}
-
-func (s *QueryBizItemListShrinkRequest) SetCategoryId(v int64) *QueryBizItemListShrinkRequest {
-	s.CategoryId = &v
-	return s
-}
-
 type QueryBizItemListResponseBody struct {
-	TotalCount *int32                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Message    *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageSize   *int32                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber *int32                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	ItemList   *QueryBizItemListResponseBodyItemList `json:"ItemList,omitempty" xml:"ItemList,omitempty" type:"Struct"`
 	Code       *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message    *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	TotalCount *int32                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber *int32                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ItemList   *QueryBizItemListResponseBodyItemList `json:"ItemList,omitempty" xml:"ItemList,omitempty" type:"Struct"`
 }
 
 func (s QueryBizItemListResponseBody) String() string {
@@ -7138,13 +7630,8 @@ func (s QueryBizItemListResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *QueryBizItemListResponseBody) SetTotalCount(v int32) *QueryBizItemListResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *QueryBizItemListResponseBody) SetRequestId(v string) *QueryBizItemListResponseBody {
-	s.RequestId = &v
+func (s *QueryBizItemListResponseBody) SetCode(v string) *QueryBizItemListResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -7153,8 +7640,8 @@ func (s *QueryBizItemListResponseBody) SetMessage(v string) *QueryBizItemListRes
 	return s
 }
 
-func (s *QueryBizItemListResponseBody) SetPageSize(v int32) *QueryBizItemListResponseBody {
-	s.PageSize = &v
+func (s *QueryBizItemListResponseBody) SetTotalCount(v int32) *QueryBizItemListResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -7163,13 +7650,18 @@ func (s *QueryBizItemListResponseBody) SetPageNumber(v int32) *QueryBizItemListR
 	return s
 }
 
-func (s *QueryBizItemListResponseBody) SetItemList(v *QueryBizItemListResponseBodyItemList) *QueryBizItemListResponseBody {
-	s.ItemList = v
+func (s *QueryBizItemListResponseBody) SetPageSize(v int32) *QueryBizItemListResponseBody {
+	s.PageSize = &v
 	return s
 }
 
-func (s *QueryBizItemListResponseBody) SetCode(v string) *QueryBizItemListResponseBody {
-	s.Code = &v
+func (s *QueryBizItemListResponseBody) SetRequestId(v string) *QueryBizItemListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryBizItemListResponseBody) SetItemList(v *QueryBizItemListResponseBodyItemList) *QueryBizItemListResponseBody {
+	s.ItemList = v
 	return s
 }
 
@@ -7191,18 +7683,18 @@ func (s *QueryBizItemListResponseBodyItemList) SetItem(v []*QueryBizItemListResp
 }
 
 type QueryBizItemListResponseBodyItemListItem struct {
-	ItemTitle          *string                                          `json:"ItemTitle,omitempty" xml:"ItemTitle,omitempty"`
-	LmItemId           *string                                          `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
-	SellerId           *int64                                           `json:"SellerId,omitempty" xml:"SellerId,omitempty"`
-	SkuList            *QueryBizItemListResponseBodyItemListItemSkuList `json:"SkuList,omitempty" xml:"SkuList,omitempty" type:"Struct"`
-	CanSell            *bool                                            `json:"CanSell,omitempty" xml:"CanSell,omitempty"`
 	ItemId             *int64                                           `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	ItemTitle          *string                                          `json:"ItemTitle,omitempty" xml:"ItemTitle,omitempty"`
+	CustomizedItemName *string                                          `json:"CustomizedItemName,omitempty" xml:"CustomizedItemName,omitempty"`
+	MainPicUrl         *string                                          `json:"MainPicUrl,omitempty" xml:"MainPicUrl,omitempty"`
+	ReservePrice       *int64                                           `json:"ReservePrice,omitempty" xml:"ReservePrice,omitempty"`
+	CategoryId         *int64                                           `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	CanSell            *bool                                            `json:"CanSell,omitempty" xml:"CanSell,omitempty"`
 	TaobaoShopName     *string                                          `json:"TaobaoShopName,omitempty" xml:"TaobaoShopName,omitempty"`
 	ExtJson            *string                                          `json:"ExtJson,omitempty" xml:"ExtJson,omitempty"`
-	MainPicUrl         *string                                          `json:"MainPicUrl,omitempty" xml:"MainPicUrl,omitempty"`
-	CategoryId         *int64                                           `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	CustomizedItemName *string                                          `json:"CustomizedItemName,omitempty" xml:"CustomizedItemName,omitempty"`
-	ReservePrice       *int64                                           `json:"ReservePrice,omitempty" xml:"ReservePrice,omitempty"`
+	SellerId           *int64                                           `json:"SellerId,omitempty" xml:"SellerId,omitempty"`
+	LmItemId           *string                                          `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
+	SkuList            *QueryBizItemListResponseBodyItemListItemSkuList `json:"SkuList,omitempty" xml:"SkuList,omitempty" type:"Struct"`
 }
 
 func (s QueryBizItemListResponseBodyItemListItem) String() string {
@@ -7213,33 +7705,38 @@ func (s QueryBizItemListResponseBodyItemListItem) GoString() string {
 	return s.String()
 }
 
+func (s *QueryBizItemListResponseBodyItemListItem) SetItemId(v int64) *QueryBizItemListResponseBodyItemListItem {
+	s.ItemId = &v
+	return s
+}
+
 func (s *QueryBizItemListResponseBodyItemListItem) SetItemTitle(v string) *QueryBizItemListResponseBodyItemListItem {
 	s.ItemTitle = &v
 	return s
 }
 
-func (s *QueryBizItemListResponseBodyItemListItem) SetLmItemId(v string) *QueryBizItemListResponseBodyItemListItem {
-	s.LmItemId = &v
+func (s *QueryBizItemListResponseBodyItemListItem) SetCustomizedItemName(v string) *QueryBizItemListResponseBodyItemListItem {
+	s.CustomizedItemName = &v
 	return s
 }
 
-func (s *QueryBizItemListResponseBodyItemListItem) SetSellerId(v int64) *QueryBizItemListResponseBodyItemListItem {
-	s.SellerId = &v
+func (s *QueryBizItemListResponseBodyItemListItem) SetMainPicUrl(v string) *QueryBizItemListResponseBodyItemListItem {
+	s.MainPicUrl = &v
 	return s
 }
 
-func (s *QueryBizItemListResponseBodyItemListItem) SetSkuList(v *QueryBizItemListResponseBodyItemListItemSkuList) *QueryBizItemListResponseBodyItemListItem {
-	s.SkuList = v
+func (s *QueryBizItemListResponseBodyItemListItem) SetReservePrice(v int64) *QueryBizItemListResponseBodyItemListItem {
+	s.ReservePrice = &v
+	return s
+}
+
+func (s *QueryBizItemListResponseBodyItemListItem) SetCategoryId(v int64) *QueryBizItemListResponseBodyItemListItem {
+	s.CategoryId = &v
 	return s
 }
 
 func (s *QueryBizItemListResponseBodyItemListItem) SetCanSell(v bool) *QueryBizItemListResponseBodyItemListItem {
 	s.CanSell = &v
-	return s
-}
-
-func (s *QueryBizItemListResponseBodyItemListItem) SetItemId(v int64) *QueryBizItemListResponseBodyItemListItem {
-	s.ItemId = &v
 	return s
 }
 
@@ -7253,23 +7750,18 @@ func (s *QueryBizItemListResponseBodyItemListItem) SetExtJson(v string) *QueryBi
 	return s
 }
 
-func (s *QueryBizItemListResponseBodyItemListItem) SetMainPicUrl(v string) *QueryBizItemListResponseBodyItemListItem {
-	s.MainPicUrl = &v
+func (s *QueryBizItemListResponseBodyItemListItem) SetSellerId(v int64) *QueryBizItemListResponseBodyItemListItem {
+	s.SellerId = &v
 	return s
 }
 
-func (s *QueryBizItemListResponseBodyItemListItem) SetCategoryId(v int64) *QueryBizItemListResponseBodyItemListItem {
-	s.CategoryId = &v
+func (s *QueryBizItemListResponseBodyItemListItem) SetLmItemId(v string) *QueryBizItemListResponseBodyItemListItem {
+	s.LmItemId = &v
 	return s
 }
 
-func (s *QueryBizItemListResponseBodyItemListItem) SetCustomizedItemName(v string) *QueryBizItemListResponseBodyItemListItem {
-	s.CustomizedItemName = &v
-	return s
-}
-
-func (s *QueryBizItemListResponseBodyItemListItem) SetReservePrice(v int64) *QueryBizItemListResponseBodyItemListItem {
-	s.ReservePrice = &v
+func (s *QueryBizItemListResponseBodyItemListItem) SetSkuList(v *QueryBizItemListResponseBodyItemListItemSkuList) *QueryBizItemListResponseBodyItemListItem {
+	s.SkuList = v
 	return s
 }
 
@@ -7291,17 +7783,18 @@ func (s *QueryBizItemListResponseBodyItemListItemSkuList) SetSku(v []*QueryBizIt
 }
 
 type QueryBizItemListResponseBodyItemListItemSkuListSku struct {
-	PriceCent              *int64                                                              `json:"PriceCent,omitempty" xml:"PriceCent,omitempty"`
 	SkuId                  *int64                                                              `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
-	CanSell                *bool                                                               `json:"CanSell,omitempty" xml:"CanSell,omitempty"`
 	SkuPicUrl              *string                                                             `json:"SkuPicUrl,omitempty" xml:"SkuPicUrl,omitempty"`
-	Points                 *int64                                                              `json:"Points,omitempty" xml:"Points,omitempty"`
 	SkuTitle               *string                                                             `json:"SkuTitle,omitempty" xml:"SkuTitle,omitempty"`
+	PriceCent              *int64                                                              `json:"PriceCent,omitempty" xml:"PriceCent,omitempty"`
+	Points                 *int64                                                              `json:"Points,omitempty" xml:"Points,omitempty"`
 	PointsAmount           *int64                                                              `json:"PointsAmount,omitempty" xml:"PointsAmount,omitempty"`
-	UserLabelList          *QueryBizItemListResponseBodyItemListItemSkuListSkuUserLabelList    `json:"UserLabelList,omitempty" xml:"UserLabelList,omitempty" type:"Struct"`
 	BenefitId              *string                                                             `json:"BenefitId,omitempty" xml:"BenefitId,omitempty"`
+	CanSell                *bool                                                               `json:"CanSell,omitempty" xml:"CanSell,omitempty"`
+	CustomizedAttributeMap map[string]*string                                                  `json:"CustomizedAttributeMap,omitempty" xml:"CustomizedAttributeMap,omitempty"`
+	TaoBaoCurrentPrice     *int64                                                              `json:"TaoBaoCurrentPrice,omitempty" xml:"TaoBaoCurrentPrice,omitempty"`
+	UserLabelList          *QueryBizItemListResponseBodyItemListItemSkuListSkuUserLabelList    `json:"UserLabelList,omitempty" xml:"UserLabelList,omitempty" type:"Struct"`
 	GradePriceModels       *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModels `json:"GradePriceModels,omitempty" xml:"GradePriceModels,omitempty" type:"Struct"`
-	CustomizedAttributeMap map[string]interface{}                                              `json:"CustomizedAttributeMap,omitempty" xml:"CustomizedAttributeMap,omitempty"`
 }
 
 func (s QueryBizItemListResponseBodyItemListItemSkuListSku) String() string {
@@ -7312,18 +7805,8 @@ func (s QueryBizItemListResponseBodyItemListItemSkuListSku) GoString() string {
 	return s.String()
 }
 
-func (s *QueryBizItemListResponseBodyItemListItemSkuListSku) SetPriceCent(v int64) *QueryBizItemListResponseBodyItemListItemSkuListSku {
-	s.PriceCent = &v
-	return s
-}
-
 func (s *QueryBizItemListResponseBodyItemListItemSkuListSku) SetSkuId(v int64) *QueryBizItemListResponseBodyItemListItemSkuListSku {
 	s.SkuId = &v
-	return s
-}
-
-func (s *QueryBizItemListResponseBodyItemListItemSkuListSku) SetCanSell(v bool) *QueryBizItemListResponseBodyItemListItemSkuListSku {
-	s.CanSell = &v
 	return s
 }
 
@@ -7332,13 +7815,18 @@ func (s *QueryBizItemListResponseBodyItemListItemSkuListSku) SetSkuPicUrl(v stri
 	return s
 }
 
-func (s *QueryBizItemListResponseBodyItemListItemSkuListSku) SetPoints(v int64) *QueryBizItemListResponseBodyItemListItemSkuListSku {
-	s.Points = &v
+func (s *QueryBizItemListResponseBodyItemListItemSkuListSku) SetSkuTitle(v string) *QueryBizItemListResponseBodyItemListItemSkuListSku {
+	s.SkuTitle = &v
 	return s
 }
 
-func (s *QueryBizItemListResponseBodyItemListItemSkuListSku) SetSkuTitle(v string) *QueryBizItemListResponseBodyItemListItemSkuListSku {
-	s.SkuTitle = &v
+func (s *QueryBizItemListResponseBodyItemListItemSkuListSku) SetPriceCent(v int64) *QueryBizItemListResponseBodyItemListItemSkuListSku {
+	s.PriceCent = &v
+	return s
+}
+
+func (s *QueryBizItemListResponseBodyItemListItemSkuListSku) SetPoints(v int64) *QueryBizItemListResponseBodyItemListItemSkuListSku {
+	s.Points = &v
 	return s
 }
 
@@ -7347,23 +7835,33 @@ func (s *QueryBizItemListResponseBodyItemListItemSkuListSku) SetPointsAmount(v i
 	return s
 }
 
-func (s *QueryBizItemListResponseBodyItemListItemSkuListSku) SetUserLabelList(v *QueryBizItemListResponseBodyItemListItemSkuListSkuUserLabelList) *QueryBizItemListResponseBodyItemListItemSkuListSku {
-	s.UserLabelList = v
-	return s
-}
-
 func (s *QueryBizItemListResponseBodyItemListItemSkuListSku) SetBenefitId(v string) *QueryBizItemListResponseBodyItemListItemSkuListSku {
 	s.BenefitId = &v
 	return s
 }
 
-func (s *QueryBizItemListResponseBodyItemListItemSkuListSku) SetGradePriceModels(v *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModels) *QueryBizItemListResponseBodyItemListItemSkuListSku {
-	s.GradePriceModels = v
+func (s *QueryBizItemListResponseBodyItemListItemSkuListSku) SetCanSell(v bool) *QueryBizItemListResponseBodyItemListItemSkuListSku {
+	s.CanSell = &v
 	return s
 }
 
-func (s *QueryBizItemListResponseBodyItemListItemSkuListSku) SetCustomizedAttributeMap(v map[string]interface{}) *QueryBizItemListResponseBodyItemListItemSkuListSku {
+func (s *QueryBizItemListResponseBodyItemListItemSkuListSku) SetCustomizedAttributeMap(v map[string]*string) *QueryBizItemListResponseBodyItemListItemSkuListSku {
 	s.CustomizedAttributeMap = v
+	return s
+}
+
+func (s *QueryBizItemListResponseBodyItemListItemSkuListSku) SetTaoBaoCurrentPrice(v int64) *QueryBizItemListResponseBodyItemListItemSkuListSku {
+	s.TaoBaoCurrentPrice = &v
+	return s
+}
+
+func (s *QueryBizItemListResponseBodyItemListItemSkuListSku) SetUserLabelList(v *QueryBizItemListResponseBodyItemListItemSkuListSkuUserLabelList) *QueryBizItemListResponseBodyItemListItemSkuListSku {
+	s.UserLabelList = v
+	return s
+}
+
+func (s *QueryBizItemListResponseBodyItemListItemSkuListSku) SetGradePriceModels(v *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModels) *QueryBizItemListResponseBodyItemListItemSkuListSku {
+	s.GradePriceModels = v
 	return s
 }
 
@@ -7402,19 +7900,19 @@ func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModels) Set
 }
 
 type QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel struct {
-	Recommend          *bool                                                                                           `json:"Recommend,omitempty" xml:"Recommend,omitempty"`
-	ShowName           *string                                                                                         `json:"ShowName,omitempty" xml:"ShowName,omitempty"`
-	PriceCent          *int64                                                                                          `json:"PriceCent,omitempty" xml:"PriceCent,omitempty"`
-	Icon               *string                                                                                         `json:"Icon,omitempty" xml:"Icon,omitempty"`
-	PointPrice         *int64                                                                                          `json:"PointPrice,omitempty" xml:"PointPrice,omitempty"`
-	Exclusive          *bool                                                                                           `json:"Exclusive,omitempty" xml:"Exclusive,omitempty"`
-	CharacteristicName *string                                                                                         `json:"CharacteristicName,omitempty" xml:"CharacteristicName,omitempty"`
-	AccessUrl          *string                                                                                         `json:"AccessUrl,omitempty" xml:"AccessUrl,omitempty"`
-	SubBizCode         *string                                                                                         `json:"SubBizCode,omitempty" xml:"SubBizCode,omitempty"`
 	CharacteristicCode *string                                                                                         `json:"CharacteristicCode,omitempty" xml:"CharacteristicCode,omitempty"`
-	Points             *int64                                                                                          `json:"Points,omitempty" xml:"Points,omitempty"`
+	CharacteristicName *string                                                                                         `json:"CharacteristicName,omitempty" xml:"CharacteristicName,omitempty"`
+	SubBizCode         *string                                                                                         `json:"SubBizCode,omitempty" xml:"SubBizCode,omitempty"`
 	CanBuy             *bool                                                                                           `json:"CanBuy,omitempty" xml:"CanBuy,omitempty"`
+	Exclusive          *bool                                                                                           `json:"Exclusive,omitempty" xml:"Exclusive,omitempty"`
+	Recommend          *bool                                                                                           `json:"Recommend,omitempty" xml:"Recommend,omitempty"`
+	PriceCent          *int64                                                                                          `json:"PriceCent,omitempty" xml:"PriceCent,omitempty"`
 	PointsAmount       *int64                                                                                          `json:"PointsAmount,omitempty" xml:"PointsAmount,omitempty"`
+	Points             *int64                                                                                          `json:"Points,omitempty" xml:"Points,omitempty"`
+	PointPrice         *int64                                                                                          `json:"PointPrice,omitempty" xml:"PointPrice,omitempty"`
+	ShowName           *string                                                                                         `json:"ShowName,omitempty" xml:"ShowName,omitempty"`
+	AccessUrl          *string                                                                                         `json:"AccessUrl,omitempty" xml:"AccessUrl,omitempty"`
+	Icon               *string                                                                                         `json:"Icon,omitempty" xml:"Icon,omitempty"`
 	UserLabelList      *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModelUserLabelList `json:"UserLabelList,omitempty" xml:"UserLabelList,omitempty" type:"Struct"`
 }
 
@@ -7426,33 +7924,8 @@ func (s QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradeP
 	return s.String()
 }
 
-func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel) SetRecommend(v bool) *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel {
-	s.Recommend = &v
-	return s
-}
-
-func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel) SetShowName(v string) *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel {
-	s.ShowName = &v
-	return s
-}
-
-func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel) SetPriceCent(v int64) *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel {
-	s.PriceCent = &v
-	return s
-}
-
-func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel) SetIcon(v string) *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel {
-	s.Icon = &v
-	return s
-}
-
-func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel) SetPointPrice(v int64) *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel {
-	s.PointPrice = &v
-	return s
-}
-
-func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel) SetExclusive(v bool) *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel {
-	s.Exclusive = &v
+func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel) SetCharacteristicCode(v string) *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel {
+	s.CharacteristicCode = &v
 	return s
 }
 
@@ -7461,23 +7934,8 @@ func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGrade
 	return s
 }
 
-func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel) SetAccessUrl(v string) *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel {
-	s.AccessUrl = &v
-	return s
-}
-
 func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel) SetSubBizCode(v string) *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel {
 	s.SubBizCode = &v
-	return s
-}
-
-func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel) SetCharacteristicCode(v string) *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel {
-	s.CharacteristicCode = &v
-	return s
-}
-
-func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel) SetPoints(v int64) *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel {
-	s.Points = &v
 	return s
 }
 
@@ -7486,8 +7944,48 @@ func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGrade
 	return s
 }
 
+func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel) SetExclusive(v bool) *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel {
+	s.Exclusive = &v
+	return s
+}
+
+func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel) SetRecommend(v bool) *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel {
+	s.Recommend = &v
+	return s
+}
+
+func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel) SetPriceCent(v int64) *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel {
+	s.PriceCent = &v
+	return s
+}
+
 func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel) SetPointsAmount(v int64) *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel {
 	s.PointsAmount = &v
+	return s
+}
+
+func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel) SetPoints(v int64) *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel {
+	s.Points = &v
+	return s
+}
+
+func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel) SetPointPrice(v int64) *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel {
+	s.PointPrice = &v
+	return s
+}
+
+func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel) SetShowName(v string) *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel {
+	s.ShowName = &v
+	return s
+}
+
+func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel) SetAccessUrl(v string) *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel {
+	s.AccessUrl = &v
+	return s
+}
+
+func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel) SetIcon(v string) *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel {
+	s.Icon = &v
 	return s
 }
 
@@ -7578,13 +8076,13 @@ func (s *QueryBizItemsRequest) SetUserId(v string) *QueryBizItemsRequest {
 }
 
 type QueryBizItemsResponseBody struct {
-	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	Model      *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s QueryBizItemsResponseBody) String() string {
@@ -7595,8 +8093,8 @@ func (s QueryBizItemsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *QueryBizItemsResponseBody) SetTotalCount(v int32) *QueryBizItemsResponseBody {
-	s.TotalCount = &v
+func (s *QueryBizItemsResponseBody) SetModel(v string) *QueryBizItemsResponseBody {
+	s.Model = &v
 	return s
 }
 
@@ -7605,13 +8103,13 @@ func (s *QueryBizItemsResponseBody) SetRequestId(v string) *QueryBizItemsRespons
 	return s
 }
 
-func (s *QueryBizItemsResponseBody) SetMessage(v string) *QueryBizItemsResponseBody {
-	s.Message = &v
+func (s *QueryBizItemsResponseBody) SetCode(v string) *QueryBizItemsResponseBody {
+	s.Code = &v
 	return s
 }
 
-func (s *QueryBizItemsResponseBody) SetPageSize(v int32) *QueryBizItemsResponseBody {
-	s.PageSize = &v
+func (s *QueryBizItemsResponseBody) SetMessage(v string) *QueryBizItemsResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -7620,13 +8118,13 @@ func (s *QueryBizItemsResponseBody) SetPageNumber(v int32) *QueryBizItemsRespons
 	return s
 }
 
-func (s *QueryBizItemsResponseBody) SetModel(v string) *QueryBizItemsResponseBody {
-	s.Model = &v
+func (s *QueryBizItemsResponseBody) SetPageSize(v int32) *QueryBizItemsResponseBody {
+	s.PageSize = &v
 	return s
 }
 
-func (s *QueryBizItemsResponseBody) SetCode(v string) *QueryBizItemsResponseBody {
-	s.Code = &v
+func (s *QueryBizItemsResponseBody) SetTotalCount(v int32) *QueryBizItemsResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -7712,10 +8210,10 @@ func (s *QueryBizItemsWithActivityShrinkRequest) SetItemIdsShrink(v string) *Que
 }
 
 type QueryBizItemsWithActivityResponseBody struct {
+	Code      *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ItemList  *QueryBizItemsWithActivityResponseBodyItemList `json:"ItemList,omitempty" xml:"ItemList,omitempty" type:"Struct"`
-	Code      *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s QueryBizItemsWithActivityResponseBody) String() string {
@@ -7724,6 +8222,11 @@ func (s QueryBizItemsWithActivityResponseBody) String() string {
 
 func (s QueryBizItemsWithActivityResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *QueryBizItemsWithActivityResponseBody) SetCode(v string) *QueryBizItemsWithActivityResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *QueryBizItemsWithActivityResponseBody) SetMessage(v string) *QueryBizItemsWithActivityResponseBody {
@@ -7738,11 +8241,6 @@ func (s *QueryBizItemsWithActivityResponseBody) SetRequestId(v string) *QueryBiz
 
 func (s *QueryBizItemsWithActivityResponseBody) SetItemList(v *QueryBizItemsWithActivityResponseBodyItemList) *QueryBizItemsWithActivityResponseBody {
 	s.ItemList = v
-	return s
-}
-
-func (s *QueryBizItemsWithActivityResponseBody) SetCode(v string) *QueryBizItemsWithActivityResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -7765,18 +8263,18 @@ func (s *QueryBizItemsWithActivityResponseBodyItemList) SetItem(v []*QueryBizIte
 
 type QueryBizItemsWithActivityResponseBodyItemListItem struct {
 	PicUrl            *string                                                      `json:"PicUrl,omitempty" xml:"PicUrl,omitempty"`
+	TotalSoldQuantity *int32                                                       `json:"TotalSoldQuantity,omitempty" xml:"TotalSoldQuantity,omitempty"`
 	ItemTitle         *string                                                      `json:"ItemTitle,omitempty" xml:"ItemTitle,omitempty"`
+	MaxAllowedCount   *int32                                                       `json:"MaxAllowedCount,omitempty" xml:"MaxAllowedCount,omitempty"`
 	SellerId          *int64                                                       `json:"SellerId,omitempty" xml:"SellerId,omitempty"`
 	LmItemId          *string                                                      `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
-	SkuList           *QueryBizItemsWithActivityResponseBodyItemListItemSkuList    `json:"SkuList,omitempty" xml:"SkuList,omitempty" type:"Struct"`
-	ItemId            *int64                                                       `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	Activities        *QueryBizItemsWithActivityResponseBodyItemListItemActivities `json:"Activities,omitempty" xml:"Activities,omitempty" type:"Struct"`
-	TaobaoShopName    *string                                                      `json:"TaobaoShopName,omitempty" xml:"TaobaoShopName,omitempty"`
-	TotalSoldQuantity *int32                                                       `json:"TotalSoldQuantity,omitempty" xml:"TotalSoldQuantity,omitempty"`
-	MaxAllowedCount   *int32                                                       `json:"MaxAllowedCount,omitempty" xml:"MaxAllowedCount,omitempty"`
 	CategoryId        *int64                                                       `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	ItemId            *int64                                                       `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
 	ReservePrice      *int64                                                       `json:"ReservePrice,omitempty" xml:"ReservePrice,omitempty"`
 	Quantity          *int64                                                       `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	TaobaoShopName    *string                                                      `json:"TaobaoShopName,omitempty" xml:"TaobaoShopName,omitempty"`
+	SkuList           *QueryBizItemsWithActivityResponseBodyItemListItemSkuList    `json:"SkuList,omitempty" xml:"SkuList,omitempty" type:"Struct"`
+	Activities        *QueryBizItemsWithActivityResponseBodyItemListItemActivities `json:"Activities,omitempty" xml:"Activities,omitempty" type:"Struct"`
 }
 
 func (s QueryBizItemsWithActivityResponseBodyItemListItem) String() string {
@@ -7792,8 +8290,18 @@ func (s *QueryBizItemsWithActivityResponseBodyItemListItem) SetPicUrl(v string) 
 	return s
 }
 
+func (s *QueryBizItemsWithActivityResponseBodyItemListItem) SetTotalSoldQuantity(v int32) *QueryBizItemsWithActivityResponseBodyItemListItem {
+	s.TotalSoldQuantity = &v
+	return s
+}
+
 func (s *QueryBizItemsWithActivityResponseBodyItemListItem) SetItemTitle(v string) *QueryBizItemsWithActivityResponseBodyItemListItem {
 	s.ItemTitle = &v
+	return s
+}
+
+func (s *QueryBizItemsWithActivityResponseBodyItemListItem) SetMaxAllowedCount(v int32) *QueryBizItemsWithActivityResponseBodyItemListItem {
+	s.MaxAllowedCount = &v
 	return s
 }
 
@@ -7807,38 +8315,13 @@ func (s *QueryBizItemsWithActivityResponseBodyItemListItem) SetLmItemId(v string
 	return s
 }
 
-func (s *QueryBizItemsWithActivityResponseBodyItemListItem) SetSkuList(v *QueryBizItemsWithActivityResponseBodyItemListItemSkuList) *QueryBizItemsWithActivityResponseBodyItemListItem {
-	s.SkuList = v
+func (s *QueryBizItemsWithActivityResponseBodyItemListItem) SetCategoryId(v int64) *QueryBizItemsWithActivityResponseBodyItemListItem {
+	s.CategoryId = &v
 	return s
 }
 
 func (s *QueryBizItemsWithActivityResponseBodyItemListItem) SetItemId(v int64) *QueryBizItemsWithActivityResponseBodyItemListItem {
 	s.ItemId = &v
-	return s
-}
-
-func (s *QueryBizItemsWithActivityResponseBodyItemListItem) SetActivities(v *QueryBizItemsWithActivityResponseBodyItemListItemActivities) *QueryBizItemsWithActivityResponseBodyItemListItem {
-	s.Activities = v
-	return s
-}
-
-func (s *QueryBizItemsWithActivityResponseBodyItemListItem) SetTaobaoShopName(v string) *QueryBizItemsWithActivityResponseBodyItemListItem {
-	s.TaobaoShopName = &v
-	return s
-}
-
-func (s *QueryBizItemsWithActivityResponseBodyItemListItem) SetTotalSoldQuantity(v int32) *QueryBizItemsWithActivityResponseBodyItemListItem {
-	s.TotalSoldQuantity = &v
-	return s
-}
-
-func (s *QueryBizItemsWithActivityResponseBodyItemListItem) SetMaxAllowedCount(v int32) *QueryBizItemsWithActivityResponseBodyItemListItem {
-	s.MaxAllowedCount = &v
-	return s
-}
-
-func (s *QueryBizItemsWithActivityResponseBodyItemListItem) SetCategoryId(v int64) *QueryBizItemsWithActivityResponseBodyItemListItem {
-	s.CategoryId = &v
 	return s
 }
 
@@ -7849,6 +8332,21 @@ func (s *QueryBizItemsWithActivityResponseBodyItemListItem) SetReservePrice(v in
 
 func (s *QueryBizItemsWithActivityResponseBodyItemListItem) SetQuantity(v int64) *QueryBizItemsWithActivityResponseBodyItemListItem {
 	s.Quantity = &v
+	return s
+}
+
+func (s *QueryBizItemsWithActivityResponseBodyItemListItem) SetTaobaoShopName(v string) *QueryBizItemsWithActivityResponseBodyItemListItem {
+	s.TaobaoShopName = &v
+	return s
+}
+
+func (s *QueryBizItemsWithActivityResponseBodyItemListItem) SetSkuList(v *QueryBizItemsWithActivityResponseBodyItemListItemSkuList) *QueryBizItemsWithActivityResponseBodyItemListItem {
+	s.SkuList = v
+	return s
+}
+
+func (s *QueryBizItemsWithActivityResponseBodyItemListItem) SetActivities(v *QueryBizItemsWithActivityResponseBodyItemListItemActivities) *QueryBizItemsWithActivityResponseBodyItemListItem {
+	s.Activities = v
 	return s
 }
 
@@ -7952,13 +8450,13 @@ func (s *QueryBizItemsWithActivityResponseBodyItemListItemActivities) SetActivit
 }
 
 type QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivity struct {
-	ActivityItem     *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItem     `json:"ActivityItem,omitempty" xml:"ActivityItem,omitempty" type:"Struct"`
-	EndDate          *int64                                                                               `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	Description      *string                                                                              `json:"Description,omitempty" xml:"Description,omitempty"`
-	ActivitySessions *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivitySessions `json:"ActivitySessions,omitempty" xml:"ActivitySessions,omitempty" type:"Struct"`
 	StartDate        *int64                                                                               `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 	LmActivityId     *int64                                                                               `json:"LmActivityId,omitempty" xml:"LmActivityId,omitempty"`
+	EndDate          *int64                                                                               `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
 	Title            *string                                                                              `json:"Title,omitempty" xml:"Title,omitempty"`
+	Description      *string                                                                              `json:"Description,omitempty" xml:"Description,omitempty"`
+	ActivitySessions *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivitySessions `json:"ActivitySessions,omitempty" xml:"ActivitySessions,omitempty" type:"Struct"`
+	ActivityItem     *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItem     `json:"ActivityItem,omitempty" xml:"ActivityItem,omitempty" type:"Struct"`
 }
 
 func (s QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivity) String() string {
@@ -7969,13 +8467,23 @@ func (s QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivity) GoS
 	return s.String()
 }
 
-func (s *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivity) SetActivityItem(v *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItem) *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivity {
-	s.ActivityItem = v
+func (s *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivity) SetStartDate(v int64) *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivity {
+	s.StartDate = &v
+	return s
+}
+
+func (s *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivity) SetLmActivityId(v int64) *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivity {
+	s.LmActivityId = &v
 	return s
 }
 
 func (s *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivity) SetEndDate(v int64) *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivity {
 	s.EndDate = &v
+	return s
+}
+
+func (s *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivity) SetTitle(v string) *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivity {
+	s.Title = &v
 	return s
 }
 
@@ -7989,87 +8497,8 @@ func (s *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivity) Se
 	return s
 }
 
-func (s *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivity) SetStartDate(v int64) *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivity {
-	s.StartDate = &v
-	return s
-}
-
-func (s *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivity) SetLmActivityId(v int64) *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivity {
-	s.LmActivityId = &v
-	return s
-}
-
-func (s *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivity) SetTitle(v string) *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivity {
-	s.Title = &v
-	return s
-}
-
-type QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItem struct {
-	LimitQuantityForPerson *int64                                                                                              `json:"LimitQuantityForPerson,omitempty" xml:"LimitQuantityForPerson,omitempty"`
-	ActivityQuantity       *int64                                                                                              `json:"ActivityQuantity,omitempty" xml:"ActivityQuantity,omitempty"`
-	ActivityItemSkuList    *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItemActivityItemSkuList `json:"ActivityItemSkuList,omitempty" xml:"ActivityItemSkuList,omitempty" type:"Struct"`
-}
-
-func (s QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItem) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItem) GoString() string {
-	return s.String()
-}
-
-func (s *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItem) SetLimitQuantityForPerson(v int64) *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItem {
-	s.LimitQuantityForPerson = &v
-	return s
-}
-
-func (s *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItem) SetActivityQuantity(v int64) *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItem {
-	s.ActivityQuantity = &v
-	return s
-}
-
-func (s *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItem) SetActivityItemSkuList(v *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItemActivityItemSkuList) *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItem {
-	s.ActivityItemSkuList = v
-	return s
-}
-
-type QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItemActivityItemSkuList struct {
-	ActivityItemSku []*QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItemActivityItemSkuListActivityItemSku `json:"ActivityItemSku,omitempty" xml:"ActivityItemSku,omitempty" type:"Repeated"`
-}
-
-func (s QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItemActivityItemSkuList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItemActivityItemSkuList) GoString() string {
-	return s.String()
-}
-
-func (s *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItemActivityItemSkuList) SetActivityItemSku(v []*QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItemActivityItemSkuListActivityItemSku) *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItemActivityItemSkuList {
-	s.ActivityItemSku = v
-	return s
-}
-
-type QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItemActivityItemSkuListActivityItemSku struct {
-	SkuId         *int64 `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
-	ActivityPrice *int64 `json:"ActivityPrice,omitempty" xml:"ActivityPrice,omitempty"`
-}
-
-func (s QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItemActivityItemSkuListActivityItemSku) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItemActivityItemSkuListActivityItemSku) GoString() string {
-	return s.String()
-}
-
-func (s *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItemActivityItemSkuListActivityItemSku) SetSkuId(v int64) *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItemActivityItemSkuListActivityItemSku {
-	s.SkuId = &v
-	return s
-}
-
-func (s *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItemActivityItemSkuListActivityItemSku) SetActivityPrice(v int64) *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItemActivityItemSkuListActivityItemSku {
-	s.ActivityPrice = &v
+func (s *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivity) SetActivityItem(v *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItem) *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivity {
+	s.ActivityItem = v
 	return s
 }
 
@@ -8096,9 +8525,9 @@ type QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivity
 	DisplayDate         *int64                                                                                                                 `json:"DisplayDate,omitempty" xml:"DisplayDate,omitempty"`
 	LmSessionId         *int64                                                                                                                 `json:"LmSessionId,omitempty" xml:"LmSessionId,omitempty"`
 	Description         *string                                                                                                                `json:"Description,omitempty" xml:"Description,omitempty"`
-	ActivitySessionItem *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivitySessionsActivitySessionActivitySessionItem `json:"ActivitySessionItem,omitempty" xml:"ActivitySessionItem,omitempty" type:"Struct"`
 	StartDate           *int64                                                                                                                 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 	Title               *string                                                                                                                `json:"Title,omitempty" xml:"Title,omitempty"`
+	ActivitySessionItem *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivitySessionsActivitySessionActivitySessionItem `json:"ActivitySessionItem,omitempty" xml:"ActivitySessionItem,omitempty" type:"Struct"`
 }
 
 func (s QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivitySessionsActivitySession) String() string {
@@ -8134,11 +8563,6 @@ func (s *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActi
 	return s
 }
 
-func (s *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivitySessionsActivitySession) SetActivitySessionItem(v *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivitySessionsActivitySessionActivitySessionItem) *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivitySessionsActivitySession {
-	s.ActivitySessionItem = v
-	return s
-}
-
 func (s *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivitySessionsActivitySession) SetStartDate(v int64) *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivitySessionsActivitySession {
 	s.StartDate = &v
 	return s
@@ -8149,10 +8573,15 @@ func (s *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActi
 	return s
 }
 
+func (s *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivitySessionsActivitySession) SetActivitySessionItem(v *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivitySessionsActivitySessionActivitySessionItem) *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivitySessionsActivitySession {
+	s.ActivitySessionItem = v
+	return s
+}
+
 type QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivitySessionsActivitySessionActivitySessionItem struct {
+	SessionQuantity            *int64                                                                                                                                           `json:"SessionQuantity,omitempty" xml:"SessionQuantity,omitempty"`
 	LimitQuantityForPerson     *int64                                                                                                                                           `json:"LimitQuantityForPerson,omitempty" xml:"LimitQuantityForPerson,omitempty"`
 	SaleableQuantity           *int64                                                                                                                                           `json:"SaleableQuantity,omitempty" xml:"SaleableQuantity,omitempty"`
-	SessionQuantity            *int64                                                                                                                                           `json:"SessionQuantity,omitempty" xml:"SessionQuantity,omitempty"`
 	ActivitySessionItemSkuList *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivitySessionsActivitySessionActivitySessionItemActivitySessionItemSkuList `json:"ActivitySessionItemSkuList,omitempty" xml:"ActivitySessionItemSkuList,omitempty" type:"Struct"`
 }
 
@@ -8162,6 +8591,11 @@ func (s QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActiv
 
 func (s QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivitySessionsActivitySessionActivitySessionItem) GoString() string {
 	return s.String()
+}
+
+func (s *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivitySessionsActivitySessionActivitySessionItem) SetSessionQuantity(v int64) *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivitySessionsActivitySessionActivitySessionItem {
+	s.SessionQuantity = &v
+	return s
 }
 
 func (s *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivitySessionsActivitySessionActivitySessionItem) SetLimitQuantityForPerson(v int64) *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivitySessionsActivitySessionActivitySessionItem {
@@ -8174,19 +8608,14 @@ func (s *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActi
 	return s
 }
 
-func (s *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivitySessionsActivitySessionActivitySessionItem) SetSessionQuantity(v int64) *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivitySessionsActivitySessionActivitySessionItem {
-	s.SessionQuantity = &v
-	return s
-}
-
 func (s *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivitySessionsActivitySessionActivitySessionItem) SetActivitySessionItemSkuList(v *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivitySessionsActivitySessionActivitySessionItemActivitySessionItemSkuList) *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivitySessionsActivitySessionActivitySessionItem {
 	s.ActivitySessionItemSkuList = v
 	return s
 }
 
 type QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivitySessionsActivitySessionActivitySessionItemActivitySessionItemSkuList struct {
-	PriceCent    *int64 `json:"PriceCent,omitempty" xml:"PriceCent,omitempty"`
 	SkuId        *int64 `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
+	PriceCent    *int64 `json:"PriceCent,omitempty" xml:"PriceCent,omitempty"`
 	Points       *int64 `json:"Points,omitempty" xml:"Points,omitempty"`
 	PointsAmount *int64 `json:"PointsAmount,omitempty" xml:"PointsAmount,omitempty"`
 }
@@ -8199,13 +8628,13 @@ func (s QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActiv
 	return s.String()
 }
 
-func (s *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivitySessionsActivitySessionActivitySessionItemActivitySessionItemSkuList) SetPriceCent(v int64) *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivitySessionsActivitySessionActivitySessionItemActivitySessionItemSkuList {
-	s.PriceCent = &v
+func (s *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivitySessionsActivitySessionActivitySessionItemActivitySessionItemSkuList) SetSkuId(v int64) *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivitySessionsActivitySessionActivitySessionItemActivitySessionItemSkuList {
+	s.SkuId = &v
 	return s
 }
 
-func (s *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivitySessionsActivitySessionActivitySessionItemActivitySessionItemSkuList) SetSkuId(v int64) *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivitySessionsActivitySessionActivitySessionItemActivitySessionItemSkuList {
-	s.SkuId = &v
+func (s *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivitySessionsActivitySessionActivitySessionItemActivitySessionItemSkuList) SetPriceCent(v int64) *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivitySessionsActivitySessionActivitySessionItemActivitySessionItemSkuList {
+	s.PriceCent = &v
 	return s
 }
 
@@ -8216,6 +8645,75 @@ func (s *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActi
 
 func (s *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivitySessionsActivitySessionActivitySessionItemActivitySessionItemSkuList) SetPointsAmount(v int64) *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivitySessionsActivitySessionActivitySessionItemActivitySessionItemSkuList {
 	s.PointsAmount = &v
+	return s
+}
+
+type QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItem struct {
+	ActivityQuantity       *int64                                                                                              `json:"ActivityQuantity,omitempty" xml:"ActivityQuantity,omitempty"`
+	LimitQuantityForPerson *int64                                                                                              `json:"LimitQuantityForPerson,omitempty" xml:"LimitQuantityForPerson,omitempty"`
+	ActivityItemSkuList    *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItemActivityItemSkuList `json:"ActivityItemSkuList,omitempty" xml:"ActivityItemSkuList,omitempty" type:"Struct"`
+}
+
+func (s QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItem) GoString() string {
+	return s.String()
+}
+
+func (s *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItem) SetActivityQuantity(v int64) *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItem {
+	s.ActivityQuantity = &v
+	return s
+}
+
+func (s *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItem) SetLimitQuantityForPerson(v int64) *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItem {
+	s.LimitQuantityForPerson = &v
+	return s
+}
+
+func (s *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItem) SetActivityItemSkuList(v *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItemActivityItemSkuList) *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItem {
+	s.ActivityItemSkuList = v
+	return s
+}
+
+type QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItemActivityItemSkuList struct {
+	ActivityItemSku []*QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItemActivityItemSkuListActivityItemSku `json:"ActivityItemSku,omitempty" xml:"ActivityItemSku,omitempty" type:"Repeated"`
+}
+
+func (s QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItemActivityItemSkuList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItemActivityItemSkuList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItemActivityItemSkuList) SetActivityItemSku(v []*QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItemActivityItemSkuListActivityItemSku) *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItemActivityItemSkuList {
+	s.ActivityItemSku = v
+	return s
+}
+
+type QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItemActivityItemSkuListActivityItemSku struct {
+	ActivityPrice *int64 `json:"ActivityPrice,omitempty" xml:"ActivityPrice,omitempty"`
+	SkuId         *int64 `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
+}
+
+func (s QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItemActivityItemSkuListActivityItemSku) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItemActivityItemSkuListActivityItemSku) GoString() string {
+	return s.String()
+}
+
+func (s *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItemActivityItemSkuListActivityItemSku) SetActivityPrice(v int64) *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItemActivityItemSkuListActivityItemSku {
+	s.ActivityPrice = &v
+	return s
+}
+
+func (s *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItemActivityItemSkuListActivityItemSku) SetSkuId(v int64) *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItemActivityItemSkuListActivityItemSku {
+	s.SkuId = &v
 	return s
 }
 
@@ -8278,13 +8776,13 @@ func (s *QueryGuideItemGroupRequest) SetPageSize(v int64) *QueryGuideItemGroupRe
 }
 
 type QueryGuideItemGroupResponseBody struct {
-	GuideItemGroup *QueryGuideItemGroupResponseBodyGuideItemGroup `json:"GuideItemGroup,omitempty" xml:"GuideItemGroup,omitempty" type:"Struct"`
 	RequestId      *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Message        *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	SubMessage     *string                                        `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
-	SubCode        *string                                        `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	Code           *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success        *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	SubMessage     *string                                        `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Code           *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message        *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	SubCode        *string                                        `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	GuideItemGroup *QueryGuideItemGroupResponseBodyGuideItemGroup `json:"GuideItemGroup,omitempty" xml:"GuideItemGroup,omitempty" type:"Struct"`
 }
 
 func (s QueryGuideItemGroupResponseBody) String() string {
@@ -8295,18 +8793,13 @@ func (s QueryGuideItemGroupResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *QueryGuideItemGroupResponseBody) SetGuideItemGroup(v *QueryGuideItemGroupResponseBodyGuideItemGroup) *QueryGuideItemGroupResponseBody {
-	s.GuideItemGroup = v
-	return s
-}
-
 func (s *QueryGuideItemGroupResponseBody) SetRequestId(v string) *QueryGuideItemGroupResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *QueryGuideItemGroupResponseBody) SetMessage(v string) *QueryGuideItemGroupResponseBody {
-	s.Message = &v
+func (s *QueryGuideItemGroupResponseBody) SetSuccess(v bool) *QueryGuideItemGroupResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -8315,18 +8808,23 @@ func (s *QueryGuideItemGroupResponseBody) SetSubMessage(v string) *QueryGuideIte
 	return s
 }
 
-func (s *QueryGuideItemGroupResponseBody) SetSubCode(v string) *QueryGuideItemGroupResponseBody {
-	s.SubCode = &v
-	return s
-}
-
 func (s *QueryGuideItemGroupResponseBody) SetCode(v string) *QueryGuideItemGroupResponseBody {
 	s.Code = &v
 	return s
 }
 
-func (s *QueryGuideItemGroupResponseBody) SetSuccess(v bool) *QueryGuideItemGroupResponseBody {
-	s.Success = &v
+func (s *QueryGuideItemGroupResponseBody) SetMessage(v string) *QueryGuideItemGroupResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryGuideItemGroupResponseBody) SetSubCode(v string) *QueryGuideItemGroupResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *QueryGuideItemGroupResponseBody) SetGuideItemGroup(v *QueryGuideItemGroupResponseBodyGuideItemGroup) *QueryGuideItemGroupResponseBody {
+	s.GuideItemGroup = v
 	return s
 }
 
@@ -8472,13 +8970,13 @@ func (s *QueryHotMoviesRequest) SetExtJson(v string) *QueryHotMoviesRequest {
 
 type QueryHotMoviesResponseBody struct {
 	RequestId  *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Message    *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	LogsId     *string                           `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
-	SubMessage *string                           `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
-	Movies     *QueryHotMoviesResponseBodyMovies `json:"Movies,omitempty" xml:"Movies,omitempty" type:"Struct"`
-	SubCode    *string                           `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	Code       *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success    *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	SubMessage *string                           `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Code       *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message    *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	SubCode    *string                           `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	LogsId     *string                           `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
+	Movies     *QueryHotMoviesResponseBodyMovies `json:"Movies,omitempty" xml:"Movies,omitempty" type:"Struct"`
 }
 
 func (s QueryHotMoviesResponseBody) String() string {
@@ -8494,13 +8992,8 @@ func (s *QueryHotMoviesResponseBody) SetRequestId(v string) *QueryHotMoviesRespo
 	return s
 }
 
-func (s *QueryHotMoviesResponseBody) SetMessage(v string) *QueryHotMoviesResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *QueryHotMoviesResponseBody) SetLogsId(v string) *QueryHotMoviesResponseBody {
-	s.LogsId = &v
+func (s *QueryHotMoviesResponseBody) SetSuccess(v bool) *QueryHotMoviesResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -8509,8 +9002,13 @@ func (s *QueryHotMoviesResponseBody) SetSubMessage(v string) *QueryHotMoviesResp
 	return s
 }
 
-func (s *QueryHotMoviesResponseBody) SetMovies(v *QueryHotMoviesResponseBodyMovies) *QueryHotMoviesResponseBody {
-	s.Movies = v
+func (s *QueryHotMoviesResponseBody) SetCode(v string) *QueryHotMoviesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryHotMoviesResponseBody) SetMessage(v string) *QueryHotMoviesResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -8519,13 +9017,13 @@ func (s *QueryHotMoviesResponseBody) SetSubCode(v string) *QueryHotMoviesRespons
 	return s
 }
 
-func (s *QueryHotMoviesResponseBody) SetCode(v string) *QueryHotMoviesResponseBody {
-	s.Code = &v
+func (s *QueryHotMoviesResponseBody) SetLogsId(v string) *QueryHotMoviesResponseBody {
+	s.LogsId = &v
 	return s
 }
 
-func (s *QueryHotMoviesResponseBody) SetSuccess(v bool) *QueryHotMoviesResponseBody {
-	s.Success = &v
+func (s *QueryHotMoviesResponseBody) SetMovies(v *QueryHotMoviesResponseBodyMovies) *QueryHotMoviesResponseBody {
+	s.Movies = v
 	return s
 }
 
@@ -8547,16 +9045,15 @@ func (s *QueryHotMoviesResponseBodyMovies) SetMovie(v []*QueryHotMoviesResponseB
 }
 
 type QueryHotMoviesResponseBodyMoviesMovie struct {
-	MovieVersion      *string                                             `json:"MovieVersion,omitempty" xml:"MovieVersion,omitempty"`
 	Type              *string                                             `json:"Type,omitempty" xml:"Type,omitempty"`
+	MovieVersion      *string                                             `json:"MovieVersion,omitempty" xml:"MovieVersion,omitempty"`
 	BackgroundPicture *string                                             `json:"BackgroundPicture,omitempty" xml:"BackgroundPicture,omitempty"`
-	OpenDay           *string                                             `json:"OpenDay,omitempty" xml:"OpenDay,omitempty"`
 	Remark            *string                                             `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	OpenDay           *string                                             `json:"OpenDay,omitempty" xml:"OpenDay,omitempty"`
 	Highlight         *string                                             `json:"Highlight,omitempty" xml:"Highlight,omitempty"`
-	MovieTypeList     *QueryHotMoviesResponseBodyMoviesMovieMovieTypeList `json:"MovieTypeList,omitempty" xml:"MovieTypeList,omitempty" type:"Struct"`
 	Language          *string                                             `json:"Language,omitempty" xml:"Language,omitempty"`
-	Director          *string                                             `json:"Director,omitempty" xml:"Director,omitempty"`
 	OpenTime          *string                                             `json:"OpenTime,omitempty" xml:"OpenTime,omitempty"`
+	Director          *string                                             `json:"Director,omitempty" xml:"Director,omitempty"`
 	Poster            *string                                             `json:"Poster,omitempty" xml:"Poster,omitempty"`
 	MovieName         *string                                             `json:"MovieName,omitempty" xml:"MovieName,omitempty"`
 	Description       *string                                             `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -8565,6 +9062,7 @@ type QueryHotMoviesResponseBodyMoviesMovie struct {
 	MovieNameEn       *string                                             `json:"MovieNameEn,omitempty" xml:"MovieNameEn,omitempty"`
 	LeadingRole       *string                                             `json:"LeadingRole,omitempty" xml:"LeadingRole,omitempty"`
 	Id                *int64                                              `json:"Id,omitempty" xml:"Id,omitempty"`
+	MovieTypeList     *QueryHotMoviesResponseBodyMoviesMovieMovieTypeList `json:"MovieTypeList,omitempty" xml:"MovieTypeList,omitempty" type:"Struct"`
 	TrailerList       *QueryHotMoviesResponseBodyMoviesMovieTrailerList   `json:"TrailerList,omitempty" xml:"TrailerList,omitempty" type:"Struct"`
 }
 
@@ -8576,13 +9074,13 @@ func (s QueryHotMoviesResponseBodyMoviesMovie) GoString() string {
 	return s.String()
 }
 
-func (s *QueryHotMoviesResponseBodyMoviesMovie) SetMovieVersion(v string) *QueryHotMoviesResponseBodyMoviesMovie {
-	s.MovieVersion = &v
+func (s *QueryHotMoviesResponseBodyMoviesMovie) SetType(v string) *QueryHotMoviesResponseBodyMoviesMovie {
+	s.Type = &v
 	return s
 }
 
-func (s *QueryHotMoviesResponseBodyMoviesMovie) SetType(v string) *QueryHotMoviesResponseBodyMoviesMovie {
-	s.Type = &v
+func (s *QueryHotMoviesResponseBodyMoviesMovie) SetMovieVersion(v string) *QueryHotMoviesResponseBodyMoviesMovie {
+	s.MovieVersion = &v
 	return s
 }
 
@@ -8591,13 +9089,13 @@ func (s *QueryHotMoviesResponseBodyMoviesMovie) SetBackgroundPicture(v string) *
 	return s
 }
 
-func (s *QueryHotMoviesResponseBodyMoviesMovie) SetOpenDay(v string) *QueryHotMoviesResponseBodyMoviesMovie {
-	s.OpenDay = &v
+func (s *QueryHotMoviesResponseBodyMoviesMovie) SetRemark(v string) *QueryHotMoviesResponseBodyMoviesMovie {
+	s.Remark = &v
 	return s
 }
 
-func (s *QueryHotMoviesResponseBodyMoviesMovie) SetRemark(v string) *QueryHotMoviesResponseBodyMoviesMovie {
-	s.Remark = &v
+func (s *QueryHotMoviesResponseBodyMoviesMovie) SetOpenDay(v string) *QueryHotMoviesResponseBodyMoviesMovie {
+	s.OpenDay = &v
 	return s
 }
 
@@ -8606,23 +9104,18 @@ func (s *QueryHotMoviesResponseBodyMoviesMovie) SetHighlight(v string) *QueryHot
 	return s
 }
 
-func (s *QueryHotMoviesResponseBodyMoviesMovie) SetMovieTypeList(v *QueryHotMoviesResponseBodyMoviesMovieMovieTypeList) *QueryHotMoviesResponseBodyMoviesMovie {
-	s.MovieTypeList = v
-	return s
-}
-
 func (s *QueryHotMoviesResponseBodyMoviesMovie) SetLanguage(v string) *QueryHotMoviesResponseBodyMoviesMovie {
 	s.Language = &v
 	return s
 }
 
-func (s *QueryHotMoviesResponseBodyMoviesMovie) SetDirector(v string) *QueryHotMoviesResponseBodyMoviesMovie {
-	s.Director = &v
+func (s *QueryHotMoviesResponseBodyMoviesMovie) SetOpenTime(v string) *QueryHotMoviesResponseBodyMoviesMovie {
+	s.OpenTime = &v
 	return s
 }
 
-func (s *QueryHotMoviesResponseBodyMoviesMovie) SetOpenTime(v string) *QueryHotMoviesResponseBodyMoviesMovie {
-	s.OpenTime = &v
+func (s *QueryHotMoviesResponseBodyMoviesMovie) SetDirector(v string) *QueryHotMoviesResponseBodyMoviesMovie {
+	s.Director = &v
 	return s
 }
 
@@ -8663,6 +9156,11 @@ func (s *QueryHotMoviesResponseBodyMoviesMovie) SetLeadingRole(v string) *QueryH
 
 func (s *QueryHotMoviesResponseBodyMoviesMovie) SetId(v int64) *QueryHotMoviesResponseBodyMoviesMovie {
 	s.Id = &v
+	return s
+}
+
+func (s *QueryHotMoviesResponseBodyMoviesMovie) SetMovieTypeList(v *QueryHotMoviesResponseBodyMoviesMovieMovieTypeList) *QueryHotMoviesResponseBodyMoviesMovie {
+	s.MovieTypeList = v
 	return s
 }
 
@@ -8728,6 +9226,204 @@ func (s *QueryHotMoviesResponse) SetBody(v *QueryHotMoviesResponseBody) *QueryHo
 	return s
 }
 
+type QueryInventoryOfItemsInBizItemGroupRequest struct {
+	BizId        *string                `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	DivisionCode *string                `json:"DivisionCode,omitempty" xml:"DivisionCode,omitempty"`
+	ItemIds      map[string]interface{} `json:"ItemIds,omitempty" xml:"ItemIds,omitempty"`
+	LmItemIds    map[string]interface{} `json:"LmItemIds,omitempty" xml:"LmItemIds,omitempty"`
+	SubBizId     *string                `json:"SubBizId,omitempty" xml:"SubBizId,omitempty"`
+}
+
+func (s QueryInventoryOfItemsInBizItemGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryInventoryOfItemsInBizItemGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryInventoryOfItemsInBizItemGroupRequest) SetBizId(v string) *QueryInventoryOfItemsInBizItemGroupRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *QueryInventoryOfItemsInBizItemGroupRequest) SetDivisionCode(v string) *QueryInventoryOfItemsInBizItemGroupRequest {
+	s.DivisionCode = &v
+	return s
+}
+
+func (s *QueryInventoryOfItemsInBizItemGroupRequest) SetItemIds(v map[string]interface{}) *QueryInventoryOfItemsInBizItemGroupRequest {
+	s.ItemIds = v
+	return s
+}
+
+func (s *QueryInventoryOfItemsInBizItemGroupRequest) SetLmItemIds(v map[string]interface{}) *QueryInventoryOfItemsInBizItemGroupRequest {
+	s.LmItemIds = v
+	return s
+}
+
+func (s *QueryInventoryOfItemsInBizItemGroupRequest) SetSubBizId(v string) *QueryInventoryOfItemsInBizItemGroupRequest {
+	s.SubBizId = &v
+	return s
+}
+
+type QueryInventoryOfItemsInBizItemGroupShrinkRequest struct {
+	BizId           *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	DivisionCode    *string `json:"DivisionCode,omitempty" xml:"DivisionCode,omitempty"`
+	ItemIdsShrink   *string `json:"ItemIds,omitempty" xml:"ItemIds,omitempty"`
+	LmItemIdsShrink *string `json:"LmItemIds,omitempty" xml:"LmItemIds,omitempty"`
+	SubBizId        *string `json:"SubBizId,omitempty" xml:"SubBizId,omitempty"`
+}
+
+func (s QueryInventoryOfItemsInBizItemGroupShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryInventoryOfItemsInBizItemGroupShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryInventoryOfItemsInBizItemGroupShrinkRequest) SetBizId(v string) *QueryInventoryOfItemsInBizItemGroupShrinkRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *QueryInventoryOfItemsInBizItemGroupShrinkRequest) SetDivisionCode(v string) *QueryInventoryOfItemsInBizItemGroupShrinkRequest {
+	s.DivisionCode = &v
+	return s
+}
+
+func (s *QueryInventoryOfItemsInBizItemGroupShrinkRequest) SetItemIdsShrink(v string) *QueryInventoryOfItemsInBizItemGroupShrinkRequest {
+	s.ItemIdsShrink = &v
+	return s
+}
+
+func (s *QueryInventoryOfItemsInBizItemGroupShrinkRequest) SetLmItemIdsShrink(v string) *QueryInventoryOfItemsInBizItemGroupShrinkRequest {
+	s.LmItemIdsShrink = &v
+	return s
+}
+
+func (s *QueryInventoryOfItemsInBizItemGroupShrinkRequest) SetSubBizId(v string) *QueryInventoryOfItemsInBizItemGroupShrinkRequest {
+	s.SubBizId = &v
+	return s
+}
+
+type QueryInventoryOfItemsInBizItemGroupResponseBody struct {
+	Code      *string                                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                                                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ItemList  []*QueryInventoryOfItemsInBizItemGroupResponseBodyItemList `json:"ItemList,omitempty" xml:"ItemList,omitempty" type:"Repeated"`
+}
+
+func (s QueryInventoryOfItemsInBizItemGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryInventoryOfItemsInBizItemGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryInventoryOfItemsInBizItemGroupResponseBody) SetCode(v string) *QueryInventoryOfItemsInBizItemGroupResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryInventoryOfItemsInBizItemGroupResponseBody) SetMessage(v string) *QueryInventoryOfItemsInBizItemGroupResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryInventoryOfItemsInBizItemGroupResponseBody) SetRequestId(v string) *QueryInventoryOfItemsInBizItemGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryInventoryOfItemsInBizItemGroupResponseBody) SetItemList(v []*QueryInventoryOfItemsInBizItemGroupResponseBodyItemList) *QueryInventoryOfItemsInBizItemGroupResponseBody {
+	s.ItemList = v
+	return s
+}
+
+type QueryInventoryOfItemsInBizItemGroupResponseBodyItemList struct {
+	LmItemId *string                                                           `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
+	ItemId   *int64                                                            `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	Quantity *int32                                                            `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	SkuList  []*QueryInventoryOfItemsInBizItemGroupResponseBodyItemListSkuList `json:"SkuList,omitempty" xml:"SkuList,omitempty" type:"Repeated"`
+}
+
+func (s QueryInventoryOfItemsInBizItemGroupResponseBodyItemList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryInventoryOfItemsInBizItemGroupResponseBodyItemList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryInventoryOfItemsInBizItemGroupResponseBodyItemList) SetLmItemId(v string) *QueryInventoryOfItemsInBizItemGroupResponseBodyItemList {
+	s.LmItemId = &v
+	return s
+}
+
+func (s *QueryInventoryOfItemsInBizItemGroupResponseBodyItemList) SetItemId(v int64) *QueryInventoryOfItemsInBizItemGroupResponseBodyItemList {
+	s.ItemId = &v
+	return s
+}
+
+func (s *QueryInventoryOfItemsInBizItemGroupResponseBodyItemList) SetQuantity(v int32) *QueryInventoryOfItemsInBizItemGroupResponseBodyItemList {
+	s.Quantity = &v
+	return s
+}
+
+func (s *QueryInventoryOfItemsInBizItemGroupResponseBodyItemList) SetSkuList(v []*QueryInventoryOfItemsInBizItemGroupResponseBodyItemListSkuList) *QueryInventoryOfItemsInBizItemGroupResponseBodyItemList {
+	s.SkuList = v
+	return s
+}
+
+type QueryInventoryOfItemsInBizItemGroupResponseBodyItemListSkuList struct {
+	SkuId    *int64 `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
+	Quantity *int32 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+}
+
+func (s QueryInventoryOfItemsInBizItemGroupResponseBodyItemListSkuList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryInventoryOfItemsInBizItemGroupResponseBodyItemListSkuList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryInventoryOfItemsInBizItemGroupResponseBodyItemListSkuList) SetSkuId(v int64) *QueryInventoryOfItemsInBizItemGroupResponseBodyItemListSkuList {
+	s.SkuId = &v
+	return s
+}
+
+func (s *QueryInventoryOfItemsInBizItemGroupResponseBodyItemListSkuList) SetQuantity(v int32) *QueryInventoryOfItemsInBizItemGroupResponseBodyItemListSkuList {
+	s.Quantity = &v
+	return s
+}
+
+type QueryInventoryOfItemsInBizItemGroupResponse struct {
+	Headers map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QueryInventoryOfItemsInBizItemGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryInventoryOfItemsInBizItemGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryInventoryOfItemsInBizItemGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryInventoryOfItemsInBizItemGroupResponse) SetHeaders(v map[string]*string) *QueryInventoryOfItemsInBizItemGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryInventoryOfItemsInBizItemGroupResponse) SetBody(v *QueryInventoryOfItemsInBizItemGroupResponseBody) *QueryInventoryOfItemsInBizItemGroupResponse {
+	s.Body = v
+	return s
+}
+
 type QueryItemDetailRequest struct {
 	BizId    *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	ItemId   *int64  `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
@@ -8758,13 +9454,13 @@ func (s *QueryItemDetailRequest) SetLmItemId(v string) *QueryItemDetailRequest {
 }
 
 type QueryItemDetailResponseBody struct {
-	Item       *QueryItemDetailResponseBodyItem `json:"Item,omitempty" xml:"Item,omitempty" type:"Struct"`
 	RequestId  *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Message    *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	SubMessage *string                          `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
-	SubCode    *string                          `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	Code       *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success    *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	SubMessage *string                          `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Code       *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message    *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	SubCode    *string                          `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	Item       *QueryItemDetailResponseBodyItem `json:"Item,omitempty" xml:"Item,omitempty" type:"Struct"`
 }
 
 func (s QueryItemDetailResponseBody) String() string {
@@ -8775,33 +9471,8 @@ func (s QueryItemDetailResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *QueryItemDetailResponseBody) SetItem(v *QueryItemDetailResponseBodyItem) *QueryItemDetailResponseBody {
-	s.Item = v
-	return s
-}
-
 func (s *QueryItemDetailResponseBody) SetRequestId(v string) *QueryItemDetailResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *QueryItemDetailResponseBody) SetMessage(v string) *QueryItemDetailResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *QueryItemDetailResponseBody) SetSubMessage(v string) *QueryItemDetailResponseBody {
-	s.SubMessage = &v
-	return s
-}
-
-func (s *QueryItemDetailResponseBody) SetSubCode(v string) *QueryItemDetailResponseBody {
-	s.SubCode = &v
-	return s
-}
-
-func (s *QueryItemDetailResponseBody) SetCode(v string) *QueryItemDetailResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -8810,35 +9481,63 @@ func (s *QueryItemDetailResponseBody) SetSuccess(v bool) *QueryItemDetailRespons
 	return s
 }
 
+func (s *QueryItemDetailResponseBody) SetSubMessage(v string) *QueryItemDetailResponseBody {
+	s.SubMessage = &v
+	return s
+}
+
+func (s *QueryItemDetailResponseBody) SetCode(v string) *QueryItemDetailResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryItemDetailResponseBody) SetMessage(v string) *QueryItemDetailResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryItemDetailResponseBody) SetSubCode(v string) *QueryItemDetailResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *QueryItemDetailResponseBody) SetItem(v *QueryItemDetailResponseBodyItem) *QueryItemDetailResponseBody {
+	s.Item = v
+	return s
+}
+
 type QueryItemDetailResponseBodyItem struct {
 	ItemTitle              *string                                    `json:"ItemTitle,omitempty" xml:"ItemTitle,omitempty"`
 	MinPoints              *int64                                     `json:"MinPoints,omitempty" xml:"MinPoints,omitempty"`
 	DescOption             *string                                    `json:"DescOption,omitempty" xml:"DescOption,omitempty"`
-	ItemImages             *QueryItemDetailResponseBodyItemItemImages `json:"ItemImages,omitempty" xml:"ItemImages,omitempty" type:"Struct"`
+	VideoPicUrl            *string                                    `json:"VideoPicUrl,omitempty" xml:"VideoPicUrl,omitempty"`
 	ExtJson                *string                                    `json:"ExtJson,omitempty" xml:"ExtJson,omitempty"`
 	IsSellerPayPostfee     *bool                                      `json:"IsSellerPayPostfee,omitempty" xml:"IsSellerPayPostfee,omitempty"`
 	LmItemCategory         *string                                    `json:"LmItemCategory,omitempty" xml:"LmItemCategory,omitempty"`
 	SellerPayPostfee       *bool                                      `json:"SellerPayPostfee,omitempty" xml:"SellerPayPostfee,omitempty"`
 	ReservePrice           *int64                                     `json:"ReservePrice,omitempty" xml:"ReservePrice,omitempty"`
 	Quantity               *int32                                     `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	VideoUrl               *string                                    `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 	CustomizedAttributeMap map[string]interface{}                     `json:"CustomizedAttributeMap,omitempty" xml:"CustomizedAttributeMap,omitempty"`
 	IforestPropsJson       *string                                    `json:"IforestPropsJson,omitempty" xml:"IforestPropsJson,omitempty"`
 	PropertiesJson         *string                                    `json:"PropertiesJson,omitempty" xml:"PropertiesJson,omitempty"`
 	IforestProps           *string                                    `json:"IforestProps,omitempty" xml:"IforestProps,omitempty"`
-	TbShopName             *string                                    `json:"TbShopName,omitempty" xml:"TbShopName,omitempty"`
-	SellerId               *int64                                     `json:"SellerId,omitempty" xml:"SellerId,omitempty"`
 	LmItemId               *string                                    `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
-	CanSell                *bool                                      `json:"CanSell,omitempty" xml:"CanSell,omitempty"`
+	SellerId               *int64                                     `json:"SellerId,omitempty" xml:"SellerId,omitempty"`
+	TbShopName             *string                                    `json:"TbShopName,omitempty" xml:"TbShopName,omitempty"`
 	ItemId                 *int64                                     `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	CanSell                *bool                                      `json:"CanSell,omitempty" xml:"CanSell,omitempty"`
 	CenterInventory        *bool                                      `json:"CenterInventory,omitempty" xml:"CenterInventory,omitempty"`
+	SellerType             *int32                                     `json:"SellerType,omitempty" xml:"SellerType,omitempty"`
 	TotalSoldQuantity      *int32                                     `json:"TotalSoldQuantity,omitempty" xml:"TotalSoldQuantity,omitempty"`
 	MainPicUrl             *string                                    `json:"MainPicUrl,omitempty" xml:"MainPicUrl,omitempty"`
 	MinPrice               *int64                                     `json:"MinPrice,omitempty" xml:"MinPrice,omitempty"`
 	IsCanSell              *bool                                      `json:"IsCanSell,omitempty" xml:"IsCanSell,omitempty"`
 	CategoryId             *int64                                     `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	Skus                   *QueryItemDetailResponseBodyItemSkus       `json:"Skus,omitempty" xml:"Skus,omitempty" type:"Struct"`
 	DescPath               *string                                    `json:"DescPath,omitempty" xml:"DescPath,omitempty"`
 	Properties             *string                                    `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	Skus                   *QueryItemDetailResponseBodyItemSkus       `json:"Skus,omitempty" xml:"Skus,omitempty" type:"Struct"`
+	ItemImages             *QueryItemDetailResponseBodyItemItemImages `json:"ItemImages,omitempty" xml:"ItemImages,omitempty" type:"Struct"`
 }
 
 func (s QueryItemDetailResponseBodyItem) String() string {
@@ -8864,8 +9563,8 @@ func (s *QueryItemDetailResponseBodyItem) SetDescOption(v string) *QueryItemDeta
 	return s
 }
 
-func (s *QueryItemDetailResponseBodyItem) SetItemImages(v *QueryItemDetailResponseBodyItemItemImages) *QueryItemDetailResponseBodyItem {
-	s.ItemImages = v
+func (s *QueryItemDetailResponseBodyItem) SetVideoPicUrl(v string) *QueryItemDetailResponseBodyItem {
+	s.VideoPicUrl = &v
 	return s
 }
 
@@ -8899,6 +9598,11 @@ func (s *QueryItemDetailResponseBodyItem) SetQuantity(v int32) *QueryItemDetailR
 	return s
 }
 
+func (s *QueryItemDetailResponseBodyItem) SetVideoUrl(v string) *QueryItemDetailResponseBodyItem {
+	s.VideoUrl = &v
+	return s
+}
+
 func (s *QueryItemDetailResponseBodyItem) SetCustomizedAttributeMap(v map[string]interface{}) *QueryItemDetailResponseBodyItem {
 	s.CustomizedAttributeMap = v
 	return s
@@ -8919,8 +9623,8 @@ func (s *QueryItemDetailResponseBodyItem) SetIforestProps(v string) *QueryItemDe
 	return s
 }
 
-func (s *QueryItemDetailResponseBodyItem) SetTbShopName(v string) *QueryItemDetailResponseBodyItem {
-	s.TbShopName = &v
+func (s *QueryItemDetailResponseBodyItem) SetLmItemId(v string) *QueryItemDetailResponseBodyItem {
+	s.LmItemId = &v
 	return s
 }
 
@@ -8929,13 +9633,8 @@ func (s *QueryItemDetailResponseBodyItem) SetSellerId(v int64) *QueryItemDetailR
 	return s
 }
 
-func (s *QueryItemDetailResponseBodyItem) SetLmItemId(v string) *QueryItemDetailResponseBodyItem {
-	s.LmItemId = &v
-	return s
-}
-
-func (s *QueryItemDetailResponseBodyItem) SetCanSell(v bool) *QueryItemDetailResponseBodyItem {
-	s.CanSell = &v
+func (s *QueryItemDetailResponseBodyItem) SetTbShopName(v string) *QueryItemDetailResponseBodyItem {
+	s.TbShopName = &v
 	return s
 }
 
@@ -8944,8 +9643,18 @@ func (s *QueryItemDetailResponseBodyItem) SetItemId(v int64) *QueryItemDetailRes
 	return s
 }
 
+func (s *QueryItemDetailResponseBodyItem) SetCanSell(v bool) *QueryItemDetailResponseBodyItem {
+	s.CanSell = &v
+	return s
+}
+
 func (s *QueryItemDetailResponseBodyItem) SetCenterInventory(v bool) *QueryItemDetailResponseBodyItem {
 	s.CenterInventory = &v
+	return s
+}
+
+func (s *QueryItemDetailResponseBodyItem) SetSellerType(v int32) *QueryItemDetailResponseBodyItem {
+	s.SellerType = &v
 	return s
 }
 
@@ -8974,11 +9683,6 @@ func (s *QueryItemDetailResponseBodyItem) SetCategoryId(v int64) *QueryItemDetai
 	return s
 }
 
-func (s *QueryItemDetailResponseBodyItem) SetSkus(v *QueryItemDetailResponseBodyItemSkus) *QueryItemDetailResponseBodyItem {
-	s.Skus = v
-	return s
-}
-
 func (s *QueryItemDetailResponseBodyItem) SetDescPath(v string) *QueryItemDetailResponseBodyItem {
 	s.DescPath = &v
 	return s
@@ -8989,20 +9693,13 @@ func (s *QueryItemDetailResponseBodyItem) SetProperties(v string) *QueryItemDeta
 	return s
 }
 
-type QueryItemDetailResponseBodyItemItemImages struct {
-	ItemImage []*string `json:"ItemImage,omitempty" xml:"ItemImage,omitempty" type:"Repeated"`
+func (s *QueryItemDetailResponseBodyItem) SetSkus(v *QueryItemDetailResponseBodyItemSkus) *QueryItemDetailResponseBodyItem {
+	s.Skus = v
+	return s
 }
 
-func (s QueryItemDetailResponseBodyItemItemImages) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryItemDetailResponseBodyItemItemImages) GoString() string {
-	return s.String()
-}
-
-func (s *QueryItemDetailResponseBodyItemItemImages) SetItemImage(v []*string) *QueryItemDetailResponseBodyItemItemImages {
-	s.ItemImage = v
+func (s *QueryItemDetailResponseBodyItem) SetItemImages(v *QueryItemDetailResponseBodyItemItemImages) *QueryItemDetailResponseBodyItem {
+	s.ItemImages = v
 	return s
 }
 
@@ -9027,8 +9724,8 @@ type QueryItemDetailResponseBodyItemSkusSku struct {
 	PriceCent              *int64                 `json:"PriceCent,omitempty" xml:"PriceCent,omitempty"`
 	LmItemId               *string                `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
 	PointPrice             *int64                 `json:"PointPrice,omitempty" xml:"PointPrice,omitempty"`
-	ItemId                 *int64                 `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
 	CanSell                *bool                  `json:"CanSell,omitempty" xml:"CanSell,omitempty"`
+	ItemId                 *int64                 `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
 	SkuTitle               *string                `json:"SkuTitle,omitempty" xml:"SkuTitle,omitempty"`
 	SkuPropertiesJson      *string                `json:"SkuPropertiesJson,omitempty" xml:"SkuPropertiesJson,omitempty"`
 	ExtJson                *string                `json:"ExtJson,omitempty" xml:"ExtJson,omitempty"`
@@ -9065,13 +9762,13 @@ func (s *QueryItemDetailResponseBodyItemSkusSku) SetPointPrice(v int64) *QueryIt
 	return s
 }
 
-func (s *QueryItemDetailResponseBodyItemSkusSku) SetItemId(v int64) *QueryItemDetailResponseBodyItemSkusSku {
-	s.ItemId = &v
+func (s *QueryItemDetailResponseBodyItemSkusSku) SetCanSell(v bool) *QueryItemDetailResponseBodyItemSkusSku {
+	s.CanSell = &v
 	return s
 }
 
-func (s *QueryItemDetailResponseBodyItemSkusSku) SetCanSell(v bool) *QueryItemDetailResponseBodyItemSkusSku {
-	s.CanSell = &v
+func (s *QueryItemDetailResponseBodyItemSkusSku) SetItemId(v int64) *QueryItemDetailResponseBodyItemSkusSku {
+	s.ItemId = &v
 	return s
 }
 
@@ -9127,6 +9824,23 @@ func (s *QueryItemDetailResponseBodyItemSkusSku) SetQuantity(v int32) *QueryItem
 
 func (s *QueryItemDetailResponseBodyItemSkusSku) SetCustomizedAttributeMap(v map[string]interface{}) *QueryItemDetailResponseBodyItemSkusSku {
 	s.CustomizedAttributeMap = v
+	return s
+}
+
+type QueryItemDetailResponseBodyItemItemImages struct {
+	ItemImage []*string `json:"ItemImage,omitempty" xml:"ItemImage,omitempty" type:"Repeated"`
+}
+
+func (s QueryItemDetailResponseBodyItemItemImages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryItemDetailResponseBodyItemItemImages) GoString() string {
+	return s.String()
+}
+
+func (s *QueryItemDetailResponseBodyItemItemImages) SetItemImage(v []*string) *QueryItemDetailResponseBodyItemItemImages {
+	s.ItemImage = v
 	return s
 }
 
@@ -9213,10 +9927,10 @@ func (s *QueryItemDetailInnerRequest) SetIp(v string) *QueryItemDetailInnerReque
 }
 
 type QueryItemDetailInnerResponseBody struct {
-	Item      *QueryItemDetailInnerResponseBodyItem `json:"Item,omitempty" xml:"Item,omitempty" type:"Struct"`
+	Code      *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Item      *QueryItemDetailInnerResponseBodyItem `json:"Item,omitempty" xml:"Item,omitempty" type:"Struct"`
 }
 
 func (s QueryItemDetailInnerResponseBody) String() string {
@@ -9227,8 +9941,8 @@ func (s QueryItemDetailInnerResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *QueryItemDetailInnerResponseBody) SetItem(v *QueryItemDetailInnerResponseBodyItem) *QueryItemDetailInnerResponseBody {
-	s.Item = v
+func (s *QueryItemDetailInnerResponseBody) SetCode(v string) *QueryItemDetailInnerResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -9242,8 +9956,8 @@ func (s *QueryItemDetailInnerResponseBody) SetRequestId(v string) *QueryItemDeta
 	return s
 }
 
-func (s *QueryItemDetailInnerResponseBody) SetCode(v string) *QueryItemDetailInnerResponseBody {
-	s.Code = &v
+func (s *QueryItemDetailInnerResponseBody) SetItem(v *QueryItemDetailInnerResponseBodyItem) *QueryItemDetailInnerResponseBody {
+	s.Item = v
 	return s
 }
 
@@ -9252,31 +9966,31 @@ type QueryItemDetailInnerResponseBodyItem struct {
 	City               *string                                             `json:"City,omitempty" xml:"City,omitempty"`
 	MinPoints          *int64                                              `json:"MinPoints,omitempty" xml:"MinPoints,omitempty"`
 	DescOption         *string                                             `json:"DescOption,omitempty" xml:"DescOption,omitempty"`
-	ItemImages         []*string                                           `json:"ItemImages,omitempty" xml:"ItemImages,omitempty" type:"Repeated"`
-	SkuPropertys       []*QueryItemDetailInnerResponseBodyItemSkuPropertys `json:"SkuPropertys,omitempty" xml:"SkuPropertys,omitempty" type:"Repeated"`
 	IsSellerPayPostfee *bool                                               `json:"IsSellerPayPostfee,omitempty" xml:"IsSellerPayPostfee,omitempty"`
 	LmItemCategory     *string                                             `json:"LmItemCategory,omitempty" xml:"LmItemCategory,omitempty"`
 	SellerPayPostfee   *bool                                               `json:"SellerPayPostfee,omitempty" xml:"SellerPayPostfee,omitempty"`
 	ReservePrice       *int64                                              `json:"ReservePrice,omitempty" xml:"ReservePrice,omitempty"`
 	Quantity           *int32                                              `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
-	IforestProps       []map[string]interface{}                            `json:"IforestProps,omitempty" xml:"IforestProps,omitempty" type:"Repeated"`
-	CategoryIds        []*int64                                            `json:"CategoryIds,omitempty" xml:"CategoryIds,omitempty" type:"Repeated"`
-	TbShopName         *string                                             `json:"TbShopName,omitempty" xml:"TbShopName,omitempty"`
 	SellerId           *int64                                              `json:"SellerId,omitempty" xml:"SellerId,omitempty"`
-	CanSell            *bool                                               `json:"CanSell,omitempty" xml:"CanSell,omitempty"`
+	TbShopName         *string                                             `json:"TbShopName,omitempty" xml:"TbShopName,omitempty"`
 	ItemId             *int64                                              `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	CanSell            *bool                                               `json:"CanSell,omitempty" xml:"CanSell,omitempty"`
 	CenterInventory    *bool                                               `json:"CenterInventory,omitempty" xml:"CenterInventory,omitempty"`
 	TotalSoldQuantity  *int32                                              `json:"TotalSoldQuantity,omitempty" xml:"TotalSoldQuantity,omitempty"`
 	MainPicUrl         *string                                             `json:"MainPicUrl,omitempty" xml:"MainPicUrl,omitempty"`
 	MinPrice           *int64                                              `json:"MinPrice,omitempty" xml:"MinPrice,omitempty"`
-	LmShopId           *int64                                              `json:"LmShopId,omitempty" xml:"LmShopId,omitempty"`
 	IsCanSell          *bool                                               `json:"IsCanSell,omitempty" xml:"IsCanSell,omitempty"`
+	LmShopId           *int64                                              `json:"LmShopId,omitempty" xml:"LmShopId,omitempty"`
 	CategoryId         *int64                                              `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	Skus               []*QueryItemDetailInnerResponseBodyItemSkus         `json:"Skus,omitempty" xml:"Skus,omitempty" type:"Repeated"`
 	SellerNick         *string                                             `json:"SellerNick,omitempty" xml:"SellerNick,omitempty"`
 	DescPath           *string                                             `json:"DescPath,omitempty" xml:"DescPath,omitempty"`
 	Properties         map[string]interface{}                              `json:"Properties,omitempty" xml:"Properties,omitempty"`
 	Province           *string                                             `json:"Province,omitempty" xml:"Province,omitempty"`
+	Skus               []*QueryItemDetailInnerResponseBodyItemSkus         `json:"Skus,omitempty" xml:"Skus,omitempty" type:"Repeated"`
+	SkuPropertys       []*QueryItemDetailInnerResponseBodyItemSkuPropertys `json:"SkuPropertys,omitempty" xml:"SkuPropertys,omitempty" type:"Repeated"`
+	CategoryIds        []*int64                                            `json:"CategoryIds,omitempty" xml:"CategoryIds,omitempty" type:"Repeated"`
+	IforestProps       []map[string]interface{}                            `json:"IforestProps,omitempty" xml:"IforestProps,omitempty" type:"Repeated"`
+	ItemImages         []*string                                           `json:"ItemImages,omitempty" xml:"ItemImages,omitempty" type:"Repeated"`
 }
 
 func (s QueryItemDetailInnerResponseBodyItem) String() string {
@@ -9307,16 +10021,6 @@ func (s *QueryItemDetailInnerResponseBodyItem) SetDescOption(v string) *QueryIte
 	return s
 }
 
-func (s *QueryItemDetailInnerResponseBodyItem) SetItemImages(v []*string) *QueryItemDetailInnerResponseBodyItem {
-	s.ItemImages = v
-	return s
-}
-
-func (s *QueryItemDetailInnerResponseBodyItem) SetSkuPropertys(v []*QueryItemDetailInnerResponseBodyItemSkuPropertys) *QueryItemDetailInnerResponseBodyItem {
-	s.SkuPropertys = v
-	return s
-}
-
 func (s *QueryItemDetailInnerResponseBodyItem) SetIsSellerPayPostfee(v bool) *QueryItemDetailInnerResponseBodyItem {
 	s.IsSellerPayPostfee = &v
 	return s
@@ -9342,13 +10046,8 @@ func (s *QueryItemDetailInnerResponseBodyItem) SetQuantity(v int32) *QueryItemDe
 	return s
 }
 
-func (s *QueryItemDetailInnerResponseBodyItem) SetIforestProps(v []map[string]interface{}) *QueryItemDetailInnerResponseBodyItem {
-	s.IforestProps = v
-	return s
-}
-
-func (s *QueryItemDetailInnerResponseBodyItem) SetCategoryIds(v []*int64) *QueryItemDetailInnerResponseBodyItem {
-	s.CategoryIds = v
+func (s *QueryItemDetailInnerResponseBodyItem) SetSellerId(v int64) *QueryItemDetailInnerResponseBodyItem {
+	s.SellerId = &v
 	return s
 }
 
@@ -9357,18 +10056,13 @@ func (s *QueryItemDetailInnerResponseBodyItem) SetTbShopName(v string) *QueryIte
 	return s
 }
 
-func (s *QueryItemDetailInnerResponseBodyItem) SetSellerId(v int64) *QueryItemDetailInnerResponseBodyItem {
-	s.SellerId = &v
+func (s *QueryItemDetailInnerResponseBodyItem) SetItemId(v int64) *QueryItemDetailInnerResponseBodyItem {
+	s.ItemId = &v
 	return s
 }
 
 func (s *QueryItemDetailInnerResponseBodyItem) SetCanSell(v bool) *QueryItemDetailInnerResponseBodyItem {
 	s.CanSell = &v
-	return s
-}
-
-func (s *QueryItemDetailInnerResponseBodyItem) SetItemId(v int64) *QueryItemDetailInnerResponseBodyItem {
-	s.ItemId = &v
 	return s
 }
 
@@ -9392,23 +10086,18 @@ func (s *QueryItemDetailInnerResponseBodyItem) SetMinPrice(v int64) *QueryItemDe
 	return s
 }
 
-func (s *QueryItemDetailInnerResponseBodyItem) SetLmShopId(v int64) *QueryItemDetailInnerResponseBodyItem {
-	s.LmShopId = &v
-	return s
-}
-
 func (s *QueryItemDetailInnerResponseBodyItem) SetIsCanSell(v bool) *QueryItemDetailInnerResponseBodyItem {
 	s.IsCanSell = &v
 	return s
 }
 
-func (s *QueryItemDetailInnerResponseBodyItem) SetCategoryId(v int64) *QueryItemDetailInnerResponseBodyItem {
-	s.CategoryId = &v
+func (s *QueryItemDetailInnerResponseBodyItem) SetLmShopId(v int64) *QueryItemDetailInnerResponseBodyItem {
+	s.LmShopId = &v
 	return s
 }
 
-func (s *QueryItemDetailInnerResponseBodyItem) SetSkus(v []*QueryItemDetailInnerResponseBodyItemSkus) *QueryItemDetailInnerResponseBodyItem {
-	s.Skus = v
+func (s *QueryItemDetailInnerResponseBodyItem) SetCategoryId(v int64) *QueryItemDetailInnerResponseBodyItem {
+	s.CategoryId = &v
 	return s
 }
 
@@ -9432,55 +10121,28 @@ func (s *QueryItemDetailInnerResponseBodyItem) SetProvince(v string) *QueryItemD
 	return s
 }
 
-type QueryItemDetailInnerResponseBodyItemSkuPropertys struct {
-	Values []*QueryItemDetailInnerResponseBodyItemSkuPropertysValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
-	Text   *string                                                   `json:"Text,omitempty" xml:"Text,omitempty"`
-	Id     *int64                                                    `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s QueryItemDetailInnerResponseBodyItemSkuPropertys) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryItemDetailInnerResponseBodyItemSkuPropertys) GoString() string {
-	return s.String()
-}
-
-func (s *QueryItemDetailInnerResponseBodyItemSkuPropertys) SetValues(v []*QueryItemDetailInnerResponseBodyItemSkuPropertysValues) *QueryItemDetailInnerResponseBodyItemSkuPropertys {
-	s.Values = v
+func (s *QueryItemDetailInnerResponseBodyItem) SetSkus(v []*QueryItemDetailInnerResponseBodyItemSkus) *QueryItemDetailInnerResponseBodyItem {
+	s.Skus = v
 	return s
 }
 
-func (s *QueryItemDetailInnerResponseBodyItemSkuPropertys) SetText(v string) *QueryItemDetailInnerResponseBodyItemSkuPropertys {
-	s.Text = &v
+func (s *QueryItemDetailInnerResponseBodyItem) SetSkuPropertys(v []*QueryItemDetailInnerResponseBodyItemSkuPropertys) *QueryItemDetailInnerResponseBodyItem {
+	s.SkuPropertys = v
 	return s
 }
 
-func (s *QueryItemDetailInnerResponseBodyItemSkuPropertys) SetId(v int64) *QueryItemDetailInnerResponseBodyItemSkuPropertys {
-	s.Id = &v
+func (s *QueryItemDetailInnerResponseBodyItem) SetCategoryIds(v []*int64) *QueryItemDetailInnerResponseBodyItem {
+	s.CategoryIds = v
 	return s
 }
 
-type QueryItemDetailInnerResponseBodyItemSkuPropertysValues struct {
-	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s QueryItemDetailInnerResponseBodyItemSkuPropertysValues) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryItemDetailInnerResponseBodyItemSkuPropertysValues) GoString() string {
-	return s.String()
-}
-
-func (s *QueryItemDetailInnerResponseBodyItemSkuPropertysValues) SetText(v string) *QueryItemDetailInnerResponseBodyItemSkuPropertysValues {
-	s.Text = &v
+func (s *QueryItemDetailInnerResponseBodyItem) SetIforestProps(v []map[string]interface{}) *QueryItemDetailInnerResponseBodyItem {
+	s.IforestProps = v
 	return s
 }
 
-func (s *QueryItemDetailInnerResponseBodyItemSkuPropertysValues) SetId(v int64) *QueryItemDetailInnerResponseBodyItemSkuPropertysValues {
-	s.Id = &v
+func (s *QueryItemDetailInnerResponseBodyItem) SetItemImages(v []*string) *QueryItemDetailInnerResponseBodyItem {
+	s.ItemImages = v
 	return s
 }
 
@@ -9585,6 +10247,58 @@ func (s *QueryItemDetailInnerResponseBodyItemSkus) SetQuantity(v int32) *QueryIt
 	return s
 }
 
+type QueryItemDetailInnerResponseBodyItemSkuPropertys struct {
+	Text   *string                                                   `json:"Text,omitempty" xml:"Text,omitempty"`
+	Id     *int64                                                    `json:"Id,omitempty" xml:"Id,omitempty"`
+	Values []*QueryItemDetailInnerResponseBodyItemSkuPropertysValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s QueryItemDetailInnerResponseBodyItemSkuPropertys) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryItemDetailInnerResponseBodyItemSkuPropertys) GoString() string {
+	return s.String()
+}
+
+func (s *QueryItemDetailInnerResponseBodyItemSkuPropertys) SetText(v string) *QueryItemDetailInnerResponseBodyItemSkuPropertys {
+	s.Text = &v
+	return s
+}
+
+func (s *QueryItemDetailInnerResponseBodyItemSkuPropertys) SetId(v int64) *QueryItemDetailInnerResponseBodyItemSkuPropertys {
+	s.Id = &v
+	return s
+}
+
+func (s *QueryItemDetailInnerResponseBodyItemSkuPropertys) SetValues(v []*QueryItemDetailInnerResponseBodyItemSkuPropertysValues) *QueryItemDetailInnerResponseBodyItemSkuPropertys {
+	s.Values = v
+	return s
+}
+
+type QueryItemDetailInnerResponseBodyItemSkuPropertysValues struct {
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s QueryItemDetailInnerResponseBodyItemSkuPropertysValues) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryItemDetailInnerResponseBodyItemSkuPropertysValues) GoString() string {
+	return s.String()
+}
+
+func (s *QueryItemDetailInnerResponseBodyItemSkuPropertysValues) SetText(v string) *QueryItemDetailInnerResponseBodyItemSkuPropertysValues {
+	s.Text = &v
+	return s
+}
+
+func (s *QueryItemDetailInnerResponseBodyItemSkuPropertysValues) SetId(v int64) *QueryItemDetailInnerResponseBodyItemSkuPropertysValues {
+	s.Id = &v
+	return s
+}
+
 type QueryItemDetailInnerResponse struct {
 	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	Body    *QueryItemDetailInnerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -9604,6 +10318,324 @@ func (s *QueryItemDetailInnerResponse) SetHeaders(v map[string]*string) *QueryIt
 }
 
 func (s *QueryItemDetailInnerResponse) SetBody(v *QueryItemDetailInnerResponseBody) *QueryItemDetailInnerResponse {
+	s.Body = v
+	return s
+}
+
+type QueryItemInSubBizsRequest struct {
+	BizId     *string                `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	ItemId    *int64                 `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	LmItemId  *string                `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
+	SubBizIds map[string]interface{} `json:"SubBizIds,omitempty" xml:"SubBizIds,omitempty"`
+}
+
+func (s QueryItemInSubBizsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryItemInSubBizsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryItemInSubBizsRequest) SetBizId(v string) *QueryItemInSubBizsRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *QueryItemInSubBizsRequest) SetItemId(v int64) *QueryItemInSubBizsRequest {
+	s.ItemId = &v
+	return s
+}
+
+func (s *QueryItemInSubBizsRequest) SetLmItemId(v string) *QueryItemInSubBizsRequest {
+	s.LmItemId = &v
+	return s
+}
+
+func (s *QueryItemInSubBizsRequest) SetSubBizIds(v map[string]interface{}) *QueryItemInSubBizsRequest {
+	s.SubBizIds = v
+	return s
+}
+
+type QueryItemInSubBizsShrinkRequest struct {
+	BizId           *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	ItemId          *int64  `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	LmItemId        *string `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
+	SubBizIdsShrink *string `json:"SubBizIds,omitempty" xml:"SubBizIds,omitempty"`
+}
+
+func (s QueryItemInSubBizsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryItemInSubBizsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryItemInSubBizsShrinkRequest) SetBizId(v string) *QueryItemInSubBizsShrinkRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *QueryItemInSubBizsShrinkRequest) SetItemId(v int64) *QueryItemInSubBizsShrinkRequest {
+	s.ItemId = &v
+	return s
+}
+
+func (s *QueryItemInSubBizsShrinkRequest) SetLmItemId(v string) *QueryItemInSubBizsShrinkRequest {
+	s.LmItemId = &v
+	return s
+}
+
+func (s *QueryItemInSubBizsShrinkRequest) SetSubBizIdsShrink(v string) *QueryItemInSubBizsShrinkRequest {
+	s.SubBizIdsShrink = &v
+	return s
+}
+
+type QueryItemInSubBizsResponseBody struct {
+	Code        *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message     *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId   *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ItemBizList []*QueryItemInSubBizsResponseBodyItemBizList `json:"ItemBizList,omitempty" xml:"ItemBizList,omitempty" type:"Repeated"`
+}
+
+func (s QueryItemInSubBizsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryItemInSubBizsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryItemInSubBizsResponseBody) SetCode(v string) *QueryItemInSubBizsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryItemInSubBizsResponseBody) SetMessage(v string) *QueryItemInSubBizsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryItemInSubBizsResponseBody) SetRequestId(v string) *QueryItemInSubBizsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryItemInSubBizsResponseBody) SetItemBizList(v []*QueryItemInSubBizsResponseBodyItemBizList) *QueryItemInSubBizsResponseBody {
+	s.ItemBizList = v
+	return s
+}
+
+type QueryItemInSubBizsResponseBodyItemBizList struct {
+	ItemTitle      *string                                             `json:"ItemTitle,omitempty" xml:"ItemTitle,omitempty"`
+	PropertiesJson *string                                             `json:"PropertiesJson,omitempty" xml:"PropertiesJson,omitempty"`
+	LmItemId       *string                                             `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
+	SellerId       *int64                                              `json:"SellerId,omitempty" xml:"SellerId,omitempty"`
+	TbShopName     *string                                             `json:"TbShopName,omitempty" xml:"TbShopName,omitempty"`
+	CanSell        *bool                                               `json:"CanSell,omitempty" xml:"CanSell,omitempty"`
+	ItemId         *int64                                              `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	DescOption     *string                                             `json:"DescOption,omitempty" xml:"DescOption,omitempty"`
+	MainPicUrl     *string                                             `json:"MainPicUrl,omitempty" xml:"MainPicUrl,omitempty"`
+	CategoryId     *int64                                              `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	SubBizId       *string                                             `json:"SubBizId,omitempty" xml:"SubBizId,omitempty"`
+	ReservePrice   *int64                                              `json:"ReservePrice,omitempty" xml:"ReservePrice,omitempty"`
+	Quantity       *int64                                              `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	SkuList        []*QueryItemInSubBizsResponseBodyItemBizListSkuList `json:"SkuList,omitempty" xml:"SkuList,omitempty" type:"Repeated"`
+	ItemImages     []*string                                           `json:"ItemImages,omitempty" xml:"ItemImages,omitempty" type:"Repeated"`
+}
+
+func (s QueryItemInSubBizsResponseBodyItemBizList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryItemInSubBizsResponseBodyItemBizList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryItemInSubBizsResponseBodyItemBizList) SetItemTitle(v string) *QueryItemInSubBizsResponseBodyItemBizList {
+	s.ItemTitle = &v
+	return s
+}
+
+func (s *QueryItemInSubBizsResponseBodyItemBizList) SetPropertiesJson(v string) *QueryItemInSubBizsResponseBodyItemBizList {
+	s.PropertiesJson = &v
+	return s
+}
+
+func (s *QueryItemInSubBizsResponseBodyItemBizList) SetLmItemId(v string) *QueryItemInSubBizsResponseBodyItemBizList {
+	s.LmItemId = &v
+	return s
+}
+
+func (s *QueryItemInSubBizsResponseBodyItemBizList) SetSellerId(v int64) *QueryItemInSubBizsResponseBodyItemBizList {
+	s.SellerId = &v
+	return s
+}
+
+func (s *QueryItemInSubBizsResponseBodyItemBizList) SetTbShopName(v string) *QueryItemInSubBizsResponseBodyItemBizList {
+	s.TbShopName = &v
+	return s
+}
+
+func (s *QueryItemInSubBizsResponseBodyItemBizList) SetCanSell(v bool) *QueryItemInSubBizsResponseBodyItemBizList {
+	s.CanSell = &v
+	return s
+}
+
+func (s *QueryItemInSubBizsResponseBodyItemBizList) SetItemId(v int64) *QueryItemInSubBizsResponseBodyItemBizList {
+	s.ItemId = &v
+	return s
+}
+
+func (s *QueryItemInSubBizsResponseBodyItemBizList) SetDescOption(v string) *QueryItemInSubBizsResponseBodyItemBizList {
+	s.DescOption = &v
+	return s
+}
+
+func (s *QueryItemInSubBizsResponseBodyItemBizList) SetMainPicUrl(v string) *QueryItemInSubBizsResponseBodyItemBizList {
+	s.MainPicUrl = &v
+	return s
+}
+
+func (s *QueryItemInSubBizsResponseBodyItemBizList) SetCategoryId(v int64) *QueryItemInSubBizsResponseBodyItemBizList {
+	s.CategoryId = &v
+	return s
+}
+
+func (s *QueryItemInSubBizsResponseBodyItemBizList) SetSubBizId(v string) *QueryItemInSubBizsResponseBodyItemBizList {
+	s.SubBizId = &v
+	return s
+}
+
+func (s *QueryItemInSubBizsResponseBodyItemBizList) SetReservePrice(v int64) *QueryItemInSubBizsResponseBodyItemBizList {
+	s.ReservePrice = &v
+	return s
+}
+
+func (s *QueryItemInSubBizsResponseBodyItemBizList) SetQuantity(v int64) *QueryItemInSubBizsResponseBodyItemBizList {
+	s.Quantity = &v
+	return s
+}
+
+func (s *QueryItemInSubBizsResponseBodyItemBizList) SetSkuList(v []*QueryItemInSubBizsResponseBodyItemBizListSkuList) *QueryItemInSubBizsResponseBodyItemBizList {
+	s.SkuList = v
+	return s
+}
+
+func (s *QueryItemInSubBizsResponseBodyItemBizList) SetItemImages(v []*string) *QueryItemInSubBizsResponseBodyItemBizList {
+	s.ItemImages = v
+	return s
+}
+
+type QueryItemInSubBizsResponseBodyItemBizListSkuList struct {
+	PriceCent              *int64                 `json:"PriceCent,omitempty" xml:"PriceCent,omitempty"`
+	PointPrice             *int64                 `json:"PointPrice,omitempty" xml:"PointPrice,omitempty"`
+	CanSell                *bool                  `json:"CanSell,omitempty" xml:"CanSell,omitempty"`
+	SkuTitle               *string                `json:"SkuTitle,omitempty" xml:"SkuTitle,omitempty"`
+	SkuPropertiesJson      *string                `json:"SkuPropertiesJson,omitempty" xml:"SkuPropertiesJson,omitempty"`
+	SkuProperties          *string                `json:"SkuProperties,omitempty" xml:"SkuProperties,omitempty"`
+	SkuId                  *int64                 `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
+	SkuPicUrl              *string                `json:"SkuPicUrl,omitempty" xml:"SkuPicUrl,omitempty"`
+	Points                 *int64                 `json:"Points,omitempty" xml:"Points,omitempty"`
+	PointsAmount           *int64                 `json:"PointsAmount,omitempty" xml:"PointsAmount,omitempty"`
+	ReservePrice           *int64                 `json:"ReservePrice,omitempty" xml:"ReservePrice,omitempty"`
+	BenefitId              *string                `json:"BenefitId,omitempty" xml:"BenefitId,omitempty"`
+	CustomizedAttributeMap map[string]interface{} `json:"CustomizedAttributeMap,omitempty" xml:"CustomizedAttributeMap,omitempty"`
+}
+
+func (s QueryItemInSubBizsResponseBodyItemBizListSkuList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryItemInSubBizsResponseBodyItemBizListSkuList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryItemInSubBizsResponseBodyItemBizListSkuList) SetPriceCent(v int64) *QueryItemInSubBizsResponseBodyItemBizListSkuList {
+	s.PriceCent = &v
+	return s
+}
+
+func (s *QueryItemInSubBizsResponseBodyItemBizListSkuList) SetPointPrice(v int64) *QueryItemInSubBizsResponseBodyItemBizListSkuList {
+	s.PointPrice = &v
+	return s
+}
+
+func (s *QueryItemInSubBizsResponseBodyItemBizListSkuList) SetCanSell(v bool) *QueryItemInSubBizsResponseBodyItemBizListSkuList {
+	s.CanSell = &v
+	return s
+}
+
+func (s *QueryItemInSubBizsResponseBodyItemBizListSkuList) SetSkuTitle(v string) *QueryItemInSubBizsResponseBodyItemBizListSkuList {
+	s.SkuTitle = &v
+	return s
+}
+
+func (s *QueryItemInSubBizsResponseBodyItemBizListSkuList) SetSkuPropertiesJson(v string) *QueryItemInSubBizsResponseBodyItemBizListSkuList {
+	s.SkuPropertiesJson = &v
+	return s
+}
+
+func (s *QueryItemInSubBizsResponseBodyItemBizListSkuList) SetSkuProperties(v string) *QueryItemInSubBizsResponseBodyItemBizListSkuList {
+	s.SkuProperties = &v
+	return s
+}
+
+func (s *QueryItemInSubBizsResponseBodyItemBizListSkuList) SetSkuId(v int64) *QueryItemInSubBizsResponseBodyItemBizListSkuList {
+	s.SkuId = &v
+	return s
+}
+
+func (s *QueryItemInSubBizsResponseBodyItemBizListSkuList) SetSkuPicUrl(v string) *QueryItemInSubBizsResponseBodyItemBizListSkuList {
+	s.SkuPicUrl = &v
+	return s
+}
+
+func (s *QueryItemInSubBizsResponseBodyItemBizListSkuList) SetPoints(v int64) *QueryItemInSubBizsResponseBodyItemBizListSkuList {
+	s.Points = &v
+	return s
+}
+
+func (s *QueryItemInSubBizsResponseBodyItemBizListSkuList) SetPointsAmount(v int64) *QueryItemInSubBizsResponseBodyItemBizListSkuList {
+	s.PointsAmount = &v
+	return s
+}
+
+func (s *QueryItemInSubBizsResponseBodyItemBizListSkuList) SetReservePrice(v int64) *QueryItemInSubBizsResponseBodyItemBizListSkuList {
+	s.ReservePrice = &v
+	return s
+}
+
+func (s *QueryItemInSubBizsResponseBodyItemBizListSkuList) SetBenefitId(v string) *QueryItemInSubBizsResponseBodyItemBizListSkuList {
+	s.BenefitId = &v
+	return s
+}
+
+func (s *QueryItemInSubBizsResponseBodyItemBizListSkuList) SetCustomizedAttributeMap(v map[string]interface{}) *QueryItemInSubBizsResponseBodyItemBizListSkuList {
+	s.CustomizedAttributeMap = v
+	return s
+}
+
+type QueryItemInSubBizsResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QueryItemInSubBizsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryItemInSubBizsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryItemInSubBizsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryItemInSubBizsResponse) SetHeaders(v map[string]*string) *QueryItemInSubBizsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryItemInSubBizsResponse) SetBody(v *QueryItemInSubBizsResponseBody) *QueryItemInSubBizsResponse {
 	s.Body = v
 	return s
 }
@@ -9674,12 +10706,12 @@ func (s *QueryItemInventoryRequestItemList) SetSkuIdList(v []*int) *QueryItemInv
 
 type QueryItemInventoryResponseBody struct {
 	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Message    *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	ItemList   *QueryItemInventoryResponseBodyItemList `json:"ItemList,omitempty" xml:"ItemList,omitempty" type:"Struct"`
-	SubMessage *string                                 `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
-	SubCode    *string                                 `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	Code       *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success    *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+	SubMessage *string                                 `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Code       *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message    *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	SubCode    *string                                 `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	ItemList   *QueryItemInventoryResponseBodyItemList `json:"ItemList,omitempty" xml:"ItemList,omitempty" type:"Struct"`
 }
 
 func (s QueryItemInventoryResponseBody) String() string {
@@ -9695,13 +10727,8 @@ func (s *QueryItemInventoryResponseBody) SetRequestId(v string) *QueryItemInvent
 	return s
 }
 
-func (s *QueryItemInventoryResponseBody) SetMessage(v string) *QueryItemInventoryResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *QueryItemInventoryResponseBody) SetItemList(v *QueryItemInventoryResponseBodyItemList) *QueryItemInventoryResponseBody {
-	s.ItemList = v
+func (s *QueryItemInventoryResponseBody) SetSuccess(v bool) *QueryItemInventoryResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -9710,18 +10737,23 @@ func (s *QueryItemInventoryResponseBody) SetSubMessage(v string) *QueryItemInven
 	return s
 }
 
-func (s *QueryItemInventoryResponseBody) SetSubCode(v string) *QueryItemInventoryResponseBody {
-	s.SubCode = &v
-	return s
-}
-
 func (s *QueryItemInventoryResponseBody) SetCode(v string) *QueryItemInventoryResponseBody {
 	s.Code = &v
 	return s
 }
 
-func (s *QueryItemInventoryResponseBody) SetSuccess(v bool) *QueryItemInventoryResponseBody {
-	s.Success = &v
+func (s *QueryItemInventoryResponseBody) SetMessage(v string) *QueryItemInventoryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryItemInventoryResponseBody) SetSubCode(v string) *QueryItemInventoryResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *QueryItemInventoryResponseBody) SetItemList(v *QueryItemInventoryResponseBodyItemList) *QueryItemInventoryResponseBody {
+	s.ItemList = v
 	return s
 }
 
@@ -9899,10 +10931,10 @@ func (s *QueryLogisticsRequest) SetAccountType(v string) *QueryLogisticsRequest 
 }
 
 type QueryLogisticsResponseBody struct {
+	Code      *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *QueryLogisticsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Code      *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s QueryLogisticsResponseBody) String() string {
@@ -9911,6 +10943,11 @@ func (s QueryLogisticsResponseBody) String() string {
 
 func (s QueryLogisticsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *QueryLogisticsResponseBody) SetCode(v string) *QueryLogisticsResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *QueryLogisticsResponseBody) SetMessage(v string) *QueryLogisticsResponseBody {
@@ -9925,11 +10962,6 @@ func (s *QueryLogisticsResponseBody) SetRequestId(v string) *QueryLogisticsRespo
 
 func (s *QueryLogisticsResponseBody) SetData(v *QueryLogisticsResponseBodyData) *QueryLogisticsResponseBody {
 	s.Data = v
-	return s
-}
-
-func (s *QueryLogisticsResponseBody) SetCode(v string) *QueryLogisticsResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -9951,13 +10983,13 @@ func (s *QueryLogisticsResponseBodyData) SetData(v []*QueryLogisticsResponseBody
 }
 
 type QueryLogisticsResponseBodyDataData struct {
-	DataProvider         *string                                                `json:"DataProvider,omitempty" xml:"DataProvider,omitempty"`
-	DataProviderTitle    *string                                                `json:"DataProviderTitle,omitempty" xml:"DataProviderTitle,omitempty"`
-	Goods                *QueryLogisticsResponseBodyDataDataGoods               `json:"Goods,omitempty" xml:"Goods,omitempty" type:"Struct"`
-	LogisticsDetailList  *QueryLogisticsResponseBodyDataDataLogisticsDetailList `json:"LogisticsDetailList,omitempty" xml:"LogisticsDetailList,omitempty" type:"Struct"`
 	LogisticsCompanyCode *string                                                `json:"LogisticsCompanyCode,omitempty" xml:"LogisticsCompanyCode,omitempty"`
 	MailNo               *string                                                `json:"MailNo,omitempty" xml:"MailNo,omitempty"`
 	LogisticsCompanyName *string                                                `json:"LogisticsCompanyName,omitempty" xml:"LogisticsCompanyName,omitempty"`
+	DataProvider         *string                                                `json:"DataProvider,omitempty" xml:"DataProvider,omitempty"`
+	DataProviderTitle    *string                                                `json:"DataProviderTitle,omitempty" xml:"DataProviderTitle,omitempty"`
+	LogisticsDetailList  *QueryLogisticsResponseBodyDataDataLogisticsDetailList `json:"LogisticsDetailList,omitempty" xml:"LogisticsDetailList,omitempty" type:"Struct"`
+	Goods                *QueryLogisticsResponseBodyDataDataGoods               `json:"Goods,omitempty" xml:"Goods,omitempty" type:"Struct"`
 }
 
 func (s QueryLogisticsResponseBodyDataData) String() string {
@@ -9966,26 +10998,6 @@ func (s QueryLogisticsResponseBodyDataData) String() string {
 
 func (s QueryLogisticsResponseBodyDataData) GoString() string {
 	return s.String()
-}
-
-func (s *QueryLogisticsResponseBodyDataData) SetDataProvider(v string) *QueryLogisticsResponseBodyDataData {
-	s.DataProvider = &v
-	return s
-}
-
-func (s *QueryLogisticsResponseBodyDataData) SetDataProviderTitle(v string) *QueryLogisticsResponseBodyDataData {
-	s.DataProviderTitle = &v
-	return s
-}
-
-func (s *QueryLogisticsResponseBodyDataData) SetGoods(v *QueryLogisticsResponseBodyDataDataGoods) *QueryLogisticsResponseBodyDataData {
-	s.Goods = v
-	return s
-}
-
-func (s *QueryLogisticsResponseBodyDataData) SetLogisticsDetailList(v *QueryLogisticsResponseBodyDataDataLogisticsDetailList) *QueryLogisticsResponseBodyDataData {
-	s.LogisticsDetailList = v
-	return s
 }
 
 func (s *QueryLogisticsResponseBodyDataData) SetLogisticsCompanyCode(v string) *QueryLogisticsResponseBodyDataData {
@@ -10000,6 +11012,66 @@ func (s *QueryLogisticsResponseBodyDataData) SetMailNo(v string) *QueryLogistics
 
 func (s *QueryLogisticsResponseBodyDataData) SetLogisticsCompanyName(v string) *QueryLogisticsResponseBodyDataData {
 	s.LogisticsCompanyName = &v
+	return s
+}
+
+func (s *QueryLogisticsResponseBodyDataData) SetDataProvider(v string) *QueryLogisticsResponseBodyDataData {
+	s.DataProvider = &v
+	return s
+}
+
+func (s *QueryLogisticsResponseBodyDataData) SetDataProviderTitle(v string) *QueryLogisticsResponseBodyDataData {
+	s.DataProviderTitle = &v
+	return s
+}
+
+func (s *QueryLogisticsResponseBodyDataData) SetLogisticsDetailList(v *QueryLogisticsResponseBodyDataDataLogisticsDetailList) *QueryLogisticsResponseBodyDataData {
+	s.LogisticsDetailList = v
+	return s
+}
+
+func (s *QueryLogisticsResponseBodyDataData) SetGoods(v *QueryLogisticsResponseBodyDataDataGoods) *QueryLogisticsResponseBodyDataData {
+	s.Goods = v
+	return s
+}
+
+type QueryLogisticsResponseBodyDataDataLogisticsDetailList struct {
+	LogisticsDetailList []*QueryLogisticsResponseBodyDataDataLogisticsDetailListLogisticsDetailList `json:"LogisticsDetailList,omitempty" xml:"LogisticsDetailList,omitempty" type:"Repeated"`
+}
+
+func (s QueryLogisticsResponseBodyDataDataLogisticsDetailList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryLogisticsResponseBodyDataDataLogisticsDetailList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryLogisticsResponseBodyDataDataLogisticsDetailList) SetLogisticsDetailList(v []*QueryLogisticsResponseBodyDataDataLogisticsDetailListLogisticsDetailList) *QueryLogisticsResponseBodyDataDataLogisticsDetailList {
+	s.LogisticsDetailList = v
+	return s
+}
+
+type QueryLogisticsResponseBodyDataDataLogisticsDetailListLogisticsDetailList struct {
+	OcurrTimeStr *string `json:"OcurrTimeStr,omitempty" xml:"OcurrTimeStr,omitempty"`
+	StanderdDesc *string `json:"StanderdDesc,omitempty" xml:"StanderdDesc,omitempty"`
+}
+
+func (s QueryLogisticsResponseBodyDataDataLogisticsDetailListLogisticsDetailList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryLogisticsResponseBodyDataDataLogisticsDetailListLogisticsDetailList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryLogisticsResponseBodyDataDataLogisticsDetailListLogisticsDetailList) SetOcurrTimeStr(v string) *QueryLogisticsResponseBodyDataDataLogisticsDetailListLogisticsDetailList {
+	s.OcurrTimeStr = &v
+	return s
+}
+
+func (s *QueryLogisticsResponseBodyDataDataLogisticsDetailListLogisticsDetailList) SetStanderdDesc(v string) *QueryLogisticsResponseBodyDataDataLogisticsDetailListLogisticsDetailList {
+	s.StanderdDesc = &v
 	return s
 }
 
@@ -10049,46 +11121,6 @@ func (s *QueryLogisticsResponseBodyDataDataGoodsGoods) SetQuantity(v int32) *Que
 	return s
 }
 
-type QueryLogisticsResponseBodyDataDataLogisticsDetailList struct {
-	LogisticsDetailList []*QueryLogisticsResponseBodyDataDataLogisticsDetailListLogisticsDetailList `json:"LogisticsDetailList,omitempty" xml:"LogisticsDetailList,omitempty" type:"Repeated"`
-}
-
-func (s QueryLogisticsResponseBodyDataDataLogisticsDetailList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryLogisticsResponseBodyDataDataLogisticsDetailList) GoString() string {
-	return s.String()
-}
-
-func (s *QueryLogisticsResponseBodyDataDataLogisticsDetailList) SetLogisticsDetailList(v []*QueryLogisticsResponseBodyDataDataLogisticsDetailListLogisticsDetailList) *QueryLogisticsResponseBodyDataDataLogisticsDetailList {
-	s.LogisticsDetailList = v
-	return s
-}
-
-type QueryLogisticsResponseBodyDataDataLogisticsDetailListLogisticsDetailList struct {
-	StanderdDesc *string `json:"StanderdDesc,omitempty" xml:"StanderdDesc,omitempty"`
-	OcurrTimeStr *string `json:"OcurrTimeStr,omitempty" xml:"OcurrTimeStr,omitempty"`
-}
-
-func (s QueryLogisticsResponseBodyDataDataLogisticsDetailListLogisticsDetailList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryLogisticsResponseBodyDataDataLogisticsDetailListLogisticsDetailList) GoString() string {
-	return s.String()
-}
-
-func (s *QueryLogisticsResponseBodyDataDataLogisticsDetailListLogisticsDetailList) SetStanderdDesc(v string) *QueryLogisticsResponseBodyDataDataLogisticsDetailListLogisticsDetailList {
-	s.StanderdDesc = &v
-	return s
-}
-
-func (s *QueryLogisticsResponseBodyDataDataLogisticsDetailListLogisticsDetailList) SetOcurrTimeStr(v string) *QueryLogisticsResponseBodyDataDataLogisticsDetailListLogisticsDetailList {
-	s.OcurrTimeStr = &v
-	return s
-}
-
 type QueryLogisticsResponse struct {
 	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	Body    *QueryLogisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -10108,6 +11140,265 @@ func (s *QueryLogisticsResponse) SetHeaders(v map[string]*string) *QueryLogistic
 }
 
 func (s *QueryLogisticsResponse) SetBody(v *QueryLogisticsResponseBody) *QueryLogisticsResponse {
+	s.Body = v
+	return s
+}
+
+type QueryMediaSettleInfoRequest struct {
+	MediaName  *string `json:"MediaName,omitempty" xml:"MediaName,omitempty"`
+	ChannelId  *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	SettleNo   *string `json:"SettleNo,omitempty" xml:"SettleNo,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	ExtInfo    *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
+}
+
+func (s QueryMediaSettleInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMediaSettleInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMediaSettleInfoRequest) SetMediaName(v string) *QueryMediaSettleInfoRequest {
+	s.MediaName = &v
+	return s
+}
+
+func (s *QueryMediaSettleInfoRequest) SetChannelId(v string) *QueryMediaSettleInfoRequest {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *QueryMediaSettleInfoRequest) SetSettleNo(v string) *QueryMediaSettleInfoRequest {
+	s.SettleNo = &v
+	return s
+}
+
+func (s *QueryMediaSettleInfoRequest) SetStartTime(v string) *QueryMediaSettleInfoRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *QueryMediaSettleInfoRequest) SetEndTime(v string) *QueryMediaSettleInfoRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *QueryMediaSettleInfoRequest) SetPageSize(v int32) *QueryMediaSettleInfoRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryMediaSettleInfoRequest) SetPageNumber(v int32) *QueryMediaSettleInfoRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *QueryMediaSettleInfoRequest) SetExtInfo(v string) *QueryMediaSettleInfoRequest {
+	s.ExtInfo = &v
+	return s
+}
+
+type QueryMediaSettleInfoResponseBody struct {
+	RequestId  *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success    *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	SubMessage *string                                `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Code       *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message    *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	SubCode    *string                                `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	TotalCount *int64                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	LogsId     *string                                `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
+	Model      *QueryMediaSettleInfoResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+}
+
+func (s QueryMediaSettleInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMediaSettleInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMediaSettleInfoResponseBody) SetRequestId(v string) *QueryMediaSettleInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryMediaSettleInfoResponseBody) SetSuccess(v bool) *QueryMediaSettleInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *QueryMediaSettleInfoResponseBody) SetSubMessage(v string) *QueryMediaSettleInfoResponseBody {
+	s.SubMessage = &v
+	return s
+}
+
+func (s *QueryMediaSettleInfoResponseBody) SetCode(v string) *QueryMediaSettleInfoResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryMediaSettleInfoResponseBody) SetMessage(v string) *QueryMediaSettleInfoResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryMediaSettleInfoResponseBody) SetSubCode(v string) *QueryMediaSettleInfoResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *QueryMediaSettleInfoResponseBody) SetTotalCount(v int64) *QueryMediaSettleInfoResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *QueryMediaSettleInfoResponseBody) SetLogsId(v string) *QueryMediaSettleInfoResponseBody {
+	s.LogsId = &v
+	return s
+}
+
+func (s *QueryMediaSettleInfoResponseBody) SetModel(v *QueryMediaSettleInfoResponseBodyModel) *QueryMediaSettleInfoResponseBody {
+	s.Model = v
+	return s
+}
+
+type QueryMediaSettleInfoResponseBodyModel struct {
+	PageSize            *int32                                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber          *int32                                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalCount          *int32                                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	MediaSettleInfoList []*QueryMediaSettleInfoResponseBodyModelMediaSettleInfoList `json:"MediaSettleInfoList,omitempty" xml:"MediaSettleInfoList,omitempty" type:"Repeated"`
+}
+
+func (s QueryMediaSettleInfoResponseBodyModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMediaSettleInfoResponseBodyModel) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMediaSettleInfoResponseBodyModel) SetPageSize(v int32) *QueryMediaSettleInfoResponseBodyModel {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryMediaSettleInfoResponseBodyModel) SetPageNumber(v int32) *QueryMediaSettleInfoResponseBodyModel {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *QueryMediaSettleInfoResponseBodyModel) SetTotalCount(v int32) *QueryMediaSettleInfoResponseBodyModel {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *QueryMediaSettleInfoResponseBodyModel) SetMediaSettleInfoList(v []*QueryMediaSettleInfoResponseBodyModelMediaSettleInfoList) *QueryMediaSettleInfoResponseBodyModel {
+	s.MediaSettleInfoList = v
+	return s
+}
+
+type QueryMediaSettleInfoResponseBodyModelMediaSettleInfoList struct {
+	EndTime             *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime           *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	MediaSettleAmount   *string `json:"MediaSettleAmount,omitempty" xml:"MediaSettleAmount,omitempty"`
+	SettleNo            *string `json:"SettleNo,omitempty" xml:"SettleNo,omitempty"`
+	SettleStatus        *string `json:"SettleStatus,omitempty" xml:"SettleStatus,omitempty"`
+	ChannelId           *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	MediaName           *string `json:"MediaName,omitempty" xml:"MediaName,omitempty"`
+	MediaSettleDetailId *string `json:"MediaSettleDetailId,omitempty" xml:"MediaSettleDetailId,omitempty"`
+	ModifiedDate        *string `json:"ModifiedDate,omitempty" xml:"ModifiedDate,omitempty"`
+	CreateDate          *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	ExtInfo             *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
+}
+
+func (s QueryMediaSettleInfoResponseBodyModelMediaSettleInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMediaSettleInfoResponseBodyModelMediaSettleInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMediaSettleInfoResponseBodyModelMediaSettleInfoList) SetEndTime(v string) *QueryMediaSettleInfoResponseBodyModelMediaSettleInfoList {
+	s.EndTime = &v
+	return s
+}
+
+func (s *QueryMediaSettleInfoResponseBodyModelMediaSettleInfoList) SetStartTime(v string) *QueryMediaSettleInfoResponseBodyModelMediaSettleInfoList {
+	s.StartTime = &v
+	return s
+}
+
+func (s *QueryMediaSettleInfoResponseBodyModelMediaSettleInfoList) SetMediaSettleAmount(v string) *QueryMediaSettleInfoResponseBodyModelMediaSettleInfoList {
+	s.MediaSettleAmount = &v
+	return s
+}
+
+func (s *QueryMediaSettleInfoResponseBodyModelMediaSettleInfoList) SetSettleNo(v string) *QueryMediaSettleInfoResponseBodyModelMediaSettleInfoList {
+	s.SettleNo = &v
+	return s
+}
+
+func (s *QueryMediaSettleInfoResponseBodyModelMediaSettleInfoList) SetSettleStatus(v string) *QueryMediaSettleInfoResponseBodyModelMediaSettleInfoList {
+	s.SettleStatus = &v
+	return s
+}
+
+func (s *QueryMediaSettleInfoResponseBodyModelMediaSettleInfoList) SetChannelId(v string) *QueryMediaSettleInfoResponseBodyModelMediaSettleInfoList {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *QueryMediaSettleInfoResponseBodyModelMediaSettleInfoList) SetMediaName(v string) *QueryMediaSettleInfoResponseBodyModelMediaSettleInfoList {
+	s.MediaName = &v
+	return s
+}
+
+func (s *QueryMediaSettleInfoResponseBodyModelMediaSettleInfoList) SetMediaSettleDetailId(v string) *QueryMediaSettleInfoResponseBodyModelMediaSettleInfoList {
+	s.MediaSettleDetailId = &v
+	return s
+}
+
+func (s *QueryMediaSettleInfoResponseBodyModelMediaSettleInfoList) SetModifiedDate(v string) *QueryMediaSettleInfoResponseBodyModelMediaSettleInfoList {
+	s.ModifiedDate = &v
+	return s
+}
+
+func (s *QueryMediaSettleInfoResponseBodyModelMediaSettleInfoList) SetCreateDate(v string) *QueryMediaSettleInfoResponseBodyModelMediaSettleInfoList {
+	s.CreateDate = &v
+	return s
+}
+
+func (s *QueryMediaSettleInfoResponseBodyModelMediaSettleInfoList) SetExtInfo(v string) *QueryMediaSettleInfoResponseBodyModelMediaSettleInfoList {
+	s.ExtInfo = &v
+	return s
+}
+
+type QueryMediaSettleInfoResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QueryMediaSettleInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryMediaSettleInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMediaSettleInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMediaSettleInfoResponse) SetHeaders(v map[string]*string) *QueryMediaSettleInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryMediaSettleInfoResponse) SetBody(v *QueryMediaSettleInfoResponseBody) *QueryMediaSettleInfoResponse {
 	s.Body = v
 	return s
 }
@@ -10143,12 +11434,12 @@ func (s *QueryMessagesRequest) SetExtJson(v string) *QueryMessagesRequest {
 
 type QueryMessagesResponseBody struct {
 	RequestId   *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success     *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	SubMessage  *string                               `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Code        *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	SubCode     *string                               `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
 	Message     *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
 	LogsId      *string                               `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
-	SubMessage  *string                               `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
-	SubCode     *string                               `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	Code        *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success     *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
 	BizMessages *QueryMessagesResponseBodyBizMessages `json:"BizMessages,omitempty" xml:"BizMessages,omitempty" type:"Struct"`
 }
 
@@ -10165,13 +11456,8 @@ func (s *QueryMessagesResponseBody) SetRequestId(v string) *QueryMessagesRespons
 	return s
 }
 
-func (s *QueryMessagesResponseBody) SetMessage(v string) *QueryMessagesResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *QueryMessagesResponseBody) SetLogsId(v string) *QueryMessagesResponseBody {
-	s.LogsId = &v
+func (s *QueryMessagesResponseBody) SetSuccess(v bool) *QueryMessagesResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -10180,18 +11466,23 @@ func (s *QueryMessagesResponseBody) SetSubMessage(v string) *QueryMessagesRespon
 	return s
 }
 
-func (s *QueryMessagesResponseBody) SetSubCode(v string) *QueryMessagesResponseBody {
-	s.SubCode = &v
-	return s
-}
-
 func (s *QueryMessagesResponseBody) SetCode(v string) *QueryMessagesResponseBody {
 	s.Code = &v
 	return s
 }
 
-func (s *QueryMessagesResponseBody) SetSuccess(v bool) *QueryMessagesResponseBody {
-	s.Success = &v
+func (s *QueryMessagesResponseBody) SetSubCode(v string) *QueryMessagesResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *QueryMessagesResponseBody) SetMessage(v string) *QueryMessagesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryMessagesResponseBody) SetLogsId(v string) *QueryMessagesResponseBody {
+	s.LogsId = &v
 	return s
 }
 
@@ -10218,10 +11509,10 @@ func (s *QueryMessagesResponseBodyBizMessages) SetBizMessage(v []*QueryMessagesR
 }
 
 type QueryMessagesResponseBodyBizMessagesBizMessage struct {
-	PubTime        *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
-	Topic          *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 	ContentMapJson *string `json:"ContentMapJson,omitempty" xml:"ContentMapJson,omitempty"`
+	PubTime        *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
 	DataId         *int64  `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	Topic          *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s QueryMessagesResponseBodyBizMessagesBizMessage) String() string {
@@ -10232,23 +11523,23 @@ func (s QueryMessagesResponseBodyBizMessagesBizMessage) GoString() string {
 	return s.String()
 }
 
-func (s *QueryMessagesResponseBodyBizMessagesBizMessage) SetPubTime(v string) *QueryMessagesResponseBodyBizMessagesBizMessage {
-	s.PubTime = &v
-	return s
-}
-
-func (s *QueryMessagesResponseBodyBizMessagesBizMessage) SetTopic(v string) *QueryMessagesResponseBodyBizMessagesBizMessage {
-	s.Topic = &v
-	return s
-}
-
 func (s *QueryMessagesResponseBodyBizMessagesBizMessage) SetContentMapJson(v string) *QueryMessagesResponseBodyBizMessagesBizMessage {
 	s.ContentMapJson = &v
 	return s
 }
 
+func (s *QueryMessagesResponseBodyBizMessagesBizMessage) SetPubTime(v string) *QueryMessagesResponseBodyBizMessagesBizMessage {
+	s.PubTime = &v
+	return s
+}
+
 func (s *QueryMessagesResponseBodyBizMessagesBizMessage) SetDataId(v int64) *QueryMessagesResponseBodyBizMessagesBizMessage {
 	s.DataId = &v
+	return s
+}
+
+func (s *QueryMessagesResponseBodyBizMessagesBizMessage) SetTopic(v string) *QueryMessagesResponseBodyBizMessagesBizMessage {
+	s.Topic = &v
 	return s
 }
 
@@ -10312,14 +11603,14 @@ func (s *QueryMovieCommentsRequest) SetExtJson(v string) *QueryMovieCommentsRequ
 
 type QueryMovieCommentsResponseBody struct {
 	RequestId   *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Message     *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	LogsId      *string                                    `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
-	SubMessage  *string                                    `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
-	CommentList *QueryMovieCommentsResponseBodyCommentList `json:"CommentList,omitempty" xml:"CommentList,omitempty" type:"Struct"`
-	Count       *int64                                     `json:"Count,omitempty" xml:"Count,omitempty"`
-	SubCode     *string                                    `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	Code        *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success     *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	SubMessage  *string                                    `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Code        *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message     *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	SubCode     *string                                    `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	LogsId      *string                                    `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
+	Count       *int64                                     `json:"Count,omitempty" xml:"Count,omitempty"`
+	CommentList *QueryMovieCommentsResponseBodyCommentList `json:"CommentList,omitempty" xml:"CommentList,omitempty" type:"Struct"`
 }
 
 func (s QueryMovieCommentsResponseBody) String() string {
@@ -10335,13 +11626,8 @@ func (s *QueryMovieCommentsResponseBody) SetRequestId(v string) *QueryMovieComme
 	return s
 }
 
-func (s *QueryMovieCommentsResponseBody) SetMessage(v string) *QueryMovieCommentsResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *QueryMovieCommentsResponseBody) SetLogsId(v string) *QueryMovieCommentsResponseBody {
-	s.LogsId = &v
+func (s *QueryMovieCommentsResponseBody) SetSuccess(v bool) *QueryMovieCommentsResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -10350,13 +11636,13 @@ func (s *QueryMovieCommentsResponseBody) SetSubMessage(v string) *QueryMovieComm
 	return s
 }
 
-func (s *QueryMovieCommentsResponseBody) SetCommentList(v *QueryMovieCommentsResponseBodyCommentList) *QueryMovieCommentsResponseBody {
-	s.CommentList = v
+func (s *QueryMovieCommentsResponseBody) SetCode(v string) *QueryMovieCommentsResponseBody {
+	s.Code = &v
 	return s
 }
 
-func (s *QueryMovieCommentsResponseBody) SetCount(v int64) *QueryMovieCommentsResponseBody {
-	s.Count = &v
+func (s *QueryMovieCommentsResponseBody) SetMessage(v string) *QueryMovieCommentsResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -10365,13 +11651,18 @@ func (s *QueryMovieCommentsResponseBody) SetSubCode(v string) *QueryMovieComment
 	return s
 }
 
-func (s *QueryMovieCommentsResponseBody) SetCode(v string) *QueryMovieCommentsResponseBody {
-	s.Code = &v
+func (s *QueryMovieCommentsResponseBody) SetLogsId(v string) *QueryMovieCommentsResponseBody {
+	s.LogsId = &v
 	return s
 }
 
-func (s *QueryMovieCommentsResponseBody) SetSuccess(v bool) *QueryMovieCommentsResponseBody {
-	s.Success = &v
+func (s *QueryMovieCommentsResponseBody) SetCount(v int64) *QueryMovieCommentsResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *QueryMovieCommentsResponseBody) SetCommentList(v *QueryMovieCommentsResponseBodyCommentList) *QueryMovieCommentsResponseBody {
+	s.CommentList = v
 	return s
 }
 
@@ -10504,14 +11795,14 @@ func (s *QueryMovieSchedulesRequest) SetExtJson(v string) *QueryMovieSchedulesRe
 }
 
 type QueryMovieSchedulesResponseBody struct {
-	Schedules  *QueryMovieSchedulesResponseBodySchedules `json:"Schedules,omitempty" xml:"Schedules,omitempty" type:"Struct"`
 	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Message    *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	LogsId     *string                                   `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
-	SubMessage *string                                   `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
-	SubCode    *string                                   `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	Code       *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success    *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	SubMessage *string                                   `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Code       *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message    *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	SubCode    *string                                   `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	LogsId     *string                                   `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
+	Schedules  *QueryMovieSchedulesResponseBodySchedules `json:"Schedules,omitempty" xml:"Schedules,omitempty" type:"Struct"`
 }
 
 func (s QueryMovieSchedulesResponseBody) String() string {
@@ -10522,23 +11813,13 @@ func (s QueryMovieSchedulesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *QueryMovieSchedulesResponseBody) SetSchedules(v *QueryMovieSchedulesResponseBodySchedules) *QueryMovieSchedulesResponseBody {
-	s.Schedules = v
-	return s
-}
-
 func (s *QueryMovieSchedulesResponseBody) SetRequestId(v string) *QueryMovieSchedulesResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *QueryMovieSchedulesResponseBody) SetMessage(v string) *QueryMovieSchedulesResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *QueryMovieSchedulesResponseBody) SetLogsId(v string) *QueryMovieSchedulesResponseBody {
-	s.LogsId = &v
+func (s *QueryMovieSchedulesResponseBody) SetSuccess(v bool) *QueryMovieSchedulesResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -10547,18 +11828,28 @@ func (s *QueryMovieSchedulesResponseBody) SetSubMessage(v string) *QueryMovieSch
 	return s
 }
 
-func (s *QueryMovieSchedulesResponseBody) SetSubCode(v string) *QueryMovieSchedulesResponseBody {
-	s.SubCode = &v
-	return s
-}
-
 func (s *QueryMovieSchedulesResponseBody) SetCode(v string) *QueryMovieSchedulesResponseBody {
 	s.Code = &v
 	return s
 }
 
-func (s *QueryMovieSchedulesResponseBody) SetSuccess(v bool) *QueryMovieSchedulesResponseBody {
-	s.Success = &v
+func (s *QueryMovieSchedulesResponseBody) SetMessage(v string) *QueryMovieSchedulesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryMovieSchedulesResponseBody) SetSubCode(v string) *QueryMovieSchedulesResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *QueryMovieSchedulesResponseBody) SetLogsId(v string) *QueryMovieSchedulesResponseBody {
+	s.LogsId = &v
+	return s
+}
+
+func (s *QueryMovieSchedulesResponseBody) SetSchedules(v *QueryMovieSchedulesResponseBodySchedules) *QueryMovieSchedulesResponseBody {
+	s.Schedules = v
 	return s
 }
 
@@ -10580,8 +11871,8 @@ func (s *QueryMovieSchedulesResponseBodySchedules) SetSchedule(v []*QueryMovieSc
 }
 
 type QueryMovieSchedulesResponseBodySchedulesSchedule struct {
-	SessionEndingTime   *string `json:"SessionEndingTime,omitempty" xml:"SessionEndingTime,omitempty"`
 	MovieVersion        *string `json:"MovieVersion,omitempty" xml:"MovieVersion,omitempty"`
+	SessionEndingTime   *string `json:"SessionEndingTime,omitempty" xml:"SessionEndingTime,omitempty"`
 	MaxCanBuy           *int64  `json:"MaxCanBuy,omitempty" xml:"MaxCanBuy,omitempty"`
 	MovieId             *int64  `json:"MovieId,omitempty" xml:"MovieId,omitempty"`
 	ScheduleArea        *string `json:"ScheduleArea,omitempty" xml:"ScheduleArea,omitempty"`
@@ -10589,8 +11880,8 @@ type QueryMovieSchedulesResponseBodySchedulesSchedule struct {
 	IsExpired           *bool   `json:"IsExpired,omitempty" xml:"IsExpired,omitempty"`
 	SessionStartingTime *string `json:"SessionStartingTime,omitempty" xml:"SessionStartingTime,omitempty"`
 	Price               *int64  `json:"Price,omitempty" xml:"Price,omitempty"`
-	ReleaseDate         *string `json:"ReleaseDate,omitempty" xml:"ReleaseDate,omitempty"`
 	SectionId           *string `json:"SectionId,omitempty" xml:"SectionId,omitempty"`
+	ReleaseDate         *string `json:"ReleaseDate,omitempty" xml:"ReleaseDate,omitempty"`
 	CinemaId            *int64  `json:"CinemaId,omitempty" xml:"CinemaId,omitempty"`
 	ServiceFee          *int64  `json:"ServiceFee,omitempty" xml:"ServiceFee,omitempty"`
 	Id                  *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
@@ -10604,13 +11895,13 @@ func (s QueryMovieSchedulesResponseBodySchedulesSchedule) GoString() string {
 	return s.String()
 }
 
-func (s *QueryMovieSchedulesResponseBodySchedulesSchedule) SetSessionEndingTime(v string) *QueryMovieSchedulesResponseBodySchedulesSchedule {
-	s.SessionEndingTime = &v
+func (s *QueryMovieSchedulesResponseBodySchedulesSchedule) SetMovieVersion(v string) *QueryMovieSchedulesResponseBodySchedulesSchedule {
+	s.MovieVersion = &v
 	return s
 }
 
-func (s *QueryMovieSchedulesResponseBodySchedulesSchedule) SetMovieVersion(v string) *QueryMovieSchedulesResponseBodySchedulesSchedule {
-	s.MovieVersion = &v
+func (s *QueryMovieSchedulesResponseBodySchedulesSchedule) SetSessionEndingTime(v string) *QueryMovieSchedulesResponseBodySchedulesSchedule {
+	s.SessionEndingTime = &v
 	return s
 }
 
@@ -10649,13 +11940,13 @@ func (s *QueryMovieSchedulesResponseBodySchedulesSchedule) SetPrice(v int64) *Qu
 	return s
 }
 
-func (s *QueryMovieSchedulesResponseBodySchedulesSchedule) SetReleaseDate(v string) *QueryMovieSchedulesResponseBodySchedulesSchedule {
-	s.ReleaseDate = &v
+func (s *QueryMovieSchedulesResponseBodySchedulesSchedule) SetSectionId(v string) *QueryMovieSchedulesResponseBodySchedulesSchedule {
+	s.SectionId = &v
 	return s
 }
 
-func (s *QueryMovieSchedulesResponseBodySchedulesSchedule) SetSectionId(v string) *QueryMovieSchedulesResponseBodySchedulesSchedule {
-	s.SectionId = &v
+func (s *QueryMovieSchedulesResponseBodySchedulesSchedule) SetReleaseDate(v string) *QueryMovieSchedulesResponseBodySchedulesSchedule {
+	s.ReleaseDate = &v
 	return s
 }
 
@@ -10728,13 +12019,13 @@ func (s *QueryMovieSeatsRequest) SetExtJson(v string) *QueryMovieSeatsRequest {
 
 type QueryMovieSeatsResponseBody struct {
 	RequestId  *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Message    *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	LogsId     *string                             `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
-	SubMessage *string                             `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
-	SubCode    *string                             `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	SeatMap    *QueryMovieSeatsResponseBodySeatMap `json:"SeatMap,omitempty" xml:"SeatMap,omitempty" type:"Struct"`
-	Code       *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success    *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	SubMessage *string                             `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Code       *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message    *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	SubCode    *string                             `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	LogsId     *string                             `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
+	SeatMap    *QueryMovieSeatsResponseBodySeatMap `json:"SeatMap,omitempty" xml:"SeatMap,omitempty" type:"Struct"`
 }
 
 func (s QueryMovieSeatsResponseBody) String() string {
@@ -10750,13 +12041,8 @@ func (s *QueryMovieSeatsResponseBody) SetRequestId(v string) *QueryMovieSeatsRes
 	return s
 }
 
-func (s *QueryMovieSeatsResponseBody) SetMessage(v string) *QueryMovieSeatsResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *QueryMovieSeatsResponseBody) SetLogsId(v string) *QueryMovieSeatsResponseBody {
-	s.LogsId = &v
+func (s *QueryMovieSeatsResponseBody) SetSuccess(v bool) *QueryMovieSeatsResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -10765,8 +12051,23 @@ func (s *QueryMovieSeatsResponseBody) SetSubMessage(v string) *QueryMovieSeatsRe
 	return s
 }
 
+func (s *QueryMovieSeatsResponseBody) SetCode(v string) *QueryMovieSeatsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryMovieSeatsResponseBody) SetMessage(v string) *QueryMovieSeatsResponseBody {
+	s.Message = &v
+	return s
+}
+
 func (s *QueryMovieSeatsResponseBody) SetSubCode(v string) *QueryMovieSeatsResponseBody {
 	s.SubCode = &v
+	return s
+}
+
+func (s *QueryMovieSeatsResponseBody) SetLogsId(v string) *QueryMovieSeatsResponseBody {
+	s.LogsId = &v
 	return s
 }
 
@@ -10775,32 +12076,22 @@ func (s *QueryMovieSeatsResponseBody) SetSeatMap(v *QueryMovieSeatsResponseBodyS
 	return s
 }
 
-func (s *QueryMovieSeatsResponseBody) SetCode(v string) *QueryMovieSeatsResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *QueryMovieSeatsResponseBody) SetSuccess(v bool) *QueryMovieSeatsResponseBody {
-	s.Success = &v
-	return s
-}
-
 type QueryMovieSeatsResponseBodySeatMap struct {
 	MaxCanBuy  *int64                                   `json:"MaxCanBuy,omitempty" xml:"MaxCanBuy,omitempty"`
-	MaxRow     *int64                                   `json:"MaxRow,omitempty" xml:"MaxRow,omitempty"`
 	TipMessage *string                                  `json:"TipMessage,omitempty" xml:"TipMessage,omitempty"`
-	Notice     *string                                  `json:"Notice,omitempty" xml:"Notice,omitempty"`
-	MinTopPx   *int64                                   `json:"MinTopPx,omitempty" xml:"MinTopPx,omitempty"`
+	MaxRow     *int64                                   `json:"MaxRow,omitempty" xml:"MaxRow,omitempty"`
 	MinColumn  *int64                                   `json:"MinColumn,omitempty" xml:"MinColumn,omitempty"`
+	MinTopPx   *int64                                   `json:"MinTopPx,omitempty" xml:"MinTopPx,omitempty"`
+	Notice     *string                                  `json:"Notice,omitempty" xml:"Notice,omitempty"`
 	MaxColumn  *int64                                   `json:"MaxColumn,omitempty" xml:"MaxColumn,omitempty"`
 	Regular    *bool                                    `json:"Regular,omitempty" xml:"Regular,omitempty"`
 	MaxTopPx   *int64                                   `json:"MaxTopPx,omitempty" xml:"MaxTopPx,omitempty"`
 	MaxLeftPx  *int64                                   `json:"MaxLeftPx,omitempty" xml:"MaxLeftPx,omitempty"`
-	Seats      *QueryMovieSeatsResponseBodySeatMapSeats `json:"Seats,omitempty" xml:"Seats,omitempty" type:"Struct"`
 	SoldCount  *int64                                   `json:"SoldCount,omitempty" xml:"SoldCount,omitempty"`
 	MinRow     *int64                                   `json:"MinRow,omitempty" xml:"MinRow,omitempty"`
 	SeatCount  *int64                                   `json:"SeatCount,omitempty" xml:"SeatCount,omitempty"`
 	MinLeftPx  *int64                                   `json:"MinLeftPx,omitempty" xml:"MinLeftPx,omitempty"`
+	Seats      *QueryMovieSeatsResponseBodySeatMapSeats `json:"Seats,omitempty" xml:"Seats,omitempty" type:"Struct"`
 }
 
 func (s QueryMovieSeatsResponseBodySeatMap) String() string {
@@ -10816,18 +12107,18 @@ func (s *QueryMovieSeatsResponseBodySeatMap) SetMaxCanBuy(v int64) *QueryMovieSe
 	return s
 }
 
-func (s *QueryMovieSeatsResponseBodySeatMap) SetMaxRow(v int64) *QueryMovieSeatsResponseBodySeatMap {
-	s.MaxRow = &v
-	return s
-}
-
 func (s *QueryMovieSeatsResponseBodySeatMap) SetTipMessage(v string) *QueryMovieSeatsResponseBodySeatMap {
 	s.TipMessage = &v
 	return s
 }
 
-func (s *QueryMovieSeatsResponseBodySeatMap) SetNotice(v string) *QueryMovieSeatsResponseBodySeatMap {
-	s.Notice = &v
+func (s *QueryMovieSeatsResponseBodySeatMap) SetMaxRow(v int64) *QueryMovieSeatsResponseBodySeatMap {
+	s.MaxRow = &v
+	return s
+}
+
+func (s *QueryMovieSeatsResponseBodySeatMap) SetMinColumn(v int64) *QueryMovieSeatsResponseBodySeatMap {
+	s.MinColumn = &v
 	return s
 }
 
@@ -10836,8 +12127,8 @@ func (s *QueryMovieSeatsResponseBodySeatMap) SetMinTopPx(v int64) *QueryMovieSea
 	return s
 }
 
-func (s *QueryMovieSeatsResponseBodySeatMap) SetMinColumn(v int64) *QueryMovieSeatsResponseBodySeatMap {
-	s.MinColumn = &v
+func (s *QueryMovieSeatsResponseBodySeatMap) SetNotice(v string) *QueryMovieSeatsResponseBodySeatMap {
+	s.Notice = &v
 	return s
 }
 
@@ -10861,11 +12152,6 @@ func (s *QueryMovieSeatsResponseBodySeatMap) SetMaxLeftPx(v int64) *QueryMovieSe
 	return s
 }
 
-func (s *QueryMovieSeatsResponseBodySeatMap) SetSeats(v *QueryMovieSeatsResponseBodySeatMapSeats) *QueryMovieSeatsResponseBodySeatMap {
-	s.Seats = v
-	return s
-}
-
 func (s *QueryMovieSeatsResponseBodySeatMap) SetSoldCount(v int64) *QueryMovieSeatsResponseBodySeatMap {
 	s.SoldCount = &v
 	return s
@@ -10883,6 +12169,11 @@ func (s *QueryMovieSeatsResponseBodySeatMap) SetSeatCount(v int64) *QueryMovieSe
 
 func (s *QueryMovieSeatsResponseBodySeatMap) SetMinLeftPx(v int64) *QueryMovieSeatsResponseBodySeatMap {
 	s.MinLeftPx = &v
+	return s
+}
+
+func (s *QueryMovieSeatsResponseBodySeatMap) SetSeats(v *QueryMovieSeatsResponseBodySeatMapSeats) *QueryMovieSeatsResponseBodySeatMap {
+	s.Seats = v
 	return s
 }
 
@@ -11034,13 +12325,13 @@ func (s *QueryMovieTicketsRequest) SetExtJson(v string) *QueryMovieTicketsReques
 
 type QueryMovieTicketsResponseBody struct {
 	RequestId   *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success     *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	SubMessage  *string                                   `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Code        *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	SubCode     *string                                   `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
 	Message     *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
 	LogsId      *string                                   `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
 	MovieTicket *QueryMovieTicketsResponseBodyMovieTicket `json:"MovieTicket,omitempty" xml:"MovieTicket,omitempty" type:"Struct"`
-	SubMessage  *string                                   `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
-	SubCode     *string                                   `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	Code        *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success     *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryMovieTicketsResponseBody) String() string {
@@ -11053,6 +12344,26 @@ func (s QueryMovieTicketsResponseBody) GoString() string {
 
 func (s *QueryMovieTicketsResponseBody) SetRequestId(v string) *QueryMovieTicketsResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *QueryMovieTicketsResponseBody) SetSuccess(v bool) *QueryMovieTicketsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *QueryMovieTicketsResponseBody) SetSubMessage(v string) *QueryMovieTicketsResponseBody {
+	s.SubMessage = &v
+	return s
+}
+
+func (s *QueryMovieTicketsResponseBody) SetCode(v string) *QueryMovieTicketsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryMovieTicketsResponseBody) SetSubCode(v string) *QueryMovieTicketsResponseBody {
+	s.SubCode = &v
 	return s
 }
 
@@ -11071,30 +12382,10 @@ func (s *QueryMovieTicketsResponseBody) SetMovieTicket(v *QueryMovieTicketsRespo
 	return s
 }
 
-func (s *QueryMovieTicketsResponseBody) SetSubMessage(v string) *QueryMovieTicketsResponseBody {
-	s.SubMessage = &v
-	return s
-}
-
-func (s *QueryMovieTicketsResponseBody) SetSubCode(v string) *QueryMovieTicketsResponseBody {
-	s.SubCode = &v
-	return s
-}
-
-func (s *QueryMovieTicketsResponseBody) SetCode(v string) *QueryMovieTicketsResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *QueryMovieTicketsResponseBody) SetSuccess(v bool) *QueryMovieTicketsResponseBody {
-	s.Success = &v
-	return s
-}
-
 type QueryMovieTicketsResponseBodyMovieTicket struct {
 	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TicketContents *string `json:"TicketContents,omitempty" xml:"TicketContents,omitempty"`
 	TbOrderId      *string `json:"TbOrderId,omitempty" xml:"TbOrderId,omitempty"`
+	TicketContents *string `json:"TicketContents,omitempty" xml:"TicketContents,omitempty"`
 	ReturnMessage  *string `json:"ReturnMessage,omitempty" xml:"ReturnMessage,omitempty"`
 }
 
@@ -11111,13 +12402,13 @@ func (s *QueryMovieTicketsResponseBodyMovieTicket) SetStatus(v string) *QueryMov
 	return s
 }
 
-func (s *QueryMovieTicketsResponseBodyMovieTicket) SetTicketContents(v string) *QueryMovieTicketsResponseBodyMovieTicket {
-	s.TicketContents = &v
+func (s *QueryMovieTicketsResponseBodyMovieTicket) SetTbOrderId(v string) *QueryMovieTicketsResponseBodyMovieTicket {
+	s.TbOrderId = &v
 	return s
 }
 
-func (s *QueryMovieTicketsResponseBodyMovieTicket) SetTbOrderId(v string) *QueryMovieTicketsResponseBodyMovieTicket {
-	s.TbOrderId = &v
+func (s *QueryMovieTicketsResponseBodyMovieTicket) SetTicketContents(v string) *QueryMovieTicketsResponseBodyMovieTicket {
+	s.TicketContents = &v
 	return s
 }
 
@@ -11209,14 +12500,14 @@ func (s *QueryOrderAndPaymentListRequest) SetAccountType(v string) *QueryOrderAn
 }
 
 type QueryOrderAndPaymentListResponseBody struct {
-	PostFee     *QueryOrderAndPaymentListResponseBodyPostFee     `json:"PostFee,omitempty" xml:"PostFee,omitempty" type:"Struct"`
-	TotalCount  *int64                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId   *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code        *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message     *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
 	PageSize    *int32                                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PageNumber  *int32                                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalCount  *int64                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PostFee     *QueryOrderAndPaymentListResponseBodyPostFee     `json:"PostFee,omitempty" xml:"PostFee,omitempty" type:"Struct"`
 	LmOrderList *QueryOrderAndPaymentListResponseBodyLmOrderList `json:"LmOrderList,omitempty" xml:"LmOrderList,omitempty" type:"Struct"`
-	Code        *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s QueryOrderAndPaymentListResponseBody) String() string {
@@ -11227,18 +12518,13 @@ func (s QueryOrderAndPaymentListResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *QueryOrderAndPaymentListResponseBody) SetPostFee(v *QueryOrderAndPaymentListResponseBodyPostFee) *QueryOrderAndPaymentListResponseBody {
-	s.PostFee = v
-	return s
-}
-
-func (s *QueryOrderAndPaymentListResponseBody) SetTotalCount(v int64) *QueryOrderAndPaymentListResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
 func (s *QueryOrderAndPaymentListResponseBody) SetRequestId(v string) *QueryOrderAndPaymentListResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListResponseBody) SetCode(v string) *QueryOrderAndPaymentListResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -11257,13 +12543,18 @@ func (s *QueryOrderAndPaymentListResponseBody) SetPageNumber(v int32) *QueryOrde
 	return s
 }
 
-func (s *QueryOrderAndPaymentListResponseBody) SetLmOrderList(v *QueryOrderAndPaymentListResponseBodyLmOrderList) *QueryOrderAndPaymentListResponseBody {
-	s.LmOrderList = v
+func (s *QueryOrderAndPaymentListResponseBody) SetTotalCount(v int64) *QueryOrderAndPaymentListResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
-func (s *QueryOrderAndPaymentListResponseBody) SetCode(v string) *QueryOrderAndPaymentListResponseBody {
-	s.Code = &v
+func (s *QueryOrderAndPaymentListResponseBody) SetPostFee(v *QueryOrderAndPaymentListResponseBodyPostFee) *QueryOrderAndPaymentListResponseBody {
+	s.PostFee = v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListResponseBody) SetLmOrderList(v *QueryOrderAndPaymentListResponseBodyLmOrderList) *QueryOrderAndPaymentListResponseBody {
+	s.LmOrderList = v
 	return s
 }
 
@@ -11314,19 +12605,19 @@ func (s *QueryOrderAndPaymentListResponseBodyLmOrderList) SetLmOrderList(v []*Qu
 }
 
 type QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderList struct {
-	PostFee             *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListPostFee             `json:"PostFee,omitempty" xml:"PostFee,omitempty" type:"Struct"`
 	LmOrderId           *int64                                                                         `json:"LmOrderId,omitempty" xml:"LmOrderId,omitempty"`
-	LmPaymentId         *string                                                                        `json:"LmPaymentId,omitempty" xml:"LmPaymentId,omitempty"`
-	ShopName            *string                                                                        `json:"ShopName,omitempty" xml:"ShopName,omitempty"`
-	OrderAmount         *int64                                                                         `json:"OrderAmount,omitempty" xml:"OrderAmount,omitempty"`
-	CreateDate          *string                                                                        `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	SubOrderList        *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListSubOrderList        `json:"SubOrderList,omitempty" xml:"SubOrderList,omitempty" type:"Struct"`
 	EnableStatus        *int32                                                                         `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
 	ExtJson             *string                                                                        `json:"ExtJson,omitempty" xml:"ExtJson,omitempty"`
 	OrderStatus         *int32                                                                         `json:"OrderStatus,omitempty" xml:"OrderStatus,omitempty"`
+	LmPaymentId         *string                                                                        `json:"LmPaymentId,omitempty" xml:"LmPaymentId,omitempty"`
+	ShopName            *string                                                                        `json:"ShopName,omitempty" xml:"ShopName,omitempty"`
 	TbOrderId           *int64                                                                         `json:"TbOrderId,omitempty" xml:"TbOrderId,omitempty"`
-	FundStructureModels *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListFundStructureModels `json:"FundStructureModels,omitempty" xml:"FundStructureModels,omitempty" type:"Struct"`
+	OrderAmount         *int64                                                                         `json:"OrderAmount,omitempty" xml:"OrderAmount,omitempty"`
 	LogisticsStatus     *int32                                                                         `json:"LogisticsStatus,omitempty" xml:"LogisticsStatus,omitempty"`
+	CreateDate          *string                                                                        `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	FundStructureModels *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListFundStructureModels `json:"FundStructureModels,omitempty" xml:"FundStructureModels,omitempty" type:"Struct"`
+	SubOrderList        *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListSubOrderList        `json:"SubOrderList,omitempty" xml:"SubOrderList,omitempty" type:"Struct"`
+	PostFee             *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListPostFee             `json:"PostFee,omitempty" xml:"PostFee,omitempty" type:"Struct"`
 }
 
 func (s QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderList) String() string {
@@ -11337,38 +12628,8 @@ func (s QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderList) GoString() s
 	return s.String()
 }
 
-func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderList) SetPostFee(v *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListPostFee) *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderList {
-	s.PostFee = v
-	return s
-}
-
 func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderList) SetLmOrderId(v int64) *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderList {
 	s.LmOrderId = &v
-	return s
-}
-
-func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderList) SetLmPaymentId(v string) *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderList {
-	s.LmPaymentId = &v
-	return s
-}
-
-func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderList) SetShopName(v string) *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderList {
-	s.ShopName = &v
-	return s
-}
-
-func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderList) SetOrderAmount(v int64) *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderList {
-	s.OrderAmount = &v
-	return s
-}
-
-func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderList) SetCreateDate(v string) *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderList {
-	s.CreateDate = &v
-	return s
-}
-
-func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderList) SetSubOrderList(v *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListSubOrderList) *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderList {
-	s.SubOrderList = v
 	return s
 }
 
@@ -11387,13 +12648,23 @@ func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderList) SetOrderSta
 	return s
 }
 
+func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderList) SetLmPaymentId(v string) *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderList {
+	s.LmPaymentId = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderList) SetShopName(v string) *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderList {
+	s.ShopName = &v
+	return s
+}
+
 func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderList) SetTbOrderId(v int64) *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderList {
 	s.TbOrderId = &v
 	return s
 }
 
-func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderList) SetFundStructureModels(v *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListFundStructureModels) *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderList {
-	s.FundStructureModels = v
+func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderList) SetOrderAmount(v int64) *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderList {
+	s.OrderAmount = &v
 	return s
 }
 
@@ -11402,31 +12673,68 @@ func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderList) SetLogistic
 	return s
 }
 
-type QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListPostFee struct {
+func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderList) SetCreateDate(v string) *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderList {
+	s.CreateDate = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderList) SetFundStructureModels(v *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListFundStructureModels) *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderList {
+	s.FundStructureModels = v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderList) SetSubOrderList(v *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListSubOrderList) *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderList {
+	s.SubOrderList = v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderList) SetPostFee(v *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListPostFee) *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderList {
+	s.PostFee = v
+	return s
+}
+
+type QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListFundStructureModels struct {
+	FundStructureModels []*QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListFundStructureModelsFundStructureModels `json:"FundStructureModels,omitempty" xml:"FundStructureModels,omitempty" type:"Repeated"`
+}
+
+func (s QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListFundStructureModels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListFundStructureModels) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListFundStructureModels) SetFundStructureModels(v []*QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListFundStructureModelsFundStructureModels) *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListFundStructureModels {
+	s.FundStructureModels = v
+	return s
+}
+
+type QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListFundStructureModelsFundStructureModels struct {
 	FundAmount      *int64  `json:"FundAmount,omitempty" xml:"FundAmount,omitempty"`
 	FundType        *string `json:"FundType,omitempty" xml:"FundType,omitempty"`
 	FundAmountMoney *int64  `json:"FundAmountMoney,omitempty" xml:"FundAmountMoney,omitempty"`
 }
 
-func (s QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListPostFee) String() string {
+func (s QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListFundStructureModelsFundStructureModels) String() string {
 	return tea.Prettify(s)
 }
 
-func (s QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListPostFee) GoString() string {
+func (s QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListFundStructureModelsFundStructureModels) GoString() string {
 	return s.String()
 }
 
-func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListPostFee) SetFundAmount(v int64) *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListPostFee {
+func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListFundStructureModelsFundStructureModels) SetFundAmount(v int64) *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListFundStructureModelsFundStructureModels {
 	s.FundAmount = &v
 	return s
 }
 
-func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListPostFee) SetFundType(v string) *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListPostFee {
+func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListFundStructureModelsFundStructureModels) SetFundType(v string) *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListFundStructureModelsFundStructureModels {
 	s.FundType = &v
 	return s
 }
 
-func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListPostFee) SetFundAmountMoney(v int64) *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListPostFee {
+func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListFundStructureModelsFundStructureModels) SetFundAmountMoney(v int64) *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListFundStructureModelsFundStructureModels {
 	s.FundAmountMoney = &v
 	return s
 }
@@ -11450,17 +12758,17 @@ func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListSubOrderList)
 
 type QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList struct {
 	LmOrderId     *int64                                                                                           `json:"LmOrderId,omitempty" xml:"LmOrderId,omitempty"`
-	ItemTitle     *string                                                                                          `json:"ItemTitle,omitempty" xml:"ItemTitle,omitempty"`
-	ItemPriceList *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderListItemPriceList `json:"ItemPriceList,omitempty" xml:"ItemPriceList,omitempty" type:"Struct"`
-	LmItemId      *string                                                                                          `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
-	ItemPic       *string                                                                                          `json:"ItemPic,omitempty" xml:"ItemPic,omitempty"`
-	ItemId        *int64                                                                                           `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
 	EnableStatus  *int32                                                                                           `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	ItemTitle     *string                                                                                          `json:"ItemTitle,omitempty" xml:"ItemTitle,omitempty"`
 	OrderStatus   *int32                                                                                           `json:"OrderStatus,omitempty" xml:"OrderStatus,omitempty"`
 	SkuName       *string                                                                                          `json:"SkuName,omitempty" xml:"SkuName,omitempty"`
+	LmItemId      *string                                                                                          `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
 	SkuId         *int64                                                                                           `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
 	Number        *int64                                                                                           `json:"Number,omitempty" xml:"Number,omitempty"`
 	TbOrderId     *int64                                                                                           `json:"TbOrderId,omitempty" xml:"TbOrderId,omitempty"`
+	ItemPic       *string                                                                                          `json:"ItemPic,omitempty" xml:"ItemPic,omitempty"`
+	ItemId        *int64                                                                                           `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	ItemPriceList *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderListItemPriceList `json:"ItemPriceList,omitempty" xml:"ItemPriceList,omitempty" type:"Struct"`
 }
 
 func (s QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList) String() string {
@@ -11476,33 +12784,13 @@ func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListSubOrderListS
 	return s
 }
 
-func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList) SetItemTitle(v string) *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList {
-	s.ItemTitle = &v
-	return s
-}
-
-func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList) SetItemPriceList(v *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderListItemPriceList) *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList {
-	s.ItemPriceList = v
-	return s
-}
-
-func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList) SetLmItemId(v string) *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList {
-	s.LmItemId = &v
-	return s
-}
-
-func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList) SetItemPic(v string) *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList {
-	s.ItemPic = &v
-	return s
-}
-
-func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList) SetItemId(v int64) *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList {
-	s.ItemId = &v
-	return s
-}
-
 func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList) SetEnableStatus(v int32) *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList {
 	s.EnableStatus = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList) SetItemTitle(v string) *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList {
+	s.ItemTitle = &v
 	return s
 }
 
@@ -11513,6 +12801,11 @@ func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListSubOrderListS
 
 func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList) SetSkuName(v string) *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList {
 	s.SkuName = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList) SetLmItemId(v string) *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList {
+	s.LmItemId = &v
 	return s
 }
 
@@ -11528,6 +12821,21 @@ func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListSubOrderListS
 
 func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList) SetTbOrderId(v int64) *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList {
 	s.TbOrderId = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList) SetItemPic(v string) *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList {
+	s.ItemPic = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList) SetItemId(v int64) *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList {
+	s.ItemId = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList) SetItemPriceList(v *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderListItemPriceList) *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList {
+	s.ItemPriceList = v
 	return s
 }
 
@@ -11577,48 +12885,31 @@ func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListSubOrderListS
 	return s
 }
 
-type QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListFundStructureModels struct {
-	FundStructureModels []*QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListFundStructureModelsFundStructureModels `json:"FundStructureModels,omitempty" xml:"FundStructureModels,omitempty" type:"Repeated"`
-}
-
-func (s QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListFundStructureModels) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListFundStructureModels) GoString() string {
-	return s.String()
-}
-
-func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListFundStructureModels) SetFundStructureModels(v []*QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListFundStructureModelsFundStructureModels) *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListFundStructureModels {
-	s.FundStructureModels = v
-	return s
-}
-
-type QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListFundStructureModelsFundStructureModels struct {
+type QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListPostFee struct {
 	FundAmount      *int64  `json:"FundAmount,omitempty" xml:"FundAmount,omitempty"`
 	FundType        *string `json:"FundType,omitempty" xml:"FundType,omitempty"`
 	FundAmountMoney *int64  `json:"FundAmountMoney,omitempty" xml:"FundAmountMoney,omitempty"`
 }
 
-func (s QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListFundStructureModelsFundStructureModels) String() string {
+func (s QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListPostFee) String() string {
 	return tea.Prettify(s)
 }
 
-func (s QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListFundStructureModelsFundStructureModels) GoString() string {
+func (s QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListPostFee) GoString() string {
 	return s.String()
 }
 
-func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListFundStructureModelsFundStructureModels) SetFundAmount(v int64) *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListFundStructureModelsFundStructureModels {
+func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListPostFee) SetFundAmount(v int64) *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListPostFee {
 	s.FundAmount = &v
 	return s
 }
 
-func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListFundStructureModelsFundStructureModels) SetFundType(v string) *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListFundStructureModelsFundStructureModels {
+func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListPostFee) SetFundType(v string) *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListPostFee {
 	s.FundType = &v
 	return s
 }
 
-func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListFundStructureModelsFundStructureModels) SetFundAmountMoney(v int64) *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListFundStructureModelsFundStructureModels {
+func (s *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListPostFee) SetFundAmountMoney(v int64) *QueryOrderAndPaymentListResponseBodyLmOrderListLmOrderListPostFee {
 	s.FundAmountMoney = &v
 	return s
 }
@@ -11694,10 +12985,10 @@ func (s *QueryOrderCommissionRateRequest) SetAccountType(v string) *QueryOrderCo
 }
 
 type QueryOrderCommissionRateResponseBody struct {
+	Code             *string                                                 `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message          *string                                                 `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId        *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	CommissionModels []*QueryOrderCommissionRateResponseBodyCommissionModels `json:"CommissionModels,omitempty" xml:"CommissionModels,omitempty" type:"Repeated"`
-	Code             *string                                                 `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s QueryOrderCommissionRateResponseBody) String() string {
@@ -11706,6 +12997,11 @@ func (s QueryOrderCommissionRateResponseBody) String() string {
 
 func (s QueryOrderCommissionRateResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *QueryOrderCommissionRateResponseBody) SetCode(v string) *QueryOrderCommissionRateResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *QueryOrderCommissionRateResponseBody) SetMessage(v string) *QueryOrderCommissionRateResponseBody {
@@ -11720,11 +13016,6 @@ func (s *QueryOrderCommissionRateResponseBody) SetRequestId(v string) *QueryOrde
 
 func (s *QueryOrderCommissionRateResponseBody) SetCommissionModels(v []*QueryOrderCommissionRateResponseBodyCommissionModels) *QueryOrderCommissionRateResponseBody {
 	s.CommissionModels = v
-	return s
-}
-
-func (s *QueryOrderCommissionRateResponseBody) SetCode(v string) *QueryOrderCommissionRateResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -11752,8 +13043,8 @@ func (s *QueryOrderCommissionRateResponseBodyCommissionModels) SetCommissionInfo
 }
 
 type QueryOrderCommissionRateResponseBodyCommissionModelsCommissionInfo struct {
-	RateConfig *QueryOrderCommissionRateResponseBodyCommissionModelsCommissionInfoRateConfig `json:"RateConfig,omitempty" xml:"RateConfig,omitempty" type:"Struct"`
 	RateType   *string                                                                       `json:"RateType,omitempty" xml:"RateType,omitempty"`
+	RateConfig *QueryOrderCommissionRateResponseBodyCommissionModelsCommissionInfoRateConfig `json:"RateConfig,omitempty" xml:"RateConfig,omitempty" type:"Struct"`
 }
 
 func (s QueryOrderCommissionRateResponseBodyCommissionModelsCommissionInfo) String() string {
@@ -11764,13 +13055,13 @@ func (s QueryOrderCommissionRateResponseBodyCommissionModelsCommissionInfo) GoSt
 	return s.String()
 }
 
-func (s *QueryOrderCommissionRateResponseBodyCommissionModelsCommissionInfo) SetRateConfig(v *QueryOrderCommissionRateResponseBodyCommissionModelsCommissionInfoRateConfig) *QueryOrderCommissionRateResponseBodyCommissionModelsCommissionInfo {
-	s.RateConfig = v
+func (s *QueryOrderCommissionRateResponseBodyCommissionModelsCommissionInfo) SetRateType(v string) *QueryOrderCommissionRateResponseBodyCommissionModelsCommissionInfo {
+	s.RateType = &v
 	return s
 }
 
-func (s *QueryOrderCommissionRateResponseBodyCommissionModelsCommissionInfo) SetRateType(v string) *QueryOrderCommissionRateResponseBodyCommissionModelsCommissionInfo {
-	s.RateType = &v
+func (s *QueryOrderCommissionRateResponseBodyCommissionModelsCommissionInfo) SetRateConfig(v *QueryOrderCommissionRateResponseBodyCommissionModelsCommissionInfoRateConfig) *QueryOrderCommissionRateResponseBodyCommissionModelsCommissionInfo {
+	s.RateConfig = v
 	return s
 }
 
@@ -11792,8 +13083,8 @@ func (s *QueryOrderCommissionRateResponseBodyCommissionModelsCommissionInfoRateC
 }
 
 type QueryOrderCommissionRateResponseBodyCommissionModelsCommissionInfoRateConfigConfigs struct {
-	Value     *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
 	ValueUnit *string `json:"ValueUnit,omitempty" xml:"ValueUnit,omitempty"`
+	Value     *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s QueryOrderCommissionRateResponseBodyCommissionModelsCommissionInfoRateConfigConfigs) String() string {
@@ -11804,13 +13095,13 @@ func (s QueryOrderCommissionRateResponseBodyCommissionModelsCommissionInfoRateCo
 	return s.String()
 }
 
-func (s *QueryOrderCommissionRateResponseBodyCommissionModelsCommissionInfoRateConfigConfigs) SetValue(v int64) *QueryOrderCommissionRateResponseBodyCommissionModelsCommissionInfoRateConfigConfigs {
-	s.Value = &v
+func (s *QueryOrderCommissionRateResponseBodyCommissionModelsCommissionInfoRateConfigConfigs) SetValueUnit(v string) *QueryOrderCommissionRateResponseBodyCommissionModelsCommissionInfoRateConfigConfigs {
+	s.ValueUnit = &v
 	return s
 }
 
-func (s *QueryOrderCommissionRateResponseBodyCommissionModelsCommissionInfoRateConfigConfigs) SetValueUnit(v string) *QueryOrderCommissionRateResponseBodyCommissionModelsCommissionInfoRateConfigConfigs {
-	s.ValueUnit = &v
+func (s *QueryOrderCommissionRateResponseBodyCommissionModelsCommissionInfoRateConfigConfigs) SetValue(v int64) *QueryOrderCommissionRateResponseBodyCommissionModelsCommissionInfoRateConfigConfigs {
+	s.Value = &v
 	return s
 }
 
@@ -11879,10 +13170,10 @@ func (s *QueryOrderDetailInnerRequest) SetThirdPartyUserId(v string) *QueryOrder
 }
 
 type QueryOrderDetailInnerResponseBody struct {
+	Code      *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Model     *QueryOrderDetailInnerResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
-	Code      *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s QueryOrderDetailInnerResponseBody) String() string {
@@ -11891,6 +13182,11 @@ func (s QueryOrderDetailInnerResponseBody) String() string {
 
 func (s QueryOrderDetailInnerResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *QueryOrderDetailInnerResponseBody) SetCode(v string) *QueryOrderDetailInnerResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *QueryOrderDetailInnerResponseBody) SetMessage(v string) *QueryOrderDetailInnerResponseBody {
@@ -11905,11 +13201,6 @@ func (s *QueryOrderDetailInnerResponseBody) SetRequestId(v string) *QueryOrderDe
 
 func (s *QueryOrderDetailInnerResponseBody) SetModel(v *QueryOrderDetailInnerResponseBodyModel) *QueryOrderDetailInnerResponseBody {
 	s.Model = v
-	return s
-}
-
-func (s *QueryOrderDetailInnerResponseBody) SetCode(v string) *QueryOrderDetailInnerResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -11931,7 +13222,6 @@ func (s *QueryOrderDetailInnerResponseBodyModel) SetOrder(v *QueryOrderDetailInn
 }
 
 type QueryOrderDetailInnerResponseBodyModelOrder struct {
-	PostFee              *QueryOrderDetailInnerResponseBodyModelOrderPostFee             `json:"PostFee,omitempty" xml:"PostFee,omitempty" type:"Struct"`
 	Eticket              *bool                                                           `json:"Eticket,omitempty" xml:"Eticket,omitempty"`
 	CreateDate           *string                                                         `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	LogisticsCompName    *string                                                         `json:"LogisticsCompName,omitempty" xml:"LogisticsCompName,omitempty"`
@@ -11944,23 +13234,24 @@ type QueryOrderDetailInnerResponseBodyModelOrder struct {
 	OrderPayInfo         *string                                                         `json:"OrderPayInfo,omitempty" xml:"OrderPayInfo,omitempty"`
 	LogisticsStatusDesc  *string                                                         `json:"LogisticsStatusDesc,omitempty" xml:"LogisticsStatusDesc,omitempty"`
 	TbOrderId            *string                                                         `json:"TbOrderId,omitempty" xml:"TbOrderId,omitempty"`
-	FundStructureModels  *QueryOrderDetailInnerResponseBodyModelOrderFundStructureModels `json:"FundStructureModels,omitempty" xml:"FundStructureModels,omitempty" type:"Struct"`
 	LogisticsStatus      *int32                                                          `json:"LogisticsStatus,omitempty" xml:"LogisticsStatus,omitempty"`
 	LmOrderId            *int64                                                          `json:"LmOrderId,omitempty" xml:"LmOrderId,omitempty"`
-	ShopName             *string                                                         `json:"ShopName,omitempty" xml:"ShopName,omitempty"`
 	SellerId             *int64                                                          `json:"SellerId,omitempty" xml:"SellerId,omitempty"`
+	ShopName             *string                                                         `json:"ShopName,omitempty" xml:"ShopName,omitempty"`
 	OrderAmount          *int64                                                          `json:"OrderAmount,omitempty" xml:"OrderAmount,omitempty"`
 	ExtInfo              map[string]interface{}                                          `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
 	EndTime              *int64                                                          `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	PayStatus            *int32                                                          `json:"PayStatus,omitempty" xml:"PayStatus,omitempty"`
 	LogisticsNo          *string                                                         `json:"LogisticsNo,omitempty" xml:"LogisticsNo,omitempty"`
-	SubItemOrderList     *QueryOrderDetailInnerResponseBodyModelOrderSubItemOrderList    `json:"SubItemOrderList,omitempty" xml:"SubItemOrderList,omitempty" type:"Struct"`
 	LogisticsUserName    *string                                                         `json:"LogisticsUserName,omitempty" xml:"LogisticsUserName,omitempty"`
 	LogisticsAddress     *string                                                         `json:"LogisticsAddress,omitempty" xml:"LogisticsAddress,omitempty"`
 	PayWaterStatus       *int32                                                          `json:"PayWaterStatus,omitempty" xml:"PayWaterStatus,omitempty"`
 	RefundStatus         *int32                                                          `json:"RefundStatus,omitempty" xml:"RefundStatus,omitempty"`
 	SellerNick           *string                                                         `json:"SellerNick,omitempty" xml:"SellerNick,omitempty"`
 	ChannelOrderId       *string                                                         `json:"ChannelOrderId,omitempty" xml:"ChannelOrderId,omitempty"`
+	SubItemOrderList     *QueryOrderDetailInnerResponseBodyModelOrderSubItemOrderList    `json:"SubItemOrderList,omitempty" xml:"SubItemOrderList,omitempty" type:"Struct"`
+	FundStructureModels  *QueryOrderDetailInnerResponseBodyModelOrderFundStructureModels `json:"FundStructureModels,omitempty" xml:"FundStructureModels,omitempty" type:"Struct"`
+	PostFee              *QueryOrderDetailInnerResponseBodyModelOrderPostFee             `json:"PostFee,omitempty" xml:"PostFee,omitempty" type:"Struct"`
 }
 
 func (s QueryOrderDetailInnerResponseBodyModelOrder) String() string {
@@ -11969,11 +13260,6 @@ func (s QueryOrderDetailInnerResponseBodyModelOrder) String() string {
 
 func (s QueryOrderDetailInnerResponseBodyModelOrder) GoString() string {
 	return s.String()
-}
-
-func (s *QueryOrderDetailInnerResponseBodyModelOrder) SetPostFee(v *QueryOrderDetailInnerResponseBodyModelOrderPostFee) *QueryOrderDetailInnerResponseBodyModelOrder {
-	s.PostFee = v
-	return s
 }
 
 func (s *QueryOrderDetailInnerResponseBodyModelOrder) SetEticket(v bool) *QueryOrderDetailInnerResponseBodyModelOrder {
@@ -12036,11 +13322,6 @@ func (s *QueryOrderDetailInnerResponseBodyModelOrder) SetTbOrderId(v string) *Qu
 	return s
 }
 
-func (s *QueryOrderDetailInnerResponseBodyModelOrder) SetFundStructureModels(v *QueryOrderDetailInnerResponseBodyModelOrderFundStructureModels) *QueryOrderDetailInnerResponseBodyModelOrder {
-	s.FundStructureModels = v
-	return s
-}
-
 func (s *QueryOrderDetailInnerResponseBodyModelOrder) SetLogisticsStatus(v int32) *QueryOrderDetailInnerResponseBodyModelOrder {
 	s.LogisticsStatus = &v
 	return s
@@ -12051,13 +13332,13 @@ func (s *QueryOrderDetailInnerResponseBodyModelOrder) SetLmOrderId(v int64) *Que
 	return s
 }
 
-func (s *QueryOrderDetailInnerResponseBodyModelOrder) SetShopName(v string) *QueryOrderDetailInnerResponseBodyModelOrder {
-	s.ShopName = &v
+func (s *QueryOrderDetailInnerResponseBodyModelOrder) SetSellerId(v int64) *QueryOrderDetailInnerResponseBodyModelOrder {
+	s.SellerId = &v
 	return s
 }
 
-func (s *QueryOrderDetailInnerResponseBodyModelOrder) SetSellerId(v int64) *QueryOrderDetailInnerResponseBodyModelOrder {
-	s.SellerId = &v
+func (s *QueryOrderDetailInnerResponseBodyModelOrder) SetShopName(v string) *QueryOrderDetailInnerResponseBodyModelOrder {
+	s.ShopName = &v
 	return s
 }
 
@@ -12083,11 +13364,6 @@ func (s *QueryOrderDetailInnerResponseBodyModelOrder) SetPayStatus(v int32) *Que
 
 func (s *QueryOrderDetailInnerResponseBodyModelOrder) SetLogisticsNo(v string) *QueryOrderDetailInnerResponseBodyModelOrder {
 	s.LogisticsNo = &v
-	return s
-}
-
-func (s *QueryOrderDetailInnerResponseBodyModelOrder) SetSubItemOrderList(v *QueryOrderDetailInnerResponseBodyModelOrderSubItemOrderList) *QueryOrderDetailInnerResponseBodyModelOrder {
-	s.SubItemOrderList = v
 	return s
 }
 
@@ -12121,102 +13397,18 @@ func (s *QueryOrderDetailInnerResponseBodyModelOrder) SetChannelOrderId(v string
 	return s
 }
 
-type QueryOrderDetailInnerResponseBodyModelOrderPostFee struct {
-	LmOrderId       *int64  `json:"LmOrderId,omitempty" xml:"LmOrderId,omitempty"`
-	TbSubOrderId    *int64  `json:"TbSubOrderId,omitempty" xml:"TbSubOrderId,omitempty"`
-	FundAmount      *int64  `json:"FundAmount,omitempty" xml:"FundAmount,omitempty"`
-	FundType        *string `json:"FundType,omitempty" xml:"FundType,omitempty"`
-	FundAmountMoney *int64  `json:"FundAmountMoney,omitempty" xml:"FundAmountMoney,omitempty"`
-}
-
-func (s QueryOrderDetailInnerResponseBodyModelOrderPostFee) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryOrderDetailInnerResponseBodyModelOrderPostFee) GoString() string {
-	return s.String()
-}
-
-func (s *QueryOrderDetailInnerResponseBodyModelOrderPostFee) SetLmOrderId(v int64) *QueryOrderDetailInnerResponseBodyModelOrderPostFee {
-	s.LmOrderId = &v
+func (s *QueryOrderDetailInnerResponseBodyModelOrder) SetSubItemOrderList(v *QueryOrderDetailInnerResponseBodyModelOrderSubItemOrderList) *QueryOrderDetailInnerResponseBodyModelOrder {
+	s.SubItemOrderList = v
 	return s
 }
 
-func (s *QueryOrderDetailInnerResponseBodyModelOrderPostFee) SetTbSubOrderId(v int64) *QueryOrderDetailInnerResponseBodyModelOrderPostFee {
-	s.TbSubOrderId = &v
+func (s *QueryOrderDetailInnerResponseBodyModelOrder) SetFundStructureModels(v *QueryOrderDetailInnerResponseBodyModelOrderFundStructureModels) *QueryOrderDetailInnerResponseBodyModelOrder {
+	s.FundStructureModels = v
 	return s
 }
 
-func (s *QueryOrderDetailInnerResponseBodyModelOrderPostFee) SetFundAmount(v int64) *QueryOrderDetailInnerResponseBodyModelOrderPostFee {
-	s.FundAmount = &v
-	return s
-}
-
-func (s *QueryOrderDetailInnerResponseBodyModelOrderPostFee) SetFundType(v string) *QueryOrderDetailInnerResponseBodyModelOrderPostFee {
-	s.FundType = &v
-	return s
-}
-
-func (s *QueryOrderDetailInnerResponseBodyModelOrderPostFee) SetFundAmountMoney(v int64) *QueryOrderDetailInnerResponseBodyModelOrderPostFee {
-	s.FundAmountMoney = &v
-	return s
-}
-
-type QueryOrderDetailInnerResponseBodyModelOrderFundStructureModels struct {
-	FundStructure []*QueryOrderDetailInnerResponseBodyModelOrderFundStructureModelsFundStructure `json:"FundStructure,omitempty" xml:"FundStructure,omitempty" type:"Repeated"`
-}
-
-func (s QueryOrderDetailInnerResponseBodyModelOrderFundStructureModels) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryOrderDetailInnerResponseBodyModelOrderFundStructureModels) GoString() string {
-	return s.String()
-}
-
-func (s *QueryOrderDetailInnerResponseBodyModelOrderFundStructureModels) SetFundStructure(v []*QueryOrderDetailInnerResponseBodyModelOrderFundStructureModelsFundStructure) *QueryOrderDetailInnerResponseBodyModelOrderFundStructureModels {
-	s.FundStructure = v
-	return s
-}
-
-type QueryOrderDetailInnerResponseBodyModelOrderFundStructureModelsFundStructure struct {
-	LmOrderId       *int64  `json:"LmOrderId,omitempty" xml:"LmOrderId,omitempty"`
-	TbSubOrderId    *int64  `json:"TbSubOrderId,omitempty" xml:"TbSubOrderId,omitempty"`
-	FundAmount      *int64  `json:"FundAmount,omitempty" xml:"FundAmount,omitempty"`
-	FundType        *string `json:"FundType,omitempty" xml:"FundType,omitempty"`
-	FundAmountMoney *int64  `json:"FundAmountMoney,omitempty" xml:"FundAmountMoney,omitempty"`
-}
-
-func (s QueryOrderDetailInnerResponseBodyModelOrderFundStructureModelsFundStructure) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryOrderDetailInnerResponseBodyModelOrderFundStructureModelsFundStructure) GoString() string {
-	return s.String()
-}
-
-func (s *QueryOrderDetailInnerResponseBodyModelOrderFundStructureModelsFundStructure) SetLmOrderId(v int64) *QueryOrderDetailInnerResponseBodyModelOrderFundStructureModelsFundStructure {
-	s.LmOrderId = &v
-	return s
-}
-
-func (s *QueryOrderDetailInnerResponseBodyModelOrderFundStructureModelsFundStructure) SetTbSubOrderId(v int64) *QueryOrderDetailInnerResponseBodyModelOrderFundStructureModelsFundStructure {
-	s.TbSubOrderId = &v
-	return s
-}
-
-func (s *QueryOrderDetailInnerResponseBodyModelOrderFundStructureModelsFundStructure) SetFundAmount(v int64) *QueryOrderDetailInnerResponseBodyModelOrderFundStructureModelsFundStructure {
-	s.FundAmount = &v
-	return s
-}
-
-func (s *QueryOrderDetailInnerResponseBodyModelOrderFundStructureModelsFundStructure) SetFundType(v string) *QueryOrderDetailInnerResponseBodyModelOrderFundStructureModelsFundStructure {
-	s.FundType = &v
-	return s
-}
-
-func (s *QueryOrderDetailInnerResponseBodyModelOrderFundStructureModelsFundStructure) SetFundAmountMoney(v int64) *QueryOrderDetailInnerResponseBodyModelOrderFundStructureModelsFundStructure {
-	s.FundAmountMoney = &v
+func (s *QueryOrderDetailInnerResponseBodyModelOrder) SetPostFee(v *QueryOrderDetailInnerResponseBodyModelOrderPostFee) *QueryOrderDetailInnerResponseBodyModelOrder {
+	s.PostFee = v
 	return s
 }
 
@@ -12241,10 +13433,9 @@ type QueryOrderDetailInnerResponseBodyModelOrderSubItemOrderListSubItemOrder str
 	LmOrderId        *int64                                                                                `json:"LmOrderId,omitempty" xml:"LmOrderId,omitempty"`
 	ItemPriceInfo    *string                                                                               `json:"ItemPriceInfo,omitempty" xml:"ItemPriceInfo,omitempty"`
 	ItemTitle        *string                                                                               `json:"ItemTitle,omitempty" xml:"ItemTitle,omitempty"`
-	ItemPriceList    *QueryOrderDetailInnerResponseBodyModelOrderSubItemOrderListSubItemOrderItemPriceList `json:"ItemPriceList,omitempty" xml:"ItemPriceList,omitempty" type:"Struct"`
 	TbSubOrderId     *int64                                                                                `json:"TbSubOrderId,omitempty" xml:"TbSubOrderId,omitempty"`
-	TotalPaymentInfo *string                                                                               `json:"TotalPaymentInfo,omitempty" xml:"TotalPaymentInfo,omitempty"`
 	LmItemId         *string                                                                               `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
+	TotalPaymentInfo *string                                                                               `json:"TotalPaymentInfo,omitempty" xml:"TotalPaymentInfo,omitempty"`
 	ItemPic          *string                                                                               `json:"ItemPic,omitempty" xml:"ItemPic,omitempty"`
 	ItemId           *int64                                                                                `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
 	ChannelCode      *string                                                                               `json:"ChannelCode,omitempty" xml:"ChannelCode,omitempty"`
@@ -12252,6 +13443,7 @@ type QueryOrderDetailInnerResponseBodyModelOrderSubItemOrderListSubItemOrder str
 	SkuName          *string                                                                               `json:"SkuName,omitempty" xml:"SkuName,omitempty"`
 	Number           *int32                                                                                `json:"Number,omitempty" xml:"Number,omitempty"`
 	SkuId            *int64                                                                                `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
+	ItemPriceList    *QueryOrderDetailInnerResponseBodyModelOrderSubItemOrderListSubItemOrderItemPriceList `json:"ItemPriceList,omitempty" xml:"ItemPriceList,omitempty" type:"Struct"`
 }
 
 func (s QueryOrderDetailInnerResponseBodyModelOrderSubItemOrderListSubItemOrder) String() string {
@@ -12277,23 +13469,18 @@ func (s *QueryOrderDetailInnerResponseBodyModelOrderSubItemOrderListSubItemOrder
 	return s
 }
 
-func (s *QueryOrderDetailInnerResponseBodyModelOrderSubItemOrderListSubItemOrder) SetItemPriceList(v *QueryOrderDetailInnerResponseBodyModelOrderSubItemOrderListSubItemOrderItemPriceList) *QueryOrderDetailInnerResponseBodyModelOrderSubItemOrderListSubItemOrder {
-	s.ItemPriceList = v
-	return s
-}
-
 func (s *QueryOrderDetailInnerResponseBodyModelOrderSubItemOrderListSubItemOrder) SetTbSubOrderId(v int64) *QueryOrderDetailInnerResponseBodyModelOrderSubItemOrderListSubItemOrder {
 	s.TbSubOrderId = &v
 	return s
 }
 
-func (s *QueryOrderDetailInnerResponseBodyModelOrderSubItemOrderListSubItemOrder) SetTotalPaymentInfo(v string) *QueryOrderDetailInnerResponseBodyModelOrderSubItemOrderListSubItemOrder {
-	s.TotalPaymentInfo = &v
+func (s *QueryOrderDetailInnerResponseBodyModelOrderSubItemOrderListSubItemOrder) SetLmItemId(v string) *QueryOrderDetailInnerResponseBodyModelOrderSubItemOrderListSubItemOrder {
+	s.LmItemId = &v
 	return s
 }
 
-func (s *QueryOrderDetailInnerResponseBodyModelOrderSubItemOrderListSubItemOrder) SetLmItemId(v string) *QueryOrderDetailInnerResponseBodyModelOrderSubItemOrderListSubItemOrder {
-	s.LmItemId = &v
+func (s *QueryOrderDetailInnerResponseBodyModelOrderSubItemOrderListSubItemOrder) SetTotalPaymentInfo(v string) *QueryOrderDetailInnerResponseBodyModelOrderSubItemOrderListSubItemOrder {
+	s.TotalPaymentInfo = &v
 	return s
 }
 
@@ -12332,6 +13519,11 @@ func (s *QueryOrderDetailInnerResponseBodyModelOrderSubItemOrderListSubItemOrder
 	return s
 }
 
+func (s *QueryOrderDetailInnerResponseBodyModelOrderSubItemOrderListSubItemOrder) SetItemPriceList(v *QueryOrderDetailInnerResponseBodyModelOrderSubItemOrderListSubItemOrderItemPriceList) *QueryOrderDetailInnerResponseBodyModelOrderSubItemOrderListSubItemOrder {
+	s.ItemPriceList = v
+	return s
+}
+
 type QueryOrderDetailInnerResponseBodyModelOrderSubItemOrderListSubItemOrderItemPriceList struct {
 	ItemPrice []*QueryOrderDetailInnerResponseBodyModelOrderSubItemOrderListSubItemOrderItemPriceListItemPrice `json:"ItemPrice,omitempty" xml:"ItemPrice,omitempty" type:"Repeated"`
 }
@@ -12350,11 +13542,11 @@ func (s *QueryOrderDetailInnerResponseBodyModelOrderSubItemOrderListSubItemOrder
 }
 
 type QueryOrderDetailInnerResponseBodyModelOrderSubItemOrderListSubItemOrderItemPriceListItemPrice struct {
-	TbSubOrderId    *int64  `json:"TbSubOrderId,omitempty" xml:"TbSubOrderId,omitempty"`
 	FundAmount      *int64  `json:"FundAmount,omitempty" xml:"FundAmount,omitempty"`
 	TbOrderId       *int64  `json:"TbOrderId,omitempty" xml:"TbOrderId,omitempty"`
 	FundType        *string `json:"FundType,omitempty" xml:"FundType,omitempty"`
 	FundAmountMoney *int64  `json:"FundAmountMoney,omitempty" xml:"FundAmountMoney,omitempty"`
+	TbSubOrderId    *int64  `json:"TbSubOrderId,omitempty" xml:"TbSubOrderId,omitempty"`
 }
 
 func (s QueryOrderDetailInnerResponseBodyModelOrderSubItemOrderListSubItemOrderItemPriceListItemPrice) String() string {
@@ -12363,11 +13555,6 @@ func (s QueryOrderDetailInnerResponseBodyModelOrderSubItemOrderListSubItemOrderI
 
 func (s QueryOrderDetailInnerResponseBodyModelOrderSubItemOrderListSubItemOrderItemPriceListItemPrice) GoString() string {
 	return s.String()
-}
-
-func (s *QueryOrderDetailInnerResponseBodyModelOrderSubItemOrderListSubItemOrderItemPriceListItemPrice) SetTbSubOrderId(v int64) *QueryOrderDetailInnerResponseBodyModelOrderSubItemOrderListSubItemOrderItemPriceListItemPrice {
-	s.TbSubOrderId = &v
-	return s
 }
 
 func (s *QueryOrderDetailInnerResponseBodyModelOrderSubItemOrderListSubItemOrderItemPriceListItemPrice) SetFundAmount(v int64) *QueryOrderDetailInnerResponseBodyModelOrderSubItemOrderListSubItemOrderItemPriceListItemPrice {
@@ -12387,6 +13574,110 @@ func (s *QueryOrderDetailInnerResponseBodyModelOrderSubItemOrderListSubItemOrder
 
 func (s *QueryOrderDetailInnerResponseBodyModelOrderSubItemOrderListSubItemOrderItemPriceListItemPrice) SetFundAmountMoney(v int64) *QueryOrderDetailInnerResponseBodyModelOrderSubItemOrderListSubItemOrderItemPriceListItemPrice {
 	s.FundAmountMoney = &v
+	return s
+}
+
+func (s *QueryOrderDetailInnerResponseBodyModelOrderSubItemOrderListSubItemOrderItemPriceListItemPrice) SetTbSubOrderId(v int64) *QueryOrderDetailInnerResponseBodyModelOrderSubItemOrderListSubItemOrderItemPriceListItemPrice {
+	s.TbSubOrderId = &v
+	return s
+}
+
+type QueryOrderDetailInnerResponseBodyModelOrderFundStructureModels struct {
+	FundStructure []*QueryOrderDetailInnerResponseBodyModelOrderFundStructureModelsFundStructure `json:"FundStructure,omitempty" xml:"FundStructure,omitempty" type:"Repeated"`
+}
+
+func (s QueryOrderDetailInnerResponseBodyModelOrderFundStructureModels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrderDetailInnerResponseBodyModelOrderFundStructureModels) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrderDetailInnerResponseBodyModelOrderFundStructureModels) SetFundStructure(v []*QueryOrderDetailInnerResponseBodyModelOrderFundStructureModelsFundStructure) *QueryOrderDetailInnerResponseBodyModelOrderFundStructureModels {
+	s.FundStructure = v
+	return s
+}
+
+type QueryOrderDetailInnerResponseBodyModelOrderFundStructureModelsFundStructure struct {
+	FundAmount      *int64  `json:"FundAmount,omitempty" xml:"FundAmount,omitempty"`
+	LmOrderId       *int64  `json:"LmOrderId,omitempty" xml:"LmOrderId,omitempty"`
+	FundType        *string `json:"FundType,omitempty" xml:"FundType,omitempty"`
+	FundAmountMoney *int64  `json:"FundAmountMoney,omitempty" xml:"FundAmountMoney,omitempty"`
+	TbSubOrderId    *int64  `json:"TbSubOrderId,omitempty" xml:"TbSubOrderId,omitempty"`
+}
+
+func (s QueryOrderDetailInnerResponseBodyModelOrderFundStructureModelsFundStructure) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrderDetailInnerResponseBodyModelOrderFundStructureModelsFundStructure) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrderDetailInnerResponseBodyModelOrderFundStructureModelsFundStructure) SetFundAmount(v int64) *QueryOrderDetailInnerResponseBodyModelOrderFundStructureModelsFundStructure {
+	s.FundAmount = &v
+	return s
+}
+
+func (s *QueryOrderDetailInnerResponseBodyModelOrderFundStructureModelsFundStructure) SetLmOrderId(v int64) *QueryOrderDetailInnerResponseBodyModelOrderFundStructureModelsFundStructure {
+	s.LmOrderId = &v
+	return s
+}
+
+func (s *QueryOrderDetailInnerResponseBodyModelOrderFundStructureModelsFundStructure) SetFundType(v string) *QueryOrderDetailInnerResponseBodyModelOrderFundStructureModelsFundStructure {
+	s.FundType = &v
+	return s
+}
+
+func (s *QueryOrderDetailInnerResponseBodyModelOrderFundStructureModelsFundStructure) SetFundAmountMoney(v int64) *QueryOrderDetailInnerResponseBodyModelOrderFundStructureModelsFundStructure {
+	s.FundAmountMoney = &v
+	return s
+}
+
+func (s *QueryOrderDetailInnerResponseBodyModelOrderFundStructureModelsFundStructure) SetTbSubOrderId(v int64) *QueryOrderDetailInnerResponseBodyModelOrderFundStructureModelsFundStructure {
+	s.TbSubOrderId = &v
+	return s
+}
+
+type QueryOrderDetailInnerResponseBodyModelOrderPostFee struct {
+	FundAmount      *int64  `json:"FundAmount,omitempty" xml:"FundAmount,omitempty"`
+	LmOrderId       *int64  `json:"LmOrderId,omitempty" xml:"LmOrderId,omitempty"`
+	FundType        *string `json:"FundType,omitempty" xml:"FundType,omitempty"`
+	FundAmountMoney *int64  `json:"FundAmountMoney,omitempty" xml:"FundAmountMoney,omitempty"`
+	TbSubOrderId    *int64  `json:"TbSubOrderId,omitempty" xml:"TbSubOrderId,omitempty"`
+}
+
+func (s QueryOrderDetailInnerResponseBodyModelOrderPostFee) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrderDetailInnerResponseBodyModelOrderPostFee) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrderDetailInnerResponseBodyModelOrderPostFee) SetFundAmount(v int64) *QueryOrderDetailInnerResponseBodyModelOrderPostFee {
+	s.FundAmount = &v
+	return s
+}
+
+func (s *QueryOrderDetailInnerResponseBodyModelOrderPostFee) SetLmOrderId(v int64) *QueryOrderDetailInnerResponseBodyModelOrderPostFee {
+	s.LmOrderId = &v
+	return s
+}
+
+func (s *QueryOrderDetailInnerResponseBodyModelOrderPostFee) SetFundType(v string) *QueryOrderDetailInnerResponseBodyModelOrderPostFee {
+	s.FundType = &v
+	return s
+}
+
+func (s *QueryOrderDetailInnerResponseBodyModelOrderPostFee) SetFundAmountMoney(v int64) *QueryOrderDetailInnerResponseBodyModelOrderPostFee {
+	s.FundAmountMoney = &v
+	return s
+}
+
+func (s *QueryOrderDetailInnerResponseBodyModelOrderPostFee) SetTbSubOrderId(v int64) *QueryOrderDetailInnerResponseBodyModelOrderPostFee {
+	s.TbSubOrderId = &v
 	return s
 }
 
@@ -12461,10 +13752,10 @@ func (s *QueryOrderIdByPayIdRequest) SetAccountType(v string) *QueryOrderIdByPay
 }
 
 type QueryOrderIdByPayIdResponseBody struct {
+	Code       *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message    *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId  *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	LmOrderIds *QueryOrderIdByPayIdResponseBodyLmOrderIds `json:"LmOrderIds,omitempty" xml:"LmOrderIds,omitempty" type:"Struct"`
-	Code       *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s QueryOrderIdByPayIdResponseBody) String() string {
@@ -12473,6 +13764,11 @@ func (s QueryOrderIdByPayIdResponseBody) String() string {
 
 func (s QueryOrderIdByPayIdResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *QueryOrderIdByPayIdResponseBody) SetCode(v string) *QueryOrderIdByPayIdResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *QueryOrderIdByPayIdResponseBody) SetMessage(v string) *QueryOrderIdByPayIdResponseBody {
@@ -12487,11 +13783,6 @@ func (s *QueryOrderIdByPayIdResponseBody) SetRequestId(v string) *QueryOrderIdBy
 
 func (s *QueryOrderIdByPayIdResponseBody) SetLmOrderIds(v *QueryOrderIdByPayIdResponseBodyLmOrderIds) *QueryOrderIdByPayIdResponseBody {
 	s.LmOrderIds = v
-	return s
-}
-
-func (s *QueryOrderIdByPayIdResponseBody) SetCode(v string) *QueryOrderIdByPayIdResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -12600,10 +13891,10 @@ func (s *QueryOrderInfoAfterSaleRequest) SetAccountType(v string) *QueryOrderInf
 }
 
 type QueryOrderInfoAfterSaleResponseBody struct {
+	Code      *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Model     *QueryOrderInfoAfterSaleResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
-	Code      *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s QueryOrderInfoAfterSaleResponseBody) String() string {
@@ -12612,6 +13903,11 @@ func (s QueryOrderInfoAfterSaleResponseBody) String() string {
 
 func (s QueryOrderInfoAfterSaleResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *QueryOrderInfoAfterSaleResponseBody) SetCode(v string) *QueryOrderInfoAfterSaleResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *QueryOrderInfoAfterSaleResponseBody) SetMessage(v string) *QueryOrderInfoAfterSaleResponseBody {
@@ -12629,17 +13925,11 @@ func (s *QueryOrderInfoAfterSaleResponseBody) SetModel(v *QueryOrderInfoAfterSal
 	return s
 }
 
-func (s *QueryOrderInfoAfterSaleResponseBody) SetCode(v string) *QueryOrderInfoAfterSaleResponseBody {
-	s.Code = &v
-	return s
-}
-
 type QueryOrderInfoAfterSaleResponseBodyModel struct {
 	LmOrderId            *int64                                                 `json:"LmOrderId,omitempty" xml:"LmOrderId,omitempty"`
 	ShopServiceTelephone *string                                                `json:"ShopServiceTelephone,omitempty" xml:"ShopServiceTelephone,omitempty"`
-	LogisticsList        *QueryOrderInfoAfterSaleResponseBodyModelLogisticsList `json:"LogisticsList,omitempty" xml:"LogisticsList,omitempty" type:"Struct"`
-	XiaomiCode           *string                                                `json:"XiaomiCode,omitempty" xml:"XiaomiCode,omitempty"`
 	RefundAmount         *int64                                                 `json:"RefundAmount,omitempty" xml:"RefundAmount,omitempty"`
+	XiaomiCode           *string                                                `json:"XiaomiCode,omitempty" xml:"XiaomiCode,omitempty"`
 	ShopName             *string                                                `json:"ShopName,omitempty" xml:"ShopName,omitempty"`
 	CreateDate           *string                                                `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	RefundRate           *string                                                `json:"RefundRate,omitempty" xml:"RefundRate,omitempty"`
@@ -12651,6 +13941,7 @@ type QueryOrderInfoAfterSaleResponseBodyModel struct {
 	RefundStatus         *string                                                `json:"RefundStatus,omitempty" xml:"RefundStatus,omitempty"`
 	PointsAmount         *int64                                                 `json:"PointsAmount,omitempty" xml:"PointsAmount,omitempty"`
 	CashAmount           *string                                                `json:"CashAmount,omitempty" xml:"CashAmount,omitempty"`
+	LogisticsList        *QueryOrderInfoAfterSaleResponseBodyModelLogisticsList `json:"LogisticsList,omitempty" xml:"LogisticsList,omitempty" type:"Struct"`
 }
 
 func (s QueryOrderInfoAfterSaleResponseBodyModel) String() string {
@@ -12671,18 +13962,13 @@ func (s *QueryOrderInfoAfterSaleResponseBodyModel) SetShopServiceTelephone(v str
 	return s
 }
 
-func (s *QueryOrderInfoAfterSaleResponseBodyModel) SetLogisticsList(v *QueryOrderInfoAfterSaleResponseBodyModelLogisticsList) *QueryOrderInfoAfterSaleResponseBodyModel {
-	s.LogisticsList = v
+func (s *QueryOrderInfoAfterSaleResponseBodyModel) SetRefundAmount(v int64) *QueryOrderInfoAfterSaleResponseBodyModel {
+	s.RefundAmount = &v
 	return s
 }
 
 func (s *QueryOrderInfoAfterSaleResponseBodyModel) SetXiaomiCode(v string) *QueryOrderInfoAfterSaleResponseBodyModel {
 	s.XiaomiCode = &v
-	return s
-}
-
-func (s *QueryOrderInfoAfterSaleResponseBodyModel) SetRefundAmount(v int64) *QueryOrderInfoAfterSaleResponseBodyModel {
-	s.RefundAmount = &v
 	return s
 }
 
@@ -12741,6 +14027,11 @@ func (s *QueryOrderInfoAfterSaleResponseBodyModel) SetCashAmount(v string) *Quer
 	return s
 }
 
+func (s *QueryOrderInfoAfterSaleResponseBodyModel) SetLogisticsList(v *QueryOrderInfoAfterSaleResponseBodyModelLogisticsList) *QueryOrderInfoAfterSaleResponseBodyModel {
+	s.LogisticsList = v
+	return s
+}
+
 type QueryOrderInfoAfterSaleResponseBodyModelLogisticsList struct {
 	Logistics []*QueryOrderInfoAfterSaleResponseBodyModelLogisticsListLogistics `json:"Logistics,omitempty" xml:"Logistics,omitempty" type:"Repeated"`
 }
@@ -12759,8 +14050,8 @@ func (s *QueryOrderInfoAfterSaleResponseBodyModelLogisticsList) SetLogistics(v [
 }
 
 type QueryOrderInfoAfterSaleResponseBodyModelLogisticsListLogistics struct {
-	LogisticsNo          *string `json:"LogisticsNo,omitempty" xml:"LogisticsNo,omitempty"`
 	LogisticsCompanyCode *string `json:"LogisticsCompanyCode,omitempty" xml:"LogisticsCompanyCode,omitempty"`
+	LogisticsNo          *string `json:"LogisticsNo,omitempty" xml:"LogisticsNo,omitempty"`
 	LogisticsStatus      *string `json:"LogisticsStatus,omitempty" xml:"LogisticsStatus,omitempty"`
 	LogisticsCompanyName *string `json:"LogisticsCompanyName,omitempty" xml:"LogisticsCompanyName,omitempty"`
 }
@@ -12773,13 +14064,13 @@ func (s QueryOrderInfoAfterSaleResponseBodyModelLogisticsListLogistics) GoString
 	return s.String()
 }
 
-func (s *QueryOrderInfoAfterSaleResponseBodyModelLogisticsListLogistics) SetLogisticsNo(v string) *QueryOrderInfoAfterSaleResponseBodyModelLogisticsListLogistics {
-	s.LogisticsNo = &v
+func (s *QueryOrderInfoAfterSaleResponseBodyModelLogisticsListLogistics) SetLogisticsCompanyCode(v string) *QueryOrderInfoAfterSaleResponseBodyModelLogisticsListLogistics {
+	s.LogisticsCompanyCode = &v
 	return s
 }
 
-func (s *QueryOrderInfoAfterSaleResponseBodyModelLogisticsListLogistics) SetLogisticsCompanyCode(v string) *QueryOrderInfoAfterSaleResponseBodyModelLogisticsListLogistics {
-	s.LogisticsCompanyCode = &v
+func (s *QueryOrderInfoAfterSaleResponseBodyModelLogisticsListLogistics) SetLogisticsNo(v string) *QueryOrderInfoAfterSaleResponseBodyModelLogisticsListLogistics {
+	s.LogisticsNo = &v
 	return s
 }
 
@@ -12846,10 +14137,10 @@ func (s *QueryOrderItemInfoByPaymentIdForAiZhanYouRequest) SetPaymentId(v string
 }
 
 type QueryOrderItemInfoByPaymentIdForAiZhanYouResponseBody struct {
+	Code        *string                                                           `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message     *string                                                           `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId   *string                                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	LmOrderList *QueryOrderItemInfoByPaymentIdForAiZhanYouResponseBodyLmOrderList `json:"LmOrderList,omitempty" xml:"LmOrderList,omitempty" type:"Struct"`
-	Code        *string                                                           `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s QueryOrderItemInfoByPaymentIdForAiZhanYouResponseBody) String() string {
@@ -12858,6 +14149,11 @@ func (s QueryOrderItemInfoByPaymentIdForAiZhanYouResponseBody) String() string {
 
 func (s QueryOrderItemInfoByPaymentIdForAiZhanYouResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *QueryOrderItemInfoByPaymentIdForAiZhanYouResponseBody) SetCode(v string) *QueryOrderItemInfoByPaymentIdForAiZhanYouResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *QueryOrderItemInfoByPaymentIdForAiZhanYouResponseBody) SetMessage(v string) *QueryOrderItemInfoByPaymentIdForAiZhanYouResponseBody {
@@ -12872,11 +14168,6 @@ func (s *QueryOrderItemInfoByPaymentIdForAiZhanYouResponseBody) SetRequestId(v s
 
 func (s *QueryOrderItemInfoByPaymentIdForAiZhanYouResponseBody) SetLmOrderList(v *QueryOrderItemInfoByPaymentIdForAiZhanYouResponseBodyLmOrderList) *QueryOrderItemInfoByPaymentIdForAiZhanYouResponseBody {
 	s.LmOrderList = v
-	return s
-}
-
-func (s *QueryOrderItemInfoByPaymentIdForAiZhanYouResponseBody) SetCode(v string) *QueryOrderItemInfoByPaymentIdForAiZhanYouResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -13027,14 +14318,14 @@ func (s *QueryOrderListRequest) SetAccountType(v string) *QueryOrderListRequest 
 }
 
 type QueryOrderListResponseBody struct {
-	PostFee     *QueryOrderListResponseBodyPostFee     `json:"PostFee,omitempty" xml:"PostFee,omitempty" type:"Struct"`
-	TotalCount  *int64                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId   *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code        *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message     *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
 	PageSize    *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PageNumber  *int32                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalCount  *int64                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PostFee     *QueryOrderListResponseBodyPostFee     `json:"PostFee,omitempty" xml:"PostFee,omitempty" type:"Struct"`
 	LmOrderList *QueryOrderListResponseBodyLmOrderList `json:"LmOrderList,omitempty" xml:"LmOrderList,omitempty" type:"Struct"`
-	Code        *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s QueryOrderListResponseBody) String() string {
@@ -13045,18 +14336,13 @@ func (s QueryOrderListResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *QueryOrderListResponseBody) SetPostFee(v *QueryOrderListResponseBodyPostFee) *QueryOrderListResponseBody {
-	s.PostFee = v
-	return s
-}
-
-func (s *QueryOrderListResponseBody) SetTotalCount(v int64) *QueryOrderListResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
 func (s *QueryOrderListResponseBody) SetRequestId(v string) *QueryOrderListResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *QueryOrderListResponseBody) SetCode(v string) *QueryOrderListResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -13075,13 +14361,18 @@ func (s *QueryOrderListResponseBody) SetPageNumber(v int32) *QueryOrderListRespo
 	return s
 }
 
-func (s *QueryOrderListResponseBody) SetLmOrderList(v *QueryOrderListResponseBodyLmOrderList) *QueryOrderListResponseBody {
-	s.LmOrderList = v
+func (s *QueryOrderListResponseBody) SetTotalCount(v int64) *QueryOrderListResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
-func (s *QueryOrderListResponseBody) SetCode(v string) *QueryOrderListResponseBody {
-	s.Code = &v
+func (s *QueryOrderListResponseBody) SetPostFee(v *QueryOrderListResponseBodyPostFee) *QueryOrderListResponseBody {
+	s.PostFee = v
+	return s
+}
+
+func (s *QueryOrderListResponseBody) SetLmOrderList(v *QueryOrderListResponseBodyLmOrderList) *QueryOrderListResponseBody {
+	s.LmOrderList = v
 	return s
 }
 
@@ -13132,18 +14423,18 @@ func (s *QueryOrderListResponseBodyLmOrderList) SetLmOrderList(v []*QueryOrderLi
 }
 
 type QueryOrderListResponseBodyLmOrderListLmOrderList struct {
-	PostFee             *QueryOrderListResponseBodyLmOrderListLmOrderListPostFee             `json:"PostFee,omitempty" xml:"PostFee,omitempty" type:"Struct"`
 	LmOrderId           *int64                                                               `json:"LmOrderId,omitempty" xml:"LmOrderId,omitempty"`
-	ShopName            *string                                                              `json:"ShopName,omitempty" xml:"ShopName,omitempty"`
-	OrderAmount         *int64                                                               `json:"OrderAmount,omitempty" xml:"OrderAmount,omitempty"`
-	CreateDate          *string                                                              `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	SubOrderList        *QueryOrderListResponseBodyLmOrderListLmOrderListSubOrderList        `json:"SubOrderList,omitempty" xml:"SubOrderList,omitempty" type:"Struct"`
 	EnableStatus        *int32                                                               `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
 	ExtJson             *string                                                              `json:"ExtJson,omitempty" xml:"ExtJson,omitempty"`
 	OrderStatus         *int32                                                               `json:"OrderStatus,omitempty" xml:"OrderStatus,omitempty"`
+	ShopName            *string                                                              `json:"ShopName,omitempty" xml:"ShopName,omitempty"`
 	TbOrderId           *int64                                                               `json:"TbOrderId,omitempty" xml:"TbOrderId,omitempty"`
-	FundStructureModels *QueryOrderListResponseBodyLmOrderListLmOrderListFundStructureModels `json:"FundStructureModels,omitempty" xml:"FundStructureModels,omitempty" type:"Struct"`
+	OrderAmount         *int64                                                               `json:"OrderAmount,omitempty" xml:"OrderAmount,omitempty"`
 	LogisticsStatus     *int32                                                               `json:"LogisticsStatus,omitempty" xml:"LogisticsStatus,omitempty"`
+	CreateDate          *string                                                              `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	FundStructureModels *QueryOrderListResponseBodyLmOrderListLmOrderListFundStructureModels `json:"FundStructureModels,omitempty" xml:"FundStructureModels,omitempty" type:"Struct"`
+	SubOrderList        *QueryOrderListResponseBodyLmOrderListLmOrderListSubOrderList        `json:"SubOrderList,omitempty" xml:"SubOrderList,omitempty" type:"Struct"`
+	PostFee             *QueryOrderListResponseBodyLmOrderListLmOrderListPostFee             `json:"PostFee,omitempty" xml:"PostFee,omitempty" type:"Struct"`
 }
 
 func (s QueryOrderListResponseBodyLmOrderListLmOrderList) String() string {
@@ -13154,33 +14445,8 @@ func (s QueryOrderListResponseBodyLmOrderListLmOrderList) GoString() string {
 	return s.String()
 }
 
-func (s *QueryOrderListResponseBodyLmOrderListLmOrderList) SetPostFee(v *QueryOrderListResponseBodyLmOrderListLmOrderListPostFee) *QueryOrderListResponseBodyLmOrderListLmOrderList {
-	s.PostFee = v
-	return s
-}
-
 func (s *QueryOrderListResponseBodyLmOrderListLmOrderList) SetLmOrderId(v int64) *QueryOrderListResponseBodyLmOrderListLmOrderList {
 	s.LmOrderId = &v
-	return s
-}
-
-func (s *QueryOrderListResponseBodyLmOrderListLmOrderList) SetShopName(v string) *QueryOrderListResponseBodyLmOrderListLmOrderList {
-	s.ShopName = &v
-	return s
-}
-
-func (s *QueryOrderListResponseBodyLmOrderListLmOrderList) SetOrderAmount(v int64) *QueryOrderListResponseBodyLmOrderListLmOrderList {
-	s.OrderAmount = &v
-	return s
-}
-
-func (s *QueryOrderListResponseBodyLmOrderListLmOrderList) SetCreateDate(v string) *QueryOrderListResponseBodyLmOrderListLmOrderList {
-	s.CreateDate = &v
-	return s
-}
-
-func (s *QueryOrderListResponseBodyLmOrderListLmOrderList) SetSubOrderList(v *QueryOrderListResponseBodyLmOrderListLmOrderListSubOrderList) *QueryOrderListResponseBodyLmOrderListLmOrderList {
-	s.SubOrderList = v
 	return s
 }
 
@@ -13199,13 +14465,18 @@ func (s *QueryOrderListResponseBodyLmOrderListLmOrderList) SetOrderStatus(v int3
 	return s
 }
 
+func (s *QueryOrderListResponseBodyLmOrderListLmOrderList) SetShopName(v string) *QueryOrderListResponseBodyLmOrderListLmOrderList {
+	s.ShopName = &v
+	return s
+}
+
 func (s *QueryOrderListResponseBodyLmOrderListLmOrderList) SetTbOrderId(v int64) *QueryOrderListResponseBodyLmOrderListLmOrderList {
 	s.TbOrderId = &v
 	return s
 }
 
-func (s *QueryOrderListResponseBodyLmOrderListLmOrderList) SetFundStructureModels(v *QueryOrderListResponseBodyLmOrderListLmOrderListFundStructureModels) *QueryOrderListResponseBodyLmOrderListLmOrderList {
-	s.FundStructureModels = v
+func (s *QueryOrderListResponseBodyLmOrderListLmOrderList) SetOrderAmount(v int64) *QueryOrderListResponseBodyLmOrderListLmOrderList {
+	s.OrderAmount = &v
 	return s
 }
 
@@ -13214,31 +14485,68 @@ func (s *QueryOrderListResponseBodyLmOrderListLmOrderList) SetLogisticsStatus(v 
 	return s
 }
 
-type QueryOrderListResponseBodyLmOrderListLmOrderListPostFee struct {
+func (s *QueryOrderListResponseBodyLmOrderListLmOrderList) SetCreateDate(v string) *QueryOrderListResponseBodyLmOrderListLmOrderList {
+	s.CreateDate = &v
+	return s
+}
+
+func (s *QueryOrderListResponseBodyLmOrderListLmOrderList) SetFundStructureModels(v *QueryOrderListResponseBodyLmOrderListLmOrderListFundStructureModels) *QueryOrderListResponseBodyLmOrderListLmOrderList {
+	s.FundStructureModels = v
+	return s
+}
+
+func (s *QueryOrderListResponseBodyLmOrderListLmOrderList) SetSubOrderList(v *QueryOrderListResponseBodyLmOrderListLmOrderListSubOrderList) *QueryOrderListResponseBodyLmOrderListLmOrderList {
+	s.SubOrderList = v
+	return s
+}
+
+func (s *QueryOrderListResponseBodyLmOrderListLmOrderList) SetPostFee(v *QueryOrderListResponseBodyLmOrderListLmOrderListPostFee) *QueryOrderListResponseBodyLmOrderListLmOrderList {
+	s.PostFee = v
+	return s
+}
+
+type QueryOrderListResponseBodyLmOrderListLmOrderListFundStructureModels struct {
+	FundStructureModels []*QueryOrderListResponseBodyLmOrderListLmOrderListFundStructureModelsFundStructureModels `json:"FundStructureModels,omitempty" xml:"FundStructureModels,omitempty" type:"Repeated"`
+}
+
+func (s QueryOrderListResponseBodyLmOrderListLmOrderListFundStructureModels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrderListResponseBodyLmOrderListLmOrderListFundStructureModels) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrderListResponseBodyLmOrderListLmOrderListFundStructureModels) SetFundStructureModels(v []*QueryOrderListResponseBodyLmOrderListLmOrderListFundStructureModelsFundStructureModels) *QueryOrderListResponseBodyLmOrderListLmOrderListFundStructureModels {
+	s.FundStructureModels = v
+	return s
+}
+
+type QueryOrderListResponseBodyLmOrderListLmOrderListFundStructureModelsFundStructureModels struct {
 	FundAmount      *int64  `json:"FundAmount,omitempty" xml:"FundAmount,omitempty"`
 	FundType        *string `json:"FundType,omitempty" xml:"FundType,omitempty"`
 	FundAmountMoney *int64  `json:"FundAmountMoney,omitempty" xml:"FundAmountMoney,omitempty"`
 }
 
-func (s QueryOrderListResponseBodyLmOrderListLmOrderListPostFee) String() string {
+func (s QueryOrderListResponseBodyLmOrderListLmOrderListFundStructureModelsFundStructureModels) String() string {
 	return tea.Prettify(s)
 }
 
-func (s QueryOrderListResponseBodyLmOrderListLmOrderListPostFee) GoString() string {
+func (s QueryOrderListResponseBodyLmOrderListLmOrderListFundStructureModelsFundStructureModels) GoString() string {
 	return s.String()
 }
 
-func (s *QueryOrderListResponseBodyLmOrderListLmOrderListPostFee) SetFundAmount(v int64) *QueryOrderListResponseBodyLmOrderListLmOrderListPostFee {
+func (s *QueryOrderListResponseBodyLmOrderListLmOrderListFundStructureModelsFundStructureModels) SetFundAmount(v int64) *QueryOrderListResponseBodyLmOrderListLmOrderListFundStructureModelsFundStructureModels {
 	s.FundAmount = &v
 	return s
 }
 
-func (s *QueryOrderListResponseBodyLmOrderListLmOrderListPostFee) SetFundType(v string) *QueryOrderListResponseBodyLmOrderListLmOrderListPostFee {
+func (s *QueryOrderListResponseBodyLmOrderListLmOrderListFundStructureModelsFundStructureModels) SetFundType(v string) *QueryOrderListResponseBodyLmOrderListLmOrderListFundStructureModelsFundStructureModels {
 	s.FundType = &v
 	return s
 }
 
-func (s *QueryOrderListResponseBodyLmOrderListLmOrderListPostFee) SetFundAmountMoney(v int64) *QueryOrderListResponseBodyLmOrderListLmOrderListPostFee {
+func (s *QueryOrderListResponseBodyLmOrderListLmOrderListFundStructureModelsFundStructureModels) SetFundAmountMoney(v int64) *QueryOrderListResponseBodyLmOrderListLmOrderListFundStructureModelsFundStructureModels {
 	s.FundAmountMoney = &v
 	return s
 }
@@ -13262,17 +14570,17 @@ func (s *QueryOrderListResponseBodyLmOrderListLmOrderListSubOrderList) SetSubOrd
 
 type QueryOrderListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList struct {
 	LmOrderId     *int64                                                                                 `json:"LmOrderId,omitempty" xml:"LmOrderId,omitempty"`
-	ItemTitle     *string                                                                                `json:"ItemTitle,omitempty" xml:"ItemTitle,omitempty"`
-	ItemPriceList *QueryOrderListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderListItemPriceList `json:"ItemPriceList,omitempty" xml:"ItemPriceList,omitempty" type:"Struct"`
-	LmItemId      *string                                                                                `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
-	ItemPic       *string                                                                                `json:"ItemPic,omitempty" xml:"ItemPic,omitempty"`
-	ItemId        *int64                                                                                 `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
 	EnableStatus  *int32                                                                                 `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	ItemTitle     *string                                                                                `json:"ItemTitle,omitempty" xml:"ItemTitle,omitempty"`
 	OrderStatus   *int32                                                                                 `json:"OrderStatus,omitempty" xml:"OrderStatus,omitempty"`
 	SkuName       *string                                                                                `json:"SkuName,omitempty" xml:"SkuName,omitempty"`
+	LmItemId      *string                                                                                `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
 	SkuId         *int64                                                                                 `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
 	Number        *int64                                                                                 `json:"Number,omitempty" xml:"Number,omitempty"`
 	TbOrderId     *int64                                                                                 `json:"TbOrderId,omitempty" xml:"TbOrderId,omitempty"`
+	ItemPic       *string                                                                                `json:"ItemPic,omitempty" xml:"ItemPic,omitempty"`
+	ItemId        *int64                                                                                 `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	ItemPriceList *QueryOrderListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderListItemPriceList `json:"ItemPriceList,omitempty" xml:"ItemPriceList,omitempty" type:"Struct"`
 }
 
 func (s QueryOrderListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList) String() string {
@@ -13288,33 +14596,13 @@ func (s *QueryOrderListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderLis
 	return s
 }
 
-func (s *QueryOrderListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList) SetItemTitle(v string) *QueryOrderListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList {
-	s.ItemTitle = &v
-	return s
-}
-
-func (s *QueryOrderListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList) SetItemPriceList(v *QueryOrderListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderListItemPriceList) *QueryOrderListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList {
-	s.ItemPriceList = v
-	return s
-}
-
-func (s *QueryOrderListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList) SetLmItemId(v string) *QueryOrderListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList {
-	s.LmItemId = &v
-	return s
-}
-
-func (s *QueryOrderListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList) SetItemPic(v string) *QueryOrderListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList {
-	s.ItemPic = &v
-	return s
-}
-
-func (s *QueryOrderListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList) SetItemId(v int64) *QueryOrderListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList {
-	s.ItemId = &v
-	return s
-}
-
 func (s *QueryOrderListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList) SetEnableStatus(v int32) *QueryOrderListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList {
 	s.EnableStatus = &v
+	return s
+}
+
+func (s *QueryOrderListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList) SetItemTitle(v string) *QueryOrderListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList {
+	s.ItemTitle = &v
 	return s
 }
 
@@ -13325,6 +14613,11 @@ func (s *QueryOrderListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderLis
 
 func (s *QueryOrderListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList) SetSkuName(v string) *QueryOrderListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList {
 	s.SkuName = &v
+	return s
+}
+
+func (s *QueryOrderListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList) SetLmItemId(v string) *QueryOrderListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList {
+	s.LmItemId = &v
 	return s
 }
 
@@ -13340,6 +14633,21 @@ func (s *QueryOrderListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderLis
 
 func (s *QueryOrderListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList) SetTbOrderId(v int64) *QueryOrderListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList {
 	s.TbOrderId = &v
+	return s
+}
+
+func (s *QueryOrderListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList) SetItemPic(v string) *QueryOrderListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList {
+	s.ItemPic = &v
+	return s
+}
+
+func (s *QueryOrderListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList) SetItemId(v int64) *QueryOrderListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList {
+	s.ItemId = &v
+	return s
+}
+
+func (s *QueryOrderListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList) SetItemPriceList(v *QueryOrderListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderListItemPriceList) *QueryOrderListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderList {
+	s.ItemPriceList = v
 	return s
 }
 
@@ -13389,48 +14697,31 @@ func (s *QueryOrderListResponseBodyLmOrderListLmOrderListSubOrderListSubOrderLis
 	return s
 }
 
-type QueryOrderListResponseBodyLmOrderListLmOrderListFundStructureModels struct {
-	FundStructureModels []*QueryOrderListResponseBodyLmOrderListLmOrderListFundStructureModelsFundStructureModels `json:"FundStructureModels,omitempty" xml:"FundStructureModels,omitempty" type:"Repeated"`
-}
-
-func (s QueryOrderListResponseBodyLmOrderListLmOrderListFundStructureModels) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryOrderListResponseBodyLmOrderListLmOrderListFundStructureModels) GoString() string {
-	return s.String()
-}
-
-func (s *QueryOrderListResponseBodyLmOrderListLmOrderListFundStructureModels) SetFundStructureModels(v []*QueryOrderListResponseBodyLmOrderListLmOrderListFundStructureModelsFundStructureModels) *QueryOrderListResponseBodyLmOrderListLmOrderListFundStructureModels {
-	s.FundStructureModels = v
-	return s
-}
-
-type QueryOrderListResponseBodyLmOrderListLmOrderListFundStructureModelsFundStructureModels struct {
+type QueryOrderListResponseBodyLmOrderListLmOrderListPostFee struct {
 	FundAmount      *int64  `json:"FundAmount,omitempty" xml:"FundAmount,omitempty"`
 	FundType        *string `json:"FundType,omitempty" xml:"FundType,omitempty"`
 	FundAmountMoney *int64  `json:"FundAmountMoney,omitempty" xml:"FundAmountMoney,omitempty"`
 }
 
-func (s QueryOrderListResponseBodyLmOrderListLmOrderListFundStructureModelsFundStructureModels) String() string {
+func (s QueryOrderListResponseBodyLmOrderListLmOrderListPostFee) String() string {
 	return tea.Prettify(s)
 }
 
-func (s QueryOrderListResponseBodyLmOrderListLmOrderListFundStructureModelsFundStructureModels) GoString() string {
+func (s QueryOrderListResponseBodyLmOrderListLmOrderListPostFee) GoString() string {
 	return s.String()
 }
 
-func (s *QueryOrderListResponseBodyLmOrderListLmOrderListFundStructureModelsFundStructureModels) SetFundAmount(v int64) *QueryOrderListResponseBodyLmOrderListLmOrderListFundStructureModelsFundStructureModels {
+func (s *QueryOrderListResponseBodyLmOrderListLmOrderListPostFee) SetFundAmount(v int64) *QueryOrderListResponseBodyLmOrderListLmOrderListPostFee {
 	s.FundAmount = &v
 	return s
 }
 
-func (s *QueryOrderListResponseBodyLmOrderListLmOrderListFundStructureModelsFundStructureModels) SetFundType(v string) *QueryOrderListResponseBodyLmOrderListLmOrderListFundStructureModelsFundStructureModels {
+func (s *QueryOrderListResponseBodyLmOrderListLmOrderListPostFee) SetFundType(v string) *QueryOrderListResponseBodyLmOrderListLmOrderListPostFee {
 	s.FundType = &v
 	return s
 }
 
-func (s *QueryOrderListResponseBodyLmOrderListLmOrderListFundStructureModelsFundStructureModels) SetFundAmountMoney(v int64) *QueryOrderListResponseBodyLmOrderListLmOrderListFundStructureModelsFundStructureModels {
+func (s *QueryOrderListResponseBodyLmOrderListLmOrderListPostFee) SetFundAmountMoney(v int64) *QueryOrderListResponseBodyLmOrderListLmOrderListPostFee {
 	s.FundAmountMoney = &v
 	return s
 }
@@ -13506,9 +14797,9 @@ func (s *QueryOrderLogisticsRequest) SetAccountType(v string) *QueryOrderLogisti
 }
 
 type QueryOrderLogisticsResponseBody struct {
+	Code           *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message        *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId      *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code           *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
 	OrderLogistics *QueryOrderLogisticsResponseBodyOrderLogistics `json:"OrderLogistics,omitempty" xml:"OrderLogistics,omitempty" type:"Struct"`
 }
 
@@ -13518,6 +14809,11 @@ func (s QueryOrderLogisticsResponseBody) String() string {
 
 func (s QueryOrderLogisticsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *QueryOrderLogisticsResponseBody) SetCode(v string) *QueryOrderLogisticsResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *QueryOrderLogisticsResponseBody) SetMessage(v string) *QueryOrderLogisticsResponseBody {
@@ -13530,23 +14826,18 @@ func (s *QueryOrderLogisticsResponseBody) SetRequestId(v string) *QueryOrderLogi
 	return s
 }
 
-func (s *QueryOrderLogisticsResponseBody) SetCode(v string) *QueryOrderLogisticsResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *QueryOrderLogisticsResponseBody) SetOrderLogistics(v *QueryOrderLogisticsResponseBodyOrderLogistics) *QueryOrderLogisticsResponseBody {
 	s.OrderLogistics = v
 	return s
 }
 
 type QueryOrderLogisticsResponseBodyOrderLogistics struct {
-	Receiver             *QueryOrderLogisticsResponseBodyOrderLogisticsReceiver            `json:"Receiver,omitempty" xml:"Receiver,omitempty" type:"Struct"`
+	LogisticsCompanyCode *string                                                           `json:"LogisticsCompanyCode,omitempty" xml:"LogisticsCompanyCode,omitempty"`
+	LogisticsCompanyName *string                                                           `json:"LogisticsCompanyName,omitempty" xml:"LogisticsCompanyName,omitempty"`
 	DataProvider         *string                                                           `json:"DataProvider,omitempty" xml:"DataProvider,omitempty"`
 	DataProviderTitle    *string                                                           `json:"DataProviderTitle,omitempty" xml:"DataProviderTitle,omitempty"`
 	LogisticsDetailList  *QueryOrderLogisticsResponseBodyOrderLogisticsLogisticsDetailList `json:"LogisticsDetailList,omitempty" xml:"LogisticsDetailList,omitempty" type:"Struct"`
-	LogisticsCompanyCode *string                                                           `json:"LogisticsCompanyCode,omitempty" xml:"LogisticsCompanyCode,omitempty"`
-	LogisticsCompanyName *string                                                           `json:"LogisticsCompanyName,omitempty" xml:"LogisticsCompanyName,omitempty"`
+	Receiver             *QueryOrderLogisticsResponseBodyOrderLogisticsReceiver            `json:"Receiver,omitempty" xml:"Receiver,omitempty" type:"Struct"`
 	Fetcher              *QueryOrderLogisticsResponseBodyOrderLogisticsFetcher             `json:"Fetcher,omitempty" xml:"Fetcher,omitempty" type:"Struct"`
 }
 
@@ -13558,8 +14849,13 @@ func (s QueryOrderLogisticsResponseBodyOrderLogistics) GoString() string {
 	return s.String()
 }
 
-func (s *QueryOrderLogisticsResponseBodyOrderLogistics) SetReceiver(v *QueryOrderLogisticsResponseBodyOrderLogisticsReceiver) *QueryOrderLogisticsResponseBodyOrderLogistics {
-	s.Receiver = v
+func (s *QueryOrderLogisticsResponseBodyOrderLogistics) SetLogisticsCompanyCode(v string) *QueryOrderLogisticsResponseBodyOrderLogistics {
+	s.LogisticsCompanyCode = &v
+	return s
+}
+
+func (s *QueryOrderLogisticsResponseBodyOrderLogistics) SetLogisticsCompanyName(v string) *QueryOrderLogisticsResponseBodyOrderLogistics {
+	s.LogisticsCompanyName = &v
 	return s
 }
 
@@ -13578,53 +14874,13 @@ func (s *QueryOrderLogisticsResponseBodyOrderLogistics) SetLogisticsDetailList(v
 	return s
 }
 
-func (s *QueryOrderLogisticsResponseBodyOrderLogistics) SetLogisticsCompanyCode(v string) *QueryOrderLogisticsResponseBodyOrderLogistics {
-	s.LogisticsCompanyCode = &v
-	return s
-}
-
-func (s *QueryOrderLogisticsResponseBodyOrderLogistics) SetLogisticsCompanyName(v string) *QueryOrderLogisticsResponseBodyOrderLogistics {
-	s.LogisticsCompanyName = &v
+func (s *QueryOrderLogisticsResponseBodyOrderLogistics) SetReceiver(v *QueryOrderLogisticsResponseBodyOrderLogisticsReceiver) *QueryOrderLogisticsResponseBodyOrderLogistics {
+	s.Receiver = v
 	return s
 }
 
 func (s *QueryOrderLogisticsResponseBodyOrderLogistics) SetFetcher(v *QueryOrderLogisticsResponseBodyOrderLogisticsFetcher) *QueryOrderLogisticsResponseBodyOrderLogistics {
 	s.Fetcher = v
-	return s
-}
-
-type QueryOrderLogisticsResponseBodyOrderLogisticsReceiver struct {
-	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	ZipCode     *string `json:"ZipCode,omitempty" xml:"ZipCode,omitempty"`
-	Address     *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-}
-
-func (s QueryOrderLogisticsResponseBodyOrderLogisticsReceiver) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryOrderLogisticsResponseBodyOrderLogisticsReceiver) GoString() string {
-	return s.String()
-}
-
-func (s *QueryOrderLogisticsResponseBodyOrderLogisticsReceiver) SetPhoneNumber(v string) *QueryOrderLogisticsResponseBodyOrderLogisticsReceiver {
-	s.PhoneNumber = &v
-	return s
-}
-
-func (s *QueryOrderLogisticsResponseBodyOrderLogisticsReceiver) SetZipCode(v string) *QueryOrderLogisticsResponseBodyOrderLogisticsReceiver {
-	s.ZipCode = &v
-	return s
-}
-
-func (s *QueryOrderLogisticsResponseBodyOrderLogisticsReceiver) SetAddress(v string) *QueryOrderLogisticsResponseBodyOrderLogisticsReceiver {
-	s.Address = &v
-	return s
-}
-
-func (s *QueryOrderLogisticsResponseBodyOrderLogisticsReceiver) SetName(v string) *QueryOrderLogisticsResponseBodyOrderLogisticsReceiver {
-	s.Name = &v
 	return s
 }
 
@@ -13646,9 +14902,9 @@ func (s *QueryOrderLogisticsResponseBodyOrderLogisticsLogisticsDetailList) SetLo
 }
 
 type QueryOrderLogisticsResponseBodyOrderLogisticsLogisticsDetailListLogisticsDetailList struct {
+	OcurrTimeStr *string `json:"OcurrTimeStr,omitempty" xml:"OcurrTimeStr,omitempty"`
 	StanderdDesc *string `json:"StanderdDesc,omitempty" xml:"StanderdDesc,omitempty"`
 	StatusIcon   *string `json:"StatusIcon,omitempty" xml:"StatusIcon,omitempty"`
-	OcurrTimeStr *string `json:"OcurrTimeStr,omitempty" xml:"OcurrTimeStr,omitempty"`
 }
 
 func (s QueryOrderLogisticsResponseBodyOrderLogisticsLogisticsDetailListLogisticsDetailList) String() string {
@@ -13657,6 +14913,11 @@ func (s QueryOrderLogisticsResponseBodyOrderLogisticsLogisticsDetailListLogistic
 
 func (s QueryOrderLogisticsResponseBodyOrderLogisticsLogisticsDetailListLogisticsDetailList) GoString() string {
 	return s.String()
+}
+
+func (s *QueryOrderLogisticsResponseBodyOrderLogisticsLogisticsDetailListLogisticsDetailList) SetOcurrTimeStr(v string) *QueryOrderLogisticsResponseBodyOrderLogisticsLogisticsDetailListLogisticsDetailList {
+	s.OcurrTimeStr = &v
+	return s
 }
 
 func (s *QueryOrderLogisticsResponseBodyOrderLogisticsLogisticsDetailListLogisticsDetailList) SetStanderdDesc(v string) *QueryOrderLogisticsResponseBodyOrderLogisticsLogisticsDetailListLogisticsDetailList {
@@ -13669,16 +14930,46 @@ func (s *QueryOrderLogisticsResponseBodyOrderLogisticsLogisticsDetailListLogisti
 	return s
 }
 
-func (s *QueryOrderLogisticsResponseBodyOrderLogisticsLogisticsDetailListLogisticsDetailList) SetOcurrTimeStr(v string) *QueryOrderLogisticsResponseBodyOrderLogisticsLogisticsDetailListLogisticsDetailList {
-	s.OcurrTimeStr = &v
+type QueryOrderLogisticsResponseBodyOrderLogisticsReceiver struct {
+	Address     *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	ZipCode     *string `json:"ZipCode,omitempty" xml:"ZipCode,omitempty"`
+}
+
+func (s QueryOrderLogisticsResponseBodyOrderLogisticsReceiver) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrderLogisticsResponseBodyOrderLogisticsReceiver) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrderLogisticsResponseBodyOrderLogisticsReceiver) SetAddress(v string) *QueryOrderLogisticsResponseBodyOrderLogisticsReceiver {
+	s.Address = &v
+	return s
+}
+
+func (s *QueryOrderLogisticsResponseBodyOrderLogisticsReceiver) SetName(v string) *QueryOrderLogisticsResponseBodyOrderLogisticsReceiver {
+	s.Name = &v
+	return s
+}
+
+func (s *QueryOrderLogisticsResponseBodyOrderLogisticsReceiver) SetPhoneNumber(v string) *QueryOrderLogisticsResponseBodyOrderLogisticsReceiver {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *QueryOrderLogisticsResponseBodyOrderLogisticsReceiver) SetZipCode(v string) *QueryOrderLogisticsResponseBodyOrderLogisticsReceiver {
+	s.ZipCode = &v
 	return s
 }
 
 type QueryOrderLogisticsResponseBodyOrderLogisticsFetcher struct {
-	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	ZipCode     *string `json:"ZipCode,omitempty" xml:"ZipCode,omitempty"`
 	Address     *string `json:"Address,omitempty" xml:"Address,omitempty"`
 	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	ZipCode     *string `json:"ZipCode,omitempty" xml:"ZipCode,omitempty"`
 }
 
 func (s QueryOrderLogisticsResponseBodyOrderLogisticsFetcher) String() string {
@@ -13689,16 +14980,6 @@ func (s QueryOrderLogisticsResponseBodyOrderLogisticsFetcher) GoString() string 
 	return s.String()
 }
 
-func (s *QueryOrderLogisticsResponseBodyOrderLogisticsFetcher) SetPhoneNumber(v string) *QueryOrderLogisticsResponseBodyOrderLogisticsFetcher {
-	s.PhoneNumber = &v
-	return s
-}
-
-func (s *QueryOrderLogisticsResponseBodyOrderLogisticsFetcher) SetZipCode(v string) *QueryOrderLogisticsResponseBodyOrderLogisticsFetcher {
-	s.ZipCode = &v
-	return s
-}
-
 func (s *QueryOrderLogisticsResponseBodyOrderLogisticsFetcher) SetAddress(v string) *QueryOrderLogisticsResponseBodyOrderLogisticsFetcher {
 	s.Address = &v
 	return s
@@ -13706,6 +14987,16 @@ func (s *QueryOrderLogisticsResponseBodyOrderLogisticsFetcher) SetAddress(v stri
 
 func (s *QueryOrderLogisticsResponseBodyOrderLogisticsFetcher) SetName(v string) *QueryOrderLogisticsResponseBodyOrderLogisticsFetcher {
 	s.Name = &v
+	return s
+}
+
+func (s *QueryOrderLogisticsResponseBodyOrderLogisticsFetcher) SetPhoneNumber(v string) *QueryOrderLogisticsResponseBodyOrderLogisticsFetcher {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *QueryOrderLogisticsResponseBodyOrderLogisticsFetcher) SetZipCode(v string) *QueryOrderLogisticsResponseBodyOrderLogisticsFetcher {
+	s.ZipCode = &v
 	return s
 }
 
@@ -13780,10 +15071,10 @@ func (s *QueryRefundApplicationDetailRequest) SetAccountType(v string) *QueryRef
 }
 
 type QueryRefundApplicationDetailResponseBody struct {
+	Code                    *string                                                          `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message                 *string                                                          `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId               *string                                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RefundApplicationDetail *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail `json:"RefundApplicationDetail,omitempty" xml:"RefundApplicationDetail,omitempty" type:"Struct"`
-	Code                    *string                                                          `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s QueryRefundApplicationDetailResponseBody) String() string {
@@ -13792,6 +15083,11 @@ func (s QueryRefundApplicationDetailResponseBody) String() string {
 
 func (s QueryRefundApplicationDetailResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *QueryRefundApplicationDetailResponseBody) SetCode(v string) *QueryRefundApplicationDetailResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *QueryRefundApplicationDetailResponseBody) SetMessage(v string) *QueryRefundApplicationDetailResponseBody {
@@ -13809,36 +15105,31 @@ func (s *QueryRefundApplicationDetailResponseBody) SetRefundApplicationDetail(v 
 	return s
 }
 
-func (s *QueryRefundApplicationDetailResponseBody) SetCode(v string) *QueryRefundApplicationDetailResponseBody {
-	s.Code = &v
-	return s
-}
-
 type QueryRefundApplicationDetailResponseBodyRefundApplicationDetail struct {
+	DisputeType                  *int32                                                                           `json:"DisputeType,omitempty" xml:"DisputeType,omitempty"`
+	LmOrderId                    *string                                                                          `json:"LmOrderId,omitempty" xml:"LmOrderId,omitempty"`
 	RefunderName                 *string                                                                          `json:"RefunderName,omitempty" xml:"RefunderName,omitempty"`
+	SellerAgreeMsg               *string                                                                          `json:"SellerAgreeMsg,omitempty" xml:"SellerAgreeMsg,omitempty"`
 	ReturnGoodLogisticsStatus    *int32                                                                           `json:"ReturnGoodLogisticsStatus,omitempty" xml:"ReturnGoodLogisticsStatus,omitempty"`
+	DisputeDesc                  *string                                                                          `json:"DisputeDesc,omitempty" xml:"DisputeDesc,omitempty"`
 	RefunderAddress              *string                                                                          `json:"RefunderAddress,omitempty" xml:"RefunderAddress,omitempty"`
 	ReturnGoodCount              *int32                                                                           `json:"ReturnGoodCount,omitempty" xml:"ReturnGoodCount,omitempty"`
+	DisputeId                    *int64                                                                           `json:"DisputeId,omitempty" xml:"DisputeId,omitempty"`
+	DisputeEndTime               *string                                                                          `json:"DisputeEndTime,omitempty" xml:"DisputeEndTime,omitempty"`
 	OrderLogisticsStatus         *int32                                                                           `json:"OrderLogisticsStatus,omitempty" xml:"OrderLogisticsStatus,omitempty"`
 	BizClaimType                 *int32                                                                           `json:"BizClaimType,omitempty" xml:"BizClaimType,omitempty"`
 	RealRefundFee                *int64                                                                           `json:"RealRefundFee,omitempty" xml:"RealRefundFee,omitempty"`
 	RefundFee                    *int64                                                                           `json:"RefundFee,omitempty" xml:"RefundFee,omitempty"`
 	SellerRefuseAgreementMessage *string                                                                          `json:"SellerRefuseAgreementMessage,omitempty" xml:"SellerRefuseAgreementMessage,omitempty"`
+	DisputeCreateTime            *string                                                                          `json:"DisputeCreateTime,omitempty" xml:"DisputeCreateTime,omitempty"`
 	RefunderTel                  *string                                                                          `json:"RefunderTel,omitempty" xml:"RefunderTel,omitempty"`
-	SubLmOrderId                 *string                                                                          `json:"SubLmOrderId,omitempty" xml:"SubLmOrderId,omitempty"`
 	SellerRefuseReason           *string                                                                          `json:"SellerRefuseReason,omitempty" xml:"SellerRefuseReason,omitempty"`
+	SubLmOrderId                 *string                                                                          `json:"SubLmOrderId,omitempty" xml:"SubLmOrderId,omitempty"`
 	ApplyDisputeDesc             *string                                                                          `json:"ApplyDisputeDesc,omitempty" xml:"ApplyDisputeDesc,omitempty"`
 	DisputeStatus                *int32                                                                           `json:"DisputeStatus,omitempty" xml:"DisputeStatus,omitempty"`
-	DisputeType                  *int32                                                                           `json:"DisputeType,omitempty" xml:"DisputeType,omitempty"`
-	LmOrderId                    *string                                                                          `json:"LmOrderId,omitempty" xml:"LmOrderId,omitempty"`
+	RefunderZipCode              *string                                                                          `json:"RefunderZipCode,omitempty" xml:"RefunderZipCode,omitempty"`
 	MaxRefundFeeData             *QueryRefundApplicationDetailResponseBodyRefundApplicationDetailMaxRefundFeeData `json:"MaxRefundFeeData,omitempty" xml:"MaxRefundFeeData,omitempty" type:"Struct"`
 	ApplyReasonText              *QueryRefundApplicationDetailResponseBodyRefundApplicationDetailApplyReasonText  `json:"ApplyReasonText,omitempty" xml:"ApplyReasonText,omitempty" type:"Struct"`
-	SellerAgreeMsg               *string                                                                          `json:"SellerAgreeMsg,omitempty" xml:"SellerAgreeMsg,omitempty"`
-	DisputeDesc                  *string                                                                          `json:"DisputeDesc,omitempty" xml:"DisputeDesc,omitempty"`
-	DisputeId                    *int64                                                                           `json:"DisputeId,omitempty" xml:"DisputeId,omitempty"`
-	DisputeEndTime               *string                                                                          `json:"DisputeEndTime,omitempty" xml:"DisputeEndTime,omitempty"`
-	DisputeCreateTime            *string                                                                          `json:"DisputeCreateTime,omitempty" xml:"DisputeCreateTime,omitempty"`
-	RefunderZipCode              *string                                                                          `json:"RefunderZipCode,omitempty" xml:"RefunderZipCode,omitempty"`
 }
 
 func (s QueryRefundApplicationDetailResponseBodyRefundApplicationDetail) String() string {
@@ -13849,13 +15140,33 @@ func (s QueryRefundApplicationDetailResponseBodyRefundApplicationDetail) GoStrin
 	return s.String()
 }
 
+func (s *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail) SetDisputeType(v int32) *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail {
+	s.DisputeType = &v
+	return s
+}
+
+func (s *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail) SetLmOrderId(v string) *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail {
+	s.LmOrderId = &v
+	return s
+}
+
 func (s *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail) SetRefunderName(v string) *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail {
 	s.RefunderName = &v
 	return s
 }
 
+func (s *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail) SetSellerAgreeMsg(v string) *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail {
+	s.SellerAgreeMsg = &v
+	return s
+}
+
 func (s *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail) SetReturnGoodLogisticsStatus(v int32) *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail {
 	s.ReturnGoodLogisticsStatus = &v
+	return s
+}
+
+func (s *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail) SetDisputeDesc(v string) *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail {
+	s.DisputeDesc = &v
 	return s
 }
 
@@ -13866,6 +15177,16 @@ func (s *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail) SetRef
 
 func (s *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail) SetReturnGoodCount(v int32) *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail {
 	s.ReturnGoodCount = &v
+	return s
+}
+
+func (s *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail) SetDisputeId(v int64) *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail {
+	s.DisputeId = &v
+	return s
+}
+
+func (s *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail) SetDisputeEndTime(v string) *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail {
+	s.DisputeEndTime = &v
 	return s
 }
 
@@ -13894,18 +15215,23 @@ func (s *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail) SetSel
 	return s
 }
 
+func (s *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail) SetDisputeCreateTime(v string) *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail {
+	s.DisputeCreateTime = &v
+	return s
+}
+
 func (s *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail) SetRefunderTel(v string) *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail {
 	s.RefunderTel = &v
 	return s
 }
 
-func (s *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail) SetSubLmOrderId(v string) *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail {
-	s.SubLmOrderId = &v
+func (s *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail) SetSellerRefuseReason(v string) *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail {
+	s.SellerRefuseReason = &v
 	return s
 }
 
-func (s *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail) SetSellerRefuseReason(v string) *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail {
-	s.SellerRefuseReason = &v
+func (s *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail) SetSubLmOrderId(v string) *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail {
+	s.SubLmOrderId = &v
 	return s
 }
 
@@ -13919,13 +15245,8 @@ func (s *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail) SetDis
 	return s
 }
 
-func (s *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail) SetDisputeType(v int32) *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail {
-	s.DisputeType = &v
-	return s
-}
-
-func (s *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail) SetLmOrderId(v string) *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail {
-	s.LmOrderId = &v
+func (s *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail) SetRefunderZipCode(v string) *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail {
+	s.RefunderZipCode = &v
 	return s
 }
 
@@ -13936,36 +15257,6 @@ func (s *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail) SetMax
 
 func (s *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail) SetApplyReasonText(v *QueryRefundApplicationDetailResponseBodyRefundApplicationDetailApplyReasonText) *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail {
 	s.ApplyReasonText = v
-	return s
-}
-
-func (s *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail) SetSellerAgreeMsg(v string) *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail {
-	s.SellerAgreeMsg = &v
-	return s
-}
-
-func (s *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail) SetDisputeDesc(v string) *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail {
-	s.DisputeDesc = &v
-	return s
-}
-
-func (s *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail) SetDisputeId(v int64) *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail {
-	s.DisputeId = &v
-	return s
-}
-
-func (s *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail) SetDisputeEndTime(v string) *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail {
-	s.DisputeEndTime = &v
-	return s
-}
-
-func (s *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail) SetDisputeCreateTime(v string) *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail {
-	s.DisputeCreateTime = &v
-	return s
-}
-
-func (s *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail) SetRefunderZipCode(v string) *QueryRefundApplicationDetailResponseBodyRefundApplicationDetail {
-	s.RefunderZipCode = &v
 	return s
 }
 
@@ -14038,6 +15329,307 @@ func (s *QueryRefundApplicationDetailResponse) SetBody(v *QueryRefundApplication
 	return s
 }
 
+type QueryStatementsRequest struct {
+	TenantId     *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	PayeeIds     *string `json:"PayeeIds,omitempty" xml:"PayeeIds,omitempty"`
+	SettleNoes   *string `json:"SettleNoes,omitempty" xml:"SettleNoes,omitempty"`
+	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	SettleStatus *string `json:"SettleStatus,omitempty" xml:"SettleStatus,omitempty"`
+	SettleType   *string `json:"SettleType,omitempty" xml:"SettleType,omitempty"`
+	ExtInfo      *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
+}
+
+func (s QueryStatementsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryStatementsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryStatementsRequest) SetTenantId(v string) *QueryStatementsRequest {
+	s.TenantId = &v
+	return s
+}
+
+func (s *QueryStatementsRequest) SetPayeeIds(v string) *QueryStatementsRequest {
+	s.PayeeIds = &v
+	return s
+}
+
+func (s *QueryStatementsRequest) SetSettleNoes(v string) *QueryStatementsRequest {
+	s.SettleNoes = &v
+	return s
+}
+
+func (s *QueryStatementsRequest) SetStartTime(v string) *QueryStatementsRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *QueryStatementsRequest) SetEndTime(v string) *QueryStatementsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *QueryStatementsRequest) SetPageSize(v int32) *QueryStatementsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryStatementsRequest) SetPageNumber(v int32) *QueryStatementsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *QueryStatementsRequest) SetSettleStatus(v string) *QueryStatementsRequest {
+	s.SettleStatus = &v
+	return s
+}
+
+func (s *QueryStatementsRequest) SetSettleType(v string) *QueryStatementsRequest {
+	s.SettleType = &v
+	return s
+}
+
+func (s *QueryStatementsRequest) SetExtInfo(v string) *QueryStatementsRequest {
+	s.ExtInfo = &v
+	return s
+}
+
+type QueryStatementsResponseBody struct {
+	RequestId  *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success    *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	SubMessage *string                           `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Code       *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message    *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	SubCode    *string                           `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	TotalCount *int64                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	LogsId     *string                           `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
+	Model      *QueryStatementsResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+}
+
+func (s QueryStatementsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryStatementsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryStatementsResponseBody) SetRequestId(v string) *QueryStatementsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryStatementsResponseBody) SetSuccess(v bool) *QueryStatementsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *QueryStatementsResponseBody) SetSubMessage(v string) *QueryStatementsResponseBody {
+	s.SubMessage = &v
+	return s
+}
+
+func (s *QueryStatementsResponseBody) SetCode(v string) *QueryStatementsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryStatementsResponseBody) SetMessage(v string) *QueryStatementsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryStatementsResponseBody) SetSubCode(v string) *QueryStatementsResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *QueryStatementsResponseBody) SetTotalCount(v int64) *QueryStatementsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *QueryStatementsResponseBody) SetLogsId(v string) *QueryStatementsResponseBody {
+	s.LogsId = &v
+	return s
+}
+
+func (s *QueryStatementsResponseBody) SetModel(v *QueryStatementsResponseBodyModel) *QueryStatementsResponseBody {
+	s.Model = v
+	return s
+}
+
+type QueryStatementsResponseBodyModel struct {
+	PageSize      *int32                                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber    *int32                                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalCount    *int32                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	StatementList []*QueryStatementsResponseBodyModelStatementList `json:"StatementList,omitempty" xml:"StatementList,omitempty" type:"Repeated"`
+}
+
+func (s QueryStatementsResponseBodyModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryStatementsResponseBodyModel) GoString() string {
+	return s.String()
+}
+
+func (s *QueryStatementsResponseBodyModel) SetPageSize(v int32) *QueryStatementsResponseBodyModel {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryStatementsResponseBodyModel) SetPageNumber(v int32) *QueryStatementsResponseBodyModel {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *QueryStatementsResponseBodyModel) SetTotalCount(v int32) *QueryStatementsResponseBodyModel {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *QueryStatementsResponseBodyModel) SetStatementList(v []*QueryStatementsResponseBodyModelStatementList) *QueryStatementsResponseBodyModel {
+	s.StatementList = v
+	return s
+}
+
+type QueryStatementsResponseBodyModelStatementList struct {
+	PayeeAccountName *string `json:"PayeeAccountName,omitempty" xml:"PayeeAccountName,omitempty"`
+	PayeeId          *string `json:"PayeeId,omitempty" xml:"PayeeId,omitempty"`
+	PayeeAccountNo   *string `json:"PayeeAccountNo,omitempty" xml:"PayeeAccountNo,omitempty"`
+	CreateDate       *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	ExtInfo          *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
+	EndTime          *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime        *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	SettleNo         *string `json:"SettleNo,omitempty" xml:"SettleNo,omitempty"`
+	Attributes       *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	SettleStatus     *string `json:"SettleStatus,omitempty" xml:"SettleStatus,omitempty"`
+	PayeeName        *string `json:"PayeeName,omitempty" xml:"PayeeName,omitempty"`
+	SettleAmount     *string `json:"SettleAmount,omitempty" xml:"SettleAmount,omitempty"`
+	PayeeAccountId   *string `json:"PayeeAccountId,omitempty" xml:"PayeeAccountId,omitempty"`
+	ModifiedDate     *string `json:"ModifiedDate,omitempty" xml:"ModifiedDate,omitempty"`
+	StatusMessage    *string `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
+	TenantId         *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s QueryStatementsResponseBodyModelStatementList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryStatementsResponseBodyModelStatementList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryStatementsResponseBodyModelStatementList) SetPayeeAccountName(v string) *QueryStatementsResponseBodyModelStatementList {
+	s.PayeeAccountName = &v
+	return s
+}
+
+func (s *QueryStatementsResponseBodyModelStatementList) SetPayeeId(v string) *QueryStatementsResponseBodyModelStatementList {
+	s.PayeeId = &v
+	return s
+}
+
+func (s *QueryStatementsResponseBodyModelStatementList) SetPayeeAccountNo(v string) *QueryStatementsResponseBodyModelStatementList {
+	s.PayeeAccountNo = &v
+	return s
+}
+
+func (s *QueryStatementsResponseBodyModelStatementList) SetCreateDate(v string) *QueryStatementsResponseBodyModelStatementList {
+	s.CreateDate = &v
+	return s
+}
+
+func (s *QueryStatementsResponseBodyModelStatementList) SetExtInfo(v string) *QueryStatementsResponseBodyModelStatementList {
+	s.ExtInfo = &v
+	return s
+}
+
+func (s *QueryStatementsResponseBodyModelStatementList) SetEndTime(v string) *QueryStatementsResponseBodyModelStatementList {
+	s.EndTime = &v
+	return s
+}
+
+func (s *QueryStatementsResponseBodyModelStatementList) SetStartTime(v string) *QueryStatementsResponseBodyModelStatementList {
+	s.StartTime = &v
+	return s
+}
+
+func (s *QueryStatementsResponseBodyModelStatementList) SetSettleNo(v string) *QueryStatementsResponseBodyModelStatementList {
+	s.SettleNo = &v
+	return s
+}
+
+func (s *QueryStatementsResponseBodyModelStatementList) SetAttributes(v string) *QueryStatementsResponseBodyModelStatementList {
+	s.Attributes = &v
+	return s
+}
+
+func (s *QueryStatementsResponseBodyModelStatementList) SetSettleStatus(v string) *QueryStatementsResponseBodyModelStatementList {
+	s.SettleStatus = &v
+	return s
+}
+
+func (s *QueryStatementsResponseBodyModelStatementList) SetPayeeName(v string) *QueryStatementsResponseBodyModelStatementList {
+	s.PayeeName = &v
+	return s
+}
+
+func (s *QueryStatementsResponseBodyModelStatementList) SetSettleAmount(v string) *QueryStatementsResponseBodyModelStatementList {
+	s.SettleAmount = &v
+	return s
+}
+
+func (s *QueryStatementsResponseBodyModelStatementList) SetPayeeAccountId(v string) *QueryStatementsResponseBodyModelStatementList {
+	s.PayeeAccountId = &v
+	return s
+}
+
+func (s *QueryStatementsResponseBodyModelStatementList) SetModifiedDate(v string) *QueryStatementsResponseBodyModelStatementList {
+	s.ModifiedDate = &v
+	return s
+}
+
+func (s *QueryStatementsResponseBodyModelStatementList) SetStatusMessage(v string) *QueryStatementsResponseBodyModelStatementList {
+	s.StatusMessage = &v
+	return s
+}
+
+func (s *QueryStatementsResponseBodyModelStatementList) SetTenantId(v string) *QueryStatementsResponseBodyModelStatementList {
+	s.TenantId = &v
+	return s
+}
+
+type QueryStatementsResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QueryStatementsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryStatementsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryStatementsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryStatementsResponse) SetHeaders(v map[string]*string) *QueryStatementsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryStatementsResponse) SetBody(v *QueryStatementsResponseBody) *QueryStatementsResponse {
+	s.Body = v
+	return s
+}
+
 type QueryUnfinishedActivitiesRequest struct {
 	BizId      *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -14068,13 +15660,13 @@ func (s *QueryUnfinishedActivitiesRequest) SetPageSize(v int32) *QueryUnfinished
 }
 
 type QueryUnfinishedActivitiesResponseBody struct {
-	TotalCount             *int64                                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId              *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code                   *string                                                      `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message                *string                                                      `json:"Message,omitempty" xml:"Message,omitempty"`
 	PageSize               *int64                                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PageNumber             *int64                                                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalCount             *int64                                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	LmActivityModelExtList *QueryUnfinishedActivitiesResponseBodyLmActivityModelExtList `json:"LmActivityModelExtList,omitempty" xml:"LmActivityModelExtList,omitempty" type:"Struct"`
-	Code                   *string                                                      `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s QueryUnfinishedActivitiesResponseBody) String() string {
@@ -14085,13 +15677,13 @@ func (s QueryUnfinishedActivitiesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *QueryUnfinishedActivitiesResponseBody) SetTotalCount(v int64) *QueryUnfinishedActivitiesResponseBody {
-	s.TotalCount = &v
+func (s *QueryUnfinishedActivitiesResponseBody) SetRequestId(v string) *QueryUnfinishedActivitiesResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *QueryUnfinishedActivitiesResponseBody) SetRequestId(v string) *QueryUnfinishedActivitiesResponseBody {
-	s.RequestId = &v
+func (s *QueryUnfinishedActivitiesResponseBody) SetCode(v string) *QueryUnfinishedActivitiesResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -14110,13 +15702,13 @@ func (s *QueryUnfinishedActivitiesResponseBody) SetPageNumber(v int64) *QueryUnf
 	return s
 }
 
-func (s *QueryUnfinishedActivitiesResponseBody) SetLmActivityModelExtList(v *QueryUnfinishedActivitiesResponseBodyLmActivityModelExtList) *QueryUnfinishedActivitiesResponseBody {
-	s.LmActivityModelExtList = v
+func (s *QueryUnfinishedActivitiesResponseBody) SetTotalCount(v int64) *QueryUnfinishedActivitiesResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
-func (s *QueryUnfinishedActivitiesResponseBody) SetCode(v string) *QueryUnfinishedActivitiesResponseBody {
-	s.Code = &v
+func (s *QueryUnfinishedActivitiesResponseBody) SetLmActivityModelExtList(v *QueryUnfinishedActivitiesResponseBodyLmActivityModelExtList) *QueryUnfinishedActivitiesResponseBody {
+	s.LmActivityModelExtList = v
 	return s
 }
 
@@ -14343,13 +15935,13 @@ func (s *QueryUnfinishedSessionsRequest) SetQueryTime(v int64) *QueryUnfinishedS
 }
 
 type QueryUnfinishedSessionsResponseBody struct {
+	RequestId                  *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code                       *string                                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message                    *string                                                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber                 *int64                                                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize                   *int64                                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	TotalCount                 *int64                                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	LmActivitySessionModelList *QueryUnfinishedSessionsResponseBodyLmActivitySessionModelList `json:"LmActivitySessionModelList,omitempty" xml:"LmActivitySessionModelList,omitempty" type:"Struct"`
-	RequestId                  *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Message                    *string                                                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageSize                   *int64                                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber                 *int64                                                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	Code                       *string                                                        `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s QueryUnfinishedSessionsResponseBody) String() string {
@@ -14360,18 +15952,13 @@ func (s QueryUnfinishedSessionsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *QueryUnfinishedSessionsResponseBody) SetTotalCount(v int64) *QueryUnfinishedSessionsResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *QueryUnfinishedSessionsResponseBody) SetLmActivitySessionModelList(v *QueryUnfinishedSessionsResponseBodyLmActivitySessionModelList) *QueryUnfinishedSessionsResponseBody {
-	s.LmActivitySessionModelList = v
-	return s
-}
-
 func (s *QueryUnfinishedSessionsResponseBody) SetRequestId(v string) *QueryUnfinishedSessionsResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *QueryUnfinishedSessionsResponseBody) SetCode(v string) *QueryUnfinishedSessionsResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -14380,18 +15967,23 @@ func (s *QueryUnfinishedSessionsResponseBody) SetMessage(v string) *QueryUnfinis
 	return s
 }
 
-func (s *QueryUnfinishedSessionsResponseBody) SetPageSize(v int64) *QueryUnfinishedSessionsResponseBody {
-	s.PageSize = &v
-	return s
-}
-
 func (s *QueryUnfinishedSessionsResponseBody) SetPageNumber(v int64) *QueryUnfinishedSessionsResponseBody {
 	s.PageNumber = &v
 	return s
 }
 
-func (s *QueryUnfinishedSessionsResponseBody) SetCode(v string) *QueryUnfinishedSessionsResponseBody {
-	s.Code = &v
+func (s *QueryUnfinishedSessionsResponseBody) SetPageSize(v int64) *QueryUnfinishedSessionsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryUnfinishedSessionsResponseBody) SetTotalCount(v int64) *QueryUnfinishedSessionsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *QueryUnfinishedSessionsResponseBody) SetLmActivitySessionModelList(v *QueryUnfinishedSessionsResponseBodyLmActivitySessionModelList) *QueryUnfinishedSessionsResponseBody {
+	s.LmActivitySessionModelList = v
 	return s
 }
 
@@ -14571,10 +16163,10 @@ func (s *QueryUnfinishedSessions4ItemsShrinkRequest) SetQueryTime(v int64) *Quer
 }
 
 type QueryUnfinishedSessions4ItemsResponseBody struct {
+	Code                               *string                                                                      `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message                            *string                                                                      `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId                          *string                                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	LmItemActivitySessionModelListList *QueryUnfinishedSessions4ItemsResponseBodyLmItemActivitySessionModelListList `json:"LmItemActivitySessionModelListList,omitempty" xml:"LmItemActivitySessionModelListList,omitempty" type:"Struct"`
-	Code                               *string                                                                      `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s QueryUnfinishedSessions4ItemsResponseBody) String() string {
@@ -14583,6 +16175,11 @@ func (s QueryUnfinishedSessions4ItemsResponseBody) String() string {
 
 func (s QueryUnfinishedSessions4ItemsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *QueryUnfinishedSessions4ItemsResponseBody) SetCode(v string) *QueryUnfinishedSessions4ItemsResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *QueryUnfinishedSessions4ItemsResponseBody) SetMessage(v string) *QueryUnfinishedSessions4ItemsResponseBody {
@@ -14597,11 +16194,6 @@ func (s *QueryUnfinishedSessions4ItemsResponseBody) SetRequestId(v string) *Quer
 
 func (s *QueryUnfinishedSessions4ItemsResponseBody) SetLmItemActivitySessionModelListList(v *QueryUnfinishedSessions4ItemsResponseBodyLmItemActivitySessionModelListList) *QueryUnfinishedSessions4ItemsResponseBody {
 	s.LmItemActivitySessionModelListList = v
-	return s
-}
-
-func (s *QueryUnfinishedSessions4ItemsResponseBody) SetCode(v string) *QueryUnfinishedSessions4ItemsResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -14821,15 +16413,15 @@ func (s *QueryUpcomingMoviesShrinkRequest) SetExtJsonShrink(v string) *QueryUpco
 }
 
 type QueryUpcomingMoviesResponseBody struct {
-	TotalCount *int64                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId  *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Message    *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	LogsId     *string                                `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
-	SubMessage *string                                `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
-	Movies     *QueryUpcomingMoviesResponseBodyMovies `json:"Movies,omitempty" xml:"Movies,omitempty" type:"Struct"`
-	SubCode    *string                                `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	Code       *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success    *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	SubMessage *string                                `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Code       *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message    *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	SubCode    *string                                `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	TotalCount *int64                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	LogsId     *string                                `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
+	Movies     *QueryUpcomingMoviesResponseBodyMovies `json:"Movies,omitempty" xml:"Movies,omitempty" type:"Struct"`
 }
 
 func (s QueryUpcomingMoviesResponseBody) String() string {
@@ -14840,23 +16432,13 @@ func (s QueryUpcomingMoviesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *QueryUpcomingMoviesResponseBody) SetTotalCount(v int64) *QueryUpcomingMoviesResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
 func (s *QueryUpcomingMoviesResponseBody) SetRequestId(v string) *QueryUpcomingMoviesResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *QueryUpcomingMoviesResponseBody) SetMessage(v string) *QueryUpcomingMoviesResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *QueryUpcomingMoviesResponseBody) SetLogsId(v string) *QueryUpcomingMoviesResponseBody {
-	s.LogsId = &v
+func (s *QueryUpcomingMoviesResponseBody) SetSuccess(v bool) *QueryUpcomingMoviesResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -14865,8 +16447,13 @@ func (s *QueryUpcomingMoviesResponseBody) SetSubMessage(v string) *QueryUpcoming
 	return s
 }
 
-func (s *QueryUpcomingMoviesResponseBody) SetMovies(v *QueryUpcomingMoviesResponseBodyMovies) *QueryUpcomingMoviesResponseBody {
-	s.Movies = v
+func (s *QueryUpcomingMoviesResponseBody) SetCode(v string) *QueryUpcomingMoviesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryUpcomingMoviesResponseBody) SetMessage(v string) *QueryUpcomingMoviesResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -14875,13 +16462,18 @@ func (s *QueryUpcomingMoviesResponseBody) SetSubCode(v string) *QueryUpcomingMov
 	return s
 }
 
-func (s *QueryUpcomingMoviesResponseBody) SetCode(v string) *QueryUpcomingMoviesResponseBody {
-	s.Code = &v
+func (s *QueryUpcomingMoviesResponseBody) SetTotalCount(v int64) *QueryUpcomingMoviesResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
-func (s *QueryUpcomingMoviesResponseBody) SetSuccess(v bool) *QueryUpcomingMoviesResponseBody {
-	s.Success = &v
+func (s *QueryUpcomingMoviesResponseBody) SetLogsId(v string) *QueryUpcomingMoviesResponseBody {
+	s.LogsId = &v
+	return s
+}
+
+func (s *QueryUpcomingMoviesResponseBody) SetMovies(v *QueryUpcomingMoviesResponseBodyMovies) *QueryUpcomingMoviesResponseBody {
+	s.Movies = v
 	return s
 }
 
@@ -14903,16 +16495,16 @@ func (s *QueryUpcomingMoviesResponseBodyMovies) SetMovie(v []*QueryUpcomingMovie
 }
 
 type QueryUpcomingMoviesResponseBodyMoviesMovie struct {
-	MovieVersion      *string `json:"MovieVersion,omitempty" xml:"MovieVersion,omitempty"`
 	Type              *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	MovieVersion      *string `json:"MovieVersion,omitempty" xml:"MovieVersion,omitempty"`
 	BackgroundPicture *string `json:"BackgroundPicture,omitempty" xml:"BackgroundPicture,omitempty"`
-	OpenDay           *string `json:"OpenDay,omitempty" xml:"OpenDay,omitempty"`
 	Remark            *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	OpenDay           *string `json:"OpenDay,omitempty" xml:"OpenDay,omitempty"`
 	Highlight         *string `json:"Highlight,omitempty" xml:"Highlight,omitempty"`
 	MovieTypeList     *string `json:"MovieTypeList,omitempty" xml:"MovieTypeList,omitempty"`
 	Language          *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	OpenTime          *string `json:"OpenTime,omitempty" xml:"OpenTime,omitempty"`
 	Director          *string `json:"Director,omitempty" xml:"Director,omitempty"`
+	OpenTime          *string `json:"OpenTime,omitempty" xml:"OpenTime,omitempty"`
 	Poster            *string `json:"Poster,omitempty" xml:"Poster,omitempty"`
 	MovieName         *string `json:"MovieName,omitempty" xml:"MovieName,omitempty"`
 	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -14932,13 +16524,13 @@ func (s QueryUpcomingMoviesResponseBodyMoviesMovie) GoString() string {
 	return s.String()
 }
 
-func (s *QueryUpcomingMoviesResponseBodyMoviesMovie) SetMovieVersion(v string) *QueryUpcomingMoviesResponseBodyMoviesMovie {
-	s.MovieVersion = &v
+func (s *QueryUpcomingMoviesResponseBodyMoviesMovie) SetType(v string) *QueryUpcomingMoviesResponseBodyMoviesMovie {
+	s.Type = &v
 	return s
 }
 
-func (s *QueryUpcomingMoviesResponseBodyMoviesMovie) SetType(v string) *QueryUpcomingMoviesResponseBodyMoviesMovie {
-	s.Type = &v
+func (s *QueryUpcomingMoviesResponseBodyMoviesMovie) SetMovieVersion(v string) *QueryUpcomingMoviesResponseBodyMoviesMovie {
+	s.MovieVersion = &v
 	return s
 }
 
@@ -14947,13 +16539,13 @@ func (s *QueryUpcomingMoviesResponseBodyMoviesMovie) SetBackgroundPicture(v stri
 	return s
 }
 
-func (s *QueryUpcomingMoviesResponseBodyMoviesMovie) SetOpenDay(v string) *QueryUpcomingMoviesResponseBodyMoviesMovie {
-	s.OpenDay = &v
+func (s *QueryUpcomingMoviesResponseBodyMoviesMovie) SetRemark(v string) *QueryUpcomingMoviesResponseBodyMoviesMovie {
+	s.Remark = &v
 	return s
 }
 
-func (s *QueryUpcomingMoviesResponseBodyMoviesMovie) SetRemark(v string) *QueryUpcomingMoviesResponseBodyMoviesMovie {
-	s.Remark = &v
+func (s *QueryUpcomingMoviesResponseBodyMoviesMovie) SetOpenDay(v string) *QueryUpcomingMoviesResponseBodyMoviesMovie {
+	s.OpenDay = &v
 	return s
 }
 
@@ -14972,13 +16564,13 @@ func (s *QueryUpcomingMoviesResponseBodyMoviesMovie) SetLanguage(v string) *Quer
 	return s
 }
 
-func (s *QueryUpcomingMoviesResponseBodyMoviesMovie) SetOpenTime(v string) *QueryUpcomingMoviesResponseBodyMoviesMovie {
-	s.OpenTime = &v
+func (s *QueryUpcomingMoviesResponseBodyMoviesMovie) SetDirector(v string) *QueryUpcomingMoviesResponseBodyMoviesMovie {
+	s.Director = &v
 	return s
 }
 
-func (s *QueryUpcomingMoviesResponseBodyMoviesMovie) SetDirector(v string) *QueryUpcomingMoviesResponseBodyMoviesMovie {
-	s.Director = &v
+func (s *QueryUpcomingMoviesResponseBodyMoviesMovie) SetOpenTime(v string) *QueryUpcomingMoviesResponseBodyMoviesMovie {
+	s.OpenTime = &v
 	return s
 }
 
@@ -15080,10 +16672,10 @@ func (s *QueryWithholdTradeRequest) SetMerchantId(v string) *QueryWithholdTradeR
 }
 
 type QueryWithholdTradeResponseBody struct {
-	QueryWithholdTradeResponse *QueryWithholdTradeResponseBodyQueryWithholdTradeResponse `json:"QueryWithholdTradeResponse,omitempty" xml:"QueryWithholdTradeResponse,omitempty" type:"Struct"`
+	Code                       *string                                                   `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message                    *string                                                   `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId                  *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code                       *string                                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	QueryWithholdTradeResponse *QueryWithholdTradeResponseBodyQueryWithholdTradeResponse `json:"QueryWithholdTradeResponse,omitempty" xml:"QueryWithholdTradeResponse,omitempty" type:"Struct"`
 }
 
 func (s QueryWithholdTradeResponseBody) String() string {
@@ -15094,8 +16686,8 @@ func (s QueryWithholdTradeResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *QueryWithholdTradeResponseBody) SetQueryWithholdTradeResponse(v *QueryWithholdTradeResponseBodyQueryWithholdTradeResponse) *QueryWithholdTradeResponseBody {
-	s.QueryWithholdTradeResponse = v
+func (s *QueryWithholdTradeResponseBody) SetCode(v string) *QueryWithholdTradeResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -15109,8 +16701,8 @@ func (s *QueryWithholdTradeResponseBody) SetRequestId(v string) *QueryWithholdTr
 	return s
 }
 
-func (s *QueryWithholdTradeResponseBody) SetCode(v string) *QueryWithholdTradeResponseBody {
-	s.Code = &v
+func (s *QueryWithholdTradeResponseBody) SetQueryWithholdTradeResponse(v *QueryWithholdTradeResponseBodyQueryWithholdTradeResponse) *QueryWithholdTradeResponseBody {
+	s.QueryWithholdTradeResponse = v
 	return s
 }
 
@@ -15244,10 +16836,10 @@ func (s *RefundOrderRequest) SetMerchantId(v string) *RefundOrderRequest {
 }
 
 type RefundOrderResponseBody struct {
+	Code           *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message        *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId      *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RefundResponse *RefundOrderResponseBodyRefundResponse `json:"RefundResponse,omitempty" xml:"RefundResponse,omitempty" type:"Struct"`
-	Code           *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s RefundOrderResponseBody) String() string {
@@ -15256,6 +16848,11 @@ func (s RefundOrderResponseBody) String() string {
 
 func (s RefundOrderResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *RefundOrderResponseBody) SetCode(v string) *RefundOrderResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *RefundOrderResponseBody) SetMessage(v string) *RefundOrderResponseBody {
@@ -15270,11 +16867,6 @@ func (s *RefundOrderResponseBody) SetRequestId(v string) *RefundOrderResponseBod
 
 func (s *RefundOrderResponseBody) SetRefundResponse(v *RefundOrderResponseBodyRefundResponse) *RefundOrderResponseBody {
 	s.RefundResponse = v
-	return s
-}
-
-func (s *RefundOrderResponseBody) SetCode(v string) *RefundOrderResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -15390,9 +16982,9 @@ func (s *RefundPointRequest) SetThirdPartyUserId(v string) *RefundPointRequest {
 }
 
 type RefundPointResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s RefundPointResponseBody) String() string {
@@ -15403,6 +16995,11 @@ func (s RefundPointResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *RefundPointResponseBody) SetCode(v string) *RefundPointResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *RefundPointResponseBody) SetMessage(v string) *RefundPointResponseBody {
 	s.Message = &v
 	return s
@@ -15410,11 +17007,6 @@ func (s *RefundPointResponseBody) SetMessage(v string) *RefundPointResponseBody 
 
 func (s *RefundPointResponseBody) SetRequestId(v string) *RefundPointResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *RefundPointResponseBody) SetCode(v string) *RefundPointResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -15477,9 +17069,9 @@ func (s *RefuseMerchantSyncTaskRequest) SetTimeStamp(v int64) *RefuseMerchantSyn
 }
 
 type RefuseMerchantSyncTaskResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s RefuseMerchantSyncTaskResponseBody) String() string {
@@ -15490,6 +17082,11 @@ func (s RefuseMerchantSyncTaskResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *RefuseMerchantSyncTaskResponseBody) SetCode(v string) *RefuseMerchantSyncTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *RefuseMerchantSyncTaskResponseBody) SetMessage(v string) *RefuseMerchantSyncTaskResponseBody {
 	s.Message = &v
 	return s
@@ -15497,11 +17094,6 @@ func (s *RefuseMerchantSyncTaskResponseBody) SetMessage(v string) *RefuseMerchan
 
 func (s *RefuseMerchantSyncTaskResponseBody) SetRequestId(v string) *RefuseMerchantSyncTaskResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *RefuseMerchantSyncTaskResponseBody) SetCode(v string) *RefuseMerchantSyncTaskResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -15552,9 +17144,9 @@ func (s *RegistAnonymousTbAccountRequest) SetThirdPartyUserId(v string) *RegistA
 }
 
 type RegistAnonymousTbAccountResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s RegistAnonymousTbAccountResponseBody) String() string {
@@ -15565,6 +17157,11 @@ func (s RegistAnonymousTbAccountResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *RegistAnonymousTbAccountResponseBody) SetCode(v string) *RegistAnonymousTbAccountResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *RegistAnonymousTbAccountResponseBody) SetMessage(v string) *RegistAnonymousTbAccountResponseBody {
 	s.Message = &v
 	return s
@@ -15572,11 +17169,6 @@ func (s *RegistAnonymousTbAccountResponseBody) SetMessage(v string) *RegistAnony
 
 func (s *RegistAnonymousTbAccountResponseBody) SetRequestId(v string) *RegistAnonymousTbAccountResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *RegistAnonymousTbAccountResponseBody) SetCode(v string) *RegistAnonymousTbAccountResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -15640,13 +17232,13 @@ func (s *ReleaseMovieSeatRequest) SetExtJson(v string) *ReleaseMovieSeatRequest 
 
 type ReleaseMovieSeatResponseBody struct {
 	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Message      *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	ActionResult *ReleaseMovieSeatResponseBodyActionResult `json:"ActionResult,omitempty" xml:"ActionResult,omitempty" type:"Struct"`
-	LogsId       *string                                   `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
-	SubMessage   *string                                   `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
-	SubCode      *string                                   `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	Code         *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	SubMessage   *string                                   `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Code         *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message      *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	SubCode      *string                                   `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	LogsId       *string                                   `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
+	ActionResult *ReleaseMovieSeatResponseBodyActionResult `json:"ActionResult,omitempty" xml:"ActionResult,omitempty" type:"Struct"`
 }
 
 func (s ReleaseMovieSeatResponseBody) String() string {
@@ -15662,18 +17254,8 @@ func (s *ReleaseMovieSeatResponseBody) SetRequestId(v string) *ReleaseMovieSeatR
 	return s
 }
 
-func (s *ReleaseMovieSeatResponseBody) SetMessage(v string) *ReleaseMovieSeatResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ReleaseMovieSeatResponseBody) SetActionResult(v *ReleaseMovieSeatResponseBodyActionResult) *ReleaseMovieSeatResponseBody {
-	s.ActionResult = v
-	return s
-}
-
-func (s *ReleaseMovieSeatResponseBody) SetLogsId(v string) *ReleaseMovieSeatResponseBody {
-	s.LogsId = &v
+func (s *ReleaseMovieSeatResponseBody) SetSuccess(v bool) *ReleaseMovieSeatResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -15682,18 +17264,28 @@ func (s *ReleaseMovieSeatResponseBody) SetSubMessage(v string) *ReleaseMovieSeat
 	return s
 }
 
-func (s *ReleaseMovieSeatResponseBody) SetSubCode(v string) *ReleaseMovieSeatResponseBody {
-	s.SubCode = &v
-	return s
-}
-
 func (s *ReleaseMovieSeatResponseBody) SetCode(v string) *ReleaseMovieSeatResponseBody {
 	s.Code = &v
 	return s
 }
 
-func (s *ReleaseMovieSeatResponseBody) SetSuccess(v bool) *ReleaseMovieSeatResponseBody {
-	s.Success = &v
+func (s *ReleaseMovieSeatResponseBody) SetMessage(v string) *ReleaseMovieSeatResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ReleaseMovieSeatResponseBody) SetSubCode(v string) *ReleaseMovieSeatResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *ReleaseMovieSeatResponseBody) SetLogsId(v string) *ReleaseMovieSeatResponseBody {
+	s.LogsId = &v
+	return s
+}
+
+func (s *ReleaseMovieSeatResponseBody) SetActionResult(v *ReleaseMovieSeatResponseBodyActionResult) *ReleaseMovieSeatResponseBody {
+	s.ActionResult = v
 	return s
 }
 
@@ -15785,9 +17377,9 @@ func (s *RemoveAddressRequest) SetAddressInfo(v string) *RemoveAddressRequest {
 }
 
 type RemoveAddressResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s RemoveAddressResponseBody) String() string {
@@ -15798,6 +17390,11 @@ func (s RemoveAddressResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *RemoveAddressResponseBody) SetCode(v string) *RemoveAddressResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *RemoveAddressResponseBody) SetMessage(v string) *RemoveAddressResponseBody {
 	s.Message = &v
 	return s
@@ -15805,11 +17402,6 @@ func (s *RemoveAddressResponseBody) SetMessage(v string) *RemoveAddressResponseB
 
 func (s *RemoveAddressResponseBody) SetRequestId(v string) *RemoveAddressResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *RemoveAddressResponseBody) SetCode(v string) *RemoveAddressResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -15867,13 +17459,13 @@ func (s *RemoveMessagesRequest) SetExtJson(v string) *RemoveMessagesRequest {
 
 type RemoveMessagesResponseBody struct {
 	RequestId    *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Message      *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	ActionResult *RemoveMessagesResponseBodyActionResult `json:"ActionResult,omitempty" xml:"ActionResult,omitempty" type:"Struct"`
-	LogsId       *string                                 `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
-	SubMessage   *string                                 `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
-	SubCode      *string                                 `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	Code         *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+	SubMessage   *string                                 `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Code         *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	SubCode      *string                                 `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	Message      *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	LogsId       *string                                 `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
+	ActionResult *RemoveMessagesResponseBodyActionResult `json:"ActionResult,omitempty" xml:"ActionResult,omitempty" type:"Struct"`
 }
 
 func (s RemoveMessagesResponseBody) String() string {
@@ -15889,18 +17481,8 @@ func (s *RemoveMessagesResponseBody) SetRequestId(v string) *RemoveMessagesRespo
 	return s
 }
 
-func (s *RemoveMessagesResponseBody) SetMessage(v string) *RemoveMessagesResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *RemoveMessagesResponseBody) SetActionResult(v *RemoveMessagesResponseBodyActionResult) *RemoveMessagesResponseBody {
-	s.ActionResult = v
-	return s
-}
-
-func (s *RemoveMessagesResponseBody) SetLogsId(v string) *RemoveMessagesResponseBody {
-	s.LogsId = &v
+func (s *RemoveMessagesResponseBody) SetSuccess(v bool) *RemoveMessagesResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -15909,18 +17491,28 @@ func (s *RemoveMessagesResponseBody) SetSubMessage(v string) *RemoveMessagesResp
 	return s
 }
 
-func (s *RemoveMessagesResponseBody) SetSubCode(v string) *RemoveMessagesResponseBody {
-	s.SubCode = &v
-	return s
-}
-
 func (s *RemoveMessagesResponseBody) SetCode(v string) *RemoveMessagesResponseBody {
 	s.Code = &v
 	return s
 }
 
-func (s *RemoveMessagesResponseBody) SetSuccess(v bool) *RemoveMessagesResponseBody {
-	s.Success = &v
+func (s *RemoveMessagesResponseBody) SetSubCode(v string) *RemoveMessagesResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *RemoveMessagesResponseBody) SetMessage(v string) *RemoveMessagesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RemoveMessagesResponseBody) SetLogsId(v string) *RemoveMessagesResponseBody {
+	s.LogsId = &v
+	return s
+}
+
+func (s *RemoveMessagesResponseBody) SetActionResult(v *RemoveMessagesResponseBodyActionResult) *RemoveMessagesResponseBody {
+	s.ActionResult = v
 	return s
 }
 
@@ -16024,15 +17616,15 @@ func (s *RenderH5OrderRequest) SetAccountType(v string) *RenderH5OrderRequest {
 }
 
 type RenderH5OrderResponseBody struct {
-	TotalCount *int64                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId  *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success    *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	SubMessage *string                         `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Code       *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message    *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	SubCode    *string                         `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	TotalCount *int64                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	LogsId     *string                         `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
 	Model      *RenderH5OrderResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
-	SubMessage *string                         `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
-	SubCode    *string                         `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	Code       *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success    *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s RenderH5OrderResponseBody) String() string {
@@ -16043,18 +17635,38 @@ func (s RenderH5OrderResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *RenderH5OrderResponseBody) SetTotalCount(v int64) *RenderH5OrderResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
 func (s *RenderH5OrderResponseBody) SetRequestId(v string) *RenderH5OrderResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *RenderH5OrderResponseBody) SetSuccess(v bool) *RenderH5OrderResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *RenderH5OrderResponseBody) SetSubMessage(v string) *RenderH5OrderResponseBody {
+	s.SubMessage = &v
+	return s
+}
+
+func (s *RenderH5OrderResponseBody) SetCode(v string) *RenderH5OrderResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *RenderH5OrderResponseBody) SetMessage(v string) *RenderH5OrderResponseBody {
 	s.Message = &v
+	return s
+}
+
+func (s *RenderH5OrderResponseBody) SetSubCode(v string) *RenderH5OrderResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *RenderH5OrderResponseBody) SetTotalCount(v int64) *RenderH5OrderResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -16068,33 +17680,13 @@ func (s *RenderH5OrderResponseBody) SetModel(v *RenderH5OrderResponseBodyModel) 
 	return s
 }
 
-func (s *RenderH5OrderResponseBody) SetSubMessage(v string) *RenderH5OrderResponseBody {
-	s.SubMessage = &v
-	return s
-}
-
-func (s *RenderH5OrderResponseBody) SetSubCode(v string) *RenderH5OrderResponseBody {
-	s.SubCode = &v
-	return s
-}
-
-func (s *RenderH5OrderResponseBody) SetCode(v string) *RenderH5OrderResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *RenderH5OrderResponseBody) SetSuccess(v bool) *RenderH5OrderResponseBody {
-	s.Success = &v
-	return s
-}
-
 type RenderH5OrderResponseBodyModel struct {
-	BuyerCurrentPoints *int64                                            `json:"BuyerCurrentPoints,omitempty" xml:"BuyerCurrentPoints,omitempty"`
-	InvoiceInfo        *RenderH5OrderResponseBodyModelInvoiceInfo        `json:"InvoiceInfo,omitempty" xml:"InvoiceInfo,omitempty" type:"Struct"`
-	DeliveryInfoList   []*RenderH5OrderResponseBodyModelDeliveryInfoList `json:"DeliveryInfoList,omitempty" xml:"DeliveryInfoList,omitempty" type:"Repeated"`
-	LmItemInfoList     []*RenderH5OrderResponseBodyModelLmItemInfoList   `json:"LmItemInfoList,omitempty" xml:"LmItemInfoList,omitempty" type:"Repeated"`
 	ExtInfo            map[string]interface{}                            `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
+	BuyerCurrentPoints *int64                                            `json:"BuyerCurrentPoints,omitempty" xml:"BuyerCurrentPoints,omitempty"`
+	LmItemInfoList     []*RenderH5OrderResponseBodyModelLmItemInfoList   `json:"LmItemInfoList,omitempty" xml:"LmItemInfoList,omitempty" type:"Repeated"`
+	DeliveryInfoList   []*RenderH5OrderResponseBodyModelDeliveryInfoList `json:"DeliveryInfoList,omitempty" xml:"DeliveryInfoList,omitempty" type:"Repeated"`
 	AddressInfoList    []*RenderH5OrderResponseBodyModelAddressInfoList  `json:"AddressInfoList,omitempty" xml:"AddressInfoList,omitempty" type:"Repeated"`
+	InvoiceInfo        *RenderH5OrderResponseBodyModelInvoiceInfo        `json:"InvoiceInfo,omitempty" xml:"InvoiceInfo,omitempty" type:"Struct"`
 }
 
 func (s RenderH5OrderResponseBodyModel) String() string {
@@ -16105,18 +17697,13 @@ func (s RenderH5OrderResponseBodyModel) GoString() string {
 	return s.String()
 }
 
+func (s *RenderH5OrderResponseBodyModel) SetExtInfo(v map[string]interface{}) *RenderH5OrderResponseBodyModel {
+	s.ExtInfo = v
+	return s
+}
+
 func (s *RenderH5OrderResponseBodyModel) SetBuyerCurrentPoints(v int64) *RenderH5OrderResponseBodyModel {
 	s.BuyerCurrentPoints = &v
-	return s
-}
-
-func (s *RenderH5OrderResponseBodyModel) SetInvoiceInfo(v *RenderH5OrderResponseBodyModelInvoiceInfo) *RenderH5OrderResponseBodyModel {
-	s.InvoiceInfo = v
-	return s
-}
-
-func (s *RenderH5OrderResponseBodyModel) SetDeliveryInfoList(v []*RenderH5OrderResponseBodyModelDeliveryInfoList) *RenderH5OrderResponseBodyModel {
-	s.DeliveryInfoList = v
 	return s
 }
 
@@ -16125,8 +17712,8 @@ func (s *RenderH5OrderResponseBodyModel) SetLmItemInfoList(v []*RenderH5OrderRes
 	return s
 }
 
-func (s *RenderH5OrderResponseBodyModel) SetExtInfo(v map[string]interface{}) *RenderH5OrderResponseBodyModel {
-	s.ExtInfo = v
+func (s *RenderH5OrderResponseBodyModel) SetDeliveryInfoList(v []*RenderH5OrderResponseBodyModelDeliveryInfoList) *RenderH5OrderResponseBodyModel {
+	s.DeliveryInfoList = v
 	return s
 }
 
@@ -16135,76 +17722,23 @@ func (s *RenderH5OrderResponseBodyModel) SetAddressInfoList(v []*RenderH5OrderRe
 	return s
 }
 
-type RenderH5OrderResponseBodyModelInvoiceInfo struct {
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-}
-
-func (s RenderH5OrderResponseBodyModelInvoiceInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RenderH5OrderResponseBodyModelInvoiceInfo) GoString() string {
-	return s.String()
-}
-
-func (s *RenderH5OrderResponseBodyModelInvoiceInfo) SetType(v string) *RenderH5OrderResponseBodyModelInvoiceInfo {
-	s.Type = &v
-	return s
-}
-
-func (s *RenderH5OrderResponseBodyModelInvoiceInfo) SetDesc(v string) *RenderH5OrderResponseBodyModelInvoiceInfo {
-	s.Desc = &v
-	return s
-}
-
-type RenderH5OrderResponseBodyModelDeliveryInfoList struct {
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	PostFee     *int64  `json:"PostFee,omitempty" xml:"PostFee,omitempty"`
-	ServiceType *int64  `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s RenderH5OrderResponseBodyModelDeliveryInfoList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RenderH5OrderResponseBodyModelDeliveryInfoList) GoString() string {
-	return s.String()
-}
-
-func (s *RenderH5OrderResponseBodyModelDeliveryInfoList) SetDisplayName(v string) *RenderH5OrderResponseBodyModelDeliveryInfoList {
-	s.DisplayName = &v
-	return s
-}
-
-func (s *RenderH5OrderResponseBodyModelDeliveryInfoList) SetPostFee(v int64) *RenderH5OrderResponseBodyModelDeliveryInfoList {
-	s.PostFee = &v
-	return s
-}
-
-func (s *RenderH5OrderResponseBodyModelDeliveryInfoList) SetServiceType(v int64) *RenderH5OrderResponseBodyModelDeliveryInfoList {
-	s.ServiceType = &v
-	return s
-}
-
-func (s *RenderH5OrderResponseBodyModelDeliveryInfoList) SetId(v string) *RenderH5OrderResponseBodyModelDeliveryInfoList {
-	s.Id = &v
+func (s *RenderH5OrderResponseBodyModel) SetInvoiceInfo(v *RenderH5OrderResponseBodyModelInvoiceInfo) *RenderH5OrderResponseBodyModel {
+	s.InvoiceInfo = v
 	return s
 }
 
 type RenderH5OrderResponseBodyModelLmItemInfoList struct {
-	LmItemId        *string                `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
-	SellerId        *int64                 `json:"SellerId,omitempty" xml:"SellerId,omitempty"`
 	TbShopName      *string                `json:"TbShopName,omitempty" xml:"TbShopName,omitempty"`
+	SellerId        *int64                 `json:"SellerId,omitempty" xml:"SellerId,omitempty"`
+	LmItemId        *string                `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
 	Message         *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	ItemId          *int64                 `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	Cash            *int64                 `json:"Cash,omitempty" xml:"Cash,omitempty"`
 	CanSell         *bool                  `json:"CanSell,omitempty" xml:"CanSell,omitempty"`
+	Cash            *int64                 `json:"Cash,omitempty" xml:"Cash,omitempty"`
+	ItemId          *int64                 `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
 	VirtualItemType *string                `json:"VirtualItemType,omitempty" xml:"VirtualItemType,omitempty"`
 	ItemName        *string                `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
-	SkuName         *string                `json:"SkuName,omitempty" xml:"SkuName,omitempty"`
 	ActualPrice     *int64                 `json:"ActualPrice,omitempty" xml:"ActualPrice,omitempty"`
+	SkuName         *string                `json:"SkuName,omitempty" xml:"SkuName,omitempty"`
 	SkuId           *int64                 `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
 	Points          *int64                 `json:"Points,omitempty" xml:"Points,omitempty"`
 	ItemUrl         *string                `json:"ItemUrl,omitempty" xml:"ItemUrl,omitempty"`
@@ -16222,8 +17756,8 @@ func (s RenderH5OrderResponseBodyModelLmItemInfoList) GoString() string {
 	return s.String()
 }
 
-func (s *RenderH5OrderResponseBodyModelLmItemInfoList) SetLmItemId(v string) *RenderH5OrderResponseBodyModelLmItemInfoList {
-	s.LmItemId = &v
+func (s *RenderH5OrderResponseBodyModelLmItemInfoList) SetTbShopName(v string) *RenderH5OrderResponseBodyModelLmItemInfoList {
+	s.TbShopName = &v
 	return s
 }
 
@@ -16232,8 +17766,8 @@ func (s *RenderH5OrderResponseBodyModelLmItemInfoList) SetSellerId(v int64) *Ren
 	return s
 }
 
-func (s *RenderH5OrderResponseBodyModelLmItemInfoList) SetTbShopName(v string) *RenderH5OrderResponseBodyModelLmItemInfoList {
-	s.TbShopName = &v
+func (s *RenderH5OrderResponseBodyModelLmItemInfoList) SetLmItemId(v string) *RenderH5OrderResponseBodyModelLmItemInfoList {
+	s.LmItemId = &v
 	return s
 }
 
@@ -16242,8 +17776,8 @@ func (s *RenderH5OrderResponseBodyModelLmItemInfoList) SetMessage(v string) *Ren
 	return s
 }
 
-func (s *RenderH5OrderResponseBodyModelLmItemInfoList) SetItemId(v int64) *RenderH5OrderResponseBodyModelLmItemInfoList {
-	s.ItemId = &v
+func (s *RenderH5OrderResponseBodyModelLmItemInfoList) SetCanSell(v bool) *RenderH5OrderResponseBodyModelLmItemInfoList {
+	s.CanSell = &v
 	return s
 }
 
@@ -16252,8 +17786,8 @@ func (s *RenderH5OrderResponseBodyModelLmItemInfoList) SetCash(v int64) *RenderH
 	return s
 }
 
-func (s *RenderH5OrderResponseBodyModelLmItemInfoList) SetCanSell(v bool) *RenderH5OrderResponseBodyModelLmItemInfoList {
-	s.CanSell = &v
+func (s *RenderH5OrderResponseBodyModelLmItemInfoList) SetItemId(v int64) *RenderH5OrderResponseBodyModelLmItemInfoList {
+	s.ItemId = &v
 	return s
 }
 
@@ -16267,13 +17801,13 @@ func (s *RenderH5OrderResponseBodyModelLmItemInfoList) SetItemName(v string) *Re
 	return s
 }
 
-func (s *RenderH5OrderResponseBodyModelLmItemInfoList) SetSkuName(v string) *RenderH5OrderResponseBodyModelLmItemInfoList {
-	s.SkuName = &v
+func (s *RenderH5OrderResponseBodyModelLmItemInfoList) SetActualPrice(v int64) *RenderH5OrderResponseBodyModelLmItemInfoList {
+	s.ActualPrice = &v
 	return s
 }
 
-func (s *RenderH5OrderResponseBodyModelLmItemInfoList) SetActualPrice(v int64) *RenderH5OrderResponseBodyModelLmItemInfoList {
-	s.ActualPrice = &v
+func (s *RenderH5OrderResponseBodyModelLmItemInfoList) SetSkuName(v string) *RenderH5OrderResponseBodyModelLmItemInfoList {
+	s.SkuName = &v
 	return s
 }
 
@@ -16309,6 +17843,41 @@ func (s *RenderH5OrderResponseBodyModelLmItemInfoList) SetFeatures(v map[string]
 
 func (s *RenderH5OrderResponseBodyModelLmItemInfoList) SetItemPicUrl(v string) *RenderH5OrderResponseBodyModelLmItemInfoList {
 	s.ItemPicUrl = &v
+	return s
+}
+
+type RenderH5OrderResponseBodyModelDeliveryInfoList struct {
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	PostFee     *int64  `json:"PostFee,omitempty" xml:"PostFee,omitempty"`
+	ServiceType *int64  `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s RenderH5OrderResponseBodyModelDeliveryInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenderH5OrderResponseBodyModelDeliveryInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *RenderH5OrderResponseBodyModelDeliveryInfoList) SetDisplayName(v string) *RenderH5OrderResponseBodyModelDeliveryInfoList {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *RenderH5OrderResponseBodyModelDeliveryInfoList) SetPostFee(v int64) *RenderH5OrderResponseBodyModelDeliveryInfoList {
+	s.PostFee = &v
+	return s
+}
+
+func (s *RenderH5OrderResponseBodyModelDeliveryInfoList) SetServiceType(v int64) *RenderH5OrderResponseBodyModelDeliveryInfoList {
+	s.ServiceType = &v
+	return s
+}
+
+func (s *RenderH5OrderResponseBodyModelDeliveryInfoList) SetId(v string) *RenderH5OrderResponseBodyModelDeliveryInfoList {
+	s.Id = &v
 	return s
 }
 
@@ -16356,6 +17925,29 @@ func (s *RenderH5OrderResponseBodyModelAddressInfoList) SetAddressId(v int64) *R
 
 func (s *RenderH5OrderResponseBodyModelAddressInfoList) SetReceiverPhone(v string) *RenderH5OrderResponseBodyModelAddressInfoList {
 	s.ReceiverPhone = &v
+	return s
+}
+
+type RenderH5OrderResponseBodyModelInvoiceInfo struct {
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+}
+
+func (s RenderH5OrderResponseBodyModelInvoiceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenderH5OrderResponseBodyModelInvoiceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *RenderH5OrderResponseBodyModelInvoiceInfo) SetType(v string) *RenderH5OrderResponseBodyModelInvoiceInfo {
+	s.Type = &v
+	return s
+}
+
+func (s *RenderH5OrderResponseBodyModelInvoiceInfo) SetDesc(v string) *RenderH5OrderResponseBodyModelInvoiceInfo {
+	s.Desc = &v
 	return s
 }
 
@@ -16839,10 +18431,10 @@ func (s *RepayForPayUrlRequest) SetThirdPartyUserId(v string) *RepayForPayUrlReq
 }
 
 type RepayForPayUrlResponseBody struct {
+	Code      *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Model     *RepayForPayUrlResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
-	Code      *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s RepayForPayUrlResponseBody) String() string {
@@ -16851,6 +18443,11 @@ func (s RepayForPayUrlResponseBody) String() string {
 
 func (s RepayForPayUrlResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *RepayForPayUrlResponseBody) SetCode(v string) *RepayForPayUrlResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *RepayForPayUrlResponseBody) SetMessage(v string) *RepayForPayUrlResponseBody {
@@ -16865,11 +18462,6 @@ func (s *RepayForPayUrlResponseBody) SetRequestId(v string) *RepayForPayUrlRespo
 
 func (s *RepayForPayUrlResponseBody) SetModel(v *RepayForPayUrlResponseBodyModel) *RepayForPayUrlResponseBody {
 	s.Model = v
-	return s
-}
-
-func (s *RepayForPayUrlResponseBody) SetCode(v string) *RepayForPayUrlResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -16961,9 +18553,9 @@ func (s *RepayOrderRequest) SetAccountType(v string) *RepayOrderRequest {
 }
 
 type RepayOrderResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s RepayOrderResponseBody) String() string {
@@ -16974,6 +18566,11 @@ func (s RepayOrderResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *RepayOrderResponseBody) SetCode(v string) *RepayOrderResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *RepayOrderResponseBody) SetMessage(v string) *RepayOrderResponseBody {
 	s.Message = &v
 	return s
@@ -16981,11 +18578,6 @@ func (s *RepayOrderResponseBody) SetMessage(v string) *RepayOrderResponseBody {
 
 func (s *RepayOrderResponseBody) SetRequestId(v string) *RepayOrderResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *RepayOrderResponseBody) SetCode(v string) *RepayOrderResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -17067,13 +18659,13 @@ func (s *ReserveMovieSeatRequest) SetExtJson(v string) *ReserveMovieSeatRequest 
 
 type ReserveMovieSeatResponseBody struct {
 	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Message      *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	LogsId       *string                                   `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
-	SubMessage   *string                                   `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
-	ReservedSeat *ReserveMovieSeatResponseBodyReservedSeat `json:"ReservedSeat,omitempty" xml:"ReservedSeat,omitempty" type:"Struct"`
-	SubCode      *string                                   `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	Code         *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success      *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	SubMessage   *string                                   `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Code         *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message      *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	SubCode      *string                                   `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	LogsId       *string                                   `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
+	ReservedSeat *ReserveMovieSeatResponseBodyReservedSeat `json:"ReservedSeat,omitempty" xml:"ReservedSeat,omitempty" type:"Struct"`
 }
 
 func (s ReserveMovieSeatResponseBody) String() string {
@@ -17089,13 +18681,8 @@ func (s *ReserveMovieSeatResponseBody) SetRequestId(v string) *ReserveMovieSeatR
 	return s
 }
 
-func (s *ReserveMovieSeatResponseBody) SetMessage(v string) *ReserveMovieSeatResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ReserveMovieSeatResponseBody) SetLogsId(v string) *ReserveMovieSeatResponseBody {
-	s.LogsId = &v
+func (s *ReserveMovieSeatResponseBody) SetSuccess(v bool) *ReserveMovieSeatResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -17104,8 +18691,13 @@ func (s *ReserveMovieSeatResponseBody) SetSubMessage(v string) *ReserveMovieSeat
 	return s
 }
 
-func (s *ReserveMovieSeatResponseBody) SetReservedSeat(v *ReserveMovieSeatResponseBodyReservedSeat) *ReserveMovieSeatResponseBody {
-	s.ReservedSeat = v
+func (s *ReserveMovieSeatResponseBody) SetCode(v string) *ReserveMovieSeatResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ReserveMovieSeatResponseBody) SetMessage(v string) *ReserveMovieSeatResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -17114,21 +18706,21 @@ func (s *ReserveMovieSeatResponseBody) SetSubCode(v string) *ReserveMovieSeatRes
 	return s
 }
 
-func (s *ReserveMovieSeatResponseBody) SetCode(v string) *ReserveMovieSeatResponseBody {
-	s.Code = &v
+func (s *ReserveMovieSeatResponseBody) SetLogsId(v string) *ReserveMovieSeatResponseBody {
+	s.LogsId = &v
 	return s
 }
 
-func (s *ReserveMovieSeatResponseBody) SetSuccess(v bool) *ReserveMovieSeatResponseBody {
-	s.Success = &v
+func (s *ReserveMovieSeatResponseBody) SetReservedSeat(v *ReserveMovieSeatResponseBodyReservedSeat) *ReserveMovieSeatResponseBody {
+	s.ReservedSeat = v
 	return s
 }
 
 type ReserveMovieSeatResponseBodyReservedSeat struct {
 	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	ReservedTime      *int64  `json:"ReservedTime,omitempty" xml:"ReservedTime,omitempty"`
-	DefaultLockSecond *int64  `json:"DefaultLockSecond,omitempty" xml:"DefaultLockSecond,omitempty"`
 	ApplyKey          *string `json:"ApplyKey,omitempty" xml:"ApplyKey,omitempty"`
+	DefaultLockSecond *int64  `json:"DefaultLockSecond,omitempty" xml:"DefaultLockSecond,omitempty"`
 }
 
 func (s ReserveMovieSeatResponseBodyReservedSeat) String() string {
@@ -17149,13 +18741,13 @@ func (s *ReserveMovieSeatResponseBodyReservedSeat) SetReservedTime(v int64) *Res
 	return s
 }
 
-func (s *ReserveMovieSeatResponseBodyReservedSeat) SetDefaultLockSecond(v int64) *ReserveMovieSeatResponseBodyReservedSeat {
-	s.DefaultLockSecond = &v
+func (s *ReserveMovieSeatResponseBodyReservedSeat) SetApplyKey(v string) *ReserveMovieSeatResponseBodyReservedSeat {
+	s.ApplyKey = &v
 	return s
 }
 
-func (s *ReserveMovieSeatResponseBodyReservedSeat) SetApplyKey(v string) *ReserveMovieSeatResponseBodyReservedSeat {
-	s.ApplyKey = &v
+func (s *ReserveMovieSeatResponseBodyReservedSeat) SetDefaultLockSecond(v int64) *ReserveMovieSeatResponseBodyReservedSeat {
+	s.DefaultLockSecond = &v
 	return s
 }
 
@@ -17230,10 +18822,10 @@ func (s *SettleOrderRequest) SetMerchantId(v string) *SettleOrderRequest {
 }
 
 type SettleOrderResponseBody struct {
+	Code                     *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message                  *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId                *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TradeOrderSettleResponse *SettleOrderResponseBodyTradeOrderSettleResponse `json:"TradeOrderSettleResponse,omitempty" xml:"TradeOrderSettleResponse,omitempty" type:"Struct"`
-	Code                     *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s SettleOrderResponseBody) String() string {
@@ -17242,6 +18834,11 @@ func (s SettleOrderResponseBody) String() string {
 
 func (s SettleOrderResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *SettleOrderResponseBody) SetCode(v string) *SettleOrderResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *SettleOrderResponseBody) SetMessage(v string) *SettleOrderResponseBody {
@@ -17256,11 +18853,6 @@ func (s *SettleOrderResponseBody) SetRequestId(v string) *SettleOrderResponseBod
 
 func (s *SettleOrderResponseBody) SetTradeOrderSettleResponse(v *SettleOrderResponseBodyTradeOrderSettleResponse) *SettleOrderResponseBody {
 	s.TradeOrderSettleResponse = v
-	return s
-}
-
-func (s *SettleOrderResponseBody) SetCode(v string) *SettleOrderResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -17376,9 +18968,9 @@ func (s *SubmitReturnGoodLogisticsRequest) SetAccountType(v string) *SubmitRetur
 }
 
 type SubmitReturnGoodLogisticsResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s SubmitReturnGoodLogisticsResponseBody) String() string {
@@ -17389,6 +18981,11 @@ func (s SubmitReturnGoodLogisticsResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *SubmitReturnGoodLogisticsResponseBody) SetCode(v string) *SubmitReturnGoodLogisticsResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *SubmitReturnGoodLogisticsResponseBody) SetMessage(v string) *SubmitReturnGoodLogisticsResponseBody {
 	s.Message = &v
 	return s
@@ -17396,11 +18993,6 @@ func (s *SubmitReturnGoodLogisticsResponseBody) SetMessage(v string) *SubmitRetu
 
 func (s *SubmitReturnGoodLogisticsResponseBody) SetRequestId(v string) *SubmitReturnGoodLogisticsResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *SubmitReturnGoodLogisticsResponseBody) SetCode(v string) *SubmitReturnGoodLogisticsResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -17469,10 +19061,10 @@ func (s *SyncMerchantInfoRequest) SetTimeStamp(v int64) *SyncMerchantInfoRequest
 }
 
 type SyncMerchantInfoResponseBody struct {
+	Code      *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Model     *SyncMerchantInfoResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
-	Code      *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s SyncMerchantInfoResponseBody) String() string {
@@ -17481,6 +19073,11 @@ func (s SyncMerchantInfoResponseBody) String() string {
 
 func (s SyncMerchantInfoResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *SyncMerchantInfoResponseBody) SetCode(v string) *SyncMerchantInfoResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *SyncMerchantInfoResponseBody) SetMessage(v string) *SyncMerchantInfoResponseBody {
@@ -17495,11 +19092,6 @@ func (s *SyncMerchantInfoResponseBody) SetRequestId(v string) *SyncMerchantInfoR
 
 func (s *SyncMerchantInfoResponseBody) SetModel(v *SyncMerchantInfoResponseBodyModel) *SyncMerchantInfoResponseBody {
 	s.Model = v
-	return s
-}
-
-func (s *SyncMerchantInfoResponseBody) SetCode(v string) *SyncMerchantInfoResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -17591,10 +19183,10 @@ func (s *UnsignWithholdAgreementRequest) SetAgreementNo(v string) *UnsignWithhol
 }
 
 type UnsignWithholdAgreementResponseBody struct {
+	Code                 *string                                                  `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message              *string                                                  `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId            *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	WithholdSignResponse *UnsignWithholdAgreementResponseBodyWithholdSignResponse `json:"WithholdSignResponse,omitempty" xml:"WithholdSignResponse,omitempty" type:"Struct"`
-	Code                 *string                                                  `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s UnsignWithholdAgreementResponseBody) String() string {
@@ -17603,6 +19195,11 @@ func (s UnsignWithholdAgreementResponseBody) String() string {
 
 func (s UnsignWithholdAgreementResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *UnsignWithholdAgreementResponseBody) SetCode(v string) *UnsignWithholdAgreementResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *UnsignWithholdAgreementResponseBody) SetMessage(v string) *UnsignWithholdAgreementResponseBody {
@@ -17617,11 +19214,6 @@ func (s *UnsignWithholdAgreementResponseBody) SetRequestId(v string) *UnsignWith
 
 func (s *UnsignWithholdAgreementResponseBody) SetWithholdSignResponse(v *UnsignWithholdAgreementResponseBodyWithholdSignResponse) *UnsignWithholdAgreementResponseBody {
 	s.WithholdSignResponse = v
-	return s
-}
-
-func (s *UnsignWithholdAgreementResponseBody) SetCode(v string) *UnsignWithholdAgreementResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -17701,9 +19293,9 @@ func (s *UpdateAddressRequest) SetAddressInfo(v string) *UpdateAddressRequest {
 }
 
 type UpdateAddressResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s UpdateAddressResponseBody) String() string {
@@ -17714,6 +19306,11 @@ func (s UpdateAddressResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateAddressResponseBody) SetCode(v string) *UpdateAddressResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *UpdateAddressResponseBody) SetMessage(v string) *UpdateAddressResponseBody {
 	s.Message = &v
 	return s
@@ -17721,11 +19318,6 @@ func (s *UpdateAddressResponseBody) SetMessage(v string) *UpdateAddressResponseB
 
 func (s *UpdateAddressResponseBody) SetRequestId(v string) *UpdateAddressResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *UpdateAddressResponseBody) SetCode(v string) *UpdateAddressResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -17794,15 +19386,15 @@ func (s *ValidateTaobaoAccountRequest) SetMobileNo(v string) *ValidateTaobaoAcco
 }
 
 type ValidateTaobaoAccountResponseBody struct {
-	TotalCount *int64                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success    *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+	SubMessage *string                                 `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Code       *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message    *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	SubCode    *string                                 `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	TotalCount *int64                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	LogsId     *string                                 `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
 	Model      *ValidateTaobaoAccountResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
-	SubMessage *string                                 `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
-	SubCode    *string                                 `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	Code       *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success    *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ValidateTaobaoAccountResponseBody) String() string {
@@ -17813,18 +19405,38 @@ func (s ValidateTaobaoAccountResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ValidateTaobaoAccountResponseBody) SetTotalCount(v int64) *ValidateTaobaoAccountResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
 func (s *ValidateTaobaoAccountResponseBody) SetRequestId(v string) *ValidateTaobaoAccountResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *ValidateTaobaoAccountResponseBody) SetSuccess(v bool) *ValidateTaobaoAccountResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ValidateTaobaoAccountResponseBody) SetSubMessage(v string) *ValidateTaobaoAccountResponseBody {
+	s.SubMessage = &v
+	return s
+}
+
+func (s *ValidateTaobaoAccountResponseBody) SetCode(v string) *ValidateTaobaoAccountResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *ValidateTaobaoAccountResponseBody) SetMessage(v string) *ValidateTaobaoAccountResponseBody {
 	s.Message = &v
+	return s
+}
+
+func (s *ValidateTaobaoAccountResponseBody) SetSubCode(v string) *ValidateTaobaoAccountResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *ValidateTaobaoAccountResponseBody) SetTotalCount(v int64) *ValidateTaobaoAccountResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -17835,26 +19447,6 @@ func (s *ValidateTaobaoAccountResponseBody) SetLogsId(v string) *ValidateTaobaoA
 
 func (s *ValidateTaobaoAccountResponseBody) SetModel(v *ValidateTaobaoAccountResponseBodyModel) *ValidateTaobaoAccountResponseBody {
 	s.Model = v
-	return s
-}
-
-func (s *ValidateTaobaoAccountResponseBody) SetSubMessage(v string) *ValidateTaobaoAccountResponseBody {
-	s.SubMessage = &v
-	return s
-}
-
-func (s *ValidateTaobaoAccountResponseBody) SetSubCode(v string) *ValidateTaobaoAccountResponseBody {
-	s.SubCode = &v
-	return s
-}
-
-func (s *ValidateTaobaoAccountResponseBody) SetCode(v string) *ValidateTaobaoAccountResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ValidateTaobaoAccountResponseBody) SetSuccess(v bool) *ValidateTaobaoAccountResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -18050,6 +19642,40 @@ func (client *Client) AddItemLimitRule(request *AddItemLimitRuleRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &AddItemLimitRuleResponse{}
 	_body, _err := client.AddItemLimitRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddItemToSubBizsWithOptions(tmpReq *AddItemToSubBizsRequest, runtime *util.RuntimeOptions) (_result *AddItemToSubBizsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &AddItemToSubBizsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.SubBizIds)) {
+		request.SubBizIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SubBizIds, tea.String("SubBizIds"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &AddItemToSubBizsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("AddItemToSubBizs"), tea.String("2018-01-16"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddItemToSubBizs(request *AddItemToSubBizsRequest) (_result *AddItemToSubBizsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddItemToSubBizsResponse{}
+	_body, _err := client.AddItemToSubBizsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18471,6 +20097,34 @@ func (client *Client) EnableOrder(request *EnableOrderRequest) (_result *EnableO
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableOrderResponse{}
 	_body, _err := client.EnableOrderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ExecuteNodeWithOptions(request *ExecuteNodeRequest, runtime *util.RuntimeOptions) (_result *ExecuteNodeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ExecuteNodeResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ExecuteNode"), tea.String("2018-01-16"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ExecuteNode(request *ExecuteNodeRequest) (_result *ExecuteNodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ExecuteNodeResponse{}
+	_body, _err := client.ExecuteNodeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19049,6 +20703,34 @@ func (client *Client) QueryAddressList(request *QueryAddressListRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) QueryAdvertisementSettleInfoWithOptions(request *QueryAdvertisementSettleInfoRequest, runtime *util.RuntimeOptions) (_result *QueryAdvertisementSettleInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &QueryAdvertisementSettleInfoResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("QueryAdvertisementSettleInfo"), tea.String("2018-01-16"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryAdvertisementSettleInfo(request *QueryAdvertisementSettleInfoRequest) (_result *QueryAdvertisementSettleInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryAdvertisementSettleInfoResponse{}
+	_body, _err := client.QueryAdvertisementSettleInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) QueryAgreementWithOptions(request *QueryAgreementRequest, runtime *util.RuntimeOptions) (_result *QueryAgreementResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19205,21 +20887,11 @@ func (client *Client) QueryBestSession4Items(request *QueryBestSession4ItemsRequ
 	return _result, _err
 }
 
-func (client *Client) QueryBizItemListWithOptions(tmpReq *QueryBizItemListRequest, runtime *util.RuntimeOptions) (_result *QueryBizItemListResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
+func (client *Client) QueryBizItemListWithOptions(request *QueryBizItemListRequest, runtime *util.RuntimeOptions) (_result *QueryBizItemListResponse, _err error) {
+	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	request := &QueryBizItemListShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.LmItemIds)) {
-		request.LmItemIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LmItemIds, tea.String("LmItemIds"), tea.String("json"))
-	}
-
-	if !tea.BoolValue(util.IsUnset(tmpReq.ItemIds)) {
-		request.ItemIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ItemIds, tea.String("ItemIds"), tea.String("json"))
-	}
-
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
@@ -19366,6 +21038,45 @@ func (client *Client) QueryHotMovies(request *QueryHotMoviesRequest) (_result *Q
 	return _result, _err
 }
 
+func (client *Client) QueryInventoryOfItemsInBizItemGroupWithOptions(tmpReq *QueryInventoryOfItemsInBizItemGroupRequest, runtime *util.RuntimeOptions) (_result *QueryInventoryOfItemsInBizItemGroupResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &QueryInventoryOfItemsInBizItemGroupShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ItemIds)) {
+		request.ItemIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ItemIds, tea.String("ItemIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.LmItemIds)) {
+		request.LmItemIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LmItemIds, tea.String("LmItemIds"), tea.String("json"))
+	}
+
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &QueryInventoryOfItemsInBizItemGroupResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("QueryInventoryOfItemsInBizItemGroup"), tea.String("2018-01-16"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryInventoryOfItemsInBizItemGroup(request *QueryInventoryOfItemsInBizItemGroupRequest) (_result *QueryInventoryOfItemsInBizItemGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryInventoryOfItemsInBizItemGroupResponse{}
+	_body, _err := client.QueryInventoryOfItemsInBizItemGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) QueryItemDetailWithOptions(request *QueryItemDetailRequest, runtime *util.RuntimeOptions) (_result *QueryItemDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19422,6 +21133,41 @@ func (client *Client) QueryItemDetailInner(request *QueryItemDetailInnerRequest)
 	return _result, _err
 }
 
+func (client *Client) QueryItemInSubBizsWithOptions(tmpReq *QueryItemInSubBizsRequest, runtime *util.RuntimeOptions) (_result *QueryItemInSubBizsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &QueryItemInSubBizsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.SubBizIds)) {
+		request.SubBizIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SubBizIds, tea.String("SubBizIds"), tea.String("json"))
+	}
+
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &QueryItemInSubBizsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("QueryItemInSubBizs"), tea.String("2018-01-16"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryItemInSubBizs(request *QueryItemInSubBizsRequest) (_result *QueryItemInSubBizsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryItemInSubBizsResponse{}
+	_body, _err := client.QueryItemInSubBizsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) QueryItemInventoryWithOptions(request *QueryItemInventoryRequest, runtime *util.RuntimeOptions) (_result *QueryItemInventoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19471,6 +21217,34 @@ func (client *Client) QueryLogistics(request *QueryLogisticsRequest) (_result *Q
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryLogisticsResponse{}
 	_body, _err := client.QueryLogisticsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryMediaSettleInfoWithOptions(request *QueryMediaSettleInfoRequest, runtime *util.RuntimeOptions) (_result *QueryMediaSettleInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &QueryMediaSettleInfoResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("QueryMediaSettleInfo"), tea.String("2018-01-16"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryMediaSettleInfo(request *QueryMediaSettleInfoRequest) (_result *QueryMediaSettleInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryMediaSettleInfoResponse{}
+	_body, _err := client.QueryMediaSettleInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19865,6 +21639,34 @@ func (client *Client) QueryRefundApplicationDetail(request *QueryRefundApplicati
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryRefundApplicationDetailResponse{}
 	_body, _err := client.QueryRefundApplicationDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryStatementsWithOptions(request *QueryStatementsRequest, runtime *util.RuntimeOptions) (_result *QueryStatementsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &QueryStatementsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("QueryStatements"), tea.String("2018-01-16"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryStatements(request *QueryStatementsRequest) (_result *QueryStatementsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryStatementsResponse{}
+	_body, _err := client.QueryStatementsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
