@@ -10744,7 +10744,7 @@ func (s *DescribeInstallCaptchaRequest) SetDeadline(v string) *DescribeInstallCa
 }
 
 type DescribeInstallCaptchaResponseBody struct {
-	Deadline    *int32  `json:"Deadline,omitempty" xml:"Deadline,omitempty"`
+	Deadline    *string `json:"Deadline,omitempty" xml:"Deadline,omitempty"`
 	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	CaptchaCode *string `json:"CaptchaCode,omitempty" xml:"CaptchaCode,omitempty"`
 }
@@ -10757,7 +10757,7 @@ func (s DescribeInstallCaptchaResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeInstallCaptchaResponseBody) SetDeadline(v int32) *DescribeInstallCaptchaResponseBody {
+func (s *DescribeInstallCaptchaResponseBody) SetDeadline(v string) *DescribeInstallCaptchaResponseBody {
 	s.Deadline = &v
 	return s
 }
