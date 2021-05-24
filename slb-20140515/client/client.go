@@ -16,8 +16,6 @@ type AddAccessControlListEntryRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	AclId                *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	AclEntrys            *string `json:"AclEntrys,omitempty" xml:"AclEntrys,omitempty"`
@@ -48,16 +46,6 @@ func (s *AddAccessControlListEntryRequest) SetResourceOwnerId(v int64) *AddAcces
 
 func (s *AddAccessControlListEntryRequest) SetOwnerAccount(v string) *AddAccessControlListEntryRequest {
 	s.OwnerAccount = &v
-	return s
-}
-
-func (s *AddAccessControlListEntryRequest) SetAccessKeyId(v string) *AddAccessControlListEntryRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *AddAccessControlListEntryRequest) SetTags(v string) *AddAccessControlListEntryRequest {
-	s.Tags = &v
 	return s
 }
 
@@ -124,8 +112,6 @@ type AddBackendServersRequest struct {
 	LoadBalancerId       *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	BackendServers       *string `json:"BackendServers,omitempty" xml:"BackendServers,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s AddBackendServersRequest) String() string {
@@ -171,19 +157,9 @@ func (s *AddBackendServersRequest) SetOwnerAccount(v string) *AddBackendServersR
 	return s
 }
 
-func (s *AddBackendServersRequest) SetAccessKeyId(v string) *AddBackendServersRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *AddBackendServersRequest) SetTags(v string) *AddBackendServersRequest {
-	s.Tags = &v
-	return s
-}
-
 type AddBackendServersResponseBody struct {
-	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	LoadBalancerId *string                                      `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	BackendServers *AddBackendServersResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
 }
 
@@ -195,13 +171,13 @@ func (s AddBackendServersResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *AddBackendServersResponseBody) SetRequestId(v string) *AddBackendServersResponseBody {
-	s.RequestId = &v
+func (s *AddBackendServersResponseBody) SetLoadBalancerId(v string) *AddBackendServersResponseBody {
+	s.LoadBalancerId = &v
 	return s
 }
 
-func (s *AddBackendServersResponseBody) SetLoadBalancerId(v string) *AddBackendServersResponseBody {
-	s.LoadBalancerId = &v
+func (s *AddBackendServersResponseBody) SetRequestId(v string) *AddBackendServersResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -294,9 +270,7 @@ type AddListenerWhiteListItemRequest struct {
 	ListenerPort         *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	SourceItems          *string `json:"SourceItems,omitempty" xml:"SourceItems,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
 	ListenerProtocol     *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s AddListenerWhiteListItemRequest) String() string {
@@ -347,18 +321,8 @@ func (s *AddListenerWhiteListItemRequest) SetOwnerAccount(v string) *AddListener
 	return s
 }
 
-func (s *AddListenerWhiteListItemRequest) SetAccessKeyId(v string) *AddListenerWhiteListItemRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
 func (s *AddListenerWhiteListItemRequest) SetListenerProtocol(v string) *AddListenerWhiteListItemRequest {
 	s.ListenerProtocol = &v
-	return s
-}
-
-func (s *AddListenerWhiteListItemRequest) SetTags(v string) *AddListenerWhiteListItemRequest {
-	s.Tags = &v
 	return s
 }
 
@@ -407,7 +371,6 @@ type AddTagsRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	LoadBalancerId       *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
@@ -438,11 +401,6 @@ func (s *AddTagsRequest) SetResourceOwnerId(v int64) *AddTagsRequest {
 
 func (s *AddTagsRequest) SetOwnerAccount(v string) *AddTagsRequest {
 	s.OwnerAccount = &v
-	return s
-}
-
-func (s *AddTagsRequest) SetAccessKeyId(v string) *AddTagsRequest {
-	s.AccessKeyId = &v
 	return s
 }
 
@@ -507,8 +465,6 @@ type AddVServerGroupBackendServersRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	VServerGroupId       *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
 	BackendServers       *string `json:"BackendServers,omitempty" xml:"BackendServers,omitempty"`
 }
@@ -543,16 +499,6 @@ func (s *AddVServerGroupBackendServersRequest) SetRegionId(v string) *AddVServer
 
 func (s *AddVServerGroupBackendServersRequest) SetOwnerAccount(v string) *AddVServerGroupBackendServersRequest {
 	s.OwnerAccount = &v
-	return s
-}
-
-func (s *AddVServerGroupBackendServersRequest) SetAccessKeyId(v string) *AddVServerGroupBackendServersRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *AddVServerGroupBackendServersRequest) SetTags(v string) *AddVServerGroupBackendServersRequest {
-	s.Tags = &v
 	return s
 }
 
@@ -681,8 +627,6 @@ type CreateAccessControlListRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	AclName              *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
 	AddressIPVersion     *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
@@ -717,16 +661,6 @@ func (s *CreateAccessControlListRequest) SetOwnerAccount(v string) *CreateAccess
 	return s
 }
 
-func (s *CreateAccessControlListRequest) SetAccessKeyId(v string) *CreateAccessControlListRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *CreateAccessControlListRequest) SetTags(v string) *CreateAccessControlListRequest {
-	s.Tags = &v
-	return s
-}
-
 func (s *CreateAccessControlListRequest) SetRegionId(v string) *CreateAccessControlListRequest {
 	s.RegionId = &v
 	return s
@@ -748,8 +682,8 @@ func (s *CreateAccessControlListRequest) SetResourceGroupId(v string) *CreateAcc
 }
 
 type CreateAccessControlListResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	AclId     *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateAccessControlListResponseBody) String() string {
@@ -760,13 +694,13 @@ func (s CreateAccessControlListResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateAccessControlListResponseBody) SetRequestId(v string) *CreateAccessControlListResponseBody {
-	s.RequestId = &v
+func (s *CreateAccessControlListResponseBody) SetAclId(v string) *CreateAccessControlListResponseBody {
+	s.AclId = &v
 	return s
 }
 
-func (s *CreateAccessControlListResponseBody) SetAclId(v string) *CreateAccessControlListResponseBody {
-	s.AclId = &v
+func (s *CreateAccessControlListResponseBody) SetRequestId(v string) *CreateAccessControlListResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -794,19 +728,15 @@ func (s *CreateAccessControlListResponse) SetBody(v *CreateAccessControlListResp
 }
 
 type CreateDomainExtensionRequest struct {
-	OwnerId              *int64                                           `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string                                          `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                                           `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	RegionId             *string                                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	OwnerAccount         *string                                          `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string                                          `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string                                          `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	LoadBalancerId       *string                                          `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	ListenerPort         *int32                                           `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	Domain               *string                                          `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	ServerCertificateId  *string                                          `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
-	CertificateId        []*string                                        `json:"CertificateId,omitempty" xml:"CertificateId,omitempty" type:"Repeated"`
-	ServerCertificate    []*CreateDomainExtensionRequestServerCertificate `json:"ServerCertificate,omitempty" xml:"ServerCertificate,omitempty" type:"Repeated"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	LoadBalancerId       *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	ListenerPort         *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	Domain               *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	ServerCertificateId  *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
 }
 
 func (s CreateDomainExtensionRequest) String() string {
@@ -842,16 +772,6 @@ func (s *CreateDomainExtensionRequest) SetOwnerAccount(v string) *CreateDomainEx
 	return s
 }
 
-func (s *CreateDomainExtensionRequest) SetAccessKeyId(v string) *CreateDomainExtensionRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *CreateDomainExtensionRequest) SetTags(v string) *CreateDomainExtensionRequest {
-	s.Tags = &v
-	return s
-}
-
 func (s *CreateDomainExtensionRequest) SetLoadBalancerId(v string) *CreateDomainExtensionRequest {
 	s.LoadBalancerId = &v
 	return s
@@ -872,31 +792,10 @@ func (s *CreateDomainExtensionRequest) SetServerCertificateId(v string) *CreateD
 	return s
 }
 
-func (s *CreateDomainExtensionRequest) SetCertificateId(v []*string) *CreateDomainExtensionRequest {
-	s.CertificateId = v
-	return s
-}
-
-func (s *CreateDomainExtensionRequest) SetServerCertificate(v []*CreateDomainExtensionRequestServerCertificate) *CreateDomainExtensionRequest {
-	s.ServerCertificate = v
-	return s
-}
-
-type CreateDomainExtensionRequestServerCertificate struct {
-}
-
-func (s CreateDomainExtensionRequestServerCertificate) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDomainExtensionRequestServerCertificate) GoString() string {
-	return s.String()
-}
-
 type CreateDomainExtensionResponseBody struct {
 	ListenerPort      *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	DomainExtensionId *string `json:"DomainExtensionId,omitempty" xml:"DomainExtensionId,omitempty"`
 	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	DomainExtensionId *string `json:"DomainExtensionId,omitempty" xml:"DomainExtensionId,omitempty"`
 }
 
 func (s CreateDomainExtensionResponseBody) String() string {
@@ -912,13 +811,13 @@ func (s *CreateDomainExtensionResponseBody) SetListenerPort(v int32) *CreateDoma
 	return s
 }
 
-func (s *CreateDomainExtensionResponseBody) SetDomainExtensionId(v string) *CreateDomainExtensionResponseBody {
-	s.DomainExtensionId = &v
+func (s *CreateDomainExtensionResponseBody) SetRequestId(v string) *CreateDomainExtensionResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *CreateDomainExtensionResponseBody) SetRequestId(v string) *CreateDomainExtensionResponseBody {
-	s.RequestId = &v
+func (s *CreateDomainExtensionResponseBody) SetDomainExtensionId(v string) *CreateDomainExtensionResponseBody {
+	s.DomainExtensionId = &v
 	return s
 }
 
@@ -960,9 +859,6 @@ type CreateLoadBalancerRequest struct {
 	OwnerAccount                 *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	MasterZoneId                 *string `json:"MasterZoneId,omitempty" xml:"MasterZoneId,omitempty"`
 	SlaveZoneId                  *string `json:"SlaveZoneId,omitempty" xml:"SlaveZoneId,omitempty"`
-	AccessKeyId                  *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                         *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	EnableVpcVipFlow             *string `json:"EnableVpcVipFlow,omitempty" xml:"EnableVpcVipFlow,omitempty"`
 	LoadBalancerSpec             *string `json:"LoadBalancerSpec,omitempty" xml:"LoadBalancerSpec,omitempty"`
 	ResourceGroupId              *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	PayType                      *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
@@ -971,10 +867,7 @@ type CreateLoadBalancerRequest struct {
 	AutoPay                      *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	AddressIPVersion             *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
 	Address                      *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	Ratio                        *int32  `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
 	DeleteProtection             *string `json:"DeleteProtection,omitempty" xml:"DeleteProtection,omitempty"`
-	CloudType                    *string `json:"CloudType,omitempty" xml:"CloudType,omitempty"`
-	SupportPrivateLink           *bool   `json:"SupportPrivateLink,omitempty" xml:"SupportPrivateLink,omitempty"`
 	ModificationProtectionStatus *string `json:"ModificationProtectionStatus,omitempty" xml:"ModificationProtectionStatus,omitempty"`
 	ModificationProtectionReason *string `json:"ModificationProtectionReason,omitempty" xml:"ModificationProtectionReason,omitempty"`
 }
@@ -1057,21 +950,6 @@ func (s *CreateLoadBalancerRequest) SetSlaveZoneId(v string) *CreateLoadBalancer
 	return s
 }
 
-func (s *CreateLoadBalancerRequest) SetAccessKeyId(v string) *CreateLoadBalancerRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *CreateLoadBalancerRequest) SetTags(v string) *CreateLoadBalancerRequest {
-	s.Tags = &v
-	return s
-}
-
-func (s *CreateLoadBalancerRequest) SetEnableVpcVipFlow(v string) *CreateLoadBalancerRequest {
-	s.EnableVpcVipFlow = &v
-	return s
-}
-
 func (s *CreateLoadBalancerRequest) SetLoadBalancerSpec(v string) *CreateLoadBalancerRequest {
 	s.LoadBalancerSpec = &v
 	return s
@@ -1112,23 +990,8 @@ func (s *CreateLoadBalancerRequest) SetAddress(v string) *CreateLoadBalancerRequ
 	return s
 }
 
-func (s *CreateLoadBalancerRequest) SetRatio(v int32) *CreateLoadBalancerRequest {
-	s.Ratio = &v
-	return s
-}
-
 func (s *CreateLoadBalancerRequest) SetDeleteProtection(v string) *CreateLoadBalancerRequest {
 	s.DeleteProtection = &v
-	return s
-}
-
-func (s *CreateLoadBalancerRequest) SetCloudType(v string) *CreateLoadBalancerRequest {
-	s.CloudType = &v
-	return s
-}
-
-func (s *CreateLoadBalancerRequest) SetSupportPrivateLink(v bool) *CreateLoadBalancerRequest {
-	s.SupportPrivateLink = &v
 	return s
 }
 
@@ -1143,15 +1006,15 @@ func (s *CreateLoadBalancerRequest) SetModificationProtectionReason(v string) *C
 }
 
 type CreateLoadBalancerResponseBody struct {
-	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
 	VpcId            *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
+	VSwitchId        *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
+	LoadBalancerId   *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Address          *string `json:"Address,omitempty" xml:"Address,omitempty"`
 	NetworkType      *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
-	VSwitchId        *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	LoadBalancerId   *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	OrderId          *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
@@ -1163,18 +1026,33 @@ func (s CreateLoadBalancerResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateLoadBalancerResponseBody) SetLoadBalancerName(v string) *CreateLoadBalancerResponseBody {
-	s.LoadBalancerName = &v
-	return s
-}
-
 func (s *CreateLoadBalancerResponseBody) SetVpcId(v string) *CreateLoadBalancerResponseBody {
 	s.VpcId = &v
 	return s
 }
 
+func (s *CreateLoadBalancerResponseBody) SetAddressIPVersion(v string) *CreateLoadBalancerResponseBody {
+	s.AddressIPVersion = &v
+	return s
+}
+
+func (s *CreateLoadBalancerResponseBody) SetVSwitchId(v string) *CreateLoadBalancerResponseBody {
+	s.VSwitchId = &v
+	return s
+}
+
 func (s *CreateLoadBalancerResponseBody) SetRequestId(v string) *CreateLoadBalancerResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *CreateLoadBalancerResponseBody) SetLoadBalancerName(v string) *CreateLoadBalancerResponseBody {
+	s.LoadBalancerName = &v
+	return s
+}
+
+func (s *CreateLoadBalancerResponseBody) SetLoadBalancerId(v string) *CreateLoadBalancerResponseBody {
+	s.LoadBalancerId = &v
 	return s
 }
 
@@ -1190,21 +1068,6 @@ func (s *CreateLoadBalancerResponseBody) SetAddress(v string) *CreateLoadBalance
 
 func (s *CreateLoadBalancerResponseBody) SetNetworkType(v string) *CreateLoadBalancerResponseBody {
 	s.NetworkType = &v
-	return s
-}
-
-func (s *CreateLoadBalancerResponseBody) SetAddressIPVersion(v string) *CreateLoadBalancerResponseBody {
-	s.AddressIPVersion = &v
-	return s
-}
-
-func (s *CreateLoadBalancerResponseBody) SetVSwitchId(v string) *CreateLoadBalancerResponseBody {
-	s.VSwitchId = &v
-	return s
-}
-
-func (s *CreateLoadBalancerResponseBody) SetLoadBalancerId(v string) *CreateLoadBalancerResponseBody {
-	s.LoadBalancerId = &v
 	return s
 }
 
@@ -1237,53 +1100,43 @@ func (s *CreateLoadBalancerResponse) SetBody(v *CreateLoadBalancerResponseBody) 
 }
 
 type CreateLoadBalancerHTTPListenerRequest struct {
-	RegionId                    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	OwnerId                     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount        *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId             *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	LoadBalancerId              *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	Bandwidth                   *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	ListenerPort                *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	BackendServerPort           *int32  `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
-	XForwardedFor               *string `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
-	Scheduler                   *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	StickySession               *string `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
-	StickySessionType           *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
-	CookieTimeout               *int32  `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
-	Cookie                      *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
-	HealthCheck                 *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
-	HealthCheckType             *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
-	HealthCheckMethod           *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
-	HealthCheckHttpVersion      *string `json:"HealthCheckHttpVersion,omitempty" xml:"HealthCheckHttpVersion,omitempty"`
-	HealthCheckDomain           *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	HealthCheckURI              *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
-	HealthyThreshold            *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	UnhealthyThreshold          *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
-	HealthCheckTimeout          *int32  `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
-	HealthCheckConnectPort      *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	HealthCheckInterval         *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	HealthCheckHttpCode         *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
-	MaxConnection               *int32  `json:"MaxConnection,omitempty" xml:"MaxConnection,omitempty"`
-	OwnerAccount                *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId                 *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	VServerGroupId              *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
-	Tags                        *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	XForwardedFor_SLBIP         *string `json:"XForwardedFor_SLBIP,omitempty" xml:"XForwardedFor_SLBIP,omitempty"`
-	XForwardedFor_SLBID         *string `json:"XForwardedFor_SLBID,omitempty" xml:"XForwardedFor_SLBID,omitempty"`
-	XForwardedFor_proto         *string `json:"XForwardedFor_proto,omitempty" xml:"XForwardedFor_proto,omitempty"`
-	Gzip                        *string `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
-	AclId                       *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	AclType                     *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
-	AclStatus                   *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
-	VpcIds                      *string `json:"VpcIds,omitempty" xml:"VpcIds,omitempty"`
-	Description                 *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ListenerForward             *string `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
-	ForwardPort                 *int32  `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
-	IdleTimeout                 *int32  `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	RequestTimeout              *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
-	XForwardedFor_SLBPORT       *string `json:"XForwardedFor_SLBPORT,omitempty" xml:"XForwardedFor_SLBPORT,omitempty"`
-	XForwardedFor_ClientSrcPort *string `json:"XForwardedFor_ClientSrcPort,omitempty" xml:"XForwardedFor_ClientSrcPort,omitempty"`
-	ForwardCode                 *int32  `json:"ForwardCode,omitempty" xml:"ForwardCode,omitempty"`
+	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount   *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId        *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	LoadBalancerId         *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	Bandwidth              *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	ListenerPort           *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	BackendServerPort      *int32  `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
+	XForwardedFor          *string `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
+	Scheduler              *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	StickySession          *string `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
+	StickySessionType      *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
+	CookieTimeout          *int32  `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
+	Cookie                 *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
+	HealthCheck            *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	HealthCheckDomain      *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	HealthCheckURI         *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	HealthyThreshold       *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	UnhealthyThreshold     *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	HealthCheckTimeout     *int32  `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	HealthCheckConnectPort *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	HealthCheckInterval    *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	HealthCheckHttpCode    *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	OwnerAccount           *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	VServerGroupId         *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
+	XForwardedFor_SLBIP    *string `json:"XForwardedFor_SLBIP,omitempty" xml:"XForwardedFor_SLBIP,omitempty"`
+	XForwardedFor_SLBID    *string `json:"XForwardedFor_SLBID,omitempty" xml:"XForwardedFor_SLBID,omitempty"`
+	XForwardedFor_proto    *string `json:"XForwardedFor_proto,omitempty" xml:"XForwardedFor_proto,omitempty"`
+	Gzip                   *string `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
+	AclId                  *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AclType                *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	AclStatus              *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
+	Description            *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ListenerForward        *string `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
+	ForwardPort            *int32  `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
+	IdleTimeout            *int32  `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	RequestTimeout         *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
 }
 
 func (s CreateLoadBalancerHTTPListenerRequest) String() string {
@@ -1369,21 +1222,6 @@ func (s *CreateLoadBalancerHTTPListenerRequest) SetHealthCheck(v string) *Create
 	return s
 }
 
-func (s *CreateLoadBalancerHTTPListenerRequest) SetHealthCheckType(v string) *CreateLoadBalancerHTTPListenerRequest {
-	s.HealthCheckType = &v
-	return s
-}
-
-func (s *CreateLoadBalancerHTTPListenerRequest) SetHealthCheckMethod(v string) *CreateLoadBalancerHTTPListenerRequest {
-	s.HealthCheckMethod = &v
-	return s
-}
-
-func (s *CreateLoadBalancerHTTPListenerRequest) SetHealthCheckHttpVersion(v string) *CreateLoadBalancerHTTPListenerRequest {
-	s.HealthCheckHttpVersion = &v
-	return s
-}
-
 func (s *CreateLoadBalancerHTTPListenerRequest) SetHealthCheckDomain(v string) *CreateLoadBalancerHTTPListenerRequest {
 	s.HealthCheckDomain = &v
 	return s
@@ -1424,28 +1262,13 @@ func (s *CreateLoadBalancerHTTPListenerRequest) SetHealthCheckHttpCode(v string)
 	return s
 }
 
-func (s *CreateLoadBalancerHTTPListenerRequest) SetMaxConnection(v int32) *CreateLoadBalancerHTTPListenerRequest {
-	s.MaxConnection = &v
-	return s
-}
-
 func (s *CreateLoadBalancerHTTPListenerRequest) SetOwnerAccount(v string) *CreateLoadBalancerHTTPListenerRequest {
 	s.OwnerAccount = &v
 	return s
 }
 
-func (s *CreateLoadBalancerHTTPListenerRequest) SetAccessKeyId(v string) *CreateLoadBalancerHTTPListenerRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
 func (s *CreateLoadBalancerHTTPListenerRequest) SetVServerGroupId(v string) *CreateLoadBalancerHTTPListenerRequest {
 	s.VServerGroupId = &v
-	return s
-}
-
-func (s *CreateLoadBalancerHTTPListenerRequest) SetTags(v string) *CreateLoadBalancerHTTPListenerRequest {
-	s.Tags = &v
 	return s
 }
 
@@ -1484,11 +1307,6 @@ func (s *CreateLoadBalancerHTTPListenerRequest) SetAclStatus(v string) *CreateLo
 	return s
 }
 
-func (s *CreateLoadBalancerHTTPListenerRequest) SetVpcIds(v string) *CreateLoadBalancerHTTPListenerRequest {
-	s.VpcIds = &v
-	return s
-}
-
 func (s *CreateLoadBalancerHTTPListenerRequest) SetDescription(v string) *CreateLoadBalancerHTTPListenerRequest {
 	s.Description = &v
 	return s
@@ -1511,21 +1329,6 @@ func (s *CreateLoadBalancerHTTPListenerRequest) SetIdleTimeout(v int32) *CreateL
 
 func (s *CreateLoadBalancerHTTPListenerRequest) SetRequestTimeout(v int32) *CreateLoadBalancerHTTPListenerRequest {
 	s.RequestTimeout = &v
-	return s
-}
-
-func (s *CreateLoadBalancerHTTPListenerRequest) SetXForwardedFor_SLBPORT(v string) *CreateLoadBalancerHTTPListenerRequest {
-	s.XForwardedFor_SLBPORT = &v
-	return s
-}
-
-func (s *CreateLoadBalancerHTTPListenerRequest) SetXForwardedFor_ClientSrcPort(v string) *CreateLoadBalancerHTTPListenerRequest {
-	s.XForwardedFor_ClientSrcPort = &v
-	return s
-}
-
-func (s *CreateLoadBalancerHTTPListenerRequest) SetForwardCode(v int32) *CreateLoadBalancerHTTPListenerRequest {
-	s.ForwardCode = &v
 	return s
 }
 
@@ -1570,64 +1373,45 @@ func (s *CreateLoadBalancerHTTPListenerResponse) SetBody(v *CreateLoadBalancerHT
 }
 
 type CreateLoadBalancerHTTPSListenerRequest struct {
-	RegionId                                  *string                                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	OwnerId                                   *int64                                                     `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount                      *string                                                    `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId                           *int64                                                     `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	LoadBalancerId                            *string                                                    `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	Bandwidth                                 *int32                                                     `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	ListenerPort                              *int32                                                     `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	BackendServerPort                         *int32                                                     `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
-	BackendProtocol                           *string                                                    `json:"BackendProtocol,omitempty" xml:"BackendProtocol,omitempty"`
-	XForwardedFor                             *string                                                    `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
-	Scheduler                                 *string                                                    `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	StickySession                             *string                                                    `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
-	StickySessionType                         *string                                                    `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
-	CookieTimeout                             *int32                                                     `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
-	Cookie                                    *string                                                    `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
-	HealthCheck                               *string                                                    `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
-	HealthCheckType                           *string                                                    `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
-	HealthCheckMethod                         *string                                                    `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
-	HealthCheckHttpVersion                    *string                                                    `json:"HealthCheckHttpVersion,omitempty" xml:"HealthCheckHttpVersion,omitempty"`
-	HealthCheckDomain                         *string                                                    `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	HealthCheckURI                            *string                                                    `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
-	HealthyThreshold                          *int32                                                     `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	UnhealthyThreshold                        *int32                                                     `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
-	HealthCheckTimeout                        *int32                                                     `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
-	HealthCheckConnectPort                    *int32                                                     `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	HealthCheckInterval                       *int32                                                     `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	HealthCheckHttpCode                       *string                                                    `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
-	ServerCertificateId                       *string                                                    `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
-	MaxConnection                             *int32                                                     `json:"MaxConnection,omitempty" xml:"MaxConnection,omitempty"`
-	OwnerAccount                              *string                                                    `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId                               *string                                                    `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	VServerGroupId                            *string                                                    `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
-	CACertificateId                           *string                                                    `json:"CACertificateId,omitempty" xml:"CACertificateId,omitempty"`
-	Tags                                      *string                                                    `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	XForwardedFor_SLBIP                       *string                                                    `json:"XForwardedFor_SLBIP,omitempty" xml:"XForwardedFor_SLBIP,omitempty"`
-	XForwardedFor_SLBID                       *string                                                    `json:"XForwardedFor_SLBID,omitempty" xml:"XForwardedFor_SLBID,omitempty"`
-	XForwardedFor_proto                       *string                                                    `json:"XForwardedFor_proto,omitempty" xml:"XForwardedFor_proto,omitempty"`
-	Gzip                                      *string                                                    `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
-	AclId                                     *string                                                    `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	AclType                                   *string                                                    `json:"AclType,omitempty" xml:"AclType,omitempty"`
-	AclStatus                                 *string                                                    `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
-	VpcIds                                    *string                                                    `json:"VpcIds,omitempty" xml:"VpcIds,omitempty"`
-	Description                               *string                                                    `json:"Description,omitempty" xml:"Description,omitempty"`
-	IdleTimeout                               *int32                                                     `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	RequestTimeout                            *int32                                                     `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
-	EnableHttp2                               *string                                                    `json:"EnableHttp2,omitempty" xml:"EnableHttp2,omitempty"`
-	TLSCipherPolicy                           *string                                                    `json:"TLSCipherPolicy,omitempty" xml:"TLSCipherPolicy,omitempty"`
-	XForwardedFor_SLBPORT                     *string                                                    `json:"XForwardedFor_SLBPORT,omitempty" xml:"XForwardedFor_SLBPORT,omitempty"`
-	XForwardedFor_ClientSrcPort               *string                                                    `json:"XForwardedFor_ClientSrcPort,omitempty" xml:"XForwardedFor_ClientSrcPort,omitempty"`
-	XForwardedFor_ClientCertSubjectDN         *string                                                    `json:"XForwardedFor_ClientCertSubjectDN,omitempty" xml:"XForwardedFor_ClientCertSubjectDN,omitempty"`
-	XForwardedFor_ClientCertIssuerDN          *string                                                    `json:"XForwardedFor_ClientCertIssuerDN,omitempty" xml:"XForwardedFor_ClientCertIssuerDN,omitempty"`
-	XForwardedFor_ClientCertFingerprint       *string                                                    `json:"XForwardedFor_ClientCertFingerprint,omitempty" xml:"XForwardedFor_ClientCertFingerprint,omitempty"`
-	XForwardedFor_ClientCertClientVerify      *string                                                    `json:"XForwardedFor_ClientCertClientVerify,omitempty" xml:"XForwardedFor_ClientCertClientVerify,omitempty"`
-	XForwardedFor_ClientCertIssuerDNAlias     *string                                                    `json:"XForwardedFor_ClientCertIssuerDNAlias,omitempty" xml:"XForwardedFor_ClientCertIssuerDNAlias,omitempty"`
-	XForwardedFor_ClientCertSubjectDNAlias    *string                                                    `json:"XForwardedFor_ClientCertSubjectDNAlias,omitempty" xml:"XForwardedFor_ClientCertSubjectDNAlias,omitempty"`
-	XForwardedFor_ClientCertFingerprintAlias  *string                                                    `json:"XForwardedFor_ClientCertFingerprintAlias,omitempty" xml:"XForwardedFor_ClientCertFingerprintAlias,omitempty"`
-	XForwardedFor_ClientCertClientVerifyAlias *string                                                    `json:"XForwardedFor_ClientCertClientVerifyAlias,omitempty" xml:"XForwardedFor_ClientCertClientVerifyAlias,omitempty"`
-	ServerCertificate                         []*CreateLoadBalancerHTTPSListenerRequestServerCertificate `json:"ServerCertificate,omitempty" xml:"ServerCertificate,omitempty" type:"Repeated"`
+	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount   *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId        *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	LoadBalancerId         *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	Bandwidth              *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	ListenerPort           *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	BackendServerPort      *int32  `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
+	XForwardedFor          *string `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
+	Scheduler              *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	StickySession          *string `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
+	StickySessionType      *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
+	CookieTimeout          *int32  `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
+	Cookie                 *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
+	HealthCheck            *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	HealthCheckDomain      *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	HealthCheckURI         *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	HealthyThreshold       *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	UnhealthyThreshold     *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	HealthCheckTimeout     *int32  `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	HealthCheckConnectPort *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	HealthCheckInterval    *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	HealthCheckHttpCode    *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	ServerCertificateId    *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
+	OwnerAccount           *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	VServerGroupId         *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
+	CACertificateId        *string `json:"CACertificateId,omitempty" xml:"CACertificateId,omitempty"`
+	XForwardedFor_SLBIP    *string `json:"XForwardedFor_SLBIP,omitempty" xml:"XForwardedFor_SLBIP,omitempty"`
+	XForwardedFor_SLBID    *string `json:"XForwardedFor_SLBID,omitempty" xml:"XForwardedFor_SLBID,omitempty"`
+	XForwardedFor_proto    *string `json:"XForwardedFor_proto,omitempty" xml:"XForwardedFor_proto,omitempty"`
+	Gzip                   *string `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
+	AclId                  *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AclType                *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	AclStatus              *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
+	Description            *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	IdleTimeout            *int32  `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	RequestTimeout         *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	EnableHttp2            *string `json:"EnableHttp2,omitempty" xml:"EnableHttp2,omitempty"`
+	TLSCipherPolicy        *string `json:"TLSCipherPolicy,omitempty" xml:"TLSCipherPolicy,omitempty"`
 }
 
 func (s CreateLoadBalancerHTTPSListenerRequest) String() string {
@@ -1678,11 +1462,6 @@ func (s *CreateLoadBalancerHTTPSListenerRequest) SetBackendServerPort(v int32) *
 	return s
 }
 
-func (s *CreateLoadBalancerHTTPSListenerRequest) SetBackendProtocol(v string) *CreateLoadBalancerHTTPSListenerRequest {
-	s.BackendProtocol = &v
-	return s
-}
-
 func (s *CreateLoadBalancerHTTPSListenerRequest) SetXForwardedFor(v string) *CreateLoadBalancerHTTPSListenerRequest {
 	s.XForwardedFor = &v
 	return s
@@ -1715,21 +1494,6 @@ func (s *CreateLoadBalancerHTTPSListenerRequest) SetCookie(v string) *CreateLoad
 
 func (s *CreateLoadBalancerHTTPSListenerRequest) SetHealthCheck(v string) *CreateLoadBalancerHTTPSListenerRequest {
 	s.HealthCheck = &v
-	return s
-}
-
-func (s *CreateLoadBalancerHTTPSListenerRequest) SetHealthCheckType(v string) *CreateLoadBalancerHTTPSListenerRequest {
-	s.HealthCheckType = &v
-	return s
-}
-
-func (s *CreateLoadBalancerHTTPSListenerRequest) SetHealthCheckMethod(v string) *CreateLoadBalancerHTTPSListenerRequest {
-	s.HealthCheckMethod = &v
-	return s
-}
-
-func (s *CreateLoadBalancerHTTPSListenerRequest) SetHealthCheckHttpVersion(v string) *CreateLoadBalancerHTTPSListenerRequest {
-	s.HealthCheckHttpVersion = &v
 	return s
 }
 
@@ -1778,18 +1542,8 @@ func (s *CreateLoadBalancerHTTPSListenerRequest) SetServerCertificateId(v string
 	return s
 }
 
-func (s *CreateLoadBalancerHTTPSListenerRequest) SetMaxConnection(v int32) *CreateLoadBalancerHTTPSListenerRequest {
-	s.MaxConnection = &v
-	return s
-}
-
 func (s *CreateLoadBalancerHTTPSListenerRequest) SetOwnerAccount(v string) *CreateLoadBalancerHTTPSListenerRequest {
 	s.OwnerAccount = &v
-	return s
-}
-
-func (s *CreateLoadBalancerHTTPSListenerRequest) SetAccessKeyId(v string) *CreateLoadBalancerHTTPSListenerRequest {
-	s.AccessKeyId = &v
 	return s
 }
 
@@ -1800,11 +1554,6 @@ func (s *CreateLoadBalancerHTTPSListenerRequest) SetVServerGroupId(v string) *Cr
 
 func (s *CreateLoadBalancerHTTPSListenerRequest) SetCACertificateId(v string) *CreateLoadBalancerHTTPSListenerRequest {
 	s.CACertificateId = &v
-	return s
-}
-
-func (s *CreateLoadBalancerHTTPSListenerRequest) SetTags(v string) *CreateLoadBalancerHTTPSListenerRequest {
-	s.Tags = &v
 	return s
 }
 
@@ -1843,11 +1592,6 @@ func (s *CreateLoadBalancerHTTPSListenerRequest) SetAclStatus(v string) *CreateL
 	return s
 }
 
-func (s *CreateLoadBalancerHTTPSListenerRequest) SetVpcIds(v string) *CreateLoadBalancerHTTPSListenerRequest {
-	s.VpcIds = &v
-	return s
-}
-
 func (s *CreateLoadBalancerHTTPSListenerRequest) SetDescription(v string) *CreateLoadBalancerHTTPSListenerRequest {
 	s.Description = &v
 	return s
@@ -1871,72 +1615,6 @@ func (s *CreateLoadBalancerHTTPSListenerRequest) SetEnableHttp2(v string) *Creat
 func (s *CreateLoadBalancerHTTPSListenerRequest) SetTLSCipherPolicy(v string) *CreateLoadBalancerHTTPSListenerRequest {
 	s.TLSCipherPolicy = &v
 	return s
-}
-
-func (s *CreateLoadBalancerHTTPSListenerRequest) SetXForwardedFor_SLBPORT(v string) *CreateLoadBalancerHTTPSListenerRequest {
-	s.XForwardedFor_SLBPORT = &v
-	return s
-}
-
-func (s *CreateLoadBalancerHTTPSListenerRequest) SetXForwardedFor_ClientSrcPort(v string) *CreateLoadBalancerHTTPSListenerRequest {
-	s.XForwardedFor_ClientSrcPort = &v
-	return s
-}
-
-func (s *CreateLoadBalancerHTTPSListenerRequest) SetXForwardedFor_ClientCertSubjectDN(v string) *CreateLoadBalancerHTTPSListenerRequest {
-	s.XForwardedFor_ClientCertSubjectDN = &v
-	return s
-}
-
-func (s *CreateLoadBalancerHTTPSListenerRequest) SetXForwardedFor_ClientCertIssuerDN(v string) *CreateLoadBalancerHTTPSListenerRequest {
-	s.XForwardedFor_ClientCertIssuerDN = &v
-	return s
-}
-
-func (s *CreateLoadBalancerHTTPSListenerRequest) SetXForwardedFor_ClientCertFingerprint(v string) *CreateLoadBalancerHTTPSListenerRequest {
-	s.XForwardedFor_ClientCertFingerprint = &v
-	return s
-}
-
-func (s *CreateLoadBalancerHTTPSListenerRequest) SetXForwardedFor_ClientCertClientVerify(v string) *CreateLoadBalancerHTTPSListenerRequest {
-	s.XForwardedFor_ClientCertClientVerify = &v
-	return s
-}
-
-func (s *CreateLoadBalancerHTTPSListenerRequest) SetXForwardedFor_ClientCertIssuerDNAlias(v string) *CreateLoadBalancerHTTPSListenerRequest {
-	s.XForwardedFor_ClientCertIssuerDNAlias = &v
-	return s
-}
-
-func (s *CreateLoadBalancerHTTPSListenerRequest) SetXForwardedFor_ClientCertSubjectDNAlias(v string) *CreateLoadBalancerHTTPSListenerRequest {
-	s.XForwardedFor_ClientCertSubjectDNAlias = &v
-	return s
-}
-
-func (s *CreateLoadBalancerHTTPSListenerRequest) SetXForwardedFor_ClientCertFingerprintAlias(v string) *CreateLoadBalancerHTTPSListenerRequest {
-	s.XForwardedFor_ClientCertFingerprintAlias = &v
-	return s
-}
-
-func (s *CreateLoadBalancerHTTPSListenerRequest) SetXForwardedFor_ClientCertClientVerifyAlias(v string) *CreateLoadBalancerHTTPSListenerRequest {
-	s.XForwardedFor_ClientCertClientVerifyAlias = &v
-	return s
-}
-
-func (s *CreateLoadBalancerHTTPSListenerRequest) SetServerCertificate(v []*CreateLoadBalancerHTTPSListenerRequestServerCertificate) *CreateLoadBalancerHTTPSListenerRequest {
-	s.ServerCertificate = v
-	return s
-}
-
-type CreateLoadBalancerHTTPSListenerRequestServerCertificate struct {
-}
-
-func (s CreateLoadBalancerHTTPSListenerRequestServerCertificate) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateLoadBalancerHTTPSListenerRequestServerCertificate) GoString() string {
-	return s.String()
 }
 
 type CreateLoadBalancerHTTPSListenerResponseBody struct {
@@ -1980,41 +1658,35 @@ func (s *CreateLoadBalancerHTTPSListenerResponse) SetBody(v *CreateLoadBalancerH
 }
 
 type CreateLoadBalancerTCPListenerRequest struct {
-	RegionId                  *string                                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	OwnerId                   *int64                                           `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount      *string                                          `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId           *int64                                           `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	LoadBalancerId            *string                                          `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	ListenerPort              *int32                                           `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	BackendServerPort         *int32                                           `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
-	Bandwidth                 *int32                                           `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	Scheduler                 *string                                          `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	PersistenceTimeout        *int32                                           `json:"PersistenceTimeout,omitempty" xml:"PersistenceTimeout,omitempty"`
-	EstablishedTimeout        *int32                                           `json:"EstablishedTimeout,omitempty" xml:"EstablishedTimeout,omitempty"`
-	HealthyThreshold          *int32                                           `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	UnhealthyThreshold        *int32                                           `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
-	HealthCheckConnectTimeout *int32                                           `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
-	HealthCheckConnectPort    *int32                                           `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	HealthCheckInterval       *int32                                           `json:"healthCheckInterval,omitempty" xml:"healthCheckInterval,omitempty"`
-	HealthCheckDomain         *string                                          `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	HealthCheckURI            *string                                          `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
-	HealthCheckHttpCode       *string                                          `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
-	HealthCheckMethod         *string                                          `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
-	HealthCheckType           *string                                          `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
-	MaxConnection             *int32                                           `json:"MaxConnection,omitempty" xml:"MaxConnection,omitempty"`
-	OwnerAccount              *string                                          `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId               *string                                          `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	VServerGroupId            *string                                          `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
-	MasterSlaveServerGroupId  *string                                          `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
-	Tags                      *string                                          `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	AclId                     *string                                          `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	AclType                   *string                                          `json:"AclType,omitempty" xml:"AclType,omitempty"`
-	AclStatus                 *string                                          `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
-	VpcIds                    *string                                          `json:"VpcIds,omitempty" xml:"VpcIds,omitempty"`
-	Description               *string                                          `json:"Description,omitempty" xml:"Description,omitempty"`
-	ConnectionDrain           *string                                          `json:"ConnectionDrain,omitempty" xml:"ConnectionDrain,omitempty"`
-	ConnectionDrainTimeout    *int32                                           `json:"ConnectionDrainTimeout,omitempty" xml:"ConnectionDrainTimeout,omitempty"`
-	PortRange                 []*CreateLoadBalancerTCPListenerRequestPortRange `json:"PortRange,omitempty" xml:"PortRange,omitempty" type:"Repeated"`
+	RegionId                  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	OwnerId                   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount      *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId           *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	LoadBalancerId            *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	ListenerPort              *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	BackendServerPort         *int32  `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
+	Bandwidth                 *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	Scheduler                 *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	PersistenceTimeout        *int32  `json:"PersistenceTimeout,omitempty" xml:"PersistenceTimeout,omitempty"`
+	EstablishedTimeout        *int32  `json:"EstablishedTimeout,omitempty" xml:"EstablishedTimeout,omitempty"`
+	HealthyThreshold          *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	UnhealthyThreshold        *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	HealthCheckConnectTimeout *int32  `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
+	HealthCheckConnectPort    *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	HealthCheckInterval       *int32  `json:"healthCheckInterval,omitempty" xml:"healthCheckInterval,omitempty"`
+	HealthCheckDomain         *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	HealthCheckURI            *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	HealthCheckHttpCode       *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	HealthCheckType           *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
+	OwnerAccount              *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	VServerGroupId            *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
+	MasterSlaveServerGroupId  *string `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
+	AclId                     *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AclType                   *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	AclStatus                 *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
+	Description               *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ConnectionDrain           *string `json:"ConnectionDrain,omitempty" xml:"ConnectionDrain,omitempty"`
+	ConnectionDrainTimeout    *int32  `json:"ConnectionDrainTimeout,omitempty" xml:"ConnectionDrainTimeout,omitempty"`
 }
 
 func (s CreateLoadBalancerTCPListenerRequest) String() string {
@@ -2120,28 +1792,13 @@ func (s *CreateLoadBalancerTCPListenerRequest) SetHealthCheckHttpCode(v string) 
 	return s
 }
 
-func (s *CreateLoadBalancerTCPListenerRequest) SetHealthCheckMethod(v string) *CreateLoadBalancerTCPListenerRequest {
-	s.HealthCheckMethod = &v
-	return s
-}
-
 func (s *CreateLoadBalancerTCPListenerRequest) SetHealthCheckType(v string) *CreateLoadBalancerTCPListenerRequest {
 	s.HealthCheckType = &v
 	return s
 }
 
-func (s *CreateLoadBalancerTCPListenerRequest) SetMaxConnection(v int32) *CreateLoadBalancerTCPListenerRequest {
-	s.MaxConnection = &v
-	return s
-}
-
 func (s *CreateLoadBalancerTCPListenerRequest) SetOwnerAccount(v string) *CreateLoadBalancerTCPListenerRequest {
 	s.OwnerAccount = &v
-	return s
-}
-
-func (s *CreateLoadBalancerTCPListenerRequest) SetAccessKeyId(v string) *CreateLoadBalancerTCPListenerRequest {
-	s.AccessKeyId = &v
 	return s
 }
 
@@ -2152,11 +1809,6 @@ func (s *CreateLoadBalancerTCPListenerRequest) SetVServerGroupId(v string) *Crea
 
 func (s *CreateLoadBalancerTCPListenerRequest) SetMasterSlaveServerGroupId(v string) *CreateLoadBalancerTCPListenerRequest {
 	s.MasterSlaveServerGroupId = &v
-	return s
-}
-
-func (s *CreateLoadBalancerTCPListenerRequest) SetTags(v string) *CreateLoadBalancerTCPListenerRequest {
-	s.Tags = &v
 	return s
 }
 
@@ -2175,11 +1827,6 @@ func (s *CreateLoadBalancerTCPListenerRequest) SetAclStatus(v string) *CreateLoa
 	return s
 }
 
-func (s *CreateLoadBalancerTCPListenerRequest) SetVpcIds(v string) *CreateLoadBalancerTCPListenerRequest {
-	s.VpcIds = &v
-	return s
-}
-
 func (s *CreateLoadBalancerTCPListenerRequest) SetDescription(v string) *CreateLoadBalancerTCPListenerRequest {
 	s.Description = &v
 	return s
@@ -2193,22 +1840,6 @@ func (s *CreateLoadBalancerTCPListenerRequest) SetConnectionDrain(v string) *Cre
 func (s *CreateLoadBalancerTCPListenerRequest) SetConnectionDrainTimeout(v int32) *CreateLoadBalancerTCPListenerRequest {
 	s.ConnectionDrainTimeout = &v
 	return s
-}
-
-func (s *CreateLoadBalancerTCPListenerRequest) SetPortRange(v []*CreateLoadBalancerTCPListenerRequestPortRange) *CreateLoadBalancerTCPListenerRequest {
-	s.PortRange = v
-	return s
-}
-
-type CreateLoadBalancerTCPListenerRequestPortRange struct {
-}
-
-func (s CreateLoadBalancerTCPListenerRequestPortRange) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateLoadBalancerTCPListenerRequestPortRange) GoString() string {
-	return s.String()
 }
 
 type CreateLoadBalancerTCPListenerResponseBody struct {
@@ -2252,37 +1883,29 @@ func (s *CreateLoadBalancerTCPListenerResponse) SetBody(v *CreateLoadBalancerTCP
 }
 
 type CreateLoadBalancerUDPListenerRequest struct {
-	RegionId                  *string                                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	OwnerId                   *int64                                           `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount      *string                                          `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId           *int64                                           `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	LoadBalancerId            *string                                          `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	ListenerPort              *int32                                           `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	BackendServerPort         *int32                                           `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
-	Bandwidth                 *int32                                           `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	Scheduler                 *string                                          `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	PersistenceTimeout        *int32                                           `json:"PersistenceTimeout,omitempty" xml:"PersistenceTimeout,omitempty"`
-	HealthyThreshold          *int32                                           `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	UnhealthyThreshold        *int32                                           `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
-	HealthCheckConnectTimeout *int32                                           `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
-	HealthCheckConnectPort    *int32                                           `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	HealthCheckInterval       *int32                                           `json:"healthCheckInterval,omitempty" xml:"healthCheckInterval,omitempty"`
-	HealthCheckReq            *string                                          `json:"healthCheckReq,omitempty" xml:"healthCheckReq,omitempty"`
-	HealthCheckExp            *string                                          `json:"healthCheckExp,omitempty" xml:"healthCheckExp,omitempty"`
-	MaxConnection             *int32                                           `json:"MaxConnection,omitempty" xml:"MaxConnection,omitempty"`
-	OwnerAccount              *string                                          `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId               *string                                          `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	VServerGroupId            *string                                          `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
-	MasterSlaveServerGroupId  *string                                          `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
-	Tags                      *string                                          `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	AclId                     *string                                          `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	AclType                   *string                                          `json:"AclType,omitempty" xml:"AclType,omitempty"`
-	AclStatus                 *string                                          `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
-	VpcIds                    *string                                          `json:"VpcIds,omitempty" xml:"VpcIds,omitempty"`
-	Description               *string                                          `json:"Description,omitempty" xml:"Description,omitempty"`
-	ConnectionDrain           *string                                          `json:"ConnectionDrain,omitempty" xml:"ConnectionDrain,omitempty"`
-	ConnectionDrainTimeout    *int32                                           `json:"ConnectionDrainTimeout,omitempty" xml:"ConnectionDrainTimeout,omitempty"`
-	PortRange                 []*CreateLoadBalancerUDPListenerRequestPortRange `json:"PortRange,omitempty" xml:"PortRange,omitempty" type:"Repeated"`
+	RegionId                  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	OwnerId                   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount      *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId           *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	LoadBalancerId            *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	ListenerPort              *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	BackendServerPort         *int32  `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
+	Bandwidth                 *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	Scheduler                 *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	HealthyThreshold          *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	UnhealthyThreshold        *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	HealthCheckConnectTimeout *int32  `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
+	HealthCheckConnectPort    *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	HealthCheckInterval       *int32  `json:"healthCheckInterval,omitempty" xml:"healthCheckInterval,omitempty"`
+	HealthCheckReq            *string `json:"healthCheckReq,omitempty" xml:"healthCheckReq,omitempty"`
+	HealthCheckExp            *string `json:"healthCheckExp,omitempty" xml:"healthCheckExp,omitempty"`
+	OwnerAccount              *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	VServerGroupId            *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
+	MasterSlaveServerGroupId  *string `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
+	AclId                     *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AclType                   *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	AclStatus                 *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
+	Description               *string `json:"Description,omitempty" xml:"Description,omitempty"`
 }
 
 func (s CreateLoadBalancerUDPListenerRequest) String() string {
@@ -2338,11 +1961,6 @@ func (s *CreateLoadBalancerUDPListenerRequest) SetScheduler(v string) *CreateLoa
 	return s
 }
 
-func (s *CreateLoadBalancerUDPListenerRequest) SetPersistenceTimeout(v int32) *CreateLoadBalancerUDPListenerRequest {
-	s.PersistenceTimeout = &v
-	return s
-}
-
 func (s *CreateLoadBalancerUDPListenerRequest) SetHealthyThreshold(v int32) *CreateLoadBalancerUDPListenerRequest {
 	s.HealthyThreshold = &v
 	return s
@@ -2378,18 +1996,8 @@ func (s *CreateLoadBalancerUDPListenerRequest) SetHealthCheckExp(v string) *Crea
 	return s
 }
 
-func (s *CreateLoadBalancerUDPListenerRequest) SetMaxConnection(v int32) *CreateLoadBalancerUDPListenerRequest {
-	s.MaxConnection = &v
-	return s
-}
-
 func (s *CreateLoadBalancerUDPListenerRequest) SetOwnerAccount(v string) *CreateLoadBalancerUDPListenerRequest {
 	s.OwnerAccount = &v
-	return s
-}
-
-func (s *CreateLoadBalancerUDPListenerRequest) SetAccessKeyId(v string) *CreateLoadBalancerUDPListenerRequest {
-	s.AccessKeyId = &v
 	return s
 }
 
@@ -2400,11 +2008,6 @@ func (s *CreateLoadBalancerUDPListenerRequest) SetVServerGroupId(v string) *Crea
 
 func (s *CreateLoadBalancerUDPListenerRequest) SetMasterSlaveServerGroupId(v string) *CreateLoadBalancerUDPListenerRequest {
 	s.MasterSlaveServerGroupId = &v
-	return s
-}
-
-func (s *CreateLoadBalancerUDPListenerRequest) SetTags(v string) *CreateLoadBalancerUDPListenerRequest {
-	s.Tags = &v
 	return s
 }
 
@@ -2423,40 +2026,9 @@ func (s *CreateLoadBalancerUDPListenerRequest) SetAclStatus(v string) *CreateLoa
 	return s
 }
 
-func (s *CreateLoadBalancerUDPListenerRequest) SetVpcIds(v string) *CreateLoadBalancerUDPListenerRequest {
-	s.VpcIds = &v
-	return s
-}
-
 func (s *CreateLoadBalancerUDPListenerRequest) SetDescription(v string) *CreateLoadBalancerUDPListenerRequest {
 	s.Description = &v
 	return s
-}
-
-func (s *CreateLoadBalancerUDPListenerRequest) SetConnectionDrain(v string) *CreateLoadBalancerUDPListenerRequest {
-	s.ConnectionDrain = &v
-	return s
-}
-
-func (s *CreateLoadBalancerUDPListenerRequest) SetConnectionDrainTimeout(v int32) *CreateLoadBalancerUDPListenerRequest {
-	s.ConnectionDrainTimeout = &v
-	return s
-}
-
-func (s *CreateLoadBalancerUDPListenerRequest) SetPortRange(v []*CreateLoadBalancerUDPListenerRequestPortRange) *CreateLoadBalancerUDPListenerRequest {
-	s.PortRange = v
-	return s
-}
-
-type CreateLoadBalancerUDPListenerRequestPortRange struct {
-}
-
-func (s CreateLoadBalancerUDPListenerRequestPortRange) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateLoadBalancerUDPListenerRequestPortRange) GoString() string {
-	return s.String()
 }
 
 type CreateLoadBalancerUDPListenerResponseBody struct {
@@ -2505,8 +2077,6 @@ type CreateMasterSlaveServerGroupRequest struct {
 	ResourceOwnerId            *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	RegionId                   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	OwnerAccount               *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId                *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                       *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	LoadBalancerId             *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	MasterSlaveServerGroupName *string `json:"MasterSlaveServerGroupName,omitempty" xml:"MasterSlaveServerGroupName,omitempty"`
 	MasterSlaveBackendServers  *string `json:"MasterSlaveBackendServers,omitempty" xml:"MasterSlaveBackendServers,omitempty"`
@@ -2545,16 +2115,6 @@ func (s *CreateMasterSlaveServerGroupRequest) SetOwnerAccount(v string) *CreateM
 	return s
 }
 
-func (s *CreateMasterSlaveServerGroupRequest) SetAccessKeyId(v string) *CreateMasterSlaveServerGroupRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *CreateMasterSlaveServerGroupRequest) SetTags(v string) *CreateMasterSlaveServerGroupRequest {
-	s.Tags = &v
-	return s
-}
-
 func (s *CreateMasterSlaveServerGroupRequest) SetLoadBalancerId(v string) *CreateMasterSlaveServerGroupRequest {
 	s.LoadBalancerId = &v
 	return s
@@ -2571,8 +2131,8 @@ func (s *CreateMasterSlaveServerGroupRequest) SetMasterSlaveBackendServers(v str
 }
 
 type CreateMasterSlaveServerGroupResponseBody struct {
-	RequestId                 *string                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	MasterSlaveServerGroupId  *string                                                            `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
+	RequestId                 *string                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	MasterSlaveBackendServers *CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServers `json:"MasterSlaveBackendServers,omitempty" xml:"MasterSlaveBackendServers,omitempty" type:"Struct"`
 }
 
@@ -2584,13 +2144,13 @@ func (s CreateMasterSlaveServerGroupResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateMasterSlaveServerGroupResponseBody) SetRequestId(v string) *CreateMasterSlaveServerGroupResponseBody {
-	s.RequestId = &v
+func (s *CreateMasterSlaveServerGroupResponseBody) SetMasterSlaveServerGroupId(v string) *CreateMasterSlaveServerGroupResponseBody {
+	s.MasterSlaveServerGroupId = &v
 	return s
 }
 
-func (s *CreateMasterSlaveServerGroupResponseBody) SetMasterSlaveServerGroupId(v string) *CreateMasterSlaveServerGroupResponseBody {
-	s.MasterSlaveServerGroupId = &v
+func (s *CreateMasterSlaveServerGroupResponseBody) SetRequestId(v string) *CreateMasterSlaveServerGroupResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2692,8 +2252,6 @@ type CreateRulesRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	LoadBalancerId       *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	ListenerPort         *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	ListenerProtocol     *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
@@ -2730,16 +2288,6 @@ func (s *CreateRulesRequest) SetRegionId(v string) *CreateRulesRequest {
 
 func (s *CreateRulesRequest) SetOwnerAccount(v string) *CreateRulesRequest {
 	s.OwnerAccount = &v
-	return s
-}
-
-func (s *CreateRulesRequest) SetAccessKeyId(v string) *CreateRulesRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *CreateRulesRequest) SetTags(v string) *CreateRulesRequest {
-	s.Tags = &v
 	return s
 }
 
@@ -2915,8 +2463,8 @@ func (s *CreateTLSCipherPolicyRequest) SetTLSVersions(v []*string) *CreateTLSCip
 }
 
 type CreateTLSCipherPolicyResponseBody struct {
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TLSCipherPolicyId *string `json:"TLSCipherPolicyId,omitempty" xml:"TLSCipherPolicyId,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateTLSCipherPolicyResponseBody) String() string {
@@ -2927,13 +2475,13 @@ func (s CreateTLSCipherPolicyResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateTLSCipherPolicyResponseBody) SetRequestId(v string) *CreateTLSCipherPolicyResponseBody {
-	s.RequestId = &v
+func (s *CreateTLSCipherPolicyResponseBody) SetTLSCipherPolicyId(v string) *CreateTLSCipherPolicyResponseBody {
+	s.TLSCipherPolicyId = &v
 	return s
 }
 
-func (s *CreateTLSCipherPolicyResponseBody) SetTLSCipherPolicyId(v string) *CreateTLSCipherPolicyResponseBody {
-	s.TLSCipherPolicyId = &v
+func (s *CreateTLSCipherPolicyResponseBody) SetRequestId(v string) *CreateTLSCipherPolicyResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2966,8 +2514,6 @@ type CreateVServerGroupRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	LoadBalancerId       *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	VServerGroupName     *string `json:"VServerGroupName,omitempty" xml:"VServerGroupName,omitempty"`
 	BackendServers       *string `json:"BackendServers,omitempty" xml:"BackendServers,omitempty"`
@@ -3003,16 +2549,6 @@ func (s *CreateVServerGroupRequest) SetRegionId(v string) *CreateVServerGroupReq
 
 func (s *CreateVServerGroupRequest) SetOwnerAccount(v string) *CreateVServerGroupRequest {
 	s.OwnerAccount = &v
-	return s
-}
-
-func (s *CreateVServerGroupRequest) SetAccessKeyId(v string) *CreateVServerGroupRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *CreateVServerGroupRequest) SetTags(v string) *CreateVServerGroupRequest {
-	s.Tags = &v
 	return s
 }
 
@@ -3146,8 +2682,6 @@ type DeleteAccessControlListRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	AclId                *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 }
@@ -3177,16 +2711,6 @@ func (s *DeleteAccessControlListRequest) SetResourceOwnerId(v int64) *DeleteAcce
 
 func (s *DeleteAccessControlListRequest) SetOwnerAccount(v string) *DeleteAccessControlListRequest {
 	s.OwnerAccount = &v
-	return s
-}
-
-func (s *DeleteAccessControlListRequest) SetAccessKeyId(v string) *DeleteAccessControlListRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *DeleteAccessControlListRequest) SetTags(v string) *DeleteAccessControlListRequest {
-	s.Tags = &v
 	return s
 }
 
@@ -3245,7 +2769,6 @@ type DeleteCACertificateRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	CACertificateId      *string `json:"CACertificateId,omitempty" xml:"CACertificateId,omitempty"`
 }
@@ -3275,11 +2798,6 @@ func (s *DeleteCACertificateRequest) SetResourceOwnerId(v int64) *DeleteCACertif
 
 func (s *DeleteCACertificateRequest) SetOwnerAccount(v string) *DeleteCACertificateRequest {
 	s.OwnerAccount = &v
-	return s
-}
-
-func (s *DeleteCACertificateRequest) SetAccessKeyId(v string) *DeleteCACertificateRequest {
-	s.AccessKeyId = &v
 	return s
 }
 
@@ -3339,8 +2857,6 @@ type DeleteDomainExtensionRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	DomainExtensionId    *string `json:"DomainExtensionId,omitempty" xml:"DomainExtensionId,omitempty"`
 }
 
@@ -3374,16 +2890,6 @@ func (s *DeleteDomainExtensionRequest) SetRegionId(v string) *DeleteDomainExtens
 
 func (s *DeleteDomainExtensionRequest) SetOwnerAccount(v string) *DeleteDomainExtensionRequest {
 	s.OwnerAccount = &v
-	return s
-}
-
-func (s *DeleteDomainExtensionRequest) SetAccessKeyId(v string) *DeleteDomainExtensionRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *DeleteDomainExtensionRequest) SetTags(v string) *DeleteDomainExtensionRequest {
-	s.Tags = &v
 	return s
 }
 
@@ -3439,8 +2945,6 @@ type DeleteLoadBalancerRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	LoadBalancerId       *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s DeleteLoadBalancerRequest) String() string {
@@ -3478,16 +2982,6 @@ func (s *DeleteLoadBalancerRequest) SetLoadBalancerId(v string) *DeleteLoadBalan
 
 func (s *DeleteLoadBalancerRequest) SetOwnerAccount(v string) *DeleteLoadBalancerRequest {
 	s.OwnerAccount = &v
-	return s
-}
-
-func (s *DeleteLoadBalancerRequest) SetAccessKeyId(v string) *DeleteLoadBalancerRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *DeleteLoadBalancerRequest) SetTags(v string) *DeleteLoadBalancerRequest {
-	s.Tags = &v
 	return s
 }
 
@@ -3540,8 +3034,6 @@ type DeleteLoadBalancerListenerRequest struct {
 	ListenerPort         *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	ListenerProtocol     *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s DeleteLoadBalancerListenerRequest) String() string {
@@ -3592,16 +3084,6 @@ func (s *DeleteLoadBalancerListenerRequest) SetOwnerAccount(v string) *DeleteLoa
 	return s
 }
 
-func (s *DeleteLoadBalancerListenerRequest) SetAccessKeyId(v string) *DeleteLoadBalancerListenerRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *DeleteLoadBalancerListenerRequest) SetTags(v string) *DeleteLoadBalancerListenerRequest {
-	s.Tags = &v
-	return s
-}
-
 type DeleteLoadBalancerListenerResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -3648,8 +3130,6 @@ type DeleteMasterSlaveServerGroupRequest struct {
 	ResourceOwnerId          *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	OwnerAccount             *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId              *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                     *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	MasterSlaveServerGroupId *string `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
 }
 
@@ -3683,16 +3163,6 @@ func (s *DeleteMasterSlaveServerGroupRequest) SetRegionId(v string) *DeleteMaste
 
 func (s *DeleteMasterSlaveServerGroupRequest) SetOwnerAccount(v string) *DeleteMasterSlaveServerGroupRequest {
 	s.OwnerAccount = &v
-	return s
-}
-
-func (s *DeleteMasterSlaveServerGroupRequest) SetAccessKeyId(v string) *DeleteMasterSlaveServerGroupRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *DeleteMasterSlaveServerGroupRequest) SetTags(v string) *DeleteMasterSlaveServerGroupRequest {
-	s.Tags = &v
 	return s
 }
 
@@ -3747,8 +3217,6 @@ type DeleteRulesRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	RuleIds              *string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty"`
 }
 
@@ -3782,16 +3250,6 @@ func (s *DeleteRulesRequest) SetRegionId(v string) *DeleteRulesRequest {
 
 func (s *DeleteRulesRequest) SetOwnerAccount(v string) *DeleteRulesRequest {
 	s.OwnerAccount = &v
-	return s
-}
-
-func (s *DeleteRulesRequest) SetAccessKeyId(v string) *DeleteRulesRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *DeleteRulesRequest) SetTags(v string) *DeleteRulesRequest {
-	s.Tags = &v
 	return s
 }
 
@@ -3847,8 +3305,6 @@ type DeleteServerCertificateRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ServerCertificateId  *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s DeleteServerCertificateRequest) String() string {
@@ -3886,16 +3342,6 @@ func (s *DeleteServerCertificateRequest) SetServerCertificateId(v string) *Delet
 
 func (s *DeleteServerCertificateRequest) SetOwnerAccount(v string) *DeleteServerCertificateRequest {
 	s.OwnerAccount = &v
-	return s
-}
-
-func (s *DeleteServerCertificateRequest) SetAccessKeyId(v string) *DeleteServerCertificateRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *DeleteServerCertificateRequest) SetTags(v string) *DeleteServerCertificateRequest {
-	s.Tags = &v
 	return s
 }
 
@@ -4038,8 +3484,6 @@ type DeleteVServerGroupRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	VServerGroupId       *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
 }
 
@@ -4073,16 +3517,6 @@ func (s *DeleteVServerGroupRequest) SetRegionId(v string) *DeleteVServerGroupReq
 
 func (s *DeleteVServerGroupRequest) SetOwnerAccount(v string) *DeleteVServerGroupRequest {
 	s.OwnerAccount = &v
-	return s
-}
-
-func (s *DeleteVServerGroupRequest) SetAccessKeyId(v string) *DeleteVServerGroupRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *DeleteVServerGroupRequest) SetTags(v string) *DeleteVServerGroupRequest {
-	s.Tags = &v
 	return s
 }
 
@@ -4136,8 +3570,6 @@ type DescribeAccessControlListAttributeRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	AclId                *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	AclEntryComment      *string `json:"AclEntryComment,omitempty" xml:"AclEntryComment,omitempty"`
@@ -4171,16 +3603,6 @@ func (s *DescribeAccessControlListAttributeRequest) SetOwnerAccount(v string) *D
 	return s
 }
 
-func (s *DescribeAccessControlListAttributeRequest) SetAccessKeyId(v string) *DescribeAccessControlListAttributeRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *DescribeAccessControlListAttributeRequest) SetTags(v string) *DescribeAccessControlListAttributeRequest {
-	s.Tags = &v
-	return s
-}
-
 func (s *DescribeAccessControlListAttributeRequest) SetRegionId(v string) *DescribeAccessControlListAttributeRequest {
 	s.RegionId = &v
 	return s
@@ -4197,13 +3619,13 @@ func (s *DescribeAccessControlListAttributeRequest) SetAclEntryComment(v string)
 }
 
 type DescribeAccessControlListAttributeResponseBody struct {
-	AclEntrys        *DescribeAccessControlListAttributeResponseBodyAclEntrys        `json:"AclEntrys,omitempty" xml:"AclEntrys,omitempty" type:"Struct"`
-	RequestId        *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceGroupId  *string                                                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	AclId            *string                                                         `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	AddressIPVersion *string                                                         `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
-	RelatedListeners *DescribeAccessControlListAttributeResponseBodyRelatedListeners `json:"RelatedListeners,omitempty" xml:"RelatedListeners,omitempty" type:"Struct"`
+	RequestId        *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	AclName          *string                                                         `json:"AclName,omitempty" xml:"AclName,omitempty"`
+	ResourceGroupId  *string                                                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	AclEntrys        *DescribeAccessControlListAttributeResponseBodyAclEntrys        `json:"AclEntrys,omitempty" xml:"AclEntrys,omitempty" type:"Struct"`
+	RelatedListeners *DescribeAccessControlListAttributeResponseBodyRelatedListeners `json:"RelatedListeners,omitempty" xml:"RelatedListeners,omitempty" type:"Struct"`
 }
 
 func (s DescribeAccessControlListAttributeResponseBody) String() string {
@@ -4212,21 +3634,6 @@ func (s DescribeAccessControlListAttributeResponseBody) String() string {
 
 func (s DescribeAccessControlListAttributeResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeAccessControlListAttributeResponseBody) SetAclEntrys(v *DescribeAccessControlListAttributeResponseBodyAclEntrys) *DescribeAccessControlListAttributeResponseBody {
-	s.AclEntrys = v
-	return s
-}
-
-func (s *DescribeAccessControlListAttributeResponseBody) SetRequestId(v string) *DescribeAccessControlListAttributeResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeAccessControlListAttributeResponseBody) SetResourceGroupId(v string) *DescribeAccessControlListAttributeResponseBody {
-	s.ResourceGroupId = &v
-	return s
 }
 
 func (s *DescribeAccessControlListAttributeResponseBody) SetAclId(v string) *DescribeAccessControlListAttributeResponseBody {
@@ -4239,13 +3646,28 @@ func (s *DescribeAccessControlListAttributeResponseBody) SetAddressIPVersion(v s
 	return s
 }
 
-func (s *DescribeAccessControlListAttributeResponseBody) SetRelatedListeners(v *DescribeAccessControlListAttributeResponseBodyRelatedListeners) *DescribeAccessControlListAttributeResponseBody {
-	s.RelatedListeners = v
+func (s *DescribeAccessControlListAttributeResponseBody) SetRequestId(v string) *DescribeAccessControlListAttributeResponseBody {
+	s.RequestId = &v
 	return s
 }
 
 func (s *DescribeAccessControlListAttributeResponseBody) SetAclName(v string) *DescribeAccessControlListAttributeResponseBody {
 	s.AclName = &v
+	return s
+}
+
+func (s *DescribeAccessControlListAttributeResponseBody) SetResourceGroupId(v string) *DescribeAccessControlListAttributeResponseBody {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeAccessControlListAttributeResponseBody) SetAclEntrys(v *DescribeAccessControlListAttributeResponseBodyAclEntrys) *DescribeAccessControlListAttributeResponseBody {
+	s.AclEntrys = v
+	return s
+}
+
+func (s *DescribeAccessControlListAttributeResponseBody) SetRelatedListeners(v *DescribeAccessControlListAttributeResponseBodyRelatedListeners) *DescribeAccessControlListAttributeResponseBody {
+	s.RelatedListeners = v
 	return s
 }
 
@@ -4307,10 +3729,10 @@ func (s *DescribeAccessControlListAttributeResponseBodyRelatedListeners) SetRela
 }
 
 type DescribeAccessControlListAttributeResponseBodyRelatedListenersRelatedListener struct {
+	ListenerPort   *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	AclType        *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
 	Protocol       *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	ListenerPort   *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 }
 
 func (s DescribeAccessControlListAttributeResponseBodyRelatedListenersRelatedListener) String() string {
@@ -4319,6 +3741,11 @@ func (s DescribeAccessControlListAttributeResponseBodyRelatedListenersRelatedLis
 
 func (s DescribeAccessControlListAttributeResponseBodyRelatedListenersRelatedListener) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeAccessControlListAttributeResponseBodyRelatedListenersRelatedListener) SetListenerPort(v int32) *DescribeAccessControlListAttributeResponseBodyRelatedListenersRelatedListener {
+	s.ListenerPort = &v
+	return s
 }
 
 func (s *DescribeAccessControlListAttributeResponseBodyRelatedListenersRelatedListener) SetAclType(v string) *DescribeAccessControlListAttributeResponseBodyRelatedListenersRelatedListener {
@@ -4333,11 +3760,6 @@ func (s *DescribeAccessControlListAttributeResponseBodyRelatedListenersRelatedLi
 
 func (s *DescribeAccessControlListAttributeResponseBodyRelatedListenersRelatedListener) SetLoadBalancerId(v string) *DescribeAccessControlListAttributeResponseBodyRelatedListenersRelatedListener {
 	s.LoadBalancerId = &v
-	return s
-}
-
-func (s *DescribeAccessControlListAttributeResponseBodyRelatedListenersRelatedListener) SetListenerPort(v int32) *DescribeAccessControlListAttributeResponseBodyRelatedListenersRelatedListener {
-	s.ListenerPort = &v
 	return s
 }
 
@@ -4365,19 +3787,16 @@ func (s *DescribeAccessControlListAttributeResponse) SetBody(v *DescribeAccessCo
 }
 
 type DescribeAccessControlListsRequest struct {
-	OwnerId              *int64                                  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string                                 `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                                  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	OwnerAccount         *string                                 `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string                                 `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string                                 `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	RegionId             *string                                 `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	AclName              *string                                 `json:"AclName,omitempty" xml:"AclName,omitempty"`
-	AddressIPVersion     *string                                 `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
-	PageSize             *int32                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber           *int32                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	ResourceGroupId      *string                                 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tag                  []*DescribeAccessControlListsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AclName              *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
+	AddressIPVersion     *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s DescribeAccessControlListsRequest) String() string {
@@ -4405,16 +3824,6 @@ func (s *DescribeAccessControlListsRequest) SetResourceOwnerId(v int64) *Describ
 
 func (s *DescribeAccessControlListsRequest) SetOwnerAccount(v string) *DescribeAccessControlListsRequest {
 	s.OwnerAccount = &v
-	return s
-}
-
-func (s *DescribeAccessControlListsRequest) SetAccessKeyId(v string) *DescribeAccessControlListsRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *DescribeAccessControlListsRequest) SetTags(v string) *DescribeAccessControlListsRequest {
-	s.Tags = &v
 	return s
 }
 
@@ -4448,29 +3857,13 @@ func (s *DescribeAccessControlListsRequest) SetResourceGroupId(v string) *Descri
 	return s
 }
 
-func (s *DescribeAccessControlListsRequest) SetTag(v []*DescribeAccessControlListsRequestTag) *DescribeAccessControlListsRequest {
-	s.Tag = v
-	return s
-}
-
-type DescribeAccessControlListsRequestTag struct {
-}
-
-func (s DescribeAccessControlListsRequestTag) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAccessControlListsRequestTag) GoString() string {
-	return s.String()
-}
-
 type DescribeAccessControlListsResponseBody struct {
-	TotalCount *int32                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber *int32                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNumber *int32                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	Acls       *DescribeAccessControlListsResponseBodyAcls `json:"Acls,omitempty" xml:"Acls,omitempty" type:"Struct"`
+	TotalCount *int32                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	Count      *int32                                      `json:"Count,omitempty" xml:"Count,omitempty"`
+	Acls       *DescribeAccessControlListsResponseBodyAcls `json:"Acls,omitempty" xml:"Acls,omitempty" type:"Struct"`
 }
 
 func (s DescribeAccessControlListsResponseBody) String() string {
@@ -4481,8 +3874,8 @@ func (s DescribeAccessControlListsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeAccessControlListsResponseBody) SetTotalCount(v int32) *DescribeAccessControlListsResponseBody {
-	s.TotalCount = &v
+func (s *DescribeAccessControlListsResponseBody) SetPageNumber(v int32) *DescribeAccessControlListsResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -4496,18 +3889,18 @@ func (s *DescribeAccessControlListsResponseBody) SetRequestId(v string) *Describ
 	return s
 }
 
-func (s *DescribeAccessControlListsResponseBody) SetPageNumber(v int32) *DescribeAccessControlListsResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *DescribeAccessControlListsResponseBody) SetAcls(v *DescribeAccessControlListsResponseBodyAcls) *DescribeAccessControlListsResponseBody {
-	s.Acls = v
+func (s *DescribeAccessControlListsResponseBody) SetTotalCount(v int32) *DescribeAccessControlListsResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
 func (s *DescribeAccessControlListsResponseBody) SetCount(v int32) *DescribeAccessControlListsResponseBody {
 	s.Count = &v
+	return s
+}
+
+func (s *DescribeAccessControlListsResponseBody) SetAcls(v *DescribeAccessControlListsResponseBodyAcls) *DescribeAccessControlListsResponseBody {
+	s.Acls = v
 	return s
 }
 
@@ -4531,8 +3924,8 @@ func (s *DescribeAccessControlListsResponseBodyAcls) SetAcl(v []*DescribeAccessC
 type DescribeAccessControlListsResponseBodyAclsAcl struct {
 	AclId            *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
-	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	AclName          *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
+	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s DescribeAccessControlListsResponseBodyAclsAcl) String() string {
@@ -4553,13 +3946,13 @@ func (s *DescribeAccessControlListsResponseBodyAclsAcl) SetAddressIPVersion(v st
 	return s
 }
 
-func (s *DescribeAccessControlListsResponseBodyAclsAcl) SetResourceGroupId(v string) *DescribeAccessControlListsResponseBodyAclsAcl {
-	s.ResourceGroupId = &v
+func (s *DescribeAccessControlListsResponseBodyAclsAcl) SetAclName(v string) *DescribeAccessControlListsResponseBodyAclsAcl {
+	s.AclName = &v
 	return s
 }
 
-func (s *DescribeAccessControlListsResponseBodyAclsAcl) SetAclName(v string) *DescribeAccessControlListsResponseBodyAclsAcl {
-	s.AclName = &v
+func (s *DescribeAccessControlListsResponseBodyAclsAcl) SetResourceGroupId(v string) *DescribeAccessControlListsResponseBodyAclsAcl {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -4591,7 +3984,6 @@ type DescribeAvailableResourceRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	AddressType          *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
 	AddressIPVersion     *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
@@ -4622,11 +4014,6 @@ func (s *DescribeAvailableResourceRequest) SetResourceOwnerId(v int64) *Describe
 
 func (s *DescribeAvailableResourceRequest) SetOwnerAccount(v string) *DescribeAvailableResourceRequest {
 	s.OwnerAccount = &v
-	return s
-}
-
-func (s *DescribeAvailableResourceRequest) SetAccessKeyId(v string) *DescribeAvailableResourceRequest {
-	s.AccessKeyId = &v
 	return s
 }
 
@@ -4687,8 +4074,8 @@ func (s *DescribeAvailableResourceResponseBodyAvailableResources) SetAvailableRe
 
 type DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResource struct {
 	SlaveZoneId      *string                                                                                   `json:"SlaveZoneId,omitempty" xml:"SlaveZoneId,omitempty"`
-	SupportResources *DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourceSupportResources `json:"SupportResources,omitempty" xml:"SupportResources,omitempty" type:"Struct"`
 	MasterZoneId     *string                                                                                   `json:"MasterZoneId,omitempty" xml:"MasterZoneId,omitempty"`
+	SupportResources *DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourceSupportResources `json:"SupportResources,omitempty" xml:"SupportResources,omitempty" type:"Struct"`
 }
 
 func (s DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResource) String() string {
@@ -4704,13 +4091,13 @@ func (s *DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourc
 	return s
 }
 
-func (s *DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResource) SetSupportResources(v *DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourceSupportResources) *DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResource {
-	s.SupportResources = v
+func (s *DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResource) SetMasterZoneId(v string) *DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResource {
+	s.MasterZoneId = &v
 	return s
 }
 
-func (s *DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResource) SetMasterZoneId(v string) *DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResource {
-	s.MasterZoneId = &v
+func (s *DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResource) SetSupportResources(v *DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourceSupportResources) *DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResource {
+	s.SupportResources = v
 	return s
 }
 
@@ -4732,8 +4119,8 @@ func (s *DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourc
 }
 
 type DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourceSupportResourcesSupportResource struct {
-	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
 	AddressType      *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
 }
 
 func (s DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourceSupportResourcesSupportResource) String() string {
@@ -4744,13 +4131,13 @@ func (s DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResource
 	return s.String()
 }
 
-func (s *DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourceSupportResourcesSupportResource) SetAddressIPVersion(v string) *DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourceSupportResourcesSupportResource {
-	s.AddressIPVersion = &v
+func (s *DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourceSupportResourcesSupportResource) SetAddressType(v string) *DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourceSupportResourcesSupportResource {
+	s.AddressType = &v
 	return s
 }
 
-func (s *DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourceSupportResourcesSupportResource) SetAddressType(v string) *DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourceSupportResourcesSupportResource {
-	s.AddressType = &v
+func (s *DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourceSupportResourcesSupportResource) SetAddressIPVersion(v string) *DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourceSupportResourcesSupportResource {
+	s.AddressIPVersion = &v
 	return s
 }
 
@@ -4778,15 +4165,13 @@ func (s *DescribeAvailableResourceResponse) SetBody(v *DescribeAvailableResource
 }
 
 type DescribeCACertificatesRequest struct {
-	OwnerId              *int64                              `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string                             `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                              `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	OwnerAccount         *string                             `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string                             `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	RegionId             *string                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	CACertificateId      *string                             `json:"CACertificateId,omitempty" xml:"CACertificateId,omitempty"`
-	ResourceGroupId      *string                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tag                  []*DescribeCACertificatesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	CACertificateId      *string `json:"CACertificateId,omitempty" xml:"CACertificateId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s DescribeCACertificatesRequest) String() string {
@@ -4817,11 +4202,6 @@ func (s *DescribeCACertificatesRequest) SetOwnerAccount(v string) *DescribeCACer
 	return s
 }
 
-func (s *DescribeCACertificatesRequest) SetAccessKeyId(v string) *DescribeCACertificatesRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
 func (s *DescribeCACertificatesRequest) SetRegionId(v string) *DescribeCACertificatesRequest {
 	s.RegionId = &v
 	return s
@@ -4835,22 +4215,6 @@ func (s *DescribeCACertificatesRequest) SetCACertificateId(v string) *DescribeCA
 func (s *DescribeCACertificatesRequest) SetResourceGroupId(v string) *DescribeCACertificatesRequest {
 	s.ResourceGroupId = &v
 	return s
-}
-
-func (s *DescribeCACertificatesRequest) SetTag(v []*DescribeCACertificatesRequestTag) *DescribeCACertificatesRequest {
-	s.Tag = v
-	return s
-}
-
-type DescribeCACertificatesRequestTag struct {
-}
-
-func (s DescribeCACertificatesRequestTag) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeCACertificatesRequestTag) GoString() string {
-	return s.String()
 }
 
 type DescribeCACertificatesResponseBody struct {
@@ -4993,8 +4357,6 @@ type DescribeDomainExtensionAttributeRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	DomainExtensionId    *string `json:"DomainExtensionId,omitempty" xml:"DomainExtensionId,omitempty"`
 }
 
@@ -5031,28 +4393,18 @@ func (s *DescribeDomainExtensionAttributeRequest) SetOwnerAccount(v string) *Des
 	return s
 }
 
-func (s *DescribeDomainExtensionAttributeRequest) SetAccessKeyId(v string) *DescribeDomainExtensionAttributeRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *DescribeDomainExtensionAttributeRequest) SetTags(v string) *DescribeDomainExtensionAttributeRequest {
-	s.Tags = &v
-	return s
-}
-
 func (s *DescribeDomainExtensionAttributeRequest) SetDomainExtensionId(v string) *DescribeDomainExtensionAttributeRequest {
 	s.DomainExtensionId = &v
 	return s
 }
 
 type DescribeDomainExtensionAttributeResponseBody struct {
-	ListenerPort        *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	DomainExtensionId   *string `json:"DomainExtensionId,omitempty" xml:"DomainExtensionId,omitempty"`
-	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ServerCertificateId *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
-	LoadBalancerId      *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	Domain              *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	LoadBalancerId      *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	ListenerPort        *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	ServerCertificateId *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
+	DomainExtensionId   *string `json:"DomainExtensionId,omitempty" xml:"DomainExtensionId,omitempty"`
 }
 
 func (s DescribeDomainExtensionAttributeResponseBody) String() string {
@@ -5063,13 +4415,8 @@ func (s DescribeDomainExtensionAttributeResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDomainExtensionAttributeResponseBody) SetListenerPort(v int32) *DescribeDomainExtensionAttributeResponseBody {
-	s.ListenerPort = &v
-	return s
-}
-
-func (s *DescribeDomainExtensionAttributeResponseBody) SetDomainExtensionId(v string) *DescribeDomainExtensionAttributeResponseBody {
-	s.DomainExtensionId = &v
+func (s *DescribeDomainExtensionAttributeResponseBody) SetDomain(v string) *DescribeDomainExtensionAttributeResponseBody {
+	s.Domain = &v
 	return s
 }
 
@@ -5078,18 +4425,23 @@ func (s *DescribeDomainExtensionAttributeResponseBody) SetRequestId(v string) *D
 	return s
 }
 
-func (s *DescribeDomainExtensionAttributeResponseBody) SetServerCertificateId(v string) *DescribeDomainExtensionAttributeResponseBody {
-	s.ServerCertificateId = &v
-	return s
-}
-
 func (s *DescribeDomainExtensionAttributeResponseBody) SetLoadBalancerId(v string) *DescribeDomainExtensionAttributeResponseBody {
 	s.LoadBalancerId = &v
 	return s
 }
 
-func (s *DescribeDomainExtensionAttributeResponseBody) SetDomain(v string) *DescribeDomainExtensionAttributeResponseBody {
-	s.Domain = &v
+func (s *DescribeDomainExtensionAttributeResponseBody) SetListenerPort(v int32) *DescribeDomainExtensionAttributeResponseBody {
+	s.ListenerPort = &v
+	return s
+}
+
+func (s *DescribeDomainExtensionAttributeResponseBody) SetServerCertificateId(v string) *DescribeDomainExtensionAttributeResponseBody {
+	s.ServerCertificateId = &v
+	return s
+}
+
+func (s *DescribeDomainExtensionAttributeResponseBody) SetDomainExtensionId(v string) *DescribeDomainExtensionAttributeResponseBody {
+	s.DomainExtensionId = &v
 	return s
 }
 
@@ -5122,8 +4474,6 @@ type DescribeDomainExtensionsRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	LoadBalancerId       *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	ListenerPort         *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	DomainExtensionId    *string `json:"DomainExtensionId,omitempty" xml:"DomainExtensionId,omitempty"`
@@ -5159,16 +4509,6 @@ func (s *DescribeDomainExtensionsRequest) SetRegionId(v string) *DescribeDomainE
 
 func (s *DescribeDomainExtensionsRequest) SetOwnerAccount(v string) *DescribeDomainExtensionsRequest {
 	s.OwnerAccount = &v
-	return s
-}
-
-func (s *DescribeDomainExtensionsRequest) SetAccessKeyId(v string) *DescribeDomainExtensionsRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *DescribeDomainExtensionsRequest) SetTags(v string) *DescribeDomainExtensionsRequest {
-	s.Tags = &v
 	return s
 }
 
@@ -5228,8 +4568,8 @@ func (s *DescribeDomainExtensionsResponseBodyDomainExtensions) SetDomainExtensio
 }
 
 type DescribeDomainExtensionsResponseBodyDomainExtensionsDomainExtension struct {
-	Domain              *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	ServerCertificateId *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
+	Domain              *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	DomainExtensionId   *string `json:"DomainExtensionId,omitempty" xml:"DomainExtensionId,omitempty"`
 }
 
@@ -5241,13 +4581,13 @@ func (s DescribeDomainExtensionsResponseBodyDomainExtensionsDomainExtension) GoS
 	return s.String()
 }
 
-func (s *DescribeDomainExtensionsResponseBodyDomainExtensionsDomainExtension) SetDomain(v string) *DescribeDomainExtensionsResponseBodyDomainExtensionsDomainExtension {
-	s.Domain = &v
+func (s *DescribeDomainExtensionsResponseBodyDomainExtensionsDomainExtension) SetServerCertificateId(v string) *DescribeDomainExtensionsResponseBodyDomainExtensionsDomainExtension {
+	s.ServerCertificateId = &v
 	return s
 }
 
-func (s *DescribeDomainExtensionsResponseBodyDomainExtensionsDomainExtension) SetServerCertificateId(v string) *DescribeDomainExtensionsResponseBodyDomainExtensionsDomainExtension {
-	s.ServerCertificateId = &v
+func (s *DescribeDomainExtensionsResponseBodyDomainExtensionsDomainExtension) SetDomain(v string) *DescribeDomainExtensionsResponseBodyDomainExtensionsDomainExtension {
+	s.Domain = &v
 	return s
 }
 
@@ -5286,8 +4626,6 @@ type DescribeHealthStatusRequest struct {
 	LoadBalancerId       *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	ListenerPort         *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	ListenerProtocol     *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -5327,16 +4665,6 @@ func (s *DescribeHealthStatusRequest) SetListenerPort(v int32) *DescribeHealthSt
 
 func (s *DescribeHealthStatusRequest) SetOwnerAccount(v string) *DescribeHealthStatusRequest {
 	s.OwnerAccount = &v
-	return s
-}
-
-func (s *DescribeHealthStatusRequest) SetAccessKeyId(v string) *DescribeHealthStatusRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *DescribeHealthStatusRequest) SetTags(v string) *DescribeHealthStatusRequest {
-	s.Tags = &v
 	return s
 }
 
@@ -5391,8 +4719,6 @@ func (s *DescribeHealthStatusResponseBodyBackendServers) SetBackendServer(v []*D
 }
 
 type DescribeHealthStatusResponseBodyBackendServersBackendServer struct {
-	Type               *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	EniHost            *string `json:"EniHost,omitempty" xml:"EniHost,omitempty"`
 	Protocol           *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	ServerHealthStatus *string `json:"ServerHealthStatus,omitempty" xml:"ServerHealthStatus,omitempty"`
 	ListenerPort       *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
@@ -5407,16 +4733,6 @@ func (s DescribeHealthStatusResponseBodyBackendServersBackendServer) String() st
 
 func (s DescribeHealthStatusResponseBodyBackendServersBackendServer) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeHealthStatusResponseBodyBackendServersBackendServer) SetType(v string) *DescribeHealthStatusResponseBodyBackendServersBackendServer {
-	s.Type = &v
-	return s
-}
-
-func (s *DescribeHealthStatusResponseBodyBackendServersBackendServer) SetEniHost(v string) *DescribeHealthStatusResponseBodyBackendServersBackendServer {
-	s.EniHost = &v
-	return s
 }
 
 func (s *DescribeHealthStatusResponseBodyBackendServersBackendServer) SetProtocol(v string) *DescribeHealthStatusResponseBodyBackendServersBackendServer {
@@ -5481,8 +4797,6 @@ type DescribeListenerAccessControlAttributeRequest struct {
 	ListenerPort         *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	ListenerProtocol     *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s DescribeListenerAccessControlAttributeRequest) String() string {
@@ -5533,20 +4847,10 @@ func (s *DescribeListenerAccessControlAttributeRequest) SetOwnerAccount(v string
 	return s
 }
 
-func (s *DescribeListenerAccessControlAttributeRequest) SetAccessKeyId(v string) *DescribeListenerAccessControlAttributeRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *DescribeListenerAccessControlAttributeRequest) SetTags(v string) *DescribeListenerAccessControlAttributeRequest {
-	s.Tags = &v
-	return s
-}
-
 type DescribeListenerAccessControlAttributeResponseBody struct {
+	SourceItems         *string `json:"SourceItems,omitempty" xml:"SourceItems,omitempty"`
 	AccessControlStatus *string `json:"AccessControlStatus,omitempty" xml:"AccessControlStatus,omitempty"`
 	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SourceItems         *string `json:"SourceItems,omitempty" xml:"SourceItems,omitempty"`
 }
 
 func (s DescribeListenerAccessControlAttributeResponseBody) String() string {
@@ -5557,6 +4861,11 @@ func (s DescribeListenerAccessControlAttributeResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeListenerAccessControlAttributeResponseBody) SetSourceItems(v string) *DescribeListenerAccessControlAttributeResponseBody {
+	s.SourceItems = &v
+	return s
+}
+
 func (s *DescribeListenerAccessControlAttributeResponseBody) SetAccessControlStatus(v string) *DescribeListenerAccessControlAttributeResponseBody {
 	s.AccessControlStatus = &v
 	return s
@@ -5564,11 +4873,6 @@ func (s *DescribeListenerAccessControlAttributeResponseBody) SetAccessControlSta
 
 func (s *DescribeListenerAccessControlAttributeResponseBody) SetRequestId(v string) *DescribeListenerAccessControlAttributeResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeListenerAccessControlAttributeResponseBody) SetSourceItems(v string) *DescribeListenerAccessControlAttributeResponseBody {
-	s.SourceItems = &v
 	return s
 }
 
@@ -5602,9 +4906,6 @@ type DescribeLoadBalancerAttributeRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	LoadBalancerId       *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	IncludeReservedData  *bool   `json:"IncludeReservedData,omitempty" xml:"IncludeReservedData,omitempty"`
 }
 
 func (s DescribeLoadBalancerAttributeRequest) String() string {
@@ -5645,56 +4946,41 @@ func (s *DescribeLoadBalancerAttributeRequest) SetOwnerAccount(v string) *Descri
 	return s
 }
 
-func (s *DescribeLoadBalancerAttributeRequest) SetAccessKeyId(v string) *DescribeLoadBalancerAttributeRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerAttributeRequest) SetTags(v string) *DescribeLoadBalancerAttributeRequest {
-	s.Tags = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerAttributeRequest) SetIncludeReservedData(v bool) *DescribeLoadBalancerAttributeRequest {
-	s.IncludeReservedData = &v
-	return s
-}
-
 type DescribeLoadBalancerAttributeResponseBody struct {
-	Address                      *string                                                            `json:"Address,omitempty" xml:"Address,omitempty"`
-	ResourceGroupId              *string                                                            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ListenerPortsAndProtocal     *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocal `json:"ListenerPortsAndProtocal,omitempty" xml:"ListenerPortsAndProtocal,omitempty" type:"Struct"`
-	BackendServers               *DescribeLoadBalancerAttributeResponseBodyBackendServers           `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
-	LoadBalancerSpec             *string                                                            `json:"LoadBalancerSpec,omitempty" xml:"LoadBalancerSpec,omitempty"`
-	ModificationProtectionReason *string                                                            `json:"ModificationProtectionReason,omitempty" xml:"ModificationProtectionReason,omitempty"`
-	ListenerPorts                *DescribeLoadBalancerAttributeResponseBodyListenerPorts            `json:"ListenerPorts,omitempty" xml:"ListenerPorts,omitempty" type:"Struct"`
-	RequestId                    *string                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	VSwitchId                    *string                                                            `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	RenewalStatus                *string                                                            `json:"RenewalStatus,omitempty" xml:"RenewalStatus,omitempty"`
-	PayType                      *string                                                            `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	InternetChargeType           *string                                                            `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
 	VpcId                        *string                                                            `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	DeleteProtection             *string                                                            `json:"DeleteProtection,omitempty" xml:"DeleteProtection,omitempty"`
-	EndTimeStamp                 *int64                                                             `json:"EndTimeStamp,omitempty" xml:"EndTimeStamp,omitempty"`
-	LoadBalancerStatus           *string                                                            `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
-	AutoReleaseTime              *int64                                                             `json:"AutoReleaseTime,omitempty" xml:"AutoReleaseTime,omitempty"`
-	RenewalDuration              *int32                                                             `json:"RenewalDuration,omitempty" xml:"RenewalDuration,omitempty"`
-	EndTime                      *string                                                            `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	AddressIPVersion             *string                                                            `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
-	LoadBalancerId               *string                                                            `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	ListenerPortsAndProtocol     *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocol `json:"ListenerPortsAndProtocol,omitempty" xml:"ListenerPortsAndProtocol,omitempty" type:"Struct"`
-	ModificationProtectionStatus *string                                                            `json:"ModificationProtectionStatus,omitempty" xml:"ModificationProtectionStatus,omitempty"`
-	NetworkType                  *string                                                            `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	Bandwidth                    *int32                                                             `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	MasterZoneId                 *string                                                            `json:"MasterZoneId,omitempty" xml:"MasterZoneId,omitempty"`
-	CreateTime                   *string                                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	RenewalCycUnit               *string                                                            `json:"RenewalCycUnit,omitempty" xml:"RenewalCycUnit,omitempty"`
-	SlaveZoneId                  *string                                                            `json:"SlaveZoneId,omitempty" xml:"SlaveZoneId,omitempty"`
-	RegionIdAlias                *string                                                            `json:"RegionIdAlias,omitempty" xml:"RegionIdAlias,omitempty"`
-	LoadBalancerName             *string                                                            `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
-	RegionId                     *string                                                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	AddressType                  *string                                                            `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
 	CreateTimeStamp              *int64                                                             `json:"CreateTimeStamp,omitempty" xml:"CreateTimeStamp,omitempty"`
+	CreateTime                   *string                                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	LoadBalancerId               *string                                                            `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	PayType                      *string                                                            `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	AddressType                  *string                                                            `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	NetworkType                  *string                                                            `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	AddressIPVersion             *string                                                            `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
+	RenewalCycUnit               *string                                                            `json:"RenewalCycUnit,omitempty" xml:"RenewalCycUnit,omitempty"`
+	RequestId                    *string                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Bandwidth                    *int32                                                             `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	LoadBalancerName             *string                                                            `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
+	Address                      *string                                                            `json:"Address,omitempty" xml:"Address,omitempty"`
+	SlaveZoneId                  *string                                                            `json:"SlaveZoneId,omitempty" xml:"SlaveZoneId,omitempty"`
+	EndTimeStamp                 *int64                                                             `json:"EndTimeStamp,omitempty" xml:"EndTimeStamp,omitempty"`
+	MasterZoneId                 *string                                                            `json:"MasterZoneId,omitempty" xml:"MasterZoneId,omitempty"`
+	LoadBalancerSpec             *string                                                            `json:"LoadBalancerSpec,omitempty" xml:"LoadBalancerSpec,omitempty"`
+	AutoReleaseTime              *int64                                                             `json:"AutoReleaseTime,omitempty" xml:"AutoReleaseTime,omitempty"`
+	ModificationProtectionReason *string                                                            `json:"ModificationProtectionReason,omitempty" xml:"ModificationProtectionReason,omitempty"`
+	RegionId                     *string                                                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ModificationProtectionStatus *string                                                            `json:"ModificationProtectionStatus,omitempty" xml:"ModificationProtectionStatus,omitempty"`
+	EndTime                      *string                                                            `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	VSwitchId                    *string                                                            `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	LoadBalancerStatus           *string                                                            `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
+	ResourceGroupId              *string                                                            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	InternetChargeType           *string                                                            `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	DeleteProtection             *string                                                            `json:"DeleteProtection,omitempty" xml:"DeleteProtection,omitempty"`
+	RegionIdAlias                *string                                                            `json:"RegionIdAlias,omitempty" xml:"RegionIdAlias,omitempty"`
+	RenewalStatus                *string                                                            `json:"RenewalStatus,omitempty" xml:"RenewalStatus,omitempty"`
+	RenewalDuration              *int32                                                             `json:"RenewalDuration,omitempty" xml:"RenewalDuration,omitempty"`
+	ListenerPorts                *DescribeLoadBalancerAttributeResponseBodyListenerPorts            `json:"ListenerPorts,omitempty" xml:"ListenerPorts,omitempty" type:"Struct"`
+	ListenerPortsAndProtocal     *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocal `json:"ListenerPortsAndProtocal,omitempty" xml:"ListenerPortsAndProtocal,omitempty" type:"Struct"`
+	ListenerPortsAndProtocol     *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocol `json:"ListenerPortsAndProtocol,omitempty" xml:"ListenerPortsAndProtocol,omitempty" type:"Struct"`
+	BackendServers               *DescribeLoadBalancerAttributeResponseBodyBackendServers           `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
 }
 
 func (s DescribeLoadBalancerAttributeResponseBody) String() string {
@@ -5705,133 +4991,13 @@ func (s DescribeLoadBalancerAttributeResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeLoadBalancerAttributeResponseBody) SetAddress(v string) *DescribeLoadBalancerAttributeResponseBody {
-	s.Address = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerAttributeResponseBody) SetResourceGroupId(v string) *DescribeLoadBalancerAttributeResponseBody {
-	s.ResourceGroupId = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerAttributeResponseBody) SetListenerPortsAndProtocal(v *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocal) *DescribeLoadBalancerAttributeResponseBody {
-	s.ListenerPortsAndProtocal = v
-	return s
-}
-
-func (s *DescribeLoadBalancerAttributeResponseBody) SetBackendServers(v *DescribeLoadBalancerAttributeResponseBodyBackendServers) *DescribeLoadBalancerAttributeResponseBody {
-	s.BackendServers = v
-	return s
-}
-
-func (s *DescribeLoadBalancerAttributeResponseBody) SetLoadBalancerSpec(v string) *DescribeLoadBalancerAttributeResponseBody {
-	s.LoadBalancerSpec = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerAttributeResponseBody) SetModificationProtectionReason(v string) *DescribeLoadBalancerAttributeResponseBody {
-	s.ModificationProtectionReason = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerAttributeResponseBody) SetListenerPorts(v *DescribeLoadBalancerAttributeResponseBodyListenerPorts) *DescribeLoadBalancerAttributeResponseBody {
-	s.ListenerPorts = v
-	return s
-}
-
-func (s *DescribeLoadBalancerAttributeResponseBody) SetRequestId(v string) *DescribeLoadBalancerAttributeResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerAttributeResponseBody) SetVSwitchId(v string) *DescribeLoadBalancerAttributeResponseBody {
-	s.VSwitchId = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerAttributeResponseBody) SetRenewalStatus(v string) *DescribeLoadBalancerAttributeResponseBody {
-	s.RenewalStatus = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerAttributeResponseBody) SetPayType(v string) *DescribeLoadBalancerAttributeResponseBody {
-	s.PayType = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerAttributeResponseBody) SetInternetChargeType(v string) *DescribeLoadBalancerAttributeResponseBody {
-	s.InternetChargeType = &v
-	return s
-}
-
 func (s *DescribeLoadBalancerAttributeResponseBody) SetVpcId(v string) *DescribeLoadBalancerAttributeResponseBody {
 	s.VpcId = &v
 	return s
 }
 
-func (s *DescribeLoadBalancerAttributeResponseBody) SetDeleteProtection(v string) *DescribeLoadBalancerAttributeResponseBody {
-	s.DeleteProtection = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerAttributeResponseBody) SetEndTimeStamp(v int64) *DescribeLoadBalancerAttributeResponseBody {
-	s.EndTimeStamp = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerAttributeResponseBody) SetLoadBalancerStatus(v string) *DescribeLoadBalancerAttributeResponseBody {
-	s.LoadBalancerStatus = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerAttributeResponseBody) SetAutoReleaseTime(v int64) *DescribeLoadBalancerAttributeResponseBody {
-	s.AutoReleaseTime = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerAttributeResponseBody) SetRenewalDuration(v int32) *DescribeLoadBalancerAttributeResponseBody {
-	s.RenewalDuration = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerAttributeResponseBody) SetEndTime(v string) *DescribeLoadBalancerAttributeResponseBody {
-	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerAttributeResponseBody) SetAddressIPVersion(v string) *DescribeLoadBalancerAttributeResponseBody {
-	s.AddressIPVersion = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerAttributeResponseBody) SetLoadBalancerId(v string) *DescribeLoadBalancerAttributeResponseBody {
-	s.LoadBalancerId = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerAttributeResponseBody) SetListenerPortsAndProtocol(v *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocol) *DescribeLoadBalancerAttributeResponseBody {
-	s.ListenerPortsAndProtocol = v
-	return s
-}
-
-func (s *DescribeLoadBalancerAttributeResponseBody) SetModificationProtectionStatus(v string) *DescribeLoadBalancerAttributeResponseBody {
-	s.ModificationProtectionStatus = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerAttributeResponseBody) SetNetworkType(v string) *DescribeLoadBalancerAttributeResponseBody {
-	s.NetworkType = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerAttributeResponseBody) SetBandwidth(v int32) *DescribeLoadBalancerAttributeResponseBody {
-	s.Bandwidth = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerAttributeResponseBody) SetMasterZoneId(v string) *DescribeLoadBalancerAttributeResponseBody {
-	s.MasterZoneId = &v
+func (s *DescribeLoadBalancerAttributeResponseBody) SetCreateTimeStamp(v int64) *DescribeLoadBalancerAttributeResponseBody {
+	s.CreateTimeStamp = &v
 	return s
 }
 
@@ -5840,28 +5006,13 @@ func (s *DescribeLoadBalancerAttributeResponseBody) SetCreateTime(v string) *Des
 	return s
 }
 
-func (s *DescribeLoadBalancerAttributeResponseBody) SetRenewalCycUnit(v string) *DescribeLoadBalancerAttributeResponseBody {
-	s.RenewalCycUnit = &v
+func (s *DescribeLoadBalancerAttributeResponseBody) SetLoadBalancerId(v string) *DescribeLoadBalancerAttributeResponseBody {
+	s.LoadBalancerId = &v
 	return s
 }
 
-func (s *DescribeLoadBalancerAttributeResponseBody) SetSlaveZoneId(v string) *DescribeLoadBalancerAttributeResponseBody {
-	s.SlaveZoneId = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerAttributeResponseBody) SetRegionIdAlias(v string) *DescribeLoadBalancerAttributeResponseBody {
-	s.RegionIdAlias = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerAttributeResponseBody) SetLoadBalancerName(v string) *DescribeLoadBalancerAttributeResponseBody {
-	s.LoadBalancerName = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerAttributeResponseBody) SetRegionId(v string) *DescribeLoadBalancerAttributeResponseBody {
-	s.RegionId = &v
+func (s *DescribeLoadBalancerAttributeResponseBody) SetPayType(v string) *DescribeLoadBalancerAttributeResponseBody {
+	s.PayType = &v
 	return s
 }
 
@@ -5870,8 +5021,160 @@ func (s *DescribeLoadBalancerAttributeResponseBody) SetAddressType(v string) *De
 	return s
 }
 
-func (s *DescribeLoadBalancerAttributeResponseBody) SetCreateTimeStamp(v int64) *DescribeLoadBalancerAttributeResponseBody {
-	s.CreateTimeStamp = &v
+func (s *DescribeLoadBalancerAttributeResponseBody) SetNetworkType(v string) *DescribeLoadBalancerAttributeResponseBody {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetAddressIPVersion(v string) *DescribeLoadBalancerAttributeResponseBody {
+	s.AddressIPVersion = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetRenewalCycUnit(v string) *DescribeLoadBalancerAttributeResponseBody {
+	s.RenewalCycUnit = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetRequestId(v string) *DescribeLoadBalancerAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetBandwidth(v int32) *DescribeLoadBalancerAttributeResponseBody {
+	s.Bandwidth = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetLoadBalancerName(v string) *DescribeLoadBalancerAttributeResponseBody {
+	s.LoadBalancerName = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetAddress(v string) *DescribeLoadBalancerAttributeResponseBody {
+	s.Address = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetSlaveZoneId(v string) *DescribeLoadBalancerAttributeResponseBody {
+	s.SlaveZoneId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetEndTimeStamp(v int64) *DescribeLoadBalancerAttributeResponseBody {
+	s.EndTimeStamp = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetMasterZoneId(v string) *DescribeLoadBalancerAttributeResponseBody {
+	s.MasterZoneId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetLoadBalancerSpec(v string) *DescribeLoadBalancerAttributeResponseBody {
+	s.LoadBalancerSpec = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetAutoReleaseTime(v int64) *DescribeLoadBalancerAttributeResponseBody {
+	s.AutoReleaseTime = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetModificationProtectionReason(v string) *DescribeLoadBalancerAttributeResponseBody {
+	s.ModificationProtectionReason = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetRegionId(v string) *DescribeLoadBalancerAttributeResponseBody {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetModificationProtectionStatus(v string) *DescribeLoadBalancerAttributeResponseBody {
+	s.ModificationProtectionStatus = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetEndTime(v string) *DescribeLoadBalancerAttributeResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetVSwitchId(v string) *DescribeLoadBalancerAttributeResponseBody {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetLoadBalancerStatus(v string) *DescribeLoadBalancerAttributeResponseBody {
+	s.LoadBalancerStatus = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetResourceGroupId(v string) *DescribeLoadBalancerAttributeResponseBody {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetInternetChargeType(v string) *DescribeLoadBalancerAttributeResponseBody {
+	s.InternetChargeType = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetDeleteProtection(v string) *DescribeLoadBalancerAttributeResponseBody {
+	s.DeleteProtection = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetRegionIdAlias(v string) *DescribeLoadBalancerAttributeResponseBody {
+	s.RegionIdAlias = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetRenewalStatus(v string) *DescribeLoadBalancerAttributeResponseBody {
+	s.RenewalStatus = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetRenewalDuration(v int32) *DescribeLoadBalancerAttributeResponseBody {
+	s.RenewalDuration = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetListenerPorts(v *DescribeLoadBalancerAttributeResponseBodyListenerPorts) *DescribeLoadBalancerAttributeResponseBody {
+	s.ListenerPorts = v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetListenerPortsAndProtocal(v *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocal) *DescribeLoadBalancerAttributeResponseBody {
+	s.ListenerPortsAndProtocal = v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetListenerPortsAndProtocol(v *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocol) *DescribeLoadBalancerAttributeResponseBody {
+	s.ListenerPortsAndProtocol = v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetBackendServers(v *DescribeLoadBalancerAttributeResponseBodyBackendServers) *DescribeLoadBalancerAttributeResponseBody {
+	s.BackendServers = v
+	return s
+}
+
+type DescribeLoadBalancerAttributeResponseBodyListenerPorts struct {
+	ListenerPort []*int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty" type:"Repeated"`
+}
+
+func (s DescribeLoadBalancerAttributeResponseBodyListenerPorts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerAttributeResponseBodyListenerPorts) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBodyListenerPorts) SetListenerPort(v []*int32) *DescribeLoadBalancerAttributeResponseBodyListenerPorts {
+	s.ListenerPort = v
 	return s
 }
 
@@ -5912,6 +5215,64 @@ func (s *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocalListen
 
 func (s *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocalListenerPortAndProtocal) SetListenerPort(v int32) *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocalListenerPortAndProtocal {
 	s.ListenerPort = &v
+	return s
+}
+
+type DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocol struct {
+	ListenerPortAndProtocol []*DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol `json:"ListenerPortAndProtocol,omitempty" xml:"ListenerPortAndProtocol,omitempty" type:"Repeated"`
+}
+
+func (s DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocol) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocol) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocol) SetListenerPortAndProtocol(v []*DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol) *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocol {
+	s.ListenerPortAndProtocol = v
+	return s
+}
+
+type DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol struct {
+	ListenerPort     *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
+	ListenerForward  *string `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ForwardPort      *int32  `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
+}
+
+func (s DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol) SetListenerPort(v int32) *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol {
+	s.ListenerPort = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol) SetListenerProtocol(v string) *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol {
+	s.ListenerProtocol = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol) SetListenerForward(v string) *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol {
+	s.ListenerForward = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol) SetDescription(v string) *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol) SetForwardPort(v int32) *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol {
+	s.ForwardPort = &v
 	return s
 }
 
@@ -5967,81 +5328,6 @@ func (s *DescribeLoadBalancerAttributeResponseBodyBackendServersBackendServer) S
 	return s
 }
 
-type DescribeLoadBalancerAttributeResponseBodyListenerPorts struct {
-	ListenerPort []*int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty" type:"Repeated"`
-}
-
-func (s DescribeLoadBalancerAttributeResponseBodyListenerPorts) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLoadBalancerAttributeResponseBodyListenerPorts) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLoadBalancerAttributeResponseBodyListenerPorts) SetListenerPort(v []*int32) *DescribeLoadBalancerAttributeResponseBodyListenerPorts {
-	s.ListenerPort = v
-	return s
-}
-
-type DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocol struct {
-	ListenerPortAndProtocol []*DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol `json:"ListenerPortAndProtocol,omitempty" xml:"ListenerPortAndProtocol,omitempty" type:"Repeated"`
-}
-
-func (s DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocol) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocol) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocol) SetListenerPortAndProtocol(v []*DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol) *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocol {
-	s.ListenerPortAndProtocol = v
-	return s
-}
-
-type DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol struct {
-	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
-	ListenerForward  *string `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ListenerPort     *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	ForwardPort      *int32  `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
-}
-
-func (s DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol) SetListenerProtocol(v string) *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol {
-	s.ListenerProtocol = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol) SetListenerForward(v string) *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol {
-	s.ListenerForward = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol) SetDescription(v string) *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol {
-	s.Description = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol) SetListenerPort(v int32) *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol {
-	s.ListenerPort = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol) SetForwardPort(v int32) *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol {
-	s.ForwardPort = &v
-	return s
-}
-
 type DescribeLoadBalancerAttributeResponse struct {
 	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	Body    *DescribeLoadBalancerAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -6073,8 +5359,6 @@ type DescribeLoadBalancerHTTPListenerAttributeRequest struct {
 	LoadBalancerId       *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	ListenerPort         *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s DescribeLoadBalancerHTTPListenerAttributeRequest) String() string {
@@ -6120,52 +5404,42 @@ func (s *DescribeLoadBalancerHTTPListenerAttributeRequest) SetOwnerAccount(v str
 	return s
 }
 
-func (s *DescribeLoadBalancerHTTPListenerAttributeRequest) SetAccessKeyId(v string) *DescribeLoadBalancerHTTPListenerAttributeRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerHTTPListenerAttributeRequest) SetTags(v string) *DescribeLoadBalancerHTTPListenerAttributeRequest {
-	s.Tags = &v
-	return s
-}
-
 type DescribeLoadBalancerHTTPListenerAttributeResponseBody struct {
-	CookieTimeout          *int32                                                      `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
+	AclType                *string                                                     `json:"AclType,omitempty" xml:"AclType,omitempty"`
 	VServerGroupId         *string                                                     `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
-	Description            *string                                                     `json:"Description,omitempty" xml:"Description,omitempty"`
-	UnhealthyThreshold     *int32                                                      `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
-	HealthCheckURI         *string                                                     `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
-	Scheduler              *string                                                     `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	HealthCheck            *string                                                     `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
-	IdleTimeout            *int32                                                      `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	BackendServerPort      *int32                                                      `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
-	XForwardedFor_SLBID    *string                                                     `json:"XForwardedFor_SLBID,omitempty" xml:"XForwardedFor_SLBID,omitempty"`
-	HealthCheckConnectPort *int32                                                      `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	Bandwidth              *int32                                                      `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	SecurityStatus         *string                                                     `json:"SecurityStatus,omitempty" xml:"SecurityStatus,omitempty"`
-	Gzip                   *string                                                     `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
-	StickySessionType      *string                                                     `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
-	XForwardedFor_SLBIP    *string                                                     `json:"XForwardedFor_SLBIP,omitempty" xml:"XForwardedFor_SLBIP,omitempty"`
-	HealthCheckHttpCode    *string                                                     `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
 	Status                 *string                                                     `json:"Status,omitempty" xml:"Status,omitempty"`
 	Cookie                 *string                                                     `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
+	Gzip                   *string                                                     `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
+	HealthCheckConnectPort *int32                                                      `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	RequestId              *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Description            *string                                                     `json:"Description,omitempty" xml:"Description,omitempty"`
+	Bandwidth              *int32                                                      `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	HealthCheckTimeout     *int32                                                      `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	AclStatus              *string                                                     `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
+	BackendServerPort      *int32                                                      `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
+	CookieTimeout          *int32                                                      `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
+	HealthCheckDomain      *string                                                     `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	UnhealthyThreshold     *int32                                                      `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	ForwardPort            *int32                                                      `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
+	XForwardedFor_SLBID    *string                                                     `json:"XForwardedFor_SLBID,omitempty" xml:"XForwardedFor_SLBID,omitempty"`
+	SecurityStatus         *string                                                     `json:"SecurityStatus,omitempty" xml:"SecurityStatus,omitempty"`
+	HealthCheckHttpCode    *string                                                     `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	ListenerForward        *string                                                     `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
+	XForwardedFor          *string                                                     `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
+	IdleTimeout            *int32                                                      `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
 	RequestTimeout         *int32                                                      `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
 	ListenerPort           *int32                                                      `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	HealthCheckInterval    *int32                                                      `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	RequestId              *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	HealthCheckURI         *string                                                     `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	StickySessionType      *string                                                     `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
 	AclId                  *string                                                     `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	HealthCheckTimeout     *int32                                                      `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
-	Rules                  *DescribeLoadBalancerHTTPListenerAttributeResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
-	ListenerForward        *string                                                     `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
-	StickySession          *string                                                     `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
-	AclStatus              *string                                                     `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
-	ForwardPort            *int32                                                      `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
+	Scheduler              *string                                                     `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
 	HealthyThreshold       *int32                                                      `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	XForwardedFor          *string                                                     `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
-	HealthCheckDomain      *string                                                     `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	AclType                *string                                                     `json:"AclType,omitempty" xml:"AclType,omitempty"`
 	XForwardedFor_proto    *string                                                     `json:"XForwardedFor_proto,omitempty" xml:"XForwardedFor_proto,omitempty"`
+	XForwardedFor_SLBIP    *string                                                     `json:"XForwardedFor_SLBIP,omitempty" xml:"XForwardedFor_SLBIP,omitempty"`
+	StickySession          *string                                                     `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
+	HealthCheck            *string                                                     `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	Rules                  *DescribeLoadBalancerHTTPListenerAttributeResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
 }
 
 func (s DescribeLoadBalancerHTTPListenerAttributeResponseBody) String() string {
@@ -6176,88 +5450,13 @@ func (s DescribeLoadBalancerHTTPListenerAttributeResponseBody) GoString() string
 	return s.String()
 }
 
-func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetCookieTimeout(v int32) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
-	s.CookieTimeout = &v
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetAclType(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.AclType = &v
 	return s
 }
 
 func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetVServerGroupId(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
 	s.VServerGroupId = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetDescription(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
-	s.Description = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetUnhealthyThreshold(v int32) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
-	s.UnhealthyThreshold = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetHealthCheckURI(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
-	s.HealthCheckURI = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetScheduler(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
-	s.Scheduler = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetHealthCheck(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
-	s.HealthCheck = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetIdleTimeout(v int32) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
-	s.IdleTimeout = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetBackendServerPort(v int32) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
-	s.BackendServerPort = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetXForwardedFor_SLBID(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
-	s.XForwardedFor_SLBID = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetHealthCheckConnectPort(v int32) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
-	s.HealthCheckConnectPort = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetBandwidth(v int32) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
-	s.Bandwidth = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetSecurityStatus(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
-	s.SecurityStatus = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetGzip(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
-	s.Gzip = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetStickySessionType(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
-	s.StickySessionType = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetXForwardedFor_SLBIP(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
-	s.XForwardedFor_SLBIP = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetHealthCheckHttpCode(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
-	s.HealthCheckHttpCode = &v
 	return s
 }
 
@@ -6268,6 +5467,96 @@ func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetStatus(v stri
 
 func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetCookie(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
 	s.Cookie = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetGzip(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.Gzip = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetHealthCheckConnectPort(v int32) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.HealthCheckConnectPort = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetRequestId(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetDescription(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetBandwidth(v int32) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.Bandwidth = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetHealthCheckTimeout(v int32) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.HealthCheckTimeout = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetAclStatus(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.AclStatus = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetBackendServerPort(v int32) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.BackendServerPort = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetCookieTimeout(v int32) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.CookieTimeout = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetHealthCheckDomain(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.HealthCheckDomain = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetUnhealthyThreshold(v int32) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.UnhealthyThreshold = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetForwardPort(v int32) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.ForwardPort = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetXForwardedFor_SLBID(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.XForwardedFor_SLBID = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetSecurityStatus(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.SecurityStatus = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetHealthCheckHttpCode(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.HealthCheckHttpCode = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetListenerForward(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.ListenerForward = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetXForwardedFor(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.XForwardedFor = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetIdleTimeout(v int32) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.IdleTimeout = &v
 	return s
 }
 
@@ -6286,8 +5575,13 @@ func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetHealthCheckIn
 	return s
 }
 
-func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetRequestId(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
-	s.RequestId = &v
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetHealthCheckURI(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.HealthCheckURI = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetStickySessionType(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.StickySessionType = &v
 	return s
 }
 
@@ -6296,33 +5590,8 @@ func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetAclId(v strin
 	return s
 }
 
-func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetHealthCheckTimeout(v int32) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
-	s.HealthCheckTimeout = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetRules(v *DescribeLoadBalancerHTTPListenerAttributeResponseBodyRules) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
-	s.Rules = v
-	return s
-}
-
-func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetListenerForward(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
-	s.ListenerForward = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetStickySession(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
-	s.StickySession = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetAclStatus(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
-	s.AclStatus = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetForwardPort(v int32) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
-	s.ForwardPort = &v
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetScheduler(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.Scheduler = &v
 	return s
 }
 
@@ -6331,23 +5600,28 @@ func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetHealthyThresh
 	return s
 }
 
-func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetXForwardedFor(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
-	s.XForwardedFor = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetHealthCheckDomain(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
-	s.HealthCheckDomain = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetAclType(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
-	s.AclType = &v
-	return s
-}
-
 func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetXForwardedFor_proto(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
 	s.XForwardedFor_proto = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetXForwardedFor_SLBIP(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.XForwardedFor_SLBIP = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetStickySession(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.StickySession = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetHealthCheck(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.HealthCheck = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetRules(v *DescribeLoadBalancerHTTPListenerAttributeResponseBodyRules) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.Rules = v
 	return s
 }
 
@@ -6370,8 +5644,8 @@ func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBodyRules) SetRule(v [
 
 type DescribeLoadBalancerHTTPListenerAttributeResponseBodyRulesRule struct {
 	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
-	Domain         *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	Url            *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	Domain         *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	RuleName       *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	RuleId         *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
@@ -6389,13 +5663,13 @@ func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBodyRulesRule) SetVSer
 	return s
 }
 
-func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBodyRulesRule) SetDomain(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBodyRulesRule {
-	s.Domain = &v
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBodyRulesRule) SetUrl(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBodyRulesRule {
+	s.Url = &v
 	return s
 }
 
-func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBodyRulesRule) SetUrl(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBodyRulesRule {
-	s.Url = &v
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBodyRulesRule) SetDomain(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBodyRulesRule {
+	s.Domain = &v
 	return s
 }
 
@@ -6440,8 +5714,6 @@ type DescribeLoadBalancerHTTPSListenerAttributeRequest struct {
 	LoadBalancerId       *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	ListenerPort         *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s DescribeLoadBalancerHTTPSListenerAttributeRequest) String() string {
@@ -6487,61 +5759,51 @@ func (s *DescribeLoadBalancerHTTPSListenerAttributeRequest) SetOwnerAccount(v st
 	return s
 }
 
-func (s *DescribeLoadBalancerHTTPSListenerAttributeRequest) SetAccessKeyId(v string) *DescribeLoadBalancerHTTPSListenerAttributeRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerHTTPSListenerAttributeRequest) SetTags(v string) *DescribeLoadBalancerHTTPSListenerAttributeRequest {
-	s.Tags = &v
-	return s
-}
-
 type DescribeLoadBalancerHTTPSListenerAttributeResponseBody struct {
-	UnhealthyThreshold                   *int32                                                                  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
-	HealthCheckURI                       *string                                                                 `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
-	HealthCheck                          *string                                                                 `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
-	DomainExtensions                     *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensions `json:"DomainExtensions,omitempty" xml:"DomainExtensions,omitempty" type:"Struct"`
+	AclType                              *string                                                                 `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	XForwardedFor_ClientCertClientVerify *string                                                                 `json:"XForwardedFor_ClientCertClientVerify,omitempty" xml:"XForwardedFor_ClientCertClientVerify,omitempty"`
+	CACertificateId                      *string                                                                 `json:"CACertificateId,omitempty" xml:"CACertificateId,omitempty"`
+	RequestId                            *string                                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	HealthCheckConnectPort               *int32                                                                  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
 	BackendServerPort                    *int32                                                                  `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
+	CookieTimeout                        *int32                                                                  `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
+	HealthCheckDomain                    *string                                                                 `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	XForwardedFor                        *string                                                                 `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
+	XForwardedFor_ClientCertFingerprint  *string                                                                 `json:"XForwardedFor_ClientCertFingerprint,omitempty" xml:"XForwardedFor_ClientCertFingerprint,omitempty"`
+	IdleTimeout                          *int32                                                                  `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	ListenerPort                         *int32                                                                  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	HealthCheckURI                       *string                                                                 `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
 	XForwardedFor_SLBPORT                *string                                                                 `json:"XForwardedFor_SLBPORT,omitempty" xml:"XForwardedFor_SLBPORT,omitempty"`
 	StickySessionType                    *string                                                                 `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
-	Status                               *string                                                                 `json:"Status,omitempty" xml:"Status,omitempty"`
-	Cookie                               *string                                                                 `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
-	RequestTimeout                       *int32                                                                  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	Scheduler                            *string                                                                 `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	XForwardedFor_proto                  *string                                                                 `json:"XForwardedFor_proto,omitempty" xml:"XForwardedFor_proto,omitempty"`
 	TLSCipherPolicy                      *string                                                                 `json:"TLSCipherPolicy,omitempty" xml:"TLSCipherPolicy,omitempty"`
-	HealthCheckInterval                  *int32                                                                  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	RequestId                            *string                                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	CACertificateId                      *string                                                                 `json:"CACertificateId,omitempty" xml:"CACertificateId,omitempty"`
+	Status                               *string                                                                 `json:"Status,omitempty" xml:"Status,omitempty"`
+	VServerGroupId                       *string                                                                 `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
+	XForwardedFor_ClientSrcPort          *string                                                                 `json:"XForwardedFor_ClientSrcPort,omitempty" xml:"XForwardedFor_ClientSrcPort,omitempty"`
+	Cookie                               *string                                                                 `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
+	Gzip                                 *string                                                                 `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
+	EnableHttp2                          *string                                                                 `json:"EnableHttp2,omitempty" xml:"EnableHttp2,omitempty"`
+	Bandwidth                            *int32                                                                  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	Description                          *string                                                                 `json:"Description,omitempty" xml:"Description,omitempty"`
 	HealthCheckTimeout                   *int32                                                                  `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
 	AclStatus                            *string                                                                 `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
-	HealthyThreshold                     *int32                                                                  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	HealthCheckDomain                    *string                                                                 `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	AclType                              *string                                                                 `json:"AclType,omitempty" xml:"AclType,omitempty"`
-	XForwardedFor_proto                  *string                                                                 `json:"XForwardedFor_proto,omitempty" xml:"XForwardedFor_proto,omitempty"`
-	EnableHttp2                          *string                                                                 `json:"EnableHttp2,omitempty" xml:"EnableHttp2,omitempty"`
-	CookieTimeout                        *int32                                                                  `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
-	VServerGroupId                       *string                                                                 `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
-	Description                          *string                                                                 `json:"Description,omitempty" xml:"Description,omitempty"`
-	Scheduler                            *string                                                                 `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	IdleTimeout                          *int32                                                                  `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	UnhealthyThreshold                   *int32                                                                  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 	XForwardedFor_SLBID                  *string                                                                 `json:"XForwardedFor_SLBID,omitempty" xml:"XForwardedFor_SLBID,omitempty"`
-	HealthCheckConnectPort               *int32                                                                  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	Bandwidth                            *int32                                                                  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	SecurityStatus                       *string                                                                 `json:"SecurityStatus,omitempty" xml:"SecurityStatus,omitempty"`
-	Gzip                                 *string                                                                 `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
-	ServerCertificateId                  *string                                                                 `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
-	XForwardedFor_SLBIP                  *string                                                                 `json:"XForwardedFor_SLBIP,omitempty" xml:"XForwardedFor_SLBIP,omitempty"`
-	HealthCheckHttpCode                  *string                                                                 `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
-	ListenerPort                         *int32                                                                  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	XForwardedFor_ClientCertSubjectDN    *string                                                                 `json:"XForwardedFor_ClientCertSubjectDN,omitempty" xml:"XForwardedFor_ClientCertSubjectDN,omitempty"`
+	SecurityStatus                       *string                                                                 `json:"SecurityStatus,omitempty" xml:"SecurityStatus,omitempty"`
+	HealthCheckHttpCode                  *string                                                                 `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	RequestTimeout                       *int32                                                                  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	HealthCheckInterval                  *int32                                                                  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	ServerCertificateId                  *string                                                                 `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
 	AclId                                *string                                                                 `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	Rules                                *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRules            `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
 	XForwardedFor_ClientCertIssuerDN     *string                                                                 `json:"XForwardedFor_ClientCertIssuerDN,omitempty" xml:"XForwardedFor_ClientCertIssuerDN,omitempty"`
+	HealthyThreshold                     *int32                                                                  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	XForwardedFor_SLBIP                  *string                                                                 `json:"XForwardedFor_SLBIP,omitempty" xml:"XForwardedFor_SLBIP,omitempty"`
 	StickySession                        *string                                                                 `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
-	XForwardedFor                        *string                                                                 `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
-	XForwardedFor_ClientSrcPort          *string                                                                 `json:"XForwardedFor_ClientSrcPort,omitempty" xml:"XForwardedFor_ClientSrcPort,omitempty"`
-	XForwardedFor_ClientCertClientVerify *string                                                                 `json:"XForwardedFor_ClientCertClientVerify,omitempty" xml:"XForwardedFor_ClientCertClientVerify,omitempty"`
-	XForwardedFor_ClientCertFingerprint  *string                                                                 `json:"XForwardedFor_ClientCertFingerprint,omitempty" xml:"XForwardedFor_ClientCertFingerprint,omitempty"`
+	HealthCheck                          *string                                                                 `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	Rules                                *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRules            `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
+	DomainExtensions                     *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensions `json:"DomainExtensions,omitempty" xml:"DomainExtensions,omitempty" type:"Struct"`
 }
 
 func (s DescribeLoadBalancerHTTPSListenerAttributeResponseBody) String() string {
@@ -6552,28 +5814,68 @@ func (s DescribeLoadBalancerHTTPSListenerAttributeResponseBody) GoString() strin
 	return s.String()
 }
 
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetUnhealthyThreshold(v int32) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
-	s.UnhealthyThreshold = &v
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetAclType(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.AclType = &v
 	return s
 }
 
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetHealthCheckURI(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
-	s.HealthCheckURI = &v
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetXForwardedFor_ClientCertClientVerify(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.XForwardedFor_ClientCertClientVerify = &v
 	return s
 }
 
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetHealthCheck(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
-	s.HealthCheck = &v
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetCACertificateId(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.CACertificateId = &v
 	return s
 }
 
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetDomainExtensions(v *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensions) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
-	s.DomainExtensions = v
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetRequestId(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetHealthCheckConnectPort(v int32) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.HealthCheckConnectPort = &v
 	return s
 }
 
 func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetBackendServerPort(v int32) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
 	s.BackendServerPort = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetCookieTimeout(v int32) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.CookieTimeout = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetHealthCheckDomain(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.HealthCheckDomain = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetXForwardedFor(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.XForwardedFor = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetXForwardedFor_ClientCertFingerprint(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.XForwardedFor_ClientCertFingerprint = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetIdleTimeout(v int32) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.IdleTimeout = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetListenerPort(v int32) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.ListenerPort = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetHealthCheckURI(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.HealthCheckURI = &v
 	return s
 }
 
@@ -6587,18 +5889,13 @@ func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetStickySessio
 	return s
 }
 
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetStatus(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
-	s.Status = &v
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetScheduler(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.Scheduler = &v
 	return s
 }
 
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetCookie(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
-	s.Cookie = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetRequestTimeout(v int32) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
-	s.RequestTimeout = &v
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetXForwardedFor_proto(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.XForwardedFor_proto = &v
 	return s
 }
 
@@ -6607,18 +5904,43 @@ func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetTLSCipherPol
 	return s
 }
 
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetHealthCheckInterval(v int32) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
-	s.HealthCheckInterval = &v
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetStatus(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.Status = &v
 	return s
 }
 
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetRequestId(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
-	s.RequestId = &v
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetVServerGroupId(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.VServerGroupId = &v
 	return s
 }
 
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetCACertificateId(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
-	s.CACertificateId = &v
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetXForwardedFor_ClientSrcPort(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.XForwardedFor_ClientSrcPort = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetCookie(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.Cookie = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetGzip(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.Gzip = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetEnableHttp2(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.EnableHttp2 = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetBandwidth(v int32) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.Bandwidth = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetDescription(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.Description = &v
 	return s
 }
 
@@ -6632,53 +5954,8 @@ func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetAclStatus(v 
 	return s
 }
 
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetHealthyThreshold(v int32) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
-	s.HealthyThreshold = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetHealthCheckDomain(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
-	s.HealthCheckDomain = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetAclType(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
-	s.AclType = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetXForwardedFor_proto(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
-	s.XForwardedFor_proto = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetEnableHttp2(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
-	s.EnableHttp2 = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetCookieTimeout(v int32) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
-	s.CookieTimeout = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetVServerGroupId(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
-	s.VServerGroupId = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetDescription(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
-	s.Description = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetScheduler(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
-	s.Scheduler = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetIdleTimeout(v int32) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
-	s.IdleTimeout = &v
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetUnhealthyThreshold(v int32) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.UnhealthyThreshold = &v
 	return s
 }
 
@@ -6687,13 +5964,8 @@ func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetXForwardedFo
 	return s
 }
 
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetHealthCheckConnectPort(v int32) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
-	s.HealthCheckConnectPort = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetBandwidth(v int32) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
-	s.Bandwidth = &v
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetXForwardedFor_ClientCertSubjectDN(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.XForwardedFor_ClientCertSubjectDN = &v
 	return s
 }
 
@@ -6702,8 +5974,18 @@ func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetSecurityStat
 	return s
 }
 
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetGzip(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
-	s.Gzip = &v
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetHealthCheckHttpCode(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.HealthCheckHttpCode = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetRequestTimeout(v int32) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.RequestTimeout = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetHealthCheckInterval(v int32) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.HealthCheckInterval = &v
 	return s
 }
 
@@ -6712,33 +5994,8 @@ func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetServerCertif
 	return s
 }
 
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetXForwardedFor_SLBIP(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
-	s.XForwardedFor_SLBIP = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetHealthCheckHttpCode(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
-	s.HealthCheckHttpCode = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetListenerPort(v int32) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
-	s.ListenerPort = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetXForwardedFor_ClientCertSubjectDN(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
-	s.XForwardedFor_ClientCertSubjectDN = &v
-	return s
-}
-
 func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetAclId(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
 	s.AclId = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetRules(v *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRules) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
-	s.Rules = v
 	return s
 }
 
@@ -6747,74 +6004,33 @@ func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetXForwardedFo
 	return s
 }
 
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetHealthyThreshold(v int32) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.HealthyThreshold = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetXForwardedFor_SLBIP(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.XForwardedFor_SLBIP = &v
+	return s
+}
+
 func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetStickySession(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
 	s.StickySession = &v
 	return s
 }
 
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetXForwardedFor(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
-	s.XForwardedFor = &v
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetHealthCheck(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.HealthCheck = &v
 	return s
 }
 
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetXForwardedFor_ClientSrcPort(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
-	s.XForwardedFor_ClientSrcPort = &v
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetRules(v *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRules) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.Rules = v
 	return s
 }
 
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetXForwardedFor_ClientCertClientVerify(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
-	s.XForwardedFor_ClientCertClientVerify = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetXForwardedFor_ClientCertFingerprint(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
-	s.XForwardedFor_ClientCertFingerprint = &v
-	return s
-}
-
-type DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensions struct {
-	DomainExtension []*DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensionsDomainExtension `json:"DomainExtension,omitempty" xml:"DomainExtension,omitempty" type:"Repeated"`
-}
-
-func (s DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensions) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensions) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensions) SetDomainExtension(v []*DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensionsDomainExtension) *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensions {
-	s.DomainExtension = v
-	return s
-}
-
-type DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensionsDomainExtension struct {
-	Domain              *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	ServerCertificateId *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
-	DomainExtensionId   *string `json:"DomainExtensionId,omitempty" xml:"DomainExtensionId,omitempty"`
-}
-
-func (s DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensionsDomainExtension) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensionsDomainExtension) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensionsDomainExtension) SetDomain(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensionsDomainExtension {
-	s.Domain = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensionsDomainExtension) SetServerCertificateId(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensionsDomainExtension {
-	s.ServerCertificateId = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensionsDomainExtension) SetDomainExtensionId(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensionsDomainExtension {
-	s.DomainExtensionId = &v
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetDomainExtensions(v *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensions) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.DomainExtensions = v
 	return s
 }
 
@@ -6837,8 +6053,8 @@ func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRules) SetRule(v 
 
 type DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRulesRule struct {
 	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
-	Domain         *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	Url            *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	Domain         *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	RuleName       *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	RuleId         *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
@@ -6856,13 +6072,13 @@ func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRulesRule) SetVSe
 	return s
 }
 
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRulesRule) SetDomain(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRulesRule {
-	s.Domain = &v
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRulesRule) SetUrl(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRulesRule {
+	s.Url = &v
 	return s
 }
 
-func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRulesRule) SetUrl(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRulesRule {
-	s.Url = &v
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRulesRule) SetDomain(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRulesRule {
+	s.Domain = &v
 	return s
 }
 
@@ -6873,6 +6089,52 @@ func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRulesRule) SetRul
 
 func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRulesRule) SetRuleId(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRulesRule {
 	s.RuleId = &v
+	return s
+}
+
+type DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensions struct {
+	DomainExtension []*DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensionsDomainExtension `json:"DomainExtension,omitempty" xml:"DomainExtension,omitempty" type:"Repeated"`
+}
+
+func (s DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensions) SetDomainExtension(v []*DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensionsDomainExtension) *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensions {
+	s.DomainExtension = v
+	return s
+}
+
+type DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensionsDomainExtension struct {
+	ServerCertificateId *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
+	Domain              *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	DomainExtensionId   *string `json:"DomainExtensionId,omitempty" xml:"DomainExtensionId,omitempty"`
+}
+
+func (s DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensionsDomainExtension) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensionsDomainExtension) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensionsDomainExtension) SetServerCertificateId(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensionsDomainExtension {
+	s.ServerCertificateId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensionsDomainExtension) SetDomain(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensionsDomainExtension {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensionsDomainExtension) SetDomainExtensionId(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensionsDomainExtension {
+	s.DomainExtensionId = &v
 	return s
 }
 
@@ -6899,36 +6161,833 @@ func (s *DescribeLoadBalancerHTTPSListenerAttributeResponse) SetBody(v *Describe
 	return s
 }
 
+type DescribeLoadBalancerListenersRequest struct {
+	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	NextToken            *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	MaxResults           *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	ListenerProtocol     *string   `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
+	LoadBalancerId       []*string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty" type:"Repeated"`
+}
+
+func (s DescribeLoadBalancerListenersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerListenersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerListenersRequest) SetRegionId(v string) *DescribeLoadBalancerListenersRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersRequest) SetOwnerId(v int64) *DescribeLoadBalancerListenersRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersRequest) SetResourceOwnerAccount(v string) *DescribeLoadBalancerListenersRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersRequest) SetResourceOwnerId(v int64) *DescribeLoadBalancerListenersRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersRequest) SetOwnerAccount(v string) *DescribeLoadBalancerListenersRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersRequest) SetNextToken(v string) *DescribeLoadBalancerListenersRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersRequest) SetMaxResults(v int32) *DescribeLoadBalancerListenersRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersRequest) SetListenerProtocol(v string) *DescribeLoadBalancerListenersRequest {
+	s.ListenerProtocol = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersRequest) SetLoadBalancerId(v []*string) *DescribeLoadBalancerListenersRequest {
+	s.LoadBalancerId = v
+	return s
+}
+
+type DescribeLoadBalancerListenersResponseBody struct {
+	NextToken  *string                                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	MaxResults *int32                                                `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	Listeners  []*DescribeLoadBalancerListenersResponseBodyListeners `json:"Listeners,omitempty" xml:"Listeners,omitempty" type:"Repeated"`
+}
+
+func (s DescribeLoadBalancerListenersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerListenersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerListenersResponseBody) SetNextToken(v string) *DescribeLoadBalancerListenersResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBody) SetRequestId(v string) *DescribeLoadBalancerListenersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBody) SetTotalCount(v int32) *DescribeLoadBalancerListenersResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBody) SetMaxResults(v int32) *DescribeLoadBalancerListenersResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBody) SetListeners(v []*DescribeLoadBalancerListenersResponseBodyListeners) *DescribeLoadBalancerListenersResponseBody {
+	s.Listeners = v
+	return s
+}
+
+type DescribeLoadBalancerListenersResponseBodyListeners struct {
+	AclType             *string                                                                `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	Status              *string                                                                `json:"Status,omitempty" xml:"Status,omitempty"`
+	VServerGroupId      *string                                                                `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
+	ListenerProtocol    *string                                                                `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
+	LoadBalancerId      *string                                                                `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	ListenerPort        *int32                                                                 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	AclId               *string                                                                `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	Scheduler           *string                                                                `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	Bandwidth           *int32                                                                 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	Description         *string                                                                `json:"Description,omitempty" xml:"Description,omitempty"`
+	AclStatus           *string                                                                `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
+	BackendServerPort   *int32                                                                 `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
+	HTTPListenerConfig  *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig  `json:"HTTPListenerConfig,omitempty" xml:"HTTPListenerConfig,omitempty" type:"Struct"`
+	HTTPSListenerConfig *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig `json:"HTTPSListenerConfig,omitempty" xml:"HTTPSListenerConfig,omitempty" type:"Struct"`
+	TCPListenerConfig   *DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig   `json:"TCPListenerConfig,omitempty" xml:"TCPListenerConfig,omitempty" type:"Struct"`
+	UDPListenerConfig   *DescribeLoadBalancerListenersResponseBodyListenersUDPListenerConfig   `json:"UDPListenerConfig,omitempty" xml:"UDPListenerConfig,omitempty" type:"Struct"`
+}
+
+func (s DescribeLoadBalancerListenersResponseBodyListeners) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerListenersResponseBodyListeners) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListeners) SetAclType(v string) *DescribeLoadBalancerListenersResponseBodyListeners {
+	s.AclType = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListeners) SetStatus(v string) *DescribeLoadBalancerListenersResponseBodyListeners {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListeners) SetVServerGroupId(v string) *DescribeLoadBalancerListenersResponseBodyListeners {
+	s.VServerGroupId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListeners) SetListenerProtocol(v string) *DescribeLoadBalancerListenersResponseBodyListeners {
+	s.ListenerProtocol = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListeners) SetLoadBalancerId(v string) *DescribeLoadBalancerListenersResponseBodyListeners {
+	s.LoadBalancerId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListeners) SetListenerPort(v int32) *DescribeLoadBalancerListenersResponseBodyListeners {
+	s.ListenerPort = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListeners) SetAclId(v string) *DescribeLoadBalancerListenersResponseBodyListeners {
+	s.AclId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListeners) SetScheduler(v string) *DescribeLoadBalancerListenersResponseBodyListeners {
+	s.Scheduler = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListeners) SetBandwidth(v int32) *DescribeLoadBalancerListenersResponseBodyListeners {
+	s.Bandwidth = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListeners) SetDescription(v string) *DescribeLoadBalancerListenersResponseBodyListeners {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListeners) SetAclStatus(v string) *DescribeLoadBalancerListenersResponseBodyListeners {
+	s.AclStatus = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListeners) SetBackendServerPort(v int32) *DescribeLoadBalancerListenersResponseBodyListeners {
+	s.BackendServerPort = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListeners) SetHTTPListenerConfig(v *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig) *DescribeLoadBalancerListenersResponseBodyListeners {
+	s.HTTPListenerConfig = v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListeners) SetHTTPSListenerConfig(v *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig) *DescribeLoadBalancerListenersResponseBodyListeners {
+	s.HTTPSListenerConfig = v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListeners) SetTCPListenerConfig(v *DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig) *DescribeLoadBalancerListenersResponseBodyListeners {
+	s.TCPListenerConfig = v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListeners) SetUDPListenerConfig(v *DescribeLoadBalancerListenersResponseBodyListenersUDPListenerConfig) *DescribeLoadBalancerListenersResponseBodyListeners {
+	s.UDPListenerConfig = v
+	return s
+}
+
+type DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig struct {
+	HealthCheckHttpVersion      *string `json:"HealthCheckHttpVersion,omitempty" xml:"HealthCheckHttpVersion,omitempty"`
+	XForwardedFor_ClientSrcPort *string `json:"XForwardedFor_ClientSrcPort,omitempty" xml:"XForwardedFor_ClientSrcPort,omitempty"`
+	Cookie                      *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
+	Gzip                        *string `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
+	HealthCheckConnectPort      *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	HealthCheckTimeout          *int32  `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	HealthCheckType             *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
+	CookieTimeout               *int32  `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
+	HealthCheckDomain           *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	UnhealthyThreshold          *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	XForwardedFor_SLBID         *string `json:"XForwardedFor_SLBID,omitempty" xml:"XForwardedFor_SLBID,omitempty"`
+	ForwardPort                 *int32  `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
+	HealthCheckHttpCode         *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	ListenerForward             *string `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
+	XForwardedFor               *string `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
+	IdleTimeout                 *int32  `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	RequestTimeout              *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	HealthCheckInterval         *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	XForwardedFor_SLBPORT       *string `json:"XForwardedFor_SLBPORT,omitempty" xml:"XForwardedFor_SLBPORT,omitempty"`
+	HealthCheckURI              *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	StickySessionType           *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
+	HealthyThreshold            *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	XForwardedFor_proto         *string `json:"XForwardedFor_proto,omitempty" xml:"XForwardedFor_proto,omitempty"`
+	XForwardedFor_SLBIP         *string `json:"XForwardedFor_SLBIP,omitempty" xml:"XForwardedFor_SLBIP,omitempty"`
+	StickySession               *string `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
+	HealthCheckMethod           *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
+	HealthCheck                 *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+}
+
+func (s DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig) SetHealthCheckHttpVersion(v string) *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig {
+	s.HealthCheckHttpVersion = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig) SetXForwardedFor_ClientSrcPort(v string) *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig {
+	s.XForwardedFor_ClientSrcPort = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig) SetCookie(v string) *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig {
+	s.Cookie = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig) SetGzip(v string) *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig {
+	s.Gzip = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig) SetHealthCheckConnectPort(v int32) *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig {
+	s.HealthCheckConnectPort = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig) SetHealthCheckTimeout(v int32) *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig {
+	s.HealthCheckTimeout = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig) SetHealthCheckType(v string) *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig {
+	s.HealthCheckType = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig) SetCookieTimeout(v int32) *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig {
+	s.CookieTimeout = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig) SetHealthCheckDomain(v string) *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig {
+	s.HealthCheckDomain = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig) SetUnhealthyThreshold(v int32) *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig {
+	s.UnhealthyThreshold = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig) SetXForwardedFor_SLBID(v string) *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig {
+	s.XForwardedFor_SLBID = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig) SetForwardPort(v int32) *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig {
+	s.ForwardPort = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig) SetHealthCheckHttpCode(v string) *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig {
+	s.HealthCheckHttpCode = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig) SetListenerForward(v string) *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig {
+	s.ListenerForward = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig) SetXForwardedFor(v string) *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig {
+	s.XForwardedFor = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig) SetIdleTimeout(v int32) *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig {
+	s.IdleTimeout = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig) SetRequestTimeout(v int32) *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig {
+	s.RequestTimeout = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig) SetHealthCheckInterval(v int32) *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig {
+	s.HealthCheckInterval = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig) SetXForwardedFor_SLBPORT(v string) *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig {
+	s.XForwardedFor_SLBPORT = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig) SetHealthCheckURI(v string) *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig {
+	s.HealthCheckURI = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig) SetStickySessionType(v string) *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig {
+	s.StickySessionType = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig) SetHealthyThreshold(v int32) *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig {
+	s.HealthyThreshold = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig) SetXForwardedFor_proto(v string) *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig {
+	s.XForwardedFor_proto = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig) SetXForwardedFor_SLBIP(v string) *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig {
+	s.XForwardedFor_SLBIP = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig) SetStickySession(v string) *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig {
+	s.StickySession = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig) SetHealthCheckMethod(v string) *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig {
+	s.HealthCheckMethod = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig) SetHealthCheck(v string) *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig {
+	s.HealthCheck = &v
+	return s
+}
+
+type DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig struct {
+	XForwardedFor_ClientCertClientVerify *string `json:"XForwardedFor_ClientCertClientVerify,omitempty" xml:"XForwardedFor_ClientCertClientVerify,omitempty"`
+	HealthCheckHttpVersion               *string `json:"HealthCheckHttpVersion,omitempty" xml:"HealthCheckHttpVersion,omitempty"`
+	XForwardedFor_ClientSrcPort          *string `json:"XForwardedFor_ClientSrcPort,omitempty" xml:"XForwardedFor_ClientSrcPort,omitempty"`
+	Cookie                               *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
+	Gzip                                 *string `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
+	EnableHttp2                          *string `json:"EnableHttp2,omitempty" xml:"EnableHttp2,omitempty"`
+	CACertificateId                      *string `json:"CACertificateId,omitempty" xml:"CACertificateId,omitempty"`
+	HealthCheckConnectPort               *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	HealthCheckTimeout                   *int32  `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	HealthCheckType                      *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
+	CookieTimeout                        *int32  `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
+	HealthCheckDomain                    *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	UnhealthyThreshold                   *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	XForwardedFor_SLBID                  *string `json:"XForwardedFor_SLBID,omitempty" xml:"XForwardedFor_SLBID,omitempty"`
+	XForwardedFor_ClientCertSubjectDN    *string `json:"XForwardedFor_ClientCertSubjectDN,omitempty" xml:"XForwardedFor_ClientCertSubjectDN,omitempty"`
+	HealthCheckHttpCode                  *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	XForwardedFor_ClientCertFingerprint  *string `json:"XForwardedFor_ClientCertFingerprint,omitempty" xml:"XForwardedFor_ClientCertFingerprint,omitempty"`
+	XForwardedFor                        *string `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
+	RequestTimeout                       *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	IdleTimeout                          *int32  `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	ServerCertificateId                  *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
+	HealthCheckInterval                  *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	XForwardedFor_SLBPORT                *string `json:"XForwardedFor_SLBPORT,omitempty" xml:"XForwardedFor_SLBPORT,omitempty"`
+	HealthCheckURI                       *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	StickySessionType                    *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
+	XForwardedFor_ClientCertIssuerDN     *string `json:"XForwardedFor_ClientCertIssuerDN,omitempty" xml:"XForwardedFor_ClientCertIssuerDN,omitempty"`
+	HealthyThreshold                     *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	XForwardedFor_proto                  *string `json:"XForwardedFor_proto,omitempty" xml:"XForwardedFor_proto,omitempty"`
+	XForwardedFor_SLBIP                  *string `json:"XForwardedFor_SLBIP,omitempty" xml:"XForwardedFor_SLBIP,omitempty"`
+	StickySession                        *string `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
+	HealthCheckMethod                    *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
+	TLSCipherPolicy                      *string `json:"TLSCipherPolicy,omitempty" xml:"TLSCipherPolicy,omitempty"`
+	HealthCheck                          *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+}
+
+func (s DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig) SetXForwardedFor_ClientCertClientVerify(v string) *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig {
+	s.XForwardedFor_ClientCertClientVerify = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig) SetHealthCheckHttpVersion(v string) *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig {
+	s.HealthCheckHttpVersion = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig) SetXForwardedFor_ClientSrcPort(v string) *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig {
+	s.XForwardedFor_ClientSrcPort = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig) SetCookie(v string) *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig {
+	s.Cookie = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig) SetGzip(v string) *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig {
+	s.Gzip = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig) SetEnableHttp2(v string) *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig {
+	s.EnableHttp2 = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig) SetCACertificateId(v string) *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig {
+	s.CACertificateId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig) SetHealthCheckConnectPort(v int32) *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig {
+	s.HealthCheckConnectPort = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig) SetHealthCheckTimeout(v int32) *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig {
+	s.HealthCheckTimeout = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig) SetHealthCheckType(v string) *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig {
+	s.HealthCheckType = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig) SetCookieTimeout(v int32) *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig {
+	s.CookieTimeout = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig) SetHealthCheckDomain(v string) *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig {
+	s.HealthCheckDomain = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig) SetUnhealthyThreshold(v int32) *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig {
+	s.UnhealthyThreshold = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig) SetXForwardedFor_SLBID(v string) *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig {
+	s.XForwardedFor_SLBID = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig) SetXForwardedFor_ClientCertSubjectDN(v string) *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig {
+	s.XForwardedFor_ClientCertSubjectDN = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig) SetHealthCheckHttpCode(v string) *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig {
+	s.HealthCheckHttpCode = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig) SetXForwardedFor_ClientCertFingerprint(v string) *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig {
+	s.XForwardedFor_ClientCertFingerprint = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig) SetXForwardedFor(v string) *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig {
+	s.XForwardedFor = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig) SetRequestTimeout(v int32) *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig {
+	s.RequestTimeout = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig) SetIdleTimeout(v int32) *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig {
+	s.IdleTimeout = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig) SetServerCertificateId(v string) *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig {
+	s.ServerCertificateId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig) SetHealthCheckInterval(v int32) *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig {
+	s.HealthCheckInterval = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig) SetXForwardedFor_SLBPORT(v string) *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig {
+	s.XForwardedFor_SLBPORT = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig) SetHealthCheckURI(v string) *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig {
+	s.HealthCheckURI = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig) SetStickySessionType(v string) *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig {
+	s.StickySessionType = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig) SetXForwardedFor_ClientCertIssuerDN(v string) *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig {
+	s.XForwardedFor_ClientCertIssuerDN = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig) SetHealthyThreshold(v int32) *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig {
+	s.HealthyThreshold = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig) SetXForwardedFor_proto(v string) *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig {
+	s.XForwardedFor_proto = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig) SetXForwardedFor_SLBIP(v string) *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig {
+	s.XForwardedFor_SLBIP = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig) SetStickySession(v string) *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig {
+	s.StickySession = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig) SetHealthCheckMethod(v string) *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig {
+	s.HealthCheckMethod = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig) SetTLSCipherPolicy(v string) *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig {
+	s.TLSCipherPolicy = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig) SetHealthCheck(v string) *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig {
+	s.HealthCheck = &v
+	return s
+}
+
+type DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig struct {
+	HealthCheckHttpCode       *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	ConnectionDrainTimeout    *int32  `json:"ConnectionDrainTimeout,omitempty" xml:"ConnectionDrainTimeout,omitempty"`
+	PersistenceTimeout        *int32  `json:"PersistenceTimeout,omitempty" xml:"PersistenceTimeout,omitempty"`
+	HealthCheckInterval       *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	HealthCheckURI            *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	HealthCheckConnectPort    *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	EstablishedTimeout        *int32  `json:"EstablishedTimeout,omitempty" xml:"EstablishedTimeout,omitempty"`
+	HealthCheckType           *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
+	HealthCheckConnectTimeout *int32  `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
+	MasterSlaveServerGroupId  *string `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
+	HealthyThreshold          *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	HealthCheckDomain         *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	UnhealthyThreshold        *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	ConnectionDrain           *string `json:"ConnectionDrain,omitempty" xml:"ConnectionDrain,omitempty"`
+	HealthCheckMethod         *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
+	HealthCheck               *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+}
+
+func (s DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig) SetHealthCheckHttpCode(v string) *DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig {
+	s.HealthCheckHttpCode = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig) SetConnectionDrainTimeout(v int32) *DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig {
+	s.ConnectionDrainTimeout = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig) SetPersistenceTimeout(v int32) *DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig {
+	s.PersistenceTimeout = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig) SetHealthCheckInterval(v int32) *DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig {
+	s.HealthCheckInterval = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig) SetHealthCheckURI(v string) *DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig {
+	s.HealthCheckURI = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig) SetHealthCheckConnectPort(v int32) *DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig {
+	s.HealthCheckConnectPort = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig) SetEstablishedTimeout(v int32) *DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig {
+	s.EstablishedTimeout = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig) SetHealthCheckType(v string) *DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig {
+	s.HealthCheckType = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig) SetHealthCheckConnectTimeout(v int32) *DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig {
+	s.HealthCheckConnectTimeout = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig) SetMasterSlaveServerGroupId(v string) *DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig {
+	s.MasterSlaveServerGroupId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig) SetHealthyThreshold(v int32) *DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig {
+	s.HealthyThreshold = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig) SetHealthCheckDomain(v string) *DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig {
+	s.HealthCheckDomain = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig) SetUnhealthyThreshold(v int32) *DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig {
+	s.UnhealthyThreshold = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig) SetConnectionDrain(v string) *DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig {
+	s.ConnectionDrain = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig) SetHealthCheckMethod(v string) *DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig {
+	s.HealthCheckMethod = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig) SetHealthCheck(v string) *DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig {
+	s.HealthCheck = &v
+	return s
+}
+
+type DescribeLoadBalancerListenersResponseBodyListenersUDPListenerConfig struct {
+	ConnectionDrainTimeout    *int32  `json:"ConnectionDrainTimeout,omitempty" xml:"ConnectionDrainTimeout,omitempty"`
+	HealthCheckInterval       *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	HealthCheckExp            *string `json:"HealthCheckExp,omitempty" xml:"HealthCheckExp,omitempty"`
+	HealthCheckConnectPort    *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	HealthCheckConnectTimeout *int32  `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
+	MasterSlaveServerGroupId  *string `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
+	HealthyThreshold          *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	UnhealthyThreshold        *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	ConnectionDrain           *string `json:"ConnectionDrain,omitempty" xml:"ConnectionDrain,omitempty"`
+	HealthCheckReq            *string `json:"HealthCheckReq,omitempty" xml:"HealthCheckReq,omitempty"`
+	HealthCheck               *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+}
+
+func (s DescribeLoadBalancerListenersResponseBodyListenersUDPListenerConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerListenersResponseBodyListenersUDPListenerConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersUDPListenerConfig) SetConnectionDrainTimeout(v int32) *DescribeLoadBalancerListenersResponseBodyListenersUDPListenerConfig {
+	s.ConnectionDrainTimeout = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersUDPListenerConfig) SetHealthCheckInterval(v int32) *DescribeLoadBalancerListenersResponseBodyListenersUDPListenerConfig {
+	s.HealthCheckInterval = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersUDPListenerConfig) SetHealthCheckExp(v string) *DescribeLoadBalancerListenersResponseBodyListenersUDPListenerConfig {
+	s.HealthCheckExp = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersUDPListenerConfig) SetHealthCheckConnectPort(v int32) *DescribeLoadBalancerListenersResponseBodyListenersUDPListenerConfig {
+	s.HealthCheckConnectPort = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersUDPListenerConfig) SetHealthCheckConnectTimeout(v int32) *DescribeLoadBalancerListenersResponseBodyListenersUDPListenerConfig {
+	s.HealthCheckConnectTimeout = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersUDPListenerConfig) SetMasterSlaveServerGroupId(v string) *DescribeLoadBalancerListenersResponseBodyListenersUDPListenerConfig {
+	s.MasterSlaveServerGroupId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersUDPListenerConfig) SetHealthyThreshold(v int32) *DescribeLoadBalancerListenersResponseBodyListenersUDPListenerConfig {
+	s.HealthyThreshold = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersUDPListenerConfig) SetUnhealthyThreshold(v int32) *DescribeLoadBalancerListenersResponseBodyListenersUDPListenerConfig {
+	s.UnhealthyThreshold = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersUDPListenerConfig) SetConnectionDrain(v string) *DescribeLoadBalancerListenersResponseBodyListenersUDPListenerConfig {
+	s.ConnectionDrain = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersUDPListenerConfig) SetHealthCheckReq(v string) *DescribeLoadBalancerListenersResponseBodyListenersUDPListenerConfig {
+	s.HealthCheckReq = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersUDPListenerConfig) SetHealthCheck(v string) *DescribeLoadBalancerListenersResponseBodyListenersUDPListenerConfig {
+	s.HealthCheck = &v
+	return s
+}
+
+type DescribeLoadBalancerListenersResponse struct {
+	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeLoadBalancerListenersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeLoadBalancerListenersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerListenersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerListenersResponse) SetHeaders(v map[string]*string) *DescribeLoadBalancerListenersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponse) SetBody(v *DescribeLoadBalancerListenersResponseBody) *DescribeLoadBalancerListenersResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeLoadBalancersRequest struct {
-	OwnerId               *int64                             `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount  *string                            `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId       *int64                             `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	RegionId              *string                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ServerId              *string                            `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	AddressIPVersion      *string                            `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
-	LoadBalancerStatus    *string                            `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
-	LoadBalancerId        *string                            `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	LoadBalancerName      *string                            `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
-	ServerIntranetAddress *string                            `json:"ServerIntranetAddress,omitempty" xml:"ServerIntranetAddress,omitempty"`
-	AddressType           *string                            `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	InternetChargeType    *string                            `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	VpcId                 *string                            `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VSwitchId             *string                            `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	NetworkType           *string                            `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	Address               *string                            `json:"Address,omitempty" xml:"Address,omitempty"`
-	MasterZoneId          *string                            `json:"MasterZoneId,omitempty" xml:"MasterZoneId,omitempty"`
-	SlaveZoneId           *string                            `json:"SlaveZoneId,omitempty" xml:"SlaveZoneId,omitempty"`
-	OwnerAccount          *string                            `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId           *string                            `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                  *string                            `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	PayType               *string                            `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	ResourceGroupId       *string                            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	PageNumber            *int32                             `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize              *int32                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SupportPrivateLink    *bool                              `json:"SupportPrivateLink,omitempty" xml:"SupportPrivateLink,omitempty"`
-	Fuzzy                 *string                            `json:"Fuzzy,omitempty" xml:"Fuzzy,omitempty"`
-	BusinessStatus        *string                            `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
-	Tag                   []*DescribeLoadBalancersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount  *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId       *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ServerId              *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	AddressIPVersion      *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
+	LoadBalancerStatus    *string `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
+	LoadBalancerId        *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	LoadBalancerName      *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
+	ServerIntranetAddress *string `json:"ServerIntranetAddress,omitempty" xml:"ServerIntranetAddress,omitempty"`
+	AddressType           *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	InternetChargeType    *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	VpcId                 *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VSwitchId             *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	NetworkType           *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	Address               *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	MasterZoneId          *string `json:"MasterZoneId,omitempty" xml:"MasterZoneId,omitempty"`
+	SlaveZoneId           *string `json:"SlaveZoneId,omitempty" xml:"SlaveZoneId,omitempty"`
+	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	Tags                  *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	PayType               *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	ResourceGroupId       *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	PageNumber            *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize              *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeLoadBalancersRequest) String() string {
@@ -7034,11 +7093,6 @@ func (s *DescribeLoadBalancersRequest) SetOwnerAccount(v string) *DescribeLoadBa
 	return s
 }
 
-func (s *DescribeLoadBalancersRequest) SetAccessKeyId(v string) *DescribeLoadBalancersRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
 func (s *DescribeLoadBalancersRequest) SetTags(v string) *DescribeLoadBalancersRequest {
 	s.Tags = &v
 	return s
@@ -7064,42 +7118,11 @@ func (s *DescribeLoadBalancersRequest) SetPageSize(v int32) *DescribeLoadBalance
 	return s
 }
 
-func (s *DescribeLoadBalancersRequest) SetSupportPrivateLink(v bool) *DescribeLoadBalancersRequest {
-	s.SupportPrivateLink = &v
-	return s
-}
-
-func (s *DescribeLoadBalancersRequest) SetFuzzy(v string) *DescribeLoadBalancersRequest {
-	s.Fuzzy = &v
-	return s
-}
-
-func (s *DescribeLoadBalancersRequest) SetBusinessStatus(v string) *DescribeLoadBalancersRequest {
-	s.BusinessStatus = &v
-	return s
-}
-
-func (s *DescribeLoadBalancersRequest) SetTag(v []*DescribeLoadBalancersRequestTag) *DescribeLoadBalancersRequest {
-	s.Tag = v
-	return s
-}
-
-type DescribeLoadBalancersRequestTag struct {
-}
-
-func (s DescribeLoadBalancersRequestTag) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLoadBalancersRequestTag) GoString() string {
-	return s.String()
-}
-
 type DescribeLoadBalancersResponseBody struct {
-	TotalCount    *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId     *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize      *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PageNumber    *int32                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount    *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	LoadBalancers *DescribeLoadBalancersResponseBodyLoadBalancers `json:"LoadBalancers,omitempty" xml:"LoadBalancers,omitempty" type:"Struct"`
 }
 
@@ -7111,13 +7134,13 @@ func (s DescribeLoadBalancersResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeLoadBalancersResponseBody) SetTotalCount(v int32) *DescribeLoadBalancersResponseBody {
-	s.TotalCount = &v
+func (s *DescribeLoadBalancersResponseBody) SetRequestId(v string) *DescribeLoadBalancersResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *DescribeLoadBalancersResponseBody) SetRequestId(v string) *DescribeLoadBalancersResponseBody {
-	s.RequestId = &v
+func (s *DescribeLoadBalancersResponseBody) SetPageNumber(v int32) *DescribeLoadBalancersResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -7126,8 +7149,8 @@ func (s *DescribeLoadBalancersResponseBody) SetPageSize(v int32) *DescribeLoadBa
 	return s
 }
 
-func (s *DescribeLoadBalancersResponseBody) SetPageNumber(v int32) *DescribeLoadBalancersResponseBody {
-	s.PageNumber = &v
+func (s *DescribeLoadBalancersResponseBody) SetTotalCount(v int32) *DescribeLoadBalancersResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -7161,19 +7184,23 @@ type DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer struct {
 	PayType                      *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	AddressType                  *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
 	NetworkType                  *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	AddressIPVersion             *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
+	LoadBalancerName             *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
+	Bandwidth                    *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	Address                      *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	SlaveZoneId                  *string `json:"SlaveZoneId,omitempty" xml:"SlaveZoneId,omitempty"`
+	MasterZoneId                 *string `json:"MasterZoneId,omitempty" xml:"MasterZoneId,omitempty"`
+	InternetChargeTypeAlias      *string `json:"InternetChargeTypeAlias,omitempty" xml:"InternetChargeTypeAlias,omitempty"`
+	LoadBalancerSpec             *string `json:"LoadBalancerSpec,omitempty" xml:"LoadBalancerSpec,omitempty"`
 	RegionId                     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ModificationProtectionReason *string `json:"ModificationProtectionReason,omitempty" xml:"ModificationProtectionReason,omitempty"`
 	ModificationProtectionStatus *string `json:"ModificationProtectionStatus,omitempty" xml:"ModificationProtectionStatus,omitempty"`
-	AddressIPVersion             *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
 	VSwitchId                    *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	LoadBalancerStatus           *string `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
-	LoadBalancerName             *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
 	ResourceGroupId              *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	InternetChargeType           *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	Address                      *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	SlaveZoneId                  *string `json:"SlaveZoneId,omitempty" xml:"SlaveZoneId,omitempty"`
+	DeleteProtection             *string `json:"DeleteProtection,omitempty" xml:"DeleteProtection,omitempty"`
 	RegionIdAlias                *string `json:"RegionIdAlias,omitempty" xml:"RegionIdAlias,omitempty"`
-	MasterZoneId                 *string `json:"MasterZoneId,omitempty" xml:"MasterZoneId,omitempty"`
 }
 
 func (s DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) String() string {
@@ -7219,6 +7246,46 @@ func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetNetworkT
 	return s
 }
 
+func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetAddressIPVersion(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
+	s.AddressIPVersion = &v
+	return s
+}
+
+func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetLoadBalancerName(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
+	s.LoadBalancerName = &v
+	return s
+}
+
+func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetBandwidth(v int32) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
+	s.Bandwidth = &v
+	return s
+}
+
+func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetAddress(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
+	s.Address = &v
+	return s
+}
+
+func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetSlaveZoneId(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
+	s.SlaveZoneId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetMasterZoneId(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
+	s.MasterZoneId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetInternetChargeTypeAlias(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
+	s.InternetChargeTypeAlias = &v
+	return s
+}
+
+func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetLoadBalancerSpec(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
+	s.LoadBalancerSpec = &v
+	return s
+}
+
 func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetRegionId(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
 	s.RegionId = &v
 	return s
@@ -7234,11 +7301,6 @@ func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetModifica
 	return s
 }
 
-func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetAddressIPVersion(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
-	s.AddressIPVersion = &v
-	return s
-}
-
 func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetVSwitchId(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
 	s.VSwitchId = &v
 	return s
@@ -7246,11 +7308,6 @@ func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetVSwitchI
 
 func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetLoadBalancerStatus(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
 	s.LoadBalancerStatus = &v
-	return s
-}
-
-func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetLoadBalancerName(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
-	s.LoadBalancerName = &v
 	return s
 }
 
@@ -7264,23 +7321,13 @@ func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetInternet
 	return s
 }
 
-func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetAddress(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
-	s.Address = &v
-	return s
-}
-
-func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetSlaveZoneId(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
-	s.SlaveZoneId = &v
+func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetDeleteProtection(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
+	s.DeleteProtection = &v
 	return s
 }
 
 func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetRegionIdAlias(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
 	s.RegionIdAlias = &v
-	return s
-}
-
-func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetMasterZoneId(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
-	s.MasterZoneId = &v
 	return s
 }
 
@@ -7315,8 +7362,6 @@ type DescribeLoadBalancerTCPListenerAttributeRequest struct {
 	LoadBalancerId       *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	ListenerPort         *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s DescribeLoadBalancerTCPListenerAttributeRequest) String() string {
@@ -7362,43 +7407,35 @@ func (s *DescribeLoadBalancerTCPListenerAttributeRequest) SetOwnerAccount(v stri
 	return s
 }
 
-func (s *DescribeLoadBalancerTCPListenerAttributeRequest) SetAccessKeyId(v string) *DescribeLoadBalancerTCPListenerAttributeRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerTCPListenerAttributeRequest) SetTags(v string) *DescribeLoadBalancerTCPListenerAttributeRequest {
-	s.Tags = &v
-	return s
-}
-
 type DescribeLoadBalancerTCPListenerAttributeResponseBody struct {
 	VServerGroupId            *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
-	Description               *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	SynProxy                  *string `json:"SynProxy,omitempty" xml:"SynProxy,omitempty"`
-	UnhealthyThreshold        *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
-	HealthCheckURI            *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
-	Scheduler                 *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	HealthCheck               *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
-	BackendServerPort         *int32  `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
-	PersistenceTimeout        *int32  `json:"PersistenceTimeout,omitempty" xml:"PersistenceTimeout,omitempty"`
-	HealthCheckConnectPort    *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	HealthCheckMethod         *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
-	Bandwidth                 *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	HealthCheckHttpCode       *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
-	EstablishedTimeout        *int32  `json:"EstablishedTimeout,omitempty" xml:"EstablishedTimeout,omitempty"`
 	Status                    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	AclType                   *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	ConnectionDrainTimeout    *int32  `json:"ConnectionDrainTimeout,omitempty" xml:"ConnectionDrainTimeout,omitempty"`
+	RequestId                 *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	HealthCheckConnectPort    *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	Description               *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Bandwidth                 *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	HealthCheckType           *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
+	MasterSlaveServerGroupId  *string `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
+	BackendServerPort         *int32  `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
+	AclStatus                 *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
+	HealthCheckDomain         *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	UnhealthyThreshold        *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	HealthCheckHttpCode       *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	PersistenceTimeout        *int32  `json:"PersistenceTimeout,omitempty" xml:"PersistenceTimeout,omitempty"`
 	ListenerPort              *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	HealthCheckInterval       *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	RequestId                 *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	HealthCheckURI            *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
 	AclId                     *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	SynProxy                  *string `json:"SynProxy,omitempty" xml:"SynProxy,omitempty"`
+	Scheduler                 *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	EstablishedTimeout        *int32  `json:"EstablishedTimeout,omitempty" xml:"EstablishedTimeout,omitempty"`
 	HealthCheckConnectTimeout *int32  `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
-	AclStatus                 *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
 	HealthyThreshold          *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	MasterSlaveServerGroupId  *string `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
-	HealthCheckDomain         *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	AclType                   *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
-	HealthCheckType           *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
+	ConnectionDrain           *string `json:"ConnectionDrain,omitempty" xml:"ConnectionDrain,omitempty"`
+	HealthCheckMethod         *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
+	HealthCheck               *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
 }
 
 func (s DescribeLoadBalancerTCPListenerAttributeResponseBody) String() string {
@@ -7414,43 +7451,23 @@ func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetVServerGroupId
 	return s
 }
 
-func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetDescription(v string) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
-	s.Description = &v
+func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetStatus(v string) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
+	s.Status = &v
 	return s
 }
 
-func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetSynProxy(v string) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
-	s.SynProxy = &v
+func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetAclType(v string) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
+	s.AclType = &v
 	return s
 }
 
-func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetUnhealthyThreshold(v int32) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
-	s.UnhealthyThreshold = &v
+func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetConnectionDrainTimeout(v int32) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
+	s.ConnectionDrainTimeout = &v
 	return s
 }
 
-func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetHealthCheckURI(v string) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
-	s.HealthCheckURI = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetScheduler(v string) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
-	s.Scheduler = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetHealthCheck(v string) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
-	s.HealthCheck = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetBackendServerPort(v int32) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
-	s.BackendServerPort = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetPersistenceTimeout(v int32) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
-	s.PersistenceTimeout = &v
+func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetRequestId(v string) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -7459,8 +7476,8 @@ func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetHealthCheckCon
 	return s
 }
 
-func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetHealthCheckMethod(v string) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
-	s.HealthCheckMethod = &v
+func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetDescription(v string) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
+	s.Description = &v
 	return s
 }
 
@@ -7469,18 +7486,43 @@ func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetBandwidth(v in
 	return s
 }
 
+func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetHealthCheckType(v string) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
+	s.HealthCheckType = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetMasterSlaveServerGroupId(v string) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
+	s.MasterSlaveServerGroupId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetBackendServerPort(v int32) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
+	s.BackendServerPort = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetAclStatus(v string) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
+	s.AclStatus = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetHealthCheckDomain(v string) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
+	s.HealthCheckDomain = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetUnhealthyThreshold(v int32) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
+	s.UnhealthyThreshold = &v
+	return s
+}
+
 func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetHealthCheckHttpCode(v string) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
 	s.HealthCheckHttpCode = &v
 	return s
 }
 
-func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetEstablishedTimeout(v int32) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
-	s.EstablishedTimeout = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetStatus(v string) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
-	s.Status = &v
+func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetPersistenceTimeout(v int32) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
+	s.PersistenceTimeout = &v
 	return s
 }
 
@@ -7494,8 +7536,8 @@ func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetHealthCheckInt
 	return s
 }
 
-func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetRequestId(v string) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
-	s.RequestId = &v
+func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetHealthCheckURI(v string) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
+	s.HealthCheckURI = &v
 	return s
 }
 
@@ -7504,13 +7546,23 @@ func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetAclId(v string
 	return s
 }
 
-func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetHealthCheckConnectTimeout(v int32) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
-	s.HealthCheckConnectTimeout = &v
+func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetSynProxy(v string) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
+	s.SynProxy = &v
 	return s
 }
 
-func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetAclStatus(v string) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
-	s.AclStatus = &v
+func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetScheduler(v string) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
+	s.Scheduler = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetEstablishedTimeout(v int32) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
+	s.EstablishedTimeout = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetHealthCheckConnectTimeout(v int32) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
+	s.HealthCheckConnectTimeout = &v
 	return s
 }
 
@@ -7519,23 +7571,18 @@ func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetHealthyThresho
 	return s
 }
 
-func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetMasterSlaveServerGroupId(v string) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
-	s.MasterSlaveServerGroupId = &v
+func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetConnectionDrain(v string) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
+	s.ConnectionDrain = &v
 	return s
 }
 
-func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetHealthCheckDomain(v string) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
-	s.HealthCheckDomain = &v
+func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetHealthCheckMethod(v string) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
+	s.HealthCheckMethod = &v
 	return s
 }
 
-func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetAclType(v string) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
-	s.AclType = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetHealthCheckType(v string) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
-	s.HealthCheckType = &v
+func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetHealthCheck(v string) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
+	s.HealthCheck = &v
 	return s
 }
 
@@ -7570,8 +7617,6 @@ type DescribeLoadBalancerUDPListenerAttributeRequest struct {
 	LoadBalancerId       *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	ListenerPort         *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s DescribeLoadBalancerUDPListenerAttributeRequest) String() string {
@@ -7617,37 +7662,27 @@ func (s *DescribeLoadBalancerUDPListenerAttributeRequest) SetOwnerAccount(v stri
 	return s
 }
 
-func (s *DescribeLoadBalancerUDPListenerAttributeRequest) SetAccessKeyId(v string) *DescribeLoadBalancerUDPListenerAttributeRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerUDPListenerAttributeRequest) SetTags(v string) *DescribeLoadBalancerUDPListenerAttributeRequest {
-	s.Tags = &v
-	return s
-}
-
 type DescribeLoadBalancerUDPListenerAttributeResponseBody struct {
 	VServerGroupId            *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
-	Description               *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	UnhealthyThreshold        *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
-	Scheduler                 *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	HealthCheck               *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
-	BackendServerPort         *int32  `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
-	HealthCheckConnectPort    *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	Bandwidth                 *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	Status                    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	AclType                   *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	RequestId                 *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	HealthCheckConnectPort    *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	Description               *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Bandwidth                 *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	MasterSlaveServerGroupId  *string `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
+	BackendServerPort         *int32  `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
+	AclStatus                 *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
+	UnhealthyThreshold        *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 	ListenerPort              *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	HealthCheckInterval       *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	RequestId                 *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	AclId                     *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	HealthCheckConnectTimeout *int32  `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
-	AclStatus                 *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
-	HealthCheckReq            *string `json:"HealthCheckReq,omitempty" xml:"HealthCheckReq,omitempty"`
 	HealthCheckExp            *string `json:"HealthCheckExp,omitempty" xml:"HealthCheckExp,omitempty"`
+	AclId                     *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	Scheduler                 *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	HealthCheckConnectTimeout *int32  `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
 	HealthyThreshold          *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	MasterSlaveServerGroupId  *string `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
-	AclType                   *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	HealthCheckReq            *string `json:"HealthCheckReq,omitempty" xml:"HealthCheckReq,omitempty"`
+	HealthCheck               *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
 }
 
 func (s DescribeLoadBalancerUDPListenerAttributeResponseBody) String() string {
@@ -7663,28 +7698,18 @@ func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetVServerGroupId
 	return s
 }
 
-func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetDescription(v string) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
-	s.Description = &v
+func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetStatus(v string) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
+	s.Status = &v
 	return s
 }
 
-func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetUnhealthyThreshold(v int32) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
-	s.UnhealthyThreshold = &v
+func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetAclType(v string) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
+	s.AclType = &v
 	return s
 }
 
-func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetScheduler(v string) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
-	s.Scheduler = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetHealthCheck(v string) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
-	s.HealthCheck = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetBackendServerPort(v int32) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
-	s.BackendServerPort = &v
+func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetRequestId(v string) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -7693,13 +7718,33 @@ func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetHealthCheckCon
 	return s
 }
 
+func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetDescription(v string) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
+	s.Description = &v
+	return s
+}
+
 func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetBandwidth(v int32) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
 	s.Bandwidth = &v
 	return s
 }
 
-func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetStatus(v string) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
-	s.Status = &v
+func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetMasterSlaveServerGroupId(v string) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
+	s.MasterSlaveServerGroupId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetBackendServerPort(v int32) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
+	s.BackendServerPort = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetAclStatus(v string) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
+	s.AclStatus = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetUnhealthyThreshold(v int32) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
+	s.UnhealthyThreshold = &v
 	return s
 }
 
@@ -7713,8 +7758,8 @@ func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetHealthCheckInt
 	return s
 }
 
-func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetRequestId(v string) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
-	s.RequestId = &v
+func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetHealthCheckExp(v string) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
+	s.HealthCheckExp = &v
 	return s
 }
 
@@ -7723,23 +7768,13 @@ func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetAclId(v string
 	return s
 }
 
+func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetScheduler(v string) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
+	s.Scheduler = &v
+	return s
+}
+
 func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetHealthCheckConnectTimeout(v int32) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
 	s.HealthCheckConnectTimeout = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetAclStatus(v string) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
-	s.AclStatus = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetHealthCheckReq(v string) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
-	s.HealthCheckReq = &v
-	return s
-}
-
-func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetHealthCheckExp(v string) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
-	s.HealthCheckExp = &v
 	return s
 }
 
@@ -7748,13 +7783,13 @@ func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetHealthyThresho
 	return s
 }
 
-func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetMasterSlaveServerGroupId(v string) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
-	s.MasterSlaveServerGroupId = &v
+func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetHealthCheckReq(v string) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
+	s.HealthCheckReq = &v
 	return s
 }
 
-func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetAclType(v string) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
-	s.AclType = &v
+func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetHealthCheck(v string) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
+	s.HealthCheck = &v
 	return s
 }
 
@@ -7787,8 +7822,6 @@ type DescribeMasterSlaveServerGroupAttributeRequest struct {
 	ResourceOwnerId          *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	OwnerAccount             *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId              *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                     *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	MasterSlaveServerGroupId *string `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
 }
 
@@ -7825,16 +7858,6 @@ func (s *DescribeMasterSlaveServerGroupAttributeRequest) SetOwnerAccount(v strin
 	return s
 }
 
-func (s *DescribeMasterSlaveServerGroupAttributeRequest) SetAccessKeyId(v string) *DescribeMasterSlaveServerGroupAttributeRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *DescribeMasterSlaveServerGroupAttributeRequest) SetTags(v string) *DescribeMasterSlaveServerGroupAttributeRequest {
-	s.Tags = &v
-	return s
-}
-
 func (s *DescribeMasterSlaveServerGroupAttributeRequest) SetMasterSlaveServerGroupId(v string) *DescribeMasterSlaveServerGroupAttributeRequest {
 	s.MasterSlaveServerGroupId = &v
 	return s
@@ -7842,9 +7865,9 @@ func (s *DescribeMasterSlaveServerGroupAttributeRequest) SetMasterSlaveServerGro
 
 type DescribeMasterSlaveServerGroupAttributeResponseBody struct {
 	RequestId                  *string                                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	MasterSlaveServerGroupId   *string                                                                       `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
 	LoadBalancerId             *string                                                                       `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	MasterSlaveServerGroupName *string                                                                       `json:"MasterSlaveServerGroupName,omitempty" xml:"MasterSlaveServerGroupName,omitempty"`
+	MasterSlaveServerGroupId   *string                                                                       `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
 	MasterSlaveBackendServers  *DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServers `json:"MasterSlaveBackendServers,omitempty" xml:"MasterSlaveBackendServers,omitempty" type:"Struct"`
 }
 
@@ -7861,11 +7884,6 @@ func (s *DescribeMasterSlaveServerGroupAttributeResponseBody) SetRequestId(v str
 	return s
 }
 
-func (s *DescribeMasterSlaveServerGroupAttributeResponseBody) SetMasterSlaveServerGroupId(v string) *DescribeMasterSlaveServerGroupAttributeResponseBody {
-	s.MasterSlaveServerGroupId = &v
-	return s
-}
-
 func (s *DescribeMasterSlaveServerGroupAttributeResponseBody) SetLoadBalancerId(v string) *DescribeMasterSlaveServerGroupAttributeResponseBody {
 	s.LoadBalancerId = &v
 	return s
@@ -7873,6 +7891,11 @@ func (s *DescribeMasterSlaveServerGroupAttributeResponseBody) SetLoadBalancerId(
 
 func (s *DescribeMasterSlaveServerGroupAttributeResponseBody) SetMasterSlaveServerGroupName(v string) *DescribeMasterSlaveServerGroupAttributeResponseBody {
 	s.MasterSlaveServerGroupName = &v
+	return s
+}
+
+func (s *DescribeMasterSlaveServerGroupAttributeResponseBody) SetMasterSlaveServerGroupId(v string) *DescribeMasterSlaveServerGroupAttributeResponseBody {
+	s.MasterSlaveServerGroupId = &v
 	return s
 }
 
@@ -7974,8 +7997,6 @@ type DescribeMasterSlaveServerGroupsRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	LoadBalancerId       *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	IncludeListener      *bool   `json:"IncludeListener,omitempty" xml:"IncludeListener,omitempty"`
 }
@@ -8010,16 +8031,6 @@ func (s *DescribeMasterSlaveServerGroupsRequest) SetRegionId(v string) *Describe
 
 func (s *DescribeMasterSlaveServerGroupsRequest) SetOwnerAccount(v string) *DescribeMasterSlaveServerGroupsRequest {
 	s.OwnerAccount = &v
-	return s
-}
-
-func (s *DescribeMasterSlaveServerGroupsRequest) SetAccessKeyId(v string) *DescribeMasterSlaveServerGroupsRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *DescribeMasterSlaveServerGroupsRequest) SetTags(v string) *DescribeMasterSlaveServerGroupsRequest {
-	s.Tags = &v
 	return s
 }
 
@@ -8074,9 +8085,9 @@ func (s *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroups) Set
 }
 
 type DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroup struct {
+	MasterSlaveServerGroupName *string                                                                                                    `json:"MasterSlaveServerGroupName,omitempty" xml:"MasterSlaveServerGroupName,omitempty"`
 	MasterSlaveServerGroupId   *string                                                                                                    `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
 	AssociatedObjects          *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjects `json:"AssociatedObjects,omitempty" xml:"AssociatedObjects,omitempty" type:"Struct"`
-	MasterSlaveServerGroupName *string                                                                                                    `json:"MasterSlaveServerGroupName,omitempty" xml:"MasterSlaveServerGroupName,omitempty"`
 }
 
 func (s DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroup) String() string {
@@ -8087,6 +8098,11 @@ func (s DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMaster
 	return s.String()
 }
 
+func (s *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroup) SetMasterSlaveServerGroupName(v string) *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroup {
+	s.MasterSlaveServerGroupName = &v
+	return s
+}
+
 func (s *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroup) SetMasterSlaveServerGroupId(v string) *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroup {
 	s.MasterSlaveServerGroupId = &v
 	return s
@@ -8094,11 +8110,6 @@ func (s *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMaste
 
 func (s *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroup) SetAssociatedObjects(v *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjects) *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroup {
 	s.AssociatedObjects = v
-	return s
-}
-
-func (s *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroup) SetMasterSlaveServerGroupName(v string) *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroup {
-	s.MasterSlaveServerGroupName = &v
 	return s
 }
 
@@ -8137,8 +8148,8 @@ func (s *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMaste
 }
 
 type DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjectsListenersListener struct {
-	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 }
 
 func (s DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjectsListenersListener) String() string {
@@ -8149,13 +8160,13 @@ func (s DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMaster
 	return s.String()
 }
 
-func (s *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjectsListenersListener) SetProtocol(v string) *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjectsListenersListener {
-	s.Protocol = &v
+func (s *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjectsListenersListener) SetPort(v int32) *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjectsListenersListener {
+	s.Port = &v
 	return s
 }
 
-func (s *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjectsListenersListener) SetPort(v int32) *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjectsListenersListener {
-	s.Port = &v
+func (s *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjectsListenersListener) SetProtocol(v string) *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjectsListenersListener {
+	s.Protocol = &v
 	return s
 }
 
@@ -8189,8 +8200,6 @@ type DescribeRegionsRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s DescribeRegionsRequest) String() string {
@@ -8228,16 +8237,6 @@ func (s *DescribeRegionsRequest) SetResourceOwnerId(v int64) *DescribeRegionsReq
 
 func (s *DescribeRegionsRequest) SetOwnerAccount(v string) *DescribeRegionsRequest {
 	s.OwnerAccount = &v
-	return s
-}
-
-func (s *DescribeRegionsRequest) SetAccessKeyId(v string) *DescribeRegionsRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *DescribeRegionsRequest) SetTags(v string) *DescribeRegionsRequest {
-	s.Tags = &v
 	return s
 }
 
@@ -8282,8 +8281,8 @@ func (s *DescribeRegionsResponseBodyRegions) SetRegion(v []*DescribeRegionsRespo
 }
 
 type DescribeRegionsResponseBodyRegionsRegion struct {
-	LocalName      *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
+	LocalName      *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -8295,13 +8294,13 @@ func (s DescribeRegionsResponseBodyRegionsRegion) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRegionsResponseBodyRegionsRegion) SetLocalName(v string) *DescribeRegionsResponseBodyRegionsRegion {
-	s.LocalName = &v
+func (s *DescribeRegionsResponseBodyRegionsRegion) SetRegionEndpoint(v string) *DescribeRegionsResponseBodyRegionsRegion {
+	s.RegionEndpoint = &v
 	return s
 }
 
-func (s *DescribeRegionsResponseBodyRegionsRegion) SetRegionEndpoint(v string) *DescribeRegionsResponseBodyRegionsRegion {
-	s.RegionEndpoint = &v
+func (s *DescribeRegionsResponseBodyRegionsRegion) SetLocalName(v string) *DescribeRegionsResponseBodyRegionsRegion {
+	s.LocalName = &v
 	return s
 }
 
@@ -8339,8 +8338,6 @@ type DescribeRuleAttributeRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	RuleId               *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
@@ -8377,45 +8374,35 @@ func (s *DescribeRuleAttributeRequest) SetOwnerAccount(v string) *DescribeRuleAt
 	return s
 }
 
-func (s *DescribeRuleAttributeRequest) SetAccessKeyId(v string) *DescribeRuleAttributeRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *DescribeRuleAttributeRequest) SetTags(v string) *DescribeRuleAttributeRequest {
-	s.Tags = &v
-	return s
-}
-
 func (s *DescribeRuleAttributeRequest) SetRuleId(v string) *DescribeRuleAttributeRequest {
 	s.RuleId = &v
 	return s
 }
 
 type DescribeRuleAttributeResponseBody struct {
-	Cookie                 *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
-	CookieTimeout          *int32  `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
+	HealthCheckHttpCode    *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
 	VServerGroupId         *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
+	Domain                 *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Cookie                 *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
+	LoadBalancerId         *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	ListenerPort           *string `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	HealthCheckInterval    *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	RequestId              *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	UnhealthyThreshold     *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
-	HealthCheckURI         *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
-	Scheduler              *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	RuleId                 *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	HealthCheck            *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
-	LoadBalancerId         *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	HealthCheckTimeout     *int32  `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
 	Url                    *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	StickySession          *string `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
-	HealthCheckConnectPort *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	HealthyThreshold       *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	ListenerSync           *string `json:"ListenerSync,omitempty" xml:"ListenerSync,omitempty"`
-	HealthCheckDomain      *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	HealthCheckURI         *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
 	StickySessionType      *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
-	Domain                 *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	HealthCheckHttpCode    *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
 	RuleName               *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	RuleId                 *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	HealthCheckConnectPort *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	Scheduler              *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	RequestId              *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	HealthCheckTimeout     *int32  `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	ListenerSync           *string `json:"ListenerSync,omitempty" xml:"ListenerSync,omitempty"`
+	HealthyThreshold       *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	CookieTimeout          *int32  `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
+	HealthCheckDomain      *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	UnhealthyThreshold     *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	StickySession          *string `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
+	HealthCheck            *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
 }
 
 func (s DescribeRuleAttributeResponseBody) String() string {
@@ -8426,18 +8413,28 @@ func (s DescribeRuleAttributeResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRuleAttributeResponseBody) SetCookie(v string) *DescribeRuleAttributeResponseBody {
-	s.Cookie = &v
-	return s
-}
-
-func (s *DescribeRuleAttributeResponseBody) SetCookieTimeout(v int32) *DescribeRuleAttributeResponseBody {
-	s.CookieTimeout = &v
+func (s *DescribeRuleAttributeResponseBody) SetHealthCheckHttpCode(v string) *DescribeRuleAttributeResponseBody {
+	s.HealthCheckHttpCode = &v
 	return s
 }
 
 func (s *DescribeRuleAttributeResponseBody) SetVServerGroupId(v string) *DescribeRuleAttributeResponseBody {
 	s.VServerGroupId = &v
+	return s
+}
+
+func (s *DescribeRuleAttributeResponseBody) SetDomain(v string) *DescribeRuleAttributeResponseBody {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribeRuleAttributeResponseBody) SetCookie(v string) *DescribeRuleAttributeResponseBody {
+	s.Cookie = &v
+	return s
+}
+
+func (s *DescribeRuleAttributeResponseBody) SetLoadBalancerId(v string) *DescribeRuleAttributeResponseBody {
+	s.LoadBalancerId = &v
 	return s
 }
 
@@ -8451,13 +8448,8 @@ func (s *DescribeRuleAttributeResponseBody) SetHealthCheckInterval(v int32) *Des
 	return s
 }
 
-func (s *DescribeRuleAttributeResponseBody) SetRequestId(v string) *DescribeRuleAttributeResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeRuleAttributeResponseBody) SetUnhealthyThreshold(v int32) *DescribeRuleAttributeResponseBody {
-	s.UnhealthyThreshold = &v
+func (s *DescribeRuleAttributeResponseBody) SetUrl(v string) *DescribeRuleAttributeResponseBody {
+	s.Url = &v
 	return s
 }
 
@@ -8466,8 +8458,13 @@ func (s *DescribeRuleAttributeResponseBody) SetHealthCheckURI(v string) *Describ
 	return s
 }
 
-func (s *DescribeRuleAttributeResponseBody) SetScheduler(v string) *DescribeRuleAttributeResponseBody {
-	s.Scheduler = &v
+func (s *DescribeRuleAttributeResponseBody) SetStickySessionType(v string) *DescribeRuleAttributeResponseBody {
+	s.StickySessionType = &v
+	return s
+}
+
+func (s *DescribeRuleAttributeResponseBody) SetRuleName(v string) *DescribeRuleAttributeResponseBody {
+	s.RuleName = &v
 	return s
 }
 
@@ -8476,13 +8473,18 @@ func (s *DescribeRuleAttributeResponseBody) SetRuleId(v string) *DescribeRuleAtt
 	return s
 }
 
-func (s *DescribeRuleAttributeResponseBody) SetHealthCheck(v string) *DescribeRuleAttributeResponseBody {
-	s.HealthCheck = &v
+func (s *DescribeRuleAttributeResponseBody) SetHealthCheckConnectPort(v int32) *DescribeRuleAttributeResponseBody {
+	s.HealthCheckConnectPort = &v
 	return s
 }
 
-func (s *DescribeRuleAttributeResponseBody) SetLoadBalancerId(v string) *DescribeRuleAttributeResponseBody {
-	s.LoadBalancerId = &v
+func (s *DescribeRuleAttributeResponseBody) SetScheduler(v string) *DescribeRuleAttributeResponseBody {
+	s.Scheduler = &v
+	return s
+}
+
+func (s *DescribeRuleAttributeResponseBody) SetRequestId(v string) *DescribeRuleAttributeResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -8491,18 +8493,8 @@ func (s *DescribeRuleAttributeResponseBody) SetHealthCheckTimeout(v int32) *Desc
 	return s
 }
 
-func (s *DescribeRuleAttributeResponseBody) SetUrl(v string) *DescribeRuleAttributeResponseBody {
-	s.Url = &v
-	return s
-}
-
-func (s *DescribeRuleAttributeResponseBody) SetStickySession(v string) *DescribeRuleAttributeResponseBody {
-	s.StickySession = &v
-	return s
-}
-
-func (s *DescribeRuleAttributeResponseBody) SetHealthCheckConnectPort(v int32) *DescribeRuleAttributeResponseBody {
-	s.HealthCheckConnectPort = &v
+func (s *DescribeRuleAttributeResponseBody) SetListenerSync(v string) *DescribeRuleAttributeResponseBody {
+	s.ListenerSync = &v
 	return s
 }
 
@@ -8511,8 +8503,8 @@ func (s *DescribeRuleAttributeResponseBody) SetHealthyThreshold(v int32) *Descri
 	return s
 }
 
-func (s *DescribeRuleAttributeResponseBody) SetListenerSync(v string) *DescribeRuleAttributeResponseBody {
-	s.ListenerSync = &v
+func (s *DescribeRuleAttributeResponseBody) SetCookieTimeout(v int32) *DescribeRuleAttributeResponseBody {
+	s.CookieTimeout = &v
 	return s
 }
 
@@ -8521,23 +8513,18 @@ func (s *DescribeRuleAttributeResponseBody) SetHealthCheckDomain(v string) *Desc
 	return s
 }
 
-func (s *DescribeRuleAttributeResponseBody) SetStickySessionType(v string) *DescribeRuleAttributeResponseBody {
-	s.StickySessionType = &v
+func (s *DescribeRuleAttributeResponseBody) SetUnhealthyThreshold(v int32) *DescribeRuleAttributeResponseBody {
+	s.UnhealthyThreshold = &v
 	return s
 }
 
-func (s *DescribeRuleAttributeResponseBody) SetDomain(v string) *DescribeRuleAttributeResponseBody {
-	s.Domain = &v
+func (s *DescribeRuleAttributeResponseBody) SetStickySession(v string) *DescribeRuleAttributeResponseBody {
+	s.StickySession = &v
 	return s
 }
 
-func (s *DescribeRuleAttributeResponseBody) SetHealthCheckHttpCode(v string) *DescribeRuleAttributeResponseBody {
-	s.HealthCheckHttpCode = &v
-	return s
-}
-
-func (s *DescribeRuleAttributeResponseBody) SetRuleName(v string) *DescribeRuleAttributeResponseBody {
-	s.RuleName = &v
+func (s *DescribeRuleAttributeResponseBody) SetHealthCheck(v string) *DescribeRuleAttributeResponseBody {
+	s.HealthCheck = &v
 	return s
 }
 
@@ -8570,8 +8557,6 @@ type DescribeRulesRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	LoadBalancerId       *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	ListenerProtocol     *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
 	ListenerPort         *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
@@ -8607,16 +8592,6 @@ func (s *DescribeRulesRequest) SetRegionId(v string) *DescribeRulesRequest {
 
 func (s *DescribeRulesRequest) SetOwnerAccount(v string) *DescribeRulesRequest {
 	s.OwnerAccount = &v
-	return s
-}
-
-func (s *DescribeRulesRequest) SetAccessKeyId(v string) *DescribeRulesRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *DescribeRulesRequest) SetTags(v string) *DescribeRulesRequest {
-	s.Tags = &v
 	return s
 }
 
@@ -8676,18 +8651,18 @@ func (s *DescribeRulesResponseBodyRules) SetRule(v []*DescribeRulesResponseBodyR
 }
 
 type DescribeRulesResponseBodyRulesRule struct {
-	VServerGroupId         *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
 	HealthCheckHttpCode    *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	VServerGroupId         *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
 	Domain                 *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	Cookie                 *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
-	Url                    *string `json:"Url,omitempty" xml:"Url,omitempty"`
 	HealthCheckInterval    *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	Url                    *string `json:"Url,omitempty" xml:"Url,omitempty"`
 	HealthCheckURI         *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
-	RuleId                 *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	RuleName               *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	StickySessionType      *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
-	Scheduler              *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	RuleName               *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	RuleId                 *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	HealthCheckConnectPort *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	Scheduler              *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
 	HealthCheckTimeout     *int32  `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
 	ListenerSync           *string `json:"ListenerSync,omitempty" xml:"ListenerSync,omitempty"`
 	HealthyThreshold       *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
@@ -8706,13 +8681,13 @@ func (s DescribeRulesResponseBodyRulesRule) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRulesResponseBodyRulesRule) SetVServerGroupId(v string) *DescribeRulesResponseBodyRulesRule {
-	s.VServerGroupId = &v
+func (s *DescribeRulesResponseBodyRulesRule) SetHealthCheckHttpCode(v string) *DescribeRulesResponseBodyRulesRule {
+	s.HealthCheckHttpCode = &v
 	return s
 }
 
-func (s *DescribeRulesResponseBodyRulesRule) SetHealthCheckHttpCode(v string) *DescribeRulesResponseBodyRulesRule {
-	s.HealthCheckHttpCode = &v
+func (s *DescribeRulesResponseBodyRulesRule) SetVServerGroupId(v string) *DescribeRulesResponseBodyRulesRule {
+	s.VServerGroupId = &v
 	return s
 }
 
@@ -8726,13 +8701,13 @@ func (s *DescribeRulesResponseBodyRulesRule) SetCookie(v string) *DescribeRulesR
 	return s
 }
 
-func (s *DescribeRulesResponseBodyRulesRule) SetUrl(v string) *DescribeRulesResponseBodyRulesRule {
-	s.Url = &v
+func (s *DescribeRulesResponseBodyRulesRule) SetHealthCheckInterval(v int32) *DescribeRulesResponseBodyRulesRule {
+	s.HealthCheckInterval = &v
 	return s
 }
 
-func (s *DescribeRulesResponseBodyRulesRule) SetHealthCheckInterval(v int32) *DescribeRulesResponseBodyRulesRule {
-	s.HealthCheckInterval = &v
+func (s *DescribeRulesResponseBodyRulesRule) SetUrl(v string) *DescribeRulesResponseBodyRulesRule {
+	s.Url = &v
 	return s
 }
 
@@ -8741,8 +8716,8 @@ func (s *DescribeRulesResponseBodyRulesRule) SetHealthCheckURI(v string) *Descri
 	return s
 }
 
-func (s *DescribeRulesResponseBodyRulesRule) SetRuleId(v string) *DescribeRulesResponseBodyRulesRule {
-	s.RuleId = &v
+func (s *DescribeRulesResponseBodyRulesRule) SetStickySessionType(v string) *DescribeRulesResponseBodyRulesRule {
+	s.StickySessionType = &v
 	return s
 }
 
@@ -8751,18 +8726,18 @@ func (s *DescribeRulesResponseBodyRulesRule) SetRuleName(v string) *DescribeRule
 	return s
 }
 
-func (s *DescribeRulesResponseBodyRulesRule) SetStickySessionType(v string) *DescribeRulesResponseBodyRulesRule {
-	s.StickySessionType = &v
-	return s
-}
-
-func (s *DescribeRulesResponseBodyRulesRule) SetScheduler(v string) *DescribeRulesResponseBodyRulesRule {
-	s.Scheduler = &v
+func (s *DescribeRulesResponseBodyRulesRule) SetRuleId(v string) *DescribeRulesResponseBodyRulesRule {
+	s.RuleId = &v
 	return s
 }
 
 func (s *DescribeRulesResponseBodyRulesRule) SetHealthCheckConnectPort(v int32) *DescribeRulesResponseBodyRulesRule {
 	s.HealthCheckConnectPort = &v
+	return s
+}
+
+func (s *DescribeRulesResponseBodyRulesRule) SetScheduler(v string) *DescribeRulesResponseBodyRulesRule {
+	s.Scheduler = &v
 	return s
 }
 
@@ -8830,16 +8805,13 @@ func (s *DescribeRulesResponse) SetBody(v *DescribeRulesResponseBody) *DescribeR
 }
 
 type DescribeServerCertificatesRequest struct {
-	OwnerId              *int64                                  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string                                 `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                                  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	RegionId             *string                                 `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ServerCertificateId  *string                                 `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
-	OwnerAccount         *string                                 `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string                                 `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string                                 `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	ResourceGroupId      *string                                 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tag                  []*DescribeServerCertificatesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ServerCertificateId  *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s DescribeServerCertificatesRequest) String() string {
@@ -8880,35 +8852,9 @@ func (s *DescribeServerCertificatesRequest) SetOwnerAccount(v string) *DescribeS
 	return s
 }
 
-func (s *DescribeServerCertificatesRequest) SetAccessKeyId(v string) *DescribeServerCertificatesRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *DescribeServerCertificatesRequest) SetTags(v string) *DescribeServerCertificatesRequest {
-	s.Tags = &v
-	return s
-}
-
 func (s *DescribeServerCertificatesRequest) SetResourceGroupId(v string) *DescribeServerCertificatesRequest {
 	s.ResourceGroupId = &v
 	return s
-}
-
-func (s *DescribeServerCertificatesRequest) SetTag(v []*DescribeServerCertificatesRequestTag) *DescribeServerCertificatesRequest {
-	s.Tag = v
-	return s
-}
-
-type DescribeServerCertificatesRequestTag struct {
-}
-
-func (s DescribeServerCertificatesRequestTag) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeServerCertificatesRequestTag) GoString() string {
-	return s.String()
 }
 
 type DescribeServerCertificatesResponseBody struct {
@@ -8952,8 +8898,8 @@ func (s *DescribeServerCertificatesResponseBodyServerCertificates) SetServerCert
 }
 
 type DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate struct {
-	AliCloudCertificateName *string                                                                                           `json:"AliCloudCertificateName,omitempty" xml:"AliCloudCertificateName,omitempty"`
 	CreateTimeStamp         *int64                                                                                            `json:"CreateTimeStamp,omitempty" xml:"CreateTimeStamp,omitempty"`
+	AliCloudCertificateName *string                                                                                           `json:"AliCloudCertificateName,omitempty" xml:"AliCloudCertificateName,omitempty"`
 	ExpireTime              *string                                                                                           `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	CreateTime              *string                                                                                           `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	ServerCertificateId     *string                                                                                           `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
@@ -8961,11 +8907,11 @@ type DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate s
 	RegionId                *string                                                                                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ServerCertificateName   *string                                                                                           `json:"ServerCertificateName,omitempty" xml:"ServerCertificateName,omitempty"`
 	Fingerprint             *string                                                                                           `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
-	SubjectAlternativeNames *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificateSubjectAlternativeNames `json:"SubjectAlternativeNames,omitempty" xml:"SubjectAlternativeNames,omitempty" type:"Struct"`
 	CommonName              *string                                                                                           `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
 	ResourceGroupId         *string                                                                                           `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	IsAliCloudCertificate   *int32                                                                                            `json:"IsAliCloudCertificate,omitempty" xml:"IsAliCloudCertificate,omitempty"`
 	AliCloudCertificateId   *string                                                                                           `json:"AliCloudCertificateId,omitempty" xml:"AliCloudCertificateId,omitempty"`
+	SubjectAlternativeNames *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificateSubjectAlternativeNames `json:"SubjectAlternativeNames,omitempty" xml:"SubjectAlternativeNames,omitempty" type:"Struct"`
 }
 
 func (s DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate) String() string {
@@ -8976,13 +8922,13 @@ func (s DescribeServerCertificatesResponseBodyServerCertificatesServerCertificat
 	return s.String()
 }
 
-func (s *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate) SetAliCloudCertificateName(v string) *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate {
-	s.AliCloudCertificateName = &v
+func (s *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate) SetCreateTimeStamp(v int64) *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate {
+	s.CreateTimeStamp = &v
 	return s
 }
 
-func (s *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate) SetCreateTimeStamp(v int64) *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate {
-	s.CreateTimeStamp = &v
+func (s *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate) SetAliCloudCertificateName(v string) *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate {
+	s.AliCloudCertificateName = &v
 	return s
 }
 
@@ -9021,11 +8967,6 @@ func (s *DescribeServerCertificatesResponseBodyServerCertificatesServerCertifica
 	return s
 }
 
-func (s *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate) SetSubjectAlternativeNames(v *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificateSubjectAlternativeNames) *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate {
-	s.SubjectAlternativeNames = v
-	return s
-}
-
 func (s *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate) SetCommonName(v string) *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate {
 	s.CommonName = &v
 	return s
@@ -9043,6 +8984,11 @@ func (s *DescribeServerCertificatesResponseBodyServerCertificatesServerCertifica
 
 func (s *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate) SetAliCloudCertificateId(v string) *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate {
 	s.AliCloudCertificateId = &v
+	return s
+}
+
+func (s *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate) SetSubjectAlternativeNames(v *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificateSubjectAlternativeNames) *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate {
+	s.SubjectAlternativeNames = v
 	return s
 }
 
@@ -9091,7 +9037,6 @@ type DescribeTagsRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	LoadBalancerId       *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
@@ -9128,11 +9073,6 @@ func (s *DescribeTagsRequest) SetOwnerAccount(v string) *DescribeTagsRequest {
 	return s
 }
 
-func (s *DescribeTagsRequest) SetAccessKeyId(v string) *DescribeTagsRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
 func (s *DescribeTagsRequest) SetRegionId(v string) *DescribeTagsRequest {
 	s.RegionId = &v
 	return s
@@ -9164,10 +9104,10 @@ func (s *DescribeTagsRequest) SetPageNumber(v int32) *DescribeTagsRequest {
 }
 
 type DescribeTagsResponseBody struct {
-	TotalCount *int32                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId  *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageSize   *int32                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PageNumber *int32                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalCount *int32                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	TagSets    *DescribeTagsResponseBodyTagSets `json:"TagSets,omitempty" xml:"TagSets,omitempty" type:"Struct"`
 }
 
@@ -9177,11 +9117,6 @@ func (s DescribeTagsResponseBody) String() string {
 
 func (s DescribeTagsResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeTagsResponseBody) SetTotalCount(v int32) *DescribeTagsResponseBody {
-	s.TotalCount = &v
-	return s
 }
 
 func (s *DescribeTagsResponseBody) SetRequestId(v string) *DescribeTagsResponseBody {
@@ -9196,6 +9131,11 @@ func (s *DescribeTagsResponseBody) SetPageSize(v int32) *DescribeTagsResponseBod
 
 func (s *DescribeTagsResponseBody) SetPageNumber(v int32) *DescribeTagsResponseBody {
 	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeTagsResponseBody) SetTotalCount(v int32) *DescribeTagsResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -9222,8 +9162,8 @@ func (s *DescribeTagsResponseBodyTagSets) SetTagSet(v []*DescribeTagsResponseBod
 }
 
 type DescribeTagsResponseBodyTagSetsTagSet struct {
-	InstanceCount *int32  `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
 	TagValue      *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	InstanceCount *int32  `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
 	TagKey        *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 }
 
@@ -9235,13 +9175,13 @@ func (s DescribeTagsResponseBodyTagSetsTagSet) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeTagsResponseBodyTagSetsTagSet) SetInstanceCount(v int32) *DescribeTagsResponseBodyTagSetsTagSet {
-	s.InstanceCount = &v
+func (s *DescribeTagsResponseBodyTagSetsTagSet) SetTagValue(v string) *DescribeTagsResponseBodyTagSetsTagSet {
+	s.TagValue = &v
 	return s
 }
 
-func (s *DescribeTagsResponseBodyTagSetsTagSet) SetTagValue(v string) *DescribeTagsResponseBodyTagSetsTagSet {
-	s.TagValue = &v
+func (s *DescribeTagsResponseBodyTagSetsTagSet) SetInstanceCount(v int32) *DescribeTagsResponseBodyTagSetsTagSet {
+	s.InstanceCount = &v
 	return s
 }
 
@@ -9279,8 +9219,6 @@ type DescribeVServerGroupAttributeRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	VServerGroupId       *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
 }
 
@@ -9317,16 +9255,6 @@ func (s *DescribeVServerGroupAttributeRequest) SetOwnerAccount(v string) *Descri
 	return s
 }
 
-func (s *DescribeVServerGroupAttributeRequest) SetAccessKeyId(v string) *DescribeVServerGroupAttributeRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *DescribeVServerGroupAttributeRequest) SetTags(v string) *DescribeVServerGroupAttributeRequest {
-	s.Tags = &v
-	return s
-}
-
 func (s *DescribeVServerGroupAttributeRequest) SetVServerGroupId(v string) *DescribeVServerGroupAttributeRequest {
 	s.VServerGroupId = &v
 	return s
@@ -9334,8 +9262,8 @@ func (s *DescribeVServerGroupAttributeRequest) SetVServerGroupId(v string) *Desc
 
 type DescribeVServerGroupAttributeResponseBody struct {
 	VServerGroupId   *string                                                  `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
-	RequestId        *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	VServerGroupName *string                                                  `json:"VServerGroupName,omitempty" xml:"VServerGroupName,omitempty"`
+	RequestId        *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	LoadBalancerId   *string                                                  `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	BackendServers   *DescribeVServerGroupAttributeResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
 }
@@ -9353,13 +9281,13 @@ func (s *DescribeVServerGroupAttributeResponseBody) SetVServerGroupId(v string) 
 	return s
 }
 
-func (s *DescribeVServerGroupAttributeResponseBody) SetRequestId(v string) *DescribeVServerGroupAttributeResponseBody {
-	s.RequestId = &v
+func (s *DescribeVServerGroupAttributeResponseBody) SetVServerGroupName(v string) *DescribeVServerGroupAttributeResponseBody {
+	s.VServerGroupName = &v
 	return s
 }
 
-func (s *DescribeVServerGroupAttributeResponseBody) SetVServerGroupName(v string) *DescribeVServerGroupAttributeResponseBody {
-	s.VServerGroupName = &v
+func (s *DescribeVServerGroupAttributeResponseBody) SetRequestId(v string) *DescribeVServerGroupAttributeResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -9460,8 +9388,6 @@ type DescribeVServerGroupsRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	LoadBalancerId       *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	IncludeRule          *bool   `json:"IncludeRule,omitempty" xml:"IncludeRule,omitempty"`
 	IncludeListener      *bool   `json:"IncludeListener,omitempty" xml:"IncludeListener,omitempty"`
@@ -9497,16 +9423,6 @@ func (s *DescribeVServerGroupsRequest) SetRegionId(v string) *DescribeVServerGro
 
 func (s *DescribeVServerGroupsRequest) SetOwnerAccount(v string) *DescribeVServerGroupsRequest {
 	s.OwnerAccount = &v
-	return s
-}
-
-func (s *DescribeVServerGroupsRequest) SetAccessKeyId(v string) *DescribeVServerGroupsRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *DescribeVServerGroupsRequest) SetTags(v string) *DescribeVServerGroupsRequest {
-	s.Tags = &v
 	return s
 }
 
@@ -9635,8 +9551,8 @@ func (s *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObj
 }
 
 type DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsListenersListener struct {
-	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 }
 
 func (s DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsListenersListener) String() string {
@@ -9647,13 +9563,13 @@ func (s DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObje
 	return s.String()
 }
 
-func (s *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsListenersListener) SetProtocol(v string) *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsListenersListener {
-	s.Protocol = &v
+func (s *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsListenersListener) SetPort(v int32) *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsListenersListener {
+	s.Port = &v
 	return s
 }
 
-func (s *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsListenersListener) SetPort(v int32) *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsListenersListener {
-	s.Port = &v
+func (s *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsListenersListener) SetProtocol(v string) *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsListenersListener {
+	s.Protocol = &v
 	return s
 }
 
@@ -9675,8 +9591,8 @@ func (s *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObj
 }
 
 type DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsRulesRule struct {
-	Domain   *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	Url      *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	Domain   *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	RuleId   *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
@@ -9689,13 +9605,13 @@ func (s DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObje
 	return s.String()
 }
 
-func (s *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsRulesRule) SetDomain(v string) *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsRulesRule {
-	s.Domain = &v
+func (s *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsRulesRule) SetUrl(v string) *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsRulesRule {
+	s.Url = &v
 	return s
 }
 
-func (s *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsRulesRule) SetUrl(v string) *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsRulesRule {
-	s.Url = &v
+func (s *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsRulesRule) SetDomain(v string) *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsRulesRule {
+	s.Domain = &v
 	return s
 }
 
@@ -9737,8 +9653,6 @@ type DescribeZonesRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -9767,16 +9681,6 @@ func (s *DescribeZonesRequest) SetResourceOwnerId(v int64) *DescribeZonesRequest
 
 func (s *DescribeZonesRequest) SetOwnerAccount(v string) *DescribeZonesRequest {
 	s.OwnerAccount = &v
-	return s
-}
-
-func (s *DescribeZonesRequest) SetAccessKeyId(v string) *DescribeZonesRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *DescribeZonesRequest) SetTags(v string) *DescribeZonesRequest {
-	s.Tags = &v
 	return s
 }
 
@@ -9826,8 +9730,8 @@ func (s *DescribeZonesResponseBodyZones) SetZone(v []*DescribeZonesResponseBodyZ
 }
 
 type DescribeZonesResponseBodyZonesZone struct {
-	LocalName  *string                                       `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	ZoneId     *string                                       `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	LocalName  *string                                       `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	SlaveZones *DescribeZonesResponseBodyZonesZoneSlaveZones `json:"SlaveZones,omitempty" xml:"SlaveZones,omitempty" type:"Struct"`
 }
 
@@ -9839,13 +9743,13 @@ func (s DescribeZonesResponseBodyZonesZone) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeZonesResponseBodyZonesZone) SetLocalName(v string) *DescribeZonesResponseBodyZonesZone {
-	s.LocalName = &v
+func (s *DescribeZonesResponseBodyZonesZone) SetZoneId(v string) *DescribeZonesResponseBodyZonesZone {
+	s.ZoneId = &v
 	return s
 }
 
-func (s *DescribeZonesResponseBodyZonesZone) SetZoneId(v string) *DescribeZonesResponseBodyZonesZone {
-	s.ZoneId = &v
+func (s *DescribeZonesResponseBodyZonesZone) SetLocalName(v string) *DescribeZonesResponseBodyZonesZone {
+	s.LocalName = &v
 	return s
 }
 
@@ -9872,8 +9776,8 @@ func (s *DescribeZonesResponseBodyZonesZoneSlaveZones) SetSlaveZone(v []*Describ
 }
 
 type DescribeZonesResponseBodyZonesZoneSlaveZonesSlaveZone struct {
-	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 }
 
 func (s DescribeZonesResponseBodyZonesZoneSlaveZonesSlaveZone) String() string {
@@ -9884,13 +9788,13 @@ func (s DescribeZonesResponseBodyZonesZoneSlaveZonesSlaveZone) GoString() string
 	return s.String()
 }
 
-func (s *DescribeZonesResponseBodyZonesZoneSlaveZonesSlaveZone) SetLocalName(v string) *DescribeZonesResponseBodyZonesZoneSlaveZonesSlaveZone {
-	s.LocalName = &v
+func (s *DescribeZonesResponseBodyZonesZoneSlaveZonesSlaveZone) SetZoneId(v string) *DescribeZonesResponseBodyZonesZoneSlaveZonesSlaveZone {
+	s.ZoneId = &v
 	return s
 }
 
-func (s *DescribeZonesResponseBodyZonesZoneSlaveZonesSlaveZone) SetZoneId(v string) *DescribeZonesResponseBodyZonesZoneSlaveZonesSlaveZone {
-	s.ZoneId = &v
+func (s *DescribeZonesResponseBodyZonesZoneSlaveZonesSlaveZone) SetLocalName(v string) *DescribeZonesResponseBodyZonesZoneSlaveZonesSlaveZone {
+	s.LocalName = &v
 	return s
 }
 
@@ -9922,7 +9826,6 @@ type ListTagResourcesRequest struct {
 	ResourceOwnerAccount *string                       `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64                        `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	OwnerAccount         *string                       `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string                       `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
 	RegionId             *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceType         *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	NextToken            *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
@@ -9955,11 +9858,6 @@ func (s *ListTagResourcesRequest) SetResourceOwnerId(v int64) *ListTagResourcesR
 
 func (s *ListTagResourcesRequest) SetOwnerAccount(v string) *ListTagResourcesRequest {
 	s.OwnerAccount = &v
-	return s
-}
-
-func (s *ListTagResourcesRequest) SetAccessKeyId(v string) *ListTagResourcesRequest {
-	s.AccessKeyId = &v
 	return s
 }
 
@@ -10058,8 +9956,8 @@ func (s *ListTagResourcesResponseBodyTagResources) SetTagResource(v []*ListTagRe
 }
 
 type ListTagResourcesResponseBodyTagResourcesTagResource struct {
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 }
@@ -10072,13 +9970,13 @@ func (s ListTagResourcesResponseBodyTagResourcesTagResource) GoString() string {
 	return s.String()
 }
 
-func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetResourceType(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
-	s.ResourceType = &v
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagValue(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
+	s.TagValue = &v
 	return s
 }
 
-func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagValue(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
-	s.TagValue = &v
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetResourceType(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
+	s.ResourceType = &v
 	return s
 }
 
@@ -10193,11 +10091,11 @@ func (s *ListTLSCipherPoliciesRequest) SetMaxItems(v int32) *ListTLSCipherPolici
 }
 
 type ListTLSCipherPoliciesResponseBody struct {
-	TotalCount        *int32                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	NextToken         *string                                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RequestId         *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TLSCipherPolicies []*ListTLSCipherPoliciesResponseBodyTLSCipherPolicies `json:"TLSCipherPolicies,omitempty" xml:"TLSCipherPolicies,omitempty" type:"Repeated"`
+	TotalCount        *int32                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	IsTruncated       *bool                                                 `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	TLSCipherPolicies []*ListTLSCipherPoliciesResponseBodyTLSCipherPolicies `json:"TLSCipherPolicies,omitempty" xml:"TLSCipherPolicies,omitempty" type:"Repeated"`
 }
 
 func (s ListTLSCipherPoliciesResponseBody) String() string {
@@ -10206,11 +10104,6 @@ func (s ListTLSCipherPoliciesResponseBody) String() string {
 
 func (s ListTLSCipherPoliciesResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *ListTLSCipherPoliciesResponseBody) SetTotalCount(v int32) *ListTLSCipherPoliciesResponseBody {
-	s.TotalCount = &v
-	return s
 }
 
 func (s *ListTLSCipherPoliciesResponseBody) SetNextToken(v string) *ListTLSCipherPoliciesResponseBody {
@@ -10223,8 +10116,8 @@ func (s *ListTLSCipherPoliciesResponseBody) SetRequestId(v string) *ListTLSCiphe
 	return s
 }
 
-func (s *ListTLSCipherPoliciesResponseBody) SetTLSCipherPolicies(v []*ListTLSCipherPoliciesResponseBodyTLSCipherPolicies) *ListTLSCipherPoliciesResponseBody {
-	s.TLSCipherPolicies = v
+func (s *ListTLSCipherPoliciesResponseBody) SetTotalCount(v int32) *ListTLSCipherPoliciesResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -10233,14 +10126,19 @@ func (s *ListTLSCipherPoliciesResponseBody) SetIsTruncated(v bool) *ListTLSCiphe
 	return s
 }
 
+func (s *ListTLSCipherPoliciesResponseBody) SetTLSCipherPolicies(v []*ListTLSCipherPoliciesResponseBodyTLSCipherPolicies) *ListTLSCipherPoliciesResponseBody {
+	s.TLSCipherPolicies = v
+	return s
+}
+
 type ListTLSCipherPoliciesResponseBodyTLSCipherPolicies struct {
 	Status          *string                                                              `json:"Status,omitempty" xml:"Status,omitempty"`
-	RelateListeners []*ListTLSCipherPoliciesResponseBodyTLSCipherPoliciesRelateListeners `json:"RelateListeners,omitempty" xml:"RelateListeners,omitempty" type:"Repeated"`
-	CreateTime      *int64                                                               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Ciphers         []*string                                                            `json:"Ciphers,omitempty" xml:"Ciphers,omitempty" type:"Repeated"`
 	InstanceId      *string                                                              `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Name            *string                                                              `json:"Name,omitempty" xml:"Name,omitempty"`
+	CreateTime      *int64                                                               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	RelateListeners []*ListTLSCipherPoliciesResponseBodyTLSCipherPoliciesRelateListeners `json:"RelateListeners,omitempty" xml:"RelateListeners,omitempty" type:"Repeated"`
 	TLSVersions     []*string                                                            `json:"TLSVersions,omitempty" xml:"TLSVersions,omitempty" type:"Repeated"`
+	Ciphers         []*string                                                            `json:"Ciphers,omitempty" xml:"Ciphers,omitempty" type:"Repeated"`
 }
 
 func (s ListTLSCipherPoliciesResponseBodyTLSCipherPolicies) String() string {
@@ -10256,21 +10154,6 @@ func (s *ListTLSCipherPoliciesResponseBodyTLSCipherPolicies) SetStatus(v string)
 	return s
 }
 
-func (s *ListTLSCipherPoliciesResponseBodyTLSCipherPolicies) SetRelateListeners(v []*ListTLSCipherPoliciesResponseBodyTLSCipherPoliciesRelateListeners) *ListTLSCipherPoliciesResponseBodyTLSCipherPolicies {
-	s.RelateListeners = v
-	return s
-}
-
-func (s *ListTLSCipherPoliciesResponseBodyTLSCipherPolicies) SetCreateTime(v int64) *ListTLSCipherPoliciesResponseBodyTLSCipherPolicies {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *ListTLSCipherPoliciesResponseBodyTLSCipherPolicies) SetCiphers(v []*string) *ListTLSCipherPoliciesResponseBodyTLSCipherPolicies {
-	s.Ciphers = v
-	return s
-}
-
 func (s *ListTLSCipherPoliciesResponseBodyTLSCipherPolicies) SetInstanceId(v string) *ListTLSCipherPoliciesResponseBodyTLSCipherPolicies {
 	s.InstanceId = &v
 	return s
@@ -10281,15 +10164,30 @@ func (s *ListTLSCipherPoliciesResponseBodyTLSCipherPolicies) SetName(v string) *
 	return s
 }
 
+func (s *ListTLSCipherPoliciesResponseBodyTLSCipherPolicies) SetCreateTime(v int64) *ListTLSCipherPoliciesResponseBodyTLSCipherPolicies {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListTLSCipherPoliciesResponseBodyTLSCipherPolicies) SetRelateListeners(v []*ListTLSCipherPoliciesResponseBodyTLSCipherPoliciesRelateListeners) *ListTLSCipherPoliciesResponseBodyTLSCipherPolicies {
+	s.RelateListeners = v
+	return s
+}
+
 func (s *ListTLSCipherPoliciesResponseBodyTLSCipherPolicies) SetTLSVersions(v []*string) *ListTLSCipherPoliciesResponseBodyTLSCipherPolicies {
 	s.TLSVersions = v
 	return s
 }
 
+func (s *ListTLSCipherPoliciesResponseBodyTLSCipherPolicies) SetCiphers(v []*string) *ListTLSCipherPoliciesResponseBodyTLSCipherPolicies {
+	s.Ciphers = v
+	return s
+}
+
 type ListTLSCipherPoliciesResponseBodyTLSCipherPoliciesRelateListeners struct {
+	Port           *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
 	Protocol       *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	Port           *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
 }
 
 func (s ListTLSCipherPoliciesResponseBodyTLSCipherPoliciesRelateListeners) String() string {
@@ -10300,6 +10198,11 @@ func (s ListTLSCipherPoliciesResponseBodyTLSCipherPoliciesRelateListeners) GoStr
 	return s.String()
 }
 
+func (s *ListTLSCipherPoliciesResponseBodyTLSCipherPoliciesRelateListeners) SetPort(v int32) *ListTLSCipherPoliciesResponseBodyTLSCipherPoliciesRelateListeners {
+	s.Port = &v
+	return s
+}
+
 func (s *ListTLSCipherPoliciesResponseBodyTLSCipherPoliciesRelateListeners) SetProtocol(v string) *ListTLSCipherPoliciesResponseBodyTLSCipherPoliciesRelateListeners {
 	s.Protocol = &v
 	return s
@@ -10307,11 +10210,6 @@ func (s *ListTLSCipherPoliciesResponseBodyTLSCipherPoliciesRelateListeners) SetP
 
 func (s *ListTLSCipherPoliciesResponseBodyTLSCipherPoliciesRelateListeners) SetLoadBalancerId(v string) *ListTLSCipherPoliciesResponseBodyTLSCipherPoliciesRelateListeners {
 	s.LoadBalancerId = &v
-	return s
-}
-
-func (s *ListTLSCipherPoliciesResponseBodyTLSCipherPoliciesRelateListeners) SetPort(v int32) *ListTLSCipherPoliciesResponseBodyTLSCipherPoliciesRelateListeners {
-	s.Port = &v
 	return s
 }
 
@@ -10345,8 +10243,6 @@ type ModifyLoadBalancerInstanceSpecRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	LoadBalancerId       *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	LoadBalancerSpec     *string `json:"LoadBalancerSpec,omitempty" xml:"LoadBalancerSpec,omitempty"`
 	AutoPay              *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 }
@@ -10389,16 +10285,6 @@ func (s *ModifyLoadBalancerInstanceSpecRequest) SetOwnerAccount(v string) *Modif
 	return s
 }
 
-func (s *ModifyLoadBalancerInstanceSpecRequest) SetAccessKeyId(v string) *ModifyLoadBalancerInstanceSpecRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *ModifyLoadBalancerInstanceSpecRequest) SetTags(v string) *ModifyLoadBalancerInstanceSpecRequest {
-	s.Tags = &v
-	return s
-}
-
 func (s *ModifyLoadBalancerInstanceSpecRequest) SetLoadBalancerSpec(v string) *ModifyLoadBalancerInstanceSpecRequest {
 	s.LoadBalancerSpec = &v
 	return s
@@ -10410,8 +10296,8 @@ func (s *ModifyLoadBalancerInstanceSpecRequest) SetAutoPay(v bool) *ModifyLoadBa
 }
 
 type ModifyLoadBalancerInstanceSpecResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	OrderId   *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ModifyLoadBalancerInstanceSpecResponseBody) String() string {
@@ -10422,13 +10308,13 @@ func (s ModifyLoadBalancerInstanceSpecResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyLoadBalancerInstanceSpecResponseBody) SetRequestId(v string) *ModifyLoadBalancerInstanceSpecResponseBody {
-	s.RequestId = &v
+func (s *ModifyLoadBalancerInstanceSpecResponseBody) SetOrderId(v int64) *ModifyLoadBalancerInstanceSpecResponseBody {
+	s.OrderId = &v
 	return s
 }
 
-func (s *ModifyLoadBalancerInstanceSpecResponseBody) SetOrderId(v int64) *ModifyLoadBalancerInstanceSpecResponseBody {
-	s.OrderId = &v
+func (s *ModifyLoadBalancerInstanceSpecResponseBody) SetRequestId(v string) *ModifyLoadBalancerInstanceSpecResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -10464,10 +10350,7 @@ type ModifyLoadBalancerInternetSpecRequest struct {
 	InternetChargeType   *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
 	Bandwidth            *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	AutoPay              *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	Ratio                *int32  `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
 }
 
 func (s ModifyLoadBalancerInternetSpecRequest) String() string {
@@ -10518,29 +10401,14 @@ func (s *ModifyLoadBalancerInternetSpecRequest) SetOwnerAccount(v string) *Modif
 	return s
 }
 
-func (s *ModifyLoadBalancerInternetSpecRequest) SetAccessKeyId(v string) *ModifyLoadBalancerInternetSpecRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *ModifyLoadBalancerInternetSpecRequest) SetTags(v string) *ModifyLoadBalancerInternetSpecRequest {
-	s.Tags = &v
-	return s
-}
-
 func (s *ModifyLoadBalancerInternetSpecRequest) SetAutoPay(v bool) *ModifyLoadBalancerInternetSpecRequest {
 	s.AutoPay = &v
 	return s
 }
 
-func (s *ModifyLoadBalancerInternetSpecRequest) SetRatio(v int32) *ModifyLoadBalancerInternetSpecRequest {
-	s.Ratio = &v
-	return s
-}
-
 type ModifyLoadBalancerInternetSpecResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	OrderId   *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ModifyLoadBalancerInternetSpecResponseBody) String() string {
@@ -10551,13 +10419,13 @@ func (s ModifyLoadBalancerInternetSpecResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyLoadBalancerInternetSpecResponseBody) SetRequestId(v string) *ModifyLoadBalancerInternetSpecResponseBody {
-	s.RequestId = &v
+func (s *ModifyLoadBalancerInternetSpecResponseBody) SetOrderId(v int64) *ModifyLoadBalancerInternetSpecResponseBody {
+	s.OrderId = &v
 	return s
 }
 
-func (s *ModifyLoadBalancerInternetSpecResponseBody) SetOrderId(v int64) *ModifyLoadBalancerInternetSpecResponseBody {
-	s.OrderId = &v
+func (s *ModifyLoadBalancerInternetSpecResponseBody) SetRequestId(v string) *ModifyLoadBalancerInternetSpecResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -10590,8 +10458,6 @@ type ModifyLoadBalancerPayTypeRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	LoadBalancerId       *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	PayType              *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	PricingCycle         *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
@@ -10632,16 +10498,6 @@ func (s *ModifyLoadBalancerPayTypeRequest) SetOwnerAccount(v string) *ModifyLoad
 	return s
 }
 
-func (s *ModifyLoadBalancerPayTypeRequest) SetAccessKeyId(v string) *ModifyLoadBalancerPayTypeRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *ModifyLoadBalancerPayTypeRequest) SetTags(v string) *ModifyLoadBalancerPayTypeRequest {
-	s.Tags = &v
-	return s
-}
-
 func (s *ModifyLoadBalancerPayTypeRequest) SetLoadBalancerId(v string) *ModifyLoadBalancerPayTypeRequest {
 	s.LoadBalancerId = &v
 	return s
@@ -10668,8 +10524,8 @@ func (s *ModifyLoadBalancerPayTypeRequest) SetAutoPay(v bool) *ModifyLoadBalance
 }
 
 type ModifyLoadBalancerPayTypeResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	OrderId   *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ModifyLoadBalancerPayTypeResponseBody) String() string {
@@ -10680,13 +10536,13 @@ func (s ModifyLoadBalancerPayTypeResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyLoadBalancerPayTypeResponseBody) SetRequestId(v string) *ModifyLoadBalancerPayTypeResponseBody {
-	s.RequestId = &v
+func (s *ModifyLoadBalancerPayTypeResponseBody) SetOrderId(v int64) *ModifyLoadBalancerPayTypeResponseBody {
+	s.OrderId = &v
 	return s
 }
 
-func (s *ModifyLoadBalancerPayTypeResponseBody) SetOrderId(v int64) *ModifyLoadBalancerPayTypeResponseBody {
-	s.OrderId = &v
+func (s *ModifyLoadBalancerPayTypeResponseBody) SetRequestId(v string) *ModifyLoadBalancerPayTypeResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -10719,8 +10575,6 @@ type ModifyVServerGroupBackendServersRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	VServerGroupId       *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
 	OldBackendServers    *string `json:"OldBackendServers,omitempty" xml:"OldBackendServers,omitempty"`
 	NewBackendServers    *string `json:"NewBackendServers,omitempty" xml:"NewBackendServers,omitempty"`
@@ -10756,16 +10610,6 @@ func (s *ModifyVServerGroupBackendServersRequest) SetRegionId(v string) *ModifyV
 
 func (s *ModifyVServerGroupBackendServersRequest) SetOwnerAccount(v string) *ModifyVServerGroupBackendServersRequest {
 	s.OwnerAccount = &v
-	return s
-}
-
-func (s *ModifyVServerGroupBackendServersRequest) SetAccessKeyId(v string) *ModifyVServerGroupBackendServersRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *ModifyVServerGroupBackendServersRequest) SetTags(v string) *ModifyVServerGroupBackendServersRequest {
-	s.Tags = &v
 	return s
 }
 
@@ -10899,8 +10743,6 @@ type RemoveAccessControlListEntryRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	AclId                *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	AclEntrys            *string `json:"AclEntrys,omitempty" xml:"AclEntrys,omitempty"`
@@ -10931,16 +10773,6 @@ func (s *RemoveAccessControlListEntryRequest) SetResourceOwnerId(v int64) *Remov
 
 func (s *RemoveAccessControlListEntryRequest) SetOwnerAccount(v string) *RemoveAccessControlListEntryRequest {
 	s.OwnerAccount = &v
-	return s
-}
-
-func (s *RemoveAccessControlListEntryRequest) SetAccessKeyId(v string) *RemoveAccessControlListEntryRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *RemoveAccessControlListEntryRequest) SetTags(v string) *RemoveAccessControlListEntryRequest {
-	s.Tags = &v
 	return s
 }
 
@@ -11007,8 +10839,6 @@ type RemoveBackendServersRequest struct {
 	LoadBalancerId       *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	BackendServers       *string `json:"BackendServers,omitempty" xml:"BackendServers,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s RemoveBackendServersRequest) String() string {
@@ -11054,19 +10884,9 @@ func (s *RemoveBackendServersRequest) SetOwnerAccount(v string) *RemoveBackendSe
 	return s
 }
 
-func (s *RemoveBackendServersRequest) SetAccessKeyId(v string) *RemoveBackendServersRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *RemoveBackendServersRequest) SetTags(v string) *RemoveBackendServersRequest {
-	s.Tags = &v
-	return s
-}
-
 type RemoveBackendServersResponseBody struct {
-	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	LoadBalancerId *string                                         `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	BackendServers *RemoveBackendServersResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
 }
 
@@ -11078,13 +10898,13 @@ func (s RemoveBackendServersResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *RemoveBackendServersResponseBody) SetRequestId(v string) *RemoveBackendServersResponseBody {
-	s.RequestId = &v
+func (s *RemoveBackendServersResponseBody) SetLoadBalancerId(v string) *RemoveBackendServersResponseBody {
+	s.LoadBalancerId = &v
 	return s
 }
 
-func (s *RemoveBackendServersResponseBody) SetLoadBalancerId(v string) *RemoveBackendServersResponseBody {
-	s.LoadBalancerId = &v
+func (s *RemoveBackendServersResponseBody) SetRequestId(v string) *RemoveBackendServersResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -11177,9 +10997,7 @@ type RemoveListenerWhiteListItemRequest struct {
 	ListenerPort         *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	SourceItems          *string `json:"SourceItems,omitempty" xml:"SourceItems,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
 	ListenerProtocol     *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s RemoveListenerWhiteListItemRequest) String() string {
@@ -11230,18 +11048,8 @@ func (s *RemoveListenerWhiteListItemRequest) SetOwnerAccount(v string) *RemoveLi
 	return s
 }
 
-func (s *RemoveListenerWhiteListItemRequest) SetAccessKeyId(v string) *RemoveListenerWhiteListItemRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
 func (s *RemoveListenerWhiteListItemRequest) SetListenerProtocol(v string) *RemoveListenerWhiteListItemRequest {
 	s.ListenerProtocol = &v
-	return s
-}
-
-func (s *RemoveListenerWhiteListItemRequest) SetTags(v string) *RemoveListenerWhiteListItemRequest {
-	s.Tags = &v
 	return s
 }
 
@@ -11290,7 +11098,6 @@ type RemoveTagsRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	LoadBalancerId       *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
@@ -11321,11 +11128,6 @@ func (s *RemoveTagsRequest) SetResourceOwnerId(v int64) *RemoveTagsRequest {
 
 func (s *RemoveTagsRequest) SetOwnerAccount(v string) *RemoveTagsRequest {
 	s.OwnerAccount = &v
-	return s
-}
-
-func (s *RemoveTagsRequest) SetAccessKeyId(v string) *RemoveTagsRequest {
-	s.AccessKeyId = &v
 	return s
 }
 
@@ -11390,8 +11192,6 @@ type RemoveVServerGroupBackendServersRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	VServerGroupId       *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
 	BackendServers       *string `json:"BackendServers,omitempty" xml:"BackendServers,omitempty"`
 }
@@ -11426,16 +11226,6 @@ func (s *RemoveVServerGroupBackendServersRequest) SetRegionId(v string) *RemoveV
 
 func (s *RemoveVServerGroupBackendServersRequest) SetOwnerAccount(v string) *RemoveVServerGroupBackendServersRequest {
 	s.OwnerAccount = &v
-	return s
-}
-
-func (s *RemoveVServerGroupBackendServersRequest) SetAccessKeyId(v string) *RemoveVServerGroupBackendServersRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *RemoveVServerGroupBackendServersRequest) SetTags(v string) *RemoveVServerGroupBackendServersRequest {
-	s.Tags = &v
 	return s
 }
 
@@ -11496,11 +11286,10 @@ func (s *RemoveVServerGroupBackendServersResponseBodyBackendServers) SetBackendS
 }
 
 type RemoveVServerGroupBackendServersResponseBodyBackendServersBackendServer struct {
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Weight      *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Port        *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	ServerId    *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Weight   *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
 }
 
 func (s RemoveVServerGroupBackendServersResponseBodyBackendServersBackendServer) String() string {
@@ -11518,11 +11307,6 @@ func (s *RemoveVServerGroupBackendServersResponseBodyBackendServersBackendServer
 
 func (s *RemoveVServerGroupBackendServersResponseBodyBackendServersBackendServer) SetWeight(v int32) *RemoveVServerGroupBackendServersResponseBodyBackendServersBackendServer {
 	s.Weight = &v
-	return s
-}
-
-func (s *RemoveVServerGroupBackendServersResponseBodyBackendServersBackendServer) SetDescription(v string) *RemoveVServerGroupBackendServersResponseBodyBackendServersBackendServer {
-	s.Description = &v
 	return s
 }
 
@@ -11564,8 +11348,6 @@ type SetAccessControlListAttributeRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	AclId                *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	AclName              *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
@@ -11599,16 +11381,6 @@ func (s *SetAccessControlListAttributeRequest) SetOwnerAccount(v string) *SetAcc
 	return s
 }
 
-func (s *SetAccessControlListAttributeRequest) SetAccessKeyId(v string) *SetAccessControlListAttributeRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *SetAccessControlListAttributeRequest) SetTags(v string) *SetAccessControlListAttributeRequest {
-	s.Tags = &v
-	return s
-}
-
 func (s *SetAccessControlListAttributeRequest) SetRegionId(v string) *SetAccessControlListAttributeRequest {
 	s.RegionId = &v
 	return s
@@ -11625,8 +11397,8 @@ func (s *SetAccessControlListAttributeRequest) SetAclName(v string) *SetAccessCo
 }
 
 type SetAccessControlListAttributeResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	AclId     *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SetAccessControlListAttributeResponseBody) String() string {
@@ -11637,13 +11409,13 @@ func (s SetAccessControlListAttributeResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SetAccessControlListAttributeResponseBody) SetRequestId(v string) *SetAccessControlListAttributeResponseBody {
-	s.RequestId = &v
+func (s *SetAccessControlListAttributeResponseBody) SetAclId(v string) *SetAccessControlListAttributeResponseBody {
+	s.AclId = &v
 	return s
 }
 
-func (s *SetAccessControlListAttributeResponseBody) SetAclId(v string) *SetAccessControlListAttributeResponseBody {
-	s.AclId = &v
+func (s *SetAccessControlListAttributeResponseBody) SetRequestId(v string) *SetAccessControlListAttributeResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -11678,8 +11450,6 @@ type SetBackendServersRequest struct {
 	LoadBalancerId       *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	BackendServers       *string `json:"BackendServers,omitempty" xml:"BackendServers,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s SetBackendServersRequest) String() string {
@@ -11725,19 +11495,9 @@ func (s *SetBackendServersRequest) SetOwnerAccount(v string) *SetBackendServersR
 	return s
 }
 
-func (s *SetBackendServersRequest) SetAccessKeyId(v string) *SetBackendServersRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *SetBackendServersRequest) SetTags(v string) *SetBackendServersRequest {
-	s.Tags = &v
-	return s
-}
-
 type SetBackendServersResponseBody struct {
-	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	LoadBalancerId *string                                      `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	BackendServers *SetBackendServersResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
 }
 
@@ -11749,13 +11509,13 @@ func (s SetBackendServersResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SetBackendServersResponseBody) SetRequestId(v string) *SetBackendServersResponseBody {
-	s.RequestId = &v
+func (s *SetBackendServersResponseBody) SetLoadBalancerId(v string) *SetBackendServersResponseBody {
+	s.LoadBalancerId = &v
 	return s
 }
 
-func (s *SetBackendServersResponseBody) SetLoadBalancerId(v string) *SetBackendServersResponseBody {
-	s.LoadBalancerId = &v
+func (s *SetBackendServersResponseBody) SetRequestId(v string) *SetBackendServersResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -11844,7 +11604,6 @@ type SetCACertificateNameRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	CACertificateId      *string `json:"CACertificateId,omitempty" xml:"CACertificateId,omitempty"`
 	CACertificateName    *string `json:"CACertificateName,omitempty" xml:"CACertificateName,omitempty"`
@@ -11875,11 +11634,6 @@ func (s *SetCACertificateNameRequest) SetResourceOwnerId(v int64) *SetCACertific
 
 func (s *SetCACertificateNameRequest) SetOwnerAccount(v string) *SetCACertificateNameRequest {
 	s.OwnerAccount = &v
-	return s
-}
-
-func (s *SetCACertificateNameRequest) SetAccessKeyId(v string) *SetCACertificateNameRequest {
-	s.AccessKeyId = &v
 	return s
 }
 
@@ -11939,17 +11693,13 @@ func (s *SetCACertificateNameResponse) SetBody(v *SetCACertificateNameResponseBo
 }
 
 type SetDomainExtensionAttributeRequest struct {
-	OwnerId              *int64                                                 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string                                                `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                                                 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	RegionId             *string                                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	OwnerAccount         *string                                                `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string                                                `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string                                                `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	DomainExtensionId    *string                                                `json:"DomainExtensionId,omitempty" xml:"DomainExtensionId,omitempty"`
-	ServerCertificateId  *string                                                `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
-	CertificateId        []*string                                              `json:"CertificateId,omitempty" xml:"CertificateId,omitempty" type:"Repeated"`
-	ServerCertificate    []*SetDomainExtensionAttributeRequestServerCertificate `json:"ServerCertificate,omitempty" xml:"ServerCertificate,omitempty" type:"Repeated"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	DomainExtensionId    *string `json:"DomainExtensionId,omitempty" xml:"DomainExtensionId,omitempty"`
+	ServerCertificateId  *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
 }
 
 func (s SetDomainExtensionAttributeRequest) String() string {
@@ -11985,16 +11735,6 @@ func (s *SetDomainExtensionAttributeRequest) SetOwnerAccount(v string) *SetDomai
 	return s
 }
 
-func (s *SetDomainExtensionAttributeRequest) SetAccessKeyId(v string) *SetDomainExtensionAttributeRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *SetDomainExtensionAttributeRequest) SetTags(v string) *SetDomainExtensionAttributeRequest {
-	s.Tags = &v
-	return s
-}
-
 func (s *SetDomainExtensionAttributeRequest) SetDomainExtensionId(v string) *SetDomainExtensionAttributeRequest {
 	s.DomainExtensionId = &v
 	return s
@@ -12003,27 +11743,6 @@ func (s *SetDomainExtensionAttributeRequest) SetDomainExtensionId(v string) *Set
 func (s *SetDomainExtensionAttributeRequest) SetServerCertificateId(v string) *SetDomainExtensionAttributeRequest {
 	s.ServerCertificateId = &v
 	return s
-}
-
-func (s *SetDomainExtensionAttributeRequest) SetCertificateId(v []*string) *SetDomainExtensionAttributeRequest {
-	s.CertificateId = v
-	return s
-}
-
-func (s *SetDomainExtensionAttributeRequest) SetServerCertificate(v []*SetDomainExtensionAttributeRequestServerCertificate) *SetDomainExtensionAttributeRequest {
-	s.ServerCertificate = v
-	return s
-}
-
-type SetDomainExtensionAttributeRequestServerCertificate struct {
-}
-
-func (s SetDomainExtensionAttributeRequestServerCertificate) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetDomainExtensionAttributeRequestServerCertificate) GoString() string {
-	return s.String()
 }
 
 type SetDomainExtensionAttributeResponseBody struct {
@@ -12075,9 +11794,7 @@ type SetListenerAccessControlStatusRequest struct {
 	ListenerPort         *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	AccessControlStatus  *string `json:"AccessControlStatus,omitempty" xml:"AccessControlStatus,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
 	ListenerProtocol     *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s SetListenerAccessControlStatusRequest) String() string {
@@ -12128,18 +11845,8 @@ func (s *SetListenerAccessControlStatusRequest) SetOwnerAccount(v string) *SetLi
 	return s
 }
 
-func (s *SetListenerAccessControlStatusRequest) SetAccessKeyId(v string) *SetListenerAccessControlStatusRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
 func (s *SetListenerAccessControlStatusRequest) SetListenerProtocol(v string) *SetListenerAccessControlStatusRequest {
 	s.ListenerProtocol = &v
-	return s
-}
-
-func (s *SetListenerAccessControlStatusRequest) SetTags(v string) *SetListenerAccessControlStatusRequest {
-	s.Tags = &v
 	return s
 }
 
@@ -12191,8 +11898,6 @@ type SetLoadBalancerDeleteProtectionRequest struct {
 	LoadBalancerId       *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	DeleteProtection     *string `json:"DeleteProtection,omitempty" xml:"DeleteProtection,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s SetLoadBalancerDeleteProtectionRequest) String() string {
@@ -12238,16 +11943,6 @@ func (s *SetLoadBalancerDeleteProtectionRequest) SetOwnerAccount(v string) *SetL
 	return s
 }
 
-func (s *SetLoadBalancerDeleteProtectionRequest) SetAccessKeyId(v string) *SetLoadBalancerDeleteProtectionRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *SetLoadBalancerDeleteProtectionRequest) SetTags(v string) *SetLoadBalancerDeleteProtectionRequest {
-	s.Tags = &v
-	return s
-}
-
 type SetLoadBalancerDeleteProtectionResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -12289,50 +11984,41 @@ func (s *SetLoadBalancerDeleteProtectionResponse) SetBody(v *SetLoadBalancerDele
 }
 
 type SetLoadBalancerHTTPListenerAttributeRequest struct {
-	RegionId                    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	OwnerId                     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount        *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId             *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	LoadBalancerId              *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	ListenerPort                *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	Bandwidth                   *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	XForwardedFor               *string `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
-	Scheduler                   *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	StickySession               *string `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
-	StickySessionType           *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
-	CookieTimeout               *int32  `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
-	Cookie                      *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
-	HealthCheck                 *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
-	HealthCheckType             *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
-	HealthCheckMethod           *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
-	HealthCheckDomain           *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	HealthCheckURI              *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
-	HealthyThreshold            *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	UnhealthyThreshold          *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
-	HealthCheckTimeout          *int32  `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
-	HealthCheckInterval         *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	HealthCheckConnectPort      *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	HealthCheckHttpCode         *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
-	MaxConnection               *int32  `json:"MaxConnection,omitempty" xml:"MaxConnection,omitempty"`
-	OwnerAccount                *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId                 *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	VServerGroup                *string `json:"VServerGroup,omitempty" xml:"VServerGroup,omitempty"`
-	VServerGroupId              *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
-	Tags                        *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	XForwardedFor_SLBIP         *string `json:"XForwardedFor_SLBIP,omitempty" xml:"XForwardedFor_SLBIP,omitempty"`
-	XForwardedFor_SLBID         *string `json:"XForwardedFor_SLBID,omitempty" xml:"XForwardedFor_SLBID,omitempty"`
-	XForwardedFor_proto         *string `json:"XForwardedFor_proto,omitempty" xml:"XForwardedFor_proto,omitempty"`
-	Gzip                        *string `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
-	AclId                       *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	AclType                     *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
-	AclStatus                   *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
-	VpcIds                      *string `json:"VpcIds,omitempty" xml:"VpcIds,omitempty"`
-	IdleTimeout                 *int32  `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	RequestTimeout              *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
-	Description                 *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	XForwardedFor_SLBPORT       *string `json:"XForwardedFor_SLBPORT,omitempty" xml:"XForwardedFor_SLBPORT,omitempty"`
-	XForwardedFor_ClientSrcPort *string `json:"XForwardedFor_ClientSrcPort,omitempty" xml:"XForwardedFor_ClientSrcPort,omitempty"`
-	ForwardCode                 *int32  `json:"ForwardCode,omitempty" xml:"ForwardCode,omitempty"`
+	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount   *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId        *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	LoadBalancerId         *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	ListenerPort           *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	Bandwidth              *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	XForwardedFor          *string `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
+	Scheduler              *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	StickySession          *string `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
+	StickySessionType      *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
+	CookieTimeout          *int32  `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
+	Cookie                 *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
+	HealthCheck            *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	HealthCheckDomain      *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	HealthCheckURI         *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	HealthyThreshold       *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	UnhealthyThreshold     *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	HealthCheckTimeout     *int32  `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	HealthCheckInterval    *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	HealthCheckConnectPort *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	HealthCheckHttpCode    *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	OwnerAccount           *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	VServerGroup           *string `json:"VServerGroup,omitempty" xml:"VServerGroup,omitempty"`
+	VServerGroupId         *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
+	XForwardedFor_SLBIP    *string `json:"XForwardedFor_SLBIP,omitempty" xml:"XForwardedFor_SLBIP,omitempty"`
+	XForwardedFor_SLBID    *string `json:"XForwardedFor_SLBID,omitempty" xml:"XForwardedFor_SLBID,omitempty"`
+	XForwardedFor_proto    *string `json:"XForwardedFor_proto,omitempty" xml:"XForwardedFor_proto,omitempty"`
+	Gzip                   *string `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
+	AclId                  *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AclType                *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	AclStatus              *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
+	IdleTimeout            *int32  `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	RequestTimeout         *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	Description            *string `json:"Description,omitempty" xml:"Description,omitempty"`
 }
 
 func (s SetLoadBalancerHTTPListenerAttributeRequest) String() string {
@@ -12413,16 +12099,6 @@ func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetHealthCheck(v string) *
 	return s
 }
 
-func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetHealthCheckType(v string) *SetLoadBalancerHTTPListenerAttributeRequest {
-	s.HealthCheckType = &v
-	return s
-}
-
-func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetHealthCheckMethod(v string) *SetLoadBalancerHTTPListenerAttributeRequest {
-	s.HealthCheckMethod = &v
-	return s
-}
-
 func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetHealthCheckDomain(v string) *SetLoadBalancerHTTPListenerAttributeRequest {
 	s.HealthCheckDomain = &v
 	return s
@@ -12463,18 +12139,8 @@ func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetHealthCheckHttpCode(v s
 	return s
 }
 
-func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetMaxConnection(v int32) *SetLoadBalancerHTTPListenerAttributeRequest {
-	s.MaxConnection = &v
-	return s
-}
-
 func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetOwnerAccount(v string) *SetLoadBalancerHTTPListenerAttributeRequest {
 	s.OwnerAccount = &v
-	return s
-}
-
-func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetAccessKeyId(v string) *SetLoadBalancerHTTPListenerAttributeRequest {
-	s.AccessKeyId = &v
 	return s
 }
 
@@ -12485,11 +12151,6 @@ func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetVServerGroup(v string) 
 
 func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetVServerGroupId(v string) *SetLoadBalancerHTTPListenerAttributeRequest {
 	s.VServerGroupId = &v
-	return s
-}
-
-func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetTags(v string) *SetLoadBalancerHTTPListenerAttributeRequest {
-	s.Tags = &v
 	return s
 }
 
@@ -12528,11 +12189,6 @@ func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetAclStatus(v string) *Se
 	return s
 }
 
-func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetVpcIds(v string) *SetLoadBalancerHTTPListenerAttributeRequest {
-	s.VpcIds = &v
-	return s
-}
-
 func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetIdleTimeout(v int32) *SetLoadBalancerHTTPListenerAttributeRequest {
 	s.IdleTimeout = &v
 	return s
@@ -12545,21 +12201,6 @@ func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetRequestTimeout(v int32)
 
 func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetDescription(v string) *SetLoadBalancerHTTPListenerAttributeRequest {
 	s.Description = &v
-	return s
-}
-
-func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetXForwardedFor_SLBPORT(v string) *SetLoadBalancerHTTPListenerAttributeRequest {
-	s.XForwardedFor_SLBPORT = &v
-	return s
-}
-
-func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetXForwardedFor_ClientSrcPort(v string) *SetLoadBalancerHTTPListenerAttributeRequest {
-	s.XForwardedFor_ClientSrcPort = &v
-	return s
-}
-
-func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetForwardCode(v int32) *SetLoadBalancerHTTPListenerAttributeRequest {
-	s.ForwardCode = &v
 	return s
 }
 
@@ -12604,63 +12245,45 @@ func (s *SetLoadBalancerHTTPListenerAttributeResponse) SetBody(v *SetLoadBalance
 }
 
 type SetLoadBalancerHTTPSListenerAttributeRequest struct {
-	RegionId                                  *string                                                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	OwnerId                                   *int64                                                           `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount                      *string                                                          `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId                           *int64                                                           `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	LoadBalancerId                            *string                                                          `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	ListenerPort                              *int32                                                           `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	Bandwidth                                 *int32                                                           `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	BackendProtocol                           *string                                                          `json:"BackendProtocol,omitempty" xml:"BackendProtocol,omitempty"`
-	XForwardedFor                             *string                                                          `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
-	Scheduler                                 *string                                                          `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	StickySession                             *string                                                          `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
-	StickySessionType                         *string                                                          `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
-	CookieTimeout                             *int32                                                           `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
-	Cookie                                    *string                                                          `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
-	HealthCheck                               *string                                                          `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
-	HealthCheckType                           *string                                                          `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
-	HealthCheckMethod                         *string                                                          `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
-	HealthCheckDomain                         *string                                                          `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	HealthCheckURI                            *string                                                          `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
-	HealthyThreshold                          *int32                                                           `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	UnhealthyThreshold                        *int32                                                           `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
-	HealthCheckTimeout                        *int32                                                           `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
-	HealthCheckInterval                       *int32                                                           `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	HealthCheckConnectPort                    *int32                                                           `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	HealthCheckHttpCode                       *string                                                          `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
-	MaxConnection                             *int32                                                           `json:"MaxConnection,omitempty" xml:"MaxConnection,omitempty"`
-	OwnerAccount                              *string                                                          `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId                               *string                                                          `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	ServerCertificateId                       *string                                                          `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
-	CACertificateId                           *string                                                          `json:"CACertificateId,omitempty" xml:"CACertificateId,omitempty"`
-	VServerGroup                              *string                                                          `json:"VServerGroup,omitempty" xml:"VServerGroup,omitempty"`
-	VServerGroupId                            *string                                                          `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
-	Tags                                      *string                                                          `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	XForwardedFor_SLBIP                       *string                                                          `json:"XForwardedFor_SLBIP,omitempty" xml:"XForwardedFor_SLBIP,omitempty"`
-	XForwardedFor_SLBID                       *string                                                          `json:"XForwardedFor_SLBID,omitempty" xml:"XForwardedFor_SLBID,omitempty"`
-	XForwardedFor_proto                       *string                                                          `json:"XForwardedFor_proto,omitempty" xml:"XForwardedFor_proto,omitempty"`
-	Gzip                                      *string                                                          `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
-	AclId                                     *string                                                          `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	AclType                                   *string                                                          `json:"AclType,omitempty" xml:"AclType,omitempty"`
-	AclStatus                                 *string                                                          `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
-	VpcIds                                    *string                                                          `json:"VpcIds,omitempty" xml:"VpcIds,omitempty"`
-	IdleTimeout                               *int32                                                           `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	RequestTimeout                            *int32                                                           `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
-	EnableHttp2                               *string                                                          `json:"EnableHttp2,omitempty" xml:"EnableHttp2,omitempty"`
-	TLSCipherPolicy                           *string                                                          `json:"TLSCipherPolicy,omitempty" xml:"TLSCipherPolicy,omitempty"`
-	Description                               *string                                                          `json:"Description,omitempty" xml:"Description,omitempty"`
-	XForwardedFor_SLBPORT                     *string                                                          `json:"XForwardedFor_SLBPORT,omitempty" xml:"XForwardedFor_SLBPORT,omitempty"`
-	XForwardedFor_ClientSrcPort               *string                                                          `json:"XForwardedFor_ClientSrcPort,omitempty" xml:"XForwardedFor_ClientSrcPort,omitempty"`
-	XForwardedFor_ClientCertSubjectDN         *string                                                          `json:"XForwardedFor_ClientCertSubjectDN,omitempty" xml:"XForwardedFor_ClientCertSubjectDN,omitempty"`
-	XForwardedFor_ClientCertIssuerDN          *string                                                          `json:"XForwardedFor_ClientCertIssuerDN,omitempty" xml:"XForwardedFor_ClientCertIssuerDN,omitempty"`
-	XForwardedFor_ClientCertFingerprint       *string                                                          `json:"XForwardedFor_ClientCertFingerprint,omitempty" xml:"XForwardedFor_ClientCertFingerprint,omitempty"`
-	XForwardedFor_ClientCertClientVerify      *string                                                          `json:"XForwardedFor_ClientCertClientVerify,omitempty" xml:"XForwardedFor_ClientCertClientVerify,omitempty"`
-	XForwardedFor_ClientCertSubjectDNAlias    *string                                                          `json:"XForwardedFor_ClientCertSubjectDNAlias,omitempty" xml:"XForwardedFor_ClientCertSubjectDNAlias,omitempty"`
-	XForwardedFor_ClientCertIssuerDNAlias     *string                                                          `json:"XForwardedFor_ClientCertIssuerDNAlias,omitempty" xml:"XForwardedFor_ClientCertIssuerDNAlias,omitempty"`
-	XForwardedFor_ClientCertFingerprintAlias  *string                                                          `json:"XForwardedFor_ClientCertFingerprintAlias,omitempty" xml:"XForwardedFor_ClientCertFingerprintAlias,omitempty"`
-	XForwardedFor_ClientCertClientVerifyAlias *string                                                          `json:"XForwardedFor_ClientCertClientVerifyAlias,omitempty" xml:"XForwardedFor_ClientCertClientVerifyAlias,omitempty"`
-	ServerCertificate                         []*SetLoadBalancerHTTPSListenerAttributeRequestServerCertificate `json:"ServerCertificate,omitempty" xml:"ServerCertificate,omitempty" type:"Repeated"`
+	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount   *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId        *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	LoadBalancerId         *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	ListenerPort           *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	Bandwidth              *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	XForwardedFor          *string `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
+	Scheduler              *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	StickySession          *string `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
+	StickySessionType      *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
+	CookieTimeout          *int32  `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
+	Cookie                 *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
+	HealthCheck            *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	HealthCheckDomain      *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	HealthCheckURI         *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	HealthyThreshold       *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	UnhealthyThreshold     *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	HealthCheckTimeout     *int32  `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	HealthCheckInterval    *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	HealthCheckConnectPort *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	HealthCheckHttpCode    *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	OwnerAccount           *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	ServerCertificateId    *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
+	CACertificateId        *string `json:"CACertificateId,omitempty" xml:"CACertificateId,omitempty"`
+	VServerGroup           *string `json:"VServerGroup,omitempty" xml:"VServerGroup,omitempty"`
+	VServerGroupId         *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
+	XForwardedFor_SLBIP    *string `json:"XForwardedFor_SLBIP,omitempty" xml:"XForwardedFor_SLBIP,omitempty"`
+	XForwardedFor_SLBID    *string `json:"XForwardedFor_SLBID,omitempty" xml:"XForwardedFor_SLBID,omitempty"`
+	XForwardedFor_proto    *string `json:"XForwardedFor_proto,omitempty" xml:"XForwardedFor_proto,omitempty"`
+	Gzip                   *string `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
+	AclId                  *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AclType                *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	AclStatus              *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
+	IdleTimeout            *int32  `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	RequestTimeout         *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	EnableHttp2            *string `json:"EnableHttp2,omitempty" xml:"EnableHttp2,omitempty"`
+	TLSCipherPolicy        *string `json:"TLSCipherPolicy,omitempty" xml:"TLSCipherPolicy,omitempty"`
+	Description            *string `json:"Description,omitempty" xml:"Description,omitempty"`
 }
 
 func (s SetLoadBalancerHTTPSListenerAttributeRequest) String() string {
@@ -12706,11 +12329,6 @@ func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetBandwidth(v int32) *Se
 	return s
 }
 
-func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetBackendProtocol(v string) *SetLoadBalancerHTTPSListenerAttributeRequest {
-	s.BackendProtocol = &v
-	return s
-}
-
 func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetXForwardedFor(v string) *SetLoadBalancerHTTPSListenerAttributeRequest {
 	s.XForwardedFor = &v
 	return s
@@ -12743,16 +12361,6 @@ func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetCookie(v string) *SetL
 
 func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetHealthCheck(v string) *SetLoadBalancerHTTPSListenerAttributeRequest {
 	s.HealthCheck = &v
-	return s
-}
-
-func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetHealthCheckType(v string) *SetLoadBalancerHTTPSListenerAttributeRequest {
-	s.HealthCheckType = &v
-	return s
-}
-
-func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetHealthCheckMethod(v string) *SetLoadBalancerHTTPSListenerAttributeRequest {
-	s.HealthCheckMethod = &v
 	return s
 }
 
@@ -12796,18 +12404,8 @@ func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetHealthCheckHttpCode(v 
 	return s
 }
 
-func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetMaxConnection(v int32) *SetLoadBalancerHTTPSListenerAttributeRequest {
-	s.MaxConnection = &v
-	return s
-}
-
 func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetOwnerAccount(v string) *SetLoadBalancerHTTPSListenerAttributeRequest {
 	s.OwnerAccount = &v
-	return s
-}
-
-func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetAccessKeyId(v string) *SetLoadBalancerHTTPSListenerAttributeRequest {
-	s.AccessKeyId = &v
 	return s
 }
 
@@ -12828,11 +12426,6 @@ func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetVServerGroup(v string)
 
 func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetVServerGroupId(v string) *SetLoadBalancerHTTPSListenerAttributeRequest {
 	s.VServerGroupId = &v
-	return s
-}
-
-func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetTags(v string) *SetLoadBalancerHTTPSListenerAttributeRequest {
-	s.Tags = &v
 	return s
 }
 
@@ -12871,11 +12464,6 @@ func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetAclStatus(v string) *S
 	return s
 }
 
-func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetVpcIds(v string) *SetLoadBalancerHTTPSListenerAttributeRequest {
-	s.VpcIds = &v
-	return s
-}
-
 func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetIdleTimeout(v int32) *SetLoadBalancerHTTPSListenerAttributeRequest {
 	s.IdleTimeout = &v
 	return s
@@ -12899,72 +12487,6 @@ func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetTLSCipherPolicy(v stri
 func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetDescription(v string) *SetLoadBalancerHTTPSListenerAttributeRequest {
 	s.Description = &v
 	return s
-}
-
-func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetXForwardedFor_SLBPORT(v string) *SetLoadBalancerHTTPSListenerAttributeRequest {
-	s.XForwardedFor_SLBPORT = &v
-	return s
-}
-
-func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetXForwardedFor_ClientSrcPort(v string) *SetLoadBalancerHTTPSListenerAttributeRequest {
-	s.XForwardedFor_ClientSrcPort = &v
-	return s
-}
-
-func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetXForwardedFor_ClientCertSubjectDN(v string) *SetLoadBalancerHTTPSListenerAttributeRequest {
-	s.XForwardedFor_ClientCertSubjectDN = &v
-	return s
-}
-
-func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetXForwardedFor_ClientCertIssuerDN(v string) *SetLoadBalancerHTTPSListenerAttributeRequest {
-	s.XForwardedFor_ClientCertIssuerDN = &v
-	return s
-}
-
-func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetXForwardedFor_ClientCertFingerprint(v string) *SetLoadBalancerHTTPSListenerAttributeRequest {
-	s.XForwardedFor_ClientCertFingerprint = &v
-	return s
-}
-
-func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetXForwardedFor_ClientCertClientVerify(v string) *SetLoadBalancerHTTPSListenerAttributeRequest {
-	s.XForwardedFor_ClientCertClientVerify = &v
-	return s
-}
-
-func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetXForwardedFor_ClientCertSubjectDNAlias(v string) *SetLoadBalancerHTTPSListenerAttributeRequest {
-	s.XForwardedFor_ClientCertSubjectDNAlias = &v
-	return s
-}
-
-func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetXForwardedFor_ClientCertIssuerDNAlias(v string) *SetLoadBalancerHTTPSListenerAttributeRequest {
-	s.XForwardedFor_ClientCertIssuerDNAlias = &v
-	return s
-}
-
-func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetXForwardedFor_ClientCertFingerprintAlias(v string) *SetLoadBalancerHTTPSListenerAttributeRequest {
-	s.XForwardedFor_ClientCertFingerprintAlias = &v
-	return s
-}
-
-func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetXForwardedFor_ClientCertClientVerifyAlias(v string) *SetLoadBalancerHTTPSListenerAttributeRequest {
-	s.XForwardedFor_ClientCertClientVerifyAlias = &v
-	return s
-}
-
-func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetServerCertificate(v []*SetLoadBalancerHTTPSListenerAttributeRequestServerCertificate) *SetLoadBalancerHTTPSListenerAttributeRequest {
-	s.ServerCertificate = v
-	return s
-}
-
-type SetLoadBalancerHTTPSListenerAttributeRequestServerCertificate struct {
-}
-
-func (s SetLoadBalancerHTTPSListenerAttributeRequestServerCertificate) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetLoadBalancerHTTPSListenerAttributeRequestServerCertificate) GoString() string {
-	return s.String()
 }
 
 type SetLoadBalancerHTTPSListenerAttributeResponseBody struct {
@@ -13114,8 +12636,6 @@ type SetLoadBalancerNameRequest struct {
 	LoadBalancerId       *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	LoadBalancerName     *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s SetLoadBalancerNameRequest) String() string {
@@ -13158,16 +12678,6 @@ func (s *SetLoadBalancerNameRequest) SetLoadBalancerName(v string) *SetLoadBalan
 
 func (s *SetLoadBalancerNameRequest) SetOwnerAccount(v string) *SetLoadBalancerNameRequest {
 	s.OwnerAccount = &v
-	return s
-}
-
-func (s *SetLoadBalancerNameRequest) SetAccessKeyId(v string) *SetLoadBalancerNameRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *SetLoadBalancerNameRequest) SetTags(v string) *SetLoadBalancerNameRequest {
-	s.Tags = &v
 	return s
 }
 
@@ -13219,8 +12729,6 @@ type SetLoadBalancerStatusRequest struct {
 	LoadBalancerId       *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	LoadBalancerStatus   *string `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s SetLoadBalancerStatusRequest) String() string {
@@ -13266,16 +12774,6 @@ func (s *SetLoadBalancerStatusRequest) SetOwnerAccount(v string) *SetLoadBalance
 	return s
 }
 
-func (s *SetLoadBalancerStatusRequest) SetAccessKeyId(v string) *SetLoadBalancerStatusRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *SetLoadBalancerStatusRequest) SetTags(v string) *SetLoadBalancerStatusRequest {
-	s.Tags = &v
-	return s
-}
-
 type SetLoadBalancerStatusResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -13317,43 +12815,37 @@ func (s *SetLoadBalancerStatusResponse) SetBody(v *SetLoadBalancerStatusResponse
 }
 
 type SetLoadBalancerTCPListenerAttributeRequest struct {
-	RegionId                  *string                                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	OwnerId                   *int64                                                 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount      *string                                                `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId           *int64                                                 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	LoadBalancerId            *string                                                `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	ListenerPort              *int32                                                 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	Bandwidth                 *int32                                                 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	Scheduler                 *string                                                `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	PersistenceTimeout        *int32                                                 `json:"PersistenceTimeout,omitempty" xml:"PersistenceTimeout,omitempty"`
-	EstablishedTimeout        *int32                                                 `json:"EstablishedTimeout,omitempty" xml:"EstablishedTimeout,omitempty"`
-	HealthyThreshold          *int32                                                 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	UnhealthyThreshold        *int32                                                 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
-	HealthCheckConnectTimeout *int32                                                 `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
-	HealthCheckConnectPort    *int32                                                 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	HealthCheckInterval       *int32                                                 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	HealthCheckDomain         *string                                                `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	HealthCheckURI            *string                                                `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
-	HealthCheckHttpCode       *string                                                `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
-	HealthCheckType           *string                                                `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
-	HealthCheckMethod         *string                                                `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
-	SynProxy                  *string                                                `json:"SynProxy,omitempty" xml:"SynProxy,omitempty"`
-	MaxConnection             *int32                                                 `json:"MaxConnection,omitempty" xml:"MaxConnection,omitempty"`
-	OwnerAccount              *string                                                `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId               *string                                                `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                      *string                                                `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	VServerGroup              *string                                                `json:"VServerGroup,omitempty" xml:"VServerGroup,omitempty"`
-	VServerGroupId            *string                                                `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
-	MasterSlaveServerGroupId  *string                                                `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
-	MasterSlaveServerGroup    *string                                                `json:"MasterSlaveServerGroup,omitempty" xml:"MasterSlaveServerGroup,omitempty"`
-	AclId                     *string                                                `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	AclType                   *string                                                `json:"AclType,omitempty" xml:"AclType,omitempty"`
-	AclStatus                 *string                                                `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
-	VpcIds                    *string                                                `json:"VpcIds,omitempty" xml:"VpcIds,omitempty"`
-	Description               *string                                                `json:"Description,omitempty" xml:"Description,omitempty"`
-	ConnectionDrain           *string                                                `json:"ConnectionDrain,omitempty" xml:"ConnectionDrain,omitempty"`
-	ConnectionDrainTimeout    *int32                                                 `json:"ConnectionDrainTimeout,omitempty" xml:"ConnectionDrainTimeout,omitempty"`
-	PortRange                 []*SetLoadBalancerTCPListenerAttributeRequestPortRange `json:"PortRange,omitempty" xml:"PortRange,omitempty" type:"Repeated"`
+	RegionId                  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	OwnerId                   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount      *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId           *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	LoadBalancerId            *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	ListenerPort              *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	Bandwidth                 *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	Scheduler                 *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	PersistenceTimeout        *int32  `json:"PersistenceTimeout,omitempty" xml:"PersistenceTimeout,omitempty"`
+	EstablishedTimeout        *int32  `json:"EstablishedTimeout,omitempty" xml:"EstablishedTimeout,omitempty"`
+	HealthyThreshold          *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	UnhealthyThreshold        *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	HealthCheckConnectTimeout *int32  `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
+	HealthCheckConnectPort    *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	HealthCheckInterval       *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	HealthCheckDomain         *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	HealthCheckURI            *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	HealthCheckHttpCode       *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	HealthCheckType           *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
+	SynProxy                  *string `json:"SynProxy,omitempty" xml:"SynProxy,omitempty"`
+	OwnerAccount              *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	VServerGroup              *string `json:"VServerGroup,omitempty" xml:"VServerGroup,omitempty"`
+	VServerGroupId            *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
+	MasterSlaveServerGroupId  *string `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
+	MasterSlaveServerGroup    *string `json:"MasterSlaveServerGroup,omitempty" xml:"MasterSlaveServerGroup,omitempty"`
+	AclId                     *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AclType                   *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	AclStatus                 *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
+	Description               *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ConnectionDrain           *string `json:"ConnectionDrain,omitempty" xml:"ConnectionDrain,omitempty"`
+	ConnectionDrainTimeout    *int32  `json:"ConnectionDrainTimeout,omitempty" xml:"ConnectionDrainTimeout,omitempty"`
 }
 
 func (s SetLoadBalancerTCPListenerAttributeRequest) String() string {
@@ -13459,33 +12951,13 @@ func (s *SetLoadBalancerTCPListenerAttributeRequest) SetHealthCheckType(v string
 	return s
 }
 
-func (s *SetLoadBalancerTCPListenerAttributeRequest) SetHealthCheckMethod(v string) *SetLoadBalancerTCPListenerAttributeRequest {
-	s.HealthCheckMethod = &v
-	return s
-}
-
 func (s *SetLoadBalancerTCPListenerAttributeRequest) SetSynProxy(v string) *SetLoadBalancerTCPListenerAttributeRequest {
 	s.SynProxy = &v
 	return s
 }
 
-func (s *SetLoadBalancerTCPListenerAttributeRequest) SetMaxConnection(v int32) *SetLoadBalancerTCPListenerAttributeRequest {
-	s.MaxConnection = &v
-	return s
-}
-
 func (s *SetLoadBalancerTCPListenerAttributeRequest) SetOwnerAccount(v string) *SetLoadBalancerTCPListenerAttributeRequest {
 	s.OwnerAccount = &v
-	return s
-}
-
-func (s *SetLoadBalancerTCPListenerAttributeRequest) SetAccessKeyId(v string) *SetLoadBalancerTCPListenerAttributeRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *SetLoadBalancerTCPListenerAttributeRequest) SetTags(v string) *SetLoadBalancerTCPListenerAttributeRequest {
-	s.Tags = &v
 	return s
 }
 
@@ -13524,11 +12996,6 @@ func (s *SetLoadBalancerTCPListenerAttributeRequest) SetAclStatus(v string) *Set
 	return s
 }
 
-func (s *SetLoadBalancerTCPListenerAttributeRequest) SetVpcIds(v string) *SetLoadBalancerTCPListenerAttributeRequest {
-	s.VpcIds = &v
-	return s
-}
-
 func (s *SetLoadBalancerTCPListenerAttributeRequest) SetDescription(v string) *SetLoadBalancerTCPListenerAttributeRequest {
 	s.Description = &v
 	return s
@@ -13542,22 +13009,6 @@ func (s *SetLoadBalancerTCPListenerAttributeRequest) SetConnectionDrain(v string
 func (s *SetLoadBalancerTCPListenerAttributeRequest) SetConnectionDrainTimeout(v int32) *SetLoadBalancerTCPListenerAttributeRequest {
 	s.ConnectionDrainTimeout = &v
 	return s
-}
-
-func (s *SetLoadBalancerTCPListenerAttributeRequest) SetPortRange(v []*SetLoadBalancerTCPListenerAttributeRequestPortRange) *SetLoadBalancerTCPListenerAttributeRequest {
-	s.PortRange = v
-	return s
-}
-
-type SetLoadBalancerTCPListenerAttributeRequestPortRange struct {
-}
-
-func (s SetLoadBalancerTCPListenerAttributeRequestPortRange) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetLoadBalancerTCPListenerAttributeRequestPortRange) GoString() string {
-	return s.String()
 }
 
 type SetLoadBalancerTCPListenerAttributeResponseBody struct {
@@ -13601,38 +13052,30 @@ func (s *SetLoadBalancerTCPListenerAttributeResponse) SetBody(v *SetLoadBalancer
 }
 
 type SetLoadBalancerUDPListenerAttributeRequest struct {
-	RegionId                  *string                                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	OwnerId                   *int64                                                 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount      *string                                                `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId           *int64                                                 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	LoadBalancerId            *string                                                `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	ListenerPort              *int32                                                 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	Bandwidth                 *int32                                                 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	Scheduler                 *string                                                `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	PersistenceTimeout        *int32                                                 `json:"PersistenceTimeout,omitempty" xml:"PersistenceTimeout,omitempty"`
-	HealthyThreshold          *int32                                                 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	UnhealthyThreshold        *int32                                                 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
-	HealthCheckConnectTimeout *int32                                                 `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
-	HealthCheckConnectPort    *int32                                                 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	HealthCheckInterval       *int32                                                 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	HealthCheckReq            *string                                                `json:"healthCheckReq,omitempty" xml:"healthCheckReq,omitempty"`
-	HealthCheckExp            *string                                                `json:"healthCheckExp,omitempty" xml:"healthCheckExp,omitempty"`
-	MaxConnection             *int32                                                 `json:"MaxConnection,omitempty" xml:"MaxConnection,omitempty"`
-	OwnerAccount              *string                                                `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId               *string                                                `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                      *string                                                `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	VServerGroup              *string                                                `json:"VServerGroup,omitempty" xml:"VServerGroup,omitempty"`
-	VServerGroupId            *string                                                `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
-	MasterSlaveServerGroupId  *string                                                `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
-	MasterSlaveServerGroup    *string                                                `json:"MasterSlaveServerGroup,omitempty" xml:"MasterSlaveServerGroup,omitempty"`
-	AclId                     *string                                                `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	AclType                   *string                                                `json:"AclType,omitempty" xml:"AclType,omitempty"`
-	AclStatus                 *string                                                `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
-	VpcIds                    *string                                                `json:"VpcIds,omitempty" xml:"VpcIds,omitempty"`
-	Description               *string                                                `json:"Description,omitempty" xml:"Description,omitempty"`
-	ConnectionDrain           *string                                                `json:"ConnectionDrain,omitempty" xml:"ConnectionDrain,omitempty"`
-	ConnectionDrainTimeout    *int32                                                 `json:"ConnectionDrainTimeout,omitempty" xml:"ConnectionDrainTimeout,omitempty"`
-	PortRange                 []*SetLoadBalancerUDPListenerAttributeRequestPortRange `json:"PortRange,omitempty" xml:"PortRange,omitempty" type:"Repeated"`
+	RegionId                  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	OwnerId                   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount      *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId           *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	LoadBalancerId            *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	ListenerPort              *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	Bandwidth                 *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	Scheduler                 *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	HealthyThreshold          *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	UnhealthyThreshold        *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	HealthCheckConnectTimeout *int32  `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
+	HealthCheckConnectPort    *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	HealthCheckInterval       *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	HealthCheckReq            *string `json:"healthCheckReq,omitempty" xml:"healthCheckReq,omitempty"`
+	HealthCheckExp            *string `json:"healthCheckExp,omitempty" xml:"healthCheckExp,omitempty"`
+	OwnerAccount              *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	VServerGroup              *string `json:"VServerGroup,omitempty" xml:"VServerGroup,omitempty"`
+	VServerGroupId            *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
+	MasterSlaveServerGroupId  *string `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
+	MasterSlaveServerGroup    *string `json:"MasterSlaveServerGroup,omitempty" xml:"MasterSlaveServerGroup,omitempty"`
+	AclId                     *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AclType                   *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	AclStatus                 *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
+	Description               *string `json:"Description,omitempty" xml:"Description,omitempty"`
 }
 
 func (s SetLoadBalancerUDPListenerAttributeRequest) String() string {
@@ -13683,11 +13126,6 @@ func (s *SetLoadBalancerUDPListenerAttributeRequest) SetScheduler(v string) *Set
 	return s
 }
 
-func (s *SetLoadBalancerUDPListenerAttributeRequest) SetPersistenceTimeout(v int32) *SetLoadBalancerUDPListenerAttributeRequest {
-	s.PersistenceTimeout = &v
-	return s
-}
-
 func (s *SetLoadBalancerUDPListenerAttributeRequest) SetHealthyThreshold(v int32) *SetLoadBalancerUDPListenerAttributeRequest {
 	s.HealthyThreshold = &v
 	return s
@@ -13723,23 +13161,8 @@ func (s *SetLoadBalancerUDPListenerAttributeRequest) SetHealthCheckExp(v string)
 	return s
 }
 
-func (s *SetLoadBalancerUDPListenerAttributeRequest) SetMaxConnection(v int32) *SetLoadBalancerUDPListenerAttributeRequest {
-	s.MaxConnection = &v
-	return s
-}
-
 func (s *SetLoadBalancerUDPListenerAttributeRequest) SetOwnerAccount(v string) *SetLoadBalancerUDPListenerAttributeRequest {
 	s.OwnerAccount = &v
-	return s
-}
-
-func (s *SetLoadBalancerUDPListenerAttributeRequest) SetAccessKeyId(v string) *SetLoadBalancerUDPListenerAttributeRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *SetLoadBalancerUDPListenerAttributeRequest) SetTags(v string) *SetLoadBalancerUDPListenerAttributeRequest {
-	s.Tags = &v
 	return s
 }
 
@@ -13778,40 +13201,9 @@ func (s *SetLoadBalancerUDPListenerAttributeRequest) SetAclStatus(v string) *Set
 	return s
 }
 
-func (s *SetLoadBalancerUDPListenerAttributeRequest) SetVpcIds(v string) *SetLoadBalancerUDPListenerAttributeRequest {
-	s.VpcIds = &v
-	return s
-}
-
 func (s *SetLoadBalancerUDPListenerAttributeRequest) SetDescription(v string) *SetLoadBalancerUDPListenerAttributeRequest {
 	s.Description = &v
 	return s
-}
-
-func (s *SetLoadBalancerUDPListenerAttributeRequest) SetConnectionDrain(v string) *SetLoadBalancerUDPListenerAttributeRequest {
-	s.ConnectionDrain = &v
-	return s
-}
-
-func (s *SetLoadBalancerUDPListenerAttributeRequest) SetConnectionDrainTimeout(v int32) *SetLoadBalancerUDPListenerAttributeRequest {
-	s.ConnectionDrainTimeout = &v
-	return s
-}
-
-func (s *SetLoadBalancerUDPListenerAttributeRequest) SetPortRange(v []*SetLoadBalancerUDPListenerAttributeRequestPortRange) *SetLoadBalancerUDPListenerAttributeRequest {
-	s.PortRange = v
-	return s
-}
-
-type SetLoadBalancerUDPListenerAttributeRequestPortRange struct {
-}
-
-func (s SetLoadBalancerUDPListenerAttributeRequestPortRange) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetLoadBalancerUDPListenerAttributeRequestPortRange) GoString() string {
-	return s.String()
 }
 
 type SetLoadBalancerUDPListenerAttributeResponseBody struct {
@@ -13860,8 +13252,6 @@ type SetRuleRequest struct {
 	ResourceOwnerId        *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	OwnerAccount           *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId            *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                   *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	RuleId                 *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	VServerGroupId         *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
 	RuleName               *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
@@ -13912,16 +13302,6 @@ func (s *SetRuleRequest) SetRegionId(v string) *SetRuleRequest {
 
 func (s *SetRuleRequest) SetOwnerAccount(v string) *SetRuleRequest {
 	s.OwnerAccount = &v
-	return s
-}
-
-func (s *SetRuleRequest) SetAccessKeyId(v string) *SetRuleRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *SetRuleRequest) SetTags(v string) *SetRuleRequest {
-	s.Tags = &v
 	return s
 }
 
@@ -14063,8 +13443,6 @@ type SetServerCertificateNameRequest struct {
 	ServerCertificateId   *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
 	ServerCertificateName *string `json:"ServerCertificateName,omitempty" xml:"ServerCertificateName,omitempty"`
 	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId           *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                  *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s SetServerCertificateNameRequest) String() string {
@@ -14107,16 +13485,6 @@ func (s *SetServerCertificateNameRequest) SetServerCertificateName(v string) *Se
 
 func (s *SetServerCertificateNameRequest) SetOwnerAccount(v string) *SetServerCertificateNameRequest {
 	s.OwnerAccount = &v
-	return s
-}
-
-func (s *SetServerCertificateNameRequest) SetAccessKeyId(v string) *SetServerCertificateNameRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *SetServerCertificateNameRequest) SetTags(v string) *SetServerCertificateNameRequest {
-	s.Tags = &v
 	return s
 }
 
@@ -14283,8 +13651,6 @@ type SetVServerGroupAttributeRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	VServerGroupId       *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
 	VServerGroupName     *string `json:"VServerGroupName,omitempty" xml:"VServerGroupName,omitempty"`
 	BackendServers       *string `json:"BackendServers,omitempty" xml:"BackendServers,omitempty"`
@@ -14323,16 +13689,6 @@ func (s *SetVServerGroupAttributeRequest) SetOwnerAccount(v string) *SetVServerG
 	return s
 }
 
-func (s *SetVServerGroupAttributeRequest) SetAccessKeyId(v string) *SetVServerGroupAttributeRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *SetVServerGroupAttributeRequest) SetTags(v string) *SetVServerGroupAttributeRequest {
-	s.Tags = &v
-	return s
-}
-
 func (s *SetVServerGroupAttributeRequest) SetVServerGroupId(v string) *SetVServerGroupAttributeRequest {
 	s.VServerGroupId = &v
 	return s
@@ -14350,8 +13706,8 @@ func (s *SetVServerGroupAttributeRequest) SetBackendServers(v string) *SetVServe
 
 type SetVServerGroupAttributeResponseBody struct {
 	VServerGroupId   *string                                             `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
-	RequestId        *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	VServerGroupName *string                                             `json:"VServerGroupName,omitempty" xml:"VServerGroupName,omitempty"`
+	RequestId        *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	BackendServers   *SetVServerGroupAttributeResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
 }
 
@@ -14368,13 +13724,13 @@ func (s *SetVServerGroupAttributeResponseBody) SetVServerGroupId(v string) *SetV
 	return s
 }
 
-func (s *SetVServerGroupAttributeResponseBody) SetRequestId(v string) *SetVServerGroupAttributeResponseBody {
-	s.RequestId = &v
+func (s *SetVServerGroupAttributeResponseBody) SetVServerGroupName(v string) *SetVServerGroupAttributeResponseBody {
+	s.VServerGroupName = &v
 	return s
 }
 
-func (s *SetVServerGroupAttributeResponseBody) SetVServerGroupName(v string) *SetVServerGroupAttributeResponseBody {
-	s.VServerGroupName = &v
+func (s *SetVServerGroupAttributeResponseBody) SetRequestId(v string) *SetVServerGroupAttributeResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -14472,9 +13828,7 @@ type StartLoadBalancerListenerRequest struct {
 	LoadBalancerId       *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	ListenerPort         *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
 	ListenerProtocol     *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s StartLoadBalancerListenerRequest) String() string {
@@ -14520,18 +13874,8 @@ func (s *StartLoadBalancerListenerRequest) SetOwnerAccount(v string) *StartLoadB
 	return s
 }
 
-func (s *StartLoadBalancerListenerRequest) SetAccessKeyId(v string) *StartLoadBalancerListenerRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
 func (s *StartLoadBalancerListenerRequest) SetListenerProtocol(v string) *StartLoadBalancerListenerRequest {
 	s.ListenerProtocol = &v
-	return s
-}
-
-func (s *StartLoadBalancerListenerRequest) SetTags(v string) *StartLoadBalancerListenerRequest {
-	s.Tags = &v
 	return s
 }
 
@@ -14583,9 +13927,7 @@ type StopLoadBalancerListenerRequest struct {
 	LoadBalancerId       *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	ListenerPort         *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
 	ListenerProtocol     *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s StopLoadBalancerListenerRequest) String() string {
@@ -14631,18 +13973,8 @@ func (s *StopLoadBalancerListenerRequest) SetOwnerAccount(v string) *StopLoadBal
 	return s
 }
 
-func (s *StopLoadBalancerListenerRequest) SetAccessKeyId(v string) *StopLoadBalancerListenerRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
 func (s *StopLoadBalancerListenerRequest) SetListenerProtocol(v string) *StopLoadBalancerListenerRequest {
 	s.ListenerProtocol = &v
-	return s
-}
-
-func (s *StopLoadBalancerListenerRequest) SetTags(v string) *StopLoadBalancerListenerRequest {
-	s.Tags = &v
 	return s
 }
 
@@ -14691,7 +14023,6 @@ type TagResourcesRequest struct {
 	ResourceOwnerAccount *string                   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64                    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	OwnerAccount         *string                   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string                   `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
 	RegionId             *string                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceType         *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	ResourceId           []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
@@ -14723,11 +14054,6 @@ func (s *TagResourcesRequest) SetResourceOwnerId(v int64) *TagResourcesRequest {
 
 func (s *TagResourcesRequest) SetOwnerAccount(v string) *TagResourcesRequest {
 	s.OwnerAccount = &v
-	return s
-}
-
-func (s *TagResourcesRequest) SetAccessKeyId(v string) *TagResourcesRequest {
-	s.AccessKeyId = &v
 	return s
 }
 
@@ -14819,7 +14145,6 @@ type UntagResourcesRequest struct {
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string   `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
 	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceType         *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	All                  *bool     `json:"All,omitempty" xml:"All,omitempty"`
@@ -14852,11 +14177,6 @@ func (s *UntagResourcesRequest) SetResourceOwnerId(v int64) *UntagResourcesReque
 
 func (s *UntagResourcesRequest) SetOwnerAccount(v string) *UntagResourcesRequest {
 	s.OwnerAccount = &v
-	return s
-}
-
-func (s *UntagResourcesRequest) SetAccessKeyId(v string) *UntagResourcesRequest {
-	s.AccessKeyId = &v
 	return s
 }
 
@@ -14930,12 +14250,10 @@ type UploadCACertificateRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	CACertificate        *string `json:"CACertificate,omitempty" xml:"CACertificate,omitempty"`
 	CACertificateName    *string `json:"CACertificateName,omitempty" xml:"CACertificateName,omitempty"`
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	StandardType         *string `json:"StandardType,omitempty" xml:"StandardType,omitempty"`
 }
 
 func (s UploadCACertificateRequest) String() string {
@@ -14966,11 +14284,6 @@ func (s *UploadCACertificateRequest) SetOwnerAccount(v string) *UploadCACertific
 	return s
 }
 
-func (s *UploadCACertificateRequest) SetAccessKeyId(v string) *UploadCACertificateRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
 func (s *UploadCACertificateRequest) SetRegionId(v string) *UploadCACertificateRequest {
 	s.RegionId = &v
 	return s
@@ -14991,22 +14304,17 @@ func (s *UploadCACertificateRequest) SetResourceGroupId(v string) *UploadCACerti
 	return s
 }
 
-func (s *UploadCACertificateRequest) SetStandardType(v string) *UploadCACertificateRequest {
-	s.StandardType = &v
-	return s
-}
-
 type UploadCACertificateResponseBody struct {
-	Fingerprint       *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
+	CreateTimeStamp   *int64  `json:"CreateTimeStamp,omitempty" xml:"CreateTimeStamp,omitempty"`
 	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ExpireTime        *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	Fingerprint       *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
+	CreateTime        *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CommonName        *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
 	ResourceGroupId   *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	CACertificateName *string `json:"CACertificateName,omitempty" xml:"CACertificateName,omitempty"`
 	ExpireTimeStamp   *int64  `json:"ExpireTimeStamp,omitempty" xml:"ExpireTimeStamp,omitempty"`
 	CACertificateId   *string `json:"CACertificateId,omitempty" xml:"CACertificateId,omitempty"`
-	CreateTime        *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CACertificateName *string `json:"CACertificateName,omitempty" xml:"CACertificateName,omitempty"`
-	ExpireTime        *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	CreateTimeStamp   *int64  `json:"CreateTimeStamp,omitempty" xml:"CreateTimeStamp,omitempty"`
-	CommonName        *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
 }
 
 func (s UploadCACertificateResponseBody) String() string {
@@ -15017,8 +14325,8 @@ func (s UploadCACertificateResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *UploadCACertificateResponseBody) SetFingerprint(v string) *UploadCACertificateResponseBody {
-	s.Fingerprint = &v
+func (s *UploadCACertificateResponseBody) SetCreateTimeStamp(v int64) *UploadCACertificateResponseBody {
+	s.CreateTimeStamp = &v
 	return s
 }
 
@@ -15027,8 +14335,33 @@ func (s *UploadCACertificateResponseBody) SetRequestId(v string) *UploadCACertif
 	return s
 }
 
+func (s *UploadCACertificateResponseBody) SetExpireTime(v string) *UploadCACertificateResponseBody {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *UploadCACertificateResponseBody) SetFingerprint(v string) *UploadCACertificateResponseBody {
+	s.Fingerprint = &v
+	return s
+}
+
+func (s *UploadCACertificateResponseBody) SetCreateTime(v string) *UploadCACertificateResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *UploadCACertificateResponseBody) SetCommonName(v string) *UploadCACertificateResponseBody {
+	s.CommonName = &v
+	return s
+}
+
 func (s *UploadCACertificateResponseBody) SetResourceGroupId(v string) *UploadCACertificateResponseBody {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *UploadCACertificateResponseBody) SetCACertificateName(v string) *UploadCACertificateResponseBody {
+	s.CACertificateName = &v
 	return s
 }
 
@@ -15039,31 +14372,6 @@ func (s *UploadCACertificateResponseBody) SetExpireTimeStamp(v int64) *UploadCAC
 
 func (s *UploadCACertificateResponseBody) SetCACertificateId(v string) *UploadCACertificateResponseBody {
 	s.CACertificateId = &v
-	return s
-}
-
-func (s *UploadCACertificateResponseBody) SetCreateTime(v string) *UploadCACertificateResponseBody {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *UploadCACertificateResponseBody) SetCACertificateName(v string) *UploadCACertificateResponseBody {
-	s.CACertificateName = &v
-	return s
-}
-
-func (s *UploadCACertificateResponseBody) SetExpireTime(v string) *UploadCACertificateResponseBody {
-	s.ExpireTime = &v
-	return s
-}
-
-func (s *UploadCACertificateResponseBody) SetCreateTimeStamp(v int64) *UploadCACertificateResponseBody {
-	s.CreateTimeStamp = &v
-	return s
-}
-
-func (s *UploadCACertificateResponseBody) SetCommonName(v string) *UploadCACertificateResponseBody {
-	s.CommonName = &v
 	return s
 }
 
@@ -15102,10 +14410,7 @@ type UploadServerCertificateRequest struct {
 	PrivateKey                  *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
 	ServerCertificateName       *string `json:"ServerCertificateName,omitempty" xml:"ServerCertificateName,omitempty"`
 	OwnerAccount                *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	AccessKeyId                 *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	Tags                        *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	ResourceGroupId             *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	StandardType                *string `json:"StandardType,omitempty" xml:"StandardType,omitempty"`
 }
 
 func (s UploadServerCertificateRequest) String() string {
@@ -15171,42 +14476,27 @@ func (s *UploadServerCertificateRequest) SetOwnerAccount(v string) *UploadServer
 	return s
 }
 
-func (s *UploadServerCertificateRequest) SetAccessKeyId(v string) *UploadServerCertificateRequest {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *UploadServerCertificateRequest) SetTags(v string) *UploadServerCertificateRequest {
-	s.Tags = &v
-	return s
-}
-
 func (s *UploadServerCertificateRequest) SetResourceGroupId(v string) *UploadServerCertificateRequest {
 	s.ResourceGroupId = &v
 	return s
 }
 
-func (s *UploadServerCertificateRequest) SetStandardType(v string) *UploadServerCertificateRequest {
-	s.StandardType = &v
-	return s
-}
-
 type UploadServerCertificateResponseBody struct {
-	Fingerprint             *string                                                     `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
-	ExpireTimeStamp         *int64                                                      `json:"ExpireTimeStamp,omitempty" xml:"ExpireTimeStamp,omitempty"`
-	RequestId               *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceGroupId         *string                                                     `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	CreateTime              *string                                                     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	SubjectAlternativeNames *UploadServerCertificateResponseBodySubjectAlternativeNames `json:"SubjectAlternativeNames,omitempty" xml:"SubjectAlternativeNames,omitempty" type:"Struct"`
-	AliCloudCertificateId   *string                                                     `json:"AliCloudCertificateId,omitempty" xml:"AliCloudCertificateId,omitempty"`
 	AliCloudCertificateName *string                                                     `json:"AliCloudCertificateName,omitempty" xml:"AliCloudCertificateName,omitempty"`
-	IsAliCloudCertificate   *int32                                                      `json:"IsAliCloudCertificate,omitempty" xml:"IsAliCloudCertificate,omitempty"`
-	ServerCertificateId     *string                                                     `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
-	ServerCertificateName   *string                                                     `json:"ServerCertificateName,omitempty" xml:"ServerCertificateName,omitempty"`
-	RegionId                *string                                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ExpireTime              *string                                                     `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	CreateTimeStamp         *int64                                                      `json:"CreateTimeStamp,omitempty" xml:"CreateTimeStamp,omitempty"`
+	ExpireTime              *string                                                     `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	CreateTime              *string                                                     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ServerCertificateId     *string                                                     `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
+	ExpireTimeStamp         *int64                                                      `json:"ExpireTimeStamp,omitempty" xml:"ExpireTimeStamp,omitempty"`
+	RegionId                *string                                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestId               *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Fingerprint             *string                                                     `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
+	ServerCertificateName   *string                                                     `json:"ServerCertificateName,omitempty" xml:"ServerCertificateName,omitempty"`
 	CommonName              *string                                                     `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	ResourceGroupId         *string                                                     `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	AliCloudCertificateId   *string                                                     `json:"AliCloudCertificateId,omitempty" xml:"AliCloudCertificateId,omitempty"`
+	IsAliCloudCertificate   *int32                                                      `json:"IsAliCloudCertificate,omitempty" xml:"IsAliCloudCertificate,omitempty"`
+	SubjectAlternativeNames *UploadServerCertificateResponseBodySubjectAlternativeNames `json:"SubjectAlternativeNames,omitempty" xml:"SubjectAlternativeNames,omitempty" type:"Struct"`
 }
 
 func (s UploadServerCertificateResponseBody) String() string {
@@ -15217,68 +14507,8 @@ func (s UploadServerCertificateResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *UploadServerCertificateResponseBody) SetFingerprint(v string) *UploadServerCertificateResponseBody {
-	s.Fingerprint = &v
-	return s
-}
-
-func (s *UploadServerCertificateResponseBody) SetExpireTimeStamp(v int64) *UploadServerCertificateResponseBody {
-	s.ExpireTimeStamp = &v
-	return s
-}
-
-func (s *UploadServerCertificateResponseBody) SetRequestId(v string) *UploadServerCertificateResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *UploadServerCertificateResponseBody) SetResourceGroupId(v string) *UploadServerCertificateResponseBody {
-	s.ResourceGroupId = &v
-	return s
-}
-
-func (s *UploadServerCertificateResponseBody) SetCreateTime(v string) *UploadServerCertificateResponseBody {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *UploadServerCertificateResponseBody) SetSubjectAlternativeNames(v *UploadServerCertificateResponseBodySubjectAlternativeNames) *UploadServerCertificateResponseBody {
-	s.SubjectAlternativeNames = v
-	return s
-}
-
-func (s *UploadServerCertificateResponseBody) SetAliCloudCertificateId(v string) *UploadServerCertificateResponseBody {
-	s.AliCloudCertificateId = &v
-	return s
-}
-
 func (s *UploadServerCertificateResponseBody) SetAliCloudCertificateName(v string) *UploadServerCertificateResponseBody {
 	s.AliCloudCertificateName = &v
-	return s
-}
-
-func (s *UploadServerCertificateResponseBody) SetIsAliCloudCertificate(v int32) *UploadServerCertificateResponseBody {
-	s.IsAliCloudCertificate = &v
-	return s
-}
-
-func (s *UploadServerCertificateResponseBody) SetServerCertificateId(v string) *UploadServerCertificateResponseBody {
-	s.ServerCertificateId = &v
-	return s
-}
-
-func (s *UploadServerCertificateResponseBody) SetServerCertificateName(v string) *UploadServerCertificateResponseBody {
-	s.ServerCertificateName = &v
-	return s
-}
-
-func (s *UploadServerCertificateResponseBody) SetRegionId(v string) *UploadServerCertificateResponseBody {
-	s.RegionId = &v
-	return s
-}
-
-func (s *UploadServerCertificateResponseBody) SetExpireTime(v string) *UploadServerCertificateResponseBody {
-	s.ExpireTime = &v
 	return s
 }
 
@@ -15287,8 +14517,68 @@ func (s *UploadServerCertificateResponseBody) SetCreateTimeStamp(v int64) *Uploa
 	return s
 }
 
+func (s *UploadServerCertificateResponseBody) SetExpireTime(v string) *UploadServerCertificateResponseBody {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *UploadServerCertificateResponseBody) SetCreateTime(v string) *UploadServerCertificateResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *UploadServerCertificateResponseBody) SetServerCertificateId(v string) *UploadServerCertificateResponseBody {
+	s.ServerCertificateId = &v
+	return s
+}
+
+func (s *UploadServerCertificateResponseBody) SetExpireTimeStamp(v int64) *UploadServerCertificateResponseBody {
+	s.ExpireTimeStamp = &v
+	return s
+}
+
+func (s *UploadServerCertificateResponseBody) SetRegionId(v string) *UploadServerCertificateResponseBody {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UploadServerCertificateResponseBody) SetRequestId(v string) *UploadServerCertificateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UploadServerCertificateResponseBody) SetFingerprint(v string) *UploadServerCertificateResponseBody {
+	s.Fingerprint = &v
+	return s
+}
+
+func (s *UploadServerCertificateResponseBody) SetServerCertificateName(v string) *UploadServerCertificateResponseBody {
+	s.ServerCertificateName = &v
+	return s
+}
+
 func (s *UploadServerCertificateResponseBody) SetCommonName(v string) *UploadServerCertificateResponseBody {
 	s.CommonName = &v
+	return s
+}
+
+func (s *UploadServerCertificateResponseBody) SetResourceGroupId(v string) *UploadServerCertificateResponseBody {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *UploadServerCertificateResponseBody) SetAliCloudCertificateId(v string) *UploadServerCertificateResponseBody {
+	s.AliCloudCertificateId = &v
+	return s
+}
+
+func (s *UploadServerCertificateResponseBody) SetIsAliCloudCertificate(v int32) *UploadServerCertificateResponseBody {
+	s.IsAliCloudCertificate = &v
+	return s
+}
+
+func (s *UploadServerCertificateResponseBody) SetSubjectAlternativeNames(v *UploadServerCertificateResponseBodySubjectAlternativeNames) *UploadServerCertificateResponseBody {
+	s.SubjectAlternativeNames = v
 	return s
 }
 
@@ -16453,6 +15743,34 @@ func (client *Client) DescribeLoadBalancerHTTPSListenerAttribute(request *Descri
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeLoadBalancerHTTPSListenerAttributeResponse{}
 	_body, _err := client.DescribeLoadBalancerHTTPSListenerAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeLoadBalancerListenersWithOptions(request *DescribeLoadBalancerListenersRequest, runtime *util.RuntimeOptions) (_result *DescribeLoadBalancerListenersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeLoadBalancerListenersResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeLoadBalancerListeners"), tea.String("2014-05-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeLoadBalancerListeners(request *DescribeLoadBalancerListenersRequest) (_result *DescribeLoadBalancerListenersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeLoadBalancerListenersResponse{}
+	_body, _err := client.DescribeLoadBalancerListenersWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
