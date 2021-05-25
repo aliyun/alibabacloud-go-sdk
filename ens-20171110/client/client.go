@@ -643,6 +643,172 @@ func (s *JoinSecurityGroupResponse) SetBody(v *JoinSecurityGroupResponseBody) *J
 	return s
 }
 
+type DescribeLoadBalancerTCPListenerAttributeRequest struct {
+	ListenerPort   *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+}
+
+func (s DescribeLoadBalancerTCPListenerAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerTCPListenerAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerTCPListenerAttributeRequest) SetListenerPort(v int32) *DescribeLoadBalancerTCPListenerAttributeRequest {
+	s.ListenerPort = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerTCPListenerAttributeRequest) SetLoadBalancerId(v string) *DescribeLoadBalancerTCPListenerAttributeRequest {
+	s.LoadBalancerId = &v
+	return s
+}
+
+type DescribeLoadBalancerTCPListenerAttributeResponseBody struct {
+	// Id of the request
+	RequestId                 *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ListenerPort              *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	Status                    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Bandwidth                 *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	Scheduler                 *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	PersistenceTimeout        *int32  `json:"PersistenceTimeout,omitempty" xml:"PersistenceTimeout,omitempty"`
+	EstablishedTimeout        *int32  `json:"EstablishedTimeout,omitempty" xml:"EstablishedTimeout,omitempty"`
+	HealthCheck               *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	HealthyThreshold          *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	UnhealthyThreshold        *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	HealthCheckConnectTimeout *int32  `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
+	HealthCheckConnectPort    *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	HealthCheckInterval       *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	Description               *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	HealthCheckHttpCode       *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	HealthCheckDomain         *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	HealthCheckURI            *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	HealthCheckType           *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
+}
+
+func (s DescribeLoadBalancerTCPListenerAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerTCPListenerAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetRequestId(v string) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetListenerPort(v int32) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
+	s.ListenerPort = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetStatus(v string) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetBandwidth(v int32) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
+	s.Bandwidth = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetScheduler(v string) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
+	s.Scheduler = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetPersistenceTimeout(v int32) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
+	s.PersistenceTimeout = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetEstablishedTimeout(v int32) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
+	s.EstablishedTimeout = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetHealthCheck(v string) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
+	s.HealthCheck = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetHealthyThreshold(v int32) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
+	s.HealthyThreshold = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetUnhealthyThreshold(v int32) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
+	s.UnhealthyThreshold = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetHealthCheckConnectTimeout(v int32) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
+	s.HealthCheckConnectTimeout = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetHealthCheckConnectPort(v int32) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
+	s.HealthCheckConnectPort = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetHealthCheckInterval(v int32) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
+	s.HealthCheckInterval = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetDescription(v string) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetHealthCheckHttpCode(v string) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
+	s.HealthCheckHttpCode = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetHealthCheckDomain(v string) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
+	s.HealthCheckDomain = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetHealthCheckURI(v string) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
+	s.HealthCheckURI = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetHealthCheckType(v string) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
+	s.HealthCheckType = &v
+	return s
+}
+
+type DescribeLoadBalancerTCPListenerAttributeResponse struct {
+	Headers map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeLoadBalancerTCPListenerAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeLoadBalancerTCPListenerAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerTCPListenerAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerTCPListenerAttributeResponse) SetHeaders(v map[string]*string) *DescribeLoadBalancerTCPListenerAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeLoadBalancerTCPListenerAttributeResponse) SetBody(v *DescribeLoadBalancerTCPListenerAttributeResponseBody) *DescribeLoadBalancerTCPListenerAttributeResponse {
+	s.Body = v
+	return s
+}
+
 type RestartDeviceInstanceRequest struct {
 	// App ID
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
@@ -2109,6 +2275,70 @@ func (s *AttachEnsInstancesResponse) SetBody(v *AttachEnsInstancesResponseBody) 
 	return s
 }
 
+type ModifyLoadBalancerAttributeRequest struct {
+	LoadBalancerId   *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
+}
+
+func (s ModifyLoadBalancerAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyLoadBalancerAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyLoadBalancerAttributeRequest) SetLoadBalancerId(v string) *ModifyLoadBalancerAttributeRequest {
+	s.LoadBalancerId = &v
+	return s
+}
+
+func (s *ModifyLoadBalancerAttributeRequest) SetLoadBalancerName(v string) *ModifyLoadBalancerAttributeRequest {
+	s.LoadBalancerName = &v
+	return s
+}
+
+type ModifyLoadBalancerAttributeResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyLoadBalancerAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyLoadBalancerAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyLoadBalancerAttributeResponseBody) SetRequestId(v string) *ModifyLoadBalancerAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyLoadBalancerAttributeResponse struct {
+	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ModifyLoadBalancerAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyLoadBalancerAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyLoadBalancerAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyLoadBalancerAttributeResponse) SetHeaders(v map[string]*string) *ModifyLoadBalancerAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyLoadBalancerAttributeResponse) SetBody(v *ModifyLoadBalancerAttributeResponseBody) *ModifyLoadBalancerAttributeResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeEpnBandwitdhByInternetChargeTypeRequest struct {
 	Version         *string `json:"Version,omitempty" xml:"Version,omitempty"`
 	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
@@ -3208,6 +3438,7 @@ type RescaleDeviceServiceResponseBodyResourceDetailInfos struct {
 	Server   *string `json:"Server,omitempty" xml:"Server,omitempty"`
 	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Mac      *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
 }
 
 func (s RescaleDeviceServiceResponseBodyResourceDetailInfos) String() string {
@@ -3245,6 +3476,11 @@ func (s *RescaleDeviceServiceResponseBodyResourceDetailInfos) SetType(v string) 
 
 func (s *RescaleDeviceServiceResponseBodyResourceDetailInfos) SetStatus(v string) *RescaleDeviceServiceResponseBodyResourceDetailInfos {
 	s.Status = &v
+	return s
+}
+
+func (s *RescaleDeviceServiceResponseBodyResourceDetailInfos) SetMac(v string) *RescaleDeviceServiceResponseBodyResourceDetailInfos {
+	s.Mac = &v
 	return s
 }
 
@@ -3560,6 +3796,236 @@ func (s *DescribeImageInfosResponse) SetBody(v *DescribeImageInfosResponseBody) 
 	return s
 }
 
+type DescribeLoadBalancerAttributeRequest struct {
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+}
+
+func (s DescribeLoadBalancerAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerAttributeRequest) SetLoadBalancerId(v string) *DescribeLoadBalancerAttributeRequest {
+	s.LoadBalancerId = &v
+	return s
+}
+
+type DescribeLoadBalancerAttributeResponseBody struct {
+	// Id of the request
+	RequestId                 *string                                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	LoadBalancerId            *string                                                               `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	LoadBalancerName          *string                                                               `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
+	LoadBalancerStatus        *string                                                               `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
+	EnsRegionId               *string                                                               `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	Address                   *string                                                               `json:"Address,omitempty" xml:"Address,omitempty"`
+	NetworkId                 *string                                                               `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	VSwitchId                 *string                                                               `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	Bandwidth                 *int32                                                                `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	LoadBalancerSpec          *string                                                               `json:"LoadBalancerSpec,omitempty" xml:"LoadBalancerSpec,omitempty"`
+	CreateTime                *string                                                               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EndTime                   *string                                                               `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ListenerPorts             []*string                                                             `json:"ListenerPorts,omitempty" xml:"ListenerPorts,omitempty" type:"Repeated"`
+	BackendServers            []*DescribeLoadBalancerAttributeResponseBodyBackendServers            `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Repeated"`
+	ListenerPortsAndProtocols []*DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocols `json:"ListenerPortsAndProtocols,omitempty" xml:"ListenerPortsAndProtocols,omitempty" type:"Repeated"`
+	AddressIPVersion          *string                                                               `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
+}
+
+func (s DescribeLoadBalancerAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetRequestId(v string) *DescribeLoadBalancerAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetLoadBalancerId(v string) *DescribeLoadBalancerAttributeResponseBody {
+	s.LoadBalancerId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetLoadBalancerName(v string) *DescribeLoadBalancerAttributeResponseBody {
+	s.LoadBalancerName = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetLoadBalancerStatus(v string) *DescribeLoadBalancerAttributeResponseBody {
+	s.LoadBalancerStatus = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetEnsRegionId(v string) *DescribeLoadBalancerAttributeResponseBody {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetAddress(v string) *DescribeLoadBalancerAttributeResponseBody {
+	s.Address = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetNetworkId(v string) *DescribeLoadBalancerAttributeResponseBody {
+	s.NetworkId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetVSwitchId(v string) *DescribeLoadBalancerAttributeResponseBody {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetBandwidth(v int32) *DescribeLoadBalancerAttributeResponseBody {
+	s.Bandwidth = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetLoadBalancerSpec(v string) *DescribeLoadBalancerAttributeResponseBody {
+	s.LoadBalancerSpec = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetCreateTime(v string) *DescribeLoadBalancerAttributeResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetEndTime(v string) *DescribeLoadBalancerAttributeResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetListenerPorts(v []*string) *DescribeLoadBalancerAttributeResponseBody {
+	s.ListenerPorts = v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetBackendServers(v []*DescribeLoadBalancerAttributeResponseBodyBackendServers) *DescribeLoadBalancerAttributeResponseBody {
+	s.BackendServers = v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetListenerPortsAndProtocols(v []*DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocols) *DescribeLoadBalancerAttributeResponseBody {
+	s.ListenerPortsAndProtocols = v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetAddressIPVersion(v string) *DescribeLoadBalancerAttributeResponseBody {
+	s.AddressIPVersion = &v
+	return s
+}
+
+type DescribeLoadBalancerAttributeResponseBodyBackendServers struct {
+	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	Ip       *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Port     *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Weight   *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+}
+
+func (s DescribeLoadBalancerAttributeResponseBodyBackendServers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerAttributeResponseBodyBackendServers) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBodyBackendServers) SetServerId(v string) *DescribeLoadBalancerAttributeResponseBodyBackendServers {
+	s.ServerId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBodyBackendServers) SetIp(v string) *DescribeLoadBalancerAttributeResponseBodyBackendServers {
+	s.Ip = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBodyBackendServers) SetPort(v string) *DescribeLoadBalancerAttributeResponseBodyBackendServers {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBodyBackendServers) SetType(v string) *DescribeLoadBalancerAttributeResponseBodyBackendServers {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBodyBackendServers) SetWeight(v int32) *DescribeLoadBalancerAttributeResponseBodyBackendServers {
+	s.Weight = &v
+	return s
+}
+
+type DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocols struct {
+	ListenerPort     *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ListenerForward  *string `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
+	ForwardPort      *int32  `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
+}
+
+func (s DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocols) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocols) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocols) SetListenerPort(v int32) *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocols {
+	s.ListenerPort = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocols) SetListenerProtocol(v string) *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocols {
+	s.ListenerProtocol = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocols) SetDescription(v string) *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocols {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocols) SetListenerForward(v string) *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocols {
+	s.ListenerForward = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocols) SetForwardPort(v int32) *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocols {
+	s.ForwardPort = &v
+	return s
+}
+
+type DescribeLoadBalancerAttributeResponse struct {
+	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeLoadBalancerAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeLoadBalancerAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerAttributeResponse) SetHeaders(v map[string]*string) *DescribeLoadBalancerAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponse) SetBody(v *DescribeLoadBalancerAttributeResponseBody) *DescribeLoadBalancerAttributeResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyNetworkAttributeRequest struct {
 	NetworkId   *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
 	NetworkName *string `json:"NetworkName,omitempty" xml:"NetworkName,omitempty"`
@@ -3850,6 +4316,211 @@ func (s *DeleteSecurityGroupResponse) SetHeaders(v map[string]*string) *DeleteSe
 }
 
 func (s *DeleteSecurityGroupResponse) SetBody(v *DeleteSecurityGroupResponseBody) *DeleteSecurityGroupResponse {
+	s.Body = v
+	return s
+}
+
+type CreateLoadBalancerHTTPSListenerRequest struct {
+	// 负载均衡实例的ID。
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// 负载均衡实例前端使用的端口。  取值：1-65535。
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// 是否开启HTTP至HTTPS的转发。取值：on | off。
+	ListenerForward *string `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
+	// HTTP至HTTPS的监听转发端口。
+	ForwardPort *int32 `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
+	// 设置监听的描述信息。  长度限制为1-80个字符，允许包含字母、数字、“-”、“/”、“.”和“_”等字符。支持中文描述。
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 调度算法。取值：  wrr（默认值）：权重值越高的后端服务器，被轮询到的次数（概率）也越高。 wlc：除了根据每台后端服务器设定的权重值来进行轮询，同时还考虑后端服务器的实际负载（即连接数）。当权重值相同时，当前连接数越小的后端服务器被轮询到的次数（概率）也越高。 rr：按照访问顺序依次将外部请求依序分发到后端服务器。
+	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	// cookie的处理方式。取值：  insert：植入Cookie。  客户端第一次访问时，负载均衡会在返回请求中植入Cookie（即在HTTP/HTTPS响应报文中插入SERVERID），下次客户端携带此Cookie访问，负载均衡服务会将请求定向转发给之前记录到的后端服务器上。  server：重写Cookie。  负载均衡发现用户自定义了Cookie，将会对原来的Cookie进行重写，下次客户端携带新的Cookie访问，负载均衡服务会将请求定向转发给之前记录到的后端服务器。   说明 当StickySession的值为on时，必须指定该参数。
+	StickySessionType *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
+	// Cookie超时时间。  取值：1~86400（秒）。   说明 当StickySession为on且StickySessionType为insert时，该参数必选。
+	CookieTimeout *int32 `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
+	// 服务器上配置的Cookie。 长度为1-200，只能包含ASCII英文字母和数字字符，不能包含逗号、分号或空格，也不能以$开头。 说明 当StickySession为on且StickySessionType为server时，该参数必选。
+	Cookie *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
+	// 是否开启健康检查。  取值：on | off。
+	HealthCheck *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	// 用于健康检查的域名，取值：  $_ip： 后端服务器的私网IP。当指定了IP或该参数未指定时，负载均衡会使用各后端服务器的私网IP当做健康检查使用的域名。是否要支持？ domain：域名长度为1-80字符，只能包含字母、数字、点号（.）和连字符（-）。   说明 在HealthCheck值为on时才会有效。
+	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	// 用于健康检查的URI。  长度限制为1~80，只能使用字母、数字和”-/.%?#&amp;“这些字符。 URL不能只为”/“，但必须以”/“开头。    说明 在HealthCheck值为on时才会有效。
+	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	// 健康检查连续成功多少次后，将后端服务器的健康检查状态由fail判定为success。  取值：2~10。    说明 在HealthCheck值为on时才会有效。
+	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	// 健康检查连续失败多少次后，将后端服务器的健康检查状态由success判定为fail。  取值：2~10。   说明 在HealthCheck值为on时才会有效。
+	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	// 接收来自运行状况检查的响应需要等待的时间。如果后端ECS在指定的时间内没有正确响应，则判定为健康检查失败。在HealthCheck值为on时才会有效。  取值：1~300（秒）。   说明 如果HealthCHeckTimeout的值小于HealthCheckInterval的值，则HealthCHeckTimeout无效，超时时间为HealthCheckInterval的值。
+	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	// 健康检查的后端服务器的端口。  取值： 1~65535。    说明 在HealthCheck值为on时才会有效。
+	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	// 健康检查的时间间隔。  取值： 1~50（秒）。   说明 在HealthCheck值为on时才会有效。
+	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	// 健康检查正常的HTTP状态码，多个状态码用逗号分隔。  默认值为http_2xx。  取值：http_2xx | http_3xx | http_4xx | http_5xx。   说明 在HealthCheck值为on时才会有效。
+	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	// 指定连接空闲超时时间，取值范围为1~60秒，默认值为15秒。  在超时时间内一直没有访问请求，负载均衡会暂时中断当前连接，直到一下次请求来临时重新建立新的连接。
+	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	// 指定请求超时时间，取值范围为1~180秒，默认值为60秒。  在超时时间内后端服务器一直没有响应，负载均衡将放弃等待，给客户端返回 HTTP 504 错误码。
+	RequestTimeout *int32 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	// 服务器证书的ID。
+	ServerCertificateId *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
+	HealthCheckMethod   *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
+}
+
+func (s CreateLoadBalancerHTTPSListenerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLoadBalancerHTTPSListenerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLoadBalancerHTTPSListenerRequest) SetLoadBalancerId(v string) *CreateLoadBalancerHTTPSListenerRequest {
+	s.LoadBalancerId = &v
+	return s
+}
+
+func (s *CreateLoadBalancerHTTPSListenerRequest) SetListenerPort(v int32) *CreateLoadBalancerHTTPSListenerRequest {
+	s.ListenerPort = &v
+	return s
+}
+
+func (s *CreateLoadBalancerHTTPSListenerRequest) SetListenerForward(v string) *CreateLoadBalancerHTTPSListenerRequest {
+	s.ListenerForward = &v
+	return s
+}
+
+func (s *CreateLoadBalancerHTTPSListenerRequest) SetForwardPort(v int32) *CreateLoadBalancerHTTPSListenerRequest {
+	s.ForwardPort = &v
+	return s
+}
+
+func (s *CreateLoadBalancerHTTPSListenerRequest) SetDescription(v string) *CreateLoadBalancerHTTPSListenerRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateLoadBalancerHTTPSListenerRequest) SetScheduler(v string) *CreateLoadBalancerHTTPSListenerRequest {
+	s.Scheduler = &v
+	return s
+}
+
+func (s *CreateLoadBalancerHTTPSListenerRequest) SetStickySessionType(v string) *CreateLoadBalancerHTTPSListenerRequest {
+	s.StickySessionType = &v
+	return s
+}
+
+func (s *CreateLoadBalancerHTTPSListenerRequest) SetCookieTimeout(v int32) *CreateLoadBalancerHTTPSListenerRequest {
+	s.CookieTimeout = &v
+	return s
+}
+
+func (s *CreateLoadBalancerHTTPSListenerRequest) SetCookie(v string) *CreateLoadBalancerHTTPSListenerRequest {
+	s.Cookie = &v
+	return s
+}
+
+func (s *CreateLoadBalancerHTTPSListenerRequest) SetHealthCheck(v string) *CreateLoadBalancerHTTPSListenerRequest {
+	s.HealthCheck = &v
+	return s
+}
+
+func (s *CreateLoadBalancerHTTPSListenerRequest) SetHealthCheckDomain(v string) *CreateLoadBalancerHTTPSListenerRequest {
+	s.HealthCheckDomain = &v
+	return s
+}
+
+func (s *CreateLoadBalancerHTTPSListenerRequest) SetHealthCheckURI(v string) *CreateLoadBalancerHTTPSListenerRequest {
+	s.HealthCheckURI = &v
+	return s
+}
+
+func (s *CreateLoadBalancerHTTPSListenerRequest) SetHealthyThreshold(v int32) *CreateLoadBalancerHTTPSListenerRequest {
+	s.HealthyThreshold = &v
+	return s
+}
+
+func (s *CreateLoadBalancerHTTPSListenerRequest) SetUnhealthyThreshold(v int32) *CreateLoadBalancerHTTPSListenerRequest {
+	s.UnhealthyThreshold = &v
+	return s
+}
+
+func (s *CreateLoadBalancerHTTPSListenerRequest) SetHealthCheckTimeout(v int32) *CreateLoadBalancerHTTPSListenerRequest {
+	s.HealthCheckTimeout = &v
+	return s
+}
+
+func (s *CreateLoadBalancerHTTPSListenerRequest) SetHealthCheckConnectPort(v int32) *CreateLoadBalancerHTTPSListenerRequest {
+	s.HealthCheckConnectPort = &v
+	return s
+}
+
+func (s *CreateLoadBalancerHTTPSListenerRequest) SetHealthCheckInterval(v int32) *CreateLoadBalancerHTTPSListenerRequest {
+	s.HealthCheckInterval = &v
+	return s
+}
+
+func (s *CreateLoadBalancerHTTPSListenerRequest) SetHealthCheckHttpCode(v string) *CreateLoadBalancerHTTPSListenerRequest {
+	s.HealthCheckHttpCode = &v
+	return s
+}
+
+func (s *CreateLoadBalancerHTTPSListenerRequest) SetIdleTimeout(v int32) *CreateLoadBalancerHTTPSListenerRequest {
+	s.IdleTimeout = &v
+	return s
+}
+
+func (s *CreateLoadBalancerHTTPSListenerRequest) SetRequestTimeout(v int32) *CreateLoadBalancerHTTPSListenerRequest {
+	s.RequestTimeout = &v
+	return s
+}
+
+func (s *CreateLoadBalancerHTTPSListenerRequest) SetServerCertificateId(v string) *CreateLoadBalancerHTTPSListenerRequest {
+	s.ServerCertificateId = &v
+	return s
+}
+
+func (s *CreateLoadBalancerHTTPSListenerRequest) SetHealthCheckMethod(v string) *CreateLoadBalancerHTTPSListenerRequest {
+	s.HealthCheckMethod = &v
+	return s
+}
+
+type CreateLoadBalancerHTTPSListenerResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateLoadBalancerHTTPSListenerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLoadBalancerHTTPSListenerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLoadBalancerHTTPSListenerResponseBody) SetRequestId(v string) *CreateLoadBalancerHTTPSListenerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateLoadBalancerHTTPSListenerResponse struct {
+	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateLoadBalancerHTTPSListenerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateLoadBalancerHTTPSListenerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLoadBalancerHTTPSListenerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLoadBalancerHTTPSListenerResponse) SetHeaders(v map[string]*string) *CreateLoadBalancerHTTPSListenerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateLoadBalancerHTTPSListenerResponse) SetBody(v *CreateLoadBalancerHTTPSListenerResponseBody) *CreateLoadBalancerHTTPSListenerResponse {
 	s.Body = v
 	return s
 }
@@ -4709,6 +5380,121 @@ func (s *StartEpnInstanceResponse) SetBody(v *StartEpnInstanceResponseBody) *Sta
 	return s
 }
 
+type CreateLoadBalancerUDPListenerRequest struct {
+	// 负载均衡实例的ID。
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// 负载均衡实例前端使用的端口。  取值：1-65535。
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// 设置监听的描述信息。  长度限制为1-80个字符，允许包含字母、数字、“-”、“/”、“.”和“_”等字符。支持中文描述。
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 调度算法。取值：  wrr（默认值）：权重值越高的后端服务器，被轮询到的次数（概率）也越高。 wlc：除了根据每台后端服务器设定的权重值来进行轮询，同时还考虑后端服务器的实际负载（即连接数）。当权重值相同时，当前连接数越小的后端服务器被轮询到的次数（概率）也越高。 rr：按照访问顺序依次将外部请求依序分发到后端服务器。 sch：基于源IP地址的一致性hash，相同的源地址会调度到相同的后端服务器。
+	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	// 健康检查连续成功多少次后，将后端服务器的健康检查状态由fail判定为success。  取值：2-10。
+	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	// 健康检查连续失败多少次后，将后端服务器的健康检查状态由success判定为fail。  取值：2-10。
+	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	// 接收来自运行状况检查的响应需要等待的时间。  如果后端ENS在指定的时间内没有正确响应，则判定为健康检查失败。  取值：1-300（秒）。默认为5秒
+	HealthCheckConnectTimeout *int32 `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
+	// 健康检查的时间间隔。  取值：1-50（秒）。
+	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	// 健康检查使用的端口。取值：1-65535  不设置此参数时，表示使用后端服务端口（BackendServerPort）
+	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+}
+
+func (s CreateLoadBalancerUDPListenerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLoadBalancerUDPListenerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLoadBalancerUDPListenerRequest) SetLoadBalancerId(v string) *CreateLoadBalancerUDPListenerRequest {
+	s.LoadBalancerId = &v
+	return s
+}
+
+func (s *CreateLoadBalancerUDPListenerRequest) SetListenerPort(v int32) *CreateLoadBalancerUDPListenerRequest {
+	s.ListenerPort = &v
+	return s
+}
+
+func (s *CreateLoadBalancerUDPListenerRequest) SetDescription(v string) *CreateLoadBalancerUDPListenerRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateLoadBalancerUDPListenerRequest) SetScheduler(v string) *CreateLoadBalancerUDPListenerRequest {
+	s.Scheduler = &v
+	return s
+}
+
+func (s *CreateLoadBalancerUDPListenerRequest) SetHealthyThreshold(v int32) *CreateLoadBalancerUDPListenerRequest {
+	s.HealthyThreshold = &v
+	return s
+}
+
+func (s *CreateLoadBalancerUDPListenerRequest) SetUnhealthyThreshold(v int32) *CreateLoadBalancerUDPListenerRequest {
+	s.UnhealthyThreshold = &v
+	return s
+}
+
+func (s *CreateLoadBalancerUDPListenerRequest) SetHealthCheckConnectTimeout(v int32) *CreateLoadBalancerUDPListenerRequest {
+	s.HealthCheckConnectTimeout = &v
+	return s
+}
+
+func (s *CreateLoadBalancerUDPListenerRequest) SetHealthCheckInterval(v int32) *CreateLoadBalancerUDPListenerRequest {
+	s.HealthCheckInterval = &v
+	return s
+}
+
+func (s *CreateLoadBalancerUDPListenerRequest) SetHealthCheckConnectPort(v int32) *CreateLoadBalancerUDPListenerRequest {
+	s.HealthCheckConnectPort = &v
+	return s
+}
+
+type CreateLoadBalancerUDPListenerResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateLoadBalancerUDPListenerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLoadBalancerUDPListenerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLoadBalancerUDPListenerResponseBody) SetRequestId(v string) *CreateLoadBalancerUDPListenerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateLoadBalancerUDPListenerResponse struct {
+	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateLoadBalancerUDPListenerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateLoadBalancerUDPListenerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLoadBalancerUDPListenerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLoadBalancerUDPListenerResponse) SetHeaders(v map[string]*string) *CreateLoadBalancerUDPListenerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateLoadBalancerUDPListenerResponse) SetBody(v *CreateLoadBalancerUDPListenerResponseBody) *CreateLoadBalancerUDPListenerResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeEpnBandWidthDataRequest struct {
 	Version         *string `json:"Version,omitempty" xml:"Version,omitempty"`
 	EnsRegionId     *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
@@ -5162,6 +5948,70 @@ func (s *DescribeMeasurementDataResponse) SetBody(v *DescribeMeasurementDataResp
 	return s
 }
 
+type SetLoadBalancerStatusRequest struct {
+	LoadBalancerId     *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	LoadBalancerStatus *string `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
+}
+
+func (s SetLoadBalancerStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetLoadBalancerStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetLoadBalancerStatusRequest) SetLoadBalancerId(v string) *SetLoadBalancerStatusRequest {
+	s.LoadBalancerId = &v
+	return s
+}
+
+func (s *SetLoadBalancerStatusRequest) SetLoadBalancerStatus(v string) *SetLoadBalancerStatusRequest {
+	s.LoadBalancerStatus = &v
+	return s
+}
+
+type SetLoadBalancerStatusResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SetLoadBalancerStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetLoadBalancerStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetLoadBalancerStatusResponseBody) SetRequestId(v string) *SetLoadBalancerStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SetLoadBalancerStatusResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SetLoadBalancerStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SetLoadBalancerStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetLoadBalancerStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetLoadBalancerStatusResponse) SetHeaders(v map[string]*string) *SetLoadBalancerStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetLoadBalancerStatusResponse) SetBody(v *SetLoadBalancerStatusResponseBody) *SetLoadBalancerStatusResponse {
+	s.Body = v
+	return s
+}
+
 type CreateVSwitchRequest struct {
 	Version     *string `json:"Version,omitempty" xml:"Version,omitempty"`
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
@@ -5408,6 +6258,70 @@ func (s *ModifySecurityGroupAttributeResponse) SetHeaders(v map[string]*string) 
 }
 
 func (s *ModifySecurityGroupAttributeResponse) SetBody(v *ModifySecurityGroupAttributeResponseBody) *ModifySecurityGroupAttributeResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteLoadBalancerListenerRequest struct {
+	ListenerPort   *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+}
+
+func (s DeleteLoadBalancerListenerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLoadBalancerListenerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLoadBalancerListenerRequest) SetListenerPort(v int32) *DeleteLoadBalancerListenerRequest {
+	s.ListenerPort = &v
+	return s
+}
+
+func (s *DeleteLoadBalancerListenerRequest) SetLoadBalancerId(v string) *DeleteLoadBalancerListenerRequest {
+	s.LoadBalancerId = &v
+	return s
+}
+
+type DeleteLoadBalancerListenerResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteLoadBalancerListenerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLoadBalancerListenerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLoadBalancerListenerResponseBody) SetRequestId(v string) *DeleteLoadBalancerListenerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteLoadBalancerListenerResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteLoadBalancerListenerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteLoadBalancerListenerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLoadBalancerListenerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLoadBalancerListenerResponse) SetHeaders(v map[string]*string) *DeleteLoadBalancerListenerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteLoadBalancerListenerResponse) SetBody(v *DeleteLoadBalancerListenerResponseBody) *DeleteLoadBalancerListenerResponse {
 	s.Body = v
 	return s
 }
@@ -5708,6 +6622,385 @@ func (s *ReleaseEipAddressResponse) SetHeaders(v map[string]*string) *ReleaseEip
 }
 
 func (s *ReleaseEipAddressResponse) SetBody(v *ReleaseEipAddressResponseBody) *ReleaseEipAddressResponse {
+	s.Body = v
+	return s
+}
+
+type RemoveBackendServersRequest struct {
+	LoadBalancerId *string                                      `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	BackendServers []*RemoveBackendServersRequestBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Repeated"`
+}
+
+func (s RemoveBackendServersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveBackendServersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveBackendServersRequest) SetLoadBalancerId(v string) *RemoveBackendServersRequest {
+	s.LoadBalancerId = &v
+	return s
+}
+
+func (s *RemoveBackendServersRequest) SetBackendServers(v []*RemoveBackendServersRequestBackendServers) *RemoveBackendServersRequest {
+	s.BackendServers = v
+	return s
+}
+
+type RemoveBackendServersRequestBackendServers struct {
+	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	// 后端服务器的权重。  取值：0~100  默认值为100，如果值为0，则不会将请求转发给该后端服务器。
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// 后端服务器类型。  ens：ENS实例（默认）
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Ip   *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// 端口
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+}
+
+func (s RemoveBackendServersRequestBackendServers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveBackendServersRequestBackendServers) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveBackendServersRequestBackendServers) SetServerId(v string) *RemoveBackendServersRequestBackendServers {
+	s.ServerId = &v
+	return s
+}
+
+func (s *RemoveBackendServersRequestBackendServers) SetWeight(v int32) *RemoveBackendServersRequestBackendServers {
+	s.Weight = &v
+	return s
+}
+
+func (s *RemoveBackendServersRequestBackendServers) SetType(v string) *RemoveBackendServersRequestBackendServers {
+	s.Type = &v
+	return s
+}
+
+func (s *RemoveBackendServersRequestBackendServers) SetIp(v string) *RemoveBackendServersRequestBackendServers {
+	s.Ip = &v
+	return s
+}
+
+func (s *RemoveBackendServersRequestBackendServers) SetPort(v int32) *RemoveBackendServersRequestBackendServers {
+	s.Port = &v
+	return s
+}
+
+type RemoveBackendServersShrinkRequest struct {
+	LoadBalancerId       *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	BackendServersShrink *string `json:"BackendServers,omitempty" xml:"BackendServers,omitempty"`
+}
+
+func (s RemoveBackendServersShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveBackendServersShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveBackendServersShrinkRequest) SetLoadBalancerId(v string) *RemoveBackendServersShrinkRequest {
+	s.LoadBalancerId = &v
+	return s
+}
+
+func (s *RemoveBackendServersShrinkRequest) SetBackendServersShrink(v string) *RemoveBackendServersShrinkRequest {
+	s.BackendServersShrink = &v
+	return s
+}
+
+type RemoveBackendServersResponseBody struct {
+	// Id of the request
+	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	BackendServers *RemoveBackendServersResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
+}
+
+func (s RemoveBackendServersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveBackendServersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveBackendServersResponseBody) SetRequestId(v string) *RemoveBackendServersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RemoveBackendServersResponseBody) SetBackendServers(v *RemoveBackendServersResponseBodyBackendServers) *RemoveBackendServersResponseBody {
+	s.BackendServers = v
+	return s
+}
+
+type RemoveBackendServersResponseBodyBackendServers struct {
+	BackendServer []*RemoveBackendServersResponseBodyBackendServersBackendServer `json:"BackendServer,omitempty" xml:"BackendServer,omitempty" type:"Repeated"`
+}
+
+func (s RemoveBackendServersResponseBodyBackendServers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveBackendServersResponseBodyBackendServers) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveBackendServersResponseBodyBackendServers) SetBackendServer(v []*RemoveBackendServersResponseBodyBackendServersBackendServer) *RemoveBackendServersResponseBodyBackendServers {
+	s.BackendServer = v
+	return s
+}
+
+type RemoveBackendServersResponseBodyBackendServersBackendServer struct {
+	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	Weight   *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Ip       *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+}
+
+func (s RemoveBackendServersResponseBodyBackendServersBackendServer) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveBackendServersResponseBodyBackendServersBackendServer) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveBackendServersResponseBodyBackendServersBackendServer) SetServerId(v string) *RemoveBackendServersResponseBodyBackendServersBackendServer {
+	s.ServerId = &v
+	return s
+}
+
+func (s *RemoveBackendServersResponseBodyBackendServersBackendServer) SetWeight(v int32) *RemoveBackendServersResponseBodyBackendServersBackendServer {
+	s.Weight = &v
+	return s
+}
+
+func (s *RemoveBackendServersResponseBodyBackendServersBackendServer) SetType(v string) *RemoveBackendServersResponseBodyBackendServersBackendServer {
+	s.Type = &v
+	return s
+}
+
+func (s *RemoveBackendServersResponseBodyBackendServersBackendServer) SetIp(v string) *RemoveBackendServersResponseBodyBackendServersBackendServer {
+	s.Ip = &v
+	return s
+}
+
+func (s *RemoveBackendServersResponseBodyBackendServersBackendServer) SetPort(v int32) *RemoveBackendServersResponseBodyBackendServersBackendServer {
+	s.Port = &v
+	return s
+}
+
+type RemoveBackendServersResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RemoveBackendServersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RemoveBackendServersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveBackendServersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveBackendServersResponse) SetHeaders(v map[string]*string) *RemoveBackendServersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RemoveBackendServersResponse) SetBody(v *RemoveBackendServersResponseBody) *RemoveBackendServersResponse {
+	s.Body = v
+	return s
+}
+
+type CreateLoadBalancerHTTPListenerRequest struct {
+	// 负载均衡实例的ID。
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// 负载均衡实例前端使用的端口。  取值：1-65535。
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// 是否开启HTTP至HTTPS的转发。取值：on | off。
+	ListenerForward *string `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
+	// HTTP至HTTPS的监听转发端口。
+	ForwardPort *int32 `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
+	// 设置监听的描述信息。  长度限制为1-80个字符，允许包含字母、数字、“-”、“/”、“.”和“_”等字符。支持中文描述。
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 是否开启通过X-Forwarded-For头字段获取来访者真实 IP。  取值为on。
+	XForwardedFor *string `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
+	// 调度算法。取值：  wrr（默认值）：权重值越高的后端服务器，被轮询到的次数（概率）也越高。 wlc：除了根据每台后端服务器设定的权重值来进行轮询，同时还考虑后端服务器的实际负载（即连接数）。当权重值相同时，当前连接数越小的后端服务器被轮询到的次数（概率）也越高。 rr：按照访问顺序依次将外部请求依序分发到后端服务器。
+	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	// 是否开启健康检查。  取值：on | off。
+	HealthCheck *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	// 用于健康检查的域名，取值：  $_ip： 后端服务器的私网IP。当指定了IP或该参数未指定时，负载均衡会使用各后端服务器的私网IP当做健康检查使用的域名。是否要支持？ domain：域名长度为1-80字符，只能包含字母、数字、点号（.）和连字符（-）。   说明 在HealthCheck值为on时才会有效。
+	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	// 用于健康检查的URI。  长度限制为1~80，只能使用字母、数字和”-/.%?#&amp;“这些字符。 URL不能只为”/“，但必须以”/“开头。    说明 在HealthCheck值为on时才会有效。
+	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	// 健康检查连续成功多少次后，将后端服务器的健康检查状态由fail判定为success。  取值：2~10。    说明 在HealthCheck值为on时才会有效。
+	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	// 健康检查连续失败多少次后，将后端服务器的健康检查状态由success判定为fail。  取值：2~10。   说明 在HealthCheck值为on时才会有效。
+	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	// 接收来自运行状况检查的响应需要等待的时间。如果后端ECS在指定的时间内没有正确响应，则判定为健康检查失败。在HealthCheck值为on时才会有效。  取值：1~300（秒）。   说明 如果HealthCHeckTimeout的值小于HealthCheckInterval的值，则HealthCHeckTimeout无效，超时时间为HealthCheckInterval的值。
+	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	// 健康检查的后端服务器的端口。  取值： 1~65535。    说明 在HealthCheck值为on时才会有效。
+	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	// 健康检查的时间间隔。  取值： 1~50（秒）。   说明 在HealthCheck值为on时才会有效。
+	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	// 健康检查正常的HTTP状态码，多个状态码用逗号分隔。  默认值为http_2xx。  取值：http_2xx | http_3xx | http_4xx | http_5xx。   说明 在HealthCheck值为on时才会有效。
+	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	// 指定连接空闲超时时间，取值范围为1~60秒，默认值为15秒。  在超时时间内一直没有访问请求，负载均衡会暂时中断当前连接，直到一下次请求来临时重新建立新的连接。
+	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	// 指定请求超时时间，取值范围为1~180秒，默认值为60秒。  在超时时间内后端服务器一直没有响应，负载均衡将放弃等待，给客户端返回 HTTP 504 错误码。
+	RequestTimeout    *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	HealthCheckMethod *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
+}
+
+func (s CreateLoadBalancerHTTPListenerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLoadBalancerHTTPListenerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLoadBalancerHTTPListenerRequest) SetLoadBalancerId(v string) *CreateLoadBalancerHTTPListenerRequest {
+	s.LoadBalancerId = &v
+	return s
+}
+
+func (s *CreateLoadBalancerHTTPListenerRequest) SetListenerPort(v int32) *CreateLoadBalancerHTTPListenerRequest {
+	s.ListenerPort = &v
+	return s
+}
+
+func (s *CreateLoadBalancerHTTPListenerRequest) SetListenerForward(v string) *CreateLoadBalancerHTTPListenerRequest {
+	s.ListenerForward = &v
+	return s
+}
+
+func (s *CreateLoadBalancerHTTPListenerRequest) SetForwardPort(v int32) *CreateLoadBalancerHTTPListenerRequest {
+	s.ForwardPort = &v
+	return s
+}
+
+func (s *CreateLoadBalancerHTTPListenerRequest) SetDescription(v string) *CreateLoadBalancerHTTPListenerRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateLoadBalancerHTTPListenerRequest) SetXForwardedFor(v string) *CreateLoadBalancerHTTPListenerRequest {
+	s.XForwardedFor = &v
+	return s
+}
+
+func (s *CreateLoadBalancerHTTPListenerRequest) SetScheduler(v string) *CreateLoadBalancerHTTPListenerRequest {
+	s.Scheduler = &v
+	return s
+}
+
+func (s *CreateLoadBalancerHTTPListenerRequest) SetHealthCheck(v string) *CreateLoadBalancerHTTPListenerRequest {
+	s.HealthCheck = &v
+	return s
+}
+
+func (s *CreateLoadBalancerHTTPListenerRequest) SetHealthCheckDomain(v string) *CreateLoadBalancerHTTPListenerRequest {
+	s.HealthCheckDomain = &v
+	return s
+}
+
+func (s *CreateLoadBalancerHTTPListenerRequest) SetHealthCheckURI(v string) *CreateLoadBalancerHTTPListenerRequest {
+	s.HealthCheckURI = &v
+	return s
+}
+
+func (s *CreateLoadBalancerHTTPListenerRequest) SetHealthyThreshold(v int32) *CreateLoadBalancerHTTPListenerRequest {
+	s.HealthyThreshold = &v
+	return s
+}
+
+func (s *CreateLoadBalancerHTTPListenerRequest) SetUnhealthyThreshold(v int32) *CreateLoadBalancerHTTPListenerRequest {
+	s.UnhealthyThreshold = &v
+	return s
+}
+
+func (s *CreateLoadBalancerHTTPListenerRequest) SetHealthCheckTimeout(v int32) *CreateLoadBalancerHTTPListenerRequest {
+	s.HealthCheckTimeout = &v
+	return s
+}
+
+func (s *CreateLoadBalancerHTTPListenerRequest) SetHealthCheckConnectPort(v int32) *CreateLoadBalancerHTTPListenerRequest {
+	s.HealthCheckConnectPort = &v
+	return s
+}
+
+func (s *CreateLoadBalancerHTTPListenerRequest) SetHealthCheckInterval(v int32) *CreateLoadBalancerHTTPListenerRequest {
+	s.HealthCheckInterval = &v
+	return s
+}
+
+func (s *CreateLoadBalancerHTTPListenerRequest) SetHealthCheckHttpCode(v string) *CreateLoadBalancerHTTPListenerRequest {
+	s.HealthCheckHttpCode = &v
+	return s
+}
+
+func (s *CreateLoadBalancerHTTPListenerRequest) SetIdleTimeout(v int32) *CreateLoadBalancerHTTPListenerRequest {
+	s.IdleTimeout = &v
+	return s
+}
+
+func (s *CreateLoadBalancerHTTPListenerRequest) SetRequestTimeout(v int32) *CreateLoadBalancerHTTPListenerRequest {
+	s.RequestTimeout = &v
+	return s
+}
+
+func (s *CreateLoadBalancerHTTPListenerRequest) SetHealthCheckMethod(v string) *CreateLoadBalancerHTTPListenerRequest {
+	s.HealthCheckMethod = &v
+	return s
+}
+
+type CreateLoadBalancerHTTPListenerResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateLoadBalancerHTTPListenerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLoadBalancerHTTPListenerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLoadBalancerHTTPListenerResponseBody) SetRequestId(v string) *CreateLoadBalancerHTTPListenerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateLoadBalancerHTTPListenerResponse struct {
+	Headers map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateLoadBalancerHTTPListenerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateLoadBalancerHTTPListenerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLoadBalancerHTTPListenerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLoadBalancerHTTPListenerResponse) SetHeaders(v map[string]*string) *CreateLoadBalancerHTTPListenerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateLoadBalancerHTTPListenerResponse) SetBody(v *CreateLoadBalancerHTTPListenerResponseBody) *CreateLoadBalancerHTTPListenerResponse {
 	s.Body = v
 	return s
 }
@@ -7867,6 +9160,316 @@ func (s *DescribeBandWithdChargeTypeResponse) SetBody(v *DescribeBandWithdCharge
 	return s
 }
 
+type AddBackendServersRequest struct {
+	LoadBalancerId *string                                   `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	BackendServers []*AddBackendServersRequestBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Repeated"`
+}
+
+func (s AddBackendServersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddBackendServersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddBackendServersRequest) SetLoadBalancerId(v string) *AddBackendServersRequest {
+	s.LoadBalancerId = &v
+	return s
+}
+
+func (s *AddBackendServersRequest) SetBackendServers(v []*AddBackendServersRequestBackendServers) *AddBackendServersRequest {
+	s.BackendServers = v
+	return s
+}
+
+type AddBackendServersRequestBackendServers struct {
+	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	// 后端服务器的权重。  取值：0~100  默认值为100，如果值为0，则不会将请求转发给该后端服务器。
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// 后端服务器类型。  ens：ENS实例（默认）
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Ip   *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// 端口
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+}
+
+func (s AddBackendServersRequestBackendServers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddBackendServersRequestBackendServers) GoString() string {
+	return s.String()
+}
+
+func (s *AddBackendServersRequestBackendServers) SetServerId(v string) *AddBackendServersRequestBackendServers {
+	s.ServerId = &v
+	return s
+}
+
+func (s *AddBackendServersRequestBackendServers) SetWeight(v int32) *AddBackendServersRequestBackendServers {
+	s.Weight = &v
+	return s
+}
+
+func (s *AddBackendServersRequestBackendServers) SetType(v string) *AddBackendServersRequestBackendServers {
+	s.Type = &v
+	return s
+}
+
+func (s *AddBackendServersRequestBackendServers) SetIp(v string) *AddBackendServersRequestBackendServers {
+	s.Ip = &v
+	return s
+}
+
+func (s *AddBackendServersRequestBackendServers) SetPort(v int32) *AddBackendServersRequestBackendServers {
+	s.Port = &v
+	return s
+}
+
+type AddBackendServersShrinkRequest struct {
+	LoadBalancerId       *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	BackendServersShrink *string `json:"BackendServers,omitempty" xml:"BackendServers,omitempty"`
+}
+
+func (s AddBackendServersShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddBackendServersShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddBackendServersShrinkRequest) SetLoadBalancerId(v string) *AddBackendServersShrinkRequest {
+	s.LoadBalancerId = &v
+	return s
+}
+
+func (s *AddBackendServersShrinkRequest) SetBackendServersShrink(v string) *AddBackendServersShrinkRequest {
+	s.BackendServersShrink = &v
+	return s
+}
+
+type AddBackendServersResponseBody struct {
+	// Id of the request
+	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	BackendServers *AddBackendServersResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
+}
+
+func (s AddBackendServersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddBackendServersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddBackendServersResponseBody) SetRequestId(v string) *AddBackendServersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddBackendServersResponseBody) SetBackendServers(v *AddBackendServersResponseBodyBackendServers) *AddBackendServersResponseBody {
+	s.BackendServers = v
+	return s
+}
+
+type AddBackendServersResponseBodyBackendServers struct {
+	BackendServer []*AddBackendServersResponseBodyBackendServersBackendServer `json:"BackendServer,omitempty" xml:"BackendServer,omitempty" type:"Repeated"`
+}
+
+func (s AddBackendServersResponseBodyBackendServers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddBackendServersResponseBodyBackendServers) GoString() string {
+	return s.String()
+}
+
+func (s *AddBackendServersResponseBodyBackendServers) SetBackendServer(v []*AddBackendServersResponseBodyBackendServersBackendServer) *AddBackendServersResponseBodyBackendServers {
+	s.BackendServer = v
+	return s
+}
+
+type AddBackendServersResponseBodyBackendServersBackendServer struct {
+	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	Weight   *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Ip       *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+}
+
+func (s AddBackendServersResponseBodyBackendServersBackendServer) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddBackendServersResponseBodyBackendServersBackendServer) GoString() string {
+	return s.String()
+}
+
+func (s *AddBackendServersResponseBodyBackendServersBackendServer) SetServerId(v string) *AddBackendServersResponseBodyBackendServersBackendServer {
+	s.ServerId = &v
+	return s
+}
+
+func (s *AddBackendServersResponseBodyBackendServersBackendServer) SetWeight(v int32) *AddBackendServersResponseBodyBackendServersBackendServer {
+	s.Weight = &v
+	return s
+}
+
+func (s *AddBackendServersResponseBodyBackendServersBackendServer) SetType(v string) *AddBackendServersResponseBodyBackendServersBackendServer {
+	s.Type = &v
+	return s
+}
+
+func (s *AddBackendServersResponseBodyBackendServersBackendServer) SetIp(v string) *AddBackendServersResponseBodyBackendServersBackendServer {
+	s.Ip = &v
+	return s
+}
+
+func (s *AddBackendServersResponseBodyBackendServersBackendServer) SetPort(v int32) *AddBackendServersResponseBodyBackendServersBackendServer {
+	s.Port = &v
+	return s
+}
+
+type AddBackendServersResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *AddBackendServersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddBackendServersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddBackendServersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddBackendServersResponse) SetHeaders(v map[string]*string) *AddBackendServersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddBackendServersResponse) SetBody(v *AddBackendServersResponseBody) *AddBackendServersResponse {
+	s.Body = v
+	return s
+}
+
+type SetLoadBalancerUDPListenerAttributeRequest struct {
+	// 负载均衡实例的ID。
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// 负载均衡实例前端使用的端口。  取值：1-65535。
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// 设置监听的描述信息。  长度限制为1-80个字符，允许包含字母、数字、“-”、“/”、“.”和“_”等字符。支持中文描述。
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 调度算法。取值：  wrr（默认值）：权重值越高的后端服务器，被轮询到的次数（概率）也越高。 wlc：除了根据每台后端服务器设定的权重值来进行轮询，同时还考虑后端服务器的实际负载（即连接数）。当权重值相同时，当前连接数越小的后端服务器被轮询到的次数（概率）也越高。 rr：按照访问顺序依次将外部请求依序分发到后端服务器。 sch：基于源IP地址的一致性hash，相同的源地址会调度到相同的后端服务器。
+	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	// 健康检查连续成功多少次后，将后端服务器的健康检查状态由fail判定为success。  取值：2-10。
+	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	// 健康检查连续失败多少次后，将后端服务器的健康检查状态由success判定为fail。  取值：2-10。
+	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	// 接收来自运行状况检查的响应需要等待的时间。  如果后端ENS在指定的时间内没有正确响应，则判定为健康检查失败。  取值：1-300（秒）。默认为5秒
+	HealthCheckConnectTimeout *int32 `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
+	// 健康检查的时间间隔。  取值：1-50（秒）。
+	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	// 健康检查使用的端口。取值：1-65535  不设置此参数时，表示使用后端服务端口（BackendServerPort）
+	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+}
+
+func (s SetLoadBalancerUDPListenerAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetLoadBalancerUDPListenerAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetLoadBalancerUDPListenerAttributeRequest) SetLoadBalancerId(v string) *SetLoadBalancerUDPListenerAttributeRequest {
+	s.LoadBalancerId = &v
+	return s
+}
+
+func (s *SetLoadBalancerUDPListenerAttributeRequest) SetListenerPort(v int32) *SetLoadBalancerUDPListenerAttributeRequest {
+	s.ListenerPort = &v
+	return s
+}
+
+func (s *SetLoadBalancerUDPListenerAttributeRequest) SetDescription(v string) *SetLoadBalancerUDPListenerAttributeRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *SetLoadBalancerUDPListenerAttributeRequest) SetScheduler(v string) *SetLoadBalancerUDPListenerAttributeRequest {
+	s.Scheduler = &v
+	return s
+}
+
+func (s *SetLoadBalancerUDPListenerAttributeRequest) SetHealthyThreshold(v int32) *SetLoadBalancerUDPListenerAttributeRequest {
+	s.HealthyThreshold = &v
+	return s
+}
+
+func (s *SetLoadBalancerUDPListenerAttributeRequest) SetUnhealthyThreshold(v int32) *SetLoadBalancerUDPListenerAttributeRequest {
+	s.UnhealthyThreshold = &v
+	return s
+}
+
+func (s *SetLoadBalancerUDPListenerAttributeRequest) SetHealthCheckConnectTimeout(v int32) *SetLoadBalancerUDPListenerAttributeRequest {
+	s.HealthCheckConnectTimeout = &v
+	return s
+}
+
+func (s *SetLoadBalancerUDPListenerAttributeRequest) SetHealthCheckInterval(v int32) *SetLoadBalancerUDPListenerAttributeRequest {
+	s.HealthCheckInterval = &v
+	return s
+}
+
+func (s *SetLoadBalancerUDPListenerAttributeRequest) SetHealthCheckConnectPort(v int32) *SetLoadBalancerUDPListenerAttributeRequest {
+	s.HealthCheckConnectPort = &v
+	return s
+}
+
+type SetLoadBalancerUDPListenerAttributeResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SetLoadBalancerUDPListenerAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetLoadBalancerUDPListenerAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetLoadBalancerUDPListenerAttributeResponseBody) SetRequestId(v string) *SetLoadBalancerUDPListenerAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SetLoadBalancerUDPListenerAttributeResponse struct {
+	Headers map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SetLoadBalancerUDPListenerAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SetLoadBalancerUDPListenerAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetLoadBalancerUDPListenerAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetLoadBalancerUDPListenerAttributeResponse) SetHeaders(v map[string]*string) *SetLoadBalancerUDPListenerAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetLoadBalancerUDPListenerAttributeResponse) SetBody(v *SetLoadBalancerUDPListenerAttributeResponseBody) *SetLoadBalancerUDPListenerAttributeResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeReservedResourceRequest struct {
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
@@ -8386,6 +9989,169 @@ func (s *DeleteVSwitchResponse) SetBody(v *DeleteVSwitchResponseBody) *DeleteVSw
 	return s
 }
 
+type SetLoadBalancerHTTPListenerAttributeRequest struct {
+	// 负载均衡实例的ID。
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// 负载均衡实例前端使用的端口。  取值：1-65535。
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// 设置监听的描述信息。  长度限制为1-80个字符，允许包含字母、数字、“-”、“/”、“.”和“_”等字符。支持中文描述。
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 调度算法。取值：  wrr（默认值）：权重值越高的后端服务器，被轮询到的次数（概率）也越高。 wlc：除了根据每台后端服务器设定的权重值来进行轮询，同时还考虑后端服务器的实际负载（即连接数）。当权重值相同时，当前连接数越小的后端服务器被轮询到的次数（概率）也越高。 rr：按照访问顺序依次将外部请求依序分发到后端服务器。
+	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	// 是否开启健康检查。  取值：on | off。
+	HealthCheck *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	// 用于健康检查的域名，取值：  $_ip： 后端服务器的私网IP。当指定了IP或该参数未指定时，负载均衡会使用各后端服务器的私网IP当做健康检查使用的域名。是否要支持？ domain：域名长度为1-80字符，只能包含字母、数字、点号（.）和连字符（-）。   说明 在HealthCheck值为on时才会有效。
+	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	// 用于健康检查的URI。  长度限制为1~80，只能使用字母、数字和”-/.%?#&amp;“这些字符。 URL不能只为”/“，但必须以”/“开头。    说明 在HealthCheck值为on时才会有效。
+	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	// 健康检查连续成功多少次后，将后端服务器的健康检查状态由fail判定为success。  取值：2~10。    说明 在HealthCheck值为on时才会有效。
+	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	// 健康检查连续失败多少次后，将后端服务器的健康检查状态由success判定为fail。  取值：2~10。   说明 在HealthCheck值为on时才会有效。
+	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	// 接收来自运行状况检查的响应需要等待的时间。如果后端ECS在指定的时间内没有正确响应，则判定为健康检查失败。在HealthCheck值为on时才会有效。  取值：1~300（秒）。   说明 如果HealthCHeckTimeout的值小于HealthCheckInterval的值，则HealthCHeckTimeout无效，超时时间为HealthCheckInterval的值。
+	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	// 健康检查的后端服务器的端口。  取值： 1~65535。    说明 在HealthCheck值为on时才会有效。
+	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	// 健康检查的时间间隔。  取值： 1~50（秒）。   说明 在HealthCheck值为on时才会有效。
+	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	// 健康检查正常的HTTP状态码，多个状态码用逗号分隔。  默认值为http_2xx。  取值：http_2xx | http_3xx | http_4xx | http_5xx。   说明 在HealthCheck值为on时才会有效。
+	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	// 指定连接空闲超时时间，取值范围为1~60秒，默认值为15秒。  在超时时间内一直没有访问请求，负载均衡会暂时中断当前连接，直到一下次请求来临时重新建立新的连接。
+	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	// 指定请求超时时间，取值范围为1~180秒，默认值为60秒。  在超时时间内后端服务器一直没有响应，负载均衡将放弃等待，给客户端返回 HTTP 504 错误码。
+	RequestTimeout    *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	HealthCheckMethod *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
+}
+
+func (s SetLoadBalancerHTTPListenerAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetLoadBalancerHTTPListenerAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetLoadBalancerId(v string) *SetLoadBalancerHTTPListenerAttributeRequest {
+	s.LoadBalancerId = &v
+	return s
+}
+
+func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetListenerPort(v int32) *SetLoadBalancerHTTPListenerAttributeRequest {
+	s.ListenerPort = &v
+	return s
+}
+
+func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetDescription(v string) *SetLoadBalancerHTTPListenerAttributeRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetScheduler(v string) *SetLoadBalancerHTTPListenerAttributeRequest {
+	s.Scheduler = &v
+	return s
+}
+
+func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetHealthCheck(v string) *SetLoadBalancerHTTPListenerAttributeRequest {
+	s.HealthCheck = &v
+	return s
+}
+
+func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetHealthCheckDomain(v string) *SetLoadBalancerHTTPListenerAttributeRequest {
+	s.HealthCheckDomain = &v
+	return s
+}
+
+func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetHealthCheckURI(v string) *SetLoadBalancerHTTPListenerAttributeRequest {
+	s.HealthCheckURI = &v
+	return s
+}
+
+func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetHealthyThreshold(v int32) *SetLoadBalancerHTTPListenerAttributeRequest {
+	s.HealthyThreshold = &v
+	return s
+}
+
+func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetUnhealthyThreshold(v int32) *SetLoadBalancerHTTPListenerAttributeRequest {
+	s.UnhealthyThreshold = &v
+	return s
+}
+
+func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetHealthCheckTimeout(v int32) *SetLoadBalancerHTTPListenerAttributeRequest {
+	s.HealthCheckTimeout = &v
+	return s
+}
+
+func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetHealthCheckConnectPort(v int32) *SetLoadBalancerHTTPListenerAttributeRequest {
+	s.HealthCheckConnectPort = &v
+	return s
+}
+
+func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetHealthCheckInterval(v int32) *SetLoadBalancerHTTPListenerAttributeRequest {
+	s.HealthCheckInterval = &v
+	return s
+}
+
+func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetHealthCheckHttpCode(v string) *SetLoadBalancerHTTPListenerAttributeRequest {
+	s.HealthCheckHttpCode = &v
+	return s
+}
+
+func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetIdleTimeout(v int32) *SetLoadBalancerHTTPListenerAttributeRequest {
+	s.IdleTimeout = &v
+	return s
+}
+
+func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetRequestTimeout(v int32) *SetLoadBalancerHTTPListenerAttributeRequest {
+	s.RequestTimeout = &v
+	return s
+}
+
+func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetHealthCheckMethod(v string) *SetLoadBalancerHTTPListenerAttributeRequest {
+	s.HealthCheckMethod = &v
+	return s
+}
+
+type SetLoadBalancerHTTPListenerAttributeResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SetLoadBalancerHTTPListenerAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetLoadBalancerHTTPListenerAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetLoadBalancerHTTPListenerAttributeResponseBody) SetRequestId(v string) *SetLoadBalancerHTTPListenerAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SetLoadBalancerHTTPListenerAttributeResponse struct {
+	Headers map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SetLoadBalancerHTTPListenerAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SetLoadBalancerHTTPListenerAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetLoadBalancerHTTPListenerAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetLoadBalancerHTTPListenerAttributeResponse) SetHeaders(v map[string]*string) *SetLoadBalancerHTTPListenerAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetLoadBalancerHTTPListenerAttributeResponse) SetBody(v *SetLoadBalancerHTTPListenerAttributeResponseBody) *SetLoadBalancerHTTPListenerAttributeResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeInstanceVncUrlRequest struct {
 	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -8448,6 +10214,190 @@ func (s *DescribeInstanceVncUrlResponse) SetHeaders(v map[string]*string) *Descr
 }
 
 func (s *DescribeInstanceVncUrlResponse) SetBody(v *DescribeInstanceVncUrlResponseBody) *DescribeInstanceVncUrlResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeLoadBalancerHTTPListenerAttributeRequest struct {
+	ListenerPort   *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+}
+
+func (s DescribeLoadBalancerHTTPListenerAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerHTTPListenerAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeRequest) SetListenerPort(v int32) *DescribeLoadBalancerHTTPListenerAttributeRequest {
+	s.ListenerPort = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeRequest) SetLoadBalancerId(v string) *DescribeLoadBalancerHTTPListenerAttributeRequest {
+	s.LoadBalancerId = &v
+	return s
+}
+
+type DescribeLoadBalancerHTTPListenerAttributeResponseBody struct {
+	// Id of the request
+	RequestId              *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ListenerPort           *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	Status                 *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Bandwidth              *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	Scheduler              *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	HealthCheck            *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	HealthyThreshold       *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	UnhealthyThreshold     *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	HealthCheckTimeout     *int32  `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	HealthCheckConnectPort *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	HealthCheckInterval    *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	Description            *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ListenerForward        *string `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
+	ForwardPort            *int32  `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
+	RequestTimeout         *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	IdleTimeout            *int32  `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	HealthCheckHttpCode    *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	HealthCheckDomain      *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	HealthCheckURI         *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	ServerCertificateId    *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
+	HealthCheckMethod      *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
+}
+
+func (s DescribeLoadBalancerHTTPListenerAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerHTTPListenerAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetRequestId(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetListenerPort(v int32) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.ListenerPort = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetStatus(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetBandwidth(v int32) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.Bandwidth = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetScheduler(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.Scheduler = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetHealthCheck(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.HealthCheck = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetHealthyThreshold(v int32) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.HealthyThreshold = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetUnhealthyThreshold(v int32) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.UnhealthyThreshold = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetHealthCheckTimeout(v int32) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.HealthCheckTimeout = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetHealthCheckConnectPort(v int32) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.HealthCheckConnectPort = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetHealthCheckInterval(v int32) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.HealthCheckInterval = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetDescription(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetListenerForward(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.ListenerForward = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetForwardPort(v int32) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.ForwardPort = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetRequestTimeout(v int32) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.RequestTimeout = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetIdleTimeout(v int32) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.IdleTimeout = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetHealthCheckHttpCode(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.HealthCheckHttpCode = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetHealthCheckDomain(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.HealthCheckDomain = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetHealthCheckURI(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.HealthCheckURI = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetServerCertificateId(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.ServerCertificateId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetHealthCheckMethod(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.HealthCheckMethod = &v
+	return s
+}
+
+type DescribeLoadBalancerHTTPListenerAttributeResponse struct {
+	Headers map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeLoadBalancerHTTPListenerAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeLoadBalancerHTTPListenerAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerHTTPListenerAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponse) SetHeaders(v map[string]*string) *DescribeLoadBalancerHTTPListenerAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponse) SetBody(v *DescribeLoadBalancerHTTPListenerAttributeResponseBody) *DescribeLoadBalancerHTTPListenerAttributeResponse {
 	s.Body = v
 	return s
 }
@@ -9013,6 +10963,224 @@ func (s *ReleaseInstanceResponse) SetBody(v *ReleaseInstanceResponseBody) *Relea
 	return s
 }
 
+type DescribeLoadBalancersRequest struct {
+	EnsRegionId        *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	ServerId           *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	LoadBalancerStatus *string `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
+	LoadBalancerId     *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	LoadBalancerName   *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
+	NetworkId          *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	VSwitchId          *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	Address            *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	PageNumber         *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize           *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeLoadBalancersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancersRequest) SetEnsRegionId(v string) *DescribeLoadBalancersRequest {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancersRequest) SetServerId(v string) *DescribeLoadBalancersRequest {
+	s.ServerId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancersRequest) SetLoadBalancerStatus(v string) *DescribeLoadBalancersRequest {
+	s.LoadBalancerStatus = &v
+	return s
+}
+
+func (s *DescribeLoadBalancersRequest) SetLoadBalancerId(v string) *DescribeLoadBalancersRequest {
+	s.LoadBalancerId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancersRequest) SetLoadBalancerName(v string) *DescribeLoadBalancersRequest {
+	s.LoadBalancerName = &v
+	return s
+}
+
+func (s *DescribeLoadBalancersRequest) SetNetworkId(v string) *DescribeLoadBalancersRequest {
+	s.NetworkId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancersRequest) SetVSwitchId(v string) *DescribeLoadBalancersRequest {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancersRequest) SetAddress(v string) *DescribeLoadBalancersRequest {
+	s.Address = &v
+	return s
+}
+
+func (s *DescribeLoadBalancersRequest) SetPageNumber(v int32) *DescribeLoadBalancersRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeLoadBalancersRequest) SetPageSize(v int32) *DescribeLoadBalancersRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeLoadBalancersResponseBody struct {
+	// Id of the request
+	RequestId     *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageNumber    *int32                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount    *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	LoadBalancers *DescribeLoadBalancersResponseBodyLoadBalancers `json:"LoadBalancers,omitempty" xml:"LoadBalancers,omitempty" type:"Struct"`
+}
+
+func (s DescribeLoadBalancersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancersResponseBody) SetRequestId(v string) *DescribeLoadBalancersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancersResponseBody) SetPageNumber(v int32) *DescribeLoadBalancersResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeLoadBalancersResponseBody) SetPageSize(v int32) *DescribeLoadBalancersResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeLoadBalancersResponseBody) SetTotalCount(v int32) *DescribeLoadBalancersResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeLoadBalancersResponseBody) SetLoadBalancers(v *DescribeLoadBalancersResponseBodyLoadBalancers) *DescribeLoadBalancersResponseBody {
+	s.LoadBalancers = v
+	return s
+}
+
+type DescribeLoadBalancersResponseBodyLoadBalancers struct {
+	LoadBalancer []*DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer `json:"LoadBalancer,omitempty" xml:"LoadBalancer,omitempty" type:"Repeated"`
+}
+
+func (s DescribeLoadBalancersResponseBodyLoadBalancers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancersResponseBodyLoadBalancers) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancersResponseBodyLoadBalancers) SetLoadBalancer(v []*DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) *DescribeLoadBalancersResponseBodyLoadBalancers {
+	s.LoadBalancer = v
+	return s
+}
+
+type DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer struct {
+	LoadBalancerId     *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	LoadBalancerName   *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
+	LoadBalancerStatus *string `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
+	Address            *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	EnsRegionId        *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	NetworkId          *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	VSwitchId          *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	CreateTime         *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	AddressIPVersion   *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
+}
+
+func (s DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetLoadBalancerId(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
+	s.LoadBalancerId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetLoadBalancerName(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
+	s.LoadBalancerName = &v
+	return s
+}
+
+func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetLoadBalancerStatus(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
+	s.LoadBalancerStatus = &v
+	return s
+}
+
+func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetAddress(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
+	s.Address = &v
+	return s
+}
+
+func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetEnsRegionId(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetNetworkId(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
+	s.NetworkId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetVSwitchId(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetCreateTime(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetAddressIPVersion(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
+	s.AddressIPVersion = &v
+	return s
+}
+
+type DescribeLoadBalancersResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeLoadBalancersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeLoadBalancersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancersResponse) SetHeaders(v map[string]*string) *DescribeLoadBalancersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeLoadBalancersResponse) SetBody(v *DescribeLoadBalancersResponseBody) *DescribeLoadBalancersResponse {
+	s.Body = v
+	return s
+}
+
 type AssociateEnsEipAddressRequest struct {
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -9563,6 +11731,136 @@ func (s *UnassociateEipAddressResponse) SetBody(v *UnassociateEipAddressResponse
 	return s
 }
 
+type DescribeLoadBalancerUDPListenerAttributeRequest struct {
+	ListenerPort   *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+}
+
+func (s DescribeLoadBalancerUDPListenerAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerUDPListenerAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerUDPListenerAttributeRequest) SetListenerPort(v int32) *DescribeLoadBalancerUDPListenerAttributeRequest {
+	s.ListenerPort = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerUDPListenerAttributeRequest) SetLoadBalancerId(v string) *DescribeLoadBalancerUDPListenerAttributeRequest {
+	s.LoadBalancerId = &v
+	return s
+}
+
+type DescribeLoadBalancerUDPListenerAttributeResponseBody struct {
+	// Id of the request
+	RequestId                 *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ListenerPort              *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	Status                    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Bandwidth                 *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	Scheduler                 *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	HealthCheck               *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	HealthyThreshold          *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	UnhealthyThreshold        *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	HealthCheckConnectTimeout *int32  `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
+	HealthCheckConnectPort    *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	HealthCheckInterval       *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	Description               *string `json:"Description,omitempty" xml:"Description,omitempty"`
+}
+
+func (s DescribeLoadBalancerUDPListenerAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerUDPListenerAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetRequestId(v string) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetListenerPort(v int32) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
+	s.ListenerPort = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetStatus(v string) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetBandwidth(v int32) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
+	s.Bandwidth = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetScheduler(v string) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
+	s.Scheduler = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetHealthCheck(v string) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
+	s.HealthCheck = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetHealthyThreshold(v int32) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
+	s.HealthyThreshold = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetUnhealthyThreshold(v int32) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
+	s.UnhealthyThreshold = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetHealthCheckConnectTimeout(v int32) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
+	s.HealthCheckConnectTimeout = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetHealthCheckConnectPort(v int32) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
+	s.HealthCheckConnectPort = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetHealthCheckInterval(v int32) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
+	s.HealthCheckInterval = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetDescription(v string) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
+	s.Description = &v
+	return s
+}
+
+type DescribeLoadBalancerUDPListenerAttributeResponse struct {
+	Headers map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeLoadBalancerUDPListenerAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeLoadBalancerUDPListenerAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerUDPListenerAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerUDPListenerAttributeResponse) SetHeaders(v map[string]*string) *DescribeLoadBalancerUDPListenerAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeLoadBalancerUDPListenerAttributeResponse) SetBody(v *DescribeLoadBalancerUDPListenerAttributeResponseBody) *DescribeLoadBalancerUDPListenerAttributeResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDataPushResultRequest struct {
 	AppId        *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	DataNames    *string `json:"DataNames,omitempty" xml:"DataNames,omitempty"`
@@ -10103,6 +12401,163 @@ func (s *ImportKeyPairResponse) SetHeaders(v map[string]*string) *ImportKeyPairR
 }
 
 func (s *ImportKeyPairResponse) SetBody(v *ImportKeyPairResponseBody) *ImportKeyPairResponse {
+	s.Body = v
+	return s
+}
+
+type CreateLoadBalancerTCPListenerRequest struct {
+	// 负载均衡实例的ID。
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// 负载均衡实例前端使用的端口。  取值：1-65535。
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// 设置监听的描述信息。  长度限制为1-80个字符，允许包含字母、数字、“-”、“/”、“.”和“_”等字符。支持中文描述。
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 度算法。取值：  wrr（默认值）：权重值越高的后端服务器，被轮询到的次数（概率）也越高。 wlc：除了根据每台后端服务器设定的权重值来进行轮询，同时还考虑后端服务器的实际负载（即连接数）。当权重值相同时，当前连接数越小的后端服务器被轮询到的次数（概率）也越高。 rr：按照访问顺序依次将外部请求依序分发到后端服务器。 sch：基于源IP地址的一致性hash，相同的源地址会调度到相同的后端服务器。
+	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	// 会话保持的超时时间。  取值：0~3600（秒）。  默认值：0，表示关闭会话保持。
+	PersistenceTimeout *int32 `json:"PersistenceTimeout,omitempty" xml:"PersistenceTimeout,omitempty"`
+	// 连接超时时间。  取值：10~900（秒）。
+	EstablishedTimeout *int32 `json:"EstablishedTimeout,omitempty" xml:"EstablishedTimeout,omitempty"`
+	// 健康检查连续成功多少次后，将后端服务器的健康检查状态由fail判定为success。  取值： 2~10。
+	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	// 健康检查连续失败多少次后，将后端服务器的健康检查状态由success判定为fail。  取值：2~10。
+	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	// 每次健康检查响应的最大超时时间。  取值：1~300（秒）。  默认值：5。
+	HealthCheckConnectTimeout *int32 `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
+	// 健康检查使用的端口。  取值：1~65535。  不设置此参数时，表示使用后端服务端口（BackendServerPort）。
+	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	// 健康检查的时间间隔。  取值：1~50（秒）。
+	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	// 用于健康检查的域名
+	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	// 用于健康检查的URI。长度限制为1~80，只能使用字母、数字、短横线（-）、正斜杠（/）、点号（.）、百分号（%）、#和&amp;这些字符。 URL不能只为/，但必须以/开头。  当TCP监听需要使用HTTP健康检查时可配置此参数，如不配置则按TCP健康检查。
+	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	// 健康检查正常的HTTP状态码，多个状态码用逗号（,）分割。  取值：http_2xx（默认值） | http_3xx | http_4xx | http_5xx。
+	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	// 健康检查类型。  取值：tcp（默认值） | http。
+	HealthCheckType *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
+}
+
+func (s CreateLoadBalancerTCPListenerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLoadBalancerTCPListenerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLoadBalancerTCPListenerRequest) SetLoadBalancerId(v string) *CreateLoadBalancerTCPListenerRequest {
+	s.LoadBalancerId = &v
+	return s
+}
+
+func (s *CreateLoadBalancerTCPListenerRequest) SetListenerPort(v int32) *CreateLoadBalancerTCPListenerRequest {
+	s.ListenerPort = &v
+	return s
+}
+
+func (s *CreateLoadBalancerTCPListenerRequest) SetDescription(v string) *CreateLoadBalancerTCPListenerRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateLoadBalancerTCPListenerRequest) SetScheduler(v string) *CreateLoadBalancerTCPListenerRequest {
+	s.Scheduler = &v
+	return s
+}
+
+func (s *CreateLoadBalancerTCPListenerRequest) SetPersistenceTimeout(v int32) *CreateLoadBalancerTCPListenerRequest {
+	s.PersistenceTimeout = &v
+	return s
+}
+
+func (s *CreateLoadBalancerTCPListenerRequest) SetEstablishedTimeout(v int32) *CreateLoadBalancerTCPListenerRequest {
+	s.EstablishedTimeout = &v
+	return s
+}
+
+func (s *CreateLoadBalancerTCPListenerRequest) SetHealthyThreshold(v int32) *CreateLoadBalancerTCPListenerRequest {
+	s.HealthyThreshold = &v
+	return s
+}
+
+func (s *CreateLoadBalancerTCPListenerRequest) SetUnhealthyThreshold(v int32) *CreateLoadBalancerTCPListenerRequest {
+	s.UnhealthyThreshold = &v
+	return s
+}
+
+func (s *CreateLoadBalancerTCPListenerRequest) SetHealthCheckConnectTimeout(v int32) *CreateLoadBalancerTCPListenerRequest {
+	s.HealthCheckConnectTimeout = &v
+	return s
+}
+
+func (s *CreateLoadBalancerTCPListenerRequest) SetHealthCheckConnectPort(v int32) *CreateLoadBalancerTCPListenerRequest {
+	s.HealthCheckConnectPort = &v
+	return s
+}
+
+func (s *CreateLoadBalancerTCPListenerRequest) SetHealthCheckInterval(v int32) *CreateLoadBalancerTCPListenerRequest {
+	s.HealthCheckInterval = &v
+	return s
+}
+
+func (s *CreateLoadBalancerTCPListenerRequest) SetHealthCheckDomain(v string) *CreateLoadBalancerTCPListenerRequest {
+	s.HealthCheckDomain = &v
+	return s
+}
+
+func (s *CreateLoadBalancerTCPListenerRequest) SetHealthCheckURI(v string) *CreateLoadBalancerTCPListenerRequest {
+	s.HealthCheckURI = &v
+	return s
+}
+
+func (s *CreateLoadBalancerTCPListenerRequest) SetHealthCheckHttpCode(v string) *CreateLoadBalancerTCPListenerRequest {
+	s.HealthCheckHttpCode = &v
+	return s
+}
+
+func (s *CreateLoadBalancerTCPListenerRequest) SetHealthCheckType(v string) *CreateLoadBalancerTCPListenerRequest {
+	s.HealthCheckType = &v
+	return s
+}
+
+type CreateLoadBalancerTCPListenerResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateLoadBalancerTCPListenerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLoadBalancerTCPListenerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLoadBalancerTCPListenerResponseBody) SetRequestId(v string) *CreateLoadBalancerTCPListenerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateLoadBalancerTCPListenerResponse struct {
+	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateLoadBalancerTCPListenerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateLoadBalancerTCPListenerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLoadBalancerTCPListenerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLoadBalancerTCPListenerResponse) SetHeaders(v map[string]*string) *CreateLoadBalancerTCPListenerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateLoadBalancerTCPListenerResponse) SetBody(v *CreateLoadBalancerTCPListenerResponseBody) *CreateLoadBalancerTCPListenerResponse {
 	s.Body = v
 	return s
 }
@@ -10975,6 +13430,291 @@ func (s *DescribeEpnInstancesResponse) SetBody(v *DescribeEpnInstancesResponseBo
 	return s
 }
 
+type StartLoadBalancerListenerRequest struct {
+	ListenerPort   *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+}
+
+func (s StartLoadBalancerListenerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartLoadBalancerListenerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartLoadBalancerListenerRequest) SetListenerPort(v int32) *StartLoadBalancerListenerRequest {
+	s.ListenerPort = &v
+	return s
+}
+
+func (s *StartLoadBalancerListenerRequest) SetLoadBalancerId(v string) *StartLoadBalancerListenerRequest {
+	s.LoadBalancerId = &v
+	return s
+}
+
+type StartLoadBalancerListenerResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StartLoadBalancerListenerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartLoadBalancerListenerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartLoadBalancerListenerResponseBody) SetRequestId(v string) *StartLoadBalancerListenerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StartLoadBalancerListenerResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *StartLoadBalancerListenerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StartLoadBalancerListenerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartLoadBalancerListenerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartLoadBalancerListenerResponse) SetHeaders(v map[string]*string) *StartLoadBalancerListenerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartLoadBalancerListenerResponse) SetBody(v *StartLoadBalancerListenerResponseBody) *StartLoadBalancerListenerResponse {
+	s.Body = v
+	return s
+}
+
+type StopLoadBalancerListenerRequest struct {
+	ListenerPort   *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+}
+
+func (s StopLoadBalancerListenerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopLoadBalancerListenerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopLoadBalancerListenerRequest) SetListenerPort(v int32) *StopLoadBalancerListenerRequest {
+	s.ListenerPort = &v
+	return s
+}
+
+func (s *StopLoadBalancerListenerRequest) SetLoadBalancerId(v string) *StopLoadBalancerListenerRequest {
+	s.LoadBalancerId = &v
+	return s
+}
+
+type StopLoadBalancerListenerResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StopLoadBalancerListenerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopLoadBalancerListenerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopLoadBalancerListenerResponseBody) SetRequestId(v string) *StopLoadBalancerListenerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StopLoadBalancerListenerResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *StopLoadBalancerListenerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StopLoadBalancerListenerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopLoadBalancerListenerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopLoadBalancerListenerResponse) SetHeaders(v map[string]*string) *StopLoadBalancerListenerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopLoadBalancerListenerResponse) SetBody(v *StopLoadBalancerListenerResponseBody) *StopLoadBalancerListenerResponse {
+	s.Body = v
+	return s
+}
+
+type SetLoadBalancerTCPListenerAttributeRequest struct {
+	// 负载均衡实例的ID。
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// 负载均衡实例前端使用的端口。  取值：1-65535。
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// 设置监听的描述信息。  长度限制为1-80个字符，允许包含字母、数字、“-”、“/”、“.”和“_”等字符。支持中文描述。
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 度算法。取值：  wrr（默认值）：权重值越高的后端服务器，被轮询到的次数（概率）也越高。 wlc：除了根据每台后端服务器设定的权重值来进行轮询，同时还考虑后端服务器的实际负载（即连接数）。当权重值相同时，当前连接数越小的后端服务器被轮询到的次数（概率）也越高。 rr：按照访问顺序依次将外部请求依序分发到后端服务器。 sch：基于源IP地址的一致性hash，相同的源地址会调度到相同的后端服务器。
+	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	// 会话保持的超时时间。  取值：0~3600（秒）。  默认值：0，表示关闭会话保持。
+	PersistenceTimeout *int32 `json:"PersistenceTimeout,omitempty" xml:"PersistenceTimeout,omitempty"`
+	// 连接超时时间。  取值：10~900（秒）。
+	EstablishedTimeout *int32 `json:"EstablishedTimeout,omitempty" xml:"EstablishedTimeout,omitempty"`
+	// 健康检查连续成功多少次后，将后端服务器的健康检查状态由fail判定为success。  取值： 2~10。
+	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	// 健康检查连续失败多少次后，将后端服务器的健康检查状态由success判定为fail。  取值：2~10。
+	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	// 每次健康检查响应的最大超时时间。  取值：1~300（秒）。  默认值：5。
+	HealthCheckConnectTimeout *int32 `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
+	// 健康检查使用的端口。  取值：1~65535。  不设置此参数时，表示使用后端服务端口（BackendServerPort）。
+	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	// 健康检查的时间间隔。  取值：1~50（秒）。
+	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	// 用于健康检查的域名
+	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	// 用于健康检查的URI。长度限制为1~80，只能使用字母、数字、短横线（-）、正斜杠（/）、点号（.）、百分号（%）、#和&amp;这些字符。 URL不能只为/，但必须以/开头。  当TCP监听需要使用HTTP健康检查时可配置此参数，如不配置则按TCP健康检查。
+	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	// 健康检查正常的HTTP状态码，多个状态码用逗号（,）分割。  取值：http_2xx（默认值） | http_3xx | http_4xx | http_5xx。
+	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	// 健康检查类型。  取值：tcp（默认值） | http。
+	HealthCheckType *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
+}
+
+func (s SetLoadBalancerTCPListenerAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetLoadBalancerTCPListenerAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetLoadBalancerTCPListenerAttributeRequest) SetLoadBalancerId(v string) *SetLoadBalancerTCPListenerAttributeRequest {
+	s.LoadBalancerId = &v
+	return s
+}
+
+func (s *SetLoadBalancerTCPListenerAttributeRequest) SetListenerPort(v int32) *SetLoadBalancerTCPListenerAttributeRequest {
+	s.ListenerPort = &v
+	return s
+}
+
+func (s *SetLoadBalancerTCPListenerAttributeRequest) SetDescription(v string) *SetLoadBalancerTCPListenerAttributeRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *SetLoadBalancerTCPListenerAttributeRequest) SetScheduler(v string) *SetLoadBalancerTCPListenerAttributeRequest {
+	s.Scheduler = &v
+	return s
+}
+
+func (s *SetLoadBalancerTCPListenerAttributeRequest) SetPersistenceTimeout(v int32) *SetLoadBalancerTCPListenerAttributeRequest {
+	s.PersistenceTimeout = &v
+	return s
+}
+
+func (s *SetLoadBalancerTCPListenerAttributeRequest) SetEstablishedTimeout(v int32) *SetLoadBalancerTCPListenerAttributeRequest {
+	s.EstablishedTimeout = &v
+	return s
+}
+
+func (s *SetLoadBalancerTCPListenerAttributeRequest) SetHealthyThreshold(v int32) *SetLoadBalancerTCPListenerAttributeRequest {
+	s.HealthyThreshold = &v
+	return s
+}
+
+func (s *SetLoadBalancerTCPListenerAttributeRequest) SetUnhealthyThreshold(v int32) *SetLoadBalancerTCPListenerAttributeRequest {
+	s.UnhealthyThreshold = &v
+	return s
+}
+
+func (s *SetLoadBalancerTCPListenerAttributeRequest) SetHealthCheckConnectTimeout(v int32) *SetLoadBalancerTCPListenerAttributeRequest {
+	s.HealthCheckConnectTimeout = &v
+	return s
+}
+
+func (s *SetLoadBalancerTCPListenerAttributeRequest) SetHealthCheckConnectPort(v int32) *SetLoadBalancerTCPListenerAttributeRequest {
+	s.HealthCheckConnectPort = &v
+	return s
+}
+
+func (s *SetLoadBalancerTCPListenerAttributeRequest) SetHealthCheckInterval(v int32) *SetLoadBalancerTCPListenerAttributeRequest {
+	s.HealthCheckInterval = &v
+	return s
+}
+
+func (s *SetLoadBalancerTCPListenerAttributeRequest) SetHealthCheckDomain(v string) *SetLoadBalancerTCPListenerAttributeRequest {
+	s.HealthCheckDomain = &v
+	return s
+}
+
+func (s *SetLoadBalancerTCPListenerAttributeRequest) SetHealthCheckURI(v string) *SetLoadBalancerTCPListenerAttributeRequest {
+	s.HealthCheckURI = &v
+	return s
+}
+
+func (s *SetLoadBalancerTCPListenerAttributeRequest) SetHealthCheckHttpCode(v string) *SetLoadBalancerTCPListenerAttributeRequest {
+	s.HealthCheckHttpCode = &v
+	return s
+}
+
+func (s *SetLoadBalancerTCPListenerAttributeRequest) SetHealthCheckType(v string) *SetLoadBalancerTCPListenerAttributeRequest {
+	s.HealthCheckType = &v
+	return s
+}
+
+type SetLoadBalancerTCPListenerAttributeResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SetLoadBalancerTCPListenerAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetLoadBalancerTCPListenerAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetLoadBalancerTCPListenerAttributeResponseBody) SetRequestId(v string) *SetLoadBalancerTCPListenerAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SetLoadBalancerTCPListenerAttributeResponse struct {
+	Headers map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SetLoadBalancerTCPListenerAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SetLoadBalancerTCPListenerAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetLoadBalancerTCPListenerAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetLoadBalancerTCPListenerAttributeResponse) SetHeaders(v map[string]*string) *SetLoadBalancerTCPListenerAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetLoadBalancerTCPListenerAttributeResponse) SetBody(v *SetLoadBalancerTCPListenerAttributeResponseBody) *SetLoadBalancerTCPListenerAttributeResponse {
+	s.Body = v
+	return s
+}
+
 type CreateInstanceRequest struct {
 	SystemDisk         *CreateInstanceRequestSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
 	DataDisk           []*CreateInstanceRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
@@ -11541,6 +14281,176 @@ func (s *ReleasePostPaidInstanceResponse) SetHeaders(v map[string]*string) *Rele
 }
 
 func (s *ReleasePostPaidInstanceResponse) SetBody(v *ReleasePostPaidInstanceResponseBody) *ReleasePostPaidInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type SetLoadBalancerHTTPSListenerAttributeRequest struct {
+	// 负载均衡实例的ID。
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// 负载均衡实例前端使用的端口。  取值：1-65535。
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// 设置监听的描述信息。  长度限制为1-80个字符，允许包含字母、数字、“-”、“/”、“.”和“_”等字符。支持中文描述。
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 调度算法。取值：  wrr（默认值）：权重值越高的后端服务器，被轮询到的次数（概率）也越高。 wlc：除了根据每台后端服务器设定的权重值来进行轮询，同时还考虑后端服务器的实际负载（即连接数）。当权重值相同时，当前连接数越小的后端服务器被轮询到的次数（概率）也越高。 rr：按照访问顺序依次将外部请求依序分发到后端服务器。
+	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	// 是否开启健康检查。  取值：on | off。
+	HealthCheck *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	// 用于健康检查的域名，取值：  $_ip： 后端服务器的私网IP。当指定了IP或该参数未指定时，负载均衡会使用各后端服务器的私网IP当做健康检查使用的域名。是否要支持？ domain：域名长度为1-80字符，只能包含字母、数字、点号（.）和连字符（-）。   说明 在HealthCheck值为on时才会有效。
+	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	// 用于健康检查的URI。  长度限制为1~80，只能使用字母、数字和”-/.%?#&amp;“这些字符。 URL不能只为”/“，但必须以”/“开头。    说明 在HealthCheck值为on时才会有效。
+	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	// 健康检查连续成功多少次后，将后端服务器的健康检查状态由fail判定为success。  取值：2~10。    说明 在HealthCheck值为on时才会有效。
+	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	// 健康检查连续失败多少次后，将后端服务器的健康检查状态由success判定为fail。  取值：2~10。   说明 在HealthCheck值为on时才会有效。
+	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	// 接收来自运行状况检查的响应需要等待的时间。如果后端ECS在指定的时间内没有正确响应，则判定为健康检查失败。在HealthCheck值为on时才会有效。  取值：1~300（秒）。   说明 如果HealthCHeckTimeout的值小于HealthCheckInterval的值，则HealthCHeckTimeout无效，超时时间为HealthCheckInterval的值。
+	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	// 健康检查的后端服务器的端口。  取值： 1~65535。    说明 在HealthCheck值为on时才会有效。
+	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	// 健康检查的时间间隔。  取值： 1~50（秒）。   说明 在HealthCheck值为on时才会有效。
+	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	// 健康检查正常的HTTP状态码，多个状态码用逗号分隔。  默认值为http_2xx。  取值：http_2xx | http_3xx | http_4xx | http_5xx。   说明 在HealthCheck值为on时才会有效。
+	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	// 指定连接空闲超时时间，取值范围为1~60秒，默认值为15秒。  在超时时间内一直没有访问请求，负载均衡会暂时中断当前连接，直到一下次请求来临时重新建立新的连接。
+	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	// 指定请求超时时间，取值范围为1~180秒，默认值为60秒。  在超时时间内后端服务器一直没有响应，负载均衡将放弃等待，给客户端返回 HTTP 504 错误码。
+	RequestTimeout *int32 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	// 服务器证书的ID。
+	ServerCertificateId *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
+	HealthCheckMethod   *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
+}
+
+func (s SetLoadBalancerHTTPSListenerAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetLoadBalancerHTTPSListenerAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetLoadBalancerId(v string) *SetLoadBalancerHTTPSListenerAttributeRequest {
+	s.LoadBalancerId = &v
+	return s
+}
+
+func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetListenerPort(v int32) *SetLoadBalancerHTTPSListenerAttributeRequest {
+	s.ListenerPort = &v
+	return s
+}
+
+func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetDescription(v string) *SetLoadBalancerHTTPSListenerAttributeRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetScheduler(v string) *SetLoadBalancerHTTPSListenerAttributeRequest {
+	s.Scheduler = &v
+	return s
+}
+
+func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetHealthCheck(v string) *SetLoadBalancerHTTPSListenerAttributeRequest {
+	s.HealthCheck = &v
+	return s
+}
+
+func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetHealthCheckDomain(v string) *SetLoadBalancerHTTPSListenerAttributeRequest {
+	s.HealthCheckDomain = &v
+	return s
+}
+
+func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetHealthCheckURI(v string) *SetLoadBalancerHTTPSListenerAttributeRequest {
+	s.HealthCheckURI = &v
+	return s
+}
+
+func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetHealthyThreshold(v int32) *SetLoadBalancerHTTPSListenerAttributeRequest {
+	s.HealthyThreshold = &v
+	return s
+}
+
+func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetUnhealthyThreshold(v int32) *SetLoadBalancerHTTPSListenerAttributeRequest {
+	s.UnhealthyThreshold = &v
+	return s
+}
+
+func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetHealthCheckTimeout(v int32) *SetLoadBalancerHTTPSListenerAttributeRequest {
+	s.HealthCheckTimeout = &v
+	return s
+}
+
+func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetHealthCheckConnectPort(v int32) *SetLoadBalancerHTTPSListenerAttributeRequest {
+	s.HealthCheckConnectPort = &v
+	return s
+}
+
+func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetHealthCheckInterval(v int32) *SetLoadBalancerHTTPSListenerAttributeRequest {
+	s.HealthCheckInterval = &v
+	return s
+}
+
+func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetHealthCheckHttpCode(v string) *SetLoadBalancerHTTPSListenerAttributeRequest {
+	s.HealthCheckHttpCode = &v
+	return s
+}
+
+func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetIdleTimeout(v int32) *SetLoadBalancerHTTPSListenerAttributeRequest {
+	s.IdleTimeout = &v
+	return s
+}
+
+func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetRequestTimeout(v int32) *SetLoadBalancerHTTPSListenerAttributeRequest {
+	s.RequestTimeout = &v
+	return s
+}
+
+func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetServerCertificateId(v string) *SetLoadBalancerHTTPSListenerAttributeRequest {
+	s.ServerCertificateId = &v
+	return s
+}
+
+func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetHealthCheckMethod(v string) *SetLoadBalancerHTTPSListenerAttributeRequest {
+	s.HealthCheckMethod = &v
+	return s
+}
+
+type SetLoadBalancerHTTPSListenerAttributeResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SetLoadBalancerHTTPSListenerAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetLoadBalancerHTTPSListenerAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetLoadBalancerHTTPSListenerAttributeResponseBody) SetRequestId(v string) *SetLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SetLoadBalancerHTTPSListenerAttributeResponse struct {
+	Headers map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SetLoadBalancerHTTPSListenerAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SetLoadBalancerHTTPSListenerAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetLoadBalancerHTTPSListenerAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetLoadBalancerHTTPSListenerAttributeResponse) SetHeaders(v map[string]*string) *SetLoadBalancerHTTPSListenerAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetLoadBalancerHTTPSListenerAttributeResponse) SetBody(v *SetLoadBalancerHTTPSListenerAttributeResponseBody) *SetLoadBalancerHTTPSListenerAttributeResponse {
 	s.Body = v
 	return s
 }
@@ -12544,6 +15454,188 @@ func (s *DescribeExportImageStatusResponse) SetBody(v *DescribeExportImageStatus
 	return s
 }
 
+type SetBackendServersRequest struct {
+	LoadBalancerId *string                                   `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	BackendServers []*SetBackendServersRequestBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Repeated"`
+}
+
+func (s SetBackendServersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetBackendServersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetBackendServersRequest) SetLoadBalancerId(v string) *SetBackendServersRequest {
+	s.LoadBalancerId = &v
+	return s
+}
+
+func (s *SetBackendServersRequest) SetBackendServers(v []*SetBackendServersRequestBackendServers) *SetBackendServersRequest {
+	s.BackendServers = v
+	return s
+}
+
+type SetBackendServersRequestBackendServers struct {
+	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	// 后端服务器的权重。  取值：0~100  默认值为100，如果值为0，则不会将请求转发给该后端服务器。
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// 后端服务器类型。  ens：ENS实例（默认）
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s SetBackendServersRequestBackendServers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetBackendServersRequestBackendServers) GoString() string {
+	return s.String()
+}
+
+func (s *SetBackendServersRequestBackendServers) SetServerId(v string) *SetBackendServersRequestBackendServers {
+	s.ServerId = &v
+	return s
+}
+
+func (s *SetBackendServersRequestBackendServers) SetWeight(v int32) *SetBackendServersRequestBackendServers {
+	s.Weight = &v
+	return s
+}
+
+func (s *SetBackendServersRequestBackendServers) SetType(v string) *SetBackendServersRequestBackendServers {
+	s.Type = &v
+	return s
+}
+
+type SetBackendServersShrinkRequest struct {
+	LoadBalancerId       *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	BackendServersShrink *string `json:"BackendServers,omitempty" xml:"BackendServers,omitempty"`
+}
+
+func (s SetBackendServersShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetBackendServersShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetBackendServersShrinkRequest) SetLoadBalancerId(v string) *SetBackendServersShrinkRequest {
+	s.LoadBalancerId = &v
+	return s
+}
+
+func (s *SetBackendServersShrinkRequest) SetBackendServersShrink(v string) *SetBackendServersShrinkRequest {
+	s.BackendServersShrink = &v
+	return s
+}
+
+type SetBackendServersResponseBody struct {
+	// Id of the request
+	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	BackendServers *SetBackendServersResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
+}
+
+func (s SetBackendServersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetBackendServersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetBackendServersResponseBody) SetRequestId(v string) *SetBackendServersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SetBackendServersResponseBody) SetBackendServers(v *SetBackendServersResponseBodyBackendServers) *SetBackendServersResponseBody {
+	s.BackendServers = v
+	return s
+}
+
+type SetBackendServersResponseBodyBackendServers struct {
+	BackendServer []*SetBackendServersResponseBodyBackendServersBackendServer `json:"BackendServer,omitempty" xml:"BackendServer,omitempty" type:"Repeated"`
+}
+
+func (s SetBackendServersResponseBodyBackendServers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetBackendServersResponseBodyBackendServers) GoString() string {
+	return s.String()
+}
+
+func (s *SetBackendServersResponseBodyBackendServers) SetBackendServer(v []*SetBackendServersResponseBodyBackendServersBackendServer) *SetBackendServersResponseBodyBackendServers {
+	s.BackendServer = v
+	return s
+}
+
+type SetBackendServersResponseBodyBackendServersBackendServer struct {
+	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	Weight   *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Ip       *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+}
+
+func (s SetBackendServersResponseBodyBackendServersBackendServer) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetBackendServersResponseBodyBackendServersBackendServer) GoString() string {
+	return s.String()
+}
+
+func (s *SetBackendServersResponseBodyBackendServersBackendServer) SetServerId(v string) *SetBackendServersResponseBodyBackendServersBackendServer {
+	s.ServerId = &v
+	return s
+}
+
+func (s *SetBackendServersResponseBodyBackendServersBackendServer) SetWeight(v int32) *SetBackendServersResponseBodyBackendServersBackendServer {
+	s.Weight = &v
+	return s
+}
+
+func (s *SetBackendServersResponseBodyBackendServersBackendServer) SetType(v string) *SetBackendServersResponseBodyBackendServersBackendServer {
+	s.Type = &v
+	return s
+}
+
+func (s *SetBackendServersResponseBodyBackendServersBackendServer) SetIp(v string) *SetBackendServersResponseBodyBackendServersBackendServer {
+	s.Ip = &v
+	return s
+}
+
+func (s *SetBackendServersResponseBodyBackendServersBackendServer) SetPort(v int32) *SetBackendServersResponseBodyBackendServersBackendServer {
+	s.Port = &v
+	return s
+}
+
+type SetBackendServersResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SetBackendServersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SetBackendServersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetBackendServersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetBackendServersResponse) SetHeaders(v map[string]*string) *SetBackendServersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetBackendServersResponse) SetBody(v *SetBackendServersResponseBody) *SetBackendServersResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeExportImageInfoRequest struct {
 	ImageId    *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	ImageName  *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
@@ -13168,6 +16260,7 @@ type DescribeDeviceServiceResponseBodyResourceDetailInfos struct {
 	Server   *string `json:"Server,omitempty" xml:"Server,omitempty"`
 	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Mac      *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
 }
 
 func (s DescribeDeviceServiceResponseBodyResourceDetailInfos) String() string {
@@ -13205,6 +16298,11 @@ func (s *DescribeDeviceServiceResponseBodyResourceDetailInfos) SetStatus(v strin
 
 func (s *DescribeDeviceServiceResponseBodyResourceDetailInfos) SetType(v string) *DescribeDeviceServiceResponseBodyResourceDetailInfos {
 	s.Type = &v
+	return s
+}
+
+func (s *DescribeDeviceServiceResponseBodyResourceDetailInfos) SetMac(v string) *DescribeDeviceServiceResponseBodyResourceDetailInfos {
+	s.Mac = &v
 	return s
 }
 
@@ -14716,6 +17814,190 @@ func (s *CreateKeyPairResponse) SetBody(v *CreateKeyPairResponseBody) *CreateKey
 	return s
 }
 
+type DescribeLoadBalancerHTTPSListenerAttributeRequest struct {
+	ListenerPort   *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+}
+
+func (s DescribeLoadBalancerHTTPSListenerAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerHTTPSListenerAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeRequest) SetListenerPort(v int32) *DescribeLoadBalancerHTTPSListenerAttributeRequest {
+	s.ListenerPort = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeRequest) SetLoadBalancerId(v string) *DescribeLoadBalancerHTTPSListenerAttributeRequest {
+	s.LoadBalancerId = &v
+	return s
+}
+
+type DescribeLoadBalancerHTTPSListenerAttributeResponseBody struct {
+	// Id of the request
+	RequestId              *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ListenerPort           *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	Status                 *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Bandwidth              *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	Scheduler              *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	HealthCheck            *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	HealthyThreshold       *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	UnhealthyThreshold     *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	HealthCheckTimeout     *int32  `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	HealthCheckConnectPort *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	HealthCheckInterval    *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	Description            *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ListenerForward        *string `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
+	ForwardPort            *int32  `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
+	RequestTimeout         *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	IdleTimeout            *int32  `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	HealthCheckHttpCode    *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	HealthCheckDomain      *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	HealthCheckURI         *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	ServerCertificateId    *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
+	HealthCheckMethod      *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
+}
+
+func (s DescribeLoadBalancerHTTPSListenerAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerHTTPSListenerAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetRequestId(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetListenerPort(v int32) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.ListenerPort = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetStatus(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetBandwidth(v int32) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.Bandwidth = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetScheduler(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.Scheduler = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetHealthCheck(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.HealthCheck = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetHealthyThreshold(v int32) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.HealthyThreshold = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetUnhealthyThreshold(v int32) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.UnhealthyThreshold = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetHealthCheckTimeout(v int32) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.HealthCheckTimeout = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetHealthCheckConnectPort(v int32) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.HealthCheckConnectPort = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetHealthCheckInterval(v int32) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.HealthCheckInterval = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetDescription(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetListenerForward(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.ListenerForward = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetForwardPort(v int32) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.ForwardPort = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetRequestTimeout(v int32) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.RequestTimeout = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetIdleTimeout(v int32) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.IdleTimeout = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetHealthCheckHttpCode(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.HealthCheckHttpCode = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetHealthCheckDomain(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.HealthCheckDomain = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetHealthCheckURI(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.HealthCheckURI = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetServerCertificateId(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.ServerCertificateId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetHealthCheckMethod(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.HealthCheckMethod = &v
+	return s
+}
+
+type DescribeLoadBalancerHTTPSListenerAttributeResponse struct {
+	Headers map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeLoadBalancerHTTPSListenerAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeLoadBalancerHTTPSListenerAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerHTTPSListenerAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponse) SetHeaders(v map[string]*string) *DescribeLoadBalancerHTTPSListenerAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponse) SetBody(v *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) *DescribeLoadBalancerHTTPSListenerAttributeResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeAvailableResourceInfoRequest struct {
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
@@ -15225,6 +18507,34 @@ func (client *Client) JoinSecurityGroup(request *JoinSecurityGroupRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) DescribeLoadBalancerTCPListenerAttributeWithOptions(request *DescribeLoadBalancerTCPListenerAttributeRequest, runtime *util.RuntimeOptions) (_result *DescribeLoadBalancerTCPListenerAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeLoadBalancerTCPListenerAttributeResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeLoadBalancerTCPListenerAttribute"), tea.String("2017-11-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeLoadBalancerTCPListenerAttribute(request *DescribeLoadBalancerTCPListenerAttributeRequest) (_result *DescribeLoadBalancerTCPListenerAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeLoadBalancerTCPListenerAttributeResponse{}
+	_body, _err := client.DescribeLoadBalancerTCPListenerAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) RestartDeviceInstanceWithOptions(request *RestartDeviceInstanceRequest, runtime *util.RuntimeOptions) (_result *RestartDeviceInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15684,6 +18994,34 @@ func (client *Client) AttachEnsInstances(request *AttachEnsInstancesRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) ModifyLoadBalancerAttributeWithOptions(request *ModifyLoadBalancerAttributeRequest, runtime *util.RuntimeOptions) (_result *ModifyLoadBalancerAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ModifyLoadBalancerAttributeResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ModifyLoadBalancerAttribute"), tea.String("2017-11-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyLoadBalancerAttribute(request *ModifyLoadBalancerAttributeRequest) (_result *ModifyLoadBalancerAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyLoadBalancerAttributeResponse{}
+	_body, _err := client.ModifyLoadBalancerAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeEpnBandwitdhByInternetChargeTypeWithOptions(request *DescribeEpnBandwitdhByInternetChargeTypeRequest, runtime *util.RuntimeOptions) (_result *DescribeEpnBandwitdhByInternetChargeTypeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15936,6 +19274,35 @@ func (client *Client) DescribeImageInfos(request *DescribeImageInfosRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) DescribeLoadBalancerAttributeWithOptions(request *DescribeLoadBalancerAttributeRequest, runtime *util.RuntimeOptions) (_result *DescribeLoadBalancerAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &DescribeLoadBalancerAttributeResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeLoadBalancerAttribute"), tea.String("2017-11-10"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeLoadBalancerAttribute(request *DescribeLoadBalancerAttributeRequest) (_result *DescribeLoadBalancerAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeLoadBalancerAttributeResponse{}
+	_body, _err := client.DescribeLoadBalancerAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ModifyNetworkAttributeWithOptions(request *ModifyNetworkAttributeRequest, runtime *util.RuntimeOptions) (_result *ModifyNetworkAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16041,6 +19408,34 @@ func (client *Client) DeleteSecurityGroup(request *DeleteSecurityGroupRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteSecurityGroupResponse{}
 	_body, _err := client.DeleteSecurityGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateLoadBalancerHTTPSListenerWithOptions(request *CreateLoadBalancerHTTPSListenerRequest, runtime *util.RuntimeOptions) (_result *CreateLoadBalancerHTTPSListenerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateLoadBalancerHTTPSListenerResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateLoadBalancerHTTPSListener"), tea.String("2017-11-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateLoadBalancerHTTPSListener(request *CreateLoadBalancerHTTPSListenerRequest) (_result *CreateLoadBalancerHTTPSListenerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateLoadBalancerHTTPSListenerResponse{}
+	_body, _err := client.CreateLoadBalancerHTTPSListenerWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16244,6 +19639,34 @@ func (client *Client) StartEpnInstance(request *StartEpnInstanceRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) CreateLoadBalancerUDPListenerWithOptions(request *CreateLoadBalancerUDPListenerRequest, runtime *util.RuntimeOptions) (_result *CreateLoadBalancerUDPListenerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateLoadBalancerUDPListenerResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateLoadBalancerUDPListener"), tea.String("2017-11-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateLoadBalancerUDPListener(request *CreateLoadBalancerUDPListenerRequest) (_result *CreateLoadBalancerUDPListenerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateLoadBalancerUDPListenerResponse{}
+	_body, _err := client.CreateLoadBalancerUDPListenerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeEpnBandWidthDataWithOptions(request *DescribeEpnBandWidthDataRequest, runtime *util.RuntimeOptions) (_result *DescribeEpnBandWidthDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16293,6 +19716,34 @@ func (client *Client) DescribeMeasurementData(request *DescribeMeasurementDataRe
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeMeasurementDataResponse{}
 	_body, _err := client.DescribeMeasurementDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SetLoadBalancerStatusWithOptions(request *SetLoadBalancerStatusRequest, runtime *util.RuntimeOptions) (_result *SetLoadBalancerStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SetLoadBalancerStatusResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SetLoadBalancerStatus"), tea.String("2017-11-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetLoadBalancerStatus(request *SetLoadBalancerStatusRequest) (_result *SetLoadBalancerStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetLoadBalancerStatusResponse{}
+	_body, _err := client.SetLoadBalancerStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16384,6 +19835,34 @@ func (client *Client) ModifySecurityGroupAttribute(request *ModifySecurityGroupA
 	return _result, _err
 }
 
+func (client *Client) DeleteLoadBalancerListenerWithOptions(request *DeleteLoadBalancerListenerRequest, runtime *util.RuntimeOptions) (_result *DeleteLoadBalancerListenerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DeleteLoadBalancerListenerResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteLoadBalancerListener"), tea.String("2017-11-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteLoadBalancerListener(request *DeleteLoadBalancerListenerRequest) (_result *DeleteLoadBalancerListenerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteLoadBalancerListenerResponse{}
+	_body, _err := client.DeleteLoadBalancerListenerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeAvailableResourceWithOptions(request *DescribeAvailableResourceRequest, runtime *util.RuntimeOptions) (_result *DescribeAvailableResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16461,6 +19940,68 @@ func (client *Client) ReleaseEipAddress(request *ReleaseEipAddressRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &ReleaseEipAddressResponse{}
 	_body, _err := client.ReleaseEipAddressWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RemoveBackendServersWithOptions(tmpReq *RemoveBackendServersRequest, runtime *util.RuntimeOptions) (_result *RemoveBackendServersResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RemoveBackendServersShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.BackendServers)) {
+		request.BackendServersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BackendServers, tea.String("BackendServers"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &RemoveBackendServersResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("RemoveBackendServers"), tea.String("2017-11-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RemoveBackendServers(request *RemoveBackendServersRequest) (_result *RemoveBackendServersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RemoveBackendServersResponse{}
+	_body, _err := client.RemoveBackendServersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateLoadBalancerHTTPListenerWithOptions(request *CreateLoadBalancerHTTPListenerRequest, runtime *util.RuntimeOptions) (_result *CreateLoadBalancerHTTPListenerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateLoadBalancerHTTPListenerResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateLoadBalancerHTTPListener"), tea.String("2017-11-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateLoadBalancerHTTPListener(request *CreateLoadBalancerHTTPListenerRequest) (_result *CreateLoadBalancerHTTPListenerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateLoadBalancerHTTPListenerResponse{}
+	_body, _err := client.CreateLoadBalancerHTTPListenerWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16946,6 +20487,68 @@ func (client *Client) DescribeBandWithdChargeType(request *DescribeBandWithdChar
 	return _result, _err
 }
 
+func (client *Client) AddBackendServersWithOptions(tmpReq *AddBackendServersRequest, runtime *util.RuntimeOptions) (_result *AddBackendServersResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &AddBackendServersShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.BackendServers)) {
+		request.BackendServersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BackendServers, tea.String("BackendServers"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &AddBackendServersResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("AddBackendServers"), tea.String("2017-11-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddBackendServers(request *AddBackendServersRequest) (_result *AddBackendServersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddBackendServersResponse{}
+	_body, _err := client.AddBackendServersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SetLoadBalancerUDPListenerAttributeWithOptions(request *SetLoadBalancerUDPListenerAttributeRequest, runtime *util.RuntimeOptions) (_result *SetLoadBalancerUDPListenerAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SetLoadBalancerUDPListenerAttributeResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SetLoadBalancerUDPListenerAttribute"), tea.String("2017-11-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetLoadBalancerUDPListenerAttribute(request *SetLoadBalancerUDPListenerAttributeRequest) (_result *SetLoadBalancerUDPListenerAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetLoadBalancerUDPListenerAttributeResponse{}
+	_body, _err := client.SetLoadBalancerUDPListenerAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeReservedResourceWithOptions(request *DescribeReservedResourceRequest, runtime *util.RuntimeOptions) (_result *DescribeReservedResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17086,6 +20689,34 @@ func (client *Client) DeleteVSwitch(request *DeleteVSwitchRequest) (_result *Del
 	return _result, _err
 }
 
+func (client *Client) SetLoadBalancerHTTPListenerAttributeWithOptions(request *SetLoadBalancerHTTPListenerAttributeRequest, runtime *util.RuntimeOptions) (_result *SetLoadBalancerHTTPListenerAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SetLoadBalancerHTTPListenerAttributeResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SetLoadBalancerHTTPListenerAttribute"), tea.String("2017-11-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetLoadBalancerHTTPListenerAttribute(request *SetLoadBalancerHTTPListenerAttributeRequest) (_result *SetLoadBalancerHTTPListenerAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetLoadBalancerHTTPListenerAttributeResponse{}
+	_body, _err := client.SetLoadBalancerHTTPListenerAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeInstanceVncUrlWithOptions(request *DescribeInstanceVncUrlRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceVncUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17107,6 +20738,34 @@ func (client *Client) DescribeInstanceVncUrl(request *DescribeInstanceVncUrlRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceVncUrlResponse{}
 	_body, _err := client.DescribeInstanceVncUrlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeLoadBalancerHTTPListenerAttributeWithOptions(request *DescribeLoadBalancerHTTPListenerAttributeRequest, runtime *util.RuntimeOptions) (_result *DescribeLoadBalancerHTTPListenerAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeLoadBalancerHTTPListenerAttributeResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeLoadBalancerHTTPListenerAttribute"), tea.String("2017-11-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeLoadBalancerHTTPListenerAttribute(request *DescribeLoadBalancerHTTPListenerAttributeRequest) (_result *DescribeLoadBalancerHTTPListenerAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeLoadBalancerHTTPListenerAttributeResponse{}
+	_body, _err := client.DescribeLoadBalancerHTTPListenerAttributeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17219,6 +20878,35 @@ func (client *Client) ReleaseInstance(request *ReleaseInstanceRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &ReleaseInstanceResponse{}
 	_body, _err := client.ReleaseInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeLoadBalancersWithOptions(request *DescribeLoadBalancersRequest, runtime *util.RuntimeOptions) (_result *DescribeLoadBalancersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &DescribeLoadBalancersResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeLoadBalancers"), tea.String("2017-11-10"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeLoadBalancers(request *DescribeLoadBalancersRequest) (_result *DescribeLoadBalancersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeLoadBalancersResponse{}
+	_body, _err := client.DescribeLoadBalancersWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17366,6 +21054,34 @@ func (client *Client) UnassociateEipAddress(request *UnassociateEipAddressReques
 	return _result, _err
 }
 
+func (client *Client) DescribeLoadBalancerUDPListenerAttributeWithOptions(request *DescribeLoadBalancerUDPListenerAttributeRequest, runtime *util.RuntimeOptions) (_result *DescribeLoadBalancerUDPListenerAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeLoadBalancerUDPListenerAttributeResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeLoadBalancerUDPListenerAttribute"), tea.String("2017-11-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeLoadBalancerUDPListenerAttribute(request *DescribeLoadBalancerUDPListenerAttributeRequest) (_result *DescribeLoadBalancerUDPListenerAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeLoadBalancerUDPListenerAttributeResponse{}
+	_body, _err := client.DescribeLoadBalancerUDPListenerAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeDataPushResultWithOptions(request *DescribeDataPushResultRequest, runtime *util.RuntimeOptions) (_result *DescribeDataPushResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17471,6 +21187,34 @@ func (client *Client) ImportKeyPair(request *ImportKeyPairRequest) (_result *Imp
 	runtime := &util.RuntimeOptions{}
 	_result = &ImportKeyPairResponse{}
 	_body, _err := client.ImportKeyPairWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateLoadBalancerTCPListenerWithOptions(request *CreateLoadBalancerTCPListenerRequest, runtime *util.RuntimeOptions) (_result *CreateLoadBalancerTCPListenerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateLoadBalancerTCPListenerResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateLoadBalancerTCPListener"), tea.String("2017-11-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateLoadBalancerTCPListener(request *CreateLoadBalancerTCPListenerRequest) (_result *CreateLoadBalancerTCPListenerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateLoadBalancerTCPListenerResponse{}
+	_body, _err := client.CreateLoadBalancerTCPListenerWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17730,6 +21474,90 @@ func (client *Client) DescribeEpnInstances(request *DescribeEpnInstancesRequest)
 	return _result, _err
 }
 
+func (client *Client) StartLoadBalancerListenerWithOptions(request *StartLoadBalancerListenerRequest, runtime *util.RuntimeOptions) (_result *StartLoadBalancerListenerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &StartLoadBalancerListenerResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("StartLoadBalancerListener"), tea.String("2017-11-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StartLoadBalancerListener(request *StartLoadBalancerListenerRequest) (_result *StartLoadBalancerListenerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartLoadBalancerListenerResponse{}
+	_body, _err := client.StartLoadBalancerListenerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StopLoadBalancerListenerWithOptions(request *StopLoadBalancerListenerRequest, runtime *util.RuntimeOptions) (_result *StopLoadBalancerListenerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &StopLoadBalancerListenerResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("StopLoadBalancerListener"), tea.String("2017-11-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StopLoadBalancerListener(request *StopLoadBalancerListenerRequest) (_result *StopLoadBalancerListenerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StopLoadBalancerListenerResponse{}
+	_body, _err := client.StopLoadBalancerListenerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SetLoadBalancerTCPListenerAttributeWithOptions(request *SetLoadBalancerTCPListenerAttributeRequest, runtime *util.RuntimeOptions) (_result *SetLoadBalancerTCPListenerAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SetLoadBalancerTCPListenerAttributeResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SetLoadBalancerTCPListenerAttribute"), tea.String("2017-11-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetLoadBalancerTCPListenerAttribute(request *SetLoadBalancerTCPListenerAttributeRequest) (_result *SetLoadBalancerTCPListenerAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetLoadBalancerTCPListenerAttributeResponse{}
+	_body, _err := client.SetLoadBalancerTCPListenerAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, runtime *util.RuntimeOptions) (_result *CreateInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17807,6 +21635,34 @@ func (client *Client) ReleasePostPaidInstance(request *ReleasePostPaidInstanceRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ReleasePostPaidInstanceResponse{}
 	_body, _err := client.ReleasePostPaidInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SetLoadBalancerHTTPSListenerAttributeWithOptions(request *SetLoadBalancerHTTPSListenerAttributeRequest, runtime *util.RuntimeOptions) (_result *SetLoadBalancerHTTPSListenerAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SetLoadBalancerHTTPSListenerAttributeResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SetLoadBalancerHTTPSListenerAttribute"), tea.String("2017-11-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetLoadBalancerHTTPSListenerAttribute(request *SetLoadBalancerHTTPSListenerAttributeRequest) (_result *SetLoadBalancerHTTPSListenerAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetLoadBalancerHTTPSListenerAttributeResponse{}
+	_body, _err := client.SetLoadBalancerHTTPSListenerAttributeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18088,6 +21944,40 @@ func (client *Client) DescribeExportImageStatus(request *DescribeExportImageStat
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeExportImageStatusResponse{}
 	_body, _err := client.DescribeExportImageStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SetBackendServersWithOptions(tmpReq *SetBackendServersRequest, runtime *util.RuntimeOptions) (_result *SetBackendServersResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SetBackendServersShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.BackendServers)) {
+		request.BackendServersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BackendServers, tea.String("BackendServers"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SetBackendServersResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SetBackendServers"), tea.String("2017-11-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetBackendServers(request *SetBackendServersRequest) (_result *SetBackendServersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetBackendServersResponse{}
+	_body, _err := client.SetBackendServersWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18537,6 +22427,34 @@ func (client *Client) CreateKeyPair(request *CreateKeyPairRequest) (_result *Cre
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateKeyPairResponse{}
 	_body, _err := client.CreateKeyPairWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeLoadBalancerHTTPSListenerAttributeWithOptions(request *DescribeLoadBalancerHTTPSListenerAttributeRequest, runtime *util.RuntimeOptions) (_result *DescribeLoadBalancerHTTPSListenerAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeLoadBalancerHTTPSListenerAttributeResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeLoadBalancerHTTPSListenerAttribute"), tea.String("2017-11-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeLoadBalancerHTTPSListenerAttribute(request *DescribeLoadBalancerHTTPSListenerAttributeRequest) (_result *DescribeLoadBalancerHTTPSListenerAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeLoadBalancerHTTPSListenerAttributeResponse{}
+	_body, _err := client.DescribeLoadBalancerHTTPSListenerAttributeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
