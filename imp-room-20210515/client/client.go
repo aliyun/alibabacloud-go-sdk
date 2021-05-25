@@ -352,6 +352,257 @@ func (s *CreateRoomResponse) SetBody(v *CreateRoomResponseBody) *CreateRoomRespo
 	return s
 }
 
+type DestroyRoomRequest struct {
+	Request *DestroyRoomRequestRequest `json:"Request,omitempty" xml:"Request,omitempty" type:"Struct"`
+}
+
+func (s DestroyRoomRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DestroyRoomRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DestroyRoomRequest) SetRequest(v *DestroyRoomRequestRequest) *DestroyRoomRequest {
+	s.Request = v
+	return s
+}
+
+type DestroyRoomRequestRequest struct {
+	// 租户名
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// 房间id
+	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+}
+
+func (s DestroyRoomRequestRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DestroyRoomRequestRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DestroyRoomRequestRequest) SetDomain(v string) *DestroyRoomRequestRequest {
+	s.Domain = &v
+	return s
+}
+
+func (s *DestroyRoomRequestRequest) SetRoomId(v string) *DestroyRoomRequestRequest {
+	s.RoomId = &v
+	return s
+}
+
+type DestroyRoomResponseBody struct {
+	// Id of the request
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResponseSuccess *bool   `json:"ResponseSuccess,omitempty" xml:"ResponseSuccess,omitempty"`
+	// 错误码
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 错误信息
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+}
+
+func (s DestroyRoomResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DestroyRoomResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DestroyRoomResponseBody) SetRequestId(v string) *DestroyRoomResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DestroyRoomResponseBody) SetResponseSuccess(v bool) *DestroyRoomResponseBody {
+	s.ResponseSuccess = &v
+	return s
+}
+
+func (s *DestroyRoomResponseBody) SetErrorCode(v string) *DestroyRoomResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DestroyRoomResponseBody) SetErrorMsg(v string) *DestroyRoomResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+type DestroyRoomResponse struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DestroyRoomResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DestroyRoomResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DestroyRoomResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DestroyRoomResponse) SetHeaders(v map[string]*string) *DestroyRoomResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DestroyRoomResponse) SetBody(v *DestroyRoomResponseBody) *DestroyRoomResponse {
+	s.Body = v
+	return s
+}
+
+type CreateInstanceRequest struct {
+	Request *CreateInstanceRequestRequest `json:"Request,omitempty" xml:"Request,omitempty" type:"Struct"`
+}
+
+func (s CreateInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceRequest) SetRequest(v *CreateInstanceRequestRequest) *CreateInstanceRequest {
+	s.Request = v
+	return s
+}
+
+type CreateInstanceRequestRequest struct {
+	// 租户名
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// 房间id
+	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	// 插件ID
+	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	// 拓展字段
+	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+}
+
+func (s CreateInstanceRequestRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceRequestRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceRequestRequest) SetDomain(v string) *CreateInstanceRequestRequest {
+	s.Domain = &v
+	return s
+}
+
+func (s *CreateInstanceRequestRequest) SetRoomId(v string) *CreateInstanceRequestRequest {
+	s.RoomId = &v
+	return s
+}
+
+func (s *CreateInstanceRequestRequest) SetPluginId(v string) *CreateInstanceRequestRequest {
+	s.PluginId = &v
+	return s
+}
+
+func (s *CreateInstanceRequestRequest) SetExtension(v map[string]*string) *CreateInstanceRequestRequest {
+	s.Extension = v
+	return s
+}
+
+type CreateInstanceResponseBody struct {
+	// Id of the request
+	RequestId       *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result          *CreateInstanceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	ResponseSuccess *bool                             `json:"ResponseSuccess,omitempty" xml:"ResponseSuccess,omitempty"`
+	// 错误码
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 错误信息
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+}
+
+func (s CreateInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceResponseBody) SetRequestId(v string) *CreateInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateInstanceResponseBody) SetResult(v *CreateInstanceResponseBodyResult) *CreateInstanceResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *CreateInstanceResponseBody) SetResponseSuccess(v bool) *CreateInstanceResponseBody {
+	s.ResponseSuccess = &v
+	return s
+}
+
+func (s *CreateInstanceResponseBody) SetErrorCode(v string) *CreateInstanceResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateInstanceResponseBody) SetErrorMsg(v string) *CreateInstanceResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+type CreateInstanceResponseBodyResult struct {
+	// 插件实例ID
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 扩展信息
+	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+}
+
+func (s CreateInstanceResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceResponseBodyResult) SetInstanceId(v string) *CreateInstanceResponseBodyResult {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateInstanceResponseBodyResult) SetExtension(v map[string]*string) *CreateInstanceResponseBodyResult {
+	s.Extension = v
+	return s
+}
+
+type CreateInstanceResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceResponse) SetHeaders(v map[string]*string) *CreateInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateInstanceResponse) SetBody(v *CreateInstanceResponseBody) *CreateInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -454,6 +705,62 @@ func (client *Client) CreateRoom(request *CreateRoomRequest) (_result *CreateRoo
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateRoomResponse{}
 	_body, _err := client.CreateRoomWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DestroyRoomWithOptions(request *DestroyRoomRequest, runtime *util.RuntimeOptions) (_result *DestroyRoomResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DestroyRoomResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DestroyRoom"), tea.String("2021-05-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DestroyRoom(request *DestroyRoomRequest) (_result *DestroyRoomResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DestroyRoomResponse{}
+	_body, _err := client.DestroyRoomWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, runtime *util.RuntimeOptions) (_result *CreateInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateInstanceResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateInstance"), tea.String("2021-05-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *CreateInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateInstanceResponse{}
+	_body, _err := client.CreateInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
