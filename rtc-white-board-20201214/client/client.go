@@ -209,6 +209,132 @@ func (s *DescribeAppsResponse) SetBody(v *DescribeAppsResponseBody) *DescribeApp
 	return s
 }
 
+type PauseWhiteBoardRecordingRequest struct {
+	// 白板应用唯一标识符
+	AppID *string `json:"AppID,omitempty" xml:"AppID,omitempty"`
+	// 结束白板录制的用户ID（客户业务用户），由1~32位大小写字母、数字、下划线、短划线（-）组成
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// 白板文档唯一标识符
+	DocKey *string `json:"DocKey,omitempty" xml:"DocKey,omitempty"`
+	// 白板录制Session的唯一标识
+	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+}
+
+func (s PauseWhiteBoardRecordingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PauseWhiteBoardRecordingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PauseWhiteBoardRecordingRequest) SetAppID(v string) *PauseWhiteBoardRecordingRequest {
+	s.AppID = &v
+	return s
+}
+
+func (s *PauseWhiteBoardRecordingRequest) SetUserId(v string) *PauseWhiteBoardRecordingRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *PauseWhiteBoardRecordingRequest) SetDocKey(v string) *PauseWhiteBoardRecordingRequest {
+	s.DocKey = &v
+	return s
+}
+
+func (s *PauseWhiteBoardRecordingRequest) SetRecordId(v string) *PauseWhiteBoardRecordingRequest {
+	s.RecordId = &v
+	return s
+}
+
+type PauseWhiteBoardRecordingResponseBody struct {
+	// 请求ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 请求结果
+	ResponseSuccess *bool `json:"ResponseSuccess,omitempty" xml:"ResponseSuccess,omitempty"`
+	// 错误码
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 错误信息
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// 返回结果体
+	Result *PauseWhiteBoardRecordingResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s PauseWhiteBoardRecordingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PauseWhiteBoardRecordingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PauseWhiteBoardRecordingResponseBody) SetRequestId(v string) *PauseWhiteBoardRecordingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *PauseWhiteBoardRecordingResponseBody) SetResponseSuccess(v bool) *PauseWhiteBoardRecordingResponseBody {
+	s.ResponseSuccess = &v
+	return s
+}
+
+func (s *PauseWhiteBoardRecordingResponseBody) SetErrorCode(v string) *PauseWhiteBoardRecordingResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *PauseWhiteBoardRecordingResponseBody) SetErrorMsg(v string) *PauseWhiteBoardRecordingResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *PauseWhiteBoardRecordingResponseBody) SetResult(v *PauseWhiteBoardRecordingResponseBodyResult) *PauseWhiteBoardRecordingResponseBody {
+	s.Result = v
+	return s
+}
+
+type PauseWhiteBoardRecordingResponseBodyResult struct {
+	// 录制结束的UNIX时间戳
+	PauseTime *int64 `json:"PauseTime,omitempty" xml:"PauseTime,omitempty"`
+}
+
+func (s PauseWhiteBoardRecordingResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PauseWhiteBoardRecordingResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *PauseWhiteBoardRecordingResponseBodyResult) SetPauseTime(v int64) *PauseWhiteBoardRecordingResponseBodyResult {
+	s.PauseTime = &v
+	return s
+}
+
+type PauseWhiteBoardRecordingResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *PauseWhiteBoardRecordingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s PauseWhiteBoardRecordingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PauseWhiteBoardRecordingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PauseWhiteBoardRecordingResponse) SetHeaders(v map[string]*string) *PauseWhiteBoardRecordingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PauseWhiteBoardRecordingResponse) SetBody(v *PauseWhiteBoardRecordingResponseBody) *PauseWhiteBoardRecordingResponse {
+	s.Body = v
+	return s
+}
+
 type SetAppCallbackUrlRequest struct {
 	// 白板应用唯一标识符
 	AppID *string `json:"AppID,omitempty" xml:"AppID,omitempty"`
@@ -306,6 +432,132 @@ func (s *SetAppCallbackUrlResponse) SetHeaders(v map[string]*string) *SetAppCall
 }
 
 func (s *SetAppCallbackUrlResponse) SetBody(v *SetAppCallbackUrlResponseBody) *SetAppCallbackUrlResponse {
+	s.Body = v
+	return s
+}
+
+type StartWhiteBoardRecordingRequest struct {
+	// 白板应用唯一标识符
+	AppID *string `json:"AppID,omitempty" xml:"AppID,omitempty"`
+	// 启动白板录制的用户ID（客户业务用户），由1~32位大小写字母、数字、下划线、短划线（-）组成
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// 白板文档唯一标识符
+	DocKey *string `json:"DocKey,omitempty" xml:"DocKey,omitempty"`
+}
+
+func (s StartWhiteBoardRecordingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartWhiteBoardRecordingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartWhiteBoardRecordingRequest) SetAppID(v string) *StartWhiteBoardRecordingRequest {
+	s.AppID = &v
+	return s
+}
+
+func (s *StartWhiteBoardRecordingRequest) SetUserId(v string) *StartWhiteBoardRecordingRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *StartWhiteBoardRecordingRequest) SetDocKey(v string) *StartWhiteBoardRecordingRequest {
+	s.DocKey = &v
+	return s
+}
+
+type StartWhiteBoardRecordingResponseBody struct {
+	// 请求ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 请求结果
+	ResponseSuccess *bool `json:"ResponseSuccess,omitempty" xml:"ResponseSuccess,omitempty"`
+	// 错误码
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 错误信息
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// 返回结果体
+	Result *StartWhiteBoardRecordingResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s StartWhiteBoardRecordingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartWhiteBoardRecordingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartWhiteBoardRecordingResponseBody) SetRequestId(v string) *StartWhiteBoardRecordingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StartWhiteBoardRecordingResponseBody) SetResponseSuccess(v bool) *StartWhiteBoardRecordingResponseBody {
+	s.ResponseSuccess = &v
+	return s
+}
+
+func (s *StartWhiteBoardRecordingResponseBody) SetErrorCode(v string) *StartWhiteBoardRecordingResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *StartWhiteBoardRecordingResponseBody) SetErrorMsg(v string) *StartWhiteBoardRecordingResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *StartWhiteBoardRecordingResponseBody) SetResult(v *StartWhiteBoardRecordingResponseBodyResult) *StartWhiteBoardRecordingResponseBody {
+	s.Result = v
+	return s
+}
+
+type StartWhiteBoardRecordingResponseBodyResult struct {
+	// 白板录制Session的唯一标识
+	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// 录制开始的UNIX时间戳
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s StartWhiteBoardRecordingResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartWhiteBoardRecordingResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *StartWhiteBoardRecordingResponseBodyResult) SetRecordId(v string) *StartWhiteBoardRecordingResponseBodyResult {
+	s.RecordId = &v
+	return s
+}
+
+func (s *StartWhiteBoardRecordingResponseBodyResult) SetStartTime(v int64) *StartWhiteBoardRecordingResponseBodyResult {
+	s.StartTime = &v
+	return s
+}
+
+type StartWhiteBoardRecordingResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *StartWhiteBoardRecordingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StartWhiteBoardRecordingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartWhiteBoardRecordingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartWhiteBoardRecordingResponse) SetHeaders(v map[string]*string) *StartWhiteBoardRecordingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartWhiteBoardRecordingResponse) SetBody(v *StartWhiteBoardRecordingResponseBody) *StartWhiteBoardRecordingResponse {
 	s.Body = v
 	return s
 }
@@ -588,6 +840,132 @@ func (s *DescribeWhiteBoardsResponse) SetBody(v *DescribeWhiteBoardsResponseBody
 	return s
 }
 
+type ResumeWhiteBoardRecordingRequest struct {
+	// 白板应用唯一标识符
+	AppID *string `json:"AppID,omitempty" xml:"AppID,omitempty"`
+	// 结束白板录制的用户ID（客户业务用户），由1~32位大小写字母、数字、下划线、短划线（-）组成
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// 白板文档唯一标识符
+	DocKey *string `json:"DocKey,omitempty" xml:"DocKey,omitempty"`
+	// 白板录制Session的唯一标识
+	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+}
+
+func (s ResumeWhiteBoardRecordingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResumeWhiteBoardRecordingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ResumeWhiteBoardRecordingRequest) SetAppID(v string) *ResumeWhiteBoardRecordingRequest {
+	s.AppID = &v
+	return s
+}
+
+func (s *ResumeWhiteBoardRecordingRequest) SetUserId(v string) *ResumeWhiteBoardRecordingRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *ResumeWhiteBoardRecordingRequest) SetDocKey(v string) *ResumeWhiteBoardRecordingRequest {
+	s.DocKey = &v
+	return s
+}
+
+func (s *ResumeWhiteBoardRecordingRequest) SetRecordId(v string) *ResumeWhiteBoardRecordingRequest {
+	s.RecordId = &v
+	return s
+}
+
+type ResumeWhiteBoardRecordingResponseBody struct {
+	// 请求ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 请求结果
+	ResponseSuccess *bool `json:"ResponseSuccess,omitempty" xml:"ResponseSuccess,omitempty"`
+	// 错误码
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 错误信息
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// 返回结果体
+	Result *ResumeWhiteBoardRecordingResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s ResumeWhiteBoardRecordingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResumeWhiteBoardRecordingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ResumeWhiteBoardRecordingResponseBody) SetRequestId(v string) *ResumeWhiteBoardRecordingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ResumeWhiteBoardRecordingResponseBody) SetResponseSuccess(v bool) *ResumeWhiteBoardRecordingResponseBody {
+	s.ResponseSuccess = &v
+	return s
+}
+
+func (s *ResumeWhiteBoardRecordingResponseBody) SetErrorCode(v string) *ResumeWhiteBoardRecordingResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ResumeWhiteBoardRecordingResponseBody) SetErrorMsg(v string) *ResumeWhiteBoardRecordingResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *ResumeWhiteBoardRecordingResponseBody) SetResult(v *ResumeWhiteBoardRecordingResponseBodyResult) *ResumeWhiteBoardRecordingResponseBody {
+	s.Result = v
+	return s
+}
+
+type ResumeWhiteBoardRecordingResponseBodyResult struct {
+	// 录制结束的UNIX时间戳
+	ResumeTime *int64 `json:"ResumeTime,omitempty" xml:"ResumeTime,omitempty"`
+}
+
+func (s ResumeWhiteBoardRecordingResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResumeWhiteBoardRecordingResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ResumeWhiteBoardRecordingResponseBodyResult) SetResumeTime(v int64) *ResumeWhiteBoardRecordingResponseBodyResult {
+	s.ResumeTime = &v
+	return s
+}
+
+type ResumeWhiteBoardRecordingResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ResumeWhiteBoardRecordingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ResumeWhiteBoardRecordingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResumeWhiteBoardRecordingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ResumeWhiteBoardRecordingResponse) SetHeaders(v map[string]*string) *ResumeWhiteBoardRecordingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ResumeWhiteBoardRecordingResponse) SetBody(v *ResumeWhiteBoardRecordingResponseBody) *ResumeWhiteBoardRecordingResponse {
+	s.Body = v
+	return s
+}
+
 type SetAppDomainNamesRequest struct {
 	// 白板应用唯一标识符
 	AppID *string `json:"AppID,omitempty" xml:"AppID,omitempty"`
@@ -685,7 +1063,7 @@ func (s *SetAppDomainNamesResponse) SetBody(v *SetAppDomainNamesResponseBody) *S
 type OpenWhiteBoardRequest struct {
 	// 白板应用唯一标识符
 	AppID *string `json:"AppID,omitempty" xml:"AppID,omitempty"`
-	// 打开白板的用户ID（客户业务用户），由纯数字组成
+	// 打开白板的用户ID（客户业务用户），由1~32位大小写字母、数字、下划线、短划线（-）组成
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// 白板文档唯一标识符
 	DocKey *string `json:"DocKey,omitempty" xml:"DocKey,omitempty"`
@@ -1295,7 +1673,7 @@ func (s *SetUsersPermissionsResponse) SetBody(v *SetUsersPermissionsResponseBody
 }
 
 type CreateWhiteBoardRequest struct {
-	// 创建白板的用户ID（客户业务用户），由纯数字组成。
+	// 创建白板的用户ID（客户业务用户），由1~32位大小写字母、数字、下划线、短划线（-）组成
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// 白板应用唯一标识符
 	AppID *string `json:"AppID,omitempty" xml:"AppID,omitempty"`
@@ -1500,6 +1878,132 @@ func (s *SetAppStatusResponse) SetBody(v *SetAppStatusResponseBody) *SetAppStatu
 	return s
 }
 
+type StopWhiteBoardRecordingRequest struct {
+	// 白板应用唯一标识符
+	AppID *string `json:"AppID,omitempty" xml:"AppID,omitempty"`
+	// 结束白板录制的用户ID（客户业务用户），由1~32位大小写字母、数字、下划线、短划线（-）组成
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// 白板文档唯一标识符
+	DocKey *string `json:"DocKey,omitempty" xml:"DocKey,omitempty"`
+	// 白板录制Session的唯一标识
+	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+}
+
+func (s StopWhiteBoardRecordingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopWhiteBoardRecordingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopWhiteBoardRecordingRequest) SetAppID(v string) *StopWhiteBoardRecordingRequest {
+	s.AppID = &v
+	return s
+}
+
+func (s *StopWhiteBoardRecordingRequest) SetUserId(v string) *StopWhiteBoardRecordingRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *StopWhiteBoardRecordingRequest) SetDocKey(v string) *StopWhiteBoardRecordingRequest {
+	s.DocKey = &v
+	return s
+}
+
+func (s *StopWhiteBoardRecordingRequest) SetRecordId(v string) *StopWhiteBoardRecordingRequest {
+	s.RecordId = &v
+	return s
+}
+
+type StopWhiteBoardRecordingResponseBody struct {
+	// 请求ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 请求结果
+	ResponseSuccess *bool `json:"ResponseSuccess,omitempty" xml:"ResponseSuccess,omitempty"`
+	// 错误码
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 错误信息
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// 返回结果体
+	Result *StopWhiteBoardRecordingResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s StopWhiteBoardRecordingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopWhiteBoardRecordingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopWhiteBoardRecordingResponseBody) SetRequestId(v string) *StopWhiteBoardRecordingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StopWhiteBoardRecordingResponseBody) SetResponseSuccess(v bool) *StopWhiteBoardRecordingResponseBody {
+	s.ResponseSuccess = &v
+	return s
+}
+
+func (s *StopWhiteBoardRecordingResponseBody) SetErrorCode(v string) *StopWhiteBoardRecordingResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *StopWhiteBoardRecordingResponseBody) SetErrorMsg(v string) *StopWhiteBoardRecordingResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *StopWhiteBoardRecordingResponseBody) SetResult(v *StopWhiteBoardRecordingResponseBodyResult) *StopWhiteBoardRecordingResponseBody {
+	s.Result = v
+	return s
+}
+
+type StopWhiteBoardRecordingResponseBodyResult struct {
+	// 录制结束的UNIX时间戳
+	StopTime *int64 `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
+}
+
+func (s StopWhiteBoardRecordingResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopWhiteBoardRecordingResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *StopWhiteBoardRecordingResponseBodyResult) SetStopTime(v int64) *StopWhiteBoardRecordingResponseBodyResult {
+	s.StopTime = &v
+	return s
+}
+
+type StopWhiteBoardRecordingResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *StopWhiteBoardRecordingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StopWhiteBoardRecordingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopWhiteBoardRecordingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopWhiteBoardRecordingResponse) SetHeaders(v map[string]*string) *StopWhiteBoardRecordingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopWhiteBoardRecordingResponse) SetBody(v *StopWhiteBoardRecordingResponseBody) *StopWhiteBoardRecordingResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -1575,6 +2079,34 @@ func (client *Client) DescribeApps(request *DescribeAppsRequest) (_result *Descr
 	return _result, _err
 }
 
+func (client *Client) PauseWhiteBoardRecordingWithOptions(request *PauseWhiteBoardRecordingRequest, runtime *util.RuntimeOptions) (_result *PauseWhiteBoardRecordingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &PauseWhiteBoardRecordingResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("PauseWhiteBoardRecording"), tea.String("2020-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PauseWhiteBoardRecording(request *PauseWhiteBoardRecordingRequest) (_result *PauseWhiteBoardRecordingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PauseWhiteBoardRecordingResponse{}
+	_body, _err := client.PauseWhiteBoardRecordingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SetAppCallbackUrlWithOptions(request *SetAppCallbackUrlRequest, runtime *util.RuntimeOptions) (_result *SetAppCallbackUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1596,6 +2128,34 @@ func (client *Client) SetAppCallbackUrl(request *SetAppCallbackUrlRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &SetAppCallbackUrlResponse{}
 	_body, _err := client.SetAppCallbackUrlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StartWhiteBoardRecordingWithOptions(request *StartWhiteBoardRecordingRequest, runtime *util.RuntimeOptions) (_result *StartWhiteBoardRecordingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &StartWhiteBoardRecordingResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("StartWhiteBoardRecording"), tea.String("2020-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StartWhiteBoardRecording(request *StartWhiteBoardRecordingRequest) (_result *StartWhiteBoardRecordingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartWhiteBoardRecordingResponse{}
+	_body, _err := client.StartWhiteBoardRecordingWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1652,6 +2212,34 @@ func (client *Client) DescribeWhiteBoards(request *DescribeWhiteBoardsRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeWhiteBoardsResponse{}
 	_body, _err := client.DescribeWhiteBoardsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ResumeWhiteBoardRecordingWithOptions(request *ResumeWhiteBoardRecordingRequest, runtime *util.RuntimeOptions) (_result *ResumeWhiteBoardRecordingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ResumeWhiteBoardRecordingResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ResumeWhiteBoardRecording"), tea.String("2020-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ResumeWhiteBoardRecording(request *ResumeWhiteBoardRecordingRequest) (_result *ResumeWhiteBoardRecordingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ResumeWhiteBoardRecordingResponse{}
+	_body, _err := client.ResumeWhiteBoardRecordingWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1876,6 +2464,34 @@ func (client *Client) SetAppStatus(request *SetAppStatusRequest) (_result *SetAp
 	runtime := &util.RuntimeOptions{}
 	_result = &SetAppStatusResponse{}
 	_body, _err := client.SetAppStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StopWhiteBoardRecordingWithOptions(request *StopWhiteBoardRecordingRequest, runtime *util.RuntimeOptions) (_result *StopWhiteBoardRecordingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &StopWhiteBoardRecordingResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("StopWhiteBoardRecording"), tea.String("2020-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StopWhiteBoardRecording(request *StopWhiteBoardRecordingRequest) (_result *StopWhiteBoardRecordingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StopWhiteBoardRecordingResponse{}
+	_body, _err := client.StopWhiteBoardRecordingWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
