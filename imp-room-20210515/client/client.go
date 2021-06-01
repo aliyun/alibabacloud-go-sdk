@@ -603,6 +603,417 @@ func (s *CreateInstanceResponse) SetBody(v *CreateInstanceResponseBody) *CreateI
 	return s
 }
 
+type GetRoomDetailRequest struct {
+	Request *GetRoomDetailRequestRequest `json:"Request,omitempty" xml:"Request,omitempty" type:"Struct"`
+}
+
+func (s GetRoomDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRoomDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetRoomDetailRequest) SetRequest(v *GetRoomDetailRequestRequest) *GetRoomDetailRequest {
+	s.Request = v
+	return s
+}
+
+type GetRoomDetailRequestRequest struct {
+	// 租户名
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// 房间id
+	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+}
+
+func (s GetRoomDetailRequestRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRoomDetailRequestRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetRoomDetailRequestRequest) SetDomain(v string) *GetRoomDetailRequestRequest {
+	s.Domain = &v
+	return s
+}
+
+func (s *GetRoomDetailRequestRequest) SetRoomId(v string) *GetRoomDetailRequestRequest {
+	s.RoomId = &v
+	return s
+}
+
+type GetRoomDetailResponseBody struct {
+	// Id of the request
+	RequestId       *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result          *GetRoomDetailResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	ResponseSuccess *bool                            `json:"ResponseSuccess,omitempty" xml:"ResponseSuccess,omitempty"`
+	// 错误码
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 错误信息
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+}
+
+func (s GetRoomDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRoomDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetRoomDetailResponseBody) SetRequestId(v string) *GetRoomDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetRoomDetailResponseBody) SetResult(v *GetRoomDetailResponseBodyResult) *GetRoomDetailResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetRoomDetailResponseBody) SetResponseSuccess(v bool) *GetRoomDetailResponseBody {
+	s.ResponseSuccess = &v
+	return s
+}
+
+func (s *GetRoomDetailResponseBody) SetErrorCode(v string) *GetRoomDetailResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetRoomDetailResponseBody) SetErrorMsg(v string) *GetRoomDetailResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+type GetRoomDetailResponseBodyResult struct {
+	// 房间id
+	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	// 房间标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// 房间公告
+	Notice *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
+	// 房主id
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// uv
+	Uv *int64 `json:"Uv,omitempty" xml:"Uv,omitempty"`
+	// 在线数
+	OnlineCount *int64 `json:"OnlineCount,omitempty" xml:"OnlineCount,omitempty"`
+	// 活跃插件列表
+	PluginInstanceInfoList []*GetRoomDetailResponseBodyResultPluginInstanceInfoList `json:"PluginInstanceInfoList,omitempty" xml:"PluginInstanceInfoList,omitempty" type:"Repeated"`
+}
+
+func (s GetRoomDetailResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRoomDetailResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetRoomDetailResponseBodyResult) SetRoomId(v string) *GetRoomDetailResponseBodyResult {
+	s.RoomId = &v
+	return s
+}
+
+func (s *GetRoomDetailResponseBodyResult) SetTitle(v string) *GetRoomDetailResponseBodyResult {
+	s.Title = &v
+	return s
+}
+
+func (s *GetRoomDetailResponseBodyResult) SetNotice(v string) *GetRoomDetailResponseBodyResult {
+	s.Notice = &v
+	return s
+}
+
+func (s *GetRoomDetailResponseBodyResult) SetOwnerId(v string) *GetRoomDetailResponseBodyResult {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetRoomDetailResponseBodyResult) SetUv(v int64) *GetRoomDetailResponseBodyResult {
+	s.Uv = &v
+	return s
+}
+
+func (s *GetRoomDetailResponseBodyResult) SetOnlineCount(v int64) *GetRoomDetailResponseBodyResult {
+	s.OnlineCount = &v
+	return s
+}
+
+func (s *GetRoomDetailResponseBodyResult) SetPluginInstanceInfoList(v []*GetRoomDetailResponseBodyResultPluginInstanceInfoList) *GetRoomDetailResponseBodyResult {
+	s.PluginInstanceInfoList = v
+	return s
+}
+
+type GetRoomDetailResponseBodyResultPluginInstanceInfoList struct {
+	// 插件id
+	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	// 对应实例id
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 创建时间戳
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 拓展字段
+	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+}
+
+func (s GetRoomDetailResponseBodyResultPluginInstanceInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRoomDetailResponseBodyResultPluginInstanceInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *GetRoomDetailResponseBodyResultPluginInstanceInfoList) SetPluginId(v string) *GetRoomDetailResponseBodyResultPluginInstanceInfoList {
+	s.PluginId = &v
+	return s
+}
+
+func (s *GetRoomDetailResponseBodyResultPluginInstanceInfoList) SetInstanceId(v string) *GetRoomDetailResponseBodyResultPluginInstanceInfoList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetRoomDetailResponseBodyResultPluginInstanceInfoList) SetCreateTime(v int64) *GetRoomDetailResponseBodyResultPluginInstanceInfoList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetRoomDetailResponseBodyResultPluginInstanceInfoList) SetExtension(v map[string]*string) *GetRoomDetailResponseBodyResultPluginInstanceInfoList {
+	s.Extension = v
+	return s
+}
+
+type GetRoomDetailResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetRoomDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetRoomDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRoomDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetRoomDetailResponse) SetHeaders(v map[string]*string) *GetRoomDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetRoomDetailResponse) SetBody(v *GetRoomDetailResponseBody) *GetRoomDetailResponse {
+	s.Body = v
+	return s
+}
+
+type GetRoomListRequest struct {
+	Request *GetRoomListRequestRequest `json:"Request,omitempty" xml:"Request,omitempty" type:"Struct"`
+}
+
+func (s GetRoomListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRoomListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetRoomListRequest) SetRequest(v *GetRoomListRequestRequest) *GetRoomListRequest {
+	s.Request = v
+	return s
+}
+
+type GetRoomListRequestRequest struct {
+	// 租户名
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// 业务类型
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// 查询第几页的房间列表
+	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// 该页面房间数量(最大支持50)
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s GetRoomListRequestRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRoomListRequestRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetRoomListRequestRequest) SetDomain(v string) *GetRoomListRequestRequest {
+	s.Domain = &v
+	return s
+}
+
+func (s *GetRoomListRequestRequest) SetBizType(v string) *GetRoomListRequestRequest {
+	s.BizType = &v
+	return s
+}
+
+func (s *GetRoomListRequestRequest) SetPageNum(v int64) *GetRoomListRequestRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *GetRoomListRequestRequest) SetPageSize(v int64) *GetRoomListRequestRequest {
+	s.PageSize = &v
+	return s
+}
+
+type GetRoomListResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 业务结果
+	Result *GetRoomListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// 请求是否成功
+	ResponseSuccess *bool `json:"ResponseSuccess,omitempty" xml:"ResponseSuccess,omitempty"`
+	// 错误码
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 错误信息
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+}
+
+func (s GetRoomListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRoomListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetRoomListResponseBody) SetRequestId(v string) *GetRoomListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetRoomListResponseBody) SetResult(v *GetRoomListResponseBodyResult) *GetRoomListResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetRoomListResponseBody) SetResponseSuccess(v bool) *GetRoomListResponseBody {
+	s.ResponseSuccess = &v
+	return s
+}
+
+func (s *GetRoomListResponseBody) SetErrorCode(v string) *GetRoomListResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetRoomListResponseBody) SetErrorMsg(v string) *GetRoomListResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+type GetRoomListResponseBodyResult struct {
+	// 租户下的房间列表总数
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// 是否还有下一页房间列表
+	HasMore *bool `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
+	// 租户下的房间列表基础信息
+	RoomInfoList []*GetRoomListResponseBodyResultRoomInfoList `json:"RoomInfoList,omitempty" xml:"RoomInfoList,omitempty" type:"Repeated"`
+}
+
+func (s GetRoomListResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRoomListResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetRoomListResponseBodyResult) SetTotal(v int64) *GetRoomListResponseBodyResult {
+	s.Total = &v
+	return s
+}
+
+func (s *GetRoomListResponseBodyResult) SetHasMore(v bool) *GetRoomListResponseBodyResult {
+	s.HasMore = &v
+	return s
+}
+
+func (s *GetRoomListResponseBodyResult) SetRoomInfoList(v []*GetRoomListResponseBodyResultRoomInfoList) *GetRoomListResponseBodyResult {
+	s.RoomInfoList = v
+	return s
+}
+
+type GetRoomListResponseBodyResultRoomInfoList struct {
+	// 房间id
+	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	// 房间标题名字
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// 房主的用户id
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// 业务类型
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// 应用id，同appId
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+}
+
+func (s GetRoomListResponseBodyResultRoomInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRoomListResponseBodyResultRoomInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *GetRoomListResponseBodyResultRoomInfoList) SetRoomId(v string) *GetRoomListResponseBodyResultRoomInfoList {
+	s.RoomId = &v
+	return s
+}
+
+func (s *GetRoomListResponseBodyResultRoomInfoList) SetTitle(v string) *GetRoomListResponseBodyResultRoomInfoList {
+	s.Title = &v
+	return s
+}
+
+func (s *GetRoomListResponseBodyResultRoomInfoList) SetOwnerId(v string) *GetRoomListResponseBodyResultRoomInfoList {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetRoomListResponseBodyResultRoomInfoList) SetBizType(v string) *GetRoomListResponseBodyResultRoomInfoList {
+	s.BizType = &v
+	return s
+}
+
+func (s *GetRoomListResponseBodyResultRoomInfoList) SetDomain(v string) *GetRoomListResponseBodyResultRoomInfoList {
+	s.Domain = &v
+	return s
+}
+
+type GetRoomListResponse struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetRoomListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetRoomListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRoomListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetRoomListResponse) SetHeaders(v map[string]*string) *GetRoomListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetRoomListResponse) SetBody(v *GetRoomListResponseBody) *GetRoomListResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -761,6 +1172,62 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateInstanceResponse{}
 	_body, _err := client.CreateInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetRoomDetailWithOptions(request *GetRoomDetailRequest, runtime *util.RuntimeOptions) (_result *GetRoomDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetRoomDetailResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetRoomDetail"), tea.String("2021-05-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetRoomDetail(request *GetRoomDetailRequest) (_result *GetRoomDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetRoomDetailResponse{}
+	_body, _err := client.GetRoomDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetRoomListWithOptions(request *GetRoomListRequest, runtime *util.RuntimeOptions) (_result *GetRoomListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetRoomListResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetRoomList"), tea.String("2021-05-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetRoomList(request *GetRoomListRequest) (_result *GetRoomListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetRoomListResponse{}
+	_body, _err := client.GetRoomListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
