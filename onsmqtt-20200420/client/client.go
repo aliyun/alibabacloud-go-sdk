@@ -47,8 +47,8 @@ func (s *ApplyTokenRequest) SetActions(v string) *ApplyTokenRequest {
 }
 
 type ApplyTokenResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Token     *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ApplyTokenResponseBody) String() string {
@@ -59,13 +59,13 @@ func (s ApplyTokenResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ApplyTokenResponseBody) SetRequestId(v string) *ApplyTokenResponseBody {
-	s.RequestId = &v
+func (s *ApplyTokenResponseBody) SetToken(v string) *ApplyTokenResponseBody {
+	s.Token = &v
 	return s
 }
 
-func (s *ApplyTokenResponseBody) SetToken(v string) *ApplyTokenResponseBody {
-	s.Token = &v
+func (s *ApplyTokenResponseBody) SetRequestId(v string) *ApplyTokenResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -468,10 +468,10 @@ func (s *ListGroupIdResponseBody) SetData(v []*ListGroupIdResponseBodyData) *Lis
 
 type ListGroupIdResponseBodyData struct {
 	UpdateTime        *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	IndependentNaming *bool   `json:"IndependentNaming,omitempty" xml:"IndependentNaming,omitempty"`
 	GroupId           *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	CreateTime        *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s ListGroupIdResponseBodyData) String() string {
@@ -487,6 +487,11 @@ func (s *ListGroupIdResponseBodyData) SetUpdateTime(v int64) *ListGroupIdRespons
 	return s
 }
 
+func (s *ListGroupIdResponseBodyData) SetInstanceId(v string) *ListGroupIdResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
 func (s *ListGroupIdResponseBodyData) SetIndependentNaming(v bool) *ListGroupIdResponseBodyData {
 	s.IndependentNaming = &v
 	return s
@@ -499,11 +504,6 @@ func (s *ListGroupIdResponseBodyData) SetGroupId(v string) *ListGroupIdResponseB
 
 func (s *ListGroupIdResponseBodyData) SetCreateTime(v int64) *ListGroupIdResponseBodyData {
 	s.CreateTime = &v
-	return s
-}
-
-func (s *ListGroupIdResponseBodyData) SetInstanceId(v string) *ListGroupIdResponseBodyData {
-	s.InstanceId = &v
 	return s
 }
 
@@ -526,6 +526,650 @@ func (s *ListGroupIdResponse) SetHeaders(v map[string]*string) *ListGroupIdRespo
 }
 
 func (s *ListGroupIdResponse) SetBody(v *ListGroupIdResponseBody) *ListGroupIdResponse {
+	s.Body = v
+	return s
+}
+
+type QueryMqttTraceDeviceRequest struct {
+	MqttRegionId *string `json:"MqttRegionId,omitempty" xml:"MqttRegionId,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Reverse      *bool   `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
+	ClientId     *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	BeginTime    *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	EndTime      *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	CurrentPage  *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s QueryMqttTraceDeviceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMqttTraceDeviceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMqttTraceDeviceRequest) SetMqttRegionId(v string) *QueryMqttTraceDeviceRequest {
+	s.MqttRegionId = &v
+	return s
+}
+
+func (s *QueryMqttTraceDeviceRequest) SetInstanceId(v string) *QueryMqttTraceDeviceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *QueryMqttTraceDeviceRequest) SetReverse(v bool) *QueryMqttTraceDeviceRequest {
+	s.Reverse = &v
+	return s
+}
+
+func (s *QueryMqttTraceDeviceRequest) SetClientId(v string) *QueryMqttTraceDeviceRequest {
+	s.ClientId = &v
+	return s
+}
+
+func (s *QueryMqttTraceDeviceRequest) SetBeginTime(v int64) *QueryMqttTraceDeviceRequest {
+	s.BeginTime = &v
+	return s
+}
+
+func (s *QueryMqttTraceDeviceRequest) SetEndTime(v int64) *QueryMqttTraceDeviceRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *QueryMqttTraceDeviceRequest) SetCurrentPage(v int32) *QueryMqttTraceDeviceRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *QueryMqttTraceDeviceRequest) SetPageSize(v int32) *QueryMqttTraceDeviceRequest {
+	s.PageSize = &v
+	return s
+}
+
+type QueryMqttTraceDeviceResponseBody struct {
+	CurrentPage    *int32                                            `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	RequestId      *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageSize       *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total          *int64                                            `json:"Total,omitempty" xml:"Total,omitempty"`
+	DeviceInfoList []*QueryMqttTraceDeviceResponseBodyDeviceInfoList `json:"DeviceInfoList,omitempty" xml:"DeviceInfoList,omitempty" type:"Repeated"`
+}
+
+func (s QueryMqttTraceDeviceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMqttTraceDeviceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMqttTraceDeviceResponseBody) SetCurrentPage(v int32) *QueryMqttTraceDeviceResponseBody {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *QueryMqttTraceDeviceResponseBody) SetRequestId(v string) *QueryMqttTraceDeviceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryMqttTraceDeviceResponseBody) SetPageSize(v int32) *QueryMqttTraceDeviceResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryMqttTraceDeviceResponseBody) SetTotal(v int64) *QueryMqttTraceDeviceResponseBody {
+	s.Total = &v
+	return s
+}
+
+func (s *QueryMqttTraceDeviceResponseBody) SetDeviceInfoList(v []*QueryMqttTraceDeviceResponseBodyDeviceInfoList) *QueryMqttTraceDeviceResponseBody {
+	s.DeviceInfoList = v
+	return s
+}
+
+type QueryMqttTraceDeviceResponseBodyDeviceInfoList struct {
+	ChannelId  *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	Time       *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	ActionCode *string `json:"ActionCode,omitempty" xml:"ActionCode,omitempty"`
+	Action     *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	ActionInfo *string `json:"ActionInfo,omitempty" xml:"ActionInfo,omitempty"`
+}
+
+func (s QueryMqttTraceDeviceResponseBodyDeviceInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMqttTraceDeviceResponseBodyDeviceInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMqttTraceDeviceResponseBodyDeviceInfoList) SetChannelId(v string) *QueryMqttTraceDeviceResponseBodyDeviceInfoList {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *QueryMqttTraceDeviceResponseBodyDeviceInfoList) SetTime(v string) *QueryMqttTraceDeviceResponseBodyDeviceInfoList {
+	s.Time = &v
+	return s
+}
+
+func (s *QueryMqttTraceDeviceResponseBodyDeviceInfoList) SetActionCode(v string) *QueryMqttTraceDeviceResponseBodyDeviceInfoList {
+	s.ActionCode = &v
+	return s
+}
+
+func (s *QueryMqttTraceDeviceResponseBodyDeviceInfoList) SetAction(v string) *QueryMqttTraceDeviceResponseBodyDeviceInfoList {
+	s.Action = &v
+	return s
+}
+
+func (s *QueryMqttTraceDeviceResponseBodyDeviceInfoList) SetActionInfo(v string) *QueryMqttTraceDeviceResponseBodyDeviceInfoList {
+	s.ActionInfo = &v
+	return s
+}
+
+type QueryMqttTraceDeviceResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QueryMqttTraceDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryMqttTraceDeviceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMqttTraceDeviceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMqttTraceDeviceResponse) SetHeaders(v map[string]*string) *QueryMqttTraceDeviceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryMqttTraceDeviceResponse) SetBody(v *QueryMqttTraceDeviceResponseBody) *QueryMqttTraceDeviceResponse {
+	s.Body = v
+	return s
+}
+
+type QueryMqttTraceMessageOfClientRequest struct {
+	MqttRegionId *string `json:"MqttRegionId,omitempty" xml:"MqttRegionId,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ClientId     *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	BeginTime    *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	EndTime      *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	CurrentPage  *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Reverse      *bool   `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
+}
+
+func (s QueryMqttTraceMessageOfClientRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMqttTraceMessageOfClientRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMqttTraceMessageOfClientRequest) SetMqttRegionId(v string) *QueryMqttTraceMessageOfClientRequest {
+	s.MqttRegionId = &v
+	return s
+}
+
+func (s *QueryMqttTraceMessageOfClientRequest) SetInstanceId(v string) *QueryMqttTraceMessageOfClientRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *QueryMqttTraceMessageOfClientRequest) SetClientId(v string) *QueryMqttTraceMessageOfClientRequest {
+	s.ClientId = &v
+	return s
+}
+
+func (s *QueryMqttTraceMessageOfClientRequest) SetBeginTime(v int64) *QueryMqttTraceMessageOfClientRequest {
+	s.BeginTime = &v
+	return s
+}
+
+func (s *QueryMqttTraceMessageOfClientRequest) SetEndTime(v int64) *QueryMqttTraceMessageOfClientRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *QueryMqttTraceMessageOfClientRequest) SetCurrentPage(v int32) *QueryMqttTraceMessageOfClientRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *QueryMqttTraceMessageOfClientRequest) SetPageSize(v int32) *QueryMqttTraceMessageOfClientRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryMqttTraceMessageOfClientRequest) SetReverse(v bool) *QueryMqttTraceMessageOfClientRequest {
+	s.Reverse = &v
+	return s
+}
+
+type QueryMqttTraceMessageOfClientResponseBody struct {
+	CurrentPage         *int32                                                          `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	RequestId           *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageSize            *int32                                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total               *int64                                                          `json:"Total,omitempty" xml:"Total,omitempty"`
+	MessageOfClientList []*QueryMqttTraceMessageOfClientResponseBodyMessageOfClientList `json:"MessageOfClientList,omitempty" xml:"MessageOfClientList,omitempty" type:"Repeated"`
+}
+
+func (s QueryMqttTraceMessageOfClientResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMqttTraceMessageOfClientResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMqttTraceMessageOfClientResponseBody) SetCurrentPage(v int32) *QueryMqttTraceMessageOfClientResponseBody {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *QueryMqttTraceMessageOfClientResponseBody) SetRequestId(v string) *QueryMqttTraceMessageOfClientResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryMqttTraceMessageOfClientResponseBody) SetPageSize(v int32) *QueryMqttTraceMessageOfClientResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryMqttTraceMessageOfClientResponseBody) SetTotal(v int64) *QueryMqttTraceMessageOfClientResponseBody {
+	s.Total = &v
+	return s
+}
+
+func (s *QueryMqttTraceMessageOfClientResponseBody) SetMessageOfClientList(v []*QueryMqttTraceMessageOfClientResponseBodyMessageOfClientList) *QueryMqttTraceMessageOfClientResponseBody {
+	s.MessageOfClientList = v
+	return s
+}
+
+type QueryMqttTraceMessageOfClientResponseBodyMessageOfClientList struct {
+	Time       *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	Action     *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	ActionCode *string `json:"ActionCode,omitempty" xml:"ActionCode,omitempty"`
+	ActionInfo *string `json:"ActionInfo,omitempty" xml:"ActionInfo,omitempty"`
+	MsgId      *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
+	ClientId   *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+}
+
+func (s QueryMqttTraceMessageOfClientResponseBodyMessageOfClientList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMqttTraceMessageOfClientResponseBodyMessageOfClientList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMqttTraceMessageOfClientResponseBodyMessageOfClientList) SetTime(v string) *QueryMqttTraceMessageOfClientResponseBodyMessageOfClientList {
+	s.Time = &v
+	return s
+}
+
+func (s *QueryMqttTraceMessageOfClientResponseBodyMessageOfClientList) SetAction(v string) *QueryMqttTraceMessageOfClientResponseBodyMessageOfClientList {
+	s.Action = &v
+	return s
+}
+
+func (s *QueryMqttTraceMessageOfClientResponseBodyMessageOfClientList) SetActionCode(v string) *QueryMqttTraceMessageOfClientResponseBodyMessageOfClientList {
+	s.ActionCode = &v
+	return s
+}
+
+func (s *QueryMqttTraceMessageOfClientResponseBodyMessageOfClientList) SetActionInfo(v string) *QueryMqttTraceMessageOfClientResponseBodyMessageOfClientList {
+	s.ActionInfo = &v
+	return s
+}
+
+func (s *QueryMqttTraceMessageOfClientResponseBodyMessageOfClientList) SetMsgId(v string) *QueryMqttTraceMessageOfClientResponseBodyMessageOfClientList {
+	s.MsgId = &v
+	return s
+}
+
+func (s *QueryMqttTraceMessageOfClientResponseBodyMessageOfClientList) SetClientId(v string) *QueryMqttTraceMessageOfClientResponseBodyMessageOfClientList {
+	s.ClientId = &v
+	return s
+}
+
+type QueryMqttTraceMessageOfClientResponse struct {
+	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QueryMqttTraceMessageOfClientResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryMqttTraceMessageOfClientResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMqttTraceMessageOfClientResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMqttTraceMessageOfClientResponse) SetHeaders(v map[string]*string) *QueryMqttTraceMessageOfClientResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryMqttTraceMessageOfClientResponse) SetBody(v *QueryMqttTraceMessageOfClientResponseBody) *QueryMqttTraceMessageOfClientResponse {
+	s.Body = v
+	return s
+}
+
+type QueryMqttTraceMessagePublishRequest struct {
+	MqttRegionId *string `json:"MqttRegionId,omitempty" xml:"MqttRegionId,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MsgId        *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
+	BeginTime    *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	EndTime      *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+}
+
+func (s QueryMqttTraceMessagePublishRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMqttTraceMessagePublishRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMqttTraceMessagePublishRequest) SetMqttRegionId(v string) *QueryMqttTraceMessagePublishRequest {
+	s.MqttRegionId = &v
+	return s
+}
+
+func (s *QueryMqttTraceMessagePublishRequest) SetInstanceId(v string) *QueryMqttTraceMessagePublishRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *QueryMqttTraceMessagePublishRequest) SetMsgId(v string) *QueryMqttTraceMessagePublishRequest {
+	s.MsgId = &v
+	return s
+}
+
+func (s *QueryMqttTraceMessagePublishRequest) SetBeginTime(v int64) *QueryMqttTraceMessagePublishRequest {
+	s.BeginTime = &v
+	return s
+}
+
+func (s *QueryMqttTraceMessagePublishRequest) SetEndTime(v int64) *QueryMqttTraceMessagePublishRequest {
+	s.EndTime = &v
+	return s
+}
+
+type QueryMqttTraceMessagePublishResponseBody struct {
+	RequestId         *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	MessageTraceLists []*QueryMqttTraceMessagePublishResponseBodyMessageTraceLists `json:"MessageTraceLists,omitempty" xml:"MessageTraceLists,omitempty" type:"Repeated"`
+}
+
+func (s QueryMqttTraceMessagePublishResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMqttTraceMessagePublishResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMqttTraceMessagePublishResponseBody) SetRequestId(v string) *QueryMqttTraceMessagePublishResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryMqttTraceMessagePublishResponseBody) SetMessageTraceLists(v []*QueryMqttTraceMessagePublishResponseBodyMessageTraceLists) *QueryMqttTraceMessagePublishResponseBody {
+	s.MessageTraceLists = v
+	return s
+}
+
+type QueryMqttTraceMessagePublishResponseBodyMessageTraceLists struct {
+	Time       *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	Action     *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	ActionCode *string `json:"ActionCode,omitempty" xml:"ActionCode,omitempty"`
+	ActionInfo *string `json:"ActionInfo,omitempty" xml:"ActionInfo,omitempty"`
+	MsgId      *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
+	ClientId   *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+}
+
+func (s QueryMqttTraceMessagePublishResponseBodyMessageTraceLists) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMqttTraceMessagePublishResponseBodyMessageTraceLists) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMqttTraceMessagePublishResponseBodyMessageTraceLists) SetTime(v string) *QueryMqttTraceMessagePublishResponseBodyMessageTraceLists {
+	s.Time = &v
+	return s
+}
+
+func (s *QueryMqttTraceMessagePublishResponseBodyMessageTraceLists) SetAction(v string) *QueryMqttTraceMessagePublishResponseBodyMessageTraceLists {
+	s.Action = &v
+	return s
+}
+
+func (s *QueryMqttTraceMessagePublishResponseBodyMessageTraceLists) SetActionCode(v string) *QueryMqttTraceMessagePublishResponseBodyMessageTraceLists {
+	s.ActionCode = &v
+	return s
+}
+
+func (s *QueryMqttTraceMessagePublishResponseBodyMessageTraceLists) SetActionInfo(v string) *QueryMqttTraceMessagePublishResponseBodyMessageTraceLists {
+	s.ActionInfo = &v
+	return s
+}
+
+func (s *QueryMqttTraceMessagePublishResponseBodyMessageTraceLists) SetMsgId(v string) *QueryMqttTraceMessagePublishResponseBodyMessageTraceLists {
+	s.MsgId = &v
+	return s
+}
+
+func (s *QueryMqttTraceMessagePublishResponseBodyMessageTraceLists) SetClientId(v string) *QueryMqttTraceMessagePublishResponseBodyMessageTraceLists {
+	s.ClientId = &v
+	return s
+}
+
+type QueryMqttTraceMessagePublishResponse struct {
+	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QueryMqttTraceMessagePublishResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryMqttTraceMessagePublishResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMqttTraceMessagePublishResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMqttTraceMessagePublishResponse) SetHeaders(v map[string]*string) *QueryMqttTraceMessagePublishResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryMqttTraceMessagePublishResponse) SetBody(v *QueryMqttTraceMessagePublishResponseBody) *QueryMqttTraceMessagePublishResponse {
+	s.Body = v
+	return s
+}
+
+type QueryMqttTraceMessageSubscribeRequest struct {
+	MqttRegionId *string `json:"MqttRegionId,omitempty" xml:"MqttRegionId,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Reverse      *bool   `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
+	ClientId     *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	BeginTime    *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	EndTime      *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	CurrentPage  *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	MsgId        *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
+}
+
+func (s QueryMqttTraceMessageSubscribeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMqttTraceMessageSubscribeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMqttTraceMessageSubscribeRequest) SetMqttRegionId(v string) *QueryMqttTraceMessageSubscribeRequest {
+	s.MqttRegionId = &v
+	return s
+}
+
+func (s *QueryMqttTraceMessageSubscribeRequest) SetInstanceId(v string) *QueryMqttTraceMessageSubscribeRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *QueryMqttTraceMessageSubscribeRequest) SetReverse(v bool) *QueryMqttTraceMessageSubscribeRequest {
+	s.Reverse = &v
+	return s
+}
+
+func (s *QueryMqttTraceMessageSubscribeRequest) SetClientId(v string) *QueryMqttTraceMessageSubscribeRequest {
+	s.ClientId = &v
+	return s
+}
+
+func (s *QueryMqttTraceMessageSubscribeRequest) SetBeginTime(v int64) *QueryMqttTraceMessageSubscribeRequest {
+	s.BeginTime = &v
+	return s
+}
+
+func (s *QueryMqttTraceMessageSubscribeRequest) SetEndTime(v int64) *QueryMqttTraceMessageSubscribeRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *QueryMqttTraceMessageSubscribeRequest) SetCurrentPage(v int32) *QueryMqttTraceMessageSubscribeRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *QueryMqttTraceMessageSubscribeRequest) SetPageSize(v int32) *QueryMqttTraceMessageSubscribeRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryMqttTraceMessageSubscribeRequest) SetMsgId(v string) *QueryMqttTraceMessageSubscribeRequest {
+	s.MsgId = &v
+	return s
+}
+
+type QueryMqttTraceMessageSubscribeResponseBody struct {
+	CurrentPage       *int32                                                         `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	RequestId         *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageSize          *int32                                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total             *int64                                                         `json:"Total,omitempty" xml:"Total,omitempty"`
+	MessageTraceLists []*QueryMqttTraceMessageSubscribeResponseBodyMessageTraceLists `json:"MessageTraceLists,omitempty" xml:"MessageTraceLists,omitempty" type:"Repeated"`
+}
+
+func (s QueryMqttTraceMessageSubscribeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMqttTraceMessageSubscribeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMqttTraceMessageSubscribeResponseBody) SetCurrentPage(v int32) *QueryMqttTraceMessageSubscribeResponseBody {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *QueryMqttTraceMessageSubscribeResponseBody) SetRequestId(v string) *QueryMqttTraceMessageSubscribeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryMqttTraceMessageSubscribeResponseBody) SetPageSize(v int32) *QueryMqttTraceMessageSubscribeResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryMqttTraceMessageSubscribeResponseBody) SetTotal(v int64) *QueryMqttTraceMessageSubscribeResponseBody {
+	s.Total = &v
+	return s
+}
+
+func (s *QueryMqttTraceMessageSubscribeResponseBody) SetMessageTraceLists(v []*QueryMqttTraceMessageSubscribeResponseBodyMessageTraceLists) *QueryMqttTraceMessageSubscribeResponseBody {
+	s.MessageTraceLists = v
+	return s
+}
+
+type QueryMqttTraceMessageSubscribeResponseBodyMessageTraceLists struct {
+	Time       *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	Action     *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	ActionCode *string `json:"ActionCode,omitempty" xml:"ActionCode,omitempty"`
+	ActionInfo *string `json:"ActionInfo,omitempty" xml:"ActionInfo,omitempty"`
+	MsgId      *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
+	ClientId   *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+}
+
+func (s QueryMqttTraceMessageSubscribeResponseBodyMessageTraceLists) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMqttTraceMessageSubscribeResponseBodyMessageTraceLists) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMqttTraceMessageSubscribeResponseBodyMessageTraceLists) SetTime(v string) *QueryMqttTraceMessageSubscribeResponseBodyMessageTraceLists {
+	s.Time = &v
+	return s
+}
+
+func (s *QueryMqttTraceMessageSubscribeResponseBodyMessageTraceLists) SetAction(v string) *QueryMqttTraceMessageSubscribeResponseBodyMessageTraceLists {
+	s.Action = &v
+	return s
+}
+
+func (s *QueryMqttTraceMessageSubscribeResponseBodyMessageTraceLists) SetActionCode(v string) *QueryMqttTraceMessageSubscribeResponseBodyMessageTraceLists {
+	s.ActionCode = &v
+	return s
+}
+
+func (s *QueryMqttTraceMessageSubscribeResponseBodyMessageTraceLists) SetActionInfo(v string) *QueryMqttTraceMessageSubscribeResponseBodyMessageTraceLists {
+	s.ActionInfo = &v
+	return s
+}
+
+func (s *QueryMqttTraceMessageSubscribeResponseBodyMessageTraceLists) SetMsgId(v string) *QueryMqttTraceMessageSubscribeResponseBodyMessageTraceLists {
+	s.MsgId = &v
+	return s
+}
+
+func (s *QueryMqttTraceMessageSubscribeResponseBodyMessageTraceLists) SetClientId(v string) *QueryMqttTraceMessageSubscribeResponseBodyMessageTraceLists {
+	s.ClientId = &v
+	return s
+}
+
+type QueryMqttTraceMessageSubscribeResponse struct {
+	Headers map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QueryMqttTraceMessageSubscribeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryMqttTraceMessageSubscribeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMqttTraceMessageSubscribeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMqttTraceMessageSubscribeResponse) SetHeaders(v map[string]*string) *QueryMqttTraceMessageSubscribeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryMqttTraceMessageSubscribeResponse) SetBody(v *QueryMqttTraceMessageSubscribeResponseBody) *QueryMqttTraceMessageSubscribeResponse {
 	s.Body = v
 	return s
 }
@@ -554,8 +1198,8 @@ func (s *QuerySessionByClientIdRequest) SetInstanceId(v string) *QuerySessionByC
 }
 
 type QuerySessionByClientIdResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	OnlineStatus *bool   `json:"OnlineStatus,omitempty" xml:"OnlineStatus,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QuerySessionByClientIdResponseBody) String() string {
@@ -566,13 +1210,13 @@ func (s QuerySessionByClientIdResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *QuerySessionByClientIdResponseBody) SetRequestId(v string) *QuerySessionByClientIdResponseBody {
-	s.RequestId = &v
+func (s *QuerySessionByClientIdResponseBody) SetOnlineStatus(v bool) *QuerySessionByClientIdResponseBody {
+	s.OnlineStatus = &v
 	return s
 }
 
-func (s *QuerySessionByClientIdResponseBody) SetOnlineStatus(v bool) *QuerySessionByClientIdResponseBody {
-	s.OnlineStatus = &v
+func (s *QuerySessionByClientIdResponseBody) SetRequestId(v string) *QuerySessionByClientIdResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -623,8 +1267,8 @@ func (s *QueryTokenRequest) SetInstanceId(v string) *QueryTokenRequest {
 }
 
 type QueryTokenResponseBody struct {
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TokenStatus *bool   `json:"TokenStatus,omitempty" xml:"TokenStatus,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryTokenResponseBody) String() string {
@@ -635,13 +1279,13 @@ func (s QueryTokenResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *QueryTokenResponseBody) SetRequestId(v string) *QueryTokenResponseBody {
-	s.RequestId = &v
+func (s *QueryTokenResponseBody) SetTokenStatus(v bool) *QueryTokenResponseBody {
+	s.TokenStatus = &v
 	return s
 }
 
-func (s *QueryTokenResponseBody) SetTokenStatus(v bool) *QueryTokenResponseBody {
-	s.TokenStatus = &v
+func (s *QueryTokenResponseBody) SetRequestId(v string) *QueryTokenResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -993,8 +1637,8 @@ func (s *SendMessageRequest) SetPayload(v string) *SendMessageRequest {
 }
 
 type SendMessageResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	MsgId     *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SendMessageResponseBody) String() string {
@@ -1005,13 +1649,13 @@ func (s SendMessageResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SendMessageResponseBody) SetRequestId(v string) *SendMessageResponseBody {
-	s.RequestId = &v
+func (s *SendMessageResponseBody) SetMsgId(v string) *SendMessageResponseBody {
+	s.MsgId = &v
 	return s
 }
 
-func (s *SendMessageResponseBody) SetMsgId(v string) *SendMessageResponseBody {
-	s.MsgId = &v
+func (s *SendMessageResponseBody) SetRequestId(v string) *SendMessageResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1309,6 +1953,118 @@ func (client *Client) ListGroupId(request *ListGroupIdRequest) (_result *ListGro
 	runtime := &util.RuntimeOptions{}
 	_result = &ListGroupIdResponse{}
 	_body, _err := client.ListGroupIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryMqttTraceDeviceWithOptions(request *QueryMqttTraceDeviceRequest, runtime *util.RuntimeOptions) (_result *QueryMqttTraceDeviceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &QueryMqttTraceDeviceResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("QueryMqttTraceDevice"), tea.String("2020-04-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryMqttTraceDevice(request *QueryMqttTraceDeviceRequest) (_result *QueryMqttTraceDeviceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryMqttTraceDeviceResponse{}
+	_body, _err := client.QueryMqttTraceDeviceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryMqttTraceMessageOfClientWithOptions(request *QueryMqttTraceMessageOfClientRequest, runtime *util.RuntimeOptions) (_result *QueryMqttTraceMessageOfClientResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &QueryMqttTraceMessageOfClientResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("QueryMqttTraceMessageOfClient"), tea.String("2020-04-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryMqttTraceMessageOfClient(request *QueryMqttTraceMessageOfClientRequest) (_result *QueryMqttTraceMessageOfClientResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryMqttTraceMessageOfClientResponse{}
+	_body, _err := client.QueryMqttTraceMessageOfClientWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryMqttTraceMessagePublishWithOptions(request *QueryMqttTraceMessagePublishRequest, runtime *util.RuntimeOptions) (_result *QueryMqttTraceMessagePublishResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &QueryMqttTraceMessagePublishResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("QueryMqttTraceMessagePublish"), tea.String("2020-04-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryMqttTraceMessagePublish(request *QueryMqttTraceMessagePublishRequest) (_result *QueryMqttTraceMessagePublishResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryMqttTraceMessagePublishResponse{}
+	_body, _err := client.QueryMqttTraceMessagePublishWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryMqttTraceMessageSubscribeWithOptions(request *QueryMqttTraceMessageSubscribeRequest, runtime *util.RuntimeOptions) (_result *QueryMqttTraceMessageSubscribeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &QueryMqttTraceMessageSubscribeResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("QueryMqttTraceMessageSubscribe"), tea.String("2020-04-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryMqttTraceMessageSubscribe(request *QueryMqttTraceMessageSubscribeRequest) (_result *QueryMqttTraceMessageSubscribeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryMqttTraceMessageSubscribeResponse{}
+	_body, _err := client.QueryMqttTraceMessageSubscribeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
