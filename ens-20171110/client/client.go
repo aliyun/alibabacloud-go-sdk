@@ -3439,6 +3439,7 @@ type RescaleDeviceServiceResponseBodyResourceDetailInfos struct {
 	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	Mac      *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	ISP      *string `json:"ISP,omitempty" xml:"ISP,omitempty"`
 }
 
 func (s RescaleDeviceServiceResponseBodyResourceDetailInfos) String() string {
@@ -3481,6 +3482,11 @@ func (s *RescaleDeviceServiceResponseBodyResourceDetailInfos) SetStatus(v string
 
 func (s *RescaleDeviceServiceResponseBodyResourceDetailInfos) SetMac(v string) *RescaleDeviceServiceResponseBodyResourceDetailInfos {
 	s.Mac = &v
+	return s
+}
+
+func (s *RescaleDeviceServiceResponseBodyResourceDetailInfos) SetISP(v string) *RescaleDeviceServiceResponseBodyResourceDetailInfos {
+	s.ISP = &v
 	return s
 }
 
@@ -8171,7 +8177,6 @@ func (s *DescribeApplicationResponse) SetBody(v *DescribeApplicationResponseBody
 }
 
 type DescribeEnsRegionIdResourceRequest struct {
-	Version       *string `json:"Version,omitempty" xml:"Version,omitempty"`
 	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OrderByParams *string `json:"OrderByParams,omitempty" xml:"OrderByParams,omitempty"`
@@ -8186,11 +8191,6 @@ func (s DescribeEnsRegionIdResourceRequest) String() string {
 
 func (s DescribeEnsRegionIdResourceRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeEnsRegionIdResourceRequest) SetVersion(v string) *DescribeEnsRegionIdResourceRequest {
-	s.Version = &v
-	return s
 }
 
 func (s *DescribeEnsRegionIdResourceRequest) SetStartTime(v string) *DescribeEnsRegionIdResourceRequest {
@@ -8288,7 +8288,7 @@ type DescribeEnsRegionIdResourceResponseBodyEnsRegionIdResourcesEnsRegionIdResou
 	EnsRegionId       *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
 	EnsRegionIdName   *string `json:"EnsRegionIdName,omitempty" xml:"EnsRegionIdName,omitempty"`
 	InstanceCount     *int32  `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	InternetBandwidth *int32  `json:"InternetBandwidth,omitempty" xml:"InternetBandwidth,omitempty"`
+	InternetBandwidth *int64  `json:"InternetBandwidth,omitempty" xml:"InternetBandwidth,omitempty"`
 	Isp               *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
 	VCpu              *int32  `json:"VCpu,omitempty" xml:"VCpu,omitempty"`
 }
@@ -8331,7 +8331,7 @@ func (s *DescribeEnsRegionIdResourceResponseBodyEnsRegionIdResourcesEnsRegionIdR
 	return s
 }
 
-func (s *DescribeEnsRegionIdResourceResponseBodyEnsRegionIdResourcesEnsRegionIdResource) SetInternetBandwidth(v int32) *DescribeEnsRegionIdResourceResponseBodyEnsRegionIdResourcesEnsRegionIdResource {
+func (s *DescribeEnsRegionIdResourceResponseBodyEnsRegionIdResourcesEnsRegionIdResource) SetInternetBandwidth(v int64) *DescribeEnsRegionIdResourceResponseBodyEnsRegionIdResourcesEnsRegionIdResource {
 	s.InternetBandwidth = &v
 	return s
 }
@@ -16261,6 +16261,7 @@ type DescribeDeviceServiceResponseBodyResourceDetailInfos struct {
 	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	Mac      *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	ISP      *string `json:"ISP,omitempty" xml:"ISP,omitempty"`
 }
 
 func (s DescribeDeviceServiceResponseBodyResourceDetailInfos) String() string {
@@ -16303,6 +16304,11 @@ func (s *DescribeDeviceServiceResponseBodyResourceDetailInfos) SetType(v string)
 
 func (s *DescribeDeviceServiceResponseBodyResourceDetailInfos) SetMac(v string) *DescribeDeviceServiceResponseBodyResourceDetailInfos {
 	s.Mac = &v
+	return s
+}
+
+func (s *DescribeDeviceServiceResponseBodyResourceDetailInfos) SetISP(v string) *DescribeDeviceServiceResponseBodyResourceDetailInfos {
+	s.ISP = &v
 	return s
 }
 
