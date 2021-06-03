@@ -11,6 +11,145 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type DescribeRegionsRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AcceptLanguage       *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+}
+
+func (s DescribeRegionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionsRequest) SetOwnerId(v int64) *DescribeRegionsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeRegionsRequest) SetResourceOwnerAccount(v string) *DescribeRegionsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeRegionsRequest) SetResourceOwnerId(v int64) *DescribeRegionsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeRegionsRequest) SetOwnerAccount(v string) *DescribeRegionsRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeRegionsRequest) SetRegionId(v string) *DescribeRegionsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeRegionsRequest) SetAcceptLanguage(v string) *DescribeRegionsRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+type DescribeRegionsResponseBody struct {
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Regions   *DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
+}
+
+func (s DescribeRegionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeRegionsResponseBody) SetRegions(v *DescribeRegionsResponseBodyRegions) *DescribeRegionsResponseBody {
+	s.Regions = v
+	return s
+}
+
+type DescribeRegionsResponseBodyRegions struct {
+	Region []*DescribeRegionsResponseBodyRegionsRegion `json:"Region,omitempty" xml:"Region,omitempty" type:"Repeated"`
+}
+
+func (s DescribeRegionsResponseBodyRegions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionsResponseBodyRegions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionsResponseBodyRegions) SetRegion(v []*DescribeRegionsResponseBodyRegionsRegion) *DescribeRegionsResponseBodyRegions {
+	s.Region = v
+	return s
+}
+
+type DescribeRegionsResponseBodyRegionsRegion struct {
+	LocalName      *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeRegionsResponseBodyRegionsRegion) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionsResponseBodyRegionsRegion) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionsResponseBodyRegionsRegion) SetLocalName(v string) *DescribeRegionsResponseBodyRegionsRegion {
+	s.LocalName = &v
+	return s
+}
+
+func (s *DescribeRegionsResponseBodyRegionsRegion) SetRegionEndpoint(v string) *DescribeRegionsResponseBodyRegionsRegion {
+	s.RegionEndpoint = &v
+	return s
+}
+
+func (s *DescribeRegionsResponseBodyRegionsRegion) SetRegionId(v string) *DescribeRegionsResponseBodyRegionsRegion {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeRegionsResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeRegionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionsResponse) SetHeaders(v map[string]*string) *DescribeRegionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *DescribeRegionsResponse {
+	s.Body = v
+	return s
+}
+
 type ListTagKeysRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -20,6 +159,7 @@ type ListTagKeysRequest struct {
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Category             *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	ResourceType         *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	TagProduct           *string `json:"TagProduct,omitempty" xml:"TagProduct,omitempty"`
 }
 
 func (s ListTagKeysRequest) String() string {
@@ -67,6 +207,11 @@ func (s *ListTagKeysRequest) SetCategory(v string) *ListTagKeysRequest {
 
 func (s *ListTagKeysRequest) SetResourceType(v string) *ListTagKeysRequest {
 	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagKeysRequest) SetTagProduct(v string) *ListTagKeysRequest {
+	s.TagProduct = &v
 	return s
 }
 
@@ -340,6 +485,7 @@ type ListTagValuesRequest struct {
 	NextToken            *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceType         *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	TagProduct           *string `json:"TagProduct,omitempty" xml:"TagProduct,omitempty"`
 }
 
 func (s ListTagValuesRequest) String() string {
@@ -387,6 +533,11 @@ func (s *ListTagValuesRequest) SetPageSize(v int32) *ListTagValuesRequest {
 
 func (s *ListTagValuesRequest) SetResourceType(v string) *ListTagValuesRequest {
 	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagValuesRequest) SetTagProduct(v string) *ListTagValuesRequest {
+	s.TagProduct = &v
 	return s
 }
 
@@ -855,6 +1006,34 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeRegionsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeRegions"), tea.String("2018-08-28"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result *DescribeRegionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeRegionsResponse{}
+	_body, _err := client.DescribeRegionsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
