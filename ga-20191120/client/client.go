@@ -11,6 +11,217 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type AddEntriesToAclRequest struct {
+	RegionId    *string                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AclId       *string                             `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AclEntries  []*AddEntriesToAclRequestAclEntries `json:"AclEntries,omitempty" xml:"AclEntries,omitempty" type:"Repeated"`
+	ClientToken *string                             `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun      *bool                               `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+}
+
+func (s AddEntriesToAclRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddEntriesToAclRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddEntriesToAclRequest) SetRegionId(v string) *AddEntriesToAclRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *AddEntriesToAclRequest) SetAclId(v string) *AddEntriesToAclRequest {
+	s.AclId = &v
+	return s
+}
+
+func (s *AddEntriesToAclRequest) SetAclEntries(v []*AddEntriesToAclRequestAclEntries) *AddEntriesToAclRequest {
+	s.AclEntries = v
+	return s
+}
+
+func (s *AddEntriesToAclRequest) SetClientToken(v string) *AddEntriesToAclRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *AddEntriesToAclRequest) SetDryRun(v bool) *AddEntriesToAclRequest {
+	s.DryRun = &v
+	return s
+}
+
+type AddEntriesToAclRequestAclEntries struct {
+	Entry            *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
+	EntryDescription *string `json:"EntryDescription,omitempty" xml:"EntryDescription,omitempty"`
+}
+
+func (s AddEntriesToAclRequestAclEntries) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddEntriesToAclRequestAclEntries) GoString() string {
+	return s.String()
+}
+
+func (s *AddEntriesToAclRequestAclEntries) SetEntry(v string) *AddEntriesToAclRequestAclEntries {
+	s.Entry = &v
+	return s
+}
+
+func (s *AddEntriesToAclRequestAclEntries) SetEntryDescription(v string) *AddEntriesToAclRequestAclEntries {
+	s.EntryDescription = &v
+	return s
+}
+
+type AddEntriesToAclResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	AclId     *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+}
+
+func (s AddEntriesToAclResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddEntriesToAclResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddEntriesToAclResponseBody) SetRequestId(v string) *AddEntriesToAclResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddEntriesToAclResponseBody) SetAclId(v string) *AddEntriesToAclResponseBody {
+	s.AclId = &v
+	return s
+}
+
+type AddEntriesToAclResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *AddEntriesToAclResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddEntriesToAclResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddEntriesToAclResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddEntriesToAclResponse) SetHeaders(v map[string]*string) *AddEntriesToAclResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddEntriesToAclResponse) SetBody(v *AddEntriesToAclResponseBody) *AddEntriesToAclResponse {
+	s.Body = v
+	return s
+}
+
+type AssociateAclsWithListenerRequest struct {
+	RegionId    *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AclIds      []*string `json:"AclIds,omitempty" xml:"AclIds,omitempty" type:"Repeated"`
+	ListenerId  *string   `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	AclType     *string   `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	ClientToken *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun      *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+}
+
+func (s AssociateAclsWithListenerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssociateAclsWithListenerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AssociateAclsWithListenerRequest) SetRegionId(v string) *AssociateAclsWithListenerRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *AssociateAclsWithListenerRequest) SetAclIds(v []*string) *AssociateAclsWithListenerRequest {
+	s.AclIds = v
+	return s
+}
+
+func (s *AssociateAclsWithListenerRequest) SetListenerId(v string) *AssociateAclsWithListenerRequest {
+	s.ListenerId = &v
+	return s
+}
+
+func (s *AssociateAclsWithListenerRequest) SetAclType(v string) *AssociateAclsWithListenerRequest {
+	s.AclType = &v
+	return s
+}
+
+func (s *AssociateAclsWithListenerRequest) SetClientToken(v string) *AssociateAclsWithListenerRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *AssociateAclsWithListenerRequest) SetDryRun(v bool) *AssociateAclsWithListenerRequest {
+	s.DryRun = &v
+	return s
+}
+
+type AssociateAclsWithListenerResponseBody struct {
+	// Id of the request
+	RequestId  *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	AclIds     []*string `json:"AclIds,omitempty" xml:"AclIds,omitempty" type:"Repeated"`
+	ListenerId *string   `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+}
+
+func (s AssociateAclsWithListenerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssociateAclsWithListenerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AssociateAclsWithListenerResponseBody) SetRequestId(v string) *AssociateAclsWithListenerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AssociateAclsWithListenerResponseBody) SetAclIds(v []*string) *AssociateAclsWithListenerResponseBody {
+	s.AclIds = v
+	return s
+}
+
+func (s *AssociateAclsWithListenerResponseBody) SetListenerId(v string) *AssociateAclsWithListenerResponseBody {
+	s.ListenerId = &v
+	return s
+}
+
+type AssociateAclsWithListenerResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *AssociateAclsWithListenerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AssociateAclsWithListenerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssociateAclsWithListenerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AssociateAclsWithListenerResponse) SetHeaders(v map[string]*string) *AssociateAclsWithListenerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AssociateAclsWithListenerResponse) SetBody(v *AssociateAclsWithListenerResponseBody) *AssociateAclsWithListenerResponse {
+	s.Body = v
+	return s
+}
+
 type AttachDdosToAcceleratorRequest struct {
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	DdosId        *string `json:"DdosId,omitempty" xml:"DdosId,omitempty"`
@@ -94,6 +305,106 @@ func (s *AttachDdosToAcceleratorResponse) SetHeaders(v map[string]*string) *Atta
 }
 
 func (s *AttachDdosToAcceleratorResponse) SetBody(v *AttachDdosToAcceleratorResponseBody) *AttachDdosToAcceleratorResponse {
+	s.Body = v
+	return s
+}
+
+type AttachLogStoreToEndpointGroupRequest struct {
+	RegionId         *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SlsProjectName   *string   `json:"SlsProjectName,omitempty" xml:"SlsProjectName,omitempty"`
+	SlsLogStoreName  *string   `json:"SlsLogStoreName,omitempty" xml:"SlsLogStoreName,omitempty"`
+	AcceleratorId    *string   `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	ListenerId       *string   `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	SlsRegionId      *string   `json:"SlsRegionId,omitempty" xml:"SlsRegionId,omitempty"`
+	EndpointGroupIds []*string `json:"EndpointGroupIds,omitempty" xml:"EndpointGroupIds,omitempty" type:"Repeated"`
+	ClientToken      *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+}
+
+func (s AttachLogStoreToEndpointGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachLogStoreToEndpointGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AttachLogStoreToEndpointGroupRequest) SetRegionId(v string) *AttachLogStoreToEndpointGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *AttachLogStoreToEndpointGroupRequest) SetSlsProjectName(v string) *AttachLogStoreToEndpointGroupRequest {
+	s.SlsProjectName = &v
+	return s
+}
+
+func (s *AttachLogStoreToEndpointGroupRequest) SetSlsLogStoreName(v string) *AttachLogStoreToEndpointGroupRequest {
+	s.SlsLogStoreName = &v
+	return s
+}
+
+func (s *AttachLogStoreToEndpointGroupRequest) SetAcceleratorId(v string) *AttachLogStoreToEndpointGroupRequest {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *AttachLogStoreToEndpointGroupRequest) SetListenerId(v string) *AttachLogStoreToEndpointGroupRequest {
+	s.ListenerId = &v
+	return s
+}
+
+func (s *AttachLogStoreToEndpointGroupRequest) SetSlsRegionId(v string) *AttachLogStoreToEndpointGroupRequest {
+	s.SlsRegionId = &v
+	return s
+}
+
+func (s *AttachLogStoreToEndpointGroupRequest) SetEndpointGroupIds(v []*string) *AttachLogStoreToEndpointGroupRequest {
+	s.EndpointGroupIds = v
+	return s
+}
+
+func (s *AttachLogStoreToEndpointGroupRequest) SetClientToken(v string) *AttachLogStoreToEndpointGroupRequest {
+	s.ClientToken = &v
+	return s
+}
+
+type AttachLogStoreToEndpointGroupResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AttachLogStoreToEndpointGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachLogStoreToEndpointGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AttachLogStoreToEndpointGroupResponseBody) SetRequestId(v string) *AttachLogStoreToEndpointGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AttachLogStoreToEndpointGroupResponse struct {
+	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *AttachLogStoreToEndpointGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AttachLogStoreToEndpointGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachLogStoreToEndpointGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AttachLogStoreToEndpointGroupResponse) SetHeaders(v map[string]*string) *AttachLogStoreToEndpointGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AttachLogStoreToEndpointGroupResponse) SetBody(v *AttachLogStoreToEndpointGroupResponseBody) *AttachLogStoreToEndpointGroupResponse {
 	s.Body = v
 	return s
 }
@@ -360,15 +671,14 @@ func (s *ConfigEndpointProbeResponse) SetBody(v *ConfigEndpointProbeResponseBody
 }
 
 type CreateAcceleratorRequest struct {
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ClientToken       *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Duration          *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	PricingCycle      *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	Spec              *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	AutoPay           *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	AutoUseCoupon     *string `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
-	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Duration      *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	PricingCycle  *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	Spec          *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	AutoPay       *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AutoUseCoupon *string `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
 }
 
 func (s CreateAcceleratorRequest) String() string {
@@ -416,11 +726,6 @@ func (s *CreateAcceleratorRequest) SetAutoPay(v bool) *CreateAcceleratorRequest 
 
 func (s *CreateAcceleratorRequest) SetAutoUseCoupon(v string) *CreateAcceleratorRequest {
 	s.AutoUseCoupon = &v
-	return s
-}
-
-func (s *CreateAcceleratorRequest) SetPromotionOptionNo(v string) *CreateAcceleratorRequest {
-	s.PromotionOptionNo = &v
 	return s
 }
 
@@ -476,6 +781,123 @@ func (s *CreateAcceleratorResponse) SetBody(v *CreateAcceleratorResponseBody) *C
 	return s
 }
 
+type CreateAclRequest struct {
+	RegionId         *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AclName          *string                       `json:"AclName,omitempty" xml:"AclName,omitempty"`
+	AddressIPVersion *string                       `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
+	AclEntries       []*CreateAclRequestAclEntries `json:"AclEntries,omitempty" xml:"AclEntries,omitempty" type:"Repeated"`
+	ClientToken      *string                       `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun           *bool                         `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+}
+
+func (s CreateAclRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAclRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAclRequest) SetRegionId(v string) *CreateAclRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateAclRequest) SetAclName(v string) *CreateAclRequest {
+	s.AclName = &v
+	return s
+}
+
+func (s *CreateAclRequest) SetAddressIPVersion(v string) *CreateAclRequest {
+	s.AddressIPVersion = &v
+	return s
+}
+
+func (s *CreateAclRequest) SetAclEntries(v []*CreateAclRequestAclEntries) *CreateAclRequest {
+	s.AclEntries = v
+	return s
+}
+
+func (s *CreateAclRequest) SetClientToken(v string) *CreateAclRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateAclRequest) SetDryRun(v bool) *CreateAclRequest {
+	s.DryRun = &v
+	return s
+}
+
+type CreateAclRequestAclEntries struct {
+	Entry            *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
+	EntryDescription *string `json:"EntryDescription,omitempty" xml:"EntryDescription,omitempty"`
+}
+
+func (s CreateAclRequestAclEntries) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAclRequestAclEntries) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAclRequestAclEntries) SetEntry(v string) *CreateAclRequestAclEntries {
+	s.Entry = &v
+	return s
+}
+
+func (s *CreateAclRequestAclEntries) SetEntryDescription(v string) *CreateAclRequestAclEntries {
+	s.EntryDescription = &v
+	return s
+}
+
+type CreateAclResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	AclId     *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+}
+
+func (s CreateAclResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAclResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAclResponseBody) SetRequestId(v string) *CreateAclResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateAclResponseBody) SetAclId(v string) *CreateAclResponseBody {
+	s.AclId = &v
+	return s
+}
+
+type CreateAclResponse struct {
+	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateAclResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateAclResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAclResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAclResponse) SetHeaders(v map[string]*string) *CreateAclResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAclResponse) SetBody(v *CreateAclResponseBody) *CreateAclResponse {
+	s.Body = v
+	return s
+}
+
 type CreateBandwidthPackageRequest struct {
 	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Bandwidth              *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
@@ -491,7 +913,6 @@ type CreateBandwidthPackageRequest struct {
 	ChargeType             *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	CbnGeographicRegionIdA *string `json:"CbnGeographicRegionIdA,omitempty" xml:"CbnGeographicRegionIdA,omitempty"`
 	CbnGeographicRegionIdB *string `json:"CbnGeographicRegionIdB,omitempty" xml:"CbnGeographicRegionIdB,omitempty"`
-	PromotionOptionNo      *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
 }
 
 func (s CreateBandwidthPackageRequest) String() string {
@@ -569,11 +990,6 @@ func (s *CreateBandwidthPackageRequest) SetCbnGeographicRegionIdA(v string) *Cre
 
 func (s *CreateBandwidthPackageRequest) SetCbnGeographicRegionIdB(v string) *CreateBandwidthPackageRequest {
 	s.CbnGeographicRegionIdB = &v
-	return s
-}
-
-func (s *CreateBandwidthPackageRequest) SetPromotionOptionNo(v string) *CreateBandwidthPackageRequest {
-	s.PromotionOptionNo = &v
 	return s
 }
 
@@ -1273,8 +1689,6 @@ type CreateListenerRequest struct {
 	ProxyProtocol  *bool                                `json:"ProxyProtocol,omitempty" xml:"ProxyProtocol,omitempty"`
 	PortRanges     []*CreateListenerRequestPortRanges   `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
 	Certificates   []*CreateListenerRequestCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
-	// 转发端口迁移至终端节点组portoverride
-	BackendPorts []*CreateListenerRequestBackendPorts `json:"BackendPorts,omitempty" xml:"BackendPorts,omitempty" type:"Repeated"`
 }
 
 func (s CreateListenerRequest) String() string {
@@ -1335,11 +1749,6 @@ func (s *CreateListenerRequest) SetCertificates(v []*CreateListenerRequestCertif
 	return s
 }
 
-func (s *CreateListenerRequest) SetBackendPorts(v []*CreateListenerRequestBackendPorts) *CreateListenerRequest {
-	s.BackendPorts = v
-	return s
-}
-
 type CreateListenerRequestPortRanges struct {
 	FromPort *int32 `json:"FromPort,omitempty" xml:"FromPort,omitempty"`
 	ToPort   *int32 `json:"ToPort,omitempty" xml:"ToPort,omitempty"`
@@ -1378,17 +1787,6 @@ func (s CreateListenerRequestCertificates) GoString() string {
 func (s *CreateListenerRequestCertificates) SetId(v string) *CreateListenerRequestCertificates {
 	s.Id = &v
 	return s
-}
-
-type CreateListenerRequestBackendPorts struct {
-}
-
-func (s CreateListenerRequestBackendPorts) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateListenerRequestBackendPorts) GoString() string {
-	return s.String()
 }
 
 type CreateListenerResponseBody struct {
@@ -1506,6 +1904,88 @@ func (s *DeleteAcceleratorResponse) SetBody(v *DeleteAcceleratorResponseBody) *D
 	return s
 }
 
+type DeleteAclRequest struct {
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AclId       *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+}
+
+func (s DeleteAclRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAclRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAclRequest) SetRegionId(v string) *DeleteAclRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteAclRequest) SetAclId(v string) *DeleteAclRequest {
+	s.AclId = &v
+	return s
+}
+
+func (s *DeleteAclRequest) SetClientToken(v string) *DeleteAclRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DeleteAclRequest) SetDryRun(v bool) *DeleteAclRequest {
+	s.DryRun = &v
+	return s
+}
+
+type DeleteAclResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	AclId     *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+}
+
+func (s DeleteAclResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAclResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAclResponseBody) SetRequestId(v string) *DeleteAclResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteAclResponseBody) SetAclId(v string) *DeleteAclResponseBody {
+	s.AclId = &v
+	return s
+}
+
+type DeleteAclResponse struct {
+	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteAclResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteAclResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAclResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAclResponse) SetHeaders(v map[string]*string) *DeleteAclResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAclResponse) SetBody(v *DeleteAclResponseBody) *DeleteAclResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteBandwidthPackageRequest struct {
 	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
@@ -1582,7 +2062,6 @@ func (s *DeleteBandwidthPackageResponse) SetBody(v *DeleteBandwidthPackageRespon
 }
 
 type DeleteEndpointGroupRequest struct {
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	AcceleratorId   *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
@@ -1594,11 +2073,6 @@ func (s DeleteEndpointGroupRequest) String() string {
 
 func (s DeleteEndpointGroupRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DeleteEndpointGroupRequest) SetRegionId(v string) *DeleteEndpointGroupRequest {
-	s.RegionId = &v
-	return s
 }
 
 func (s *DeleteEndpointGroupRequest) SetClientToken(v string) *DeleteEndpointGroupRequest {
@@ -1899,7 +2373,6 @@ func (s *DeleteIpSetsResponse) SetBody(v *DeleteIpSetsResponseBody) *DeleteIpSet
 }
 
 type DeleteListenerRequest struct {
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	ListenerId    *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
@@ -1911,11 +2384,6 @@ func (s DeleteListenerRequest) String() string {
 
 func (s DeleteListenerRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DeleteListenerRequest) SetRegionId(v string) *DeleteListenerRequest {
-	s.RegionId = &v
-	return s
 }
 
 func (s *DeleteListenerRequest) SetClientToken(v string) *DeleteListenerRequest {
@@ -2218,6 +2686,7 @@ type DescribeBandwidthPackageResponseBody struct {
 	BandwidthPackageId     *string   `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
 	RegionId               *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	BillingType            *string   `json:"BillingType,omitempty" xml:"BillingType,omitempty"`
+	Ratio                  *int32    `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
 }
 
 func (s DescribeBandwidthPackageResponseBody) String() string {
@@ -2308,6 +2777,11 @@ func (s *DescribeBandwidthPackageResponseBody) SetBillingType(v string) *Describ
 	return s
 }
 
+func (s *DescribeBandwidthPackageResponseBody) SetRatio(v int32) *DescribeBandwidthPackageResponseBody {
+	s.Ratio = &v
+	return s
+}
+
 type DescribeBandwidthPackageResponse struct {
 	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	Body    *DescribeBandwidthPackageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -2373,7 +2847,13 @@ type DescribeEndpointGroupResponseBody struct {
 	EndpointRequestProtocol    *string                                                    `json:"EndpointRequestProtocol,omitempty" xml:"EndpointRequestProtocol,omitempty"`
 	EndpointGroupType          *string                                                    `json:"EndpointGroupType,omitempty" xml:"EndpointGroupType,omitempty"`
 	ForwardingRuleIds          []*string                                                  `json:"ForwardingRuleIds,omitempty" xml:"ForwardingRuleIds,omitempty" type:"Repeated"`
+	AcceleratorId              *string                                                    `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	ListenerId                 *string                                                    `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	SlsRegion                  *string                                                    `json:"SlsRegion,omitempty" xml:"SlsRegion,omitempty"`
+	SlsProjectName             *string                                                    `json:"SlsProjectName,omitempty" xml:"SlsProjectName,omitempty"`
+	SlsLogStoreName            *string                                                    `json:"SlsLogStoreName,omitempty" xml:"SlsLogStoreName,omitempty"`
+	AccessLogSwitch            *string                                                    `json:"AccessLogSwitch,omitempty" xml:"AccessLogSwitch,omitempty"`
+	EnableAccessLog            *bool                                                      `json:"EnableAccessLog,omitempty" xml:"EnableAccessLog,omitempty"`
 }
 
 func (s DescribeEndpointGroupResponseBody) String() string {
@@ -2474,8 +2954,38 @@ func (s *DescribeEndpointGroupResponseBody) SetForwardingRuleIds(v []*string) *D
 	return s
 }
 
+func (s *DescribeEndpointGroupResponseBody) SetAcceleratorId(v string) *DescribeEndpointGroupResponseBody {
+	s.AcceleratorId = &v
+	return s
+}
+
 func (s *DescribeEndpointGroupResponseBody) SetListenerId(v string) *DescribeEndpointGroupResponseBody {
 	s.ListenerId = &v
+	return s
+}
+
+func (s *DescribeEndpointGroupResponseBody) SetSlsRegion(v string) *DescribeEndpointGroupResponseBody {
+	s.SlsRegion = &v
+	return s
+}
+
+func (s *DescribeEndpointGroupResponseBody) SetSlsProjectName(v string) *DescribeEndpointGroupResponseBody {
+	s.SlsProjectName = &v
+	return s
+}
+
+func (s *DescribeEndpointGroupResponseBody) SetSlsLogStoreName(v string) *DescribeEndpointGroupResponseBody {
+	s.SlsLogStoreName = &v
+	return s
+}
+
+func (s *DescribeEndpointGroupResponseBody) SetAccessLogSwitch(v string) *DescribeEndpointGroupResponseBody {
+	s.AccessLogSwitch = &v
+	return s
+}
+
+func (s *DescribeEndpointGroupResponseBody) SetEnableAccessLog(v bool) *DescribeEndpointGroupResponseBody {
+	s.EnableAccessLog = &v
 	return s
 }
 
@@ -2603,6 +3113,7 @@ type DescribeIpSetResponseBody struct {
 	Bandwidth          *int32    `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	IpAddressList      []*string `json:"IpAddressList,omitempty" xml:"IpAddressList,omitempty" type:"Repeated"`
 	AccelerateRegionId *string   `json:"AccelerateRegionId,omitempty" xml:"AccelerateRegionId,omitempty"`
+	AcceleratorId      *string   `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 }
 
 func (s DescribeIpSetResponseBody) String() string {
@@ -2645,6 +3156,11 @@ func (s *DescribeIpSetResponseBody) SetIpAddressList(v []*string) *DescribeIpSet
 
 func (s *DescribeIpSetResponseBody) SetAccelerateRegionId(v string) *DescribeIpSetResponseBody {
 	s.AccelerateRegionId = &v
+	return s
+}
+
+func (s *DescribeIpSetResponseBody) SetAcceleratorId(v string) *DescribeIpSetResponseBody {
+	s.AcceleratorId = &v
 	return s
 }
 
@@ -2706,6 +3222,10 @@ type DescribeListenerResponseBody struct {
 	ListenerId     *string                                     `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	ClientAffinity *string                                     `json:"ClientAffinity,omitempty" xml:"ClientAffinity,omitempty"`
 	Name           *string                                     `json:"Name,omitempty" xml:"Name,omitempty"`
+	RelatedAcls    []*DescribeListenerResponseBodyRelatedAcls  `json:"RelatedAcls,omitempty" xml:"RelatedAcls,omitempty" type:"Repeated"`
+	AclType        *string                                     `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	AcceleratorId  *string                                     `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	ProxyProtocol  *bool                                       `json:"ProxyProtocol,omitempty" xml:"ProxyProtocol,omitempty"`
 }
 
 func (s DescribeListenerResponseBody) String() string {
@@ -2768,6 +3288,26 @@ func (s *DescribeListenerResponseBody) SetClientAffinity(v string) *DescribeList
 
 func (s *DescribeListenerResponseBody) SetName(v string) *DescribeListenerResponseBody {
 	s.Name = &v
+	return s
+}
+
+func (s *DescribeListenerResponseBody) SetRelatedAcls(v []*DescribeListenerResponseBodyRelatedAcls) *DescribeListenerResponseBody {
+	s.RelatedAcls = v
+	return s
+}
+
+func (s *DescribeListenerResponseBody) SetAclType(v string) *DescribeListenerResponseBody {
+	s.AclType = &v
+	return s
+}
+
+func (s *DescribeListenerResponseBody) SetAcceleratorId(v string) *DescribeListenerResponseBody {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *DescribeListenerResponseBody) SetProxyProtocol(v bool) *DescribeListenerResponseBody {
+	s.ProxyProtocol = &v
 	return s
 }
 
@@ -2837,6 +3377,29 @@ func (s *DescribeListenerResponseBodyCertificates) SetType(v string) *DescribeLi
 
 func (s *DescribeListenerResponseBodyCertificates) SetId(v string) *DescribeListenerResponseBodyCertificates {
 	s.Id = &v
+	return s
+}
+
+type DescribeListenerResponseBodyRelatedAcls struct {
+	AclId  *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeListenerResponseBodyRelatedAcls) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeListenerResponseBodyRelatedAcls) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeListenerResponseBodyRelatedAcls) SetAclId(v string) *DescribeListenerResponseBodyRelatedAcls {
+	s.AclId = &v
+	return s
+}
+
+func (s *DescribeListenerResponseBodyRelatedAcls) SetStatus(v string) *DescribeListenerResponseBodyRelatedAcls {
+	s.Status = &v
 	return s
 }
 
@@ -3014,6 +3577,334 @@ func (s *DetachDdosFromAcceleratorResponse) SetHeaders(v map[string]*string) *De
 }
 
 func (s *DetachDdosFromAcceleratorResponse) SetBody(v *DetachDdosFromAcceleratorResponseBody) *DetachDdosFromAcceleratorResponse {
+	s.Body = v
+	return s
+}
+
+type DetachLogStoreFromEndpointGroupRequest struct {
+	RegionId         *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AcceleratorId    *string   `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	ListenerId       *string   `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	EndpointGroupIds []*string `json:"EndpointGroupIds,omitempty" xml:"EndpointGroupIds,omitempty" type:"Repeated"`
+	ClientToken      *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+}
+
+func (s DetachLogStoreFromEndpointGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachLogStoreFromEndpointGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetachLogStoreFromEndpointGroupRequest) SetRegionId(v string) *DetachLogStoreFromEndpointGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DetachLogStoreFromEndpointGroupRequest) SetAcceleratorId(v string) *DetachLogStoreFromEndpointGroupRequest {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *DetachLogStoreFromEndpointGroupRequest) SetListenerId(v string) *DetachLogStoreFromEndpointGroupRequest {
+	s.ListenerId = &v
+	return s
+}
+
+func (s *DetachLogStoreFromEndpointGroupRequest) SetEndpointGroupIds(v []*string) *DetachLogStoreFromEndpointGroupRequest {
+	s.EndpointGroupIds = v
+	return s
+}
+
+func (s *DetachLogStoreFromEndpointGroupRequest) SetClientToken(v string) *DetachLogStoreFromEndpointGroupRequest {
+	s.ClientToken = &v
+	return s
+}
+
+type DetachLogStoreFromEndpointGroupResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DetachLogStoreFromEndpointGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachLogStoreFromEndpointGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DetachLogStoreFromEndpointGroupResponseBody) SetRequestId(v string) *DetachLogStoreFromEndpointGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DetachLogStoreFromEndpointGroupResponse struct {
+	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DetachLogStoreFromEndpointGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DetachLogStoreFromEndpointGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachLogStoreFromEndpointGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DetachLogStoreFromEndpointGroupResponse) SetHeaders(v map[string]*string) *DetachLogStoreFromEndpointGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DetachLogStoreFromEndpointGroupResponse) SetBody(v *DetachLogStoreFromEndpointGroupResponseBody) *DetachLogStoreFromEndpointGroupResponse {
+	s.Body = v
+	return s
+}
+
+type DissociateAclsFromListenerRequest struct {
+	RegionId    *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AclIds      []*string `json:"AclIds,omitempty" xml:"AclIds,omitempty" type:"Repeated"`
+	ListenerId  *string   `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	ClientToken *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun      *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+}
+
+func (s DissociateAclsFromListenerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DissociateAclsFromListenerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DissociateAclsFromListenerRequest) SetRegionId(v string) *DissociateAclsFromListenerRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DissociateAclsFromListenerRequest) SetAclIds(v []*string) *DissociateAclsFromListenerRequest {
+	s.AclIds = v
+	return s
+}
+
+func (s *DissociateAclsFromListenerRequest) SetListenerId(v string) *DissociateAclsFromListenerRequest {
+	s.ListenerId = &v
+	return s
+}
+
+func (s *DissociateAclsFromListenerRequest) SetClientToken(v string) *DissociateAclsFromListenerRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DissociateAclsFromListenerRequest) SetDryRun(v bool) *DissociateAclsFromListenerRequest {
+	s.DryRun = &v
+	return s
+}
+
+type DissociateAclsFromListenerResponseBody struct {
+	// Id of the request
+	RequestId  *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	AclIds     []*string `json:"AclIds,omitempty" xml:"AclIds,omitempty" type:"Repeated"`
+	ListenerId *string   `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+}
+
+func (s DissociateAclsFromListenerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DissociateAclsFromListenerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DissociateAclsFromListenerResponseBody) SetRequestId(v string) *DissociateAclsFromListenerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DissociateAclsFromListenerResponseBody) SetAclIds(v []*string) *DissociateAclsFromListenerResponseBody {
+	s.AclIds = v
+	return s
+}
+
+func (s *DissociateAclsFromListenerResponseBody) SetListenerId(v string) *DissociateAclsFromListenerResponseBody {
+	s.ListenerId = &v
+	return s
+}
+
+type DissociateAclsFromListenerResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DissociateAclsFromListenerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DissociateAclsFromListenerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DissociateAclsFromListenerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DissociateAclsFromListenerResponse) SetHeaders(v map[string]*string) *DissociateAclsFromListenerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DissociateAclsFromListenerResponse) SetBody(v *DissociateAclsFromListenerResponseBody) *DissociateAclsFromListenerResponse {
+	s.Body = v
+	return s
+}
+
+type GetAclRequest struct {
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AclId    *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+}
+
+func (s GetAclRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAclRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAclRequest) SetRegionId(v string) *GetAclRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetAclRequest) SetAclId(v string) *GetAclRequest {
+	s.AclId = &v
+	return s
+}
+
+type GetAclResponseBody struct {
+	// Id of the request
+	RequestId        *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	AclId            *string                               `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AddressIPVersion *string                               `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
+	AclStatus        *string                               `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
+	AclEntries       []*GetAclResponseBodyAclEntries       `json:"AclEntries,omitempty" xml:"AclEntries,omitempty" type:"Repeated"`
+	RelatedListeners []*GetAclResponseBodyRelatedListeners `json:"RelatedListeners,omitempty" xml:"RelatedListeners,omitempty" type:"Repeated"`
+	AclName          *string                               `json:"AclName,omitempty" xml:"AclName,omitempty"`
+}
+
+func (s GetAclResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAclResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAclResponseBody) SetRequestId(v string) *GetAclResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAclResponseBody) SetAclId(v string) *GetAclResponseBody {
+	s.AclId = &v
+	return s
+}
+
+func (s *GetAclResponseBody) SetAddressIPVersion(v string) *GetAclResponseBody {
+	s.AddressIPVersion = &v
+	return s
+}
+
+func (s *GetAclResponseBody) SetAclStatus(v string) *GetAclResponseBody {
+	s.AclStatus = &v
+	return s
+}
+
+func (s *GetAclResponseBody) SetAclEntries(v []*GetAclResponseBodyAclEntries) *GetAclResponseBody {
+	s.AclEntries = v
+	return s
+}
+
+func (s *GetAclResponseBody) SetRelatedListeners(v []*GetAclResponseBodyRelatedListeners) *GetAclResponseBody {
+	s.RelatedListeners = v
+	return s
+}
+
+func (s *GetAclResponseBody) SetAclName(v string) *GetAclResponseBody {
+	s.AclName = &v
+	return s
+}
+
+type GetAclResponseBodyAclEntries struct {
+	Entry            *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
+	EntryDescription *string `json:"EntryDescription,omitempty" xml:"EntryDescription,omitempty"`
+}
+
+func (s GetAclResponseBodyAclEntries) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAclResponseBodyAclEntries) GoString() string {
+	return s.String()
+}
+
+func (s *GetAclResponseBodyAclEntries) SetEntry(v string) *GetAclResponseBodyAclEntries {
+	s.Entry = &v
+	return s
+}
+
+func (s *GetAclResponseBodyAclEntries) SetEntryDescription(v string) *GetAclResponseBodyAclEntries {
+	s.EntryDescription = &v
+	return s
+}
+
+type GetAclResponseBodyRelatedListeners struct {
+	ListenerId    *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	AclType       *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+}
+
+func (s GetAclResponseBodyRelatedListeners) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAclResponseBodyRelatedListeners) GoString() string {
+	return s.String()
+}
+
+func (s *GetAclResponseBodyRelatedListeners) SetListenerId(v string) *GetAclResponseBodyRelatedListeners {
+	s.ListenerId = &v
+	return s
+}
+
+func (s *GetAclResponseBodyRelatedListeners) SetAclType(v string) *GetAclResponseBodyRelatedListeners {
+	s.AclType = &v
+	return s
+}
+
+func (s *GetAclResponseBodyRelatedListeners) SetAcceleratorId(v string) *GetAclResponseBodyRelatedListeners {
+	s.AcceleratorId = &v
+	return s
+}
+
+type GetAclResponse struct {
+	Headers map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetAclResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAclResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAclResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAclResponse) SetHeaders(v map[string]*string) *GetAclResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAclResponse) SetBody(v *GetAclResponseBody) *GetAclResponse {
 	s.Body = v
 	return s
 }
@@ -3393,6 +4284,152 @@ func (s *ListAcceleratorsResponse) SetHeaders(v map[string]*string) *ListAcceler
 }
 
 func (s *ListAcceleratorsResponse) SetBody(v *ListAcceleratorsResponseBody) *ListAcceleratorsResponse {
+	s.Body = v
+	return s
+}
+
+type ListAclsRequest struct {
+	RegionId    *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ClientToken *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	AclIds      []*string `json:"AclIds,omitempty" xml:"AclIds,omitempty" type:"Repeated"`
+	AclName     *string   `json:"AclName,omitempty" xml:"AclName,omitempty"`
+	NextToken   *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	MaxResults  *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+}
+
+func (s ListAclsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAclsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAclsRequest) SetRegionId(v string) *ListAclsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListAclsRequest) SetClientToken(v string) *ListAclsRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ListAclsRequest) SetAclIds(v []*string) *ListAclsRequest {
+	s.AclIds = v
+	return s
+}
+
+func (s *ListAclsRequest) SetAclName(v string) *ListAclsRequest {
+	s.AclName = &v
+	return s
+}
+
+func (s *ListAclsRequest) SetNextToken(v string) *ListAclsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListAclsRequest) SetMaxResults(v int32) *ListAclsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+type ListAclsResponseBody struct {
+	RequestId  *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	NextToken  *string                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	MaxResults *int32                      `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	Acls       []*ListAclsResponseBodyAcls `json:"Acls,omitempty" xml:"Acls,omitempty" type:"Repeated"`
+}
+
+func (s ListAclsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAclsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAclsResponseBody) SetRequestId(v string) *ListAclsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAclsResponseBody) SetTotalCount(v int32) *ListAclsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListAclsResponseBody) SetNextToken(v string) *ListAclsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListAclsResponseBody) SetMaxResults(v int32) *ListAclsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListAclsResponseBody) SetAcls(v []*ListAclsResponseBodyAcls) *ListAclsResponseBody {
+	s.Acls = v
+	return s
+}
+
+type ListAclsResponseBodyAcls struct {
+	AclId            *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AclName          *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
+	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
+	AclStatus        *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
+}
+
+func (s ListAclsResponseBodyAcls) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAclsResponseBodyAcls) GoString() string {
+	return s.String()
+}
+
+func (s *ListAclsResponseBodyAcls) SetAclId(v string) *ListAclsResponseBodyAcls {
+	s.AclId = &v
+	return s
+}
+
+func (s *ListAclsResponseBodyAcls) SetAclName(v string) *ListAclsResponseBodyAcls {
+	s.AclName = &v
+	return s
+}
+
+func (s *ListAclsResponseBodyAcls) SetAddressIPVersion(v string) *ListAclsResponseBodyAcls {
+	s.AddressIPVersion = &v
+	return s
+}
+
+func (s *ListAclsResponseBodyAcls) SetAclStatus(v string) *ListAclsResponseBodyAcls {
+	s.AclStatus = &v
+	return s
+}
+
+type ListAclsResponse struct {
+	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListAclsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListAclsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAclsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAclsResponse) SetHeaders(v map[string]*string) *ListAclsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAclsResponse) SetBody(v *ListAclsResponseBody) *ListAclsResponse {
 	s.Body = v
 	return s
 }
@@ -3878,6 +4915,7 @@ type ListBandwidthPackagesResponseBodyBandwidthPackages struct {
 	CbnGeographicRegionIdB *string   `json:"CbnGeographicRegionIdB,omitempty" xml:"CbnGeographicRegionIdB,omitempty"`
 	Name                   *string   `json:"Name,omitempty" xml:"Name,omitempty"`
 	BillingType            *string   `json:"BillingType,omitempty" xml:"BillingType,omitempty"`
+	Ratio                  *int32    `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
 }
 
 func (s ListBandwidthPackagesResponseBodyBandwidthPackages) String() string {
@@ -3960,6 +4998,11 @@ func (s *ListBandwidthPackagesResponseBodyBandwidthPackages) SetName(v string) *
 
 func (s *ListBandwidthPackagesResponseBodyBandwidthPackages) SetBillingType(v string) *ListBandwidthPackagesResponseBodyBandwidthPackages {
 	s.BillingType = &v
+	return s
+}
+
+func (s *ListBandwidthPackagesResponseBodyBandwidthPackages) SetRatio(v int32) *ListBandwidthPackagesResponseBodyBandwidthPackages {
+	s.Ratio = &v
 	return s
 }
 
@@ -4079,6 +5122,8 @@ type ListEndpointGroupsRequest struct {
 	AcceleratorId     *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	ListenerId        *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	EndpointGroupType *string `json:"EndpointGroupType,omitempty" xml:"EndpointGroupType,omitempty"`
+	AccessLogSwitch   *string `json:"AccessLogSwitch,omitempty" xml:"AccessLogSwitch,omitempty"`
+	EndpointGroupId   *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
 }
 
 func (s ListEndpointGroupsRequest) String() string {
@@ -4116,6 +5161,16 @@ func (s *ListEndpointGroupsRequest) SetListenerId(v string) *ListEndpointGroupsR
 
 func (s *ListEndpointGroupsRequest) SetEndpointGroupType(v string) *ListEndpointGroupsRequest {
 	s.EndpointGroupType = &v
+	return s
+}
+
+func (s *ListEndpointGroupsRequest) SetAccessLogSwitch(v string) *ListEndpointGroupsRequest {
+	s.AccessLogSwitch = &v
+	return s
+}
+
+func (s *ListEndpointGroupsRequest) SetEndpointGroupId(v string) *ListEndpointGroupsRequest {
+	s.EndpointGroupId = &v
 	return s
 }
 
@@ -4171,6 +5226,7 @@ type ListEndpointGroupsResponseBodyEndpointGroups struct {
 	HealthCheckProtocol        *string                                                               `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
 	ThresholdCount             *int32                                                                `json:"ThresholdCount,omitempty" xml:"ThresholdCount,omitempty"`
 	ListenerId                 *string                                                               `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	AcceleratorId              *string                                                               `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	EndpointConfigurations     []*ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations `json:"EndpointConfigurations,omitempty" xml:"EndpointConfigurations,omitempty" type:"Repeated"`
 	PortOverrides              []*ListEndpointGroupsResponseBodyEndpointGroupsPortOverrides          `json:"PortOverrides,omitempty" xml:"PortOverrides,omitempty" type:"Repeated"`
 	ForwardingRuleIds          []*string                                                             `json:"ForwardingRuleIds,omitempty" xml:"ForwardingRuleIds,omitempty" type:"Repeated"`
@@ -4236,6 +5292,11 @@ func (s *ListEndpointGroupsResponseBodyEndpointGroups) SetThresholdCount(v int32
 
 func (s *ListEndpointGroupsResponseBodyEndpointGroups) SetListenerId(v string) *ListEndpointGroupsResponseBodyEndpointGroups {
 	s.ListenerId = &v
+	return s
+}
+
+func (s *ListEndpointGroupsResponseBodyEndpointGroups) SetAcceleratorId(v string) *ListEndpointGroupsResponseBodyEndpointGroups {
+	s.AcceleratorId = &v
 	return s
 }
 
@@ -4902,6 +5963,7 @@ type ListListenersResponseBodyListeners struct {
 	PortRanges     []*ListListenersResponseBodyListenersPortRanges   `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
 	Name           *string                                           `json:"Name,omitempty" xml:"Name,omitempty"`
 	ProxyProtocol  *bool                                             `json:"ProxyProtocol,omitempty" xml:"ProxyProtocol,omitempty"`
+	AcceleratorId  *string                                           `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 }
 
 func (s ListListenersResponseBodyListeners) String() string {
@@ -4964,6 +6026,11 @@ func (s *ListListenersResponseBodyListeners) SetName(v string) *ListListenersRes
 
 func (s *ListListenersResponseBodyListeners) SetProxyProtocol(v bool) *ListListenersResponseBodyListeners {
 	s.ProxyProtocol = &v
+	return s
+}
+
+func (s *ListListenersResponseBodyListeners) SetAcceleratorId(v string) *ListListenersResponseBodyListeners {
+	s.AcceleratorId = &v
 	return s
 }
 
@@ -5059,6 +6126,111 @@ func (s *ListListenersResponse) SetBody(v *ListListenersResponseBody) *ListListe
 	return s
 }
 
+type RemoveEntriesFromAclRequest struct {
+	RegionId    *string                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AclId       *string                                  `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AclEntries  []*RemoveEntriesFromAclRequestAclEntries `json:"AclEntries,omitempty" xml:"AclEntries,omitempty" type:"Repeated"`
+	ClientToken *string                                  `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun      *bool                                    `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+}
+
+func (s RemoveEntriesFromAclRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveEntriesFromAclRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveEntriesFromAclRequest) SetRegionId(v string) *RemoveEntriesFromAclRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *RemoveEntriesFromAclRequest) SetAclId(v string) *RemoveEntriesFromAclRequest {
+	s.AclId = &v
+	return s
+}
+
+func (s *RemoveEntriesFromAclRequest) SetAclEntries(v []*RemoveEntriesFromAclRequestAclEntries) *RemoveEntriesFromAclRequest {
+	s.AclEntries = v
+	return s
+}
+
+func (s *RemoveEntriesFromAclRequest) SetClientToken(v string) *RemoveEntriesFromAclRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *RemoveEntriesFromAclRequest) SetDryRun(v bool) *RemoveEntriesFromAclRequest {
+	s.DryRun = &v
+	return s
+}
+
+type RemoveEntriesFromAclRequestAclEntries struct {
+	Entry *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
+}
+
+func (s RemoveEntriesFromAclRequestAclEntries) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveEntriesFromAclRequestAclEntries) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveEntriesFromAclRequestAclEntries) SetEntry(v string) *RemoveEntriesFromAclRequestAclEntries {
+	s.Entry = &v
+	return s
+}
+
+type RemoveEntriesFromAclResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	AclId     *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+}
+
+func (s RemoveEntriesFromAclResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveEntriesFromAclResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveEntriesFromAclResponseBody) SetRequestId(v string) *RemoveEntriesFromAclResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RemoveEntriesFromAclResponseBody) SetAclId(v string) *RemoveEntriesFromAclResponseBody {
+	s.AclId = &v
+	return s
+}
+
+type RemoveEntriesFromAclResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RemoveEntriesFromAclResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RemoveEntriesFromAclResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveEntriesFromAclResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveEntriesFromAclResponse) SetHeaders(v map[string]*string) *RemoveEntriesFromAclResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RemoveEntriesFromAclResponse) SetBody(v *RemoveEntriesFromAclResponseBody) *RemoveEntriesFromAclResponse {
+	s.Body = v
+	return s
+}
+
 type ReplaceBandwidthPackageRequest struct {
 	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	BandwidthPackageId       *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
@@ -5129,15 +6301,14 @@ func (s *ReplaceBandwidthPackageResponse) SetBody(v *ReplaceBandwidthPackageResp
 }
 
 type UpdateAcceleratorRequest struct {
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ClientToken       *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	AcceleratorId     *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	Spec              *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	AutoPay           *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	AutoUseCoupon     *bool   `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
-	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	Spec          *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	AutoPay       *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AutoUseCoupon *bool   `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
 }
 
 func (s UpdateAcceleratorRequest) String() string {
@@ -5188,11 +6359,6 @@ func (s *UpdateAcceleratorRequest) SetAutoUseCoupon(v bool) *UpdateAcceleratorRe
 	return s
 }
 
-func (s *UpdateAcceleratorRequest) SetPromotionOptionNo(v string) *UpdateAcceleratorRequest {
-	s.PromotionOptionNo = &v
-	return s
-}
-
 type UpdateAcceleratorResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -5233,6 +6399,94 @@ func (s *UpdateAcceleratorResponse) SetBody(v *UpdateAcceleratorResponseBody) *U
 	return s
 }
 
+type UpdateAclAttributeRequest struct {
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AclId       *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AclName     *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+}
+
+func (s UpdateAclAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAclAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAclAttributeRequest) SetRegionId(v string) *UpdateAclAttributeRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateAclAttributeRequest) SetAclId(v string) *UpdateAclAttributeRequest {
+	s.AclId = &v
+	return s
+}
+
+func (s *UpdateAclAttributeRequest) SetAclName(v string) *UpdateAclAttributeRequest {
+	s.AclName = &v
+	return s
+}
+
+func (s *UpdateAclAttributeRequest) SetClientToken(v string) *UpdateAclAttributeRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateAclAttributeRequest) SetDryRun(v bool) *UpdateAclAttributeRequest {
+	s.DryRun = &v
+	return s
+}
+
+type UpdateAclAttributeResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	AclId     *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+}
+
+func (s UpdateAclAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAclAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAclAttributeResponseBody) SetRequestId(v string) *UpdateAclAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateAclAttributeResponseBody) SetAclId(v string) *UpdateAclAttributeResponseBody {
+	s.AclId = &v
+	return s
+}
+
+type UpdateAclAttributeResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateAclAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateAclAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAclAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAclAttributeResponse) SetHeaders(v map[string]*string) *UpdateAclAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateAclAttributeResponse) SetBody(v *UpdateAclAttributeResponseBody) *UpdateAclAttributeResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateBandwidthPackageRequest struct {
 	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
@@ -5242,7 +6496,6 @@ type UpdateBandwidthPackageRequest struct {
 	BandwidthType      *string `json:"BandwidthType,omitempty" xml:"BandwidthType,omitempty"`
 	AutoPay            *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	AutoUseCoupon      *bool   `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
-	PromotionOptionNo  *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
 }
 
 func (s UpdateBandwidthPackageRequest) String() string {
@@ -5290,11 +6543,6 @@ func (s *UpdateBandwidthPackageRequest) SetAutoPay(v bool) *UpdateBandwidthPacka
 
 func (s *UpdateBandwidthPackageRequest) SetAutoUseCoupon(v bool) *UpdateBandwidthPackageRequest {
 	s.AutoUseCoupon = &v
-	return s
-}
-
-func (s *UpdateBandwidthPackageRequest) SetPromotionOptionNo(v string) *UpdateBandwidthPackageRequest {
-	s.PromotionOptionNo = &v
 	return s
 }
 
@@ -6295,6 +7543,62 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+func (client *Client) AddEntriesToAclWithOptions(request *AddEntriesToAclRequest, runtime *util.RuntimeOptions) (_result *AddEntriesToAclResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &AddEntriesToAclResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("AddEntriesToAcl"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddEntriesToAcl(request *AddEntriesToAclRequest) (_result *AddEntriesToAclResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddEntriesToAclResponse{}
+	_body, _err := client.AddEntriesToAclWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AssociateAclsWithListenerWithOptions(request *AssociateAclsWithListenerRequest, runtime *util.RuntimeOptions) (_result *AssociateAclsWithListenerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &AssociateAclsWithListenerResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("AssociateAclsWithListener"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AssociateAclsWithListener(request *AssociateAclsWithListenerRequest) (_result *AssociateAclsWithListenerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AssociateAclsWithListenerResponse{}
+	_body, _err := client.AssociateAclsWithListenerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) AttachDdosToAcceleratorWithOptions(request *AttachDdosToAcceleratorRequest, runtime *util.RuntimeOptions) (_result *AttachDdosToAcceleratorResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6316,6 +7620,34 @@ func (client *Client) AttachDdosToAccelerator(request *AttachDdosToAcceleratorRe
 	runtime := &util.RuntimeOptions{}
 	_result = &AttachDdosToAcceleratorResponse{}
 	_body, _err := client.AttachDdosToAcceleratorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AttachLogStoreToEndpointGroupWithOptions(request *AttachLogStoreToEndpointGroupRequest, runtime *util.RuntimeOptions) (_result *AttachLogStoreToEndpointGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &AttachLogStoreToEndpointGroupResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("AttachLogStoreToEndpointGroup"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AttachLogStoreToEndpointGroup(request *AttachLogStoreToEndpointGroupRequest) (_result *AttachLogStoreToEndpointGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AttachLogStoreToEndpointGroupResponse{}
+	_body, _err := client.AttachLogStoreToEndpointGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6428,6 +7760,34 @@ func (client *Client) CreateAccelerator(request *CreateAcceleratorRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAcceleratorResponse{}
 	_body, _err := client.CreateAcceleratorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateAclWithOptions(request *CreateAclRequest, runtime *util.RuntimeOptions) (_result *CreateAclResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateAclResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateAcl"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateAcl(request *CreateAclRequest) (_result *CreateAclResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateAclResponse{}
+	_body, _err := client.CreateAclWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6596,6 +7956,34 @@ func (client *Client) DeleteAccelerator(request *DeleteAcceleratorRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAcceleratorResponse{}
 	_body, _err := client.DeleteAcceleratorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteAclWithOptions(request *DeleteAclRequest, runtime *util.RuntimeOptions) (_result *DeleteAclResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DeleteAclResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteAcl"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteAcl(request *DeleteAclRequest) (_result *DeleteAclResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteAclResponse{}
+	_body, _err := client.DeleteAclWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6967,6 +8355,90 @@ func (client *Client) DetachDdosFromAccelerator(request *DetachDdosFromAccelerat
 	return _result, _err
 }
 
+func (client *Client) DetachLogStoreFromEndpointGroupWithOptions(request *DetachLogStoreFromEndpointGroupRequest, runtime *util.RuntimeOptions) (_result *DetachLogStoreFromEndpointGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DetachLogStoreFromEndpointGroupResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DetachLogStoreFromEndpointGroup"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DetachLogStoreFromEndpointGroup(request *DetachLogStoreFromEndpointGroupRequest) (_result *DetachLogStoreFromEndpointGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DetachLogStoreFromEndpointGroupResponse{}
+	_body, _err := client.DetachLogStoreFromEndpointGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DissociateAclsFromListenerWithOptions(request *DissociateAclsFromListenerRequest, runtime *util.RuntimeOptions) (_result *DissociateAclsFromListenerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DissociateAclsFromListenerResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DissociateAclsFromListener"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DissociateAclsFromListener(request *DissociateAclsFromListenerRequest) (_result *DissociateAclsFromListenerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DissociateAclsFromListenerResponse{}
+	_body, _err := client.DissociateAclsFromListenerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetAclWithOptions(request *GetAclRequest, runtime *util.RuntimeOptions) (_result *GetAclResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetAclResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetAcl"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAcl(request *GetAclRequest) (_result *GetAclResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAclResponse{}
+	_body, _err := client.GetAclWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListAccelerateAreasWithOptions(request *ListAccelerateAreasRequest, runtime *util.RuntimeOptions) (_result *ListAccelerateAreasResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7016,6 +8488,34 @@ func (client *Client) ListAccelerators(request *ListAcceleratorsRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAcceleratorsResponse{}
 	_body, _err := client.ListAcceleratorsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListAclsWithOptions(request *ListAclsRequest, runtime *util.RuntimeOptions) (_result *ListAclsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListAclsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListAcls"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListAcls(request *ListAclsRequest) (_result *ListAclsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAclsResponse{}
+	_body, _err := client.ListAclsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7275,6 +8775,34 @@ func (client *Client) ListListeners(request *ListListenersRequest) (_result *Lis
 	return _result, _err
 }
 
+func (client *Client) RemoveEntriesFromAclWithOptions(request *RemoveEntriesFromAclRequest, runtime *util.RuntimeOptions) (_result *RemoveEntriesFromAclResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &RemoveEntriesFromAclResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("RemoveEntriesFromAcl"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RemoveEntriesFromAcl(request *RemoveEntriesFromAclRequest) (_result *RemoveEntriesFromAclResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RemoveEntriesFromAclResponse{}
+	_body, _err := client.RemoveEntriesFromAclWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ReplaceBandwidthPackageWithOptions(request *ReplaceBandwidthPackageRequest, runtime *util.RuntimeOptions) (_result *ReplaceBandwidthPackageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7324,6 +8852,34 @@ func (client *Client) UpdateAccelerator(request *UpdateAcceleratorRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAcceleratorResponse{}
 	_body, _err := client.UpdateAcceleratorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateAclAttributeWithOptions(request *UpdateAclAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateAclAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &UpdateAclAttributeResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UpdateAclAttribute"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateAclAttribute(request *UpdateAclAttributeRequest) (_result *UpdateAclAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateAclAttributeResponse{}
+	_body, _err := client.UpdateAclAttributeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
