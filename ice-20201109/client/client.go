@@ -18,8 +18,9 @@ type ListSmartJobsRequest struct {
 	MaxResults *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	PageNo     *int64  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Title      *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	JobType    *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	SortBy     *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	JobState   *string `json:"JobState,omitempty" xml:"JobState,omitempty"`
 }
 
 func (s ListSmartJobsRequest) String() string {
@@ -55,13 +56,18 @@ func (s *ListSmartJobsRequest) SetPageSize(v int64) *ListSmartJobsRequest {
 	return s
 }
 
-func (s *ListSmartJobsRequest) SetTitle(v string) *ListSmartJobsRequest {
-	s.Title = &v
+func (s *ListSmartJobsRequest) SetJobType(v string) *ListSmartJobsRequest {
+	s.JobType = &v
 	return s
 }
 
-func (s *ListSmartJobsRequest) SetJobType(v string) *ListSmartJobsRequest {
-	s.JobType = &v
+func (s *ListSmartJobsRequest) SetSortBy(v string) *ListSmartJobsRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListSmartJobsRequest) SetJobState(v string) *ListSmartJobsRequest {
+	s.JobState = &v
 	return s
 }
 
@@ -2209,8 +2215,9 @@ func (s *DeleteEditingProjectsResponse) SetBody(v *DeleteEditingProjectsResponse
 }
 
 type GetMediaInfoRequest struct {
-	MediaId  *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	InputURL *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
+	MediaId    *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	InputURL   *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
+	OutputType *string `json:"OutputType,omitempty" xml:"OutputType,omitempty"`
 }
 
 func (s GetMediaInfoRequest) String() string {
@@ -2228,6 +2235,11 @@ func (s *GetMediaInfoRequest) SetMediaId(v string) *GetMediaInfoRequest {
 
 func (s *GetMediaInfoRequest) SetInputURL(v string) *GetMediaInfoRequest {
 	s.InputURL = &v
+	return s
+}
+
+func (s *GetMediaInfoRequest) SetOutputType(v string) *GetMediaInfoRequest {
+	s.OutputType = &v
 	return s
 }
 
@@ -3145,6 +3157,8 @@ type SubmitDelogoJobRequest struct {
 	OutputConfig *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
 	// 输入文件类型
 	InputType *string `json:"InputType,omitempty" xml:"InputType,omitempty"`
+	// 是否强制覆盖现有OSS文件
+	Overwrite *bool `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
 }
 
 func (s SubmitDelogoJobRequest) String() string {
@@ -3182,6 +3196,11 @@ func (s *SubmitDelogoJobRequest) SetOutputConfig(v string) *SubmitDelogoJobReque
 
 func (s *SubmitDelogoJobRequest) SetInputType(v string) *SubmitDelogoJobRequest {
 	s.InputType = &v
+	return s
+}
+
+func (s *SubmitDelogoJobRequest) SetOverwrite(v bool) *SubmitDelogoJobRequest {
+	s.Overwrite = &v
 	return s
 }
 
@@ -3751,6 +3770,75 @@ func (s *GetEditingProjectMaterialsResponse) SetBody(v *GetEditingProjectMateria
 	return s
 }
 
+type GetDefaultStorageLocationResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 存储类型
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	// oss bucket 名称
+	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// 路径
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// 状态
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetDefaultStorageLocationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDefaultStorageLocationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDefaultStorageLocationResponseBody) SetRequestId(v string) *GetDefaultStorageLocationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDefaultStorageLocationResponseBody) SetStorageType(v string) *GetDefaultStorageLocationResponseBody {
+	s.StorageType = &v
+	return s
+}
+
+func (s *GetDefaultStorageLocationResponseBody) SetBucket(v string) *GetDefaultStorageLocationResponseBody {
+	s.Bucket = &v
+	return s
+}
+
+func (s *GetDefaultStorageLocationResponseBody) SetPath(v string) *GetDefaultStorageLocationResponseBody {
+	s.Path = &v
+	return s
+}
+
+func (s *GetDefaultStorageLocationResponseBody) SetStatus(v string) *GetDefaultStorageLocationResponseBody {
+	s.Status = &v
+	return s
+}
+
+type GetDefaultStorageLocationResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetDefaultStorageLocationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDefaultStorageLocationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDefaultStorageLocationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDefaultStorageLocationResponse) SetHeaders(v map[string]*string) *GetDefaultStorageLocationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDefaultStorageLocationResponse) SetBody(v *GetDefaultStorageLocationResponseBody) *GetDefaultStorageLocationResponse {
+	s.Body = v
+	return s
+}
+
 type SubmitAudioProduceJobRequest struct {
 	EditingConfig *string `json:"EditingConfig,omitempty" xml:"EditingConfig,omitempty"`
 	OutputConfig  *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
@@ -3758,6 +3846,7 @@ type SubmitAudioProduceJobRequest struct {
 	Title         *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	UserData      *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	Overwrite     *bool   `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
 }
 
 func (s SubmitAudioProduceJobRequest) String() string {
@@ -3795,6 +3884,11 @@ func (s *SubmitAudioProduceJobRequest) SetDescription(v string) *SubmitAudioProd
 
 func (s *SubmitAudioProduceJobRequest) SetUserData(v string) *SubmitAudioProduceJobRequest {
 	s.UserData = &v
+	return s
+}
+
+func (s *SubmitAudioProduceJobRequest) SetOverwrite(v bool) *SubmitAudioProduceJobRequest {
+	s.Overwrite = &v
 	return s
 }
 
@@ -3925,6 +4019,8 @@ type SubmitMediaProducingJobResponseBody struct {
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// 合成作业Id
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// 合成媒资Id
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 }
 
 func (s SubmitMediaProducingJobResponseBody) String() string {
@@ -3947,6 +4043,11 @@ func (s *SubmitMediaProducingJobResponseBody) SetProjectId(v string) *SubmitMedi
 
 func (s *SubmitMediaProducingJobResponseBody) SetJobId(v string) *SubmitMediaProducingJobResponseBody {
 	s.JobId = &v
+	return s
+}
+
+func (s *SubmitMediaProducingJobResponseBody) SetMediaId(v string) *SubmitMediaProducingJobResponseBody {
+	s.MediaId = &v
 	return s
 }
 
@@ -4230,6 +4331,8 @@ type SubmitMattingJobRequest struct {
 	OutputConfig *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
 	// 输入文件类型
 	InputType *string `json:"InputType,omitempty" xml:"InputType,omitempty"`
+	// 是否强制覆盖现有OSS文件
+	Overwrite *string `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
 }
 
 func (s SubmitMattingJobRequest) String() string {
@@ -4267,6 +4370,11 @@ func (s *SubmitMattingJobRequest) SetOutputConfig(v string) *SubmitMattingJobReq
 
 func (s *SubmitMattingJobRequest) SetInputType(v string) *SubmitMattingJobRequest {
 	s.InputType = &v
+	return s
+}
+
+func (s *SubmitMattingJobRequest) SetOverwrite(v string) *SubmitMattingJobRequest {
+	s.Overwrite = &v
 	return s
 }
 
@@ -5118,6 +5226,82 @@ func (s *SubmitCoverJobResponse) SetBody(v *SubmitCoverJobResponseBody) *SubmitC
 	return s
 }
 
+type SetDefaultStorageLocationRequest struct {
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	Bucket      *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	Path        *string `json:"Path,omitempty" xml:"Path,omitempty"`
+}
+
+func (s SetDefaultStorageLocationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetDefaultStorageLocationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetDefaultStorageLocationRequest) SetStorageType(v string) *SetDefaultStorageLocationRequest {
+	s.StorageType = &v
+	return s
+}
+
+func (s *SetDefaultStorageLocationRequest) SetBucket(v string) *SetDefaultStorageLocationRequest {
+	s.Bucket = &v
+	return s
+}
+
+func (s *SetDefaultStorageLocationRequest) SetPath(v string) *SetDefaultStorageLocationRequest {
+	s.Path = &v
+	return s
+}
+
+type SetDefaultStorageLocationResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SetDefaultStorageLocationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetDefaultStorageLocationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetDefaultStorageLocationResponseBody) SetRequestId(v string) *SetDefaultStorageLocationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SetDefaultStorageLocationResponseBody) SetSuccess(v bool) *SetDefaultStorageLocationResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SetDefaultStorageLocationResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SetDefaultStorageLocationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SetDefaultStorageLocationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetDefaultStorageLocationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetDefaultStorageLocationResponse) SetHeaders(v map[string]*string) *SetDefaultStorageLocationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetDefaultStorageLocationResponse) SetBody(v *SetDefaultStorageLocationResponseBody) *SetDefaultStorageLocationResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateMediaInfoRequest struct {
 	// 媒资Id
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
@@ -5618,6 +5802,8 @@ type SubmitH2VJobRequest struct {
 	OutputConfig *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
 	// 输入文件类型
 	InputType *string `json:"InputType,omitempty" xml:"InputType,omitempty"`
+	// 是否强制覆盖现有OSS文件
+	Overwrite *bool `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
 }
 
 func (s SubmitH2VJobRequest) String() string {
@@ -5655,6 +5841,11 @@ func (s *SubmitH2VJobRequest) SetOutputConfig(v string) *SubmitH2VJobRequest {
 
 func (s *SubmitH2VJobRequest) SetInputType(v string) *SubmitH2VJobRequest {
 	s.InputType = &v
+	return s
+}
+
+func (s *SubmitH2VJobRequest) SetOverwrite(v bool) *SubmitH2VJobRequest {
+	s.Overwrite = &v
 	return s
 }
 
@@ -6481,6 +6672,28 @@ func (client *Client) GetEditingProjectMaterials(request *GetEditingProjectMater
 	return _result, _err
 }
 
+func (client *Client) GetDefaultStorageLocationWithOptions(runtime *util.RuntimeOptions) (_result *GetDefaultStorageLocationResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	_result = &GetDefaultStorageLocationResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetDefaultStorageLocation"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDefaultStorageLocation() (_result *GetDefaultStorageLocationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDefaultStorageLocationResponse{}
+	_body, _err := client.GetDefaultStorageLocationWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SubmitAudioProduceJobWithOptions(request *SubmitAudioProduceJobRequest, runtime *util.RuntimeOptions) (_result *SubmitAudioProduceJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6754,6 +6967,34 @@ func (client *Client) SubmitCoverJob(request *SubmitCoverJobRequest) (_result *S
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitCoverJobResponse{}
 	_body, _err := client.SubmitCoverJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SetDefaultStorageLocationWithOptions(request *SetDefaultStorageLocationRequest, runtime *util.RuntimeOptions) (_result *SetDefaultStorageLocationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SetDefaultStorageLocationResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SetDefaultStorageLocation"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetDefaultStorageLocation(request *SetDefaultStorageLocationRequest) (_result *SetDefaultStorageLocationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetDefaultStorageLocationResponse{}
+	_body, _err := client.SetDefaultStorageLocationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
