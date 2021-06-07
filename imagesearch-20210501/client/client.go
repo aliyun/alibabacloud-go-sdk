@@ -229,7 +229,6 @@ type SearchByPicResponseBodyDataAuctionsResult struct {
 	Pic                  *string `json:"Pic,omitempty" xml:"Pic,omitempty"`
 	Price                *string `json:"Price,omitempty" xml:"Price,omitempty"`
 	PromotionPrice       *string `json:"PromotionPrice,omitempty" xml:"PromotionPrice,omitempty"`
-	PriceAfterCoupon     *string `json:"PriceAfterCoupon,omitempty" xml:"PriceAfterCoupon,omitempty"`
 	UserType             *int32  `json:"UserType,omitempty" xml:"UserType,omitempty"`
 	Provcity             *string `json:"Provcity,omitempty" xml:"Provcity,omitempty"`
 	SellerNickName       *string `json:"SellerNickName,omitempty" xml:"SellerNickName,omitempty"`
@@ -237,19 +236,16 @@ type SearchByPicResponseBodyDataAuctionsResult struct {
 	MonthSellCount       *int32  `json:"MonthSellCount,omitempty" xml:"MonthSellCount,omitempty"`
 	LevelOneCategoryName *string `json:"LevelOneCategoryName,omitempty" xml:"LevelOneCategoryName,omitempty"`
 	CategoryName         *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	CouponActivityId     *string `json:"CouponActivityId,omitempty" xml:"CouponActivityId,omitempty"`
 	CouponTotalCount     *string `json:"CouponTotalCount,omitempty" xml:"CouponTotalCount,omitempty"`
-	CouponSendCount      *string `json:"CouponSendCount,omitempty" xml:"CouponSendCount,omitempty"`
 	CouponRemainCount    *int32  `json:"CouponRemainCount,omitempty" xml:"CouponRemainCount,omitempty"`
 	CouponStartTime      *string `json:"CouponStartTime,omitempty" xml:"CouponStartTime,omitempty"`
 	CouponEndTime        *string `json:"CouponEndTime,omitempty" xml:"CouponEndTime,omitempty"`
 	CouponStartFee       *string `json:"CouponStartFee,omitempty" xml:"CouponStartFee,omitempty"`
 	CouponAmount         *int32  `json:"CouponAmount,omitempty" xml:"CouponAmount,omitempty"`
 	CouponSaleTextInfo   *string `json:"CouponSaleTextInfo,omitempty" xml:"CouponSaleTextInfo,omitempty"`
-	CalTkRate            *string `json:"CalTkRate,omitempty" xml:"CalTkRate,omitempty"`
+	CommissionRate       *string `json:"CommissionRate,omitempty" xml:"CommissionRate,omitempty"`
 	CouponShareUrl       *string `json:"CouponShareUrl,omitempty" xml:"CouponShareUrl,omitempty"`
 	ClickUrl             *string `json:"ClickUrl,omitempty" xml:"ClickUrl,omitempty"`
-	ShortUrl             *string `json:"ShortUrl,omitempty" xml:"ShortUrl,omitempty"`
 }
 
 func (s SearchByPicResponseBodyDataAuctionsResult) String() string {
@@ -282,11 +278,6 @@ func (s *SearchByPicResponseBodyDataAuctionsResult) SetPrice(v string) *SearchBy
 
 func (s *SearchByPicResponseBodyDataAuctionsResult) SetPromotionPrice(v string) *SearchByPicResponseBodyDataAuctionsResult {
 	s.PromotionPrice = &v
-	return s
-}
-
-func (s *SearchByPicResponseBodyDataAuctionsResult) SetPriceAfterCoupon(v string) *SearchByPicResponseBodyDataAuctionsResult {
-	s.PriceAfterCoupon = &v
 	return s
 }
 
@@ -325,18 +316,8 @@ func (s *SearchByPicResponseBodyDataAuctionsResult) SetCategoryName(v string) *S
 	return s
 }
 
-func (s *SearchByPicResponseBodyDataAuctionsResult) SetCouponActivityId(v string) *SearchByPicResponseBodyDataAuctionsResult {
-	s.CouponActivityId = &v
-	return s
-}
-
 func (s *SearchByPicResponseBodyDataAuctionsResult) SetCouponTotalCount(v string) *SearchByPicResponseBodyDataAuctionsResult {
 	s.CouponTotalCount = &v
-	return s
-}
-
-func (s *SearchByPicResponseBodyDataAuctionsResult) SetCouponSendCount(v string) *SearchByPicResponseBodyDataAuctionsResult {
-	s.CouponSendCount = &v
 	return s
 }
 
@@ -370,8 +351,8 @@ func (s *SearchByPicResponseBodyDataAuctionsResult) SetCouponSaleTextInfo(v stri
 	return s
 }
 
-func (s *SearchByPicResponseBodyDataAuctionsResult) SetCalTkRate(v string) *SearchByPicResponseBodyDataAuctionsResult {
-	s.CalTkRate = &v
+func (s *SearchByPicResponseBodyDataAuctionsResult) SetCommissionRate(v string) *SearchByPicResponseBodyDataAuctionsResult {
+	s.CommissionRate = &v
 	return s
 }
 
@@ -382,11 +363,6 @@ func (s *SearchByPicResponseBodyDataAuctionsResult) SetCouponShareUrl(v string) 
 
 func (s *SearchByPicResponseBodyDataAuctionsResult) SetClickUrl(v string) *SearchByPicResponseBodyDataAuctionsResult {
 	s.ClickUrl = &v
-	return s
-}
-
-func (s *SearchByPicResponseBodyDataAuctionsResult) SetShortUrl(v string) *SearchByPicResponseBodyDataAuctionsResult {
-	s.ShortUrl = &v
 	return s
 }
 
@@ -651,7 +627,6 @@ type SearchByUrlResponseBodyDataAuctionsResult struct {
 	Pic                  *string `json:"Pic,omitempty" xml:"Pic,omitempty"`
 	Price                *string `json:"Price,omitempty" xml:"Price,omitempty"`
 	PromotionPrice       *string `json:"PromotionPrice,omitempty" xml:"PromotionPrice,omitempty"`
-	PriceAfterCoupon     *string `json:"PriceAfterCoupon,omitempty" xml:"PriceAfterCoupon,omitempty"`
 	UserType             *int32  `json:"UserType,omitempty" xml:"UserType,omitempty"`
 	Provcity             *string `json:"Provcity,omitempty" xml:"Provcity,omitempty"`
 	SellerNickName       *string `json:"SellerNickName,omitempty" xml:"SellerNickName,omitempty"`
@@ -659,19 +634,16 @@ type SearchByUrlResponseBodyDataAuctionsResult struct {
 	MonthSellCount       *int32  `json:"MonthSellCount,omitempty" xml:"MonthSellCount,omitempty"`
 	LevelOneCategoryName *string `json:"LevelOneCategoryName,omitempty" xml:"LevelOneCategoryName,omitempty"`
 	CategoryName         *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	CouponActivityId     *string `json:"CouponActivityId,omitempty" xml:"CouponActivityId,omitempty"`
 	CouponTotalCount     *string `json:"CouponTotalCount,omitempty" xml:"CouponTotalCount,omitempty"`
-	CouponSendCount      *string `json:"CouponSendCount,omitempty" xml:"CouponSendCount,omitempty"`
 	CouponRemainCount    *int32  `json:"CouponRemainCount,omitempty" xml:"CouponRemainCount,omitempty"`
 	CouponStartTime      *string `json:"CouponStartTime,omitempty" xml:"CouponStartTime,omitempty"`
 	CouponEndTime        *string `json:"CouponEndTime,omitempty" xml:"CouponEndTime,omitempty"`
 	CouponStartFee       *string `json:"CouponStartFee,omitempty" xml:"CouponStartFee,omitempty"`
 	CouponAmount         *int32  `json:"CouponAmount,omitempty" xml:"CouponAmount,omitempty"`
 	CouponSaleTextInfo   *string `json:"CouponSaleTextInfo,omitempty" xml:"CouponSaleTextInfo,omitempty"`
-	CalTkRate            *string `json:"CalTkRate,omitempty" xml:"CalTkRate,omitempty"`
+	CommissionRate       *string `json:"CommissionRate,omitempty" xml:"CommissionRate,omitempty"`
 	CouponShareUrl       *string `json:"CouponShareUrl,omitempty" xml:"CouponShareUrl,omitempty"`
 	ClickUrl             *string `json:"ClickUrl,omitempty" xml:"ClickUrl,omitempty"`
-	ShortUrl             *string `json:"ShortUrl,omitempty" xml:"ShortUrl,omitempty"`
 }
 
 func (s SearchByUrlResponseBodyDataAuctionsResult) String() string {
@@ -704,11 +676,6 @@ func (s *SearchByUrlResponseBodyDataAuctionsResult) SetPrice(v string) *SearchBy
 
 func (s *SearchByUrlResponseBodyDataAuctionsResult) SetPromotionPrice(v string) *SearchByUrlResponseBodyDataAuctionsResult {
 	s.PromotionPrice = &v
-	return s
-}
-
-func (s *SearchByUrlResponseBodyDataAuctionsResult) SetPriceAfterCoupon(v string) *SearchByUrlResponseBodyDataAuctionsResult {
-	s.PriceAfterCoupon = &v
 	return s
 }
 
@@ -747,18 +714,8 @@ func (s *SearchByUrlResponseBodyDataAuctionsResult) SetCategoryName(v string) *S
 	return s
 }
 
-func (s *SearchByUrlResponseBodyDataAuctionsResult) SetCouponActivityId(v string) *SearchByUrlResponseBodyDataAuctionsResult {
-	s.CouponActivityId = &v
-	return s
-}
-
 func (s *SearchByUrlResponseBodyDataAuctionsResult) SetCouponTotalCount(v string) *SearchByUrlResponseBodyDataAuctionsResult {
 	s.CouponTotalCount = &v
-	return s
-}
-
-func (s *SearchByUrlResponseBodyDataAuctionsResult) SetCouponSendCount(v string) *SearchByUrlResponseBodyDataAuctionsResult {
-	s.CouponSendCount = &v
 	return s
 }
 
@@ -792,8 +749,8 @@ func (s *SearchByUrlResponseBodyDataAuctionsResult) SetCouponSaleTextInfo(v stri
 	return s
 }
 
-func (s *SearchByUrlResponseBodyDataAuctionsResult) SetCalTkRate(v string) *SearchByUrlResponseBodyDataAuctionsResult {
-	s.CalTkRate = &v
+func (s *SearchByUrlResponseBodyDataAuctionsResult) SetCommissionRate(v string) *SearchByUrlResponseBodyDataAuctionsResult {
+	s.CommissionRate = &v
 	return s
 }
 
@@ -804,11 +761,6 @@ func (s *SearchByUrlResponseBodyDataAuctionsResult) SetCouponShareUrl(v string) 
 
 func (s *SearchByUrlResponseBodyDataAuctionsResult) SetClickUrl(v string) *SearchByUrlResponseBodyDataAuctionsResult {
 	s.ClickUrl = &v
-	return s
-}
-
-func (s *SearchByUrlResponseBodyDataAuctionsResult) SetShortUrl(v string) *SearchByUrlResponseBodyDataAuctionsResult {
-	s.ShortUrl = &v
 	return s
 }
 
