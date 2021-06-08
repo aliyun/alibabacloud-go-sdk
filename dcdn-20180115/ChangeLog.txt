@@ -1,3 +1,6 @@
+2021-06-08 Version: v1.0.1
+- Generated golang 2018-01-15 for dcdn.
+
 2021-01-28 Version: v1.0.0
 - AMP Version Change.
 
