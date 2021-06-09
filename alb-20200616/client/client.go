@@ -22,8 +22,6 @@ type ListAclsRequest struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// 查询数量
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// IP版本
-	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
 }
 
 func (s ListAclsRequest) String() string {
@@ -56,11 +54,6 @@ func (s *ListAclsRequest) SetNextToken(v string) *ListAclsRequest {
 
 func (s *ListAclsRequest) SetMaxResults(v int32) *ListAclsRequest {
 	s.MaxResults = &v
-	return s
-}
-
-func (s *ListAclsRequest) SetAddressIPVersion(v string) *ListAclsRequest {
-	s.AddressIPVersion = &v
 	return s
 }
 
@@ -1674,8 +1667,6 @@ type ListServerGroupsResponseBodyServerGroups struct {
 	HealthCheckConfig *ListServerGroupsResponseBodyServerGroupsHealthCheckConfig `json:"HealthCheckConfig,omitempty" xml:"HealthCheckConfig,omitempty" type:"Struct"`
 	// 服务器组协议
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// 关联的实例id
-	RelatedLoadBalancerIds []*string `json:"RelatedLoadBalancerIds,omitempty" xml:"RelatedLoadBalancerIds,omitempty" type:"Repeated"`
 	// 资源组id
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// 调度策略
@@ -1707,11 +1698,6 @@ func (s *ListServerGroupsResponseBodyServerGroups) SetHealthCheckConfig(v *ListS
 
 func (s *ListServerGroupsResponseBodyServerGroups) SetProtocol(v string) *ListServerGroupsResponseBodyServerGroups {
 	s.Protocol = &v
-	return s
-}
-
-func (s *ListServerGroupsResponseBodyServerGroups) SetRelatedLoadBalancerIds(v []*string) *ListServerGroupsResponseBodyServerGroups {
-	s.RelatedLoadBalancerIds = v
 	return s
 }
 
@@ -2049,384 +2035,6 @@ func (s *EnableDeletionProtectionResponse) SetHeaders(v map[string]*string) *Ena
 }
 
 func (s *EnableDeletionProtectionResponse) SetBody(v *EnableDeletionProtectionResponseBody) *EnableDeletionProtectionResponse {
-	s.Body = v
-	return s
-}
-
-type GetListenerHealthStatusRequest struct {
-	// 监听Id
-	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// 是否包含转发规则健康检查结果
-	IncludeRule *bool `json:"IncludeRule,omitempty" xml:"IncludeRule,omitempty"`
-}
-
-func (s GetListenerHealthStatusRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetListenerHealthStatusRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetListenerHealthStatusRequest) SetListenerId(v string) *GetListenerHealthStatusRequest {
-	s.ListenerId = &v
-	return s
-}
-
-func (s *GetListenerHealthStatusRequest) SetIncludeRule(v bool) *GetListenerHealthStatusRequest {
-	s.IncludeRule = &v
-	return s
-}
-
-type GetListenerHealthStatusResponseBody struct {
-	// 监听健康检查结果
-	ListenerHealthStatus []*GetListenerHealthStatusResponseBodyListenerHealthStatus `json:"ListenerHealthStatus,omitempty" xml:"ListenerHealthStatus,omitempty" type:"Repeated"`
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 转发规则健康检查结果
-	RuleHealthStatus []*GetListenerHealthStatusResponseBodyRuleHealthStatus `json:"RuleHealthStatus,omitempty" xml:"RuleHealthStatus,omitempty" type:"Repeated"`
-}
-
-func (s GetListenerHealthStatusResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetListenerHealthStatusResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetListenerHealthStatusResponseBody) SetListenerHealthStatus(v []*GetListenerHealthStatusResponseBodyListenerHealthStatus) *GetListenerHealthStatusResponseBody {
-	s.ListenerHealthStatus = v
-	return s
-}
-
-func (s *GetListenerHealthStatusResponseBody) SetRequestId(v string) *GetListenerHealthStatusResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetListenerHealthStatusResponseBody) SetRuleHealthStatus(v []*GetListenerHealthStatusResponseBodyRuleHealthStatus) *GetListenerHealthStatusResponseBody {
-	s.RuleHealthStatus = v
-	return s
-}
-
-type GetListenerHealthStatusResponseBodyListenerHealthStatus struct {
-	// 监听Id
-	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// 监听的端口号
-	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// 监听的协议
-	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
-	// 服务器组健康检查结果
-	ServerGroupInfos []*GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos `json:"ServerGroupInfos,omitempty" xml:"ServerGroupInfos,omitempty" type:"Repeated"`
-}
-
-func (s GetListenerHealthStatusResponseBodyListenerHealthStatus) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetListenerHealthStatusResponseBodyListenerHealthStatus) GoString() string {
-	return s.String()
-}
-
-func (s *GetListenerHealthStatusResponseBodyListenerHealthStatus) SetListenerId(v string) *GetListenerHealthStatusResponseBodyListenerHealthStatus {
-	s.ListenerId = &v
-	return s
-}
-
-func (s *GetListenerHealthStatusResponseBodyListenerHealthStatus) SetListenerPort(v int32) *GetListenerHealthStatusResponseBodyListenerHealthStatus {
-	s.ListenerPort = &v
-	return s
-}
-
-func (s *GetListenerHealthStatusResponseBodyListenerHealthStatus) SetListenerProtocol(v string) *GetListenerHealthStatusResponseBodyListenerHealthStatus {
-	s.ListenerProtocol = &v
-	return s
-}
-
-func (s *GetListenerHealthStatusResponseBodyListenerHealthStatus) SetServerGroupInfos(v []*GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos) *GetListenerHealthStatusResponseBodyListenerHealthStatus {
-	s.ServerGroupInfos = v
-	return s
-}
-
-type GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos struct {
-	// 健康检查开启/关闭
-	HealthCheckEnabled *string `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
-	// 处于非正常状态的后端服务器
-	NonNormalServers []*GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServers `json:"NonNormalServers,omitempty" xml:"NonNormalServers,omitempty" type:"Repeated"`
-	// 服务器组ID
-	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	// 服务器组使用类型
-	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
-}
-
-func (s GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos) GoString() string {
-	return s.String()
-}
-
-func (s *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos) SetHealthCheckEnabled(v string) *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos {
-	s.HealthCheckEnabled = &v
-	return s
-}
-
-func (s *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos) SetNonNormalServers(v []*GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServers) *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos {
-	s.NonNormalServers = v
-	return s
-}
-
-func (s *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos) SetServerGroupId(v string) *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos {
-	s.ServerGroupId = &v
-	return s
-}
-
-func (s *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos) SetActionType(v string) *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos {
-	s.ActionType = &v
-	return s
-}
-
-type GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServers struct {
-	// 后端服务器端口
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// status为非正常状态时的详细异常原因
-	Reason *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServersReason `json:"Reason,omitempty" xml:"Reason,omitempty" type:"Struct"`
-	// 后端服务器id
-	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	// 后端服务器Ip
-	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
-	// 健康检查状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServers) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServers) GoString() string {
-	return s.String()
-}
-
-func (s *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServers) SetPort(v int32) *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServers {
-	s.Port = &v
-	return s
-}
-
-func (s *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServers) SetReason(v *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServersReason) *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServers {
-	s.Reason = v
-	return s
-}
-
-func (s *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServers) SetServerId(v string) *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServers {
-	s.ServerId = &v
-	return s
-}
-
-func (s *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServers) SetServerIp(v string) *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServers {
-	s.ServerIp = &v
-	return s
-}
-
-func (s *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServers) SetStatus(v string) *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServers {
-	s.Status = &v
-	return s
-}
-
-type GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServersReason struct {
-	// 后端实际的返回码信息
-	ActualResponse *string `json:"ActualResponse,omitempty" xml:"ActualResponse,omitempty"`
-	// 用户预期的后端返回码信息
-	ExpectedResponse *string `json:"ExpectedResponse,omitempty" xml:"ExpectedResponse,omitempty"`
-	// 失败reasonCode
-	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-}
-
-func (s GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServersReason) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServersReason) GoString() string {
-	return s.String()
-}
-
-func (s *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServersReason) SetActualResponse(v string) *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServersReason {
-	s.ActualResponse = &v
-	return s
-}
-
-func (s *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServersReason) SetExpectedResponse(v string) *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServersReason {
-	s.ExpectedResponse = &v
-	return s
-}
-
-func (s *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServersReason) SetReasonCode(v string) *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServersReason {
-	s.ReasonCode = &v
-	return s
-}
-
-type GetListenerHealthStatusResponseBodyRuleHealthStatus struct {
-	// 转发规则ID
-	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// 服务器组健康检查结果
-	ServerGroupInfos []*GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfos `json:"ServerGroupInfos,omitempty" xml:"ServerGroupInfos,omitempty" type:"Repeated"`
-}
-
-func (s GetListenerHealthStatusResponseBodyRuleHealthStatus) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetListenerHealthStatusResponseBodyRuleHealthStatus) GoString() string {
-	return s.String()
-}
-
-func (s *GetListenerHealthStatusResponseBodyRuleHealthStatus) SetRuleId(v string) *GetListenerHealthStatusResponseBodyRuleHealthStatus {
-	s.RuleId = &v
-	return s
-}
-
-func (s *GetListenerHealthStatusResponseBodyRuleHealthStatus) SetServerGroupInfos(v []*GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfos) *GetListenerHealthStatusResponseBodyRuleHealthStatus {
-	s.ServerGroupInfos = v
-	return s
-}
-
-type GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfos struct {
-	// 健康检查开启/关闭
-	HealthCheckEnabled *string `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
-	// 处于非正常状态的后端服务器
-	NonNormalServers []*GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServers `json:"NonNormalServers,omitempty" xml:"NonNormalServers,omitempty" type:"Repeated"`
-	// 服务器组ID
-	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	// 服务器组使用类型
-	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
-}
-
-func (s GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfos) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfos) GoString() string {
-	return s.String()
-}
-
-func (s *GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfos) SetHealthCheckEnabled(v string) *GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfos {
-	s.HealthCheckEnabled = &v
-	return s
-}
-
-func (s *GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfos) SetNonNormalServers(v []*GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServers) *GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfos {
-	s.NonNormalServers = v
-	return s
-}
-
-func (s *GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfos) SetServerGroupId(v string) *GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfos {
-	s.ServerGroupId = &v
-	return s
-}
-
-func (s *GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfos) SetActionType(v string) *GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfos {
-	s.ActionType = &v
-	return s
-}
-
-type GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServers struct {
-	// 后端服务器端口
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// status为非正常状态时的详细异常原因
-	Reason *GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServersReason `json:"Reason,omitempty" xml:"Reason,omitempty" type:"Struct"`
-	// 后端服务器Id
-	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	// 后端服务器ID
-	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
-	// 健康检查状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServers) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServers) GoString() string {
-	return s.String()
-}
-
-func (s *GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServers) SetPort(v int32) *GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServers {
-	s.Port = &v
-	return s
-}
-
-func (s *GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServers) SetReason(v *GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServersReason) *GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServers {
-	s.Reason = v
-	return s
-}
-
-func (s *GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServers) SetServerId(v string) *GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServers {
-	s.ServerId = &v
-	return s
-}
-
-func (s *GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServers) SetServerIp(v string) *GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServers {
-	s.ServerIp = &v
-	return s
-}
-
-func (s *GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServers) SetStatus(v string) *GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServers {
-	s.Status = &v
-	return s
-}
-
-type GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServersReason struct {
-	// 后端实际的返回码信息
-	ActualResponse *string `json:"ActualResponse,omitempty" xml:"ActualResponse,omitempty"`
-	// 用户预期的后端返回码信息
-	ExpectedResponse *string `json:"ExpectedResponse,omitempty" xml:"ExpectedResponse,omitempty"`
-	// 失败reasonCode
-	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-}
-
-func (s GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServersReason) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServersReason) GoString() string {
-	return s.String()
-}
-
-func (s *GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServersReason) SetActualResponse(v string) *GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServersReason {
-	s.ActualResponse = &v
-	return s
-}
-
-func (s *GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServersReason) SetExpectedResponse(v string) *GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServersReason {
-	s.ExpectedResponse = &v
-	return s
-}
-
-func (s *GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServersReason) SetReasonCode(v string) *GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServersReason {
-	s.ReasonCode = &v
-	return s
-}
-
-type GetListenerHealthStatusResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetListenerHealthStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetListenerHealthStatusResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetListenerHealthStatusResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetListenerHealthStatusResponse) SetHeaders(v map[string]*string) *GetListenerHealthStatusResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetListenerHealthStatusResponse) SetBody(v *GetListenerHealthStatusResponseBody) *GetListenerHealthStatusResponse {
 	s.Body = v
 	return s
 }
@@ -7984,8 +7592,6 @@ func (s *ListListenerCertificatesResponse) SetBody(v *ListListenerCertificatesRe
 type CreateAclRequest struct {
 	// Acl名称
 	AclName *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
-	// 地址协议版本
-	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
 	// 幂等Token
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// dryRun
@@ -8004,11 +7610,6 @@ func (s CreateAclRequest) GoString() string {
 
 func (s *CreateAclRequest) SetAclName(v string) *CreateAclRequest {
 	s.AclName = &v
-	return s
-}
-
-func (s *CreateAclRequest) SetAddressIpVersion(v string) *CreateAclRequest {
-	s.AddressIpVersion = &v
 	return s
 }
 
@@ -12184,7 +11785,29 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = tea.String("")
+	client.EndpointRule = tea.String("central")
+	client.EndpointMap = map[string]*string{
+		"cn-beijing":     tea.String("alb.cn-beijing.aliyuncs.com"),
+		"cn-zhangjiakou": tea.String("alb.cn-zhangjiakou.aliyuncs.com"),
+		"cn-hangzhou":    tea.String("alb.cn-hangzhou.aliyuncs.com"),
+		"cn-shanghai":    tea.String("alb.cn-shanghai.aliyuncs.com"),
+		"cn-shenzhen":    tea.String("alb.cn-shenzhen.aliyuncs.com"),
+		"cn-hongkong":    tea.String("alb.cn-hongkong.aliyuncs.com"),
+		"ap-southeast-1": tea.String("alb.ap-southeast-1.aliyuncs.com"),
+		"ap-southeast-2": tea.String("alb.ap-southeast-2.aliyuncs.com"),
+		"ap-southeast-5": tea.String("alb.ap-southeast-5.aliyuncs.com"),
+		"us-east-1":      tea.String("alb.us-east-1.aliyuncs.com"),
+		"eu-central-1":   tea.String("alb.eu-central-1.aliyuncs.com"),
+		"ap-south-1":     tea.String("alb.ap-south-1.aliyuncs.com"),
+		"ap-northeast-1": tea.String("alb.ap-northeast-1.aliyuncs.com"),
+		"ap-southeast-3": tea.String("alb.ap-southeast-3.aliyuncs.com"),
+		"cn-chengdu":     tea.String("alb.cn-chengdu.aliyuncs.com"),
+		"cn-huhehaote":   tea.String("alb.cn-huhehaote.aliyuncs.com"),
+		"cn-qingdao":     tea.String("alb.cn-qingdao.aliyuncs.com"),
+		"cn-wulanchabu":  tea.String("alb.cn-wulanchabu.aliyuncs.com"),
+		"eu-west-1":      tea.String("alb.eu-west-1.aliyuncs.com"),
+		"us-west-1":      tea.String("alb.us-west-1.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -12545,34 +12168,6 @@ func (client *Client) EnableDeletionProtection(request *EnableDeletionProtection
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableDeletionProtectionResponse{}
 	_body, _err := client.EnableDeletionProtectionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetListenerHealthStatusWithOptions(request *GetListenerHealthStatusRequest, runtime *util.RuntimeOptions) (_result *GetListenerHealthStatusResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetListenerHealthStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetListenerHealthStatus"), tea.String("2020-06-16"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetListenerHealthStatus(request *GetListenerHealthStatusRequest) (_result *GetListenerHealthStatusResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetListenerHealthStatusResponse{}
-	_body, _err := client.GetListenerHealthStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
