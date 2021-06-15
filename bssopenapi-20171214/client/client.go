@@ -12,6 +12,140 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type AddAccountRelationRequest struct {
+	RelationType    *string   `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
+	ParentUserId    *int64    `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
+	ChildNick       *string   `json:"ChildNick,omitempty" xml:"ChildNick,omitempty"`
+	ChildUserId     *int64    `json:"ChildUserId,omitempty" xml:"ChildUserId,omitempty"`
+	RequestId       *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PermissionCodes []*string `json:"PermissionCodes,omitempty" xml:"PermissionCodes,omitempty" type:"Repeated"`
+	RoleCodes       []*string `json:"RoleCodes,omitempty" xml:"RoleCodes,omitempty" type:"Repeated"`
+}
+
+func (s AddAccountRelationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddAccountRelationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddAccountRelationRequest) SetRelationType(v string) *AddAccountRelationRequest {
+	s.RelationType = &v
+	return s
+}
+
+func (s *AddAccountRelationRequest) SetParentUserId(v int64) *AddAccountRelationRequest {
+	s.ParentUserId = &v
+	return s
+}
+
+func (s *AddAccountRelationRequest) SetChildNick(v string) *AddAccountRelationRequest {
+	s.ChildNick = &v
+	return s
+}
+
+func (s *AddAccountRelationRequest) SetChildUserId(v int64) *AddAccountRelationRequest {
+	s.ChildUserId = &v
+	return s
+}
+
+func (s *AddAccountRelationRequest) SetRequestId(v string) *AddAccountRelationRequest {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddAccountRelationRequest) SetPermissionCodes(v []*string) *AddAccountRelationRequest {
+	s.PermissionCodes = v
+	return s
+}
+
+func (s *AddAccountRelationRequest) SetRoleCodes(v []*string) *AddAccountRelationRequest {
+	s.RoleCodes = v
+	return s
+}
+
+type AddAccountRelationResponseBody struct {
+	Code      *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data      *AddAccountRelationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s AddAccountRelationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddAccountRelationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddAccountRelationResponseBody) SetCode(v string) *AddAccountRelationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AddAccountRelationResponseBody) SetMessage(v string) *AddAccountRelationResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AddAccountRelationResponseBody) SetRequestId(v string) *AddAccountRelationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddAccountRelationResponseBody) SetSuccess(v bool) *AddAccountRelationResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *AddAccountRelationResponseBody) SetData(v *AddAccountRelationResponseBodyData) *AddAccountRelationResponseBody {
+	s.Data = v
+	return s
+}
+
+type AddAccountRelationResponseBodyData struct {
+	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+}
+
+func (s AddAccountRelationResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddAccountRelationResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *AddAccountRelationResponseBodyData) SetHostId(v string) *AddAccountRelationResponseBodyData {
+	s.HostId = &v
+	return s
+}
+
+type AddAccountRelationResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *AddAccountRelationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddAccountRelationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddAccountRelationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddAccountRelationResponse) SetHeaders(v map[string]*string) *AddAccountRelationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddAccountRelationResponse) SetBody(v *AddAccountRelationResponseBody) *AddAccountRelationResponse {
+	s.Body = v
+	return s
+}
+
 type AllocateCostUnitResourceRequest struct {
 	FromUnitUserId       *int64                                                 `json:"FromUnitUserId,omitempty" xml:"FromUnitUserId,omitempty"`
 	FromUnitId           *int64                                                 `json:"FromUnitId,omitempty" xml:"FromUnitId,omitempty"`
@@ -550,6 +684,134 @@ func (s *ChangeResellerConsumeAmountResponse) SetHeaders(v map[string]*string) *
 }
 
 func (s *ChangeResellerConsumeAmountResponse) SetBody(v *ChangeResellerConsumeAmountResponseBody) *ChangeResellerConsumeAmountResponse {
+	s.Body = v
+	return s
+}
+
+type ConfirmRelationRequest struct {
+	RelationType    *string   `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
+	ParentUserId    *int64    `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
+	ConfirmCode     *string   `json:"ConfirmCode,omitempty" xml:"ConfirmCode,omitempty"`
+	ChildUserId     *int64    `json:"ChildUserId,omitempty" xml:"ChildUserId,omitempty"`
+	RequestId       *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PermissionCodes []*string `json:"PermissionCodes,omitempty" xml:"PermissionCodes,omitempty" type:"Repeated"`
+}
+
+func (s ConfirmRelationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfirmRelationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ConfirmRelationRequest) SetRelationType(v string) *ConfirmRelationRequest {
+	s.RelationType = &v
+	return s
+}
+
+func (s *ConfirmRelationRequest) SetParentUserId(v int64) *ConfirmRelationRequest {
+	s.ParentUserId = &v
+	return s
+}
+
+func (s *ConfirmRelationRequest) SetConfirmCode(v string) *ConfirmRelationRequest {
+	s.ConfirmCode = &v
+	return s
+}
+
+func (s *ConfirmRelationRequest) SetChildUserId(v int64) *ConfirmRelationRequest {
+	s.ChildUserId = &v
+	return s
+}
+
+func (s *ConfirmRelationRequest) SetRequestId(v string) *ConfirmRelationRequest {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ConfirmRelationRequest) SetPermissionCodes(v []*string) *ConfirmRelationRequest {
+	s.PermissionCodes = v
+	return s
+}
+
+type ConfirmRelationResponseBody struct {
+	Code      *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data      *ConfirmRelationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s ConfirmRelationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfirmRelationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ConfirmRelationResponseBody) SetCode(v string) *ConfirmRelationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ConfirmRelationResponseBody) SetMessage(v string) *ConfirmRelationResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ConfirmRelationResponseBody) SetRequestId(v string) *ConfirmRelationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ConfirmRelationResponseBody) SetSuccess(v bool) *ConfirmRelationResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ConfirmRelationResponseBody) SetData(v *ConfirmRelationResponseBodyData) *ConfirmRelationResponseBody {
+	s.Data = v
+	return s
+}
+
+type ConfirmRelationResponseBodyData struct {
+	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+}
+
+func (s ConfirmRelationResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfirmRelationResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ConfirmRelationResponseBodyData) SetHostId(v string) *ConfirmRelationResponseBodyData {
+	s.HostId = &v
+	return s
+}
+
+type ConfirmRelationResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ConfirmRelationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ConfirmRelationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfirmRelationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ConfirmRelationResponse) SetHeaders(v map[string]*string) *ConfirmRelationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ConfirmRelationResponse) SetBody(v *ConfirmRelationResponseBody) *ConfirmRelationResponse {
 	s.Body = v
 	return s
 }
@@ -5242,6 +5504,146 @@ func (s *GetSubscriptionPriceResponse) SetBody(v *GetSubscriptionPriceResponseBo
 	return s
 }
 
+type ModifyAccountRelationRequest struct {
+	RelationType      *string   `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
+	RelationOperation *string   `json:"RelationOperation,omitempty" xml:"RelationOperation,omitempty"`
+	ParentUserId      *int64    `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
+	ChildNick         *string   `json:"ChildNick,omitempty" xml:"ChildNick,omitempty"`
+	ChildUserId       *int64    `json:"ChildUserId,omitempty" xml:"ChildUserId,omitempty"`
+	RequestId         *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RoleCodes         []*string `json:"RoleCodes,omitempty" xml:"RoleCodes,omitempty" type:"Repeated"`
+	PermissionCodes   []*string `json:"PermissionCodes,omitempty" xml:"PermissionCodes,omitempty" type:"Repeated"`
+}
+
+func (s ModifyAccountRelationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAccountRelationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAccountRelationRequest) SetRelationType(v string) *ModifyAccountRelationRequest {
+	s.RelationType = &v
+	return s
+}
+
+func (s *ModifyAccountRelationRequest) SetRelationOperation(v string) *ModifyAccountRelationRequest {
+	s.RelationOperation = &v
+	return s
+}
+
+func (s *ModifyAccountRelationRequest) SetParentUserId(v int64) *ModifyAccountRelationRequest {
+	s.ParentUserId = &v
+	return s
+}
+
+func (s *ModifyAccountRelationRequest) SetChildNick(v string) *ModifyAccountRelationRequest {
+	s.ChildNick = &v
+	return s
+}
+
+func (s *ModifyAccountRelationRequest) SetChildUserId(v int64) *ModifyAccountRelationRequest {
+	s.ChildUserId = &v
+	return s
+}
+
+func (s *ModifyAccountRelationRequest) SetRequestId(v string) *ModifyAccountRelationRequest {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyAccountRelationRequest) SetRoleCodes(v []*string) *ModifyAccountRelationRequest {
+	s.RoleCodes = v
+	return s
+}
+
+func (s *ModifyAccountRelationRequest) SetPermissionCodes(v []*string) *ModifyAccountRelationRequest {
+	s.PermissionCodes = v
+	return s
+}
+
+type ModifyAccountRelationResponseBody struct {
+	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data      *ModifyAccountRelationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s ModifyAccountRelationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAccountRelationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAccountRelationResponseBody) SetCode(v string) *ModifyAccountRelationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ModifyAccountRelationResponseBody) SetMessage(v string) *ModifyAccountRelationResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ModifyAccountRelationResponseBody) SetRequestId(v string) *ModifyAccountRelationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyAccountRelationResponseBody) SetSuccess(v bool) *ModifyAccountRelationResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ModifyAccountRelationResponseBody) SetData(v *ModifyAccountRelationResponseBodyData) *ModifyAccountRelationResponseBody {
+	s.Data = v
+	return s
+}
+
+type ModifyAccountRelationResponseBodyData struct {
+	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+}
+
+func (s ModifyAccountRelationResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAccountRelationResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAccountRelationResponseBodyData) SetHostId(v string) *ModifyAccountRelationResponseBodyData {
+	s.HostId = &v
+	return s
+}
+
+type ModifyAccountRelationResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ModifyAccountRelationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyAccountRelationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAccountRelationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAccountRelationResponse) SetHeaders(v map[string]*string) *ModifyAccountRelationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyAccountRelationResponse) SetBody(v *ModifyAccountRelationResponseBody) *ModifyAccountRelationResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyCostUnitRequest struct {
 	UnitEntityList []*ModifyCostUnitRequestUnitEntityList `json:"UnitEntityList,omitempty" xml:"UnitEntityList,omitempty" type:"Repeated"`
 }
@@ -8527,8 +8929,9 @@ type QueryDPUtilizationDetailRequest struct {
 	DeductedInstanceId *string `json:"DeductedInstanceId,omitempty" xml:"DeductedInstanceId,omitempty"`
 	StartTime          *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	EndTime            *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	PageNum            *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize           *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	LastToken          *string `json:"LastToken,omitempty" xml:"LastToken,omitempty"`
+	Limit              *int32  `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	IncludeShare       *bool   `json:"IncludeShare,omitempty" xml:"IncludeShare,omitempty"`
 }
 
 func (s QueryDPUtilizationDetailRequest) String() string {
@@ -8569,13 +8972,18 @@ func (s *QueryDPUtilizationDetailRequest) SetEndTime(v string) *QueryDPUtilizati
 	return s
 }
 
-func (s *QueryDPUtilizationDetailRequest) SetPageNum(v int32) *QueryDPUtilizationDetailRequest {
-	s.PageNum = &v
+func (s *QueryDPUtilizationDetailRequest) SetLastToken(v string) *QueryDPUtilizationDetailRequest {
+	s.LastToken = &v
 	return s
 }
 
-func (s *QueryDPUtilizationDetailRequest) SetPageSize(v int32) *QueryDPUtilizationDetailRequest {
-	s.PageSize = &v
+func (s *QueryDPUtilizationDetailRequest) SetLimit(v int32) *QueryDPUtilizationDetailRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *QueryDPUtilizationDetailRequest) SetIncludeShare(v bool) *QueryDPUtilizationDetailRequest {
+	s.IncludeShare = &v
 	return s
 }
 
@@ -8621,9 +9029,7 @@ func (s *QueryDPUtilizationDetailResponseBody) SetData(v *QueryDPUtilizationDeta
 }
 
 type QueryDPUtilizationDetailResponseBodyData struct {
-	PageNum    *int64                                              `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize   *int64                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount *int64                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	NextToken  *string                                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	DetailList *QueryDPUtilizationDetailResponseBodyDataDetailList `json:"DetailList,omitempty" xml:"DetailList,omitempty" type:"Struct"`
 }
 
@@ -8635,18 +9041,8 @@ func (s QueryDPUtilizationDetailResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *QueryDPUtilizationDetailResponseBodyData) SetPageNum(v int64) *QueryDPUtilizationDetailResponseBodyData {
-	s.PageNum = &v
-	return s
-}
-
-func (s *QueryDPUtilizationDetailResponseBodyData) SetPageSize(v int64) *QueryDPUtilizationDetailResponseBodyData {
-	s.PageSize = &v
-	return s
-}
-
-func (s *QueryDPUtilizationDetailResponseBodyData) SetTotalCount(v int64) *QueryDPUtilizationDetailResponseBodyData {
-	s.TotalCount = &v
+func (s *QueryDPUtilizationDetailResponseBodyData) SetNextToken(v string) *QueryDPUtilizationDetailResponseBodyData {
+	s.NextToken = &v
 	return s
 }
 
@@ -8675,7 +9071,8 @@ func (s *QueryDPUtilizationDetailResponseBodyDataDetailList) SetDetailList(v []*
 type QueryDPUtilizationDetailResponseBodyDataDetailListDetailList struct {
 	DeductedInstanceId    *string  `json:"DeductedInstanceId,omitempty" xml:"DeductedInstanceId,omitempty"`
 	InstanceId            *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	DeductHours           *string  `json:"DeductHours,omitempty" xml:"DeductHours,omitempty"`
+	DeductHours           *float32 `json:"DeductHours,omitempty" xml:"DeductHours,omitempty"`
+	ShareUid              *int64   `json:"ShareUid,omitempty" xml:"ShareUid,omitempty"`
 	DeductDate            *string  `json:"DeductDate,omitempty" xml:"DeductDate,omitempty"`
 	InstanceSpec          *string  `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
 	DeductedCommodityCode *string  `json:"DeductedCommodityCode,omitempty" xml:"DeductedCommodityCode,omitempty"`
@@ -8706,8 +9103,13 @@ func (s *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList) SetInstan
 	return s
 }
 
-func (s *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList) SetDeductHours(v string) *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList {
+func (s *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList) SetDeductHours(v float32) *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList {
 	s.DeductHours = &v
+	return s
+}
+
+func (s *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList) SetShareUid(v int64) *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList {
+	s.ShareUid = &v
 	return s
 }
 
@@ -14794,6 +15196,122 @@ func (s *QueryUserOmsDataResponse) SetBody(v *QueryUserOmsDataResponseBody) *Que
 	return s
 }
 
+type RelieveAccountRelationRequest struct {
+	RelationType *string `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
+	ParentUserId *int64  `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
+	ChildUserId  *int64  `json:"ChildUserId,omitempty" xml:"ChildUserId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RelieveAccountRelationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RelieveAccountRelationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RelieveAccountRelationRequest) SetRelationType(v string) *RelieveAccountRelationRequest {
+	s.RelationType = &v
+	return s
+}
+
+func (s *RelieveAccountRelationRequest) SetParentUserId(v int64) *RelieveAccountRelationRequest {
+	s.ParentUserId = &v
+	return s
+}
+
+func (s *RelieveAccountRelationRequest) SetChildUserId(v int64) *RelieveAccountRelationRequest {
+	s.ChildUserId = &v
+	return s
+}
+
+func (s *RelieveAccountRelationRequest) SetRequestId(v string) *RelieveAccountRelationRequest {
+	s.RequestId = &v
+	return s
+}
+
+type RelieveAccountRelationResponseBody struct {
+	Code      *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data      *RelieveAccountRelationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s RelieveAccountRelationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RelieveAccountRelationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RelieveAccountRelationResponseBody) SetCode(v string) *RelieveAccountRelationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RelieveAccountRelationResponseBody) SetMessage(v string) *RelieveAccountRelationResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RelieveAccountRelationResponseBody) SetRequestId(v string) *RelieveAccountRelationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RelieveAccountRelationResponseBody) SetSuccess(v bool) *RelieveAccountRelationResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *RelieveAccountRelationResponseBody) SetData(v *RelieveAccountRelationResponseBodyData) *RelieveAccountRelationResponseBody {
+	s.Data = v
+	return s
+}
+
+type RelieveAccountRelationResponseBodyData struct {
+	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+}
+
+func (s RelieveAccountRelationResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RelieveAccountRelationResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *RelieveAccountRelationResponseBodyData) SetHostId(v string) *RelieveAccountRelationResponseBodyData {
+	s.HostId = &v
+	return s
+}
+
+type RelieveAccountRelationResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RelieveAccountRelationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RelieveAccountRelationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RelieveAccountRelationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RelieveAccountRelationResponse) SetHeaders(v map[string]*string) *RelieveAccountRelationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RelieveAccountRelationResponse) SetBody(v *RelieveAccountRelationResponseBody) *RelieveAccountRelationResponse {
+	s.Body = v
+	return s
+}
+
 type RenewInstanceRequest struct {
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -16372,6 +16890,34 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+func (client *Client) AddAccountRelationWithOptions(request *AddAccountRelationRequest, runtime *util.RuntimeOptions) (_result *AddAccountRelationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &AddAccountRelationResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("AddAccountRelation"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddAccountRelation(request *AddAccountRelationRequest) (_result *AddAccountRelationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddAccountRelationResponse{}
+	_body, _err := client.AddAccountRelationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) AllocateCostUnitResourceWithOptions(request *AllocateCostUnitResourceRequest, runtime *util.RuntimeOptions) (_result *AllocateCostUnitResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16477,6 +17023,34 @@ func (client *Client) ChangeResellerConsumeAmount(request *ChangeResellerConsume
 	runtime := &util.RuntimeOptions{}
 	_result = &ChangeResellerConsumeAmountResponse{}
 	_body, _err := client.ChangeResellerConsumeAmountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ConfirmRelationWithOptions(request *ConfirmRelationRequest, runtime *util.RuntimeOptions) (_result *ConfirmRelationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ConfirmRelationResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ConfirmRelation"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ConfirmRelation(request *ConfirmRelationRequest) (_result *ConfirmRelationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ConfirmRelationResponse{}
+	_body, _err := client.ConfirmRelationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17059,6 +17633,34 @@ func (client *Client) GetSubscriptionPrice(request *GetSubscriptionPriceRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSubscriptionPriceResponse{}
 	_body, _err := client.GetSubscriptionPriceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyAccountRelationWithOptions(request *ModifyAccountRelationRequest, runtime *util.RuntimeOptions) (_result *ModifyAccountRelationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ModifyAccountRelationResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ModifyAccountRelation"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyAccountRelation(request *ModifyAccountRelationRequest) (_result *ModifyAccountRelationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyAccountRelationResponse{}
+	_body, _err := client.ModifyAccountRelationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18084,6 +18686,34 @@ func (client *Client) QueryUserOmsData(request *QueryUserOmsDataRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryUserOmsDataResponse{}
 	_body, _err := client.QueryUserOmsDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RelieveAccountRelationWithOptions(request *RelieveAccountRelationRequest, runtime *util.RuntimeOptions) (_result *RelieveAccountRelationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &RelieveAccountRelationResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("RelieveAccountRelation"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RelieveAccountRelation(request *RelieveAccountRelationRequest) (_result *RelieveAccountRelationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RelieveAccountRelationResponse{}
+	_body, _err := client.RelieveAccountRelationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
