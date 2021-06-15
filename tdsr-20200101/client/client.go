@@ -1057,6 +1057,93 @@ func (s *OptimizeRightAngleResponse) SetBody(v *OptimizeRightAngleResponseBody) 
 	return s
 }
 
+type AddRelativePositionRequest struct {
+	// 场景ID
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// 相对位置信息
+	RelativePosition *string `json:"RelativePosition,omitempty" xml:"RelativePosition,omitempty"`
+}
+
+func (s AddRelativePositionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddRelativePositionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddRelativePositionRequest) SetSceneId(v string) *AddRelativePositionRequest {
+	s.SceneId = &v
+	return s
+}
+
+func (s *AddRelativePositionRequest) SetRelativePosition(v string) *AddRelativePositionRequest {
+	s.RelativePosition = &v
+	return s
+}
+
+type AddRelativePositionResponseBody struct {
+	// 请求ID，与入参requestId对应
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 返回码
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 是否请求成功
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 错误消息
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+}
+
+func (s AddRelativePositionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddRelativePositionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddRelativePositionResponseBody) SetRequestId(v string) *AddRelativePositionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddRelativePositionResponseBody) SetCode(v int64) *AddRelativePositionResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AddRelativePositionResponseBody) SetSuccess(v bool) *AddRelativePositionResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *AddRelativePositionResponseBody) SetMessage(v string) *AddRelativePositionResponseBody {
+	s.Message = &v
+	return s
+}
+
+type AddRelativePositionResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *AddRelativePositionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddRelativePositionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddRelativePositionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddRelativePositionResponse) SetHeaders(v map[string]*string) *AddRelativePositionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddRelativePositionResponse) SetBody(v *AddRelativePositionResponseBody) *AddRelativePositionResponse {
+	s.Body = v
+	return s
+}
+
 type DetailSceneRequest struct {
 	// 场景Id
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
@@ -7248,6 +7335,34 @@ func (client *Client) OptimizeRightAngle(request *OptimizeRightAngleRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &OptimizeRightAngleResponse{}
 	_body, _err := client.OptimizeRightAngleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddRelativePositionWithOptions(request *AddRelativePositionRequest, runtime *util.RuntimeOptions) (_result *AddRelativePositionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &AddRelativePositionResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("AddRelativePosition"), tea.String("2020-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddRelativePosition(request *AddRelativePositionRequest) (_result *AddRelativePositionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddRelativePositionResponse{}
+	_body, _err := client.AddRelativePositionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
