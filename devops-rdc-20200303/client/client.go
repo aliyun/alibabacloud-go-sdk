@@ -41,11 +41,11 @@ func (s *BatchInsertMembersRequest) SetRealPk(v string) *BatchInsertMembersReque
 }
 
 type BatchInsertMembersResponseBody struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Object       *bool   `json:"Object,omitempty" xml:"Object,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 }
 
 func (s BatchInsertMembersResponseBody) String() string {
@@ -54,6 +54,11 @@ func (s BatchInsertMembersResponseBody) String() string {
 
 func (s BatchInsertMembersResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *BatchInsertMembersResponseBody) SetErrorMessage(v string) *BatchInsertMembersResponseBody {
+	s.ErrorMessage = &v
+	return s
 }
 
 func (s *BatchInsertMembersResponseBody) SetRequestId(v string) *BatchInsertMembersResponseBody {
@@ -66,18 +71,13 @@ func (s *BatchInsertMembersResponseBody) SetObject(v bool) *BatchInsertMembersRe
 	return s
 }
 
-func (s *BatchInsertMembersResponseBody) SetErrorCode(v string) *BatchInsertMembersResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *BatchInsertMembersResponseBody) SetErrorMessage(v string) *BatchInsertMembersResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
 func (s *BatchInsertMembersResponseBody) SetSuccess(v bool) *BatchInsertMembersResponseBody {
 	s.Success = &v
+	return s
+}
+
+func (s *BatchInsertMembersResponseBody) SetErrorCode(v string) *BatchInsertMembersResponseBody {
+	s.ErrorCode = &v
 	return s
 }
 
@@ -141,9 +141,9 @@ func (s *CancelPipelineRequest) SetUserPk(v string) *CancelPipelineRequest {
 
 type CancelPipelineResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Object       *bool   `json:"Object,omitempty" xml:"Object,omitempty"`
 	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -160,6 +160,11 @@ func (s *CancelPipelineResponseBody) SetRequestId(v string) *CancelPipelineRespo
 	return s
 }
 
+func (s *CancelPipelineResponseBody) SetErrorMessage(v string) *CancelPipelineResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
 func (s *CancelPipelineResponseBody) SetObject(v bool) *CancelPipelineResponseBody {
 	s.Object = &v
 	return s
@@ -167,11 +172,6 @@ func (s *CancelPipelineResponseBody) SetObject(v bool) *CancelPipelineResponseBo
 
 func (s *CancelPipelineResponseBody) SetErrorCode(v string) *CancelPipelineResponseBody {
 	s.ErrorCode = &v
-	return s
-}
-
-func (s *CancelPipelineResponseBody) SetErrorMessage(v string) *CancelPipelineResponseBody {
-	s.ErrorMessage = &v
 	return s
 }
 
@@ -221,11 +221,11 @@ func (s *CheckAliyunAccountExistsRequest) SetUserPk(v string) *CheckAliyunAccoun
 }
 
 type CheckAliyunAccountExistsResponseBody struct {
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ErrorMsg   *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Object     *bool   `json:"Object,omitempty" xml:"Object,omitempty"`
-	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	Successful *bool   `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 }
 
 func (s CheckAliyunAccountExistsResponseBody) String() string {
@@ -236,13 +236,13 @@ func (s CheckAliyunAccountExistsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CheckAliyunAccountExistsResponseBody) SetRequestId(v string) *CheckAliyunAccountExistsResponseBody {
-	s.RequestId = &v
+func (s *CheckAliyunAccountExistsResponseBody) SetErrorMsg(v string) *CheckAliyunAccountExistsResponseBody {
+	s.ErrorMsg = &v
 	return s
 }
 
-func (s *CheckAliyunAccountExistsResponseBody) SetErrorMsg(v string) *CheckAliyunAccountExistsResponseBody {
-	s.ErrorMsg = &v
+func (s *CheckAliyunAccountExistsResponseBody) SetRequestId(v string) *CheckAliyunAccountExistsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -251,13 +251,13 @@ func (s *CheckAliyunAccountExistsResponseBody) SetObject(v bool) *CheckAliyunAcc
 	return s
 }
 
-func (s *CheckAliyunAccountExistsResponseBody) SetErrorCode(v string) *CheckAliyunAccountExistsResponseBody {
-	s.ErrorCode = &v
+func (s *CheckAliyunAccountExistsResponseBody) SetSuccessful(v bool) *CheckAliyunAccountExistsResponseBody {
+	s.Successful = &v
 	return s
 }
 
-func (s *CheckAliyunAccountExistsResponseBody) SetSuccessful(v bool) *CheckAliyunAccountExistsResponseBody {
-	s.Successful = &v
+func (s *CheckAliyunAccountExistsResponseBody) SetErrorCode(v string) *CheckAliyunAccountExistsResponseBody {
+	s.ErrorCode = &v
 	return s
 }
 
@@ -326,11 +326,11 @@ func (s *CreateCommonGroupRequest) SetName(v string) *CreateCommonGroupRequest {
 }
 
 type CreateCommonGroupResponseBody struct {
-	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ErrorMsg   *string                              `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	Object     *CreateCommonGroupResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
-	ErrorCode  *string                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Successful *bool                                `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object     *CreateCommonGroupResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
 }
 
 func (s CreateCommonGroupResponseBody) String() string {
@@ -341,18 +341,18 @@ func (s CreateCommonGroupResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateCommonGroupResponseBody) SetRequestId(v string) *CreateCommonGroupResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *CreateCommonGroupResponseBody) SetErrorMsg(v string) *CreateCommonGroupResponseBody {
 	s.ErrorMsg = &v
 	return s
 }
 
-func (s *CreateCommonGroupResponseBody) SetObject(v *CreateCommonGroupResponseBodyObject) *CreateCommonGroupResponseBody {
-	s.Object = v
+func (s *CreateCommonGroupResponseBody) SetRequestId(v string) *CreateCommonGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateCommonGroupResponseBody) SetSuccessful(v bool) *CreateCommonGroupResponseBody {
+	s.Successful = &v
 	return s
 }
 
@@ -361,8 +361,8 @@ func (s *CreateCommonGroupResponseBody) SetErrorCode(v string) *CreateCommonGrou
 	return s
 }
 
-func (s *CreateCommonGroupResponseBody) SetSuccessful(v bool) *CreateCommonGroupResponseBody {
-	s.Successful = &v
+func (s *CreateCommonGroupResponseBody) SetObject(v *CreateCommonGroupResponseBodyObject) *CreateCommonGroupResponseBody {
+	s.Object = v
 	return s
 }
 
@@ -454,11 +454,11 @@ func (s *CreateCredentialRequest) SetUserPk(v string) *CreateCredentialRequest {
 }
 
 type CreateCredentialResponseBody struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Object       *int64  `json:"Object,omitempty" xml:"Object,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 }
 
 func (s CreateCredentialResponseBody) String() string {
@@ -467,6 +467,11 @@ func (s CreateCredentialResponseBody) String() string {
 
 func (s CreateCredentialResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateCredentialResponseBody) SetErrorMessage(v string) *CreateCredentialResponseBody {
+	s.ErrorMessage = &v
+	return s
 }
 
 func (s *CreateCredentialResponseBody) SetRequestId(v string) *CreateCredentialResponseBody {
@@ -479,18 +484,13 @@ func (s *CreateCredentialResponseBody) SetObject(v int64) *CreateCredentialRespo
 	return s
 }
 
-func (s *CreateCredentialResponseBody) SetErrorCode(v string) *CreateCredentialResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *CreateCredentialResponseBody) SetErrorMessage(v string) *CreateCredentialResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
 func (s *CreateCredentialResponseBody) SetSuccess(v bool) *CreateCredentialResponseBody {
 	s.Success = &v
+	return s
+}
+
+func (s *CreateCredentialResponseBody) SetErrorCode(v string) *CreateCredentialResponseBody {
+	s.ErrorCode = &v
 	return s
 }
 
@@ -553,11 +553,11 @@ func (s *CreateDevopsOrganizationRequest) SetDesiredMemberCount(v int32) *Create
 }
 
 type CreateDevopsOrganizationResponseBody struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Object       *string `json:"Object,omitempty" xml:"Object,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 }
 
 func (s CreateDevopsOrganizationResponseBody) String() string {
@@ -566,6 +566,11 @@ func (s CreateDevopsOrganizationResponseBody) String() string {
 
 func (s CreateDevopsOrganizationResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateDevopsOrganizationResponseBody) SetErrorMessage(v string) *CreateDevopsOrganizationResponseBody {
+	s.ErrorMessage = &v
+	return s
 }
 
 func (s *CreateDevopsOrganizationResponseBody) SetRequestId(v string) *CreateDevopsOrganizationResponseBody {
@@ -578,18 +583,13 @@ func (s *CreateDevopsOrganizationResponseBody) SetObject(v string) *CreateDevops
 	return s
 }
 
-func (s *CreateDevopsOrganizationResponseBody) SetErrorCode(v string) *CreateDevopsOrganizationResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *CreateDevopsOrganizationResponseBody) SetErrorMessage(v string) *CreateDevopsOrganizationResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
 func (s *CreateDevopsOrganizationResponseBody) SetSuccess(v bool) *CreateDevopsOrganizationResponseBody {
 	s.Success = &v
+	return s
+}
+
+func (s *CreateDevopsOrganizationResponseBody) SetErrorCode(v string) *CreateDevopsOrganizationResponseBody {
+	s.ErrorCode = &v
 	return s
 }
 
@@ -646,11 +646,11 @@ func (s *CreateDevopsProjectRequest) SetDescription(v string) *CreateDevopsProje
 }
 
 type CreateDevopsProjectResponseBody struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Object       *string `json:"Object,omitempty" xml:"Object,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 }
 
 func (s CreateDevopsProjectResponseBody) String() string {
@@ -659,6 +659,11 @@ func (s CreateDevopsProjectResponseBody) String() string {
 
 func (s CreateDevopsProjectResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateDevopsProjectResponseBody) SetErrorMessage(v string) *CreateDevopsProjectResponseBody {
+	s.ErrorMessage = &v
+	return s
 }
 
 func (s *CreateDevopsProjectResponseBody) SetRequestId(v string) *CreateDevopsProjectResponseBody {
@@ -671,18 +676,13 @@ func (s *CreateDevopsProjectResponseBody) SetObject(v string) *CreateDevopsProje
 	return s
 }
 
-func (s *CreateDevopsProjectResponseBody) SetErrorCode(v string) *CreateDevopsProjectResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *CreateDevopsProjectResponseBody) SetErrorMessage(v string) *CreateDevopsProjectResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
 func (s *CreateDevopsProjectResponseBody) SetSuccess(v bool) *CreateDevopsProjectResponseBody {
 	s.Success = &v
+	return s
+}
+
+func (s *CreateDevopsProjectResponseBody) SetErrorCode(v string) *CreateDevopsProjectResponseBody {
+	s.ErrorCode = &v
 	return s
 }
 
@@ -763,11 +763,11 @@ func (s *CreateDevopsProjectSprintRequest) SetDueDate(v string) *CreateDevopsPro
 }
 
 type CreateDevopsProjectSprintResponseBody struct {
-	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ErrorMsg   *string                                      `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	Object     *CreateDevopsProjectSprintResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
-	ErrorCode  *string                                      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Successful *bool                                        `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string                                      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object     *CreateDevopsProjectSprintResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
 }
 
 func (s CreateDevopsProjectSprintResponseBody) String() string {
@@ -778,18 +778,18 @@ func (s CreateDevopsProjectSprintResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateDevopsProjectSprintResponseBody) SetRequestId(v string) *CreateDevopsProjectSprintResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *CreateDevopsProjectSprintResponseBody) SetErrorMsg(v string) *CreateDevopsProjectSprintResponseBody {
 	s.ErrorMsg = &v
 	return s
 }
 
-func (s *CreateDevopsProjectSprintResponseBody) SetObject(v *CreateDevopsProjectSprintResponseBodyObject) *CreateDevopsProjectSprintResponseBody {
-	s.Object = v
+func (s *CreateDevopsProjectSprintResponseBody) SetRequestId(v string) *CreateDevopsProjectSprintResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDevopsProjectSprintResponseBody) SetSuccessful(v bool) *CreateDevopsProjectSprintResponseBody {
+	s.Successful = &v
 	return s
 }
 
@@ -798,8 +798,8 @@ func (s *CreateDevopsProjectSprintResponseBody) SetErrorCode(v string) *CreateDe
 	return s
 }
 
-func (s *CreateDevopsProjectSprintResponseBody) SetSuccessful(v bool) *CreateDevopsProjectSprintResponseBody {
-	s.Successful = &v
+func (s *CreateDevopsProjectSprintResponseBody) SetObject(v *CreateDevopsProjectSprintResponseBodyObject) *CreateDevopsProjectSprintResponseBody {
+	s.Object = v
 	return s
 }
 
@@ -814,10 +814,10 @@ type CreateDevopsProjectSprintResponseBodyObject struct {
 	IsDeleted    *bool                                                `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
 	Updated      *string                                              `json:"Updated,omitempty" xml:"Updated,omitempty"`
 	DueDate      *string                                              `json:"DueDate,omitempty" xml:"DueDate,omitempty"`
-	Name         *string                                              `json:"Name,omitempty" xml:"Name,omitempty"`
 	Created      *string                                              `json:"Created,omitempty" xml:"Created,omitempty"`
-	PlanToDo     *CreateDevopsProjectSprintResponseBodyObjectPlanToDo `json:"PlanToDo,omitempty" xml:"PlanToDo,omitempty" type:"Struct"`
+	Name         *string                                              `json:"Name,omitempty" xml:"Name,omitempty"`
 	Id           *string                                              `json:"Id,omitempty" xml:"Id,omitempty"`
+	PlanToDo     *CreateDevopsProjectSprintResponseBodyObjectPlanToDo `json:"PlanToDo,omitempty" xml:"PlanToDo,omitempty" type:"Struct"`
 }
 
 func (s CreateDevopsProjectSprintResponseBodyObject) String() string {
@@ -878,23 +878,23 @@ func (s *CreateDevopsProjectSprintResponseBodyObject) SetDueDate(v string) *Crea
 	return s
 }
 
-func (s *CreateDevopsProjectSprintResponseBodyObject) SetName(v string) *CreateDevopsProjectSprintResponseBodyObject {
-	s.Name = &v
-	return s
-}
-
 func (s *CreateDevopsProjectSprintResponseBodyObject) SetCreated(v string) *CreateDevopsProjectSprintResponseBodyObject {
 	s.Created = &v
 	return s
 }
 
-func (s *CreateDevopsProjectSprintResponseBodyObject) SetPlanToDo(v *CreateDevopsProjectSprintResponseBodyObjectPlanToDo) *CreateDevopsProjectSprintResponseBodyObject {
-	s.PlanToDo = v
+func (s *CreateDevopsProjectSprintResponseBodyObject) SetName(v string) *CreateDevopsProjectSprintResponseBodyObject {
+	s.Name = &v
 	return s
 }
 
 func (s *CreateDevopsProjectSprintResponseBodyObject) SetId(v string) *CreateDevopsProjectSprintResponseBodyObject {
 	s.Id = &v
+	return s
+}
+
+func (s *CreateDevopsProjectSprintResponseBodyObject) SetPlanToDo(v *CreateDevopsProjectSprintResponseBodyObjectPlanToDo) *CreateDevopsProjectSprintResponseBodyObject {
+	s.PlanToDo = v
 	return s
 }
 
@@ -1046,11 +1046,11 @@ func (s *CreateDevopsProjectTaskRequest) SetTaskListId(v string) *CreateDevopsPr
 }
 
 type CreateDevopsProjectTaskResponseBody struct {
-	RequestId  *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ErrorMsg   *string                                    `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	Object     *CreateDevopsProjectTaskResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
-	ErrorCode  *string                                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	RequestId  *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Successful *bool                                      `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string                                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object     *CreateDevopsProjectTaskResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
 }
 
 func (s CreateDevopsProjectTaskResponseBody) String() string {
@@ -1061,18 +1061,18 @@ func (s CreateDevopsProjectTaskResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateDevopsProjectTaskResponseBody) SetRequestId(v string) *CreateDevopsProjectTaskResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *CreateDevopsProjectTaskResponseBody) SetErrorMsg(v string) *CreateDevopsProjectTaskResponseBody {
 	s.ErrorMsg = &v
 	return s
 }
 
-func (s *CreateDevopsProjectTaskResponseBody) SetObject(v *CreateDevopsProjectTaskResponseBodyObject) *CreateDevopsProjectTaskResponseBody {
-	s.Object = v
+func (s *CreateDevopsProjectTaskResponseBody) SetRequestId(v string) *CreateDevopsProjectTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDevopsProjectTaskResponseBody) SetSuccessful(v bool) *CreateDevopsProjectTaskResponseBody {
+	s.Successful = &v
 	return s
 }
 
@@ -1081,8 +1081,8 @@ func (s *CreateDevopsProjectTaskResponseBody) SetErrorCode(v string) *CreateDevo
 	return s
 }
 
-func (s *CreateDevopsProjectTaskResponseBody) SetSuccessful(v bool) *CreateDevopsProjectTaskResponseBody {
-	s.Successful = &v
+func (s *CreateDevopsProjectTaskResponseBody) SetObject(v *CreateDevopsProjectTaskResponseBodyObject) *CreateDevopsProjectTaskResponseBody {
+	s.Object = v
 	return s
 }
 
@@ -1101,8 +1101,8 @@ type CreateDevopsProjectTaskResponseBodyObject struct {
 	Content               *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	Rating                *int32  `json:"Rating,omitempty" xml:"Rating,omitempty"`
 	Pos                   *int32  `json:"Pos,omitempty" xml:"Pos,omitempty"`
-	StartDate             *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 	StoryPoint            *string `json:"StoryPoint,omitempty" xml:"StoryPoint,omitempty"`
+	StartDate             *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 	CreatorId             *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
 	Source                *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	OrganizationId        *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
@@ -1192,13 +1192,13 @@ func (s *CreateDevopsProjectTaskResponseBodyObject) SetPos(v int32) *CreateDevop
 	return s
 }
 
-func (s *CreateDevopsProjectTaskResponseBodyObject) SetStartDate(v string) *CreateDevopsProjectTaskResponseBodyObject {
-	s.StartDate = &v
+func (s *CreateDevopsProjectTaskResponseBodyObject) SetStoryPoint(v string) *CreateDevopsProjectTaskResponseBodyObject {
+	s.StoryPoint = &v
 	return s
 }
 
-func (s *CreateDevopsProjectTaskResponseBodyObject) SetStoryPoint(v string) *CreateDevopsProjectTaskResponseBodyObject {
-	s.StoryPoint = &v
+func (s *CreateDevopsProjectTaskResponseBodyObject) SetStartDate(v string) *CreateDevopsProjectTaskResponseBodyObject {
+	s.StartDate = &v
 	return s
 }
 
@@ -1300,11 +1300,11 @@ func (s *CreatePipelineRequest) SetUserPk(v string) *CreatePipelineRequest {
 }
 
 type CreatePipelineResponseBody struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Object       *int64  `json:"Object,omitempty" xml:"Object,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 }
 
 func (s CreatePipelineResponseBody) String() string {
@@ -1313,6 +1313,11 @@ func (s CreatePipelineResponseBody) String() string {
 
 func (s CreatePipelineResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreatePipelineResponseBody) SetErrorMessage(v string) *CreatePipelineResponseBody {
+	s.ErrorMessage = &v
+	return s
 }
 
 func (s *CreatePipelineResponseBody) SetRequestId(v string) *CreatePipelineResponseBody {
@@ -1325,18 +1330,13 @@ func (s *CreatePipelineResponseBody) SetObject(v int64) *CreatePipelineResponseB
 	return s
 }
 
-func (s *CreatePipelineResponseBody) SetErrorCode(v string) *CreatePipelineResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *CreatePipelineResponseBody) SetErrorMessage(v string) *CreatePipelineResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
 func (s *CreatePipelineResponseBody) SetSuccess(v bool) *CreatePipelineResponseBody {
 	s.Success = &v
+	return s
+}
+
+func (s *CreatePipelineResponseBody) SetErrorCode(v string) *CreatePipelineResponseBody {
+	s.ErrorCode = &v
 	return s
 }
 
@@ -1393,11 +1393,11 @@ func (s *CreateServiceConnectionRequest) SetOrgId(v string) *CreateServiceConnec
 }
 
 type CreateServiceConnectionResponseBody struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Object       *int64  `json:"Object,omitempty" xml:"Object,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 }
 
 func (s CreateServiceConnectionResponseBody) String() string {
@@ -1406,6 +1406,11 @@ func (s CreateServiceConnectionResponseBody) String() string {
 
 func (s CreateServiceConnectionResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateServiceConnectionResponseBody) SetErrorMessage(v string) *CreateServiceConnectionResponseBody {
+	s.ErrorMessage = &v
+	return s
 }
 
 func (s *CreateServiceConnectionResponseBody) SetRequestId(v string) *CreateServiceConnectionResponseBody {
@@ -1418,18 +1423,13 @@ func (s *CreateServiceConnectionResponseBody) SetObject(v int64) *CreateServiceC
 	return s
 }
 
-func (s *CreateServiceConnectionResponseBody) SetErrorCode(v string) *CreateServiceConnectionResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *CreateServiceConnectionResponseBody) SetErrorMessage(v string) *CreateServiceConnectionResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
 func (s *CreateServiceConnectionResponseBody) SetSuccess(v bool) *CreateServiceConnectionResponseBody {
 	s.Success = &v
+	return s
+}
+
+func (s *CreateServiceConnectionResponseBody) SetErrorCode(v string) *CreateServiceConnectionResponseBody {
+	s.ErrorCode = &v
 	return s
 }
 
@@ -1486,11 +1486,11 @@ func (s *DeleteCommonGroupRequest) SetCommonGroupId(v string) *DeleteCommonGroup
 }
 
 type DeleteCommonGroupResponseBody struct {
-	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ErrorMsg   *string                              `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	Object     *DeleteCommonGroupResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
-	ErrorCode  *string                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Successful *bool                                `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object     *DeleteCommonGroupResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
 }
 
 func (s DeleteCommonGroupResponseBody) String() string {
@@ -1501,18 +1501,18 @@ func (s DeleteCommonGroupResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteCommonGroupResponseBody) SetRequestId(v string) *DeleteCommonGroupResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *DeleteCommonGroupResponseBody) SetErrorMsg(v string) *DeleteCommonGroupResponseBody {
 	s.ErrorMsg = &v
 	return s
 }
 
-func (s *DeleteCommonGroupResponseBody) SetObject(v *DeleteCommonGroupResponseBodyObject) *DeleteCommonGroupResponseBody {
-	s.Object = v
+func (s *DeleteCommonGroupResponseBody) SetRequestId(v string) *DeleteCommonGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteCommonGroupResponseBody) SetSuccessful(v bool) *DeleteCommonGroupResponseBody {
+	s.Successful = &v
 	return s
 }
 
@@ -1521,8 +1521,8 @@ func (s *DeleteCommonGroupResponseBody) SetErrorCode(v string) *DeleteCommonGrou
 	return s
 }
 
-func (s *DeleteCommonGroupResponseBody) SetSuccessful(v bool) *DeleteCommonGroupResponseBody {
-	s.Successful = &v
+func (s *DeleteCommonGroupResponseBody) SetObject(v *DeleteCommonGroupResponseBodyObject) *DeleteCommonGroupResponseBody {
+	s.Object = v
 	return s
 }
 
@@ -1566,6 +1566,87 @@ func (s *DeleteCommonGroupResponse) SetBody(v *DeleteCommonGroupResponseBody) *D
 	return s
 }
 
+type DeleteDevopsOrganizationRequest struct {
+	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+}
+
+func (s DeleteDevopsOrganizationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDevopsOrganizationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDevopsOrganizationRequest) SetOrgId(v string) *DeleteDevopsOrganizationRequest {
+	s.OrgId = &v
+	return s
+}
+
+type DeleteDevopsOrganizationResponseBody struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Object       *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+}
+
+func (s DeleteDevopsOrganizationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDevopsOrganizationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDevopsOrganizationResponseBody) SetErrorMessage(v string) *DeleteDevopsOrganizationResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteDevopsOrganizationResponseBody) SetRequestId(v string) *DeleteDevopsOrganizationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteDevopsOrganizationResponseBody) SetObject(v string) *DeleteDevopsOrganizationResponseBody {
+	s.Object = &v
+	return s
+}
+
+func (s *DeleteDevopsOrganizationResponseBody) SetSuccess(v bool) *DeleteDevopsOrganizationResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DeleteDevopsOrganizationResponseBody) SetErrorCode(v string) *DeleteDevopsOrganizationResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+type DeleteDevopsOrganizationResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteDevopsOrganizationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteDevopsOrganizationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDevopsOrganizationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDevopsOrganizationResponse) SetHeaders(v map[string]*string) *DeleteDevopsOrganizationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDevopsOrganizationResponse) SetBody(v *DeleteDevopsOrganizationResponseBody) *DeleteDevopsOrganizationResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteDevopsOrganizationMembersRequest struct {
 	OrgId  *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
@@ -1596,11 +1677,11 @@ func (s *DeleteDevopsOrganizationMembersRequest) SetRealPk(v string) *DeleteDevo
 }
 
 type DeleteDevopsOrganizationMembersResponseBody struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Object       *bool   `json:"Object,omitempty" xml:"Object,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 }
 
 func (s DeleteDevopsOrganizationMembersResponseBody) String() string {
@@ -1609,6 +1690,11 @@ func (s DeleteDevopsOrganizationMembersResponseBody) String() string {
 
 func (s DeleteDevopsOrganizationMembersResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteDevopsOrganizationMembersResponseBody) SetErrorMessage(v string) *DeleteDevopsOrganizationMembersResponseBody {
+	s.ErrorMessage = &v
+	return s
 }
 
 func (s *DeleteDevopsOrganizationMembersResponseBody) SetRequestId(v string) *DeleteDevopsOrganizationMembersResponseBody {
@@ -1621,18 +1707,13 @@ func (s *DeleteDevopsOrganizationMembersResponseBody) SetObject(v bool) *DeleteD
 	return s
 }
 
-func (s *DeleteDevopsOrganizationMembersResponseBody) SetErrorCode(v string) *DeleteDevopsOrganizationMembersResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *DeleteDevopsOrganizationMembersResponseBody) SetErrorMessage(v string) *DeleteDevopsOrganizationMembersResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
 func (s *DeleteDevopsOrganizationMembersResponseBody) SetSuccess(v bool) *DeleteDevopsOrganizationMembersResponseBody {
 	s.Success = &v
+	return s
+}
+
+func (s *DeleteDevopsOrganizationMembersResponseBody) SetErrorCode(v string) *DeleteDevopsOrganizationMembersResponseBody {
+	s.ErrorCode = &v
 	return s
 }
 
@@ -1684,10 +1765,10 @@ func (s *DeleteDevopsProjectRequest) SetProjectId(v string) *DeleteDevopsProject
 
 type DeleteDevopsProjectResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Object       *string `json:"Object,omitempty" xml:"Object,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Object       *string `json:"Object,omitempty" xml:"Object,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 }
 
 func (s DeleteDevopsProjectResponseBody) String() string {
@@ -1703,23 +1784,23 @@ func (s *DeleteDevopsProjectResponseBody) SetRequestId(v string) *DeleteDevopsPr
 	return s
 }
 
-func (s *DeleteDevopsProjectResponseBody) SetObject(v string) *DeleteDevopsProjectResponseBody {
-	s.Object = &v
-	return s
-}
-
-func (s *DeleteDevopsProjectResponseBody) SetErrorCode(v string) *DeleteDevopsProjectResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
 func (s *DeleteDevopsProjectResponseBody) SetErrorMessage(v string) *DeleteDevopsProjectResponseBody {
 	s.ErrorMessage = &v
 	return s
 }
 
+func (s *DeleteDevopsProjectResponseBody) SetObject(v string) *DeleteDevopsProjectResponseBody {
+	s.Object = &v
+	return s
+}
+
 func (s *DeleteDevopsProjectResponseBody) SetSuccess(v bool) *DeleteDevopsProjectResponseBody {
 	s.Success = &v
+	return s
+}
+
+func (s *DeleteDevopsProjectResponseBody) SetErrorCode(v string) *DeleteDevopsProjectResponseBody {
+	s.ErrorCode = &v
 	return s
 }
 
@@ -1776,11 +1857,11 @@ func (s *DeleteDevopsProjectMembersRequest) SetUserIds(v string) *DeleteDevopsPr
 }
 
 type DeleteDevopsProjectMembersResponseBody struct {
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ErrorMsg   *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Object     *bool   `json:"Object,omitempty" xml:"Object,omitempty"`
-	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	Successful *bool   `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 }
 
 func (s DeleteDevopsProjectMembersResponseBody) String() string {
@@ -1791,13 +1872,13 @@ func (s DeleteDevopsProjectMembersResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteDevopsProjectMembersResponseBody) SetRequestId(v string) *DeleteDevopsProjectMembersResponseBody {
-	s.RequestId = &v
+func (s *DeleteDevopsProjectMembersResponseBody) SetErrorMsg(v string) *DeleteDevopsProjectMembersResponseBody {
+	s.ErrorMsg = &v
 	return s
 }
 
-func (s *DeleteDevopsProjectMembersResponseBody) SetErrorMsg(v string) *DeleteDevopsProjectMembersResponseBody {
-	s.ErrorMsg = &v
+func (s *DeleteDevopsProjectMembersResponseBody) SetRequestId(v string) *DeleteDevopsProjectMembersResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1806,13 +1887,13 @@ func (s *DeleteDevopsProjectMembersResponseBody) SetObject(v bool) *DeleteDevops
 	return s
 }
 
-func (s *DeleteDevopsProjectMembersResponseBody) SetErrorCode(v string) *DeleteDevopsProjectMembersResponseBody {
-	s.ErrorCode = &v
+func (s *DeleteDevopsProjectMembersResponseBody) SetSuccessful(v bool) *DeleteDevopsProjectMembersResponseBody {
+	s.Successful = &v
 	return s
 }
 
-func (s *DeleteDevopsProjectMembersResponseBody) SetSuccessful(v bool) *DeleteDevopsProjectMembersResponseBody {
-	s.Successful = &v
+func (s *DeleteDevopsProjectMembersResponseBody) SetErrorCode(v string) *DeleteDevopsProjectMembersResponseBody {
+	s.ErrorCode = &v
 	return s
 }
 
@@ -1863,11 +1944,11 @@ func (s *DeleteDevopsProjectSprintRequest) SetSprintId(v string) *DeleteDevopsPr
 }
 
 type DeleteDevopsProjectSprintResponseBody struct {
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ErrorMsg   *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Object     *bool   `json:"Object,omitempty" xml:"Object,omitempty"`
-	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	Successful *bool   `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 }
 
 func (s DeleteDevopsProjectSprintResponseBody) String() string {
@@ -1878,13 +1959,13 @@ func (s DeleteDevopsProjectSprintResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteDevopsProjectSprintResponseBody) SetRequestId(v string) *DeleteDevopsProjectSprintResponseBody {
-	s.RequestId = &v
+func (s *DeleteDevopsProjectSprintResponseBody) SetErrorMsg(v string) *DeleteDevopsProjectSprintResponseBody {
+	s.ErrorMsg = &v
 	return s
 }
 
-func (s *DeleteDevopsProjectSprintResponseBody) SetErrorMsg(v string) *DeleteDevopsProjectSprintResponseBody {
-	s.ErrorMsg = &v
+func (s *DeleteDevopsProjectSprintResponseBody) SetRequestId(v string) *DeleteDevopsProjectSprintResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1893,13 +1974,13 @@ func (s *DeleteDevopsProjectSprintResponseBody) SetObject(v bool) *DeleteDevopsP
 	return s
 }
 
-func (s *DeleteDevopsProjectSprintResponseBody) SetErrorCode(v string) *DeleteDevopsProjectSprintResponseBody {
-	s.ErrorCode = &v
+func (s *DeleteDevopsProjectSprintResponseBody) SetSuccessful(v bool) *DeleteDevopsProjectSprintResponseBody {
+	s.Successful = &v
 	return s
 }
 
-func (s *DeleteDevopsProjectSprintResponseBody) SetSuccessful(v bool) *DeleteDevopsProjectSprintResponseBody {
-	s.Successful = &v
+func (s *DeleteDevopsProjectSprintResponseBody) SetErrorCode(v string) *DeleteDevopsProjectSprintResponseBody {
+	s.ErrorCode = &v
 	return s
 }
 
@@ -1950,11 +2031,11 @@ func (s *DeleteDevopsProjectTaskRequest) SetTaskId(v string) *DeleteDevopsProjec
 }
 
 type DeleteDevopsProjectTaskResponseBody struct {
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ErrorMsg   *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Object     *bool   `json:"Object,omitempty" xml:"Object,omitempty"`
-	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	Successful *bool   `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 }
 
 func (s DeleteDevopsProjectTaskResponseBody) String() string {
@@ -1965,13 +2046,13 @@ func (s DeleteDevopsProjectTaskResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteDevopsProjectTaskResponseBody) SetRequestId(v string) *DeleteDevopsProjectTaskResponseBody {
-	s.RequestId = &v
+func (s *DeleteDevopsProjectTaskResponseBody) SetErrorMsg(v string) *DeleteDevopsProjectTaskResponseBody {
+	s.ErrorMsg = &v
 	return s
 }
 
-func (s *DeleteDevopsProjectTaskResponseBody) SetErrorMsg(v string) *DeleteDevopsProjectTaskResponseBody {
-	s.ErrorMsg = &v
+func (s *DeleteDevopsProjectTaskResponseBody) SetRequestId(v string) *DeleteDevopsProjectTaskResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1980,13 +2061,13 @@ func (s *DeleteDevopsProjectTaskResponseBody) SetObject(v bool) *DeleteDevopsPro
 	return s
 }
 
-func (s *DeleteDevopsProjectTaskResponseBody) SetErrorCode(v string) *DeleteDevopsProjectTaskResponseBody {
-	s.ErrorCode = &v
+func (s *DeleteDevopsProjectTaskResponseBody) SetSuccessful(v bool) *DeleteDevopsProjectTaskResponseBody {
+	s.Successful = &v
 	return s
 }
 
-func (s *DeleteDevopsProjectTaskResponseBody) SetSuccessful(v bool) *DeleteDevopsProjectTaskResponseBody {
-	s.Successful = &v
+func (s *DeleteDevopsProjectTaskResponseBody) SetErrorCode(v string) *DeleteDevopsProjectTaskResponseBody {
+	s.ErrorCode = &v
 	return s
 }
 
@@ -2050,9 +2131,9 @@ func (s *DeletePipelineMemberRequest) SetUserId(v string) *DeletePipelineMemberR
 
 type DeletePipelineMemberResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Object       *bool   `json:"Object,omitempty" xml:"Object,omitempty"`
 	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2069,6 +2150,11 @@ func (s *DeletePipelineMemberResponseBody) SetRequestId(v string) *DeletePipelin
 	return s
 }
 
+func (s *DeletePipelineMemberResponseBody) SetErrorMessage(v string) *DeletePipelineMemberResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
 func (s *DeletePipelineMemberResponseBody) SetObject(v bool) *DeletePipelineMemberResponseBody {
 	s.Object = &v
 	return s
@@ -2076,11 +2162,6 @@ func (s *DeletePipelineMemberResponseBody) SetObject(v bool) *DeletePipelineMemb
 
 func (s *DeletePipelineMemberResponseBody) SetErrorCode(v string) *DeletePipelineMemberResponseBody {
 	s.ErrorCode = &v
-	return s
-}
-
-func (s *DeletePipelineMemberResponseBody) SetErrorMessage(v string) *DeletePipelineMemberResponseBody {
-	s.ErrorMessage = &v
 	return s
 }
 
@@ -2149,10 +2230,10 @@ func (s *ExecutePipelineRequest) SetUserPk(v string) *ExecutePipelineRequest {
 
 type ExecutePipelineResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Object       *int64  `json:"Object,omitempty" xml:"Object,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Object       *int64  `json:"Object,omitempty" xml:"Object,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 }
 
 func (s ExecutePipelineResponseBody) String() string {
@@ -2168,23 +2249,23 @@ func (s *ExecutePipelineResponseBody) SetRequestId(v string) *ExecutePipelineRes
 	return s
 }
 
-func (s *ExecutePipelineResponseBody) SetObject(v int64) *ExecutePipelineResponseBody {
-	s.Object = &v
-	return s
-}
-
-func (s *ExecutePipelineResponseBody) SetErrorCode(v string) *ExecutePipelineResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
 func (s *ExecutePipelineResponseBody) SetErrorMessage(v string) *ExecutePipelineResponseBody {
 	s.ErrorMessage = &v
 	return s
 }
 
+func (s *ExecutePipelineResponseBody) SetObject(v int64) *ExecutePipelineResponseBody {
+	s.Object = &v
+	return s
+}
+
 func (s *ExecutePipelineResponseBody) SetSuccess(v bool) *ExecutePipelineResponseBody {
 	s.Success = &v
+	return s
+}
+
+func (s *ExecutePipelineResponseBody) SetErrorCode(v string) *ExecutePipelineResponseBody {
+	s.ErrorCode = &v
 	return s
 }
 
@@ -2229,11 +2310,11 @@ func (s *GetDevopsOrganizationMembersRequest) SetOrgId(v string) *GetDevopsOrgan
 }
 
 type GetDevopsOrganizationMembersResponseBody struct {
-	RequestId  *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ErrorMsg   *string                                           `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	Object     []*GetDevopsOrganizationMembersResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
-	ErrorCode  *string                                           `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	RequestId  *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Successful *bool                                             `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string                                           `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object     []*GetDevopsOrganizationMembersResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
 }
 
 func (s GetDevopsOrganizationMembersResponseBody) String() string {
@@ -2244,18 +2325,18 @@ func (s GetDevopsOrganizationMembersResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetDevopsOrganizationMembersResponseBody) SetRequestId(v string) *GetDevopsOrganizationMembersResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *GetDevopsOrganizationMembersResponseBody) SetErrorMsg(v string) *GetDevopsOrganizationMembersResponseBody {
 	s.ErrorMsg = &v
 	return s
 }
 
-func (s *GetDevopsOrganizationMembersResponseBody) SetObject(v []*GetDevopsOrganizationMembersResponseBodyObject) *GetDevopsOrganizationMembersResponseBody {
-	s.Object = v
+func (s *GetDevopsOrganizationMembersResponseBody) SetRequestId(v string) *GetDevopsOrganizationMembersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDevopsOrganizationMembersResponseBody) SetSuccessful(v bool) *GetDevopsOrganizationMembersResponseBody {
+	s.Successful = &v
 	return s
 }
 
@@ -2264,8 +2345,8 @@ func (s *GetDevopsOrganizationMembersResponseBody) SetErrorCode(v string) *GetDe
 	return s
 }
 
-func (s *GetDevopsOrganizationMembersResponseBody) SetSuccessful(v bool) *GetDevopsOrganizationMembersResponseBody {
-	s.Successful = &v
+func (s *GetDevopsOrganizationMembersResponseBody) SetObject(v []*GetDevopsOrganizationMembersResponseBodyObject) *GetDevopsOrganizationMembersResponseBody {
+	s.Object = v
 	return s
 }
 
@@ -2369,11 +2450,11 @@ func (s *GetDevopsProjectInfoRequest) SetProjectId(v string) *GetDevopsProjectIn
 }
 
 type GetDevopsProjectInfoResponseBody struct {
-	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ErrorMsg   *string                                 `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	Object     *GetDevopsProjectInfoResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
-	ErrorCode  *string                                 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Successful *bool                                   `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string                                 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object     *GetDevopsProjectInfoResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
 }
 
 func (s GetDevopsProjectInfoResponseBody) String() string {
@@ -2384,18 +2465,18 @@ func (s GetDevopsProjectInfoResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetDevopsProjectInfoResponseBody) SetRequestId(v string) *GetDevopsProjectInfoResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *GetDevopsProjectInfoResponseBody) SetErrorMsg(v string) *GetDevopsProjectInfoResponseBody {
 	s.ErrorMsg = &v
 	return s
 }
 
-func (s *GetDevopsProjectInfoResponseBody) SetObject(v *GetDevopsProjectInfoResponseBodyObject) *GetDevopsProjectInfoResponseBody {
-	s.Object = v
+func (s *GetDevopsProjectInfoResponseBody) SetRequestId(v string) *GetDevopsProjectInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDevopsProjectInfoResponseBody) SetSuccessful(v bool) *GetDevopsProjectInfoResponseBody {
+	s.Successful = &v
 	return s
 }
 
@@ -2404,8 +2485,8 @@ func (s *GetDevopsProjectInfoResponseBody) SetErrorCode(v string) *GetDevopsProj
 	return s
 }
 
-func (s *GetDevopsProjectInfoResponseBody) SetSuccessful(v bool) *GetDevopsProjectInfoResponseBody {
-	s.Successful = &v
+func (s *GetDevopsProjectInfoResponseBody) SetObject(v *GetDevopsProjectInfoResponseBodyObject) *GetDevopsProjectInfoResponseBody {
+	s.Object = v
 	return s
 }
 
@@ -2421,17 +2502,17 @@ type GetDevopsProjectInfoResponseBodyObject struct {
 	RootCollectionId    *string `json:"RootCollectionId,omitempty" xml:"RootCollectionId,omitempty"`
 	IsDeleted           *bool   `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
 	Updated             *string `json:"Updated,omitempty" xml:"Updated,omitempty"`
-	IsArchived          *bool   `json:"IsArchived,omitempty" xml:"IsArchived,omitempty"`
 	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	IsArchived          *bool   `json:"IsArchived,omitempty" xml:"IsArchived,omitempty"`
 	EndDate             *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
 	Logo                *string `json:"Logo,omitempty" xml:"Logo,omitempty"`
 	StartDate           *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 	Pinyin              *string `json:"Pinyin,omitempty" xml:"Pinyin,omitempty"`
 	CreatorId           *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
 	SourceId            *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	OrganizationId      *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
-	IsSuspended         *bool   `json:"IsSuspended,omitempty" xml:"IsSuspended,omitempty"`
 	DefaultCollectionId *string `json:"DefaultCollectionId,omitempty" xml:"DefaultCollectionId,omitempty"`
+	IsSuspended         *bool   `json:"IsSuspended,omitempty" xml:"IsSuspended,omitempty"`
+	OrganizationId      *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 	Visibility          *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
 	Py                  *string `json:"Py,omitempty" xml:"Py,omitempty"`
 	Category            *string `json:"Category,omitempty" xml:"Category,omitempty"`
@@ -2504,13 +2585,13 @@ func (s *GetDevopsProjectInfoResponseBodyObject) SetUpdated(v string) *GetDevops
 	return s
 }
 
-func (s *GetDevopsProjectInfoResponseBodyObject) SetIsArchived(v bool) *GetDevopsProjectInfoResponseBodyObject {
-	s.IsArchived = &v
+func (s *GetDevopsProjectInfoResponseBodyObject) SetName(v string) *GetDevopsProjectInfoResponseBodyObject {
+	s.Name = &v
 	return s
 }
 
-func (s *GetDevopsProjectInfoResponseBodyObject) SetName(v string) *GetDevopsProjectInfoResponseBodyObject {
-	s.Name = &v
+func (s *GetDevopsProjectInfoResponseBodyObject) SetIsArchived(v bool) *GetDevopsProjectInfoResponseBodyObject {
+	s.IsArchived = &v
 	return s
 }
 
@@ -2544,8 +2625,8 @@ func (s *GetDevopsProjectInfoResponseBodyObject) SetSourceId(v string) *GetDevop
 	return s
 }
 
-func (s *GetDevopsProjectInfoResponseBodyObject) SetOrganizationId(v string) *GetDevopsProjectInfoResponseBodyObject {
-	s.OrganizationId = &v
+func (s *GetDevopsProjectInfoResponseBodyObject) SetDefaultCollectionId(v string) *GetDevopsProjectInfoResponseBodyObject {
+	s.DefaultCollectionId = &v
 	return s
 }
 
@@ -2554,8 +2635,8 @@ func (s *GetDevopsProjectInfoResponseBodyObject) SetIsSuspended(v bool) *GetDevo
 	return s
 }
 
-func (s *GetDevopsProjectInfoResponseBodyObject) SetDefaultCollectionId(v string) *GetDevopsProjectInfoResponseBodyObject {
-	s.DefaultCollectionId = &v
+func (s *GetDevopsProjectInfoResponseBodyObject) SetOrganizationId(v string) *GetDevopsProjectInfoResponseBodyObject {
+	s.OrganizationId = &v
 	return s
 }
 
@@ -2620,6 +2701,8 @@ func (s *GetDevopsProjectInfoResponse) SetBody(v *GetDevopsProjectInfoResponseBo
 type GetDevopsProjectMembersRequest struct {
 	OrgId     *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageToken *string `json:"PageToken,omitempty" xml:"PageToken,omitempty"`
 }
 
 func (s GetDevopsProjectMembersRequest) String() string {
@@ -2640,12 +2723,24 @@ func (s *GetDevopsProjectMembersRequest) SetProjectId(v string) *GetDevopsProjec
 	return s
 }
 
+func (s *GetDevopsProjectMembersRequest) SetPageSize(v int32) *GetDevopsProjectMembersRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetDevopsProjectMembersRequest) SetPageToken(v string) *GetDevopsProjectMembersRequest {
+	s.PageToken = &v
+	return s
+}
+
 type GetDevopsProjectMembersResponseBody struct {
-	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMsg   *string                                      `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	Object     []*GetDevopsProjectMembersResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
-	ErrorCode  *string                                      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Successful *bool                                        `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	RequestId     *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	NextPageToken *string                                      `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	ErrorCode     *string                                      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMsg      *string                                      `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	Successful    *bool                                        `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	Total         *int32                                       `json:"Total,omitempty" xml:"Total,omitempty"`
+	Object        []*GetDevopsProjectMembersResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
 }
 
 func (s GetDevopsProjectMembersResponseBody) String() string {
@@ -2661,13 +2756,8 @@ func (s *GetDevopsProjectMembersResponseBody) SetRequestId(v string) *GetDevopsP
 	return s
 }
 
-func (s *GetDevopsProjectMembersResponseBody) SetErrorMsg(v string) *GetDevopsProjectMembersResponseBody {
-	s.ErrorMsg = &v
-	return s
-}
-
-func (s *GetDevopsProjectMembersResponseBody) SetObject(v []*GetDevopsProjectMembersResponseBodyObject) *GetDevopsProjectMembersResponseBody {
-	s.Object = v
+func (s *GetDevopsProjectMembersResponseBody) SetNextPageToken(v string) *GetDevopsProjectMembersResponseBody {
+	s.NextPageToken = &v
 	return s
 }
 
@@ -2676,8 +2766,23 @@ func (s *GetDevopsProjectMembersResponseBody) SetErrorCode(v string) *GetDevopsP
 	return s
 }
 
+func (s *GetDevopsProjectMembersResponseBody) SetErrorMsg(v string) *GetDevopsProjectMembersResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
 func (s *GetDevopsProjectMembersResponseBody) SetSuccessful(v bool) *GetDevopsProjectMembersResponseBody {
 	s.Successful = &v
+	return s
+}
+
+func (s *GetDevopsProjectMembersResponseBody) SetTotal(v int32) *GetDevopsProjectMembersResponseBody {
+	s.Total = &v
+	return s
+}
+
+func (s *GetDevopsProjectMembersResponseBody) SetObject(v []*GetDevopsProjectMembersResponseBodyObject) *GetDevopsProjectMembersResponseBody {
+	s.Object = v
 	return s
 }
 
@@ -2781,11 +2886,11 @@ func (s *GetDevopsProjectSprintInfoRequest) SetSprintId(v string) *GetDevopsProj
 }
 
 type GetDevopsProjectSprintInfoResponseBody struct {
-	RequestId  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ErrorMsg   *string                                       `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	Object     *GetDevopsProjectSprintInfoResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
-	ErrorCode  *string                                       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	RequestId  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Successful *bool                                         `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string                                       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object     *GetDevopsProjectSprintInfoResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
 }
 
 func (s GetDevopsProjectSprintInfoResponseBody) String() string {
@@ -2796,23 +2901,13 @@ func (s GetDevopsProjectSprintInfoResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetDevopsProjectSprintInfoResponseBody) SetRequestId(v string) *GetDevopsProjectSprintInfoResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *GetDevopsProjectSprintInfoResponseBody) SetErrorMsg(v string) *GetDevopsProjectSprintInfoResponseBody {
 	s.ErrorMsg = &v
 	return s
 }
 
-func (s *GetDevopsProjectSprintInfoResponseBody) SetObject(v *GetDevopsProjectSprintInfoResponseBodyObject) *GetDevopsProjectSprintInfoResponseBody {
-	s.Object = v
-	return s
-}
-
-func (s *GetDevopsProjectSprintInfoResponseBody) SetErrorCode(v string) *GetDevopsProjectSprintInfoResponseBody {
-	s.ErrorCode = &v
+func (s *GetDevopsProjectSprintInfoResponseBody) SetRequestId(v string) *GetDevopsProjectSprintInfoResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2821,19 +2916,29 @@ func (s *GetDevopsProjectSprintInfoResponseBody) SetSuccessful(v bool) *GetDevop
 	return s
 }
 
+func (s *GetDevopsProjectSprintInfoResponseBody) SetErrorCode(v string) *GetDevopsProjectSprintInfoResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetDevopsProjectSprintInfoResponseBody) SetObject(v *GetDevopsProjectSprintInfoResponseBodyObject) *GetDevopsProjectSprintInfoResponseBody {
+	s.Object = v
+	return s
+}
+
 type GetDevopsProjectSprintInfoResponseBodyObject struct {
 	Status       *string                                               `json:"Status,omitempty" xml:"Status,omitempty"`
-	ProjectId    *string                                               `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	StartDate    *string                                               `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	CreatorId    *string                                               `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
 	Accomplished *string                                               `json:"Accomplished,omitempty" xml:"Accomplished,omitempty"`
+	ProjectId    *string                                               `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	IsDeleted    *bool                                                 `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
+	StartDate    *string                                               `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 	Updated      *string                                               `json:"Updated,omitempty" xml:"Updated,omitempty"`
+	CreatorId    *string                                               `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
 	DueDate      *string                                               `json:"DueDate,omitempty" xml:"DueDate,omitempty"`
 	Name         *string                                               `json:"Name,omitempty" xml:"Name,omitempty"`
 	Created      *string                                               `json:"Created,omitempty" xml:"Created,omitempty"`
-	PlanToDo     *GetDevopsProjectSprintInfoResponseBodyObjectPlanToDo `json:"PlanToDo,omitempty" xml:"PlanToDo,omitempty" type:"Struct"`
 	Id           *string                                               `json:"Id,omitempty" xml:"Id,omitempty"`
+	PlanToDo     *GetDevopsProjectSprintInfoResponseBodyObjectPlanToDo `json:"PlanToDo,omitempty" xml:"PlanToDo,omitempty" type:"Struct"`
 }
 
 func (s GetDevopsProjectSprintInfoResponseBodyObject) String() string {
@@ -2849,23 +2954,13 @@ func (s *GetDevopsProjectSprintInfoResponseBodyObject) SetStatus(v string) *GetD
 	return s
 }
 
-func (s *GetDevopsProjectSprintInfoResponseBodyObject) SetProjectId(v string) *GetDevopsProjectSprintInfoResponseBodyObject {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *GetDevopsProjectSprintInfoResponseBodyObject) SetStartDate(v string) *GetDevopsProjectSprintInfoResponseBodyObject {
-	s.StartDate = &v
-	return s
-}
-
-func (s *GetDevopsProjectSprintInfoResponseBodyObject) SetCreatorId(v string) *GetDevopsProjectSprintInfoResponseBodyObject {
-	s.CreatorId = &v
-	return s
-}
-
 func (s *GetDevopsProjectSprintInfoResponseBodyObject) SetAccomplished(v string) *GetDevopsProjectSprintInfoResponseBodyObject {
 	s.Accomplished = &v
+	return s
+}
+
+func (s *GetDevopsProjectSprintInfoResponseBodyObject) SetProjectId(v string) *GetDevopsProjectSprintInfoResponseBodyObject {
+	s.ProjectId = &v
 	return s
 }
 
@@ -2874,8 +2969,18 @@ func (s *GetDevopsProjectSprintInfoResponseBodyObject) SetIsDeleted(v bool) *Get
 	return s
 }
 
+func (s *GetDevopsProjectSprintInfoResponseBodyObject) SetStartDate(v string) *GetDevopsProjectSprintInfoResponseBodyObject {
+	s.StartDate = &v
+	return s
+}
+
 func (s *GetDevopsProjectSprintInfoResponseBodyObject) SetUpdated(v string) *GetDevopsProjectSprintInfoResponseBodyObject {
 	s.Updated = &v
+	return s
+}
+
+func (s *GetDevopsProjectSprintInfoResponseBodyObject) SetCreatorId(v string) *GetDevopsProjectSprintInfoResponseBodyObject {
+	s.CreatorId = &v
 	return s
 }
 
@@ -2894,13 +2999,13 @@ func (s *GetDevopsProjectSprintInfoResponseBodyObject) SetCreated(v string) *Get
 	return s
 }
 
-func (s *GetDevopsProjectSprintInfoResponseBodyObject) SetPlanToDo(v *GetDevopsProjectSprintInfoResponseBodyObjectPlanToDo) *GetDevopsProjectSprintInfoResponseBodyObject {
-	s.PlanToDo = v
+func (s *GetDevopsProjectSprintInfoResponseBodyObject) SetId(v string) *GetDevopsProjectSprintInfoResponseBodyObject {
+	s.Id = &v
 	return s
 }
 
-func (s *GetDevopsProjectSprintInfoResponseBodyObject) SetId(v string) *GetDevopsProjectSprintInfoResponseBodyObject {
-	s.Id = &v
+func (s *GetDevopsProjectSprintInfoResponseBodyObject) SetPlanToDo(v *GetDevopsProjectSprintInfoResponseBodyObjectPlanToDo) *GetDevopsProjectSprintInfoResponseBodyObject {
+	s.PlanToDo = v
 	return s
 }
 
@@ -2980,11 +3085,11 @@ func (s *GetDevopsProjectTaskInfoRequest) SetTaskId(v string) *GetDevopsProjectT
 }
 
 type GetDevopsProjectTaskInfoResponseBody struct {
-	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ErrorMsg   *string                                     `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	Object     *GetDevopsProjectTaskInfoResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
-	ErrorCode  *string                                     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Successful *bool                                       `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string                                     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object     *GetDevopsProjectTaskInfoResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
 }
 
 func (s GetDevopsProjectTaskInfoResponseBody) String() string {
@@ -2995,23 +3100,13 @@ func (s GetDevopsProjectTaskInfoResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetDevopsProjectTaskInfoResponseBody) SetRequestId(v string) *GetDevopsProjectTaskInfoResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *GetDevopsProjectTaskInfoResponseBody) SetErrorMsg(v string) *GetDevopsProjectTaskInfoResponseBody {
 	s.ErrorMsg = &v
 	return s
 }
 
-func (s *GetDevopsProjectTaskInfoResponseBody) SetObject(v *GetDevopsProjectTaskInfoResponseBodyObject) *GetDevopsProjectTaskInfoResponseBody {
-	s.Object = v
-	return s
-}
-
-func (s *GetDevopsProjectTaskInfoResponseBody) SetErrorCode(v string) *GetDevopsProjectTaskInfoResponseBody {
-	s.ErrorCode = &v
+func (s *GetDevopsProjectTaskInfoResponseBody) SetRequestId(v string) *GetDevopsProjectTaskInfoResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -3020,29 +3115,39 @@ func (s *GetDevopsProjectTaskInfoResponseBody) SetSuccessful(v bool) *GetDevopsP
 	return s
 }
 
+func (s *GetDevopsProjectTaskInfoResponseBody) SetErrorCode(v string) *GetDevopsProjectTaskInfoResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetDevopsProjectTaskInfoResponseBody) SetObject(v *GetDevopsProjectTaskInfoResponseBodyObject) *GetDevopsProjectTaskInfoResponseBody {
+	s.Object = v
+	return s
+}
+
 type GetDevopsProjectTaskInfoResponseBodyObject struct {
 	ExecutorId       *string   `json:"ExecutorId,omitempty" xml:"ExecutorId,omitempty"`
 	ProjectId        *string   `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	StoryPoint       *string   `json:"StoryPoint,omitempty" xml:"StoryPoint,omitempty"`
 	StartDate        *string   `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	IsTopInProject   *bool     `json:"IsTopInProject,omitempty" xml:"IsTopInProject,omitempty"`
+	StoryPoint       *string   `json:"StoryPoint,omitempty" xml:"StoryPoint,omitempty"`
 	Priority         *string   `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	IsTopInProject   *bool     `json:"IsTopInProject,omitempty" xml:"IsTopInProject,omitempty"`
 	CreatorId        *string   `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
 	OrganizationId   *string   `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 	TaskType         *string   `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	TasklistId       *string   `json:"TasklistId,omitempty" xml:"TasklistId,omitempty"`
 	Visible          *string   `json:"Visible,omitempty" xml:"Visible,omitempty"`
+	TasklistId       *string   `json:"TasklistId,omitempty" xml:"TasklistId,omitempty"`
 	IsDone           *bool     `json:"IsDone,omitempty" xml:"IsDone,omitempty"`
 	IsDeleted        *bool     `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
 	TaskflowstatusId *string   `json:"TaskflowstatusId,omitempty" xml:"TaskflowstatusId,omitempty"`
 	Note             *string   `json:"Note,omitempty" xml:"Note,omitempty"`
 	SprintId         *string   `json:"SprintId,omitempty" xml:"SprintId,omitempty"`
 	Updated          *string   `json:"Updated,omitempty" xml:"Updated,omitempty"`
-	InvolveMembers   []*string `json:"InvolveMembers,omitempty" xml:"InvolveMembers,omitempty" type:"Repeated"`
 	DueDate          *string   `json:"DueDate,omitempty" xml:"DueDate,omitempty"`
 	Created          *string   `json:"Created,omitempty" xml:"Created,omitempty"`
 	Content          *string   `json:"Content,omitempty" xml:"Content,omitempty"`
 	Id               *string   `json:"Id,omitempty" xml:"Id,omitempty"`
+	InvolveMembers   []*string `json:"InvolveMembers,omitempty" xml:"InvolveMembers,omitempty" type:"Repeated"`
 }
 
 func (s GetDevopsProjectTaskInfoResponseBodyObject) String() string {
@@ -3063,23 +3168,23 @@ func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetProjectId(v string) *Get
 	return s
 }
 
-func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetStoryPoint(v string) *GetDevopsProjectTaskInfoResponseBodyObject {
-	s.StoryPoint = &v
-	return s
-}
-
 func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetStartDate(v string) *GetDevopsProjectTaskInfoResponseBodyObject {
 	s.StartDate = &v
 	return s
 }
 
-func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetIsTopInProject(v bool) *GetDevopsProjectTaskInfoResponseBodyObject {
-	s.IsTopInProject = &v
+func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetStoryPoint(v string) *GetDevopsProjectTaskInfoResponseBodyObject {
+	s.StoryPoint = &v
 	return s
 }
 
 func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetPriority(v string) *GetDevopsProjectTaskInfoResponseBodyObject {
 	s.Priority = &v
+	return s
+}
+
+func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetIsTopInProject(v bool) *GetDevopsProjectTaskInfoResponseBodyObject {
+	s.IsTopInProject = &v
 	return s
 }
 
@@ -3098,13 +3203,13 @@ func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetTaskType(v string) *GetD
 	return s
 }
 
-func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetTasklistId(v string) *GetDevopsProjectTaskInfoResponseBodyObject {
-	s.TasklistId = &v
+func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetVisible(v string) *GetDevopsProjectTaskInfoResponseBodyObject {
+	s.Visible = &v
 	return s
 }
 
-func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetVisible(v string) *GetDevopsProjectTaskInfoResponseBodyObject {
-	s.Visible = &v
+func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetTasklistId(v string) *GetDevopsProjectTaskInfoResponseBodyObject {
+	s.TasklistId = &v
 	return s
 }
 
@@ -3138,11 +3243,6 @@ func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetUpdated(v string) *GetDe
 	return s
 }
 
-func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetInvolveMembers(v []*string) *GetDevopsProjectTaskInfoResponseBodyObject {
-	s.InvolveMembers = v
-	return s
-}
-
 func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetDueDate(v string) *GetDevopsProjectTaskInfoResponseBodyObject {
 	s.DueDate = &v
 	return s
@@ -3160,6 +3260,11 @@ func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetContent(v string) *GetDe
 
 func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetId(v string) *GetDevopsProjectTaskInfoResponseBodyObject {
 	s.Id = &v
+	return s
+}
+
+func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetInvolveMembers(v []*string) *GetDevopsProjectTaskInfoResponseBodyObject {
+	s.InvolveMembers = v
 	return s
 }
 
@@ -3210,11 +3315,11 @@ func (s *GetLastWorkspaceRequest) SetRealPk(v string) *GetLastWorkspaceRequest {
 }
 
 type GetLastWorkspaceResponseBody struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Object       *string `json:"Object,omitempty" xml:"Object,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 }
 
 func (s GetLastWorkspaceResponseBody) String() string {
@@ -3223,6 +3328,11 @@ func (s GetLastWorkspaceResponseBody) String() string {
 
 func (s GetLastWorkspaceResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetLastWorkspaceResponseBody) SetErrorMessage(v string) *GetLastWorkspaceResponseBody {
+	s.ErrorMessage = &v
+	return s
 }
 
 func (s *GetLastWorkspaceResponseBody) SetRequestId(v string) *GetLastWorkspaceResponseBody {
@@ -3235,18 +3345,13 @@ func (s *GetLastWorkspaceResponseBody) SetObject(v string) *GetLastWorkspaceResp
 	return s
 }
 
-func (s *GetLastWorkspaceResponseBody) SetErrorCode(v string) *GetLastWorkspaceResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetLastWorkspaceResponseBody) SetErrorMessage(v string) *GetLastWorkspaceResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
 func (s *GetLastWorkspaceResponseBody) SetSuccess(v bool) *GetLastWorkspaceResponseBody {
 	s.Success = &v
+	return s
+}
+
+func (s *GetLastWorkspaceResponseBody) SetErrorCode(v string) *GetLastWorkspaceResponseBody {
+	s.ErrorCode = &v
 	return s
 }
 
@@ -3310,10 +3415,10 @@ func (s *GetPipelineInstanceBuildNumberStatusRequest) SetBuildNum(v int64) *GetP
 
 type GetPipelineInstanceBuildNumberStatusResponseBody struct {
 	RequestId    *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Object       *GetPipelineInstanceBuildNumberStatusResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
-	ErrorCode    *string                                                 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string                                                 `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Success      *bool                                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string                                                 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object       *GetPipelineInstanceBuildNumberStatusResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
 }
 
 func (s GetPipelineInstanceBuildNumberStatusResponseBody) String() string {
@@ -3329,8 +3434,13 @@ func (s *GetPipelineInstanceBuildNumberStatusResponseBody) SetRequestId(v string
 	return s
 }
 
-func (s *GetPipelineInstanceBuildNumberStatusResponseBody) SetObject(v *GetPipelineInstanceBuildNumberStatusResponseBodyObject) *GetPipelineInstanceBuildNumberStatusResponseBody {
-	s.Object = v
+func (s *GetPipelineInstanceBuildNumberStatusResponseBody) SetErrorMessage(v string) *GetPipelineInstanceBuildNumberStatusResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetPipelineInstanceBuildNumberStatusResponseBody) SetSuccess(v bool) *GetPipelineInstanceBuildNumberStatusResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -3339,13 +3449,8 @@ func (s *GetPipelineInstanceBuildNumberStatusResponseBody) SetErrorCode(v string
 	return s
 }
 
-func (s *GetPipelineInstanceBuildNumberStatusResponseBody) SetErrorMessage(v string) *GetPipelineInstanceBuildNumberStatusResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *GetPipelineInstanceBuildNumberStatusResponseBody) SetSuccess(v bool) *GetPipelineInstanceBuildNumberStatusResponseBody {
-	s.Success = &v
+func (s *GetPipelineInstanceBuildNumberStatusResponseBody) SetObject(v *GetPipelineInstanceBuildNumberStatusResponseBodyObject) *GetPipelineInstanceBuildNumberStatusResponseBody {
+	s.Object = v
 	return s
 }
 
@@ -3374,8 +3479,8 @@ func (s *GetPipelineInstanceBuildNumberStatusResponseBodyObject) SetGroups(v []*
 
 type GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroups struct {
 	Status *string                                                               `json:"Status,omitempty" xml:"Status,omitempty"`
-	Stages []*GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStages `json:"Stages,omitempty" xml:"Stages,omitempty" type:"Repeated"`
 	Name   *string                                                               `json:"Name,omitempty" xml:"Name,omitempty"`
+	Stages []*GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStages `json:"Stages,omitempty" xml:"Stages,omitempty" type:"Repeated"`
 }
 
 func (s GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroups) String() string {
@@ -3391,13 +3496,13 @@ func (s *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroups) SetStatus
 	return s
 }
 
-func (s *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroups) SetStages(v []*GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStages) *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroups {
-	s.Stages = v
+func (s *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroups) SetName(v string) *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroups {
+	s.Name = &v
 	return s
 }
 
-func (s *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroups) SetName(v string) *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroups {
-	s.Name = &v
+func (s *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroups) SetStages(v []*GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStages) *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroups {
+	s.Stages = v
 	return s
 }
 
@@ -3432,8 +3537,8 @@ func (s *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStages) Set
 
 type GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStagesComponents struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	JobId  *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	JobId  *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
 func (s GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStagesComponents) String() string {
@@ -3449,13 +3554,13 @@ func (s *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStagesCompo
 	return s
 }
 
-func (s *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStagesComponents) SetJobId(v int64) *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStagesComponents {
-	s.JobId = &v
+func (s *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStagesComponents) SetName(v string) *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStagesComponents {
+	s.Name = &v
 	return s
 }
 
-func (s *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStagesComponents) SetName(v string) *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStagesComponents {
-	s.Name = &v
+func (s *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStagesComponents) SetJobId(v int64) *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStagesComponents {
+	s.JobId = &v
 	return s
 }
 
@@ -3519,10 +3624,10 @@ func (s *GetPipelineInstanceGroupStatusRequest) SetFlowInstanceId(v int64) *GetP
 
 type GetPipelineInstanceGroupStatusResponseBody struct {
 	RequestId    *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Object       *GetPipelineInstanceGroupStatusResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
-	ErrorCode    *string                                           `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string                                           `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Success      *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string                                           `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object       *GetPipelineInstanceGroupStatusResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
 }
 
 func (s GetPipelineInstanceGroupStatusResponseBody) String() string {
@@ -3538,8 +3643,13 @@ func (s *GetPipelineInstanceGroupStatusResponseBody) SetRequestId(v string) *Get
 	return s
 }
 
-func (s *GetPipelineInstanceGroupStatusResponseBody) SetObject(v *GetPipelineInstanceGroupStatusResponseBodyObject) *GetPipelineInstanceGroupStatusResponseBody {
-	s.Object = v
+func (s *GetPipelineInstanceGroupStatusResponseBody) SetErrorMessage(v string) *GetPipelineInstanceGroupStatusResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetPipelineInstanceGroupStatusResponseBody) SetSuccess(v bool) *GetPipelineInstanceGroupStatusResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -3548,13 +3658,8 @@ func (s *GetPipelineInstanceGroupStatusResponseBody) SetErrorCode(v string) *Get
 	return s
 }
 
-func (s *GetPipelineInstanceGroupStatusResponseBody) SetErrorMessage(v string) *GetPipelineInstanceGroupStatusResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *GetPipelineInstanceGroupStatusResponseBody) SetSuccess(v bool) *GetPipelineInstanceGroupStatusResponseBody {
-	s.Success = &v
+func (s *GetPipelineInstanceGroupStatusResponseBody) SetObject(v *GetPipelineInstanceGroupStatusResponseBodyObject) *GetPipelineInstanceGroupStatusResponseBody {
+	s.Object = v
 	return s
 }
 
@@ -3583,8 +3688,8 @@ func (s *GetPipelineInstanceGroupStatusResponseBodyObject) SetGroups(v []*GetPip
 
 type GetPipelineInstanceGroupStatusResponseBodyObjectGroups struct {
 	Status *string                                                         `json:"Status,omitempty" xml:"Status,omitempty"`
-	Stages []*GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStages `json:"Stages,omitempty" xml:"Stages,omitempty" type:"Repeated"`
 	Name   *string                                                         `json:"Name,omitempty" xml:"Name,omitempty"`
+	Stages []*GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStages `json:"Stages,omitempty" xml:"Stages,omitempty" type:"Repeated"`
 }
 
 func (s GetPipelineInstanceGroupStatusResponseBodyObjectGroups) String() string {
@@ -3600,13 +3705,13 @@ func (s *GetPipelineInstanceGroupStatusResponseBodyObjectGroups) SetStatus(v str
 	return s
 }
 
-func (s *GetPipelineInstanceGroupStatusResponseBodyObjectGroups) SetStages(v []*GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStages) *GetPipelineInstanceGroupStatusResponseBodyObjectGroups {
-	s.Stages = v
+func (s *GetPipelineInstanceGroupStatusResponseBodyObjectGroups) SetName(v string) *GetPipelineInstanceGroupStatusResponseBodyObjectGroups {
+	s.Name = &v
 	return s
 }
 
-func (s *GetPipelineInstanceGroupStatusResponseBodyObjectGroups) SetName(v string) *GetPipelineInstanceGroupStatusResponseBodyObjectGroups {
-	s.Name = &v
+func (s *GetPipelineInstanceGroupStatusResponseBodyObjectGroups) SetStages(v []*GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStages) *GetPipelineInstanceGroupStatusResponseBodyObjectGroups {
+	s.Stages = v
 	return s
 }
 
@@ -3641,8 +3746,8 @@ func (s *GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStages) SetCompon
 
 type GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStagesComponents struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	JobId  *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	JobId  *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
 func (s GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStagesComponents) String() string {
@@ -3658,13 +3763,13 @@ func (s *GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStagesComponents)
 	return s
 }
 
-func (s *GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStagesComponents) SetJobId(v string) *GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStagesComponents {
-	s.JobId = &v
+func (s *GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStagesComponents) SetName(v string) *GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStagesComponents {
+	s.Name = &v
 	return s
 }
 
-func (s *GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStagesComponents) SetName(v string) *GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStagesComponents {
-	s.Name = &v
+func (s *GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStagesComponents) SetJobId(v string) *GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStagesComponents {
+	s.JobId = &v
 	return s
 }
 
@@ -3727,11 +3832,11 @@ func (s *GetPipelineInstanceInfoRequest) SetUserPk(v string) *GetPipelineInstanc
 }
 
 type GetPipelineInstanceInfoResponseBody struct {
-	RequestId    *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Object       *GetPipelineInstanceInfoResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
-	ErrorCode    *string                                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string                                    `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success      *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string                                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object       *GetPipelineInstanceInfoResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
 }
 
 func (s GetPipelineInstanceInfoResponseBody) String() string {
@@ -3742,23 +3847,13 @@ func (s GetPipelineInstanceInfoResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetPipelineInstanceInfoResponseBody) SetRequestId(v string) *GetPipelineInstanceInfoResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetPipelineInstanceInfoResponseBody) SetObject(v *GetPipelineInstanceInfoResponseBodyObject) *GetPipelineInstanceInfoResponseBody {
-	s.Object = v
-	return s
-}
-
-func (s *GetPipelineInstanceInfoResponseBody) SetErrorCode(v string) *GetPipelineInstanceInfoResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
 func (s *GetPipelineInstanceInfoResponseBody) SetErrorMessage(v string) *GetPipelineInstanceInfoResponseBody {
 	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetPipelineInstanceInfoResponseBody) SetRequestId(v string) *GetPipelineInstanceInfoResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -3767,14 +3862,24 @@ func (s *GetPipelineInstanceInfoResponseBody) SetSuccess(v bool) *GetPipelineIns
 	return s
 }
 
+func (s *GetPipelineInstanceInfoResponseBody) SetErrorCode(v string) *GetPipelineInstanceInfoResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetPipelineInstanceInfoResponseBody) SetObject(v *GetPipelineInstanceInfoResponseBodyObject) *GetPipelineInstanceInfoResponseBody {
+	s.Object = v
+	return s
+}
+
 type GetPipelineInstanceInfoResponseBodyObject struct {
+	EmployeeId          *string   `json:"EmployeeId,omitempty" xml:"EmployeeId,omitempty"`
 	EndTime             *int64    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Status              *string   `json:"Status,omitempty" xml:"Status,omitempty"`
 	StartTime           *int64    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	PackageDownloadUrls []*string `json:"PackageDownloadUrls,omitempty" xml:"PackageDownloadUrls,omitempty" type:"Repeated"`
-	EmployeeId          *string   `json:"EmployeeId,omitempty" xml:"EmployeeId,omitempty"`
-	DockerImages        []*string `json:"DockerImages,omitempty" xml:"DockerImages,omitempty" type:"Repeated"`
 	Sources             *string   `json:"Sources,omitempty" xml:"Sources,omitempty"`
+	DockerImages        []*string `json:"DockerImages,omitempty" xml:"DockerImages,omitempty" type:"Repeated"`
+	PackageDownloadUrls []*string `json:"PackageDownloadUrls,omitempty" xml:"PackageDownloadUrls,omitempty" type:"Repeated"`
 }
 
 func (s GetPipelineInstanceInfoResponseBodyObject) String() string {
@@ -3783,6 +3888,11 @@ func (s GetPipelineInstanceInfoResponseBodyObject) String() string {
 
 func (s GetPipelineInstanceInfoResponseBodyObject) GoString() string {
 	return s.String()
+}
+
+func (s *GetPipelineInstanceInfoResponseBodyObject) SetEmployeeId(v string) *GetPipelineInstanceInfoResponseBodyObject {
+	s.EmployeeId = &v
+	return s
 }
 
 func (s *GetPipelineInstanceInfoResponseBodyObject) SetEndTime(v int64) *GetPipelineInstanceInfoResponseBodyObject {
@@ -3800,13 +3910,8 @@ func (s *GetPipelineInstanceInfoResponseBodyObject) SetStartTime(v int64) *GetPi
 	return s
 }
 
-func (s *GetPipelineInstanceInfoResponseBodyObject) SetPackageDownloadUrls(v []*string) *GetPipelineInstanceInfoResponseBodyObject {
-	s.PackageDownloadUrls = v
-	return s
-}
-
-func (s *GetPipelineInstanceInfoResponseBodyObject) SetEmployeeId(v string) *GetPipelineInstanceInfoResponseBodyObject {
-	s.EmployeeId = &v
+func (s *GetPipelineInstanceInfoResponseBodyObject) SetSources(v string) *GetPipelineInstanceInfoResponseBodyObject {
+	s.Sources = &v
 	return s
 }
 
@@ -3815,8 +3920,8 @@ func (s *GetPipelineInstanceInfoResponseBodyObject) SetDockerImages(v []*string)
 	return s
 }
 
-func (s *GetPipelineInstanceInfoResponseBodyObject) SetSources(v string) *GetPipelineInstanceInfoResponseBodyObject {
-	s.Sources = &v
+func (s *GetPipelineInstanceInfoResponseBodyObject) SetPackageDownloadUrls(v []*string) *GetPipelineInstanceInfoResponseBodyObject {
+	s.PackageDownloadUrls = v
 	return s
 }
 
@@ -3880,9 +3985,9 @@ func (s *GetPipelineInstanceStatusRequest) SetUserPk(v string) *GetPipelineInsta
 
 type GetPipelineInstanceStatusResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Object       *string `json:"Object,omitempty" xml:"Object,omitempty"`
 	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -3899,6 +4004,11 @@ func (s *GetPipelineInstanceStatusResponseBody) SetRequestId(v string) *GetPipel
 	return s
 }
 
+func (s *GetPipelineInstanceStatusResponseBody) SetErrorMessage(v string) *GetPipelineInstanceStatusResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
 func (s *GetPipelineInstanceStatusResponseBody) SetObject(v string) *GetPipelineInstanceStatusResponseBody {
 	s.Object = &v
 	return s
@@ -3906,11 +4016,6 @@ func (s *GetPipelineInstanceStatusResponseBody) SetObject(v string) *GetPipeline
 
 func (s *GetPipelineInstanceStatusResponseBody) SetErrorCode(v string) *GetPipelineInstanceStatusResponseBody {
 	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetPipelineInstanceStatusResponseBody) SetErrorMessage(v string) *GetPipelineInstanceStatusResponseBody {
-	s.ErrorMessage = &v
 	return s
 }
 
@@ -3997,10 +4102,10 @@ func (s *GetPipelineInstHistoryRequest) SetPageSize(v int64) *GetPipelineInstHis
 
 type GetPipelineInstHistoryResponseBody struct {
 	RequestId    *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data         *GetPipelineInstHistoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode    *string                                 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string                                 `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Success      *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string                                 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Data         *GetPipelineInstHistoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s GetPipelineInstHistoryResponseBody) String() string {
@@ -4016,16 +4121,6 @@ func (s *GetPipelineInstHistoryResponseBody) SetRequestId(v string) *GetPipeline
 	return s
 }
 
-func (s *GetPipelineInstHistoryResponseBody) SetData(v *GetPipelineInstHistoryResponseBodyData) *GetPipelineInstHistoryResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetPipelineInstHistoryResponseBody) SetErrorCode(v string) *GetPipelineInstHistoryResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
 func (s *GetPipelineInstHistoryResponseBody) SetErrorMessage(v string) *GetPipelineInstHistoryResponseBody {
 	s.ErrorMessage = &v
 	return s
@@ -4036,9 +4131,19 @@ func (s *GetPipelineInstHistoryResponseBody) SetSuccess(v bool) *GetPipelineInst
 	return s
 }
 
+func (s *GetPipelineInstHistoryResponseBody) SetErrorCode(v string) *GetPipelineInstHistoryResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetPipelineInstHistoryResponseBody) SetData(v *GetPipelineInstHistoryResponseBodyData) *GetPipelineInstHistoryResponseBody {
+	s.Data = v
+	return s
+}
+
 type GetPipelineInstHistoryResponseBodyData struct {
-	DataList []*GetPipelineInstHistoryResponseBodyDataDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
 	Total    *int32                                            `json:"Total,omitempty" xml:"Total,omitempty"`
+	DataList []*GetPipelineInstHistoryResponseBodyDataDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
 }
 
 func (s GetPipelineInstHistoryResponseBodyData) String() string {
@@ -4049,13 +4154,13 @@ func (s GetPipelineInstHistoryResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *GetPipelineInstHistoryResponseBodyData) SetDataList(v []*GetPipelineInstHistoryResponseBodyDataDataList) *GetPipelineInstHistoryResponseBodyData {
-	s.DataList = v
+func (s *GetPipelineInstHistoryResponseBodyData) SetTotal(v int32) *GetPipelineInstHistoryResponseBodyData {
+	s.Total = &v
 	return s
 }
 
-func (s *GetPipelineInstHistoryResponseBodyData) SetTotal(v int32) *GetPipelineInstHistoryResponseBodyData {
-	s.Total = &v
+func (s *GetPipelineInstHistoryResponseBodyData) SetDataList(v []*GetPipelineInstHistoryResponseBodyDataDataList) *GetPipelineInstHistoryResponseBodyData {
+	s.DataList = v
 	return s
 }
 
@@ -4063,18 +4168,18 @@ type GetPipelineInstHistoryResponseBodyDataDataList struct {
 	Status           *string                                                     `json:"Status,omitempty" xml:"Status,omitempty"`
 	CreateTime       *int64                                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	StatusName       *string                                                     `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
-	Deletion         *string                                                     `json:"Deletion,omitempty" xml:"Deletion,omitempty"`
-	PipelineConfigId *int32                                                      `json:"PipelineConfigId,omitempty" xml:"PipelineConfigId,omitempty"`
 	TriggerMode      *int32                                                      `json:"TriggerMode,omitempty" xml:"TriggerMode,omitempty"`
+	PipelineConfigId *int32                                                      `json:"PipelineConfigId,omitempty" xml:"PipelineConfigId,omitempty"`
+	Deletion         *string                                                     `json:"Deletion,omitempty" xml:"Deletion,omitempty"`
 	Creator          *string                                                     `json:"Creator,omitempty" xml:"Creator,omitempty"`
 	InstNumber       *int32                                                      `json:"InstNumber,omitempty" xml:"InstNumber,omitempty"`
 	Modifier         *string                                                     `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
-	FlowInstance     *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance `json:"FlowInstance,omitempty" xml:"FlowInstance,omitempty" type:"Struct"`
 	Packages         *string                                                     `json:"Packages,omitempty" xml:"Packages,omitempty"`
 	FlowInstId       *int32                                                      `json:"FlowInstId,omitempty" xml:"FlowInstId,omitempty"`
 	PipelineId       *int32                                                      `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
 	Id               *int32                                                      `json:"Id,omitempty" xml:"Id,omitempty"`
 	ModifyTime       *int64                                                      `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	FlowInstance     *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance `json:"FlowInstance,omitempty" xml:"FlowInstance,omitempty" type:"Struct"`
 }
 
 func (s GetPipelineInstHistoryResponseBodyDataDataList) String() string {
@@ -4100,8 +4205,8 @@ func (s *GetPipelineInstHistoryResponseBodyDataDataList) SetStatusName(v string)
 	return s
 }
 
-func (s *GetPipelineInstHistoryResponseBodyDataDataList) SetDeletion(v string) *GetPipelineInstHistoryResponseBodyDataDataList {
-	s.Deletion = &v
+func (s *GetPipelineInstHistoryResponseBodyDataDataList) SetTriggerMode(v int32) *GetPipelineInstHistoryResponseBodyDataDataList {
+	s.TriggerMode = &v
 	return s
 }
 
@@ -4110,8 +4215,8 @@ func (s *GetPipelineInstHistoryResponseBodyDataDataList) SetPipelineConfigId(v i
 	return s
 }
 
-func (s *GetPipelineInstHistoryResponseBodyDataDataList) SetTriggerMode(v int32) *GetPipelineInstHistoryResponseBodyDataDataList {
-	s.TriggerMode = &v
+func (s *GetPipelineInstHistoryResponseBodyDataDataList) SetDeletion(v string) *GetPipelineInstHistoryResponseBodyDataDataList {
+	s.Deletion = &v
 	return s
 }
 
@@ -4127,11 +4232,6 @@ func (s *GetPipelineInstHistoryResponseBodyDataDataList) SetInstNumber(v int32) 
 
 func (s *GetPipelineInstHistoryResponseBodyDataDataList) SetModifier(v string) *GetPipelineInstHistoryResponseBodyDataDataList {
 	s.Modifier = &v
-	return s
-}
-
-func (s *GetPipelineInstHistoryResponseBodyDataDataList) SetFlowInstance(v *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) *GetPipelineInstHistoryResponseBodyDataDataList {
-	s.FlowInstance = v
 	return s
 }
 
@@ -4160,23 +4260,28 @@ func (s *GetPipelineInstHistoryResponseBodyDataDataList) SetModifyTime(v int64) 
 	return s
 }
 
+func (s *GetPipelineInstHistoryResponseBodyDataDataList) SetFlowInstance(v *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) *GetPipelineInstHistoryResponseBodyDataDataList {
+	s.FlowInstance = v
+	return s
+}
+
 type GetPipelineInstHistoryResponseBodyDataDataListFlowInstance struct {
 	Status           *string                                                             `json:"Status,omitempty" xml:"Status,omitempty"`
 	Stages           map[string]interface{}                                              `json:"Stages,omitempty" xml:"Stages,omitempty"`
-	Result           *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult   `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 	CreateTime       *int64                                                              `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	StatusName       *string                                                             `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
 	RunningStatus    *string                                                             `json:"RunningStatus,omitempty" xml:"RunningStatus,omitempty"`
-	StageTopo        *string                                                             `json:"StageTopo,omitempty" xml:"StageTopo,omitempty"`
 	Creator          *string                                                             `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	StageTopo        *string                                                             `json:"StageTopo,omitempty" xml:"StageTopo,omitempty"`
 	Modifier         *string                                                             `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
-	Groups           []*GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
 	AutoDrivenStatus *bool                                                               `json:"AutoDrivenStatus,omitempty" xml:"AutoDrivenStatus,omitempty"`
 	ResultStatus     *string                                                             `json:"ResultStatus,omitempty" xml:"ResultStatus,omitempty"`
 	Id               *int32                                                              `json:"Id,omitempty" xml:"Id,omitempty"`
 	SystemCode       *string                                                             `json:"SystemCode,omitempty" xml:"SystemCode,omitempty"`
 	ModifyTime       *int64                                                              `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	SystemId         *string                                                             `json:"SystemId,omitempty" xml:"SystemId,omitempty"`
+	Groups           []*GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
+	Result           *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult   `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) String() string {
@@ -4197,11 +4302,6 @@ func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) SetStages(v
 	return s
 }
 
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) SetResult(v *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance {
-	s.Result = v
-	return s
-}
-
 func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) SetCreateTime(v int64) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance {
 	s.CreateTime = &v
 	return s
@@ -4217,23 +4317,18 @@ func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) SetRunningS
 	return s
 }
 
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) SetStageTopo(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance {
-	s.StageTopo = &v
-	return s
-}
-
 func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) SetCreator(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance {
 	s.Creator = &v
 	return s
 }
 
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) SetModifier(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance {
-	s.Modifier = &v
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) SetStageTopo(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance {
+	s.StageTopo = &v
 	return s
 }
 
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) SetGroups(v []*GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance {
-	s.Groups = v
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) SetModifier(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance {
+	s.Modifier = &v
 	return s
 }
 
@@ -4267,74 +4362,13 @@ func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) SetSystemId
 	return s
 }
 
-type GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult struct {
-	EnginePipelineNumber *int32  `json:"EnginePipelineNumber,omitempty" xml:"EnginePipelineNumber,omitempty"`
-	MixFlowInstId        *string `json:"MixFlowInstId,omitempty" xml:"MixFlowInstId,omitempty"`
-	EnginePipelineName   *string `json:"EnginePipelineName,omitempty" xml:"EnginePipelineName,omitempty"`
-	EnginePipelineId     *int32  `json:"EnginePipelineId,omitempty" xml:"EnginePipelineId,omitempty"`
-	EnginePipelineInstId *int32  `json:"EnginePipelineInstId,omitempty" xml:"EnginePipelineInstId,omitempty"`
-	TimeStamp            *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	TriggerMode          *string `json:"TriggerMode,omitempty" xml:"TriggerMode,omitempty"`
-	Sources              *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
-	Caches               *string `json:"Caches,omitempty" xml:"Caches,omitempty"`
-	DateTime             *string `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
-}
-
-func (s GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) GoString() string {
-	return s.String()
-}
-
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) SetEnginePipelineNumber(v int32) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult {
-	s.EnginePipelineNumber = &v
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) SetGroups(v []*GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance {
+	s.Groups = v
 	return s
 }
 
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) SetMixFlowInstId(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult {
-	s.MixFlowInstId = &v
-	return s
-}
-
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) SetEnginePipelineName(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult {
-	s.EnginePipelineName = &v
-	return s
-}
-
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) SetEnginePipelineId(v int32) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult {
-	s.EnginePipelineId = &v
-	return s
-}
-
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) SetEnginePipelineInstId(v int32) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult {
-	s.EnginePipelineInstId = &v
-	return s
-}
-
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) SetTimeStamp(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult {
-	s.TimeStamp = &v
-	return s
-}
-
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) SetTriggerMode(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult {
-	s.TriggerMode = &v
-	return s
-}
-
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) SetSources(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult {
-	s.Sources = &v
-	return s
-}
-
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) SetCaches(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult {
-	s.Caches = &v
-	return s
-}
-
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) SetDateTime(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult {
-	s.DateTime = &v
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) SetResult(v *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance {
+	s.Result = v
 	return s
 }
 
@@ -4427,6 +4461,77 @@ func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups) SetMo
 	return s
 }
 
+type GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult struct {
+	EnginePipelineNumber *int32  `json:"EnginePipelineNumber,omitempty" xml:"EnginePipelineNumber,omitempty"`
+	MixFlowInstId        *string `json:"MixFlowInstId,omitempty" xml:"MixFlowInstId,omitempty"`
+	EnginePipelineName   *string `json:"EnginePipelineName,omitempty" xml:"EnginePipelineName,omitempty"`
+	EnginePipelineId     *int32  `json:"EnginePipelineId,omitempty" xml:"EnginePipelineId,omitempty"`
+	EnginePipelineInstId *int32  `json:"EnginePipelineInstId,omitempty" xml:"EnginePipelineInstId,omitempty"`
+	TimeStamp            *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	TriggerMode          *string `json:"TriggerMode,omitempty" xml:"TriggerMode,omitempty"`
+	Sources              *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
+	Caches               *string `json:"Caches,omitempty" xml:"Caches,omitempty"`
+	DateTime             *string `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
+}
+
+func (s GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) SetEnginePipelineNumber(v int32) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult {
+	s.EnginePipelineNumber = &v
+	return s
+}
+
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) SetMixFlowInstId(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult {
+	s.MixFlowInstId = &v
+	return s
+}
+
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) SetEnginePipelineName(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult {
+	s.EnginePipelineName = &v
+	return s
+}
+
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) SetEnginePipelineId(v int32) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult {
+	s.EnginePipelineId = &v
+	return s
+}
+
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) SetEnginePipelineInstId(v int32) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult {
+	s.EnginePipelineInstId = &v
+	return s
+}
+
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) SetTimeStamp(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult {
+	s.TimeStamp = &v
+	return s
+}
+
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) SetTriggerMode(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult {
+	s.TriggerMode = &v
+	return s
+}
+
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) SetSources(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult {
+	s.Sources = &v
+	return s
+}
+
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) SetCaches(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult {
+	s.Caches = &v
+	return s
+}
+
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) SetDateTime(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult {
+	s.DateTime = &v
+	return s
+}
+
 type GetPipelineInstHistoryResponse struct {
 	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	Body    *GetPipelineInstHistoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -4487,10 +4592,10 @@ func (s *GetPipelineLogRequest) SetJobId(v int64) *GetPipelineLogRequest {
 
 type GetPipelineLogResponseBody struct {
 	RequestId    *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Object       []*GetPipelineLogResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
-	ErrorCode    *string                             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string                             `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Success      *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string                             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object       []*GetPipelineLogResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
 }
 
 func (s GetPipelineLogResponseBody) String() string {
@@ -4506,16 +4611,6 @@ func (s *GetPipelineLogResponseBody) SetRequestId(v string) *GetPipelineLogRespo
 	return s
 }
 
-func (s *GetPipelineLogResponseBody) SetObject(v []*GetPipelineLogResponseBodyObject) *GetPipelineLogResponseBody {
-	s.Object = v
-	return s
-}
-
-func (s *GetPipelineLogResponseBody) SetErrorCode(v string) *GetPipelineLogResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
 func (s *GetPipelineLogResponseBody) SetErrorMessage(v string) *GetPipelineLogResponseBody {
 	s.ErrorMessage = &v
 	return s
@@ -4526,10 +4621,20 @@ func (s *GetPipelineLogResponseBody) SetSuccess(v bool) *GetPipelineLogResponseB
 	return s
 }
 
+func (s *GetPipelineLogResponseBody) SetErrorCode(v string) *GetPipelineLogResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetPipelineLogResponseBody) SetObject(v []*GetPipelineLogResponseBodyObject) *GetPipelineLogResponseBody {
+	s.Object = v
+	return s
+}
+
 type GetPipelineLogResponseBodyObject struct {
+	ActionName        *string                                              `json:"ActionName,omitempty" xml:"ActionName,omitempty"`
 	StartTime         *string                                              `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	JobId             *int64                                               `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	ActionName        *string                                              `json:"ActionName,omitempty" xml:"ActionName,omitempty"`
 	BuildProcessNodes []*GetPipelineLogResponseBodyObjectBuildProcessNodes `json:"BuildProcessNodes,omitempty" xml:"BuildProcessNodes,omitempty" type:"Repeated"`
 }
 
@@ -4539,6 +4644,11 @@ func (s GetPipelineLogResponseBodyObject) String() string {
 
 func (s GetPipelineLogResponseBodyObject) GoString() string {
 	return s.String()
+}
+
+func (s *GetPipelineLogResponseBodyObject) SetActionName(v string) *GetPipelineLogResponseBodyObject {
+	s.ActionName = &v
+	return s
 }
 
 func (s *GetPipelineLogResponseBodyObject) SetStartTime(v string) *GetPipelineLogResponseBodyObject {
@@ -4551,11 +4661,6 @@ func (s *GetPipelineLogResponseBodyObject) SetJobId(v int64) *GetPipelineLogResp
 	return s
 }
 
-func (s *GetPipelineLogResponseBodyObject) SetActionName(v string) *GetPipelineLogResponseBodyObject {
-	s.ActionName = &v
-	return s
-}
-
 func (s *GetPipelineLogResponseBodyObject) SetBuildProcessNodes(v []*GetPipelineLogResponseBodyObjectBuildProcessNodes) *GetPipelineLogResponseBodyObject {
 	s.BuildProcessNodes = v
 	return s
@@ -4563,8 +4668,8 @@ func (s *GetPipelineLogResponseBodyObject) SetBuildProcessNodes(v []*GetPipeline
 
 type GetPipelineLogResponseBodyObjectBuildProcessNodes struct {
 	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	NodeName  *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
 	NodeIndex *int32  `json:"NodeIndex,omitempty" xml:"NodeIndex,omitempty"`
+	NodeName  *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
 }
 
 func (s GetPipelineLogResponseBodyObjectBuildProcessNodes) String() string {
@@ -4580,13 +4685,13 @@ func (s *GetPipelineLogResponseBodyObjectBuildProcessNodes) SetStatus(v string) 
 	return s
 }
 
-func (s *GetPipelineLogResponseBodyObjectBuildProcessNodes) SetNodeName(v string) *GetPipelineLogResponseBodyObjectBuildProcessNodes {
-	s.NodeName = &v
+func (s *GetPipelineLogResponseBodyObjectBuildProcessNodes) SetNodeIndex(v int32) *GetPipelineLogResponseBodyObjectBuildProcessNodes {
+	s.NodeIndex = &v
 	return s
 }
 
-func (s *GetPipelineLogResponseBodyObjectBuildProcessNodes) SetNodeIndex(v int32) *GetPipelineLogResponseBodyObjectBuildProcessNodes {
-	s.NodeIndex = &v
+func (s *GetPipelineLogResponseBodyObjectBuildProcessNodes) SetNodeName(v string) *GetPipelineLogResponseBodyObjectBuildProcessNodes {
+	s.NodeName = &v
 	return s
 }
 
@@ -4668,10 +4773,10 @@ func (s *GetPipelineStepLogRequest) SetLimit(v int64) *GetPipelineStepLogRequest
 
 type GetPipelineStepLogResponseBody struct {
 	RequestId    *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Object       *GetPipelineStepLogResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
-	ErrorCode    *string                               `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string                               `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Success      *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string                               `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object       *GetPipelineStepLogResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
 }
 
 func (s GetPipelineStepLogResponseBody) String() string {
@@ -4687,16 +4792,6 @@ func (s *GetPipelineStepLogResponseBody) SetRequestId(v string) *GetPipelineStep
 	return s
 }
 
-func (s *GetPipelineStepLogResponseBody) SetObject(v *GetPipelineStepLogResponseBodyObject) *GetPipelineStepLogResponseBody {
-	s.Object = v
-	return s
-}
-
-func (s *GetPipelineStepLogResponseBody) SetErrorCode(v string) *GetPipelineStepLogResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
 func (s *GetPipelineStepLogResponseBody) SetErrorMessage(v string) *GetPipelineStepLogResponseBody {
 	s.ErrorMessage = &v
 	return s
@@ -4707,10 +4802,20 @@ func (s *GetPipelineStepLogResponseBody) SetSuccess(v bool) *GetPipelineStepLogR
 	return s
 }
 
+func (s *GetPipelineStepLogResponseBody) SetErrorCode(v string) *GetPipelineStepLogResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetPipelineStepLogResponseBody) SetObject(v *GetPipelineStepLogResponseBodyObject) *GetPipelineStepLogResponseBody {
+	s.Object = v
+	return s
+}
+
 type GetPipelineStepLogResponseBodyObject struct {
-	Logs *string `json:"Logs,omitempty" xml:"Logs,omitempty"`
 	Last *int32  `json:"Last,omitempty" xml:"Last,omitempty"`
 	More *bool   `json:"More,omitempty" xml:"More,omitempty"`
+	Logs *string `json:"Logs,omitempty" xml:"Logs,omitempty"`
 }
 
 func (s GetPipelineStepLogResponseBodyObject) String() string {
@@ -4721,11 +4826,6 @@ func (s GetPipelineStepLogResponseBodyObject) GoString() string {
 	return s.String()
 }
 
-func (s *GetPipelineStepLogResponseBodyObject) SetLogs(v string) *GetPipelineStepLogResponseBodyObject {
-	s.Logs = &v
-	return s
-}
-
 func (s *GetPipelineStepLogResponseBodyObject) SetLast(v int32) *GetPipelineStepLogResponseBodyObject {
 	s.Last = &v
 	return s
@@ -4733,6 +4833,11 @@ func (s *GetPipelineStepLogResponseBodyObject) SetLast(v int32) *GetPipelineStep
 
 func (s *GetPipelineStepLogResponseBodyObject) SetMore(v bool) *GetPipelineStepLogResponseBodyObject {
 	s.More = &v
+	return s
+}
+
+func (s *GetPipelineStepLogResponseBodyObject) SetLogs(v string) *GetPipelineStepLogResponseBodyObject {
+	s.Logs = &v
 	return s
 }
 
@@ -4790,10 +4895,10 @@ func (s *GetPipleineLatestInstanceStatusRequest) SetUserPk(v string) *GetPiplein
 
 type GetPipleineLatestInstanceStatusResponseBody struct {
 	RequestId    *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Object       *GetPipleineLatestInstanceStatusResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
-	ErrorCode    *string                                            `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string                                            `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Success      *bool                                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string                                            `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object       *GetPipleineLatestInstanceStatusResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
 }
 
 func (s GetPipleineLatestInstanceStatusResponseBody) String() string {
@@ -4809,8 +4914,13 @@ func (s *GetPipleineLatestInstanceStatusResponseBody) SetRequestId(v string) *Ge
 	return s
 }
 
-func (s *GetPipleineLatestInstanceStatusResponseBody) SetObject(v *GetPipleineLatestInstanceStatusResponseBodyObject) *GetPipleineLatestInstanceStatusResponseBody {
-	s.Object = v
+func (s *GetPipleineLatestInstanceStatusResponseBody) SetErrorMessage(v string) *GetPipleineLatestInstanceStatusResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetPipleineLatestInstanceStatusResponseBody) SetSuccess(v bool) *GetPipleineLatestInstanceStatusResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -4819,13 +4929,8 @@ func (s *GetPipleineLatestInstanceStatusResponseBody) SetErrorCode(v string) *Ge
 	return s
 }
 
-func (s *GetPipleineLatestInstanceStatusResponseBody) SetErrorMessage(v string) *GetPipleineLatestInstanceStatusResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *GetPipleineLatestInstanceStatusResponseBody) SetSuccess(v bool) *GetPipleineLatestInstanceStatusResponseBody {
-	s.Success = &v
+func (s *GetPipleineLatestInstanceStatusResponseBody) SetObject(v *GetPipleineLatestInstanceStatusResponseBodyObject) *GetPipleineLatestInstanceStatusResponseBody {
+	s.Object = v
 	return s
 }
 
@@ -4854,8 +4959,8 @@ func (s *GetPipleineLatestInstanceStatusResponseBodyObject) SetGroups(v []*GetPi
 
 type GetPipleineLatestInstanceStatusResponseBodyObjectGroups struct {
 	Status *string                                                          `json:"Status,omitempty" xml:"Status,omitempty"`
-	Stages []*GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStages `json:"Stages,omitempty" xml:"Stages,omitempty" type:"Repeated"`
 	Name   *string                                                          `json:"Name,omitempty" xml:"Name,omitempty"`
+	Stages []*GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStages `json:"Stages,omitempty" xml:"Stages,omitempty" type:"Repeated"`
 }
 
 func (s GetPipleineLatestInstanceStatusResponseBodyObjectGroups) String() string {
@@ -4871,13 +4976,13 @@ func (s *GetPipleineLatestInstanceStatusResponseBodyObjectGroups) SetStatus(v st
 	return s
 }
 
-func (s *GetPipleineLatestInstanceStatusResponseBodyObjectGroups) SetStages(v []*GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStages) *GetPipleineLatestInstanceStatusResponseBodyObjectGroups {
-	s.Stages = v
+func (s *GetPipleineLatestInstanceStatusResponseBodyObjectGroups) SetName(v string) *GetPipleineLatestInstanceStatusResponseBodyObjectGroups {
+	s.Name = &v
 	return s
 }
 
-func (s *GetPipleineLatestInstanceStatusResponseBodyObjectGroups) SetName(v string) *GetPipleineLatestInstanceStatusResponseBodyObjectGroups {
-	s.Name = &v
+func (s *GetPipleineLatestInstanceStatusResponseBodyObjectGroups) SetStages(v []*GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStages) *GetPipleineLatestInstanceStatusResponseBodyObjectGroups {
+	s.Stages = v
 	return s
 }
 
@@ -4912,8 +5017,8 @@ func (s *GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStages) SetCompo
 
 type GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStagesComponents struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	JobId  *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	JobId  *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
 func (s GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStagesComponents) String() string {
@@ -4929,13 +5034,13 @@ func (s *GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStagesComponents
 	return s
 }
 
-func (s *GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStagesComponents) SetJobId(v int64) *GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStagesComponents {
-	s.JobId = &v
+func (s *GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStagesComponents) SetName(v string) *GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStagesComponents {
+	s.Name = &v
 	return s
 }
 
-func (s *GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStagesComponents) SetName(v string) *GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStagesComponents {
-	s.Name = &v
+func (s *GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStagesComponents) SetJobId(v int64) *GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStagesComponents {
+	s.JobId = &v
 	return s
 }
 
@@ -4998,11 +5103,11 @@ func (s *GetProjectOptionRequest) SetQuery(v string) *GetProjectOptionRequest {
 }
 
 type GetProjectOptionResponseBody struct {
-	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ErrorMsg   *string                               `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	Object     []*GetProjectOptionResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
-	ErrorCode  *string                               `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Successful *bool                                 `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string                               `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object     []*GetProjectOptionResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
 }
 
 func (s GetProjectOptionResponseBody) String() string {
@@ -5013,23 +5118,13 @@ func (s GetProjectOptionResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetProjectOptionResponseBody) SetRequestId(v string) *GetProjectOptionResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *GetProjectOptionResponseBody) SetErrorMsg(v string) *GetProjectOptionResponseBody {
 	s.ErrorMsg = &v
 	return s
 }
 
-func (s *GetProjectOptionResponseBody) SetObject(v []*GetProjectOptionResponseBodyObject) *GetProjectOptionResponseBody {
-	s.Object = v
-	return s
-}
-
-func (s *GetProjectOptionResponseBody) SetErrorCode(v string) *GetProjectOptionResponseBody {
-	s.ErrorCode = &v
+func (s *GetProjectOptionResponseBody) SetRequestId(v string) *GetProjectOptionResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -5038,9 +5133,21 @@ func (s *GetProjectOptionResponseBody) SetSuccessful(v bool) *GetProjectOptionRe
 	return s
 }
 
+func (s *GetProjectOptionResponseBody) SetErrorCode(v string) *GetProjectOptionResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetProjectOptionResponseBody) SetObject(v []*GetProjectOptionResponseBodyObject) *GetProjectOptionResponseBody {
+	s.Object = v
+	return s
+}
+
 type GetProjectOptionResponseBodyObject struct {
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ScopeName *string `json:"ScopeName,omitempty" xml:"ScopeName,omitempty"`
+	Kind      *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
 }
 
 func (s GetProjectOptionResponseBodyObject) String() string {
@@ -5058,6 +5165,16 @@ func (s *GetProjectOptionResponseBodyObject) SetValue(v string) *GetProjectOptio
 
 func (s *GetProjectOptionResponseBodyObject) SetName(v string) *GetProjectOptionResponseBodyObject {
 	s.Name = &v
+	return s
+}
+
+func (s *GetProjectOptionResponseBodyObject) SetScopeName(v string) *GetProjectOptionResponseBodyObject {
+	s.ScopeName = &v
+	return s
+}
+
+func (s *GetProjectOptionResponseBodyObject) SetKind(v string) *GetProjectOptionResponseBodyObject {
+	s.Kind = &v
 	return s
 }
 
@@ -5114,12 +5231,12 @@ func (s *GetTaskDetailActivityRequest) SetTaskId(v string) *GetTaskDetailActivit
 }
 
 type GetTaskDetailActivityResponseBody struct {
-	RequestId      *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	HttpStatusCode *int32                                     `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	ErrorMsg       *string                                    `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	Object         []*GetTaskDetailActivityResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
-	ErrorCode      *string                                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	RequestId      *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Successful     *bool                                      `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode      *string                                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object         []*GetTaskDetailActivityResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
 }
 
 func (s GetTaskDetailActivityResponseBody) String() string {
@@ -5128,11 +5245,6 @@ func (s GetTaskDetailActivityResponseBody) String() string {
 
 func (s GetTaskDetailActivityResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *GetTaskDetailActivityResponseBody) SetRequestId(v string) *GetTaskDetailActivityResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *GetTaskDetailActivityResponseBody) SetHttpStatusCode(v int32) *GetTaskDetailActivityResponseBody {
@@ -5145,13 +5257,8 @@ func (s *GetTaskDetailActivityResponseBody) SetErrorMsg(v string) *GetTaskDetail
 	return s
 }
 
-func (s *GetTaskDetailActivityResponseBody) SetObject(v []*GetTaskDetailActivityResponseBodyObject) *GetTaskDetailActivityResponseBody {
-	s.Object = v
-	return s
-}
-
-func (s *GetTaskDetailActivityResponseBody) SetErrorCode(v string) *GetTaskDetailActivityResponseBody {
-	s.ErrorCode = &v
+func (s *GetTaskDetailActivityResponseBody) SetRequestId(v string) *GetTaskDetailActivityResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -5160,9 +5267,19 @@ func (s *GetTaskDetailActivityResponseBody) SetSuccessful(v bool) *GetTaskDetail
 	return s
 }
 
+func (s *GetTaskDetailActivityResponseBody) SetErrorCode(v string) *GetTaskDetailActivityResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetTaskDetailActivityResponseBody) SetObject(v []*GetTaskDetailActivityResponseBodyObject) *GetTaskDetailActivityResponseBody {
+	s.Object = v
+	return s
+}
+
 type GetTaskDetailActivityResponseBodyObject struct {
-	Action  *string                `json:"Action,omitempty" xml:"Action,omitempty"`
 	Updated *string                `json:"Updated,omitempty" xml:"Updated,omitempty"`
+	Action  *string                `json:"Action,omitempty" xml:"Action,omitempty"`
 	Title   *string                `json:"Title,omitempty" xml:"Title,omitempty"`
 	Created *string                `json:"Created,omitempty" xml:"Created,omitempty"`
 	Content map[string]interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
@@ -5176,13 +5293,13 @@ func (s GetTaskDetailActivityResponseBodyObject) GoString() string {
 	return s.String()
 }
 
-func (s *GetTaskDetailActivityResponseBodyObject) SetAction(v string) *GetTaskDetailActivityResponseBodyObject {
-	s.Action = &v
+func (s *GetTaskDetailActivityResponseBodyObject) SetUpdated(v string) *GetTaskDetailActivityResponseBodyObject {
+	s.Updated = &v
 	return s
 }
 
-func (s *GetTaskDetailActivityResponseBodyObject) SetUpdated(v string) *GetTaskDetailActivityResponseBodyObject {
-	s.Updated = &v
+func (s *GetTaskDetailActivityResponseBodyObject) SetAction(v string) *GetTaskDetailActivityResponseBodyObject {
+	s.Action = &v
 	return s
 }
 
@@ -5254,11 +5371,11 @@ func (s *GetTaskDetailBaseRequest) SetTaskId(v string) *GetTaskDetailBaseRequest
 }
 
 type GetTaskDetailBaseResponseBody struct {
-	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ErrorMsg   *string                              `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	Object     *GetTaskDetailBaseResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
-	ErrorCode  *string                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Successful *bool                                `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object     *GetTaskDetailBaseResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
 }
 
 func (s GetTaskDetailBaseResponseBody) String() string {
@@ -5269,23 +5386,13 @@ func (s GetTaskDetailBaseResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetTaskDetailBaseResponseBody) SetRequestId(v string) *GetTaskDetailBaseResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *GetTaskDetailBaseResponseBody) SetErrorMsg(v string) *GetTaskDetailBaseResponseBody {
 	s.ErrorMsg = &v
 	return s
 }
 
-func (s *GetTaskDetailBaseResponseBody) SetObject(v *GetTaskDetailBaseResponseBodyObject) *GetTaskDetailBaseResponseBody {
-	s.Object = v
-	return s
-}
-
-func (s *GetTaskDetailBaseResponseBody) SetErrorCode(v string) *GetTaskDetailBaseResponseBody {
-	s.ErrorCode = &v
+func (s *GetTaskDetailBaseResponseBody) SetRequestId(v string) *GetTaskDetailBaseResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -5294,67 +5401,77 @@ func (s *GetTaskDetailBaseResponseBody) SetSuccessful(v bool) *GetTaskDetailBase
 	return s
 }
 
+func (s *GetTaskDetailBaseResponseBody) SetErrorCode(v string) *GetTaskDetailBaseResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetTaskDetailBaseResponseBody) SetObject(v *GetTaskDetailBaseResponseBodyObject) *GetTaskDetailBaseResponseBody {
+	s.Object = v
+	return s
+}
+
 type GetTaskDetailBaseResponseBodyObject struct {
+	IsFavorite            *bool                                                   `json:"IsFavorite,omitempty" xml:"IsFavorite,omitempty"`
 	Organization          *string                                                 `json:"Organization,omitempty" xml:"Organization,omitempty"`
+	ExecutorId            *string                                                 `json:"ExecutorId,omitempty" xml:"ExecutorId,omitempty"`
 	ScenariofieldconfigId *string                                                 `json:"ScenariofieldconfigId,omitempty" xml:"ScenariofieldconfigId,omitempty"`
 	ProjectId             *string                                                 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	IsTopInProject        *bool                                                   `json:"IsTopInProject,omitempty" xml:"IsTopInProject,omitempty"`
-	Tasklist              *GetTaskDetailBaseResponseBodyObjectTasklist            `json:"Tasklist,omitempty" xml:"Tasklist,omitempty" type:"Struct"`
-	Badges                *GetTaskDetailBaseResponseBodyObjectBadges              `json:"Badges,omitempty" xml:"Badges,omitempty" type:"Struct"`
-	AncestorIds           []*string                                               `json:"AncestorIds,omitempty" xml:"AncestorIds,omitempty" type:"Repeated"`
+	Priority              *int32                                                  `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	ShareStatus           *int32                                                  `json:"ShareStatus,omitempty" xml:"ShareStatus,omitempty"`
-	Reminder              *GetTaskDetailBaseResponseBodyObjectReminder            `json:"Reminder,omitempty" xml:"Reminder,omitempty" type:"Struct"`
-	Ancestors             []*string                                               `json:"Ancestors,omitempty" xml:"Ancestors,omitempty" type:"Repeated"`
+	Accomplished          *string                                                 `json:"Accomplished,omitempty" xml:"Accomplished,omitempty"`
 	TaskflowstatusId      *string                                                 `json:"TaskflowstatusId,omitempty" xml:"TaskflowstatusId,omitempty"`
-	Updated               *string                                                 `json:"Updated,omitempty" xml:"Updated,omitempty"`
 	Note                  *string                                                 `json:"Note,omitempty" xml:"Note,omitempty"`
+	Updated               *string                                                 `json:"Updated,omitempty" xml:"Updated,omitempty"`
+	UniqueId              *int32                                                  `json:"UniqueId,omitempty" xml:"UniqueId,omitempty"`
 	IsArchived            *bool                                                   `json:"IsArchived,omitempty" xml:"IsArchived,omitempty"`
 	Content               *string                                                 `json:"Content,omitempty" xml:"Content,omitempty"`
+	CommentsCount         *int32                                                  `json:"CommentsCount,omitempty" xml:"CommentsCount,omitempty"`
 	Rating                *int32                                                  `json:"Rating,omitempty" xml:"Rating,omitempty"`
+	Recurrence            *string                                                 `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
+	ObjectType            *string                                                 `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
 	Progress              *int32                                                  `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	Stage                 *GetTaskDetailBaseResponseBodyObjectStage               `json:"Stage,omitempty" xml:"Stage,omitempty" type:"Struct"`
-	Labels                []*string                                               `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	UntilDate             *string                                                 `json:"UntilDate,omitempty" xml:"UntilDate,omitempty"`
 	StartDate             *string                                                 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	StoryPoint            *string                                                 `json:"StoryPoint,omitempty" xml:"StoryPoint,omitempty"`
+	ObjectlinksCount      *int32                                                  `json:"ObjectlinksCount,omitempty" xml:"ObjectlinksCount,omitempty"`
 	Sprint                *string                                                 `json:"Sprint,omitempty" xml:"Sprint,omitempty"`
 	CreatorId             *string                                                 `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	Source                *string                                                 `json:"Source,omitempty" xml:"Source,omitempty"`
 	SourceId              *string                                                 `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
 	OrganizationId        *string                                                 `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 	SourceDate            *string                                                 `json:"SourceDate,omitempty" xml:"SourceDate,omitempty"`
-	IsFavorite            *bool                                                   `json:"IsFavorite,omitempty" xml:"IsFavorite,omitempty"`
-	ExecutorId            *string                                                 `json:"ExecutorId,omitempty" xml:"ExecutorId,omitempty"`
-	Scenariofieldconfig   *GetTaskDetailBaseResponseBodyObjectScenariofieldconfig `json:"Scenariofieldconfig,omitempty" xml:"Scenariofieldconfig,omitempty" type:"Struct"`
-	WorkTime              *GetTaskDetailBaseResponseBodyObjectWorkTime            `json:"WorkTime,omitempty" xml:"WorkTime,omitempty" type:"Struct"`
-	TagIds                []*string                                               `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
-	Priority              *int32                                                  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	Creator               *GetTaskDetailBaseResponseBodyObjectCreator             `json:"Creator,omitempty" xml:"Creator,omitempty" type:"Struct"`
-	Executor              *GetTaskDetailBaseResponseBodyObjectExecutor            `json:"Executor,omitempty" xml:"Executor,omitempty" type:"Struct"`
-	Accomplished          *string                                                 `json:"Accomplished,omitempty" xml:"Accomplished,omitempty"`
-	InvolveMembers        []*string                                               `json:"InvolveMembers,omitempty" xml:"InvolveMembers,omitempty" type:"Repeated"`
-	UniqueId              *int32                                                  `json:"UniqueId,omitempty" xml:"UniqueId,omitempty"`
-	CommentsCount         *int32                                                  `json:"CommentsCount,omitempty" xml:"CommentsCount,omitempty"`
-	Recurrence            *string                                                 `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
-	ObjectType            *string                                                 `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
-	SubtaskCount          *GetTaskDetailBaseResponseBodyObjectSubtaskCount        `json:"SubtaskCount,omitempty" xml:"SubtaskCount,omitempty" type:"Struct"`
-	UntilDate             *string                                                 `json:"UntilDate,omitempty" xml:"UntilDate,omitempty"`
-	StoryPoint            *string                                                 `json:"StoryPoint,omitempty" xml:"StoryPoint,omitempty"`
-	ObjectlinksCount      *int32                                                  `json:"ObjectlinksCount,omitempty" xml:"ObjectlinksCount,omitempty"`
-	Source                *string                                                 `json:"Source,omitempty" xml:"Source,omitempty"`
 	LikesCount            *int32                                                  `json:"LikesCount,omitempty" xml:"LikesCount,omitempty"`
 	StageId               *string                                                 `json:"StageId,omitempty" xml:"StageId,omitempty"`
-	Divisions             []*string                                               `json:"Divisions,omitempty" xml:"Divisions,omitempty" type:"Repeated"`
 	Visible               *string                                                 `json:"Visible,omitempty" xml:"Visible,omitempty"`
 	IsDone                *bool                                                   `json:"IsDone,omitempty" xml:"IsDone,omitempty"`
-	Involvers             []*GetTaskDetailBaseResponseBodyObjectInvolvers         `json:"Involvers,omitempty" xml:"Involvers,omitempty" type:"Repeated"`
 	Parent                *string                                                 `json:"Parent,omitempty" xml:"Parent,omitempty"`
 	SprintId              *string                                                 `json:"SprintId,omitempty" xml:"SprintId,omitempty"`
-	DueDate               *string                                                 `json:"DueDate,omitempty" xml:"DueDate,omitempty"`
 	AttachmentsCount      *int32                                                  `json:"AttachmentsCount,omitempty" xml:"AttachmentsCount,omitempty"`
-	Subtasks              []*GetTaskDetailBaseResponseBodyObjectSubtasks          `json:"Subtasks,omitempty" xml:"Subtasks,omitempty" type:"Repeated"`
-	Customfields          []*GetTaskDetailBaseResponseBodyObjectCustomfields      `json:"Customfields,omitempty" xml:"Customfields,omitempty" type:"Repeated"`
+	DueDate               *string                                                 `json:"DueDate,omitempty" xml:"DueDate,omitempty"`
 	Created               *string                                                 `json:"Created,omitempty" xml:"Created,omitempty"`
 	TaskId                *string                                                 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	Taskflowstatus        *GetTaskDetailBaseResponseBodyObjectTaskflowstatus      `json:"Taskflowstatus,omitempty" xml:"Taskflowstatus,omitempty" type:"Struct"`
 	Id                    *string                                                 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Customfields          []*GetTaskDetailBaseResponseBodyObjectCustomfields      `json:"Customfields,omitempty" xml:"Customfields,omitempty" type:"Repeated"`
+	Subtasks              []*GetTaskDetailBaseResponseBodyObjectSubtasks          `json:"Subtasks,omitempty" xml:"Subtasks,omitempty" type:"Repeated"`
+	Involvers             []*GetTaskDetailBaseResponseBodyObjectInvolvers         `json:"Involvers,omitempty" xml:"Involvers,omitempty" type:"Repeated"`
+	Labels                []*string                                               `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	Divisions             []*string                                               `json:"Divisions,omitempty" xml:"Divisions,omitempty" type:"Repeated"`
+	Ancestors             []*string                                               `json:"Ancestors,omitempty" xml:"Ancestors,omitempty" type:"Repeated"`
+	InvolveMembers        []*string                                               `json:"InvolveMembers,omitempty" xml:"InvolveMembers,omitempty" type:"Repeated"`
+	TagIds                []*string                                               `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
+	AncestorIds           []*string                                               `json:"AncestorIds,omitempty" xml:"AncestorIds,omitempty" type:"Repeated"`
+	Scenariofieldconfig   *GetTaskDetailBaseResponseBodyObjectScenariofieldconfig `json:"Scenariofieldconfig,omitempty" xml:"Scenariofieldconfig,omitempty" type:"Struct"`
+	Executor              *GetTaskDetailBaseResponseBodyObjectExecutor            `json:"Executor,omitempty" xml:"Executor,omitempty" type:"Struct"`
+	Tasklist              *GetTaskDetailBaseResponseBodyObjectTasklist            `json:"Tasklist,omitempty" xml:"Tasklist,omitempty" type:"Struct"`
+	Taskflowstatus        *GetTaskDetailBaseResponseBodyObjectTaskflowstatus      `json:"Taskflowstatus,omitempty" xml:"Taskflowstatus,omitempty" type:"Struct"`
+	Creator               *GetTaskDetailBaseResponseBodyObjectCreator             `json:"Creator,omitempty" xml:"Creator,omitempty" type:"Struct"`
+	Reminder              *GetTaskDetailBaseResponseBodyObjectReminder            `json:"Reminder,omitempty" xml:"Reminder,omitempty" type:"Struct"`
+	SubtaskCount          *GetTaskDetailBaseResponseBodyObjectSubtaskCount        `json:"SubtaskCount,omitempty" xml:"SubtaskCount,omitempty" type:"Struct"`
+	WorkTime              *GetTaskDetailBaseResponseBodyObjectWorkTime            `json:"WorkTime,omitempty" xml:"WorkTime,omitempty" type:"Struct"`
+	Badges                *GetTaskDetailBaseResponseBodyObjectBadges              `json:"Badges,omitempty" xml:"Badges,omitempty" type:"Struct"`
+	Stage                 *GetTaskDetailBaseResponseBodyObjectStage               `json:"Stage,omitempty" xml:"Stage,omitempty" type:"Struct"`
 }
 
 func (s GetTaskDetailBaseResponseBodyObject) String() string {
@@ -5365,8 +5482,18 @@ func (s GetTaskDetailBaseResponseBodyObject) GoString() string {
 	return s.String()
 }
 
+func (s *GetTaskDetailBaseResponseBodyObject) SetIsFavorite(v bool) *GetTaskDetailBaseResponseBodyObject {
+	s.IsFavorite = &v
+	return s
+}
+
 func (s *GetTaskDetailBaseResponseBodyObject) SetOrganization(v string) *GetTaskDetailBaseResponseBodyObject {
 	s.Organization = &v
+	return s
+}
+
+func (s *GetTaskDetailBaseResponseBodyObject) SetExecutorId(v string) *GetTaskDetailBaseResponseBodyObject {
+	s.ExecutorId = &v
 	return s
 }
 
@@ -5385,18 +5512,8 @@ func (s *GetTaskDetailBaseResponseBodyObject) SetIsTopInProject(v bool) *GetTask
 	return s
 }
 
-func (s *GetTaskDetailBaseResponseBodyObject) SetTasklist(v *GetTaskDetailBaseResponseBodyObjectTasklist) *GetTaskDetailBaseResponseBodyObject {
-	s.Tasklist = v
-	return s
-}
-
-func (s *GetTaskDetailBaseResponseBodyObject) SetBadges(v *GetTaskDetailBaseResponseBodyObjectBadges) *GetTaskDetailBaseResponseBodyObject {
-	s.Badges = v
-	return s
-}
-
-func (s *GetTaskDetailBaseResponseBodyObject) SetAncestorIds(v []*string) *GetTaskDetailBaseResponseBodyObject {
-	s.AncestorIds = v
+func (s *GetTaskDetailBaseResponseBodyObject) SetPriority(v int32) *GetTaskDetailBaseResponseBodyObject {
+	s.Priority = &v
 	return s
 }
 
@@ -5405,13 +5522,8 @@ func (s *GetTaskDetailBaseResponseBodyObject) SetShareStatus(v int32) *GetTaskDe
 	return s
 }
 
-func (s *GetTaskDetailBaseResponseBodyObject) SetReminder(v *GetTaskDetailBaseResponseBodyObjectReminder) *GetTaskDetailBaseResponseBodyObject {
-	s.Reminder = v
-	return s
-}
-
-func (s *GetTaskDetailBaseResponseBodyObject) SetAncestors(v []*string) *GetTaskDetailBaseResponseBodyObject {
-	s.Ancestors = v
+func (s *GetTaskDetailBaseResponseBodyObject) SetAccomplished(v string) *GetTaskDetailBaseResponseBodyObject {
+	s.Accomplished = &v
 	return s
 }
 
@@ -5420,13 +5532,18 @@ func (s *GetTaskDetailBaseResponseBodyObject) SetTaskflowstatusId(v string) *Get
 	return s
 }
 
+func (s *GetTaskDetailBaseResponseBodyObject) SetNote(v string) *GetTaskDetailBaseResponseBodyObject {
+	s.Note = &v
+	return s
+}
+
 func (s *GetTaskDetailBaseResponseBodyObject) SetUpdated(v string) *GetTaskDetailBaseResponseBodyObject {
 	s.Updated = &v
 	return s
 }
 
-func (s *GetTaskDetailBaseResponseBodyObject) SetNote(v string) *GetTaskDetailBaseResponseBodyObject {
-	s.Note = &v
+func (s *GetTaskDetailBaseResponseBodyObject) SetUniqueId(v int32) *GetTaskDetailBaseResponseBodyObject {
+	s.UniqueId = &v
 	return s
 }
 
@@ -5440,8 +5557,23 @@ func (s *GetTaskDetailBaseResponseBodyObject) SetContent(v string) *GetTaskDetai
 	return s
 }
 
+func (s *GetTaskDetailBaseResponseBodyObject) SetCommentsCount(v int32) *GetTaskDetailBaseResponseBodyObject {
+	s.CommentsCount = &v
+	return s
+}
+
 func (s *GetTaskDetailBaseResponseBodyObject) SetRating(v int32) *GetTaskDetailBaseResponseBodyObject {
 	s.Rating = &v
+	return s
+}
+
+func (s *GetTaskDetailBaseResponseBodyObject) SetRecurrence(v string) *GetTaskDetailBaseResponseBodyObject {
+	s.Recurrence = &v
+	return s
+}
+
+func (s *GetTaskDetailBaseResponseBodyObject) SetObjectType(v string) *GetTaskDetailBaseResponseBodyObject {
+	s.ObjectType = &v
 	return s
 }
 
@@ -5450,18 +5582,23 @@ func (s *GetTaskDetailBaseResponseBodyObject) SetProgress(v int32) *GetTaskDetai
 	return s
 }
 
-func (s *GetTaskDetailBaseResponseBodyObject) SetStage(v *GetTaskDetailBaseResponseBodyObjectStage) *GetTaskDetailBaseResponseBodyObject {
-	s.Stage = v
-	return s
-}
-
-func (s *GetTaskDetailBaseResponseBodyObject) SetLabels(v []*string) *GetTaskDetailBaseResponseBodyObject {
-	s.Labels = v
+func (s *GetTaskDetailBaseResponseBodyObject) SetUntilDate(v string) *GetTaskDetailBaseResponseBodyObject {
+	s.UntilDate = &v
 	return s
 }
 
 func (s *GetTaskDetailBaseResponseBodyObject) SetStartDate(v string) *GetTaskDetailBaseResponseBodyObject {
 	s.StartDate = &v
+	return s
+}
+
+func (s *GetTaskDetailBaseResponseBodyObject) SetStoryPoint(v string) *GetTaskDetailBaseResponseBodyObject {
+	s.StoryPoint = &v
+	return s
+}
+
+func (s *GetTaskDetailBaseResponseBodyObject) SetObjectlinksCount(v int32) *GetTaskDetailBaseResponseBodyObject {
+	s.ObjectlinksCount = &v
 	return s
 }
 
@@ -5472,6 +5609,11 @@ func (s *GetTaskDetailBaseResponseBodyObject) SetSprint(v string) *GetTaskDetail
 
 func (s *GetTaskDetailBaseResponseBodyObject) SetCreatorId(v string) *GetTaskDetailBaseResponseBodyObject {
 	s.CreatorId = &v
+	return s
+}
+
+func (s *GetTaskDetailBaseResponseBodyObject) SetSource(v string) *GetTaskDetailBaseResponseBodyObject {
+	s.Source = &v
 	return s
 }
 
@@ -5490,101 +5632,6 @@ func (s *GetTaskDetailBaseResponseBodyObject) SetSourceDate(v string) *GetTaskDe
 	return s
 }
 
-func (s *GetTaskDetailBaseResponseBodyObject) SetIsFavorite(v bool) *GetTaskDetailBaseResponseBodyObject {
-	s.IsFavorite = &v
-	return s
-}
-
-func (s *GetTaskDetailBaseResponseBodyObject) SetExecutorId(v string) *GetTaskDetailBaseResponseBodyObject {
-	s.ExecutorId = &v
-	return s
-}
-
-func (s *GetTaskDetailBaseResponseBodyObject) SetScenariofieldconfig(v *GetTaskDetailBaseResponseBodyObjectScenariofieldconfig) *GetTaskDetailBaseResponseBodyObject {
-	s.Scenariofieldconfig = v
-	return s
-}
-
-func (s *GetTaskDetailBaseResponseBodyObject) SetWorkTime(v *GetTaskDetailBaseResponseBodyObjectWorkTime) *GetTaskDetailBaseResponseBodyObject {
-	s.WorkTime = v
-	return s
-}
-
-func (s *GetTaskDetailBaseResponseBodyObject) SetTagIds(v []*string) *GetTaskDetailBaseResponseBodyObject {
-	s.TagIds = v
-	return s
-}
-
-func (s *GetTaskDetailBaseResponseBodyObject) SetPriority(v int32) *GetTaskDetailBaseResponseBodyObject {
-	s.Priority = &v
-	return s
-}
-
-func (s *GetTaskDetailBaseResponseBodyObject) SetCreator(v *GetTaskDetailBaseResponseBodyObjectCreator) *GetTaskDetailBaseResponseBodyObject {
-	s.Creator = v
-	return s
-}
-
-func (s *GetTaskDetailBaseResponseBodyObject) SetExecutor(v *GetTaskDetailBaseResponseBodyObjectExecutor) *GetTaskDetailBaseResponseBodyObject {
-	s.Executor = v
-	return s
-}
-
-func (s *GetTaskDetailBaseResponseBodyObject) SetAccomplished(v string) *GetTaskDetailBaseResponseBodyObject {
-	s.Accomplished = &v
-	return s
-}
-
-func (s *GetTaskDetailBaseResponseBodyObject) SetInvolveMembers(v []*string) *GetTaskDetailBaseResponseBodyObject {
-	s.InvolveMembers = v
-	return s
-}
-
-func (s *GetTaskDetailBaseResponseBodyObject) SetUniqueId(v int32) *GetTaskDetailBaseResponseBodyObject {
-	s.UniqueId = &v
-	return s
-}
-
-func (s *GetTaskDetailBaseResponseBodyObject) SetCommentsCount(v int32) *GetTaskDetailBaseResponseBodyObject {
-	s.CommentsCount = &v
-	return s
-}
-
-func (s *GetTaskDetailBaseResponseBodyObject) SetRecurrence(v string) *GetTaskDetailBaseResponseBodyObject {
-	s.Recurrence = &v
-	return s
-}
-
-func (s *GetTaskDetailBaseResponseBodyObject) SetObjectType(v string) *GetTaskDetailBaseResponseBodyObject {
-	s.ObjectType = &v
-	return s
-}
-
-func (s *GetTaskDetailBaseResponseBodyObject) SetSubtaskCount(v *GetTaskDetailBaseResponseBodyObjectSubtaskCount) *GetTaskDetailBaseResponseBodyObject {
-	s.SubtaskCount = v
-	return s
-}
-
-func (s *GetTaskDetailBaseResponseBodyObject) SetUntilDate(v string) *GetTaskDetailBaseResponseBodyObject {
-	s.UntilDate = &v
-	return s
-}
-
-func (s *GetTaskDetailBaseResponseBodyObject) SetStoryPoint(v string) *GetTaskDetailBaseResponseBodyObject {
-	s.StoryPoint = &v
-	return s
-}
-
-func (s *GetTaskDetailBaseResponseBodyObject) SetObjectlinksCount(v int32) *GetTaskDetailBaseResponseBodyObject {
-	s.ObjectlinksCount = &v
-	return s
-}
-
-func (s *GetTaskDetailBaseResponseBodyObject) SetSource(v string) *GetTaskDetailBaseResponseBodyObject {
-	s.Source = &v
-	return s
-}
-
 func (s *GetTaskDetailBaseResponseBodyObject) SetLikesCount(v int32) *GetTaskDetailBaseResponseBodyObject {
 	s.LikesCount = &v
 	return s
@@ -5592,11 +5639,6 @@ func (s *GetTaskDetailBaseResponseBodyObject) SetLikesCount(v int32) *GetTaskDet
 
 func (s *GetTaskDetailBaseResponseBodyObject) SetStageId(v string) *GetTaskDetailBaseResponseBodyObject {
 	s.StageId = &v
-	return s
-}
-
-func (s *GetTaskDetailBaseResponseBodyObject) SetDivisions(v []*string) *GetTaskDetailBaseResponseBodyObject {
-	s.Divisions = v
 	return s
 }
 
@@ -5610,11 +5652,6 @@ func (s *GetTaskDetailBaseResponseBodyObject) SetIsDone(v bool) *GetTaskDetailBa
 	return s
 }
 
-func (s *GetTaskDetailBaseResponseBodyObject) SetInvolvers(v []*GetTaskDetailBaseResponseBodyObjectInvolvers) *GetTaskDetailBaseResponseBodyObject {
-	s.Involvers = v
-	return s
-}
-
 func (s *GetTaskDetailBaseResponseBodyObject) SetParent(v string) *GetTaskDetailBaseResponseBodyObject {
 	s.Parent = &v
 	return s
@@ -5625,23 +5662,13 @@ func (s *GetTaskDetailBaseResponseBodyObject) SetSprintId(v string) *GetTaskDeta
 	return s
 }
 
-func (s *GetTaskDetailBaseResponseBodyObject) SetDueDate(v string) *GetTaskDetailBaseResponseBodyObject {
-	s.DueDate = &v
-	return s
-}
-
 func (s *GetTaskDetailBaseResponseBodyObject) SetAttachmentsCount(v int32) *GetTaskDetailBaseResponseBodyObject {
 	s.AttachmentsCount = &v
 	return s
 }
 
-func (s *GetTaskDetailBaseResponseBodyObject) SetSubtasks(v []*GetTaskDetailBaseResponseBodyObjectSubtasks) *GetTaskDetailBaseResponseBodyObject {
-	s.Subtasks = v
-	return s
-}
-
-func (s *GetTaskDetailBaseResponseBodyObject) SetCustomfields(v []*GetTaskDetailBaseResponseBodyObjectCustomfields) *GetTaskDetailBaseResponseBodyObject {
-	s.Customfields = v
+func (s *GetTaskDetailBaseResponseBodyObject) SetDueDate(v string) *GetTaskDetailBaseResponseBodyObject {
+	s.DueDate = &v
 	return s
 }
 
@@ -5655,146 +5682,206 @@ func (s *GetTaskDetailBaseResponseBodyObject) SetTaskId(v string) *GetTaskDetail
 	return s
 }
 
-func (s *GetTaskDetailBaseResponseBodyObject) SetTaskflowstatus(v *GetTaskDetailBaseResponseBodyObjectTaskflowstatus) *GetTaskDetailBaseResponseBodyObject {
-	s.Taskflowstatus = v
-	return s
-}
-
 func (s *GetTaskDetailBaseResponseBodyObject) SetId(v string) *GetTaskDetailBaseResponseBodyObject {
 	s.Id = &v
 	return s
 }
 
-type GetTaskDetailBaseResponseBodyObjectTasklist struct {
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	Id    *string `json:"Id,omitempty" xml:"Id,omitempty"`
+func (s *GetTaskDetailBaseResponseBodyObject) SetCustomfields(v []*GetTaskDetailBaseResponseBodyObjectCustomfields) *GetTaskDetailBaseResponseBodyObject {
+	s.Customfields = v
+	return s
 }
 
-func (s GetTaskDetailBaseResponseBodyObjectTasklist) String() string {
+func (s *GetTaskDetailBaseResponseBodyObject) SetSubtasks(v []*GetTaskDetailBaseResponseBodyObjectSubtasks) *GetTaskDetailBaseResponseBodyObject {
+	s.Subtasks = v
+	return s
+}
+
+func (s *GetTaskDetailBaseResponseBodyObject) SetInvolvers(v []*GetTaskDetailBaseResponseBodyObjectInvolvers) *GetTaskDetailBaseResponseBodyObject {
+	s.Involvers = v
+	return s
+}
+
+func (s *GetTaskDetailBaseResponseBodyObject) SetLabels(v []*string) *GetTaskDetailBaseResponseBodyObject {
+	s.Labels = v
+	return s
+}
+
+func (s *GetTaskDetailBaseResponseBodyObject) SetDivisions(v []*string) *GetTaskDetailBaseResponseBodyObject {
+	s.Divisions = v
+	return s
+}
+
+func (s *GetTaskDetailBaseResponseBodyObject) SetAncestors(v []*string) *GetTaskDetailBaseResponseBodyObject {
+	s.Ancestors = v
+	return s
+}
+
+func (s *GetTaskDetailBaseResponseBodyObject) SetInvolveMembers(v []*string) *GetTaskDetailBaseResponseBodyObject {
+	s.InvolveMembers = v
+	return s
+}
+
+func (s *GetTaskDetailBaseResponseBodyObject) SetTagIds(v []*string) *GetTaskDetailBaseResponseBodyObject {
+	s.TagIds = v
+	return s
+}
+
+func (s *GetTaskDetailBaseResponseBodyObject) SetAncestorIds(v []*string) *GetTaskDetailBaseResponseBodyObject {
+	s.AncestorIds = v
+	return s
+}
+
+func (s *GetTaskDetailBaseResponseBodyObject) SetScenariofieldconfig(v *GetTaskDetailBaseResponseBodyObjectScenariofieldconfig) *GetTaskDetailBaseResponseBodyObject {
+	s.Scenariofieldconfig = v
+	return s
+}
+
+func (s *GetTaskDetailBaseResponseBodyObject) SetExecutor(v *GetTaskDetailBaseResponseBodyObjectExecutor) *GetTaskDetailBaseResponseBodyObject {
+	s.Executor = v
+	return s
+}
+
+func (s *GetTaskDetailBaseResponseBodyObject) SetTasklist(v *GetTaskDetailBaseResponseBodyObjectTasklist) *GetTaskDetailBaseResponseBodyObject {
+	s.Tasklist = v
+	return s
+}
+
+func (s *GetTaskDetailBaseResponseBodyObject) SetTaskflowstatus(v *GetTaskDetailBaseResponseBodyObjectTaskflowstatus) *GetTaskDetailBaseResponseBodyObject {
+	s.Taskflowstatus = v
+	return s
+}
+
+func (s *GetTaskDetailBaseResponseBodyObject) SetCreator(v *GetTaskDetailBaseResponseBodyObjectCreator) *GetTaskDetailBaseResponseBodyObject {
+	s.Creator = v
+	return s
+}
+
+func (s *GetTaskDetailBaseResponseBodyObject) SetReminder(v *GetTaskDetailBaseResponseBodyObjectReminder) *GetTaskDetailBaseResponseBodyObject {
+	s.Reminder = v
+	return s
+}
+
+func (s *GetTaskDetailBaseResponseBodyObject) SetSubtaskCount(v *GetTaskDetailBaseResponseBodyObjectSubtaskCount) *GetTaskDetailBaseResponseBodyObject {
+	s.SubtaskCount = v
+	return s
+}
+
+func (s *GetTaskDetailBaseResponseBodyObject) SetWorkTime(v *GetTaskDetailBaseResponseBodyObjectWorkTime) *GetTaskDetailBaseResponseBodyObject {
+	s.WorkTime = v
+	return s
+}
+
+func (s *GetTaskDetailBaseResponseBodyObject) SetBadges(v *GetTaskDetailBaseResponseBodyObjectBadges) *GetTaskDetailBaseResponseBodyObject {
+	s.Badges = v
+	return s
+}
+
+func (s *GetTaskDetailBaseResponseBodyObject) SetStage(v *GetTaskDetailBaseResponseBodyObjectStage) *GetTaskDetailBaseResponseBodyObject {
+	s.Stage = v
+	return s
+}
+
+type GetTaskDetailBaseResponseBodyObjectCustomfields struct {
+	Type          *string                                                 `json:"Type,omitempty" xml:"Type,omitempty"`
+	CustomfieldId *string                                                 `json:"CustomfieldId,omitempty" xml:"CustomfieldId,omitempty"`
+	Value         []*GetTaskDetailBaseResponseBodyObjectCustomfieldsValue `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
+	Values        []*string                                               `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s GetTaskDetailBaseResponseBodyObjectCustomfields) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetTaskDetailBaseResponseBodyObjectTasklist) GoString() string {
+func (s GetTaskDetailBaseResponseBodyObjectCustomfields) GoString() string {
 	return s.String()
 }
 
-func (s *GetTaskDetailBaseResponseBodyObjectTasklist) SetTitle(v string) *GetTaskDetailBaseResponseBodyObjectTasklist {
-	s.Title = &v
-	return s
-}
-
-func (s *GetTaskDetailBaseResponseBodyObjectTasklist) SetId(v string) *GetTaskDetailBaseResponseBodyObjectTasklist {
-	s.Id = &v
-	return s
-}
-
-type GetTaskDetailBaseResponseBodyObjectBadges struct {
-	LikesCount       *int32 `json:"LikesCount,omitempty" xml:"LikesCount,omitempty"`
-	ObjectlinksCount *int32 `json:"ObjectlinksCount,omitempty" xml:"ObjectlinksCount,omitempty"`
-	AttachmentsCount *int32 `json:"AttachmentsCount,omitempty" xml:"AttachmentsCount,omitempty"`
-	CommentsCount    *int32 `json:"CommentsCount,omitempty" xml:"CommentsCount,omitempty"`
-}
-
-func (s GetTaskDetailBaseResponseBodyObjectBadges) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTaskDetailBaseResponseBodyObjectBadges) GoString() string {
-	return s.String()
-}
-
-func (s *GetTaskDetailBaseResponseBodyObjectBadges) SetLikesCount(v int32) *GetTaskDetailBaseResponseBodyObjectBadges {
-	s.LikesCount = &v
-	return s
-}
-
-func (s *GetTaskDetailBaseResponseBodyObjectBadges) SetObjectlinksCount(v int32) *GetTaskDetailBaseResponseBodyObjectBadges {
-	s.ObjectlinksCount = &v
-	return s
-}
-
-func (s *GetTaskDetailBaseResponseBodyObjectBadges) SetAttachmentsCount(v int32) *GetTaskDetailBaseResponseBodyObjectBadges {
-	s.AttachmentsCount = &v
-	return s
-}
-
-func (s *GetTaskDetailBaseResponseBodyObjectBadges) SetCommentsCount(v int32) *GetTaskDetailBaseResponseBodyObjectBadges {
-	s.CommentsCount = &v
-	return s
-}
-
-type GetTaskDetailBaseResponseBodyObjectReminder struct {
-	Type        *string   `json:"Type,omitempty" xml:"Type,omitempty"`
-	Members     []*string `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
-	Date        *string   `json:"Date,omitempty" xml:"Date,omitempty"`
-	MemberRoles []*string `json:"MemberRoles,omitempty" xml:"MemberRoles,omitempty" type:"Repeated"`
-	Method      *string   `json:"Method,omitempty" xml:"Method,omitempty"`
-	CreatorId   *string   `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	Rules       []*string `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-}
-
-func (s GetTaskDetailBaseResponseBodyObjectReminder) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTaskDetailBaseResponseBodyObjectReminder) GoString() string {
-	return s.String()
-}
-
-func (s *GetTaskDetailBaseResponseBodyObjectReminder) SetType(v string) *GetTaskDetailBaseResponseBodyObjectReminder {
+func (s *GetTaskDetailBaseResponseBodyObjectCustomfields) SetType(v string) *GetTaskDetailBaseResponseBodyObjectCustomfields {
 	s.Type = &v
 	return s
 }
 
-func (s *GetTaskDetailBaseResponseBodyObjectReminder) SetMembers(v []*string) *GetTaskDetailBaseResponseBodyObjectReminder {
-	s.Members = v
+func (s *GetTaskDetailBaseResponseBodyObjectCustomfields) SetCustomfieldId(v string) *GetTaskDetailBaseResponseBodyObjectCustomfields {
+	s.CustomfieldId = &v
 	return s
 }
 
-func (s *GetTaskDetailBaseResponseBodyObjectReminder) SetDate(v string) *GetTaskDetailBaseResponseBodyObjectReminder {
-	s.Date = &v
+func (s *GetTaskDetailBaseResponseBodyObjectCustomfields) SetValue(v []*GetTaskDetailBaseResponseBodyObjectCustomfieldsValue) *GetTaskDetailBaseResponseBodyObjectCustomfields {
+	s.Value = v
 	return s
 }
 
-func (s *GetTaskDetailBaseResponseBodyObjectReminder) SetMemberRoles(v []*string) *GetTaskDetailBaseResponseBodyObjectReminder {
-	s.MemberRoles = v
+func (s *GetTaskDetailBaseResponseBodyObjectCustomfields) SetValues(v []*string) *GetTaskDetailBaseResponseBodyObjectCustomfields {
+	s.Values = v
 	return s
 }
 
-func (s *GetTaskDetailBaseResponseBodyObjectReminder) SetMethod(v string) *GetTaskDetailBaseResponseBodyObjectReminder {
-	s.Method = &v
+type GetTaskDetailBaseResponseBodyObjectCustomfieldsValue struct {
+	Id    *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s GetTaskDetailBaseResponseBodyObjectCustomfieldsValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskDetailBaseResponseBodyObjectCustomfieldsValue) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskDetailBaseResponseBodyObjectCustomfieldsValue) SetId(v string) *GetTaskDetailBaseResponseBodyObjectCustomfieldsValue {
+	s.Id = &v
 	return s
 }
 
-func (s *GetTaskDetailBaseResponseBodyObjectReminder) SetCreatorId(v string) *GetTaskDetailBaseResponseBodyObjectReminder {
-	s.CreatorId = &v
+func (s *GetTaskDetailBaseResponseBodyObjectCustomfieldsValue) SetTitle(v string) *GetTaskDetailBaseResponseBodyObjectCustomfieldsValue {
+	s.Title = &v
 	return s
 }
 
-func (s *GetTaskDetailBaseResponseBodyObjectReminder) SetRules(v []*string) *GetTaskDetailBaseResponseBodyObjectReminder {
-	s.Rules = v
+type GetTaskDetailBaseResponseBodyObjectSubtasks struct {
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s GetTaskDetailBaseResponseBodyObjectSubtasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskDetailBaseResponseBodyObjectSubtasks) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskDetailBaseResponseBodyObjectSubtasks) SetContent(v string) *GetTaskDetailBaseResponseBodyObjectSubtasks {
+	s.Content = &v
 	return s
 }
 
-type GetTaskDetailBaseResponseBodyObjectStage struct {
+func (s *GetTaskDetailBaseResponseBodyObjectSubtasks) SetId(v string) *GetTaskDetailBaseResponseBodyObjectSubtasks {
+	s.Id = &v
+	return s
+}
+
+type GetTaskDetailBaseResponseBodyObjectInvolvers struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
-func (s GetTaskDetailBaseResponseBodyObjectStage) String() string {
+func (s GetTaskDetailBaseResponseBodyObjectInvolvers) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetTaskDetailBaseResponseBodyObjectStage) GoString() string {
+func (s GetTaskDetailBaseResponseBodyObjectInvolvers) GoString() string {
 	return s.String()
 }
 
-func (s *GetTaskDetailBaseResponseBodyObjectStage) SetName(v string) *GetTaskDetailBaseResponseBodyObjectStage {
+func (s *GetTaskDetailBaseResponseBodyObjectInvolvers) SetName(v string) *GetTaskDetailBaseResponseBodyObjectInvolvers {
 	s.Name = &v
 	return s
 }
 
-func (s *GetTaskDetailBaseResponseBodyObjectStage) SetId(v string) *GetTaskDetailBaseResponseBodyObjectStage {
+func (s *GetTaskDetailBaseResponseBodyObjectInvolvers) SetId(v string) *GetTaskDetailBaseResponseBodyObjectInvolvers {
 	s.Id = &v
 	return s
 }
@@ -5834,58 +5921,6 @@ func (s *GetTaskDetailBaseResponseBodyObjectScenariofieldconfig) SetId(v string)
 	return s
 }
 
-type GetTaskDetailBaseResponseBodyObjectWorkTime struct {
-	UsedTime  *int32  `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
-	TotalTime *int32  `json:"TotalTime,omitempty" xml:"TotalTime,omitempty"`
-	Unit      *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-}
-
-func (s GetTaskDetailBaseResponseBodyObjectWorkTime) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTaskDetailBaseResponseBodyObjectWorkTime) GoString() string {
-	return s.String()
-}
-
-func (s *GetTaskDetailBaseResponseBodyObjectWorkTime) SetUsedTime(v int32) *GetTaskDetailBaseResponseBodyObjectWorkTime {
-	s.UsedTime = &v
-	return s
-}
-
-func (s *GetTaskDetailBaseResponseBodyObjectWorkTime) SetTotalTime(v int32) *GetTaskDetailBaseResponseBodyObjectWorkTime {
-	s.TotalTime = &v
-	return s
-}
-
-func (s *GetTaskDetailBaseResponseBodyObjectWorkTime) SetUnit(v string) *GetTaskDetailBaseResponseBodyObjectWorkTime {
-	s.Unit = &v
-	return s
-}
-
-type GetTaskDetailBaseResponseBodyObjectCreator struct {
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s GetTaskDetailBaseResponseBodyObjectCreator) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTaskDetailBaseResponseBodyObjectCreator) GoString() string {
-	return s.String()
-}
-
-func (s *GetTaskDetailBaseResponseBodyObjectCreator) SetName(v string) *GetTaskDetailBaseResponseBodyObjectCreator {
-	s.Name = &v
-	return s
-}
-
-func (s *GetTaskDetailBaseResponseBodyObjectCreator) SetId(v string) *GetTaskDetailBaseResponseBodyObjectCreator {
-	s.Id = &v
-	return s
-}
-
 type GetTaskDetailBaseResponseBodyObjectExecutor struct {
 	AvatarUrl *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
 	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -5915,6 +5950,140 @@ func (s *GetTaskDetailBaseResponseBodyObjectExecutor) SetId(v string) *GetTaskDe
 	return s
 }
 
+type GetTaskDetailBaseResponseBodyObjectTasklist struct {
+	Id    *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s GetTaskDetailBaseResponseBodyObjectTasklist) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskDetailBaseResponseBodyObjectTasklist) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskDetailBaseResponseBodyObjectTasklist) SetId(v string) *GetTaskDetailBaseResponseBodyObjectTasklist {
+	s.Id = &v
+	return s
+}
+
+func (s *GetTaskDetailBaseResponseBodyObjectTasklist) SetTitle(v string) *GetTaskDetailBaseResponseBodyObjectTasklist {
+	s.Title = &v
+	return s
+}
+
+type GetTaskDetailBaseResponseBodyObjectTaskflowstatus struct {
+	TaskflowId *string `json:"TaskflowId,omitempty" xml:"TaskflowId,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Kind       *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
+}
+
+func (s GetTaskDetailBaseResponseBodyObjectTaskflowstatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskDetailBaseResponseBodyObjectTaskflowstatus) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskDetailBaseResponseBodyObjectTaskflowstatus) SetTaskflowId(v string) *GetTaskDetailBaseResponseBodyObjectTaskflowstatus {
+	s.TaskflowId = &v
+	return s
+}
+
+func (s *GetTaskDetailBaseResponseBodyObjectTaskflowstatus) SetName(v string) *GetTaskDetailBaseResponseBodyObjectTaskflowstatus {
+	s.Name = &v
+	return s
+}
+
+func (s *GetTaskDetailBaseResponseBodyObjectTaskflowstatus) SetId(v string) *GetTaskDetailBaseResponseBodyObjectTaskflowstatus {
+	s.Id = &v
+	return s
+}
+
+func (s *GetTaskDetailBaseResponseBodyObjectTaskflowstatus) SetKind(v string) *GetTaskDetailBaseResponseBodyObjectTaskflowstatus {
+	s.Kind = &v
+	return s
+}
+
+type GetTaskDetailBaseResponseBodyObjectCreator struct {
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s GetTaskDetailBaseResponseBodyObjectCreator) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskDetailBaseResponseBodyObjectCreator) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskDetailBaseResponseBodyObjectCreator) SetName(v string) *GetTaskDetailBaseResponseBodyObjectCreator {
+	s.Name = &v
+	return s
+}
+
+func (s *GetTaskDetailBaseResponseBodyObjectCreator) SetId(v string) *GetTaskDetailBaseResponseBodyObjectCreator {
+	s.Id = &v
+	return s
+}
+
+type GetTaskDetailBaseResponseBodyObjectReminder struct {
+	Type        *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	Date        *string   `json:"Date,omitempty" xml:"Date,omitempty"`
+	Method      *string   `json:"Method,omitempty" xml:"Method,omitempty"`
+	CreatorId   *string   `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	MemberRoles []*string `json:"MemberRoles,omitempty" xml:"MemberRoles,omitempty" type:"Repeated"`
+	Members     []*string `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
+	Rules       []*string `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+}
+
+func (s GetTaskDetailBaseResponseBodyObjectReminder) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskDetailBaseResponseBodyObjectReminder) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskDetailBaseResponseBodyObjectReminder) SetType(v string) *GetTaskDetailBaseResponseBodyObjectReminder {
+	s.Type = &v
+	return s
+}
+
+func (s *GetTaskDetailBaseResponseBodyObjectReminder) SetDate(v string) *GetTaskDetailBaseResponseBodyObjectReminder {
+	s.Date = &v
+	return s
+}
+
+func (s *GetTaskDetailBaseResponseBodyObjectReminder) SetMethod(v string) *GetTaskDetailBaseResponseBodyObjectReminder {
+	s.Method = &v
+	return s
+}
+
+func (s *GetTaskDetailBaseResponseBodyObjectReminder) SetCreatorId(v string) *GetTaskDetailBaseResponseBodyObjectReminder {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *GetTaskDetailBaseResponseBodyObjectReminder) SetMemberRoles(v []*string) *GetTaskDetailBaseResponseBodyObjectReminder {
+	s.MemberRoles = v
+	return s
+}
+
+func (s *GetTaskDetailBaseResponseBodyObjectReminder) SetMembers(v []*string) *GetTaskDetailBaseResponseBodyObjectReminder {
+	s.Members = v
+	return s
+}
+
+func (s *GetTaskDetailBaseResponseBodyObjectReminder) SetRules(v []*string) *GetTaskDetailBaseResponseBodyObjectReminder {
+	s.Rules = v
+	return s
+}
+
 type GetTaskDetailBaseResponseBodyObjectSubtaskCount struct {
 	Done  *int32 `json:"Done,omitempty" xml:"Done,omitempty"`
 	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
@@ -5938,141 +6107,89 @@ func (s *GetTaskDetailBaseResponseBodyObjectSubtaskCount) SetTotal(v int32) *Get
 	return s
 }
 
-type GetTaskDetailBaseResponseBodyObjectInvolvers struct {
+type GetTaskDetailBaseResponseBodyObjectWorkTime struct {
+	UsedTime  *int32  `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
+	TotalTime *int32  `json:"TotalTime,omitempty" xml:"TotalTime,omitempty"`
+	Unit      *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+}
+
+func (s GetTaskDetailBaseResponseBodyObjectWorkTime) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskDetailBaseResponseBodyObjectWorkTime) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskDetailBaseResponseBodyObjectWorkTime) SetUsedTime(v int32) *GetTaskDetailBaseResponseBodyObjectWorkTime {
+	s.UsedTime = &v
+	return s
+}
+
+func (s *GetTaskDetailBaseResponseBodyObjectWorkTime) SetTotalTime(v int32) *GetTaskDetailBaseResponseBodyObjectWorkTime {
+	s.TotalTime = &v
+	return s
+}
+
+func (s *GetTaskDetailBaseResponseBodyObjectWorkTime) SetUnit(v string) *GetTaskDetailBaseResponseBodyObjectWorkTime {
+	s.Unit = &v
+	return s
+}
+
+type GetTaskDetailBaseResponseBodyObjectBadges struct {
+	LikesCount       *int32 `json:"LikesCount,omitempty" xml:"LikesCount,omitempty"`
+	ObjectlinksCount *int32 `json:"ObjectlinksCount,omitempty" xml:"ObjectlinksCount,omitempty"`
+	AttachmentsCount *int32 `json:"AttachmentsCount,omitempty" xml:"AttachmentsCount,omitempty"`
+	CommentsCount    *int32 `json:"CommentsCount,omitempty" xml:"CommentsCount,omitempty"`
+}
+
+func (s GetTaskDetailBaseResponseBodyObjectBadges) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskDetailBaseResponseBodyObjectBadges) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskDetailBaseResponseBodyObjectBadges) SetLikesCount(v int32) *GetTaskDetailBaseResponseBodyObjectBadges {
+	s.LikesCount = &v
+	return s
+}
+
+func (s *GetTaskDetailBaseResponseBodyObjectBadges) SetObjectlinksCount(v int32) *GetTaskDetailBaseResponseBodyObjectBadges {
+	s.ObjectlinksCount = &v
+	return s
+}
+
+func (s *GetTaskDetailBaseResponseBodyObjectBadges) SetAttachmentsCount(v int32) *GetTaskDetailBaseResponseBodyObjectBadges {
+	s.AttachmentsCount = &v
+	return s
+}
+
+func (s *GetTaskDetailBaseResponseBodyObjectBadges) SetCommentsCount(v int32) *GetTaskDetailBaseResponseBodyObjectBadges {
+	s.CommentsCount = &v
+	return s
+}
+
+type GetTaskDetailBaseResponseBodyObjectStage struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
-func (s GetTaskDetailBaseResponseBodyObjectInvolvers) String() string {
+func (s GetTaskDetailBaseResponseBodyObjectStage) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetTaskDetailBaseResponseBodyObjectInvolvers) GoString() string {
+func (s GetTaskDetailBaseResponseBodyObjectStage) GoString() string {
 	return s.String()
 }
 
-func (s *GetTaskDetailBaseResponseBodyObjectInvolvers) SetName(v string) *GetTaskDetailBaseResponseBodyObjectInvolvers {
+func (s *GetTaskDetailBaseResponseBodyObjectStage) SetName(v string) *GetTaskDetailBaseResponseBodyObjectStage {
 	s.Name = &v
 	return s
 }
 
-func (s *GetTaskDetailBaseResponseBodyObjectInvolvers) SetId(v string) *GetTaskDetailBaseResponseBodyObjectInvolvers {
-	s.Id = &v
-	return s
-}
-
-type GetTaskDetailBaseResponseBodyObjectSubtasks struct {
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s GetTaskDetailBaseResponseBodyObjectSubtasks) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTaskDetailBaseResponseBodyObjectSubtasks) GoString() string {
-	return s.String()
-}
-
-func (s *GetTaskDetailBaseResponseBodyObjectSubtasks) SetContent(v string) *GetTaskDetailBaseResponseBodyObjectSubtasks {
-	s.Content = &v
-	return s
-}
-
-func (s *GetTaskDetailBaseResponseBodyObjectSubtasks) SetId(v string) *GetTaskDetailBaseResponseBodyObjectSubtasks {
-	s.Id = &v
-	return s
-}
-
-type GetTaskDetailBaseResponseBodyObjectCustomfields struct {
-	Type          *string                                                 `json:"Type,omitempty" xml:"Type,omitempty"`
-	Value         []*GetTaskDetailBaseResponseBodyObjectCustomfieldsValue `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
-	Values        []*string                                               `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
-	CustomfieldId *string                                                 `json:"CustomfieldId,omitempty" xml:"CustomfieldId,omitempty"`
-}
-
-func (s GetTaskDetailBaseResponseBodyObjectCustomfields) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTaskDetailBaseResponseBodyObjectCustomfields) GoString() string {
-	return s.String()
-}
-
-func (s *GetTaskDetailBaseResponseBodyObjectCustomfields) SetType(v string) *GetTaskDetailBaseResponseBodyObjectCustomfields {
-	s.Type = &v
-	return s
-}
-
-func (s *GetTaskDetailBaseResponseBodyObjectCustomfields) SetValue(v []*GetTaskDetailBaseResponseBodyObjectCustomfieldsValue) *GetTaskDetailBaseResponseBodyObjectCustomfields {
-	s.Value = v
-	return s
-}
-
-func (s *GetTaskDetailBaseResponseBodyObjectCustomfields) SetValues(v []*string) *GetTaskDetailBaseResponseBodyObjectCustomfields {
-	s.Values = v
-	return s
-}
-
-func (s *GetTaskDetailBaseResponseBodyObjectCustomfields) SetCustomfieldId(v string) *GetTaskDetailBaseResponseBodyObjectCustomfields {
-	s.CustomfieldId = &v
-	return s
-}
-
-type GetTaskDetailBaseResponseBodyObjectCustomfieldsValue struct {
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	Id    *string `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s GetTaskDetailBaseResponseBodyObjectCustomfieldsValue) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTaskDetailBaseResponseBodyObjectCustomfieldsValue) GoString() string {
-	return s.String()
-}
-
-func (s *GetTaskDetailBaseResponseBodyObjectCustomfieldsValue) SetTitle(v string) *GetTaskDetailBaseResponseBodyObjectCustomfieldsValue {
-	s.Title = &v
-	return s
-}
-
-func (s *GetTaskDetailBaseResponseBodyObjectCustomfieldsValue) SetId(v string) *GetTaskDetailBaseResponseBodyObjectCustomfieldsValue {
-	s.Id = &v
-	return s
-}
-
-type GetTaskDetailBaseResponseBodyObjectTaskflowstatus struct {
-	TaskflowId *string `json:"TaskflowId,omitempty" xml:"TaskflowId,omitempty"`
-	Kind       *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s GetTaskDetailBaseResponseBodyObjectTaskflowstatus) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTaskDetailBaseResponseBodyObjectTaskflowstatus) GoString() string {
-	return s.String()
-}
-
-func (s *GetTaskDetailBaseResponseBodyObjectTaskflowstatus) SetTaskflowId(v string) *GetTaskDetailBaseResponseBodyObjectTaskflowstatus {
-	s.TaskflowId = &v
-	return s
-}
-
-func (s *GetTaskDetailBaseResponseBodyObjectTaskflowstatus) SetKind(v string) *GetTaskDetailBaseResponseBodyObjectTaskflowstatus {
-	s.Kind = &v
-	return s
-}
-
-func (s *GetTaskDetailBaseResponseBodyObjectTaskflowstatus) SetName(v string) *GetTaskDetailBaseResponseBodyObjectTaskflowstatus {
-	s.Name = &v
-	return s
-}
-
-func (s *GetTaskDetailBaseResponseBodyObjectTaskflowstatus) SetId(v string) *GetTaskDetailBaseResponseBodyObjectTaskflowstatus {
+func (s *GetTaskDetailBaseResponseBodyObjectStage) SetId(v string) *GetTaskDetailBaseResponseBodyObjectStage {
 	s.Id = &v
 	return s
 }
@@ -6232,11 +6349,11 @@ func (s *GetTaskListFilterRequest) SetExtra(v string) *GetTaskListFilterRequest 
 }
 
 type GetTaskListFilterResponseBody struct {
-	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ErrorMsg   *string                              `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	Object     *GetTaskListFilterResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
-	ErrorCode  *string                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Successful *string                              `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object     *GetTaskListFilterResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
 }
 
 func (s GetTaskListFilterResponseBody) String() string {
@@ -6247,23 +6364,13 @@ func (s GetTaskListFilterResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetTaskListFilterResponseBody) SetRequestId(v string) *GetTaskListFilterResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *GetTaskListFilterResponseBody) SetErrorMsg(v string) *GetTaskListFilterResponseBody {
 	s.ErrorMsg = &v
 	return s
 }
 
-func (s *GetTaskListFilterResponseBody) SetObject(v *GetTaskListFilterResponseBodyObject) *GetTaskListFilterResponseBody {
-	s.Object = v
-	return s
-}
-
-func (s *GetTaskListFilterResponseBody) SetErrorCode(v string) *GetTaskListFilterResponseBody {
-	s.ErrorCode = &v
+func (s *GetTaskListFilterResponseBody) SetRequestId(v string) *GetTaskListFilterResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -6272,10 +6379,20 @@ func (s *GetTaskListFilterResponseBody) SetSuccessful(v string) *GetTaskListFilt
 	return s
 }
 
+func (s *GetTaskListFilterResponseBody) SetErrorCode(v string) *GetTaskListFilterResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetTaskListFilterResponseBody) SetObject(v *GetTaskListFilterResponseBodyObject) *GetTaskListFilterResponseBody {
+	s.Object = v
+	return s
+}
+
 type GetTaskListFilterResponseBodyObject struct {
 	NextPageToken *string                                      `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	Result        []*GetTaskListFilterResponseBodyObjectResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 	TotalSize     *int32                                       `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	Result        []*GetTaskListFilterResponseBodyObjectResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s GetTaskListFilterResponseBodyObject) String() string {
@@ -6291,74 +6408,74 @@ func (s *GetTaskListFilterResponseBodyObject) SetNextPageToken(v string) *GetTas
 	return s
 }
 
-func (s *GetTaskListFilterResponseBodyObject) SetResult(v []*GetTaskListFilterResponseBodyObjectResult) *GetTaskListFilterResponseBodyObject {
-	s.Result = v
-	return s
-}
-
 func (s *GetTaskListFilterResponseBodyObject) SetTotalSize(v int32) *GetTaskListFilterResponseBodyObject {
 	s.TotalSize = &v
 	return s
 }
 
+func (s *GetTaskListFilterResponseBodyObject) SetResult(v []*GetTaskListFilterResponseBodyObjectResult) *GetTaskListFilterResponseBodyObject {
+	s.Result = v
+	return s
+}
+
 type GetTaskListFilterResponseBodyObjectResult struct {
+	IsFavorite            *bool                                                    `json:"IsFavorite,omitempty" xml:"IsFavorite,omitempty"`
+	ExecutorId            *string                                                  `json:"ExecutorId,omitempty" xml:"ExecutorId,omitempty"`
 	ProjectId             *string                                                  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	Priority              *int32                                                   `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	IsTopInProject        *bool                                                    `json:"IsTopInProject,omitempty" xml:"IsTopInProject,omitempty"`
-	Badges                *GetTaskListFilterResponseBodyObjectResultBadges         `json:"Badges,omitempty" xml:"Badges,omitempty" type:"Struct"`
-	AncestorIds           []*string                                                `json:"AncestorIds,omitempty" xml:"AncestorIds,omitempty" type:"Repeated"`
+	ScenariofFeldConfigId *string                                                  `json:"ScenariofFeldConfigId,omitempty" xml:"ScenariofFeldConfigId,omitempty"`
 	ShareStatus           *int32                                                   `json:"ShareStatus,omitempty" xml:"ShareStatus,omitempty"`
-	Reminder              *GetTaskListFilterResponseBodyObjectResultReminder       `json:"Reminder,omitempty" xml:"Reminder,omitempty" type:"Struct"`
+	Accomplished          *string                                                  `json:"Accomplished,omitempty" xml:"Accomplished,omitempty"`
+	TaskListId            *string                                                  `json:"TaskListId,omitempty" xml:"TaskListId,omitempty"`
 	Note                  *string                                                  `json:"Note,omitempty" xml:"Note,omitempty"`
 	Updated               *string                                                  `json:"Updated,omitempty" xml:"Updated,omitempty"`
+	UniqueId              *int32                                                   `json:"UniqueId,omitempty" xml:"UniqueId,omitempty"`
 	IsArchived            *bool                                                    `json:"IsArchived,omitempty" xml:"IsArchived,omitempty"`
 	Content               *string                                                  `json:"Content,omitempty" xml:"Content,omitempty"`
 	Rating                *int32                                                   `json:"Rating,omitempty" xml:"Rating,omitempty"`
+	CommentsCount         *int32                                                   `json:"CommentsCount,omitempty" xml:"CommentsCount,omitempty"`
 	TaskFlowStatusId      *string                                                  `json:"TaskFlowStatusId,omitempty" xml:"TaskFlowStatusId,omitempty"`
+	Recurrence            *string                                                  `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
+	ObjectType            *string                                                  `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
 	Progress              *int32                                                   `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	Stage                 *GetTaskListFilterResponseBodyObjectResultStage          `json:"Stage,omitempty" xml:"Stage,omitempty" type:"Struct"`
-	Labels                []*string                                                `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	UntilDate             *string                                                  `json:"UntilDate,omitempty" xml:"UntilDate,omitempty"`
 	Pos                   *int32                                                   `json:"Pos,omitempty" xml:"Pos,omitempty"`
+	StoryPoint            *string                                                  `json:"StoryPoint,omitempty" xml:"StoryPoint,omitempty"`
+	ObjectlinksCount      *int32                                                   `json:"ObjectlinksCount,omitempty" xml:"ObjectlinksCount,omitempty"`
 	StartDate             *string                                                  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 	Sprint                *string                                                  `json:"Sprint,omitempty" xml:"Sprint,omitempty"`
 	CreatorId             *string                                                  `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	SourceId              *string                                                  `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	OrganizationId        *string                                                  `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
-	SourceDate            *string                                                  `json:"SourceDate,omitempty" xml:"SourceDate,omitempty"`
-	IsFavorite            *bool                                                    `json:"IsFavorite,omitempty" xml:"IsFavorite,omitempty"`
-	ExecutorId            *string                                                  `json:"ExecutorId,omitempty" xml:"ExecutorId,omitempty"`
-	WorkTime              *GetTaskListFilterResponseBodyObjectResultWorkTime       `json:"WorkTime,omitempty" xml:"WorkTime,omitempty" type:"Struct"`
-	TagIds                []*string                                                `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
-	Priority              *int32                                                   `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	ScenariofFeldConfigId *string                                                  `json:"ScenariofFeldConfigId,omitempty" xml:"ScenariofFeldConfigId,omitempty"`
-	Creator               *GetTaskListFilterResponseBodyObjectResultCreator        `json:"Creator,omitempty" xml:"Creator,omitempty" type:"Struct"`
-	Executor              *GetTaskListFilterResponseBodyObjectResultExecutor       `json:"Executor,omitempty" xml:"Executor,omitempty" type:"Struct"`
-	Accomplished          *string                                                  `json:"Accomplished,omitempty" xml:"Accomplished,omitempty"`
-	TaskListId            *string                                                  `json:"TaskListId,omitempty" xml:"TaskListId,omitempty"`
-	InvolveMembers        []*string                                                `json:"InvolveMembers,omitempty" xml:"InvolveMembers,omitempty" type:"Repeated"`
-	UniqueId              *int32                                                   `json:"UniqueId,omitempty" xml:"UniqueId,omitempty"`
-	TaskFlowStatus        *GetTaskListFilterResponseBodyObjectResultTaskFlowStatus `json:"TaskFlowStatus,omitempty" xml:"TaskFlowStatus,omitempty" type:"Struct"`
-	CommentsCount         *int32                                                   `json:"CommentsCount,omitempty" xml:"CommentsCount,omitempty"`
-	Recurrence            *string                                                  `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
-	ObjectType            *string                                                  `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
-	SubtaskCount          *GetTaskListFilterResponseBodyObjectResultSubtaskCount   `json:"SubtaskCount,omitempty" xml:"SubtaskCount,omitempty" type:"Struct"`
-	UntilDate             *string                                                  `json:"UntilDate,omitempty" xml:"UntilDate,omitempty"`
-	StoryPoint            *string                                                  `json:"StoryPoint,omitempty" xml:"StoryPoint,omitempty"`
-	ObjectlinksCount      *int32                                                   `json:"ObjectlinksCount,omitempty" xml:"ObjectlinksCount,omitempty"`
 	Source                *string                                                  `json:"Source,omitempty" xml:"Source,omitempty"`
+	SourceId              *string                                                  `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	SourceDate            *string                                                  `json:"SourceDate,omitempty" xml:"SourceDate,omitempty"`
+	OrganizationId        *string                                                  `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 	LikesCount            *int32                                                   `json:"LikesCount,omitempty" xml:"LikesCount,omitempty"`
 	StageId               *string                                                  `json:"StageId,omitempty" xml:"StageId,omitempty"`
-	Divisions             []*string                                                `json:"Divisions,omitempty" xml:"Divisions,omitempty" type:"Repeated"`
 	Visible               *string                                                  `json:"Visible,omitempty" xml:"Visible,omitempty"`
 	IsDone                *bool                                                    `json:"IsDone,omitempty" xml:"IsDone,omitempty"`
 	Parent                *string                                                  `json:"Parent,omitempty" xml:"Parent,omitempty"`
 	SprintId              *string                                                  `json:"SprintId,omitempty" xml:"SprintId,omitempty"`
-	DueDate               *string                                                  `json:"DueDate,omitempty" xml:"DueDate,omitempty"`
 	AttachmentsCount      *int32                                                   `json:"AttachmentsCount,omitempty" xml:"AttachmentsCount,omitempty"`
-	Customfields          []*GetTaskListFilterResponseBodyObjectResultCustomfields `json:"Customfields,omitempty" xml:"Customfields,omitempty" type:"Repeated"`
-	Created               *string                                                  `json:"Created,omitempty" xml:"Created,omitempty"`
+	DueDate               *string                                                  `json:"DueDate,omitempty" xml:"DueDate,omitempty"`
 	TaskUniqueId          *string                                                  `json:"TaskUniqueId,omitempty" xml:"TaskUniqueId,omitempty"`
+	Created               *string                                                  `json:"Created,omitempty" xml:"Created,omitempty"`
 	TaskId                *string                                                  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	Id                    *string                                                  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Customfields          []*GetTaskListFilterResponseBodyObjectResultCustomfields `json:"Customfields,omitempty" xml:"Customfields,omitempty" type:"Repeated"`
+	InvolveMembers        []*string                                                `json:"InvolveMembers,omitempty" xml:"InvolveMembers,omitempty" type:"Repeated"`
+	TagIds                []*string                                                `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
+	Labels                []*string                                                `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	Divisions             []*string                                                `json:"Divisions,omitempty" xml:"Divisions,omitempty" type:"Repeated"`
+	AncestorIds           []*string                                                `json:"AncestorIds,omitempty" xml:"AncestorIds,omitempty" type:"Repeated"`
+	WorkTime              *GetTaskListFilterResponseBodyObjectResultWorkTime       `json:"WorkTime,omitempty" xml:"WorkTime,omitempty" type:"Struct"`
+	Badges                *GetTaskListFilterResponseBodyObjectResultBadges         `json:"Badges,omitempty" xml:"Badges,omitempty" type:"Struct"`
+	SubtaskCount          *GetTaskListFilterResponseBodyObjectResultSubtaskCount   `json:"SubtaskCount,omitempty" xml:"SubtaskCount,omitempty" type:"Struct"`
+	Reminder              *GetTaskListFilterResponseBodyObjectResultReminder       `json:"Reminder,omitempty" xml:"Reminder,omitempty" type:"Struct"`
+	Creator               *GetTaskListFilterResponseBodyObjectResultCreator        `json:"Creator,omitempty" xml:"Creator,omitempty" type:"Struct"`
+	Stage                 *GetTaskListFilterResponseBodyObjectResultStage          `json:"Stage,omitempty" xml:"Stage,omitempty" type:"Struct"`
+	Executor              *GetTaskListFilterResponseBodyObjectResultExecutor       `json:"Executor,omitempty" xml:"Executor,omitempty" type:"Struct"`
+	TaskFlowStatus        *GetTaskListFilterResponseBodyObjectResultTaskFlowStatus `json:"TaskFlowStatus,omitempty" xml:"TaskFlowStatus,omitempty" type:"Struct"`
 }
 
 func (s GetTaskListFilterResponseBodyObjectResult) String() string {
@@ -6369,8 +6486,23 @@ func (s GetTaskListFilterResponseBodyObjectResult) GoString() string {
 	return s.String()
 }
 
+func (s *GetTaskListFilterResponseBodyObjectResult) SetIsFavorite(v bool) *GetTaskListFilterResponseBodyObjectResult {
+	s.IsFavorite = &v
+	return s
+}
+
+func (s *GetTaskListFilterResponseBodyObjectResult) SetExecutorId(v string) *GetTaskListFilterResponseBodyObjectResult {
+	s.ExecutorId = &v
+	return s
+}
+
 func (s *GetTaskListFilterResponseBodyObjectResult) SetProjectId(v string) *GetTaskListFilterResponseBodyObjectResult {
 	s.ProjectId = &v
+	return s
+}
+
+func (s *GetTaskListFilterResponseBodyObjectResult) SetPriority(v int32) *GetTaskListFilterResponseBodyObjectResult {
+	s.Priority = &v
 	return s
 }
 
@@ -6379,13 +6511,8 @@ func (s *GetTaskListFilterResponseBodyObjectResult) SetIsTopInProject(v bool) *G
 	return s
 }
 
-func (s *GetTaskListFilterResponseBodyObjectResult) SetBadges(v *GetTaskListFilterResponseBodyObjectResultBadges) *GetTaskListFilterResponseBodyObjectResult {
-	s.Badges = v
-	return s
-}
-
-func (s *GetTaskListFilterResponseBodyObjectResult) SetAncestorIds(v []*string) *GetTaskListFilterResponseBodyObjectResult {
-	s.AncestorIds = v
+func (s *GetTaskListFilterResponseBodyObjectResult) SetScenariofFeldConfigId(v string) *GetTaskListFilterResponseBodyObjectResult {
+	s.ScenariofFeldConfigId = &v
 	return s
 }
 
@@ -6394,8 +6521,13 @@ func (s *GetTaskListFilterResponseBodyObjectResult) SetShareStatus(v int32) *Get
 	return s
 }
 
-func (s *GetTaskListFilterResponseBodyObjectResult) SetReminder(v *GetTaskListFilterResponseBodyObjectResultReminder) *GetTaskListFilterResponseBodyObjectResult {
-	s.Reminder = v
+func (s *GetTaskListFilterResponseBodyObjectResult) SetAccomplished(v string) *GetTaskListFilterResponseBodyObjectResult {
+	s.Accomplished = &v
+	return s
+}
+
+func (s *GetTaskListFilterResponseBodyObjectResult) SetTaskListId(v string) *GetTaskListFilterResponseBodyObjectResult {
+	s.TaskListId = &v
 	return s
 }
 
@@ -6406,6 +6538,11 @@ func (s *GetTaskListFilterResponseBodyObjectResult) SetNote(v string) *GetTaskLi
 
 func (s *GetTaskListFilterResponseBodyObjectResult) SetUpdated(v string) *GetTaskListFilterResponseBodyObjectResult {
 	s.Updated = &v
+	return s
+}
+
+func (s *GetTaskListFilterResponseBodyObjectResult) SetUniqueId(v int32) *GetTaskListFilterResponseBodyObjectResult {
+	s.UniqueId = &v
 	return s
 }
 
@@ -6424,8 +6561,23 @@ func (s *GetTaskListFilterResponseBodyObjectResult) SetRating(v int32) *GetTaskL
 	return s
 }
 
+func (s *GetTaskListFilterResponseBodyObjectResult) SetCommentsCount(v int32) *GetTaskListFilterResponseBodyObjectResult {
+	s.CommentsCount = &v
+	return s
+}
+
 func (s *GetTaskListFilterResponseBodyObjectResult) SetTaskFlowStatusId(v string) *GetTaskListFilterResponseBodyObjectResult {
 	s.TaskFlowStatusId = &v
+	return s
+}
+
+func (s *GetTaskListFilterResponseBodyObjectResult) SetRecurrence(v string) *GetTaskListFilterResponseBodyObjectResult {
+	s.Recurrence = &v
+	return s
+}
+
+func (s *GetTaskListFilterResponseBodyObjectResult) SetObjectType(v string) *GetTaskListFilterResponseBodyObjectResult {
+	s.ObjectType = &v
 	return s
 }
 
@@ -6434,18 +6586,23 @@ func (s *GetTaskListFilterResponseBodyObjectResult) SetProgress(v int32) *GetTas
 	return s
 }
 
-func (s *GetTaskListFilterResponseBodyObjectResult) SetStage(v *GetTaskListFilterResponseBodyObjectResultStage) *GetTaskListFilterResponseBodyObjectResult {
-	s.Stage = v
-	return s
-}
-
-func (s *GetTaskListFilterResponseBodyObjectResult) SetLabels(v []*string) *GetTaskListFilterResponseBodyObjectResult {
-	s.Labels = v
+func (s *GetTaskListFilterResponseBodyObjectResult) SetUntilDate(v string) *GetTaskListFilterResponseBodyObjectResult {
+	s.UntilDate = &v
 	return s
 }
 
 func (s *GetTaskListFilterResponseBodyObjectResult) SetPos(v int32) *GetTaskListFilterResponseBodyObjectResult {
 	s.Pos = &v
+	return s
+}
+
+func (s *GetTaskListFilterResponseBodyObjectResult) SetStoryPoint(v string) *GetTaskListFilterResponseBodyObjectResult {
+	s.StoryPoint = &v
+	return s
+}
+
+func (s *GetTaskListFilterResponseBodyObjectResult) SetObjectlinksCount(v int32) *GetTaskListFilterResponseBodyObjectResult {
+	s.ObjectlinksCount = &v
 	return s
 }
 
@@ -6464,13 +6621,13 @@ func (s *GetTaskListFilterResponseBodyObjectResult) SetCreatorId(v string) *GetT
 	return s
 }
 
-func (s *GetTaskListFilterResponseBodyObjectResult) SetSourceId(v string) *GetTaskListFilterResponseBodyObjectResult {
-	s.SourceId = &v
+func (s *GetTaskListFilterResponseBodyObjectResult) SetSource(v string) *GetTaskListFilterResponseBodyObjectResult {
+	s.Source = &v
 	return s
 }
 
-func (s *GetTaskListFilterResponseBodyObjectResult) SetOrganizationId(v string) *GetTaskListFilterResponseBodyObjectResult {
-	s.OrganizationId = &v
+func (s *GetTaskListFilterResponseBodyObjectResult) SetSourceId(v string) *GetTaskListFilterResponseBodyObjectResult {
+	s.SourceId = &v
 	return s
 }
 
@@ -6479,108 +6636,8 @@ func (s *GetTaskListFilterResponseBodyObjectResult) SetSourceDate(v string) *Get
 	return s
 }
 
-func (s *GetTaskListFilterResponseBodyObjectResult) SetIsFavorite(v bool) *GetTaskListFilterResponseBodyObjectResult {
-	s.IsFavorite = &v
-	return s
-}
-
-func (s *GetTaskListFilterResponseBodyObjectResult) SetExecutorId(v string) *GetTaskListFilterResponseBodyObjectResult {
-	s.ExecutorId = &v
-	return s
-}
-
-func (s *GetTaskListFilterResponseBodyObjectResult) SetWorkTime(v *GetTaskListFilterResponseBodyObjectResultWorkTime) *GetTaskListFilterResponseBodyObjectResult {
-	s.WorkTime = v
-	return s
-}
-
-func (s *GetTaskListFilterResponseBodyObjectResult) SetTagIds(v []*string) *GetTaskListFilterResponseBodyObjectResult {
-	s.TagIds = v
-	return s
-}
-
-func (s *GetTaskListFilterResponseBodyObjectResult) SetPriority(v int32) *GetTaskListFilterResponseBodyObjectResult {
-	s.Priority = &v
-	return s
-}
-
-func (s *GetTaskListFilterResponseBodyObjectResult) SetScenariofFeldConfigId(v string) *GetTaskListFilterResponseBodyObjectResult {
-	s.ScenariofFeldConfigId = &v
-	return s
-}
-
-func (s *GetTaskListFilterResponseBodyObjectResult) SetCreator(v *GetTaskListFilterResponseBodyObjectResultCreator) *GetTaskListFilterResponseBodyObjectResult {
-	s.Creator = v
-	return s
-}
-
-func (s *GetTaskListFilterResponseBodyObjectResult) SetExecutor(v *GetTaskListFilterResponseBodyObjectResultExecutor) *GetTaskListFilterResponseBodyObjectResult {
-	s.Executor = v
-	return s
-}
-
-func (s *GetTaskListFilterResponseBodyObjectResult) SetAccomplished(v string) *GetTaskListFilterResponseBodyObjectResult {
-	s.Accomplished = &v
-	return s
-}
-
-func (s *GetTaskListFilterResponseBodyObjectResult) SetTaskListId(v string) *GetTaskListFilterResponseBodyObjectResult {
-	s.TaskListId = &v
-	return s
-}
-
-func (s *GetTaskListFilterResponseBodyObjectResult) SetInvolveMembers(v []*string) *GetTaskListFilterResponseBodyObjectResult {
-	s.InvolveMembers = v
-	return s
-}
-
-func (s *GetTaskListFilterResponseBodyObjectResult) SetUniqueId(v int32) *GetTaskListFilterResponseBodyObjectResult {
-	s.UniqueId = &v
-	return s
-}
-
-func (s *GetTaskListFilterResponseBodyObjectResult) SetTaskFlowStatus(v *GetTaskListFilterResponseBodyObjectResultTaskFlowStatus) *GetTaskListFilterResponseBodyObjectResult {
-	s.TaskFlowStatus = v
-	return s
-}
-
-func (s *GetTaskListFilterResponseBodyObjectResult) SetCommentsCount(v int32) *GetTaskListFilterResponseBodyObjectResult {
-	s.CommentsCount = &v
-	return s
-}
-
-func (s *GetTaskListFilterResponseBodyObjectResult) SetRecurrence(v string) *GetTaskListFilterResponseBodyObjectResult {
-	s.Recurrence = &v
-	return s
-}
-
-func (s *GetTaskListFilterResponseBodyObjectResult) SetObjectType(v string) *GetTaskListFilterResponseBodyObjectResult {
-	s.ObjectType = &v
-	return s
-}
-
-func (s *GetTaskListFilterResponseBodyObjectResult) SetSubtaskCount(v *GetTaskListFilterResponseBodyObjectResultSubtaskCount) *GetTaskListFilterResponseBodyObjectResult {
-	s.SubtaskCount = v
-	return s
-}
-
-func (s *GetTaskListFilterResponseBodyObjectResult) SetUntilDate(v string) *GetTaskListFilterResponseBodyObjectResult {
-	s.UntilDate = &v
-	return s
-}
-
-func (s *GetTaskListFilterResponseBodyObjectResult) SetStoryPoint(v string) *GetTaskListFilterResponseBodyObjectResult {
-	s.StoryPoint = &v
-	return s
-}
-
-func (s *GetTaskListFilterResponseBodyObjectResult) SetObjectlinksCount(v int32) *GetTaskListFilterResponseBodyObjectResult {
-	s.ObjectlinksCount = &v
-	return s
-}
-
-func (s *GetTaskListFilterResponseBodyObjectResult) SetSource(v string) *GetTaskListFilterResponseBodyObjectResult {
-	s.Source = &v
+func (s *GetTaskListFilterResponseBodyObjectResult) SetOrganizationId(v string) *GetTaskListFilterResponseBodyObjectResult {
+	s.OrganizationId = &v
 	return s
 }
 
@@ -6591,11 +6648,6 @@ func (s *GetTaskListFilterResponseBodyObjectResult) SetLikesCount(v int32) *GetT
 
 func (s *GetTaskListFilterResponseBodyObjectResult) SetStageId(v string) *GetTaskListFilterResponseBodyObjectResult {
 	s.StageId = &v
-	return s
-}
-
-func (s *GetTaskListFilterResponseBodyObjectResult) SetDivisions(v []*string) *GetTaskListFilterResponseBodyObjectResult {
-	s.Divisions = v
 	return s
 }
 
@@ -6619,28 +6671,23 @@ func (s *GetTaskListFilterResponseBodyObjectResult) SetSprintId(v string) *GetTa
 	return s
 }
 
-func (s *GetTaskListFilterResponseBodyObjectResult) SetDueDate(v string) *GetTaskListFilterResponseBodyObjectResult {
-	s.DueDate = &v
-	return s
-}
-
 func (s *GetTaskListFilterResponseBodyObjectResult) SetAttachmentsCount(v int32) *GetTaskListFilterResponseBodyObjectResult {
 	s.AttachmentsCount = &v
 	return s
 }
 
-func (s *GetTaskListFilterResponseBodyObjectResult) SetCustomfields(v []*GetTaskListFilterResponseBodyObjectResultCustomfields) *GetTaskListFilterResponseBodyObjectResult {
-	s.Customfields = v
-	return s
-}
-
-func (s *GetTaskListFilterResponseBodyObjectResult) SetCreated(v string) *GetTaskListFilterResponseBodyObjectResult {
-	s.Created = &v
+func (s *GetTaskListFilterResponseBodyObjectResult) SetDueDate(v string) *GetTaskListFilterResponseBodyObjectResult {
+	s.DueDate = &v
 	return s
 }
 
 func (s *GetTaskListFilterResponseBodyObjectResult) SetTaskUniqueId(v string) *GetTaskListFilterResponseBodyObjectResult {
 	s.TaskUniqueId = &v
+	return s
+}
+
+func (s *GetTaskListFilterResponseBodyObjectResult) SetCreated(v string) *GetTaskListFilterResponseBodyObjectResult {
+	s.Created = &v
 	return s
 }
 
@@ -6651,6 +6698,163 @@ func (s *GetTaskListFilterResponseBodyObjectResult) SetTaskId(v string) *GetTask
 
 func (s *GetTaskListFilterResponseBodyObjectResult) SetId(v string) *GetTaskListFilterResponseBodyObjectResult {
 	s.Id = &v
+	return s
+}
+
+func (s *GetTaskListFilterResponseBodyObjectResult) SetCustomfields(v []*GetTaskListFilterResponseBodyObjectResultCustomfields) *GetTaskListFilterResponseBodyObjectResult {
+	s.Customfields = v
+	return s
+}
+
+func (s *GetTaskListFilterResponseBodyObjectResult) SetInvolveMembers(v []*string) *GetTaskListFilterResponseBodyObjectResult {
+	s.InvolveMembers = v
+	return s
+}
+
+func (s *GetTaskListFilterResponseBodyObjectResult) SetTagIds(v []*string) *GetTaskListFilterResponseBodyObjectResult {
+	s.TagIds = v
+	return s
+}
+
+func (s *GetTaskListFilterResponseBodyObjectResult) SetLabels(v []*string) *GetTaskListFilterResponseBodyObjectResult {
+	s.Labels = v
+	return s
+}
+
+func (s *GetTaskListFilterResponseBodyObjectResult) SetDivisions(v []*string) *GetTaskListFilterResponseBodyObjectResult {
+	s.Divisions = v
+	return s
+}
+
+func (s *GetTaskListFilterResponseBodyObjectResult) SetAncestorIds(v []*string) *GetTaskListFilterResponseBodyObjectResult {
+	s.AncestorIds = v
+	return s
+}
+
+func (s *GetTaskListFilterResponseBodyObjectResult) SetWorkTime(v *GetTaskListFilterResponseBodyObjectResultWorkTime) *GetTaskListFilterResponseBodyObjectResult {
+	s.WorkTime = v
+	return s
+}
+
+func (s *GetTaskListFilterResponseBodyObjectResult) SetBadges(v *GetTaskListFilterResponseBodyObjectResultBadges) *GetTaskListFilterResponseBodyObjectResult {
+	s.Badges = v
+	return s
+}
+
+func (s *GetTaskListFilterResponseBodyObjectResult) SetSubtaskCount(v *GetTaskListFilterResponseBodyObjectResultSubtaskCount) *GetTaskListFilterResponseBodyObjectResult {
+	s.SubtaskCount = v
+	return s
+}
+
+func (s *GetTaskListFilterResponseBodyObjectResult) SetReminder(v *GetTaskListFilterResponseBodyObjectResultReminder) *GetTaskListFilterResponseBodyObjectResult {
+	s.Reminder = v
+	return s
+}
+
+func (s *GetTaskListFilterResponseBodyObjectResult) SetCreator(v *GetTaskListFilterResponseBodyObjectResultCreator) *GetTaskListFilterResponseBodyObjectResult {
+	s.Creator = v
+	return s
+}
+
+func (s *GetTaskListFilterResponseBodyObjectResult) SetStage(v *GetTaskListFilterResponseBodyObjectResultStage) *GetTaskListFilterResponseBodyObjectResult {
+	s.Stage = v
+	return s
+}
+
+func (s *GetTaskListFilterResponseBodyObjectResult) SetExecutor(v *GetTaskListFilterResponseBodyObjectResultExecutor) *GetTaskListFilterResponseBodyObjectResult {
+	s.Executor = v
+	return s
+}
+
+func (s *GetTaskListFilterResponseBodyObjectResult) SetTaskFlowStatus(v *GetTaskListFilterResponseBodyObjectResultTaskFlowStatus) *GetTaskListFilterResponseBodyObjectResult {
+	s.TaskFlowStatus = v
+	return s
+}
+
+type GetTaskListFilterResponseBodyObjectResultCustomfields struct {
+	Type          *string                                                       `json:"Type,omitempty" xml:"Type,omitempty"`
+	CustomfieldId *string                                                       `json:"CustomfieldId,omitempty" xml:"CustomfieldId,omitempty"`
+	Values        *string                                                       `json:"Values,omitempty" xml:"Values,omitempty"`
+	Value         []*GetTaskListFilterResponseBodyObjectResultCustomfieldsValue `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
+}
+
+func (s GetTaskListFilterResponseBodyObjectResultCustomfields) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskListFilterResponseBodyObjectResultCustomfields) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskListFilterResponseBodyObjectResultCustomfields) SetType(v string) *GetTaskListFilterResponseBodyObjectResultCustomfields {
+	s.Type = &v
+	return s
+}
+
+func (s *GetTaskListFilterResponseBodyObjectResultCustomfields) SetCustomfieldId(v string) *GetTaskListFilterResponseBodyObjectResultCustomfields {
+	s.CustomfieldId = &v
+	return s
+}
+
+func (s *GetTaskListFilterResponseBodyObjectResultCustomfields) SetValues(v string) *GetTaskListFilterResponseBodyObjectResultCustomfields {
+	s.Values = &v
+	return s
+}
+
+func (s *GetTaskListFilterResponseBodyObjectResultCustomfields) SetValue(v []*GetTaskListFilterResponseBodyObjectResultCustomfieldsValue) *GetTaskListFilterResponseBodyObjectResultCustomfields {
+	s.Value = v
+	return s
+}
+
+type GetTaskListFilterResponseBodyObjectResultCustomfieldsValue struct {
+	Id    *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s GetTaskListFilterResponseBodyObjectResultCustomfieldsValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskListFilterResponseBodyObjectResultCustomfieldsValue) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskListFilterResponseBodyObjectResultCustomfieldsValue) SetId(v string) *GetTaskListFilterResponseBodyObjectResultCustomfieldsValue {
+	s.Id = &v
+	return s
+}
+
+func (s *GetTaskListFilterResponseBodyObjectResultCustomfieldsValue) SetTitle(v string) *GetTaskListFilterResponseBodyObjectResultCustomfieldsValue {
+	s.Title = &v
+	return s
+}
+
+type GetTaskListFilterResponseBodyObjectResultWorkTime struct {
+	UsedTime  *int32  `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
+	TotalTime *int32  `json:"TotalTime,omitempty" xml:"TotalTime,omitempty"`
+	Unit      *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+}
+
+func (s GetTaskListFilterResponseBodyObjectResultWorkTime) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskListFilterResponseBodyObjectResultWorkTime) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskListFilterResponseBodyObjectResultWorkTime) SetUsedTime(v int32) *GetTaskListFilterResponseBodyObjectResultWorkTime {
+	s.UsedTime = &v
+	return s
+}
+
+func (s *GetTaskListFilterResponseBodyObjectResultWorkTime) SetTotalTime(v int32) *GetTaskListFilterResponseBodyObjectResultWorkTime {
+	s.TotalTime = &v
+	return s
+}
+
+func (s *GetTaskListFilterResponseBodyObjectResultWorkTime) SetUnit(v string) *GetTaskListFilterResponseBodyObjectResultWorkTime {
+	s.Unit = &v
 	return s
 }
 
@@ -6689,11 +6893,34 @@ func (s *GetTaskListFilterResponseBodyObjectResultBadges) SetCommentsCount(v int
 	return s
 }
 
+type GetTaskListFilterResponseBodyObjectResultSubtaskCount struct {
+	Done  *int32 `json:"Done,omitempty" xml:"Done,omitempty"`
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s GetTaskListFilterResponseBodyObjectResultSubtaskCount) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskListFilterResponseBodyObjectResultSubtaskCount) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskListFilterResponseBodyObjectResultSubtaskCount) SetDone(v int32) *GetTaskListFilterResponseBodyObjectResultSubtaskCount {
+	s.Done = &v
+	return s
+}
+
+func (s *GetTaskListFilterResponseBodyObjectResultSubtaskCount) SetTotal(v int32) *GetTaskListFilterResponseBodyObjectResultSubtaskCount {
+	s.Total = &v
+	return s
+}
+
 type GetTaskListFilterResponseBodyObjectResultReminder struct {
 	Type      *string   `json:"Type,omitempty" xml:"Type,omitempty"`
-	Members   []*string `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
 	Date      *string   `json:"Date,omitempty" xml:"Date,omitempty"`
 	CreatorId *string   `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	Members   []*string `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
 	Rules     []*string `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
@@ -6710,11 +6937,6 @@ func (s *GetTaskListFilterResponseBodyObjectResultReminder) SetType(v string) *G
 	return s
 }
 
-func (s *GetTaskListFilterResponseBodyObjectResultReminder) SetMembers(v []*string) *GetTaskListFilterResponseBodyObjectResultReminder {
-	s.Members = v
-	return s
-}
-
 func (s *GetTaskListFilterResponseBodyObjectResultReminder) SetDate(v string) *GetTaskListFilterResponseBodyObjectResultReminder {
 	s.Date = &v
 	return s
@@ -6725,8 +6947,42 @@ func (s *GetTaskListFilterResponseBodyObjectResultReminder) SetCreatorId(v strin
 	return s
 }
 
+func (s *GetTaskListFilterResponseBodyObjectResultReminder) SetMembers(v []*string) *GetTaskListFilterResponseBodyObjectResultReminder {
+	s.Members = v
+	return s
+}
+
 func (s *GetTaskListFilterResponseBodyObjectResultReminder) SetRules(v []*string) *GetTaskListFilterResponseBodyObjectResultReminder {
 	s.Rules = v
+	return s
+}
+
+type GetTaskListFilterResponseBodyObjectResultCreator struct {
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	AvatarUrl *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
+	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s GetTaskListFilterResponseBodyObjectResultCreator) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskListFilterResponseBodyObjectResultCreator) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskListFilterResponseBodyObjectResultCreator) SetName(v string) *GetTaskListFilterResponseBodyObjectResultCreator {
+	s.Name = &v
+	return s
+}
+
+func (s *GetTaskListFilterResponseBodyObjectResultCreator) SetAvatarUrl(v string) *GetTaskListFilterResponseBodyObjectResultCreator {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *GetTaskListFilterResponseBodyObjectResultCreator) SetId(v string) *GetTaskListFilterResponseBodyObjectResultCreator {
+	s.Id = &v
 	return s
 }
 
@@ -6753,67 +7009,9 @@ func (s *GetTaskListFilterResponseBodyObjectResultStage) SetId(v string) *GetTas
 	return s
 }
 
-type GetTaskListFilterResponseBodyObjectResultWorkTime struct {
-	UsedTime  *int32  `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
-	TotalTime *int32  `json:"TotalTime,omitempty" xml:"TotalTime,omitempty"`
-	Unit      *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-}
-
-func (s GetTaskListFilterResponseBodyObjectResultWorkTime) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTaskListFilterResponseBodyObjectResultWorkTime) GoString() string {
-	return s.String()
-}
-
-func (s *GetTaskListFilterResponseBodyObjectResultWorkTime) SetUsedTime(v int32) *GetTaskListFilterResponseBodyObjectResultWorkTime {
-	s.UsedTime = &v
-	return s
-}
-
-func (s *GetTaskListFilterResponseBodyObjectResultWorkTime) SetTotalTime(v int32) *GetTaskListFilterResponseBodyObjectResultWorkTime {
-	s.TotalTime = &v
-	return s
-}
-
-func (s *GetTaskListFilterResponseBodyObjectResultWorkTime) SetUnit(v string) *GetTaskListFilterResponseBodyObjectResultWorkTime {
-	s.Unit = &v
-	return s
-}
-
-type GetTaskListFilterResponseBodyObjectResultCreator struct {
-	AvatarUrl *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s GetTaskListFilterResponseBodyObjectResultCreator) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTaskListFilterResponseBodyObjectResultCreator) GoString() string {
-	return s.String()
-}
-
-func (s *GetTaskListFilterResponseBodyObjectResultCreator) SetAvatarUrl(v string) *GetTaskListFilterResponseBodyObjectResultCreator {
-	s.AvatarUrl = &v
-	return s
-}
-
-func (s *GetTaskListFilterResponseBodyObjectResultCreator) SetName(v string) *GetTaskListFilterResponseBodyObjectResultCreator {
-	s.Name = &v
-	return s
-}
-
-func (s *GetTaskListFilterResponseBodyObjectResultCreator) SetId(v string) *GetTaskListFilterResponseBodyObjectResultCreator {
-	s.Id = &v
-	return s
-}
-
 type GetTaskListFilterResponseBodyObjectResultExecutor struct {
-	AvatarUrl *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
 	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	AvatarUrl *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
 	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -6825,13 +7023,13 @@ func (s GetTaskListFilterResponseBodyObjectResultExecutor) GoString() string {
 	return s.String()
 }
 
-func (s *GetTaskListFilterResponseBodyObjectResultExecutor) SetAvatarUrl(v string) *GetTaskListFilterResponseBodyObjectResultExecutor {
-	s.AvatarUrl = &v
+func (s *GetTaskListFilterResponseBodyObjectResultExecutor) SetName(v string) *GetTaskListFilterResponseBodyObjectResultExecutor {
+	s.Name = &v
 	return s
 }
 
-func (s *GetTaskListFilterResponseBodyObjectResultExecutor) SetName(v string) *GetTaskListFilterResponseBodyObjectResultExecutor {
-	s.Name = &v
+func (s *GetTaskListFilterResponseBodyObjectResultExecutor) SetAvatarUrl(v string) *GetTaskListFilterResponseBodyObjectResultExecutor {
+	s.AvatarUrl = &v
 	return s
 }
 
@@ -6842,9 +7040,9 @@ func (s *GetTaskListFilterResponseBodyObjectResultExecutor) SetId(v string) *Get
 
 type GetTaskListFilterResponseBodyObjectResultTaskFlowStatus struct {
 	TaskFlowId *string `json:"TaskFlowId,omitempty" xml:"TaskFlowId,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Pos        *int32  `json:"Pos,omitempty" xml:"Pos,omitempty"`
 	Kind       *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -6861,6 +7059,11 @@ func (s *GetTaskListFilterResponseBodyObjectResultTaskFlowStatus) SetTaskFlowId(
 	return s
 }
 
+func (s *GetTaskListFilterResponseBodyObjectResultTaskFlowStatus) SetName(v string) *GetTaskListFilterResponseBodyObjectResultTaskFlowStatus {
+	s.Name = &v
+	return s
+}
+
 func (s *GetTaskListFilterResponseBodyObjectResultTaskFlowStatus) SetPos(v int32) *GetTaskListFilterResponseBodyObjectResultTaskFlowStatus {
 	s.Pos = &v
 	return s
@@ -6871,93 +7074,7 @@ func (s *GetTaskListFilterResponseBodyObjectResultTaskFlowStatus) SetKind(v stri
 	return s
 }
 
-func (s *GetTaskListFilterResponseBodyObjectResultTaskFlowStatus) SetName(v string) *GetTaskListFilterResponseBodyObjectResultTaskFlowStatus {
-	s.Name = &v
-	return s
-}
-
 func (s *GetTaskListFilterResponseBodyObjectResultTaskFlowStatus) SetId(v string) *GetTaskListFilterResponseBodyObjectResultTaskFlowStatus {
-	s.Id = &v
-	return s
-}
-
-type GetTaskListFilterResponseBodyObjectResultSubtaskCount struct {
-	Done  *int32 `json:"Done,omitempty" xml:"Done,omitempty"`
-	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
-}
-
-func (s GetTaskListFilterResponseBodyObjectResultSubtaskCount) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTaskListFilterResponseBodyObjectResultSubtaskCount) GoString() string {
-	return s.String()
-}
-
-func (s *GetTaskListFilterResponseBodyObjectResultSubtaskCount) SetDone(v int32) *GetTaskListFilterResponseBodyObjectResultSubtaskCount {
-	s.Done = &v
-	return s
-}
-
-func (s *GetTaskListFilterResponseBodyObjectResultSubtaskCount) SetTotal(v int32) *GetTaskListFilterResponseBodyObjectResultSubtaskCount {
-	s.Total = &v
-	return s
-}
-
-type GetTaskListFilterResponseBodyObjectResultCustomfields struct {
-	Type          *string                                                       `json:"Type,omitempty" xml:"Type,omitempty"`
-	Value         []*GetTaskListFilterResponseBodyObjectResultCustomfieldsValue `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
-	Values        *string                                                       `json:"Values,omitempty" xml:"Values,omitempty"`
-	CustomfieldId *string                                                       `json:"CustomfieldId,omitempty" xml:"CustomfieldId,omitempty"`
-}
-
-func (s GetTaskListFilterResponseBodyObjectResultCustomfields) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTaskListFilterResponseBodyObjectResultCustomfields) GoString() string {
-	return s.String()
-}
-
-func (s *GetTaskListFilterResponseBodyObjectResultCustomfields) SetType(v string) *GetTaskListFilterResponseBodyObjectResultCustomfields {
-	s.Type = &v
-	return s
-}
-
-func (s *GetTaskListFilterResponseBodyObjectResultCustomfields) SetValue(v []*GetTaskListFilterResponseBodyObjectResultCustomfieldsValue) *GetTaskListFilterResponseBodyObjectResultCustomfields {
-	s.Value = v
-	return s
-}
-
-func (s *GetTaskListFilterResponseBodyObjectResultCustomfields) SetValues(v string) *GetTaskListFilterResponseBodyObjectResultCustomfields {
-	s.Values = &v
-	return s
-}
-
-func (s *GetTaskListFilterResponseBodyObjectResultCustomfields) SetCustomfieldId(v string) *GetTaskListFilterResponseBodyObjectResultCustomfields {
-	s.CustomfieldId = &v
-	return s
-}
-
-type GetTaskListFilterResponseBodyObjectResultCustomfieldsValue struct {
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	Id    *string `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s GetTaskListFilterResponseBodyObjectResultCustomfieldsValue) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTaskListFilterResponseBodyObjectResultCustomfieldsValue) GoString() string {
-	return s.String()
-}
-
-func (s *GetTaskListFilterResponseBodyObjectResultCustomfieldsValue) SetTitle(v string) *GetTaskListFilterResponseBodyObjectResultCustomfieldsValue {
-	s.Title = &v
-	return s
-}
-
-func (s *GetTaskListFilterResponseBodyObjectResultCustomfieldsValue) SetId(v string) *GetTaskListFilterResponseBodyObjectResultCustomfieldsValue {
 	s.Id = &v
 	return s
 }
@@ -7009,11 +7126,11 @@ func (s *GetUserByAliyunUidRequest) SetUserPk(v string) *GetUserByAliyunUidReque
 }
 
 type GetUserByAliyunUidResponseBody struct {
-	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ErrorMsg   *string                               `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	Object     *GetUserByAliyunUidResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
-	ErrorCode  *string                               `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Successful *bool                                 `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string                               `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object     *GetUserByAliyunUidResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
 }
 
 func (s GetUserByAliyunUidResponseBody) String() string {
@@ -7024,18 +7141,18 @@ func (s GetUserByAliyunUidResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetUserByAliyunUidResponseBody) SetRequestId(v string) *GetUserByAliyunUidResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *GetUserByAliyunUidResponseBody) SetErrorMsg(v string) *GetUserByAliyunUidResponseBody {
 	s.ErrorMsg = &v
 	return s
 }
 
-func (s *GetUserByAliyunUidResponseBody) SetObject(v *GetUserByAliyunUidResponseBodyObject) *GetUserByAliyunUidResponseBody {
-	s.Object = v
+func (s *GetUserByAliyunUidResponseBody) SetRequestId(v string) *GetUserByAliyunUidResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetUserByAliyunUidResponseBody) SetSuccessful(v bool) *GetUserByAliyunUidResponseBody {
+	s.Successful = &v
 	return s
 }
 
@@ -7044,8 +7161,8 @@ func (s *GetUserByAliyunUidResponseBody) SetErrorCode(v string) *GetUserByAliyun
 	return s
 }
 
-func (s *GetUserByAliyunUidResponseBody) SetSuccessful(v bool) *GetUserByAliyunUidResponseBody {
-	s.Successful = &v
+func (s *GetUserByAliyunUidResponseBody) SetObject(v *GetUserByAliyunUidResponseBodyObject) *GetUserByAliyunUidResponseBody {
+	s.Object = v
 	return s
 }
 
@@ -7143,11 +7260,11 @@ func (s *GetUserNameRequest) SetUserId(v string) *GetUserNameRequest {
 }
 
 type GetUserNameResponseBody struct {
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ErrorMsg   *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Object     *string `json:"Object,omitempty" xml:"Object,omitempty"`
-	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	Successful *bool   `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 }
 
 func (s GetUserNameResponseBody) String() string {
@@ -7158,13 +7275,13 @@ func (s GetUserNameResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetUserNameResponseBody) SetRequestId(v string) *GetUserNameResponseBody {
-	s.RequestId = &v
+func (s *GetUserNameResponseBody) SetErrorMsg(v string) *GetUserNameResponseBody {
+	s.ErrorMsg = &v
 	return s
 }
 
-func (s *GetUserNameResponseBody) SetErrorMsg(v string) *GetUserNameResponseBody {
-	s.ErrorMsg = &v
+func (s *GetUserNameResponseBody) SetRequestId(v string) *GetUserNameResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -7173,13 +7290,13 @@ func (s *GetUserNameResponseBody) SetObject(v string) *GetUserNameResponseBody {
 	return s
 }
 
-func (s *GetUserNameResponseBody) SetErrorCode(v string) *GetUserNameResponseBody {
-	s.ErrorCode = &v
+func (s *GetUserNameResponseBody) SetSuccessful(v bool) *GetUserNameResponseBody {
+	s.Successful = &v
 	return s
 }
 
-func (s *GetUserNameResponseBody) SetSuccessful(v bool) *GetUserNameResponseBody {
-	s.Successful = &v
+func (s *GetUserNameResponseBody) SetErrorCode(v string) *GetUserNameResponseBody {
+	s.ErrorCode = &v
 	return s
 }
 
@@ -7243,10 +7360,10 @@ func (s *InsertDevopsUserRequest) SetEmail(v string) *InsertDevopsUserRequest {
 
 type InsertDevopsUserResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Object       *string `json:"Object,omitempty" xml:"Object,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Object       *string `json:"Object,omitempty" xml:"Object,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 }
 
 func (s InsertDevopsUserResponseBody) String() string {
@@ -7262,23 +7379,23 @@ func (s *InsertDevopsUserResponseBody) SetRequestId(v string) *InsertDevopsUserR
 	return s
 }
 
-func (s *InsertDevopsUserResponseBody) SetObject(v string) *InsertDevopsUserResponseBody {
-	s.Object = &v
-	return s
-}
-
-func (s *InsertDevopsUserResponseBody) SetErrorCode(v string) *InsertDevopsUserResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
 func (s *InsertDevopsUserResponseBody) SetErrorMessage(v string) *InsertDevopsUserResponseBody {
 	s.ErrorMessage = &v
 	return s
 }
 
+func (s *InsertDevopsUserResponseBody) SetObject(v string) *InsertDevopsUserResponseBody {
+	s.Object = &v
+	return s
+}
+
 func (s *InsertDevopsUserResponseBody) SetSuccess(v bool) *InsertDevopsUserResponseBody {
 	s.Success = &v
+	return s
+}
+
+func (s *InsertDevopsUserResponseBody) SetErrorCode(v string) *InsertDevopsUserResponseBody {
+	s.ErrorCode = &v
 	return s
 }
 
@@ -7348,9 +7465,9 @@ func (s *InsertPipelineMemberRequest) SetRoleName(v string) *InsertPipelineMembe
 
 type InsertPipelineMemberResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Object       *bool   `json:"Object,omitempty" xml:"Object,omitempty"`
 	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -7367,6 +7484,11 @@ func (s *InsertPipelineMemberResponseBody) SetRequestId(v string) *InsertPipelin
 	return s
 }
 
+func (s *InsertPipelineMemberResponseBody) SetErrorMessage(v string) *InsertPipelineMemberResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
 func (s *InsertPipelineMemberResponseBody) SetObject(v bool) *InsertPipelineMemberResponseBody {
 	s.Object = &v
 	return s
@@ -7374,11 +7496,6 @@ func (s *InsertPipelineMemberResponseBody) SetObject(v bool) *InsertPipelineMemb
 
 func (s *InsertPipelineMemberResponseBody) SetErrorCode(v string) *InsertPipelineMemberResponseBody {
 	s.ErrorCode = &v
-	return s
-}
-
-func (s *InsertPipelineMemberResponseBody) SetErrorMessage(v string) *InsertPipelineMemberResponseBody {
-	s.ErrorMessage = &v
 	return s
 }
 
@@ -7440,11 +7557,11 @@ func (s *InsertProjectMembersRequest) SetMembers(v string) *InsertProjectMembers
 }
 
 type InsertProjectMembersResponseBody struct {
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ErrorMsg   *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Object     *bool   `json:"Object,omitempty" xml:"Object,omitempty"`
-	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	Successful *bool   `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 }
 
 func (s InsertProjectMembersResponseBody) String() string {
@@ -7455,13 +7572,13 @@ func (s InsertProjectMembersResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *InsertProjectMembersResponseBody) SetRequestId(v string) *InsertProjectMembersResponseBody {
-	s.RequestId = &v
+func (s *InsertProjectMembersResponseBody) SetErrorMsg(v string) *InsertProjectMembersResponseBody {
+	s.ErrorMsg = &v
 	return s
 }
 
-func (s *InsertProjectMembersResponseBody) SetErrorMsg(v string) *InsertProjectMembersResponseBody {
-	s.ErrorMsg = &v
+func (s *InsertProjectMembersResponseBody) SetRequestId(v string) *InsertProjectMembersResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -7470,13 +7587,13 @@ func (s *InsertProjectMembersResponseBody) SetObject(v bool) *InsertProjectMembe
 	return s
 }
 
-func (s *InsertProjectMembersResponseBody) SetErrorCode(v string) *InsertProjectMembersResponseBody {
-	s.ErrorCode = &v
+func (s *InsertProjectMembersResponseBody) SetSuccessful(v bool) *InsertProjectMembersResponseBody {
+	s.Successful = &v
 	return s
 }
 
-func (s *InsertProjectMembersResponseBody) SetSuccessful(v bool) *InsertProjectMembersResponseBody {
-	s.Successful = &v
+func (s *InsertProjectMembersResponseBody) SetErrorCode(v string) *InsertProjectMembersResponseBody {
+	s.ErrorCode = &v
 	return s
 }
 
@@ -7539,11 +7656,11 @@ func (s *ListCommonGroupRequest) SetAll(v bool) *ListCommonGroupRequest {
 }
 
 type ListCommonGroupResponseBody struct {
-	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ErrorMsg   *string                              `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	Object     []*ListCommonGroupResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
-	ErrorCode  *string                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Successful *bool                                `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object     []*ListCommonGroupResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
 }
 
 func (s ListCommonGroupResponseBody) String() string {
@@ -7554,18 +7671,18 @@ func (s ListCommonGroupResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListCommonGroupResponseBody) SetRequestId(v string) *ListCommonGroupResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *ListCommonGroupResponseBody) SetErrorMsg(v string) *ListCommonGroupResponseBody {
 	s.ErrorMsg = &v
 	return s
 }
 
-func (s *ListCommonGroupResponseBody) SetObject(v []*ListCommonGroupResponseBodyObject) *ListCommonGroupResponseBody {
-	s.Object = v
+func (s *ListCommonGroupResponseBody) SetRequestId(v string) *ListCommonGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCommonGroupResponseBody) SetSuccessful(v bool) *ListCommonGroupResponseBody {
+	s.Successful = &v
 	return s
 }
 
@@ -7574,8 +7691,8 @@ func (s *ListCommonGroupResponseBody) SetErrorCode(v string) *ListCommonGroupRes
 	return s
 }
 
-func (s *ListCommonGroupResponseBody) SetSuccessful(v bool) *ListCommonGroupResponseBody {
-	s.Successful = &v
+func (s *ListCommonGroupResponseBody) SetObject(v []*ListCommonGroupResponseBodyObject) *ListCommonGroupResponseBody {
+	s.Object = v
 	return s
 }
 
@@ -7692,10 +7809,10 @@ func (s *ListCredentialsRequest) SetUserPk(v string) *ListCredentialsRequest {
 
 type ListCredentialsResponseBody struct {
 	RequestId    *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Object       []map[string]interface{} `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
-	ErrorCode    *string                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Success      *bool                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object       []map[string]interface{} `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
 }
 
 func (s ListCredentialsResponseBody) String() string {
@@ -7711,8 +7828,13 @@ func (s *ListCredentialsResponseBody) SetRequestId(v string) *ListCredentialsRes
 	return s
 }
 
-func (s *ListCredentialsResponseBody) SetObject(v []map[string]interface{}) *ListCredentialsResponseBody {
-	s.Object = v
+func (s *ListCredentialsResponseBody) SetErrorMessage(v string) *ListCredentialsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListCredentialsResponseBody) SetSuccess(v bool) *ListCredentialsResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -7721,13 +7843,8 @@ func (s *ListCredentialsResponseBody) SetErrorCode(v string) *ListCredentialsRes
 	return s
 }
 
-func (s *ListCredentialsResponseBody) SetErrorMessage(v string) *ListCredentialsResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *ListCredentialsResponseBody) SetSuccess(v bool) *ListCredentialsResponseBody {
-	s.Success = &v
+func (s *ListCredentialsResponseBody) SetObject(v []map[string]interface{}) *ListCredentialsResponseBody {
+	s.Object = v
 	return s
 }
 
@@ -7750,6 +7867,241 @@ func (s *ListCredentialsResponse) SetHeaders(v map[string]*string) *ListCredenti
 }
 
 func (s *ListCredentialsResponse) SetBody(v *ListCredentialsResponseBody) *ListCredentialsResponse {
+	s.Body = v
+	return s
+}
+
+type ListDevopsProjectsRequest struct {
+	OrgId     *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	OrderBy   *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	PageToken *string `json:"PageToken,omitempty" xml:"PageToken,omitempty"`
+	SelectBy  *string `json:"SelectBy,omitempty" xml:"SelectBy,omitempty"`
+}
+
+func (s ListDevopsProjectsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDevopsProjectsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDevopsProjectsRequest) SetOrgId(v string) *ListDevopsProjectsRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *ListDevopsProjectsRequest) SetPageSize(v int32) *ListDevopsProjectsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDevopsProjectsRequest) SetOrderBy(v string) *ListDevopsProjectsRequest {
+	s.OrderBy = &v
+	return s
+}
+
+func (s *ListDevopsProjectsRequest) SetPageToken(v string) *ListDevopsProjectsRequest {
+	s.PageToken = &v
+	return s
+}
+
+func (s *ListDevopsProjectsRequest) SetSelectBy(v string) *ListDevopsProjectsRequest {
+	s.SelectBy = &v
+	return s
+}
+
+type ListDevopsProjectsResponseBody struct {
+	ErrorMsg   *string                               `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Successful *bool                                 `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string                               `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object     *ListDevopsProjectsResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
+}
+
+func (s ListDevopsProjectsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDevopsProjectsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDevopsProjectsResponseBody) SetErrorMsg(v string) *ListDevopsProjectsResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *ListDevopsProjectsResponseBody) SetRequestId(v string) *ListDevopsProjectsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDevopsProjectsResponseBody) SetSuccessful(v bool) *ListDevopsProjectsResponseBody {
+	s.Successful = &v
+	return s
+}
+
+func (s *ListDevopsProjectsResponseBody) SetErrorCode(v string) *ListDevopsProjectsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListDevopsProjectsResponseBody) SetObject(v *ListDevopsProjectsResponseBodyObject) *ListDevopsProjectsResponseBody {
+	s.Object = v
+	return s
+}
+
+type ListDevopsProjectsResponseBodyObject struct {
+	NextPageToken *string                                       `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	Result        []*ListDevopsProjectsResponseBodyObjectResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+}
+
+func (s ListDevopsProjectsResponseBodyObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDevopsProjectsResponseBodyObject) GoString() string {
+	return s.String()
+}
+
+func (s *ListDevopsProjectsResponseBodyObject) SetNextPageToken(v string) *ListDevopsProjectsResponseBodyObject {
+	s.NextPageToken = &v
+	return s
+}
+
+func (s *ListDevopsProjectsResponseBodyObject) SetResult(v []*ListDevopsProjectsResponseBodyObjectResult) *ListDevopsProjectsResponseBodyObject {
+	s.Result = v
+	return s
+}
+
+type ListDevopsProjectsResponseBodyObjectResult struct {
+	Logo           *string `json:"Logo,omitempty" xml:"Logo,omitempty"`
+	IsStar         *bool   `json:"IsStar,omitempty" xml:"IsStar,omitempty"`
+	CreatorId      *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	MembersCount   *int32  `json:"MembersCount,omitempty" xml:"MembersCount,omitempty"`
+	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+	Visibility     *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
+	IsTemplate     *bool   `json:"IsTemplate,omitempty" xml:"IsTemplate,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Updated        *string `json:"Updated,omitempty" xml:"Updated,omitempty"`
+	Created        *string `json:"Created,omitempty" xml:"Created,omitempty"`
+	IsArchived     *bool   `json:"IsArchived,omitempty" xml:"IsArchived,omitempty"`
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	IsPublic       *bool   `json:"IsPublic,omitempty" xml:"IsPublic,omitempty"`
+	TasksCount     *int32  `json:"TasksCount,omitempty" xml:"TasksCount,omitempty"`
+	RoleId         *int32  `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s ListDevopsProjectsResponseBodyObjectResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDevopsProjectsResponseBodyObjectResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListDevopsProjectsResponseBodyObjectResult) SetLogo(v string) *ListDevopsProjectsResponseBodyObjectResult {
+	s.Logo = &v
+	return s
+}
+
+func (s *ListDevopsProjectsResponseBodyObjectResult) SetIsStar(v bool) *ListDevopsProjectsResponseBodyObjectResult {
+	s.IsStar = &v
+	return s
+}
+
+func (s *ListDevopsProjectsResponseBodyObjectResult) SetCreatorId(v string) *ListDevopsProjectsResponseBodyObjectResult {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *ListDevopsProjectsResponseBodyObjectResult) SetMembersCount(v int32) *ListDevopsProjectsResponseBodyObjectResult {
+	s.MembersCount = &v
+	return s
+}
+
+func (s *ListDevopsProjectsResponseBodyObjectResult) SetOrganizationId(v string) *ListDevopsProjectsResponseBodyObjectResult {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *ListDevopsProjectsResponseBodyObjectResult) SetVisibility(v string) *ListDevopsProjectsResponseBodyObjectResult {
+	s.Visibility = &v
+	return s
+}
+
+func (s *ListDevopsProjectsResponseBodyObjectResult) SetIsTemplate(v bool) *ListDevopsProjectsResponseBodyObjectResult {
+	s.IsTemplate = &v
+	return s
+}
+
+func (s *ListDevopsProjectsResponseBodyObjectResult) SetDescription(v string) *ListDevopsProjectsResponseBodyObjectResult {
+	s.Description = &v
+	return s
+}
+
+func (s *ListDevopsProjectsResponseBodyObjectResult) SetUpdated(v string) *ListDevopsProjectsResponseBodyObjectResult {
+	s.Updated = &v
+	return s
+}
+
+func (s *ListDevopsProjectsResponseBodyObjectResult) SetCreated(v string) *ListDevopsProjectsResponseBodyObjectResult {
+	s.Created = &v
+	return s
+}
+
+func (s *ListDevopsProjectsResponseBodyObjectResult) SetIsArchived(v bool) *ListDevopsProjectsResponseBodyObjectResult {
+	s.IsArchived = &v
+	return s
+}
+
+func (s *ListDevopsProjectsResponseBodyObjectResult) SetName(v string) *ListDevopsProjectsResponseBodyObjectResult {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDevopsProjectsResponseBodyObjectResult) SetIsPublic(v bool) *ListDevopsProjectsResponseBodyObjectResult {
+	s.IsPublic = &v
+	return s
+}
+
+func (s *ListDevopsProjectsResponseBodyObjectResult) SetTasksCount(v int32) *ListDevopsProjectsResponseBodyObjectResult {
+	s.TasksCount = &v
+	return s
+}
+
+func (s *ListDevopsProjectsResponseBodyObjectResult) SetRoleId(v int32) *ListDevopsProjectsResponseBodyObjectResult {
+	s.RoleId = &v
+	return s
+}
+
+func (s *ListDevopsProjectsResponseBodyObjectResult) SetId(v string) *ListDevopsProjectsResponseBodyObjectResult {
+	s.Id = &v
+	return s
+}
+
+type ListDevopsProjectsResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListDevopsProjectsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDevopsProjectsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDevopsProjectsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDevopsProjectsResponse) SetHeaders(v map[string]*string) *ListDevopsProjectsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDevopsProjectsResponse) SetBody(v *ListDevopsProjectsResponseBody) *ListDevopsProjectsResponse {
 	s.Body = v
 	return s
 }
@@ -7778,11 +8130,11 @@ func (s *ListDevopsProjectSprintsRequest) SetProjectId(v string) *ListDevopsProj
 }
 
 type ListDevopsProjectSprintsResponseBody struct {
-	RequestId  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ErrorMsg   *string                                       `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	Object     []*ListDevopsProjectSprintsResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
-	ErrorCode  *string                                       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	RequestId  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Successful *bool                                         `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string                                       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object     []*ListDevopsProjectSprintsResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
 }
 
 func (s ListDevopsProjectSprintsResponseBody) String() string {
@@ -7793,23 +8145,13 @@ func (s ListDevopsProjectSprintsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListDevopsProjectSprintsResponseBody) SetRequestId(v string) *ListDevopsProjectSprintsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *ListDevopsProjectSprintsResponseBody) SetErrorMsg(v string) *ListDevopsProjectSprintsResponseBody {
 	s.ErrorMsg = &v
 	return s
 }
 
-func (s *ListDevopsProjectSprintsResponseBody) SetObject(v []*ListDevopsProjectSprintsResponseBodyObject) *ListDevopsProjectSprintsResponseBody {
-	s.Object = v
-	return s
-}
-
-func (s *ListDevopsProjectSprintsResponseBody) SetErrorCode(v string) *ListDevopsProjectSprintsResponseBody {
-	s.ErrorCode = &v
+func (s *ListDevopsProjectSprintsResponseBody) SetRequestId(v string) *ListDevopsProjectSprintsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -7818,19 +8160,29 @@ func (s *ListDevopsProjectSprintsResponseBody) SetSuccessful(v bool) *ListDevops
 	return s
 }
 
+func (s *ListDevopsProjectSprintsResponseBody) SetErrorCode(v string) *ListDevopsProjectSprintsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListDevopsProjectSprintsResponseBody) SetObject(v []*ListDevopsProjectSprintsResponseBodyObject) *ListDevopsProjectSprintsResponseBody {
+	s.Object = v
+	return s
+}
+
 type ListDevopsProjectSprintsResponseBodyObject struct {
 	Status       *string                                             `json:"Status,omitempty" xml:"Status,omitempty"`
-	ProjectId    *string                                             `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	StartDate    *string                                             `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	CreatorId    *string                                             `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
 	Accomplished *string                                             `json:"Accomplished,omitempty" xml:"Accomplished,omitempty"`
+	ProjectId    *string                                             `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	IsDeleted    *bool                                               `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
+	StartDate    *string                                             `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 	Updated      *string                                             `json:"Updated,omitempty" xml:"Updated,omitempty"`
+	CreatorId    *string                                             `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
 	DueDate      *string                                             `json:"DueDate,omitempty" xml:"DueDate,omitempty"`
 	Name         *string                                             `json:"Name,omitempty" xml:"Name,omitempty"`
 	Created      *string                                             `json:"Created,omitempty" xml:"Created,omitempty"`
-	PlanToDo     *ListDevopsProjectSprintsResponseBodyObjectPlanToDo `json:"PlanToDo,omitempty" xml:"PlanToDo,omitempty" type:"Struct"`
 	Id           *string                                             `json:"Id,omitempty" xml:"Id,omitempty"`
+	PlanToDo     *ListDevopsProjectSprintsResponseBodyObjectPlanToDo `json:"PlanToDo,omitempty" xml:"PlanToDo,omitempty" type:"Struct"`
 }
 
 func (s ListDevopsProjectSprintsResponseBodyObject) String() string {
@@ -7846,23 +8198,13 @@ func (s *ListDevopsProjectSprintsResponseBodyObject) SetStatus(v string) *ListDe
 	return s
 }
 
-func (s *ListDevopsProjectSprintsResponseBodyObject) SetProjectId(v string) *ListDevopsProjectSprintsResponseBodyObject {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *ListDevopsProjectSprintsResponseBodyObject) SetStartDate(v string) *ListDevopsProjectSprintsResponseBodyObject {
-	s.StartDate = &v
-	return s
-}
-
-func (s *ListDevopsProjectSprintsResponseBodyObject) SetCreatorId(v string) *ListDevopsProjectSprintsResponseBodyObject {
-	s.CreatorId = &v
-	return s
-}
-
 func (s *ListDevopsProjectSprintsResponseBodyObject) SetAccomplished(v string) *ListDevopsProjectSprintsResponseBodyObject {
 	s.Accomplished = &v
+	return s
+}
+
+func (s *ListDevopsProjectSprintsResponseBodyObject) SetProjectId(v string) *ListDevopsProjectSprintsResponseBodyObject {
+	s.ProjectId = &v
 	return s
 }
 
@@ -7871,8 +8213,18 @@ func (s *ListDevopsProjectSprintsResponseBodyObject) SetIsDeleted(v bool) *ListD
 	return s
 }
 
+func (s *ListDevopsProjectSprintsResponseBodyObject) SetStartDate(v string) *ListDevopsProjectSprintsResponseBodyObject {
+	s.StartDate = &v
+	return s
+}
+
 func (s *ListDevopsProjectSprintsResponseBodyObject) SetUpdated(v string) *ListDevopsProjectSprintsResponseBodyObject {
 	s.Updated = &v
+	return s
+}
+
+func (s *ListDevopsProjectSprintsResponseBodyObject) SetCreatorId(v string) *ListDevopsProjectSprintsResponseBodyObject {
+	s.CreatorId = &v
 	return s
 }
 
@@ -7891,13 +8243,13 @@ func (s *ListDevopsProjectSprintsResponseBodyObject) SetCreated(v string) *ListD
 	return s
 }
 
-func (s *ListDevopsProjectSprintsResponseBodyObject) SetPlanToDo(v *ListDevopsProjectSprintsResponseBodyObjectPlanToDo) *ListDevopsProjectSprintsResponseBodyObject {
-	s.PlanToDo = v
+func (s *ListDevopsProjectSprintsResponseBodyObject) SetId(v string) *ListDevopsProjectSprintsResponseBodyObject {
+	s.Id = &v
 	return s
 }
 
-func (s *ListDevopsProjectSprintsResponseBodyObject) SetId(v string) *ListDevopsProjectSprintsResponseBodyObject {
-	s.Id = &v
+func (s *ListDevopsProjectSprintsResponseBodyObject) SetPlanToDo(v *ListDevopsProjectSprintsResponseBodyObjectPlanToDo) *ListDevopsProjectSprintsResponseBodyObject {
+	s.PlanToDo = v
 	return s
 }
 
@@ -7977,11 +8329,11 @@ func (s *ListDevopsProjectTaskFlowRequest) SetProjectId(v string) *ListDevopsPro
 }
 
 type ListDevopsProjectTaskFlowResponseBody struct {
-	RequestId  *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ErrorMsg   *string                                        `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	Object     []*ListDevopsProjectTaskFlowResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
-	ErrorCode  *string                                        `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	RequestId  *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Successful *bool                                          `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string                                        `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object     []*ListDevopsProjectTaskFlowResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
 }
 
 func (s ListDevopsProjectTaskFlowResponseBody) String() string {
@@ -7992,18 +8344,18 @@ func (s ListDevopsProjectTaskFlowResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListDevopsProjectTaskFlowResponseBody) SetRequestId(v string) *ListDevopsProjectTaskFlowResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *ListDevopsProjectTaskFlowResponseBody) SetErrorMsg(v string) *ListDevopsProjectTaskFlowResponseBody {
 	s.ErrorMsg = &v
 	return s
 }
 
-func (s *ListDevopsProjectTaskFlowResponseBody) SetObject(v []*ListDevopsProjectTaskFlowResponseBodyObject) *ListDevopsProjectTaskFlowResponseBody {
-	s.Object = v
+func (s *ListDevopsProjectTaskFlowResponseBody) SetRequestId(v string) *ListDevopsProjectTaskFlowResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDevopsProjectTaskFlowResponseBody) SetSuccessful(v bool) *ListDevopsProjectTaskFlowResponseBody {
+	s.Successful = &v
 	return s
 }
 
@@ -8012,8 +8364,8 @@ func (s *ListDevopsProjectTaskFlowResponseBody) SetErrorCode(v string) *ListDevo
 	return s
 }
 
-func (s *ListDevopsProjectTaskFlowResponseBody) SetSuccessful(v bool) *ListDevopsProjectTaskFlowResponseBody {
-	s.Successful = &v
+func (s *ListDevopsProjectTaskFlowResponseBody) SetObject(v []*ListDevopsProjectTaskFlowResponseBodyObject) *ListDevopsProjectTaskFlowResponseBody {
+	s.Object = v
 	return s
 }
 
@@ -8093,11 +8445,11 @@ func (s *ListDevopsProjectTaskFlowStatusRequest) SetTaskFlowId(v string) *ListDe
 }
 
 type ListDevopsProjectTaskFlowStatusResponseBody struct {
-	RequestId  *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ErrorMsg   *string                                              `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	Object     []*ListDevopsProjectTaskFlowStatusResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
-	ErrorCode  *string                                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	RequestId  *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Successful *bool                                                `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string                                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object     []*ListDevopsProjectTaskFlowStatusResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
 }
 
 func (s ListDevopsProjectTaskFlowStatusResponseBody) String() string {
@@ -8108,18 +8460,18 @@ func (s ListDevopsProjectTaskFlowStatusResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListDevopsProjectTaskFlowStatusResponseBody) SetRequestId(v string) *ListDevopsProjectTaskFlowStatusResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *ListDevopsProjectTaskFlowStatusResponseBody) SetErrorMsg(v string) *ListDevopsProjectTaskFlowStatusResponseBody {
 	s.ErrorMsg = &v
 	return s
 }
 
-func (s *ListDevopsProjectTaskFlowStatusResponseBody) SetObject(v []*ListDevopsProjectTaskFlowStatusResponseBodyObject) *ListDevopsProjectTaskFlowStatusResponseBody {
-	s.Object = v
+func (s *ListDevopsProjectTaskFlowStatusResponseBody) SetRequestId(v string) *ListDevopsProjectTaskFlowStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDevopsProjectTaskFlowStatusResponseBody) SetSuccessful(v bool) *ListDevopsProjectTaskFlowStatusResponseBody {
+	s.Successful = &v
 	return s
 }
 
@@ -8128,8 +8480,8 @@ func (s *ListDevopsProjectTaskFlowStatusResponseBody) SetErrorCode(v string) *Li
 	return s
 }
 
-func (s *ListDevopsProjectTaskFlowStatusResponseBody) SetSuccessful(v bool) *ListDevopsProjectTaskFlowStatusResponseBody {
-	s.Successful = &v
+func (s *ListDevopsProjectTaskFlowStatusResponseBody) SetObject(v []*ListDevopsProjectTaskFlowStatusResponseBodyObject) *ListDevopsProjectTaskFlowStatusResponseBody {
+	s.Object = v
 	return s
 }
 
@@ -8251,11 +8603,11 @@ func (s *ListDevopsProjectTaskListRequest) SetProjectId(v string) *ListDevopsPro
 }
 
 type ListDevopsProjectTaskListResponseBody struct {
-	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ErrorMsg   *string                                      `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	Object     *ListDevopsProjectTaskListResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
-	ErrorCode  *string                                      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Successful *bool                                        `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string                                      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object     *ListDevopsProjectTaskListResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
 }
 
 func (s ListDevopsProjectTaskListResponseBody) String() string {
@@ -8266,18 +8618,18 @@ func (s ListDevopsProjectTaskListResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListDevopsProjectTaskListResponseBody) SetRequestId(v string) *ListDevopsProjectTaskListResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *ListDevopsProjectTaskListResponseBody) SetErrorMsg(v string) *ListDevopsProjectTaskListResponseBody {
 	s.ErrorMsg = &v
 	return s
 }
 
-func (s *ListDevopsProjectTaskListResponseBody) SetObject(v *ListDevopsProjectTaskListResponseBodyObject) *ListDevopsProjectTaskListResponseBody {
-	s.Object = v
+func (s *ListDevopsProjectTaskListResponseBody) SetRequestId(v string) *ListDevopsProjectTaskListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDevopsProjectTaskListResponseBody) SetSuccessful(v bool) *ListDevopsProjectTaskListResponseBody {
+	s.Successful = &v
 	return s
 }
 
@@ -8286,8 +8638,8 @@ func (s *ListDevopsProjectTaskListResponseBody) SetErrorCode(v string) *ListDevo
 	return s
 }
 
-func (s *ListDevopsProjectTaskListResponseBody) SetSuccessful(v bool) *ListDevopsProjectTaskListResponseBody {
-	s.Successful = &v
+func (s *ListDevopsProjectTaskListResponseBody) SetObject(v *ListDevopsProjectTaskListResponseBodyObject) *ListDevopsProjectTaskListResponseBody {
+	s.Object = v
 	return s
 }
 
@@ -8372,11 +8724,11 @@ func (s *ListDevopsProjectTasksRequest) SetProjectIds(v string) *ListDevopsProje
 }
 
 type ListDevopsProjectTasksResponseBody struct {
-	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ErrorMsg   *string                                     `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	Object     []*ListDevopsProjectTasksResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
-	ErrorCode  *string                                     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Successful *bool                                       `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string                                     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object     []*ListDevopsProjectTasksResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
 }
 
 func (s ListDevopsProjectTasksResponseBody) String() string {
@@ -8387,18 +8739,18 @@ func (s ListDevopsProjectTasksResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListDevopsProjectTasksResponseBody) SetRequestId(v string) *ListDevopsProjectTasksResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *ListDevopsProjectTasksResponseBody) SetErrorMsg(v string) *ListDevopsProjectTasksResponseBody {
 	s.ErrorMsg = &v
 	return s
 }
 
-func (s *ListDevopsProjectTasksResponseBody) SetObject(v []*ListDevopsProjectTasksResponseBodyObject) *ListDevopsProjectTasksResponseBody {
-	s.Object = v
+func (s *ListDevopsProjectTasksResponseBody) SetRequestId(v string) *ListDevopsProjectTasksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDevopsProjectTasksResponseBody) SetSuccessful(v bool) *ListDevopsProjectTasksResponseBody {
+	s.Successful = &v
 	return s
 }
 
@@ -8407,8 +8759,8 @@ func (s *ListDevopsProjectTasksResponseBody) SetErrorCode(v string) *ListDevopsP
 	return s
 }
 
-func (s *ListDevopsProjectTasksResponseBody) SetSuccessful(v bool) *ListDevopsProjectTasksResponseBody {
-	s.Successful = &v
+func (s *ListDevopsProjectTasksResponseBody) SetObject(v []*ListDevopsProjectTasksResponseBodyObject) *ListDevopsProjectTasksResponseBody {
+	s.Object = v
 	return s
 }
 
@@ -8524,11 +8876,11 @@ func (s *ListDevopsScenarioFieldConfigRequest) SetProjectId(v string) *ListDevop
 }
 
 type ListDevopsScenarioFieldConfigResponseBody struct {
-	RequestId  *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ErrorMsg   *string                                            `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	Object     []*ListDevopsScenarioFieldConfigResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
-	ErrorCode  *string                                            `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	RequestId  *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Successful *bool                                              `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string                                            `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object     []*ListDevopsScenarioFieldConfigResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
 }
 
 func (s ListDevopsScenarioFieldConfigResponseBody) String() string {
@@ -8539,23 +8891,13 @@ func (s ListDevopsScenarioFieldConfigResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListDevopsScenarioFieldConfigResponseBody) SetRequestId(v string) *ListDevopsScenarioFieldConfigResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *ListDevopsScenarioFieldConfigResponseBody) SetErrorMsg(v string) *ListDevopsScenarioFieldConfigResponseBody {
 	s.ErrorMsg = &v
 	return s
 }
 
-func (s *ListDevopsScenarioFieldConfigResponseBody) SetObject(v []*ListDevopsScenarioFieldConfigResponseBodyObject) *ListDevopsScenarioFieldConfigResponseBody {
-	s.Object = v
-	return s
-}
-
-func (s *ListDevopsScenarioFieldConfigResponseBody) SetErrorCode(v string) *ListDevopsScenarioFieldConfigResponseBody {
-	s.ErrorCode = &v
+func (s *ListDevopsScenarioFieldConfigResponseBody) SetRequestId(v string) *ListDevopsScenarioFieldConfigResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -8564,8 +8906,19 @@ func (s *ListDevopsScenarioFieldConfigResponseBody) SetSuccessful(v bool) *ListD
 	return s
 }
 
+func (s *ListDevopsScenarioFieldConfigResponseBody) SetErrorCode(v string) *ListDevopsScenarioFieldConfigResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListDevopsScenarioFieldConfigResponseBody) SetObject(v []*ListDevopsScenarioFieldConfigResponseBodyObject) *ListDevopsScenarioFieldConfigResponseBody {
+	s.Object = v
+	return s
+}
+
 type ListDevopsScenarioFieldConfigResponseBodyObject struct {
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -8579,6 +8932,11 @@ func (s ListDevopsScenarioFieldConfigResponseBodyObject) GoString() string {
 
 func (s *ListDevopsScenarioFieldConfigResponseBodyObject) SetType(v string) *ListDevopsScenarioFieldConfigResponseBodyObject {
 	s.Type = &v
+	return s
+}
+
+func (s *ListDevopsScenarioFieldConfigResponseBodyObject) SetName(v string) *ListDevopsScenarioFieldConfigResponseBodyObject {
+	s.Name = &v
 	return s
 }
 
@@ -8695,9 +9053,9 @@ func (s *ListPipelinesRequest) SetUserPk(v string) *ListPipelinesRequest {
 
 type ListPipelinesResponseBody struct {
 	RequestId    *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorMessage *string                `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Object       map[string]interface{} `json:"Object,omitempty" xml:"Object,omitempty"`
 	ErrorCode    *string                `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string                `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Success      *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -8714,6 +9072,11 @@ func (s *ListPipelinesResponseBody) SetRequestId(v string) *ListPipelinesRespons
 	return s
 }
 
+func (s *ListPipelinesResponseBody) SetErrorMessage(v string) *ListPipelinesResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
 func (s *ListPipelinesResponseBody) SetObject(v map[string]interface{}) *ListPipelinesResponseBody {
 	s.Object = v
 	return s
@@ -8721,11 +9084,6 @@ func (s *ListPipelinesResponseBody) SetObject(v map[string]interface{}) *ListPip
 
 func (s *ListPipelinesResponseBody) SetErrorCode(v string) *ListPipelinesResponseBody {
 	s.ErrorCode = &v
-	return s
-}
-
-func (s *ListPipelinesResponseBody) SetErrorMessage(v string) *ListPipelinesResponseBody {
-	s.ErrorMessage = &v
 	return s
 }
 
@@ -8781,11 +9139,11 @@ func (s *ListProjectCustomFieldsRequest) SetProjectId(v string) *ListProjectCust
 }
 
 type ListProjectCustomFieldsResponseBody struct {
-	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ErrorMsg   *string                                      `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	Object     []*ListProjectCustomFieldsResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
-	ErrorCode  *string                                      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Successful *bool                                        `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string                                      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object     []*ListProjectCustomFieldsResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
 }
 
 func (s ListProjectCustomFieldsResponseBody) String() string {
@@ -8796,23 +9154,13 @@ func (s ListProjectCustomFieldsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListProjectCustomFieldsResponseBody) SetRequestId(v string) *ListProjectCustomFieldsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *ListProjectCustomFieldsResponseBody) SetErrorMsg(v string) *ListProjectCustomFieldsResponseBody {
 	s.ErrorMsg = &v
 	return s
 }
 
-func (s *ListProjectCustomFieldsResponseBody) SetObject(v []*ListProjectCustomFieldsResponseBodyObject) *ListProjectCustomFieldsResponseBody {
-	s.Object = v
-	return s
-}
-
-func (s *ListProjectCustomFieldsResponseBody) SetErrorCode(v string) *ListProjectCustomFieldsResponseBody {
-	s.ErrorCode = &v
+func (s *ListProjectCustomFieldsResponseBody) SetRequestId(v string) *ListProjectCustomFieldsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -8821,12 +9169,22 @@ func (s *ListProjectCustomFieldsResponseBody) SetSuccessful(v bool) *ListProject
 	return s
 }
 
+func (s *ListProjectCustomFieldsResponseBody) SetErrorCode(v string) *ListProjectCustomFieldsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListProjectCustomFieldsResponseBody) SetObject(v []*ListProjectCustomFieldsResponseBodyObject) *ListProjectCustomFieldsResponseBody {
+	s.Object = v
+	return s
+}
+
 type ListProjectCustomFieldsResponseBodyObject struct {
 	Type          *string                                            `json:"Type,omitempty" xml:"Type,omitempty"`
-	Subtype       *string                                            `json:"Subtype,omitempty" xml:"Subtype,omitempty"`
-	Values        []*ListProjectCustomFieldsResponseBodyObjectValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 	CustomFieldId *string                                            `json:"CustomFieldId,omitempty" xml:"CustomFieldId,omitempty"`
+	Subtype       *string                                            `json:"Subtype,omitempty" xml:"Subtype,omitempty"`
 	Name          *string                                            `json:"Name,omitempty" xml:"Name,omitempty"`
+	Values        []*ListProjectCustomFieldsResponseBodyObjectValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
 func (s ListProjectCustomFieldsResponseBodyObject) String() string {
@@ -8842,23 +9200,23 @@ func (s *ListProjectCustomFieldsResponseBodyObject) SetType(v string) *ListProje
 	return s
 }
 
-func (s *ListProjectCustomFieldsResponseBodyObject) SetSubtype(v string) *ListProjectCustomFieldsResponseBodyObject {
-	s.Subtype = &v
-	return s
-}
-
-func (s *ListProjectCustomFieldsResponseBodyObject) SetValues(v []*ListProjectCustomFieldsResponseBodyObjectValues) *ListProjectCustomFieldsResponseBodyObject {
-	s.Values = v
-	return s
-}
-
 func (s *ListProjectCustomFieldsResponseBodyObject) SetCustomFieldId(v string) *ListProjectCustomFieldsResponseBodyObject {
 	s.CustomFieldId = &v
 	return s
 }
 
+func (s *ListProjectCustomFieldsResponseBodyObject) SetSubtype(v string) *ListProjectCustomFieldsResponseBodyObject {
+	s.Subtype = &v
+	return s
+}
+
 func (s *ListProjectCustomFieldsResponseBodyObject) SetName(v string) *ListProjectCustomFieldsResponseBodyObject {
 	s.Name = &v
+	return s
+}
+
+func (s *ListProjectCustomFieldsResponseBodyObject) SetValues(v []*ListProjectCustomFieldsResponseBodyObjectValues) *ListProjectCustomFieldsResponseBodyObject {
+	s.Values = v
 	return s
 }
 
@@ -8939,10 +9297,10 @@ func (s *ListServiceConnectionsRequest) SetUserPk(v string) *ListServiceConnecti
 
 type ListServiceConnectionsResponseBody struct {
 	RequestId    *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Object       []map[string]interface{} `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
-	ErrorCode    *string                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Success      *bool                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object       []map[string]interface{} `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
 }
 
 func (s ListServiceConnectionsResponseBody) String() string {
@@ -8958,8 +9316,13 @@ func (s *ListServiceConnectionsResponseBody) SetRequestId(v string) *ListService
 	return s
 }
 
-func (s *ListServiceConnectionsResponseBody) SetObject(v []map[string]interface{}) *ListServiceConnectionsResponseBody {
-	s.Object = v
+func (s *ListServiceConnectionsResponseBody) SetErrorMessage(v string) *ListServiceConnectionsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListServiceConnectionsResponseBody) SetSuccess(v bool) *ListServiceConnectionsResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -8968,13 +9331,8 @@ func (s *ListServiceConnectionsResponseBody) SetErrorCode(v string) *ListService
 	return s
 }
 
-func (s *ListServiceConnectionsResponseBody) SetErrorMessage(v string) *ListServiceConnectionsResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *ListServiceConnectionsResponseBody) SetSuccess(v bool) *ListServiceConnectionsResponseBody {
-	s.Success = &v
+func (s *ListServiceConnectionsResponseBody) SetObject(v []map[string]interface{}) *ListServiceConnectionsResponseBody {
+	s.Object = v
 	return s
 }
 
@@ -9025,11 +9383,11 @@ func (s *ListSmartGroupRequest) SetProjectId(v string) *ListSmartGroupRequest {
 }
 
 type ListSmartGroupResponseBody struct {
-	RequestId  *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ErrorMsg   *string                             `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	Object     []*ListSmartGroupResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
-	ErrorCode  *string                             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	RequestId  *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Successful *bool                               `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string                             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object     []*ListSmartGroupResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
 }
 
 func (s ListSmartGroupResponseBody) String() string {
@@ -9040,18 +9398,18 @@ func (s ListSmartGroupResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListSmartGroupResponseBody) SetRequestId(v string) *ListSmartGroupResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *ListSmartGroupResponseBody) SetErrorMsg(v string) *ListSmartGroupResponseBody {
 	s.ErrorMsg = &v
 	return s
 }
 
-func (s *ListSmartGroupResponseBody) SetObject(v []*ListSmartGroupResponseBodyObject) *ListSmartGroupResponseBody {
-	s.Object = v
+func (s *ListSmartGroupResponseBody) SetRequestId(v string) *ListSmartGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSmartGroupResponseBody) SetSuccessful(v bool) *ListSmartGroupResponseBody {
+	s.Successful = &v
 	return s
 }
 
@@ -9060,8 +9418,8 @@ func (s *ListSmartGroupResponseBody) SetErrorCode(v string) *ListSmartGroupRespo
 	return s
 }
 
-func (s *ListSmartGroupResponseBody) SetSuccessful(v bool) *ListSmartGroupResponseBody {
-	s.Successful = &v
+func (s *ListSmartGroupResponseBody) SetObject(v []*ListSmartGroupResponseBodyObject) *ListSmartGroupResponseBody {
+	s.Object = v
 	return s
 }
 
@@ -9129,11 +9487,11 @@ func (s *ListUserOrganizationRequest) SetRealPk(v string) *ListUserOrganizationR
 }
 
 type ListUserOrganizationResponseBody struct {
-	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Object       []*ListUserOrganizationResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
-	ErrorCode    *string                                   `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string                                   `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success      *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string                                   `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object       []*ListUserOrganizationResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
 }
 
 func (s ListUserOrganizationResponseBody) String() string {
@@ -9144,13 +9502,18 @@ func (s ListUserOrganizationResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ListUserOrganizationResponseBody) SetErrorMessage(v string) *ListUserOrganizationResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
 func (s *ListUserOrganizationResponseBody) SetRequestId(v string) *ListUserOrganizationResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *ListUserOrganizationResponseBody) SetObject(v []*ListUserOrganizationResponseBodyObject) *ListUserOrganizationResponseBody {
-	s.Object = v
+func (s *ListUserOrganizationResponseBody) SetSuccess(v bool) *ListUserOrganizationResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -9159,13 +9522,8 @@ func (s *ListUserOrganizationResponseBody) SetErrorCode(v string) *ListUserOrgan
 	return s
 }
 
-func (s *ListUserOrganizationResponseBody) SetErrorMessage(v string) *ListUserOrganizationResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *ListUserOrganizationResponseBody) SetSuccess(v bool) *ListUserOrganizationResponseBody {
-	s.Success = &v
+func (s *ListUserOrganizationResponseBody) SetObject(v []*ListUserOrganizationResponseBodyObject) *ListUserOrganizationResponseBody {
+	s.Object = v
 	return s
 }
 
@@ -9252,9 +9610,9 @@ func (s *TransferPipelineOwnerRequest) SetNewOwnerId(v string) *TransferPipeline
 
 type TransferPipelineOwnerResponseBody struct {
 	RequestId    *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorMessage *string                `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Object       map[string]interface{} `json:"Object,omitempty" xml:"Object,omitempty"`
 	ErrorCode    *string                `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string                `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Success      *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -9271,6 +9629,11 @@ func (s *TransferPipelineOwnerResponseBody) SetRequestId(v string) *TransferPipe
 	return s
 }
 
+func (s *TransferPipelineOwnerResponseBody) SetErrorMessage(v string) *TransferPipelineOwnerResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
 func (s *TransferPipelineOwnerResponseBody) SetObject(v map[string]interface{}) *TransferPipelineOwnerResponseBody {
 	s.Object = v
 	return s
@@ -9278,11 +9641,6 @@ func (s *TransferPipelineOwnerResponseBody) SetObject(v map[string]interface{}) 
 
 func (s *TransferPipelineOwnerResponseBody) SetErrorCode(v string) *TransferPipelineOwnerResponseBody {
 	s.ErrorCode = &v
-	return s
-}
-
-func (s *TransferPipelineOwnerResponseBody) SetErrorMessage(v string) *TransferPipelineOwnerResponseBody {
-	s.ErrorMessage = &v
 	return s
 }
 
@@ -9362,11 +9720,11 @@ func (s *UpdateCommonGroupRequest) SetName(v string) *UpdateCommonGroupRequest {
 }
 
 type UpdateCommonGroupResponseBody struct {
-	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ErrorMsg   *string                              `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	Object     *UpdateCommonGroupResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
-	ErrorCode  *string                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Successful *bool                                `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object     *UpdateCommonGroupResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
 }
 
 func (s UpdateCommonGroupResponseBody) String() string {
@@ -9377,18 +9735,18 @@ func (s UpdateCommonGroupResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateCommonGroupResponseBody) SetRequestId(v string) *UpdateCommonGroupResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *UpdateCommonGroupResponseBody) SetErrorMsg(v string) *UpdateCommonGroupResponseBody {
 	s.ErrorMsg = &v
 	return s
 }
 
-func (s *UpdateCommonGroupResponseBody) SetObject(v *UpdateCommonGroupResponseBodyObject) *UpdateCommonGroupResponseBody {
-	s.Object = v
+func (s *UpdateCommonGroupResponseBody) SetRequestId(v string) *UpdateCommonGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateCommonGroupResponseBody) SetSuccessful(v bool) *UpdateCommonGroupResponseBody {
+	s.Successful = &v
 	return s
 }
 
@@ -9397,8 +9755,8 @@ func (s *UpdateCommonGroupResponseBody) SetErrorCode(v string) *UpdateCommonGrou
 	return s
 }
 
-func (s *UpdateCommonGroupResponseBody) SetSuccessful(v bool) *UpdateCommonGroupResponseBody {
-	s.Successful = &v
+func (s *UpdateCommonGroupResponseBody) SetObject(v *UpdateCommonGroupResponseBodyObject) *UpdateCommonGroupResponseBody {
+	s.Object = v
 	return s
 }
 
@@ -9478,11 +9836,11 @@ func (s *UpdateDevopsProjectRequest) SetProjectId(v string) *UpdateDevopsProject
 }
 
 type UpdateDevopsProjectResponseBody struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Object       *string `json:"Object,omitempty" xml:"Object,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 }
 
 func (s UpdateDevopsProjectResponseBody) String() string {
@@ -9491,6 +9849,11 @@ func (s UpdateDevopsProjectResponseBody) String() string {
 
 func (s UpdateDevopsProjectResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateDevopsProjectResponseBody) SetErrorMessage(v string) *UpdateDevopsProjectResponseBody {
+	s.ErrorMessage = &v
+	return s
 }
 
 func (s *UpdateDevopsProjectResponseBody) SetRequestId(v string) *UpdateDevopsProjectResponseBody {
@@ -9503,18 +9866,13 @@ func (s *UpdateDevopsProjectResponseBody) SetObject(v string) *UpdateDevopsProje
 	return s
 }
 
-func (s *UpdateDevopsProjectResponseBody) SetErrorCode(v string) *UpdateDevopsProjectResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *UpdateDevopsProjectResponseBody) SetErrorMessage(v string) *UpdateDevopsProjectResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
 func (s *UpdateDevopsProjectResponseBody) SetSuccess(v bool) *UpdateDevopsProjectResponseBody {
 	s.Success = &v
+	return s
+}
+
+func (s *UpdateDevopsProjectResponseBody) SetErrorCode(v string) *UpdateDevopsProjectResponseBody {
+	s.ErrorCode = &v
 	return s
 }
 
@@ -9601,11 +9959,11 @@ func (s *UpdateDevopsProjectSprintRequest) SetSprintId(v string) *UpdateDevopsPr
 }
 
 type UpdateDevopsProjectSprintResponseBody struct {
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ErrorMsg   *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Object     *bool   `json:"Object,omitempty" xml:"Object,omitempty"`
-	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	Successful *bool   `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 }
 
 func (s UpdateDevopsProjectSprintResponseBody) String() string {
@@ -9616,13 +9974,13 @@ func (s UpdateDevopsProjectSprintResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateDevopsProjectSprintResponseBody) SetRequestId(v string) *UpdateDevopsProjectSprintResponseBody {
-	s.RequestId = &v
+func (s *UpdateDevopsProjectSprintResponseBody) SetErrorMsg(v string) *UpdateDevopsProjectSprintResponseBody {
+	s.ErrorMsg = &v
 	return s
 }
 
-func (s *UpdateDevopsProjectSprintResponseBody) SetErrorMsg(v string) *UpdateDevopsProjectSprintResponseBody {
-	s.ErrorMsg = &v
+func (s *UpdateDevopsProjectSprintResponseBody) SetRequestId(v string) *UpdateDevopsProjectSprintResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -9631,13 +9989,13 @@ func (s *UpdateDevopsProjectSprintResponseBody) SetObject(v bool) *UpdateDevopsP
 	return s
 }
 
-func (s *UpdateDevopsProjectSprintResponseBody) SetErrorCode(v string) *UpdateDevopsProjectSprintResponseBody {
-	s.ErrorCode = &v
+func (s *UpdateDevopsProjectSprintResponseBody) SetSuccessful(v bool) *UpdateDevopsProjectSprintResponseBody {
+	s.Successful = &v
 	return s
 }
 
-func (s *UpdateDevopsProjectSprintResponseBody) SetSuccessful(v bool) *UpdateDevopsProjectSprintResponseBody {
-	s.Successful = &v
+func (s *UpdateDevopsProjectSprintResponseBody) SetErrorCode(v string) *UpdateDevopsProjectSprintResponseBody {
+	s.ErrorCode = &v
 	return s
 }
 
@@ -9760,11 +10118,11 @@ func (s *UpdateDevopsProjectTaskRequest) SetTaskId(v string) *UpdateDevopsProjec
 }
 
 type UpdateDevopsProjectTaskResponseBody struct {
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ErrorMsg   *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Object     *bool   `json:"Object,omitempty" xml:"Object,omitempty"`
-	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	Successful *bool   `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 }
 
 func (s UpdateDevopsProjectTaskResponseBody) String() string {
@@ -9775,13 +10133,13 @@ func (s UpdateDevopsProjectTaskResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateDevopsProjectTaskResponseBody) SetRequestId(v string) *UpdateDevopsProjectTaskResponseBody {
-	s.RequestId = &v
+func (s *UpdateDevopsProjectTaskResponseBody) SetErrorMsg(v string) *UpdateDevopsProjectTaskResponseBody {
+	s.ErrorMsg = &v
 	return s
 }
 
-func (s *UpdateDevopsProjectTaskResponseBody) SetErrorMsg(v string) *UpdateDevopsProjectTaskResponseBody {
-	s.ErrorMsg = &v
+func (s *UpdateDevopsProjectTaskResponseBody) SetRequestId(v string) *UpdateDevopsProjectTaskResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -9790,13 +10148,13 @@ func (s *UpdateDevopsProjectTaskResponseBody) SetObject(v bool) *UpdateDevopsPro
 	return s
 }
 
-func (s *UpdateDevopsProjectTaskResponseBody) SetErrorCode(v string) *UpdateDevopsProjectTaskResponseBody {
-	s.ErrorCode = &v
+func (s *UpdateDevopsProjectTaskResponseBody) SetSuccessful(v bool) *UpdateDevopsProjectTaskResponseBody {
+	s.Successful = &v
 	return s
 }
 
-func (s *UpdateDevopsProjectTaskResponseBody) SetSuccessful(v bool) *UpdateDevopsProjectTaskResponseBody {
-	s.Successful = &v
+func (s *UpdateDevopsProjectTaskResponseBody) SetErrorCode(v string) *UpdateDevopsProjectTaskResponseBody {
+	s.ErrorCode = &v
 	return s
 }
 
@@ -9866,9 +10224,9 @@ func (s *UpdatePipelineMemberRequest) SetRoleName(v string) *UpdatePipelineMembe
 
 type UpdatePipelineMemberResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Object       *bool   `json:"Object,omitempty" xml:"Object,omitempty"`
 	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -9885,6 +10243,11 @@ func (s *UpdatePipelineMemberResponseBody) SetRequestId(v string) *UpdatePipelin
 	return s
 }
 
+func (s *UpdatePipelineMemberResponseBody) SetErrorMessage(v string) *UpdatePipelineMemberResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
 func (s *UpdatePipelineMemberResponseBody) SetObject(v bool) *UpdatePipelineMemberResponseBody {
 	s.Object = &v
 	return s
@@ -9892,11 +10255,6 @@ func (s *UpdatePipelineMemberResponseBody) SetObject(v bool) *UpdatePipelineMemb
 
 func (s *UpdatePipelineMemberResponseBody) SetErrorCode(v string) *UpdatePipelineMemberResponseBody {
 	s.ErrorCode = &v
-	return s
-}
-
-func (s *UpdatePipelineMemberResponseBody) SetErrorMessage(v string) *UpdatePipelineMemberResponseBody {
-	s.ErrorMessage = &v
 	return s
 }
 
@@ -10048,11 +10406,11 @@ func (s *UpdateTaskDetailRequest) SetAddInvolvers(v string) *UpdateTaskDetailReq
 }
 
 type UpdateTaskDetailResponseBody struct {
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ErrorMsg   *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Object     *bool   `json:"Object,omitempty" xml:"Object,omitempty"`
-	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	Successful *bool   `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 }
 
 func (s UpdateTaskDetailResponseBody) String() string {
@@ -10063,13 +10421,13 @@ func (s UpdateTaskDetailResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateTaskDetailResponseBody) SetRequestId(v string) *UpdateTaskDetailResponseBody {
-	s.RequestId = &v
+func (s *UpdateTaskDetailResponseBody) SetErrorMsg(v string) *UpdateTaskDetailResponseBody {
+	s.ErrorMsg = &v
 	return s
 }
 
-func (s *UpdateTaskDetailResponseBody) SetErrorMsg(v string) *UpdateTaskDetailResponseBody {
-	s.ErrorMsg = &v
+func (s *UpdateTaskDetailResponseBody) SetRequestId(v string) *UpdateTaskDetailResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -10078,13 +10436,13 @@ func (s *UpdateTaskDetailResponseBody) SetObject(v bool) *UpdateTaskDetailRespon
 	return s
 }
 
-func (s *UpdateTaskDetailResponseBody) SetErrorCode(v string) *UpdateTaskDetailResponseBody {
-	s.ErrorCode = &v
+func (s *UpdateTaskDetailResponseBody) SetSuccessful(v bool) *UpdateTaskDetailResponseBody {
+	s.Successful = &v
 	return s
 }
 
-func (s *UpdateTaskDetailResponseBody) SetSuccessful(v bool) *UpdateTaskDetailResponseBody {
-	s.Successful = &v
+func (s *UpdateTaskDetailResponseBody) SetErrorCode(v string) *UpdateTaskDetailResponseBody {
+	s.ErrorCode = &v
 	return s
 }
 
@@ -10487,6 +10845,34 @@ func (client *Client) DeleteCommonGroup(request *DeleteCommonGroupRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteCommonGroupResponse{}
 	_body, _err := client.DeleteCommonGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteDevopsOrganizationWithOptions(request *DeleteDevopsOrganizationRequest, runtime *util.RuntimeOptions) (_result *DeleteDevopsOrganizationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DeleteDevopsOrganizationResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteDevopsOrganization"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDevopsOrganization(request *DeleteDevopsOrganizationRequest) (_result *DeleteDevopsOrganizationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDevopsOrganizationResponse{}
+	_body, _err := client.DeleteDevopsOrganizationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11383,6 +11769,34 @@ func (client *Client) ListCredentials(request *ListCredentialsRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &ListCredentialsResponse{}
 	_body, _err := client.ListCredentialsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDevopsProjectsWithOptions(request *ListDevopsProjectsRequest, runtime *util.RuntimeOptions) (_result *ListDevopsProjectsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListDevopsProjectsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListDevopsProjects"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDevopsProjects(request *ListDevopsProjectsRequest) (_result *ListDevopsProjectsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDevopsProjectsResponse{}
+	_body, _err := client.ListDevopsProjectsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
