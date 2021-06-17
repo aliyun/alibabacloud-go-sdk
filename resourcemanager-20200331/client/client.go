@@ -151,6 +151,69 @@ func (s *AcceptHandshakeResponse) SetBody(v *AcceptHandshakeResponseBody) *Accep
 	return s
 }
 
+type AttachControlPolicyRequest struct {
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+}
+
+func (s AttachControlPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachControlPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AttachControlPolicyRequest) SetPolicyId(v string) *AttachControlPolicyRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *AttachControlPolicyRequest) SetTargetId(v string) *AttachControlPolicyRequest {
+	s.TargetId = &v
+	return s
+}
+
+type AttachControlPolicyResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AttachControlPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachControlPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AttachControlPolicyResponseBody) SetRequestId(v string) *AttachControlPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AttachControlPolicyResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *AttachControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AttachControlPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachControlPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AttachControlPolicyResponse) SetHeaders(v map[string]*string) *AttachControlPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AttachControlPolicyResponse) SetBody(v *AttachControlPolicyResponseBody) *AttachControlPolicyResponse {
+	s.Body = v
+	return s
+}
+
 type AttachPolicyRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	PolicyType      *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
@@ -634,6 +697,146 @@ func (s *CreateCloudAccountResponse) SetHeaders(v map[string]*string) *CreateClo
 }
 
 func (s *CreateCloudAccountResponse) SetBody(v *CreateCloudAccountResponseBody) *CreateCloudAccountResponse {
+	s.Body = v
+	return s
+}
+
+type CreateControlPolicyRequest struct {
+	PolicyName     *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EffectScope    *string `json:"EffectScope,omitempty" xml:"EffectScope,omitempty"`
+	PolicyDocument *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
+}
+
+func (s CreateControlPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateControlPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateControlPolicyRequest) SetPolicyName(v string) *CreateControlPolicyRequest {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *CreateControlPolicyRequest) SetDescription(v string) *CreateControlPolicyRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateControlPolicyRequest) SetEffectScope(v string) *CreateControlPolicyRequest {
+	s.EffectScope = &v
+	return s
+}
+
+func (s *CreateControlPolicyRequest) SetPolicyDocument(v string) *CreateControlPolicyRequest {
+	s.PolicyDocument = &v
+	return s
+}
+
+type CreateControlPolicyResponseBody struct {
+	ControlPolicy *CreateControlPolicyResponseBodyControlPolicy `json:"ControlPolicy,omitempty" xml:"ControlPolicy,omitempty" type:"Struct"`
+	RequestId     *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateControlPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateControlPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateControlPolicyResponseBody) SetControlPolicy(v *CreateControlPolicyResponseBodyControlPolicy) *CreateControlPolicyResponseBody {
+	s.ControlPolicy = v
+	return s
+}
+
+func (s *CreateControlPolicyResponseBody) SetRequestId(v string) *CreateControlPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateControlPolicyResponseBodyControlPolicy struct {
+	UpdateDate      *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EffectScope     *string `json:"EffectScope,omitempty" xml:"EffectScope,omitempty"`
+	AttachmentCount *string `json:"AttachmentCount,omitempty" xml:"AttachmentCount,omitempty"`
+	PolicyName      *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	PolicyId        *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	CreateDate      *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	PolicyType      *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+}
+
+func (s CreateControlPolicyResponseBodyControlPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateControlPolicyResponseBodyControlPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *CreateControlPolicyResponseBodyControlPolicy) SetUpdateDate(v string) *CreateControlPolicyResponseBodyControlPolicy {
+	s.UpdateDate = &v
+	return s
+}
+
+func (s *CreateControlPolicyResponseBodyControlPolicy) SetDescription(v string) *CreateControlPolicyResponseBodyControlPolicy {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateControlPolicyResponseBodyControlPolicy) SetEffectScope(v string) *CreateControlPolicyResponseBodyControlPolicy {
+	s.EffectScope = &v
+	return s
+}
+
+func (s *CreateControlPolicyResponseBodyControlPolicy) SetAttachmentCount(v string) *CreateControlPolicyResponseBodyControlPolicy {
+	s.AttachmentCount = &v
+	return s
+}
+
+func (s *CreateControlPolicyResponseBodyControlPolicy) SetPolicyName(v string) *CreateControlPolicyResponseBodyControlPolicy {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *CreateControlPolicyResponseBodyControlPolicy) SetPolicyId(v string) *CreateControlPolicyResponseBodyControlPolicy {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *CreateControlPolicyResponseBodyControlPolicy) SetCreateDate(v string) *CreateControlPolicyResponseBodyControlPolicy {
+	s.CreateDate = &v
+	return s
+}
+
+func (s *CreateControlPolicyResponseBodyControlPolicy) SetPolicyType(v string) *CreateControlPolicyResponseBodyControlPolicy {
+	s.PolicyType = &v
+	return s
+}
+
+type CreateControlPolicyResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateControlPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateControlPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateControlPolicyResponse) SetHeaders(v map[string]*string) *CreateControlPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateControlPolicyResponse) SetBody(v *CreateControlPolicyResponseBody) *CreateControlPolicyResponse {
 	s.Body = v
 	return s
 }
@@ -1690,6 +1893,63 @@ func (s *DeclineHandshakeResponse) SetBody(v *DeclineHandshakeResponseBody) *Dec
 	return s
 }
 
+type DeleteControlPolicyRequest struct {
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+}
+
+func (s DeleteControlPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteControlPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteControlPolicyRequest) SetPolicyId(v string) *DeleteControlPolicyRequest {
+	s.PolicyId = &v
+	return s
+}
+
+type DeleteControlPolicyResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteControlPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteControlPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteControlPolicyResponseBody) SetRequestId(v string) *DeleteControlPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteControlPolicyResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteControlPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteControlPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteControlPolicyResponse) SetHeaders(v map[string]*string) *DeleteControlPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteControlPolicyResponse) SetBody(v *DeleteControlPolicyResponseBody) *DeleteControlPolicyResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteFolderRequest struct {
 	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
 }
@@ -2143,6 +2403,69 @@ func (s *DeleteServiceLinkedRoleResponse) SetBody(v *DeleteServiceLinkedRoleResp
 	return s
 }
 
+type DeregisterDelegatedAdministratorRequest struct {
+	AccountId        *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	ServicePrincipal *string `json:"ServicePrincipal,omitempty" xml:"ServicePrincipal,omitempty"`
+}
+
+func (s DeregisterDelegatedAdministratorRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeregisterDelegatedAdministratorRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeregisterDelegatedAdministratorRequest) SetAccountId(v string) *DeregisterDelegatedAdministratorRequest {
+	s.AccountId = &v
+	return s
+}
+
+func (s *DeregisterDelegatedAdministratorRequest) SetServicePrincipal(v string) *DeregisterDelegatedAdministratorRequest {
+	s.ServicePrincipal = &v
+	return s
+}
+
+type DeregisterDelegatedAdministratorResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeregisterDelegatedAdministratorResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeregisterDelegatedAdministratorResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeregisterDelegatedAdministratorResponseBody) SetRequestId(v string) *DeregisterDelegatedAdministratorResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeregisterDelegatedAdministratorResponse struct {
+	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeregisterDelegatedAdministratorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeregisterDelegatedAdministratorResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeregisterDelegatedAdministratorResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeregisterDelegatedAdministratorResponse) SetHeaders(v map[string]*string) *DeregisterDelegatedAdministratorResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeregisterDelegatedAdministratorResponse) SetBody(v *DeregisterDelegatedAdministratorResponseBody) *DeregisterDelegatedAdministratorResponse {
+	s.Body = v
+	return s
+}
+
 type DestroyResourceDirectoryResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -2179,6 +2502,69 @@ func (s *DestroyResourceDirectoryResponse) SetHeaders(v map[string]*string) *Des
 }
 
 func (s *DestroyResourceDirectoryResponse) SetBody(v *DestroyResourceDirectoryResponseBody) *DestroyResourceDirectoryResponse {
+	s.Body = v
+	return s
+}
+
+type DetachControlPolicyRequest struct {
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+}
+
+func (s DetachControlPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachControlPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetachControlPolicyRequest) SetPolicyId(v string) *DetachControlPolicyRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *DetachControlPolicyRequest) SetTargetId(v string) *DetachControlPolicyRequest {
+	s.TargetId = &v
+	return s
+}
+
+type DetachControlPolicyResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DetachControlPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachControlPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DetachControlPolicyResponseBody) SetRequestId(v string) *DetachControlPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DetachControlPolicyResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DetachControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DetachControlPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachControlPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DetachControlPolicyResponse) SetHeaders(v map[string]*string) *DetachControlPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DetachControlPolicyResponse) SetBody(v *DetachControlPolicyResponseBody) *DetachControlPolicyResponse {
 	s.Body = v
 	return s
 }
@@ -2260,6 +2646,98 @@ func (s *DetachPolicyResponse) SetHeaders(v map[string]*string) *DetachPolicyRes
 }
 
 func (s *DetachPolicyResponse) SetBody(v *DetachPolicyResponseBody) *DetachPolicyResponse {
+	s.Body = v
+	return s
+}
+
+type DisableControlPolicyResponseBody struct {
+	EnablementStatus *string `json:"EnablementStatus,omitempty" xml:"EnablementStatus,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DisableControlPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableControlPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DisableControlPolicyResponseBody) SetEnablementStatus(v string) *DisableControlPolicyResponseBody {
+	s.EnablementStatus = &v
+	return s
+}
+
+func (s *DisableControlPolicyResponseBody) SetRequestId(v string) *DisableControlPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DisableControlPolicyResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DisableControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DisableControlPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableControlPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DisableControlPolicyResponse) SetHeaders(v map[string]*string) *DisableControlPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DisableControlPolicyResponse) SetBody(v *DisableControlPolicyResponseBody) *DisableControlPolicyResponse {
+	s.Body = v
+	return s
+}
+
+type EnableControlPolicyResponseBody struct {
+	EnablementStatus *string `json:"EnablementStatus,omitempty" xml:"EnablementStatus,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s EnableControlPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableControlPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EnableControlPolicyResponseBody) SetEnablementStatus(v string) *EnableControlPolicyResponseBody {
+	s.EnablementStatus = &v
+	return s
+}
+
+func (s *EnableControlPolicyResponseBody) SetRequestId(v string) *EnableControlPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type EnableControlPolicyResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *EnableControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s EnableControlPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableControlPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EnableControlPolicyResponse) SetHeaders(v map[string]*string) *EnableControlPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EnableControlPolicyResponse) SetBody(v *EnableControlPolicyResponseBody) *EnableControlPolicyResponse {
 	s.Body = v
 	return s
 }
@@ -2400,6 +2878,186 @@ func (s *GetAccountResponse) SetHeaders(v map[string]*string) *GetAccountRespons
 }
 
 func (s *GetAccountResponse) SetBody(v *GetAccountResponseBody) *GetAccountResponse {
+	s.Body = v
+	return s
+}
+
+type GetControlPolicyRequest struct {
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+}
+
+func (s GetControlPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetControlPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetControlPolicyRequest) SetPolicyId(v string) *GetControlPolicyRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *GetControlPolicyRequest) SetLanguage(v string) *GetControlPolicyRequest {
+	s.Language = &v
+	return s
+}
+
+type GetControlPolicyResponseBody struct {
+	ControlPolicy *GetControlPolicyResponseBodyControlPolicy `json:"ControlPolicy,omitempty" xml:"ControlPolicy,omitempty" type:"Struct"`
+	RequestId     *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetControlPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetControlPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetControlPolicyResponseBody) SetControlPolicy(v *GetControlPolicyResponseBodyControlPolicy) *GetControlPolicyResponseBody {
+	s.ControlPolicy = v
+	return s
+}
+
+func (s *GetControlPolicyResponseBody) SetRequestId(v string) *GetControlPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetControlPolicyResponseBodyControlPolicy struct {
+	PolicyDocument  *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
+	UpdateDate      *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EffectScope     *string `json:"EffectScope,omitempty" xml:"EffectScope,omitempty"`
+	AttachmentCount *string `json:"AttachmentCount,omitempty" xml:"AttachmentCount,omitempty"`
+	PolicyName      *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	PolicyId        *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	CreateDate      *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	PolicyType      *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+}
+
+func (s GetControlPolicyResponseBodyControlPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetControlPolicyResponseBodyControlPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *GetControlPolicyResponseBodyControlPolicy) SetPolicyDocument(v string) *GetControlPolicyResponseBodyControlPolicy {
+	s.PolicyDocument = &v
+	return s
+}
+
+func (s *GetControlPolicyResponseBodyControlPolicy) SetUpdateDate(v string) *GetControlPolicyResponseBodyControlPolicy {
+	s.UpdateDate = &v
+	return s
+}
+
+func (s *GetControlPolicyResponseBodyControlPolicy) SetDescription(v string) *GetControlPolicyResponseBodyControlPolicy {
+	s.Description = &v
+	return s
+}
+
+func (s *GetControlPolicyResponseBodyControlPolicy) SetEffectScope(v string) *GetControlPolicyResponseBodyControlPolicy {
+	s.EffectScope = &v
+	return s
+}
+
+func (s *GetControlPolicyResponseBodyControlPolicy) SetAttachmentCount(v string) *GetControlPolicyResponseBodyControlPolicy {
+	s.AttachmentCount = &v
+	return s
+}
+
+func (s *GetControlPolicyResponseBodyControlPolicy) SetPolicyName(v string) *GetControlPolicyResponseBodyControlPolicy {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *GetControlPolicyResponseBodyControlPolicy) SetPolicyId(v string) *GetControlPolicyResponseBodyControlPolicy {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *GetControlPolicyResponseBodyControlPolicy) SetCreateDate(v string) *GetControlPolicyResponseBodyControlPolicy {
+	s.CreateDate = &v
+	return s
+}
+
+func (s *GetControlPolicyResponseBodyControlPolicy) SetPolicyType(v string) *GetControlPolicyResponseBodyControlPolicy {
+	s.PolicyType = &v
+	return s
+}
+
+type GetControlPolicyResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetControlPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetControlPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetControlPolicyResponse) SetHeaders(v map[string]*string) *GetControlPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetControlPolicyResponse) SetBody(v *GetControlPolicyResponseBody) *GetControlPolicyResponse {
+	s.Body = v
+	return s
+}
+
+type GetControlPolicyEnablementStatusResponseBody struct {
+	EnablementStatus *string `json:"EnablementStatus,omitempty" xml:"EnablementStatus,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetControlPolicyEnablementStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetControlPolicyEnablementStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetControlPolicyEnablementStatusResponseBody) SetEnablementStatus(v string) *GetControlPolicyEnablementStatusResponseBody {
+	s.EnablementStatus = &v
+	return s
+}
+
+func (s *GetControlPolicyEnablementStatusResponseBody) SetRequestId(v string) *GetControlPolicyEnablementStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetControlPolicyEnablementStatusResponse struct {
+	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetControlPolicyEnablementStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetControlPolicyEnablementStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetControlPolicyEnablementStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetControlPolicyEnablementStatusResponse) SetHeaders(v map[string]*string) *GetControlPolicyEnablementStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetControlPolicyEnablementStatusResponse) SetBody(v *GetControlPolicyEnablementStatusResponseBody) *GetControlPolicyEnablementStatusResponse {
 	s.Body = v
 	return s
 }
@@ -2996,6 +3654,7 @@ type GetResourceDirectoryResponseBodyResourceDirectory struct {
 	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	MasterAccountId     *string `json:"MasterAccountId,omitempty" xml:"MasterAccountId,omitempty"`
 	MasterAccountName   *string `json:"MasterAccountName,omitempty" xml:"MasterAccountName,omitempty"`
+	ControlPolicyStatus *string `json:"ControlPolicyStatus,omitempty" xml:"ControlPolicyStatus,omitempty"`
 }
 
 func (s GetResourceDirectoryResponseBodyResourceDirectory) String() string {
@@ -3028,6 +3687,11 @@ func (s *GetResourceDirectoryResponseBodyResourceDirectory) SetMasterAccountId(v
 
 func (s *GetResourceDirectoryResponseBodyResourceDirectory) SetMasterAccountName(v string) *GetResourceDirectoryResponseBodyResourceDirectory {
 	s.MasterAccountName = &v
+	return s
+}
+
+func (s *GetResourceDirectoryResponseBodyResourceDirectory) SetControlPolicyStatus(v string) *GetResourceDirectoryResponseBodyResourceDirectory {
+	s.ControlPolicyStatus = &v
 	return s
 }
 
@@ -4226,6 +4890,538 @@ func (s *ListAncestorsResponse) SetBody(v *ListAncestorsResponseBody) *ListAnces
 	return s
 }
 
+type ListControlPoliciesRequest struct {
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Language   *string `json:"Language,omitempty" xml:"Language,omitempty"`
+}
+
+func (s ListControlPoliciesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListControlPoliciesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListControlPoliciesRequest) SetPolicyType(v string) *ListControlPoliciesRequest {
+	s.PolicyType = &v
+	return s
+}
+
+func (s *ListControlPoliciesRequest) SetPageNumber(v int32) *ListControlPoliciesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListControlPoliciesRequest) SetPageSize(v int32) *ListControlPoliciesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListControlPoliciesRequest) SetLanguage(v string) *ListControlPoliciesRequest {
+	s.Language = &v
+	return s
+}
+
+type ListControlPoliciesResponseBody struct {
+	TotalCount      *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId       *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageSize        *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber      *int32                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	ControlPolicies *ListControlPoliciesResponseBodyControlPolicies `json:"ControlPolicies,omitempty" xml:"ControlPolicies,omitempty" type:"Struct"`
+}
+
+func (s ListControlPoliciesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListControlPoliciesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListControlPoliciesResponseBody) SetTotalCount(v int32) *ListControlPoliciesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListControlPoliciesResponseBody) SetRequestId(v string) *ListControlPoliciesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListControlPoliciesResponseBody) SetPageSize(v int32) *ListControlPoliciesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListControlPoliciesResponseBody) SetPageNumber(v int32) *ListControlPoliciesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListControlPoliciesResponseBody) SetControlPolicies(v *ListControlPoliciesResponseBodyControlPolicies) *ListControlPoliciesResponseBody {
+	s.ControlPolicies = v
+	return s
+}
+
+type ListControlPoliciesResponseBodyControlPolicies struct {
+	ControlPolicy []*ListControlPoliciesResponseBodyControlPoliciesControlPolicy `json:"ControlPolicy,omitempty" xml:"ControlPolicy,omitempty" type:"Repeated"`
+}
+
+func (s ListControlPoliciesResponseBodyControlPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListControlPoliciesResponseBodyControlPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *ListControlPoliciesResponseBodyControlPolicies) SetControlPolicy(v []*ListControlPoliciesResponseBodyControlPoliciesControlPolicy) *ListControlPoliciesResponseBodyControlPolicies {
+	s.ControlPolicy = v
+	return s
+}
+
+type ListControlPoliciesResponseBodyControlPoliciesControlPolicy struct {
+	UpdateDate      *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EffectScope     *string `json:"EffectScope,omitempty" xml:"EffectScope,omitempty"`
+	AttachmentCount *string `json:"AttachmentCount,omitempty" xml:"AttachmentCount,omitempty"`
+	PolicyName      *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	PolicyId        *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	CreateDate      *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	PolicyType      *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+}
+
+func (s ListControlPoliciesResponseBodyControlPoliciesControlPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListControlPoliciesResponseBodyControlPoliciesControlPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *ListControlPoliciesResponseBodyControlPoliciesControlPolicy) SetUpdateDate(v string) *ListControlPoliciesResponseBodyControlPoliciesControlPolicy {
+	s.UpdateDate = &v
+	return s
+}
+
+func (s *ListControlPoliciesResponseBodyControlPoliciesControlPolicy) SetDescription(v string) *ListControlPoliciesResponseBodyControlPoliciesControlPolicy {
+	s.Description = &v
+	return s
+}
+
+func (s *ListControlPoliciesResponseBodyControlPoliciesControlPolicy) SetEffectScope(v string) *ListControlPoliciesResponseBodyControlPoliciesControlPolicy {
+	s.EffectScope = &v
+	return s
+}
+
+func (s *ListControlPoliciesResponseBodyControlPoliciesControlPolicy) SetAttachmentCount(v string) *ListControlPoliciesResponseBodyControlPoliciesControlPolicy {
+	s.AttachmentCount = &v
+	return s
+}
+
+func (s *ListControlPoliciesResponseBodyControlPoliciesControlPolicy) SetPolicyName(v string) *ListControlPoliciesResponseBodyControlPoliciesControlPolicy {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *ListControlPoliciesResponseBodyControlPoliciesControlPolicy) SetPolicyId(v string) *ListControlPoliciesResponseBodyControlPoliciesControlPolicy {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *ListControlPoliciesResponseBodyControlPoliciesControlPolicy) SetCreateDate(v string) *ListControlPoliciesResponseBodyControlPoliciesControlPolicy {
+	s.CreateDate = &v
+	return s
+}
+
+func (s *ListControlPoliciesResponseBodyControlPoliciesControlPolicy) SetPolicyType(v string) *ListControlPoliciesResponseBodyControlPoliciesControlPolicy {
+	s.PolicyType = &v
+	return s
+}
+
+type ListControlPoliciesResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListControlPoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListControlPoliciesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListControlPoliciesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListControlPoliciesResponse) SetHeaders(v map[string]*string) *ListControlPoliciesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListControlPoliciesResponse) SetBody(v *ListControlPoliciesResponseBody) *ListControlPoliciesResponse {
+	s.Body = v
+	return s
+}
+
+type ListControlPolicyAttachmentsForTargetRequest struct {
+	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+}
+
+func (s ListControlPolicyAttachmentsForTargetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListControlPolicyAttachmentsForTargetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListControlPolicyAttachmentsForTargetRequest) SetTargetId(v string) *ListControlPolicyAttachmentsForTargetRequest {
+	s.TargetId = &v
+	return s
+}
+
+func (s *ListControlPolicyAttachmentsForTargetRequest) SetLanguage(v string) *ListControlPolicyAttachmentsForTargetRequest {
+	s.Language = &v
+	return s
+}
+
+type ListControlPolicyAttachmentsForTargetResponseBody struct {
+	RequestId                *string                                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ControlPolicyAttachments *ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachments `json:"ControlPolicyAttachments,omitempty" xml:"ControlPolicyAttachments,omitempty" type:"Struct"`
+}
+
+func (s ListControlPolicyAttachmentsForTargetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListControlPolicyAttachmentsForTargetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListControlPolicyAttachmentsForTargetResponseBody) SetRequestId(v string) *ListControlPolicyAttachmentsForTargetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListControlPolicyAttachmentsForTargetResponseBody) SetControlPolicyAttachments(v *ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachments) *ListControlPolicyAttachmentsForTargetResponseBody {
+	s.ControlPolicyAttachments = v
+	return s
+}
+
+type ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachments struct {
+	ControlPolicyAttachment []*ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachmentsControlPolicyAttachment `json:"ControlPolicyAttachment,omitempty" xml:"ControlPolicyAttachment,omitempty" type:"Repeated"`
+}
+
+func (s ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachments) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachments) GoString() string {
+	return s.String()
+}
+
+func (s *ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachments) SetControlPolicyAttachment(v []*ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachmentsControlPolicyAttachment) *ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachments {
+	s.ControlPolicyAttachment = v
+	return s
+}
+
+type ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachmentsControlPolicyAttachment struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EffectScope *string `json:"EffectScope,omitempty" xml:"EffectScope,omitempty"`
+	PolicyName  *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	PolicyId    *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	AttachDate  *string `json:"AttachDate,omitempty" xml:"AttachDate,omitempty"`
+	PolicyType  *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+}
+
+func (s ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachmentsControlPolicyAttachment) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachmentsControlPolicyAttachment) GoString() string {
+	return s.String()
+}
+
+func (s *ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachmentsControlPolicyAttachment) SetDescription(v string) *ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachmentsControlPolicyAttachment {
+	s.Description = &v
+	return s
+}
+
+func (s *ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachmentsControlPolicyAttachment) SetEffectScope(v string) *ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachmentsControlPolicyAttachment {
+	s.EffectScope = &v
+	return s
+}
+
+func (s *ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachmentsControlPolicyAttachment) SetPolicyName(v string) *ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachmentsControlPolicyAttachment {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachmentsControlPolicyAttachment) SetPolicyId(v string) *ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachmentsControlPolicyAttachment {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachmentsControlPolicyAttachment) SetAttachDate(v string) *ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachmentsControlPolicyAttachment {
+	s.AttachDate = &v
+	return s
+}
+
+func (s *ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachmentsControlPolicyAttachment) SetPolicyType(v string) *ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachmentsControlPolicyAttachment {
+	s.PolicyType = &v
+	return s
+}
+
+type ListControlPolicyAttachmentsForTargetResponse struct {
+	Headers map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListControlPolicyAttachmentsForTargetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListControlPolicyAttachmentsForTargetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListControlPolicyAttachmentsForTargetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListControlPolicyAttachmentsForTargetResponse) SetHeaders(v map[string]*string) *ListControlPolicyAttachmentsForTargetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListControlPolicyAttachmentsForTargetResponse) SetBody(v *ListControlPolicyAttachmentsForTargetResponseBody) *ListControlPolicyAttachmentsForTargetResponse {
+	s.Body = v
+	return s
+}
+
+type ListDelegatedAdministratorsRequest struct {
+	ServicePrincipal *string `json:"ServicePrincipal,omitempty" xml:"ServicePrincipal,omitempty"`
+}
+
+func (s ListDelegatedAdministratorsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDelegatedAdministratorsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDelegatedAdministratorsRequest) SetServicePrincipal(v string) *ListDelegatedAdministratorsRequest {
+	s.ServicePrincipal = &v
+	return s
+}
+
+type ListDelegatedAdministratorsResponseBody struct {
+	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Accounts  *ListDelegatedAdministratorsResponseBodyAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Struct"`
+}
+
+func (s ListDelegatedAdministratorsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDelegatedAdministratorsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDelegatedAdministratorsResponseBody) SetRequestId(v string) *ListDelegatedAdministratorsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDelegatedAdministratorsResponseBody) SetAccounts(v *ListDelegatedAdministratorsResponseBodyAccounts) *ListDelegatedAdministratorsResponseBody {
+	s.Accounts = v
+	return s
+}
+
+type ListDelegatedAdministratorsResponseBodyAccounts struct {
+	Account []*ListDelegatedAdministratorsResponseBodyAccountsAccount `json:"Account,omitempty" xml:"Account,omitempty" type:"Repeated"`
+}
+
+func (s ListDelegatedAdministratorsResponseBodyAccounts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDelegatedAdministratorsResponseBodyAccounts) GoString() string {
+	return s.String()
+}
+
+func (s *ListDelegatedAdministratorsResponseBodyAccounts) SetAccount(v []*ListDelegatedAdministratorsResponseBodyAccountsAccount) *ListDelegatedAdministratorsResponseBodyAccounts {
+	s.Account = v
+	return s
+}
+
+type ListDelegatedAdministratorsResponseBodyAccountsAccount struct {
+	AccountId             *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	DisplayName           *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	JoinMethod            *string `json:"JoinMethod,omitempty" xml:"JoinMethod,omitempty"`
+	ServicePrincipal      *string `json:"ServicePrincipal,omitempty" xml:"ServicePrincipal,omitempty"`
+	DelegationEnabledTime *string `json:"DelegationEnabledTime,omitempty" xml:"DelegationEnabledTime,omitempty"`
+}
+
+func (s ListDelegatedAdministratorsResponseBodyAccountsAccount) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDelegatedAdministratorsResponseBodyAccountsAccount) GoString() string {
+	return s.String()
+}
+
+func (s *ListDelegatedAdministratorsResponseBodyAccountsAccount) SetAccountId(v string) *ListDelegatedAdministratorsResponseBodyAccountsAccount {
+	s.AccountId = &v
+	return s
+}
+
+func (s *ListDelegatedAdministratorsResponseBodyAccountsAccount) SetDisplayName(v string) *ListDelegatedAdministratorsResponseBodyAccountsAccount {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *ListDelegatedAdministratorsResponseBodyAccountsAccount) SetJoinMethod(v string) *ListDelegatedAdministratorsResponseBodyAccountsAccount {
+	s.JoinMethod = &v
+	return s
+}
+
+func (s *ListDelegatedAdministratorsResponseBodyAccountsAccount) SetServicePrincipal(v string) *ListDelegatedAdministratorsResponseBodyAccountsAccount {
+	s.ServicePrincipal = &v
+	return s
+}
+
+func (s *ListDelegatedAdministratorsResponseBodyAccountsAccount) SetDelegationEnabledTime(v string) *ListDelegatedAdministratorsResponseBodyAccountsAccount {
+	s.DelegationEnabledTime = &v
+	return s
+}
+
+type ListDelegatedAdministratorsResponse struct {
+	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListDelegatedAdministratorsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDelegatedAdministratorsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDelegatedAdministratorsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDelegatedAdministratorsResponse) SetHeaders(v map[string]*string) *ListDelegatedAdministratorsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDelegatedAdministratorsResponse) SetBody(v *ListDelegatedAdministratorsResponseBody) *ListDelegatedAdministratorsResponse {
+	s.Body = v
+	return s
+}
+
+type ListDelegatedServicesForAccountRequest struct {
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+}
+
+func (s ListDelegatedServicesForAccountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDelegatedServicesForAccountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDelegatedServicesForAccountRequest) SetAccountId(v string) *ListDelegatedServicesForAccountRequest {
+	s.AccountId = &v
+	return s
+}
+
+type ListDelegatedServicesForAccountResponseBody struct {
+	RequestId         *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	DelegatedServices *ListDelegatedServicesForAccountResponseBodyDelegatedServices `json:"DelegatedServices,omitempty" xml:"DelegatedServices,omitempty" type:"Struct"`
+}
+
+func (s ListDelegatedServicesForAccountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDelegatedServicesForAccountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDelegatedServicesForAccountResponseBody) SetRequestId(v string) *ListDelegatedServicesForAccountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDelegatedServicesForAccountResponseBody) SetDelegatedServices(v *ListDelegatedServicesForAccountResponseBodyDelegatedServices) *ListDelegatedServicesForAccountResponseBody {
+	s.DelegatedServices = v
+	return s
+}
+
+type ListDelegatedServicesForAccountResponseBodyDelegatedServices struct {
+	DelegatedService []*ListDelegatedServicesForAccountResponseBodyDelegatedServicesDelegatedService `json:"DelegatedService,omitempty" xml:"DelegatedService,omitempty" type:"Repeated"`
+}
+
+func (s ListDelegatedServicesForAccountResponseBodyDelegatedServices) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDelegatedServicesForAccountResponseBodyDelegatedServices) GoString() string {
+	return s.String()
+}
+
+func (s *ListDelegatedServicesForAccountResponseBodyDelegatedServices) SetDelegatedService(v []*ListDelegatedServicesForAccountResponseBodyDelegatedServicesDelegatedService) *ListDelegatedServicesForAccountResponseBodyDelegatedServices {
+	s.DelegatedService = v
+	return s
+}
+
+type ListDelegatedServicesForAccountResponseBodyDelegatedServicesDelegatedService struct {
+	DelegationEnabledTime *string `json:"DelegationEnabledTime,omitempty" xml:"DelegationEnabledTime,omitempty"`
+	ServicePrincipal      *string `json:"ServicePrincipal,omitempty" xml:"ServicePrincipal,omitempty"`
+}
+
+func (s ListDelegatedServicesForAccountResponseBodyDelegatedServicesDelegatedService) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDelegatedServicesForAccountResponseBodyDelegatedServicesDelegatedService) GoString() string {
+	return s.String()
+}
+
+func (s *ListDelegatedServicesForAccountResponseBodyDelegatedServicesDelegatedService) SetDelegationEnabledTime(v string) *ListDelegatedServicesForAccountResponseBodyDelegatedServicesDelegatedService {
+	s.DelegationEnabledTime = &v
+	return s
+}
+
+func (s *ListDelegatedServicesForAccountResponseBodyDelegatedServicesDelegatedService) SetServicePrincipal(v string) *ListDelegatedServicesForAccountResponseBodyDelegatedServicesDelegatedService {
+	s.ServicePrincipal = &v
+	return s
+}
+
+type ListDelegatedServicesForAccountResponse struct {
+	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListDelegatedServicesForAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDelegatedServicesForAccountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDelegatedServicesForAccountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDelegatedServicesForAccountResponse) SetHeaders(v map[string]*string) *ListDelegatedServicesForAccountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDelegatedServicesForAccountResponse) SetBody(v *ListDelegatedServicesForAccountResponseBody) *ListDelegatedServicesForAccountResponse {
+	s.Body = v
+	return s
+}
+
 type ListFoldersForParentRequest struct {
 	ParentFolderId *string `json:"ParentFolderId,omitempty" xml:"ParentFolderId,omitempty"`
 	QueryKeyword   *string `json:"QueryKeyword,omitempty" xml:"QueryKeyword,omitempty"`
@@ -5375,6 +6571,7 @@ type ListResourcesRequest struct {
 	ResourceId      *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceIds     *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
 }
 
 func (s ListResourcesRequest) String() string {
@@ -5417,6 +6614,11 @@ func (s *ListResourcesRequest) SetPageNumber(v int32) *ListResourcesRequest {
 
 func (s *ListResourcesRequest) SetPageSize(v int32) *ListResourcesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListResourcesRequest) SetResourceIds(v string) *ListResourcesRequest {
+	s.ResourceIds = &v
 	return s
 }
 
@@ -5752,9 +6954,155 @@ func (s *ListRolesResponse) SetBody(v *ListRolesResponseBody) *ListRolesResponse
 	return s
 }
 
+type ListTargetAttachmentsForControlPolicyRequest struct {
+	PolicyId   *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListTargetAttachmentsForControlPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTargetAttachmentsForControlPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTargetAttachmentsForControlPolicyRequest) SetPolicyId(v string) *ListTargetAttachmentsForControlPolicyRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *ListTargetAttachmentsForControlPolicyRequest) SetPageNumber(v int32) *ListTargetAttachmentsForControlPolicyRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListTargetAttachmentsForControlPolicyRequest) SetPageSize(v int32) *ListTargetAttachmentsForControlPolicyRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListTargetAttachmentsForControlPolicyResponseBody struct {
+	TotalCount        *int32                                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId         *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageSize          *int32                                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber        *int32                                                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TargetAttachments *ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachments `json:"TargetAttachments,omitempty" xml:"TargetAttachments,omitempty" type:"Struct"`
+}
+
+func (s ListTargetAttachmentsForControlPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTargetAttachmentsForControlPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTargetAttachmentsForControlPolicyResponseBody) SetTotalCount(v int32) *ListTargetAttachmentsForControlPolicyResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListTargetAttachmentsForControlPolicyResponseBody) SetRequestId(v string) *ListTargetAttachmentsForControlPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTargetAttachmentsForControlPolicyResponseBody) SetPageSize(v int32) *ListTargetAttachmentsForControlPolicyResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListTargetAttachmentsForControlPolicyResponseBody) SetPageNumber(v int32) *ListTargetAttachmentsForControlPolicyResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListTargetAttachmentsForControlPolicyResponseBody) SetTargetAttachments(v *ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachments) *ListTargetAttachmentsForControlPolicyResponseBody {
+	s.TargetAttachments = v
+	return s
+}
+
+type ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachments struct {
+	TargetAttachment []*ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachmentsTargetAttachment `json:"TargetAttachment,omitempty" xml:"TargetAttachment,omitempty" type:"Repeated"`
+}
+
+func (s ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachments) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachments) GoString() string {
+	return s.String()
+}
+
+func (s *ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachments) SetTargetAttachment(v []*ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachmentsTargetAttachment) *ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachments {
+	s.TargetAttachment = v
+	return s
+}
+
+type ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachmentsTargetAttachment struct {
+	TargetId   *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
+	AttachDate *string `json:"AttachDate,omitempty" xml:"AttachDate,omitempty"`
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+}
+
+func (s ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachmentsTargetAttachment) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachmentsTargetAttachment) GoString() string {
+	return s.String()
+}
+
+func (s *ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachmentsTargetAttachment) SetTargetId(v string) *ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachmentsTargetAttachment {
+	s.TargetId = &v
+	return s
+}
+
+func (s *ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachmentsTargetAttachment) SetTargetName(v string) *ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachmentsTargetAttachment {
+	s.TargetName = &v
+	return s
+}
+
+func (s *ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachmentsTargetAttachment) SetAttachDate(v string) *ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachmentsTargetAttachment {
+	s.AttachDate = &v
+	return s
+}
+
+func (s *ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachmentsTargetAttachment) SetTargetType(v string) *ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachmentsTargetAttachment {
+	s.TargetType = &v
+	return s
+}
+
+type ListTargetAttachmentsForControlPolicyResponse struct {
+	Headers map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListTargetAttachmentsForControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListTargetAttachmentsForControlPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTargetAttachmentsForControlPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTargetAttachmentsForControlPolicyResponse) SetHeaders(v map[string]*string) *ListTargetAttachmentsForControlPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTargetAttachmentsForControlPolicyResponse) SetBody(v *ListTargetAttachmentsForControlPolicyResponseBody) *ListTargetAttachmentsForControlPolicyResponse {
+	s.Body = v
+	return s
+}
+
 type ListTrustedServiceStatusRequest struct {
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	AdminAccountId *string `json:"AdminAccountId,omitempty" xml:"AdminAccountId,omitempty"`
 }
 
 func (s ListTrustedServiceStatusRequest) String() string {
@@ -5772,6 +7120,11 @@ func (s *ListTrustedServiceStatusRequest) SetPageNumber(v int32) *ListTrustedSer
 
 func (s *ListTrustedServiceStatusRequest) SetPageSize(v int32) *ListTrustedServiceStatusRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListTrustedServiceStatusRequest) SetAdminAccountId(v string) *ListTrustedServiceStatusRequest {
+	s.AdminAccountId = &v
 	return s
 }
 
@@ -6084,6 +7437,69 @@ func (s *PromoteResourceAccountResponse) SetHeaders(v map[string]*string) *Promo
 }
 
 func (s *PromoteResourceAccountResponse) SetBody(v *PromoteResourceAccountResponseBody) *PromoteResourceAccountResponse {
+	s.Body = v
+	return s
+}
+
+type RegisterDelegatedAdministratorRequest struct {
+	AccountId        *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	ServicePrincipal *string `json:"ServicePrincipal,omitempty" xml:"ServicePrincipal,omitempty"`
+}
+
+func (s RegisterDelegatedAdministratorRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterDelegatedAdministratorRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterDelegatedAdministratorRequest) SetAccountId(v string) *RegisterDelegatedAdministratorRequest {
+	s.AccountId = &v
+	return s
+}
+
+func (s *RegisterDelegatedAdministratorRequest) SetServicePrincipal(v string) *RegisterDelegatedAdministratorRequest {
+	s.ServicePrincipal = &v
+	return s
+}
+
+type RegisterDelegatedAdministratorResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RegisterDelegatedAdministratorResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterDelegatedAdministratorResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterDelegatedAdministratorResponseBody) SetRequestId(v string) *RegisterDelegatedAdministratorResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RegisterDelegatedAdministratorResponse struct {
+	Headers map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RegisterDelegatedAdministratorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RegisterDelegatedAdministratorResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterDelegatedAdministratorResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterDelegatedAdministratorResponse) SetHeaders(v map[string]*string) *RegisterDelegatedAdministratorResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RegisterDelegatedAdministratorResponse) SetBody(v *RegisterDelegatedAdministratorResponseBody) *RegisterDelegatedAdministratorResponse {
 	s.Body = v
 	return s
 }
@@ -6490,6 +7906,7 @@ func (s *SetDefaultPolicyVersionResponse) SetBody(v *SetDefaultPolicyVersionResp
 
 type UpdateAccountRequest struct {
 	NewDisplayName *string `json:"NewDisplayName,omitempty" xml:"NewDisplayName,omitempty"`
+	NewAccountType *string `json:"NewAccountType,omitempty" xml:"NewAccountType,omitempty"`
 	AccountId      *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 }
 
@@ -6503,6 +7920,11 @@ func (s UpdateAccountRequest) GoString() string {
 
 func (s *UpdateAccountRequest) SetNewDisplayName(v string) *UpdateAccountRequest {
 	s.NewDisplayName = &v
+	return s
+}
+
+func (s *UpdateAccountRequest) SetNewAccountType(v string) *UpdateAccountRequest {
+	s.NewAccountType = &v
 	return s
 }
 
@@ -6624,6 +8046,146 @@ func (s *UpdateAccountResponse) SetHeaders(v map[string]*string) *UpdateAccountR
 }
 
 func (s *UpdateAccountResponse) SetBody(v *UpdateAccountResponseBody) *UpdateAccountResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateControlPolicyRequest struct {
+	PolicyId          *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	NewPolicyName     *string `json:"NewPolicyName,omitempty" xml:"NewPolicyName,omitempty"`
+	NewDescription    *string `json:"NewDescription,omitempty" xml:"NewDescription,omitempty"`
+	NewPolicyDocument *string `json:"NewPolicyDocument,omitempty" xml:"NewPolicyDocument,omitempty"`
+}
+
+func (s UpdateControlPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateControlPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateControlPolicyRequest) SetPolicyId(v string) *UpdateControlPolicyRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *UpdateControlPolicyRequest) SetNewPolicyName(v string) *UpdateControlPolicyRequest {
+	s.NewPolicyName = &v
+	return s
+}
+
+func (s *UpdateControlPolicyRequest) SetNewDescription(v string) *UpdateControlPolicyRequest {
+	s.NewDescription = &v
+	return s
+}
+
+func (s *UpdateControlPolicyRequest) SetNewPolicyDocument(v string) *UpdateControlPolicyRequest {
+	s.NewPolicyDocument = &v
+	return s
+}
+
+type UpdateControlPolicyResponseBody struct {
+	ControlPolicy *UpdateControlPolicyResponseBodyControlPolicy `json:"ControlPolicy,omitempty" xml:"ControlPolicy,omitempty" type:"Struct"`
+	RequestId     *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateControlPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateControlPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateControlPolicyResponseBody) SetControlPolicy(v *UpdateControlPolicyResponseBodyControlPolicy) *UpdateControlPolicyResponseBody {
+	s.ControlPolicy = v
+	return s
+}
+
+func (s *UpdateControlPolicyResponseBody) SetRequestId(v string) *UpdateControlPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateControlPolicyResponseBodyControlPolicy struct {
+	UpdateDate      *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EffectScope     *string `json:"EffectScope,omitempty" xml:"EffectScope,omitempty"`
+	AttachmentCount *string `json:"AttachmentCount,omitempty" xml:"AttachmentCount,omitempty"`
+	PolicyName      *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	PolicyId        *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	CreateDate      *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	PolicyType      *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+}
+
+func (s UpdateControlPolicyResponseBodyControlPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateControlPolicyResponseBodyControlPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateControlPolicyResponseBodyControlPolicy) SetUpdateDate(v string) *UpdateControlPolicyResponseBodyControlPolicy {
+	s.UpdateDate = &v
+	return s
+}
+
+func (s *UpdateControlPolicyResponseBodyControlPolicy) SetDescription(v string) *UpdateControlPolicyResponseBodyControlPolicy {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateControlPolicyResponseBodyControlPolicy) SetEffectScope(v string) *UpdateControlPolicyResponseBodyControlPolicy {
+	s.EffectScope = &v
+	return s
+}
+
+func (s *UpdateControlPolicyResponseBodyControlPolicy) SetAttachmentCount(v string) *UpdateControlPolicyResponseBodyControlPolicy {
+	s.AttachmentCount = &v
+	return s
+}
+
+func (s *UpdateControlPolicyResponseBodyControlPolicy) SetPolicyName(v string) *UpdateControlPolicyResponseBodyControlPolicy {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *UpdateControlPolicyResponseBodyControlPolicy) SetPolicyId(v string) *UpdateControlPolicyResponseBodyControlPolicy {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *UpdateControlPolicyResponseBodyControlPolicy) SetCreateDate(v string) *UpdateControlPolicyResponseBodyControlPolicy {
+	s.CreateDate = &v
+	return s
+}
+
+func (s *UpdateControlPolicyResponseBodyControlPolicy) SetPolicyType(v string) *UpdateControlPolicyResponseBodyControlPolicy {
+	s.PolicyType = &v
+	return s
+}
+
+type UpdateControlPolicyResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateControlPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateControlPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateControlPolicyResponse) SetHeaders(v map[string]*string) *UpdateControlPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateControlPolicyResponse) SetBody(v *UpdateControlPolicyResponseBody) *UpdateControlPolicyResponse {
 	s.Body = v
 	return s
 }
@@ -6846,6 +8408,7 @@ type UpdateRoleRequest struct {
 	RoleName                    *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 	NewAssumeRolePolicyDocument *string `json:"NewAssumeRolePolicyDocument,omitempty" xml:"NewAssumeRolePolicyDocument,omitempty"`
 	NewMaxSessionDuration       *int64  `json:"NewMaxSessionDuration,omitempty" xml:"NewMaxSessionDuration,omitempty"`
+	NewDescription              *string `json:"NewDescription,omitempty" xml:"NewDescription,omitempty"`
 }
 
 func (s UpdateRoleRequest) String() string {
@@ -6868,6 +8431,11 @@ func (s *UpdateRoleRequest) SetNewAssumeRolePolicyDocument(v string) *UpdateRole
 
 func (s *UpdateRoleRequest) SetNewMaxSessionDuration(v int64) *UpdateRoleRequest {
 	s.NewMaxSessionDuration = &v
+	return s
+}
+
+func (s *UpdateRoleRequest) SetNewDescription(v string) *UpdateRoleRequest {
+	s.NewDescription = &v
 	return s
 }
 
@@ -7057,6 +8625,34 @@ func (client *Client) AcceptHandshake(request *AcceptHandshakeRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) AttachControlPolicyWithOptions(request *AttachControlPolicyRequest, runtime *util.RuntimeOptions) (_result *AttachControlPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &AttachControlPolicyResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("AttachControlPolicy"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AttachControlPolicy(request *AttachControlPolicyRequest) (_result *AttachControlPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AttachControlPolicyResponse{}
+	_body, _err := client.AttachControlPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) AttachPolicyWithOptions(request *AttachPolicyRequest, runtime *util.RuntimeOptions) (_result *AttachPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7190,6 +8786,34 @@ func (client *Client) CreateCloudAccount(request *CreateCloudAccountRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateCloudAccountResponse{}
 	_body, _err := client.CreateCloudAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateControlPolicyWithOptions(request *CreateControlPolicyRequest, runtime *util.RuntimeOptions) (_result *CreateControlPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateControlPolicyResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateControlPolicy"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateControlPolicy(request *CreateControlPolicyRequest) (_result *CreateControlPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateControlPolicyResponse{}
+	_body, _err := client.CreateControlPolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7421,6 +9045,34 @@ func (client *Client) DeclineHandshake(request *DeclineHandshakeRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) DeleteControlPolicyWithOptions(request *DeleteControlPolicyRequest, runtime *util.RuntimeOptions) (_result *DeleteControlPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DeleteControlPolicyResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteControlPolicy"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteControlPolicy(request *DeleteControlPolicyRequest) (_result *DeleteControlPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteControlPolicyResponse{}
+	_body, _err := client.DeleteControlPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteFolderWithOptions(request *DeleteFolderRequest, runtime *util.RuntimeOptions) (_result *DeleteFolderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7589,6 +9241,34 @@ func (client *Client) DeleteServiceLinkedRole(request *DeleteServiceLinkedRoleRe
 	return _result, _err
 }
 
+func (client *Client) DeregisterDelegatedAdministratorWithOptions(request *DeregisterDelegatedAdministratorRequest, runtime *util.RuntimeOptions) (_result *DeregisterDelegatedAdministratorResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DeregisterDelegatedAdministratorResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeregisterDelegatedAdministrator"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeregisterDelegatedAdministrator(request *DeregisterDelegatedAdministratorRequest) (_result *DeregisterDelegatedAdministratorResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeregisterDelegatedAdministratorResponse{}
+	_body, _err := client.DeregisterDelegatedAdministratorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DestroyResourceDirectoryWithOptions(runtime *util.RuntimeOptions) (_result *DestroyResourceDirectoryResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	_result = &DestroyResourceDirectoryResponse{}
@@ -7604,6 +9284,34 @@ func (client *Client) DestroyResourceDirectory() (_result *DestroyResourceDirect
 	runtime := &util.RuntimeOptions{}
 	_result = &DestroyResourceDirectoryResponse{}
 	_body, _err := client.DestroyResourceDirectoryWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DetachControlPolicyWithOptions(request *DetachControlPolicyRequest, runtime *util.RuntimeOptions) (_result *DetachControlPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DetachControlPolicyResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DetachControlPolicy"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DetachControlPolicy(request *DetachControlPolicyRequest) (_result *DetachControlPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DetachControlPolicyResponse{}
+	_body, _err := client.DetachControlPolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7639,6 +9347,50 @@ func (client *Client) DetachPolicy(request *DetachPolicyRequest) (_result *Detac
 	return _result, _err
 }
 
+func (client *Client) DisableControlPolicyWithOptions(runtime *util.RuntimeOptions) (_result *DisableControlPolicyResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	_result = &DisableControlPolicyResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DisableControlPolicy"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DisableControlPolicy() (_result *DisableControlPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DisableControlPolicyResponse{}
+	_body, _err := client.DisableControlPolicyWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) EnableControlPolicyWithOptions(runtime *util.RuntimeOptions) (_result *EnableControlPolicyResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	_result = &EnableControlPolicyResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("EnableControlPolicy"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) EnableControlPolicy() (_result *EnableControlPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EnableControlPolicyResponse{}
+	_body, _err := client.EnableControlPolicyWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetAccountWithOptions(request *GetAccountRequest, runtime *util.RuntimeOptions) (_result *GetAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7660,6 +9412,56 @@ func (client *Client) GetAccount(request *GetAccountRequest) (_result *GetAccoun
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAccountResponse{}
 	_body, _err := client.GetAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetControlPolicyWithOptions(request *GetControlPolicyRequest, runtime *util.RuntimeOptions) (_result *GetControlPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetControlPolicyResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetControlPolicy"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetControlPolicy(request *GetControlPolicyRequest) (_result *GetControlPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetControlPolicyResponse{}
+	_body, _err := client.GetControlPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetControlPolicyEnablementStatusWithOptions(runtime *util.RuntimeOptions) (_result *GetControlPolicyEnablementStatusResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	_result = &GetControlPolicyEnablementStatusResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetControlPolicyEnablementStatus"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetControlPolicyEnablementStatus() (_result *GetControlPolicyEnablementStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetControlPolicyEnablementStatusResponse{}
+	_body, _err := client.GetControlPolicyEnablementStatusWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8047,6 +9849,118 @@ func (client *Client) ListAncestors(request *ListAncestorsRequest) (_result *Lis
 	return _result, _err
 }
 
+func (client *Client) ListControlPoliciesWithOptions(request *ListControlPoliciesRequest, runtime *util.RuntimeOptions) (_result *ListControlPoliciesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListControlPoliciesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListControlPolicies"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListControlPolicies(request *ListControlPoliciesRequest) (_result *ListControlPoliciesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListControlPoliciesResponse{}
+	_body, _err := client.ListControlPoliciesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListControlPolicyAttachmentsForTargetWithOptions(request *ListControlPolicyAttachmentsForTargetRequest, runtime *util.RuntimeOptions) (_result *ListControlPolicyAttachmentsForTargetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListControlPolicyAttachmentsForTargetResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListControlPolicyAttachmentsForTarget"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListControlPolicyAttachmentsForTarget(request *ListControlPolicyAttachmentsForTargetRequest) (_result *ListControlPolicyAttachmentsForTargetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListControlPolicyAttachmentsForTargetResponse{}
+	_body, _err := client.ListControlPolicyAttachmentsForTargetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDelegatedAdministratorsWithOptions(request *ListDelegatedAdministratorsRequest, runtime *util.RuntimeOptions) (_result *ListDelegatedAdministratorsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListDelegatedAdministratorsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListDelegatedAdministrators"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDelegatedAdministrators(request *ListDelegatedAdministratorsRequest) (_result *ListDelegatedAdministratorsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDelegatedAdministratorsResponse{}
+	_body, _err := client.ListDelegatedAdministratorsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDelegatedServicesForAccountWithOptions(request *ListDelegatedServicesForAccountRequest, runtime *util.RuntimeOptions) (_result *ListDelegatedServicesForAccountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListDelegatedServicesForAccountResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListDelegatedServicesForAccount"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDelegatedServicesForAccount(request *ListDelegatedServicesForAccountRequest) (_result *ListDelegatedServicesForAccountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDelegatedServicesForAccountResponse{}
+	_body, _err := client.ListDelegatedServicesForAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListFoldersForParentWithOptions(request *ListFoldersForParentRequest, runtime *util.RuntimeOptions) (_result *ListFoldersForParentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8299,6 +10213,34 @@ func (client *Client) ListRoles(request *ListRolesRequest) (_result *ListRolesRe
 	return _result, _err
 }
 
+func (client *Client) ListTargetAttachmentsForControlPolicyWithOptions(request *ListTargetAttachmentsForControlPolicyRequest, runtime *util.RuntimeOptions) (_result *ListTargetAttachmentsForControlPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListTargetAttachmentsForControlPolicyResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListTargetAttachmentsForControlPolicy"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListTargetAttachmentsForControlPolicy(request *ListTargetAttachmentsForControlPolicyRequest) (_result *ListTargetAttachmentsForControlPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTargetAttachmentsForControlPolicyResponse{}
+	_body, _err := client.ListTargetAttachmentsForControlPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListTrustedServiceStatusWithOptions(request *ListTrustedServiceStatusRequest, runtime *util.RuntimeOptions) (_result *ListTrustedServiceStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8376,6 +10318,34 @@ func (client *Client) PromoteResourceAccount(request *PromoteResourceAccountRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &PromoteResourceAccountResponse{}
 	_body, _err := client.PromoteResourceAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RegisterDelegatedAdministratorWithOptions(request *RegisterDelegatedAdministratorRequest, runtime *util.RuntimeOptions) (_result *RegisterDelegatedAdministratorResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &RegisterDelegatedAdministratorResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("RegisterDelegatedAdministrator"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RegisterDelegatedAdministrator(request *RegisterDelegatedAdministratorRequest) (_result *RegisterDelegatedAdministratorResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RegisterDelegatedAdministratorResponse{}
+	_body, _err := client.RegisterDelegatedAdministratorWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8516,6 +10486,34 @@ func (client *Client) UpdateAccount(request *UpdateAccountRequest) (_result *Upd
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAccountResponse{}
 	_body, _err := client.UpdateAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateControlPolicyWithOptions(request *UpdateControlPolicyRequest, runtime *util.RuntimeOptions) (_result *UpdateControlPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &UpdateControlPolicyResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UpdateControlPolicy"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateControlPolicy(request *UpdateControlPolicyRequest) (_result *UpdateControlPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateControlPolicyResponse{}
+	_body, _err := client.UpdateControlPolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
