@@ -18193,8 +18193,10 @@ func (s *DescribeStrategyResponse) SetBody(v *DescribeStrategyResponseBody) *Des
 }
 
 type DescribeStrategyExecDetailRequest struct {
-	SourceIp   *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	StrategyId *int32  `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
+	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	StrategyId  *int32  `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 }
 
 func (s DescribeStrategyExecDetailRequest) String() string {
@@ -18212,6 +18214,16 @@ func (s *DescribeStrategyExecDetailRequest) SetSourceIp(v string) *DescribeStrat
 
 func (s *DescribeStrategyExecDetailRequest) SetStrategyId(v int32) *DescribeStrategyExecDetailRequest {
 	s.StrategyId = &v
+	return s
+}
+
+func (s *DescribeStrategyExecDetailRequest) SetPageSize(v int32) *DescribeStrategyExecDetailRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeStrategyExecDetailRequest) SetCurrentPage(v int32) *DescribeStrategyExecDetailRequest {
+	s.CurrentPage = &v
 	return s
 }
 
@@ -18858,10 +18870,11 @@ func (s *DescribeSuspEventDetailResponseBody) SetDetails(v []*DescribeSuspEventD
 }
 
 type DescribeSuspEventDetailResponseBodyDetails struct {
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	InfoType *string `json:"InfoType,omitempty" xml:"InfoType,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value       *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	InfoType    *string `json:"InfoType,omitempty" xml:"InfoType,omitempty"`
+	NameDisplay *string `json:"NameDisplay,omitempty" xml:"NameDisplay,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s DescribeSuspEventDetailResponseBodyDetails) String() string {
@@ -18882,13 +18895,18 @@ func (s *DescribeSuspEventDetailResponseBodyDetails) SetValue(v string) *Describ
 	return s
 }
 
-func (s *DescribeSuspEventDetailResponseBodyDetails) SetName(v string) *DescribeSuspEventDetailResponseBodyDetails {
-	s.Name = &v
+func (s *DescribeSuspEventDetailResponseBodyDetails) SetInfoType(v string) *DescribeSuspEventDetailResponseBodyDetails {
+	s.InfoType = &v
 	return s
 }
 
-func (s *DescribeSuspEventDetailResponseBodyDetails) SetInfoType(v string) *DescribeSuspEventDetailResponseBodyDetails {
-	s.InfoType = &v
+func (s *DescribeSuspEventDetailResponseBodyDetails) SetNameDisplay(v string) *DescribeSuspEventDetailResponseBodyDetails {
+	s.NameDisplay = &v
+	return s
+}
+
+func (s *DescribeSuspEventDetailResponseBodyDetails) SetName(v string) *DescribeSuspEventDetailResponseBodyDetails {
+	s.Name = &v
 	return s
 }
 
