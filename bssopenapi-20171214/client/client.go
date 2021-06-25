@@ -1997,8 +1997,10 @@ type DescribeInstanceBillResponseBodyDataItems struct {
 	Tag                       *string  `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	InstanceID                *string  `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
 	Currency                  *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	BillAccountName           *string  `json:"BillAccountName,omitempty" xml:"BillAccountName,omitempty"`
 	DeductedByCashCoupons     *float32 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
 	SubscriptionType          *string  `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	BizType                   *string  `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	InstanceSpec              *string  `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
 	DeductedByCoupons         *float32 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
 	BillingItem               *string  `json:"BillingItem,omitempty" xml:"BillingItem,omitempty"`
@@ -2019,6 +2021,7 @@ type DescribeInstanceBillResponseBodyDataItems struct {
 	OwnerID                   *string  `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
 	DeductedByPrepaidCard     *float32 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
 	UsageUnit                 *string  `json:"UsageUnit,omitempty" xml:"UsageUnit,omitempty"`
+	BillAccountID             *string  `json:"BillAccountID,omitempty" xml:"BillAccountID,omitempty"`
 	PaymentAmount             *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
 	InvoiceDiscount           *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
 	DeductedByResourcePackage *string  `json:"DeductedByResourcePackage,omitempty" xml:"DeductedByResourcePackage,omitempty"`
@@ -2074,6 +2077,11 @@ func (s *DescribeInstanceBillResponseBodyDataItems) SetCurrency(v string) *Descr
 	return s
 }
 
+func (s *DescribeInstanceBillResponseBodyDataItems) SetBillAccountName(v string) *DescribeInstanceBillResponseBodyDataItems {
+	s.BillAccountName = &v
+	return s
+}
+
 func (s *DescribeInstanceBillResponseBodyDataItems) SetDeductedByCashCoupons(v float32) *DescribeInstanceBillResponseBodyDataItems {
 	s.DeductedByCashCoupons = &v
 	return s
@@ -2081,6 +2089,11 @@ func (s *DescribeInstanceBillResponseBodyDataItems) SetDeductedByCashCoupons(v f
 
 func (s *DescribeInstanceBillResponseBodyDataItems) SetSubscriptionType(v string) *DescribeInstanceBillResponseBodyDataItems {
 	s.SubscriptionType = &v
+	return s
+}
+
+func (s *DescribeInstanceBillResponseBodyDataItems) SetBizType(v string) *DescribeInstanceBillResponseBodyDataItems {
+	s.BizType = &v
 	return s
 }
 
@@ -2181,6 +2194,11 @@ func (s *DescribeInstanceBillResponseBodyDataItems) SetDeductedByPrepaidCard(v f
 
 func (s *DescribeInstanceBillResponseBodyDataItems) SetUsageUnit(v string) *DescribeInstanceBillResponseBodyDataItems {
 	s.UsageUnit = &v
+	return s
+}
+
+func (s *DescribeInstanceBillResponseBodyDataItems) SetBillAccountID(v string) *DescribeInstanceBillResponseBodyDataItems {
+	s.BillAccountID = &v
 	return s
 }
 
@@ -3570,6 +3588,8 @@ type DescribeSplitItemBillRequest struct {
 	BillOwnerId      *int64                                   `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
 	InstanceID       *string                                  `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
 	SplitItemID      *string                                  `json:"SplitItemID,omitempty" xml:"SplitItemID,omitempty"`
+	Granularity      *string                                  `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
+	BillingDate      *string                                  `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
 	TagFilter        []*DescribeSplitItemBillRequestTagFilter `json:"TagFilter,omitempty" xml:"TagFilter,omitempty" type:"Repeated"`
 }
 
@@ -3628,6 +3648,16 @@ func (s *DescribeSplitItemBillRequest) SetInstanceID(v string) *DescribeSplitIte
 
 func (s *DescribeSplitItemBillRequest) SetSplitItemID(v string) *DescribeSplitItemBillRequest {
 	s.SplitItemID = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillRequest) SetGranularity(v string) *DescribeSplitItemBillRequest {
+	s.Granularity = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillRequest) SetBillingDate(v string) *DescribeSplitItemBillRequest {
+	s.BillingDate = &v
 	return s
 }
 
@@ -3754,52 +3784,56 @@ func (s *DescribeSplitItemBillResponseBodyData) SetItems(v []*DescribeSplitItemB
 }
 
 type DescribeSplitItemBillResponseBodyDataItems struct {
-	BillingDate               *string  `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
-	InstanceConfig            *string  `json:"InstanceConfig,omitempty" xml:"InstanceConfig,omitempty"`
-	InternetIP                *string  `json:"InternetIP,omitempty" xml:"InternetIP,omitempty"`
-	SplitItemID               *string  `json:"SplitItemID,omitempty" xml:"SplitItemID,omitempty"`
-	Item                      *string  `json:"Item,omitempty" xml:"Item,omitempty"`
 	SplitAccountID            *string  `json:"SplitAccountID,omitempty" xml:"SplitAccountID,omitempty"`
-	Tag                       *string  `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	InstanceID                *string  `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
-	Currency                  *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	DeductedByCashCoupons     *float32 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
+	BillAccountName           *string  `json:"BillAccountName,omitempty" xml:"BillAccountName,omitempty"`
 	SubscriptionType          *string  `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 	InstanceSpec              *string  `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
 	DeductedByCoupons         *float32 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
-	BillingItem               *string  `json:"BillingItem,omitempty" xml:"BillingItem,omitempty"`
 	Region                    *string  `json:"Region,omitempty" xml:"Region,omitempty"`
 	OutstandingAmount         *float32 `json:"OutstandingAmount,omitempty" xml:"OutstandingAmount,omitempty"`
-	CostUnit                  *string  `json:"CostUnit,omitempty" xml:"CostUnit,omitempty"`
-	ListPriceUnit             *string  `json:"ListPriceUnit,omitempty" xml:"ListPriceUnit,omitempty"`
-	ResourceGroup             *string  `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
 	PipCode                   *string  `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
-	ServicePeriodUnit         *string  `json:"ServicePeriodUnit,omitempty" xml:"ServicePeriodUnit,omitempty"`
-	PretaxAmount              *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
 	CommodityCode             *string  `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	ProductName               *string  `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	SplitProductDetail        *string  `json:"SplitProductDetail,omitempty" xml:"SplitProductDetail,omitempty"`
 	NickName                  *string  `json:"NickName,omitempty" xml:"NickName,omitempty"`
 	ProductDetail             *string  `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
 	Usage                     *string  `json:"Usage,omitempty" xml:"Usage,omitempty"`
 	IntranetIP                *string  `json:"IntranetIP,omitempty" xml:"IntranetIP,omitempty"`
-	OwnerID                   *string  `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
-	SplitCommodityCode        *string  `json:"SplitCommodityCode,omitempty" xml:"SplitCommodityCode,omitempty"`
-	DeductedByPrepaidCard     *float32 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
 	UsageUnit                 *string  `json:"UsageUnit,omitempty" xml:"UsageUnit,omitempty"`
-	PaymentAmount             *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
-	InvoiceDiscount           *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
-	DeductedByResourcePackage *string  `json:"DeductedByResourcePackage,omitempty" xml:"DeductedByResourcePackage,omitempty"`
+	SplitCommodityCode        *string  `json:"SplitCommodityCode,omitempty" xml:"SplitCommodityCode,omitempty"`
+	BillAccountID             *string  `json:"BillAccountID,omitempty" xml:"BillAccountID,omitempty"`
 	ProductType               *string  `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	DeductedByResourcePackage *string  `json:"DeductedByResourcePackage,omitempty" xml:"DeductedByResourcePackage,omitempty"`
+	PaymentAmount             *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
 	SplitBillingCycle         *string  `json:"SplitBillingCycle,omitempty" xml:"SplitBillingCycle,omitempty"`
 	ServicePeriod             *string  `json:"ServicePeriod,omitempty" xml:"ServicePeriod,omitempty"`
 	SplitItemName             *string  `json:"SplitItemName,omitempty" xml:"SplitItemName,omitempty"`
-	Zone                      *string  `json:"Zone,omitempty" xml:"Zone,omitempty"`
 	ListPrice                 *string  `json:"ListPrice,omitempty" xml:"ListPrice,omitempty"`
+	Zone                      *string  `json:"Zone,omitempty" xml:"Zone,omitempty"`
 	PretaxGrossAmount         *float32 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
+	InstanceConfig            *string  `json:"InstanceConfig,omitempty" xml:"InstanceConfig,omitempty"`
+	BillingDate               *string  `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
+	InternetIP                *string  `json:"InternetIP,omitempty" xml:"InternetIP,omitempty"`
+	Item                      *string  `json:"Item,omitempty" xml:"Item,omitempty"`
+	SplitItemID               *string  `json:"SplitItemID,omitempty" xml:"SplitItemID,omitempty"`
+	InstanceID                *string  `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	Tag                       *string  `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	Currency                  *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	DeductedByCashCoupons     *float32 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
+	BizType                   *string  `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	BillingItem               *string  `json:"BillingItem,omitempty" xml:"BillingItem,omitempty"`
+	CostUnit                  *string  `json:"CostUnit,omitempty" xml:"CostUnit,omitempty"`
+	ListPriceUnit             *string  `json:"ListPriceUnit,omitempty" xml:"ListPriceUnit,omitempty"`
+	ResourceGroup             *string  `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	PretaxAmount              *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
+	ServicePeriodUnit         *string  `json:"ServicePeriodUnit,omitempty" xml:"ServicePeriodUnit,omitempty"`
+	SplitBillingDate          *string  `json:"SplitBillingDate,omitempty" xml:"SplitBillingDate,omitempty"`
+	ProductName               *string  `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	SplitProductDetail        *string  `json:"SplitProductDetail,omitempty" xml:"SplitProductDetail,omitempty"`
+	OwnerID                   *string  `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
+	DeductedByPrepaidCard     *float32 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
+	InvoiceDiscount           *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
 	SplitAccountName          *string  `json:"SplitAccountName,omitempty" xml:"SplitAccountName,omitempty"`
-	ProductCode               *string  `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	BillingType               *string  `json:"BillingType,omitempty" xml:"BillingType,omitempty"`
+	ProductCode               *string  `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 }
 
 func (s DescribeSplitItemBillResponseBodyDataItems) String() string {
@@ -3810,53 +3844,13 @@ func (s DescribeSplitItemBillResponseBodyDataItems) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetBillingDate(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.BillingDate = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetInstanceConfig(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.InstanceConfig = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetInternetIP(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.InternetIP = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetSplitItemID(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.SplitItemID = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetItem(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.Item = &v
-	return s
-}
-
 func (s *DescribeSplitItemBillResponseBodyDataItems) SetSplitAccountID(v string) *DescribeSplitItemBillResponseBodyDataItems {
 	s.SplitAccountID = &v
 	return s
 }
 
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetTag(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.Tag = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetInstanceID(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.InstanceID = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetCurrency(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.Currency = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetDeductedByCashCoupons(v float32) *DescribeSplitItemBillResponseBodyDataItems {
-	s.DeductedByCashCoupons = &v
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetBillAccountName(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.BillAccountName = &v
 	return s
 }
 
@@ -3875,11 +3869,6 @@ func (s *DescribeSplitItemBillResponseBodyDataItems) SetDeductedByCoupons(v floa
 	return s
 }
 
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetBillingItem(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.BillingItem = &v
-	return s
-}
-
 func (s *DescribeSplitItemBillResponseBodyDataItems) SetRegion(v string) *DescribeSplitItemBillResponseBodyDataItems {
 	s.Region = &v
 	return s
@@ -3890,48 +3879,13 @@ func (s *DescribeSplitItemBillResponseBodyDataItems) SetOutstandingAmount(v floa
 	return s
 }
 
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetCostUnit(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.CostUnit = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetListPriceUnit(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.ListPriceUnit = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetResourceGroup(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.ResourceGroup = &v
-	return s
-}
-
 func (s *DescribeSplitItemBillResponseBodyDataItems) SetPipCode(v string) *DescribeSplitItemBillResponseBodyDataItems {
 	s.PipCode = &v
 	return s
 }
 
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetServicePeriodUnit(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.ServicePeriodUnit = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetPretaxAmount(v float32) *DescribeSplitItemBillResponseBodyDataItems {
-	s.PretaxAmount = &v
-	return s
-}
-
 func (s *DescribeSplitItemBillResponseBodyDataItems) SetCommodityCode(v string) *DescribeSplitItemBillResponseBodyDataItems {
 	s.CommodityCode = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetProductName(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.ProductName = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetSplitProductDetail(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.SplitProductDetail = &v
 	return s
 }
 
@@ -3955,8 +3909,8 @@ func (s *DescribeSplitItemBillResponseBodyDataItems) SetIntranetIP(v string) *De
 	return s
 }
 
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetOwnerID(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.OwnerID = &v
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetUsageUnit(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.UsageUnit = &v
 	return s
 }
 
@@ -3965,23 +3919,13 @@ func (s *DescribeSplitItemBillResponseBodyDataItems) SetSplitCommodityCode(v str
 	return s
 }
 
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetDeductedByPrepaidCard(v float32) *DescribeSplitItemBillResponseBodyDataItems {
-	s.DeductedByPrepaidCard = &v
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetBillAccountID(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.BillAccountID = &v
 	return s
 }
 
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetUsageUnit(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.UsageUnit = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetPaymentAmount(v float32) *DescribeSplitItemBillResponseBodyDataItems {
-	s.PaymentAmount = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetInvoiceDiscount(v float32) *DescribeSplitItemBillResponseBodyDataItems {
-	s.InvoiceDiscount = &v
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetProductType(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.ProductType = &v
 	return s
 }
 
@@ -3990,8 +3934,8 @@ func (s *DescribeSplitItemBillResponseBodyDataItems) SetDeductedByResourcePackag
 	return s
 }
 
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetProductType(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.ProductType = &v
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetPaymentAmount(v float32) *DescribeSplitItemBillResponseBodyDataItems {
+	s.PaymentAmount = &v
 	return s
 }
 
@@ -4010,13 +3954,13 @@ func (s *DescribeSplitItemBillResponseBodyDataItems) SetSplitItemName(v string) 
 	return s
 }
 
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetZone(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.Zone = &v
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetListPrice(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.ListPrice = &v
 	return s
 }
 
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetListPrice(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.ListPrice = &v
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetZone(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.Zone = &v
 	return s
 }
 
@@ -4025,18 +3969,128 @@ func (s *DescribeSplitItemBillResponseBodyDataItems) SetPretaxGrossAmount(v floa
 	return s
 }
 
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetInstanceConfig(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.InstanceConfig = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetBillingDate(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.BillingDate = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetInternetIP(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.InternetIP = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetItem(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.Item = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetSplitItemID(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.SplitItemID = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetInstanceID(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.InstanceID = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetTag(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.Tag = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetCurrency(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.Currency = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetDeductedByCashCoupons(v float32) *DescribeSplitItemBillResponseBodyDataItems {
+	s.DeductedByCashCoupons = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetBizType(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.BizType = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetBillingItem(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.BillingItem = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetCostUnit(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.CostUnit = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetListPriceUnit(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.ListPriceUnit = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetResourceGroup(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.ResourceGroup = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetPretaxAmount(v float32) *DescribeSplitItemBillResponseBodyDataItems {
+	s.PretaxAmount = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetServicePeriodUnit(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.ServicePeriodUnit = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetSplitBillingDate(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.SplitBillingDate = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetProductName(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.ProductName = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetSplitProductDetail(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.SplitProductDetail = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetOwnerID(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.OwnerID = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetDeductedByPrepaidCard(v float32) *DescribeSplitItemBillResponseBodyDataItems {
+	s.DeductedByPrepaidCard = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetInvoiceDiscount(v float32) *DescribeSplitItemBillResponseBodyDataItems {
+	s.InvoiceDiscount = &v
+	return s
+}
+
 func (s *DescribeSplitItemBillResponseBodyDataItems) SetSplitAccountName(v string) *DescribeSplitItemBillResponseBodyDataItems {
 	s.SplitAccountName = &v
 	return s
 }
 
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetProductCode(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.ProductCode = &v
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetBillingType(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.BillingType = &v
 	return s
 }
 
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetBillingType(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.BillingType = &v
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetProductCode(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.ProductCode = &v
 	return s
 }
 
@@ -15691,6 +15745,87 @@ func (s *SaveUserCreditResponse) SetBody(v *SaveUserCreditResponseBody) *SaveUse
 	return s
 }
 
+type SetAllExpirationDayRequest struct {
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	UnifyExpireDay *string `json:"UnifyExpireDay,omitempty" xml:"UnifyExpireDay,omitempty"`
+}
+
+func (s SetAllExpirationDayRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetAllExpirationDayRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetAllExpirationDayRequest) SetOwnerId(v int64) *SetAllExpirationDayRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *SetAllExpirationDayRequest) SetUnifyExpireDay(v string) *SetAllExpirationDayRequest {
+	s.UnifyExpireDay = &v
+	return s
+}
+
+type SetAllExpirationDayResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SetAllExpirationDayResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetAllExpirationDayResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetAllExpirationDayResponseBody) SetCode(v string) *SetAllExpirationDayResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SetAllExpirationDayResponseBody) SetMessage(v string) *SetAllExpirationDayResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SetAllExpirationDayResponseBody) SetRequestId(v string) *SetAllExpirationDayResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SetAllExpirationDayResponseBody) SetSuccess(v bool) *SetAllExpirationDayResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SetAllExpirationDayResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SetAllExpirationDayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SetAllExpirationDayResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetAllExpirationDayResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetAllExpirationDayResponse) SetHeaders(v map[string]*string) *SetAllExpirationDayResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetAllExpirationDayResponse) SetBody(v *SetAllExpirationDayResponseBody) *SetAllExpirationDayResponse {
+	s.Body = v
+	return s
+}
+
 type SetCreditLabelActionRequest struct {
 	ActionType                *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
 	Uid                       *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
@@ -18798,6 +18933,34 @@ func (client *Client) SaveUserCredit(request *SaveUserCreditRequest) (_result *S
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveUserCreditResponse{}
 	_body, _err := client.SaveUserCreditWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SetAllExpirationDayWithOptions(request *SetAllExpirationDayRequest, runtime *util.RuntimeOptions) (_result *SetAllExpirationDayResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SetAllExpirationDayResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SetAllExpirationDay"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetAllExpirationDay(request *SetAllExpirationDayRequest) (_result *SetAllExpirationDayResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetAllExpirationDayResponse{}
+	_body, _err := client.SetAllExpirationDayWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
