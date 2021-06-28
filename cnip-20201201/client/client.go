@@ -466,6 +466,235 @@ func (s *ComponentVersion) SetVersion(v string) *ComponentVersion {
 	return s
 }
 
+type ListAuthorizationHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	ClientToken   *string            `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+}
+
+func (s ListAuthorizationHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAuthorizationHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListAuthorizationHeaders) SetCommonHeaders(v map[string]*string) *ListAuthorizationHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListAuthorizationHeaders) SetClientToken(v string) *ListAuthorizationHeaders {
+	s.ClientToken = &v
+	return s
+}
+
+type ListAuthorizationRequest struct {
+	// 默认为false, 代表获取作为授权人，授权给其他人的资源列表；如果为true，则返回其他人授权给自己的资源列表
+	AsGrantee          *bool   `json:"asGrantee,omitempty" xml:"asGrantee,omitempty"`
+	ResourceType       *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	ResourceIdentifier *string `json:"resourceIdentifier,omitempty" xml:"resourceIdentifier,omitempty"`
+	PageNum            *int64  `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	PageSize           *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	SortKey            *string `json:"sortKey,omitempty" xml:"sortKey,omitempty"`
+	SortDirect         *string `json:"sortDirect,omitempty" xml:"sortDirect,omitempty"`
+}
+
+func (s ListAuthorizationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAuthorizationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAuthorizationRequest) SetAsGrantee(v bool) *ListAuthorizationRequest {
+	s.AsGrantee = &v
+	return s
+}
+
+func (s *ListAuthorizationRequest) SetResourceType(v string) *ListAuthorizationRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListAuthorizationRequest) SetResourceIdentifier(v string) *ListAuthorizationRequest {
+	s.ResourceIdentifier = &v
+	return s
+}
+
+func (s *ListAuthorizationRequest) SetPageNum(v int64) *ListAuthorizationRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListAuthorizationRequest) SetPageSize(v int64) *ListAuthorizationRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAuthorizationRequest) SetSortKey(v string) *ListAuthorizationRequest {
+	s.SortKey = &v
+	return s
+}
+
+func (s *ListAuthorizationRequest) SetSortDirect(v string) *ListAuthorizationRequest {
+	s.SortDirect = &v
+	return s
+}
+
+type ListAuthorizationResponseBody struct {
+	Success *bool                              `json:"success,omitempty" xml:"success,omitempty"`
+	ErrCode *string                            `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMsg  *string                            `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
+	Data    *ListAuthorizationResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+}
+
+func (s ListAuthorizationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAuthorizationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAuthorizationResponseBody) SetSuccess(v bool) *ListAuthorizationResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListAuthorizationResponseBody) SetErrCode(v string) *ListAuthorizationResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *ListAuthorizationResponseBody) SetErrMsg(v string) *ListAuthorizationResponseBody {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *ListAuthorizationResponseBody) SetData(v *ListAuthorizationResponseBodyData) *ListAuthorizationResponseBody {
+	s.Data = v
+	return s
+}
+
+type ListAuthorizationResponseBodyData struct {
+	Total    *int64                                   `json:"total,omitempty" xml:"total,omitempty"`
+	PageSize *int64                                   `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PageNum  *int64                                   `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	List     []*ListAuthorizationResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+}
+
+func (s ListAuthorizationResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAuthorizationResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListAuthorizationResponseBodyData) SetTotal(v int64) *ListAuthorizationResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+func (s *ListAuthorizationResponseBodyData) SetPageSize(v int64) *ListAuthorizationResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAuthorizationResponseBodyData) SetPageNum(v int64) *ListAuthorizationResponseBodyData {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListAuthorizationResponseBodyData) SetList(v []*ListAuthorizationResponseBodyDataList) *ListAuthorizationResponseBodyData {
+	s.List = v
+	return s
+}
+
+type ListAuthorizationResponseBodyDataList struct {
+	CreatedAt          *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	Uid                *string `json:"uid,omitempty" xml:"uid,omitempty"`
+	Grantor            *string `json:"grantor,omitempty" xml:"grantor,omitempty"`
+	Grantee            *string `json:"grantee,omitempty" xml:"grantee,omitempty"`
+	ResourceType       *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	ResourceIdentifier *string `json:"resourceIdentifier,omitempty" xml:"resourceIdentifier,omitempty"`
+	Effect             *string `json:"effect,omitempty" xml:"effect,omitempty"`
+	Description        *string `json:"description,omitempty" xml:"description,omitempty"`
+}
+
+func (s ListAuthorizationResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAuthorizationResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *ListAuthorizationResponseBodyDataList) SetCreatedAt(v string) *ListAuthorizationResponseBodyDataList {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *ListAuthorizationResponseBodyDataList) SetUid(v string) *ListAuthorizationResponseBodyDataList {
+	s.Uid = &v
+	return s
+}
+
+func (s *ListAuthorizationResponseBodyDataList) SetGrantor(v string) *ListAuthorizationResponseBodyDataList {
+	s.Grantor = &v
+	return s
+}
+
+func (s *ListAuthorizationResponseBodyDataList) SetGrantee(v string) *ListAuthorizationResponseBodyDataList {
+	s.Grantee = &v
+	return s
+}
+
+func (s *ListAuthorizationResponseBodyDataList) SetResourceType(v string) *ListAuthorizationResponseBodyDataList {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListAuthorizationResponseBodyDataList) SetResourceIdentifier(v string) *ListAuthorizationResponseBodyDataList {
+	s.ResourceIdentifier = &v
+	return s
+}
+
+func (s *ListAuthorizationResponseBodyDataList) SetEffect(v string) *ListAuthorizationResponseBodyDataList {
+	s.Effect = &v
+	return s
+}
+
+func (s *ListAuthorizationResponseBodyDataList) SetDescription(v string) *ListAuthorizationResponseBodyDataList {
+	s.Description = &v
+	return s
+}
+
+type ListAuthorizationResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListAuthorizationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListAuthorizationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAuthorizationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAuthorizationResponse) SetHeaders(v map[string]*string) *ListAuthorizationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAuthorizationResponse) SetBody(v *ListAuthorizationResponseBody) *ListAuthorizationResponse {
+	s.Body = v
+	return s
+}
+
 type GetEnvironmentResponseBody struct {
 	Data    *GetEnvironmentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	ErrCode *string                         `json:"errCode,omitempty" xml:"errCode,omitempty"`
@@ -633,6 +862,5384 @@ func (s *GetEnvironmentResponse) SetHeaders(v map[string]*string) *GetEnvironmen
 
 func (s *GetEnvironmentResponse) SetBody(v *GetEnvironmentResponseBody) *GetEnvironmentResponse {
 	s.Body = v
+	return s
+}
+
+type GetProductEnvironmentResponseBody struct {
+	Data    *GetProductEnvironmentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	ErrCode *string                                `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMsg  *string                                `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
+	Success *bool                                  `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetProductEnvironmentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProductEnvironmentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetProductEnvironmentResponseBody) SetData(v *GetProductEnvironmentResponseBodyData) *GetProductEnvironmentResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetProductEnvironmentResponseBody) SetErrCode(v string) *GetProductEnvironmentResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *GetProductEnvironmentResponseBody) SetErrMsg(v string) *GetProductEnvironmentResponseBody {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *GetProductEnvironmentResponseBody) SetSuccess(v bool) *GetProductEnvironmentResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetProductEnvironmentResponseBodyData struct {
+	CreatedAt      *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	ClusterUID     *string `json:"clusterUID,omitempty" xml:"clusterUID,omitempty"`
+	Description    *string `json:"description,omitempty" xml:"description,omitempty"`
+	InstanceList   *string `json:"instanceList,omitempty" xml:"instanceList,omitempty"`
+	InstanceStatus *string `json:"instanceStatus,omitempty" xml:"instanceStatus,omitempty"`
+	Name           *string `json:"name,omitempty" xml:"name,omitempty"`
+	ProductName    *string `json:"productName,omitempty" xml:"productName,omitempty"`
+	ProductVersion *string `json:"productVersion,omitempty" xml:"productVersion,omitempty"`
+	Type           *string `json:"type,omitempty" xml:"type,omitempty"`
+	Uid            *string `json:"uid,omitempty" xml:"uid,omitempty"`
+	VendorConfig   *string `json:"vendorConfig,omitempty" xml:"vendorConfig,omitempty"`
+	VendorType     *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s GetProductEnvironmentResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProductEnvironmentResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetProductEnvironmentResponseBodyData) SetCreatedAt(v string) *GetProductEnvironmentResponseBodyData {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *GetProductEnvironmentResponseBodyData) SetClusterUID(v string) *GetProductEnvironmentResponseBodyData {
+	s.ClusterUID = &v
+	return s
+}
+
+func (s *GetProductEnvironmentResponseBodyData) SetDescription(v string) *GetProductEnvironmentResponseBodyData {
+	s.Description = &v
+	return s
+}
+
+func (s *GetProductEnvironmentResponseBodyData) SetInstanceList(v string) *GetProductEnvironmentResponseBodyData {
+	s.InstanceList = &v
+	return s
+}
+
+func (s *GetProductEnvironmentResponseBodyData) SetInstanceStatus(v string) *GetProductEnvironmentResponseBodyData {
+	s.InstanceStatus = &v
+	return s
+}
+
+func (s *GetProductEnvironmentResponseBodyData) SetName(v string) *GetProductEnvironmentResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *GetProductEnvironmentResponseBodyData) SetProductName(v string) *GetProductEnvironmentResponseBodyData {
+	s.ProductName = &v
+	return s
+}
+
+func (s *GetProductEnvironmentResponseBodyData) SetProductVersion(v string) *GetProductEnvironmentResponseBodyData {
+	s.ProductVersion = &v
+	return s
+}
+
+func (s *GetProductEnvironmentResponseBodyData) SetType(v string) *GetProductEnvironmentResponseBodyData {
+	s.Type = &v
+	return s
+}
+
+func (s *GetProductEnvironmentResponseBodyData) SetUid(v string) *GetProductEnvironmentResponseBodyData {
+	s.Uid = &v
+	return s
+}
+
+func (s *GetProductEnvironmentResponseBodyData) SetVendorConfig(v string) *GetProductEnvironmentResponseBodyData {
+	s.VendorConfig = &v
+	return s
+}
+
+func (s *GetProductEnvironmentResponseBodyData) SetVendorType(v string) *GetProductEnvironmentResponseBodyData {
+	s.VendorType = &v
+	return s
+}
+
+type GetProductEnvironmentResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetProductEnvironmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetProductEnvironmentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProductEnvironmentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetProductEnvironmentResponse) SetHeaders(v map[string]*string) *GetProductEnvironmentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetProductEnvironmentResponse) SetBody(v *GetProductEnvironmentResponseBody) *GetProductEnvironmentResponse {
+	s.Body = v
+	return s
+}
+
+type GetProductVersionPackageRequest struct {
+	Platform             *string `json:"platform,omitempty" xml:"platform,omitempty"`
+	PackageType          *string `json:"packageType,omitempty" xml:"packageType,omitempty"`
+	OldProductVersionUID *string `json:"oldProductVersionUID,omitempty" xml:"oldProductVersionUID,omitempty"`
+}
+
+func (s GetProductVersionPackageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProductVersionPackageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetProductVersionPackageRequest) SetPlatform(v string) *GetProductVersionPackageRequest {
+	s.Platform = &v
+	return s
+}
+
+func (s *GetProductVersionPackageRequest) SetPackageType(v string) *GetProductVersionPackageRequest {
+	s.PackageType = &v
+	return s
+}
+
+func (s *GetProductVersionPackageRequest) SetOldProductVersionUID(v string) *GetProductVersionPackageRequest {
+	s.OldProductVersionUID = &v
+	return s
+}
+
+type GetProductVersionPackageResponseBody struct {
+	Data    *GetProductVersionPackageResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	ErrCode *string                                   `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMsg  *string                                   `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
+	Success *bool                                     `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetProductVersionPackageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProductVersionPackageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetProductVersionPackageResponseBody) SetData(v *GetProductVersionPackageResponseBodyData) *GetProductVersionPackageResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetProductVersionPackageResponseBody) SetErrCode(v string) *GetProductVersionPackageResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *GetProductVersionPackageResponseBody) SetErrMsg(v string) *GetProductVersionPackageResponseBody {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *GetProductVersionPackageResponseBody) SetSuccess(v bool) *GetProductVersionPackageResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetProductVersionPackageResponseBodyData struct {
+	PackageUID    *string `json:"packageUID,omitempty" xml:"packageUID,omitempty"`
+	PackageStatus *string `json:"packageStatus,omitempty" xml:"packageStatus,omitempty"`
+}
+
+func (s GetProductVersionPackageResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProductVersionPackageResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetProductVersionPackageResponseBodyData) SetPackageUID(v string) *GetProductVersionPackageResponseBodyData {
+	s.PackageUID = &v
+	return s
+}
+
+func (s *GetProductVersionPackageResponseBodyData) SetPackageStatus(v string) *GetProductVersionPackageResponseBodyData {
+	s.PackageStatus = &v
+	return s
+}
+
+type GetProductVersionPackageResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetProductVersionPackageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetProductVersionPackageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProductVersionPackageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetProductVersionPackageResponse) SetHeaders(v map[string]*string) *GetProductVersionPackageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetProductVersionPackageResponse) SetBody(v *GetProductVersionPackageResponseBody) *GetProductVersionPackageResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateSnapshotInstanceJoinOptionWithBatchRequest struct {
+	InstanceUIDs *string `json:"instanceUIDs,omitempty" xml:"instanceUIDs,omitempty"`
+	JoinSnapshot *bool   `json:"joinSnapshot,omitempty" xml:"joinSnapshot,omitempty"`
+	RootPassword *string `json:"rootPassword,omitempty" xml:"rootPassword,omitempty"`
+}
+
+func (s UpdateSnapshotInstanceJoinOptionWithBatchRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSnapshotInstanceJoinOptionWithBatchRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSnapshotInstanceJoinOptionWithBatchRequest) SetInstanceUIDs(v string) *UpdateSnapshotInstanceJoinOptionWithBatchRequest {
+	s.InstanceUIDs = &v
+	return s
+}
+
+func (s *UpdateSnapshotInstanceJoinOptionWithBatchRequest) SetJoinSnapshot(v bool) *UpdateSnapshotInstanceJoinOptionWithBatchRequest {
+	s.JoinSnapshot = &v
+	return s
+}
+
+func (s *UpdateSnapshotInstanceJoinOptionWithBatchRequest) SetRootPassword(v string) *UpdateSnapshotInstanceJoinOptionWithBatchRequest {
+	s.RootPassword = &v
+	return s
+}
+
+type UpdateSnapshotInstanceJoinOptionWithBatchResponseBody struct {
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMsg  *string `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
+	Success *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdateSnapshotInstanceJoinOptionWithBatchResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSnapshotInstanceJoinOptionWithBatchResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSnapshotInstanceJoinOptionWithBatchResponseBody) SetErrCode(v string) *UpdateSnapshotInstanceJoinOptionWithBatchResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *UpdateSnapshotInstanceJoinOptionWithBatchResponseBody) SetErrMsg(v string) *UpdateSnapshotInstanceJoinOptionWithBatchResponseBody {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *UpdateSnapshotInstanceJoinOptionWithBatchResponseBody) SetSuccess(v bool) *UpdateSnapshotInstanceJoinOptionWithBatchResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateSnapshotInstanceJoinOptionWithBatchResponse struct {
+	Headers map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateSnapshotInstanceJoinOptionWithBatchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateSnapshotInstanceJoinOptionWithBatchResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSnapshotInstanceJoinOptionWithBatchResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSnapshotInstanceJoinOptionWithBatchResponse) SetHeaders(v map[string]*string) *UpdateSnapshotInstanceJoinOptionWithBatchResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateSnapshotInstanceJoinOptionWithBatchResponse) SetBody(v *UpdateSnapshotInstanceJoinOptionWithBatchResponseBody) *UpdateSnapshotInstanceJoinOptionWithBatchResponse {
+	s.Body = v
+	return s
+}
+
+type GenerateVendorConfigTemplateResponseBody struct {
+	Data    *GenerateVendorConfigTemplateResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	ErrCode *string                                       `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMsg  *string                                       `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
+	Success *bool                                         `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GenerateVendorConfigTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateVendorConfigTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateVendorConfigTemplateResponseBody) SetData(v *GenerateVendorConfigTemplateResponseBodyData) *GenerateVendorConfigTemplateResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GenerateVendorConfigTemplateResponseBody) SetErrCode(v string) *GenerateVendorConfigTemplateResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *GenerateVendorConfigTemplateResponseBody) SetErrMsg(v string) *GenerateVendorConfigTemplateResponseBody {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *GenerateVendorConfigTemplateResponseBody) SetSuccess(v bool) *GenerateVendorConfigTemplateResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GenerateVendorConfigTemplateResponseBodyData struct {
+	VendorConfig *string `json:"vendorConfig,omitempty" xml:"vendorConfig,omitempty"`
+}
+
+func (s GenerateVendorConfigTemplateResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateVendorConfigTemplateResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateVendorConfigTemplateResponseBodyData) SetVendorConfig(v string) *GenerateVendorConfigTemplateResponseBodyData {
+	s.VendorConfig = &v
+	return s
+}
+
+type GenerateVendorConfigTemplateResponse struct {
+	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GenerateVendorConfigTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GenerateVendorConfigTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateVendorConfigTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateVendorConfigTemplateResponse) SetHeaders(v map[string]*string) *GenerateVendorConfigTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GenerateVendorConfigTemplateResponse) SetBody(v *GenerateVendorConfigTemplateResponseBody) *GenerateVendorConfigTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateProductComponentRequest struct {
+	ComponentOrchestrationValues *string `json:"componentOrchestrationValues,omitempty" xml:"componentOrchestrationValues,omitempty"`
+	Enable                       *bool   `json:"enable,omitempty" xml:"enable,omitempty"`
+	ReleaseName                  *string `json:"releaseName,omitempty" xml:"releaseName,omitempty"`
+}
+
+func (s UpdateProductComponentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProductComponentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProductComponentRequest) SetComponentOrchestrationValues(v string) *UpdateProductComponentRequest {
+	s.ComponentOrchestrationValues = &v
+	return s
+}
+
+func (s *UpdateProductComponentRequest) SetEnable(v bool) *UpdateProductComponentRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *UpdateProductComponentRequest) SetReleaseName(v string) *UpdateProductComponentRequest {
+	s.ReleaseName = &v
+	return s
+}
+
+type UpdateProductComponentResponseBody struct {
+	ErrMsg  *string `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
+	Success *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdateProductComponentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProductComponentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProductComponentResponseBody) SetErrMsg(v string) *UpdateProductComponentResponseBody {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *UpdateProductComponentResponseBody) SetSuccess(v bool) *UpdateProductComponentResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateProductComponentResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateProductComponentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateProductComponentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProductComponentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProductComponentResponse) SetHeaders(v map[string]*string) *UpdateProductComponentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateProductComponentResponse) SetBody(v *UpdateProductComponentResponseBody) *UpdateProductComponentResponse {
+	s.Body = v
+	return s
+}
+
+type ListProductVersionConfigRequest struct {
+	PageNum    *string `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	PageSize   *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	ConfigType *string `json:"configType,omitempty" xml:"configType,omitempty"`
+}
+
+func (s ListProductVersionConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProductVersionConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListProductVersionConfigRequest) SetPageNum(v string) *ListProductVersionConfigRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListProductVersionConfigRequest) SetPageSize(v string) *ListProductVersionConfigRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListProductVersionConfigRequest) SetConfigType(v string) *ListProductVersionConfigRequest {
+	s.ConfigType = &v
+	return s
+}
+
+type ListProductVersionConfigResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s ListProductVersionConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProductVersionConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListProductVersionConfigResponseBody) SetRequestId(v string) *ListProductVersionConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListProductVersionConfigResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListProductVersionConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListProductVersionConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProductVersionConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListProductVersionConfigResponse) SetHeaders(v map[string]*string) *ListProductVersionConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListProductVersionConfigResponse) SetBody(v *ListProductVersionConfigResponseBody) *ListProductVersionConfigResponse {
+	s.Body = v
+	return s
+}
+
+type AddAuthorizationHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	ClientToken   *string            `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+}
+
+func (s AddAuthorizationHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddAuthorizationHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *AddAuthorizationHeaders) SetCommonHeaders(v map[string]*string) *AddAuthorizationHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *AddAuthorizationHeaders) SetClientToken(v string) *AddAuthorizationHeaders {
+	s.ClientToken = &v
+	return s
+}
+
+type AddAuthorizationRequest struct {
+	Grantee            *string `json:"grantee,omitempty" xml:"grantee,omitempty"`
+	ResourceType       *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	ResourceIdentifier *string `json:"resourceIdentifier,omitempty" xml:"resourceIdentifier,omitempty"`
+	// 可选值：["ReadOnly","ReadWrite"]
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// 可选值：["Allow","Deny"]
+	Effect      *string `json:"effect,omitempty" xml:"effect,omitempty"`
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+}
+
+func (s AddAuthorizationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddAuthorizationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddAuthorizationRequest) SetGrantee(v string) *AddAuthorizationRequest {
+	s.Grantee = &v
+	return s
+}
+
+func (s *AddAuthorizationRequest) SetResourceType(v string) *AddAuthorizationRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *AddAuthorizationRequest) SetResourceIdentifier(v string) *AddAuthorizationRequest {
+	s.ResourceIdentifier = &v
+	return s
+}
+
+func (s *AddAuthorizationRequest) SetType(v string) *AddAuthorizationRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *AddAuthorizationRequest) SetEffect(v string) *AddAuthorizationRequest {
+	s.Effect = &v
+	return s
+}
+
+func (s *AddAuthorizationRequest) SetDescription(v string) *AddAuthorizationRequest {
+	s.Description = &v
+	return s
+}
+
+type AddAuthorizationResponseBody struct {
+	Success *bool                             `json:"success,omitempty" xml:"success,omitempty"`
+	ErrCode *string                           `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMsg  *string                           `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
+	Data    *AddAuthorizationResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+}
+
+func (s AddAuthorizationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddAuthorizationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddAuthorizationResponseBody) SetSuccess(v bool) *AddAuthorizationResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *AddAuthorizationResponseBody) SetErrCode(v string) *AddAuthorizationResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *AddAuthorizationResponseBody) SetErrMsg(v string) *AddAuthorizationResponseBody {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *AddAuthorizationResponseBody) SetData(v *AddAuthorizationResponseBodyData) *AddAuthorizationResponseBody {
+	s.Data = v
+	return s
+}
+
+type AddAuthorizationResponseBodyData struct {
+	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
+}
+
+func (s AddAuthorizationResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddAuthorizationResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *AddAuthorizationResponseBodyData) SetUid(v string) *AddAuthorizationResponseBodyData {
+	s.Uid = &v
+	return s
+}
+
+type AddAuthorizationResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *AddAuthorizationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddAuthorizationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddAuthorizationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddAuthorizationResponse) SetHeaders(v map[string]*string) *AddAuthorizationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddAuthorizationResponse) SetBody(v *AddAuthorizationResponseBody) *AddAuthorizationResponse {
+	s.Body = v
+	return s
+}
+
+type ListAuthorizedResourcesHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	ClientToken   *string            `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+}
+
+func (s ListAuthorizedResourcesHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAuthorizedResourcesHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListAuthorizedResourcesHeaders) SetCommonHeaders(v map[string]*string) *ListAuthorizedResourcesHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListAuthorizedResourcesHeaders) SetClientToken(v string) *ListAuthorizedResourcesHeaders {
+	s.ClientToken = &v
+	return s
+}
+
+type ListAuthorizedResourcesRequest struct {
+	ResourceType       *string                `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	ResourceIdentifier *string                `json:"resourceIdentifier,omitempty" xml:"resourceIdentifier,omitempty"`
+	PageNum            *int64                 `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	PageSize           *int64                 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	SortKey            *string                `json:"sortKey,omitempty" xml:"sortKey,omitempty"`
+	SortDirect         *string                `json:"sortDirect,omitempty" xml:"sortDirect,omitempty"`
+	FilterOptions      map[string]interface{} `json:"filterOptions,omitempty" xml:"filterOptions,omitempty"`
+}
+
+func (s ListAuthorizedResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAuthorizedResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAuthorizedResourcesRequest) SetResourceType(v string) *ListAuthorizedResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListAuthorizedResourcesRequest) SetResourceIdentifier(v string) *ListAuthorizedResourcesRequest {
+	s.ResourceIdentifier = &v
+	return s
+}
+
+func (s *ListAuthorizedResourcesRequest) SetPageNum(v int64) *ListAuthorizedResourcesRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListAuthorizedResourcesRequest) SetPageSize(v int64) *ListAuthorizedResourcesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAuthorizedResourcesRequest) SetSortKey(v string) *ListAuthorizedResourcesRequest {
+	s.SortKey = &v
+	return s
+}
+
+func (s *ListAuthorizedResourcesRequest) SetSortDirect(v string) *ListAuthorizedResourcesRequest {
+	s.SortDirect = &v
+	return s
+}
+
+func (s *ListAuthorizedResourcesRequest) SetFilterOptions(v map[string]interface{}) *ListAuthorizedResourcesRequest {
+	s.FilterOptions = v
+	return s
+}
+
+type ListAuthorizedResourcesShrinkRequest struct {
+	ResourceType        *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	ResourceIdentifier  *string `json:"resourceIdentifier,omitempty" xml:"resourceIdentifier,omitempty"`
+	PageNum             *int64  `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	PageSize            *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	SortKey             *string `json:"sortKey,omitempty" xml:"sortKey,omitempty"`
+	SortDirect          *string `json:"sortDirect,omitempty" xml:"sortDirect,omitempty"`
+	FilterOptionsShrink *string `json:"filterOptions,omitempty" xml:"filterOptions,omitempty"`
+}
+
+func (s ListAuthorizedResourcesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAuthorizedResourcesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAuthorizedResourcesShrinkRequest) SetResourceType(v string) *ListAuthorizedResourcesShrinkRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListAuthorizedResourcesShrinkRequest) SetResourceIdentifier(v string) *ListAuthorizedResourcesShrinkRequest {
+	s.ResourceIdentifier = &v
+	return s
+}
+
+func (s *ListAuthorizedResourcesShrinkRequest) SetPageNum(v int64) *ListAuthorizedResourcesShrinkRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListAuthorizedResourcesShrinkRequest) SetPageSize(v int64) *ListAuthorizedResourcesShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAuthorizedResourcesShrinkRequest) SetSortKey(v string) *ListAuthorizedResourcesShrinkRequest {
+	s.SortKey = &v
+	return s
+}
+
+func (s *ListAuthorizedResourcesShrinkRequest) SetSortDirect(v string) *ListAuthorizedResourcesShrinkRequest {
+	s.SortDirect = &v
+	return s
+}
+
+func (s *ListAuthorizedResourcesShrinkRequest) SetFilterOptionsShrink(v string) *ListAuthorizedResourcesShrinkRequest {
+	s.FilterOptionsShrink = &v
+	return s
+}
+
+type ListAuthorizedResourcesResponseBody struct {
+	Data    *ListAuthorizedResourcesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	ErrCode *string                                  `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMsg  *string                                  `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
+}
+
+func (s ListAuthorizedResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAuthorizedResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAuthorizedResourcesResponseBody) SetData(v *ListAuthorizedResourcesResponseBodyData) *ListAuthorizedResourcesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListAuthorizedResourcesResponseBody) SetErrCode(v string) *ListAuthorizedResourcesResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *ListAuthorizedResourcesResponseBody) SetErrMsg(v string) *ListAuthorizedResourcesResponseBody {
+	s.ErrMsg = &v
+	return s
+}
+
+type ListAuthorizedResourcesResponseBodyData struct {
+	Total    *int64                                         `json:"total,omitempty" xml:"total,omitempty"`
+	PageNum  *int64                                         `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	PageSize *int64                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	List     []*ListAuthorizedResourcesResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+}
+
+func (s ListAuthorizedResourcesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAuthorizedResourcesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListAuthorizedResourcesResponseBodyData) SetTotal(v int64) *ListAuthorizedResourcesResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+func (s *ListAuthorizedResourcesResponseBodyData) SetPageNum(v int64) *ListAuthorizedResourcesResponseBodyData {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListAuthorizedResourcesResponseBodyData) SetPageSize(v int64) *ListAuthorizedResourcesResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAuthorizedResourcesResponseBodyData) SetList(v []*ListAuthorizedResourcesResponseBodyDataList) *ListAuthorizedResourcesResponseBodyData {
+	s.List = v
+	return s
+}
+
+type ListAuthorizedResourcesResponseBodyDataList struct {
+	Foo *string `json:"foo,omitempty" xml:"foo,omitempty"`
+}
+
+func (s ListAuthorizedResourcesResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAuthorizedResourcesResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *ListAuthorizedResourcesResponseBodyDataList) SetFoo(v string) *ListAuthorizedResourcesResponseBodyDataList {
+	s.Foo = &v
+	return s
+}
+
+type ListAuthorizedResourcesResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListAuthorizedResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListAuthorizedResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAuthorizedResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAuthorizedResourcesResponse) SetHeaders(v map[string]*string) *ListAuthorizedResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAuthorizedResourcesResponse) SetBody(v *ListAuthorizedResourcesResponseBody) *ListAuthorizedResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type CreateEnvironmentNodeRequest struct {
+	Cpu          *int32                                    `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	DataDisk     []*CreateEnvironmentNodeRequestDataDisk   `json:"dataDisk,omitempty" xml:"dataDisk,omitempty" type:"Repeated"`
+	HostName     *string                                   `json:"hostName,omitempty" xml:"hostName,omitempty"`
+	Identifier   *string                                   `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	Labels       map[string]interface{}                    `json:"labels,omitempty" xml:"labels,omitempty"`
+	Memory       *int32                                    `json:"memory,omitempty" xml:"memory,omitempty"`
+	Os           *string                                   `json:"os,omitempty" xml:"os,omitempty"`
+	PrivateIP    *string                                   `json:"privateIP,omitempty" xml:"privateIP,omitempty"`
+	Provider     *string                                   `json:"provider,omitempty" xml:"provider,omitempty"`
+	RootPassword *string                                   `json:"rootPassword,omitempty" xml:"rootPassword,omitempty"`
+	SystemDisk   []*CreateEnvironmentNodeRequestSystemDisk `json:"systemDisk,omitempty" xml:"systemDisk,omitempty" type:"Repeated"`
+	Taints       []*CreateEnvironmentNodeRequestTaints     `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
+}
+
+func (s CreateEnvironmentNodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnvironmentNodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnvironmentNodeRequest) SetCpu(v int32) *CreateEnvironmentNodeRequest {
+	s.Cpu = &v
+	return s
+}
+
+func (s *CreateEnvironmentNodeRequest) SetDataDisk(v []*CreateEnvironmentNodeRequestDataDisk) *CreateEnvironmentNodeRequest {
+	s.DataDisk = v
+	return s
+}
+
+func (s *CreateEnvironmentNodeRequest) SetHostName(v string) *CreateEnvironmentNodeRequest {
+	s.HostName = &v
+	return s
+}
+
+func (s *CreateEnvironmentNodeRequest) SetIdentifier(v string) *CreateEnvironmentNodeRequest {
+	s.Identifier = &v
+	return s
+}
+
+func (s *CreateEnvironmentNodeRequest) SetLabels(v map[string]interface{}) *CreateEnvironmentNodeRequest {
+	s.Labels = v
+	return s
+}
+
+func (s *CreateEnvironmentNodeRequest) SetMemory(v int32) *CreateEnvironmentNodeRequest {
+	s.Memory = &v
+	return s
+}
+
+func (s *CreateEnvironmentNodeRequest) SetOs(v string) *CreateEnvironmentNodeRequest {
+	s.Os = &v
+	return s
+}
+
+func (s *CreateEnvironmentNodeRequest) SetPrivateIP(v string) *CreateEnvironmentNodeRequest {
+	s.PrivateIP = &v
+	return s
+}
+
+func (s *CreateEnvironmentNodeRequest) SetProvider(v string) *CreateEnvironmentNodeRequest {
+	s.Provider = &v
+	return s
+}
+
+func (s *CreateEnvironmentNodeRequest) SetRootPassword(v string) *CreateEnvironmentNodeRequest {
+	s.RootPassword = &v
+	return s
+}
+
+func (s *CreateEnvironmentNodeRequest) SetSystemDisk(v []*CreateEnvironmentNodeRequestSystemDisk) *CreateEnvironmentNodeRequest {
+	s.SystemDisk = v
+	return s
+}
+
+func (s *CreateEnvironmentNodeRequest) SetTaints(v []*CreateEnvironmentNodeRequestTaints) *CreateEnvironmentNodeRequest {
+	s.Taints = v
+	return s
+}
+
+type CreateEnvironmentNodeRequestDataDisk struct {
+	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
+	Required *int32  `json:"required,omitempty" xml:"required,omitempty"`
+}
+
+func (s CreateEnvironmentNodeRequestDataDisk) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnvironmentNodeRequestDataDisk) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnvironmentNodeRequestDataDisk) SetName(v string) *CreateEnvironmentNodeRequestDataDisk {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateEnvironmentNodeRequestDataDisk) SetRequired(v int32) *CreateEnvironmentNodeRequestDataDisk {
+	s.Required = &v
+	return s
+}
+
+type CreateEnvironmentNodeRequestSystemDisk struct {
+	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
+	Required *int32  `json:"required,omitempty" xml:"required,omitempty"`
+}
+
+func (s CreateEnvironmentNodeRequestSystemDisk) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnvironmentNodeRequestSystemDisk) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnvironmentNodeRequestSystemDisk) SetName(v string) *CreateEnvironmentNodeRequestSystemDisk {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateEnvironmentNodeRequestSystemDisk) SetRequired(v int32) *CreateEnvironmentNodeRequestSystemDisk {
+	s.Required = &v
+	return s
+}
+
+type CreateEnvironmentNodeRequestTaints struct {
+	Effect *string `json:"effect,omitempty" xml:"effect,omitempty"`
+	Key    *string `json:"key,omitempty" xml:"key,omitempty"`
+	Value  *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s CreateEnvironmentNodeRequestTaints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnvironmentNodeRequestTaints) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnvironmentNodeRequestTaints) SetEffect(v string) *CreateEnvironmentNodeRequestTaints {
+	s.Effect = &v
+	return s
+}
+
+func (s *CreateEnvironmentNodeRequestTaints) SetKey(v string) *CreateEnvironmentNodeRequestTaints {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateEnvironmentNodeRequestTaints) SetValue(v string) *CreateEnvironmentNodeRequestTaints {
+	s.Value = &v
+	return s
+}
+
+type CreateEnvironmentNodeResponseBody struct {
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMsg  *string `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
+	Success *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateEnvironmentNodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnvironmentNodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnvironmentNodeResponseBody) SetErrCode(v string) *CreateEnvironmentNodeResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *CreateEnvironmentNodeResponseBody) SetErrMsg(v string) *CreateEnvironmentNodeResponseBody {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *CreateEnvironmentNodeResponseBody) SetSuccess(v bool) *CreateEnvironmentNodeResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateEnvironmentNodeResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateEnvironmentNodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateEnvironmentNodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnvironmentNodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnvironmentNodeResponse) SetHeaders(v map[string]*string) *CreateEnvironmentNodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateEnvironmentNodeResponse) SetBody(v *CreateEnvironmentNodeResponseBody) *CreateEnvironmentNodeResponse {
+	s.Body = v
+	return s
+}
+
+type ListFoundationVersionRelatedComponentVersionsResponseBody struct {
+	RequestId *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *ListFoundationVersionRelatedComponentVersionsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	ErrCode   *string                                                        `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMsg    *string                                                        `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
+	Success   *bool                                                          `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListFoundationVersionRelatedComponentVersionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFoundationVersionRelatedComponentVersionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListFoundationVersionRelatedComponentVersionsResponseBody) SetRequestId(v string) *ListFoundationVersionRelatedComponentVersionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListFoundationVersionRelatedComponentVersionsResponseBody) SetData(v *ListFoundationVersionRelatedComponentVersionsResponseBodyData) *ListFoundationVersionRelatedComponentVersionsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListFoundationVersionRelatedComponentVersionsResponseBody) SetErrCode(v string) *ListFoundationVersionRelatedComponentVersionsResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *ListFoundationVersionRelatedComponentVersionsResponseBody) SetErrMsg(v string) *ListFoundationVersionRelatedComponentVersionsResponseBody {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *ListFoundationVersionRelatedComponentVersionsResponseBody) SetSuccess(v bool) *ListFoundationVersionRelatedComponentVersionsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListFoundationVersionRelatedComponentVersionsResponseBodyData struct {
+	List     []*ComponentVersion `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	PageNum  *int32              `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	PageSize *int32              `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Total    *int32              `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListFoundationVersionRelatedComponentVersionsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFoundationVersionRelatedComponentVersionsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListFoundationVersionRelatedComponentVersionsResponseBodyData) SetList(v []*ComponentVersion) *ListFoundationVersionRelatedComponentVersionsResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *ListFoundationVersionRelatedComponentVersionsResponseBodyData) SetPageNum(v int32) *ListFoundationVersionRelatedComponentVersionsResponseBodyData {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListFoundationVersionRelatedComponentVersionsResponseBodyData) SetPageSize(v int32) *ListFoundationVersionRelatedComponentVersionsResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListFoundationVersionRelatedComponentVersionsResponseBodyData) SetTotal(v int32) *ListFoundationVersionRelatedComponentVersionsResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type ListFoundationVersionRelatedComponentVersionsResponse struct {
+	Headers map[string]*string                                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListFoundationVersionRelatedComponentVersionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListFoundationVersionRelatedComponentVersionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFoundationVersionRelatedComponentVersionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListFoundationVersionRelatedComponentVersionsResponse) SetHeaders(v map[string]*string) *ListFoundationVersionRelatedComponentVersionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListFoundationVersionRelatedComponentVersionsResponse) SetBody(v *ListFoundationVersionRelatedComponentVersionsResponseBody) *ListFoundationVersionRelatedComponentVersionsResponse {
+	s.Body = v
+	return s
+}
+
+type GetSnapshotResponseBody struct {
+	Data    *GetSnapshotResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	ErrCode *string                      `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMsg  *string                      `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
+	Success *bool                        `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetSnapshotResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSnapshotResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSnapshotResponseBody) SetData(v *GetSnapshotResponseBodyData) *GetSnapshotResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetSnapshotResponseBody) SetErrCode(v string) *GetSnapshotResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *GetSnapshotResponseBody) SetErrMsg(v string) *GetSnapshotResponseBody {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *GetSnapshotResponseBody) SetSuccess(v bool) *GetSnapshotResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetSnapshotResponseBodyData struct {
+	Description          *string `json:"description,omitempty" xml:"description,omitempty"`
+	InstanceCIDR         *string `json:"instanceCIDR,omitempty" xml:"instanceCIDR,omitempty"`
+	Name                 *string `json:"name,omitempty" xml:"name,omitempty"`
+	ProductName          *string `json:"productName,omitempty" xml:"productName,omitempty"`
+	ProductVersion       *string `json:"productVersion,omitempty" xml:"productVersion,omitempty"`
+	ProductVersionDesc   *string `json:"productVersionDesc,omitempty" xml:"productVersionDesc,omitempty"`
+	Region               *string `json:"region,omitempty" xml:"region,omitempty"`
+	SnapshotRegion       *string `json:"snapshotRegion,omitempty" xml:"snapshotRegion,omitempty"`
+	SnapshotStatus       *string `json:"snapshotStatus,omitempty" xml:"snapshotStatus,omitempty"`
+	SourceEnvironmentUID *string `json:"sourceEnvironmentUID,omitempty" xml:"sourceEnvironmentUID,omitempty"`
+	SourceType           *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	Uid                  *string `json:"uid,omitempty" xml:"uid,omitempty"`
+	Vpcid                *string `json:"vpcid,omitempty" xml:"vpcid,omitempty"`
+}
+
+func (s GetSnapshotResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSnapshotResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetSnapshotResponseBodyData) SetDescription(v string) *GetSnapshotResponseBodyData {
+	s.Description = &v
+	return s
+}
+
+func (s *GetSnapshotResponseBodyData) SetInstanceCIDR(v string) *GetSnapshotResponseBodyData {
+	s.InstanceCIDR = &v
+	return s
+}
+
+func (s *GetSnapshotResponseBodyData) SetName(v string) *GetSnapshotResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *GetSnapshotResponseBodyData) SetProductName(v string) *GetSnapshotResponseBodyData {
+	s.ProductName = &v
+	return s
+}
+
+func (s *GetSnapshotResponseBodyData) SetProductVersion(v string) *GetSnapshotResponseBodyData {
+	s.ProductVersion = &v
+	return s
+}
+
+func (s *GetSnapshotResponseBodyData) SetProductVersionDesc(v string) *GetSnapshotResponseBodyData {
+	s.ProductVersionDesc = &v
+	return s
+}
+
+func (s *GetSnapshotResponseBodyData) SetRegion(v string) *GetSnapshotResponseBodyData {
+	s.Region = &v
+	return s
+}
+
+func (s *GetSnapshotResponseBodyData) SetSnapshotRegion(v string) *GetSnapshotResponseBodyData {
+	s.SnapshotRegion = &v
+	return s
+}
+
+func (s *GetSnapshotResponseBodyData) SetSnapshotStatus(v string) *GetSnapshotResponseBodyData {
+	s.SnapshotStatus = &v
+	return s
+}
+
+func (s *GetSnapshotResponseBodyData) SetSourceEnvironmentUID(v string) *GetSnapshotResponseBodyData {
+	s.SourceEnvironmentUID = &v
+	return s
+}
+
+func (s *GetSnapshotResponseBodyData) SetSourceType(v string) *GetSnapshotResponseBodyData {
+	s.SourceType = &v
+	return s
+}
+
+func (s *GetSnapshotResponseBodyData) SetUid(v string) *GetSnapshotResponseBodyData {
+	s.Uid = &v
+	return s
+}
+
+func (s *GetSnapshotResponseBodyData) SetVpcid(v string) *GetSnapshotResponseBodyData {
+	s.Vpcid = &v
+	return s
+}
+
+type GetSnapshotResponse struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetSnapshotResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetSnapshotResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSnapshotResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSnapshotResponse) SetHeaders(v map[string]*string) *GetSnapshotResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSnapshotResponse) SetBody(v *GetSnapshotResponseBody) *GetSnapshotResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteProductVersionResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s DeleteProductVersionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteProductVersionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteProductVersionResponseBody) SetRequestId(v string) *DeleteProductVersionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteProductVersionResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteProductVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteProductVersionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteProductVersionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteProductVersionResponse) SetHeaders(v map[string]*string) *DeleteProductVersionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteProductVersionResponse) SetBody(v *DeleteProductVersionResponseBody) *DeleteProductVersionResponse {
+	s.Body = v
+	return s
+}
+
+type CreateLatestProductVersionHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	ClientToken   *string            `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+}
+
+func (s CreateLatestProductVersionHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLatestProductVersionHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLatestProductVersionHeaders) SetCommonHeaders(v map[string]*string) *CreateLatestProductVersionHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CreateLatestProductVersionHeaders) SetClientToken(v string) *CreateLatestProductVersionHeaders {
+	s.ClientToken = &v
+	return s
+}
+
+type CreateLatestProductVersionResponseBody struct {
+	Data    *CreateLatestProductVersionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	ErrCode *string                                     `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMsg  *string                                     `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
+	Success *bool                                       `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateLatestProductVersionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLatestProductVersionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLatestProductVersionResponseBody) SetData(v *CreateLatestProductVersionResponseBodyData) *CreateLatestProductVersionResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateLatestProductVersionResponseBody) SetErrCode(v string) *CreateLatestProductVersionResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *CreateLatestProductVersionResponseBody) SetErrMsg(v string) *CreateLatestProductVersionResponseBody {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *CreateLatestProductVersionResponseBody) SetSuccess(v bool) *CreateLatestProductVersionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateLatestProductVersionResponseBodyData struct {
+	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
+}
+
+func (s CreateLatestProductVersionResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLatestProductVersionResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLatestProductVersionResponseBodyData) SetUid(v string) *CreateLatestProductVersionResponseBodyData {
+	s.Uid = &v
+	return s
+}
+
+type CreateLatestProductVersionResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateLatestProductVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateLatestProductVersionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLatestProductVersionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLatestProductVersionResponse) SetHeaders(v map[string]*string) *CreateLatestProductVersionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateLatestProductVersionResponse) SetBody(v *CreateLatestProductVersionResponseBody) *CreateLatestProductVersionResponse {
+	s.Body = v
+	return s
+}
+
+type CreateProductHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	ClientToken   *string            `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+}
+
+func (s CreateProductHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProductHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProductHeaders) SetCommonHeaders(v map[string]*string) *CreateProductHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CreateProductHeaders) SetClientToken(v string) *CreateProductHeaders {
+	s.ClientToken = &v
+	return s
+}
+
+type CreateProductRequest struct {
+	Annotations          *string `json:"annotations,omitempty" xml:"annotations,omitempty"`
+	ComponentVersionUID  *string `json:"componentVersionUID,omitempty" xml:"componentVersionUID,omitempty"`
+	Description          *string `json:"description,omitempty" xml:"description,omitempty"`
+	FoundationVersionUID *string `json:"foundationVersionUID,omitempty" xml:"foundationVersionUID,omitempty"`
+	ProductName          *string `json:"productName,omitempty" xml:"productName,omitempty"`
+	PrometheusUID        *string `json:"prometheusUID,omitempty" xml:"prometheusUID,omitempty"`
+}
+
+func (s CreateProductRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProductRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProductRequest) SetAnnotations(v string) *CreateProductRequest {
+	s.Annotations = &v
+	return s
+}
+
+func (s *CreateProductRequest) SetComponentVersionUID(v string) *CreateProductRequest {
+	s.ComponentVersionUID = &v
+	return s
+}
+
+func (s *CreateProductRequest) SetDescription(v string) *CreateProductRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateProductRequest) SetFoundationVersionUID(v string) *CreateProductRequest {
+	s.FoundationVersionUID = &v
+	return s
+}
+
+func (s *CreateProductRequest) SetProductName(v string) *CreateProductRequest {
+	s.ProductName = &v
+	return s
+}
+
+func (s *CreateProductRequest) SetPrometheusUID(v string) *CreateProductRequest {
+	s.PrometheusUID = &v
+	return s
+}
+
+type CreateProductResponseBody struct {
+	Data    *CreateProductResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	ErrCode *string                        `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMsg  *string                        `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
+	Success *bool                          `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateProductResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProductResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProductResponseBody) SetData(v *CreateProductResponseBodyData) *CreateProductResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateProductResponseBody) SetErrCode(v string) *CreateProductResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *CreateProductResponseBody) SetErrMsg(v string) *CreateProductResponseBody {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *CreateProductResponseBody) SetSuccess(v bool) *CreateProductResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateProductResponseBodyData struct {
+	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
+}
+
+func (s CreateProductResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProductResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProductResponseBodyData) SetUid(v string) *CreateProductResponseBodyData {
+	s.Uid = &v
+	return s
+}
+
+type CreateProductResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateProductResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateProductResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProductResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProductResponse) SetHeaders(v map[string]*string) *CreateProductResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateProductResponse) SetBody(v *CreateProductResponseBody) *CreateProductResponse {
+	s.Body = v
+	return s
+}
+
+type GetProductEnvironmentsRequest struct {
+	ProductUID *string                                   `json:"productUID,omitempty" xml:"productUID,omitempty"`
+	EnvType    *string                                   `json:"envType,omitempty" xml:"envType,omitempty"`
+	Platforms  []*GetProductEnvironmentsRequestPlatforms `json:"platforms,omitempty" xml:"platforms,omitempty" type:"Repeated"`
+}
+
+func (s GetProductEnvironmentsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProductEnvironmentsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetProductEnvironmentsRequest) SetProductUID(v string) *GetProductEnvironmentsRequest {
+	s.ProductUID = &v
+	return s
+}
+
+func (s *GetProductEnvironmentsRequest) SetEnvType(v string) *GetProductEnvironmentsRequest {
+	s.EnvType = &v
+	return s
+}
+
+func (s *GetProductEnvironmentsRequest) SetPlatforms(v []*GetProductEnvironmentsRequestPlatforms) *GetProductEnvironmentsRequest {
+	s.Platforms = v
+	return s
+}
+
+type GetProductEnvironmentsRequestPlatforms struct {
+	Architecture *string `json:"architecture,omitempty" xml:"architecture,omitempty"`
+	Os           *string `json:"os,omitempty" xml:"os,omitempty"`
+}
+
+func (s GetProductEnvironmentsRequestPlatforms) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProductEnvironmentsRequestPlatforms) GoString() string {
+	return s.String()
+}
+
+func (s *GetProductEnvironmentsRequestPlatforms) SetArchitecture(v string) *GetProductEnvironmentsRequestPlatforms {
+	s.Architecture = &v
+	return s
+}
+
+func (s *GetProductEnvironmentsRequestPlatforms) SetOs(v string) *GetProductEnvironmentsRequestPlatforms {
+	s.Os = &v
+	return s
+}
+
+type GetProductEnvironmentsShrinkRequest struct {
+	ProductUID      *string `json:"productUID,omitempty" xml:"productUID,omitempty"`
+	EnvType         *string `json:"envType,omitempty" xml:"envType,omitempty"`
+	PlatformsShrink *string `json:"platforms,omitempty" xml:"platforms,omitempty"`
+}
+
+func (s GetProductEnvironmentsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProductEnvironmentsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetProductEnvironmentsShrinkRequest) SetProductUID(v string) *GetProductEnvironmentsShrinkRequest {
+	s.ProductUID = &v
+	return s
+}
+
+func (s *GetProductEnvironmentsShrinkRequest) SetEnvType(v string) *GetProductEnvironmentsShrinkRequest {
+	s.EnvType = &v
+	return s
+}
+
+func (s *GetProductEnvironmentsShrinkRequest) SetPlatformsShrink(v string) *GetProductEnvironmentsShrinkRequest {
+	s.PlatformsShrink = &v
+	return s
+}
+
+type GetProductEnvironmentsResponseBody struct {
+	Data    *GetProductEnvironmentsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	ErrCode *string                                 `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMsg  *string                                 `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
+	Success *bool                                   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetProductEnvironmentsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProductEnvironmentsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetProductEnvironmentsResponseBody) SetData(v *GetProductEnvironmentsResponseBodyData) *GetProductEnvironmentsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetProductEnvironmentsResponseBody) SetErrCode(v string) *GetProductEnvironmentsResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *GetProductEnvironmentsResponseBody) SetErrMsg(v string) *GetProductEnvironmentsResponseBody {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *GetProductEnvironmentsResponseBody) SetSuccess(v bool) *GetProductEnvironmentsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetProductEnvironmentsResponseBodyData struct {
+	ClusterId      *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
+	CreatedAt      *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	Description    *string `json:"description,omitempty" xml:"description,omitempty"`
+	InstanceList   *string `json:"instanceList,omitempty" xml:"instanceList,omitempty"`
+	Name           *string `json:"name,omitempty" xml:"name,omitempty"`
+	ProductName    *string `json:"productName,omitempty" xml:"productName,omitempty"`
+	ProductVersion *string `json:"productVersion,omitempty" xml:"productVersion,omitempty"`
+	Uid            *string `json:"uid,omitempty" xml:"uid,omitempty"`
+	VendorConfig   *string `json:"vendorConfig,omitempty" xml:"vendorConfig,omitempty"`
+	VendorType     *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s GetProductEnvironmentsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProductEnvironmentsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetProductEnvironmentsResponseBodyData) SetClusterId(v string) *GetProductEnvironmentsResponseBodyData {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *GetProductEnvironmentsResponseBodyData) SetCreatedAt(v string) *GetProductEnvironmentsResponseBodyData {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *GetProductEnvironmentsResponseBodyData) SetDescription(v string) *GetProductEnvironmentsResponseBodyData {
+	s.Description = &v
+	return s
+}
+
+func (s *GetProductEnvironmentsResponseBodyData) SetInstanceList(v string) *GetProductEnvironmentsResponseBodyData {
+	s.InstanceList = &v
+	return s
+}
+
+func (s *GetProductEnvironmentsResponseBodyData) SetName(v string) *GetProductEnvironmentsResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *GetProductEnvironmentsResponseBodyData) SetProductName(v string) *GetProductEnvironmentsResponseBodyData {
+	s.ProductName = &v
+	return s
+}
+
+func (s *GetProductEnvironmentsResponseBodyData) SetProductVersion(v string) *GetProductEnvironmentsResponseBodyData {
+	s.ProductVersion = &v
+	return s
+}
+
+func (s *GetProductEnvironmentsResponseBodyData) SetUid(v string) *GetProductEnvironmentsResponseBodyData {
+	s.Uid = &v
+	return s
+}
+
+func (s *GetProductEnvironmentsResponseBodyData) SetVendorConfig(v string) *GetProductEnvironmentsResponseBodyData {
+	s.VendorConfig = &v
+	return s
+}
+
+func (s *GetProductEnvironmentsResponseBodyData) SetVendorType(v string) *GetProductEnvironmentsResponseBodyData {
+	s.VendorType = &v
+	return s
+}
+
+type GetProductEnvironmentsResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetProductEnvironmentsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetProductEnvironmentsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProductEnvironmentsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetProductEnvironmentsResponse) SetHeaders(v map[string]*string) *GetProductEnvironmentsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetProductEnvironmentsResponse) SetBody(v *GetProductEnvironmentsResponseBody) *GetProductEnvironmentsResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteEnvironmentResponseBody struct {
+	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrCode    *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+}
+
+func (s DeleteEnvironmentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnvironmentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnvironmentResponseBody) SetErrMessage(v string) *DeleteEnvironmentResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *DeleteEnvironmentResponseBody) SetSuccess(v bool) *DeleteEnvironmentResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DeleteEnvironmentResponseBody) SetErrCode(v string) *DeleteEnvironmentResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+type DeleteEnvironmentResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteEnvironmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteEnvironmentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnvironmentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnvironmentResponse) SetHeaders(v map[string]*string) *DeleteEnvironmentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteEnvironmentResponse) SetBody(v *DeleteEnvironmentResponseBody) *DeleteEnvironmentResponse {
+	s.Body = v
+	return s
+}
+
+type CreateSnapshotRequest struct {
+	Description        *string `json:"description,omitempty" xml:"description,omitempty"`
+	Name               *string `json:"name,omitempty" xml:"name,omitempty"`
+	ProductName        *string `json:"productName,omitempty" xml:"productName,omitempty"`
+	ProductVersion     *string `json:"productVersion,omitempty" xml:"productVersion,omitempty"`
+	ProductVersionDesc *string `json:"productVersionDesc,omitempty" xml:"productVersionDesc,omitempty"`
+	Region             *string `json:"region,omitempty" xml:"region,omitempty"`
+	Vpcid              *string `json:"vpcid,omitempty" xml:"vpcid,omitempty"`
+}
+
+func (s CreateSnapshotRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSnapshotRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSnapshotRequest) SetDescription(v string) *CreateSnapshotRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateSnapshotRequest) SetName(v string) *CreateSnapshotRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateSnapshotRequest) SetProductName(v string) *CreateSnapshotRequest {
+	s.ProductName = &v
+	return s
+}
+
+func (s *CreateSnapshotRequest) SetProductVersion(v string) *CreateSnapshotRequest {
+	s.ProductVersion = &v
+	return s
+}
+
+func (s *CreateSnapshotRequest) SetProductVersionDesc(v string) *CreateSnapshotRequest {
+	s.ProductVersionDesc = &v
+	return s
+}
+
+func (s *CreateSnapshotRequest) SetRegion(v string) *CreateSnapshotRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *CreateSnapshotRequest) SetVpcid(v string) *CreateSnapshotRequest {
+	s.Vpcid = &v
+	return s
+}
+
+type CreateSnapshotResponseBody struct {
+	Data    *CreateSnapshotResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	ErrCode *string                         `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMsg  *string                         `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
+	Success *bool                           `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateSnapshotResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSnapshotResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSnapshotResponseBody) SetData(v *CreateSnapshotResponseBodyData) *CreateSnapshotResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateSnapshotResponseBody) SetErrCode(v string) *CreateSnapshotResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *CreateSnapshotResponseBody) SetErrMsg(v string) *CreateSnapshotResponseBody {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *CreateSnapshotResponseBody) SetSuccess(v bool) *CreateSnapshotResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateSnapshotResponseBodyData struct {
+	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
+}
+
+func (s CreateSnapshotResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSnapshotResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSnapshotResponseBodyData) SetUid(v string) *CreateSnapshotResponseBodyData {
+	s.Uid = &v
+	return s
+}
+
+type CreateSnapshotResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateSnapshotResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateSnapshotResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSnapshotResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSnapshotResponse) SetHeaders(v map[string]*string) *CreateSnapshotResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSnapshotResponse) SetBody(v *CreateSnapshotResponseBody) *CreateSnapshotResponse {
+	s.Body = v
+	return s
+}
+
+type ListChildrenComponentVersionResponseBody struct {
+	Data    *ListChildrenComponentVersionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	ErrCode *string                                       `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMsg  *string                                       `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
+	Success *bool                                         `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListChildrenComponentVersionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChildrenComponentVersionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListChildrenComponentVersionResponseBody) SetData(v *ListChildrenComponentVersionResponseBodyData) *ListChildrenComponentVersionResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListChildrenComponentVersionResponseBody) SetErrCode(v string) *ListChildrenComponentVersionResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *ListChildrenComponentVersionResponseBody) SetErrMsg(v string) *ListChildrenComponentVersionResponseBody {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *ListChildrenComponentVersionResponseBody) SetSuccess(v bool) *ListChildrenComponentVersionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListChildrenComponentVersionResponseBodyData struct {
+	ClusterId    *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
+	CreatedAt    *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	Description  *string `json:"description,omitempty" xml:"description,omitempty"`
+	InstanceList *string `json:"instanceList,omitempty" xml:"instanceList,omitempty"`
+	Name         *string `json:"name,omitempty" xml:"name,omitempty"`
+	ProductName  *string `json:"productName,omitempty" xml:"productName,omitempty"`
+	Uid          *string `json:"uid,omitempty" xml:"uid,omitempty"`
+	VendorConfig *string `json:"vendorConfig,omitempty" xml:"vendorConfig,omitempty"`
+	VendorType   *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s ListChildrenComponentVersionResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChildrenComponentVersionResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListChildrenComponentVersionResponseBodyData) SetClusterId(v string) *ListChildrenComponentVersionResponseBodyData {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *ListChildrenComponentVersionResponseBodyData) SetCreatedAt(v string) *ListChildrenComponentVersionResponseBodyData {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *ListChildrenComponentVersionResponseBodyData) SetDescription(v string) *ListChildrenComponentVersionResponseBodyData {
+	s.Description = &v
+	return s
+}
+
+func (s *ListChildrenComponentVersionResponseBodyData) SetInstanceList(v string) *ListChildrenComponentVersionResponseBodyData {
+	s.InstanceList = &v
+	return s
+}
+
+func (s *ListChildrenComponentVersionResponseBodyData) SetName(v string) *ListChildrenComponentVersionResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *ListChildrenComponentVersionResponseBodyData) SetProductName(v string) *ListChildrenComponentVersionResponseBodyData {
+	s.ProductName = &v
+	return s
+}
+
+func (s *ListChildrenComponentVersionResponseBodyData) SetUid(v string) *ListChildrenComponentVersionResponseBodyData {
+	s.Uid = &v
+	return s
+}
+
+func (s *ListChildrenComponentVersionResponseBodyData) SetVendorConfig(v string) *ListChildrenComponentVersionResponseBodyData {
+	s.VendorConfig = &v
+	return s
+}
+
+func (s *ListChildrenComponentVersionResponseBodyData) SetVendorType(v string) *ListChildrenComponentVersionResponseBodyData {
+	s.VendorType = &v
+	return s
+}
+
+type ListChildrenComponentVersionResponse struct {
+	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListChildrenComponentVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListChildrenComponentVersionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChildrenComponentVersionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListChildrenComponentVersionResponse) SetHeaders(v map[string]*string) *ListChildrenComponentVersionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListChildrenComponentVersionResponse) SetBody(v *ListChildrenComponentVersionResponseBody) *ListChildrenComponentVersionResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteEnvironmentNodeRequest struct {
+	EnvUID *string `json:"envUID,omitempty" xml:"envUID,omitempty"`
+}
+
+func (s DeleteEnvironmentNodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnvironmentNodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnvironmentNodeRequest) SetEnvUID(v string) *DeleteEnvironmentNodeRequest {
+	s.EnvUID = &v
+	return s
+}
+
+type DeleteEnvironmentNodeResponseBody struct {
+	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrCode    *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+}
+
+func (s DeleteEnvironmentNodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnvironmentNodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnvironmentNodeResponseBody) SetErrMessage(v string) *DeleteEnvironmentNodeResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *DeleteEnvironmentNodeResponseBody) SetSuccess(v bool) *DeleteEnvironmentNodeResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DeleteEnvironmentNodeResponseBody) SetErrCode(v string) *DeleteEnvironmentNodeResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+type DeleteEnvironmentNodeResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteEnvironmentNodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteEnvironmentNodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnvironmentNodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnvironmentNodeResponse) SetHeaders(v map[string]*string) *DeleteEnvironmentNodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteEnvironmentNodeResponse) SetBody(v *DeleteEnvironmentNodeResponseBody) *DeleteEnvironmentNodeResponse {
+	s.Body = v
+	return s
+}
+
+type GetSnapshotInstancesRequest struct {
+	PageSize   *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PageNum    *int32  `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	SortKey    *string `json:"sortKey,omitempty" xml:"sortKey,omitempty"`
+	SortDirect *string `json:"sortDirect,omitempty" xml:"sortDirect,omitempty"`
+}
+
+func (s GetSnapshotInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSnapshotInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSnapshotInstancesRequest) SetPageSize(v int32) *GetSnapshotInstancesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetSnapshotInstancesRequest) SetPageNum(v int32) *GetSnapshotInstancesRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *GetSnapshotInstancesRequest) SetSortKey(v string) *GetSnapshotInstancesRequest {
+	s.SortKey = &v
+	return s
+}
+
+func (s *GetSnapshotInstancesRequest) SetSortDirect(v string) *GetSnapshotInstancesRequest {
+	s.SortDirect = &v
+	return s
+}
+
+type GetSnapshotInstancesResponseBody struct {
+	Data    *GetSnapshotInstancesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	ErrCode *string                               `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMsg  *string                               `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
+	Success *bool                                 `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetSnapshotInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSnapshotInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSnapshotInstancesResponseBody) SetData(v *GetSnapshotInstancesResponseBodyData) *GetSnapshotInstancesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetSnapshotInstancesResponseBody) SetErrCode(v string) *GetSnapshotInstancesResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *GetSnapshotInstancesResponseBody) SetErrMsg(v string) *GetSnapshotInstancesResponseBody {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *GetSnapshotInstancesResponseBody) SetSuccess(v bool) *GetSnapshotInstancesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetSnapshotInstancesResponseBodyData struct {
+	List     []*GetSnapshotInstancesResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	PageNum  *int32                                      `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	PageSize *int32                                      `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Total    *int32                                      `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s GetSnapshotInstancesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSnapshotInstancesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetSnapshotInstancesResponseBodyData) SetList(v []*GetSnapshotInstancesResponseBodyDataList) *GetSnapshotInstancesResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *GetSnapshotInstancesResponseBodyData) SetPageNum(v int32) *GetSnapshotInstancesResponseBodyData {
+	s.PageNum = &v
+	return s
+}
+
+func (s *GetSnapshotInstancesResponseBodyData) SetPageSize(v int32) *GetSnapshotInstancesResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetSnapshotInstancesResponseBodyData) SetTotal(v int32) *GetSnapshotInstancesResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type GetSnapshotInstancesResponseBodyDataList struct {
+	Annotations       *GetSnapshotInstancesResponseBodyDataListAnnotations `json:"annotations,omitempty" xml:"annotations,omitempty" type:"Struct"`
+	Cpu               *int32                                               `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	EcsInstanceID     *string                                              `json:"ecsInstanceID,omitempty" xml:"ecsInstanceID,omitempty"`
+	HostName          *string                                              `json:"hostName,omitempty" xml:"hostName,omitempty"`
+	Identifier        *string                                              `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	ImageID           *string                                              `json:"imageID,omitempty" xml:"imageID,omitempty"`
+	InstanceType      *string                                              `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	InternetBandwidth *int32                                               `json:"internetBandwidth,omitempty" xml:"internetBandwidth,omitempty"`
+	JoinSnapshot      *bool                                                `json:"joinSnapshot,omitempty" xml:"joinSnapshot,omitempty"`
+	Memory            *int32                                               `json:"memory,omitempty" xml:"memory,omitempty"`
+	PrivateIP         *string                                              `json:"privateIP,omitempty" xml:"privateIP,omitempty"`
+	PublicIP          *string                                              `json:"publicIP,omitempty" xml:"publicIP,omitempty"`
+	RootPassword      *string                                              `json:"rootPassword,omitempty" xml:"rootPassword,omitempty"`
+	StorageTotalSize  *int32                                               `json:"storageTotalSize,omitempty" xml:"storageTotalSize,omitempty"`
+	Uid               *string                                              `json:"uid,omitempty" xml:"uid,omitempty"`
+}
+
+func (s GetSnapshotInstancesResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSnapshotInstancesResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *GetSnapshotInstancesResponseBodyDataList) SetAnnotations(v *GetSnapshotInstancesResponseBodyDataListAnnotations) *GetSnapshotInstancesResponseBodyDataList {
+	s.Annotations = v
+	return s
+}
+
+func (s *GetSnapshotInstancesResponseBodyDataList) SetCpu(v int32) *GetSnapshotInstancesResponseBodyDataList {
+	s.Cpu = &v
+	return s
+}
+
+func (s *GetSnapshotInstancesResponseBodyDataList) SetEcsInstanceID(v string) *GetSnapshotInstancesResponseBodyDataList {
+	s.EcsInstanceID = &v
+	return s
+}
+
+func (s *GetSnapshotInstancesResponseBodyDataList) SetHostName(v string) *GetSnapshotInstancesResponseBodyDataList {
+	s.HostName = &v
+	return s
+}
+
+func (s *GetSnapshotInstancesResponseBodyDataList) SetIdentifier(v string) *GetSnapshotInstancesResponseBodyDataList {
+	s.Identifier = &v
+	return s
+}
+
+func (s *GetSnapshotInstancesResponseBodyDataList) SetImageID(v string) *GetSnapshotInstancesResponseBodyDataList {
+	s.ImageID = &v
+	return s
+}
+
+func (s *GetSnapshotInstancesResponseBodyDataList) SetInstanceType(v string) *GetSnapshotInstancesResponseBodyDataList {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *GetSnapshotInstancesResponseBodyDataList) SetInternetBandwidth(v int32) *GetSnapshotInstancesResponseBodyDataList {
+	s.InternetBandwidth = &v
+	return s
+}
+
+func (s *GetSnapshotInstancesResponseBodyDataList) SetJoinSnapshot(v bool) *GetSnapshotInstancesResponseBodyDataList {
+	s.JoinSnapshot = &v
+	return s
+}
+
+func (s *GetSnapshotInstancesResponseBodyDataList) SetMemory(v int32) *GetSnapshotInstancesResponseBodyDataList {
+	s.Memory = &v
+	return s
+}
+
+func (s *GetSnapshotInstancesResponseBodyDataList) SetPrivateIP(v string) *GetSnapshotInstancesResponseBodyDataList {
+	s.PrivateIP = &v
+	return s
+}
+
+func (s *GetSnapshotInstancesResponseBodyDataList) SetPublicIP(v string) *GetSnapshotInstancesResponseBodyDataList {
+	s.PublicIP = &v
+	return s
+}
+
+func (s *GetSnapshotInstancesResponseBodyDataList) SetRootPassword(v string) *GetSnapshotInstancesResponseBodyDataList {
+	s.RootPassword = &v
+	return s
+}
+
+func (s *GetSnapshotInstancesResponseBodyDataList) SetStorageTotalSize(v int32) *GetSnapshotInstancesResponseBodyDataList {
+	s.StorageTotalSize = &v
+	return s
+}
+
+func (s *GetSnapshotInstancesResponseBodyDataList) SetUid(v string) *GetSnapshotInstancesResponseBodyDataList {
+	s.Uid = &v
+	return s
+}
+
+type GetSnapshotInstancesResponseBodyDataListAnnotations struct {
+	AdditionalProp1 *string `json:"additionalProp1,omitempty" xml:"additionalProp1,omitempty"`
+	AdditionalProp2 *string `json:"additionalProp2,omitempty" xml:"additionalProp2,omitempty"`
+	AdditionalProp3 *string `json:"additionalProp3,omitempty" xml:"additionalProp3,omitempty"`
+}
+
+func (s GetSnapshotInstancesResponseBodyDataListAnnotations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSnapshotInstancesResponseBodyDataListAnnotations) GoString() string {
+	return s.String()
+}
+
+func (s *GetSnapshotInstancesResponseBodyDataListAnnotations) SetAdditionalProp1(v string) *GetSnapshotInstancesResponseBodyDataListAnnotations {
+	s.AdditionalProp1 = &v
+	return s
+}
+
+func (s *GetSnapshotInstancesResponseBodyDataListAnnotations) SetAdditionalProp2(v string) *GetSnapshotInstancesResponseBodyDataListAnnotations {
+	s.AdditionalProp2 = &v
+	return s
+}
+
+func (s *GetSnapshotInstancesResponseBodyDataListAnnotations) SetAdditionalProp3(v string) *GetSnapshotInstancesResponseBodyDataListAnnotations {
+	s.AdditionalProp3 = &v
+	return s
+}
+
+type GetSnapshotInstancesResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetSnapshotInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetSnapshotInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSnapshotInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSnapshotInstancesResponse) SetHeaders(v map[string]*string) *GetSnapshotInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSnapshotInstancesResponse) SetBody(v *GetSnapshotInstancesResponseBody) *GetSnapshotInstancesResponse {
+	s.Body = v
+	return s
+}
+
+type CheckSLRRequest struct {
+	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
+}
+
+func (s CheckSLRRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckSLRRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CheckSLRRequest) SetUid(v string) *CheckSLRRequest {
+	s.Uid = &v
+	return s
+}
+
+type CheckSLRResponseBody struct {
+	Data      *string `json:"data,omitempty" xml:"data,omitempty"`
+	ErrCode   *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMsg    *string `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CheckSLRResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckSLRResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CheckSLRResponseBody) SetData(v string) *CheckSLRResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CheckSLRResponseBody) SetErrCode(v string) *CheckSLRResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *CheckSLRResponseBody) SetErrMsg(v string) *CheckSLRResponseBody {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *CheckSLRResponseBody) SetErrorCode(v string) *CheckSLRResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CheckSLRResponseBody) SetSuccess(v bool) *CheckSLRResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CheckSLRResponse struct {
+	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CheckSLRResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CheckSLRResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckSLRResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CheckSLRResponse) SetHeaders(v map[string]*string) *CheckSLRResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CheckSLRResponse) SetBody(v *CheckSLRResponseBody) *CheckSLRResponse {
+	s.Body = v
+	return s
+}
+
+type ApplyComponentsRequest struct {
+	ChildrenList []*ApplyComponentsRequestChildrenList `json:"childrenList,omitempty" xml:"childrenList,omitempty" type:"Repeated"`
+	Component    *string                               `json:"component,omitempty" xml:"component,omitempty"`
+}
+
+func (s ApplyComponentsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyComponentsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyComponentsRequest) SetChildrenList(v []*ApplyComponentsRequestChildrenList) *ApplyComponentsRequest {
+	s.ChildrenList = v
+	return s
+}
+
+func (s *ApplyComponentsRequest) SetComponent(v string) *ApplyComponentsRequest {
+	s.Component = &v
+	return s
+}
+
+type ApplyComponentsRequestChildrenList struct {
+	Annotations         *string                                        `json:"annotations,omitempty" xml:"annotations,omitempty"`
+	AppVersion          *string                                        `json:"appVersion,omitempty" xml:"appVersion,omitempty"`
+	Category            *string                                        `json:"category,omitempty" xml:"category,omitempty"`
+	ComponentClass      *string                                        `json:"componentClass,omitempty" xml:"componentClass,omitempty"`
+	Description         *string                                        `json:"description,omitempty" xml:"description,omitempty"`
+	Documents           *string                                        `json:"documents,omitempty" xml:"documents,omitempty"`
+	ImagesMapping       *string                                        `json:"imagesMapping,omitempty" xml:"imagesMapping,omitempty"`
+	Name                *string                                        `json:"name,omitempty" xml:"name,omitempty"`
+	Namespace           *string                                        `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	OrchestrationType   *string                                        `json:"orchestrationType,omitempty" xml:"orchestrationType,omitempty"`
+	OrchestrationValues *string                                        `json:"orchestrationValues,omitempty" xml:"orchestrationValues,omitempty"`
+	PackageURL          *string                                        `json:"packageURL,omitempty" xml:"packageURL,omitempty"`
+	ParentComponent     *bool                                          `json:"parentComponent,omitempty" xml:"parentComponent,omitempty"`
+	Platforms           []*ApplyComponentsRequestChildrenListPlatforms `json:"platforms,omitempty" xml:"platforms,omitempty" type:"Repeated"`
+	Priority            *int32                                         `json:"priority,omitempty" xml:"priority,omitempty"`
+	Provider            *string                                        `json:"provider,omitempty" xml:"provider,omitempty"`
+	Public              *bool                                          `json:"public,omitempty" xml:"public,omitempty"`
+	Readme              *string                                        `json:"readme,omitempty" xml:"readme,omitempty"`
+	Resources           *string                                        `json:"resources,omitempty" xml:"resources,omitempty"`
+	Singleton           *bool                                          `json:"singleton,omitempty" xml:"singleton,omitempty"`
+	Version             *string                                        `json:"version,omitempty" xml:"version,omitempty"`
+}
+
+func (s ApplyComponentsRequestChildrenList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyComponentsRequestChildrenList) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyComponentsRequestChildrenList) SetAnnotations(v string) *ApplyComponentsRequestChildrenList {
+	s.Annotations = &v
+	return s
+}
+
+func (s *ApplyComponentsRequestChildrenList) SetAppVersion(v string) *ApplyComponentsRequestChildrenList {
+	s.AppVersion = &v
+	return s
+}
+
+func (s *ApplyComponentsRequestChildrenList) SetCategory(v string) *ApplyComponentsRequestChildrenList {
+	s.Category = &v
+	return s
+}
+
+func (s *ApplyComponentsRequestChildrenList) SetComponentClass(v string) *ApplyComponentsRequestChildrenList {
+	s.ComponentClass = &v
+	return s
+}
+
+func (s *ApplyComponentsRequestChildrenList) SetDescription(v string) *ApplyComponentsRequestChildrenList {
+	s.Description = &v
+	return s
+}
+
+func (s *ApplyComponentsRequestChildrenList) SetDocuments(v string) *ApplyComponentsRequestChildrenList {
+	s.Documents = &v
+	return s
+}
+
+func (s *ApplyComponentsRequestChildrenList) SetImagesMapping(v string) *ApplyComponentsRequestChildrenList {
+	s.ImagesMapping = &v
+	return s
+}
+
+func (s *ApplyComponentsRequestChildrenList) SetName(v string) *ApplyComponentsRequestChildrenList {
+	s.Name = &v
+	return s
+}
+
+func (s *ApplyComponentsRequestChildrenList) SetNamespace(v string) *ApplyComponentsRequestChildrenList {
+	s.Namespace = &v
+	return s
+}
+
+func (s *ApplyComponentsRequestChildrenList) SetOrchestrationType(v string) *ApplyComponentsRequestChildrenList {
+	s.OrchestrationType = &v
+	return s
+}
+
+func (s *ApplyComponentsRequestChildrenList) SetOrchestrationValues(v string) *ApplyComponentsRequestChildrenList {
+	s.OrchestrationValues = &v
+	return s
+}
+
+func (s *ApplyComponentsRequestChildrenList) SetPackageURL(v string) *ApplyComponentsRequestChildrenList {
+	s.PackageURL = &v
+	return s
+}
+
+func (s *ApplyComponentsRequestChildrenList) SetParentComponent(v bool) *ApplyComponentsRequestChildrenList {
+	s.ParentComponent = &v
+	return s
+}
+
+func (s *ApplyComponentsRequestChildrenList) SetPlatforms(v []*ApplyComponentsRequestChildrenListPlatforms) *ApplyComponentsRequestChildrenList {
+	s.Platforms = v
+	return s
+}
+
+func (s *ApplyComponentsRequestChildrenList) SetPriority(v int32) *ApplyComponentsRequestChildrenList {
+	s.Priority = &v
+	return s
+}
+
+func (s *ApplyComponentsRequestChildrenList) SetProvider(v string) *ApplyComponentsRequestChildrenList {
+	s.Provider = &v
+	return s
+}
+
+func (s *ApplyComponentsRequestChildrenList) SetPublic(v bool) *ApplyComponentsRequestChildrenList {
+	s.Public = &v
+	return s
+}
+
+func (s *ApplyComponentsRequestChildrenList) SetReadme(v string) *ApplyComponentsRequestChildrenList {
+	s.Readme = &v
+	return s
+}
+
+func (s *ApplyComponentsRequestChildrenList) SetResources(v string) *ApplyComponentsRequestChildrenList {
+	s.Resources = &v
+	return s
+}
+
+func (s *ApplyComponentsRequestChildrenList) SetSingleton(v bool) *ApplyComponentsRequestChildrenList {
+	s.Singleton = &v
+	return s
+}
+
+func (s *ApplyComponentsRequestChildrenList) SetVersion(v string) *ApplyComponentsRequestChildrenList {
+	s.Version = &v
+	return s
+}
+
+type ApplyComponentsRequestChildrenListPlatforms struct {
+	Architecture *string `json:"architecture,omitempty" xml:"architecture,omitempty"`
+	Os           *string `json:"os,omitempty" xml:"os,omitempty"`
+}
+
+func (s ApplyComponentsRequestChildrenListPlatforms) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyComponentsRequestChildrenListPlatforms) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyComponentsRequestChildrenListPlatforms) SetArchitecture(v string) *ApplyComponentsRequestChildrenListPlatforms {
+	s.Architecture = &v
+	return s
+}
+
+func (s *ApplyComponentsRequestChildrenListPlatforms) SetOs(v string) *ApplyComponentsRequestChildrenListPlatforms {
+	s.Os = &v
+	return s
+}
+
+type ApplyComponentsResponseBody struct {
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMsg  *string `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
+	Status  *string `json:"status,omitempty" xml:"status,omitempty"`
+	Success *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ApplyComponentsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyComponentsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyComponentsResponseBody) SetErrCode(v string) *ApplyComponentsResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *ApplyComponentsResponseBody) SetErrMsg(v string) *ApplyComponentsResponseBody {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *ApplyComponentsResponseBody) SetStatus(v string) *ApplyComponentsResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *ApplyComponentsResponseBody) SetSuccess(v bool) *ApplyComponentsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ApplyComponentsResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ApplyComponentsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ApplyComponentsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyComponentsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyComponentsResponse) SetHeaders(v map[string]*string) *ApplyComponentsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ApplyComponentsResponse) SetBody(v *ApplyComponentsResponseBody) *ApplyComponentsResponse {
+	s.Body = v
+	return s
+}
+
+type CreatePackageConfigResponseBody struct {
+	Data    *CreatePackageConfigResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	ErrCode *string                              `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMsg  *string                              `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
+	Success *bool                                `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreatePackageConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePackageConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePackageConfigResponseBody) SetData(v *CreatePackageConfigResponseBodyData) *CreatePackageConfigResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreatePackageConfigResponseBody) SetErrCode(v string) *CreatePackageConfigResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *CreatePackageConfigResponseBody) SetErrMsg(v string) *CreatePackageConfigResponseBody {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *CreatePackageConfigResponseBody) SetSuccess(v bool) *CreatePackageConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreatePackageConfigResponseBodyData struct {
+	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
+}
+
+func (s CreatePackageConfigResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePackageConfigResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePackageConfigResponseBodyData) SetUid(v string) *CreatePackageConfigResponseBodyData {
+	s.Uid = &v
+	return s
+}
+
+type CreatePackageConfigResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreatePackageConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreatePackageConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePackageConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePackageConfigResponse) SetHeaders(v map[string]*string) *CreatePackageConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreatePackageConfigResponse) SetBody(v *CreatePackageConfigResponseBody) *CreatePackageConfigResponse {
+	s.Body = v
+	return s
+}
+
+type AddProductComponentRequest struct {
+	ReleaseName *string `json:"releaseName,omitempty" xml:"releaseName,omitempty"`
+}
+
+func (s AddProductComponentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddProductComponentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddProductComponentRequest) SetReleaseName(v string) *AddProductComponentRequest {
+	s.ReleaseName = &v
+	return s
+}
+
+type AddProductComponentResponseBody struct {
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMsg  *string `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
+	Status  *string `json:"status,omitempty" xml:"status,omitempty"`
+	Success *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s AddProductComponentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddProductComponentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddProductComponentResponseBody) SetErrCode(v string) *AddProductComponentResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *AddProductComponentResponseBody) SetErrMsg(v string) *AddProductComponentResponseBody {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *AddProductComponentResponseBody) SetStatus(v string) *AddProductComponentResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *AddProductComponentResponseBody) SetSuccess(v bool) *AddProductComponentResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AddProductComponentResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *AddProductComponentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddProductComponentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddProductComponentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddProductComponentResponse) SetHeaders(v map[string]*string) *AddProductComponentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddProductComponentResponse) SetBody(v *AddProductComponentResponseBody) *AddProductComponentResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateProductVersionResourcesRequest struct {
+	// product version resources
+	Resources *string `json:"resources,omitempty" xml:"resources,omitempty"`
+}
+
+func (s UpdateProductVersionResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProductVersionResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProductVersionResourcesRequest) SetResources(v string) *UpdateProductVersionResourcesRequest {
+	s.Resources = &v
+	return s
+}
+
+type UpdateProductVersionResourcesResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s UpdateProductVersionResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProductVersionResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProductVersionResourcesResponseBody) SetRequestId(v string) *UpdateProductVersionResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateProductVersionResourcesResponse struct {
+	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateProductVersionResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateProductVersionResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProductVersionResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProductVersionResourcesResponse) SetHeaders(v map[string]*string) *UpdateProductVersionResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateProductVersionResourcesResponse) SetBody(v *UpdateProductVersionResourcesResponseBody) *UpdateProductVersionResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteSnapshotResponseBody struct {
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMsg  *string `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
+	Success *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s DeleteSnapshotResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSnapshotResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSnapshotResponseBody) SetErrCode(v string) *DeleteSnapshotResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *DeleteSnapshotResponseBody) SetErrMsg(v string) *DeleteSnapshotResponseBody {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *DeleteSnapshotResponseBody) SetSuccess(v bool) *DeleteSnapshotResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteSnapshotResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteSnapshotResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteSnapshotResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSnapshotResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSnapshotResponse) SetHeaders(v map[string]*string) *DeleteSnapshotResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteSnapshotResponse) SetBody(v *DeleteSnapshotResponseBody) *DeleteSnapshotResponse {
+	s.Body = v
+	return s
+}
+
+type ListEnvironmentsWithSnapshotResponseBody struct {
+	Data    *ListEnvironmentsWithSnapshotResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	ErrCode *string                                       `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMsg  *string                                       `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
+	Success *bool                                         `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListEnvironmentsWithSnapshotResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentsWithSnapshotResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentsWithSnapshotResponseBody) SetData(v *ListEnvironmentsWithSnapshotResponseBodyData) *ListEnvironmentsWithSnapshotResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListEnvironmentsWithSnapshotResponseBody) SetErrCode(v string) *ListEnvironmentsWithSnapshotResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *ListEnvironmentsWithSnapshotResponseBody) SetErrMsg(v string) *ListEnvironmentsWithSnapshotResponseBody {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *ListEnvironmentsWithSnapshotResponseBody) SetSuccess(v bool) *ListEnvironmentsWithSnapshotResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListEnvironmentsWithSnapshotResponseBodyData struct {
+	List     []*ListEnvironmentsWithSnapshotResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	PageNum  *int32                                              `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	PageSize *int32                                              `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Total    *int32                                              `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListEnvironmentsWithSnapshotResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentsWithSnapshotResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentsWithSnapshotResponseBodyData) SetList(v []*ListEnvironmentsWithSnapshotResponseBodyDataList) *ListEnvironmentsWithSnapshotResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *ListEnvironmentsWithSnapshotResponseBodyData) SetPageNum(v int32) *ListEnvironmentsWithSnapshotResponseBodyData {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListEnvironmentsWithSnapshotResponseBodyData) SetPageSize(v int32) *ListEnvironmentsWithSnapshotResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListEnvironmentsWithSnapshotResponseBodyData) SetTotal(v int32) *ListEnvironmentsWithSnapshotResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type ListEnvironmentsWithSnapshotResponseBodyDataList struct {
+	CreatedAt         *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	Description       *string `json:"description,omitempty" xml:"description,omitempty"`
+	Id                *int32  `json:"id,omitempty" xml:"id,omitempty"`
+	InstanceStatus    *string `json:"instanceStatus,omitempty" xml:"instanceStatus,omitempty"`
+	Name              *string `json:"name,omitempty" xml:"name,omitempty"`
+	ProductName       *string `json:"productName,omitempty" xml:"productName,omitempty"`
+	ProductVersion    *string `json:"productVersion,omitempty" xml:"productVersion,omitempty"`
+	ProductVersionUID *string `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
+	Uid               *string `json:"uid,omitempty" xml:"uid,omitempty"`
+	VendorType        *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s ListEnvironmentsWithSnapshotResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentsWithSnapshotResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentsWithSnapshotResponseBodyDataList) SetCreatedAt(v string) *ListEnvironmentsWithSnapshotResponseBodyDataList {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *ListEnvironmentsWithSnapshotResponseBodyDataList) SetDescription(v string) *ListEnvironmentsWithSnapshotResponseBodyDataList {
+	s.Description = &v
+	return s
+}
+
+func (s *ListEnvironmentsWithSnapshotResponseBodyDataList) SetId(v int32) *ListEnvironmentsWithSnapshotResponseBodyDataList {
+	s.Id = &v
+	return s
+}
+
+func (s *ListEnvironmentsWithSnapshotResponseBodyDataList) SetInstanceStatus(v string) *ListEnvironmentsWithSnapshotResponseBodyDataList {
+	s.InstanceStatus = &v
+	return s
+}
+
+func (s *ListEnvironmentsWithSnapshotResponseBodyDataList) SetName(v string) *ListEnvironmentsWithSnapshotResponseBodyDataList {
+	s.Name = &v
+	return s
+}
+
+func (s *ListEnvironmentsWithSnapshotResponseBodyDataList) SetProductName(v string) *ListEnvironmentsWithSnapshotResponseBodyDataList {
+	s.ProductName = &v
+	return s
+}
+
+func (s *ListEnvironmentsWithSnapshotResponseBodyDataList) SetProductVersion(v string) *ListEnvironmentsWithSnapshotResponseBodyDataList {
+	s.ProductVersion = &v
+	return s
+}
+
+func (s *ListEnvironmentsWithSnapshotResponseBodyDataList) SetProductVersionUID(v string) *ListEnvironmentsWithSnapshotResponseBodyDataList {
+	s.ProductVersionUID = &v
+	return s
+}
+
+func (s *ListEnvironmentsWithSnapshotResponseBodyDataList) SetUid(v string) *ListEnvironmentsWithSnapshotResponseBodyDataList {
+	s.Uid = &v
+	return s
+}
+
+func (s *ListEnvironmentsWithSnapshotResponseBodyDataList) SetVendorType(v string) *ListEnvironmentsWithSnapshotResponseBodyDataList {
+	s.VendorType = &v
+	return s
+}
+
+type ListEnvironmentsWithSnapshotResponse struct {
+	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListEnvironmentsWithSnapshotResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListEnvironmentsWithSnapshotResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentsWithSnapshotResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentsWithSnapshotResponse) SetHeaders(v map[string]*string) *ListEnvironmentsWithSnapshotResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListEnvironmentsWithSnapshotResponse) SetBody(v *ListEnvironmentsWithSnapshotResponseBody) *ListEnvironmentsWithSnapshotResponse {
+	s.Body = v
+	return s
+}
+
+type CreateEnvironmentAndGenerateVendorConfigHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	ClientToken   *string            `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+}
+
+func (s CreateEnvironmentAndGenerateVendorConfigHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnvironmentAndGenerateVendorConfigHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnvironmentAndGenerateVendorConfigHeaders) SetCommonHeaders(v map[string]*string) *CreateEnvironmentAndGenerateVendorConfigHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CreateEnvironmentAndGenerateVendorConfigHeaders) SetClientToken(v string) *CreateEnvironmentAndGenerateVendorConfigHeaders {
+	s.ClientToken = &v
+	return s
+}
+
+type CreateEnvironmentAndGenerateVendorConfigRequest struct {
+	EnvUID            *string                                                  `json:"envUID,omitempty" xml:"envUID,omitempty"`
+	Platform          *CreateEnvironmentAndGenerateVendorConfigRequestPlatform `json:"platform,omitempty" xml:"platform,omitempty" type:"Struct"`
+	ProductName       *string                                                  `json:"productName,omitempty" xml:"productName,omitempty"`
+	ProductUID        *string                                                  `json:"productUID,omitempty" xml:"productUID,omitempty"`
+	ProductVersion    *string                                                  `json:"productVersion,omitempty" xml:"productVersion,omitempty"`
+	ProductVersionUID *string                                                  `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
+	VendorType        *string                                                  `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s CreateEnvironmentAndGenerateVendorConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnvironmentAndGenerateVendorConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnvironmentAndGenerateVendorConfigRequest) SetEnvUID(v string) *CreateEnvironmentAndGenerateVendorConfigRequest {
+	s.EnvUID = &v
+	return s
+}
+
+func (s *CreateEnvironmentAndGenerateVendorConfigRequest) SetPlatform(v *CreateEnvironmentAndGenerateVendorConfigRequestPlatform) *CreateEnvironmentAndGenerateVendorConfigRequest {
+	s.Platform = v
+	return s
+}
+
+func (s *CreateEnvironmentAndGenerateVendorConfigRequest) SetProductName(v string) *CreateEnvironmentAndGenerateVendorConfigRequest {
+	s.ProductName = &v
+	return s
+}
+
+func (s *CreateEnvironmentAndGenerateVendorConfigRequest) SetProductUID(v string) *CreateEnvironmentAndGenerateVendorConfigRequest {
+	s.ProductUID = &v
+	return s
+}
+
+func (s *CreateEnvironmentAndGenerateVendorConfigRequest) SetProductVersion(v string) *CreateEnvironmentAndGenerateVendorConfigRequest {
+	s.ProductVersion = &v
+	return s
+}
+
+func (s *CreateEnvironmentAndGenerateVendorConfigRequest) SetProductVersionUID(v string) *CreateEnvironmentAndGenerateVendorConfigRequest {
+	s.ProductVersionUID = &v
+	return s
+}
+
+func (s *CreateEnvironmentAndGenerateVendorConfigRequest) SetVendorType(v string) *CreateEnvironmentAndGenerateVendorConfigRequest {
+	s.VendorType = &v
+	return s
+}
+
+type CreateEnvironmentAndGenerateVendorConfigRequestPlatform struct {
+	Architecture *string `json:"architecture,omitempty" xml:"architecture,omitempty"`
+	Os           *string `json:"os,omitempty" xml:"os,omitempty"`
+}
+
+func (s CreateEnvironmentAndGenerateVendorConfigRequestPlatform) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnvironmentAndGenerateVendorConfigRequestPlatform) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnvironmentAndGenerateVendorConfigRequestPlatform) SetArchitecture(v string) *CreateEnvironmentAndGenerateVendorConfigRequestPlatform {
+	s.Architecture = &v
+	return s
+}
+
+func (s *CreateEnvironmentAndGenerateVendorConfigRequestPlatform) SetOs(v string) *CreateEnvironmentAndGenerateVendorConfigRequestPlatform {
+	s.Os = &v
+	return s
+}
+
+type CreateEnvironmentAndGenerateVendorConfigResponseBody struct {
+	Data    *CreateEnvironmentAndGenerateVendorConfigResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	ErrCode *string                                                   `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMsg  *string                                                   `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
+	Success *bool                                                     `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateEnvironmentAndGenerateVendorConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnvironmentAndGenerateVendorConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnvironmentAndGenerateVendorConfigResponseBody) SetData(v *CreateEnvironmentAndGenerateVendorConfigResponseBodyData) *CreateEnvironmentAndGenerateVendorConfigResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateEnvironmentAndGenerateVendorConfigResponseBody) SetErrCode(v string) *CreateEnvironmentAndGenerateVendorConfigResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *CreateEnvironmentAndGenerateVendorConfigResponseBody) SetErrMsg(v string) *CreateEnvironmentAndGenerateVendorConfigResponseBody {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *CreateEnvironmentAndGenerateVendorConfigResponseBody) SetSuccess(v bool) *CreateEnvironmentAndGenerateVendorConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateEnvironmentAndGenerateVendorConfigResponseBodyData struct {
+	EnvUID       *string `json:"envUID,omitempty" xml:"envUID,omitempty"`
+	VendorConfig *string `json:"vendorConfig,omitempty" xml:"vendorConfig,omitempty"`
+}
+
+func (s CreateEnvironmentAndGenerateVendorConfigResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnvironmentAndGenerateVendorConfigResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnvironmentAndGenerateVendorConfigResponseBodyData) SetEnvUID(v string) *CreateEnvironmentAndGenerateVendorConfigResponseBodyData {
+	s.EnvUID = &v
+	return s
+}
+
+func (s *CreateEnvironmentAndGenerateVendorConfigResponseBodyData) SetVendorConfig(v string) *CreateEnvironmentAndGenerateVendorConfigResponseBodyData {
+	s.VendorConfig = &v
+	return s
+}
+
+type CreateEnvironmentAndGenerateVendorConfigResponse struct {
+	Headers map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateEnvironmentAndGenerateVendorConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateEnvironmentAndGenerateVendorConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnvironmentAndGenerateVendorConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnvironmentAndGenerateVendorConfigResponse) SetHeaders(v map[string]*string) *CreateEnvironmentAndGenerateVendorConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateEnvironmentAndGenerateVendorConfigResponse) SetBody(v *CreateEnvironmentAndGenerateVendorConfigResponseBody) *CreateEnvironmentAndGenerateVendorConfigResponse {
+	s.Body = v
+	return s
+}
+
+type InitSnapshotInstanceResponseBody struct {
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMsg  *string `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
+	Success *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s InitSnapshotInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitSnapshotInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InitSnapshotInstanceResponseBody) SetErrCode(v string) *InitSnapshotInstanceResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *InitSnapshotInstanceResponseBody) SetErrMsg(v string) *InitSnapshotInstanceResponseBody {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *InitSnapshotInstanceResponseBody) SetSuccess(v bool) *InitSnapshotInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type InitSnapshotInstanceResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *InitSnapshotInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s InitSnapshotInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitSnapshotInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InitSnapshotInstanceResponse) SetHeaders(v map[string]*string) *InitSnapshotInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InitSnapshotInstanceResponse) SetBody(v *InitSnapshotInstanceResponseBody) *InitSnapshotInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type ListEnvironmentParamsRequest struct {
+	PageNum  *int32  `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	PageSize *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
+	Fuzzy    *string `json:"fuzzy,omitempty" xml:"fuzzy,omitempty"`
+	// 组件和全局类型字段
+	ParamType         *string `json:"paramType,omitempty" xml:"paramType,omitempty"`
+	ProductVersionUID *string `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
+}
+
+func (s ListEnvironmentParamsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentParamsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentParamsRequest) SetPageNum(v int32) *ListEnvironmentParamsRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListEnvironmentParamsRequest) SetPageSize(v int32) *ListEnvironmentParamsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListEnvironmentParamsRequest) SetName(v string) *ListEnvironmentParamsRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListEnvironmentParamsRequest) SetFuzzy(v string) *ListEnvironmentParamsRequest {
+	s.Fuzzy = &v
+	return s
+}
+
+func (s *ListEnvironmentParamsRequest) SetParamType(v string) *ListEnvironmentParamsRequest {
+	s.ParamType = &v
+	return s
+}
+
+func (s *ListEnvironmentParamsRequest) SetProductVersionUID(v string) *ListEnvironmentParamsRequest {
+	s.ProductVersionUID = &v
+	return s
+}
+
+type ListEnvironmentParamsResponseBody struct {
+	Data    *ListEnvironmentParamsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	ErrCode *string                                `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMsg  *string                                `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
+	Success *bool                                  `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListEnvironmentParamsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentParamsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentParamsResponseBody) SetData(v *ListEnvironmentParamsResponseBodyData) *ListEnvironmentParamsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListEnvironmentParamsResponseBody) SetErrCode(v string) *ListEnvironmentParamsResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *ListEnvironmentParamsResponseBody) SetErrMsg(v string) *ListEnvironmentParamsResponseBody {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *ListEnvironmentParamsResponseBody) SetSuccess(v bool) *ListEnvironmentParamsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListEnvironmentParamsResponseBodyData struct {
+	List     []*ListEnvironmentParamsResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	PageNum  *int32                                       `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	PageSize *int32                                       `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Total    *int32                                       `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListEnvironmentParamsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentParamsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentParamsResponseBodyData) SetList(v []*ListEnvironmentParamsResponseBodyDataList) *ListEnvironmentParamsResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *ListEnvironmentParamsResponseBodyData) SetPageNum(v int32) *ListEnvironmentParamsResponseBodyData {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListEnvironmentParamsResponseBodyData) SetPageSize(v int32) *ListEnvironmentParamsResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListEnvironmentParamsResponseBodyData) SetTotal(v int32) *ListEnvironmentParamsResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type ListEnvironmentParamsResponseBodyDataList struct {
+	CreatedAt         *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	Description       *string `json:"description,omitempty" xml:"description,omitempty"`
+	Id                *int32  `json:"id,omitempty" xml:"id,omitempty"`
+	Name              *string `json:"name,omitempty" xml:"name,omitempty"`
+	ProductName       *string `json:"productName,omitempty" xml:"productName,omitempty"`
+	ProductVersion    *string `json:"productVersion,omitempty" xml:"productVersion,omitempty"`
+	ProductVersionUID *string `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
+	Uid               *string `json:"uid,omitempty" xml:"uid,omitempty"`
+	VendorType        *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s ListEnvironmentParamsResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentParamsResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentParamsResponseBodyDataList) SetCreatedAt(v string) *ListEnvironmentParamsResponseBodyDataList {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *ListEnvironmentParamsResponseBodyDataList) SetDescription(v string) *ListEnvironmentParamsResponseBodyDataList {
+	s.Description = &v
+	return s
+}
+
+func (s *ListEnvironmentParamsResponseBodyDataList) SetId(v int32) *ListEnvironmentParamsResponseBodyDataList {
+	s.Id = &v
+	return s
+}
+
+func (s *ListEnvironmentParamsResponseBodyDataList) SetName(v string) *ListEnvironmentParamsResponseBodyDataList {
+	s.Name = &v
+	return s
+}
+
+func (s *ListEnvironmentParamsResponseBodyDataList) SetProductName(v string) *ListEnvironmentParamsResponseBodyDataList {
+	s.ProductName = &v
+	return s
+}
+
+func (s *ListEnvironmentParamsResponseBodyDataList) SetProductVersion(v string) *ListEnvironmentParamsResponseBodyDataList {
+	s.ProductVersion = &v
+	return s
+}
+
+func (s *ListEnvironmentParamsResponseBodyDataList) SetProductVersionUID(v string) *ListEnvironmentParamsResponseBodyDataList {
+	s.ProductVersionUID = &v
+	return s
+}
+
+func (s *ListEnvironmentParamsResponseBodyDataList) SetUid(v string) *ListEnvironmentParamsResponseBodyDataList {
+	s.Uid = &v
+	return s
+}
+
+func (s *ListEnvironmentParamsResponseBodyDataList) SetVendorType(v string) *ListEnvironmentParamsResponseBodyDataList {
+	s.VendorType = &v
+	return s
+}
+
+type ListEnvironmentParamsResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListEnvironmentParamsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListEnvironmentParamsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentParamsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentParamsResponse) SetHeaders(v map[string]*string) *ListEnvironmentParamsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListEnvironmentParamsResponse) SetBody(v *ListEnvironmentParamsResponseBody) *ListEnvironmentParamsResponse {
+	s.Body = v
+	return s
+}
+
+type GetFoundationVersionResponseBody struct {
+	Data    []*FoundationVersion `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	ErrCode *string              `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMsg  *string              `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
+	Success *bool                `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetFoundationVersionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFoundationVersionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetFoundationVersionResponseBody) SetData(v []*FoundationVersion) *GetFoundationVersionResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetFoundationVersionResponseBody) SetErrCode(v string) *GetFoundationVersionResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *GetFoundationVersionResponseBody) SetErrMsg(v string) *GetFoundationVersionResponseBody {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *GetFoundationVersionResponseBody) SetSuccess(v bool) *GetFoundationVersionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetFoundationVersionResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetFoundationVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetFoundationVersionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFoundationVersionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetFoundationVersionResponse) SetHeaders(v map[string]*string) *GetFoundationVersionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFoundationVersionResponse) SetBody(v *GetFoundationVersionResponseBody) *GetFoundationVersionResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteProductResponseBody struct {
+	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrCode    *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+}
+
+func (s DeleteProductResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteProductResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteProductResponseBody) SetErrMessage(v string) *DeleteProductResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *DeleteProductResponseBody) SetSuccess(v bool) *DeleteProductResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DeleteProductResponseBody) SetErrCode(v string) *DeleteProductResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+type DeleteProductResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteProductResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteProductResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteProductResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteProductResponse) SetHeaders(v map[string]*string) *DeleteProductResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteProductResponse) SetBody(v *DeleteProductResponseBody) *DeleteProductResponse {
+	s.Body = v
+	return s
+}
+
+type GetEnvironmentPackageResponseBody struct {
+	Data    *GetEnvironmentPackageResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	ErrCode *string                                `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMsg  *string                                `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
+	Success *bool                                  `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetEnvironmentPackageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnvironmentPackageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnvironmentPackageResponseBody) SetData(v *GetEnvironmentPackageResponseBodyData) *GetEnvironmentPackageResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetEnvironmentPackageResponseBody) SetErrCode(v string) *GetEnvironmentPackageResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *GetEnvironmentPackageResponseBody) SetErrMsg(v string) *GetEnvironmentPackageResponseBody {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *GetEnvironmentPackageResponseBody) SetSuccess(v bool) *GetEnvironmentPackageResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetEnvironmentPackageResponseBodyData struct {
+	PackageURL *string `json:"packageURL,omitempty" xml:"packageURL,omitempty"`
+}
+
+func (s GetEnvironmentPackageResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnvironmentPackageResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnvironmentPackageResponseBodyData) SetPackageURL(v string) *GetEnvironmentPackageResponseBodyData {
+	s.PackageURL = &v
+	return s
+}
+
+type GetEnvironmentPackageResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetEnvironmentPackageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetEnvironmentPackageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnvironmentPackageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnvironmentPackageResponse) SetHeaders(v map[string]*string) *GetEnvironmentPackageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetEnvironmentPackageResponse) SetBody(v *GetEnvironmentPackageResponseBody) *GetEnvironmentPackageResponse {
+	s.Body = v
+	return s
+}
+
+type ListComponentsRequest struct {
+	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
+	Category *string `json:"category,omitempty" xml:"category,omitempty"`
+	PageNum  *int32  `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	PageSize *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Fuzzy    *string `json:"fuzzy,omitempty" xml:"fuzzy,omitempty"`
+	Public   *bool   `json:"public,omitempty" xml:"public,omitempty"`
+}
+
+func (s ListComponentsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListComponentsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListComponentsRequest) SetName(v string) *ListComponentsRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListComponentsRequest) SetCategory(v string) *ListComponentsRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *ListComponentsRequest) SetPageNum(v int32) *ListComponentsRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListComponentsRequest) SetPageSize(v int32) *ListComponentsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListComponentsRequest) SetFuzzy(v string) *ListComponentsRequest {
+	s.Fuzzy = &v
+	return s
+}
+
+func (s *ListComponentsRequest) SetPublic(v bool) *ListComponentsRequest {
+	s.Public = &v
+	return s
+}
+
+type ListComponentsResponseBody struct {
+	Data    *ListComponentsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	ErrCode *string                         `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMsg  *string                         `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
+	Success *bool                           `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListComponentsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListComponentsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListComponentsResponseBody) SetData(v *ListComponentsResponseBodyData) *ListComponentsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListComponentsResponseBody) SetErrCode(v string) *ListComponentsResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *ListComponentsResponseBody) SetErrMsg(v string) *ListComponentsResponseBody {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *ListComponentsResponseBody) SetSuccess(v bool) *ListComponentsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListComponentsResponseBodyData struct {
+	List     []*ListComponentsResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	PageNum  *int32                                `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	PageSize *int32                                `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Total    *int32                                `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListComponentsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListComponentsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListComponentsResponseBodyData) SetList(v []*ListComponentsResponseBodyDataList) *ListComponentsResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *ListComponentsResponseBodyData) SetPageNum(v int32) *ListComponentsResponseBodyData {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListComponentsResponseBodyData) SetPageSize(v int32) *ListComponentsResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListComponentsResponseBodyData) SetTotal(v int32) *ListComponentsResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type ListComponentsResponseBodyDataList struct {
+	Annotations *ListComponentsResponseBodyDataListAnnotations `json:"annotations,omitempty" xml:"annotations,omitempty" type:"Struct"`
+	Category    *string                                        `json:"category,omitempty" xml:"category,omitempty"`
+	Description *string                                        `json:"description,omitempty" xml:"description,omitempty"`
+	Documents   *string                                        `json:"documents,omitempty" xml:"documents,omitempty"`
+	Name        *string                                        `json:"name,omitempty" xml:"name,omitempty"`
+	Provider    *string                                        `json:"provider,omitempty" xml:"provider,omitempty"`
+	Public      *bool                                          `json:"public,omitempty" xml:"public,omitempty"`
+	Singleton   *bool                                          `json:"singleton,omitempty" xml:"singleton,omitempty"`
+	Source      *string                                        `json:"source,omitempty" xml:"source,omitempty"`
+	Uid         *string                                        `json:"uid,omitempty" xml:"uid,omitempty"`
+}
+
+func (s ListComponentsResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListComponentsResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *ListComponentsResponseBodyDataList) SetAnnotations(v *ListComponentsResponseBodyDataListAnnotations) *ListComponentsResponseBodyDataList {
+	s.Annotations = v
+	return s
+}
+
+func (s *ListComponentsResponseBodyDataList) SetCategory(v string) *ListComponentsResponseBodyDataList {
+	s.Category = &v
+	return s
+}
+
+func (s *ListComponentsResponseBodyDataList) SetDescription(v string) *ListComponentsResponseBodyDataList {
+	s.Description = &v
+	return s
+}
+
+func (s *ListComponentsResponseBodyDataList) SetDocuments(v string) *ListComponentsResponseBodyDataList {
+	s.Documents = &v
+	return s
+}
+
+func (s *ListComponentsResponseBodyDataList) SetName(v string) *ListComponentsResponseBodyDataList {
+	s.Name = &v
+	return s
+}
+
+func (s *ListComponentsResponseBodyDataList) SetProvider(v string) *ListComponentsResponseBodyDataList {
+	s.Provider = &v
+	return s
+}
+
+func (s *ListComponentsResponseBodyDataList) SetPublic(v bool) *ListComponentsResponseBodyDataList {
+	s.Public = &v
+	return s
+}
+
+func (s *ListComponentsResponseBodyDataList) SetSingleton(v bool) *ListComponentsResponseBodyDataList {
+	s.Singleton = &v
+	return s
+}
+
+func (s *ListComponentsResponseBodyDataList) SetSource(v string) *ListComponentsResponseBodyDataList {
+	s.Source = &v
+	return s
+}
+
+func (s *ListComponentsResponseBodyDataList) SetUid(v string) *ListComponentsResponseBodyDataList {
+	s.Uid = &v
+	return s
+}
+
+type ListComponentsResponseBodyDataListAnnotations struct {
+	Annotations *string `json:"annotations,omitempty" xml:"annotations,omitempty"`
+}
+
+func (s ListComponentsResponseBodyDataListAnnotations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListComponentsResponseBodyDataListAnnotations) GoString() string {
+	return s.String()
+}
+
+func (s *ListComponentsResponseBodyDataListAnnotations) SetAnnotations(v string) *ListComponentsResponseBodyDataListAnnotations {
+	s.Annotations = &v
+	return s
+}
+
+type ListComponentsResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListComponentsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListComponentsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListComponentsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListComponentsResponse) SetHeaders(v map[string]*string) *ListComponentsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListComponentsResponse) SetBody(v *ListComponentsResponseBody) *ListComponentsResponse {
+	s.Body = v
+	return s
+}
+
+type AddEnvironmentProductVersionHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	ClientToken   *string            `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+}
+
+func (s AddEnvironmentProductVersionHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddEnvironmentProductVersionHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *AddEnvironmentProductVersionHeaders) SetCommonHeaders(v map[string]*string) *AddEnvironmentProductVersionHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *AddEnvironmentProductVersionHeaders) SetClientToken(v string) *AddEnvironmentProductVersionHeaders {
+	s.ClientToken = &v
+	return s
+}
+
+type AddEnvironmentProductVersionRequest struct {
+	ProductVersionUID *string `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
+}
+
+func (s AddEnvironmentProductVersionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddEnvironmentProductVersionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddEnvironmentProductVersionRequest) SetProductVersionUID(v string) *AddEnvironmentProductVersionRequest {
+	s.ProductVersionUID = &v
+	return s
+}
+
+type AddEnvironmentProductVersionResponseBody struct {
+	Data    *AddEnvironmentProductVersionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	ErrCode *string                                       `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMsg  *string                                       `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
+	Success *bool                                         `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s AddEnvironmentProductVersionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddEnvironmentProductVersionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddEnvironmentProductVersionResponseBody) SetData(v *AddEnvironmentProductVersionResponseBodyData) *AddEnvironmentProductVersionResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *AddEnvironmentProductVersionResponseBody) SetErrCode(v string) *AddEnvironmentProductVersionResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *AddEnvironmentProductVersionResponseBody) SetErrMsg(v string) *AddEnvironmentProductVersionResponseBody {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *AddEnvironmentProductVersionResponseBody) SetSuccess(v bool) *AddEnvironmentProductVersionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AddEnvironmentProductVersionResponseBodyData struct {
+	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
+}
+
+func (s AddEnvironmentProductVersionResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddEnvironmentProductVersionResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *AddEnvironmentProductVersionResponseBodyData) SetUid(v string) *AddEnvironmentProductVersionResponseBodyData {
+	s.Uid = &v
+	return s
+}
+
+type AddEnvironmentProductVersionResponse struct {
+	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *AddEnvironmentProductVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddEnvironmentProductVersionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddEnvironmentProductVersionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddEnvironmentProductVersionResponse) SetHeaders(v map[string]*string) *AddEnvironmentProductVersionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddEnvironmentProductVersionResponse) SetBody(v *AddEnvironmentProductVersionResponseBody) *AddEnvironmentProductVersionResponse {
+	s.Body = v
+	return s
+}
+
+type GetChildrenComponentVersionListResponseBody struct {
+	Data    *GetChildrenComponentVersionListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	ErrCode *string                                          `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMsg  *string                                          `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
+	Success *bool                                            `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetChildrenComponentVersionListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChildrenComponentVersionListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetChildrenComponentVersionListResponseBody) SetData(v *GetChildrenComponentVersionListResponseBodyData) *GetChildrenComponentVersionListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetChildrenComponentVersionListResponseBody) SetErrCode(v string) *GetChildrenComponentVersionListResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *GetChildrenComponentVersionListResponseBody) SetErrMsg(v string) *GetChildrenComponentVersionListResponseBody {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *GetChildrenComponentVersionListResponseBody) SetSuccess(v bool) *GetChildrenComponentVersionListResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetChildrenComponentVersionListResponseBodyData struct {
+	ClusterId      *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
+	CreatedAt      *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	Description    *string `json:"description,omitempty" xml:"description,omitempty"`
+	InstanceList   *string `json:"instanceList,omitempty" xml:"instanceList,omitempty"`
+	Name           *string `json:"name,omitempty" xml:"name,omitempty"`
+	ProductName    *string `json:"productName,omitempty" xml:"productName,omitempty"`
+	ProductVersion *string `json:"productVersion,omitempty" xml:"productVersion,omitempty"`
+	Uid            *string `json:"uid,omitempty" xml:"uid,omitempty"`
+	VendorConfig   *string `json:"vendorConfig,omitempty" xml:"vendorConfig,omitempty"`
+	VendorType     *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s GetChildrenComponentVersionListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChildrenComponentVersionListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetChildrenComponentVersionListResponseBodyData) SetClusterId(v string) *GetChildrenComponentVersionListResponseBodyData {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *GetChildrenComponentVersionListResponseBodyData) SetCreatedAt(v string) *GetChildrenComponentVersionListResponseBodyData {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *GetChildrenComponentVersionListResponseBodyData) SetDescription(v string) *GetChildrenComponentVersionListResponseBodyData {
+	s.Description = &v
+	return s
+}
+
+func (s *GetChildrenComponentVersionListResponseBodyData) SetInstanceList(v string) *GetChildrenComponentVersionListResponseBodyData {
+	s.InstanceList = &v
+	return s
+}
+
+func (s *GetChildrenComponentVersionListResponseBodyData) SetName(v string) *GetChildrenComponentVersionListResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *GetChildrenComponentVersionListResponseBodyData) SetProductName(v string) *GetChildrenComponentVersionListResponseBodyData {
+	s.ProductName = &v
+	return s
+}
+
+func (s *GetChildrenComponentVersionListResponseBodyData) SetProductVersion(v string) *GetChildrenComponentVersionListResponseBodyData {
+	s.ProductVersion = &v
+	return s
+}
+
+func (s *GetChildrenComponentVersionListResponseBodyData) SetUid(v string) *GetChildrenComponentVersionListResponseBodyData {
+	s.Uid = &v
+	return s
+}
+
+func (s *GetChildrenComponentVersionListResponseBodyData) SetVendorConfig(v string) *GetChildrenComponentVersionListResponseBodyData {
+	s.VendorConfig = &v
+	return s
+}
+
+func (s *GetChildrenComponentVersionListResponseBodyData) SetVendorType(v string) *GetChildrenComponentVersionListResponseBodyData {
+	s.VendorType = &v
+	return s
+}
+
+type GetChildrenComponentVersionListResponse struct {
+	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetChildrenComponentVersionListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetChildrenComponentVersionListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChildrenComponentVersionListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetChildrenComponentVersionListResponse) SetHeaders(v map[string]*string) *GetChildrenComponentVersionListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetChildrenComponentVersionListResponse) SetBody(v *GetChildrenComponentVersionListResponseBody) *GetChildrenComponentVersionListResponse {
+	s.Body = v
+	return s
+}
+
+type CreateSLRHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	ClientToken   *string            `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+}
+
+func (s CreateSLRHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSLRHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSLRHeaders) SetCommonHeaders(v map[string]*string) *CreateSLRHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CreateSLRHeaders) SetClientToken(v string) *CreateSLRHeaders {
+	s.ClientToken = &v
+	return s
+}
+
+type CreateSLRResponseBody struct {
+	Data      *string `json:"data,omitempty" xml:"data,omitempty"`
+	ErrCode   *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMsg    *string `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateSLRResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSLRResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSLRResponseBody) SetData(v string) *CreateSLRResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateSLRResponseBody) SetErrCode(v string) *CreateSLRResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *CreateSLRResponseBody) SetErrMsg(v string) *CreateSLRResponseBody {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *CreateSLRResponseBody) SetErrorCode(v string) *CreateSLRResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateSLRResponseBody) SetSuccess(v bool) *CreateSLRResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateSLRResponse struct {
+	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateSLRResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateSLRResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSLRResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSLRResponse) SetHeaders(v map[string]*string) *CreateSLRResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSLRResponse) SetBody(v *CreateSLRResponseBody) *CreateSLRResponse {
+	s.Body = v
+	return s
+}
+
+type GetProductVersionRelatedComponentVersionDetailResponseBody struct {
+	Data    []*ProductComponentRelationDetail `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	ErrCode *string                           `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMsg  *string                           `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
+	Success *bool                             `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetProductVersionRelatedComponentVersionDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProductVersionRelatedComponentVersionDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetProductVersionRelatedComponentVersionDetailResponseBody) SetData(v []*ProductComponentRelationDetail) *GetProductVersionRelatedComponentVersionDetailResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetProductVersionRelatedComponentVersionDetailResponseBody) SetErrCode(v string) *GetProductVersionRelatedComponentVersionDetailResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *GetProductVersionRelatedComponentVersionDetailResponseBody) SetErrMsg(v string) *GetProductVersionRelatedComponentVersionDetailResponseBody {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *GetProductVersionRelatedComponentVersionDetailResponseBody) SetSuccess(v bool) *GetProductVersionRelatedComponentVersionDetailResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetProductVersionRelatedComponentVersionDetailResponse struct {
+	Headers map[string]*string                                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetProductVersionRelatedComponentVersionDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetProductVersionRelatedComponentVersionDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProductVersionRelatedComponentVersionDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetProductVersionRelatedComponentVersionDetailResponse) SetHeaders(v map[string]*string) *GetProductVersionRelatedComponentVersionDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetProductVersionRelatedComponentVersionDetailResponse) SetBody(v *GetProductVersionRelatedComponentVersionDetailResponseBody) *GetProductVersionRelatedComponentVersionDetailResponse {
+	s.Body = v
+	return s
+}
+
+type GetProductVersionPlatformsResponseBody struct {
+	Data    *GetProductVersionPlatformsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	ErrCode *string                                     `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMsg  *string                                     `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
+	Success *bool                                       `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetProductVersionPlatformsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProductVersionPlatformsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetProductVersionPlatformsResponseBody) SetData(v *GetProductVersionPlatformsResponseBodyData) *GetProductVersionPlatformsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetProductVersionPlatformsResponseBody) SetErrCode(v string) *GetProductVersionPlatformsResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *GetProductVersionPlatformsResponseBody) SetErrMsg(v string) *GetProductVersionPlatformsResponseBody {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *GetProductVersionPlatformsResponseBody) SetSuccess(v bool) *GetProductVersionPlatformsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetProductVersionPlatformsResponseBodyData struct {
+	List []*GetProductVersionPlatformsResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+}
+
+func (s GetProductVersionPlatformsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProductVersionPlatformsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetProductVersionPlatformsResponseBodyData) SetList(v []*GetProductVersionPlatformsResponseBodyDataList) *GetProductVersionPlatformsResponseBodyData {
+	s.List = v
+	return s
+}
+
+type GetProductVersionPlatformsResponseBodyDataList struct {
+	Architecture *string `json:"architecture,omitempty" xml:"architecture,omitempty"`
+	Os           *string `json:"os,omitempty" xml:"os,omitempty"`
+}
+
+func (s GetProductVersionPlatformsResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProductVersionPlatformsResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *GetProductVersionPlatformsResponseBodyDataList) SetArchitecture(v string) *GetProductVersionPlatformsResponseBodyDataList {
+	s.Architecture = &v
+	return s
+}
+
+func (s *GetProductVersionPlatformsResponseBodyDataList) SetOs(v string) *GetProductVersionPlatformsResponseBodyDataList {
+	s.Os = &v
+	return s
+}
+
+type GetProductVersionPlatformsResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetProductVersionPlatformsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetProductVersionPlatformsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProductVersionPlatformsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetProductVersionPlatformsResponse) SetHeaders(v map[string]*string) *GetProductVersionPlatformsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetProductVersionPlatformsResponse) SetBody(v *GetProductVersionPlatformsResponseBody) *GetProductVersionPlatformsResponse {
+	s.Body = v
+	return s
+}
+
+type GetProductVersionResourceResponseBody struct {
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMsg  *string `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
+	Success *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetProductVersionResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProductVersionResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetProductVersionResourceResponseBody) SetErrCode(v string) *GetProductVersionResourceResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *GetProductVersionResourceResponseBody) SetErrMsg(v string) *GetProductVersionResourceResponseBody {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *GetProductVersionResourceResponseBody) SetSuccess(v bool) *GetProductVersionResourceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetProductVersionResourceResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetProductVersionResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetProductVersionResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProductVersionResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetProductVersionResourceResponse) SetHeaders(v map[string]*string) *GetProductVersionResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetProductVersionResourceResponse) SetBody(v *GetProductVersionResourceResponseBody) *GetProductVersionResourceResponse {
+	s.Body = v
+	return s
+}
+
+type ApplyEnvironmentResourceRequest struct {
+	AccessKeyID     *string `json:"accessKeyID,omitempty" xml:"accessKeyID,omitempty"`
+	AccessKeySecret *string `json:"accessKeySecret,omitempty" xml:"accessKeySecret,omitempty"`
+	SecurityToken   *string `json:"securityToken,omitempty" xml:"securityToken,omitempty"`
+}
+
+func (s ApplyEnvironmentResourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyEnvironmentResourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyEnvironmentResourceRequest) SetAccessKeyID(v string) *ApplyEnvironmentResourceRequest {
+	s.AccessKeyID = &v
+	return s
+}
+
+func (s *ApplyEnvironmentResourceRequest) SetAccessKeySecret(v string) *ApplyEnvironmentResourceRequest {
+	s.AccessKeySecret = &v
+	return s
+}
+
+func (s *ApplyEnvironmentResourceRequest) SetSecurityToken(v string) *ApplyEnvironmentResourceRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type ApplyEnvironmentResourceResponseBody struct {
+	Data    *ApplyEnvironmentResourceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	ErrCode *string                                   `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMsg  *string                                   `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
+	Success *bool                                     `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ApplyEnvironmentResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyEnvironmentResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyEnvironmentResourceResponseBody) SetData(v *ApplyEnvironmentResourceResponseBodyData) *ApplyEnvironmentResourceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ApplyEnvironmentResourceResponseBody) SetErrCode(v string) *ApplyEnvironmentResourceResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *ApplyEnvironmentResourceResponseBody) SetErrMsg(v string) *ApplyEnvironmentResourceResponseBody {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *ApplyEnvironmentResourceResponseBody) SetSuccess(v bool) *ApplyEnvironmentResourceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ApplyEnvironmentResourceResponseBodyData struct {
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s ApplyEnvironmentResourceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyEnvironmentResourceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyEnvironmentResourceResponseBodyData) SetStatus(v string) *ApplyEnvironmentResourceResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type ApplyEnvironmentResourceResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ApplyEnvironmentResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ApplyEnvironmentResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyEnvironmentResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyEnvironmentResourceResponse) SetHeaders(v map[string]*string) *ApplyEnvironmentResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ApplyEnvironmentResourceResponse) SetBody(v *ApplyEnvironmentResourceResponseBody) *ApplyEnvironmentResourceResponse {
+	s.Body = v
+	return s
+}
+
+type AddProductVersionConfigRequest struct {
+	// 配置信息key
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 配置信息value
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+	// 配置说明
+	Notes *string `json:"notes,omitempty" xml:"notes,omitempty"`
+	// 组件uid
+	ComponentVersionUID *string `json:"componentVersionUID,omitempty" xml:"componentVersionUID,omitempty"`
+	// 父组件uid
+	ParentComponentVersionUID *string `json:"ParentComponentVersionUID,omitempty" xml:"ParentComponentVersionUID,omitempty"`
+}
+
+func (s AddProductVersionConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddProductVersionConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddProductVersionConfigRequest) SetName(v string) *AddProductVersionConfigRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *AddProductVersionConfigRequest) SetValue(v string) *AddProductVersionConfigRequest {
+	s.Value = &v
+	return s
+}
+
+func (s *AddProductVersionConfigRequest) SetNotes(v string) *AddProductVersionConfigRequest {
+	s.Notes = &v
+	return s
+}
+
+func (s *AddProductVersionConfigRequest) SetComponentVersionUID(v string) *AddProductVersionConfigRequest {
+	s.ComponentVersionUID = &v
+	return s
+}
+
+func (s *AddProductVersionConfigRequest) SetParentComponentVersionUID(v string) *AddProductVersionConfigRequest {
+	s.ParentComponentVersionUID = &v
+	return s
+}
+
+type AddProductVersionConfigResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s AddProductVersionConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddProductVersionConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddProductVersionConfigResponseBody) SetRequestId(v string) *AddProductVersionConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AddProductVersionConfigResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *AddProductVersionConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddProductVersionConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddProductVersionConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddProductVersionConfigResponse) SetHeaders(v map[string]*string) *AddProductVersionConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddProductVersionConfigResponse) SetBody(v *AddProductVersionConfigResponseBody) *AddProductVersionConfigResponse {
+	s.Body = v
+	return s
+}
+
+type ShareSnapshotRequest struct {
+	TargetProvider *string `json:"targetProvider,omitempty" xml:"targetProvider,omitempty"`
+}
+
+func (s ShareSnapshotRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ShareSnapshotRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ShareSnapshotRequest) SetTargetProvider(v string) *ShareSnapshotRequest {
+	s.TargetProvider = &v
+	return s
+}
+
+type ShareSnapshotResponseBody struct {
+	Data    *ShareSnapshotResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	ErrCode *string                        `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMsg  *string                        `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
+	Success *bool                          `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ShareSnapshotResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ShareSnapshotResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ShareSnapshotResponseBody) SetData(v *ShareSnapshotResponseBodyData) *ShareSnapshotResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ShareSnapshotResponseBody) SetErrCode(v string) *ShareSnapshotResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *ShareSnapshotResponseBody) SetErrMsg(v string) *ShareSnapshotResponseBody {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *ShareSnapshotResponseBody) SetSuccess(v bool) *ShareSnapshotResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ShareSnapshotResponseBodyData struct {
+	NewSnapshotUID *string `json:"newSnapshotUID,omitempty" xml:"newSnapshotUID,omitempty"`
+}
+
+func (s ShareSnapshotResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ShareSnapshotResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ShareSnapshotResponseBodyData) SetNewSnapshotUID(v string) *ShareSnapshotResponseBodyData {
+	s.NewSnapshotUID = &v
+	return s
+}
+
+type ShareSnapshotResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ShareSnapshotResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ShareSnapshotResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ShareSnapshotResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ShareSnapshotResponse) SetHeaders(v map[string]*string) *ShareSnapshotResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ShareSnapshotResponse) SetBody(v *ShareSnapshotResponseBody) *ShareSnapshotResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteEnvironmentParamResponseBody struct {
+	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrCode    *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+}
+
+func (s DeleteEnvironmentParamResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnvironmentParamResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnvironmentParamResponseBody) SetErrMessage(v string) *DeleteEnvironmentParamResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *DeleteEnvironmentParamResponseBody) SetSuccess(v bool) *DeleteEnvironmentParamResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DeleteEnvironmentParamResponseBody) SetErrCode(v string) *DeleteEnvironmentParamResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+type DeleteEnvironmentParamResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteEnvironmentParamResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteEnvironmentParamResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnvironmentParamResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnvironmentParamResponse) SetHeaders(v map[string]*string) *DeleteEnvironmentParamResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteEnvironmentParamResponse) SetBody(v *DeleteEnvironmentParamResponseBody) *DeleteEnvironmentParamResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteComponentVersionResponseBody struct {
+	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteComponentVersionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteComponentVersionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteComponentVersionResponseBody) SetErrMessage(v string) *DeleteComponentVersionResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *DeleteComponentVersionResponseBody) SetSuccess(v bool) *DeleteComponentVersionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteComponentVersionResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteComponentVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteComponentVersionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteComponentVersionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteComponentVersionResponse) SetHeaders(v map[string]*string) *DeleteComponentVersionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteComponentVersionResponse) SetBody(v *DeleteComponentVersionResponseBody) *DeleteComponentVersionResponse {
+	s.Body = v
+	return s
+}
+
+type DeployEnvironmentProductResponseBody struct {
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMsg  *string `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
+	Success *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s DeployEnvironmentProductResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployEnvironmentProductResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeployEnvironmentProductResponseBody) SetErrCode(v string) *DeployEnvironmentProductResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *DeployEnvironmentProductResponseBody) SetErrMsg(v string) *DeployEnvironmentProductResponseBody {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *DeployEnvironmentProductResponseBody) SetSuccess(v bool) *DeployEnvironmentProductResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeployEnvironmentProductResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeployEnvironmentProductResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeployEnvironmentProductResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployEnvironmentProductResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeployEnvironmentProductResponse) SetHeaders(v map[string]*string) *DeployEnvironmentProductResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeployEnvironmentProductResponse) SetBody(v *DeployEnvironmentProductResponseBody) *DeployEnvironmentProductResponse {
+	s.Body = v
+	return s
+}
+
+type InitEnvironmentResourceRequest struct {
+	AccessKeyID     *string `json:"accessKeyID,omitempty" xml:"accessKeyID,omitempty"`
+	AccessKeySecret *string `json:"accessKeySecret,omitempty" xml:"accessKeySecret,omitempty"`
+	SecurityToken   *string `json:"securityToken,omitempty" xml:"securityToken,omitempty"`
+}
+
+func (s InitEnvironmentResourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitEnvironmentResourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InitEnvironmentResourceRequest) SetAccessKeyID(v string) *InitEnvironmentResourceRequest {
+	s.AccessKeyID = &v
+	return s
+}
+
+func (s *InitEnvironmentResourceRequest) SetAccessKeySecret(v string) *InitEnvironmentResourceRequest {
+	s.AccessKeySecret = &v
+	return s
+}
+
+func (s *InitEnvironmentResourceRequest) SetSecurityToken(v string) *InitEnvironmentResourceRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type InitEnvironmentResourceResponseBody struct {
+	Data    *InitEnvironmentResourceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	ErrCode *string                                  `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMsg  *string                                  `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
+	Success *bool                                    `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s InitEnvironmentResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitEnvironmentResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InitEnvironmentResourceResponseBody) SetData(v *InitEnvironmentResourceResponseBodyData) *InitEnvironmentResourceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *InitEnvironmentResourceResponseBody) SetErrCode(v string) *InitEnvironmentResourceResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *InitEnvironmentResourceResponseBody) SetErrMsg(v string) *InitEnvironmentResourceResponseBody {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *InitEnvironmentResourceResponseBody) SetSuccess(v bool) *InitEnvironmentResourceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type InitEnvironmentResourceResponseBodyData struct {
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s InitEnvironmentResourceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitEnvironmentResourceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *InitEnvironmentResourceResponseBodyData) SetStatus(v string) *InitEnvironmentResourceResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type InitEnvironmentResourceResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *InitEnvironmentResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s InitEnvironmentResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitEnvironmentResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InitEnvironmentResourceResponse) SetHeaders(v map[string]*string) *InitEnvironmentResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InitEnvironmentResourceResponse) SetBody(v *InitEnvironmentResourceResponseBody) *InitEnvironmentResourceResponse {
+	s.Body = v
+	return s
+}
+
+type ListEnvironmentDeployRecordRequest struct {
+	PageNum  *int32 `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+}
+
+func (s ListEnvironmentDeployRecordRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentDeployRecordRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentDeployRecordRequest) SetPageNum(v int32) *ListEnvironmentDeployRecordRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListEnvironmentDeployRecordRequest) SetPageSize(v int32) *ListEnvironmentDeployRecordRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListEnvironmentDeployRecordResponseBody struct {
+	Data    *ListEnvironmentDeployRecordResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	ErrCode *string                                      `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMsg  *string                                      `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
+	Success *bool                                        `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListEnvironmentDeployRecordResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentDeployRecordResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentDeployRecordResponseBody) SetData(v *ListEnvironmentDeployRecordResponseBodyData) *ListEnvironmentDeployRecordResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListEnvironmentDeployRecordResponseBody) SetErrCode(v string) *ListEnvironmentDeployRecordResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *ListEnvironmentDeployRecordResponseBody) SetErrMsg(v string) *ListEnvironmentDeployRecordResponseBody {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *ListEnvironmentDeployRecordResponseBody) SetSuccess(v bool) *ListEnvironmentDeployRecordResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListEnvironmentDeployRecordResponseBodyData struct {
+	List     []*ListEnvironmentDeployRecordResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	PageNum  *int32                                             `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	PageSize *int32                                             `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Total    *int32                                             `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListEnvironmentDeployRecordResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentDeployRecordResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentDeployRecordResponseBodyData) SetList(v []*ListEnvironmentDeployRecordResponseBodyDataList) *ListEnvironmentDeployRecordResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *ListEnvironmentDeployRecordResponseBodyData) SetPageNum(v int32) *ListEnvironmentDeployRecordResponseBodyData {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListEnvironmentDeployRecordResponseBodyData) SetPageSize(v int32) *ListEnvironmentDeployRecordResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListEnvironmentDeployRecordResponseBodyData) SetTotal(v int32) *ListEnvironmentDeployRecordResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type ListEnvironmentDeployRecordResponseBodyDataList struct {
+	EnvUID   *string `json:"envUID,omitempty" xml:"envUID,omitempty"`
+	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
+	Status   *string `json:"status,omitempty" xml:"status,omitempty"`
+	Uid      *string `json:"uid,omitempty" xml:"uid,omitempty"`
+}
+
+func (s ListEnvironmentDeployRecordResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentDeployRecordResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentDeployRecordResponseBodyDataList) SetEnvUID(v string) *ListEnvironmentDeployRecordResponseBodyDataList {
+	s.EnvUID = &v
+	return s
+}
+
+func (s *ListEnvironmentDeployRecordResponseBodyDataList) SetProvider(v string) *ListEnvironmentDeployRecordResponseBodyDataList {
+	s.Provider = &v
+	return s
+}
+
+func (s *ListEnvironmentDeployRecordResponseBodyDataList) SetStatus(v string) *ListEnvironmentDeployRecordResponseBodyDataList {
+	s.Status = &v
+	return s
+}
+
+func (s *ListEnvironmentDeployRecordResponseBodyDataList) SetUid(v string) *ListEnvironmentDeployRecordResponseBodyDataList {
+	s.Uid = &v
+	return s
+}
+
+type ListEnvironmentDeployRecordResponse struct {
+	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListEnvironmentDeployRecordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListEnvironmentDeployRecordResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentDeployRecordResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentDeployRecordResponse) SetHeaders(v map[string]*string) *ListEnvironmentDeployRecordResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListEnvironmentDeployRecordResponse) SetBody(v *ListEnvironmentDeployRecordResponseBody) *ListEnvironmentDeployRecordResponse {
+	s.Body = v
+	return s
+}
+
+type ListProductVersionRelatedComponentVersionsRequest struct {
+	PageNum    *string `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	PageSize   *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	SortKey    *string `json:"sortKey,omitempty" xml:"sortKey,omitempty"`
+	SortDirect *string `json:"sortDirect,omitempty" xml:"sortDirect,omitempty"`
+	Category   *string `json:"category,omitempty" xml:"category,omitempty"`
+}
+
+func (s ListProductVersionRelatedComponentVersionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProductVersionRelatedComponentVersionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListProductVersionRelatedComponentVersionsRequest) SetPageNum(v string) *ListProductVersionRelatedComponentVersionsRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListProductVersionRelatedComponentVersionsRequest) SetPageSize(v string) *ListProductVersionRelatedComponentVersionsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListProductVersionRelatedComponentVersionsRequest) SetSortKey(v string) *ListProductVersionRelatedComponentVersionsRequest {
+	s.SortKey = &v
+	return s
+}
+
+func (s *ListProductVersionRelatedComponentVersionsRequest) SetSortDirect(v string) *ListProductVersionRelatedComponentVersionsRequest {
+	s.SortDirect = &v
+	return s
+}
+
+func (s *ListProductVersionRelatedComponentVersionsRequest) SetCategory(v string) *ListProductVersionRelatedComponentVersionsRequest {
+	s.Category = &v
 	return s
 }
 
@@ -847,247 +6454,135 @@ func (s *GetComponentVersionChildrenResponse) SetBody(v *GetComponentVersionChil
 	return s
 }
 
-type GetProductEnvironmentResponseBody struct {
-	Data    *GetProductEnvironmentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	ErrCode *string                                `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	ErrMsg  *string                                `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
-	Success *bool                                  `json:"success,omitempty" xml:"success,omitempty"`
+type GetProductVersionPackageURLRequest struct {
+	EnvPackageUID *string `json:"envPackageUID,omitempty" xml:"envPackageUID,omitempty"`
 }
 
-func (s GetProductEnvironmentResponseBody) String() string {
+func (s GetProductVersionPackageURLRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetProductEnvironmentResponseBody) GoString() string {
+func (s GetProductVersionPackageURLRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetProductEnvironmentResponseBody) SetData(v *GetProductEnvironmentResponseBodyData) *GetProductEnvironmentResponseBody {
+func (s *GetProductVersionPackageURLRequest) SetEnvPackageUID(v string) *GetProductVersionPackageURLRequest {
+	s.EnvPackageUID = &v
+	return s
+}
+
+type GetProductVersionPackageURLResponseBody struct {
+	Data    *GetProductVersionPackageURLResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	ErrCode *string                                      `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMsg  *string                                      `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
+	Success *bool                                        `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetProductVersionPackageURLResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProductVersionPackageURLResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetProductVersionPackageURLResponseBody) SetData(v *GetProductVersionPackageURLResponseBodyData) *GetProductVersionPackageURLResponseBody {
 	s.Data = v
 	return s
 }
 
-func (s *GetProductEnvironmentResponseBody) SetErrCode(v string) *GetProductEnvironmentResponseBody {
+func (s *GetProductVersionPackageURLResponseBody) SetErrCode(v string) *GetProductVersionPackageURLResponseBody {
 	s.ErrCode = &v
 	return s
 }
 
-func (s *GetProductEnvironmentResponseBody) SetErrMsg(v string) *GetProductEnvironmentResponseBody {
+func (s *GetProductVersionPackageURLResponseBody) SetErrMsg(v string) *GetProductVersionPackageURLResponseBody {
 	s.ErrMsg = &v
 	return s
 }
 
-func (s *GetProductEnvironmentResponseBody) SetSuccess(v bool) *GetProductEnvironmentResponseBody {
+func (s *GetProductVersionPackageURLResponseBody) SetSuccess(v bool) *GetProductVersionPackageURLResponseBody {
 	s.Success = &v
 	return s
 }
 
-type GetProductEnvironmentResponseBodyData struct {
-	CreatedAt      *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	ClusterUID     *string `json:"clusterUID,omitempty" xml:"clusterUID,omitempty"`
-	Description    *string `json:"description,omitempty" xml:"description,omitempty"`
-	InstanceList   *string `json:"instanceList,omitempty" xml:"instanceList,omitempty"`
-	InstanceStatus *string `json:"instanceStatus,omitempty" xml:"instanceStatus,omitempty"`
-	Name           *string `json:"name,omitempty" xml:"name,omitempty"`
-	ProductName    *string `json:"productName,omitempty" xml:"productName,omitempty"`
-	ProductVersion *string `json:"productVersion,omitempty" xml:"productVersion,omitempty"`
-	Type           *string `json:"type,omitempty" xml:"type,omitempty"`
-	Uid            *string `json:"uid,omitempty" xml:"uid,omitempty"`
-	VendorConfig   *string `json:"vendorConfig,omitempty" xml:"vendorConfig,omitempty"`
-	VendorType     *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
-}
-
-func (s GetProductEnvironmentResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetProductEnvironmentResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetProductEnvironmentResponseBodyData) SetCreatedAt(v string) *GetProductEnvironmentResponseBodyData {
-	s.CreatedAt = &v
-	return s
-}
-
-func (s *GetProductEnvironmentResponseBodyData) SetClusterUID(v string) *GetProductEnvironmentResponseBodyData {
-	s.ClusterUID = &v
-	return s
-}
-
-func (s *GetProductEnvironmentResponseBodyData) SetDescription(v string) *GetProductEnvironmentResponseBodyData {
-	s.Description = &v
-	return s
-}
-
-func (s *GetProductEnvironmentResponseBodyData) SetInstanceList(v string) *GetProductEnvironmentResponseBodyData {
-	s.InstanceList = &v
-	return s
-}
-
-func (s *GetProductEnvironmentResponseBodyData) SetInstanceStatus(v string) *GetProductEnvironmentResponseBodyData {
-	s.InstanceStatus = &v
-	return s
-}
-
-func (s *GetProductEnvironmentResponseBodyData) SetName(v string) *GetProductEnvironmentResponseBodyData {
-	s.Name = &v
-	return s
-}
-
-func (s *GetProductEnvironmentResponseBodyData) SetProductName(v string) *GetProductEnvironmentResponseBodyData {
-	s.ProductName = &v
-	return s
-}
-
-func (s *GetProductEnvironmentResponseBodyData) SetProductVersion(v string) *GetProductEnvironmentResponseBodyData {
-	s.ProductVersion = &v
-	return s
-}
-
-func (s *GetProductEnvironmentResponseBodyData) SetType(v string) *GetProductEnvironmentResponseBodyData {
-	s.Type = &v
-	return s
-}
-
-func (s *GetProductEnvironmentResponseBodyData) SetUid(v string) *GetProductEnvironmentResponseBodyData {
-	s.Uid = &v
-	return s
-}
-
-func (s *GetProductEnvironmentResponseBodyData) SetVendorConfig(v string) *GetProductEnvironmentResponseBodyData {
-	s.VendorConfig = &v
-	return s
-}
-
-func (s *GetProductEnvironmentResponseBodyData) SetVendorType(v string) *GetProductEnvironmentResponseBodyData {
-	s.VendorType = &v
-	return s
-}
-
-type GetProductEnvironmentResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetProductEnvironmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetProductEnvironmentResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetProductEnvironmentResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetProductEnvironmentResponse) SetHeaders(v map[string]*string) *GetProductEnvironmentResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetProductEnvironmentResponse) SetBody(v *GetProductEnvironmentResponseBody) *GetProductEnvironmentResponse {
-	s.Body = v
-	return s
-}
-
-type GetProductVersionPackageRequest struct {
-	Platform             *string `json:"platform,omitempty" xml:"platform,omitempty"`
-	PackageType          *string `json:"packageType,omitempty" xml:"packageType,omitempty"`
-	OldProductVersionUID *string `json:"oldProductVersionUID,omitempty" xml:"oldProductVersionUID,omitempty"`
-}
-
-func (s GetProductVersionPackageRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetProductVersionPackageRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetProductVersionPackageRequest) SetPlatform(v string) *GetProductVersionPackageRequest {
-	s.Platform = &v
-	return s
-}
-
-func (s *GetProductVersionPackageRequest) SetPackageType(v string) *GetProductVersionPackageRequest {
-	s.PackageType = &v
-	return s
-}
-
-func (s *GetProductVersionPackageRequest) SetOldProductVersionUID(v string) *GetProductVersionPackageRequest {
-	s.OldProductVersionUID = &v
-	return s
-}
-
-type GetProductVersionPackageResponseBody struct {
-	Data    *GetProductVersionPackageResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	ErrCode *string                                   `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	ErrMsg  *string                                   `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
-	Success *bool                                     `json:"success,omitempty" xml:"success,omitempty"`
-}
-
-func (s GetProductVersionPackageResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetProductVersionPackageResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetProductVersionPackageResponseBody) SetData(v *GetProductVersionPackageResponseBodyData) *GetProductVersionPackageResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetProductVersionPackageResponseBody) SetErrCode(v string) *GetProductVersionPackageResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *GetProductVersionPackageResponseBody) SetErrMsg(v string) *GetProductVersionPackageResponseBody {
-	s.ErrMsg = &v
-	return s
-}
-
-func (s *GetProductVersionPackageResponseBody) SetSuccess(v bool) *GetProductVersionPackageResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetProductVersionPackageResponseBodyData struct {
+type GetProductVersionPackageURLResponseBodyData struct {
 	PackageURL *string `json:"packageURL,omitempty" xml:"packageURL,omitempty"`
 }
 
-func (s GetProductVersionPackageResponseBodyData) String() string {
+func (s GetProductVersionPackageURLResponseBodyData) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetProductVersionPackageResponseBodyData) GoString() string {
+func (s GetProductVersionPackageURLResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *GetProductVersionPackageResponseBodyData) SetPackageURL(v string) *GetProductVersionPackageResponseBodyData {
+func (s *GetProductVersionPackageURLResponseBodyData) SetPackageURL(v string) *GetProductVersionPackageURLResponseBodyData {
 	s.PackageURL = &v
 	return s
 }
 
-type GetProductVersionPackageResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetProductVersionPackageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+type GetProductVersionPackageURLResponse struct {
+	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetProductVersionPackageURLResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s GetProductVersionPackageResponse) String() string {
+func (s GetProductVersionPackageURLResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetProductVersionPackageResponse) GoString() string {
+func (s GetProductVersionPackageURLResponse) GoString() string {
 	return s.String()
 }
 
-func (s *GetProductVersionPackageResponse) SetHeaders(v map[string]*string) *GetProductVersionPackageResponse {
+func (s *GetProductVersionPackageURLResponse) SetHeaders(v map[string]*string) *GetProductVersionPackageURLResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *GetProductVersionPackageResponse) SetBody(v *GetProductVersionPackageResponseBody) *GetProductVersionPackageResponse {
+func (s *GetProductVersionPackageURLResponse) SetBody(v *GetProductVersionPackageURLResponseBody) *GetProductVersionPackageURLResponse {
+	s.Body = v
+	return s
+}
+
+type GetProductVersionRelatedComponentVersionResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetProductVersionRelatedComponentVersionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProductVersionRelatedComponentVersionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetProductVersionRelatedComponentVersionResponseBody) SetRequestId(v string) *GetProductVersionRelatedComponentVersionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetProductVersionRelatedComponentVersionResponse struct {
+	Headers map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetProductVersionRelatedComponentVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetProductVersionRelatedComponentVersionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProductVersionRelatedComponentVersionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetProductVersionRelatedComponentVersionResponse) SetHeaders(v map[string]*string) *GetProductVersionRelatedComponentVersionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetProductVersionRelatedComponentVersionResponse) SetBody(v *GetProductVersionRelatedComponentVersionResponseBody) *GetProductVersionRelatedComponentVersionResponse {
 	s.Body = v
 	return s
 }
@@ -1488,237 +6983,6 @@ func (s *ListComponentVersionsResponse) SetBody(v *ListComponentVersionsResponse
 	return s
 }
 
-type UpdateSnapshotInstanceJoinOptionWithBatchRequest struct {
-	InstanceUIDs *string `json:"instanceUIDs,omitempty" xml:"instanceUIDs,omitempty"`
-	JoinSnapshot *bool   `json:"joinSnapshot,omitempty" xml:"joinSnapshot,omitempty"`
-	RootPassword *string `json:"rootPassword,omitempty" xml:"rootPassword,omitempty"`
-}
-
-func (s UpdateSnapshotInstanceJoinOptionWithBatchRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateSnapshotInstanceJoinOptionWithBatchRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateSnapshotInstanceJoinOptionWithBatchRequest) SetInstanceUIDs(v string) *UpdateSnapshotInstanceJoinOptionWithBatchRequest {
-	s.InstanceUIDs = &v
-	return s
-}
-
-func (s *UpdateSnapshotInstanceJoinOptionWithBatchRequest) SetJoinSnapshot(v bool) *UpdateSnapshotInstanceJoinOptionWithBatchRequest {
-	s.JoinSnapshot = &v
-	return s
-}
-
-func (s *UpdateSnapshotInstanceJoinOptionWithBatchRequest) SetRootPassword(v string) *UpdateSnapshotInstanceJoinOptionWithBatchRequest {
-	s.RootPassword = &v
-	return s
-}
-
-type UpdateSnapshotInstanceJoinOptionWithBatchResponseBody struct {
-	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	ErrMsg  *string `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
-	Success *bool   `json:"success,omitempty" xml:"success,omitempty"`
-}
-
-func (s UpdateSnapshotInstanceJoinOptionWithBatchResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateSnapshotInstanceJoinOptionWithBatchResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateSnapshotInstanceJoinOptionWithBatchResponseBody) SetErrCode(v string) *UpdateSnapshotInstanceJoinOptionWithBatchResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *UpdateSnapshotInstanceJoinOptionWithBatchResponseBody) SetErrMsg(v string) *UpdateSnapshotInstanceJoinOptionWithBatchResponseBody {
-	s.ErrMsg = &v
-	return s
-}
-
-func (s *UpdateSnapshotInstanceJoinOptionWithBatchResponseBody) SetSuccess(v bool) *UpdateSnapshotInstanceJoinOptionWithBatchResponseBody {
-	s.Success = &v
-	return s
-}
-
-type UpdateSnapshotInstanceJoinOptionWithBatchResponse struct {
-	Headers map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateSnapshotInstanceJoinOptionWithBatchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateSnapshotInstanceJoinOptionWithBatchResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateSnapshotInstanceJoinOptionWithBatchResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateSnapshotInstanceJoinOptionWithBatchResponse) SetHeaders(v map[string]*string) *UpdateSnapshotInstanceJoinOptionWithBatchResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateSnapshotInstanceJoinOptionWithBatchResponse) SetBody(v *UpdateSnapshotInstanceJoinOptionWithBatchResponseBody) *UpdateSnapshotInstanceJoinOptionWithBatchResponse {
-	s.Body = v
-	return s
-}
-
-type GenerateVendorConfigTemplateResponseBody struct {
-	Data    *GenerateVendorConfigTemplateResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	ErrCode *string                                       `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	ErrMsg  *string                                       `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
-	Success *bool                                         `json:"success,omitempty" xml:"success,omitempty"`
-}
-
-func (s GenerateVendorConfigTemplateResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GenerateVendorConfigTemplateResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GenerateVendorConfigTemplateResponseBody) SetData(v *GenerateVendorConfigTemplateResponseBodyData) *GenerateVendorConfigTemplateResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GenerateVendorConfigTemplateResponseBody) SetErrCode(v string) *GenerateVendorConfigTemplateResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *GenerateVendorConfigTemplateResponseBody) SetErrMsg(v string) *GenerateVendorConfigTemplateResponseBody {
-	s.ErrMsg = &v
-	return s
-}
-
-func (s *GenerateVendorConfigTemplateResponseBody) SetSuccess(v bool) *GenerateVendorConfigTemplateResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GenerateVendorConfigTemplateResponseBodyData struct {
-	VendorConfig *string `json:"vendorConfig,omitempty" xml:"vendorConfig,omitempty"`
-}
-
-func (s GenerateVendorConfigTemplateResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GenerateVendorConfigTemplateResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GenerateVendorConfigTemplateResponseBodyData) SetVendorConfig(v string) *GenerateVendorConfigTemplateResponseBodyData {
-	s.VendorConfig = &v
-	return s
-}
-
-type GenerateVendorConfigTemplateResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GenerateVendorConfigTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GenerateVendorConfigTemplateResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GenerateVendorConfigTemplateResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GenerateVendorConfigTemplateResponse) SetHeaders(v map[string]*string) *GenerateVendorConfigTemplateResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GenerateVendorConfigTemplateResponse) SetBody(v *GenerateVendorConfigTemplateResponseBody) *GenerateVendorConfigTemplateResponse {
-	s.Body = v
-	return s
-}
-
-type UpdateProductComponentRequest struct {
-	ComponentOrchestrationValues *string `json:"componentOrchestrationValues,omitempty" xml:"componentOrchestrationValues,omitempty"`
-	Enable                       *bool   `json:"enable,omitempty" xml:"enable,omitempty"`
-	ReleaseName                  *string `json:"releaseName,omitempty" xml:"releaseName,omitempty"`
-}
-
-func (s UpdateProductComponentRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateProductComponentRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateProductComponentRequest) SetComponentOrchestrationValues(v string) *UpdateProductComponentRequest {
-	s.ComponentOrchestrationValues = &v
-	return s
-}
-
-func (s *UpdateProductComponentRequest) SetEnable(v bool) *UpdateProductComponentRequest {
-	s.Enable = &v
-	return s
-}
-
-func (s *UpdateProductComponentRequest) SetReleaseName(v string) *UpdateProductComponentRequest {
-	s.ReleaseName = &v
-	return s
-}
-
-type UpdateProductComponentResponseBody struct {
-	ErrMsg  *string `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
-	Success *bool   `json:"success,omitempty" xml:"success,omitempty"`
-}
-
-func (s UpdateProductComponentResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateProductComponentResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateProductComponentResponseBody) SetErrMsg(v string) *UpdateProductComponentResponseBody {
-	s.ErrMsg = &v
-	return s
-}
-
-func (s *UpdateProductComponentResponseBody) SetSuccess(v bool) *UpdateProductComponentResponseBody {
-	s.Success = &v
-	return s
-}
-
-type UpdateProductComponentResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateProductComponentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateProductComponentResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateProductComponentResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateProductComponentResponse) SetHeaders(v map[string]*string) *UpdateProductComponentResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateProductComponentResponse) SetBody(v *UpdateProductComponentResponseBody) *UpdateProductComponentResponse {
-	s.Body = v
-	return s
-}
-
 type UpdateEnvironmentNodesRequest struct {
 	Cpu          *int32                                      `json:"cpu,omitempty" xml:"cpu,omitempty"`
 	DataDisk     []*string                                   `json:"dataDisk,omitempty" xml:"dataDisk,omitempty" type:"Repeated"`
@@ -1929,159 +7193,77 @@ func (s *UpdateEnvironmentNodesResponse) SetBody(v *UpdateEnvironmentNodesRespon
 	return s
 }
 
-type ListEnvironmentPackagesRequest struct {
-	PageNum  *int32 `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+type DeleteAuthorizationHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	ClientToken   *string            `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 }
 
-func (s ListEnvironmentPackagesRequest) String() string {
+func (s DeleteAuthorizationHeaders) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListEnvironmentPackagesRequest) GoString() string {
+func (s DeleteAuthorizationHeaders) GoString() string {
 	return s.String()
 }
 
-func (s *ListEnvironmentPackagesRequest) SetPageNum(v int32) *ListEnvironmentPackagesRequest {
-	s.PageNum = &v
+func (s *DeleteAuthorizationHeaders) SetCommonHeaders(v map[string]*string) *DeleteAuthorizationHeaders {
+	s.CommonHeaders = v
 	return s
 }
 
-func (s *ListEnvironmentPackagesRequest) SetPageSize(v int32) *ListEnvironmentPackagesRequest {
-	s.PageSize = &v
+func (s *DeleteAuthorizationHeaders) SetClientToken(v string) *DeleteAuthorizationHeaders {
+	s.ClientToken = &v
 	return s
 }
 
-type ListEnvironmentPackagesResponseBody struct {
-	Data    *ListEnvironmentPackagesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	ErrCode *string                                  `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	ErrMsg  *string                                  `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
-	Success *bool                                    `json:"success,omitempty" xml:"success,omitempty"`
+type DeleteAuthorizationResponseBody struct {
+	Success *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMsg  *string `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
 }
 
-func (s ListEnvironmentPackagesResponseBody) String() string {
+func (s DeleteAuthorizationResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListEnvironmentPackagesResponseBody) GoString() string {
+func (s DeleteAuthorizationResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListEnvironmentPackagesResponseBody) SetData(v *ListEnvironmentPackagesResponseBodyData) *ListEnvironmentPackagesResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ListEnvironmentPackagesResponseBody) SetErrCode(v string) *ListEnvironmentPackagesResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *ListEnvironmentPackagesResponseBody) SetErrMsg(v string) *ListEnvironmentPackagesResponseBody {
-	s.ErrMsg = &v
-	return s
-}
-
-func (s *ListEnvironmentPackagesResponseBody) SetSuccess(v bool) *ListEnvironmentPackagesResponseBody {
+func (s *DeleteAuthorizationResponseBody) SetSuccess(v bool) *DeleteAuthorizationResponseBody {
 	s.Success = &v
 	return s
 }
 
-type ListEnvironmentPackagesResponseBodyData struct {
-	List     []*ListEnvironmentPackagesResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
-	PageNum  *int32                                         `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
-	PageSize *int32                                         `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	Total    *int32                                         `json:"total,omitempty" xml:"total,omitempty"`
+func (s *DeleteAuthorizationResponseBody) SetErrCode(v string) *DeleteAuthorizationResponseBody {
+	s.ErrCode = &v
+	return s
 }
 
-func (s ListEnvironmentPackagesResponseBodyData) String() string {
+func (s *DeleteAuthorizationResponseBody) SetErrMsg(v string) *DeleteAuthorizationResponseBody {
+	s.ErrMsg = &v
+	return s
+}
+
+type DeleteAuthorizationResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteAuthorizationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteAuthorizationResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListEnvironmentPackagesResponseBodyData) GoString() string {
+func (s DeleteAuthorizationResponse) GoString() string {
 	return s.String()
 }
 
-func (s *ListEnvironmentPackagesResponseBodyData) SetList(v []*ListEnvironmentPackagesResponseBodyDataList) *ListEnvironmentPackagesResponseBodyData {
-	s.List = v
-	return s
-}
-
-func (s *ListEnvironmentPackagesResponseBodyData) SetPageNum(v int32) *ListEnvironmentPackagesResponseBodyData {
-	s.PageNum = &v
-	return s
-}
-
-func (s *ListEnvironmentPackagesResponseBodyData) SetPageSize(v int32) *ListEnvironmentPackagesResponseBodyData {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListEnvironmentPackagesResponseBodyData) SetTotal(v int32) *ListEnvironmentPackagesResponseBodyData {
-	s.Total = &v
-	return s
-}
-
-type ListEnvironmentPackagesResponseBodyDataList struct {
-	EnvUID   *string `json:"envUID,omitempty" xml:"envUID,omitempty"`
-	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
-	Status   *string `json:"status,omitempty" xml:"status,omitempty"`
-	Uid      *string `json:"uid,omitempty" xml:"uid,omitempty"`
-	Url      *string `json:"url,omitempty" xml:"url,omitempty"`
-}
-
-func (s ListEnvironmentPackagesResponseBodyDataList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListEnvironmentPackagesResponseBodyDataList) GoString() string {
-	return s.String()
-}
-
-func (s *ListEnvironmentPackagesResponseBodyDataList) SetEnvUID(v string) *ListEnvironmentPackagesResponseBodyDataList {
-	s.EnvUID = &v
-	return s
-}
-
-func (s *ListEnvironmentPackagesResponseBodyDataList) SetProvider(v string) *ListEnvironmentPackagesResponseBodyDataList {
-	s.Provider = &v
-	return s
-}
-
-func (s *ListEnvironmentPackagesResponseBodyDataList) SetStatus(v string) *ListEnvironmentPackagesResponseBodyDataList {
-	s.Status = &v
-	return s
-}
-
-func (s *ListEnvironmentPackagesResponseBodyDataList) SetUid(v string) *ListEnvironmentPackagesResponseBodyDataList {
-	s.Uid = &v
-	return s
-}
-
-func (s *ListEnvironmentPackagesResponseBodyDataList) SetUrl(v string) *ListEnvironmentPackagesResponseBodyDataList {
-	s.Url = &v
-	return s
-}
-
-type ListEnvironmentPackagesResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListEnvironmentPackagesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListEnvironmentPackagesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListEnvironmentPackagesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListEnvironmentPackagesResponse) SetHeaders(v map[string]*string) *ListEnvironmentPackagesResponse {
+func (s *DeleteAuthorizationResponse) SetHeaders(v map[string]*string) *DeleteAuthorizationResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *ListEnvironmentPackagesResponse) SetBody(v *ListEnvironmentPackagesResponseBody) *ListEnvironmentPackagesResponse {
+func (s *DeleteAuthorizationResponse) SetBody(v *DeleteAuthorizationResponseBody) *DeleteAuthorizationResponse {
 	s.Body = v
 	return s
 }
@@ -2732,216 +7914,6 @@ func (s *UpdateComponentToProductResponse) SetBody(v *UpdateComponentToProductRe
 	return s
 }
 
-type CreateEnvironmentNodeRequest struct {
-	Cpu          *int32                                    `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	DataDisk     []*CreateEnvironmentNodeRequestDataDisk   `json:"dataDisk,omitempty" xml:"dataDisk,omitempty" type:"Repeated"`
-	HostName     *string                                   `json:"hostName,omitempty" xml:"hostName,omitempty"`
-	Identifier   *string                                   `json:"identifier,omitempty" xml:"identifier,omitempty"`
-	Labels       map[string]interface{}                    `json:"labels,omitempty" xml:"labels,omitempty"`
-	Memory       *int32                                    `json:"memory,omitempty" xml:"memory,omitempty"`
-	Os           *string                                   `json:"os,omitempty" xml:"os,omitempty"`
-	PrivateIP    *string                                   `json:"privateIP,omitempty" xml:"privateIP,omitempty"`
-	Provider     *string                                   `json:"provider,omitempty" xml:"provider,omitempty"`
-	RootPassword *string                                   `json:"rootPassword,omitempty" xml:"rootPassword,omitempty"`
-	SystemDisk   []*CreateEnvironmentNodeRequestSystemDisk `json:"systemDisk,omitempty" xml:"systemDisk,omitempty" type:"Repeated"`
-	Taints       []*CreateEnvironmentNodeRequestTaints     `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
-}
-
-func (s CreateEnvironmentNodeRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateEnvironmentNodeRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateEnvironmentNodeRequest) SetCpu(v int32) *CreateEnvironmentNodeRequest {
-	s.Cpu = &v
-	return s
-}
-
-func (s *CreateEnvironmentNodeRequest) SetDataDisk(v []*CreateEnvironmentNodeRequestDataDisk) *CreateEnvironmentNodeRequest {
-	s.DataDisk = v
-	return s
-}
-
-func (s *CreateEnvironmentNodeRequest) SetHostName(v string) *CreateEnvironmentNodeRequest {
-	s.HostName = &v
-	return s
-}
-
-func (s *CreateEnvironmentNodeRequest) SetIdentifier(v string) *CreateEnvironmentNodeRequest {
-	s.Identifier = &v
-	return s
-}
-
-func (s *CreateEnvironmentNodeRequest) SetLabels(v map[string]interface{}) *CreateEnvironmentNodeRequest {
-	s.Labels = v
-	return s
-}
-
-func (s *CreateEnvironmentNodeRequest) SetMemory(v int32) *CreateEnvironmentNodeRequest {
-	s.Memory = &v
-	return s
-}
-
-func (s *CreateEnvironmentNodeRequest) SetOs(v string) *CreateEnvironmentNodeRequest {
-	s.Os = &v
-	return s
-}
-
-func (s *CreateEnvironmentNodeRequest) SetPrivateIP(v string) *CreateEnvironmentNodeRequest {
-	s.PrivateIP = &v
-	return s
-}
-
-func (s *CreateEnvironmentNodeRequest) SetProvider(v string) *CreateEnvironmentNodeRequest {
-	s.Provider = &v
-	return s
-}
-
-func (s *CreateEnvironmentNodeRequest) SetRootPassword(v string) *CreateEnvironmentNodeRequest {
-	s.RootPassword = &v
-	return s
-}
-
-func (s *CreateEnvironmentNodeRequest) SetSystemDisk(v []*CreateEnvironmentNodeRequestSystemDisk) *CreateEnvironmentNodeRequest {
-	s.SystemDisk = v
-	return s
-}
-
-func (s *CreateEnvironmentNodeRequest) SetTaints(v []*CreateEnvironmentNodeRequestTaints) *CreateEnvironmentNodeRequest {
-	s.Taints = v
-	return s
-}
-
-type CreateEnvironmentNodeRequestDataDisk struct {
-	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
-	Required *int32  `json:"required,omitempty" xml:"required,omitempty"`
-}
-
-func (s CreateEnvironmentNodeRequestDataDisk) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateEnvironmentNodeRequestDataDisk) GoString() string {
-	return s.String()
-}
-
-func (s *CreateEnvironmentNodeRequestDataDisk) SetName(v string) *CreateEnvironmentNodeRequestDataDisk {
-	s.Name = &v
-	return s
-}
-
-func (s *CreateEnvironmentNodeRequestDataDisk) SetRequired(v int32) *CreateEnvironmentNodeRequestDataDisk {
-	s.Required = &v
-	return s
-}
-
-type CreateEnvironmentNodeRequestSystemDisk struct {
-	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
-	Required *int32  `json:"required,omitempty" xml:"required,omitempty"`
-}
-
-func (s CreateEnvironmentNodeRequestSystemDisk) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateEnvironmentNodeRequestSystemDisk) GoString() string {
-	return s.String()
-}
-
-func (s *CreateEnvironmentNodeRequestSystemDisk) SetName(v string) *CreateEnvironmentNodeRequestSystemDisk {
-	s.Name = &v
-	return s
-}
-
-func (s *CreateEnvironmentNodeRequestSystemDisk) SetRequired(v int32) *CreateEnvironmentNodeRequestSystemDisk {
-	s.Required = &v
-	return s
-}
-
-type CreateEnvironmentNodeRequestTaints struct {
-	Effect *string `json:"effect,omitempty" xml:"effect,omitempty"`
-	Key    *string `json:"key,omitempty" xml:"key,omitempty"`
-	Value  *string `json:"value,omitempty" xml:"value,omitempty"`
-}
-
-func (s CreateEnvironmentNodeRequestTaints) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateEnvironmentNodeRequestTaints) GoString() string {
-	return s.String()
-}
-
-func (s *CreateEnvironmentNodeRequestTaints) SetEffect(v string) *CreateEnvironmentNodeRequestTaints {
-	s.Effect = &v
-	return s
-}
-
-func (s *CreateEnvironmentNodeRequestTaints) SetKey(v string) *CreateEnvironmentNodeRequestTaints {
-	s.Key = &v
-	return s
-}
-
-func (s *CreateEnvironmentNodeRequestTaints) SetValue(v string) *CreateEnvironmentNodeRequestTaints {
-	s.Value = &v
-	return s
-}
-
-type CreateEnvironmentNodeResponseBody struct {
-	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	ErrMsg  *string `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
-	Success *bool   `json:"success,omitempty" xml:"success,omitempty"`
-}
-
-func (s CreateEnvironmentNodeResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateEnvironmentNodeResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateEnvironmentNodeResponseBody) SetErrCode(v string) *CreateEnvironmentNodeResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *CreateEnvironmentNodeResponseBody) SetErrMsg(v string) *CreateEnvironmentNodeResponseBody {
-	s.ErrMsg = &v
-	return s
-}
-
-func (s *CreateEnvironmentNodeResponseBody) SetSuccess(v bool) *CreateEnvironmentNodeResponseBody {
-	s.Success = &v
-	return s
-}
-
-type CreateEnvironmentNodeResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateEnvironmentNodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateEnvironmentNodeResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateEnvironmentNodeResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateEnvironmentNodeResponse) SetHeaders(v map[string]*string) *CreateEnvironmentNodeResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateEnvironmentNodeResponse) SetBody(v *CreateEnvironmentNodeResponseBody) *CreateEnvironmentNodeResponse {
-	s.Body = v
-	return s
-}
-
 type GetComponentResponseBody struct {
 	Data    *GetComponentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	ErrCode *string                       `json:"errCode,omitempty" xml:"errCode,omitempty"`
@@ -3100,252 +8072,6 @@ func (s *GetComponentResponse) SetBody(v *GetComponentResponseBody) *GetComponen
 	return s
 }
 
-type ListFoundationVersionRelatedComponentVersionsResponseBody struct {
-	RequestId *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *ListFoundationVersionRelatedComponentVersionsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	ErrCode   *string                                                        `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	ErrMsg    *string                                                        `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
-	Success   *bool                                                          `json:"success,omitempty" xml:"success,omitempty"`
-}
-
-func (s ListFoundationVersionRelatedComponentVersionsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListFoundationVersionRelatedComponentVersionsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListFoundationVersionRelatedComponentVersionsResponseBody) SetRequestId(v string) *ListFoundationVersionRelatedComponentVersionsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListFoundationVersionRelatedComponentVersionsResponseBody) SetData(v *ListFoundationVersionRelatedComponentVersionsResponseBodyData) *ListFoundationVersionRelatedComponentVersionsResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ListFoundationVersionRelatedComponentVersionsResponseBody) SetErrCode(v string) *ListFoundationVersionRelatedComponentVersionsResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *ListFoundationVersionRelatedComponentVersionsResponseBody) SetErrMsg(v string) *ListFoundationVersionRelatedComponentVersionsResponseBody {
-	s.ErrMsg = &v
-	return s
-}
-
-func (s *ListFoundationVersionRelatedComponentVersionsResponseBody) SetSuccess(v bool) *ListFoundationVersionRelatedComponentVersionsResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ListFoundationVersionRelatedComponentVersionsResponseBodyData struct {
-	List     []*ComponentVersion `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
-	PageNum  *int32              `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
-	PageSize *int32              `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	Total    *int32              `json:"total,omitempty" xml:"total,omitempty"`
-}
-
-func (s ListFoundationVersionRelatedComponentVersionsResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListFoundationVersionRelatedComponentVersionsResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ListFoundationVersionRelatedComponentVersionsResponseBodyData) SetList(v []*ComponentVersion) *ListFoundationVersionRelatedComponentVersionsResponseBodyData {
-	s.List = v
-	return s
-}
-
-func (s *ListFoundationVersionRelatedComponentVersionsResponseBodyData) SetPageNum(v int32) *ListFoundationVersionRelatedComponentVersionsResponseBodyData {
-	s.PageNum = &v
-	return s
-}
-
-func (s *ListFoundationVersionRelatedComponentVersionsResponseBodyData) SetPageSize(v int32) *ListFoundationVersionRelatedComponentVersionsResponseBodyData {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListFoundationVersionRelatedComponentVersionsResponseBodyData) SetTotal(v int32) *ListFoundationVersionRelatedComponentVersionsResponseBodyData {
-	s.Total = &v
-	return s
-}
-
-type ListFoundationVersionRelatedComponentVersionsResponse struct {
-	Headers map[string]*string                                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListFoundationVersionRelatedComponentVersionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListFoundationVersionRelatedComponentVersionsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListFoundationVersionRelatedComponentVersionsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListFoundationVersionRelatedComponentVersionsResponse) SetHeaders(v map[string]*string) *ListFoundationVersionRelatedComponentVersionsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListFoundationVersionRelatedComponentVersionsResponse) SetBody(v *ListFoundationVersionRelatedComponentVersionsResponseBody) *ListFoundationVersionRelatedComponentVersionsResponse {
-	s.Body = v
-	return s
-}
-
-type GetSnapshotResponseBody struct {
-	Data    *GetSnapshotResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	ErrCode *string                      `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	ErrMsg  *string                      `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
-	Success *bool                        `json:"success,omitempty" xml:"success,omitempty"`
-}
-
-func (s GetSnapshotResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSnapshotResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetSnapshotResponseBody) SetData(v *GetSnapshotResponseBodyData) *GetSnapshotResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetSnapshotResponseBody) SetErrCode(v string) *GetSnapshotResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *GetSnapshotResponseBody) SetErrMsg(v string) *GetSnapshotResponseBody {
-	s.ErrMsg = &v
-	return s
-}
-
-func (s *GetSnapshotResponseBody) SetSuccess(v bool) *GetSnapshotResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetSnapshotResponseBodyData struct {
-	Description          *string `json:"description,omitempty" xml:"description,omitempty"`
-	InstanceCIDR         *string `json:"instanceCIDR,omitempty" xml:"instanceCIDR,omitempty"`
-	Name                 *string `json:"name,omitempty" xml:"name,omitempty"`
-	ProductName          *string `json:"productName,omitempty" xml:"productName,omitempty"`
-	ProductVersion       *string `json:"productVersion,omitempty" xml:"productVersion,omitempty"`
-	ProductVersionDesc   *string `json:"productVersionDesc,omitempty" xml:"productVersionDesc,omitempty"`
-	Region               *string `json:"region,omitempty" xml:"region,omitempty"`
-	SnapshotRegion       *string `json:"snapshotRegion,omitempty" xml:"snapshotRegion,omitempty"`
-	SnapshotStatus       *string `json:"snapshotStatus,omitempty" xml:"snapshotStatus,omitempty"`
-	SourceEnvironmentUID *string `json:"sourceEnvironmentUID,omitempty" xml:"sourceEnvironmentUID,omitempty"`
-	SourceType           *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	Uid                  *string `json:"uid,omitempty" xml:"uid,omitempty"`
-	Vpcid                *string `json:"vpcid,omitempty" xml:"vpcid,omitempty"`
-}
-
-func (s GetSnapshotResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSnapshotResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetSnapshotResponseBodyData) SetDescription(v string) *GetSnapshotResponseBodyData {
-	s.Description = &v
-	return s
-}
-
-func (s *GetSnapshotResponseBodyData) SetInstanceCIDR(v string) *GetSnapshotResponseBodyData {
-	s.InstanceCIDR = &v
-	return s
-}
-
-func (s *GetSnapshotResponseBodyData) SetName(v string) *GetSnapshotResponseBodyData {
-	s.Name = &v
-	return s
-}
-
-func (s *GetSnapshotResponseBodyData) SetProductName(v string) *GetSnapshotResponseBodyData {
-	s.ProductName = &v
-	return s
-}
-
-func (s *GetSnapshotResponseBodyData) SetProductVersion(v string) *GetSnapshotResponseBodyData {
-	s.ProductVersion = &v
-	return s
-}
-
-func (s *GetSnapshotResponseBodyData) SetProductVersionDesc(v string) *GetSnapshotResponseBodyData {
-	s.ProductVersionDesc = &v
-	return s
-}
-
-func (s *GetSnapshotResponseBodyData) SetRegion(v string) *GetSnapshotResponseBodyData {
-	s.Region = &v
-	return s
-}
-
-func (s *GetSnapshotResponseBodyData) SetSnapshotRegion(v string) *GetSnapshotResponseBodyData {
-	s.SnapshotRegion = &v
-	return s
-}
-
-func (s *GetSnapshotResponseBodyData) SetSnapshotStatus(v string) *GetSnapshotResponseBodyData {
-	s.SnapshotStatus = &v
-	return s
-}
-
-func (s *GetSnapshotResponseBodyData) SetSourceEnvironmentUID(v string) *GetSnapshotResponseBodyData {
-	s.SourceEnvironmentUID = &v
-	return s
-}
-
-func (s *GetSnapshotResponseBodyData) SetSourceType(v string) *GetSnapshotResponseBodyData {
-	s.SourceType = &v
-	return s
-}
-
-func (s *GetSnapshotResponseBodyData) SetUid(v string) *GetSnapshotResponseBodyData {
-	s.Uid = &v
-	return s
-}
-
-func (s *GetSnapshotResponseBodyData) SetVpcid(v string) *GetSnapshotResponseBodyData {
-	s.Vpcid = &v
-	return s
-}
-
-type GetSnapshotResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetSnapshotResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetSnapshotResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSnapshotResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetSnapshotResponse) SetHeaders(v map[string]*string) *GetSnapshotResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetSnapshotResponse) SetBody(v *GetSnapshotResponseBody) *GetSnapshotResponse {
-	s.Body = v
-	return s
-}
-
 type GetLicenseResponseBody struct {
 	// Id of the request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
@@ -3383,104 +8109,6 @@ func (s *GetLicenseResponse) SetHeaders(v map[string]*string) *GetLicenseRespons
 }
 
 func (s *GetLicenseResponse) SetBody(v *GetLicenseResponseBody) *GetLicenseResponse {
-	s.Body = v
-	return s
-}
-
-type CreateLatestProductVersionHeaders struct {
-	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	ClientToken   *string            `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-}
-
-func (s CreateLatestProductVersionHeaders) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateLatestProductVersionHeaders) GoString() string {
-	return s.String()
-}
-
-func (s *CreateLatestProductVersionHeaders) SetCommonHeaders(v map[string]*string) *CreateLatestProductVersionHeaders {
-	s.CommonHeaders = v
-	return s
-}
-
-func (s *CreateLatestProductVersionHeaders) SetClientToken(v string) *CreateLatestProductVersionHeaders {
-	s.ClientToken = &v
-	return s
-}
-
-type CreateLatestProductVersionResponseBody struct {
-	Data    *CreateLatestProductVersionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	ErrCode *string                                     `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	ErrMsg  *string                                     `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
-	Success *bool                                       `json:"success,omitempty" xml:"success,omitempty"`
-}
-
-func (s CreateLatestProductVersionResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateLatestProductVersionResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateLatestProductVersionResponseBody) SetData(v *CreateLatestProductVersionResponseBodyData) *CreateLatestProductVersionResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *CreateLatestProductVersionResponseBody) SetErrCode(v string) *CreateLatestProductVersionResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *CreateLatestProductVersionResponseBody) SetErrMsg(v string) *CreateLatestProductVersionResponseBody {
-	s.ErrMsg = &v
-	return s
-}
-
-func (s *CreateLatestProductVersionResponseBody) SetSuccess(v bool) *CreateLatestProductVersionResponseBody {
-	s.Success = &v
-	return s
-}
-
-type CreateLatestProductVersionResponseBodyData struct {
-	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
-}
-
-func (s CreateLatestProductVersionResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateLatestProductVersionResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *CreateLatestProductVersionResponseBodyData) SetUid(v string) *CreateLatestProductVersionResponseBodyData {
-	s.Uid = &v
-	return s
-}
-
-type CreateLatestProductVersionResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateLatestProductVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateLatestProductVersionResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateLatestProductVersionResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateLatestProductVersionResponse) SetHeaders(v map[string]*string) *CreateLatestProductVersionResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateLatestProductVersionResponse) SetBody(v *CreateLatestProductVersionResponseBody) *CreateLatestProductVersionResponse {
 	s.Body = v
 	return s
 }
@@ -3700,361 +8328,6 @@ func (s *ListAlicloudVPCResponse) SetBody(v *ListAlicloudVPCResponseBody) *ListA
 	return s
 }
 
-type CreateProductHeaders struct {
-	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	ClientToken   *string            `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-}
-
-func (s CreateProductHeaders) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateProductHeaders) GoString() string {
-	return s.String()
-}
-
-func (s *CreateProductHeaders) SetCommonHeaders(v map[string]*string) *CreateProductHeaders {
-	s.CommonHeaders = v
-	return s
-}
-
-func (s *CreateProductHeaders) SetClientToken(v string) *CreateProductHeaders {
-	s.ClientToken = &v
-	return s
-}
-
-type CreateProductRequest struct {
-	Annotations          *string `json:"annotations,omitempty" xml:"annotations,omitempty"`
-	ComponentVersionUID  *string `json:"componentVersionUID,omitempty" xml:"componentVersionUID,omitempty"`
-	Description          *string `json:"description,omitempty" xml:"description,omitempty"`
-	FoundationVersionUID *string `json:"foundationVersionUID,omitempty" xml:"foundationVersionUID,omitempty"`
-	ProductName          *string `json:"productName,omitempty" xml:"productName,omitempty"`
-	PrometheusUID        *string `json:"prometheusUID,omitempty" xml:"prometheusUID,omitempty"`
-}
-
-func (s CreateProductRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateProductRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateProductRequest) SetAnnotations(v string) *CreateProductRequest {
-	s.Annotations = &v
-	return s
-}
-
-func (s *CreateProductRequest) SetComponentVersionUID(v string) *CreateProductRequest {
-	s.ComponentVersionUID = &v
-	return s
-}
-
-func (s *CreateProductRequest) SetDescription(v string) *CreateProductRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *CreateProductRequest) SetFoundationVersionUID(v string) *CreateProductRequest {
-	s.FoundationVersionUID = &v
-	return s
-}
-
-func (s *CreateProductRequest) SetProductName(v string) *CreateProductRequest {
-	s.ProductName = &v
-	return s
-}
-
-func (s *CreateProductRequest) SetPrometheusUID(v string) *CreateProductRequest {
-	s.PrometheusUID = &v
-	return s
-}
-
-type CreateProductResponseBody struct {
-	Data    *CreateProductResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	ErrCode *string                        `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	ErrMsg  *string                        `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
-	Success *bool                          `json:"success,omitempty" xml:"success,omitempty"`
-}
-
-func (s CreateProductResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateProductResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateProductResponseBody) SetData(v *CreateProductResponseBodyData) *CreateProductResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *CreateProductResponseBody) SetErrCode(v string) *CreateProductResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *CreateProductResponseBody) SetErrMsg(v string) *CreateProductResponseBody {
-	s.ErrMsg = &v
-	return s
-}
-
-func (s *CreateProductResponseBody) SetSuccess(v bool) *CreateProductResponseBody {
-	s.Success = &v
-	return s
-}
-
-type CreateProductResponseBodyData struct {
-	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
-}
-
-func (s CreateProductResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateProductResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *CreateProductResponseBodyData) SetUid(v string) *CreateProductResponseBodyData {
-	s.Uid = &v
-	return s
-}
-
-type CreateProductResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateProductResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateProductResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateProductResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateProductResponse) SetHeaders(v map[string]*string) *CreateProductResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateProductResponse) SetBody(v *CreateProductResponseBody) *CreateProductResponse {
-	s.Body = v
-	return s
-}
-
-type GetProductEnvironmentsRequest struct {
-	ProductUID *string                                   `json:"productUID,omitempty" xml:"productUID,omitempty"`
-	EnvType    *string                                   `json:"envType,omitempty" xml:"envType,omitempty"`
-	Platforms  []*GetProductEnvironmentsRequestPlatforms `json:"platforms,omitempty" xml:"platforms,omitempty" type:"Repeated"`
-}
-
-func (s GetProductEnvironmentsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetProductEnvironmentsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetProductEnvironmentsRequest) SetProductUID(v string) *GetProductEnvironmentsRequest {
-	s.ProductUID = &v
-	return s
-}
-
-func (s *GetProductEnvironmentsRequest) SetEnvType(v string) *GetProductEnvironmentsRequest {
-	s.EnvType = &v
-	return s
-}
-
-func (s *GetProductEnvironmentsRequest) SetPlatforms(v []*GetProductEnvironmentsRequestPlatforms) *GetProductEnvironmentsRequest {
-	s.Platforms = v
-	return s
-}
-
-type GetProductEnvironmentsRequestPlatforms struct {
-	Architecture *string `json:"architecture,omitempty" xml:"architecture,omitempty"`
-	Os           *string `json:"os,omitempty" xml:"os,omitempty"`
-}
-
-func (s GetProductEnvironmentsRequestPlatforms) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetProductEnvironmentsRequestPlatforms) GoString() string {
-	return s.String()
-}
-
-func (s *GetProductEnvironmentsRequestPlatforms) SetArchitecture(v string) *GetProductEnvironmentsRequestPlatforms {
-	s.Architecture = &v
-	return s
-}
-
-func (s *GetProductEnvironmentsRequestPlatforms) SetOs(v string) *GetProductEnvironmentsRequestPlatforms {
-	s.Os = &v
-	return s
-}
-
-type GetProductEnvironmentsShrinkRequest struct {
-	ProductUID      *string `json:"productUID,omitempty" xml:"productUID,omitempty"`
-	EnvType         *string `json:"envType,omitempty" xml:"envType,omitempty"`
-	PlatformsShrink *string `json:"platforms,omitempty" xml:"platforms,omitempty"`
-}
-
-func (s GetProductEnvironmentsShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetProductEnvironmentsShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetProductEnvironmentsShrinkRequest) SetProductUID(v string) *GetProductEnvironmentsShrinkRequest {
-	s.ProductUID = &v
-	return s
-}
-
-func (s *GetProductEnvironmentsShrinkRequest) SetEnvType(v string) *GetProductEnvironmentsShrinkRequest {
-	s.EnvType = &v
-	return s
-}
-
-func (s *GetProductEnvironmentsShrinkRequest) SetPlatformsShrink(v string) *GetProductEnvironmentsShrinkRequest {
-	s.PlatformsShrink = &v
-	return s
-}
-
-type GetProductEnvironmentsResponseBody struct {
-	Data    *GetProductEnvironmentsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	ErrCode *string                                 `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	ErrMsg  *string                                 `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
-	Success *bool                                   `json:"success,omitempty" xml:"success,omitempty"`
-}
-
-func (s GetProductEnvironmentsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetProductEnvironmentsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetProductEnvironmentsResponseBody) SetData(v *GetProductEnvironmentsResponseBodyData) *GetProductEnvironmentsResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetProductEnvironmentsResponseBody) SetErrCode(v string) *GetProductEnvironmentsResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *GetProductEnvironmentsResponseBody) SetErrMsg(v string) *GetProductEnvironmentsResponseBody {
-	s.ErrMsg = &v
-	return s
-}
-
-func (s *GetProductEnvironmentsResponseBody) SetSuccess(v bool) *GetProductEnvironmentsResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetProductEnvironmentsResponseBodyData struct {
-	ClusterId      *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
-	CreatedAt      *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	Description    *string `json:"description,omitempty" xml:"description,omitempty"`
-	InstanceList   *string `json:"instanceList,omitempty" xml:"instanceList,omitempty"`
-	Name           *string `json:"name,omitempty" xml:"name,omitempty"`
-	ProductName    *string `json:"productName,omitempty" xml:"productName,omitempty"`
-	ProductVersion *string `json:"productVersion,omitempty" xml:"productVersion,omitempty"`
-	Uid            *string `json:"uid,omitempty" xml:"uid,omitempty"`
-	VendorConfig   *string `json:"vendorConfig,omitempty" xml:"vendorConfig,omitempty"`
-	VendorType     *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
-}
-
-func (s GetProductEnvironmentsResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetProductEnvironmentsResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetProductEnvironmentsResponseBodyData) SetClusterId(v string) *GetProductEnvironmentsResponseBodyData {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *GetProductEnvironmentsResponseBodyData) SetCreatedAt(v string) *GetProductEnvironmentsResponseBodyData {
-	s.CreatedAt = &v
-	return s
-}
-
-func (s *GetProductEnvironmentsResponseBodyData) SetDescription(v string) *GetProductEnvironmentsResponseBodyData {
-	s.Description = &v
-	return s
-}
-
-func (s *GetProductEnvironmentsResponseBodyData) SetInstanceList(v string) *GetProductEnvironmentsResponseBodyData {
-	s.InstanceList = &v
-	return s
-}
-
-func (s *GetProductEnvironmentsResponseBodyData) SetName(v string) *GetProductEnvironmentsResponseBodyData {
-	s.Name = &v
-	return s
-}
-
-func (s *GetProductEnvironmentsResponseBodyData) SetProductName(v string) *GetProductEnvironmentsResponseBodyData {
-	s.ProductName = &v
-	return s
-}
-
-func (s *GetProductEnvironmentsResponseBodyData) SetProductVersion(v string) *GetProductEnvironmentsResponseBodyData {
-	s.ProductVersion = &v
-	return s
-}
-
-func (s *GetProductEnvironmentsResponseBodyData) SetUid(v string) *GetProductEnvironmentsResponseBodyData {
-	s.Uid = &v
-	return s
-}
-
-func (s *GetProductEnvironmentsResponseBodyData) SetVendorConfig(v string) *GetProductEnvironmentsResponseBodyData {
-	s.VendorConfig = &v
-	return s
-}
-
-func (s *GetProductEnvironmentsResponseBodyData) SetVendorType(v string) *GetProductEnvironmentsResponseBodyData {
-	s.VendorType = &v
-	return s
-}
-
-type GetProductEnvironmentsResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetProductEnvironmentsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetProductEnvironmentsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetProductEnvironmentsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetProductEnvironmentsResponse) SetHeaders(v map[string]*string) *GetProductEnvironmentsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetProductEnvironmentsResponse) SetBody(v *GetProductEnvironmentsResponseBody) *GetProductEnvironmentsResponse {
-	s.Body = v
-	return s
-}
-
 type DeleteComponentResponseBody struct {
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
 	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
@@ -4259,58 +8532,6 @@ func (s *CreateEnvironmentWithSnapshotResponse) SetHeaders(v map[string]*string)
 }
 
 func (s *CreateEnvironmentWithSnapshotResponse) SetBody(v *CreateEnvironmentWithSnapshotResponseBody) *CreateEnvironmentWithSnapshotResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteEnvironmentResponseBody struct {
-	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	ErrCode    *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
-}
-
-func (s DeleteEnvironmentResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteEnvironmentResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteEnvironmentResponseBody) SetErrMessage(v string) *DeleteEnvironmentResponseBody {
-	s.ErrMessage = &v
-	return s
-}
-
-func (s *DeleteEnvironmentResponseBody) SetSuccess(v bool) *DeleteEnvironmentResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *DeleteEnvironmentResponseBody) SetErrCode(v string) *DeleteEnvironmentResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-type DeleteEnvironmentResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteEnvironmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteEnvironmentResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteEnvironmentResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteEnvironmentResponse) SetHeaders(v map[string]*string) *DeleteEnvironmentResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteEnvironmentResponse) SetBody(v *DeleteEnvironmentResponseBody) *DeleteEnvironmentResponse {
 	s.Body = v
 	return s
 }
@@ -4559,134 +8780,6 @@ func (s *GetChildrenComponentVersionParametersListResponse) SetBody(v *GetChildr
 	return s
 }
 
-type CreateSnapshotRequest struct {
-	Description        *string `json:"description,omitempty" xml:"description,omitempty"`
-	Name               *string `json:"name,omitempty" xml:"name,omitempty"`
-	ProductName        *string `json:"productName,omitempty" xml:"productName,omitempty"`
-	ProductVersion     *string `json:"productVersion,omitempty" xml:"productVersion,omitempty"`
-	ProductVersionDesc *string `json:"productVersionDesc,omitempty" xml:"productVersionDesc,omitempty"`
-	Region             *string `json:"region,omitempty" xml:"region,omitempty"`
-	Vpcid              *string `json:"vpcid,omitempty" xml:"vpcid,omitempty"`
-}
-
-func (s CreateSnapshotRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateSnapshotRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateSnapshotRequest) SetDescription(v string) *CreateSnapshotRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *CreateSnapshotRequest) SetName(v string) *CreateSnapshotRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *CreateSnapshotRequest) SetProductName(v string) *CreateSnapshotRequest {
-	s.ProductName = &v
-	return s
-}
-
-func (s *CreateSnapshotRequest) SetProductVersion(v string) *CreateSnapshotRequest {
-	s.ProductVersion = &v
-	return s
-}
-
-func (s *CreateSnapshotRequest) SetProductVersionDesc(v string) *CreateSnapshotRequest {
-	s.ProductVersionDesc = &v
-	return s
-}
-
-func (s *CreateSnapshotRequest) SetRegion(v string) *CreateSnapshotRequest {
-	s.Region = &v
-	return s
-}
-
-func (s *CreateSnapshotRequest) SetVpcid(v string) *CreateSnapshotRequest {
-	s.Vpcid = &v
-	return s
-}
-
-type CreateSnapshotResponseBody struct {
-	Data    *CreateSnapshotResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	ErrCode *string                         `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	ErrMsg  *string                         `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
-	Success *bool                           `json:"success,omitempty" xml:"success,omitempty"`
-}
-
-func (s CreateSnapshotResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateSnapshotResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateSnapshotResponseBody) SetData(v *CreateSnapshotResponseBodyData) *CreateSnapshotResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *CreateSnapshotResponseBody) SetErrCode(v string) *CreateSnapshotResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *CreateSnapshotResponseBody) SetErrMsg(v string) *CreateSnapshotResponseBody {
-	s.ErrMsg = &v
-	return s
-}
-
-func (s *CreateSnapshotResponseBody) SetSuccess(v bool) *CreateSnapshotResponseBody {
-	s.Success = &v
-	return s
-}
-
-type CreateSnapshotResponseBodyData struct {
-	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
-}
-
-func (s CreateSnapshotResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateSnapshotResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *CreateSnapshotResponseBodyData) SetUid(v string) *CreateSnapshotResponseBodyData {
-	s.Uid = &v
-	return s
-}
-
-type CreateSnapshotResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateSnapshotResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateSnapshotResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateSnapshotResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateSnapshotResponse) SetHeaders(v map[string]*string) *CreateSnapshotResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateSnapshotResponse) SetBody(v *CreateSnapshotResponseBody) *CreateSnapshotResponse {
-	s.Body = v
-	return s
-}
-
 type GetLatestVersionDifferencesRequest struct {
 	// 上一个产品版本id
 	PreVersionID *string `json:"preVersionID,omitempty" xml:"preVersionID,omitempty"`
@@ -4742,75 +8835,6 @@ func (s *GetLatestVersionDifferencesResponse) SetHeaders(v map[string]*string) *
 }
 
 func (s *GetLatestVersionDifferencesResponse) SetBody(v *GetLatestVersionDifferencesResponseBody) *GetLatestVersionDifferencesResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteEnvironmentNodeRequest struct {
-	EnvUID *string `json:"envUID,omitempty" xml:"envUID,omitempty"`
-}
-
-func (s DeleteEnvironmentNodeRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteEnvironmentNodeRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteEnvironmentNodeRequest) SetEnvUID(v string) *DeleteEnvironmentNodeRequest {
-	s.EnvUID = &v
-	return s
-}
-
-type DeleteEnvironmentNodeResponseBody struct {
-	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	ErrCode    *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
-}
-
-func (s DeleteEnvironmentNodeResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteEnvironmentNodeResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteEnvironmentNodeResponseBody) SetErrMessage(v string) *DeleteEnvironmentNodeResponseBody {
-	s.ErrMessage = &v
-	return s
-}
-
-func (s *DeleteEnvironmentNodeResponseBody) SetSuccess(v bool) *DeleteEnvironmentNodeResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *DeleteEnvironmentNodeResponseBody) SetErrCode(v string) *DeleteEnvironmentNodeResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-type DeleteEnvironmentNodeResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteEnvironmentNodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteEnvironmentNodeResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteEnvironmentNodeResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteEnvironmentNodeResponse) SetHeaders(v map[string]*string) *DeleteEnvironmentNodeResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteEnvironmentNodeResponse) SetBody(v *DeleteEnvironmentNodeResponseBody) *DeleteEnvironmentNodeResponse {
 	s.Body = v
 	return s
 }
@@ -5033,260 +9057,43 @@ func (s *ApplyComponentResponse) SetBody(v *ApplyComponentResponseBody) *ApplyCo
 	return s
 }
 
-type GetSnapshotInstancesRequest struct {
-	PageSize   *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	PageNum    *int32  `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
-	SortKey    *string `json:"sortKey,omitempty" xml:"sortKey,omitempty"`
-	SortDirect *string `json:"sortDirect,omitempty" xml:"sortDirect,omitempty"`
+type GetProductVersionResourcesResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
-func (s GetSnapshotInstancesRequest) String() string {
+func (s GetProductVersionResourcesResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetSnapshotInstancesRequest) GoString() string {
+func (s GetProductVersionResourcesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetSnapshotInstancesRequest) SetPageSize(v int32) *GetSnapshotInstancesRequest {
-	s.PageSize = &v
+func (s *GetProductVersionResourcesResponseBody) SetRequestId(v string) *GetProductVersionResourcesResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *GetSnapshotInstancesRequest) SetPageNum(v int32) *GetSnapshotInstancesRequest {
-	s.PageNum = &v
-	return s
+type GetProductVersionResourcesResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetProductVersionResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s *GetSnapshotInstancesRequest) SetSortKey(v string) *GetSnapshotInstancesRequest {
-	s.SortKey = &v
-	return s
-}
-
-func (s *GetSnapshotInstancesRequest) SetSortDirect(v string) *GetSnapshotInstancesRequest {
-	s.SortDirect = &v
-	return s
-}
-
-type GetSnapshotInstancesResponseBody struct {
-	Data    *GetSnapshotInstancesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	ErrCode *string                               `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	ErrMsg  *string                               `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
-	Success *bool                                 `json:"success,omitempty" xml:"success,omitempty"`
-}
-
-func (s GetSnapshotInstancesResponseBody) String() string {
+func (s GetProductVersionResourcesResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetSnapshotInstancesResponseBody) GoString() string {
+func (s GetProductVersionResourcesResponse) GoString() string {
 	return s.String()
 }
 
-func (s *GetSnapshotInstancesResponseBody) SetData(v *GetSnapshotInstancesResponseBodyData) *GetSnapshotInstancesResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetSnapshotInstancesResponseBody) SetErrCode(v string) *GetSnapshotInstancesResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *GetSnapshotInstancesResponseBody) SetErrMsg(v string) *GetSnapshotInstancesResponseBody {
-	s.ErrMsg = &v
-	return s
-}
-
-func (s *GetSnapshotInstancesResponseBody) SetSuccess(v bool) *GetSnapshotInstancesResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetSnapshotInstancesResponseBodyData struct {
-	List     []*GetSnapshotInstancesResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
-	PageNum  *int32                                      `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
-	PageSize *int32                                      `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	Total    *int32                                      `json:"total,omitempty" xml:"total,omitempty"`
-}
-
-func (s GetSnapshotInstancesResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSnapshotInstancesResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetSnapshotInstancesResponseBodyData) SetList(v []*GetSnapshotInstancesResponseBodyDataList) *GetSnapshotInstancesResponseBodyData {
-	s.List = v
-	return s
-}
-
-func (s *GetSnapshotInstancesResponseBodyData) SetPageNum(v int32) *GetSnapshotInstancesResponseBodyData {
-	s.PageNum = &v
-	return s
-}
-
-func (s *GetSnapshotInstancesResponseBodyData) SetPageSize(v int32) *GetSnapshotInstancesResponseBodyData {
-	s.PageSize = &v
-	return s
-}
-
-func (s *GetSnapshotInstancesResponseBodyData) SetTotal(v int32) *GetSnapshotInstancesResponseBodyData {
-	s.Total = &v
-	return s
-}
-
-type GetSnapshotInstancesResponseBodyDataList struct {
-	Annotations       *GetSnapshotInstancesResponseBodyDataListAnnotations `json:"annotations,omitempty" xml:"annotations,omitempty" type:"Struct"`
-	Cpu               *int32                                               `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	EcsInstanceID     *string                                              `json:"ecsInstanceID,omitempty" xml:"ecsInstanceID,omitempty"`
-	HostName          *string                                              `json:"hostName,omitempty" xml:"hostName,omitempty"`
-	Identifier        *string                                              `json:"identifier,omitempty" xml:"identifier,omitempty"`
-	ImageID           *string                                              `json:"imageID,omitempty" xml:"imageID,omitempty"`
-	InstanceType      *string                                              `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	InternetBandwidth *int32                                               `json:"internetBandwidth,omitempty" xml:"internetBandwidth,omitempty"`
-	JoinSnapshot      *bool                                                `json:"joinSnapshot,omitempty" xml:"joinSnapshot,omitempty"`
-	Memory            *int32                                               `json:"memory,omitempty" xml:"memory,omitempty"`
-	PrivateIP         *string                                              `json:"privateIP,omitempty" xml:"privateIP,omitempty"`
-	PublicIP          *string                                              `json:"publicIP,omitempty" xml:"publicIP,omitempty"`
-	RootPassword      *string                                              `json:"rootPassword,omitempty" xml:"rootPassword,omitempty"`
-	StorageTotalSize  *int32                                               `json:"storageTotalSize,omitempty" xml:"storageTotalSize,omitempty"`
-	Uid               *string                                              `json:"uid,omitempty" xml:"uid,omitempty"`
-}
-
-func (s GetSnapshotInstancesResponseBodyDataList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSnapshotInstancesResponseBodyDataList) GoString() string {
-	return s.String()
-}
-
-func (s *GetSnapshotInstancesResponseBodyDataList) SetAnnotations(v *GetSnapshotInstancesResponseBodyDataListAnnotations) *GetSnapshotInstancesResponseBodyDataList {
-	s.Annotations = v
-	return s
-}
-
-func (s *GetSnapshotInstancesResponseBodyDataList) SetCpu(v int32) *GetSnapshotInstancesResponseBodyDataList {
-	s.Cpu = &v
-	return s
-}
-
-func (s *GetSnapshotInstancesResponseBodyDataList) SetEcsInstanceID(v string) *GetSnapshotInstancesResponseBodyDataList {
-	s.EcsInstanceID = &v
-	return s
-}
-
-func (s *GetSnapshotInstancesResponseBodyDataList) SetHostName(v string) *GetSnapshotInstancesResponseBodyDataList {
-	s.HostName = &v
-	return s
-}
-
-func (s *GetSnapshotInstancesResponseBodyDataList) SetIdentifier(v string) *GetSnapshotInstancesResponseBodyDataList {
-	s.Identifier = &v
-	return s
-}
-
-func (s *GetSnapshotInstancesResponseBodyDataList) SetImageID(v string) *GetSnapshotInstancesResponseBodyDataList {
-	s.ImageID = &v
-	return s
-}
-
-func (s *GetSnapshotInstancesResponseBodyDataList) SetInstanceType(v string) *GetSnapshotInstancesResponseBodyDataList {
-	s.InstanceType = &v
-	return s
-}
-
-func (s *GetSnapshotInstancesResponseBodyDataList) SetInternetBandwidth(v int32) *GetSnapshotInstancesResponseBodyDataList {
-	s.InternetBandwidth = &v
-	return s
-}
-
-func (s *GetSnapshotInstancesResponseBodyDataList) SetJoinSnapshot(v bool) *GetSnapshotInstancesResponseBodyDataList {
-	s.JoinSnapshot = &v
-	return s
-}
-
-func (s *GetSnapshotInstancesResponseBodyDataList) SetMemory(v int32) *GetSnapshotInstancesResponseBodyDataList {
-	s.Memory = &v
-	return s
-}
-
-func (s *GetSnapshotInstancesResponseBodyDataList) SetPrivateIP(v string) *GetSnapshotInstancesResponseBodyDataList {
-	s.PrivateIP = &v
-	return s
-}
-
-func (s *GetSnapshotInstancesResponseBodyDataList) SetPublicIP(v string) *GetSnapshotInstancesResponseBodyDataList {
-	s.PublicIP = &v
-	return s
-}
-
-func (s *GetSnapshotInstancesResponseBodyDataList) SetRootPassword(v string) *GetSnapshotInstancesResponseBodyDataList {
-	s.RootPassword = &v
-	return s
-}
-
-func (s *GetSnapshotInstancesResponseBodyDataList) SetStorageTotalSize(v int32) *GetSnapshotInstancesResponseBodyDataList {
-	s.StorageTotalSize = &v
-	return s
-}
-
-func (s *GetSnapshotInstancesResponseBodyDataList) SetUid(v string) *GetSnapshotInstancesResponseBodyDataList {
-	s.Uid = &v
-	return s
-}
-
-type GetSnapshotInstancesResponseBodyDataListAnnotations struct {
-	AdditionalProp1 *string `json:"additionalProp1,omitempty" xml:"additionalProp1,omitempty"`
-	AdditionalProp2 *string `json:"additionalProp2,omitempty" xml:"additionalProp2,omitempty"`
-	AdditionalProp3 *string `json:"additionalProp3,omitempty" xml:"additionalProp3,omitempty"`
-}
-
-func (s GetSnapshotInstancesResponseBodyDataListAnnotations) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSnapshotInstancesResponseBodyDataListAnnotations) GoString() string {
-	return s.String()
-}
-
-func (s *GetSnapshotInstancesResponseBodyDataListAnnotations) SetAdditionalProp1(v string) *GetSnapshotInstancesResponseBodyDataListAnnotations {
-	s.AdditionalProp1 = &v
-	return s
-}
-
-func (s *GetSnapshotInstancesResponseBodyDataListAnnotations) SetAdditionalProp2(v string) *GetSnapshotInstancesResponseBodyDataListAnnotations {
-	s.AdditionalProp2 = &v
-	return s
-}
-
-func (s *GetSnapshotInstancesResponseBodyDataListAnnotations) SetAdditionalProp3(v string) *GetSnapshotInstancesResponseBodyDataListAnnotations {
-	s.AdditionalProp3 = &v
-	return s
-}
-
-type GetSnapshotInstancesResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetSnapshotInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetSnapshotInstancesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSnapshotInstancesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetSnapshotInstancesResponse) SetHeaders(v map[string]*string) *GetSnapshotInstancesResponse {
+func (s *GetProductVersionResourcesResponse) SetHeaders(v map[string]*string) *GetProductVersionResourcesResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *GetSnapshotInstancesResponse) SetBody(v *GetSnapshotInstancesResponseBody) *GetSnapshotInstancesResponse {
+func (s *GetProductVersionResourcesResponse) SetBody(v *GetProductVersionResourcesResponseBody) *GetProductVersionResourcesResponse {
 	s.Body = v
 	return s
 }
@@ -5531,87 +9338,6 @@ func (s *ListEnvironmentsResponse) SetBody(v *ListEnvironmentsResponseBody) *Lis
 	return s
 }
 
-type CheckSLRRequest struct {
-	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
-}
-
-func (s CheckSLRRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CheckSLRRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CheckSLRRequest) SetUid(v string) *CheckSLRRequest {
-	s.Uid = &v
-	return s
-}
-
-type CheckSLRResponseBody struct {
-	Data      *string `json:"data,omitempty" xml:"data,omitempty"`
-	ErrCode   *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	ErrMsg    *string `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
-}
-
-func (s CheckSLRResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CheckSLRResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CheckSLRResponseBody) SetData(v string) *CheckSLRResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *CheckSLRResponseBody) SetErrCode(v string) *CheckSLRResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *CheckSLRResponseBody) SetErrMsg(v string) *CheckSLRResponseBody {
-	s.ErrMsg = &v
-	return s
-}
-
-func (s *CheckSLRResponseBody) SetErrorCode(v string) *CheckSLRResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *CheckSLRResponseBody) SetSuccess(v bool) *CheckSLRResponseBody {
-	s.Success = &v
-	return s
-}
-
-type CheckSLRResponse struct {
-	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CheckSLRResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CheckSLRResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CheckSLRResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CheckSLRResponse) SetHeaders(v map[string]*string) *CheckSLRResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CheckSLRResponse) SetBody(v *CheckSLRResponseBody) *CheckSLRResponse {
-	s.Body = v
-	return s
-}
-
 type UpdateProductRequest struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 }
@@ -5681,609 +9407,43 @@ func (s *UpdateProductResponse) SetBody(v *UpdateProductResponseBody) *UpdatePro
 	return s
 }
 
-type ApplyComponentsRequest struct {
-	ChildrenList []*ApplyComponentsRequestChildrenList `json:"childrenList,omitempty" xml:"childrenList,omitempty" type:"Repeated"`
-	Component    *string                               `json:"component,omitempty" xml:"component,omitempty"`
+type DeleteProductVersionConfigResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
-func (s ApplyComponentsRequest) String() string {
+func (s DeleteProductVersionConfigResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ApplyComponentsRequest) GoString() string {
+func (s DeleteProductVersionConfigResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ApplyComponentsRequest) SetChildrenList(v []*ApplyComponentsRequestChildrenList) *ApplyComponentsRequest {
-	s.ChildrenList = v
+func (s *DeleteProductVersionConfigResponseBody) SetRequestId(v string) *DeleteProductVersionConfigResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *ApplyComponentsRequest) SetComponent(v string) *ApplyComponentsRequest {
-	s.Component = &v
-	return s
+type DeleteProductVersionConfigResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteProductVersionConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-type ApplyComponentsRequestChildrenList struct {
-	Annotations         *string                                        `json:"annotations,omitempty" xml:"annotations,omitempty"`
-	AppVersion          *string                                        `json:"appVersion,omitempty" xml:"appVersion,omitempty"`
-	Category            *string                                        `json:"category,omitempty" xml:"category,omitempty"`
-	ComponentClass      *string                                        `json:"componentClass,omitempty" xml:"componentClass,omitempty"`
-	Description         *string                                        `json:"description,omitempty" xml:"description,omitempty"`
-	Documents           *string                                        `json:"documents,omitempty" xml:"documents,omitempty"`
-	ImagesMapping       *string                                        `json:"imagesMapping,omitempty" xml:"imagesMapping,omitempty"`
-	Name                *string                                        `json:"name,omitempty" xml:"name,omitempty"`
-	Namespace           *string                                        `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	OrchestrationType   *string                                        `json:"orchestrationType,omitempty" xml:"orchestrationType,omitempty"`
-	OrchestrationValues *string                                        `json:"orchestrationValues,omitempty" xml:"orchestrationValues,omitempty"`
-	PackageURL          *string                                        `json:"packageURL,omitempty" xml:"packageURL,omitempty"`
-	ParentComponent     *bool                                          `json:"parentComponent,omitempty" xml:"parentComponent,omitempty"`
-	Platforms           []*ApplyComponentsRequestChildrenListPlatforms `json:"platforms,omitempty" xml:"platforms,omitempty" type:"Repeated"`
-	Priority            *int32                                         `json:"priority,omitempty" xml:"priority,omitempty"`
-	Provider            *string                                        `json:"provider,omitempty" xml:"provider,omitempty"`
-	Public              *bool                                          `json:"public,omitempty" xml:"public,omitempty"`
-	Readme              *string                                        `json:"readme,omitempty" xml:"readme,omitempty"`
-	Resources           *string                                        `json:"resources,omitempty" xml:"resources,omitempty"`
-	Singleton           *bool                                          `json:"singleton,omitempty" xml:"singleton,omitempty"`
-	Version             *string                                        `json:"version,omitempty" xml:"version,omitempty"`
-}
-
-func (s ApplyComponentsRequestChildrenList) String() string {
+func (s DeleteProductVersionConfigResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ApplyComponentsRequestChildrenList) GoString() string {
+func (s DeleteProductVersionConfigResponse) GoString() string {
 	return s.String()
 }
 
-func (s *ApplyComponentsRequestChildrenList) SetAnnotations(v string) *ApplyComponentsRequestChildrenList {
-	s.Annotations = &v
-	return s
-}
-
-func (s *ApplyComponentsRequestChildrenList) SetAppVersion(v string) *ApplyComponentsRequestChildrenList {
-	s.AppVersion = &v
-	return s
-}
-
-func (s *ApplyComponentsRequestChildrenList) SetCategory(v string) *ApplyComponentsRequestChildrenList {
-	s.Category = &v
-	return s
-}
-
-func (s *ApplyComponentsRequestChildrenList) SetComponentClass(v string) *ApplyComponentsRequestChildrenList {
-	s.ComponentClass = &v
-	return s
-}
-
-func (s *ApplyComponentsRequestChildrenList) SetDescription(v string) *ApplyComponentsRequestChildrenList {
-	s.Description = &v
-	return s
-}
-
-func (s *ApplyComponentsRequestChildrenList) SetDocuments(v string) *ApplyComponentsRequestChildrenList {
-	s.Documents = &v
-	return s
-}
-
-func (s *ApplyComponentsRequestChildrenList) SetImagesMapping(v string) *ApplyComponentsRequestChildrenList {
-	s.ImagesMapping = &v
-	return s
-}
-
-func (s *ApplyComponentsRequestChildrenList) SetName(v string) *ApplyComponentsRequestChildrenList {
-	s.Name = &v
-	return s
-}
-
-func (s *ApplyComponentsRequestChildrenList) SetNamespace(v string) *ApplyComponentsRequestChildrenList {
-	s.Namespace = &v
-	return s
-}
-
-func (s *ApplyComponentsRequestChildrenList) SetOrchestrationType(v string) *ApplyComponentsRequestChildrenList {
-	s.OrchestrationType = &v
-	return s
-}
-
-func (s *ApplyComponentsRequestChildrenList) SetOrchestrationValues(v string) *ApplyComponentsRequestChildrenList {
-	s.OrchestrationValues = &v
-	return s
-}
-
-func (s *ApplyComponentsRequestChildrenList) SetPackageURL(v string) *ApplyComponentsRequestChildrenList {
-	s.PackageURL = &v
-	return s
-}
-
-func (s *ApplyComponentsRequestChildrenList) SetParentComponent(v bool) *ApplyComponentsRequestChildrenList {
-	s.ParentComponent = &v
-	return s
-}
-
-func (s *ApplyComponentsRequestChildrenList) SetPlatforms(v []*ApplyComponentsRequestChildrenListPlatforms) *ApplyComponentsRequestChildrenList {
-	s.Platforms = v
-	return s
-}
-
-func (s *ApplyComponentsRequestChildrenList) SetPriority(v int32) *ApplyComponentsRequestChildrenList {
-	s.Priority = &v
-	return s
-}
-
-func (s *ApplyComponentsRequestChildrenList) SetProvider(v string) *ApplyComponentsRequestChildrenList {
-	s.Provider = &v
-	return s
-}
-
-func (s *ApplyComponentsRequestChildrenList) SetPublic(v bool) *ApplyComponentsRequestChildrenList {
-	s.Public = &v
-	return s
-}
-
-func (s *ApplyComponentsRequestChildrenList) SetReadme(v string) *ApplyComponentsRequestChildrenList {
-	s.Readme = &v
-	return s
-}
-
-func (s *ApplyComponentsRequestChildrenList) SetResources(v string) *ApplyComponentsRequestChildrenList {
-	s.Resources = &v
-	return s
-}
-
-func (s *ApplyComponentsRequestChildrenList) SetSingleton(v bool) *ApplyComponentsRequestChildrenList {
-	s.Singleton = &v
-	return s
-}
-
-func (s *ApplyComponentsRequestChildrenList) SetVersion(v string) *ApplyComponentsRequestChildrenList {
-	s.Version = &v
-	return s
-}
-
-type ApplyComponentsRequestChildrenListPlatforms struct {
-	Architecture *string `json:"architecture,omitempty" xml:"architecture,omitempty"`
-	Os           *string `json:"os,omitempty" xml:"os,omitempty"`
-}
-
-func (s ApplyComponentsRequestChildrenListPlatforms) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ApplyComponentsRequestChildrenListPlatforms) GoString() string {
-	return s.String()
-}
-
-func (s *ApplyComponentsRequestChildrenListPlatforms) SetArchitecture(v string) *ApplyComponentsRequestChildrenListPlatforms {
-	s.Architecture = &v
-	return s
-}
-
-func (s *ApplyComponentsRequestChildrenListPlatforms) SetOs(v string) *ApplyComponentsRequestChildrenListPlatforms {
-	s.Os = &v
-	return s
-}
-
-type ApplyComponentsResponseBody struct {
-	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	ErrMsg  *string `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
-	Status  *string `json:"status,omitempty" xml:"status,omitempty"`
-	Success *bool   `json:"success,omitempty" xml:"success,omitempty"`
-}
-
-func (s ApplyComponentsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ApplyComponentsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ApplyComponentsResponseBody) SetErrCode(v string) *ApplyComponentsResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *ApplyComponentsResponseBody) SetErrMsg(v string) *ApplyComponentsResponseBody {
-	s.ErrMsg = &v
-	return s
-}
-
-func (s *ApplyComponentsResponseBody) SetStatus(v string) *ApplyComponentsResponseBody {
-	s.Status = &v
-	return s
-}
-
-func (s *ApplyComponentsResponseBody) SetSuccess(v bool) *ApplyComponentsResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ApplyComponentsResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ApplyComponentsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ApplyComponentsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ApplyComponentsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ApplyComponentsResponse) SetHeaders(v map[string]*string) *ApplyComponentsResponse {
+func (s *DeleteProductVersionConfigResponse) SetHeaders(v map[string]*string) *DeleteProductVersionConfigResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *ApplyComponentsResponse) SetBody(v *ApplyComponentsResponseBody) *ApplyComponentsResponse {
-	s.Body = v
-	return s
-}
-
-type CreatePackageConfigResponseBody struct {
-	Data    *CreatePackageConfigResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	ErrCode *string                              `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	ErrMsg  *string                              `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
-	Success *bool                                `json:"success,omitempty" xml:"success,omitempty"`
-}
-
-func (s CreatePackageConfigResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreatePackageConfigResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreatePackageConfigResponseBody) SetData(v *CreatePackageConfigResponseBodyData) *CreatePackageConfigResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *CreatePackageConfigResponseBody) SetErrCode(v string) *CreatePackageConfigResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *CreatePackageConfigResponseBody) SetErrMsg(v string) *CreatePackageConfigResponseBody {
-	s.ErrMsg = &v
-	return s
-}
-
-func (s *CreatePackageConfigResponseBody) SetSuccess(v bool) *CreatePackageConfigResponseBody {
-	s.Success = &v
-	return s
-}
-
-type CreatePackageConfigResponseBodyData struct {
-	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
-}
-
-func (s CreatePackageConfigResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreatePackageConfigResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *CreatePackageConfigResponseBodyData) SetUid(v string) *CreatePackageConfigResponseBodyData {
-	s.Uid = &v
-	return s
-}
-
-type CreatePackageConfigResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreatePackageConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreatePackageConfigResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreatePackageConfigResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreatePackageConfigResponse) SetHeaders(v map[string]*string) *CreatePackageConfigResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreatePackageConfigResponse) SetBody(v *CreatePackageConfigResponseBody) *CreatePackageConfigResponse {
-	s.Body = v
-	return s
-}
-
-type AddProductComponentRequest struct {
-	ReleaseName *string `json:"releaseName,omitempty" xml:"releaseName,omitempty"`
-}
-
-func (s AddProductComponentRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddProductComponentRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AddProductComponentRequest) SetReleaseName(v string) *AddProductComponentRequest {
-	s.ReleaseName = &v
-	return s
-}
-
-type AddProductComponentResponseBody struct {
-	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	ErrMsg  *string `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
-	Status  *string `json:"status,omitempty" xml:"status,omitempty"`
-	Success *bool   `json:"success,omitempty" xml:"success,omitempty"`
-}
-
-func (s AddProductComponentResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddProductComponentResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *AddProductComponentResponseBody) SetErrCode(v string) *AddProductComponentResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *AddProductComponentResponseBody) SetErrMsg(v string) *AddProductComponentResponseBody {
-	s.ErrMsg = &v
-	return s
-}
-
-func (s *AddProductComponentResponseBody) SetStatus(v string) *AddProductComponentResponseBody {
-	s.Status = &v
-	return s
-}
-
-func (s *AddProductComponentResponseBody) SetSuccess(v bool) *AddProductComponentResponseBody {
-	s.Success = &v
-	return s
-}
-
-type AddProductComponentResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddProductComponentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s AddProductComponentResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddProductComponentResponse) GoString() string {
-	return s.String()
-}
-
-func (s *AddProductComponentResponse) SetHeaders(v map[string]*string) *AddProductComponentResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *AddProductComponentResponse) SetBody(v *AddProductComponentResponseBody) *AddProductComponentResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteSnapshotResponseBody struct {
-	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	ErrMsg  *string `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
-	Success *bool   `json:"success,omitempty" xml:"success,omitempty"`
-}
-
-func (s DeleteSnapshotResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteSnapshotResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteSnapshotResponseBody) SetErrCode(v string) *DeleteSnapshotResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *DeleteSnapshotResponseBody) SetErrMsg(v string) *DeleteSnapshotResponseBody {
-	s.ErrMsg = &v
-	return s
-}
-
-func (s *DeleteSnapshotResponseBody) SetSuccess(v bool) *DeleteSnapshotResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DeleteSnapshotResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteSnapshotResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteSnapshotResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteSnapshotResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteSnapshotResponse) SetHeaders(v map[string]*string) *DeleteSnapshotResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteSnapshotResponse) SetBody(v *DeleteSnapshotResponseBody) *DeleteSnapshotResponse {
-	s.Body = v
-	return s
-}
-
-type ListEnvironmentsWithSnapshotResponseBody struct {
-	Data    *ListEnvironmentsWithSnapshotResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	ErrCode *string                                       `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	ErrMsg  *string                                       `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
-	Success *bool                                         `json:"success,omitempty" xml:"success,omitempty"`
-}
-
-func (s ListEnvironmentsWithSnapshotResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListEnvironmentsWithSnapshotResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListEnvironmentsWithSnapshotResponseBody) SetData(v *ListEnvironmentsWithSnapshotResponseBodyData) *ListEnvironmentsWithSnapshotResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ListEnvironmentsWithSnapshotResponseBody) SetErrCode(v string) *ListEnvironmentsWithSnapshotResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *ListEnvironmentsWithSnapshotResponseBody) SetErrMsg(v string) *ListEnvironmentsWithSnapshotResponseBody {
-	s.ErrMsg = &v
-	return s
-}
-
-func (s *ListEnvironmentsWithSnapshotResponseBody) SetSuccess(v bool) *ListEnvironmentsWithSnapshotResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ListEnvironmentsWithSnapshotResponseBodyData struct {
-	List     []*ListEnvironmentsWithSnapshotResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
-	PageNum  *int32                                              `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
-	PageSize *int32                                              `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	Total    *int32                                              `json:"total,omitempty" xml:"total,omitempty"`
-}
-
-func (s ListEnvironmentsWithSnapshotResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListEnvironmentsWithSnapshotResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ListEnvironmentsWithSnapshotResponseBodyData) SetList(v []*ListEnvironmentsWithSnapshotResponseBodyDataList) *ListEnvironmentsWithSnapshotResponseBodyData {
-	s.List = v
-	return s
-}
-
-func (s *ListEnvironmentsWithSnapshotResponseBodyData) SetPageNum(v int32) *ListEnvironmentsWithSnapshotResponseBodyData {
-	s.PageNum = &v
-	return s
-}
-
-func (s *ListEnvironmentsWithSnapshotResponseBodyData) SetPageSize(v int32) *ListEnvironmentsWithSnapshotResponseBodyData {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListEnvironmentsWithSnapshotResponseBodyData) SetTotal(v int32) *ListEnvironmentsWithSnapshotResponseBodyData {
-	s.Total = &v
-	return s
-}
-
-type ListEnvironmentsWithSnapshotResponseBodyDataList struct {
-	CreatedAt         *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	Description       *string `json:"description,omitempty" xml:"description,omitempty"`
-	Id                *int32  `json:"id,omitempty" xml:"id,omitempty"`
-	InstanceStatus    *string `json:"instanceStatus,omitempty" xml:"instanceStatus,omitempty"`
-	Name              *string `json:"name,omitempty" xml:"name,omitempty"`
-	ProductName       *string `json:"productName,omitempty" xml:"productName,omitempty"`
-	ProductVersion    *string `json:"productVersion,omitempty" xml:"productVersion,omitempty"`
-	ProductVersionUID *string `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
-	Uid               *string `json:"uid,omitempty" xml:"uid,omitempty"`
-	VendorType        *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
-}
-
-func (s ListEnvironmentsWithSnapshotResponseBodyDataList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListEnvironmentsWithSnapshotResponseBodyDataList) GoString() string {
-	return s.String()
-}
-
-func (s *ListEnvironmentsWithSnapshotResponseBodyDataList) SetCreatedAt(v string) *ListEnvironmentsWithSnapshotResponseBodyDataList {
-	s.CreatedAt = &v
-	return s
-}
-
-func (s *ListEnvironmentsWithSnapshotResponseBodyDataList) SetDescription(v string) *ListEnvironmentsWithSnapshotResponseBodyDataList {
-	s.Description = &v
-	return s
-}
-
-func (s *ListEnvironmentsWithSnapshotResponseBodyDataList) SetId(v int32) *ListEnvironmentsWithSnapshotResponseBodyDataList {
-	s.Id = &v
-	return s
-}
-
-func (s *ListEnvironmentsWithSnapshotResponseBodyDataList) SetInstanceStatus(v string) *ListEnvironmentsWithSnapshotResponseBodyDataList {
-	s.InstanceStatus = &v
-	return s
-}
-
-func (s *ListEnvironmentsWithSnapshotResponseBodyDataList) SetName(v string) *ListEnvironmentsWithSnapshotResponseBodyDataList {
-	s.Name = &v
-	return s
-}
-
-func (s *ListEnvironmentsWithSnapshotResponseBodyDataList) SetProductName(v string) *ListEnvironmentsWithSnapshotResponseBodyDataList {
-	s.ProductName = &v
-	return s
-}
-
-func (s *ListEnvironmentsWithSnapshotResponseBodyDataList) SetProductVersion(v string) *ListEnvironmentsWithSnapshotResponseBodyDataList {
-	s.ProductVersion = &v
-	return s
-}
-
-func (s *ListEnvironmentsWithSnapshotResponseBodyDataList) SetProductVersionUID(v string) *ListEnvironmentsWithSnapshotResponseBodyDataList {
-	s.ProductVersionUID = &v
-	return s
-}
-
-func (s *ListEnvironmentsWithSnapshotResponseBodyDataList) SetUid(v string) *ListEnvironmentsWithSnapshotResponseBodyDataList {
-	s.Uid = &v
-	return s
-}
-
-func (s *ListEnvironmentsWithSnapshotResponseBodyDataList) SetVendorType(v string) *ListEnvironmentsWithSnapshotResponseBodyDataList {
-	s.VendorType = &v
-	return s
-}
-
-type ListEnvironmentsWithSnapshotResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListEnvironmentsWithSnapshotResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListEnvironmentsWithSnapshotResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListEnvironmentsWithSnapshotResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListEnvironmentsWithSnapshotResponse) SetHeaders(v map[string]*string) *ListEnvironmentsWithSnapshotResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListEnvironmentsWithSnapshotResponse) SetBody(v *ListEnvironmentsWithSnapshotResponseBody) *ListEnvironmentsWithSnapshotResponse {
+func (s *DeleteProductVersionConfigResponse) SetBody(v *DeleteProductVersionConfigResponseBody) *DeleteProductVersionConfigResponse {
 	s.Body = v
 	return s
 }
@@ -6510,186 +9670,6 @@ func (s *UpdateSnapshotResponse) SetBody(v *UpdateSnapshotResponseBody) *UpdateS
 	return s
 }
 
-type CreateEnvironmentAndGenerateVendorConfigHeaders struct {
-	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	ClientToken   *string            `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-}
-
-func (s CreateEnvironmentAndGenerateVendorConfigHeaders) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateEnvironmentAndGenerateVendorConfigHeaders) GoString() string {
-	return s.String()
-}
-
-func (s *CreateEnvironmentAndGenerateVendorConfigHeaders) SetCommonHeaders(v map[string]*string) *CreateEnvironmentAndGenerateVendorConfigHeaders {
-	s.CommonHeaders = v
-	return s
-}
-
-func (s *CreateEnvironmentAndGenerateVendorConfigHeaders) SetClientToken(v string) *CreateEnvironmentAndGenerateVendorConfigHeaders {
-	s.ClientToken = &v
-	return s
-}
-
-type CreateEnvironmentAndGenerateVendorConfigRequest struct {
-	EnvUID            *string                                                  `json:"envUID,omitempty" xml:"envUID,omitempty"`
-	Platform          *CreateEnvironmentAndGenerateVendorConfigRequestPlatform `json:"platform,omitempty" xml:"platform,omitempty" type:"Struct"`
-	ProductName       *string                                                  `json:"productName,omitempty" xml:"productName,omitempty"`
-	ProductUID        *string                                                  `json:"productUID,omitempty" xml:"productUID,omitempty"`
-	ProductVersion    *string                                                  `json:"productVersion,omitempty" xml:"productVersion,omitempty"`
-	ProductVersionUID *string                                                  `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
-	VendorType        *string                                                  `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
-}
-
-func (s CreateEnvironmentAndGenerateVendorConfigRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateEnvironmentAndGenerateVendorConfigRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateEnvironmentAndGenerateVendorConfigRequest) SetEnvUID(v string) *CreateEnvironmentAndGenerateVendorConfigRequest {
-	s.EnvUID = &v
-	return s
-}
-
-func (s *CreateEnvironmentAndGenerateVendorConfigRequest) SetPlatform(v *CreateEnvironmentAndGenerateVendorConfigRequestPlatform) *CreateEnvironmentAndGenerateVendorConfigRequest {
-	s.Platform = v
-	return s
-}
-
-func (s *CreateEnvironmentAndGenerateVendorConfigRequest) SetProductName(v string) *CreateEnvironmentAndGenerateVendorConfigRequest {
-	s.ProductName = &v
-	return s
-}
-
-func (s *CreateEnvironmentAndGenerateVendorConfigRequest) SetProductUID(v string) *CreateEnvironmentAndGenerateVendorConfigRequest {
-	s.ProductUID = &v
-	return s
-}
-
-func (s *CreateEnvironmentAndGenerateVendorConfigRequest) SetProductVersion(v string) *CreateEnvironmentAndGenerateVendorConfigRequest {
-	s.ProductVersion = &v
-	return s
-}
-
-func (s *CreateEnvironmentAndGenerateVendorConfigRequest) SetProductVersionUID(v string) *CreateEnvironmentAndGenerateVendorConfigRequest {
-	s.ProductVersionUID = &v
-	return s
-}
-
-func (s *CreateEnvironmentAndGenerateVendorConfigRequest) SetVendorType(v string) *CreateEnvironmentAndGenerateVendorConfigRequest {
-	s.VendorType = &v
-	return s
-}
-
-type CreateEnvironmentAndGenerateVendorConfigRequestPlatform struct {
-	Architecture *string `json:"architecture,omitempty" xml:"architecture,omitempty"`
-	Os           *string `json:"os,omitempty" xml:"os,omitempty"`
-}
-
-func (s CreateEnvironmentAndGenerateVendorConfigRequestPlatform) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateEnvironmentAndGenerateVendorConfigRequestPlatform) GoString() string {
-	return s.String()
-}
-
-func (s *CreateEnvironmentAndGenerateVendorConfigRequestPlatform) SetArchitecture(v string) *CreateEnvironmentAndGenerateVendorConfigRequestPlatform {
-	s.Architecture = &v
-	return s
-}
-
-func (s *CreateEnvironmentAndGenerateVendorConfigRequestPlatform) SetOs(v string) *CreateEnvironmentAndGenerateVendorConfigRequestPlatform {
-	s.Os = &v
-	return s
-}
-
-type CreateEnvironmentAndGenerateVendorConfigResponseBody struct {
-	Data    *CreateEnvironmentAndGenerateVendorConfigResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	ErrCode *string                                                   `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	ErrMsg  *string                                                   `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
-	Success *bool                                                     `json:"success,omitempty" xml:"success,omitempty"`
-}
-
-func (s CreateEnvironmentAndGenerateVendorConfigResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateEnvironmentAndGenerateVendorConfigResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateEnvironmentAndGenerateVendorConfigResponseBody) SetData(v *CreateEnvironmentAndGenerateVendorConfigResponseBodyData) *CreateEnvironmentAndGenerateVendorConfigResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *CreateEnvironmentAndGenerateVendorConfigResponseBody) SetErrCode(v string) *CreateEnvironmentAndGenerateVendorConfigResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *CreateEnvironmentAndGenerateVendorConfigResponseBody) SetErrMsg(v string) *CreateEnvironmentAndGenerateVendorConfigResponseBody {
-	s.ErrMsg = &v
-	return s
-}
-
-func (s *CreateEnvironmentAndGenerateVendorConfigResponseBody) SetSuccess(v bool) *CreateEnvironmentAndGenerateVendorConfigResponseBody {
-	s.Success = &v
-	return s
-}
-
-type CreateEnvironmentAndGenerateVendorConfigResponseBodyData struct {
-	EnvUID       *string `json:"envUID,omitempty" xml:"envUID,omitempty"`
-	VendorConfig *string `json:"vendorConfig,omitempty" xml:"vendorConfig,omitempty"`
-}
-
-func (s CreateEnvironmentAndGenerateVendorConfigResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateEnvironmentAndGenerateVendorConfigResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *CreateEnvironmentAndGenerateVendorConfigResponseBodyData) SetEnvUID(v string) *CreateEnvironmentAndGenerateVendorConfigResponseBodyData {
-	s.EnvUID = &v
-	return s
-}
-
-func (s *CreateEnvironmentAndGenerateVendorConfigResponseBodyData) SetVendorConfig(v string) *CreateEnvironmentAndGenerateVendorConfigResponseBodyData {
-	s.VendorConfig = &v
-	return s
-}
-
-type CreateEnvironmentAndGenerateVendorConfigResponse struct {
-	Headers map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateEnvironmentAndGenerateVendorConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateEnvironmentAndGenerateVendorConfigResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateEnvironmentAndGenerateVendorConfigResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateEnvironmentAndGenerateVendorConfigResponse) SetHeaders(v map[string]*string) *CreateEnvironmentAndGenerateVendorConfigResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateEnvironmentAndGenerateVendorConfigResponse) SetBody(v *CreateEnvironmentAndGenerateVendorConfigResponseBody) *CreateEnvironmentAndGenerateVendorConfigResponse {
-	s.Body = v
-	return s
-}
-
 type CreateEnvironmentSnapshotRequest struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
@@ -6788,58 +9768,6 @@ func (s *CreateEnvironmentSnapshotResponse) SetBody(v *CreateEnvironmentSnapshot
 	return s
 }
 
-type InitSnapshotInstanceResponseBody struct {
-	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	ErrMsg  *string `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
-	Success *bool   `json:"success,omitempty" xml:"success,omitempty"`
-}
-
-func (s InitSnapshotInstanceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InitSnapshotInstanceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *InitSnapshotInstanceResponseBody) SetErrCode(v string) *InitSnapshotInstanceResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *InitSnapshotInstanceResponseBody) SetErrMsg(v string) *InitSnapshotInstanceResponseBody {
-	s.ErrMsg = &v
-	return s
-}
-
-func (s *InitSnapshotInstanceResponseBody) SetSuccess(v bool) *InitSnapshotInstanceResponseBody {
-	s.Success = &v
-	return s
-}
-
-type InitSnapshotInstanceResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *InitSnapshotInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s InitSnapshotInstanceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InitSnapshotInstanceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *InitSnapshotInstanceResponse) SetHeaders(v map[string]*string) *InitSnapshotInstanceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *InitSnapshotInstanceResponse) SetBody(v *InitSnapshotInstanceResponseBody) *InitSnapshotInstanceResponse {
-	s.Body = v
-	return s
-}
-
 type UpdateProductVersionRelatedFoundationVersionRequest struct {
 	FoundationVersionUID *string `json:"foundationVersionUID,omitempty" xml:"foundationVersionUID,omitempty"`
 }
@@ -6905,309 +9833,6 @@ func (s *UpdateProductVersionRelatedFoundationVersionResponse) SetHeaders(v map[
 }
 
 func (s *UpdateProductVersionRelatedFoundationVersionResponse) SetBody(v *UpdateProductVersionRelatedFoundationVersionResponseBody) *UpdateProductVersionRelatedFoundationVersionResponse {
-	s.Body = v
-	return s
-}
-
-type ListEnvironmentParamsRequest struct {
-	PageNum  *int32  `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
-	PageSize *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
-	Fuzzy    *string `json:"fuzzy,omitempty" xml:"fuzzy,omitempty"`
-}
-
-func (s ListEnvironmentParamsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListEnvironmentParamsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListEnvironmentParamsRequest) SetPageNum(v int32) *ListEnvironmentParamsRequest {
-	s.PageNum = &v
-	return s
-}
-
-func (s *ListEnvironmentParamsRequest) SetPageSize(v int32) *ListEnvironmentParamsRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListEnvironmentParamsRequest) SetName(v string) *ListEnvironmentParamsRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *ListEnvironmentParamsRequest) SetFuzzy(v string) *ListEnvironmentParamsRequest {
-	s.Fuzzy = &v
-	return s
-}
-
-type ListEnvironmentParamsResponseBody struct {
-	Data    *ListEnvironmentParamsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	ErrCode *string                                `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	ErrMsg  *string                                `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
-	Success *bool                                  `json:"success,omitempty" xml:"success,omitempty"`
-}
-
-func (s ListEnvironmentParamsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListEnvironmentParamsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListEnvironmentParamsResponseBody) SetData(v *ListEnvironmentParamsResponseBodyData) *ListEnvironmentParamsResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ListEnvironmentParamsResponseBody) SetErrCode(v string) *ListEnvironmentParamsResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *ListEnvironmentParamsResponseBody) SetErrMsg(v string) *ListEnvironmentParamsResponseBody {
-	s.ErrMsg = &v
-	return s
-}
-
-func (s *ListEnvironmentParamsResponseBody) SetSuccess(v bool) *ListEnvironmentParamsResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ListEnvironmentParamsResponseBodyData struct {
-	List     []*ListEnvironmentParamsResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
-	PageNum  *int32                                       `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
-	PageSize *int32                                       `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	Total    *int32                                       `json:"total,omitempty" xml:"total,omitempty"`
-}
-
-func (s ListEnvironmentParamsResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListEnvironmentParamsResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ListEnvironmentParamsResponseBodyData) SetList(v []*ListEnvironmentParamsResponseBodyDataList) *ListEnvironmentParamsResponseBodyData {
-	s.List = v
-	return s
-}
-
-func (s *ListEnvironmentParamsResponseBodyData) SetPageNum(v int32) *ListEnvironmentParamsResponseBodyData {
-	s.PageNum = &v
-	return s
-}
-
-func (s *ListEnvironmentParamsResponseBodyData) SetPageSize(v int32) *ListEnvironmentParamsResponseBodyData {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListEnvironmentParamsResponseBodyData) SetTotal(v int32) *ListEnvironmentParamsResponseBodyData {
-	s.Total = &v
-	return s
-}
-
-type ListEnvironmentParamsResponseBodyDataList struct {
-	CreatedAt         *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	Description       *string `json:"description,omitempty" xml:"description,omitempty"`
-	Id                *int32  `json:"id,omitempty" xml:"id,omitempty"`
-	Name              *string `json:"name,omitempty" xml:"name,omitempty"`
-	ProductName       *string `json:"productName,omitempty" xml:"productName,omitempty"`
-	ProductVersion    *string `json:"productVersion,omitempty" xml:"productVersion,omitempty"`
-	ProductVersionUID *string `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
-	Uid               *string `json:"uid,omitempty" xml:"uid,omitempty"`
-	VendorType        *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
-}
-
-func (s ListEnvironmentParamsResponseBodyDataList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListEnvironmentParamsResponseBodyDataList) GoString() string {
-	return s.String()
-}
-
-func (s *ListEnvironmentParamsResponseBodyDataList) SetCreatedAt(v string) *ListEnvironmentParamsResponseBodyDataList {
-	s.CreatedAt = &v
-	return s
-}
-
-func (s *ListEnvironmentParamsResponseBodyDataList) SetDescription(v string) *ListEnvironmentParamsResponseBodyDataList {
-	s.Description = &v
-	return s
-}
-
-func (s *ListEnvironmentParamsResponseBodyDataList) SetId(v int32) *ListEnvironmentParamsResponseBodyDataList {
-	s.Id = &v
-	return s
-}
-
-func (s *ListEnvironmentParamsResponseBodyDataList) SetName(v string) *ListEnvironmentParamsResponseBodyDataList {
-	s.Name = &v
-	return s
-}
-
-func (s *ListEnvironmentParamsResponseBodyDataList) SetProductName(v string) *ListEnvironmentParamsResponseBodyDataList {
-	s.ProductName = &v
-	return s
-}
-
-func (s *ListEnvironmentParamsResponseBodyDataList) SetProductVersion(v string) *ListEnvironmentParamsResponseBodyDataList {
-	s.ProductVersion = &v
-	return s
-}
-
-func (s *ListEnvironmentParamsResponseBodyDataList) SetProductVersionUID(v string) *ListEnvironmentParamsResponseBodyDataList {
-	s.ProductVersionUID = &v
-	return s
-}
-
-func (s *ListEnvironmentParamsResponseBodyDataList) SetUid(v string) *ListEnvironmentParamsResponseBodyDataList {
-	s.Uid = &v
-	return s
-}
-
-func (s *ListEnvironmentParamsResponseBodyDataList) SetVendorType(v string) *ListEnvironmentParamsResponseBodyDataList {
-	s.VendorType = &v
-	return s
-}
-
-type ListEnvironmentParamsResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListEnvironmentParamsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListEnvironmentParamsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListEnvironmentParamsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListEnvironmentParamsResponse) SetHeaders(v map[string]*string) *ListEnvironmentParamsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListEnvironmentParamsResponse) SetBody(v *ListEnvironmentParamsResponseBody) *ListEnvironmentParamsResponse {
-	s.Body = v
-	return s
-}
-
-type GetFoundationVersionResponseBody struct {
-	Data    []*FoundationVersion `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	ErrCode *string              `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	ErrMsg  *string              `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
-	Success *bool                `json:"success,omitempty" xml:"success,omitempty"`
-}
-
-func (s GetFoundationVersionResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetFoundationVersionResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetFoundationVersionResponseBody) SetData(v []*FoundationVersion) *GetFoundationVersionResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetFoundationVersionResponseBody) SetErrCode(v string) *GetFoundationVersionResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *GetFoundationVersionResponseBody) SetErrMsg(v string) *GetFoundationVersionResponseBody {
-	s.ErrMsg = &v
-	return s
-}
-
-func (s *GetFoundationVersionResponseBody) SetSuccess(v bool) *GetFoundationVersionResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetFoundationVersionResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetFoundationVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetFoundationVersionResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetFoundationVersionResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetFoundationVersionResponse) SetHeaders(v map[string]*string) *GetFoundationVersionResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetFoundationVersionResponse) SetBody(v *GetFoundationVersionResponseBody) *GetFoundationVersionResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteProductResponseBody struct {
-	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	ErrCode    *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
-}
-
-func (s DeleteProductResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteProductResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteProductResponseBody) SetErrMessage(v string) *DeleteProductResponseBody {
-	s.ErrMessage = &v
-	return s
-}
-
-func (s *DeleteProductResponseBody) SetSuccess(v bool) *DeleteProductResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *DeleteProductResponseBody) SetErrCode(v string) *DeleteProductResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-type DeleteProductResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteProductResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteProductResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteProductResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteProductResponse) SetHeaders(v map[string]*string) *DeleteProductResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteProductResponse) SetBody(v *DeleteProductResponseBody) *DeleteProductResponse {
 	s.Body = v
 	return s
 }
@@ -7289,81 +9914,6 @@ func (s *UpdateEnvironmentResponse) SetHeaders(v map[string]*string) *UpdateEnvi
 }
 
 func (s *UpdateEnvironmentResponse) SetBody(v *UpdateEnvironmentResponseBody) *UpdateEnvironmentResponse {
-	s.Body = v
-	return s
-}
-
-type GetEnvironmentPackageResponseBody struct {
-	Data    *GetEnvironmentPackageResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	ErrCode *string                                `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	ErrMsg  *string                                `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
-	Success *bool                                  `json:"success,omitempty" xml:"success,omitempty"`
-}
-
-func (s GetEnvironmentPackageResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEnvironmentPackageResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetEnvironmentPackageResponseBody) SetData(v *GetEnvironmentPackageResponseBodyData) *GetEnvironmentPackageResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetEnvironmentPackageResponseBody) SetErrCode(v string) *GetEnvironmentPackageResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *GetEnvironmentPackageResponseBody) SetErrMsg(v string) *GetEnvironmentPackageResponseBody {
-	s.ErrMsg = &v
-	return s
-}
-
-func (s *GetEnvironmentPackageResponseBody) SetSuccess(v bool) *GetEnvironmentPackageResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetEnvironmentPackageResponseBodyData struct {
-	PackageURL *string `json:"packageURL,omitempty" xml:"packageURL,omitempty"`
-}
-
-func (s GetEnvironmentPackageResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEnvironmentPackageResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetEnvironmentPackageResponseBodyData) SetPackageURL(v string) *GetEnvironmentPackageResponseBodyData {
-	s.PackageURL = &v
-	return s
-}
-
-type GetEnvironmentPackageResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetEnvironmentPackageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetEnvironmentPackageResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEnvironmentPackageResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetEnvironmentPackageResponse) SetHeaders(v map[string]*string) *GetEnvironmentPackageResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetEnvironmentPackageResponse) SetBody(v *GetEnvironmentPackageResponseBody) *GetEnvironmentPackageResponse {
 	s.Body = v
 	return s
 }
@@ -7775,370 +10325,11 @@ func (s *ImportEnvironmentNodesResponse) SetBody(v *ImportEnvironmentNodesRespon
 	return s
 }
 
-type ListComponentsRequest struct {
-	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
-	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	PageNum  *int32  `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
-	PageSize *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	Fuzzy    *string `json:"fuzzy,omitempty" xml:"fuzzy,omitempty"`
-	Public   *bool   `json:"public,omitempty" xml:"public,omitempty"`
-}
-
-func (s ListComponentsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListComponentsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListComponentsRequest) SetName(v string) *ListComponentsRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *ListComponentsRequest) SetCategory(v string) *ListComponentsRequest {
-	s.Category = &v
-	return s
-}
-
-func (s *ListComponentsRequest) SetPageNum(v int32) *ListComponentsRequest {
-	s.PageNum = &v
-	return s
-}
-
-func (s *ListComponentsRequest) SetPageSize(v int32) *ListComponentsRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListComponentsRequest) SetFuzzy(v string) *ListComponentsRequest {
-	s.Fuzzy = &v
-	return s
-}
-
-func (s *ListComponentsRequest) SetPublic(v bool) *ListComponentsRequest {
-	s.Public = &v
-	return s
-}
-
-type ListComponentsResponseBody struct {
-	Data    *ListComponentsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	ErrCode *string                         `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	ErrMsg  *string                         `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
-	Success *bool                           `json:"success,omitempty" xml:"success,omitempty"`
-}
-
-func (s ListComponentsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListComponentsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListComponentsResponseBody) SetData(v *ListComponentsResponseBodyData) *ListComponentsResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ListComponentsResponseBody) SetErrCode(v string) *ListComponentsResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *ListComponentsResponseBody) SetErrMsg(v string) *ListComponentsResponseBody {
-	s.ErrMsg = &v
-	return s
-}
-
-func (s *ListComponentsResponseBody) SetSuccess(v bool) *ListComponentsResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ListComponentsResponseBodyData struct {
-	List     []*ListComponentsResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
-	PageNum  *int32                                `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
-	PageSize *int32                                `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	Total    *int32                                `json:"total,omitempty" xml:"total,omitempty"`
-}
-
-func (s ListComponentsResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListComponentsResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ListComponentsResponseBodyData) SetList(v []*ListComponentsResponseBodyDataList) *ListComponentsResponseBodyData {
-	s.List = v
-	return s
-}
-
-func (s *ListComponentsResponseBodyData) SetPageNum(v int32) *ListComponentsResponseBodyData {
-	s.PageNum = &v
-	return s
-}
-
-func (s *ListComponentsResponseBodyData) SetPageSize(v int32) *ListComponentsResponseBodyData {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListComponentsResponseBodyData) SetTotal(v int32) *ListComponentsResponseBodyData {
-	s.Total = &v
-	return s
-}
-
-type ListComponentsResponseBodyDataList struct {
-	Annotations *ListComponentsResponseBodyDataListAnnotations `json:"annotations,omitempty" xml:"annotations,omitempty" type:"Struct"`
-	Category    *string                                        `json:"category,omitempty" xml:"category,omitempty"`
-	Description *string                                        `json:"description,omitempty" xml:"description,omitempty"`
-	Documents   *string                                        `json:"documents,omitempty" xml:"documents,omitempty"`
-	Name        *string                                        `json:"name,omitempty" xml:"name,omitempty"`
-	Provider    *string                                        `json:"provider,omitempty" xml:"provider,omitempty"`
-	Public      *bool                                          `json:"public,omitempty" xml:"public,omitempty"`
-	Singleton   *bool                                          `json:"singleton,omitempty" xml:"singleton,omitempty"`
-	Source      *string                                        `json:"source,omitempty" xml:"source,omitempty"`
-	Uid         *string                                        `json:"uid,omitempty" xml:"uid,omitempty"`
-}
-
-func (s ListComponentsResponseBodyDataList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListComponentsResponseBodyDataList) GoString() string {
-	return s.String()
-}
-
-func (s *ListComponentsResponseBodyDataList) SetAnnotations(v *ListComponentsResponseBodyDataListAnnotations) *ListComponentsResponseBodyDataList {
-	s.Annotations = v
-	return s
-}
-
-func (s *ListComponentsResponseBodyDataList) SetCategory(v string) *ListComponentsResponseBodyDataList {
-	s.Category = &v
-	return s
-}
-
-func (s *ListComponentsResponseBodyDataList) SetDescription(v string) *ListComponentsResponseBodyDataList {
-	s.Description = &v
-	return s
-}
-
-func (s *ListComponentsResponseBodyDataList) SetDocuments(v string) *ListComponentsResponseBodyDataList {
-	s.Documents = &v
-	return s
-}
-
-func (s *ListComponentsResponseBodyDataList) SetName(v string) *ListComponentsResponseBodyDataList {
-	s.Name = &v
-	return s
-}
-
-func (s *ListComponentsResponseBodyDataList) SetProvider(v string) *ListComponentsResponseBodyDataList {
-	s.Provider = &v
-	return s
-}
-
-func (s *ListComponentsResponseBodyDataList) SetPublic(v bool) *ListComponentsResponseBodyDataList {
-	s.Public = &v
-	return s
-}
-
-func (s *ListComponentsResponseBodyDataList) SetSingleton(v bool) *ListComponentsResponseBodyDataList {
-	s.Singleton = &v
-	return s
-}
-
-func (s *ListComponentsResponseBodyDataList) SetSource(v string) *ListComponentsResponseBodyDataList {
-	s.Source = &v
-	return s
-}
-
-func (s *ListComponentsResponseBodyDataList) SetUid(v string) *ListComponentsResponseBodyDataList {
-	s.Uid = &v
-	return s
-}
-
-type ListComponentsResponseBodyDataListAnnotations struct {
-	Annotations *string `json:"annotations,omitempty" xml:"annotations,omitempty"`
-}
-
-func (s ListComponentsResponseBodyDataListAnnotations) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListComponentsResponseBodyDataListAnnotations) GoString() string {
-	return s.String()
-}
-
-func (s *ListComponentsResponseBodyDataListAnnotations) SetAnnotations(v string) *ListComponentsResponseBodyDataListAnnotations {
-	s.Annotations = &v
-	return s
-}
-
-type ListComponentsResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListComponentsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListComponentsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListComponentsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListComponentsResponse) SetHeaders(v map[string]*string) *ListComponentsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListComponentsResponse) SetBody(v *ListComponentsResponseBody) *ListComponentsResponse {
-	s.Body = v
-	return s
-}
-
-type AddEnvironmentProductVersionHeaders struct {
-	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	ClientToken   *string            `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-}
-
-func (s AddEnvironmentProductVersionHeaders) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddEnvironmentProductVersionHeaders) GoString() string {
-	return s.String()
-}
-
-func (s *AddEnvironmentProductVersionHeaders) SetCommonHeaders(v map[string]*string) *AddEnvironmentProductVersionHeaders {
-	s.CommonHeaders = v
-	return s
-}
-
-func (s *AddEnvironmentProductVersionHeaders) SetClientToken(v string) *AddEnvironmentProductVersionHeaders {
-	s.ClientToken = &v
-	return s
-}
-
-type AddEnvironmentProductVersionRequest struct {
-	ProductName       *string `json:"productName,omitempty" xml:"productName,omitempty"`
-	ProductUID        *string `json:"productUID,omitempty" xml:"productUID,omitempty"`
-	ProductVersion    *string `json:"productVersion,omitempty" xml:"productVersion,omitempty"`
-	ProductVersionUID *string `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
-}
-
-func (s AddEnvironmentProductVersionRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddEnvironmentProductVersionRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AddEnvironmentProductVersionRequest) SetProductName(v string) *AddEnvironmentProductVersionRequest {
-	s.ProductName = &v
-	return s
-}
-
-func (s *AddEnvironmentProductVersionRequest) SetProductUID(v string) *AddEnvironmentProductVersionRequest {
-	s.ProductUID = &v
-	return s
-}
-
-func (s *AddEnvironmentProductVersionRequest) SetProductVersion(v string) *AddEnvironmentProductVersionRequest {
-	s.ProductVersion = &v
-	return s
-}
-
-func (s *AddEnvironmentProductVersionRequest) SetProductVersionUID(v string) *AddEnvironmentProductVersionRequest {
-	s.ProductVersionUID = &v
-	return s
-}
-
-type AddEnvironmentProductVersionResponseBody struct {
-	Data    *AddEnvironmentProductVersionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	ErrCode *string                                       `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	ErrMsg  *string                                       `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
-	Success *bool                                         `json:"success,omitempty" xml:"success,omitempty"`
-}
-
-func (s AddEnvironmentProductVersionResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddEnvironmentProductVersionResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *AddEnvironmentProductVersionResponseBody) SetData(v *AddEnvironmentProductVersionResponseBodyData) *AddEnvironmentProductVersionResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *AddEnvironmentProductVersionResponseBody) SetErrCode(v string) *AddEnvironmentProductVersionResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *AddEnvironmentProductVersionResponseBody) SetErrMsg(v string) *AddEnvironmentProductVersionResponseBody {
-	s.ErrMsg = &v
-	return s
-}
-
-func (s *AddEnvironmentProductVersionResponseBody) SetSuccess(v bool) *AddEnvironmentProductVersionResponseBody {
-	s.Success = &v
-	return s
-}
-
-type AddEnvironmentProductVersionResponseBodyData struct {
-	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
-}
-
-func (s AddEnvironmentProductVersionResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddEnvironmentProductVersionResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *AddEnvironmentProductVersionResponseBodyData) SetUid(v string) *AddEnvironmentProductVersionResponseBodyData {
-	s.Uid = &v
-	return s
-}
-
-type AddEnvironmentProductVersionResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddEnvironmentProductVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s AddEnvironmentProductVersionResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddEnvironmentProductVersionResponse) GoString() string {
-	return s.String()
-}
-
-func (s *AddEnvironmentProductVersionResponse) SetHeaders(v map[string]*string) *AddEnvironmentProductVersionResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *AddEnvironmentProductVersionResponse) SetBody(v *AddEnvironmentProductVersionResponseBody) *AddEnvironmentProductVersionResponse {
-	s.Body = v
-	return s
-}
-
 type ListProductVersionsRequest struct {
 	Released  *bool                                  `json:"released,omitempty" xml:"released,omitempty"`
 	Platforms []*ListProductVersionsRequestPlatforms `json:"platforms,omitempty" xml:"platforms,omitempty" type:"Repeated"`
+	PageNum   *string                                `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	PageSize  *string                                `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 }
 
 func (s ListProductVersionsRequest) String() string {
@@ -8156,6 +10347,16 @@ func (s *ListProductVersionsRequest) SetReleased(v bool) *ListProductVersionsReq
 
 func (s *ListProductVersionsRequest) SetPlatforms(v []*ListProductVersionsRequestPlatforms) *ListProductVersionsRequest {
 	s.Platforms = v
+	return s
+}
+
+func (s *ListProductVersionsRequest) SetPageNum(v string) *ListProductVersionsRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListProductVersionsRequest) SetPageSize(v string) *ListProductVersionsRequest {
+	s.PageSize = &v
 	return s
 }
 
@@ -8185,6 +10386,8 @@ func (s *ListProductVersionsRequestPlatforms) SetOs(v string) *ListProductVersio
 type ListProductVersionsShrinkRequest struct {
 	Released        *bool   `json:"released,omitempty" xml:"released,omitempty"`
 	PlatformsShrink *string `json:"platforms,omitempty" xml:"platforms,omitempty"`
+	PageNum         *string `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	PageSize        *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 }
 
 func (s ListProductVersionsShrinkRequest) String() string {
@@ -8202,6 +10405,16 @@ func (s *ListProductVersionsShrinkRequest) SetReleased(v bool) *ListProductVersi
 
 func (s *ListProductVersionsShrinkRequest) SetPlatformsShrink(v string) *ListProductVersionsShrinkRequest {
 	s.PlatformsShrink = &v
+	return s
+}
+
+func (s *ListProductVersionsShrinkRequest) SetPageNum(v string) *ListProductVersionsShrinkRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListProductVersionsShrinkRequest) SetPageSize(v string) *ListProductVersionsShrinkRequest {
+	s.PageSize = &v
 	return s
 }
 
@@ -8382,280 +10595,6 @@ func (s *ListProductVersionsResponse) SetHeaders(v map[string]*string) *ListProd
 }
 
 func (s *ListProductVersionsResponse) SetBody(v *ListProductVersionsResponseBody) *ListProductVersionsResponse {
-	s.Body = v
-	return s
-}
-
-type GetChildrenComponentVersionListResponseBody struct {
-	Data    *GetChildrenComponentVersionListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	ErrCode *string                                          `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	ErrMsg  *string                                          `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
-	Success *bool                                            `json:"success,omitempty" xml:"success,omitempty"`
-}
-
-func (s GetChildrenComponentVersionListResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetChildrenComponentVersionListResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetChildrenComponentVersionListResponseBody) SetData(v *GetChildrenComponentVersionListResponseBodyData) *GetChildrenComponentVersionListResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetChildrenComponentVersionListResponseBody) SetErrCode(v string) *GetChildrenComponentVersionListResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *GetChildrenComponentVersionListResponseBody) SetErrMsg(v string) *GetChildrenComponentVersionListResponseBody {
-	s.ErrMsg = &v
-	return s
-}
-
-func (s *GetChildrenComponentVersionListResponseBody) SetSuccess(v bool) *GetChildrenComponentVersionListResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetChildrenComponentVersionListResponseBodyData struct {
-	ClusterId      *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
-	CreatedAt      *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	Description    *string `json:"description,omitempty" xml:"description,omitempty"`
-	InstanceList   *string `json:"instanceList,omitempty" xml:"instanceList,omitempty"`
-	Name           *string `json:"name,omitempty" xml:"name,omitempty"`
-	ProductName    *string `json:"productName,omitempty" xml:"productName,omitempty"`
-	ProductVersion *string `json:"productVersion,omitempty" xml:"productVersion,omitempty"`
-	Uid            *string `json:"uid,omitempty" xml:"uid,omitempty"`
-	VendorConfig   *string `json:"vendorConfig,omitempty" xml:"vendorConfig,omitempty"`
-	VendorType     *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
-}
-
-func (s GetChildrenComponentVersionListResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetChildrenComponentVersionListResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetChildrenComponentVersionListResponseBodyData) SetClusterId(v string) *GetChildrenComponentVersionListResponseBodyData {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *GetChildrenComponentVersionListResponseBodyData) SetCreatedAt(v string) *GetChildrenComponentVersionListResponseBodyData {
-	s.CreatedAt = &v
-	return s
-}
-
-func (s *GetChildrenComponentVersionListResponseBodyData) SetDescription(v string) *GetChildrenComponentVersionListResponseBodyData {
-	s.Description = &v
-	return s
-}
-
-func (s *GetChildrenComponentVersionListResponseBodyData) SetInstanceList(v string) *GetChildrenComponentVersionListResponseBodyData {
-	s.InstanceList = &v
-	return s
-}
-
-func (s *GetChildrenComponentVersionListResponseBodyData) SetName(v string) *GetChildrenComponentVersionListResponseBodyData {
-	s.Name = &v
-	return s
-}
-
-func (s *GetChildrenComponentVersionListResponseBodyData) SetProductName(v string) *GetChildrenComponentVersionListResponseBodyData {
-	s.ProductName = &v
-	return s
-}
-
-func (s *GetChildrenComponentVersionListResponseBodyData) SetProductVersion(v string) *GetChildrenComponentVersionListResponseBodyData {
-	s.ProductVersion = &v
-	return s
-}
-
-func (s *GetChildrenComponentVersionListResponseBodyData) SetUid(v string) *GetChildrenComponentVersionListResponseBodyData {
-	s.Uid = &v
-	return s
-}
-
-func (s *GetChildrenComponentVersionListResponseBodyData) SetVendorConfig(v string) *GetChildrenComponentVersionListResponseBodyData {
-	s.VendorConfig = &v
-	return s
-}
-
-func (s *GetChildrenComponentVersionListResponseBodyData) SetVendorType(v string) *GetChildrenComponentVersionListResponseBodyData {
-	s.VendorType = &v
-	return s
-}
-
-type GetChildrenComponentVersionListResponse struct {
-	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetChildrenComponentVersionListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetChildrenComponentVersionListResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetChildrenComponentVersionListResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetChildrenComponentVersionListResponse) SetHeaders(v map[string]*string) *GetChildrenComponentVersionListResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetChildrenComponentVersionListResponse) SetBody(v *GetChildrenComponentVersionListResponseBody) *GetChildrenComponentVersionListResponse {
-	s.Body = v
-	return s
-}
-
-type CreateSLRHeaders struct {
-	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	ClientToken   *string            `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-}
-
-func (s CreateSLRHeaders) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateSLRHeaders) GoString() string {
-	return s.String()
-}
-
-func (s *CreateSLRHeaders) SetCommonHeaders(v map[string]*string) *CreateSLRHeaders {
-	s.CommonHeaders = v
-	return s
-}
-
-func (s *CreateSLRHeaders) SetClientToken(v string) *CreateSLRHeaders {
-	s.ClientToken = &v
-	return s
-}
-
-type CreateSLRResponseBody struct {
-	Data      *string `json:"data,omitempty" xml:"data,omitempty"`
-	ErrCode   *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	ErrMsg    *string `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
-}
-
-func (s CreateSLRResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateSLRResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateSLRResponseBody) SetData(v string) *CreateSLRResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *CreateSLRResponseBody) SetErrCode(v string) *CreateSLRResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *CreateSLRResponseBody) SetErrMsg(v string) *CreateSLRResponseBody {
-	s.ErrMsg = &v
-	return s
-}
-
-func (s *CreateSLRResponseBody) SetErrorCode(v string) *CreateSLRResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *CreateSLRResponseBody) SetSuccess(v bool) *CreateSLRResponseBody {
-	s.Success = &v
-	return s
-}
-
-type CreateSLRResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateSLRResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateSLRResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateSLRResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateSLRResponse) SetHeaders(v map[string]*string) *CreateSLRResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateSLRResponse) SetBody(v *CreateSLRResponseBody) *CreateSLRResponse {
-	s.Body = v
-	return s
-}
-
-type GetProductVersionRelatedComponentVersionDetailResponseBody struct {
-	Data    []*ProductComponentRelationDetail `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	ErrCode *string                           `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	ErrMsg  *string                           `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
-	Success *bool                             `json:"success,omitempty" xml:"success,omitempty"`
-}
-
-func (s GetProductVersionRelatedComponentVersionDetailResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetProductVersionRelatedComponentVersionDetailResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetProductVersionRelatedComponentVersionDetailResponseBody) SetData(v []*ProductComponentRelationDetail) *GetProductVersionRelatedComponentVersionDetailResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetProductVersionRelatedComponentVersionDetailResponseBody) SetErrCode(v string) *GetProductVersionRelatedComponentVersionDetailResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *GetProductVersionRelatedComponentVersionDetailResponseBody) SetErrMsg(v string) *GetProductVersionRelatedComponentVersionDetailResponseBody {
-	s.ErrMsg = &v
-	return s
-}
-
-func (s *GetProductVersionRelatedComponentVersionDetailResponseBody) SetSuccess(v bool) *GetProductVersionRelatedComponentVersionDetailResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetProductVersionRelatedComponentVersionDetailResponse struct {
-	Headers map[string]*string                                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetProductVersionRelatedComponentVersionDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetProductVersionRelatedComponentVersionDetailResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetProductVersionRelatedComponentVersionDetailResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetProductVersionRelatedComponentVersionDetailResponse) SetHeaders(v map[string]*string) *GetProductVersionRelatedComponentVersionDetailResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetProductVersionRelatedComponentVersionDetailResponse) SetBody(v *GetProductVersionRelatedComponentVersionDetailResponseBody) *GetProductVersionRelatedComponentVersionDetailResponse {
 	s.Body = v
 	return s
 }
@@ -8857,100 +10796,125 @@ func (s *UpdateEnvironmentProductVersionResponse) SetBody(v *UpdateEnvironmentPr
 	return s
 }
 
-type GetProductVersionPlatformsResponseBody struct {
-	Data    *GetProductVersionPlatformsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	ErrCode *string                                     `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	ErrMsg  *string                                     `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
-	Success *bool                                       `json:"success,omitempty" xml:"success,omitempty"`
+type GetProductVersionResponseBody struct {
+	Data    *GetProductVersionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	ErrCode *string                            `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMsg  *string                            `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
+	Success *bool                              `json:"success,omitempty" xml:"success,omitempty"`
 }
 
-func (s GetProductVersionPlatformsResponseBody) String() string {
+func (s GetProductVersionResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetProductVersionPlatformsResponseBody) GoString() string {
+func (s GetProductVersionResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetProductVersionPlatformsResponseBody) SetData(v *GetProductVersionPlatformsResponseBodyData) *GetProductVersionPlatformsResponseBody {
+func (s *GetProductVersionResponseBody) SetData(v *GetProductVersionResponseBodyData) *GetProductVersionResponseBody {
 	s.Data = v
 	return s
 }
 
-func (s *GetProductVersionPlatformsResponseBody) SetErrCode(v string) *GetProductVersionPlatformsResponseBody {
+func (s *GetProductVersionResponseBody) SetErrCode(v string) *GetProductVersionResponseBody {
 	s.ErrCode = &v
 	return s
 }
 
-func (s *GetProductVersionPlatformsResponseBody) SetErrMsg(v string) *GetProductVersionPlatformsResponseBody {
+func (s *GetProductVersionResponseBody) SetErrMsg(v string) *GetProductVersionResponseBody {
 	s.ErrMsg = &v
 	return s
 }
 
-func (s *GetProductVersionPlatformsResponseBody) SetSuccess(v bool) *GetProductVersionPlatformsResponseBody {
+func (s *GetProductVersionResponseBody) SetSuccess(v bool) *GetProductVersionResponseBody {
 	s.Success = &v
 	return s
 }
 
-type GetProductVersionPlatformsResponseBodyData struct {
-	List []*GetProductVersionPlatformsResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+type GetProductVersionResponseBodyData struct {
+	Description          *string   `json:"description,omitempty" xml:"description,omitempty"`
+	Provider             *string   `json:"provider,omitempty" xml:"provider,omitempty"`
+	Uid                  *string   `json:"uid,omitempty" xml:"uid,omitempty"`
+	ProductUID           *string   `json:"productUID,omitempty" xml:"productUID,omitempty"`
+	ProductName          *string   `json:"productName,omitempty" xml:"productName,omitempty"`
+	Version              *string   `json:"version,omitempty" xml:"version,omitempty"`
+	FoundationVersionUID *string   `json:"foundationVersionUID,omitempty" xml:"foundationVersionUID,omitempty"`
+	PackageURL           *string   `json:"packageURL,omitempty" xml:"packageURL,omitempty"`
+	Platforms            *Platform `json:"platforms,omitempty" xml:"platforms,omitempty"`
 }
 
-func (s GetProductVersionPlatformsResponseBodyData) String() string {
+func (s GetProductVersionResponseBodyData) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetProductVersionPlatformsResponseBodyData) GoString() string {
+func (s GetProductVersionResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *GetProductVersionPlatformsResponseBodyData) SetList(v []*GetProductVersionPlatformsResponseBodyDataList) *GetProductVersionPlatformsResponseBodyData {
-	s.List = v
+func (s *GetProductVersionResponseBodyData) SetDescription(v string) *GetProductVersionResponseBodyData {
+	s.Description = &v
 	return s
 }
 
-type GetProductVersionPlatformsResponseBodyDataList struct {
-	Architecture *string `json:"architecture,omitempty" xml:"architecture,omitempty"`
-	Os           *string `json:"os,omitempty" xml:"os,omitempty"`
+func (s *GetProductVersionResponseBodyData) SetProvider(v string) *GetProductVersionResponseBodyData {
+	s.Provider = &v
+	return s
 }
 
-func (s GetProductVersionPlatformsResponseBodyDataList) String() string {
+func (s *GetProductVersionResponseBodyData) SetUid(v string) *GetProductVersionResponseBodyData {
+	s.Uid = &v
+	return s
+}
+
+func (s *GetProductVersionResponseBodyData) SetProductUID(v string) *GetProductVersionResponseBodyData {
+	s.ProductUID = &v
+	return s
+}
+
+func (s *GetProductVersionResponseBodyData) SetProductName(v string) *GetProductVersionResponseBodyData {
+	s.ProductName = &v
+	return s
+}
+
+func (s *GetProductVersionResponseBodyData) SetVersion(v string) *GetProductVersionResponseBodyData {
+	s.Version = &v
+	return s
+}
+
+func (s *GetProductVersionResponseBodyData) SetFoundationVersionUID(v string) *GetProductVersionResponseBodyData {
+	s.FoundationVersionUID = &v
+	return s
+}
+
+func (s *GetProductVersionResponseBodyData) SetPackageURL(v string) *GetProductVersionResponseBodyData {
+	s.PackageURL = &v
+	return s
+}
+
+func (s *GetProductVersionResponseBodyData) SetPlatforms(v *Platform) *GetProductVersionResponseBodyData {
+	s.Platforms = v
+	return s
+}
+
+type GetProductVersionResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetProductVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetProductVersionResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetProductVersionPlatformsResponseBodyDataList) GoString() string {
+func (s GetProductVersionResponse) GoString() string {
 	return s.String()
 }
 
-func (s *GetProductVersionPlatformsResponseBodyDataList) SetArchitecture(v string) *GetProductVersionPlatformsResponseBodyDataList {
-	s.Architecture = &v
-	return s
-}
-
-func (s *GetProductVersionPlatformsResponseBodyDataList) SetOs(v string) *GetProductVersionPlatformsResponseBodyDataList {
-	s.Os = &v
-	return s
-}
-
-type GetProductVersionPlatformsResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetProductVersionPlatformsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetProductVersionPlatformsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetProductVersionPlatformsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetProductVersionPlatformsResponse) SetHeaders(v map[string]*string) *GetProductVersionPlatformsResponse {
+func (s *GetProductVersionResponse) SetHeaders(v map[string]*string) *GetProductVersionResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *GetProductVersionPlatformsResponse) SetBody(v *GetProductVersionPlatformsResponseBody) *GetProductVersionPlatformsResponse {
+func (s *GetProductVersionResponse) SetBody(v *GetProductVersionResponseBody) *GetProductVersionResponse {
 	s.Body = v
 	return s
 }
@@ -8964,6 +10928,8 @@ type SaveEnvironmentParamRequest struct {
 	ReleaseName         *string   `json:"releaseName,omitempty" xml:"releaseName,omitempty"`
 	Scope               []*string `json:"scope,omitempty" xml:"scope,omitempty" type:"Repeated"`
 	Value               *string   `json:"value,omitempty" xml:"value,omitempty"`
+	Notes               *string   `json:"notes,omitempty" xml:"notes,omitempty"`
+	ProductVersionUID   *string   `json:"ProductVersionUID,omitempty" xml:"ProductVersionUID,omitempty"`
 }
 
 func (s SaveEnvironmentParamRequest) String() string {
@@ -9011,6 +10977,16 @@ func (s *SaveEnvironmentParamRequest) SetScope(v []*string) *SaveEnvironmentPara
 
 func (s *SaveEnvironmentParamRequest) SetValue(v string) *SaveEnvironmentParamRequest {
 	s.Value = &v
+	return s
+}
+
+func (s *SaveEnvironmentParamRequest) SetNotes(v string) *SaveEnvironmentParamRequest {
+	s.Notes = &v
+	return s
+}
+
+func (s *SaveEnvironmentParamRequest) SetProductVersionUID(v string) *SaveEnvironmentParamRequest {
+	s.ProductVersionUID = &v
 	return s
 }
 
@@ -9141,58 +11117,6 @@ func (s *UpdateSnapshotInstanceJoinOptionResponse) SetBody(v *UpdateSnapshotInst
 	return s
 }
 
-type GetProductVersionResourceResponseBody struct {
-	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	ErrMsg  *string `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
-	Success *bool   `json:"success,omitempty" xml:"success,omitempty"`
-}
-
-func (s GetProductVersionResourceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetProductVersionResourceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetProductVersionResourceResponseBody) SetErrCode(v string) *GetProductVersionResourceResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *GetProductVersionResourceResponseBody) SetErrMsg(v string) *GetProductVersionResourceResponseBody {
-	s.ErrMsg = &v
-	return s
-}
-
-func (s *GetProductVersionResourceResponseBody) SetSuccess(v bool) *GetProductVersionResourceResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetProductVersionResourceResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetProductVersionResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetProductVersionResourceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetProductVersionResourceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetProductVersionResourceResponse) SetHeaders(v map[string]*string) *GetProductVersionResourceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetProductVersionResourceResponse) SetBody(v *GetProductVersionResourceResponseBody) *GetProductVersionResourceResponse {
-	s.Body = v
-	return s
-}
-
 type CreateLicenseRequest struct {
 	// expire time
 	EffectiveYear *int64 `json:"effectiveYear,omitempty" xml:"effectiveYear,omitempty"`
@@ -9248,150 +11172,6 @@ func (s *CreateLicenseResponse) SetHeaders(v map[string]*string) *CreateLicenseR
 }
 
 func (s *CreateLicenseResponse) SetBody(v *CreateLicenseResponseBody) *CreateLicenseResponse {
-	s.Body = v
-	return s
-}
-
-type ShareSnapshotRequest struct {
-	TargetProvider *string `json:"targetProvider,omitempty" xml:"targetProvider,omitempty"`
-}
-
-func (s ShareSnapshotRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ShareSnapshotRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ShareSnapshotRequest) SetTargetProvider(v string) *ShareSnapshotRequest {
-	s.TargetProvider = &v
-	return s
-}
-
-type ShareSnapshotResponseBody struct {
-	Data    *ShareSnapshotResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	ErrCode *string                        `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	ErrMsg  *string                        `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
-	Success *bool                          `json:"success,omitempty" xml:"success,omitempty"`
-}
-
-func (s ShareSnapshotResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ShareSnapshotResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ShareSnapshotResponseBody) SetData(v *ShareSnapshotResponseBodyData) *ShareSnapshotResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ShareSnapshotResponseBody) SetErrCode(v string) *ShareSnapshotResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *ShareSnapshotResponseBody) SetErrMsg(v string) *ShareSnapshotResponseBody {
-	s.ErrMsg = &v
-	return s
-}
-
-func (s *ShareSnapshotResponseBody) SetSuccess(v bool) *ShareSnapshotResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ShareSnapshotResponseBodyData struct {
-	NewSnapshotUID *string `json:"newSnapshotUID,omitempty" xml:"newSnapshotUID,omitempty"`
-}
-
-func (s ShareSnapshotResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ShareSnapshotResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ShareSnapshotResponseBodyData) SetNewSnapshotUID(v string) *ShareSnapshotResponseBodyData {
-	s.NewSnapshotUID = &v
-	return s
-}
-
-type ShareSnapshotResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ShareSnapshotResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ShareSnapshotResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ShareSnapshotResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ShareSnapshotResponse) SetHeaders(v map[string]*string) *ShareSnapshotResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ShareSnapshotResponse) SetBody(v *ShareSnapshotResponseBody) *ShareSnapshotResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteEnvironmentParamResponseBody struct {
-	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	ErrCode    *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
-}
-
-func (s DeleteEnvironmentParamResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteEnvironmentParamResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteEnvironmentParamResponseBody) SetErrMessage(v string) *DeleteEnvironmentParamResponseBody {
-	s.ErrMessage = &v
-	return s
-}
-
-func (s *DeleteEnvironmentParamResponseBody) SetSuccess(v bool) *DeleteEnvironmentParamResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *DeleteEnvironmentParamResponseBody) SetErrCode(v string) *DeleteEnvironmentParamResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-type DeleteEnvironmentParamResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteEnvironmentParamResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteEnvironmentParamResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteEnvironmentParamResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteEnvironmentParamResponse) SetHeaders(v map[string]*string) *DeleteEnvironmentParamResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteEnvironmentParamResponse) SetBody(v *DeleteEnvironmentParamResponseBody) *DeleteEnvironmentParamResponse {
 	s.Body = v
 	return s
 }
@@ -9489,204 +11269,102 @@ func (s *GetProductResponse) SetBody(v *GetProductResponseBody) *GetProductRespo
 	return s
 }
 
-type DeleteComponentVersionResponseBody struct {
-	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+type AddProductVersionPackageHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	ClientToken   *string            `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 }
 
-func (s DeleteComponentVersionResponseBody) String() string {
+func (s AddProductVersionPackageHeaders) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DeleteComponentVersionResponseBody) GoString() string {
+func (s AddProductVersionPackageHeaders) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteComponentVersionResponseBody) SetErrMessage(v string) *DeleteComponentVersionResponseBody {
-	s.ErrMessage = &v
+func (s *AddProductVersionPackageHeaders) SetCommonHeaders(v map[string]*string) *AddProductVersionPackageHeaders {
+	s.CommonHeaders = v
 	return s
 }
 
-func (s *DeleteComponentVersionResponseBody) SetSuccess(v bool) *DeleteComponentVersionResponseBody {
-	s.Success = &v
+func (s *AddProductVersionPackageHeaders) SetClientToken(v string) *AddProductVersionPackageHeaders {
+	s.ClientToken = &v
 	return s
 }
 
-type DeleteComponentVersionResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteComponentVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+type AddProductVersionPackageRequest struct {
+	// 环境UID（Deprecated)）
+	EnvUID *string `json:"envUID,omitempty" xml:"envUID,omitempty"`
+	// ENUM:["full","upgrade"]
+	PackageType *string `json:"packageType,omitempty" xml:"packageType,omitempty"`
 }
 
-func (s DeleteComponentVersionResponse) String() string {
+func (s AddProductVersionPackageRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DeleteComponentVersionResponse) GoString() string {
+func (s AddProductVersionPackageRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteComponentVersionResponse) SetHeaders(v map[string]*string) *DeleteComponentVersionResponse {
-	s.Headers = v
+func (s *AddProductVersionPackageRequest) SetEnvUID(v string) *AddProductVersionPackageRequest {
+	s.EnvUID = &v
 	return s
 }
 
-func (s *DeleteComponentVersionResponse) SetBody(v *DeleteComponentVersionResponseBody) *DeleteComponentVersionResponse {
-	s.Body = v
+func (s *AddProductVersionPackageRequest) SetPackageType(v string) *AddProductVersionPackageRequest {
+	s.PackageType = &v
 	return s
 }
 
-type DeployEnvironmentProductResponseBody struct {
+type AddProductVersionPackageResponseBody struct {
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
 	ErrMsg  *string `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
 	Success *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
-func (s DeployEnvironmentProductResponseBody) String() string {
+func (s AddProductVersionPackageResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DeployEnvironmentProductResponseBody) GoString() string {
+func (s AddProductVersionPackageResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DeployEnvironmentProductResponseBody) SetErrCode(v string) *DeployEnvironmentProductResponseBody {
+func (s *AddProductVersionPackageResponseBody) SetErrCode(v string) *AddProductVersionPackageResponseBody {
 	s.ErrCode = &v
 	return s
 }
 
-func (s *DeployEnvironmentProductResponseBody) SetErrMsg(v string) *DeployEnvironmentProductResponseBody {
+func (s *AddProductVersionPackageResponseBody) SetErrMsg(v string) *AddProductVersionPackageResponseBody {
 	s.ErrMsg = &v
 	return s
 }
 
-func (s *DeployEnvironmentProductResponseBody) SetSuccess(v bool) *DeployEnvironmentProductResponseBody {
+func (s *AddProductVersionPackageResponseBody) SetSuccess(v bool) *AddProductVersionPackageResponseBody {
 	s.Success = &v
 	return s
 }
 
-type DeployEnvironmentProductResponse struct {
+type AddProductVersionPackageResponse struct {
 	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeployEnvironmentProductResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Body    *AddProductVersionPackageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s DeployEnvironmentProductResponse) String() string {
+func (s AddProductVersionPackageResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DeployEnvironmentProductResponse) GoString() string {
+func (s AddProductVersionPackageResponse) GoString() string {
 	return s.String()
 }
 
-func (s *DeployEnvironmentProductResponse) SetHeaders(v map[string]*string) *DeployEnvironmentProductResponse {
+func (s *AddProductVersionPackageResponse) SetHeaders(v map[string]*string) *AddProductVersionPackageResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *DeployEnvironmentProductResponse) SetBody(v *DeployEnvironmentProductResponseBody) *DeployEnvironmentProductResponse {
-	s.Body = v
-	return s
-}
-
-type InitEnvironmentResourceRequest struct {
-	AccessKeyID     *string `json:"accessKeyID,omitempty" xml:"accessKeyID,omitempty"`
-	AccessKeySecret *string `json:"accessKeySecret,omitempty" xml:"accessKeySecret,omitempty"`
-	SecurityToken   *string `json:"securityToken,omitempty" xml:"securityToken,omitempty"`
-}
-
-func (s InitEnvironmentResourceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InitEnvironmentResourceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *InitEnvironmentResourceRequest) SetAccessKeyID(v string) *InitEnvironmentResourceRequest {
-	s.AccessKeyID = &v
-	return s
-}
-
-func (s *InitEnvironmentResourceRequest) SetAccessKeySecret(v string) *InitEnvironmentResourceRequest {
-	s.AccessKeySecret = &v
-	return s
-}
-
-func (s *InitEnvironmentResourceRequest) SetSecurityToken(v string) *InitEnvironmentResourceRequest {
-	s.SecurityToken = &v
-	return s
-}
-
-type InitEnvironmentResourceResponseBody struct {
-	Data    *InitEnvironmentResourceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	ErrCode *string                                  `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	ErrMsg  *string                                  `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
-	Success *bool                                    `json:"success,omitempty" xml:"success,omitempty"`
-}
-
-func (s InitEnvironmentResourceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InitEnvironmentResourceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *InitEnvironmentResourceResponseBody) SetData(v *InitEnvironmentResourceResponseBodyData) *InitEnvironmentResourceResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *InitEnvironmentResourceResponseBody) SetErrCode(v string) *InitEnvironmentResourceResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *InitEnvironmentResourceResponseBody) SetErrMsg(v string) *InitEnvironmentResourceResponseBody {
-	s.ErrMsg = &v
-	return s
-}
-
-func (s *InitEnvironmentResourceResponseBody) SetSuccess(v bool) *InitEnvironmentResourceResponseBody {
-	s.Success = &v
-	return s
-}
-
-type InitEnvironmentResourceResponseBodyData struct {
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-}
-
-func (s InitEnvironmentResourceResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InitEnvironmentResourceResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *InitEnvironmentResourceResponseBodyData) SetStatus(v string) *InitEnvironmentResourceResponseBodyData {
-	s.Status = &v
-	return s
-}
-
-type InitEnvironmentResourceResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *InitEnvironmentResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s InitEnvironmentResourceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InitEnvironmentResourceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *InitEnvironmentResourceResponse) SetHeaders(v map[string]*string) *InitEnvironmentResourceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *InitEnvironmentResourceResponse) SetBody(v *InitEnvironmentResourceResponseBody) *InitEnvironmentResourceResponse {
+func (s *AddProductVersionPackageResponse) SetBody(v *AddProductVersionPackageResponseBody) *AddProductVersionPackageResponse {
 	s.Body = v
 	return s
 }
@@ -9749,153 +11427,89 @@ func (s *ListFoundationVersionsResponse) SetBody(v *ListFoundationVersionsRespon
 	return s
 }
 
-type ListEnvironmentDeployRecordRequest struct {
-	PageNum  *int32 `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+type UpdateProductVersionConfigRequest struct {
+	// 配置信息key
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 配置信息value
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+	// 配置说明
+	Notes *string `json:"notes,omitempty" xml:"notes,omitempty"`
+	// 子组件versinid
+	ComponentVersionUID *string `json:"componentVersionUID,omitempty" xml:"componentVersionUID,omitempty"`
+	// 父组件versionid
+	ParentComponentVersionUID *string `json:"parentComponentVersionUID,omitempty" xml:"parentComponentVersionUID,omitempty"`
 }
 
-func (s ListEnvironmentDeployRecordRequest) String() string {
+func (s UpdateProductVersionConfigRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListEnvironmentDeployRecordRequest) GoString() string {
+func (s UpdateProductVersionConfigRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListEnvironmentDeployRecordRequest) SetPageNum(v int32) *ListEnvironmentDeployRecordRequest {
-	s.PageNum = &v
+func (s *UpdateProductVersionConfigRequest) SetName(v string) *UpdateProductVersionConfigRequest {
+	s.Name = &v
 	return s
 }
 
-func (s *ListEnvironmentDeployRecordRequest) SetPageSize(v int32) *ListEnvironmentDeployRecordRequest {
-	s.PageSize = &v
+func (s *UpdateProductVersionConfigRequest) SetValue(v string) *UpdateProductVersionConfigRequest {
+	s.Value = &v
 	return s
 }
 
-type ListEnvironmentDeployRecordResponseBody struct {
-	Data    *ListEnvironmentDeployRecordResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	ErrCode *string                                      `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	ErrMsg  *string                                      `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
-	Success *bool                                        `json:"success,omitempty" xml:"success,omitempty"`
+func (s *UpdateProductVersionConfigRequest) SetNotes(v string) *UpdateProductVersionConfigRequest {
+	s.Notes = &v
+	return s
 }
 
-func (s ListEnvironmentDeployRecordResponseBody) String() string {
+func (s *UpdateProductVersionConfigRequest) SetComponentVersionUID(v string) *UpdateProductVersionConfigRequest {
+	s.ComponentVersionUID = &v
+	return s
+}
+
+func (s *UpdateProductVersionConfigRequest) SetParentComponentVersionUID(v string) *UpdateProductVersionConfigRequest {
+	s.ParentComponentVersionUID = &v
+	return s
+}
+
+type UpdateProductVersionConfigResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s UpdateProductVersionConfigResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListEnvironmentDeployRecordResponseBody) GoString() string {
+func (s UpdateProductVersionConfigResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListEnvironmentDeployRecordResponseBody) SetData(v *ListEnvironmentDeployRecordResponseBodyData) *ListEnvironmentDeployRecordResponseBody {
-	s.Data = v
+func (s *UpdateProductVersionConfigResponseBody) SetRequestId(v string) *UpdateProductVersionConfigResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *ListEnvironmentDeployRecordResponseBody) SetErrCode(v string) *ListEnvironmentDeployRecordResponseBody {
-	s.ErrCode = &v
-	return s
+type UpdateProductVersionConfigResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateProductVersionConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s *ListEnvironmentDeployRecordResponseBody) SetErrMsg(v string) *ListEnvironmentDeployRecordResponseBody {
-	s.ErrMsg = &v
-	return s
-}
-
-func (s *ListEnvironmentDeployRecordResponseBody) SetSuccess(v bool) *ListEnvironmentDeployRecordResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ListEnvironmentDeployRecordResponseBodyData struct {
-	List     []*ListEnvironmentDeployRecordResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
-	PageNum  *int32                                             `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
-	PageSize *int32                                             `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	Total    *int32                                             `json:"total,omitempty" xml:"total,omitempty"`
-}
-
-func (s ListEnvironmentDeployRecordResponseBodyData) String() string {
+func (s UpdateProductVersionConfigResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListEnvironmentDeployRecordResponseBodyData) GoString() string {
+func (s UpdateProductVersionConfigResponse) GoString() string {
 	return s.String()
 }
 
-func (s *ListEnvironmentDeployRecordResponseBodyData) SetList(v []*ListEnvironmentDeployRecordResponseBodyDataList) *ListEnvironmentDeployRecordResponseBodyData {
-	s.List = v
-	return s
-}
-
-func (s *ListEnvironmentDeployRecordResponseBodyData) SetPageNum(v int32) *ListEnvironmentDeployRecordResponseBodyData {
-	s.PageNum = &v
-	return s
-}
-
-func (s *ListEnvironmentDeployRecordResponseBodyData) SetPageSize(v int32) *ListEnvironmentDeployRecordResponseBodyData {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListEnvironmentDeployRecordResponseBodyData) SetTotal(v int32) *ListEnvironmentDeployRecordResponseBodyData {
-	s.Total = &v
-	return s
-}
-
-type ListEnvironmentDeployRecordResponseBodyDataList struct {
-	EnvUID   *string `json:"envUID,omitempty" xml:"envUID,omitempty"`
-	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
-	Status   *string `json:"status,omitempty" xml:"status,omitempty"`
-	Uid      *string `json:"uid,omitempty" xml:"uid,omitempty"`
-}
-
-func (s ListEnvironmentDeployRecordResponseBodyDataList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListEnvironmentDeployRecordResponseBodyDataList) GoString() string {
-	return s.String()
-}
-
-func (s *ListEnvironmentDeployRecordResponseBodyDataList) SetEnvUID(v string) *ListEnvironmentDeployRecordResponseBodyDataList {
-	s.EnvUID = &v
-	return s
-}
-
-func (s *ListEnvironmentDeployRecordResponseBodyDataList) SetProvider(v string) *ListEnvironmentDeployRecordResponseBodyDataList {
-	s.Provider = &v
-	return s
-}
-
-func (s *ListEnvironmentDeployRecordResponseBodyDataList) SetStatus(v string) *ListEnvironmentDeployRecordResponseBodyDataList {
-	s.Status = &v
-	return s
-}
-
-func (s *ListEnvironmentDeployRecordResponseBodyDataList) SetUid(v string) *ListEnvironmentDeployRecordResponseBodyDataList {
-	s.Uid = &v
-	return s
-}
-
-type ListEnvironmentDeployRecordResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListEnvironmentDeployRecordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListEnvironmentDeployRecordResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListEnvironmentDeployRecordResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListEnvironmentDeployRecordResponse) SetHeaders(v map[string]*string) *ListEnvironmentDeployRecordResponse {
+func (s *UpdateProductVersionConfigResponse) SetHeaders(v map[string]*string) *UpdateProductVersionConfigResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *ListEnvironmentDeployRecordResponse) SetBody(v *ListEnvironmentDeployRecordResponseBody) *ListEnvironmentDeployRecordResponse {
+func (s *UpdateProductVersionConfigResponse) SetBody(v *UpdateProductVersionConfigResponseBody) *UpdateProductVersionConfigResponse {
 	s.Body = v
 	return s
 }
@@ -9947,6 +11561,74 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+func (client *Client) ListAuthorization(request *ListAuthorizationRequest) (_result *ListAuthorizationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ListAuthorizationHeaders{}
+	_result = &ListAuthorizationResponse{}
+	_body, _err := client.ListAuthorizationWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListAuthorizationWithOptions(request *ListAuthorizationRequest, headers *ListAuthorizationHeaders, runtime *util.RuntimeOptions) (_result *ListAuthorizationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AsGrantee)) {
+		query["asGrantee"] = request.AsGrantee
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["resourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceIdentifier)) {
+		query["resourceIdentifier"] = request.ResourceIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["pageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortKey)) {
+		query["sortKey"] = request.SortKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortDirect)) {
+		query["sortDirect"] = request.SortDirect
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.ClientToken)) {
+		realHeaders["ClientToken"] = headers.ClientToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	_result = &ListAuthorizationResponse{}
+	_body, _err := client.DoROARequest(tea.String("ListAuthorization"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/authorizations"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) GetEnvironment(uid *string) (_result *GetEnvironmentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9965,56 +11647,6 @@ func (client *Client) GetEnvironmentWithOptions(uid *string, headers map[string]
 	}
 	_result = &GetEnvironmentResponse{}
 	_body, _err := client.DoROARequest(tea.String("GetEnvironment"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/environments/"+tea.StringValue(uid)), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListProductVersionRelatedComponentVersions(uid *string) (_result *ListProductVersionRelatedComponentVersionsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListProductVersionRelatedComponentVersionsResponse{}
-	_body, _err := client.ListProductVersionRelatedComponentVersionsWithOptions(uid, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListProductVersionRelatedComponentVersionsWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListProductVersionRelatedComponentVersionsResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	_result = &ListProductVersionRelatedComponentVersionsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListProductVersionRelatedComponentVersions"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/product_versions/"+tea.StringValue(uid)+"/component_versions"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetComponentVersionChildren(uid *string, versionUID *string) (_result *GetComponentVersionChildrenResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetComponentVersionChildrenResponse{}
-	_body, _err := client.GetComponentVersionChildrenWithOptions(uid, versionUID, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetComponentVersionChildrenWithOptions(uid *string, versionUID *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetComponentVersionChildrenResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	_result = &GetComponentVersionChildrenResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetComponentVersionChildren"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/integration/api/v1/components/"+tea.StringValue(uid)+"/versions/"+tea.StringValue(versionUID)+"/children"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10083,80 +11715,6 @@ func (client *Client) GetProductVersionPackageWithOptions(uid *string, request *
 	}
 	_result = &GetProductVersionPackageResponse{}
 	_body, _err := client.DoROARequest(tea.String("GetProductVersionPackage"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/hosting/product_versions/"+tea.StringValue(uid)+"/packages"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListAlicloudRegion() (_result *ListAlicloudRegionResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListAlicloudRegionResponse{}
-	_body, _err := client.ListAlicloudRegionWithOptions(headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListAlicloudRegionWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListAlicloudRegionResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	_result = &ListAlicloudRegionResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListAlicloudRegion"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/alicloud/regions"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListComponentVersions(uid *string, request *ListComponentVersionsRequest) (_result *ListComponentVersionsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListComponentVersionsResponse{}
-	_body, _err := client.ListComponentVersionsWithOptions(uid, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListComponentVersionsWithOptions(uid *string, tmpReq *ListComponentVersionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListComponentVersionsResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &ListComponentVersionsShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.Platforms)) {
-		request.PlatformsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Platforms, tea.String("platforms"), tea.String("json"))
-	}
-
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
-		query["pageNum"] = request.PageNum
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["pageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PlatformsShrink)) {
-		query["platforms"] = request.PlatformsShrink
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	_result = &ListComponentVersionsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListComponentVersions"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/components/"+tea.StringValue(uid)+"/versions"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10277,6 +11835,1845 @@ func (client *Client) UpdateProductComponentWithOptions(uid *string, request *Up
 	return _result, _err
 }
 
+func (client *Client) ListProductVersionConfig(uid *string, request *ListProductVersionConfigRequest) (_result *ListProductVersionConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListProductVersionConfigResponse{}
+	_body, _err := client.ListProductVersionConfigWithOptions(uid, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListProductVersionConfigWithOptions(uid *string, request *ListProductVersionConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListProductVersionConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["pageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigType)) {
+		query["configType"] = request.ConfigType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	_result = &ListProductVersionConfigResponse{}
+	_body, _err := client.DoROARequest(tea.String("ListProductVersionConfig"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/product_versions/"+tea.StringValue(uid)+"/configs"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddAuthorization(request *AddAuthorizationRequest) (_result *AddAuthorizationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &AddAuthorizationHeaders{}
+	_result = &AddAuthorizationResponse{}
+	_body, _err := client.AddAuthorizationWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddAuthorizationWithOptions(request *AddAuthorizationRequest, headers *AddAuthorizationHeaders, runtime *util.RuntimeOptions) (_result *AddAuthorizationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Grantee)) {
+		body["grantee"] = request.Grantee
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		body["resourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceIdentifier)) {
+		body["resourceIdentifier"] = request.ResourceIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Effect)) {
+		body["effect"] = request.Effect
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.ClientToken)) {
+		realHeaders["ClientToken"] = headers.ClientToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	_result = &AddAuthorizationResponse{}
+	_body, _err := client.DoROARequest(tea.String("AddAuthorization"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v1/authorizations"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListAuthorizedResources(request *ListAuthorizedResourcesRequest) (_result *ListAuthorizedResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ListAuthorizedResourcesHeaders{}
+	_result = &ListAuthorizedResourcesResponse{}
+	_body, _err := client.ListAuthorizedResourcesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListAuthorizedResourcesWithOptions(tmpReq *ListAuthorizedResourcesRequest, headers *ListAuthorizedResourcesHeaders, runtime *util.RuntimeOptions) (_result *ListAuthorizedResourcesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListAuthorizedResourcesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.FilterOptions)) {
+		request.FilterOptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FilterOptions, tea.String("filterOptions"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["resourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceIdentifier)) {
+		query["resourceIdentifier"] = request.ResourceIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["pageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortKey)) {
+		query["sortKey"] = request.SortKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortDirect)) {
+		query["sortDirect"] = request.SortDirect
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterOptionsShrink)) {
+		query["filterOptions"] = request.FilterOptionsShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.ClientToken)) {
+		realHeaders["ClientToken"] = headers.ClientToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	_result = &ListAuthorizedResourcesResponse{}
+	_body, _err := client.DoROARequest(tea.String("ListAuthorizedResources"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/authorizations/resources"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateEnvironmentNode(uid *string, request *CreateEnvironmentNodeRequest) (_result *CreateEnvironmentNodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateEnvironmentNodeResponse{}
+	_body, _err := client.CreateEnvironmentNodeWithOptions(uid, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateEnvironmentNodeWithOptions(uid *string, request *CreateEnvironmentNodeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateEnvironmentNodeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Cpu)) {
+		body["cpu"] = request.Cpu
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataDisk)) {
+		body["dataDisk"] = request.DataDisk
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HostName)) {
+		body["hostName"] = request.HostName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Identifier)) {
+		body["identifier"] = request.Identifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		body["labels"] = request.Labels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Memory)) {
+		body["memory"] = request.Memory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Os)) {
+		body["os"] = request.Os
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrivateIP)) {
+		body["privateIP"] = request.PrivateIP
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Provider)) {
+		body["provider"] = request.Provider
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RootPassword)) {
+		body["rootPassword"] = request.RootPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemDisk)) {
+		body["systemDisk"] = request.SystemDisk
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Taints)) {
+		body["taints"] = request.Taints
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	_result = &CreateEnvironmentNodeResponse{}
+	_body, _err := client.DoROARequest(tea.String("CreateEnvironmentNode"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v1/environments/"+tea.StringValue(uid)+"/nodes"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListFoundationVersionRelatedComponentVersions(uid *string) (_result *ListFoundationVersionRelatedComponentVersionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListFoundationVersionRelatedComponentVersionsResponse{}
+	_body, _err := client.ListFoundationVersionRelatedComponentVersionsWithOptions(uid, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListFoundationVersionRelatedComponentVersionsWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListFoundationVersionRelatedComponentVersionsResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &ListFoundationVersionRelatedComponentVersionsResponse{}
+	_body, _err := client.DoROARequest(tea.String("ListFoundationVersionRelatedComponentVersions"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/foundation/versions/"+tea.StringValue(uid)+"/component_versions"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetSnapshot(uid *string) (_result *GetSnapshotResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetSnapshotResponse{}
+	_body, _err := client.GetSnapshotWithOptions(uid, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetSnapshotWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetSnapshotResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &GetSnapshotResponse{}
+	_body, _err := client.DoROARequest(tea.String("GetSnapshot"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/snapshots/"+tea.StringValue(uid)), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteProductVersion(uid *string) (_result *DeleteProductVersionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteProductVersionResponse{}
+	_body, _err := client.DeleteProductVersionWithOptions(uid, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteProductVersionWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteProductVersionResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &DeleteProductVersionResponse{}
+	_body, _err := client.DoROARequest(tea.String("DeleteProductVersion"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/api/v1/products/"+tea.StringValue(uid)+"/versions"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateLatestProductVersion(uid *string, versionUID *string) (_result *CreateLatestProductVersionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &CreateLatestProductVersionHeaders{}
+	_result = &CreateLatestProductVersionResponse{}
+	_body, _err := client.CreateLatestProductVersionWithOptions(uid, versionUID, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateLatestProductVersionWithOptions(uid *string, versionUID *string, headers *CreateLatestProductVersionHeaders, runtime *util.RuntimeOptions) (_result *CreateLatestProductVersionResponse, _err error) {
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.ClientToken)) {
+		realHeaders["ClientToken"] = headers.ClientToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	_result = &CreateLatestProductVersionResponse{}
+	_body, _err := client.DoROARequest(tea.String("CreateLatestProductVersion"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/integration/api/v1/products/"+tea.StringValue(uid)+"/versions/"+tea.StringValue(versionUID)), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateProduct(request *CreateProductRequest) (_result *CreateProductResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &CreateProductHeaders{}
+	_result = &CreateProductResponse{}
+	_body, _err := client.CreateProductWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateProductWithOptions(request *CreateProductRequest, headers *CreateProductHeaders, runtime *util.RuntimeOptions) (_result *CreateProductResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Annotations)) {
+		body["annotations"] = request.Annotations
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ComponentVersionUID)) {
+		body["componentVersionUID"] = request.ComponentVersionUID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FoundationVersionUID)) {
+		body["foundationVersionUID"] = request.FoundationVersionUID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductName)) {
+		body["productName"] = request.ProductName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrometheusUID)) {
+		body["prometheusUID"] = request.PrometheusUID
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.ClientToken)) {
+		realHeaders["ClientToken"] = headers.ClientToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	_result = &CreateProductResponse{}
+	_body, _err := client.DoROARequest(tea.String("CreateProduct"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/integration/api/v1/products"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetProductEnvironments(request *GetProductEnvironmentsRequest) (_result *GetProductEnvironmentsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetProductEnvironmentsResponse{}
+	_body, _err := client.GetProductEnvironmentsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetProductEnvironmentsWithOptions(tmpReq *GetProductEnvironmentsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProductEnvironmentsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetProductEnvironmentsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Platforms)) {
+		request.PlatformsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Platforms, tea.String("platforms"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProductUID)) {
+		query["productUID"] = request.ProductUID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvType)) {
+		query["envType"] = request.EnvType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlatformsShrink)) {
+		query["platforms"] = request.PlatformsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	_result = &GetProductEnvironmentsResponse{}
+	_body, _err := client.DoROARequest(tea.String("GetProductEnvironments"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/product_envs"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteEnvironment(uid *string) (_result *DeleteEnvironmentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteEnvironmentResponse{}
+	_body, _err := client.DeleteEnvironmentWithOptions(uid, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteEnvironmentWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteEnvironmentResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &DeleteEnvironmentResponse{}
+	_body, _err := client.DoROARequest(tea.String("DeleteEnvironment"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/api/v1/environments/"+tea.StringValue(uid)), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateSnapshot(request *CreateSnapshotRequest) (_result *CreateSnapshotResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateSnapshotResponse{}
+	_body, _err := client.CreateSnapshotWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateSnapshotWithOptions(request *CreateSnapshotRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateSnapshotResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductName)) {
+		body["productName"] = request.ProductName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductVersion)) {
+		body["productVersion"] = request.ProductVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductVersionDesc)) {
+		body["productVersionDesc"] = request.ProductVersionDesc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		body["region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Vpcid)) {
+		body["vpcid"] = request.Vpcid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	_result = &CreateSnapshotResponse{}
+	_body, _err := client.DoROARequest(tea.String("CreateSnapshot"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v1/snapshots"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListChildrenComponentVersion(id *string, versionId *string, componentId *string) (_result *ListChildrenComponentVersionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListChildrenComponentVersionResponse{}
+	_body, _err := client.ListChildrenComponentVersionWithOptions(id, versionId, componentId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListChildrenComponentVersionWithOptions(id *string, versionId *string, componentId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListChildrenComponentVersionResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &ListChildrenComponentVersionResponse{}
+	_body, _err := client.DoROARequest(tea.String("ListChildrenComponentVersion"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/integration/api/v1/products/"+tea.StringValue(id)+"/versions/"+tea.StringValue(versionId)+"/children/"+tea.StringValue(componentId)), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteEnvironmentNode(uid *string, request *DeleteEnvironmentNodeRequest) (_result *DeleteEnvironmentNodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteEnvironmentNodeResponse{}
+	_body, _err := client.DeleteEnvironmentNodeWithOptions(uid, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteEnvironmentNodeWithOptions(uid *string, request *DeleteEnvironmentNodeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteEnvironmentNodeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnvUID)) {
+		query["envUID"] = request.EnvUID
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	_result = &DeleteEnvironmentNodeResponse{}
+	_body, _err := client.DoROARequest(tea.String("DeleteEnvironmentNode"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/api/v1/environmentnodes/"+tea.StringValue(uid)), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetSnapshotInstances(uid *string, request *GetSnapshotInstancesRequest) (_result *GetSnapshotInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetSnapshotInstancesResponse{}
+	_body, _err := client.GetSnapshotInstancesWithOptions(uid, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetSnapshotInstancesWithOptions(uid *string, request *GetSnapshotInstancesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetSnapshotInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["pageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortKey)) {
+		query["sortKey"] = request.SortKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortDirect)) {
+		query["sortDirect"] = request.SortDirect
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	_result = &GetSnapshotInstancesResponse{}
+	_body, _err := client.DoROARequest(tea.String("GetSnapshotInstances"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/snapshots/"+tea.StringValue(uid)+"/instances"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CheckSLR(request *CheckSLRRequest) (_result *CheckSLRResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CheckSLRResponse{}
+	_body, _err := client.CheckSLRWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CheckSLRWithOptions(request *CheckSLRRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CheckSLRResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Uid)) {
+		query["uid"] = request.Uid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	_result = &CheckSLRResponse{}
+	_body, _err := client.DoROARequest(tea.String("CheckSLR"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/slr"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ApplyComponents(request *ApplyComponentsRequest) (_result *ApplyComponentsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ApplyComponentsResponse{}
+	_body, _err := client.ApplyComponentsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ApplyComponentsWithOptions(request *ApplyComponentsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ApplyComponentsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChildrenList)) {
+		body["childrenList"] = request.ChildrenList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Component)) {
+		body["component"] = request.Component
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	_result = &ApplyComponentsResponse{}
+	_body, _err := client.DoROARequest(tea.String("ApplyComponents"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/integration/api/v1/components"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreatePackageConfig(uid *string) (_result *CreatePackageConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreatePackageConfigResponse{}
+	_body, _err := client.CreatePackageConfigWithOptions(uid, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreatePackageConfigWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreatePackageConfigResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &CreatePackageConfigResponse{}
+	_body, _err := client.DoROARequest(tea.String("CreatePackageConfig"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v1/environments/"+tea.StringValue(uid)+"/package_config"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddProductComponent(id *string, versionId *string, componentVersionId *string, ClientToken *string, request *AddProductComponentRequest) (_result *AddProductComponentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &AddProductComponentResponse{}
+	_body, _err := client.AddProductComponentWithOptions(id, versionId, componentVersionId, ClientToken, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddProductComponentWithOptions(id *string, versionId *string, componentVersionId *string, ClientToken *string, request *AddProductComponentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddProductComponentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    request.ReleaseName,
+	}
+	_result = &AddProductComponentResponse{}
+	_body, _err := client.DoROARequest(tea.String("AddProductComponent"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/integration/api/v1/products/"+tea.StringValue(id)+"/versions/"+tea.StringValue(versionId)+"/componentVersions/"+tea.StringValue(componentVersionId)), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateProductVersionResources(uid *string, request *UpdateProductVersionResourcesRequest) (_result *UpdateProductVersionResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateProductVersionResourcesResponse{}
+	_body, _err := client.UpdateProductVersionResourcesWithOptions(uid, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateProductVersionResourcesWithOptions(uid *string, request *UpdateProductVersionResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateProductVersionResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Resources)) {
+		query["resources"] = request.Resources
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	_result = &UpdateProductVersionResourcesResponse{}
+	_body, _err := client.DoROARequest(tea.String("UpdateProductVersionResources"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/api/v1/product_versions/"+tea.StringValue(uid)+"/resource_requirement"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteSnapshot(uid *string) (_result *DeleteSnapshotResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteSnapshotResponse{}
+	_body, _err := client.DeleteSnapshotWithOptions(uid, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteSnapshotWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteSnapshotResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &DeleteSnapshotResponse{}
+	_body, _err := client.DoROARequest(tea.String("DeleteSnapshot"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/api/v1/snapshots/"+tea.StringValue(uid)), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListEnvironmentsWithSnapshot(uid *string) (_result *ListEnvironmentsWithSnapshotResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListEnvironmentsWithSnapshotResponse{}
+	_body, _err := client.ListEnvironmentsWithSnapshotWithOptions(uid, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListEnvironmentsWithSnapshotWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListEnvironmentsWithSnapshotResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &ListEnvironmentsWithSnapshotResponse{}
+	_body, _err := client.DoROARequest(tea.String("ListEnvironmentsWithSnapshot"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/snapshots/"+tea.StringValue(uid)+"/environments"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateEnvironmentAndGenerateVendorConfig(request *CreateEnvironmentAndGenerateVendorConfigRequest) (_result *CreateEnvironmentAndGenerateVendorConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &CreateEnvironmentAndGenerateVendorConfigHeaders{}
+	_result = &CreateEnvironmentAndGenerateVendorConfigResponse{}
+	_body, _err := client.CreateEnvironmentAndGenerateVendorConfigWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateEnvironmentAndGenerateVendorConfigWithOptions(request *CreateEnvironmentAndGenerateVendorConfigRequest, headers *CreateEnvironmentAndGenerateVendorConfigHeaders, runtime *util.RuntimeOptions) (_result *CreateEnvironmentAndGenerateVendorConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnvUID)) {
+		body["envUID"] = request.EnvUID
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Platform))) {
+		body["platform"] = request.Platform
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductName)) {
+		body["productName"] = request.ProductName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductUID)) {
+		body["productUID"] = request.ProductUID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductVersion)) {
+		body["productVersion"] = request.ProductVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductVersionUID)) {
+		body["productVersionUID"] = request.ProductVersionUID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VendorType)) {
+		body["vendorType"] = request.VendorType
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.ClientToken)) {
+		realHeaders["ClientToken"] = headers.ClientToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	_result = &CreateEnvironmentAndGenerateVendorConfigResponse{}
+	_body, _err := client.DoROARequest(tea.String("CreateEnvironmentAndGenerateVendorConfig"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v1/product_envs/vendor_config"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) InitSnapshotInstance(uid *string) (_result *InitSnapshotInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &InitSnapshotInstanceResponse{}
+	_body, _err := client.InitSnapshotInstanceWithOptions(uid, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) InitSnapshotInstanceWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *InitSnapshotInstanceResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &InitSnapshotInstanceResponse{}
+	_body, _err := client.DoROARequest(tea.String("InitSnapshotInstance"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v1/snapshots/"+tea.StringValue(uid)+"/instances"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListEnvironmentParams(uid *string, request *ListEnvironmentParamsRequest) (_result *ListEnvironmentParamsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListEnvironmentParamsResponse{}
+	_body, _err := client.ListEnvironmentParamsWithOptions(uid, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListEnvironmentParamsWithOptions(uid *string, request *ListEnvironmentParamsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListEnvironmentParamsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["pageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Fuzzy)) {
+		query["fuzzy"] = request.Fuzzy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParamType)) {
+		query["paramType"] = request.ParamType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductVersionUID)) {
+		query["productVersionUID"] = request.ProductVersionUID
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	_result = &ListEnvironmentParamsResponse{}
+	_body, _err := client.DoROARequest(tea.String("ListEnvironmentParams"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/environments/"+tea.StringValue(uid)+"/params"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetFoundationVersion(uid *string) (_result *GetFoundationVersionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetFoundationVersionResponse{}
+	_body, _err := client.GetFoundationVersionWithOptions(uid, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetFoundationVersionWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetFoundationVersionResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &GetFoundationVersionResponse{}
+	_body, _err := client.DoROARequest(tea.String("GetFoundationVersion"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/foundation/versions/"+tea.StringValue(uid)), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteProduct(uid *string) (_result *DeleteProductResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteProductResponse{}
+	_body, _err := client.DeleteProductWithOptions(uid, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteProductWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteProductResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &DeleteProductResponse{}
+	_body, _err := client.DoROARequest(tea.String("DeleteProduct"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/integration/api/v1/products/"+tea.StringValue(uid)), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetEnvironmentPackage(uid *string) (_result *GetEnvironmentPackageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetEnvironmentPackageResponse{}
+	_body, _err := client.GetEnvironmentPackageWithOptions(uid, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetEnvironmentPackageWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetEnvironmentPackageResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &GetEnvironmentPackageResponse{}
+	_body, _err := client.DoROARequest(tea.String("GetEnvironmentPackage"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/envPackages/"+tea.StringValue(uid)), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListComponents(request *ListComponentsRequest) (_result *ListComponentsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListComponentsResponse{}
+	_body, _err := client.ListComponentsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListComponentsWithOptions(request *ListComponentsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListComponentsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		query["category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["pageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Fuzzy)) {
+		query["fuzzy"] = request.Fuzzy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Public)) {
+		query["public"] = request.Public
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	_result = &ListComponentsResponse{}
+	_body, _err := client.DoROARequest(tea.String("ListComponents"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/components"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddEnvironmentProductVersion(uid *string, request *AddEnvironmentProductVersionRequest) (_result *AddEnvironmentProductVersionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &AddEnvironmentProductVersionHeaders{}
+	_result = &AddEnvironmentProductVersionResponse{}
+	_body, _err := client.AddEnvironmentProductVersionWithOptions(uid, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddEnvironmentProductVersionWithOptions(uid *string, request *AddEnvironmentProductVersionRequest, headers *AddEnvironmentProductVersionHeaders, runtime *util.RuntimeOptions) (_result *AddEnvironmentProductVersionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProductVersionUID)) {
+		body["productVersionUID"] = request.ProductVersionUID
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.ClientToken)) {
+		realHeaders["ClientToken"] = headers.ClientToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	_result = &AddEnvironmentProductVersionResponse{}
+	_body, _err := client.DoROARequest(tea.String("AddEnvironmentProductVersion"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v1/environments/"+tea.StringValue(uid)+"/productVersions"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetChildrenComponentVersionList(id *string, versionId *string) (_result *GetChildrenComponentVersionListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetChildrenComponentVersionListResponse{}
+	_body, _err := client.GetChildrenComponentVersionListWithOptions(id, versionId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetChildrenComponentVersionListWithOptions(id *string, versionId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetChildrenComponentVersionListResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &GetChildrenComponentVersionListResponse{}
+	_body, _err := client.DoROARequest(tea.String("GetChildrenComponentVersionList"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/integration/api/v1/products/"+tea.StringValue(id)+"/versions/"+tea.StringValue(versionId)+"/children"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateSLR() (_result *CreateSLRResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &CreateSLRHeaders{}
+	_result = &CreateSLRResponse{}
+	_body, _err := client.CreateSLRWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateSLRWithOptions(headers *CreateSLRHeaders, runtime *util.RuntimeOptions) (_result *CreateSLRResponse, _err error) {
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.ClientToken)) {
+		realHeaders["ClientToken"] = headers.ClientToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	_result = &CreateSLRResponse{}
+	_body, _err := client.DoROARequest(tea.String("CreateSLR"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v1/slr"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetProductVersionRelatedComponentVersionDetail(uid *string, relationUID *string) (_result *GetProductVersionRelatedComponentVersionDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetProductVersionRelatedComponentVersionDetailResponse{}
+	_body, _err := client.GetProductVersionRelatedComponentVersionDetailWithOptions(uid, relationUID, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetProductVersionRelatedComponentVersionDetailWithOptions(uid *string, relationUID *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProductVersionRelatedComponentVersionDetailResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &GetProductVersionRelatedComponentVersionDetailResponse{}
+	_body, _err := client.DoROARequest(tea.String("GetProductVersionRelatedComponentVersionDetail"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/product_versions/"+tea.StringValue(uid)+"/relations/"+tea.StringValue(relationUID)), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetProductVersionPlatforms(uid *string) (_result *GetProductVersionPlatformsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetProductVersionPlatformsResponse{}
+	_body, _err := client.GetProductVersionPlatformsWithOptions(uid, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetProductVersionPlatformsWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProductVersionPlatformsResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &GetProductVersionPlatformsResponse{}
+	_body, _err := client.DoROARequest(tea.String("GetProductVersionPlatforms"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/product_versions/"+tea.StringValue(uid)+"/platforms"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetProductVersionResource(uid *string) (_result *GetProductVersionResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetProductVersionResourceResponse{}
+	_body, _err := client.GetProductVersionResourceWithOptions(uid, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetProductVersionResourceWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProductVersionResourceResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &GetProductVersionResourceResponse{}
+	_body, _err := client.DoROARequest(tea.String("GetProductVersionResource"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/product_versions/"+tea.StringValue(uid)+"/resources"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ApplyEnvironmentResource(uid *string, request *ApplyEnvironmentResourceRequest) (_result *ApplyEnvironmentResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ApplyEnvironmentResourceResponse{}
+	_body, _err := client.ApplyEnvironmentResourceWithOptions(uid, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ApplyEnvironmentResourceWithOptions(uid *string, request *ApplyEnvironmentResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ApplyEnvironmentResourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessKeyID)) {
+		body["accessKeyID"] = request.AccessKeyID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccessKeySecret)) {
+		body["accessKeySecret"] = request.AccessKeySecret
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		body["securityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	_result = &ApplyEnvironmentResourceResponse{}
+	_body, _err := client.DoROARequest(tea.String("ApplyEnvironmentResource"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v1/environments/"+tea.StringValue(uid)+"/resource"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddProductVersionConfig(uid *string, request *AddProductVersionConfigRequest) (_result *AddProductVersionConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &AddProductVersionConfigResponse{}
+	_body, _err := client.AddProductVersionConfigWithOptions(uid, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddProductVersionConfigWithOptions(uid *string, request *AddProductVersionConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddProductVersionConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Value)) {
+		body["value"] = request.Value
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Notes)) {
+		body["notes"] = request.Notes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ComponentVersionUID)) {
+		body["componentVersionUID"] = request.ComponentVersionUID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentComponentVersionUID)) {
+		body["ParentComponentVersionUID"] = request.ParentComponentVersionUID
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	_result = &AddProductVersionConfigResponse{}
+	_body, _err := client.DoROARequest(tea.String("AddProductVersionConfig"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v1/product_versions/"+tea.StringValue(uid)+"/config"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ShareSnapshot(uid *string, request *ShareSnapshotRequest) (_result *ShareSnapshotResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ShareSnapshotResponse{}
+	_body, _err := client.ShareSnapshotWithOptions(uid, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ShareSnapshotWithOptions(uid *string, request *ShareSnapshotRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ShareSnapshotResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TargetProvider)) {
+		body["targetProvider"] = request.TargetProvider
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	_result = &ShareSnapshotResponse{}
+	_body, _err := client.DoROARequest(tea.String("ShareSnapshot"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v1/snapshots/"+tea.StringValue(uid)+"/snapshots"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteEnvironmentParam(uid *string) (_result *DeleteEnvironmentParamResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteEnvironmentParamResponse{}
+	_body, _err := client.DeleteEnvironmentParamWithOptions(uid, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteEnvironmentParamWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteEnvironmentParamResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &DeleteEnvironmentParamResponse{}
+	_body, _err := client.DoROARequest(tea.String("DeleteEnvironmentParam"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/api/v1/environmentparams/"+tea.StringValue(uid)), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteComponentVersion(uid *string, versionUid *string) (_result *DeleteComponentVersionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteComponentVersionResponse{}
+	_body, _err := client.DeleteComponentVersionWithOptions(uid, versionUid, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteComponentVersionWithOptions(uid *string, versionUid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteComponentVersionResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &DeleteComponentVersionResponse{}
+	_body, _err := client.DoROARequest(tea.String("DeleteComponentVersion"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/integration/api/v1/components/"+tea.StringValue(uid)+"/versions/"+tea.StringValue(versionUid)), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeployEnvironmentProduct(uid *string) (_result *DeployEnvironmentProductResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeployEnvironmentProductResponse{}
+	_body, _err := client.DeployEnvironmentProductWithOptions(uid, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeployEnvironmentProductWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeployEnvironmentProductResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &DeployEnvironmentProductResponse{}
+	_body, _err := client.DoROARequest(tea.String("DeployEnvironmentProduct"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v1/environments/"+tea.StringValue(uid)+"/deployment"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) InitEnvironmentResource(uid *string, request *InitEnvironmentResourceRequest) (_result *InitEnvironmentResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &InitEnvironmentResourceResponse{}
+	_body, _err := client.InitEnvironmentResourceWithOptions(uid, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) InitEnvironmentResourceWithOptions(uid *string, request *InitEnvironmentResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *InitEnvironmentResourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessKeyID)) {
+		body["accessKeyID"] = request.AccessKeyID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccessKeySecret)) {
+		body["accessKeySecret"] = request.AccessKeySecret
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		body["securityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	_result = &InitEnvironmentResourceResponse{}
+	_body, _err := client.DoROARequest(tea.String("InitEnvironmentResource"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v1/environments/"+tea.StringValue(uid)+"/resources"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListEnvironmentDeployRecord(uid *string, request *ListEnvironmentDeployRecordRequest) (_result *ListEnvironmentDeployRecordResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListEnvironmentDeployRecordResponse{}
+	_body, _err := client.ListEnvironmentDeployRecordWithOptions(uid, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListEnvironmentDeployRecordWithOptions(uid *string, request *ListEnvironmentDeployRecordRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListEnvironmentDeployRecordResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["pageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	_result = &ListEnvironmentDeployRecordResponse{}
+	_body, _err := client.DoROARequest(tea.String("ListEnvironmentDeployRecord"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/environments/"+tea.StringValue(uid)+"/deployments"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListProductVersionRelatedComponentVersions(uid *string, request *ListProductVersionRelatedComponentVersionsRequest) (_result *ListProductVersionRelatedComponentVersionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListProductVersionRelatedComponentVersionsResponse{}
+	_body, _err := client.ListProductVersionRelatedComponentVersionsWithOptions(uid, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListProductVersionRelatedComponentVersionsWithOptions(uid *string, request *ListProductVersionRelatedComponentVersionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListProductVersionRelatedComponentVersionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["pageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortKey)) {
+		query["sortKey"] = request.SortKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortDirect)) {
+		query["sortDirect"] = request.SortDirect
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		query["category"] = request.Category
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	_result = &ListProductVersionRelatedComponentVersionsResponse{}
+	_body, _err := client.DoROARequest(tea.String("ListProductVersionRelatedComponentVersions"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/product_versions/"+tea.StringValue(uid)+"/component_versions"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetComponentVersionChildren(uid *string, versionUID *string) (_result *GetComponentVersionChildrenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetComponentVersionChildrenResponse{}
+	_body, _err := client.GetComponentVersionChildrenWithOptions(uid, versionUID, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetComponentVersionChildrenWithOptions(uid *string, versionUID *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetComponentVersionChildrenResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &GetComponentVersionChildrenResponse{}
+	_body, _err := client.DoROARequest(tea.String("GetComponentVersionChildren"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/integration/api/v1/components/"+tea.StringValue(uid)+"/versions/"+tea.StringValue(versionUID)+"/children"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetProductVersionPackageURL(uid *string, request *GetProductVersionPackageURLRequest) (_result *GetProductVersionPackageURLResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetProductVersionPackageURLResponse{}
+	_body, _err := client.GetProductVersionPackageURLWithOptions(uid, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetProductVersionPackageURLWithOptions(uid *string, request *GetProductVersionPackageURLRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProductVersionPackageURLResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnvPackageUID)) {
+		query["envPackageUID"] = request.EnvPackageUID
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	_result = &GetProductVersionPackageURLResponse{}
+	_body, _err := client.DoROARequest(tea.String("GetProductVersionPackageURL"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/hosting/product_versions/"+tea.StringValue(uid)+"/packages/url"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetProductVersionRelatedComponentVersion(relationUID *string) (_result *GetProductVersionRelatedComponentVersionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetProductVersionRelatedComponentVersionResponse{}
+	_body, _err := client.GetProductVersionRelatedComponentVersionWithOptions(relationUID, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetProductVersionRelatedComponentVersionWithOptions(relationUID *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProductVersionRelatedComponentVersionResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &GetProductVersionRelatedComponentVersionResponse{}
+	_body, _err := client.DoROARequest(tea.String("GetProductVersionRelatedComponentVersion"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/integration/api/v1/product_version_relations/"+tea.StringValue(relationUID)), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListAlicloudRegion() (_result *ListAlicloudRegionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListAlicloudRegionResponse{}
+	_body, _err := client.ListAlicloudRegionWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListAlicloudRegionWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListAlicloudRegionResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &ListAlicloudRegionResponse{}
+	_body, _err := client.DoROARequest(tea.String("ListAlicloudRegion"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/alicloud/regions"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListComponentVersions(uid *string, request *ListComponentVersionsRequest) (_result *ListComponentVersionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListComponentVersionsResponse{}
+	_body, _err := client.ListComponentVersionsWithOptions(uid, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListComponentVersionsWithOptions(uid *string, tmpReq *ListComponentVersionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListComponentVersionsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListComponentVersionsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Platforms)) {
+		request.PlatformsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Platforms, tea.String("platforms"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["pageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlatformsShrink)) {
+		query["platforms"] = request.PlatformsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	_result = &ListComponentVersionsResponse{}
+	_body, _err := client.DoROARequest(tea.String("ListComponentVersions"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/components/"+tea.StringValue(uid)+"/versions"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) UpdateEnvironmentNodes(uid *string, request *UpdateEnvironmentNodesRequest) (_result *UpdateEnvironmentNodesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10356,11 +13753,11 @@ func (client *Client) UpdateEnvironmentNodesWithOptions(uid *string, request *Up
 	return _result, _err
 }
 
-func (client *Client) ListEnvironmentPackages(uid *string, request *ListEnvironmentPackagesRequest) (_result *ListEnvironmentPackagesResponse, _err error) {
+func (client *Client) DeleteAuthorization(uid *string) (_result *DeleteAuthorizationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListEnvironmentPackagesResponse{}
-	_body, _err := client.ListEnvironmentPackagesWithOptions(uid, request, headers, runtime)
+	headers := &DeleteAuthorizationHeaders{}
+	_result = &DeleteAuthorizationResponse{}
+	_body, _err := client.DeleteAuthorizationWithOptions(uid, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10368,26 +13765,21 @@ func (client *Client) ListEnvironmentPackages(uid *string, request *ListEnvironm
 	return _result, _err
 }
 
-func (client *Client) ListEnvironmentPackagesWithOptions(uid *string, request *ListEnvironmentPackagesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListEnvironmentPackagesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
-		query["pageNum"] = request.PageNum
+func (client *Client) DeleteAuthorizationWithOptions(uid *string, headers *DeleteAuthorizationHeaders, runtime *util.RuntimeOptions) (_result *DeleteAuthorizationResponse, _err error) {
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["pageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(headers.ClientToken)) {
+		realHeaders["ClientToken"] = headers.ClientToken
 	}
 
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
+		Headers: realHeaders,
 	}
-	_result = &ListEnvironmentPackagesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListEnvironmentPackages"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/environments/"+tea.StringValue(uid)+"/packages"), tea.String("json"), req, runtime)
+	_result = &DeleteAuthorizationResponse{}
+	_body, _err := client.DoROARequest(tea.String("DeleteAuthorization"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/api/v1/authorizations/"+tea.StringValue(uid)), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10634,85 +14026,6 @@ func (client *Client) UpdateComponentToProductWithOptions(id *string, versionId 
 	return _result, _err
 }
 
-func (client *Client) CreateEnvironmentNode(uid *string, request *CreateEnvironmentNodeRequest) (_result *CreateEnvironmentNodeResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateEnvironmentNodeResponse{}
-	_body, _err := client.CreateEnvironmentNodeWithOptions(uid, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateEnvironmentNodeWithOptions(uid *string, request *CreateEnvironmentNodeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateEnvironmentNodeResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Cpu)) {
-		body["cpu"] = request.Cpu
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DataDisk)) {
-		body["dataDisk"] = request.DataDisk
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.HostName)) {
-		body["hostName"] = request.HostName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Identifier)) {
-		body["identifier"] = request.Identifier
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Labels)) {
-		body["labels"] = request.Labels
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Memory)) {
-		body["memory"] = request.Memory
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Os)) {
-		body["os"] = request.Os
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PrivateIP)) {
-		body["privateIP"] = request.PrivateIP
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Provider)) {
-		body["provider"] = request.Provider
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RootPassword)) {
-		body["rootPassword"] = request.RootPassword
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SystemDisk)) {
-		body["systemDisk"] = request.SystemDisk
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Taints)) {
-		body["taints"] = request.Taints
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	_result = &CreateEnvironmentNodeResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateEnvironmentNode"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v1/environments/"+tea.StringValue(uid)+"/nodes"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
 func (client *Client) GetComponent(uid *string) (_result *GetComponentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10731,56 +14044,6 @@ func (client *Client) GetComponentWithOptions(uid *string, headers map[string]*s
 	}
 	_result = &GetComponentResponse{}
 	_body, _err := client.DoROARequest(tea.String("GetComponent"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/components/"+tea.StringValue(uid)), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListFoundationVersionRelatedComponentVersions(uid *string) (_result *ListFoundationVersionRelatedComponentVersionsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListFoundationVersionRelatedComponentVersionsResponse{}
-	_body, _err := client.ListFoundationVersionRelatedComponentVersionsWithOptions(uid, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListFoundationVersionRelatedComponentVersionsWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListFoundationVersionRelatedComponentVersionsResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	_result = &ListFoundationVersionRelatedComponentVersionsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListFoundationVersionRelatedComponentVersions"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/foundation/versions/"+tea.StringValue(uid)+"/component_versions"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetSnapshot(uid *string) (_result *GetSnapshotResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetSnapshotResponse{}
-	_body, _err := client.GetSnapshotWithOptions(uid, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetSnapshotWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetSnapshotResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	_result = &GetSnapshotResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetSnapshot"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/snapshots/"+tea.StringValue(uid)), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10813,40 +14076,6 @@ func (client *Client) GetLicenseWithOptions(uid *string, headers map[string]*str
 	return _result, _err
 }
 
-func (client *Client) CreateLatestProductVersion(uid *string, versionUID *string) (_result *CreateLatestProductVersionResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := &CreateLatestProductVersionHeaders{}
-	_result = &CreateLatestProductVersionResponse{}
-	_body, _err := client.CreateLatestProductVersionWithOptions(uid, versionUID, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateLatestProductVersionWithOptions(uid *string, versionUID *string, headers *CreateLatestProductVersionHeaders, runtime *util.RuntimeOptions) (_result *CreateLatestProductVersionResponse, _err error) {
-	realHeaders := make(map[string]*string)
-	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
-		realHeaders = headers.CommonHeaders
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.ClientToken)) {
-		realHeaders["ClientToken"] = headers.ClientToken
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: realHeaders,
-	}
-	_result = &CreateLatestProductVersionResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateLatestProductVersion"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/integration/api/v1/products/"+tea.StringValue(uid)+"/versions/"+tea.StringValue(versionUID)), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
 func (client *Client) ListAlicloudVPC(regionid *string) (_result *ListAlicloudVPCResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10865,119 +14094,6 @@ func (client *Client) ListAlicloudVPCWithOptions(regionid *string, headers map[s
 	}
 	_result = &ListAlicloudVPCResponse{}
 	_body, _err := client.DoROARequest(tea.String("ListAlicloudVPC"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/alicloud/regions/"+tea.StringValue(regionid)+"/vpcs"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateProduct(request *CreateProductRequest) (_result *CreateProductResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := &CreateProductHeaders{}
-	_result = &CreateProductResponse{}
-	_body, _err := client.CreateProductWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateProductWithOptions(request *CreateProductRequest, headers *CreateProductHeaders, runtime *util.RuntimeOptions) (_result *CreateProductResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Annotations)) {
-		body["annotations"] = request.Annotations
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ComponentVersionUID)) {
-		body["componentVersionUID"] = request.ComponentVersionUID
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Description)) {
-		body["description"] = request.Description
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.FoundationVersionUID)) {
-		body["foundationVersionUID"] = request.FoundationVersionUID
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProductName)) {
-		body["productName"] = request.ProductName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PrometheusUID)) {
-		body["prometheusUID"] = request.PrometheusUID
-	}
-
-	realHeaders := make(map[string]*string)
-	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
-		realHeaders = headers.CommonHeaders
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.ClientToken)) {
-		realHeaders["ClientToken"] = headers.ClientToken
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: realHeaders,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	_result = &CreateProductResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateProduct"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/integration/api/v1/products"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetProductEnvironments(request *GetProductEnvironmentsRequest) (_result *GetProductEnvironmentsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetProductEnvironmentsResponse{}
-	_body, _err := client.GetProductEnvironmentsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetProductEnvironmentsWithOptions(tmpReq *GetProductEnvironmentsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProductEnvironmentsResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &GetProductEnvironmentsShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.Platforms)) {
-		request.PlatformsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Platforms, tea.String("platforms"), tea.String("json"))
-	}
-
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ProductUID)) {
-		query["productUID"] = request.ProductUID
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EnvType)) {
-		query["envType"] = request.EnvType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PlatformsShrink)) {
-		query["platforms"] = request.PlatformsShrink
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	_result = &GetProductEnvironmentsResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetProductEnvironments"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/product_envs"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11074,31 +14190,6 @@ func (client *Client) CreateEnvironmentWithSnapshotWithOptions(uid *string, requ
 	return _result, _err
 }
 
-func (client *Client) DeleteEnvironment(uid *string) (_result *DeleteEnvironmentResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteEnvironmentResponse{}
-	_body, _err := client.DeleteEnvironmentWithOptions(uid, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteEnvironmentWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteEnvironmentResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	_result = &DeleteEnvironmentResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteEnvironment"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/api/v1/environments/"+tea.StringValue(uid)), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
 func (client *Client) UpdateProductVersion(uid *string, request *UpdateProductVersionRequest) (_result *UpdateProductVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11177,65 +14268,6 @@ func (client *Client) GetChildrenComponentVersionParametersListWithOptions(id *s
 	return _result, _err
 }
 
-func (client *Client) CreateSnapshot(request *CreateSnapshotRequest) (_result *CreateSnapshotResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateSnapshotResponse{}
-	_body, _err := client.CreateSnapshotWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateSnapshotWithOptions(request *CreateSnapshotRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateSnapshotResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Description)) {
-		body["description"] = request.Description
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Name)) {
-		body["name"] = request.Name
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProductName)) {
-		body["productName"] = request.ProductName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProductVersion)) {
-		body["productVersion"] = request.ProductVersion
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProductVersionDesc)) {
-		body["productVersionDesc"] = request.ProductVersionDesc
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Region)) {
-		body["region"] = request.Region
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Vpcid)) {
-		body["vpcid"] = request.Vpcid
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	_result = &CreateSnapshotResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateSnapshot"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v1/snapshots"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
 func (client *Client) GetLatestVersionDifferences(id *string, versionID *string, request *GetLatestVersionDifferencesRequest) (_result *GetLatestVersionDifferencesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11264,41 +14296,6 @@ func (client *Client) GetLatestVersionDifferencesWithOptions(id *string, version
 	}
 	_result = &GetLatestVersionDifferencesResponse{}
 	_body, _err := client.DoROARequest(tea.String("GetLatestVersionDifferences"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/integration/api/v1/products/"+tea.StringValue(id)+"/versions/"+tea.StringValue(versionID)+"/differences"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteEnvironmentNode(uid *string, request *DeleteEnvironmentNodeRequest) (_result *DeleteEnvironmentNodeResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteEnvironmentNodeResponse{}
-	_body, _err := client.DeleteEnvironmentNodeWithOptions(uid, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteEnvironmentNodeWithOptions(uid *string, request *DeleteEnvironmentNodeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteEnvironmentNodeResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.EnvUID)) {
-		query["envUID"] = request.EnvUID
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	_result = &DeleteEnvironmentNodeResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteEnvironmentNode"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/api/v1/environmentnodes/"+tea.StringValue(uid)), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11421,11 +14418,11 @@ func (client *Client) ApplyComponentWithOptions(request *ApplyComponentRequest, 
 	return _result, _err
 }
 
-func (client *Client) GetSnapshotInstances(uid *string, request *GetSnapshotInstancesRequest) (_result *GetSnapshotInstancesResponse, _err error) {
+func (client *Client) GetProductVersionResources(uid *string) (_result *GetProductVersionResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetSnapshotInstancesResponse{}
-	_body, _err := client.GetSnapshotInstancesWithOptions(uid, request, headers, runtime)
+	_result = &GetProductVersionResourcesResponse{}
+	_body, _err := client.GetProductVersionResourcesWithOptions(uid, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11433,34 +14430,12 @@ func (client *Client) GetSnapshotInstances(uid *string, request *GetSnapshotInst
 	return _result, _err
 }
 
-func (client *Client) GetSnapshotInstancesWithOptions(uid *string, request *GetSnapshotInstancesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetSnapshotInstancesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["pageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
-		query["pageNum"] = request.PageNum
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SortKey)) {
-		query["sortKey"] = request.SortKey
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SortDirect)) {
-		query["sortDirect"] = request.SortDirect
-	}
-
+func (client *Client) GetProductVersionResourcesWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProductVersionResourcesResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 	}
-	_result = &GetSnapshotInstancesResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetSnapshotInstances"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/snapshots/"+tea.StringValue(uid)+"/instances"), tea.String("json"), req, runtime)
+	_result = &GetProductVersionResourcesResponse{}
+	_body, _err := client.DoROARequest(tea.String("GetProductVersionResources"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/product_versions/"+tea.StringValue(uid)+"/resource_requirement"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11523,41 +14498,6 @@ func (client *Client) ListEnvironmentsWithOptions(request *ListEnvironmentsReque
 	return _result, _err
 }
 
-func (client *Client) CheckSLR(request *CheckSLRRequest) (_result *CheckSLRResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CheckSLRResponse{}
-	_body, _err := client.CheckSLRWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CheckSLRWithOptions(request *CheckSLRRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CheckSLRResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Uid)) {
-		query["uid"] = request.Uid
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	_result = &CheckSLRResponse{}
-	_body, _err := client.DoROARequest(tea.String("CheckSLR"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/slr"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
 func (client *Client) UpdateProduct(uid *string, request *UpdateProductRequest) (_result *UpdateProductResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11588,11 +14528,11 @@ func (client *Client) UpdateProductWithOptions(uid *string, request *UpdateProdu
 	return _result, _err
 }
 
-func (client *Client) ApplyComponents(request *ApplyComponentsRequest) (_result *ApplyComponentsResponse, _err error) {
+func (client *Client) DeleteProductVersionConfig(uid *string) (_result *DeleteProductVersionConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ApplyComponentsResponse{}
-	_body, _err := client.ApplyComponentsWithOptions(request, headers, runtime)
+	_result = &DeleteProductVersionConfigResponse{}
+	_body, _err := client.DeleteProductVersionConfigWithOptions(uid, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11600,131 +14540,12 @@ func (client *Client) ApplyComponents(request *ApplyComponentsRequest) (_result 
 	return _result, _err
 }
 
-func (client *Client) ApplyComponentsWithOptions(request *ApplyComponentsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ApplyComponentsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ChildrenList)) {
-		body["childrenList"] = request.ChildrenList
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Component)) {
-		body["component"] = request.Component
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	_result = &ApplyComponentsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ApplyComponents"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/integration/api/v1/components"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreatePackageConfig(uid *string) (_result *CreatePackageConfigResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreatePackageConfigResponse{}
-	_body, _err := client.CreatePackageConfigWithOptions(uid, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreatePackageConfigWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreatePackageConfigResponse, _err error) {
+func (client *Client) DeleteProductVersionConfigWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteProductVersionConfigResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
-	_result = &CreatePackageConfigResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreatePackageConfig"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v1/environments/"+tea.StringValue(uid)+"/package_config"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) AddProductComponent(id *string, versionId *string, componentVersionId *string, ClientToken *string, request *AddProductComponentRequest) (_result *AddProductComponentResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &AddProductComponentResponse{}
-	_body, _err := client.AddProductComponentWithOptions(id, versionId, componentVersionId, ClientToken, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) AddProductComponentWithOptions(id *string, versionId *string, componentVersionId *string, ClientToken *string, request *AddProductComponentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddProductComponentResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Body:    request.ReleaseName,
-	}
-	_result = &AddProductComponentResponse{}
-	_body, _err := client.DoROARequest(tea.String("AddProductComponent"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/integration/api/v1/products/"+tea.StringValue(id)+"/versions/"+tea.StringValue(versionId)+"/componentVersions/"+tea.StringValue(componentVersionId)), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteSnapshot(uid *string) (_result *DeleteSnapshotResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteSnapshotResponse{}
-	_body, _err := client.DeleteSnapshotWithOptions(uid, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteSnapshotWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteSnapshotResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	_result = &DeleteSnapshotResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteSnapshot"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/api/v1/snapshots/"+tea.StringValue(uid)), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListEnvironmentsWithSnapshot(uid *string) (_result *ListEnvironmentsWithSnapshotResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListEnvironmentsWithSnapshotResponse{}
-	_body, _err := client.ListEnvironmentsWithSnapshotWithOptions(uid, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListEnvironmentsWithSnapshotWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListEnvironmentsWithSnapshotResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	_result = &ListEnvironmentsWithSnapshotResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListEnvironmentsWithSnapshot"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/snapshots/"+tea.StringValue(uid)+"/environments"), tea.String("json"), req, runtime)
+	_result = &DeleteProductVersionConfigResponse{}
+	_body, _err := client.DoROARequest(tea.String("DeleteProductVersionConfig"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/api/v1/product_versions/"+tea.StringValue(uid)+"/config"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11808,74 +14629,6 @@ func (client *Client) UpdateSnapshotWithOptions(uid *string, request *UpdateSnap
 	return _result, _err
 }
 
-func (client *Client) CreateEnvironmentAndGenerateVendorConfig(request *CreateEnvironmentAndGenerateVendorConfigRequest) (_result *CreateEnvironmentAndGenerateVendorConfigResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := &CreateEnvironmentAndGenerateVendorConfigHeaders{}
-	_result = &CreateEnvironmentAndGenerateVendorConfigResponse{}
-	_body, _err := client.CreateEnvironmentAndGenerateVendorConfigWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateEnvironmentAndGenerateVendorConfigWithOptions(request *CreateEnvironmentAndGenerateVendorConfigRequest, headers *CreateEnvironmentAndGenerateVendorConfigHeaders, runtime *util.RuntimeOptions) (_result *CreateEnvironmentAndGenerateVendorConfigResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.EnvUID)) {
-		body["envUID"] = request.EnvUID
-	}
-
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Platform))) {
-		body["platform"] = request.Platform
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProductName)) {
-		body["productName"] = request.ProductName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProductUID)) {
-		body["productUID"] = request.ProductUID
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProductVersion)) {
-		body["productVersion"] = request.ProductVersion
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProductVersionUID)) {
-		body["productVersionUID"] = request.ProductVersionUID
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.VendorType)) {
-		body["vendorType"] = request.VendorType
-	}
-
-	realHeaders := make(map[string]*string)
-	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
-		realHeaders = headers.CommonHeaders
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.ClientToken)) {
-		realHeaders["ClientToken"] = headers.ClientToken
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: realHeaders,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	_result = &CreateEnvironmentAndGenerateVendorConfigResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateEnvironmentAndGenerateVendorConfig"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v1/product_envs/vendor_config"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
 func (client *Client) CreateEnvironmentSnapshot(uid *string, request *CreateEnvironmentSnapshotRequest) (_result *CreateEnvironmentSnapshotResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11915,31 +14668,6 @@ func (client *Client) CreateEnvironmentSnapshotWithOptions(uid *string, request 
 	return _result, _err
 }
 
-func (client *Client) InitSnapshotInstance(uid *string) (_result *InitSnapshotInstanceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &InitSnapshotInstanceResponse{}
-	_body, _err := client.InitSnapshotInstanceWithOptions(uid, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) InitSnapshotInstanceWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *InitSnapshotInstanceResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	_result = &InitSnapshotInstanceResponse{}
-	_body, _err := client.DoROARequest(tea.String("InitSnapshotInstance"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v1/snapshots/"+tea.StringValue(uid)+"/instances"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
 func (client *Client) UpdateProductVersionRelatedFoundationVersion(uid *string, request *UpdateProductVersionRelatedFoundationVersionRequest) (_result *UpdateProductVersionRelatedFoundationVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11963,103 +14691,6 @@ func (client *Client) UpdateProductVersionRelatedFoundationVersionWithOptions(ui
 	}
 	_result = &UpdateProductVersionRelatedFoundationVersionResponse{}
 	_body, _err := client.DoROARequest(tea.String("UpdateProductVersionRelatedFoundationVersion"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/api/v1/product_versions/"+tea.StringValue(uid)+"/foundation"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListEnvironmentParams(uid *string, request *ListEnvironmentParamsRequest) (_result *ListEnvironmentParamsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListEnvironmentParamsResponse{}
-	_body, _err := client.ListEnvironmentParamsWithOptions(uid, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListEnvironmentParamsWithOptions(uid *string, request *ListEnvironmentParamsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListEnvironmentParamsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
-		query["pageNum"] = request.PageNum
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["pageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Name)) {
-		query["name"] = request.Name
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Fuzzy)) {
-		query["fuzzy"] = request.Fuzzy
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	_result = &ListEnvironmentParamsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListEnvironmentParams"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/environments/"+tea.StringValue(uid)+"/params"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetFoundationVersion(uid *string) (_result *GetFoundationVersionResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetFoundationVersionResponse{}
-	_body, _err := client.GetFoundationVersionWithOptions(uid, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetFoundationVersionWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetFoundationVersionResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	_result = &GetFoundationVersionResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetFoundationVersion"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/foundation/versions/"+tea.StringValue(uid)), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteProduct(uid *string) (_result *DeleteProductResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteProductResponse{}
-	_body, _err := client.DeleteProductWithOptions(uid, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteProductWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteProductResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	_result = &DeleteProductResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteProduct"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/integration/api/v1/products/"+tea.StringValue(uid)), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12103,31 +14734,6 @@ func (client *Client) UpdateEnvironmentWithOptions(uid *string, request *UpdateE
 	}
 	_result = &UpdateEnvironmentResponse{}
 	_body, _err := client.DoROARequest(tea.String("UpdateEnvironment"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/api/v1/environments/"+tea.StringValue(uid)), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetEnvironmentPackage(uid *string) (_result *GetEnvironmentPackageResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetEnvironmentPackageResponse{}
-	_body, _err := client.GetEnvironmentPackageWithOptions(uid, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetEnvironmentPackageWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetEnvironmentPackageResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	_result = &GetEnvironmentPackageResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetEnvironmentPackage"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/envPackages/"+tea.StringValue(uid)), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12190,117 +14796,6 @@ func (client *Client) ImportEnvironmentNodesWithOptions(uid *string, request *Im
 	return _result, _err
 }
 
-func (client *Client) ListComponents(request *ListComponentsRequest) (_result *ListComponentsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListComponentsResponse{}
-	_body, _err := client.ListComponentsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListComponentsWithOptions(request *ListComponentsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListComponentsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Name)) {
-		query["name"] = request.Name
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Category)) {
-		query["category"] = request.Category
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
-		query["pageNum"] = request.PageNum
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["pageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Fuzzy)) {
-		query["fuzzy"] = request.Fuzzy
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Public)) {
-		query["public"] = request.Public
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	_result = &ListComponentsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListComponents"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/components"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) AddEnvironmentProductVersion(uid *string, request *AddEnvironmentProductVersionRequest) (_result *AddEnvironmentProductVersionResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := &AddEnvironmentProductVersionHeaders{}
-	_result = &AddEnvironmentProductVersionResponse{}
-	_body, _err := client.AddEnvironmentProductVersionWithOptions(uid, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) AddEnvironmentProductVersionWithOptions(uid *string, request *AddEnvironmentProductVersionRequest, headers *AddEnvironmentProductVersionHeaders, runtime *util.RuntimeOptions) (_result *AddEnvironmentProductVersionResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ProductName)) {
-		body["productName"] = request.ProductName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProductUID)) {
-		body["productUID"] = request.ProductUID
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProductVersion)) {
-		body["productVersion"] = request.ProductVersion
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProductVersionUID)) {
-		body["productVersionUID"] = request.ProductVersionUID
-	}
-
-	realHeaders := make(map[string]*string)
-	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
-		realHeaders = headers.CommonHeaders
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.ClientToken)) {
-		realHeaders["ClientToken"] = headers.ClientToken
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: realHeaders,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	_result = &AddEnvironmentProductVersionResponse{}
-	_body, _err := client.DoROARequest(tea.String("AddEnvironmentProductVersion"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v1/environments/"+tea.StringValue(uid)+"/productVersions"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
 func (client *Client) ListProductVersions(uid *string, request *ListProductVersionsRequest) (_result *ListProductVersionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -12333,96 +14828,20 @@ func (client *Client) ListProductVersionsWithOptions(uid *string, tmpReq *ListPr
 		query["platforms"] = request.PlatformsShrink
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["pageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
 	_result = &ListProductVersionsResponse{}
 	_body, _err := client.DoROARequest(tea.String("ListProductVersions"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/products/"+tea.StringValue(uid)+"/versions"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetChildrenComponentVersionList(id *string, versionId *string) (_result *GetChildrenComponentVersionListResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetChildrenComponentVersionListResponse{}
-	_body, _err := client.GetChildrenComponentVersionListWithOptions(id, versionId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetChildrenComponentVersionListWithOptions(id *string, versionId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetChildrenComponentVersionListResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	_result = &GetChildrenComponentVersionListResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetChildrenComponentVersionList"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/integration/api/v1/products/"+tea.StringValue(id)+"/versions/"+tea.StringValue(versionId)+"/children"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateSLR() (_result *CreateSLRResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := &CreateSLRHeaders{}
-	_result = &CreateSLRResponse{}
-	_body, _err := client.CreateSLRWithOptions(headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateSLRWithOptions(headers *CreateSLRHeaders, runtime *util.RuntimeOptions) (_result *CreateSLRResponse, _err error) {
-	realHeaders := make(map[string]*string)
-	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
-		realHeaders = headers.CommonHeaders
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.ClientToken)) {
-		realHeaders["ClientToken"] = headers.ClientToken
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: realHeaders,
-	}
-	_result = &CreateSLRResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateSLR"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v1/slr"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetProductVersionRelatedComponentVersionDetail(uid *string, relationUID *string) (_result *GetProductVersionRelatedComponentVersionDetailResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetProductVersionRelatedComponentVersionDetailResponse{}
-	_body, _err := client.GetProductVersionRelatedComponentVersionDetailWithOptions(uid, relationUID, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetProductVersionRelatedComponentVersionDetailWithOptions(uid *string, relationUID *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProductVersionRelatedComponentVersionDetailResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	_result = &GetProductVersionRelatedComponentVersionDetailResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetProductVersionRelatedComponentVersionDetail"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/product_versions/"+tea.StringValue(uid)+"/relations/"+tea.StringValue(relationUID)), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12533,11 +14952,11 @@ func (client *Client) UpdateEnvironmentProductVersionWithOptions(uid *string, re
 	return _result, _err
 }
 
-func (client *Client) GetProductVersionPlatforms(uid *string) (_result *GetProductVersionPlatformsResponse, _err error) {
+func (client *Client) GetProductVersion(uid *string) (_result *GetProductVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetProductVersionPlatformsResponse{}
-	_body, _err := client.GetProductVersionPlatformsWithOptions(uid, headers, runtime)
+	_result = &GetProductVersionResponse{}
+	_body, _err := client.GetProductVersionWithOptions(uid, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12545,12 +14964,12 @@ func (client *Client) GetProductVersionPlatforms(uid *string) (_result *GetProdu
 	return _result, _err
 }
 
-func (client *Client) GetProductVersionPlatformsWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProductVersionPlatformsResponse, _err error) {
+func (client *Client) GetProductVersionWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProductVersionResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
-	_result = &GetProductVersionPlatformsResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetProductVersionPlatforms"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/product_versions/"+tea.StringValue(uid)+"/platforms"), tea.String("json"), req, runtime)
+	_result = &GetProductVersionResponse{}
+	_body, _err := client.DoROARequest(tea.String("GetProductVersion"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/product_versions/"+tea.StringValue(uid)), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12608,6 +15027,14 @@ func (client *Client) SaveEnvironmentParamWithOptions(uid *string, request *Save
 		body["value"] = request.Value
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Notes)) {
+		body["notes"] = request.Notes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductVersionUID)) {
+		body["ProductVersionUID"] = request.ProductVersionUID
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -12660,31 +15087,6 @@ func (client *Client) UpdateSnapshotInstanceJoinOptionWithOptions(instanceuid *s
 	return _result, _err
 }
 
-func (client *Client) GetProductVersionResource(uid *string) (_result *GetProductVersionResourceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetProductVersionResourceResponse{}
-	_body, _err := client.GetProductVersionResourceWithOptions(uid, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetProductVersionResourceWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProductVersionResourceResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	_result = &GetProductVersionResourceResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetProductVersionResource"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/product_versions/"+tea.StringValue(uid)+"/resources"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
 func (client *Client) CreateLicense(uid *string, request *CreateLicenseRequest) (_result *CreateLicenseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -12720,66 +15122,6 @@ func (client *Client) CreateLicenseWithOptions(uid *string, request *CreateLicen
 	return _result, _err
 }
 
-func (client *Client) ShareSnapshot(uid *string, request *ShareSnapshotRequest) (_result *ShareSnapshotResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ShareSnapshotResponse{}
-	_body, _err := client.ShareSnapshotWithOptions(uid, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ShareSnapshotWithOptions(uid *string, request *ShareSnapshotRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ShareSnapshotResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.TargetProvider)) {
-		body["targetProvider"] = request.TargetProvider
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	_result = &ShareSnapshotResponse{}
-	_body, _err := client.DoROARequest(tea.String("ShareSnapshot"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v1/snapshots/"+tea.StringValue(uid)+"/snapshots"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteEnvironmentParam(uid *string) (_result *DeleteEnvironmentParamResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteEnvironmentParamResponse{}
-	_body, _err := client.DeleteEnvironmentParamWithOptions(uid, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteEnvironmentParamWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteEnvironmentParamResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	_result = &DeleteEnvironmentParamResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteEnvironmentParam"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/api/v1/environmentparams/"+tea.StringValue(uid)), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
 func (client *Client) GetProduct(uid *string) (_result *GetProductResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -12805,11 +15147,11 @@ func (client *Client) GetProductWithOptions(uid *string, headers map[string]*str
 	return _result, _err
 }
 
-func (client *Client) DeleteComponentVersion(uid *string, versionUid *string) (_result *DeleteComponentVersionResponse, _err error) {
+func (client *Client) AddProductVersionPackage(uid *string, request *AddProductVersionPackageRequest) (_result *AddProductVersionPackageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteComponentVersionResponse{}
-	_body, _err := client.DeleteComponentVersionWithOptions(uid, versionUid, headers, runtime)
+	headers := &AddProductVersionPackageHeaders{}
+	_result = &AddProductVersionPackageResponse{}
+	_body, _err := client.AddProductVersionPackageWithOptions(uid, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12817,80 +15159,35 @@ func (client *Client) DeleteComponentVersion(uid *string, versionUid *string) (_
 	return _result, _err
 }
 
-func (client *Client) DeleteComponentVersionWithOptions(uid *string, versionUid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteComponentVersionResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	_result = &DeleteComponentVersionResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteComponentVersion"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/integration/api/v1/components/"+tea.StringValue(uid)+"/versions/"+tea.StringValue(versionUid)), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeployEnvironmentProduct(uid *string) (_result *DeployEnvironmentProductResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeployEnvironmentProductResponse{}
-	_body, _err := client.DeployEnvironmentProductWithOptions(uid, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeployEnvironmentProductWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeployEnvironmentProductResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	_result = &DeployEnvironmentProductResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeployEnvironmentProduct"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v1/environments/"+tea.StringValue(uid)+"/deployment"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) InitEnvironmentResource(uid *string, request *InitEnvironmentResourceRequest) (_result *InitEnvironmentResourceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &InitEnvironmentResourceResponse{}
-	_body, _err := client.InitEnvironmentResourceWithOptions(uid, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) InitEnvironmentResourceWithOptions(uid *string, request *InitEnvironmentResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *InitEnvironmentResourceResponse, _err error) {
+func (client *Client) AddProductVersionPackageWithOptions(uid *string, request *AddProductVersionPackageRequest, headers *AddProductVersionPackageHeaders, runtime *util.RuntimeOptions) (_result *AddProductVersionPackageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AccessKeyID)) {
-		body["accessKeyID"] = request.AccessKeyID
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnvUID)) {
+		query["envUID"] = request.EnvUID
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.AccessKeySecret)) {
-		body["accessKeySecret"] = request.AccessKeySecret
+	if !tea.BoolValue(util.IsUnset(request.PackageType)) {
+		query["packageType"] = request.PackageType
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
-		body["securityToken"] = request.SecurityToken
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.ClientToken)) {
+		realHeaders["ClientToken"] = headers.ClientToken
 	}
 
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
 	}
-	_result = &InitEnvironmentResourceResponse{}
-	_body, _err := client.DoROARequest(tea.String("InitEnvironmentResource"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v1/environments/"+tea.StringValue(uid)+"/resources"), tea.String("json"), req, runtime)
+	_result = &AddProductVersionPackageResponse{}
+	_body, _err := client.DoROARequest(tea.String("AddProductVersionPackage"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v1/hosting/product_versions/"+tea.StringValue(uid)+"/packages"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12923,11 +15220,11 @@ func (client *Client) ListFoundationVersionsWithOptions(headers map[string]*stri
 	return _result, _err
 }
 
-func (client *Client) ListEnvironmentDeployRecord(uid *string, request *ListEnvironmentDeployRecordRequest) (_result *ListEnvironmentDeployRecordResponse, _err error) {
+func (client *Client) UpdateProductVersionConfig(uid *string, request *UpdateProductVersionConfigRequest) (_result *UpdateProductVersionConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListEnvironmentDeployRecordResponse{}
-	_body, _err := client.ListEnvironmentDeployRecordWithOptions(uid, request, headers, runtime)
+	_result = &UpdateProductVersionConfigResponse{}
+	_body, _err := client.UpdateProductVersionConfigWithOptions(uid, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12935,26 +15232,38 @@ func (client *Client) ListEnvironmentDeployRecord(uid *string, request *ListEnvi
 	return _result, _err
 }
 
-func (client *Client) ListEnvironmentDeployRecordWithOptions(uid *string, request *ListEnvironmentDeployRecordRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListEnvironmentDeployRecordResponse, _err error) {
+func (client *Client) UpdateProductVersionConfigWithOptions(uid *string, request *UpdateProductVersionConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateProductVersionConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
-		query["pageNum"] = request.PageNum
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["pageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.Value)) {
+		body["value"] = request.Value
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Notes)) {
+		body["notes"] = request.Notes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ComponentVersionUID)) {
+		body["componentVersionUID"] = request.ComponentVersionUID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentComponentVersionUID)) {
+		body["parentComponentVersionUID"] = request.ParentComponentVersionUID
 	}
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
 	}
-	_result = &ListEnvironmentDeployRecordResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListEnvironmentDeployRecord"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/environments/"+tea.StringValue(uid)+"/deployments"), tea.String("json"), req, runtime)
+	_result = &UpdateProductVersionConfigResponse{}
+	_body, _err := client.DoROARequest(tea.String("UpdateProductVersionConfig"), tea.String("2020-12-01"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/api/v1/product_versions/"+tea.StringValue(uid)+"/config"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
