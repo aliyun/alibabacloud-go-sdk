@@ -4370,6 +4370,222 @@ func (s *GetDBTopologyResponse) SetBody(v *GetDBTopologyResponseBody) *GetDBTopo
 	return s
 }
 
+type GetSQLReviewCheckResultStatusRequest struct {
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetSQLReviewCheckResultStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSQLReviewCheckResultStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSQLReviewCheckResultStatusRequest) SetOrderId(v int64) *GetSQLReviewCheckResultStatusRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *GetSQLReviewCheckResultStatusRequest) SetTid(v int64) *GetSQLReviewCheckResultStatusRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetSQLReviewCheckResultStatusResponseBody struct {
+	RequestId         *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorCode         *string                                                     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage      *string                                                     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Success           *bool                                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	CheckResultStatus *GetSQLReviewCheckResultStatusResponseBodyCheckResultStatus `json:"CheckResultStatus,omitempty" xml:"CheckResultStatus,omitempty" type:"Struct"`
+}
+
+func (s GetSQLReviewCheckResultStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSQLReviewCheckResultStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSQLReviewCheckResultStatusResponseBody) SetRequestId(v string) *GetSQLReviewCheckResultStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSQLReviewCheckResultStatusResponseBody) SetErrorCode(v string) *GetSQLReviewCheckResultStatusResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetSQLReviewCheckResultStatusResponseBody) SetErrorMessage(v string) *GetSQLReviewCheckResultStatusResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetSQLReviewCheckResultStatusResponseBody) SetSuccess(v bool) *GetSQLReviewCheckResultStatusResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetSQLReviewCheckResultStatusResponseBody) SetCheckResultStatus(v *GetSQLReviewCheckResultStatusResponseBodyCheckResultStatus) *GetSQLReviewCheckResultStatusResponseBody {
+	s.CheckResultStatus = v
+	return s
+}
+
+type GetSQLReviewCheckResultStatusResponseBodyCheckResultStatus struct {
+	TotalSQLCount     *int64                                                                       `json:"TotalSQLCount,omitempty" xml:"TotalSQLCount,omitempty"`
+	CheckedCount      *int64                                                                       `json:"CheckedCount,omitempty" xml:"CheckedCount,omitempty"`
+	CheckStatusResult *GetSQLReviewCheckResultStatusResponseBodyCheckResultStatusCheckStatusResult `json:"CheckStatusResult,omitempty" xml:"CheckStatusResult,omitempty" type:"Struct"`
+	SQLReviewResult   *GetSQLReviewCheckResultStatusResponseBodyCheckResultStatusSQLReviewResult   `json:"SQLReviewResult,omitempty" xml:"SQLReviewResult,omitempty" type:"Struct"`
+}
+
+func (s GetSQLReviewCheckResultStatusResponseBodyCheckResultStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSQLReviewCheckResultStatusResponseBodyCheckResultStatus) GoString() string {
+	return s.String()
+}
+
+func (s *GetSQLReviewCheckResultStatusResponseBodyCheckResultStatus) SetTotalSQLCount(v int64) *GetSQLReviewCheckResultStatusResponseBodyCheckResultStatus {
+	s.TotalSQLCount = &v
+	return s
+}
+
+func (s *GetSQLReviewCheckResultStatusResponseBodyCheckResultStatus) SetCheckedCount(v int64) *GetSQLReviewCheckResultStatusResponseBodyCheckResultStatus {
+	s.CheckedCount = &v
+	return s
+}
+
+func (s *GetSQLReviewCheckResultStatusResponseBodyCheckResultStatus) SetCheckStatusResult(v *GetSQLReviewCheckResultStatusResponseBodyCheckResultStatusCheckStatusResult) *GetSQLReviewCheckResultStatusResponseBodyCheckResultStatus {
+	s.CheckStatusResult = v
+	return s
+}
+
+func (s *GetSQLReviewCheckResultStatusResponseBodyCheckResultStatus) SetSQLReviewResult(v *GetSQLReviewCheckResultStatusResponseBodyCheckResultStatusSQLReviewResult) *GetSQLReviewCheckResultStatusResponseBodyCheckResultStatus {
+	s.SQLReviewResult = v
+	return s
+}
+
+type GetSQLReviewCheckResultStatusResponseBodyCheckResultStatusCheckStatusResult struct {
+	New          *int64 `json:"New,omitempty" xml:"New,omitempty"`
+	Unknown      *int64 `json:"Unknown,omitempty" xml:"Unknown,omitempty"`
+	CheckNotPass *int64 `json:"CheckNotPass,omitempty" xml:"CheckNotPass,omitempty"`
+	CheckPass    *int64 `json:"CheckPass,omitempty" xml:"CheckPass,omitempty"`
+	ForcePass    *int64 `json:"ForcePass,omitempty" xml:"ForcePass,omitempty"`
+	ForceNotPass *int64 `json:"ForceNotPass,omitempty" xml:"ForceNotPass,omitempty"`
+}
+
+func (s GetSQLReviewCheckResultStatusResponseBodyCheckResultStatusCheckStatusResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSQLReviewCheckResultStatusResponseBodyCheckResultStatusCheckStatusResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetSQLReviewCheckResultStatusResponseBodyCheckResultStatusCheckStatusResult) SetNew(v int64) *GetSQLReviewCheckResultStatusResponseBodyCheckResultStatusCheckStatusResult {
+	s.New = &v
+	return s
+}
+
+func (s *GetSQLReviewCheckResultStatusResponseBodyCheckResultStatusCheckStatusResult) SetUnknown(v int64) *GetSQLReviewCheckResultStatusResponseBodyCheckResultStatusCheckStatusResult {
+	s.Unknown = &v
+	return s
+}
+
+func (s *GetSQLReviewCheckResultStatusResponseBodyCheckResultStatusCheckStatusResult) SetCheckNotPass(v int64) *GetSQLReviewCheckResultStatusResponseBodyCheckResultStatusCheckStatusResult {
+	s.CheckNotPass = &v
+	return s
+}
+
+func (s *GetSQLReviewCheckResultStatusResponseBodyCheckResultStatusCheckStatusResult) SetCheckPass(v int64) *GetSQLReviewCheckResultStatusResponseBodyCheckResultStatusCheckStatusResult {
+	s.CheckPass = &v
+	return s
+}
+
+func (s *GetSQLReviewCheckResultStatusResponseBodyCheckResultStatusCheckStatusResult) SetForcePass(v int64) *GetSQLReviewCheckResultStatusResponseBodyCheckResultStatusCheckStatusResult {
+	s.ForcePass = &v
+	return s
+}
+
+func (s *GetSQLReviewCheckResultStatusResponseBodyCheckResultStatusCheckStatusResult) SetForceNotPass(v int64) *GetSQLReviewCheckResultStatusResponseBodyCheckResultStatusCheckStatusResult {
+	s.ForceNotPass = &v
+	return s
+}
+
+type GetSQLReviewCheckResultStatusResponseBodyCheckResultStatusSQLReviewResult struct {
+	MustImprove       *int64 `json:"MustImprove,omitempty" xml:"MustImprove,omitempty"`
+	PotentialIssue    *int64 `json:"PotentialIssue,omitempty" xml:"PotentialIssue,omitempty"`
+	SuggestImprove    *int64 `json:"SuggestImprove,omitempty" xml:"SuggestImprove,omitempty"`
+	UseDmsToolkit     *int64 `json:"UseDmsToolkit,omitempty" xml:"UseDmsToolkit,omitempty"`
+	UseDmsDmlUnlock   *int64 `json:"UseDmsDmlUnlock,omitempty" xml:"UseDmsDmlUnlock,omitempty"`
+	TableIndexSuggest *int64 `json:"TableIndexSuggest,omitempty" xml:"TableIndexSuggest,omitempty"`
+}
+
+func (s GetSQLReviewCheckResultStatusResponseBodyCheckResultStatusSQLReviewResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSQLReviewCheckResultStatusResponseBodyCheckResultStatusSQLReviewResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetSQLReviewCheckResultStatusResponseBodyCheckResultStatusSQLReviewResult) SetMustImprove(v int64) *GetSQLReviewCheckResultStatusResponseBodyCheckResultStatusSQLReviewResult {
+	s.MustImprove = &v
+	return s
+}
+
+func (s *GetSQLReviewCheckResultStatusResponseBodyCheckResultStatusSQLReviewResult) SetPotentialIssue(v int64) *GetSQLReviewCheckResultStatusResponseBodyCheckResultStatusSQLReviewResult {
+	s.PotentialIssue = &v
+	return s
+}
+
+func (s *GetSQLReviewCheckResultStatusResponseBodyCheckResultStatusSQLReviewResult) SetSuggestImprove(v int64) *GetSQLReviewCheckResultStatusResponseBodyCheckResultStatusSQLReviewResult {
+	s.SuggestImprove = &v
+	return s
+}
+
+func (s *GetSQLReviewCheckResultStatusResponseBodyCheckResultStatusSQLReviewResult) SetUseDmsToolkit(v int64) *GetSQLReviewCheckResultStatusResponseBodyCheckResultStatusSQLReviewResult {
+	s.UseDmsToolkit = &v
+	return s
+}
+
+func (s *GetSQLReviewCheckResultStatusResponseBodyCheckResultStatusSQLReviewResult) SetUseDmsDmlUnlock(v int64) *GetSQLReviewCheckResultStatusResponseBodyCheckResultStatusSQLReviewResult {
+	s.UseDmsDmlUnlock = &v
+	return s
+}
+
+func (s *GetSQLReviewCheckResultStatusResponseBodyCheckResultStatusSQLReviewResult) SetTableIndexSuggest(v int64) *GetSQLReviewCheckResultStatusResponseBodyCheckResultStatusSQLReviewResult {
+	s.TableIndexSuggest = &v
+	return s
+}
+
+type GetSQLReviewCheckResultStatusResponse struct {
+	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetSQLReviewCheckResultStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetSQLReviewCheckResultStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSQLReviewCheckResultStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSQLReviewCheckResultStatusResponse) SetHeaders(v map[string]*string) *GetSQLReviewCheckResultStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSQLReviewCheckResultStatusResponse) SetBody(v *GetSQLReviewCheckResultStatusResponseBody) *GetSQLReviewCheckResultStatusResponse {
+	s.Body = v
+	return s
+}
+
 type SyncDatabaseMetaRequest struct {
 	Tid   *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 	DbId  *string `json:"DbId,omitempty" xml:"DbId,omitempty"`
@@ -6510,6 +6726,263 @@ func (s *GetApprovalDetailResponse) SetHeaders(v map[string]*string) *GetApprova
 }
 
 func (s *GetApprovalDetailResponse) SetBody(v *GetApprovalDetailResponseBody) *GetApprovalDetailResponse {
+	s.Body = v
+	return s
+}
+
+type ListSQLReviewOriginSQLRequest struct {
+	OrderId           *int64                                          `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrderActionDetail *ListSQLReviewOriginSQLRequestOrderActionDetail `json:"OrderActionDetail,omitempty" xml:"OrderActionDetail,omitempty" type:"Struct"`
+	Tid               *int64                                          `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ListSQLReviewOriginSQLRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSQLReviewOriginSQLRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSQLReviewOriginSQLRequest) SetOrderId(v int64) *ListSQLReviewOriginSQLRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *ListSQLReviewOriginSQLRequest) SetOrderActionDetail(v *ListSQLReviewOriginSQLRequestOrderActionDetail) *ListSQLReviewOriginSQLRequest {
+	s.OrderActionDetail = v
+	return s
+}
+
+func (s *ListSQLReviewOriginSQLRequest) SetTid(v int64) *ListSQLReviewOriginSQLRequest {
+	s.Tid = &v
+	return s
+}
+
+type ListSQLReviewOriginSQLRequestOrderActionDetail struct {
+	FileId            *int64                                              `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	SQLReviewResult   *string                                             `json:"SQLReviewResult,omitempty" xml:"SQLReviewResult,omitempty"`
+	CheckStatusResult *string                                             `json:"CheckStatusResult,omitempty" xml:"CheckStatusResult,omitempty"`
+	Page              *ListSQLReviewOriginSQLRequestOrderActionDetailPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+}
+
+func (s ListSQLReviewOriginSQLRequestOrderActionDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSQLReviewOriginSQLRequestOrderActionDetail) GoString() string {
+	return s.String()
+}
+
+func (s *ListSQLReviewOriginSQLRequestOrderActionDetail) SetFileId(v int64) *ListSQLReviewOriginSQLRequestOrderActionDetail {
+	s.FileId = &v
+	return s
+}
+
+func (s *ListSQLReviewOriginSQLRequestOrderActionDetail) SetSQLReviewResult(v string) *ListSQLReviewOriginSQLRequestOrderActionDetail {
+	s.SQLReviewResult = &v
+	return s
+}
+
+func (s *ListSQLReviewOriginSQLRequestOrderActionDetail) SetCheckStatusResult(v string) *ListSQLReviewOriginSQLRequestOrderActionDetail {
+	s.CheckStatusResult = &v
+	return s
+}
+
+func (s *ListSQLReviewOriginSQLRequestOrderActionDetail) SetPage(v *ListSQLReviewOriginSQLRequestOrderActionDetailPage) *ListSQLReviewOriginSQLRequestOrderActionDetail {
+	s.Page = v
+	return s
+}
+
+type ListSQLReviewOriginSQLRequestOrderActionDetailPage struct {
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListSQLReviewOriginSQLRequestOrderActionDetailPage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSQLReviewOriginSQLRequestOrderActionDetailPage) GoString() string {
+	return s.String()
+}
+
+func (s *ListSQLReviewOriginSQLRequestOrderActionDetailPage) SetPageNumber(v int32) *ListSQLReviewOriginSQLRequestOrderActionDetailPage {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListSQLReviewOriginSQLRequestOrderActionDetailPage) SetPageSize(v int32) *ListSQLReviewOriginSQLRequestOrderActionDetailPage {
+	s.PageSize = &v
+	return s
+}
+
+type ListSQLReviewOriginSQLShrinkRequest struct {
+	OrderId                 *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrderActionDetailShrink *string `json:"OrderActionDetail,omitempty" xml:"OrderActionDetail,omitempty"`
+	Tid                     *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ListSQLReviewOriginSQLShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSQLReviewOriginSQLShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSQLReviewOriginSQLShrinkRequest) SetOrderId(v int64) *ListSQLReviewOriginSQLShrinkRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *ListSQLReviewOriginSQLShrinkRequest) SetOrderActionDetailShrink(v string) *ListSQLReviewOriginSQLShrinkRequest {
+	s.OrderActionDetailShrink = &v
+	return s
+}
+
+func (s *ListSQLReviewOriginSQLShrinkRequest) SetTid(v int64) *ListSQLReviewOriginSQLShrinkRequest {
+	s.Tid = &v
+	return s
+}
+
+type ListSQLReviewOriginSQLResponseBody struct {
+	RequestId     *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorCode     *string                                            `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage  *string                                            `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Success       *bool                                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount    *int32                                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	OriginSQLList []*ListSQLReviewOriginSQLResponseBodyOriginSQLList `json:"OriginSQLList,omitempty" xml:"OriginSQLList,omitempty" type:"Repeated"`
+}
+
+func (s ListSQLReviewOriginSQLResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSQLReviewOriginSQLResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSQLReviewOriginSQLResponseBody) SetRequestId(v string) *ListSQLReviewOriginSQLResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSQLReviewOriginSQLResponseBody) SetErrorCode(v string) *ListSQLReviewOriginSQLResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListSQLReviewOriginSQLResponseBody) SetErrorMessage(v string) *ListSQLReviewOriginSQLResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListSQLReviewOriginSQLResponseBody) SetSuccess(v bool) *ListSQLReviewOriginSQLResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListSQLReviewOriginSQLResponseBody) SetTotalCount(v int32) *ListSQLReviewOriginSQLResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListSQLReviewOriginSQLResponseBody) SetOriginSQLList(v []*ListSQLReviewOriginSQLResponseBodyOriginSQLList) *ListSQLReviewOriginSQLResponseBody {
+	s.OriginSQLList = v
+	return s
+}
+
+type ListSQLReviewOriginSQLResponseBodyOriginSQLList struct {
+	SQLId             *int64  `json:"SQLId,omitempty" xml:"SQLId,omitempty"`
+	FileId            *int64  `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	FileName          *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	SQLContent        *string `json:"SQLContent,omitempty" xml:"SQLContent,omitempty"`
+	CheckStatus       *string `json:"CheckStatus,omitempty" xml:"CheckStatus,omitempty"`
+	StatusDesc        *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
+	CheckedTime       *string `json:"CheckedTime,omitempty" xml:"CheckedTime,omitempty"`
+	SqlHash           *string `json:"SqlHash,omitempty" xml:"SqlHash,omitempty"`
+	ReviewSummary     *string `json:"ReviewSummary,omitempty" xml:"ReviewSummary,omitempty"`
+	SQLReviewQueryKey *string `json:"SQLReviewQueryKey,omitempty" xml:"SQLReviewQueryKey,omitempty"`
+}
+
+func (s ListSQLReviewOriginSQLResponseBodyOriginSQLList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSQLReviewOriginSQLResponseBodyOriginSQLList) GoString() string {
+	return s.String()
+}
+
+func (s *ListSQLReviewOriginSQLResponseBodyOriginSQLList) SetSQLId(v int64) *ListSQLReviewOriginSQLResponseBodyOriginSQLList {
+	s.SQLId = &v
+	return s
+}
+
+func (s *ListSQLReviewOriginSQLResponseBodyOriginSQLList) SetFileId(v int64) *ListSQLReviewOriginSQLResponseBodyOriginSQLList {
+	s.FileId = &v
+	return s
+}
+
+func (s *ListSQLReviewOriginSQLResponseBodyOriginSQLList) SetFileName(v string) *ListSQLReviewOriginSQLResponseBodyOriginSQLList {
+	s.FileName = &v
+	return s
+}
+
+func (s *ListSQLReviewOriginSQLResponseBodyOriginSQLList) SetSQLContent(v string) *ListSQLReviewOriginSQLResponseBodyOriginSQLList {
+	s.SQLContent = &v
+	return s
+}
+
+func (s *ListSQLReviewOriginSQLResponseBodyOriginSQLList) SetCheckStatus(v string) *ListSQLReviewOriginSQLResponseBodyOriginSQLList {
+	s.CheckStatus = &v
+	return s
+}
+
+func (s *ListSQLReviewOriginSQLResponseBodyOriginSQLList) SetStatusDesc(v string) *ListSQLReviewOriginSQLResponseBodyOriginSQLList {
+	s.StatusDesc = &v
+	return s
+}
+
+func (s *ListSQLReviewOriginSQLResponseBodyOriginSQLList) SetCheckedTime(v string) *ListSQLReviewOriginSQLResponseBodyOriginSQLList {
+	s.CheckedTime = &v
+	return s
+}
+
+func (s *ListSQLReviewOriginSQLResponseBodyOriginSQLList) SetSqlHash(v string) *ListSQLReviewOriginSQLResponseBodyOriginSQLList {
+	s.SqlHash = &v
+	return s
+}
+
+func (s *ListSQLReviewOriginSQLResponseBodyOriginSQLList) SetReviewSummary(v string) *ListSQLReviewOriginSQLResponseBodyOriginSQLList {
+	s.ReviewSummary = &v
+	return s
+}
+
+func (s *ListSQLReviewOriginSQLResponseBodyOriginSQLList) SetSQLReviewQueryKey(v string) *ListSQLReviewOriginSQLResponseBodyOriginSQLList {
+	s.SQLReviewQueryKey = &v
+	return s
+}
+
+type ListSQLReviewOriginSQLResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListSQLReviewOriginSQLResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListSQLReviewOriginSQLResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSQLReviewOriginSQLResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSQLReviewOriginSQLResponse) SetHeaders(v map[string]*string) *ListSQLReviewOriginSQLResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSQLReviewOriginSQLResponse) SetBody(v *ListSQLReviewOriginSQLResponseBody) *ListSQLReviewOriginSQLResponse {
 	s.Body = v
 	return s
 }
@@ -11082,6 +11555,170 @@ func (s *ListOrdersResponse) SetBody(v *ListOrdersResponseBody) *ListOrdersRespo
 	return s
 }
 
+type CreateSQLReviewOrderRequest struct {
+	Comment         *string                           `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	RelatedUserList []*int64                          `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty" type:"Repeated"`
+	Param           *CreateSQLReviewOrderRequestParam `json:"Param,omitempty" xml:"Param,omitempty" type:"Struct"`
+	Tid             *int64                            `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s CreateSQLReviewOrderRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSQLReviewOrderRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSQLReviewOrderRequest) SetComment(v string) *CreateSQLReviewOrderRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *CreateSQLReviewOrderRequest) SetRelatedUserList(v []*int64) *CreateSQLReviewOrderRequest {
+	s.RelatedUserList = v
+	return s
+}
+
+func (s *CreateSQLReviewOrderRequest) SetParam(v *CreateSQLReviewOrderRequestParam) *CreateSQLReviewOrderRequest {
+	s.Param = v
+	return s
+}
+
+func (s *CreateSQLReviewOrderRequest) SetTid(v int64) *CreateSQLReviewOrderRequest {
+	s.Tid = &v
+	return s
+}
+
+type CreateSQLReviewOrderRequestParam struct {
+	ProjectName       *string   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	DbId              *int64    `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	AttachmentKeyList []*string `json:"AttachmentKeyList,omitempty" xml:"AttachmentKeyList,omitempty" type:"Repeated"`
+}
+
+func (s CreateSQLReviewOrderRequestParam) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSQLReviewOrderRequestParam) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSQLReviewOrderRequestParam) SetProjectName(v string) *CreateSQLReviewOrderRequestParam {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateSQLReviewOrderRequestParam) SetDbId(v int64) *CreateSQLReviewOrderRequestParam {
+	s.DbId = &v
+	return s
+}
+
+func (s *CreateSQLReviewOrderRequestParam) SetAttachmentKeyList(v []*string) *CreateSQLReviewOrderRequestParam {
+	s.AttachmentKeyList = v
+	return s
+}
+
+type CreateSQLReviewOrderShrinkRequest struct {
+	Comment               *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	RelatedUserListShrink *string `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty"`
+	ParamShrink           *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	Tid                   *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s CreateSQLReviewOrderShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSQLReviewOrderShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSQLReviewOrderShrinkRequest) SetComment(v string) *CreateSQLReviewOrderShrinkRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *CreateSQLReviewOrderShrinkRequest) SetRelatedUserListShrink(v string) *CreateSQLReviewOrderShrinkRequest {
+	s.RelatedUserListShrink = &v
+	return s
+}
+
+func (s *CreateSQLReviewOrderShrinkRequest) SetParamShrink(v string) *CreateSQLReviewOrderShrinkRequest {
+	s.ParamShrink = &v
+	return s
+}
+
+func (s *CreateSQLReviewOrderShrinkRequest) SetTid(v int64) *CreateSQLReviewOrderShrinkRequest {
+	s.Tid = &v
+	return s
+}
+
+type CreateSQLReviewOrderResponseBody struct {
+	// Id of the request
+	RequestId         *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success           *bool    `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorMessage      *string  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorCode         *string  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	CreateOrderResult []*int64 `json:"CreateOrderResult,omitempty" xml:"CreateOrderResult,omitempty" type:"Repeated"`
+}
+
+func (s CreateSQLReviewOrderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSQLReviewOrderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSQLReviewOrderResponseBody) SetRequestId(v string) *CreateSQLReviewOrderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateSQLReviewOrderResponseBody) SetSuccess(v bool) *CreateSQLReviewOrderResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateSQLReviewOrderResponseBody) SetErrorMessage(v string) *CreateSQLReviewOrderResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateSQLReviewOrderResponseBody) SetErrorCode(v string) *CreateSQLReviewOrderResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateSQLReviewOrderResponseBody) SetCreateOrderResult(v []*int64) *CreateSQLReviewOrderResponseBody {
+	s.CreateOrderResult = v
+	return s
+}
+
+type CreateSQLReviewOrderResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateSQLReviewOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateSQLReviewOrderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSQLReviewOrderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSQLReviewOrderResponse) SetHeaders(v map[string]*string) *CreateSQLReviewOrderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSQLReviewOrderResponse) SetBody(v *CreateSQLReviewOrderResponseBody) *CreateSQLReviewOrderResponse {
+	s.Body = v
+	return s
+}
+
 type GetOrderBaseInfoRequest struct {
 	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
@@ -11288,6 +11925,239 @@ func (s *GetOrderBaseInfoResponse) SetHeaders(v map[string]*string) *GetOrderBas
 }
 
 func (s *GetOrderBaseInfoResponse) SetBody(v *GetOrderBaseInfoResponseBody) *GetOrderBaseInfoResponse {
+	s.Body = v
+	return s
+}
+
+type GetSQLReviewOptimizeDetailRequest struct {
+	SQLReviewQueryKey *string `json:"SQLReviewQueryKey,omitempty" xml:"SQLReviewQueryKey,omitempty"`
+	Tid               *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetSQLReviewOptimizeDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSQLReviewOptimizeDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSQLReviewOptimizeDetailRequest) SetSQLReviewQueryKey(v string) *GetSQLReviewOptimizeDetailRequest {
+	s.SQLReviewQueryKey = &v
+	return s
+}
+
+func (s *GetSQLReviewOptimizeDetailRequest) SetTid(v int64) *GetSQLReviewOptimizeDetailRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetSQLReviewOptimizeDetailResponseBody struct {
+	RequestId      *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorCode      *string                                               `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string                                               `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Success        *bool                                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	OptimizeDetail *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail `json:"OptimizeDetail,omitempty" xml:"OptimizeDetail,omitempty" type:"Struct"`
+}
+
+func (s GetSQLReviewOptimizeDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSQLReviewOptimizeDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSQLReviewOptimizeDetailResponseBody) SetRequestId(v string) *GetSQLReviewOptimizeDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSQLReviewOptimizeDetailResponseBody) SetErrorCode(v string) *GetSQLReviewOptimizeDetailResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetSQLReviewOptimizeDetailResponseBody) SetErrorMessage(v string) *GetSQLReviewOptimizeDetailResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetSQLReviewOptimizeDetailResponseBody) SetSuccess(v bool) *GetSQLReviewOptimizeDetailResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetSQLReviewOptimizeDetailResponseBody) SetOptimizeDetail(v *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail) *GetSQLReviewOptimizeDetailResponseBody {
+	s.OptimizeDetail = v
+	return s
+}
+
+type GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail struct {
+	QueryKey      *string                                                            `json:"QueryKey,omitempty" xml:"QueryKey,omitempty"`
+	InstanceId    *int32                                                             `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	DbId          *int32                                                             `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	SqlType       *string                                                            `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
+	QualityResult *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResult `json:"QualityResult,omitempty" xml:"QualityResult,omitempty" type:"Struct"`
+}
+
+func (s GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail) GoString() string {
+	return s.String()
+}
+
+func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail) SetQueryKey(v string) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail {
+	s.QueryKey = &v
+	return s
+}
+
+func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail) SetInstanceId(v int32) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail) SetDbId(v int32) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail {
+	s.DbId = &v
+	return s
+}
+
+func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail) SetSqlType(v string) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail {
+	s.SqlType = &v
+	return s
+}
+
+func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail) SetQualityResult(v *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResult) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail {
+	s.QualityResult = v
+	return s
+}
+
+type GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResult struct {
+	ErrorMessage *string                                                                     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Results      []*GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	OccurError   *bool                                                                       `json:"OccurError,omitempty" xml:"OccurError,omitempty"`
+}
+
+func (s GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResult) SetErrorMessage(v string) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResult {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResult) SetResults(v []*GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResult {
+	s.Results = v
+	return s
+}
+
+func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResult) SetOccurError(v bool) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResult {
+	s.OccurError = &v
+	return s
+}
+
+type GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults struct {
+	RuleName *string                                                                            `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Feedback *string                                                                            `json:"Feedback,omitempty" xml:"Feedback,omitempty"`
+	Comments *string                                                                            `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	Messages []*string                                                                          `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
+	Scripts  []*GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResultsScripts `json:"Scripts,omitempty" xml:"Scripts,omitempty" type:"Repeated"`
+	RuleType *string                                                                            `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+}
+
+func (s GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults) GoString() string {
+	return s.String()
+}
+
+func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults) SetRuleName(v string) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults {
+	s.RuleName = &v
+	return s
+}
+
+func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults) SetFeedback(v string) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults {
+	s.Feedback = &v
+	return s
+}
+
+func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults) SetComments(v string) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults {
+	s.Comments = &v
+	return s
+}
+
+func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults) SetMessages(v []*string) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults {
+	s.Messages = v
+	return s
+}
+
+func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults) SetScripts(v []*GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResultsScripts) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults {
+	s.Scripts = v
+	return s
+}
+
+func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults) SetRuleType(v string) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults {
+	s.RuleType = &v
+	return s
+}
+
+type GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResultsScripts struct {
+	OpType    *string `json:"OpType,omitempty" xml:"OpType,omitempty"`
+	Content   *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+}
+
+func (s GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResultsScripts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResultsScripts) GoString() string {
+	return s.String()
+}
+
+func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResultsScripts) SetOpType(v string) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResultsScripts {
+	s.OpType = &v
+	return s
+}
+
+func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResultsScripts) SetContent(v string) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResultsScripts {
+	s.Content = &v
+	return s
+}
+
+func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResultsScripts) SetTableName(v string) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResultsScripts {
+	s.TableName = &v
+	return s
+}
+
+type GetSQLReviewOptimizeDetailResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetSQLReviewOptimizeDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetSQLReviewOptimizeDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSQLReviewOptimizeDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSQLReviewOptimizeDetailResponse) SetHeaders(v map[string]*string) *GetSQLReviewOptimizeDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSQLReviewOptimizeDetailResponse) SetBody(v *GetSQLReviewOptimizeDetailResponseBody) *GetSQLReviewOptimizeDetailResponse {
 	s.Body = v
 	return s
 }
@@ -15129,6 +15999,34 @@ func (client *Client) GetDBTopology(request *GetDBTopologyRequest) (_result *Get
 	return _result, _err
 }
 
+func (client *Client) GetSQLReviewCheckResultStatusWithOptions(request *GetSQLReviewCheckResultStatusRequest, runtime *util.RuntimeOptions) (_result *GetSQLReviewCheckResultStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetSQLReviewCheckResultStatusResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetSQLReviewCheckResultStatus"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetSQLReviewCheckResultStatus(request *GetSQLReviewCheckResultStatusRequest) (_result *GetSQLReviewCheckResultStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSQLReviewCheckResultStatusResponse{}
+	_body, _err := client.GetSQLReviewCheckResultStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SyncDatabaseMetaWithOptions(request *SyncDatabaseMetaRequest, runtime *util.RuntimeOptions) (_result *SyncDatabaseMetaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15486,6 +16384,40 @@ func (client *Client) GetApprovalDetail(request *GetApprovalDetailRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &GetApprovalDetailResponse{}
 	_body, _err := client.GetApprovalDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListSQLReviewOriginSQLWithOptions(tmpReq *ListSQLReviewOriginSQLRequest, runtime *util.RuntimeOptions) (_result *ListSQLReviewOriginSQLResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListSQLReviewOriginSQLShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.OrderActionDetail))) {
+		request.OrderActionDetailShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.OrderActionDetail), tea.String("OrderActionDetail"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListSQLReviewOriginSQLResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListSQLReviewOriginSQL"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListSQLReviewOriginSQL(request *ListSQLReviewOriginSQLRequest) (_result *ListSQLReviewOriginSQLResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListSQLReviewOriginSQLResponse{}
+	_body, _err := client.ListSQLReviewOriginSQLWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16241,6 +17173,44 @@ func (client *Client) ListOrders(request *ListOrdersRequest) (_result *ListOrder
 	return _result, _err
 }
 
+func (client *Client) CreateSQLReviewOrderWithOptions(tmpReq *CreateSQLReviewOrderRequest, runtime *util.RuntimeOptions) (_result *CreateSQLReviewOrderResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateSQLReviewOrderShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.RelatedUserList)) {
+		request.RelatedUserListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RelatedUserList, tea.String("RelatedUserList"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Param))) {
+		request.ParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Param), tea.String("Param"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateSQLReviewOrderResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateSQLReviewOrder"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateSQLReviewOrder(request *CreateSQLReviewOrderRequest) (_result *CreateSQLReviewOrderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateSQLReviewOrderResponse{}
+	_body, _err := client.CreateSQLReviewOrderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetOrderBaseInfoWithOptions(request *GetOrderBaseInfoRequest, runtime *util.RuntimeOptions) (_result *GetOrderBaseInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16262,6 +17232,34 @@ func (client *Client) GetOrderBaseInfo(request *GetOrderBaseInfoRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &GetOrderBaseInfoResponse{}
 	_body, _err := client.GetOrderBaseInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetSQLReviewOptimizeDetailWithOptions(request *GetSQLReviewOptimizeDetailRequest, runtime *util.RuntimeOptions) (_result *GetSQLReviewOptimizeDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetSQLReviewOptimizeDetailResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetSQLReviewOptimizeDetail"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetSQLReviewOptimizeDetail(request *GetSQLReviewOptimizeDetailRequest) (_result *GetSQLReviewOptimizeDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSQLReviewOptimizeDetailResponse{}
+	_body, _err := client.GetSQLReviewOptimizeDetailWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
