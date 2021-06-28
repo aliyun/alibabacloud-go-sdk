@@ -336,6 +336,281 @@ func (s *Platform) SetOs(v string) *Platform {
 	return s
 }
 
+type InstanceInfo struct {
+	// identifier
+	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	// hostName
+	HostName *string `json:"hostName,omitempty" xml:"hostName,omitempty"`
+	// os
+	Os *string `json:"os,omitempty" xml:"os,omitempty"`
+	// osVersion
+	OsVersion *string `json:"osVersion,omitempty" xml:"osVersion,omitempty"`
+	// arch
+	Arch *string `json:"arch,omitempty" xml:"arch,omitempty"`
+	// kernel
+	Kernel *string `json:"kernel,omitempty" xml:"kernel,omitempty"`
+	// macAddress
+	MacAddress *string `json:"macAddress,omitempty" xml:"macAddress,omitempty"`
+	// cpu
+	Cpu *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// memory
+	Memory *string `json:"memory,omitempty" xml:"memory,omitempty"`
+	// systemDisk
+	SystemDisk []*Disk `json:"systemDisk,omitempty" xml:"systemDisk,omitempty" type:"Repeated"`
+	// dataDisk
+	DataDisk []*Disk `json:"dataDisk,omitempty" xml:"dataDisk,omitempty" type:"Repeated"`
+	// privateIP
+	PrivateIP *string `json:"privateIP,omitempty" xml:"privateIP,omitempty"`
+	// publicIP
+	PublicIP *string `json:"publicIP,omitempty" xml:"publicIP,omitempty"`
+	// internetBandwidth
+	InternetBandwidth *int32 `json:"internetBandwidth,omitempty" xml:"internetBandwidth,omitempty"`
+	// networkCards
+	NetworkCards []*InstanceInfoNetworkCards `json:"networkCards,omitempty" xml:"networkCards,omitempty" type:"Repeated"`
+	// imageID
+	ImageID *string `json:"imageID,omitempty" xml:"imageID,omitempty"`
+	// instanceType
+	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	// systemInfo
+	SystemInfo *string `json:"systemInfo,omitempty" xml:"systemInfo,omitempty"`
+	// rootPassword
+	RootPassword *string `json:"rootPassword,omitempty" xml:"rootPassword,omitempty"`
+	// labels
+	Labels map[string]*string `json:"labels,omitempty" xml:"labels,omitempty"`
+	// taints
+	Taints []*InstanceInfoTaints `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
+	// annotations
+	Annotations map[string]*string `json:"annotations,omitempty" xml:"annotations,omitempty"`
+}
+
+func (s InstanceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InstanceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *InstanceInfo) SetIdentifier(v string) *InstanceInfo {
+	s.Identifier = &v
+	return s
+}
+
+func (s *InstanceInfo) SetHostName(v string) *InstanceInfo {
+	s.HostName = &v
+	return s
+}
+
+func (s *InstanceInfo) SetOs(v string) *InstanceInfo {
+	s.Os = &v
+	return s
+}
+
+func (s *InstanceInfo) SetOsVersion(v string) *InstanceInfo {
+	s.OsVersion = &v
+	return s
+}
+
+func (s *InstanceInfo) SetArch(v string) *InstanceInfo {
+	s.Arch = &v
+	return s
+}
+
+func (s *InstanceInfo) SetKernel(v string) *InstanceInfo {
+	s.Kernel = &v
+	return s
+}
+
+func (s *InstanceInfo) SetMacAddress(v string) *InstanceInfo {
+	s.MacAddress = &v
+	return s
+}
+
+func (s *InstanceInfo) SetCpu(v string) *InstanceInfo {
+	s.Cpu = &v
+	return s
+}
+
+func (s *InstanceInfo) SetMemory(v string) *InstanceInfo {
+	s.Memory = &v
+	return s
+}
+
+func (s *InstanceInfo) SetSystemDisk(v []*Disk) *InstanceInfo {
+	s.SystemDisk = v
+	return s
+}
+
+func (s *InstanceInfo) SetDataDisk(v []*Disk) *InstanceInfo {
+	s.DataDisk = v
+	return s
+}
+
+func (s *InstanceInfo) SetPrivateIP(v string) *InstanceInfo {
+	s.PrivateIP = &v
+	return s
+}
+
+func (s *InstanceInfo) SetPublicIP(v string) *InstanceInfo {
+	s.PublicIP = &v
+	return s
+}
+
+func (s *InstanceInfo) SetInternetBandwidth(v int32) *InstanceInfo {
+	s.InternetBandwidth = &v
+	return s
+}
+
+func (s *InstanceInfo) SetNetworkCards(v []*InstanceInfoNetworkCards) *InstanceInfo {
+	s.NetworkCards = v
+	return s
+}
+
+func (s *InstanceInfo) SetImageID(v string) *InstanceInfo {
+	s.ImageID = &v
+	return s
+}
+
+func (s *InstanceInfo) SetInstanceType(v string) *InstanceInfo {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *InstanceInfo) SetSystemInfo(v string) *InstanceInfo {
+	s.SystemInfo = &v
+	return s
+}
+
+func (s *InstanceInfo) SetRootPassword(v string) *InstanceInfo {
+	s.RootPassword = &v
+	return s
+}
+
+func (s *InstanceInfo) SetLabels(v map[string]*string) *InstanceInfo {
+	s.Labels = v
+	return s
+}
+
+func (s *InstanceInfo) SetTaints(v []*InstanceInfoTaints) *InstanceInfo {
+	s.Taints = v
+	return s
+}
+
+func (s *InstanceInfo) SetAnnotations(v map[string]*string) *InstanceInfo {
+	s.Annotations = v
+	return s
+}
+
+type InstanceInfoNetworkCards struct {
+	// name
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// ip
+	Ip *string `json:"ip,omitempty" xml:"ip,omitempty"`
+}
+
+func (s InstanceInfoNetworkCards) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InstanceInfoNetworkCards) GoString() string {
+	return s.String()
+}
+
+func (s *InstanceInfoNetworkCards) SetName(v string) *InstanceInfoNetworkCards {
+	s.Name = &v
+	return s
+}
+
+func (s *InstanceInfoNetworkCards) SetIp(v string) *InstanceInfoNetworkCards {
+	s.Ip = &v
+	return s
+}
+
+type InstanceInfoTaints struct {
+	// key
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// value
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+	// effect
+	Effect *string `json:"effect,omitempty" xml:"effect,omitempty"`
+}
+
+func (s InstanceInfoTaints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InstanceInfoTaints) GoString() string {
+	return s.String()
+}
+
+func (s *InstanceInfoTaints) SetKey(v string) *InstanceInfoTaints {
+	s.Key = &v
+	return s
+}
+
+func (s *InstanceInfoTaints) SetValue(v string) *InstanceInfoTaints {
+	s.Value = &v
+	return s
+}
+
+func (s *InstanceInfoTaints) SetEffect(v string) *InstanceInfoTaints {
+	s.Effect = &v
+	return s
+}
+
+type Disk struct {
+	// name
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// capacity
+	Capacity *int32 `json:"capacity,omitempty" xml:"capacity,omitempty"`
+	// remain
+	Remain *int32 `json:"remain,omitempty" xml:"remain,omitempty"`
+	// fsType
+	FsType *string `json:"fsType,omitempty" xml:"fsType,omitempty"`
+	// mountPoint
+	MountPoint *string `json:"mountPoint,omitempty" xml:"mountPoint,omitempty"`
+	// type
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s Disk) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Disk) GoString() string {
+	return s.String()
+}
+
+func (s *Disk) SetName(v string) *Disk {
+	s.Name = &v
+	return s
+}
+
+func (s *Disk) SetCapacity(v int32) *Disk {
+	s.Capacity = &v
+	return s
+}
+
+func (s *Disk) SetRemain(v int32) *Disk {
+	s.Remain = &v
+	return s
+}
+
+func (s *Disk) SetFsType(v string) *Disk {
+	s.FsType = &v
+	return s
+}
+
+func (s *Disk) SetMountPoint(v string) *Disk {
+	s.MountPoint = &v
+	return s
+}
+
+func (s *Disk) SetType(v string) *Disk {
+	s.Type = &v
+	return s
+}
+
 type ComponentVersion struct {
 	// appVersion
 	AppVersion *string `json:"appVersion,omitempty" xml:"appVersion,omitempty"`
@@ -901,18 +1176,22 @@ func (s *GetProductEnvironmentResponseBody) SetSuccess(v bool) *GetProductEnviro
 }
 
 type GetProductEnvironmentResponseBodyData struct {
-	CreatedAt      *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	ClusterUID     *string `json:"clusterUID,omitempty" xml:"clusterUID,omitempty"`
-	Description    *string `json:"description,omitempty" xml:"description,omitempty"`
-	InstanceList   *string `json:"instanceList,omitempty" xml:"instanceList,omitempty"`
-	InstanceStatus *string `json:"instanceStatus,omitempty" xml:"instanceStatus,omitempty"`
-	Name           *string `json:"name,omitempty" xml:"name,omitempty"`
-	ProductName    *string `json:"productName,omitempty" xml:"productName,omitempty"`
-	ProductVersion *string `json:"productVersion,omitempty" xml:"productVersion,omitempty"`
-	Type           *string `json:"type,omitempty" xml:"type,omitempty"`
-	Uid            *string `json:"uid,omitempty" xml:"uid,omitempty"`
-	VendorConfig   *string `json:"vendorConfig,omitempty" xml:"vendorConfig,omitempty"`
-	VendorType     *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+	CreatedAt         *string         `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	ClusterUID        *string         `json:"clusterUID,omitempty" xml:"clusterUID,omitempty"`
+	Description       *string         `json:"description,omitempty" xml:"description,omitempty"`
+	InstanceList      []*InstanceInfo `json:"instanceList,omitempty" xml:"instanceList,omitempty" type:"Repeated"`
+	InstanceStatus    *string         `json:"instanceStatus,omitempty" xml:"instanceStatus,omitempty"`
+	Name              *string         `json:"name,omitempty" xml:"name,omitempty"`
+	ProductName       *string         `json:"productName,omitempty" xml:"productName,omitempty"`
+	ProductVersion    *string         `json:"productVersion,omitempty" xml:"productVersion,omitempty"`
+	ProductUID        *string         `json:"productUID,omitempty" xml:"productUID,omitempty"`
+	ProductVersionUID *string         `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
+	Type              *string         `json:"type,omitempty" xml:"type,omitempty"`
+	Uid               *string         `json:"uid,omitempty" xml:"uid,omitempty"`
+	VendorConfig      *string         `json:"vendorConfig,omitempty" xml:"vendorConfig,omitempty"`
+	VendorType        *string         `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+	SnapshotUID       *string         `json:"snapshotUID,omitempty" xml:"snapshotUID,omitempty"`
+	Platform          *Platform       `json:"platform,omitempty" xml:"platform,omitempty"`
 }
 
 func (s GetProductEnvironmentResponseBodyData) String() string {
@@ -938,8 +1217,8 @@ func (s *GetProductEnvironmentResponseBodyData) SetDescription(v string) *GetPro
 	return s
 }
 
-func (s *GetProductEnvironmentResponseBodyData) SetInstanceList(v string) *GetProductEnvironmentResponseBodyData {
-	s.InstanceList = &v
+func (s *GetProductEnvironmentResponseBodyData) SetInstanceList(v []*InstanceInfo) *GetProductEnvironmentResponseBodyData {
+	s.InstanceList = v
 	return s
 }
 
@@ -963,6 +1242,16 @@ func (s *GetProductEnvironmentResponseBodyData) SetProductVersion(v string) *Get
 	return s
 }
 
+func (s *GetProductEnvironmentResponseBodyData) SetProductUID(v string) *GetProductEnvironmentResponseBodyData {
+	s.ProductUID = &v
+	return s
+}
+
+func (s *GetProductEnvironmentResponseBodyData) SetProductVersionUID(v string) *GetProductEnvironmentResponseBodyData {
+	s.ProductVersionUID = &v
+	return s
+}
+
 func (s *GetProductEnvironmentResponseBodyData) SetType(v string) *GetProductEnvironmentResponseBodyData {
 	s.Type = &v
 	return s
@@ -980,6 +1269,16 @@ func (s *GetProductEnvironmentResponseBodyData) SetVendorConfig(v string) *GetPr
 
 func (s *GetProductEnvironmentResponseBodyData) SetVendorType(v string) *GetProductEnvironmentResponseBodyData {
 	s.VendorType = &v
+	return s
+}
+
+func (s *GetProductEnvironmentResponseBodyData) SetSnapshotUID(v string) *GetProductEnvironmentResponseBodyData {
+	s.SnapshotUID = &v
+	return s
+}
+
+func (s *GetProductEnvironmentResponseBodyData) SetPlatform(v *Platform) *GetProductEnvironmentResponseBodyData {
+	s.Platform = v
 	return s
 }
 
