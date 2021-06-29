@@ -1718,6 +1718,8 @@ type PredictPictureRequest struct {
 	AlgorithmCode *string `json:"AlgorithmCode,omitempty" xml:"AlgorithmCode,omitempty"`
 	OssPath       *string `json:"OssPath,omitempty" xml:"OssPath,omitempty"`
 	ResourceUrl   *string `json:"ResourceUrl,omitempty" xml:"ResourceUrl,omitempty"`
+	CustomerData  *string `json:"CustomerData,omitempty" xml:"CustomerData,omitempty"`
+	ImageUrl      *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 }
 
 func (s PredictPictureRequest) String() string {
@@ -1740,6 +1742,16 @@ func (s *PredictPictureRequest) SetOssPath(v string) *PredictPictureRequest {
 
 func (s *PredictPictureRequest) SetResourceUrl(v string) *PredictPictureRequest {
 	s.ResourceUrl = &v
+	return s
+}
+
+func (s *PredictPictureRequest) SetCustomerData(v string) *PredictPictureRequest {
+	s.CustomerData = &v
+	return s
+}
+
+func (s *PredictPictureRequest) SetImageUrl(v string) *PredictPictureRequest {
+	s.ImageUrl = &v
 	return s
 }
 
