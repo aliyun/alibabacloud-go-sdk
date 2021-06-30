@@ -1,0 +1,5 @@
+2021-06-30 Version: v2.7.0
+- Add InstallCmsExporter API.
+- Add UninstallPromCluster API.
+- Add PromClusterInstallStatus API.
+
