@@ -634,6 +634,240 @@ func (s *RunCTRegistrationResponse) SetBody(v *RunCTRegistrationResponseBody) *R
 	return s
 }
 
+type AnalyzeChestVesselRequest struct {
+	URLList        []*AnalyzeChestVesselRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" type:"Repeated"`
+	DataFormat     *string                             `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
+	OrgId          *string                             `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	OrgName        *string                             `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	DataSourceType *string                             `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+}
+
+func (s AnalyzeChestVesselRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeChestVesselRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeChestVesselRequest) SetURLList(v []*AnalyzeChestVesselRequestURLList) *AnalyzeChestVesselRequest {
+	s.URLList = v
+	return s
+}
+
+func (s *AnalyzeChestVesselRequest) SetDataFormat(v string) *AnalyzeChestVesselRequest {
+	s.DataFormat = &v
+	return s
+}
+
+func (s *AnalyzeChestVesselRequest) SetOrgId(v string) *AnalyzeChestVesselRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *AnalyzeChestVesselRequest) SetOrgName(v string) *AnalyzeChestVesselRequest {
+	s.OrgName = &v
+	return s
+}
+
+func (s *AnalyzeChestVesselRequest) SetDataSourceType(v string) *AnalyzeChestVesselRequest {
+	s.DataSourceType = &v
+	return s
+}
+
+type AnalyzeChestVesselRequestURLList struct {
+	URL *string `json:"URL,omitempty" xml:"URL,omitempty"`
+}
+
+func (s AnalyzeChestVesselRequestURLList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeChestVesselRequestURLList) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeChestVesselRequestURLList) SetURL(v string) *AnalyzeChestVesselRequestURLList {
+	s.URL = &v
+	return s
+}
+
+type AnalyzeChestVesselResponseBody struct {
+	// Id of the request
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *AnalyzeChestVesselResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s AnalyzeChestVesselResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeChestVesselResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeChestVesselResponseBody) SetRequestId(v string) *AnalyzeChestVesselResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AnalyzeChestVesselResponseBody) SetData(v *AnalyzeChestVesselResponseBodyData) *AnalyzeChestVesselResponseBody {
+	s.Data = v
+	return s
+}
+
+type AnalyzeChestVesselResponseBodyData struct {
+	AortaInfo     *AnalyzeChestVesselResponseBodyDataAortaInfo     `json:"AortaInfo,omitempty" xml:"AortaInfo,omitempty" type:"Struct"`
+	PulmonaryInfo *AnalyzeChestVesselResponseBodyDataPulmonaryInfo `json:"PulmonaryInfo,omitempty" xml:"PulmonaryInfo,omitempty" type:"Struct"`
+	ResultURL     *string                                          `json:"ResultURL,omitempty" xml:"ResultURL,omitempty"`
+}
+
+func (s AnalyzeChestVesselResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeChestVesselResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeChestVesselResponseBodyData) SetAortaInfo(v *AnalyzeChestVesselResponseBodyDataAortaInfo) *AnalyzeChestVesselResponseBodyData {
+	s.AortaInfo = v
+	return s
+}
+
+func (s *AnalyzeChestVesselResponseBodyData) SetPulmonaryInfo(v *AnalyzeChestVesselResponseBodyDataPulmonaryInfo) *AnalyzeChestVesselResponseBodyData {
+	s.PulmonaryInfo = v
+	return s
+}
+
+func (s *AnalyzeChestVesselResponseBodyData) SetResultURL(v string) *AnalyzeChestVesselResponseBodyData {
+	s.ResultURL = &v
+	return s
+}
+
+type AnalyzeChestVesselResponseBodyDataAortaInfo struct {
+	MaxAreaIndex *int64       `json:"MaxAreaIndex,omitempty" xml:"MaxAreaIndex,omitempty"`
+	MaxArea      *float32     `json:"MaxArea,omitempty" xml:"MaxArea,omitempty"`
+	MaxDiameter  *float32     `json:"MaxDiameter,omitempty" xml:"MaxDiameter,omitempty"`
+	LabelValue   *int64       `json:"LabelValue,omitempty" xml:"LabelValue,omitempty"`
+	Coordinates  [][]*float32 `json:"Coordinates,omitempty" xml:"Coordinates,omitempty" type:"Repeated"`
+	Area         []*float32   `json:"Area,omitempty" xml:"Area,omitempty" type:"Repeated"`
+}
+
+func (s AnalyzeChestVesselResponseBodyDataAortaInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeChestVesselResponseBodyDataAortaInfo) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeChestVesselResponseBodyDataAortaInfo) SetMaxAreaIndex(v int64) *AnalyzeChestVesselResponseBodyDataAortaInfo {
+	s.MaxAreaIndex = &v
+	return s
+}
+
+func (s *AnalyzeChestVesselResponseBodyDataAortaInfo) SetMaxArea(v float32) *AnalyzeChestVesselResponseBodyDataAortaInfo {
+	s.MaxArea = &v
+	return s
+}
+
+func (s *AnalyzeChestVesselResponseBodyDataAortaInfo) SetMaxDiameter(v float32) *AnalyzeChestVesselResponseBodyDataAortaInfo {
+	s.MaxDiameter = &v
+	return s
+}
+
+func (s *AnalyzeChestVesselResponseBodyDataAortaInfo) SetLabelValue(v int64) *AnalyzeChestVesselResponseBodyDataAortaInfo {
+	s.LabelValue = &v
+	return s
+}
+
+func (s *AnalyzeChestVesselResponseBodyDataAortaInfo) SetCoordinates(v [][]*float32) *AnalyzeChestVesselResponseBodyDataAortaInfo {
+	s.Coordinates = v
+	return s
+}
+
+func (s *AnalyzeChestVesselResponseBodyDataAortaInfo) SetArea(v []*float32) *AnalyzeChestVesselResponseBodyDataAortaInfo {
+	s.Area = v
+	return s
+}
+
+type AnalyzeChestVesselResponseBodyDataPulmonaryInfo struct {
+	MaxAreaIndex     *int64       `json:"MaxAreaIndex,omitempty" xml:"MaxAreaIndex,omitempty"`
+	MaxArea          *float32     `json:"MaxArea,omitempty" xml:"MaxArea,omitempty"`
+	MaxDiameter      *float32     `json:"MaxDiameter,omitempty" xml:"MaxDiameter,omitempty"`
+	LabelValue       *int64       `json:"LabelValue,omitempty" xml:"LabelValue,omitempty"`
+	Coordinates      [][]*float32 `json:"Coordinates,omitempty" xml:"Coordinates,omitempty" type:"Repeated"`
+	Area             []*float32   `json:"Area,omitempty" xml:"Area,omitempty" type:"Repeated"`
+	NearestAortaArea *float32     `json:"NearestAortaArea,omitempty" xml:"NearestAortaArea,omitempty"`
+}
+
+func (s AnalyzeChestVesselResponseBodyDataPulmonaryInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeChestVesselResponseBodyDataPulmonaryInfo) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeChestVesselResponseBodyDataPulmonaryInfo) SetMaxAreaIndex(v int64) *AnalyzeChestVesselResponseBodyDataPulmonaryInfo {
+	s.MaxAreaIndex = &v
+	return s
+}
+
+func (s *AnalyzeChestVesselResponseBodyDataPulmonaryInfo) SetMaxArea(v float32) *AnalyzeChestVesselResponseBodyDataPulmonaryInfo {
+	s.MaxArea = &v
+	return s
+}
+
+func (s *AnalyzeChestVesselResponseBodyDataPulmonaryInfo) SetMaxDiameter(v float32) *AnalyzeChestVesselResponseBodyDataPulmonaryInfo {
+	s.MaxDiameter = &v
+	return s
+}
+
+func (s *AnalyzeChestVesselResponseBodyDataPulmonaryInfo) SetLabelValue(v int64) *AnalyzeChestVesselResponseBodyDataPulmonaryInfo {
+	s.LabelValue = &v
+	return s
+}
+
+func (s *AnalyzeChestVesselResponseBodyDataPulmonaryInfo) SetCoordinates(v [][]*float32) *AnalyzeChestVesselResponseBodyDataPulmonaryInfo {
+	s.Coordinates = v
+	return s
+}
+
+func (s *AnalyzeChestVesselResponseBodyDataPulmonaryInfo) SetArea(v []*float32) *AnalyzeChestVesselResponseBodyDataPulmonaryInfo {
+	s.Area = v
+	return s
+}
+
+func (s *AnalyzeChestVesselResponseBodyDataPulmonaryInfo) SetNearestAortaArea(v float32) *AnalyzeChestVesselResponseBodyDataPulmonaryInfo {
+	s.NearestAortaArea = &v
+	return s
+}
+
+type AnalyzeChestVesselResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *AnalyzeChestVesselResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AnalyzeChestVesselResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeChestVesselResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeChestVesselResponse) SetHeaders(v map[string]*string) *AnalyzeChestVesselResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AnalyzeChestVesselResponse) SetBody(v *AnalyzeChestVesselResponseBody) *AnalyzeChestVesselResponse {
+	s.Body = v
+	return s
+}
+
 type TranslateMedRequest struct {
 	FromLanguage *string `json:"FromLanguage,omitempty" xml:"FromLanguage,omitempty"`
 	ToLanguage   *string `json:"ToLanguage,omitempty" xml:"ToLanguage,omitempty"`
@@ -2914,15 +3148,26 @@ func (client *Client) ClassifyFNFAdvance(request *ClassifyFNFAdvanceRequest, run
 		return _result, _err
 	}
 
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
 	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
 		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
@@ -3046,6 +3291,34 @@ func (client *Client) RunCTRegistration(request *RunCTRegistrationRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &RunCTRegistrationResponse{}
 	_body, _err := client.RunCTRegistrationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AnalyzeChestVesselWithOptions(request *AnalyzeChestVesselRequest, runtime *util.RuntimeOptions) (_result *AnalyzeChestVesselResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &AnalyzeChestVesselResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("AnalyzeChestVessel"), tea.String("2020-03-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AnalyzeChestVessel(request *AnalyzeChestVesselRequest) (_result *AnalyzeChestVesselResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AnalyzeChestVesselResponse{}
+	_body, _err := client.AnalyzeChestVesselWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3177,15 +3450,26 @@ func (client *Client) DetectHipKeypointXRayAdvance(request *DetectHipKeypointXRa
 		return _result, _err
 	}
 
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
 	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
 		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
@@ -3300,15 +3584,26 @@ func (client *Client) DetectKneeKeypointXRayAdvance(request *DetectKneeKeypointX
 		return _result, _err
 	}
 
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
 	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
 		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
@@ -3451,15 +3746,26 @@ func (client *Client) DetectKneeXRayAdvance(request *DetectKneeXRayAdvanceReques
 		return _result, _err
 	}
 
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
 	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
 		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
@@ -3686,15 +3992,26 @@ func (client *Client) DetectSkinDiseaseAdvance(request *DetectSkinDiseaseAdvance
 		return _result, _err
 	}
 
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
 	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
 		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
