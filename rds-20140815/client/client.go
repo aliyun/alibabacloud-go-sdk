@@ -199,8 +199,8 @@ func (s *AllocateInstancePublicConnectionRequest) SetOwnerAccount(v string) *All
 }
 
 type AllocateInstancePublicConnectionResponseBody struct {
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DbInstanceName   *string `json:"DbInstanceName,omitempty" xml:"DbInstanceName,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 }
 
@@ -212,13 +212,13 @@ func (s AllocateInstancePublicConnectionResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *AllocateInstancePublicConnectionResponseBody) SetRequestId(v string) *AllocateInstancePublicConnectionResponseBody {
-	s.RequestId = &v
+func (s *AllocateInstancePublicConnectionResponseBody) SetDbInstanceName(v string) *AllocateInstancePublicConnectionResponseBody {
+	s.DbInstanceName = &v
 	return s
 }
 
-func (s *AllocateInstancePublicConnectionResponseBody) SetDbInstanceName(v string) *AllocateInstancePublicConnectionResponseBody {
-	s.DbInstanceName = &v
+func (s *AllocateInstancePublicConnectionResponseBody) SetRequestId(v string) *AllocateInstancePublicConnectionResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -435,6 +435,7 @@ type CalculateDBInstanceWeightResponseBodyItemsDBInstanceWeight struct {
 	Weight                         *string `json:"Weight,omitempty" xml:"Weight,omitempty"`
 	DBInstanceType                 *string `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
 	DBInstanceId                   *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Role                           *string `json:"Role,omitempty" xml:"Role,omitempty"`
 }
 
 func (s CalculateDBInstanceWeightResponseBodyItemsDBInstanceWeight) String() string {
@@ -462,6 +463,11 @@ func (s *CalculateDBInstanceWeightResponseBodyItemsDBInstanceWeight) SetDBInstan
 
 func (s *CalculateDBInstanceWeightResponseBodyItemsDBInstanceWeight) SetDBInstanceId(v string) *CalculateDBInstanceWeightResponseBodyItemsDBInstanceWeight {
 	s.DBInstanceId = &v
+	return s
+}
+
+func (s *CalculateDBInstanceWeightResponseBodyItemsDBInstanceWeight) SetRole(v string) *CalculateDBInstanceWeightResponseBodyItemsDBInstanceWeight {
+	s.Role = &v
 	return s
 }
 
@@ -728,9 +734,9 @@ func (s *CheckCloudResourceAuthorizedRequest) SetTargetRegionId(v string) *Check
 }
 
 type CheckCloudResourceAuthorizedResponseBody struct {
-	AuthorizationState *int32  `json:"AuthorizationState,omitempty" xml:"AuthorizationState,omitempty"`
 	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RoleArn            *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	AuthorizationState *int32  `json:"AuthorizationState,omitempty" xml:"AuthorizationState,omitempty"`
 }
 
 func (s CheckCloudResourceAuthorizedResponseBody) String() string {
@@ -741,11 +747,6 @@ func (s CheckCloudResourceAuthorizedResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CheckCloudResourceAuthorizedResponseBody) SetAuthorizationState(v int32) *CheckCloudResourceAuthorizedResponseBody {
-	s.AuthorizationState = &v
-	return s
-}
-
 func (s *CheckCloudResourceAuthorizedResponseBody) SetRequestId(v string) *CheckCloudResourceAuthorizedResponseBody {
 	s.RequestId = &v
 	return s
@@ -753,6 +754,11 @@ func (s *CheckCloudResourceAuthorizedResponseBody) SetRequestId(v string) *Check
 
 func (s *CheckCloudResourceAuthorizedResponseBody) SetRoleArn(v string) *CheckCloudResourceAuthorizedResponseBody {
 	s.RoleArn = &v
+	return s
+}
+
+func (s *CheckCloudResourceAuthorizedResponseBody) SetAuthorizationState(v int32) *CheckCloudResourceAuthorizedResponseBody {
+	s.AuthorizationState = &v
 	return s
 }
 
@@ -887,8 +893,8 @@ func (s *CheckCreateDdrDBInstanceRequest) SetBinlogRole(v string) *CheckCreateDd
 }
 
 type CheckCreateDdrDBInstanceResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	IsValid   *string `json:"IsValid,omitempty" xml:"IsValid,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CheckCreateDdrDBInstanceResponseBody) String() string {
@@ -899,13 +905,13 @@ func (s CheckCreateDdrDBInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CheckCreateDdrDBInstanceResponseBody) SetRequestId(v string) *CheckCreateDdrDBInstanceResponseBody {
-	s.RequestId = &v
+func (s *CheckCreateDdrDBInstanceResponseBody) SetIsValid(v string) *CheckCreateDdrDBInstanceResponseBody {
+	s.IsValid = &v
 	return s
 }
 
-func (s *CheckCreateDdrDBInstanceResponseBody) SetIsValid(v string) *CheckCreateDdrDBInstanceResponseBody {
-	s.IsValid = &v
+func (s *CheckCreateDdrDBInstanceResponseBody) SetRequestId(v string) *CheckCreateDdrDBInstanceResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1061,8 +1067,8 @@ func (s *CheckInstanceExistRequest) SetDBInstanceId(v string) *CheckInstanceExis
 }
 
 type CheckInstanceExistResponseBody struct {
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	IsExistInstance *bool   `json:"IsExistInstance,omitempty" xml:"IsExistInstance,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CheckInstanceExistResponseBody) String() string {
@@ -1073,13 +1079,13 @@ func (s CheckInstanceExistResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CheckInstanceExistResponseBody) SetRequestId(v string) *CheckInstanceExistResponseBody {
-	s.RequestId = &v
+func (s *CheckInstanceExistResponseBody) SetIsExistInstance(v bool) *CheckInstanceExistResponseBody {
+	s.IsExistInstance = &v
 	return s
 }
 
-func (s *CheckInstanceExistResponseBody) SetIsExistInstance(v bool) *CheckInstanceExistResponseBody {
-	s.IsExistInstance = &v
+func (s *CheckInstanceExistResponseBody) SetRequestId(v string) *CheckInstanceExistResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1349,8 +1355,8 @@ func (s *CloneDBInstanceRequest) SetBackupType(v string) *CloneDBInstanceRequest
 }
 
 type CloneDBInstanceResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	OrderId      *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
@@ -1362,13 +1368,13 @@ func (s CloneDBInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CloneDBInstanceResponseBody) SetRequestId(v string) *CloneDBInstanceResponseBody {
-	s.RequestId = &v
+func (s *CloneDBInstanceResponseBody) SetDBInstanceId(v string) *CloneDBInstanceResponseBody {
+	s.DBInstanceId = &v
 	return s
 }
 
-func (s *CloneDBInstanceResponseBody) SetDBInstanceId(v string) *CloneDBInstanceResponseBody {
-	s.DBInstanceId = &v
+func (s *CloneDBInstanceResponseBody) SetRequestId(v string) *CloneDBInstanceResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1529,8 +1535,8 @@ func (s *CopyDatabaseRequest) SetResourceOwnerId(v int64) *CopyDatabaseRequest {
 }
 
 type CopyDatabaseResponseBody struct {
-	TaskId   *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	DBName   *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	TaskId   *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	DBStatus *string `json:"DBStatus,omitempty" xml:"DBStatus,omitempty"`
 }
 
@@ -1542,13 +1548,13 @@ func (s CopyDatabaseResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CopyDatabaseResponseBody) SetTaskId(v string) *CopyDatabaseResponseBody {
-	s.TaskId = &v
+func (s *CopyDatabaseResponseBody) SetDBName(v string) *CopyDatabaseResponseBody {
+	s.DBName = &v
 	return s
 }
 
-func (s *CopyDatabaseResponseBody) SetDBName(v string) *CopyDatabaseResponseBody {
-	s.DBName = &v
+func (s *CopyDatabaseResponseBody) SetTaskId(v string) *CopyDatabaseResponseBody {
+	s.TaskId = &v
 	return s
 }
 
@@ -1634,8 +1640,8 @@ func (s *CopyDatabaseBetweenInstancesRequest) SetSyncUserPrivilege(v string) *Co
 }
 
 type CopyDatabaseBetweenInstancesResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CopyDatabaseBetweenInstancesResponseBody) String() string {
@@ -1646,13 +1652,13 @@ func (s CopyDatabaseBetweenInstancesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CopyDatabaseBetweenInstancesResponseBody) SetRequestId(v string) *CopyDatabaseBetweenInstancesResponseBody {
-	s.RequestId = &v
+func (s *CopyDatabaseBetweenInstancesResponseBody) SetDBInstanceId(v string) *CopyDatabaseBetweenInstancesResponseBody {
+	s.DBInstanceId = &v
 	return s
 }
 
-func (s *CopyDatabaseBetweenInstancesResponseBody) SetDBInstanceId(v string) *CopyDatabaseBetweenInstancesResponseBody {
-	s.DBInstanceId = &v
+func (s *CopyDatabaseBetweenInstancesResponseBody) SetRequestId(v string) *CopyDatabaseBetweenInstancesResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1832,8 +1838,8 @@ func (s *CreateBackupRequest) SetBackupType(v string) *CreateBackupRequest {
 }
 
 type CreateBackupResponseBody struct {
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	BackupJobId *string `json:"BackupJobId,omitempty" xml:"BackupJobId,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateBackupResponseBody) String() string {
@@ -1844,13 +1850,13 @@ func (s CreateBackupResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateBackupResponseBody) SetRequestId(v string) *CreateBackupResponseBody {
-	s.RequestId = &v
+func (s *CreateBackupResponseBody) SetBackupJobId(v string) *CreateBackupResponseBody {
+	s.BackupJobId = &v
 	return s
 }
 
-func (s *CreateBackupResponseBody) SetBackupJobId(v string) *CreateBackupResponseBody {
-	s.BackupJobId = &v
+func (s *CreateBackupResponseBody) SetRequestId(v string) *CreateBackupResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2017,6 +2023,8 @@ type CreateDBInstanceRequest struct {
 	StorageAutoScale               *string `json:"StorageAutoScale,omitempty" xml:"StorageAutoScale,omitempty"`
 	StorageThreshold               *int32  `json:"StorageThreshold,omitempty" xml:"StorageThreshold,omitempty"`
 	StorageUpperBound              *int32  `json:"StorageUpperBound,omitempty" xml:"StorageUpperBound,omitempty"`
+	DryRun                         *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	UserBackupId                   *string `json:"UserBackupId,omitempty" xml:"UserBackupId,omitempty"`
 }
 
 func (s CreateDBInstanceRequest) String() string {
@@ -2227,11 +2235,23 @@ func (s *CreateDBInstanceRequest) SetStorageUpperBound(v int32) *CreateDBInstanc
 	return s
 }
 
+func (s *CreateDBInstanceRequest) SetDryRun(v bool) *CreateDBInstanceRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *CreateDBInstanceRequest) SetUserBackupId(v string) *CreateDBInstanceRequest {
+	s.UserBackupId = &v
+	return s
+}
+
 type CreateDBInstanceResponseBody struct {
+	DryRunResult     *bool   `json:"DryRunResult,omitempty" xml:"DryRunResult,omitempty"`
 	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	DBInstanceId     *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	Port             *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	DryRun           *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	OrderId          *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
@@ -2243,8 +2263,18 @@ func (s CreateDBInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *CreateDBInstanceResponseBody) SetDryRunResult(v bool) *CreateDBInstanceResponseBody {
+	s.DryRunResult = &v
+	return s
+}
+
 func (s *CreateDBInstanceResponseBody) SetRequestId(v string) *CreateDBInstanceResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDBInstanceResponseBody) SetConnectionString(v string) *CreateDBInstanceResponseBody {
+	s.ConnectionString = &v
 	return s
 }
 
@@ -2258,8 +2288,8 @@ func (s *CreateDBInstanceResponseBody) SetPort(v string) *CreateDBInstanceRespon
 	return s
 }
 
-func (s *CreateDBInstanceResponseBody) SetConnectionString(v string) *CreateDBInstanceResponseBody {
-	s.ConnectionString = &v
+func (s *CreateDBInstanceResponseBody) SetDryRun(v bool) *CreateDBInstanceResponseBody {
+	s.DryRun = &v
 	return s
 }
 
@@ -2600,8 +2630,8 @@ func (s *CreateDdrInstanceRequest) SetBinlogRole(v string) *CreateDdrInstanceReq
 }
 
 type CreateDdrInstanceResponseBody struct {
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DBInstanceId     *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Port             *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	OrderId          *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
@@ -2615,13 +2645,13 @@ func (s CreateDdrInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateDdrInstanceResponseBody) SetRequestId(v string) *CreateDdrInstanceResponseBody {
-	s.RequestId = &v
+func (s *CreateDdrInstanceResponseBody) SetDBInstanceId(v string) *CreateDdrInstanceResponseBody {
+	s.DBInstanceId = &v
 	return s
 }
 
-func (s *CreateDdrInstanceResponseBody) SetDBInstanceId(v string) *CreateDdrInstanceResponseBody {
-	s.DBInstanceId = &v
+func (s *CreateDdrInstanceResponseBody) SetRequestId(v string) *CreateDdrInstanceResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -3195,8 +3225,8 @@ func (s *CreateDiagnosticReportRequest) SetEndTime(v string) *CreateDiagnosticRe
 }
 
 type CreateDiagnosticReportResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ReportId  *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateDiagnosticReportResponseBody) String() string {
@@ -3207,13 +3237,13 @@ func (s CreateDiagnosticReportResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateDiagnosticReportResponseBody) SetRequestId(v string) *CreateDiagnosticReportResponseBody {
-	s.RequestId = &v
+func (s *CreateDiagnosticReportResponseBody) SetReportId(v string) *CreateDiagnosticReportResponseBody {
+	s.ReportId = &v
 	return s
 }
 
-func (s *CreateDiagnosticReportResponseBody) SetReportId(v string) *CreateDiagnosticReportResponseBody {
-	s.ReportId = &v
+func (s *CreateDiagnosticReportResponseBody) SetRequestId(v string) *CreateDiagnosticReportResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -3236,6 +3266,111 @@ func (s *CreateDiagnosticReportResponse) SetHeaders(v map[string]*string) *Creat
 }
 
 func (s *CreateDiagnosticReportResponse) SetBody(v *CreateDiagnosticReportResponseBody) *CreateDiagnosticReportResponse {
+	s.Body = v
+	return s
+}
+
+type CreateGdnInstanceRequest struct {
+	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount  *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId       *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ClientToken           *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	PrimaryInstanceName   *string `json:"PrimaryInstanceName,omitempty" xml:"PrimaryInstanceName,omitempty"`
+	PrimaryInstanceRegion *string `json:"PrimaryInstanceRegion,omitempty" xml:"PrimaryInstanceRegion,omitempty"`
+	Description           *string `json:"Description,omitempty" xml:"Description,omitempty"`
+}
+
+func (s CreateGdnInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGdnInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGdnInstanceRequest) SetOwnerId(v int64) *CreateGdnInstanceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateGdnInstanceRequest) SetResourceOwnerAccount(v string) *CreateGdnInstanceRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateGdnInstanceRequest) SetResourceOwnerId(v int64) *CreateGdnInstanceRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateGdnInstanceRequest) SetClientToken(v string) *CreateGdnInstanceRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateGdnInstanceRequest) SetPrimaryInstanceName(v string) *CreateGdnInstanceRequest {
+	s.PrimaryInstanceName = &v
+	return s
+}
+
+func (s *CreateGdnInstanceRequest) SetPrimaryInstanceRegion(v string) *CreateGdnInstanceRequest {
+	s.PrimaryInstanceRegion = &v
+	return s
+}
+
+func (s *CreateGdnInstanceRequest) SetDescription(v string) *CreateGdnInstanceRequest {
+	s.Description = &v
+	return s
+}
+
+type CreateGdnInstanceResponseBody struct {
+	GdnInstanceId   *int64  `json:"GdnInstanceId,omitempty" xml:"GdnInstanceId,omitempty"`
+	GdnInstanceName *string `json:"GdnInstanceName,omitempty" xml:"GdnInstanceName,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateGdnInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGdnInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGdnInstanceResponseBody) SetGdnInstanceId(v int64) *CreateGdnInstanceResponseBody {
+	s.GdnInstanceId = &v
+	return s
+}
+
+func (s *CreateGdnInstanceResponseBody) SetGdnInstanceName(v string) *CreateGdnInstanceResponseBody {
+	s.GdnInstanceName = &v
+	return s
+}
+
+func (s *CreateGdnInstanceResponseBody) SetRequestId(v string) *CreateGdnInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateGdnInstanceResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateGdnInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateGdnInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGdnInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGdnInstanceResponse) SetHeaders(v map[string]*string) *CreateGdnInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateGdnInstanceResponse) SetBody(v *CreateGdnInstanceResponseBody) *CreateGdnInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -3318,12 +3453,12 @@ func (s *CreateMigrateTaskRequest) SetMigrateTaskId(v string) *CreateMigrateTask
 }
 
 type CreateMigrateTaskResponseBody struct {
-	TaskId        *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	DBName        *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	BackupMode    *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
 	DBInstanceId  *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	MigrateTaskId *string `json:"MigrateTaskId,omitempty" xml:"MigrateTaskId,omitempty"`
-	BackupMode    *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
-	DBName        *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	TaskId        *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CreateMigrateTaskResponseBody) String() string {
@@ -3334,13 +3469,18 @@ func (s CreateMigrateTaskResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateMigrateTaskResponseBody) SetTaskId(v string) *CreateMigrateTaskResponseBody {
-	s.TaskId = &v
+func (s *CreateMigrateTaskResponseBody) SetRequestId(v string) *CreateMigrateTaskResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *CreateMigrateTaskResponseBody) SetRequestId(v string) *CreateMigrateTaskResponseBody {
-	s.RequestId = &v
+func (s *CreateMigrateTaskResponseBody) SetDBName(v string) *CreateMigrateTaskResponseBody {
+	s.DBName = &v
+	return s
+}
+
+func (s *CreateMigrateTaskResponseBody) SetBackupMode(v string) *CreateMigrateTaskResponseBody {
+	s.BackupMode = &v
 	return s
 }
 
@@ -3354,13 +3494,8 @@ func (s *CreateMigrateTaskResponseBody) SetMigrateTaskId(v string) *CreateMigrat
 	return s
 }
 
-func (s *CreateMigrateTaskResponseBody) SetBackupMode(v string) *CreateMigrateTaskResponseBody {
-	s.BackupMode = &v
-	return s
-}
-
-func (s *CreateMigrateTaskResponseBody) SetDBName(v string) *CreateMigrateTaskResponseBody {
-	s.DBName = &v
+func (s *CreateMigrateTaskResponseBody) SetTaskId(v string) *CreateMigrateTaskResponseBody {
+	s.TaskId = &v
 	return s
 }
 
@@ -3447,13 +3582,13 @@ func (s *CreateMigrateTaskForSQLServerRequest) SetOSSUrls(v string) *CreateMigra
 }
 
 type CreateMigrateTaskForSQLServerResponseBody struct {
-	TaskId         *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	DBInstanceId   *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	TaskType       *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	DBName         *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	MigrateIaskId  *string `json:"MigrateIaskId,omitempty" xml:"MigrateIaskId,omitempty"`
+	TaskType       *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	DBName         *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	DBInstanceId   *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	TaskId         *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CreateMigrateTaskForSQLServerResponseBody) String() string {
@@ -3464,18 +3599,8 @@ func (s CreateMigrateTaskForSQLServerResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateMigrateTaskForSQLServerResponseBody) SetTaskId(v string) *CreateMigrateTaskForSQLServerResponseBody {
-	s.TaskId = &v
-	return s
-}
-
-func (s *CreateMigrateTaskForSQLServerResponseBody) SetRequestId(v string) *CreateMigrateTaskForSQLServerResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateMigrateTaskForSQLServerResponseBody) SetDBInstanceId(v string) *CreateMigrateTaskForSQLServerResponseBody {
-	s.DBInstanceId = &v
+func (s *CreateMigrateTaskForSQLServerResponseBody) SetMigrateIaskId(v string) *CreateMigrateTaskForSQLServerResponseBody {
+	s.MigrateIaskId = &v
 	return s
 }
 
@@ -3484,18 +3609,28 @@ func (s *CreateMigrateTaskForSQLServerResponseBody) SetTaskType(v string) *Creat
 	return s
 }
 
+func (s *CreateMigrateTaskForSQLServerResponseBody) SetDBInstanceName(v string) *CreateMigrateTaskForSQLServerResponseBody {
+	s.DBInstanceName = &v
+	return s
+}
+
+func (s *CreateMigrateTaskForSQLServerResponseBody) SetRequestId(v string) *CreateMigrateTaskForSQLServerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 func (s *CreateMigrateTaskForSQLServerResponseBody) SetDBName(v string) *CreateMigrateTaskForSQLServerResponseBody {
 	s.DBName = &v
 	return s
 }
 
-func (s *CreateMigrateTaskForSQLServerResponseBody) SetMigrateIaskId(v string) *CreateMigrateTaskForSQLServerResponseBody {
-	s.MigrateIaskId = &v
+func (s *CreateMigrateTaskForSQLServerResponseBody) SetDBInstanceId(v string) *CreateMigrateTaskForSQLServerResponseBody {
+	s.DBInstanceId = &v
 	return s
 }
 
-func (s *CreateMigrateTaskForSQLServerResponseBody) SetDBInstanceName(v string) *CreateMigrateTaskForSQLServerResponseBody {
-	s.DBInstanceName = &v
+func (s *CreateMigrateTaskForSQLServerResponseBody) SetTaskId(v string) *CreateMigrateTaskForSQLServerResponseBody {
+	s.TaskId = &v
 	return s
 }
 
@@ -3924,8 +4059,8 @@ func (s *CreateReadOnlyDBInstanceRequest) SetAutoRenew(v string) *CreateReadOnly
 }
 
 type CreateReadOnlyDBInstanceResponseBody struct {
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DBInstanceId     *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Port             *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	OrderId          *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
@@ -3939,13 +4074,13 @@ func (s CreateReadOnlyDBInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateReadOnlyDBInstanceResponseBody) SetRequestId(v string) *CreateReadOnlyDBInstanceResponseBody {
-	s.RequestId = &v
+func (s *CreateReadOnlyDBInstanceResponseBody) SetDBInstanceId(v string) *CreateReadOnlyDBInstanceResponseBody {
+	s.DBInstanceId = &v
 	return s
 }
 
-func (s *CreateReadOnlyDBInstanceResponseBody) SetDBInstanceId(v string) *CreateReadOnlyDBInstanceResponseBody {
-	s.DBInstanceId = &v
+func (s *CreateReadOnlyDBInstanceResponseBody) SetRequestId(v string) *CreateReadOnlyDBInstanceResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -4041,8 +4176,8 @@ func (s *CreateTempDBInstanceRequest) SetOwnerAccount(v string) *CreateTempDBIns
 }
 
 type CreateTempDBInstanceResponseBody struct {
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TempDBInstanceId *string `json:"TempDBInstanceId,omitempty" xml:"TempDBInstanceId,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateTempDBInstanceResponseBody) String() string {
@@ -4053,13 +4188,13 @@ func (s CreateTempDBInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateTempDBInstanceResponseBody) SetRequestId(v string) *CreateTempDBInstanceResponseBody {
-	s.RequestId = &v
+func (s *CreateTempDBInstanceResponseBody) SetTempDBInstanceId(v string) *CreateTempDBInstanceResponseBody {
+	s.TempDBInstanceId = &v
 	return s
 }
 
-func (s *CreateTempDBInstanceResponseBody) SetTempDBInstanceId(v string) *CreateTempDBInstanceResponseBody {
-	s.TempDBInstanceId = &v
+func (s *CreateTempDBInstanceResponseBody) SetRequestId(v string) *CreateTempDBInstanceResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -4499,8 +4634,8 @@ func (s *DeleteDBInstanceRequest) SetReleasedKeepPolicy(v string) *DeleteDBInsta
 }
 
 type DeleteDBInstanceResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteDBInstanceResponseBody) String() string {
@@ -4511,13 +4646,13 @@ func (s DeleteDBInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteDBInstanceResponseBody) SetRequestId(v string) *DeleteDBInstanceResponseBody {
-	s.RequestId = &v
+func (s *DeleteDBInstanceResponseBody) SetRegionId(v string) *DeleteDBInstanceResponseBody {
+	s.RegionId = &v
 	return s
 }
 
-func (s *DeleteDBInstanceResponseBody) SetRegionId(v string) *DeleteDBInstanceResponseBody {
-	s.RegionId = &v
+func (s *DeleteDBInstanceResponseBody) SetRequestId(v string) *DeleteDBInstanceResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -4874,6 +5009,93 @@ func (s *DeleteParameterGroupResponse) SetBody(v *DeleteParameterGroupResponseBo
 	return s
 }
 
+type DeleteUserBackupFileRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	BackupId             *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteUserBackupFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUserBackupFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUserBackupFileRequest) SetOwnerId(v int64) *DeleteUserBackupFileRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteUserBackupFileRequest) SetResourceOwnerAccount(v string) *DeleteUserBackupFileRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteUserBackupFileRequest) SetResourceOwnerId(v int64) *DeleteUserBackupFileRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DeleteUserBackupFileRequest) SetBackupId(v string) *DeleteUserBackupFileRequest {
+	s.BackupId = &v
+	return s
+}
+
+func (s *DeleteUserBackupFileRequest) SetRegionId(v string) *DeleteUserBackupFileRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteUserBackupFileResponseBody struct {
+	BackupId  *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteUserBackupFileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUserBackupFileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUserBackupFileResponseBody) SetBackupId(v string) *DeleteUserBackupFileResponseBody {
+	s.BackupId = &v
+	return s
+}
+
+func (s *DeleteUserBackupFileResponseBody) SetRequestId(v string) *DeleteUserBackupFileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteUserBackupFileResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteUserBackupFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteUserBackupFileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUserBackupFileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUserBackupFileResponse) SetHeaders(v map[string]*string) *DeleteUserBackupFileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteUserBackupFileResponse) SetBody(v *DeleteUserBackupFileResponseBody) *DeleteUserBackupFileResponse {
+	s.Body = v
+	return s
+}
+
 type DescibeImportsFromDatabaseRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -4958,10 +5180,10 @@ func (s *DescibeImportsFromDatabaseRequest) SetOwnerAccount(v string) *DescibeIm
 }
 
 type DescibeImportsFromDatabaseResponseBody struct {
-	TotalRecordCount *int32                                       `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
-	PageRecordCount  *int32                                       `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
 	RequestId        *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageNumber       *int32                                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageRecordCount  *int32                                       `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	TotalRecordCount *int32                                       `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 	Items            *DescibeImportsFromDatabaseResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 }
 
@@ -4973,8 +5195,13 @@ func (s DescibeImportsFromDatabaseResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescibeImportsFromDatabaseResponseBody) SetTotalRecordCount(v int32) *DescibeImportsFromDatabaseResponseBody {
-	s.TotalRecordCount = &v
+func (s *DescibeImportsFromDatabaseResponseBody) SetRequestId(v string) *DescibeImportsFromDatabaseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescibeImportsFromDatabaseResponseBody) SetPageNumber(v int32) *DescibeImportsFromDatabaseResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -4983,13 +5210,8 @@ func (s *DescibeImportsFromDatabaseResponseBody) SetPageRecordCount(v int32) *De
 	return s
 }
 
-func (s *DescibeImportsFromDatabaseResponseBody) SetRequestId(v string) *DescibeImportsFromDatabaseResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescibeImportsFromDatabaseResponseBody) SetPageNumber(v int32) *DescibeImportsFromDatabaseResponseBody {
-	s.PageNumber = &v
+func (s *DescibeImportsFromDatabaseResponseBody) SetTotalRecordCount(v int32) *DescibeImportsFromDatabaseResponseBody {
+	s.TotalRecordCount = &v
 	return s
 }
 
@@ -5127,12 +5349,12 @@ func (s *DescribeAccountsRequest) SetPageNumber(v int32) *DescribeAccountsReques
 }
 
 type DescribeAccountsResponseBody struct {
-	TotalRecordCount                      *int32                                `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
-	RequestId                             *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNumber                            *int32                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	SystemAdminAccountStatus              *string                               `json:"SystemAdminAccountStatus,omitempty" xml:"SystemAdminAccountStatus,omitempty"`
-	Accounts                              *DescribeAccountsResponseBodyAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Struct"`
 	SystemAdminAccountFirstActivationTime *string                               `json:"SystemAdminAccountFirstActivationTime,omitempty" xml:"SystemAdminAccountFirstActivationTime,omitempty"`
+	PageNumber                            *int32                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	RequestId                             *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalRecordCount                      *int32                                `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
+	Accounts                              *DescribeAccountsResponseBodyAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Struct"`
 }
 
 func (s DescribeAccountsResponseBody) String() string {
@@ -5143,13 +5365,13 @@ func (s DescribeAccountsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeAccountsResponseBody) SetTotalRecordCount(v int32) *DescribeAccountsResponseBody {
-	s.TotalRecordCount = &v
+func (s *DescribeAccountsResponseBody) SetSystemAdminAccountStatus(v string) *DescribeAccountsResponseBody {
+	s.SystemAdminAccountStatus = &v
 	return s
 }
 
-func (s *DescribeAccountsResponseBody) SetRequestId(v string) *DescribeAccountsResponseBody {
-	s.RequestId = &v
+func (s *DescribeAccountsResponseBody) SetSystemAdminAccountFirstActivationTime(v string) *DescribeAccountsResponseBody {
+	s.SystemAdminAccountFirstActivationTime = &v
 	return s
 }
 
@@ -5158,18 +5380,18 @@ func (s *DescribeAccountsResponseBody) SetPageNumber(v int32) *DescribeAccountsR
 	return s
 }
 
-func (s *DescribeAccountsResponseBody) SetSystemAdminAccountStatus(v string) *DescribeAccountsResponseBody {
-	s.SystemAdminAccountStatus = &v
+func (s *DescribeAccountsResponseBody) SetRequestId(v string) *DescribeAccountsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAccountsResponseBody) SetTotalRecordCount(v int32) *DescribeAccountsResponseBody {
+	s.TotalRecordCount = &v
 	return s
 }
 
 func (s *DescribeAccountsResponseBody) SetAccounts(v *DescribeAccountsResponseBodyAccounts) *DescribeAccountsResponseBody {
 	s.Accounts = v
-	return s
-}
-
-func (s *DescribeAccountsResponseBody) SetSystemAdminAccountFirstActivationTime(v string) *DescribeAccountsResponseBody {
-	s.SystemAdminAccountFirstActivationTime = &v
 	return s
 }
 
@@ -5192,12 +5414,12 @@ func (s *DescribeAccountsResponseBodyAccounts) SetDBInstanceAccount(v []*Describ
 
 type DescribeAccountsResponseBodyAccountsDBInstanceAccount struct {
 	AccountStatus      *string                                                                  `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
-	DatabasePrivileges *DescribeAccountsResponseBodyAccountsDBInstanceAccountDatabasePrivileges `json:"DatabasePrivileges,omitempty" xml:"DatabasePrivileges,omitempty" type:"Struct"`
 	AccountDescription *string                                                                  `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
 	DBInstanceId       *string                                                                  `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	PrivExceeded       *string                                                                  `json:"PrivExceeded,omitempty" xml:"PrivExceeded,omitempty"`
 	AccountType        *string                                                                  `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
 	AccountName        *string                                                                  `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	DatabasePrivileges *DescribeAccountsResponseBodyAccountsDBInstanceAccountDatabasePrivileges `json:"DatabasePrivileges,omitempty" xml:"DatabasePrivileges,omitempty" type:"Struct"`
 }
 
 func (s DescribeAccountsResponseBodyAccountsDBInstanceAccount) String() string {
@@ -5210,11 +5432,6 @@ func (s DescribeAccountsResponseBodyAccountsDBInstanceAccount) GoString() string
 
 func (s *DescribeAccountsResponseBodyAccountsDBInstanceAccount) SetAccountStatus(v string) *DescribeAccountsResponseBodyAccountsDBInstanceAccount {
 	s.AccountStatus = &v
-	return s
-}
-
-func (s *DescribeAccountsResponseBodyAccountsDBInstanceAccount) SetDatabasePrivileges(v *DescribeAccountsResponseBodyAccountsDBInstanceAccountDatabasePrivileges) *DescribeAccountsResponseBodyAccountsDBInstanceAccount {
-	s.DatabasePrivileges = v
 	return s
 }
 
@@ -5243,6 +5460,11 @@ func (s *DescribeAccountsResponseBodyAccountsDBInstanceAccount) SetAccountName(v
 	return s
 }
 
+func (s *DescribeAccountsResponseBodyAccountsDBInstanceAccount) SetDatabasePrivileges(v *DescribeAccountsResponseBodyAccountsDBInstanceAccountDatabasePrivileges) *DescribeAccountsResponseBodyAccountsDBInstanceAccount {
+	s.DatabasePrivileges = v
+	return s
+}
+
 type DescribeAccountsResponseBodyAccountsDBInstanceAccountDatabasePrivileges struct {
 	DatabasePrivilege []*DescribeAccountsResponseBodyAccountsDBInstanceAccountDatabasePrivilegesDatabasePrivilege `json:"DatabasePrivilege,omitempty" xml:"DatabasePrivilege,omitempty" type:"Repeated"`
 }
@@ -5261,9 +5483,9 @@ func (s *DescribeAccountsResponseBodyAccountsDBInstanceAccountDatabasePrivileges
 }
 
 type DescribeAccountsResponseBodyAccountsDBInstanceAccountDatabasePrivilegesDatabasePrivilege struct {
-	AccountPrivilegeDetail *string `json:"AccountPrivilegeDetail,omitempty" xml:"AccountPrivilegeDetail,omitempty"`
 	DBName                 *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	AccountPrivilege       *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
+	AccountPrivilegeDetail *string `json:"AccountPrivilegeDetail,omitempty" xml:"AccountPrivilegeDetail,omitempty"`
 }
 
 func (s DescribeAccountsResponseBodyAccountsDBInstanceAccountDatabasePrivilegesDatabasePrivilege) String() string {
@@ -5274,11 +5496,6 @@ func (s DescribeAccountsResponseBodyAccountsDBInstanceAccountDatabasePrivilegesD
 	return s.String()
 }
 
-func (s *DescribeAccountsResponseBodyAccountsDBInstanceAccountDatabasePrivilegesDatabasePrivilege) SetAccountPrivilegeDetail(v string) *DescribeAccountsResponseBodyAccountsDBInstanceAccountDatabasePrivilegesDatabasePrivilege {
-	s.AccountPrivilegeDetail = &v
-	return s
-}
-
 func (s *DescribeAccountsResponseBodyAccountsDBInstanceAccountDatabasePrivilegesDatabasePrivilege) SetDBName(v string) *DescribeAccountsResponseBodyAccountsDBInstanceAccountDatabasePrivilegesDatabasePrivilege {
 	s.DBName = &v
 	return s
@@ -5286,6 +5503,11 @@ func (s *DescribeAccountsResponseBodyAccountsDBInstanceAccountDatabasePrivileges
 
 func (s *DescribeAccountsResponseBodyAccountsDBInstanceAccountDatabasePrivilegesDatabasePrivilege) SetAccountPrivilege(v string) *DescribeAccountsResponseBodyAccountsDBInstanceAccountDatabasePrivilegesDatabasePrivilege {
 	s.AccountPrivilege = &v
+	return s
+}
+
+func (s *DescribeAccountsResponseBodyAccountsDBInstanceAccountDatabasePrivilegesDatabasePrivilege) SetAccountPrivilegeDetail(v string) *DescribeAccountsResponseBodyAccountsDBInstanceAccountDatabasePrivilegesDatabasePrivilege {
+	s.AccountPrivilegeDetail = &v
 	return s
 }
 
@@ -5477,8 +5699,8 @@ func (s *DescribeAvailableClassesRequest) SetCommodityCode(v string) *DescribeAv
 }
 
 type DescribeAvailableClassesResponseBody struct {
-	DBInstanceClasses []*DescribeAvailableClassesResponseBodyDBInstanceClasses `json:"DBInstanceClasses,omitempty" xml:"DBInstanceClasses,omitempty" type:"Repeated"`
 	RequestId         *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	DBInstanceClasses []*DescribeAvailableClassesResponseBodyDBInstanceClasses `json:"DBInstanceClasses,omitempty" xml:"DBInstanceClasses,omitempty" type:"Repeated"`
 }
 
 func (s DescribeAvailableClassesResponseBody) String() string {
@@ -5489,19 +5711,19 @@ func (s DescribeAvailableClassesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeAvailableClassesResponseBody) SetDBInstanceClasses(v []*DescribeAvailableClassesResponseBodyDBInstanceClasses) *DescribeAvailableClassesResponseBody {
-	s.DBInstanceClasses = v
-	return s
-}
-
 func (s *DescribeAvailableClassesResponseBody) SetRequestId(v string) *DescribeAvailableClassesResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *DescribeAvailableClassesResponseBody) SetDBInstanceClasses(v []*DescribeAvailableClassesResponseBodyDBInstanceClasses) *DescribeAvailableClassesResponseBody {
+	s.DBInstanceClasses = v
+	return s
+}
+
 type DescribeAvailableClassesResponseBodyDBInstanceClasses struct {
-	DBInstanceStorageRange *DescribeAvailableClassesResponseBodyDBInstanceClassesDBInstanceStorageRange `json:"DBInstanceStorageRange,omitempty" xml:"DBInstanceStorageRange,omitempty" type:"Struct"`
 	DBInstanceClass        *string                                                                      `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
+	DBInstanceStorageRange *DescribeAvailableClassesResponseBodyDBInstanceClassesDBInstanceStorageRange `json:"DBInstanceStorageRange,omitempty" xml:"DBInstanceStorageRange,omitempty" type:"Struct"`
 }
 
 func (s DescribeAvailableClassesResponseBodyDBInstanceClasses) String() string {
@@ -5512,20 +5734,20 @@ func (s DescribeAvailableClassesResponseBodyDBInstanceClasses) GoString() string
 	return s.String()
 }
 
-func (s *DescribeAvailableClassesResponseBodyDBInstanceClasses) SetDBInstanceStorageRange(v *DescribeAvailableClassesResponseBodyDBInstanceClassesDBInstanceStorageRange) *DescribeAvailableClassesResponseBodyDBInstanceClasses {
-	s.DBInstanceStorageRange = v
-	return s
-}
-
 func (s *DescribeAvailableClassesResponseBodyDBInstanceClasses) SetDBInstanceClass(v string) *DescribeAvailableClassesResponseBodyDBInstanceClasses {
 	s.DBInstanceClass = &v
 	return s
 }
 
+func (s *DescribeAvailableClassesResponseBodyDBInstanceClasses) SetDBInstanceStorageRange(v *DescribeAvailableClassesResponseBodyDBInstanceClassesDBInstanceStorageRange) *DescribeAvailableClassesResponseBodyDBInstanceClasses {
+	s.DBInstanceStorageRange = v
+	return s
+}
+
 type DescribeAvailableClassesResponseBodyDBInstanceClassesDBInstanceStorageRange struct {
 	Step     *int32 `json:"Step,omitempty" xml:"Step,omitempty"`
-	MaxValue *int32 `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
 	MinValue *int32 `json:"MinValue,omitempty" xml:"MinValue,omitempty"`
+	MaxValue *int32 `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
 }
 
 func (s DescribeAvailableClassesResponseBodyDBInstanceClassesDBInstanceStorageRange) String() string {
@@ -5541,13 +5763,13 @@ func (s *DescribeAvailableClassesResponseBodyDBInstanceClassesDBInstanceStorageR
 	return s
 }
 
-func (s *DescribeAvailableClassesResponseBodyDBInstanceClassesDBInstanceStorageRange) SetMaxValue(v int32) *DescribeAvailableClassesResponseBodyDBInstanceClassesDBInstanceStorageRange {
-	s.MaxValue = &v
+func (s *DescribeAvailableClassesResponseBodyDBInstanceClassesDBInstanceStorageRange) SetMinValue(v int32) *DescribeAvailableClassesResponseBodyDBInstanceClassesDBInstanceStorageRange {
+	s.MinValue = &v
 	return s
 }
 
-func (s *DescribeAvailableClassesResponseBodyDBInstanceClassesDBInstanceStorageRange) SetMinValue(v int32) *DescribeAvailableClassesResponseBodyDBInstanceClassesDBInstanceStorageRange {
-	s.MinValue = &v
+func (s *DescribeAvailableClassesResponseBodyDBInstanceClassesDBInstanceStorageRange) SetMaxValue(v int32) *DescribeAvailableClassesResponseBodyDBInstanceClassesDBInstanceStorageRange {
+	s.MaxValue = &v
 	return s
 }
 
@@ -5760,8 +5982,8 @@ func (s *DescribeAvailableDedicatedHostClassesResponseBodyHostClasses) SetHostCl
 }
 
 type DescribeAvailableDedicatedHostClassesResponseBodyHostClassesHostClasses struct {
-	HostClassName *string `json:"HostClassName,omitempty" xml:"HostClassName,omitempty"`
 	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	HostClassName *string `json:"HostClassName,omitempty" xml:"HostClassName,omitempty"`
 }
 
 func (s DescribeAvailableDedicatedHostClassesResponseBodyHostClassesHostClasses) String() string {
@@ -5772,13 +5994,13 @@ func (s DescribeAvailableDedicatedHostClassesResponseBodyHostClassesHostClasses)
 	return s.String()
 }
 
-func (s *DescribeAvailableDedicatedHostClassesResponseBodyHostClassesHostClasses) SetHostClassName(v string) *DescribeAvailableDedicatedHostClassesResponseBodyHostClassesHostClasses {
-	s.HostClassName = &v
+func (s *DescribeAvailableDedicatedHostClassesResponseBodyHostClassesHostClasses) SetDescription(v string) *DescribeAvailableDedicatedHostClassesResponseBodyHostClassesHostClasses {
+	s.Description = &v
 	return s
 }
 
-func (s *DescribeAvailableDedicatedHostClassesResponseBodyHostClassesHostClasses) SetDescription(v string) *DescribeAvailableDedicatedHostClassesResponseBodyHostClassesHostClasses {
-	s.Description = &v
+func (s *DescribeAvailableDedicatedHostClassesResponseBodyHostClassesHostClasses) SetHostClassName(v string) *DescribeAvailableDedicatedHostClassesResponseBodyHostClassesHostClasses {
+	s.HostClassName = &v
 	return s
 }
 
@@ -5969,10 +6191,10 @@ func (s *DescribeAvailableRecoveryTimeRequest) SetRegionId(v string) *DescribeAv
 
 type DescribeAvailableRecoveryTimeResponseBody struct {
 	RecoveryEndTime   *string `json:"RecoveryEndTime,omitempty" xml:"RecoveryEndTime,omitempty"`
-	RecoveryBeginTime *string `json:"RecoveryBeginTime,omitempty" xml:"RecoveryBeginTime,omitempty"`
 	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	CrossBackupId     *int32  `json:"CrossBackupId,omitempty" xml:"CrossBackupId,omitempty"`
+	RecoveryBeginTime *string `json:"RecoveryBeginTime,omitempty" xml:"RecoveryBeginTime,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeAvailableRecoveryTimeResponseBody) String() string {
@@ -5988,23 +6210,23 @@ func (s *DescribeAvailableRecoveryTimeResponseBody) SetRecoveryEndTime(v string)
 	return s
 }
 
-func (s *DescribeAvailableRecoveryTimeResponseBody) SetRecoveryBeginTime(v string) *DescribeAvailableRecoveryTimeResponseBody {
-	s.RecoveryBeginTime = &v
-	return s
-}
-
 func (s *DescribeAvailableRecoveryTimeResponseBody) SetRequestId(v string) *DescribeAvailableRecoveryTimeResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *DescribeAvailableRecoveryTimeResponseBody) SetRegionId(v string) *DescribeAvailableRecoveryTimeResponseBody {
-	s.RegionId = &v
+func (s *DescribeAvailableRecoveryTimeResponseBody) SetCrossBackupId(v int32) *DescribeAvailableRecoveryTimeResponseBody {
+	s.CrossBackupId = &v
 	return s
 }
 
-func (s *DescribeAvailableRecoveryTimeResponseBody) SetCrossBackupId(v int32) *DescribeAvailableRecoveryTimeResponseBody {
-	s.CrossBackupId = &v
+func (s *DescribeAvailableRecoveryTimeResponseBody) SetRecoveryBeginTime(v string) *DescribeAvailableRecoveryTimeResponseBody {
+	s.RecoveryBeginTime = &v
+	return s
+}
+
+func (s *DescribeAvailableRecoveryTimeResponseBody) SetRegionId(v string) *DescribeAvailableRecoveryTimeResponseBody {
+	s.RegionId = &v
 	return s
 }
 
@@ -6149,10 +6371,10 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZones) SetAvailableZone(v
 }
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone struct {
-	Status           *string                                                                           `json:"Status,omitempty" xml:"Status,omitempty"`
-	SupportedEngines *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEngines `json:"SupportedEngines,omitempty" xml:"SupportedEngines,omitempty" type:"Struct"`
 	ZoneId           *string                                                                           `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	Status           *string                                                                           `json:"Status,omitempty" xml:"Status,omitempty"`
 	RegionId         *string                                                                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SupportedEngines *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEngines `json:"SupportedEngines,omitempty" xml:"SupportedEngines,omitempty" type:"Struct"`
 }
 
 func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone) String() string {
@@ -6163,23 +6385,23 @@ func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone) GoStri
 	return s.String()
 }
 
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone) SetStatus(v string) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone) SetSupportedEngines(v *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEngines) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone {
-	s.SupportedEngines = v
-	return s
-}
-
 func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone) SetZoneId(v string) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone {
 	s.ZoneId = &v
 	return s
 }
 
+func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone) SetStatus(v string) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone {
+	s.Status = &v
+	return s
+}
+
 func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone) SetRegionId(v string) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone) SetSupportedEngines(v *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEngines) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone {
+	s.SupportedEngines = v
 	return s
 }
 
@@ -6201,8 +6423,8 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupport
 }
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngine struct {
-	SupportedEngineVersions *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersions `json:"SupportedEngineVersions,omitempty" xml:"SupportedEngineVersions,omitempty" type:"Struct"`
 	Engine                  *string                                                                                                                 `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	SupportedEngineVersions *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersions `json:"SupportedEngineVersions,omitempty" xml:"SupportedEngineVersions,omitempty" type:"Struct"`
 }
 
 func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngine) String() string {
@@ -6213,13 +6435,13 @@ func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupporte
 	return s.String()
 }
 
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngine) SetSupportedEngineVersions(v *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersions) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngine {
-	s.SupportedEngineVersions = v
+func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngine) SetEngine(v string) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngine {
+	s.Engine = &v
 	return s
 }
 
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngine) SetEngine(v string) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngine {
-	s.Engine = &v
+func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngine) SetSupportedEngineVersions(v *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersions) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngine {
+	s.SupportedEngineVersions = v
 	return s
 }
 
@@ -6281,8 +6503,8 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupport
 }
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategorysSupportedCategory struct {
-	SupportedStorageTypes *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategorysSupportedCategorySupportedStorageTypes `json:"SupportedStorageTypes,omitempty" xml:"SupportedStorageTypes,omitempty" type:"Struct"`
 	Category              *string                                                                                                                                                                                               `json:"Category,omitempty" xml:"Category,omitempty"`
+	SupportedStorageTypes *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategorysSupportedCategorySupportedStorageTypes `json:"SupportedStorageTypes,omitempty" xml:"SupportedStorageTypes,omitempty" type:"Struct"`
 }
 
 func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategorysSupportedCategory) String() string {
@@ -6293,13 +6515,13 @@ func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupporte
 	return s.String()
 }
 
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategorysSupportedCategory) SetSupportedStorageTypes(v *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategorysSupportedCategorySupportedStorageTypes) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategorysSupportedCategory {
-	s.SupportedStorageTypes = v
+func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategorysSupportedCategory) SetCategory(v string) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategorysSupportedCategory {
+	s.Category = &v
 	return s
 }
 
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategorysSupportedCategory) SetCategory(v string) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategorysSupportedCategory {
-	s.Category = &v
+func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategorysSupportedCategory) SetSupportedStorageTypes(v *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategorysSupportedCategorySupportedStorageTypes) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategorysSupportedCategory {
+	s.SupportedStorageTypes = v
 	return s
 }
 
@@ -6361,9 +6583,9 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupport
 }
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategorysSupportedCategorySupportedStorageTypesSupportedStorageTypeAvailableResourcesAvailableResource struct {
-	DBInstanceStorageRange *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategorysSupportedCategorySupportedStorageTypesSupportedStorageTypeAvailableResourcesAvailableResourceDBInstanceStorageRange `json:"DBInstanceStorageRange,omitempty" xml:"DBInstanceStorageRange,omitempty" type:"Struct"`
 	StorageRange           *string                                                                                                                                                                                                                                                                            `json:"StorageRange,omitempty" xml:"StorageRange,omitempty"`
 	DBInstanceClass        *string                                                                                                                                                                                                                                                                            `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
+	DBInstanceStorageRange *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategorysSupportedCategorySupportedStorageTypesSupportedStorageTypeAvailableResourcesAvailableResourceDBInstanceStorageRange `json:"DBInstanceStorageRange,omitempty" xml:"DBInstanceStorageRange,omitempty" type:"Struct"`
 }
 
 func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategorysSupportedCategorySupportedStorageTypesSupportedStorageTypeAvailableResourcesAvailableResource) String() string {
@@ -6374,11 +6596,6 @@ func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupporte
 	return s.String()
 }
 
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategorysSupportedCategorySupportedStorageTypesSupportedStorageTypeAvailableResourcesAvailableResource) SetDBInstanceStorageRange(v *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategorysSupportedCategorySupportedStorageTypesSupportedStorageTypeAvailableResourcesAvailableResourceDBInstanceStorageRange) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategorysSupportedCategorySupportedStorageTypesSupportedStorageTypeAvailableResourcesAvailableResource {
-	s.DBInstanceStorageRange = v
-	return s
-}
-
 func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategorysSupportedCategorySupportedStorageTypesSupportedStorageTypeAvailableResourcesAvailableResource) SetStorageRange(v string) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategorysSupportedCategorySupportedStorageTypesSupportedStorageTypeAvailableResourcesAvailableResource {
 	s.StorageRange = &v
 	return s
@@ -6386,6 +6603,11 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupport
 
 func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategorysSupportedCategorySupportedStorageTypesSupportedStorageTypeAvailableResourcesAvailableResource) SetDBInstanceClass(v string) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategorysSupportedCategorySupportedStorageTypesSupportedStorageTypeAvailableResourcesAvailableResource {
 	s.DBInstanceClass = &v
+	return s
+}
+
+func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategorysSupportedCategorySupportedStorageTypesSupportedStorageTypeAvailableResourcesAvailableResource) SetDBInstanceStorageRange(v *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategorysSupportedCategorySupportedStorageTypesSupportedStorageTypeAvailableResourcesAvailableResourceDBInstanceStorageRange) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategorysSupportedCategorySupportedStorageTypesSupportedStorageTypeAvailableResourcesAvailableResource {
+	s.DBInstanceStorageRange = v
 	return s
 }
 
@@ -6450,6 +6672,7 @@ type DescribeAvailableZonesRequest struct {
 	CommodityCode   *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	DispenseMode    *string `json:"DispenseMode,omitempty" xml:"DispenseMode,omitempty"`
 	DBInstanceName  *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	Category        *string `json:"Category,omitempty" xml:"Category,omitempty"`
 }
 
 func (s DescribeAvailableZonesRequest) String() string {
@@ -6500,6 +6723,11 @@ func (s *DescribeAvailableZonesRequest) SetDBInstanceName(v string) *DescribeAva
 	return s
 }
 
+func (s *DescribeAvailableZonesRequest) SetCategory(v string) *DescribeAvailableZonesRequest {
+	s.Category = &v
+	return s
+}
+
 type DescribeAvailableZonesResponseBody struct {
 	RequestId      *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	AvailableZones []*DescribeAvailableZonesResponseBodyAvailableZones `json:"AvailableZones,omitempty" xml:"AvailableZones,omitempty" type:"Repeated"`
@@ -6524,9 +6752,9 @@ func (s *DescribeAvailableZonesResponseBody) SetAvailableZones(v []*DescribeAvai
 }
 
 type DescribeAvailableZonesResponseBodyAvailableZones struct {
-	SupportedEngines []*DescribeAvailableZonesResponseBodyAvailableZonesSupportedEngines `json:"SupportedEngines,omitempty" xml:"SupportedEngines,omitempty" type:"Repeated"`
 	ZoneId           *string                                                             `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 	RegionId         *string                                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SupportedEngines []*DescribeAvailableZonesResponseBodyAvailableZonesSupportedEngines `json:"SupportedEngines,omitempty" xml:"SupportedEngines,omitempty" type:"Repeated"`
 }
 
 func (s DescribeAvailableZonesResponseBodyAvailableZones) String() string {
@@ -6535,11 +6763,6 @@ func (s DescribeAvailableZonesResponseBodyAvailableZones) String() string {
 
 func (s DescribeAvailableZonesResponseBodyAvailableZones) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeAvailableZonesResponseBodyAvailableZones) SetSupportedEngines(v []*DescribeAvailableZonesResponseBodyAvailableZonesSupportedEngines) *DescribeAvailableZonesResponseBodyAvailableZones {
-	s.SupportedEngines = v
-	return s
 }
 
 func (s *DescribeAvailableZonesResponseBodyAvailableZones) SetZoneId(v string) *DescribeAvailableZonesResponseBodyAvailableZones {
@@ -6552,9 +6775,14 @@ func (s *DescribeAvailableZonesResponseBodyAvailableZones) SetRegionId(v string)
 	return s
 }
 
+func (s *DescribeAvailableZonesResponseBodyAvailableZones) SetSupportedEngines(v []*DescribeAvailableZonesResponseBodyAvailableZonesSupportedEngines) *DescribeAvailableZonesResponseBodyAvailableZones {
+	s.SupportedEngines = v
+	return s
+}
+
 type DescribeAvailableZonesResponseBodyAvailableZonesSupportedEngines struct {
-	SupportedEngineVersions []*DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupportedEngineVersions `json:"SupportedEngineVersions,omitempty" xml:"SupportedEngineVersions,omitempty" type:"Repeated"`
 	Engine                  *string                                                                                    `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	SupportedEngineVersions []*DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupportedEngineVersions `json:"SupportedEngineVersions,omitempty" xml:"SupportedEngineVersions,omitempty" type:"Repeated"`
 }
 
 func (s DescribeAvailableZonesResponseBodyAvailableZonesSupportedEngines) String() string {
@@ -6565,13 +6793,13 @@ func (s DescribeAvailableZonesResponseBodyAvailableZonesSupportedEngines) GoStri
 	return s.String()
 }
 
-func (s *DescribeAvailableZonesResponseBodyAvailableZonesSupportedEngines) SetSupportedEngineVersions(v []*DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupportedEngineVersions) *DescribeAvailableZonesResponseBodyAvailableZonesSupportedEngines {
-	s.SupportedEngineVersions = v
+func (s *DescribeAvailableZonesResponseBodyAvailableZonesSupportedEngines) SetEngine(v string) *DescribeAvailableZonesResponseBodyAvailableZonesSupportedEngines {
+	s.Engine = &v
 	return s
 }
 
-func (s *DescribeAvailableZonesResponseBodyAvailableZonesSupportedEngines) SetEngine(v string) *DescribeAvailableZonesResponseBodyAvailableZonesSupportedEngines {
-	s.Engine = &v
+func (s *DescribeAvailableZonesResponseBodyAvailableZonesSupportedEngines) SetSupportedEngineVersions(v []*DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupportedEngineVersions) *DescribeAvailableZonesResponseBodyAvailableZonesSupportedEngines {
+	s.SupportedEngineVersions = v
 	return s
 }
 
@@ -6599,8 +6827,8 @@ func (s *DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupport
 }
 
 type DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupportedEngineVersionsSupportedCategorys struct {
-	SupportedStorageTypes []*DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupportedEngineVersionsSupportedCategorysSupportedStorageTypes `json:"SupportedStorageTypes,omitempty" xml:"SupportedStorageTypes,omitempty" type:"Repeated"`
 	Category              *string                                                                                                                           `json:"Category,omitempty" xml:"Category,omitempty"`
+	SupportedStorageTypes []*DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupportedEngineVersionsSupportedCategorysSupportedStorageTypes `json:"SupportedStorageTypes,omitempty" xml:"SupportedStorageTypes,omitempty" type:"Repeated"`
 }
 
 func (s DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupportedEngineVersionsSupportedCategorys) String() string {
@@ -6611,13 +6839,13 @@ func (s DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupporte
 	return s.String()
 }
 
-func (s *DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupportedEngineVersionsSupportedCategorys) SetSupportedStorageTypes(v []*DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupportedEngineVersionsSupportedCategorysSupportedStorageTypes) *DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupportedEngineVersionsSupportedCategorys {
-	s.SupportedStorageTypes = v
+func (s *DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupportedEngineVersionsSupportedCategorys) SetCategory(v string) *DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupportedEngineVersionsSupportedCategorys {
+	s.Category = &v
 	return s
 }
 
-func (s *DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupportedEngineVersionsSupportedCategorys) SetCategory(v string) *DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupportedEngineVersionsSupportedCategorys {
-	s.Category = &v
+func (s *DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupportedEngineVersionsSupportedCategorys) SetSupportedStorageTypes(v []*DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupportedEngineVersionsSupportedCategorysSupportedStorageTypes) *DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupportedEngineVersionsSupportedCategorys {
+	s.SupportedStorageTypes = v
 	return s
 }
 
@@ -6703,8 +6931,8 @@ func (s *DescribeBackupDatabaseRequest) SetBackupId(v string) *DescribeBackupDat
 }
 
 type DescribeBackupDatabaseResponseBody struct {
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DatabaseNames *string `json:"DatabaseNames,omitempty" xml:"DatabaseNames,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeBackupDatabaseResponseBody) String() string {
@@ -6715,13 +6943,13 @@ func (s DescribeBackupDatabaseResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeBackupDatabaseResponseBody) SetRequestId(v string) *DescribeBackupDatabaseResponseBody {
-	s.RequestId = &v
+func (s *DescribeBackupDatabaseResponseBody) SetDatabaseNames(v string) *DescribeBackupDatabaseResponseBody {
+	s.DatabaseNames = &v
 	return s
 }
 
-func (s *DescribeBackupDatabaseResponseBody) SetDatabaseNames(v string) *DescribeBackupDatabaseResponseBody {
-	s.DatabaseNames = &v
+func (s *DescribeBackupDatabaseResponseBody) SetRequestId(v string) *DescribeBackupDatabaseResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -6808,29 +7036,29 @@ func (s *DescribeBackupPolicyRequest) SetReleasedKeepPolicy(v string) *DescribeB
 }
 
 type DescribeBackupPolicyResponseBody struct {
-	Category                      *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	ArchiveBackupRetentionPeriod  *string `json:"ArchiveBackupRetentionPeriod,omitempty" xml:"ArchiveBackupRetentionPeriod,omitempty"`
-	ReleasedKeepPolicy            *string `json:"ReleasedKeepPolicy,omitempty" xml:"ReleasedKeepPolicy,omitempty"`
-	PreferredNextBackupTime       *string `json:"PreferredNextBackupTime,omitempty" xml:"PreferredNextBackupTime,omitempty"`
-	ArchiveBackupKeepCount        *string `json:"ArchiveBackupKeepCount,omitempty" xml:"ArchiveBackupKeepCount,omitempty"`
-	PreferredBackupPeriod         *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
 	LogBackupRetentionPeriod      *int32  `json:"LogBackupRetentionPeriod,omitempty" xml:"LogBackupRetentionPeriod,omitempty"`
-	LogBackupLocalRetentionNumber *int32  `json:"LogBackupLocalRetentionNumber,omitempty" xml:"LogBackupLocalRetentionNumber,omitempty"`
+	ArchiveBackupKeepPolicy       *string `json:"ArchiveBackupKeepPolicy,omitempty" xml:"ArchiveBackupKeepPolicy,omitempty"`
+	ArchiveBackupKeepCount        *string `json:"ArchiveBackupKeepCount,omitempty" xml:"ArchiveBackupKeepCount,omitempty"`
+	LocalLogRetentionHours        *int32  `json:"LocalLogRetentionHours,omitempty" xml:"LocalLogRetentionHours,omitempty"`
+	BackupRetentionPeriod         *int32  `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
+	RequestId                     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PreferredBackupPeriod         *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
+	CompressType                  *string `json:"CompressType,omitempty" xml:"CompressType,omitempty"`
 	SupportReleasedKeep           *int32  `json:"SupportReleasedKeep,omitempty" xml:"SupportReleasedKeep,omitempty"`
+	LocalLogRetentionSpace        *string `json:"LocalLogRetentionSpace,omitempty" xml:"LocalLogRetentionSpace,omitempty"`
 	SupportVolumeShadowCopy       *int32  `json:"SupportVolumeShadowCopy,omitempty" xml:"SupportVolumeShadowCopy,omitempty"`
 	BackupMethod                  *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
-	RequestId                     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ArchiveBackupKeepPolicy       *string `json:"ArchiveBackupKeepPolicy,omitempty" xml:"ArchiveBackupKeepPolicy,omitempty"`
-	PreferredBackupTime           *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
-	LocalLogRetentionHours        *int32  `json:"LocalLogRetentionHours,omitempty" xml:"LocalLogRetentionHours,omitempty"`
-	HighSpaceUsageProtection      *string `json:"HighSpaceUsageProtection,omitempty" xml:"HighSpaceUsageProtection,omitempty"`
-	CompressType                  *string `json:"CompressType,omitempty" xml:"CompressType,omitempty"`
 	LogBackupFrequency            *string `json:"LogBackupFrequency,omitempty" xml:"LogBackupFrequency,omitempty"`
-	BackupLog                     *string `json:"BackupLog,omitempty" xml:"BackupLog,omitempty"`
-	EnableBackupLog               *string `json:"EnableBackupLog,omitempty" xml:"EnableBackupLog,omitempty"`
-	LocalLogRetentionSpace        *string `json:"LocalLogRetentionSpace,omitempty" xml:"LocalLogRetentionSpace,omitempty"`
-	BackupRetentionPeriod         *int32  `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
+	PreferredNextBackupTime       *string `json:"PreferredNextBackupTime,omitempty" xml:"PreferredNextBackupTime,omitempty"`
+	HighSpaceUsageProtection      *string `json:"HighSpaceUsageProtection,omitempty" xml:"HighSpaceUsageProtection,omitempty"`
+	ArchiveBackupRetentionPeriod  *string `json:"ArchiveBackupRetentionPeriod,omitempty" xml:"ArchiveBackupRetentionPeriod,omitempty"`
 	BackupInterval                *string `json:"BackupInterval,omitempty" xml:"BackupInterval,omitempty"`
+	ReleasedKeepPolicy            *string `json:"ReleasedKeepPolicy,omitempty" xml:"ReleasedKeepPolicy,omitempty"`
+	PreferredBackupTime           *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
+	LogBackupLocalRetentionNumber *int32  `json:"LogBackupLocalRetentionNumber,omitempty" xml:"LogBackupLocalRetentionNumber,omitempty"`
+	Category                      *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	EnableBackupLog               *string `json:"EnableBackupLog,omitempty" xml:"EnableBackupLog,omitempty"`
+	BackupLog                     *string `json:"BackupLog,omitempty" xml:"BackupLog,omitempty"`
 }
 
 func (s DescribeBackupPolicyResponseBody) String() string {
@@ -6841,23 +7069,13 @@ func (s DescribeBackupPolicyResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeBackupPolicyResponseBody) SetCategory(v string) *DescribeBackupPolicyResponseBody {
-	s.Category = &v
+func (s *DescribeBackupPolicyResponseBody) SetLogBackupRetentionPeriod(v int32) *DescribeBackupPolicyResponseBody {
+	s.LogBackupRetentionPeriod = &v
 	return s
 }
 
-func (s *DescribeBackupPolicyResponseBody) SetArchiveBackupRetentionPeriod(v string) *DescribeBackupPolicyResponseBody {
-	s.ArchiveBackupRetentionPeriod = &v
-	return s
-}
-
-func (s *DescribeBackupPolicyResponseBody) SetReleasedKeepPolicy(v string) *DescribeBackupPolicyResponseBody {
-	s.ReleasedKeepPolicy = &v
-	return s
-}
-
-func (s *DescribeBackupPolicyResponseBody) SetPreferredNextBackupTime(v string) *DescribeBackupPolicyResponseBody {
-	s.PreferredNextBackupTime = &v
+func (s *DescribeBackupPolicyResponseBody) SetArchiveBackupKeepPolicy(v string) *DescribeBackupPolicyResponseBody {
+	s.ArchiveBackupKeepPolicy = &v
 	return s
 }
 
@@ -6866,23 +7084,38 @@ func (s *DescribeBackupPolicyResponseBody) SetArchiveBackupKeepCount(v string) *
 	return s
 }
 
+func (s *DescribeBackupPolicyResponseBody) SetLocalLogRetentionHours(v int32) *DescribeBackupPolicyResponseBody {
+	s.LocalLogRetentionHours = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponseBody) SetBackupRetentionPeriod(v int32) *DescribeBackupPolicyResponseBody {
+	s.BackupRetentionPeriod = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponseBody) SetRequestId(v string) *DescribeBackupPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 func (s *DescribeBackupPolicyResponseBody) SetPreferredBackupPeriod(v string) *DescribeBackupPolicyResponseBody {
 	s.PreferredBackupPeriod = &v
 	return s
 }
 
-func (s *DescribeBackupPolicyResponseBody) SetLogBackupRetentionPeriod(v int32) *DescribeBackupPolicyResponseBody {
-	s.LogBackupRetentionPeriod = &v
-	return s
-}
-
-func (s *DescribeBackupPolicyResponseBody) SetLogBackupLocalRetentionNumber(v int32) *DescribeBackupPolicyResponseBody {
-	s.LogBackupLocalRetentionNumber = &v
+func (s *DescribeBackupPolicyResponseBody) SetCompressType(v string) *DescribeBackupPolicyResponseBody {
+	s.CompressType = &v
 	return s
 }
 
 func (s *DescribeBackupPolicyResponseBody) SetSupportReleasedKeep(v int32) *DescribeBackupPolicyResponseBody {
 	s.SupportReleasedKeep = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponseBody) SetLocalLogRetentionSpace(v string) *DescribeBackupPolicyResponseBody {
+	s.LocalLogRetentionSpace = &v
 	return s
 }
 
@@ -6896,23 +7129,13 @@ func (s *DescribeBackupPolicyResponseBody) SetBackupMethod(v string) *DescribeBa
 	return s
 }
 
-func (s *DescribeBackupPolicyResponseBody) SetRequestId(v string) *DescribeBackupPolicyResponseBody {
-	s.RequestId = &v
+func (s *DescribeBackupPolicyResponseBody) SetLogBackupFrequency(v string) *DescribeBackupPolicyResponseBody {
+	s.LogBackupFrequency = &v
 	return s
 }
 
-func (s *DescribeBackupPolicyResponseBody) SetArchiveBackupKeepPolicy(v string) *DescribeBackupPolicyResponseBody {
-	s.ArchiveBackupKeepPolicy = &v
-	return s
-}
-
-func (s *DescribeBackupPolicyResponseBody) SetPreferredBackupTime(v string) *DescribeBackupPolicyResponseBody {
-	s.PreferredBackupTime = &v
-	return s
-}
-
-func (s *DescribeBackupPolicyResponseBody) SetLocalLogRetentionHours(v int32) *DescribeBackupPolicyResponseBody {
-	s.LocalLogRetentionHours = &v
+func (s *DescribeBackupPolicyResponseBody) SetPreferredNextBackupTime(v string) *DescribeBackupPolicyResponseBody {
+	s.PreferredNextBackupTime = &v
 	return s
 }
 
@@ -6921,18 +7144,33 @@ func (s *DescribeBackupPolicyResponseBody) SetHighSpaceUsageProtection(v string)
 	return s
 }
 
-func (s *DescribeBackupPolicyResponseBody) SetCompressType(v string) *DescribeBackupPolicyResponseBody {
-	s.CompressType = &v
+func (s *DescribeBackupPolicyResponseBody) SetArchiveBackupRetentionPeriod(v string) *DescribeBackupPolicyResponseBody {
+	s.ArchiveBackupRetentionPeriod = &v
 	return s
 }
 
-func (s *DescribeBackupPolicyResponseBody) SetLogBackupFrequency(v string) *DescribeBackupPolicyResponseBody {
-	s.LogBackupFrequency = &v
+func (s *DescribeBackupPolicyResponseBody) SetBackupInterval(v string) *DescribeBackupPolicyResponseBody {
+	s.BackupInterval = &v
 	return s
 }
 
-func (s *DescribeBackupPolicyResponseBody) SetBackupLog(v string) *DescribeBackupPolicyResponseBody {
-	s.BackupLog = &v
+func (s *DescribeBackupPolicyResponseBody) SetReleasedKeepPolicy(v string) *DescribeBackupPolicyResponseBody {
+	s.ReleasedKeepPolicy = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponseBody) SetPreferredBackupTime(v string) *DescribeBackupPolicyResponseBody {
+	s.PreferredBackupTime = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponseBody) SetLogBackupLocalRetentionNumber(v int32) *DescribeBackupPolicyResponseBody {
+	s.LogBackupLocalRetentionNumber = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponseBody) SetCategory(v string) *DescribeBackupPolicyResponseBody {
+	s.Category = &v
 	return s
 }
 
@@ -6941,18 +7179,8 @@ func (s *DescribeBackupPolicyResponseBody) SetEnableBackupLog(v string) *Describ
 	return s
 }
 
-func (s *DescribeBackupPolicyResponseBody) SetLocalLogRetentionSpace(v string) *DescribeBackupPolicyResponseBody {
-	s.LocalLogRetentionSpace = &v
-	return s
-}
-
-func (s *DescribeBackupPolicyResponseBody) SetBackupRetentionPeriod(v int32) *DescribeBackupPolicyResponseBody {
-	s.BackupRetentionPeriod = &v
-	return s
-}
-
-func (s *DescribeBackupPolicyResponseBody) SetBackupInterval(v string) *DescribeBackupPolicyResponseBody {
-	s.BackupInterval = &v
+func (s *DescribeBackupPolicyResponseBody) SetBackupLog(v string) *DescribeBackupPolicyResponseBody {
+	s.BackupLog = &v
 	return s
 }
 
@@ -7045,10 +7273,10 @@ func (s *DescribeBackupsRequest) SetPageNumber(v int32) *DescribeBackupsRequest 
 }
 
 type DescribeBackupsResponseBody struct {
-	TotalRecordCount     *string                           `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
+	RequestId            *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TotalEcsSnapshotSize *int64                            `json:"TotalEcsSnapshotSize,omitempty" xml:"TotalEcsSnapshotSize,omitempty"`
 	PageRecordCount      *string                           `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	RequestId            *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalRecordCount     *string                           `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 	PageNumber           *string                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	Items                *DescribeBackupsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 }
@@ -7061,8 +7289,8 @@ func (s DescribeBackupsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeBackupsResponseBody) SetTotalRecordCount(v string) *DescribeBackupsResponseBody {
-	s.TotalRecordCount = &v
+func (s *DescribeBackupsResponseBody) SetRequestId(v string) *DescribeBackupsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -7076,8 +7304,8 @@ func (s *DescribeBackupsResponseBody) SetPageRecordCount(v string) *DescribeBack
 	return s
 }
 
-func (s *DescribeBackupsResponseBody) SetRequestId(v string) *DescribeBackupsResponseBody {
-	s.RequestId = &v
+func (s *DescribeBackupsResponseBody) SetTotalRecordCount(v string) *DescribeBackupsResponseBody {
+	s.TotalRecordCount = &v
 	return s
 }
 
@@ -7459,7 +7687,6 @@ type DescribeBinlogFilesRequest struct {
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	Latest               *int32  `json:"Latest,omitempty" xml:"Latest,omitempty"`
 }
 
 func (s DescribeBinlogFilesRequest) String() string {
@@ -7515,17 +7742,12 @@ func (s *DescribeBinlogFilesRequest) SetOwnerAccount(v string) *DescribeBinlogFi
 	return s
 }
 
-func (s *DescribeBinlogFilesRequest) SetLatest(v int32) *DescribeBinlogFilesRequest {
-	s.Latest = &v
-	return s
-}
-
 type DescribeBinlogFilesResponseBody struct {
-	TotalRecordCount *int32                                `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
-	PageRecordCount  *int32                                `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	RequestId        *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNumber       *int32                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	TotalFileSize    *int64                                `json:"TotalFileSize,omitempty" xml:"TotalFileSize,omitempty"`
+	PageNumber       *int32                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	RequestId        *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageRecordCount  *int32                                `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	TotalRecordCount *int32                                `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 	Items            *DescribeBinlogFilesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 }
 
@@ -7537,18 +7759,8 @@ func (s DescribeBinlogFilesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeBinlogFilesResponseBody) SetTotalRecordCount(v int32) *DescribeBinlogFilesResponseBody {
-	s.TotalRecordCount = &v
-	return s
-}
-
-func (s *DescribeBinlogFilesResponseBody) SetPageRecordCount(v int32) *DescribeBinlogFilesResponseBody {
-	s.PageRecordCount = &v
-	return s
-}
-
-func (s *DescribeBinlogFilesResponseBody) SetRequestId(v string) *DescribeBinlogFilesResponseBody {
-	s.RequestId = &v
+func (s *DescribeBinlogFilesResponseBody) SetTotalFileSize(v int64) *DescribeBinlogFilesResponseBody {
+	s.TotalFileSize = &v
 	return s
 }
 
@@ -7557,8 +7769,18 @@ func (s *DescribeBinlogFilesResponseBody) SetPageNumber(v int32) *DescribeBinlog
 	return s
 }
 
-func (s *DescribeBinlogFilesResponseBody) SetTotalFileSize(v int64) *DescribeBinlogFilesResponseBody {
-	s.TotalFileSize = &v
+func (s *DescribeBinlogFilesResponseBody) SetRequestId(v string) *DescribeBinlogFilesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeBinlogFilesResponseBody) SetPageRecordCount(v int32) *DescribeBinlogFilesResponseBody {
+	s.PageRecordCount = &v
+	return s
+}
+
+func (s *DescribeBinlogFilesResponseBody) SetTotalRecordCount(v int32) *DescribeBinlogFilesResponseBody {
+	s.TotalRecordCount = &v
 	return s
 }
 
@@ -7585,6 +7807,7 @@ func (s *DescribeBinlogFilesResponseBodyItems) SetBinLogFile(v []*DescribeBinlog
 }
 
 type DescribeBinlogFilesResponseBodyItemsBinLogFile struct {
+	RemoteStatus         *string `json:"RemoteStatus,omitempty" xml:"RemoteStatus,omitempty"`
 	IntranetDownloadLink *string `json:"IntranetDownloadLink,omitempty" xml:"IntranetDownloadLink,omitempty"`
 	LogBeginTime         *string `json:"LogBeginTime,omitempty" xml:"LogBeginTime,omitempty"`
 	LinkExpiredTime      *string `json:"LinkExpiredTime,omitempty" xml:"LinkExpiredTime,omitempty"`
@@ -7602,6 +7825,11 @@ func (s DescribeBinlogFilesResponseBodyItemsBinLogFile) String() string {
 
 func (s DescribeBinlogFilesResponseBodyItemsBinLogFile) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeBinlogFilesResponseBodyItemsBinLogFile) SetRemoteStatus(v string) *DescribeBinlogFilesResponseBodyItemsBinLogFile {
+	s.RemoteStatus = &v
+	return s
 }
 
 func (s *DescribeBinlogFilesResponseBodyItemsBinLogFile) SetIntranetDownloadLink(v string) *DescribeBinlogFilesResponseBodyItemsBinLogFile {
@@ -7720,9 +7948,9 @@ func (s *DescribeCharacterSetNameRequest) SetOwnerAccount(v string) *DescribeCha
 }
 
 type DescribeCharacterSetNameResponseBody struct {
+	Engine                *string                                                    `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	RequestId             *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	CharacterSetNameItems *DescribeCharacterSetNameResponseBodyCharacterSetNameItems `json:"CharacterSetNameItems,omitempty" xml:"CharacterSetNameItems,omitempty" type:"Struct"`
-	Engine                *string                                                    `json:"Engine,omitempty" xml:"Engine,omitempty"`
 }
 
 func (s DescribeCharacterSetNameResponseBody) String() string {
@@ -7733,6 +7961,11 @@ func (s DescribeCharacterSetNameResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeCharacterSetNameResponseBody) SetEngine(v string) *DescribeCharacterSetNameResponseBody {
+	s.Engine = &v
+	return s
+}
+
 func (s *DescribeCharacterSetNameResponseBody) SetRequestId(v string) *DescribeCharacterSetNameResponseBody {
 	s.RequestId = &v
 	return s
@@ -7740,11 +7973,6 @@ func (s *DescribeCharacterSetNameResponseBody) SetRequestId(v string) *DescribeC
 
 func (s *DescribeCharacterSetNameResponseBody) SetCharacterSetNameItems(v *DescribeCharacterSetNameResponseBodyCharacterSetNameItems) *DescribeCharacterSetNameResponseBody {
 	s.CharacterSetNameItems = v
-	return s
-}
-
-func (s *DescribeCharacterSetNameResponseBody) SetEngine(v string) *DescribeCharacterSetNameResponseBody {
-	s.Engine = &v
 	return s
 }
 
@@ -7975,13 +8203,13 @@ func (s *DescribeCrossBackupMetaListRequest) SetRegion(v string) *DescribeCrossB
 }
 
 type DescribeCrossBackupMetaListResponseBody struct {
+	DBInstanceName   *string                                       `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	TotalPageCount   *int32                                        `json:"TotalPageCount,omitempty" xml:"TotalPageCount,omitempty"`
-	TotalRecordCount *int32                                        `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
-	PageRecordCount  *int32                                        `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
 	RequestId        *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageRecordCount  *int32                                        `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	TotalRecordCount *int32                                        `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 	PageNumber       *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	Items            *DescribeCrossBackupMetaListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	DBInstanceName   *string                                       `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 }
 
 func (s DescribeCrossBackupMetaListResponseBody) String() string {
@@ -7992,13 +8220,18 @@ func (s DescribeCrossBackupMetaListResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeCrossBackupMetaListResponseBody) SetDBInstanceName(v string) *DescribeCrossBackupMetaListResponseBody {
+	s.DBInstanceName = &v
+	return s
+}
+
 func (s *DescribeCrossBackupMetaListResponseBody) SetTotalPageCount(v int32) *DescribeCrossBackupMetaListResponseBody {
 	s.TotalPageCount = &v
 	return s
 }
 
-func (s *DescribeCrossBackupMetaListResponseBody) SetTotalRecordCount(v int32) *DescribeCrossBackupMetaListResponseBody {
-	s.TotalRecordCount = &v
+func (s *DescribeCrossBackupMetaListResponseBody) SetRequestId(v string) *DescribeCrossBackupMetaListResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -8007,8 +8240,8 @@ func (s *DescribeCrossBackupMetaListResponseBody) SetPageRecordCount(v int32) *D
 	return s
 }
 
-func (s *DescribeCrossBackupMetaListResponseBody) SetRequestId(v string) *DescribeCrossBackupMetaListResponseBody {
-	s.RequestId = &v
+func (s *DescribeCrossBackupMetaListResponseBody) SetTotalRecordCount(v int32) *DescribeCrossBackupMetaListResponseBody {
+	s.TotalRecordCount = &v
 	return s
 }
 
@@ -8019,11 +8252,6 @@ func (s *DescribeCrossBackupMetaListResponseBody) SetPageNumber(v int32) *Descri
 
 func (s *DescribeCrossBackupMetaListResponseBody) SetItems(v *DescribeCrossBackupMetaListResponseBodyItems) *DescribeCrossBackupMetaListResponseBody {
 	s.Items = v
-	return s
-}
-
-func (s *DescribeCrossBackupMetaListResponseBody) SetDBInstanceName(v string) *DescribeCrossBackupMetaListResponseBody {
-	s.DBInstanceName = &v
 	return s
 }
 
@@ -8045,9 +8273,9 @@ func (s *DescribeCrossBackupMetaListResponseBodyItems) SetMeta(v []*DescribeCros
 }
 
 type DescribeCrossBackupMetaListResponseBodyItemsMeta struct {
+	Tables   *string `json:"Tables,omitempty" xml:"Tables,omitempty"`
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
 	Size     *string `json:"Size,omitempty" xml:"Size,omitempty"`
-	Tables   *string `json:"Tables,omitempty" xml:"Tables,omitempty"`
 }
 
 func (s DescribeCrossBackupMetaListResponseBodyItemsMeta) String() string {
@@ -8058,6 +8286,11 @@ func (s DescribeCrossBackupMetaListResponseBodyItemsMeta) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeCrossBackupMetaListResponseBodyItemsMeta) SetTables(v string) *DescribeCrossBackupMetaListResponseBodyItemsMeta {
+	s.Tables = &v
+	return s
+}
+
 func (s *DescribeCrossBackupMetaListResponseBodyItemsMeta) SetDatabase(v string) *DescribeCrossBackupMetaListResponseBodyItemsMeta {
 	s.Database = &v
 	return s
@@ -8065,11 +8298,6 @@ func (s *DescribeCrossBackupMetaListResponseBodyItemsMeta) SetDatabase(v string)
 
 func (s *DescribeCrossBackupMetaListResponseBodyItemsMeta) SetSize(v string) *DescribeCrossBackupMetaListResponseBodyItemsMeta {
 	s.Size = &v
-	return s
-}
-
-func (s *DescribeCrossBackupMetaListResponseBodyItemsMeta) SetTables(v string) *DescribeCrossBackupMetaListResponseBodyItemsMeta {
-	s.Tables = &v
 	return s
 }
 
@@ -8150,13 +8378,13 @@ func (s *DescribeCrossRegionBackupDBInstanceRequest) SetPageNumber(v int32) *Des
 }
 
 type DescribeCrossRegionBackupDBInstanceResponseBody struct {
-	ItemsNumbers *int32                                                `json:"ItemsNumbers,omitempty" xml:"ItemsNumbers,omitempty"`
 	RequestId    *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalRecords *int32                                                `json:"TotalRecords,omitempty" xml:"TotalRecords,omitempty"`
+	ItemsNumbers *int32                                                `json:"ItemsNumbers,omitempty" xml:"ItemsNumbers,omitempty"`
 	PageSize     *int32                                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PageNumber   *int32                                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	TotalRecords *int32                                                `json:"TotalRecords,omitempty" xml:"TotalRecords,omitempty"`
-	Items        *DescribeCrossRegionBackupDBInstanceResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	RegionId     *string                                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Items        *DescribeCrossRegionBackupDBInstanceResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 }
 
 func (s DescribeCrossRegionBackupDBInstanceResponseBody) String() string {
@@ -8167,13 +8395,18 @@ func (s DescribeCrossRegionBackupDBInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeCrossRegionBackupDBInstanceResponseBody) SetItemsNumbers(v int32) *DescribeCrossRegionBackupDBInstanceResponseBody {
-	s.ItemsNumbers = &v
+func (s *DescribeCrossRegionBackupDBInstanceResponseBody) SetRequestId(v string) *DescribeCrossRegionBackupDBInstanceResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *DescribeCrossRegionBackupDBInstanceResponseBody) SetRequestId(v string) *DescribeCrossRegionBackupDBInstanceResponseBody {
-	s.RequestId = &v
+func (s *DescribeCrossRegionBackupDBInstanceResponseBody) SetTotalRecords(v int32) *DescribeCrossRegionBackupDBInstanceResponseBody {
+	s.TotalRecords = &v
+	return s
+}
+
+func (s *DescribeCrossRegionBackupDBInstanceResponseBody) SetItemsNumbers(v int32) *DescribeCrossRegionBackupDBInstanceResponseBody {
+	s.ItemsNumbers = &v
 	return s
 }
 
@@ -8187,18 +8420,13 @@ func (s *DescribeCrossRegionBackupDBInstanceResponseBody) SetPageNumber(v int32)
 	return s
 }
 
-func (s *DescribeCrossRegionBackupDBInstanceResponseBody) SetTotalRecords(v int32) *DescribeCrossRegionBackupDBInstanceResponseBody {
-	s.TotalRecords = &v
+func (s *DescribeCrossRegionBackupDBInstanceResponseBody) SetRegionId(v string) *DescribeCrossRegionBackupDBInstanceResponseBody {
+	s.RegionId = &v
 	return s
 }
 
 func (s *DescribeCrossRegionBackupDBInstanceResponseBody) SetItems(v *DescribeCrossRegionBackupDBInstanceResponseBodyItems) *DescribeCrossRegionBackupDBInstanceResponseBody {
 	s.Items = v
-	return s
-}
-
-func (s *DescribeCrossRegionBackupDBInstanceResponseBody) SetRegionId(v string) *DescribeCrossRegionBackupDBInstanceResponseBody {
-	s.RegionId = &v
 	return s
 }
 
@@ -8228,8 +8456,8 @@ type DescribeCrossRegionBackupDBInstanceResponseBodyItemsItem struct {
 	LogBackupEnabled      *string `json:"LogBackupEnabled,omitempty" xml:"LogBackupEnabled,omitempty"`
 	RetentType            *int32  `json:"RetentType,omitempty" xml:"RetentType,omitempty"`
 	Retention             *int32  `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	CrossBackupRegion     *string `json:"CrossBackupRegion,omitempty" xml:"CrossBackupRegion,omitempty"`
 	CrossBackupType       *string `json:"CrossBackupType,omitempty" xml:"CrossBackupType,omitempty"`
+	CrossBackupRegion     *string `json:"CrossBackupRegion,omitempty" xml:"CrossBackupRegion,omitempty"`
 	DBInstanceId          *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	Engine                *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	BackupEnabledTime     *string `json:"BackupEnabledTime,omitempty" xml:"BackupEnabledTime,omitempty"`
@@ -8284,13 +8512,13 @@ func (s *DescribeCrossRegionBackupDBInstanceResponseBodyItemsItem) SetRetention(
 	return s
 }
 
-func (s *DescribeCrossRegionBackupDBInstanceResponseBodyItemsItem) SetCrossBackupRegion(v string) *DescribeCrossRegionBackupDBInstanceResponseBodyItemsItem {
-	s.CrossBackupRegion = &v
+func (s *DescribeCrossRegionBackupDBInstanceResponseBodyItemsItem) SetCrossBackupType(v string) *DescribeCrossRegionBackupDBInstanceResponseBodyItemsItem {
+	s.CrossBackupType = &v
 	return s
 }
 
-func (s *DescribeCrossRegionBackupDBInstanceResponseBodyItemsItem) SetCrossBackupType(v string) *DescribeCrossRegionBackupDBInstanceResponseBodyItemsItem {
-	s.CrossBackupType = &v
+func (s *DescribeCrossRegionBackupDBInstanceResponseBodyItemsItem) SetCrossBackupRegion(v string) *DescribeCrossRegionBackupDBInstanceResponseBodyItemsItem {
+	s.CrossBackupRegion = &v
 	return s
 }
 
@@ -8421,14 +8649,14 @@ func (s *DescribeCrossRegionBackupsRequest) SetBackupId(v int32) *DescribeCrossR
 }
 
 type DescribeCrossRegionBackupsResponseBody struct {
-	TotalRecordCount *int32                                       `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
-	PageRecordCount  *int32                                       `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
 	EndTime          *string                                      `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	RequestId        *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNumber       *int32                                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	StartTime        *string                                      `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Items            *DescribeCrossRegionBackupsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	RequestId        *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageRecordCount  *int32                                       `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	TotalRecordCount *int32                                       `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
+	PageNumber       *int32                                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	RegionId         *string                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Items            *DescribeCrossRegionBackupsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 }
 
 func (s DescribeCrossRegionBackupsResponseBody) String() string {
@@ -8439,28 +8667,8 @@ func (s DescribeCrossRegionBackupsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeCrossRegionBackupsResponseBody) SetTotalRecordCount(v int32) *DescribeCrossRegionBackupsResponseBody {
-	s.TotalRecordCount = &v
-	return s
-}
-
-func (s *DescribeCrossRegionBackupsResponseBody) SetPageRecordCount(v int32) *DescribeCrossRegionBackupsResponseBody {
-	s.PageRecordCount = &v
-	return s
-}
-
 func (s *DescribeCrossRegionBackupsResponseBody) SetEndTime(v string) *DescribeCrossRegionBackupsResponseBody {
 	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeCrossRegionBackupsResponseBody) SetRequestId(v string) *DescribeCrossRegionBackupsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeCrossRegionBackupsResponseBody) SetPageNumber(v int32) *DescribeCrossRegionBackupsResponseBody {
-	s.PageNumber = &v
 	return s
 }
 
@@ -8469,13 +8677,33 @@ func (s *DescribeCrossRegionBackupsResponseBody) SetStartTime(v string) *Describ
 	return s
 }
 
-func (s *DescribeCrossRegionBackupsResponseBody) SetItems(v *DescribeCrossRegionBackupsResponseBodyItems) *DescribeCrossRegionBackupsResponseBody {
-	s.Items = v
+func (s *DescribeCrossRegionBackupsResponseBody) SetRequestId(v string) *DescribeCrossRegionBackupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeCrossRegionBackupsResponseBody) SetPageRecordCount(v int32) *DescribeCrossRegionBackupsResponseBody {
+	s.PageRecordCount = &v
+	return s
+}
+
+func (s *DescribeCrossRegionBackupsResponseBody) SetTotalRecordCount(v int32) *DescribeCrossRegionBackupsResponseBody {
+	s.TotalRecordCount = &v
+	return s
+}
+
+func (s *DescribeCrossRegionBackupsResponseBody) SetPageNumber(v int32) *DescribeCrossRegionBackupsResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
 func (s *DescribeCrossRegionBackupsResponseBody) SetRegionId(v string) *DescribeCrossRegionBackupsResponseBody {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeCrossRegionBackupsResponseBody) SetItems(v *DescribeCrossRegionBackupsResponseBodyItems) *DescribeCrossRegionBackupsResponseBody {
+	s.Items = v
 	return s
 }
 
@@ -8497,18 +8725,17 @@ func (s *DescribeCrossRegionBackupsResponseBodyItems) SetItem(v []*DescribeCross
 }
 
 type DescribeCrossRegionBackupsResponseBodyItemsItem struct {
-	CrossBackupId           *int32                                                         `json:"CrossBackupId,omitempty" xml:"CrossBackupId,omitempty"`
-	DBInstanceStorageType   *string                                                        `json:"DBInstanceStorageType,omitempty" xml:"DBInstanceStorageType,omitempty"`
 	ConsistentTime          *string                                                        `json:"ConsistentTime,omitempty" xml:"ConsistentTime,omitempty"`
-	RestoreRegions          *DescribeCrossRegionBackupsResponseBodyItemsItemRestoreRegions `json:"RestoreRegions,omitempty" xml:"RestoreRegions,omitempty" type:"Struct"`
-	BackupStartTime         *string                                                        `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
+	DBInstanceStorageType   *string                                                        `json:"DBInstanceStorageType,omitempty" xml:"DBInstanceStorageType,omitempty"`
+	CrossBackupId           *int32                                                         `json:"CrossBackupId,omitempty" xml:"CrossBackupId,omitempty"`
 	BackupType              *string                                                        `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	BackupStartTime         *string                                                        `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
 	CrossBackupSetLocation  *string                                                        `json:"CrossBackupSetLocation,omitempty" xml:"CrossBackupSetLocation,omitempty"`
-	BackupEndTime           *string                                                        `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
-	CrossBackupDownloadLink *string                                                        `json:"CrossBackupDownloadLink,omitempty" xml:"CrossBackupDownloadLink,omitempty"`
 	InstanceId              *int32                                                         `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	BackupSetStatus         *int32                                                         `json:"BackupSetStatus,omitempty" xml:"BackupSetStatus,omitempty"`
+	CrossBackupDownloadLink *string                                                        `json:"CrossBackupDownloadLink,omitempty" xml:"CrossBackupDownloadLink,omitempty"`
+	BackupEndTime           *string                                                        `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
 	EngineVersion           *string                                                        `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	BackupSetStatus         *int32                                                         `json:"BackupSetStatus,omitempty" xml:"BackupSetStatus,omitempty"`
 	CrossBackupSetFile      *string                                                        `json:"CrossBackupSetFile,omitempty" xml:"CrossBackupSetFile,omitempty"`
 	BackupSetScale          *int32                                                         `json:"BackupSetScale,omitempty" xml:"BackupSetScale,omitempty"`
 	CrossBackupSetSize      *int64                                                         `json:"CrossBackupSetSize,omitempty" xml:"CrossBackupSetSize,omitempty"`
@@ -8516,6 +8743,7 @@ type DescribeCrossRegionBackupsResponseBodyItemsItem struct {
 	Category                *string                                                        `json:"Category,omitempty" xml:"Category,omitempty"`
 	Engine                  *string                                                        `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	BackupMethod            *string                                                        `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
+	RestoreRegions          *DescribeCrossRegionBackupsResponseBodyItemsItemRestoreRegions `json:"RestoreRegions,omitempty" xml:"RestoreRegions,omitempty" type:"Struct"`
 }
 
 func (s DescribeCrossRegionBackupsResponseBodyItemsItem) String() string {
@@ -8526,8 +8754,8 @@ func (s DescribeCrossRegionBackupsResponseBodyItemsItem) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeCrossRegionBackupsResponseBodyItemsItem) SetCrossBackupId(v int32) *DescribeCrossRegionBackupsResponseBodyItemsItem {
-	s.CrossBackupId = &v
+func (s *DescribeCrossRegionBackupsResponseBodyItemsItem) SetConsistentTime(v string) *DescribeCrossRegionBackupsResponseBodyItemsItem {
+	s.ConsistentTime = &v
 	return s
 }
 
@@ -8536,18 +8764,8 @@ func (s *DescribeCrossRegionBackupsResponseBodyItemsItem) SetDBInstanceStorageTy
 	return s
 }
 
-func (s *DescribeCrossRegionBackupsResponseBodyItemsItem) SetConsistentTime(v string) *DescribeCrossRegionBackupsResponseBodyItemsItem {
-	s.ConsistentTime = &v
-	return s
-}
-
-func (s *DescribeCrossRegionBackupsResponseBodyItemsItem) SetRestoreRegions(v *DescribeCrossRegionBackupsResponseBodyItemsItemRestoreRegions) *DescribeCrossRegionBackupsResponseBodyItemsItem {
-	s.RestoreRegions = v
-	return s
-}
-
-func (s *DescribeCrossRegionBackupsResponseBodyItemsItem) SetBackupStartTime(v string) *DescribeCrossRegionBackupsResponseBodyItemsItem {
-	s.BackupStartTime = &v
+func (s *DescribeCrossRegionBackupsResponseBodyItemsItem) SetCrossBackupId(v int32) *DescribeCrossRegionBackupsResponseBodyItemsItem {
+	s.CrossBackupId = &v
 	return s
 }
 
@@ -8556,18 +8774,13 @@ func (s *DescribeCrossRegionBackupsResponseBodyItemsItem) SetBackupType(v string
 	return s
 }
 
+func (s *DescribeCrossRegionBackupsResponseBodyItemsItem) SetBackupStartTime(v string) *DescribeCrossRegionBackupsResponseBodyItemsItem {
+	s.BackupStartTime = &v
+	return s
+}
+
 func (s *DescribeCrossRegionBackupsResponseBodyItemsItem) SetCrossBackupSetLocation(v string) *DescribeCrossRegionBackupsResponseBodyItemsItem {
 	s.CrossBackupSetLocation = &v
-	return s
-}
-
-func (s *DescribeCrossRegionBackupsResponseBodyItemsItem) SetBackupEndTime(v string) *DescribeCrossRegionBackupsResponseBodyItemsItem {
-	s.BackupEndTime = &v
-	return s
-}
-
-func (s *DescribeCrossRegionBackupsResponseBodyItemsItem) SetCrossBackupDownloadLink(v string) *DescribeCrossRegionBackupsResponseBodyItemsItem {
-	s.CrossBackupDownloadLink = &v
 	return s
 }
 
@@ -8576,13 +8789,23 @@ func (s *DescribeCrossRegionBackupsResponseBodyItemsItem) SetInstanceId(v int32)
 	return s
 }
 
-func (s *DescribeCrossRegionBackupsResponseBodyItemsItem) SetBackupSetStatus(v int32) *DescribeCrossRegionBackupsResponseBodyItemsItem {
-	s.BackupSetStatus = &v
+func (s *DescribeCrossRegionBackupsResponseBodyItemsItem) SetCrossBackupDownloadLink(v string) *DescribeCrossRegionBackupsResponseBodyItemsItem {
+	s.CrossBackupDownloadLink = &v
+	return s
+}
+
+func (s *DescribeCrossRegionBackupsResponseBodyItemsItem) SetBackupEndTime(v string) *DescribeCrossRegionBackupsResponseBodyItemsItem {
+	s.BackupEndTime = &v
 	return s
 }
 
 func (s *DescribeCrossRegionBackupsResponseBodyItemsItem) SetEngineVersion(v string) *DescribeCrossRegionBackupsResponseBodyItemsItem {
 	s.EngineVersion = &v
+	return s
+}
+
+func (s *DescribeCrossRegionBackupsResponseBodyItemsItem) SetBackupSetStatus(v int32) *DescribeCrossRegionBackupsResponseBodyItemsItem {
+	s.BackupSetStatus = &v
 	return s
 }
 
@@ -8618,6 +8841,11 @@ func (s *DescribeCrossRegionBackupsResponseBodyItemsItem) SetEngine(v string) *D
 
 func (s *DescribeCrossRegionBackupsResponseBodyItemsItem) SetBackupMethod(v string) *DescribeCrossRegionBackupsResponseBodyItemsItem {
 	s.BackupMethod = &v
+	return s
+}
+
+func (s *DescribeCrossRegionBackupsResponseBodyItemsItem) SetRestoreRegions(v *DescribeCrossRegionBackupsResponseBodyItemsItemRestoreRegions) *DescribeCrossRegionBackupsResponseBodyItemsItem {
+	s.RestoreRegions = v
 	return s
 }
 
@@ -8733,15 +8961,15 @@ func (s *DescribeCrossRegionLogBackupFilesRequest) SetPageNumber(v int32) *Descr
 }
 
 type DescribeCrossRegionLogBackupFilesResponseBody struct {
-	TotalRecordCount *int32                                              `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
-	PageRecordCount  *int32                                              `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
 	EndTime          *string                                             `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime        *string                                             `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	RequestId        *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageRecordCount  *int32                                              `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	TotalRecordCount *int32                                              `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 	DBInstanceId     *string                                             `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	PageNumber       *int32                                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	StartTime        *string                                             `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Items            *DescribeCrossRegionLogBackupFilesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	RegionId         *string                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Items            *DescribeCrossRegionLogBackupFilesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 }
 
 func (s DescribeCrossRegionLogBackupFilesResponseBody) String() string {
@@ -8752,8 +8980,18 @@ func (s DescribeCrossRegionLogBackupFilesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeCrossRegionLogBackupFilesResponseBody) SetTotalRecordCount(v int32) *DescribeCrossRegionLogBackupFilesResponseBody {
-	s.TotalRecordCount = &v
+func (s *DescribeCrossRegionLogBackupFilesResponseBody) SetEndTime(v string) *DescribeCrossRegionLogBackupFilesResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeCrossRegionLogBackupFilesResponseBody) SetStartTime(v string) *DescribeCrossRegionLogBackupFilesResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeCrossRegionLogBackupFilesResponseBody) SetRequestId(v string) *DescribeCrossRegionLogBackupFilesResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -8762,13 +9000,8 @@ func (s *DescribeCrossRegionLogBackupFilesResponseBody) SetPageRecordCount(v int
 	return s
 }
 
-func (s *DescribeCrossRegionLogBackupFilesResponseBody) SetEndTime(v string) *DescribeCrossRegionLogBackupFilesResponseBody {
-	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeCrossRegionLogBackupFilesResponseBody) SetRequestId(v string) *DescribeCrossRegionLogBackupFilesResponseBody {
-	s.RequestId = &v
+func (s *DescribeCrossRegionLogBackupFilesResponseBody) SetTotalRecordCount(v int32) *DescribeCrossRegionLogBackupFilesResponseBody {
+	s.TotalRecordCount = &v
 	return s
 }
 
@@ -8782,18 +9015,13 @@ func (s *DescribeCrossRegionLogBackupFilesResponseBody) SetPageNumber(v int32) *
 	return s
 }
 
-func (s *DescribeCrossRegionLogBackupFilesResponseBody) SetStartTime(v string) *DescribeCrossRegionLogBackupFilesResponseBody {
-	s.StartTime = &v
+func (s *DescribeCrossRegionLogBackupFilesResponseBody) SetRegionId(v string) *DescribeCrossRegionLogBackupFilesResponseBody {
+	s.RegionId = &v
 	return s
 }
 
 func (s *DescribeCrossRegionLogBackupFilesResponseBody) SetItems(v *DescribeCrossRegionLogBackupFilesResponseBodyItems) *DescribeCrossRegionLogBackupFilesResponseBody {
 	s.Items = v
-	return s
-}
-
-func (s *DescribeCrossRegionLogBackupFilesResponseBody) SetRegionId(v string) *DescribeCrossRegionLogBackupFilesResponseBody {
-	s.RegionId = &v
 	return s
 }
 
@@ -8974,8 +9202,8 @@ func (s *DescribeDatabasesRequest) SetPageNumber(v int32) *DescribeDatabasesRequ
 }
 
 type DescribeDatabasesResponseBody struct {
-	Databases *DescribeDatabasesResponseBodyDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Struct"`
 	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Databases *DescribeDatabasesResponseBodyDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Struct"`
 }
 
 func (s DescribeDatabasesResponseBody) String() string {
@@ -8986,13 +9214,13 @@ func (s DescribeDatabasesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDatabasesResponseBody) SetDatabases(v *DescribeDatabasesResponseBodyDatabases) *DescribeDatabasesResponseBody {
-	s.Databases = v
+func (s *DescribeDatabasesResponseBody) SetRequestId(v string) *DescribeDatabasesResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *DescribeDatabasesResponseBody) SetRequestId(v string) *DescribeDatabasesResponseBody {
-	s.RequestId = &v
+func (s *DescribeDatabasesResponseBody) SetDatabases(v *DescribeDatabasesResponseBodyDatabases) *DescribeDatabasesResponseBody {
+	s.Databases = v
 	return s
 }
 
@@ -9085,8 +9313,8 @@ func (s *DescribeDatabasesResponseBodyDatabasesDatabaseAccounts) SetAccountPrivi
 
 type DescribeDatabasesResponseBodyDatabasesDatabaseAccountsAccountPrivilegeInfo struct {
 	Account                *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	AccountPrivilegeDetail *string `json:"AccountPrivilegeDetail,omitempty" xml:"AccountPrivilegeDetail,omitempty"`
 	AccountPrivilege       *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
+	AccountPrivilegeDetail *string `json:"AccountPrivilegeDetail,omitempty" xml:"AccountPrivilegeDetail,omitempty"`
 }
 
 func (s DescribeDatabasesResponseBodyDatabasesDatabaseAccountsAccountPrivilegeInfo) String() string {
@@ -9102,13 +9330,13 @@ func (s *DescribeDatabasesResponseBodyDatabasesDatabaseAccountsAccountPrivilegeI
 	return s
 }
 
-func (s *DescribeDatabasesResponseBodyDatabasesDatabaseAccountsAccountPrivilegeInfo) SetAccountPrivilegeDetail(v string) *DescribeDatabasesResponseBodyDatabasesDatabaseAccountsAccountPrivilegeInfo {
-	s.AccountPrivilegeDetail = &v
+func (s *DescribeDatabasesResponseBodyDatabasesDatabaseAccountsAccountPrivilegeInfo) SetAccountPrivilege(v string) *DescribeDatabasesResponseBodyDatabasesDatabaseAccountsAccountPrivilegeInfo {
+	s.AccountPrivilege = &v
 	return s
 }
 
-func (s *DescribeDatabasesResponseBodyDatabasesDatabaseAccountsAccountPrivilegeInfo) SetAccountPrivilege(v string) *DescribeDatabasesResponseBodyDatabasesDatabaseAccountsAccountPrivilegeInfo {
-	s.AccountPrivilege = &v
+func (s *DescribeDatabasesResponseBodyDatabasesDatabaseAccountsAccountPrivilegeInfo) SetAccountPrivilegeDetail(v string) *DescribeDatabasesResponseBodyDatabasesDatabaseAccountsAccountPrivilegeInfo {
+	s.AccountPrivilegeDetail = &v
 	return s
 }
 
@@ -9205,8 +9433,8 @@ func (s *DescribeDBInstanceAttributeResponseBodyItems) SetDBInstanceAttribute(v 
 }
 
 type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
-	CreationTime                   *string                                                                               `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	VpcId                          *string                                                                               `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	CreationTime                   *string                                                                               `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	IncrementSourceDBInstanceId    *string                                                                               `json:"IncrementSourceDBInstanceId,omitempty" xml:"IncrementSourceDBInstanceId,omitempty"`
 	MaintainTime                   *string                                                                               `json:"MaintainTime,omitempty" xml:"MaintainTime,omitempty"`
 	PayType                        *string                                                                               `json:"PayType,omitempty" xml:"PayType,omitempty"`
@@ -9224,21 +9452,24 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	GuardDBInstanceId              *string                                                                               `json:"GuardDBInstanceId,omitempty" xml:"GuardDBInstanceId,omitempty"`
 	DBInstanceStorage              *int32                                                                                `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
 	TimeZone                       *string                                                                               `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
+	LatestKernelVersion            *string                                                                               `json:"LatestKernelVersion,omitempty" xml:"LatestKernelVersion,omitempty"`
+	TipsLevel                      *int32                                                                                `json:"TipsLevel,omitempty" xml:"TipsLevel,omitempty"`
 	ZoneId                         *string                                                                               `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	DBInstanceId                   *string                                                                               `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	MaxConnections                 *int32                                                                                `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
+	DBInstanceId                   *string                                                                               `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	TempDBInstanceId               *string                                                                               `json:"TempDBInstanceId,omitempty" xml:"TempDBInstanceId,omitempty"`
-	DBInstanceMemory               *int64                                                                                `json:"DBInstanceMemory,omitempty" xml:"DBInstanceMemory,omitempty"`
-	DBInstanceStorageType          *string                                                                               `json:"DBInstanceStorageType,omitempty" xml:"DBInstanceStorageType,omitempty"`
 	AdvancedFeatures               *string                                                                               `json:"AdvancedFeatures,omitempty" xml:"AdvancedFeatures,omitempty"`
-	Port                           *string                                                                               `json:"Port,omitempty" xml:"Port,omitempty"`
-	ConnectionMode                 *string                                                                               `json:"ConnectionMode,omitempty" xml:"ConnectionMode,omitempty"`
+	DBInstanceStorageType          *string                                                                               `json:"DBInstanceStorageType,omitempty" xml:"DBInstanceStorageType,omitempty"`
+	DBInstanceMemory               *int64                                                                                `json:"DBInstanceMemory,omitempty" xml:"DBInstanceMemory,omitempty"`
 	ConsoleVersion                 *string                                                                               `json:"ConsoleVersion,omitempty" xml:"ConsoleVersion,omitempty"`
-	Extra                          *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra                 `json:"Extra,omitempty" xml:"Extra,omitempty" type:"Struct"`
+	ConnectionMode                 *string                                                                               `json:"ConnectionMode,omitempty" xml:"ConnectionMode,omitempty"`
+	Port                           *string                                                                               `json:"Port,omitempty" xml:"Port,omitempty"`
 	LockMode                       *string                                                                               `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	GeneralGroupName               *string                                                                               `json:"GeneralGroupName,omitempty" xml:"GeneralGroupName,omitempty"`
 	VpcCloudInstanceId             *string                                                                               `json:"VpcCloudInstanceId,omitempty" xml:"VpcCloudInstanceId,omitempty"`
 	Collation                      *string                                                                               `json:"Collation,omitempty" xml:"Collation,omitempty"`
 	MaxIOPS                        *int32                                                                                `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
+	Tips                           *string                                                                               `json:"Tips,omitempty" xml:"Tips,omitempty"`
 	SecurityIPMode                 *string                                                                               `json:"SecurityIPMode,omitempty" xml:"SecurityIPMode,omitempty"`
 	DBInstanceClassType            *string                                                                               `json:"DBInstanceClassType,omitempty" xml:"DBInstanceClassType,omitempty"`
 	ProxyType                      *int32                                                                                `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
@@ -9250,7 +9481,6 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	LockReason                     *string                                                                               `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
 	DBInstanceStatus               *string                                                                               `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
 	DBMaxQuantity                  *int32                                                                                `json:"DBMaxQuantity,omitempty" xml:"DBMaxQuantity,omitempty"`
-	ReadOnlyDBInstanceIds          *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeReadOnlyDBInstanceIds `json:"ReadOnlyDBInstanceIds,omitempty" xml:"ReadOnlyDBInstanceIds,omitempty" type:"Struct"`
 	RegionId                       *string                                                                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ReadonlyInstanceSQLDelayedTime *string                                                                               `json:"ReadonlyInstanceSQLDelayedTime,omitempty" xml:"ReadonlyInstanceSQLDelayedTime,omitempty"`
 	VSwitchId                      *string                                                                               `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
@@ -9259,6 +9489,8 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	DBInstanceClass                *string                                                                               `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
 	Engine                         *string                                                                               `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	SlaveZones                     *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeSlaveZones            `json:"SlaveZones,omitempty" xml:"SlaveZones,omitempty" type:"Struct"`
+	ReadOnlyDBInstanceIds          *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeReadOnlyDBInstanceIds `json:"ReadOnlyDBInstanceIds,omitempty" xml:"ReadOnlyDBInstanceIds,omitempty" type:"Struct"`
+	Extra                          *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra                 `json:"Extra,omitempty" xml:"Extra,omitempty" type:"Struct"`
 }
 
 func (s DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) String() string {
@@ -9269,13 +9501,13 @@ func (s DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) GoStrin
 	return s.String()
 }
 
-func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetCreationTime(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
-	s.CreationTime = &v
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetVpcId(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.VpcId = &v
 	return s
 }
 
-func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetVpcId(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
-	s.VpcId = &v
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetCreationTime(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.CreationTime = &v
 	return s
 }
 
@@ -9364,13 +9596,18 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetTim
 	return s
 }
 
-func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetZoneId(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
-	s.ZoneId = &v
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetLatestKernelVersion(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.LatestKernelVersion = &v
 	return s
 }
 
-func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetDBInstanceId(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
-	s.DBInstanceId = &v
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetTipsLevel(v int32) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.TipsLevel = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetZoneId(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.ZoneId = &v
 	return s
 }
 
@@ -9379,18 +9616,13 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetMax
 	return s
 }
 
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetDBInstanceId(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.DBInstanceId = &v
+	return s
+}
+
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetTempDBInstanceId(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
 	s.TempDBInstanceId = &v
-	return s
-}
-
-func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetDBInstanceMemory(v int64) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
-	s.DBInstanceMemory = &v
-	return s
-}
-
-func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetDBInstanceStorageType(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
-	s.DBInstanceStorageType = &v
 	return s
 }
 
@@ -9399,13 +9631,13 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetAdv
 	return s
 }
 
-func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetPort(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
-	s.Port = &v
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetDBInstanceStorageType(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.DBInstanceStorageType = &v
 	return s
 }
 
-func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetConnectionMode(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
-	s.ConnectionMode = &v
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetDBInstanceMemory(v int64) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.DBInstanceMemory = &v
 	return s
 }
 
@@ -9414,13 +9646,23 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetCon
 	return s
 }
 
-func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetExtra(v *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
-	s.Extra = v
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetConnectionMode(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.ConnectionMode = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetPort(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.Port = &v
 	return s
 }
 
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetLockMode(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
 	s.LockMode = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetGeneralGroupName(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.GeneralGroupName = &v
 	return s
 }
 
@@ -9436,6 +9678,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetCol
 
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetMaxIOPS(v int32) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
 	s.MaxIOPS = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetTips(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.Tips = &v
 	return s
 }
 
@@ -9494,11 +9741,6 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetDBM
 	return s
 }
 
-func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetReadOnlyDBInstanceIds(v *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeReadOnlyDBInstanceIds) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
-	s.ReadOnlyDBInstanceIds = v
-	return s
-}
-
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetRegionId(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
 	s.RegionId = &v
 	return s
@@ -9539,37 +9781,47 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetSla
 	return s
 }
 
-type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra struct {
-	DBInstanceIds *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtraDBInstanceIds `json:"DBInstanceIds,omitempty" xml:"DBInstanceIds,omitempty" type:"Struct"`
-}
-
-func (s DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra) SetDBInstanceIds(v *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtraDBInstanceIds) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra {
-	s.DBInstanceIds = v
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetReadOnlyDBInstanceIds(v *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeReadOnlyDBInstanceIds) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.ReadOnlyDBInstanceIds = v
 	return s
 }
 
-type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtraDBInstanceIds struct {
-	DBInstanceId []*string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty" type:"Repeated"`
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetExtra(v *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.Extra = v
+	return s
 }
 
-func (s DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtraDBInstanceIds) String() string {
+type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeSlaveZones struct {
+	SlaveZone []*DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeSlaveZonesSlaveZone `json:"SlaveZone,omitempty" xml:"SlaveZone,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeSlaveZones) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtraDBInstanceIds) GoString() string {
+func (s DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeSlaveZones) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtraDBInstanceIds) SetDBInstanceId(v []*string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtraDBInstanceIds {
-	s.DBInstanceId = v
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeSlaveZones) SetSlaveZone(v []*DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeSlaveZonesSlaveZone) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeSlaveZones {
+	s.SlaveZone = v
+	return s
+}
+
+type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeSlaveZonesSlaveZone struct {
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeSlaveZonesSlaveZone) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeSlaveZonesSlaveZone) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeSlaveZonesSlaveZone) SetZoneId(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeSlaveZonesSlaveZone {
+	s.ZoneId = &v
 	return s
 }
 
@@ -9607,37 +9859,37 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeReadOnly
 	return s
 }
 
-type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeSlaveZones struct {
-	SlaveZone []*DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeSlaveZonesSlaveZone `json:"SlaveZone,omitempty" xml:"SlaveZone,omitempty" type:"Repeated"`
+type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra struct {
+	DBInstanceIds *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtraDBInstanceIds `json:"DBInstanceIds,omitempty" xml:"DBInstanceIds,omitempty" type:"Struct"`
 }
 
-func (s DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeSlaveZones) String() string {
+func (s DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeSlaveZones) GoString() string {
+func (s DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeSlaveZones) SetSlaveZone(v []*DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeSlaveZonesSlaveZone) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeSlaveZones {
-	s.SlaveZone = v
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra) SetDBInstanceIds(v *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtraDBInstanceIds) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra {
+	s.DBInstanceIds = v
 	return s
 }
 
-type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeSlaveZonesSlaveZone struct {
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtraDBInstanceIds struct {
+	DBInstanceId []*string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty" type:"Repeated"`
 }
 
-func (s DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeSlaveZonesSlaveZone) String() string {
+func (s DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtraDBInstanceIds) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeSlaveZonesSlaveZone) GoString() string {
+func (s DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtraDBInstanceIds) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeSlaveZonesSlaveZone) SetZoneId(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeSlaveZonesSlaveZone {
-	s.ZoneId = &v
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtraDBInstanceIds) SetDBInstanceId(v []*string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtraDBInstanceIds {
+	s.DBInstanceId = v
 	return s
 }
 
@@ -9706,11 +9958,11 @@ func (s *DescribeDBInstanceDetailRequest) SetDBInstanceId(v string) *DescribeDBI
 }
 
 type DescribeDBInstanceDetailResponseBody struct {
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	DBInstanceId    *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	ActivationState *string `json:"ActivationState,omitempty" xml:"ActivationState,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	DBInstanceId    *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	LicenseType     *string `json:"LicenseType,omitempty" xml:"LicenseType,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeDBInstanceDetailResponseBody) String() string {
@@ -9721,8 +9973,8 @@ func (s DescribeDBInstanceDetailResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDBInstanceDetailResponseBody) SetRequestId(v string) *DescribeDBInstanceDetailResponseBody {
-	s.RequestId = &v
+func (s *DescribeDBInstanceDetailResponseBody) SetActivationState(v string) *DescribeDBInstanceDetailResponseBody {
+	s.ActivationState = &v
 	return s
 }
 
@@ -9731,18 +9983,18 @@ func (s *DescribeDBInstanceDetailResponseBody) SetDBInstanceId(v string) *Descri
 	return s
 }
 
-func (s *DescribeDBInstanceDetailResponseBody) SetActivationState(v string) *DescribeDBInstanceDetailResponseBody {
-	s.ActivationState = &v
+func (s *DescribeDBInstanceDetailResponseBody) SetLicenseType(v string) *DescribeDBInstanceDetailResponseBody {
+	s.LicenseType = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDetailResponseBody) SetRequestId(v string) *DescribeDBInstanceDetailResponseBody {
+	s.RequestId = &v
 	return s
 }
 
 func (s *DescribeDBInstanceDetailResponseBody) SetRegionId(v string) *DescribeDBInstanceDetailResponseBody {
 	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeDBInstanceDetailResponseBody) SetLicenseType(v string) *DescribeDBInstanceDetailResponseBody {
-	s.LicenseType = &v
 	return s
 }
 
@@ -9765,6 +10017,159 @@ func (s *DescribeDBInstanceDetailResponse) SetHeaders(v map[string]*string) *Des
 }
 
 func (s *DescribeDBInstanceDetailResponse) SetBody(v *DescribeDBInstanceDetailResponseBody) *DescribeDBInstanceDetailResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDBInstanceEncryptionKeyRequest struct {
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	EncryptionKey        *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
+	TargetRegionId       *string `json:"TargetRegionId,omitempty" xml:"TargetRegionId,omitempty"`
+}
+
+func (s DescribeDBInstanceEncryptionKeyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceEncryptionKeyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceEncryptionKeyRequest) SetSecurityToken(v string) *DescribeDBInstanceEncryptionKeyRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *DescribeDBInstanceEncryptionKeyRequest) SetOwnerId(v int64) *DescribeDBInstanceEncryptionKeyRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceEncryptionKeyRequest) SetResourceOwnerAccount(v string) *DescribeDBInstanceEncryptionKeyRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeDBInstanceEncryptionKeyRequest) SetResourceOwnerId(v int64) *DescribeDBInstanceEncryptionKeyRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceEncryptionKeyRequest) SetOwnerAccount(v string) *DescribeDBInstanceEncryptionKeyRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeDBInstanceEncryptionKeyRequest) SetRegionId(v string) *DescribeDBInstanceEncryptionKeyRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceEncryptionKeyRequest) SetDBInstanceId(v string) *DescribeDBInstanceEncryptionKeyRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceEncryptionKeyRequest) SetEncryptionKey(v string) *DescribeDBInstanceEncryptionKeyRequest {
+	s.EncryptionKey = &v
+	return s
+}
+
+func (s *DescribeDBInstanceEncryptionKeyRequest) SetTargetRegionId(v string) *DescribeDBInstanceEncryptionKeyRequest {
+	s.TargetRegionId = &v
+	return s
+}
+
+type DescribeDBInstanceEncryptionKeyResponseBody struct {
+	DeleteDate          *string `json:"DeleteDate,omitempty" xml:"DeleteDate,omitempty"`
+	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Origin              *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	MaterialExpireTime  *string `json:"MaterialExpireTime,omitempty" xml:"MaterialExpireTime,omitempty"`
+	EncryptionKeyStatus *string `json:"EncryptionKeyStatus,omitempty" xml:"EncryptionKeyStatus,omitempty"`
+	KeyUsage            *string `json:"KeyUsage,omitempty" xml:"KeyUsage,omitempty"`
+	EncryptionKey       *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
+	Creator             *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+}
+
+func (s DescribeDBInstanceEncryptionKeyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceEncryptionKeyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceEncryptionKeyResponseBody) SetDeleteDate(v string) *DescribeDBInstanceEncryptionKeyResponseBody {
+	s.DeleteDate = &v
+	return s
+}
+
+func (s *DescribeDBInstanceEncryptionKeyResponseBody) SetRequestId(v string) *DescribeDBInstanceEncryptionKeyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceEncryptionKeyResponseBody) SetDescription(v string) *DescribeDBInstanceEncryptionKeyResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeDBInstanceEncryptionKeyResponseBody) SetOrigin(v string) *DescribeDBInstanceEncryptionKeyResponseBody {
+	s.Origin = &v
+	return s
+}
+
+func (s *DescribeDBInstanceEncryptionKeyResponseBody) SetMaterialExpireTime(v string) *DescribeDBInstanceEncryptionKeyResponseBody {
+	s.MaterialExpireTime = &v
+	return s
+}
+
+func (s *DescribeDBInstanceEncryptionKeyResponseBody) SetEncryptionKeyStatus(v string) *DescribeDBInstanceEncryptionKeyResponseBody {
+	s.EncryptionKeyStatus = &v
+	return s
+}
+
+func (s *DescribeDBInstanceEncryptionKeyResponseBody) SetKeyUsage(v string) *DescribeDBInstanceEncryptionKeyResponseBody {
+	s.KeyUsage = &v
+	return s
+}
+
+func (s *DescribeDBInstanceEncryptionKeyResponseBody) SetEncryptionKey(v string) *DescribeDBInstanceEncryptionKeyResponseBody {
+	s.EncryptionKey = &v
+	return s
+}
+
+func (s *DescribeDBInstanceEncryptionKeyResponseBody) SetCreator(v string) *DescribeDBInstanceEncryptionKeyResponseBody {
+	s.Creator = &v
+	return s
+}
+
+type DescribeDBInstanceEncryptionKeyResponse struct {
+	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeDBInstanceEncryptionKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDBInstanceEncryptionKeyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceEncryptionKeyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceEncryptionKeyResponse) SetHeaders(v map[string]*string) *DescribeDBInstanceEncryptionKeyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDBInstanceEncryptionKeyResponse) SetBody(v *DescribeDBInstanceEncryptionKeyResponseBody) *DescribeDBInstanceEncryptionKeyResponse {
 	s.Body = v
 	return s
 }
@@ -9811,11 +10216,11 @@ func (s *DescribeDBInstanceHAConfigRequest) SetOwnerAccount(v string) *DescribeD
 }
 
 type DescribeDBInstanceHAConfigResponseBody struct {
-	RequestId         *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DBInstanceId      *string                                                  `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	RequestId         *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	HAMode            *string                                                  `json:"HAMode,omitempty" xml:"HAMode,omitempty"`
-	HostInstanceInfos *DescribeDBInstanceHAConfigResponseBodyHostInstanceInfos `json:"HostInstanceInfos,omitempty" xml:"HostInstanceInfos,omitempty" type:"Struct"`
 	SyncMode          *string                                                  `json:"SyncMode,omitempty" xml:"SyncMode,omitempty"`
+	HostInstanceInfos *DescribeDBInstanceHAConfigResponseBodyHostInstanceInfos `json:"HostInstanceInfos,omitempty" xml:"HostInstanceInfos,omitempty" type:"Struct"`
 }
 
 func (s DescribeDBInstanceHAConfigResponseBody) String() string {
@@ -9826,13 +10231,13 @@ func (s DescribeDBInstanceHAConfigResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDBInstanceHAConfigResponseBody) SetRequestId(v string) *DescribeDBInstanceHAConfigResponseBody {
-	s.RequestId = &v
+func (s *DescribeDBInstanceHAConfigResponseBody) SetDBInstanceId(v string) *DescribeDBInstanceHAConfigResponseBody {
+	s.DBInstanceId = &v
 	return s
 }
 
-func (s *DescribeDBInstanceHAConfigResponseBody) SetDBInstanceId(v string) *DescribeDBInstanceHAConfigResponseBody {
-	s.DBInstanceId = &v
+func (s *DescribeDBInstanceHAConfigResponseBody) SetRequestId(v string) *DescribeDBInstanceHAConfigResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -9841,13 +10246,13 @@ func (s *DescribeDBInstanceHAConfigResponseBody) SetHAMode(v string) *DescribeDB
 	return s
 }
 
-func (s *DescribeDBInstanceHAConfigResponseBody) SetHostInstanceInfos(v *DescribeDBInstanceHAConfigResponseBodyHostInstanceInfos) *DescribeDBInstanceHAConfigResponseBody {
-	s.HostInstanceInfos = v
+func (s *DescribeDBInstanceHAConfigResponseBody) SetSyncMode(v string) *DescribeDBInstanceHAConfigResponseBody {
+	s.SyncMode = &v
 	return s
 }
 
-func (s *DescribeDBInstanceHAConfigResponseBody) SetSyncMode(v string) *DescribeDBInstanceHAConfigResponseBody {
-	s.SyncMode = &v
+func (s *DescribeDBInstanceHAConfigResponseBody) SetHostInstanceInfos(v *DescribeDBInstanceHAConfigResponseBodyHostInstanceInfos) *DescribeDBInstanceHAConfigResponseBody {
+	s.HostInstanceInfos = v
 	return s
 }
 
@@ -10020,10 +10425,10 @@ func (s *DescribeDBInstanceIPArrayListResponseBodyItems) SetDBInstanceIPArray(v 
 }
 
 type DescribeDBInstanceIPArrayListResponseBodyItemsDBInstanceIPArray struct {
+	DBInstanceIPArrayAttribute *string `json:"DBInstanceIPArrayAttribute,omitempty" xml:"DBInstanceIPArrayAttribute,omitempty"`
 	DBInstanceIPArrayName      *string `json:"DBInstanceIPArrayName,omitempty" xml:"DBInstanceIPArrayName,omitempty"`
 	SecurityIPType             *string `json:"SecurityIPType,omitempty" xml:"SecurityIPType,omitempty"`
 	SecurityIPList             *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	DBInstanceIPArrayAttribute *string `json:"DBInstanceIPArrayAttribute,omitempty" xml:"DBInstanceIPArrayAttribute,omitempty"`
 }
 
 func (s DescribeDBInstanceIPArrayListResponseBodyItemsDBInstanceIPArray) String() string {
@@ -10032,6 +10437,11 @@ func (s DescribeDBInstanceIPArrayListResponseBodyItemsDBInstanceIPArray) String(
 
 func (s DescribeDBInstanceIPArrayListResponseBodyItemsDBInstanceIPArray) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDBInstanceIPArrayListResponseBodyItemsDBInstanceIPArray) SetDBInstanceIPArrayAttribute(v string) *DescribeDBInstanceIPArrayListResponseBodyItemsDBInstanceIPArray {
+	s.DBInstanceIPArrayAttribute = &v
+	return s
 }
 
 func (s *DescribeDBInstanceIPArrayListResponseBodyItemsDBInstanceIPArray) SetDBInstanceIPArrayName(v string) *DescribeDBInstanceIPArrayListResponseBodyItemsDBInstanceIPArray {
@@ -10046,11 +10456,6 @@ func (s *DescribeDBInstanceIPArrayListResponseBodyItemsDBInstanceIPArray) SetSec
 
 func (s *DescribeDBInstanceIPArrayListResponseBodyItemsDBInstanceIPArray) SetSecurityIPList(v string) *DescribeDBInstanceIPArrayListResponseBodyItemsDBInstanceIPArray {
 	s.SecurityIPList = &v
-	return s
-}
-
-func (s *DescribeDBInstanceIPArrayListResponseBodyItemsDBInstanceIPArray) SetDBInstanceIPArrayAttribute(v string) *DescribeDBInstanceIPArrayListResponseBodyItemsDBInstanceIPArray {
-	s.DBInstanceIPArrayAttribute = &v
 	return s
 }
 
@@ -10131,8 +10536,8 @@ func (s *DescribeDBInstanceIpHostnameRequest) SetRegionId(v string) *DescribeDBI
 }
 
 type DescribeDBInstanceIpHostnameResponseBody struct {
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DBInstanceId    *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	IpHostnameInfos *string `json:"IpHostnameInfos,omitempty" xml:"IpHostnameInfos,omitempty"`
 }
 
@@ -10144,13 +10549,13 @@ func (s DescribeDBInstanceIpHostnameResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDBInstanceIpHostnameResponseBody) SetRequestId(v string) *DescribeDBInstanceIpHostnameResponseBody {
-	s.RequestId = &v
+func (s *DescribeDBInstanceIpHostnameResponseBody) SetDBInstanceId(v string) *DescribeDBInstanceIpHostnameResponseBody {
+	s.DBInstanceId = &v
 	return s
 }
 
-func (s *DescribeDBInstanceIpHostnameResponseBody) SetDBInstanceId(v string) *DescribeDBInstanceIpHostnameResponseBody {
-	s.DBInstanceId = &v
+func (s *DescribeDBInstanceIpHostnameResponseBody) SetRequestId(v string) *DescribeDBInstanceIpHostnameResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -10230,8 +10635,8 @@ func (s *DescribeDBInstanceMonitorRequest) SetOwnerAccount(v string) *DescribeDB
 }
 
 type DescribeDBInstanceMonitorResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Period    *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDBInstanceMonitorResponseBody) String() string {
@@ -10242,13 +10647,13 @@ func (s DescribeDBInstanceMonitorResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDBInstanceMonitorResponseBody) SetRequestId(v string) *DescribeDBInstanceMonitorResponseBody {
-	s.RequestId = &v
+func (s *DescribeDBInstanceMonitorResponseBody) SetPeriod(v string) *DescribeDBInstanceMonitorResponseBody {
+	s.Period = &v
 	return s
 }
 
-func (s *DescribeDBInstanceMonitorResponseBody) SetPeriod(v string) *DescribeDBInstanceMonitorResponseBody {
-	s.Period = &v
+func (s *DescribeDBInstanceMonitorResponseBody) SetRequestId(v string) *DescribeDBInstanceMonitorResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -10335,10 +10740,10 @@ func (s *DescribeDBInstanceNetInfoRequest) SetOwnerAccount(v string) *DescribeDB
 }
 
 type DescribeDBInstanceNetInfoResponseBody struct {
-	RequestId           *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	DBInstanceNetInfos  *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos `json:"DBInstanceNetInfos,omitempty" xml:"DBInstanceNetInfos,omitempty" type:"Struct"`
 	SecurityIPMode      *string                                                  `json:"SecurityIPMode,omitempty" xml:"SecurityIPMode,omitempty"`
+	RequestId           *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	InstanceNetworkType *string                                                  `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
+	DBInstanceNetInfos  *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos `json:"DBInstanceNetInfos,omitempty" xml:"DBInstanceNetInfos,omitempty" type:"Struct"`
 }
 
 func (s DescribeDBInstanceNetInfoResponseBody) String() string {
@@ -10349,23 +10754,23 @@ func (s DescribeDBInstanceNetInfoResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDBInstanceNetInfoResponseBody) SetRequestId(v string) *DescribeDBInstanceNetInfoResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeDBInstanceNetInfoResponseBody) SetDBInstanceNetInfos(v *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos) *DescribeDBInstanceNetInfoResponseBody {
-	s.DBInstanceNetInfos = v
-	return s
-}
-
 func (s *DescribeDBInstanceNetInfoResponseBody) SetSecurityIPMode(v string) *DescribeDBInstanceNetInfoResponseBody {
 	s.SecurityIPMode = &v
 	return s
 }
 
+func (s *DescribeDBInstanceNetInfoResponseBody) SetRequestId(v string) *DescribeDBInstanceNetInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 func (s *DescribeDBInstanceNetInfoResponseBody) SetInstanceNetworkType(v string) *DescribeDBInstanceNetInfoResponseBody {
 	s.InstanceNetworkType = &v
+	return s
+}
+
+func (s *DescribeDBInstanceNetInfoResponseBody) SetDBInstanceNetInfos(v *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos) *DescribeDBInstanceNetInfoResponseBody {
+	s.DBInstanceNetInfos = v
 	return s
 }
 
@@ -10387,19 +10792,19 @@ func (s *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos) SetDBInstanceN
 }
 
 type DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo struct {
-	SecurityIPGroups     *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfoSecurityIPGroups  `json:"SecurityIPGroups,omitempty" xml:"SecurityIPGroups,omitempty" type:"Struct"`
-	Upgradeable          *string                                                                                    `json:"Upgradeable,omitempty" xml:"Upgradeable,omitempty"`
-	IPType               *string                                                                                    `json:"IPType,omitempty" xml:"IPType,omitempty"`
-	Port                 *string                                                                                    `json:"Port,omitempty" xml:"Port,omitempty"`
-	VPCId                *string                                                                                    `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
 	VSwitchId            *string                                                                                    `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	ConnectionStringType *string                                                                                    `json:"ConnectionStringType,omitempty" xml:"ConnectionStringType,omitempty"`
 	ConnectionString     *string                                                                                    `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	ExpiredTime          *string                                                                                    `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	Upgradeable          *string                                                                                    `json:"Upgradeable,omitempty" xml:"Upgradeable,omitempty"`
 	MaxDelayTime         *string                                                                                    `json:"MaxDelayTime,omitempty" xml:"MaxDelayTime,omitempty"`
-	DBInstanceWeights    *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfoDBInstanceWeights `json:"DBInstanceWeights,omitempty" xml:"DBInstanceWeights,omitempty" type:"Struct"`
-	IPAddress            *string                                                                                    `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
+	IPType               *string                                                                                    `json:"IPType,omitempty" xml:"IPType,omitempty"`
+	Port                 *string                                                                                    `json:"Port,omitempty" xml:"Port,omitempty"`
+	VPCId                *string                                                                                    `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
 	DistributionType     *string                                                                                    `json:"DistributionType,omitempty" xml:"DistributionType,omitempty"`
+	IPAddress            *string                                                                                    `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
+	SecurityIPGroups     *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfoSecurityIPGroups  `json:"SecurityIPGroups,omitempty" xml:"SecurityIPGroups,omitempty" type:"Struct"`
+	DBInstanceWeights    *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfoDBInstanceWeights `json:"DBInstanceWeights,omitempty" xml:"DBInstanceWeights,omitempty" type:"Struct"`
 }
 
 func (s DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo) String() string {
@@ -10408,31 +10813,6 @@ func (s DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo
 
 func (s DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo) SetSecurityIPGroups(v *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfoSecurityIPGroups) *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo {
-	s.SecurityIPGroups = v
-	return s
-}
-
-func (s *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo) SetUpgradeable(v string) *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo {
-	s.Upgradeable = &v
-	return s
-}
-
-func (s *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo) SetIPType(v string) *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo {
-	s.IPType = &v
-	return s
-}
-
-func (s *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo) SetPort(v string) *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo {
-	s.Port = &v
-	return s
-}
-
-func (s *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo) SetVPCId(v string) *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo {
-	s.VPCId = &v
-	return s
 }
 
 func (s *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo) SetVSwitchId(v string) *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo {
@@ -10455,13 +10835,33 @@ func (s *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInf
 	return s
 }
 
+func (s *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo) SetUpgradeable(v string) *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo {
+	s.Upgradeable = &v
+	return s
+}
+
 func (s *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo) SetMaxDelayTime(v string) *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo {
 	s.MaxDelayTime = &v
 	return s
 }
 
-func (s *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo) SetDBInstanceWeights(v *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfoDBInstanceWeights) *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo {
-	s.DBInstanceWeights = v
+func (s *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo) SetIPType(v string) *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo {
+	s.IPType = &v
+	return s
+}
+
+func (s *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo) SetPort(v string) *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo) SetVPCId(v string) *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo {
+	s.VPCId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo) SetDistributionType(v string) *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo {
+	s.DistributionType = &v
 	return s
 }
 
@@ -10470,8 +10870,13 @@ func (s *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInf
 	return s
 }
 
-func (s *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo) SetDistributionType(v string) *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo {
-	s.DistributionType = &v
+func (s *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo) SetSecurityIPGroups(v *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfoSecurityIPGroups) *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo {
+	s.SecurityIPGroups = v
+	return s
+}
+
+func (s *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo) SetDBInstanceWeights(v *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfoDBInstanceWeights) *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo {
+	s.DBInstanceWeights = v
 	return s
 }
 
@@ -10535,8 +10940,9 @@ func (s *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInf
 type DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfoDBInstanceWeightsDBInstanceWeight struct {
 	Availability   *string `json:"Availability,omitempty" xml:"Availability,omitempty"`
 	Weight         *string `json:"Weight,omitempty" xml:"Weight,omitempty"`
-	DBInstanceType *string `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
 	DBInstanceId   *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Role           *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	DBInstanceType *string `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
 }
 
 func (s DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfoDBInstanceWeightsDBInstanceWeight) String() string {
@@ -10557,13 +10963,18 @@ func (s *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInf
 	return s
 }
 
-func (s *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfoDBInstanceWeightsDBInstanceWeight) SetDBInstanceType(v string) *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfoDBInstanceWeightsDBInstanceWeight {
-	s.DBInstanceType = &v
+func (s *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfoDBInstanceWeightsDBInstanceWeight) SetDBInstanceId(v string) *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfoDBInstanceWeightsDBInstanceWeight {
+	s.DBInstanceId = &v
 	return s
 }
 
-func (s *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfoDBInstanceWeightsDBInstanceWeight) SetDBInstanceId(v string) *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfoDBInstanceWeightsDBInstanceWeight {
-	s.DBInstanceId = &v
+func (s *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfoDBInstanceWeightsDBInstanceWeight) SetRole(v string) *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfoDBInstanceWeightsDBInstanceWeight {
+	s.Role = &v
+	return s
+}
+
+func (s *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfoDBInstanceWeightsDBInstanceWeight) SetDBInstanceType(v string) *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfoDBInstanceWeightsDBInstanceWeight {
+	s.DBInstanceType = &v
 	return s
 }
 
@@ -10632,12 +11043,12 @@ func (s *DescribeDBInstancePerformanceRequest) SetEndTime(v string) *DescribeDBI
 }
 
 type DescribeDBInstancePerformanceResponseBody struct {
-	PerformanceKeys *DescribeDBInstancePerformanceResponseBodyPerformanceKeys `json:"PerformanceKeys,omitempty" xml:"PerformanceKeys,omitempty" type:"Struct"`
 	EndTime         *string                                                   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	RequestId       *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	DBInstanceId    *string                                                   `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	StartTime       *string                                                   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	DBInstanceId    *string                                                   `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	Engine          *string                                                   `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	RequestId       *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PerformanceKeys *DescribeDBInstancePerformanceResponseBodyPerformanceKeys `json:"PerformanceKeys,omitempty" xml:"PerformanceKeys,omitempty" type:"Struct"`
 }
 
 func (s DescribeDBInstancePerformanceResponseBody) String() string {
@@ -10648,23 +11059,8 @@ func (s DescribeDBInstancePerformanceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDBInstancePerformanceResponseBody) SetPerformanceKeys(v *DescribeDBInstancePerformanceResponseBodyPerformanceKeys) *DescribeDBInstancePerformanceResponseBody {
-	s.PerformanceKeys = v
-	return s
-}
-
 func (s *DescribeDBInstancePerformanceResponseBody) SetEndTime(v string) *DescribeDBInstancePerformanceResponseBody {
 	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeDBInstancePerformanceResponseBody) SetRequestId(v string) *DescribeDBInstancePerformanceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeDBInstancePerformanceResponseBody) SetDBInstanceId(v string) *DescribeDBInstancePerformanceResponseBody {
-	s.DBInstanceId = &v
 	return s
 }
 
@@ -10673,8 +11069,23 @@ func (s *DescribeDBInstancePerformanceResponseBody) SetStartTime(v string) *Desc
 	return s
 }
 
+func (s *DescribeDBInstancePerformanceResponseBody) SetDBInstanceId(v string) *DescribeDBInstancePerformanceResponseBody {
+	s.DBInstanceId = &v
+	return s
+}
+
 func (s *DescribeDBInstancePerformanceResponseBody) SetEngine(v string) *DescribeDBInstancePerformanceResponseBody {
 	s.Engine = &v
+	return s
+}
+
+func (s *DescribeDBInstancePerformanceResponseBody) SetRequestId(v string) *DescribeDBInstancePerformanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDBInstancePerformanceResponseBody) SetPerformanceKeys(v *DescribeDBInstancePerformanceResponseBodyPerformanceKeys) *DescribeDBInstancePerformanceResponseBody {
+	s.PerformanceKeys = v
 	return s
 }
 
@@ -10697,9 +11108,9 @@ func (s *DescribeDBInstancePerformanceResponseBodyPerformanceKeys) SetPerformanc
 
 type DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKey struct {
 	Key         *string                                                                       `json:"Key,omitempty" xml:"Key,omitempty"`
+	ValueFormat *string                                                                       `json:"ValueFormat,omitempty" xml:"ValueFormat,omitempty"`
 	Unit        *string                                                                       `json:"Unit,omitempty" xml:"Unit,omitempty"`
 	Values      *DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKeyValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Struct"`
-	ValueFormat *string                                                                       `json:"ValueFormat,omitempty" xml:"ValueFormat,omitempty"`
 }
 
 func (s DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKey) String() string {
@@ -10715,6 +11126,11 @@ func (s *DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKey)
 	return s
 }
 
+func (s *DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKey) SetValueFormat(v string) *DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKey {
+	s.ValueFormat = &v
+	return s
+}
+
 func (s *DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKey) SetUnit(v string) *DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKey {
 	s.Unit = &v
 	return s
@@ -10722,11 +11138,6 @@ func (s *DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKey)
 
 func (s *DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKey) SetValues(v *DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKeyValues) *DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKey {
 	s.Values = v
-	return s
-}
-
-func (s *DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKey) SetValueFormat(v string) *DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKey {
-	s.ValueFormat = &v
 	return s
 }
 
@@ -10748,8 +11159,8 @@ func (s *DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKeyV
 }
 
 type DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKeyValuesPerformanceValue struct {
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 	Date  *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKeyValuesPerformanceValue) String() string {
@@ -10760,13 +11171,13 @@ func (s DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKeyVa
 	return s.String()
 }
 
-func (s *DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKeyValuesPerformanceValue) SetValue(v string) *DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKeyValuesPerformanceValue {
-	s.Value = &v
+func (s *DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKeyValuesPerformanceValue) SetDate(v string) *DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKeyValuesPerformanceValue {
+	s.Date = &v
 	return s
 }
 
-func (s *DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKeyValuesPerformanceValue) SetDate(v string) *DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKeyValuesPerformanceValue {
-	s.Date = &v
+func (s *DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKeyValuesPerformanceValue) SetValue(v string) *DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKeyValuesPerformanceValue {
+	s.Value = &v
 	return s
 }
 
@@ -10829,9 +11240,9 @@ func (s *DescribeDBInstanceProxyConfigurationRequest) SetDBInstanceId(v string) 
 }
 
 type DescribeDBInstanceProxyConfigurationResponseBody struct {
-	RequestId                          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PersistentConnectionsConfiguration *string `json:"PersistentConnectionsConfiguration,omitempty" xml:"PersistentConnectionsConfiguration,omitempty"`
 	AttacksProtectionConfiguration     *string `json:"AttacksProtectionConfiguration,omitempty" xml:"AttacksProtectionConfiguration,omitempty"`
+	RequestId                          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TransparentSwitchConfiguration     *string `json:"TransparentSwitchConfiguration,omitempty" xml:"TransparentSwitchConfiguration,omitempty"`
 }
 
@@ -10843,11 +11254,6 @@ func (s DescribeDBInstanceProxyConfigurationResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDBInstanceProxyConfigurationResponseBody) SetRequestId(v string) *DescribeDBInstanceProxyConfigurationResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *DescribeDBInstanceProxyConfigurationResponseBody) SetPersistentConnectionsConfiguration(v string) *DescribeDBInstanceProxyConfigurationResponseBody {
 	s.PersistentConnectionsConfiguration = &v
 	return s
@@ -10855,6 +11261,11 @@ func (s *DescribeDBInstanceProxyConfigurationResponseBody) SetPersistentConnecti
 
 func (s *DescribeDBInstanceProxyConfigurationResponseBody) SetAttacksProtectionConfiguration(v string) *DescribeDBInstanceProxyConfigurationResponseBody {
 	s.AttacksProtectionConfiguration = &v
+	return s
+}
+
+func (s *DescribeDBInstanceProxyConfigurationResponseBody) SetRequestId(v string) *DescribeDBInstanceProxyConfigurationResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -11072,10 +11483,10 @@ func (s *DescribeDBInstancesRequest) SetConnectionString(v string) *DescribeDBIn
 }
 
 type DescribeDBInstancesResponseBody struct {
-	TotalRecordCount *int32                                `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
-	PageRecordCount  *int32                                `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
 	RequestId        *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageNumber       *int32                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageRecordCount  *int32                                `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	TotalRecordCount *int32                                `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 	Items            *DescribeDBInstancesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 }
 
@@ -11087,8 +11498,13 @@ func (s DescribeDBInstancesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDBInstancesResponseBody) SetTotalRecordCount(v int32) *DescribeDBInstancesResponseBody {
-	s.TotalRecordCount = &v
+func (s *DescribeDBInstancesResponseBody) SetRequestId(v string) *DescribeDBInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDBInstancesResponseBody) SetPageNumber(v int32) *DescribeDBInstancesResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -11097,13 +11513,8 @@ func (s *DescribeDBInstancesResponseBody) SetPageRecordCount(v int32) *DescribeD
 	return s
 }
 
-func (s *DescribeDBInstancesResponseBody) SetRequestId(v string) *DescribeDBInstancesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeDBInstancesResponseBody) SetPageNumber(v int32) *DescribeDBInstancesResponseBody {
-	s.PageNumber = &v
+func (s *DescribeDBInstancesResponseBody) SetTotalRecordCount(v int32) *DescribeDBInstancesResponseBody {
+	s.TotalRecordCount = &v
 	return s
 }
 
@@ -11142,12 +11553,14 @@ type DescribeDBInstancesResponseBodyItemsDBInstance struct {
 	ConnectionMode               *string                                                              `json:"ConnectionMode,omitempty" xml:"ConnectionMode,omitempty"`
 	LockMode                     *string                                                              `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
 	EngineVersion                *string                                                              `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	GeneralGroupName             *string                                                              `json:"GeneralGroupName,omitempty" xml:"GeneralGroupName,omitempty"`
 	DedicatedHostGroupId         *string                                                              `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
-	VpcCloudInstanceId           *string                                                              `json:"VpcCloudInstanceId,omitempty" xml:"VpcCloudInstanceId,omitempty"`
 	VpcName                      *string                                                              `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
+	VpcCloudInstanceId           *string                                                              `json:"VpcCloudInstanceId,omitempty" xml:"VpcCloudInstanceId,omitempty"`
 	DedicatedHostZoneIdForSlave  *string                                                              `json:"DedicatedHostZoneIdForSlave,omitempty" xml:"DedicatedHostZoneIdForSlave,omitempty"`
 	DedicatedHostZoneIdForMaster *string                                                              `json:"DedicatedHostZoneIdForMaster,omitempty" xml:"DedicatedHostZoneIdForMaster,omitempty"`
 	ConnectionString             *string                                                              `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	Tips                         *string                                                              `json:"Tips,omitempty" xml:"Tips,omitempty"`
 	InstanceNetworkType          *string                                                              `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
 	DedicatedHostZoneIdForLog    *string                                                              `json:"DedicatedHostZoneIdForLog,omitempty" xml:"DedicatedHostZoneIdForLog,omitempty"`
 	MasterInstanceId             *string                                                              `json:"MasterInstanceId,omitempty" xml:"MasterInstanceId,omitempty"`
@@ -11160,19 +11573,20 @@ type DescribeDBInstancesResponseBodyItemsDBInstance struct {
 	DestroyTime                  *string                                                              `json:"DestroyTime,omitempty" xml:"DestroyTime,omitempty"`
 	LockReason                   *string                                                              `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
 	DBInstanceStatus             *string                                                              `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
-	ReadOnlyDBInstanceIds        *DescribeDBInstancesResponseBodyItemsDBInstanceReadOnlyDBInstanceIds `json:"ReadOnlyDBInstanceIds,omitempty" xml:"ReadOnlyDBInstanceIds,omitempty" type:"Struct"`
 	DedicatedHostNameForMaster   *string                                                              `json:"DedicatedHostNameForMaster,omitempty" xml:"DedicatedHostNameForMaster,omitempty"`
 	GuardDBInstanceId            *string                                                              `json:"GuardDBInstanceId,omitempty" xml:"GuardDBInstanceId,omitempty"`
 	RegionId                     *string                                                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	VSwitchId                    *string                                                              `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	DedicatedHostIdForSlave      *string                                                              `json:"DedicatedHostIdForSlave,omitempty" xml:"DedicatedHostIdForSlave,omitempty"`
 	ResourceGroupId              *string                                                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	TipsLevel                    *int32                                                               `json:"TipsLevel,omitempty" xml:"TipsLevel,omitempty"`
 	ZoneId                       *string                                                              `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 	Category                     *string                                                              `json:"Category,omitempty" xml:"Category,omitempty"`
 	DBInstanceId                 *string                                                              `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	DedicatedHostIdForMaster     *string                                                              `json:"DedicatedHostIdForMaster,omitempty" xml:"DedicatedHostIdForMaster,omitempty"`
 	DBInstanceClass              *string                                                              `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
 	Engine                       *string                                                              `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	ReadOnlyDBInstanceIds        *DescribeDBInstancesResponseBodyItemsDBInstanceReadOnlyDBInstanceIds `json:"ReadOnlyDBInstanceIds,omitempty" xml:"ReadOnlyDBInstanceIds,omitempty" type:"Struct"`
 }
 
 func (s DescribeDBInstancesResponseBodyItemsDBInstance) String() string {
@@ -11243,18 +11657,23 @@ func (s *DescribeDBInstancesResponseBodyItemsDBInstance) SetEngineVersion(v stri
 	return s
 }
 
+func (s *DescribeDBInstancesResponseBodyItemsDBInstance) SetGeneralGroupName(v string) *DescribeDBInstancesResponseBodyItemsDBInstance {
+	s.GeneralGroupName = &v
+	return s
+}
+
 func (s *DescribeDBInstancesResponseBodyItemsDBInstance) SetDedicatedHostGroupId(v string) *DescribeDBInstancesResponseBodyItemsDBInstance {
 	s.DedicatedHostGroupId = &v
 	return s
 }
 
-func (s *DescribeDBInstancesResponseBodyItemsDBInstance) SetVpcCloudInstanceId(v string) *DescribeDBInstancesResponseBodyItemsDBInstance {
-	s.VpcCloudInstanceId = &v
+func (s *DescribeDBInstancesResponseBodyItemsDBInstance) SetVpcName(v string) *DescribeDBInstancesResponseBodyItemsDBInstance {
+	s.VpcName = &v
 	return s
 }
 
-func (s *DescribeDBInstancesResponseBodyItemsDBInstance) SetVpcName(v string) *DescribeDBInstancesResponseBodyItemsDBInstance {
-	s.VpcName = &v
+func (s *DescribeDBInstancesResponseBodyItemsDBInstance) SetVpcCloudInstanceId(v string) *DescribeDBInstancesResponseBodyItemsDBInstance {
+	s.VpcCloudInstanceId = &v
 	return s
 }
 
@@ -11270,6 +11689,11 @@ func (s *DescribeDBInstancesResponseBodyItemsDBInstance) SetDedicatedHostZoneIdF
 
 func (s *DescribeDBInstancesResponseBodyItemsDBInstance) SetConnectionString(v string) *DescribeDBInstancesResponseBodyItemsDBInstance {
 	s.ConnectionString = &v
+	return s
+}
+
+func (s *DescribeDBInstancesResponseBodyItemsDBInstance) SetTips(v string) *DescribeDBInstancesResponseBodyItemsDBInstance {
+	s.Tips = &v
 	return s
 }
 
@@ -11333,11 +11757,6 @@ func (s *DescribeDBInstancesResponseBodyItemsDBInstance) SetDBInstanceStatus(v s
 	return s
 }
 
-func (s *DescribeDBInstancesResponseBodyItemsDBInstance) SetReadOnlyDBInstanceIds(v *DescribeDBInstancesResponseBodyItemsDBInstanceReadOnlyDBInstanceIds) *DescribeDBInstancesResponseBodyItemsDBInstance {
-	s.ReadOnlyDBInstanceIds = v
-	return s
-}
-
 func (s *DescribeDBInstancesResponseBodyItemsDBInstance) SetDedicatedHostNameForMaster(v string) *DescribeDBInstancesResponseBodyItemsDBInstance {
 	s.DedicatedHostNameForMaster = &v
 	return s
@@ -11368,6 +11787,11 @@ func (s *DescribeDBInstancesResponseBodyItemsDBInstance) SetResourceGroupId(v st
 	return s
 }
 
+func (s *DescribeDBInstancesResponseBodyItemsDBInstance) SetTipsLevel(v int32) *DescribeDBInstancesResponseBodyItemsDBInstance {
+	s.TipsLevel = &v
+	return s
+}
+
 func (s *DescribeDBInstancesResponseBodyItemsDBInstance) SetZoneId(v string) *DescribeDBInstancesResponseBodyItemsDBInstance {
 	s.ZoneId = &v
 	return s
@@ -11395,6 +11819,11 @@ func (s *DescribeDBInstancesResponseBodyItemsDBInstance) SetDBInstanceClass(v st
 
 func (s *DescribeDBInstancesResponseBodyItemsDBInstance) SetEngine(v string) *DescribeDBInstancesResponseBodyItemsDBInstance {
 	s.Engine = &v
+	return s
+}
+
+func (s *DescribeDBInstancesResponseBodyItemsDBInstance) SetReadOnlyDBInstanceIds(v *DescribeDBInstancesResponseBodyItemsDBInstanceReadOnlyDBInstanceIds) *DescribeDBInstancesResponseBodyItemsDBInstance {
+	s.ReadOnlyDBInstanceIds = v
 	return s
 }
 
@@ -11548,10 +11977,10 @@ type DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute struct {
 	Tags                        *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	AvailabilityValue           *string `json:"AvailabilityValue,omitempty" xml:"AvailabilityValue,omitempty"`
 	ReadDelayTime               *string `json:"ReadDelayTime,omitempty" xml:"ReadDelayTime,omitempty"`
-	Port                        *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	ConnectionMode              *string `json:"ConnectionMode,omitempty" xml:"ConnectionMode,omitempty"`
-	LockMode                    *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	Port                        *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	AccountType                 *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	LockMode                    *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
 	EngineVersion               *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	MaxIOPS                     *int32  `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
 	ConnectionString            *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
@@ -11643,23 +12072,23 @@ func (s *DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute) SetReadDe
 	return s
 }
 
-func (s *DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute) SetPort(v string) *DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute {
-	s.Port = &v
-	return s
-}
-
 func (s *DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute) SetConnectionMode(v string) *DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute {
 	s.ConnectionMode = &v
 	return s
 }
 
-func (s *DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute) SetLockMode(v string) *DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute {
-	s.LockMode = &v
+func (s *DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute) SetPort(v string) *DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute {
+	s.Port = &v
 	return s
 }
 
 func (s *DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute) SetAccountType(v string) *DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute {
 	s.AccountType = &v
+	return s
+}
+
+func (s *DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute) SetLockMode(v string) *DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute {
+	s.LockMode = &v
 	return s
 }
 
@@ -11894,10 +12323,10 @@ func (s *DescribeDBInstancesByExpireTimeRequest) SetOwnerAccount(v string) *Desc
 }
 
 type DescribeDBInstancesByExpireTimeResponseBody struct {
-	TotalRecordCount *int32                                            `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
-	PageRecordCount  *int32                                            `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
 	RequestId        *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageNumber       *int32                                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageRecordCount  *int32                                            `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	TotalRecordCount *int32                                            `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 	Items            *DescribeDBInstancesByExpireTimeResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 }
 
@@ -11909,8 +12338,13 @@ func (s DescribeDBInstancesByExpireTimeResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDBInstancesByExpireTimeResponseBody) SetTotalRecordCount(v int32) *DescribeDBInstancesByExpireTimeResponseBody {
-	s.TotalRecordCount = &v
+func (s *DescribeDBInstancesByExpireTimeResponseBody) SetRequestId(v string) *DescribeDBInstancesByExpireTimeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDBInstancesByExpireTimeResponseBody) SetPageNumber(v int32) *DescribeDBInstancesByExpireTimeResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -11919,13 +12353,8 @@ func (s *DescribeDBInstancesByExpireTimeResponseBody) SetPageRecordCount(v int32
 	return s
 }
 
-func (s *DescribeDBInstancesByExpireTimeResponseBody) SetRequestId(v string) *DescribeDBInstancesByExpireTimeResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeDBInstancesByExpireTimeResponseBody) SetPageNumber(v int32) *DescribeDBInstancesByExpireTimeResponseBody {
-	s.PageNumber = &v
+func (s *DescribeDBInstancesByExpireTimeResponseBody) SetTotalRecordCount(v int32) *DescribeDBInstancesByExpireTimeResponseBody {
+	s.TotalRecordCount = &v
 	return s
 }
 
@@ -12140,10 +12569,10 @@ func (s *DescribeDBInstancesByPerformanceRequestTag) SetValue(v string) *Describ
 }
 
 type DescribeDBInstancesByPerformanceResponseBody struct {
-	TotalRecordCount *int32                                             `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
-	PageRecordCount  *int32                                             `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
 	RequestId        *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageNumber       *int32                                             `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageRecordCount  *int32                                             `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	TotalRecordCount *int32                                             `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 	Items            *DescribeDBInstancesByPerformanceResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 }
 
@@ -12155,8 +12584,13 @@ func (s DescribeDBInstancesByPerformanceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDBInstancesByPerformanceResponseBody) SetTotalRecordCount(v int32) *DescribeDBInstancesByPerformanceResponseBody {
-	s.TotalRecordCount = &v
+func (s *DescribeDBInstancesByPerformanceResponseBody) SetRequestId(v string) *DescribeDBInstancesByPerformanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDBInstancesByPerformanceResponseBody) SetPageNumber(v int32) *DescribeDBInstancesByPerformanceResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -12165,13 +12599,8 @@ func (s *DescribeDBInstancesByPerformanceResponseBody) SetPageRecordCount(v int3
 	return s
 }
 
-func (s *DescribeDBInstancesByPerformanceResponseBody) SetRequestId(v string) *DescribeDBInstancesByPerformanceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeDBInstancesByPerformanceResponseBody) SetPageNumber(v int32) *DescribeDBInstancesByPerformanceResponseBody {
-	s.PageNumber = &v
+func (s *DescribeDBInstancesByPerformanceResponseBody) SetTotalRecordCount(v int32) *DescribeDBInstancesByPerformanceResponseBody {
+	s.TotalRecordCount = &v
 	return s
 }
 
@@ -12429,10 +12858,10 @@ func (s *DescribeDBInstancesForCloneRequest) SetCurrentInstanceId(v string) *Des
 }
 
 type DescribeDBInstancesForCloneResponseBody struct {
-	TotalRecordCount *int32                                        `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
-	PageRecordCount  *int32                                        `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
 	RequestId        *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageNumber       *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageRecordCount  *int32                                        `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	TotalRecordCount *int32                                        `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 	Items            *DescribeDBInstancesForCloneResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 }
 
@@ -12444,8 +12873,13 @@ func (s DescribeDBInstancesForCloneResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDBInstancesForCloneResponseBody) SetTotalRecordCount(v int32) *DescribeDBInstancesForCloneResponseBody {
-	s.TotalRecordCount = &v
+func (s *DescribeDBInstancesForCloneResponseBody) SetRequestId(v string) *DescribeDBInstancesForCloneResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDBInstancesForCloneResponseBody) SetPageNumber(v int32) *DescribeDBInstancesForCloneResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -12454,13 +12888,8 @@ func (s *DescribeDBInstancesForCloneResponseBody) SetPageRecordCount(v int32) *D
 	return s
 }
 
-func (s *DescribeDBInstancesForCloneResponseBody) SetRequestId(v string) *DescribeDBInstancesForCloneResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeDBInstancesForCloneResponseBody) SetPageNumber(v int32) *DescribeDBInstancesForCloneResponseBody {
-	s.PageNumber = &v
+func (s *DescribeDBInstancesForCloneResponseBody) SetTotalRecordCount(v int32) *DescribeDBInstancesForCloneResponseBody {
+	s.TotalRecordCount = &v
 	return s
 }
 
@@ -12502,13 +12931,12 @@ type DescribeDBInstancesForCloneResponseBodyItemsDBInstance struct {
 	InstanceNetworkType   *string                                                                      `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
 	MasterInstanceId      *string                                                                      `json:"MasterInstanceId,omitempty" xml:"MasterInstanceId,omitempty"`
 	DBInstanceDescription *string                                                                      `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	DBInstanceNetType     *string                                                                      `json:"DBInstanceNetType,omitempty" xml:"DBInstanceNetType,omitempty"`
 	ExpireTime            *string                                                                      `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	DBInstanceNetType     *string                                                                      `json:"DBInstanceNetType,omitempty" xml:"DBInstanceNetType,omitempty"`
 	DBInstanceType        *string                                                                      `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
 	DestroyTime           *string                                                                      `json:"DestroyTime,omitempty" xml:"DestroyTime,omitempty"`
 	LockReason            *string                                                                      `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
 	DBInstanceStatus      *string                                                                      `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
-	ReadOnlyDBInstanceIds *DescribeDBInstancesForCloneResponseBodyItemsDBInstanceReadOnlyDBInstanceIds `json:"ReadOnlyDBInstanceIds,omitempty" xml:"ReadOnlyDBInstanceIds,omitempty" type:"Struct"`
 	GuardDBInstanceId     *string                                                                      `json:"GuardDBInstanceId,omitempty" xml:"GuardDBInstanceId,omitempty"`
 	RegionId              *string                                                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	VSwitchId             *string                                                                      `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
@@ -12518,6 +12946,7 @@ type DescribeDBInstancesForCloneResponseBodyItemsDBInstance struct {
 	Category              *string                                                                      `json:"Category,omitempty" xml:"Category,omitempty"`
 	Engine                *string                                                                      `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	DBInstanceClass       *string                                                                      `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
+	ReadOnlyDBInstanceIds *DescribeDBInstancesForCloneResponseBodyItemsDBInstanceReadOnlyDBInstanceIds `json:"ReadOnlyDBInstanceIds,omitempty" xml:"ReadOnlyDBInstanceIds,omitempty" type:"Struct"`
 }
 
 func (s DescribeDBInstancesForCloneResponseBodyItemsDBInstance) String() string {
@@ -12603,13 +13032,13 @@ func (s *DescribeDBInstancesForCloneResponseBodyItemsDBInstance) SetDBInstanceDe
 	return s
 }
 
-func (s *DescribeDBInstancesForCloneResponseBodyItemsDBInstance) SetDBInstanceNetType(v string) *DescribeDBInstancesForCloneResponseBodyItemsDBInstance {
-	s.DBInstanceNetType = &v
+func (s *DescribeDBInstancesForCloneResponseBodyItemsDBInstance) SetExpireTime(v string) *DescribeDBInstancesForCloneResponseBodyItemsDBInstance {
+	s.ExpireTime = &v
 	return s
 }
 
-func (s *DescribeDBInstancesForCloneResponseBodyItemsDBInstance) SetExpireTime(v string) *DescribeDBInstancesForCloneResponseBodyItemsDBInstance {
-	s.ExpireTime = &v
+func (s *DescribeDBInstancesForCloneResponseBodyItemsDBInstance) SetDBInstanceNetType(v string) *DescribeDBInstancesForCloneResponseBodyItemsDBInstance {
+	s.DBInstanceNetType = &v
 	return s
 }
 
@@ -12630,11 +13059,6 @@ func (s *DescribeDBInstancesForCloneResponseBodyItemsDBInstance) SetLockReason(v
 
 func (s *DescribeDBInstancesForCloneResponseBodyItemsDBInstance) SetDBInstanceStatus(v string) *DescribeDBInstancesForCloneResponseBodyItemsDBInstance {
 	s.DBInstanceStatus = &v
-	return s
-}
-
-func (s *DescribeDBInstancesForCloneResponseBodyItemsDBInstance) SetReadOnlyDBInstanceIds(v *DescribeDBInstancesForCloneResponseBodyItemsDBInstanceReadOnlyDBInstanceIds) *DescribeDBInstancesForCloneResponseBodyItemsDBInstance {
-	s.ReadOnlyDBInstanceIds = v
 	return s
 }
 
@@ -12680,6 +13104,11 @@ func (s *DescribeDBInstancesForCloneResponseBodyItemsDBInstance) SetEngine(v str
 
 func (s *DescribeDBInstancesForCloneResponseBodyItemsDBInstance) SetDBInstanceClass(v string) *DescribeDBInstancesForCloneResponseBodyItemsDBInstance {
 	s.DBInstanceClass = &v
+	return s
+}
+
+func (s *DescribeDBInstancesForCloneResponseBodyItemsDBInstance) SetReadOnlyDBInstanceIds(v *DescribeDBInstancesForCloneResponseBodyItemsDBInstanceReadOnlyDBInstanceIds) *DescribeDBInstancesForCloneResponseBodyItemsDBInstance {
+	s.ReadOnlyDBInstanceIds = v
 	return s
 }
 
@@ -12782,11 +13211,25 @@ func (s *DescribeDBInstanceSSLRequest) SetOwnerAccount(v string) *DescribeDBInst
 }
 
 type DescribeDBInstanceSSLResponseBody struct {
-	SSLExpireTime       *string `json:"SSLExpireTime,omitempty" xml:"SSLExpireTime,omitempty"`
-	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RequireUpdateReason *string `json:"RequireUpdateReason,omitempty" xml:"RequireUpdateReason,omitempty"`
-	ConnectionString    *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	RequireUpdate       *string `json:"RequireUpdate,omitempty" xml:"RequireUpdate,omitempty"`
+	ServerCert               *string `json:"ServerCert,omitempty" xml:"ServerCert,omitempty"`
+	ClientCACertExpireTime   *string `json:"ClientCACertExpireTime,omitempty" xml:"ClientCACertExpireTime,omitempty"`
+	RequireUpdateItem        *string `json:"RequireUpdateItem,omitempty" xml:"RequireUpdateItem,omitempty"`
+	ServerCAUrl              *string `json:"ServerCAUrl,omitempty" xml:"ServerCAUrl,omitempty"`
+	RequireUpdate            *string `json:"RequireUpdate,omitempty" xml:"RequireUpdate,omitempty"`
+	ClientCertRevocationList *string `json:"ClientCertRevocationList,omitempty" xml:"ClientCertRevocationList,omitempty"`
+	SSLExpireTime            *string `json:"SSLExpireTime,omitempty" xml:"SSLExpireTime,omitempty"`
+	CAType                   *string `json:"CAType,omitempty" xml:"CAType,omitempty"`
+	SSLCreateTime            *string `json:"SSLCreateTime,omitempty" xml:"SSLCreateTime,omitempty"`
+	ReplicationACL           *string `json:"ReplicationACL,omitempty" xml:"ReplicationACL,omitempty"`
+	ACL                      *string `json:"ACL,omitempty" xml:"ACL,omitempty"`
+	RequestId                *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	LastModifyStatus         *string `json:"LastModifyStatus,omitempty" xml:"LastModifyStatus,omitempty"`
+	SSLEnabled               *string `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
+	ConnectionString         *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	RequireUpdateReason      *string `json:"RequireUpdateReason,omitempty" xml:"RequireUpdateReason,omitempty"`
+	ClientCACert             *string `json:"ClientCACert,omitempty" xml:"ClientCACert,omitempty"`
+	ServerKey                *string `json:"ServerKey,omitempty" xml:"ServerKey,omitempty"`
+	ModifyStatusReason       *string `json:"ModifyStatusReason,omitempty" xml:"ModifyStatusReason,omitempty"`
 }
 
 func (s DescribeDBInstanceSSLResponseBody) String() string {
@@ -12797,8 +13240,58 @@ func (s DescribeDBInstanceSSLResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeDBInstanceSSLResponseBody) SetServerCert(v string) *DescribeDBInstanceSSLResponseBody {
+	s.ServerCert = &v
+	return s
+}
+
+func (s *DescribeDBInstanceSSLResponseBody) SetClientCACertExpireTime(v string) *DescribeDBInstanceSSLResponseBody {
+	s.ClientCACertExpireTime = &v
+	return s
+}
+
+func (s *DescribeDBInstanceSSLResponseBody) SetRequireUpdateItem(v string) *DescribeDBInstanceSSLResponseBody {
+	s.RequireUpdateItem = &v
+	return s
+}
+
+func (s *DescribeDBInstanceSSLResponseBody) SetServerCAUrl(v string) *DescribeDBInstanceSSLResponseBody {
+	s.ServerCAUrl = &v
+	return s
+}
+
+func (s *DescribeDBInstanceSSLResponseBody) SetRequireUpdate(v string) *DescribeDBInstanceSSLResponseBody {
+	s.RequireUpdate = &v
+	return s
+}
+
+func (s *DescribeDBInstanceSSLResponseBody) SetClientCertRevocationList(v string) *DescribeDBInstanceSSLResponseBody {
+	s.ClientCertRevocationList = &v
+	return s
+}
+
 func (s *DescribeDBInstanceSSLResponseBody) SetSSLExpireTime(v string) *DescribeDBInstanceSSLResponseBody {
 	s.SSLExpireTime = &v
+	return s
+}
+
+func (s *DescribeDBInstanceSSLResponseBody) SetCAType(v string) *DescribeDBInstanceSSLResponseBody {
+	s.CAType = &v
+	return s
+}
+
+func (s *DescribeDBInstanceSSLResponseBody) SetSSLCreateTime(v string) *DescribeDBInstanceSSLResponseBody {
+	s.SSLCreateTime = &v
+	return s
+}
+
+func (s *DescribeDBInstanceSSLResponseBody) SetReplicationACL(v string) *DescribeDBInstanceSSLResponseBody {
+	s.ReplicationACL = &v
+	return s
+}
+
+func (s *DescribeDBInstanceSSLResponseBody) SetACL(v string) *DescribeDBInstanceSSLResponseBody {
+	s.ACL = &v
 	return s
 }
 
@@ -12807,8 +13300,13 @@ func (s *DescribeDBInstanceSSLResponseBody) SetRequestId(v string) *DescribeDBIn
 	return s
 }
 
-func (s *DescribeDBInstanceSSLResponseBody) SetRequireUpdateReason(v string) *DescribeDBInstanceSSLResponseBody {
-	s.RequireUpdateReason = &v
+func (s *DescribeDBInstanceSSLResponseBody) SetLastModifyStatus(v string) *DescribeDBInstanceSSLResponseBody {
+	s.LastModifyStatus = &v
+	return s
+}
+
+func (s *DescribeDBInstanceSSLResponseBody) SetSSLEnabled(v string) *DescribeDBInstanceSSLResponseBody {
+	s.SSLEnabled = &v
 	return s
 }
 
@@ -12817,8 +13315,23 @@ func (s *DescribeDBInstanceSSLResponseBody) SetConnectionString(v string) *Descr
 	return s
 }
 
-func (s *DescribeDBInstanceSSLResponseBody) SetRequireUpdate(v string) *DescribeDBInstanceSSLResponseBody {
-	s.RequireUpdate = &v
+func (s *DescribeDBInstanceSSLResponseBody) SetRequireUpdateReason(v string) *DescribeDBInstanceSSLResponseBody {
+	s.RequireUpdateReason = &v
+	return s
+}
+
+func (s *DescribeDBInstanceSSLResponseBody) SetClientCACert(v string) *DescribeDBInstanceSSLResponseBody {
+	s.ClientCACert = &v
+	return s
+}
+
+func (s *DescribeDBInstanceSSLResponseBody) SetServerKey(v string) *DescribeDBInstanceSSLResponseBody {
+	s.ServerKey = &v
+	return s
+}
+
+func (s *DescribeDBInstanceSSLResponseBody) SetModifyStatusReason(v string) *DescribeDBInstanceSSLResponseBody {
+	s.ModifyStatusReason = &v
 	return s
 }
 
@@ -12888,8 +13401,8 @@ func (s *DescribeDBInstanceTDERequest) SetOwnerAccount(v string) *DescribeDBInst
 
 type DescribeDBInstanceTDEResponseBody struct {
 	TDEStatus *string                                     `json:"TDEStatus,omitempty" xml:"TDEStatus,omitempty"`
-	Databases *DescribeDBInstanceTDEResponseBodyDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Struct"`
 	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Databases *DescribeDBInstanceTDEResponseBodyDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Struct"`
 }
 
 func (s DescribeDBInstanceTDEResponseBody) String() string {
@@ -12905,13 +13418,13 @@ func (s *DescribeDBInstanceTDEResponseBody) SetTDEStatus(v string) *DescribeDBIn
 	return s
 }
 
-func (s *DescribeDBInstanceTDEResponseBody) SetDatabases(v *DescribeDBInstanceTDEResponseBodyDatabases) *DescribeDBInstanceTDEResponseBody {
-	s.Databases = v
+func (s *DescribeDBInstanceTDEResponseBody) SetRequestId(v string) *DescribeDBInstanceTDEResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *DescribeDBInstanceTDEResponseBody) SetRequestId(v string) *DescribeDBInstanceTDEResponseBody {
-	s.RequestId = &v
+func (s *DescribeDBInstanceTDEResponseBody) SetDatabases(v *DescribeDBInstanceTDEResponseBodyDatabases) *DescribeDBInstanceTDEResponseBody {
+	s.Databases = v
 	return s
 }
 
@@ -13020,16 +13533,16 @@ func (s *DescribeDBProxyRequest) SetRegionId(v string) *DescribeDBProxyRequest {
 }
 
 type DescribeDBProxyResponseBody struct {
-	DBProxyInstanceName                *string                                               `json:"DBProxyInstanceName,omitempty" xml:"DBProxyInstanceName,omitempty"`
-	DBProxyInstanceCurrentMinorVersion *string                                               `json:"DBProxyInstanceCurrentMinorVersion,omitempty" xml:"DBProxyInstanceCurrentMinorVersion,omitempty"`
 	DBProxyInstanceLatestMinorVersion  *string                                               `json:"DBProxyInstanceLatestMinorVersion,omitempty" xml:"DBProxyInstanceLatestMinorVersion,omitempty"`
-	DBProxyInstanceNum                 *int32                                                `json:"DBProxyInstanceNum,omitempty" xml:"DBProxyInstanceNum,omitempty"`
-	DBProxyServiceStatus               *string                                               `json:"DBProxyServiceStatus,omitempty" xml:"DBProxyServiceStatus,omitempty"`
 	RequestId                          *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	DbProxyEndpointItems               *DescribeDBProxyResponseBodyDbProxyEndpointItems      `json:"DbProxyEndpointItems,omitempty" xml:"DbProxyEndpointItems,omitempty" type:"Struct"`
-	DBProxyConnectStringItems          *DescribeDBProxyResponseBodyDBProxyConnectStringItems `json:"DBProxyConnectStringItems,omitempty" xml:"DBProxyConnectStringItems,omitempty" type:"Struct"`
-	DBProxyInstanceStatus              *string                                               `json:"DBProxyInstanceStatus,omitempty" xml:"DBProxyInstanceStatus,omitempty"`
+	DBProxyInstanceCurrentMinorVersion *string                                               `json:"DBProxyInstanceCurrentMinorVersion,omitempty" xml:"DBProxyInstanceCurrentMinorVersion,omitempty"`
+	DBProxyInstanceNum                 *int32                                                `json:"DBProxyInstanceNum,omitempty" xml:"DBProxyInstanceNum,omitempty"`
 	DBProxyInstanceType                *string                                               `json:"DBProxyInstanceType,omitempty" xml:"DBProxyInstanceType,omitempty"`
+	DBProxyInstanceStatus              *string                                               `json:"DBProxyInstanceStatus,omitempty" xml:"DBProxyInstanceStatus,omitempty"`
+	DBProxyServiceStatus               *string                                               `json:"DBProxyServiceStatus,omitempty" xml:"DBProxyServiceStatus,omitempty"`
+	DBProxyInstanceName                *string                                               `json:"DBProxyInstanceName,omitempty" xml:"DBProxyInstanceName,omitempty"`
+	DBProxyConnectStringItems          *DescribeDBProxyResponseBodyDBProxyConnectStringItems `json:"DBProxyConnectStringItems,omitempty" xml:"DBProxyConnectStringItems,omitempty" type:"Struct"`
+	DbProxyEndpointItems               *DescribeDBProxyResponseBodyDbProxyEndpointItems      `json:"DbProxyEndpointItems,omitempty" xml:"DbProxyEndpointItems,omitempty" type:"Struct"`
 }
 
 func (s DescribeDBProxyResponseBody) String() string {
@@ -13040,28 +13553,8 @@ func (s DescribeDBProxyResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDBProxyResponseBody) SetDBProxyInstanceName(v string) *DescribeDBProxyResponseBody {
-	s.DBProxyInstanceName = &v
-	return s
-}
-
-func (s *DescribeDBProxyResponseBody) SetDBProxyInstanceCurrentMinorVersion(v string) *DescribeDBProxyResponseBody {
-	s.DBProxyInstanceCurrentMinorVersion = &v
-	return s
-}
-
 func (s *DescribeDBProxyResponseBody) SetDBProxyInstanceLatestMinorVersion(v string) *DescribeDBProxyResponseBody {
 	s.DBProxyInstanceLatestMinorVersion = &v
-	return s
-}
-
-func (s *DescribeDBProxyResponseBody) SetDBProxyInstanceNum(v int32) *DescribeDBProxyResponseBody {
-	s.DBProxyInstanceNum = &v
-	return s
-}
-
-func (s *DescribeDBProxyResponseBody) SetDBProxyServiceStatus(v string) *DescribeDBProxyResponseBody {
-	s.DBProxyServiceStatus = &v
 	return s
 }
 
@@ -13070,18 +13563,13 @@ func (s *DescribeDBProxyResponseBody) SetRequestId(v string) *DescribeDBProxyRes
 	return s
 }
 
-func (s *DescribeDBProxyResponseBody) SetDbProxyEndpointItems(v *DescribeDBProxyResponseBodyDbProxyEndpointItems) *DescribeDBProxyResponseBody {
-	s.DbProxyEndpointItems = v
+func (s *DescribeDBProxyResponseBody) SetDBProxyInstanceCurrentMinorVersion(v string) *DescribeDBProxyResponseBody {
+	s.DBProxyInstanceCurrentMinorVersion = &v
 	return s
 }
 
-func (s *DescribeDBProxyResponseBody) SetDBProxyConnectStringItems(v *DescribeDBProxyResponseBodyDBProxyConnectStringItems) *DescribeDBProxyResponseBody {
-	s.DBProxyConnectStringItems = v
-	return s
-}
-
-func (s *DescribeDBProxyResponseBody) SetDBProxyInstanceStatus(v string) *DescribeDBProxyResponseBody {
-	s.DBProxyInstanceStatus = &v
+func (s *DescribeDBProxyResponseBody) SetDBProxyInstanceNum(v int32) *DescribeDBProxyResponseBody {
+	s.DBProxyInstanceNum = &v
 	return s
 }
 
@@ -13090,55 +13578,28 @@ func (s *DescribeDBProxyResponseBody) SetDBProxyInstanceType(v string) *Describe
 	return s
 }
 
-type DescribeDBProxyResponseBodyDbProxyEndpointItems struct {
-	DbProxyEndpointItems []*DescribeDBProxyResponseBodyDbProxyEndpointItemsDbProxyEndpointItems `json:"DbProxyEndpointItems,omitempty" xml:"DbProxyEndpointItems,omitempty" type:"Repeated"`
+func (s *DescribeDBProxyResponseBody) SetDBProxyInstanceStatus(v string) *DescribeDBProxyResponseBody {
+	s.DBProxyInstanceStatus = &v
+	return s
 }
 
-func (s DescribeDBProxyResponseBodyDbProxyEndpointItems) String() string {
-	return tea.Prettify(s)
+func (s *DescribeDBProxyResponseBody) SetDBProxyServiceStatus(v string) *DescribeDBProxyResponseBody {
+	s.DBProxyServiceStatus = &v
+	return s
 }
 
-func (s DescribeDBProxyResponseBodyDbProxyEndpointItems) GoString() string {
-	return s.String()
+func (s *DescribeDBProxyResponseBody) SetDBProxyInstanceName(v string) *DescribeDBProxyResponseBody {
+	s.DBProxyInstanceName = &v
+	return s
 }
 
-func (s *DescribeDBProxyResponseBodyDbProxyEndpointItems) SetDbProxyEndpointItems(v []*DescribeDBProxyResponseBodyDbProxyEndpointItemsDbProxyEndpointItems) *DescribeDBProxyResponseBodyDbProxyEndpointItems {
+func (s *DescribeDBProxyResponseBody) SetDBProxyConnectStringItems(v *DescribeDBProxyResponseBodyDBProxyConnectStringItems) *DescribeDBProxyResponseBody {
+	s.DBProxyConnectStringItems = v
+	return s
+}
+
+func (s *DescribeDBProxyResponseBody) SetDbProxyEndpointItems(v *DescribeDBProxyResponseBodyDbProxyEndpointItems) *DescribeDBProxyResponseBody {
 	s.DbProxyEndpointItems = v
-	return s
-}
-
-type DescribeDBProxyResponseBodyDbProxyEndpointItemsDbProxyEndpointItems struct {
-	DbProxyEndpointName    *string `json:"DbProxyEndpointName,omitempty" xml:"DbProxyEndpointName,omitempty"`
-	DbProxyReadWriteMode   *string `json:"DbProxyReadWriteMode,omitempty" xml:"DbProxyReadWriteMode,omitempty"`
-	DbProxyEndpointAliases *string `json:"DbProxyEndpointAliases,omitempty" xml:"DbProxyEndpointAliases,omitempty"`
-	DbProxyEndpointType    *string `json:"DbProxyEndpointType,omitempty" xml:"DbProxyEndpointType,omitempty"`
-}
-
-func (s DescribeDBProxyResponseBodyDbProxyEndpointItemsDbProxyEndpointItems) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDBProxyResponseBodyDbProxyEndpointItemsDbProxyEndpointItems) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDBProxyResponseBodyDbProxyEndpointItemsDbProxyEndpointItems) SetDbProxyEndpointName(v string) *DescribeDBProxyResponseBodyDbProxyEndpointItemsDbProxyEndpointItems {
-	s.DbProxyEndpointName = &v
-	return s
-}
-
-func (s *DescribeDBProxyResponseBodyDbProxyEndpointItemsDbProxyEndpointItems) SetDbProxyReadWriteMode(v string) *DescribeDBProxyResponseBodyDbProxyEndpointItemsDbProxyEndpointItems {
-	s.DbProxyReadWriteMode = &v
-	return s
-}
-
-func (s *DescribeDBProxyResponseBodyDbProxyEndpointItemsDbProxyEndpointItems) SetDbProxyEndpointAliases(v string) *DescribeDBProxyResponseBodyDbProxyEndpointItemsDbProxyEndpointItems {
-	s.DbProxyEndpointAliases = &v
-	return s
-}
-
-func (s *DescribeDBProxyResponseBodyDbProxyEndpointItemsDbProxyEndpointItems) SetDbProxyEndpointType(v string) *DescribeDBProxyResponseBodyDbProxyEndpointItemsDbProxyEndpointItems {
-	s.DbProxyEndpointType = &v
 	return s
 }
 
@@ -13209,6 +13670,58 @@ func (s *DescribeDBProxyResponseBodyDBProxyConnectStringItemsDBProxyConnectStrin
 
 func (s *DescribeDBProxyResponseBodyDBProxyConnectStringItemsDBProxyConnectStringItems) SetDBProxyConnectString(v string) *DescribeDBProxyResponseBodyDBProxyConnectStringItemsDBProxyConnectStringItems {
 	s.DBProxyConnectString = &v
+	return s
+}
+
+type DescribeDBProxyResponseBodyDbProxyEndpointItems struct {
+	DbProxyEndpointItems []*DescribeDBProxyResponseBodyDbProxyEndpointItemsDbProxyEndpointItems `json:"DbProxyEndpointItems,omitempty" xml:"DbProxyEndpointItems,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDBProxyResponseBodyDbProxyEndpointItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBProxyResponseBodyDbProxyEndpointItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBProxyResponseBodyDbProxyEndpointItems) SetDbProxyEndpointItems(v []*DescribeDBProxyResponseBodyDbProxyEndpointItemsDbProxyEndpointItems) *DescribeDBProxyResponseBodyDbProxyEndpointItems {
+	s.DbProxyEndpointItems = v
+	return s
+}
+
+type DescribeDBProxyResponseBodyDbProxyEndpointItemsDbProxyEndpointItems struct {
+	DbProxyEndpointAliases *string `json:"DbProxyEndpointAliases,omitempty" xml:"DbProxyEndpointAliases,omitempty"`
+	DbProxyEndpointName    *string `json:"DbProxyEndpointName,omitempty" xml:"DbProxyEndpointName,omitempty"`
+	DbProxyEndpointType    *string `json:"DbProxyEndpointType,omitempty" xml:"DbProxyEndpointType,omitempty"`
+	DbProxyReadWriteMode   *string `json:"DbProxyReadWriteMode,omitempty" xml:"DbProxyReadWriteMode,omitempty"`
+}
+
+func (s DescribeDBProxyResponseBodyDbProxyEndpointItemsDbProxyEndpointItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBProxyResponseBodyDbProxyEndpointItemsDbProxyEndpointItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBProxyResponseBodyDbProxyEndpointItemsDbProxyEndpointItems) SetDbProxyEndpointAliases(v string) *DescribeDBProxyResponseBodyDbProxyEndpointItemsDbProxyEndpointItems {
+	s.DbProxyEndpointAliases = &v
+	return s
+}
+
+func (s *DescribeDBProxyResponseBodyDbProxyEndpointItemsDbProxyEndpointItems) SetDbProxyEndpointName(v string) *DescribeDBProxyResponseBodyDbProxyEndpointItemsDbProxyEndpointItems {
+	s.DbProxyEndpointName = &v
+	return s
+}
+
+func (s *DescribeDBProxyResponseBodyDbProxyEndpointItemsDbProxyEndpointItems) SetDbProxyEndpointType(v string) *DescribeDBProxyResponseBodyDbProxyEndpointItemsDbProxyEndpointItems {
+	s.DbProxyEndpointType = &v
+	return s
+}
+
+func (s *DescribeDBProxyResponseBodyDbProxyEndpointItemsDbProxyEndpointItems) SetDbProxyReadWriteMode(v string) *DescribeDBProxyResponseBodyDbProxyEndpointItemsDbProxyEndpointItems {
+	s.DbProxyReadWriteMode = &v
 	return s
 }
 
@@ -13289,18 +13802,18 @@ func (s *DescribeDBProxyEndpointRequest) SetRegionId(v string) *DescribeDBProxyE
 }
 
 type DescribeDBProxyEndpointResponseBody struct {
-	ReadOnlyInstanceDistributionType *string                                                  `json:"ReadOnlyInstanceDistributionType,omitempty" xml:"ReadOnlyInstanceDistributionType,omitempty"`
-	DbProxyEndpointReadWriteMode     *string                                                  `json:"DbProxyEndpointReadWriteMode,omitempty" xml:"DbProxyEndpointReadWriteMode,omitempty"`
-	DBProxyConnectString             *string                                                  `json:"DBProxyConnectString,omitempty" xml:"DBProxyConnectString,omitempty"`
-	RequestId                        *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	DBProxyEndpointId                *string                                                  `json:"DBProxyEndpointId,omitempty" xml:"DBProxyEndpointId,omitempty"`
-	DbProxyEndpointAliases           *string                                                  `json:"DbProxyEndpointAliases,omitempty" xml:"DbProxyEndpointAliases,omitempty"`
-	DBProxyFeatures                  *string                                                  `json:"DBProxyFeatures,omitempty" xml:"DBProxyFeatures,omitempty"`
-	ReadOnlyInstanceWeight           *string                                                  `json:"ReadOnlyInstanceWeight,omitempty" xml:"ReadOnlyInstanceWeight,omitempty"`
-	ReadOnlyInstanceMaxDelayTime     *string                                                  `json:"ReadOnlyInstanceMaxDelayTime,omitempty" xml:"ReadOnlyInstanceMaxDelayTime,omitempty"`
 	DBProxyConnectStringNetType      *string                                                  `json:"DBProxyConnectStringNetType,omitempty" xml:"DBProxyConnectStringNetType,omitempty"`
-	EndpointConnectItems             *DescribeDBProxyEndpointResponseBodyEndpointConnectItems `json:"EndpointConnectItems,omitempty" xml:"EndpointConnectItems,omitempty" type:"Struct"`
+	DBProxyFeatures                  *string                                                  `json:"DBProxyFeatures,omitempty" xml:"DBProxyFeatures,omitempty"`
+	RequestId                        *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ReadOnlyInstanceWeight           *string                                                  `json:"ReadOnlyInstanceWeight,omitempty" xml:"ReadOnlyInstanceWeight,omitempty"`
+	ReadOnlyInstanceDistributionType *string                                                  `json:"ReadOnlyInstanceDistributionType,omitempty" xml:"ReadOnlyInstanceDistributionType,omitempty"`
+	ReadOnlyInstanceMaxDelayTime     *string                                                  `json:"ReadOnlyInstanceMaxDelayTime,omitempty" xml:"ReadOnlyInstanceMaxDelayTime,omitempty"`
+	DbProxyEndpointReadWriteMode     *string                                                  `json:"DbProxyEndpointReadWriteMode,omitempty" xml:"DbProxyEndpointReadWriteMode,omitempty"`
+	DbProxyEndpointAliases           *string                                                  `json:"DbProxyEndpointAliases,omitempty" xml:"DbProxyEndpointAliases,omitempty"`
+	DBProxyEndpointId                *string                                                  `json:"DBProxyEndpointId,omitempty" xml:"DBProxyEndpointId,omitempty"`
 	DBProxyConnectStringPort         *string                                                  `json:"DBProxyConnectStringPort,omitempty" xml:"DBProxyConnectStringPort,omitempty"`
+	DBProxyConnectString             *string                                                  `json:"DBProxyConnectString,omitempty" xml:"DBProxyConnectString,omitempty"`
+	EndpointConnectItems             *DescribeDBProxyEndpointResponseBodyEndpointConnectItems `json:"EndpointConnectItems,omitempty" xml:"EndpointConnectItems,omitempty" type:"Struct"`
 }
 
 func (s DescribeDBProxyEndpointResponseBody) String() string {
@@ -13311,33 +13824,8 @@ func (s DescribeDBProxyEndpointResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDBProxyEndpointResponseBody) SetReadOnlyInstanceDistributionType(v string) *DescribeDBProxyEndpointResponseBody {
-	s.ReadOnlyInstanceDistributionType = &v
-	return s
-}
-
-func (s *DescribeDBProxyEndpointResponseBody) SetDbProxyEndpointReadWriteMode(v string) *DescribeDBProxyEndpointResponseBody {
-	s.DbProxyEndpointReadWriteMode = &v
-	return s
-}
-
-func (s *DescribeDBProxyEndpointResponseBody) SetDBProxyConnectString(v string) *DescribeDBProxyEndpointResponseBody {
-	s.DBProxyConnectString = &v
-	return s
-}
-
-func (s *DescribeDBProxyEndpointResponseBody) SetRequestId(v string) *DescribeDBProxyEndpointResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeDBProxyEndpointResponseBody) SetDBProxyEndpointId(v string) *DescribeDBProxyEndpointResponseBody {
-	s.DBProxyEndpointId = &v
-	return s
-}
-
-func (s *DescribeDBProxyEndpointResponseBody) SetDbProxyEndpointAliases(v string) *DescribeDBProxyEndpointResponseBody {
-	s.DbProxyEndpointAliases = &v
+func (s *DescribeDBProxyEndpointResponseBody) SetDBProxyConnectStringNetType(v string) *DescribeDBProxyEndpointResponseBody {
+	s.DBProxyConnectStringNetType = &v
 	return s
 }
 
@@ -13346,8 +13834,18 @@ func (s *DescribeDBProxyEndpointResponseBody) SetDBProxyFeatures(v string) *Desc
 	return s
 }
 
+func (s *DescribeDBProxyEndpointResponseBody) SetRequestId(v string) *DescribeDBProxyEndpointResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 func (s *DescribeDBProxyEndpointResponseBody) SetReadOnlyInstanceWeight(v string) *DescribeDBProxyEndpointResponseBody {
 	s.ReadOnlyInstanceWeight = &v
+	return s
+}
+
+func (s *DescribeDBProxyEndpointResponseBody) SetReadOnlyInstanceDistributionType(v string) *DescribeDBProxyEndpointResponseBody {
+	s.ReadOnlyInstanceDistributionType = &v
 	return s
 }
 
@@ -13356,18 +13854,33 @@ func (s *DescribeDBProxyEndpointResponseBody) SetReadOnlyInstanceMaxDelayTime(v 
 	return s
 }
 
-func (s *DescribeDBProxyEndpointResponseBody) SetDBProxyConnectStringNetType(v string) *DescribeDBProxyEndpointResponseBody {
-	s.DBProxyConnectStringNetType = &v
+func (s *DescribeDBProxyEndpointResponseBody) SetDbProxyEndpointReadWriteMode(v string) *DescribeDBProxyEndpointResponseBody {
+	s.DbProxyEndpointReadWriteMode = &v
 	return s
 }
 
-func (s *DescribeDBProxyEndpointResponseBody) SetEndpointConnectItems(v *DescribeDBProxyEndpointResponseBodyEndpointConnectItems) *DescribeDBProxyEndpointResponseBody {
-	s.EndpointConnectItems = v
+func (s *DescribeDBProxyEndpointResponseBody) SetDbProxyEndpointAliases(v string) *DescribeDBProxyEndpointResponseBody {
+	s.DbProxyEndpointAliases = &v
+	return s
+}
+
+func (s *DescribeDBProxyEndpointResponseBody) SetDBProxyEndpointId(v string) *DescribeDBProxyEndpointResponseBody {
+	s.DBProxyEndpointId = &v
 	return s
 }
 
 func (s *DescribeDBProxyEndpointResponseBody) SetDBProxyConnectStringPort(v string) *DescribeDBProxyEndpointResponseBody {
 	s.DBProxyConnectStringPort = &v
+	return s
+}
+
+func (s *DescribeDBProxyEndpointResponseBody) SetDBProxyConnectString(v string) *DescribeDBProxyEndpointResponseBody {
+	s.DBProxyConnectString = &v
+	return s
+}
+
+func (s *DescribeDBProxyEndpointResponseBody) SetEndpointConnectItems(v *DescribeDBProxyEndpointResponseBodyEndpointConnectItems) *DescribeDBProxyEndpointResponseBody {
+	s.EndpointConnectItems = v
 	return s
 }
 
@@ -13389,8 +13902,8 @@ func (s *DescribeDBProxyEndpointResponseBodyEndpointConnectItems) SetEndpointCon
 }
 
 type DescribeDBProxyEndpointResponseBodyEndpointConnectItemsEndpointConnectItems struct {
-	DbProxyEndpointConnectString *string `json:"DbProxyEndpointConnectString,omitempty" xml:"DbProxyEndpointConnectString,omitempty"`
 	DbProxyEndpointPort          *string `json:"DbProxyEndpointPort,omitempty" xml:"DbProxyEndpointPort,omitempty"`
+	DbProxyEndpointConnectString *string `json:"DbProxyEndpointConnectString,omitempty" xml:"DbProxyEndpointConnectString,omitempty"`
 	DbProxyEndpointNetType       *string `json:"DbProxyEndpointNetType,omitempty" xml:"DbProxyEndpointNetType,omitempty"`
 }
 
@@ -13402,13 +13915,13 @@ func (s DescribeDBProxyEndpointResponseBodyEndpointConnectItemsEndpointConnectIt
 	return s.String()
 }
 
-func (s *DescribeDBProxyEndpointResponseBodyEndpointConnectItemsEndpointConnectItems) SetDbProxyEndpointConnectString(v string) *DescribeDBProxyEndpointResponseBodyEndpointConnectItemsEndpointConnectItems {
-	s.DbProxyEndpointConnectString = &v
+func (s *DescribeDBProxyEndpointResponseBodyEndpointConnectItemsEndpointConnectItems) SetDbProxyEndpointPort(v string) *DescribeDBProxyEndpointResponseBodyEndpointConnectItemsEndpointConnectItems {
+	s.DbProxyEndpointPort = &v
 	return s
 }
 
-func (s *DescribeDBProxyEndpointResponseBodyEndpointConnectItemsEndpointConnectItems) SetDbProxyEndpointPort(v string) *DescribeDBProxyEndpointResponseBodyEndpointConnectItemsEndpointConnectItems {
-	s.DbProxyEndpointPort = &v
+func (s *DescribeDBProxyEndpointResponseBodyEndpointConnectItemsEndpointConnectItems) SetDbProxyEndpointConnectString(v string) *DescribeDBProxyEndpointResponseBodyEndpointConnectItemsEndpointConnectItems {
+	s.DbProxyEndpointConnectString = &v
 	return s
 }
 
@@ -13506,11 +14019,11 @@ func (s *DescribeDBProxyPerformanceRequest) SetMetricsName(v string) *DescribeDB
 }
 
 type DescribeDBProxyPerformanceResponseBody struct {
-	PerformanceKeys *DescribeDBProxyPerformanceResponseBodyPerformanceKeys `json:"PerformanceKeys,omitempty" xml:"PerformanceKeys,omitempty" type:"Struct"`
 	EndTime         *string                                                `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	RequestId       *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	DBInstanceId    *string                                                `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	StartTime       *string                                                `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	DBInstanceId    *string                                                `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	RequestId       *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PerformanceKeys *DescribeDBProxyPerformanceResponseBodyPerformanceKeys `json:"PerformanceKeys,omitempty" xml:"PerformanceKeys,omitempty" type:"Struct"`
 }
 
 func (s DescribeDBProxyPerformanceResponseBody) String() string {
@@ -13521,18 +14034,13 @@ func (s DescribeDBProxyPerformanceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDBProxyPerformanceResponseBody) SetPerformanceKeys(v *DescribeDBProxyPerformanceResponseBodyPerformanceKeys) *DescribeDBProxyPerformanceResponseBody {
-	s.PerformanceKeys = v
-	return s
-}
-
 func (s *DescribeDBProxyPerformanceResponseBody) SetEndTime(v string) *DescribeDBProxyPerformanceResponseBody {
 	s.EndTime = &v
 	return s
 }
 
-func (s *DescribeDBProxyPerformanceResponseBody) SetRequestId(v string) *DescribeDBProxyPerformanceResponseBody {
-	s.RequestId = &v
+func (s *DescribeDBProxyPerformanceResponseBody) SetStartTime(v string) *DescribeDBProxyPerformanceResponseBody {
+	s.StartTime = &v
 	return s
 }
 
@@ -13541,8 +14049,13 @@ func (s *DescribeDBProxyPerformanceResponseBody) SetDBInstanceId(v string) *Desc
 	return s
 }
 
-func (s *DescribeDBProxyPerformanceResponseBody) SetStartTime(v string) *DescribeDBProxyPerformanceResponseBody {
-	s.StartTime = &v
+func (s *DescribeDBProxyPerformanceResponseBody) SetRequestId(v string) *DescribeDBProxyPerformanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDBProxyPerformanceResponseBody) SetPerformanceKeys(v *DescribeDBProxyPerformanceResponseBodyPerformanceKeys) *DescribeDBProxyPerformanceResponseBody {
+	s.PerformanceKeys = v
 	return s
 }
 
@@ -13564,9 +14077,9 @@ func (s *DescribeDBProxyPerformanceResponseBodyPerformanceKeys) SetPerformanceKe
 }
 
 type DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceKey struct {
+	ValueFormat *string                                                                    `json:"ValueFormat,omitempty" xml:"ValueFormat,omitempty"`
 	Key         *string                                                                    `json:"Key,omitempty" xml:"Key,omitempty"`
 	Values      *DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceKeyValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Struct"`
-	ValueFormat *string                                                                    `json:"ValueFormat,omitempty" xml:"ValueFormat,omitempty"`
 }
 
 func (s DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceKey) String() string {
@@ -13577,6 +14090,11 @@ func (s DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceKey) GoS
 	return s.String()
 }
 
+func (s *DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceKey) SetValueFormat(v string) *DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceKey {
+	s.ValueFormat = &v
+	return s
+}
+
 func (s *DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceKey) SetKey(v string) *DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceKey {
 	s.Key = &v
 	return s
@@ -13584,11 +14102,6 @@ func (s *DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceKey) Se
 
 func (s *DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceKey) SetValues(v *DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceKeyValues) *DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceKey {
 	s.Values = v
-	return s
-}
-
-func (s *DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceKey) SetValueFormat(v string) *DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceKey {
-	s.ValueFormat = &v
 	return s
 }
 
@@ -13610,8 +14123,8 @@ func (s *DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceKeyValu
 }
 
 type DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceKeyValuesPerformanceValue struct {
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 	Date  *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceKeyValuesPerformanceValue) String() string {
@@ -13622,13 +14135,13 @@ func (s DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceKeyValue
 	return s.String()
 }
 
-func (s *DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceKeyValuesPerformanceValue) SetValue(v string) *DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceKeyValuesPerformanceValue {
-	s.Value = &v
+func (s *DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceKeyValuesPerformanceValue) SetDate(v string) *DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceKeyValuesPerformanceValue {
+	s.Date = &v
 	return s
 }
 
-func (s *DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceKeyValuesPerformanceValue) SetDate(v string) *DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceKeyValuesPerformanceValue {
-	s.Date = &v
+func (s *DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceKeyValuesPerformanceValue) SetValue(v string) *DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceKeyValuesPerformanceValue {
+	s.Value = &v
 	return s
 }
 
@@ -14032,14 +14545,13 @@ type DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHostGrou
 	MemAllocatedAmount                *float32                                                                                 `json:"MemAllocatedAmount,omitempty" xml:"MemAllocatedAmount,omitempty"`
 	CpuAllocationRatio                *int32                                                                                   `json:"CpuAllocationRatio,omitempty" xml:"CpuAllocationRatio,omitempty"`
 	MemAllocationRatio                *int32                                                                                   `json:"MemAllocationRatio,omitempty" xml:"MemAllocationRatio,omitempty"`
-	ZoneIDList                        *DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHostGroupsZoneIDList `json:"ZoneIDList,omitempty" xml:"ZoneIDList,omitempty" type:"Struct"`
-	MemAllocateRation                 *float32                                                                                 `json:"MemAllocateRation,omitempty" xml:"MemAllocateRation,omitempty"`
 	MemUtility                        *float32                                                                                 `json:"MemUtility,omitempty" xml:"MemUtility,omitempty"`
+	MemAllocateRation                 *float32                                                                                 `json:"MemAllocateRation,omitempty" xml:"MemAllocateRation,omitempty"`
 	CpuAllocatedAmount                *float32                                                                                 `json:"CpuAllocatedAmount,omitempty" xml:"CpuAllocatedAmount,omitempty"`
 	DedicatedHostGroupDesc            *string                                                                                  `json:"DedicatedHostGroupDesc,omitempty" xml:"DedicatedHostGroupDesc,omitempty"`
 	CpuAllocateRation                 *float32                                                                                 `json:"CpuAllocateRation,omitempty" xml:"CpuAllocateRation,omitempty"`
-	OpenPermission                    *string                                                                                  `json:"OpenPermission,omitempty" xml:"OpenPermission,omitempty"`
 	InstanceNumber                    *int32                                                                                   `json:"InstanceNumber,omitempty" xml:"InstanceNumber,omitempty"`
+	OpenPermission                    *string                                                                                  `json:"OpenPermission,omitempty" xml:"OpenPermission,omitempty"`
 	VPCId                             *string                                                                                  `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
 	DiskAllocatedAmount               *float32                                                                                 `json:"DiskAllocatedAmount,omitempty" xml:"DiskAllocatedAmount,omitempty"`
 	HostNumber                        *int32                                                                                   `json:"HostNumber,omitempty" xml:"HostNumber,omitempty"`
@@ -14049,6 +14561,7 @@ type DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHostGrou
 	DiskAllocationRatio               *int32                                                                                   `json:"DiskAllocationRatio,omitempty" xml:"DiskAllocationRatio,omitempty"`
 	BastionInstanceId                 *string                                                                                  `json:"BastionInstanceId,omitempty" xml:"BastionInstanceId,omitempty"`
 	HostReplacePolicy                 *string                                                                                  `json:"HostReplacePolicy,omitempty" xml:"HostReplacePolicy,omitempty"`
+	ZoneIDList                        *DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHostGroupsZoneIDList `json:"ZoneIDList,omitempty" xml:"ZoneIDList,omitempty" type:"Struct"`
 }
 
 func (s DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHostGroups) String() string {
@@ -14109,18 +14622,13 @@ func (s *DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHost
 	return s
 }
 
-func (s *DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHostGroups) SetZoneIDList(v *DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHostGroupsZoneIDList) *DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHostGroups {
-	s.ZoneIDList = v
+func (s *DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHostGroups) SetMemUtility(v float32) *DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHostGroups {
+	s.MemUtility = &v
 	return s
 }
 
 func (s *DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHostGroups) SetMemAllocateRation(v float32) *DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHostGroups {
 	s.MemAllocateRation = &v
-	return s
-}
-
-func (s *DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHostGroups) SetMemUtility(v float32) *DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHostGroups {
-	s.MemUtility = &v
 	return s
 }
 
@@ -14139,13 +14647,13 @@ func (s *DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHost
 	return s
 }
 
-func (s *DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHostGroups) SetOpenPermission(v string) *DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHostGroups {
-	s.OpenPermission = &v
+func (s *DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHostGroups) SetInstanceNumber(v int32) *DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHostGroups {
+	s.InstanceNumber = &v
 	return s
 }
 
-func (s *DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHostGroups) SetInstanceNumber(v int32) *DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHostGroups {
-	s.InstanceNumber = &v
+func (s *DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHostGroups) SetOpenPermission(v string) *DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHostGroups {
+	s.OpenPermission = &v
 	return s
 }
 
@@ -14191,6 +14699,11 @@ func (s *DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHost
 
 func (s *DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHostGroups) SetHostReplacePolicy(v string) *DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHostGroups {
 	s.HostReplacePolicy = &v
+	return s
+}
+
+func (s *DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHostGroups) SetZoneIDList(v *DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHostGroupsZoneIDList) *DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHostGroups {
+	s.ZoneIDList = v
 	return s
 }
 
@@ -14439,9 +14952,9 @@ func (s *DescribeDedicatedHostsRequest) SetDedicatedHostId(v string) *DescribeDe
 }
 
 type DescribeDedicatedHostsResponseBody struct {
-	DedicatedHosts       *DescribeDedicatedHostsResponseBodyDedicatedHosts `json:"DedicatedHosts,omitempty" xml:"DedicatedHosts,omitempty" type:"Struct"`
-	RequestId            *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DedicatedHostGroupId *string                                           `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
+	RequestId            *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	DedicatedHosts       *DescribeDedicatedHostsResponseBodyDedicatedHosts `json:"DedicatedHosts,omitempty" xml:"DedicatedHosts,omitempty" type:"Struct"`
 }
 
 func (s DescribeDedicatedHostsResponseBody) String() string {
@@ -14452,8 +14965,8 @@ func (s DescribeDedicatedHostsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDedicatedHostsResponseBody) SetDedicatedHosts(v *DescribeDedicatedHostsResponseBodyDedicatedHosts) *DescribeDedicatedHostsResponseBody {
-	s.DedicatedHosts = v
+func (s *DescribeDedicatedHostsResponseBody) SetDedicatedHostGroupId(v string) *DescribeDedicatedHostsResponseBody {
+	s.DedicatedHostGroupId = &v
 	return s
 }
 
@@ -14462,8 +14975,8 @@ func (s *DescribeDedicatedHostsResponseBody) SetRequestId(v string) *DescribeDed
 	return s
 }
 
-func (s *DescribeDedicatedHostsResponseBody) SetDedicatedHostGroupId(v string) *DescribeDedicatedHostsResponseBody {
-	s.DedicatedHostGroupId = &v
+func (s *DescribeDedicatedHostsResponseBody) SetDedicatedHosts(v *DescribeDedicatedHostsResponseBodyDedicatedHosts) *DescribeDedicatedHostsResponseBody {
+	s.DedicatedHosts = v
 	return s
 }
 
@@ -14498,15 +15011,15 @@ type DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHosts struct {
 	HostStatus           *string `json:"HostStatus,omitempty" xml:"HostStatus,omitempty"`
 	HostName             *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
 	HostCPU              *string `json:"HostCPU,omitempty" xml:"HostCPU,omitempty"`
-	CpuUsed              *string `json:"CpuUsed,omitempty" xml:"CpuUsed,omitempty"`
-	OpenPermission       *string `json:"OpenPermission,omitempty" xml:"OpenPermission,omitempty"`
 	InstanceNumber       *string `json:"InstanceNumber,omitempty" xml:"InstanceNumber,omitempty"`
+	OpenPermission       *string `json:"OpenPermission,omitempty" xml:"OpenPermission,omitempty"`
+	CpuUsed              *string `json:"CpuUsed,omitempty" xml:"CpuUsed,omitempty"`
 	VPCId                *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
 	HostClass            *string `json:"HostClass,omitempty" xml:"HostClass,omitempty"`
 	EndTime              *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	VSwitchId            *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	ZoneId               *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 	CPUAllocationRatio   *string `json:"CPUAllocationRatio,omitempty" xml:"CPUAllocationRatio,omitempty"`
+	ZoneId               *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 	ImageCategory        *string `json:"ImageCategory,omitempty" xml:"ImageCategory,omitempty"`
 	Engine               *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	DiskAllocationRatio  *string `json:"DiskAllocationRatio,omitempty" xml:"DiskAllocationRatio,omitempty"`
@@ -14588,8 +15101,8 @@ func (s *DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHosts) SetHost
 	return s
 }
 
-func (s *DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHosts) SetCpuUsed(v string) *DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHosts {
-	s.CpuUsed = &v
+func (s *DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHosts) SetInstanceNumber(v string) *DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHosts {
+	s.InstanceNumber = &v
 	return s
 }
 
@@ -14598,8 +15111,8 @@ func (s *DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHosts) SetOpen
 	return s
 }
 
-func (s *DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHosts) SetInstanceNumber(v string) *DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHosts {
-	s.InstanceNumber = &v
+func (s *DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHosts) SetCpuUsed(v string) *DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHosts {
+	s.CpuUsed = &v
 	return s
 }
 
@@ -14623,13 +15136,13 @@ func (s *DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHosts) SetVSwi
 	return s
 }
 
-func (s *DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHosts) SetZoneId(v string) *DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHosts {
-	s.ZoneId = &v
+func (s *DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHosts) SetCPUAllocationRatio(v string) *DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHosts {
+	s.CPUAllocationRatio = &v
 	return s
 }
 
-func (s *DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHosts) SetCPUAllocationRatio(v string) *DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHosts {
-	s.CPUAllocationRatio = &v
+func (s *DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHosts) SetZoneId(v string) *DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHosts {
+	s.ZoneId = &v
 	return s
 }
 
@@ -14758,10 +15271,10 @@ func (s *DescribeDetachedBackupsRequest) SetRegion(v string) *DescribeDetachedBa
 }
 
 type DescribeDetachedBackupsResponseBody struct {
-	TotalRecordCount *string                                   `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
-	PageRecordCount  *string                                   `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	RequestId        *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageNumber       *string                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	RequestId        *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageRecordCount  *string                                   `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	TotalRecordCount *string                                   `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 	Items            *DescribeDetachedBackupsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 }
 
@@ -14773,13 +15286,8 @@ func (s DescribeDetachedBackupsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDetachedBackupsResponseBody) SetTotalRecordCount(v string) *DescribeDetachedBackupsResponseBody {
-	s.TotalRecordCount = &v
-	return s
-}
-
-func (s *DescribeDetachedBackupsResponseBody) SetPageRecordCount(v string) *DescribeDetachedBackupsResponseBody {
-	s.PageRecordCount = &v
+func (s *DescribeDetachedBackupsResponseBody) SetPageNumber(v string) *DescribeDetachedBackupsResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -14788,8 +15296,13 @@ func (s *DescribeDetachedBackupsResponseBody) SetRequestId(v string) *DescribeDe
 	return s
 }
 
-func (s *DescribeDetachedBackupsResponseBody) SetPageNumber(v string) *DescribeDetachedBackupsResponseBody {
-	s.PageNumber = &v
+func (s *DescribeDetachedBackupsResponseBody) SetPageRecordCount(v string) *DescribeDetachedBackupsResponseBody {
+	s.PageRecordCount = &v
+	return s
+}
+
+func (s *DescribeDetachedBackupsResponseBody) SetTotalRecordCount(v string) *DescribeDetachedBackupsResponseBody {
+	s.TotalRecordCount = &v
 	return s
 }
 
@@ -14816,15 +15329,15 @@ func (s *DescribeDetachedBackupsResponseBodyItems) SetBackup(v []*DescribeDetach
 }
 
 type DescribeDetachedBackupsResponseBodyItemsBackup struct {
-	BackupStatus              *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
-	StoreStatus               *string `json:"StoreStatus,omitempty" xml:"StoreStatus,omitempty"`
 	ConsistentTime            *int64  `json:"ConsistentTime,omitempty" xml:"ConsistentTime,omitempty"`
-	BackupStartTime           *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
+	StoreStatus               *string `json:"StoreStatus,omitempty" xml:"StoreStatus,omitempty"`
+	BackupStatus              *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
 	BackupType                *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	BackupStartTime           *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
 	BackupDownloadURL         *string `json:"BackupDownloadURL,omitempty" xml:"BackupDownloadURL,omitempty"`
 	IsAvail                   *int32  `json:"IsAvail,omitempty" xml:"IsAvail,omitempty"`
-	BackupEndTime             *string `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
 	MetaStatus                *string `json:"MetaStatus,omitempty" xml:"MetaStatus,omitempty"`
+	BackupEndTime             *string `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
 	BackupId                  *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	HostInstanceID            *string `json:"HostInstanceID,omitempty" xml:"HostInstanceID,omitempty"`
 	BackupIntranetDownloadURL *string `json:"BackupIntranetDownloadURL,omitempty" xml:"BackupIntranetDownloadURL,omitempty"`
@@ -14842,8 +15355,8 @@ func (s DescribeDetachedBackupsResponseBodyItemsBackup) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDetachedBackupsResponseBodyItemsBackup) SetBackupStatus(v string) *DescribeDetachedBackupsResponseBodyItemsBackup {
-	s.BackupStatus = &v
+func (s *DescribeDetachedBackupsResponseBodyItemsBackup) SetConsistentTime(v int64) *DescribeDetachedBackupsResponseBodyItemsBackup {
+	s.ConsistentTime = &v
 	return s
 }
 
@@ -14852,18 +15365,18 @@ func (s *DescribeDetachedBackupsResponseBodyItemsBackup) SetStoreStatus(v string
 	return s
 }
 
-func (s *DescribeDetachedBackupsResponseBodyItemsBackup) SetConsistentTime(v int64) *DescribeDetachedBackupsResponseBodyItemsBackup {
-	s.ConsistentTime = &v
-	return s
-}
-
-func (s *DescribeDetachedBackupsResponseBodyItemsBackup) SetBackupStartTime(v string) *DescribeDetachedBackupsResponseBodyItemsBackup {
-	s.BackupStartTime = &v
+func (s *DescribeDetachedBackupsResponseBodyItemsBackup) SetBackupStatus(v string) *DescribeDetachedBackupsResponseBodyItemsBackup {
+	s.BackupStatus = &v
 	return s
 }
 
 func (s *DescribeDetachedBackupsResponseBodyItemsBackup) SetBackupType(v string) *DescribeDetachedBackupsResponseBodyItemsBackup {
 	s.BackupType = &v
+	return s
+}
+
+func (s *DescribeDetachedBackupsResponseBodyItemsBackup) SetBackupStartTime(v string) *DescribeDetachedBackupsResponseBodyItemsBackup {
+	s.BackupStartTime = &v
 	return s
 }
 
@@ -14877,13 +15390,13 @@ func (s *DescribeDetachedBackupsResponseBodyItemsBackup) SetIsAvail(v int32) *De
 	return s
 }
 
-func (s *DescribeDetachedBackupsResponseBodyItemsBackup) SetBackupEndTime(v string) *DescribeDetachedBackupsResponseBodyItemsBackup {
-	s.BackupEndTime = &v
+func (s *DescribeDetachedBackupsResponseBodyItemsBackup) SetMetaStatus(v string) *DescribeDetachedBackupsResponseBodyItemsBackup {
+	s.MetaStatus = &v
 	return s
 }
 
-func (s *DescribeDetachedBackupsResponseBodyItemsBackup) SetMetaStatus(v string) *DescribeDetachedBackupsResponseBodyItemsBackup {
-	s.MetaStatus = &v
+func (s *DescribeDetachedBackupsResponseBodyItemsBackup) SetBackupEndTime(v string) *DescribeDetachedBackupsResponseBodyItemsBackup {
+	s.BackupEndTime = &v
 	return s
 }
 
@@ -14987,8 +15500,8 @@ func (s *DescribeDiagnosticReportListResponseBody) SetReportList(v []*DescribeDi
 
 type DescribeDiagnosticReportListResponseBodyReportList struct {
 	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	DiagnosticTime *string `json:"DiagnosticTime,omitempty" xml:"DiagnosticTime,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	Score          *int32  `json:"Score,omitempty" xml:"Score,omitempty"`
 	DownloadURL    *string `json:"DownloadURL,omitempty" xml:"DownloadURL,omitempty"`
 }
@@ -15006,13 +15519,13 @@ func (s *DescribeDiagnosticReportListResponseBodyReportList) SetEndTime(v string
 	return s
 }
 
-func (s *DescribeDiagnosticReportListResponseBodyReportList) SetStartTime(v string) *DescribeDiagnosticReportListResponseBodyReportList {
-	s.StartTime = &v
+func (s *DescribeDiagnosticReportListResponseBodyReportList) SetDiagnosticTime(v string) *DescribeDiagnosticReportListResponseBodyReportList {
+	s.DiagnosticTime = &v
 	return s
 }
 
-func (s *DescribeDiagnosticReportListResponseBodyReportList) SetDiagnosticTime(v string) *DescribeDiagnosticReportListResponseBodyReportList {
-	s.DiagnosticTime = &v
+func (s *DescribeDiagnosticReportListResponseBodyReportList) SetStartTime(v string) *DescribeDiagnosticReportListResponseBodyReportList {
+	s.StartTime = &v
 	return s
 }
 
@@ -15103,8 +15616,8 @@ func (s *DescribeDTCSecurityIpHostsForSQLServerRequest) SetRegionId(v string) *D
 }
 
 type DescribeDTCSecurityIpHostsForSQLServerResponseBody struct {
-	RequestId     *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DBInstanceId  *string                                                  `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	RequestId     *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	IpHostPairNum *string                                                  `json:"IpHostPairNum,omitempty" xml:"IpHostPairNum,omitempty"`
 	Items         *DescribeDTCSecurityIpHostsForSQLServerResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 }
@@ -15117,13 +15630,13 @@ func (s DescribeDTCSecurityIpHostsForSQLServerResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDTCSecurityIpHostsForSQLServerResponseBody) SetRequestId(v string) *DescribeDTCSecurityIpHostsForSQLServerResponseBody {
-	s.RequestId = &v
+func (s *DescribeDTCSecurityIpHostsForSQLServerResponseBody) SetDBInstanceId(v string) *DescribeDTCSecurityIpHostsForSQLServerResponseBody {
+	s.DBInstanceId = &v
 	return s
 }
 
-func (s *DescribeDTCSecurityIpHostsForSQLServerResponseBody) SetDBInstanceId(v string) *DescribeDTCSecurityIpHostsForSQLServerResponseBody {
-	s.DBInstanceId = &v
+func (s *DescribeDTCSecurityIpHostsForSQLServerResponseBody) SetRequestId(v string) *DescribeDTCSecurityIpHostsForSQLServerResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -15266,10 +15779,10 @@ func (s *DescribeErrorLogsRequest) SetOwnerAccount(v string) *DescribeErrorLogsR
 }
 
 type DescribeErrorLogsResponseBody struct {
-	TotalRecordCount *int32                              `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
-	PageRecordCount  *int32                              `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	RequestId        *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageNumber       *int32                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	RequestId        *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageRecordCount  *int32                              `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	TotalRecordCount *int32                              `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 	Items            *DescribeErrorLogsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 }
 
@@ -15281,13 +15794,8 @@ func (s DescribeErrorLogsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeErrorLogsResponseBody) SetTotalRecordCount(v int32) *DescribeErrorLogsResponseBody {
-	s.TotalRecordCount = &v
-	return s
-}
-
-func (s *DescribeErrorLogsResponseBody) SetPageRecordCount(v int32) *DescribeErrorLogsResponseBody {
-	s.PageRecordCount = &v
+func (s *DescribeErrorLogsResponseBody) SetPageNumber(v int32) *DescribeErrorLogsResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -15296,8 +15804,13 @@ func (s *DescribeErrorLogsResponseBody) SetRequestId(v string) *DescribeErrorLog
 	return s
 }
 
-func (s *DescribeErrorLogsResponseBody) SetPageNumber(v int32) *DescribeErrorLogsResponseBody {
-	s.PageNumber = &v
+func (s *DescribeErrorLogsResponseBody) SetPageRecordCount(v int32) *DescribeErrorLogsResponseBody {
+	s.PageRecordCount = &v
+	return s
+}
+
+func (s *DescribeErrorLogsResponseBody) SetTotalRecordCount(v int32) *DescribeErrorLogsResponseBody {
+	s.TotalRecordCount = &v
 	return s
 }
 
@@ -15324,8 +15837,8 @@ func (s *DescribeErrorLogsResponseBodyItems) SetErrorLog(v []*DescribeErrorLogsR
 }
 
 type DescribeErrorLogsResponseBodyItemsErrorLog struct {
-	ErrorInfo  *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ErrorInfo  *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
 }
 
 func (s DescribeErrorLogsResponseBodyItemsErrorLog) String() string {
@@ -15336,13 +15849,13 @@ func (s DescribeErrorLogsResponseBodyItemsErrorLog) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeErrorLogsResponseBodyItemsErrorLog) SetErrorInfo(v string) *DescribeErrorLogsResponseBodyItemsErrorLog {
-	s.ErrorInfo = &v
+func (s *DescribeErrorLogsResponseBodyItemsErrorLog) SetCreateTime(v string) *DescribeErrorLogsResponseBodyItemsErrorLog {
+	s.CreateTime = &v
 	return s
 }
 
-func (s *DescribeErrorLogsResponseBodyItemsErrorLog) SetCreateTime(v string) *DescribeErrorLogsResponseBodyItemsErrorLog {
-	s.CreateTime = &v
+func (s *DescribeErrorLogsResponseBodyItemsErrorLog) SetErrorInfo(v string) *DescribeErrorLogsResponseBodyItemsErrorLog {
+	s.ErrorInfo = &v
 	return s
 }
 
@@ -15429,11 +15942,11 @@ func (s *DescribeEventsRequest) SetPageNumber(v int32) *DescribeEventsRequest {
 }
 
 type DescribeEventsResponseBody struct {
-	TotalRecordCount *int32                                `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
-	EventItems       *DescribeEventsResponseBodyEventItems `json:"EventItems,omitempty" xml:"EventItems,omitempty" type:"Struct"`
+	PageNumber       *int32                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	RequestId        *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageSize         *int32                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber       *int32                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalRecordCount *int32                                `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
+	EventItems       *DescribeEventsResponseBodyEventItems `json:"EventItems,omitempty" xml:"EventItems,omitempty" type:"Struct"`
 }
 
 func (s DescribeEventsResponseBody) String() string {
@@ -15444,13 +15957,8 @@ func (s DescribeEventsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeEventsResponseBody) SetTotalRecordCount(v int32) *DescribeEventsResponseBody {
-	s.TotalRecordCount = &v
-	return s
-}
-
-func (s *DescribeEventsResponseBody) SetEventItems(v *DescribeEventsResponseBodyEventItems) *DescribeEventsResponseBody {
-	s.EventItems = v
+func (s *DescribeEventsResponseBody) SetPageNumber(v int32) *DescribeEventsResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -15464,8 +15972,13 @@ func (s *DescribeEventsResponseBody) SetPageSize(v int32) *DescribeEventsRespons
 	return s
 }
 
-func (s *DescribeEventsResponseBody) SetPageNumber(v int32) *DescribeEventsResponseBody {
-	s.PageNumber = &v
+func (s *DescribeEventsResponseBody) SetTotalRecordCount(v int32) *DescribeEventsResponseBody {
+	s.TotalRecordCount = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBody) SetEventItems(v *DescribeEventsResponseBodyEventItems) *DescribeEventsResponseBody {
+	s.EventItems = v
 	return s
 }
 
@@ -15487,17 +16000,18 @@ func (s *DescribeEventsResponseBodyEventItems) SetEventItems(v []*DescribeEvents
 }
 
 type DescribeEventsResponseBodyEventItemsEventItems struct {
-	EventId         *int32  `json:"EventId,omitempty" xml:"EventId,omitempty"`
 	EventName       *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
 	EventTime       *string `json:"EventTime,omitempty" xml:"EventTime,omitempty"`
 	EventUserType   *string `json:"EventUserType,omitempty" xml:"EventUserType,omitempty"`
-	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	EventType       *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	EventRecordTime *string `json:"EventRecordTime,omitempty" xml:"EventRecordTime,omitempty"`
+	CallerUid       *int64  `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	EventId         *int32  `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	EventType       *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	EventPayload    *string `json:"EventPayload,omitempty" xml:"EventPayload,omitempty"`
 	EventReason     *string `json:"EventReason,omitempty" xml:"EventReason,omitempty"`
 	ResourceName    *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeEventsResponseBodyEventItemsEventItems) String() string {
@@ -15506,11 +16020,6 @@ func (s DescribeEventsResponseBodyEventItemsEventItems) String() string {
 
 func (s DescribeEventsResponseBodyEventItemsEventItems) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeEventsResponseBodyEventItemsEventItems) SetEventId(v int32) *DescribeEventsResponseBodyEventItemsEventItems {
-	s.EventId = &v
-	return s
 }
 
 func (s *DescribeEventsResponseBodyEventItemsEventItems) SetEventName(v string) *DescribeEventsResponseBodyEventItemsEventItems {
@@ -15528,8 +16037,23 @@ func (s *DescribeEventsResponseBodyEventItemsEventItems) SetEventUserType(v stri
 	return s
 }
 
-func (s *DescribeEventsResponseBodyEventItemsEventItems) SetResourceType(v string) *DescribeEventsResponseBodyEventItemsEventItems {
-	s.ResourceType = &v
+func (s *DescribeEventsResponseBodyEventItemsEventItems) SetEventRecordTime(v string) *DescribeEventsResponseBodyEventItemsEventItems {
+	s.EventRecordTime = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBodyEventItemsEventItems) SetCallerUid(v int64) *DescribeEventsResponseBodyEventItemsEventItems {
+	s.CallerUid = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBodyEventItemsEventItems) SetRegionId(v string) *DescribeEventsResponseBodyEventItemsEventItems {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBodyEventItemsEventItems) SetEventId(v int32) *DescribeEventsResponseBodyEventItemsEventItems {
+	s.EventId = &v
 	return s
 }
 
@@ -15538,8 +16062,8 @@ func (s *DescribeEventsResponseBodyEventItemsEventItems) SetEventType(v string) 
 	return s
 }
 
-func (s *DescribeEventsResponseBodyEventItemsEventItems) SetEventRecordTime(v string) *DescribeEventsResponseBodyEventItemsEventItems {
-	s.EventRecordTime = &v
+func (s *DescribeEventsResponseBodyEventItemsEventItems) SetResourceType(v string) *DescribeEventsResponseBodyEventItemsEventItems {
+	s.ResourceType = &v
 	return s
 }
 
@@ -15555,11 +16079,6 @@ func (s *DescribeEventsResponseBodyEventItemsEventItems) SetEventReason(v string
 
 func (s *DescribeEventsResponseBodyEventItemsEventItems) SetResourceName(v string) *DescribeEventsResponseBodyEventItemsEventItems {
 	s.ResourceName = &v
-	return s
-}
-
-func (s *DescribeEventsResponseBodyEventItemsEventItems) SetRegionId(v string) *DescribeEventsResponseBodyEventItemsEventItems {
-	s.RegionId = &v
 	return s
 }
 
@@ -15628,8 +16147,8 @@ func (s *DescribeHADiagnoseConfigRequest) SetRegionId(v string) *DescribeHADiagn
 }
 
 type DescribeHADiagnoseConfigResponseBody struct {
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TcpConnectionType *string `json:"TcpConnectionType,omitempty" xml:"TcpConnectionType,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeHADiagnoseConfigResponseBody) String() string {
@@ -15640,13 +16159,13 @@ func (s DescribeHADiagnoseConfigResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeHADiagnoseConfigResponseBody) SetRequestId(v string) *DescribeHADiagnoseConfigResponseBody {
-	s.RequestId = &v
+func (s *DescribeHADiagnoseConfigResponseBody) SetTcpConnectionType(v string) *DescribeHADiagnoseConfigResponseBody {
+	s.TcpConnectionType = &v
 	return s
 }
 
-func (s *DescribeHADiagnoseConfigResponseBody) SetTcpConnectionType(v string) *DescribeHADiagnoseConfigResponseBody {
-	s.TcpConnectionType = &v
+func (s *DescribeHADiagnoseConfigResponseBody) SetRequestId(v string) *DescribeHADiagnoseConfigResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -15716,8 +16235,8 @@ func (s *DescribeHASwitchConfigRequest) SetRegionId(v string) *DescribeHASwitchC
 
 type DescribeHASwitchConfigResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	HAConfig     *string `json:"HAConfig,omitempty" xml:"HAConfig,omitempty"`
 	ManualHATime *string `json:"ManualHATime,omitempty" xml:"ManualHATime,omitempty"`
+	HAConfig     *string `json:"HAConfig,omitempty" xml:"HAConfig,omitempty"`
 }
 
 func (s DescribeHASwitchConfigResponseBody) String() string {
@@ -15733,13 +16252,13 @@ func (s *DescribeHASwitchConfigResponseBody) SetRequestId(v string) *DescribeHAS
 	return s
 }
 
-func (s *DescribeHASwitchConfigResponseBody) SetHAConfig(v string) *DescribeHASwitchConfigResponseBody {
-	s.HAConfig = &v
+func (s *DescribeHASwitchConfigResponseBody) SetManualHATime(v string) *DescribeHASwitchConfigResponseBody {
+	s.ManualHATime = &v
 	return s
 }
 
-func (s *DescribeHASwitchConfigResponseBody) SetManualHATime(v string) *DescribeHASwitchConfigResponseBody {
-	s.ManualHATime = &v
+func (s *DescribeHASwitchConfigResponseBody) SetHAConfig(v string) *DescribeHASwitchConfigResponseBody {
+	s.HAConfig = &v
 	return s
 }
 
@@ -15838,10 +16357,10 @@ func (s *DescribeInstanceAutoRenewalAttributeRequest) SetOwnerAccount(v string) 
 }
 
 type DescribeInstanceAutoRenewalAttributeResponseBody struct {
-	TotalRecordCount *int32                                                 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
-	PageRecordCount  *int32                                                 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
 	RequestId        *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageNumber       *int32                                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageRecordCount  *int32                                                 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	TotalRecordCount *int32                                                 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 	Items            *DescribeInstanceAutoRenewalAttributeResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 }
 
@@ -15853,8 +16372,13 @@ func (s DescribeInstanceAutoRenewalAttributeResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeInstanceAutoRenewalAttributeResponseBody) SetTotalRecordCount(v int32) *DescribeInstanceAutoRenewalAttributeResponseBody {
-	s.TotalRecordCount = &v
+func (s *DescribeInstanceAutoRenewalAttributeResponseBody) SetRequestId(v string) *DescribeInstanceAutoRenewalAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeInstanceAutoRenewalAttributeResponseBody) SetPageNumber(v int32) *DescribeInstanceAutoRenewalAttributeResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -15863,13 +16387,8 @@ func (s *DescribeInstanceAutoRenewalAttributeResponseBody) SetPageRecordCount(v 
 	return s
 }
 
-func (s *DescribeInstanceAutoRenewalAttributeResponseBody) SetRequestId(v string) *DescribeInstanceAutoRenewalAttributeResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeInstanceAutoRenewalAttributeResponseBody) SetPageNumber(v int32) *DescribeInstanceAutoRenewalAttributeResponseBody {
-	s.PageNumber = &v
+func (s *DescribeInstanceAutoRenewalAttributeResponseBody) SetTotalRecordCount(v int32) *DescribeInstanceAutoRenewalAttributeResponseBody {
+	s.TotalRecordCount = &v
 	return s
 }
 
@@ -15897,9 +16416,9 @@ func (s *DescribeInstanceAutoRenewalAttributeResponseBodyItems) SetItem(v []*Des
 
 type DescribeInstanceAutoRenewalAttributeResponseBodyItemsItem struct {
 	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	AutoRenew    *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	Duration     *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	AutoRenew    *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -15916,11 +16435,6 @@ func (s *DescribeInstanceAutoRenewalAttributeResponseBodyItemsItem) SetStatus(v 
 	return s
 }
 
-func (s *DescribeInstanceAutoRenewalAttributeResponseBodyItemsItem) SetAutoRenew(v string) *DescribeInstanceAutoRenewalAttributeResponseBodyItemsItem {
-	s.AutoRenew = &v
-	return s
-}
-
 func (s *DescribeInstanceAutoRenewalAttributeResponseBodyItemsItem) SetDuration(v int32) *DescribeInstanceAutoRenewalAttributeResponseBodyItemsItem {
 	s.Duration = &v
 	return s
@@ -15928,6 +16442,11 @@ func (s *DescribeInstanceAutoRenewalAttributeResponseBodyItemsItem) SetDuration(
 
 func (s *DescribeInstanceAutoRenewalAttributeResponseBodyItemsItem) SetDBInstanceId(v string) *DescribeInstanceAutoRenewalAttributeResponseBodyItemsItem {
 	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeInstanceAutoRenewalAttributeResponseBodyItemsItem) SetAutoRenew(v string) *DescribeInstanceAutoRenewalAttributeResponseBodyItemsItem {
+	s.AutoRenew = &v
 	return s
 }
 
@@ -16001,21 +16520,21 @@ func (s *DescribeInstanceCrossBackupPolicyRequest) SetRegionId(v string) *Descri
 }
 
 type DescribeInstanceCrossBackupPolicyResponseBody struct {
-	LogBackupEnabled      *string `json:"LogBackupEnabled,omitempty" xml:"LogBackupEnabled,omitempty"`
-	EngineVersion         *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	BackupEnabledTime     *string `json:"BackupEnabledTime,omitempty" xml:"BackupEnabledTime,omitempty"`
-	DBInstanceStatus      *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
-	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	LogBackupEnabledTime  *string `json:"LogBackupEnabledTime,omitempty" xml:"LogBackupEnabledTime,omitempty"`
-	CrossBackupRegion     *string `json:"CrossBackupRegion,omitempty" xml:"CrossBackupRegion,omitempty"`
-	RetentType            *int32  `json:"RetentType,omitempty" xml:"RetentType,omitempty"`
-	LockMode              *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	Retention             *int32  `json:"Retention,omitempty" xml:"Retention,omitempty"`
 	BackupEnabled         *string `json:"BackupEnabled,omitempty" xml:"BackupEnabled,omitempty"`
-	CrossBackupType       *string `json:"CrossBackupType,omitempty" xml:"CrossBackupType,omitempty"`
-	DBInstanceId          *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DBInstanceStatus      *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
+	LockMode              *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	EngineVersion         *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	LogBackupEnabled      *string `json:"LogBackupEnabled,omitempty" xml:"LogBackupEnabled,omitempty"`
+	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RetentType            *int32  `json:"RetentType,omitempty" xml:"RetentType,omitempty"`
+	Retention             *int32  `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	CrossBackupType       *string `json:"CrossBackupType,omitempty" xml:"CrossBackupType,omitempty"`
+	CrossBackupRegion     *string `json:"CrossBackupRegion,omitempty" xml:"CrossBackupRegion,omitempty"`
+	DBInstanceId          *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	Engine                *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	BackupEnabledTime     *string `json:"BackupEnabledTime,omitempty" xml:"BackupEnabledTime,omitempty"`
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
 }
 
@@ -16027,53 +16546,8 @@ func (s DescribeInstanceCrossBackupPolicyResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeInstanceCrossBackupPolicyResponseBody) SetLogBackupEnabled(v string) *DescribeInstanceCrossBackupPolicyResponseBody {
-	s.LogBackupEnabled = &v
-	return s
-}
-
-func (s *DescribeInstanceCrossBackupPolicyResponseBody) SetEngineVersion(v string) *DescribeInstanceCrossBackupPolicyResponseBody {
-	s.EngineVersion = &v
-	return s
-}
-
-func (s *DescribeInstanceCrossBackupPolicyResponseBody) SetBackupEnabledTime(v string) *DescribeInstanceCrossBackupPolicyResponseBody {
-	s.BackupEnabledTime = &v
-	return s
-}
-
-func (s *DescribeInstanceCrossBackupPolicyResponseBody) SetDBInstanceStatus(v string) *DescribeInstanceCrossBackupPolicyResponseBody {
-	s.DBInstanceStatus = &v
-	return s
-}
-
-func (s *DescribeInstanceCrossBackupPolicyResponseBody) SetRequestId(v string) *DescribeInstanceCrossBackupPolicyResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *DescribeInstanceCrossBackupPolicyResponseBody) SetLogBackupEnabledTime(v string) *DescribeInstanceCrossBackupPolicyResponseBody {
 	s.LogBackupEnabledTime = &v
-	return s
-}
-
-func (s *DescribeInstanceCrossBackupPolicyResponseBody) SetCrossBackupRegion(v string) *DescribeInstanceCrossBackupPolicyResponseBody {
-	s.CrossBackupRegion = &v
-	return s
-}
-
-func (s *DescribeInstanceCrossBackupPolicyResponseBody) SetRetentType(v int32) *DescribeInstanceCrossBackupPolicyResponseBody {
-	s.RetentType = &v
-	return s
-}
-
-func (s *DescribeInstanceCrossBackupPolicyResponseBody) SetLockMode(v string) *DescribeInstanceCrossBackupPolicyResponseBody {
-	s.LockMode = &v
-	return s
-}
-
-func (s *DescribeInstanceCrossBackupPolicyResponseBody) SetRetention(v int32) *DescribeInstanceCrossBackupPolicyResponseBody {
-	s.Retention = &v
 	return s
 }
 
@@ -16082,13 +16556,18 @@ func (s *DescribeInstanceCrossBackupPolicyResponseBody) SetBackupEnabled(v strin
 	return s
 }
 
-func (s *DescribeInstanceCrossBackupPolicyResponseBody) SetCrossBackupType(v string) *DescribeInstanceCrossBackupPolicyResponseBody {
-	s.CrossBackupType = &v
+func (s *DescribeInstanceCrossBackupPolicyResponseBody) SetDBInstanceStatus(v string) *DescribeInstanceCrossBackupPolicyResponseBody {
+	s.DBInstanceStatus = &v
 	return s
 }
 
-func (s *DescribeInstanceCrossBackupPolicyResponseBody) SetDBInstanceId(v string) *DescribeInstanceCrossBackupPolicyResponseBody {
-	s.DBInstanceId = &v
+func (s *DescribeInstanceCrossBackupPolicyResponseBody) SetLockMode(v string) *DescribeInstanceCrossBackupPolicyResponseBody {
+	s.LockMode = &v
+	return s
+}
+
+func (s *DescribeInstanceCrossBackupPolicyResponseBody) SetEngineVersion(v string) *DescribeInstanceCrossBackupPolicyResponseBody {
+	s.EngineVersion = &v
 	return s
 }
 
@@ -16097,8 +16576,48 @@ func (s *DescribeInstanceCrossBackupPolicyResponseBody) SetRegionId(v string) *D
 	return s
 }
 
+func (s *DescribeInstanceCrossBackupPolicyResponseBody) SetLogBackupEnabled(v string) *DescribeInstanceCrossBackupPolicyResponseBody {
+	s.LogBackupEnabled = &v
+	return s
+}
+
+func (s *DescribeInstanceCrossBackupPolicyResponseBody) SetRequestId(v string) *DescribeInstanceCrossBackupPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeInstanceCrossBackupPolicyResponseBody) SetRetentType(v int32) *DescribeInstanceCrossBackupPolicyResponseBody {
+	s.RetentType = &v
+	return s
+}
+
+func (s *DescribeInstanceCrossBackupPolicyResponseBody) SetRetention(v int32) *DescribeInstanceCrossBackupPolicyResponseBody {
+	s.Retention = &v
+	return s
+}
+
+func (s *DescribeInstanceCrossBackupPolicyResponseBody) SetCrossBackupType(v string) *DescribeInstanceCrossBackupPolicyResponseBody {
+	s.CrossBackupType = &v
+	return s
+}
+
+func (s *DescribeInstanceCrossBackupPolicyResponseBody) SetCrossBackupRegion(v string) *DescribeInstanceCrossBackupPolicyResponseBody {
+	s.CrossBackupRegion = &v
+	return s
+}
+
+func (s *DescribeInstanceCrossBackupPolicyResponseBody) SetDBInstanceId(v string) *DescribeInstanceCrossBackupPolicyResponseBody {
+	s.DBInstanceId = &v
+	return s
+}
+
 func (s *DescribeInstanceCrossBackupPolicyResponseBody) SetEngine(v string) *DescribeInstanceCrossBackupPolicyResponseBody {
 	s.Engine = &v
+	return s
+}
+
+func (s *DescribeInstanceCrossBackupPolicyResponseBody) SetBackupEnabledTime(v string) *DescribeInstanceCrossBackupPolicyResponseBody {
+	s.BackupEnabledTime = &v
 	return s
 }
 
@@ -16172,9 +16691,9 @@ func (s *DescribeInstanceKeywordsRequest) SetOwnerAccount(v string) *DescribeIns
 }
 
 type DescribeInstanceKeywordsResponseBody struct {
+	Key       *string                                    `json:"Key,omitempty" xml:"Key,omitempty"`
 	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Words     *DescribeInstanceKeywordsResponseBodyWords `json:"Words,omitempty" xml:"Words,omitempty" type:"Struct"`
-	Key       *string                                    `json:"Key,omitempty" xml:"Key,omitempty"`
 }
 
 func (s DescribeInstanceKeywordsResponseBody) String() string {
@@ -16185,6 +16704,11 @@ func (s DescribeInstanceKeywordsResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeInstanceKeywordsResponseBody) SetKey(v string) *DescribeInstanceKeywordsResponseBody {
+	s.Key = &v
+	return s
+}
+
 func (s *DescribeInstanceKeywordsResponseBody) SetRequestId(v string) *DescribeInstanceKeywordsResponseBody {
 	s.RequestId = &v
 	return s
@@ -16192,11 +16716,6 @@ func (s *DescribeInstanceKeywordsResponseBody) SetRequestId(v string) *DescribeI
 
 func (s *DescribeInstanceKeywordsResponseBody) SetWords(v *DescribeInstanceKeywordsResponseBodyWords) *DescribeInstanceKeywordsResponseBody {
 	s.Words = v
-	return s
-}
-
-func (s *DescribeInstanceKeywordsResponseBody) SetKey(v string) *DescribeInstanceKeywordsResponseBody {
-	s.Key = &v
 	return s
 }
 
@@ -16283,9 +16802,9 @@ func (s *DescribeLocalAvailableRecoveryTimeRequest) SetRegion(v string) *Describ
 
 type DescribeLocalAvailableRecoveryTimeResponseBody struct {
 	RecoveryEndTime   *string `json:"RecoveryEndTime,omitempty" xml:"RecoveryEndTime,omitempty"`
-	RecoveryBeginTime *string `json:"RecoveryBeginTime,omitempty" xml:"RecoveryBeginTime,omitempty"`
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RecoveryBeginTime *string `json:"RecoveryBeginTime,omitempty" xml:"RecoveryBeginTime,omitempty"`
 }
 
 func (s DescribeLocalAvailableRecoveryTimeResponseBody) String() string {
@@ -16301,8 +16820,8 @@ func (s *DescribeLocalAvailableRecoveryTimeResponseBody) SetRecoveryEndTime(v st
 	return s
 }
 
-func (s *DescribeLocalAvailableRecoveryTimeResponseBody) SetRecoveryBeginTime(v string) *DescribeLocalAvailableRecoveryTimeResponseBody {
-	s.RecoveryBeginTime = &v
+func (s *DescribeLocalAvailableRecoveryTimeResponseBody) SetDBInstanceId(v string) *DescribeLocalAvailableRecoveryTimeResponseBody {
+	s.DBInstanceId = &v
 	return s
 }
 
@@ -16311,8 +16830,8 @@ func (s *DescribeLocalAvailableRecoveryTimeResponseBody) SetRequestId(v string) 
 	return s
 }
 
-func (s *DescribeLocalAvailableRecoveryTimeResponseBody) SetDBInstanceId(v string) *DescribeLocalAvailableRecoveryTimeResponseBody {
-	s.DBInstanceId = &v
+func (s *DescribeLocalAvailableRecoveryTimeResponseBody) SetRecoveryBeginTime(v string) *DescribeLocalAvailableRecoveryTimeResponseBody {
+	s.RecoveryBeginTime = &v
 	return s
 }
 
@@ -16405,11 +16924,11 @@ func (s *DescribeLogBackupFilesRequest) SetOwnerAccount(v string) *DescribeLogBa
 }
 
 type DescribeLogBackupFilesResponseBody struct {
-	TotalRecordCount *int32                                   `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
-	PageRecordCount  *int32                                   `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	RequestId        *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNumber       *int32                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	TotalFileSize    *int64                                   `json:"TotalFileSize,omitempty" xml:"TotalFileSize,omitempty"`
+	PageNumber       *int32                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	RequestId        *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageRecordCount  *int32                                   `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	TotalRecordCount *int32                                   `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 	Items            *DescribeLogBackupFilesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 }
 
@@ -16421,18 +16940,8 @@ func (s DescribeLogBackupFilesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeLogBackupFilesResponseBody) SetTotalRecordCount(v int32) *DescribeLogBackupFilesResponseBody {
-	s.TotalRecordCount = &v
-	return s
-}
-
-func (s *DescribeLogBackupFilesResponseBody) SetPageRecordCount(v int32) *DescribeLogBackupFilesResponseBody {
-	s.PageRecordCount = &v
-	return s
-}
-
-func (s *DescribeLogBackupFilesResponseBody) SetRequestId(v string) *DescribeLogBackupFilesResponseBody {
-	s.RequestId = &v
+func (s *DescribeLogBackupFilesResponseBody) SetTotalFileSize(v int64) *DescribeLogBackupFilesResponseBody {
+	s.TotalFileSize = &v
 	return s
 }
 
@@ -16441,8 +16950,18 @@ func (s *DescribeLogBackupFilesResponseBody) SetPageNumber(v int32) *DescribeLog
 	return s
 }
 
-func (s *DescribeLogBackupFilesResponseBody) SetTotalFileSize(v int64) *DescribeLogBackupFilesResponseBody {
-	s.TotalFileSize = &v
+func (s *DescribeLogBackupFilesResponseBody) SetRequestId(v string) *DescribeLogBackupFilesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeLogBackupFilesResponseBody) SetPageRecordCount(v int32) *DescribeLogBackupFilesResponseBody {
+	s.PageRecordCount = &v
+	return s
+}
+
+func (s *DescribeLogBackupFilesResponseBody) SetTotalRecordCount(v int32) *DescribeLogBackupFilesResponseBody {
+	s.TotalRecordCount = &v
 	return s
 }
 
@@ -16622,13 +17141,13 @@ func (s *DescribeMetaListRequest) SetPageIndex(v int32) *DescribeMetaListRequest
 }
 
 type DescribeMetaListResponseBody struct {
+	DBInstanceName   *string                            `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	TotalPageCount   *int32                             `json:"TotalPageCount,omitempty" xml:"TotalPageCount,omitempty"`
-	TotalRecordCount *int32                             `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
-	PageRecordCount  *int32                             `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
 	RequestId        *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageRecordCount  *int32                             `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	TotalRecordCount *int32                             `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 	PageNumber       *int32                             `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	Items            *DescribeMetaListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	DBInstanceName   *string                            `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 }
 
 func (s DescribeMetaListResponseBody) String() string {
@@ -16639,13 +17158,18 @@ func (s DescribeMetaListResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeMetaListResponseBody) SetDBInstanceName(v string) *DescribeMetaListResponseBody {
+	s.DBInstanceName = &v
+	return s
+}
+
 func (s *DescribeMetaListResponseBody) SetTotalPageCount(v int32) *DescribeMetaListResponseBody {
 	s.TotalPageCount = &v
 	return s
 }
 
-func (s *DescribeMetaListResponseBody) SetTotalRecordCount(v int32) *DescribeMetaListResponseBody {
-	s.TotalRecordCount = &v
+func (s *DescribeMetaListResponseBody) SetRequestId(v string) *DescribeMetaListResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -16654,8 +17178,8 @@ func (s *DescribeMetaListResponseBody) SetPageRecordCount(v int32) *DescribeMeta
 	return s
 }
 
-func (s *DescribeMetaListResponseBody) SetRequestId(v string) *DescribeMetaListResponseBody {
-	s.RequestId = &v
+func (s *DescribeMetaListResponseBody) SetTotalRecordCount(v int32) *DescribeMetaListResponseBody {
+	s.TotalRecordCount = &v
 	return s
 }
 
@@ -16666,11 +17190,6 @@ func (s *DescribeMetaListResponseBody) SetPageNumber(v int32) *DescribeMetaListR
 
 func (s *DescribeMetaListResponseBody) SetItems(v *DescribeMetaListResponseBodyItems) *DescribeMetaListResponseBody {
 	s.Items = v
-	return s
-}
-
-func (s *DescribeMetaListResponseBody) SetDBInstanceName(v string) *DescribeMetaListResponseBody {
-	s.DBInstanceName = &v
 	return s
 }
 
@@ -16692,9 +17211,9 @@ func (s *DescribeMetaListResponseBodyItems) SetMeta(v []*DescribeMetaListRespons
 }
 
 type DescribeMetaListResponseBodyItemsMeta struct {
+	Tables   *string `json:"Tables,omitempty" xml:"Tables,omitempty"`
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
 	Size     *string `json:"Size,omitempty" xml:"Size,omitempty"`
-	Tables   *string `json:"Tables,omitempty" xml:"Tables,omitempty"`
 }
 
 func (s DescribeMetaListResponseBodyItemsMeta) String() string {
@@ -16705,6 +17224,11 @@ func (s DescribeMetaListResponseBodyItemsMeta) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeMetaListResponseBodyItemsMeta) SetTables(v string) *DescribeMetaListResponseBodyItemsMeta {
+	s.Tables = &v
+	return s
+}
+
 func (s *DescribeMetaListResponseBodyItemsMeta) SetDatabase(v string) *DescribeMetaListResponseBodyItemsMeta {
 	s.Database = &v
 	return s
@@ -16712,11 +17236,6 @@ func (s *DescribeMetaListResponseBodyItemsMeta) SetDatabase(v string) *DescribeM
 
 func (s *DescribeMetaListResponseBodyItemsMeta) SetSize(v string) *DescribeMetaListResponseBodyItemsMeta {
 	s.Size = &v
-	return s
-}
-
-func (s *DescribeMetaListResponseBodyItemsMeta) SetTables(v string) *DescribeMetaListResponseBodyItemsMeta {
-	s.Tables = &v
 	return s
 }
 
@@ -16786,15 +17305,15 @@ func (s *DescribeMigrateTaskByIdRequest) SetMigrateTaskId(v string) *DescribeMig
 
 type DescribeMigrateTaskByIdResponseBody struct {
 	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	MigrateTaskId  *string `json:"MigrateTaskId,omitempty" xml:"MigrateTaskId,omitempty"`
-	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	BackupMode     *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
-	IsDBReplaced   *string `json:"IsDBReplaced,omitempty" xml:"IsDBReplaced,omitempty"`
-	DBName         *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DBName         *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	BackupMode     *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
+	MigrateTaskId  *string `json:"MigrateTaskId,omitempty" xml:"MigrateTaskId,omitempty"`
+	IsDBReplaced   *string `json:"IsDBReplaced,omitempty" xml:"IsDBReplaced,omitempty"`
 }
 
 func (s DescribeMigrateTaskByIdResponseBody) String() string {
@@ -16810,13 +17329,13 @@ func (s *DescribeMigrateTaskByIdResponseBody) SetStatus(v string) *DescribeMigra
 	return s
 }
 
-func (s *DescribeMigrateTaskByIdResponseBody) SetDescription(v string) *DescribeMigrateTaskByIdResponseBody {
-	s.Description = &v
+func (s *DescribeMigrateTaskByIdResponseBody) SetEndTime(v string) *DescribeMigrateTaskByIdResponseBody {
+	s.EndTime = &v
 	return s
 }
 
-func (s *DescribeMigrateTaskByIdResponseBody) SetEndTime(v string) *DescribeMigrateTaskByIdResponseBody {
-	s.EndTime = &v
+func (s *DescribeMigrateTaskByIdResponseBody) SetDBInstanceName(v string) *DescribeMigrateTaskByIdResponseBody {
+	s.DBInstanceName = &v
 	return s
 }
 
@@ -16825,8 +17344,8 @@ func (s *DescribeMigrateTaskByIdResponseBody) SetRequestId(v string) *DescribeMi
 	return s
 }
 
-func (s *DescribeMigrateTaskByIdResponseBody) SetMigrateTaskId(v string) *DescribeMigrateTaskByIdResponseBody {
-	s.MigrateTaskId = &v
+func (s *DescribeMigrateTaskByIdResponseBody) SetDescription(v string) *DescribeMigrateTaskByIdResponseBody {
+	s.Description = &v
 	return s
 }
 
@@ -16835,23 +17354,23 @@ func (s *DescribeMigrateTaskByIdResponseBody) SetCreateTime(v string) *DescribeM
 	return s
 }
 
-func (s *DescribeMigrateTaskByIdResponseBody) SetBackupMode(v string) *DescribeMigrateTaskByIdResponseBody {
-	s.BackupMode = &v
-	return s
-}
-
-func (s *DescribeMigrateTaskByIdResponseBody) SetIsDBReplaced(v string) *DescribeMigrateTaskByIdResponseBody {
-	s.IsDBReplaced = &v
-	return s
-}
-
 func (s *DescribeMigrateTaskByIdResponseBody) SetDBName(v string) *DescribeMigrateTaskByIdResponseBody {
 	s.DBName = &v
 	return s
 }
 
-func (s *DescribeMigrateTaskByIdResponseBody) SetDBInstanceName(v string) *DescribeMigrateTaskByIdResponseBody {
-	s.DBInstanceName = &v
+func (s *DescribeMigrateTaskByIdResponseBody) SetBackupMode(v string) *DescribeMigrateTaskByIdResponseBody {
+	s.BackupMode = &v
+	return s
+}
+
+func (s *DescribeMigrateTaskByIdResponseBody) SetMigrateTaskId(v string) *DescribeMigrateTaskByIdResponseBody {
+	s.MigrateTaskId = &v
+	return s
+}
+
+func (s *DescribeMigrateTaskByIdResponseBody) SetIsDBReplaced(v string) *DescribeMigrateTaskByIdResponseBody {
+	s.IsDBReplaced = &v
 	return s
 }
 
@@ -16938,11 +17457,11 @@ func (s *DescribeMigrateTasksRequest) SetPageNumber(v int32) *DescribeMigrateTas
 }
 
 type DescribeMigrateTasksResponseBody struct {
-	TotalRecordCount *int32                                 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
-	PageRecordCount  *int32                                 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	RequestId        *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DBInstanceId     *string                                `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	PageNumber       *int32                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	RequestId        *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageRecordCount  *int32                                 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	TotalRecordCount *int32                                 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 	Items            *DescribeMigrateTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 }
 
@@ -16954,13 +17473,13 @@ func (s DescribeMigrateTasksResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeMigrateTasksResponseBody) SetTotalRecordCount(v int32) *DescribeMigrateTasksResponseBody {
-	s.TotalRecordCount = &v
+func (s *DescribeMigrateTasksResponseBody) SetDBInstanceId(v string) *DescribeMigrateTasksResponseBody {
+	s.DBInstanceId = &v
 	return s
 }
 
-func (s *DescribeMigrateTasksResponseBody) SetPageRecordCount(v int32) *DescribeMigrateTasksResponseBody {
-	s.PageRecordCount = &v
+func (s *DescribeMigrateTasksResponseBody) SetPageNumber(v int32) *DescribeMigrateTasksResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -16969,13 +17488,13 @@ func (s *DescribeMigrateTasksResponseBody) SetRequestId(v string) *DescribeMigra
 	return s
 }
 
-func (s *DescribeMigrateTasksResponseBody) SetDBInstanceId(v string) *DescribeMigrateTasksResponseBody {
-	s.DBInstanceId = &v
+func (s *DescribeMigrateTasksResponseBody) SetPageRecordCount(v int32) *DescribeMigrateTasksResponseBody {
+	s.PageRecordCount = &v
 	return s
 }
 
-func (s *DescribeMigrateTasksResponseBody) SetPageNumber(v int32) *DescribeMigrateTasksResponseBody {
-	s.PageNumber = &v
+func (s *DescribeMigrateTasksResponseBody) SetTotalRecordCount(v int32) *DescribeMigrateTasksResponseBody {
+	s.TotalRecordCount = &v
 	return s
 }
 
@@ -17143,15 +17662,15 @@ func (s *DescribeMigrateTasksForSQLServerRequest) SetPageNumber(v int32) *Descri
 }
 
 type DescribeMigrateTasksForSQLServerResponseBody struct {
-	TotalRecordCount *int32                                             `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
-	PageRecordCount  *int32                                             `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
 	EndTime          *string                                            `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	DBInstanceName   *string                                            `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	StartTime        *string                                            `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	RequestId        *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageRecordCount  *int32                                             `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	TotalRecordCount *int32                                             `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 	DBInstanceID     *string                                            `json:"DBInstanceID,omitempty" xml:"DBInstanceID,omitempty"`
 	PageNumber       *int32                                             `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	StartTime        *string                                            `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	Items            *DescribeMigrateTasksForSQLServerResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	DBInstanceName   *string                                            `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 }
 
 func (s DescribeMigrateTasksForSQLServerResponseBody) String() string {
@@ -17162,8 +17681,23 @@ func (s DescribeMigrateTasksForSQLServerResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeMigrateTasksForSQLServerResponseBody) SetTotalRecordCount(v int32) *DescribeMigrateTasksForSQLServerResponseBody {
-	s.TotalRecordCount = &v
+func (s *DescribeMigrateTasksForSQLServerResponseBody) SetEndTime(v string) *DescribeMigrateTasksForSQLServerResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeMigrateTasksForSQLServerResponseBody) SetDBInstanceName(v string) *DescribeMigrateTasksForSQLServerResponseBody {
+	s.DBInstanceName = &v
+	return s
+}
+
+func (s *DescribeMigrateTasksForSQLServerResponseBody) SetStartTime(v string) *DescribeMigrateTasksForSQLServerResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeMigrateTasksForSQLServerResponseBody) SetRequestId(v string) *DescribeMigrateTasksForSQLServerResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -17172,13 +17706,8 @@ func (s *DescribeMigrateTasksForSQLServerResponseBody) SetPageRecordCount(v int3
 	return s
 }
 
-func (s *DescribeMigrateTasksForSQLServerResponseBody) SetEndTime(v string) *DescribeMigrateTasksForSQLServerResponseBody {
-	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeMigrateTasksForSQLServerResponseBody) SetRequestId(v string) *DescribeMigrateTasksForSQLServerResponseBody {
-	s.RequestId = &v
+func (s *DescribeMigrateTasksForSQLServerResponseBody) SetTotalRecordCount(v int32) *DescribeMigrateTasksForSQLServerResponseBody {
+	s.TotalRecordCount = &v
 	return s
 }
 
@@ -17192,18 +17721,8 @@ func (s *DescribeMigrateTasksForSQLServerResponseBody) SetPageNumber(v int32) *D
 	return s
 }
 
-func (s *DescribeMigrateTasksForSQLServerResponseBody) SetStartTime(v string) *DescribeMigrateTasksForSQLServerResponseBody {
-	s.StartTime = &v
-	return s
-}
-
 func (s *DescribeMigrateTasksForSQLServerResponseBody) SetItems(v *DescribeMigrateTasksForSQLServerResponseBodyItems) *DescribeMigrateTasksForSQLServerResponseBody {
 	s.Items = v
-	return s
-}
-
-func (s *DescribeMigrateTasksForSQLServerResponseBody) SetDBInstanceName(v string) *DescribeMigrateTasksForSQLServerResponseBody {
-	s.DBInstanceName = &v
 	return s
 }
 
@@ -17372,14 +17891,14 @@ func (s *DescribeModifyParameterLogRequest) SetOwnerAccount(v string) *DescribeM
 }
 
 type DescribeModifyParameterLogResponseBody struct {
-	TotalRecordCount *int32                                       `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
-	PageRecordCount  *int32                                       `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	EngineVersion    *string                                      `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	RequestId        *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageRecordCount  *int32                                       `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	TotalRecordCount *int32                                       `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 	DBInstanceId     *string                                      `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	PageNumber       *int32                                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	Items            *DescribeModifyParameterLogResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	Engine           *string                                      `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	PageNumber       *int32                                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	EngineVersion    *string                                      `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	Items            *DescribeModifyParameterLogResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 }
 
 func (s DescribeModifyParameterLogResponseBody) String() string {
@@ -17390,8 +17909,8 @@ func (s DescribeModifyParameterLogResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeModifyParameterLogResponseBody) SetTotalRecordCount(v int32) *DescribeModifyParameterLogResponseBody {
-	s.TotalRecordCount = &v
+func (s *DescribeModifyParameterLogResponseBody) SetRequestId(v string) *DescribeModifyParameterLogResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -17400,13 +17919,8 @@ func (s *DescribeModifyParameterLogResponseBody) SetPageRecordCount(v int32) *De
 	return s
 }
 
-func (s *DescribeModifyParameterLogResponseBody) SetEngineVersion(v string) *DescribeModifyParameterLogResponseBody {
-	s.EngineVersion = &v
-	return s
-}
-
-func (s *DescribeModifyParameterLogResponseBody) SetRequestId(v string) *DescribeModifyParameterLogResponseBody {
-	s.RequestId = &v
+func (s *DescribeModifyParameterLogResponseBody) SetTotalRecordCount(v int32) *DescribeModifyParameterLogResponseBody {
+	s.TotalRecordCount = &v
 	return s
 }
 
@@ -17415,18 +17929,23 @@ func (s *DescribeModifyParameterLogResponseBody) SetDBInstanceId(v string) *Desc
 	return s
 }
 
+func (s *DescribeModifyParameterLogResponseBody) SetEngine(v string) *DescribeModifyParameterLogResponseBody {
+	s.Engine = &v
+	return s
+}
+
 func (s *DescribeModifyParameterLogResponseBody) SetPageNumber(v int32) *DescribeModifyParameterLogResponseBody {
 	s.PageNumber = &v
 	return s
 }
 
-func (s *DescribeModifyParameterLogResponseBody) SetItems(v *DescribeModifyParameterLogResponseBodyItems) *DescribeModifyParameterLogResponseBody {
-	s.Items = v
+func (s *DescribeModifyParameterLogResponseBody) SetEngineVersion(v string) *DescribeModifyParameterLogResponseBody {
+	s.EngineVersion = &v
 	return s
 }
 
-func (s *DescribeModifyParameterLogResponseBody) SetEngine(v string) *DescribeModifyParameterLogResponseBody {
-	s.Engine = &v
+func (s *DescribeModifyParameterLogResponseBody) SetItems(v *DescribeModifyParameterLogResponseBodyItems) *DescribeModifyParameterLogResponseBody {
+	s.Items = v
 	return s
 }
 
@@ -17449,8 +17968,8 @@ func (s *DescribeModifyParameterLogResponseBodyItems) SetParameterChangeLog(v []
 
 type DescribeModifyParameterLogResponseBodyItemsParameterChangeLog struct {
 	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	ParameterName     *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
 	OldParameterValue *string `json:"OldParameterValue,omitempty" xml:"OldParameterValue,omitempty"`
+	ParameterName     *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
 	NewParameterValue *string `json:"NewParameterValue,omitempty" xml:"NewParameterValue,omitempty"`
 	ModifyTime        *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 }
@@ -17468,13 +17987,13 @@ func (s *DescribeModifyParameterLogResponseBodyItemsParameterChangeLog) SetStatu
 	return s
 }
 
-func (s *DescribeModifyParameterLogResponseBodyItemsParameterChangeLog) SetParameterName(v string) *DescribeModifyParameterLogResponseBodyItemsParameterChangeLog {
-	s.ParameterName = &v
+func (s *DescribeModifyParameterLogResponseBodyItemsParameterChangeLog) SetOldParameterValue(v string) *DescribeModifyParameterLogResponseBodyItemsParameterChangeLog {
+	s.OldParameterValue = &v
 	return s
 }
 
-func (s *DescribeModifyParameterLogResponseBodyItemsParameterChangeLog) SetOldParameterValue(v string) *DescribeModifyParameterLogResponseBodyItemsParameterChangeLog {
-	s.OldParameterValue = &v
+func (s *DescribeModifyParameterLogResponseBodyItemsParameterChangeLog) SetParameterName(v string) *DescribeModifyParameterLogResponseBodyItemsParameterChangeLog {
+	s.ParameterName = &v
 	return s
 }
 
@@ -17553,8 +18072,8 @@ func (s *DescribeOssDownloadsRequest) SetMigrateTaskId(v string) *DescribeOssDow
 }
 
 type DescribeOssDownloadsResponseBody struct {
-	RequestId     *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DBInstanceId  *string                                `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	RequestId     *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	MigrateTaskId *string                                `json:"MigrateTaskId,omitempty" xml:"MigrateTaskId,omitempty"`
 	Items         *DescribeOssDownloadsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 }
@@ -17567,13 +18086,13 @@ func (s DescribeOssDownloadsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeOssDownloadsResponseBody) SetRequestId(v string) *DescribeOssDownloadsResponseBody {
-	s.RequestId = &v
+func (s *DescribeOssDownloadsResponseBody) SetDBInstanceId(v string) *DescribeOssDownloadsResponseBody {
+	s.DBInstanceId = &v
 	return s
 }
 
-func (s *DescribeOssDownloadsResponseBody) SetDBInstanceId(v string) *DescribeOssDownloadsResponseBody {
-	s.DBInstanceId = &v
+func (s *DescribeOssDownloadsResponseBody) SetRequestId(v string) *DescribeOssDownloadsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -17897,8 +18416,8 @@ func (s *DescribeParameterGroupRequest) SetRegionId(v string) *DescribeParameter
 }
 
 type DescribeParameterGroupResponseBody struct {
-	ParamGroup *DescribeParameterGroupResponseBodyParamGroup `json:"ParamGroup,omitempty" xml:"ParamGroup,omitempty" type:"Struct"`
 	RequestId  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ParamGroup *DescribeParameterGroupResponseBodyParamGroup `json:"ParamGroup,omitempty" xml:"ParamGroup,omitempty" type:"Struct"`
 }
 
 func (s DescribeParameterGroupResponseBody) String() string {
@@ -17909,13 +18428,13 @@ func (s DescribeParameterGroupResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeParameterGroupResponseBody) SetParamGroup(v *DescribeParameterGroupResponseBodyParamGroup) *DescribeParameterGroupResponseBody {
-	s.ParamGroup = v
+func (s *DescribeParameterGroupResponseBody) SetRequestId(v string) *DescribeParameterGroupResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *DescribeParameterGroupResponseBody) SetRequestId(v string) *DescribeParameterGroupResponseBody {
-	s.RequestId = &v
+func (s *DescribeParameterGroupResponseBody) SetParamGroup(v *DescribeParameterGroupResponseBodyParamGroup) *DescribeParameterGroupResponseBody {
+	s.ParamGroup = v
 	return s
 }
 
@@ -17945,9 +18464,9 @@ type DescribeParameterGroupResponseBodyParamGroupParameterGroup struct {
 	ParameterGroupName *string                                                                `json:"ParameterGroupName,omitempty" xml:"ParameterGroupName,omitempty"`
 	Engine             *string                                                                `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	ParamCounts        *int32                                                                 `json:"ParamCounts,omitempty" xml:"ParamCounts,omitempty"`
-	ParamDetail        *DescribeParameterGroupResponseBodyParamGroupParameterGroupParamDetail `json:"ParamDetail,omitempty" xml:"ParamDetail,omitempty" type:"Struct"`
 	EngineVersion      *string                                                                `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	ParameterGroupType *int32                                                                 `json:"ParameterGroupType,omitempty" xml:"ParameterGroupType,omitempty"`
+	ParamDetail        *DescribeParameterGroupResponseBodyParamGroupParameterGroupParamDetail `json:"ParamDetail,omitempty" xml:"ParamDetail,omitempty" type:"Struct"`
 }
 
 func (s DescribeParameterGroupResponseBodyParamGroupParameterGroup) String() string {
@@ -17998,11 +18517,6 @@ func (s *DescribeParameterGroupResponseBodyParamGroupParameterGroup) SetParamCou
 	return s
 }
 
-func (s *DescribeParameterGroupResponseBodyParamGroupParameterGroup) SetParamDetail(v *DescribeParameterGroupResponseBodyParamGroupParameterGroupParamDetail) *DescribeParameterGroupResponseBodyParamGroupParameterGroup {
-	s.ParamDetail = v
-	return s
-}
-
 func (s *DescribeParameterGroupResponseBodyParamGroupParameterGroup) SetEngineVersion(v string) *DescribeParameterGroupResponseBodyParamGroupParameterGroup {
 	s.EngineVersion = &v
 	return s
@@ -18010,6 +18524,11 @@ func (s *DescribeParameterGroupResponseBodyParamGroupParameterGroup) SetEngineVe
 
 func (s *DescribeParameterGroupResponseBodyParamGroupParameterGroup) SetParameterGroupType(v int32) *DescribeParameterGroupResponseBodyParamGroupParameterGroup {
 	s.ParameterGroupType = &v
+	return s
+}
+
+func (s *DescribeParameterGroupResponseBodyParamGroupParameterGroup) SetParamDetail(v *DescribeParameterGroupResponseBodyParamGroupParameterGroupParamDetail) *DescribeParameterGroupResponseBodyParamGroupParameterGroup {
+	s.ParamDetail = v
 	return s
 }
 
@@ -18112,9 +18631,9 @@ func (s *DescribeParameterGroupsRequest) SetRegionId(v string) *DescribeParamete
 }
 
 type DescribeParameterGroupsResponseBody struct {
-	ParameterGroups         *DescribeParameterGroupsResponseBodyParameterGroups `json:"ParameterGroups,omitempty" xml:"ParameterGroups,omitempty" type:"Struct"`
 	SignalForOptimizeParams *bool                                               `json:"SignalForOptimizeParams,omitempty" xml:"SignalForOptimizeParams,omitempty"`
 	RequestId               *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ParameterGroups         *DescribeParameterGroupsResponseBodyParameterGroups `json:"ParameterGroups,omitempty" xml:"ParameterGroups,omitempty" type:"Struct"`
 }
 
 func (s DescribeParameterGroupsResponseBody) String() string {
@@ -18125,11 +18644,6 @@ func (s DescribeParameterGroupsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeParameterGroupsResponseBody) SetParameterGroups(v *DescribeParameterGroupsResponseBodyParameterGroups) *DescribeParameterGroupsResponseBody {
-	s.ParameterGroups = v
-	return s
-}
-
 func (s *DescribeParameterGroupsResponseBody) SetSignalForOptimizeParams(v bool) *DescribeParameterGroupsResponseBody {
 	s.SignalForOptimizeParams = &v
 	return s
@@ -18137,6 +18651,11 @@ func (s *DescribeParameterGroupsResponseBody) SetSignalForOptimizeParams(v bool)
 
 func (s *DescribeParameterGroupsResponseBody) SetRequestId(v string) *DescribeParameterGroupsResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeParameterGroupsResponseBody) SetParameterGroups(v *DescribeParameterGroupsResponseBodyParameterGroups) *DescribeParameterGroupsResponseBody {
+	s.ParameterGroups = v
 	return s
 }
 
@@ -18299,11 +18818,11 @@ func (s *DescribeParametersRequest) SetOwnerAccount(v string) *DescribeParameter
 }
 
 type DescribeParametersResponseBody struct {
-	RunningParameters *DescribeParametersResponseBodyRunningParameters `json:"RunningParameters,omitempty" xml:"RunningParameters,omitempty" type:"Struct"`
-	EngineVersion     *string                                          `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	RequestId         *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ConfigParameters  *DescribeParametersResponseBodyConfigParameters  `json:"ConfigParameters,omitempty" xml:"ConfigParameters,omitempty" type:"Struct"`
 	Engine            *string                                          `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	EngineVersion     *string                                          `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	ConfigParameters  *DescribeParametersResponseBodyConfigParameters  `json:"ConfigParameters,omitempty" xml:"ConfigParameters,omitempty" type:"Struct"`
+	RunningParameters *DescribeParametersResponseBodyRunningParameters `json:"RunningParameters,omitempty" xml:"RunningParameters,omitempty" type:"Struct"`
 }
 
 func (s DescribeParametersResponseBody) String() string {
@@ -18314,23 +18833,8 @@ func (s DescribeParametersResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeParametersResponseBody) SetRunningParameters(v *DescribeParametersResponseBodyRunningParameters) *DescribeParametersResponseBody {
-	s.RunningParameters = v
-	return s
-}
-
-func (s *DescribeParametersResponseBody) SetEngineVersion(v string) *DescribeParametersResponseBody {
-	s.EngineVersion = &v
-	return s
-}
-
 func (s *DescribeParametersResponseBody) SetRequestId(v string) *DescribeParametersResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeParametersResponseBody) SetConfigParameters(v *DescribeParametersResponseBodyConfigParameters) *DescribeParametersResponseBody {
-	s.ConfigParameters = v
 	return s
 }
 
@@ -18339,49 +18843,18 @@ func (s *DescribeParametersResponseBody) SetEngine(v string) *DescribeParameters
 	return s
 }
 
-type DescribeParametersResponseBodyRunningParameters struct {
-	DBInstanceParameter []*DescribeParametersResponseBodyRunningParametersDBInstanceParameter `json:"DBInstanceParameter,omitempty" xml:"DBInstanceParameter,omitempty" type:"Repeated"`
-}
-
-func (s DescribeParametersResponseBodyRunningParameters) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeParametersResponseBodyRunningParameters) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeParametersResponseBodyRunningParameters) SetDBInstanceParameter(v []*DescribeParametersResponseBodyRunningParametersDBInstanceParameter) *DescribeParametersResponseBodyRunningParameters {
-	s.DBInstanceParameter = v
+func (s *DescribeParametersResponseBody) SetEngineVersion(v string) *DescribeParametersResponseBody {
+	s.EngineVersion = &v
 	return s
 }
 
-type DescribeParametersResponseBodyRunningParametersDBInstanceParameter struct {
-	ParameterName        *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
-	ParameterValue       *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
-	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
-}
-
-func (s DescribeParametersResponseBodyRunningParametersDBInstanceParameter) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeParametersResponseBodyRunningParametersDBInstanceParameter) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeParametersResponseBodyRunningParametersDBInstanceParameter) SetParameterName(v string) *DescribeParametersResponseBodyRunningParametersDBInstanceParameter {
-	s.ParameterName = &v
+func (s *DescribeParametersResponseBody) SetConfigParameters(v *DescribeParametersResponseBodyConfigParameters) *DescribeParametersResponseBody {
+	s.ConfigParameters = v
 	return s
 }
 
-func (s *DescribeParametersResponseBodyRunningParametersDBInstanceParameter) SetParameterValue(v string) *DescribeParametersResponseBodyRunningParametersDBInstanceParameter {
-	s.ParameterValue = &v
-	return s
-}
-
-func (s *DescribeParametersResponseBodyRunningParametersDBInstanceParameter) SetParameterDescription(v string) *DescribeParametersResponseBodyRunningParametersDBInstanceParameter {
-	s.ParameterDescription = &v
+func (s *DescribeParametersResponseBody) SetRunningParameters(v *DescribeParametersResponseBodyRunningParameters) *DescribeParametersResponseBody {
+	s.RunningParameters = v
 	return s
 }
 
@@ -18403,9 +18876,9 @@ func (s *DescribeParametersResponseBodyConfigParameters) SetDBInstanceParameter(
 }
 
 type DescribeParametersResponseBodyConfigParametersDBInstanceParameter struct {
+	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
 	ParameterName        *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
 	ParameterValue       *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
-	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
 }
 
 func (s DescribeParametersResponseBodyConfigParametersDBInstanceParameter) String() string {
@@ -18414,6 +18887,11 @@ func (s DescribeParametersResponseBodyConfigParametersDBInstanceParameter) Strin
 
 func (s DescribeParametersResponseBodyConfigParametersDBInstanceParameter) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeParametersResponseBodyConfigParametersDBInstanceParameter) SetParameterDescription(v string) *DescribeParametersResponseBodyConfigParametersDBInstanceParameter {
+	s.ParameterDescription = &v
+	return s
 }
 
 func (s *DescribeParametersResponseBodyConfigParametersDBInstanceParameter) SetParameterName(v string) *DescribeParametersResponseBodyConfigParametersDBInstanceParameter {
@@ -18426,8 +18904,49 @@ func (s *DescribeParametersResponseBodyConfigParametersDBInstanceParameter) SetP
 	return s
 }
 
-func (s *DescribeParametersResponseBodyConfigParametersDBInstanceParameter) SetParameterDescription(v string) *DescribeParametersResponseBodyConfigParametersDBInstanceParameter {
+type DescribeParametersResponseBodyRunningParameters struct {
+	DBInstanceParameter []*DescribeParametersResponseBodyRunningParametersDBInstanceParameter `json:"DBInstanceParameter,omitempty" xml:"DBInstanceParameter,omitempty" type:"Repeated"`
+}
+
+func (s DescribeParametersResponseBodyRunningParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeParametersResponseBodyRunningParameters) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeParametersResponseBodyRunningParameters) SetDBInstanceParameter(v []*DescribeParametersResponseBodyRunningParametersDBInstanceParameter) *DescribeParametersResponseBodyRunningParameters {
+	s.DBInstanceParameter = v
+	return s
+}
+
+type DescribeParametersResponseBodyRunningParametersDBInstanceParameter struct {
+	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
+	ParameterName        *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	ParameterValue       *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
+}
+
+func (s DescribeParametersResponseBodyRunningParametersDBInstanceParameter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeParametersResponseBodyRunningParametersDBInstanceParameter) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeParametersResponseBodyRunningParametersDBInstanceParameter) SetParameterDescription(v string) *DescribeParametersResponseBodyRunningParametersDBInstanceParameter {
 	s.ParameterDescription = &v
+	return s
+}
+
+func (s *DescribeParametersResponseBodyRunningParametersDBInstanceParameter) SetParameterName(v string) *DescribeParametersResponseBodyRunningParametersDBInstanceParameter {
+	s.ParameterName = &v
+	return s
+}
+
+func (s *DescribeParametersResponseBodyRunningParametersDBInstanceParameter) SetParameterValue(v string) *DescribeParametersResponseBodyRunningParametersDBInstanceParameter {
+	s.ParameterValue = &v
 	return s
 }
 
@@ -18526,11 +19045,11 @@ func (s *DescribeParameterTemplatesRequest) SetDBInstanceId(v string) *DescribeP
 }
 
 type DescribeParameterTemplatesResponseBody struct {
+	RequestId      *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Engine         *string                                           `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	ParameterCount *string                                           `json:"ParameterCount,omitempty" xml:"ParameterCount,omitempty"`
 	EngineVersion  *string                                           `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	Parameters     *DescribeParameterTemplatesResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Struct"`
-	RequestId      *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Engine         *string                                           `json:"Engine,omitempty" xml:"Engine,omitempty"`
 }
 
 func (s DescribeParameterTemplatesResponseBody) String() string {
@@ -18539,6 +19058,16 @@ func (s DescribeParameterTemplatesResponseBody) String() string {
 
 func (s DescribeParameterTemplatesResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeParameterTemplatesResponseBody) SetRequestId(v string) *DescribeParameterTemplatesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeParameterTemplatesResponseBody) SetEngine(v string) *DescribeParameterTemplatesResponseBody {
+	s.Engine = &v
+	return s
 }
 
 func (s *DescribeParameterTemplatesResponseBody) SetParameterCount(v string) *DescribeParameterTemplatesResponseBody {
@@ -18553,16 +19082,6 @@ func (s *DescribeParameterTemplatesResponseBody) SetEngineVersion(v string) *Des
 
 func (s *DescribeParameterTemplatesResponseBody) SetParameters(v *DescribeParameterTemplatesResponseBodyParameters) *DescribeParameterTemplatesResponseBody {
 	s.Parameters = v
-	return s
-}
-
-func (s *DescribeParameterTemplatesResponseBody) SetRequestId(v string) *DescribeParameterTemplatesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeParameterTemplatesResponseBody) SetEngine(v string) *DescribeParameterTemplatesResponseBody {
-	s.Engine = &v
 	return s
 }
 
@@ -18786,8 +19305,8 @@ func (s *DescribePriceRequest) SetDBInstanceId(v string) *DescribePriceRequest {
 
 type DescribePriceResponseBody struct {
 	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Rules     *DescribePriceResponseBodyRules     `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
 	PriceInfo *DescribePriceResponseBodyPriceInfo `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty" type:"Struct"`
+	Rules     *DescribePriceResponseBodyRules     `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
 }
 
 func (s DescribePriceResponseBody) String() string {
@@ -18803,70 +19322,24 @@ func (s *DescribePriceResponseBody) SetRequestId(v string) *DescribePriceRespons
 	return s
 }
 
-func (s *DescribePriceResponseBody) SetRules(v *DescribePriceResponseBodyRules) *DescribePriceResponseBody {
-	s.Rules = v
-	return s
-}
-
 func (s *DescribePriceResponseBody) SetPriceInfo(v *DescribePriceResponseBodyPriceInfo) *DescribePriceResponseBody {
 	s.PriceInfo = v
 	return s
 }
 
-type DescribePriceResponseBodyRules struct {
-	Rule []*DescribePriceResponseBodyRulesRule `json:"Rule,omitempty" xml:"Rule,omitempty" type:"Repeated"`
-}
-
-func (s DescribePriceResponseBodyRules) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePriceResponseBodyRules) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePriceResponseBodyRules) SetRule(v []*DescribePriceResponseBodyRulesRule) *DescribePriceResponseBodyRules {
-	s.Rule = v
-	return s
-}
-
-type DescribePriceResponseBodyRulesRule struct {
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RuleId      *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-}
-
-func (s DescribePriceResponseBodyRulesRule) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePriceResponseBodyRulesRule) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePriceResponseBodyRulesRule) SetDescription(v string) *DescribePriceResponseBodyRulesRule {
-	s.Description = &v
-	return s
-}
-
-func (s *DescribePriceResponseBodyRulesRule) SetName(v string) *DescribePriceResponseBodyRulesRule {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribePriceResponseBodyRulesRule) SetRuleId(v int64) *DescribePriceResponseBodyRulesRule {
-	s.RuleId = &v
+func (s *DescribePriceResponseBody) SetRules(v *DescribePriceResponseBodyRules) *DescribePriceResponseBody {
+	s.Rules = v
 	return s
 }
 
 type DescribePriceResponseBodyPriceInfo struct {
-	Coupons       *DescribePriceResponseBodyPriceInfoCoupons      `json:"Coupons,omitempty" xml:"Coupons,omitempty" type:"Struct"`
-	DiscountPrice *float32                                        `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
-	RuleIds       *DescribePriceResponseBodyPriceInfoRuleIds      `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Struct"`
-	TradePrice    *float32                                        `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
-	ActivityInfo  *DescribePriceResponseBodyPriceInfoActivityInfo `json:"ActivityInfo,omitempty" xml:"ActivityInfo,omitempty" type:"Struct"`
 	OriginalPrice *float32                                        `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	DiscountPrice *float32                                        `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
 	Currency      *string                                         `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	TradePrice    *float32                                        `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
+	Coupons       *DescribePriceResponseBodyPriceInfoCoupons      `json:"Coupons,omitempty" xml:"Coupons,omitempty" type:"Struct"`
+	RuleIds       *DescribePriceResponseBodyPriceInfoRuleIds      `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Struct"`
+	ActivityInfo  *DescribePriceResponseBodyPriceInfoActivityInfo `json:"ActivityInfo,omitempty" xml:"ActivityInfo,omitempty" type:"Struct"`
 }
 
 func (s DescribePriceResponseBodyPriceInfo) String() string {
@@ -18877,8 +19350,8 @@ func (s DescribePriceResponseBodyPriceInfo) GoString() string {
 	return s.String()
 }
 
-func (s *DescribePriceResponseBodyPriceInfo) SetCoupons(v *DescribePriceResponseBodyPriceInfoCoupons) *DescribePriceResponseBodyPriceInfo {
-	s.Coupons = v
+func (s *DescribePriceResponseBodyPriceInfo) SetOriginalPrice(v float32) *DescribePriceResponseBodyPriceInfo {
+	s.OriginalPrice = &v
 	return s
 }
 
@@ -18887,8 +19360,8 @@ func (s *DescribePriceResponseBodyPriceInfo) SetDiscountPrice(v float32) *Descri
 	return s
 }
 
-func (s *DescribePriceResponseBodyPriceInfo) SetRuleIds(v *DescribePriceResponseBodyPriceInfoRuleIds) *DescribePriceResponseBodyPriceInfo {
-	s.RuleIds = v
+func (s *DescribePriceResponseBodyPriceInfo) SetCurrency(v string) *DescribePriceResponseBodyPriceInfo {
+	s.Currency = &v
 	return s
 }
 
@@ -18897,18 +19370,18 @@ func (s *DescribePriceResponseBodyPriceInfo) SetTradePrice(v float32) *DescribeP
 	return s
 }
 
+func (s *DescribePriceResponseBodyPriceInfo) SetCoupons(v *DescribePriceResponseBodyPriceInfoCoupons) *DescribePriceResponseBodyPriceInfo {
+	s.Coupons = v
+	return s
+}
+
+func (s *DescribePriceResponseBodyPriceInfo) SetRuleIds(v *DescribePriceResponseBodyPriceInfoRuleIds) *DescribePriceResponseBodyPriceInfo {
+	s.RuleIds = v
+	return s
+}
+
 func (s *DescribePriceResponseBodyPriceInfo) SetActivityInfo(v *DescribePriceResponseBodyPriceInfoActivityInfo) *DescribePriceResponseBodyPriceInfo {
 	s.ActivityInfo = v
-	return s
-}
-
-func (s *DescribePriceResponseBodyPriceInfo) SetOriginalPrice(v float32) *DescribePriceResponseBodyPriceInfo {
-	s.OriginalPrice = &v
-	return s
-}
-
-func (s *DescribePriceResponseBodyPriceInfo) SetCurrency(v string) *DescribePriceResponseBodyPriceInfo {
-	s.Currency = &v
 	return s
 }
 
@@ -18930,10 +19403,10 @@ func (s *DescribePriceResponseBodyPriceInfoCoupons) SetCoupon(v []*DescribePrice
 }
 
 type DescribePriceResponseBodyPriceInfoCouponsCoupon struct {
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	IsSelected  *string `json:"IsSelected,omitempty" xml:"IsSelected,omitempty"`
 	CouponNo    *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
 	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 }
 
 func (s DescribePriceResponseBodyPriceInfoCouponsCoupon) String() string {
@@ -18942,11 +19415,6 @@ func (s DescribePriceResponseBodyPriceInfoCouponsCoupon) String() string {
 
 func (s DescribePriceResponseBodyPriceInfoCouponsCoupon) GoString() string {
 	return s.String()
-}
-
-func (s *DescribePriceResponseBodyPriceInfoCouponsCoupon) SetDescription(v string) *DescribePriceResponseBodyPriceInfoCouponsCoupon {
-	s.Description = &v
-	return s
 }
 
 func (s *DescribePriceResponseBodyPriceInfoCouponsCoupon) SetIsSelected(v string) *DescribePriceResponseBodyPriceInfoCouponsCoupon {
@@ -18961,6 +19429,11 @@ func (s *DescribePriceResponseBodyPriceInfoCouponsCoupon) SetCouponNo(v string) 
 
 func (s *DescribePriceResponseBodyPriceInfoCouponsCoupon) SetName(v string) *DescribePriceResponseBodyPriceInfoCouponsCoupon {
 	s.Name = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyPriceInfoCouponsCoupon) SetDescription(v string) *DescribePriceResponseBodyPriceInfoCouponsCoupon {
+	s.Description = &v
 	return s
 }
 
@@ -19007,6 +19480,52 @@ func (s *DescribePriceResponseBodyPriceInfoActivityInfo) SetErrorCode(v string) 
 
 func (s *DescribePriceResponseBodyPriceInfoActivityInfo) SetSuccess(v string) *DescribePriceResponseBodyPriceInfoActivityInfo {
 	s.Success = &v
+	return s
+}
+
+type DescribePriceResponseBodyRules struct {
+	Rule []*DescribePriceResponseBodyRulesRule `json:"Rule,omitempty" xml:"Rule,omitempty" type:"Repeated"`
+}
+
+func (s DescribePriceResponseBodyRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePriceResponseBodyRules) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePriceResponseBodyRules) SetRule(v []*DescribePriceResponseBodyRulesRule) *DescribePriceResponseBodyRules {
+	s.Rule = v
+	return s
+}
+
+type DescribePriceResponseBodyRulesRule struct {
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	RuleId      *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s DescribePriceResponseBodyRulesRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePriceResponseBodyRulesRule) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePriceResponseBodyRulesRule) SetName(v string) *DescribePriceResponseBodyRulesRule {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyRulesRule) SetDescription(v string) *DescribePriceResponseBodyRulesRule {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyRulesRule) SetRuleId(v int64) *DescribePriceResponseBodyRulesRule {
+	s.RuleId = &v
 	return s
 }
 
@@ -19250,11 +19769,11 @@ func (s *DescribeReadDBInstanceDelayRequest) SetReadInstanceId(v string) *Descri
 }
 
 type DescribeReadDBInstanceDelayResponseBody struct {
-	RequestId        *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DBInstanceId     *string                                       `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	RequestId        *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	DelayTime        *int32                                        `json:"DelayTime,omitempty" xml:"DelayTime,omitempty"`
 	ReadDBInstanceId *string                                       `json:"ReadDBInstanceId,omitempty" xml:"ReadDBInstanceId,omitempty"`
 	Items            *DescribeReadDBInstanceDelayResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	DelayTime        *int32                                        `json:"DelayTime,omitempty" xml:"DelayTime,omitempty"`
 }
 
 func (s DescribeReadDBInstanceDelayResponseBody) String() string {
@@ -19265,13 +19784,18 @@ func (s DescribeReadDBInstanceDelayResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeReadDBInstanceDelayResponseBody) SetDBInstanceId(v string) *DescribeReadDBInstanceDelayResponseBody {
+	s.DBInstanceId = &v
+	return s
+}
+
 func (s *DescribeReadDBInstanceDelayResponseBody) SetRequestId(v string) *DescribeReadDBInstanceDelayResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *DescribeReadDBInstanceDelayResponseBody) SetDBInstanceId(v string) *DescribeReadDBInstanceDelayResponseBody {
-	s.DBInstanceId = &v
+func (s *DescribeReadDBInstanceDelayResponseBody) SetDelayTime(v int32) *DescribeReadDBInstanceDelayResponseBody {
+	s.DelayTime = &v
 	return s
 }
 
@@ -19282,11 +19806,6 @@ func (s *DescribeReadDBInstanceDelayResponseBody) SetReadDBInstanceId(v string) 
 
 func (s *DescribeReadDBInstanceDelayResponseBody) SetItems(v *DescribeReadDBInstanceDelayResponseBodyItems) *DescribeReadDBInstanceDelayResponseBody {
 	s.Items = v
-	return s
-}
-
-func (s *DescribeReadDBInstanceDelayResponseBody) SetDelayTime(v int32) *DescribeReadDBInstanceDelayResponseBody {
-	s.DelayTime = &v
 	return s
 }
 
@@ -19308,10 +19827,10 @@ func (s *DescribeReadDBInstanceDelayResponseBodyItems) SetItems(v []*DescribeRea
 }
 
 type DescribeReadDBInstanceDelayResponseBodyItemsItems struct {
-	ReadDBInstanceNames   *DescribeReadDBInstanceDelayResponseBodyItemsItemsReadDBInstanceNames   `json:"ReadDBInstanceNames,omitempty" xml:"ReadDBInstanceNames,omitempty" type:"Struct"`
-	ReadonlyInstanceDelay *DescribeReadDBInstanceDelayResponseBodyItemsItemsReadonlyInstanceDelay `json:"ReadonlyInstanceDelay,omitempty" xml:"ReadonlyInstanceDelay,omitempty" type:"Struct"`
 	DBInstanceId          *string                                                                 `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	ReadonlyInstanceDelay *DescribeReadDBInstanceDelayResponseBodyItemsItemsReadonlyInstanceDelay `json:"ReadonlyInstanceDelay,omitempty" xml:"ReadonlyInstanceDelay,omitempty" type:"Struct"`
 	ReadDelayTimes        *DescribeReadDBInstanceDelayResponseBodyItemsItemsReadDelayTimes        `json:"ReadDelayTimes,omitempty" xml:"ReadDelayTimes,omitempty" type:"Struct"`
+	ReadDBInstanceNames   *DescribeReadDBInstanceDelayResponseBodyItemsItemsReadDBInstanceNames   `json:"ReadDBInstanceNames,omitempty" xml:"ReadDBInstanceNames,omitempty" type:"Struct"`
 }
 
 func (s DescribeReadDBInstanceDelayResponseBodyItemsItems) String() string {
@@ -19322,8 +19841,8 @@ func (s DescribeReadDBInstanceDelayResponseBodyItemsItems) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeReadDBInstanceDelayResponseBodyItemsItems) SetReadDBInstanceNames(v *DescribeReadDBInstanceDelayResponseBodyItemsItemsReadDBInstanceNames) *DescribeReadDBInstanceDelayResponseBodyItemsItems {
-	s.ReadDBInstanceNames = v
+func (s *DescribeReadDBInstanceDelayResponseBodyItemsItems) SetDBInstanceId(v string) *DescribeReadDBInstanceDelayResponseBodyItemsItems {
+	s.DBInstanceId = &v
 	return s
 }
 
@@ -19332,30 +19851,13 @@ func (s *DescribeReadDBInstanceDelayResponseBodyItemsItems) SetReadonlyInstanceD
 	return s
 }
 
-func (s *DescribeReadDBInstanceDelayResponseBodyItemsItems) SetDBInstanceId(v string) *DescribeReadDBInstanceDelayResponseBodyItemsItems {
-	s.DBInstanceId = &v
-	return s
-}
-
 func (s *DescribeReadDBInstanceDelayResponseBodyItemsItems) SetReadDelayTimes(v *DescribeReadDBInstanceDelayResponseBodyItemsItemsReadDelayTimes) *DescribeReadDBInstanceDelayResponseBodyItemsItems {
 	s.ReadDelayTimes = v
 	return s
 }
 
-type DescribeReadDBInstanceDelayResponseBodyItemsItemsReadDBInstanceNames struct {
-	ReadDBInstanceName []*string `json:"ReadDBInstanceName,omitempty" xml:"ReadDBInstanceName,omitempty" type:"Repeated"`
-}
-
-func (s DescribeReadDBInstanceDelayResponseBodyItemsItemsReadDBInstanceNames) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeReadDBInstanceDelayResponseBodyItemsItemsReadDBInstanceNames) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeReadDBInstanceDelayResponseBodyItemsItemsReadDBInstanceNames) SetReadDBInstanceName(v []*string) *DescribeReadDBInstanceDelayResponseBodyItemsItemsReadDBInstanceNames {
-	s.ReadDBInstanceName = v
+func (s *DescribeReadDBInstanceDelayResponseBodyItemsItems) SetReadDBInstanceNames(v *DescribeReadDBInstanceDelayResponseBodyItemsItemsReadDBInstanceNames) *DescribeReadDBInstanceDelayResponseBodyItemsItems {
+	s.ReadDBInstanceNames = v
 	return s
 }
 
@@ -19452,6 +19954,23 @@ func (s *DescribeReadDBInstanceDelayResponseBodyItemsItemsReadDelayTimes) SetRea
 	return s
 }
 
+type DescribeReadDBInstanceDelayResponseBodyItemsItemsReadDBInstanceNames struct {
+	ReadDBInstanceName []*string `json:"ReadDBInstanceName,omitempty" xml:"ReadDBInstanceName,omitempty" type:"Repeated"`
+}
+
+func (s DescribeReadDBInstanceDelayResponseBodyItemsItemsReadDBInstanceNames) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeReadDBInstanceDelayResponseBodyItemsItemsReadDBInstanceNames) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeReadDBInstanceDelayResponseBodyItemsItemsReadDBInstanceNames) SetReadDBInstanceName(v []*string) *DescribeReadDBInstanceDelayResponseBodyItemsItemsReadDBInstanceNames {
+	s.ReadDBInstanceName = v
+	return s
+}
+
 type DescribeReadDBInstanceDelayResponse struct {
 	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	Body    *DescribeReadDBInstanceDelayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -19533,8 +20052,10 @@ func (s *DescribeRegionsResponseBodyRegions) SetRDSRegion(v []*DescribeRegionsRe
 }
 
 type DescribeRegionsResponseBodyRegionsRDSRegion struct {
-	ZoneId   *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ZoneId         *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
+	LocalName      *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBodyRegionsRDSRegion) String() string {
@@ -19547,6 +20068,16 @@ func (s DescribeRegionsResponseBodyRegionsRDSRegion) GoString() string {
 
 func (s *DescribeRegionsResponseBodyRegionsRDSRegion) SetZoneId(v string) *DescribeRegionsResponseBodyRegionsRDSRegion {
 	s.ZoneId = &v
+	return s
+}
+
+func (s *DescribeRegionsResponseBodyRegionsRDSRegion) SetRegionEndpoint(v string) *DescribeRegionsResponseBodyRegionsRDSRegion {
+	s.RegionEndpoint = &v
+	return s
+}
+
+func (s *DescribeRegionsResponseBodyRegionsRDSRegion) SetLocalName(v string) *DescribeRegionsResponseBodyRegionsRDSRegion {
+	s.LocalName = &v
 	return s
 }
 
@@ -19675,8 +20206,8 @@ func (s *DescribeRenewalPriceRequest) SetBusinessInfo(v string) *DescribeRenewal
 
 type DescribeRenewalPriceResponseBody struct {
 	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Rules     *DescribeRenewalPriceResponseBodyRules     `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
 	PriceInfo *DescribeRenewalPriceResponseBodyPriceInfo `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty" type:"Struct"`
+	Rules     *DescribeRenewalPriceResponseBodyRules     `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
 }
 
 func (s DescribeRenewalPriceResponseBody) String() string {
@@ -19692,70 +20223,24 @@ func (s *DescribeRenewalPriceResponseBody) SetRequestId(v string) *DescribeRenew
 	return s
 }
 
-func (s *DescribeRenewalPriceResponseBody) SetRules(v *DescribeRenewalPriceResponseBodyRules) *DescribeRenewalPriceResponseBody {
-	s.Rules = v
-	return s
-}
-
 func (s *DescribeRenewalPriceResponseBody) SetPriceInfo(v *DescribeRenewalPriceResponseBodyPriceInfo) *DescribeRenewalPriceResponseBody {
 	s.PriceInfo = v
 	return s
 }
 
-type DescribeRenewalPriceResponseBodyRules struct {
-	Rule []*DescribeRenewalPriceResponseBodyRulesRule `json:"Rule,omitempty" xml:"Rule,omitempty" type:"Repeated"`
-}
-
-func (s DescribeRenewalPriceResponseBodyRules) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRenewalPriceResponseBodyRules) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRenewalPriceResponseBodyRules) SetRule(v []*DescribeRenewalPriceResponseBodyRulesRule) *DescribeRenewalPriceResponseBodyRules {
-	s.Rule = v
-	return s
-}
-
-type DescribeRenewalPriceResponseBodyRulesRule struct {
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RuleId      *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-}
-
-func (s DescribeRenewalPriceResponseBodyRulesRule) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRenewalPriceResponseBodyRulesRule) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRenewalPriceResponseBodyRulesRule) SetDescription(v string) *DescribeRenewalPriceResponseBodyRulesRule {
-	s.Description = &v
-	return s
-}
-
-func (s *DescribeRenewalPriceResponseBodyRulesRule) SetName(v string) *DescribeRenewalPriceResponseBodyRulesRule {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeRenewalPriceResponseBodyRulesRule) SetRuleId(v int64) *DescribeRenewalPriceResponseBodyRulesRule {
-	s.RuleId = &v
+func (s *DescribeRenewalPriceResponseBody) SetRules(v *DescribeRenewalPriceResponseBodyRules) *DescribeRenewalPriceResponseBody {
+	s.Rules = v
 	return s
 }
 
 type DescribeRenewalPriceResponseBodyPriceInfo struct {
-	Coupons       *DescribeRenewalPriceResponseBodyPriceInfoCoupons      `json:"Coupons,omitempty" xml:"Coupons,omitempty" type:"Struct"`
-	DiscountPrice *float32                                               `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
-	RuleIds       *DescribeRenewalPriceResponseBodyPriceInfoRuleIds      `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Struct"`
-	TradePrice    *float32                                               `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
-	ActivityInfo  *DescribeRenewalPriceResponseBodyPriceInfoActivityInfo `json:"ActivityInfo,omitempty" xml:"ActivityInfo,omitempty" type:"Struct"`
 	OriginalPrice *float32                                               `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	DiscountPrice *float32                                               `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
 	Currency      *string                                                `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	TradePrice    *float32                                               `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
+	Coupons       *DescribeRenewalPriceResponseBodyPriceInfoCoupons      `json:"Coupons,omitempty" xml:"Coupons,omitempty" type:"Struct"`
+	RuleIds       *DescribeRenewalPriceResponseBodyPriceInfoRuleIds      `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Struct"`
+	ActivityInfo  *DescribeRenewalPriceResponseBodyPriceInfoActivityInfo `json:"ActivityInfo,omitempty" xml:"ActivityInfo,omitempty" type:"Struct"`
 }
 
 func (s DescribeRenewalPriceResponseBodyPriceInfo) String() string {
@@ -19766,8 +20251,8 @@ func (s DescribeRenewalPriceResponseBodyPriceInfo) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRenewalPriceResponseBodyPriceInfo) SetCoupons(v *DescribeRenewalPriceResponseBodyPriceInfoCoupons) *DescribeRenewalPriceResponseBodyPriceInfo {
-	s.Coupons = v
+func (s *DescribeRenewalPriceResponseBodyPriceInfo) SetOriginalPrice(v float32) *DescribeRenewalPriceResponseBodyPriceInfo {
+	s.OriginalPrice = &v
 	return s
 }
 
@@ -19776,8 +20261,8 @@ func (s *DescribeRenewalPriceResponseBodyPriceInfo) SetDiscountPrice(v float32) 
 	return s
 }
 
-func (s *DescribeRenewalPriceResponseBodyPriceInfo) SetRuleIds(v *DescribeRenewalPriceResponseBodyPriceInfoRuleIds) *DescribeRenewalPriceResponseBodyPriceInfo {
-	s.RuleIds = v
+func (s *DescribeRenewalPriceResponseBodyPriceInfo) SetCurrency(v string) *DescribeRenewalPriceResponseBodyPriceInfo {
+	s.Currency = &v
 	return s
 }
 
@@ -19786,18 +20271,18 @@ func (s *DescribeRenewalPriceResponseBodyPriceInfo) SetTradePrice(v float32) *De
 	return s
 }
 
+func (s *DescribeRenewalPriceResponseBodyPriceInfo) SetCoupons(v *DescribeRenewalPriceResponseBodyPriceInfoCoupons) *DescribeRenewalPriceResponseBodyPriceInfo {
+	s.Coupons = v
+	return s
+}
+
+func (s *DescribeRenewalPriceResponseBodyPriceInfo) SetRuleIds(v *DescribeRenewalPriceResponseBodyPriceInfoRuleIds) *DescribeRenewalPriceResponseBodyPriceInfo {
+	s.RuleIds = v
+	return s
+}
+
 func (s *DescribeRenewalPriceResponseBodyPriceInfo) SetActivityInfo(v *DescribeRenewalPriceResponseBodyPriceInfoActivityInfo) *DescribeRenewalPriceResponseBodyPriceInfo {
 	s.ActivityInfo = v
-	return s
-}
-
-func (s *DescribeRenewalPriceResponseBodyPriceInfo) SetOriginalPrice(v float32) *DescribeRenewalPriceResponseBodyPriceInfo {
-	s.OriginalPrice = &v
-	return s
-}
-
-func (s *DescribeRenewalPriceResponseBodyPriceInfo) SetCurrency(v string) *DescribeRenewalPriceResponseBodyPriceInfo {
-	s.Currency = &v
 	return s
 }
 
@@ -19819,10 +20304,10 @@ func (s *DescribeRenewalPriceResponseBodyPriceInfoCoupons) SetCoupon(v []*Descri
 }
 
 type DescribeRenewalPriceResponseBodyPriceInfoCouponsCoupon struct {
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	IsSelected  *string `json:"IsSelected,omitempty" xml:"IsSelected,omitempty"`
 	CouponNo    *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
 	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 }
 
 func (s DescribeRenewalPriceResponseBodyPriceInfoCouponsCoupon) String() string {
@@ -19831,11 +20316,6 @@ func (s DescribeRenewalPriceResponseBodyPriceInfoCouponsCoupon) String() string 
 
 func (s DescribeRenewalPriceResponseBodyPriceInfoCouponsCoupon) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeRenewalPriceResponseBodyPriceInfoCouponsCoupon) SetDescription(v string) *DescribeRenewalPriceResponseBodyPriceInfoCouponsCoupon {
-	s.Description = &v
-	return s
 }
 
 func (s *DescribeRenewalPriceResponseBodyPriceInfoCouponsCoupon) SetIsSelected(v string) *DescribeRenewalPriceResponseBodyPriceInfoCouponsCoupon {
@@ -19850,6 +20330,11 @@ func (s *DescribeRenewalPriceResponseBodyPriceInfoCouponsCoupon) SetCouponNo(v s
 
 func (s *DescribeRenewalPriceResponseBodyPriceInfoCouponsCoupon) SetName(v string) *DescribeRenewalPriceResponseBodyPriceInfoCouponsCoupon {
 	s.Name = &v
+	return s
+}
+
+func (s *DescribeRenewalPriceResponseBodyPriceInfoCouponsCoupon) SetDescription(v string) *DescribeRenewalPriceResponseBodyPriceInfoCouponsCoupon {
+	s.Description = &v
 	return s
 }
 
@@ -19896,6 +20381,52 @@ func (s *DescribeRenewalPriceResponseBodyPriceInfoActivityInfo) SetErrorCode(v s
 
 func (s *DescribeRenewalPriceResponseBodyPriceInfoActivityInfo) SetSuccess(v string) *DescribeRenewalPriceResponseBodyPriceInfoActivityInfo {
 	s.Success = &v
+	return s
+}
+
+type DescribeRenewalPriceResponseBodyRules struct {
+	Rule []*DescribeRenewalPriceResponseBodyRulesRule `json:"Rule,omitempty" xml:"Rule,omitempty" type:"Repeated"`
+}
+
+func (s DescribeRenewalPriceResponseBodyRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRenewalPriceResponseBodyRules) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRenewalPriceResponseBodyRules) SetRule(v []*DescribeRenewalPriceResponseBodyRulesRule) *DescribeRenewalPriceResponseBodyRules {
+	s.Rule = v
+	return s
+}
+
+type DescribeRenewalPriceResponseBodyRulesRule struct {
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	RuleId      *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s DescribeRenewalPriceResponseBodyRulesRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRenewalPriceResponseBodyRulesRule) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRenewalPriceResponseBodyRulesRule) SetName(v string) *DescribeRenewalPriceResponseBodyRulesRule {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeRenewalPriceResponseBodyRulesRule) SetDescription(v string) *DescribeRenewalPriceResponseBodyRulesRule {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeRenewalPriceResponseBodyRulesRule) SetRuleId(v int64) *DescribeRenewalPriceResponseBodyRulesRule {
+	s.RuleId = &v
 	return s
 }
 
@@ -19964,21 +20495,21 @@ func (s *DescribeResourceUsageRequest) SetOwnerAccount(v string) *DescribeResour
 }
 
 type DescribeResourceUsageResponseBody struct {
+	BackupOssDataSize *int64  `json:"BackupOssDataSize,omitempty" xml:"BackupOssDataSize,omitempty"`
+	DiskUsed          *int64  `json:"DiskUsed,omitempty" xml:"DiskUsed,omitempty"`
+	ArchiveBackupSize *int64  `json:"ArchiveBackupSize,omitempty" xml:"ArchiveBackupSize,omitempty"`
+	BackupOssLogSize  *int64  `json:"BackupOssLogSize,omitempty" xml:"BackupOssLogSize,omitempty"`
+	BackupLogSize     *int64  `json:"BackupLogSize,omitempty" xml:"BackupLogSize,omitempty"`
+	BackupDataSize    *int64  `json:"BackupDataSize,omitempty" xml:"BackupDataSize,omitempty"`
+	ColdBackupSize    *int64  `json:"ColdBackupSize,omitempty" xml:"ColdBackupSize,omitempty"`
+	DataSize          *int64  `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
 	PaidBackupSize    *int64  `json:"PaidBackupSize,omitempty" xml:"PaidBackupSize,omitempty"`
 	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	BackupSize        *int64  `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
-	ArchiveBackupSize *int64  `json:"ArchiveBackupSize,omitempty" xml:"ArchiveBackupSize,omitempty"`
-	ColdBackupSize    *int64  `json:"ColdBackupSize,omitempty" xml:"ColdBackupSize,omitempty"`
-	BackupOssLogSize  *int64  `json:"BackupOssLogSize,omitempty" xml:"BackupOssLogSize,omitempty"`
 	LogSize           *int64  `json:"LogSize,omitempty" xml:"LogSize,omitempty"`
+	BackupSize        *int64  `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
 	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	BackupDataSize    *int64  `json:"BackupDataSize,omitempty" xml:"BackupDataSize,omitempty"`
-	DataSize          *int64  `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
-	BackupLogSize     *int64  `json:"BackupLogSize,omitempty" xml:"BackupLogSize,omitempty"`
-	BackupOssDataSize *int64  `json:"BackupOssDataSize,omitempty" xml:"BackupOssDataSize,omitempty"`
-	SQLSize           *int64  `json:"SQLSize,omitempty" xml:"SQLSize,omitempty"`
-	DiskUsed          *int64  `json:"DiskUsed,omitempty" xml:"DiskUsed,omitempty"`
 	Engine            *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	SQLSize           *int64  `json:"SQLSize,omitempty" xml:"SQLSize,omitempty"`
 }
 
 func (s DescribeResourceUsageResponseBody) String() string {
@@ -19987,6 +20518,46 @@ func (s DescribeResourceUsageResponseBody) String() string {
 
 func (s DescribeResourceUsageResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeResourceUsageResponseBody) SetBackupOssDataSize(v int64) *DescribeResourceUsageResponseBody {
+	s.BackupOssDataSize = &v
+	return s
+}
+
+func (s *DescribeResourceUsageResponseBody) SetDiskUsed(v int64) *DescribeResourceUsageResponseBody {
+	s.DiskUsed = &v
+	return s
+}
+
+func (s *DescribeResourceUsageResponseBody) SetArchiveBackupSize(v int64) *DescribeResourceUsageResponseBody {
+	s.ArchiveBackupSize = &v
+	return s
+}
+
+func (s *DescribeResourceUsageResponseBody) SetBackupOssLogSize(v int64) *DescribeResourceUsageResponseBody {
+	s.BackupOssLogSize = &v
+	return s
+}
+
+func (s *DescribeResourceUsageResponseBody) SetBackupLogSize(v int64) *DescribeResourceUsageResponseBody {
+	s.BackupLogSize = &v
+	return s
+}
+
+func (s *DescribeResourceUsageResponseBody) SetBackupDataSize(v int64) *DescribeResourceUsageResponseBody {
+	s.BackupDataSize = &v
+	return s
+}
+
+func (s *DescribeResourceUsageResponseBody) SetColdBackupSize(v int64) *DescribeResourceUsageResponseBody {
+	s.ColdBackupSize = &v
+	return s
+}
+
+func (s *DescribeResourceUsageResponseBody) SetDataSize(v int64) *DescribeResourceUsageResponseBody {
+	s.DataSize = &v
+	return s
 }
 
 func (s *DescribeResourceUsageResponseBody) SetPaidBackupSize(v int64) *DescribeResourceUsageResponseBody {
@@ -19999,28 +20570,13 @@ func (s *DescribeResourceUsageResponseBody) SetRequestId(v string) *DescribeReso
 	return s
 }
 
-func (s *DescribeResourceUsageResponseBody) SetBackupSize(v int64) *DescribeResourceUsageResponseBody {
-	s.BackupSize = &v
-	return s
-}
-
-func (s *DescribeResourceUsageResponseBody) SetArchiveBackupSize(v int64) *DescribeResourceUsageResponseBody {
-	s.ArchiveBackupSize = &v
-	return s
-}
-
-func (s *DescribeResourceUsageResponseBody) SetColdBackupSize(v int64) *DescribeResourceUsageResponseBody {
-	s.ColdBackupSize = &v
-	return s
-}
-
-func (s *DescribeResourceUsageResponseBody) SetBackupOssLogSize(v int64) *DescribeResourceUsageResponseBody {
-	s.BackupOssLogSize = &v
-	return s
-}
-
 func (s *DescribeResourceUsageResponseBody) SetLogSize(v int64) *DescribeResourceUsageResponseBody {
 	s.LogSize = &v
+	return s
+}
+
+func (s *DescribeResourceUsageResponseBody) SetBackupSize(v int64) *DescribeResourceUsageResponseBody {
+	s.BackupSize = &v
 	return s
 }
 
@@ -20029,38 +20585,13 @@ func (s *DescribeResourceUsageResponseBody) SetDBInstanceId(v string) *DescribeR
 	return s
 }
 
-func (s *DescribeResourceUsageResponseBody) SetBackupDataSize(v int64) *DescribeResourceUsageResponseBody {
-	s.BackupDataSize = &v
-	return s
-}
-
-func (s *DescribeResourceUsageResponseBody) SetDataSize(v int64) *DescribeResourceUsageResponseBody {
-	s.DataSize = &v
-	return s
-}
-
-func (s *DescribeResourceUsageResponseBody) SetBackupLogSize(v int64) *DescribeResourceUsageResponseBody {
-	s.BackupLogSize = &v
-	return s
-}
-
-func (s *DescribeResourceUsageResponseBody) SetBackupOssDataSize(v int64) *DescribeResourceUsageResponseBody {
-	s.BackupOssDataSize = &v
+func (s *DescribeResourceUsageResponseBody) SetEngine(v string) *DescribeResourceUsageResponseBody {
+	s.Engine = &v
 	return s
 }
 
 func (s *DescribeResourceUsageResponseBody) SetSQLSize(v int64) *DescribeResourceUsageResponseBody {
 	s.SQLSize = &v
-	return s
-}
-
-func (s *DescribeResourceUsageResponseBody) SetDiskUsed(v int64) *DescribeResourceUsageResponseBody {
-	s.DiskUsed = &v
-	return s
-}
-
-func (s *DescribeResourceUsageResponseBody) SetEngine(v string) *DescribeResourceUsageResponseBody {
-	s.Engine = &v
 	return s
 }
 
@@ -20123,9 +20654,9 @@ func (s *DescribeSecurityGroupConfigurationRequest) SetDBInstanceId(v string) *D
 }
 
 type DescribeSecurityGroupConfigurationResponseBody struct {
+	DBInstanceName *string                                              `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	RequestId      *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Items          *DescribeSecurityGroupConfigurationResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	DBInstanceName *string                                              `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 }
 
 func (s DescribeSecurityGroupConfigurationResponseBody) String() string {
@@ -20136,6 +20667,11 @@ func (s DescribeSecurityGroupConfigurationResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeSecurityGroupConfigurationResponseBody) SetDBInstanceName(v string) *DescribeSecurityGroupConfigurationResponseBody {
+	s.DBInstanceName = &v
+	return s
+}
+
 func (s *DescribeSecurityGroupConfigurationResponseBody) SetRequestId(v string) *DescribeSecurityGroupConfigurationResponseBody {
 	s.RequestId = &v
 	return s
@@ -20143,11 +20679,6 @@ func (s *DescribeSecurityGroupConfigurationResponseBody) SetRequestId(v string) 
 
 func (s *DescribeSecurityGroupConfigurationResponseBody) SetItems(v *DescribeSecurityGroupConfigurationResponseBodyItems) *DescribeSecurityGroupConfigurationResponseBody {
 	s.Items = v
-	return s
-}
-
-func (s *DescribeSecurityGroupConfigurationResponseBody) SetDBInstanceName(v string) *DescribeSecurityGroupConfigurationResponseBody {
-	s.DBInstanceName = &v
 	return s
 }
 
@@ -20169,8 +20700,8 @@ func (s *DescribeSecurityGroupConfigurationResponseBodyItems) SetEcsSecurityGrou
 }
 
 type DescribeSecurityGroupConfigurationResponseBodyItemsEcsSecurityGroupRelation struct {
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	NetworkType     *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -20182,13 +20713,13 @@ func (s DescribeSecurityGroupConfigurationResponseBodyItemsEcsSecurityGroupRelat
 	return s.String()
 }
 
-func (s *DescribeSecurityGroupConfigurationResponseBodyItemsEcsSecurityGroupRelation) SetSecurityGroupId(v string) *DescribeSecurityGroupConfigurationResponseBodyItemsEcsSecurityGroupRelation {
-	s.SecurityGroupId = &v
+func (s *DescribeSecurityGroupConfigurationResponseBodyItemsEcsSecurityGroupRelation) SetNetworkType(v string) *DescribeSecurityGroupConfigurationResponseBodyItemsEcsSecurityGroupRelation {
+	s.NetworkType = &v
 	return s
 }
 
-func (s *DescribeSecurityGroupConfigurationResponseBodyItemsEcsSecurityGroupRelation) SetNetworkType(v string) *DescribeSecurityGroupConfigurationResponseBodyItemsEcsSecurityGroupRelation {
-	s.NetworkType = &v
+func (s *DescribeSecurityGroupConfigurationResponseBodyItemsEcsSecurityGroupRelation) SetSecurityGroupId(v string) *DescribeSecurityGroupConfigurationResponseBodyItemsEcsSecurityGroupRelation {
+	s.SecurityGroupId = &v
 	return s
 }
 
@@ -20298,21 +20829,21 @@ func (s *DescribeSlowLogRecordsRequest) SetOwnerAccount(v string) *DescribeSlowL
 }
 
 type DescribeSlowLogRecordsResponseBody struct {
-	TotalRecordCount      *int32                                   `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
-	PageRecordCount       *int32                                   `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	UserName              *string                                  `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	RequestId             *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	LastRowsAffectedCount *int64                                   `json:"LastRowsAffectedCount,omitempty" xml:"LastRowsAffectedCount,omitempty"`
 	RowsAffectedCount     *int64                                   `json:"RowsAffectedCount,omitempty" xml:"RowsAffectedCount,omitempty"`
-	PhysicalIORead        *int64                                   `json:"PhysicalIORead,omitempty" xml:"PhysicalIORead,omitempty"`
+	PageRecordCount       *int32                                   `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
 	WritesIOCount         *int64                                   `json:"WritesIOCount,omitempty" xml:"WritesIOCount,omitempty"`
-	LogicalIORead         *int64                                   `json:"LogicalIORead,omitempty" xml:"LogicalIORead,omitempty"`
-	CPUTime               *int64                                   `json:"CPUTime,omitempty" xml:"CPUTime,omitempty"`
 	SQLHash               *string                                  `json:"SQLHash,omitempty" xml:"SQLHash,omitempty"`
+	LogicalIORead         *int64                                   `json:"LogicalIORead,omitempty" xml:"LogicalIORead,omitempty"`
+	RequestId             *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PhysicalIORead        *int64                                   `json:"PhysicalIORead,omitempty" xml:"PhysicalIORead,omitempty"`
+	TotalRecordCount      *int32                                   `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 	DBInstanceId          *string                                  `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	PageNumber            *int32                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	Items                 *DescribeSlowLogRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	Engine                *string                                  `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	PageNumber            *int32                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	CPUTime               *int64                                   `json:"CPUTime,omitempty" xml:"CPUTime,omitempty"`
+	UserName              *string                                  `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	LastRowsAffectedCount *int64                                   `json:"LastRowsAffectedCount,omitempty" xml:"LastRowsAffectedCount,omitempty"`
+	Items                 *DescribeSlowLogRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 }
 
 func (s DescribeSlowLogRecordsResponseBody) String() string {
@@ -20323,8 +20854,8 @@ func (s DescribeSlowLogRecordsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeSlowLogRecordsResponseBody) SetTotalRecordCount(v int32) *DescribeSlowLogRecordsResponseBody {
-	s.TotalRecordCount = &v
+func (s *DescribeSlowLogRecordsResponseBody) SetRowsAffectedCount(v int64) *DescribeSlowLogRecordsResponseBody {
+	s.RowsAffectedCount = &v
 	return s
 }
 
@@ -20333,43 +20864,8 @@ func (s *DescribeSlowLogRecordsResponseBody) SetPageRecordCount(v int32) *Descri
 	return s
 }
 
-func (s *DescribeSlowLogRecordsResponseBody) SetUserName(v string) *DescribeSlowLogRecordsResponseBody {
-	s.UserName = &v
-	return s
-}
-
-func (s *DescribeSlowLogRecordsResponseBody) SetRequestId(v string) *DescribeSlowLogRecordsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeSlowLogRecordsResponseBody) SetLastRowsAffectedCount(v int64) *DescribeSlowLogRecordsResponseBody {
-	s.LastRowsAffectedCount = &v
-	return s
-}
-
-func (s *DescribeSlowLogRecordsResponseBody) SetRowsAffectedCount(v int64) *DescribeSlowLogRecordsResponseBody {
-	s.RowsAffectedCount = &v
-	return s
-}
-
-func (s *DescribeSlowLogRecordsResponseBody) SetPhysicalIORead(v int64) *DescribeSlowLogRecordsResponseBody {
-	s.PhysicalIORead = &v
-	return s
-}
-
 func (s *DescribeSlowLogRecordsResponseBody) SetWritesIOCount(v int64) *DescribeSlowLogRecordsResponseBody {
 	s.WritesIOCount = &v
-	return s
-}
-
-func (s *DescribeSlowLogRecordsResponseBody) SetLogicalIORead(v int64) *DescribeSlowLogRecordsResponseBody {
-	s.LogicalIORead = &v
-	return s
-}
-
-func (s *DescribeSlowLogRecordsResponseBody) SetCPUTime(v int64) *DescribeSlowLogRecordsResponseBody {
-	s.CPUTime = &v
 	return s
 }
 
@@ -20378,8 +20874,33 @@ func (s *DescribeSlowLogRecordsResponseBody) SetSQLHash(v string) *DescribeSlowL
 	return s
 }
 
+func (s *DescribeSlowLogRecordsResponseBody) SetLogicalIORead(v int64) *DescribeSlowLogRecordsResponseBody {
+	s.LogicalIORead = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBody) SetRequestId(v string) *DescribeSlowLogRecordsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBody) SetPhysicalIORead(v int64) *DescribeSlowLogRecordsResponseBody {
+	s.PhysicalIORead = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBody) SetTotalRecordCount(v int32) *DescribeSlowLogRecordsResponseBody {
+	s.TotalRecordCount = &v
+	return s
+}
+
 func (s *DescribeSlowLogRecordsResponseBody) SetDBInstanceId(v string) *DescribeSlowLogRecordsResponseBody {
 	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBody) SetEngine(v string) *DescribeSlowLogRecordsResponseBody {
+	s.Engine = &v
 	return s
 }
 
@@ -20388,13 +20909,23 @@ func (s *DescribeSlowLogRecordsResponseBody) SetPageNumber(v int32) *DescribeSlo
 	return s
 }
 
-func (s *DescribeSlowLogRecordsResponseBody) SetItems(v *DescribeSlowLogRecordsResponseBodyItems) *DescribeSlowLogRecordsResponseBody {
-	s.Items = v
+func (s *DescribeSlowLogRecordsResponseBody) SetCPUTime(v int64) *DescribeSlowLogRecordsResponseBody {
+	s.CPUTime = &v
 	return s
 }
 
-func (s *DescribeSlowLogRecordsResponseBody) SetEngine(v string) *DescribeSlowLogRecordsResponseBody {
-	s.Engine = &v
+func (s *DescribeSlowLogRecordsResponseBody) SetUserName(v string) *DescribeSlowLogRecordsResponseBody {
+	s.UserName = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBody) SetLastRowsAffectedCount(v int64) *DescribeSlowLogRecordsResponseBody {
+	s.LastRowsAffectedCount = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBody) SetItems(v *DescribeSlowLogRecordsResponseBodyItems) *DescribeSlowLogRecordsResponseBody {
+	s.Items = v
 	return s
 }
 
@@ -20417,8 +20948,8 @@ func (s *DescribeSlowLogRecordsResponseBodyItems) SetSQLSlowRecord(v []*Describe
 
 type DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord struct {
 	HostAddress           *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
-	QueryTimes            *int64  `json:"QueryTimes,omitempty" xml:"QueryTimes,omitempty"`
 	RowsAffectedCount     *int64  `json:"RowsAffectedCount,omitempty" xml:"RowsAffectedCount,omitempty"`
+	QueryTimes            *int64  `json:"QueryTimes,omitempty" xml:"QueryTimes,omitempty"`
 	SQLText               *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
 	CpuTime               *int64  `json:"CpuTime,omitempty" xml:"CpuTime,omitempty"`
 	QueryTimeMS           *int64  `json:"QueryTimeMS,omitempty" xml:"QueryTimeMS,omitempty"`
@@ -20426,8 +20957,8 @@ type DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord struct {
 	LockTimes             *int64  `json:"LockTimes,omitempty" xml:"LockTimes,omitempty"`
 	ExecutionStartTime    *string `json:"ExecutionStartTime,omitempty" xml:"ExecutionStartTime,omitempty"`
 	LogicalIORead         *int64  `json:"LogicalIORead,omitempty" xml:"LogicalIORead,omitempty"`
-	PhysicalIORead        *int64  `json:"PhysicalIORead,omitempty" xml:"PhysicalIORead,omitempty"`
 	WriteIOCount          *int64  `json:"WriteIOCount,omitempty" xml:"WriteIOCount,omitempty"`
+	PhysicalIORead        *int64  `json:"PhysicalIORead,omitempty" xml:"PhysicalIORead,omitempty"`
 	ReturnRowCounts       *int64  `json:"ReturnRowCounts,omitempty" xml:"ReturnRowCounts,omitempty"`
 	ParseRowCounts        *int64  `json:"ParseRowCounts,omitempty" xml:"ParseRowCounts,omitempty"`
 	DBName                *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
@@ -20449,13 +20980,13 @@ func (s *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord) SetHostAddress(v 
 	return s
 }
 
-func (s *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord) SetQueryTimes(v int64) *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord {
-	s.QueryTimes = &v
+func (s *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord) SetRowsAffectedCount(v int64) *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord {
+	s.RowsAffectedCount = &v
 	return s
 }
 
-func (s *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord) SetRowsAffectedCount(v int64) *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord {
-	s.RowsAffectedCount = &v
+func (s *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord) SetQueryTimes(v int64) *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord {
+	s.QueryTimes = &v
 	return s
 }
 
@@ -20494,13 +21025,13 @@ func (s *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord) SetLogicalIORead(
 	return s
 }
 
-func (s *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord) SetPhysicalIORead(v int64) *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord {
-	s.PhysicalIORead = &v
+func (s *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord) SetWriteIOCount(v int64) *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord {
+	s.WriteIOCount = &v
 	return s
 }
 
-func (s *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord) SetWriteIOCount(v int64) *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord {
-	s.WriteIOCount = &v
+func (s *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord) SetPhysicalIORead(v int64) *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord {
+	s.PhysicalIORead = &v
 	return s
 }
 
@@ -21074,9 +21605,9 @@ func (s *DescribeSQLCollectorPolicyRequest) SetResourceGroupId(v string) *Descri
 }
 
 type DescribeSQLCollectorPolicyResponseBody struct {
-	StoragePeriod      *int32  `json:"StoragePeriod,omitempty" xml:"StoragePeriod,omitempty"`
 	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SQLCollectorStatus *string `json:"SQLCollectorStatus,omitempty" xml:"SQLCollectorStatus,omitempty"`
+	StoragePeriod      *int32  `json:"StoragePeriod,omitempty" xml:"StoragePeriod,omitempty"`
 }
 
 func (s DescribeSQLCollectorPolicyResponseBody) String() string {
@@ -21087,11 +21618,6 @@ func (s DescribeSQLCollectorPolicyResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeSQLCollectorPolicyResponseBody) SetStoragePeriod(v int32) *DescribeSQLCollectorPolicyResponseBody {
-	s.StoragePeriod = &v
-	return s
-}
-
 func (s *DescribeSQLCollectorPolicyResponseBody) SetRequestId(v string) *DescribeSQLCollectorPolicyResponseBody {
 	s.RequestId = &v
 	return s
@@ -21099,6 +21625,11 @@ func (s *DescribeSQLCollectorPolicyResponseBody) SetRequestId(v string) *Describ
 
 func (s *DescribeSQLCollectorPolicyResponseBody) SetSQLCollectorStatus(v string) *DescribeSQLCollectorPolicyResponseBody {
 	s.SQLCollectorStatus = &v
+	return s
+}
+
+func (s *DescribeSQLCollectorPolicyResponseBody) SetStoragePeriod(v int32) *DescribeSQLCollectorPolicyResponseBody {
+	s.StoragePeriod = &v
 	return s
 }
 
@@ -21284,10 +21815,10 @@ func (s *DescribeSQLLogFilesRequest) SetOwnerAccount(v string) *DescribeSQLLogFi
 }
 
 type DescribeSQLLogFilesResponseBody struct {
-	TotalRecordCount *int32                                `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
-	PageRecordCount  *int32                                `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
 	RequestId        *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageNumber       *int32                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageRecordCount  *int32                                `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	TotalRecordCount *int32                                `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 	Items            *DescribeSQLLogFilesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 }
 
@@ -21299,8 +21830,13 @@ func (s DescribeSQLLogFilesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeSQLLogFilesResponseBody) SetTotalRecordCount(v int32) *DescribeSQLLogFilesResponseBody {
-	s.TotalRecordCount = &v
+func (s *DescribeSQLLogFilesResponseBody) SetRequestId(v string) *DescribeSQLLogFilesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSQLLogFilesResponseBody) SetPageNumber(v int32) *DescribeSQLLogFilesResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -21309,13 +21845,8 @@ func (s *DescribeSQLLogFilesResponseBody) SetPageRecordCount(v int32) *DescribeS
 	return s
 }
 
-func (s *DescribeSQLLogFilesResponseBody) SetRequestId(v string) *DescribeSQLLogFilesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeSQLLogFilesResponseBody) SetPageNumber(v int32) *DescribeSQLLogFilesResponseBody {
-	s.PageNumber = &v
+func (s *DescribeSQLLogFilesResponseBody) SetTotalRecordCount(v int32) *DescribeSQLLogFilesResponseBody {
+	s.TotalRecordCount = &v
 	return s
 }
 
@@ -21513,10 +22044,10 @@ func (s *DescribeSQLLogRecordsRequest) SetOwnerAccount(v string) *DescribeSQLLog
 }
 
 type DescribeSQLLogRecordsResponseBody struct {
-	TotalRecordCount *int64                                  `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
-	PageRecordCount  *int32                                  `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
 	RequestId        *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageNumber       *int32                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageRecordCount  *int32                                  `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	TotalRecordCount *int64                                  `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 	Items            *DescribeSQLLogRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 }
 
@@ -21528,8 +22059,13 @@ func (s DescribeSQLLogRecordsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeSQLLogRecordsResponseBody) SetTotalRecordCount(v int64) *DescribeSQLLogRecordsResponseBody {
-	s.TotalRecordCount = &v
+func (s *DescribeSQLLogRecordsResponseBody) SetRequestId(v string) *DescribeSQLLogRecordsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSQLLogRecordsResponseBody) SetPageNumber(v int32) *DescribeSQLLogRecordsResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -21538,13 +22074,8 @@ func (s *DescribeSQLLogRecordsResponseBody) SetPageRecordCount(v int32) *Describ
 	return s
 }
 
-func (s *DescribeSQLLogRecordsResponseBody) SetRequestId(v string) *DescribeSQLLogRecordsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsResponseBody) SetPageNumber(v int32) *DescribeSQLLogRecordsResponseBody {
-	s.PageNumber = &v
+func (s *DescribeSQLLogRecordsResponseBody) SetTotalRecordCount(v int64) *DescribeSQLLogRecordsResponseBody {
+	s.TotalRecordCount = &v
 	return s
 }
 
@@ -21718,10 +22249,10 @@ func (s *DescribeSQLLogReportListRequest) SetOwnerAccount(v string) *DescribeSQL
 }
 
 type DescribeSQLLogReportListResponseBody struct {
-	TotalRecordCount *int32                                     `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
-	PageRecordCount  *int32                                     `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
 	RequestId        *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageNumber       *int32                                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageRecordCount  *int32                                     `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	TotalRecordCount *int32                                     `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 	Items            *DescribeSQLLogReportListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 }
 
@@ -21733,8 +22264,13 @@ func (s DescribeSQLLogReportListResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeSQLLogReportListResponseBody) SetTotalRecordCount(v int32) *DescribeSQLLogReportListResponseBody {
-	s.TotalRecordCount = &v
+func (s *DescribeSQLLogReportListResponseBody) SetRequestId(v string) *DescribeSQLLogReportListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSQLLogReportListResponseBody) SetPageNumber(v int32) *DescribeSQLLogReportListResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -21743,13 +22279,8 @@ func (s *DescribeSQLLogReportListResponseBody) SetPageRecordCount(v int32) *Desc
 	return s
 }
 
-func (s *DescribeSQLLogReportListResponseBody) SetRequestId(v string) *DescribeSQLLogReportListResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeSQLLogReportListResponseBody) SetPageNumber(v int32) *DescribeSQLLogReportListResponseBody {
-	s.PageNumber = &v
+func (s *DescribeSQLLogReportListResponseBody) SetTotalRecordCount(v int32) *DescribeSQLLogReportListResponseBody {
+	s.TotalRecordCount = &v
 	return s
 }
 
@@ -21776,9 +22307,9 @@ func (s *DescribeSQLLogReportListResponseBodyItems) SetItem(v []*DescribeSQLLogR
 }
 
 type DescribeSQLLogReportListResponseBodyItemsItem struct {
-	QPSTopNItems     *DescribeSQLLogReportListResponseBodyItemsItemQPSTopNItems     `json:"QPSTopNItems,omitempty" xml:"QPSTopNItems,omitempty" type:"Struct"`
 	ReportTime       *string                                                        `json:"ReportTime,omitempty" xml:"ReportTime,omitempty"`
 	LatencyTopNItems *DescribeSQLLogReportListResponseBodyItemsItemLatencyTopNItems `json:"LatencyTopNItems,omitempty" xml:"LatencyTopNItems,omitempty" type:"Struct"`
+	QPSTopNItems     *DescribeSQLLogReportListResponseBodyItemsItemQPSTopNItems     `json:"QPSTopNItems,omitempty" xml:"QPSTopNItems,omitempty" type:"Struct"`
 }
 
 func (s DescribeSQLLogReportListResponseBodyItemsItem) String() string {
@@ -21787,11 +22318,6 @@ func (s DescribeSQLLogReportListResponseBodyItemsItem) String() string {
 
 func (s DescribeSQLLogReportListResponseBodyItemsItem) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeSQLLogReportListResponseBodyItemsItem) SetQPSTopNItems(v *DescribeSQLLogReportListResponseBodyItemsItemQPSTopNItems) *DescribeSQLLogReportListResponseBodyItemsItem {
-	s.QPSTopNItems = v
-	return s
 }
 
 func (s *DescribeSQLLogReportListResponseBodyItemsItem) SetReportTime(v string) *DescribeSQLLogReportListResponseBodyItemsItem {
@@ -21804,43 +22330,8 @@ func (s *DescribeSQLLogReportListResponseBodyItemsItem) SetLatencyTopNItems(v *D
 	return s
 }
 
-type DescribeSQLLogReportListResponseBodyItemsItemQPSTopNItems struct {
-	QPSTopNItem []*DescribeSQLLogReportListResponseBodyItemsItemQPSTopNItemsQPSTopNItem `json:"QPSTopNItem,omitempty" xml:"QPSTopNItem,omitempty" type:"Repeated"`
-}
-
-func (s DescribeSQLLogReportListResponseBodyItemsItemQPSTopNItems) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLLogReportListResponseBodyItemsItemQPSTopNItems) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLLogReportListResponseBodyItemsItemQPSTopNItems) SetQPSTopNItem(v []*DescribeSQLLogReportListResponseBodyItemsItemQPSTopNItemsQPSTopNItem) *DescribeSQLLogReportListResponseBodyItemsItemQPSTopNItems {
-	s.QPSTopNItem = v
-	return s
-}
-
-type DescribeSQLLogReportListResponseBodyItemsItemQPSTopNItemsQPSTopNItem struct {
-	SQLText         *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
-	SQLExecuteTimes *int64  `json:"SQLExecuteTimes,omitempty" xml:"SQLExecuteTimes,omitempty"`
-}
-
-func (s DescribeSQLLogReportListResponseBodyItemsItemQPSTopNItemsQPSTopNItem) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLLogReportListResponseBodyItemsItemQPSTopNItemsQPSTopNItem) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLLogReportListResponseBodyItemsItemQPSTopNItemsQPSTopNItem) SetSQLText(v string) *DescribeSQLLogReportListResponseBodyItemsItemQPSTopNItemsQPSTopNItem {
-	s.SQLText = &v
-	return s
-}
-
-func (s *DescribeSQLLogReportListResponseBodyItemsItemQPSTopNItemsQPSTopNItem) SetSQLExecuteTimes(v int64) *DescribeSQLLogReportListResponseBodyItemsItemQPSTopNItemsQPSTopNItem {
-	s.SQLExecuteTimes = &v
+func (s *DescribeSQLLogReportListResponseBodyItemsItem) SetQPSTopNItems(v *DescribeSQLLogReportListResponseBodyItemsItemQPSTopNItems) *DescribeSQLLogReportListResponseBodyItemsItem {
+	s.QPSTopNItems = v
 	return s
 }
 
@@ -21887,6 +22378,46 @@ func (s *DescribeSQLLogReportListResponseBodyItemsItemLatencyTopNItemsLatencyTop
 
 func (s *DescribeSQLLogReportListResponseBodyItemsItemLatencyTopNItemsLatencyTopNItem) SetAvgLatency(v int64) *DescribeSQLLogReportListResponseBodyItemsItemLatencyTopNItemsLatencyTopNItem {
 	s.AvgLatency = &v
+	return s
+}
+
+type DescribeSQLLogReportListResponseBodyItemsItemQPSTopNItems struct {
+	QPSTopNItem []*DescribeSQLLogReportListResponseBodyItemsItemQPSTopNItemsQPSTopNItem `json:"QPSTopNItem,omitempty" xml:"QPSTopNItem,omitempty" type:"Repeated"`
+}
+
+func (s DescribeSQLLogReportListResponseBodyItemsItemQPSTopNItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSQLLogReportListResponseBodyItemsItemQPSTopNItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSQLLogReportListResponseBodyItemsItemQPSTopNItems) SetQPSTopNItem(v []*DescribeSQLLogReportListResponseBodyItemsItemQPSTopNItemsQPSTopNItem) *DescribeSQLLogReportListResponseBodyItemsItemQPSTopNItems {
+	s.QPSTopNItem = v
+	return s
+}
+
+type DescribeSQLLogReportListResponseBodyItemsItemQPSTopNItemsQPSTopNItem struct {
+	SQLExecuteTimes *int64  `json:"SQLExecuteTimes,omitempty" xml:"SQLExecuteTimes,omitempty"`
+	SQLText         *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
+}
+
+func (s DescribeSQLLogReportListResponseBodyItemsItemQPSTopNItemsQPSTopNItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSQLLogReportListResponseBodyItemsItemQPSTopNItemsQPSTopNItem) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSQLLogReportListResponseBodyItemsItemQPSTopNItemsQPSTopNItem) SetSQLExecuteTimes(v int64) *DescribeSQLLogReportListResponseBodyItemsItemQPSTopNItemsQPSTopNItem {
+	s.SQLExecuteTimes = &v
+	return s
+}
+
+func (s *DescribeSQLLogReportListResponseBodyItemsItemQPSTopNItemsQPSTopNItem) SetSQLText(v string) *DescribeSQLLogReportListResponseBodyItemsItemQPSTopNItemsQPSTopNItem {
+	s.SQLText = &v
 	return s
 }
 
@@ -21979,10 +22510,10 @@ func (s *DescribeSQLLogReportsRequest) SetOwnerAccount(v string) *DescribeSQLLog
 }
 
 type DescribeSQLLogReportsResponseBody struct {
-	TotalRecordCount *int32                                  `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
-	PageRecordCount  *int32                                  `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
 	RequestId        *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageNumber       *int32                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageRecordCount  *int32                                  `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	TotalRecordCount *int32                                  `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 	Items            *DescribeSQLLogReportsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 }
 
@@ -21994,8 +22525,13 @@ func (s DescribeSQLLogReportsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeSQLLogReportsResponseBody) SetTotalRecordCount(v int32) *DescribeSQLLogReportsResponseBody {
-	s.TotalRecordCount = &v
+func (s *DescribeSQLLogReportsResponseBody) SetRequestId(v string) *DescribeSQLLogReportsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSQLLogReportsResponseBody) SetPageNumber(v int32) *DescribeSQLLogReportsResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -22004,13 +22540,8 @@ func (s *DescribeSQLLogReportsResponseBody) SetPageRecordCount(v int32) *Describ
 	return s
 }
 
-func (s *DescribeSQLLogReportsResponseBody) SetRequestId(v string) *DescribeSQLLogReportsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeSQLLogReportsResponseBody) SetPageNumber(v int32) *DescribeSQLLogReportsResponseBody {
-	s.PageNumber = &v
+func (s *DescribeSQLLogReportsResponseBody) SetTotalRecordCount(v int32) *DescribeSQLLogReportsResponseBody {
+	s.TotalRecordCount = &v
 	return s
 }
 
@@ -22037,9 +22568,9 @@ func (s *DescribeSQLLogReportsResponseBodyItems) SetItem(v []*DescribeSQLLogRepo
 }
 
 type DescribeSQLLogReportsResponseBodyItemsItem struct {
-	QPSTopNItems     *DescribeSQLLogReportsResponseBodyItemsItemQPSTopNItems     `json:"QPSTopNItems,omitempty" xml:"QPSTopNItems,omitempty" type:"Struct"`
 	ReportTime       *string                                                     `json:"ReportTime,omitempty" xml:"ReportTime,omitempty"`
 	LatencyTopNItems *DescribeSQLLogReportsResponseBodyItemsItemLatencyTopNItems `json:"LatencyTopNItems,omitempty" xml:"LatencyTopNItems,omitempty" type:"Struct"`
+	QPSTopNItems     *DescribeSQLLogReportsResponseBodyItemsItemQPSTopNItems     `json:"QPSTopNItems,omitempty" xml:"QPSTopNItems,omitempty" type:"Struct"`
 }
 
 func (s DescribeSQLLogReportsResponseBodyItemsItem) String() string {
@@ -22048,11 +22579,6 @@ func (s DescribeSQLLogReportsResponseBodyItemsItem) String() string {
 
 func (s DescribeSQLLogReportsResponseBodyItemsItem) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeSQLLogReportsResponseBodyItemsItem) SetQPSTopNItems(v *DescribeSQLLogReportsResponseBodyItemsItemQPSTopNItems) *DescribeSQLLogReportsResponseBodyItemsItem {
-	s.QPSTopNItems = v
-	return s
 }
 
 func (s *DescribeSQLLogReportsResponseBodyItemsItem) SetReportTime(v string) *DescribeSQLLogReportsResponseBodyItemsItem {
@@ -22065,43 +22591,8 @@ func (s *DescribeSQLLogReportsResponseBodyItemsItem) SetLatencyTopNItems(v *Desc
 	return s
 }
 
-type DescribeSQLLogReportsResponseBodyItemsItemQPSTopNItems struct {
-	QPSTopNItem []*DescribeSQLLogReportsResponseBodyItemsItemQPSTopNItemsQPSTopNItem `json:"QPSTopNItem,omitempty" xml:"QPSTopNItem,omitempty" type:"Repeated"`
-}
-
-func (s DescribeSQLLogReportsResponseBodyItemsItemQPSTopNItems) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLLogReportsResponseBodyItemsItemQPSTopNItems) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLLogReportsResponseBodyItemsItemQPSTopNItems) SetQPSTopNItem(v []*DescribeSQLLogReportsResponseBodyItemsItemQPSTopNItemsQPSTopNItem) *DescribeSQLLogReportsResponseBodyItemsItemQPSTopNItems {
-	s.QPSTopNItem = v
-	return s
-}
-
-type DescribeSQLLogReportsResponseBodyItemsItemQPSTopNItemsQPSTopNItem struct {
-	SQLText         *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
-	SQLExecuteTimes *int64  `json:"SQLExecuteTimes,omitempty" xml:"SQLExecuteTimes,omitempty"`
-}
-
-func (s DescribeSQLLogReportsResponseBodyItemsItemQPSTopNItemsQPSTopNItem) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLLogReportsResponseBodyItemsItemQPSTopNItemsQPSTopNItem) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLLogReportsResponseBodyItemsItemQPSTopNItemsQPSTopNItem) SetSQLText(v string) *DescribeSQLLogReportsResponseBodyItemsItemQPSTopNItemsQPSTopNItem {
-	s.SQLText = &v
-	return s
-}
-
-func (s *DescribeSQLLogReportsResponseBodyItemsItemQPSTopNItemsQPSTopNItem) SetSQLExecuteTimes(v int64) *DescribeSQLLogReportsResponseBodyItemsItemQPSTopNItemsQPSTopNItem {
-	s.SQLExecuteTimes = &v
+func (s *DescribeSQLLogReportsResponseBodyItemsItem) SetQPSTopNItems(v *DescribeSQLLogReportsResponseBodyItemsItemQPSTopNItems) *DescribeSQLLogReportsResponseBodyItemsItem {
+	s.QPSTopNItems = v
 	return s
 }
 
@@ -22151,6 +22642,46 @@ func (s *DescribeSQLLogReportsResponseBodyItemsItemLatencyTopNItemsLatencyTopNIt
 	return s
 }
 
+type DescribeSQLLogReportsResponseBodyItemsItemQPSTopNItems struct {
+	QPSTopNItem []*DescribeSQLLogReportsResponseBodyItemsItemQPSTopNItemsQPSTopNItem `json:"QPSTopNItem,omitempty" xml:"QPSTopNItem,omitempty" type:"Repeated"`
+}
+
+func (s DescribeSQLLogReportsResponseBodyItemsItemQPSTopNItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSQLLogReportsResponseBodyItemsItemQPSTopNItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSQLLogReportsResponseBodyItemsItemQPSTopNItems) SetQPSTopNItem(v []*DescribeSQLLogReportsResponseBodyItemsItemQPSTopNItemsQPSTopNItem) *DescribeSQLLogReportsResponseBodyItemsItemQPSTopNItems {
+	s.QPSTopNItem = v
+	return s
+}
+
+type DescribeSQLLogReportsResponseBodyItemsItemQPSTopNItemsQPSTopNItem struct {
+	SQLExecuteTimes *int64  `json:"SQLExecuteTimes,omitempty" xml:"SQLExecuteTimes,omitempty"`
+	SQLText         *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
+}
+
+func (s DescribeSQLLogReportsResponseBodyItemsItemQPSTopNItemsQPSTopNItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSQLLogReportsResponseBodyItemsItemQPSTopNItemsQPSTopNItem) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSQLLogReportsResponseBodyItemsItemQPSTopNItemsQPSTopNItem) SetSQLExecuteTimes(v int64) *DescribeSQLLogReportsResponseBodyItemsItemQPSTopNItemsQPSTopNItem {
+	s.SQLExecuteTimes = &v
+	return s
+}
+
+func (s *DescribeSQLLogReportsResponseBodyItemsItemQPSTopNItemsQPSTopNItem) SetSQLText(v string) *DescribeSQLLogReportsResponseBodyItemsItemQPSTopNItemsQPSTopNItem {
+	s.SQLText = &v
+	return s
+}
+
 type DescribeSQLLogReportsResponse struct {
 	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	Body    *DescribeSQLLogReportsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -22184,6 +22715,7 @@ type DescribeTagsRequest struct {
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	ResourceType         *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s DescribeTagsRequest) String() string {
@@ -22239,6 +22771,11 @@ func (s *DescribeTagsRequest) SetOwnerAccount(v string) *DescribeTagsRequest {
 	return s
 }
 
+func (s *DescribeTagsRequest) SetResourceType(v string) *DescribeTagsRequest {
+	s.ResourceType = &v
+	return s
+}
+
 type DescribeTagsResponseBody struct {
 	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Items     *DescribeTagsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
@@ -22280,9 +22817,9 @@ func (s *DescribeTagsResponseBodyItems) SetTagInfos(v []*DescribeTagsResponseBod
 }
 
 type DescribeTagsResponseBodyItemsTagInfos struct {
-	DBInstanceIds *DescribeTagsResponseBodyItemsTagInfosDBInstanceIds `json:"DBInstanceIds,omitempty" xml:"DBInstanceIds,omitempty" type:"Struct"`
 	TagValue      *string                                             `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 	TagKey        *string                                             `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	DBInstanceIds *DescribeTagsResponseBodyItemsTagInfosDBInstanceIds `json:"DBInstanceIds,omitempty" xml:"DBInstanceIds,omitempty" type:"Struct"`
 }
 
 func (s DescribeTagsResponseBodyItemsTagInfos) String() string {
@@ -22293,11 +22830,6 @@ func (s DescribeTagsResponseBodyItemsTagInfos) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeTagsResponseBodyItemsTagInfos) SetDBInstanceIds(v *DescribeTagsResponseBodyItemsTagInfosDBInstanceIds) *DescribeTagsResponseBodyItemsTagInfos {
-	s.DBInstanceIds = v
-	return s
-}
-
 func (s *DescribeTagsResponseBodyItemsTagInfos) SetTagValue(v string) *DescribeTagsResponseBodyItemsTagInfos {
 	s.TagValue = &v
 	return s
@@ -22305,6 +22837,11 @@ func (s *DescribeTagsResponseBodyItemsTagInfos) SetTagValue(v string) *DescribeT
 
 func (s *DescribeTagsResponseBodyItemsTagInfos) SetTagKey(v string) *DescribeTagsResponseBodyItemsTagInfos {
 	s.TagKey = &v
+	return s
+}
+
+func (s *DescribeTagsResponseBodyItemsTagInfos) SetDBInstanceIds(v *DescribeTagsResponseBodyItemsTagInfosDBInstanceIds) *DescribeTagsResponseBodyItemsTagInfos {
+	s.DBInstanceIds = v
 	return s
 }
 
@@ -22426,10 +22963,10 @@ func (s *DescribeTasksRequest) SetOwnerAccount(v string) *DescribeTasksRequest {
 }
 
 type DescribeTasksResponseBody struct {
-	TotalRecordCount *int32                          `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
-	PageRecordCount  *int32                          `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
 	RequestId        *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageNumber       *int32                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageRecordCount  *int32                          `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	TotalRecordCount *int32                          `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 	Items            *DescribeTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 }
 
@@ -22441,8 +22978,13 @@ func (s DescribeTasksResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeTasksResponseBody) SetTotalRecordCount(v int32) *DescribeTasksResponseBody {
-	s.TotalRecordCount = &v
+func (s *DescribeTasksResponseBody) SetRequestId(v string) *DescribeTasksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeTasksResponseBody) SetPageNumber(v int32) *DescribeTasksResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -22451,13 +22993,8 @@ func (s *DescribeTasksResponseBody) SetPageRecordCount(v int32) *DescribeTasksRe
 	return s
 }
 
-func (s *DescribeTasksResponseBody) SetRequestId(v string) *DescribeTasksResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeTasksResponseBody) SetPageNumber(v int32) *DescribeTasksResponseBody {
-	s.PageNumber = &v
+func (s *DescribeTasksResponseBody) SetTotalRecordCount(v int32) *DescribeTasksResponseBody {
+	s.TotalRecordCount = &v
 	return s
 }
 
@@ -22486,13 +23023,13 @@ func (s *DescribeTasksResponseBodyItems) SetTaskProgressInfo(v []*DescribeTasksR
 type DescribeTasksResponseBodyItemsTaskProgressInfo struct {
 	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	FinishTime         *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	StepsInfo          *string `json:"StepsInfo,omitempty" xml:"StepsInfo,omitempty"`
 	Progress           *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	ExpectedFinishTime *string `json:"ExpectedFinishTime,omitempty" xml:"ExpectedFinishTime,omitempty"`
+	StepsInfo          *string `json:"StepsInfo,omitempty" xml:"StepsInfo,omitempty"`
 	BeginTime          *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	ExpectedFinishTime *string `json:"ExpectedFinishTime,omitempty" xml:"ExpectedFinishTime,omitempty"`
 	TaskErrorCode      *string `json:"TaskErrorCode,omitempty" xml:"TaskErrorCode,omitempty"`
-	ProgressInfo       *string `json:"ProgressInfo,omitempty" xml:"ProgressInfo,omitempty"`
 	CurrentStepName    *string `json:"CurrentStepName,omitempty" xml:"CurrentStepName,omitempty"`
+	ProgressInfo       *string `json:"ProgressInfo,omitempty" xml:"ProgressInfo,omitempty"`
 	StepProgressInfo   *string `json:"StepProgressInfo,omitempty" xml:"StepProgressInfo,omitempty"`
 	TaskErrorMessage   *string `json:"TaskErrorMessage,omitempty" xml:"TaskErrorMessage,omitempty"`
 	TaskAction         *string `json:"TaskAction,omitempty" xml:"TaskAction,omitempty"`
@@ -22519,18 +23056,13 @@ func (s *DescribeTasksResponseBodyItemsTaskProgressInfo) SetFinishTime(v string)
 	return s
 }
 
-func (s *DescribeTasksResponseBodyItemsTaskProgressInfo) SetStepsInfo(v string) *DescribeTasksResponseBodyItemsTaskProgressInfo {
-	s.StepsInfo = &v
-	return s
-}
-
 func (s *DescribeTasksResponseBodyItemsTaskProgressInfo) SetProgress(v string) *DescribeTasksResponseBodyItemsTaskProgressInfo {
 	s.Progress = &v
 	return s
 }
 
-func (s *DescribeTasksResponseBodyItemsTaskProgressInfo) SetExpectedFinishTime(v string) *DescribeTasksResponseBodyItemsTaskProgressInfo {
-	s.ExpectedFinishTime = &v
+func (s *DescribeTasksResponseBodyItemsTaskProgressInfo) SetStepsInfo(v string) *DescribeTasksResponseBodyItemsTaskProgressInfo {
+	s.StepsInfo = &v
 	return s
 }
 
@@ -22539,18 +23071,23 @@ func (s *DescribeTasksResponseBodyItemsTaskProgressInfo) SetBeginTime(v string) 
 	return s
 }
 
+func (s *DescribeTasksResponseBodyItemsTaskProgressInfo) SetExpectedFinishTime(v string) *DescribeTasksResponseBodyItemsTaskProgressInfo {
+	s.ExpectedFinishTime = &v
+	return s
+}
+
 func (s *DescribeTasksResponseBodyItemsTaskProgressInfo) SetTaskErrorCode(v string) *DescribeTasksResponseBodyItemsTaskProgressInfo {
 	s.TaskErrorCode = &v
 	return s
 }
 
-func (s *DescribeTasksResponseBodyItemsTaskProgressInfo) SetProgressInfo(v string) *DescribeTasksResponseBodyItemsTaskProgressInfo {
-	s.ProgressInfo = &v
+func (s *DescribeTasksResponseBodyItemsTaskProgressInfo) SetCurrentStepName(v string) *DescribeTasksResponseBodyItemsTaskProgressInfo {
+	s.CurrentStepName = &v
 	return s
 }
 
-func (s *DescribeTasksResponseBodyItemsTaskProgressInfo) SetCurrentStepName(v string) *DescribeTasksResponseBodyItemsTaskProgressInfo {
-	s.CurrentStepName = &v
+func (s *DescribeTasksResponseBodyItemsTaskProgressInfo) SetProgressInfo(v string) *DescribeTasksResponseBodyItemsTaskProgressInfo {
+	s.ProgressInfo = &v
 	return s
 }
 
@@ -22968,8 +23505,8 @@ func (s *GetDbProxyInstanceSslResponseBodyDbProxyCertListItems) SetDbProxyCertLi
 }
 
 type GetDbProxyInstanceSslResponseBodyDbProxyCertListItemsDbProxyCertListItems struct {
-	EndpointName   *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
 	DbInstanceName *string `json:"DbInstanceName,omitempty" xml:"DbInstanceName,omitempty"`
+	EndpointName   *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
 	EndpointType   *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
 	SslExpiredTime *string `json:"SslExpiredTime,omitempty" xml:"SslExpiredTime,omitempty"`
 	CertCommonName *string `json:"CertCommonName,omitempty" xml:"CertCommonName,omitempty"`
@@ -22983,13 +23520,13 @@ func (s GetDbProxyInstanceSslResponseBodyDbProxyCertListItemsDbProxyCertListItem
 	return s.String()
 }
 
-func (s *GetDbProxyInstanceSslResponseBodyDbProxyCertListItemsDbProxyCertListItems) SetEndpointName(v string) *GetDbProxyInstanceSslResponseBodyDbProxyCertListItemsDbProxyCertListItems {
-	s.EndpointName = &v
+func (s *GetDbProxyInstanceSslResponseBodyDbProxyCertListItemsDbProxyCertListItems) SetDbInstanceName(v string) *GetDbProxyInstanceSslResponseBodyDbProxyCertListItemsDbProxyCertListItems {
+	s.DbInstanceName = &v
 	return s
 }
 
-func (s *GetDbProxyInstanceSslResponseBodyDbProxyCertListItemsDbProxyCertListItems) SetDbInstanceName(v string) *GetDbProxyInstanceSslResponseBodyDbProxyCertListItemsDbProxyCertListItems {
-	s.DbInstanceName = &v
+func (s *GetDbProxyInstanceSslResponseBodyDbProxyCertListItemsDbProxyCertListItems) SetEndpointName(v string) *GetDbProxyInstanceSslResponseBodyDbProxyCertListItemsDbProxyCertListItems {
+	s.EndpointName = &v
 	return s
 }
 
@@ -23259,8 +23796,8 @@ func (s *ImportDatabaseBetweenInstancesRequest) SetOwnerAccount(v string) *Impor
 }
 
 type ImportDatabaseBetweenInstancesResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ImportId  *string `json:"ImportId,omitempty" xml:"ImportId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ImportDatabaseBetweenInstancesResponseBody) String() string {
@@ -23271,13 +23808,13 @@ func (s ImportDatabaseBetweenInstancesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ImportDatabaseBetweenInstancesResponseBody) SetRequestId(v string) *ImportDatabaseBetweenInstancesResponseBody {
-	s.RequestId = &v
+func (s *ImportDatabaseBetweenInstancesResponseBody) SetImportId(v string) *ImportDatabaseBetweenInstancesResponseBody {
+	s.ImportId = &v
 	return s
 }
 
-func (s *ImportDatabaseBetweenInstancesResponseBody) SetImportId(v string) *ImportDatabaseBetweenInstancesResponseBody {
-	s.ImportId = &v
+func (s *ImportDatabaseBetweenInstancesResponseBody) SetRequestId(v string) *ImportDatabaseBetweenInstancesResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -23300,6 +23837,305 @@ func (s *ImportDatabaseBetweenInstancesResponse) SetHeaders(v map[string]*string
 }
 
 func (s *ImportDatabaseBetweenInstancesResponse) SetBody(v *ImportDatabaseBetweenInstancesResponseBody) *ImportDatabaseBetweenInstancesResponse {
+	s.Body = v
+	return s
+}
+
+type ImportUserBackupFileRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	EngineVersion        *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	BucketRegion         *string `json:"BucketRegion,omitempty" xml:"BucketRegion,omitempty"`
+	BackupFile           *string `json:"BackupFile,omitempty" xml:"BackupFile,omitempty"`
+	Comment              *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	RestoreSize          *int32  `json:"RestoreSize,omitempty" xml:"RestoreSize,omitempty"`
+	Retention            *int32  `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	ZoneId               *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s ImportUserBackupFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportUserBackupFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ImportUserBackupFileRequest) SetOwnerId(v int64) *ImportUserBackupFileRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ImportUserBackupFileRequest) SetResourceOwnerAccount(v string) *ImportUserBackupFileRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ImportUserBackupFileRequest) SetResourceOwnerId(v int64) *ImportUserBackupFileRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ImportUserBackupFileRequest) SetRegionId(v string) *ImportUserBackupFileRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ImportUserBackupFileRequest) SetEngineVersion(v string) *ImportUserBackupFileRequest {
+	s.EngineVersion = &v
+	return s
+}
+
+func (s *ImportUserBackupFileRequest) SetBucketRegion(v string) *ImportUserBackupFileRequest {
+	s.BucketRegion = &v
+	return s
+}
+
+func (s *ImportUserBackupFileRequest) SetBackupFile(v string) *ImportUserBackupFileRequest {
+	s.BackupFile = &v
+	return s
+}
+
+func (s *ImportUserBackupFileRequest) SetComment(v string) *ImportUserBackupFileRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *ImportUserBackupFileRequest) SetRestoreSize(v int32) *ImportUserBackupFileRequest {
+	s.RestoreSize = &v
+	return s
+}
+
+func (s *ImportUserBackupFileRequest) SetRetention(v int32) *ImportUserBackupFileRequest {
+	s.Retention = &v
+	return s
+}
+
+func (s *ImportUserBackupFileRequest) SetZoneId(v string) *ImportUserBackupFileRequest {
+	s.ZoneId = &v
+	return s
+}
+
+type ImportUserBackupFileResponseBody struct {
+	Status    *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	BackupId  *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+}
+
+func (s ImportUserBackupFileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportUserBackupFileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ImportUserBackupFileResponseBody) SetStatus(v bool) *ImportUserBackupFileResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *ImportUserBackupFileResponseBody) SetRequestId(v string) *ImportUserBackupFileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ImportUserBackupFileResponseBody) SetBackupId(v string) *ImportUserBackupFileResponseBody {
+	s.BackupId = &v
+	return s
+}
+
+type ImportUserBackupFileResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ImportUserBackupFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ImportUserBackupFileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportUserBackupFileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ImportUserBackupFileResponse) SetHeaders(v map[string]*string) *ImportUserBackupFileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ImportUserBackupFileResponse) SetBody(v *ImportUserBackupFileResponseBody) *ImportUserBackupFileResponse {
+	s.Body = v
+	return s
+}
+
+type ListClassesRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	CommodityCode        *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OrderType            *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListClassesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClassesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListClassesRequest) SetOwnerId(v int64) *ListClassesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListClassesRequest) SetResourceOwnerAccount(v string) *ListClassesRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListClassesRequest) SetResourceOwnerId(v int64) *ListClassesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListClassesRequest) SetClientToken(v string) *ListClassesRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ListClassesRequest) SetCommodityCode(v string) *ListClassesRequest {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *ListClassesRequest) SetDBInstanceId(v string) *ListClassesRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ListClassesRequest) SetOrderType(v string) *ListClassesRequest {
+	s.OrderType = &v
+	return s
+}
+
+func (s *ListClassesRequest) SetRegionId(v string) *ListClassesRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListClassesResponseBody struct {
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RegionId  *string                         `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Items     []*ListClassesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+}
+
+func (s ListClassesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClassesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListClassesResponseBody) SetRequestId(v string) *ListClassesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListClassesResponseBody) SetRegionId(v string) *ListClassesResponseBody {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListClassesResponseBody) SetItems(v []*ListClassesResponseBodyItems) *ListClassesResponseBody {
+	s.Items = v
+	return s
+}
+
+type ListClassesResponseBodyItems struct {
+	MaxIOPS        *string `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
+	Cpu            *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	ReferencePrice *string `json:"ReferencePrice,omitempty" xml:"ReferencePrice,omitempty"`
+	MaxConnections *string `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
+	MemoryClass    *string `json:"MemoryClass,omitempty" xml:"MemoryClass,omitempty"`
+	ClassCode      *string `json:"ClassCode,omitempty" xml:"ClassCode,omitempty"`
+	ClassGroup     *string `json:"ClassGroup,omitempty" xml:"ClassGroup,omitempty"`
+	MaxIOMBPS      *string `json:"MaxIOMBPS,omitempty" xml:"MaxIOMBPS,omitempty"`
+}
+
+func (s ListClassesResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClassesResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *ListClassesResponseBodyItems) SetMaxIOPS(v string) *ListClassesResponseBodyItems {
+	s.MaxIOPS = &v
+	return s
+}
+
+func (s *ListClassesResponseBodyItems) SetCpu(v string) *ListClassesResponseBodyItems {
+	s.Cpu = &v
+	return s
+}
+
+func (s *ListClassesResponseBodyItems) SetReferencePrice(v string) *ListClassesResponseBodyItems {
+	s.ReferencePrice = &v
+	return s
+}
+
+func (s *ListClassesResponseBodyItems) SetMaxConnections(v string) *ListClassesResponseBodyItems {
+	s.MaxConnections = &v
+	return s
+}
+
+func (s *ListClassesResponseBodyItems) SetMemoryClass(v string) *ListClassesResponseBodyItems {
+	s.MemoryClass = &v
+	return s
+}
+
+func (s *ListClassesResponseBodyItems) SetClassCode(v string) *ListClassesResponseBodyItems {
+	s.ClassCode = &v
+	return s
+}
+
+func (s *ListClassesResponseBodyItems) SetClassGroup(v string) *ListClassesResponseBodyItems {
+	s.ClassGroup = &v
+	return s
+}
+
+func (s *ListClassesResponseBodyItems) SetMaxIOMBPS(v string) *ListClassesResponseBodyItems {
+	s.MaxIOMBPS = &v
+	return s
+}
+
+type ListClassesResponse struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListClassesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListClassesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClassesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListClassesResponse) SetHeaders(v map[string]*string) *ListClassesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListClassesResponse) SetBody(v *ListClassesResponseBody) *ListClassesResponse {
 	s.Body = v
 	return s
 }
@@ -23433,8 +24269,8 @@ func (s *ListTagResourcesResponseBodyTagResources) SetTagResource(v []*ListTagRe
 }
 
 type ListTagResourcesResponseBodyTagResourcesTagResource struct {
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 }
@@ -23447,13 +24283,13 @@ func (s ListTagResourcesResponseBodyTagResourcesTagResource) GoString() string {
 	return s.String()
 }
 
-func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetResourceType(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
-	s.ResourceType = &v
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagValue(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
+	s.TagValue = &v
 	return s
 }
 
-func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagValue(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
-	s.TagValue = &v
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetResourceType(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
+	s.ResourceType = &v
 	return s
 }
 
@@ -23486,6 +24322,236 @@ func (s *ListTagResourcesResponse) SetHeaders(v map[string]*string) *ListTagReso
 }
 
 func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *ListTagResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type ListUserBackupFilesRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Comment              *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	BackupId             *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	OssUrl               *string `json:"OssUrl,omitempty" xml:"OssUrl,omitempty"`
+	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+}
+
+func (s ListUserBackupFilesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserBackupFilesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserBackupFilesRequest) SetOwnerId(v int64) *ListUserBackupFilesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListUserBackupFilesRequest) SetResourceOwnerAccount(v string) *ListUserBackupFilesRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListUserBackupFilesRequest) SetResourceOwnerId(v int64) *ListUserBackupFilesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListUserBackupFilesRequest) SetStatus(v string) *ListUserBackupFilesRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *ListUserBackupFilesRequest) SetRegionId(v string) *ListUserBackupFilesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListUserBackupFilesRequest) SetComment(v string) *ListUserBackupFilesRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *ListUserBackupFilesRequest) SetBackupId(v string) *ListUserBackupFilesRequest {
+	s.BackupId = &v
+	return s
+}
+
+func (s *ListUserBackupFilesRequest) SetOssUrl(v string) *ListUserBackupFilesRequest {
+	s.OssUrl = &v
+	return s
+}
+
+func (s *ListUserBackupFilesRequest) SetTags(v string) *ListUserBackupFilesRequest {
+	s.Tags = &v
+	return s
+}
+
+type ListUserBackupFilesResponseBody struct {
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Records   []*ListUserBackupFilesResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+}
+
+func (s ListUserBackupFilesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserBackupFilesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserBackupFilesResponseBody) SetRequestId(v string) *ListUserBackupFilesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListUserBackupFilesResponseBody) SetRecords(v []*ListUserBackupFilesResponseBodyRecords) *ListUserBackupFilesResponseBody {
+	s.Records = v
+	return s
+}
+
+type ListUserBackupFilesResponseBodyRecords struct {
+	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	CreationTime     *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Comment          *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	OssFilePath      *string `json:"OssFilePath,omitempty" xml:"OssFilePath,omitempty"`
+	OssBucket        *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
+	OssFileSize      *int64  `json:"OssFileSize,omitempty" xml:"OssFileSize,omitempty"`
+	OssFileName      *string `json:"OssFileName,omitempty" xml:"OssFileName,omitempty"`
+	EngineVersion    *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	BackupId         *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	RestoreSize      *string `json:"RestoreSize,omitempty" xml:"RestoreSize,omitempty"`
+	ZoneId           *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	Retention        *int32  `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	Engine           *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	OssUrl           *string `json:"OssUrl,omitempty" xml:"OssUrl,omitempty"`
+	OssFileMetaData  *string `json:"OssFileMetaData,omitempty" xml:"OssFileMetaData,omitempty"`
+	BinlogInfo       *string `json:"BinlogInfo,omitempty" xml:"BinlogInfo,omitempty"`
+	Reason           *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+}
+
+func (s ListUserBackupFilesResponseBodyRecords) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserBackupFilesResponseBodyRecords) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserBackupFilesResponseBodyRecords) SetStatus(v string) *ListUserBackupFilesResponseBodyRecords {
+	s.Status = &v
+	return s
+}
+
+func (s *ListUserBackupFilesResponseBodyRecords) SetCreationTime(v string) *ListUserBackupFilesResponseBodyRecords {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *ListUserBackupFilesResponseBodyRecords) SetComment(v string) *ListUserBackupFilesResponseBodyRecords {
+	s.Comment = &v
+	return s
+}
+
+func (s *ListUserBackupFilesResponseBodyRecords) SetOssFilePath(v string) *ListUserBackupFilesResponseBodyRecords {
+	s.OssFilePath = &v
+	return s
+}
+
+func (s *ListUserBackupFilesResponseBodyRecords) SetOssBucket(v string) *ListUserBackupFilesResponseBodyRecords {
+	s.OssBucket = &v
+	return s
+}
+
+func (s *ListUserBackupFilesResponseBodyRecords) SetModificationTime(v string) *ListUserBackupFilesResponseBodyRecords {
+	s.ModificationTime = &v
+	return s
+}
+
+func (s *ListUserBackupFilesResponseBodyRecords) SetOssFileSize(v int64) *ListUserBackupFilesResponseBodyRecords {
+	s.OssFileSize = &v
+	return s
+}
+
+func (s *ListUserBackupFilesResponseBodyRecords) SetOssFileName(v string) *ListUserBackupFilesResponseBodyRecords {
+	s.OssFileName = &v
+	return s
+}
+
+func (s *ListUserBackupFilesResponseBodyRecords) SetEngineVersion(v string) *ListUserBackupFilesResponseBodyRecords {
+	s.EngineVersion = &v
+	return s
+}
+
+func (s *ListUserBackupFilesResponseBodyRecords) SetBackupId(v string) *ListUserBackupFilesResponseBodyRecords {
+	s.BackupId = &v
+	return s
+}
+
+func (s *ListUserBackupFilesResponseBodyRecords) SetRestoreSize(v string) *ListUserBackupFilesResponseBodyRecords {
+	s.RestoreSize = &v
+	return s
+}
+
+func (s *ListUserBackupFilesResponseBodyRecords) SetZoneId(v string) *ListUserBackupFilesResponseBodyRecords {
+	s.ZoneId = &v
+	return s
+}
+
+func (s *ListUserBackupFilesResponseBodyRecords) SetRetention(v int32) *ListUserBackupFilesResponseBodyRecords {
+	s.Retention = &v
+	return s
+}
+
+func (s *ListUserBackupFilesResponseBodyRecords) SetEngine(v string) *ListUserBackupFilesResponseBodyRecords {
+	s.Engine = &v
+	return s
+}
+
+func (s *ListUserBackupFilesResponseBodyRecords) SetOssUrl(v string) *ListUserBackupFilesResponseBodyRecords {
+	s.OssUrl = &v
+	return s
+}
+
+func (s *ListUserBackupFilesResponseBodyRecords) SetOssFileMetaData(v string) *ListUserBackupFilesResponseBodyRecords {
+	s.OssFileMetaData = &v
+	return s
+}
+
+func (s *ListUserBackupFilesResponseBodyRecords) SetBinlogInfo(v string) *ListUserBackupFilesResponseBodyRecords {
+	s.BinlogInfo = &v
+	return s
+}
+
+func (s *ListUserBackupFilesResponseBodyRecords) SetReason(v string) *ListUserBackupFilesResponseBodyRecords {
+	s.Reason = &v
+	return s
+}
+
+type ListUserBackupFilesResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListUserBackupFilesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListUserBackupFilesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserBackupFilesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserBackupFilesResponse) SetHeaders(v map[string]*string) *ListUserBackupFilesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListUserBackupFilesResponse) SetBody(v *ListUserBackupFilesResponseBody) *ListUserBackupFilesResponse {
 	s.Body = v
 	return s
 }
@@ -23655,8 +24721,8 @@ func (s *MigrateDBInstanceRequest) SetZoneIdForFollower(v string) *MigrateDBInst
 }
 
 type MigrateDBInstanceResponseBody struct {
-	TaskId      *int32  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId      *int32  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	MigrationId *int32  `json:"MigrationId,omitempty" xml:"MigrationId,omitempty"`
 }
 
@@ -23668,13 +24734,13 @@ func (s MigrateDBInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *MigrateDBInstanceResponseBody) SetTaskId(v int32) *MigrateDBInstanceResponseBody {
-	s.TaskId = &v
+func (s *MigrateDBInstanceResponseBody) SetRequestId(v string) *MigrateDBInstanceResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *MigrateDBInstanceResponseBody) SetRequestId(v string) *MigrateDBInstanceResponseBody {
-	s.RequestId = &v
+func (s *MigrateDBInstanceResponseBody) SetTaskId(v int32) *MigrateDBInstanceResponseBody {
+	s.TaskId = &v
 	return s
 }
 
@@ -23742,9 +24808,9 @@ func (s *MigrateSecurityIPModeRequest) SetDBInstanceId(v string) *MigrateSecurit
 }
 
 type MigrateSecurityIPModeResponseBody struct {
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	DBInstanceId   *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	SecurityIPMode *string `json:"SecurityIPMode,omitempty" xml:"SecurityIPMode,omitempty"`
+	DBInstanceId   *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s MigrateSecurityIPModeResponseBody) String() string {
@@ -23755,8 +24821,8 @@ func (s MigrateSecurityIPModeResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *MigrateSecurityIPModeResponseBody) SetRequestId(v string) *MigrateSecurityIPModeResponseBody {
-	s.RequestId = &v
+func (s *MigrateSecurityIPModeResponseBody) SetSecurityIPMode(v string) *MigrateSecurityIPModeResponseBody {
+	s.SecurityIPMode = &v
 	return s
 }
 
@@ -23765,8 +24831,8 @@ func (s *MigrateSecurityIPModeResponseBody) SetDBInstanceId(v string) *MigrateSe
 	return s
 }
 
-func (s *MigrateSecurityIPModeResponseBody) SetSecurityIPMode(v string) *MigrateSecurityIPModeResponseBody {
-	s.SecurityIPMode = &v
+func (s *MigrateSecurityIPModeResponseBody) SetRequestId(v string) *MigrateSecurityIPModeResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -24264,14 +25330,14 @@ func (s *ModifyBackupPolicyRequest) SetBackupMethod(v string) *ModifyBackupPolic
 }
 
 type ModifyBackupPolicyResponseBody struct {
-	LogBackupLocalRetentionNumber *int32  `json:"LogBackupLocalRetentionNumber,omitempty" xml:"LogBackupLocalRetentionNumber,omitempty"`
 	RequestId                     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	CompressType                  *string `json:"CompressType,omitempty" xml:"CompressType,omitempty"`
+	LocalLogRetentionSpace        *string `json:"LocalLogRetentionSpace,omitempty" xml:"LocalLogRetentionSpace,omitempty"`
+	LogBackupLocalRetentionNumber *int32  `json:"LogBackupLocalRetentionNumber,omitempty" xml:"LogBackupLocalRetentionNumber,omitempty"`
 	DBInstanceID                  *string `json:"DBInstanceID,omitempty" xml:"DBInstanceID,omitempty"`
 	EnableBackupLog               *string `json:"EnableBackupLog,omitempty" xml:"EnableBackupLog,omitempty"`
-	LocalLogRetentionSpace        *string `json:"LocalLogRetentionSpace,omitempty" xml:"LocalLogRetentionSpace,omitempty"`
 	LocalLogRetentionHours        *int32  `json:"LocalLogRetentionHours,omitempty" xml:"LocalLogRetentionHours,omitempty"`
 	HighSpaceUsageProtection      *string `json:"HighSpaceUsageProtection,omitempty" xml:"HighSpaceUsageProtection,omitempty"`
-	CompressType                  *string `json:"CompressType,omitempty" xml:"CompressType,omitempty"`
 }
 
 func (s ModifyBackupPolicyResponseBody) String() string {
@@ -24282,13 +25348,23 @@ func (s ModifyBackupPolicyResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyBackupPolicyResponseBody) SetLogBackupLocalRetentionNumber(v int32) *ModifyBackupPolicyResponseBody {
-	s.LogBackupLocalRetentionNumber = &v
+func (s *ModifyBackupPolicyResponseBody) SetRequestId(v string) *ModifyBackupPolicyResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *ModifyBackupPolicyResponseBody) SetRequestId(v string) *ModifyBackupPolicyResponseBody {
-	s.RequestId = &v
+func (s *ModifyBackupPolicyResponseBody) SetCompressType(v string) *ModifyBackupPolicyResponseBody {
+	s.CompressType = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyResponseBody) SetLocalLogRetentionSpace(v string) *ModifyBackupPolicyResponseBody {
+	s.LocalLogRetentionSpace = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyResponseBody) SetLogBackupLocalRetentionNumber(v int32) *ModifyBackupPolicyResponseBody {
+	s.LogBackupLocalRetentionNumber = &v
 	return s
 }
 
@@ -24302,11 +25378,6 @@ func (s *ModifyBackupPolicyResponseBody) SetEnableBackupLog(v string) *ModifyBac
 	return s
 }
 
-func (s *ModifyBackupPolicyResponseBody) SetLocalLogRetentionSpace(v string) *ModifyBackupPolicyResponseBody {
-	s.LocalLogRetentionSpace = &v
-	return s
-}
-
 func (s *ModifyBackupPolicyResponseBody) SetLocalLogRetentionHours(v int32) *ModifyBackupPolicyResponseBody {
 	s.LocalLogRetentionHours = &v
 	return s
@@ -24314,11 +25385,6 @@ func (s *ModifyBackupPolicyResponseBody) SetLocalLogRetentionHours(v int32) *Mod
 
 func (s *ModifyBackupPolicyResponseBody) SetHighSpaceUsageProtection(v string) *ModifyBackupPolicyResponseBody {
 	s.HighSpaceUsageProtection = &v
-	return s
-}
-
-func (s *ModifyBackupPolicyResponseBody) SetCompressType(v string) *ModifyBackupPolicyResponseBody {
-	s.CompressType = &v
 	return s
 }
 
@@ -24393,11 +25459,11 @@ func (s *ModifyCollationTimeZoneRequest) SetTimezone(v string) *ModifyCollationT
 }
 
 type ModifyCollationTimeZoneResponseBody struct {
+	Collation    *string `json:"Collation,omitempty" xml:"Collation,omitempty"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Timezone     *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
 	TaskId       *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Collation    *string `json:"Collation,omitempty" xml:"Collation,omitempty"`
 }
 
 func (s ModifyCollationTimeZoneResponseBody) String() string {
@@ -24408,18 +25474,8 @@ func (s ModifyCollationTimeZoneResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyCollationTimeZoneResponseBody) SetTimezone(v string) *ModifyCollationTimeZoneResponseBody {
-	s.Timezone = &v
-	return s
-}
-
-func (s *ModifyCollationTimeZoneResponseBody) SetTaskId(v string) *ModifyCollationTimeZoneResponseBody {
-	s.TaskId = &v
-	return s
-}
-
-func (s *ModifyCollationTimeZoneResponseBody) SetRequestId(v string) *ModifyCollationTimeZoneResponseBody {
-	s.RequestId = &v
+func (s *ModifyCollationTimeZoneResponseBody) SetCollation(v string) *ModifyCollationTimeZoneResponseBody {
+	s.Collation = &v
 	return s
 }
 
@@ -24428,8 +25484,18 @@ func (s *ModifyCollationTimeZoneResponseBody) SetDBInstanceId(v string) *ModifyC
 	return s
 }
 
-func (s *ModifyCollationTimeZoneResponseBody) SetCollation(v string) *ModifyCollationTimeZoneResponseBody {
-	s.Collation = &v
+func (s *ModifyCollationTimeZoneResponseBody) SetRequestId(v string) *ModifyCollationTimeZoneResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyCollationTimeZoneResponseBody) SetTimezone(v string) *ModifyCollationTimeZoneResponseBody {
+	s.Timezone = &v
+	return s
+}
+
+func (s *ModifyCollationTimeZoneResponseBody) SetTaskId(v string) *ModifyCollationTimeZoneResponseBody {
+	s.TaskId = &v
 	return s
 }
 
@@ -25470,8 +26536,8 @@ func (s *ModifyDBInstanceNetworkTypeRequest) SetOwnerAccount(v string) *ModifyDB
 }
 
 type ModifyDBInstanceNetworkTypeResponseBody struct {
-	TaskId           *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId           *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 }
 
@@ -25483,13 +26549,13 @@ func (s ModifyDBInstanceNetworkTypeResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyDBInstanceNetworkTypeResponseBody) SetTaskId(v string) *ModifyDBInstanceNetworkTypeResponseBody {
-	s.TaskId = &v
+func (s *ModifyDBInstanceNetworkTypeResponseBody) SetRequestId(v string) *ModifyDBInstanceNetworkTypeResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *ModifyDBInstanceNetworkTypeResponseBody) SetRequestId(v string) *ModifyDBInstanceNetworkTypeResponseBody {
-	s.RequestId = &v
+func (s *ModifyDBInstanceNetworkTypeResponseBody) SetTaskId(v string) *ModifyDBInstanceNetworkTypeResponseBody {
+	s.TaskId = &v
 	return s
 }
 
@@ -25791,8 +26857,8 @@ func (s *ModifyDBInstanceSpecRequest) SetZoneId(v string) *ModifyDBInstanceSpecR
 }
 
 type ModifyDBInstanceSpecResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	OrderId      *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
@@ -25804,13 +26870,13 @@ func (s ModifyDBInstanceSpecResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyDBInstanceSpecResponseBody) SetRequestId(v string) *ModifyDBInstanceSpecResponseBody {
-	s.RequestId = &v
+func (s *ModifyDBInstanceSpecResponseBody) SetDBInstanceId(v string) *ModifyDBInstanceSpecResponseBody {
+	s.DBInstanceId = &v
 	return s
 }
 
-func (s *ModifyDBInstanceSpecResponseBody) SetDBInstanceId(v string) *ModifyDBInstanceSpecResponseBody {
-	s.DBInstanceId = &v
+func (s *ModifyDBInstanceSpecResponseBody) SetRequestId(v string) *ModifyDBInstanceSpecResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -25843,13 +26909,22 @@ func (s *ModifyDBInstanceSpecResponse) SetBody(v *ModifyDBInstanceSpecResponseBo
 }
 
 type ModifyDBInstanceSSLRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	ConnectionString     *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	SSLEnabled           *int32  `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
+	OwnerId                  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount     *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId          *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	DBInstanceId             *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	ConnectionString         *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	OwnerAccount             *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	SSLEnabled               *int32  `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
+	CAType                   *string `json:"CAType,omitempty" xml:"CAType,omitempty"`
+	ServerCert               *string `json:"ServerCert,omitempty" xml:"ServerCert,omitempty"`
+	ServerKey                *string `json:"ServerKey,omitempty" xml:"ServerKey,omitempty"`
+	ClientCAEnabled          *int32  `json:"ClientCAEnabled,omitempty" xml:"ClientCAEnabled,omitempty"`
+	ClientCACert             *string `json:"ClientCACert,omitempty" xml:"ClientCACert,omitempty"`
+	ClientCrlEnabled         *int32  `json:"ClientCrlEnabled,omitempty" xml:"ClientCrlEnabled,omitempty"`
+	ClientCertRevocationList *string `json:"ClientCertRevocationList,omitempty" xml:"ClientCertRevocationList,omitempty"`
+	ACL                      *string `json:"ACL,omitempty" xml:"ACL,omitempty"`
+	ReplicationACL           *string `json:"ReplicationACL,omitempty" xml:"ReplicationACL,omitempty"`
 }
 
 func (s ModifyDBInstanceSSLRequest) String() string {
@@ -25892,6 +26967,51 @@ func (s *ModifyDBInstanceSSLRequest) SetOwnerAccount(v string) *ModifyDBInstance
 
 func (s *ModifyDBInstanceSSLRequest) SetSSLEnabled(v int32) *ModifyDBInstanceSSLRequest {
 	s.SSLEnabled = &v
+	return s
+}
+
+func (s *ModifyDBInstanceSSLRequest) SetCAType(v string) *ModifyDBInstanceSSLRequest {
+	s.CAType = &v
+	return s
+}
+
+func (s *ModifyDBInstanceSSLRequest) SetServerCert(v string) *ModifyDBInstanceSSLRequest {
+	s.ServerCert = &v
+	return s
+}
+
+func (s *ModifyDBInstanceSSLRequest) SetServerKey(v string) *ModifyDBInstanceSSLRequest {
+	s.ServerKey = &v
+	return s
+}
+
+func (s *ModifyDBInstanceSSLRequest) SetClientCAEnabled(v int32) *ModifyDBInstanceSSLRequest {
+	s.ClientCAEnabled = &v
+	return s
+}
+
+func (s *ModifyDBInstanceSSLRequest) SetClientCACert(v string) *ModifyDBInstanceSSLRequest {
+	s.ClientCACert = &v
+	return s
+}
+
+func (s *ModifyDBInstanceSSLRequest) SetClientCrlEnabled(v int32) *ModifyDBInstanceSSLRequest {
+	s.ClientCrlEnabled = &v
+	return s
+}
+
+func (s *ModifyDBInstanceSSLRequest) SetClientCertRevocationList(v string) *ModifyDBInstanceSSLRequest {
+	s.ClientCertRevocationList = &v
+	return s
+}
+
+func (s *ModifyDBInstanceSSLRequest) SetACL(v string) *ModifyDBInstanceSSLRequest {
+	s.ACL = &v
+	return s
+}
+
+func (s *ModifyDBInstanceSSLRequest) SetReplicationACL(v string) *ModifyDBInstanceSSLRequest {
+	s.ReplicationACL = &v
 	return s
 }
 
@@ -27039,10 +28159,10 @@ func (s *ModifyDTCSecurityIpHostsForSQLServerRequest) SetRegionId(v string) *Mod
 }
 
 type ModifyDTCSecurityIpHostsForSQLServerResponseBody struct {
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TaskId       *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	DTCSetResult *string `json:"DTCSetResult,omitempty" xml:"DTCSetResult,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 }
 
 func (s ModifyDTCSecurityIpHostsForSQLServerResponseBody) String() string {
@@ -27053,13 +28173,8 @@ func (s ModifyDTCSecurityIpHostsForSQLServerResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyDTCSecurityIpHostsForSQLServerResponseBody) SetTaskId(v string) *ModifyDTCSecurityIpHostsForSQLServerResponseBody {
-	s.TaskId = &v
-	return s
-}
-
-func (s *ModifyDTCSecurityIpHostsForSQLServerResponseBody) SetDTCSetResult(v string) *ModifyDTCSecurityIpHostsForSQLServerResponseBody {
-	s.DTCSetResult = &v
+func (s *ModifyDTCSecurityIpHostsForSQLServerResponseBody) SetDBInstanceId(v string) *ModifyDTCSecurityIpHostsForSQLServerResponseBody {
+	s.DBInstanceId = &v
 	return s
 }
 
@@ -27068,8 +28183,13 @@ func (s *ModifyDTCSecurityIpHostsForSQLServerResponseBody) SetRequestId(v string
 	return s
 }
 
-func (s *ModifyDTCSecurityIpHostsForSQLServerResponseBody) SetDBInstanceId(v string) *ModifyDTCSecurityIpHostsForSQLServerResponseBody {
-	s.DBInstanceId = &v
+func (s *ModifyDTCSecurityIpHostsForSQLServerResponseBody) SetTaskId(v string) *ModifyDTCSecurityIpHostsForSQLServerResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+func (s *ModifyDTCSecurityIpHostsForSQLServerResponseBody) SetDTCSetResult(v string) *ModifyDTCSecurityIpHostsForSQLServerResponseBody {
+	s.DTCSetResult = &v
 	return s
 }
 
@@ -27459,15 +28579,15 @@ func (s *ModifyInstanceCrossBackupPolicyRequest) SetRetention(v int32) *ModifyIn
 }
 
 type ModifyInstanceCrossBackupPolicyResponseBody struct {
-	LogBackupEnabled  *string `json:"LogBackupEnabled,omitempty" xml:"LogBackupEnabled,omitempty"`
 	BackupEnabled     *string `json:"BackupEnabled,omitempty" xml:"BackupEnabled,omitempty"`
-	CrossBackupType   *string `json:"CrossBackupType,omitempty" xml:"CrossBackupType,omitempty"`
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	CrossBackupRegion *string `json:"CrossBackupRegion,omitempty" xml:"CrossBackupRegion,omitempty"`
-	RetentType        *int32  `json:"RetentType,omitempty" xml:"RetentType,omitempty"`
 	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	LogBackupEnabled  *string `json:"LogBackupEnabled,omitempty" xml:"LogBackupEnabled,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RetentType        *int32  `json:"RetentType,omitempty" xml:"RetentType,omitempty"`
+	CrossBackupRegion *string `json:"CrossBackupRegion,omitempty" xml:"CrossBackupRegion,omitempty"`
+	CrossBackupType   *string `json:"CrossBackupType,omitempty" xml:"CrossBackupType,omitempty"`
 	Retention         *int32  `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 }
 
 func (s ModifyInstanceCrossBackupPolicyResponseBody) String() string {
@@ -27478,38 +28598,8 @@ func (s ModifyInstanceCrossBackupPolicyResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyInstanceCrossBackupPolicyResponseBody) SetLogBackupEnabled(v string) *ModifyInstanceCrossBackupPolicyResponseBody {
-	s.LogBackupEnabled = &v
-	return s
-}
-
 func (s *ModifyInstanceCrossBackupPolicyResponseBody) SetBackupEnabled(v string) *ModifyInstanceCrossBackupPolicyResponseBody {
 	s.BackupEnabled = &v
-	return s
-}
-
-func (s *ModifyInstanceCrossBackupPolicyResponseBody) SetCrossBackupType(v string) *ModifyInstanceCrossBackupPolicyResponseBody {
-	s.CrossBackupType = &v
-	return s
-}
-
-func (s *ModifyInstanceCrossBackupPolicyResponseBody) SetRequestId(v string) *ModifyInstanceCrossBackupPolicyResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ModifyInstanceCrossBackupPolicyResponseBody) SetDBInstanceId(v string) *ModifyInstanceCrossBackupPolicyResponseBody {
-	s.DBInstanceId = &v
-	return s
-}
-
-func (s *ModifyInstanceCrossBackupPolicyResponseBody) SetCrossBackupRegion(v string) *ModifyInstanceCrossBackupPolicyResponseBody {
-	s.CrossBackupRegion = &v
-	return s
-}
-
-func (s *ModifyInstanceCrossBackupPolicyResponseBody) SetRetentType(v int32) *ModifyInstanceCrossBackupPolicyResponseBody {
-	s.RetentType = &v
 	return s
 }
 
@@ -27518,8 +28608,38 @@ func (s *ModifyInstanceCrossBackupPolicyResponseBody) SetRegionId(v string) *Mod
 	return s
 }
 
+func (s *ModifyInstanceCrossBackupPolicyResponseBody) SetLogBackupEnabled(v string) *ModifyInstanceCrossBackupPolicyResponseBody {
+	s.LogBackupEnabled = &v
+	return s
+}
+
+func (s *ModifyInstanceCrossBackupPolicyResponseBody) SetRequestId(v string) *ModifyInstanceCrossBackupPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyInstanceCrossBackupPolicyResponseBody) SetRetentType(v int32) *ModifyInstanceCrossBackupPolicyResponseBody {
+	s.RetentType = &v
+	return s
+}
+
+func (s *ModifyInstanceCrossBackupPolicyResponseBody) SetCrossBackupRegion(v string) *ModifyInstanceCrossBackupPolicyResponseBody {
+	s.CrossBackupRegion = &v
+	return s
+}
+
+func (s *ModifyInstanceCrossBackupPolicyResponseBody) SetCrossBackupType(v string) *ModifyInstanceCrossBackupPolicyResponseBody {
+	s.CrossBackupType = &v
+	return s
+}
+
 func (s *ModifyInstanceCrossBackupPolicyResponseBody) SetRetention(v int32) *ModifyInstanceCrossBackupPolicyResponseBody {
 	s.Retention = &v
+	return s
+}
+
+func (s *ModifyInstanceCrossBackupPolicyResponseBody) SetDBInstanceId(v string) *ModifyInstanceCrossBackupPolicyResponseBody {
+	s.DBInstanceId = &v
 	return s
 }
 
@@ -27798,9 +28918,9 @@ func (s *ModifyReadonlyInstanceDelayReplicationTimeRequest) SetReadSQLReplicatio
 }
 
 type ModifyReadonlyInstanceDelayReplicationTimeResponseBody struct {
-	TaskId                 *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	RequestId              *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DBInstanceId           *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	RequestId              *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId                 *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	ReadSQLReplicationTime *string `json:"ReadSQLReplicationTime,omitempty" xml:"ReadSQLReplicationTime,omitempty"`
 }
 
@@ -27812,8 +28932,8 @@ func (s ModifyReadonlyInstanceDelayReplicationTimeResponseBody) GoString() strin
 	return s.String()
 }
 
-func (s *ModifyReadonlyInstanceDelayReplicationTimeResponseBody) SetTaskId(v string) *ModifyReadonlyInstanceDelayReplicationTimeResponseBody {
-	s.TaskId = &v
+func (s *ModifyReadonlyInstanceDelayReplicationTimeResponseBody) SetDBInstanceId(v string) *ModifyReadonlyInstanceDelayReplicationTimeResponseBody {
+	s.DBInstanceId = &v
 	return s
 }
 
@@ -27822,8 +28942,8 @@ func (s *ModifyReadonlyInstanceDelayReplicationTimeResponseBody) SetRequestId(v 
 	return s
 }
 
-func (s *ModifyReadonlyInstanceDelayReplicationTimeResponseBody) SetDBInstanceId(v string) *ModifyReadonlyInstanceDelayReplicationTimeResponseBody {
-	s.DBInstanceId = &v
+func (s *ModifyReadonlyInstanceDelayReplicationTimeResponseBody) SetTaskId(v string) *ModifyReadonlyInstanceDelayReplicationTimeResponseBody {
+	s.TaskId = &v
 	return s
 }
 
@@ -28101,9 +29221,9 @@ func (s *ModifySecurityGroupConfigurationRequest) SetSecurityGroupId(v string) *
 }
 
 type ModifySecurityGroupConfigurationResponseBody struct {
+	DBInstanceName *string                                            `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	RequestId      *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Items          *ModifySecurityGroupConfigurationResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	DBInstanceName *string                                            `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 }
 
 func (s ModifySecurityGroupConfigurationResponseBody) String() string {
@@ -28114,6 +29234,11 @@ func (s ModifySecurityGroupConfigurationResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ModifySecurityGroupConfigurationResponseBody) SetDBInstanceName(v string) *ModifySecurityGroupConfigurationResponseBody {
+	s.DBInstanceName = &v
+	return s
+}
+
 func (s *ModifySecurityGroupConfigurationResponseBody) SetRequestId(v string) *ModifySecurityGroupConfigurationResponseBody {
 	s.RequestId = &v
 	return s
@@ -28121,11 +29246,6 @@ func (s *ModifySecurityGroupConfigurationResponseBody) SetRequestId(v string) *M
 
 func (s *ModifySecurityGroupConfigurationResponseBody) SetItems(v *ModifySecurityGroupConfigurationResponseBodyItems) *ModifySecurityGroupConfigurationResponseBody {
 	s.Items = v
-	return s
-}
-
-func (s *ModifySecurityGroupConfigurationResponseBody) SetDBInstanceName(v string) *ModifySecurityGroupConfigurationResponseBody {
-	s.DBInstanceName = &v
 	return s
 }
 
@@ -28147,8 +29267,8 @@ func (s *ModifySecurityGroupConfigurationResponseBodyItems) SetEcsSecurityGroupR
 }
 
 type ModifySecurityGroupConfigurationResponseBodyItemsEcsSecurityGroupRelation struct {
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	NetworkType     *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -28160,13 +29280,13 @@ func (s ModifySecurityGroupConfigurationResponseBodyItemsEcsSecurityGroupRelatio
 	return s.String()
 }
 
-func (s *ModifySecurityGroupConfigurationResponseBodyItemsEcsSecurityGroupRelation) SetSecurityGroupId(v string) *ModifySecurityGroupConfigurationResponseBodyItemsEcsSecurityGroupRelation {
-	s.SecurityGroupId = &v
+func (s *ModifySecurityGroupConfigurationResponseBodyItemsEcsSecurityGroupRelation) SetNetworkType(v string) *ModifySecurityGroupConfigurationResponseBodyItemsEcsSecurityGroupRelation {
+	s.NetworkType = &v
 	return s
 }
 
-func (s *ModifySecurityGroupConfigurationResponseBodyItemsEcsSecurityGroupRelation) SetNetworkType(v string) *ModifySecurityGroupConfigurationResponseBodyItemsEcsSecurityGroupRelation {
-	s.NetworkType = &v
+func (s *ModifySecurityGroupConfigurationResponseBodyItemsEcsSecurityGroupRelation) SetSecurityGroupId(v string) *ModifySecurityGroupConfigurationResponseBodyItemsEcsSecurityGroupRelation {
+	s.SecurityGroupId = &v
 	return s
 }
 
@@ -28642,8 +29762,8 @@ func (s *RebuildDBInstanceRequest) SetRebuildNodeType(v string) *RebuildDBInstan
 }
 
 type RebuildDBInstanceResponseBody struct {
-	TaskId      *int32  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId      *int32  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	MigrationId *int32  `json:"MigrationId,omitempty" xml:"MigrationId,omitempty"`
 }
 
@@ -28655,13 +29775,13 @@ func (s RebuildDBInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *RebuildDBInstanceResponseBody) SetTaskId(v int32) *RebuildDBInstanceResponseBody {
-	s.TaskId = &v
+func (s *RebuildDBInstanceResponseBody) SetRequestId(v string) *RebuildDBInstanceResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *RebuildDBInstanceResponseBody) SetRequestId(v string) *RebuildDBInstanceResponseBody {
-	s.RequestId = &v
+func (s *RebuildDBInstanceResponseBody) SetTaskId(v int32) *RebuildDBInstanceResponseBody {
+	s.TaskId = &v
 	return s
 }
 
@@ -28801,8 +29921,8 @@ func (s *RecoveryDBInstanceRequest) SetDBInstanceStorageType(v string) *Recovery
 }
 
 type RecoveryDBInstanceResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	OrderId      *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
@@ -28814,13 +29934,13 @@ func (s RecoveryDBInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *RecoveryDBInstanceResponseBody) SetRequestId(v string) *RecoveryDBInstanceResponseBody {
-	s.RequestId = &v
+func (s *RecoveryDBInstanceResponseBody) SetDBInstanceId(v string) *RecoveryDBInstanceResponseBody {
+	s.DBInstanceId = &v
 	return s
 }
 
-func (s *RecoveryDBInstanceResponseBody) SetDBInstanceId(v string) *RecoveryDBInstanceResponseBody {
-	s.DBInstanceId = &v
+func (s *RecoveryDBInstanceResponseBody) SetRequestId(v string) *RecoveryDBInstanceResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -29301,8 +30421,8 @@ func (s *RenewInstanceRequest) SetAutoPay(v string) *RenewInstanceRequest {
 }
 
 type RenewInstanceResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	OrderId   *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RenewInstanceResponseBody) String() string {
@@ -29313,13 +30433,13 @@ func (s RenewInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *RenewInstanceResponseBody) SetRequestId(v string) *RenewInstanceResponseBody {
-	s.RequestId = &v
+func (s *RenewInstanceResponseBody) SetOrderId(v int64) *RenewInstanceResponseBody {
+	s.OrderId = &v
 	return s
 }
 
-func (s *RenewInstanceResponseBody) SetOrderId(v int64) *RenewInstanceResponseBody {
-	s.OrderId = &v
+func (s *RenewInstanceResponseBody) SetRequestId(v string) *RenewInstanceResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -30333,8 +31453,8 @@ func (s *StartDBInstanceRequest) SetZoneId(v string) *StartDBInstanceRequest {
 }
 
 type StartDBInstanceResponseBody struct {
-	TaskId      *int32  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId      *int32  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	MigrationId *int32  `json:"MigrationId,omitempty" xml:"MigrationId,omitempty"`
 }
 
@@ -30346,13 +31466,13 @@ func (s StartDBInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *StartDBInstanceResponseBody) SetTaskId(v int32) *StartDBInstanceResponseBody {
-	s.TaskId = &v
+func (s *StartDBInstanceResponseBody) SetRequestId(v string) *StartDBInstanceResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *StartDBInstanceResponseBody) SetRequestId(v string) *StartDBInstanceResponseBody {
-	s.RequestId = &v
+func (s *StartDBInstanceResponseBody) SetTaskId(v int32) *StartDBInstanceResponseBody {
+	s.TaskId = &v
 	return s
 }
 
@@ -30630,9 +31750,9 @@ func (s *SwitchDBInstanceNetTypeRequest) SetOwnerAccount(v string) *SwitchDBInst
 }
 
 type SwitchDBInstanceNetTypeResponseBody struct {
+	NewConnectionString *string `json:"NewConnectionString,omitempty" xml:"NewConnectionString,omitempty"`
 	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	OldConnectionString *string `json:"OldConnectionString,omitempty" xml:"OldConnectionString,omitempty"`
-	NewConnectionString *string `json:"NewConnectionString,omitempty" xml:"NewConnectionString,omitempty"`
 }
 
 func (s SwitchDBInstanceNetTypeResponseBody) String() string {
@@ -30643,6 +31763,11 @@ func (s SwitchDBInstanceNetTypeResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *SwitchDBInstanceNetTypeResponseBody) SetNewConnectionString(v string) *SwitchDBInstanceNetTypeResponseBody {
+	s.NewConnectionString = &v
+	return s
+}
+
 func (s *SwitchDBInstanceNetTypeResponseBody) SetRequestId(v string) *SwitchDBInstanceNetTypeResponseBody {
 	s.RequestId = &v
 	return s
@@ -30650,11 +31775,6 @@ func (s *SwitchDBInstanceNetTypeResponseBody) SetRequestId(v string) *SwitchDBIn
 
 func (s *SwitchDBInstanceNetTypeResponseBody) SetOldConnectionString(v string) *SwitchDBInstanceNetTypeResponseBody {
 	s.OldConnectionString = &v
-	return s
-}
-
-func (s *SwitchDBInstanceNetTypeResponseBody) SetNewConnectionString(v string) *SwitchDBInstanceNetTypeResponseBody {
-	s.NewConnectionString = &v
 	return s
 }
 
@@ -31031,11 +32151,11 @@ func (s *TransformDBInstancePayTypeRequest) SetBusinessInfo(v string) *Transform
 }
 
 type TransformDBInstancePayTypeResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	ChargeType   *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ExpiredTime  *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	OrderId      *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	ChargeType   *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 }
 
 func (s TransformDBInstancePayTypeResponseBody) String() string {
@@ -31046,18 +32166,13 @@ func (s TransformDBInstancePayTypeResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *TransformDBInstancePayTypeResponseBody) SetRequestId(v string) *TransformDBInstancePayTypeResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *TransformDBInstancePayTypeResponseBody) SetDBInstanceId(v string) *TransformDBInstancePayTypeResponseBody {
 	s.DBInstanceId = &v
 	return s
 }
 
-func (s *TransformDBInstancePayTypeResponseBody) SetChargeType(v string) *TransformDBInstancePayTypeResponseBody {
-	s.ChargeType = &v
+func (s *TransformDBInstancePayTypeResponseBody) SetRequestId(v string) *TransformDBInstancePayTypeResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -31068,6 +32183,11 @@ func (s *TransformDBInstancePayTypeResponseBody) SetExpiredTime(v string) *Trans
 
 func (s *TransformDBInstancePayTypeResponseBody) SetOrderId(v int64) *TransformDBInstancePayTypeResponseBody {
 	s.OrderId = &v
+	return s
+}
+
+func (s *TransformDBInstancePayTypeResponseBody) SetChargeType(v string) *TransformDBInstancePayTypeResponseBody {
+	s.ChargeType = &v
 	return s
 }
 
@@ -31274,6 +32394,105 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 	return s
 }
 
+type UpdateUserBackupFileRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	BackupId             *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Comment              *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	Retention            *int32  `json:"Retention,omitempty" xml:"Retention,omitempty"`
+}
+
+func (s UpdateUserBackupFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUserBackupFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUserBackupFileRequest) SetOwnerId(v int64) *UpdateUserBackupFileRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UpdateUserBackupFileRequest) SetResourceOwnerAccount(v string) *UpdateUserBackupFileRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *UpdateUserBackupFileRequest) SetResourceOwnerId(v int64) *UpdateUserBackupFileRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *UpdateUserBackupFileRequest) SetBackupId(v string) *UpdateUserBackupFileRequest {
+	s.BackupId = &v
+	return s
+}
+
+func (s *UpdateUserBackupFileRequest) SetRegionId(v string) *UpdateUserBackupFileRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateUserBackupFileRequest) SetComment(v string) *UpdateUserBackupFileRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *UpdateUserBackupFileRequest) SetRetention(v int32) *UpdateUserBackupFileRequest {
+	s.Retention = &v
+	return s
+}
+
+type UpdateUserBackupFileResponseBody struct {
+	BackupId  *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateUserBackupFileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUserBackupFileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUserBackupFileResponseBody) SetBackupId(v string) *UpdateUserBackupFileResponseBody {
+	s.BackupId = &v
+	return s
+}
+
+func (s *UpdateUserBackupFileResponseBody) SetRequestId(v string) *UpdateUserBackupFileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateUserBackupFileResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateUserBackupFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateUserBackupFileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUserBackupFileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUserBackupFileResponse) SetHeaders(v map[string]*string) *UpdateUserBackupFileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateUserBackupFileResponse) SetBody(v *UpdateUserBackupFileResponseBody) *UpdateUserBackupFileResponse {
+	s.Body = v
+	return s
+}
+
 type UpgradeDBInstanceEngineVersionRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -31433,10 +32652,10 @@ func (s *UpgradeDBInstanceKernelVersionRequest) SetTargetMinorVersion(v string) 
 }
 
 type UpgradeDBInstanceKernelVersionResponseBody struct {
-	TaskId             *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TargetMinorVersion *string `json:"TargetMinorVersion,omitempty" xml:"TargetMinorVersion,omitempty"`
 	DBInstanceName     *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	TargetMinorVersion *string `json:"TargetMinorVersion,omitempty" xml:"TargetMinorVersion,omitempty"`
+	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId             *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s UpgradeDBInstanceKernelVersionResponseBody) String() string {
@@ -31447,13 +32666,8 @@ func (s UpgradeDBInstanceKernelVersionResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *UpgradeDBInstanceKernelVersionResponseBody) SetTaskId(v string) *UpgradeDBInstanceKernelVersionResponseBody {
-	s.TaskId = &v
-	return s
-}
-
-func (s *UpgradeDBInstanceKernelVersionResponseBody) SetRequestId(v string) *UpgradeDBInstanceKernelVersionResponseBody {
-	s.RequestId = &v
+func (s *UpgradeDBInstanceKernelVersionResponseBody) SetDBInstanceName(v string) *UpgradeDBInstanceKernelVersionResponseBody {
+	s.DBInstanceName = &v
 	return s
 }
 
@@ -31462,8 +32676,13 @@ func (s *UpgradeDBInstanceKernelVersionResponseBody) SetTargetMinorVersion(v str
 	return s
 }
 
-func (s *UpgradeDBInstanceKernelVersionResponseBody) SetDBInstanceName(v string) *UpgradeDBInstanceKernelVersionResponseBody {
-	s.DBInstanceName = &v
+func (s *UpgradeDBInstanceKernelVersionResponseBody) SetRequestId(v string) *UpgradeDBInstanceKernelVersionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpgradeDBInstanceKernelVersionResponseBody) SetTaskId(v string) *UpgradeDBInstanceKernelVersionResponseBody {
+	s.TaskId = &v
 	return s
 }
 
@@ -31538,9 +32757,9 @@ func (s *UpgradeDBProxyInstanceKernelVersionRequest) SetSwitchTime(v string) *Up
 }
 
 type UpgradeDBProxyInstanceKernelVersionResponseBody struct {
-	TaskId         *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId         *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s UpgradeDBProxyInstanceKernelVersionResponseBody) String() string {
@@ -31551,8 +32770,8 @@ func (s UpgradeDBProxyInstanceKernelVersionResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *UpgradeDBProxyInstanceKernelVersionResponseBody) SetTaskId(v string) *UpgradeDBProxyInstanceKernelVersionResponseBody {
-	s.TaskId = &v
+func (s *UpgradeDBProxyInstanceKernelVersionResponseBody) SetDBInstanceName(v string) *UpgradeDBProxyInstanceKernelVersionResponseBody {
+	s.DBInstanceName = &v
 	return s
 }
 
@@ -31561,8 +32780,8 @@ func (s *UpgradeDBProxyInstanceKernelVersionResponseBody) SetRequestId(v string)
 	return s
 }
 
-func (s *UpgradeDBProxyInstanceKernelVersionResponseBody) SetDBInstanceName(v string) *UpgradeDBProxyInstanceKernelVersionResponseBody {
-	s.DBInstanceName = &v
+func (s *UpgradeDBProxyInstanceKernelVersionResponseBody) SetTaskId(v string) *UpgradeDBProxyInstanceKernelVersionResponseBody {
+	s.TaskId = &v
 	return s
 }
 
@@ -32411,6 +33630,34 @@ func (client *Client) CreateDiagnosticReport(request *CreateDiagnosticReportRequ
 	return _result, _err
 }
 
+func (client *Client) CreateGdnInstanceWithOptions(request *CreateGdnInstanceRequest, runtime *util.RuntimeOptions) (_result *CreateGdnInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateGdnInstanceResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateGdnInstance"), tea.String("2014-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateGdnInstance(request *CreateGdnInstanceRequest) (_result *CreateGdnInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateGdnInstanceResponse{}
+	_body, _err := client.CreateGdnInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateMigrateTaskWithOptions(request *CreateMigrateTaskRequest, runtime *util.RuntimeOptions) (_result *CreateMigrateTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32824,6 +34071,34 @@ func (client *Client) DeleteParameterGroup(request *DeleteParameterGroupRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteParameterGroupResponse{}
 	_body, _err := client.DeleteParameterGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteUserBackupFileWithOptions(request *DeleteUserBackupFileRequest, runtime *util.RuntimeOptions) (_result *DeleteUserBackupFileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DeleteUserBackupFileResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteUserBackupFile"), tea.String("2014-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteUserBackupFile(request *DeleteUserBackupFileRequest) (_result *DeleteUserBackupFileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteUserBackupFileResponse{}
+	_body, _err := client.DeleteUserBackupFileWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33496,6 +34771,34 @@ func (client *Client) DescribeDBInstanceDetail(request *DescribeDBInstanceDetail
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBInstanceDetailResponse{}
 	_body, _err := client.DescribeDBInstanceDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDBInstanceEncryptionKeyWithOptions(request *DescribeDBInstanceEncryptionKeyRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstanceEncryptionKeyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeDBInstanceEncryptionKeyResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeDBInstanceEncryptionKey"), tea.String("2014-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDBInstanceEncryptionKey(request *DescribeDBInstanceEncryptionKeyRequest) (_result *DescribeDBInstanceEncryptionKeyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDBInstanceEncryptionKeyResponse{}
+	_body, _err := client.DescribeDBInstanceEncryptionKeyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35407,6 +36710,62 @@ func (client *Client) ImportDatabaseBetweenInstances(request *ImportDatabaseBetw
 	return _result, _err
 }
 
+func (client *Client) ImportUserBackupFileWithOptions(request *ImportUserBackupFileRequest, runtime *util.RuntimeOptions) (_result *ImportUserBackupFileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ImportUserBackupFileResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ImportUserBackupFile"), tea.String("2014-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ImportUserBackupFile(request *ImportUserBackupFileRequest) (_result *ImportUserBackupFileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ImportUserBackupFileResponse{}
+	_body, _err := client.ImportUserBackupFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListClassesWithOptions(request *ListClassesRequest, runtime *util.RuntimeOptions) (_result *ListClassesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListClassesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListClasses"), tea.String("2014-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListClasses(request *ListClassesRequest) (_result *ListClassesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListClassesResponse{}
+	_body, _err := client.ListClassesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35428,6 +36787,34 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagResourcesResponse{}
 	_body, _err := client.ListTagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListUserBackupFilesWithOptions(request *ListUserBackupFilesRequest, runtime *util.RuntimeOptions) (_result *ListUserBackupFilesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListUserBackupFilesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListUserBackupFiles"), tea.String("2014-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListUserBackupFiles(request *ListUserBackupFilesRequest) (_result *ListUserBackupFilesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListUserBackupFilesResponse{}
+	_body, _err := client.ListUserBackupFilesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37500,6 +38887,34 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	runtime := &util.RuntimeOptions{}
 	_result = &UntagResourcesResponse{}
 	_body, _err := client.UntagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateUserBackupFileWithOptions(request *UpdateUserBackupFileRequest, runtime *util.RuntimeOptions) (_result *UpdateUserBackupFileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &UpdateUserBackupFileResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UpdateUserBackupFile"), tea.String("2014-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateUserBackupFile(request *UpdateUserBackupFileRequest) (_result *UpdateUserBackupFileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateUserBackupFileResponse{}
+	_body, _err := client.UpdateUserBackupFileWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
