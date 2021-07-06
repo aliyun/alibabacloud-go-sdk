@@ -12919,6 +12919,159 @@ func (s *GetDataCorrectBackupFilesResponse) SetBody(v *GetDataCorrectBackupFiles
 	return s
 }
 
+type ListDataCorrectPreCheckSQLRequest struct {
+	OrderId    *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	DbId       *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	Tid        *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ListDataCorrectPreCheckSQLRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataCorrectPreCheckSQLRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataCorrectPreCheckSQLRequest) SetOrderId(v int64) *ListDataCorrectPreCheckSQLRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *ListDataCorrectPreCheckSQLRequest) SetPageNumber(v int64) *ListDataCorrectPreCheckSQLRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDataCorrectPreCheckSQLRequest) SetPageSize(v int64) *ListDataCorrectPreCheckSQLRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDataCorrectPreCheckSQLRequest) SetDbId(v int64) *ListDataCorrectPreCheckSQLRequest {
+	s.DbId = &v
+	return s
+}
+
+func (s *ListDataCorrectPreCheckSQLRequest) SetTid(v int64) *ListDataCorrectPreCheckSQLRequest {
+	s.Tid = &v
+	return s
+}
+
+type ListDataCorrectPreCheckSQLResponseBody struct {
+	// Id of the request
+	RequestId       *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success         *bool                                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorMessage    *string                                                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorCode       *string                                                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	PreCheckSQLList []*ListDataCorrectPreCheckSQLResponseBodyPreCheckSQLList `json:"PreCheckSQLList,omitempty" xml:"PreCheckSQLList,omitempty" type:"Repeated"`
+}
+
+func (s ListDataCorrectPreCheckSQLResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataCorrectPreCheckSQLResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataCorrectPreCheckSQLResponseBody) SetRequestId(v string) *ListDataCorrectPreCheckSQLResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDataCorrectPreCheckSQLResponseBody) SetSuccess(v bool) *ListDataCorrectPreCheckSQLResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListDataCorrectPreCheckSQLResponseBody) SetErrorMessage(v string) *ListDataCorrectPreCheckSQLResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListDataCorrectPreCheckSQLResponseBody) SetErrorCode(v string) *ListDataCorrectPreCheckSQLResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListDataCorrectPreCheckSQLResponseBody) SetPreCheckSQLList(v []*ListDataCorrectPreCheckSQLResponseBodyPreCheckSQLList) *ListDataCorrectPreCheckSQLResponseBody {
+	s.PreCheckSQLList = v
+	return s
+}
+
+type ListDataCorrectPreCheckSQLResponseBodyPreCheckSQLList struct {
+	CheckSQL          *string `json:"CheckSQL,omitempty" xml:"CheckSQL,omitempty"`
+	AffectRows        *int64  `json:"AffectRows,omitempty" xml:"AffectRows,omitempty"`
+	DbId              *int64  `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	SQLReviewQueryKey *string `json:"SQLReviewQueryKey,omitempty" xml:"SQLReviewQueryKey,omitempty"`
+	SqlReviewStatus   *string `json:"SqlReviewStatus,omitempty" xml:"SqlReviewStatus,omitempty"`
+	SqlType           *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
+}
+
+func (s ListDataCorrectPreCheckSQLResponseBodyPreCheckSQLList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataCorrectPreCheckSQLResponseBodyPreCheckSQLList) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataCorrectPreCheckSQLResponseBodyPreCheckSQLList) SetCheckSQL(v string) *ListDataCorrectPreCheckSQLResponseBodyPreCheckSQLList {
+	s.CheckSQL = &v
+	return s
+}
+
+func (s *ListDataCorrectPreCheckSQLResponseBodyPreCheckSQLList) SetAffectRows(v int64) *ListDataCorrectPreCheckSQLResponseBodyPreCheckSQLList {
+	s.AffectRows = &v
+	return s
+}
+
+func (s *ListDataCorrectPreCheckSQLResponseBodyPreCheckSQLList) SetDbId(v int64) *ListDataCorrectPreCheckSQLResponseBodyPreCheckSQLList {
+	s.DbId = &v
+	return s
+}
+
+func (s *ListDataCorrectPreCheckSQLResponseBodyPreCheckSQLList) SetSQLReviewQueryKey(v string) *ListDataCorrectPreCheckSQLResponseBodyPreCheckSQLList {
+	s.SQLReviewQueryKey = &v
+	return s
+}
+
+func (s *ListDataCorrectPreCheckSQLResponseBodyPreCheckSQLList) SetSqlReviewStatus(v string) *ListDataCorrectPreCheckSQLResponseBodyPreCheckSQLList {
+	s.SqlReviewStatus = &v
+	return s
+}
+
+func (s *ListDataCorrectPreCheckSQLResponseBodyPreCheckSQLList) SetSqlType(v string) *ListDataCorrectPreCheckSQLResponseBodyPreCheckSQLList {
+	s.SqlType = &v
+	return s
+}
+
+type ListDataCorrectPreCheckSQLResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListDataCorrectPreCheckSQLResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDataCorrectPreCheckSQLResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataCorrectPreCheckSQLResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataCorrectPreCheckSQLResponse) SetHeaders(v map[string]*string) *ListDataCorrectPreCheckSQLResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDataCorrectPreCheckSQLResponse) SetBody(v *ListDataCorrectPreCheckSQLResponseBody) *ListDataCorrectPreCheckSQLResponse {
+	s.Body = v
+	return s
+}
+
 type RegisterInstanceRequest struct {
 	Tid              *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 	InstanceType     *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
@@ -13623,6 +13776,135 @@ func (s *ExecuteDataCorrectResponse) SetHeaders(v map[string]*string) *ExecuteDa
 }
 
 func (s *ExecuteDataCorrectResponse) SetBody(v *ExecuteDataCorrectResponseBody) *ExecuteDataCorrectResponse {
+	s.Body = v
+	return s
+}
+
+type ListDataCorrectPreCheckDBRequest struct {
+	OrderId    *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Tid        *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ListDataCorrectPreCheckDBRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataCorrectPreCheckDBRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataCorrectPreCheckDBRequest) SetOrderId(v int64) *ListDataCorrectPreCheckDBRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *ListDataCorrectPreCheckDBRequest) SetPageNumber(v int64) *ListDataCorrectPreCheckDBRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDataCorrectPreCheckDBRequest) SetPageSize(v int64) *ListDataCorrectPreCheckDBRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDataCorrectPreCheckDBRequest) SetTid(v int64) *ListDataCorrectPreCheckDBRequest {
+	s.Tid = &v
+	return s
+}
+
+type ListDataCorrectPreCheckDBResponseBody struct {
+	// Id of the request
+	RequestId      *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorMessage   *string                                                `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorCode      *string                                                `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	PreCheckDBList []*ListDataCorrectPreCheckDBResponseBodyPreCheckDBList `json:"PreCheckDBList,omitempty" xml:"PreCheckDBList,omitempty" type:"Repeated"`
+}
+
+func (s ListDataCorrectPreCheckDBResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataCorrectPreCheckDBResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataCorrectPreCheckDBResponseBody) SetRequestId(v string) *ListDataCorrectPreCheckDBResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDataCorrectPreCheckDBResponseBody) SetSuccess(v bool) *ListDataCorrectPreCheckDBResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListDataCorrectPreCheckDBResponseBody) SetErrorMessage(v string) *ListDataCorrectPreCheckDBResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListDataCorrectPreCheckDBResponseBody) SetErrorCode(v string) *ListDataCorrectPreCheckDBResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListDataCorrectPreCheckDBResponseBody) SetPreCheckDBList(v []*ListDataCorrectPreCheckDBResponseBodyPreCheckDBList) *ListDataCorrectPreCheckDBResponseBody {
+	s.PreCheckDBList = v
+	return s
+}
+
+type ListDataCorrectPreCheckDBResponseBodyPreCheckDBList struct {
+	DbId       *int64  `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+	SqlNum     *int64  `json:"SqlNum,omitempty" xml:"SqlNum,omitempty"`
+}
+
+func (s ListDataCorrectPreCheckDBResponseBodyPreCheckDBList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataCorrectPreCheckDBResponseBodyPreCheckDBList) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataCorrectPreCheckDBResponseBodyPreCheckDBList) SetDbId(v int64) *ListDataCorrectPreCheckDBResponseBodyPreCheckDBList {
+	s.DbId = &v
+	return s
+}
+
+func (s *ListDataCorrectPreCheckDBResponseBodyPreCheckDBList) SetSearchName(v string) *ListDataCorrectPreCheckDBResponseBodyPreCheckDBList {
+	s.SearchName = &v
+	return s
+}
+
+func (s *ListDataCorrectPreCheckDBResponseBodyPreCheckDBList) SetSqlNum(v int64) *ListDataCorrectPreCheckDBResponseBodyPreCheckDBList {
+	s.SqlNum = &v
+	return s
+}
+
+type ListDataCorrectPreCheckDBResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListDataCorrectPreCheckDBResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDataCorrectPreCheckDBResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataCorrectPreCheckDBResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataCorrectPreCheckDBResponse) SetHeaders(v map[string]*string) *ListDataCorrectPreCheckDBResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDataCorrectPreCheckDBResponse) SetBody(v *ListDataCorrectPreCheckDBResponseBody) *ListDataCorrectPreCheckDBResponse {
 	s.Body = v
 	return s
 }
@@ -17423,6 +17705,34 @@ func (client *Client) GetDataCorrectBackupFiles(request *GetDataCorrectBackupFil
 	return _result, _err
 }
 
+func (client *Client) ListDataCorrectPreCheckSQLWithOptions(request *ListDataCorrectPreCheckSQLRequest, runtime *util.RuntimeOptions) (_result *ListDataCorrectPreCheckSQLResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListDataCorrectPreCheckSQLResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListDataCorrectPreCheckSQL"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDataCorrectPreCheckSQL(request *ListDataCorrectPreCheckSQLRequest) (_result *ListDataCorrectPreCheckSQLResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDataCorrectPreCheckSQLResponse{}
+	_body, _err := client.ListDataCorrectPreCheckSQLWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) RegisterInstanceWithOptions(request *RegisterInstanceRequest, runtime *util.RuntimeOptions) (_result *RegisterInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17550,6 +17860,34 @@ func (client *Client) ExecuteDataCorrect(request *ExecuteDataCorrectRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &ExecuteDataCorrectResponse{}
 	_body, _err := client.ExecuteDataCorrectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDataCorrectPreCheckDBWithOptions(request *ListDataCorrectPreCheckDBRequest, runtime *util.RuntimeOptions) (_result *ListDataCorrectPreCheckDBResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListDataCorrectPreCheckDBResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListDataCorrectPreCheckDB"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDataCorrectPreCheckDB(request *ListDataCorrectPreCheckDBRequest) (_result *ListDataCorrectPreCheckDBResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDataCorrectPreCheckDBResponse{}
+	_body, _err := client.ListDataCorrectPreCheckDBWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
