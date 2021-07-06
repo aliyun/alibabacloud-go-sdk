@@ -2029,6 +2029,10 @@ type ModifyClusterNodePoolRequestScalingGroup struct {
 	SpotInstanceRemedy *bool `json:"spot_instance_remedy,omitempty" xml:"spot_instance_remedy,omitempty"`
 	// 当MultiAZPolicy取值为COST_OPTIMIZED时，如果因价格、库存等原因无法创建足够的抢占式实例，是否允许自动尝试创建按量实例满足ECS实例数量要求。取值范围：true：允许。false：不允许。默认值：true
 	CompensateWithOnDemand *bool `json:"compensate_with_on_demand,omitempty" xml:"compensate_with_on_demand,omitempty"`
+	// 节点公网IP网络计费类型
+	InternetChargeType *string `json:"internet_charge_type,omitempty" xml:"internet_charge_type,omitempty"`
+	// 节点公网IP出带宽最大值，单位为Mbps（Mega bit per second），取值范围：1~100
+	InternetMaxBandwidthOut *int64 `json:"internet_max_bandwidth_out,omitempty" xml:"internet_max_bandwidth_out,omitempty"`
 }
 
 func (s ModifyClusterNodePoolRequestScalingGroup) String() string {
@@ -2161,6 +2165,16 @@ func (s *ModifyClusterNodePoolRequestScalingGroup) SetSpotInstanceRemedy(v bool)
 
 func (s *ModifyClusterNodePoolRequestScalingGroup) SetCompensateWithOnDemand(v bool) *ModifyClusterNodePoolRequestScalingGroup {
 	s.CompensateWithOnDemand = &v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestScalingGroup) SetInternetChargeType(v string) *ModifyClusterNodePoolRequestScalingGroup {
+	s.InternetChargeType = &v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestScalingGroup) SetInternetMaxBandwidthOut(v int64) *ModifyClusterNodePoolRequestScalingGroup {
+	s.InternetMaxBandwidthOut = &v
 	return s
 }
 
@@ -2772,6 +2786,10 @@ type DescribeClusterNodePoolDetailResponseBodyScalingGroup struct {
 	LoginPassword *string `json:"login_password,omitempty" xml:"login_password,omitempty"`
 	// 密钥对名称
 	KeyPair *string `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
+	// 节点公网IP网络计费类型
+	InternetChargeType *string `json:"internet_charge_type,omitempty" xml:"internet_charge_type,omitempty"`
+	// 节点公网IP出带宽最大值，单位为Mbps（Mega bit per second），取值范围：1~100
+	InternetMaxBandwidthOut *int64 `json:"internet_max_bandwidth_out,omitempty" xml:"internet_max_bandwidth_out,omitempty"`
 }
 
 func (s DescribeClusterNodePoolDetailResponseBodyScalingGroup) String() string {
@@ -2919,6 +2937,16 @@ func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetLoginPassword
 
 func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetKeyPair(v string) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
 	s.KeyPair = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetInternetChargeType(v string) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
+	s.InternetChargeType = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetInternetMaxBandwidthOut(v int64) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
+	s.InternetMaxBandwidthOut = &v
 	return s
 }
 
@@ -3384,6 +3412,10 @@ type CreateClusterNodePoolRequestScalingGroup struct {
 	SpotInstanceRemedy *bool `json:"spot_instance_remedy,omitempty" xml:"spot_instance_remedy,omitempty"`
 	// 当MultiAZPolicy取值为COST_OPTIMIZED时，如果因价格、库存等原因无法创建足够的抢占式实例，是否允许自动尝试创建按量实例满足ECS实例数量要求。取值范围：true：允许。false：不允许。默认值：true
 	CompensateWithOnDemand *bool `json:"compensate_with_on_demand,omitempty" xml:"compensate_with_on_demand,omitempty"`
+	// 节点公网IP网络计费类型
+	InternetChargeType *string `json:"internet_charge_type,omitempty" xml:"internet_charge_type,omitempty"`
+	// 节点公网IP出带宽最大值，单位为Mbps（Mega bit per second），取值范围：1~100
+	InternetMaxBandwidthOut *int64 `json:"internet_max_bandwidth_out,omitempty" xml:"internet_max_bandwidth_out,omitempty"`
 }
 
 func (s CreateClusterNodePoolRequestScalingGroup) String() string {
@@ -3521,6 +3553,16 @@ func (s *CreateClusterNodePoolRequestScalingGroup) SetSpotInstanceRemedy(v bool)
 
 func (s *CreateClusterNodePoolRequestScalingGroup) SetCompensateWithOnDemand(v bool) *CreateClusterNodePoolRequestScalingGroup {
 	s.CompensateWithOnDemand = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestScalingGroup) SetInternetChargeType(v string) *CreateClusterNodePoolRequestScalingGroup {
+	s.InternetChargeType = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestScalingGroup) SetInternetMaxBandwidthOut(v int64) *CreateClusterNodePoolRequestScalingGroup {
+	s.InternetMaxBandwidthOut = &v
 	return s
 }
 
@@ -7458,6 +7500,10 @@ type DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup struct {
 	LoginPassword *string `json:"login_password,omitempty" xml:"login_password,omitempty"`
 	// 密钥对名称，和login_password二选一。
 	KeyPair *string `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
+	// 节点公网IP网络计费类型
+	InternetChargeType *string `json:"internet_charge_type,omitempty" xml:"internet_charge_type,omitempty"`
+	// 节点公网IP出带宽最大值，单位为Mbps（Mega bit per second），取值范围：1~100
+	InternetMaxBandwidthOut *int64 `json:"internet_max_bandwidth_out,omitempty" xml:"internet_max_bandwidth_out,omitempty"`
 }
 
 func (s DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) String() string {
@@ -7605,6 +7651,16 @@ func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetLoginPass
 
 func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetKeyPair(v string) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup {
 	s.KeyPair = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetInternetChargeType(v string) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup {
+	s.InternetChargeType = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetInternetMaxBandwidthOut(v int64) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup {
+	s.InternetMaxBandwidthOut = &v
 	return s
 }
 
@@ -8082,7 +8138,7 @@ type ScaleOutClusterRequest struct {
 	// Worker节点系统盘大小
 	WorkerSystemDiskSize *int64 `json:"worker_system_disk_size,omitempty" xml:"worker_system_disk_size,omitempty"`
 	// Worker节点数据盘配置
-	WorkerDataDisks []*DataDisk `json:"worker_data_disks,omitempty" xml:"worker_data_disks,omitempty" type:"Repeated"`
+	WorkerDataDisks []*ScaleOutClusterRequestWorkerDataDisks `json:"worker_data_disks,omitempty" xml:"worker_data_disks,omitempty" type:"Repeated"`
 	// 在节点上安装云监控
 	CloudMonitorFlags *bool `json:"cloud_monitor_flags,omitempty" xml:"cloud_monitor_flags,omitempty"`
 	// CPU亲和性策略
@@ -8168,7 +8224,7 @@ func (s *ScaleOutClusterRequest) SetWorkerSystemDiskSize(v int64) *ScaleOutClust
 	return s
 }
 
-func (s *ScaleOutClusterRequest) SetWorkerDataDisks(v []*DataDisk) *ScaleOutClusterRequest {
+func (s *ScaleOutClusterRequest) SetWorkerDataDisks(v []*ScaleOutClusterRequestWorkerDataDisks) *ScaleOutClusterRequest {
 	s.WorkerDataDisks = v
 	return s
 }
@@ -8210,6 +8266,45 @@ func (s *ScaleOutClusterRequest) SetTaints(v []*Taint) *ScaleOutClusterRequest {
 
 func (s *ScaleOutClusterRequest) SetRuntime(v *Runtime) *ScaleOutClusterRequest {
 	s.Runtime = v
+	return s
+}
+
+type ScaleOutClusterRequestWorkerDataDisks struct {
+	// 数据盘类型,默认值：cloud_efficiency
+	Category *string `json:"category,omitempty" xml:"category,omitempty"`
+	// 数据盘大小，单位为GiB。  取值范围：[40,32768]
+	Size *string `json:"size,omitempty" xml:"size,omitempty"`
+	// 是否对数据盘加密
+	Encrypted *string `json:"encrypted,omitempty" xml:"encrypted,omitempty"`
+	// 自动快照策略ID，云盘会按照快照策略自动备份。
+	AutoSnapshotPolicyId *string `json:"auto_snapshot_policy_id,omitempty" xml:"auto_snapshot_policy_id,omitempty"`
+}
+
+func (s ScaleOutClusterRequestWorkerDataDisks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScaleOutClusterRequestWorkerDataDisks) GoString() string {
+	return s.String()
+}
+
+func (s *ScaleOutClusterRequestWorkerDataDisks) SetCategory(v string) *ScaleOutClusterRequestWorkerDataDisks {
+	s.Category = &v
+	return s
+}
+
+func (s *ScaleOutClusterRequestWorkerDataDisks) SetSize(v string) *ScaleOutClusterRequestWorkerDataDisks {
+	s.Size = &v
+	return s
+}
+
+func (s *ScaleOutClusterRequestWorkerDataDisks) SetEncrypted(v string) *ScaleOutClusterRequestWorkerDataDisks {
+	s.Encrypted = &v
+	return s
+}
+
+func (s *ScaleOutClusterRequestWorkerDataDisks) SetAutoSnapshotPolicyId(v string) *ScaleOutClusterRequestWorkerDataDisks {
+	s.AutoSnapshotPolicyId = &v
 	return s
 }
 
